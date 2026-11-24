@@ -1,0 +1,9 @@
+$kind: collection
+id: "5672216e-6e12-5323-9a2f-5796080fbdfc"
+description: |-
+  The **lease_workspace** entity, which belongs to a node. Its requests address one record by `{{lease_workspace_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 303000

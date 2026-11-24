@@ -1,0 +1,8 @@
+$kind: collection
+id: "4db6e509-3b6b-52a0-ba75-7dbe8207aebd"
+description: |-
+  The **organization_control** entity, which belongs to a organization. Its requests address one record by `{{organization_control_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 341000

@@ -5,30 +5,51 @@ main: kit: entity: agent_site: {
   alias: field: {}
 
   fields: {
-    deployed_at: {
-      h: "Deployed At"
-      n: "deployed_at"
+    author: {
+      h: "Author"
+      n: "author"
       r: true
-      t: "`$STRING`"
+      t: "`$OBJECT`"
+    }
+    can_message: {
+      h: "Can Message"
+      n: "can_message"
+      r: true
+      sh: "The viewer may send input to the author agent"
+      t: "`$BOOLEAN`"
     }
     deployments_count: {
       h: "Deployments Count"
       n: "deployments_count"
       r: true
+      sh: "Increases with every deploy of the site"
       t: "`$INTEGER`"
     }
-    hostname: {
-      h: "Hostname"
-      n: "hostname"
+    description: {
+      h: "Description"
+      n: "description"
       r: true
-      t: "`$STRING`"
+      sh: "The team app description, when the site is a team app"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
     }
-    https: {
-      h: "Https"
-      n: "https"
+    icon_url: {
+      h: "Icon Url"
+      n: "icon_url"
       r: true
-      sh: "Whether the organization's certificate serves this site over HTTPS"
-      t: "`$STRING`"
+      sh: "Path of the site's generated icon, versioned by the picture; null until one is generated"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
     }
     id: {
       h: "Id"
@@ -40,6 +61,28 @@ main: kit: entity: agent_site: {
       h: "Name"
       n: "name"
       r: true
+      sh: "The site's DNS label"
+      t: "`$STRING`"
+    }
+    owner: {
+      h: "Owner"
+      n: "owner"
+      r: true
+      sh: "The person who controls the author agent"
+      t: "`$OBJECT`"
+    }
+    thread: {
+      h: "Thread"
+      n: "thread"
+      r: true
+      sh: "The thread that published the site as a team app, when the viewer can open the author agent"
+      t: "`$ANY`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      sh: "The team app title, or the site name read as words"
       t: "`$STRING`"
     }
     url: {
@@ -63,20 +106,35 @@ main: kit: entity: agent_site: {
 
   name: "agent_site"
   op: {
-    list: {
-      name: "list"
+    create: {
+      name: "create"
       points: [
         {
+          bf: [
+            "surface"
+            "view"
+          ]
           co: {
-            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/sites"
+            id: "POST /api/v1/organizations/{organization_id}/agent_sites/{id}/opened"
             source: "openapi3"
             version: 2
           }
           g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
             params: [
               {
                 k: "param"
-                n: "agent_id"
+                n: "id"
                 or: "id"
                 r: true
                 t: "`$STRING`"
@@ -89,38 +147,20 @@ main: kit: entity: agent_site: {
                 t: "`$STRING`"
               }
             ]
-            query: [
-              {
-                explode: true
-                k: "query"
-                n: "cursor"
-                or: "cursor"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                explode: true
-                k: "query"
-                n: "limit"
-                or: "limit"
-                r: false
-                style: "form"
-                t: "`$INTEGER`"
-              }
-            ]
           }
-          m: "GET"
-          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/sites"
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agent_sites/{id}/opened"
           q: {
+            "$action": "opened"
             exist: [
-              "agent_id"
+              "id"
+              "idempotency_key"
               "organization_id"
             ]
           }
           r: {
             param: {
-              id: "agent_id"
+              id: "id"
             }
           }
           rs: {
@@ -141,24 +181,238 @@ main: kit: entity: agent_site: {
               var: "organization_id"
             }
             {
-              lit: "agents"
+              lit: "agent_sites"
             }
             {
-              var: "agent_id"
+              var: "id"
             }
             {
-              lit: "spark"
+              lit: "opened"
+            }
+          ]
+          t: {
+            req: {
+              surface: "`reqdata.surface`"
+              view: "`reqdata.view`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agent_sites"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agent_sites"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
             }
             {
-              lit: "sites"
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_sites"
             }
           ]
           t: {
             page: {
-              next: "`body.pagination.next`"
+              cursor: "`body.next_cursor`"
             }
             req: "`reqdata`"
             res: "`body.items`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agent_sites/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agent_sites/{id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_sites"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agent_sites/{id}/icon"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agent_sites/{id}/icon"
+          q: {
+            "$action": "icon"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            alternatives: [
+              {
+                binary: true
+                kind: "raw"
+                media: "image/webp"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_sites"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "icon"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
           }
         }
       ]
@@ -167,7 +421,7 @@ main: kit: entity: agent_site: {
 
 
   relations: ancestors: [
-    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent")]
+    [path("$.main.kit.entity.organization")]
   ]
 
 }

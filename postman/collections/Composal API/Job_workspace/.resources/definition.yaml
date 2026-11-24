@@ -1,0 +1,9 @@
+$kind: collection
+id: c70d71fc-d835-59de-ba82-29f58cb6efc2
+description: |-
+  The **job_workspace** entity. Its requests address one record by `{{job_workspace_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 290000

@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "organization_run_usage": {
+      "ORGANIZATION_RUN_USAGE00": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_RUN_USAGE00"
+      },
+      "ORGANIZATION_RUN_USAGE01": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_RUN_USAGE01"
+      },
+      "ORGANIZATION_RUN_USAGE02": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_RUN_USAGE02"
+      }
+    }
+  },
+  "new": {
+    "organization_run_usage": {
+      "organization_run_usage_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/spark/organizations/{organization_id}/run_usages": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

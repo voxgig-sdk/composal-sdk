@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "github_runner_history": {
+      "GITHUB_RUNNER_HISTORY00": {
+        "activity": [],
+        "counts": {},
+        "observed_at": "s5c",
+        "pagination": {},
+        "repositories": [],
+        "runs": [],
+        "setup": "s60",
+        "success_rate": "s61",
+        "usage": {},
+        "organization_id": "ORGANIZATION01",
+        "id": "GITHUB_RUNNER_HISTORY00"
+      },
+      "GITHUB_RUNNER_HISTORY01": {
+        "activity": [],
+        "counts": {},
+        "observed_at": "sb6",
+        "pagination": {},
+        "repositories": [],
+        "runs": [],
+        "setup": "sba",
+        "success_rate": "sbb",
+        "usage": {},
+        "organization_id": "ORGANIZATION01",
+        "id": "GITHUB_RUNNER_HISTORY01"
+      },
+      "GITHUB_RUNNER_HISTORY02": {
+        "activity": [],
+        "counts": {},
+        "observed_at": "s110",
+        "pagination": {},
+        "repositories": [],
+        "runs": [],
+        "setup": "s114",
+        "success_rate": "s115",
+        "usage": {},
+        "organization_id": "ORGANIZATION01",
+        "id": "GITHUB_RUNNER_HISTORY02"
+      }
+    }
+  },
+  "new": {
+    "github_runner_history": {
+      "github_runner_history_ref01": {
+        "activity": [],
+        "counts": {},
+        "observed_at": "s16a",
+        "pagination": {},
+        "repositories": [],
+        "runs": [],
+        "setup": "s16e",
+        "success_rate": "s16f",
+        "usage": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/github_runner_history": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

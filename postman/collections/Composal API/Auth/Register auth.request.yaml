@@ -1,0 +1,24 @@
+$kind: http-request
+id: "977eaa26-6ac4-53a3-8b2b-0d170f901aa6"
+description: |-
+  The `register` action of **auth**, a route of its `create` operation.
+
+  SDK: `client.Auth().create({ $action: "register" })`
+url: "{{base}}/api/v1/auth/register"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "email": "user@example.com",
+      "password": "example",
+      "name": "example",
+      "turnstile_token": "example",
+      "cli_login_id": "example",
+      "invite_code": "example",
+      "organization_invitation_token": "example"
+    }
+order: 8000

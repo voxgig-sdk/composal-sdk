@@ -1,0 +1,4 @@
+$kind: collection
+id: "64a69ea4-f817-55af-b11a-c3c1786d4311"
+description: "The `BasicAgentConnectionDelegationFlow` flow of **agent_connection_delegation**."
+order: 10000

@@ -1,0 +1,94 @@
+{
+  "existing": {
+    "repo_agent_session": {
+      "REPO_AGENT_SESSION00": {
+        "adapter": "s3c",
+        "agent_session": {},
+        "external_session_id": "EXTERNAL_SESSION01",
+        "id": "REPO_AGENT_SESSION00",
+        "status": "s40",
+        "title": "s41",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "REPO_AGENT_SESSION01": {
+        "adapter": "s78",
+        "agent_session": {},
+        "external_session_id": "EXTERNAL_SESSION01",
+        "id": "REPO_AGENT_SESSION01",
+        "status": "s7c",
+        "title": "s7d",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "REPO_AGENT_SESSION02": {
+        "adapter": "sb4",
+        "agent_session": {},
+        "external_session_id": "EXTERNAL_SESSION01",
+        "id": "REPO_AGENT_SESSION02",
+        "status": "sb8",
+        "title": "sb9",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "repo_agent_session": {
+      "repo_agent_session_ref01": {
+        "adapter": "sf0",
+        "agent_session": {},
+        "external_session_id": "EXTERNAL_SESSION01",
+        "status": "sf4",
+        "title": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/transcript": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/transcript_export": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/transcript_index": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

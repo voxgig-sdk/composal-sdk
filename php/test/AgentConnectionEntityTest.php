@@ -33,7 +33,7 @@ class AgentConnectionEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->AgentConnection(null)->list(["agent_id" => 1, "organization_id" => 'x'], null);
+            $client->AgentConnection(null)->list(["organization_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -53,12 +53,12 @@ class AgentConnectionEntityTest extends TestCase
             }
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
-            fwrite(STDOUT, 'LIVE STEP {"id":"agent_connection.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"agent_connection.update.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"agent_connection.remove.4","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"agent_connection.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agent_connections/{id}/adopt_custody"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"agent_connection.update.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/agent_connections/{id}"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"agent_connection.remove.4","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agent_connections/{id}"}' . "\n");
             fwrite(STDOUT, 'LIVE STEP {"id":"agent_connection.list.5","state":"excluded","attempted":false,"reason":"GET-only live run: checks a removal this run does not make"}' . "\n");
         if (!empty($setup["live"])) {
-            foreach (["agent01", "organization01"] as $_liveKey) {
+            foreach (["organization01"] as $_liveKey) {
                 if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
                     Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_AGENT_CONNECTION_ENTID");
                 }
@@ -69,7 +69,7 @@ class AgentConnectionEntityTest extends TestCase
             $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["agent_connection01"] ?? null) : null;
             Runner::live_pace();
             Runner::live_existing($setup, self::LIVE_STRICT, "agent_connection",
-                fn() => $client->AgentConnection(null)->list(["agent_id" => $setup["idmap"]["agent01"] ?? null, "organization_id" => $setup["idmap"]["organization01"] ?? null], null), "id", $_liveId);
+                fn() => $client->AgentConnection(null)->list(["organization_id" => $setup["idmap"]["organization01"] ?? null], null), "id", $_liveId);
         }
 
         // Bootstrap entity data from existing test data.
@@ -86,7 +86,6 @@ class AgentConnectionEntityTest extends TestCase
         // LIST
         $agent_connection_ref01_ent = $client->AgentConnection(null);
         $agent_connection_ref01_match = [
-            "agent_id" => $setup["idmap"]["agent01"],
             "organization_id" => $setup["idmap"]["organization01"],
         ];
 
@@ -100,8 +99,7 @@ class AgentConnectionEntityTest extends TestCase
         $agent_connection_ref01_match_dt0 = [
             "id" => $agent_connection_ref01_data["id"],
         ];
-        $agent_connection_ref01_match_dt0["agent_id"] = $setup["idmap"]["agent_id"] ?? $setup["idmap"]["agent01"] ?? null;
-        $agent_connection_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
+        $agent_connection_ref01_match_dt0["organization_id"] = is_scalar($agent_connection_ref01_data["organization_id"] ?? null) ? $agent_connection_ref01_data["organization_id"] : ($setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null);
         $agent_connection_ref01_data_dt0_loaded = $agent_connection_ref01_ent->load($agent_connection_ref01_match_dt0, null);
         $agent_connection_ref01_data_dt0_load_result = Helpers::to_map(is_object($agent_connection_ref01_data_dt0_loaded) && method_exists($agent_connection_ref01_data_dt0_loaded, 'data_get') ? $agent_connection_ref01_data_dt0_loaded->data_get() : $agent_connection_ref01_data_dt0_loaded);
         $this->assertNotNull($agent_connection_ref01_data_dt0_load_result);
@@ -111,7 +109,7 @@ class AgentConnectionEntityTest extends TestCase
         }
 
         if (!empty($setup["live"])) {
-            foreach (["agent01", "organization01"] as $_liveKey) {
+            foreach (["organization01"] as $_liveKey) {
                 if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
                     Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_AGENT_CONNECTION_ENTID");
                 }
@@ -126,7 +124,6 @@ class AgentConnectionEntityTest extends TestCase
         $agent_connection_ref01_ent = $client->AgentConnection(null);
         $agent_connection_ref01_data = Helpers::to_map(Vs::getprop(
             Vs::getpath($setup["data"], "new.agent_connection"), "agent_connection_ref01"));
-        $agent_connection_ref01_data["agent_id"] = $setup["idmap"]["agent01"];
         $agent_connection_ref01_data["organization_id"] = $setup["idmap"]["organization01"];
 
         $agent_connection_ref01_data_result = $agent_connection_ref01_ent->create($agent_connection_ref01_data, null);
@@ -139,7 +136,6 @@ class AgentConnectionEntityTest extends TestCase
         }
         // LIST
         $agent_connection_ref01_match = [
-            "agent_id" => $setup["idmap"]["agent01"],
             "organization_id" => $setup["idmap"]["organization01"],
         ];
 
@@ -157,11 +153,10 @@ class AgentConnectionEntityTest extends TestCase
         // UPDATE
         $agent_connection_ref01_data_up0_up = [
             "id" => $agent_connection_ref01_data["id"],
-            "agent_id" => $setup["idmap"]["agent_id"],
             "organization_id" => $setup["idmap"]["organization_id"],
         ];
 
-        $agent_connection_ref01_markdef_up0_name = "agent_card_url";
+        $agent_connection_ref01_markdef_up0_name = "admin_disabled_at";
         $agent_connection_ref01_markdef_up0_value = "Mark01-agent_connection_ref01_" . $setup["now"];
         $agent_connection_ref01_data_up0_up[$agent_connection_ref01_markdef_up0_name] = $agent_connection_ref01_markdef_up0_value;
 
@@ -178,8 +173,7 @@ class AgentConnectionEntityTest extends TestCase
         $agent_connection_ref01_match_dt0 = [
             "id" => $agent_connection_ref01_data["id"],
         ];
-        $agent_connection_ref01_match_dt0["agent_id"] = $setup["idmap"]["agent_id"] ?? $setup["idmap"]["agent01"] ?? null;
-        $agent_connection_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
+        $agent_connection_ref01_match_dt0["organization_id"] = is_scalar($agent_connection_ref01_data["organization_id"] ?? null) ? $agent_connection_ref01_data["organization_id"] : ($setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null);
         $agent_connection_ref01_data_dt0_loaded = $agent_connection_ref01_ent->load($agent_connection_ref01_match_dt0, null);
         $agent_connection_ref01_data_dt0_load_result = Helpers::to_map(is_object($agent_connection_ref01_data_dt0_loaded) && method_exists($agent_connection_ref01_data_dt0_loaded, 'data_get') ? $agent_connection_ref01_data_dt0_loaded->data_get() : $agent_connection_ref01_data_dt0_loaded);
         $this->assertNotNull($agent_connection_ref01_data_dt0_load_result);
@@ -192,7 +186,6 @@ class AgentConnectionEntityTest extends TestCase
         $agent_connection_ref01_match_rm0 = [
             "id" => $agent_connection_ref01_data["id"],
         ];
-        $agent_connection_ref01_match_rm0["agent_id"] = $setup["idmap"]["agent_id"] ?? $setup["idmap"]["agent01"] ?? null;
         $agent_connection_ref01_match_rm0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
         $agent_connection_ref01_ent->remove($agent_connection_ref01_match_rm0, null);
 
@@ -201,7 +194,6 @@ class AgentConnectionEntityTest extends TestCase
         }
         // LIST
         $agent_connection_ref01_match_rt0 = [
-            "agent_id" => $setup["idmap"]["agent01"],
             "organization_id" => $setup["idmap"]["organization01"],
         ];
 
@@ -231,7 +223,7 @@ function agent_connection_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["agent_connection01", "agent_connection02", "agent_connection03", "organization01", "organization02", "organization03", "agent01", "agent02", "agent03"] as $k) {
+    foreach (["agent_connection01", "agent_connection02", "agent_connection03", "organization01", "organization02", "organization03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 
@@ -251,9 +243,6 @@ function agent_connection_basic_setup($extra)
         $env["COMPOSAL_TEST_AGENT_CONNECTION_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
-    }
-    if (!isset($idmap_resolved["agent_id"])) {
-        $idmap_resolved["agent_id"] = $idmap_resolved["agent01"];
     }
     if (!isset($idmap_resolved["organization_id"])) {
         $idmap_resolved["organization_id"] = $idmap_resolved["organization01"];

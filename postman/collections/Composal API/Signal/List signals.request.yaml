@@ -1,0 +1,65 @@
+$kind: http-request
+id: af608701-442d-5a5e-b3c8-dd527eca56c9
+description: |-
+  The `list` operation of **signal**.
+
+  SDK: `client.Signal().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/signals"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: after_id
+    value: ""
+    disabled: true
+  - key: before_id
+    value: ""
+    disabled: true
+  - key: hosted_app_id
+    value: ""
+    disabled: true
+  - key: integration_id
+    value: ""
+    disabled: true
+  - key: kind
+    value: ""
+    disabled: true
+  - key: limit
+    value: ""
+    disabled: true
+  - key: min_severity
+    value: ""
+    disabled: true
+  - key: order
+    value: ""
+    disabled: true
+  - key: severity
+    value: ""
+    disabled: true
+  - key: since
+    value: ""
+    disabled: true
+  - key: source
+    value: ""
+    disabled: true
+  - key: subscription_id
+    value: ""
+    disabled: true
+  - key: unacked
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this signal belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["signals"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("signal_id")) pm.collectionVariables.set("signal_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

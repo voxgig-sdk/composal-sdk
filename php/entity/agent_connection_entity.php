@@ -424,6 +424,39 @@ class AgentConnectionEntity
 
 
     
+    /**
+     * Change part of an existing AgentConnection: only the fields given are sent.
+     *
+     * @param AgentConnectionPatchData|array|null $reqdata Body data as an assoc-array;
+     *   a typed AgentConnectionPatchData names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return AgentConnectionEntity The patched AgentConnection entity, whose data_get() reads
+     *   its record; throws ComposalError on failure (item-5 convention).
+     */
+    public function patch(?array $reqdata = null, $ctrl = null): mixed
+    {
+        $utility = $this->_utility;
+        $ctx = ($utility->make_context)([
+            "opname" => "patch",
+            "ctrl" => $ctrl,
+            "match" => $this->_match,
+            "data" => $this->_data,
+            "reqdata" => $reqdata,
+        ], $this->_entctx);
+
+        return $this->_run_op($ctx, function () use ($ctx) {
+            if ($ctx->result) {
+                if ($ctx->result->resmatch) {
+                    $this->_match = $ctx->result->resmatch;
+                }
+                if ($ctx->result->resdata) {
+                    $this->_data = ComposalHelpers::to_map(Struct::clone($ctx->result->resdata)) ?? [];
+                }
+            }
+        });
+    }
+
+
 
     
     /**

@@ -1,0 +1,9 @@
+$kind: collection
+id: ade3a2d6-044d-5245-840a-db38c06c6ef8
+description: |-
+  The **lease_reconciliation** entity, which belongs to a node. Its requests address one record by `{{lease_reconciliation_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 299000

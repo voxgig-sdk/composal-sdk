@@ -1,0 +1,102 @@
+{
+  "existing": {
+    "git_import": {
+      "GIT_IMPORT00": {
+        "destination_mode": "s96",
+        "error": "s97",
+        "git_default_branch": "s98",
+        "git_status": "s99",
+        "git_url": "s9a",
+        "id": "GIT_IMPORT00",
+        "idempotency_key": "s9c",
+        "name": "s9d",
+        "native_status": "s9e",
+        "organization": "s9f",
+        "repository_id": "REPOSITORY01",
+        "root_path": "sa1",
+        "slug": "sa2",
+        "source_branch": "sa3",
+        "target_branch": "sa4",
+        "organization_id": "ORGANIZATION01"
+      },
+      "GIT_IMPORT01": {
+        "destination_mode": "s12c",
+        "error": "s12d",
+        "git_default_branch": "s12e",
+        "git_status": "s12f",
+        "git_url": "s130",
+        "id": "GIT_IMPORT01",
+        "idempotency_key": "s132",
+        "name": "s133",
+        "native_status": "s134",
+        "organization": "s135",
+        "repository_id": "REPOSITORY01",
+        "root_path": "s137",
+        "slug": "s138",
+        "source_branch": "s139",
+        "target_branch": "s13a",
+        "organization_id": "ORGANIZATION01"
+      },
+      "GIT_IMPORT02": {
+        "destination_mode": "s1c2",
+        "error": "s1c3",
+        "git_default_branch": "s1c4",
+        "git_status": "s1c5",
+        "git_url": "s1c6",
+        "id": "GIT_IMPORT02",
+        "idempotency_key": "s1c8",
+        "name": "s1c9",
+        "native_status": "s1ca",
+        "organization": "s1cb",
+        "repository_id": "REPOSITORY01",
+        "root_path": "s1cd",
+        "slug": "s1ce",
+        "source_branch": "s1cf",
+        "target_branch": "s1d0",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "git_import": {
+      "git_import_ref01": {
+        "destination_mode": "s258",
+        "error": "s259",
+        "git_default_branch": "s25a",
+        "git_status": "s25b",
+        "git_url": "s25c",
+        "idempotency_key": "s25e",
+        "name": "s25f",
+        "native_status": "s260",
+        "organization": "s261",
+        "repository_id": "REPOSITORY01",
+        "root_path": "s263",
+        "slug": "s264",
+        "source_branch": "s265",
+        "target_branch": "s266"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/git_imports/{id}/complete": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/git_imports/{id}/retry": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/git_imports": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/git_imports/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

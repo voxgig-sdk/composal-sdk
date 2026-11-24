@@ -1,0 +1,22 @@
+$kind: http-request
+id: "21c9d0f5-181a-53ae-ab1a-c9c2edaaf1e1"
+description: |-
+  The `activate` action of **space_otel_collector**, a route of its `create` operation.
+
+  SDK: `client.SpaceOtelCollector().create({ "space_id": "space_id", "id": "ID", $action: "activate" })`
+url: "{{base}}/api/v1/observability/spaces/:space_id/otel_collectors/:id/activate"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: id
+    value: "{{space_otel_collector_id}}"
+    description: The space_otel_collector this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

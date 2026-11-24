@@ -1,0 +1,19 @@
+$kind: http-request
+id: "45f153d9-9739-53a3-aa89-4ba724344458"
+description: |-
+  The `search` action of **parallel_v1**, a route of its `create` operation.
+
+  SDK: `client.ParallelV1().create({ "organization_id": "organization_id", $action: "search" })`
+url: "{{base}}/api/v1/organizations/:organization_id/local_agent/parallel/v1/search"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this parallel_v1 belongs to.
+body:
+  type: json
+  content: "{}"
+order: 2000

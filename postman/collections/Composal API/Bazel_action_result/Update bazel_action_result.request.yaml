@@ -1,0 +1,22 @@
+$kind: http-request
+id: "2a7e4205-ad6b-58bf-b66e-4c49d6b0785e"
+description: |-
+  The `update` operation of **bazel_action_result**.
+
+  SDK: `client.BazelActionResult().update({ action_result_id: "example", id: "example" })`
+url: "{{base}}/api/v1/bazel/action_results/:hash/:size_bytes"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: hash
+    value: "{{bazel_action_result_action_result_id}}"
+    description: The bazel_action_result this request addresses.
+  - key: size_bytes
+    value: "{{bazel_action_result_id}}"
+    description: The bazel_action_result this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 2000

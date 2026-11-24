@@ -1,0 +1,18 @@
+$kind: http-request
+id: "110e38b4-5627-5a10-9a91-9e80a04d44a1"
+description: |-
+  The `job` action of **node_lease**, a route of its `load` operation.
+
+  SDK: `client.NodeLease().load({ "node_id": "node_id", "id": "ID", $action: "job" })`
+url: "{{base}}/api/v1/ci/nodes/:id/leases/:lease_id/job"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{node_id}}"
+    description: The node this node_lease belongs to.
+  - key: lease_id
+    value: "{{node_lease_id}}"
+    description: The node_lease this request addresses.
+order: 4000

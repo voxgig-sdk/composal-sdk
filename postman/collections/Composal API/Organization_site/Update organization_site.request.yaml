@@ -1,0 +1,22 @@
+$kind: http-request
+id: e58c3c5c-eefd-5df3-ae97-0384147ce63e
+description: |-
+  The `update` operation of **organization_site**.
+
+  SDK: `client.OrganizationSite().update({ id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/spark/organizations/:organization_id/sites/:name"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_site belongs to.
+  - key: name
+    value: "{{organization_site_id}}"
+    description: The organization_site this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 3000

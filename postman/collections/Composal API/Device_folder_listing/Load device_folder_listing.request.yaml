@@ -1,0 +1,21 @@
+$kind: http-request
+id: acb27665-c7e2-5210-b0ad-b0fec94b7acb
+description: |-
+  The `load` operation of **device_folder_listing**.
+
+  SDK: `client.DeviceFolderListing().load({ device_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/folder_listings/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device_folder_listing belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this device_folder_listing belongs to.
+  - key: id
+    value: "{{device_folder_listing_id}}"
+    description: The device_folder_listing this request addresses.
+order: 1000

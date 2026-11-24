@@ -1,0 +1,21 @@
+$kind: http-request
+id: "5e65477c-bb48-5bd6-8f69-198455f704df"
+description: |-
+  The `load` operation of **vc_stack**.
+
+  SDK: `client.VcStack().load({ id: "example_id", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/stacks/:code"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_stack belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_stack belongs to.
+  - key: code
+    value: "{{vc_stack_id}}"
+    description: The vc_stack this request addresses.
+order: 2000

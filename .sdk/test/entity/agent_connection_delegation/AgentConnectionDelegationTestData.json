@@ -1,0 +1,66 @@
+{
+  "existing": {
+    "agent_connection_delegation": {
+      "AGENT_CONNECTION_DELEGATION00": {
+        "authorized_by_id": "AUTHORIZED_BY01",
+        "automation_connection_grant_id": "AUTOMATION_CONNECTION_GRANT01",
+        "created_at": "s5c",
+        "id": "AGENT_CONNECTION_DELEGATION00",
+        "member_name": "s5e",
+        "revoked_at": "s5f",
+        "roles": [],
+        "usable": false,
+        "user_id": "USER01",
+        "agent_connection_id": "AGENT_CONNECTION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_CONNECTION_DELEGATION01": {
+        "authorized_by_id": "AUTHORIZED_BY01",
+        "automation_connection_grant_id": "AUTOMATION_CONNECTION_GRANT01",
+        "created_at": "sb6",
+        "id": "AGENT_CONNECTION_DELEGATION01",
+        "member_name": "sb8",
+        "revoked_at": "sb9",
+        "roles": [],
+        "usable": false,
+        "user_id": "USER01",
+        "agent_connection_id": "AGENT_CONNECTION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_CONNECTION_DELEGATION02": {
+        "authorized_by_id": "AUTHORIZED_BY01",
+        "automation_connection_grant_id": "AUTOMATION_CONNECTION_GRANT01",
+        "created_at": "s110",
+        "id": "AGENT_CONNECTION_DELEGATION02",
+        "member_name": "s112",
+        "revoked_at": "s113",
+        "roles": [],
+        "usable": false,
+        "user_id": "USER01",
+        "agent_connection_id": "AGENT_CONNECTION01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_connection_delegation": {
+      "agent_connection_delegation_ref01": {
+        "authorized_by_id": "AUTHORIZED_BY01",
+        "automation_connection_grant_id": "AUTOMATION_CONNECTION_GRANT01",
+        "created_at": "s16a",
+        "member_name": "s16c",
+        "revoked_at": "s16d",
+        "roles": [],
+        "usable": false,
+        "user_id": "USER01"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agent_connections/{id}/delegations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

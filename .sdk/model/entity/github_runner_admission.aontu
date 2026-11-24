@@ -1,0 +1,50 @@
+# Entity: github_runner_admission
+
+main: kit: entity: github_runner_admission: {
+
+  alias: field: {}
+
+  name: "github_runner_admission"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/github_runner_admission"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/github_runner_admission"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "github_runner_admission"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

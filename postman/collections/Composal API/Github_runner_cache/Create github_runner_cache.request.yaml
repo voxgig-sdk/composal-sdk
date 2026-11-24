@@ -1,0 +1,35 @@
+$kind: http-request
+id: a34d9534-d406-5d25-9c8c-b56c2034e2ed
+description: |-
+  The `create` operation of **github_runner_cache**.
+
+  SDK: `client.GithubRunnerCache().create({ operation: "example" })`
+url: "{{base}}/api/v1/github_runner_cache"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "operation": "GetCacheEntryDownloadURL",
+      "key": "example",
+      "version": "example",
+      "restore_keys": [
+        "example"
+      ],
+      "entry_id": "example",
+      "size_bytes": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("github_runner_cache_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

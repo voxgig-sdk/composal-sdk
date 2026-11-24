@@ -1,0 +1,19 @@
+$kind: http-request
+id: "647938ff-e717-57f5-8047-afe2f3f8a66b"
+description: |-
+  The `update` operation of **observability_space**.
+
+  SDK: `client.ObservabilitySpace().update({ id: "example" })`
+url: "{{base}}/api/v1/observability/spaces/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{observability_space_id}}"
+    description: The observability_space this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

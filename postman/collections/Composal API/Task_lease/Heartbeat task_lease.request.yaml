@@ -1,0 +1,25 @@
+$kind: http-request
+id: "839c4f14-3c80-5f2a-bac6-149b4efb3294"
+description: |-
+  The `heartbeat` action of **task_lease**, a route of its `create` operation.
+
+  SDK: `client.TaskLease().create({ "swarm_id": "swarm_id", "task_id": "task_id", "id": "ID", $action: "heartbeat" })`
+url: "{{base}}/api/v1/agent/swarms/:swarm_id/tasks/:task_id/leases/:id/heartbeat"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: swarm_id
+    value: "{{swarm_id}}"
+    description: "Input: swarm_id."
+  - key: task_id
+    value: "{{task_id}}"
+    description: "Input: task_id."
+  - key: id
+    value: "{{task_lease_id}}"
+    description: The task_lease this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

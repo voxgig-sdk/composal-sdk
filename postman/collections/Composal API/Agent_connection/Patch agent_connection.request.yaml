@@ -1,0 +1,25 @@
+$kind: http-request
+id: "63ac4508-86f6-5879-9346-aab550ea34fe"
+description: |-
+  The `patch` operation of **agent_connection**.
+
+  SDK: `client.AgentConnection().patch({ id: "example", organization_id: "example", name: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_connections/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_connection belongs to.
+  - key: id
+    value: "{{agent_connection_id}}"
+    description: The agent_connection this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example"
+    }
+order: 5000

@@ -1,0 +1,28 @@
+# BasicRoderMachineFlow
+
+main: kit: flow: BasicRoderMachineFlow:
+{
+  entity: "roder_machine",
+  kind: "basic",
+  name: "BasicRoderMachineFlow",
+  step: [
+    {
+      i: {
+        ref: "roder_machine_ref01",
+        srcdatavar: "roder_machine_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-roder_machine_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRoderMachineFlow"
+}

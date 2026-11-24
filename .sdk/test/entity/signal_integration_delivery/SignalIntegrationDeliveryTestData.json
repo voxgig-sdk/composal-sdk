@@ -1,0 +1,76 @@
+{
+  "existing": {
+    "signal_integration_delivery": {
+      "SIGNAL_INTEGRATION_DELIVERY00": {
+        "attempt_count": 130,
+        "created_at": "s83",
+        "delivery_id": "DELIVERY01",
+        "event_kind": "s85",
+        "id": "SIGNAL_INTEGRATION_DELIVERY00",
+        "last_error": "s87",
+        "ops_signal_id": "OPS_SIGNAL01",
+        "organization_id": "ORGANIZATION01",
+        "processed_at": "s8a",
+        "provider": "s8b",
+        "received_at": "s8c",
+        "signal_integration_id": "SIGNAL_INTEGRATION01",
+        "state": "s8e"
+      },
+      "SIGNAL_INTEGRATION_DELIVERY01": {
+        "attempt_count": 260,
+        "created_at": "s105",
+        "delivery_id": "DELIVERY01",
+        "event_kind": "s107",
+        "id": "SIGNAL_INTEGRATION_DELIVERY01",
+        "last_error": "s109",
+        "ops_signal_id": "OPS_SIGNAL01",
+        "organization_id": "ORGANIZATION01",
+        "processed_at": "s10c",
+        "provider": "s10d",
+        "received_at": "s10e",
+        "signal_integration_id": "SIGNAL_INTEGRATION01",
+        "state": "s110"
+      },
+      "SIGNAL_INTEGRATION_DELIVERY02": {
+        "attempt_count": 390,
+        "created_at": "s187",
+        "delivery_id": "DELIVERY01",
+        "event_kind": "s189",
+        "id": "SIGNAL_INTEGRATION_DELIVERY02",
+        "last_error": "s18b",
+        "ops_signal_id": "OPS_SIGNAL01",
+        "organization_id": "ORGANIZATION01",
+        "processed_at": "s18e",
+        "provider": "s18f",
+        "received_at": "s190",
+        "signal_integration_id": "SIGNAL_INTEGRATION01",
+        "state": "s192"
+      }
+    }
+  },
+  "new": {
+    "signal_integration_delivery": {
+      "signal_integration_delivery_ref01": {
+        "attempt_count": 520,
+        "created_at": "s209",
+        "delivery_id": "DELIVERY01",
+        "event_kind": "s20b",
+        "last_error": "s20d",
+        "ops_signal_id": "OPS_SIGNAL01",
+        "organization_id": "ORGANIZATION01",
+        "processed_at": "s210",
+        "provider": "s211",
+        "received_at": "s212",
+        "signal_integration_id": "SIGNAL_INTEGRATION01",
+        "state": "s214"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/deliveries": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

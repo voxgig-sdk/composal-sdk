@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "ci_status": {
+      "CI_STATUS00": {
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CI_STATUS00"
+      },
+      "CI_STATUS01": {
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CI_STATUS01"
+      },
+      "CI_STATUS02": {
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CI_STATUS02"
+      }
+    }
+  },
+  "new": {
+    "ci_status": {
+      "ci_status_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/ref": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

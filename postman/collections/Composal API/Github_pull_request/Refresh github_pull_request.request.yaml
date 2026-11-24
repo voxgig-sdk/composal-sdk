@@ -1,0 +1,19 @@
+$kind: http-request
+id: c319b787-8987-5f95-aecf-2c10f70229d2
+description: |-
+  The `refresh` action of **github_pull_request**, a route of its `create` operation.
+
+  SDK: `client.GithubPullRequest().create({ "organization_id": "organization_id", $action: "refresh" })`
+url: "{{base}}/api/v1/organizations/:org_slug/github/pull_requests/refresh"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this github_pull_request belongs to.
+body:
+  type: json
+  content: "{}"
+order: 2000

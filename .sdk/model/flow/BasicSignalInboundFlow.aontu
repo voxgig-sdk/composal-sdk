@@ -1,0 +1,32 @@
+# BasicSignalInboundFlow
+
+main: kit: flow: BasicSignalInboundFlow:
+{
+  entity: "signal_inbound",
+  kind: "basic",
+  name: "BasicSignalInboundFlow",
+  step: [
+    {
+      d: {
+        inbound_id: "inbound01"
+      }
+
+      i: {
+        ref: "signal_inbound_ref01",
+        srcdatavar: "signal_inbound_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-signal_inbound_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSignalInboundFlow"
+}

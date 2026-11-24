@@ -1,0 +1,106 @@
+# Entity: contact_submission
+
+main: kit: entity: contact_submission: {
+
+  alias: field: {}
+
+  fields: {
+    company: {
+      h: "Company"
+      n: "company"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    email: {
+      h: "Email"
+      n: "email"
+      r: true
+      sh: "Stored downcased and stripped."
+      t: "`$STRING`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: true
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    website: {
+      h: "Website"
+      n: "website"
+      r: false
+      sh: "Honeypot."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  name: "contact_submission"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "company"
+            "email"
+            "message"
+            "name"
+            "website"
+          ]
+          co: {
+            id: "POST /api/v1/contact_submissions"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/contact_submissions"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "contact_submissions"
+            }
+          ]
+          t: {
+            req: {
+              company: "`reqdata.company`"
+              email: "`reqdata.email`"
+              message: "`reqdata.message`"
+              name: "`reqdata.name`"
+              website: "`reqdata.website`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

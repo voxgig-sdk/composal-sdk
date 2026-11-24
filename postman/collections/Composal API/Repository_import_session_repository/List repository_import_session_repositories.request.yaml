@@ -1,0 +1,29 @@
+$kind: http-request
+id: ba6b1bc9-3a44-5fb5-a1c8-338b1c88b43c
+description: |-
+  The `list` operation of **repository_import_session_repository**.
+
+  SDK: `client.RepositoryImportSessionRepository().list({ repository_import_session_id: "example" })`
+url: "{{base}}/api/v1/repository_import_sessions/:id/repositories"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: q
+    value: ""
+    disabled: true
+pathVariables:
+  - key: id
+    value: "{{repository_import_session_id}}"
+    description: The repository_import_session this repository_import_session_repository belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["repositories"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("repository_import_session_repository_id")) pm.collectionVariables.set("repository_import_session_repository_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

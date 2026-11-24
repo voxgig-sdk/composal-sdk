@@ -1,0 +1,176 @@
+# Entity: agent_connection_grant
+
+main: kit: entity: agent_connection_grant: {
+
+  alias: field: {}
+
+  fields: {
+    actions: {
+      h: "Actions"
+      n: "actions"
+      r: true
+      t: "`$ARRAY`"
+    }
+    agent_connection_id: {
+      h: "Agent Connection Id"
+      n: "agent_connection_id"
+      r: true
+      t: "`$STRING`"
+    }
+    automation_id: {
+      h: "Automation Id"
+      n: "automation_id"
+      r: true
+      t: "`$STRING`"
+    }
+    connection_generation: {
+      h: "Connection Generation"
+      n: "connection_generation"
+      r: true
+      t: "`$INTEGER`"
+    }
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    organization_id: {
+      h: "Organization Id"
+      n: "organization_id"
+      r: true
+      t: "`$STRING`"
+    }
+    revision: {
+      h: "Revision"
+      n: "revision"
+      r: true
+      t: "`$INTEGER`"
+    }
+    revoked_at: {
+      h: "Revoked At"
+      n: "revoked_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    usable: {
+      h: "Usable"
+      n: "usable"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    user_id: {
+      h: "User Id"
+      n: "user_id"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "agent_connection_grant"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agent_connections/{id}/grants"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_connection_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agent_connections/{id}/grants"
+          q: {
+            exist: [
+              "agent_connection_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_connection_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_connections"
+            }
+            {
+              var: "agent_connection_id"
+            }
+            {
+              lit: "grants"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.grants`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent_connection")]
+  ]
+
+}

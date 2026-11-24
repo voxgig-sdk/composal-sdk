@@ -1,0 +1,19 @@
+$kind: http-request
+id: "581f7457-d3dd-57cb-8d2f-c09a0bfa37b8"
+description: |-
+  The `update` operation of **bazel_backend**.
+
+  SDK: `client.BazelBackend().update({ id: "example" })`
+url: "{{base}}/api/v1/bazel/backends/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{bazel_backend_id}}"
+    description: The bazel_backend this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

@@ -1,0 +1,9 @@
+$kind: collection
+id: "609dda3b-25ef-561a-bfbd-bb7ffcda8c49"
+description: |-
+  The **space_group_membership** entity. Its requests address one record by `{{space_group_membership_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 487000

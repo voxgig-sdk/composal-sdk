@@ -1,0 +1,25 @@
+$kind: http-request
+id: "0ec406b6-2086-5ba9-b420-e37ca9b903dd"
+description: |-
+  The `revoke` action of **device_grant**, a route of its `create` operation.
+
+  SDK: `client.DeviceGrant().create({ "organization_id": "organization_id", "device_id": "device_id", "id": "ID", $action: "revoke" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/grants/:device_grant_id/revoke"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device_grant belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this device_grant belongs to.
+  - key: device_grant_id
+    value: "{{device_grant_id}}"
+    description: The device_grant this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

@@ -1,0 +1,123 @@
+# Entity: com_site_access
+
+main: kit: entity: com_site_access: {
+
+  alias: field: {}
+
+  name: "com_site_access"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "host"
+            "token"
+          ]
+          co: {
+            id: "POST /api/v1/com_site_access/redeem"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/com_site_access/redeem"
+          q: {
+            "$action": "redeem"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "com_site_access"
+            }
+            {
+              lit: "redeem"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/com_site_access/start"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "host"
+                or: "host"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "return_to"
+                or: "return_to"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/com_site_access/start"
+          q: {
+            "$action": "start"
+            exist: [
+              "host"
+            ]
+          }
+          rs: {
+            kind: "raw"
+            media: "text/html"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "com_site_access"
+            }
+            {
+              lit: "start"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

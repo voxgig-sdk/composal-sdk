@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "known": {
+      "KNOWN00": {
+        "id": "KNOWN00"
+      },
+      "KNOWN01": {
+        "id": "KNOWN01"
+      },
+      "KNOWN02": {
+        "id": "KNOWN02"
+      }
+    }
+  },
+  "new": {
+    "known": {
+      "known_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /.well-known/agent-card.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

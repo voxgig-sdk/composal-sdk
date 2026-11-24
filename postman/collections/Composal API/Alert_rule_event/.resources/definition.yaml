@@ -1,0 +1,9 @@
+$kind: collection
+id: "2f5e6c07-d847-5ceb-b500-93d601750ddc"
+description: |-
+  The **alert_rule_event** entity. Its requests address one record by `{{alert_rule_event_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 78000

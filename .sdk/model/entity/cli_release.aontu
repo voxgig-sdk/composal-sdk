@@ -1,0 +1,122 @@
+# Entity: cli_release
+
+main: kit: entity: cli_release: {
+
+  alias: field: {}
+
+  name: "cli_release"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/cli_releases"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/cli_releases"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "cli_releases"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/cli_releases"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/cli_releases"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "cli_releases"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/cli_releases/latest"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/cli_releases/latest"
+          q: {
+            "$action": "latest"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "cli_releases"
+            }
+            {
+              lit: "latest"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

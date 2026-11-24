@@ -1,0 +1,32 @@
+$kind: http-request
+id: c3bed66f-62a8-5abb-be53-d6120b668095
+description: |-
+  The `create` operation of **repository_import_session_selection**.
+
+  SDK: `client.RepositoryImportSessionSelection().create({ repository_import_session_id: "example", repositories: "example" })`
+url: "{{base}}/api/v1/repository_import_sessions/:id/selections"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{repository_import_session_id}}"
+    description: The repository_import_session this repository_import_session_selection belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "repositories": "all"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("repository_import_session_selection_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

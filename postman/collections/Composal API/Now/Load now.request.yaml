@@ -1,0 +1,19 @@
+$kind: http-request
+id: ad4dee87-ea63-54f0-b8d6-9e6b27b0da88
+description: |-
+  The `load` operation of **now**.
+
+  SDK: `client.Now().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/pages/now"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: page
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this now belongs to.
+order: 1000

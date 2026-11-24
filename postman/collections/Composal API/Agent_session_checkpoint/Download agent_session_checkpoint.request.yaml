@@ -1,0 +1,24 @@
+$kind: http-request
+id: "51762902-cb56-5903-826d-ccbb22e25c27"
+description: |-
+  The `download` action of **agent_session_checkpoint**, a route of its `load` operation.
+
+  SDK: `client.AgentSessionCheckpoint().load({ "organization_id": "organization_id", "repo_id": "repo_id", "agent_session_id": "agent_session_id", "id": "ID", $action: "download" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/agent_sessions/:agent_session_id/checkpoints/:id/download"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this agent_session_checkpoint belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this agent_session_checkpoint belongs to.
+  - key: agent_session_id
+    value: "{{agent_session_id}}"
+    description: The agent_session this agent_session_checkpoint belongs to.
+  - key: id
+    value: "{{agent_session_checkpoint_id}}"
+    description: The agent_session_checkpoint this request addresses.
+order: 4000

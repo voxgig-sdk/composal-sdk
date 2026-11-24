@@ -1,0 +1,25 @@
+$kind: http-request
+id: "5d068692-ae95-5a77-93bc-3072fb754bee"
+description: |-
+  The `output` action of **lease_reconciliation**, a route of its `create` operation.
+
+  SDK: `client.LeaseReconciliation().create({ "node_id": "node_id", "lease_id": "lease_id", "id": "ID", $action: "output" })`
+url: "{{base}}/api/v1/ci/nodes/:id/leases/:lease_id/reconciliations/:reconciliation_id/output"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{node_id}}"
+    description: The node this lease_reconciliation belongs to.
+  - key: lease_id
+    value: "{{lease_id}}"
+    description: "Input: lease_id."
+  - key: reconciliation_id
+    value: "{{lease_reconciliation_id}}"
+    description: The lease_reconciliation this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 1000

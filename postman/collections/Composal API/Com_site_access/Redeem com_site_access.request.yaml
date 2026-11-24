@@ -1,0 +1,19 @@
+$kind: http-request
+id: "2ee433e9-d222-5d7c-b27d-a689b6d73b8e"
+description: |-
+  The `redeem` action of **com_site_access**, a route of its `create` operation.
+
+  SDK: `client.ComSiteAccess().create({ $action: "redeem" })`
+url: "{{base}}/api/v1/com_site_access/redeem"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "host": "{{com_site_access_id}}",
+      "token": "example"
+    }
+order: 1000

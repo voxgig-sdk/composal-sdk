@@ -1,0 +1,8 @@
+$kind: collection
+id: cb0aca45-ee1a-55ec-a939-249808eda38f
+description: |-
+  The **space_metric_sery** entity. Its requests address one record by `{{space_metric_sery_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 489000

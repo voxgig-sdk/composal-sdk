@@ -1,0 +1,74 @@
+{
+  "existing": {
+    "status_patchset": {
+      "STATUS_PATCHSET00": {
+        "checks": [],
+        "checks_status": "s6f",
+        "commit_sha": "s70",
+        "counts": {},
+        "id": "STATUS_PATCHSET00",
+        "patchset_id": "PATCHSET01",
+        "status": "s74",
+        "status_label": "s75",
+        "status_state": "s76",
+        "status_tone": "s77",
+        "total": 120,
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "STATUS_PATCHSET01": {
+        "checks": [],
+        "checks_status": "sdd",
+        "commit_sha": "sde",
+        "counts": {},
+        "id": "STATUS_PATCHSET01",
+        "patchset_id": "PATCHSET01",
+        "status": "se2",
+        "status_label": "se3",
+        "status_state": "se4",
+        "status_tone": "se5",
+        "total": 230,
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "STATUS_PATCHSET02": {
+        "checks": [],
+        "checks_status": "s14b",
+        "commit_sha": "s14c",
+        "counts": {},
+        "id": "STATUS_PATCHSET02",
+        "patchset_id": "PATCHSET01",
+        "status": "s150",
+        "status_label": "s151",
+        "status_state": "s152",
+        "status_tone": "s153",
+        "total": 340,
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "status_patchset": {
+      "status_patchset_ref01": {
+        "checks": [],
+        "checks_status": "s1b9",
+        "commit_sha": "s1ba",
+        "counts": {},
+        "patchset_id": "PATCHSET01",
+        "status": "s1be",
+        "status_label": "s1bf",
+        "status_state": "s1c0",
+        "status_tone": "s1c1",
+        "total": 450
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/patchsets/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

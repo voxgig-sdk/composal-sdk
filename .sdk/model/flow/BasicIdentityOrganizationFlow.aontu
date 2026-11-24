@@ -1,0 +1,32 @@
+# BasicIdentityOrganizationFlow
+
+main: kit: flow: BasicIdentityOrganizationFlow:
+{
+  entity: "identity_organization",
+  kind: "basic",
+  name: "BasicIdentityOrganizationFlow",
+  step: [
+    {
+      i: {
+        ref: "identity_organization_ref01",
+        srcdatavar: "identity_organization_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "identity_organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-identity_organization_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicIdentityOrganizationFlow"
+}

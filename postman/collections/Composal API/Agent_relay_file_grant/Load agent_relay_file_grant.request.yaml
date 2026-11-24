@@ -1,0 +1,18 @@
+$kind: http-request
+id: "605329ca-69cd-5362-90cc-3908249424ba"
+description: |-
+  The `load` operation of **agent_relay_file_grant**.
+
+  SDK: `client.AgentRelayFileGrant().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_relay_file_grants/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_relay_file_grant belongs to.
+  - key: id
+    value: "{{agent_relay_file_grant_id}}"
+    description: The agent_relay_file_grant this request addresses.
+order: 2000

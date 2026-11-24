@@ -1,0 +1,12 @@
+$kind: collection
+id: "4e0b9077-69f3-5d83-a8bb-ebf18a74684f"
+description: |-
+  The **auth_registration_option** entity. Its requests address one record by `{{auth_registration_option_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `email_password_signup_enabled` | boolean | yes |  |
+  | `openai_sign_in_enabled` | boolean |  |  |
+  | `turnstile_site_key` | string | yes |  |
+  | `waitlist_enabled` | boolean | yes |  |
+order: 118000

@@ -1,23 +1,18 @@
 $kind: http-request
-id: "3c1e2fce-698c-5f62-8885-84377f618e67"
+id: "8d0e7d8e-ea53-594b-af56-d3da137e2fa9"
 description: |-
   The `remove` operation of **agent_connection**.
 
-  SDK: `client.AgentConnection().remove({ agent_id: "example", id: "example_id", organization_id: "example" })`
-url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/relay/connections/:connection_id"
+  SDK: `client.AgentConnection().remove({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_connections/:id"
 method: DELETE
 headers:
   Accept: application/json
-  X-Composal-Relay-Scope: "{{x_composal_relay_scope}}"
-  X-Composal-Requester-Id: "{{x_composal_requester_id}}"
 pathVariables:
   - key: organization_id
     value: "{{organization_id}}"
     description: The organization this agent_connection belongs to.
   - key: id
-    value: "{{agent_id}}"
-    description: The agent this agent_connection belongs to.
-  - key: connection_id
     value: "{{agent_connection_id}}"
     description: The agent_connection this request addresses.
 scripts:
@@ -27,4 +22,4 @@ scripts:
         pm.collectionVariables.unset("agent_connection_id")
       }
     language: text/javascript
-order: 7000
+order: 20000

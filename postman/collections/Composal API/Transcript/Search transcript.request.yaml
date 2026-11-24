@@ -1,0 +1,32 @@
+$kind: http-request
+id: cd76c5f2-d9bd-5477-8ac2-f840729b1125
+description: |-
+  The `search` action of **transcript**, a route of its `create` operation.
+
+  SDK: `client.Transcript().create({ "organization_id": "organization_id", $action: "search" })`
+url: "{{base}}/api/v1/organizations/:org_slug/transcripts/search"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this transcript belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "query": "example",
+      "mode": "hybrid",
+      "repo": "example",
+      "user": "example",
+      "adapter": "example",
+      "status": "example",
+      "from": "example",
+      "to": "example",
+      "cursor": "example",
+      "limit": 20,
+      "max_bytes": 32768
+    }
+order: 3000

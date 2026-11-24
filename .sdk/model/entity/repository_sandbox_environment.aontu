@@ -1,0 +1,165 @@
+# Entity: repository_sandbox_environment
+
+main: kit: entity: repository_sandbox_environment: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "repository_sandbox_environment"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/repositories/{repository}/sandbox_environments/validate"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "repository_id"
+                or: "repository"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/repositories/{repository}/sandbox_environments/validate"
+          q: {
+            "$action": "validate"
+            exist: [
+              "repository_id"
+            ]
+          }
+          r: {
+            param: {
+              repository: "repository_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "repositories"
+            }
+            {
+              var: "repository_id"
+            }
+            {
+              lit: "sandbox_environments"
+            }
+            {
+              lit: "validate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/repositories/{repository}/sandbox_environments/{profile}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "profile"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repository_id"
+                or: "repository"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/repositories/{repository}/sandbox_environments/{profile}"
+          q: {
+            exist: [
+              "id"
+              "repository_id"
+            ]
+          }
+          r: {
+            param: {
+              profile: "id"
+              repository: "repository_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "repositories"
+            }
+            {
+              var: "repository_id"
+            }
+            {
+              lit: "sandbox_environments"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

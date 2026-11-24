@@ -1,0 +1,32 @@
+$kind: http-request
+id: "27543387-23a1-53ed-a27d-0ddfaea9df3c"
+description: |-
+  The `finish` action of **device_browser_operation**, a route of its `create` operation.
+
+  SDK: `client.DeviceBrowserOperation().create({ "organization_id": "organization_id", "device_id": "device_id", "id": "ID", $action: "finish" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/browser_operations/:id/finish"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device_browser_operation belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this device_browser_operation belongs to.
+  - key: id
+    value: "{{device_browser_operation_id}}"
+    description: The device_browser_operation this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "claim_token": "example",
+      "response": {
+        "ok": true,
+        "result": {}
+      }
+    }
+order: 3000

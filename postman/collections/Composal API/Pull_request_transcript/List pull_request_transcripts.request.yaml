@@ -1,0 +1,41 @@
+$kind: http-request
+id: cf8c472f-10bb-5c70-ab10-4c9e1c62c114
+description: |-
+  The `list` operation of **pull_request_transcript**.
+
+  SDK: `client.PullRequestTranscript().list({ organization_id: "example", pull_request_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/pages/pull_request/:number/transcripts"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: limit
+    value: "20"
+    disabled: true
+  - key: paginated
+    value: "false"
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this pull_request_transcript belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this pull_request_transcript belongs to.
+  - key: number
+    value: "{{pull_request_id}}"
+    description: The pull_request this pull_request_transcript belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["sessions"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("pull_request_transcript_id")) pm.collectionVariables.set("pull_request_transcript_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

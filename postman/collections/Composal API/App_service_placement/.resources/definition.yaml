@@ -19,4 +19,4 @@ description: |-
   | `targets` | array | yes |  |
   | `total_replicas` | integer | yes |  |
   | `updated_at` | string | yes |  |
-order: 70000
+order: 99000

@@ -1,0 +1,22 @@
+$kind: http-request
+id: d06e84a5-553d-577c-919a-40c1db9efa52
+description: |-
+  The `fail` action of **release_rollout**, a route of its `create` operation.
+
+  SDK: `client.ReleaseRollout().create({ "release_id": "release_id", "id": "ID", $action: "fail" })`
+url: "{{base}}/api/v1/execution/releases/:release_id/rollouts/:id/fail"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: release_id
+    value: "{{release_id}}"
+    description: "Input: release_id."
+  - key: id
+    value: "{{release_rollout_id}}"
+    description: The release_rollout this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

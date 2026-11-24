@@ -1,0 +1,19 @@
+$kind: http-request
+id: ebc7be1e-9996-5905-ba29-702145135a64
+description: |-
+  The `pause` action of **bazel_backend**, a route of its `create` operation.
+
+  SDK: `client.BazelBackend().create({ "id": "ID", $action: "pause" })`
+url: "{{base}}/api/v1/bazel/backends/:id/pause"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{bazel_backend_id}}"
+    description: The bazel_backend this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 7000

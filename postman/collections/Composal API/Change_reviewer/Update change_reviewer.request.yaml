@@ -1,0 +1,33 @@
+$kind: http-request
+id: "7d50ea5e-8651-5bb1-863e-c124a55382db"
+description: |-
+  The `update` operation of **change_reviewer**.
+
+  SDK: `client.ChangeReviewer().update({ change_id: "example", organization_id: "example", repo_id: "example", add: [] })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/:id/reviewers"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this change_reviewer belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this change_reviewer belongs to.
+  - key: id
+    value: "{{change_id}}"
+    description: The change this change_reviewer belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "add": [
+        "example"
+      ],
+      "remove": [
+        "example"
+      ]
+    }
+order: 2000

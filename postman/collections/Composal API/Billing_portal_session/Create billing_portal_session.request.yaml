@@ -1,0 +1,32 @@
+$kind: http-request
+id: "19247c6a-9f06-5d30-a1be-019907e63248"
+description: |-
+  The `create` operation of **billing_portal_session**.
+
+  SDK: `client.BillingPortalSession().create({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/billing/portal_sessions"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this billing_portal_session belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "return_url": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("billing_portal_session_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

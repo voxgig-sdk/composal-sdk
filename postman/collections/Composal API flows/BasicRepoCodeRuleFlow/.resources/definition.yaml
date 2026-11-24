@@ -1,0 +1,4 @@
+$kind: collection
+id: "8a3ed737-fe67-5bb9-8eec-2f9b793ff6e3"
+description: "The `BasicRepoCodeRuleFlow` flow of **repo_code_rule**."
+order: 350000

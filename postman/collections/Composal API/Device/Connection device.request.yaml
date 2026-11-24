@@ -1,0 +1,25 @@
+$kind: http-request
+id: ff9dd600-f07f-5c08-8375-1ed0362a8051
+description: |-
+  The `connection` action of **device**, a route of its `create` operation.
+
+  SDK: `client.Device().create({ "organization_id": "organization_id", "id": "ID", $action: "connection" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/connection"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "transport": "example"
+    }
+order: 3000

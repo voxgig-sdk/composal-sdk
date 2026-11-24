@@ -1,0 +1,4 @@
+$kind: collection
+id: "450a3792-464b-5d75-9e02-e288242601bf"
+description: "The `BasicOrganizationWorkloadIdentityFlow` flow of **organization_workload_identity**."
+order: 291000

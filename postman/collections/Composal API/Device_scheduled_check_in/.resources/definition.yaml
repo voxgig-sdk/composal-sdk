@@ -1,0 +1,9 @@
+$kind: collection
+id: "1f393fbc-4139-5009-b8fb-43ec4f3b5543"
+description: |-
+  The **device_scheduled_check_in** entity, which belongs to a organization and a device. Its requests address one record by `{{device_scheduled_check_in_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `enabled` | boolean | yes |  |
+order: 222000

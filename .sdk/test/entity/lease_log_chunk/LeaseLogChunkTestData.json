@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "lease_log_chunk": {
+      "LEASE_LOG_CHUNK00": {
+        "lease_id": "LEASE01",
+        "node_id": "NODE01",
+        "id": "LEASE_LOG_CHUNK00"
+      },
+      "LEASE_LOG_CHUNK01": {
+        "lease_id": "LEASE01",
+        "node_id": "NODE01",
+        "id": "LEASE_LOG_CHUNK01"
+      },
+      "LEASE_LOG_CHUNK02": {
+        "lease_id": "LEASE01",
+        "node_id": "NODE01",
+        "id": "LEASE_LOG_CHUNK02"
+      }
+    }
+  },
+  "new": {
+    "lease_log_chunk": {
+      "lease_log_chunk_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/ci/nodes/{id}/leases/{lease_id}/log_chunks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

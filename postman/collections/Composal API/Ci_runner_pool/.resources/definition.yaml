@@ -1,0 +1,30 @@
+$kind: collection
+id: "4b9ff28d-8b3b-58f8-9c36-b73757bc66d8"
+description: |-
+  The **ci_runner_pool** entity. Its requests address one record by `{{ci_runner_pool_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `bazel_enabled` | boolean | yes |  |
+  | `bazel_properties_json` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `description` | string | yes |  |
+  | `elastic_config_json` | string | yes |  |
+  | `elastic_provider_kind` | string | yes |  |
+  | `id` | string | yes |  |
+  | `isolation_mode` | string | yes |  |
+  | `labels_csv` | string | yes |  |
+  | `max_concurrency` | integer | yes |  |
+  | `modal_capacity` | object | yes |  |
+  | `modal_runner_invocations` | array | yes |  |
+  | `name` | string | yes |  |
+  | `network_space_id` | string | yes |  |
+  | `node_capabilities_csv` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `runner_count_label` | string | yes |  |
+  | `runner_kind` | string | yes |  |
+  | `runners` | array | yes |  |
+  | `slug` | string | yes |  |
+  | `status` | string | yes |  |
+  | `updated_at` | string | yes |  |
+order: 174000

@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "device_scheduled_check_in": {
+      "DEVICE_SCHEDULED_CHECK_IN00": {
+        "enabled": true,
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01",
+        "id": "DEVICE_SCHEDULED_CHECK_IN00"
+      },
+      "DEVICE_SCHEDULED_CHECK_IN01": {
+        "enabled": true,
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01",
+        "id": "DEVICE_SCHEDULED_CHECK_IN01"
+      },
+      "DEVICE_SCHEDULED_CHECK_IN02": {
+        "enabled": true,
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01",
+        "id": "DEVICE_SCHEDULED_CHECK_IN02"
+      }
+    }
+  },
+  "new": {
+    "device_scheduled_check_in": {
+      "device_scheduled_check_in_ref01": {
+        "enabled": true
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/scheduled_check_ins": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

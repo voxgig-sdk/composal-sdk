@@ -1,0 +1,4 @@
+$kind: collection
+id: "3ca9318e-7e0c-55ea-ba25-e61180dc16df"
+description: "The `BasicStripeWebhookFlow` flow of **stripe_webhook**."
+order: 420000

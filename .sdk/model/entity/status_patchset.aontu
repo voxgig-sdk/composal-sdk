@@ -1,0 +1,196 @@
+# Entity: status_patchset
+
+main: kit: entity: status_patchset: {
+
+  alias: field: {}
+
+  fields: {
+    checks: {
+      h: "Checks"
+      n: "checks"
+      r: true
+      t: "`$ARRAY`"
+    }
+    checks_status: {
+      h: "Checks Status"
+      n: "checks_status"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    commit_sha: {
+      h: "Commit Sha"
+      n: "commit_sha"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    counts: {
+      h: "Counts"
+      n: "counts"
+      r: true
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+    patchset_id: {
+      h: "Patchset Id"
+      n: "patchset_id"
+      r: true
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    status_label: {
+      h: "Status Label"
+      n: "status_label"
+      r: true
+      t: "`$STRING`"
+    }
+    status_state: {
+      h: "Status State"
+      n: "status_state"
+      r: true
+      t: "`$STRING`"
+    }
+    status_tone: {
+      h: "Status Tone"
+      n: "status_tone"
+      r: true
+      t: "`$STRING`"
+    }
+    total: {
+      h: "Total"
+      n: "total"
+      r: true
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "status_patchset"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/patchsets/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_id"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/patchsets/{id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+              "repo_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              org_slug: "organization_id"
+              repo_slug: "repo_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "repos"
+            }
+            {
+              var: "repo_id"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "status"
+            }
+            {
+              lit: "patchsets"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.repo")]
+  ]
+
+}

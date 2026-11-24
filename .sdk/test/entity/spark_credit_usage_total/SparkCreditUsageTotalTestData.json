@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "spark_credit_usage_total": {
+      "SPARK_CREDIT_USAGE_TOTAL00": {
+        "compute_minutes_used": "s1e",
+        "compute_usd": "s1f",
+        "inference_usd": "s20",
+        "organization_id": "ORGANIZATION01"
+      },
+      "SPARK_CREDIT_USAGE_TOTAL01": {
+        "compute_minutes_used": "s3c",
+        "compute_usd": "s3d",
+        "inference_usd": "s3e",
+        "organization_id": "ORGANIZATION01"
+      },
+      "SPARK_CREDIT_USAGE_TOTAL02": {
+        "compute_minutes_used": "s5a",
+        "compute_usd": "s5b",
+        "inference_usd": "s5c",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "spark_credit_usage_total": {
+      "spark_credit_usage_total_ref01": {
+        "compute_minutes_used": "s78",
+        "compute_usd": "s79",
+        "inference_usd": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/spark_credits/usage_totals": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

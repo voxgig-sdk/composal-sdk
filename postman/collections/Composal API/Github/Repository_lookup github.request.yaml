@@ -1,0 +1,16 @@
+$kind: http-request
+id: "579ef352-4d8e-5264-b845-f064136cd157"
+description: |-
+  The `repository_lookup` action of **github**, a route of its `load` operation.
+
+  SDK: `client.Github().load({ "name": "name", "owner": "owner", $action: "repository_lookup" })`
+url: "{{base}}/api/v1/github/repository_lookup?name={{name}}&owner={{owner}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: name
+    value: "{{name}}"
+  - key: owner
+    value: "{{owner}}"
+order: 1000

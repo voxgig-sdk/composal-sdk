@@ -1,0 +1,11 @@
+$kind: collection
+id: bc1a4e1c-c0f2-5c0e-a937-9060283eedfe
+description: |-
+  The **page_repo_vc_commit** entity, which belongs to a organization and a repo. Its requests address one record by `{{page_repo_vc_commit_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `commit` | any | yes |  |
+  | `diff_path` | string | yes |  |
+  | `id` | string |  |  |
+order: 365000

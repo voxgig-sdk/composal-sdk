@@ -1,0 +1,12 @@
+$kind: collection
+id: a6dffef9-4a03-5244-ad62-c2689c633732
+description: |-
+  The **label** entity, which belongs to a organization. Its requests address one record by `{{label_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `changes_count` | integer | yes |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `slug` | string | yes |  |
+order: 294000

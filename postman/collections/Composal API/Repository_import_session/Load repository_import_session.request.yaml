@@ -1,0 +1,15 @@
+$kind: http-request
+id: "6dcd271d-9ad7-5919-a584-17708df31786"
+description: |-
+  The `load` operation of **repository_import_session**.
+
+  SDK: `client.RepositoryImportSession().load({ id: "example_id" })`
+url: "{{base}}/api/v1/repository_import_sessions/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{repository_import_session_id}}"
+    description: The repository_import_session this request addresses.
+order: 1000

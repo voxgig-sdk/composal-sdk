@@ -1,0 +1,116 @@
+{
+  "existing": {
+    "billing_addon": {
+      "BILLING_ADDON00": {
+        "addons": [],
+        "breakdown": "se7",
+        "budget": "se8",
+        "can_manage_contact": false,
+        "can_manage_extra_spend": true,
+        "can_manage_local_subscription": false,
+        "can_manage_payment_method": true,
+        "can_set_up_billing": false,
+        "customer": "see",
+        "deployment_usage_visible": false,
+        "entitlements": {},
+        "extra_spend_enabled": false,
+        "feature_enabled": true,
+        "id": "BILLING_ADDON00",
+        "organization_id": "ORGANIZATION01",
+        "package": "sf5",
+        "prepaid": "sf6",
+        "preview": "sf7",
+        "quantity": 248,
+        "storage_usage": {},
+        "stripe": {},
+        "subscription": "sfb",
+        "token_account": {}
+      },
+      "BILLING_ADDON01": {
+        "addons": [],
+        "breakdown": "s1cd",
+        "budget": "s1ce",
+        "can_manage_contact": false,
+        "can_manage_extra_spend": true,
+        "can_manage_local_subscription": false,
+        "can_manage_payment_method": true,
+        "can_set_up_billing": false,
+        "customer": "s1d4",
+        "deployment_usage_visible": false,
+        "entitlements": {},
+        "extra_spend_enabled": false,
+        "feature_enabled": true,
+        "id": "BILLING_ADDON01",
+        "organization_id": "ORGANIZATION01",
+        "package": "s1db",
+        "prepaid": "s1dc",
+        "preview": "s1dd",
+        "quantity": 478,
+        "storage_usage": {},
+        "stripe": {},
+        "subscription": "s1e1",
+        "token_account": {}
+      },
+      "BILLING_ADDON02": {
+        "addons": [],
+        "breakdown": "s2b3",
+        "budget": "s2b4",
+        "can_manage_contact": false,
+        "can_manage_extra_spend": true,
+        "can_manage_local_subscription": false,
+        "can_manage_payment_method": true,
+        "can_set_up_billing": false,
+        "customer": "s2ba",
+        "deployment_usage_visible": false,
+        "entitlements": {},
+        "extra_spend_enabled": false,
+        "feature_enabled": true,
+        "id": "BILLING_ADDON02",
+        "organization_id": "ORGANIZATION01",
+        "package": "s2c1",
+        "prepaid": "s2c2",
+        "preview": "s2c3",
+        "quantity": 708,
+        "storage_usage": {},
+        "stripe": {},
+        "subscription": "s2c7",
+        "token_account": {}
+      }
+    }
+  },
+  "new": {
+    "billing_addon": {
+      "billing_addon_ref01": {
+        "addons": [],
+        "breakdown": "s399",
+        "budget": "s39a",
+        "can_manage_contact": false,
+        "can_manage_extra_spend": true,
+        "can_manage_local_subscription": false,
+        "can_manage_payment_method": true,
+        "can_set_up_billing": false,
+        "customer": "s3a0",
+        "deployment_usage_visible": false,
+        "entitlements": {},
+        "extra_spend_enabled": false,
+        "feature_enabled": true,
+        "organization_id": "ORGANIZATION01",
+        "package": "s3a7",
+        "prepaid": "s3a8",
+        "preview": "s3a9",
+        "quantity": 938,
+        "storage_usage": {},
+        "stripe": {},
+        "subscription": "s3ad",
+        "token_account": {}
+      }
+    }
+  },
+  "requests": {
+    "PUT /api/v1/organizations/{organization_id}/billing/addons/{addon_key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

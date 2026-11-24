@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "lease_cache": {
+      "LEASE_CACHE00": {
+        "lease_id": "LEASE01",
+        "node_id": "NODE01",
+        "id": "LEASE_CACHE00"
+      },
+      "LEASE_CACHE01": {
+        "lease_id": "LEASE01",
+        "node_id": "NODE01",
+        "id": "LEASE_CACHE01"
+      },
+      "LEASE_CACHE02": {
+        "lease_id": "LEASE01",
+        "node_id": "NODE01",
+        "id": "LEASE_CACHE02"
+      }
+    }
+  },
+  "new": {
+    "lease_cache": {
+      "lease_cache_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/ci/nodes/{id}/leases/{lease_id}/cache/restore": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/ci/nodes/{id}/leases/{lease_id}/cache/save": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

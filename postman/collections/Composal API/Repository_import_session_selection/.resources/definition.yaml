@@ -1,0 +1,9 @@
+$kind: collection
+id: fc09e241-fbfd-5039-91e3-001b88d1bb04
+description: |-
+  The **repository_import_session_selection** entity, which belongs to a repository_import_session. Its requests address one record by `{{repository_import_session_selection_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `repositories` | any | yes |  |
+order: 442000

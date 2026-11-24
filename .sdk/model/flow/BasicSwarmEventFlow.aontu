@@ -1,0 +1,26 @@
+# BasicSwarmEventFlow
+
+main: kit: flow: BasicSwarmEventFlow:
+{
+  entity: "swarm_event",
+  kind: "basic",
+  name: "BasicSwarmEventFlow",
+  step: [
+    {
+      m: {
+        swarm_id: "swarm01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "swarm_event_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSwarmEventFlow"
+}

@@ -1,0 +1,124 @@
+# BasicRelayAgentConnectionFlow
+
+main: kit: flow: BasicRelayAgentConnectionFlow:
+{
+  entity: "relay_agent_connection",
+  kind: "basic",
+  name: "BasicRelayAgentConnectionFlow",
+  step: [
+    {
+      i: {
+        ref: "relay_agent_connection_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "relay_agent_connection_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "relay_agent_connection_ref01",
+        srcdatavar: "relay_agent_connection_ref01_data",
+        suffix: "_up0",
+        textfield: "agent_card_url"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-relay_agent_connection_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "relay_agent_connection_ref01",
+        srcdatavar: "relay_agent_connection_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        id: "relay_agent_connection01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-relay_agent_connection_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "relay_agent_connection_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        id: "relay_agent_connection01",
+        organization_id: "organization01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "relay_agent_connection_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRelayAgentConnectionFlow"
+}

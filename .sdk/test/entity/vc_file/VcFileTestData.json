@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "vc_file": {
+      "VC_FILE00": {
+        "paths": [],
+        "truncated": false,
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "VC_FILE01": {
+        "paths": [],
+        "truncated": false,
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "VC_FILE02": {
+        "paths": [],
+        "truncated": false,
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "vc_file": {
+      "vc_file_ref01": {
+        "paths": [],
+        "truncated": false
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/files": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

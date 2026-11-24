@@ -1,0 +1,13 @@
+$kind: collection
+id: "38d83fd9-4266-5b04-bbe9-c37963550de5"
+description: |-
+  The **spark_credit_agent_usage** entity, which belongs to a organization. Its requests address one record by `{{spark_credit_agent_usage_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `agents` | array | yes |  |
+  | `all` | object | yes |  |
+  | `days` | array | yes |  |
+  | `id` | string |  |  |
+  | `owners` | array | yes |  |
+order: 503000

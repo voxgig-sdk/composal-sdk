@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "change_file_review_checkpoint": {
+      "CHANGE_FILE_REVIEW_CHECKPOINT00": {
+        "patchset_id": "PATCHSET01",
+        "path": "s29",
+        "request_id": "REQUEST01",
+        "review_action": "s2b",
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CHANGE_FILE_REVIEW_CHECKPOINT00"
+      },
+      "CHANGE_FILE_REVIEW_CHECKPOINT01": {
+        "patchset_id": "PATCHSET01",
+        "path": "s51",
+        "request_id": "REQUEST01",
+        "review_action": "s53",
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CHANGE_FILE_REVIEW_CHECKPOINT01"
+      },
+      "CHANGE_FILE_REVIEW_CHECKPOINT02": {
+        "patchset_id": "PATCHSET01",
+        "path": "s79",
+        "request_id": "REQUEST01",
+        "review_action": "s7b",
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CHANGE_FILE_REVIEW_CHECKPOINT02"
+      }
+    }
+  },
+  "new": {
+    "change_file_review_checkpoint": {
+      "change_file_review_checkpoint_ref01": {
+        "patchset_id": "PATCHSET01",
+        "path": "sa1",
+        "request_id": "REQUEST01",
+        "review_action": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/file_review_checkpoints": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

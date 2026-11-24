@@ -1,0 +1,8 @@
+$kind: collection
+id: "69b1d5c9-cb13-50b7-bb3e-43dee261bcde"
+description: |-
+  The **verify_email_verification** entity. Its requests address one record by `{{verify_email_verification_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 538000

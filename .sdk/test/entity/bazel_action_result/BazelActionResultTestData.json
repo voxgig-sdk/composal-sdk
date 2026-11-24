@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "bazel_action_result": {
+      "BAZEL_ACTION_RESULT00": {
+        "id": "BAZEL_ACTION_RESULT00",
+        "action_result_id": "ACTION_RESULT01"
+      },
+      "BAZEL_ACTION_RESULT01": {
+        "id": "BAZEL_ACTION_RESULT01",
+        "action_result_id": "ACTION_RESULT01"
+      },
+      "BAZEL_ACTION_RESULT02": {
+        "id": "BAZEL_ACTION_RESULT02",
+        "action_result_id": "ACTION_RESULT01"
+      }
+    }
+  },
+  "new": {
+    "bazel_action_result": {
+      "bazel_action_result_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/bazel/action_results/{hash}/{size_bytes}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/bazel/action_results/{hash}/{size_bytes}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

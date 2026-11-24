@@ -1,0 +1,36 @@
+# BasicOrganizationInvitationFlow
+
+main: kit: flow: BasicOrganizationInvitationFlow:
+{
+  entity: "organization_invitation",
+  kind: "basic",
+  name: "BasicOrganizationInvitationFlow",
+  step: [
+    {
+      i: {
+        ref: "organization_invitation_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "organization_invitation_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "organization_invitation01",
+        organization_id: "organization01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicOrganizationInvitationFlow"
+}

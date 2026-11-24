@@ -1,0 +1,23 @@
+$kind: http-request
+id: "57b2f3e8-7d5d-5efe-a95c-55a7e6e8e7ab"
+description: |-
+  The `blame` action of **repo_vc**, a route of its `load` operation.
+
+  SDK: `client.RepoVc().load({ "organization_id": "organization_id", "repo_id": "repo_id", "path": "path", "ref": "ref", $action: "blame" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/blame?path={{path}}&ref={{ref}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: path
+    value: "{{path}}"
+  - key: ref
+    value: "{{ref}}"
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_vc belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_vc belongs to.
+order: 2000

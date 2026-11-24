@@ -1,0 +1,35 @@
+$kind: http-request
+id: "9a57050a-27b9-57c3-a0dd-c0639c1ee6da"
+description: |-
+  The `create` operation of **code_rule_evaluation**.
+
+  SDK: `client.CodeRuleEvaluation().create({ organization_id: "example", repo_id: "example", diff: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/code_rules/evaluations"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this code_rule_evaluation belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this code_rule_evaluation belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "diff": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("code_rule_evaluation_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

@@ -222,6 +222,35 @@ class AgentSiteEntity
   end
 
   
+  # Load a single AgentSite.
+  #
+  # @param reqmatch [AgentSiteLoadMatch, Hash, nil] match criteria (id/query fields);
+  #   optional — an entity with no id-like key loads with no match (nil is treated
+  #   as an empty match, so client.AgentSite.load works with no args).
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [AgentSiteEntity] the loaded AgentSite entity (data_get reads its record);
+  #   raises ComposalError on failure
+  def load(reqmatch = nil, ctrl = nil)
+    utility = @_utility
+    ctx = utility.make_context.call({
+      "opname" => "load",
+      "ctrl" => ctrl,
+      "match" => @_match,
+      "data" => @_data,
+      "reqmatch" => reqmatch,
+    }, @_entctx)
+
+    _run_op(ctx) do
+      if ctx.result
+        @_match = ctx.result.resmatch if ctx.result.resmatch
+        if ctx.result.resdata
+          @_data = ComposalHelpers.to_map(VoxgigStruct.clone(ctx.result.resdata)) || {}
+        end
+      end
+    end
+  end
+
+
 
   
   # List AgentSite items matching the given filter.
@@ -253,6 +282,32 @@ class AgentSiteEntity
 
 
   
+  # Create a new AgentSite.
+  #
+  # @param reqdata [AgentSiteCreateData, Hash, nil] body data
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [AgentSiteEntity] the created AgentSite entity (data_get reads its record);
+  #   raises ComposalError on failure
+  def create(reqdata, ctrl = nil)
+    utility = @_utility
+    ctx = utility.make_context.call({
+      "opname" => "create",
+      "ctrl" => ctrl,
+      "match" => @_match,
+      "data" => @_data,
+      "reqdata" => reqdata,
+    }, @_entctx)
+
+    _run_op(ctx) do
+      if ctx.result
+        if ctx.result.resdata
+          @_data = ComposalHelpers.to_map(VoxgigStruct.clone(ctx.result.resdata)) || {}
+        end
+      end
+    end
+  end
+
+
 
   
 

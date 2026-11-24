@@ -1,0 +1,22 @@
+$kind: http-request
+id: "37379de3-5a5f-574a-9481-16c6f86b14ca"
+description: |-
+  The `prepare` action of **github_runner_image**, a route of its `create` operation.
+
+  SDK: `client.GithubRunnerImage().create({ "organization_id": "organization_id", "id": "ID", $action: "prepare" })`
+url: "{{base}}/api/v1/organizations/:organization_id/github_runner_images/:id/prepare"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this github_runner_image belongs to.
+  - key: id
+    value: "{{github_runner_image_id}}"
+    description: The github_runner_image this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

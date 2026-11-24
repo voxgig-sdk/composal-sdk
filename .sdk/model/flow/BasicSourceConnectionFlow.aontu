@@ -11,6 +11,10 @@ main: kit: flow: BasicSourceConnectionFlow:
         ref: "source_connection_ref01"
       }
 
+      m: {
+        id: "id01"
+      }
+
       o: "create"
     }
   ],

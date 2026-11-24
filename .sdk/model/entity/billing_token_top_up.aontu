@@ -1,0 +1,97 @@
+# Entity: billing_token_top_up
+
+main: kit: entity: billing_token_top_up: {
+
+  alias: field: {}
+
+  fields: {
+    amount_cents: {
+      h: "Amount Cents"
+      n: "amount_cents"
+      r: true
+      t: "`$INTEGER`"
+    }
+    request_key: {
+      fo: "uuid"
+      h: "Request Key"
+      n: "request_key"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "billing_token_top_up"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "amount_cents"
+            "request_key"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/billing/token_top_ups"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/billing/token_top_ups"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "billing"
+            }
+            {
+              lit: "token_top_ups"
+            }
+          ]
+          t: {
+            req: {
+              amount_cents: "`reqdata.amount_cent`"
+              request_key: "`reqdata.request_key`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

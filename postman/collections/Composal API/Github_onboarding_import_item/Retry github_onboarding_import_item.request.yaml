@@ -1,0 +1,22 @@
+$kind: http-request
+id: "0c2f4034-a48d-58c8-89ec-a6e056ddf4e9"
+description: |-
+  The `retry` action of **github_onboarding_import_item**, a route of its `create` operation.
+
+  SDK: `client.GithubOnboardingImportItem().create({ "organization_id": "organization_id", "id": "ID", $action: "retry" })`
+url: "{{base}}/api/v1/organizations/:organization_id/github_onboarding/import_items/:github_import_batch_item_id/retry"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this github_onboarding_import_item belongs to.
+  - key: github_import_batch_item_id
+    value: "{{github_onboarding_import_item_id}}"
+    description: The github_onboarding_import_item this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 1000

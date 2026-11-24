@@ -1,0 +1,23 @@
+# BasicLeaseCacheFlow
+
+main: kit: flow: BasicLeaseCacheFlow:
+{
+  entity: "lease_cache",
+  kind: "basic",
+  name: "BasicLeaseCacheFlow",
+  step: [
+    {
+      i: {
+        ref: "lease_cache_ref01"
+      }
+
+      m: {
+        lease_id: "lease01",
+        node_id: "node01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicLeaseCacheFlow"
+}

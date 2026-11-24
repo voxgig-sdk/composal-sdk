@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "node_lease": {
+      "NODE_LEASE00": {
+        "id": "NODE_LEASE00",
+        "node_id": "NODE01"
+      },
+      "NODE_LEASE01": {
+        "id": "NODE_LEASE01",
+        "node_id": "NODE01"
+      },
+      "NODE_LEASE02": {
+        "id": "NODE_LEASE02",
+        "node_id": "NODE01"
+      }
+    }
+  },
+  "new": {
+    "node_lease": {
+      "node_lease_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/ci/nodes/{id}/leases/{lease_id}/claim": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/ci/nodes/{id}/leases/{lease_id}/heartbeat": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/ci/nodes/{id}/leases/{lease_id}/release": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/ci/nodes/{id}/leases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/ci/nodes/{id}/leases/{lease_id}/job": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/ci/nodes/{id}/leases/{lease_id}/workspace_archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

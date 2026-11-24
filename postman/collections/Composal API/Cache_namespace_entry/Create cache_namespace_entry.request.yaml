@@ -1,0 +1,29 @@
+$kind: http-request
+id: "4ba5c9df-8afe-5d60-9e99-2f0dac440fc6"
+description: |-
+  The `create` operation of **cache_namespace_entry**.
+
+  SDK: `client.CacheNamespaceEntry().create({ cache_namespace_id: "example" })`
+url: "{{base}}/api/v1/artifacts/cache_namespaces/:cache_namespace_id/entries"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: cache_namespace_id
+    value: "{{cache_namespace_id}}"
+    description: "Input: cache_namespace_id."
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("cache_namespace_entry_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

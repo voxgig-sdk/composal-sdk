@@ -38,4 +38,4 @@ description: |-
   | `wake_at` | string | yes |  |
   | `workflow_digest` | string | yes |  |
   | `workflow_path` | string | yes |  |
-order: 48000
+order: 72000

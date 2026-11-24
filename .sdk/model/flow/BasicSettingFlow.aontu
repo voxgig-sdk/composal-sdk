@@ -1,0 +1,26 @@
+# BasicSettingFlow
+
+main: kit: flow: BasicSettingFlow:
+{
+  entity: "setting",
+  kind: "basic",
+  name: "BasicSettingFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "setting_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSettingFlow"
+}

@@ -1,0 +1,72 @@
+# BasicBackendRunnerPoolFlow
+
+main: kit: flow: BasicBackendRunnerPoolFlow:
+{
+  entity: "backend_runner_pool",
+  kind: "basic",
+  name: "BasicBackendRunnerPoolFlow",
+  step: [
+    {
+      i: {
+        ref: "backend_runner_pool_ref01"
+      }
+
+      m: {
+        backend_id: "backend01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        backend_id: "backend01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "backend_runner_pool_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "backend_runner_pool_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        backend_id: "backend01",
+        id: "backend_runner_pool01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        backend_id: "backend01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "backend_runner_pool_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBackendRunnerPoolFlow"
+}

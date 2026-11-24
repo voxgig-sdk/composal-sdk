@@ -1,0 +1,38 @@
+$kind: http-request
+id: a9d9c60f-b457-5eca-a275-83626a36cd95
+description: |-
+  The `create` operation of **change_request_change**.
+
+  SDK: `client.ChangeRequestChange().create({ change_id: "example", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/:id/request_changes"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this change_request_change belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this change_request_change belongs to.
+  - key: id
+    value: "{{change_id}}"
+    description: The change this change_request_change belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "message": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body?.["vote"]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("change_request_change_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

@@ -1,0 +1,21 @@
+$kind: http-request
+id: a68843a1-be01-5bce-88eb-d97e5f8f5d54
+description: |-
+  The `start` action of **auth_openai**, a route of its `load` operation.
+
+  SDK: `client.AuthOpenai().load({ $action: "start" })`
+url: "{{base}}/api/v1/auth/openai/start"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: intent
+    value: ""
+    disabled: true
+  - key: invite_code
+    value: ""
+    disabled: true
+  - key: redirectTo
+    value: ""
+    disabled: true
+order: 2000

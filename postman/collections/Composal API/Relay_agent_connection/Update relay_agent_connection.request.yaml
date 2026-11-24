@@ -1,0 +1,34 @@
+$kind: http-request
+id: "63826e6c-2b51-5680-a47a-0e82c2ce4426"
+description: |-
+  The `update` operation of **relay_agent_connection**.
+
+  SDK: `client.RelayAgentConnection().update({ agent_id: "example", id: "example", organization_id: "example", auth_scheme: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/relay/connections/:connection_id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  X-Composal-Relay-Scope: "{{x_composal_relay_scope}}"
+  X-Composal-Requester-Id: "{{x_composal_requester_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this relay_agent_connection belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this relay_agent_connection belongs to.
+  - key: connection_id
+    value: "{{relay_agent_connection_id}}"
+    description: The relay_agent_connection this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "auth_scheme": "bearer",
+      "credential": "example",
+      "remote_agent": "example",
+      "expected_generation": 1
+    }
+order: 4000

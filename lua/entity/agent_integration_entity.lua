@@ -308,6 +308,33 @@ end
 
 
 
+---@param reqmatch AgentIntegrationLoadMatch
+---@param ctrl? table
+---@return AgentIntegrationEntity
+---@return string? err
+function AgentIntegrationEntity:load(reqmatch, ctrl)
+  local utility = self._utility
+  local ctx = utility.make_context({
+    opname = "load",
+    ctrl = ctrl,
+    match = self._match,
+    data = self._data,
+    reqmatch = reqmatch,
+  }, self._entctx)
+
+  return self:_run_op(ctx, function()
+    if ctx.result ~= nil then
+      if ctx.result.resmatch ~= nil then
+        self._match = ctx.result.resmatch
+      end
+      if ctx.result.resdata ~= nil then
+        self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
+      end
+    end
+  end)
+end
+
+
 
 
 ---@param reqmatch AgentIntegrationListMatch
@@ -364,6 +391,33 @@ end
 
 
 
+
+
+---@param reqmatch AgentIntegrationRemoveMatch
+---@param ctrl? table
+---@return AgentIntegrationEntity
+---@return string? err
+function AgentIntegrationEntity:remove(reqmatch, ctrl)
+  local utility = self._utility
+  local ctx = utility.make_context({
+    opname = "remove",
+    ctrl = ctrl,
+    match = self._match,
+    data = self._data,
+    reqmatch = reqmatch,
+  }, self._entctx)
+
+  return self:_run_op(ctx, function()
+    if ctx.result ~= nil then
+      if ctx.result.resmatch ~= nil then
+        self._match = ctx.result.resmatch
+      end
+      if ctx.result.resdata ~= nil then
+        self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
+      end
+    end
+  end)
+end
 
 
 

@@ -1,0 +1,8 @@
+$kind: collection
+id: e36d2a98-6059-5325-87e7-65f661f997ff
+description: |-
+  The **pairing_event** entity, which belongs to a pairing. Its requests address one record by `{{pairing_event_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 376000

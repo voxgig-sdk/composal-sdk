@@ -1,0 +1,25 @@
+$kind: http-request
+id: "0cd3fc6e-4d59-5439-8fff-414f058e495c"
+description: |-
+  The `list` operation of **image_repository_tag**.
+
+  SDK: `client.ImageRepositoryTag().list({ image_repository_id: "example" })`
+url: "{{base}}/api/v1/artifacts/image_repositories/:id/tags"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{image_repository_id}}"
+    description: The image_repository this image_repository_tag belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("image_repository_tag_id")) pm.collectionVariables.set("image_repository_tag_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

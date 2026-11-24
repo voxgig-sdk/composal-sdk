@@ -1,0 +1,220 @@
+# Entity: invocation_control
+
+main: kit: entity: invocation_control: {
+
+  alias: field: {}
+
+  name: "invocation_control"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "invocation_id"
+            "request_hash"
+          ]
+          co: {
+            id: "POST /api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/control/challenge"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "x_composal_device_connection"
+                or: "X-Composal-Device-Connection"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "device_id"
+                or: "device_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/control/challenge"
+          q: {
+            "$action": "challenge"
+            exist: [
+              "device_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_id: "device_id"
+              organization_id: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "device_runtime"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "device_id"
+            }
+            {
+              lit: "invocations"
+            }
+            {
+              lit: "control"
+            }
+            {
+              lit: "challenge"
+            }
+          ]
+          t: {
+            req: {
+              invocation_id: "`reqdata.invocation_id`"
+              request_hash: "`reqdata.request_hash`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "challenge"
+            "signature"
+          ]
+          co: {
+            id: "POST /api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/control/lease"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "x_composal_device_connection"
+                or: "X-Composal-Device-Connection"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "device_id"
+                or: "device_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/control/lease"
+          q: {
+            "$action": "lease"
+            exist: [
+              "device_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_id: "device_id"
+              organization_id: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "device_runtime"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "device_id"
+            }
+            {
+              lit: "invocations"
+            }
+            {
+              lit: "control"
+            }
+            {
+              lit: "lease"
+            }
+          ]
+          t: {
+            req: {
+              challenge: "`reqdata.challenge`"
+              signature: "`reqdata.signature`"
+            }
+            res: "`body.lease`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.device")]
+  ]
+
+}

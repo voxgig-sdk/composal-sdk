@@ -85,7 +85,7 @@ def _deployment_file_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["deployment_file01", "deployment_file02", "deployment_file03", "static_site01", "static_site02", "static_site03"],
+        ["deployment_file01", "deployment_file02", "deployment_file03", "static_site01", "static_site02", "static_site03", "deployment01", "deployment02", "deployment03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

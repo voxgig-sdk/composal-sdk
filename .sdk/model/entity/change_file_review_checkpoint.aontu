@@ -1,0 +1,147 @@
+# Entity: change_file_review_checkpoint
+
+main: kit: entity: change_file_review_checkpoint: {
+
+  alias: field: {}
+
+  fields: {
+    patchset_id: {
+      h: "Patchset Id"
+      n: "patchset_id"
+      r: true
+      t: "`$STRING`"
+    }
+    path: {
+      h: "Path"
+      n: "path"
+      r: true
+      t: "`$STRING`"
+    }
+    request_id: {
+      h: "Request Id"
+      n: "request_id"
+      r: true
+      t: "`$STRING`"
+    }
+    review_action: {
+      h: "Review Action"
+      n: "review_action"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "change_file_review_checkpoint"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "patchset_id"
+            "path"
+            "request_id"
+            "review_action"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/file_review_checkpoints"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "change_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_id"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/file_review_checkpoints"
+          q: {
+            exist: [
+              "change_id"
+              "organization_id"
+              "repo_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "change_id"
+              org_slug: "organization_id"
+              repo_slug: "repo_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "repos"
+            }
+            {
+              var: "repo_id"
+            }
+            {
+              lit: "vcs"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              var: "change_id"
+            }
+            {
+              lit: "file_review_checkpoints"
+            }
+          ]
+          t: {
+            req: {
+              patchset_id: "`reqdata.patchset_id`"
+              path: "`reqdata.path`"
+              request_id: "`reqdata.request_id`"
+              review_action: "`reqdata.review_action`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.repo") path("$.main.kit.entity.change")]
+  ]
+
+}

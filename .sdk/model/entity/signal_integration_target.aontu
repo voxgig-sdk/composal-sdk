@@ -1,0 +1,296 @@
+# Entity: signal_integration_target
+
+main: kit: entity: signal_integration_target: {
+
+  alias: field: {}
+
+  fields: {
+    app_service_id: {
+      h: "App Service Id"
+      n: "app_service_id"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    display_name: {
+      h: "Display Name"
+      n: "display_name"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    enabled: {
+      h: "Enabled"
+      n: "enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    external_id: {
+      h: "External Id"
+      n: "external_id"
+      r: true
+      t: "`$STRING`"
+    }
+    external_kind: {
+      h: "External Kind"
+      n: "external_kind"
+      r: true
+      t: "`$STRING`"
+    }
+    external_slug: {
+      h: "External Slug"
+      n: "external_slug"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    hosted_app_id: {
+      h: "Hosted App Id"
+      n: "hosted_app_id"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Public id (`stgt_…`)."
+      t: "`$STRING`"
+    }
+    organization_id: {
+      h: "Organization Id"
+      n: "organization_id"
+      r: true
+      t: "`$STRING`"
+    }
+    signal_integration_id: {
+      h: "Signal Integration Id"
+      n: "signal_integration_id"
+      r: true
+      t: "`$STRING`"
+    }
+    signal_integration_targets: {
+      h: "Signal Integration Targets"
+      n: "signal_integration_targets"
+      r: true
+      t: "`$ARRAY`"
+    }
+    targets: {
+      h: "Targets"
+      n: "targets"
+      r: true
+      t: "`$ARRAY`"
+    }
+    updated_at: {
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "signal_integration_target"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/targets"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "signal_integration_id"
+                or: "signal_integration_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/targets"
+          q: {
+            exist: [
+              "organization_id"
+              "signal_integration_id"
+            ]
+          }
+          r: {
+            param: {
+              signal_integration_id: "signal_integration_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "signal_integrations"
+            }
+            {
+              var: "signal_integration_id"
+            }
+            {
+              lit: "targets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.signal_integration_targets`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "targets"
+          ]
+          co: {
+            id: "PUT /api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/targets"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "signal_integration_id"
+                or: "signal_integration_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/targets"
+          q: {
+            exist: [
+              "organization_id"
+              "signal_integration_id"
+            ]
+          }
+          r: {
+            param: {
+              signal_integration_id: "signal_integration_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "signal_integrations"
+            }
+            {
+              var: "signal_integration_id"
+            }
+            {
+              lit: "targets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.signal_integration")]
+  ]
+
+}

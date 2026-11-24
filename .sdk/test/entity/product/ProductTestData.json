@@ -1,0 +1,123 @@
+{
+  "existing": {
+    "product": {
+      "PRODUCT00": {
+        "activated_products": [],
+        "agents_only": false,
+        "can_activate_products": true,
+        "created_at": "sf3",
+        "created_at_label": "sf4",
+        "github_prs_authored_by_change_author": false,
+        "id": "PRODUCT00",
+        "logo_url": "sf7",
+        "member_count": 248,
+        "name": "sf9",
+        "pending_invitation_count": 250,
+        "personal": false,
+        "product": "sfc",
+        "repository_count": 253,
+        "role": "sfe",
+        "sandbox_region": "sff",
+        "shared_agent_personal_accounts_enabled": true,
+        "slug": "s101",
+        "source_control_providers": [],
+        "source_ui_enabled": false,
+        "timezone": "s104",
+        "updated_at": "s105",
+        "updated_at_label": "s106",
+        "verify_pr_scenario_writing_enabled": false,
+        "organization_id": "ORGANIZATION01"
+      },
+      "PRODUCT01": {
+        "activated_products": [],
+        "agents_only": false,
+        "can_activate_products": true,
+        "created_at": "s1e3",
+        "created_at_label": "s1e4",
+        "github_prs_authored_by_change_author": false,
+        "id": "PRODUCT01",
+        "logo_url": "s1e7",
+        "member_count": 488,
+        "name": "s1e9",
+        "pending_invitation_count": 490,
+        "personal": false,
+        "product": "s1ec",
+        "repository_count": 493,
+        "role": "s1ee",
+        "sandbox_region": "s1ef",
+        "shared_agent_personal_accounts_enabled": true,
+        "slug": "s1f1",
+        "source_control_providers": [],
+        "source_ui_enabled": false,
+        "timezone": "s1f4",
+        "updated_at": "s1f5",
+        "updated_at_label": "s1f6",
+        "verify_pr_scenario_writing_enabled": false,
+        "organization_id": "ORGANIZATION01"
+      },
+      "PRODUCT02": {
+        "activated_products": [],
+        "agents_only": false,
+        "can_activate_products": true,
+        "created_at": "s2d3",
+        "created_at_label": "s2d4",
+        "github_prs_authored_by_change_author": false,
+        "id": "PRODUCT02",
+        "logo_url": "s2d7",
+        "member_count": 728,
+        "name": "s2d9",
+        "pending_invitation_count": 730,
+        "personal": false,
+        "product": "s2dc",
+        "repository_count": 733,
+        "role": "s2de",
+        "sandbox_region": "s2df",
+        "shared_agent_personal_accounts_enabled": true,
+        "slug": "s2e1",
+        "source_control_providers": [],
+        "source_ui_enabled": false,
+        "timezone": "s2e4",
+        "updated_at": "s2e5",
+        "updated_at_label": "s2e6",
+        "verify_pr_scenario_writing_enabled": false,
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "product": {
+      "product_ref01": {
+        "activated_products": [],
+        "agents_only": false,
+        "can_activate_products": true,
+        "created_at": "s3c3",
+        "created_at_label": "s3c4",
+        "github_prs_authored_by_change_author": false,
+        "logo_url": "s3c7",
+        "member_count": 968,
+        "name": "s3c9",
+        "pending_invitation_count": 970,
+        "personal": false,
+        "product": "s3cc",
+        "repository_count": 973,
+        "role": "s3ce",
+        "sandbox_region": "s3cf",
+        "shared_agent_personal_accounts_enabled": true,
+        "slug": "s3d1",
+        "source_control_providers": [],
+        "source_ui_enabled": false,
+        "timezone": "s3d4",
+        "updated_at": "s3d5",
+        "updated_at_label": "s3d6",
+        "verify_pr_scenario_writing_enabled": false
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/products": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

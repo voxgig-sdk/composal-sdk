@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "agent_relay_file_grant_account": {
+      "AGENT_RELAY_FILE_GRANT_ACCOUNT00": {
+        "access_modes": [],
+        "generation": 61,
+        "id": "AGENT_RELAY_FILE_GRANT_ACCOUNT00",
+        "name": "s3f",
+        "provider": "s40",
+        "resource_kind": "s41",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_RELAY_FILE_GRANT_ACCOUNT01": {
+        "access_modes": [],
+        "generation": 121,
+        "id": "AGENT_RELAY_FILE_GRANT_ACCOUNT01",
+        "name": "s7b",
+        "provider": "s7c",
+        "resource_kind": "s7d",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_RELAY_FILE_GRANT_ACCOUNT02": {
+        "access_modes": [],
+        "generation": 181,
+        "id": "AGENT_RELAY_FILE_GRANT_ACCOUNT02",
+        "name": "sb7",
+        "provider": "sb8",
+        "resource_kind": "sb9",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_relay_file_grant_account": {
+      "agent_relay_file_grant_account_ref01": {
+        "access_modes": [],
+        "generation": 241,
+        "name": "sf3",
+        "provider": "sf4",
+        "resource_kind": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agent_relay_file_grants/accounts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

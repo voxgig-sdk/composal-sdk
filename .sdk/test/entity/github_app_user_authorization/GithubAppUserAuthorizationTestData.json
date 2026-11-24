@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "github_app_user_authorization": {
+      "GITHUB_APP_USER_AUTHORIZATION00": {
+        "id": "GITHUB_APP_USER_AUTHORIZATION00"
+      },
+      "GITHUB_APP_USER_AUTHORIZATION01": {
+        "id": "GITHUB_APP_USER_AUTHORIZATION01"
+      },
+      "GITHUB_APP_USER_AUTHORIZATION02": {
+        "id": "GITHUB_APP_USER_AUTHORIZATION02"
+      }
+    }
+  },
+  "new": {
+    "github_app_user_authorization": {
+      "github_app_user_authorization_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/github_app/user_authorizations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,102 @@
+# Entity: swarm_note
+
+main: kit: entity: swarm_note: {
+
+  alias: field: {}
+
+  fields: {
+    task_id: {
+      h: "Task Id"
+      n: "task_id"
+      r: false
+      sh: "A task public id; omitted"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    text: {
+      h: "Text"
+      n: "text"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "swarm_note"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "task_id"
+            "text"
+          ]
+          co: {
+            id: "POST /api/v1/agent/swarms/{swarm_id}/notes"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "swarm_id"
+                or: "swarm_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/agent/swarms/{swarm_id}/notes"
+          q: {
+            exist: [
+              "swarm_id"
+            ]
+          }
+          r: {
+            param: {
+              swarm_id: "swarm_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "swarms"
+            }
+            {
+              var: "swarm_id"
+            }
+            {
+              lit: "notes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,33 @@
+# BasicLeaseWorkspaceFlow
+
+main: kit: flow: BasicLeaseWorkspaceFlow:
+{
+  entity: "lease_workspace",
+  kind: "basic",
+  name: "BasicLeaseWorkspaceFlow",
+  step: [
+    {
+      d: {
+        lease_id: "lease01",
+        node_id: "node01"
+      }
+
+      i: {
+        ref: "lease_workspace_ref01",
+        srcdatavar: "lease_workspace_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-lease_workspace_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLeaseWorkspaceFlow"
+}

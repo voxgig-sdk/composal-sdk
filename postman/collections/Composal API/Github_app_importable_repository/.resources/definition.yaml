@@ -1,0 +1,12 @@
+$kind: collection
+id: "3d8e297f-56de-5894-bf37-2098ec8fb6f6"
+description: |-
+  The **github_app_importable_repository** entity. Its requests address one record by `{{github_app_importable_repository_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `account_login` | string | yes |  |
+  | `github_app_installation_id` | string | yes |  |
+  | `next_page` | integer | yes |  |
+  | `repositories` | array | yes |  |
+order: 252000

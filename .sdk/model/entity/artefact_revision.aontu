@@ -1,0 +1,111 @@
+# Entity: artefact_revision
+
+main: kit: entity: artefact_revision: {
+
+  alias: field: {}
+
+  fields: {
+    base_version: {
+      h: "Base Version"
+      n: "base_version"
+      r: true
+      sh: "The newest version the editor started from."
+      t: "`$INTEGER`"
+    }
+    content: {
+      h: "Content"
+      n: "content"
+      r: true
+      sh: "Markdown, including CriticMarkup suggestions and comment anchors."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "artefact_revision"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "base_version"
+            "content"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/revisions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "artefact_id"
+                or: "artefact_ref"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/revisions"
+          q: {
+            exist: [
+              "artefact_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              artefact_ref: "artefact_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "artefacts"
+            }
+            {
+              var: "artefact_id"
+            }
+            {
+              lit: "revisions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.artefact`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.artefact")]
+  ]
+
+}

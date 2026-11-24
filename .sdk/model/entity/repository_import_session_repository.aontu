@@ -1,0 +1,156 @@
+# Entity: repository_import_session_repository
+
+main: kit: entity: repository_import_session_repository: {
+
+  alias: field: {}
+
+  fields: {
+    default_branch: {
+      h: "Default Branch"
+      n: "default_branch"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    full_name: {
+      h: "Full Name"
+      n: "full_name"
+      r: true
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    owner: {
+      h: "Owner"
+      n: "owner"
+      r: true
+      t: "`$STRING`"
+    }
+    private: {
+      h: "Private"
+      n: "private"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    reason: {
+      h: "Reason"
+      n: "reason"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    selectable: {
+      h: "Selectable"
+      n: "selectable"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    visibility: {
+      h: "Visibility"
+      n: "visibility"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "repository_import_session_repository"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/repository_import_sessions/{id}/repositories"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "repository_import_session_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/repository_import_sessions/{id}/repositories"
+          q: {
+            exist: [
+              "repository_import_session_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "repository_import_session_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "repository_import_sessions"
+            }
+            {
+              var: "repository_import_session_id"
+            }
+            {
+              lit: "repositories"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.repositories`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository_import_session")]
+  ]
+
+}

@@ -1,0 +1,76 @@
+$kind: http-request
+id: "9504d081-9093-511c-8dd6-e51b5ad98094"
+description: |-
+  The `update` operation of **repo_code_rule**.
+
+  SDK: `client.RepoCodeRule().update({ id: "example", organization_id: "example", repo_id: "example", definition: {} })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/code_rules/:rule"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_code_rule belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_code_rule belongs to.
+  - key: rule
+    value: "{{repo_code_rule_ref01}}"
+    description: The repo_code_rule this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "definition": {
+        "schema_version": 1,
+        "slug": "example",
+        "name": "example",
+        "description": "example",
+        "scope": [
+          "example"
+        ],
+        "source": "example",
+        "question": "example"
+      },
+      "expected_version": 1,
+      "created_at": "Mark01-repo_code_rule_ref01"
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","repo_id","repo_code_rule_ref01"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("3. Update repo_code_rule: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      pm.test("3. Update repo_code_rule: the record is the one asked for", () => {
+        pm.expect(String(at(body?.["code_rule"], "id"))).to.eql(String(pm.variables.get("repo_code_rule_ref01")))
+      })
+      if (pm.response.code < 300) pm.variables.set("repo_code_rule_ref01_marked", "Mark01-repo_code_rule_ref01")
+    language: text/javascript
+order: 3000

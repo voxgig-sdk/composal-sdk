@@ -1,0 +1,89 @@
+# Entity: app_access
+
+main: kit: entity: app_access: {
+
+  alias: field: {}
+
+  name: "app_access"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/app_access/callback"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/app_access/callback"
+          q: {
+            "$action": "callback"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "app_access"
+            }
+            {
+              lit: "callback"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/app_access/start"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/app_access/start"
+          q: {
+            "$action": "start"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "app_access"
+            }
+            {
+              lit: "start"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

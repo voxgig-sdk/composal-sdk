@@ -1,0 +1,22 @@
+$kind: http-request
+id: c529bc68-ef0b-5355-ac22-e43b238a147c
+description: |-
+  The `remove` operation of **bazel_backend**.
+
+  SDK: `client.BazelBackend().remove({ id: "example_id" })`
+url: "{{base}}/api/v1/bazel/backends/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{bazel_backend_id}}"
+    description: The bazel_backend this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("bazel_backend_id")
+      }
+    language: text/javascript
+order: 9000

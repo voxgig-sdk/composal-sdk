@@ -1,0 +1,19 @@
+$kind: http-request
+id: "46c19b1a-80d1-50a4-8ff4-2211945d2576"
+description: |-
+  The `update` operation of **artifact_package_mirror**.
+
+  SDK: `client.ArtifactPackageMirror().update({ id: "example" })`
+url: "{{base}}/api/v1/artifacts/package_mirrors/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_package_mirror_id}}"
+    description: The artifact_package_mirror this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

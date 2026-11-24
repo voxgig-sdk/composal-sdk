@@ -1,0 +1,58 @@
+# Entity: email_verification
+
+main: kit: entity: email_verification: {
+
+  alias: field: {}
+
+  name: "email_verification"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "email"
+          ]
+          co: {
+            id: "POST /api/v1/email_verifications/resend"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/email_verifications/resend"
+          q: {
+            "$action": "resend"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "email_verifications"
+            }
+            {
+              lit: "resend"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

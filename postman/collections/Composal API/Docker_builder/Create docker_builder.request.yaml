@@ -1,0 +1,33 @@
+$kind: http-request
+id: "55b448e9-a2de-547f-8343-130090cca98e"
+description: |-
+  The `create` operation of **docker_builder**.
+
+  SDK: `client.DockerBuilder().create({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/docker_builders"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this docker_builder belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "backend": "classic",
+      "slug": "main"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body?.["docker_builder"]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("docker_builder_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

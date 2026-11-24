@@ -1,0 +1,172 @@
+# Entity: github_onboarding_import
+
+main: kit: entity: github_onboarding_import: {
+
+  alias: field: {}
+
+  fields: {
+    account_login: {
+      h: "Account Login"
+      n: "account_login"
+      r: true
+      t: "`$STRING`"
+    }
+    complete: {
+      h: "Complete"
+      n: "complete"
+      r: true
+      sh: "Whether every item has settled and the wizard should treat the import as finished."
+      t: "`$BOOLEAN`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    failed_item_count: {
+      h: "Failed Item Count"
+      n: "failed_item_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    github_app_installation_id: {
+      h: "Github App Installation Id"
+      n: "github_app_installation_id"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    imported_item_count: {
+      h: "Imported Item Count"
+      n: "imported_item_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    item_count: {
+      h: "Item Count"
+      n: "item_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    items: {
+      h: "Items"
+      n: "items"
+      r: true
+      t: "`$ARRAY`"
+    }
+    repositories: {
+      h: "Repositories"
+      n: "repositories"
+      r: true
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 0
+      }
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    terminal_item_count: {
+      h: "Terminal Item Count"
+      n: "terminal_item_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "github_onboarding_import"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "github_app_installation_id"
+            "repositories"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/github_onboarding/imports"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/github_onboarding/imports"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "github_onboarding"
+            }
+            {
+              lit: "imports"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.batch`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

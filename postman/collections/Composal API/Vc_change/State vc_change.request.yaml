@@ -1,0 +1,21 @@
+$kind: http-request
+id: "7fbe5171-df27-5fb3-95e6-99cfcf46a504"
+description: |-
+  The `state` action of **vc_change**, a route of its `load` operation.
+
+  SDK: `client.VcChange().load({ "organization_id": "organization_id", "repo_id": "repo_id", "id": "ID", $action: "state" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/:id/state"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_change belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_change belongs to.
+  - key: id
+    value: "{{vc_change_id}}"
+    description: The vc_change this request addresses.
+order: 14000

@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "github_onboarding": {
+      "GITHUB_ONBOARDING00": {
+        "accounts": [],
+        "active_batch_id": "ACTIVE_BATCH01",
+        "batches": [],
+        "capabilities": {},
+        "installations": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "GITHUB_ONBOARDING00"
+      },
+      "GITHUB_ONBOARDING01": {
+        "accounts": [],
+        "active_batch_id": "ACTIVE_BATCH01",
+        "batches": [],
+        "capabilities": {},
+        "installations": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "GITHUB_ONBOARDING01"
+      },
+      "GITHUB_ONBOARDING02": {
+        "accounts": [],
+        "active_batch_id": "ACTIVE_BATCH01",
+        "batches": [],
+        "capabilities": {},
+        "installations": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "GITHUB_ONBOARDING02"
+      }
+    }
+  },
+  "new": {
+    "github_onboarding": {
+      "github_onboarding_ref01": {
+        "accounts": [],
+        "active_batch_id": "ACTIVE_BATCH01",
+        "batches": [],
+        "capabilities": {},
+        "installations": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/github_onboarding": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

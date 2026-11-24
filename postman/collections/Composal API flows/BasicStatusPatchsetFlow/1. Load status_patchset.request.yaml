@@ -1,0 +1,59 @@
+$kind: http-request
+id: "82b01021-7ae4-5f73-9740-f4e09a41dc2e"
+description: |-
+  The `load` operation of **status_patchset**.
+
+  SDK: `client.StatusPatchset().load({ id: "example_id", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/ci/status/patchsets/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this status_patchset belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this status_patchset belongs to.
+  - key: id
+    value: "{{status_patchset_id}}"
+    description: The status_patchset this request addresses.
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","repo_id","status_patchset_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("1. Load status_patchset: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      if ("Mark01-status_patchset_ref01" === pm.variables.get("status_patchset_ref01_marked")) pm.test("1. Load status_patchset: the update reads back", () => {
+        pm.expect(JSON.stringify(body)).to.include("Mark01-status_patchset_ref01")
+      })
+      pm.test("1. Load status_patchset: the record is the one asked for", () => {
+        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("status_patchset_id")))
+      })
+    language: text/javascript
+order: 1000

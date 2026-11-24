@@ -1,0 +1,21 @@
+$kind: http-request
+id: "18b3cc0a-5f66-5e88-a8a3-0d110c57b0d1"
+description: |-
+  The `load` operation of **log_stream_chunk**.
+
+  SDK: `client.LogStreamChunk().load({ id: "example_id", log_stream_id: "example", space_id: "example" })`
+url: "{{base}}/api/v1/observability/spaces/:space_id/log_streams/:log_stream_id/chunks/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: log_stream_id
+    value: "{{log_stream_id}}"
+    description: "Input: log_stream_id."
+  - key: id
+    value: "{{log_stream_chunk_id}}"
+    description: The log_stream_chunk this request addresses.
+order: 2000

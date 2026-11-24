@@ -1,0 +1,419 @@
+# Entity: spark_agent_integration
+
+main: kit: entity: spark_agent_integration: {
+
+  alias: field: {}
+
+  fields: {
+    account_counts: {
+      h: "Account Counts"
+      n: "account_counts"
+      r: true
+      sh: "Accounts the viewer can see per toolkit, across all account pages."
+      t: "`$OBJECT`"
+    }
+    accounts_path: {
+      h: "Accounts Path"
+      n: "accounts_path"
+      r: true
+      sh: "Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists."
+      t: "`$STRING`"
+    }
+    added_toolkits: {
+      h: "Added Toolkits"
+      n: "added_toolkits"
+      r: true
+      sh: "Apps with a connected or connecting account the viewer can see."
+      t: "`$ARRAY`"
+    }
+    can_manage: {
+      h: "Can Manage"
+      n: "can_manage"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_manage_organization: {
+      h: "Can Manage Organization"
+      n: "can_manage_organization"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    catalog: {
+      h: "Catalog"
+      n: "catalog"
+      r: true
+      t: "`$ARRAY`"
+    }
+    connect_as: {
+      h: "Connect As"
+      n: "connect_as"
+      r: true
+      sh: "The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization)."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    connect_as_by_toolkit: {
+      h: "Connect As By Toolkit"
+      n: "connect_as_by_toolkit"
+      r: true
+      sh: "Apps whose Connect differs from connect_as because their sign-in only makes team accounts."
+      t: "`$OBJECT`"
+    }
+    connected_counts: {
+      h: "Connected Counts"
+      n: "connected_counts"
+      r: true
+      sh: "Signed-in accounts per toolkit, across all account pages."
+      t: "`$OBJECT`"
+    }
+    connection_id: {
+      h: "Connection Id"
+      n: "connection_id"
+      r: true
+      t: "`$STRING`"
+    }
+    connections: {
+      h: "Connections"
+      n: "connections"
+      r: true
+      t: "`$ARRAY`"
+    }
+    email: {
+      h: "Email"
+      n: "email"
+      r: true
+      sh: "A native agent's own email address."
+      t: "`$OBJECT`"
+    }
+    enabled: {
+      h: "Enabled"
+      n: "enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    enabled_toolkits: {
+      h: "Enabled Toolkits"
+      n: "enabled_toolkits"
+      r: true
+      sh: "Apps with a signed-in account this agent uses now, across all account pages, sorted."
+      t: "`$ARRAY`"
+    }
+    generation: {
+      h: "Generation"
+      n: "generation"
+      r: true
+      t: "`$INTEGER`"
+    }
+    pagination: {
+      h: "Pagination"
+      n: "pagination"
+      r: true
+      t: "`$OBJECT`"
+    }
+    pending_counts: {
+      h: "Pending Counts"
+      n: "pending_counts"
+      r: true
+      sh: "Accounts per toolkit whose sign-in was started but not finished, across all account pages."
+      t: "`$OBJECT`"
+    }
+    personal_creation_key_supported: {
+      h: "Personal Creation Key Supported"
+      n: "personal_creation_key_supported"
+      r: false
+      sh: "The personal account creation endpoint honors a creation key."
+      t: "`$BOOLEAN`"
+    }
+    private_agent: {
+      h: "Private Agent"
+      n: "private_agent"
+      r: true
+      sh: "Only the agent's owner can chat with it."
+      t: "`$BOOLEAN`"
+    }
+    shared_agent_personal_accounts_enabled: {
+      h: "Shared Agent Personal Accounts Enabled"
+      n: "shared_agent_personal_accounts_enabled"
+      r: true
+      sh: "Whether the organization lets a shared agent use one person's account for everyone who chats with it."
+      t: "`$BOOLEAN`"
+    }
+    slack: {
+      h: "Slack"
+      n: "slack"
+      r: true
+      t: "`$OBJECT`"
+    }
+    webhook_connections: {
+      h: "Webhook Connections"
+      n: "webhook_connections"
+      r: true
+      t: "`$ARRAY`"
+    }
+    webhooks_available: {
+      h: "Webhooks Available"
+      n: "webhooks_available"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "spark_agent_integration"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "connection_id"
+            "enabled"
+            "generation"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/integrations"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "toolkit"
+                or: "toolkit"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations"
+          q: {
+            exist: [
+              "agent_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "integrations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/integrations"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "catalog_q"
+                or: "catalog_q"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "toolkit"
+                or: "toolkit"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations"
+          q: {
+            exist: [
+              "agent_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "integrations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent")]
+  ]
+
+}

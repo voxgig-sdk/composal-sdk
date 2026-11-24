@@ -1,0 +1,18 @@
+$kind: http-request
+id: "6a6bdcc1-d752-5b16-a28b-8413a8847aed"
+description: |-
+  The `payment_page` action of **billing_prepaid_purchase**, a route of its `load` operation.
+
+  SDK: `client.BillingPrepaidPurchase().load({ "organization_id": "organization_id", "id": "ID", $action: "payment_page" })`
+url: "{{base}}/api/v1/organizations/:organization_id/billing/prepaid_purchases/:id/payment_page"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this billing_prepaid_purchase belongs to.
+  - key: id
+    value: "{{billing_prepaid_purchase_id}}"
+    description: The billing_prepaid_purchase this request addresses.
+order: 4000

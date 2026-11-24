@@ -1,0 +1,18 @@
+$kind: http-request
+id: f60d0741-4324-5704-b3a4-e52973a78e84
+description: |-
+  The `refresh` action of **repo_stat**, a route of its `create` operation.
+
+  SDK: `client.RepoStat().create({ "organization_id": "organization_id", "repo_id": "repo_id", $action: "refresh" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/stats/refresh"
+method: POST
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_stat belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_stat belongs to.
+order: 2000

@@ -1,0 +1,28 @@
+$kind: http-request
+id: "3a45260d-8fa4-53fb-9517-0f5814a3d0fc"
+description: |-
+  The `accept` action of **vc_change**, a route of its `create` operation.
+
+  SDK: `client.VcChange().create({ "organization_id": "organization_id", "repo_id": "repo_id", "id": "ID", $action: "accept" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/:id/accept"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_change belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_change belongs to.
+  - key: id
+    value: "{{vc_change_id}}"
+    description: The vc_change this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "message": "example"
+    }
+order: 4000

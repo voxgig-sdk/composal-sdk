@@ -1,0 +1,15 @@
+$kind: http-request
+id: "8a4a80b4-1449-560f-8aeb-59b9c1f5f9b4"
+description: |-
+  The `catalog` action of **networking_space**, a route of its `load` operation.
+
+  SDK: `client.NetworkingSpace().load({ "id": "ID", $action: "catalog" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/catalog"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{networking_space_id}}"
+    description: The networking_space this request addresses.
+order: 8000

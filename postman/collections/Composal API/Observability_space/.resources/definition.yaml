@@ -1,0 +1,9 @@
+$kind: collection
+id: "49e42519-61eb-5aa9-aff9-46ca1b0df98e"
+description: |-
+  The **observability_space** entity. Its requests address one record by `{{observability_space_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 337000

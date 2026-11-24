@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "lease_workspace": {
+      "LEASE_WORKSPACE00": {
+        "id": "LEASE_WORKSPACE00",
+        "lease_id": "LEASE01",
+        "node_id": "NODE01"
+      },
+      "LEASE_WORKSPACE01": {
+        "id": "LEASE_WORKSPACE01",
+        "lease_id": "LEASE01",
+        "node_id": "NODE01"
+      },
+      "LEASE_WORKSPACE02": {
+        "id": "LEASE_WORKSPACE02",
+        "lease_id": "LEASE01",
+        "node_id": "NODE01"
+      }
+    }
+  },
+  "new": {
+    "lease_workspace": {
+      "lease_workspace_ref01": {}
+    }
+  },
+  "requests": {
+    "PATCH /api/v1/ci/nodes/{id}/leases/{lease_id}/workspaces/{ci_workspace_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

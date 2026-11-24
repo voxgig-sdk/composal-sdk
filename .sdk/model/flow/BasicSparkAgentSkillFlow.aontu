@@ -1,0 +1,40 @@
+# BasicSparkAgentSkillFlow
+
+main: kit: flow: BasicSparkAgentSkillFlow:
+{
+  entity: "spark_agent_skill",
+  kind: "basic",
+  name: "BasicSparkAgentSkillFlow",
+  step: [
+    {
+      i: {
+        ref: "spark_agent_skill_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "spark_agent_skill_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSparkAgentSkillFlow"
+}

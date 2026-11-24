@@ -1,0 +1,120 @@
+# Entity: signal_inbound
+
+main: kit: entity: signal_inbound: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+    parts: [
+      "inbound_id"
+      "id"
+    ]
+    sep: "/"
+  }
+
+  name: "signal_inbound"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/signals/inbound/{provider}/{inbound_token}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "inbound_token"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "inbound_token"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "inbound_id"
+                or: "provider"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "inbound_id"
+                or: "provider"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/signals/inbound/{provider}/{inbound_token}"
+          q: {
+            exist: [
+              "id"
+              "inbound_id"
+            ]
+          }
+          r: {
+            param: {
+              inbound_token: "id"
+              provider: "inbound_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "signals"
+            }
+            {
+              lit: "inbound"
+            }
+            {
+              var: "inbound_id"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

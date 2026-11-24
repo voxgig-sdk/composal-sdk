@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "artifact_image_repository": {
+      "ARTIFACT_IMAGE_REPOSITORY00": {
+        "id": "ARTIFACT_IMAGE_REPOSITORY00"
+      },
+      "ARTIFACT_IMAGE_REPOSITORY01": {
+        "id": "ARTIFACT_IMAGE_REPOSITORY01"
+      },
+      "ARTIFACT_IMAGE_REPOSITORY02": {
+        "id": "ARTIFACT_IMAGE_REPOSITORY02"
+      }
+    }
+  },
+  "new": {
+    "artifact_image_repository": {
+      "artifact_image_repository_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/artifacts/image_repositories/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/artifacts/image_repositories/{id}/contract": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/artifacts/image_repositories/{id}/pause": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/artifacts/image_repositories/{id}/resume": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/artifacts/image_repositories": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/artifacts/image_repositories": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/artifacts/image_repositories/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/artifacts/image_repositories/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/artifacts/image_repositories/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/artifacts/image_repositories/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

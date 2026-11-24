@@ -1,0 +1,25 @@
+$kind: http-request
+id: dac4f26a-45d1-5763-a1b6-0538fe8d283c
+description: |-
+  The `load` operation of **page_repo_vc_commit**.
+
+  SDK: `client.PageRepoVcCommit().load({ id: "example_id", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/commits/:id/page"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: parent
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this page_repo_vc_commit belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this page_repo_vc_commit belongs to.
+  - key: id
+    value: "{{page_repo_vc_commit_id}}"
+    description: The page_repo_vc_commit this request addresses.
+order: 1000

@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "runner_pool_runner": {
+      "RUNNER_POOL_RUNNER00": {
+        "id": "RUNNER_POOL_RUNNER00",
+        "runner_pool_id": "RUNNER_POOL01"
+      },
+      "RUNNER_POOL_RUNNER01": {
+        "id": "RUNNER_POOL_RUNNER01",
+        "runner_pool_id": "RUNNER_POOL01"
+      },
+      "RUNNER_POOL_RUNNER02": {
+        "id": "RUNNER_POOL_RUNNER02",
+        "runner_pool_id": "RUNNER_POOL01"
+      }
+    }
+  },
+  "new": {
+    "runner_pool_runner": {
+      "runner_pool_runner_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/ci/runner_pools/{runner_pool_id}/runners": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/ci/runner_pools/{runner_pool_id}/runners": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

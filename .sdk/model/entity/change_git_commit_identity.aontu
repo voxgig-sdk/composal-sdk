@@ -1,0 +1,250 @@
+# Entity: change_git_commit_identity
+
+main: kit: entity: change_git_commit_identity: {
+
+  alias: field: {}
+
+  fields: {
+    change_id: {
+      h: "Change Id"
+      n: "change_id"
+      r: true
+      t: "`$STRING`"
+    }
+    change_number: {
+      h: "Change Number"
+      n: "change_number"
+      r: true
+      t: "`$INTEGER`"
+    }
+    git_commit_id: {
+      h: "Git Commit Id"
+      n: "git_commit_id"
+      r: true
+      t: "`$STRING`"
+    }
+    git_commit_ids: {
+      h: "Git Commit Ids"
+      n: "git_commit_ids"
+      r: true
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+    identities: {
+      h: "Identities"
+      n: "identities"
+      r: true
+      t: "`$ARRAY`"
+    }
+    missing_git_commit_ids: {
+      h: "Missing Git Commit Ids"
+      n: "missing_git_commit_ids"
+      r: true
+      t: "`$ARRAY`"
+    }
+    patchset_number: {
+      h: "Patchset Number"
+      n: "patchset_number"
+      r: true
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "change_git_commit_identity"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "git_commit_ids"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_commit_identities"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_id"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_commit_identities"
+          q: {
+            exist: [
+              "organization_id"
+              "repo_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+              repo_slug: "repo_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "repos"
+            }
+            {
+              var: "repo_id"
+            }
+            {
+              lit: "vcs"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              lit: "git_commit_identities"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_commit_identities/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_id"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_commit_identities/{id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+              "repo_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              org_slug: "organization_id"
+              repo_slug: "repo_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "repos"
+            }
+            {
+              var: "repo_id"
+            }
+            {
+              lit: "vcs"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              lit: "git_commit_identities"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.repo")]
+  ]
+
+}

@@ -1,0 +1,18 @@
+# BasicMetronomeWebhookFlow
+
+main: kit: flow: BasicMetronomeWebhookFlow:
+{
+  entity: "metronome_webhook",
+  kind: "basic",
+  name: "BasicMetronomeWebhookFlow",
+  step: [
+    {
+      i: {
+        ref: "metronome_webhook_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicMetronomeWebhookFlow"
+}

@@ -1,0 +1,18 @@
+# BasicGithubAppInstallationAuthorizationFlow
+
+main: kit: flow: BasicGithubAppInstallationAuthorizationFlow:
+{
+  entity: "github_app_installation_authorization",
+  kind: "basic",
+  name: "BasicGithubAppInstallationAuthorizationFlow",
+  step: [
+    {
+      i: {
+        ref: "github_app_installation_authorization_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicGithubAppInstallationAuthorizationFlow"
+}

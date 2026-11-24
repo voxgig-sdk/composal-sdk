@@ -1,0 +1,61 @@
+# BasicGithubRunnerImageFlow
+
+main: kit: flow: BasicGithubRunnerImageFlow:
+{
+  entity: "github_runner_image",
+  kind: "basic",
+  name: "BasicGithubRunnerImageFlow",
+  step: [
+    {
+      i: {
+        ref: "github_runner_image_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "github_runner_image_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "github_runner_image_ref01",
+        srcdatavar: "github_runner_image_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "github_runner_image01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-github_runner_image_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGithubRunnerImageFlow"
+}

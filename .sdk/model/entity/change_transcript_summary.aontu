@@ -1,0 +1,100 @@
+# Entity: change_transcript_summary
+
+main: kit: entity: change_transcript_summary: {
+
+  alias: field: {}
+
+  fields: {
+    summaries: {
+      h: "Summaries"
+      n: "summaries"
+      r: true
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "change_transcript_summary"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/changes/transcript_summaries"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "ids"
+                or: "ids"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/changes/transcript_summaries"
+          q: {
+            exist: [
+              "ids"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              lit: "transcript_summaries"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.summaries`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

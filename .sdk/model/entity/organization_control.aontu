@@ -1,0 +1,91 @@
+# Entity: organization_control
+
+main: kit: entity: organization_control: {
+
+  alias: field: {}
+
+  name: "organization_control"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "device_id"
+            "native_device_id"
+            "pairing_generation"
+          ]
+          co: {
+            id: "POST /api/v1/spark/organizations/{organization_id}/control/admission"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/spark/organizations/{organization_id}/control/admission"
+          q: {
+            "$action": "admission"
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              organization_id: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "control"
+            }
+            {
+              lit: "admission"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

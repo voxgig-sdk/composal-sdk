@@ -1,0 +1,23 @@
+$kind: collection
+id: "6b7a44b9-0a5c-53bd-9b42-ccde8a5f7857"
+description: |-
+  The **admin_org** entity. Its requests address one record by `{{admin_org_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `billing_email` | string | yes |  |
+  | `billing_reason` | string |  |  |
+  | `customize_onboarding_packages` | boolean |  |  |
+  | `deployment_usage_visibility` | string | yes |  |
+  | `deployment_usage_visible` | boolean | yes |  |
+  | `id` | string | yes |  |
+  | `monthly_price_dollars` | string |  |  |
+  | `monthly_price_override_cents` | integer | yes |  |
+  | `name` | string | yes |  |
+  | `onboarding_custom_pricing` | boolean |  |  |
+  | `onboarding_package_keys` | array |  |  |
+  | `owner_email` | string | yes |  |
+  | `package_id` | string | yes |  |
+  | `skip_payment` | boolean |  |  |
+  | `slug` | string | yes |  |
+order: 2000

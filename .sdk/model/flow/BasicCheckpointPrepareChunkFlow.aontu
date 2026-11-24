@@ -1,0 +1,24 @@
+# BasicCheckpointPrepareChunkFlow
+
+main: kit: flow: BasicCheckpointPrepareChunkFlow:
+{
+  entity: "checkpoint_prepare_chunk",
+  kind: "basic",
+  name: "BasicCheckpointPrepareChunkFlow",
+  step: [
+    {
+      i: {
+        ref: "checkpoint_prepare_chunk_ref01"
+      }
+
+      m: {
+        agent_session_id: "agent_session01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicCheckpointPrepareChunkFlow"
+}

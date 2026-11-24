@@ -1,0 +1,79 @@
+{
+  "existing": {
+    "github_onboarding_import": {
+      "GITHUB_ONBOARDING_IMPORT00": {
+        "account_login": "s82",
+        "complete": false,
+        "created_at": "s84",
+        "failed_item_count": 133,
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "id": "GITHUB_ONBOARDING_IMPORT00",
+        "imported_item_count": 136,
+        "item_count": 137,
+        "items": [],
+        "repositories": "s8b",
+        "status": "s8c",
+        "terminal_item_count": 141,
+        "updated_at": "s8e",
+        "organization_id": "ORGANIZATION01"
+      },
+      "GITHUB_ONBOARDING_IMPORT01": {
+        "account_login": "s104",
+        "complete": false,
+        "created_at": "s106",
+        "failed_item_count": 263,
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "id": "GITHUB_ONBOARDING_IMPORT01",
+        "imported_item_count": 266,
+        "item_count": 267,
+        "items": [],
+        "repositories": "s10d",
+        "status": "s10e",
+        "terminal_item_count": 271,
+        "updated_at": "s110",
+        "organization_id": "ORGANIZATION01"
+      },
+      "GITHUB_ONBOARDING_IMPORT02": {
+        "account_login": "s186",
+        "complete": false,
+        "created_at": "s188",
+        "failed_item_count": 393,
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "id": "GITHUB_ONBOARDING_IMPORT02",
+        "imported_item_count": 396,
+        "item_count": 397,
+        "items": [],
+        "repositories": "s18f",
+        "status": "s190",
+        "terminal_item_count": 401,
+        "updated_at": "s192",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "github_onboarding_import": {
+      "github_onboarding_import_ref01": {
+        "account_login": "s208",
+        "complete": false,
+        "created_at": "s20a",
+        "failed_item_count": 523,
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "imported_item_count": 526,
+        "item_count": 527,
+        "items": [],
+        "repositories": "s211",
+        "status": "s212",
+        "terminal_item_count": 531,
+        "updated_at": "s214"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/github_onboarding/imports": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

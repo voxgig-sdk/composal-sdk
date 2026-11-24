@@ -1,0 +1,146 @@
+{
+  "existing": {
+    "spark_agent_thread": {
+      "SPARK_AGENT_THREAD00": {
+        "archived_count": "sf0",
+        "can_create": false,
+        "execution": "sf2",
+        "first_input": "sf3",
+        "first_input_key": "sf4",
+        "first_input_requester_membership_id": "FIRST_INPUT_REQUESTER_MEMBERSHIP01",
+        "id": "SPARK_AGENT_THREAD00",
+        "inherit_context": false,
+        "local_activities": {},
+        "local_archived_count": 249,
+        "local_next_cursor": "sfa",
+        "local_scope_key": "sfb",
+        "local_status_pending": true,
+        "local_threads": [],
+        "main_thread_id": "MAIN_THREAD01",
+        "message": "sff",
+        "next_cursor": "s100",
+        "parent_conversation_id": "PARENT_CONVERSATION01",
+        "requester_membership_id": "REQUESTER_MEMBERSHIP01",
+        "selected_thread": "s103",
+        "thread": {},
+        "threads": [],
+        "title": "s106",
+        "total_archived_count": "s107",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "SPARK_AGENT_THREAD01": {
+        "archived_count": "s1e0",
+        "can_create": false,
+        "execution": "s1e2",
+        "first_input": "s1e3",
+        "first_input_key": "s1e4",
+        "first_input_requester_membership_id": "FIRST_INPUT_REQUESTER_MEMBERSHIP01",
+        "id": "SPARK_AGENT_THREAD01",
+        "inherit_context": false,
+        "local_activities": {},
+        "local_archived_count": 489,
+        "local_next_cursor": "s1ea",
+        "local_scope_key": "s1eb",
+        "local_status_pending": true,
+        "local_threads": [],
+        "main_thread_id": "MAIN_THREAD01",
+        "message": "s1ef",
+        "next_cursor": "s1f0",
+        "parent_conversation_id": "PARENT_CONVERSATION01",
+        "requester_membership_id": "REQUESTER_MEMBERSHIP01",
+        "selected_thread": "s1f3",
+        "thread": {},
+        "threads": [],
+        "title": "s1f6",
+        "total_archived_count": "s1f7",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "SPARK_AGENT_THREAD02": {
+        "archived_count": "s2d0",
+        "can_create": false,
+        "execution": "s2d2",
+        "first_input": "s2d3",
+        "first_input_key": "s2d4",
+        "first_input_requester_membership_id": "FIRST_INPUT_REQUESTER_MEMBERSHIP01",
+        "id": "SPARK_AGENT_THREAD02",
+        "inherit_context": false,
+        "local_activities": {},
+        "local_archived_count": 729,
+        "local_next_cursor": "s2da",
+        "local_scope_key": "s2db",
+        "local_status_pending": true,
+        "local_threads": [],
+        "main_thread_id": "MAIN_THREAD01",
+        "message": "s2df",
+        "next_cursor": "s2e0",
+        "parent_conversation_id": "PARENT_CONVERSATION01",
+        "requester_membership_id": "REQUESTER_MEMBERSHIP01",
+        "selected_thread": "s2e3",
+        "thread": {},
+        "threads": [],
+        "title": "s2e6",
+        "total_archived_count": "s2e7",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "spark_agent_thread": {
+      "spark_agent_thread_ref01": {
+        "archived_count": "s3c0",
+        "can_create": false,
+        "execution": "s3c2",
+        "first_input": "s3c3",
+        "first_input_key": "s3c4",
+        "first_input_requester_membership_id": "FIRST_INPUT_REQUESTER_MEMBERSHIP01",
+        "inherit_context": false,
+        "local_activities": {},
+        "local_archived_count": 969,
+        "local_next_cursor": "s3ca",
+        "local_scope_key": "s3cb",
+        "local_status_pending": true,
+        "local_threads": [],
+        "main_thread_id": "MAIN_THREAD01",
+        "message": "s3cf",
+        "next_cursor": "s3d0",
+        "parent_conversation_id": "PARENT_CONVERSATION01",
+        "requester_membership_id": "REQUESTER_MEMBERSHIP01",
+        "selected_thread": "s3d3",
+        "thread": {},
+        "threads": [],
+        "title": "s3d6",
+        "total_archived_count": "s3d7"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/compact": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/snooze": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/threads": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

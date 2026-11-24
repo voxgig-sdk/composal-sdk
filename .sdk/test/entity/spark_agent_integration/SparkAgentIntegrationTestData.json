@@ -1,0 +1,131 @@
+{
+  "existing": {
+    "spark_agent_integration": {
+      "SPARK_AGENT_INTEGRATION00": {
+        "account_counts": {},
+        "accounts_path": "se7",
+        "added_toolkits": [],
+        "can_manage": false,
+        "can_manage_organization": true,
+        "catalog": [],
+        "connect_as": "sec",
+        "connect_as_by_toolkit": {},
+        "connected_counts": {},
+        "connection_id": "CONNECTION01",
+        "connections": [],
+        "email": {},
+        "enabled": true,
+        "enabled_toolkits": [],
+        "generation": 244,
+        "pagination": {},
+        "pending_counts": {},
+        "personal_creation_key_supported": false,
+        "private_agent": true,
+        "shared_agent_personal_accounts_enabled": false,
+        "slack": {},
+        "webhook_connections": [],
+        "webhooks_available": true,
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "SPARK_AGENT_INTEGRATION00"
+      },
+      "SPARK_AGENT_INTEGRATION01": {
+        "account_counts": {},
+        "accounts_path": "s1cd",
+        "added_toolkits": [],
+        "can_manage": false,
+        "can_manage_organization": true,
+        "catalog": [],
+        "connect_as": "s1d2",
+        "connect_as_by_toolkit": {},
+        "connected_counts": {},
+        "connection_id": "CONNECTION01",
+        "connections": [],
+        "email": {},
+        "enabled": true,
+        "enabled_toolkits": [],
+        "generation": 474,
+        "pagination": {},
+        "pending_counts": {},
+        "personal_creation_key_supported": false,
+        "private_agent": true,
+        "shared_agent_personal_accounts_enabled": false,
+        "slack": {},
+        "webhook_connections": [],
+        "webhooks_available": true,
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "SPARK_AGENT_INTEGRATION01"
+      },
+      "SPARK_AGENT_INTEGRATION02": {
+        "account_counts": {},
+        "accounts_path": "s2b3",
+        "added_toolkits": [],
+        "can_manage": false,
+        "can_manage_organization": true,
+        "catalog": [],
+        "connect_as": "s2b8",
+        "connect_as_by_toolkit": {},
+        "connected_counts": {},
+        "connection_id": "CONNECTION01",
+        "connections": [],
+        "email": {},
+        "enabled": true,
+        "enabled_toolkits": [],
+        "generation": 704,
+        "pagination": {},
+        "pending_counts": {},
+        "personal_creation_key_supported": false,
+        "private_agent": true,
+        "shared_agent_personal_accounts_enabled": false,
+        "slack": {},
+        "webhook_connections": [],
+        "webhooks_available": true,
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "SPARK_AGENT_INTEGRATION02"
+      }
+    }
+  },
+  "new": {
+    "spark_agent_integration": {
+      "spark_agent_integration_ref01": {
+        "account_counts": {},
+        "accounts_path": "s399",
+        "added_toolkits": [],
+        "can_manage": false,
+        "can_manage_organization": true,
+        "catalog": [],
+        "connect_as": "s39e",
+        "connect_as_by_toolkit": {},
+        "connected_counts": {},
+        "connection_id": "CONNECTION01",
+        "connections": [],
+        "email": {},
+        "enabled": true,
+        "enabled_toolkits": [],
+        "generation": 934,
+        "pagination": {},
+        "pending_counts": {},
+        "personal_creation_key_supported": false,
+        "private_agent": true,
+        "shared_agent_personal_accounts_enabled": false,
+        "slack": {},
+        "webhook_connections": [],
+        "webhooks_available": true
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/integrations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/integrations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

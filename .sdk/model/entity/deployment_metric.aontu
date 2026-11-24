@@ -1,0 +1,195 @@
+# Entity: deployment_metric
+
+main: kit: entity: deployment_metric: {
+
+  alias: field: {}
+
+  fields: {
+    auto_deploy: {
+      h: "Auto Deploy"
+      n: "auto_deploy"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    environment_id: {
+      h: "Environment Id"
+      n: "environment_id"
+      r: true
+      t: "`$STRING`"
+    }
+    environment_name: {
+      h: "Environment Name"
+      n: "environment_name"
+      r: true
+      t: "`$STRING`"
+    }
+    placement_id: {
+      h: "Placement Id"
+      n: "placement_id"
+      r: true
+      t: "`$STRING`"
+    }
+    redeploy: {
+      h: "Redeploy"
+      n: "redeploy"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    region_count: {
+      h: "Region Count"
+      n: "region_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    replicas_per_region: {
+      h: "Replicas Per Region"
+      n: "replicas_per_region"
+      r: true
+      t: "`$INTEGER`"
+    }
+    rollout_strategy: {
+      h: "Rollout Strategy"
+      n: "rollout_strategy"
+      r: true
+      t: "`$STRING`"
+    }
+    service_id: {
+      h: "Service Id"
+      n: "service_id"
+      r: true
+      t: "`$STRING`"
+    }
+    service_name: {
+      h: "Service Name"
+      n: "service_name"
+      r: true
+      t: "`$STRING`"
+    }
+    source_ref: {
+      h: "Source Ref"
+      n: "source_ref"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  name: "deployment_metric"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/pages/deployments/metrics"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "app"
+                or: "app"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "environment"
+                or: "environment"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "metrics_range"
+                or: "metrics_range"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "service"
+                or: "service"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/pages/deployments/metrics"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "pages"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              lit: "metrics"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.deploy_targets`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

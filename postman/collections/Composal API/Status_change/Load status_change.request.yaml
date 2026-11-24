@@ -1,0 +1,21 @@
+$kind: http-request
+id: "07c8340c-e474-55be-8b18-3eaf327e3c53"
+description: |-
+  The `load` operation of **status_change**.
+
+  SDK: `client.StatusChange().load({ id: "example_id", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/ci/status/changes/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this status_change belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this status_change belongs to.
+  - key: id
+    value: "{{status_change_id}}"
+    description: The status_change this request addresses.
+order: 1000

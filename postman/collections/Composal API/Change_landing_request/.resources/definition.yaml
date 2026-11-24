@@ -1,0 +1,23 @@
+$kind: collection
+id: "6e61a3aa-a59a-53c4-94cc-c570646f304d"
+description: |-
+  The **change_landing_request** entity, which belongs to a organization and a repo and a change. Its requests address one record by `{{change_landing_request_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `change_ids` | array |  |  |
+  | `count` | integer | yes |  |
+  | `defer_until_ready` | boolean |  |  |
+  | `expected_requirement_version` | string |  |  |
+  | `expected_scope_version` | string |  |  |
+  | `head_change_id` | string |  |  |
+  | `id` | string |  |  |
+  | `numbers` | array | yes |  |
+  | `override_acknowledged` | boolean |  |  |
+  | `override_codes` | array |  |  |
+  | `position` | integer |  |  |
+  | `priority` | string |  |  |
+  | `scope_version` | string | yes |  |
+  | `state` | string | yes |  |
+  | `version` | integer |  |  |
+order: 165000

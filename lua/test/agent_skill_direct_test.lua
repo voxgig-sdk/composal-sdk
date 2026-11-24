@@ -32,7 +32,7 @@ describe("AgentSkillDirect", function()
       return
     end
     if setup.live then
-      for _, _live_key in ipairs({"agent01", "organization01"}) do
+      for _, _live_key in ipairs({"organization01"}) do
         if setup.idmap[_live_key] == nil then
           runner.live_miss(pending, LIVE_STRICT, "Live test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_AGENT_SKILL_ENTID")
         end
@@ -46,18 +46,13 @@ describe("AgentSkillDirect", function()
     local params = {}
     local query = {}
     if setup.live then
-      params["agent_id"] = setup.idmap["agent01"]
-    else
-      params["agent_id"] = "direct01"
-    end
-    if setup.live then
       params["organization_id"] = setup.idmap["organization01"]
     else
-      params["organization_id"] = "direct02"
+      params["organization_id"] = "direct01"
     end
 
     local result, err = client:direct({
-      path = "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/skills",
+      path = "api/v1/organizations/{organization_id}/agent_skills",
       method = "GET",
       params = params,
       query = query,
@@ -76,6 +71,81 @@ describe("AgentSkillDirect", function()
       assert.are.equal(200, helpers.to_int(result["status"]))
       assert.is_table(result["data"])
       assert.are.equal(2, #result["data"])
+      assert.are.equal(1, #setup.calls)
+    end
+  end)
+
+  it("should direct-load-agent_skill", function()
+    local setup = agent_skill_direct_setup({ id = "direct01" })
+    local _should_skip, _reason = runner.is_control_skipped("direct", "direct-load-agent_skill", setup.live and "live" or "unit")
+    if _should_skip then
+      pending(_reason or "skipped via sdk-test-control.json")
+      return
+    end
+    if setup.live then
+      for _, _live_key in ipairs({"organization01"}) do
+        if setup.idmap[_live_key] == nil then
+          runner.live_miss(pending, LIVE_STRICT, "Live test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_AGENT_SKILL_ENTID")
+        end
+      end
+    end
+    if setup.live then
+      runner.live_pace()
+    end
+    local client = setup.client
+
+    local params = {}
+    local query = {}
+    if setup.live then
+      local list_result, list_err = client:direct({
+        path = "api/v1/organizations/{organization_id}/agent_skills",
+        method = "GET",
+        params = {["organization_id"] = setup.idmap["organization01"]},
+      })
+      if not live_ok(list_result, list_err) then
+        runner.live_miss(pending, LIVE_STRICT, "Live list discovery failed: " .. runner.live_describe(list_result, list_err))
+      end
+      local records = runner.live_list(list_result["data"])
+      if records == nil then
+        runner.live_miss(pending, LIVE_STRICT, "Live list discovery returned no list: " .. runner.live_describe(list_result, list_err))
+      end
+      if records[1] == nil then
+        runner.live_empty(pending, "The account has no agent_skill record to load")
+      end
+      local first = type(records[1]) == "table" and records[1] or {}
+      local found = first["id"]
+      if found == nil then
+        runner.live_miss(pending, LIVE_STRICT, "Live load blocked: discovery returned no usable identity")
+      end
+      params["id"] = found
+      params["organization_id"] = setup.idmap["organization01"]
+    else
+      params["id"] = "direct01"
+      params["organization_id"] = "direct02"
+    end
+
+    local result, err = client:direct({
+      path = "api/v1/organizations/{organization_id}/agent_skills/{id}",
+      method = "GET",
+      params = params,
+      query = query,
+    })
+    if setup.live then
+      if not live_ok(result, err) then
+        runner.live_miss(pending, LIVE_STRICT, "Live load failed: " .. runner.live_describe(result, err))
+      end
+      if result["data"] == nil then
+        runner.live_miss(pending, LIVE_STRICT, "Live load returned no data: " .. runner.live_describe(result, err))
+      end
+      assert.is_not_nil(result["data"])
+    else
+      assert.is_nil(err)
+      assert.is_true(result["ok"])
+      assert.are.equal(200, helpers.to_int(result["status"]))
+      assert.is_not_nil(result["data"])
+      if type(result["data"]) == "table" then
+        assert.are.equal("direct01", result["data"]["id"])
+      end
       assert.are.equal(1, #setup.calls)
     end
   end)

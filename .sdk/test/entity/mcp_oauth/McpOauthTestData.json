@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "mcp_oauth": {
+      "MCP_OAUTH00": {
+        "id": "MCP_OAUTH00"
+      },
+      "MCP_OAUTH01": {
+        "id": "MCP_OAUTH01"
+      },
+      "MCP_OAUTH02": {
+        "id": "MCP_OAUTH02"
+      }
+    }
+  },
+  "new": {
+    "mcp_oauth": {
+      "mcp_oauth_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/mcp/oauth/consent": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/mcp/oauth/register": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/mcp/oauth/revoke": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/mcp/oauth/token": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/mcp/oauth/consent": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/mcp/oauth/authorize": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

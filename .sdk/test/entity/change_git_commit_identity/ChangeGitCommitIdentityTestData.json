@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "change_git_commit_identity": {
+      "CHANGE_GIT_COMMIT_IDENTITY00": {
+        "change_id": "CHANGE01",
+        "change_number": 81,
+        "git_commit_id": "GIT_COMMIT01",
+        "git_commit_ids": [],
+        "id": "CHANGE_GIT_COMMIT_IDENTITY00",
+        "identities": [],
+        "missing_git_commit_ids": [],
+        "patchset_number": 87,
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "CHANGE_GIT_COMMIT_IDENTITY01": {
+        "change_id": "CHANGE01",
+        "change_number": 161,
+        "git_commit_id": "GIT_COMMIT01",
+        "git_commit_ids": [],
+        "id": "CHANGE_GIT_COMMIT_IDENTITY01",
+        "identities": [],
+        "missing_git_commit_ids": [],
+        "patchset_number": 167,
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "CHANGE_GIT_COMMIT_IDENTITY02": {
+        "change_id": "CHANGE01",
+        "change_number": 241,
+        "git_commit_id": "GIT_COMMIT01",
+        "git_commit_ids": [],
+        "id": "CHANGE_GIT_COMMIT_IDENTITY02",
+        "identities": [],
+        "missing_git_commit_ids": [],
+        "patchset_number": 247,
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "change_git_commit_identity": {
+      "change_git_commit_identity_ref01": {
+        "change_id": "CHANGE01",
+        "change_number": 321,
+        "git_commit_id": "GIT_COMMIT01",
+        "git_commit_ids": [],
+        "identities": [],
+        "missing_git_commit_ids": [],
+        "patchset_number": 327
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_commit_identities": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_commit_identities/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

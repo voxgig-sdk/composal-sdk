@@ -1,0 +1,25 @@
+$kind: http-request
+id: "73aa70f3-4a26-5f28-b598-92c06d158fc6"
+description: |-
+  The `activity` action of **swarm_task**, a route of its `load` operation.
+
+  SDK: `client.SwarmTask().load({ "swarm_id": "swarm_id", "id": "ID", $action: "activity" })`
+url: "{{base}}/api/v1/agent/swarms/:swarm_id/tasks/:task_id/activity"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: after_seq
+    value: ""
+    disabled: true
+  - key: limit
+    value: ""
+    disabled: true
+pathVariables:
+  - key: swarm_id
+    value: "{{swarm_id}}"
+    description: "Input: swarm_id."
+  - key: task_id
+    value: "{{swarm_task_id}}"
+    description: The swarm_task this request addresses.
+order: 2000

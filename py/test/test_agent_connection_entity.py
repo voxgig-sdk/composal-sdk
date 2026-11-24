@@ -37,7 +37,7 @@ class TestAgentConnectionEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.AgentConnection(None).list({"agent_id": 1, "organization_id": "x"}, None)
+            client.AgentConnection(None).list({"organization_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -52,14 +52,14 @@ class TestAgentConnectionEntity:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
-            print("LIVE STEP {\"id\":\"agent_connection.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup\"}")
-            print("LIVE STEP {\"id\":\"agent_connection.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}\"}")
-            print("LIVE STEP {\"id\":\"agent_connection.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}\"}")
+            print("LIVE STEP {\"id\":\"agent_connection.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agent_connections/{id}/adopt_custody\"}")
+            print("LIVE STEP {\"id\":\"agent_connection.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/agent_connections/{id}\"}")
+            print("LIVE STEP {\"id\":\"agent_connection.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agent_connections/{id}\"}")
             print("LIVE STEP {\"id\":\"agent_connection.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
             return self._run_get_only_flow(setup)
 
         if setup["live"]:
-            for _live_key in ["agent01", "organization01"]:
+            for _live_key in ["organization01"]:
                 if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
                     runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_AGENT_CONNECTION_ENTID")
         client = setup["client"]
@@ -70,7 +70,6 @@ class TestAgentConnectionEntity:
         agent_connection_ref01_ent = client.AgentConnection(None)
         agent_connection_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.agent_connection"), "agent_connection_ref01"))
-        agent_connection_ref01_data["agent_id"] = setup["idmap"]["agent01"]
         agent_connection_ref01_data["organization_id"] = setup["idmap"]["organization01"]
 
         agent_connection_ref01_data = helpers.to_map(runner.entity_data(agent_connection_ref01_ent.create(agent_connection_ref01_data, None)))
@@ -81,7 +80,6 @@ class TestAgentConnectionEntity:
             runner.live_pace()
         # LIST
         agent_connection_ref01_match = {
-            "agent_id": setup["idmap"]["agent01"],
             "organization_id": setup["idmap"]["organization01"],
         }
 
@@ -98,11 +96,10 @@ class TestAgentConnectionEntity:
         # UPDATE
         agent_connection_ref01_data_up0_up = {
             "id": agent_connection_ref01_data["id"],
-            "agent_id": setup["idmap"]["agent_id"],
             "organization_id": setup["idmap"]["organization_id"],
         }
 
-        agent_connection_ref01_markdef_up0_name = "agent_card_url"
+        agent_connection_ref01_markdef_up0_name = "admin_disabled_at"
         agent_connection_ref01_markdef_up0_value = "Mark01-agent_connection_ref01_" + str(setup["now"])
         agent_connection_ref01_data_up0_up[agent_connection_ref01_markdef_up0_name] = agent_connection_ref01_markdef_up0_value
 
@@ -117,8 +114,7 @@ class TestAgentConnectionEntity:
         agent_connection_ref01_match_dt0 = {
             "id": agent_connection_ref01_data["id"],
         }
-        agent_connection_ref01_match_dt0["agent_id"] = setup["idmap"].get("agent_id") or setup["idmap"].get("agent01")
-        agent_connection_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
+        agent_connection_ref01_match_dt0["organization_id"] = agent_connection_ref01_data.get("organization_id") if isinstance(agent_connection_ref01_data.get("organization_id"), (str, int, float)) else setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
         agent_connection_ref01_data_dt0_loaded = agent_connection_ref01_ent.load(agent_connection_ref01_match_dt0, None)
         agent_connection_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(agent_connection_ref01_data_dt0_loaded))
         assert agent_connection_ref01_data_dt0_load_result is not None
@@ -130,7 +126,6 @@ class TestAgentConnectionEntity:
         agent_connection_ref01_match_rm0 = {
             "id": agent_connection_ref01_data["id"],
         }
-        agent_connection_ref01_match_rm0["agent_id"] = setup["idmap"].get("agent_id") or setup["idmap"].get("agent01")
         agent_connection_ref01_match_rm0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
         agent_connection_ref01_ent.remove(agent_connection_ref01_match_rm0, None)
 
@@ -138,7 +133,6 @@ class TestAgentConnectionEntity:
             runner.live_pace()
         # LIST
         agent_connection_ref01_match_rt0 = {
-            "agent_id": setup["idmap"]["agent01"],
             "organization_id": setup["idmap"]["organization01"],
         }
 
@@ -153,7 +147,7 @@ class TestAgentConnectionEntity:
 
     def _run_get_only_flow(self, setup):
         if setup["live"]:
-            for _live_key in ["agent01", "organization01"]:
+            for _live_key in ["organization01"]:
                 if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
                     runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_AGENT_CONNECTION_ENTID")
         client = setup["client"]
@@ -161,7 +155,7 @@ class TestAgentConnectionEntity:
             _live_id = None if setup.get("synthetic_only") else setup["idmap"].get("agent_connection01")
             runner.live_pace()
             runner.live_existing(setup, LIVE_STRICT, "agent_connection",
-                                 lambda: client.AgentConnection(None).list({"agent_id": setup["idmap"].get("agent01"), "organization_id": setup["idmap"].get("organization01")}, None),
+                                 lambda: client.AgentConnection(None).list({"organization_id": setup["idmap"].get("organization01")}, None),
                                  "id", _live_id)
 
         # Bootstrap entity data from existing test data.
@@ -176,7 +170,6 @@ class TestAgentConnectionEntity:
         # LIST
         agent_connection_ref01_ent = client.AgentConnection(None)
         agent_connection_ref01_match = {
-            "agent_id": setup["idmap"]["agent01"],
             "organization_id": setup["idmap"]["organization01"],
         }
 
@@ -189,8 +182,7 @@ class TestAgentConnectionEntity:
         agent_connection_ref01_match_dt0 = {
             "id": agent_connection_ref01_data["id"],
         }
-        agent_connection_ref01_match_dt0["agent_id"] = setup["idmap"].get("agent_id") or setup["idmap"].get("agent01")
-        agent_connection_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
+        agent_connection_ref01_match_dt0["organization_id"] = agent_connection_ref01_data.get("organization_id") if isinstance(agent_connection_ref01_data.get("organization_id"), (str, int, float)) else setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
         agent_connection_ref01_data_dt0_loaded = agent_connection_ref01_ent.load(agent_connection_ref01_match_dt0, None)
         agent_connection_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(agent_connection_ref01_data_dt0_loaded))
         assert agent_connection_ref01_data_dt0_load_result is not None
@@ -214,7 +206,7 @@ def _agent_connection_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["agent_connection01", "agent_connection02", "agent_connection03", "organization01", "organization02", "organization03", "agent01", "agent02", "agent03"],
+        ["agent_connection01", "agent_connection02", "agent_connection03", "organization01", "organization02", "organization03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",
@@ -240,8 +232,6 @@ def _agent_connection_basic_setup(extra):
         env.get("COMPOSAL_TEST_AGENT_CONNECTION_ENTID"))
     if idmap_resolved is None:
         idmap_resolved = helpers.to_map(idmap)
-    if idmap_resolved.get("agent_id") is None:
-        idmap_resolved["agent_id"] = idmap_resolved.get("agent01")
     if idmap_resolved.get("organization_id") is None:
         idmap_resolved["organization_id"] = idmap_resolved.get("organization01")
 

@@ -1,0 +1,157 @@
+# Entity: lease_verify_diagnostic
+
+main: kit: entity: lease_verify_diagnostic: {
+
+  alias: field: {}
+
+  fields: {
+    browser_events: {
+      h: "Browser Events"
+      n: "browser_events"
+      r: true
+      t: "`$OBJECT`"
+    }
+    live_browser: {
+      h: "Live Browser"
+      n: "live_browser"
+      r: true
+      t: "`$OBJECT`"
+    }
+    live_view: {
+      h: "Live View"
+      n: "live_view"
+      r: true
+      sh: "The tester's read-only live stream for page viewers."
+      t: "`$OBJECT`"
+    }
+    steps: {
+      h: "Steps"
+      n: "steps"
+      r: false
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "lease_verify_diagnostic"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "browser_events"
+            "live_browser"
+            "live_view"
+            "steps"
+          ]
+          co: {
+            id: "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_diagnostics"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "x_vex_lease_token"
+                or: "X-Vex-Lease-Token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "lease_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "swarm_id"
+                or: "swarm_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "task_id"
+                or: "task_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_diagnostics"
+          q: {
+            exist: [
+              "lease_id"
+              "swarm_id"
+              "task_id"
+              "x_vex_lease_token"
+            ]
+          }
+          r: {
+            param: {
+              id: "lease_id"
+              swarm_id: "swarm_id"
+              task_id: "task_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "swarms"
+            }
+            {
+              var: "swarm_id"
+            }
+            {
+              lit: "tasks"
+            }
+            {
+              var: "task_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "lease_id"
+            }
+            {
+              lit: "verify_diagnostics"
+            }
+          ]
+          t: {
+            req: {
+              browser_events: "`reqdata.browser_event`"
+              live_browser: "`reqdata.live_browser`"
+              live_view: "`reqdata.live_view`"
+              steps: "`reqdata.step`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

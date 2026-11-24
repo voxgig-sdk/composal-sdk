@@ -1,0 +1,42 @@
+$kind: http-request
+id: "00e02b28-7320-5061-b7d4-e69aec4c4a59"
+description: |-
+  The `submit` action of **vc_change**, a route of its `create` operation.
+
+  SDK: `client.VcChange().create({ "organization_id": "organization_id", "repo_id": "repo_id", $action: "submit" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/submit"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_change belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_change belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "git_publication_id": "example",
+      "message": "example",
+      "reviewers": [
+        "example"
+      ],
+      "remove_reviewers": [
+        "example"
+      ],
+      "labels": [
+        "example"
+      ],
+      "draft": true,
+      "assets": [
+        {
+          "id": "example",
+          "alias": "example"
+        }
+      ]
+    }
+order: 15000

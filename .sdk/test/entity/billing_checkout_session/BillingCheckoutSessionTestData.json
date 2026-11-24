@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "billing_checkout_session": {
+      "BILLING_CHECKOUT_SESSION00": {
+        "cancel_url": "s3c",
+        "coupon_code": "s3d",
+        "entry_point": "s3e",
+        "package_key": "s3f",
+        "package_revision": 64,
+        "success_url": "s41",
+        "organization_id": "ORGANIZATION01",
+        "id": "BILLING_CHECKOUT_SESSION00"
+      },
+      "BILLING_CHECKOUT_SESSION01": {
+        "cancel_url": "s78",
+        "coupon_code": "s79",
+        "entry_point": "s7a",
+        "package_key": "s7b",
+        "package_revision": 124,
+        "success_url": "s7d",
+        "organization_id": "ORGANIZATION01",
+        "id": "BILLING_CHECKOUT_SESSION01"
+      },
+      "BILLING_CHECKOUT_SESSION02": {
+        "cancel_url": "sb4",
+        "coupon_code": "sb5",
+        "entry_point": "sb6",
+        "package_key": "sb7",
+        "package_revision": 184,
+        "success_url": "sb9",
+        "organization_id": "ORGANIZATION01",
+        "id": "BILLING_CHECKOUT_SESSION02"
+      }
+    }
+  },
+  "new": {
+    "billing_checkout_session": {
+      "billing_checkout_session_ref01": {
+        "cancel_url": "sf0",
+        "coupon_code": "sf1",
+        "entry_point": "sf2",
+        "package_key": "sf3",
+        "package_revision": 244,
+        "success_url": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/billing/checkout_sessions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

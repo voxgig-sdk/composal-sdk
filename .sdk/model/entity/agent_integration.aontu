@@ -12,19 +12,30 @@ main: kit: entity: agent_integration: {
       sh: "Accounts the viewer can see per toolkit, across all account pages."
       t: "`$OBJECT`"
     }
-    accounts_path: {
-      h: "Accounts Path"
-      n: "accounts_path"
-      r: true
-      sh: "Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists."
-      t: "`$STRING`"
+    can_cancel_sign_in: {
+      h: "Can Cancel Sign In"
+      n: "can_cancel_sign_in"
+      r: false
+      sh: "The viewer can cancel the unfinished authorization attempt."
+      t: "`$BOOLEAN`"
     }
-    added_toolkits: {
-      h: "Added Toolkits"
-      n: "added_toolkits"
+    can_delete: {
+      h: "Can Delete"
+      n: "can_delete"
       r: true
-      sh: "Apps with a connected or connecting account the viewer can see."
-      t: "`$ARRAY`"
+      t: "`$BOOLEAN`"
+    }
+    can_disconnect: {
+      h: "Can Disconnect"
+      n: "can_disconnect"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_enable: {
+      h: "Can Enable"
+      n: "can_enable"
+      r: true
+      t: "`$BOOLEAN`"
     }
     can_manage: {
       h: "Can Manage"
@@ -32,10 +43,23 @@ main: kit: entity: agent_integration: {
       r: true
       t: "`$BOOLEAN`"
     }
-    can_manage_organization: {
-      h: "Can Manage Organization"
-      n: "can_manage_organization"
+    can_manage_sharing: {
+      h: "Can Manage Sharing"
+      n: "can_manage_sharing"
       r: true
+      t: "`$BOOLEAN`"
+    }
+    can_reconnect: {
+      h: "Can Reconnect"
+      n: "can_reconnect"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_sync: {
+      h: "Can Sync"
+      n: "can_sync"
+      r: true
+      sh: "The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished."
       t: "`$BOOLEAN`"
     }
     catalog: {
@@ -44,11 +68,11 @@ main: kit: entity: agent_integration: {
       r: true
       t: "`$ARRAY`"
     }
-    connect_as: {
-      h: "Connect As"
-      n: "connect_as"
+    connected_by: {
+      h: "Connected By"
+      n: "connected_by"
       r: true
-      sh: "The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization)."
+      sh: "Name of the person whose sign-in this account is."
       t: [
         "`$ONE`"
         [
@@ -57,12 +81,12 @@ main: kit: entity: agent_integration: {
         ]
       ]
     }
-    connect_as_by_toolkit: {
-      h: "Connect As By Toolkit"
-      n: "connect_as_by_toolkit"
+    connected_by_you: {
+      h: "Connected By You"
+      n: "connected_by_you"
       r: true
-      sh: "Apps whose Connect differs from connect_as because their sign-in only makes team accounts."
-      t: "`$OBJECT`"
+      sh: "True when the viewer is the person whose sign-in this account is."
+      t: "`$BOOLEAN`"
     }
     connected_counts: {
       h: "Connected Counts"
@@ -71,43 +95,49 @@ main: kit: entity: agent_integration: {
       sh: "Signed-in accounts per toolkit, across all account pages."
       t: "`$OBJECT`"
     }
-    connection_id: {
-      h: "Connection Id"
-      n: "connection_id"
-      r: true
-      t: "`$STRING`"
-    }
     connections: {
       h: "Connections"
       n: "connections"
       r: true
       t: "`$ARRAY`"
     }
-    email: {
-      h: "Email"
-      n: "email"
-      r: true
-      sh: "A native agent's own email address."
-      t: "`$OBJECT`"
+    creation_key: {
+      h: "Creation Key"
+      n: "creation_key"
+      r: false
+      sh: "Stable identity for retrying this creation; retain it after an uncertain response."
+      t: "`$STRING`"
     }
-    enabled: {
-      h: "Enabled"
-      n: "enabled"
-      r: true
-      t: "`$BOOLEAN`"
-    }
-    enabled_toolkits: {
-      h: "Enabled Toolkits"
-      n: "enabled_toolkits"
-      r: true
-      sh: "Apps with a signed-in account this agent uses now, across all account pages, sorted."
-      t: "`$ARRAY`"
+    creation_key_digest: {
+      h: "Creation Key Digest"
+      n: "creation_key_digest"
+      r: false
+      sh: "SHA-256 of the unfinished setup key for its original creator."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
     }
     generation: {
       h: "Generation"
       n: "generation"
       r: true
       t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
     }
     pagination: {
       h: "Pagination"
@@ -122,45 +152,80 @@ main: kit: entity: agent_integration: {
       sh: "Accounts per toolkit whose sign-in was started but not finished, across all account pages."
       t: "`$OBJECT`"
     }
-    personal_creation_key_supported: {
-      h: "Personal Creation Key Supported"
-      n: "personal_creation_key_supported"
-      r: false
-      sh: "The personal account creation endpoint honors a creation key."
-      t: "`$BOOLEAN`"
-    }
-    private_agent: {
-      h: "Private Agent"
-      n: "private_agent"
+    provider_disabled_reason: {
+      h: "Provider Disabled Reason"
+      n: "provider_disabled_reason"
       r: true
-      sh: "Only the agent's owner can chat with it."
-      t: "`$BOOLEAN`"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
     }
-    shared_agent_personal_accounts_enabled: {
-      h: "Shared Agent Personal Accounts Enabled"
-      n: "shared_agent_personal_accounts_enabled"
-      r: true
-      sh: "Whether the organization lets a shared agent use one person's account for everyone who chats with it."
-      t: "`$BOOLEAN`"
-    }
-    slack: {
-      h: "Slack"
-      n: "slack"
+    provider_identity: {
+      h: "Provider Identity"
+      n: "provider_identity"
       r: true
       t: "`$OBJECT`"
     }
-    webhook_connections: {
-      h: "Webhook Connections"
-      n: "webhook_connections"
+    provider_name: {
+      h: "Provider Name"
+      n: "provider_name"
       r: true
-      t: "`$ARRAY`"
+      sh: "The app's display name; null for a custom MCP server, which uses the account name."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
     }
-    webhooks_available: {
-      h: "Webhooks Available"
-      n: "webhooks_available"
+    reference: {
+      h: "Reference"
+      n: "reference"
+      r: true
+      sh: "Pins this account's current authorization, as agent_connection_ID:GENERATION."
+      t: "`$STRING`"
+    }
+    sharing_status: {
+      h: "Sharing Status"
+      n: "sharing_status"
+      r: false
+      sh: "Agent account audience, including legacy personal and paused access."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    team_sharing_enabled: {
+      h: "Team Sharing Enabled"
+      n: "team_sharing_enabled"
       r: true
       t: "`$BOOLEAN`"
     }
+    team_sharing_version: {
+      h: "Team Sharing Version"
+      n: "team_sharing_version"
+      r: true
+      t: "`$INTEGER`"
+    }
+    toolkit: {
+      h: "Toolkit"
+      n: "toolkit"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
   }
 
   name: "agent_integration"
@@ -170,12 +235,12 @@ main: kit: entity: agent_integration: {
       points: [
         {
           bf: [
-            "connection_id"
-            "enabled"
-            "generation"
+            "callback"
+            "enable_for_agent"
+            "return_agent"
           ]
           co: {
-            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/integrations"
+            id: "POST /api/v1/organizations/{organization_id}/agent_integrations/{id}/authorize"
             source: "openapi3"
             version: 2
           }
@@ -183,7 +248,7 @@ main: kit: entity: agent_integration: {
             params: [
               {
                 k: "param"
-                n: "agent_id"
+                n: "id"
                 or: "id"
                 r: true
                 t: "`$STRING`"
@@ -196,56 +261,19 @@ main: kit: entity: agent_integration: {
                 t: "`$STRING`"
               }
             ]
-            query: [
-              {
-                explode: true
-                k: "query"
-                n: "cursor"
-                or: "cursor"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                explode: true
-                k: "query"
-                n: "limit"
-                or: "limit"
-                r: false
-                style: "form"
-                t: "`$INTEGER`"
-              }
-              {
-                explode: true
-                k: "query"
-                n: "q"
-                or: "q"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-              {
-                explode: true
-                k: "query"
-                n: "toolkit"
-                or: "toolkit"
-                r: false
-                style: "form"
-                t: "`$STRING`"
-              }
-            ]
           }
           m: "POST"
-          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations"
+          o: "/api/v1/organizations/{organization_id}/agent_integrations/{id}/authorize"
           q: {
+            "$action": "authorize"
             exist: [
-              "agent_id"
+              "id"
               "organization_id"
             ]
           }
           r: {
             param: {
-              id: "agent_id"
+              id: "id"
             }
           }
           rs: {
@@ -266,31 +294,30 @@ main: kit: entity: agent_integration: {
               var: "organization_id"
             }
             {
-              lit: "agents"
+              lit: "agent_integrations"
             }
             {
-              var: "agent_id"
+              var: "id"
             }
             {
-              lit: "spark"
-            }
-            {
-              lit: "integrations"
+              lit: "authorize"
             }
           ]
           t: {
-            req: "`reqdata`"
+            req: {
+              callback: "`reqdata.callback`"
+              enable_for_agent: "`reqdata.enable_for_agent`"
+              return_agent: "`reqdata.return_agent`"
+            }
             res: "`body`"
           }
         }
-      ]
-    }
-    list: {
-      name: "list"
-      points: [
         {
+          bf: [
+            "expected_generation"
+          ]
           co: {
-            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/integrations"
+            id: "POST /api/v1/organizations/{organization_id}/agent_integrations/{id}/cancel_sign_in"
             source: "openapi3"
             version: 2
           }
@@ -298,7 +325,7 @@ main: kit: entity: agent_integration: {
             params: [
               {
                 k: "param"
-                n: "agent_id"
+                n: "id"
                 or: "id"
                 r: true
                 t: "`$STRING`"
@@ -311,16 +338,514 @@ main: kit: entity: agent_integration: {
                 t: "`$STRING`"
               }
             ]
-            query: [
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agent_integrations/{id}/cancel_sign_in"
+          q: {
+            "$action": "cancel_sign_in"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_integrations"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "cancel_sign_in"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "code"
+            "state"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agent_integrations/{id}/complete"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
               {
-                explode: true
-                k: "query"
-                n: "catalog_q"
-                or: "catalog_q"
-                r: false
-                style: "form"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
                 t: "`$STRING`"
               }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agent_integrations/{id}/complete"
+          q: {
+            "$action": "complete"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_integrations"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "complete"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.connection`"
+          }
+        }
+        {
+          bf: [
+            "auth_mode"
+            "discovery_url"
+            "name"
+            "url"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agent_integrations/custom_mcp"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agent_integrations/custom_mcp"
+          q: {
+            "$action": "custom_mcp"
+            exist: [
+              "idempotency_key"
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_integrations"
+            }
+            {
+              lit: "custom_mcp"
+            }
+          ]
+          t: {
+            req: {
+              auth_mode: "`reqdata.auth_mode`"
+              discovery_url: "`reqdata.discovery_url`"
+              name: "`reqdata.name`"
+              url: "`reqdata.url`"
+            }
+            res: "`body.connection`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agent_integrations/{id}/disconnect"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agent_integrations/{id}/disconnect"
+          q: {
+            "$action": "disconnect"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_integrations"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "disconnect"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.connection`"
+          }
+        }
+        {
+          bf: [
+            "audience"
+            "enabled"
+            "expected_generation"
+            "expected_version"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agent_integrations/{id}/sharing"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agent_integrations/{id}/sharing"
+          q: {
+            "$action": "sharing"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_integrations"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "sharing"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.connection`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agent_integrations/{id}/sync"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agent_integrations/{id}/sync"
+          q: {
+            "$action": "sync"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_integrations"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "sync"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.connection`"
+          }
+        }
+        {
+          bf: [
+            "creation_key"
+            "name"
+            "toolkit"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agent_integrations"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agent_integrations"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_integrations"
+            }
+          ]
+          t: {
+            req: {
+              creation_key: "`reqdata.creation_key`"
+              name: "`reqdata.name`"
+              toolkit: "`reqdata.toolkit`"
+            }
+            res: "`body.connection`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agent_integrations"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
               {
                 explode: true
                 k: "query"
@@ -329,6 +854,15 @@ main: kit: entity: agent_integration: {
                 r: false
                 style: "form"
                 t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "enableable"
+                or: "enableable"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
               }
               {
                 explode: true
@@ -360,16 +894,78 @@ main: kit: entity: agent_integration: {
             ]
           }
           m: "GET"
-          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations"
+          o: "/api/v1/organizations/{organization_id}/agent_integrations"
           q: {
             exist: [
-              "agent_id"
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_integrations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agent_integrations/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agent_integrations/{id}"
+          q: {
+            exist: [
+              "id"
               "organization_id"
             ]
           }
           r: {
             param: {
-              id: "agent_id"
+              id: "id"
             }
           }
           rs: {
@@ -390,16 +986,200 @@ main: kit: entity: agent_integration: {
               var: "organization_id"
             }
             {
-              lit: "agents"
+              lit: "agent_integrations"
             }
             {
-              var: "agent_id"
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.connection`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agent_integrations/catalog"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agent_integrations/catalog"
+          q: {
+            "$action": "catalog"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
             }
             {
-              lit: "spark"
+              lit: "v1"
             }
             {
-              lit: "integrations"
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_integrations"
+            }
+            {
+              lit: "catalog"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.catalog`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agent_integrations/github"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "installation"
+                or: "installation"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agent_integrations/github"
+          q: {
+            "$action": "github"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_integrations"
+            }
+            {
+              lit: "github"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /api/v1/organizations/{organization_id}/agent_integrations/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v1/organizations/{organization_id}/agent_integrations/{id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_integrations"
+            }
+            {
+              var: "id"
             }
           ]
           t: {
@@ -413,7 +1193,7 @@ main: kit: entity: agent_integration: {
 
 
   relations: ancestors: [
-    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent")]
+    [path("$.main.kit.entity.organization")]
   ]
 
 }

@@ -1,0 +1,15 @@
+$kind: http-request
+id: "389b85bc-3857-5afc-bb40-67ce94ed7c00"
+description: |-
+  The `load` operation of **observability_clickhouse_cluster**.
+
+  SDK: `client.ObservabilityClickhouseCluster().load({ id: "example_id" })`
+url: "{{base}}/api/v1/observability/clickhouse_clusters/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{observability_clickhouse_cluster_id}}"
+    description: The observability_clickhouse_cluster this request addresses.
+order: 2000

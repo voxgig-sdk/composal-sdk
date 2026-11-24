@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "gitlab_connection": {
+      "GITLAB_CONNECTION00": {
+        "id": "GITLAB_CONNECTION00",
+        "organization_id": "ORGANIZATION01"
+      },
+      "GITLAB_CONNECTION01": {
+        "id": "GITLAB_CONNECTION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "GITLAB_CONNECTION02": {
+        "id": "GITLAB_CONNECTION02",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "gitlab_connection": {
+      "gitlab_connection_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/gitlab/connections/{connection_id}/control": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/gitlab/connections/{connection_id}/retry": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

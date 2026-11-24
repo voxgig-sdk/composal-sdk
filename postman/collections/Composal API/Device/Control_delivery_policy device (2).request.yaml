@@ -1,0 +1,26 @@
+$kind: http-request
+id: cb401d4a-dce5-5ba9-8186-a21ae887a22c
+description: |-
+  The `control_delivery_policy` action of **device**, a route of its `create` operation.
+
+  SDK: `client.Device().create({ "organization_id": "organization_id", "id": "ID", $action: "control_delivery_policy" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/control_delivery_policy"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "restricted": true,
+      "version": 1
+    }
+order: 5000

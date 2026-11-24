@@ -1,0 +1,36 @@
+# BasicMcpOauthFlow
+
+main: kit: flow: BasicMcpOauthFlow:
+{
+  entity: "mcp_oauth",
+  kind: "basic",
+  name: "BasicMcpOauthFlow",
+  step: [
+    {
+      i: {
+        ref: "mcp_oauth_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "mcp_oauth_ref01",
+        srcdatavar: "mcp_oauth_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-mcp_oauth_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMcpOauthFlow"
+}

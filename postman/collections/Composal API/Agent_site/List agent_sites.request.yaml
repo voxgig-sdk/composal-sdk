@@ -1,10 +1,10 @@
 $kind: http-request
-id: "08d04b68-0d37-5e37-9a51-fea810e8a73b"
+id: "17671fe9-a534-5669-b4f9-4c7e888d6811"
 description: |-
   The `list` operation of **agent_site**.
 
-  SDK: `client.AgentSite().list({ agent_id: "example", organization_id: "example" })`
-url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/sites"
+  SDK: `client.AgentSite().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_sites"
 method: GET
 headers:
   Accept: application/json
@@ -12,16 +12,10 @@ queryParams:
   - key: cursor
     value: ""
     disabled: true
-  - key: limit
-    value: ""
-    disabled: true
 pathVariables:
   - key: organization_id
     value: "{{organization_id}}"
     description: The organization this agent_site belongs to.
-  - key: id
-    value: "{{agent_id}}"
-    description: The agent this agent_site belongs to.
 scripts:
   - type: afterResponse
     code: |-

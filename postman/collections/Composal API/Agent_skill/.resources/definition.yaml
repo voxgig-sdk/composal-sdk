@@ -1,17 +1,21 @@
 $kind: collection
 id: "778df384-028b-5ce0-a8ee-c609e93df323"
 description: |-
-  The **agent_skill** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_skill_id}}`, which a list or a create remembers.
+  The **agent_skill** entity, which belongs to a organization. Its requests address one record by `{{agent_skill_id}}`, which a list or a create remembers.
 
   | field | type | required | |
   |---|---|---|---|
-  | `available` | boolean | yes |  |
-  | `can_configure` | boolean | yes |  |
-  | `can_manage` | boolean | yes |  |
-  | `configuration_state` | string |  |  |
-  | `description` | string | yes |  |
-  | `enabled` | boolean | yes |  |
-  | `name` | string | yes |  |
+  | `agents` | array | yes |  |
+  | `audience` | object | yes |  |
+  | `can_manage_library` | boolean | yes |  |
+  | `content` | string | yes |  |
+  | `files` | array | yes |  |
+  | `id` | string |  |  |
+  | `marketplace` | string |  |  |
+  | `pending` | boolean | yes |  |
+  | `plugin` | string |  |  |
+  | `revision` | string | yes |  |
+  | `skill` | object | yes |  |
   | `skills` | array | yes |  |
-  | `version` | string | yes |  |
-order: 34000
+  | `source` | string |  |  |
+order: 55000

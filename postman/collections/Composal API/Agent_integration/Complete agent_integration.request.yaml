@@ -1,0 +1,26 @@
+$kind: http-request
+id: "13c5244d-d6a0-59c1-aece-69c731635c26"
+description: |-
+  The `complete` action of **agent_integration**, a route of its `create` operation.
+
+  SDK: `client.AgentIntegration().create({ "organization_id": "organization_id", "id": "ID", $action: "complete" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_integrations/:id/complete"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_integration belongs to.
+  - key: id
+    value: "{{agent_integration_id}}"
+    description: The agent_integration this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "state": "example",
+      "code": "example"
+    }
+order: 7000

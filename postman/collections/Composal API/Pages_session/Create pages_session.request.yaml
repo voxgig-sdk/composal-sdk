@@ -1,0 +1,43 @@
+$kind: http-request
+id: d83102d7-f9cc-5a38-a9f5-2640485b2c00
+description: |-
+  The `create` operation of **pages_session**.
+
+  SDK: `client.PagesSession().create({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/pages/sessions"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this pages_session belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "query": "example",
+      "mode": "hybrid",
+      "repo": "example",
+      "adapter": "example",
+      "status": "example",
+      "from": "example",
+      "to": "example",
+      "cursor": "example",
+      "limit": 20,
+      "max_bytes": 32768,
+      "user_id": "example",
+      "offset": 1
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("pages_session_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

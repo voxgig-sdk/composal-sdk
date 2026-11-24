@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "local_agent_response": {
+      "LOCAL_AGENT_RESPONSE00": {
+        "input": [],
+        "model": "s3d",
+        "service_tier": "s3e",
+        "store": false,
+        "stream": true,
+        "tools": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "LOCAL_AGENT_RESPONSE00"
+      },
+      "LOCAL_AGENT_RESPONSE01": {
+        "input": [],
+        "model": "s79",
+        "service_tier": "s7a",
+        "store": false,
+        "stream": true,
+        "tools": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "LOCAL_AGENT_RESPONSE01"
+      },
+      "LOCAL_AGENT_RESPONSE02": {
+        "input": [],
+        "model": "sb5",
+        "service_tier": "sb6",
+        "store": false,
+        "stream": true,
+        "tools": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "LOCAL_AGENT_RESPONSE02"
+      }
+    }
+  },
+  "new": {
+    "local_agent_response": {
+      "local_agent_response_ref01": {
+        "input": [],
+        "model": "sf1",
+        "service_tier": "sf2",
+        "store": false,
+        "stream": true,
+        "tools": []
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/local_agent/responses": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

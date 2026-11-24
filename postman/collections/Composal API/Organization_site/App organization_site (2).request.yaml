@@ -1,0 +1,18 @@
+$kind: http-request
+id: "3317c738-b4d3-5084-8704-0283eb2bf411"
+description: |-
+  The `app` action of **organization_site**, a route of its `remove` operation.
+
+  SDK: `client.OrganizationSite().remove({ "organization_id": "organization_id", "id": "ID", $action: "app" })`
+url: "{{base}}/api/v1/spark/organizations/:organization_id/sites/:name/app"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_site belongs to.
+  - key: name
+    value: "{{organization_site_id}}"
+    description: The organization_site this request addresses.
+order: 8000

@@ -1,0 +1,35 @@
+$kind: http-request
+id: e78183f3-68bc-534a-8ca5-3ba6adc3ebf0
+description: |-
+  The `update` operation of **signal_integration_target**.
+
+  SDK: `client.SignalIntegrationTarget().update({ organization_id: "example", signal_integration_id: "example", targets: [] })`
+url: "{{base}}/api/v1/organizations/:organization_id/signal_integrations/:signal_integration_id/targets"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this signal_integration_target belongs to.
+  - key: signal_integration_id
+    value: "{{signal_integration_id}}"
+    description: The signal_integration this signal_integration_target belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "targets": [
+        {
+          "external_kind": "sentry_project",
+          "external_id": "example",
+          "external_slug": "example",
+          "display_name": "example",
+          "hosted_app_id": "example",
+          "app_service_id": "example",
+          "enabled": true
+        }
+      ]
+    }
+order: 2000

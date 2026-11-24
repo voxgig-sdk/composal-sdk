@@ -1,0 +1,70 @@
+{
+  "existing": {
+    "organization_oidc_trust": {
+      "ORGANIZATION_OIDC_TRUST00": {
+        "id": "ORGANIZATION_OIDC_TRUST00",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ORGANIZATION_OIDC_TRUST01": {
+        "id": "ORGANIZATION_OIDC_TRUST01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ORGANIZATION_OIDC_TRUST02": {
+        "id": "ORGANIZATION_OIDC_TRUST02",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "organization_oidc_trust": {
+      "organization_oidc_trust_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/activate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/pause": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/revoke": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/identity/organizations/{organization_id}/oidc_trusts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/identity/organizations/{organization_id}/oidc_trusts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

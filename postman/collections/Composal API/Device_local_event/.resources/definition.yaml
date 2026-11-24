@@ -1,0 +1,10 @@
+$kind: collection
+id: "50bbcf99-e992-5e2f-91ea-8e47e5b0daac"
+description: |-
+  The **device_local_event** entity, which belongs to a organization and a device. Its requests address one record by `{{device_local_event_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `event` | string | yes |  |
+  | `recorded` | boolean | yes |  |
+order: 219000

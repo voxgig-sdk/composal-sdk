@@ -1,0 +1,19 @@
+$kind: http-request
+id: "0b9200fd-4c1d-5e7b-ac80-2cf4d5ad7f81"
+description: |-
+  The `pause` action of **artifact_package_mirror**, a route of its `create` operation.
+
+  SDK: `client.ArtifactPackageMirror().create({ "id": "ID", $action: "pause" })`
+url: "{{base}}/api/v1/artifacts/package_mirrors/:id/pause"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_package_mirror_id}}"
+    description: The artifact_package_mirror this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

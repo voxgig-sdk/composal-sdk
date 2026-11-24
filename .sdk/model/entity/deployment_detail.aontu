@@ -1,0 +1,249 @@
+# Entity: deployment_detail
+
+main: kit: entity: deployment_detail: {
+
+  alias: field: {}
+
+  fields: {
+    activity: {
+      h: "Activity"
+      n: "activity"
+      r: true
+      t: "`$ARRAY`"
+    }
+    app: {
+      h: "App"
+      n: "app"
+      r: true
+      t: "`$ANY`"
+    }
+    app_id: {
+      h: "App Id"
+      n: "app_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    audit_events: {
+      h: "Audit Events"
+      n: "audit_events"
+      r: true
+      t: "`$ARRAY`"
+    }
+    capacity: {
+      h: "Capacity"
+      n: "capacity"
+      r: true
+      t: "`$OBJECT`"
+    }
+    data_resources: {
+      h: "Data Resources"
+      n: "data_resources"
+      r: true
+      t: "`$ARRAY`"
+    }
+    deploy_targets: {
+      h: "Deploy Targets"
+      n: "deploy_targets"
+      r: true
+      t: "`$ARRAY`"
+    }
+    deployments: {
+      h: "Deployments"
+      n: "deployments"
+      r: true
+      t: "`$ARRAY`"
+    }
+    desired_states: {
+      h: "Desired States"
+      n: "desired_states"
+      r: true
+      t: "`$ARRAY`"
+    }
+    environments: {
+      h: "Environments"
+      n: "environments"
+      r: true
+      t: "`$ARRAY`"
+    }
+    filters: {
+      h: "Filters"
+      n: "filters"
+      r: true
+      sh: "The option lists the deployments page's app, service and stage pickers narrow by."
+      t: "`$OBJECT`"
+    }
+    health: {
+      h: "Health"
+      n: "health"
+      r: true
+      sh: "The rolled-up state of the selected scope."
+      t: "`$OBJECT`"
+    }
+    nomad: {
+      h: "Nomad"
+      n: "nomad"
+      r: true
+      sh: "The Nomad footprint of the selected scope, deduplicated."
+      t: "`$OBJECT`"
+    }
+    operations: {
+      h: "Operations"
+      n: "operations"
+      r: true
+      t: "`$ARRAY`"
+    }
+    placements: {
+      h: "Placements"
+      n: "placements"
+      r: true
+      t: "`$ARRAY`"
+    }
+    reconciler_ticks: {
+      h: "Reconciler Ticks"
+      n: "reconciler_ticks"
+      r: true
+      t: "`$ARRAY`"
+    }
+    releases: {
+      h: "Releases"
+      n: "releases"
+      r: true
+      t: "`$ARRAY`"
+    }
+    runtime_instances: {
+      h: "Runtime Instances"
+      n: "runtime_instances"
+      r: true
+      t: "`$ARRAY`"
+    }
+    service_bindings: {
+      h: "Service Bindings"
+      n: "service_bindings"
+      r: true
+      t: "`$ARRAY`"
+    }
+    service_views: {
+      h: "Service Views"
+      n: "service_views"
+      r: true
+      t: "`$ARRAY`"
+    }
+    storage_resources: {
+      h: "Storage Resources"
+      n: "storage_resources"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "deployment_detail"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/pages/deployments/details"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "app"
+                or: "app"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "environment"
+                or: "environment"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "service"
+                or: "service"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/pages/deployments/details"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "pages"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              lit: "details"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

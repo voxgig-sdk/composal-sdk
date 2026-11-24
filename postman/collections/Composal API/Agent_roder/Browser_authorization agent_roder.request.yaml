@@ -1,0 +1,14 @@
+$kind: http-request
+id: e47c26da-89b4-50af-ab7d-9615bacee544
+description: |-
+  The `browser_authorization` action of **agent_roder**, a route of its `load` operation.
+
+  SDK: `client.AgentRoder().load({ "organization_id": "ID", $action: "browser_authorization" })`
+url: "{{base}}/api/v1/agent/roder/browser_authorization?organization_id={{agent_roder_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: organization_id
+    value: "{{agent_roder_id}}"
+order: 1000

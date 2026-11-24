@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "com_site_access": {
+      "COM_SITE_ACCESS00": {
+        "id": "COM_SITE_ACCESS00"
+      },
+      "COM_SITE_ACCESS01": {
+        "id": "COM_SITE_ACCESS01"
+      },
+      "COM_SITE_ACCESS02": {
+        "id": "COM_SITE_ACCESS02"
+      }
+    }
+  },
+  "new": {
+    "com_site_access": {
+      "com_site_access_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/com_site_access/redeem": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/com_site_access/start": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

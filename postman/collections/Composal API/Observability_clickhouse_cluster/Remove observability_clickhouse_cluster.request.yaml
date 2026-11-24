@@ -1,0 +1,22 @@
+$kind: http-request
+id: "2e7b98d6-3e7a-585c-9f1e-d89bc1eb875d"
+description: |-
+  The `remove` operation of **observability_clickhouse_cluster**.
+
+  SDK: `client.ObservabilityClickhouseCluster().remove({ id: "example_id" })`
+url: "{{base}}/api/v1/observability/clickhouse_clusters/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{observability_clickhouse_cluster_id}}"
+    description: The observability_clickhouse_cluster this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("observability_clickhouse_cluster_id")
+      }
+    language: text/javascript
+order: 10000

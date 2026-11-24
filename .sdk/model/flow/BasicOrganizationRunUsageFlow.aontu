@@ -1,0 +1,22 @@
+# BasicOrganizationRunUsageFlow
+
+main: kit: flow: BasicOrganizationRunUsageFlow:
+{
+  entity: "organization_run_usage",
+  kind: "basic",
+  name: "BasicOrganizationRunUsageFlow",
+  step: [
+    {
+      i: {
+        ref: "organization_run_usage_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicOrganizationRunUsageFlow"
+}

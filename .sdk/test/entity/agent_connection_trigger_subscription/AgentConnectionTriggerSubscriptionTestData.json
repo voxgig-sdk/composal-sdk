@@ -1,0 +1,161 @@
+{
+  "existing": {
+    "agent_connection_trigger_subscription": {
+      "AGENT_CONNECTION_TRIGGER_SUBSCRIPTION00": {
+        "agent_connection_id": "AGENT_CONNECTION01",
+        "configuration": {},
+        "created_at": "s106",
+        "defaults": {},
+        "delivery": "s108",
+        "enabled": false,
+        "failure_code": "s10a",
+        "failure_request_id": "FAILURE_REQUEST01",
+        "id": "AGENT_CONNECTION_TRIGGER_SUBSCRIPTION00",
+        "latency": "s10d",
+        "name": "s10e",
+        "reconcile_at": "s10f",
+        "reconciliation_uncertain": true,
+        "remote_enabled": "s111",
+        "replacement_id": "REPLACEMENT01",
+        "retired_at": "s113",
+        "retirement_completed_at": "s114",
+        "schema": {},
+        "slug": "s116",
+        "status": "s117",
+        "toolkit": "s118",
+        "toolkit_version": "s119",
+        "trigger_slug": "s11a",
+        "updated_at": "s11b",
+        "version": "s11c",
+        "waiting_for_retirement": false,
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_CONNECTION_TRIGGER_SUBSCRIPTION01": {
+        "agent_connection_id": "AGENT_CONNECTION01",
+        "configuration": {},
+        "created_at": "s20a",
+        "defaults": {},
+        "delivery": "s20c",
+        "enabled": false,
+        "failure_code": "s20e",
+        "failure_request_id": "FAILURE_REQUEST01",
+        "id": "AGENT_CONNECTION_TRIGGER_SUBSCRIPTION01",
+        "latency": "s211",
+        "name": "s212",
+        "reconcile_at": "s213",
+        "reconciliation_uncertain": true,
+        "remote_enabled": "s215",
+        "replacement_id": "REPLACEMENT01",
+        "retired_at": "s217",
+        "retirement_completed_at": "s218",
+        "schema": {},
+        "slug": "s21a",
+        "status": "s21b",
+        "toolkit": "s21c",
+        "toolkit_version": "s21d",
+        "trigger_slug": "s21e",
+        "updated_at": "s21f",
+        "version": "s220",
+        "waiting_for_retirement": false,
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_CONNECTION_TRIGGER_SUBSCRIPTION02": {
+        "agent_connection_id": "AGENT_CONNECTION01",
+        "configuration": {},
+        "created_at": "s30e",
+        "defaults": {},
+        "delivery": "s310",
+        "enabled": false,
+        "failure_code": "s312",
+        "failure_request_id": "FAILURE_REQUEST01",
+        "id": "AGENT_CONNECTION_TRIGGER_SUBSCRIPTION02",
+        "latency": "s315",
+        "name": "s316",
+        "reconcile_at": "s317",
+        "reconciliation_uncertain": true,
+        "remote_enabled": "s319",
+        "replacement_id": "REPLACEMENT01",
+        "retired_at": "s31b",
+        "retirement_completed_at": "s31c",
+        "schema": {},
+        "slug": "s31e",
+        "status": "s31f",
+        "toolkit": "s320",
+        "toolkit_version": "s321",
+        "trigger_slug": "s322",
+        "updated_at": "s323",
+        "version": "s324",
+        "waiting_for_retirement": false,
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_connection_trigger_subscription": {
+      "agent_connection_trigger_subscription_ref01": {
+        "agent_connection_id": "AGENT_CONNECTION01",
+        "configuration": {},
+        "created_at": "s412",
+        "defaults": {},
+        "delivery": "s414",
+        "enabled": false,
+        "failure_code": "s416",
+        "failure_request_id": "FAILURE_REQUEST01",
+        "latency": "s419",
+        "name": "s41a",
+        "reconcile_at": "s41b",
+        "reconciliation_uncertain": true,
+        "remote_enabled": "s41d",
+        "replacement_id": "REPLACEMENT01",
+        "retired_at": "s41f",
+        "retirement_completed_at": "s420",
+        "schema": {},
+        "slug": "s422",
+        "status": "s423",
+        "toolkit": "s424",
+        "toolkit_version": "s425",
+        "trigger_slug": "s426",
+        "updated_at": "s427",
+        "version": "s428",
+        "waiting_for_retirement": false
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}/discover": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}/replace": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

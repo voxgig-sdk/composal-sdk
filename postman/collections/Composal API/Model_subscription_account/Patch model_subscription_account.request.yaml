@@ -1,0 +1,22 @@
+$kind: http-request
+id: "83c6df2b-31db-58c2-a525-a55401567be9"
+description: |-
+  The `patch` operation of **model_subscription_account**.
+
+  SDK: `client.ModelSubscriptionAccount().patch({ id: "example", label: "example" })`
+url: "{{base}}/api/v1/model_subscription_accounts/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{model_subscription_account_id}}"
+    description: The model_subscription_account this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "label": "example"
+    }
+order: 4000

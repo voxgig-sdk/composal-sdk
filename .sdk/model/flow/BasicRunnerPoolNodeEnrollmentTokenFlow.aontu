@@ -1,0 +1,38 @@
+# BasicRunnerPoolNodeEnrollmentTokenFlow
+
+main: kit: flow: BasicRunnerPoolNodeEnrollmentTokenFlow:
+{
+  entity: "runner_pool_node_enrollment_token",
+  kind: "basic",
+  name: "BasicRunnerPoolNodeEnrollmentTokenFlow",
+  step: [
+    {
+      i: {
+        ref: "runner_pool_node_enrollment_token_ref01"
+      }
+
+      m: {
+        runner_pool_id: "runner_pool01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        runner_pool_id: "runner_pool01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "runner_pool_node_enrollment_token_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRunnerPoolNodeEnrollmentTokenFlow"
+}

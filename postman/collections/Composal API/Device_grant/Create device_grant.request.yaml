@@ -1,0 +1,39 @@
+$kind: http-request
+id: "464d4ab9-6d7e-5e23-bec0-eca428df8473"
+description: |-
+  The `create` operation of **device_grant**.
+
+  SDK: `client.DeviceGrant().create({ device_id: "example", organization_id: "example", agent_id: "example", capabilities: [], principal_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/grants"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device_grant belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this device_grant belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "agent_id": "{{agent_id}}",
+      "principal_id": "example",
+      "capabilities": [
+        "browser"
+      ]
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("device_grant_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

@@ -1,0 +1,19 @@
+$kind: http-request
+id: eecd8aff-41a7-5237-b167-092ede1d7621
+description: |-
+  The `update` operation of **observability_quickwit_cluster**.
+
+  SDK: `client.ObservabilityQuickwitCluster().update({ id: "example" })`
+url: "{{base}}/api/v1/observability/quickwit_clusters/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{observability_quickwit_cluster_id}}"
+    description: The observability_quickwit_cluster this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

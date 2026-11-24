@@ -1,0 +1,17 @@
+$kind: http-request
+id: d1d2b9fe-d31d-5343-b691-26c05f47cce0
+description: |-
+  The `start` action of **thread_preview_access**, a route of its `load` operation.
+
+  SDK: `client.ThreadPreviewAccess().load({ "host": "ID", $action: "start" })`
+url: "{{base}}/api/v1/thread_preview_access/start?host={{thread_preview_access_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: host
+    value: "{{thread_preview_access_id}}"
+  - key: return_to
+    value: ""
+    disabled: true
+order: 2000

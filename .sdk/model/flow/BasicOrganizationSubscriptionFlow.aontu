@@ -1,0 +1,22 @@
+# BasicOrganizationSubscriptionFlow
+
+main: kit: flow: BasicOrganizationSubscriptionFlow:
+{
+  entity: "organization_subscription",
+  kind: "basic",
+  name: "BasicOrganizationSubscriptionFlow",
+  step: [
+    {
+      i: {
+        ref: "organization_subscription_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicOrganizationSubscriptionFlow"
+}

@@ -1,0 +1,19 @@
+$kind: http-request
+id: "9597e919-3080-5eb0-88d1-ff35f6803f6e"
+description: |-
+  The `update` operation of **roder_machine**.
+
+  SDK: `client.RoderMachine().update({ id: "example" })`
+url: "{{base}}/api/v1/agent/roder/machines/:public_id"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: public_id
+    value: "{{roder_machine_id}}"
+    description: The roder_machine this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 1000

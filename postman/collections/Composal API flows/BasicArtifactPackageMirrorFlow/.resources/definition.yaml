@@ -1,0 +1,4 @@
+$kind: collection
+id: "6ba755d6-05fe-584c-b893-298bfcf49341"
+description: "The `BasicArtifactPackageMirrorFlow` flow of **artifact_package_mirror**."
+order: 88000

@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "change_asset": {
+      "CHANGE_ASSET00": {
+        "alias": "s46",
+        "byte_size": 71,
+        "checksum_md5": "s48",
+        "checksum_sha256": "s49",
+        "content_type": "s4a",
+        "filename": "s4b",
+        "id": "CHANGE_ASSET00",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "CHANGE_ASSET01": {
+        "alias": "s8c",
+        "byte_size": 141,
+        "checksum_md5": "s8e",
+        "checksum_sha256": "s8f",
+        "content_type": "s90",
+        "filename": "s91",
+        "id": "CHANGE_ASSET01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "CHANGE_ASSET02": {
+        "alias": "sd2",
+        "byte_size": 211,
+        "checksum_md5": "sd4",
+        "checksum_sha256": "sd5",
+        "content_type": "sd6",
+        "filename": "sd7",
+        "id": "CHANGE_ASSET02",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "change_asset": {
+      "change_asset_ref01": {
+        "alias": "s118",
+        "byte_size": 281,
+        "checksum_md5": "s11a",
+        "checksum_sha256": "s11b",
+        "content_type": "s11c",
+        "filename": "s11d"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/assets/{id}/finalize": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/assets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -34,36 +34,15 @@ func TestAgentThreadDirect(t *testing.T) {
 			return
 		}
 		if setup.live {
-			for _, _liveKey := range []string{"agent01", "organization01"} {
-				if v := setup.idmap[_liveKey]; v == nil {
-					liveMiss(t, agent_threadDirectLiveStrict, "Live test blocked: needs %s via COMPOSAL_TEST_AGENT_THREAD_ENTID", _liveKey)
-					return
-				}
-			}
-		}
-		if setup.live {
 			livePace()
 		}
 		client := setup.client
 
-		params := map[string]any{}
-		query := map[string]any{}
-		if setup.live {
-			params["agent_id"] = setup.idmap["agent01"]
-		} else {
-			params["agent_id"] = "direct01"
-		}
-		if setup.live {
-			params["organization_id"] = setup.idmap["organization01"]
-		} else {
-			params["organization_id"] = "direct02"
-		}
 
 		result, err := client.Direct(map[string]any{
-			"path":   "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/threads",
+			"path":   "api/v1/agent/threads",
 			"method": "GET",
-			"params": params,
-			"query":  query,
+			"params": map[string]any{},
 		})
 		if setup.live {
 			if err != nil {
@@ -99,6 +78,99 @@ func TestAgentThreadDirect(t *testing.T) {
 			if len(*setup.calls) != 1 {
 				t.Fatalf("expected 1 call, got %d", len(*setup.calls))
 			}
+		}
+	})
+
+	t.Run("direct-load-agent_thread", func(t *testing.T) {
+		setup := agent_threadDirectSetup(map[string]any{"id": "direct01"})
+		_mode := "unit"
+		if setup.live {
+			_mode = "live"
+		}
+		if _shouldSkip, _reason := isControlSkipped("direct", "direct-load-agent_thread", _mode); _shouldSkip {
+			if _reason == "" {
+				_reason = "skipped via sdk-test-control.json"
+			}
+			t.Skip(_reason)
+			return
+		}
+		if setup.live {
+			livePace()
+		}
+		client := setup.client
+
+		params := map[string]any{}
+		query := map[string]any{}
+		if setup.live {
+			listParams := map[string]any{}
+			listResult, listErr := client.Direct(map[string]any{
+				"path":   "api/v1/agent/threads",
+				"method": "GET",
+				"params": listParams,
+			})
+			if listErr != nil {
+				liveMiss(t, agent_threadDirectLiveStrict, "Live list discovery failed: %v", listErr)
+			}
+			if listResult["ok"] != true {
+				liveMiss(t, agent_threadDirectLiveStrict, "Live list discovery failed: %s", liveDescribe(listResult))
+			}
+			listData, listOk := liveList(listResult["data"])
+			if !listOk {
+				liveMiss(t, agent_threadDirectLiveStrict, "Live list discovery returned no list: %s", liveDescribe(listResult))
+			}
+			if len(listData) == 0 {
+				liveEmpty(t, "The account has no agent_thread record to load")
+			}
+			firstEnt := core.ToMapAny(listData[0])
+			if firstEnt["id"] == nil {
+				liveMiss(t, agent_threadDirectLiveStrict, "Live load blocked: discovery returned no usable identity")
+			}
+			params["id"] = firstEnt["id"]
+		} else {
+			params["id"] = "direct01"
+		}
+
+		result, err := client.Direct(map[string]any{
+			"path":   "api/v1/agent/threads/{id}",
+			"method": "GET",
+			"params": params,
+			"query":  query,
+		})
+		if setup.live {
+			if err != nil {
+				liveMiss(t, agent_threadDirectLiveStrict, "Live load failed: %v", err)
+			}
+			if status := core.ToInt(result["status"]); result["ok"] != true || status < 200 || status >= 300 {
+				liveMiss(t, agent_threadDirectLiveStrict, "Live load failed: %s", liveDescribe(result))
+			}
+			if result["data"] == nil {
+				liveMiss(t, agent_threadDirectLiveStrict, "Live load returned no data: %s", liveDescribe(result))
+			}
+		} else {
+			if err != nil {
+				t.Fatalf("direct failed: %v", err)
+			}
+			if result["ok"] != true {
+				t.Fatalf("expected ok to be true, got %v", result["ok"])
+			}
+			if core.ToInt(result["status"]) != 200 {
+				t.Fatalf("expected status 200, got %v", result["status"])
+			}
+			if result["data"] == nil {
+				t.Fatal("expected data to be non-nil")
+			}
+		}
+
+		if !setup.live {
+			if dataMap, ok := result["data"].(map[string]any); ok {
+				if dataMap["id"] != "direct01" {
+					t.Fatalf("expected data.id to be direct01, got %v", dataMap["id"])
+				}
+			}
+
+			if len(*setup.calls) != 1 {
+				t.Fatalf("expected 1 call, got %d", len(*setup.calls))
+			}
 			call := (*setup.calls)[0]
 			if initMap, ok := call["init"].(map[string]any); ok {
 				if initMap["method"] != "GET" {
@@ -108,9 +180,6 @@ func TestAgentThreadDirect(t *testing.T) {
 			if url, ok := call["url"].(string); ok {
 				if !strings.Contains(url, "direct01") {
 					t.Fatalf("expected url to contain direct01, got %v", url)
-				}
-				if !strings.Contains(url, "direct02") {
-					t.Fatalf("expected url to contain direct02, got %v", url)
 				}
 			}
 		}

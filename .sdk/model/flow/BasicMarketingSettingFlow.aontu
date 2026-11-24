@@ -7,18 +7,12 @@ main: kit: flow: BasicMarketingSettingFlow:
   name: "BasicMarketingSettingFlow",
   step: [
     {
-      i: {
-        ref: "marketing_setting_ref01",
-        srcdatavar: "marketing_setting_ref01_data",
-        suffix: "_dt0"
-      }
-
-      o: "load",
+      o: "list",
       v: [
         {
-          apply: "TextFieldMark",
+          apply: "ItemExists",
           def: {
-            mark: "Mark01-marketing_setting_ref01"
+            ref: "marketing_setting_ref01"
           }
         }
       ]

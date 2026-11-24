@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "v1_message": {
+      "V1_MESSAGE00": {
+        "organization_id": "ORGANIZATION01",
+        "id": "V1_MESSAGE00"
+      },
+      "V1_MESSAGE01": {
+        "organization_id": "ORGANIZATION01",
+        "id": "V1_MESSAGE01"
+      },
+      "V1_MESSAGE02": {
+        "organization_id": "ORGANIZATION01",
+        "id": "V1_MESSAGE02"
+      }
+    }
+  },
+  "new": {
+    "v1_message": {
+      "v1_message_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/spark/organizations/{organization_id}/inference/v1/messages": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

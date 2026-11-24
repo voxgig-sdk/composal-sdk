@@ -1,0 +1,23 @@
+# BasicVerifySignalIntegrationFlow
+
+main: kit: flow: BasicVerifySignalIntegrationFlow:
+{
+  entity: "verify_signal_integration",
+  kind: "basic",
+  name: "BasicVerifySignalIntegrationFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_signal_integration_ref01"
+      }
+
+      m: {
+        id: "id01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicVerifySignalIntegrationFlow"
+}

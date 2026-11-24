@@ -1,0 +1,26 @@
+$kind: collection
+id: "73ba3525-4a58-5e9f-bb0e-ed6160abf3a7"
+description: |-
+  The **github_runner_pool** entity, which belongs to a organization. Its requests address one record by `{{github_runner_pool_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `cpu_millicores` | integer | yes |  |
+  | `enabled` | boolean | yes |  |
+  | `github_app_installation_id` | string | yes |  |
+  | `github_repository_id` | string | yes |  |
+  | `github_runner_image` | any | yes |  |
+  | `id` | string | yes |  |
+  | `image` | string |  |  |
+  | `invocations` | array | yes |  |
+  | `label` | string | yes |  |
+  | `last_error` | string | yes |  |
+  | `last_polled_at` | string | yes |  |
+  | `max_concurrency` | integer | yes |  |
+  | `memory_mb` | integer | yes |  |
+  | `organization_id` | string | yes |  |
+  | `provider` | string | yes |  |
+  | `repository_full_name` | string | yes |  |
+  | `runtime_kind` | string | yes |  |
+  | `timeout_seconds` | integer | yes |  |
+order: 272000

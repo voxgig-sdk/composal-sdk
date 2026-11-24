@@ -17,6 +17,22 @@ main: kit: flow: BasicDomainDnsIntegrationFlow:
 
       o: "create"
     }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "domain_dns_integration_ref01"
+          }
+        }
+      ]
+    }
   ],
   "key$": "BasicDomainDnsIntegrationFlow"
 }

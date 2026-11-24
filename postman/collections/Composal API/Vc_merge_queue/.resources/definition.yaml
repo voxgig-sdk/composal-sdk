@@ -1,0 +1,13 @@
+$kind: collection
+id: "4a3dcbb1-b2bd-52ab-a395-abb55ecb9d81"
+description: |-
+  The **vc_merge_queue** entity, which belongs to a organization and a repo. Its requests address one record by `{{vc_merge_queue_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `analytics` | object | yes |  |
+  | `id` | string |  |  |
+  | `policy` | object | yes |  |
+  | `queue` | object | yes |  |
+  | `target_branches` | array |  |  |
+order: 528000

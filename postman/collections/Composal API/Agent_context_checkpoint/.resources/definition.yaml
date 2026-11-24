@@ -1,0 +1,9 @@
+$kind: collection
+id: "5e607d61-633a-5239-9ede-2e38bd41fe78"
+description: |-
+  The **agent_context_checkpoint** entity, which belongs to a organization and a repo and a change. Its requests address one record by `{{agent_context_checkpoint_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 20000

@@ -4,7 +4,7 @@
 
 The PHP SDK for the Composal API — an entity-oriented client using PHP conventions.
 
-The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Agent()` — with named operations (`list`/`load`/`create`/`update`/`patch`/`remove`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->A2aWellKnown()` — with named operations (`list`/`load`/`create`/`update`/`patch`/`remove`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
 
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
@@ -38,21 +38,6 @@ $client = new ComposalSDK([
 ]);
 ```
 
-### 2. List agent records
-
-```php
-try {
-    // list() returns entity instances; data_get() reads each record.
-    $agents = $client->Agent()->list(["organization_id" => "example"]);
-    foreach ($agents as $record) {
-        $item = $record->data_get();
-        echo $item["id"] . " " . $item["attention"] . "\n";
-    }
-} catch (\Throwable $err) {
-    echo "Error: " . $err->getMessage();
-}
-```
-
 ### 3. Load an agent
 
 Agent is nested under organization, so provide the `organization_id`.
@@ -67,16 +52,6 @@ try {
 }
 ```
 
-### 4. Create, update, and remove
-
-```php
-// create() returns the ENTITY — call data_get() for the created Agent record.
-$created = $client->Agent()->create(["organization_id" => "example_organization_id", "name" => "example_name"]);
-
-// Remove
-$client->Agent()->remove(["id" => $created->data_get()["id"], "organization_id" => "example_organization_id"]);
-```
-
 
 ## Error handling
 
@@ -85,7 +60,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $pageprojectrun = $client->PageProjectRun()->load(["id" => "example_id", "organization_id" => "example", "project_id" => "example"]);
+    $agentoperation = $client->AgentOperation()->load(["agent_id" => "example", "id" => "example_id", "organization_id" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -157,13 +132,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```php
 $client = ComposalSDK::test([
-    "entity" => ["page_project_run" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["roder_code_repair" => ["test01" => ["id" => "test01", "scenario_run_id" => "example"]]],
 ]);
 
-// Entity ops return the ENTITY (throws on error);
+// list() returns entity instances (throws on error);
 // call data_get() for the mock record.
-$pageprojectrun = $client->PageProjectRun()->load(["id" => "test01", "organization_id" => "example", "project_id" => "example"]);
-print_r($pageprojectrun->data_get());
+$rodercoderepair = $client->RoderCodeRepair()->list(["scenario_run_id" => "example"]);
+print_r(array_map(fn($item) => $item->data_get(), $rodercoderepair));
 ```
 
 ### Use a custom fetch function
@@ -244,19 +219,32 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
+| `A2aWellKnown` | `($data): A2aWellKnownEntity` | Create an A2aWellKnown entity instance. |
+| `AdminOrg` | `($data): AdminOrgEntity` | Create an AdminOrg entity instance. |
 | `Agent` | `($data): AgentEntity` | Create an Agent entity instance. |
+| `AgentApp` | `($data): AgentAppEntity` | Create an AgentApp entity instance. |
+| `AgentAppInstall` | `($data): AgentAppInstallEntity` | Create an AgentAppInstall entity instance. |
 | `AgentAttachment` | `($data): AgentAttachmentEntity` | Create an AgentAttachment entity instance. |
 | `AgentAutomation` | `($data): AgentAutomationEntity` | Create an AgentAutomation entity instance. |
 | `AgentAvatar` | `($data): AgentAvatarEntity` | Create an AgentAvatar entity instance. |
 | `AgentCommand` | `($data): AgentCommandEntity` | Create an AgentCommand entity instance. |
 | `AgentComputer` | `($data): AgentComputerEntity` | Create an AgentComputer entity instance. |
 | `AgentConnection` | `($data): AgentConnectionEntity` | Create an AgentConnection entity instance. |
+| `AgentConnectionDelegation` | `($data): AgentConnectionDelegationEntity` | Create an AgentConnectionDelegation entity instance. |
+| `AgentConnectionGrant` | `($data): AgentConnectionGrantEntity` | Create an AgentConnectionGrant entity instance. |
+| `AgentConnectionResource` | `($data): AgentConnectionResourceEntity` | Create an AgentConnectionResource entity instance. |
+| `AgentConnectionSafetyControl` | `($data): AgentConnectionSafetyControlEntity` | Create an AgentConnectionSafetyControl entity instance. |
+| `AgentConnectionTriggerSubscription` | `($data): AgentConnectionTriggerSubscriptionEntity` | Create an AgentConnectionTriggerSubscription entity instance. |
+| `AgentContextCheckpoint` | `($data): AgentContextCheckpointEntity` | Create an AgentContextCheckpoint entity instance. |
 | `AgentControlFlow` | `($data): AgentControlFlowEntity` | Create an AgentControlFlow entity instance. |
 | `AgentCoordination` | `($data): AgentCoordinationEntity` | Create an AgentCoordination entity instance. |
 | `AgentEmail` | `($data): AgentEmailEntity` | Create an AgentEmail entity instance. |
+| `AgentEvent` | `($data): AgentEventEntity` | Create an AgentEvent entity instance. |
 | `AgentFile` | `($data): AgentFileEntity` | Create an AgentFile entity instance. |
 | `AgentInput` | `($data): AgentInputEntity` | Create an AgentInput entity instance. |
 | `AgentIntegration` | `($data): AgentIntegrationEntity` | Create an AgentIntegration entity instance. |
+| `AgentIntegrationAccount` | `($data): AgentIntegrationAccountEntity` | Create an AgentIntegrationAccount entity instance. |
+| `AgentIntegrationCallback` | `($data): AgentIntegrationCallbackEntity` | Create an AgentIntegrationCallback entity instance. |
 | `AgentInteraction` | `($data): AgentInteractionEntity` | Create an AgentInteraction entity instance. |
 | `AgentLibrary` | `($data): AgentLibraryEntity` | Create an AgentLibrary entity instance. |
 | `AgentManager` | `($data): AgentManagerEntity` | Create an AgentManager entity instance. |
@@ -268,11 +256,17 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `AgentProvisioning` | `($data): AgentProvisioningEntity` | Create an AgentProvisioning entity instance. |
 | `AgentPullRequest` | `($data): AgentPullRequestEntity` | Create an AgentPullRequest entity instance. |
 | `AgentQuestion` | `($data): AgentQuestionEntity` | Create an AgentQuestion entity instance. |
+| `AgentRelayFileGrant` | `($data): AgentRelayFileGrantEntity` | Create an AgentRelayFileGrant entity instance. |
+| `AgentRelayFileGrantAccount` | `($data): AgentRelayFileGrantAccountEntity` | Create an AgentRelayFileGrantAccount entity instance. |
 | `AgentRepository` | `($data): AgentRepositoryEntity` | Create an AgentRepository entity instance. |
 | `AgentResource` | `($data): AgentResourceEntity` | Create an AgentResource entity instance. |
+| `AgentRoder` | `($data): AgentRoderEntity` | Create an AgentRoder entity instance. |
 | `AgentRoutine` | `($data): AgentRoutineEntity` | Create an AgentRoutine entity instance. |
 | `AgentRun` | `($data): AgentRunEntity` | Create an AgentRun entity instance. |
 | `AgentRuntime` | `($data): AgentRuntimeEntity` | Create an AgentRuntime entity instance. |
+| `AgentSession` | `($data): AgentSessionEntity` | Create an AgentSession entity instance. |
+| `AgentSessionCheckpoint` | `($data): AgentSessionCheckpointEntity` | Create an AgentSessionCheckpoint entity instance. |
+| `AgentSessionRoderHandoff` | `($data): AgentSessionRoderHandoffEntity` | Create an AgentSessionRoderHandoff entity instance. |
 | `AgentSetting` | `($data): AgentSettingEntity` | Create an AgentSetting entity instance. |
 | `AgentSharing` | `($data): AgentSharingEntity` | Create an AgentSharing entity instance. |
 | `AgentSite` | `($data): AgentSiteEntity` | Create an AgentSite entity instance. |
@@ -280,12 +274,15 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `AgentSlack` | `($data): AgentSlackEntity` | Create an AgentSlack entity instance. |
 | `AgentSubagent` | `($data): AgentSubagentEntity` | Create an AgentSubagent entity instance. |
 | `AgentSubscription` | `($data): AgentSubscriptionEntity` | Create an AgentSubscription entity instance. |
+| `AgentSwarm` | `($data): AgentSwarmEntity` | Create an AgentSwarm entity instance. |
 | `AgentTeammate` | `($data): AgentTeammateEntity` | Create an AgentTeammate entity instance. |
 | `AgentTerminal` | `($data): AgentTerminalEntity` | Create an AgentTerminal entity instance. |
 | `AgentThread` | `($data): AgentThreadEntity` | Create an AgentThread entity instance. |
 | `AgentTool` | `($data): AgentToolEntity` | Create an AgentTool entity instance. |
+| `AgentUsage` | `($data): AgentUsageEntity` | Create an AgentUsage entity instance. |
 | `AgentVerifyProject` | `($data): AgentVerifyProjectEntity` | Create an AgentVerifyProject entity instance. |
 | `AgentWait` | `($data): AgentWaitEntity` | Create an AgentWait entity instance. |
+| `AgentWebPreview` | `($data): AgentWebPreviewEntity` | Create an AgentWebPreview entity instance. |
 | `AgentWebhook` | `($data): AgentWebhookEntity` | Create an AgentWebhook entity instance. |
 | `AgentWork` | `($data): AgentWorkEntity` | Create an AgentWork entity instance. |
 | `AgentWorkflow` | `($data): AgentWorkflowEntity` | Create an AgentWorkflow entity instance. |
@@ -294,8 +291,13 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `AgentWorkflowTrigger` | `($data): AgentWorkflowTriggerEntity` | Create an AgentWorkflowTrigger entity instance. |
 | `AgentWorkspace` | `($data): AgentWorkspaceEntity` | Create an AgentWorkspace entity instance. |
 | `AgentWritePermission` | `($data): AgentWritePermissionEntity` | Create an AgentWritePermission entity instance. |
+| `Agreement` | `($data): AgreementEntity` | Create an Agreement entity instance. |
+| `AgreementAccessRequest` | `($data): AgreementAccessRequestEntity` | Create an AgreementAccessRequest entity instance. |
+| `AlertRuleEvent` | `($data): AlertRuleEventEntity` | Create an AlertRuleEvent entity instance. |
 | `AllocationLog` | `($data): AllocationLogEntity` | Create an AllocationLog entity instance. |
 | `App` | `($data): AppEntity` | Create an App entity instance. |
+| `AppAccess` | `($data): AppAccessEntity` | Create an AppAccess entity instance. |
+| `AppAccessJwk` | `($data): AppAccessJwkEntity` | Create an AppAccessJwk entity instance. |
 | `AppCdn` | `($data): AppCdnEntity` | Create an AppCdn entity instance. |
 | `AppConfigVariable` | `($data): AppConfigVariableEntity` | Create an AppConfigVariable entity instance. |
 | `AppDataResource` | `($data): AppDataResourceEntity` | Create an AppDataResource entity instance. |
@@ -314,11 +316,46 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `AppServiceBinding` | `($data): AppServiceBindingEntity` | Create an AppServiceBinding entity instance. |
 | `AppServicePlacement` | `($data): AppServicePlacementEntity` | Create an AppServicePlacement entity instance. |
 | `AppStorageResource` | `($data): AppStorageResourceEntity` | Create an AppStorageResource entity instance. |
+| `Artefact` | `($data): ArtefactEntity` | Create an Artefact entity instance. |
+| `ArtefactCommentThread` | `($data): ArtefactCommentThreadEntity` | Create an ArtefactCommentThread entity instance. |
+| `ArtefactRevision` | `($data): ArtefactRevisionEntity` | Create an ArtefactRevision entity instance. |
+| `ArtefactViewToken` | `($data): ArtefactViewTokenEntity` | Create an ArtefactViewToken entity instance. |
+| `Artifact` | `($data): ArtifactEntity` | Create an Artifact entity instance. |
+| `ArtifactCacheNamespace` | `($data): ArtifactCacheNamespaceEntity` | Create an ArtifactCacheNamespace entity instance. |
+| `ArtifactImageRepository` | `($data): ArtifactImageRepositoryEntity` | Create an ArtifactImageRepository entity instance. |
+| `ArtifactPackageMirror` | `($data): ArtifactPackageMirrorEntity` | Create an ArtifactPackageMirror entity instance. |
+| `ArtifactRetentionPolicy` | `($data): ArtifactRetentionPolicyEntity` | Create an ArtifactRetentionPolicy entity instance. |
 | `AttachmentPart` | `($data): AttachmentPartEntity` | Create an AttachmentPart entity instance. |
+| `AuditEvent` | `($data): AuditEventEntity` | Create an AuditEvent entity instance. |
+| `Auth` | `($data): AuthEntity` | Create an Auth entity instance. |
+| `AuthCli` | `($data): AuthCliEntity` | Create an AuthCli entity instance. |
+| `AuthGithub` | `($data): AuthGithubEntity` | Create an AuthGithub entity instance. |
+| `AuthGoogle` | `($data): AuthGoogleEntity` | Create an AuthGoogle entity instance. |
+| `AuthOpenai` | `($data): AuthOpenaiEntity` | Create an AuthOpenai entity instance. |
+| `AuthPasswordReset` | `($data): AuthPasswordResetEntity` | Create an AuthPasswordReset entity instance. |
+| `AuthRegistrationOption` | `($data): AuthRegistrationOptionEntity` | Create an AuthRegistrationOption entity instance. |
 | `AutomationEvent` | `($data): AutomationEventEntity` | Create an AutomationEvent entity instance. |
 | `AutomationRun` | `($data): AutomationRunEntity` | Create an AutomationRun entity instance. |
+| `BackendRunnerPool` | `($data): BackendRunnerPoolEntity` | Create a BackendRunnerPool entity instance. |
+| `Bazel` | `($data): BazelEntity` | Create a Bazel entity instance. |
+| `BazelActionResult` | `($data): BazelActionResultEntity` | Create a BazelActionResult entity instance. |
+| `BazelBackend` | `($data): BazelBackendEntity` | Create a BazelBackend entity instance. |
+| `BazelBlob` | `($data): BazelBlobEntity` | Create a BazelBlob entity instance. |
+| `BazelExecution` | `($data): BazelExecutionEntity` | Create a BazelExecution entity instance. |
+| `BazelFindMissingBlob` | `($data): BazelFindMissingBlobEntity` | Create a BazelFindMissingBlob entity instance. |
+| `Billing` | `($data): BillingEntity` | Create a Billing entity instance. |
+| `BillingAddon` | `($data): BillingAddonEntity` | Create a BillingAddon entity instance. |
+| `BillingCheckoutSession` | `($data): BillingCheckoutSessionEntity` | Create a BillingCheckoutSession entity instance. |
+| `BillingInvoice` | `($data): BillingInvoiceEntity` | Create a BillingInvoice entity instance. |
+| `BillingPackage` | `($data): BillingPackageEntity` | Create a BillingPackage entity instance. |
+| `BillingPortalSession` | `($data): BillingPortalSessionEntity` | Create a BillingPortalSession entity instance. |
+| `BillingPrepaidPeriod` | `($data): BillingPrepaidPeriodEntity` | Create a BillingPrepaidPeriod entity instance. |
+| `BillingPrepaidPurchase` | `($data): BillingPrepaidPurchaseEntity` | Create a BillingPrepaidPurchase entity instance. |
+| `BillingTokenTopUp` | `($data): BillingTokenTopUpEntity` | Create a BillingTokenTopUp entity instance. |
+| `BillingUsage` | `($data): BillingUsageEntity` | Create a BillingUsage entity instance. |
 | `Binary` | `($data): BinaryEntity` | Create a Binary entity instance. |
 | `BinaryVersion` | `($data): BinaryVersionEntity` | Create a BinaryVersion entity instance. |
+| `BookmarkProtectionRefreshGithubRequiredCheck` | `($data): BookmarkProtectionRefreshGithubRequiredCheckEntity` | Create a BookmarkProtectionRefreshGithubRequiredCheck entity instance. |
 | `BrowserEgressCandidate` | `($data): BrowserEgressCandidateEntity` | Create a BrowserEgressCandidate entity instance. |
 | `BrowserSession` | `($data): BrowserSessionEntity` | Create a BrowserSession entity instance. |
 | `BrowserSessionConnection` | `($data): BrowserSessionConnectionEntity` | Create a BrowserSessionConnection entity instance. |
@@ -328,13 +365,46 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `BrowserSessionRecording` | `($data): BrowserSessionRecordingEntity` | Create a BrowserSessionRecording entity instance. |
 | `BrowserSessionScreenshot` | `($data): BrowserSessionScreenshotEntity` | Create a BrowserSessionScreenshot entity instance. |
 | `BrowserSessionTask` | `($data): BrowserSessionTaskEntity` | Create a BrowserSessionTask entity instance. |
+| `CacheNamespaceEntry` | `($data): CacheNamespaceEntryEntity` | Create a CacheNamespaceEntry entity instance. |
 | `CatalogSelector` | `($data): CatalogSelectorEntity` | Create a CatalogSelector entity instance. |
 | `CdnDeployment` | `($data): CdnDeploymentEntity` | Create a CdnDeployment entity instance. |
 | `CdnHostname` | `($data): CdnHostnameEntity` | Create a CdnHostname entity instance. |
 | `CdnSpace` | `($data): CdnSpaceEntity` | Create a CdnSpace entity instance. |
 | `CdnSpaceObject` | `($data): CdnSpaceObjectEntity` | Create a CdnSpaceObject entity instance. |
+| `Change` | `($data): ChangeEntity` | Create a Change entity instance. |
+| `ChangeAsset` | `($data): ChangeAssetEntity` | Create a ChangeAsset entity instance. |
+| `ChangeComment` | `($data): ChangeCommentEntity` | Create a ChangeComment entity instance. |
+| `ChangeFileReviewCheckpoint` | `($data): ChangeFileReviewCheckpointEntity` | Create a ChangeFileReviewCheckpoint entity instance. |
+| `ChangeGitBranchSubmission` | `($data): ChangeGitBranchSubmissionEntity` | Create a ChangeGitBranchSubmission entity instance. |
+| `ChangeGitCommitIdentity` | `($data): ChangeGitCommitIdentityEntity` | Create a ChangeGitCommitIdentity entity instance. |
+| `ChangeGitPublication` | `($data): ChangeGitPublicationEntity` | Create a ChangeGitPublication entity instance. |
+| `ChangeGroupMember` | `($data): ChangeGroupMemberEntity` | Create a ChangeGroupMember entity instance. |
+| `ChangeLabel` | `($data): ChangeLabelEntity` | Create a ChangeLabel entity instance. |
+| `ChangeLandingHold` | `($data): ChangeLandingHoldEntity` | Create a ChangeLandingHold entity instance. |
+| `ChangeLandingRequest` | `($data): ChangeLandingRequestEntity` | Create a ChangeLandingRequest entity instance. |
+| `ChangeRequestChange` | `($data): ChangeRequestChangeEntity` | Create a ChangeRequestChange entity instance. |
+| `ChangeReviewer` | `($data): ChangeReviewerEntity` | Create a ChangeReviewer entity instance. |
+| `ChangeTranscript` | `($data): ChangeTranscriptEntity` | Create a ChangeTranscript entity instance. |
+| `ChangeTranscriptSummary` | `($data): ChangeTranscriptSummaryEntity` | Create a ChangeTranscriptSummary entity instance. |
+| `CheckpointPrepareChunk` | `($data): CheckpointPrepareChunkEntity` | Create a CheckpointPrepareChunk entity instance. |
+| `CiNode` | `($data): CiNodeEntity` | Create a CiNode entity instance. |
+| `CiPipeline` | `($data): CiPipelineEntity` | Create a CiPipeline entity instance. |
+| `CiPipelineRun` | `($data): CiPipelineRunEntity` | Create a CiPipelineRun entity instance. |
+| `CiRunnerPool` | `($data): CiRunnerPoolEntity` | Create a CiRunnerPool entity instance. |
+| `CiStatus` | `($data): CiStatusEntity` | Create a CiStatus entity instance. |
+| `CliEvent` | `($data): CliEventEntity` | Create a CliEvent entity instance. |
+| `CliRelease` | `($data): CliReleaseEntity` | Create a CliRelease entity instance. |
+| `CloudWorkspaceBackupObject` | `($data): CloudWorkspaceBackupObjectEntity` | Create a CloudWorkspaceBackupObject entity instance. |
+| `CodeRuleEvaluation` | `($data): CodeRuleEvaluationEntity` | Create a CodeRuleEvaluation entity instance. |
+| `ComSiteAccess` | `($data): ComSiteAccessEntity` | Create a ComSiteAccess entity instance. |
+| `ComSiteAccessSession` | `($data): ComSiteAccessSessionEntity` | Create a ComSiteAccessSession entity instance. |
+| `CommentThreadComment` | `($data): CommentThreadCommentEntity` | Create a CommentThreadComment entity instance. |
+| `CommitDiff` | `($data): CommitDiffEntity` | Create a CommitDiff entity instance. |
 | `ConnectionRequest` | `($data): ConnectionRequestEntity` | Create a ConnectionRequest entity instance. |
 | `ConnectionSource` | `($data): ConnectionSourceEntity` | Create a ConnectionSource entity instance. |
+| `ContactSubmission` | `($data): ContactSubmissionEntity` | Create a ContactSubmission entity instance. |
+| `ControlComputer` | `($data): ControlComputerEntity` | Create a ControlComputer entity instance. |
+| `ControlComputerControlOperation` | `($data): ControlComputerControlOperationEntity` | Create a ControlComputerControlOperation entity instance. |
 | `CoordinationWait` | `($data): CoordinationWaitEntity` | Create a CoordinationWait entity instance. |
 | `CredentialSignInCheck` | `($data): CredentialSignInCheckEntity` | Create a CredentialSignInCheck entity instance. |
 | `DataResourceRotateCredential` | `($data): DataResourceRotateCredentialEntity` | Create a DataResourceRotateCredential entity instance. |
@@ -345,10 +415,36 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `DeepScanOption` | `($data): DeepScanOptionEntity` | Create a DeepScanOption entity instance. |
 | `DemoShare` | `($data): DemoShareEntity` | Create a DemoShare entity instance. |
 | `DemoShareSegment` | `($data): DemoShareSegmentEntity` | Create a DemoShareSegment entity instance. |
+| `Deployment` | `($data): DeploymentEntity` | Create a Deployment entity instance. |
 | `DeploymentDashboardNomad` | `($data): DeploymentDashboardNomadEntity` | Create a DeploymentDashboardNomad entity instance. |
+| `DeploymentDetail` | `($data): DeploymentDetailEntity` | Create a DeploymentDetail entity instance. |
 | `DeploymentFile` | `($data): DeploymentFileEntity` | Create a DeploymentFile entity instance. |
+| `DeploymentLog` | `($data): DeploymentLogEntity` | Create a DeploymentLog entity instance. |
+| `DeploymentMetric` | `($data): DeploymentMetricEntity` | Create a DeploymentMetric entity instance. |
+| `DeploymentPreview` | `($data): DeploymentPreviewEntity` | Create a DeploymentPreview entity instance. |
+| `DeploymentSetting` | `($data): DeploymentSettingEntity` | Create a DeploymentSetting entity instance. |
+| `DesktopLocalAgentModel` | `($data): DesktopLocalAgentModelEntity` | Create a DesktopLocalAgentModel entity instance. |
+| `DesktopLocalAgentResponse` | `($data): DesktopLocalAgentResponseEntity` | Create a DesktopLocalAgentResponse entity instance. |
+| `Device` | `($data): DeviceEntity` | Create a Device entity instance. |
+| `DeviceBrowserOperation` | `($data): DeviceBrowserOperationEntity` | Create a DeviceBrowserOperation entity instance. |
+| `DeviceControlMessage` | `($data): DeviceControlMessageEntity` | Create a DeviceControlMessage entity instance. |
+| `DeviceControlOperation` | `($data): DeviceControlOperationEntity` | Create a DeviceControlOperation entity instance. |
+| `DeviceEnterpriseRelay` | `($data): DeviceEnterpriseRelayEntity` | Create a DeviceEnterpriseRelay entity instance. |
+| `DeviceFolderListing` | `($data): DeviceFolderListingEntity` | Create a DeviceFolderListing entity instance. |
+| `DeviceGrant` | `($data): DeviceGrantEntity` | Create a DeviceGrant entity instance. |
+| `DeviceInvocation` | `($data): DeviceInvocationEntity` | Create a DeviceInvocation entity instance. |
+| `DeviceLocalEvent` | `($data): DeviceLocalEventEntity` | Create a DeviceLocalEvent entity instance. |
+| `DevicePairing` | `($data): DevicePairingEntity` | Create a DevicePairing entity instance. |
+| `DeviceProject` | `($data): DeviceProjectEntity` | Create a DeviceProject entity instance. |
+| `DeviceScheduledCheckIn` | `($data): DeviceScheduledCheckInEntity` | Create a DeviceScheduledCheckIn entity instance. |
+| `DockerBuilder` | `($data): DockerBuilderEntity` | Create a DockerBuilder entity instance. |
+| `DockerBuilderSession` | `($data): DockerBuilderSessionEntity` | Create a DockerBuilderSession entity instance. |
+| `DockerBuilderSetting` | `($data): DockerBuilderSettingEntity` | Create a DockerBuilderSetting entity instance. |
+| `DomainDnsIntegration` | `($data): DomainDnsIntegrationEntity` | Create a DomainDnsIntegration entity instance. |
 | `DomainPathRule` | `($data): DomainPathRuleEntity` | Create a DomainPathRule entity instance. |
 | `Dream` | `($data): DreamEntity` | Create a Dream entity instance. |
+| `Edge` | `($data): EdgeEntity` | Create an Edge entity instance. |
+| `EmailVerification` | `($data): EmailVerificationEntity` | Create an EmailVerification entity instance. |
 | `Environment` | `($data): EnvironmentEntity` | Create an Environment entity instance. |
 | `EnvironmentDiscoveryRun` | `($data): EnvironmentDiscoveryRunEntity` | Create an EnvironmentDiscoveryRun entity instance. |
 | `EnvironmentExploration` | `($data): EnvironmentExplorationEntity` | Create an EnvironmentExploration entity instance. |
@@ -357,48 +453,153 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `EnvironmentSecretBinding` | `($data): EnvironmentSecretBindingEntity` | Create an EnvironmentSecretBinding entity instance. |
 | `EnvironmentTestAccount` | `($data): EnvironmentTestAccountEntity` | Create an EnvironmentTestAccount entity instance. |
 | `Evidence` | `($data): EvidenceEntity` | Create an Evidence entity instance. |
+| `ExecutionDesiredState` | `($data): ExecutionDesiredStateEntity` | Create an ExecutionDesiredState entity instance. |
+| `ExecutionReconcilerTick` | `($data): ExecutionReconcilerTickEntity` | Create an ExecutionReconcilerTick entity instance. |
+| `ExecutionRelease` | `($data): ExecutionReleaseEntity` | Create an ExecutionRelease entity instance. |
+| `ExecutionRuntimeInstance` | `($data): ExecutionRuntimeInstanceEntity` | Create an ExecutionRuntimeInstance entity instance. |
 | `Exploration` | `($data): ExplorationEntity` | Create an Exploration entity instance. |
 | `ExplorationMessage` | `($data): ExplorationMessageEntity` | Create an ExplorationMessage entity instance. |
 | `ExplorationReport` | `($data): ExplorationReportEntity` | Create an ExplorationReport entity instance. |
 | `ExplorationScenario` | `($data): ExplorationScenarioEntity` | Create an ExplorationScenario entity instance. |
 | `Finding` | `($data): FindingEntity` | Create a Finding entity instance. |
+| `Gh` | `($data): GhEntity` | Create a Gh entity instance. |
+| `GitImport` | `($data): GitImportEntity` | Create a GitImport entity instance. |
+| `Github` | `($data): GithubEntity` | Create a Github entity instance. |
+| `GithubApp` | `($data): GithubAppEntity` | Create a GithubApp entity instance. |
+| `GithubAppImportableRepository` | `($data): GithubAppImportableRepositoryEntity` | Create a GithubAppImportableRepository entity instance. |
+| `GithubAppInstallation` | `($data): GithubAppInstallationEntity` | Create a GithubAppInstallation entity instance. |
+| `GithubAppInstallationAuthorization` | `($data): GithubAppInstallationAuthorizationEntity` | Create a GithubAppInstallationAuthorization entity instance. |
+| `GithubAppUserAuthorization` | `($data): GithubAppUserAuthorizationEntity` | Create a GithubAppUserAuthorization entity instance. |
+| `GithubCiRepository` | `($data): GithubCiRepositoryEntity` | Create a GithubCiRepository entity instance. |
+| `GithubCiRepositoryCompatibilityReport` | `($data): GithubCiRepositoryCompatibilityReportEntity` | Create a GithubCiRepositoryCompatibilityReport entity instance. |
 | `GithubConnection` | `($data): GithubConnectionEntity` | Create a GithubConnection entity instance. |
+| `GithubIntegration` | `($data): GithubIntegrationEntity` | Create a GithubIntegration entity instance. |
+| `GithubOnboarding` | `($data): GithubOnboardingEntity` | Create a GithubOnboarding entity instance. |
+| `GithubOnboardingBranch` | `($data): GithubOnboardingBranchEntity` | Create a GithubOnboardingBranch entity instance. |
+| `GithubOnboardingImport` | `($data): GithubOnboardingImportEntity` | Create a GithubOnboardingImport entity instance. |
+| `GithubOnboardingImportBatch` | `($data): GithubOnboardingImportBatchEntity` | Create a GithubOnboardingImportBatch entity instance. |
+| `GithubOnboardingImportItem` | `($data): GithubOnboardingImportItemEntity` | Create a GithubOnboardingImportItem entity instance. |
+| `GithubPullRequest` | `($data): GithubPullRequestEntity` | Create a GithubPullRequest entity instance. |
+| `GithubRunnerAdmission` | `($data): GithubRunnerAdmissionEntity` | Create a GithubRunnerAdmission entity instance. |
+| `GithubRunnerCache` | `($data): GithubRunnerCacheEntity` | Create a GithubRunnerCache entity instance. |
+| `GithubRunnerEgress` | `($data): GithubRunnerEgressEntity` | Create a GithubRunnerEgress entity instance. |
+| `GithubRunnerHistory` | `($data): GithubRunnerHistoryEntity` | Create a GithubRunnerHistory entity instance. |
+| `GithubRunnerImage` | `($data): GithubRunnerImageEntity` | Create a GithubRunnerImage entity instance. |
+| `GithubRunnerPool` | `($data): GithubRunnerPoolEntity` | Create a GithubRunnerPool entity instance. |
+| `GithubRunnerSetup` | `($data): GithubRunnerSetupEntity` | Create a GithubRunnerSetup entity instance. |
+| `Gitlab` | `($data): GitlabEntity` | Create a Gitlab entity instance. |
+| `GitlabConnection` | `($data): GitlabConnectionEntity` | Create a GitlabConnection entity instance. |
+| `GitlabImport` | `($data): GitlabImportEntity` | Create a GitlabImport entity instance. |
+| `GitlabOauth` | `($data): GitlabOauthEntity` | Create a GitlabOauth entity instance. |
+| `GrantAllAgent` | `($data): GrantAllAgentEntity` | Create a GrantAllAgent entity instance. |
 | `HostingAppDomain` | `($data): HostingAppDomainEntity` | Create a HostingAppDomain entity instance. |
+| `IdentityOrganization` | `($data): IdentityOrganizationEntity` | Create an IdentityOrganization entity instance. |
 | `ImageRepository` | `($data): ImageRepositoryEntity` | Create an ImageRepository entity instance. |
+| `ImageRepositoryTag` | `($data): ImageRepositoryTagEntity` | Create an ImageRepositoryTag entity instance. |
+| `ImportBranchPolicy` | `($data): ImportBranchPolicyEntity` | Create an ImportBranchPolicy entity instance. |
 | `Integration` | `($data): IntegrationEntity` | Create an Integration entity instance. |
 | `InteractionResponse` | `($data): InteractionResponseEntity` | Create an InteractionResponse entity instance. |
 | `Invitation` | `($data): InvitationEntity` | Create an Invitation entity instance. |
+| `InvocationControl` | `($data): InvocationControlEntity` | Create an InvocationControl entity instance. |
+| `JobLogChunk` | `($data): JobLogChunkEntity` | Create a JobLogChunk entity instance. |
+| `JobStep` | `($data): JobStepEntity` | Create a JobStep entity instance. |
+| `JobWorkspace` | `($data): JobWorkspaceEntity` | Create a JobWorkspace entity instance. |
 | `JourneyVariantReplay` | `($data): JourneyVariantReplayEntity` | Create a JourneyVariantReplay entity instance. |
 | `Knowledge` | `($data): KnowledgeEntity` | Create a Knowledge entity instance. |
+| `Known` | `($data): KnownEntity` | Create a Known entity instance. |
+| `Label` | `($data): LabelEntity` | Create a Label entity instance. |
+| `LeaseArtifact` | `($data): LeaseArtifactEntity` | Create a LeaseArtifact entity instance. |
+| `LeaseCache` | `($data): LeaseCacheEntity` | Create a LeaseCache entity instance. |
+| `LeaseLogChunk` | `($data): LeaseLogChunkEntity` | Create a LeaseLogChunk entity instance. |
+| `LeaseReconciliation` | `($data): LeaseReconciliationEntity` | Create a LeaseReconciliation entity instance. |
+| `LeaseStep` | `($data): LeaseStepEntity` | Create a LeaseStep entity instance. |
+| `LeaseVerifyDiagnostic` | `($data): LeaseVerifyDiagnosticEntity` | Create a LeaseVerifyDiagnostic entity instance. |
+| `LeaseVerifySecret` | `($data): LeaseVerifySecretEntity` | Create a LeaseVerifySecret entity instance. |
+| `LeaseWorkspace` | `($data): LeaseWorkspaceEntity` | Create a LeaseWorkspace entity instance. |
+| `LocalAgentDecision` | `($data): LocalAgentDecisionEntity` | Create a LocalAgentDecision entity instance. |
+| `LocalAgentResponse` | `($data): LocalAgentResponseEntity` | Create a LocalAgentResponse entity instance. |
 | `LocalThreadDelivery` | `($data): LocalThreadDeliveryEntity` | Create a LocalThreadDelivery entity instance. |
 | `LocalThreadOperation` | `($data): LocalThreadOperationEntity` | Create a LocalThreadOperation entity instance. |
 | `Location` | `($data): LocationEntity` | Create a Location entity instance. |
+| `LogStreamChunk` | `($data): LogStreamChunkEntity` | Create a LogStreamChunk entity instance. |
+| `LogoImage` | `($data): LogoImageEntity` | Create a LogoImage entity instance. |
+| `MarketingSetting` | `($data): MarketingSettingEntity` | Create a MarketingSetting entity instance. |
+| `McpOauth` | `($data): McpOauthEntity` | Create a McpOauth entity instance. |
 | `Me` | `($data): MeEntity` | Create a Me entity instance. |
 | `MeEmail` | `($data): MeEmailEntity` | Create a MeEmail entity instance. |
 | `MeOnboarding` | `($data): MeOnboardingEntity` | Create a MeOnboarding entity instance. |
 | `MediaFile` | `($data): MediaFileEntity` | Create a MediaFile entity instance. |
 | `Member` | `($data): MemberEntity` | Create a Member entity instance. |
 | `Memory` | `($data): MemoryEntity` | Create a Memory entity instance. |
+| `MergeQueueEntry` | `($data): MergeQueueEntryEntity` | Create a MergeQueueEntry entity instance. |
 | `MergeRequest` | `($data): MergeRequestEntity` | Create a MergeRequest entity instance. |
+| `MergeResolution` | `($data): MergeResolutionEntity` | Create a MergeResolution entity instance. |
 | `MessagingConversationMessage` | `($data): MessagingConversationMessageEntity` | Create a MessagingConversationMessage entity instance. |
 | `MessagingConversationUpload` | `($data): MessagingConversationUploadEntity` | Create a MessagingConversationUpload entity instance. |
 | `MetricQuery` | `($data): MetricQueryEntity` | Create a MetricQuery entity instance. |
+| `MetronomeWebhook` | `($data): MetronomeWebhookEntity` | Create a MetronomeWebhook entity instance. |
+| `ModelSubscriptionAccount` | `($data): ModelSubscriptionAccountEntity` | Create a ModelSubscriptionAccount entity instance. |
+| `ModelSubscriptionAccountConnection` | `($data): ModelSubscriptionAccountConnectionEntity` | Create a ModelSubscriptionAccountConnection entity instance. |
 | `NetworkConnection` | `($data): NetworkConnectionEntity` | Create a NetworkConnection entity instance. |
+| `NetworkingSpace` | `($data): NetworkingSpaceEntity` | Create a NetworkingSpace entity instance. |
+| `Node` | `($data): NodeEntity` | Create a Node entity instance. |
+| `NodeCertificate` | `($data): NodeCertificateEntity` | Create a NodeCertificate entity instance. |
+| `NodeLease` | `($data): NodeLeaseEntity` | Create a NodeLease entity instance. |
 | `NomadAllocation` | `($data): NomadAllocationEntity` | Create a NomadAllocation entity instance. |
 | `NomadLog` | `($data): NomadLogEntity` | Create a NomadLog entity instance. |
+| `Now` | `($data): NowEntity` | Create a Now entity instance. |
+| `ObservabilityClickhouseCluster` | `($data): ObservabilityClickhouseClusterEntity` | Create an ObservabilityClickhouseCluster entity instance. |
+| `ObservabilityQuickwitCluster` | `($data): ObservabilityQuickwitClusterEntity` | Create an ObservabilityQuickwitCluster entity instance. |
+| `ObservabilitySpace` | `($data): ObservabilitySpaceEntity` | Create an ObservabilitySpace entity instance. |
+| `Openapi` | `($data): OpenapiEntity` | Create an Openapi entity instance. |
+| `OrgInvitation` | `($data): OrgInvitationEntity` | Create an OrgInvitation entity instance. |
 | `Organization` | `($data): OrganizationEntity` | Create an Organization entity instance. |
+| `OrganizationApp` | `($data): OrganizationAppEntity` | Create an OrganizationApp entity instance. |
+| `OrganizationControl` | `($data): OrganizationControlEntity` | Create an OrganizationControl entity instance. |
+| `OrganizationDevice` | `($data): OrganizationDeviceEntity` | Create an OrganizationDevice entity instance. |
+| `OrganizationIdentityCertificate` | `($data): OrganizationIdentityCertificateEntity` | Create an OrganizationIdentityCertificate entity instance. |
+| `OrganizationInteraction` | `($data): OrganizationInteractionEntity` | Create an OrganizationInteraction entity instance. |
+| `OrganizationInvitation` | `($data): OrganizationInvitationEntity` | Create an OrganizationInvitation entity instance. |
+| `OrganizationMessageFile` | `($data): OrganizationMessageFileEntity` | Create an OrganizationMessageFile entity instance. |
+| `OrganizationOidcTrust` | `($data): OrganizationOidcTrustEntity` | Create an OrganizationOidcTrust entity instance. |
+| `OrganizationRunEvent` | `($data): OrganizationRunEventEntity` | Create an OrganizationRunEvent entity instance. |
+| `OrganizationRunOutcome` | `($data): OrganizationRunOutcomeEntity` | Create an OrganizationRunOutcome entity instance. |
+| `OrganizationRunUsage` | `($data): OrganizationRunUsageEntity` | Create an OrganizationRunUsage entity instance. |
+| `OrganizationSandbox` | `($data): OrganizationSandboxEntity` | Create an OrganizationSandbox entity instance. |
+| `OrganizationSecret` | `($data): OrganizationSecretEntity` | Create an OrganizationSecret entity instance. |
+| `OrganizationServiceAccount` | `($data): OrganizationServiceAccountEntity` | Create an OrganizationServiceAccount entity instance. |
+| `OrganizationSetting` | `($data): OrganizationSettingEntity` | Create an OrganizationSetting entity instance. |
+| `OrganizationSite` | `($data): OrganizationSiteEntity` | Create an OrganizationSite entity instance. |
+| `OrganizationSubscription` | `($data): OrganizationSubscriptionEntity` | Create an OrganizationSubscription entity instance. |
+| `OrganizationTool` | `($data): OrganizationToolEntity` | Create an OrganizationTool entity instance. |
+| `OrganizationWorkloadIdentity` | `($data): OrganizationWorkloadIdentityEntity` | Create an OrganizationWorkloadIdentity entity instance. |
+| `OtelIngest` | `($data): OtelIngestEntity` | Create an OtelIngest entity instance. |
 | `Page` | `($data): PageEntity` | Create a Page entity instance. |
 | `PageAgent` | `($data): PageAgentEntity` | Create a PageAgent entity instance. |
+| `PageArtefact` | `($data): PageArtefactEntity` | Create a PageArtefact entity instance. |
+| `PageCiPipelineRun` | `($data): PageCiPipelineRunEntity` | Create a PageCiPipelineRun entity instance. |
 | `PageProjectRun` | `($data): PageProjectRunEntity` | Create a PageProjectRun entity instance. |
+| `PageRepoVcCommit` | `($data): PageRepoVcCommitEntity` | Create a PageRepoVcCommit entity instance. |
+| `PagesBilling` | `($data): PagesBillingEntity` | Create a PagesBilling entity instance. |
+| `PagesGithubOnboarding` | `($data): PagesGithubOnboardingEntity` | Create a PagesGithubOnboarding entity instance. |
+| `PagesMember` | `($data): PagesMemberEntity` | Create a PagesMember entity instance. |
 | `PagesProjectCredential` | `($data): PagesProjectCredentialEntity` | Create a PagesProjectCredential entity instance. |
 | `PagesProjectPersona` | `($data): PagesProjectPersonaEntity` | Create a PagesProjectPersona entity instance. |
 | `PagesProjectRun` | `($data): PagesProjectRunEntity` | Create a PagesProjectRun entity instance. |
 | `PagesProjectScenario` | `($data): PagesProjectScenarioEntity` | Create a PagesProjectScenario entity instance. |
+| `PagesRegistry` | `($data): PagesRegistryEntity` | Create a PagesRegistry entity instance. |
+| `PagesSession` | `($data): PagesSessionEntity` | Create a PagesSession entity instance. |
+| `Pairing` | `($data): PairingEntity` | Create a Pairing entity instance. |
+| `PairingEvent` | `($data): PairingEventEntity` | Create a PairingEvent entity instance. |
+| `ParallelV1` | `($data): ParallelV1Entity` | Create a ParallelV1 entity instance. |
+| `PatchsetDiff` | `($data): PatchsetDiffEntity` | Create a PatchsetDiff entity instance. |
 | `PersonalAccessToken` | `($data): PersonalAccessTokenEntity` | Create a PersonalAccessToken entity instance. |
 | `PreviewOperation` | `($data): PreviewOperationEntity` | Create a PreviewOperation entity instance. |
 | `PreviewProfileSecretBinding` | `($data): PreviewProfileSecretBindingEntity` | Create a PreviewProfileSecretBinding entity instance. |
 | `PreviewSecret` | `($data): PreviewSecretEntity` | Create a PreviewSecret entity instance. |
 | `PreviewSharingApproval` | `($data): PreviewSharingApprovalEntity` | Create a PreviewSharingApproval entity instance. |
+| `ProactiveAgentWaitlistEntry` | `($data): ProactiveAgentWaitlistEntryEntity` | Create a ProactiveAgentWaitlistEntry entity instance. |
+| `Product` | `($data): ProductEntity` | Create a Product entity instance. |
 | `ProductMapIdentityDecision` | `($data): ProductMapIdentityDecisionEntity` | Create a ProductMapIdentityDecision entity instance. |
 | `ProductMapJourney` | `($data): ProductMapJourneyEntity` | Create a ProductMapJourney entity instance. |
 | `ProductMapJourneyReplay` | `($data): ProductMapJourneyReplayEntity` | Create a ProductMapJourneyReplay entity instance. |
@@ -423,43 +624,152 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `ProjectScenarioRow` | `($data): ProjectScenarioRowEntity` | Create a ProjectScenarioRow entity instance. |
 | `ProjectSetting` | `($data): ProjectSettingEntity` | Create a ProjectSetting entity instance. |
 | `PullRequest` | `($data): PullRequestEntity` | Create a PullRequest entity instance. |
+| `PullRequestAction` | `($data): PullRequestActionEntity` | Create a PullRequestAction entity instance. |
+| `PullRequestMagicMerge` | `($data): PullRequestMagicMergeEntity` | Create a PullRequestMagicMerge entity instance. |
 | `PullRequestSetting` | `($data): PullRequestSettingEntity` | Create a PullRequestSetting entity instance. |
 | `PullRequestSettingAddRepository` | `($data): PullRequestSettingAddRepositoryEntity` | Create a PullRequestSettingAddRepository entity instance. |
 | `PullRequestSettingDetectComment` | `($data): PullRequestSettingDetectCommentEntity` | Create a PullRequestSettingDetectComment entity instance. |
+| `PullRequestTranscript` | `($data): PullRequestTranscriptEntity` | Create a PullRequestTranscript entity instance. |
+| `PullZone` | `($data): PullZoneEntity` | Create a PullZone entity instance. |
 | `Recorder` | `($data): RecorderEntity` | Create a Recorder entity instance. |
 | `Registry` | `($data): RegistryEntity` | Create a Registry entity instance. |
 | `RegistryV2` | `($data): RegistryV2Entity` | Create a RegistryV2 entity instance. |
+| `RelayAgentConnection` | `($data): RelayAgentConnectionEntity` | Create a RelayAgentConnection entity instance. |
 | `RelayAgentLocalThread` | `($data): RelayAgentLocalThreadEntity` | Create a RelayAgentLocalThread entity instance. |
+| `RelaySignal` | `($data): RelaySignalEntity` | Create a RelaySignal entity instance. |
+| `ReleaseRollout` | `($data): ReleaseRolloutEntity` | Create a ReleaseRollout entity instance. |
+| `Repo` | `($data): RepoEntity` | Create a Repo entity instance. |
+| `RepoAccessToken` | `($data): RepoAccessTokenEntity` | Create a RepoAccessToken entity instance. |
+| `RepoAction` | `($data): RepoActionEntity` | Create a RepoAction entity instance. |
+| `RepoAgentCheckpoint` | `($data): RepoAgentCheckpointEntity` | Create a RepoAgentCheckpoint entity instance. |
+| `RepoAgentSession` | `($data): RepoAgentSessionEntity` | Create a RepoAgentSession entity instance. |
+| `RepoBookmarkProtection` | `($data): RepoBookmarkProtectionEntity` | Create a RepoBookmarkProtection entity instance. |
+| `RepoBookmarkProtectionEvent` | `($data): RepoBookmarkProtectionEventEntity` | Create a RepoBookmarkProtectionEvent entity instance. |
+| `RepoCloudWorkspaceBackup` | `($data): RepoCloudWorkspaceBackupEntity` | Create a RepoCloudWorkspaceBackup entity instance. |
+| `RepoCodeRule` | `($data): RepoCodeRuleEntity` | Create a RepoCodeRule entity instance. |
+| `RepoSetting` | `($data): RepoSettingEntity` | Create a RepoSetting entity instance. |
+| `RepoStat` | `($data): RepoStatEntity` | Create a RepoStat entity instance. |
+| `RepoVc` | `($data): RepoVcEntity` | Create a RepoVc entity instance. |
+| `RepoVcCommit` | `($data): RepoVcCommitEntity` | Create a RepoVcCommit entity instance. |
 | `ReportReplay` | `($data): ReportReplayEntity` | Create a ReportReplay entity instance. |
 | `ReportScenario` | `($data): ReportScenarioEntity` | Create a ReportScenario entity instance. |
+| `RepositoryAccess` | `($data): RepositoryAccessEntity` | Create a RepositoryAccess entity instance. |
+| `RepositoryAccessResolve` | `($data): RepositoryAccessResolveEntity` | Create a RepositoryAccessResolve entity instance. |
+| `RepositoryEvent` | `($data): RepositoryEventEntity` | Create a RepositoryEvent entity instance. |
+| `RepositoryImport` | `($data): RepositoryImportEntity` | Create a RepositoryImport entity instance. |
+| `RepositoryImportSession` | `($data): RepositoryImportSessionEntity` | Create a RepositoryImportSession entity instance. |
+| `RepositoryImportSessionRepository` | `($data): RepositoryImportSessionRepositoryEntity` | Create a RepositoryImportSessionRepository entity instance. |
+| `RepositoryImportSessionSelection` | `($data): RepositoryImportSessionSelectionEntity` | Create a RepositoryImportSessionSelection entity instance. |
+| `RepositorySandboxEnvironment` | `($data): RepositorySandboxEnvironmentEntity` | Create a RepositorySandboxEnvironment entity instance. |
+| `RoderCodeRepair` | `($data): RoderCodeRepairEntity` | Create a RoderCodeRepair entity instance. |
+| `RoderCodeRepairSetting` | `($data): RoderCodeRepairSettingEntity` | Create a RoderCodeRepairSetting entity instance. |
+| `RoderMachine` | `($data): RoderMachineEntity` | Create a RoderMachine entity instance. |
+| `RoderRun` | `($data): RoderRunEntity` | Create a RoderRun entity instance. |
+| `RoderWorkspaceCredential` | `($data): RoderWorkspaceCredentialEntity` | Create a RoderWorkspaceCredential entity instance. |
+| `RunArtifact` | `($data): RunArtifactEntity` | Create a RunArtifact entity instance. |
+| `RunJob` | `($data): RunJobEntity` | Create a RunJob entity instance. |
 | `RunScenarioRun` | `($data): RunScenarioRunEntity` | Create a RunScenarioRun entity instance. |
 | `RunScheduleOption` | `($data): RunScheduleOptionEntity` | Create a RunScheduleOption entity instance. |
 | `RunSearch` | `($data): RunSearchEntity` | Create a RunSearch entity instance. |
 | `RunUpdate` | `($data): RunUpdateEntity` | Create a RunUpdate entity instance. |
+| `RunWorkspaceCredential` | `($data): RunWorkspaceCredentialEntity` | Create a RunWorkspaceCredential entity instance. |
+| `RunnerLease` | `($data): RunnerLeaseEntity` | Create a RunnerLease entity instance. |
+| `RunnerPoolNodeEnrollmentToken` | `($data): RunnerPoolNodeEnrollmentTokenEntity` | Create a RunnerPoolNodeEnrollmentToken entity instance. |
+| `RunnerPoolRunner` | `($data): RunnerPoolRunnerEntity` | Create a RunnerPoolRunner entity instance. |
+| `RuntimeInstanceHealthSnapshot` | `($data): RuntimeInstanceHealthSnapshotEntity` | Create a RuntimeInstanceHealthSnapshot entity instance. |
+| `SandboxIntegration` | `($data): SandboxIntegrationEntity` | Create a SandboxIntegration entity instance. |
 | `ScenarioRevision` | `($data): ScenarioRevisionEntity` | Create a ScenarioRevision entity instance. |
 | `ScenarioRunLesson` | `($data): ScenarioRunLessonEntity` | Create a ScenarioRunLesson entity instance. |
 | `ScenarioRunScenarioEdit` | `($data): ScenarioRunScenarioEditEntity` | Create a ScenarioRunScenarioEdit entity instance. |
+| `SecretGrant` | `($data): SecretGrantEntity` | Create a SecretGrant entity instance. |
+| `SecretVersion` | `($data): SecretVersionEntity` | Create a SecretVersion entity instance. |
 | `ServiceEndpoint` | `($data): ServiceEndpointEntity` | Create a ServiceEndpoint entity instance. |
+| `Setting` | `($data): SettingEntity` | Create a Setting entity instance. |
+| `SettingMutationLease` | `($data): SettingMutationLeaseEntity` | Create a SettingMutationLease entity instance. |
+| `Signal` | `($data): SignalEntity` | Create a Signal entity instance. |
+| `SignalInbound` | `($data): SignalInboundEntity` | Create a SignalInbound entity instance. |
+| `SignalIntegration` | `($data): SignalIntegrationEntity` | Create a SignalIntegration entity instance. |
+| `SignalIntegrationDelivery` | `($data): SignalIntegrationDeliveryEntity` | Create a SignalIntegrationDelivery entity instance. |
+| `SignalIntegrationTarget` | `($data): SignalIntegrationTargetEntity` | Create a SignalIntegrationTarget entity instance. |
+| `SignalSubscription` | `($data): SignalSubscriptionEntity` | Create a SignalSubscription entity instance. |
+| `Site` | `($data): SiteEntity` | Create a Site entity instance. |
+| `SiteAccessKey` | `($data): SiteAccessKeyEntity` | Create a SiteAccessKey entity instance. |
 | `SitePreview` | `($data): SitePreviewEntity` | Create a SitePreview entity instance. |
+| `SiteSecret` | `($data): SiteSecretEntity` | Create a SiteSecret entity instance. |
 | `SlackChannel` | `($data): SlackChannelEntity` | Create a SlackChannel entity instance. |
+| `SourceConnection` | `($data): SourceConnectionEntity` | Create a SourceConnection entity instance. |
+| `SpaceAlertRule` | `($data): SpaceAlertRuleEntity` | Create a SpaceAlertRule entity instance. |
+| `SpaceAuditEvent` | `($data): SpaceAuditEventEntity` | Create a SpaceAuditEvent entity instance. |
+| `SpaceDnsRecord` | `($data): SpaceDnsRecordEntity` | Create a SpaceDnsRecord entity instance. |
+| `SpaceEnrollmentToken` | `($data): SpaceEnrollmentTokenEntity` | Create a SpaceEnrollmentToken entity instance. |
+| `SpaceGateway` | `($data): SpaceGatewayEntity` | Create a SpaceGateway entity instance. |
+| `SpaceGroup` | `($data): SpaceGroupEntity` | Create a SpaceGroup entity instance. |
+| `SpaceGroupMembership` | `($data): SpaceGroupMembershipEntity` | Create a SpaceGroupMembership entity instance. |
+| `SpaceLogStream` | `($data): SpaceLogStreamEntity` | Create a SpaceLogStream entity instance. |
+| `SpaceMetricSery` | `($data): SpaceMetricSeryEntity` | Create a SpaceMetricSery entity instance. |
+| `SpaceOtelCollector` | `($data): SpaceOtelCollectorEntity` | Create a SpaceOtelCollector entity instance. |
+| `SpacePeer` | `($data): SpacePeerEntity` | Create a SpacePeer entity instance. |
+| `SpacePeerAttachment` | `($data): SpacePeerAttachmentEntity` | Create a SpacePeerAttachment entity instance. |
+| `SpacePolicy` | `($data): SpacePolicyEntity` | Create a SpacePolicy entity instance. |
+| `SpaceSegment` | `($data): SpaceSegmentEntity` | Create a SpaceSegment entity instance. |
+| `SpaceTraceSpan` | `($data): SpaceTraceSpanEntity` | Create a SpaceTraceSpan entity instance. |
+| `Spark` | `($data): SparkEntity` | Create a Spark entity instance. |
+| `SparkAgentIntegration` | `($data): SparkAgentIntegrationEntity` | Create a SparkAgentIntegration entity instance. |
 | `SparkAgentLocalThread` | `($data): SparkAgentLocalThreadEntity` | Create a SparkAgentLocalThread entity instance. |
+| `SparkAgentSite` | `($data): SparkAgentSiteEntity` | Create a SparkAgentSite entity instance. |
+| `SparkAgentSkill` | `($data): SparkAgentSkillEntity` | Create a SparkAgentSkill entity instance. |
+| `SparkAgentThread` | `($data): SparkAgentThreadEntity` | Create a SparkAgentThread entity instance. |
+| `SparkCredit` | `($data): SparkCreditEntity` | Create a SparkCredit entity instance. |
+| `SparkCreditAgentUsage` | `($data): SparkCreditAgentUsageEntity` | Create a SparkCreditAgentUsage entity instance. |
+| `SparkCreditUsageTotal` | `($data): SparkCreditUsageTotalEntity` | Create a SparkCreditUsageTotal entity instance. |
 | `StaticSite` | `($data): StaticSiteEntity` | Create a StaticSite entity instance. |
 | `StaticSiteDeployment` | `($data): StaticSiteDeploymentEntity` | Create a StaticSiteDeployment entity instance. |
 | `StaticSiteDomain` | `($data): StaticSiteDomainEntity` | Create a StaticSiteDomain entity instance. |
+| `StatusChange` | `($data): StatusChangeEntity` | Create a StatusChange entity instance. |
+| `StatusCommit` | `($data): StatusCommitEntity` | Create a StatusCommit entity instance. |
+| `StatusPatchset` | `($data): StatusPatchsetEntity` | Create a StatusPatchset entity instance. |
+| `StripeWebhook` | `($data): StripeWebhookEntity` | Create a StripeWebhook entity instance. |
+| `SubmitTelemetry` | `($data): SubmitTelemetryEntity` | Create a SubmitTelemetry entity instance. |
 | `SubscriptionModel` | `($data): SubscriptionModelEntity` | Create a SubscriptionModel entity instance. |
+| `SwarmEvent` | `($data): SwarmEventEntity` | Create a SwarmEvent entity instance. |
+| `SwarmLive` | `($data): SwarmLiveEntity` | Create a SwarmLive entity instance. |
+| `SwarmNote` | `($data): SwarmNoteEntity` | Create a SwarmNote entity instance. |
+| `SwarmTask` | `($data): SwarmTaskEntity` | Create a SwarmTask entity instance. |
+| `TaskLease` | `($data): TaskLeaseEntity` | Create a TaskLease entity instance. |
 | `ThreadPreview` | `($data): ThreadPreviewEntity` | Create a ThreadPreview entity instance. |
+| `ThreadPreviewAccess` | `($data): ThreadPreviewAccessEntity` | Create a ThreadPreviewAccess entity instance. |
+| `ToolFeedback` | `($data): ToolFeedbackEntity` | Create a ToolFeedback entity instance. |
+| `Transcript` | `($data): TranscriptEntity` | Create a Transcript entity instance. |
+| `V1Message` | `($data): V1MessageEntity` | Create a V1Message entity instance. |
+| `VcBranch` | `($data): VcBranchEntity` | Create a VcBranch entity instance. |
+| `VcBrowser` | `($data): VcBrowserEntity` | Create a VcBrowser entity instance. |
+| `VcChange` | `($data): VcChangeEntity` | Create a VcChange entity instance. |
+| `VcChangeGroup` | `($data): VcChangeGroupEntity` | Create a VcChangeGroup entity instance. |
+| `VcFile` | `($data): VcFileEntity` | Create a VcFile entity instance. |
+| `VcMergeQueue` | `($data): VcMergeQueueEntity` | Create a VcMergeQueue entity instance. |
+| `VcStack` | `($data): VcStackEntity` | Create a VcStack entity instance. |
+| `VcsNode` | `($data): VcsNodeEntity` | Create a VcsNode entity instance. |
+| `VcsSetting` | `($data): VcsSettingEntity` | Create a VcsSetting entity instance. |
 | `VerificationProjectCredential` | `($data): VerificationProjectCredentialEntity` | Create a VerificationProjectCredential entity instance. |
 | `VerificationProjectPersona` | `($data): VerificationProjectPersonaEntity` | Create a VerificationProjectPersona entity instance. |
 | `VerificationProjectRun` | `($data): VerificationProjectRunEntity` | Create a VerificationProjectRun entity instance. |
 | `VerificationProjectScenario` | `($data): VerificationProjectScenarioEntity` | Create a VerificationProjectScenario entity instance. |
 | `VerifyAppDomain` | `($data): VerifyAppDomainEntity` | Create a VerifyAppDomain entity instance. |
 | `VerifyBrowserSession` | `($data): VerifyBrowserSessionEntity` | Create a VerifyBrowserSession entity instance. |
+| `VerifyEmailVerification` | `($data): VerifyEmailVerificationEntity` | Create a VerifyEmailVerification entity instance. |
+| `VerifySignalIntegration` | `($data): VerifySignalIntegrationEntity` | Create a VerifySignalIntegration entity instance. |
 | `VerifyStaticSiteDomain` | `($data): VerifyStaticSiteDomainEntity` | Create a VerifyStaticSiteDomain entity instance. |
 | `VersionLog` | `($data): VersionLogEntity` | Create a VersionLog entity instance. |
+| `WaitlistApplication` | `($data): WaitlistApplicationEntity` | Create a WaitlistApplication entity instance. |
 | `WebBotAuth` | `($data): WebBotAuthEntity` | Create a WebBotAuth entity instance. |
+| `WebhookGitlab` | `($data): WebhookGitlabEntity` | Create a WebhookGitlab entity instance. |
 | `WorkflowRunStep` | `($data): WorkflowRunStepEntity` | Create a WorkflowRunStep entity instance. |
 | `WorkflowRunStopNotice` | `($data): WorkflowRunStopNoticeEntity` | Create a WorkflowRunStopNotice entity instance. |
 | `WorkflowTriggerSkipped` | `($data): WorkflowTriggerSkippedEntity` | Create a WorkflowTriggerSkipped entity instance. |
+| `WorkspaceActivity` | `($data): WorkspaceActivityEntity` | Create a WorkspaceActivity entity instance. |
+| `WorkspaceActivityNotification` | `($data): WorkspaceActivityNotificationEntity` | Create a WorkspaceActivityNotification entity instance. |
+| `WorkspaceSpace` | `($data): WorkspaceSpaceEntity` | Create a WorkspaceSpace entity instance. |
+| `WorkspaceSpacePreference` | `($data): WorkspaceSpacePreferenceEntity` | Create a WorkspaceSpacePreference entity instance. |
 
 ### Entity interface
 
@@ -499,6 +809,39 @@ you branch on via `$result["ok"]`:
 On error, `ok` is `false` and `$err` contains the error value.
 
 ### Entities
+
+#### A2aWellKnown
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/control/a2a/{connection_id}/.well-known/agent-card.json`
+
+#### AdminOrg
+
+| Field | Description |
+| --- | --- |
+| `billing_email` |  |
+| `billing_reason` | Required when setting an agreed price |
+| `customize_onboarding_packages` |  |
+| `deployment_usage_visibility` |  |
+| `deployment_usage_visible` |  |
+| `id` |  |
+| `monthly_price_dollars` | Ongoing USD workspace price, for example '50.00' |
+| `monthly_price_override_cents` |  |
+| `name` |  |
+| `onboarding_custom_pricing` |  |
+| `onboarding_package_keys` | Package keys offered when customizing onboarding. |
+| `owner_email` |  |
+| `package_id` | Active customer package public ID. |
+| `skip_payment` | Grant the selected package as an ongoing complimentary subscription with monthly included usage and package limits. |
+| `slug` |  |
+
+Operations: Create, List, Load, Update.
+
+API path: `/api/v1/admin/organizations/{org_slug}/checkout_session`
 
 #### Agent
 
@@ -550,6 +893,44 @@ On error, `ok` is `false` and `$err` contains the error value.
 Operations: Create, List, Load, Remove, Update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/browser_opened`
+
+#### AgentApp
+
+| Field | Description |
+| --- | --- |
+| `author` |  |
+| `can_message` | The viewer may send input to the author agent |
+| `deployments_count` | Increases with every deploy of the site |
+| `description` |  |
+| `hidden_install_count` | Installs by agents the viewer cannot open |
+| `id` |  |
+| `install_count` |  |
+| `install_targets` | Active agents the viewer owns or manages, which they can install apps on |
+| `installed_by` |  |
+| `installed_target_ids` | Install targets of the viewer that have this app installed |
+| `items` |  |
+| `mcp_url` |  |
+| `next_cursor` | Pass as cursor to load older apps |
+| `owner` | The person who controls the author agent |
+| `thread` | The thread that published the app, when the viewer can open the author agent |
+| `title` |  |
+| `url` |  |
+| `visibility` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/agent_apps/{id}/opened`
+
+#### AgentAppInstall
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `installed` |  |
+
+Operations: Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/agent_apps/{id}/installs/{agent_id}`
 
 #### AgentAttachment
 
@@ -624,29 +1005,177 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/computer/co
 
 | Field | Description |
 | --- | --- |
-| `agent_card_url` |  |
-| `auth_scheme` |  |
-| `can_configure` |  |
-| `can_disconnect` |  |
-| `can_setup` |  |
+| `actions` |  |
+| `activity` |  |
+| `admin_disabled_at` |  |
+| `agent_tools` |  |
+| `authentication` |  |
+| `authorized_at` |  |
+| `can_create_account` | Whether another account can be created directly from this provider. |
+| `capabilities` |  |
+| `catalog_section` | Server-owned grouping in the agent integration catalog. |
+| `category` | Short product label, such as CRM or Email. |
+| `certification` |  |
+| `checked_at` |  |
 | `connection` |  |
-| `credential` | Write-only outbound key. |
-| `error_code` |  |
-| `expected_generation` |  |
+| `consent` |  |
+| `created_at` |  |
+| `creation_key` | Reuse the same key to recover the account after an interrupted response. |
+| `custodian_id` |  |
+| `description` | One-line catalog description of the app. |
+| `disabled_reason` |  |
+| `failure_code` |  |
+| `generation` |  |
+| `grants` |  |
+| `grants_pagination` |  |
+| `id` |  |
+| `limits` |  |
+| `name` |  |
+| `organization_id` |  |
+| `owner_name` |  |
+| `ownership_kind` |  |
+| `pagination` |  |
+| `policy_digest` |  |
+| `provider` |  |
+| `provider_disabled_reason` |  |
+| `provider_identity` |  |
+| `revoked_at` |  |
+| `schema_version` |  |
+| `status` |  |
+| `toolkit` |  |
+| `triggers` |  |
+| `updated_at` |  |
+| `user_id` |  |
+| `version` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/adopt_custody`
+
+#### AgentConnectionDelegation
+
+| Field | Description |
+| --- | --- |
+| `authorized_by_id` |  |
+| `automation_connection_grant_id` |  |
+| `created_at` |  |
+| `id` |  |
+| `member_name` |  |
+| `revoked_at` |  |
+| `roles` |  |
+| `usable` |  |
+| `user_id` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/delegations`
+
+#### AgentConnectionGrant
+
+| Field | Description |
+| --- | --- |
+| `actions` |  |
+| `agent_connection_id` |  |
+| `automation_id` |  |
+| `connection_generation` |  |
+| `created_at` |  |
+| `id` |  |
+| `organization_id` |  |
+| `revision` |  |
+| `revoked_at` |  |
+| `status` |  |
+| `usable` |  |
+| `user_id` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/grants`
+
+#### AgentConnectionResource
+
+| Field | Description |
+| --- | --- |
+| `cursor` |  |
+| `next_cursor` |  |
+| `query` |  |
+| `resources` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/resources`
+
+#### AgentConnectionSafetyControl
+
+| Field | Description |
+| --- | --- |
+| `admin_disabled_at` |  |
+| `authorized_at` |  |
+| `checked_at` |  |
+| `created_at` |  |
+| `custodian_id` |  |
+| `failure_code` |  |
 | `generation` |  |
 | `id` |  |
 | `name` |  |
-| `remote_agent` |  |
-| `requester_id` |  |
-| `retired_at` |  |
+| `organization_id` |  |
+| `owner_name` |  |
+| `ownership_kind` |  |
+| `provider_disabled_reason` |  |
+| `provider_identity` |  |
 | `revoked_at` |  |
-| `scope_key` |  |
-| `source_operation_id` |  |
-| `state` |  |
+| `status` |  |
+| `toolkit` |  |
+| `updated_at` |  |
+| `user_id` |  |
 
-Operations: Create, List, Load, Remove, Update.
+Operations: List.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup`
+API path: `/api/v1/organizations/{organization_id}/agent_connections/safety_controls`
+
+#### AgentConnectionTriggerSubscription
+
+| Field | Description |
+| --- | --- |
+| `agent_connection_id` |  |
+| `configuration` |  |
+| `created_at` |  |
+| `defaults` |  |
+| `delivery` |  |
+| `enabled` |  |
+| `failure_code` |  |
+| `failure_request_id` |  |
+| `id` |  |
+| `latency` |  |
+| `name` |  |
+| `reconcile_at` |  |
+| `reconciliation_uncertain` |  |
+| `remote_enabled` |  |
+| `replacement_id` |  |
+| `retired_at` |  |
+| `retirement_completed_at` |  |
+| `schema` |  |
+| `slug` |  |
+| `status` |  |
+| `toolkit` |  |
+| `toolkit_version` |  |
+| `trigger_slug` |  |
+| `updated_at` |  |
+| `version` |  |
+| `waiting_for_retirement` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}/discover`
+
+#### AgentContextCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/agent_context/checkpoints/{checkpoint_id}/transcript`
 
 #### AgentControlFlow
 
@@ -697,6 +1226,15 @@ Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/email/{message_id}`
 
+#### AgentEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/events`
+
 #### AgentFile
 
 | Field | Description |
@@ -734,32 +1272,78 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/inputs`
 | Field | Description |
 | --- | --- |
 | `account_counts` | Accounts the viewer can see per toolkit, across all account pages. |
-| `accounts_path` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
-| `added_toolkits` | Apps with a connected or connecting account the viewer can see. |
+| `can_cancel_sign_in` | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` |  |
+| `can_disconnect` |  |
+| `can_enable` |  |
 | `can_manage` |  |
-| `can_manage_organization` |  |
+| `can_manage_sharing` |  |
+| `can_reconnect` |  |
+| `can_sync` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
 | `catalog` |  |
-| `connect_as` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
-| `connect_as_by_toolkit` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_by` | Name of the person whose sign-in this account is. |
+| `connected_by_you` | True when the viewer is the person whose sign-in this account is. |
 | `connected_counts` | Signed-in accounts per toolkit, across all account pages. |
-| `connection_id` |  |
 | `connections` |  |
-| `email` | A native agent's own email address. |
-| `enabled` |  |
-| `enabled_toolkits` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `creation_key` | Stable identity for retrying this creation; retain it after an uncertain response. |
+| `creation_key_digest` | SHA-256 of the unfinished setup key for its original creator. |
 | `generation` |  |
+| `id` |  |
+| `name` |  |
 | `pagination` |  |
 | `pending_counts` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
-| `personal_creation_key_supported` | The personal account creation endpoint honors a creation key. |
-| `private_agent` | Only the agent's owner can chat with it. |
-| `shared_agent_personal_accounts_enabled` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
-| `slack` |  |
-| `webhook_connections` |  |
-| `webhooks_available` |  |
+| `provider_disabled_reason` |  |
+| `provider_identity` |  |
+| `provider_name` | The app's display name; null for a custom MCP server, which uses the account name. |
+| `reference` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | Agent account audience, including legacy personal and paused access. |
+| `status` |  |
+| `team_sharing_enabled` |  |
+| `team_sharing_version` |  |
+| `toolkit` |  |
 
-Operations: Create, List.
+Operations: Create, List, Load, Remove.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations`
+API path: `/api/v1/organizations/{organization_id}/agent_integrations/{id}/authorize`
+
+#### AgentIntegrationAccount
+
+| Field | Description |
+| --- | --- |
+| `can_cancel_sign_in` | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` |  |
+| `can_disconnect` |  |
+| `can_enable` |  |
+| `can_manage_sharing` |  |
+| `can_reconnect` |  |
+| `can_sync` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
+| `connected_by` | Name of the person whose sign-in this account is. |
+| `connected_by_you` | True when the viewer is the person whose sign-in this account is. |
+| `creation_key_digest` | SHA-256 of the unfinished setup key for its original creator. |
+| `generation` |  |
+| `id` |  |
+| `name` |  |
+| `provider_disabled_reason` |  |
+| `provider_identity` |  |
+| `reference` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | Agent account audience, including legacy personal and paused access. |
+| `status` |  |
+| `team_sharing_enabled` |  |
+| `team_sharing_version` |  |
+| `toolkit` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agent_integrations/accounts`
+
+#### AgentIntegrationCallback
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/agent_integration_callback`
 
 #### AgentInteraction
 
@@ -987,6 +1571,45 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/questions/{question_id}/answer`
 
+#### AgentRelayFileGrant
+
+| Field | Description |
+| --- | --- |
+| `access_mode` |  |
+| `connection_generation` |  |
+| `connection_id` |  |
+| `connection_name` | Current display name of the selected account. |
+| `created_at` |  |
+| `expected_generation` |  |
+| `id` |  |
+| `key` |  |
+| `provider` |  |
+| `resource_id` |  |
+| `resource_kind` |  |
+| `revoked` |  |
+| `revoked_at` |  |
+| `snapshot_supported` | Whether this selected permission supports snapshot controls. |
+| `source_operation_id` |  |
+
+Operations: Create, List, Load, Remove.
+
+API path: `/api/v1/organizations/{organization_id}/agent_relay_file_grants`
+
+#### AgentRelayFileGrantAccount
+
+| Field | Description |
+| --- | --- |
+| `access_modes` | Supported file access modes. |
+| `generation` |  |
+| `id` |  |
+| `name` |  |
+| `provider` |  |
+| `resource_kind` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agent_relay_file_grants/accounts`
+
 #### AgentRepository
 
 | Field | Description |
@@ -1015,6 +1638,15 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/repositorie
 Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resources`
+
+#### AgentRoder
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/agent/roder/browser_executor_authorization`
 
 #### AgentRoutine
 
@@ -1075,6 +1707,37 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/runtime/reset`
 
+#### AgentSession
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/agent_sessions/{session_id}/transcript`
+
+#### AgentSessionCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize`
+
+#### AgentSessionRoderHandoff
+
+| Field | Description |
+| --- | --- |
+| `checkpoint_id` | Public id of the checkpoint to hand off. |
+| `purpose` | Handoff intent; defaults to `continue`. |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/roder_handoffs`
+
 #### AgentSetting
 
 | Field | Description |
@@ -1101,36 +1764,44 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/sharing/review`
 
 | Field | Description |
 | --- | --- |
-| `deployed_at` |  |
-| `deployments_count` |  |
-| `hostname` |  |
-| `https` | Whether the organization's certificate serves this site over HTTPS |
+| `author` |  |
+| `can_message` | The viewer may send input to the author agent |
+| `deployments_count` | Increases with every deploy of the site |
+| `description` | The team app description, when the site is a team app |
+| `icon_url` | Path of the site's generated icon, versioned by the picture; null until one is generated |
 | `id` |  |
-| `name` |  |
+| `name` | The site's DNS label |
+| `owner` | The person who controls the author agent |
+| `thread` | The thread that published the site as a team app, when the viewer can open the author agent |
+| `title` | The team app title, or the site name read as words |
 | `url` |  |
 | `visibility` |  |
 
-Operations: List.
+Operations: Create, List, Load.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/sites`
+API path: `/api/v1/organizations/{organization_id}/agent_sites/{id}/opened`
 
 #### AgentSkill
 
 | Field | Description |
 | --- | --- |
-| `available` |  |
-| `can_configure` |  |
-| `can_manage` |  |
-| `configuration_state` | The requested managed skill selection is awaiting runtime qualification. |
-| `description` |  |
-| `enabled` |  |
-| `name` |  |
+| `agents` | Active V2 agents the viewer can see whose owner is still a member |
+| `audience` |  |
+| `can_manage_library` |  |
+| `content` | The skill's SKILL.md |
+| `files` |  |
+| `id` |  |
+| `marketplace` |  |
+| `pending` | Some agent is still applying a change; check again shortly |
+| `plugin` | The marketplace entry id |
+| `revision` | The commit SHA returned by preview |
+| `skill` |  |
 | `skills` |  |
-| `version` |  |
+| `source` | owner/repo, a GitHub or skills.sh link, or npx skills add owner/repo [--skill NAME ...] |
 
-Operations: Create, List.
+Operations: Create, List, Load, Remove, Update.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/skills`
+API path: `/api/v1/organizations/{organization_id}/agent_skills`
 
 #### AgentSlack
 
@@ -1171,6 +1842,63 @@ Operations: Create, List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions`
 
+#### AgentSwarm
+
+| Field | Description |
+| --- | --- |
+| `base_bookmark` | An existing bookmark to start from and land on; the plain form of `target.kind = bookmark`. |
+| `base_ref` |  |
+| `base_revision` | 64-hex commit id; skips the head lookup |
+| `budget` |  |
+| `canceled_at` |  |
+| `canceled_count` |  |
+| `concurrency_key` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `creator_user_id` |  |
+| `deadline_at` |  |
+| `display_id` |  |
+| `done_count` |  |
+| `environment` |  |
+| `failed_count` |  |
+| `finished_at` |  |
+| `finished_at_label` |  |
+| `github` |  |
+| `goal` |  |
+| `id` |  |
+| `model` |  |
+| `model_provider` |  |
+| `number` |  |
+| `organization_id` |  |
+| `organization_slug` |  |
+| `outcome` |  |
+| `phase` |  |
+| `policy` | Every key is optional and defaults to AgentSwarm::POLICY_DEFAULTS. |
+| `queued_at` |  |
+| `queued_at_label` |  |
+| `repository` | Repository slug inside the organization |
+| `repository_id` |  |
+| `repository_slug` |  |
+| `reserved` |  |
+| `scheduler_generation` |  |
+| `skipped_count` |  |
+| `slug` |  |
+| `started_at` |  |
+| `started_at_label` |  |
+| `status` |  |
+| `summary` |  |
+| `target` | Where the swarm lands. |
+| `task_count` |  |
+| `task_template_json` |  |
+| `tasks` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `usage` |  |
+
+Operations: Create, List, Load, Update.
+
+API path: `/api/v1/agent/swarms/{id}/cancel`
+
 #### AgentTeammate
 
 | Field | Description |
@@ -1198,34 +1926,11 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/terminal/co
 
 | Field | Description |
 | --- | --- |
-| `archived_count` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` |  |
-| `execution` |  |
-| `first_input` |  |
-| `first_input_key` | Idempotency-Key that finds the first message through input_delivery. |
-| `first_input_requester_membership_id` | Membership the first message was sent as, for input_delivery. |
 | `id` |  |
-| `inherit_context` | Include the source conversation through its last completed reply. |
-| `local_activities` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` |  |
-| `local_scope_key` |  |
-| `local_status_pending` | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` |  |
-| `main_thread_id` |  |
-| `message` | The thread's first message. |
-| `next_cursor` |  |
-| `parent_conversation_id` | Optional source conversation belonging to this agent. |
-| `requester_membership_id` |  |
-| `selected_thread` |  |
-| `thread` |  |
-| `threads` |  |
-| `title` |  |
-| `total_archived_count` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
 
-Operations: Create, List.
+Operations: Create, List, Load.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive`
+API path: `/api/v1/agent/threads/{id}/archive`
 
 #### AgentTool
 
@@ -1238,6 +1943,23 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{th
 Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/tools`
+
+#### AgentUsage
+
+| Field | Description |
+| --- | --- |
+| `days` | One cell per (day, model), ascending by day then model. |
+| `ended_at` |  |
+| `pricing_version` | The price table in effect now; rows carry the version they were priced at. |
+| `source` | Which store served the rows. |
+| `started_at` |  |
+| `user_days` | One cell per (day, person), ascending by day. |
+| `users` | One row per (person, model), descending by tokens. |
+| `window` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/agent_usage`
 
 #### AgentVerifyProject
 
@@ -1264,6 +1986,19 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/verify_proj
 Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/waits/{wait_id}/stop`
+
+#### AgentWebPreview
+
+| Field | Description |
+| --- | --- |
+| `description` |  |
+| `icon_url` |  |
+| `image_url` |  |
+| `title` |  |
+
+Operations: List.
+
+API path: `/api/v1/agent_web_previews`
 
 #### AgentWebhook
 
@@ -1453,6 +2188,40 @@ Operations: List, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/write_permissions`
 
+#### Agreement
+
+| Field | Description |
+| --- | --- |
+| `body` | Markdown text, or null until staff grant the organization access. |
+| `effective_on_label` |  |
+| `key` |  |
+| `summary` |  |
+| `title` |  |
+| `version` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/agreements`
+
+#### AgreementAccessRequest
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/agreement_access_request`
+
+#### AlertRuleEvent
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Remove.
+
+API path: `/api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/acknowledge`
+
 #### AllocationLog
 
 | Field | Description |
@@ -1496,6 +2265,24 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/
 Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{id}/activate`
+
+#### AppAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/app_access/callback`
+
+#### AppAccessJwk
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/app_access/jwks`
 
 #### AppCdn
 
@@ -1976,6 +2763,134 @@ Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/storage_resources/{id}/archive`
 
+#### Artefact
+
+| Field | Description |
+| --- | --- |
+| `automation_invocation_id` |  |
+| `byte_size` |  |
+| `checksum_sha256` |  |
+| `content_type` |  |
+| `created_at` |  |
+| `created_by_user_id` |  |
+| `description` |  |
+| `document_key` | Stable document identity shared by all revisions. |
+| `entrypoint` |  |
+| `expires_at` |  |
+| `filename` |  |
+| `files` |  |
+| `harness` |  |
+| `harness_version` |  |
+| `id` |  |
+| `kind` |  |
+| `model` |  |
+| `organization_id` |  |
+| `published_at` |  |
+| `repository_id` |  |
+| `slug` |  |
+| `source` |  |
+| `status` |  |
+| `title` |  |
+| `vcs_agent_checkpoint_id` |  |
+| `vcs_agent_session_id` |  |
+| `version` |  |
+| `view_url` |  |
+| `web_url` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts`
+
+#### ArtefactCommentThread
+
+| Field | Description |
+| --- | --- |
+| `anchor` | The `#anchor` written into the Markdown. |
+| `body` |  |
+| `comments` |  |
+| `id` | The anchor key. |
+| `quote` |  |
+| `resolved` |  |
+
+Operations: Create, List, Update.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads`
+
+#### ArtefactRevision
+
+| Field | Description |
+| --- | --- |
+| `base_version` | The newest version the editor started from. |
+| `content` | Markdown, including CriticMarkup suggestions and comment anchors. |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/revisions`
+
+#### ArtefactViewToken
+
+| Field | Description |
+| --- | --- |
+| `expires_in` |  |
+| `file` | Exact manifest path. |
+| `organization_slug` | If provided, must match the organization addressed by the route. |
+| `version` |  |
+| `viewer_url` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/view_tokens`
+
+#### Artifact
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/artifacts/{id}/expire`
+
+#### ArtifactCacheNamespace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/cache_namespaces/{id}/archive`
+
+#### ArtifactImageRepository
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/image_repositories/{id}/archive`
+
+#### ArtifactPackageMirror
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/package_mirrors/{id}/pause`
+
+#### ArtifactRetentionPolicy
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/retention_policies`
+
 #### AttachmentPart
 
 | Field | Description |
@@ -1985,6 +2900,102 @@ API path: `/api/v1/hosting/apps/{app_id}/storage_resources/{id}/archive`
 Operations: Update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/attachments/{attachment_id}/parts/{index}`
+
+#### AuditEvent
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `actor_kind` |  |
+| `actor_user_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `observability_space_id` |  |
+| `organization_id` |  |
+| `payload` |  |
+| `request_id` |  |
+| `severity` |  |
+| `subject_id` |  |
+| `subject_kind` |  |
+| `subject_name` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/audit_events`
+
+#### Auth
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load, Remove.
+
+API path: `/api/v1/auth/apple`
+
+#### AuthCli
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/auth/cli/complete`
+
+#### AuthGithub
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/auth/github/start`
+
+#### AuthGoogle
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/auth/google/start`
+
+#### AuthOpenai
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/auth/openai/callback`
+
+#### AuthPasswordReset
+
+| Field | Description |
+| --- | --- |
+| `email` |  |
+| `message` |  |
+| `password` |  |
+| `token` |  |
+
+Operations: Create, Update.
+
+API path: `/api/v1/auth/password_resets`
+
+#### AuthRegistrationOption
+
+| Field | Description |
+| --- | --- |
+| `email_password_signup_enabled` |  |
+| `openai_sign_in_enabled` | Whether ChatGPT identity sign-in is configured and enabled for rollout. |
+| `turnstile_site_key` |  |
+| `waitlist_enabled` | New public signups require waitlist approval when enabled. |
+
+Operations: List.
+
+API path: `/api/v1/auth/registration_options`
 
 #### AutomationEvent
 
@@ -2057,6 +3068,277 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/runs`
 
+#### BackendRunnerPool
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/bazel/backends/{backend_id}/runner_pools`
+
+#### Bazel
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/bazel/authorize`
+
+#### BazelActionResult
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load, Update.
+
+API path: `/api/v1/bazel/action_results/{hash}/{size_bytes}`
+
+#### BazelBackend
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/bazel/backends/{id}/issue_token`
+
+#### BazelBlob
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load, Update.
+
+API path: `/api/v1/bazel/blobs/{kind}/{hash}/{size_bytes}`
+
+#### BazelExecution
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/bazel/executions/{id}/complete`
+
+#### BazelFindMissingBlob
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/bazel/find_missing_blobs`
+
+#### Billing
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `breakdown` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` |  |
+| `can_manage_contact` |  |
+| `can_manage_extra_spend` |  |
+| `can_manage_local_subscription` |  |
+| `can_manage_payment_method` |  |
+| `can_set_up_billing` |  |
+| `customer` |  |
+| `deployment_usage_visible` |  |
+| `entitlements` |  |
+| `extra_spend_enabled` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | Whether the `billing` feature is on for this organization. |
+| `organization_id` |  |
+| `package` |  |
+| `prepaid` |  |
+| `preview` | Metronome draft invoice and credits, or null. |
+| `storage_usage` |  |
+| `stripe` |  |
+| `subscription` |  |
+| `token_account` |  |
+
+Operations: Load, Update.
+
+API path: `/api/v1/organizations/{organization_id}/billing`
+
+#### BillingAddon
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `breakdown` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` |  |
+| `can_manage_contact` |  |
+| `can_manage_extra_spend` |  |
+| `can_manage_local_subscription` |  |
+| `can_manage_payment_method` |  |
+| `can_set_up_billing` |  |
+| `customer` |  |
+| `deployment_usage_visible` |  |
+| `entitlements` |  |
+| `extra_spend_enabled` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | Whether the `billing` feature is on for this organization. |
+| `id` |  |
+| `organization_id` |  |
+| `package` |  |
+| `prepaid` |  |
+| `preview` | Metronome draft invoice and credits, or null. |
+| `quantity` |  |
+| `storage_usage` |  |
+| `stripe` |  |
+| `subscription` |  |
+| `token_account` |  |
+
+Operations: Update.
+
+API path: `/api/v1/organizations/{organization_id}/billing/addons/{addon_key}`
+
+#### BillingCheckoutSession
+
+| Field | Description |
+| --- | --- |
+| `cancel_url` |  |
+| `coupon_code` |  |
+| `entry_point` | Where the owner chose to pay, for product analytics. |
+| `package_key` |  |
+| `package_revision` |  |
+| `success_url` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/billing/checkout_sessions`
+
+#### BillingInvoice
+
+| Field | Description |
+| --- | --- |
+| `amount_due_cents` |  |
+| `created_at` |  |
+| `currency` |  |
+| `hosted_invoice_url` |  |
+| `id` |  |
+| `invoice_pdf` |  |
+| `metronome_invoice_id` | Metronome's id for the invoice it pushed |
+| `number` |  |
+| `period_ended_at` |  |
+| `period_started_at` |  |
+| `status` |  |
+| `total_cents` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/billing/invoices`
+
+#### BillingPackage
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `base_price_cents` |  |
+| `billing_interval` |  |
+| `billing_policy` |  |
+| `ci_included_spend_cents` | Monthly USD credit in cents shared by all CI charges, including runners, cache, storage and add-ons; replaces CI unit allowances when positive. |
+| `currency` |  |
+| `key` |  |
+| `max_seats` |  |
+| `name` |  |
+| `pay_as_you_go_enabled` |  |
+| `rates` |  |
+| `revision` |  |
+| `roder_daily_run_limit` |  |
+| `roder_run_concurrency_limit` |  |
+| `seat_price_cents` |  |
+| `trial_days` |  |
+| `visibility` |  |
+
+Operations: List.
+
+API path: `/api/v1/billing/packages`
+
+#### BillingPortalSession
+
+| Field | Description |
+| --- | --- |
+| `return_url` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/billing/portal_sessions`
+
+#### BillingPrepaidPeriod
+
+| Field | Description |
+| --- | --- |
+| `activated_at` |  |
+| `created_at` |  |
+| `currency` |  |
+| `id` |  |
+| `last_error` |  |
+| `minutes` |  |
+| `net_amount_cents` |  |
+| `paid_at` |  |
+| `paid_total_cents` |  |
+| `payment_action_url` |  |
+| `period_ended_at` |  |
+| `period_started_at` |  |
+| `receipt_url` |  |
+| `refunded_net_cents` |  |
+| `state` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/billing/prepaid_periods/{id}`
+
+#### BillingPrepaidPurchase
+
+| Field | Description |
+| --- | --- |
+| `activated_at` |  |
+| `created_at` |  |
+| `currency` |  |
+| `id` |  |
+| `last_error` |  |
+| `minutes` |  |
+| `net_amount_cents` |  |
+| `paid_at` |  |
+| `paid_total_cents` |  |
+| `payment_action_url` |  |
+| `prepaid` |  |
+| `purchase` |  |
+| `receipt_url` |  |
+| `refunded_net_cents` |  |
+| `request_key` |  |
+| `state` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/billing/prepaid_purchases`
+
+#### BillingTokenTopUp
+
+| Field | Description |
+| --- | --- |
+| `amount_cents` |  |
+| `request_key` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/billing/token_top_ups`
+
+#### BillingUsage
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/billing/usage/breakdown`
+
 #### Binary
 
 | Field | Description |
@@ -2125,6 +3407,25 @@ API path: `/api/v1/organizations/{organization_id}/verify/binaries/{id}/archive`
 Operations: Create, List, Load, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/cancel`
+
+#### BookmarkProtectionRefreshGithubRequiredCheck
+
+| Field | Description |
+| --- | --- |
+| `exclusions` |  |
+| `fetched_at` |  |
+| `fetched_at_label` |  |
+| `github_branch` |  |
+| `github_owner` |  |
+| `github_repository_name` |  |
+| `last_error` |  |
+| `proven` |  |
+| `requirements` |  |
+| `stale` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections/refresh_github_required_checks`
 
 #### BrowserEgressCandidate
 
@@ -2286,6 +3587,16 @@ Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks/{id}/cancel`
 
+#### CacheNamespaceEntry
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/evict`
+
 #### CatalogSelector
 
 | Field | Description |
@@ -2344,6 +3655,556 @@ Operations: List, Load, Remove, Update.
 
 API path: `/api/v1/cdn_spaces/{cdn_space_id}/objects`
 
+#### Change
+
+| Field | Description |
+| --- | --- |
+| `counts` | Counts for each state across the active non-state filters. |
+| `filters` |  |
+| `github_sync` |  |
+| `result` | What this page is a page of. |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/changes`
+
+#### ChangeAsset
+
+| Field | Description |
+| --- | --- |
+| `alias` |  |
+| `byte_size` |  |
+| `checksum_md5` |  |
+| `checksum_sha256` |  |
+| `content_type` |  |
+| `filename` |  |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/assets/{id}/finalize`
+
+#### ChangeComment
+
+| Field | Description |
+| --- | --- |
+| `body` |  |
+| `capabilities` |  |
+| `change_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `kind` |  |
+| `line` |  |
+| `outdated` |  |
+| `parent_comment_id` |  |
+| `patchset_id` |  |
+| `patchset_number` |  |
+| `path` |  |
+| `replies` |  |
+| `resolved` |  |
+| `resolved_at` |  |
+| `resolved_at_label` |  |
+| `resolved_by` |  |
+| `side` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `user` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve`
+
+#### ChangeFileReviewCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `patchset_id` |  |
+| `path` |  |
+| `request_id` |  |
+| `review_action` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/file_review_checkpoints`
+
+#### ChangeGitBranchSubmission
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_branch_submissions`
+
+#### ChangeGitCommitIdentity
+
+| Field | Description |
+| --- | --- |
+| `change_id` |  |
+| `change_number` |  |
+| `git_commit_id` |  |
+| `git_commit_ids` |  |
+| `id` |  |
+| `identities` |  |
+| `missing_git_commit_ids` |  |
+| `patchset_number` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_commit_identities`
+
+#### ChangeGitPublication
+
+| Field | Description |
+| --- | --- |
+| `expected_target_commit_id` |  |
+| `id` |  |
+| `operation_key` |  |
+| `publication_id` |  |
+| `request` |  |
+| `request_digest` |  |
+| `revisions` |  |
+| `status` |  |
+| `transfer_refs` | Immutable receipt-owned refs returned by preparation; transfer each exact Git target before polling readiness. |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_publications`
+
+#### ChangeGroupMember
+
+| Field | Description |
+| --- | --- |
+| `change_id` | Change number |
+| `changes` |  |
+| `id` |  |
+| `name` |  |
+| `number` |  |
+| `status` |  |
+| `title` |  |
+
+Operations: Create, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups/{id}/members`
+
+#### ChangeLabel
+
+| Field | Description |
+| --- | --- |
+| `accepted` |  |
+| `add` |  |
+| `approval` |  |
+| `assets` | Proof assets referenced from the description as `vex-asset:<id>`. |
+| `author` | Human user summary or organization automation identity. |
+| `capabilities` |  |
+| `change_key` |  |
+| `checks` |  |
+| `checks_status` |  |
+| `comments` |  |
+| `comments_count` |  |
+| `comments_count_label` |  |
+| `commit_message` |  |
+| `current_patchset` |  |
+| `description` |  |
+| `draft` |  |
+| `folded_into_number` |  |
+| `github_projection_status` |  |
+| `github_pull_request` |  |
+| `github_pull_requests` |  |
+| `group` |  |
+| `has_description` | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
+| `id` |  |
+| `jj_change_id` |  |
+| `labels` |  |
+| `landable` |  |
+| `landed_by` |  |
+| `number` |  |
+| `orphaned` |  |
+| `orphaned_at` |  |
+| `orphaned_at_label` |  |
+| `orphaned_reason` |  |
+| `parent_change_id` |  |
+| `parent_change_number` |  |
+| `patchset_number` |  |
+| `patchsets` |  |
+| `primary_status` |  |
+| `public_id` |  |
+| `relation_chain` |  |
+| `remove` |  |
+| `requested_changes` |  |
+| `restack_state` |  |
+| `reviewer_candidates` | Organization members available to the reviewer picker on this page. |
+| `reviewers` |  |
+| `stable_change_id` |  |
+| `stack` |  |
+| `status` |  |
+| `target_branch` |  |
+| `title` |  |
+| `unresolved_comments_count_label` |  |
+| `url` |  |
+| `votes` |  |
+
+Operations: Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/labels`
+
+#### ChangeLandingHold
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_hold/release`
+
+#### ChangeLandingRequest
+
+| Field | Description |
+| --- | --- |
+| `change_ids` |  |
+| `count` |  |
+| `defer_until_ready` | Admit the request while approvals or checks are pending |
+| `expected_requirement_version` |  |
+| `expected_scope_version` |  |
+| `head_change_id` |  |
+| `id` |  |
+| `numbers` |  |
+| `override_acknowledged` |  |
+| `override_codes` |  |
+| `position` |  |
+| `priority` |  |
+| `scope_version` |  |
+| `state` |  |
+| `version` |  |
+
+Operations: Create, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_requests`
+
+#### ChangeRequestChange
+
+| Field | Description |
+| --- | --- |
+| `message` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/request_changes`
+
+#### ChangeReviewer
+
+| Field | Description |
+| --- | --- |
+| `add` |  |
+| `email` |  |
+| `name` |  |
+| `remove` |  |
+| `removed_reviewers` |  |
+| `requested_reviewers` |  |
+| `reviewers` |  |
+
+Operations: List, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/reviewers`
+
+#### ChangeTranscript
+
+| Field | Description |
+| --- | --- |
+| `capture_kind` |  |
+| `captured_at` |  |
+| `harness` |  |
+| `id` |  |
+| `original_resume` |  |
+| `patchset_commit_id` |  |
+| `patchset_number` |  |
+| `redaction_count` |  |
+| `session_id` |  |
+| `session_title` |  |
+| `status` |  |
+| `superseded` |  |
+| `user` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/transcripts`
+
+#### ChangeTranscriptSummary
+
+| Field | Description |
+| --- | --- |
+| `summaries` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/changes/transcript_summaries`
+
+#### CheckpointPrepareChunk
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/prepare_chunks`
+
+#### CiNode
+
+| Field | Description |
+| --- | --- |
+| `architecture` |  |
+| `bazel_enabled` |  |
+| `bazel_properties_json` |  |
+| `ci_runner_pool_id` |  |
+| `cordoned_at` |  |
+| `cordoned_at_label` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `health_state` |  |
+| `heartbeat_age_seconds` |  |
+| `id` |  |
+| `kind` |  |
+| `labels_csv` |  |
+| `last_seen_at` |  |
+| `last_seen_at_label` |  |
+| `name` |  |
+| `network_peer_id` |  |
+| `node_capabilities_csv` |  |
+| `node_certificate_expires_at` |  |
+| `node_certificate_expires_at_label` |  |
+| `node_certificate_fingerprint_sha256` |  |
+| `node_certificate_serial` |  |
+| `offline_at` |  |
+| `offline_at_label` |  |
+| `online_at` |  |
+| `online_at_label` |  |
+| `organization_id` |  |
+| `os` |  |
+| `revoked_at` |  |
+| `revoked_at_label` |  |
+| `schedulable` |  |
+| `slug` |  |
+| `status` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `version` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/ci/nodes/{id}/cordon`
+
+#### CiPipeline
+
+| Field | Description |
+| --- | --- |
+| `ci_runner_pool_id` |  |
+| `concurrency_key` |  |
+| `created_at` |  |
+| `default_branch` |  |
+| `description` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `name` |  |
+| `organization_id` |  |
+| `repository_id` |  |
+| `required_capabilities_csv` |  |
+| `runner_pool` |  |
+| `runs` |  |
+| `slug` |  |
+| `source_kind` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `trigger_on_pull_request` |  |
+| `trigger_on_push` |  |
+| `trigger_on_schedule` |  |
+| `updated_at` |  |
+| `workflow_path` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/ci/pipelines`
+
+#### CiPipelineRun
+
+| Field | Description |
+| --- | --- |
+| `active` |  |
+| `canceled_at` |  |
+| `ci_pipeline_id` |  |
+| `ci_runner_pool_id` |  |
+| `commit_sha` |  |
+| `concurrency_key` |  |
+| `created_at` |  |
+| `creator_user_id` |  |
+| `display_id` |  |
+| `failed` |  |
+| `finished_at` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `jobs` |  |
+| `message` |  |
+| `number` |  |
+| `organization_id` |  |
+| `parameters_json` |  |
+| `queued_at` |  |
+| `ref_name` |  |
+| `repository_id` |  |
+| `required_capabilities_csv` |  |
+| `retry_number` |  |
+| `retryable` |  |
+| `slug` |  |
+| `source_url` |  |
+| `started_at` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `trigger_kind` |  |
+| `updated_at` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{id}/retry`
+
+#### CiRunnerPool
+
+| Field | Description |
+| --- | --- |
+| `bazel_enabled` |  |
+| `bazel_properties_json` |  |
+| `created_at` |  |
+| `description` |  |
+| `elastic_config_json` |  |
+| `elastic_provider_kind` |  |
+| `id` |  |
+| `isolation_mode` |  |
+| `labels_csv` |  |
+| `max_concurrency` |  |
+| `modal_capacity` |  |
+| `modal_runner_invocations` |  |
+| `name` |  |
+| `network_space_id` |  |
+| `node_capabilities_csv` |  |
+| `organization_id` |  |
+| `runner_count_label` |  |
+| `runner_kind` |  |
+| `runners` |  |
+| `slug` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/ci/runner_pools/{id}/promote_reconciliation_runtime`
+
+#### CiStatus
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/ref`
+
+#### CliEvent
+
+| Field | Description |
+| --- | --- |
+| `event` |  |
+| `properties` |  |
+
+Operations: Create.
+
+API path: `/api/v1/cli_events`
+
+#### CliRelease
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/cli_releases`
+
+#### CloudWorkspaceBackupObject
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/objects/{object_key}`
+
+#### CodeRuleEvaluation
+
+| Field | Description |
+| --- | --- |
+| `advisory` |  |
+| `coverage` |  |
+| `diff` | UTF-8 complete unified patch using a/ old and b/ new prefixes; at most 1 MiB |
+| `duration_ms` |  |
+| `evaluator_version` |  |
+| `input_digest` |  |
+| `limits` |  |
+| `model` |  |
+| `requests` |  |
+| `schema_version` |  |
+| `snapshot_digest` |  |
+| `unchecked` |  |
+| `verdicts` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/evaluations`
+
+#### ComSiteAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/com_site_access/redeem`
+
+#### ComSiteAccessSession
+
+| Field | Description |
+| --- | --- |
+| `cookie_name` |  |
+| `host` | Site hostname, for example docs.acme.composal.page |
+| `max_age` |  |
+| `session_token` |  |
+
+Operations: Create.
+
+API path: `/api/v1/com_site_access/sessions`
+
+#### CommentThreadComment
+
+| Field | Description |
+| --- | --- |
+| `body` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads/{anchor}/comments`
+
+#### CommitDiff
+
+| Field | Description |
+| --- | --- |
+| `files` |  |
+| `id` |  |
+| `parent_id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits/{id}/diff/{fingerprint}`
+
 #### ConnectionRequest
 
 | Field | Description |
@@ -2380,6 +4241,58 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/conne
 Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/sources`
+
+#### ContactSubmission
+
+| Field | Description |
+| --- | --- |
+| `company` |  |
+| `email` | Stored downcased and stripped. |
+| `message` |  |
+| `name` |  |
+| `website` | Honeypot. |
+
+Operations: Create.
+
+API path: `/api/v1/contact_submissions`
+
+#### ControlComputer
+
+| Field | Description |
+| --- | --- |
+| `connection` | A point-in-time control transport observation. |
+| `consent` |  |
+| `device` |  |
+| `id` |  |
+| `provider_status` |  |
+
+Operations: List, Update.
+
+API path: `/api/v1/organizations/{organization_id}/control_computers`
+
+#### ControlComputerControlOperation
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `arguments` |  |
+| `created_at` |  |
+| `delivery` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` |  |
+| `diagnostic_code` | Approved product error code retained after copied diagnostics expire. |
+| `end` |  |
+| `expires_at` |  |
+| `id` |  |
+| `key` |  |
+| `provider` |  |
+| `references` |  |
+| `result` |  |
+| `result_expired` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/control_computers/{computer}/control_operations`
 
 #### CoordinationWait
 
@@ -2637,6 +4550,51 @@ Operations: Load.
 
 API path: `/api/v1/verify/demo_shares/{token}/segments/{segment_id}`
 
+#### Deployment
+
+| Field | Description |
+| --- | --- |
+| `app` |  |
+| `artifact_locator` |  |
+| `build_duration_seconds` |  |
+| `build_source` |  |
+| `build_status` |  |
+| `children` |  |
+| `ci_pipeline_id` |  |
+| `ci_pipeline_run_id` |  |
+| `commit_sha` |  |
+| `created_at` |  |
+| `creator` |  |
+| `deployed_url` |  |
+| `duration_seconds` |  |
+| `environment` |  |
+| `history_kind` |  |
+| `history_reason` |  |
+| `id` |  |
+| `is_live` |  |
+| `is_rollback` |  |
+| `live_region_count` |  |
+| `number` |  |
+| `placement` |  |
+| `region_count` |  |
+| `replicas_per_region` |  |
+| `rollback_reason` |  |
+| `rollback_source_release_id` |  |
+| `rollback_target_release_id` |  |
+| `rollout_predecessor_id` |  |
+| `rollout_status` |  |
+| `rollout_strategy` |  |
+| `service` |  |
+| `source_ref` |  |
+| `status` |  |
+| `total_replicas` |  |
+| `trigger_kind` |  |
+| `updated_at` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/{deployment_id}`
+
 #### DeploymentDashboardNomad
 
 | Field | Description |
@@ -2646,6 +4604,36 @@ Operations: Load.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocation`
 
+#### DeploymentDetail
+
+| Field | Description |
+| --- | --- |
+| `activity` |  |
+| `app` |  |
+| `app_id` |  |
+| `audit_events` |  |
+| `capacity` |  |
+| `data_resources` |  |
+| `deploy_targets` |  |
+| `deployments` |  |
+| `desired_states` |  |
+| `environments` |  |
+| `filters` | The option lists the deployments page's app, service and stage pickers narrow by. |
+| `health` | The rolled-up state of the selected scope. |
+| `nomad` | The Nomad footprint of the selected scope, deduplicated. |
+| `operations` |  |
+| `placements` |  |
+| `reconciler_ticks` |  |
+| `releases` |  |
+| `runtime_instances` |  |
+| `service_bindings` |  |
+| `service_views` |  |
+| `storage_resources` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/details`
+
 #### DeploymentFile
 
 | Field | Description |
@@ -2654,6 +4642,383 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocation`
 Operations: Update.
 
 API path: `/api/v1/static_sites/{static_site_id}/deployments/{id}/files`
+
+#### DeploymentLog
+
+| Field | Description |
+| --- | --- |
+| `allocation_id` |  |
+| `app_environment_id` |  |
+| `app_release_id` |  |
+| `app_service_id` |  |
+| `details` |  |
+| `environment_name` |  |
+| `release_version` |  |
+| `service_name` |  |
+| `status` |  |
+| `task` |  |
+| `unreachable_reason` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/logs`
+
+#### DeploymentMetric
+
+| Field | Description |
+| --- | --- |
+| `auto_deploy` |  |
+| `environment_id` |  |
+| `environment_name` |  |
+| `placement_id` |  |
+| `redeploy` |  |
+| `region_count` |  |
+| `replicas_per_region` |  |
+| `rollout_strategy` |  |
+| `service_id` |  |
+| `service_name` |  |
+| `source_ref` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/metrics`
+
+#### DeploymentPreview
+
+| Field | Description |
+| --- | --- |
+| `access` |  |
+| `app_environment_id` |  |
+| `app_name` |  |
+| `app_preview_profile_id` |  |
+| `app_slug` |  |
+| `change_number` |  |
+| `created_at` |  |
+| `created_by_user_id` |  |
+| `expires_at` |  |
+| `generation` |  |
+| `health` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `latest_operation_status` |  |
+| `name` |  |
+| `owner_name` |  |
+| `profile_name` |  |
+| `resource_overrides` | Service public IDs mapped to resource overrides. |
+| `retained` |  |
+| `slug` |  |
+| `snapshot_version` |  |
+| `source_revision` |  |
+| `status` |  |
+| `updated_at` |  |
+| `urls` |  |
+| `vcs_change_id` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/previews`
+
+#### DeploymentSetting
+
+| Field | Description |
+| --- | --- |
+| `code` |  |
+| `created_at` |  |
+| `id` |  |
+| `name` |  |
+| `nomad_datacenter` |  |
+| `updated_at` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/settings`
+
+#### DesktopLocalAgentModel
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `name` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/desktop_local_agent/models`
+
+#### DesktopLocalAgentResponse
+
+| Field | Description |
+| --- | --- |
+| `input` |  |
+| `max_output_tokens` |  |
+| `model` |  |
+| `store` |  |
+| `stream` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/desktop_local_agent/responses`
+
+#### Device
+
+| Field | Description |
+| --- | --- |
+| `architecture` |  |
+| `channel` |  |
+| `coding_connection` | Independent organization coding-control service state for the current device owner. |
+| `connection_checked_at` | When this native presence observation was obtained; null when unobserved or unavailable. |
+| `connection_status` | Display-only native presence. |
+| `control_delivery_policy` |  |
+| `control_spawn_policy` |  |
+| `created_at` |  |
+| `device` |  |
+| `environment` |  |
+| `execution_available` |  |
+| `id` |  |
+| `name` |  |
+| `native_device_id` |  |
+| `paired_at` |  |
+| `pairing_generation` |  |
+| `platform` |  |
+| `project_visibility` | Folder discovery and new-thread selection. |
+| `provider_status` | Recent native provider observations; absent on older API replicas. |
+| `revoked_at` |  |
+| `scheduled_check_ins` | Whether the owner's private agents may check this computer's connection during scheduled runs. |
+| `user_browser_access` | Whether agents may use the owner's own Chrome-family browser here: off, only tabs agents open or the owner shares, or every tab. |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/connection`
+
+#### DeviceBrowserOperation
+
+| Field | Description |
+| --- | --- |
+| `command` | The in-app browser takes open through open_external; the person's own browser (arguments.browser user) takes open, tabs, share_tab, navigate, back, reload, screenshot, read, click, type, press, scroll and close. |
+| `created_at` |  |
+| `id` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/browser_operations/{id}/claim`
+
+#### DeviceControlMessage
+
+| Field | Description |
+| --- | --- |
+| `agent_id` |  |
+| `agent_name` |  |
+| `expires_at` |  |
+| `id` |  |
+| `sender` |  |
+| `text` |  |
+| `text_omitted` |  |
+| `thread` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_messages`
+
+#### DeviceControlOperation
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `arguments` |  |
+| `created_at` |  |
+| `delivery` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` |  |
+| `diagnostic_code` | Approved product error code retained after copied diagnostics expire. |
+| `end` |  |
+| `expires_at` |  |
+| `id` |  |
+| `key` |  |
+| `provider` |  |
+| `references` |  |
+| `result` |  |
+| `result_expired` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations`
+
+#### DeviceEnterpriseRelay
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/spark/devices/enterprise_relays`
+
+#### DeviceFolderListing
+
+| Field | Description |
+| --- | --- |
+| `code` |  |
+| `error` |  |
+| `folders` |  |
+| `id` |  |
+| `key` | Stable idempotency key for this listing. |
+| `parent` |  |
+| `path` | The resolved folder. |
+| `state` |  |
+| `truncated` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/folder_listings`
+
+#### DeviceGrant
+
+| Field | Description |
+| --- | --- |
+| `active_grants` |  |
+| `agent_choices` | Eligible picker choices, with current owner grant targets, on the first page only. |
+| `agent_id` |  |
+| `all_agents_access` | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `capabilities` |  |
+| `execution_available` |  |
+| `grants` |  |
+| `id` |  |
+| `next_cursor` |  |
+| `principal_id` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/{device_grant_id}/revise`
+
+#### DeviceInvocation
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/challenge`
+
+#### DeviceLocalEvent
+
+| Field | Description |
+| --- | --- |
+| `event` |  |
+| `recorded` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/local_events`
+
+#### DevicePairing
+
+| Field | Description |
+| --- | --- |
+| `architecture` |  |
+| `channel` |  |
+| `id` |  |
+| `name` |  |
+| `platform` |  |
+| `public_key` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/pairings/{device_pairing_intent_id}/complete`
+
+#### DeviceProject
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Remove.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/projects/{id}`
+
+#### DeviceScheduledCheckIn
+
+| Field | Description |
+| --- | --- |
+| `enabled` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/scheduled_check_ins`
+
+#### DockerBuilder
+
+| Field | Description |
+| --- | --- |
+| `backend` |  |
+| `created_at` |  |
+| `gateway_url` | Organization-addressed public WSS gateway; null until configured |
+| `generation` |  |
+| `id` |  |
+| `last_activity_at` |  |
+| `organization_id` |  |
+| `ready_at` |  |
+| `slept_at` |  |
+| `slug` |  |
+| `startup_attempt` |  |
+| `startup_failure` | Safe failure reason for the most recent startup attempt |
+| `startup_stage` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/docker_builders/{id}/recover`
+
+#### DockerBuilderSession
+
+| Field | Description |
+| --- | --- |
+| `created_at` |  |
+| `docker_builder_id` |  |
+| `expires_at` |  |
+| `gateway_url` | Organization-addressed public WSS gateway; null until configured |
+| `generation` |  |
+| `id` |  |
+| `organization_id` |  |
+| `revoked_at` |  |
+| `user_id` |  |
+
+Operations: Create, Load, Remove.
+
+API path: `/api/v1/organizations/{organization_id}/docker_builders/{docker_builder_id}/sessions`
+
+#### DockerBuilderSetting
+
+| Field | Description |
+| --- | --- |
+| `docker_builder_settings` |  |
+| `idle_timeout_seconds` |  |
+| `max_concurrency` |  |
+| `organization_id` |  |
+| `region` |  |
+| `runtime_timeout_seconds` |  |
+
+Operations: List, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/docker_builder_settings`
+
+#### DomainDnsIntegration
+
+| Field | Description |
+| --- | --- |
+| `account_label` |  |
+| `api_token` |  |
+| `created_at` |  |
+| `failure_message` |  |
+| `has_token` |  |
+| `id` |  |
+| `last_verified_at` |  |
+| `organization_id` |  |
+| `provider` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/domain_dns_integrations`
 
 #### DomainPathRule
 
@@ -2700,6 +5065,24 @@ API path: `/api/v1/hosting/apps/{app_id}/domains/{domain_id}/path_rules`
 Operations: Create, List, Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/dreams/{id}/resume`
+
+#### Edge
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/edge/tls-check`
+
+#### EmailVerification
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/email_verifications/resend`
 
 #### Environment
 
@@ -2911,6 +5294,79 @@ API path: `/api/v1/organizations/{organization_id}/verify/environments/{verify_e
 Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/evidence/{id}`
+
+#### ExecutionDesiredState
+
+| Field | Description |
+| --- | --- |
+| `desired_state` |  |
+| `id` |  |
+| `stop_observed` | True only for archived zero-capacity states with all known jobs stopped and allocations terminated. |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/execution/desired_states/{id}/reconcile`
+
+#### ExecutionReconcilerTick
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/execution/reconciler_ticks`
+
+#### ExecutionRelease
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/execution/releases/{id}/activate`
+
+#### ExecutionRuntimeInstance
+
+| Field | Description |
+| --- | --- |
+| `adapter_kind` |  |
+| `app_environment_id` |  |
+| `app_release_id` |  |
+| `app_service_id` |  |
+| `booted_at` |  |
+| `booted_at_label` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `instance_key` |  |
+| `last_reconciled_at` |  |
+| `last_reconciled_at_label` |  |
+| `last_seen_at` |  |
+| `last_seen_at_label` |  |
+| `location` |  |
+| `location_id` |  |
+| `network_peer_id` |  |
+| `nomad_allocation_id` |  |
+| `nomad_task_name` |  |
+| `organization_id` |  |
+| `private_ipv4` |  |
+| `private_ipv6` |  |
+| `provider_instance_id` |  |
+| `public_endpoint` |  |
+| `service_name` | Name of the Vex service this instance runs, in the same vocabulary as `vex deploy list`. |
+| `slug` |  |
+| `status` |  |
+| `terminated_at` |  |
+| `terminated_at_label` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/execution/runtime_instances/{id}/refresh`
 
 #### Exploration
 
@@ -3125,6 +5581,204 @@ Operations: List, Load, Patch, Update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/findings`
 
+#### Gh
+
+| Field | Description |
+| --- | --- |
+| `capabilities` |  |
+| `content` |  |
+| `fetched_at` |  |
+| `id` |  |
+| `magic_merge` |  |
+| `pull_request` |  |
+| `stack` |  |
+| `transcript_paths` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/gh/{github_owner}/{github_repo}/{number}`
+
+#### GitImport
+
+| Field | Description |
+| --- | --- |
+| `destination_mode` |  |
+| `error` |  |
+| `git_default_branch` | Original Git symbolic HEAD branch, independent of the branch selected for JJ conversion |
+| `git_status` |  |
+| `git_url` |  |
+| `id` |  |
+| `idempotency_key` |  |
+| `name` |  |
+| `native_status` |  |
+| `organization` |  |
+| `repository_id` |  |
+| `root_path` |  |
+| `slug` |  |
+| `source_branch` |  |
+| `target_branch` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/git_imports/{id}/complete`
+
+#### Github
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/github/repository_lookup`
+
+#### GithubApp
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/github_app/webhook`
+
+#### GithubAppImportableRepository
+
+| Field | Description |
+| --- | --- |
+| `account_login` |  |
+| `github_app_installation_id` |  |
+| `next_page` | Next GitHub page for this installation |
+| `repositories` |  |
+
+Operations: List.
+
+API path: `/api/v1/github_app/importable_repositories`
+
+#### GithubAppInstallation
+
+| Field | Description |
+| --- | --- |
+| `account_avatar_url` |  |
+| `account_id` |  |
+| `account_login` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `installation_id` |  |
+| `installed_at` |  |
+| `installed_at_label` |  |
+| `manage_access_url` |  |
+| `organization_id` |  |
+| `permission_entries` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` |  |
+| `status` |  |
+| `suspended_at` |  |
+| `suspended_at_label` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/organizations/{organization_id}/github_app/installations/{id}/check_connection`
+
+#### GithubAppInstallationAuthorization
+
+| Field | Description |
+| --- | --- |
+| `installation_url` |  |
+| `organization_slug` | Vex organization slug whose installation will be linked. |
+| `return_target` | Server-validated Vex application target used after verification. |
+
+Operations: Create.
+
+API path: `/api/v1/github_app/installation_authorizations`
+
+#### GithubAppUserAuthorization
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/github_app/user_authorizations`
+
+#### GithubCiRepository
+
+| Field | Description |
+| --- | --- |
+| `adoption_mode` |  |
+| `check_name_prefix` |  |
+| `ci_runner_pool_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `default_branch` |  |
+| `github_app_installation_id` |  |
+| `github_repository_id` |  |
+| `id` |  |
+| `last_compatibility_status` |  |
+| `last_error_message` |  |
+| `last_head_sha` |  |
+| `last_pull_request_number` |  |
+| `last_ref` |  |
+| `last_webhook_action` |  |
+| `last_webhook_at` |  |
+| `last_webhook_at_label` |  |
+| `last_webhook_delivery_id` |  |
+| `last_webhook_event` |  |
+| `metadata` |  |
+| `organization_id` |  |
+| `permission_status` |  |
+| `repository_full_name` |  |
+| `repository_name` |  |
+| `repository_owner` |  |
+| `status` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `webhook_delivery_count` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/github_ci_repositories`
+
+#### GithubCiRepositoryCompatibilityReport
+
+| Field | Description |
+| --- | --- |
+| `analyzed_at` |  |
+| `analyzed_at_label` |  |
+| `ci_pipeline_id` |  |
+| `ci_pipeline_run_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `diagnostics` |  |
+| `errors` |  |
+| `event_action` |  |
+| `event_name` |  |
+| `execution_allowed` |  |
+| `github_ci_repository_id` |  |
+| `head_sha` |  |
+| `id` |  |
+| `metadata` |  |
+| `organization_id` |  |
+| `parser_version` |  |
+| `pull_request_number` |  |
+| `ref_name` |  |
+| `referenced_actions` |  |
+| `required_secrets` |  |
+| `runner_labels` |  |
+| `source_blob_sha` |  |
+| `source_sha` |  |
+| `status` |  |
+| `supported_features` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `warnings` |  |
+| `workflow_name` |  |
+| `workflow_path` |  |
+
+Operations: List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_ci_repositories/{github_ci_repository_id}/compatibility_reports`
+
 #### GithubConnection
 
 | Field | Description |
@@ -3139,6 +5793,307 @@ API path: `/api/v1/organizations/{organization_id}/verify/findings`
 Operations: Create, List.
 
 API path: `/api/v1/organizations/{organization_id}/verify/github_connections`
+
+#### GithubIntegration
+
+| Field | Description |
+| --- | --- |
+| `account_avatar_url` |  |
+| `account_login` |  |
+| `connection_status` |  |
+| `connection_status_label` |  |
+| `github_installation` |  |
+| `health` |  |
+| `id` |  |
+| `imported_repositories_count` |  |
+| `imported_repositories_count_label` |  |
+| `organization` |  |
+| `pagination` |  |
+| `repositories` |  |
+
+Operations: List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/github_integrations`
+
+#### GithubOnboarding
+
+| Field | Description |
+| --- | --- |
+| `accounts` |  |
+| `active_batch_id` | The batch the wizard's import step should resume — the most recent batch still working, else the most recent overall. |
+| `batches` |  |
+| `capabilities` |  |
+| `installations` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding`
+
+#### GithubOnboardingBranch
+
+| Field | Description |
+| --- | --- |
+| `branches` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/branches`
+
+#### GithubOnboardingImport
+
+| Field | Description |
+| --- | --- |
+| `account_login` |  |
+| `complete` | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` |  |
+| `failed_item_count` |  |
+| `github_app_installation_id` |  |
+| `id` |  |
+| `imported_item_count` |  |
+| `item_count` |  |
+| `items` |  |
+| `repositories` |  |
+| `status` |  |
+| `terminal_item_count` |  |
+| `updated_at` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/imports`
+
+#### GithubOnboardingImportBatch
+
+| Field | Description |
+| --- | --- |
+| `account_login` |  |
+| `complete` | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` |  |
+| `failed_item_count` |  |
+| `github_app_installation_id` |  |
+| `id` |  |
+| `imported_item_count` |  |
+| `item_count` |  |
+| `items` |  |
+| `status` |  |
+| `terminal_item_count` |  |
+| `updated_at` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/import_batches/{github_import_batch_id}`
+
+#### GithubOnboardingImportItem
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/import_items/{github_import_batch_item_id}/retry`
+
+#### GithubPullRequest
+
+| Field | Description |
+| --- | --- |
+| `capabilities` |  |
+| `content` |  |
+| `fetched_at` |  |
+| `id` |  |
+| `magic_merge` |  |
+| `pull_request` |  |
+| `stack` |  |
+| `transcript_paths` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{org_slug}/github/pull_requests/refresh`
+
+#### GithubRunnerAdmission
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/github_runner_admission`
+
+#### GithubRunnerCache
+
+| Field | Description |
+| --- | --- |
+| `entry_id` |  |
+| `key` |  |
+| `matched_key` |  |
+| `ok` |  |
+| `operation` |  |
+| `restore_keys` |  |
+| `signed_download_url` |  |
+| `size_bytes` |  |
+| `upload_path` |  |
+| `version` |  |
+
+Operations: Create.
+
+API path: `/api/v1/github_runner_cache`
+
+#### GithubRunnerEgress
+
+| Field | Description |
+| --- | --- |
+| `can_request` |  |
+| `cidr` |  |
+| `ipv4` |  |
+| `requested_at_label` |  |
+| `status` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_egress`
+
+#### GithubRunnerHistory
+
+| Field | Description |
+| --- | --- |
+| `activity` |  |
+| `counts` |  |
+| `observed_at` |  |
+| `pagination` |  |
+| `repositories` |  |
+| `runs` |  |
+| `setup` | CI onboarding. |
+| `success_rate` |  |
+| `usage` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/github_runner_history`
+
+#### GithubRunnerImage
+
+| Field | Description |
+| --- | --- |
+| `created_at` |  |
+| `id` |  |
+| `image_reference` | Immutable linux/amd64 Ubuntu 24.04 image, registry/repository@sha256:digest, with Node 22+ |
+| `last_error` |  |
+| `modal_image_id` |  |
+| `name` |  |
+| `registry_secret_name` | Name of an organization CI secret containing REGISTRY_USERNAME and REGISTRY_PASSWORD JSON fields |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_images/{id}/prepare`
+
+#### GithubRunnerPool
+
+| Field | Description |
+| --- | --- |
+| `cpu_millicores` |  |
+| `enabled` |  |
+| `github_app_installation_id` |  |
+| `github_repository_id` |  |
+| `github_runner_image` |  |
+| `id` |  |
+| `image` | Organization image name or ID; null restores the standard image |
+| `invocations` |  |
+| `label` |  |
+| `last_error` |  |
+| `last_polled_at` |  |
+| `max_concurrency` |  |
+| `memory_mb` |  |
+| `organization_id` |  |
+| `provider` |  |
+| `repository_full_name` |  |
+| `runtime_kind` |  |
+| `timeout_seconds` |  |
+
+Operations: Create, List, Update.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_pools`
+
+#### GithubRunnerSetup
+
+| Field | Description |
+| --- | --- |
+| `error` |  |
+| `github_repository_connection_id` |  |
+| `id` |  |
+| `pull_request_url` |  |
+| `repository_full_name` |  |
+| `roder_thread_id` |  |
+| `runner_labels` |  |
+| `status` |  |
+| `status_label` |  |
+| `summary` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_setup`
+
+#### Gitlab
+
+| Field | Description |
+| --- | --- |
+| `configured` |  |
+| `connections` |  |
+| `integrations` |  |
+| `inventory_error` |  |
+| `next_page` |  |
+| `organization` |  |
+| `projects` |  |
+| `redirect_uri` | The OAuth redirect URI a self-managed GitLab application must use; null when GitLab callbacks aren't configured. |
+| `selected_integration_id` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{org_slug}/gitlab/authorize`
+
+#### GitlabConnection
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/gitlab/connections/{connection_id}/control`
+
+#### GitlabImport
+
+| Field | Description |
+| --- | --- |
+| `integration_id` |  |
+| `project_id` |  |
+| `repo_slug` |  |
+| `source_branch` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/gitlab/imports`
+
+#### GitlabOauth
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/gitlab/oauth/callback`
+
+#### GrantAllAgent
+
+| Field | Description |
+| --- | --- |
+| `all_agents_access` |  |
+| `enabled` |  |
+| `execution_available` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/all_agents`
 
 #### HostingAppDomain
 
@@ -3172,6 +6127,16 @@ Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/domains/{id}/disable`
 
+#### IdentityOrganization
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/identity/organizations/{organization_id}/catalog`
+
 #### ImageRepository
 
 | Field | Description |
@@ -3195,6 +6160,34 @@ API path: `/api/v1/hosting/apps/{app_id}/domains/{id}/disable`
 Operations: Create, List.
 
 API path: `/api/v1/organizations/{org_slug}/image_repositories`
+
+#### ImageRepositoryTag
+
+| Field | Description |
+| --- | --- |
+| `image_repository` |  |
+| `name` |  |
+| `registry_url` |  |
+| `tags` |  |
+
+Operations: List.
+
+API path: `/api/v1/artifacts/image_repositories/{id}/tags`
+
+#### ImportBranchPolicy
+
+| Field | Description |
+| --- | --- |
+| `can_manage_pr_scenario_writing` |  |
+| `can_manage_sandbox_region` |  |
+| `dedicated_outbound_ip_addresses` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` |  |
+| `organization` |  |
+| `sandbox_regions` |  |
+
+Operations: Load, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/import_branch_policy`
 
 #### Integration
 
@@ -3246,6 +6239,56 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/interaction
 Operations: Create, List, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/invitations`
+
+#### InvocationControl
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/control/challenge`
+
+#### JobLogChunk
+
+| Field | Description |
+| --- | --- |
+| `byte_size` |  |
+| `ci_job_id` |  |
+| `ci_pipeline_run_id` |  |
+| `ci_step_id` |  |
+| `content` |  |
+| `content_format` |  |
+| `created_at` |  |
+| `id` |  |
+| `organization_id` |  |
+| `sequence_number` |  |
+| `stream` |  |
+| `updated_at` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/log_chunks`
+
+#### JobStep
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Patch, Update.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps`
+
+#### JobWorkspace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Patch, Update.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces`
 
 #### JourneyVariantReplay
 
@@ -3305,6 +6348,132 @@ Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/knowledge`
 
+#### Known
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/.well-known/agent-card.json`
+
+#### Label
+
+| Field | Description |
+| --- | --- |
+| `changes_count` |  |
+| `id` |  |
+| `name` | Display name |
+| `slug` | Normalized identity used for filtering and lookup. |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/labels`
+
+#### LeaseArtifact
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/artifacts`
+
+#### LeaseCache
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/cache/restore`
+
+#### LeaseLogChunk
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/log_chunks`
+
+#### LeaseReconciliation
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/reconciliations/{reconciliation_id}/output`
+
+#### LeaseStep
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Update.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/steps/{ci_step_id}`
+
+#### LeaseVerifyDiagnostic
+
+| Field | Description |
+| --- | --- |
+| `browser_events` |  |
+| `live_browser` |  |
+| `live_view` | The tester's read-only live stream for page viewers. |
+| `steps` |  |
+
+Operations: Create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_diagnostics`
+
+#### LeaseVerifySecret
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_secrets`
+
+#### LeaseWorkspace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Update.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/workspaces/{ci_workspace_id}`
+
+#### LocalAgentDecision
+
+| Field | Description |
+| --- | --- |
+| `request` | A native OpenAI Decisions request for gpt-6-luna, at most 1600 KiB, with inline images only |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/local_agent/decisions`
+
+#### LocalAgentResponse
+
+| Field | Description |
+| --- | --- |
+| `input` |  |
+| `model` |  |
+| `service_tier` |  |
+| `store` |  |
+| `stream` |  |
+| `tools` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/local_agent/responses`
+
 #### LocalThreadDelivery
 
 | Field | Description |
@@ -3359,6 +6528,67 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threa
 Operations: List.
 
 API path: `/api/v1/hosting/locations`
+
+#### LogStreamChunk
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks`
+
+#### LogoImage
+
+| Field | Description |
+| --- | --- |
+| `activated_products` | Products this organization has activated (PRD 144). |
+| `agents_only` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` |  |
+| `created_at_label` |  |
+| `github_prs_authored_by_change_author` |  |
+| `id` |  |
+| `logo_url` |  |
+| `member_count` |  |
+| `name` |  |
+| `pending_invitation_count` |  |
+| `personal` |  |
+| `repository_count` |  |
+| `role` |  |
+| `sandbox_region` |  |
+| `shared_agent_personal_accounts_enabled` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` |  |
+| `source_control_providers` | Connected source control providers for this organization. |
+| `source_ui_enabled` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `verify_pr_scenario_writing_enabled` |  |
+
+Operations: Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/logo_image`
+
+#### MarketingSetting
+
+| Field | Description |
+| --- | --- |
+| `call_first` |  |
+
+Operations: List.
+
+API path: `/api/v1/marketing_settings`
+
+#### McpOauth
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/mcp/oauth/consent`
 
 #### Me
 
@@ -3486,6 +6716,29 @@ Operations: Create, List, Load, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/memories`
 
+#### MergeQueueEntry
+
+| Field | Description |
+| --- | --- |
+| `analytics` | Queue performance for the reporting window. |
+| `change_id` |  |
+| `expected_target_commit_id` |  |
+| `expected_target_version` |  |
+| `expected_version` |  |
+| `github_pr_number` |  |
+| `id` |  |
+| `idempotency_key` |  |
+| `kind` |  |
+| `policy` |  |
+| `priority` |  |
+| `queue` |  |
+| `target_branches` | Bookmark names for the target picker. |
+| `when_ready` |  |
+
+Operations: Create, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/merge`
+
 #### MergeRequest
 
 | Field | Description |
@@ -3527,6 +6780,26 @@ API path: `/api/v1/organizations/{organization_id}/verify/memories`
 Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun`
+
+#### MergeResolution
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `base` | Common ancestor file contents |
+| `content` |  |
+| `context` | Optional surrounding files keyed by path |
+| `duration_ms` |  |
+| `fallback` |  |
+| `model` |  |
+| `ours` | Current / left file contents |
+| `path` | Repository-relative path of the conflicted file |
+| `resolved` |  |
+| `theirs` | Incoming / right file contents |
+
+Operations: Create.
+
+API path: `/api/v1/merge_resolutions`
 
 #### MessagingConversationMessage
 
@@ -3571,6 +6844,45 @@ Operations: List.
 
 API path: `/api/v1/hosting/metrics/queries`
 
+#### MetronomeWebhook
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/metronome/webhooks`
+
+#### ModelSubscriptionAccount
+
+| Field | Description |
+| --- | --- |
+| `accounts` |  |
+| `agents` |  |
+| `can_disconnect` |  |
+| `connection_agent` |  |
+| `email` |  |
+| `id` |  |
+| `label` |  |
+| `provider` |  |
+| `saved` |  |
+| `status` |  |
+| `usable` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/model_subscription_accounts`
+
+#### ModelSubscriptionAccountConnection
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load, Update.
+
+API path: `/api/v1/model_subscription_accounts/connection/{agent_id}`
+
 #### NetworkConnection
 
 | Field | Description |
@@ -3589,6 +6901,62 @@ API path: `/api/v1/hosting/metrics/queries`
 Operations: Create, Patch, Update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/network_connections`
+
+#### NetworkingSpace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{id}/activate`
+
+#### Node
+
+| Field | Description |
+| --- | --- |
+| `account_avatar_url` |  |
+| `account_id` |  |
+| `account_login` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `installation_id` |  |
+| `installed_at` |  |
+| `installed_at_label` |  |
+| `manage_access_url` |  |
+| `organization_id` |  |
+| `permission_entries` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` |  |
+| `status` |  |
+| `suspended_at` |  |
+| `suspended_at_label` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/pages/nodes`
+
+#### NodeCertificate
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/certificate/rotate`
+
+#### NodeLease
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/claim`
 
 #### NomadAllocation
 
@@ -3637,6 +7005,73 @@ Operations: List.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs`
 
+#### Now
+
+| Field | Description |
+| --- | --- |
+| `needs_attention` |  |
+| `pagination` |  |
+| `recently_landed` |  |
+| `shipping_now` |  |
+| `summary` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/now`
+
+#### ObservabilityClickhouseCluster
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/clickhouse_clusters/{id}/activate`
+
+#### ObservabilityQuickwitCluster
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/quickwit_clusters/{id}/activate`
+
+#### ObservabilitySpace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/spaces/{id}/activate`
+
+#### Openapi
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/openapi`
+
+#### OrgInvitation
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `invitation` |  |
+| `registration_options` |  |
+| `requires_password_setup` |  |
+| `start_guided_setup` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/org_invitations/{token}/accept`
+
 #### Organization
 
 | Field | Description |
@@ -3669,6 +7104,233 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs`
 Operations: Create, List, Load, Patch, Update.
 
 API path: `/api/v1/organizations`
+
+#### OrganizationApp
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: List, Remove, Update.
+
+API path: `/api/v1/spark/organizations/{organization_id}/apps`
+
+#### OrganizationControl
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/control/admission`
+
+#### OrganizationDevice
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/control`
+
+#### OrganizationIdentityCertificate
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/identity_certificates/{id}/expire`
+
+#### OrganizationInteraction
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/interactions`
+
+#### OrganizationInvitation
+
+| Field | Description |
+| --- | --- |
+| `email` |  |
+| `id` |  |
+| `role` |  |
+
+Operations: Create, Remove.
+
+API path: `/api/v1/admin/organizations/{org_slug}/invitations`
+
+#### OrganizationMessageFile
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/message_files`
+
+#### OrganizationOidcTrust
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/activate`
+
+#### OrganizationRunEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/run_events`
+
+#### OrganizationRunOutcome
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/run_outcomes`
+
+#### OrganizationRunUsage
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/run_usages`
+
+#### OrganizationSandbox
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sandbox/automation-cleanup`
+
+#### OrganizationSecret
+
+| Field | Description |
+| --- | --- |
+| `app_environment_id` |  |
+| `app_service_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `created_by` |  |
+| `current_version` |  |
+| `description` |  |
+| `env_key` |  |
+| `expose_to_build` |  |
+| `expose_to_ci` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `last_accessed_at` |  |
+| `last_accessed_at_label` |  |
+| `last_accessed_by` |  |
+| `latest_version_number` |  |
+| `name` |  |
+| `organization_id` |  |
+| `owner_service_account_id` |  |
+| `rotation_policy` |  |
+| `scope_kind` |  |
+| `slug` |  |
+| `status` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/secrets/{id}/disable`
+
+#### OrganizationServiceAccount
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/service_accounts/{id}/activate`
+
+#### OrganizationSetting
+
+| Field | Description |
+| --- | --- |
+| `concurrent_run_limit_override` |  |
+| `customize_onboarding_packages` |  |
+| `daily_run_limit_override` |  |
+| `deployment_usage_visibility` |  |
+| `monthly_browser_minutes_limit_override` |  |
+| `monthly_budget_dollars` |  |
+| `name` |  |
+| `onboarding_custom_pricing` |  |
+| `onboarding_package_keys` |  |
+
+Operations: Update.
+
+API path: `/api/v1/admin/organizations/{org_slug}/settings`
+
+#### OrganizationSite
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Remove, Update.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/token`
+
+#### OrganizationSubscription
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/subscriptions/selection`
+
+#### OrganizationTool
+
+| Field | Description |
+| --- | --- |
+| `arguments` |  |
+| `native_agent_id` |  |
+| `tool` |  |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/tools`
+
+#### OrganizationWorkloadIdentity
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/workload_identities/{id}/activate`
+
+#### OtelIngest
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/otel_ingest/authorize`
 
 #### Page
 
@@ -3725,6 +7387,70 @@ Operations: Create, List, Load.
 
 API path: `/api/v1/organizations/{organization_id}/agents/page/activity`
 
+#### PageArtefact
+
+| Field | Description |
+| --- | --- |
+| `artefact` |  |
+| `automation` |  |
+| `automation_invocation_id` |  |
+| `byte_size` |  |
+| `checksum_sha256` |  |
+| `comment_threads` |  |
+| `content_type` |  |
+| `created_at` |  |
+| `created_by_user_id` |  |
+| `description` |  |
+| `document_key` | Stable document identity shared by all revisions. |
+| `draft` | The autosaved working copy of the newest Markdown version; null for older versions and other files. |
+| `entrypoint` |  |
+| `expires_at` |  |
+| `filename` |  |
+| `files` |  |
+| `harness` |  |
+| `harness_version` |  |
+| `id` |  |
+| `kind` |  |
+| `kinds` |  |
+| `model` |  |
+| `organization` |  |
+| `organization_id` |  |
+| `pagination` |  |
+| `permissions` |  |
+| `preview` |  |
+| `published_at` |  |
+| `published_at_label` |  |
+| `publisher` |  |
+| `repository` |  |
+| `repository_id` |  |
+| `selected_path` |  |
+| `slug` |  |
+| `source` |  |
+| `status` |  |
+| `title` |  |
+| `vcs_agent_checkpoint_id` |  |
+| `vcs_agent_session_id` |  |
+| `version` |  |
+| `versions` |  |
+| `view_url` |  |
+| `web_url` |  |
+
+Operations: List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/page`
+
+#### PageCiPipelineRun
+
+| Field | Description |
+| --- | --- |
+| `error` |  |
+| `id` |  |
+| `jobs` |  |
+
+Operations: Load.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/page`
+
 #### PageProjectRun
 
 | Field | Description |
@@ -3746,6 +7472,85 @@ API path: `/api/v1/organizations/{organization_id}/agents/page/activity`
 Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/page`
+
+#### PageRepoVcCommit
+
+| Field | Description |
+| --- | --- |
+| `commit` |  |
+| `diff_path` | Fingerprinted path serving this commit range's file diff. |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits/{id}/page`
+
+#### PagesBilling
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `breakdown` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` |  |
+| `can_manage_contact` |  |
+| `can_manage_extra_spend` |  |
+| `can_manage_local_subscription` |  |
+| `can_manage_payment_method` |  |
+| `can_set_up_billing` |  |
+| `customer` |  |
+| `deployment_usage_visible` |  |
+| `entitlements` |  |
+| `extra_spend_enabled` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | Whether the `billing` feature is on for this organization. |
+| `organization_id` |  |
+| `package` |  |
+| `prepaid` |  |
+| `preview` | Metronome draft invoice and credits, or null. |
+| `storage_usage` |  |
+| `stripe` |  |
+| `subscription` |  |
+| `token_account` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/billing`
+
+#### PagesGithubOnboarding
+
+| Field | Description |
+| --- | --- |
+| `onboarding` |  |
+| `organization` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/github_onboarding`
+
+#### PagesMember
+
+| Field | Description |
+| --- | --- |
+| `accepted_at` |  |
+| `accepted_by_user` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `email` |  |
+| `email_delivery_status` |  |
+| `expires_at` |  |
+| `expires_at_label` |  |
+| `id` |  |
+| `invite_url` |  |
+| `invited_by_user` |  |
+| `organization` |  |
+| `revoked_at` |  |
+| `role` |  |
+| `status` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/members`
 
 #### PagesProjectCredential
 
@@ -3822,6 +7627,105 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenarios`
 
+#### PagesRegistry
+
+| Field | Description |
+| --- | --- |
+| `active_repository_count` |  |
+| `error` |  |
+| `pagination` |  |
+| `repositories` |  |
+| `repository_count` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/registry`
+
+#### PagesSession
+
+| Field | Description |
+| --- | --- |
+| `adapter` |  |
+| `created_at` |  |
+| `cursor` |  |
+| `ended_at` |  |
+| `external_session_id` |  |
+| `facets` |  |
+| `from` |  |
+| `github_access_warnings` |  |
+| `harness` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` |  |
+| `last_activity_at` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` |  |
+| `limit` |  |
+| `markers` |  |
+| `max_bytes` |  |
+| `mode` |  |
+| `offset` |  |
+| `pagination` |  |
+| `query` |  |
+| `repo` |  |
+| `repository` |  |
+| `search` |  |
+| `search_enabled` |  |
+| `session` | Identical serialization to the org sessions page's expanded session, so the web reuses one session-detail builder. |
+| `sessions` |  |
+| `started_at` |  |
+| `stats` |  |
+| `status` |  |
+| `title` |  |
+| `to` |  |
+| `token_stats` |  |
+| `transcript_index` |  |
+| `transcript_stats` |  |
+| `updated_at` |  |
+| `user` |  |
+| `user_id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/sessions`
+
+#### Pairing
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/relay/pairings`
+
+#### PairingEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/relay/pairings/{id}/events`
+
+#### ParallelV1
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/local_agent/parallel/v1/extract`
+
+#### PatchsetDiff
+
+| Field | Description |
+| --- | --- |
+| `files` |  |
+| `id` |  |
+| `patchset` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/patchsets/{patchset_number}/diff/{fingerprint}`
+
 #### PersonalAccessToken
 
 | Field | Description |
@@ -3889,6 +7793,58 @@ API path: `/api/v1/hosting/apps/{app_id}/previews/{preview_id}/secrets/{id}/rota
 Operations: Create, List.
 
 API path: `/api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals`
+
+#### ProactiveAgentWaitlistEntry
+
+| Field | Description |
+| --- | --- |
+| `email` |  |
+| `first_task` | The first job they would hand an agent. |
+| `invite_code` | The referral code of the invite link they arrived through. |
+| `places_per_referral` | Most places one referral moves the entry up; fewer when boosted entries are ahead. |
+| `position` | 1-based place in the queue. |
+| `position_after_next_referral` | The place one more referral would give this entry, as Rails would assign it. |
+| `referral_code` | Shared in this entry's invite link. |
+| `referral_count` | People who joined through this entry's link. |
+| `total` | Display total including a random increment per signup; not the actual number of entries. |
+| `website` | Honeypot. |
+
+Operations: Create, Load.
+
+API path: `/api/v1/proactive_agent_waitlist_entries`
+
+#### Product
+
+| Field | Description |
+| --- | --- |
+| `activated_products` | Products this organization has activated (PRD 144). |
+| `agents_only` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` |  |
+| `created_at_label` |  |
+| `github_prs_authored_by_change_author` |  |
+| `id` |  |
+| `logo_url` |  |
+| `member_count` |  |
+| `name` |  |
+| `pending_invitation_count` |  |
+| `personal` |  |
+| `product` |  |
+| `repository_count` |  |
+| `role` |  |
+| `sandbox_region` |  |
+| `shared_agent_personal_accounts_enabled` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` |  |
+| `source_control_providers` | Connected source control providers for this organization. |
+| `source_ui_enabled` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `verify_pr_scenario_writing_enabled` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/products`
 
 #### ProductMapIdentityDecision
 
@@ -4430,6 +8386,41 @@ Operations: Create, Load, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share`
 
+#### PullRequestAction
+
+| Field | Description |
+| --- | --- |
+| `action_name` |  |
+| `body` |  |
+| `comment_id` |  |
+| `comments` |  |
+| `event` |  |
+| `expected_head_sha` |  |
+| `id` |  |
+| `label` |  |
+| `line` |  |
+| `node_id` |  |
+| `operation_key` |  |
+| `path` |  |
+| `run_id` |  |
+| `side` |  |
+| `start_line` |  |
+| `start_side` |  |
+| `thread_id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/actions`
+
+#### PullRequestMagicMerge
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/merge`
+
 #### PullRequestSetting
 
 | Field | Description |
@@ -4530,6 +8521,42 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/verify/pull_request_settings/detect_comments`
 
+#### PullRequestTranscript
+
+| Field | Description |
+| --- | --- |
+| `adapter` |  |
+| `created_at` |  |
+| `ended_at` |  |
+| `external_session_id` |  |
+| `harness` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` |  |
+| `last_activity_at` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` |  |
+| `repository` |  |
+| `started_at` |  |
+| `stats` |  |
+| `status` |  |
+| `title` |  |
+| `updated_at` |  |
+| `user` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/pull_request/{number}/transcripts`
+
+#### PullZone
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `name` |  |
+| `slug` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/pull_zones`
+
 #### Recorder
 
 | Field | Description |
@@ -4560,6 +8587,34 @@ Operations: Create.
 
 API path: `/api/v1/registry/v2/authorize`
 
+#### RelayAgentConnection
+
+| Field | Description |
+| --- | --- |
+| `agent_card_url` |  |
+| `auth_scheme` |  |
+| `can_configure` |  |
+| `can_disconnect` |  |
+| `can_setup` |  |
+| `connection` |  |
+| `credential` | Write-only outbound key. |
+| `error_code` |  |
+| `expected_generation` |  |
+| `generation` |  |
+| `id` |  |
+| `name` |  |
+| `remote_agent` |  |
+| `requester_id` |  |
+| `retired_at` |  |
+| `revoked_at` |  |
+| `scope_key` |  |
+| `source_operation_id` |  |
+| `state` |  |
+
+Operations: Create, List, Load, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup`
+
 #### RelayAgentLocalThread
 
 | Field | Description |
@@ -4569,6 +8624,263 @@ API path: `/api/v1/registry/v2/authorize`
 Operations: Remove.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/relay`
+
+#### RelaySignal
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/relay/signals`
+
+#### ReleaseRollout
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/execution/releases/{release_id}/rollouts/{id}/complete`
+
+#### Repo
+
+| Field | Description |
+| --- | --- |
+| `can_retry_import` | True when a failed client import can be requeued for CLI resume. |
+| `can_retry_sync` | True when the latest sync run failed and can be retried. |
+| `disclaimer` |  |
+| `federated_in_home` | True when this Space is a folder virtual repository inside the organization Home monorepo. |
+| `github_repository` |  |
+| `icon_name` |  |
+| `id` | Virtual repository public ID for non-Home rows; Home uses the physical repository public ID. |
+| `import_item_id` |  |
+| `is_home` |  |
+| `name` |  |
+| `remote_repository` |  |
+| `root_path` | Home-relative folder path when federated_in_home is true; null otherwise. |
+| `slug` |  |
+| `sync_error_message` |  |
+| `sync_provider` |  |
+| `sync_status` |  |
+
+Operations: List, Load, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos`
+
+#### RepoAccessToken
+
+| Field | Description |
+| --- | --- |
+| `access_token` |  |
+| `active` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `credential_purpose` | Issues a revocable read-write system credential valid for one hour. |
+| `expires_at` |  |
+| `expires_at_label` |  |
+| `expires_in_days` |  |
+| `id` |  |
+| `last_used_at` |  |
+| `last_used_at_label` |  |
+| `name` |  |
+| `permission_level` |  |
+| `plain_text_token` |  |
+| `revoked_at` |  |
+| `revoked_at_label` |  |
+| `token_preview` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/access_tokens`
+
+#### RepoAction
+
+| Field | Description |
+| --- | --- |
+| `pipeline` |  |
+| `run` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/actions`
+
+#### RepoAgentCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_checkpoints/{id}`
+
+#### RepoAgentSession
+
+| Field | Description |
+| --- | --- |
+| `adapter` |  |
+| `agent_session` |  |
+| `external_session_id` |  |
+| `id` |  |
+| `status` |  |
+| `title` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete`
+
+#### RepoBookmarkProtection
+
+| Field | Description |
+| --- | --- |
+| `actor_policy` |  |
+| `bypass_mode` |  |
+| `created_at` |  |
+| `created_by_user_id` |  |
+| `enabled` |  |
+| `id` |  |
+| `name` |  |
+| `organization_id` |  |
+| `priority` |  |
+| `repository_id` |  |
+| `requirements` |  |
+| `target_kind` |  |
+| `target_pattern` |  |
+| `updated_at` |  |
+| `updated_by_user_id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections`
+
+#### RepoBookmarkProtectionEvent
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `actor_kind` |  |
+| `actor_label` |  |
+| `actor_user_id` |  |
+| `bookmark_name` |  |
+| `bookmark_protection_rule_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `decision` |  |
+| `id` |  |
+| `intent` |  |
+| `metadata` |  |
+| `new_target` |  |
+| `old_target` |  |
+| `organization_id` |  |
+| `reason_codes` |  |
+| `repository_id` |  |
+| `source_request_id` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protection_events`
+
+#### RepoCloudWorkspaceBackup
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/restore_request`
+
+#### RepoCodeRule
+
+| Field | Description |
+| --- | --- |
+| `active_revision_number` |  |
+| `capabilities` |  |
+| `code_rule` |  |
+| `created_at` |  |
+| `definition` |  |
+| `draft_pending` | The latest revision is not the active one |
+| `enabled` |  |
+| `expected_version` |  |
+| `id` |  |
+| `latest_revision_number` |  |
+| `name` | Name of the latest revision |
+| `repository` |  |
+| `scope` |  |
+| `slug` |  |
+| `state_version` | Send back as expected_version on every mutation |
+| `updated_at` |  |
+| `web_url` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules`
+
+#### RepoSetting
+
+| Field | Description |
+| --- | --- |
+| `active` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `description` |  |
+| `expires_at` |  |
+| `expires_at_label` |  |
+| `icon_name` |  |
+| `id` |  |
+| `last_used_at` |  |
+| `last_used_at_label` |  |
+| `merge_authority` |  |
+| `name` |  |
+| `organization_id` |  |
+| `permission_level` |  |
+| `revoked_at` |  |
+| `revoked_at_label` |  |
+| `slug` |  |
+| `status` |  |
+| `token_preview` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings`
+
+#### RepoStat
+
+| Field | Description |
+| --- | --- |
+| `repository_stats` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/stats/refresh`
+
+#### RepoVc
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commit_file`
+
+#### RepoVcCommit
+
+| Field | Description |
+| --- | --- |
+| `name` |  |
+| `target_commit_id` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits`
 
 #### ReportReplay
 
@@ -4603,6 +8915,260 @@ API path: `/api/v1/organizations/{organization_id}/verify/explorations/{id}/repo
 Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/verify/explorations/{id}/report/scenarios`
+
+#### RepositoryAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/repository_access/authorize`
+
+#### RepositoryAccessResolve
+
+| Field | Description |
+| --- | --- |
+| `default_branch` |  |
+| `git_auth_username` |  |
+| `git_https_clone_url` |  |
+| `git_https_supported` |  |
+| `github_access_warnings` |  |
+| `id` |  |
+| `membership_role` |  |
+| `organization_id` |  |
+| `organization_name` |  |
+| `organization_slug` |  |
+| `repository_id` |  |
+| `repository_name` |  |
+| `repository_slug` |  |
+
+Operations: Load.
+
+API path: `/api/v1/repository_access/resolve/{org_slug}/{repo_slug}`
+
+#### RepositoryEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/repository_events/walgit`
+
+#### RepositoryImport
+
+| Field | Description |
+| --- | --- |
+| `can_manage_connections` |  |
+| `github_imports` |  |
+| `github_installations` |  |
+| `gitlab_configured` |  |
+| `gitlab_imports` |  |
+| `gitlab_integrations` |  |
+| `gitlab_redirect_uri` |  |
+| `gitlab_self_managed_available` |  |
+| `inventory_errors` |  |
+| `organization_id` |  |
+| `repositories` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/repository_import`
+
+#### RepositoryImportSession
+
+| Field | Description |
+| --- | --- |
+| `action_required` |  |
+| `authorization_endpoint` |  |
+| `can_authorize_github` |  |
+| `client_name` |  |
+| `client_version` |  |
+| `created_at` |  |
+| `error_message` |  |
+| `expires_at` |  |
+| `git_imports` |  |
+| `github_app_installation_id` |  |
+| `github_connected` |  |
+| `id` |  |
+| `idempotency_key` |  |
+| `organization_id` |  |
+| `organization_slug` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/repository_import_sessions/{id}/authorization`
+
+#### RepositoryImportSessionRepository
+
+| Field | Description |
+| --- | --- |
+| `default_branch` |  |
+| `full_name` |  |
+| `name` |  |
+| `owner` |  |
+| `private` |  |
+| `reason` |  |
+| `selectable` |  |
+| `status` |  |
+| `visibility` |  |
+
+Operations: List.
+
+API path: `/api/v1/repository_import_sessions/{id}/repositories`
+
+#### RepositoryImportSessionSelection
+
+| Field | Description |
+| --- | --- |
+| `repositories` |  |
+
+Operations: Create.
+
+API path: `/api/v1/repository_import_sessions/{id}/selections`
+
+#### RepositorySandboxEnvironment
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/repositories/{repository}/sandbox_environments/validate`
+
+#### RoderCodeRepair
+
+| Field | Description |
+| --- | --- |
+| `base_sha` |  |
+| `cancel_requested` |  |
+| `failure_code` |  |
+| `id` |  |
+| `launch_state` |  |
+| `organization_id` |  |
+| `repository_slug` |  |
+| `roder_thread_id` |  |
+| `roder_turn_id` |  |
+| `scenario_run_id` |  |
+| `task` |  |
+| `trigger_kind` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/agent/roder/code_repairs/{id}/cancel`
+
+#### RoderCodeRepairSetting
+
+| Field | Description |
+| --- | --- |
+| `available` |  |
+| `daily_limit` |  |
+| `enabled` |  |
+| `enabled_at` |  |
+| `operator_user_id` |  |
+| `organization_id` |  |
+| `repository_slug` | Connected Composal repository required when enabling |
+
+Operations: Create, List.
+
+API path: `/api/v1/agent/roder/code_repair_settings`
+
+#### RoderMachine
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Update.
+
+API path: `/api/v1/agent/roder/machines/{public_id}`
+
+#### RoderRun
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/agent/roder/run/swarm_activity`
+
+#### RoderWorkspaceCredential
+
+| Field | Description |
+| --- | --- |
+| `api_token` | Short-lived personal access token for the spawning user. |
+| `author_email` |  |
+| `author_name` |  |
+| `clone_url` |  |
+| `default_branch` |  |
+| `expires_at` |  |
+| `organization_id` |  |
+| `repository_id` |  |
+| `repository_slug` |  |
+| `repository_spec` | The explicitly selected physical repository address. |
+| `required_lifetime_seconds` | Lifetime the pending clone or command must be able to complete within. |
+| `token` | Short-lived read/write repository credential. |
+| `username` |  |
+
+Operations: Create.
+
+API path: `/api/v1/agent/roder/workspace_credentials`
+
+#### RunArtifact
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts`
+
+#### RunJob
+
+| Field | Description |
+| --- | --- |
+| `active` |  |
+| `allow_failure` |  |
+| `cache_archive_observations` | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `ci_pipeline_run_id` |  |
+| `ci_runner_id` |  |
+| `created_at` |  |
+| `dependencies_csv` |  |
+| `display_id` |  |
+| `environment_csv` |  |
+| `execution_order` |  |
+| `execution_profile` |  |
+| `exit_code` |  |
+| `failed` |  |
+| `finished_at` |  |
+| `id` |  |
+| `kind` |  |
+| `log_chunks` |  |
+| `name` |  |
+| `number` |  |
+| `organization_id` |  |
+| `queued_at` |  |
+| `reconciliation_id` |  |
+| `retry_number` |  |
+| `reuse` |  |
+| `runner_label_selector` |  |
+| `slug` |  |
+| `started_at` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `steps` |  |
+| `timeout_seconds` |  |
+| `updated_at` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs`
 
 #### RunScenarioRun
 
@@ -4671,6 +9237,95 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/verify/run_updates`
 
+#### RunWorkspaceCredential
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/agent/roder/run/workspace_credentials`
+
+#### RunnerLease
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim`
+
+#### RunnerPoolNodeEnrollmentToken
+
+| Field | Description |
+| --- | --- |
+| `capabilities_csv` |  |
+| `ci_runner_pool_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `creator_user_id` |  |
+| `description` |  |
+| `expires_at` |  |
+| `expires_at_label` |  |
+| `id` |  |
+| `kind` |  |
+| `last_used_at` |  |
+| `last_used_at_label` |  |
+| `name` |  |
+| `organization_id` |  |
+| `raw_token` |  |
+| `revoked_at` |  |
+| `status` |  |
+| `token_hint` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `usage_count` |  |
+| `usage_count_label` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/ci/runner_pools/{runner_pool_id}/node_enrollment_tokens/{id}/revoke`
+
+#### RunnerPoolRunner
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat`
+
+#### RuntimeInstanceHealthSnapshot
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots`
+
+#### SandboxIntegration
+
+| Field | Description |
+| --- | --- |
+| `can_manage` |  |
+| `catalog` |  |
+| `configuration` |  |
+| `connected_profiles` | Connected profiles per provider across the organization. |
+| `credentials` |  |
+| `enabled` |  |
+| `id` |  |
+| `integrations` |  |
+| `name` |  |
+| `provider` |  |
+| `version` |  |
+
+Operations: Create, List, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/sandbox_integrations`
+
 #### ScenarioRevision
 
 | Field | Description |
@@ -4709,6 +9364,26 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/run`
 
+#### SecretGrant
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}/restore`
+
+#### SecretVersion
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}/redact`
+
 #### ServiceEndpoint
 
 | Field | Description |
@@ -4718,6 +9393,200 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints`
+
+#### Setting
+
+| Field | Description |
+| --- | --- |
+| `can_manage_pr_scenario_writing` |  |
+| `can_manage_sandbox_region` |  |
+| `dedicated_outbound_ip_addresses` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` |  |
+| `organization` |  |
+| `sandbox_regions` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/settings`
+
+#### SettingMutationLease
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/mutation_lease/clear`
+
+#### Signal
+
+| Field | Description |
+| --- | --- |
+| `acked_at` |  |
+| `acked_by` | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | Dispatched-run summary (docs §6c). |
+| `app_service_id` |  |
+| `attribution` | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
+| `created_at` | ISO8601 row insert time — retention math and debugging only. |
+| `dedupe_key` |  |
+| `hosted_app_id` |  |
+| `id` | The signal's own `sig_…` public id — also the paging cursor value. |
+| `kind` | A frozen taxonomy kind (§1) or an `app.custom.*` kind. |
+| `links` | Canonical, relative API paths built from real routes (docs §6a). |
+| `occurred_at` | ISO8601 domain event time — what the UI displays and `since` filters on. |
+| `organization_id` |  |
+| `payload` | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
+| `recovery` | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | Recovery pairing (docs §6b). |
+| `severity` | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
+| `source` | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
+| `subject_id` |  |
+| `subject_type` | Polymorphic pointer: `AppDeployment`, `RuntimeInstance`, `AlertEvent`, `HostedApp`, or `SignalSubscription`. |
+| `summary` | One-line, kind-composed human sentence for the feed row (docs §6d, e.g. |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/signals/{id}/ack`
+
+#### SignalInbound
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Update.
+
+API path: `/api/v1/signals/inbound/{provider}/{inbound_token}`
+
+#### SignalIntegration
+
+| Field | Description |
+| --- | --- |
+| `api_token` | Optional provider API token for target discovery and backfill. |
+| `api_token_stored` |  |
+| `config` |  |
+| `created_at` |  |
+| `failure_message` |  |
+| `id` | Public id (`sint_…`). |
+| `inbound_path` |  |
+| `inbound_url` | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` |  |
+| `last_verified_at` |  |
+| `mode` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` |  |
+| `organization_id` |  |
+| `provider` |  |
+| `rejected_signature_count` | Deliveries rejected for a bad or missing signature. |
+| `status` |  |
+| `target_count` |  |
+| `unmapped_delivery_count` | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` |  |
+| `webhook_secret` | The provider's signing secret. |
+| `webhook_secret_stored` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{id}/regenerate_inbound_token`
+
+#### SignalIntegrationDelivery
+
+| Field | Description |
+| --- | --- |
+| `attempt_count` |  |
+| `created_at` |  |
+| `delivery_id` | The provider's delivery id, or a `content-…` id derived from the event kind, its timestamp header and the body checksum when it sends none. |
+| `event_kind` |  |
+| `id` | Public id (`sdel_…`). |
+| `last_error` |  |
+| `ops_signal_id` | Public id (`sig_…`) of the signal this delivery emitted. |
+| `organization_id` |  |
+| `processed_at` |  |
+| `provider` |  |
+| `received_at` |  |
+| `signal_integration_id` |  |
+| `state` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/deliveries`
+
+#### SignalIntegrationTarget
+
+| Field | Description |
+| --- | --- |
+| `app_service_id` |  |
+| `created_at` |  |
+| `display_name` |  |
+| `enabled` |  |
+| `external_id` |  |
+| `external_kind` |  |
+| `external_slug` |  |
+| `hosted_app_id` |  |
+| `id` | Public id (`stgt_…`). |
+| `organization_id` |  |
+| `signal_integration_id` |  |
+| `signal_integration_targets` |  |
+| `targets` |  |
+| `updated_at` |  |
+
+Operations: List, Update.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/targets`
+
+#### SignalSubscription
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/signal_subscriptions`
+
+#### Site
+
+| Field | Description |
+| --- | --- |
+| `activated_at` |  |
+| `activated_at_label` |  |
+| `commit_sha` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `creator_user_id` |  |
+| `deploy_slug` |  |
+| `failure_message` |  |
+| `file_count` |  |
+| `file_count_label` |  |
+| `finished_at` |  |
+| `finished_at_label` |  |
+| `id` |  |
+| `is_active` |  |
+| `source_ref` |  |
+| `started_at` |  |
+| `started_at_label` |  |
+| `static_site_id` |  |
+| `status` |  |
+| `total_bytes` |  |
+| `total_bytes_label` |  |
+| `trigger_kind` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `uploaded_at` |  |
+| `uploaded_at_label` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/sites`
+
+#### SiteAccessKey
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys`
 
 #### SitePreview
 
@@ -4730,6 +9599,18 @@ API path: `/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints`
 Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/site_preview`
+
+#### SiteSecret
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `native_agent_id` |  |
+| `value` |  |
+
+Operations: Remove, Update.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/secrets/{secret_name}`
 
 #### SlackChannel
 
@@ -4745,6 +9626,235 @@ API path: `/api/v1/organizations/{organization_id}/verify/site_preview`
 Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/slack/channels`
+
+#### SourceConnection
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/source_connections/{id}/refresh`
+
+#### SpaceAlertRule
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/spaces/{space_id}/alert_rules/{id}/activate`
+
+#### SpaceAuditEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/observability/spaces/{space_id}/audit_events`
+
+#### SpaceDnsRecord
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/dns_records`
+
+#### SpaceEnrollmentToken
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}/revoke`
+
+#### SpaceGateway
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/gateways/{id}/heartbeat`
+
+#### SpaceGroup
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/groups`
+
+#### SpaceGroupMembership
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/group_memberships`
+
+#### SpaceLogStream
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/observability/spaces/{space_id}/log_streams`
+
+#### SpaceMetricSery
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/observability/spaces/{space_id}/metric_series`
+
+#### SpaceOtelCollector
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/spaces/{space_id}/otel_collectors/{id}/activate`
+
+#### SpacePeer
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/peers/{id}/approve`
+
+#### SpacePeerAttachment
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/peer_attachments`
+
+#### SpacePolicy
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/policies/{id}/activate`
+
+#### SpaceSegment
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/segments`
+
+#### SpaceTraceSpan
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/observability/spaces/{space_id}/trace_spans`
+
+#### Spark
+
+| Field | Description |
+| --- | --- |
+| `activated_products` | Products this organization has activated (PRD 144). |
+| `agents_only` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `can_manage` |  |
+| `compute_credit_cents` | Included compute the workspace started Sparks with, when it is on compute billing. |
+| `created_at` |  |
+| `created_at_label` |  |
+| `credit_cents` | Inference credit the workspace started Sparks with. |
+| `first_spark` | Null until the first Spark exists or when the viewer cannot read it. |
+| `github_connected` |  |
+| `github_prs_authored_by_change_author` |  |
+| `id` |  |
+| `jsonrpc` |  |
+| `logo_url` |  |
+| `member_count` |  |
+| `method` |  |
+| `name` |  |
+| `params` |  |
+| `pending_invitation_count` |  |
+| `personal` |  |
+| `repository_count` |  |
+| `role` |  |
+| `sandbox_region` |  |
+| `shared_agent_personal_accounts_enabled` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` |  |
+| `source_control_providers` | Connected source control providers for this organization. |
+| `source_ui_enabled` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `started` | Whether the workspace has started Sparks. |
+| `timezone` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `verify_pr_scenario_writing_enabled` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/sparks`
+
+#### SparkAgentIntegration
+
+| Field | Description |
+| --- | --- |
+| `account_counts` | Accounts the viewer can see per toolkit, across all account pages. |
+| `accounts_path` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
+| `added_toolkits` | Apps with a connected or connecting account the viewer can see. |
+| `can_manage` |  |
+| `can_manage_organization` |  |
+| `catalog` |  |
+| `connect_as` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
+| `connect_as_by_toolkit` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_counts` | Signed-in accounts per toolkit, across all account pages. |
+| `connection_id` |  |
+| `connections` |  |
+| `email` | A native agent's own email address. |
+| `enabled` |  |
+| `enabled_toolkits` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `generation` |  |
+| `pagination` |  |
+| `pending_counts` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
+| `personal_creation_key_supported` | The personal account creation endpoint honors a creation key. |
+| `private_agent` | Only the agent's owner can chat with it. |
+| `shared_agent_personal_accounts_enabled` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
+| `slack` |  |
+| `webhook_connections` |  |
+| `webhooks_available` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations`
 
 #### SparkAgentLocalThread
 
@@ -4787,6 +9897,134 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/slack/chann
 Operations: Create, Load, Update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads`
+
+#### SparkAgentSite
+
+| Field | Description |
+| --- | --- |
+| `deployed_at` |  |
+| `deployments_count` |  |
+| `hostname` |  |
+| `https` | Whether the organization's certificate serves this site over HTTPS |
+| `id` |  |
+| `name` |  |
+| `url` |  |
+| `visibility` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/sites`
+
+#### SparkAgentSkill
+
+| Field | Description |
+| --- | --- |
+| `available` |  |
+| `can_configure` |  |
+| `can_manage` |  |
+| `configuration_state` | The requested managed skill selection is awaiting runtime qualification. |
+| `description` |  |
+| `enabled` |  |
+| `name` |  |
+| `skills` |  |
+| `version` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/skills`
+
+#### SparkAgentThread
+
+| Field | Description |
+| --- | --- |
+| `archived_count` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
+| `can_create` |  |
+| `execution` |  |
+| `first_input` |  |
+| `first_input_key` | Idempotency-Key that finds the first message through input_delivery. |
+| `first_input_requester_membership_id` | Membership the first message was sent as, for input_delivery. |
+| `id` |  |
+| `inherit_context` | Include the source conversation through its last completed reply. |
+| `local_activities` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
+| `local_archived_count` | Local Claude Code and Codex threads archived on their computers. |
+| `local_next_cursor` |  |
+| `local_scope_key` |  |
+| `local_status_pending` | A computer is reporting newer local thread statuses; read the page again shortly. |
+| `local_threads` |  |
+| `main_thread_id` |  |
+| `message` | The thread's first message. |
+| `next_cursor` |  |
+| `parent_conversation_id` | Optional source conversation belonging to this agent. |
+| `requester_membership_id` |  |
+| `selected_thread` |  |
+| `thread` |  |
+| `threads` |  |
+| `title` |  |
+| `total_archived_count` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive`
+
+#### SparkCredit
+
+| Field | Description |
+| --- | --- |
+| `amount_cents` | Purchase amount in USD cents. |
+| `autofill` |  |
+| `autofill_payment_unconfirmed` |  |
+| `available_usd` |  |
+| `billing_unit` | Compute minute quote version returned by the billing summary. |
+| `can_manage` |  |
+| `compute_minutes` |  |
+| `compute_usd` |  |
+| `credits_per_usd` |  |
+| `inference_usd` |  |
+| `kind` |  |
+| `payment_method` |  |
+| `payments_enabled` |  |
+| `plan` |  |
+| `plans` |  |
+| `quoted_credits_cents` | Grant shown for a top-up or subscription, in usage cents. |
+| `quoted_price_cents` | Monthly cash price shown for a subscription, in USD cents. |
+| `refill_limits_cents` |  |
+| `refill_options` |  |
+| `refill_thresholds_cents` |  |
+| `request_key` |  |
+| `settings` |  |
+| `starter_cents` |  |
+| `top_up_max_cents` | Maximum manual top-up, in USD cents. |
+| `top_up_step_cents` | Minimum manual top-up and increment, in USD cents. |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/organizations/{org_slug}/spark_credits`
+
+#### SparkCreditAgentUsage
+
+| Field | Description |
+| --- | --- |
+| `agents` |  |
+| `all` |  |
+| `days` |  |
+| `id` |  |
+| `owners` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/spark_credits/agent_usage/{agent_id}`
+
+#### SparkCreditUsageTotal
+
+| Field | Description |
+| --- | --- |
+| `compute_minutes_used` |  |
+| `compute_usd` |  |
+| `inference_usd` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/spark_credits/usage_totals`
 
 #### StaticSite
 
@@ -4883,6 +10121,78 @@ Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/static_sites/{static_site_id}/domains/{id}/provision`
 
+#### StatusChange
+
+| Field | Description |
+| --- | --- |
+| `change_id` |  |
+| `id` |  |
+| `patchsets` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/changes/{id}`
+
+#### StatusCommit
+
+| Field | Description |
+| --- | --- |
+| `checks` |  |
+| `commit_sha` |  |
+| `counts` |  |
+| `id` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `total` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/commits/{commit_sha}`
+
+#### StatusPatchset
+
+| Field | Description |
+| --- | --- |
+| `checks` |  |
+| `checks_status` |  |
+| `commit_sha` |  |
+| `counts` |  |
+| `id` |  |
+| `patchset_id` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `total` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/patchsets/{id}`
+
+#### StripeWebhook
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/stripe/webhooks`
+
+#### SubmitTelemetry
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/submit_telemetry`
+
 #### SubscriptionModel
 
 | Field | Description |
@@ -4898,6 +10208,113 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions/models`
 
+#### SwarmEvent
+
+| Field | Description |
+| --- | --- |
+| `agent_swarm_id` |  |
+| `attempt_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `kind` |  |
+| `payload` |  |
+| `reason` |  |
+| `scheduler_generation` |  |
+| `task_id` |  |
+
+Operations: List.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/events`
+
+#### SwarmLive
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/agent/swarms/{id}/live/replay`
+
+#### SwarmNote
+
+| Field | Description |
+| --- | --- |
+| `task_id` | A task public id; omitted |
+| `text` |  |
+
+Operations: Create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/notes`
+
+#### SwarmTask
+
+| Field | Description |
+| --- | --- |
+| `acceptance_commands` |  |
+| `agent_swarm_id` |  |
+| `assigned_runner_id` |  |
+| `blocked_reason` |  |
+| `changes` |  |
+| `commit_count` |  |
+| `commit_sha_result` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `current_attempt_id` |  |
+| `deadline_at` |  |
+| `depends_on_task_ids` |  |
+| `depth` |  |
+| `diff_artifact_url` |  |
+| `display_id` |  |
+| `environment_profile` |  |
+| `error_message` |  |
+| `failure_code` |  |
+| `finished_at` |  |
+| `finished_at_label` |  |
+| `harness` |  |
+| `id` |  |
+| `input_revision` |  |
+| `iteration` |  |
+| `landing_state` |  |
+| `model` |  |
+| `model_provider` |  |
+| `number` |  |
+| `organization_id` |  |
+| `owned_paths` |  |
+| `parent_task_id` |  |
+| `position` |  |
+| `prompt` |  |
+| `queued_at` |  |
+| `queued_at_label` |  |
+| `reasoning_effort` |  |
+| `recent_activity` |  |
+| `repo_url` |  |
+| `result` |  |
+| `retry_number` |  |
+| `role` |  |
+| `run_id` |  |
+| `stack_after_task_id` |  |
+| `started_at` |  |
+| `started_at_label` |  |
+| `status` |  |
+| `title` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List, Load.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks`
+
+#### TaskLease
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_jev`
+
 #### ThreadPreview
 
 | Field | Description |
@@ -4909,6 +10326,224 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptio
 Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/previews`
+
+#### ThreadPreviewAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/thread_preview_access/redeem`
+
+#### ToolFeedback
+
+| Field | Description |
+| --- | --- |
+| `category` |  |
+| `created_at` |  |
+| `details` |  |
+| `feedback` |  |
+| `id` |  |
+| `metadata` | Caller-supplied session context; no secrets or transcripts |
+| `organization_id` |  |
+| `source` |  |
+| `summary` |  |
+| `user_id` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/tool_feedbacks`
+
+#### Transcript
+
+| Field | Description |
+| --- | --- |
+| `agent` |  |
+| `author` |  |
+| `checkpoint_pagination` |  |
+| `checkpoints` |  |
+| `id` |  |
+| `last_checkpoint_at` |  |
+| `selected_checkpoint` |  |
+| `source_url` |  |
+| `started_at` |  |
+| `status` |  |
+| `title` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/transcripts/search`
+
+#### V1Message
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/inference/v1/messages`
+
+#### VcBranch
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `name` |  |
+| `target_commit_id` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/branches`
+
+#### VcBrowser
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/browser/file`
+
+#### VcChange
+
+| Field | Description |
+| --- | --- |
+| `activity` |  |
+| `canonical_path` |  |
+| `change` |  |
+| `checks` |  |
+| `checks_status` |  |
+| `description` |  |
+| `group` |  |
+| `id` |  |
+| `jj_change_id` |  |
+| `labels` |  |
+| `landing` | Server-computed submitted-together closure and landing preflight. |
+| `number` |  |
+| `patchset_number` |  |
+| `previews` |  |
+| `primary_status` |  |
+| `public_id` |  |
+| `related_changes` |  |
+| `relation_chain` |  |
+| `restack_state` |  |
+| `review_summary` |  |
+| `stack` |  |
+| `status` |  |
+| `sync` |  |
+| `target` |  |
+| `target_advanced` |  |
+| `target_branch` |  |
+| `title` |  |
+| `url` |  |
+
+Operations: Create, List, Load, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/abandon`
+
+#### VcChangeGroup
+
+| Field | Description |
+| --- | --- |
+| `changes` |  |
+| `id` |  |
+| `name` |  |
+| `number` |  |
+| `status` |  |
+| `title` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups`
+
+#### VcFile
+
+| Field | Description |
+| --- | --- |
+| `paths` |  |
+| `truncated` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/files`
+
+#### VcMergeQueue
+
+| Field | Description |
+| --- | --- |
+| `analytics` | Queue performance for the reporting window. |
+| `id` |  |
+| `policy` |  |
+| `queue` |  |
+| `target_branches` | Bookmark names for the target picker. |
+
+Operations: Create, List, Load, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/pause`
+
+#### VcStack
+
+| Field | Description |
+| --- | --- |
+| `alias_ref_name` |  |
+| `changes` |  |
+| `code` |  |
+| `id` |  |
+| `landing` | Compact landing state for the Stack CLI. |
+| `member_count` |  |
+| `name` |  |
+| `ref_name` |  |
+| `status` |  |
+| `tip_change_number` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List, Load, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/stacks`
+
+#### VcsNode
+
+| Field | Description |
+| --- | --- |
+| `account_avatar_url` |  |
+| `account_id` |  |
+| `account_login` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `installation_id` |  |
+| `installed_at` |  |
+| `installed_at_label` |  |
+| `manage_access_url` |  |
+| `organization_id` |  |
+| `permission_entries` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` |  |
+| `status` |  |
+| `suspended_at` |  |
+| `suspended_at_label` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/vcs_nodes`
+
+#### VcsSetting
+
+| Field | Description |
+| --- | --- |
+| `can_manage_pr_scenario_writing` |  |
+| `can_manage_sandbox_region` |  |
+| `dedicated_outbound_ip_addresses` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` |  |
+| `organization` |  |
+| `sandbox_regions` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/vcs_settings`
 
 #### VerificationProjectCredential
 
@@ -5083,6 +10718,43 @@ Operations: Create, Load, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/browser_sessions/{id}/save`
 
+#### VerifyEmailVerification
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/email_verifications/verify`
+
+#### VerifySignalIntegration
+
+| Field | Description |
+| --- | --- |
+| `api_token_stored` |  |
+| `config` |  |
+| `created_at` |  |
+| `failure_message` |  |
+| `id` | Public id (`sint_…`). |
+| `inbound_path` |  |
+| `inbound_url` | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` |  |
+| `last_verified_at` |  |
+| `mode` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` |  |
+| `organization_id` |  |
+| `provider` |  |
+| `rejected_signature_count` | Deliveries rejected for a bad or missing signature. |
+| `status` |  |
+| `target_count` |  |
+| `unmapped_delivery_count` | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` |  |
+| `webhook_secret_stored` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{id}/verify`
+
 #### VerifyStaticSiteDomain
 
 | Field | Description |
@@ -5132,6 +10804,15 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/logs`
 
+#### WaitlistApplication
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/waitlist_applications`
+
 #### WebBotAuth
 
 | Field | Description |
@@ -5143,6 +10824,16 @@ API path: `/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/v
 Operations: Create.
 
 API path: `/api/v1/verify/web_bot_auth`
+
+#### WebhookGitlab
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Update.
+
+API path: `/api/v1/webhooks/gitlab/{connection_key}`
 
 #### WorkflowRunStep
 
@@ -5173,9 +10864,135 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers/{trigger_id}/skipped/{delivery_id}/run`
 
+#### WorkspaceActivity
+
+| Field | Description |
+| --- | --- |
+| `live_activity` |  |
+| `recent_items` |  |
+| `unresolved_notification_count` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/workspace_activity`
+
+#### WorkspaceActivityNotification
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Update.
+
+API path: `/api/v1/organizations/{org_slug}/workspace_activity/notifications/{id}/dismissal`
+
+#### WorkspaceSpace
+
+| Field | Description |
+| --- | --- |
+| `created_at` |  |
+| `default_branch` |  |
+| `description` |  |
+| `hidden` |  |
+| `icon_name` |  |
+| `id` |  |
+| `import_status` |  |
+| `name` |  |
+| `organization_id` |  |
+| `position` |  |
+| `repository_id` |  |
+| `repository_slug` |  |
+| `slug` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/workspace_spaces`
+
+#### WorkspaceSpacePreference
+
+| Field | Description |
+| --- | --- |
+| `preferences` |  |
+| `spaces` |  |
+
+Operations: Update.
+
+API path: `/api/v1/organizations/{organization_id}/workspace_spaces/preferences`
+
 
 
 ## Entities
+
+
+### A2aWellKnown
+
+Create an instance: `$a2a_well_known = $client->A2aWellKnown();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AdminOrg
+
+Create an instance: `$admin_org = $client->AdminOrg();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `billing_email` | `mixed` |  |
+| `billing_reason` | `string` | Required when setting an agreed price |
+| `customize_onboarding_packages` | `bool` |  |
+| `deployment_usage_visibility` | `string` |  |
+| `deployment_usage_visible` | `bool` |  |
+| `id` | `string` |  |
+| `monthly_price_dollars` | `mixed` | Ongoing USD workspace price, for example '50.00' |
+| `monthly_price_override_cents` | `mixed` |  |
+| `name` | `string` |  |
+| `onboarding_custom_pricing` | `bool` |  |
+| `onboarding_package_keys` | `mixed` | Package keys offered when customizing onboarding. |
+| `owner_email` | `string` |  |
+| `package_id` | `mixed` | Active customer package public ID. |
+| `skip_payment` | `bool` | Grant the selected package as an ongoing complimentary subscription with monthly included usage and package limits. |
+| `slug` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the AdminOrg record (throws on error).
+$admin_org = $client->AdminOrg()->load(["id" => "admin_org_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of AdminOrg entities, one per record (throws on error).
+$admin_orgs = $client->AdminOrg()->list();
+```
+
+#### Example: Create
+
+```php
+$admin_org = $client->AdminOrg()->create([
+    "name" => null, // string
+    "owner_email" => null, // string
+    "slug" => null, // string
+]);
+```
 
 
 ### Agent
@@ -5261,6 +11078,75 @@ $agent = $client->Agent()->create([
     "name" => null, // string
 ]);
 ```
+
+
+### AgentApp
+
+Create an instance: `$agent_app = $client->AgentApp();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `author` | `array` |  |
+| `can_message` | `bool` | The viewer may send input to the author agent |
+| `deployments_count` | `int` | Increases with every deploy of the site |
+| `description` | `string` |  |
+| `hidden_install_count` | `int` | Installs by agents the viewer cannot open |
+| `id` | `string` |  |
+| `install_count` | `int` |  |
+| `install_targets` | `array` | Active agents the viewer owns or manages, which they can install apps on |
+| `installed_by` | `array` |  |
+| `installed_target_ids` | `array` | Install targets of the viewer that have this app installed |
+| `items` | `array` |  |
+| `mcp_url` | `mixed` |  |
+| `next_cursor` | `mixed` | Pass as cursor to load older apps |
+| `owner` | `array` | The person who controls the author agent |
+| `thread` | `mixed` | The thread that published the app, when the viewer can open the author agent |
+| `title` | `string` |  |
+| `url` | `string` |  |
+| `visibility` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the AgentApp record (throws on error).
+$agent_app = $client->AgentApp()->load(["id" => "agent_app_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of AgentApp entities, one per record (throws on error).
+$agent_apps = $client->AgentApp()->list(["organization_id" => "example"]);
+```
+
+
+### AgentAppInstall
+
+Create an instance: `$agent_app_install = $client->AgentAppInstall();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `installed` | `bool` |  |
 
 
 ### AgentAttachment
@@ -5405,6 +11291,7 @@ Create an instance: `$agent_connection = $client->AgentConnection();`
 | `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
 
@@ -5412,51 +11299,291 @@ Create an instance: `$agent_connection = $client->AgentConnection();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `agent_card_url` | `string` |  |
-| `auth_scheme` | `string` |  |
-| `can_configure` | `bool` |  |
-| `can_disconnect` | `bool` |  |
-| `can_setup` | `bool` |  |
+| `actions` | `array` |  |
+| `activity` | `array` |  |
+| `admin_disabled_at` | `mixed` |  |
+| `agent_tools` | `bool` |  |
+| `authentication` | `string` |  |
+| `authorized_at` | `mixed` |  |
+| `can_create_account` | `bool` | Whether another account can be created directly from this provider. |
+| `capabilities` | `array` |  |
+| `catalog_section` | `string` | Server-owned grouping in the agent integration catalog. |
+| `category` | `string` | Short product label, such as CRM or Email. |
+| `certification` | `string` |  |
+| `checked_at` | `mixed` |  |
 | `connection` | `array` |  |
-| `credential` | `mixed` | Write-only outbound key. |
-| `error_code` | `mixed` |  |
-| `expected_generation` | `int` |  |
+| `consent` | `mixed` |  |
+| `created_at` | `string` |  |
+| `creation_key` | `string` | Reuse the same key to recover the account after an interrupted response. |
+| `custodian_id` | `mixed` |  |
+| `description` | `string` | One-line catalog description of the app. |
+| `disabled_reason` | `mixed` |  |
+| `failure_code` | `mixed` |  |
 | `generation` | `int` |  |
+| `grants` | `array` |  |
+| `grants_pagination` | `array` |  |
 | `id` | `string` |  |
+| `limits` | `array` |  |
 | `name` | `string` |  |
-| `remote_agent` | `mixed` |  |
-| `requester_id` | `string` |  |
-| `retired_at` | `mixed` |  |
+| `organization_id` | `string` |  |
+| `owner_name` | `string` |  |
+| `ownership_kind` | `string` |  |
+| `pagination` | `array` |  |
+| `policy_digest` | `string` |  |
+| `provider` | `array` |  |
+| `provider_disabled_reason` | `mixed` |  |
+| `provider_identity` | `array` |  |
 | `revoked_at` | `mixed` |  |
-| `scope_key` | `string` |  |
-| `source_operation_id` | `mixed` |  |
-| `state` | `string` |  |
+| `schema_version` | `int` |  |
+| `status` | `string` |  |
+| `toolkit` | `string` |  |
+| `triggers` | `array` |  |
+| `updated_at` | `string` |  |
+| `user_id` | `string` |  |
+| `version` | `string` |  |
 
 #### Example: Load
 
 ```php
 // load() returns the ENTITY — call data_get() for the AgentConnection record (throws on error).
-$agent_connection = $client->AgentConnection()->load(["id" => "agent_connection_id", "agent_id" => "agent_id", "organization_id" => "organization_id"]);
+$agent_connection = $client->AgentConnection()->load(["id" => "agent_connection_id", "organization_id" => "organization_id"]);
 ```
 
 #### Example: List
 
 ```php
 // list() returns an array of AgentConnection entities, one per record (throws on error).
-$agent_connections = $client->AgentConnection()->list(["agent_id" => "example", "organization_id" => "example"]);
+$agent_connections = $client->AgentConnection()->list(["organization_id" => "example"]);
 ```
 
 #### Example: Create
 
 ```php
 $agent_connection = $client->AgentConnection()->create([
-    "agent_id" => null, // string
     "organization_id" => null, // string
-    "agent_card_url" => null, // string
-    "auth_scheme" => null, // string
     "name" => null, // string
+    "toolkit" => null, // string
 ]);
 ```
+
+
+### AgentConnectionDelegation
+
+Create an instance: `$agent_connection_delegation = $client->AgentConnectionDelegation();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `authorized_by_id` | `string` |  |
+| `automation_connection_grant_id` | `string` |  |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `member_name` | `string` |  |
+| `revoked_at` | `mixed` |  |
+| `roles` | `array` |  |
+| `usable` | `bool` |  |
+| `user_id` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of AgentConnectionDelegation entities, one per record (throws on error).
+$agent_connection_delegations = $client->AgentConnectionDelegation()->list(["agent_connection_id" => "example", "organization_id" => "example"]);
+```
+
+
+### AgentConnectionGrant
+
+Create an instance: `$agent_connection_grant = $client->AgentConnectionGrant();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `actions` | `array` |  |
+| `agent_connection_id` | `string` |  |
+| `automation_id` | `string` |  |
+| `connection_generation` | `int` |  |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `organization_id` | `string` |  |
+| `revision` | `int` |  |
+| `revoked_at` | `mixed` |  |
+| `status` | `string` |  |
+| `usable` | `bool` |  |
+| `user_id` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of AgentConnectionGrant entities, one per record (throws on error).
+$agent_connection_grants = $client->AgentConnectionGrant()->list(["agent_connection_id" => "example", "organization_id" => "example"]);
+```
+
+
+### AgentConnectionResource
+
+Create an instance: `$agent_connection_resource = $client->AgentConnectionResource();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cursor` | `mixed` |  |
+| `next_cursor` | `mixed` |  |
+| `query` | `string` |  |
+| `resources` | `array` |  |
+
+#### Example: Create
+
+```php
+$agent_connection_resource = $client->AgentConnectionResource()->create([
+    "agent_connection_id" => null, // string
+    "organization_id" => null, // string
+]);
+```
+
+
+### AgentConnectionSafetyControl
+
+Create an instance: `$agent_connection_safety_control = $client->AgentConnectionSafetyControl();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `admin_disabled_at` | `mixed` |  |
+| `authorized_at` | `mixed` |  |
+| `checked_at` | `mixed` |  |
+| `created_at` | `string` |  |
+| `custodian_id` | `mixed` |  |
+| `failure_code` | `mixed` |  |
+| `generation` | `int` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `owner_name` | `string` |  |
+| `ownership_kind` | `string` |  |
+| `provider_disabled_reason` | `mixed` |  |
+| `provider_identity` | `array` |  |
+| `revoked_at` | `mixed` |  |
+| `status` | `string` |  |
+| `toolkit` | `string` |  |
+| `updated_at` | `string` |  |
+| `user_id` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of AgentConnectionSafetyControl entities, one per record (throws on error).
+$agent_connection_safety_controls = $client->AgentConnectionSafetyControl()->list(["organization_id" => "example"]);
+```
+
+
+### AgentConnectionTriggerSubscription
+
+Create an instance: `$agent_connection_trigger_subscription = $client->AgentConnectionTriggerSubscription();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_connection_id` | `string` |  |
+| `configuration` | `array` |  |
+| `created_at` | `string` |  |
+| `defaults` | `array` |  |
+| `delivery` | `string` |  |
+| `enabled` | `bool` |  |
+| `failure_code` | `mixed` |  |
+| `failure_request_id` | `mixed` |  |
+| `id` | `string` |  |
+| `latency` | `string` |  |
+| `name` | `string` |  |
+| `reconcile_at` | `string` |  |
+| `reconciliation_uncertain` | `bool` |  |
+| `remote_enabled` | `mixed` |  |
+| `replacement_id` | `mixed` |  |
+| `retired_at` | `mixed` |  |
+| `retirement_completed_at` | `mixed` |  |
+| `schema` | `array` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `toolkit` | `string` |  |
+| `toolkit_version` | `string` |  |
+| `trigger_slug` | `string` |  |
+| `updated_at` | `string` |  |
+| `version` | `string` |  |
+| `waiting_for_retirement` | `bool` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of AgentConnectionTriggerSubscription entities, one per record (throws on error).
+$agent_connection_trigger_subscriptions = $client->AgentConnectionTriggerSubscription()->list(["agent_connection_id" => "example", "organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$agent_connection_trigger_subscription = $client->AgentConnectionTriggerSubscription()->create([
+    "agent_connection_id" => null, // string
+    "organization_id" => null, // string
+    "configuration" => null, // array
+    "trigger_slug" => null, // string
+]);
+```
+
+
+### AgentContextCheckpoint
+
+Create an instance: `$agent_context_checkpoint = $client->AgentContextCheckpoint();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### AgentControlFlow
@@ -5552,6 +11679,24 @@ $agent_email = $client->AgentEmail()->load(["id" => "agent_email_id", "agent_id"
 ```
 
 
+### AgentEvent
+
+Create an instance: `$agent_event = $client->AgentEvent();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```php
+// list() returns an array of AgentEvent entities, one per record (throws on error).
+$agent_events = $client->AgentEvent()->list(["agent_id" => "example", "organization_id" => "example"]);
+```
+
+
 ### AgentFile
 
 Create an instance: `$agent_file = $client->AgentFile();`
@@ -5628,52 +11773,128 @@ Create an instance: `$agent_integration = $client->AgentIntegration();`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
 | `account_counts` | `array` | Accounts the viewer can see per toolkit, across all account pages. |
-| `accounts_path` | `string` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
-| `added_toolkits` | `array` | Apps with a connected or connecting account the viewer can see. |
+| `can_cancel_sign_in` | `bool` | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `bool` |  |
+| `can_disconnect` | `bool` |  |
+| `can_enable` | `bool` |  |
 | `can_manage` | `bool` |  |
-| `can_manage_organization` | `bool` |  |
+| `can_manage_sharing` | `bool` |  |
+| `can_reconnect` | `bool` |  |
+| `can_sync` | `bool` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
 | `catalog` | `array` |  |
-| `connect_as` | `mixed` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
-| `connect_as_by_toolkit` | `array` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_by` | `mixed` | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `bool` | True when the viewer is the person whose sign-in this account is. |
 | `connected_counts` | `array` | Signed-in accounts per toolkit, across all account pages. |
-| `connection_id` | `string` |  |
 | `connections` | `array` |  |
-| `email` | `array` | A native agent's own email address. |
-| `enabled` | `bool` |  |
-| `enabled_toolkits` | `array` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `creation_key` | `string` | Stable identity for retrying this creation; retain it after an uncertain response. |
+| `creation_key_digest` | `mixed` | SHA-256 of the unfinished setup key for its original creator. |
 | `generation` | `int` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
 | `pagination` | `array` |  |
 | `pending_counts` | `array` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
-| `personal_creation_key_supported` | `bool` | The personal account creation endpoint honors a creation key. |
-| `private_agent` | `bool` | Only the agent's owner can chat with it. |
-| `shared_agent_personal_accounts_enabled` | `bool` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
-| `slack` | `array` |  |
-| `webhook_connections` | `array` |  |
-| `webhooks_available` | `bool` |  |
+| `provider_disabled_reason` | `mixed` |  |
+| `provider_identity` | `array` |  |
+| `provider_name` | `mixed` | The app's display name; null for a custom MCP server, which uses the account name. |
+| `reference` | `string` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `string` | Agent account audience, including legacy personal and paused access. |
+| `status` | `string` |  |
+| `team_sharing_enabled` | `bool` |  |
+| `team_sharing_version` | `int` |  |
+| `toolkit` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the AgentIntegration record (throws on error).
+$agent_integration = $client->AgentIntegration()->load(["id" => "agent_integration_id", "organization_id" => "organization_id"]);
+```
 
 #### Example: List
 
 ```php
 // list() returns an array of AgentIntegration entities, one per record (throws on error).
-$agent_integrations = $client->AgentIntegration()->list(["agent_id" => "example", "organization_id" => "example"]);
+$agent_integrations = $client->AgentIntegration()->list(["organization_id" => "example"]);
 ```
 
 #### Example: Create
 
 ```php
 $agent_integration = $client->AgentIntegration()->create([
-    "agent_id" => null, // string
     "organization_id" => null, // string
-    "connection_id" => null, // string
-    "enabled" => null, // bool
-    "generation" => null, // int
+    "name" => null, // string
+    "toolkit" => null, // string
 ]);
+```
+
+
+### AgentIntegrationAccount
+
+Create an instance: `$agent_integration_account = $client->AgentIntegrationAccount();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_cancel_sign_in` | `bool` | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `bool` |  |
+| `can_disconnect` | `bool` |  |
+| `can_enable` | `bool` |  |
+| `can_manage_sharing` | `bool` |  |
+| `can_reconnect` | `bool` |  |
+| `can_sync` | `bool` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
+| `connected_by` | `mixed` | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `bool` | True when the viewer is the person whose sign-in this account is. |
+| `creation_key_digest` | `mixed` | SHA-256 of the unfinished setup key for its original creator. |
+| `generation` | `int` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `provider_disabled_reason` | `mixed` |  |
+| `provider_identity` | `array` |  |
+| `reference` | `string` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `string` | Agent account audience, including legacy personal and paused access. |
+| `status` | `string` |  |
+| `team_sharing_enabled` | `bool` |  |
+| `team_sharing_version` | `int` |  |
+| `toolkit` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of AgentIntegrationAccount entities, one per record (throws on error).
+$agent_integration_accounts = $client->AgentIntegrationAccount()->list(["organization_id" => "example"]);
+```
+
+
+### AgentIntegrationCallback
+
+Create an instance: `$agent_integration_callback = $client->AgentIntegrationCallback();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the AgentIntegrationCallback record (throws on error).
+$agent_integration_callback = $client->AgentIntegrationCallback()->load(["connection_id" => "connection_id", "state" => "state"]);
 ```
 
 
@@ -6063,6 +12284,98 @@ Create an instance: `$agent_question = $client->AgentQuestion();`
 | `id` | `string` |  |
 
 
+### AgentRelayFileGrant
+
+Create an instance: `$agent_relay_file_grant = $client->AgentRelayFileGrant();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access_mode` | `string` |  |
+| `connection_generation` | `int` |  |
+| `connection_id` | `string` |  |
+| `connection_name` | `string` | Current display name of the selected account. |
+| `created_at` | `string` |  |
+| `expected_generation` | `int` |  |
+| `id` | `string` |  |
+| `key` | `string` |  |
+| `provider` | `string` |  |
+| `resource_id` | `string` |  |
+| `resource_kind` | `string` |  |
+| `revoked` | `bool` |  |
+| `revoked_at` | `mixed` |  |
+| `snapshot_supported` | `bool` | Whether this selected permission supports snapshot controls. |
+| `source_operation_id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the AgentRelayFileGrant record (throws on error).
+$agent_relay_file_grant = $client->AgentRelayFileGrant()->load(["id" => "agent_relay_file_grant_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of AgentRelayFileGrant entities, one per record (throws on error).
+$agent_relay_file_grants = $client->AgentRelayFileGrant()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$agent_relay_file_grant = $client->AgentRelayFileGrant()->create([
+    "organization_id" => null, // string
+    "access_mode" => null, // string
+    "connection_id" => null, // string
+    "expected_generation" => null, // int
+    "key" => null, // string
+    "resource_id" => null, // string
+    "resource_kind" => null, // string
+    "source_operation_id" => null, // string
+]);
+```
+
+
+### AgentRelayFileGrantAccount
+
+Create an instance: `$agent_relay_file_grant_account = $client->AgentRelayFileGrantAccount();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access_modes` | `array` | Supported file access modes. |
+| `generation` | `int` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `provider` | `string` |  |
+| `resource_kind` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of AgentRelayFileGrantAccount entities, one per record (throws on error).
+$agent_relay_file_grant_accounts = $client->AgentRelayFileGrantAccount()->list(["organization_id" => "example", "source_operation_id" => "example"]);
+```
+
+
 ### AgentRepository
 
 Create an instance: `$agent_repository = $client->AgentRepository();`
@@ -6119,6 +12432,18 @@ Create an instance: `$agent_resource = $client->AgentResource();`
 // list() returns an array of AgentResource entities, one per record (throws on error).
 $agent_resources = $client->AgentResource()->list(["agent_id" => "example", "organization_id" => "example"]);
 ```
+
+
+### AgentRoder
+
+Create an instance: `$agent_roder = $client->AgentRoder();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
 
 
 ### AgentRoutine
@@ -6216,6 +12541,94 @@ Create an instance: `$agent_runtime = $client->AgentRuntime();`
 | `volume` | `mixed` |  |
 
 
+### AgentSession
+
+Create an instance: `$agent_session = $client->AgentSession();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### AgentSessionCheckpoint
+
+Create an instance: `$agent_session_checkpoint = $client->AgentSessionCheckpoint();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the AgentSessionCheckpoint record (throws on error).
+$agent_session_checkpoint = $client->AgentSessionCheckpoint()->load(["id" => "agent_session_checkpoint_id", "agent_session_id" => "agent_session_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of AgentSessionCheckpoint entities, one per record (throws on error).
+$agent_session_checkpoints = $client->AgentSessionCheckpoint()->list(["agent_session_id" => "example", "organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$agent_session_checkpoint = $client->AgentSessionCheckpoint()->create([
+    "agent_session_id" => null, // string
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+]);
+```
+
+
+### AgentSessionRoderHandoff
+
+Create an instance: `$agent_session_roder_handoff = $client->AgentSessionRoderHandoff();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `checkpoint_id` | `string` | Public id of the checkpoint to hand off. |
+| `purpose` | `string` | Handoff intent; defaults to `continue`. |
+
+#### Example: Create
+
+```php
+$agent_session_roder_handoff = $client->AgentSessionRoderHandoff()->create([
+    "agent_session_id" => null, // string
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+]);
+```
+
+
 ### AgentSetting
 
 Create an instance: `$agent_setting = $client->AgentSetting();`
@@ -6263,26 +12676,39 @@ Create an instance: `$agent_site = $client->AgentSite();`
 
 | Method | Description |
 | --- | --- |
+| `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `deployed_at` | `string` |  |
-| `deployments_count` | `int` |  |
-| `hostname` | `string` |  |
-| `https` | `string` | Whether the organization's certificate serves this site over HTTPS |
+| `author` | `array` |  |
+| `can_message` | `bool` | The viewer may send input to the author agent |
+| `deployments_count` | `int` | Increases with every deploy of the site |
+| `description` | `mixed` | The team app description, when the site is a team app |
+| `icon_url` | `mixed` | Path of the site's generated icon, versioned by the picture; null until one is generated |
 | `id` | `string` |  |
-| `name` | `string` |  |
+| `name` | `string` | The site's DNS label |
+| `owner` | `array` | The person who controls the author agent |
+| `thread` | `mixed` | The thread that published the site as a team app, when the viewer can open the author agent |
+| `title` | `string` | The team app title, or the site name read as words |
 | `url` | `string` |  |
 | `visibility` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the AgentSite record (throws on error).
+$agent_site = $client->AgentSite()->load(["id" => "agent_site_id", "organization_id" => "organization_id"]);
+```
 
 #### Example: List
 
 ```php
 // list() returns an array of AgentSite entities, one per record (throws on error).
-$agent_sites = $client->AgentSite()->list(["agent_id" => "example", "organization_id" => "example"]);
+$agent_sites = $client->AgentSite()->list(["organization_id" => "example"]);
 ```
 
 
@@ -6296,37 +12722,50 @@ Create an instance: `$agent_skill = $client->AgentSkill();`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `available` | `bool` |  |
-| `can_configure` | `bool` |  |
-| `can_manage` | `bool` |  |
-| `configuration_state` | `string` | The requested managed skill selection is awaiting runtime qualification. |
-| `description` | `string` |  |
-| `enabled` | `bool` |  |
-| `name` | `string` |  |
+| `agents` | `array` | Active V2 agents the viewer can see whose owner is still a member |
+| `audience` | `array` |  |
+| `can_manage_library` | `bool` |  |
+| `content` | `string` | The skill's SKILL.md |
+| `files` | `array` |  |
+| `id` | `string` |  |
+| `marketplace` | `string` |  |
+| `pending` | `bool` | Some agent is still applying a change; check again shortly |
+| `plugin` | `string` | The marketplace entry id |
+| `revision` | `string` | The commit SHA returned by preview |
+| `skill` | `array` |  |
 | `skills` | `array` |  |
-| `version` | `string` |  |
+| `source` | `string` | owner/repo, a GitHub or skills.sh link, or npx skills add owner/repo [--skill NAME ...] |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the AgentSkill record (throws on error).
+$agent_skill = $client->AgentSkill()->load(["id" => "agent_skill_id", "organization_id" => "organization_id"]);
+```
 
 #### Example: List
 
 ```php
 // list() returns an array of AgentSkill entities, one per record (throws on error).
-$agent_skills = $client->AgentSkill()->list(["agent_id" => "example", "organization_id" => "example"]);
+$agent_skills = $client->AgentSkill()->list(["organization_id" => "example"]);
 ```
 
 #### Example: Create
 
 ```php
 $agent_skill = $client->AgentSkill()->create([
-    "agent_id" => null, // string
     "organization_id" => null, // string
-    "enabled" => null, // bool
-    "name" => null, // string
-    "version" => null, // string
+    "audience" => null, // array
+    "revision" => null, // string
+    "skills" => null, // array
 ]);
 ```
 
@@ -6405,6 +12844,96 @@ $agent_subscription = $client->AgentSubscription()->create([
 ```
 
 
+### AgentSwarm
+
+Create an instance: `$agent_swarm = $client->AgentSwarm();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `base_bookmark` | `mixed` | An existing bookmark to start from and land on; the plain form of `target.kind = bookmark`. |
+| `base_ref` | `mixed` |  |
+| `base_revision` | `mixed` | 64-hex commit id; skips the head lookup |
+| `budget` | `array` |  |
+| `canceled_at` | `mixed` |  |
+| `canceled_count` | `int` |  |
+| `concurrency_key` | `mixed` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `creator_user_id` | `mixed` |  |
+| `deadline_at` | `mixed` |  |
+| `display_id` | `int` |  |
+| `done_count` | `int` |  |
+| `environment` | `array` |  |
+| `failed_count` | `int` |  |
+| `finished_at` | `mixed` |  |
+| `finished_at_label` | `mixed` |  |
+| `github` | `array` |  |
+| `goal` | `mixed` |  |
+| `id` | `string` |  |
+| `model` | `mixed` |  |
+| `model_provider` | `mixed` |  |
+| `number` | `int` |  |
+| `organization_id` | `string` |  |
+| `organization_slug` | `mixed` |  |
+| `outcome` | `mixed` |  |
+| `phase` | `mixed` |  |
+| `policy` | `array` | Every key is optional and defaults to AgentSwarm::POLICY_DEFAULTS. |
+| `queued_at` | `mixed` |  |
+| `queued_at_label` | `mixed` |  |
+| `repository` | `string` | Repository slug inside the organization |
+| `repository_id` | `mixed` |  |
+| `repository_slug` | `mixed` |  |
+| `reserved` | `array` |  |
+| `scheduler_generation` | `int` |  |
+| `skipped_count` | `int` |  |
+| `slug` | `string` |  |
+| `started_at` | `mixed` |  |
+| `started_at_label` | `mixed` |  |
+| `status` | `string` |  |
+| `summary` | `array` |  |
+| `target` | `array` | Where the swarm lands. |
+| `task_count` | `int` |  |
+| `task_template_json` | `mixed` |  |
+| `tasks` | `array` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+| `usage` | `array` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the AgentSwarm record (throws on error).
+$agent_swarm = $client->AgentSwarm()->load(["id" => "agent_swarm_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of AgentSwarm entities, one per record (throws on error).
+$agent_swarms = $client->AgentSwarm()->list(["org" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$agent_swarm = $client->AgentSwarm()->create([
+    "organization_slug" => null, // mixed
+    "target" => null, // array
+]);
+```
+
+
 ### AgentTeammate
 
 Create an instance: `$agent_teammate = $client->AgentTeammate();`
@@ -6454,49 +12983,32 @@ Create an instance: `$agent_thread = $client->AgentThread();`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `archived_count` | `mixed` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` | `bool` |  |
-| `execution` | `mixed` |  |
-| `first_input` | `mixed` |  |
-| `first_input_key` | `string` | Idempotency-Key that finds the first message through input_delivery. |
-| `first_input_requester_membership_id` | `string` | Membership the first message was sent as, for input_delivery. |
 | `id` | `string` |  |
-| `inherit_context` | `bool` | Include the source conversation through its last completed reply. |
-| `local_activities` | `array` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | `int` | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` | `mixed` |  |
-| `local_scope_key` | `mixed` |  |
-| `local_status_pending` | `bool` | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` | `array` |  |
-| `main_thread_id` | `string` |  |
-| `message` | `string` | The thread's first message. |
-| `next_cursor` | `mixed` |  |
-| `parent_conversation_id` | `string` | Optional source conversation belonging to this agent. |
-| `requester_membership_id` | `string` |  |
-| `selected_thread` | `mixed` |  |
-| `thread` | `array` |  |
-| `threads` | `array` |  |
-| `title` | `string` |  |
-| `total_archived_count` | `mixed` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the AgentThread record (throws on error).
+$agent_thread = $client->AgentThread()->load(["id" => "agent_thread_id"]);
+```
 
 #### Example: List
 
 ```php
 // list() returns an array of AgentThread entities, one per record (throws on error).
-$agent_threads = $client->AgentThread()->list(["agent_id" => "example", "organization_id" => "example"]);
+$agent_threads = $client->AgentThread()->list();
 ```
 
 #### Example: Create
 
 ```php
 $agent_thread = $client->AgentThread()->create([
-    "agent_id" => null, // string
-    "organization_id" => null, // string
 ]);
 ```
 
@@ -6524,6 +13036,37 @@ Create an instance: `$agent_tool = $client->AgentTool();`
 ```php
 // list() returns an array of AgentTool entities, one per record (throws on error).
 $agent_tools = $client->AgentTool()->list(["agent_id" => "example", "organization_id" => "example"]);
+```
+
+
+### AgentUsage
+
+Create an instance: `$agent_usage = $client->AgentUsage();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `days` | `array` | One cell per (day, model), ascending by day then model. |
+| `ended_at` | `string` |  |
+| `pricing_version` | `string` | The price table in effect now; rows carry the version they were priced at. |
+| `source` | `string` | Which store served the rows. |
+| `started_at` | `string` |  |
+| `user_days` | `array` | One cell per (day, person), ascending by day. |
+| `users` | `array` | One row per (person, model), descending by tokens. |
+| `window` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the AgentUsage record (throws on error).
+$agent_usage = $client->AgentUsage()->load(["organization_id" => "organization_id"]);
 ```
 
 
@@ -6573,6 +13116,33 @@ Create an instance: `$agent_wait = $client->AgentWait();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+
+### AgentWebPreview
+
+Create an instance: `$agent_web_preview = $client->AgentWebPreview();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `description` | `mixed` |  |
+| `icon_url` | `mixed` |  |
+| `image_url` | `mixed` |  |
+| `title` | `mixed` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of AgentWebPreview entities, one per record (throws on error).
+$agent_web_previews = $client->AgentWebPreview()->list(["token" => "example"]);
+```
 
 
 ### AgentWebhook
@@ -6918,6 +13488,97 @@ $agent_write_permissions = $client->AgentWritePermission()->list(["agent_id" => 
 ```
 
 
+### Agreement
+
+Create an instance: `$agreement = $client->Agreement();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `body` | `mixed` | Markdown text, or null until staff grant the organization access. |
+| `effective_on_label` | `string` |  |
+| `key` | `string` |  |
+| `summary` | `string` |  |
+| `title` | `string` |  |
+| `version` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of Agreement entities, one per record (throws on error).
+$agreements = $client->Agreement()->list(["organization_id" => "example"]);
+```
+
+
+### AgreementAccessRequest
+
+Create an instance: `$agreement_access_request = $client->AgreementAccessRequest();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$agreement_access_request = $client->AgreementAccessRequest()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### AlertRuleEvent
+
+Create an instance: `$alert_rule_event = $client->AlertRuleEvent();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the AlertRuleEvent record (throws on error).
+$alert_rule_event = $client->AlertRuleEvent()->load(["id" => "alert_rule_event_id", "alert_rule_id" => "alert_rule_id", "space_id" => "space_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of AlertRuleEvent entities, one per record (throws on error).
+$alert_rule_events = $client->AlertRuleEvent()->list(["alert_rule_id" => "example", "space_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$alert_rule_event = $client->AlertRuleEvent()->create([
+    "alert_rule_id" => null, // string
+    "space_id" => null, // string
+]);
+```
+
+
 ### AllocationLog
 
 Create an instance: `$allocation_log = $client->AllocationLog();`
@@ -7011,6 +13672,35 @@ $app = $client->App()->create([
     "root_path" => null, // string
     "slug" => null, // string
 ]);
+```
+
+
+### AppAccess
+
+Create an instance: `$app_access = $client->AppAccess();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AppAccessJwk
+
+Create an instance: `$app_access_jwk = $client->AppAccessJwk();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```php
+// list() returns an array of AppAccessJwk entities, one per record (throws on error).
+$app_access_jwks = $client->AppAccessJwk()->list();
 ```
 
 
@@ -8050,6 +14740,394 @@ $app_storage_resource = $client->AppStorageResource()->create([
 ```
 
 
+### Artefact
+
+Create an instance: `$artefact = $client->Artefact();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `automation_invocation_id` | `mixed` |  |
+| `byte_size` | `int` |  |
+| `checksum_sha256` | `string` |  |
+| `content_type` | `string` |  |
+| `created_at` | `mixed` |  |
+| `created_by_user_id` | `mixed` |  |
+| `description` | `mixed` |  |
+| `document_key` | `string` | Stable document identity shared by all revisions. |
+| `entrypoint` | `string` |  |
+| `expires_at` | `mixed` |  |
+| `filename` | `string` |  |
+| `files` | `array` |  |
+| `harness` | `mixed` |  |
+| `harness_version` | `mixed` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `model` | `mixed` |  |
+| `organization_id` | `string` |  |
+| `published_at` | `mixed` |  |
+| `repository_id` | `mixed` |  |
+| `slug` | `string` |  |
+| `source` | `string` |  |
+| `status` | `string` |  |
+| `title` | `string` |  |
+| `vcs_agent_checkpoint_id` | `mixed` |  |
+| `vcs_agent_session_id` | `mixed` |  |
+| `version` | `int` |  |
+| `view_url` | `string` |  |
+| `web_url` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the Artefact record (throws on error).
+$artefact = $client->Artefact()->load(["id" => "artefact_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of Artefact entities, one per record (throws on error).
+$artefacts = $client->Artefact()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$artefact = $client->Artefact()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### ArtefactCommentThread
+
+Create an instance: `$artefact_comment_thread = $client->ArtefactCommentThread();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `anchor` | `string` | The `#anchor` written into the Markdown. |
+| `body` | `string` |  |
+| `comments` | `array` |  |
+| `id` | `string` | The anchor key. |
+| `quote` | `string` |  |
+| `resolved` | `bool` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of ArtefactCommentThread entities, one per record (throws on error).
+$artefact_comment_threads = $client->ArtefactCommentThread()->list(["artefact_id" => "example", "organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$artefact_comment_thread = $client->ArtefactCommentThread()->create([
+    "artefact_id" => null, // string
+    "organization_id" => null, // string
+    "anchor" => null, // string
+    "body" => null, // string
+]);
+```
+
+
+### ArtefactRevision
+
+Create an instance: `$artefact_revision = $client->ArtefactRevision();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `base_version` | `int` | The newest version the editor started from. |
+| `content` | `string` | Markdown, including CriticMarkup suggestions and comment anchors. |
+
+#### Example: Create
+
+```php
+$artefact_revision = $client->ArtefactRevision()->create([
+    "artefact_id" => null, // string
+    "organization_id" => null, // string
+    "base_version" => null, // int
+    "content" => null, // string
+]);
+```
+
+
+### ArtefactViewToken
+
+Create an instance: `$artefact_view_token = $client->ArtefactViewToken();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `expires_in` | `int` |  |
+| `file` | `string` | Exact manifest path. |
+| `organization_slug` | `string` | If provided, must match the organization addressed by the route. |
+| `version` | `int` |  |
+| `viewer_url` | `string` |  |
+
+#### Example: Create
+
+```php
+$artefact_view_token = $client->ArtefactViewToken()->create([
+    "artefact_id" => null, // string
+    "organization_id" => null, // string
+]);
+```
+
+
+### Artifact
+
+Create an instance: `$artifact = $client->Artifact();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the Artifact record (throws on error).
+$artifact = $client->Artifact()->load(["id" => "artifact_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of Artifact entities, one per record (throws on error).
+$artifacts = $client->Artifact()->list();
+```
+
+#### Example: Create
+
+```php
+$artifact = $client->Artifact()->create([
+]);
+```
+
+
+### ArtifactCacheNamespace
+
+Create an instance: `$artifact_cache_namespace = $client->ArtifactCacheNamespace();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ArtifactCacheNamespace record (throws on error).
+$artifact_cache_namespace = $client->ArtifactCacheNamespace()->load(["id" => "artifact_cache_namespace_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of ArtifactCacheNamespace entities, one per record (throws on error).
+$artifact_cache_namespaces = $client->ArtifactCacheNamespace()->list();
+```
+
+#### Example: Create
+
+```php
+$artifact_cache_namespace = $client->ArtifactCacheNamespace()->create([
+]);
+```
+
+
+### ArtifactImageRepository
+
+Create an instance: `$artifact_image_repository = $client->ArtifactImageRepository();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ArtifactImageRepository record (throws on error).
+$artifact_image_repository = $client->ArtifactImageRepository()->load(["id" => "artifact_image_repository_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of ArtifactImageRepository entities, one per record (throws on error).
+$artifact_image_repositorys = $client->ArtifactImageRepository()->list();
+```
+
+#### Example: Create
+
+```php
+$artifact_image_repository = $client->ArtifactImageRepository()->create([
+]);
+```
+
+
+### ArtifactPackageMirror
+
+Create an instance: `$artifact_package_mirror = $client->ArtifactPackageMirror();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ArtifactPackageMirror record (throws on error).
+$artifact_package_mirror = $client->ArtifactPackageMirror()->load(["id" => "artifact_package_mirror_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of ArtifactPackageMirror entities, one per record (throws on error).
+$artifact_package_mirrors = $client->ArtifactPackageMirror()->list();
+```
+
+#### Example: Create
+
+```php
+$artifact_package_mirror = $client->ArtifactPackageMirror()->create([
+]);
+```
+
+
+### ArtifactRetentionPolicy
+
+Create an instance: `$artifact_retention_policy = $client->ArtifactRetentionPolicy();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ArtifactRetentionPolicy record (throws on error).
+$artifact_retention_policy = $client->ArtifactRetentionPolicy()->load(["id" => "artifact_retention_policy_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of ArtifactRetentionPolicy entities, one per record (throws on error).
+$artifact_retention_policys = $client->ArtifactRetentionPolicy()->list();
+```
+
+#### Example: Create
+
+```php
+$artifact_retention_policy = $client->ArtifactRetentionPolicy()->create([
+]);
+```
+
+
 ### AttachmentPart
 
 Create an instance: `$attachment_part = $client->AttachmentPart();`
@@ -8065,6 +15143,158 @@ Create an instance: `$attachment_part = $client->AttachmentPart();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+
+### AuditEvent
+
+Create an instance: `$audit_event = $client->AuditEvent();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `actor_kind` | `string` |  |
+| `actor_user_id` | `mixed` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `id` | `string` |  |
+| `observability_space_id` | `mixed` |  |
+| `organization_id` | `string` |  |
+| `payload` | `mixed` |  |
+| `request_id` | `mixed` |  |
+| `severity` | `string` |  |
+| `subject_id` | `string` |  |
+| `subject_kind` | `string` |  |
+| `subject_name` | `mixed` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of AuditEvent entities, one per record (throws on error).
+$audit_events = $client->AuditEvent()->list(["organization_id" => "example"]);
+```
+
+
+### Auth
+
+Create an instance: `$auth = $client->Auth();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+
+### AuthCli
+
+Create an instance: `$auth_cli = $client->AuthCli();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### AuthGithub
+
+Create an instance: `$auth_github = $client->AuthGithub();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AuthGoogle
+
+Create an instance: `$auth_google = $client->AuthGoogle();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AuthOpenai
+
+Create an instance: `$auth_openai = $client->AuthOpenai();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AuthPasswordReset
+
+Create an instance: `$auth_password_reset = $client->AuthPasswordReset();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email` | `string` |  |
+| `message` | `string` |  |
+| `password` | `string` |  |
+| `token` | `string` |  |
+
+#### Example: Create
+
+```php
+$auth_password_reset = $client->AuthPasswordReset()->create([
+    "email" => null, // string
+]);
+```
+
+
+### AuthRegistrationOption
+
+Create an instance: `$auth_registration_option = $client->AuthRegistrationOption();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email_password_signup_enabled` | `bool` |  |
+| `openai_sign_in_enabled` | `bool` | Whether ChatGPT identity sign-in is configured and enabled for rollout. |
+| `turnstile_site_key` | `mixed` |  |
+| `waitlist_enabled` | `bool` | New public signups require waitlist approval when enabled. |
+
+#### Example: List
+
+```php
+// list() returns an array of AuthRegistrationOption entities, one per record (throws on error).
+$auth_registration_options = $client->AuthRegistrationOption()->list();
+```
 
 
 ### AutomationEvent
@@ -8163,6 +15393,543 @@ $automation_run = $client->AutomationRun()->create([
     "version_id" => null, // string
 ]);
 ```
+
+
+### BackendRunnerPool
+
+Create an instance: `$backend_runner_pool = $client->BackendRunnerPool();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of BackendRunnerPool entities, one per record (throws on error).
+$backend_runner_pools = $client->BackendRunnerPool()->list(["backend_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$backend_runner_pool = $client->BackendRunnerPool()->create([
+    "backend_id" => null, // string
+]);
+```
+
+
+### Bazel
+
+Create an instance: `$bazel = $client->Bazel();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### BazelActionResult
+
+Create an instance: `$bazel_action_result = $client->BazelActionResult();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the BazelActionResult record (throws on error).
+$bazel_action_result = $client->BazelActionResult()->load(["id" => "bazel_action_result_id", "action_result_id" => "action_result_id"]);
+```
+
+
+### BazelBackend
+
+Create an instance: `$bazel_backend = $client->BazelBackend();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the BazelBackend record (throws on error).
+$bazel_backend = $client->BazelBackend()->load(["id" => "bazel_backend_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of BazelBackend entities, one per record (throws on error).
+$bazel_backends = $client->BazelBackend()->list();
+```
+
+#### Example: Create
+
+```php
+$bazel_backend = $client->BazelBackend()->create([
+]);
+```
+
+
+### BazelBlob
+
+Create an instance: `$bazel_blob = $client->BazelBlob();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the BazelBlob record (throws on error).
+$bazel_blob = $client->BazelBlob()->load(["id" => "bazel_blob_id", "blob_id" => "blob_id", "hash" => "hash"]);
+```
+
+
+### BazelExecution
+
+Create an instance: `$bazel_execution = $client->BazelExecution();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the BazelExecution record (throws on error).
+$bazel_execution = $client->BazelExecution()->load(["id" => "bazel_execution_id"]);
+```
+
+#### Example: Create
+
+```php
+$bazel_execution = $client->BazelExecution()->create([
+]);
+```
+
+
+### BazelFindMissingBlob
+
+Create an instance: `$bazel_find_missing_blob = $client->BazelFindMissingBlob();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$bazel_find_missing_blob = $client->BazelFindMissingBlob()->create([
+]);
+```
+
+
+### Billing
+
+Create an instance: `$billing = $client->Billing();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `array` |  |
+| `breakdown` | `mixed` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `mixed` |  |
+| `can_manage_contact` | `bool` |  |
+| `can_manage_extra_spend` | `bool` |  |
+| `can_manage_local_subscription` | `bool` |  |
+| `can_manage_payment_method` | `bool` |  |
+| `can_set_up_billing` | `bool` |  |
+| `customer` | `mixed` |  |
+| `deployment_usage_visible` | `bool` |  |
+| `entitlements` | `array` |  |
+| `extra_spend_enabled` | `bool` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` |  |
+| `package` | `mixed` |  |
+| `prepaid` | `mixed` |  |
+| `preview` | `mixed` | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `array` |  |
+| `stripe` | `array` |  |
+| `subscription` | `mixed` |  |
+| `token_account` | `array` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the Billing record (throws on error).
+$billing = $client->Billing()->load(["organization_id" => "organization_id"]);
+```
+
+
+### BillingAddon
+
+Create an instance: `$billing_addon = $client->BillingAddon();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `array` |  |
+| `breakdown` | `mixed` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `mixed` |  |
+| `can_manage_contact` | `bool` |  |
+| `can_manage_extra_spend` | `bool` |  |
+| `can_manage_local_subscription` | `bool` |  |
+| `can_manage_payment_method` | `bool` |  |
+| `can_set_up_billing` | `bool` |  |
+| `customer` | `mixed` |  |
+| `deployment_usage_visible` | `bool` |  |
+| `entitlements` | `array` |  |
+| `extra_spend_enabled` | `bool` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Whether the `billing` feature is on for this organization. |
+| `id` | `string` |  |
+| `organization_id` | `string` |  |
+| `package` | `mixed` |  |
+| `prepaid` | `mixed` |  |
+| `preview` | `mixed` | Metronome draft invoice and credits, or null. |
+| `quantity` | `int` |  |
+| `storage_usage` | `array` |  |
+| `stripe` | `array` |  |
+| `subscription` | `mixed` |  |
+| `token_account` | `array` |  |
+
+
+### BillingCheckoutSession
+
+Create an instance: `$billing_checkout_session = $client->BillingCheckoutSession();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cancel_url` | `string` |  |
+| `coupon_code` | `string` |  |
+| `entry_point` | `string` | Where the owner chose to pay, for product analytics. |
+| `package_key` | `string` |  |
+| `package_revision` | `int` |  |
+| `success_url` | `string` |  |
+
+#### Example: Create
+
+```php
+$billing_checkout_session = $client->BillingCheckoutSession()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### BillingInvoice
+
+Create an instance: `$billing_invoice = $client->BillingInvoice();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `amount_due_cents` | `int` |  |
+| `created_at` | `string` |  |
+| `currency` | `string` |  |
+| `hosted_invoice_url` | `mixed` |  |
+| `id` | `string` |  |
+| `invoice_pdf` | `mixed` |  |
+| `metronome_invoice_id` | `mixed` | Metronome's id for the invoice it pushed |
+| `number` | `mixed` |  |
+| `period_ended_at` | `mixed` |  |
+| `period_started_at` | `mixed` |  |
+| `status` | `string` |  |
+| `total_cents` | `int` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of BillingInvoice entities, one per record (throws on error).
+$billing_invoices = $client->BillingInvoice()->list(["organization_id" => "example"]);
+```
+
+
+### BillingPackage
+
+Create an instance: `$billing_package = $client->BillingPackage();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `array` |  |
+| `base_price_cents` | `int` |  |
+| `billing_interval` | `string` |  |
+| `billing_policy` | `string` |  |
+| `ci_included_spend_cents` | `int` | Monthly USD credit in cents shared by all CI charges, including runners, cache, storage and add-ons; replaces CI unit allowances when positive. |
+| `currency` | `string` |  |
+| `key` | `string` |  |
+| `max_seats` | `mixed` |  |
+| `name` | `string` |  |
+| `pay_as_you_go_enabled` | `bool` |  |
+| `rates` | `array` |  |
+| `revision` | `int` |  |
+| `roder_daily_run_limit` | `int` |  |
+| `roder_run_concurrency_limit` | `int` |  |
+| `seat_price_cents` | `int` |  |
+| `trial_days` | `int` |  |
+| `visibility` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of BillingPackage entities, one per record (throws on error).
+$billing_packages = $client->BillingPackage()->list();
+```
+
+
+### BillingPortalSession
+
+Create an instance: `$billing_portal_session = $client->BillingPortalSession();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `return_url` | `string` |  |
+
+#### Example: Create
+
+```php
+$billing_portal_session = $client->BillingPortalSession()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### BillingPrepaidPeriod
+
+Create an instance: `$billing_prepaid_period = $client->BillingPrepaidPeriod();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_at` | `mixed` |  |
+| `created_at` | `string` |  |
+| `currency` | `string` |  |
+| `id` | `string` |  |
+| `last_error` | `mixed` |  |
+| `minutes` | `int` |  |
+| `net_amount_cents` | `int` |  |
+| `paid_at` | `mixed` |  |
+| `paid_total_cents` | `mixed` |  |
+| `payment_action_url` | `mixed` |  |
+| `period_ended_at` | `string` |  |
+| `period_started_at` | `string` |  |
+| `receipt_url` | `mixed` |  |
+| `refunded_net_cents` | `int` |  |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the BillingPrepaidPeriod record (throws on error).
+$billing_prepaid_period = $client->BillingPrepaidPeriod()->load(["id" => "billing_prepaid_period_id", "organization_id" => "organization_id"]);
+```
+
+
+### BillingPrepaidPurchase
+
+Create an instance: `$billing_prepaid_purchase = $client->BillingPrepaidPurchase();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_at` | `mixed` |  |
+| `created_at` | `string` |  |
+| `currency` | `string` |  |
+| `id` | `string` |  |
+| `last_error` | `mixed` |  |
+| `minutes` | `int` |  |
+| `net_amount_cents` | `int` |  |
+| `paid_at` | `mixed` |  |
+| `paid_total_cents` | `mixed` |  |
+| `payment_action_url` | `mixed` |  |
+| `prepaid` | `array` |  |
+| `purchase` | `array` |  |
+| `receipt_url` | `mixed` |  |
+| `refunded_net_cents` | `int` |  |
+| `request_key` | `string` |  |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the BillingPrepaidPurchase record (throws on error).
+$billing_prepaid_purchase = $client->BillingPrepaidPurchase()->load(["id" => "billing_prepaid_purchase_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of BillingPrepaidPurchase entities, one per record (throws on error).
+$billing_prepaid_purchases = $client->BillingPrepaidPurchase()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$billing_prepaid_purchase = $client->BillingPrepaidPurchase()->create([
+    "organization_id" => null, // string
+    "minutes" => null, // int
+    "request_key" => null, // string
+]);
+```
+
+
+### BillingTokenTopUp
+
+Create an instance: `$billing_token_top_up = $client->BillingTokenTopUp();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `amount_cents` | `int` |  |
+| `request_key` | `string` |  |
+
+#### Example: Create
+
+```php
+$billing_token_top_up = $client->BillingTokenTopUp()->create([
+    "organization_id" => null, // string
+    "amount_cents" => null, // int
+    "request_key" => null, // string
+]);
+```
+
+
+### BillingUsage
+
+Create an instance: `$billing_usage = $client->BillingUsage();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
 
 
 ### Binary
@@ -8305,6 +16072,41 @@ $binary_version = $client->BinaryVersion()->create([
     "project_id" => null, // string
     "download_url" => null, // string
     "idempotency_key" => null, // string
+]);
+```
+
+
+### BookmarkProtectionRefreshGithubRequiredCheck
+
+Create an instance: `$bookmark_protection_refresh_github_required_check = $client->BookmarkProtectionRefreshGithubRequiredCheck();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `exclusions` | `array` |  |
+| `fetched_at` | `mixed` |  |
+| `fetched_at_label` | `mixed` |  |
+| `github_branch` | `string` |  |
+| `github_owner` | `mixed` |  |
+| `github_repository_name` | `mixed` |  |
+| `last_error` | `mixed` |  |
+| `proven` | `bool` |  |
+| `requirements` | `array` |  |
+| `stale` | `bool` |  |
+
+#### Example: Create
+
+```php
+$bookmark_protection_refresh_github_required_check = $client->BookmarkProtectionRefreshGithubRequiredCheck()->create([
+    "organization_id" => null, // string
+    "repo_id" => null, // string
 ]);
 ```
 
@@ -8623,6 +16425,50 @@ $browser_session_task = $client->BrowserSessionTask()->create([
 ```
 
 
+### CacheNamespaceEntry
+
+Create an instance: `$cache_namespace_entry = $client->CacheNamespaceEntry();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the CacheNamespaceEntry record (throws on error).
+$cache_namespace_entry = $client->CacheNamespaceEntry()->load(["id" => "cache_namespace_entry_id", "cache_namespace_id" => "cache_namespace_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of CacheNamespaceEntry entities, one per record (throws on error).
+$cache_namespace_entrys = $client->CacheNamespaceEntry()->list(["cache_namespace_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$cache_namespace_entry = $client->CacheNamespaceEntry()->create([
+    "cache_namespace_id" => null, // string
+]);
+```
+
+
 ### CatalogSelector
 
 Create an instance: `$catalog_selector = $client->CatalogSelector();`
@@ -8821,6 +16667,1044 @@ $cdn_space_objects = $client->CdnSpaceObject()->list(["cdn_space_id" => "example
 ```
 
 
+### Change
+
+Create an instance: `$change = $client->Change();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `counts` | `array` | Counts for each state across the active non-state filters. |
+| `filters` | `array` |  |
+| `github_sync` | `array` |  |
+| `result` | `mixed` | What this page is a page of. |
+
+#### Example: List
+
+```php
+// list() returns an array of Change entities, one per record (throws on error).
+$changes = $client->Change()->list(["organization_id" => "example"]);
+```
+
+
+### ChangeAsset
+
+Create an instance: `$change_asset = $client->ChangeAsset();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `alias` | `string` |  |
+| `byte_size` | `int` |  |
+| `checksum_md5` | `string` |  |
+| `checksum_sha256` | `string` |  |
+| `content_type` | `string` |  |
+| `filename` | `string` |  |
+| `id` | `string` |  |
+
+#### Example: Create
+
+```php
+$change_asset = $client->ChangeAsset()->create([
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+    "alias" => null, // string
+    "byte_size" => null, // int
+    "checksum_md5" => null, // string
+    "checksum_sha256" => null, // string
+    "content_type" => null, // string
+    "filename" => null, // string
+]);
+```
+
+
+### ChangeComment
+
+Create an instance: `$change_comment = $client->ChangeComment();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `body` | `string` |  |
+| `capabilities` | `array` |  |
+| `change_id` | `mixed` |  |
+| `created_at` | `mixed` |  |
+| `created_at_label` | `mixed` |  |
+| `id` | `string` |  |
+| `kind` | `mixed` |  |
+| `line` | `mixed` |  |
+| `outdated` | `bool` |  |
+| `parent_comment_id` | `mixed` |  |
+| `patchset_id` | `mixed` |  |
+| `patchset_number` | `mixed` |  |
+| `path` | `mixed` |  |
+| `replies` | `array` |  |
+| `resolved` | `bool` |  |
+| `resolved_at` | `mixed` |  |
+| `resolved_at_label` | `mixed` |  |
+| `resolved_by` | `array` |  |
+| `side` | `mixed` |  |
+| `updated_at` | `mixed` |  |
+| `updated_at_label` | `mixed` |  |
+| `user` | `array` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of ChangeComment entities, one per record (throws on error).
+$change_comments = $client->ChangeComment()->list(["change_id" => "example", "organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$change_comment = $client->ChangeComment()->create([
+    "change_id" => null, // string
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+    "body" => null, // string
+]);
+```
+
+
+### ChangeFileReviewCheckpoint
+
+Create an instance: `$change_file_review_checkpoint = $client->ChangeFileReviewCheckpoint();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `patchset_id` | `string` |  |
+| `path` | `string` |  |
+| `request_id` | `string` |  |
+| `review_action` | `string` |  |
+
+#### Example: Create
+
+```php
+$change_file_review_checkpoint = $client->ChangeFileReviewCheckpoint()->create([
+    "change_id" => null, // string
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+    "patchset_id" => null, // string
+    "path" => null, // string
+    "request_id" => null, // string
+    "review_action" => null, // string
+]);
+```
+
+
+### ChangeGitBranchSubmission
+
+Create an instance: `$change_git_branch_submission = $client->ChangeGitBranchSubmission();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$change_git_branch_submission = $client->ChangeGitBranchSubmission()->create([
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+]);
+```
+
+
+### ChangeGitCommitIdentity
+
+Create an instance: `$change_git_commit_identity = $client->ChangeGitCommitIdentity();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_id` | `string` |  |
+| `change_number` | `int` |  |
+| `git_commit_id` | `string` |  |
+| `git_commit_ids` | `array` |  |
+| `id` | `string` |  |
+| `identities` | `array` |  |
+| `missing_git_commit_ids` | `array` |  |
+| `patchset_number` | `int` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ChangeGitCommitIdentity record (throws on error).
+$change_git_commit_identity = $client->ChangeGitCommitIdentity()->load(["id" => "change_git_commit_identity_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### Example: Create
+
+```php
+$change_git_commit_identity = $client->ChangeGitCommitIdentity()->create([
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+    "git_commit_ids" => null, // array
+]);
+```
+
+
+### ChangeGitPublication
+
+Create an instance: `$change_git_publication = $client->ChangeGitPublication();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `expected_target_commit_id` | `string` |  |
+| `id` | `string` |  |
+| `operation_key` | `string` |  |
+| `publication_id` | `string` |  |
+| `request` | `array` |  |
+| `request_digest` | `string` |  |
+| `revisions` | `array` |  |
+| `status` | `string` |  |
+| `transfer_refs` | `array` | Immutable receipt-owned refs returned by preparation; transfer each exact Git target before polling readiness. |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ChangeGitPublication record (throws on error).
+$change_git_publication = $client->ChangeGitPublication()->load(["id" => "change_git_publication_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### Example: Create
+
+```php
+$change_git_publication = $client->ChangeGitPublication()->create([
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+    "operation_key" => null, // string
+    "request" => null, // array
+]);
+```
+
+
+### ChangeGroupMember
+
+Create an instance: `$change_group_member = $client->ChangeGroupMember();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_id` | `string` | Change number |
+| `changes` | `array` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `number` | `int` |  |
+| `status` | `string` |  |
+| `title` | `mixed` |  |
+
+#### Example: Create
+
+```php
+$change_group_member = $client->ChangeGroupMember()->create([
+    "change_group_id" => null, // string
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+    "change_id" => null, // string
+]);
+```
+
+
+### ChangeLabel
+
+Create an instance: `$change_label = $client->ChangeLabel();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accepted` | `bool` |  |
+| `add` | `array` |  |
+| `approval` | `array` |  |
+| `assets` | `array` | Proof assets referenced from the description as `vex-asset:<id>`. |
+| `author` | `mixed` | Human user summary or organization automation identity. |
+| `capabilities` | `array` |  |
+| `change_key` | `string` |  |
+| `checks` | `array` |  |
+| `checks_status` | `string` |  |
+| `comments` | `array` |  |
+| `comments_count` | `int` |  |
+| `comments_count_label` | `string` |  |
+| `commit_message` | `mixed` |  |
+| `current_patchset` | `array` |  |
+| `description` | `mixed` |  |
+| `draft` | `bool` |  |
+| `folded_into_number` | `mixed` |  |
+| `github_projection_status` | `mixed` |  |
+| `github_pull_request` | `array` |  |
+| `github_pull_requests` | `array` |  |
+| `group` | `mixed` |  |
+| `has_description` | `bool` | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
+| `id` | `string` |  |
+| `jj_change_id` | `mixed` |  |
+| `labels` | `array` |  |
+| `landable` | `bool` |  |
+| `landed_by` | `array` |  |
+| `number` | `int` |  |
+| `orphaned` | `bool` |  |
+| `orphaned_at` | `string` |  |
+| `orphaned_at_label` | `string` |  |
+| `orphaned_reason` | `string` |  |
+| `parent_change_id` | `mixed` |  |
+| `parent_change_number` | `mixed` |  |
+| `patchset_number` | `mixed` |  |
+| `patchsets` | `array` |  |
+| `primary_status` | `mixed` |  |
+| `public_id` | `string` |  |
+| `relation_chain` | `array` |  |
+| `remove` | `array` |  |
+| `requested_changes` | `bool` |  |
+| `restack_state` | `string` |  |
+| `reviewer_candidates` | `array` | Organization members available to the reviewer picker on this page. |
+| `reviewers` | `array` |  |
+| `stable_change_id` | `string` |  |
+| `stack` | `mixed` |  |
+| `status` | `string` |  |
+| `target_branch` | `string` |  |
+| `title` | `string` |  |
+| `unresolved_comments_count_label` | `string` |  |
+| `url` | `string` |  |
+| `votes` | `array` |  |
+
+
+### ChangeLandingHold
+
+Create an instance: `$change_landing_hold = $client->ChangeLandingHold();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### ChangeLandingRequest
+
+Create an instance: `$change_landing_request = $client->ChangeLandingRequest();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_ids` | `array` |  |
+| `count` | `int` |  |
+| `defer_until_ready` | `bool` | Admit the request while approvals or checks are pending |
+| `expected_requirement_version` | `string` |  |
+| `expected_scope_version` | `string` |  |
+| `head_change_id` | `string` |  |
+| `id` | `mixed` |  |
+| `numbers` | `array` |  |
+| `override_acknowledged` | `bool` |  |
+| `override_codes` | `array` |  |
+| `position` | `int` |  |
+| `priority` | `string` |  |
+| `scope_version` | `string` |  |
+| `state` | `string` |  |
+| `version` | `int` |  |
+
+#### Example: Create
+
+```php
+$change_landing_request = $client->ChangeLandingRequest()->create([
+    "change_id" => null, // string
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+]);
+```
+
+
+### ChangeRequestChange
+
+Create an instance: `$change_request_change = $client->ChangeRequestChange();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `message` | `mixed` |  |
+
+#### Example: Create
+
+```php
+$change_request_change = $client->ChangeRequestChange()->create([
+    "change_id" => null, // string
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+]);
+```
+
+
+### ChangeReviewer
+
+Create an instance: `$change_reviewer = $client->ChangeReviewer();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `add` | `array` |  |
+| `email` | `string` |  |
+| `name` | `mixed` |  |
+| `remove` | `array` |  |
+| `removed_reviewers` | `array` |  |
+| `requested_reviewers` | `array` |  |
+| `reviewers` | `array` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of ChangeReviewer entities, one per record (throws on error).
+$change_reviewers = $client->ChangeReviewer()->list(["change_id" => "example", "organization_id" => "example", "repo_id" => "example"]);
+```
+
+
+### ChangeTranscript
+
+Create an instance: `$change_transcript = $client->ChangeTranscript();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capture_kind` | `string` |  |
+| `captured_at` | `string` |  |
+| `harness` | `array` |  |
+| `id` | `string` |  |
+| `original_resume` | `mixed` |  |
+| `patchset_commit_id` | `string` |  |
+| `patchset_number` | `int` |  |
+| `redaction_count` | `int` |  |
+| `session_id` | `mixed` |  |
+| `session_title` | `mixed` |  |
+| `status` | `string` |  |
+| `superseded` | `bool` |  |
+| `user` | `array` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of ChangeTranscript entities, one per record (throws on error).
+$change_transcripts = $client->ChangeTranscript()->list(["change_id" => "example", "organization_id" => "example", "repo_id" => "example"]);
+```
+
+
+### ChangeTranscriptSummary
+
+Create an instance: `$change_transcript_summary = $client->ChangeTranscriptSummary();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `summaries` | `array` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of ChangeTranscriptSummary entities, one per record (throws on error).
+$change_transcript_summarys = $client->ChangeTranscriptSummary()->list(["organization_id" => "example", "ids" => "example"]);
+```
+
+
+### CheckpointPrepareChunk
+
+Create an instance: `$checkpoint_prepare_chunk = $client->CheckpointPrepareChunk();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$checkpoint_prepare_chunk = $client->CheckpointPrepareChunk()->create([
+    "agent_session_id" => null, // string
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+]);
+```
+
+
+### CiNode
+
+Create an instance: `$ci_node = $client->CiNode();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `architecture` | `mixed` |  |
+| `bazel_enabled` | `bool` |  |
+| `bazel_properties_json` | `mixed` |  |
+| `ci_runner_pool_id` | `string` |  |
+| `cordoned_at` | `mixed` |  |
+| `cordoned_at_label` | `mixed` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `health_state` | `string` |  |
+| `heartbeat_age_seconds` | `mixed` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `labels_csv` | `mixed` |  |
+| `last_seen_at` | `mixed` |  |
+| `last_seen_at_label` | `mixed` |  |
+| `name` | `string` |  |
+| `network_peer_id` | `mixed` |  |
+| `node_capabilities_csv` | `mixed` |  |
+| `node_certificate_expires_at` | `mixed` |  |
+| `node_certificate_expires_at_label` | `mixed` |  |
+| `node_certificate_fingerprint_sha256` | `mixed` |  |
+| `node_certificate_serial` | `mixed` |  |
+| `offline_at` | `mixed` |  |
+| `offline_at_label` | `mixed` |  |
+| `online_at` | `mixed` |  |
+| `online_at_label` | `mixed` |  |
+| `organization_id` | `string` |  |
+| `os` | `mixed` |  |
+| `revoked_at` | `mixed` |  |
+| `revoked_at_label` | `mixed` |  |
+| `schedulable` | `bool` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+| `version` | `mixed` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the CiNode record (throws on error).
+$ci_node = $client->CiNode()->load(["id" => "ci_node_id"]);
+```
+
+
+### CiPipeline
+
+Create an instance: `$ci_pipeline = $client->CiPipeline();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `ci_runner_pool_id` | `mixed` |  |
+| `concurrency_key` | `mixed` |  |
+| `created_at` | `string` |  |
+| `default_branch` | `mixed` |  |
+| `description` | `mixed` |  |
+| `hosted_app_id` | `mixed` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `repository_id` | `mixed` |  |
+| `required_capabilities_csv` | `mixed` |  |
+| `runner_pool` | `mixed` |  |
+| `runs` | `array` |  |
+| `slug` | `string` |  |
+| `source_kind` | `string` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `trigger_on_pull_request` | `bool` |  |
+| `trigger_on_push` | `bool` |  |
+| `trigger_on_schedule` | `bool` |  |
+| `updated_at` | `string` |  |
+| `workflow_path` | `mixed` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the CiPipeline record (throws on error).
+$ci_pipeline = $client->CiPipeline()->load(["id" => "ci_pipeline_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of CiPipeline entities, one per record (throws on error).
+$ci_pipelines = $client->CiPipeline()->list();
+```
+
+#### Example: Create
+
+```php
+$ci_pipeline = $client->CiPipeline()->create([
+]);
+```
+
+
+### CiPipelineRun
+
+Create an instance: `$ci_pipeline_run = $client->CiPipelineRun();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active` | `bool` |  |
+| `canceled_at` | `mixed` |  |
+| `ci_pipeline_id` | `string` |  |
+| `ci_runner_pool_id` | `mixed` |  |
+| `commit_sha` | `mixed` |  |
+| `concurrency_key` | `mixed` |  |
+| `created_at` | `string` |  |
+| `creator_user_id` | `mixed` |  |
+| `display_id` | `int` |  |
+| `failed` | `bool` |  |
+| `finished_at` | `mixed` |  |
+| `hosted_app_id` | `mixed` |  |
+| `id` | `string` |  |
+| `jobs` | `array` |  |
+| `message` | `mixed` |  |
+| `number` | `int` |  |
+| `organization_id` | `string` |  |
+| `parameters_json` | `mixed` |  |
+| `queued_at` | `mixed` |  |
+| `ref_name` | `mixed` |  |
+| `repository_id` | `mixed` |  |
+| `required_capabilities_csv` | `mixed` |  |
+| `retry_number` | `int` |  |
+| `retryable` | `bool` |  |
+| `slug` | `string` |  |
+| `source_url` | `mixed` |  |
+| `started_at` | `mixed` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `trigger_kind` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the CiPipelineRun record (throws on error).
+$ci_pipeline_run = $client->CiPipelineRun()->load(["id" => "ci_pipeline_run_id", "pipeline_id" => "pipeline_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of CiPipelineRun entities, one per record (throws on error).
+$ci_pipeline_runs = $client->CiPipelineRun()->list(["pipeline_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$ci_pipeline_run = $client->CiPipelineRun()->create([
+    "pipeline_id" => null, // string
+]);
+```
+
+
+### CiRunnerPool
+
+Create an instance: `$ci_runner_pool = $client->CiRunnerPool();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `bazel_enabled` | `bool` |  |
+| `bazel_properties_json` | `mixed` |  |
+| `created_at` | `string` |  |
+| `description` | `mixed` |  |
+| `elastic_config_json` | `mixed` |  |
+| `elastic_provider_kind` | `mixed` |  |
+| `id` | `string` |  |
+| `isolation_mode` | `string` |  |
+| `labels_csv` | `mixed` |  |
+| `max_concurrency` | `int` |  |
+| `modal_capacity` | `array` |  |
+| `modal_runner_invocations` | `array` |  |
+| `name` | `string` |  |
+| `network_space_id` | `mixed` |  |
+| `node_capabilities_csv` | `mixed` |  |
+| `organization_id` | `string` |  |
+| `runner_count_label` | `string` |  |
+| `runner_kind` | `string` |  |
+| `runners` | `array` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the CiRunnerPool record (throws on error).
+$ci_runner_pool = $client->CiRunnerPool()->load(["id" => "ci_runner_pool_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of CiRunnerPool entities, one per record (throws on error).
+$ci_runner_pools = $client->CiRunnerPool()->list();
+```
+
+#### Example: Create
+
+```php
+$ci_runner_pool = $client->CiRunnerPool()->create([
+]);
+```
+
+
+### CiStatus
+
+Create an instance: `$ci_status = $client->CiStatus();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### CliEvent
+
+Create an instance: `$cli_event = $client->CliEvent();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `event` | `string` |  |
+| `properties` | `array` |  |
+
+#### Example: Create
+
+```php
+$cli_event = $client->CliEvent()->create([
+    "event" => null, // string
+    "properties" => null, // array
+]);
+```
+
+
+### CliRelease
+
+Create an instance: `$cli_release = $client->CliRelease();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Example: List
+
+```php
+// list() returns an array of CliRelease entities, one per record (throws on error).
+$cli_releases = $client->CliRelease()->list();
+```
+
+#### Example: Create
+
+```php
+$cli_release = $client->CliRelease()->create([
+]);
+```
+
+
+### CloudWorkspaceBackupObject
+
+Create an instance: `$cloud_workspace_backup_object = $client->CloudWorkspaceBackupObject();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the CloudWorkspaceBackupObject record (throws on error).
+$cloud_workspace_backup_object = $client->CloudWorkspaceBackupObject()->load(["id" => "cloud_workspace_backup_object_id", "cloud_workspace_backup_id" => "cloud_workspace_backup_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+
+### CodeRuleEvaluation
+
+Create an instance: `$code_rule_evaluation = $client->CodeRuleEvaluation();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `advisory` | `bool` |  |
+| `coverage` | `array` |  |
+| `diff` | `string` | UTF-8 complete unified patch using a/ old and b/ new prefixes; at most 1 MiB |
+| `duration_ms` | `int` |  |
+| `evaluator_version` | `string` |  |
+| `input_digest` | `mixed` |  |
+| `limits` | `array` |  |
+| `model` | `string` |  |
+| `requests` | `array` |  |
+| `schema_version` | `int` |  |
+| `snapshot_digest` | `mixed` |  |
+| `unchecked` | `array` |  |
+| `verdicts` | `array` |  |
+
+#### Example: Create
+
+```php
+$code_rule_evaluation = $client->CodeRuleEvaluation()->create([
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+    "diff" => null, // string
+]);
+```
+
+
+### ComSiteAccess
+
+Create an instance: `$com_site_access = $client->ComSiteAccess();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### ComSiteAccessSession
+
+Create an instance: `$com_site_access_session = $client->ComSiteAccessSession();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cookie_name` | `string` |  |
+| `host` | `string` | Site hostname, for example docs.acme.composal.page |
+| `max_age` | `int` |  |
+| `session_token` | `string` |  |
+
+#### Example: Create
+
+```php
+$com_site_access_session = $client->ComSiteAccessSession()->create([
+    "host" => null, // string
+]);
+```
+
+
+### CommentThreadComment
+
+Create an instance: `$comment_thread_comment = $client->CommentThreadComment();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `body` | `string` |  |
+
+#### Example: Create
+
+```php
+$comment_thread_comment = $client->CommentThreadComment()->create([
+    "artefact_id" => null, // string
+    "comment_thread_id" => null, // string
+    "organization_id" => null, // string
+    "body" => null, // string
+]);
+```
+
+
+### CommitDiff
+
+Create an instance: `$commit_diff = $client->CommitDiff();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `files` | `array` |  |
+| `id` | `string` |  |
+| `parent_id` | `mixed` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the CommitDiff record (throws on error).
+$commit_diff = $client->CommitDiff()->load(["id" => "commit_diff_id", "commit_id" => "commit_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+
 ### ConnectionRequest
 
 Create an instance: `$connection_request = $client->ConnectionRequest();`
@@ -8883,6 +17767,117 @@ Create an instance: `$connection_source = $client->ConnectionSource();`
 ```php
 // list() returns an array of ConnectionSource entities, one per record (throws on error).
 $connection_sources = $client->ConnectionSource()->list(["agent_id" => "example", "organization_id" => "example"]);
+```
+
+
+### ContactSubmission
+
+Create an instance: `$contact_submission = $client->ContactSubmission();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `company` | `mixed` |  |
+| `email` | `string` | Stored downcased and stripped. |
+| `message` | `string` |  |
+| `name` | `string` |  |
+| `website` | `mixed` | Honeypot. |
+
+#### Example: Create
+
+```php
+$contact_submission = $client->ContactSubmission()->create([
+    "email" => null, // string
+    "message" => null, // string
+    "name" => null, // string
+]);
+```
+
+
+### ControlComputer
+
+Create an instance: `$control_computer = $client->ControlComputer();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `connection` | `array` | A point-in-time control transport observation. |
+| `consent` | `array` |  |
+| `device` | `array` |  |
+| `id` | `string` |  |
+| `provider_status` | `array` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of ControlComputer entities, one per record (throws on error).
+$control_computers = $client->ControlComputer()->list(["organization_id" => "example", "persistent_agent_id" => "example"]);
+```
+
+
+### ControlComputerControlOperation
+
+Create an instance: `$control_computer_control_operation = $client->ControlComputerControlOperation();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `arguments` | `array` |  |
+| `created_at` | `string` |  |
+| `delivery` | `array` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` |  |
+| `diagnostic_code` | `string` | Approved product error code retained after copied diagnostics expire. |
+| `end` | `array` |  |
+| `expires_at` | `string` |  |
+| `id` | `string` |  |
+| `key` | `string` |  |
+| `provider` | `string` |  |
+| `references` | `array` |  |
+| `result` | `mixed` |  |
+| `result_expired` | `bool` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ControlComputerControlOperation record (throws on error).
+$control_computer_control_operation = $client->ControlComputerControlOperation()->load(["id" => "control_computer_control_operation_id", "control_computer_id" => "control_computer_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: Create
+
+```php
+$control_computer_control_operation = $client->ControlComputerControlOperation()->create([
+    "control_computer_id" => null, // string
+    "organization_id" => null, // string
+    "action" => null, // string
+    "arguments" => null, // array
+    "key" => null, // string
+]);
 ```
 
 
@@ -9309,6 +18304,65 @@ $demo_share_segment = $client->DemoShareSegment()->load(["id" => "demo_share_seg
 ```
 
 
+### Deployment
+
+Create an instance: `$deployment = $client->Deployment();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `app` | `array` |  |
+| `artifact_locator` | `mixed` |  |
+| `build_duration_seconds` | `mixed` |  |
+| `build_source` | `mixed` |  |
+| `build_status` | `string` |  |
+| `children` | `array` |  |
+| `ci_pipeline_id` | `mixed` |  |
+| `ci_pipeline_run_id` | `mixed` |  |
+| `commit_sha` | `mixed` |  |
+| `created_at` | `string` |  |
+| `creator` | `mixed` |  |
+| `deployed_url` | `mixed` |  |
+| `duration_seconds` | `mixed` |  |
+| `environment` | `array` |  |
+| `history_kind` | `string` |  |
+| `history_reason` | `mixed` |  |
+| `id` | `string` |  |
+| `is_live` | `bool` |  |
+| `is_rollback` | `bool` |  |
+| `live_region_count` | `int` |  |
+| `number` | `int` |  |
+| `placement` | `mixed` |  |
+| `region_count` | `int` |  |
+| `replicas_per_region` | `int` |  |
+| `rollback_reason` | `mixed` |  |
+| `rollback_source_release_id` | `mixed` |  |
+| `rollback_target_release_id` | `mixed` |  |
+| `rollout_predecessor_id` | `mixed` |  |
+| `rollout_status` | `string` |  |
+| `rollout_strategy` | `string` |  |
+| `service` | `array` |  |
+| `source_ref` | `mixed` |  |
+| `status` | `string` |  |
+| `total_replicas` | `int` |  |
+| `trigger_kind` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the Deployment record (throws on error).
+$deployment = $client->Deployment()->load(["id" => "deployment_id", "organization_id" => "organization_id"]);
+```
+
+
 ### DeploymentDashboardNomad
 
 Create an instance: `$deployment_dashboard_nomad = $client->DeploymentDashboardNomad();`
@@ -9320,6 +18374,50 @@ Create an instance: `$deployment_dashboard_nomad = $client->DeploymentDashboardN
 | `load(match)` | Load a single entity by match criteria. |
 
 
+### DeploymentDetail
+
+Create an instance: `$deployment_detail = $client->DeploymentDetail();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activity` | `array` |  |
+| `app` | `mixed` |  |
+| `app_id` | `mixed` |  |
+| `audit_events` | `array` |  |
+| `capacity` | `array` |  |
+| `data_resources` | `array` |  |
+| `deploy_targets` | `array` |  |
+| `deployments` | `array` |  |
+| `desired_states` | `array` |  |
+| `environments` | `array` |  |
+| `filters` | `array` | The option lists the deployments page's app, service and stage pickers narrow by. |
+| `health` | `array` | The rolled-up state of the selected scope. |
+| `nomad` | `array` | The Nomad footprint of the selected scope, deduplicated. |
+| `operations` | `array` |  |
+| `placements` | `array` |  |
+| `reconciler_ticks` | `array` |  |
+| `releases` | `array` |  |
+| `runtime_instances` | `array` |  |
+| `service_bindings` | `array` |  |
+| `service_views` | `array` |  |
+| `storage_resources` | `array` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of DeploymentDetail entities, one per record (throws on error).
+$deployment_details = $client->DeploymentDetail()->list(["organization_id" => "example"]);
+```
+
+
 ### DeploymentFile
 
 Create an instance: `$deployment_file = $client->DeploymentFile();`
@@ -9329,6 +18427,774 @@ Create an instance: `$deployment_file = $client->DeploymentFile();`
 | Method | Description |
 | --- | --- |
 | `update(data)` | Update an existing entity. |
+
+
+### DeploymentLog
+
+Create an instance: `$deployment_log = $client->DeploymentLog();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `allocation_id` | `string` |  |
+| `app_environment_id` | `mixed` |  |
+| `app_release_id` | `mixed` |  |
+| `app_service_id` | `mixed` |  |
+| `details` | `mixed` |  |
+| `environment_name` | `string` |  |
+| `release_version` | `mixed` |  |
+| `service_name` | `string` |  |
+| `status` | `string` |  |
+| `task` | `mixed` |  |
+| `unreachable_reason` | `mixed` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of DeploymentLog entities, one per record (throws on error).
+$deployment_logs = $client->DeploymentLog()->list(["organization_id" => "example"]);
+```
+
+
+### DeploymentMetric
+
+Create an instance: `$deployment_metric = $client->DeploymentMetric();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `auto_deploy` | `bool` |  |
+| `environment_id` | `string` |  |
+| `environment_name` | `string` |  |
+| `placement_id` | `string` |  |
+| `redeploy` | `bool` |  |
+| `region_count` | `int` |  |
+| `replicas_per_region` | `int` |  |
+| `rollout_strategy` | `string` |  |
+| `service_id` | `string` |  |
+| `service_name` | `string` |  |
+| `source_ref` | `mixed` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of DeploymentMetric entities, one per record (throws on error).
+$deployment_metrics = $client->DeploymentMetric()->list(["organization_id" => "example"]);
+```
+
+
+### DeploymentPreview
+
+Create an instance: `$deployment_preview = $client->DeploymentPreview();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access` | `string` |  |
+| `app_environment_id` | `string` |  |
+| `app_name` | `string` |  |
+| `app_preview_profile_id` | `string` |  |
+| `app_slug` | `string` |  |
+| `change_number` | `mixed` |  |
+| `created_at` | `string` |  |
+| `created_by_user_id` | `string` |  |
+| `expires_at` | `string` |  |
+| `generation` | `int` |  |
+| `health` | `string` |  |
+| `hosted_app_id` | `string` |  |
+| `id` | `string` |  |
+| `latest_operation_status` | `mixed` |  |
+| `name` | `string` |  |
+| `owner_name` | `mixed` |  |
+| `profile_name` | `string` |  |
+| `resource_overrides` | `array` | Service public IDs mapped to resource overrides. |
+| `retained` | `bool` |  |
+| `slug` | `string` |  |
+| `snapshot_version` | `int` |  |
+| `source_revision` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `urls` | `array` |  |
+| `vcs_change_id` | `mixed` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of DeploymentPreview entities, one per record (throws on error).
+$deployment_previews = $client->DeploymentPreview()->list(["organization_id" => "example"]);
+```
+
+
+### DeploymentSetting
+
+Create an instance: `$deployment_setting = $client->DeploymentSetting();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `code` | `string` |  |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `nomad_datacenter` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of DeploymentSetting entities, one per record (throws on error).
+$deployment_settings = $client->DeploymentSetting()->list(["organization_id" => "example"]);
+```
+
+
+### DesktopLocalAgentModel
+
+Create an instance: `$desktop_local_agent_model = $client->DesktopLocalAgentModel();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `name` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of DesktopLocalAgentModel entities, one per record (throws on error).
+$desktop_local_agent_models = $client->DesktopLocalAgentModel()->list(["organization_id" => "example"]);
+```
+
+
+### DesktopLocalAgentResponse
+
+Create an instance: `$desktop_local_agent_response = $client->DesktopLocalAgentResponse();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `input` | `array` |  |
+| `max_output_tokens` | `int` |  |
+| `model` | `string` |  |
+| `store` | `bool` |  |
+| `stream` | `bool` |  |
+
+#### Example: Create
+
+```php
+$desktop_local_agent_response = $client->DesktopLocalAgentResponse()->create([
+    "organization_id" => null, // string
+    "input" => null, // array
+    "model" => null, // string
+    "store" => null, // bool
+    "stream" => null, // bool
+]);
+```
+
+
+### Device
+
+Create an instance: `$device = $client->Device();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `architecture` | `string` |  |
+| `channel` | `string` |  |
+| `coding_connection` | `mixed` | Independent organization coding-control service state for the current device owner. |
+| `connection_checked_at` | `mixed` | When this native presence observation was obtained; null when unobserved or unavailable. |
+| `connection_status` | `string` | Display-only native presence. |
+| `control_delivery_policy` | `array` |  |
+| `control_spawn_policy` | `array` |  |
+| `created_at` | `string` |  |
+| `device` | `array` |  |
+| `environment` | `string` |  |
+| `execution_available` | `bool` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `native_device_id` | `string` |  |
+| `paired_at` | `string` |  |
+| `pairing_generation` | `int` |  |
+| `platform` | `string` |  |
+| `project_visibility` | `array` | Folder discovery and new-thread selection. |
+| `provider_status` | `array` | Recent native provider observations; absent on older API replicas. |
+| `revoked_at` | `mixed` |  |
+| `scheduled_check_ins` | `bool` | Whether the owner's private agents may check this computer's connection during scheduled runs. |
+| `user_browser_access` | `string` | Whether agents may use the owner's own Chrome-family browser here: off, only tabs agents open or the owner shares, or every tab. |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the Device record (throws on error).
+$device = $client->Device()->load(["id" => "device_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of Device entities, one per record (throws on error).
+$devices = $client->Device()->list(["organization_id" => "example"]);
+```
+
+
+### DeviceBrowserOperation
+
+Create an instance: `$device_browser_operation = $client->DeviceBrowserOperation();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `command` | `string` | The in-app browser takes open through open_external; the person's own browser (arguments.browser user) takes open, tabs, share_tab, navigate, back, reload, screenshot, read, click, type, press, scroll and close. |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of DeviceBrowserOperation entities, one per record (throws on error).
+$device_browser_operations = $client->DeviceBrowserOperation()->list(["device_id" => "example", "organization_id" => "example"]);
+```
+
+
+### DeviceControlMessage
+
+Create an instance: `$device_control_message = $client->DeviceControlMessage();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_id` | `string` |  |
+| `agent_name` | `string` |  |
+| `expires_at` | `string` |  |
+| `id` | `string` |  |
+| `sender` | `mixed` |  |
+| `text` | `mixed` |  |
+| `text_omitted` | `bool` |  |
+| `thread` | `array` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of DeviceControlMessage entities, one per record (throws on error).
+$device_control_messages = $client->DeviceControlMessage()->list(["device_id" => "example", "organization_id" => "example"]);
+```
+
+
+### DeviceControlOperation
+
+Create an instance: `$device_control_operation = $client->DeviceControlOperation();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `arguments` | `array` |  |
+| `created_at` | `string` |  |
+| `delivery` | `array` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` |  |
+| `diagnostic_code` | `string` | Approved product error code retained after copied diagnostics expire. |
+| `end` | `array` |  |
+| `expires_at` | `string` |  |
+| `id` | `string` |  |
+| `key` | `string` |  |
+| `provider` | `string` |  |
+| `references` | `array` |  |
+| `result` | `mixed` |  |
+| `result_expired` | `bool` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the DeviceControlOperation record (throws on error).
+$device_control_operation = $client->DeviceControlOperation()->load(["id" => "device_control_operation_id", "device_id" => "device_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: Create
+
+```php
+$device_control_operation = $client->DeviceControlOperation()->create([
+    "device_id" => null, // string
+    "organization_id" => null, // string
+    "action" => null, // string
+    "arguments" => null, // array
+    "key" => null, // string
+]);
+```
+
+
+### DeviceEnterpriseRelay
+
+Create an instance: `$device_enterprise_relay = $client->DeviceEnterpriseRelay();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```php
+// list() returns an array of DeviceEnterpriseRelay entities, one per record (throws on error).
+$device_enterprise_relays = $client->DeviceEnterpriseRelay()->list();
+```
+
+
+### DeviceFolderListing
+
+Create an instance: `$device_folder_listing = $client->DeviceFolderListing();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `code` | `string` |  |
+| `error` | `string` |  |
+| `folders` | `array` |  |
+| `id` | `string` |  |
+| `key` | `string` | Stable idempotency key for this listing. |
+| `parent` | `mixed` |  |
+| `path` | `string` | The resolved folder. |
+| `state` | `string` |  |
+| `truncated` | `bool` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the DeviceFolderListing record (throws on error).
+$device_folder_listing = $client->DeviceFolderListing()->load(["id" => "device_folder_listing_id", "device_id" => "device_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: Create
+
+```php
+$device_folder_listing = $client->DeviceFolderListing()->create([
+    "device_id" => null, // string
+    "organization_id" => null, // string
+    "key" => null, // string
+    "path" => null, // string
+]);
+```
+
+
+### DeviceGrant
+
+Create an instance: `$device_grant = $client->DeviceGrant();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active_grants` | `array` |  |
+| `agent_choices` | `array` | Eligible picker choices, with current owner grant targets, on the first page only. |
+| `agent_id` | `string` |  |
+| `all_agents_access` | `bool` | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `capabilities` | `array` |  |
+| `execution_available` | `bool` |  |
+| `grants` | `array` |  |
+| `id` | `string` |  |
+| `next_cursor` | `mixed` |  |
+| `principal_id` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of DeviceGrant entities, one per record (throws on error).
+$device_grants = $client->DeviceGrant()->list(["device_id" => "example", "organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$device_grant = $client->DeviceGrant()->create([
+    "device_id" => null, // string
+    "organization_id" => null, // string
+    "agent_id" => null, // string
+    "capabilities" => null, // array
+    "principal_id" => null, // string
+]);
+```
+
+
+### DeviceInvocation
+
+Create an instance: `$device_invocation = $client->DeviceInvocation();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### DeviceLocalEvent
+
+Create an instance: `$device_local_event = $client->DeviceLocalEvent();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `event` | `string` |  |
+| `recorded` | `bool` |  |
+
+#### Example: Create
+
+```php
+$device_local_event = $client->DeviceLocalEvent()->create([
+    "device_id" => null, // string
+    "organization_id" => null, // string
+    "event" => null, // string
+]);
+```
+
+
+### DevicePairing
+
+Create an instance: `$device_pairing = $client->DevicePairing();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `architecture` | `string` |  |
+| `channel` | `string` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `platform` | `string` |  |
+| `public_key` | `string` |  |
+
+#### Example: Create
+
+```php
+$device_pairing = $client->DevicePairing()->create([
+    "organization_id" => null, // string
+    "architecture" => null, // string
+    "channel" => null, // string
+    "name" => null, // string
+    "platform" => null, // string
+    "public_key" => null, // string
+]);
+```
+
+
+### DeviceProject
+
+Create an instance: `$device_project = $client->DeviceProject();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### DeviceScheduledCheckIn
+
+Create an instance: `$device_scheduled_check_in = $client->DeviceScheduledCheckIn();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `enabled` | `bool` |  |
+
+#### Example: Create
+
+```php
+$device_scheduled_check_in = $client->DeviceScheduledCheckIn()->create([
+    "device_id" => null, // string
+    "organization_id" => null, // string
+    "enabled" => null, // bool
+]);
+```
+
+
+### DockerBuilder
+
+Create an instance: `$docker_builder = $client->DockerBuilder();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `backend` | `string` |  |
+| `created_at` | `mixed` |  |
+| `gateway_url` | `mixed` | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `int` |  |
+| `id` | `string` |  |
+| `last_activity_at` | `mixed` |  |
+| `organization_id` | `string` |  |
+| `ready_at` | `mixed` |  |
+| `slept_at` | `mixed` |  |
+| `slug` | `string` |  |
+| `startup_attempt` | `int` |  |
+| `startup_failure` | `mixed` | Safe failure reason for the most recent startup attempt |
+| `startup_stage` | `mixed` |  |
+| `status` | `string` |  |
+| `updated_at` | `mixed` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the DockerBuilder record (throws on error).
+$docker_builder = $client->DockerBuilder()->load(["id" => "docker_builder_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of DockerBuilder entities, one per record (throws on error).
+$docker_builders = $client->DockerBuilder()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$docker_builder = $client->DockerBuilder()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### DockerBuilderSession
+
+Create an instance: `$docker_builder_session = $client->DockerBuilderSession();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `string` |  |
+| `docker_builder_id` | `string` |  |
+| `expires_at` | `string` |  |
+| `gateway_url` | `mixed` | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `int` |  |
+| `id` | `string` |  |
+| `organization_id` | `string` |  |
+| `revoked_at` | `mixed` |  |
+| `user_id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the DockerBuilderSession record (throws on error).
+$docker_builder_session = $client->DockerBuilderSession()->load(["id" => "docker_builder_session_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: Create
+
+```php
+$docker_builder_session = $client->DockerBuilderSession()->create([
+    "docker_builder_id" => null, // string
+    "organization_id" => null, // string
+]);
+```
+
+
+### DockerBuilderSetting
+
+Create an instance: `$docker_builder_setting = $client->DockerBuilderSetting();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `docker_builder_settings` | `array` |  |
+| `idle_timeout_seconds` | `int` |  |
+| `max_concurrency` | `int` |  |
+| `organization_id` | `string` |  |
+| `region` | `string` |  |
+| `runtime_timeout_seconds` | `int` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of DockerBuilderSetting entities, one per record (throws on error).
+$docker_builder_settings = $client->DockerBuilderSetting()->list(["organization_id" => "example"]);
+```
+
+
+### DomainDnsIntegration
+
+Create an instance: `$domain_dns_integration = $client->DomainDnsIntegration();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_label` | `mixed` |  |
+| `api_token` | `string` |  |
+| `created_at` | `string` |  |
+| `failure_message` | `mixed` |  |
+| `has_token` | `bool` |  |
+| `id` | `string` |  |
+| `last_verified_at` | `mixed` |  |
+| `organization_id` | `string` |  |
+| `provider` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of DomainDnsIntegration entities, one per record (throws on error).
+$domain_dns_integrations = $client->DomainDnsIntegration()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$domain_dns_integration = $client->DomainDnsIntegration()->create([
+    "organization_id" => null, // string
+    "api_token" => null, // string
+]);
+```
 
 
 ### DomainPathRule
@@ -9435,6 +19301,28 @@ $dream = $client->Dream()->load(["id" => "dream_id", "organization_id" => "organ
 // list() returns an array of Dream entities, one per record (throws on error).
 $dreams = $client->Dream()->list(["organization_id" => "example", "project_id" => "example"]);
 ```
+
+
+### Edge
+
+Create an instance: `$edge = $client->Edge();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### EmailVerification
+
+Create an instance: `$email_verification = $client->EmailVerification();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
 
 
 ### Environment
@@ -9809,6 +19697,205 @@ $evidence = $client->Evidence()->load(["id" => "evidence_id", "organization_id" 
 ```
 
 
+### ExecutionDesiredState
+
+Create an instance: `$execution_desired_state = $client->ExecutionDesiredState();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `desired_state` | `array` |  |
+| `id` | `string` |  |
+| `stop_observed` | `bool` | True only for archived zero-capacity states with all known jobs stopped and allocations terminated. |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ExecutionDesiredState record (throws on error).
+$execution_desired_state = $client->ExecutionDesiredState()->load(["id" => "execution_desired_state_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of ExecutionDesiredState entities, one per record (throws on error).
+$execution_desired_states = $client->ExecutionDesiredState()->list();
+```
+
+#### Example: Create
+
+```php
+$execution_desired_state = $client->ExecutionDesiredState()->create([
+]);
+```
+
+
+### ExecutionReconcilerTick
+
+Create an instance: `$execution_reconciler_tick = $client->ExecutionReconcilerTick();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ExecutionReconcilerTick record (throws on error).
+$execution_reconciler_tick = $client->ExecutionReconcilerTick()->load(["id" => "execution_reconciler_tick_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of ExecutionReconcilerTick entities, one per record (throws on error).
+$execution_reconciler_ticks = $client->ExecutionReconcilerTick()->list();
+```
+
+#### Example: Create
+
+```php
+$execution_reconciler_tick = $client->ExecutionReconcilerTick()->create([
+]);
+```
+
+
+### ExecutionRelease
+
+Create an instance: `$execution_release = $client->ExecutionRelease();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ExecutionRelease record (throws on error).
+$execution_release = $client->ExecutionRelease()->load(["id" => "execution_release_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of ExecutionRelease entities, one per record (throws on error).
+$execution_releases = $client->ExecutionRelease()->list();
+```
+
+#### Example: Create
+
+```php
+$execution_release = $client->ExecutionRelease()->create([
+]);
+```
+
+
+### ExecutionRuntimeInstance
+
+Create an instance: `$execution_runtime_instance = $client->ExecutionRuntimeInstance();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter_kind` | `string` |  |
+| `app_environment_id` | `string` |  |
+| `app_release_id` | `mixed` |  |
+| `app_service_id` | `string` |  |
+| `booted_at` | `mixed` |  |
+| `booted_at_label` | `mixed` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `hosted_app_id` | `string` |  |
+| `id` | `string` |  |
+| `instance_key` | `string` |  |
+| `last_reconciled_at` | `mixed` |  |
+| `last_reconciled_at_label` | `mixed` |  |
+| `last_seen_at` | `mixed` |  |
+| `last_seen_at_label` | `mixed` |  |
+| `location` | `mixed` |  |
+| `location_id` | `string` |  |
+| `network_peer_id` | `mixed` |  |
+| `nomad_allocation_id` | `mixed` |  |
+| `nomad_task_name` | `mixed` |  |
+| `organization_id` | `string` |  |
+| `private_ipv4` | `mixed` |  |
+| `private_ipv6` | `mixed` |  |
+| `provider_instance_id` | `mixed` |  |
+| `public_endpoint` | `mixed` |  |
+| `service_name` | `string` | Name of the Vex service this instance runs, in the same vocabulary as `vex deploy list`. |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `terminated_at` | `mixed` |  |
+| `terminated_at_label` | `mixed` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ExecutionRuntimeInstance record (throws on error).
+$execution_runtime_instance = $client->ExecutionRuntimeInstance()->load(["id" => "execution_runtime_instance_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of ExecutionRuntimeInstance entities, one per record (throws on error).
+$execution_runtime_instances = $client->ExecutionRuntimeInstance()->list();
+```
+
+#### Example: Create
+
+```php
+$execution_runtime_instance = $client->ExecutionRuntimeInstance()->create([
+]);
+```
+
+
 ### Exploration
 
 Create an instance: `$exploration = $client->Exploration();`
@@ -10115,6 +20202,364 @@ $findings = $client->Finding()->list(["organization_id" => "example"]);
 ```
 
 
+### Gh
+
+Create an instance: `$gh = $client->Gh();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capabilities` | `array` |  |
+| `content` | `array` |  |
+| `fetched_at` | `string` |  |
+| `id` | `string` |  |
+| `magic_merge` | `mixed` |  |
+| `pull_request` | `mixed` |  |
+| `stack` | `array` |  |
+| `transcript_paths` | `array` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the Gh record (throws on error).
+$gh = $client->Gh()->load(["id" => "gh_id", "gh_id" => "gh_id", "github_repo" => "github_repo", "organization_id" => "organization_id"]);
+```
+
+
+### GitImport
+
+Create an instance: `$git_import = $client->GitImport();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `destination_mode` | `string` |  |
+| `error` | `mixed` |  |
+| `git_default_branch` | `string` | Original Git symbolic HEAD branch, independent of the branch selected for JJ conversion |
+| `git_status` | `string` |  |
+| `git_url` | `string` |  |
+| `id` | `string` |  |
+| `idempotency_key` | `string` |  |
+| `name` | `string` |  |
+| `native_status` | `string` |  |
+| `organization` | `string` |  |
+| `repository_id` | `mixed` |  |
+| `root_path` | `string` |  |
+| `slug` | `string` |  |
+| `source_branch` | `string` |  |
+| `target_branch` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the GitImport record (throws on error).
+$git_import = $client->GitImport()->load(["id" => "git_import_id"]);
+```
+
+#### Example: Create
+
+```php
+$git_import = $client->GitImport()->create([
+    "organization_id" => null, // string
+    "destination_mode" => null, // string
+    "idempotency_key" => null, // string
+    "root_path" => null, // string
+    "slug" => null, // string
+    "source_branch" => null, // string
+]);
+```
+
+
+### Github
+
+Create an instance: `$github = $client->Github();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### GithubApp
+
+Create an instance: `$github_app = $client->GithubApp();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### GithubAppImportableRepository
+
+Create an instance: `$github_app_importable_repository = $client->GithubAppImportableRepository();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_login` | `string` |  |
+| `github_app_installation_id` | `string` |  |
+| `next_page` | `mixed` | Next GitHub page for this installation |
+| `repositories` | `array` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of GithubAppImportableRepository entities, one per record (throws on error).
+$github_app_importable_repositorys = $client->GithubAppImportableRepository()->list();
+```
+
+
+### GithubAppInstallation
+
+Create an instance: `$github_app_installation = $client->GithubAppInstallation();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `mixed` |  |
+| `account_id` | `mixed` |  |
+| `account_login` | `string` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `id` | `string` |  |
+| `installation_id` | `string` |  |
+| `installed_at` | `mixed` |  |
+| `installed_at_label` | `mixed` |  |
+| `manage_access_url` | `string` |  |
+| `organization_id` | `string` |  |
+| `permission_entries` | `array` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `array` |  |
+| `status` | `string` |  |
+| `suspended_at` | `mixed` |  |
+| `suspended_at_label` | `mixed` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of GithubAppInstallation entities, one per record (throws on error).
+$github_app_installations = $client->GithubAppInstallation()->list(["organization_id" => "example"]);
+```
+
+
+### GithubAppInstallationAuthorization
+
+Create an instance: `$github_app_installation_authorization = $client->GithubAppInstallationAuthorization();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `installation_url` | `string` |  |
+| `organization_slug` | `string` | Vex organization slug whose installation will be linked. |
+| `return_target` | `string` | Server-validated Vex application target used after verification. |
+
+#### Example: Create
+
+```php
+$github_app_installation_authorization = $client->GithubAppInstallationAuthorization()->create([
+    "organization_slug" => null, // string
+    "return_target" => null, // string
+]);
+```
+
+
+### GithubAppUserAuthorization
+
+Create an instance: `$github_app_user_authorization = $client->GithubAppUserAuthorization();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$github_app_user_authorization = $client->GithubAppUserAuthorization()->create([
+]);
+```
+
+
+### GithubCiRepository
+
+Create an instance: `$github_ci_repository = $client->GithubCiRepository();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adoption_mode` | `string` |  |
+| `check_name_prefix` | `string` |  |
+| `ci_runner_pool_id` | `mixed` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `default_branch` | `string` |  |
+| `github_app_installation_id` | `string` |  |
+| `github_repository_id` | `string` |  |
+| `id` | `string` |  |
+| `last_compatibility_status` | `mixed` |  |
+| `last_error_message` | `mixed` |  |
+| `last_head_sha` | `mixed` |  |
+| `last_pull_request_number` | `mixed` |  |
+| `last_ref` | `mixed` |  |
+| `last_webhook_action` | `mixed` |  |
+| `last_webhook_at` | `mixed` |  |
+| `last_webhook_at_label` | `mixed` |  |
+| `last_webhook_delivery_id` | `mixed` |  |
+| `last_webhook_event` | `mixed` |  |
+| `metadata` | `array` |  |
+| `organization_id` | `string` |  |
+| `permission_status` | `string` |  |
+| `repository_full_name` | `string` |  |
+| `repository_name` | `string` |  |
+| `repository_owner` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+| `webhook_delivery_count` | `int` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the GithubCiRepository record (throws on error).
+$github_ci_repository = $client->GithubCiRepository()->load(["id" => "github_ci_repository_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of GithubCiRepository entities, one per record (throws on error).
+$github_ci_repositorys = $client->GithubCiRepository()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$github_ci_repository = $client->GithubCiRepository()->create([
+    "organization_id" => null, // string
+    "github_app_installation_id" => null, // string
+    "github_repository_id" => null, // string
+    "repository_name" => null, // string
+    "repository_owner" => null, // string
+]);
+```
+
+
+### GithubCiRepositoryCompatibilityReport
+
+Create an instance: `$github_ci_repository_compatibility_report = $client->GithubCiRepositoryCompatibilityReport();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `analyzed_at` | `string` |  |
+| `analyzed_at_label` | `mixed` |  |
+| `ci_pipeline_id` | `mixed` |  |
+| `ci_pipeline_run_id` | `mixed` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `diagnostics` | `array` |  |
+| `errors` | `array` |  |
+| `event_action` | `mixed` |  |
+| `event_name` | `string` |  |
+| `execution_allowed` | `bool` |  |
+| `github_ci_repository_id` | `string` |  |
+| `head_sha` | `mixed` |  |
+| `id` | `string` |  |
+| `metadata` | `array` |  |
+| `organization_id` | `string` |  |
+| `parser_version` | `string` |  |
+| `pull_request_number` | `mixed` |  |
+| `ref_name` | `mixed` |  |
+| `referenced_actions` | `array` |  |
+| `required_secrets` | `array` |  |
+| `runner_labels` | `array` |  |
+| `source_blob_sha` | `mixed` |  |
+| `source_sha` | `string` |  |
+| `status` | `string` |  |
+| `supported_features` | `array` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+| `warnings` | `array` |  |
+| `workflow_name` | `mixed` |  |
+| `workflow_path` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the GithubCiRepositoryCompatibilityReport record (throws on error).
+$github_ci_repository_compatibility_report = $client->GithubCiRepositoryCompatibilityReport()->load(["id" => "github_ci_repository_compatibility_report_id", "github_ci_repository_id" => "github_ci_repository_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of GithubCiRepositoryCompatibilityReport entities, one per record (throws on error).
+$github_ci_repository_compatibility_reports = $client->GithubCiRepositoryCompatibilityReport()->list(["github_ci_repository_id" => "example", "organization_id" => "example"]);
+```
+
+
 ### GithubConnection
 
 Create an instance: `$github_connection = $client->GithubConnection();`
@@ -10151,6 +20596,612 @@ $github_connection = $client->GithubConnection()->create([
     "organization_id" => null, // string
     "github_app_installation_id" => null, // string
     "repositories" => null, // array
+]);
+```
+
+
+### GithubIntegration
+
+Create an instance: `$github_integration = $client->GithubIntegration();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `mixed` |  |
+| `account_login` | `string` |  |
+| `connection_status` | `string` |  |
+| `connection_status_label` | `string` |  |
+| `github_installation` | `mixed` |  |
+| `health` | `array` |  |
+| `id` | `string` |  |
+| `imported_repositories_count` | `int` |  |
+| `imported_repositories_count_label` | `string` |  |
+| `organization` | `array` |  |
+| `pagination` | `array` |  |
+| `repositories` | `array` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the GithubIntegration record (throws on error).
+$github_integration = $client->GithubIntegration()->load(["id" => "github_integration_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of GithubIntegration entities, one per record (throws on error).
+$github_integrations = $client->GithubIntegration()->list(["organization_id" => "example"]);
+```
+
+
+### GithubOnboarding
+
+Create an instance: `$github_onboarding = $client->GithubOnboarding();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accounts` | `array` |  |
+| `active_batch_id` | `mixed` | The batch the wizard's import step should resume — the most recent batch still working, else the most recent overall. |
+| `batches` | `array` |  |
+| `capabilities` | `array` |  |
+| `installations` | `array` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the GithubOnboarding record (throws on error).
+$github_onboarding = $client->GithubOnboarding()->load(["organization_id" => "organization_id"]);
+```
+
+
+### GithubOnboardingBranch
+
+Create an instance: `$github_onboarding_branch = $client->GithubOnboardingBranch();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `branches` | `array` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of GithubOnboardingBranch entities, one per record (throws on error).
+$github_onboarding_branchs = $client->GithubOnboardingBranch()->list(["organization_id" => "example", "github_app_installation_id" => "example", "name" => "example", "owner" => "example"]);
+```
+
+
+### GithubOnboardingImport
+
+Create an instance: `$github_onboarding_import = $client->GithubOnboardingImport();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_login` | `string` |  |
+| `complete` | `bool` | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `string` |  |
+| `failed_item_count` | `int` |  |
+| `github_app_installation_id` | `string` |  |
+| `id` | `string` |  |
+| `imported_item_count` | `int` |  |
+| `item_count` | `int` |  |
+| `items` | `array` |  |
+| `repositories` | `mixed` |  |
+| `status` | `string` |  |
+| `terminal_item_count` | `int` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Create
+
+```php
+$github_onboarding_import = $client->GithubOnboardingImport()->create([
+    "organization_id" => null, // string
+    "github_app_installation_id" => null, // string
+    "repositories" => null, // mixed
+]);
+```
+
+
+### GithubOnboardingImportBatch
+
+Create an instance: `$github_onboarding_import_batch = $client->GithubOnboardingImportBatch();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_login` | `string` |  |
+| `complete` | `bool` | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `string` |  |
+| `failed_item_count` | `int` |  |
+| `github_app_installation_id` | `string` |  |
+| `id` | `string` |  |
+| `imported_item_count` | `int` |  |
+| `item_count` | `int` |  |
+| `items` | `array` |  |
+| `status` | `string` |  |
+| `terminal_item_count` | `int` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the GithubOnboardingImportBatch record (throws on error).
+$github_onboarding_import_batch = $client->GithubOnboardingImportBatch()->load(["id" => "github_onboarding_import_batch_id", "organization_id" => "organization_id"]);
+```
+
+
+### GithubOnboardingImportItem
+
+Create an instance: `$github_onboarding_import_item = $client->GithubOnboardingImportItem();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### GithubPullRequest
+
+Create an instance: `$github_pull_request = $client->GithubPullRequest();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capabilities` | `array` |  |
+| `content` | `array` |  |
+| `fetched_at` | `string` |  |
+| `id` | `string` |  |
+| `magic_merge` | `mixed` |  |
+| `pull_request` | `mixed` |  |
+| `stack` | `array` |  |
+| `transcript_paths` | `array` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the GithubPullRequest record (throws on error).
+$github_pull_request = $client->GithubPullRequest()->load(["id" => "github_pull_request_id", "organization_id" => "organization_id", "pull_request_id" => "pull_request_id"]);
+```
+
+
+### GithubRunnerAdmission
+
+Create an instance: `$github_runner_admission = $client->GithubRunnerAdmission();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$github_runner_admission = $client->GithubRunnerAdmission()->create([
+]);
+```
+
+
+### GithubRunnerCache
+
+Create an instance: `$github_runner_cache = $client->GithubRunnerCache();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `entry_id` | `string` |  |
+| `key` | `string` |  |
+| `matched_key` | `string` |  |
+| `ok` | `bool` |  |
+| `operation` | `string` |  |
+| `restore_keys` | `array` |  |
+| `signed_download_url` | `string` |  |
+| `size_bytes` | `string` |  |
+| `upload_path` | `string` |  |
+| `version` | `string` |  |
+
+#### Example: Create
+
+```php
+$github_runner_cache = $client->GithubRunnerCache()->create([
+    "operation" => null, // string
+]);
+```
+
+
+### GithubRunnerEgress
+
+Create an instance: `$github_runner_egress = $client->GithubRunnerEgress();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_request` | `bool` |  |
+| `cidr` | `mixed` |  |
+| `ipv4` | `mixed` |  |
+| `requested_at_label` | `mixed` |  |
+| `status` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the GithubRunnerEgress record (throws on error).
+$github_runner_egress = $client->GithubRunnerEgress()->load(["organization_id" => "organization_id"]);
+```
+
+#### Example: Create
+
+```php
+$github_runner_egress = $client->GithubRunnerEgress()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### GithubRunnerHistory
+
+Create an instance: `$github_runner_history = $client->GithubRunnerHistory();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activity` | `array` |  |
+| `counts` | `array` |  |
+| `observed_at` | `string` |  |
+| `pagination` | `array` |  |
+| `repositories` | `array` |  |
+| `runs` | `array` |  |
+| `setup` | `mixed` | CI onboarding. |
+| `success_rate` | `mixed` |  |
+| `usage` | `array` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the GithubRunnerHistory record (throws on error).
+$github_runner_history = $client->GithubRunnerHistory()->load(["organization_id" => "organization_id"]);
+```
+
+
+### GithubRunnerImage
+
+Create an instance: `$github_runner_image = $client->GithubRunnerImage();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `image_reference` | `string` | Immutable linux/amd64 Ubuntu 24.04 image, registry/repository@sha256:digest, with Node 22+ |
+| `last_error` | `mixed` |  |
+| `modal_image_id` | `mixed` |  |
+| `name` | `string` |  |
+| `registry_secret_name` | `mixed` | Name of an organization CI secret containing REGISTRY_USERNAME and REGISTRY_PASSWORD JSON fields |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the GithubRunnerImage record (throws on error).
+$github_runner_image = $client->GithubRunnerImage()->load(["id" => "github_runner_image_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of GithubRunnerImage entities, one per record (throws on error).
+$github_runner_images = $client->GithubRunnerImage()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$github_runner_image = $client->GithubRunnerImage()->create([
+    "organization_id" => null, // string
+    "image_reference" => null, // string
+    "name" => null, // string
+]);
+```
+
+
+### GithubRunnerPool
+
+Create an instance: `$github_runner_pool = $client->GithubRunnerPool();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cpu_millicores` | `int` |  |
+| `enabled` | `bool` |  |
+| `github_app_installation_id` | `string` |  |
+| `github_repository_id` | `string` |  |
+| `github_runner_image` | `mixed` |  |
+| `id` | `string` |  |
+| `image` | `mixed` | Organization image name or ID; null restores the standard image |
+| `invocations` | `array` |  |
+| `label` | `string` |  |
+| `last_error` | `mixed` |  |
+| `last_polled_at` | `mixed` |  |
+| `max_concurrency` | `int` |  |
+| `memory_mb` | `int` |  |
+| `organization_id` | `string` |  |
+| `provider` | `string` |  |
+| `repository_full_name` | `string` |  |
+| `runtime_kind` | `string` |  |
+| `timeout_seconds` | `int` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of GithubRunnerPool entities, one per record (throws on error).
+$github_runner_pools = $client->GithubRunnerPool()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$github_runner_pool = $client->GithubRunnerPool()->create([
+    "organization_id" => null, // string
+    "github_app_installation_id" => null, // string
+    "repository_full_name" => null, // string
+]);
+```
+
+
+### GithubRunnerSetup
+
+Create an instance: `$github_runner_setup = $client->GithubRunnerSetup();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `error` | `mixed` |  |
+| `github_repository_connection_id` | `string` |  |
+| `id` | `string` |  |
+| `pull_request_url` | `mixed` |  |
+| `repository_full_name` | `string` |  |
+| `roder_thread_id` | `mixed` |  |
+| `runner_labels` | `array` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `summary` | `mixed` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the GithubRunnerSetup record (throws on error).
+$github_runner_setup = $client->GithubRunnerSetup()->load(["id" => "github_runner_setup_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: Create
+
+```php
+$github_runner_setup = $client->GithubRunnerSetup()->create([
+    "organization_id" => null, // string
+    "github_repository_connection_id" => null, // string
+]);
+```
+
+
+### Gitlab
+
+Create an instance: `$gitlab = $client->Gitlab();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `configured` | `bool` |  |
+| `connections` | `array` |  |
+| `integrations` | `array` |  |
+| `inventory_error` | `mixed` |  |
+| `next_page` | `mixed` |  |
+| `organization` | `array` |  |
+| `projects` | `array` |  |
+| `redirect_uri` | `mixed` | The OAuth redirect URI a self-managed GitLab application must use; null when GitLab callbacks aren't configured. |
+| `selected_integration_id` | `mixed` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the Gitlab record (throws on error).
+$gitlab = $client->Gitlab()->load(["organization_id" => "organization_id"]);
+```
+
+
+### GitlabConnection
+
+Create an instance: `$gitlab_connection = $client->GitlabConnection();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### GitlabImport
+
+Create an instance: `$gitlab_import = $client->GitlabImport();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `integration_id` | `string` |  |
+| `project_id` | `int` |  |
+| `repo_slug` | `string` |  |
+| `source_branch` | `string` |  |
+
+#### Example: Create
+
+```php
+$gitlab_import = $client->GitlabImport()->create([
+    "organization_id" => null, // string
+    "integration_id" => null, // string
+    "project_id" => null, // int
+]);
+```
+
+
+### GitlabOauth
+
+Create an instance: `$gitlab_oauth = $client->GitlabOauth();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### GrantAllAgent
+
+Create an instance: `$grant_all_agent = $client->GrantAllAgent();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `all_agents_access` | `bool` |  |
+| `enabled` | `bool` |  |
+| `execution_available` | `bool` |  |
+
+#### Example: Create
+
+```php
+$grant_all_agent = $client->GrantAllAgent()->create([
+    "device_id" => null, // string
+    "organization_id" => null, // string
+    "enabled" => null, // bool
 ]);
 ```
 
@@ -10224,6 +21275,23 @@ $hosting_app_domain = $client->HostingAppDomain()->create([
 ```
 
 
+### IdentityOrganization
+
+Create an instance: `$identity_organization = $client->IdentityOrganization();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
 ### ImageRepository
 
 Create an instance: `$image_repository = $client->ImageRepository();`
@@ -10270,6 +21338,64 @@ $image_repository = $client->ImageRepository()->create([
     "name" => null, // string
     "slug" => null, // string
 ]);
+```
+
+
+### ImageRepositoryTag
+
+Create an instance: `$image_repository_tag = $client->ImageRepositoryTag();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `image_repository` | `array` |  |
+| `name` | `string` |  |
+| `registry_url` | `string` |  |
+| `tags` | `array` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of ImageRepositoryTag entities, one per record (throws on error).
+$image_repository_tags = $client->ImageRepositoryTag()->list(["image_repository_id" => "example"]);
+```
+
+
+### ImportBranchPolicy
+
+Create an instance: `$import_branch_policy = $client->ImportBranchPolicy();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `bool` |  |
+| `can_manage_sandbox_region` | `bool` |  |
+| `dedicated_outbound_ip_addresses` | `array` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` |  |
+| `organization` | `array` |  |
+| `sandbox_regions` | `array` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ImportBranchPolicy record (throws on error).
+$import_branch_policy = $client->ImportBranchPolicy()->load(["organization_id" => "organization_id"]);
 ```
 
 
@@ -10384,6 +21510,137 @@ $invitation = $client->Invitation()->create([
 ```
 
 
+### InvocationControl
+
+Create an instance: `$invocation_control = $client->InvocationControl();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### JobLogChunk
+
+Create an instance: `$job_log_chunk = $client->JobLogChunk();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `byte_size` | `int` |  |
+| `ci_job_id` | `mixed` |  |
+| `ci_pipeline_run_id` | `mixed` |  |
+| `ci_step_id` | `mixed` |  |
+| `content` | `string` |  |
+| `content_format` | `string` |  |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `organization_id` | `string` |  |
+| `sequence_number` | `int` |  |
+| `stream` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of JobLogChunk entities, one per record (throws on error).
+$job_log_chunks = $client->JobLogChunk()->list(["job_id" => "example", "pipeline_id" => "example", "run_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$job_log_chunk = $client->JobLogChunk()->create([
+    "job_id" => null, // string
+    "pipeline_id" => null, // string
+    "run_id" => null, // string
+]);
+```
+
+
+### JobStep
+
+Create an instance: `$job_step = $client->JobStep();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of JobStep entities, one per record (throws on error).
+$job_steps = $client->JobStep()->list(["job_id" => "example", "pipeline_id" => "example", "run_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$job_step = $client->JobStep()->create([
+    "job_id" => null, // string
+    "pipeline_id" => null, // string
+    "run_id" => null, // string
+]);
+```
+
+
+### JobWorkspace
+
+Create an instance: `$job_workspace = $client->JobWorkspace();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of JobWorkspace entities, one per record (throws on error).
+$job_workspaces = $client->JobWorkspace()->list(["job_id" => "example", "pipeline_id" => "example", "run_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$job_workspace = $client->JobWorkspace()->create([
+    "job_id" => null, // string
+    "pipeline_id" => null, // string
+    "run_id" => null, // string
+]);
+```
+
+
 ### JourneyVariantReplay
 
 Create an instance: `$journey_variant_replay = $client->JourneyVariantReplay();`
@@ -10487,6 +21744,260 @@ $knowledge = $client->Knowledge()->create([
     "markdown" => null, // string
     "project_id" => null, // string
     "title" => null, // string
+]);
+```
+
+
+### Known
+
+Create an instance: `$known = $client->Known();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### Label
+
+Create an instance: `$label = $client->Label();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `changes_count` | `int` |  |
+| `id` | `string` |  |
+| `name` | `string` | Display name |
+| `slug` | `string` | Normalized identity used for filtering and lookup. |
+
+#### Example: List
+
+```php
+// list() returns an array of Label entities, one per record (throws on error).
+$labels = $client->Label()->list(["organization_id" => "example"]);
+```
+
+
+### LeaseArtifact
+
+Create an instance: `$lease_artifact = $client->LeaseArtifact();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$lease_artifact = $client->LeaseArtifact()->create([
+    "lease_id" => null, // string
+    "node_id" => null, // string
+]);
+```
+
+
+### LeaseCache
+
+Create an instance: `$lease_cache = $client->LeaseCache();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### LeaseLogChunk
+
+Create an instance: `$lease_log_chunk = $client->LeaseLogChunk();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$lease_log_chunk = $client->LeaseLogChunk()->create([
+    "lease_id" => null, // string
+    "node_id" => null, // string
+]);
+```
+
+
+### LeaseReconciliation
+
+Create an instance: `$lease_reconciliation = $client->LeaseReconciliation();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### LeaseStep
+
+Create an instance: `$lease_step = $client->LeaseStep();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### LeaseVerifyDiagnostic
+
+Create an instance: `$lease_verify_diagnostic = $client->LeaseVerifyDiagnostic();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `browser_events` | `array` |  |
+| `live_browser` | `array` |  |
+| `live_view` | `array` | The tester's read-only live stream for page viewers. |
+| `steps` | `array` |  |
+
+#### Example: Create
+
+```php
+$lease_verify_diagnostic = $client->LeaseVerifyDiagnostic()->create([
+    "lease_id" => null, // string
+    "swarm_id" => null, // string
+    "task_id" => null, // string
+    "browser_events" => null, // array
+    "live_browser" => null, // array
+    "live_view" => null, // array
+]);
+```
+
+
+### LeaseVerifySecret
+
+Create an instance: `$lease_verify_secret = $client->LeaseVerifySecret();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$lease_verify_secret = $client->LeaseVerifySecret()->create([
+    "lease_id" => null, // string
+    "swarm_id" => null, // string
+    "task_id" => null, // string
+]);
+```
+
+
+### LeaseWorkspace
+
+Create an instance: `$lease_workspace = $client->LeaseWorkspace();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### LocalAgentDecision
+
+Create an instance: `$local_agent_decision = $client->LocalAgentDecision();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `request` | `array` | A native OpenAI Decisions request for gpt-6-luna, at most 1600 KiB, with inline images only |
+
+#### Example: Create
+
+```php
+$local_agent_decision = $client->LocalAgentDecision()->create([
+    "organization_id" => null, // string
+    "request" => null, // array
+]);
+```
+
+
+### LocalAgentResponse
+
+Create an instance: `$local_agent_response = $client->LocalAgentResponse();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `input` | `array` |  |
+| `model` | `string` |  |
+| `service_tier` | `mixed` |  |
+| `store` | `bool` |  |
+| `stream` | `bool` |  |
+| `tools` | `array` |  |
+
+#### Example: Create
+
+```php
+$local_agent_response = $client->LocalAgentResponse()->create([
+    "organization_id" => null, // string
+    "input" => null, // array
+    "model" => null, // string
+    "store" => null, // bool
+    "stream" => null, // bool
 ]);
 ```
 
@@ -10601,6 +22112,124 @@ Create an instance: `$location = $client->Location();`
 // list() returns an array of Location entities, one per record (throws on error).
 $locations = $client->Location()->list();
 ```
+
+
+### LogStreamChunk
+
+Create an instance: `$log_stream_chunk = $client->LogStreamChunk();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the LogStreamChunk record (throws on error).
+$log_stream_chunk = $client->LogStreamChunk()->load(["id" => "log_stream_chunk_id", "log_stream_id" => "log_stream_id", "space_id" => "space_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of LogStreamChunk entities, one per record (throws on error).
+$log_stream_chunks = $client->LogStreamChunk()->list(["log_stream_id" => "example", "space_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$log_stream_chunk = $client->LogStreamChunk()->create([
+    "log_stream_id" => null, // string
+    "space_id" => null, // string
+]);
+```
+
+
+### LogoImage
+
+Create an instance: `$logo_image = $client->LogoImage();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_products` | `array` | Products this organization has activated (PRD 144). |
+| `agents_only` | `bool` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `bool` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `github_prs_authored_by_change_author` | `bool` |  |
+| `id` | `string` |  |
+| `logo_url` | `mixed` |  |
+| `member_count` | `int` |  |
+| `name` | `string` |  |
+| `pending_invitation_count` | `int` |  |
+| `personal` | `bool` |  |
+| `repository_count` | `int` |  |
+| `role` | `mixed` |  |
+| `sandbox_region` | `string` |  |
+| `shared_agent_personal_accounts_enabled` | `bool` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` |  |
+| `source_control_providers` | `array` | Connected source control providers for this organization. |
+| `source_ui_enabled` | `bool` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `string` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+| `verify_pr_scenario_writing_enabled` | `bool` |  |
+
+
+### MarketingSetting
+
+Create an instance: `$marketing_setting = $client->MarketingSetting();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `call_first` | `bool` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of MarketingSetting entities, one per record (throws on error).
+$marketing_settings = $client->MarketingSetting()->list();
+```
+
+
+### McpOauth
+
+Create an instance: `$mcp_oauth = $client->McpOauth();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
 
 
 ### Me
@@ -10839,6 +22468,50 @@ $memory = $client->Memory()->create([
 ```
 
 
+### MergeQueueEntry
+
+Create an instance: `$merge_queue_entry = $client->MergeQueueEntry();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `analytics` | `array` | Queue performance for the reporting window. |
+| `change_id` | `mixed` |  |
+| `expected_target_commit_id` | `mixed` |  |
+| `expected_target_version` | `mixed` |  |
+| `expected_version` | `int` |  |
+| `github_pr_number` | `mixed` |  |
+| `id` | `string` |  |
+| `idempotency_key` | `string` |  |
+| `kind` | `string` |  |
+| `policy` | `array` |  |
+| `priority` | `string` |  |
+| `queue` | `array` |  |
+| `target_branches` | `array` | Bookmark names for the target picker. |
+| `when_ready` | `mixed` |  |
+
+#### Example: Create
+
+```php
+$merge_queue_entry = $client->MergeQueueEntry()->create([
+    "merge_queue_id" => null, // string
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+    "expected_version" => null, // int
+    "idempotency_key" => null, // string
+    "kind" => null, // string
+]);
+```
+
+
 ### MergeRequest
 
 Create an instance: `$merge_request = $client->MergeRequest();`
@@ -10902,6 +22575,43 @@ $merge_request = $client->MergeRequest()->create([
     "organization_id" => null, // string
     "idempotency_key" => null, // string
     "number" => null, // int
+]);
+```
+
+
+### MergeResolution
+
+Create an instance: `$merge_resolution = $client->MergeResolution();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `base` | `string` | Common ancestor file contents |
+| `content` | `mixed` |  |
+| `context` | `array` | Optional surrounding files keyed by path |
+| `duration_ms` | `int` |  |
+| `fallback` | `bool` |  |
+| `model` | `string` |  |
+| `ours` | `string` | Current / left file contents |
+| `path` | `string` | Repository-relative path of the conflicted file |
+| `resolved` | `bool` |  |
+| `theirs` | `string` | Incoming / right file contents |
+
+#### Example: Create
+
+```php
+$merge_resolution = $client->MergeResolution()->create([
+    "base" => null, // string
+    "ours" => null, // string
+    "theirs" => null, // string
 ]);
 ```
 
@@ -10995,6 +22705,95 @@ $metric_querys = $client->MetricQuery()->list();
 ```
 
 
+### MetronomeWebhook
+
+Create an instance: `$metronome_webhook = $client->MetronomeWebhook();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$metronome_webhook = $client->MetronomeWebhook()->create([
+]);
+```
+
+
+### ModelSubscriptionAccount
+
+Create an instance: `$model_subscription_account = $client->ModelSubscriptionAccount();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accounts` | `array` |  |
+| `agents` | `array` |  |
+| `can_disconnect` | `bool` |  |
+| `connection_agent` | `mixed` |  |
+| `email` | `string` |  |
+| `id` | `string` |  |
+| `label` | `string` |  |
+| `provider` | `string` |  |
+| `saved` | `bool` |  |
+| `status` | `string` |  |
+| `usable` | `bool` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of ModelSubscriptionAccount entities, one per record (throws on error).
+$model_subscription_accounts = $client->ModelSubscriptionAccount()->list();
+```
+
+#### Example: Create
+
+```php
+$model_subscription_account = $client->ModelSubscriptionAccount()->create([
+    "label" => null, // string
+]);
+```
+
+
+### ModelSubscriptionAccountConnection
+
+Create an instance: `$model_subscription_account_connection = $client->ModelSubscriptionAccountConnection();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ModelSubscriptionAccountConnection record (throws on error).
+$model_subscription_account_connection = $client->ModelSubscriptionAccountConnection()->load(["id" => "model_subscription_account_connection_id"]);
+```
+
+
 ### NetworkConnection
 
 Create an instance: `$network_connection = $client->NetworkConnection();`
@@ -11029,6 +22828,127 @@ $network_connection = $client->NetworkConnection()->create([
     "organization_id" => null, // string
     "name" => null, // string
 ]);
+```
+
+
+### NetworkingSpace
+
+Create an instance: `$networking_space = $client->NetworkingSpace();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the NetworkingSpace record (throws on error).
+$networking_space = $client->NetworkingSpace()->load(["id" => "networking_space_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of NetworkingSpace entities, one per record (throws on error).
+$networking_spaces = $client->NetworkingSpace()->list();
+```
+
+#### Example: Create
+
+```php
+$networking_space = $client->NetworkingSpace()->create([
+]);
+```
+
+
+### Node
+
+Create an instance: `$node = $client->Node();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `mixed` |  |
+| `account_id` | `mixed` |  |
+| `account_login` | `string` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `id` | `string` |  |
+| `installation_id` | `string` |  |
+| `installed_at` | `mixed` |  |
+| `installed_at_label` | `mixed` |  |
+| `manage_access_url` | `string` |  |
+| `organization_id` | `string` |  |
+| `permission_entries` | `array` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `array` |  |
+| `status` | `string` |  |
+| `suspended_at` | `mixed` |  |
+| `suspended_at_label` | `mixed` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of Node entities, one per record (throws on error).
+$nodes = $client->Node()->list(["organization_id" => "example"]);
+```
+
+
+### NodeCertificate
+
+Create an instance: `$node_certificate = $client->NodeCertificate();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### NodeLease
+
+Create an instance: `$node_lease = $client->NodeLease();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of NodeLease entities, one per record (throws on error).
+$node_leases = $client->NodeLease()->list(["node_id" => "example"]);
 ```
 
 
@@ -11107,6 +23027,210 @@ $nomad_logs = $client->NomadLog()->list(["app_id" => "example"]);
 ```
 
 
+### Now
+
+Create an instance: `$now = $client->Now();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `needs_attention` | `array` |  |
+| `pagination` | `array` |  |
+| `recently_landed` | `array` |  |
+| `shipping_now` | `array` |  |
+| `summary` | `array` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the Now record (throws on error).
+$now = $client->Now()->load(["organization_id" => "organization_id"]);
+```
+
+
+### ObservabilityClickhouseCluster
+
+Create an instance: `$observability_clickhouse_cluster = $client->ObservabilityClickhouseCluster();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ObservabilityClickhouseCluster record (throws on error).
+$observability_clickhouse_cluster = $client->ObservabilityClickhouseCluster()->load(["id" => "observability_clickhouse_cluster_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of ObservabilityClickhouseCluster entities, one per record (throws on error).
+$observability_clickhouse_clusters = $client->ObservabilityClickhouseCluster()->list();
+```
+
+#### Example: Create
+
+```php
+$observability_clickhouse_cluster = $client->ObservabilityClickhouseCluster()->create([
+]);
+```
+
+
+### ObservabilityQuickwitCluster
+
+Create an instance: `$observability_quickwit_cluster = $client->ObservabilityQuickwitCluster();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ObservabilityQuickwitCluster record (throws on error).
+$observability_quickwit_cluster = $client->ObservabilityQuickwitCluster()->load(["id" => "observability_quickwit_cluster_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of ObservabilityQuickwitCluster entities, one per record (throws on error).
+$observability_quickwit_clusters = $client->ObservabilityQuickwitCluster()->list();
+```
+
+#### Example: Create
+
+```php
+$observability_quickwit_cluster = $client->ObservabilityQuickwitCluster()->create([
+]);
+```
+
+
+### ObservabilitySpace
+
+Create an instance: `$observability_space = $client->ObservabilitySpace();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ObservabilitySpace record (throws on error).
+$observability_space = $client->ObservabilitySpace()->load(["id" => "observability_space_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of ObservabilitySpace entities, one per record (throws on error).
+$observability_spaces = $client->ObservabilitySpace()->list();
+```
+
+#### Example: Create
+
+```php
+$observability_space = $client->ObservabilitySpace()->create([
+]);
+```
+
+
+### Openapi
+
+Create an instance: `$openapi = $client->Openapi();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the Openapi record (throws on error).
+$openapi = $client->Openapi()->load();
+```
+
+
+### OrgInvitation
+
+Create an instance: `$org_invitation = $client->OrgInvitation();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `invitation` | `array` |  |
+| `registration_options` | `mixed` |  |
+| `requires_password_setup` | `bool` |  |
+| `start_guided_setup` | `bool` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the OrgInvitation record (throws on error).
+$org_invitation = $client->OrgInvitation()->load(["id" => "org_invitation_id"]);
+```
+
+
 ### Organization
 
 Create an instance: `$organization = $client->Organization();`
@@ -11172,6 +23296,552 @@ $organization = $client->Organization()->create([
     "slug" => null, // string
 ]);
 ```
+
+
+### OrganizationApp
+
+Create an instance: `$organization_app = $client->OrganizationApp();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of OrganizationApp entities, one per record (throws on error).
+$organization_apps = $client->OrganizationApp()->list(["organization_id" => "example", "native_agent_id" => "example"]);
+```
+
+
+### OrganizationControl
+
+Create an instance: `$organization_control = $client->OrganizationControl();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### OrganizationDevice
+
+Create an instance: `$organization_device = $client->OrganizationDevice();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### OrganizationIdentityCertificate
+
+Create an instance: `$organization_identity_certificate = $client->OrganizationIdentityCertificate();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the OrganizationIdentityCertificate record (throws on error).
+$organization_identity_certificate = $client->OrganizationIdentityCertificate()->load(["id" => "organization_identity_certificate_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of OrganizationIdentityCertificate entities, one per record (throws on error).
+$organization_identity_certificates = $client->OrganizationIdentityCertificate()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$organization_identity_certificate = $client->OrganizationIdentityCertificate()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### OrganizationInteraction
+
+Create an instance: `$organization_interaction = $client->OrganizationInteraction();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$organization_interaction = $client->OrganizationInteraction()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### OrganizationInvitation
+
+Create an instance: `$organization_invitation = $client->OrganizationInvitation();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email` | `string` |  |
+| `id` | `string` |  |
+| `role` | `string` |  |
+
+#### Example: Create
+
+```php
+$organization_invitation = $client->OrganizationInvitation()->create([
+    "organization_id" => null, // string
+    "email" => null, // string
+    "role" => null, // string
+]);
+```
+
+
+### OrganizationMessageFile
+
+Create an instance: `$organization_message_file = $client->OrganizationMessageFile();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$organization_message_file = $client->OrganizationMessageFile()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### OrganizationOidcTrust
+
+Create an instance: `$organization_oidc_trust = $client->OrganizationOidcTrust();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the OrganizationOidcTrust record (throws on error).
+$organization_oidc_trust = $client->OrganizationOidcTrust()->load(["id" => "organization_oidc_trust_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of OrganizationOidcTrust entities, one per record (throws on error).
+$organization_oidc_trusts = $client->OrganizationOidcTrust()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$organization_oidc_trust = $client->OrganizationOidcTrust()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### OrganizationRunEvent
+
+Create an instance: `$organization_run_event = $client->OrganizationRunEvent();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$organization_run_event = $client->OrganizationRunEvent()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### OrganizationRunOutcome
+
+Create an instance: `$organization_run_outcome = $client->OrganizationRunOutcome();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$organization_run_outcome = $client->OrganizationRunOutcome()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### OrganizationRunUsage
+
+Create an instance: `$organization_run_usage = $client->OrganizationRunUsage();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$organization_run_usage = $client->OrganizationRunUsage()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### OrganizationSandbox
+
+Create an instance: `$organization_sandbox = $client->OrganizationSandbox();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### OrganizationSecret
+
+Create an instance: `$organization_secret = $client->OrganizationSecret();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `app_environment_id` | `mixed` |  |
+| `app_service_id` | `mixed` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `created_by` | `mixed` |  |
+| `current_version` | `mixed` |  |
+| `description` | `mixed` |  |
+| `env_key` | `string` |  |
+| `expose_to_build` | `bool` |  |
+| `expose_to_ci` | `bool` |  |
+| `hosted_app_id` | `mixed` |  |
+| `id` | `string` |  |
+| `last_accessed_at` | `mixed` |  |
+| `last_accessed_at_label` | `mixed` |  |
+| `last_accessed_by` | `mixed` |  |
+| `latest_version_number` | `mixed` |  |
+| `name` | `string` |  |
+| `organization_id` | `mixed` |  |
+| `owner_service_account_id` | `mixed` |  |
+| `rotation_policy` | `mixed` |  |
+| `scope_kind` | `string` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the OrganizationSecret record (throws on error).
+$organization_secret = $client->OrganizationSecret()->load(["id" => "organization_secret_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of OrganizationSecret entities, one per record (throws on error).
+$organization_secrets = $client->OrganizationSecret()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$organization_secret = $client->OrganizationSecret()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### OrganizationServiceAccount
+
+Create an instance: `$organization_service_account = $client->OrganizationServiceAccount();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the OrganizationServiceAccount record (throws on error).
+$organization_service_account = $client->OrganizationServiceAccount()->load(["id" => "organization_service_account_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of OrganizationServiceAccount entities, one per record (throws on error).
+$organization_service_accounts = $client->OrganizationServiceAccount()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$organization_service_account = $client->OrganizationServiceAccount()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### OrganizationSetting
+
+Create an instance: `$organization_setting = $client->OrganizationSetting();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `concurrent_run_limit_override` | `mixed` |  |
+| `customize_onboarding_packages` | `bool` |  |
+| `daily_run_limit_override` | `mixed` |  |
+| `deployment_usage_visibility` | `string` |  |
+| `monthly_browser_minutes_limit_override` | `mixed` |  |
+| `monthly_budget_dollars` | `mixed` |  |
+| `name` | `string` |  |
+| `onboarding_custom_pricing` | `bool` |  |
+| `onboarding_package_keys` | `array` |  |
+
+
+### OrganizationSite
+
+Create an instance: `$organization_site = $client->OrganizationSite();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of OrganizationSite entities, one per record (throws on error).
+$organization_sites = $client->OrganizationSite()->list(["organization_id" => "example", "native_agent_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$organization_site = $client->OrganizationSite()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### OrganizationSubscription
+
+Create an instance: `$organization_subscription = $client->OrganizationSubscription();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### OrganizationTool
+
+Create an instance: `$organization_tool = $client->OrganizationTool();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `arguments` | `array` |  |
+| `native_agent_id` | `string` |  |
+| `tool` | `string` |  |
+
+#### Example: Create
+
+```php
+$organization_tool = $client->OrganizationTool()->create([
+    "organization_id" => null, // string
+    "arguments" => null, // array
+    "native_agent_id" => null, // string
+    "tool" => null, // string
+]);
+```
+
+
+### OrganizationWorkloadIdentity
+
+Create an instance: `$organization_workload_identity = $client->OrganizationWorkloadIdentity();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the OrganizationWorkloadIdentity record (throws on error).
+$organization_workload_identity = $client->OrganizationWorkloadIdentity()->load(["id" => "organization_workload_identity_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of OrganizationWorkloadIdentity entities, one per record (throws on error).
+$organization_workload_identitys = $client->OrganizationWorkloadIdentity()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$organization_workload_identity = $client->OrganizationWorkloadIdentity()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### OtelIngest
+
+Create an instance: `$otel_ingest = $client->OtelIngest();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
 
 
 ### Page
@@ -11259,6 +23929,106 @@ $page_agents = $client->PageAgent()->list(["organization_id" => "example"]);
 ```
 
 
+### PageArtefact
+
+Create an instance: `$page_artefact = $client->PageArtefact();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `artefact` | `mixed` |  |
+| `automation` | `mixed` |  |
+| `automation_invocation_id` | `mixed` |  |
+| `byte_size` | `int` |  |
+| `checksum_sha256` | `string` |  |
+| `comment_threads` | `array` |  |
+| `content_type` | `string` |  |
+| `created_at` | `mixed` |  |
+| `created_by_user_id` | `mixed` |  |
+| `description` | `mixed` |  |
+| `document_key` | `string` | Stable document identity shared by all revisions. |
+| `draft` | `mixed` | The autosaved working copy of the newest Markdown version; null for older versions and other files. |
+| `entrypoint` | `string` |  |
+| `expires_at` | `mixed` |  |
+| `filename` | `string` |  |
+| `files` | `array` |  |
+| `harness` | `mixed` |  |
+| `harness_version` | `mixed` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `kinds` | `array` |  |
+| `model` | `mixed` |  |
+| `organization` | `array` |  |
+| `organization_id` | `string` |  |
+| `pagination` | `array` |  |
+| `permissions` | `array` |  |
+| `preview` | `array` |  |
+| `published_at` | `mixed` |  |
+| `published_at_label` | `mixed` |  |
+| `publisher` | `mixed` |  |
+| `repository` | `mixed` |  |
+| `repository_id` | `mixed` |  |
+| `selected_path` | `string` |  |
+| `slug` | `string` |  |
+| `source` | `string` |  |
+| `status` | `string` |  |
+| `title` | `string` |  |
+| `vcs_agent_checkpoint_id` | `mixed` |  |
+| `vcs_agent_session_id` | `mixed` |  |
+| `version` | `int` |  |
+| `versions` | `array` |  |
+| `view_url` | `string` |  |
+| `web_url` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the PageArtefact record (throws on error).
+$page_artefact = $client->PageArtefact()->load(["id" => "page_artefact_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of PageArtefact entities, one per record (throws on error).
+$page_artefacts = $client->PageArtefact()->list(["organization_id" => "example"]);
+```
+
+
+### PageCiPipelineRun
+
+Create an instance: `$page_ci_pipeline_run = $client->PageCiPipelineRun();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `error` | `mixed` |  |
+| `id` | `string` |  |
+| `jobs` | `array` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the PageCiPipelineRun record (throws on error).
+$page_ci_pipeline_run = $client->PageCiPipelineRun()->load(["id" => "page_ci_pipeline_run_id", "pipeline_id" => "pipeline_id"]);
+```
+
+
 ### PageProjectRun
 
 Create an instance: `$page_project_run = $client->PageProjectRun();`
@@ -11292,6 +24062,141 @@ Create an instance: `$page_project_run = $client->PageProjectRun();`
 ```php
 // load() returns the ENTITY — call data_get() for the PageProjectRun record (throws on error).
 $page_project_run = $client->PageProjectRun()->load(["id" => "page_project_run_id", "organization_id" => "organization_id", "project_id" => "project_id"]);
+```
+
+
+### PageRepoVcCommit
+
+Create an instance: `$page_repo_vc_commit = $client->PageRepoVcCommit();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `commit` | `mixed` |  |
+| `diff_path` | `string` | Fingerprinted path serving this commit range's file diff. |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the PageRepoVcCommit record (throws on error).
+$page_repo_vc_commit = $client->PageRepoVcCommit()->load(["id" => "page_repo_vc_commit_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+
+### PagesBilling
+
+Create an instance: `$pages_billing = $client->PagesBilling();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `array` |  |
+| `breakdown` | `mixed` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `mixed` |  |
+| `can_manage_contact` | `bool` |  |
+| `can_manage_extra_spend` | `bool` |  |
+| `can_manage_local_subscription` | `bool` |  |
+| `can_manage_payment_method` | `bool` |  |
+| `can_set_up_billing` | `bool` |  |
+| `customer` | `mixed` |  |
+| `deployment_usage_visible` | `bool` |  |
+| `entitlements` | `array` |  |
+| `extra_spend_enabled` | `bool` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` |  |
+| `package` | `mixed` |  |
+| `prepaid` | `mixed` |  |
+| `preview` | `mixed` | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `array` |  |
+| `stripe` | `array` |  |
+| `subscription` | `mixed` |  |
+| `token_account` | `array` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the PagesBilling record (throws on error).
+$pages_billing = $client->PagesBilling()->load(["organization_id" => "organization_id"]);
+```
+
+
+### PagesGithubOnboarding
+
+Create an instance: `$pages_github_onboarding = $client->PagesGithubOnboarding();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `onboarding` | `array` |  |
+| `organization` | `array` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the PagesGithubOnboarding record (throws on error).
+$pages_github_onboarding = $client->PagesGithubOnboarding()->load(["organization_id" => "organization_id"]);
+```
+
+
+### PagesMember
+
+Create an instance: `$pages_member = $client->PagesMember();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accepted_at` | `mixed` |  |
+| `accepted_by_user` | `mixed` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `email` | `string` |  |
+| `email_delivery_status` | `string` |  |
+| `expires_at` | `mixed` |  |
+| `expires_at_label` | `mixed` |  |
+| `id` | `string` |  |
+| `invite_url` | `mixed` |  |
+| `invited_by_user` | `mixed` |  |
+| `organization` | `array` |  |
+| `revoked_at` | `mixed` |  |
+| `role` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of PagesMember entities, one per record (throws on error).
+$pages_members = $client->PagesMember()->list(["organization_id" => "example"]);
 ```
 
 
@@ -11423,6 +24328,205 @@ Create an instance: `$pages_project_scenario = $client->PagesProjectScenario();`
 ```php
 // list() returns an array of PagesProjectScenario entities, one per record (throws on error).
 $pages_project_scenarios = $client->PagesProjectScenario()->list(["organization_id" => "example", "project_id" => "example"]);
+```
+
+
+### PagesRegistry
+
+Create an instance: `$pages_registry = $client->PagesRegistry();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active_repository_count` | `int` |  |
+| `error` | `mixed` |  |
+| `pagination` | `array` |  |
+| `repositories` | `array` |  |
+| `repository_count` | `int` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the PagesRegistry record (throws on error).
+$pages_registry = $client->PagesRegistry()->load(["organization_id" => "organization_id"]);
+```
+
+
+### PagesSession
+
+Create an instance: `$pages_session = $client->PagesSession();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter` | `string` |  |
+| `created_at` | `mixed` |  |
+| `cursor` | `string` |  |
+| `ended_at` | `mixed` |  |
+| `external_session_id` | `string` |  |
+| `facets` | `array` |  |
+| `from` | `string` |  |
+| `github_access_warnings` | `array` |  |
+| `harness` | `string` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `string` |  |
+| `last_activity_at` | `mixed` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `mixed` |  |
+| `limit` | `int` |  |
+| `markers` | `array` |  |
+| `max_bytes` | `int` |  |
+| `mode` | `string` |  |
+| `offset` | `int` |  |
+| `pagination` | `array` |  |
+| `query` | `string` |  |
+| `repo` | `string` |  |
+| `repository` | `mixed` |  |
+| `search` | `mixed` |  |
+| `search_enabled` | `bool` |  |
+| `session` | `mixed` | Identical serialization to the org sessions page's expanded session, so the web reuses one session-detail builder. |
+| `sessions` | `array` |  |
+| `started_at` | `mixed` |  |
+| `stats` | `array` |  |
+| `status` | `string` |  |
+| `title` | `mixed` |  |
+| `to` | `string` |  |
+| `token_stats` | `mixed` |  |
+| `transcript_index` | `mixed` |  |
+| `transcript_stats` | `mixed` |  |
+| `updated_at` | `mixed` |  |
+| `user` | `mixed` |  |
+| `user_id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the PagesSession record (throws on error).
+$pages_session = $client->PagesSession()->load(["id" => "pages_session_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of PagesSession entities, one per record (throws on error).
+$pages_sessions = $client->PagesSession()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$pages_session = $client->PagesSession()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### Pairing
+
+Create an instance: `$pairing = $client->Pairing();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the Pairing record (throws on error).
+$pairing = $client->Pairing()->load(["id" => "pairing_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of Pairing entities, one per record (throws on error).
+$pairings = $client->Pairing()->list();
+```
+
+#### Example: Create
+
+```php
+$pairing = $client->Pairing()->create([
+]);
+```
+
+
+### PairingEvent
+
+Create an instance: `$pairing_event = $client->PairingEvent();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```php
+// list() returns an array of PairingEvent entities, one per record (throws on error).
+$pairing_events = $client->PairingEvent()->list(["pairing_id" => "example"]);
+```
+
+
+### ParallelV1
+
+Create an instance: `$parallel_v1 = $client->ParallelV1();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### PatchsetDiff
+
+Create an instance: `$patchset_diff = $client->PatchsetDiff();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `files` | `array` |  |
+| `id` | `string` |  |
+| `patchset` | `array` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the PatchsetDiff record (throws on error).
+$patchset_diff = $client->PatchsetDiff()->load(["id" => "patchset_diff_id", "change_id" => "change_id", "organization_id" => "organization_id", "patchset_id" => "patchset_id", "repo_id" => "repo_id"]);
 ```
 
 
@@ -11594,6 +24698,97 @@ $preview_sharing_approval = $client->PreviewSharingApproval()->create([
     "app_id" => null, // string
     "preview_id" => null, // string
     "snapshot_version" => null, // int
+]);
+```
+
+
+### ProactiveAgentWaitlistEntry
+
+Create an instance: `$proactive_agent_waitlist_entry = $client->ProactiveAgentWaitlistEntry();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email` | `string` |  |
+| `first_task` | `mixed` | The first job they would hand an agent. |
+| `invite_code` | `mixed` | The referral code of the invite link they arrived through. |
+| `places_per_referral` | `int` | Most places one referral moves the entry up; fewer when boosted entries are ahead. |
+| `position` | `int` | 1-based place in the queue. |
+| `position_after_next_referral` | `int` | The place one more referral would give this entry, as Rails would assign it. |
+| `referral_code` | `string` | Shared in this entry's invite link. |
+| `referral_count` | `int` | People who joined through this entry's link. |
+| `total` | `int` | Display total including a random increment per signup; not the actual number of entries. |
+| `website` | `mixed` | Honeypot. |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ProactiveAgentWaitlistEntry record (throws on error).
+$proactive_agent_waitlist_entry = $client->ProactiveAgentWaitlistEntry()->load(["id" => "proactive_agent_waitlist_entry_id"]);
+```
+
+#### Example: Create
+
+```php
+$proactive_agent_waitlist_entry = $client->ProactiveAgentWaitlistEntry()->create([
+    "email" => null, // string
+]);
+```
+
+
+### Product
+
+Create an instance: `$product = $client->Product();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_products` | `array` | Products this organization has activated (PRD 144). |
+| `agents_only` | `bool` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `bool` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `github_prs_authored_by_change_author` | `bool` |  |
+| `id` | `string` |  |
+| `logo_url` | `mixed` |  |
+| `member_count` | `int` |  |
+| `name` | `string` |  |
+| `pending_invitation_count` | `int` |  |
+| `personal` | `bool` |  |
+| `product` | `string` |  |
+| `repository_count` | `int` |  |
+| `role` | `mixed` |  |
+| `sandbox_region` | `string` |  |
+| `shared_agent_personal_accounts_enabled` | `bool` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` |  |
+| `source_control_providers` | `array` | Connected source control providers for this organization. |
+| `source_ui_enabled` | `bool` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `string` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+| `verify_pr_scenario_writing_enabled` | `bool` |  |
+
+#### Example: Create
+
+```php
+$product = $client->Product()->create([
+    "organization_id" => null, // string
+    "product" => null, // string
 ]);
 ```
 
@@ -12657,6 +25852,62 @@ $pull_request = $client->PullRequest()->create([
 ```
 
 
+### PullRequestAction
+
+Create an instance: `$pull_request_action = $client->PullRequestAction();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action_name` | `string` |  |
+| `body` | `string` |  |
+| `comment_id` | `string` |  |
+| `comments` | `array` |  |
+| `event` | `string` |  |
+| `expected_head_sha` | `string` |  |
+| `id` | `mixed` |  |
+| `label` | `string` |  |
+| `line` | `int` |  |
+| `node_id` | `mixed` |  |
+| `operation_key` | `string` |  |
+| `path` | `string` |  |
+| `run_id` | `string` |  |
+| `side` | `string` |  |
+| `start_line` | `int` |  |
+| `start_side` | `string` |  |
+| `thread_id` | `string` |  |
+
+#### Example: Create
+
+```php
+$pull_request_action = $client->PullRequestAction()->create([
+    "number" => null, // string
+    "organization_id" => null, // string
+    "pull_request_id" => null, // string
+    "action_name" => null, // string
+    "operation_key" => null, // string
+]);
+```
+
+
+### PullRequestMagicMerge
+
+Create an instance: `$pull_request_magic_merge = $client->PullRequestMagicMerge();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
 ### PullRequestSetting
 
 Create an instance: `$pull_request_setting = $client->PullRequestSetting();`
@@ -12840,6 +26091,70 @@ $pull_request_setting_detect_comment = $client->PullRequestSettingDetectComment(
 ```
 
 
+### PullRequestTranscript
+
+Create an instance: `$pull_request_transcript = $client->PullRequestTranscript();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter` | `string` |  |
+| `created_at` | `mixed` |  |
+| `ended_at` | `mixed` |  |
+| `external_session_id` | `string` |  |
+| `harness` | `string` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `string` |  |
+| `last_activity_at` | `mixed` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `mixed` |  |
+| `repository` | `mixed` |  |
+| `started_at` | `mixed` |  |
+| `stats` | `array` |  |
+| `status` | `string` |  |
+| `title` | `mixed` |  |
+| `updated_at` | `mixed` |  |
+| `user` | `mixed` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of PullRequestTranscript entities, one per record (throws on error).
+$pull_request_transcripts = $client->PullRequestTranscript()->list(["organization_id" => "example", "pull_request_id" => "example", "repo_id" => "example"]);
+```
+
+
+### PullZone
+
+Create an instance: `$pull_zone = $client->PullZone();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `slug` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of PullZone entities, one per record (throws on error).
+$pull_zones = $client->PullZone()->list(["organization_id" => "example"]);
+```
+
+
 ### Recorder
 
 Create an instance: `$recorder = $client->Recorder();`
@@ -12888,6 +26203,71 @@ Create an instance: `$registry_v2 = $client->RegistryV2();`
 | `create(data)` | Create a new entity with the given data. |
 
 
+### RelayAgentConnection
+
+Create an instance: `$relay_agent_connection = $client->RelayAgentConnection();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_card_url` | `string` |  |
+| `auth_scheme` | `string` |  |
+| `can_configure` | `bool` |  |
+| `can_disconnect` | `bool` |  |
+| `can_setup` | `bool` |  |
+| `connection` | `array` |  |
+| `credential` | `mixed` | Write-only outbound key. |
+| `error_code` | `mixed` |  |
+| `expected_generation` | `int` |  |
+| `generation` | `int` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `remote_agent` | `mixed` |  |
+| `requester_id` | `string` |  |
+| `retired_at` | `mixed` |  |
+| `revoked_at` | `mixed` |  |
+| `scope_key` | `string` |  |
+| `source_operation_id` | `mixed` |  |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the RelayAgentConnection record (throws on error).
+$relay_agent_connection = $client->RelayAgentConnection()->load(["id" => "relay_agent_connection_id", "agent_id" => "agent_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of RelayAgentConnection entities, one per record (throws on error).
+$relay_agent_connections = $client->RelayAgentConnection()->list(["agent_id" => "example", "organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$relay_agent_connection = $client->RelayAgentConnection()->create([
+    "agent_id" => null, // string
+    "organization_id" => null, // string
+    "agent_card_url" => null, // string
+    "auth_scheme" => null, // string
+    "name" => null, // string
+]);
+```
+
+
 ### RelayAgentLocalThread
 
 Create an instance: `$relay_agent_local_thread = $client->RelayAgentLocalThread();`
@@ -12903,6 +26283,572 @@ Create an instance: `$relay_agent_local_thread = $client->RelayAgentLocalThread(
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+
+### RelaySignal
+
+Create an instance: `$relay_signal = $client->RelaySignal();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$relay_signal = $client->RelaySignal()->create([
+]);
+```
+
+
+### ReleaseRollout
+
+Create an instance: `$release_rollout = $client->ReleaseRollout();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ReleaseRollout record (throws on error).
+$release_rollout = $client->ReleaseRollout()->load(["id" => "release_rollout_id", "release_id" => "release_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of ReleaseRollout entities, one per record (throws on error).
+$release_rollouts = $client->ReleaseRollout()->list(["release_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$release_rollout = $client->ReleaseRollout()->create([
+    "release_id" => null, // string
+]);
+```
+
+
+### Repo
+
+Create an instance: `$repo = $client->Repo();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_retry_import` | `bool` | True when a failed client import can be requeued for CLI resume. |
+| `can_retry_sync` | `bool` | True when the latest sync run failed and can be retried. |
+| `disclaimer` | `mixed` |  |
+| `federated_in_home` | `bool` | True when this Space is a folder virtual repository inside the organization Home monorepo. |
+| `github_repository` | `mixed` |  |
+| `icon_name` | `string` |  |
+| `id` | `string` | Virtual repository public ID for non-Home rows; Home uses the physical repository public ID. |
+| `import_item_id` | `mixed` |  |
+| `is_home` | `bool` |  |
+| `name` | `string` |  |
+| `remote_repository` | `mixed` |  |
+| `root_path` | `mixed` | Home-relative folder path when federated_in_home is true; null otherwise. |
+| `slug` | `string` |  |
+| `sync_error_message` | `mixed` |  |
+| `sync_provider` | `string` |  |
+| `sync_status` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of Repo entities, one per record (throws on error).
+$repos = $client->Repo()->list(["organization_id" => "example"]);
+```
+
+
+### RepoAccessToken
+
+Create an instance: `$repo_access_token = $client->RepoAccessToken();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access_token` | `array` |  |
+| `active` | `bool` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `credential_purpose` | `string` | Issues a revocable read-write system credential valid for one hour. |
+| `expires_at` | `mixed` |  |
+| `expires_at_label` | `mixed` |  |
+| `expires_in_days` | `mixed` |  |
+| `id` | `string` |  |
+| `last_used_at` | `mixed` |  |
+| `last_used_at_label` | `mixed` |  |
+| `name` | `string` |  |
+| `permission_level` | `string` |  |
+| `plain_text_token` | `string` |  |
+| `revoked_at` | `mixed` |  |
+| `revoked_at_label` | `mixed` |  |
+| `token_preview` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of RepoAccessToken entities, one per record (throws on error).
+$repo_access_tokens = $client->RepoAccessToken()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$repo_access_token = $client->RepoAccessToken()->create([
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+    "name" => null, // string
+]);
+```
+
+
+### RepoAction
+
+Create an instance: `$repo_action = $client->RepoAction();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `pipeline` | `array` |  |
+| `run` | `array` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of RepoAction entities, one per record (throws on error).
+$repo_actions = $client->RepoAction()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+
+### RepoAgentCheckpoint
+
+Create an instance: `$repo_agent_checkpoint = $client->RepoAgentCheckpoint();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the RepoAgentCheckpoint record (throws on error).
+$repo_agent_checkpoint = $client->RepoAgentCheckpoint()->load(["id" => "repo_agent_checkpoint_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+
+### RepoAgentSession
+
+Create an instance: `$repo_agent_session = $client->RepoAgentSession();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter` | `string` |  |
+| `agent_session` | `array` |  |
+| `external_session_id` | `string` |  |
+| `id` | `string` |  |
+| `status` | `string` |  |
+| `title` | `mixed` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the RepoAgentSession record (throws on error).
+$repo_agent_session = $client->RepoAgentSession()->load(["id" => "repo_agent_session_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of RepoAgentSession entities, one per record (throws on error).
+$repo_agent_sessions = $client->RepoAgentSession()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$repo_agent_session = $client->RepoAgentSession()->create([
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+]);
+```
+
+
+### RepoBookmarkProtection
+
+Create an instance: `$repo_bookmark_protection = $client->RepoBookmarkProtection();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `actor_policy` | `array` |  |
+| `bypass_mode` | `string` |  |
+| `created_at` | `string` |  |
+| `created_by_user_id` | `mixed` |  |
+| `enabled` | `bool` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `priority` | `int` |  |
+| `repository_id` | `string` |  |
+| `requirements` | `array` |  |
+| `target_kind` | `string` |  |
+| `target_pattern` | `mixed` |  |
+| `updated_at` | `string` |  |
+| `updated_by_user_id` | `mixed` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the RepoBookmarkProtection record (throws on error).
+$repo_bookmark_protection = $client->RepoBookmarkProtection()->load(["id" => "repo_bookmark_protection_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of RepoBookmarkProtection entities, one per record (throws on error).
+$repo_bookmark_protections = $client->RepoBookmarkProtection()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$repo_bookmark_protection = $client->RepoBookmarkProtection()->create([
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+]);
+```
+
+
+### RepoBookmarkProtectionEvent
+
+Create an instance: `$repo_bookmark_protection_event = $client->RepoBookmarkProtectionEvent();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `actor_kind` | `string` |  |
+| `actor_label` | `mixed` |  |
+| `actor_user_id` | `mixed` |  |
+| `bookmark_name` | `string` |  |
+| `bookmark_protection_rule_id` | `mixed` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `decision` | `string` |  |
+| `id` | `string` |  |
+| `intent` | `mixed` |  |
+| `metadata` | `array` |  |
+| `new_target` | `mixed` |  |
+| `old_target` | `mixed` |  |
+| `organization_id` | `string` |  |
+| `reason_codes` | `array` |  |
+| `repository_id` | `string` |  |
+| `source_request_id` | `mixed` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of RepoBookmarkProtectionEvent entities, one per record (throws on error).
+$repo_bookmark_protection_events = $client->RepoBookmarkProtectionEvent()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+
+### RepoCloudWorkspaceBackup
+
+Create an instance: `$repo_cloud_workspace_backup = $client->RepoCloudWorkspaceBackup();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the RepoCloudWorkspaceBackup record (throws on error).
+$repo_cloud_workspace_backup = $client->RepoCloudWorkspaceBackup()->load(["id" => "repo_cloud_workspace_backup_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of RepoCloudWorkspaceBackup entities, one per record (throws on error).
+$repo_cloud_workspace_backups = $client->RepoCloudWorkspaceBackup()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$repo_cloud_workspace_backup = $client->RepoCloudWorkspaceBackup()->create([
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+]);
+```
+
+
+### RepoCodeRule
+
+Create an instance: `$repo_code_rule = $client->RepoCodeRule();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active_revision_number` | `mixed` |  |
+| `capabilities` | `array` |  |
+| `code_rule` | `mixed` |  |
+| `created_at` | `string` |  |
+| `definition` | `array` |  |
+| `draft_pending` | `bool` | The latest revision is not the active one |
+| `enabled` | `bool` |  |
+| `expected_version` | `int` |  |
+| `id` | `string` |  |
+| `latest_revision_number` | `int` |  |
+| `name` | `string` | Name of the latest revision |
+| `repository` | `array` |  |
+| `scope` | `array` |  |
+| `slug` | `string` |  |
+| `state_version` | `int` | Send back as expected_version on every mutation |
+| `updated_at` | `string` |  |
+| `web_url` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the RepoCodeRule record (throws on error).
+$repo_code_rule = $client->RepoCodeRule()->load(["id" => "repo_code_rule_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of RepoCodeRule entities, one per record (throws on error).
+$repo_code_rules = $client->RepoCodeRule()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$repo_code_rule = $client->RepoCodeRule()->create([
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+    "definition" => null, // array
+]);
+```
+
+
+### RepoSetting
+
+Create an instance: `$repo_setting = $client->RepoSetting();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active` | `bool` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `description` | `mixed` |  |
+| `expires_at` | `mixed` |  |
+| `expires_at_label` | `mixed` |  |
+| `icon_name` | `string` |  |
+| `id` | `string` |  |
+| `last_used_at` | `mixed` |  |
+| `last_used_at_label` | `mixed` |  |
+| `merge_authority` | `string` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `permission_level` | `string` |  |
+| `revoked_at` | `mixed` |  |
+| `revoked_at_label` | `mixed` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `token_preview` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of RepoSetting entities, one per record (throws on error).
+$repo_settings = $client->RepoSetting()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+
+### RepoStat
+
+Create an instance: `$repo_stat = $client->RepoStat();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `repository_stats` | `array` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of RepoStat entities, one per record (throws on error).
+$repo_stats = $client->RepoStat()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+
+### RepoVc
+
+Create an instance: `$repo_vc = $client->RepoVc();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+
+### RepoVcCommit
+
+Create an instance: `$repo_vc_commit = $client->RepoVcCommit();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `name` | `string` |  |
+| `target_commit_id` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of RepoVcCommit entities, one per record (throws on error).
+$repo_vc_commits = $client->RepoVcCommit()->list(["organization_id" => "example", "repo_id" => "example", "ref" => "example"]);
+```
 
 
 ### ReportReplay
@@ -12965,6 +26911,495 @@ Create an instance: `$report_scenario = $client->ReportScenario();`
 $report_scenario = $client->ReportScenario()->create([
     "exploration_id" => null, // string
     "organization_id" => null, // string
+]);
+```
+
+
+### RepositoryAccess
+
+Create an instance: `$repository_access = $client->RepositoryAccess();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### RepositoryAccessResolve
+
+Create an instance: `$repository_access_resolve = $client->RepositoryAccessResolve();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `default_branch` | `string` |  |
+| `git_auth_username` | `string` |  |
+| `git_https_clone_url` | `mixed` |  |
+| `git_https_supported` | `bool` |  |
+| `github_access_warnings` | `array` |  |
+| `id` | `string` |  |
+| `membership_role` | `string` |  |
+| `organization_id` | `string` |  |
+| `organization_name` | `string` |  |
+| `organization_slug` | `string` |  |
+| `repository_id` | `string` |  |
+| `repository_name` | `string` |  |
+| `repository_slug` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the RepositoryAccessResolve record (throws on error).
+$repository_access_resolve = $client->RepositoryAccessResolve()->load(["id" => "repository_access_resolve_id", "resolve_id" => "resolve_id"]);
+```
+
+
+### RepositoryEvent
+
+Create an instance: `$repository_event = $client->RepositoryEvent();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### RepositoryImport
+
+Create an instance: `$repository_import = $client->RepositoryImport();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_connections` | `bool` |  |
+| `github_imports` | `array` |  |
+| `github_installations` | `array` |  |
+| `gitlab_configured` | `bool` |  |
+| `gitlab_imports` | `array` |  |
+| `gitlab_integrations` | `array` |  |
+| `gitlab_redirect_uri` | `mixed` |  |
+| `gitlab_self_managed_available` | `bool` |  |
+| `inventory_errors` | `array` |  |
+| `organization_id` | `string` |  |
+| `repositories` | `array` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the RepositoryImport record (throws on error).
+$repository_import = $client->RepositoryImport()->load(["organization_id" => "organization_id"]);
+```
+
+
+### RepositoryImportSession
+
+Create an instance: `$repository_import_session = $client->RepositoryImportSession();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action_required` | `string` |  |
+| `authorization_endpoint` | `string` |  |
+| `can_authorize_github` | `bool` |  |
+| `client_name` | `mixed` |  |
+| `client_version` | `mixed` |  |
+| `created_at` | `string` |  |
+| `error_message` | `mixed` |  |
+| `expires_at` | `string` |  |
+| `git_imports` | `array` |  |
+| `github_app_installation_id` | `mixed` |  |
+| `github_connected` | `bool` |  |
+| `id` | `string` |  |
+| `idempotency_key` | `string` |  |
+| `organization_id` | `string` |  |
+| `organization_slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the RepositoryImportSession record (throws on error).
+$repository_import_session = $client->RepositoryImportSession()->load(["id" => "repository_import_session_id"]);
+```
+
+#### Example: Create
+
+```php
+$repository_import_session = $client->RepositoryImportSession()->create([
+    "organization_id" => null, // string
+    "idempotency_key" => null, // string
+]);
+```
+
+
+### RepositoryImportSessionRepository
+
+Create an instance: `$repository_import_session_repository = $client->RepositoryImportSessionRepository();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `default_branch` | `mixed` |  |
+| `full_name` | `string` |  |
+| `name` | `string` |  |
+| `owner` | `string` |  |
+| `private` | `bool` |  |
+| `reason` | `mixed` |  |
+| `selectable` | `bool` |  |
+| `status` | `string` |  |
+| `visibility` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of RepositoryImportSessionRepository entities, one per record (throws on error).
+$repository_import_session_repositorys = $client->RepositoryImportSessionRepository()->list(["repository_import_session_id" => "example"]);
+```
+
+
+### RepositoryImportSessionSelection
+
+Create an instance: `$repository_import_session_selection = $client->RepositoryImportSessionSelection();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `repositories` | `mixed` |  |
+
+#### Example: Create
+
+```php
+$repository_import_session_selection = $client->RepositoryImportSessionSelection()->create([
+    "repository_import_session_id" => null, // string
+    "repositories" => null, // mixed
+]);
+```
+
+
+### RepositorySandboxEnvironment
+
+Create an instance: `$repository_sandbox_environment = $client->RepositorySandboxEnvironment();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the RepositorySandboxEnvironment record (throws on error).
+$repository_sandbox_environment = $client->RepositorySandboxEnvironment()->load(["id" => "repository_sandbox_environment_id", "repository_id" => "repository_id"]);
+```
+
+
+### RoderCodeRepair
+
+Create an instance: `$roder_code_repair = $client->RoderCodeRepair();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `base_sha` | `string` |  |
+| `cancel_requested` | `bool` |  |
+| `failure_code` | `mixed` |  |
+| `id` | `string` |  |
+| `launch_state` | `string` |  |
+| `organization_id` | `string` |  |
+| `repository_slug` | `string` |  |
+| `roder_thread_id` | `mixed` |  |
+| `roder_turn_id` | `mixed` |  |
+| `scenario_run_id` | `string` |  |
+| `task` | `mixed` |  |
+| `trigger_kind` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the RoderCodeRepair record (throws on error).
+$roder_code_repair = $client->RoderCodeRepair()->load(["id" => "roder_code_repair_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of RoderCodeRepair entities, one per record (throws on error).
+$roder_code_repairs = $client->RoderCodeRepair()->list(["scenario_run_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$roder_code_repair = $client->RoderCodeRepair()->create([
+    "base_sha" => null, // string
+    "organization_id" => null, // string
+    "repository_slug" => null, // string
+    "scenario_run_id" => null, // string
+]);
+```
+
+
+### RoderCodeRepairSetting
+
+Create an instance: `$roder_code_repair_setting = $client->RoderCodeRepairSetting();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `available` | `bool` |  |
+| `daily_limit` | `int` |  |
+| `enabled` | `bool` |  |
+| `enabled_at` | `mixed` |  |
+| `operator_user_id` | `mixed` |  |
+| `organization_id` | `string` |  |
+| `repository_slug` | `mixed` | Connected Composal repository required when enabling |
+
+#### Example: List
+
+```php
+// list() returns an array of RoderCodeRepairSetting entities, one per record (throws on error).
+$roder_code_repair_settings = $client->RoderCodeRepairSetting()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$roder_code_repair_setting = $client->RoderCodeRepairSetting()->create([
+    "enabled" => null, // bool
+    "organization_id" => null, // string
+]);
+```
+
+
+### RoderMachine
+
+Create an instance: `$roder_machine = $client->RoderMachine();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### RoderRun
+
+Create an instance: `$roder_run = $client->RoderRun();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### RoderWorkspaceCredential
+
+Create an instance: `$roder_workspace_credential = $client->RoderWorkspaceCredential();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `api_token` | `string` | Short-lived personal access token for the spawning user. |
+| `author_email` | `string` |  |
+| `author_name` | `string` |  |
+| `clone_url` | `string` |  |
+| `default_branch` | `string` |  |
+| `expires_at` | `string` |  |
+| `organization_id` | `string` |  |
+| `repository_id` | `string` |  |
+| `repository_slug` | `string` |  |
+| `repository_spec` | `string` | The explicitly selected physical repository address. |
+| `required_lifetime_seconds` | `int` | Lifetime the pending clone or command must be able to complete within. |
+| `token` | `string` | Short-lived read/write repository credential. |
+| `username` | `string` |  |
+
+#### Example: Create
+
+```php
+$roder_workspace_credential = $client->RoderWorkspaceCredential()->create([
+    "required_lifetime_seconds" => null, // int
+]);
+```
+
+
+### RunArtifact
+
+Create an instance: `$run_artifact = $client->RunArtifact();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```php
+// list() returns an array of RunArtifact entities, one per record (throws on error).
+$run_artifacts = $client->RunArtifact()->list(["pipeline_id" => "example", "run_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$run_artifact = $client->RunArtifact()->create([
+    "pipeline_id" => null, // string
+    "run_id" => null, // string
+]);
+```
+
+
+### RunJob
+
+Create an instance: `$run_job = $client->RunJob();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active` | `bool` |  |
+| `allow_failure` | `bool` |  |
+| `cache_archive_observations` | `mixed` | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `ci_pipeline_run_id` | `string` |  |
+| `ci_runner_id` | `mixed` |  |
+| `created_at` | `string` |  |
+| `dependencies_csv` | `mixed` |  |
+| `display_id` | `int` |  |
+| `environment_csv` | `mixed` |  |
+| `execution_order` | `int` |  |
+| `execution_profile` | `mixed` |  |
+| `exit_code` | `mixed` |  |
+| `failed` | `bool` |  |
+| `finished_at` | `mixed` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `log_chunks` | `array` |  |
+| `name` | `string` |  |
+| `number` | `int` |  |
+| `organization_id` | `string` |  |
+| `queued_at` | `mixed` |  |
+| `reconciliation_id` | `mixed` |  |
+| `retry_number` | `int` |  |
+| `reuse` | `mixed` |  |
+| `runner_label_selector` | `mixed` |  |
+| `slug` | `string` |  |
+| `started_at` | `mixed` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `steps` | `array` |  |
+| `timeout_seconds` | `mixed` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the RunJob record (throws on error).
+$run_job = $client->RunJob()->load(["id" => "run_job_id", "pipeline_id" => "pipeline_id", "run_id" => "run_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of RunJob entities, one per record (throws on error).
+$run_jobs = $client->RunJob()->list(["pipeline_id" => "example", "run_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$run_job = $client->RunJob()->create([
+    "pipeline_id" => null, // string
+    "run_id" => null, // string
 ]);
 ```
 
@@ -13086,6 +27521,232 @@ $run_updates = $client->RunUpdate()->list(["organization_id" => "example"]);
 ```
 
 
+### RunWorkspaceCredential
+
+Create an instance: `$run_workspace_credential = $client->RunWorkspaceCredential();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$run_workspace_credential = $client->RunWorkspaceCredential()->create([
+]);
+```
+
+
+### RunnerLease
+
+Create an instance: `$runner_lease = $client->RunnerLease();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of RunnerLease entities, one per record (throws on error).
+$runner_leases = $client->RunnerLease()->list(["runner_id" => "example", "runner_pool_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$runner_lease = $client->RunnerLease()->create([
+    "runner_id" => null, // string
+    "runner_pool_id" => null, // string
+]);
+```
+
+
+### RunnerPoolNodeEnrollmentToken
+
+Create an instance: `$runner_pool_node_enrollment_token = $client->RunnerPoolNodeEnrollmentToken();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capabilities_csv` | `mixed` |  |
+| `ci_runner_pool_id` | `string` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `creator_user_id` | `mixed` |  |
+| `description` | `mixed` |  |
+| `expires_at` | `mixed` |  |
+| `expires_at_label` | `mixed` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `last_used_at` | `mixed` |  |
+| `last_used_at_label` | `mixed` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `raw_token` | `mixed` |  |
+| `revoked_at` | `mixed` |  |
+| `status` | `string` |  |
+| `token_hint` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+| `usage_count` | `int` |  |
+| `usage_count_label` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of RunnerPoolNodeEnrollmentToken entities, one per record (throws on error).
+$runner_pool_node_enrollment_tokens = $client->RunnerPoolNodeEnrollmentToken()->list(["runner_pool_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$runner_pool_node_enrollment_token = $client->RunnerPoolNodeEnrollmentToken()->create([
+    "runner_pool_id" => null, // string
+    "name" => null, // string
+]);
+```
+
+
+### RunnerPoolRunner
+
+Create an instance: `$runner_pool_runner = $client->RunnerPoolRunner();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the RunnerPoolRunner record (throws on error).
+$runner_pool_runner = $client->RunnerPoolRunner()->load(["id" => "runner_pool_runner_id", "runner_pool_id" => "runner_pool_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of RunnerPoolRunner entities, one per record (throws on error).
+$runner_pool_runners = $client->RunnerPoolRunner()->list(["runner_pool_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$runner_pool_runner = $client->RunnerPoolRunner()->create([
+    "runner_pool_id" => null, // string
+]);
+```
+
+
+### RuntimeInstanceHealthSnapshot
+
+Create an instance: `$runtime_instance_health_snapshot = $client->RuntimeInstanceHealthSnapshot();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```php
+// list() returns an array of RuntimeInstanceHealthSnapshot entities, one per record (throws on error).
+$runtime_instance_health_snapshots = $client->RuntimeInstanceHealthSnapshot()->list(["runtime_instance_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$runtime_instance_health_snapshot = $client->RuntimeInstanceHealthSnapshot()->create([
+    "runtime_instance_id" => null, // string
+]);
+```
+
+
+### SandboxIntegration
+
+Create an instance: `$sandbox_integration = $client->SandboxIntegration();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage` | `bool` |  |
+| `catalog` | `array` |  |
+| `configuration` | `array` |  |
+| `connected_profiles` | `array` | Connected profiles per provider across the organization. |
+| `credentials` | `array` |  |
+| `enabled` | `bool` |  |
+| `id` | `string` |  |
+| `integrations` | `array` |  |
+| `name` | `string` |  |
+| `provider` | `string` |  |
+| `version` | `int` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of SandboxIntegration entities, one per record (throws on error).
+$sandbox_integrations = $client->SandboxIntegration()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$sandbox_integration = $client->SandboxIntegration()->create([
+    "organization_id" => null, // string
+    "configuration" => null, // array
+    "credentials" => null, // array
+    "name" => null, // string
+    "provider" => null, // string
+]);
+```
+
+
 ### ScenarioRevision
 
 Create an instance: `$scenario_revision = $client->ScenarioRevision();`
@@ -13160,6 +27821,96 @@ Create an instance: `$scenario_run_scenario_edit = $client->ScenarioRunScenarioE
 | `create(data)` | Create a new entity with the given data. |
 
 
+### SecretGrant
+
+Create an instance: `$secret_grant = $client->SecretGrant();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the SecretGrant record (throws on error).
+$secret_grant = $client->SecretGrant()->load(["id" => "secret_grant_id", "organization_id" => "organization_id", "secret_id" => "secret_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of SecretGrant entities, one per record (throws on error).
+$secret_grants = $client->SecretGrant()->list(["organization_id" => "example", "secret_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$secret_grant = $client->SecretGrant()->create([
+    "organization_id" => null, // string
+    "secret_id" => null, // string
+]);
+```
+
+
+### SecretVersion
+
+Create an instance: `$secret_version = $client->SecretVersion();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the SecretVersion record (throws on error).
+$secret_version = $client->SecretVersion()->load(["id" => "secret_version_id", "organization_id" => "organization_id", "secret_id" => "secret_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of SecretVersion entities, one per record (throws on error).
+$secret_versions = $client->SecretVersion()->list(["organization_id" => "example", "secret_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$secret_version = $client->SecretVersion()->create([
+    "organization_id" => null, // string
+    "secret_id" => null, // string
+]);
+```
+
+
 ### ServiceEndpoint
 
 Create an instance: `$service_endpoint = $client->ServiceEndpoint();`
@@ -13205,6 +27956,391 @@ $service_endpoint = $client->ServiceEndpoint()->create([
 ```
 
 
+### Setting
+
+Create an instance: `$setting = $client->Setting();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `bool` |  |
+| `can_manage_sandbox_region` | `bool` |  |
+| `dedicated_outbound_ip_addresses` | `array` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` |  |
+| `organization` | `array` |  |
+| `sandbox_regions` | `array` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of Setting entities, one per record (throws on error).
+$settings = $client->Setting()->list(["organization_id" => "example"]);
+```
+
+
+### SettingMutationLease
+
+Create an instance: `$setting_mutation_lease = $client->SettingMutationLease();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### Signal
+
+Create an instance: `$signal = $client->Signal();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `acked_at` | `mixed` |  |
+| `acked_by` | `mixed` | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | `array` | Dispatched-run summary (docs §6c). |
+| `app_service_id` | `mixed` |  |
+| `attribution` | `array` | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
+| `created_at` | `string` | ISO8601 row insert time — retention math and debugging only. |
+| `dedupe_key` | `mixed` |  |
+| `hosted_app_id` | `mixed` |  |
+| `id` | `string` | The signal's own `sig_…` public id — also the paging cursor value. |
+| `kind` | `string` | A frozen taxonomy kind (§1) or an `app.custom.*` kind. |
+| `links` | `array` | Canonical, relative API paths built from real routes (docs §6a). |
+| `occurred_at` | `string` | ISO8601 domain event time — what the UI displays and `since` filters on. |
+| `organization_id` | `string` |  |
+| `payload` | `array` | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
+| `recovery` | `array` | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | `array` | Recovery pairing (docs §6b). |
+| `severity` | `string` | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
+| `source` | `array` | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
+| `subject_id` | `mixed` |  |
+| `subject_type` | `mixed` | Polymorphic pointer: `AppDeployment`, `RuntimeInstance`, `AlertEvent`, `HostedApp`, or `SignalSubscription`. |
+| `summary` | `string` | One-line, kind-composed human sentence for the feed row (docs §6d, e.g. |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the Signal record (throws on error).
+$signal = $client->Signal()->load(["id" => "signal_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of Signal entities, one per record (throws on error).
+$signals = $client->Signal()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$signal = $client->Signal()->create([
+]);
+```
+
+
+### SignalInbound
+
+Create an instance: `$signal_inbound = $client->SignalInbound();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### SignalIntegration
+
+Create an instance: `$signal_integration = $client->SignalIntegration();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `api_token` | `string` | Optional provider API token for target discovery and backfill. |
+| `api_token_stored` | `bool` |  |
+| `config` | `array` |  |
+| `created_at` | `mixed` |  |
+| `failure_message` | `mixed` |  |
+| `id` | `string` | Public id (`sint_…`). |
+| `inbound_path` | `string` |  |
+| `inbound_url` | `string` | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `mixed` |  |
+| `last_verified_at` | `mixed` |  |
+| `mode` | `string` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `provider` | `string` |  |
+| `rejected_signature_count` | `int` | Deliveries rejected for a bad or missing signature. |
+| `status` | `string` |  |
+| `target_count` | `int` |  |
+| `unmapped_delivery_count` | `int` | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `mixed` |  |
+| `webhook_secret` | `string` | The provider's signing secret. |
+| `webhook_secret_stored` | `bool` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the SignalIntegration record (throws on error).
+$signal_integration = $client->SignalIntegration()->load(["id" => "signal_integration_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of SignalIntegration entities, one per record (throws on error).
+$signal_integrations = $client->SignalIntegration()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$signal_integration = $client->SignalIntegration()->create([
+    "organization_id" => null, // string
+    "name" => null, // string
+    "provider" => null, // string
+]);
+```
+
+
+### SignalIntegrationDelivery
+
+Create an instance: `$signal_integration_delivery = $client->SignalIntegrationDelivery();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `attempt_count` | `int` |  |
+| `created_at` | `mixed` |  |
+| `delivery_id` | `string` | The provider's delivery id, or a `content-…` id derived from the event kind, its timestamp header and the body checksum when it sends none. |
+| `event_kind` | `mixed` |  |
+| `id` | `string` | Public id (`sdel_…`). |
+| `last_error` | `mixed` |  |
+| `ops_signal_id` | `mixed` | Public id (`sig_…`) of the signal this delivery emitted. |
+| `organization_id` | `string` |  |
+| `processed_at` | `mixed` |  |
+| `provider` | `string` |  |
+| `received_at` | `mixed` |  |
+| `signal_integration_id` | `string` |  |
+| `state` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of SignalIntegrationDelivery entities, one per record (throws on error).
+$signal_integration_deliverys = $client->SignalIntegrationDelivery()->list(["organization_id" => "example", "signal_integration_id" => "example"]);
+```
+
+
+### SignalIntegrationTarget
+
+Create an instance: `$signal_integration_target = $client->SignalIntegrationTarget();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `app_service_id` | `mixed` |  |
+| `created_at` | `mixed` |  |
+| `display_name` | `mixed` |  |
+| `enabled` | `bool` |  |
+| `external_id` | `string` |  |
+| `external_kind` | `string` |  |
+| `external_slug` | `mixed` |  |
+| `hosted_app_id` | `mixed` |  |
+| `id` | `string` | Public id (`stgt_…`). |
+| `organization_id` | `string` |  |
+| `signal_integration_id` | `string` |  |
+| `signal_integration_targets` | `array` |  |
+| `targets` | `array` |  |
+| `updated_at` | `mixed` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of SignalIntegrationTarget entities, one per record (throws on error).
+$signal_integration_targets = $client->SignalIntegrationTarget()->list(["organization_id" => "example", "signal_integration_id" => "example"]);
+```
+
+
+### SignalSubscription
+
+Create an instance: `$signal_subscription = $client->SignalSubscription();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the SignalSubscription record (throws on error).
+$signal_subscription = $client->SignalSubscription()->load(["id" => "signal_subscription_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of SignalSubscription entities, one per record (throws on error).
+$signal_subscriptions = $client->SignalSubscription()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$signal_subscription = $client->SignalSubscription()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### Site
+
+Create an instance: `$site = $client->Site();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_at` | `mixed` |  |
+| `activated_at_label` | `mixed` |  |
+| `commit_sha` | `mixed` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `creator_user_id` | `mixed` |  |
+| `deploy_slug` | `string` |  |
+| `failure_message` | `mixed` |  |
+| `file_count` | `int` |  |
+| `file_count_label` | `string` |  |
+| `finished_at` | `mixed` |  |
+| `finished_at_label` | `mixed` |  |
+| `id` | `string` |  |
+| `is_active` | `bool` |  |
+| `source_ref` | `mixed` |  |
+| `started_at` | `mixed` |  |
+| `started_at_label` | `mixed` |  |
+| `static_site_id` | `string` |  |
+| `status` | `string` |  |
+| `total_bytes` | `int` |  |
+| `total_bytes_label` | `string` |  |
+| `trigger_kind` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+| `uploaded_at` | `mixed` |  |
+| `uploaded_at_label` | `mixed` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of Site entities, one per record (throws on error).
+$sites = $client->Site()->list(["organization_id" => "example"]);
+```
+
+
+### SiteAccessKey
+
+Create an instance: `$site_access_key = $client->SiteAccessKey();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of SiteAccessKey entities, one per record (throws on error).
+$site_access_keys = $client->SiteAccessKey()->list(["organization_id" => "example", "site_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$site_access_key = $client->SiteAccessKey()->create([
+    "organization_id" => null, // string
+    "site_id" => null, // string
+]);
+```
+
+
 ### SitePreview
 
 Create an instance: `$site_preview = $client->SitePreview();`
@@ -13229,6 +28365,26 @@ Create an instance: `$site_preview = $client->SitePreview();`
 // load() returns the ENTITY — call data_get() for the SitePreview record (throws on error).
 $site_preview = $client->SitePreview()->load(["organization_id" => "organization_id", "url" => "url"]);
 ```
+
+
+### SiteSecret
+
+Create an instance: `$site_secret = $client->SiteSecret();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `native_agent_id` | `string` |  |
+| `value` | `string` |  |
 
 
 ### SlackChannel
@@ -13257,6 +28413,715 @@ Create an instance: `$slack_channel = $client->SlackChannel();`
 ```php
 // list() returns an array of SlackChannel entities, one per record (throws on error).
 $slack_channels = $client->SlackChannel()->list(["agent_id" => "example", "organization_id" => "example"]);
+```
+
+
+### SourceConnection
+
+Create an instance: `$source_connection = $client->SourceConnection();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### SpaceAlertRule
+
+Create an instance: `$space_alert_rule = $client->SpaceAlertRule();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the SpaceAlertRule record (throws on error).
+$space_alert_rule = $client->SpaceAlertRule()->load(["id" => "space_alert_rule_id", "space_id" => "space_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of SpaceAlertRule entities, one per record (throws on error).
+$space_alert_rules = $client->SpaceAlertRule()->list(["space_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$space_alert_rule = $client->SpaceAlertRule()->create([
+    "space_id" => null, // string
+]);
+```
+
+
+### SpaceAuditEvent
+
+Create an instance: `$space_audit_event = $client->SpaceAuditEvent();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```php
+// list() returns an array of SpaceAuditEvent entities, one per record (throws on error).
+$space_audit_events = $client->SpaceAuditEvent()->list(["space_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$space_audit_event = $client->SpaceAuditEvent()->create([
+    "space_id" => null, // string
+]);
+```
+
+
+### SpaceDnsRecord
+
+Create an instance: `$space_dns_record = $client->SpaceDnsRecord();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the SpaceDnsRecord record (throws on error).
+$space_dns_record = $client->SpaceDnsRecord()->load(["id" => "space_dns_record_id", "space_id" => "space_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of SpaceDnsRecord entities, one per record (throws on error).
+$space_dns_records = $client->SpaceDnsRecord()->list(["space_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$space_dns_record = $client->SpaceDnsRecord()->create([
+    "space_id" => null, // string
+]);
+```
+
+
+### SpaceEnrollmentToken
+
+Create an instance: `$space_enrollment_token = $client->SpaceEnrollmentToken();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the SpaceEnrollmentToken record (throws on error).
+$space_enrollment_token = $client->SpaceEnrollmentToken()->load(["id" => "space_enrollment_token_id", "space_id" => "space_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of SpaceEnrollmentToken entities, one per record (throws on error).
+$space_enrollment_tokens = $client->SpaceEnrollmentToken()->list(["space_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$space_enrollment_token = $client->SpaceEnrollmentToken()->create([
+    "space_id" => null, // string
+]);
+```
+
+
+### SpaceGateway
+
+Create an instance: `$space_gateway = $client->SpaceGateway();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the SpaceGateway record (throws on error).
+$space_gateway = $client->SpaceGateway()->load(["id" => "space_gateway_id", "space_id" => "space_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of SpaceGateway entities, one per record (throws on error).
+$space_gateways = $client->SpaceGateway()->list(["space_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$space_gateway = $client->SpaceGateway()->create([
+    "space_id" => null, // string
+]);
+```
+
+
+### SpaceGroup
+
+Create an instance: `$space_group = $client->SpaceGroup();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of SpaceGroup entities, one per record (throws on error).
+$space_groups = $client->SpaceGroup()->list(["space_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$space_group = $client->SpaceGroup()->create([
+    "space_id" => null, // string
+]);
+```
+
+
+### SpaceGroupMembership
+
+Create an instance: `$space_group_membership = $client->SpaceGroupMembership();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of SpaceGroupMembership entities, one per record (throws on error).
+$space_group_memberships = $client->SpaceGroupMembership()->list(["space_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$space_group_membership = $client->SpaceGroupMembership()->create([
+    "space_id" => null, // string
+]);
+```
+
+
+### SpaceLogStream
+
+Create an instance: `$space_log_stream = $client->SpaceLogStream();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```php
+// list() returns an array of SpaceLogStream entities, one per record (throws on error).
+$space_log_streams = $client->SpaceLogStream()->list(["space_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$space_log_stream = $client->SpaceLogStream()->create([
+    "space_id" => null, // string
+]);
+```
+
+
+### SpaceMetricSery
+
+Create an instance: `$space_metric_sery = $client->SpaceMetricSery();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```php
+// list() returns an array of SpaceMetricSery entities, one per record (throws on error).
+$space_metric_serys = $client->SpaceMetricSery()->list(["space_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$space_metric_sery = $client->SpaceMetricSery()->create([
+    "space_id" => null, // string
+]);
+```
+
+
+### SpaceOtelCollector
+
+Create an instance: `$space_otel_collector = $client->SpaceOtelCollector();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the SpaceOtelCollector record (throws on error).
+$space_otel_collector = $client->SpaceOtelCollector()->load(["id" => "space_otel_collector_id", "space_id" => "space_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of SpaceOtelCollector entities, one per record (throws on error).
+$space_otel_collectors = $client->SpaceOtelCollector()->list(["space_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$space_otel_collector = $client->SpaceOtelCollector()->create([
+    "space_id" => null, // string
+]);
+```
+
+
+### SpacePeer
+
+Create an instance: `$space_peer = $client->SpacePeer();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the SpacePeer record (throws on error).
+$space_peer = $client->SpacePeer()->load(["id" => "space_peer_id", "space_id" => "space_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of SpacePeer entities, one per record (throws on error).
+$space_peers = $client->SpacePeer()->list(["space_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$space_peer = $client->SpacePeer()->create([
+    "space_id" => null, // string
+]);
+```
+
+
+### SpacePeerAttachment
+
+Create an instance: `$space_peer_attachment = $client->SpacePeerAttachment();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of SpacePeerAttachment entities, one per record (throws on error).
+$space_peer_attachments = $client->SpacePeerAttachment()->list(["space_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$space_peer_attachment = $client->SpacePeerAttachment()->create([
+    "space_id" => null, // string
+]);
+```
+
+
+### SpacePolicy
+
+Create an instance: `$space_policy = $client->SpacePolicy();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the SpacePolicy record (throws on error).
+$space_policy = $client->SpacePolicy()->load(["id" => "space_policy_id", "space_id" => "space_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of SpacePolicy entities, one per record (throws on error).
+$space_policys = $client->SpacePolicy()->list(["space_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$space_policy = $client->SpacePolicy()->create([
+    "space_id" => null, // string
+]);
+```
+
+
+### SpaceSegment
+
+Create an instance: `$space_segment = $client->SpaceSegment();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the SpaceSegment record (throws on error).
+$space_segment = $client->SpaceSegment()->load(["id" => "space_segment_id", "space_id" => "space_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of SpaceSegment entities, one per record (throws on error).
+$space_segments = $client->SpaceSegment()->list(["space_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$space_segment = $client->SpaceSegment()->create([
+    "space_id" => null, // string
+]);
+```
+
+
+### SpaceTraceSpan
+
+Create an instance: `$space_trace_span = $client->SpaceTraceSpan();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```php
+// list() returns an array of SpaceTraceSpan entities, one per record (throws on error).
+$space_trace_spans = $client->SpaceTraceSpan()->list(["space_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$space_trace_span = $client->SpaceTraceSpan()->create([
+    "space_id" => null, // string
+]);
+```
+
+
+### Spark
+
+Create an instance: `$spark = $client->Spark();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_products` | `array` | Products this organization has activated (PRD 144). |
+| `agents_only` | `bool` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `bool` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `can_manage` | `bool` |  |
+| `compute_credit_cents` | `mixed` | Included compute the workspace started Sparks with, when it is on compute billing. |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `credit_cents` | `mixed` | Inference credit the workspace started Sparks with. |
+| `first_spark` | `mixed` | Null until the first Spark exists or when the viewer cannot read it. |
+| `github_connected` | `bool` |  |
+| `github_prs_authored_by_change_author` | `bool` |  |
+| `id` | `string` |  |
+| `jsonrpc` | `string` |  |
+| `logo_url` | `mixed` |  |
+| `member_count` | `int` |  |
+| `method` | `string` |  |
+| `name` | `string` |  |
+| `params` | `array` |  |
+| `pending_invitation_count` | `int` |  |
+| `personal` | `bool` |  |
+| `repository_count` | `int` |  |
+| `role` | `mixed` |  |
+| `sandbox_region` | `string` |  |
+| `shared_agent_personal_accounts_enabled` | `bool` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` |  |
+| `source_control_providers` | `array` | Connected source control providers for this organization. |
+| `source_ui_enabled` | `bool` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `started` | `bool` | Whether the workspace has started Sparks. |
+| `timezone` | `string` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+| `verify_pr_scenario_writing_enabled` | `bool` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of Spark entities, one per record (throws on error).
+$sparks = $client->Spark()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$spark = $client->Spark()->create([
+    "jsonrpc" => null, // string
+    "method" => null, // string
+]);
+```
+
+
+### SparkAgentIntegration
+
+Create an instance: `$spark_agent_integration = $client->SparkAgentIntegration();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_counts` | `array` | Accounts the viewer can see per toolkit, across all account pages. |
+| `accounts_path` | `string` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
+| `added_toolkits` | `array` | Apps with a connected or connecting account the viewer can see. |
+| `can_manage` | `bool` |  |
+| `can_manage_organization` | `bool` |  |
+| `catalog` | `array` |  |
+| `connect_as` | `mixed` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
+| `connect_as_by_toolkit` | `array` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_counts` | `array` | Signed-in accounts per toolkit, across all account pages. |
+| `connection_id` | `string` |  |
+| `connections` | `array` |  |
+| `email` | `array` | A native agent's own email address. |
+| `enabled` | `bool` |  |
+| `enabled_toolkits` | `array` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `generation` | `int` |  |
+| `pagination` | `array` |  |
+| `pending_counts` | `array` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
+| `personal_creation_key_supported` | `bool` | The personal account creation endpoint honors a creation key. |
+| `private_agent` | `bool` | Only the agent's owner can chat with it. |
+| `shared_agent_personal_accounts_enabled` | `bool` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
+| `slack` | `array` |  |
+| `webhook_connections` | `array` |  |
+| `webhooks_available` | `bool` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of SparkAgentIntegration entities, one per record (throws on error).
+$spark_agent_integrations = $client->SparkAgentIntegration()->list(["agent_id" => "example", "organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$spark_agent_integration = $client->SparkAgentIntegration()->create([
+    "agent_id" => null, // string
+    "organization_id" => null, // string
+    "connection_id" => null, // string
+    "enabled" => null, // bool
+    "generation" => null, // int
+]);
 ```
 
 
@@ -13328,6 +29193,255 @@ $spark_agent_local_thread = $client->SparkAgentLocalThread()->create([
     "provider" => null, // string
     "thread_id" => null, // string
 ]);
+```
+
+
+### SparkAgentSite
+
+Create an instance: `$spark_agent_site = $client->SparkAgentSite();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `deployed_at` | `string` |  |
+| `deployments_count` | `int` |  |
+| `hostname` | `string` |  |
+| `https` | `string` | Whether the organization's certificate serves this site over HTTPS |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `url` | `string` |  |
+| `visibility` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of SparkAgentSite entities, one per record (throws on error).
+$spark_agent_sites = $client->SparkAgentSite()->list(["agent_id" => "example", "organization_id" => "example"]);
+```
+
+
+### SparkAgentSkill
+
+Create an instance: `$spark_agent_skill = $client->SparkAgentSkill();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `available` | `bool` |  |
+| `can_configure` | `bool` |  |
+| `can_manage` | `bool` |  |
+| `configuration_state` | `string` | The requested managed skill selection is awaiting runtime qualification. |
+| `description` | `string` |  |
+| `enabled` | `bool` |  |
+| `name` | `string` |  |
+| `skills` | `array` |  |
+| `version` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of SparkAgentSkill entities, one per record (throws on error).
+$spark_agent_skills = $client->SparkAgentSkill()->list(["agent_id" => "example", "organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$spark_agent_skill = $client->SparkAgentSkill()->create([
+    "agent_id" => null, // string
+    "organization_id" => null, // string
+    "enabled" => null, // bool
+    "name" => null, // string
+    "version" => null, // string
+]);
+```
+
+
+### SparkAgentThread
+
+Create an instance: `$spark_agent_thread = $client->SparkAgentThread();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `archived_count` | `mixed` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
+| `can_create` | `bool` |  |
+| `execution` | `mixed` |  |
+| `first_input` | `mixed` |  |
+| `first_input_key` | `string` | Idempotency-Key that finds the first message through input_delivery. |
+| `first_input_requester_membership_id` | `string` | Membership the first message was sent as, for input_delivery. |
+| `id` | `string` |  |
+| `inherit_context` | `bool` | Include the source conversation through its last completed reply. |
+| `local_activities` | `array` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
+| `local_archived_count` | `int` | Local Claude Code and Codex threads archived on their computers. |
+| `local_next_cursor` | `mixed` |  |
+| `local_scope_key` | `mixed` |  |
+| `local_status_pending` | `bool` | A computer is reporting newer local thread statuses; read the page again shortly. |
+| `local_threads` | `array` |  |
+| `main_thread_id` | `string` |  |
+| `message` | `string` | The thread's first message. |
+| `next_cursor` | `mixed` |  |
+| `parent_conversation_id` | `string` | Optional source conversation belonging to this agent. |
+| `requester_membership_id` | `string` |  |
+| `selected_thread` | `mixed` |  |
+| `thread` | `array` |  |
+| `threads` | `array` |  |
+| `title` | `string` |  |
+| `total_archived_count` | `mixed` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+#### Example: List
+
+```php
+// list() returns an array of SparkAgentThread entities, one per record (throws on error).
+$spark_agent_threads = $client->SparkAgentThread()->list(["agent_id" => "example", "organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$spark_agent_thread = $client->SparkAgentThread()->create([
+    "agent_id" => null, // string
+    "organization_id" => null, // string
+]);
+```
+
+
+### SparkCredit
+
+Create an instance: `$spark_credit = $client->SparkCredit();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `amount_cents` | `int` | Purchase amount in USD cents. |
+| `autofill` | `mixed` |  |
+| `autofill_payment_unconfirmed` | `bool` |  |
+| `available_usd` | `string` |  |
+| `billing_unit` | `string` | Compute minute quote version returned by the billing summary. |
+| `can_manage` | `bool` |  |
+| `compute_minutes` | `array` |  |
+| `compute_usd` | `string` |  |
+| `credits_per_usd` | `int` |  |
+| `inference_usd` | `string` |  |
+| `kind` | `string` |  |
+| `payment_method` | `mixed` |  |
+| `payments_enabled` | `bool` |  |
+| `plan` | `string` |  |
+| `plans` | `array` |  |
+| `quoted_credits_cents` | `int` | Grant shown for a top-up or subscription, in usage cents. |
+| `quoted_price_cents` | `int` | Monthly cash price shown for a subscription, in USD cents. |
+| `refill_limits_cents` | `array` |  |
+| `refill_options` | `array` |  |
+| `refill_thresholds_cents` | `array` |  |
+| `request_key` | `string` |  |
+| `settings` | `mixed` |  |
+| `starter_cents` | `int` |  |
+| `top_up_max_cents` | `int` | Maximum manual top-up, in USD cents. |
+| `top_up_step_cents` | `int` | Minimum manual top-up and increment, in USD cents. |
+
+#### Example: List
+
+```php
+// list() returns an array of SparkCredit entities, one per record (throws on error).
+$spark_credits = $client->SparkCredit()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$spark_credit = $client->SparkCredit()->create([
+    "organization_id" => null, // string
+    "kind" => null, // string
+    "request_key" => null, // string
+]);
+```
+
+
+### SparkCreditAgentUsage
+
+Create an instance: `$spark_credit_agent_usage = $client->SparkCreditAgentUsage();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agents` | `array` |  |
+| `all` | `array` |  |
+| `days` | `array` |  |
+| `id` | `string` |  |
+| `owners` | `array` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the SparkCreditAgentUsage record (throws on error).
+$spark_credit_agent_usage = $client->SparkCreditAgentUsage()->load(["id" => "spark_credit_agent_usage_id", "organization_id" => "organization_id"]);
+```
+
+
+### SparkCreditUsageTotal
+
+Create an instance: `$spark_credit_usage_total = $client->SparkCreditUsageTotal();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `compute_minutes_used` | `string` |  |
+| `compute_usd` | `string` |  |
+| `inference_usd` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of SparkCreditUsageTotal entities, one per record (throws on error).
+$spark_credit_usage_totals = $client->SparkCreditUsageTotal()->list(["organization_id" => "example"]);
 ```
 
 
@@ -13528,6 +29642,138 @@ $static_site_domain = $client->StaticSiteDomain()->create([
 ```
 
 
+### StatusChange
+
+Create an instance: `$status_change = $client->StatusChange();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_id` | `string` |  |
+| `id` | `string` |  |
+| `patchsets` | `array` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the StatusChange record (throws on error).
+$status_change = $client->StatusChange()->load(["id" => "status_change_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+
+### StatusCommit
+
+Create an instance: `$status_commit = $client->StatusCommit();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `checks` | `array` |  |
+| `commit_sha` | `string` |  |
+| `counts` | `array` |  |
+| `id` | `string` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `total` | `int` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the StatusCommit record (throws on error).
+$status_commit = $client->StatusCommit()->load(["id" => "status_commit_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+
+### StatusPatchset
+
+Create an instance: `$status_patchset = $client->StatusPatchset();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `checks` | `array` |  |
+| `checks_status` | `mixed` |  |
+| `commit_sha` | `mixed` |  |
+| `counts` | `array` |  |
+| `id` | `string` |  |
+| `patchset_id` | `string` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `total` | `int` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the StatusPatchset record (throws on error).
+$status_patchset = $client->StatusPatchset()->load(["id" => "status_patchset_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+
+### StripeWebhook
+
+Create an instance: `$stripe_webhook = $client->StripeWebhook();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$stripe_webhook = $client->StripeWebhook()->create([
+]);
+```
+
+
+### SubmitTelemetry
+
+Create an instance: `$submit_telemetry = $client->SubmitTelemetry();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$submit_telemetry = $client->SubmitTelemetry()->create([
+]);
+```
+
+
 ### SubscriptionModel
 
 Create an instance: `$subscription_model = $client->SubscriptionModel();`
@@ -13554,6 +29800,176 @@ Create an instance: `$subscription_model = $client->SubscriptionModel();`
 ```php
 // list() returns an array of SubscriptionModel entities, one per record (throws on error).
 $subscription_models = $client->SubscriptionModel()->list(["agent_id" => "example", "organization_id" => "example", "profile_id" => "example"]);
+```
+
+
+### SwarmEvent
+
+Create an instance: `$swarm_event = $client->SwarmEvent();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_swarm_id` | `string` |  |
+| `attempt_id` | `mixed` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `id` | `int` |  |
+| `kind` | `string` |  |
+| `payload` | `array` |  |
+| `reason` | `mixed` |  |
+| `scheduler_generation` | `mixed` |  |
+| `task_id` | `mixed` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of SwarmEvent entities, one per record (throws on error).
+$swarm_events = $client->SwarmEvent()->list(["swarm_id" => "example"]);
+```
+
+
+### SwarmLive
+
+Create an instance: `$swarm_live = $client->SwarmLive();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### SwarmNote
+
+Create an instance: `$swarm_note = $client->SwarmNote();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `task_id` | `mixed` | A task public id; omitted |
+| `text` | `string` |  |
+
+#### Example: Create
+
+```php
+$swarm_note = $client->SwarmNote()->create([
+    "swarm_id" => null, // string
+    "text" => null, // string
+]);
+```
+
+
+### SwarmTask
+
+Create an instance: `$swarm_task = $client->SwarmTask();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `acceptance_commands` | `array` |  |
+| `agent_swarm_id` | `string` |  |
+| `assigned_runner_id` | `mixed` |  |
+| `blocked_reason` | `mixed` |  |
+| `changes` | `array` |  |
+| `commit_count` | `int` |  |
+| `commit_sha_result` | `mixed` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `current_attempt_id` | `mixed` |  |
+| `deadline_at` | `mixed` |  |
+| `depends_on_task_ids` | `array` |  |
+| `depth` | `int` |  |
+| `diff_artifact_url` | `mixed` |  |
+| `display_id` | `int` |  |
+| `environment_profile` | `mixed` |  |
+| `error_message` | `mixed` |  |
+| `failure_code` | `mixed` |  |
+| `finished_at` | `mixed` |  |
+| `finished_at_label` | `mixed` |  |
+| `harness` | `string` |  |
+| `id` | `string` |  |
+| `input_revision` | `mixed` |  |
+| `iteration` | `int` |  |
+| `landing_state` | `string` |  |
+| `model` | `mixed` |  |
+| `model_provider` | `mixed` |  |
+| `number` | `int` |  |
+| `organization_id` | `string` |  |
+| `owned_paths` | `array` |  |
+| `parent_task_id` | `mixed` |  |
+| `position` | `int` |  |
+| `prompt` | `string` |  |
+| `queued_at` | `mixed` |  |
+| `queued_at_label` | `mixed` |  |
+| `reasoning_effort` | `mixed` |  |
+| `recent_activity` | `array` |  |
+| `repo_url` | `string` |  |
+| `result` | `array` |  |
+| `retry_number` | `int` |  |
+| `role` | `string` |  |
+| `run_id` | `mixed` |  |
+| `stack_after_task_id` | `mixed` |  |
+| `started_at` | `mixed` |  |
+| `started_at_label` | `mixed` |  |
+| `status` | `string` |  |
+| `title` | `mixed` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of SwarmTask entities, one per record (throws on error).
+$swarm_tasks = $client->SwarmTask()->list(["swarm_id" => "example"]);
+```
+
+
+### TaskLease
+
+Create an instance: `$task_lease = $client->TaskLease();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Create
+
+```php
+$task_lease = $client->TaskLease()->create([
+    "swarm_id" => null, // string
+    "task_id" => null, // string
+]);
 ```
 
 
@@ -13584,6 +30000,450 @@ $thread_preview = $client->ThreadPreview()->create([
     "thread_id" => null, // string
     "port" => null, // int
 ]);
+```
+
+
+### ThreadPreviewAccess
+
+Create an instance: `$thread_preview_access = $client->ThreadPreviewAccess();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### ToolFeedback
+
+Create an instance: `$tool_feedback = $client->ToolFeedback();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `category` | `string` |  |
+| `created_at` | `string` |  |
+| `details` | `string` |  |
+| `feedback` | `array` |  |
+| `id` | `string` |  |
+| `metadata` | `array` | Caller-supplied session context; no secrets or transcripts |
+| `organization_id` | `string` |  |
+| `source` | `string` |  |
+| `summary` | `string` |  |
+| `user_id` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ToolFeedback record (throws on error).
+$tool_feedback = $client->ToolFeedback()->load(["id" => "tool_feedback_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: Create
+
+```php
+$tool_feedback = $client->ToolFeedback()->create([
+    "organization_id" => null, // string
+    "feedback" => null, // array
+]);
+```
+
+
+### Transcript
+
+Create an instance: `$transcript = $client->Transcript();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent` | `string` |  |
+| `author` | `array` |  |
+| `checkpoint_pagination` | `array` |  |
+| `checkpoints` | `array` |  |
+| `id` | `string` |  |
+| `last_checkpoint_at` | `mixed` |  |
+| `selected_checkpoint` | `mixed` |  |
+| `source_url` | `string` |  |
+| `started_at` | `string` |  |
+| `status` | `string` |  |
+| `title` | `mixed` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of Transcript entities, one per record (throws on error).
+$transcripts = $client->Transcript()->list(["repo" => "example"]);
+```
+
+
+### V1Message
+
+Create an instance: `$v1_message = $client->V1Message();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$v1_message = $client->V1Message()->create([
+    "organization_id" => null, // string
+]);
+```
+
+
+### VcBranch
+
+Create an instance: `$vc_branch = $client->VcBranch();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `target_commit_id` | `string` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of VcBranch entities, one per record (throws on error).
+$vc_branchs = $client->VcBranch()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$vc_branch = $client->VcBranch()->create([
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+]);
+```
+
+
+### VcBrowser
+
+Create an instance: `$vc_browser = $client->VcBrowser();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### VcChange
+
+Create an instance: `$vc_change = $client->VcChange();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activity` | `array` |  |
+| `canonical_path` | `string` |  |
+| `change` | `mixed` |  |
+| `checks` | `array` |  |
+| `checks_status` | `string` |  |
+| `description` | `mixed` |  |
+| `group` | `mixed` |  |
+| `id` | `string` |  |
+| `jj_change_id` | `mixed` |  |
+| `labels` | `array` |  |
+| `landing` | `array` | Server-computed submitted-together closure and landing preflight. |
+| `number` | `int` |  |
+| `patchset_number` | `mixed` |  |
+| `previews` | `array` |  |
+| `primary_status` | `mixed` |  |
+| `public_id` | `string` |  |
+| `related_changes` | `array` |  |
+| `relation_chain` | `array` |  |
+| `restack_state` | `string` |  |
+| `review_summary` | `array` |  |
+| `stack` | `mixed` |  |
+| `status` | `string` |  |
+| `sync` | `array` |  |
+| `target` | `array` |  |
+| `target_advanced` | `bool` |  |
+| `target_branch` | `string` |  |
+| `title` | `string` |  |
+| `url` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the VcChange record (throws on error).
+$vc_change = $client->VcChange()->load(["id" => "vc_change_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of VcChange entities, one per record (throws on error).
+$vc_changes = $client->VcChange()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+
+### VcChangeGroup
+
+Create an instance: `$vc_change_group = $client->VcChangeGroup();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `changes` | `array` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `number` | `int` |  |
+| `status` | `string` |  |
+| `title` | `mixed` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the VcChangeGroup record (throws on error).
+$vc_change_group = $client->VcChangeGroup()->load(["id" => "vc_change_group_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of VcChangeGroup entities, one per record (throws on error).
+$vc_change_groups = $client->VcChangeGroup()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$vc_change_group = $client->VcChangeGroup()->create([
+    "organization_id" => null, // string
+    "repo_id" => null, // string
+    "name" => null, // string
+]);
+```
+
+
+### VcFile
+
+Create an instance: `$vc_file = $client->VcFile();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `paths` | `array` |  |
+| `truncated` | `bool` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of VcFile entities, one per record (throws on error).
+$vc_files = $client->VcFile()->list(["organization_id" => "example", "repo_id" => "example", "ref" => "example"]);
+```
+
+
+### VcMergeQueue
+
+Create an instance: `$vc_merge_queue = $client->VcMergeQueue();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `analytics` | `array` | Queue performance for the reporting window. |
+| `id` | `string` |  |
+| `policy` | `array` |  |
+| `queue` | `array` |  |
+| `target_branches` | `array` | Bookmark names for the target picker. |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the VcMergeQueue record (throws on error).
+$vc_merge_queue = $client->VcMergeQueue()->load(["id" => "vc_merge_queue_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of VcMergeQueue entities, one per record (throws on error).
+$vc_merge_queues = $client->VcMergeQueue()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+
+### VcStack
+
+Create an instance: `$vc_stack = $client->VcStack();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `alias_ref_name` | `mixed` |  |
+| `changes` | `array` |  |
+| `code` | `string` |  |
+| `id` | `string` |  |
+| `landing` | `array` | Compact landing state for the Stack CLI. |
+| `member_count` | `int` |  |
+| `name` | `mixed` |  |
+| `ref_name` | `string` |  |
+| `status` | `string` |  |
+| `tip_change_number` | `mixed` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the VcStack record (throws on error).
+$vc_stack = $client->VcStack()->load(["id" => "vc_stack_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of VcStack entities, one per record (throws on error).
+$vc_stacks = $client->VcStack()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+
+### VcsNode
+
+Create an instance: `$vcs_node = $client->VcsNode();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `mixed` |  |
+| `account_id` | `mixed` |  |
+| `account_login` | `string` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `mixed` |  |
+| `id` | `string` |  |
+| `installation_id` | `string` |  |
+| `installed_at` | `mixed` |  |
+| `installed_at_label` | `mixed` |  |
+| `manage_access_url` | `string` |  |
+| `organization_id` | `string` |  |
+| `permission_entries` | `array` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `array` |  |
+| `status` | `string` |  |
+| `suspended_at` | `mixed` |  |
+| `suspended_at_label` | `mixed` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `mixed` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of VcsNode entities, one per record (throws on error).
+$vcs_nodes = $client->VcsNode()->list(["organization_id" => "example"]);
+```
+
+
+### VcsSetting
+
+Create an instance: `$vcs_setting = $client->VcsSetting();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `bool` |  |
+| `can_manage_sandbox_region` | `bool` |  |
+| `dedicated_outbound_ip_addresses` | `array` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` |  |
+| `organization` | `array` |  |
+| `sandbox_regions` | `array` |  |
+
+#### Example: List
+
+```php
+// list() returns an array of VcsSetting entities, one per record (throws on error).
+$vcs_settings = $client->VcsSetting()->list(["organization_id" => "example"]);
 ```
 
 
@@ -13934,6 +30794,68 @@ $verify_browser_session = $client->VerifyBrowserSession()->create([
 ```
 
 
+### VerifyEmailVerification
+
+Create an instance: `$verify_email_verification = $client->VerifyEmailVerification();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```php
+// list() returns an array of VerifyEmailVerification entities, one per record (throws on error).
+$verify_email_verifications = $client->VerifyEmailVerification()->list();
+```
+
+
+### VerifySignalIntegration
+
+Create an instance: `$verify_signal_integration = $client->VerifySignalIntegration();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `api_token_stored` | `bool` |  |
+| `config` | `array` |  |
+| `created_at` | `mixed` |  |
+| `failure_message` | `mixed` |  |
+| `id` | `string` | Public id (`sint_…`). |
+| `inbound_path` | `string` |  |
+| `inbound_url` | `string` | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `mixed` |  |
+| `last_verified_at` | `mixed` |  |
+| `mode` | `string` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `provider` | `string` |  |
+| `rejected_signature_count` | `int` | Deliveries rejected for a bad or missing signature. |
+| `status` | `string` |  |
+| `target_count` | `int` |  |
+| `unmapped_delivery_count` | `int` | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `mixed` |  |
+| `webhook_secret_stored` | `bool` |  |
+
+#### Example: Create
+
+```php
+$verify_signal_integration = $client->VerifySignalIntegration()->create([
+    "id" => null, // string
+    "organization_id" => null, // string
+]);
+```
+
+
 ### VerifyStaticSiteDomain
 
 Create an instance: `$verify_static_site_domain = $client->VerifyStaticSiteDomain();`
@@ -14013,6 +30935,24 @@ $version_logs = $client->VersionLog()->list(["binary_id" => "example", "organiza
 ```
 
 
+### WaitlistApplication
+
+Create an instance: `$waitlist_application = $client->WaitlistApplication();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```php
+$waitlist_application = $client->WaitlistApplication()->create([
+]);
+```
+
+
 ### WebBotAuth
 
 Create an instance: `$web_bot_auth = $client->WebBotAuth();`
@@ -14038,6 +30978,23 @@ $web_bot_auth = $client->WebBotAuth()->create([
     "origin" => null, // string
 ]);
 ```
+
+
+### WebhookGitlab
+
+Create an instance: `$webhook_gitlab = $client->WebhookGitlab();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### WorkflowRunStep
@@ -14083,6 +31040,125 @@ Create an instance: `$workflow_trigger_skipped = $client->WorkflowTriggerSkipped
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+
+### WorkspaceActivity
+
+Create an instance: `$workspace_activity = $client->WorkspaceActivity();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `live_activity` | `array` |  |
+| `recent_items` | `array` |  |
+| `unresolved_notification_count` | `int` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the WorkspaceActivity record (throws on error).
+$workspace_activity = $client->WorkspaceActivity()->load(["organization_id" => "organization_id"]);
+```
+
+
+### WorkspaceActivityNotification
+
+Create an instance: `$workspace_activity_notification = $client->WorkspaceActivityNotification();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### WorkspaceSpace
+
+Create an instance: `$workspace_space = $client->WorkspaceSpace();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `string` |  |
+| `default_branch` | `string` |  |
+| `description` | `mixed` |  |
+| `hidden` | `bool` |  |
+| `icon_name` | `string` |  |
+| `id` | `string` |  |
+| `import_status` | `mixed` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `position` | `mixed` |  |
+| `repository_id` | `string` |  |
+| `repository_slug` | `string` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the WorkspaceSpace record (throws on error).
+$workspace_space = $client->WorkspaceSpace()->load(["id" => "workspace_space_id", "organization_id" => "organization_id"]);
+```
+
+#### Example: List
+
+```php
+// list() returns an array of WorkspaceSpace entities, one per record (throws on error).
+$workspace_spaces = $client->WorkspaceSpace()->list(["organization_id" => "example"]);
+```
+
+#### Example: Create
+
+```php
+$workspace_space = $client->WorkspaceSpace()->create([
+    "organization_id" => null, // string
+    "icon_name" => null, // string
+    "name" => null, // string
+    "slug" => null, // string
+]);
+```
+
+
+### WorkspaceSpacePreference
+
+Create an instance: `$workspace_space_preference = $client->WorkspaceSpacePreference();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `preferences` | `array` |  |
+| `spaces` | `array` |  |
 
 ## Features
 
@@ -14242,7 +31318,7 @@ activated earlier.
 
 ## Open types
 
-12 fields are carried as open values rather than typed structures.
+17 fields are carried as open values rather than typed structures.
 This follows from the API definition, not from a gap in this SDK: the
 definition describes them with untagged unions —
 `oneOf`/`anyOf` branches with no `discriminator` — so it never states which
@@ -14256,14 +31332,19 @@ guarantee.
 | `agent_automation` | `version` | 12 | 12 levels |
 | `agent_interaction` | `interactions` | 12 | 17 levels |
 | `automation_event` | `version` | 12 | 12 levels |
+| `control_computer_control_operation` | `result` | 10 | 2 levels |
+| `device_control_operation` | `result` | 10 | 2 levels |
 | `local_thread_operation` | `result` | 10 | 2 levels |
 | `spark_agent_local_thread` | `result` | 10 | 2 levels |
+| `workspace_activity` | `recent_items` | 7 | 1 level |
 | `page_agent` | `inbox` | 6 | 14 levels |
 | `agent` | `configuration` | 5 | 9 levels |
 | `agent_manager` | `configuration` | 5 | 9 levels |
 | `interaction_response` | `answer` | 5 | 3 levels |
 | `page_agent` | `new_configuration` | 5 | 9 levels |
 | `page_agent` | `selected_agent` | 5 | 15 levels |
+| `change` | `result` | 4 | 9 levels |
+| `workspace_activity` | `live_activity` | 4 | 1 level |
 
 These values round-trip unchanged — read them, modify them, send them back. If
 the API adds a `discriminator` to the definition, regenerating will type them.
@@ -14354,11 +31435,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$pageprojectrun = $client->PageProjectRun();
-$pageprojectrun->load(["id" => "example_id", "organization_id" => "example", "project_id" => "example"]);
+$agentoperation = $client->AgentOperation();
+$agentoperation->load(["agent_id" => "example", "id" => "example_id", "organization_id" => "example"]);
 
-// $pageprojectrun->data_get() now returns the pageprojectrun data from the last load
-// $pageprojectrun->match_get() returns the last match criteria
+// $agentoperation->data_get() now returns the agentoperation data from the last load
+// $agentoperation->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

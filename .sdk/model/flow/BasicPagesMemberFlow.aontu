@@ -1,0 +1,26 @@
+# BasicPagesMemberFlow
+
+main: kit: flow: BasicPagesMemberFlow:
+{
+  entity: "pages_member",
+  kind: "basic",
+  name: "BasicPagesMemberFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "pages_member_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPagesMemberFlow"
+}

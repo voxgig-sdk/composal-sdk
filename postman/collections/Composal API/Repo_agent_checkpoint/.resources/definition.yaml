@@ -1,0 +1,9 @@
+$kind: collection
+id: "5194f06e-83fa-5644-a652-172e4311e53a"
+description: |-
+  The **repo_agent_checkpoint** entity, which belongs to a organization and a repo. Its requests address one record by `{{repo_agent_checkpoint_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 424000

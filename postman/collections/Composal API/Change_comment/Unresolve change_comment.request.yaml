@@ -1,0 +1,28 @@
+$kind: http-request
+id: ef2ce780-9242-529f-b63a-151a8e27d562
+description: |-
+  The `unresolve` action of **change_comment**, a route of its `create` operation.
+
+  SDK: `client.ChangeComment().create({ "organization_id": "organization_id", "repo_id": "repo_id", "change_id": "change_id", "id": "ID", $action: "unresolve" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/:id/comments/:comment_id/unresolve"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this change_comment belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this change_comment belongs to.
+  - key: id
+    value: "{{change_id}}"
+    description: The change this change_comment belongs to.
+  - key: comment_id
+    value: "{{change_comment_id}}"
+    description: The change_comment this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

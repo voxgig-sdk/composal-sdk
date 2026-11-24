@@ -1,0 +1,4 @@
+$kind: collection
+id: "994827eb-0d33-5602-af52-027017ad924b"
+description: "The `BasicSpaceOtelCollectorFlow` flow of **space_otel_collector**."
+order: 400000

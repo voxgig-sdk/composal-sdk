@@ -1,0 +1,29 @@
+# BasicLogoImageFlow
+
+main: kit: flow: BasicLogoImageFlow:
+{
+  entity: "logo_image",
+  kind: "basic",
+  name: "BasicLogoImageFlow",
+  step: [
+    {
+      i: {
+        ref: "logo_image_ref01",
+        srcdatavar: "logo_image_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-logo_image_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLogoImageFlow"
+}

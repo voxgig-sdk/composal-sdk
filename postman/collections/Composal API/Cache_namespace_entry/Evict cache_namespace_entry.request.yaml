@@ -1,0 +1,22 @@
+$kind: http-request
+id: c358d76d-4143-56e5-b60c-97b26afae15a
+description: |-
+  The `evict` action of **cache_namespace_entry**, a route of its `create` operation.
+
+  SDK: `client.CacheNamespaceEntry().create({ "cache_namespace_id": "cache_namespace_id", "id": "ID", $action: "evict" })`
+url: "{{base}}/api/v1/artifacts/cache_namespaces/:cache_namespace_id/entries/:id/evict"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: cache_namespace_id
+    value: "{{cache_namespace_id}}"
+    description: "Input: cache_namespace_id."
+  - key: id
+    value: "{{cache_namespace_entry_id}}"
+    description: The cache_namespace_entry this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

@@ -1,4 +1,4 @@
 $kind: collection
 id: "4d7d848c-b708-5fe2-933f-c86f10b353ea"
 description: "The `BasicAgentCommandFlow` flow of **agent_command**."
-order: 5000
+order: 8000

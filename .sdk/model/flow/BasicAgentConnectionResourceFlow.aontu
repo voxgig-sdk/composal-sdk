@@ -1,0 +1,23 @@
+# BasicAgentConnectionResourceFlow
+
+main: kit: flow: BasicAgentConnectionResourceFlow:
+{
+  entity: "agent_connection_resource",
+  kind: "basic",
+  name: "BasicAgentConnectionResourceFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_connection_resource_ref01"
+      }
+
+      m: {
+        agent_connection_id: "agent_connection01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgentConnectionResourceFlow"
+}

@@ -1,0 +1,9 @@
+$kind: collection
+id: "02e18c69-0efe-5d5a-8008-8a5f61eeb0be"
+description: |-
+  The **execution_release** entity. Its requests address one record by `{{execution_release_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 241000

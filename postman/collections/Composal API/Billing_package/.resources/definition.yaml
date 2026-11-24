@@ -1,0 +1,25 @@
+$kind: collection
+id: fde38d97-3b07-580f-b287-bd83b77e5d96
+description: |-
+  The **billing_package** entity. Its requests address one record by `{{billing_package_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `addons` | array | yes |  |
+  | `base_price_cents` | integer | yes |  |
+  | `billing_interval` | string | yes |  |
+  | `billing_policy` | string | yes |  |
+  | `ci_included_spend_cents` | integer |  |  |
+  | `currency` | string | yes |  |
+  | `key` | string | yes |  |
+  | `max_seats` | integer |  |  |
+  | `name` | string | yes |  |
+  | `pay_as_you_go_enabled` | boolean | yes |  |
+  | `rates` | array | yes |  |
+  | `revision` | integer | yes |  |
+  | `roder_daily_run_limit` | integer |  |  |
+  | `roder_run_concurrency_limit` | integer |  |  |
+  | `seat_price_cents` | integer | yes |  |
+  | `trial_days` | integer | yes |  |
+  | `visibility` | string | yes |  |
+order: 132000

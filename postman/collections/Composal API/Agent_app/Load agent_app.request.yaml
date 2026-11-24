@@ -1,0 +1,18 @@
+$kind: http-request
+id: "8eb4dabc-dc6b-53f4-90df-27f0e16d7ad1"
+description: |-
+  The `load` operation of **agent_app**.
+
+  SDK: `client.AgentApp().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_apps/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_app belongs to.
+  - key: id
+    value: "{{agent_app_id}}"
+    description: The agent_app this request addresses.
+order: 2000

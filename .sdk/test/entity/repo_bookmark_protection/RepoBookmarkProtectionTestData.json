@@ -1,0 +1,117 @@
+{
+  "existing": {
+    "repo_bookmark_protection": {
+      "REPO_BOOKMARK_PROTECTION00": {
+        "actor_policy": {},
+        "bypass_mode": "s97",
+        "created_at": "s98",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "enabled": true,
+        "id": "REPO_BOOKMARK_PROTECTION00",
+        "name": "s9c",
+        "organization_id": "ORGANIZATION01",
+        "priority": 158,
+        "repository_id": "REPOSITORY01",
+        "requirements": {},
+        "target_kind": "sa1",
+        "target_pattern": "sa2",
+        "updated_at": "sa3",
+        "updated_by_user_id": "UPDATED_BY_USER01",
+        "repo_id": "REPO01"
+      },
+      "REPO_BOOKMARK_PROTECTION01": {
+        "actor_policy": {},
+        "bypass_mode": "s12d",
+        "created_at": "s12e",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "enabled": true,
+        "id": "REPO_BOOKMARK_PROTECTION01",
+        "name": "s132",
+        "organization_id": "ORGANIZATION01",
+        "priority": 308,
+        "repository_id": "REPOSITORY01",
+        "requirements": {},
+        "target_kind": "s137",
+        "target_pattern": "s138",
+        "updated_at": "s139",
+        "updated_by_user_id": "UPDATED_BY_USER01",
+        "repo_id": "REPO01"
+      },
+      "REPO_BOOKMARK_PROTECTION02": {
+        "actor_policy": {},
+        "bypass_mode": "s1c3",
+        "created_at": "s1c4",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "enabled": true,
+        "id": "REPO_BOOKMARK_PROTECTION02",
+        "name": "s1c8",
+        "organization_id": "ORGANIZATION01",
+        "priority": 458,
+        "repository_id": "REPOSITORY01",
+        "requirements": {},
+        "target_kind": "s1cd",
+        "target_pattern": "s1ce",
+        "updated_at": "s1cf",
+        "updated_by_user_id": "UPDATED_BY_USER01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "repo_bookmark_protection": {
+      "repo_bookmark_protection_ref01": {
+        "actor_policy": {},
+        "bypass_mode": "s259",
+        "created_at": "s25a",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "enabled": true,
+        "name": "s25e",
+        "organization_id": "ORGANIZATION01",
+        "priority": 608,
+        "repository_id": "REPOSITORY01",
+        "requirements": {},
+        "target_kind": "s263",
+        "target_pattern": "s264",
+        "updated_at": "s265",
+        "updated_by_user_id": "UPDATED_BY_USER01"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections/simulate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+$kind: http-request
+id: cf0b8d8d-ba40-580f-a709-bfd0af6d4bf6
+description: |-
+  The `setup` action of **github_app_installation_authorization**, a route of its `create` operation.
+
+  SDK: `client.GithubAppInstallationAuthorization().create({ $action: "setup" })`
+url: "{{base}}/api/v1/github_app/installation_authorizations/setup"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "installation_id": "example",
+      "setup_action": "install",
+      "state": "example"
+    }
+order: 3000

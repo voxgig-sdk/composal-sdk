@@ -1,0 +1,23 @@
+$kind: collection
+id: bea949c1-23bf-5268-a08d-cfaef757bd7b
+description: |-
+  The **control_computer_control_operation** entity, which belongs to a organization and a control_computer. Its requests address one record by `{{control_computer_control_operation_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `action` | string | yes |  |
+  | `arguments` | object | yes |  |
+  | `created_at` | string | yes |  |
+  | `delivery` | object | yes |  |
+  | `device_id` | string | yes |  |
+  | `diagnostic_code` | string |  |  |
+  | `end` | object | yes |  |
+  | `expires_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `key` | string | yes |  |
+  | `provider` | string | yes |  |
+  | `references` | object | yes |  |
+  | `result` | any | yes |  |
+  | `result_expired` | boolean | yes |  |
+  | `state` | string | yes |  |
+order: 188000

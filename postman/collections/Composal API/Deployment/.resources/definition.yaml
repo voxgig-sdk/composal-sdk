@@ -1,0 +1,44 @@
+$kind: collection
+id: e50c90ed-2c46-54e5-a112-8eabc332e2ae
+description: |-
+  The **deployment** entity, which belongs to a organization. Its requests address one record by `{{deployment_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `app` | object | yes |  |
+  | `artifact_locator` | string | yes |  |
+  | `build_duration_seconds` | integer | yes |  |
+  | `build_source` | object | yes |  |
+  | `build_status` | string | yes |  |
+  | `children` | array | yes |  |
+  | `ci_pipeline_id` | string | yes |  |
+  | `ci_pipeline_run_id` | string | yes |  |
+  | `commit_sha` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `creator` | object | yes |  |
+  | `deployed_url` | string | yes |  |
+  | `duration_seconds` | integer | yes |  |
+  | `environment` | object | yes |  |
+  | `history_kind` | string | yes |  |
+  | `history_reason` | string | yes |  |
+  | `id` | string | yes |  |
+  | `is_live` | boolean | yes |  |
+  | `is_rollback` | boolean | yes |  |
+  | `live_region_count` | integer | yes |  |
+  | `number` | integer | yes |  |
+  | `placement` | object | yes |  |
+  | `region_count` | integer | yes |  |
+  | `replicas_per_region` | integer | yes |  |
+  | `rollback_reason` | string | yes |  |
+  | `rollback_source_release_id` | string | yes |  |
+  | `rollback_target_release_id` | string | yes |  |
+  | `rollout_predecessor_id` | string | yes |  |
+  | `rollout_status` | string | yes |  |
+  | `rollout_strategy` | string | yes |  |
+  | `service` | object | yes |  |
+  | `source_ref` | string | yes |  |
+  | `status` | string | yes |  |
+  | `total_replicas` | integer | yes |  |
+  | `trigger_kind` | string | yes |  |
+  | `updated_at` | string | yes |  |
+order: 200000

@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "bazel_blob": {
+      "BAZEL_BLOB00": {
+        "id": "BAZEL_BLOB00",
+        "blob_id": "BLOB01",
+        "hash": "HASH01"
+      },
+      "BAZEL_BLOB01": {
+        "id": "BAZEL_BLOB01",
+        "blob_id": "BLOB01",
+        "hash": "HASH01"
+      },
+      "BAZEL_BLOB02": {
+        "id": "BAZEL_BLOB02",
+        "blob_id": "BLOB01",
+        "hash": "HASH01"
+      }
+    }
+  },
+  "new": {
+    "bazel_blob": {
+      "bazel_blob_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/bazel/blobs/{kind}/{hash}/{size_bytes}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/bazel/blobs/{kind}/{hash}/{size_bytes}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

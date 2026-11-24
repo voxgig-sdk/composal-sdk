@@ -1,0 +1,22 @@
+$kind: http-request
+id: "5bfb412e-3a46-54bd-8556-9847bbbb7aa9"
+description: |-
+  The `patch` operation of **organization_oidc_trust**.
+
+  SDK: `client.OrganizationOidcTrust().patch({ id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/identity/organizations/:organization_id/oidc_trusts/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_oidc_trust belongs to.
+  - key: id
+    value: "{{organization_oidc_trust_id}}"
+    description: The organization_oidc_trust this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

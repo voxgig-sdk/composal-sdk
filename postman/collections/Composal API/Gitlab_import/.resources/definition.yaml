@@ -1,0 +1,12 @@
+$kind: collection
+id: b521eec2-12b3-5e15-87fb-f95175406af1
+description: |-
+  The **gitlab_import** entity, which belongs to a organization. Its requests address one record by `{{gitlab_import_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `integration_id` | string | yes |  |
+  | `project_id` | integer | yes |  |
+  | `repo_slug` | string |  |  |
+  | `source_branch` | string |  |  |
+order: 276000

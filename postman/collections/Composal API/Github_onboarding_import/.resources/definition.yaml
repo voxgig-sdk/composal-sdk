@@ -1,0 +1,21 @@
+$kind: collection
+id: "536df5de-47e7-5fd2-8a7c-f3abb299602b"
+description: |-
+  The **github_onboarding_import** entity, which belongs to a organization. Its requests address one record by `{{github_onboarding_import_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `account_login` | string | yes |  |
+  | `complete` | boolean | yes |  |
+  | `created_at` | string | yes |  |
+  | `failed_item_count` | integer | yes |  |
+  | `github_app_installation_id` | string | yes |  |
+  | `id` | string | yes |  |
+  | `imported_item_count` | integer | yes |  |
+  | `item_count` | integer | yes |  |
+  | `items` | array | yes |  |
+  | `repositories` | any | yes |  |
+  | `status` | string | yes |  |
+  | `terminal_item_count` | integer | yes |  |
+  | `updated_at` | string | yes |  |
+order: 262000

@@ -1,0 +1,18 @@
+$kind: collection
+id: "36ad6013-5a29-5de5-b087-f923f09d1413"
+description: |-
+  The **bookmark_protection_refresh_github_required_check** entity, which belongs to a organization and a repo. Its requests address one record by `{{bookmark_protection_refresh_github_required_check_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `exclusions` | array | yes |  |
+  | `fetched_at` | string |  |  |
+  | `fetched_at_label` | string |  |  |
+  | `github_branch` | string | yes |  |
+  | `github_owner` | string |  |  |
+  | `github_repository_name` | string |  |  |
+  | `last_error` | string |  |  |
+  | `proven` | boolean | yes |  |
+  | `requirements` | array | yes |  |
+  | `stale` | boolean | yes |  |
+order: 140000

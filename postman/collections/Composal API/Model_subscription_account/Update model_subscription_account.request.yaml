@@ -1,0 +1,19 @@
+$kind: http-request
+id: fdef08e5-d030-5e4d-8f79-c012a2ebbdc5
+description: |-
+  The `update` operation of **model_subscription_account**.
+
+  SDK: `client.ModelSubscriptionAccount().update({ id: "example" })`
+url: "{{base}}/api/v1/model_subscription_accounts/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{model_subscription_account_id}}"
+    description: The model_subscription_account this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 3000

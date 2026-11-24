@@ -1,0 +1,4 @@
+$kind: collection
+id: e04725de-974c-5cbb-80ab-39116751e4d8
+description: "The `BasicGithubCiRepositoryCompatibilityReportFlow` flow of **github_ci_repository_compatibility_report**."
+order: 212000

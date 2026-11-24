@@ -1,0 +1,22 @@
+$kind: http-request
+id: "532a6a08-c949-5f11-aa1e-15304dc72497"
+description: |-
+  The `activate` action of **organization_oidc_trust**, a route of its `create` operation.
+
+  SDK: `client.OrganizationOidcTrust().create({ "organization_id": "organization_id", "id": "ID", $action: "activate" })`
+url: "{{base}}/api/v1/identity/organizations/:organization_id/oidc_trusts/:id/activate"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_oidc_trust belongs to.
+  - key: id
+    value: "{{organization_oidc_trust_id}}"
+    description: The organization_oidc_trust this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

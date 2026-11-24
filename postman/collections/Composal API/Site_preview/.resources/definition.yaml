@@ -8,4 +8,4 @@ description: |-
   | `icon_data_url` | string | yes |  |
   | `title` | string | yes |  |
   | `url` | string | yes |  |
-order: 198000
+order: 477000

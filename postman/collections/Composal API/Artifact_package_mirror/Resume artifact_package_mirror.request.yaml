@@ -1,0 +1,19 @@
+$kind: http-request
+id: e3205ed5-f962-58c7-b365-94ff3e571c56
+description: |-
+  The `resume` action of **artifact_package_mirror**, a route of its `create` operation.
+
+  SDK: `client.ArtifactPackageMirror().create({ "id": "ID", $action: "resume" })`
+url: "{{base}}/api/v1/artifacts/package_mirrors/:id/resume"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_package_mirror_id}}"
+    description: The artifact_package_mirror this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 7000

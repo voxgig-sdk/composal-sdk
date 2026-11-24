@@ -1,0 +1,26 @@
+# BasicNodeFlow
+
+main: kit: flow: BasicNodeFlow:
+{
+  entity: "node",
+  kind: "basic",
+  name: "BasicNodeFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "node_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNodeFlow"
+}

@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "model_subscription_account_connection": {
+      "MODEL_SUBSCRIPTION_ACCOUNT_CONNECTION00": {
+        "id": "MODEL_SUBSCRIPTION_ACCOUNT_CONNECTION00"
+      },
+      "MODEL_SUBSCRIPTION_ACCOUNT_CONNECTION01": {
+        "id": "MODEL_SUBSCRIPTION_ACCOUNT_CONNECTION01"
+      },
+      "MODEL_SUBSCRIPTION_ACCOUNT_CONNECTION02": {
+        "id": "MODEL_SUBSCRIPTION_ACCOUNT_CONNECTION02"
+      }
+    }
+  },
+  "new": {
+    "model_subscription_account_connection": {
+      "model_subscription_account_connection_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/model_subscription_accounts/connection/{agent_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/model_subscription_accounts/connection/{agent_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+# BasicRepositoryAccessResolveFlow
+
+main: kit: flow: BasicRepositoryAccessResolveFlow:
+{
+  entity: "repository_access_resolve",
+  kind: "basic",
+  name: "BasicRepositoryAccessResolveFlow",
+  step: [
+    {
+      i: {
+        ref: "repository_access_resolve_ref01",
+        srcdatavar: "repository_access_resolve_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "repository_access_resolve01",
+        resolve_id: "resolve01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-repository_access_resolve_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRepositoryAccessResolveFlow"
+}

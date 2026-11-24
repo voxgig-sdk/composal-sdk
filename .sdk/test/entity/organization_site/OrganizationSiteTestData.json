@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "organization_site": {
+      "ORGANIZATION_SITE00": {
+        "id": "ORGANIZATION_SITE00",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ORGANIZATION_SITE01": {
+        "id": "ORGANIZATION_SITE01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ORGANIZATION_SITE02": {
+        "id": "ORGANIZATION_SITE02",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "organization_site": {
+      "organization_site_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/spark/organizations/{organization_id}/sites/{name}/token": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/spark/organizations/{organization_id}/sites": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/spark/organizations/{organization_id}/sites": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/spark/organizations/{organization_id}/sites/{name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/spark/organizations/{organization_id}/sites/{name}/app": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/spark/organizations/{organization_id}/sites/{name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/spark/organizations/{organization_id}/sites/{name}/app": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/spark/organizations/{organization_id}/sites/{name}/marketplace_template": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

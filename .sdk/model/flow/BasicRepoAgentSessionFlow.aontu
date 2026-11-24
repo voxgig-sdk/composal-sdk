@@ -1,0 +1,88 @@
+# BasicRepoAgentSessionFlow
+
+main: kit: flow: BasicRepoAgentSessionFlow:
+{
+  entity: "repo_agent_session",
+  kind: "basic",
+  name: "BasicRepoAgentSessionFlow",
+  step: [
+    {
+      i: {
+        ref: "repo_agent_session_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "repo_agent_session_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      i: {
+        ref: "repo_agent_session_ref01",
+        srcdatavar: "repo_agent_session_ref01_data",
+        suffix: "_up0",
+        textfield: "adapter"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-repo_agent_session_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "repo_agent_session_ref01",
+        srcdatavar: "repo_agent_session_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "repo_agent_session01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-repo_agent_session_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRepoAgentSessionFlow"
+}

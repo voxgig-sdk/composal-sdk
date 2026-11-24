@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "pairing_event": {
+      "PAIRING_EVENT00": {
+        "pairing_id": "PAIRING01"
+      },
+      "PAIRING_EVENT01": {
+        "pairing_id": "PAIRING01"
+      },
+      "PAIRING_EVENT02": {
+        "pairing_id": "PAIRING01"
+      }
+    }
+  },
+  "new": {
+    "pairing_event": {
+      "pairing_event_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/relay/pairings/{id}/events": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

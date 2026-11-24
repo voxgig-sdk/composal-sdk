@@ -39,4 +39,4 @@ description: |-
   | `verifier_preferences` | object | yes |  |
   | `version` | integer | yes |  |
   | `website_url` | string | yes |  |
-order: 94000
+order: 190000

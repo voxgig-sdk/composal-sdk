@@ -1,0 +1,22 @@
+$kind: http-request
+id: "5f5241eb-1f26-565c-b847-092f6b0169ce"
+description: |-
+  The `revoke` action of **runner_pool_node_enrollment_token**, a route of its `create` operation.
+
+  SDK: `client.RunnerPoolNodeEnrollmentToken().create({ "runner_pool_id": "runner_pool_id", "id": "ID", $action: "revoke" })`
+url: "{{base}}/api/v1/ci/runner_pools/:runner_pool_id/node_enrollment_tokens/:id/revoke"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: runner_pool_id
+    value: "{{runner_pool_id}}"
+    description: "Input: runner_pool_id."
+  - key: id
+    value: "{{runner_pool_node_enrollment_token_id}}"
+    description: The runner_pool_node_enrollment_token this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 3000

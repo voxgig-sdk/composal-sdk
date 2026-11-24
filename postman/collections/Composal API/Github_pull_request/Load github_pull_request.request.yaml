@@ -1,0 +1,43 @@
+$kind: http-request
+id: "0403af4d-83c3-5741-9184-258e68849f30"
+description: |-
+  The `load` operation of **github_pull_request**.
+
+  SDK: `client.GithubPullRequest().load({ id: "example_id", organization_id: "example", pull_request_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/github/pull_requests/:github_repository_id/:number"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: check_id
+    value: ""
+    disabled: true
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: job_id
+    value: ""
+    disabled: true
+  - key: page
+    value: ""
+    disabled: true
+  - key: run_id
+    value: ""
+    disabled: true
+  - key: section
+    value: ""
+    disabled: true
+  - key: thread_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this github_pull_request belongs to.
+  - key: github_repository_id
+    value: "{{github_pull_request_pull_request_id}}"
+    description: The github_pull_request this request addresses.
+  - key: number
+    value: "{{github_pull_request_id}}"
+    description: The github_pull_request this request addresses.
+order: 1000

@@ -10,4 +10,4 @@ description: |-
   | `name` | string | yes |  |
   | `skill_model_visible` | boolean | yes |  |
   | `source` | string | yes |  |
-order: 6000
+order: 10000

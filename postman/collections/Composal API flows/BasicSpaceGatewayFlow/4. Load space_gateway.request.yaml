@@ -1,0 +1,56 @@
+$kind: http-request
+id: "2438f39d-fd7b-5a92-a3ef-e9902a4d0157"
+description: |-
+  The `load` operation of **space_gateway**.
+
+  SDK: `client.SpaceGateway().load({ id: "example_id", space_id: "example" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/gateways/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: id
+    value: "{{space_gateway_ref01}}"
+    description: The space_gateway this request addresses.
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","space_id","space_gateway_ref01"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("4. Load space_gateway: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      if ("Mark01-space_gateway_ref01" === pm.variables.get("space_gateway_ref01_marked")) pm.test("4. Load space_gateway: the update reads back", () => {
+        pm.expect(JSON.stringify(body)).to.include("Mark01-space_gateway_ref01")
+      })
+      pm.test("4. Load space_gateway: the record is the one asked for", () => {
+        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("space_gateway_ref01")))
+      })
+    language: text/javascript
+order: 4000

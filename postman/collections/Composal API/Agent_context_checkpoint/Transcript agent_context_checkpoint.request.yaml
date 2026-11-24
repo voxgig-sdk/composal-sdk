@@ -1,0 +1,30 @@
+$kind: http-request
+id: d97ad64e-7fd9-51a2-bbb0-ff257996eb12
+description: |-
+  The `transcript` action of **agent_context_checkpoint**, a route of its `load` operation.
+
+  SDK: `client.AgentContextCheckpoint().load({ "organization_id": "organization_id", "repo_id": "repo_id", "change_id": "change_id", "id": "ID", "expected_commit_id": "expected_commit_id", $action: "transcript" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/:id/agent_context/checkpoints/:checkpoint_id/transcript?expected_commit_id={{expected_commit_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: expected_commit_id
+    value: "{{expected_commit_id}}"
+  - key: max_bytes
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this agent_context_checkpoint belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this agent_context_checkpoint belongs to.
+  - key: id
+    value: "{{change_id}}"
+    description: The change this agent_context_checkpoint belongs to.
+  - key: checkpoint_id
+    value: "{{agent_context_checkpoint_id}}"
+    description: The agent_context_checkpoint this request addresses.
+order: 1000

@@ -1,0 +1,19 @@
+$kind: http-request
+id: d1fef61f-0697-51da-9213-fe00abbda5c1
+description: |-
+  The `extract` action of **parallel_v1**, a route of its `create` operation.
+
+  SDK: `client.ParallelV1().create({ "organization_id": "organization_id", $action: "extract" })`
+url: "{{base}}/api/v1/organizations/:organization_id/local_agent/parallel/v1/extract"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this parallel_v1 belongs to.
+body:
+  type: json
+  content: "{}"
+order: 1000

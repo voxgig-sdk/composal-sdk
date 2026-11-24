@@ -1,0 +1,56 @@
+# Entity: github_app
+
+main: kit: entity: github_app: {
+
+  alias: field: {}
+
+  name: "github_app"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/github_app/webhook"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/github_app/webhook"
+          q: {
+            "$action": "webhook"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "github_app"
+            }
+            {
+              lit: "webhook"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

@@ -12,8 +12,6 @@ main: kit: flow: BasicSparkFlow:
       }
 
       m: {
-        agent_id: "agent01",
-        name: "name01",
         organization_id: "organization01"
       }
 
@@ -22,7 +20,6 @@ main: kit: flow: BasicSparkFlow:
 
     {
       m: {
-        agent_id: "agent01",
         organization_id: "organization01"
       }
 
@@ -30,82 +27,6 @@ main: kit: flow: BasicSparkFlow:
       v: [
         {
           apply: "ItemExists",
-          def: {
-            ref: "spark_ref01"
-          }
-        }
-      ]
-    }
-
-    {
-      d: {
-        organization_id: "organization01"
-      }
-
-      i: {
-        ref: "spark_ref01",
-        srcdatavar: "spark_ref01_data",
-        suffix: "_up0",
-        textfield: "account_id"
-      }
-
-      o: "update",
-      s: [
-        {
-          apply: "TextFieldMark",
-          def: {
-            mark: "Mark01-spark_ref01"
-          }
-        }
-      ]
-    }
-
-    {
-      i: {
-        ref: "spark_ref01",
-        srcdatavar: "spark_ref01_data",
-        suffix: "_dt0"
-      }
-
-      o: "load",
-      v: [
-        {
-          apply: "TextFieldMark",
-          def: {
-            mark: "Mark01-spark_ref01"
-          }
-        }
-      ]
-    }
-
-    {
-      i: {
-        ref: "spark_ref01",
-        suffix: "_rm0"
-      }
-
-      m: {
-        id: "spark01",
-        organization_id: "organization01"
-      }
-
-      o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        agent_id: "agent01",
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
           def: {
             ref: "spark_ref01"
           }

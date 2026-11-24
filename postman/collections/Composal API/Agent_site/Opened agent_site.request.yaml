@@ -1,0 +1,27 @@
+$kind: http-request
+id: b194f60d-9405-5cd8-9ce8-a1520794ce8e
+description: |-
+  The `opened` action of **agent_site**, a route of its `create` operation.
+
+  SDK: `client.AgentSite().create({ "organization_id": "organization_id", "id": "ID", "idempotency_key": "idempotency_key", $action: "opened" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_sites/:id/opened"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_site belongs to.
+  - key: id
+    value: "{{agent_site_id}}"
+    description: The agent_site this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "surface": "web",
+      "view": "frame"
+    }
+order: 4000

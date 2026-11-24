@@ -1,0 +1,12 @@
+$kind: collection
+id: "8f9d448d-fd46-5b44-8ad1-de340ade166e"
+description: |-
+  The **agent_connection_resource** entity, which belongs to a organization and a agent_connection. Its requests address one record by `{{agent_connection_resource_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `cursor` | string |  |  |
+  | `next_cursor` | string | yes |  |
+  | `query` | string |  |  |
+  | `resources` | array | yes |  |
+order: 15000

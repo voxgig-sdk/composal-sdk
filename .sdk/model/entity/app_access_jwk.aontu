@@ -1,0 +1,52 @@
+# Entity: app_access_jwk
+
+main: kit: entity: app_access_jwk: {
+
+  alias: field: {}
+
+  name: "app_access_jwk"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/app_access/jwks"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/app_access/jwks"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "app_access"
+            }
+            {
+              lit: "jwks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

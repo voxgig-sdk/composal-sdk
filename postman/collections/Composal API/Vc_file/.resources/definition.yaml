@@ -1,0 +1,10 @@
+$kind: collection
+id: f75e81d1-5408-5f3e-ad94-86b6bb2fb658
+description: |-
+  The **vc_file** entity, which belongs to a organization and a repo. Its requests address one record by `{{vc_file_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `paths` | array | yes |  |
+  | `truncated` | boolean | yes |  |
+order: 527000

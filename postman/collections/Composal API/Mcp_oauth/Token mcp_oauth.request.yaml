@@ -1,0 +1,15 @@
+$kind: http-request
+id: d60dbf99-5f6d-50fb-af6c-5c7a4ff7ce04
+description: |-
+  The `token` action of **mcp_oauth**, a route of its `create` operation.
+
+  SDK: `client.McpOauth().create({ $action: "token" })`
+url: "{{base}}/api/v1/mcp/oauth/token"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 6000

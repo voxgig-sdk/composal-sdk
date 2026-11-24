@@ -1,0 +1,18 @@
+$kind: http-request
+id: a040b0b0-70e6-5ea2-bcc7-8b722470bff7
+description: |-
+  The `load` operation of **docker_builder**.
+
+  SDK: `client.DockerBuilder().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/docker_builders/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this docker_builder belongs to.
+  - key: id
+    value: "{{docker_builder_id}}"
+    description: The docker_builder this request addresses.
+order: 2000

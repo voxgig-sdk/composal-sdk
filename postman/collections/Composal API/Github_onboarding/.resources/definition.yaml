@@ -1,0 +1,13 @@
+$kind: collection
+id: aa538151-a5b7-5472-8bb5-b3e7e71c96c1
+description: |-
+  The **github_onboarding** entity, which belongs to a organization. Its requests address one record by `{{github_onboarding_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `accounts` | array | yes |  |
+  | `active_batch_id` | string | yes |  |
+  | `batches` | array | yes |  |
+  | `capabilities` | object | yes |  |
+  | `installations` | array | yes |  |
+order: 260000

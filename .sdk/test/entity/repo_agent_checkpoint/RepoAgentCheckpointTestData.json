@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "repo_agent_checkpoint": {
+      "REPO_AGENT_CHECKPOINT00": {
+        "id": "REPO_AGENT_CHECKPOINT00",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "REPO_AGENT_CHECKPOINT01": {
+        "id": "REPO_AGENT_CHECKPOINT01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "REPO_AGENT_CHECKPOINT02": {
+        "id": "REPO_AGENT_CHECKPOINT02",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "repo_agent_checkpoint": {
+      "repo_agent_checkpoint_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_checkpoints/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_checkpoints/{id}/download": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

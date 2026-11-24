@@ -5,7 +5,7 @@
 The TypeScript SDK for the Composal API — a type-safe, entity-oriented client with full async/await support.
 
 The API is exposed as capitalised, semantic **Entities** — e.g.
-`client.Agent()` — each with a small set of operations (`list`, `load`, `create`, `update`, `patch`, `remove`)
+`client.A2aWellKnown()` — each with a small set of operations (`list`, `load`, `create`, `update`, `patch`, `remove`)
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
@@ -39,20 +39,6 @@ const client = new ComposalSDK({
 })
 ```
 
-### 2. List agent records
-
-`list()` resolves to an array of Agent ENTITIES — every operation
-resolves to entities, not raw records. Iterate them directly, and call
-`.data()` on one for the record it holds:
-
-```ts
-const agents = await client.Agent().list({ organization_id: "example" })
-
-for (const agent of agents) {
-  console.log(agent.data())
-}
-```
-
 ### 3. Load an agent
 
 Agent is nested under organization, so provide the `organization_id`.
@@ -70,22 +56,6 @@ try {
 }
 ```
 
-### 4. Create, update, and remove
-
-```ts
-// Create — returns the created Agent ENTITY (.data() for the record)
-const created = await client.Agent().create({
-  organization_id: 'example_organization_id',
-  name: 'example_name',
-})
-
-// Remove
-await client.Agent().remove({
-  id: created.data().id!,
-  organization_id: 'example_organization_id',
-})
-```
-
 
 ## Error handling
 
@@ -93,8 +63,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const pageprojectrun = await client.PageProjectRun().load({ id: "example_id", organization_id: "example", project_id: "example" })
-  console.log(pageprojectrun.data())
+  const agentoperation = await client.AgentOperation().load({ agent_id: "example", id: "example_id", organization_id: "example" })
+  console.log(agentoperation.data())
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -158,9 +128,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ComposalSDK.test()
 
-const pageprojectrun = await client.PageProjectRun().load({ id: 'test01', organization_id: 'example_organization_id', project_id: 'example_project_id' })
-// pageprojectrun is the PageProjectRun entity; .data() reads its mock record
-console.log(pageprojectrun.data())
+const agentoperation = await client.AgentOperation().load({ id: 'test01', agent_id: 'example_agent_id', organization_id: 'example_organization_id' })
+// agentoperation is the AgentOperation entity; .data() reads its mock record
+console.log(agentoperation.data())
 ```
 
 You can also use the instance method:
@@ -175,10 +145,10 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.PageProjectRun()
+const entity = client.AgentOperation()
 
 // First call runs the operation and stores its result
-await entity.load({ id: 'example', organization_id: 'example_organization_id', project_id: 'example_project_id' })
+await entity.load({ id: 'example', agent_id: 'example_agent_id', organization_id: 'example_organization_id' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -262,19 +232,32 @@ new ComposalSDK(options?: {
 | `utility()` | `Utility` | Deep copy of the SDK utility object. |
 | `prepare(fetchargs?)` | `Promise<FetchDef>` | Build an HTTP request definition without sending it. |
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
+| `A2aWellKnown(data?)` | `A2aWellKnownEntity` | Create an A2aWellKnown entity instance. |
+| `AdminOrg(data?)` | `AdminOrgEntity` | Create an AdminOrg entity instance. |
 | `Agent(data?)` | `AgentEntity` | Create an Agent entity instance. |
+| `AgentApp(data?)` | `AgentAppEntity` | Create an AgentApp entity instance. |
+| `AgentAppInstall(data?)` | `AgentAppInstallEntity` | Create an AgentAppInstall entity instance. |
 | `AgentAttachment(data?)` | `AgentAttachmentEntity` | Create an AgentAttachment entity instance. |
 | `AgentAutomation(data?)` | `AgentAutomationEntity` | Create an AgentAutomation entity instance. |
 | `AgentAvatar(data?)` | `AgentAvatarEntity` | Create an AgentAvatar entity instance. |
 | `AgentCommand(data?)` | `AgentCommandEntity` | Create an AgentCommand entity instance. |
 | `AgentComputer(data?)` | `AgentComputerEntity` | Create an AgentComputer entity instance. |
 | `AgentConnection(data?)` | `AgentConnectionEntity` | Create an AgentConnection entity instance. |
+| `AgentConnectionDelegation(data?)` | `AgentConnectionDelegationEntity` | Create an AgentConnectionDelegation entity instance. |
+| `AgentConnectionGrant(data?)` | `AgentConnectionGrantEntity` | Create an AgentConnectionGrant entity instance. |
+| `AgentConnectionResource(data?)` | `AgentConnectionResourceEntity` | Create an AgentConnectionResource entity instance. |
+| `AgentConnectionSafetyControl(data?)` | `AgentConnectionSafetyControlEntity` | Create an AgentConnectionSafetyControl entity instance. |
+| `AgentConnectionTriggerSubscription(data?)` | `AgentConnectionTriggerSubscriptionEntity` | Create an AgentConnectionTriggerSubscription entity instance. |
+| `AgentContextCheckpoint(data?)` | `AgentContextCheckpointEntity` | Create an AgentContextCheckpoint entity instance. |
 | `AgentControlFlow(data?)` | `AgentControlFlowEntity` | Create an AgentControlFlow entity instance. |
 | `AgentCoordination(data?)` | `AgentCoordinationEntity` | Create an AgentCoordination entity instance. |
 | `AgentEmail(data?)` | `AgentEmailEntity` | Create an AgentEmail entity instance. |
+| `AgentEvent(data?)` | `AgentEventEntity` | Create an AgentEvent entity instance. |
 | `AgentFile(data?)` | `AgentFileEntity` | Create an AgentFile entity instance. |
 | `AgentInput(data?)` | `AgentInputEntity` | Create an AgentInput entity instance. |
 | `AgentIntegration(data?)` | `AgentIntegrationEntity` | Create an AgentIntegration entity instance. |
+| `AgentIntegrationAccount(data?)` | `AgentIntegrationAccountEntity` | Create an AgentIntegrationAccount entity instance. |
+| `AgentIntegrationCallback(data?)` | `AgentIntegrationCallbackEntity` | Create an AgentIntegrationCallback entity instance. |
 | `AgentInteraction(data?)` | `AgentInteractionEntity` | Create an AgentInteraction entity instance. |
 | `AgentLibrary(data?)` | `AgentLibraryEntity` | Create an AgentLibrary entity instance. |
 | `AgentManager(data?)` | `AgentManagerEntity` | Create an AgentManager entity instance. |
@@ -286,11 +269,17 @@ new ComposalSDK(options?: {
 | `AgentProvisioning(data?)` | `AgentProvisioningEntity` | Create an AgentProvisioning entity instance. |
 | `AgentPullRequest(data?)` | `AgentPullRequestEntity` | Create an AgentPullRequest entity instance. |
 | `AgentQuestion(data?)` | `AgentQuestionEntity` | Create an AgentQuestion entity instance. |
+| `AgentRelayFileGrant(data?)` | `AgentRelayFileGrantEntity` | Create an AgentRelayFileGrant entity instance. |
+| `AgentRelayFileGrantAccount(data?)` | `AgentRelayFileGrantAccountEntity` | Create an AgentRelayFileGrantAccount entity instance. |
 | `AgentRepository(data?)` | `AgentRepositoryEntity` | Create an AgentRepository entity instance. |
 | `AgentResource(data?)` | `AgentResourceEntity` | Create an AgentResource entity instance. |
+| `AgentRoder(data?)` | `AgentRoderEntity` | Create an AgentRoder entity instance. |
 | `AgentRoutine(data?)` | `AgentRoutineEntity` | Create an AgentRoutine entity instance. |
 | `AgentRun(data?)` | `AgentRunEntity` | Create an AgentRun entity instance. |
 | `AgentRuntime(data?)` | `AgentRuntimeEntity` | Create an AgentRuntime entity instance. |
+| `AgentSession(data?)` | `AgentSessionEntity` | Create an AgentSession entity instance. |
+| `AgentSessionCheckpoint(data?)` | `AgentSessionCheckpointEntity` | Create an AgentSessionCheckpoint entity instance. |
+| `AgentSessionRoderHandoff(data?)` | `AgentSessionRoderHandoffEntity` | Create an AgentSessionRoderHandoff entity instance. |
 | `AgentSetting(data?)` | `AgentSettingEntity` | Create an AgentSetting entity instance. |
 | `AgentSharing(data?)` | `AgentSharingEntity` | Create an AgentSharing entity instance. |
 | `AgentSite(data?)` | `AgentSiteEntity` | Create an AgentSite entity instance. |
@@ -298,12 +287,15 @@ new ComposalSDK(options?: {
 | `AgentSlack(data?)` | `AgentSlackEntity` | Create an AgentSlack entity instance. |
 | `AgentSubagent(data?)` | `AgentSubagentEntity` | Create an AgentSubagent entity instance. |
 | `AgentSubscription(data?)` | `AgentSubscriptionEntity` | Create an AgentSubscription entity instance. |
+| `AgentSwarm(data?)` | `AgentSwarmEntity` | Create an AgentSwarm entity instance. |
 | `AgentTeammate(data?)` | `AgentTeammateEntity` | Create an AgentTeammate entity instance. |
 | `AgentTerminal(data?)` | `AgentTerminalEntity` | Create an AgentTerminal entity instance. |
 | `AgentThread(data?)` | `AgentThreadEntity` | Create an AgentThread entity instance. |
 | `AgentTool(data?)` | `AgentToolEntity` | Create an AgentTool entity instance. |
+| `AgentUsage(data?)` | `AgentUsageEntity` | Create an AgentUsage entity instance. |
 | `AgentVerifyProject(data?)` | `AgentVerifyProjectEntity` | Create an AgentVerifyProject entity instance. |
 | `AgentWait(data?)` | `AgentWaitEntity` | Create an AgentWait entity instance. |
+| `AgentWebPreview(data?)` | `AgentWebPreviewEntity` | Create an AgentWebPreview entity instance. |
 | `AgentWebhook(data?)` | `AgentWebhookEntity` | Create an AgentWebhook entity instance. |
 | `AgentWork(data?)` | `AgentWorkEntity` | Create an AgentWork entity instance. |
 | `AgentWorkflow(data?)` | `AgentWorkflowEntity` | Create an AgentWorkflow entity instance. |
@@ -312,8 +304,13 @@ new ComposalSDK(options?: {
 | `AgentWorkflowTrigger(data?)` | `AgentWorkflowTriggerEntity` | Create an AgentWorkflowTrigger entity instance. |
 | `AgentWorkspace(data?)` | `AgentWorkspaceEntity` | Create an AgentWorkspace entity instance. |
 | `AgentWritePermission(data?)` | `AgentWritePermissionEntity` | Create an AgentWritePermission entity instance. |
+| `Agreement(data?)` | `AgreementEntity` | Create an Agreement entity instance. |
+| `AgreementAccessRequest(data?)` | `AgreementAccessRequestEntity` | Create an AgreementAccessRequest entity instance. |
+| `AlertRuleEvent(data?)` | `AlertRuleEventEntity` | Create an AlertRuleEvent entity instance. |
 | `AllocationLog(data?)` | `AllocationLogEntity` | Create an AllocationLog entity instance. |
 | `App(data?)` | `AppEntity` | Create an App entity instance. |
+| `AppAccess(data?)` | `AppAccessEntity` | Create an AppAccess entity instance. |
+| `AppAccessJwk(data?)` | `AppAccessJwkEntity` | Create an AppAccessJwk entity instance. |
 | `AppCdn(data?)` | `AppCdnEntity` | Create an AppCdn entity instance. |
 | `AppConfigVariable(data?)` | `AppConfigVariableEntity` | Create an AppConfigVariable entity instance. |
 | `AppDataResource(data?)` | `AppDataResourceEntity` | Create an AppDataResource entity instance. |
@@ -332,11 +329,46 @@ new ComposalSDK(options?: {
 | `AppServiceBinding(data?)` | `AppServiceBindingEntity` | Create an AppServiceBinding entity instance. |
 | `AppServicePlacement(data?)` | `AppServicePlacementEntity` | Create an AppServicePlacement entity instance. |
 | `AppStorageResource(data?)` | `AppStorageResourceEntity` | Create an AppStorageResource entity instance. |
+| `Artefact(data?)` | `ArtefactEntity` | Create an Artefact entity instance. |
+| `ArtefactCommentThread(data?)` | `ArtefactCommentThreadEntity` | Create an ArtefactCommentThread entity instance. |
+| `ArtefactRevision(data?)` | `ArtefactRevisionEntity` | Create an ArtefactRevision entity instance. |
+| `ArtefactViewToken(data?)` | `ArtefactViewTokenEntity` | Create an ArtefactViewToken entity instance. |
+| `Artifact(data?)` | `ArtifactEntity` | Create an Artifact entity instance. |
+| `ArtifactCacheNamespace(data?)` | `ArtifactCacheNamespaceEntity` | Create an ArtifactCacheNamespace entity instance. |
+| `ArtifactImageRepository(data?)` | `ArtifactImageRepositoryEntity` | Create an ArtifactImageRepository entity instance. |
+| `ArtifactPackageMirror(data?)` | `ArtifactPackageMirrorEntity` | Create an ArtifactPackageMirror entity instance. |
+| `ArtifactRetentionPolicy(data?)` | `ArtifactRetentionPolicyEntity` | Create an ArtifactRetentionPolicy entity instance. |
 | `AttachmentPart(data?)` | `AttachmentPartEntity` | Create an AttachmentPart entity instance. |
+| `AuditEvent(data?)` | `AuditEventEntity` | Create an AuditEvent entity instance. |
+| `Auth(data?)` | `AuthEntity` | Create an Auth entity instance. |
+| `AuthCli(data?)` | `AuthCliEntity` | Create an AuthCli entity instance. |
+| `AuthGithub(data?)` | `AuthGithubEntity` | Create an AuthGithub entity instance. |
+| `AuthGoogle(data?)` | `AuthGoogleEntity` | Create an AuthGoogle entity instance. |
+| `AuthOpenai(data?)` | `AuthOpenaiEntity` | Create an AuthOpenai entity instance. |
+| `AuthPasswordReset(data?)` | `AuthPasswordResetEntity` | Create an AuthPasswordReset entity instance. |
+| `AuthRegistrationOption(data?)` | `AuthRegistrationOptionEntity` | Create an AuthRegistrationOption entity instance. |
 | `AutomationEvent(data?)` | `AutomationEventEntity` | Create an AutomationEvent entity instance. |
 | `AutomationRun(data?)` | `AutomationRunEntity` | Create an AutomationRun entity instance. |
+| `BackendRunnerPool(data?)` | `BackendRunnerPoolEntity` | Create a BackendRunnerPool entity instance. |
+| `Bazel(data?)` | `BazelEntity` | Create a Bazel entity instance. |
+| `BazelActionResult(data?)` | `BazelActionResultEntity` | Create a BazelActionResult entity instance. |
+| `BazelBackend(data?)` | `BazelBackendEntity` | Create a BazelBackend entity instance. |
+| `BazelBlob(data?)` | `BazelBlobEntity` | Create a BazelBlob entity instance. |
+| `BazelExecution(data?)` | `BazelExecutionEntity` | Create a BazelExecution entity instance. |
+| `BazelFindMissingBlob(data?)` | `BazelFindMissingBlobEntity` | Create a BazelFindMissingBlob entity instance. |
+| `Billing(data?)` | `BillingEntity` | Create a Billing entity instance. |
+| `BillingAddon(data?)` | `BillingAddonEntity` | Create a BillingAddon entity instance. |
+| `BillingCheckoutSession(data?)` | `BillingCheckoutSessionEntity` | Create a BillingCheckoutSession entity instance. |
+| `BillingInvoice(data?)` | `BillingInvoiceEntity` | Create a BillingInvoice entity instance. |
+| `BillingPackage(data?)` | `BillingPackageEntity` | Create a BillingPackage entity instance. |
+| `BillingPortalSession(data?)` | `BillingPortalSessionEntity` | Create a BillingPortalSession entity instance. |
+| `BillingPrepaidPeriod(data?)` | `BillingPrepaidPeriodEntity` | Create a BillingPrepaidPeriod entity instance. |
+| `BillingPrepaidPurchase(data?)` | `BillingPrepaidPurchaseEntity` | Create a BillingPrepaidPurchase entity instance. |
+| `BillingTokenTopUp(data?)` | `BillingTokenTopUpEntity` | Create a BillingTokenTopUp entity instance. |
+| `BillingUsage(data?)` | `BillingUsageEntity` | Create a BillingUsage entity instance. |
 | `Binary(data?)` | `BinaryEntity` | Create a Binary entity instance. |
 | `BinaryVersion(data?)` | `BinaryVersionEntity` | Create a BinaryVersion entity instance. |
+| `BookmarkProtectionRefreshGithubRequiredCheck(data?)` | `BookmarkProtectionRefreshGithubRequiredCheckEntity` | Create a BookmarkProtectionRefreshGithubRequiredCheck entity instance. |
 | `BrowserEgressCandidate(data?)` | `BrowserEgressCandidateEntity` | Create a BrowserEgressCandidate entity instance. |
 | `BrowserSession(data?)` | `BrowserSessionEntity` | Create a BrowserSession entity instance. |
 | `BrowserSessionConnection(data?)` | `BrowserSessionConnectionEntity` | Create a BrowserSessionConnection entity instance. |
@@ -346,13 +378,46 @@ new ComposalSDK(options?: {
 | `BrowserSessionRecording(data?)` | `BrowserSessionRecordingEntity` | Create a BrowserSessionRecording entity instance. |
 | `BrowserSessionScreenshot(data?)` | `BrowserSessionScreenshotEntity` | Create a BrowserSessionScreenshot entity instance. |
 | `BrowserSessionTask(data?)` | `BrowserSessionTaskEntity` | Create a BrowserSessionTask entity instance. |
+| `CacheNamespaceEntry(data?)` | `CacheNamespaceEntryEntity` | Create a CacheNamespaceEntry entity instance. |
 | `CatalogSelector(data?)` | `CatalogSelectorEntity` | Create a CatalogSelector entity instance. |
 | `CdnDeployment(data?)` | `CdnDeploymentEntity` | Create a CdnDeployment entity instance. |
 | `CdnHostname(data?)` | `CdnHostnameEntity` | Create a CdnHostname entity instance. |
 | `CdnSpace(data?)` | `CdnSpaceEntity` | Create a CdnSpace entity instance. |
 | `CdnSpaceObject(data?)` | `CdnSpaceObjectEntity` | Create a CdnSpaceObject entity instance. |
+| `Change(data?)` | `ChangeEntity` | Create a Change entity instance. |
+| `ChangeAsset(data?)` | `ChangeAssetEntity` | Create a ChangeAsset entity instance. |
+| `ChangeComment(data?)` | `ChangeCommentEntity` | Create a ChangeComment entity instance. |
+| `ChangeFileReviewCheckpoint(data?)` | `ChangeFileReviewCheckpointEntity` | Create a ChangeFileReviewCheckpoint entity instance. |
+| `ChangeGitBranchSubmission(data?)` | `ChangeGitBranchSubmissionEntity` | Create a ChangeGitBranchSubmission entity instance. |
+| `ChangeGitCommitIdentity(data?)` | `ChangeGitCommitIdentityEntity` | Create a ChangeGitCommitIdentity entity instance. |
+| `ChangeGitPublication(data?)` | `ChangeGitPublicationEntity` | Create a ChangeGitPublication entity instance. |
+| `ChangeGroupMember(data?)` | `ChangeGroupMemberEntity` | Create a ChangeGroupMember entity instance. |
+| `ChangeLabel(data?)` | `ChangeLabelEntity` | Create a ChangeLabel entity instance. |
+| `ChangeLandingHold(data?)` | `ChangeLandingHoldEntity` | Create a ChangeLandingHold entity instance. |
+| `ChangeLandingRequest(data?)` | `ChangeLandingRequestEntity` | Create a ChangeLandingRequest entity instance. |
+| `ChangeRequestChange(data?)` | `ChangeRequestChangeEntity` | Create a ChangeRequestChange entity instance. |
+| `ChangeReviewer(data?)` | `ChangeReviewerEntity` | Create a ChangeReviewer entity instance. |
+| `ChangeTranscript(data?)` | `ChangeTranscriptEntity` | Create a ChangeTranscript entity instance. |
+| `ChangeTranscriptSummary(data?)` | `ChangeTranscriptSummaryEntity` | Create a ChangeTranscriptSummary entity instance. |
+| `CheckpointPrepareChunk(data?)` | `CheckpointPrepareChunkEntity` | Create a CheckpointPrepareChunk entity instance. |
+| `CiNode(data?)` | `CiNodeEntity` | Create a CiNode entity instance. |
+| `CiPipeline(data?)` | `CiPipelineEntity` | Create a CiPipeline entity instance. |
+| `CiPipelineRun(data?)` | `CiPipelineRunEntity` | Create a CiPipelineRun entity instance. |
+| `CiRunnerPool(data?)` | `CiRunnerPoolEntity` | Create a CiRunnerPool entity instance. |
+| `CiStatus(data?)` | `CiStatusEntity` | Create a CiStatus entity instance. |
+| `CliEvent(data?)` | `CliEventEntity` | Create a CliEvent entity instance. |
+| `CliRelease(data?)` | `CliReleaseEntity` | Create a CliRelease entity instance. |
+| `CloudWorkspaceBackupObject(data?)` | `CloudWorkspaceBackupObjectEntity` | Create a CloudWorkspaceBackupObject entity instance. |
+| `CodeRuleEvaluation(data?)` | `CodeRuleEvaluationEntity` | Create a CodeRuleEvaluation entity instance. |
+| `ComSiteAccess(data?)` | `ComSiteAccessEntity` | Create a ComSiteAccess entity instance. |
+| `ComSiteAccessSession(data?)` | `ComSiteAccessSessionEntity` | Create a ComSiteAccessSession entity instance. |
+| `CommentThreadComment(data?)` | `CommentThreadCommentEntity` | Create a CommentThreadComment entity instance. |
+| `CommitDiff(data?)` | `CommitDiffEntity` | Create a CommitDiff entity instance. |
 | `ConnectionRequest(data?)` | `ConnectionRequestEntity` | Create a ConnectionRequest entity instance. |
 | `ConnectionSource(data?)` | `ConnectionSourceEntity` | Create a ConnectionSource entity instance. |
+| `ContactSubmission(data?)` | `ContactSubmissionEntity` | Create a ContactSubmission entity instance. |
+| `ControlComputer(data?)` | `ControlComputerEntity` | Create a ControlComputer entity instance. |
+| `ControlComputerControlOperation(data?)` | `ControlComputerControlOperationEntity` | Create a ControlComputerControlOperation entity instance. |
 | `CoordinationWait(data?)` | `CoordinationWaitEntity` | Create a CoordinationWait entity instance. |
 | `CredentialSignInCheck(data?)` | `CredentialSignInCheckEntity` | Create a CredentialSignInCheck entity instance. |
 | `DataResourceRotateCredential(data?)` | `DataResourceRotateCredentialEntity` | Create a DataResourceRotateCredential entity instance. |
@@ -363,10 +428,36 @@ new ComposalSDK(options?: {
 | `DeepScanOption(data?)` | `DeepScanOptionEntity` | Create a DeepScanOption entity instance. |
 | `DemoShare(data?)` | `DemoShareEntity` | Create a DemoShare entity instance. |
 | `DemoShareSegment(data?)` | `DemoShareSegmentEntity` | Create a DemoShareSegment entity instance. |
+| `Deployment(data?)` | `DeploymentEntity` | Create a Deployment entity instance. |
 | `DeploymentDashboardNomad(data?)` | `DeploymentDashboardNomadEntity` | Create a DeploymentDashboardNomad entity instance. |
+| `DeploymentDetail(data?)` | `DeploymentDetailEntity` | Create a DeploymentDetail entity instance. |
 | `DeploymentFile(data?)` | `DeploymentFileEntity` | Create a DeploymentFile entity instance. |
+| `DeploymentLog(data?)` | `DeploymentLogEntity` | Create a DeploymentLog entity instance. |
+| `DeploymentMetric(data?)` | `DeploymentMetricEntity` | Create a DeploymentMetric entity instance. |
+| `DeploymentPreview(data?)` | `DeploymentPreviewEntity` | Create a DeploymentPreview entity instance. |
+| `DeploymentSetting(data?)` | `DeploymentSettingEntity` | Create a DeploymentSetting entity instance. |
+| `DesktopLocalAgentModel(data?)` | `DesktopLocalAgentModelEntity` | Create a DesktopLocalAgentModel entity instance. |
+| `DesktopLocalAgentResponse(data?)` | `DesktopLocalAgentResponseEntity` | Create a DesktopLocalAgentResponse entity instance. |
+| `Device(data?)` | `DeviceEntity` | Create a Device entity instance. |
+| `DeviceBrowserOperation(data?)` | `DeviceBrowserOperationEntity` | Create a DeviceBrowserOperation entity instance. |
+| `DeviceControlMessage(data?)` | `DeviceControlMessageEntity` | Create a DeviceControlMessage entity instance. |
+| `DeviceControlOperation(data?)` | `DeviceControlOperationEntity` | Create a DeviceControlOperation entity instance. |
+| `DeviceEnterpriseRelay(data?)` | `DeviceEnterpriseRelayEntity` | Create a DeviceEnterpriseRelay entity instance. |
+| `DeviceFolderListing(data?)` | `DeviceFolderListingEntity` | Create a DeviceFolderListing entity instance. |
+| `DeviceGrant(data?)` | `DeviceGrantEntity` | Create a DeviceGrant entity instance. |
+| `DeviceInvocation(data?)` | `DeviceInvocationEntity` | Create a DeviceInvocation entity instance. |
+| `DeviceLocalEvent(data?)` | `DeviceLocalEventEntity` | Create a DeviceLocalEvent entity instance. |
+| `DevicePairing(data?)` | `DevicePairingEntity` | Create a DevicePairing entity instance. |
+| `DeviceProject(data?)` | `DeviceProjectEntity` | Create a DeviceProject entity instance. |
+| `DeviceScheduledCheckIn(data?)` | `DeviceScheduledCheckInEntity` | Create a DeviceScheduledCheckIn entity instance. |
+| `DockerBuilder(data?)` | `DockerBuilderEntity` | Create a DockerBuilder entity instance. |
+| `DockerBuilderSession(data?)` | `DockerBuilderSessionEntity` | Create a DockerBuilderSession entity instance. |
+| `DockerBuilderSetting(data?)` | `DockerBuilderSettingEntity` | Create a DockerBuilderSetting entity instance. |
+| `DomainDnsIntegration(data?)` | `DomainDnsIntegrationEntity` | Create a DomainDnsIntegration entity instance. |
 | `DomainPathRule(data?)` | `DomainPathRuleEntity` | Create a DomainPathRule entity instance. |
 | `Dream(data?)` | `DreamEntity` | Create a Dream entity instance. |
+| `Edge(data?)` | `EdgeEntity` | Create an Edge entity instance. |
+| `EmailVerification(data?)` | `EmailVerificationEntity` | Create an EmailVerification entity instance. |
 | `Environment(data?)` | `EnvironmentEntity` | Create an Environment entity instance. |
 | `EnvironmentDiscoveryRun(data?)` | `EnvironmentDiscoveryRunEntity` | Create an EnvironmentDiscoveryRun entity instance. |
 | `EnvironmentExploration(data?)` | `EnvironmentExplorationEntity` | Create an EnvironmentExploration entity instance. |
@@ -375,48 +466,153 @@ new ComposalSDK(options?: {
 | `EnvironmentSecretBinding(data?)` | `EnvironmentSecretBindingEntity` | Create an EnvironmentSecretBinding entity instance. |
 | `EnvironmentTestAccount(data?)` | `EnvironmentTestAccountEntity` | Create an EnvironmentTestAccount entity instance. |
 | `Evidence(data?)` | `EvidenceEntity` | Create an Evidence entity instance. |
+| `ExecutionDesiredState(data?)` | `ExecutionDesiredStateEntity` | Create an ExecutionDesiredState entity instance. |
+| `ExecutionReconcilerTick(data?)` | `ExecutionReconcilerTickEntity` | Create an ExecutionReconcilerTick entity instance. |
+| `ExecutionRelease(data?)` | `ExecutionReleaseEntity` | Create an ExecutionRelease entity instance. |
+| `ExecutionRuntimeInstance(data?)` | `ExecutionRuntimeInstanceEntity` | Create an ExecutionRuntimeInstance entity instance. |
 | `Exploration(data?)` | `ExplorationEntity` | Create an Exploration entity instance. |
 | `ExplorationMessage(data?)` | `ExplorationMessageEntity` | Create an ExplorationMessage entity instance. |
 | `ExplorationReport(data?)` | `ExplorationReportEntity` | Create an ExplorationReport entity instance. |
 | `ExplorationScenario(data?)` | `ExplorationScenarioEntity` | Create an ExplorationScenario entity instance. |
 | `Finding(data?)` | `FindingEntity` | Create a Finding entity instance. |
+| `Gh(data?)` | `GhEntity` | Create a Gh entity instance. |
+| `GitImport(data?)` | `GitImportEntity` | Create a GitImport entity instance. |
+| `Github(data?)` | `GithubEntity` | Create a Github entity instance. |
+| `GithubApp(data?)` | `GithubAppEntity` | Create a GithubApp entity instance. |
+| `GithubAppImportableRepository(data?)` | `GithubAppImportableRepositoryEntity` | Create a GithubAppImportableRepository entity instance. |
+| `GithubAppInstallation(data?)` | `GithubAppInstallationEntity` | Create a GithubAppInstallation entity instance. |
+| `GithubAppInstallationAuthorization(data?)` | `GithubAppInstallationAuthorizationEntity` | Create a GithubAppInstallationAuthorization entity instance. |
+| `GithubAppUserAuthorization(data?)` | `GithubAppUserAuthorizationEntity` | Create a GithubAppUserAuthorization entity instance. |
+| `GithubCiRepository(data?)` | `GithubCiRepositoryEntity` | Create a GithubCiRepository entity instance. |
+| `GithubCiRepositoryCompatibilityReport(data?)` | `GithubCiRepositoryCompatibilityReportEntity` | Create a GithubCiRepositoryCompatibilityReport entity instance. |
 | `GithubConnection(data?)` | `GithubConnectionEntity` | Create a GithubConnection entity instance. |
+| `GithubIntegration(data?)` | `GithubIntegrationEntity` | Create a GithubIntegration entity instance. |
+| `GithubOnboarding(data?)` | `GithubOnboardingEntity` | Create a GithubOnboarding entity instance. |
+| `GithubOnboardingBranch(data?)` | `GithubOnboardingBranchEntity` | Create a GithubOnboardingBranch entity instance. |
+| `GithubOnboardingImport(data?)` | `GithubOnboardingImportEntity` | Create a GithubOnboardingImport entity instance. |
+| `GithubOnboardingImportBatch(data?)` | `GithubOnboardingImportBatchEntity` | Create a GithubOnboardingImportBatch entity instance. |
+| `GithubOnboardingImportItem(data?)` | `GithubOnboardingImportItemEntity` | Create a GithubOnboardingImportItem entity instance. |
+| `GithubPullRequest(data?)` | `GithubPullRequestEntity` | Create a GithubPullRequest entity instance. |
+| `GithubRunnerAdmission(data?)` | `GithubRunnerAdmissionEntity` | Create a GithubRunnerAdmission entity instance. |
+| `GithubRunnerCache(data?)` | `GithubRunnerCacheEntity` | Create a GithubRunnerCache entity instance. |
+| `GithubRunnerEgress(data?)` | `GithubRunnerEgressEntity` | Create a GithubRunnerEgress entity instance. |
+| `GithubRunnerHistory(data?)` | `GithubRunnerHistoryEntity` | Create a GithubRunnerHistory entity instance. |
+| `GithubRunnerImage(data?)` | `GithubRunnerImageEntity` | Create a GithubRunnerImage entity instance. |
+| `GithubRunnerPool(data?)` | `GithubRunnerPoolEntity` | Create a GithubRunnerPool entity instance. |
+| `GithubRunnerSetup(data?)` | `GithubRunnerSetupEntity` | Create a GithubRunnerSetup entity instance. |
+| `Gitlab(data?)` | `GitlabEntity` | Create a Gitlab entity instance. |
+| `GitlabConnection(data?)` | `GitlabConnectionEntity` | Create a GitlabConnection entity instance. |
+| `GitlabImport(data?)` | `GitlabImportEntity` | Create a GitlabImport entity instance. |
+| `GitlabOauth(data?)` | `GitlabOauthEntity` | Create a GitlabOauth entity instance. |
+| `GrantAllAgent(data?)` | `GrantAllAgentEntity` | Create a GrantAllAgent entity instance. |
 | `HostingAppDomain(data?)` | `HostingAppDomainEntity` | Create a HostingAppDomain entity instance. |
+| `IdentityOrganization(data?)` | `IdentityOrganizationEntity` | Create an IdentityOrganization entity instance. |
 | `ImageRepository(data?)` | `ImageRepositoryEntity` | Create an ImageRepository entity instance. |
+| `ImageRepositoryTag(data?)` | `ImageRepositoryTagEntity` | Create an ImageRepositoryTag entity instance. |
+| `ImportBranchPolicy(data?)` | `ImportBranchPolicyEntity` | Create an ImportBranchPolicy entity instance. |
 | `Integration(data?)` | `IntegrationEntity` | Create an Integration entity instance. |
 | `InteractionResponse(data?)` | `InteractionResponseEntity` | Create an InteractionResponse entity instance. |
 | `Invitation(data?)` | `InvitationEntity` | Create an Invitation entity instance. |
+| `InvocationControl(data?)` | `InvocationControlEntity` | Create an InvocationControl entity instance. |
+| `JobLogChunk(data?)` | `JobLogChunkEntity` | Create a JobLogChunk entity instance. |
+| `JobStep(data?)` | `JobStepEntity` | Create a JobStep entity instance. |
+| `JobWorkspace(data?)` | `JobWorkspaceEntity` | Create a JobWorkspace entity instance. |
 | `JourneyVariantReplay(data?)` | `JourneyVariantReplayEntity` | Create a JourneyVariantReplay entity instance. |
 | `Knowledge(data?)` | `KnowledgeEntity` | Create a Knowledge entity instance. |
+| `Known(data?)` | `KnownEntity` | Create a Known entity instance. |
+| `Label(data?)` | `LabelEntity` | Create a Label entity instance. |
+| `LeaseArtifact(data?)` | `LeaseArtifactEntity` | Create a LeaseArtifact entity instance. |
+| `LeaseCache(data?)` | `LeaseCacheEntity` | Create a LeaseCache entity instance. |
+| `LeaseLogChunk(data?)` | `LeaseLogChunkEntity` | Create a LeaseLogChunk entity instance. |
+| `LeaseReconciliation(data?)` | `LeaseReconciliationEntity` | Create a LeaseReconciliation entity instance. |
+| `LeaseStep(data?)` | `LeaseStepEntity` | Create a LeaseStep entity instance. |
+| `LeaseVerifyDiagnostic(data?)` | `LeaseVerifyDiagnosticEntity` | Create a LeaseVerifyDiagnostic entity instance. |
+| `LeaseVerifySecret(data?)` | `LeaseVerifySecretEntity` | Create a LeaseVerifySecret entity instance. |
+| `LeaseWorkspace(data?)` | `LeaseWorkspaceEntity` | Create a LeaseWorkspace entity instance. |
+| `LocalAgentDecision(data?)` | `LocalAgentDecisionEntity` | Create a LocalAgentDecision entity instance. |
+| `LocalAgentResponse(data?)` | `LocalAgentResponseEntity` | Create a LocalAgentResponse entity instance. |
 | `LocalThreadDelivery(data?)` | `LocalThreadDeliveryEntity` | Create a LocalThreadDelivery entity instance. |
 | `LocalThreadOperation(data?)` | `LocalThreadOperationEntity` | Create a LocalThreadOperation entity instance. |
 | `Location(data?)` | `LocationEntity` | Create a Location entity instance. |
+| `LogStreamChunk(data?)` | `LogStreamChunkEntity` | Create a LogStreamChunk entity instance. |
+| `LogoImage(data?)` | `LogoImageEntity` | Create a LogoImage entity instance. |
+| `MarketingSetting(data?)` | `MarketingSettingEntity` | Create a MarketingSetting entity instance. |
+| `McpOauth(data?)` | `McpOauthEntity` | Create a McpOauth entity instance. |
 | `Me(data?)` | `MeEntity` | Create a Me entity instance. |
 | `MeEmail(data?)` | `MeEmailEntity` | Create a MeEmail entity instance. |
 | `MeOnboarding(data?)` | `MeOnboardingEntity` | Create a MeOnboarding entity instance. |
 | `MediaFile(data?)` | `MediaFileEntity` | Create a MediaFile entity instance. |
 | `Member(data?)` | `MemberEntity` | Create a Member entity instance. |
 | `Memory(data?)` | `MemoryEntity` | Create a Memory entity instance. |
+| `MergeQueueEntry(data?)` | `MergeQueueEntryEntity` | Create a MergeQueueEntry entity instance. |
 | `MergeRequest(data?)` | `MergeRequestEntity` | Create a MergeRequest entity instance. |
+| `MergeResolution(data?)` | `MergeResolutionEntity` | Create a MergeResolution entity instance. |
 | `MessagingConversationMessage(data?)` | `MessagingConversationMessageEntity` | Create a MessagingConversationMessage entity instance. |
 | `MessagingConversationUpload(data?)` | `MessagingConversationUploadEntity` | Create a MessagingConversationUpload entity instance. |
 | `MetricQuery(data?)` | `MetricQueryEntity` | Create a MetricQuery entity instance. |
+| `MetronomeWebhook(data?)` | `MetronomeWebhookEntity` | Create a MetronomeWebhook entity instance. |
+| `ModelSubscriptionAccount(data?)` | `ModelSubscriptionAccountEntity` | Create a ModelSubscriptionAccount entity instance. |
+| `ModelSubscriptionAccountConnection(data?)` | `ModelSubscriptionAccountConnectionEntity` | Create a ModelSubscriptionAccountConnection entity instance. |
 | `NetworkConnection(data?)` | `NetworkConnectionEntity` | Create a NetworkConnection entity instance. |
+| `NetworkingSpace(data?)` | `NetworkingSpaceEntity` | Create a NetworkingSpace entity instance. |
+| `Node(data?)` | `NodeEntity` | Create a Node entity instance. |
+| `NodeCertificate(data?)` | `NodeCertificateEntity` | Create a NodeCertificate entity instance. |
+| `NodeLease(data?)` | `NodeLeaseEntity` | Create a NodeLease entity instance. |
 | `NomadAllocation(data?)` | `NomadAllocationEntity` | Create a NomadAllocation entity instance. |
 | `NomadLog(data?)` | `NomadLogEntity` | Create a NomadLog entity instance. |
+| `Now(data?)` | `NowEntity` | Create a Now entity instance. |
+| `ObservabilityClickhouseCluster(data?)` | `ObservabilityClickhouseClusterEntity` | Create an ObservabilityClickhouseCluster entity instance. |
+| `ObservabilityQuickwitCluster(data?)` | `ObservabilityQuickwitClusterEntity` | Create an ObservabilityQuickwitCluster entity instance. |
+| `ObservabilitySpace(data?)` | `ObservabilitySpaceEntity` | Create an ObservabilitySpace entity instance. |
+| `Openapi(data?)` | `OpenapiEntity` | Create an Openapi entity instance. |
+| `OrgInvitation(data?)` | `OrgInvitationEntity` | Create an OrgInvitation entity instance. |
 | `Organization(data?)` | `OrganizationEntity` | Create an Organization entity instance. |
+| `OrganizationApp(data?)` | `OrganizationAppEntity` | Create an OrganizationApp entity instance. |
+| `OrganizationControl(data?)` | `OrganizationControlEntity` | Create an OrganizationControl entity instance. |
+| `OrganizationDevice(data?)` | `OrganizationDeviceEntity` | Create an OrganizationDevice entity instance. |
+| `OrganizationIdentityCertificate(data?)` | `OrganizationIdentityCertificateEntity` | Create an OrganizationIdentityCertificate entity instance. |
+| `OrganizationInteraction(data?)` | `OrganizationInteractionEntity` | Create an OrganizationInteraction entity instance. |
+| `OrganizationInvitation(data?)` | `OrganizationInvitationEntity` | Create an OrganizationInvitation entity instance. |
+| `OrganizationMessageFile(data?)` | `OrganizationMessageFileEntity` | Create an OrganizationMessageFile entity instance. |
+| `OrganizationOidcTrust(data?)` | `OrganizationOidcTrustEntity` | Create an OrganizationOidcTrust entity instance. |
+| `OrganizationRunEvent(data?)` | `OrganizationRunEventEntity` | Create an OrganizationRunEvent entity instance. |
+| `OrganizationRunOutcome(data?)` | `OrganizationRunOutcomeEntity` | Create an OrganizationRunOutcome entity instance. |
+| `OrganizationRunUsage(data?)` | `OrganizationRunUsageEntity` | Create an OrganizationRunUsage entity instance. |
+| `OrganizationSandbox(data?)` | `OrganizationSandboxEntity` | Create an OrganizationSandbox entity instance. |
+| `OrganizationSecret(data?)` | `OrganizationSecretEntity` | Create an OrganizationSecret entity instance. |
+| `OrganizationServiceAccount(data?)` | `OrganizationServiceAccountEntity` | Create an OrganizationServiceAccount entity instance. |
+| `OrganizationSetting(data?)` | `OrganizationSettingEntity` | Create an OrganizationSetting entity instance. |
+| `OrganizationSite(data?)` | `OrganizationSiteEntity` | Create an OrganizationSite entity instance. |
+| `OrganizationSubscription(data?)` | `OrganizationSubscriptionEntity` | Create an OrganizationSubscription entity instance. |
+| `OrganizationTool(data?)` | `OrganizationToolEntity` | Create an OrganizationTool entity instance. |
+| `OrganizationWorkloadIdentity(data?)` | `OrganizationWorkloadIdentityEntity` | Create an OrganizationWorkloadIdentity entity instance. |
+| `OtelIngest(data?)` | `OtelIngestEntity` | Create an OtelIngest entity instance. |
 | `Page(data?)` | `PageEntity` | Create a Page entity instance. |
 | `PageAgent(data?)` | `PageAgentEntity` | Create a PageAgent entity instance. |
+| `PageArtefact(data?)` | `PageArtefactEntity` | Create a PageArtefact entity instance. |
+| `PageCiPipelineRun(data?)` | `PageCiPipelineRunEntity` | Create a PageCiPipelineRun entity instance. |
 | `PageProjectRun(data?)` | `PageProjectRunEntity` | Create a PageProjectRun entity instance. |
+| `PageRepoVcCommit(data?)` | `PageRepoVcCommitEntity` | Create a PageRepoVcCommit entity instance. |
+| `PagesBilling(data?)` | `PagesBillingEntity` | Create a PagesBilling entity instance. |
+| `PagesGithubOnboarding(data?)` | `PagesGithubOnboardingEntity` | Create a PagesGithubOnboarding entity instance. |
+| `PagesMember(data?)` | `PagesMemberEntity` | Create a PagesMember entity instance. |
 | `PagesProjectCredential(data?)` | `PagesProjectCredentialEntity` | Create a PagesProjectCredential entity instance. |
 | `PagesProjectPersona(data?)` | `PagesProjectPersonaEntity` | Create a PagesProjectPersona entity instance. |
 | `PagesProjectRun(data?)` | `PagesProjectRunEntity` | Create a PagesProjectRun entity instance. |
 | `PagesProjectScenario(data?)` | `PagesProjectScenarioEntity` | Create a PagesProjectScenario entity instance. |
+| `PagesRegistry(data?)` | `PagesRegistryEntity` | Create a PagesRegistry entity instance. |
+| `PagesSession(data?)` | `PagesSessionEntity` | Create a PagesSession entity instance. |
+| `Pairing(data?)` | `PairingEntity` | Create a Pairing entity instance. |
+| `PairingEvent(data?)` | `PairingEventEntity` | Create a PairingEvent entity instance. |
+| `ParallelV1(data?)` | `ParallelV1Entity` | Create a ParallelV1 entity instance. |
+| `PatchsetDiff(data?)` | `PatchsetDiffEntity` | Create a PatchsetDiff entity instance. |
 | `PersonalAccessToken(data?)` | `PersonalAccessTokenEntity` | Create a PersonalAccessToken entity instance. |
 | `PreviewOperation(data?)` | `PreviewOperationEntity` | Create a PreviewOperation entity instance. |
 | `PreviewProfileSecretBinding(data?)` | `PreviewProfileSecretBindingEntity` | Create a PreviewProfileSecretBinding entity instance. |
 | `PreviewSecret(data?)` | `PreviewSecretEntity` | Create a PreviewSecret entity instance. |
 | `PreviewSharingApproval(data?)` | `PreviewSharingApprovalEntity` | Create a PreviewSharingApproval entity instance. |
+| `ProactiveAgentWaitlistEntry(data?)` | `ProactiveAgentWaitlistEntryEntity` | Create a ProactiveAgentWaitlistEntry entity instance. |
+| `Product(data?)` | `ProductEntity` | Create a Product entity instance. |
 | `ProductMapIdentityDecision(data?)` | `ProductMapIdentityDecisionEntity` | Create a ProductMapIdentityDecision entity instance. |
 | `ProductMapJourney(data?)` | `ProductMapJourneyEntity` | Create a ProductMapJourney entity instance. |
 | `ProductMapJourneyReplay(data?)` | `ProductMapJourneyReplayEntity` | Create a ProductMapJourneyReplay entity instance. |
@@ -441,43 +637,152 @@ new ComposalSDK(options?: {
 | `ProjectScenarioRow(data?)` | `ProjectScenarioRowEntity` | Create a ProjectScenarioRow entity instance. |
 | `ProjectSetting(data?)` | `ProjectSettingEntity` | Create a ProjectSetting entity instance. |
 | `PullRequest(data?)` | `PullRequestEntity` | Create a PullRequest entity instance. |
+| `PullRequestAction(data?)` | `PullRequestActionEntity` | Create a PullRequestAction entity instance. |
+| `PullRequestMagicMerge(data?)` | `PullRequestMagicMergeEntity` | Create a PullRequestMagicMerge entity instance. |
 | `PullRequestSetting(data?)` | `PullRequestSettingEntity` | Create a PullRequestSetting entity instance. |
 | `PullRequestSettingAddRepository(data?)` | `PullRequestSettingAddRepositoryEntity` | Create a PullRequestSettingAddRepository entity instance. |
 | `PullRequestSettingDetectComment(data?)` | `PullRequestSettingDetectCommentEntity` | Create a PullRequestSettingDetectComment entity instance. |
+| `PullRequestTranscript(data?)` | `PullRequestTranscriptEntity` | Create a PullRequestTranscript entity instance. |
+| `PullZone(data?)` | `PullZoneEntity` | Create a PullZone entity instance. |
 | `Recorder(data?)` | `RecorderEntity` | Create a Recorder entity instance. |
 | `Registry(data?)` | `RegistryEntity` | Create a Registry entity instance. |
 | `RegistryV2(data?)` | `RegistryV2Entity` | Create a RegistryV2 entity instance. |
+| `RelayAgentConnection(data?)` | `RelayAgentConnectionEntity` | Create a RelayAgentConnection entity instance. |
 | `RelayAgentLocalThread(data?)` | `RelayAgentLocalThreadEntity` | Create a RelayAgentLocalThread entity instance. |
+| `RelaySignal(data?)` | `RelaySignalEntity` | Create a RelaySignal entity instance. |
+| `ReleaseRollout(data?)` | `ReleaseRolloutEntity` | Create a ReleaseRollout entity instance. |
+| `Repo(data?)` | `RepoEntity` | Create a Repo entity instance. |
+| `RepoAccessToken(data?)` | `RepoAccessTokenEntity` | Create a RepoAccessToken entity instance. |
+| `RepoAction(data?)` | `RepoActionEntity` | Create a RepoAction entity instance. |
+| `RepoAgentCheckpoint(data?)` | `RepoAgentCheckpointEntity` | Create a RepoAgentCheckpoint entity instance. |
+| `RepoAgentSession(data?)` | `RepoAgentSessionEntity` | Create a RepoAgentSession entity instance. |
+| `RepoBookmarkProtection(data?)` | `RepoBookmarkProtectionEntity` | Create a RepoBookmarkProtection entity instance. |
+| `RepoBookmarkProtectionEvent(data?)` | `RepoBookmarkProtectionEventEntity` | Create a RepoBookmarkProtectionEvent entity instance. |
+| `RepoCloudWorkspaceBackup(data?)` | `RepoCloudWorkspaceBackupEntity` | Create a RepoCloudWorkspaceBackup entity instance. |
+| `RepoCodeRule(data?)` | `RepoCodeRuleEntity` | Create a RepoCodeRule entity instance. |
+| `RepoSetting(data?)` | `RepoSettingEntity` | Create a RepoSetting entity instance. |
+| `RepoStat(data?)` | `RepoStatEntity` | Create a RepoStat entity instance. |
+| `RepoVc(data?)` | `RepoVcEntity` | Create a RepoVc entity instance. |
+| `RepoVcCommit(data?)` | `RepoVcCommitEntity` | Create a RepoVcCommit entity instance. |
 | `ReportReplay(data?)` | `ReportReplayEntity` | Create a ReportReplay entity instance. |
 | `ReportScenario(data?)` | `ReportScenarioEntity` | Create a ReportScenario entity instance. |
+| `RepositoryAccess(data?)` | `RepositoryAccessEntity` | Create a RepositoryAccess entity instance. |
+| `RepositoryAccessResolve(data?)` | `RepositoryAccessResolveEntity` | Create a RepositoryAccessResolve entity instance. |
+| `RepositoryEvent(data?)` | `RepositoryEventEntity` | Create a RepositoryEvent entity instance. |
+| `RepositoryImport(data?)` | `RepositoryImportEntity` | Create a RepositoryImport entity instance. |
+| `RepositoryImportSession(data?)` | `RepositoryImportSessionEntity` | Create a RepositoryImportSession entity instance. |
+| `RepositoryImportSessionRepository(data?)` | `RepositoryImportSessionRepositoryEntity` | Create a RepositoryImportSessionRepository entity instance. |
+| `RepositoryImportSessionSelection(data?)` | `RepositoryImportSessionSelectionEntity` | Create a RepositoryImportSessionSelection entity instance. |
+| `RepositorySandboxEnvironment(data?)` | `RepositorySandboxEnvironmentEntity` | Create a RepositorySandboxEnvironment entity instance. |
+| `RoderCodeRepair(data?)` | `RoderCodeRepairEntity` | Create a RoderCodeRepair entity instance. |
+| `RoderCodeRepairSetting(data?)` | `RoderCodeRepairSettingEntity` | Create a RoderCodeRepairSetting entity instance. |
+| `RoderMachine(data?)` | `RoderMachineEntity` | Create a RoderMachine entity instance. |
+| `RoderRun(data?)` | `RoderRunEntity` | Create a RoderRun entity instance. |
+| `RoderWorkspaceCredential(data?)` | `RoderWorkspaceCredentialEntity` | Create a RoderWorkspaceCredential entity instance. |
+| `RunArtifact(data?)` | `RunArtifactEntity` | Create a RunArtifact entity instance. |
+| `RunJob(data?)` | `RunJobEntity` | Create a RunJob entity instance. |
 | `RunScenarioRun(data?)` | `RunScenarioRunEntity` | Create a RunScenarioRun entity instance. |
 | `RunScheduleOption(data?)` | `RunScheduleOptionEntity` | Create a RunScheduleOption entity instance. |
 | `RunSearch(data?)` | `RunSearchEntity` | Create a RunSearch entity instance. |
 | `RunUpdate(data?)` | `RunUpdateEntity` | Create a RunUpdate entity instance. |
+| `RunWorkspaceCredential(data?)` | `RunWorkspaceCredentialEntity` | Create a RunWorkspaceCredential entity instance. |
+| `RunnerLease(data?)` | `RunnerLeaseEntity` | Create a RunnerLease entity instance. |
+| `RunnerPoolNodeEnrollmentToken(data?)` | `RunnerPoolNodeEnrollmentTokenEntity` | Create a RunnerPoolNodeEnrollmentToken entity instance. |
+| `RunnerPoolRunner(data?)` | `RunnerPoolRunnerEntity` | Create a RunnerPoolRunner entity instance. |
+| `RuntimeInstanceHealthSnapshot(data?)` | `RuntimeInstanceHealthSnapshotEntity` | Create a RuntimeInstanceHealthSnapshot entity instance. |
+| `SandboxIntegration(data?)` | `SandboxIntegrationEntity` | Create a SandboxIntegration entity instance. |
 | `ScenarioRevision(data?)` | `ScenarioRevisionEntity` | Create a ScenarioRevision entity instance. |
 | `ScenarioRunLesson(data?)` | `ScenarioRunLessonEntity` | Create a ScenarioRunLesson entity instance. |
 | `ScenarioRunScenarioEdit(data?)` | `ScenarioRunScenarioEditEntity` | Create a ScenarioRunScenarioEdit entity instance. |
+| `SecretGrant(data?)` | `SecretGrantEntity` | Create a SecretGrant entity instance. |
+| `SecretVersion(data?)` | `SecretVersionEntity` | Create a SecretVersion entity instance. |
 | `ServiceEndpoint(data?)` | `ServiceEndpointEntity` | Create a ServiceEndpoint entity instance. |
+| `Setting(data?)` | `SettingEntity` | Create a Setting entity instance. |
+| `SettingMutationLease(data?)` | `SettingMutationLeaseEntity` | Create a SettingMutationLease entity instance. |
+| `Signal(data?)` | `SignalEntity` | Create a Signal entity instance. |
+| `SignalInbound(data?)` | `SignalInboundEntity` | Create a SignalInbound entity instance. |
+| `SignalIntegration(data?)` | `SignalIntegrationEntity` | Create a SignalIntegration entity instance. |
+| `SignalIntegrationDelivery(data?)` | `SignalIntegrationDeliveryEntity` | Create a SignalIntegrationDelivery entity instance. |
+| `SignalIntegrationTarget(data?)` | `SignalIntegrationTargetEntity` | Create a SignalIntegrationTarget entity instance. |
+| `SignalSubscription(data?)` | `SignalSubscriptionEntity` | Create a SignalSubscription entity instance. |
+| `Site(data?)` | `SiteEntity` | Create a Site entity instance. |
+| `SiteAccessKey(data?)` | `SiteAccessKeyEntity` | Create a SiteAccessKey entity instance. |
 | `SitePreview(data?)` | `SitePreviewEntity` | Create a SitePreview entity instance. |
+| `SiteSecret(data?)` | `SiteSecretEntity` | Create a SiteSecret entity instance. |
 | `SlackChannel(data?)` | `SlackChannelEntity` | Create a SlackChannel entity instance. |
+| `SourceConnection(data?)` | `SourceConnectionEntity` | Create a SourceConnection entity instance. |
+| `SpaceAlertRule(data?)` | `SpaceAlertRuleEntity` | Create a SpaceAlertRule entity instance. |
+| `SpaceAuditEvent(data?)` | `SpaceAuditEventEntity` | Create a SpaceAuditEvent entity instance. |
+| `SpaceDnsRecord(data?)` | `SpaceDnsRecordEntity` | Create a SpaceDnsRecord entity instance. |
+| `SpaceEnrollmentToken(data?)` | `SpaceEnrollmentTokenEntity` | Create a SpaceEnrollmentToken entity instance. |
+| `SpaceGateway(data?)` | `SpaceGatewayEntity` | Create a SpaceGateway entity instance. |
+| `SpaceGroup(data?)` | `SpaceGroupEntity` | Create a SpaceGroup entity instance. |
+| `SpaceGroupMembership(data?)` | `SpaceGroupMembershipEntity` | Create a SpaceGroupMembership entity instance. |
+| `SpaceLogStream(data?)` | `SpaceLogStreamEntity` | Create a SpaceLogStream entity instance. |
+| `SpaceMetricSery(data?)` | `SpaceMetricSeryEntity` | Create a SpaceMetricSery entity instance. |
+| `SpaceOtelCollector(data?)` | `SpaceOtelCollectorEntity` | Create a SpaceOtelCollector entity instance. |
+| `SpacePeer(data?)` | `SpacePeerEntity` | Create a SpacePeer entity instance. |
+| `SpacePeerAttachment(data?)` | `SpacePeerAttachmentEntity` | Create a SpacePeerAttachment entity instance. |
+| `SpacePolicy(data?)` | `SpacePolicyEntity` | Create a SpacePolicy entity instance. |
+| `SpaceSegment(data?)` | `SpaceSegmentEntity` | Create a SpaceSegment entity instance. |
+| `SpaceTraceSpan(data?)` | `SpaceTraceSpanEntity` | Create a SpaceTraceSpan entity instance. |
+| `Spark(data?)` | `SparkEntity` | Create a Spark entity instance. |
+| `SparkAgentIntegration(data?)` | `SparkAgentIntegrationEntity` | Create a SparkAgentIntegration entity instance. |
 | `SparkAgentLocalThread(data?)` | `SparkAgentLocalThreadEntity` | Create a SparkAgentLocalThread entity instance. |
+| `SparkAgentSite(data?)` | `SparkAgentSiteEntity` | Create a SparkAgentSite entity instance. |
+| `SparkAgentSkill(data?)` | `SparkAgentSkillEntity` | Create a SparkAgentSkill entity instance. |
+| `SparkAgentThread(data?)` | `SparkAgentThreadEntity` | Create a SparkAgentThread entity instance. |
+| `SparkCredit(data?)` | `SparkCreditEntity` | Create a SparkCredit entity instance. |
+| `SparkCreditAgentUsage(data?)` | `SparkCreditAgentUsageEntity` | Create a SparkCreditAgentUsage entity instance. |
+| `SparkCreditUsageTotal(data?)` | `SparkCreditUsageTotalEntity` | Create a SparkCreditUsageTotal entity instance. |
 | `StaticSite(data?)` | `StaticSiteEntity` | Create a StaticSite entity instance. |
 | `StaticSiteDeployment(data?)` | `StaticSiteDeploymentEntity` | Create a StaticSiteDeployment entity instance. |
 | `StaticSiteDomain(data?)` | `StaticSiteDomainEntity` | Create a StaticSiteDomain entity instance. |
+| `StatusChange(data?)` | `StatusChangeEntity` | Create a StatusChange entity instance. |
+| `StatusCommit(data?)` | `StatusCommitEntity` | Create a StatusCommit entity instance. |
+| `StatusPatchset(data?)` | `StatusPatchsetEntity` | Create a StatusPatchset entity instance. |
+| `StripeWebhook(data?)` | `StripeWebhookEntity` | Create a StripeWebhook entity instance. |
+| `SubmitTelemetry(data?)` | `SubmitTelemetryEntity` | Create a SubmitTelemetry entity instance. |
 | `SubscriptionModel(data?)` | `SubscriptionModelEntity` | Create a SubscriptionModel entity instance. |
+| `SwarmEvent(data?)` | `SwarmEventEntity` | Create a SwarmEvent entity instance. |
+| `SwarmLive(data?)` | `SwarmLiveEntity` | Create a SwarmLive entity instance. |
+| `SwarmNote(data?)` | `SwarmNoteEntity` | Create a SwarmNote entity instance. |
+| `SwarmTask(data?)` | `SwarmTaskEntity` | Create a SwarmTask entity instance. |
+| `TaskLease(data?)` | `TaskLeaseEntity` | Create a TaskLease entity instance. |
 | `ThreadPreview(data?)` | `ThreadPreviewEntity` | Create a ThreadPreview entity instance. |
+| `ThreadPreviewAccess(data?)` | `ThreadPreviewAccessEntity` | Create a ThreadPreviewAccess entity instance. |
+| `ToolFeedback(data?)` | `ToolFeedbackEntity` | Create a ToolFeedback entity instance. |
+| `Transcript(data?)` | `TranscriptEntity` | Create a Transcript entity instance. |
+| `V1Message(data?)` | `V1MessageEntity` | Create a V1Message entity instance. |
+| `VcBranch(data?)` | `VcBranchEntity` | Create a VcBranch entity instance. |
+| `VcBrowser(data?)` | `VcBrowserEntity` | Create a VcBrowser entity instance. |
+| `VcChange(data?)` | `VcChangeEntity` | Create a VcChange entity instance. |
+| `VcChangeGroup(data?)` | `VcChangeGroupEntity` | Create a VcChangeGroup entity instance. |
+| `VcFile(data?)` | `VcFileEntity` | Create a VcFile entity instance. |
+| `VcMergeQueue(data?)` | `VcMergeQueueEntity` | Create a VcMergeQueue entity instance. |
+| `VcStack(data?)` | `VcStackEntity` | Create a VcStack entity instance. |
+| `VcsNode(data?)` | `VcsNodeEntity` | Create a VcsNode entity instance. |
+| `VcsSetting(data?)` | `VcsSettingEntity` | Create a VcsSetting entity instance. |
 | `VerificationProjectCredential(data?)` | `VerificationProjectCredentialEntity` | Create a VerificationProjectCredential entity instance. |
 | `VerificationProjectPersona(data?)` | `VerificationProjectPersonaEntity` | Create a VerificationProjectPersona entity instance. |
 | `VerificationProjectRun(data?)` | `VerificationProjectRunEntity` | Create a VerificationProjectRun entity instance. |
 | `VerificationProjectScenario(data?)` | `VerificationProjectScenarioEntity` | Create a VerificationProjectScenario entity instance. |
 | `VerifyAppDomain(data?)` | `VerifyAppDomainEntity` | Create a VerifyAppDomain entity instance. |
 | `VerifyBrowserSession(data?)` | `VerifyBrowserSessionEntity` | Create a VerifyBrowserSession entity instance. |
+| `VerifyEmailVerification(data?)` | `VerifyEmailVerificationEntity` | Create a VerifyEmailVerification entity instance. |
+| `VerifySignalIntegration(data?)` | `VerifySignalIntegrationEntity` | Create a VerifySignalIntegration entity instance. |
 | `VerifyStaticSiteDomain(data?)` | `VerifyStaticSiteDomainEntity` | Create a VerifyStaticSiteDomain entity instance. |
 | `VersionLog(data?)` | `VersionLogEntity` | Create a VersionLog entity instance. |
+| `WaitlistApplication(data?)` | `WaitlistApplicationEntity` | Create a WaitlistApplication entity instance. |
 | `WebBotAuth(data?)` | `WebBotAuthEntity` | Create a WebBotAuth entity instance. |
+| `WebhookGitlab(data?)` | `WebhookGitlabEntity` | Create a WebhookGitlab entity instance. |
 | `WorkflowRunStep(data?)` | `WorkflowRunStepEntity` | Create a WorkflowRunStep entity instance. |
 | `WorkflowRunStopNotice(data?)` | `WorkflowRunStopNoticeEntity` | Create a WorkflowRunStopNotice entity instance. |
 | `WorkflowTriggerSkipped(data?)` | `WorkflowTriggerSkippedEntity` | Create a WorkflowTriggerSkipped entity instance. |
+| `WorkspaceActivity(data?)` | `WorkspaceActivityEntity` | Create a WorkspaceActivity entity instance. |
+| `WorkspaceActivityNotification(data?)` | `WorkspaceActivityNotificationEntity` | Create a WorkspaceActivityNotification entity instance. |
+| `WorkspaceSpace(data?)` | `WorkspaceSpaceEntity` | Create a WorkspaceSpace entity instance. |
+| `WorkspaceSpacePreference(data?)` | `WorkspaceSpacePreferenceEntity` | Create a WorkspaceSpacePreference entity instance. |
 | `tester(testopts?, sdkopts?)` | `ComposalSDK` | Create a test-mode client instance. |
 
 #### Static methods
@@ -550,6 +855,39 @@ The `prepare()` method returns:
 
 ### Entities
 
+#### A2aWellKnown
+
+| Field | Description |
+| --- | --- |
+
+Operations: load.
+
+API path: `/api/v1/control/a2a/{connection_id}/.well-known/agent-card.json`
+
+#### AdminOrg
+
+| Field | Description |
+| --- | --- |
+| `billing_email` |  |
+| `billing_reason` | Required when setting an agreed price |
+| `customize_onboarding_packages` |  |
+| `deployment_usage_visibility` |  |
+| `deployment_usage_visible` |  |
+| `id` |  |
+| `monthly_price_dollars` | Ongoing USD workspace price, for example '50.00' |
+| `monthly_price_override_cents` |  |
+| `name` |  |
+| `onboarding_custom_pricing` |  |
+| `onboarding_package_keys` | Package keys offered when customizing onboarding. |
+| `owner_email` |  |
+| `package_id` | Active customer package public ID. |
+| `skip_payment` | Grant the selected package as an ongoing complimentary subscription with monthly included usage and package limits. |
+| `slug` |  |
+
+Operations: create, list, load, update.
+
+API path: `/api/v1/admin/organizations/{org_slug}/checkout_session`
+
 #### Agent
 
 | Field | Description |
@@ -600,6 +938,44 @@ The `prepare()` method returns:
 Operations: create, list, load, remove, update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/browser_opened`
+
+#### AgentApp
+
+| Field | Description |
+| --- | --- |
+| `author` |  |
+| `can_message` | The viewer may send input to the author agent |
+| `deployments_count` | Increases with every deploy of the site |
+| `description` |  |
+| `hidden_install_count` | Installs by agents the viewer cannot open |
+| `id` |  |
+| `install_count` |  |
+| `install_targets` | Active agents the viewer owns or manages, which they can install apps on |
+| `installed_by` |  |
+| `installed_target_ids` | Install targets of the viewer that have this app installed |
+| `items` |  |
+| `mcp_url` |  |
+| `next_cursor` | Pass as cursor to load older apps |
+| `owner` | The person who controls the author agent |
+| `thread` | The thread that published the app, when the viewer can open the author agent |
+| `title` |  |
+| `url` |  |
+| `visibility` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/organizations/{organization_id}/agent_apps/{id}/opened`
+
+#### AgentAppInstall
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `installed` |  |
+
+Operations: remove, update.
+
+API path: `/api/v1/organizations/{organization_id}/agent_apps/{id}/installs/{agent_id}`
 
 #### AgentAttachment
 
@@ -674,29 +1050,177 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/computer/co
 
 | Field | Description |
 | --- | --- |
-| `agent_card_url` |  |
-| `auth_scheme` |  |
-| `can_configure` |  |
-| `can_disconnect` |  |
-| `can_setup` |  |
+| `actions` |  |
+| `activity` |  |
+| `admin_disabled_at` |  |
+| `agent_tools` |  |
+| `authentication` |  |
+| `authorized_at` |  |
+| `can_create_account` | Whether another account can be created directly from this provider. |
+| `capabilities` |  |
+| `catalog_section` | Server-owned grouping in the agent integration catalog. |
+| `category` | Short product label, such as CRM or Email. |
+| `certification` |  |
+| `checked_at` |  |
 | `connection` |  |
-| `credential` | Write-only outbound key. |
-| `error_code` |  |
-| `expected_generation` |  |
+| `consent` |  |
+| `created_at` |  |
+| `creation_key` | Reuse the same key to recover the account after an interrupted response. |
+| `custodian_id` |  |
+| `description` | One-line catalog description of the app. |
+| `disabled_reason` |  |
+| `failure_code` |  |
+| `generation` |  |
+| `grants` |  |
+| `grants_pagination` |  |
+| `id` |  |
+| `limits` |  |
+| `name` |  |
+| `organization_id` |  |
+| `owner_name` |  |
+| `ownership_kind` |  |
+| `pagination` |  |
+| `policy_digest` |  |
+| `provider` |  |
+| `provider_disabled_reason` |  |
+| `provider_identity` |  |
+| `revoked_at` |  |
+| `schema_version` |  |
+| `status` |  |
+| `toolkit` |  |
+| `triggers` |  |
+| `updated_at` |  |
+| `user_id` |  |
+| `version` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/adopt_custody`
+
+#### AgentConnectionDelegation
+
+| Field | Description |
+| --- | --- |
+| `authorized_by_id` |  |
+| `automation_connection_grant_id` |  |
+| `created_at` |  |
+| `id` |  |
+| `member_name` |  |
+| `revoked_at` |  |
+| `roles` |  |
+| `usable` |  |
+| `user_id` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/delegations`
+
+#### AgentConnectionGrant
+
+| Field | Description |
+| --- | --- |
+| `actions` |  |
+| `agent_connection_id` |  |
+| `automation_id` |  |
+| `connection_generation` |  |
+| `created_at` |  |
+| `id` |  |
+| `organization_id` |  |
+| `revision` |  |
+| `revoked_at` |  |
+| `status` |  |
+| `usable` |  |
+| `user_id` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/grants`
+
+#### AgentConnectionResource
+
+| Field | Description |
+| --- | --- |
+| `cursor` |  |
+| `next_cursor` |  |
+| `query` |  |
+| `resources` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/resources`
+
+#### AgentConnectionSafetyControl
+
+| Field | Description |
+| --- | --- |
+| `admin_disabled_at` |  |
+| `authorized_at` |  |
+| `checked_at` |  |
+| `created_at` |  |
+| `custodian_id` |  |
+| `failure_code` |  |
 | `generation` |  |
 | `id` |  |
 | `name` |  |
-| `remote_agent` |  |
-| `requester_id` |  |
-| `retired_at` |  |
+| `organization_id` |  |
+| `owner_name` |  |
+| `ownership_kind` |  |
+| `provider_disabled_reason` |  |
+| `provider_identity` |  |
 | `revoked_at` |  |
-| `scope_key` |  |
-| `source_operation_id` |  |
-| `state` |  |
+| `status` |  |
+| `toolkit` |  |
+| `updated_at` |  |
+| `user_id` |  |
 
-Operations: create, list, load, remove, update.
+Operations: list.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup`
+API path: `/api/v1/organizations/{organization_id}/agent_connections/safety_controls`
+
+#### AgentConnectionTriggerSubscription
+
+| Field | Description |
+| --- | --- |
+| `agent_connection_id` |  |
+| `configuration` |  |
+| `created_at` |  |
+| `defaults` |  |
+| `delivery` |  |
+| `enabled` |  |
+| `failure_code` |  |
+| `failure_request_id` |  |
+| `id` |  |
+| `latency` |  |
+| `name` |  |
+| `reconcile_at` |  |
+| `reconciliation_uncertain` |  |
+| `remote_enabled` |  |
+| `replacement_id` |  |
+| `retired_at` |  |
+| `retirement_completed_at` |  |
+| `schema` |  |
+| `slug` |  |
+| `status` |  |
+| `toolkit` |  |
+| `toolkit_version` |  |
+| `trigger_slug` |  |
+| `updated_at` |  |
+| `version` |  |
+| `waiting_for_retirement` |  |
+
+Operations: create, list, patch, remove, update.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}/discover`
+
+#### AgentContextCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/agent_context/checkpoints/{checkpoint_id}/transcript`
 
 #### AgentControlFlow
 
@@ -747,6 +1271,15 @@ Operations: load.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/email/{message_id}`
 
+#### AgentEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/events`
+
 #### AgentFile
 
 | Field | Description |
@@ -784,32 +1317,78 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/inputs`
 | Field | Description |
 | --- | --- |
 | `account_counts` | Accounts the viewer can see per toolkit, across all account pages. |
-| `accounts_path` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
-| `added_toolkits` | Apps with a connected or connecting account the viewer can see. |
+| `can_cancel_sign_in` | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` |  |
+| `can_disconnect` |  |
+| `can_enable` |  |
 | `can_manage` |  |
-| `can_manage_organization` |  |
+| `can_manage_sharing` |  |
+| `can_reconnect` |  |
+| `can_sync` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
 | `catalog` |  |
-| `connect_as` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
-| `connect_as_by_toolkit` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_by` | Name of the person whose sign-in this account is. |
+| `connected_by_you` | True when the viewer is the person whose sign-in this account is. |
 | `connected_counts` | Signed-in accounts per toolkit, across all account pages. |
-| `connection_id` |  |
 | `connections` |  |
-| `email` | A native agent's own email address. |
-| `enabled` |  |
-| `enabled_toolkits` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `creation_key` | Stable identity for retrying this creation; retain it after an uncertain response. |
+| `creation_key_digest` | SHA-256 of the unfinished setup key for its original creator. |
 | `generation` |  |
+| `id` |  |
+| `name` |  |
 | `pagination` |  |
 | `pending_counts` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
-| `personal_creation_key_supported` | The personal account creation endpoint honors a creation key. |
-| `private_agent` | Only the agent's owner can chat with it. |
-| `shared_agent_personal_accounts_enabled` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
-| `slack` |  |
-| `webhook_connections` |  |
-| `webhooks_available` |  |
+| `provider_disabled_reason` |  |
+| `provider_identity` |  |
+| `provider_name` | The app's display name; null for a custom MCP server, which uses the account name. |
+| `reference` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | Agent account audience, including legacy personal and paused access. |
+| `status` |  |
+| `team_sharing_enabled` |  |
+| `team_sharing_version` |  |
+| `toolkit` |  |
 
-Operations: create, list.
+Operations: create, list, load, remove.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations`
+API path: `/api/v1/organizations/{organization_id}/agent_integrations/{id}/authorize`
+
+#### AgentIntegrationAccount
+
+| Field | Description |
+| --- | --- |
+| `can_cancel_sign_in` | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` |  |
+| `can_disconnect` |  |
+| `can_enable` |  |
+| `can_manage_sharing` |  |
+| `can_reconnect` |  |
+| `can_sync` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
+| `connected_by` | Name of the person whose sign-in this account is. |
+| `connected_by_you` | True when the viewer is the person whose sign-in this account is. |
+| `creation_key_digest` | SHA-256 of the unfinished setup key for its original creator. |
+| `generation` |  |
+| `id` |  |
+| `name` |  |
+| `provider_disabled_reason` |  |
+| `provider_identity` |  |
+| `reference` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | Agent account audience, including legacy personal and paused access. |
+| `status` |  |
+| `team_sharing_enabled` |  |
+| `team_sharing_version` |  |
+| `toolkit` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{organization_id}/agent_integrations/accounts`
+
+#### AgentIntegrationCallback
+
+| Field | Description |
+| --- | --- |
+
+Operations: load.
+
+API path: `/api/v1/agent_integration_callback`
 
 #### AgentInteraction
 
@@ -1037,6 +1616,45 @@ Operations: create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/questions/{question_id}/answer`
 
+#### AgentRelayFileGrant
+
+| Field | Description |
+| --- | --- |
+| `access_mode` |  |
+| `connection_generation` |  |
+| `connection_id` |  |
+| `connection_name` | Current display name of the selected account. |
+| `created_at` |  |
+| `expected_generation` |  |
+| `id` |  |
+| `key` |  |
+| `provider` |  |
+| `resource_id` |  |
+| `resource_kind` |  |
+| `revoked` |  |
+| `revoked_at` |  |
+| `snapshot_supported` | Whether this selected permission supports snapshot controls. |
+| `source_operation_id` |  |
+
+Operations: create, list, load, remove.
+
+API path: `/api/v1/organizations/{organization_id}/agent_relay_file_grants`
+
+#### AgentRelayFileGrantAccount
+
+| Field | Description |
+| --- | --- |
+| `access_modes` | Supported file access modes. |
+| `generation` |  |
+| `id` |  |
+| `name` |  |
+| `provider` |  |
+| `resource_kind` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{organization_id}/agent_relay_file_grants/accounts`
+
 #### AgentRepository
 
 | Field | Description |
@@ -1065,6 +1683,15 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/repositorie
 Operations: list.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resources`
+
+#### AgentRoder
+
+| Field | Description |
+| --- | --- |
+
+Operations: create, load.
+
+API path: `/api/v1/agent/roder/browser_executor_authorization`
 
 #### AgentRoutine
 
@@ -1125,6 +1752,37 @@ Operations: create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/runtime/reset`
 
+#### AgentSession
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: load.
+
+API path: `/api/v1/agent_sessions/{session_id}/transcript`
+
+#### AgentSessionCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize`
+
+#### AgentSessionRoderHandoff
+
+| Field | Description |
+| --- | --- |
+| `checkpoint_id` | Public id of the checkpoint to hand off. |
+| `purpose` | Handoff intent; defaults to `continue`. |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/roder_handoffs`
+
 #### AgentSetting
 
 | Field | Description |
@@ -1151,36 +1809,44 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/sharing/review`
 
 | Field | Description |
 | --- | --- |
-| `deployed_at` |  |
-| `deployments_count` |  |
-| `hostname` |  |
-| `https` | Whether the organization's certificate serves this site over HTTPS |
+| `author` |  |
+| `can_message` | The viewer may send input to the author agent |
+| `deployments_count` | Increases with every deploy of the site |
+| `description` | The team app description, when the site is a team app |
+| `icon_url` | Path of the site's generated icon, versioned by the picture; null until one is generated |
 | `id` |  |
-| `name` |  |
+| `name` | The site's DNS label |
+| `owner` | The person who controls the author agent |
+| `thread` | The thread that published the site as a team app, when the viewer can open the author agent |
+| `title` | The team app title, or the site name read as words |
 | `url` |  |
 | `visibility` |  |
 
-Operations: list.
+Operations: create, list, load.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/sites`
+API path: `/api/v1/organizations/{organization_id}/agent_sites/{id}/opened`
 
 #### AgentSkill
 
 | Field | Description |
 | --- | --- |
-| `available` |  |
-| `can_configure` |  |
-| `can_manage` |  |
-| `configuration_state` | The requested managed skill selection is awaiting runtime qualification. |
-| `description` |  |
-| `enabled` |  |
-| `name` |  |
+| `agents` | Active V2 agents the viewer can see whose owner is still a member |
+| `audience` |  |
+| `can_manage_library` |  |
+| `content` | The skill's SKILL.md |
+| `files` |  |
+| `id` |  |
+| `marketplace` |  |
+| `pending` | Some agent is still applying a change; check again shortly |
+| `plugin` | The marketplace entry id |
+| `revision` | The commit SHA returned by preview |
+| `skill` |  |
 | `skills` |  |
-| `version` |  |
+| `source` | owner/repo, a GitHub or skills.sh link, or npx skills add owner/repo [--skill NAME ...] |
 
-Operations: create, list.
+Operations: create, list, load, remove, update.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/skills`
+API path: `/api/v1/organizations/{organization_id}/agent_skills`
 
 #### AgentSlack
 
@@ -1221,6 +1887,63 @@ Operations: create, list.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions`
 
+#### AgentSwarm
+
+| Field | Description |
+| --- | --- |
+| `base_bookmark` | An existing bookmark to start from and land on; the plain form of `target.kind = bookmark`. |
+| `base_ref` |  |
+| `base_revision` | 64-hex commit id; skips the head lookup |
+| `budget` |  |
+| `canceled_at` |  |
+| `canceled_count` |  |
+| `concurrency_key` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `creator_user_id` |  |
+| `deadline_at` |  |
+| `display_id` |  |
+| `done_count` |  |
+| `environment` |  |
+| `failed_count` |  |
+| `finished_at` |  |
+| `finished_at_label` |  |
+| `github` |  |
+| `goal` |  |
+| `id` |  |
+| `model` |  |
+| `model_provider` |  |
+| `number` |  |
+| `organization_id` |  |
+| `organization_slug` |  |
+| `outcome` |  |
+| `phase` |  |
+| `policy` | Every key is optional and defaults to AgentSwarm::POLICY_DEFAULTS. |
+| `queued_at` |  |
+| `queued_at_label` |  |
+| `repository` | Repository slug inside the organization |
+| `repository_id` |  |
+| `repository_slug` |  |
+| `reserved` |  |
+| `scheduler_generation` |  |
+| `skipped_count` |  |
+| `slug` |  |
+| `started_at` |  |
+| `started_at_label` |  |
+| `status` |  |
+| `summary` |  |
+| `target` | Where the swarm lands. |
+| `task_count` |  |
+| `task_template_json` |  |
+| `tasks` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `usage` |  |
+
+Operations: create, list, load, update.
+
+API path: `/api/v1/agent/swarms/{id}/cancel`
+
 #### AgentTeammate
 
 | Field | Description |
@@ -1248,34 +1971,11 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/terminal/co
 
 | Field | Description |
 | --- | --- |
-| `archived_count` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` |  |
-| `execution` |  |
-| `first_input` |  |
-| `first_input_key` | Idempotency-Key that finds the first message through input_delivery. |
-| `first_input_requester_membership_id` | Membership the first message was sent as, for input_delivery. |
 | `id` |  |
-| `inherit_context` | Include the source conversation through its last completed reply. |
-| `local_activities` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` |  |
-| `local_scope_key` |  |
-| `local_status_pending` | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` |  |
-| `main_thread_id` |  |
-| `message` | The thread's first message. |
-| `next_cursor` |  |
-| `parent_conversation_id` | Optional source conversation belonging to this agent. |
-| `requester_membership_id` |  |
-| `selected_thread` |  |
-| `thread` |  |
-| `threads` |  |
-| `title` |  |
-| `total_archived_count` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
 
-Operations: create, list.
+Operations: create, list, load.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive`
+API path: `/api/v1/agent/threads/{id}/archive`
 
 #### AgentTool
 
@@ -1288,6 +1988,23 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{th
 Operations: list.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/tools`
+
+#### AgentUsage
+
+| Field | Description |
+| --- | --- |
+| `days` | One cell per (day, model), ascending by day then model. |
+| `ended_at` |  |
+| `pricing_version` | The price table in effect now; rows carry the version they were priced at. |
+| `source` | Which store served the rows. |
+| `started_at` |  |
+| `user_days` | One cell per (day, person), ascending by day. |
+| `users` | One row per (person, model), descending by tokens. |
+| `window` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/agent_usage`
 
 #### AgentVerifyProject
 
@@ -1314,6 +2031,19 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/verify_proj
 Operations: create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/waits/{wait_id}/stop`
+
+#### AgentWebPreview
+
+| Field | Description |
+| --- | --- |
+| `description` |  |
+| `icon_url` |  |
+| `image_url` |  |
+| `title` |  |
+
+Operations: list.
+
+API path: `/api/v1/agent_web_previews`
 
 #### AgentWebhook
 
@@ -1503,6 +2233,40 @@ Operations: list, remove.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/write_permissions`
 
+#### Agreement
+
+| Field | Description |
+| --- | --- |
+| `body` | Markdown text, or null until staff grant the organization access. |
+| `effective_on_label` |  |
+| `key` |  |
+| `summary` |  |
+| `title` |  |
+| `version` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/pages/agreements`
+
+#### AgreementAccessRequest
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/agreement_access_request`
+
+#### AlertRuleEvent
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, remove.
+
+API path: `/api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/acknowledge`
+
 #### AllocationLog
 
 | Field | Description |
@@ -1546,6 +2310,24 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/
 Operations: create, list, load, patch, remove, update.
 
 API path: `/api/v1/hosting/apps/{id}/activate`
+
+#### AppAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: load.
+
+API path: `/api/v1/app_access/callback`
+
+#### AppAccessJwk
+
+| Field | Description |
+| --- | --- |
+
+Operations: list.
+
+API path: `/api/v1/app_access/jwks`
 
 #### AppCdn
 
@@ -2026,6 +2808,134 @@ Operations: create, list, load, patch, remove, update.
 
 API path: `/api/v1/hosting/apps/{app_id}/storage_resources/{id}/archive`
 
+#### Artefact
+
+| Field | Description |
+| --- | --- |
+| `automation_invocation_id` |  |
+| `byte_size` |  |
+| `checksum_sha256` |  |
+| `content_type` |  |
+| `created_at` |  |
+| `created_by_user_id` |  |
+| `description` |  |
+| `document_key` | Stable document identity shared by all revisions. |
+| `entrypoint` |  |
+| `expires_at` |  |
+| `filename` |  |
+| `files` |  |
+| `harness` |  |
+| `harness_version` |  |
+| `id` |  |
+| `kind` |  |
+| `model` |  |
+| `organization_id` |  |
+| `published_at` |  |
+| `repository_id` |  |
+| `slug` |  |
+| `source` |  |
+| `status` |  |
+| `title` |  |
+| `vcs_agent_checkpoint_id` |  |
+| `vcs_agent_session_id` |  |
+| `version` |  |
+| `view_url` |  |
+| `web_url` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts`
+
+#### ArtefactCommentThread
+
+| Field | Description |
+| --- | --- |
+| `anchor` | The `#anchor` written into the Markdown. |
+| `body` |  |
+| `comments` |  |
+| `id` | The anchor key. |
+| `quote` |  |
+| `resolved` |  |
+
+Operations: create, list, update.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads`
+
+#### ArtefactRevision
+
+| Field | Description |
+| --- | --- |
+| `base_version` | The newest version the editor started from. |
+| `content` | Markdown, including CriticMarkup suggestions and comment anchors. |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/revisions`
+
+#### ArtefactViewToken
+
+| Field | Description |
+| --- | --- |
+| `expires_in` |  |
+| `file` | Exact manifest path. |
+| `organization_slug` | If provided, must match the organization addressed by the route. |
+| `version` |  |
+| `viewer_url` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/view_tokens`
+
+#### Artifact
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/artifacts/artifacts/{id}/expire`
+
+#### ArtifactCacheNamespace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/artifacts/cache_namespaces/{id}/archive`
+
+#### ArtifactImageRepository
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/artifacts/image_repositories/{id}/archive`
+
+#### ArtifactPackageMirror
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/artifacts/package_mirrors/{id}/pause`
+
+#### ArtifactRetentionPolicy
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/artifacts/retention_policies`
+
 #### AttachmentPart
 
 | Field | Description |
@@ -2035,6 +2945,102 @@ API path: `/api/v1/hosting/apps/{app_id}/storage_resources/{id}/archive`
 Operations: update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/attachments/{attachment_id}/parts/{index}`
+
+#### AuditEvent
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `actor_kind` |  |
+| `actor_user_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `observability_space_id` |  |
+| `organization_id` |  |
+| `payload` |  |
+| `request_id` |  |
+| `severity` |  |
+| `subject_id` |  |
+| `subject_kind` |  |
+| `subject_name` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{organization_id}/audit_events`
+
+#### Auth
+
+| Field | Description |
+| --- | --- |
+
+Operations: create, load, remove.
+
+API path: `/api/v1/auth/apple`
+
+#### AuthCli
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/auth/cli/complete`
+
+#### AuthGithub
+
+| Field | Description |
+| --- | --- |
+
+Operations: load.
+
+API path: `/api/v1/auth/github/start`
+
+#### AuthGoogle
+
+| Field | Description |
+| --- | --- |
+
+Operations: load.
+
+API path: `/api/v1/auth/google/start`
+
+#### AuthOpenai
+
+| Field | Description |
+| --- | --- |
+
+Operations: load.
+
+API path: `/api/v1/auth/openai/callback`
+
+#### AuthPasswordReset
+
+| Field | Description |
+| --- | --- |
+| `email` |  |
+| `message` |  |
+| `password` |  |
+| `token` |  |
+
+Operations: create, update.
+
+API path: `/api/v1/auth/password_resets`
+
+#### AuthRegistrationOption
+
+| Field | Description |
+| --- | --- |
+| `email_password_signup_enabled` |  |
+| `openai_sign_in_enabled` | Whether ChatGPT identity sign-in is configured and enabled for rollout. |
+| `turnstile_site_key` |  |
+| `waitlist_enabled` | New public signups require waitlist approval when enabled. |
+
+Operations: list.
+
+API path: `/api/v1/auth/registration_options`
 
 #### AutomationEvent
 
@@ -2107,6 +3113,277 @@ Operations: create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/runs`
 
+#### BackendRunnerPool
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, remove.
+
+API path: `/api/v1/bazel/backends/{backend_id}/runner_pools`
+
+#### Bazel
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/bazel/authorize`
+
+#### BazelActionResult
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: load, update.
+
+API path: `/api/v1/bazel/action_results/{hash}/{size_bytes}`
+
+#### BazelBackend
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/bazel/backends/{id}/issue_token`
+
+#### BazelBlob
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: load, update.
+
+API path: `/api/v1/bazel/blobs/{kind}/{hash}/{size_bytes}`
+
+#### BazelExecution
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, load.
+
+API path: `/api/v1/bazel/executions/{id}/complete`
+
+#### BazelFindMissingBlob
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/bazel/find_missing_blobs`
+
+#### Billing
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `breakdown` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` |  |
+| `can_manage_contact` |  |
+| `can_manage_extra_spend` |  |
+| `can_manage_local_subscription` |  |
+| `can_manage_payment_method` |  |
+| `can_set_up_billing` |  |
+| `customer` |  |
+| `deployment_usage_visible` |  |
+| `entitlements` |  |
+| `extra_spend_enabled` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | Whether the `billing` feature is on for this organization. |
+| `organization_id` |  |
+| `package` |  |
+| `prepaid` |  |
+| `preview` | Metronome draft invoice and credits, or null. |
+| `storage_usage` |  |
+| `stripe` |  |
+| `subscription` |  |
+| `token_account` |  |
+
+Operations: load, update.
+
+API path: `/api/v1/organizations/{organization_id}/billing`
+
+#### BillingAddon
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `breakdown` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` |  |
+| `can_manage_contact` |  |
+| `can_manage_extra_spend` |  |
+| `can_manage_local_subscription` |  |
+| `can_manage_payment_method` |  |
+| `can_set_up_billing` |  |
+| `customer` |  |
+| `deployment_usage_visible` |  |
+| `entitlements` |  |
+| `extra_spend_enabled` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | Whether the `billing` feature is on for this organization. |
+| `id` |  |
+| `organization_id` |  |
+| `package` |  |
+| `prepaid` |  |
+| `preview` | Metronome draft invoice and credits, or null. |
+| `quantity` |  |
+| `storage_usage` |  |
+| `stripe` |  |
+| `subscription` |  |
+| `token_account` |  |
+
+Operations: update.
+
+API path: `/api/v1/organizations/{organization_id}/billing/addons/{addon_key}`
+
+#### BillingCheckoutSession
+
+| Field | Description |
+| --- | --- |
+| `cancel_url` |  |
+| `coupon_code` |  |
+| `entry_point` | Where the owner chose to pay, for product analytics. |
+| `package_key` |  |
+| `package_revision` |  |
+| `success_url` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/billing/checkout_sessions`
+
+#### BillingInvoice
+
+| Field | Description |
+| --- | --- |
+| `amount_due_cents` |  |
+| `created_at` |  |
+| `currency` |  |
+| `hosted_invoice_url` |  |
+| `id` |  |
+| `invoice_pdf` |  |
+| `metronome_invoice_id` | Metronome's id for the invoice it pushed |
+| `number` |  |
+| `period_ended_at` |  |
+| `period_started_at` |  |
+| `status` |  |
+| `total_cents` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{organization_id}/billing/invoices`
+
+#### BillingPackage
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `base_price_cents` |  |
+| `billing_interval` |  |
+| `billing_policy` |  |
+| `ci_included_spend_cents` | Monthly USD credit in cents shared by all CI charges, including runners, cache, storage and add-ons; replaces CI unit allowances when positive. |
+| `currency` |  |
+| `key` |  |
+| `max_seats` |  |
+| `name` |  |
+| `pay_as_you_go_enabled` |  |
+| `rates` |  |
+| `revision` |  |
+| `roder_daily_run_limit` |  |
+| `roder_run_concurrency_limit` |  |
+| `seat_price_cents` |  |
+| `trial_days` |  |
+| `visibility` |  |
+
+Operations: list.
+
+API path: `/api/v1/billing/packages`
+
+#### BillingPortalSession
+
+| Field | Description |
+| --- | --- |
+| `return_url` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/billing/portal_sessions`
+
+#### BillingPrepaidPeriod
+
+| Field | Description |
+| --- | --- |
+| `activated_at` |  |
+| `created_at` |  |
+| `currency` |  |
+| `id` |  |
+| `last_error` |  |
+| `minutes` |  |
+| `net_amount_cents` |  |
+| `paid_at` |  |
+| `paid_total_cents` |  |
+| `payment_action_url` |  |
+| `period_ended_at` |  |
+| `period_started_at` |  |
+| `receipt_url` |  |
+| `refunded_net_cents` |  |
+| `state` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{organization_id}/billing/prepaid_periods/{id}`
+
+#### BillingPrepaidPurchase
+
+| Field | Description |
+| --- | --- |
+| `activated_at` |  |
+| `created_at` |  |
+| `currency` |  |
+| `id` |  |
+| `last_error` |  |
+| `minutes` |  |
+| `net_amount_cents` |  |
+| `paid_at` |  |
+| `paid_total_cents` |  |
+| `payment_action_url` |  |
+| `prepaid` |  |
+| `purchase` |  |
+| `receipt_url` |  |
+| `refunded_net_cents` |  |
+| `request_key` |  |
+| `state` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/organizations/{organization_id}/billing/prepaid_purchases`
+
+#### BillingTokenTopUp
+
+| Field | Description |
+| --- | --- |
+| `amount_cents` |  |
+| `request_key` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/billing/token_top_ups`
+
+#### BillingUsage
+
+| Field | Description |
+| --- | --- |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{organization_id}/billing/usage/breakdown`
+
 #### Binary
 
 | Field | Description |
@@ -2175,6 +3452,25 @@ API path: `/api/v1/organizations/{organization_id}/verify/binaries/{id}/archive`
 Operations: create, list, load, remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/cancel`
+
+#### BookmarkProtectionRefreshGithubRequiredCheck
+
+| Field | Description |
+| --- | --- |
+| `exclusions` |  |
+| `fetched_at` |  |
+| `fetched_at_label` |  |
+| `github_branch` |  |
+| `github_owner` |  |
+| `github_repository_name` |  |
+| `last_error` |  |
+| `proven` |  |
+| `requirements` |  |
+| `stale` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections/refresh_github_required_checks`
 
 #### BrowserEgressCandidate
 
@@ -2336,6 +3632,16 @@ Operations: create, load.
 
 API path: `/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks/{id}/cancel`
 
+#### CacheNamespaceEntry
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/evict`
+
 #### CatalogSelector
 
 | Field | Description |
@@ -2394,6 +3700,556 @@ Operations: list, load, remove, update.
 
 API path: `/api/v1/cdn_spaces/{cdn_space_id}/objects`
 
+#### Change
+
+| Field | Description |
+| --- | --- |
+| `counts` | Counts for each state across the active non-state filters. |
+| `filters` |  |
+| `github_sync` |  |
+| `result` | What this page is a page of. |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/changes`
+
+#### ChangeAsset
+
+| Field | Description |
+| --- | --- |
+| `alias` |  |
+| `byte_size` |  |
+| `checksum_md5` |  |
+| `checksum_sha256` |  |
+| `content_type` |  |
+| `filename` |  |
+| `id` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/assets/{id}/finalize`
+
+#### ChangeComment
+
+| Field | Description |
+| --- | --- |
+| `body` |  |
+| `capabilities` |  |
+| `change_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `kind` |  |
+| `line` |  |
+| `outdated` |  |
+| `parent_comment_id` |  |
+| `patchset_id` |  |
+| `patchset_number` |  |
+| `path` |  |
+| `replies` |  |
+| `resolved` |  |
+| `resolved_at` |  |
+| `resolved_at_label` |  |
+| `resolved_by` |  |
+| `side` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `user` |  |
+
+Operations: create, list.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve`
+
+#### ChangeFileReviewCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `patchset_id` |  |
+| `path` |  |
+| `request_id` |  |
+| `review_action` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/file_review_checkpoints`
+
+#### ChangeGitBranchSubmission
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_branch_submissions`
+
+#### ChangeGitCommitIdentity
+
+| Field | Description |
+| --- | --- |
+| `change_id` |  |
+| `change_number` |  |
+| `git_commit_id` |  |
+| `git_commit_ids` |  |
+| `id` |  |
+| `identities` |  |
+| `missing_git_commit_ids` |  |
+| `patchset_number` |  |
+
+Operations: create, load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_commit_identities`
+
+#### ChangeGitPublication
+
+| Field | Description |
+| --- | --- |
+| `expected_target_commit_id` |  |
+| `id` |  |
+| `operation_key` |  |
+| `publication_id` |  |
+| `request` |  |
+| `request_digest` |  |
+| `revisions` |  |
+| `status` |  |
+| `transfer_refs` | Immutable receipt-owned refs returned by preparation; transfer each exact Git target before polling readiness. |
+
+Operations: create, load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_publications`
+
+#### ChangeGroupMember
+
+| Field | Description |
+| --- | --- |
+| `change_id` | Change number |
+| `changes` |  |
+| `id` |  |
+| `name` |  |
+| `number` |  |
+| `status` |  |
+| `title` |  |
+
+Operations: create, remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups/{id}/members`
+
+#### ChangeLabel
+
+| Field | Description |
+| --- | --- |
+| `accepted` |  |
+| `add` |  |
+| `approval` |  |
+| `assets` | Proof assets referenced from the description as `vex-asset:<id>`. |
+| `author` | Human user summary or organization automation identity. |
+| `capabilities` |  |
+| `change_key` |  |
+| `checks` |  |
+| `checks_status` |  |
+| `comments` |  |
+| `comments_count` |  |
+| `comments_count_label` |  |
+| `commit_message` |  |
+| `current_patchset` |  |
+| `description` |  |
+| `draft` |  |
+| `folded_into_number` |  |
+| `github_projection_status` |  |
+| `github_pull_request` |  |
+| `github_pull_requests` |  |
+| `group` |  |
+| `has_description` | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
+| `id` |  |
+| `jj_change_id` |  |
+| `labels` |  |
+| `landable` |  |
+| `landed_by` |  |
+| `number` |  |
+| `orphaned` |  |
+| `orphaned_at` |  |
+| `orphaned_at_label` |  |
+| `orphaned_reason` |  |
+| `parent_change_id` |  |
+| `parent_change_number` |  |
+| `patchset_number` |  |
+| `patchsets` |  |
+| `primary_status` |  |
+| `public_id` |  |
+| `relation_chain` |  |
+| `remove` |  |
+| `requested_changes` |  |
+| `restack_state` |  |
+| `reviewer_candidates` | Organization members available to the reviewer picker on this page. |
+| `reviewers` |  |
+| `stable_change_id` |  |
+| `stack` |  |
+| `status` |  |
+| `target_branch` |  |
+| `title` |  |
+| `unresolved_comments_count_label` |  |
+| `url` |  |
+| `votes` |  |
+
+Operations: update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/labels`
+
+#### ChangeLandingHold
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_hold/release`
+
+#### ChangeLandingRequest
+
+| Field | Description |
+| --- | --- |
+| `change_ids` |  |
+| `count` |  |
+| `defer_until_ready` | Admit the request while approvals or checks are pending |
+| `expected_requirement_version` |  |
+| `expected_scope_version` |  |
+| `head_change_id` |  |
+| `id` |  |
+| `numbers` |  |
+| `override_acknowledged` |  |
+| `override_codes` |  |
+| `position` |  |
+| `priority` |  |
+| `scope_version` |  |
+| `state` |  |
+| `version` |  |
+
+Operations: create, remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_requests`
+
+#### ChangeRequestChange
+
+| Field | Description |
+| --- | --- |
+| `message` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/request_changes`
+
+#### ChangeReviewer
+
+| Field | Description |
+| --- | --- |
+| `add` |  |
+| `email` |  |
+| `name` |  |
+| `remove` |  |
+| `removed_reviewers` |  |
+| `requested_reviewers` |  |
+| `reviewers` |  |
+
+Operations: list, update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/reviewers`
+
+#### ChangeTranscript
+
+| Field | Description |
+| --- | --- |
+| `capture_kind` |  |
+| `captured_at` |  |
+| `harness` |  |
+| `id` |  |
+| `original_resume` |  |
+| `patchset_commit_id` |  |
+| `patchset_number` |  |
+| `redaction_count` |  |
+| `session_id` |  |
+| `session_title` |  |
+| `status` |  |
+| `superseded` |  |
+| `user` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/transcripts`
+
+#### ChangeTranscriptSummary
+
+| Field | Description |
+| --- | --- |
+| `summaries` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/changes/transcript_summaries`
+
+#### CheckpointPrepareChunk
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/prepare_chunks`
+
+#### CiNode
+
+| Field | Description |
+| --- | --- |
+| `architecture` |  |
+| `bazel_enabled` |  |
+| `bazel_properties_json` |  |
+| `ci_runner_pool_id` |  |
+| `cordoned_at` |  |
+| `cordoned_at_label` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `health_state` |  |
+| `heartbeat_age_seconds` |  |
+| `id` |  |
+| `kind` |  |
+| `labels_csv` |  |
+| `last_seen_at` |  |
+| `last_seen_at_label` |  |
+| `name` |  |
+| `network_peer_id` |  |
+| `node_capabilities_csv` |  |
+| `node_certificate_expires_at` |  |
+| `node_certificate_expires_at_label` |  |
+| `node_certificate_fingerprint_sha256` |  |
+| `node_certificate_serial` |  |
+| `offline_at` |  |
+| `offline_at_label` |  |
+| `online_at` |  |
+| `online_at_label` |  |
+| `organization_id` |  |
+| `os` |  |
+| `revoked_at` |  |
+| `revoked_at_label` |  |
+| `schedulable` |  |
+| `slug` |  |
+| `status` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `version` |  |
+
+Operations: create, load.
+
+API path: `/api/v1/ci/nodes/{id}/cordon`
+
+#### CiPipeline
+
+| Field | Description |
+| --- | --- |
+| `ci_runner_pool_id` |  |
+| `concurrency_key` |  |
+| `created_at` |  |
+| `default_branch` |  |
+| `description` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `name` |  |
+| `organization_id` |  |
+| `repository_id` |  |
+| `required_capabilities_csv` |  |
+| `runner_pool` |  |
+| `runs` |  |
+| `slug` |  |
+| `source_kind` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `trigger_on_pull_request` |  |
+| `trigger_on_push` |  |
+| `trigger_on_schedule` |  |
+| `updated_at` |  |
+| `workflow_path` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/ci/pipelines`
+
+#### CiPipelineRun
+
+| Field | Description |
+| --- | --- |
+| `active` |  |
+| `canceled_at` |  |
+| `ci_pipeline_id` |  |
+| `ci_runner_pool_id` |  |
+| `commit_sha` |  |
+| `concurrency_key` |  |
+| `created_at` |  |
+| `creator_user_id` |  |
+| `display_id` |  |
+| `failed` |  |
+| `finished_at` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `jobs` |  |
+| `message` |  |
+| `number` |  |
+| `organization_id` |  |
+| `parameters_json` |  |
+| `queued_at` |  |
+| `ref_name` |  |
+| `repository_id` |  |
+| `required_capabilities_csv` |  |
+| `retry_number` |  |
+| `retryable` |  |
+| `slug` |  |
+| `source_url` |  |
+| `started_at` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `trigger_kind` |  |
+| `updated_at` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{id}/retry`
+
+#### CiRunnerPool
+
+| Field | Description |
+| --- | --- |
+| `bazel_enabled` |  |
+| `bazel_properties_json` |  |
+| `created_at` |  |
+| `description` |  |
+| `elastic_config_json` |  |
+| `elastic_provider_kind` |  |
+| `id` |  |
+| `isolation_mode` |  |
+| `labels_csv` |  |
+| `max_concurrency` |  |
+| `modal_capacity` |  |
+| `modal_runner_invocations` |  |
+| `name` |  |
+| `network_space_id` |  |
+| `node_capabilities_csv` |  |
+| `organization_id` |  |
+| `runner_count_label` |  |
+| `runner_kind` |  |
+| `runners` |  |
+| `slug` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: create, list, load, patch, update.
+
+API path: `/api/v1/ci/runner_pools/{id}/promote_reconciliation_runtime`
+
+#### CiStatus
+
+| Field | Description |
+| --- | --- |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/ref`
+
+#### CliEvent
+
+| Field | Description |
+| --- | --- |
+| `event` |  |
+| `properties` |  |
+
+Operations: create.
+
+API path: `/api/v1/cli_events`
+
+#### CliRelease
+
+| Field | Description |
+| --- | --- |
+
+Operations: create, list, load.
+
+API path: `/api/v1/cli_releases`
+
+#### CloudWorkspaceBackupObject
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/objects/{object_key}`
+
+#### CodeRuleEvaluation
+
+| Field | Description |
+| --- | --- |
+| `advisory` |  |
+| `coverage` |  |
+| `diff` | UTF-8 complete unified patch using a/ old and b/ new prefixes; at most 1 MiB |
+| `duration_ms` |  |
+| `evaluator_version` |  |
+| `input_digest` |  |
+| `limits` |  |
+| `model` |  |
+| `requests` |  |
+| `schema_version` |  |
+| `snapshot_digest` |  |
+| `unchecked` |  |
+| `verdicts` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/evaluations`
+
+#### ComSiteAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: create, load.
+
+API path: `/api/v1/com_site_access/redeem`
+
+#### ComSiteAccessSession
+
+| Field | Description |
+| --- | --- |
+| `cookie_name` |  |
+| `host` | Site hostname, for example docs.acme.composal.page |
+| `max_age` |  |
+| `session_token` |  |
+
+Operations: create.
+
+API path: `/api/v1/com_site_access/sessions`
+
+#### CommentThreadComment
+
+| Field | Description |
+| --- | --- |
+| `body` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads/{anchor}/comments`
+
+#### CommitDiff
+
+| Field | Description |
+| --- | --- |
+| `files` |  |
+| `id` |  |
+| `parent_id` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits/{id}/diff/{fingerprint}`
+
 #### ConnectionRequest
 
 | Field | Description |
@@ -2430,6 +4286,58 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/conne
 Operations: list.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/sources`
+
+#### ContactSubmission
+
+| Field | Description |
+| --- | --- |
+| `company` |  |
+| `email` | Stored downcased and stripped. |
+| `message` |  |
+| `name` |  |
+| `website` | Honeypot. |
+
+Operations: create.
+
+API path: `/api/v1/contact_submissions`
+
+#### ControlComputer
+
+| Field | Description |
+| --- | --- |
+| `connection` | A point-in-time control transport observation. |
+| `consent` |  |
+| `device` |  |
+| `id` |  |
+| `provider_status` |  |
+
+Operations: list, update.
+
+API path: `/api/v1/organizations/{organization_id}/control_computers`
+
+#### ControlComputerControlOperation
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `arguments` |  |
+| `created_at` |  |
+| `delivery` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` |  |
+| `diagnostic_code` | Approved product error code retained after copied diagnostics expire. |
+| `end` |  |
+| `expires_at` |  |
+| `id` |  |
+| `key` |  |
+| `provider` |  |
+| `references` |  |
+| `result` |  |
+| `result_expired` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` |  |
+
+Operations: create, load.
+
+API path: `/api/v1/organizations/{organization_id}/control_computers/{computer}/control_operations`
 
 #### CoordinationWait
 
@@ -2687,6 +4595,51 @@ Operations: load.
 
 API path: `/api/v1/verify/demo_shares/{token}/segments/{segment_id}`
 
+#### Deployment
+
+| Field | Description |
+| --- | --- |
+| `app` |  |
+| `artifact_locator` |  |
+| `build_duration_seconds` |  |
+| `build_source` |  |
+| `build_status` |  |
+| `children` |  |
+| `ci_pipeline_id` |  |
+| `ci_pipeline_run_id` |  |
+| `commit_sha` |  |
+| `created_at` |  |
+| `creator` |  |
+| `deployed_url` |  |
+| `duration_seconds` |  |
+| `environment` |  |
+| `history_kind` |  |
+| `history_reason` |  |
+| `id` |  |
+| `is_live` |  |
+| `is_rollback` |  |
+| `live_region_count` |  |
+| `number` |  |
+| `placement` |  |
+| `region_count` |  |
+| `replicas_per_region` |  |
+| `rollback_reason` |  |
+| `rollback_source_release_id` |  |
+| `rollback_target_release_id` |  |
+| `rollout_predecessor_id` |  |
+| `rollout_status` |  |
+| `rollout_strategy` |  |
+| `service` |  |
+| `source_ref` |  |
+| `status` |  |
+| `total_replicas` |  |
+| `trigger_kind` |  |
+| `updated_at` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/{deployment_id}`
+
 #### DeploymentDashboardNomad
 
 | Field | Description |
@@ -2696,6 +4649,36 @@ Operations: load.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocation`
 
+#### DeploymentDetail
+
+| Field | Description |
+| --- | --- |
+| `activity` |  |
+| `app` |  |
+| `app_id` |  |
+| `audit_events` |  |
+| `capacity` |  |
+| `data_resources` |  |
+| `deploy_targets` |  |
+| `deployments` |  |
+| `desired_states` |  |
+| `environments` |  |
+| `filters` | The option lists the deployments page's app, service and stage pickers narrow by. |
+| `health` | The rolled-up state of the selected scope. |
+| `nomad` | The Nomad footprint of the selected scope, deduplicated. |
+| `operations` |  |
+| `placements` |  |
+| `reconciler_ticks` |  |
+| `releases` |  |
+| `runtime_instances` |  |
+| `service_bindings` |  |
+| `service_views` |  |
+| `storage_resources` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/details`
+
 #### DeploymentFile
 
 | Field | Description |
@@ -2704,6 +4687,383 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocation`
 Operations: update.
 
 API path: `/api/v1/static_sites/{static_site_id}/deployments/{id}/files`
+
+#### DeploymentLog
+
+| Field | Description |
+| --- | --- |
+| `allocation_id` |  |
+| `app_environment_id` |  |
+| `app_release_id` |  |
+| `app_service_id` |  |
+| `details` |  |
+| `environment_name` |  |
+| `release_version` |  |
+| `service_name` |  |
+| `status` |  |
+| `task` |  |
+| `unreachable_reason` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/logs`
+
+#### DeploymentMetric
+
+| Field | Description |
+| --- | --- |
+| `auto_deploy` |  |
+| `environment_id` |  |
+| `environment_name` |  |
+| `placement_id` |  |
+| `redeploy` |  |
+| `region_count` |  |
+| `replicas_per_region` |  |
+| `rollout_strategy` |  |
+| `service_id` |  |
+| `service_name` |  |
+| `source_ref` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/metrics`
+
+#### DeploymentPreview
+
+| Field | Description |
+| --- | --- |
+| `access` |  |
+| `app_environment_id` |  |
+| `app_name` |  |
+| `app_preview_profile_id` |  |
+| `app_slug` |  |
+| `change_number` |  |
+| `created_at` |  |
+| `created_by_user_id` |  |
+| `expires_at` |  |
+| `generation` |  |
+| `health` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `latest_operation_status` |  |
+| `name` |  |
+| `owner_name` |  |
+| `profile_name` |  |
+| `resource_overrides` | Service public IDs mapped to resource overrides. |
+| `retained` |  |
+| `slug` |  |
+| `snapshot_version` |  |
+| `source_revision` |  |
+| `status` |  |
+| `updated_at` |  |
+| `urls` |  |
+| `vcs_change_id` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/previews`
+
+#### DeploymentSetting
+
+| Field | Description |
+| --- | --- |
+| `code` |  |
+| `created_at` |  |
+| `id` |  |
+| `name` |  |
+| `nomad_datacenter` |  |
+| `updated_at` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/settings`
+
+#### DesktopLocalAgentModel
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `name` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{organization_id}/desktop_local_agent/models`
+
+#### DesktopLocalAgentResponse
+
+| Field | Description |
+| --- | --- |
+| `input` |  |
+| `max_output_tokens` |  |
+| `model` |  |
+| `store` |  |
+| `stream` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/desktop_local_agent/responses`
+
+#### Device
+
+| Field | Description |
+| --- | --- |
+| `architecture` |  |
+| `channel` |  |
+| `coding_connection` | Independent organization coding-control service state for the current device owner. |
+| `connection_checked_at` | When this native presence observation was obtained; null when unobserved or unavailable. |
+| `connection_status` | Display-only native presence. |
+| `control_delivery_policy` |  |
+| `control_spawn_policy` |  |
+| `created_at` |  |
+| `device` |  |
+| `environment` |  |
+| `execution_available` |  |
+| `id` |  |
+| `name` |  |
+| `native_device_id` |  |
+| `paired_at` |  |
+| `pairing_generation` |  |
+| `platform` |  |
+| `project_visibility` | Folder discovery and new-thread selection. |
+| `provider_status` | Recent native provider observations; absent on older API replicas. |
+| `revoked_at` |  |
+| `scheduled_check_ins` | Whether the owner's private agents may check this computer's connection during scheduled runs. |
+| `user_browser_access` | Whether agents may use the owner's own Chrome-family browser here: off, only tabs agents open or the owner shares, or every tab. |
+
+Operations: create, list, load.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/connection`
+
+#### DeviceBrowserOperation
+
+| Field | Description |
+| --- | --- |
+| `command` | The in-app browser takes open through open_external; the person's own browser (arguments.browser user) takes open, tabs, share_tab, navigate, back, reload, screenshot, read, click, type, press, scroll and close. |
+| `created_at` |  |
+| `id` |  |
+
+Operations: create, list.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/browser_operations/{id}/claim`
+
+#### DeviceControlMessage
+
+| Field | Description |
+| --- | --- |
+| `agent_id` |  |
+| `agent_name` |  |
+| `expires_at` |  |
+| `id` |  |
+| `sender` |  |
+| `text` |  |
+| `text_omitted` |  |
+| `thread` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_messages`
+
+#### DeviceControlOperation
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `arguments` |  |
+| `created_at` |  |
+| `delivery` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` |  |
+| `diagnostic_code` | Approved product error code retained after copied diagnostics expire. |
+| `end` |  |
+| `expires_at` |  |
+| `id` |  |
+| `key` |  |
+| `provider` |  |
+| `references` |  |
+| `result` |  |
+| `result_expired` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` |  |
+
+Operations: create, load.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations`
+
+#### DeviceEnterpriseRelay
+
+| Field | Description |
+| --- | --- |
+
+Operations: list.
+
+API path: `/api/v1/spark/devices/enterprise_relays`
+
+#### DeviceFolderListing
+
+| Field | Description |
+| --- | --- |
+| `code` |  |
+| `error` |  |
+| `folders` |  |
+| `id` |  |
+| `key` | Stable idempotency key for this listing. |
+| `parent` |  |
+| `path` | The resolved folder. |
+| `state` |  |
+| `truncated` |  |
+
+Operations: create, load.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/folder_listings`
+
+#### DeviceGrant
+
+| Field | Description |
+| --- | --- |
+| `active_grants` |  |
+| `agent_choices` | Eligible picker choices, with current owner grant targets, on the first page only. |
+| `agent_id` |  |
+| `all_agents_access` | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `capabilities` |  |
+| `execution_available` |  |
+| `grants` |  |
+| `id` |  |
+| `next_cursor` |  |
+| `principal_id` |  |
+
+Operations: create, list.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/{device_grant_id}/revise`
+
+#### DeviceInvocation
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/challenge`
+
+#### DeviceLocalEvent
+
+| Field | Description |
+| --- | --- |
+| `event` |  |
+| `recorded` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/local_events`
+
+#### DevicePairing
+
+| Field | Description |
+| --- | --- |
+| `architecture` |  |
+| `channel` |  |
+| `id` |  |
+| `name` |  |
+| `platform` |  |
+| `public_key` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/pairings/{device_pairing_intent_id}/complete`
+
+#### DeviceProject
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: remove.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/projects/{id}`
+
+#### DeviceScheduledCheckIn
+
+| Field | Description |
+| --- | --- |
+| `enabled` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/scheduled_check_ins`
+
+#### DockerBuilder
+
+| Field | Description |
+| --- | --- |
+| `backend` |  |
+| `created_at` |  |
+| `gateway_url` | Organization-addressed public WSS gateway; null until configured |
+| `generation` |  |
+| `id` |  |
+| `last_activity_at` |  |
+| `organization_id` |  |
+| `ready_at` |  |
+| `slept_at` |  |
+| `slug` |  |
+| `startup_attempt` |  |
+| `startup_failure` | Safe failure reason for the most recent startup attempt |
+| `startup_stage` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: create, list, load, patch, update.
+
+API path: `/api/v1/organizations/{organization_id}/docker_builders/{id}/recover`
+
+#### DockerBuilderSession
+
+| Field | Description |
+| --- | --- |
+| `created_at` |  |
+| `docker_builder_id` |  |
+| `expires_at` |  |
+| `gateway_url` | Organization-addressed public WSS gateway; null until configured |
+| `generation` |  |
+| `id` |  |
+| `organization_id` |  |
+| `revoked_at` |  |
+| `user_id` |  |
+
+Operations: create, load, remove.
+
+API path: `/api/v1/organizations/{organization_id}/docker_builders/{docker_builder_id}/sessions`
+
+#### DockerBuilderSetting
+
+| Field | Description |
+| --- | --- |
+| `docker_builder_settings` |  |
+| `idle_timeout_seconds` |  |
+| `max_concurrency` |  |
+| `organization_id` |  |
+| `region` |  |
+| `runtime_timeout_seconds` |  |
+
+Operations: list, patch, update.
+
+API path: `/api/v1/organizations/{organization_id}/docker_builder_settings`
+
+#### DomainDnsIntegration
+
+| Field | Description |
+| --- | --- |
+| `account_label` |  |
+| `api_token` |  |
+| `created_at` |  |
+| `failure_message` |  |
+| `has_token` |  |
+| `id` |  |
+| `last_verified_at` |  |
+| `organization_id` |  |
+| `provider` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: create, list.
+
+API path: `/api/v1/organizations/{organization_id}/domain_dns_integrations`
 
 #### DomainPathRule
 
@@ -2750,6 +5110,24 @@ API path: `/api/v1/hosting/apps/{app_id}/domains/{domain_id}/path_rules`
 Operations: create, list, load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/dreams/{id}/resume`
+
+#### Edge
+
+| Field | Description |
+| --- | --- |
+
+Operations: load.
+
+API path: `/api/v1/edge/tls-check`
+
+#### EmailVerification
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/email_verifications/resend`
 
 #### Environment
 
@@ -2961,6 +5339,79 @@ API path: `/api/v1/organizations/{organization_id}/verify/environments/{verify_e
 Operations: load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/evidence/{id}`
+
+#### ExecutionDesiredState
+
+| Field | Description |
+| --- | --- |
+| `desired_state` |  |
+| `id` |  |
+| `stop_observed` | True only for archived zero-capacity states with all known jobs stopped and allocations terminated. |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/execution/desired_states/{id}/reconcile`
+
+#### ExecutionReconcilerTick
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/execution/reconciler_ticks`
+
+#### ExecutionRelease
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/execution/releases/{id}/activate`
+
+#### ExecutionRuntimeInstance
+
+| Field | Description |
+| --- | --- |
+| `adapter_kind` |  |
+| `app_environment_id` |  |
+| `app_release_id` |  |
+| `app_service_id` |  |
+| `booted_at` |  |
+| `booted_at_label` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `instance_key` |  |
+| `last_reconciled_at` |  |
+| `last_reconciled_at_label` |  |
+| `last_seen_at` |  |
+| `last_seen_at_label` |  |
+| `location` |  |
+| `location_id` |  |
+| `network_peer_id` |  |
+| `nomad_allocation_id` |  |
+| `nomad_task_name` |  |
+| `organization_id` |  |
+| `private_ipv4` |  |
+| `private_ipv6` |  |
+| `provider_instance_id` |  |
+| `public_endpoint` |  |
+| `service_name` | Name of the Vex service this instance runs, in the same vocabulary as `vex deploy list`. |
+| `slug` |  |
+| `status` |  |
+| `terminated_at` |  |
+| `terminated_at_label` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/execution/runtime_instances/{id}/refresh`
 
 #### Exploration
 
@@ -3175,6 +5626,204 @@ Operations: list, load, patch, update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/findings`
 
+#### Gh
+
+| Field | Description |
+| --- | --- |
+| `capabilities` |  |
+| `content` |  |
+| `fetched_at` |  |
+| `id` |  |
+| `magic_merge` |  |
+| `pull_request` |  |
+| `stack` |  |
+| `transcript_paths` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/gh/{github_owner}/{github_repo}/{number}`
+
+#### GitImport
+
+| Field | Description |
+| --- | --- |
+| `destination_mode` |  |
+| `error` |  |
+| `git_default_branch` | Original Git symbolic HEAD branch, independent of the branch selected for JJ conversion |
+| `git_status` |  |
+| `git_url` |  |
+| `id` |  |
+| `idempotency_key` |  |
+| `name` |  |
+| `native_status` |  |
+| `organization` |  |
+| `repository_id` |  |
+| `root_path` |  |
+| `slug` |  |
+| `source_branch` |  |
+| `target_branch` |  |
+
+Operations: create, load.
+
+API path: `/api/v1/git_imports/{id}/complete`
+
+#### Github
+
+| Field | Description |
+| --- | --- |
+
+Operations: load.
+
+API path: `/api/v1/github/repository_lookup`
+
+#### GithubApp
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/github_app/webhook`
+
+#### GithubAppImportableRepository
+
+| Field | Description |
+| --- | --- |
+| `account_login` |  |
+| `github_app_installation_id` |  |
+| `next_page` | Next GitHub page for this installation |
+| `repositories` |  |
+
+Operations: list.
+
+API path: `/api/v1/github_app/importable_repositories`
+
+#### GithubAppInstallation
+
+| Field | Description |
+| --- | --- |
+| `account_avatar_url` |  |
+| `account_id` |  |
+| `account_login` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `installation_id` |  |
+| `installed_at` |  |
+| `installed_at_label` |  |
+| `manage_access_url` |  |
+| `organization_id` |  |
+| `permission_entries` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` |  |
+| `status` |  |
+| `suspended_at` |  |
+| `suspended_at_label` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: create, list, remove.
+
+API path: `/api/v1/organizations/{organization_id}/github_app/installations/{id}/check_connection`
+
+#### GithubAppInstallationAuthorization
+
+| Field | Description |
+| --- | --- |
+| `installation_url` |  |
+| `organization_slug` | Vex organization slug whose installation will be linked. |
+| `return_target` | Server-validated Vex application target used after verification. |
+
+Operations: create.
+
+API path: `/api/v1/github_app/installation_authorizations`
+
+#### GithubAppUserAuthorization
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/github_app/user_authorizations`
+
+#### GithubCiRepository
+
+| Field | Description |
+| --- | --- |
+| `adoption_mode` |  |
+| `check_name_prefix` |  |
+| `ci_runner_pool_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `default_branch` |  |
+| `github_app_installation_id` |  |
+| `github_repository_id` |  |
+| `id` |  |
+| `last_compatibility_status` |  |
+| `last_error_message` |  |
+| `last_head_sha` |  |
+| `last_pull_request_number` |  |
+| `last_ref` |  |
+| `last_webhook_action` |  |
+| `last_webhook_at` |  |
+| `last_webhook_at_label` |  |
+| `last_webhook_delivery_id` |  |
+| `last_webhook_event` |  |
+| `metadata` |  |
+| `organization_id` |  |
+| `permission_status` |  |
+| `repository_full_name` |  |
+| `repository_name` |  |
+| `repository_owner` |  |
+| `status` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `webhook_delivery_count` |  |
+
+Operations: create, list, load, patch, update.
+
+API path: `/api/v1/organizations/{organization_id}/github_ci_repositories`
+
+#### GithubCiRepositoryCompatibilityReport
+
+| Field | Description |
+| --- | --- |
+| `analyzed_at` |  |
+| `analyzed_at_label` |  |
+| `ci_pipeline_id` |  |
+| `ci_pipeline_run_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `diagnostics` |  |
+| `errors` |  |
+| `event_action` |  |
+| `event_name` |  |
+| `execution_allowed` |  |
+| `github_ci_repository_id` |  |
+| `head_sha` |  |
+| `id` |  |
+| `metadata` |  |
+| `organization_id` |  |
+| `parser_version` |  |
+| `pull_request_number` |  |
+| `ref_name` |  |
+| `referenced_actions` |  |
+| `required_secrets` |  |
+| `runner_labels` |  |
+| `source_blob_sha` |  |
+| `source_sha` |  |
+| `status` |  |
+| `supported_features` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `warnings` |  |
+| `workflow_name` |  |
+| `workflow_path` |  |
+
+Operations: list, load.
+
+API path: `/api/v1/organizations/{organization_id}/github_ci_repositories/{github_ci_repository_id}/compatibility_reports`
+
 #### GithubConnection
 
 | Field | Description |
@@ -3189,6 +5838,307 @@ API path: `/api/v1/organizations/{organization_id}/verify/findings`
 Operations: create, list.
 
 API path: `/api/v1/organizations/{organization_id}/verify/github_connections`
+
+#### GithubIntegration
+
+| Field | Description |
+| --- | --- |
+| `account_avatar_url` |  |
+| `account_login` |  |
+| `connection_status` |  |
+| `connection_status_label` |  |
+| `github_installation` |  |
+| `health` |  |
+| `id` |  |
+| `imported_repositories_count` |  |
+| `imported_repositories_count_label` |  |
+| `organization` |  |
+| `pagination` |  |
+| `repositories` |  |
+
+Operations: list, load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/github_integrations`
+
+#### GithubOnboarding
+
+| Field | Description |
+| --- | --- |
+| `accounts` |  |
+| `active_batch_id` | The batch the wizard's import step should resume — the most recent batch still working, else the most recent overall. |
+| `batches` |  |
+| `capabilities` |  |
+| `installations` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding`
+
+#### GithubOnboardingBranch
+
+| Field | Description |
+| --- | --- |
+| `branches` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/branches`
+
+#### GithubOnboardingImport
+
+| Field | Description |
+| --- | --- |
+| `account_login` |  |
+| `complete` | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` |  |
+| `failed_item_count` |  |
+| `github_app_installation_id` |  |
+| `id` |  |
+| `imported_item_count` |  |
+| `item_count` |  |
+| `items` |  |
+| `repositories` |  |
+| `status` |  |
+| `terminal_item_count` |  |
+| `updated_at` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/imports`
+
+#### GithubOnboardingImportBatch
+
+| Field | Description |
+| --- | --- |
+| `account_login` |  |
+| `complete` | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` |  |
+| `failed_item_count` |  |
+| `github_app_installation_id` |  |
+| `id` |  |
+| `imported_item_count` |  |
+| `item_count` |  |
+| `items` |  |
+| `status` |  |
+| `terminal_item_count` |  |
+| `updated_at` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/import_batches/{github_import_batch_id}`
+
+#### GithubOnboardingImportItem
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/import_items/{github_import_batch_item_id}/retry`
+
+#### GithubPullRequest
+
+| Field | Description |
+| --- | --- |
+| `capabilities` |  |
+| `content` |  |
+| `fetched_at` |  |
+| `id` |  |
+| `magic_merge` |  |
+| `pull_request` |  |
+| `stack` |  |
+| `transcript_paths` |  |
+
+Operations: create, load.
+
+API path: `/api/v1/organizations/{org_slug}/github/pull_requests/refresh`
+
+#### GithubRunnerAdmission
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/github_runner_admission`
+
+#### GithubRunnerCache
+
+| Field | Description |
+| --- | --- |
+| `entry_id` |  |
+| `key` |  |
+| `matched_key` |  |
+| `ok` |  |
+| `operation` |  |
+| `restore_keys` |  |
+| `signed_download_url` |  |
+| `size_bytes` |  |
+| `upload_path` |  |
+| `version` |  |
+
+Operations: create.
+
+API path: `/api/v1/github_runner_cache`
+
+#### GithubRunnerEgress
+
+| Field | Description |
+| --- | --- |
+| `can_request` |  |
+| `cidr` |  |
+| `ipv4` |  |
+| `requested_at_label` |  |
+| `status` |  |
+
+Operations: create, load.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_egress`
+
+#### GithubRunnerHistory
+
+| Field | Description |
+| --- | --- |
+| `activity` |  |
+| `counts` |  |
+| `observed_at` |  |
+| `pagination` |  |
+| `repositories` |  |
+| `runs` |  |
+| `setup` | CI onboarding. |
+| `success_rate` |  |
+| `usage` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/github_runner_history`
+
+#### GithubRunnerImage
+
+| Field | Description |
+| --- | --- |
+| `created_at` |  |
+| `id` |  |
+| `image_reference` | Immutable linux/amd64 Ubuntu 24.04 image, registry/repository@sha256:digest, with Node 22+ |
+| `last_error` |  |
+| `modal_image_id` |  |
+| `name` |  |
+| `registry_secret_name` | Name of an organization CI secret containing REGISTRY_USERNAME and REGISTRY_PASSWORD JSON fields |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_images/{id}/prepare`
+
+#### GithubRunnerPool
+
+| Field | Description |
+| --- | --- |
+| `cpu_millicores` |  |
+| `enabled` |  |
+| `github_app_installation_id` |  |
+| `github_repository_id` |  |
+| `github_runner_image` |  |
+| `id` |  |
+| `image` | Organization image name or ID; null restores the standard image |
+| `invocations` |  |
+| `label` |  |
+| `last_error` |  |
+| `last_polled_at` |  |
+| `max_concurrency` |  |
+| `memory_mb` |  |
+| `organization_id` |  |
+| `provider` |  |
+| `repository_full_name` |  |
+| `runtime_kind` |  |
+| `timeout_seconds` |  |
+
+Operations: create, list, update.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_pools`
+
+#### GithubRunnerSetup
+
+| Field | Description |
+| --- | --- |
+| `error` |  |
+| `github_repository_connection_id` |  |
+| `id` |  |
+| `pull_request_url` |  |
+| `repository_full_name` |  |
+| `roder_thread_id` |  |
+| `runner_labels` |  |
+| `status` |  |
+| `status_label` |  |
+| `summary` |  |
+
+Operations: create, load.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_setup`
+
+#### Gitlab
+
+| Field | Description |
+| --- | --- |
+| `configured` |  |
+| `connections` |  |
+| `integrations` |  |
+| `inventory_error` |  |
+| `next_page` |  |
+| `organization` |  |
+| `projects` |  |
+| `redirect_uri` | The OAuth redirect URI a self-managed GitLab application must use; null when GitLab callbacks aren't configured. |
+| `selected_integration_id` |  |
+
+Operations: create, load.
+
+API path: `/api/v1/organizations/{org_slug}/gitlab/authorize`
+
+#### GitlabConnection
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{org_slug}/gitlab/connections/{connection_id}/control`
+
+#### GitlabImport
+
+| Field | Description |
+| --- | --- |
+| `integration_id` |  |
+| `project_id` |  |
+| `repo_slug` |  |
+| `source_branch` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{org_slug}/gitlab/imports`
+
+#### GitlabOauth
+
+| Field | Description |
+| --- | --- |
+
+Operations: load.
+
+API path: `/api/v1/gitlab/oauth/callback`
+
+#### GrantAllAgent
+
+| Field | Description |
+| --- | --- |
+| `all_agents_access` |  |
+| `enabled` |  |
+| `execution_available` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/all_agents`
 
 #### HostingAppDomain
 
@@ -3222,6 +6172,16 @@ Operations: create, list, load, patch, remove, update.
 
 API path: `/api/v1/hosting/apps/{app_id}/domains/{id}/disable`
 
+#### IdentityOrganization
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: load.
+
+API path: `/api/v1/identity/organizations/{organization_id}/catalog`
+
 #### ImageRepository
 
 | Field | Description |
@@ -3245,6 +6205,34 @@ API path: `/api/v1/hosting/apps/{app_id}/domains/{id}/disable`
 Operations: create, list.
 
 API path: `/api/v1/organizations/{org_slug}/image_repositories`
+
+#### ImageRepositoryTag
+
+| Field | Description |
+| --- | --- |
+| `image_repository` |  |
+| `name` |  |
+| `registry_url` |  |
+| `tags` |  |
+
+Operations: list.
+
+API path: `/api/v1/artifacts/image_repositories/{id}/tags`
+
+#### ImportBranchPolicy
+
+| Field | Description |
+| --- | --- |
+| `can_manage_pr_scenario_writing` |  |
+| `can_manage_sandbox_region` |  |
+| `dedicated_outbound_ip_addresses` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` |  |
+| `organization` |  |
+| `sandbox_regions` |  |
+
+Operations: load, patch, update.
+
+API path: `/api/v1/organizations/{organization_id}/import_branch_policy`
 
 #### Integration
 
@@ -3296,6 +6284,56 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/interaction
 Operations: create, list, remove.
 
 API path: `/api/v1/organizations/{organization_id}/invitations`
+
+#### InvocationControl
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/control/challenge`
+
+#### JobLogChunk
+
+| Field | Description |
+| --- | --- |
+| `byte_size` |  |
+| `ci_job_id` |  |
+| `ci_pipeline_run_id` |  |
+| `ci_step_id` |  |
+| `content` |  |
+| `content_format` |  |
+| `created_at` |  |
+| `id` |  |
+| `organization_id` |  |
+| `sequence_number` |  |
+| `stream` |  |
+| `updated_at` |  |
+
+Operations: create, list.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/log_chunks`
+
+#### JobStep
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, patch, update.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps`
+
+#### JobWorkspace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, patch, update.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces`
 
 #### JourneyVariantReplay
 
@@ -3355,6 +6393,132 @@ Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/knowledge`
 
+#### Known
+
+| Field | Description |
+| --- | --- |
+
+Operations: load.
+
+API path: `/.well-known/agent-card.json`
+
+#### Label
+
+| Field | Description |
+| --- | --- |
+| `changes_count` |  |
+| `id` |  |
+| `name` | Display name |
+| `slug` | Normalized identity used for filtering and lookup. |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/labels`
+
+#### LeaseArtifact
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/artifacts`
+
+#### LeaseCache
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/cache/restore`
+
+#### LeaseLogChunk
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/log_chunks`
+
+#### LeaseReconciliation
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/reconciliations/{reconciliation_id}/output`
+
+#### LeaseStep
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: update.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/steps/{ci_step_id}`
+
+#### LeaseVerifyDiagnostic
+
+| Field | Description |
+| --- | --- |
+| `browser_events` |  |
+| `live_browser` |  |
+| `live_view` | The tester's read-only live stream for page viewers. |
+| `steps` |  |
+
+Operations: create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_diagnostics`
+
+#### LeaseVerifySecret
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_secrets`
+
+#### LeaseWorkspace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: update.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/workspaces/{ci_workspace_id}`
+
+#### LocalAgentDecision
+
+| Field | Description |
+| --- | --- |
+| `request` | A native OpenAI Decisions request for gpt-6-luna, at most 1600 KiB, with inline images only |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/local_agent/decisions`
+
+#### LocalAgentResponse
+
+| Field | Description |
+| --- | --- |
+| `input` |  |
+| `model` |  |
+| `service_tier` |  |
+| `store` |  |
+| `stream` |  |
+| `tools` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/local_agent/responses`
+
 #### LocalThreadDelivery
 
 | Field | Description |
@@ -3409,6 +6573,67 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threa
 Operations: list.
 
 API path: `/api/v1/hosting/locations`
+
+#### LogStreamChunk
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks`
+
+#### LogoImage
+
+| Field | Description |
+| --- | --- |
+| `activated_products` | Products this organization has activated (PRD 144). |
+| `agents_only` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` |  |
+| `created_at_label` |  |
+| `github_prs_authored_by_change_author` |  |
+| `id` |  |
+| `logo_url` |  |
+| `member_count` |  |
+| `name` |  |
+| `pending_invitation_count` |  |
+| `personal` |  |
+| `repository_count` |  |
+| `role` |  |
+| `sandbox_region` |  |
+| `shared_agent_personal_accounts_enabled` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` |  |
+| `source_control_providers` | Connected source control providers for this organization. |
+| `source_ui_enabled` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `verify_pr_scenario_writing_enabled` |  |
+
+Operations: remove, update.
+
+API path: `/api/v1/organizations/{organization_id}/logo_image`
+
+#### MarketingSetting
+
+| Field | Description |
+| --- | --- |
+| `call_first` |  |
+
+Operations: list.
+
+API path: `/api/v1/marketing_settings`
+
+#### McpOauth
+
+| Field | Description |
+| --- | --- |
+
+Operations: create, load.
+
+API path: `/api/v1/mcp/oauth/consent`
 
 #### Me
 
@@ -3536,6 +6761,29 @@ Operations: create, list, load, remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/memories`
 
+#### MergeQueueEntry
+
+| Field | Description |
+| --- | --- |
+| `analytics` | Queue performance for the reporting window. |
+| `change_id` |  |
+| `expected_target_commit_id` |  |
+| `expected_target_version` |  |
+| `expected_version` |  |
+| `github_pr_number` |  |
+| `id` |  |
+| `idempotency_key` |  |
+| `kind` |  |
+| `policy` |  |
+| `priority` |  |
+| `queue` |  |
+| `target_branches` | Bookmark names for the target picker. |
+| `when_ready` |  |
+
+Operations: create, remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/merge`
+
 #### MergeRequest
 
 | Field | Description |
@@ -3577,6 +6825,26 @@ API path: `/api/v1/organizations/{organization_id}/verify/memories`
 Operations: create, load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun`
+
+#### MergeResolution
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `base` | Common ancestor file contents |
+| `content` |  |
+| `context` | Optional surrounding files keyed by path |
+| `duration_ms` |  |
+| `fallback` |  |
+| `model` |  |
+| `ours` | Current / left file contents |
+| `path` | Repository-relative path of the conflicted file |
+| `resolved` |  |
+| `theirs` | Incoming / right file contents |
+
+Operations: create.
+
+API path: `/api/v1/merge_resolutions`
 
 #### MessagingConversationMessage
 
@@ -3621,6 +6889,45 @@ Operations: list.
 
 API path: `/api/v1/hosting/metrics/queries`
 
+#### MetronomeWebhook
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/metronome/webhooks`
+
+#### ModelSubscriptionAccount
+
+| Field | Description |
+| --- | --- |
+| `accounts` |  |
+| `agents` |  |
+| `can_disconnect` |  |
+| `connection_agent` |  |
+| `email` |  |
+| `id` |  |
+| `label` |  |
+| `provider` |  |
+| `saved` |  |
+| `status` |  |
+| `usable` |  |
+
+Operations: create, list, patch, remove, update.
+
+API path: `/api/v1/model_subscription_accounts`
+
+#### ModelSubscriptionAccountConnection
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: load, update.
+
+API path: `/api/v1/model_subscription_accounts/connection/{agent_id}`
+
 #### NetworkConnection
 
 | Field | Description |
@@ -3639,6 +6946,62 @@ API path: `/api/v1/hosting/metrics/queries`
 Operations: create, patch, update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/network_connections`
+
+#### NetworkingSpace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/networking/spaces/{id}/activate`
+
+#### Node
+
+| Field | Description |
+| --- | --- |
+| `account_avatar_url` |  |
+| `account_id` |  |
+| `account_login` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `installation_id` |  |
+| `installed_at` |  |
+| `installed_at_label` |  |
+| `manage_access_url` |  |
+| `organization_id` |  |
+| `permission_entries` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` |  |
+| `status` |  |
+| `suspended_at` |  |
+| `suspended_at_label` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{organization_id}/pages/nodes`
+
+#### NodeCertificate
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/ci/nodes/{id}/certificate/rotate`
+
+#### NodeLease
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/claim`
 
 #### NomadAllocation
 
@@ -3687,6 +7050,73 @@ Operations: list.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs`
 
+#### Now
+
+| Field | Description |
+| --- | --- |
+| `needs_attention` |  |
+| `pagination` |  |
+| `recently_landed` |  |
+| `shipping_now` |  |
+| `summary` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/now`
+
+#### ObservabilityClickhouseCluster
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/observability/clickhouse_clusters/{id}/activate`
+
+#### ObservabilityQuickwitCluster
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/observability/quickwit_clusters/{id}/activate`
+
+#### ObservabilitySpace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/observability/spaces/{id}/activate`
+
+#### Openapi
+
+| Field | Description |
+| --- | --- |
+
+Operations: load.
+
+API path: `/api/v1/openapi`
+
+#### OrgInvitation
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `invitation` |  |
+| `registration_options` |  |
+| `requires_password_setup` |  |
+| `start_guided_setup` |  |
+
+Operations: create, load.
+
+API path: `/api/v1/org_invitations/{token}/accept`
+
 #### Organization
 
 | Field | Description |
@@ -3719,6 +7149,233 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs`
 Operations: create, list, load, patch, update.
 
 API path: `/api/v1/organizations`
+
+#### OrganizationApp
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: list, remove, update.
+
+API path: `/api/v1/spark/organizations/{organization_id}/apps`
+
+#### OrganizationControl
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/control/admission`
+
+#### OrganizationDevice
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create.
+
+API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/control`
+
+#### OrganizationIdentityCertificate
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/identity_certificates/{id}/expire`
+
+#### OrganizationInteraction
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/interactions`
+
+#### OrganizationInvitation
+
+| Field | Description |
+| --- | --- |
+| `email` |  |
+| `id` |  |
+| `role` |  |
+
+Operations: create, remove.
+
+API path: `/api/v1/admin/organizations/{org_slug}/invitations`
+
+#### OrganizationMessageFile
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/message_files`
+
+#### OrganizationOidcTrust
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/activate`
+
+#### OrganizationRunEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/run_events`
+
+#### OrganizationRunOutcome
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/run_outcomes`
+
+#### OrganizationRunUsage
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/run_usages`
+
+#### OrganizationSandbox
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sandbox/automation-cleanup`
+
+#### OrganizationSecret
+
+| Field | Description |
+| --- | --- |
+| `app_environment_id` |  |
+| `app_service_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `created_by` |  |
+| `current_version` |  |
+| `description` |  |
+| `env_key` |  |
+| `expose_to_build` |  |
+| `expose_to_ci` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `last_accessed_at` |  |
+| `last_accessed_at_label` |  |
+| `last_accessed_by` |  |
+| `latest_version_number` |  |
+| `name` |  |
+| `organization_id` |  |
+| `owner_service_account_id` |  |
+| `rotation_policy` |  |
+| `scope_kind` |  |
+| `slug` |  |
+| `status` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/secrets/{id}/disable`
+
+#### OrganizationServiceAccount
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/service_accounts/{id}/activate`
+
+#### OrganizationSetting
+
+| Field | Description |
+| --- | --- |
+| `concurrent_run_limit_override` |  |
+| `customize_onboarding_packages` |  |
+| `daily_run_limit_override` |  |
+| `deployment_usage_visibility` |  |
+| `monthly_browser_minutes_limit_override` |  |
+| `monthly_budget_dollars` |  |
+| `name` |  |
+| `onboarding_custom_pricing` |  |
+| `onboarding_package_keys` |  |
+
+Operations: update.
+
+API path: `/api/v1/admin/organizations/{org_slug}/settings`
+
+#### OrganizationSite
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, remove, update.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/token`
+
+#### OrganizationSubscription
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/subscriptions/selection`
+
+#### OrganizationTool
+
+| Field | Description |
+| --- | --- |
+| `arguments` |  |
+| `native_agent_id` |  |
+| `tool` |  |
+
+Operations: create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/tools`
+
+#### OrganizationWorkloadIdentity
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/workload_identities/{id}/activate`
+
+#### OtelIngest
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/otel_ingest/authorize`
 
 #### Page
 
@@ -3775,6 +7432,70 @@ Operations: create, list, load.
 
 API path: `/api/v1/organizations/{organization_id}/agents/page/activity`
 
+#### PageArtefact
+
+| Field | Description |
+| --- | --- |
+| `artefact` |  |
+| `automation` |  |
+| `automation_invocation_id` |  |
+| `byte_size` |  |
+| `checksum_sha256` |  |
+| `comment_threads` |  |
+| `content_type` |  |
+| `created_at` |  |
+| `created_by_user_id` |  |
+| `description` |  |
+| `document_key` | Stable document identity shared by all revisions. |
+| `draft` | The autosaved working copy of the newest Markdown version; null for older versions and other files. |
+| `entrypoint` |  |
+| `expires_at` |  |
+| `filename` |  |
+| `files` |  |
+| `harness` |  |
+| `harness_version` |  |
+| `id` |  |
+| `kind` |  |
+| `kinds` |  |
+| `model` |  |
+| `organization` |  |
+| `organization_id` |  |
+| `pagination` |  |
+| `permissions` |  |
+| `preview` |  |
+| `published_at` |  |
+| `published_at_label` |  |
+| `publisher` |  |
+| `repository` |  |
+| `repository_id` |  |
+| `selected_path` |  |
+| `slug` |  |
+| `source` |  |
+| `status` |  |
+| `title` |  |
+| `vcs_agent_checkpoint_id` |  |
+| `vcs_agent_session_id` |  |
+| `version` |  |
+| `versions` |  |
+| `view_url` |  |
+| `web_url` |  |
+
+Operations: list, load.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/page`
+
+#### PageCiPipelineRun
+
+| Field | Description |
+| --- | --- |
+| `error` |  |
+| `id` |  |
+| `jobs` |  |
+
+Operations: load.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/page`
+
 #### PageProjectRun
 
 | Field | Description |
@@ -3796,6 +7517,85 @@ API path: `/api/v1/organizations/{organization_id}/agents/page/activity`
 Operations: load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/page`
+
+#### PageRepoVcCommit
+
+| Field | Description |
+| --- | --- |
+| `commit` |  |
+| `diff_path` | Fingerprinted path serving this commit range's file diff. |
+| `id` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits/{id}/page`
+
+#### PagesBilling
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `breakdown` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` |  |
+| `can_manage_contact` |  |
+| `can_manage_extra_spend` |  |
+| `can_manage_local_subscription` |  |
+| `can_manage_payment_method` |  |
+| `can_set_up_billing` |  |
+| `customer` |  |
+| `deployment_usage_visible` |  |
+| `entitlements` |  |
+| `extra_spend_enabled` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | Whether the `billing` feature is on for this organization. |
+| `organization_id` |  |
+| `package` |  |
+| `prepaid` |  |
+| `preview` | Metronome draft invoice and credits, or null. |
+| `storage_usage` |  |
+| `stripe` |  |
+| `subscription` |  |
+| `token_account` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/billing`
+
+#### PagesGithubOnboarding
+
+| Field | Description |
+| --- | --- |
+| `onboarding` |  |
+| `organization` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/github_onboarding`
+
+#### PagesMember
+
+| Field | Description |
+| --- | --- |
+| `accepted_at` |  |
+| `accepted_by_user` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `email` |  |
+| `email_delivery_status` |  |
+| `expires_at` |  |
+| `expires_at_label` |  |
+| `id` |  |
+| `invite_url` |  |
+| `invited_by_user` |  |
+| `organization` |  |
+| `revoked_at` |  |
+| `role` |  |
+| `status` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/pages/members`
 
 #### PagesProjectCredential
 
@@ -3872,6 +7672,105 @@ Operations: list.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenarios`
 
+#### PagesRegistry
+
+| Field | Description |
+| --- | --- |
+| `active_repository_count` |  |
+| `error` |  |
+| `pagination` |  |
+| `repositories` |  |
+| `repository_count` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/registry`
+
+#### PagesSession
+
+| Field | Description |
+| --- | --- |
+| `adapter` |  |
+| `created_at` |  |
+| `cursor` |  |
+| `ended_at` |  |
+| `external_session_id` |  |
+| `facets` |  |
+| `from` |  |
+| `github_access_warnings` |  |
+| `harness` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` |  |
+| `last_activity_at` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` |  |
+| `limit` |  |
+| `markers` |  |
+| `max_bytes` |  |
+| `mode` |  |
+| `offset` |  |
+| `pagination` |  |
+| `query` |  |
+| `repo` |  |
+| `repository` |  |
+| `search` |  |
+| `search_enabled` |  |
+| `session` | Identical serialization to the org sessions page's expanded session, so the web reuses one session-detail builder. |
+| `sessions` |  |
+| `started_at` |  |
+| `stats` |  |
+| `status` |  |
+| `title` |  |
+| `to` |  |
+| `token_stats` |  |
+| `transcript_index` |  |
+| `transcript_stats` |  |
+| `updated_at` |  |
+| `user` |  |
+| `user_id` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/sessions`
+
+#### Pairing
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/relay/pairings`
+
+#### PairingEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: list.
+
+API path: `/api/v1/relay/pairings/{id}/events`
+
+#### ParallelV1
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/local_agent/parallel/v1/extract`
+
+#### PatchsetDiff
+
+| Field | Description |
+| --- | --- |
+| `files` |  |
+| `id` |  |
+| `patchset` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/patchsets/{patchset_number}/diff/{fingerprint}`
+
 #### PersonalAccessToken
 
 | Field | Description |
@@ -3939,6 +7838,58 @@ API path: `/api/v1/hosting/apps/{app_id}/previews/{preview_id}/secrets/{id}/rota
 Operations: create, list.
 
 API path: `/api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals`
+
+#### ProactiveAgentWaitlistEntry
+
+| Field | Description |
+| --- | --- |
+| `email` |  |
+| `first_task` | The first job they would hand an agent. |
+| `invite_code` | The referral code of the invite link they arrived through. |
+| `places_per_referral` | Most places one referral moves the entry up; fewer when boosted entries are ahead. |
+| `position` | 1-based place in the queue. |
+| `position_after_next_referral` | The place one more referral would give this entry, as Rails would assign it. |
+| `referral_code` | Shared in this entry's invite link. |
+| `referral_count` | People who joined through this entry's link. |
+| `total` | Display total including a random increment per signup; not the actual number of entries. |
+| `website` | Honeypot. |
+
+Operations: create, load.
+
+API path: `/api/v1/proactive_agent_waitlist_entries`
+
+#### Product
+
+| Field | Description |
+| --- | --- |
+| `activated_products` | Products this organization has activated (PRD 144). |
+| `agents_only` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` |  |
+| `created_at_label` |  |
+| `github_prs_authored_by_change_author` |  |
+| `id` |  |
+| `logo_url` |  |
+| `member_count` |  |
+| `name` |  |
+| `pending_invitation_count` |  |
+| `personal` |  |
+| `product` |  |
+| `repository_count` |  |
+| `role` |  |
+| `sandbox_region` |  |
+| `shared_agent_personal_accounts_enabled` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` |  |
+| `source_control_providers` | Connected source control providers for this organization. |
+| `source_ui_enabled` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `verify_pr_scenario_writing_enabled` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/products`
 
 #### ProductMapIdentityDecision
 
@@ -4480,6 +8431,41 @@ Operations: create, load, remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share`
 
+#### PullRequestAction
+
+| Field | Description |
+| --- | --- |
+| `action_name` |  |
+| `body` |  |
+| `comment_id` |  |
+| `comments` |  |
+| `event` |  |
+| `expected_head_sha` |  |
+| `id` |  |
+| `label` |  |
+| `line` |  |
+| `node_id` |  |
+| `operation_key` |  |
+| `path` |  |
+| `run_id` |  |
+| `side` |  |
+| `start_line` |  |
+| `start_side` |  |
+| `thread_id` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/actions`
+
+#### PullRequestMagicMerge
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/merge`
+
 #### PullRequestSetting
 
 | Field | Description |
@@ -4580,6 +8566,42 @@ Operations: create.
 
 API path: `/api/v1/organizations/{organization_id}/verify/pull_request_settings/detect_comments`
 
+#### PullRequestTranscript
+
+| Field | Description |
+| --- | --- |
+| `adapter` |  |
+| `created_at` |  |
+| `ended_at` |  |
+| `external_session_id` |  |
+| `harness` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` |  |
+| `last_activity_at` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` |  |
+| `repository` |  |
+| `started_at` |  |
+| `stats` |  |
+| `status` |  |
+| `title` |  |
+| `updated_at` |  |
+| `user` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/pull_request/{number}/transcripts`
+
+#### PullZone
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `name` |  |
+| `slug` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/pages/pull_zones`
+
 #### Recorder
 
 | Field | Description |
@@ -4610,6 +8632,34 @@ Operations: create.
 
 API path: `/api/v1/registry/v2/authorize`
 
+#### RelayAgentConnection
+
+| Field | Description |
+| --- | --- |
+| `agent_card_url` |  |
+| `auth_scheme` |  |
+| `can_configure` |  |
+| `can_disconnect` |  |
+| `can_setup` |  |
+| `connection` |  |
+| `credential` | Write-only outbound key. |
+| `error_code` |  |
+| `expected_generation` |  |
+| `generation` |  |
+| `id` |  |
+| `name` |  |
+| `remote_agent` |  |
+| `requester_id` |  |
+| `retired_at` |  |
+| `revoked_at` |  |
+| `scope_key` |  |
+| `source_operation_id` |  |
+| `state` |  |
+
+Operations: create, list, load, remove, update.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup`
+
 #### RelayAgentLocalThread
 
 | Field | Description |
@@ -4619,6 +8669,263 @@ API path: `/api/v1/registry/v2/authorize`
 Operations: remove.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/relay`
+
+#### RelaySignal
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/relay/signals`
+
+#### ReleaseRollout
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/execution/releases/{release_id}/rollouts/{id}/complete`
+
+#### Repo
+
+| Field | Description |
+| --- | --- |
+| `can_retry_import` | True when a failed client import can be requeued for CLI resume. |
+| `can_retry_sync` | True when the latest sync run failed and can be retried. |
+| `disclaimer` |  |
+| `federated_in_home` | True when this Space is a folder virtual repository inside the organization Home monorepo. |
+| `github_repository` |  |
+| `icon_name` |  |
+| `id` | Virtual repository public ID for non-Home rows; Home uses the physical repository public ID. |
+| `import_item_id` |  |
+| `is_home` |  |
+| `name` |  |
+| `remote_repository` |  |
+| `root_path` | Home-relative folder path when federated_in_home is true; null otherwise. |
+| `slug` |  |
+| `sync_error_message` |  |
+| `sync_provider` |  |
+| `sync_status` |  |
+
+Operations: list, load, remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos`
+
+#### RepoAccessToken
+
+| Field | Description |
+| --- | --- |
+| `access_token` |  |
+| `active` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `credential_purpose` | Issues a revocable read-write system credential valid for one hour. |
+| `expires_at` |  |
+| `expires_at_label` |  |
+| `expires_in_days` |  |
+| `id` |  |
+| `last_used_at` |  |
+| `last_used_at_label` |  |
+| `name` |  |
+| `permission_level` |  |
+| `plain_text_token` |  |
+| `revoked_at` |  |
+| `revoked_at_label` |  |
+| `token_preview` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: create, list, remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/access_tokens`
+
+#### RepoAction
+
+| Field | Description |
+| --- | --- |
+| `pipeline` |  |
+| `run` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/actions`
+
+#### RepoAgentCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_checkpoints/{id}`
+
+#### RepoAgentSession
+
+| Field | Description |
+| --- | --- |
+| `adapter` |  |
+| `agent_session` |  |
+| `external_session_id` |  |
+| `id` |  |
+| `status` |  |
+| `title` |  |
+
+Operations: create, list, load, patch, update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete`
+
+#### RepoBookmarkProtection
+
+| Field | Description |
+| --- | --- |
+| `actor_policy` |  |
+| `bypass_mode` |  |
+| `created_at` |  |
+| `created_by_user_id` |  |
+| `enabled` |  |
+| `id` |  |
+| `name` |  |
+| `organization_id` |  |
+| `priority` |  |
+| `repository_id` |  |
+| `requirements` |  |
+| `target_kind` |  |
+| `target_pattern` |  |
+| `updated_at` |  |
+| `updated_by_user_id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections`
+
+#### RepoBookmarkProtectionEvent
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `actor_kind` |  |
+| `actor_label` |  |
+| `actor_user_id` |  |
+| `bookmark_name` |  |
+| `bookmark_protection_rule_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `decision` |  |
+| `id` |  |
+| `intent` |  |
+| `metadata` |  |
+| `new_target` |  |
+| `old_target` |  |
+| `organization_id` |  |
+| `reason_codes` |  |
+| `repository_id` |  |
+| `source_request_id` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protection_events`
+
+#### RepoCloudWorkspaceBackup
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/restore_request`
+
+#### RepoCodeRule
+
+| Field | Description |
+| --- | --- |
+| `active_revision_number` |  |
+| `capabilities` |  |
+| `code_rule` |  |
+| `created_at` |  |
+| `definition` |  |
+| `draft_pending` | The latest revision is not the active one |
+| `enabled` |  |
+| `expected_version` |  |
+| `id` |  |
+| `latest_revision_number` |  |
+| `name` | Name of the latest revision |
+| `repository` |  |
+| `scope` |  |
+| `slug` |  |
+| `state_version` | Send back as expected_version on every mutation |
+| `updated_at` |  |
+| `web_url` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules`
+
+#### RepoSetting
+
+| Field | Description |
+| --- | --- |
+| `active` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `description` |  |
+| `expires_at` |  |
+| `expires_at_label` |  |
+| `icon_name` |  |
+| `id` |  |
+| `last_used_at` |  |
+| `last_used_at_label` |  |
+| `merge_authority` |  |
+| `name` |  |
+| `organization_id` |  |
+| `permission_level` |  |
+| `revoked_at` |  |
+| `revoked_at_label` |  |
+| `slug` |  |
+| `status` |  |
+| `token_preview` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: list, update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings`
+
+#### RepoStat
+
+| Field | Description |
+| --- | --- |
+| `repository_stats` |  |
+
+Operations: create, list.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/stats/refresh`
+
+#### RepoVc
+
+| Field | Description |
+| --- | --- |
+
+Operations: create, load, update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commit_file`
+
+#### RepoVcCommit
+
+| Field | Description |
+| --- | --- |
+| `name` |  |
+| `target_commit_id` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits`
 
 #### ReportReplay
 
@@ -4653,6 +8960,260 @@ API path: `/api/v1/organizations/{organization_id}/verify/explorations/{id}/repo
 Operations: create.
 
 API path: `/api/v1/organizations/{organization_id}/verify/explorations/{id}/report/scenarios`
+
+#### RepositoryAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: create, load.
+
+API path: `/api/v1/repository_access/authorize`
+
+#### RepositoryAccessResolve
+
+| Field | Description |
+| --- | --- |
+| `default_branch` |  |
+| `git_auth_username` |  |
+| `git_https_clone_url` |  |
+| `git_https_supported` |  |
+| `github_access_warnings` |  |
+| `id` |  |
+| `membership_role` |  |
+| `organization_id` |  |
+| `organization_name` |  |
+| `organization_slug` |  |
+| `repository_id` |  |
+| `repository_name` |  |
+| `repository_slug` |  |
+
+Operations: load.
+
+API path: `/api/v1/repository_access/resolve/{org_slug}/{repo_slug}`
+
+#### RepositoryEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/repository_events/walgit`
+
+#### RepositoryImport
+
+| Field | Description |
+| --- | --- |
+| `can_manage_connections` |  |
+| `github_imports` |  |
+| `github_installations` |  |
+| `gitlab_configured` |  |
+| `gitlab_imports` |  |
+| `gitlab_integrations` |  |
+| `gitlab_redirect_uri` |  |
+| `gitlab_self_managed_available` |  |
+| `inventory_errors` |  |
+| `organization_id` |  |
+| `repositories` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/repository_import`
+
+#### RepositoryImportSession
+
+| Field | Description |
+| --- | --- |
+| `action_required` |  |
+| `authorization_endpoint` |  |
+| `can_authorize_github` |  |
+| `client_name` |  |
+| `client_version` |  |
+| `created_at` |  |
+| `error_message` |  |
+| `expires_at` |  |
+| `git_imports` |  |
+| `github_app_installation_id` |  |
+| `github_connected` |  |
+| `id` |  |
+| `idempotency_key` |  |
+| `organization_id` |  |
+| `organization_slug` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: create, load.
+
+API path: `/api/v1/repository_import_sessions/{id}/authorization`
+
+#### RepositoryImportSessionRepository
+
+| Field | Description |
+| --- | --- |
+| `default_branch` |  |
+| `full_name` |  |
+| `name` |  |
+| `owner` |  |
+| `private` |  |
+| `reason` |  |
+| `selectable` |  |
+| `status` |  |
+| `visibility` |  |
+
+Operations: list.
+
+API path: `/api/v1/repository_import_sessions/{id}/repositories`
+
+#### RepositoryImportSessionSelection
+
+| Field | Description |
+| --- | --- |
+| `repositories` |  |
+
+Operations: create.
+
+API path: `/api/v1/repository_import_sessions/{id}/selections`
+
+#### RepositorySandboxEnvironment
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, load.
+
+API path: `/api/v1/repositories/{repository}/sandbox_environments/validate`
+
+#### RoderCodeRepair
+
+| Field | Description |
+| --- | --- |
+| `base_sha` |  |
+| `cancel_requested` |  |
+| `failure_code` |  |
+| `id` |  |
+| `launch_state` |  |
+| `organization_id` |  |
+| `repository_slug` |  |
+| `roder_thread_id` |  |
+| `roder_turn_id` |  |
+| `scenario_run_id` |  |
+| `task` |  |
+| `trigger_kind` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/agent/roder/code_repairs/{id}/cancel`
+
+#### RoderCodeRepairSetting
+
+| Field | Description |
+| --- | --- |
+| `available` |  |
+| `daily_limit` |  |
+| `enabled` |  |
+| `enabled_at` |  |
+| `operator_user_id` |  |
+| `organization_id` |  |
+| `repository_slug` | Connected Composal repository required when enabling |
+
+Operations: create, list.
+
+API path: `/api/v1/agent/roder/code_repair_settings`
+
+#### RoderMachine
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: update.
+
+API path: `/api/v1/agent/roder/machines/{public_id}`
+
+#### RoderRun
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/agent/roder/run/swarm_activity`
+
+#### RoderWorkspaceCredential
+
+| Field | Description |
+| --- | --- |
+| `api_token` | Short-lived personal access token for the spawning user. |
+| `author_email` |  |
+| `author_name` |  |
+| `clone_url` |  |
+| `default_branch` |  |
+| `expires_at` |  |
+| `organization_id` |  |
+| `repository_id` |  |
+| `repository_slug` |  |
+| `repository_spec` | The explicitly selected physical repository address. |
+| `required_lifetime_seconds` | Lifetime the pending clone or command must be able to complete within. |
+| `token` | Short-lived read/write repository credential. |
+| `username` |  |
+
+Operations: create.
+
+API path: `/api/v1/agent/roder/workspace_credentials`
+
+#### RunArtifact
+
+| Field | Description |
+| --- | --- |
+
+Operations: create, list.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts`
+
+#### RunJob
+
+| Field | Description |
+| --- | --- |
+| `active` |  |
+| `allow_failure` |  |
+| `cache_archive_observations` | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `ci_pipeline_run_id` |  |
+| `ci_runner_id` |  |
+| `created_at` |  |
+| `dependencies_csv` |  |
+| `display_id` |  |
+| `environment_csv` |  |
+| `execution_order` |  |
+| `execution_profile` |  |
+| `exit_code` |  |
+| `failed` |  |
+| `finished_at` |  |
+| `id` |  |
+| `kind` |  |
+| `log_chunks` |  |
+| `name` |  |
+| `number` |  |
+| `organization_id` |  |
+| `queued_at` |  |
+| `reconciliation_id` |  |
+| `retry_number` |  |
+| `reuse` |  |
+| `runner_label_selector` |  |
+| `slug` |  |
+| `started_at` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `steps` |  |
+| `timeout_seconds` |  |
+| `updated_at` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs`
 
 #### RunScenarioRun
 
@@ -4721,6 +9282,95 @@ Operations: list.
 
 API path: `/api/v1/organizations/{organization_id}/verify/run_updates`
 
+#### RunWorkspaceCredential
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/agent/roder/run/workspace_credentials`
+
+#### RunnerLease
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list.
+
+API path: `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim`
+
+#### RunnerPoolNodeEnrollmentToken
+
+| Field | Description |
+| --- | --- |
+| `capabilities_csv` |  |
+| `ci_runner_pool_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `creator_user_id` |  |
+| `description` |  |
+| `expires_at` |  |
+| `expires_at_label` |  |
+| `id` |  |
+| `kind` |  |
+| `last_used_at` |  |
+| `last_used_at_label` |  |
+| `name` |  |
+| `organization_id` |  |
+| `raw_token` |  |
+| `revoked_at` |  |
+| `status` |  |
+| `token_hint` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `usage_count` |  |
+| `usage_count_label` |  |
+
+Operations: create, list.
+
+API path: `/api/v1/ci/runner_pools/{runner_pool_id}/node_enrollment_tokens/{id}/revoke`
+
+#### RunnerPoolRunner
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, update.
+
+API path: `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat`
+
+#### RuntimeInstanceHealthSnapshot
+
+| Field | Description |
+| --- | --- |
+
+Operations: create, list.
+
+API path: `/api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots`
+
+#### SandboxIntegration
+
+| Field | Description |
+| --- | --- |
+| `can_manage` |  |
+| `catalog` |  |
+| `configuration` |  |
+| `connected_profiles` | Connected profiles per provider across the organization. |
+| `credentials` |  |
+| `enabled` |  |
+| `id` |  |
+| `integrations` |  |
+| `name` |  |
+| `provider` |  |
+| `version` |  |
+
+Operations: create, list, patch, update.
+
+API path: `/api/v1/organizations/{organization_id}/sandbox_integrations`
+
 #### ScenarioRevision
 
 | Field | Description |
@@ -4759,6 +9409,26 @@ Operations: create.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/run`
 
+#### SecretGrant
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}/restore`
+
+#### SecretVersion
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}/redact`
+
 #### ServiceEndpoint
 
 | Field | Description |
@@ -4768,6 +9438,200 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 Operations: create, list, load, patch, remove, update.
 
 API path: `/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints`
+
+#### Setting
+
+| Field | Description |
+| --- | --- |
+| `can_manage_pr_scenario_writing` |  |
+| `can_manage_sandbox_region` |  |
+| `dedicated_outbound_ip_addresses` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` |  |
+| `organization` |  |
+| `sandbox_regions` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/pages/settings`
+
+#### SettingMutationLease
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/mutation_lease/clear`
+
+#### Signal
+
+| Field | Description |
+| --- | --- |
+| `acked_at` |  |
+| `acked_by` | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | Dispatched-run summary (docs §6c). |
+| `app_service_id` |  |
+| `attribution` | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
+| `created_at` | ISO8601 row insert time — retention math and debugging only. |
+| `dedupe_key` |  |
+| `hosted_app_id` |  |
+| `id` | The signal's own `sig_…` public id — also the paging cursor value. |
+| `kind` | A frozen taxonomy kind (§1) or an `app.custom.*` kind. |
+| `links` | Canonical, relative API paths built from real routes (docs §6a). |
+| `occurred_at` | ISO8601 domain event time — what the UI displays and `since` filters on. |
+| `organization_id` |  |
+| `payload` | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
+| `recovery` | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | Recovery pairing (docs §6b). |
+| `severity` | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
+| `source` | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
+| `subject_id` |  |
+| `subject_type` | Polymorphic pointer: `AppDeployment`, `RuntimeInstance`, `AlertEvent`, `HostedApp`, or `SignalSubscription`. |
+| `summary` | One-line, kind-composed human sentence for the feed row (docs §6d, e.g. |
+
+Operations: create, list, load.
+
+API path: `/api/v1/organizations/{organization_id}/signals/{id}/ack`
+
+#### SignalInbound
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: update.
+
+API path: `/api/v1/signals/inbound/{provider}/{inbound_token}`
+
+#### SignalIntegration
+
+| Field | Description |
+| --- | --- |
+| `api_token` | Optional provider API token for target discovery and backfill. |
+| `api_token_stored` |  |
+| `config` |  |
+| `created_at` |  |
+| `failure_message` |  |
+| `id` | Public id (`sint_…`). |
+| `inbound_path` |  |
+| `inbound_url` | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` |  |
+| `last_verified_at` |  |
+| `mode` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` |  |
+| `organization_id` |  |
+| `provider` |  |
+| `rejected_signature_count` | Deliveries rejected for a bad or missing signature. |
+| `status` |  |
+| `target_count` |  |
+| `unmapped_delivery_count` | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` |  |
+| `webhook_secret` | The provider's signing secret. |
+| `webhook_secret_stored` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{id}/regenerate_inbound_token`
+
+#### SignalIntegrationDelivery
+
+| Field | Description |
+| --- | --- |
+| `attempt_count` |  |
+| `created_at` |  |
+| `delivery_id` | The provider's delivery id, or a `content-…` id derived from the event kind, its timestamp header and the body checksum when it sends none. |
+| `event_kind` |  |
+| `id` | Public id (`sdel_…`). |
+| `last_error` |  |
+| `ops_signal_id` | Public id (`sig_…`) of the signal this delivery emitted. |
+| `organization_id` |  |
+| `processed_at` |  |
+| `provider` |  |
+| `received_at` |  |
+| `signal_integration_id` |  |
+| `state` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/deliveries`
+
+#### SignalIntegrationTarget
+
+| Field | Description |
+| --- | --- |
+| `app_service_id` |  |
+| `created_at` |  |
+| `display_name` |  |
+| `enabled` |  |
+| `external_id` |  |
+| `external_kind` |  |
+| `external_slug` |  |
+| `hosted_app_id` |  |
+| `id` | Public id (`stgt_…`). |
+| `organization_id` |  |
+| `signal_integration_id` |  |
+| `signal_integration_targets` |  |
+| `targets` |  |
+| `updated_at` |  |
+
+Operations: list, update.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/targets`
+
+#### SignalSubscription
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/organizations/{organization_id}/signal_subscriptions`
+
+#### Site
+
+| Field | Description |
+| --- | --- |
+| `activated_at` |  |
+| `activated_at_label` |  |
+| `commit_sha` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `creator_user_id` |  |
+| `deploy_slug` |  |
+| `failure_message` |  |
+| `file_count` |  |
+| `file_count_label` |  |
+| `finished_at` |  |
+| `finished_at_label` |  |
+| `id` |  |
+| `is_active` |  |
+| `source_ref` |  |
+| `started_at` |  |
+| `started_at_label` |  |
+| `static_site_id` |  |
+| `status` |  |
+| `total_bytes` |  |
+| `total_bytes_label` |  |
+| `trigger_kind` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `uploaded_at` |  |
+| `uploaded_at_label` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/pages/sites`
+
+#### SiteAccessKey
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, remove.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys`
 
 #### SitePreview
 
@@ -4780,6 +9644,18 @@ API path: `/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints`
 Operations: load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/site_preview`
+
+#### SiteSecret
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `native_agent_id` |  |
+| `value` |  |
+
+Operations: remove, update.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/secrets/{secret_name}`
 
 #### SlackChannel
 
@@ -4795,6 +9671,235 @@ API path: `/api/v1/organizations/{organization_id}/verify/site_preview`
 Operations: list.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/slack/channels`
+
+#### SourceConnection
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create.
+
+API path: `/api/v1/source_connections/{id}/refresh`
+
+#### SpaceAlertRule
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/observability/spaces/{space_id}/alert_rules/{id}/activate`
+
+#### SpaceAuditEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: create, list.
+
+API path: `/api/v1/observability/spaces/{space_id}/audit_events`
+
+#### SpaceDnsRecord
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/networking/spaces/{space_id}/dns_records`
+
+#### SpaceEnrollmentToken
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}/revoke`
+
+#### SpaceGateway
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/networking/spaces/{space_id}/gateways/{id}/heartbeat`
+
+#### SpaceGroup
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, patch, remove, update.
+
+API path: `/api/v1/networking/spaces/{space_id}/groups`
+
+#### SpaceGroupMembership
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, patch, remove, update.
+
+API path: `/api/v1/networking/spaces/{space_id}/group_memberships`
+
+#### SpaceLogStream
+
+| Field | Description |
+| --- | --- |
+
+Operations: create, list.
+
+API path: `/api/v1/observability/spaces/{space_id}/log_streams`
+
+#### SpaceMetricSery
+
+| Field | Description |
+| --- | --- |
+
+Operations: create, list.
+
+API path: `/api/v1/observability/spaces/{space_id}/metric_series`
+
+#### SpaceOtelCollector
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/observability/spaces/{space_id}/otel_collectors/{id}/activate`
+
+#### SpacePeer
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/networking/spaces/{space_id}/peers/{id}/approve`
+
+#### SpacePeerAttachment
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, patch, remove, update.
+
+API path: `/api/v1/networking/spaces/{space_id}/peer_attachments`
+
+#### SpacePolicy
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/networking/spaces/{space_id}/policies/{id}/activate`
+
+#### SpaceSegment
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create, list, load, patch, remove, update.
+
+API path: `/api/v1/networking/spaces/{space_id}/segments`
+
+#### SpaceTraceSpan
+
+| Field | Description |
+| --- | --- |
+
+Operations: create, list.
+
+API path: `/api/v1/observability/spaces/{space_id}/trace_spans`
+
+#### Spark
+
+| Field | Description |
+| --- | --- |
+| `activated_products` | Products this organization has activated (PRD 144). |
+| `agents_only` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `can_manage` |  |
+| `compute_credit_cents` | Included compute the workspace started Sparks with, when it is on compute billing. |
+| `created_at` |  |
+| `created_at_label` |  |
+| `credit_cents` | Inference credit the workspace started Sparks with. |
+| `first_spark` | Null until the first Spark exists or when the viewer cannot read it. |
+| `github_connected` |  |
+| `github_prs_authored_by_change_author` |  |
+| `id` |  |
+| `jsonrpc` |  |
+| `logo_url` |  |
+| `member_count` |  |
+| `method` |  |
+| `name` |  |
+| `params` |  |
+| `pending_invitation_count` |  |
+| `personal` |  |
+| `repository_count` |  |
+| `role` |  |
+| `sandbox_region` |  |
+| `shared_agent_personal_accounts_enabled` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` |  |
+| `source_control_providers` | Connected source control providers for this organization. |
+| `source_ui_enabled` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `started` | Whether the workspace has started Sparks. |
+| `timezone` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `verify_pr_scenario_writing_enabled` |  |
+
+Operations: create, list.
+
+API path: `/api/v1/organizations/{organization_id}/sparks`
+
+#### SparkAgentIntegration
+
+| Field | Description |
+| --- | --- |
+| `account_counts` | Accounts the viewer can see per toolkit, across all account pages. |
+| `accounts_path` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
+| `added_toolkits` | Apps with a connected or connecting account the viewer can see. |
+| `can_manage` |  |
+| `can_manage_organization` |  |
+| `catalog` |  |
+| `connect_as` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
+| `connect_as_by_toolkit` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_counts` | Signed-in accounts per toolkit, across all account pages. |
+| `connection_id` |  |
+| `connections` |  |
+| `email` | A native agent's own email address. |
+| `enabled` |  |
+| `enabled_toolkits` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `generation` |  |
+| `pagination` |  |
+| `pending_counts` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
+| `personal_creation_key_supported` | The personal account creation endpoint honors a creation key. |
+| `private_agent` | Only the agent's owner can chat with it. |
+| `shared_agent_personal_accounts_enabled` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
+| `slack` |  |
+| `webhook_connections` |  |
+| `webhooks_available` |  |
+
+Operations: create, list.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations`
 
 #### SparkAgentLocalThread
 
@@ -4837,6 +9942,134 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/slack/chann
 Operations: create, load, update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads`
+
+#### SparkAgentSite
+
+| Field | Description |
+| --- | --- |
+| `deployed_at` |  |
+| `deployments_count` |  |
+| `hostname` |  |
+| `https` | Whether the organization's certificate serves this site over HTTPS |
+| `id` |  |
+| `name` |  |
+| `url` |  |
+| `visibility` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/sites`
+
+#### SparkAgentSkill
+
+| Field | Description |
+| --- | --- |
+| `available` |  |
+| `can_configure` |  |
+| `can_manage` |  |
+| `configuration_state` | The requested managed skill selection is awaiting runtime qualification. |
+| `description` |  |
+| `enabled` |  |
+| `name` |  |
+| `skills` |  |
+| `version` |  |
+
+Operations: create, list.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/skills`
+
+#### SparkAgentThread
+
+| Field | Description |
+| --- | --- |
+| `archived_count` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
+| `can_create` |  |
+| `execution` |  |
+| `first_input` |  |
+| `first_input_key` | Idempotency-Key that finds the first message through input_delivery. |
+| `first_input_requester_membership_id` | Membership the first message was sent as, for input_delivery. |
+| `id` |  |
+| `inherit_context` | Include the source conversation through its last completed reply. |
+| `local_activities` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
+| `local_archived_count` | Local Claude Code and Codex threads archived on their computers. |
+| `local_next_cursor` |  |
+| `local_scope_key` |  |
+| `local_status_pending` | A computer is reporting newer local thread statuses; read the page again shortly. |
+| `local_threads` |  |
+| `main_thread_id` |  |
+| `message` | The thread's first message. |
+| `next_cursor` |  |
+| `parent_conversation_id` | Optional source conversation belonging to this agent. |
+| `requester_membership_id` |  |
+| `selected_thread` |  |
+| `thread` |  |
+| `threads` |  |
+| `title` |  |
+| `total_archived_count` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+Operations: create, list.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive`
+
+#### SparkCredit
+
+| Field | Description |
+| --- | --- |
+| `amount_cents` | Purchase amount in USD cents. |
+| `autofill` |  |
+| `autofill_payment_unconfirmed` |  |
+| `available_usd` |  |
+| `billing_unit` | Compute minute quote version returned by the billing summary. |
+| `can_manage` |  |
+| `compute_minutes` |  |
+| `compute_usd` |  |
+| `credits_per_usd` |  |
+| `inference_usd` |  |
+| `kind` |  |
+| `payment_method` |  |
+| `payments_enabled` |  |
+| `plan` |  |
+| `plans` |  |
+| `quoted_credits_cents` | Grant shown for a top-up or subscription, in usage cents. |
+| `quoted_price_cents` | Monthly cash price shown for a subscription, in USD cents. |
+| `refill_limits_cents` |  |
+| `refill_options` |  |
+| `refill_thresholds_cents` |  |
+| `request_key` |  |
+| `settings` |  |
+| `starter_cents` |  |
+| `top_up_max_cents` | Maximum manual top-up, in USD cents. |
+| `top_up_step_cents` | Minimum manual top-up and increment, in USD cents. |
+
+Operations: create, list, load, patch, update.
+
+API path: `/api/v1/organizations/{org_slug}/spark_credits`
+
+#### SparkCreditAgentUsage
+
+| Field | Description |
+| --- | --- |
+| `agents` |  |
+| `all` |  |
+| `days` |  |
+| `id` |  |
+| `owners` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/spark_credits/agent_usage/{agent_id}`
+
+#### SparkCreditUsageTotal
+
+| Field | Description |
+| --- | --- |
+| `compute_minutes_used` |  |
+| `compute_usd` |  |
+| `inference_usd` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/spark_credits/usage_totals`
 
 #### StaticSite
 
@@ -4933,6 +10166,78 @@ Operations: create, list, load, patch, remove, update.
 
 API path: `/api/v1/static_sites/{static_site_id}/domains/{id}/provision`
 
+#### StatusChange
+
+| Field | Description |
+| --- | --- |
+| `change_id` |  |
+| `id` |  |
+| `patchsets` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/changes/{id}`
+
+#### StatusCommit
+
+| Field | Description |
+| --- | --- |
+| `checks` |  |
+| `commit_sha` |  |
+| `counts` |  |
+| `id` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `total` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/commits/{commit_sha}`
+
+#### StatusPatchset
+
+| Field | Description |
+| --- | --- |
+| `checks` |  |
+| `checks_status` |  |
+| `commit_sha` |  |
+| `counts` |  |
+| `id` |  |
+| `patchset_id` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `total` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/patchsets/{id}`
+
+#### StripeWebhook
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/stripe/webhooks`
+
+#### SubmitTelemetry
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/submit_telemetry`
+
 #### SubscriptionModel
 
 | Field | Description |
@@ -4948,6 +10253,113 @@ Operations: list.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions/models`
 
+#### SwarmEvent
+
+| Field | Description |
+| --- | --- |
+| `agent_swarm_id` |  |
+| `attempt_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `kind` |  |
+| `payload` |  |
+| `reason` |  |
+| `scheduler_generation` |  |
+| `task_id` |  |
+
+Operations: list.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/events`
+
+#### SwarmLive
+
+| Field | Description |
+| --- | --- |
+
+Operations: load.
+
+API path: `/api/v1/agent/swarms/{id}/live/replay`
+
+#### SwarmNote
+
+| Field | Description |
+| --- | --- |
+| `task_id` | A task public id; omitted |
+| `text` |  |
+
+Operations: create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/notes`
+
+#### SwarmTask
+
+| Field | Description |
+| --- | --- |
+| `acceptance_commands` |  |
+| `agent_swarm_id` |  |
+| `assigned_runner_id` |  |
+| `blocked_reason` |  |
+| `changes` |  |
+| `commit_count` |  |
+| `commit_sha_result` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `current_attempt_id` |  |
+| `deadline_at` |  |
+| `depends_on_task_ids` |  |
+| `depth` |  |
+| `diff_artifact_url` |  |
+| `display_id` |  |
+| `environment_profile` |  |
+| `error_message` |  |
+| `failure_code` |  |
+| `finished_at` |  |
+| `finished_at_label` |  |
+| `harness` |  |
+| `id` |  |
+| `input_revision` |  |
+| `iteration` |  |
+| `landing_state` |  |
+| `model` |  |
+| `model_provider` |  |
+| `number` |  |
+| `organization_id` |  |
+| `owned_paths` |  |
+| `parent_task_id` |  |
+| `position` |  |
+| `prompt` |  |
+| `queued_at` |  |
+| `queued_at_label` |  |
+| `reasoning_effort` |  |
+| `recent_activity` |  |
+| `repo_url` |  |
+| `result` |  |
+| `retry_number` |  |
+| `role` |  |
+| `run_id` |  |
+| `stack_after_task_id` |  |
+| `started_at` |  |
+| `started_at_label` |  |
+| `status` |  |
+| `title` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: list, load.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks`
+
+#### TaskLease
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_jev`
+
 #### ThreadPreview
 
 | Field | Description |
@@ -4959,6 +10371,224 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptio
 Operations: create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/previews`
+
+#### ThreadPreviewAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: create, load.
+
+API path: `/api/v1/thread_preview_access/redeem`
+
+#### ToolFeedback
+
+| Field | Description |
+| --- | --- |
+| `category` |  |
+| `created_at` |  |
+| `details` |  |
+| `feedback` |  |
+| `id` |  |
+| `metadata` | Caller-supplied session context; no secrets or transcripts |
+| `organization_id` |  |
+| `source` |  |
+| `summary` |  |
+| `user_id` |  |
+
+Operations: create, load.
+
+API path: `/api/v1/organizations/{organization_id}/tool_feedbacks`
+
+#### Transcript
+
+| Field | Description |
+| --- | --- |
+| `agent` |  |
+| `author` |  |
+| `checkpoint_pagination` |  |
+| `checkpoints` |  |
+| `id` |  |
+| `last_checkpoint_at` |  |
+| `selected_checkpoint` |  |
+| `source_url` |  |
+| `started_at` |  |
+| `status` |  |
+| `title` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/organizations/{org_slug}/transcripts/search`
+
+#### V1Message
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/inference/v1/messages`
+
+#### VcBranch
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `name` |  |
+| `target_commit_id` |  |
+
+Operations: create, list, remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/branches`
+
+#### VcBrowser
+
+| Field | Description |
+| --- | --- |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/browser/file`
+
+#### VcChange
+
+| Field | Description |
+| --- | --- |
+| `activity` |  |
+| `canonical_path` |  |
+| `change` |  |
+| `checks` |  |
+| `checks_status` |  |
+| `description` |  |
+| `group` |  |
+| `id` |  |
+| `jj_change_id` |  |
+| `labels` |  |
+| `landing` | Server-computed submitted-together closure and landing preflight. |
+| `number` |  |
+| `patchset_number` |  |
+| `previews` |  |
+| `primary_status` |  |
+| `public_id` |  |
+| `related_changes` |  |
+| `relation_chain` |  |
+| `restack_state` |  |
+| `review_summary` |  |
+| `stack` |  |
+| `status` |  |
+| `sync` |  |
+| `target` |  |
+| `target_advanced` |  |
+| `target_branch` |  |
+| `title` |  |
+| `url` |  |
+
+Operations: create, list, load, update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/abandon`
+
+#### VcChangeGroup
+
+| Field | Description |
+| --- | --- |
+| `changes` |  |
+| `id` |  |
+| `name` |  |
+| `number` |  |
+| `status` |  |
+| `title` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups`
+
+#### VcFile
+
+| Field | Description |
+| --- | --- |
+| `paths` |  |
+| `truncated` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/files`
+
+#### VcMergeQueue
+
+| Field | Description |
+| --- | --- |
+| `analytics` | Queue performance for the reporting window. |
+| `id` |  |
+| `policy` |  |
+| `queue` |  |
+| `target_branches` | Bookmark names for the target picker. |
+
+Operations: create, list, load, update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/pause`
+
+#### VcStack
+
+| Field | Description |
+| --- | --- |
+| `alias_ref_name` |  |
+| `changes` |  |
+| `code` |  |
+| `id` |  |
+| `landing` | Compact landing state for the Stack CLI. |
+| `member_count` |  |
+| `name` |  |
+| `ref_name` |  |
+| `status` |  |
+| `tip_change_number` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: list, load, update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/stacks`
+
+#### VcsNode
+
+| Field | Description |
+| --- | --- |
+| `account_avatar_url` |  |
+| `account_id` |  |
+| `account_login` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `installation_id` |  |
+| `installed_at` |  |
+| `installed_at_label` |  |
+| `manage_access_url` |  |
+| `organization_id` |  |
+| `permission_entries` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` |  |
+| `status` |  |
+| `suspended_at` |  |
+| `suspended_at_label` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/pages/vcs_nodes`
+
+#### VcsSetting
+
+| Field | Description |
+| --- | --- |
+| `can_manage_pr_scenario_writing` |  |
+| `can_manage_sandbox_region` |  |
+| `dedicated_outbound_ip_addresses` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` |  |
+| `organization` |  |
+| `sandbox_regions` |  |
+
+Operations: list.
+
+API path: `/api/v1/organizations/{org_slug}/pages/vcs_settings`
 
 #### VerificationProjectCredential
 
@@ -5133,6 +10763,43 @@ Operations: create, load, remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/browser_sessions/{id}/save`
 
+#### VerifyEmailVerification
+
+| Field | Description |
+| --- | --- |
+
+Operations: list.
+
+API path: `/api/v1/email_verifications/verify`
+
+#### VerifySignalIntegration
+
+| Field | Description |
+| --- | --- |
+| `api_token_stored` |  |
+| `config` |  |
+| `created_at` |  |
+| `failure_message` |  |
+| `id` | Public id (`sint_…`). |
+| `inbound_path` |  |
+| `inbound_url` | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` |  |
+| `last_verified_at` |  |
+| `mode` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` |  |
+| `organization_id` |  |
+| `provider` |  |
+| `rejected_signature_count` | Deliveries rejected for a bad or missing signature. |
+| `status` |  |
+| `target_count` |  |
+| `unmapped_delivery_count` | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` |  |
+| `webhook_secret_stored` |  |
+
+Operations: create.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{id}/verify`
+
 #### VerifyStaticSiteDomain
 
 | Field | Description |
@@ -5182,6 +10849,15 @@ Operations: list.
 
 API path: `/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/logs`
 
+#### WaitlistApplication
+
+| Field | Description |
+| --- | --- |
+
+Operations: create.
+
+API path: `/api/v1/waitlist_applications`
+
 #### WebBotAuth
 
 | Field | Description |
@@ -5193,6 +10869,16 @@ API path: `/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/v
 Operations: create.
 
 API path: `/api/v1/verify/web_bot_auth`
+
+#### WebhookGitlab
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: update.
+
+API path: `/api/v1/webhooks/gitlab/{connection_key}`
 
 #### WorkflowRunStep
 
@@ -5223,9 +10909,133 @@ Operations: create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers/{trigger_id}/skipped/{delivery_id}/run`
 
+#### WorkspaceActivity
+
+| Field | Description |
+| --- | --- |
+| `live_activity` |  |
+| `recent_items` |  |
+| `unresolved_notification_count` |  |
+
+Operations: load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/workspace_activity`
+
+#### WorkspaceActivityNotification
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: update.
+
+API path: `/api/v1/organizations/{org_slug}/workspace_activity/notifications/{id}/dismissal`
+
+#### WorkspaceSpace
+
+| Field | Description |
+| --- | --- |
+| `created_at` |  |
+| `default_branch` |  |
+| `description` |  |
+| `hidden` |  |
+| `icon_name` |  |
+| `id` |  |
+| `import_status` |  |
+| `name` |  |
+| `organization_id` |  |
+| `position` |  |
+| `repository_id` |  |
+| `repository_slug` |  |
+| `slug` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: create, list, load.
+
+API path: `/api/v1/organizations/{organization_id}/workspace_spaces`
+
+#### WorkspaceSpacePreference
+
+| Field | Description |
+| --- | --- |
+| `preferences` |  |
+| `spaces` |  |
+
+Operations: update.
+
+API path: `/api/v1/organizations/{organization_id}/workspace_spaces/preferences`
+
 
 
 ## Entities
+
+
+### A2aWellKnown
+
+Create an instance: `const a2a_well_known = client.A2aWellKnown()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AdminOrg
+
+Create an instance: `const admin_org = client.AdminOrg()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `billing_email` | `string | null` |  |
+| `billing_reason` | `string` | Required when setting an agreed price |
+| `customize_onboarding_packages` | `boolean` |  |
+| `deployment_usage_visibility` | `string` |  |
+| `deployment_usage_visible` | `boolean` |  |
+| `id` | `string` |  |
+| `monthly_price_dollars` | `string | number` | Ongoing USD workspace price, for example '50.00' |
+| `monthly_price_override_cents` | `number | null` |  |
+| `name` | `string` |  |
+| `onboarding_custom_pricing` | `boolean` |  |
+| `onboarding_package_keys` | `any[] | null` | Package keys offered when customizing onboarding. |
+| `owner_email` | `string` |  |
+| `package_id` | `string | null` | Active customer package public ID. |
+| `skip_payment` | `boolean` | Grant the selected package as an ongoing complimentary subscription with monthly included usage and package limits. |
+| `slug` | `string` |  |
+
+#### Example: Load
+
+```ts
+const admin_org = await client.AdminOrg().load({ id: 'admin_org_id' })
+```
+
+#### Example: List
+
+```ts
+const admin_orgs = await client.AdminOrg().list()
+```
+
+#### Example: Create
+
+```ts
+const admin_org = await client.AdminOrg().create({
+  name: 'example_name',
+  owner_email: 'example_owner_email',
+  slug: 'example_slug',
+})
+```
 
 
 ### Agent
@@ -5309,6 +11119,73 @@ const agent = await client.Agent().create({
   name: 'example_name',
 })
 ```
+
+
+### AgentApp
+
+Create an instance: `const agent_app = client.AgentApp()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `author` | `Record<string, any>` |  |
+| `can_message` | `boolean` | The viewer may send input to the author agent |
+| `deployments_count` | `number` | Increases with every deploy of the site |
+| `description` | `string` |  |
+| `hidden_install_count` | `number` | Installs by agents the viewer cannot open |
+| `id` | `string` |  |
+| `install_count` | `number` |  |
+| `install_targets` | `any[]` | Active agents the viewer owns or manages, which they can install apps on |
+| `installed_by` | `any[]` |  |
+| `installed_target_ids` | `any[]` | Install targets of the viewer that have this app installed |
+| `items` | `any[]` |  |
+| `mcp_url` | `string | null` |  |
+| `next_cursor` | `string | null` | Pass as cursor to load older apps |
+| `owner` | `Record<string, any>` | The person who controls the author agent |
+| `thread` | `any` | The thread that published the app, when the viewer can open the author agent |
+| `title` | `string` |  |
+| `url` | `string` |  |
+| `visibility` | `string` |  |
+
+#### Example: Load
+
+```ts
+const agent_app = await client.AgentApp().load({ id: 'agent_app_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const agent_apps = await client.AgentApp().list({ organization_id: "example" })
+```
+
+
+### AgentAppInstall
+
+Create an instance: `const agent_app_install = client.AgentAppInstall()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `installed` | `boolean` |  |
 
 
 ### AgentAttachment
@@ -5450,6 +11327,7 @@ Create an instance: `const agent_connection = client.AgentConnection()`
 | `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
 
@@ -5457,49 +11335,285 @@ Create an instance: `const agent_connection = client.AgentConnection()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `agent_card_url` | `string` |  |
-| `auth_scheme` | `string` |  |
-| `can_configure` | `boolean` |  |
-| `can_disconnect` | `boolean` |  |
-| `can_setup` | `boolean` |  |
+| `actions` | `any[]` |  |
+| `activity` | `any[]` |  |
+| `admin_disabled_at` | `string | null` |  |
+| `agent_tools` | `boolean` |  |
+| `authentication` | `string` |  |
+| `authorized_at` | `string | null` |  |
+| `can_create_account` | `boolean` | Whether another account can be created directly from this provider. |
+| `capabilities` | `Record<string, any>` |  |
+| `catalog_section` | `string` | Server-owned grouping in the agent integration catalog. |
+| `category` | `string` | Short product label, such as CRM or Email. |
+| `certification` | `string` |  |
+| `checked_at` | `string | null` |  |
 | `connection` | `Record<string, any>` |  |
-| `credential` | `string | null` | Write-only outbound key. |
-| `error_code` | `string | null` |  |
-| `expected_generation` | `number` |  |
+| `consent` | `Record<string, any> | null` |  |
+| `created_at` | `string` |  |
+| `creation_key` | `string` | Reuse the same key to recover the account after an interrupted response. |
+| `custodian_id` | `string | null` |  |
+| `description` | `string` | One-line catalog description of the app. |
+| `disabled_reason` | `string | null` |  |
+| `failure_code` | `string | null` |  |
 | `generation` | `number` |  |
+| `grants` | `any[]` |  |
+| `grants_pagination` | `Record<string, any>` |  |
 | `id` | `string` |  |
+| `limits` | `Record<string, any>` |  |
 | `name` | `string` |  |
-| `remote_agent` | `string | null` |  |
-| `requester_id` | `string` |  |
-| `retired_at` | `string | null` |  |
+| `organization_id` | `string` |  |
+| `owner_name` | `string` |  |
+| `ownership_kind` | `string` |  |
+| `pagination` | `Record<string, any>` |  |
+| `policy_digest` | `string` |  |
+| `provider` | `Record<string, any>` |  |
+| `provider_disabled_reason` | `string | null` |  |
+| `provider_identity` | `Record<string, any>` |  |
 | `revoked_at` | `string | null` |  |
-| `scope_key` | `string` |  |
-| `source_operation_id` | `string | null` |  |
-| `state` | `string` |  |
+| `schema_version` | `number` |  |
+| `status` | `string` |  |
+| `toolkit` | `string` |  |
+| `triggers` | `any[]` |  |
+| `updated_at` | `string` |  |
+| `user_id` | `string` |  |
+| `version` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const agent_connection = await client.AgentConnection().load({ id: 'agent_connection_id', agent_id: 'agent_id', organization_id: 'organization_id' })
+const agent_connection = await client.AgentConnection().load({ id: 'agent_connection_id', organization_id: 'organization_id' })
 ```
 
 #### Example: List
 
 ```ts
-const agent_connections = await client.AgentConnection().list({ agent_id: "example", organization_id: "example" })
+const agent_connections = await client.AgentConnection().list({ organization_id: "example" })
 ```
 
 #### Example: Create
 
 ```ts
 const agent_connection = await client.AgentConnection().create({
-  agent_id: 'example_agent_id',
   organization_id: 'example_organization_id',
-  agent_card_url: 'example_agent_card_url',
-  auth_scheme: 'example_auth_scheme',
   name: 'example_name',
+  toolkit: 'example_toolkit',
 })
 ```
+
+
+### AgentConnectionDelegation
+
+Create an instance: `const agent_connection_delegation = client.AgentConnectionDelegation()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `authorized_by_id` | `string` |  |
+| `automation_connection_grant_id` | `string` |  |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `member_name` | `string` |  |
+| `revoked_at` | `string | null` |  |
+| `roles` | `any[]` |  |
+| `usable` | `boolean` |  |
+| `user_id` | `string` |  |
+
+#### Example: List
+
+```ts
+const agent_connection_delegations = await client.AgentConnectionDelegation().list({ agent_connection_id: "example", organization_id: "example" })
+```
+
+
+### AgentConnectionGrant
+
+Create an instance: `const agent_connection_grant = client.AgentConnectionGrant()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `actions` | `any[]` |  |
+| `agent_connection_id` | `string` |  |
+| `automation_id` | `string` |  |
+| `connection_generation` | `number` |  |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `organization_id` | `string` |  |
+| `revision` | `number` |  |
+| `revoked_at` | `string | null` |  |
+| `status` | `string` |  |
+| `usable` | `boolean` |  |
+| `user_id` | `string` |  |
+
+#### Example: List
+
+```ts
+const agent_connection_grants = await client.AgentConnectionGrant().list({ agent_connection_id: "example", organization_id: "example" })
+```
+
+
+### AgentConnectionResource
+
+Create an instance: `const agent_connection_resource = client.AgentConnectionResource()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cursor` | `string | null` |  |
+| `next_cursor` | `string | null` |  |
+| `query` | `string` |  |
+| `resources` | `any[]` |  |
+
+#### Example: Create
+
+```ts
+const agent_connection_resource = await client.AgentConnectionResource().create({
+  agent_connection_id: 'example_agent_connection_id',
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### AgentConnectionSafetyControl
+
+Create an instance: `const agent_connection_safety_control = client.AgentConnectionSafetyControl()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `admin_disabled_at` | `string | null` |  |
+| `authorized_at` | `string | null` |  |
+| `checked_at` | `string | null` |  |
+| `created_at` | `string` |  |
+| `custodian_id` | `string | null` |  |
+| `failure_code` | `string | null` |  |
+| `generation` | `number` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `owner_name` | `string` |  |
+| `ownership_kind` | `string` |  |
+| `provider_disabled_reason` | `string | null` |  |
+| `provider_identity` | `Record<string, any>` |  |
+| `revoked_at` | `string | null` |  |
+| `status` | `string` |  |
+| `toolkit` | `string` |  |
+| `updated_at` | `string` |  |
+| `user_id` | `string` |  |
+
+#### Example: List
+
+```ts
+const agent_connection_safety_controls = await client.AgentConnectionSafetyControl().list({ organization_id: "example" })
+```
+
+
+### AgentConnectionTriggerSubscription
+
+Create an instance: `const agent_connection_trigger_subscription = client.AgentConnectionTriggerSubscription()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_connection_id` | `string` |  |
+| `configuration` | `Record<string, any>` |  |
+| `created_at` | `string` |  |
+| `defaults` | `Record<string, any>` |  |
+| `delivery` | `string` |  |
+| `enabled` | `boolean` |  |
+| `failure_code` | `string | null` |  |
+| `failure_request_id` | `string | null` |  |
+| `id` | `string` |  |
+| `latency` | `string` |  |
+| `name` | `string` |  |
+| `reconcile_at` | `string` |  |
+| `reconciliation_uncertain` | `boolean` |  |
+| `remote_enabled` | `boolean | null` |  |
+| `replacement_id` | `string | null` |  |
+| `retired_at` | `string | null` |  |
+| `retirement_completed_at` | `string | null` |  |
+| `schema` | `Record<string, any>` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `toolkit` | `string` |  |
+| `toolkit_version` | `string` |  |
+| `trigger_slug` | `string` |  |
+| `updated_at` | `string` |  |
+| `version` | `string` |  |
+| `waiting_for_retirement` | `boolean` |  |
+
+#### Example: List
+
+```ts
+const agent_connection_trigger_subscriptions = await client.AgentConnectionTriggerSubscription().list({ agent_connection_id: "example", organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const agent_connection_trigger_subscription = await client.AgentConnectionTriggerSubscription().create({
+  agent_connection_id: 'example_agent_connection_id',
+  organization_id: 'example_organization_id',
+  configuration: {},
+  trigger_slug: 'example_trigger_slug',
+})
+```
+
+
+### AgentContextCheckpoint
+
+Create an instance: `const agent_context_checkpoint = client.AgentContextCheckpoint()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### AgentControlFlow
@@ -5592,6 +11706,23 @@ const agent_email = await client.AgentEmail().load({ id: 'agent_email_id', agent
 ```
 
 
+### AgentEvent
+
+Create an instance: `const agent_event = client.AgentEvent()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ts
+const agent_events = await client.AgentEvent().list({ agent_id: "example", organization_id: "example" })
+```
+
+
 ### AgentFile
 
 Create an instance: `const agent_file = client.AgentFile()`
@@ -5667,51 +11798,124 @@ Create an instance: `const agent_integration = client.AgentIntegration()`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
 | `account_counts` | `Record<string, any>` | Accounts the viewer can see per toolkit, across all account pages. |
-| `accounts_path` | `string` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
-| `added_toolkits` | `any[]` | Apps with a connected or connecting account the viewer can see. |
+| `can_cancel_sign_in` | `boolean` | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `boolean` |  |
+| `can_disconnect` | `boolean` |  |
+| `can_enable` | `boolean` |  |
 | `can_manage` | `boolean` |  |
-| `can_manage_organization` | `boolean` |  |
+| `can_manage_sharing` | `boolean` |  |
+| `can_reconnect` | `boolean` |  |
+| `can_sync` | `boolean` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
 | `catalog` | `any[]` |  |
-| `connect_as` | `string | null` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
-| `connect_as_by_toolkit` | `Record<string, any>` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_by` | `string | null` | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `boolean` | True when the viewer is the person whose sign-in this account is. |
 | `connected_counts` | `Record<string, any>` | Signed-in accounts per toolkit, across all account pages. |
-| `connection_id` | `string` |  |
 | `connections` | `any[]` |  |
-| `email` | `Record<string, any>` | A native agent's own email address. |
-| `enabled` | `boolean` |  |
-| `enabled_toolkits` | `any[]` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `creation_key` | `string` | Stable identity for retrying this creation; retain it after an uncertain response. |
+| `creation_key_digest` | `string | null` | SHA-256 of the unfinished setup key for its original creator. |
 | `generation` | `number` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
 | `pagination` | `Record<string, any>` |  |
 | `pending_counts` | `Record<string, any>` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
-| `personal_creation_key_supported` | `boolean` | The personal account creation endpoint honors a creation key. |
-| `private_agent` | `boolean` | Only the agent's owner can chat with it. |
-| `shared_agent_personal_accounts_enabled` | `boolean` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
-| `slack` | `Record<string, any>` |  |
-| `webhook_connections` | `any[]` |  |
-| `webhooks_available` | `boolean` |  |
+| `provider_disabled_reason` | `string | null` |  |
+| `provider_identity` | `Record<string, any>` |  |
+| `provider_name` | `string | null` | The app's display name; null for a custom MCP server, which uses the account name. |
+| `reference` | `string` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `string` | Agent account audience, including legacy personal and paused access. |
+| `status` | `string` |  |
+| `team_sharing_enabled` | `boolean` |  |
+| `team_sharing_version` | `number` |  |
+| `toolkit` | `string` |  |
+
+#### Example: Load
+
+```ts
+const agent_integration = await client.AgentIntegration().load({ id: 'agent_integration_id', organization_id: 'organization_id' })
+```
 
 #### Example: List
 
 ```ts
-const agent_integrations = await client.AgentIntegration().list({ agent_id: "example", organization_id: "example" })
+const agent_integrations = await client.AgentIntegration().list({ organization_id: "example" })
 ```
 
 #### Example: Create
 
 ```ts
 const agent_integration = await client.AgentIntegration().create({
-  agent_id: 'example_agent_id',
   organization_id: 'example_organization_id',
-  connection_id: 'example_connection_id',
-  enabled: true,
-  generation: 1,
+  name: 'example_name',
+  toolkit: 'example_toolkit',
 })
+```
+
+
+### AgentIntegrationAccount
+
+Create an instance: `const agent_integration_account = client.AgentIntegrationAccount()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_cancel_sign_in` | `boolean` | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `boolean` |  |
+| `can_disconnect` | `boolean` |  |
+| `can_enable` | `boolean` |  |
+| `can_manage_sharing` | `boolean` |  |
+| `can_reconnect` | `boolean` |  |
+| `can_sync` | `boolean` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
+| `connected_by` | `string | null` | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `boolean` | True when the viewer is the person whose sign-in this account is. |
+| `creation_key_digest` | `string | null` | SHA-256 of the unfinished setup key for its original creator. |
+| `generation` | `number` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `provider_disabled_reason` | `string | null` |  |
+| `provider_identity` | `Record<string, any>` |  |
+| `reference` | `string` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `string` | Agent account audience, including legacy personal and paused access. |
+| `status` | `string` |  |
+| `team_sharing_enabled` | `boolean` |  |
+| `team_sharing_version` | `number` |  |
+| `toolkit` | `string` |  |
+
+#### Example: List
+
+```ts
+const agent_integration_accounts = await client.AgentIntegrationAccount().list({ organization_id: "example" })
+```
+
+
+### AgentIntegrationCallback
+
+Create an instance: `const agent_integration_callback = client.AgentIntegrationCallback()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Example: Load
+
+```ts
+const agent_integration_callback = await client.AgentIntegrationCallback().load({ connection_id: 'connection_id', state: 'state' })
 ```
 
 
@@ -6094,6 +12298,95 @@ Create an instance: `const agent_question = client.AgentQuestion()`
 | `id` | `string` |  |
 
 
+### AgentRelayFileGrant
+
+Create an instance: `const agent_relay_file_grant = client.AgentRelayFileGrant()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access_mode` | `string` |  |
+| `connection_generation` | `number` |  |
+| `connection_id` | `string` |  |
+| `connection_name` | `string` | Current display name of the selected account. |
+| `created_at` | `string` |  |
+| `expected_generation` | `number` |  |
+| `id` | `string` |  |
+| `key` | `string` |  |
+| `provider` | `string` |  |
+| `resource_id` | `string` |  |
+| `resource_kind` | `string` |  |
+| `revoked` | `boolean` |  |
+| `revoked_at` | `string | null` |  |
+| `snapshot_supported` | `boolean` | Whether this selected permission supports snapshot controls. |
+| `source_operation_id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const agent_relay_file_grant = await client.AgentRelayFileGrant().load({ id: 'agent_relay_file_grant_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const agent_relay_file_grants = await client.AgentRelayFileGrant().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const agent_relay_file_grant = await client.AgentRelayFileGrant().create({
+  organization_id: 'example_organization_id',
+  access_mode: 'example_access_mode',
+  connection_id: 'example_connection_id',
+  expected_generation: 1,
+  key: 'example_key',
+  resource_id: 'example_resource_id',
+  resource_kind: 'example_resource_kind',
+  source_operation_id: 'example_source_operation_id',
+})
+```
+
+
+### AgentRelayFileGrantAccount
+
+Create an instance: `const agent_relay_file_grant_account = client.AgentRelayFileGrantAccount()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access_modes` | `any[]` | Supported file access modes. |
+| `generation` | `number` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `provider` | `string` |  |
+| `resource_kind` | `string` |  |
+
+#### Example: List
+
+```ts
+const agent_relay_file_grant_accounts = await client.AgentRelayFileGrantAccount().list({ organization_id: "example", source_operation_id: "example" })
+```
+
+
 ### AgentRepository
 
 Create an instance: `const agent_repository = client.AgentRepository()`
@@ -6148,6 +12441,18 @@ Create an instance: `const agent_resource = client.AgentResource()`
 ```ts
 const agent_resources = await client.AgentResource().list({ agent_id: "example", organization_id: "example" })
 ```
+
+
+### AgentRoder
+
+Create an instance: `const agent_roder = client.AgentRoder()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
 
 
 ### AgentRoutine
@@ -6243,6 +12548,92 @@ Create an instance: `const agent_runtime = client.AgentRuntime()`
 | `volume` | `Record<string, any> | null` |  |
 
 
+### AgentSession
+
+Create an instance: `const agent_session = client.AgentSession()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### AgentSessionCheckpoint
+
+Create an instance: `const agent_session_checkpoint = client.AgentSessionCheckpoint()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const agent_session_checkpoint = await client.AgentSessionCheckpoint().load({ id: 'agent_session_checkpoint_id', agent_session_id: 'agent_session_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### Example: List
+
+```ts
+const agent_session_checkpoints = await client.AgentSessionCheckpoint().list({ agent_session_id: "example", organization_id: "example", repo_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const agent_session_checkpoint = await client.AgentSessionCheckpoint().create({
+  agent_session_id: 'example_agent_session_id',
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+
+### AgentSessionRoderHandoff
+
+Create an instance: `const agent_session_roder_handoff = client.AgentSessionRoderHandoff()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `checkpoint_id` | `string` | Public id of the checkpoint to hand off. |
+| `purpose` | `string` | Handoff intent; defaults to `continue`. |
+
+#### Example: Create
+
+```ts
+const agent_session_roder_handoff = await client.AgentSessionRoderHandoff().create({
+  agent_session_id: 'example_agent_session_id',
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+
 ### AgentSetting
 
 Create an instance: `const agent_setting = client.AgentSetting()`
@@ -6289,25 +12680,37 @@ Create an instance: `const agent_site = client.AgentSite()`
 
 | Method | Description |
 | --- | --- |
+| `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `deployed_at` | `string` |  |
-| `deployments_count` | `number` |  |
-| `hostname` | `string` |  |
-| `https` | `string` | Whether the organization's certificate serves this site over HTTPS |
+| `author` | `Record<string, any>` |  |
+| `can_message` | `boolean` | The viewer may send input to the author agent |
+| `deployments_count` | `number` | Increases with every deploy of the site |
+| `description` | `string | null` | The team app description, when the site is a team app |
+| `icon_url` | `string | null` | Path of the site's generated icon, versioned by the picture; null until one is generated |
 | `id` | `string` |  |
-| `name` | `string` |  |
+| `name` | `string` | The site's DNS label |
+| `owner` | `Record<string, any>` | The person who controls the author agent |
+| `thread` | `any` | The thread that published the site as a team app, when the viewer can open the author agent |
+| `title` | `string` | The team app title, or the site name read as words |
 | `url` | `string` |  |
 | `visibility` | `string` |  |
+
+#### Example: Load
+
+```ts
+const agent_site = await client.AgentSite().load({ id: 'agent_site_id', organization_id: 'organization_id' })
+```
 
 #### Example: List
 
 ```ts
-const agent_sites = await client.AgentSite().list({ agent_id: "example", organization_id: "example" })
+const agent_sites = await client.AgentSite().list({ organization_id: "example" })
 ```
 
 
@@ -6321,36 +12724,48 @@ Create an instance: `const agent_skill = client.AgentSkill()`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `available` | `boolean` |  |
-| `can_configure` | `boolean` |  |
-| `can_manage` | `boolean` |  |
-| `configuration_state` | `string` | The requested managed skill selection is awaiting runtime qualification. |
-| `description` | `string` |  |
-| `enabled` | `boolean` |  |
-| `name` | `string` |  |
+| `agents` | `any[]` | Active V2 agents the viewer can see whose owner is still a member |
+| `audience` | `Record<string, any>` |  |
+| `can_manage_library` | `boolean` |  |
+| `content` | `string` | The skill's SKILL.md |
+| `files` | `any[]` |  |
+| `id` | `string` |  |
+| `marketplace` | `string` |  |
+| `pending` | `boolean` | Some agent is still applying a change; check again shortly |
+| `plugin` | `string` | The marketplace entry id |
+| `revision` | `string` | The commit SHA returned by preview |
+| `skill` | `Record<string, any>` |  |
 | `skills` | `any[]` |  |
-| `version` | `string` |  |
+| `source` | `string` | owner/repo, a GitHub or skills.sh link, or npx skills add owner/repo [--skill NAME ...] |
+
+#### Example: Load
+
+```ts
+const agent_skill = await client.AgentSkill().load({ id: 'agent_skill_id', organization_id: 'organization_id' })
+```
 
 #### Example: List
 
 ```ts
-const agent_skills = await client.AgentSkill().list({ agent_id: "example", organization_id: "example" })
+const agent_skills = await client.AgentSkill().list({ organization_id: "example" })
 ```
 
 #### Example: Create
 
 ```ts
 const agent_skill = await client.AgentSkill().create({
-  agent_id: 'example_agent_id',
   organization_id: 'example_organization_id',
-  enabled: true,
-  name: 'example_name',
-  version: 'example_version',
+  audience: {},
+  revision: 'example_revision',
+  skills: [],
 })
 ```
 
@@ -6427,6 +12842,94 @@ const agent_subscription = await client.AgentSubscription().create({
 ```
 
 
+### AgentSwarm
+
+Create an instance: `const agent_swarm = client.AgentSwarm()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `base_bookmark` | `string | null` | An existing bookmark to start from and land on; the plain form of `target.kind = bookmark`. |
+| `base_ref` | `string | null` |  |
+| `base_revision` | `string | null` | 64-hex commit id; skips the head lookup |
+| `budget` | `Record<string, any>` |  |
+| `canceled_at` | `string | null` |  |
+| `canceled_count` | `number` |  |
+| `concurrency_key` | `string | null` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `creator_user_id` | `string | null` |  |
+| `deadline_at` | `string | null` |  |
+| `display_id` | `number` |  |
+| `done_count` | `number` |  |
+| `environment` | `Record<string, any>` |  |
+| `failed_count` | `number` |  |
+| `finished_at` | `string | null` |  |
+| `finished_at_label` | `string | null` |  |
+| `github` | `Record<string, any>` |  |
+| `goal` | `string | null` |  |
+| `id` | `string` |  |
+| `model` | `string | null` |  |
+| `model_provider` | `string | null` |  |
+| `number` | `number` |  |
+| `organization_id` | `string` |  |
+| `organization_slug` | `string | null` |  |
+| `outcome` | `string | null` |  |
+| `phase` | `string | null` |  |
+| `policy` | `Record<string, any>` | Every key is optional and defaults to AgentSwarm::POLICY_DEFAULTS. |
+| `queued_at` | `string | null` |  |
+| `queued_at_label` | `string | null` |  |
+| `repository` | `string` | Repository slug inside the organization |
+| `repository_id` | `string | null` |  |
+| `repository_slug` | `string | null` |  |
+| `reserved` | `Record<string, any>` |  |
+| `scheduler_generation` | `number` |  |
+| `skipped_count` | `number` |  |
+| `slug` | `string` |  |
+| `started_at` | `string | null` |  |
+| `started_at_label` | `string | null` |  |
+| `status` | `string` |  |
+| `summary` | `Record<string, any>` |  |
+| `target` | `Record<string, any>` | Where the swarm lands. |
+| `task_count` | `number` |  |
+| `task_template_json` | `string | null` |  |
+| `tasks` | `any[]` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+| `usage` | `Record<string, any>` |  |
+
+#### Example: Load
+
+```ts
+const agent_swarm = await client.AgentSwarm().load({ id: 'agent_swarm_id' })
+```
+
+#### Example: List
+
+```ts
+const agent_swarms = await client.AgentSwarm().list({ org: "example" })
+```
+
+#### Example: Create
+
+```ts
+const agent_swarm = await client.AgentSwarm().create({
+  organization_slug: 'example_organization_slug',
+  target: {},
+})
+```
+
+
 ### AgentTeammate
 
 Create an instance: `const agent_teammate = client.AgentTeammate()`
@@ -6475,48 +12978,30 @@ Create an instance: `const agent_thread = client.AgentThread()`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `archived_count` | `number | null` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` | `boolean` |  |
-| `execution` | `any` |  |
-| `first_input` | `any` |  |
-| `first_input_key` | `string` | Idempotency-Key that finds the first message through input_delivery. |
-| `first_input_requester_membership_id` | `string` | Membership the first message was sent as, for input_delivery. |
 | `id` | `string` |  |
-| `inherit_context` | `boolean` | Include the source conversation through its last completed reply. |
-| `local_activities` | `Record<string, any>` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | `number` | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` | `string | null` |  |
-| `local_scope_key` | `string | null` |  |
-| `local_status_pending` | `boolean` | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` | `any[]` |  |
-| `main_thread_id` | `string` |  |
-| `message` | `string` | The thread's first message. |
-| `next_cursor` | `string | null` |  |
-| `parent_conversation_id` | `string` | Optional source conversation belonging to this agent. |
-| `requester_membership_id` | `string` |  |
-| `selected_thread` | `any` |  |
-| `thread` | `Record<string, any>` |  |
-| `threads` | `any[]` |  |
-| `title` | `string` |  |
-| `total_archived_count` | `number | null` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+#### Example: Load
+
+```ts
+const agent_thread = await client.AgentThread().load({ id: 'agent_thread_id' })
+```
 
 #### Example: List
 
 ```ts
-const agent_threads = await client.AgentThread().list({ agent_id: "example", organization_id: "example" })
+const agent_threads = await client.AgentThread().list()
 ```
 
 #### Example: Create
 
 ```ts
 const agent_thread = await client.AgentThread().create({
-  agent_id: 'example_agent_id',
-  organization_id: 'example_organization_id',
 })
 ```
 
@@ -6543,6 +13028,36 @@ Create an instance: `const agent_tool = client.AgentTool()`
 
 ```ts
 const agent_tools = await client.AgentTool().list({ agent_id: "example", organization_id: "example" })
+```
+
+
+### AgentUsage
+
+Create an instance: `const agent_usage = client.AgentUsage()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `days` | `any[]` | One cell per (day, model), ascending by day then model. |
+| `ended_at` | `string` |  |
+| `pricing_version` | `string` | The price table in effect now; rows carry the version they were priced at. |
+| `source` | `string` | Which store served the rows. |
+| `started_at` | `string` |  |
+| `user_days` | `any[]` | One cell per (day, person), ascending by day. |
+| `users` | `any[]` | One row per (person, model), descending by tokens. |
+| `window` | `string` |  |
+
+#### Example: Load
+
+```ts
+const agent_usage = await client.AgentUsage().load({ organization_id: 'organization_id' })
 ```
 
 
@@ -6591,6 +13106,32 @@ Create an instance: `const agent_wait = client.AgentWait()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+
+### AgentWebPreview
+
+Create an instance: `const agent_web_preview = client.AgentWebPreview()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `description` | `string | null` |  |
+| `icon_url` | `string | null` |  |
+| `image_url` | `string | null` |  |
+| `title` | `string | null` |  |
+
+#### Example: List
+
+```ts
+const agent_web_previews = await client.AgentWebPreview().list({ token: "example" })
+```
 
 
 ### AgentWebhook
@@ -6927,6 +13468,94 @@ const agent_write_permissions = await client.AgentWritePermission().list({ agent
 ```
 
 
+### Agreement
+
+Create an instance: `const agreement = client.Agreement()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `body` | `string | null` | Markdown text, or null until staff grant the organization access. |
+| `effective_on_label` | `string` |  |
+| `key` | `string` |  |
+| `summary` | `string` |  |
+| `title` | `string` |  |
+| `version` | `string` |  |
+
+#### Example: List
+
+```ts
+const agreements = await client.Agreement().list({ organization_id: "example" })
+```
+
+
+### AgreementAccessRequest
+
+Create an instance: `const agreement_access_request = client.AgreementAccessRequest()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const agreement_access_request = await client.AgreementAccessRequest().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### AlertRuleEvent
+
+Create an instance: `const alert_rule_event = client.AlertRuleEvent()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const alert_rule_event = await client.AlertRuleEvent().load({ id: 'alert_rule_event_id', alert_rule_id: 'alert_rule_id', space_id: 'space_id' })
+```
+
+#### Example: List
+
+```ts
+const alert_rule_events = await client.AlertRuleEvent().list({ alert_rule_id: "example", space_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const alert_rule_event = await client.AlertRuleEvent().create({
+  alert_rule_id: 'example_alert_rule_id',
+  space_id: 'example_space_id',
+})
+```
+
+
 ### AllocationLog
 
 Create an instance: `const allocation_log = client.AllocationLog()`
@@ -7017,6 +13646,34 @@ const app = await client.App().create({
   root_path: 'example_root_path',
   slug: 'example_slug',
 })
+```
+
+
+### AppAccess
+
+Create an instance: `const app_access = client.AppAccess()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AppAccessJwk
+
+Create an instance: `const app_access_jwk = client.AppAccessJwk()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ts
+const app_access_jwks = await client.AppAccessJwk().list()
 ```
 
 
@@ -8027,6 +14684,381 @@ const app_storage_resource = await client.AppStorageResource().create({
 ```
 
 
+### Artefact
+
+Create an instance: `const artefact = client.Artefact()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `automation_invocation_id` | `string | null` |  |
+| `byte_size` | `number` |  |
+| `checksum_sha256` | `string` |  |
+| `content_type` | `string` |  |
+| `created_at` | `string | null` |  |
+| `created_by_user_id` | `string | null` |  |
+| `description` | `string | null` |  |
+| `document_key` | `string` | Stable document identity shared by all revisions. |
+| `entrypoint` | `string` |  |
+| `expires_at` | `string | null` |  |
+| `filename` | `string` |  |
+| `files` | `any[]` |  |
+| `harness` | `string | null` |  |
+| `harness_version` | `string | null` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `model` | `string | null` |  |
+| `organization_id` | `string` |  |
+| `published_at` | `string | null` |  |
+| `repository_id` | `string | null` |  |
+| `slug` | `string` |  |
+| `source` | `string` |  |
+| `status` | `string` |  |
+| `title` | `string` |  |
+| `vcs_agent_checkpoint_id` | `string | null` |  |
+| `vcs_agent_session_id` | `string | null` |  |
+| `version` | `number` |  |
+| `view_url` | `string` |  |
+| `web_url` | `string` |  |
+
+#### Example: Load
+
+```ts
+const artefact = await client.Artefact().load({ id: 'artefact_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const artefacts = await client.Artefact().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const artefact = await client.Artefact().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### ArtefactCommentThread
+
+Create an instance: `const artefact_comment_thread = client.ArtefactCommentThread()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `anchor` | `string` | The `#anchor` written into the Markdown. |
+| `body` | `string` |  |
+| `comments` | `any[]` |  |
+| `id` | `string` | The anchor key. |
+| `quote` | `string` |  |
+| `resolved` | `boolean` |  |
+
+#### Example: List
+
+```ts
+const artefact_comment_threads = await client.ArtefactCommentThread().list({ artefact_id: "example", organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const artefact_comment_thread = await client.ArtefactCommentThread().create({
+  artefact_id: 'example_artefact_id',
+  organization_id: 'example_organization_id',
+  anchor: 'example_anchor',
+  body: 'example_body',
+})
+```
+
+
+### ArtefactRevision
+
+Create an instance: `const artefact_revision = client.ArtefactRevision()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `base_version` | `number` | The newest version the editor started from. |
+| `content` | `string` | Markdown, including CriticMarkup suggestions and comment anchors. |
+
+#### Example: Create
+
+```ts
+const artefact_revision = await client.ArtefactRevision().create({
+  artefact_id: 'example_artefact_id',
+  organization_id: 'example_organization_id',
+  base_version: 1,
+  content: 'example_content',
+})
+```
+
+
+### ArtefactViewToken
+
+Create an instance: `const artefact_view_token = client.ArtefactViewToken()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `expires_in` | `number` |  |
+| `file` | `string` | Exact manifest path. |
+| `organization_slug` | `string` | If provided, must match the organization addressed by the route. |
+| `version` | `number` |  |
+| `viewer_url` | `string` |  |
+
+#### Example: Create
+
+```ts
+const artefact_view_token = await client.ArtefactViewToken().create({
+  artefact_id: 'example_artefact_id',
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### Artifact
+
+Create an instance: `const artifact = client.Artifact()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const artifact = await client.Artifact().load({ id: 'artifact_id' })
+```
+
+#### Example: List
+
+```ts
+const artifacts = await client.Artifact().list()
+```
+
+#### Example: Create
+
+```ts
+const artifact = await client.Artifact().create({
+})
+```
+
+
+### ArtifactCacheNamespace
+
+Create an instance: `const artifact_cache_namespace = client.ArtifactCacheNamespace()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const artifact_cache_namespace = await client.ArtifactCacheNamespace().load({ id: 'artifact_cache_namespace_id' })
+```
+
+#### Example: List
+
+```ts
+const artifact_cache_namespaces = await client.ArtifactCacheNamespace().list()
+```
+
+#### Example: Create
+
+```ts
+const artifact_cache_namespace = await client.ArtifactCacheNamespace().create({
+})
+```
+
+
+### ArtifactImageRepository
+
+Create an instance: `const artifact_image_repository = client.ArtifactImageRepository()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const artifact_image_repository = await client.ArtifactImageRepository().load({ id: 'artifact_image_repository_id' })
+```
+
+#### Example: List
+
+```ts
+const artifact_image_repositorys = await client.ArtifactImageRepository().list()
+```
+
+#### Example: Create
+
+```ts
+const artifact_image_repository = await client.ArtifactImageRepository().create({
+})
+```
+
+
+### ArtifactPackageMirror
+
+Create an instance: `const artifact_package_mirror = client.ArtifactPackageMirror()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const artifact_package_mirror = await client.ArtifactPackageMirror().load({ id: 'artifact_package_mirror_id' })
+```
+
+#### Example: List
+
+```ts
+const artifact_package_mirrors = await client.ArtifactPackageMirror().list()
+```
+
+#### Example: Create
+
+```ts
+const artifact_package_mirror = await client.ArtifactPackageMirror().create({
+})
+```
+
+
+### ArtifactRetentionPolicy
+
+Create an instance: `const artifact_retention_policy = client.ArtifactRetentionPolicy()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const artifact_retention_policy = await client.ArtifactRetentionPolicy().load({ id: 'artifact_retention_policy_id' })
+```
+
+#### Example: List
+
+```ts
+const artifact_retention_policys = await client.ArtifactRetentionPolicy().list()
+```
+
+#### Example: Create
+
+```ts
+const artifact_retention_policy = await client.ArtifactRetentionPolicy().create({
+})
+```
+
+
 ### AttachmentPart
 
 Create an instance: `const attachment_part = client.AttachmentPart()`
@@ -8042,6 +15074,156 @@ Create an instance: `const attachment_part = client.AttachmentPart()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+
+### AuditEvent
+
+Create an instance: `const audit_event = client.AuditEvent()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `actor_kind` | `string` |  |
+| `actor_user_id` | `string | null` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `id` | `string` |  |
+| `observability_space_id` | `string | null` |  |
+| `organization_id` | `string` |  |
+| `payload` | `any` |  |
+| `request_id` | `string | null` |  |
+| `severity` | `string` |  |
+| `subject_id` | `string` |  |
+| `subject_kind` | `string` |  |
+| `subject_name` | `string | null` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+
+#### Example: List
+
+```ts
+const audit_events = await client.AuditEvent().list({ organization_id: "example" })
+```
+
+
+### Auth
+
+Create an instance: `const auth = client.Auth()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+
+### AuthCli
+
+Create an instance: `const auth_cli = client.AuthCli()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### AuthGithub
+
+Create an instance: `const auth_github = client.AuthGithub()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AuthGoogle
+
+Create an instance: `const auth_google = client.AuthGoogle()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AuthOpenai
+
+Create an instance: `const auth_openai = client.AuthOpenai()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AuthPasswordReset
+
+Create an instance: `const auth_password_reset = client.AuthPasswordReset()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email` | `string` |  |
+| `message` | `string` |  |
+| `password` | `string` |  |
+| `token` | `string` |  |
+
+#### Example: Create
+
+```ts
+const auth_password_reset = await client.AuthPasswordReset().create({
+  email: 'example_email',
+})
+```
+
+
+### AuthRegistrationOption
+
+Create an instance: `const auth_registration_option = client.AuthRegistrationOption()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email_password_signup_enabled` | `boolean` |  |
+| `openai_sign_in_enabled` | `boolean` | Whether ChatGPT identity sign-in is configured and enabled for rollout. |
+| `turnstile_site_key` | `string | null` |  |
+| `waitlist_enabled` | `boolean` | New public signups require waitlist approval when enabled. |
+
+#### Example: List
+
+```ts
+const auth_registration_options = await client.AuthRegistrationOption().list()
+```
 
 
 ### AutomationEvent
@@ -8140,6 +15322,531 @@ const automation_run = await client.AutomationRun().create({
   version_id: 'example_version_id',
 })
 ```
+
+
+### BackendRunnerPool
+
+Create an instance: `const backend_runner_pool = client.BackendRunnerPool()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```ts
+const backend_runner_pools = await client.BackendRunnerPool().list({ backend_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const backend_runner_pool = await client.BackendRunnerPool().create({
+  backend_id: 'example_backend_id',
+})
+```
+
+
+### Bazel
+
+Create an instance: `const bazel = client.Bazel()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### BazelActionResult
+
+Create an instance: `const bazel_action_result = client.BazelActionResult()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const bazel_action_result = await client.BazelActionResult().load({ id: 'bazel_action_result_id', action_result_id: 'action_result_id' })
+```
+
+
+### BazelBackend
+
+Create an instance: `const bazel_backend = client.BazelBackend()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const bazel_backend = await client.BazelBackend().load({ id: 'bazel_backend_id' })
+```
+
+#### Example: List
+
+```ts
+const bazel_backends = await client.BazelBackend().list()
+```
+
+#### Example: Create
+
+```ts
+const bazel_backend = await client.BazelBackend().create({
+})
+```
+
+
+### BazelBlob
+
+Create an instance: `const bazel_blob = client.BazelBlob()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const bazel_blob = await client.BazelBlob().load({ id: 'bazel_blob_id', blob_id: 'blob_id', hash: 'hash' })
+```
+
+
+### BazelExecution
+
+Create an instance: `const bazel_execution = client.BazelExecution()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const bazel_execution = await client.BazelExecution().load({ id: 'bazel_execution_id' })
+```
+
+#### Example: Create
+
+```ts
+const bazel_execution = await client.BazelExecution().create({
+})
+```
+
+
+### BazelFindMissingBlob
+
+Create an instance: `const bazel_find_missing_blob = client.BazelFindMissingBlob()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const bazel_find_missing_blob = await client.BazelFindMissingBlob().create({
+})
+```
+
+
+### Billing
+
+Create an instance: `const billing = client.Billing()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `any[]` |  |
+| `breakdown` | `any` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` |  |
+| `can_manage_contact` | `boolean` |  |
+| `can_manage_extra_spend` | `boolean` |  |
+| `can_manage_local_subscription` | `boolean` |  |
+| `can_manage_payment_method` | `boolean` |  |
+| `can_set_up_billing` | `boolean` |  |
+| `customer` | `any` |  |
+| `deployment_usage_visible` | `boolean` |  |
+| `entitlements` | `Record<string, any>` |  |
+| `extra_spend_enabled` | `boolean` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` |  |
+| `package` | `any` |  |
+| `prepaid` | `any` |  |
+| `preview` | `any` | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `Record<string, any>` |  |
+| `stripe` | `Record<string, any>` |  |
+| `subscription` | `any` |  |
+| `token_account` | `Record<string, any>` |  |
+
+#### Example: Load
+
+```ts
+const billing = await client.Billing().load({ organization_id: 'organization_id' })
+```
+
+
+### BillingAddon
+
+Create an instance: `const billing_addon = client.BillingAddon()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `any[]` |  |
+| `breakdown` | `any` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` |  |
+| `can_manage_contact` | `boolean` |  |
+| `can_manage_extra_spend` | `boolean` |  |
+| `can_manage_local_subscription` | `boolean` |  |
+| `can_manage_payment_method` | `boolean` |  |
+| `can_set_up_billing` | `boolean` |  |
+| `customer` | `any` |  |
+| `deployment_usage_visible` | `boolean` |  |
+| `entitlements` | `Record<string, any>` |  |
+| `extra_spend_enabled` | `boolean` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Whether the `billing` feature is on for this organization. |
+| `id` | `string` |  |
+| `organization_id` | `string` |  |
+| `package` | `any` |  |
+| `prepaid` | `any` |  |
+| `preview` | `any` | Metronome draft invoice and credits, or null. |
+| `quantity` | `number` |  |
+| `storage_usage` | `Record<string, any>` |  |
+| `stripe` | `Record<string, any>` |  |
+| `subscription` | `any` |  |
+| `token_account` | `Record<string, any>` |  |
+
+
+### BillingCheckoutSession
+
+Create an instance: `const billing_checkout_session = client.BillingCheckoutSession()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cancel_url` | `string` |  |
+| `coupon_code` | `string` |  |
+| `entry_point` | `string` | Where the owner chose to pay, for product analytics. |
+| `package_key` | `string` |  |
+| `package_revision` | `number` |  |
+| `success_url` | `string` |  |
+
+#### Example: Create
+
+```ts
+const billing_checkout_session = await client.BillingCheckoutSession().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### BillingInvoice
+
+Create an instance: `const billing_invoice = client.BillingInvoice()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `amount_due_cents` | `number` |  |
+| `created_at` | `string` |  |
+| `currency` | `string` |  |
+| `hosted_invoice_url` | `string | null` |  |
+| `id` | `string` |  |
+| `invoice_pdf` | `string | null` |  |
+| `metronome_invoice_id` | `string | null` | Metronome's id for the invoice it pushed |
+| `number` | `string | null` |  |
+| `period_ended_at` | `string | null` |  |
+| `period_started_at` | `string | null` |  |
+| `status` | `string` |  |
+| `total_cents` | `number` |  |
+
+#### Example: List
+
+```ts
+const billing_invoices = await client.BillingInvoice().list({ organization_id: "example" })
+```
+
+
+### BillingPackage
+
+Create an instance: `const billing_package = client.BillingPackage()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `any[]` |  |
+| `base_price_cents` | `number` |  |
+| `billing_interval` | `string` |  |
+| `billing_policy` | `string` |  |
+| `ci_included_spend_cents` | `number` | Monthly USD credit in cents shared by all CI charges, including runners, cache, storage and add-ons; replaces CI unit allowances when positive. |
+| `currency` | `string` |  |
+| `key` | `string` |  |
+| `max_seats` | `number | null` |  |
+| `name` | `string` |  |
+| `pay_as_you_go_enabled` | `boolean` |  |
+| `rates` | `any[]` |  |
+| `revision` | `number` |  |
+| `roder_daily_run_limit` | `number` |  |
+| `roder_run_concurrency_limit` | `number` |  |
+| `seat_price_cents` | `number` |  |
+| `trial_days` | `number` |  |
+| `visibility` | `string` |  |
+
+#### Example: List
+
+```ts
+const billing_packages = await client.BillingPackage().list()
+```
+
+
+### BillingPortalSession
+
+Create an instance: `const billing_portal_session = client.BillingPortalSession()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `return_url` | `string` |  |
+
+#### Example: Create
+
+```ts
+const billing_portal_session = await client.BillingPortalSession().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### BillingPrepaidPeriod
+
+Create an instance: `const billing_prepaid_period = client.BillingPrepaidPeriod()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_at` | `string | null` |  |
+| `created_at` | `string` |  |
+| `currency` | `string` |  |
+| `id` | `string` |  |
+| `last_error` | `string | null` |  |
+| `minutes` | `number` |  |
+| `net_amount_cents` | `number` |  |
+| `paid_at` | `string | null` |  |
+| `paid_total_cents` | `number | null` |  |
+| `payment_action_url` | `string | null` |  |
+| `period_ended_at` | `string` |  |
+| `period_started_at` | `string` |  |
+| `receipt_url` | `string | null` |  |
+| `refunded_net_cents` | `number` |  |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```ts
+const billing_prepaid_period = await client.BillingPrepaidPeriod().load({ id: 'billing_prepaid_period_id', organization_id: 'organization_id' })
+```
+
+
+### BillingPrepaidPurchase
+
+Create an instance: `const billing_prepaid_purchase = client.BillingPrepaidPurchase()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_at` | `string | null` |  |
+| `created_at` | `string` |  |
+| `currency` | `string` |  |
+| `id` | `string` |  |
+| `last_error` | `string | null` |  |
+| `minutes` | `number` |  |
+| `net_amount_cents` | `number` |  |
+| `paid_at` | `string | null` |  |
+| `paid_total_cents` | `number | null` |  |
+| `payment_action_url` | `string | null` |  |
+| `prepaid` | `Record<string, any>` |  |
+| `purchase` | `Record<string, any>` |  |
+| `receipt_url` | `string | null` |  |
+| `refunded_net_cents` | `number` |  |
+| `request_key` | `string` |  |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```ts
+const billing_prepaid_purchase = await client.BillingPrepaidPurchase().load({ id: 'billing_prepaid_purchase_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const billing_prepaid_purchases = await client.BillingPrepaidPurchase().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const billing_prepaid_purchase = await client.BillingPrepaidPurchase().create({
+  organization_id: 'example_organization_id',
+  minutes: 1,
+  request_key: 'example_request_key',
+})
+```
+
+
+### BillingTokenTopUp
+
+Create an instance: `const billing_token_top_up = client.BillingTokenTopUp()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `amount_cents` | `number` |  |
+| `request_key` | `string` |  |
+
+#### Example: Create
+
+```ts
+const billing_token_top_up = await client.BillingTokenTopUp().create({
+  organization_id: 'example_organization_id',
+  amount_cents: 1,
+  request_key: 'example_request_key',
+})
+```
+
+
+### BillingUsage
+
+Create an instance: `const billing_usage = client.BillingUsage()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
 
 
 ### Binary
@@ -8278,6 +15985,41 @@ const binary_version = await client.BinaryVersion().create({
   project_id: 'example_project_id',
   download_url: 'example_download_url',
   idempotency_key: 'example_idempotency_key',
+})
+```
+
+
+### BookmarkProtectionRefreshGithubRequiredCheck
+
+Create an instance: `const bookmark_protection_refresh_github_required_check = client.BookmarkProtectionRefreshGithubRequiredCheck()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `exclusions` | `any[]` |  |
+| `fetched_at` | `string | null` |  |
+| `fetched_at_label` | `string | null` |  |
+| `github_branch` | `string` |  |
+| `github_owner` | `string | null` |  |
+| `github_repository_name` | `string | null` |  |
+| `last_error` | `string | null` |  |
+| `proven` | `boolean` |  |
+| `requirements` | `any[]` |  |
+| `stale` | `boolean` |  |
+
+#### Example: Create
+
+```ts
+const bookmark_protection_refresh_github_required_check = await client.BookmarkProtectionRefreshGithubRequiredCheck().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
 })
 ```
 
@@ -8590,6 +16332,48 @@ const browser_session_task = await client.BrowserSessionTask().create({
 ```
 
 
+### CacheNamespaceEntry
+
+Create an instance: `const cache_namespace_entry = client.CacheNamespaceEntry()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const cache_namespace_entry = await client.CacheNamespaceEntry().load({ id: 'cache_namespace_entry_id', cache_namespace_id: 'cache_namespace_id' })
+```
+
+#### Example: List
+
+```ts
+const cache_namespace_entrys = await client.CacheNamespaceEntry().list({ cache_namespace_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const cache_namespace_entry = await client.CacheNamespaceEntry().create({
+  cache_namespace_id: 'example_cache_namespace_id',
+})
+```
+
+
 ### CatalogSelector
 
 Create an instance: `const catalog_selector = client.CatalogSelector()`
@@ -8779,6 +16563,1027 @@ const cdn_space_objects = await client.CdnSpaceObject().list({ cdn_space_id: "ex
 ```
 
 
+### Change
+
+Create an instance: `const change = client.Change()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `counts` | `Record<string, any>` | Counts for each state across the active non-state filters. |
+| `filters` | `Record<string, any>` |  |
+| `github_sync` | `Record<string, any>` |  |
+| `result` | `any` | What this page is a page of. |
+
+#### Example: List
+
+```ts
+const changes = await client.Change().list({ organization_id: "example" })
+```
+
+
+### ChangeAsset
+
+Create an instance: `const change_asset = client.ChangeAsset()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `alias` | `string` |  |
+| `byte_size` | `number` |  |
+| `checksum_md5` | `string` |  |
+| `checksum_sha256` | `string` |  |
+| `content_type` | `string` |  |
+| `filename` | `string` |  |
+| `id` | `string` |  |
+
+#### Example: Create
+
+```ts
+const change_asset = await client.ChangeAsset().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  alias: 'example_alias',
+  byte_size: 1,
+  checksum_md5: 'example_checksum_md5',
+  checksum_sha256: 'example_checksum_sha256',
+  content_type: 'example_content_type',
+  filename: 'example_filename',
+})
+```
+
+
+### ChangeComment
+
+Create an instance: `const change_comment = client.ChangeComment()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `body` | `string` |  |
+| `capabilities` | `Record<string, any>` |  |
+| `change_id` | `string | null` |  |
+| `created_at` | `string | null` |  |
+| `created_at_label` | `string | null` |  |
+| `id` | `string` |  |
+| `kind` | `string | null` |  |
+| `line` | `number | null` |  |
+| `outdated` | `boolean` |  |
+| `parent_comment_id` | `string | null` |  |
+| `patchset_id` | `string | null` |  |
+| `patchset_number` | `number | null` |  |
+| `path` | `string | null` |  |
+| `replies` | `any[]` |  |
+| `resolved` | `boolean` |  |
+| `resolved_at` | `string | null` |  |
+| `resolved_at_label` | `string | null` |  |
+| `resolved_by` | `Record<string, any>` |  |
+| `side` | `string | null` |  |
+| `updated_at` | `string | null` |  |
+| `updated_at_label` | `string | null` |  |
+| `user` | `Record<string, any>` |  |
+
+#### Example: List
+
+```ts
+const change_comments = await client.ChangeComment().list({ change_id: "example", organization_id: "example", repo_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const change_comment = await client.ChangeComment().create({
+  change_id: 'example_change_id',
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  body: 'example_body',
+})
+```
+
+
+### ChangeFileReviewCheckpoint
+
+Create an instance: `const change_file_review_checkpoint = client.ChangeFileReviewCheckpoint()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `patchset_id` | `string` |  |
+| `path` | `string` |  |
+| `request_id` | `string` |  |
+| `review_action` | `string` |  |
+
+#### Example: Create
+
+```ts
+const change_file_review_checkpoint = await client.ChangeFileReviewCheckpoint().create({
+  change_id: 'example_change_id',
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  patchset_id: 'example_patchset_id',
+  path: 'example_path',
+  request_id: 'example_request_id',
+  review_action: 'example_review_action',
+})
+```
+
+
+### ChangeGitBranchSubmission
+
+Create an instance: `const change_git_branch_submission = client.ChangeGitBranchSubmission()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const change_git_branch_submission = await client.ChangeGitBranchSubmission().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+
+### ChangeGitCommitIdentity
+
+Create an instance: `const change_git_commit_identity = client.ChangeGitCommitIdentity()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_id` | `string` |  |
+| `change_number` | `number` |  |
+| `git_commit_id` | `string` |  |
+| `git_commit_ids` | `any[]` |  |
+| `id` | `string` |  |
+| `identities` | `any[]` |  |
+| `missing_git_commit_ids` | `any[]` |  |
+| `patchset_number` | `number` |  |
+
+#### Example: Load
+
+```ts
+const change_git_commit_identity = await client.ChangeGitCommitIdentity().load({ id: 'change_git_commit_identity_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### Example: Create
+
+```ts
+const change_git_commit_identity = await client.ChangeGitCommitIdentity().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  git_commit_ids: [],
+})
+```
+
+
+### ChangeGitPublication
+
+Create an instance: `const change_git_publication = client.ChangeGitPublication()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `expected_target_commit_id` | `string` |  |
+| `id` | `string` |  |
+| `operation_key` | `string` |  |
+| `publication_id` | `string` |  |
+| `request` | `Record<string, any>` |  |
+| `request_digest` | `string` |  |
+| `revisions` | `any[]` |  |
+| `status` | `string` |  |
+| `transfer_refs` | `any[]` | Immutable receipt-owned refs returned by preparation; transfer each exact Git target before polling readiness. |
+
+#### Example: Load
+
+```ts
+const change_git_publication = await client.ChangeGitPublication().load({ id: 'change_git_publication_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### Example: Create
+
+```ts
+const change_git_publication = await client.ChangeGitPublication().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  operation_key: 'example_operation_key',
+  request: {},
+})
+```
+
+
+### ChangeGroupMember
+
+Create an instance: `const change_group_member = client.ChangeGroupMember()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_id` | `string` | Change number |
+| `changes` | `any[]` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `number` | `number` |  |
+| `status` | `string` |  |
+| `title` | `string | null` |  |
+
+#### Example: Create
+
+```ts
+const change_group_member = await client.ChangeGroupMember().create({
+  change_group_id: 'example_change_group_id',
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  change_id: 'example_change_id',
+})
+```
+
+
+### ChangeLabel
+
+Create an instance: `const change_label = client.ChangeLabel()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accepted` | `boolean` |  |
+| `add` | `any[]` |  |
+| `approval` | `Record<string, any>` |  |
+| `assets` | `any[]` | Proof assets referenced from the description as `vex-asset:<id>`. |
+| `author` | `any` | Human user summary or organization automation identity. |
+| `capabilities` | `Record<string, any>` |  |
+| `change_key` | `string` |  |
+| `checks` | `any[]` |  |
+| `checks_status` | `string` |  |
+| `comments` | `any[]` |  |
+| `comments_count` | `number` |  |
+| `comments_count_label` | `string` |  |
+| `commit_message` | `string | null` |  |
+| `current_patchset` | `Record<string, any>` |  |
+| `description` | `string | null` |  |
+| `draft` | `boolean` |  |
+| `folded_into_number` | `number | null` |  |
+| `github_projection_status` | `string | null` |  |
+| `github_pull_request` | `Record<string, any>` |  |
+| `github_pull_requests` | `any[]` |  |
+| `group` | `Record<string, any> | null` |  |
+| `has_description` | `boolean` | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
+| `id` | `string` |  |
+| `jj_change_id` | `string | null` |  |
+| `labels` | `any[]` |  |
+| `landable` | `boolean` |  |
+| `landed_by` | `Record<string, any>` |  |
+| `number` | `number` |  |
+| `orphaned` | `boolean` |  |
+| `orphaned_at` | `string` |  |
+| `orphaned_at_label` | `string` |  |
+| `orphaned_reason` | `string` |  |
+| `parent_change_id` | `string | null` |  |
+| `parent_change_number` | `number | null` |  |
+| `patchset_number` | `number | null` |  |
+| `patchsets` | `any[]` |  |
+| `primary_status` | `string | null` |  |
+| `public_id` | `string` |  |
+| `relation_chain` | `any[]` |  |
+| `remove` | `any[]` |  |
+| `requested_changes` | `boolean` |  |
+| `restack_state` | `string` |  |
+| `reviewer_candidates` | `any[]` | Organization members available to the reviewer picker on this page. |
+| `reviewers` | `any[]` |  |
+| `stable_change_id` | `string` |  |
+| `stack` | `any` |  |
+| `status` | `string` |  |
+| `target_branch` | `string` |  |
+| `title` | `string` |  |
+| `unresolved_comments_count_label` | `string` |  |
+| `url` | `string` |  |
+| `votes` | `any[]` |  |
+
+
+### ChangeLandingHold
+
+Create an instance: `const change_landing_hold = client.ChangeLandingHold()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### ChangeLandingRequest
+
+Create an instance: `const change_landing_request = client.ChangeLandingRequest()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_ids` | `any[]` |  |
+| `count` | `number` |  |
+| `defer_until_ready` | `boolean` | Admit the request while approvals or checks are pending |
+| `expected_requirement_version` | `string` |  |
+| `expected_scope_version` | `string` |  |
+| `head_change_id` | `string` |  |
+| `id` | `string | null` |  |
+| `numbers` | `any[]` |  |
+| `override_acknowledged` | `boolean` |  |
+| `override_codes` | `any[]` |  |
+| `position` | `number` |  |
+| `priority` | `string` |  |
+| `scope_version` | `string` |  |
+| `state` | `string` |  |
+| `version` | `number` |  |
+
+#### Example: Create
+
+```ts
+const change_landing_request = await client.ChangeLandingRequest().create({
+  change_id: 'example_change_id',
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+
+### ChangeRequestChange
+
+Create an instance: `const change_request_change = client.ChangeRequestChange()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `message` | `string | null` |  |
+
+#### Example: Create
+
+```ts
+const change_request_change = await client.ChangeRequestChange().create({
+  change_id: 'example_change_id',
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+
+### ChangeReviewer
+
+Create an instance: `const change_reviewer = client.ChangeReviewer()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `add` | `any[]` |  |
+| `email` | `string` |  |
+| `name` | `string | null` |  |
+| `remove` | `any[]` |  |
+| `removed_reviewers` | `any[]` |  |
+| `requested_reviewers` | `any[]` |  |
+| `reviewers` | `any[]` |  |
+
+#### Example: List
+
+```ts
+const change_reviewers = await client.ChangeReviewer().list({ change_id: "example", organization_id: "example", repo_id: "example" })
+```
+
+
+### ChangeTranscript
+
+Create an instance: `const change_transcript = client.ChangeTranscript()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capture_kind` | `string` |  |
+| `captured_at` | `string` |  |
+| `harness` | `Record<string, any>` |  |
+| `id` | `string` |  |
+| `original_resume` | `any` |  |
+| `patchset_commit_id` | `string` |  |
+| `patchset_number` | `number` |  |
+| `redaction_count` | `number` |  |
+| `session_id` | `string | null` |  |
+| `session_title` | `string | null` |  |
+| `status` | `string` |  |
+| `superseded` | `boolean` |  |
+| `user` | `Record<string, any>` |  |
+
+#### Example: List
+
+```ts
+const change_transcripts = await client.ChangeTranscript().list({ change_id: "example", organization_id: "example", repo_id: "example" })
+```
+
+
+### ChangeTranscriptSummary
+
+Create an instance: `const change_transcript_summary = client.ChangeTranscriptSummary()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `summaries` | `Record<string, any>` |  |
+
+#### Example: List
+
+```ts
+const change_transcript_summarys = await client.ChangeTranscriptSummary().list({ organization_id: "example", ids: "example" })
+```
+
+
+### CheckpointPrepareChunk
+
+Create an instance: `const checkpoint_prepare_chunk = client.CheckpointPrepareChunk()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const checkpoint_prepare_chunk = await client.CheckpointPrepareChunk().create({
+  agent_session_id: 'example_agent_session_id',
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+
+### CiNode
+
+Create an instance: `const ci_node = client.CiNode()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `architecture` | `string | null` |  |
+| `bazel_enabled` | `boolean` |  |
+| `bazel_properties_json` | `string | null` |  |
+| `ci_runner_pool_id` | `string` |  |
+| `cordoned_at` | `string | null` |  |
+| `cordoned_at_label` | `string | null` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `health_state` | `string` |  |
+| `heartbeat_age_seconds` | `number | null` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `labels_csv` | `string | null` |  |
+| `last_seen_at` | `string | null` |  |
+| `last_seen_at_label` | `string | null` |  |
+| `name` | `string` |  |
+| `network_peer_id` | `string | null` |  |
+| `node_capabilities_csv` | `string | null` |  |
+| `node_certificate_expires_at` | `string | null` |  |
+| `node_certificate_expires_at_label` | `string | null` |  |
+| `node_certificate_fingerprint_sha256` | `string | null` |  |
+| `node_certificate_serial` | `string | null` |  |
+| `offline_at` | `string | null` |  |
+| `offline_at_label` | `string | null` |  |
+| `online_at` | `string | null` |  |
+| `online_at_label` | `string | null` |  |
+| `organization_id` | `string` |  |
+| `os` | `string | null` |  |
+| `revoked_at` | `string | null` |  |
+| `revoked_at_label` | `string | null` |  |
+| `schedulable` | `boolean` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+| `version` | `string | null` |  |
+
+#### Example: Load
+
+```ts
+const ci_node = await client.CiNode().load({ id: 'ci_node_id' })
+```
+
+
+### CiPipeline
+
+Create an instance: `const ci_pipeline = client.CiPipeline()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `ci_runner_pool_id` | `string | null` |  |
+| `concurrency_key` | `string | null` |  |
+| `created_at` | `string` |  |
+| `default_branch` | `string | null` |  |
+| `description` | `string | null` |  |
+| `hosted_app_id` | `string | null` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `repository_id` | `string | null` |  |
+| `required_capabilities_csv` | `string | null` |  |
+| `runner_pool` | `Record<string, any> | null` |  |
+| `runs` | `any[]` |  |
+| `slug` | `string` |  |
+| `source_kind` | `string` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `trigger_on_pull_request` | `boolean` |  |
+| `trigger_on_push` | `boolean` |  |
+| `trigger_on_schedule` | `boolean` |  |
+| `updated_at` | `string` |  |
+| `workflow_path` | `string | null` |  |
+
+#### Example: Load
+
+```ts
+const ci_pipeline = await client.CiPipeline().load({ id: 'ci_pipeline_id' })
+```
+
+#### Example: List
+
+```ts
+const ci_pipelines = await client.CiPipeline().list()
+```
+
+#### Example: Create
+
+```ts
+const ci_pipeline = await client.CiPipeline().create({
+})
+```
+
+
+### CiPipelineRun
+
+Create an instance: `const ci_pipeline_run = client.CiPipelineRun()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active` | `boolean` |  |
+| `canceled_at` | `string | null` |  |
+| `ci_pipeline_id` | `string` |  |
+| `ci_runner_pool_id` | `string | null` |  |
+| `commit_sha` | `string | null` |  |
+| `concurrency_key` | `string | null` |  |
+| `created_at` | `string` |  |
+| `creator_user_id` | `string | null` |  |
+| `display_id` | `number` |  |
+| `failed` | `boolean` |  |
+| `finished_at` | `string | null` |  |
+| `hosted_app_id` | `string | null` |  |
+| `id` | `string` |  |
+| `jobs` | `any[]` |  |
+| `message` | `string | null` |  |
+| `number` | `number` |  |
+| `organization_id` | `string` |  |
+| `parameters_json` | `string | null` |  |
+| `queued_at` | `string | null` |  |
+| `ref_name` | `string | null` |  |
+| `repository_id` | `string | null` |  |
+| `required_capabilities_csv` | `string | null` |  |
+| `retry_number` | `number` |  |
+| `retryable` | `boolean` |  |
+| `slug` | `string` |  |
+| `source_url` | `string | null` |  |
+| `started_at` | `string | null` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `trigger_kind` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```ts
+const ci_pipeline_run = await client.CiPipelineRun().load({ id: 'ci_pipeline_run_id', pipeline_id: 'pipeline_id' })
+```
+
+#### Example: List
+
+```ts
+const ci_pipeline_runs = await client.CiPipelineRun().list({ pipeline_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const ci_pipeline_run = await client.CiPipelineRun().create({
+  pipeline_id: 'example_pipeline_id',
+})
+```
+
+
+### CiRunnerPool
+
+Create an instance: `const ci_runner_pool = client.CiRunnerPool()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `bazel_enabled` | `boolean` |  |
+| `bazel_properties_json` | `string | null` |  |
+| `created_at` | `string` |  |
+| `description` | `string | null` |  |
+| `elastic_config_json` | `string | null` |  |
+| `elastic_provider_kind` | `string | null` |  |
+| `id` | `string` |  |
+| `isolation_mode` | `string` |  |
+| `labels_csv` | `string | null` |  |
+| `max_concurrency` | `number` |  |
+| `modal_capacity` | `Record<string, any>` |  |
+| `modal_runner_invocations` | `any[]` |  |
+| `name` | `string` |  |
+| `network_space_id` | `string | null` |  |
+| `node_capabilities_csv` | `string | null` |  |
+| `organization_id` | `string` |  |
+| `runner_count_label` | `string` |  |
+| `runner_kind` | `string` |  |
+| `runners` | `any[]` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```ts
+const ci_runner_pool = await client.CiRunnerPool().load({ id: 'ci_runner_pool_id' })
+```
+
+#### Example: List
+
+```ts
+const ci_runner_pools = await client.CiRunnerPool().list()
+```
+
+#### Example: Create
+
+```ts
+const ci_runner_pool = await client.CiRunnerPool().create({
+})
+```
+
+
+### CiStatus
+
+Create an instance: `const ci_status = client.CiStatus()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### CliEvent
+
+Create an instance: `const cli_event = client.CliEvent()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `event` | `string` |  |
+| `properties` | `Record<string, any>` |  |
+
+#### Example: Create
+
+```ts
+const cli_event = await client.CliEvent().create({
+  event: 'example_event',
+  properties: {},
+})
+```
+
+
+### CliRelease
+
+Create an instance: `const cli_release = client.CliRelease()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Example: List
+
+```ts
+const cli_releases = await client.CliRelease().list()
+```
+
+#### Example: Create
+
+```ts
+const cli_release = await client.CliRelease().create({
+})
+```
+
+
+### CloudWorkspaceBackupObject
+
+Create an instance: `const cloud_workspace_backup_object = client.CloudWorkspaceBackupObject()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const cloud_workspace_backup_object = await client.CloudWorkspaceBackupObject().load({ id: 'cloud_workspace_backup_object_id', cloud_workspace_backup_id: 'cloud_workspace_backup_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+
+### CodeRuleEvaluation
+
+Create an instance: `const code_rule_evaluation = client.CodeRuleEvaluation()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `advisory` | `boolean` |  |
+| `coverage` | `Record<string, any>` |  |
+| `diff` | `string` | UTF-8 complete unified patch using a/ old and b/ new prefixes; at most 1 MiB |
+| `duration_ms` | `number` |  |
+| `evaluator_version` | `string` |  |
+| `input_digest` | `string | null` |  |
+| `limits` | `Record<string, any>` |  |
+| `model` | `string` |  |
+| `requests` | `Record<string, any>` |  |
+| `schema_version` | `number` |  |
+| `snapshot_digest` | `string | null` |  |
+| `unchecked` | `any[]` |  |
+| `verdicts` | `any[]` |  |
+
+#### Example: Create
+
+```ts
+const code_rule_evaluation = await client.CodeRuleEvaluation().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  diff: 'example_diff',
+})
+```
+
+
+### ComSiteAccess
+
+Create an instance: `const com_site_access = client.ComSiteAccess()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### ComSiteAccessSession
+
+Create an instance: `const com_site_access_session = client.ComSiteAccessSession()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cookie_name` | `string` |  |
+| `host` | `string` | Site hostname, for example docs.acme.composal.page |
+| `max_age` | `number` |  |
+| `session_token` | `string` |  |
+
+#### Example: Create
+
+```ts
+const com_site_access_session = await client.ComSiteAccessSession().create({
+  host: 'example_host',
+})
+```
+
+
+### CommentThreadComment
+
+Create an instance: `const comment_thread_comment = client.CommentThreadComment()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `body` | `string` |  |
+
+#### Example: Create
+
+```ts
+const comment_thread_comment = await client.CommentThreadComment().create({
+  artefact_id: 'example_artefact_id',
+  comment_thread_id: 'example_comment_thread_id',
+  organization_id: 'example_organization_id',
+  body: 'example_body',
+})
+```
+
+
+### CommitDiff
+
+Create an instance: `const commit_diff = client.CommitDiff()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `files` | `any[]` |  |
+| `id` | `string` |  |
+| `parent_id` | `string | null` |  |
+
+#### Example: Load
+
+```ts
+const commit_diff = await client.CommitDiff().load({ id: 'commit_diff_id', commit_id: 'commit_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+
 ### ConnectionRequest
 
 Create an instance: `const connection_request = client.ConnectionRequest()`
@@ -8839,6 +17644,115 @@ Create an instance: `const connection_source = client.ConnectionSource()`
 
 ```ts
 const connection_sources = await client.ConnectionSource().list({ agent_id: "example", organization_id: "example" })
+```
+
+
+### ContactSubmission
+
+Create an instance: `const contact_submission = client.ContactSubmission()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `company` | `string | null` |  |
+| `email` | `string` | Stored downcased and stripped. |
+| `message` | `string` |  |
+| `name` | `string` |  |
+| `website` | `string | null` | Honeypot. |
+
+#### Example: Create
+
+```ts
+const contact_submission = await client.ContactSubmission().create({
+  email: 'example_email',
+  message: 'example_message',
+  name: 'example_name',
+})
+```
+
+
+### ControlComputer
+
+Create an instance: `const control_computer = client.ControlComputer()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `connection` | `Record<string, any>` | A point-in-time control transport observation. |
+| `consent` | `Record<string, any>` |  |
+| `device` | `Record<string, any>` |  |
+| `id` | `string` |  |
+| `provider_status` | `any[]` |  |
+
+#### Example: List
+
+```ts
+const control_computers = await client.ControlComputer().list({ organization_id: "example", persistent_agent_id: "example" })
+```
+
+
+### ControlComputerControlOperation
+
+Create an instance: `const control_computer_control_operation = client.ControlComputerControlOperation()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `arguments` | `Record<string, any>` |  |
+| `created_at` | `string` |  |
+| `delivery` | `Record<string, any>` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` |  |
+| `diagnostic_code` | `string` | Approved product error code retained after copied diagnostics expire. |
+| `end` | `Record<string, any>` |  |
+| `expires_at` | `string` |  |
+| `id` | `string` |  |
+| `key` | `string` |  |
+| `provider` | `string` |  |
+| `references` | `Record<string, any>` |  |
+| `result` | `any` |  |
+| `result_expired` | `boolean` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```ts
+const control_computer_control_operation = await client.ControlComputerControlOperation().load({ id: 'control_computer_control_operation_id', control_computer_id: 'control_computer_id', organization_id: 'organization_id' })
+```
+
+#### Example: Create
+
+```ts
+const control_computer_control_operation = await client.ControlComputerControlOperation().create({
+  control_computer_id: 'example_control_computer_id',
+  organization_id: 'example_organization_id',
+  action: 'example_action',
+  arguments: {},
+  key: 'example_key',
+})
 ```
 
 
@@ -9257,6 +18171,64 @@ const demo_share_segment = await client.DemoShareSegment().load({ id: 'demo_shar
 ```
 
 
+### Deployment
+
+Create an instance: `const deployment = client.Deployment()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `app` | `Record<string, any>` |  |
+| `artifact_locator` | `string | null` |  |
+| `build_duration_seconds` | `number | null` |  |
+| `build_source` | `Record<string, any> | null` |  |
+| `build_status` | `string` |  |
+| `children` | `any[]` |  |
+| `ci_pipeline_id` | `string | null` |  |
+| `ci_pipeline_run_id` | `string | null` |  |
+| `commit_sha` | `string | null` |  |
+| `created_at` | `string` |  |
+| `creator` | `Record<string, any> | null` |  |
+| `deployed_url` | `string | null` |  |
+| `duration_seconds` | `number | null` |  |
+| `environment` | `Record<string, any>` |  |
+| `history_kind` | `string` |  |
+| `history_reason` | `string | null` |  |
+| `id` | `string` |  |
+| `is_live` | `boolean` |  |
+| `is_rollback` | `boolean` |  |
+| `live_region_count` | `number` |  |
+| `number` | `number` |  |
+| `placement` | `Record<string, any> | null` |  |
+| `region_count` | `number` |  |
+| `replicas_per_region` | `number` |  |
+| `rollback_reason` | `string | null` |  |
+| `rollback_source_release_id` | `string | null` |  |
+| `rollback_target_release_id` | `string | null` |  |
+| `rollout_predecessor_id` | `string | null` |  |
+| `rollout_status` | `string` |  |
+| `rollout_strategy` | `string` |  |
+| `service` | `Record<string, any>` |  |
+| `source_ref` | `string | null` |  |
+| `status` | `string` |  |
+| `total_replicas` | `number` |  |
+| `trigger_kind` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```ts
+const deployment = await client.Deployment().load({ id: 'deployment_id', organization_id: 'organization_id' })
+```
+
+
 ### DeploymentDashboardNomad
 
 Create an instance: `const deployment_dashboard_nomad = client.DeploymentDashboardNomad()`
@@ -9268,6 +18240,49 @@ Create an instance: `const deployment_dashboard_nomad = client.DeploymentDashboa
 | `load(match)` | Load a single entity by match criteria. |
 
 
+### DeploymentDetail
+
+Create an instance: `const deployment_detail = client.DeploymentDetail()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activity` | `any[]` |  |
+| `app` | `any` |  |
+| `app_id` | `string | null` |  |
+| `audit_events` | `any[]` |  |
+| `capacity` | `Record<string, any>` |  |
+| `data_resources` | `any[]` |  |
+| `deploy_targets` | `any[]` |  |
+| `deployments` | `any[]` |  |
+| `desired_states` | `any[]` |  |
+| `environments` | `any[]` |  |
+| `filters` | `Record<string, any>` | The option lists the deployments page's app, service and stage pickers narrow by. |
+| `health` | `Record<string, any>` | The rolled-up state of the selected scope. |
+| `nomad` | `Record<string, any>` | The Nomad footprint of the selected scope, deduplicated. |
+| `operations` | `any[]` |  |
+| `placements` | `any[]` |  |
+| `reconciler_ticks` | `any[]` |  |
+| `releases` | `any[]` |  |
+| `runtime_instances` | `any[]` |  |
+| `service_bindings` | `any[]` |  |
+| `service_views` | `any[]` |  |
+| `storage_resources` | `any[]` |  |
+
+#### Example: List
+
+```ts
+const deployment_details = await client.DeploymentDetail().list({ organization_id: "example" })
+```
+
+
 ### DeploymentFile
 
 Create an instance: `const deployment_file = client.DeploymentFile()`
@@ -9277,6 +18292,756 @@ Create an instance: `const deployment_file = client.DeploymentFile()`
 | Method | Description |
 | --- | --- |
 | `update(data)` | Update an existing entity. |
+
+
+### DeploymentLog
+
+Create an instance: `const deployment_log = client.DeploymentLog()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `allocation_id` | `string` |  |
+| `app_environment_id` | `string | null` |  |
+| `app_release_id` | `string | null` |  |
+| `app_service_id` | `string | null` |  |
+| `details` | `any` |  |
+| `environment_name` | `string` |  |
+| `release_version` | `string | null` |  |
+| `service_name` | `string` |  |
+| `status` | `string` |  |
+| `task` | `string | null` |  |
+| `unreachable_reason` | `string | null` |  |
+
+#### Example: List
+
+```ts
+const deployment_logs = await client.DeploymentLog().list({ organization_id: "example" })
+```
+
+
+### DeploymentMetric
+
+Create an instance: `const deployment_metric = client.DeploymentMetric()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `auto_deploy` | `boolean` |  |
+| `environment_id` | `string` |  |
+| `environment_name` | `string` |  |
+| `placement_id` | `string` |  |
+| `redeploy` | `boolean` |  |
+| `region_count` | `number` |  |
+| `replicas_per_region` | `number` |  |
+| `rollout_strategy` | `string` |  |
+| `service_id` | `string` |  |
+| `service_name` | `string` |  |
+| `source_ref` | `string | null` |  |
+
+#### Example: List
+
+```ts
+const deployment_metrics = await client.DeploymentMetric().list({ organization_id: "example" })
+```
+
+
+### DeploymentPreview
+
+Create an instance: `const deployment_preview = client.DeploymentPreview()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access` | `string` |  |
+| `app_environment_id` | `string` |  |
+| `app_name` | `string` |  |
+| `app_preview_profile_id` | `string` |  |
+| `app_slug` | `string` |  |
+| `change_number` | `number | null` |  |
+| `created_at` | `string` |  |
+| `created_by_user_id` | `string` |  |
+| `expires_at` | `string` |  |
+| `generation` | `number` |  |
+| `health` | `string` |  |
+| `hosted_app_id` | `string` |  |
+| `id` | `string` |  |
+| `latest_operation_status` | `string | null` |  |
+| `name` | `string` |  |
+| `owner_name` | `string | null` |  |
+| `profile_name` | `string` |  |
+| `resource_overrides` | `Record<string, any>` | Service public IDs mapped to resource overrides. |
+| `retained` | `boolean` |  |
+| `slug` | `string` |  |
+| `snapshot_version` | `number` |  |
+| `source_revision` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `urls` | `any[]` |  |
+| `vcs_change_id` | `string | null` |  |
+
+#### Example: List
+
+```ts
+const deployment_previews = await client.DeploymentPreview().list({ organization_id: "example" })
+```
+
+
+### DeploymentSetting
+
+Create an instance: `const deployment_setting = client.DeploymentSetting()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `code` | `string` |  |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `nomad_datacenter` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: List
+
+```ts
+const deployment_settings = await client.DeploymentSetting().list({ organization_id: "example" })
+```
+
+
+### DesktopLocalAgentModel
+
+Create an instance: `const desktop_local_agent_model = client.DesktopLocalAgentModel()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `name` | `string` |  |
+
+#### Example: List
+
+```ts
+const desktop_local_agent_models = await client.DesktopLocalAgentModel().list({ organization_id: "example" })
+```
+
+
+### DesktopLocalAgentResponse
+
+Create an instance: `const desktop_local_agent_response = client.DesktopLocalAgentResponse()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `input` | `any[]` |  |
+| `max_output_tokens` | `number` |  |
+| `model` | `string` |  |
+| `store` | `boolean` |  |
+| `stream` | `boolean` |  |
+
+#### Example: Create
+
+```ts
+const desktop_local_agent_response = await client.DesktopLocalAgentResponse().create({
+  organization_id: 'example_organization_id',
+  input: [],
+  model: 'example_model',
+  store: true,
+  stream: true,
+})
+```
+
+
+### Device
+
+Create an instance: `const device = client.Device()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `architecture` | `string` |  |
+| `channel` | `string` |  |
+| `coding_connection` | `Record<string, any> | null` | Independent organization coding-control service state for the current device owner. |
+| `connection_checked_at` | `string | null` | When this native presence observation was obtained; null when unobserved or unavailable. |
+| `connection_status` | `string` | Display-only native presence. |
+| `control_delivery_policy` | `Record<string, any>` |  |
+| `control_spawn_policy` | `Record<string, any>` |  |
+| `created_at` | `string` |  |
+| `device` | `Record<string, any>` |  |
+| `environment` | `string` |  |
+| `execution_available` | `boolean` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `native_device_id` | `string` |  |
+| `paired_at` | `string` |  |
+| `pairing_generation` | `number` |  |
+| `platform` | `string` |  |
+| `project_visibility` | `Record<string, any>` | Folder discovery and new-thread selection. |
+| `provider_status` | `any[]` | Recent native provider observations; absent on older API replicas. |
+| `revoked_at` | `string | null` |  |
+| `scheduled_check_ins` | `boolean` | Whether the owner's private agents may check this computer's connection during scheduled runs. |
+| `user_browser_access` | `string` | Whether agents may use the owner's own Chrome-family browser here: off, only tabs agents open or the owner shares, or every tab. |
+
+#### Example: Load
+
+```ts
+const device = await client.Device().load({ id: 'device_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const devices = await client.Device().list({ organization_id: "example" })
+```
+
+
+### DeviceBrowserOperation
+
+Create an instance: `const device_browser_operation = client.DeviceBrowserOperation()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `command` | `string` | The in-app browser takes open through open_external; the person's own browser (arguments.browser user) takes open, tabs, share_tab, navigate, back, reload, screenshot, read, click, type, press, scroll and close. |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+
+#### Example: List
+
+```ts
+const device_browser_operations = await client.DeviceBrowserOperation().list({ device_id: "example", organization_id: "example" })
+```
+
+
+### DeviceControlMessage
+
+Create an instance: `const device_control_message = client.DeviceControlMessage()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_id` | `string` |  |
+| `agent_name` | `string` |  |
+| `expires_at` | `string` |  |
+| `id` | `string` |  |
+| `sender` | `string | null` |  |
+| `text` | `string | null` |  |
+| `text_omitted` | `boolean` |  |
+| `thread` | `Record<string, any>` |  |
+
+#### Example: List
+
+```ts
+const device_control_messages = await client.DeviceControlMessage().list({ device_id: "example", organization_id: "example" })
+```
+
+
+### DeviceControlOperation
+
+Create an instance: `const device_control_operation = client.DeviceControlOperation()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `arguments` | `Record<string, any>` |  |
+| `created_at` | `string` |  |
+| `delivery` | `Record<string, any>` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` |  |
+| `diagnostic_code` | `string` | Approved product error code retained after copied diagnostics expire. |
+| `end` | `Record<string, any>` |  |
+| `expires_at` | `string` |  |
+| `id` | `string` |  |
+| `key` | `string` |  |
+| `provider` | `string` |  |
+| `references` | `Record<string, any>` |  |
+| `result` | `any` |  |
+| `result_expired` | `boolean` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```ts
+const device_control_operation = await client.DeviceControlOperation().load({ id: 'device_control_operation_id', device_id: 'device_id', organization_id: 'organization_id' })
+```
+
+#### Example: Create
+
+```ts
+const device_control_operation = await client.DeviceControlOperation().create({
+  device_id: 'example_device_id',
+  organization_id: 'example_organization_id',
+  action: 'example_action',
+  arguments: {},
+  key: 'example_key',
+})
+```
+
+
+### DeviceEnterpriseRelay
+
+Create an instance: `const device_enterprise_relay = client.DeviceEnterpriseRelay()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ts
+const device_enterprise_relays = await client.DeviceEnterpriseRelay().list()
+```
+
+
+### DeviceFolderListing
+
+Create an instance: `const device_folder_listing = client.DeviceFolderListing()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `code` | `string` |  |
+| `error` | `string` |  |
+| `folders` | `any[]` |  |
+| `id` | `string` |  |
+| `key` | `string` | Stable idempotency key for this listing. |
+| `parent` | `string | null` |  |
+| `path` | `string` | The resolved folder. |
+| `state` | `string` |  |
+| `truncated` | `boolean` |  |
+
+#### Example: Load
+
+```ts
+const device_folder_listing = await client.DeviceFolderListing().load({ id: 'device_folder_listing_id', device_id: 'device_id', organization_id: 'organization_id' })
+```
+
+#### Example: Create
+
+```ts
+const device_folder_listing = await client.DeviceFolderListing().create({
+  device_id: 'example_device_id',
+  organization_id: 'example_organization_id',
+  key: 'example_key',
+  path: 'example_path',
+})
+```
+
+
+### DeviceGrant
+
+Create an instance: `const device_grant = client.DeviceGrant()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active_grants` | `any[]` |  |
+| `agent_choices` | `any[]` | Eligible picker choices, with current owner grant targets, on the first page only. |
+| `agent_id` | `string` |  |
+| `all_agents_access` | `boolean` | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `capabilities` | `any[]` |  |
+| `execution_available` | `boolean` |  |
+| `grants` | `any[]` |  |
+| `id` | `string` |  |
+| `next_cursor` | `string | null` |  |
+| `principal_id` | `string` |  |
+
+#### Example: List
+
+```ts
+const device_grants = await client.DeviceGrant().list({ device_id: "example", organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const device_grant = await client.DeviceGrant().create({
+  device_id: 'example_device_id',
+  organization_id: 'example_organization_id',
+  agent_id: 'example_agent_id',
+  capabilities: [],
+  principal_id: 'example_principal_id',
+})
+```
+
+
+### DeviceInvocation
+
+Create an instance: `const device_invocation = client.DeviceInvocation()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### DeviceLocalEvent
+
+Create an instance: `const device_local_event = client.DeviceLocalEvent()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `event` | `string` |  |
+| `recorded` | `boolean` |  |
+
+#### Example: Create
+
+```ts
+const device_local_event = await client.DeviceLocalEvent().create({
+  device_id: 'example_device_id',
+  organization_id: 'example_organization_id',
+  event: 'example_event',
+})
+```
+
+
+### DevicePairing
+
+Create an instance: `const device_pairing = client.DevicePairing()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `architecture` | `string` |  |
+| `channel` | `string` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `platform` | `string` |  |
+| `public_key` | `string` |  |
+
+#### Example: Create
+
+```ts
+const device_pairing = await client.DevicePairing().create({
+  organization_id: 'example_organization_id',
+  architecture: 'example_architecture',
+  channel: 'example_channel',
+  name: 'example_name',
+  platform: 'example_platform',
+  public_key: 'example_public_key',
+})
+```
+
+
+### DeviceProject
+
+Create an instance: `const device_project = client.DeviceProject()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### DeviceScheduledCheckIn
+
+Create an instance: `const device_scheduled_check_in = client.DeviceScheduledCheckIn()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `enabled` | `boolean` |  |
+
+#### Example: Create
+
+```ts
+const device_scheduled_check_in = await client.DeviceScheduledCheckIn().create({
+  device_id: 'example_device_id',
+  organization_id: 'example_organization_id',
+  enabled: true,
+})
+```
+
+
+### DockerBuilder
+
+Create an instance: `const docker_builder = client.DockerBuilder()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `backend` | `string` |  |
+| `created_at` | `string | null` |  |
+| `gateway_url` | `string | null` | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `number` |  |
+| `id` | `string` |  |
+| `last_activity_at` | `string | null` |  |
+| `organization_id` | `string` |  |
+| `ready_at` | `string | null` |  |
+| `slept_at` | `string | null` |  |
+| `slug` | `string` |  |
+| `startup_attempt` | `number` |  |
+| `startup_failure` | `string | null` | Safe failure reason for the most recent startup attempt |
+| `startup_stage` | `string | null` |  |
+| `status` | `string` |  |
+| `updated_at` | `string | null` |  |
+
+#### Example: Load
+
+```ts
+const docker_builder = await client.DockerBuilder().load({ id: 'docker_builder_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const docker_builders = await client.DockerBuilder().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const docker_builder = await client.DockerBuilder().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### DockerBuilderSession
+
+Create an instance: `const docker_builder_session = client.DockerBuilderSession()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `string` |  |
+| `docker_builder_id` | `string` |  |
+| `expires_at` | `string` |  |
+| `gateway_url` | `string | null` | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `number` |  |
+| `id` | `string` |  |
+| `organization_id` | `string` |  |
+| `revoked_at` | `string | null` |  |
+| `user_id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const docker_builder_session = await client.DockerBuilderSession().load({ id: 'docker_builder_session_id', organization_id: 'organization_id' })
+```
+
+#### Example: Create
+
+```ts
+const docker_builder_session = await client.DockerBuilderSession().create({
+  docker_builder_id: 'example_docker_builder_id',
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### DockerBuilderSetting
+
+Create an instance: `const docker_builder_setting = client.DockerBuilderSetting()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `docker_builder_settings` | `Record<string, any>` |  |
+| `idle_timeout_seconds` | `number` |  |
+| `max_concurrency` | `number` |  |
+| `organization_id` | `string` |  |
+| `region` | `string` |  |
+| `runtime_timeout_seconds` | `number` |  |
+
+#### Example: List
+
+```ts
+const docker_builder_settings = await client.DockerBuilderSetting().list({ organization_id: "example" })
+```
+
+
+### DomainDnsIntegration
+
+Create an instance: `const domain_dns_integration = client.DomainDnsIntegration()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_label` | `string | null` |  |
+| `api_token` | `string` |  |
+| `created_at` | `string` |  |
+| `failure_message` | `string | null` |  |
+| `has_token` | `boolean` |  |
+| `id` | `string` |  |
+| `last_verified_at` | `string | null` |  |
+| `organization_id` | `string` |  |
+| `provider` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: List
+
+```ts
+const domain_dns_integrations = await client.DomainDnsIntegration().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const domain_dns_integration = await client.DomainDnsIntegration().create({
+  organization_id: 'example_organization_id',
+  api_token: 'example_api_token',
+})
+```
 
 
 ### DomainPathRule
@@ -9379,6 +19144,28 @@ const dream = await client.Dream().load({ id: 'dream_id', organization_id: 'orga
 ```ts
 const dreams = await client.Dream().list({ organization_id: "example", project_id: "example" })
 ```
+
+
+### Edge
+
+Create an instance: `const edge = client.Edge()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### EmailVerification
+
+Create an instance: `const email_verification = client.EmailVerification()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
 
 
 ### Environment
@@ -9746,6 +19533,197 @@ const evidence = await client.Evidence().load({ id: 'evidence_id', organization_
 ```
 
 
+### ExecutionDesiredState
+
+Create an instance: `const execution_desired_state = client.ExecutionDesiredState()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `desired_state` | `Record<string, any>` |  |
+| `id` | `string` |  |
+| `stop_observed` | `boolean` | True only for archived zero-capacity states with all known jobs stopped and allocations terminated. |
+
+#### Example: Load
+
+```ts
+const execution_desired_state = await client.ExecutionDesiredState().load({ id: 'execution_desired_state_id' })
+```
+
+#### Example: List
+
+```ts
+const execution_desired_states = await client.ExecutionDesiredState().list()
+```
+
+#### Example: Create
+
+```ts
+const execution_desired_state = await client.ExecutionDesiredState().create({
+})
+```
+
+
+### ExecutionReconcilerTick
+
+Create an instance: `const execution_reconciler_tick = client.ExecutionReconcilerTick()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const execution_reconciler_tick = await client.ExecutionReconcilerTick().load({ id: 'execution_reconciler_tick_id' })
+```
+
+#### Example: List
+
+```ts
+const execution_reconciler_ticks = await client.ExecutionReconcilerTick().list()
+```
+
+#### Example: Create
+
+```ts
+const execution_reconciler_tick = await client.ExecutionReconcilerTick().create({
+})
+```
+
+
+### ExecutionRelease
+
+Create an instance: `const execution_release = client.ExecutionRelease()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const execution_release = await client.ExecutionRelease().load({ id: 'execution_release_id' })
+```
+
+#### Example: List
+
+```ts
+const execution_releases = await client.ExecutionRelease().list()
+```
+
+#### Example: Create
+
+```ts
+const execution_release = await client.ExecutionRelease().create({
+})
+```
+
+
+### ExecutionRuntimeInstance
+
+Create an instance: `const execution_runtime_instance = client.ExecutionRuntimeInstance()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter_kind` | `string` |  |
+| `app_environment_id` | `string` |  |
+| `app_release_id` | `string | null` |  |
+| `app_service_id` | `string` |  |
+| `booted_at` | `string | null` |  |
+| `booted_at_label` | `string | null` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `hosted_app_id` | `string` |  |
+| `id` | `string` |  |
+| `instance_key` | `string` |  |
+| `last_reconciled_at` | `string | null` |  |
+| `last_reconciled_at_label` | `string | null` |  |
+| `last_seen_at` | `string | null` |  |
+| `last_seen_at_label` | `string | null` |  |
+| `location` | `any` |  |
+| `location_id` | `string` |  |
+| `network_peer_id` | `string | null` |  |
+| `nomad_allocation_id` | `string | null` |  |
+| `nomad_task_name` | `string | null` |  |
+| `organization_id` | `string` |  |
+| `private_ipv4` | `string | null` |  |
+| `private_ipv6` | `string | null` |  |
+| `provider_instance_id` | `string | null` |  |
+| `public_endpoint` | `string | null` |  |
+| `service_name` | `string` | Name of the Vex service this instance runs, in the same vocabulary as `vex deploy list`. |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `terminated_at` | `string | null` |  |
+| `terminated_at_label` | `string | null` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+
+#### Example: Load
+
+```ts
+const execution_runtime_instance = await client.ExecutionRuntimeInstance().load({ id: 'execution_runtime_instance_id' })
+```
+
+#### Example: List
+
+```ts
+const execution_runtime_instances = await client.ExecutionRuntimeInstance().list()
+```
+
+#### Example: Create
+
+```ts
+const execution_runtime_instance = await client.ExecutionRuntimeInstance().create({
+})
+```
+
+
 ### Exploration
 
 Create an instance: `const exploration = client.Exploration()`
@@ -10048,6 +20026,356 @@ const findings = await client.Finding().list({ organization_id: "example" })
 ```
 
 
+### Gh
+
+Create an instance: `const gh = client.Gh()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capabilities` | `Record<string, any>` |  |
+| `content` | `Record<string, any>` |  |
+| `fetched_at` | `string` |  |
+| `id` | `string` |  |
+| `magic_merge` | `Record<string, any> | null` |  |
+| `pull_request` | `any` |  |
+| `stack` | `Record<string, any>` |  |
+| `transcript_paths` | `any[]` |  |
+
+#### Example: Load
+
+```ts
+const gh = await client.Gh().load({ id: 'gh_id', gh_id: 'gh_id', github_repo: 'github_repo', organization_id: 'organization_id' })
+```
+
+
+### GitImport
+
+Create an instance: `const git_import = client.GitImport()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `destination_mode` | `string` |  |
+| `error` | `string | null` |  |
+| `git_default_branch` | `string` | Original Git symbolic HEAD branch, independent of the branch selected for JJ conversion |
+| `git_status` | `string` |  |
+| `git_url` | `string` |  |
+| `id` | `string` |  |
+| `idempotency_key` | `string` |  |
+| `name` | `string` |  |
+| `native_status` | `string` |  |
+| `organization` | `string` |  |
+| `repository_id` | `string | null` |  |
+| `root_path` | `string` |  |
+| `slug` | `string` |  |
+| `source_branch` | `string` |  |
+| `target_branch` | `string` |  |
+
+#### Example: Load
+
+```ts
+const git_import = await client.GitImport().load({ id: 'git_import_id' })
+```
+
+#### Example: Create
+
+```ts
+const git_import = await client.GitImport().create({
+  organization_id: 'example_organization_id',
+  destination_mode: 'example_destination_mode',
+  idempotency_key: 'example_idempotency_key',
+  root_path: 'example_root_path',
+  slug: 'example_slug',
+  source_branch: 'example_source_branch',
+})
+```
+
+
+### Github
+
+Create an instance: `const github = client.Github()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### GithubApp
+
+Create an instance: `const github_app = client.GithubApp()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### GithubAppImportableRepository
+
+Create an instance: `const github_app_importable_repository = client.GithubAppImportableRepository()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_login` | `string` |  |
+| `github_app_installation_id` | `string` |  |
+| `next_page` | `number | null` | Next GitHub page for this installation |
+| `repositories` | `any[]` |  |
+
+#### Example: List
+
+```ts
+const github_app_importable_repositorys = await client.GithubAppImportableRepository().list()
+```
+
+
+### GithubAppInstallation
+
+Create an instance: `const github_app_installation = client.GithubAppInstallation()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `string | null` |  |
+| `account_id` | `string | null` |  |
+| `account_login` | `string` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `id` | `string` |  |
+| `installation_id` | `string` |  |
+| `installed_at` | `string | null` |  |
+| `installed_at_label` | `string | null` |  |
+| `manage_access_url` | `string` |  |
+| `organization_id` | `string` |  |
+| `permission_entries` | `any[]` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `Record<string, any>` |  |
+| `status` | `string` |  |
+| `suspended_at` | `string | null` |  |
+| `suspended_at_label` | `string | null` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+
+#### Example: List
+
+```ts
+const github_app_installations = await client.GithubAppInstallation().list({ organization_id: "example" })
+```
+
+
+### GithubAppInstallationAuthorization
+
+Create an instance: `const github_app_installation_authorization = client.GithubAppInstallationAuthorization()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `installation_url` | `string` |  |
+| `organization_slug` | `string` | Vex organization slug whose installation will be linked. |
+| `return_target` | `string` | Server-validated Vex application target used after verification. |
+
+#### Example: Create
+
+```ts
+const github_app_installation_authorization = await client.GithubAppInstallationAuthorization().create({
+  organization_slug: 'example_organization_slug',
+  return_target: 'example_return_target',
+})
+```
+
+
+### GithubAppUserAuthorization
+
+Create an instance: `const github_app_user_authorization = client.GithubAppUserAuthorization()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const github_app_user_authorization = await client.GithubAppUserAuthorization().create({
+})
+```
+
+
+### GithubCiRepository
+
+Create an instance: `const github_ci_repository = client.GithubCiRepository()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adoption_mode` | `string` |  |
+| `check_name_prefix` | `string` |  |
+| `ci_runner_pool_id` | `string | null` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `default_branch` | `string` |  |
+| `github_app_installation_id` | `string` |  |
+| `github_repository_id` | `string` |  |
+| `id` | `string` |  |
+| `last_compatibility_status` | `string | null` |  |
+| `last_error_message` | `string | null` |  |
+| `last_head_sha` | `string | null` |  |
+| `last_pull_request_number` | `number | null` |  |
+| `last_ref` | `string | null` |  |
+| `last_webhook_action` | `string | null` |  |
+| `last_webhook_at` | `string | null` |  |
+| `last_webhook_at_label` | `string | null` |  |
+| `last_webhook_delivery_id` | `string | null` |  |
+| `last_webhook_event` | `string | null` |  |
+| `metadata` | `Record<string, any>` |  |
+| `organization_id` | `string` |  |
+| `permission_status` | `string` |  |
+| `repository_full_name` | `string` |  |
+| `repository_name` | `string` |  |
+| `repository_owner` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+| `webhook_delivery_count` | `number` |  |
+
+#### Example: Load
+
+```ts
+const github_ci_repository = await client.GithubCiRepository().load({ id: 'github_ci_repository_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const github_ci_repositorys = await client.GithubCiRepository().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const github_ci_repository = await client.GithubCiRepository().create({
+  organization_id: 'example_organization_id',
+  github_app_installation_id: 'example_github_app_installation_id',
+  github_repository_id: 'example_github_repository_id',
+  repository_name: 'example_repository_name',
+  repository_owner: 'example_repository_owner',
+})
+```
+
+
+### GithubCiRepositoryCompatibilityReport
+
+Create an instance: `const github_ci_repository_compatibility_report = client.GithubCiRepositoryCompatibilityReport()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `analyzed_at` | `string` |  |
+| `analyzed_at_label` | `string | null` |  |
+| `ci_pipeline_id` | `string | null` |  |
+| `ci_pipeline_run_id` | `string | null` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `diagnostics` | `any[]` |  |
+| `errors` | `any[]` |  |
+| `event_action` | `string | null` |  |
+| `event_name` | `string` |  |
+| `execution_allowed` | `boolean` |  |
+| `github_ci_repository_id` | `string` |  |
+| `head_sha` | `string | null` |  |
+| `id` | `string` |  |
+| `metadata` | `Record<string, any>` |  |
+| `organization_id` | `string` |  |
+| `parser_version` | `string` |  |
+| `pull_request_number` | `number | null` |  |
+| `ref_name` | `string | null` |  |
+| `referenced_actions` | `any[]` |  |
+| `required_secrets` | `any[]` |  |
+| `runner_labels` | `any[]` |  |
+| `source_blob_sha` | `string | null` |  |
+| `source_sha` | `string` |  |
+| `status` | `string` |  |
+| `supported_features` | `Record<string, any>` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+| `warnings` | `any[]` |  |
+| `workflow_name` | `string | null` |  |
+| `workflow_path` | `string` |  |
+
+#### Example: Load
+
+```ts
+const github_ci_repository_compatibility_report = await client.GithubCiRepositoryCompatibilityReport().load({ id: 'github_ci_repository_compatibility_report_id', github_ci_repository_id: 'github_ci_repository_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const github_ci_repository_compatibility_reports = await client.GithubCiRepositoryCompatibilityReport().list({ github_ci_repository_id: "example", organization_id: "example" })
+```
+
+
 ### GithubConnection
 
 Create an instance: `const github_connection = client.GithubConnection()`
@@ -10083,6 +20411,599 @@ const github_connection = await client.GithubConnection().create({
   organization_id: 'example_organization_id',
   github_app_installation_id: 'example_github_app_installation_id',
   repositories: [],
+})
+```
+
+
+### GithubIntegration
+
+Create an instance: `const github_integration = client.GithubIntegration()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `string | null` |  |
+| `account_login` | `string` |  |
+| `connection_status` | `string` |  |
+| `connection_status_label` | `string` |  |
+| `github_installation` | `any` |  |
+| `health` | `Record<string, any>` |  |
+| `id` | `string` |  |
+| `imported_repositories_count` | `number` |  |
+| `imported_repositories_count_label` | `string` |  |
+| `organization` | `Record<string, any>` |  |
+| `pagination` | `Record<string, any>` |  |
+| `repositories` | `any[]` |  |
+
+#### Example: Load
+
+```ts
+const github_integration = await client.GithubIntegration().load({ id: 'github_integration_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const github_integrations = await client.GithubIntegration().list({ organization_id: "example" })
+```
+
+
+### GithubOnboarding
+
+Create an instance: `const github_onboarding = client.GithubOnboarding()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accounts` | `any[]` |  |
+| `active_batch_id` | `string | null` | The batch the wizard's import step should resume — the most recent batch still working, else the most recent overall. |
+| `batches` | `any[]` |  |
+| `capabilities` | `Record<string, any>` |  |
+| `installations` | `any[]` |  |
+
+#### Example: Load
+
+```ts
+const github_onboarding = await client.GithubOnboarding().load({ organization_id: 'organization_id' })
+```
+
+
+### GithubOnboardingBranch
+
+Create an instance: `const github_onboarding_branch = client.GithubOnboardingBranch()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `branches` | `any[]` |  |
+
+#### Example: List
+
+```ts
+const github_onboarding_branchs = await client.GithubOnboardingBranch().list({ organization_id: "example", github_app_installation_id: "example", name: "example", owner: "example" })
+```
+
+
+### GithubOnboardingImport
+
+Create an instance: `const github_onboarding_import = client.GithubOnboardingImport()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_login` | `string` |  |
+| `complete` | `boolean` | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `string` |  |
+| `failed_item_count` | `number` |  |
+| `github_app_installation_id` | `string` |  |
+| `id` | `string` |  |
+| `imported_item_count` | `number` |  |
+| `item_count` | `number` |  |
+| `items` | `any[]` |  |
+| `repositories` | `any` |  |
+| `status` | `string` |  |
+| `terminal_item_count` | `number` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Create
+
+```ts
+const github_onboarding_import = await client.GithubOnboardingImport().create({
+  organization_id: 'example_organization_id',
+  github_app_installation_id: 'example_github_app_installation_id',
+  repositories: 'example_repositories',
+})
+```
+
+
+### GithubOnboardingImportBatch
+
+Create an instance: `const github_onboarding_import_batch = client.GithubOnboardingImportBatch()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_login` | `string` |  |
+| `complete` | `boolean` | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `string` |  |
+| `failed_item_count` | `number` |  |
+| `github_app_installation_id` | `string` |  |
+| `id` | `string` |  |
+| `imported_item_count` | `number` |  |
+| `item_count` | `number` |  |
+| `items` | `any[]` |  |
+| `status` | `string` |  |
+| `terminal_item_count` | `number` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```ts
+const github_onboarding_import_batch = await client.GithubOnboardingImportBatch().load({ id: 'github_onboarding_import_batch_id', organization_id: 'organization_id' })
+```
+
+
+### GithubOnboardingImportItem
+
+Create an instance: `const github_onboarding_import_item = client.GithubOnboardingImportItem()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### GithubPullRequest
+
+Create an instance: `const github_pull_request = client.GithubPullRequest()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capabilities` | `Record<string, any>` |  |
+| `content` | `Record<string, any>` |  |
+| `fetched_at` | `string` |  |
+| `id` | `string` |  |
+| `magic_merge` | `Record<string, any> | null` |  |
+| `pull_request` | `any` |  |
+| `stack` | `Record<string, any>` |  |
+| `transcript_paths` | `any[]` |  |
+
+#### Example: Load
+
+```ts
+const github_pull_request = await client.GithubPullRequest().load({ id: 'github_pull_request_id', organization_id: 'organization_id', pull_request_id: 'pull_request_id' })
+```
+
+
+### GithubRunnerAdmission
+
+Create an instance: `const github_runner_admission = client.GithubRunnerAdmission()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const github_runner_admission = await client.GithubRunnerAdmission().create({
+})
+```
+
+
+### GithubRunnerCache
+
+Create an instance: `const github_runner_cache = client.GithubRunnerCache()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `entry_id` | `string` |  |
+| `key` | `string` |  |
+| `matched_key` | `string` |  |
+| `ok` | `boolean` |  |
+| `operation` | `string` |  |
+| `restore_keys` | `any[]` |  |
+| `signed_download_url` | `string` |  |
+| `size_bytes` | `string` |  |
+| `upload_path` | `string` |  |
+| `version` | `string` |  |
+
+#### Example: Create
+
+```ts
+const github_runner_cache = await client.GithubRunnerCache().create({
+  operation: 'example_operation',
+})
+```
+
+
+### GithubRunnerEgress
+
+Create an instance: `const github_runner_egress = client.GithubRunnerEgress()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_request` | `boolean` |  |
+| `cidr` | `string | null` |  |
+| `ipv4` | `string | null` |  |
+| `requested_at_label` | `string | null` |  |
+| `status` | `string` |  |
+
+#### Example: Load
+
+```ts
+const github_runner_egress = await client.GithubRunnerEgress().load({ organization_id: 'organization_id' })
+```
+
+#### Example: Create
+
+```ts
+const github_runner_egress = await client.GithubRunnerEgress().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### GithubRunnerHistory
+
+Create an instance: `const github_runner_history = client.GithubRunnerHistory()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activity` | `any[]` |  |
+| `counts` | `Record<string, any>` |  |
+| `observed_at` | `string` |  |
+| `pagination` | `Record<string, any>` |  |
+| `repositories` | `any[]` |  |
+| `runs` | `any[]` |  |
+| `setup` | `any` | CI onboarding. |
+| `success_rate` | `number | null` |  |
+| `usage` | `Record<string, any>` |  |
+
+#### Example: Load
+
+```ts
+const github_runner_history = await client.GithubRunnerHistory().load({ organization_id: 'organization_id' })
+```
+
+
+### GithubRunnerImage
+
+Create an instance: `const github_runner_image = client.GithubRunnerImage()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `image_reference` | `string` | Immutable linux/amd64 Ubuntu 24.04 image, registry/repository@sha256:digest, with Node 22+ |
+| `last_error` | `string | null` |  |
+| `modal_image_id` | `string | null` |  |
+| `name` | `string` |  |
+| `registry_secret_name` | `string | null` | Name of an organization CI secret containing REGISTRY_USERNAME and REGISTRY_PASSWORD JSON fields |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```ts
+const github_runner_image = await client.GithubRunnerImage().load({ id: 'github_runner_image_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const github_runner_images = await client.GithubRunnerImage().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const github_runner_image = await client.GithubRunnerImage().create({
+  organization_id: 'example_organization_id',
+  image_reference: 'example_image_reference',
+  name: 'example_name',
+})
+```
+
+
+### GithubRunnerPool
+
+Create an instance: `const github_runner_pool = client.GithubRunnerPool()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cpu_millicores` | `number` |  |
+| `enabled` | `boolean` |  |
+| `github_app_installation_id` | `string` |  |
+| `github_repository_id` | `string` |  |
+| `github_runner_image` | `any` |  |
+| `id` | `string` |  |
+| `image` | `string | null` | Organization image name or ID; null restores the standard image |
+| `invocations` | `any[]` |  |
+| `label` | `string` |  |
+| `last_error` | `string | null` |  |
+| `last_polled_at` | `string | null` |  |
+| `max_concurrency` | `number` |  |
+| `memory_mb` | `number` |  |
+| `organization_id` | `string` |  |
+| `provider` | `string` |  |
+| `repository_full_name` | `string` |  |
+| `runtime_kind` | `string` |  |
+| `timeout_seconds` | `number` |  |
+
+#### Example: List
+
+```ts
+const github_runner_pools = await client.GithubRunnerPool().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const github_runner_pool = await client.GithubRunnerPool().create({
+  organization_id: 'example_organization_id',
+  github_app_installation_id: 'example_github_app_installation_id',
+  repository_full_name: 'example_repository_full_name',
+})
+```
+
+
+### GithubRunnerSetup
+
+Create an instance: `const github_runner_setup = client.GithubRunnerSetup()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `error` | `string | null` |  |
+| `github_repository_connection_id` | `string` |  |
+| `id` | `string` |  |
+| `pull_request_url` | `string | null` |  |
+| `repository_full_name` | `string` |  |
+| `roder_thread_id` | `string | null` |  |
+| `runner_labels` | `any[]` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `summary` | `string | null` |  |
+
+#### Example: Load
+
+```ts
+const github_runner_setup = await client.GithubRunnerSetup().load({ id: 'github_runner_setup_id', organization_id: 'organization_id' })
+```
+
+#### Example: Create
+
+```ts
+const github_runner_setup = await client.GithubRunnerSetup().create({
+  organization_id: 'example_organization_id',
+  github_repository_connection_id: 'example_github_repository_connection_id',
+})
+```
+
+
+### Gitlab
+
+Create an instance: `const gitlab = client.Gitlab()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `configured` | `boolean` |  |
+| `connections` | `any[]` |  |
+| `integrations` | `any[]` |  |
+| `inventory_error` | `string | null` |  |
+| `next_page` | `number | null` |  |
+| `organization` | `Record<string, any>` |  |
+| `projects` | `any[]` |  |
+| `redirect_uri` | `string | null` | The OAuth redirect URI a self-managed GitLab application must use; null when GitLab callbacks aren't configured. |
+| `selected_integration_id` | `string | null` |  |
+
+#### Example: Load
+
+```ts
+const gitlab = await client.Gitlab().load({ organization_id: 'organization_id' })
+```
+
+
+### GitlabConnection
+
+Create an instance: `const gitlab_connection = client.GitlabConnection()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### GitlabImport
+
+Create an instance: `const gitlab_import = client.GitlabImport()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `integration_id` | `string` |  |
+| `project_id` | `number` |  |
+| `repo_slug` | `string` |  |
+| `source_branch` | `string` |  |
+
+#### Example: Create
+
+```ts
+const gitlab_import = await client.GitlabImport().create({
+  organization_id: 'example_organization_id',
+  integration_id: 'example_integration_id',
+  project_id: 1,
+})
+```
+
+
+### GitlabOauth
+
+Create an instance: `const gitlab_oauth = client.GitlabOauth()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### GrantAllAgent
+
+Create an instance: `const grant_all_agent = client.GrantAllAgent()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `all_agents_access` | `boolean` |  |
+| `enabled` | `boolean` |  |
+| `execution_available` | `boolean` |  |
+
+#### Example: Create
+
+```ts
+const grant_all_agent = await client.GrantAllAgent().create({
+  device_id: 'example_device_id',
+  organization_id: 'example_organization_id',
+  enabled: true,
 })
 ```
 
@@ -10154,6 +21075,23 @@ const hosting_app_domain = await client.HostingAppDomain().create({
 ```
 
 
+### IdentityOrganization
+
+Create an instance: `const identity_organization = client.IdentityOrganization()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
 ### ImageRepository
 
 Create an instance: `const image_repository = client.ImageRepository()`
@@ -10199,6 +21137,62 @@ const image_repository = await client.ImageRepository().create({
   name: 'example_name',
   slug: 'example_slug',
 })
+```
+
+
+### ImageRepositoryTag
+
+Create an instance: `const image_repository_tag = client.ImageRepositoryTag()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `image_repository` | `Record<string, any>` |  |
+| `name` | `string` |  |
+| `registry_url` | `string` |  |
+| `tags` | `any[]` |  |
+
+#### Example: List
+
+```ts
+const image_repository_tags = await client.ImageRepositoryTag().list({ image_repository_id: "example" })
+```
+
+
+### ImportBranchPolicy
+
+Create an instance: `const import_branch_policy = client.ImportBranchPolicy()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `boolean` |  |
+| `can_manage_sandbox_region` | `boolean` |  |
+| `dedicated_outbound_ip_addresses` | `any[]` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` |  |
+| `organization` | `Record<string, any>` |  |
+| `sandbox_regions` | `any[]` |  |
+
+#### Example: Load
+
+```ts
+const import_branch_policy = await client.ImportBranchPolicy().load({ organization_id: 'organization_id' })
 ```
 
 
@@ -10311,6 +21305,134 @@ const invitation = await client.Invitation().create({
 ```
 
 
+### InvocationControl
+
+Create an instance: `const invocation_control = client.InvocationControl()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### JobLogChunk
+
+Create an instance: `const job_log_chunk = client.JobLogChunk()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `byte_size` | `number` |  |
+| `ci_job_id` | `string | null` |  |
+| `ci_pipeline_run_id` | `string | null` |  |
+| `ci_step_id` | `string | null` |  |
+| `content` | `string` |  |
+| `content_format` | `string` |  |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `organization_id` | `string` |  |
+| `sequence_number` | `number` |  |
+| `stream` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: List
+
+```ts
+const job_log_chunks = await client.JobLogChunk().list({ job_id: "example", pipeline_id: "example", run_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const job_log_chunk = await client.JobLogChunk().create({
+  job_id: 'example_job_id',
+  pipeline_id: 'example_pipeline_id',
+  run_id: 'example_run_id',
+})
+```
+
+
+### JobStep
+
+Create an instance: `const job_step = client.JobStep()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```ts
+const job_steps = await client.JobStep().list({ job_id: "example", pipeline_id: "example", run_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const job_step = await client.JobStep().create({
+  job_id: 'example_job_id',
+  pipeline_id: 'example_pipeline_id',
+  run_id: 'example_run_id',
+})
+```
+
+
+### JobWorkspace
+
+Create an instance: `const job_workspace = client.JobWorkspace()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```ts
+const job_workspaces = await client.JobWorkspace().list({ job_id: "example", pipeline_id: "example", run_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const job_workspace = await client.JobWorkspace().create({
+  job_id: 'example_job_id',
+  pipeline_id: 'example_pipeline_id',
+  run_id: 'example_run_id',
+})
+```
+
+
 ### JourneyVariantReplay
 
 Create an instance: `const journey_variant_replay = client.JourneyVariantReplay()`
@@ -10413,6 +21535,259 @@ const knowledge = await client.Knowledge().create({
   markdown: 'example_markdown',
   project_id: 'example_project_id',
   title: 'example_title',
+})
+```
+
+
+### Known
+
+Create an instance: `const known = client.Known()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### Label
+
+Create an instance: `const label = client.Label()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `changes_count` | `number` |  |
+| `id` | `string` |  |
+| `name` | `string` | Display name |
+| `slug` | `string` | Normalized identity used for filtering and lookup. |
+
+#### Example: List
+
+```ts
+const labels = await client.Label().list({ organization_id: "example" })
+```
+
+
+### LeaseArtifact
+
+Create an instance: `const lease_artifact = client.LeaseArtifact()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const lease_artifact = await client.LeaseArtifact().create({
+  lease_id: 'example_lease_id',
+  node_id: 'example_node_id',
+})
+```
+
+
+### LeaseCache
+
+Create an instance: `const lease_cache = client.LeaseCache()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### LeaseLogChunk
+
+Create an instance: `const lease_log_chunk = client.LeaseLogChunk()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const lease_log_chunk = await client.LeaseLogChunk().create({
+  lease_id: 'example_lease_id',
+  node_id: 'example_node_id',
+})
+```
+
+
+### LeaseReconciliation
+
+Create an instance: `const lease_reconciliation = client.LeaseReconciliation()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### LeaseStep
+
+Create an instance: `const lease_step = client.LeaseStep()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### LeaseVerifyDiagnostic
+
+Create an instance: `const lease_verify_diagnostic = client.LeaseVerifyDiagnostic()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `browser_events` | `Record<string, any>` |  |
+| `live_browser` | `Record<string, any>` |  |
+| `live_view` | `Record<string, any>` | The tester's read-only live stream for page viewers. |
+| `steps` | `any[]` |  |
+
+#### Example: Create
+
+```ts
+const lease_verify_diagnostic = await client.LeaseVerifyDiagnostic().create({
+  lease_id: 'example_lease_id',
+  swarm_id: 'example_swarm_id',
+  task_id: 'example_task_id',
+  browser_events: {},
+  live_browser: {},
+  live_view: {},
+})
+```
+
+
+### LeaseVerifySecret
+
+Create an instance: `const lease_verify_secret = client.LeaseVerifySecret()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const lease_verify_secret = await client.LeaseVerifySecret().create({
+  lease_id: 'example_lease_id',
+  swarm_id: 'example_swarm_id',
+  task_id: 'example_task_id',
+})
+```
+
+
+### LeaseWorkspace
+
+Create an instance: `const lease_workspace = client.LeaseWorkspace()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### LocalAgentDecision
+
+Create an instance: `const local_agent_decision = client.LocalAgentDecision()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `request` | `Record<string, any>` | A native OpenAI Decisions request for gpt-6-luna, at most 1600 KiB, with inline images only |
+
+#### Example: Create
+
+```ts
+const local_agent_decision = await client.LocalAgentDecision().create({
+  organization_id: 'example_organization_id',
+  request: {},
+})
+```
+
+
+### LocalAgentResponse
+
+Create an instance: `const local_agent_response = client.LocalAgentResponse()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `input` | `any[]` |  |
+| `model` | `string` |  |
+| `service_tier` | `string | null` |  |
+| `store` | `boolean` |  |
+| `stream` | `boolean` |  |
+| `tools` | `any[]` |  |
+
+#### Example: Create
+
+```ts
+const local_agent_response = await client.LocalAgentResponse().create({
+  organization_id: 'example_organization_id',
+  input: [],
+  model: 'example_model',
+  store: true,
+  stream: true,
 })
 ```
 
@@ -10524,6 +21899,121 @@ Create an instance: `const location = client.Location()`
 ```ts
 const locations = await client.Location().list()
 ```
+
+
+### LogStreamChunk
+
+Create an instance: `const log_stream_chunk = client.LogStreamChunk()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const log_stream_chunk = await client.LogStreamChunk().load({ id: 'log_stream_chunk_id', log_stream_id: 'log_stream_id', space_id: 'space_id' })
+```
+
+#### Example: List
+
+```ts
+const log_stream_chunks = await client.LogStreamChunk().list({ log_stream_id: "example", space_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const log_stream_chunk = await client.LogStreamChunk().create({
+  log_stream_id: 'example_log_stream_id',
+  space_id: 'example_space_id',
+})
+```
+
+
+### LogoImage
+
+Create an instance: `const logo_image = client.LogoImage()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_products` | `any[]` | Products this organization has activated (PRD 144). |
+| `agents_only` | `boolean` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `boolean` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `github_prs_authored_by_change_author` | `boolean` |  |
+| `id` | `string` |  |
+| `logo_url` | `string | null` |  |
+| `member_count` | `number` |  |
+| `name` | `string` |  |
+| `pending_invitation_count` | `number` |  |
+| `personal` | `boolean` |  |
+| `repository_count` | `number` |  |
+| `role` | `string | null` |  |
+| `sandbox_region` | `string` |  |
+| `shared_agent_personal_accounts_enabled` | `boolean` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` |  |
+| `source_control_providers` | `any[]` | Connected source control providers for this organization. |
+| `source_ui_enabled` | `boolean` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `string` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+| `verify_pr_scenario_writing_enabled` | `boolean` |  |
+
+
+### MarketingSetting
+
+Create an instance: `const marketing_setting = client.MarketingSetting()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `call_first` | `boolean` |  |
+
+#### Example: List
+
+```ts
+const marketing_settings = await client.MarketingSetting().list()
+```
+
+
+### McpOauth
+
+Create an instance: `const mcp_oauth = client.McpOauth()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
 
 
 ### Me
@@ -10756,6 +22246,50 @@ const memory = await client.Memory().create({
 ```
 
 
+### MergeQueueEntry
+
+Create an instance: `const merge_queue_entry = client.MergeQueueEntry()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `analytics` | `Record<string, any>` | Queue performance for the reporting window. |
+| `change_id` | `string | null` |  |
+| `expected_target_commit_id` | `string | null` |  |
+| `expected_target_version` | `number | null` |  |
+| `expected_version` | `number` |  |
+| `github_pr_number` | `number | null` |  |
+| `id` | `string` |  |
+| `idempotency_key` | `string` |  |
+| `kind` | `string` |  |
+| `policy` | `Record<string, any>` |  |
+| `priority` | `string` |  |
+| `queue` | `Record<string, any>` |  |
+| `target_branches` | `any[]` | Bookmark names for the target picker. |
+| `when_ready` | `boolean | null` |  |
+
+#### Example: Create
+
+```ts
+const merge_queue_entry = await client.MergeQueueEntry().create({
+  merge_queue_id: 'example_merge_queue_id',
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  expected_version: 1,
+  idempotency_key: 'example_idempotency_key',
+  kind: 'example_kind',
+})
+```
+
+
 ### MergeRequest
 
 Create an instance: `const merge_request = client.MergeRequest()`
@@ -10818,6 +22352,43 @@ const merge_request = await client.MergeRequest().create({
   organization_id: 'example_organization_id',
   idempotency_key: 'example_idempotency_key',
   number: 1,
+})
+```
+
+
+### MergeResolution
+
+Create an instance: `const merge_resolution = client.MergeResolution()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `base` | `string` | Common ancestor file contents |
+| `content` | `string | null` |  |
+| `context` | `Record<string, any>` | Optional surrounding files keyed by path |
+| `duration_ms` | `number` |  |
+| `fallback` | `boolean` |  |
+| `model` | `string` |  |
+| `ours` | `string` | Current / left file contents |
+| `path` | `string` | Repository-relative path of the conflicted file |
+| `resolved` | `boolean` |  |
+| `theirs` | `string` | Incoming / right file contents |
+
+#### Example: Create
+
+```ts
+const merge_resolution = await client.MergeResolution().create({
+  base: 'example_base',
+  ours: 'example_ours',
+  theirs: 'example_theirs',
 })
 ```
 
@@ -10910,6 +22481,93 @@ const metric_querys = await client.MetricQuery().list()
 ```
 
 
+### MetronomeWebhook
+
+Create an instance: `const metronome_webhook = client.MetronomeWebhook()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const metronome_webhook = await client.MetronomeWebhook().create({
+})
+```
+
+
+### ModelSubscriptionAccount
+
+Create an instance: `const model_subscription_account = client.ModelSubscriptionAccount()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accounts` | `any[]` |  |
+| `agents` | `any[]` |  |
+| `can_disconnect` | `boolean` |  |
+| `connection_agent` | `Record<string, any> | null` |  |
+| `email` | `string` |  |
+| `id` | `string` |  |
+| `label` | `string` |  |
+| `provider` | `string` |  |
+| `saved` | `boolean` |  |
+| `status` | `string` |  |
+| `usable` | `boolean` |  |
+
+#### Example: List
+
+```ts
+const model_subscription_accounts = await client.ModelSubscriptionAccount().list()
+```
+
+#### Example: Create
+
+```ts
+const model_subscription_account = await client.ModelSubscriptionAccount().create({
+  label: 'example_label',
+})
+```
+
+
+### ModelSubscriptionAccountConnection
+
+Create an instance: `const model_subscription_account_connection = client.ModelSubscriptionAccountConnection()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const model_subscription_account_connection = await client.ModelSubscriptionAccountConnection().load({ id: 'model_subscription_account_connection_id' })
+```
+
+
 ### NetworkConnection
 
 Create an instance: `const network_connection = client.NetworkConnection()`
@@ -10944,6 +22602,123 @@ const network_connection = await client.NetworkConnection().create({
   organization_id: 'example_organization_id',
   name: 'example_name',
 })
+```
+
+
+### NetworkingSpace
+
+Create an instance: `const networking_space = client.NetworkingSpace()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const networking_space = await client.NetworkingSpace().load({ id: 'networking_space_id' })
+```
+
+#### Example: List
+
+```ts
+const networking_spaces = await client.NetworkingSpace().list()
+```
+
+#### Example: Create
+
+```ts
+const networking_space = await client.NetworkingSpace().create({
+})
+```
+
+
+### Node
+
+Create an instance: `const node = client.Node()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `string | null` |  |
+| `account_id` | `string | null` |  |
+| `account_login` | `string` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `id` | `string` |  |
+| `installation_id` | `string` |  |
+| `installed_at` | `string | null` |  |
+| `installed_at_label` | `string | null` |  |
+| `manage_access_url` | `string` |  |
+| `organization_id` | `string` |  |
+| `permission_entries` | `any[]` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `Record<string, any>` |  |
+| `status` | `string` |  |
+| `suspended_at` | `string | null` |  |
+| `suspended_at_label` | `string | null` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+
+#### Example: List
+
+```ts
+const nodes = await client.Node().list({ organization_id: "example" })
+```
+
+
+### NodeCertificate
+
+Create an instance: `const node_certificate = client.NodeCertificate()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### NodeLease
+
+Create an instance: `const node_lease = client.NodeLease()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```ts
+const node_leases = await client.NodeLease().list({ node_id: "example" })
 ```
 
 
@@ -11020,6 +22795,201 @@ const nomad_logs = await client.NomadLog().list({ app_id: "example" })
 ```
 
 
+### Now
+
+Create an instance: `const now = client.Now()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `needs_attention` | `any[]` |  |
+| `pagination` | `Record<string, any>` |  |
+| `recently_landed` | `any[]` |  |
+| `shipping_now` | `any[]` |  |
+| `summary` | `Record<string, any>` |  |
+
+#### Example: Load
+
+```ts
+const now = await client.Now().load({ organization_id: 'organization_id' })
+```
+
+
+### ObservabilityClickhouseCluster
+
+Create an instance: `const observability_clickhouse_cluster = client.ObservabilityClickhouseCluster()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const observability_clickhouse_cluster = await client.ObservabilityClickhouseCluster().load({ id: 'observability_clickhouse_cluster_id' })
+```
+
+#### Example: List
+
+```ts
+const observability_clickhouse_clusters = await client.ObservabilityClickhouseCluster().list()
+```
+
+#### Example: Create
+
+```ts
+const observability_clickhouse_cluster = await client.ObservabilityClickhouseCluster().create({
+})
+```
+
+
+### ObservabilityQuickwitCluster
+
+Create an instance: `const observability_quickwit_cluster = client.ObservabilityQuickwitCluster()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const observability_quickwit_cluster = await client.ObservabilityQuickwitCluster().load({ id: 'observability_quickwit_cluster_id' })
+```
+
+#### Example: List
+
+```ts
+const observability_quickwit_clusters = await client.ObservabilityQuickwitCluster().list()
+```
+
+#### Example: Create
+
+```ts
+const observability_quickwit_cluster = await client.ObservabilityQuickwitCluster().create({
+})
+```
+
+
+### ObservabilitySpace
+
+Create an instance: `const observability_space = client.ObservabilitySpace()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const observability_space = await client.ObservabilitySpace().load({ id: 'observability_space_id' })
+```
+
+#### Example: List
+
+```ts
+const observability_spaces = await client.ObservabilitySpace().list()
+```
+
+#### Example: Create
+
+```ts
+const observability_space = await client.ObservabilitySpace().create({
+})
+```
+
+
+### Openapi
+
+Create an instance: `const openapi = client.Openapi()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Example: Load
+
+```ts
+const openapi = await client.Openapi().load()
+```
+
+
+### OrgInvitation
+
+Create an instance: `const org_invitation = client.OrgInvitation()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `invitation` | `Record<string, any>` |  |
+| `registration_options` | `any` |  |
+| `requires_password_setup` | `boolean` |  |
+| `start_guided_setup` | `boolean` |  |
+
+#### Example: Load
+
+```ts
+const org_invitation = await client.OrgInvitation().load({ id: 'org_invitation_id' })
+```
+
+
 ### Organization
 
 Create an instance: `const organization = client.Organization()`
@@ -11083,6 +23053,540 @@ const organization = await client.Organization().create({
   slug: 'example_slug',
 })
 ```
+
+
+### OrganizationApp
+
+Create an instance: `const organization_app = client.OrganizationApp()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```ts
+const organization_apps = await client.OrganizationApp().list({ organization_id: "example", native_agent_id: "example" })
+```
+
+
+### OrganizationControl
+
+Create an instance: `const organization_control = client.OrganizationControl()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### OrganizationDevice
+
+Create an instance: `const organization_device = client.OrganizationDevice()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### OrganizationIdentityCertificate
+
+Create an instance: `const organization_identity_certificate = client.OrganizationIdentityCertificate()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const organization_identity_certificate = await client.OrganizationIdentityCertificate().load({ id: 'organization_identity_certificate_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const organization_identity_certificates = await client.OrganizationIdentityCertificate().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const organization_identity_certificate = await client.OrganizationIdentityCertificate().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### OrganizationInteraction
+
+Create an instance: `const organization_interaction = client.OrganizationInteraction()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const organization_interaction = await client.OrganizationInteraction().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### OrganizationInvitation
+
+Create an instance: `const organization_invitation = client.OrganizationInvitation()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email` | `string` |  |
+| `id` | `string` |  |
+| `role` | `string` |  |
+
+#### Example: Create
+
+```ts
+const organization_invitation = await client.OrganizationInvitation().create({
+  organization_id: 'example_organization_id',
+  email: 'example_email',
+  role: 'example_role',
+})
+```
+
+
+### OrganizationMessageFile
+
+Create an instance: `const organization_message_file = client.OrganizationMessageFile()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const organization_message_file = await client.OrganizationMessageFile().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### OrganizationOidcTrust
+
+Create an instance: `const organization_oidc_trust = client.OrganizationOidcTrust()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const organization_oidc_trust = await client.OrganizationOidcTrust().load({ id: 'organization_oidc_trust_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const organization_oidc_trusts = await client.OrganizationOidcTrust().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const organization_oidc_trust = await client.OrganizationOidcTrust().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### OrganizationRunEvent
+
+Create an instance: `const organization_run_event = client.OrganizationRunEvent()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const organization_run_event = await client.OrganizationRunEvent().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### OrganizationRunOutcome
+
+Create an instance: `const organization_run_outcome = client.OrganizationRunOutcome()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const organization_run_outcome = await client.OrganizationRunOutcome().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### OrganizationRunUsage
+
+Create an instance: `const organization_run_usage = client.OrganizationRunUsage()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const organization_run_usage = await client.OrganizationRunUsage().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### OrganizationSandbox
+
+Create an instance: `const organization_sandbox = client.OrganizationSandbox()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### OrganizationSecret
+
+Create an instance: `const organization_secret = client.OrganizationSecret()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `app_environment_id` | `string | null` |  |
+| `app_service_id` | `string | null` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `created_by` | `Record<string, any> | null` |  |
+| `current_version` | `Record<string, any> | null` |  |
+| `description` | `string | null` |  |
+| `env_key` | `string` |  |
+| `expose_to_build` | `boolean` |  |
+| `expose_to_ci` | `boolean` |  |
+| `hosted_app_id` | `string | null` |  |
+| `id` | `string` |  |
+| `last_accessed_at` | `string | null` |  |
+| `last_accessed_at_label` | `string | null` |  |
+| `last_accessed_by` | `Record<string, any> | null` |  |
+| `latest_version_number` | `number | null` |  |
+| `name` | `string` |  |
+| `organization_id` | `string | null` |  |
+| `owner_service_account_id` | `string | null` |  |
+| `rotation_policy` | `string | null` |  |
+| `scope_kind` | `string` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+
+#### Example: Load
+
+```ts
+const organization_secret = await client.OrganizationSecret().load({ id: 'organization_secret_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const organization_secrets = await client.OrganizationSecret().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const organization_secret = await client.OrganizationSecret().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### OrganizationServiceAccount
+
+Create an instance: `const organization_service_account = client.OrganizationServiceAccount()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const organization_service_account = await client.OrganizationServiceAccount().load({ id: 'organization_service_account_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const organization_service_accounts = await client.OrganizationServiceAccount().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const organization_service_account = await client.OrganizationServiceAccount().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### OrganizationSetting
+
+Create an instance: `const organization_setting = client.OrganizationSetting()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `concurrent_run_limit_override` | `number | null` |  |
+| `customize_onboarding_packages` | `boolean` |  |
+| `daily_run_limit_override` | `number | null` |  |
+| `deployment_usage_visibility` | `string` |  |
+| `monthly_browser_minutes_limit_override` | `number | null` |  |
+| `monthly_budget_dollars` | `string | number | null` |  |
+| `name` | `string` |  |
+| `onboarding_custom_pricing` | `boolean` |  |
+| `onboarding_package_keys` | `any[]` |  |
+
+
+### OrganizationSite
+
+Create an instance: `const organization_site = client.OrganizationSite()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```ts
+const organization_sites = await client.OrganizationSite().list({ organization_id: "example", native_agent_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const organization_site = await client.OrganizationSite().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### OrganizationSubscription
+
+Create an instance: `const organization_subscription = client.OrganizationSubscription()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### OrganizationTool
+
+Create an instance: `const organization_tool = client.OrganizationTool()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `arguments` | `Record<string, any>` |  |
+| `native_agent_id` | `string` |  |
+| `tool` | `string` |  |
+
+#### Example: Create
+
+```ts
+const organization_tool = await client.OrganizationTool().create({
+  organization_id: 'example_organization_id',
+  arguments: {},
+  native_agent_id: 'example_native_agent_id',
+  tool: 'example_tool',
+})
+```
+
+
+### OrganizationWorkloadIdentity
+
+Create an instance: `const organization_workload_identity = client.OrganizationWorkloadIdentity()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const organization_workload_identity = await client.OrganizationWorkloadIdentity().load({ id: 'organization_workload_identity_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const organization_workload_identitys = await client.OrganizationWorkloadIdentity().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const organization_workload_identity = await client.OrganizationWorkloadIdentity().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### OtelIngest
+
+Create an instance: `const otel_ingest = client.OtelIngest()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
 
 
 ### Page
@@ -11168,6 +23672,103 @@ const page_agents = await client.PageAgent().list({ organization_id: "example" }
 ```
 
 
+### PageArtefact
+
+Create an instance: `const page_artefact = client.PageArtefact()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `artefact` | `any` |  |
+| `automation` | `Record<string, any> | null` |  |
+| `automation_invocation_id` | `string | null` |  |
+| `byte_size` | `number` |  |
+| `checksum_sha256` | `string` |  |
+| `comment_threads` | `any[]` |  |
+| `content_type` | `string` |  |
+| `created_at` | `string | null` |  |
+| `created_by_user_id` | `string | null` |  |
+| `description` | `string | null` |  |
+| `document_key` | `string` | Stable document identity shared by all revisions. |
+| `draft` | `Record<string, any> | null` | The autosaved working copy of the newest Markdown version; null for older versions and other files. |
+| `entrypoint` | `string` |  |
+| `expires_at` | `string | null` |  |
+| `filename` | `string` |  |
+| `files` | `any[]` |  |
+| `harness` | `string | null` |  |
+| `harness_version` | `string | null` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `kinds` | `any[]` |  |
+| `model` | `string | null` |  |
+| `organization` | `Record<string, any>` |  |
+| `organization_id` | `string` |  |
+| `pagination` | `Record<string, any>` |  |
+| `permissions` | `Record<string, any>` |  |
+| `preview` | `Record<string, any>` |  |
+| `published_at` | `string | null` |  |
+| `published_at_label` | `string | null` |  |
+| `publisher` | `Record<string, any> | null` |  |
+| `repository` | `Record<string, any> | null` |  |
+| `repository_id` | `string | null` |  |
+| `selected_path` | `string` |  |
+| `slug` | `string` |  |
+| `source` | `string` |  |
+| `status` | `string` |  |
+| `title` | `string` |  |
+| `vcs_agent_checkpoint_id` | `string | null` |  |
+| `vcs_agent_session_id` | `string | null` |  |
+| `version` | `number` |  |
+| `versions` | `any[]` |  |
+| `view_url` | `string` |  |
+| `web_url` | `string` |  |
+
+#### Example: Load
+
+```ts
+const page_artefact = await client.PageArtefact().load({ id: 'page_artefact_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const page_artefacts = await client.PageArtefact().list({ organization_id: "example" })
+```
+
+
+### PageCiPipelineRun
+
+Create an instance: `const page_ci_pipeline_run = client.PageCiPipelineRun()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `error` | `string | null` |  |
+| `id` | `string` |  |
+| `jobs` | `any[]` |  |
+
+#### Example: Load
+
+```ts
+const page_ci_pipeline_run = await client.PageCiPipelineRun().load({ id: 'page_ci_pipeline_run_id', pipeline_id: 'pipeline_id' })
+```
+
+
 ### PageProjectRun
 
 Create an instance: `const page_project_run = client.PageProjectRun()`
@@ -11200,6 +23801,137 @@ Create an instance: `const page_project_run = client.PageProjectRun()`
 
 ```ts
 const page_project_run = await client.PageProjectRun().load({ id: 'page_project_run_id', organization_id: 'organization_id', project_id: 'project_id' })
+```
+
+
+### PageRepoVcCommit
+
+Create an instance: `const page_repo_vc_commit = client.PageRepoVcCommit()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `commit` | `any` |  |
+| `diff_path` | `string` | Fingerprinted path serving this commit range's file diff. |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const page_repo_vc_commit = await client.PageRepoVcCommit().load({ id: 'page_repo_vc_commit_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+
+### PagesBilling
+
+Create an instance: `const pages_billing = client.PagesBilling()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `any[]` |  |
+| `breakdown` | `any` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` |  |
+| `can_manage_contact` | `boolean` |  |
+| `can_manage_extra_spend` | `boolean` |  |
+| `can_manage_local_subscription` | `boolean` |  |
+| `can_manage_payment_method` | `boolean` |  |
+| `can_set_up_billing` | `boolean` |  |
+| `customer` | `any` |  |
+| `deployment_usage_visible` | `boolean` |  |
+| `entitlements` | `Record<string, any>` |  |
+| `extra_spend_enabled` | `boolean` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` |  |
+| `package` | `any` |  |
+| `prepaid` | `any` |  |
+| `preview` | `any` | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `Record<string, any>` |  |
+| `stripe` | `Record<string, any>` |  |
+| `subscription` | `any` |  |
+| `token_account` | `Record<string, any>` |  |
+
+#### Example: Load
+
+```ts
+const pages_billing = await client.PagesBilling().load({ organization_id: 'organization_id' })
+```
+
+
+### PagesGithubOnboarding
+
+Create an instance: `const pages_github_onboarding = client.PagesGithubOnboarding()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `onboarding` | `Record<string, any>` |  |
+| `organization` | `Record<string, any>` |  |
+
+#### Example: Load
+
+```ts
+const pages_github_onboarding = await client.PagesGithubOnboarding().load({ organization_id: 'organization_id' })
+```
+
+
+### PagesMember
+
+Create an instance: `const pages_member = client.PagesMember()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accepted_at` | `string | null` |  |
+| `accepted_by_user` | `any` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `email` | `string` |  |
+| `email_delivery_status` | `string` |  |
+| `expires_at` | `string | null` |  |
+| `expires_at_label` | `string | null` |  |
+| `id` | `string` |  |
+| `invite_url` | `string | null` |  |
+| `invited_by_user` | `any` |  |
+| `organization` | `Record<string, any>` |  |
+| `revoked_at` | `string | null` |  |
+| `role` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+
+#### Example: List
+
+```ts
+const pages_members = await client.PagesMember().list({ organization_id: "example" })
 ```
 
 
@@ -11327,6 +24059,198 @@ Create an instance: `const pages_project_scenario = client.PagesProjectScenario(
 
 ```ts
 const pages_project_scenarios = await client.PagesProjectScenario().list({ organization_id: "example", project_id: "example" })
+```
+
+
+### PagesRegistry
+
+Create an instance: `const pages_registry = client.PagesRegistry()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active_repository_count` | `number` |  |
+| `error` | `string | null` |  |
+| `pagination` | `Record<string, any>` |  |
+| `repositories` | `any[]` |  |
+| `repository_count` | `number` |  |
+
+#### Example: Load
+
+```ts
+const pages_registry = await client.PagesRegistry().load({ organization_id: 'organization_id' })
+```
+
+
+### PagesSession
+
+Create an instance: `const pages_session = client.PagesSession()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter` | `string` |  |
+| `created_at` | `string | null` |  |
+| `cursor` | `string` |  |
+| `ended_at` | `string | null` |  |
+| `external_session_id` | `string` |  |
+| `facets` | `Record<string, any>` |  |
+| `from` | `string` |  |
+| `github_access_warnings` | `any[]` |  |
+| `harness` | `string` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `string` |  |
+| `last_activity_at` | `string | null` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `string | null` |  |
+| `limit` | `number` |  |
+| `markers` | `any[]` |  |
+| `max_bytes` | `number` |  |
+| `mode` | `string` |  |
+| `offset` | `number` |  |
+| `pagination` | `Record<string, any>` |  |
+| `query` | `string` |  |
+| `repo` | `string` |  |
+| `repository` | `any` |  |
+| `search` | `any` |  |
+| `search_enabled` | `boolean` |  |
+| `session` | `any` | Identical serialization to the org sessions page's expanded session, so the web reuses one session-detail builder. |
+| `sessions` | `any[]` |  |
+| `started_at` | `string | null` |  |
+| `stats` | `Record<string, any>` |  |
+| `status` | `string` |  |
+| `title` | `string | null` |  |
+| `to` | `string` |  |
+| `token_stats` | `any` |  |
+| `transcript_index` | `any` |  |
+| `transcript_stats` | `any` |  |
+| `updated_at` | `string | null` |  |
+| `user` | `any` |  |
+| `user_id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const pages_session = await client.PagesSession().load({ id: 'pages_session_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const pages_sessions = await client.PagesSession().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const pages_session = await client.PagesSession().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### Pairing
+
+Create an instance: `const pairing = client.Pairing()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const pairing = await client.Pairing().load({ id: 'pairing_id' })
+```
+
+#### Example: List
+
+```ts
+const pairings = await client.Pairing().list()
+```
+
+#### Example: Create
+
+```ts
+const pairing = await client.Pairing().create({
+})
+```
+
+
+### PairingEvent
+
+Create an instance: `const pairing_event = client.PairingEvent()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ts
+const pairing_events = await client.PairingEvent().list({ pairing_id: "example" })
+```
+
+
+### ParallelV1
+
+Create an instance: `const parallel_v1 = client.ParallelV1()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### PatchsetDiff
+
+Create an instance: `const patchset_diff = client.PatchsetDiff()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `files` | `any[]` |  |
+| `id` | `string` |  |
+| `patchset` | `Record<string, any>` |  |
+
+#### Example: Load
+
+```ts
+const patchset_diff = await client.PatchsetDiff().load({ id: 'patchset_diff_id', change_id: 'change_id', organization_id: 'organization_id', patchset_id: 'patchset_id', repo_id: 'repo_id' })
 ```
 
 
@@ -11494,6 +24418,96 @@ const preview_sharing_approval = await client.PreviewSharingApproval().create({
   app_id: 'example_app_id',
   preview_id: 'example_preview_id',
   snapshot_version: 1,
+})
+```
+
+
+### ProactiveAgentWaitlistEntry
+
+Create an instance: `const proactive_agent_waitlist_entry = client.ProactiveAgentWaitlistEntry()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email` | `string` |  |
+| `first_task` | `string | null` | The first job they would hand an agent. |
+| `invite_code` | `string | null` | The referral code of the invite link they arrived through. |
+| `places_per_referral` | `number` | Most places one referral moves the entry up; fewer when boosted entries are ahead. |
+| `position` | `number` | 1-based place in the queue. |
+| `position_after_next_referral` | `number` | The place one more referral would give this entry, as Rails would assign it. |
+| `referral_code` | `string` | Shared in this entry's invite link. |
+| `referral_count` | `number` | People who joined through this entry's link. |
+| `total` | `number` | Display total including a random increment per signup; not the actual number of entries. |
+| `website` | `string | null` | Honeypot. |
+
+#### Example: Load
+
+```ts
+const proactive_agent_waitlist_entry = await client.ProactiveAgentWaitlistEntry().load({ id: 'proactive_agent_waitlist_entry_id' })
+```
+
+#### Example: Create
+
+```ts
+const proactive_agent_waitlist_entry = await client.ProactiveAgentWaitlistEntry().create({
+  email: 'example_email',
+})
+```
+
+
+### Product
+
+Create an instance: `const product = client.Product()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_products` | `any[]` | Products this organization has activated (PRD 144). |
+| `agents_only` | `boolean` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `boolean` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `github_prs_authored_by_change_author` | `boolean` |  |
+| `id` | `string` |  |
+| `logo_url` | `string | null` |  |
+| `member_count` | `number` |  |
+| `name` | `string` |  |
+| `pending_invitation_count` | `number` |  |
+| `personal` | `boolean` |  |
+| `product` | `string` |  |
+| `repository_count` | `number` |  |
+| `role` | `string | null` |  |
+| `sandbox_region` | `string` |  |
+| `shared_agent_personal_accounts_enabled` | `boolean` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` |  |
+| `source_control_providers` | `any[]` | Connected source control providers for this organization. |
+| `source_ui_enabled` | `boolean` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `string` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+| `verify_pr_scenario_writing_enabled` | `boolean` |  |
+
+#### Example: Create
+
+```ts
+const product = await client.Product().create({
+  organization_id: 'example_organization_id',
+  product: 'example_product',
 })
 ```
 
@@ -12531,6 +25545,62 @@ const pull_request = await client.PullRequest().create({
 ```
 
 
+### PullRequestAction
+
+Create an instance: `const pull_request_action = client.PullRequestAction()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action_name` | `string` |  |
+| `body` | `string` |  |
+| `comment_id` | `string` |  |
+| `comments` | `any[]` |  |
+| `event` | `string` |  |
+| `expected_head_sha` | `string` |  |
+| `id` | `string | null` |  |
+| `label` | `string` |  |
+| `line` | `number` |  |
+| `node_id` | `string | null` |  |
+| `operation_key` | `string` |  |
+| `path` | `string` |  |
+| `run_id` | `string` |  |
+| `side` | `string` |  |
+| `start_line` | `number` |  |
+| `start_side` | `string` |  |
+| `thread_id` | `string` |  |
+
+#### Example: Create
+
+```ts
+const pull_request_action = await client.PullRequestAction().create({
+  number: 'example_number',
+  organization_id: 'example_organization_id',
+  pull_request_id: 'example_pull_request_id',
+  action_name: 'example_action_name',
+  operation_key: 'example_operation_key',
+})
+```
+
+
+### PullRequestMagicMerge
+
+Create an instance: `const pull_request_magic_merge = client.PullRequestMagicMerge()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
 ### PullRequestSetting
 
 Create an instance: `const pull_request_setting = client.PullRequestSetting()`
@@ -12713,6 +25783,68 @@ const pull_request_setting_detect_comment = await client.PullRequestSettingDetec
 ```
 
 
+### PullRequestTranscript
+
+Create an instance: `const pull_request_transcript = client.PullRequestTranscript()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter` | `string` |  |
+| `created_at` | `string | null` |  |
+| `ended_at` | `string | null` |  |
+| `external_session_id` | `string` |  |
+| `harness` | `string` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `string` |  |
+| `last_activity_at` | `string | null` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `string | null` |  |
+| `repository` | `any` |  |
+| `started_at` | `string | null` |  |
+| `stats` | `Record<string, any>` |  |
+| `status` | `string` |  |
+| `title` | `string | null` |  |
+| `updated_at` | `string | null` |  |
+| `user` | `any` |  |
+
+#### Example: List
+
+```ts
+const pull_request_transcripts = await client.PullRequestTranscript().list({ organization_id: "example", pull_request_id: "example", repo_id: "example" })
+```
+
+
+### PullZone
+
+Create an instance: `const pull_zone = client.PullZone()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `slug` | `string` |  |
+
+#### Example: List
+
+```ts
+const pull_zones = await client.PullZone().list({ organization_id: "example" })
+```
+
+
 ### Recorder
 
 Create an instance: `const recorder = client.Recorder()`
@@ -12760,6 +25892,69 @@ Create an instance: `const registry_v2 = client.RegistryV2()`
 | `create(data)` | Create a new entity with the given data. |
 
 
+### RelayAgentConnection
+
+Create an instance: `const relay_agent_connection = client.RelayAgentConnection()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_card_url` | `string` |  |
+| `auth_scheme` | `string` |  |
+| `can_configure` | `boolean` |  |
+| `can_disconnect` | `boolean` |  |
+| `can_setup` | `boolean` |  |
+| `connection` | `Record<string, any>` |  |
+| `credential` | `string | null` | Write-only outbound key. |
+| `error_code` | `string | null` |  |
+| `expected_generation` | `number` |  |
+| `generation` | `number` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `remote_agent` | `string | null` |  |
+| `requester_id` | `string` |  |
+| `retired_at` | `string | null` |  |
+| `revoked_at` | `string | null` |  |
+| `scope_key` | `string` |  |
+| `source_operation_id` | `string | null` |  |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```ts
+const relay_agent_connection = await client.RelayAgentConnection().load({ id: 'relay_agent_connection_id', agent_id: 'agent_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const relay_agent_connections = await client.RelayAgentConnection().list({ agent_id: "example", organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const relay_agent_connection = await client.RelayAgentConnection().create({
+  agent_id: 'example_agent_id',
+  organization_id: 'example_organization_id',
+  agent_card_url: 'example_agent_card_url',
+  auth_scheme: 'example_auth_scheme',
+  name: 'example_name',
+})
+```
+
+
 ### RelayAgentLocalThread
 
 Create an instance: `const relay_agent_local_thread = client.RelayAgentLocalThread()`
@@ -12775,6 +25970,554 @@ Create an instance: `const relay_agent_local_thread = client.RelayAgentLocalThre
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+
+### RelaySignal
+
+Create an instance: `const relay_signal = client.RelaySignal()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const relay_signal = await client.RelaySignal().create({
+})
+```
+
+
+### ReleaseRollout
+
+Create an instance: `const release_rollout = client.ReleaseRollout()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const release_rollout = await client.ReleaseRollout().load({ id: 'release_rollout_id', release_id: 'release_id' })
+```
+
+#### Example: List
+
+```ts
+const release_rollouts = await client.ReleaseRollout().list({ release_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const release_rollout = await client.ReleaseRollout().create({
+  release_id: 'example_release_id',
+})
+```
+
+
+### Repo
+
+Create an instance: `const repo = client.Repo()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_retry_import` | `boolean` | True when a failed client import can be requeued for CLI resume. |
+| `can_retry_sync` | `boolean` | True when the latest sync run failed and can be retried. |
+| `disclaimer` | `string | null` |  |
+| `federated_in_home` | `boolean` | True when this Space is a folder virtual repository inside the organization Home monorepo. |
+| `github_repository` | `string | null` |  |
+| `icon_name` | `string` |  |
+| `id` | `string` | Virtual repository public ID for non-Home rows; Home uses the physical repository public ID. |
+| `import_item_id` | `string | null` |  |
+| `is_home` | `boolean` |  |
+| `name` | `string` |  |
+| `remote_repository` | `string | null` |  |
+| `root_path` | `string | null` | Home-relative folder path when federated_in_home is true; null otherwise. |
+| `slug` | `string` |  |
+| `sync_error_message` | `string | null` |  |
+| `sync_provider` | `string` |  |
+| `sync_status` | `string` |  |
+
+#### Example: List
+
+```ts
+const repos = await client.Repo().list({ organization_id: "example" })
+```
+
+
+### RepoAccessToken
+
+Create an instance: `const repo_access_token = client.RepoAccessToken()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access_token` | `Record<string, any>` |  |
+| `active` | `boolean` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `credential_purpose` | `string` | Issues a revocable read-write system credential valid for one hour. |
+| `expires_at` | `string | null` |  |
+| `expires_at_label` | `string | null` |  |
+| `expires_in_days` | `number | null` |  |
+| `id` | `string` |  |
+| `last_used_at` | `string | null` |  |
+| `last_used_at_label` | `string | null` |  |
+| `name` | `string` |  |
+| `permission_level` | `string` |  |
+| `plain_text_token` | `string` |  |
+| `revoked_at` | `string | null` |  |
+| `revoked_at_label` | `string | null` |  |
+| `token_preview` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+
+#### Example: List
+
+```ts
+const repo_access_tokens = await client.RepoAccessToken().list({ organization_id: "example", repo_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const repo_access_token = await client.RepoAccessToken().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  name: 'example_name',
+})
+```
+
+
+### RepoAction
+
+Create an instance: `const repo_action = client.RepoAction()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `pipeline` | `Record<string, any>` |  |
+| `run` | `Record<string, any>` |  |
+
+#### Example: List
+
+```ts
+const repo_actions = await client.RepoAction().list({ organization_id: "example", repo_id: "example" })
+```
+
+
+### RepoAgentCheckpoint
+
+Create an instance: `const repo_agent_checkpoint = client.RepoAgentCheckpoint()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const repo_agent_checkpoint = await client.RepoAgentCheckpoint().load({ id: 'repo_agent_checkpoint_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+
+### RepoAgentSession
+
+Create an instance: `const repo_agent_session = client.RepoAgentSession()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter` | `string` |  |
+| `agent_session` | `Record<string, any>` |  |
+| `external_session_id` | `string` |  |
+| `id` | `string` |  |
+| `status` | `string` |  |
+| `title` | `string | null` |  |
+
+#### Example: Load
+
+```ts
+const repo_agent_session = await client.RepoAgentSession().load({ id: 'repo_agent_session_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### Example: List
+
+```ts
+const repo_agent_sessions = await client.RepoAgentSession().list({ organization_id: "example", repo_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const repo_agent_session = await client.RepoAgentSession().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+
+### RepoBookmarkProtection
+
+Create an instance: `const repo_bookmark_protection = client.RepoBookmarkProtection()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `actor_policy` | `Record<string, any>` |  |
+| `bypass_mode` | `string` |  |
+| `created_at` | `string` |  |
+| `created_by_user_id` | `string | null` |  |
+| `enabled` | `boolean` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `priority` | `number` |  |
+| `repository_id` | `string` |  |
+| `requirements` | `Record<string, any>` |  |
+| `target_kind` | `string` |  |
+| `target_pattern` | `string | null` |  |
+| `updated_at` | `string` |  |
+| `updated_by_user_id` | `string | null` |  |
+
+#### Example: Load
+
+```ts
+const repo_bookmark_protection = await client.RepoBookmarkProtection().load({ id: 'repo_bookmark_protection_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### Example: List
+
+```ts
+const repo_bookmark_protections = await client.RepoBookmarkProtection().list({ organization_id: "example", repo_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const repo_bookmark_protection = await client.RepoBookmarkProtection().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+
+### RepoBookmarkProtectionEvent
+
+Create an instance: `const repo_bookmark_protection_event = client.RepoBookmarkProtectionEvent()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `actor_kind` | `string` |  |
+| `actor_label` | `string | null` |  |
+| `actor_user_id` | `string | null` |  |
+| `bookmark_name` | `string` |  |
+| `bookmark_protection_rule_id` | `string | null` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `decision` | `string` |  |
+| `id` | `string` |  |
+| `intent` | `string | null` |  |
+| `metadata` | `Record<string, any>` |  |
+| `new_target` | `string | null` |  |
+| `old_target` | `string | null` |  |
+| `organization_id` | `string` |  |
+| `reason_codes` | `any[]` |  |
+| `repository_id` | `string` |  |
+| `source_request_id` | `string | null` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+
+#### Example: List
+
+```ts
+const repo_bookmark_protection_events = await client.RepoBookmarkProtectionEvent().list({ organization_id: "example", repo_id: "example" })
+```
+
+
+### RepoCloudWorkspaceBackup
+
+Create an instance: `const repo_cloud_workspace_backup = client.RepoCloudWorkspaceBackup()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const repo_cloud_workspace_backup = await client.RepoCloudWorkspaceBackup().load({ id: 'repo_cloud_workspace_backup_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### Example: List
+
+```ts
+const repo_cloud_workspace_backups = await client.RepoCloudWorkspaceBackup().list({ organization_id: "example", repo_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const repo_cloud_workspace_backup = await client.RepoCloudWorkspaceBackup().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+
+### RepoCodeRule
+
+Create an instance: `const repo_code_rule = client.RepoCodeRule()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active_revision_number` | `number | null` |  |
+| `capabilities` | `Record<string, any>` |  |
+| `code_rule` | `any` |  |
+| `created_at` | `string` |  |
+| `definition` | `Record<string, any>` |  |
+| `draft_pending` | `boolean` | The latest revision is not the active one |
+| `enabled` | `boolean` |  |
+| `expected_version` | `number` |  |
+| `id` | `string` |  |
+| `latest_revision_number` | `number` |  |
+| `name` | `string` | Name of the latest revision |
+| `repository` | `Record<string, any>` |  |
+| `scope` | `any[]` |  |
+| `slug` | `string` |  |
+| `state_version` | `number` | Send back as expected_version on every mutation |
+| `updated_at` | `string` |  |
+| `web_url` | `string` |  |
+
+#### Example: Load
+
+```ts
+const repo_code_rule = await client.RepoCodeRule().load({ id: 'repo_code_rule_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### Example: List
+
+```ts
+const repo_code_rules = await client.RepoCodeRule().list({ organization_id: "example", repo_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const repo_code_rule = await client.RepoCodeRule().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  definition: {},
+})
+```
+
+
+### RepoSetting
+
+Create an instance: `const repo_setting = client.RepoSetting()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active` | `boolean` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `description` | `string | null` |  |
+| `expires_at` | `string | null` |  |
+| `expires_at_label` | `string | null` |  |
+| `icon_name` | `string` |  |
+| `id` | `string` |  |
+| `last_used_at` | `string | null` |  |
+| `last_used_at_label` | `string | null` |  |
+| `merge_authority` | `string` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `permission_level` | `string` |  |
+| `revoked_at` | `string | null` |  |
+| `revoked_at_label` | `string | null` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `token_preview` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+
+#### Example: List
+
+```ts
+const repo_settings = await client.RepoSetting().list({ organization_id: "example", repo_id: "example" })
+```
+
+
+### RepoStat
+
+Create an instance: `const repo_stat = client.RepoStat()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `repository_stats` | `Record<string, any>` |  |
+
+#### Example: List
+
+```ts
+const repo_stats = await client.RepoStat().list({ organization_id: "example", repo_id: "example" })
+```
+
+
+### RepoVc
+
+Create an instance: `const repo_vc = client.RepoVc()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+
+### RepoVcCommit
+
+Create an instance: `const repo_vc_commit = client.RepoVcCommit()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `name` | `string` |  |
+| `target_commit_id` | `string` |  |
+
+#### Example: List
+
+```ts
+const repo_vc_commits = await client.RepoVcCommit().list({ organization_id: "example", repo_id: "example", ref: "example" })
+```
 
 
 ### ReportReplay
@@ -12836,6 +26579,484 @@ Create an instance: `const report_scenario = client.ReportScenario()`
 const report_scenario = await client.ReportScenario().create({
   exploration_id: 'example_exploration_id',
   organization_id: 'example_organization_id',
+})
+```
+
+
+### RepositoryAccess
+
+Create an instance: `const repository_access = client.RepositoryAccess()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### RepositoryAccessResolve
+
+Create an instance: `const repository_access_resolve = client.RepositoryAccessResolve()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `default_branch` | `string` |  |
+| `git_auth_username` | `string` |  |
+| `git_https_clone_url` | `string | null` |  |
+| `git_https_supported` | `boolean` |  |
+| `github_access_warnings` | `any[]` |  |
+| `id` | `string` |  |
+| `membership_role` | `string` |  |
+| `organization_id` | `string` |  |
+| `organization_name` | `string` |  |
+| `organization_slug` | `string` |  |
+| `repository_id` | `string` |  |
+| `repository_name` | `string` |  |
+| `repository_slug` | `string` |  |
+
+#### Example: Load
+
+```ts
+const repository_access_resolve = await client.RepositoryAccessResolve().load({ id: 'repository_access_resolve_id', resolve_id: 'resolve_id' })
+```
+
+
+### RepositoryEvent
+
+Create an instance: `const repository_event = client.RepositoryEvent()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### RepositoryImport
+
+Create an instance: `const repository_import = client.RepositoryImport()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_connections` | `boolean` |  |
+| `github_imports` | `any[]` |  |
+| `github_installations` | `any[]` |  |
+| `gitlab_configured` | `boolean` |  |
+| `gitlab_imports` | `any[]` |  |
+| `gitlab_integrations` | `any[]` |  |
+| `gitlab_redirect_uri` | `string | null` |  |
+| `gitlab_self_managed_available` | `boolean` |  |
+| `inventory_errors` | `any[]` |  |
+| `organization_id` | `string` |  |
+| `repositories` | `any[]` |  |
+
+#### Example: Load
+
+```ts
+const repository_import = await client.RepositoryImport().load({ organization_id: 'organization_id' })
+```
+
+
+### RepositoryImportSession
+
+Create an instance: `const repository_import_session = client.RepositoryImportSession()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action_required` | `string` |  |
+| `authorization_endpoint` | `string` |  |
+| `can_authorize_github` | `boolean` |  |
+| `client_name` | `string | null` |  |
+| `client_version` | `string | null` |  |
+| `created_at` | `string` |  |
+| `error_message` | `string | null` |  |
+| `expires_at` | `string` |  |
+| `git_imports` | `any[]` |  |
+| `github_app_installation_id` | `string | null` |  |
+| `github_connected` | `boolean` |  |
+| `id` | `string` |  |
+| `idempotency_key` | `string` |  |
+| `organization_id` | `string` |  |
+| `organization_slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```ts
+const repository_import_session = await client.RepositoryImportSession().load({ id: 'repository_import_session_id' })
+```
+
+#### Example: Create
+
+```ts
+const repository_import_session = await client.RepositoryImportSession().create({
+  organization_id: 'example_organization_id',
+  idempotency_key: 'example_idempotency_key',
+})
+```
+
+
+### RepositoryImportSessionRepository
+
+Create an instance: `const repository_import_session_repository = client.RepositoryImportSessionRepository()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `default_branch` | `string | null` |  |
+| `full_name` | `string` |  |
+| `name` | `string` |  |
+| `owner` | `string` |  |
+| `private` | `boolean` |  |
+| `reason` | `string | null` |  |
+| `selectable` | `boolean` |  |
+| `status` | `string` |  |
+| `visibility` | `string` |  |
+
+#### Example: List
+
+```ts
+const repository_import_session_repositorys = await client.RepositoryImportSessionRepository().list({ repository_import_session_id: "example" })
+```
+
+
+### RepositoryImportSessionSelection
+
+Create an instance: `const repository_import_session_selection = client.RepositoryImportSessionSelection()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `repositories` | `any` |  |
+
+#### Example: Create
+
+```ts
+const repository_import_session_selection = await client.RepositoryImportSessionSelection().create({
+  repository_import_session_id: 'example_repository_import_session_id',
+  repositories: 'example_repositories',
+})
+```
+
+
+### RepositorySandboxEnvironment
+
+Create an instance: `const repository_sandbox_environment = client.RepositorySandboxEnvironment()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const repository_sandbox_environment = await client.RepositorySandboxEnvironment().load({ id: 'repository_sandbox_environment_id', repository_id: 'repository_id' })
+```
+
+
+### RoderCodeRepair
+
+Create an instance: `const roder_code_repair = client.RoderCodeRepair()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `base_sha` | `string` |  |
+| `cancel_requested` | `boolean` |  |
+| `failure_code` | `string | null` |  |
+| `id` | `string` |  |
+| `launch_state` | `string` |  |
+| `organization_id` | `string` |  |
+| `repository_slug` | `string` |  |
+| `roder_thread_id` | `string | null` |  |
+| `roder_turn_id` | `string | null` |  |
+| `scenario_run_id` | `string` |  |
+| `task` | `Record<string, any> | null` |  |
+| `trigger_kind` | `string` |  |
+
+#### Example: Load
+
+```ts
+const roder_code_repair = await client.RoderCodeRepair().load({ id: 'roder_code_repair_id' })
+```
+
+#### Example: List
+
+```ts
+const roder_code_repairs = await client.RoderCodeRepair().list({ scenario_run_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const roder_code_repair = await client.RoderCodeRepair().create({
+  base_sha: 'example_base_sha',
+  organization_id: 'example_organization_id',
+  repository_slug: 'example_repository_slug',
+  scenario_run_id: 'example_scenario_run_id',
+})
+```
+
+
+### RoderCodeRepairSetting
+
+Create an instance: `const roder_code_repair_setting = client.RoderCodeRepairSetting()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `available` | `boolean` |  |
+| `daily_limit` | `number` |  |
+| `enabled` | `boolean` |  |
+| `enabled_at` | `string | null` |  |
+| `operator_user_id` | `string | null` |  |
+| `organization_id` | `string` |  |
+| `repository_slug` | `string | null` | Connected Composal repository required when enabling |
+
+#### Example: List
+
+```ts
+const roder_code_repair_settings = await client.RoderCodeRepairSetting().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const roder_code_repair_setting = await client.RoderCodeRepairSetting().create({
+  enabled: true,
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### RoderMachine
+
+Create an instance: `const roder_machine = client.RoderMachine()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### RoderRun
+
+Create an instance: `const roder_run = client.RoderRun()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### RoderWorkspaceCredential
+
+Create an instance: `const roder_workspace_credential = client.RoderWorkspaceCredential()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `api_token` | `string` | Short-lived personal access token for the spawning user. |
+| `author_email` | `string` |  |
+| `author_name` | `string` |  |
+| `clone_url` | `string` |  |
+| `default_branch` | `string` |  |
+| `expires_at` | `string` |  |
+| `organization_id` | `string` |  |
+| `repository_id` | `string` |  |
+| `repository_slug` | `string` |  |
+| `repository_spec` | `string` | The explicitly selected physical repository address. |
+| `required_lifetime_seconds` | `number` | Lifetime the pending clone or command must be able to complete within. |
+| `token` | `string` | Short-lived read/write repository credential. |
+| `username` | `string` |  |
+
+#### Example: Create
+
+```ts
+const roder_workspace_credential = await client.RoderWorkspaceCredential().create({
+  required_lifetime_seconds: 1,
+})
+```
+
+
+### RunArtifact
+
+Create an instance: `const run_artifact = client.RunArtifact()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ts
+const run_artifacts = await client.RunArtifact().list({ pipeline_id: "example", run_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const run_artifact = await client.RunArtifact().create({
+  pipeline_id: 'example_pipeline_id',
+  run_id: 'example_run_id',
+})
+```
+
+
+### RunJob
+
+Create an instance: `const run_job = client.RunJob()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active` | `boolean` |  |
+| `allow_failure` | `boolean` |  |
+| `cache_archive_observations` | `Record<string, any> | null` | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `ci_pipeline_run_id` | `string` |  |
+| `ci_runner_id` | `string | null` |  |
+| `created_at` | `string` |  |
+| `dependencies_csv` | `string | null` |  |
+| `display_id` | `number` |  |
+| `environment_csv` | `string | null` |  |
+| `execution_order` | `number` |  |
+| `execution_profile` | `string | null` |  |
+| `exit_code` | `number | null` |  |
+| `failed` | `boolean` |  |
+| `finished_at` | `string | null` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `log_chunks` | `any[]` |  |
+| `name` | `string` |  |
+| `number` | `number` |  |
+| `organization_id` | `string` |  |
+| `queued_at` | `string | null` |  |
+| `reconciliation_id` | `string | null` |  |
+| `retry_number` | `number` |  |
+| `reuse` | `Record<string, any> | null` |  |
+| `runner_label_selector` | `string | null` |  |
+| `slug` | `string` |  |
+| `started_at` | `string | null` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `steps` | `any[]` |  |
+| `timeout_seconds` | `number | null` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```ts
+const run_job = await client.RunJob().load({ id: 'run_job_id', pipeline_id: 'pipeline_id', run_id: 'run_id' })
+```
+
+#### Example: List
+
+```ts
+const run_jobs = await client.RunJob().list({ pipeline_id: "example", run_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const run_job = await client.RunJob().create({
+  pipeline_id: 'example_pipeline_id',
+  run_id: 'example_run_id',
 })
 ```
 
@@ -12954,6 +27175,226 @@ const run_updates = await client.RunUpdate().list({ organization_id: "example" }
 ```
 
 
+### RunWorkspaceCredential
+
+Create an instance: `const run_workspace_credential = client.RunWorkspaceCredential()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const run_workspace_credential = await client.RunWorkspaceCredential().create({
+})
+```
+
+
+### RunnerLease
+
+Create an instance: `const runner_lease = client.RunnerLease()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```ts
+const runner_leases = await client.RunnerLease().list({ runner_id: "example", runner_pool_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const runner_lease = await client.RunnerLease().create({
+  runner_id: 'example_runner_id',
+  runner_pool_id: 'example_runner_pool_id',
+})
+```
+
+
+### RunnerPoolNodeEnrollmentToken
+
+Create an instance: `const runner_pool_node_enrollment_token = client.RunnerPoolNodeEnrollmentToken()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capabilities_csv` | `string | null` |  |
+| `ci_runner_pool_id` | `string` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `creator_user_id` | `string | null` |  |
+| `description` | `string | null` |  |
+| `expires_at` | `string | null` |  |
+| `expires_at_label` | `string | null` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `last_used_at` | `string | null` |  |
+| `last_used_at_label` | `string | null` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `raw_token` | `string | null` |  |
+| `revoked_at` | `string | null` |  |
+| `status` | `string` |  |
+| `token_hint` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+| `usage_count` | `number` |  |
+| `usage_count_label` | `string` |  |
+
+#### Example: List
+
+```ts
+const runner_pool_node_enrollment_tokens = await client.RunnerPoolNodeEnrollmentToken().list({ runner_pool_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const runner_pool_node_enrollment_token = await client.RunnerPoolNodeEnrollmentToken().create({
+  runner_pool_id: 'example_runner_pool_id',
+  name: 'example_name',
+})
+```
+
+
+### RunnerPoolRunner
+
+Create an instance: `const runner_pool_runner = client.RunnerPoolRunner()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const runner_pool_runner = await client.RunnerPoolRunner().load({ id: 'runner_pool_runner_id', runner_pool_id: 'runner_pool_id' })
+```
+
+#### Example: List
+
+```ts
+const runner_pool_runners = await client.RunnerPoolRunner().list({ runner_pool_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const runner_pool_runner = await client.RunnerPoolRunner().create({
+  runner_pool_id: 'example_runner_pool_id',
+})
+```
+
+
+### RuntimeInstanceHealthSnapshot
+
+Create an instance: `const runtime_instance_health_snapshot = client.RuntimeInstanceHealthSnapshot()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ts
+const runtime_instance_health_snapshots = await client.RuntimeInstanceHealthSnapshot().list({ runtime_instance_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const runtime_instance_health_snapshot = await client.RuntimeInstanceHealthSnapshot().create({
+  runtime_instance_id: 'example_runtime_instance_id',
+})
+```
+
+
+### SandboxIntegration
+
+Create an instance: `const sandbox_integration = client.SandboxIntegration()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage` | `boolean` |  |
+| `catalog` | `any[]` |  |
+| `configuration` | `Record<string, any>` |  |
+| `connected_profiles` | `Record<string, any>` | Connected profiles per provider across the organization. |
+| `credentials` | `Record<string, any>` |  |
+| `enabled` | `boolean` |  |
+| `id` | `string` |  |
+| `integrations` | `any[]` |  |
+| `name` | `string` |  |
+| `provider` | `string` |  |
+| `version` | `number` |  |
+
+#### Example: List
+
+```ts
+const sandbox_integrations = await client.SandboxIntegration().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const sandbox_integration = await client.SandboxIntegration().create({
+  organization_id: 'example_organization_id',
+  configuration: {},
+  credentials: {},
+  name: 'example_name',
+  provider: 'example_provider',
+})
+```
+
+
 ### ScenarioRevision
 
 Create an instance: `const scenario_revision = client.ScenarioRevision()`
@@ -13027,6 +27468,92 @@ Create an instance: `const scenario_run_scenario_edit = client.ScenarioRunScenar
 | `create(data)` | Create a new entity with the given data. |
 
 
+### SecretGrant
+
+Create an instance: `const secret_grant = client.SecretGrant()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const secret_grant = await client.SecretGrant().load({ id: 'secret_grant_id', organization_id: 'organization_id', secret_id: 'secret_id' })
+```
+
+#### Example: List
+
+```ts
+const secret_grants = await client.SecretGrant().list({ organization_id: "example", secret_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const secret_grant = await client.SecretGrant().create({
+  organization_id: 'example_organization_id',
+  secret_id: 'example_secret_id',
+})
+```
+
+
+### SecretVersion
+
+Create an instance: `const secret_version = client.SecretVersion()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const secret_version = await client.SecretVersion().load({ id: 'secret_version_id', organization_id: 'organization_id', secret_id: 'secret_id' })
+```
+
+#### Example: List
+
+```ts
+const secret_versions = await client.SecretVersion().list({ organization_id: "example", secret_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const secret_version = await client.SecretVersion().create({
+  organization_id: 'example_organization_id',
+  secret_id: 'example_secret_id',
+})
+```
+
+
 ### ServiceEndpoint
 
 Create an instance: `const service_endpoint = client.ServiceEndpoint()`
@@ -13070,6 +27597,380 @@ const service_endpoint = await client.ServiceEndpoint().create({
 ```
 
 
+### Setting
+
+Create an instance: `const setting = client.Setting()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `boolean` |  |
+| `can_manage_sandbox_region` | `boolean` |  |
+| `dedicated_outbound_ip_addresses` | `any[]` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` |  |
+| `organization` | `Record<string, any>` |  |
+| `sandbox_regions` | `any[]` |  |
+
+#### Example: List
+
+```ts
+const settings = await client.Setting().list({ organization_id: "example" })
+```
+
+
+### SettingMutationLease
+
+Create an instance: `const setting_mutation_lease = client.SettingMutationLease()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### Signal
+
+Create an instance: `const signal = client.Signal()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `acked_at` | `string | null` |  |
+| `acked_by` | `Record<string, any> | null` | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | `Record<string, any>` | Dispatched-run summary (docs §6c). |
+| `app_service_id` | `string | null` |  |
+| `attribution` | `Record<string, any>` | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
+| `created_at` | `string` | ISO8601 row insert time — retention math and debugging only. |
+| `dedupe_key` | `string | null` |  |
+| `hosted_app_id` | `string | null` |  |
+| `id` | `string` | The signal's own `sig_…` public id — also the paging cursor value. |
+| `kind` | `string` | A frozen taxonomy kind (§1) or an `app.custom.*` kind. |
+| `links` | `Record<string, any>` | Canonical, relative API paths built from real routes (docs §6a). |
+| `occurred_at` | `string` | ISO8601 domain event time — what the UI displays and `since` filters on. |
+| `organization_id` | `string` |  |
+| `payload` | `Record<string, any>` | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
+| `recovery` | `Record<string, any>` | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | `Record<string, any>` | Recovery pairing (docs §6b). |
+| `severity` | `string` | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
+| `source` | `Record<string, any>` | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
+| `subject_id` | `string | null` |  |
+| `subject_type` | `string | null` | Polymorphic pointer: `AppDeployment`, `RuntimeInstance`, `AlertEvent`, `HostedApp`, or `SignalSubscription`. |
+| `summary` | `string` | One-line, kind-composed human sentence for the feed row (docs §6d, e.g. |
+
+#### Example: Load
+
+```ts
+const signal = await client.Signal().load({ id: 'signal_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const signals = await client.Signal().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const signal = await client.Signal().create({
+})
+```
+
+
+### SignalInbound
+
+Create an instance: `const signal_inbound = client.SignalInbound()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### SignalIntegration
+
+Create an instance: `const signal_integration = client.SignalIntegration()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `api_token` | `string` | Optional provider API token for target discovery and backfill. |
+| `api_token_stored` | `boolean` |  |
+| `config` | `Record<string, any>` |  |
+| `created_at` | `string | null` |  |
+| `failure_message` | `string | null` |  |
+| `id` | `string` | Public id (`sint_…`). |
+| `inbound_path` | `string` |  |
+| `inbound_url` | `string` | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `string | null` |  |
+| `last_verified_at` | `string | null` |  |
+| `mode` | `string` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `provider` | `string` |  |
+| `rejected_signature_count` | `number` | Deliveries rejected for a bad or missing signature. |
+| `status` | `string` |  |
+| `target_count` | `number` |  |
+| `unmapped_delivery_count` | `number` | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `string | null` |  |
+| `webhook_secret` | `string` | The provider's signing secret. |
+| `webhook_secret_stored` | `boolean` |  |
+
+#### Example: Load
+
+```ts
+const signal_integration = await client.SignalIntegration().load({ id: 'signal_integration_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const signal_integrations = await client.SignalIntegration().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const signal_integration = await client.SignalIntegration().create({
+  organization_id: 'example_organization_id',
+  name: 'example_name',
+  provider: 'example_provider',
+})
+```
+
+
+### SignalIntegrationDelivery
+
+Create an instance: `const signal_integration_delivery = client.SignalIntegrationDelivery()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `attempt_count` | `number` |  |
+| `created_at` | `string | null` |  |
+| `delivery_id` | `string` | The provider's delivery id, or a `content-…` id derived from the event kind, its timestamp header and the body checksum when it sends none. |
+| `event_kind` | `string | null` |  |
+| `id` | `string` | Public id (`sdel_…`). |
+| `last_error` | `string | null` |  |
+| `ops_signal_id` | `string | null` | Public id (`sig_…`) of the signal this delivery emitted. |
+| `organization_id` | `string` |  |
+| `processed_at` | `string | null` |  |
+| `provider` | `string` |  |
+| `received_at` | `string | null` |  |
+| `signal_integration_id` | `string` |  |
+| `state` | `string` |  |
+
+#### Example: List
+
+```ts
+const signal_integration_deliverys = await client.SignalIntegrationDelivery().list({ organization_id: "example", signal_integration_id: "example" })
+```
+
+
+### SignalIntegrationTarget
+
+Create an instance: `const signal_integration_target = client.SignalIntegrationTarget()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `app_service_id` | `string | null` |  |
+| `created_at` | `string | null` |  |
+| `display_name` | `string | null` |  |
+| `enabled` | `boolean` |  |
+| `external_id` | `string` |  |
+| `external_kind` | `string` |  |
+| `external_slug` | `string | null` |  |
+| `hosted_app_id` | `string | null` |  |
+| `id` | `string` | Public id (`stgt_…`). |
+| `organization_id` | `string` |  |
+| `signal_integration_id` | `string` |  |
+| `signal_integration_targets` | `any[]` |  |
+| `targets` | `any[]` |  |
+| `updated_at` | `string | null` |  |
+
+#### Example: List
+
+```ts
+const signal_integration_targets = await client.SignalIntegrationTarget().list({ organization_id: "example", signal_integration_id: "example" })
+```
+
+
+### SignalSubscription
+
+Create an instance: `const signal_subscription = client.SignalSubscription()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const signal_subscription = await client.SignalSubscription().load({ id: 'signal_subscription_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const signal_subscriptions = await client.SignalSubscription().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const signal_subscription = await client.SignalSubscription().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### Site
+
+Create an instance: `const site = client.Site()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_at` | `string | null` |  |
+| `activated_at_label` | `string | null` |  |
+| `commit_sha` | `string | null` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `creator_user_id` | `string | null` |  |
+| `deploy_slug` | `string` |  |
+| `failure_message` | `string | null` |  |
+| `file_count` | `number` |  |
+| `file_count_label` | `string` |  |
+| `finished_at` | `string | null` |  |
+| `finished_at_label` | `string | null` |  |
+| `id` | `string` |  |
+| `is_active` | `boolean` |  |
+| `source_ref` | `string | null` |  |
+| `started_at` | `string | null` |  |
+| `started_at_label` | `string | null` |  |
+| `static_site_id` | `string` |  |
+| `status` | `string` |  |
+| `total_bytes` | `number` |  |
+| `total_bytes_label` | `string` |  |
+| `trigger_kind` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+| `uploaded_at` | `string | null` |  |
+| `uploaded_at_label` | `string | null` |  |
+
+#### Example: List
+
+```ts
+const sites = await client.Site().list({ organization_id: "example" })
+```
+
+
+### SiteAccessKey
+
+Create an instance: `const site_access_key = client.SiteAccessKey()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```ts
+const site_access_keys = await client.SiteAccessKey().list({ organization_id: "example", site_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const site_access_key = await client.SiteAccessKey().create({
+  organization_id: 'example_organization_id',
+  site_id: 'example_site_id',
+})
+```
+
+
 ### SitePreview
 
 Create an instance: `const site_preview = client.SitePreview()`
@@ -13093,6 +27994,26 @@ Create an instance: `const site_preview = client.SitePreview()`
 ```ts
 const site_preview = await client.SitePreview().load({ organization_id: 'organization_id', url: 'url' })
 ```
+
+
+### SiteSecret
+
+Create an instance: `const site_secret = client.SiteSecret()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `native_agent_id` | `string` |  |
+| `value` | `string` |  |
 
 
 ### SlackChannel
@@ -13120,6 +28041,690 @@ Create an instance: `const slack_channel = client.SlackChannel()`
 
 ```ts
 const slack_channels = await client.SlackChannel().list({ agent_id: "example", organization_id: "example" })
+```
+
+
+### SourceConnection
+
+Create an instance: `const source_connection = client.SourceConnection()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### SpaceAlertRule
+
+Create an instance: `const space_alert_rule = client.SpaceAlertRule()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const space_alert_rule = await client.SpaceAlertRule().load({ id: 'space_alert_rule_id', space_id: 'space_id' })
+```
+
+#### Example: List
+
+```ts
+const space_alert_rules = await client.SpaceAlertRule().list({ space_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const space_alert_rule = await client.SpaceAlertRule().create({
+  space_id: 'example_space_id',
+})
+```
+
+
+### SpaceAuditEvent
+
+Create an instance: `const space_audit_event = client.SpaceAuditEvent()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ts
+const space_audit_events = await client.SpaceAuditEvent().list({ space_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const space_audit_event = await client.SpaceAuditEvent().create({
+  space_id: 'example_space_id',
+})
+```
+
+
+### SpaceDnsRecord
+
+Create an instance: `const space_dns_record = client.SpaceDnsRecord()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const space_dns_record = await client.SpaceDnsRecord().load({ id: 'space_dns_record_id', space_id: 'space_id' })
+```
+
+#### Example: List
+
+```ts
+const space_dns_records = await client.SpaceDnsRecord().list({ space_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const space_dns_record = await client.SpaceDnsRecord().create({
+  space_id: 'example_space_id',
+})
+```
+
+
+### SpaceEnrollmentToken
+
+Create an instance: `const space_enrollment_token = client.SpaceEnrollmentToken()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const space_enrollment_token = await client.SpaceEnrollmentToken().load({ id: 'space_enrollment_token_id', space_id: 'space_id' })
+```
+
+#### Example: List
+
+```ts
+const space_enrollment_tokens = await client.SpaceEnrollmentToken().list({ space_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const space_enrollment_token = await client.SpaceEnrollmentToken().create({
+  space_id: 'example_space_id',
+})
+```
+
+
+### SpaceGateway
+
+Create an instance: `const space_gateway = client.SpaceGateway()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const space_gateway = await client.SpaceGateway().load({ id: 'space_gateway_id', space_id: 'space_id' })
+```
+
+#### Example: List
+
+```ts
+const space_gateways = await client.SpaceGateway().list({ space_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const space_gateway = await client.SpaceGateway().create({
+  space_id: 'example_space_id',
+})
+```
+
+
+### SpaceGroup
+
+Create an instance: `const space_group = client.SpaceGroup()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```ts
+const space_groups = await client.SpaceGroup().list({ space_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const space_group = await client.SpaceGroup().create({
+  space_id: 'example_space_id',
+})
+```
+
+
+### SpaceGroupMembership
+
+Create an instance: `const space_group_membership = client.SpaceGroupMembership()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```ts
+const space_group_memberships = await client.SpaceGroupMembership().list({ space_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const space_group_membership = await client.SpaceGroupMembership().create({
+  space_id: 'example_space_id',
+})
+```
+
+
+### SpaceLogStream
+
+Create an instance: `const space_log_stream = client.SpaceLogStream()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ts
+const space_log_streams = await client.SpaceLogStream().list({ space_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const space_log_stream = await client.SpaceLogStream().create({
+  space_id: 'example_space_id',
+})
+```
+
+
+### SpaceMetricSery
+
+Create an instance: `const space_metric_sery = client.SpaceMetricSery()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ts
+const space_metric_serys = await client.SpaceMetricSery().list({ space_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const space_metric_sery = await client.SpaceMetricSery().create({
+  space_id: 'example_space_id',
+})
+```
+
+
+### SpaceOtelCollector
+
+Create an instance: `const space_otel_collector = client.SpaceOtelCollector()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const space_otel_collector = await client.SpaceOtelCollector().load({ id: 'space_otel_collector_id', space_id: 'space_id' })
+```
+
+#### Example: List
+
+```ts
+const space_otel_collectors = await client.SpaceOtelCollector().list({ space_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const space_otel_collector = await client.SpaceOtelCollector().create({
+  space_id: 'example_space_id',
+})
+```
+
+
+### SpacePeer
+
+Create an instance: `const space_peer = client.SpacePeer()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const space_peer = await client.SpacePeer().load({ id: 'space_peer_id', space_id: 'space_id' })
+```
+
+#### Example: List
+
+```ts
+const space_peers = await client.SpacePeer().list({ space_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const space_peer = await client.SpacePeer().create({
+  space_id: 'example_space_id',
+})
+```
+
+
+### SpacePeerAttachment
+
+Create an instance: `const space_peer_attachment = client.SpacePeerAttachment()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```ts
+const space_peer_attachments = await client.SpacePeerAttachment().list({ space_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const space_peer_attachment = await client.SpacePeerAttachment().create({
+  space_id: 'example_space_id',
+})
+```
+
+
+### SpacePolicy
+
+Create an instance: `const space_policy = client.SpacePolicy()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const space_policy = await client.SpacePolicy().load({ id: 'space_policy_id', space_id: 'space_id' })
+```
+
+#### Example: List
+
+```ts
+const space_policys = await client.SpacePolicy().list({ space_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const space_policy = await client.SpacePolicy().create({
+  space_id: 'example_space_id',
+})
+```
+
+
+### SpaceSegment
+
+Create an instance: `const space_segment = client.SpaceSegment()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const space_segment = await client.SpaceSegment().load({ id: 'space_segment_id', space_id: 'space_id' })
+```
+
+#### Example: List
+
+```ts
+const space_segments = await client.SpaceSegment().list({ space_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const space_segment = await client.SpaceSegment().create({
+  space_id: 'example_space_id',
+})
+```
+
+
+### SpaceTraceSpan
+
+Create an instance: `const space_trace_span = client.SpaceTraceSpan()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ts
+const space_trace_spans = await client.SpaceTraceSpan().list({ space_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const space_trace_span = await client.SpaceTraceSpan().create({
+  space_id: 'example_space_id',
+})
+```
+
+
+### Spark
+
+Create an instance: `const spark = client.Spark()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_products` | `any[]` | Products this organization has activated (PRD 144). |
+| `agents_only` | `boolean` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `boolean` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `can_manage` | `boolean` |  |
+| `compute_credit_cents` | `number | null` | Included compute the workspace started Sparks with, when it is on compute billing. |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `credit_cents` | `number | null` | Inference credit the workspace started Sparks with. |
+| `first_spark` | `Record<string, any> | null` | Null until the first Spark exists or when the viewer cannot read it. |
+| `github_connected` | `boolean` |  |
+| `github_prs_authored_by_change_author` | `boolean` |  |
+| `id` | `string` |  |
+| `jsonrpc` | `string` |  |
+| `logo_url` | `string | null` |  |
+| `member_count` | `number` |  |
+| `method` | `string` |  |
+| `name` | `string` |  |
+| `params` | `Record<string, any>` |  |
+| `pending_invitation_count` | `number` |  |
+| `personal` | `boolean` |  |
+| `repository_count` | `number` |  |
+| `role` | `string | null` |  |
+| `sandbox_region` | `string` |  |
+| `shared_agent_personal_accounts_enabled` | `boolean` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` |  |
+| `source_control_providers` | `any[]` | Connected source control providers for this organization. |
+| `source_ui_enabled` | `boolean` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `started` | `boolean` | Whether the workspace has started Sparks. |
+| `timezone` | `string` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+| `verify_pr_scenario_writing_enabled` | `boolean` |  |
+
+#### Example: List
+
+```ts
+const sparks = await client.Spark().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const spark = await client.Spark().create({
+  jsonrpc: 'example_jsonrpc',
+  method: 'example_method',
+})
+```
+
+
+### SparkAgentIntegration
+
+Create an instance: `const spark_agent_integration = client.SparkAgentIntegration()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_counts` | `Record<string, any>` | Accounts the viewer can see per toolkit, across all account pages. |
+| `accounts_path` | `string` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
+| `added_toolkits` | `any[]` | Apps with a connected or connecting account the viewer can see. |
+| `can_manage` | `boolean` |  |
+| `can_manage_organization` | `boolean` |  |
+| `catalog` | `any[]` |  |
+| `connect_as` | `string | null` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
+| `connect_as_by_toolkit` | `Record<string, any>` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_counts` | `Record<string, any>` | Signed-in accounts per toolkit, across all account pages. |
+| `connection_id` | `string` |  |
+| `connections` | `any[]` |  |
+| `email` | `Record<string, any>` | A native agent's own email address. |
+| `enabled` | `boolean` |  |
+| `enabled_toolkits` | `any[]` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `generation` | `number` |  |
+| `pagination` | `Record<string, any>` |  |
+| `pending_counts` | `Record<string, any>` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
+| `personal_creation_key_supported` | `boolean` | The personal account creation endpoint honors a creation key. |
+| `private_agent` | `boolean` | Only the agent's owner can chat with it. |
+| `shared_agent_personal_accounts_enabled` | `boolean` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
+| `slack` | `Record<string, any>` |  |
+| `webhook_connections` | `any[]` |  |
+| `webhooks_available` | `boolean` |  |
+
+#### Example: List
+
+```ts
+const spark_agent_integrations = await client.SparkAgentIntegration().list({ agent_id: "example", organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const spark_agent_integration = await client.SparkAgentIntegration().create({
+  agent_id: 'example_agent_id',
+  organization_id: 'example_organization_id',
+  connection_id: 'example_connection_id',
+  enabled: true,
+  generation: 1,
+})
 ```
 
 
@@ -13190,6 +28795,249 @@ const spark_agent_local_thread = await client.SparkAgentLocalThread().create({
   provider: 'example_provider',
   thread_id: 'example_thread_id',
 })
+```
+
+
+### SparkAgentSite
+
+Create an instance: `const spark_agent_site = client.SparkAgentSite()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `deployed_at` | `string` |  |
+| `deployments_count` | `number` |  |
+| `hostname` | `string` |  |
+| `https` | `string` | Whether the organization's certificate serves this site over HTTPS |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `url` | `string` |  |
+| `visibility` | `string` |  |
+
+#### Example: List
+
+```ts
+const spark_agent_sites = await client.SparkAgentSite().list({ agent_id: "example", organization_id: "example" })
+```
+
+
+### SparkAgentSkill
+
+Create an instance: `const spark_agent_skill = client.SparkAgentSkill()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `available` | `boolean` |  |
+| `can_configure` | `boolean` |  |
+| `can_manage` | `boolean` |  |
+| `configuration_state` | `string` | The requested managed skill selection is awaiting runtime qualification. |
+| `description` | `string` |  |
+| `enabled` | `boolean` |  |
+| `name` | `string` |  |
+| `skills` | `any[]` |  |
+| `version` | `string` |  |
+
+#### Example: List
+
+```ts
+const spark_agent_skills = await client.SparkAgentSkill().list({ agent_id: "example", organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const spark_agent_skill = await client.SparkAgentSkill().create({
+  agent_id: 'example_agent_id',
+  organization_id: 'example_organization_id',
+  enabled: true,
+  name: 'example_name',
+  version: 'example_version',
+})
+```
+
+
+### SparkAgentThread
+
+Create an instance: `const spark_agent_thread = client.SparkAgentThread()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `archived_count` | `number | null` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
+| `can_create` | `boolean` |  |
+| `execution` | `any` |  |
+| `first_input` | `any` |  |
+| `first_input_key` | `string` | Idempotency-Key that finds the first message through input_delivery. |
+| `first_input_requester_membership_id` | `string` | Membership the first message was sent as, for input_delivery. |
+| `id` | `string` |  |
+| `inherit_context` | `boolean` | Include the source conversation through its last completed reply. |
+| `local_activities` | `Record<string, any>` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
+| `local_archived_count` | `number` | Local Claude Code and Codex threads archived on their computers. |
+| `local_next_cursor` | `string | null` |  |
+| `local_scope_key` | `string | null` |  |
+| `local_status_pending` | `boolean` | A computer is reporting newer local thread statuses; read the page again shortly. |
+| `local_threads` | `any[]` |  |
+| `main_thread_id` | `string` |  |
+| `message` | `string` | The thread's first message. |
+| `next_cursor` | `string | null` |  |
+| `parent_conversation_id` | `string` | Optional source conversation belonging to this agent. |
+| `requester_membership_id` | `string` |  |
+| `selected_thread` | `any` |  |
+| `thread` | `Record<string, any>` |  |
+| `threads` | `any[]` |  |
+| `title` | `string` |  |
+| `total_archived_count` | `number | null` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+#### Example: List
+
+```ts
+const spark_agent_threads = await client.SparkAgentThread().list({ agent_id: "example", organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const spark_agent_thread = await client.SparkAgentThread().create({
+  agent_id: 'example_agent_id',
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### SparkCredit
+
+Create an instance: `const spark_credit = client.SparkCredit()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `amount_cents` | `number` | Purchase amount in USD cents. |
+| `autofill` | `any` |  |
+| `autofill_payment_unconfirmed` | `boolean` |  |
+| `available_usd` | `string` |  |
+| `billing_unit` | `string` | Compute minute quote version returned by the billing summary. |
+| `can_manage` | `boolean` |  |
+| `compute_minutes` | `Record<string, any>` |  |
+| `compute_usd` | `string` |  |
+| `credits_per_usd` | `number` |  |
+| `inference_usd` | `string` |  |
+| `kind` | `string` |  |
+| `payment_method` | `Record<string, any> | null` |  |
+| `payments_enabled` | `boolean` |  |
+| `plan` | `string` |  |
+| `plans` | `any[]` |  |
+| `quoted_credits_cents` | `number` | Grant shown for a top-up or subscription, in usage cents. |
+| `quoted_price_cents` | `number` | Monthly cash price shown for a subscription, in USD cents. |
+| `refill_limits_cents` | `any[]` |  |
+| `refill_options` | `any[]` |  |
+| `refill_thresholds_cents` | `any[]` |  |
+| `request_key` | `string` |  |
+| `settings` | `any` |  |
+| `starter_cents` | `number` |  |
+| `top_up_max_cents` | `number` | Maximum manual top-up, in USD cents. |
+| `top_up_step_cents` | `number` | Minimum manual top-up and increment, in USD cents. |
+
+#### Example: List
+
+```ts
+const spark_credits = await client.SparkCredit().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const spark_credit = await client.SparkCredit().create({
+  organization_id: 'example_organization_id',
+  kind: 'example_kind',
+  request_key: 'example_request_key',
+})
+```
+
+
+### SparkCreditAgentUsage
+
+Create an instance: `const spark_credit_agent_usage = client.SparkCreditAgentUsage()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agents` | `any[]` |  |
+| `all` | `Record<string, any>` |  |
+| `days` | `any[]` |  |
+| `id` | `string` |  |
+| `owners` | `any[]` |  |
+
+#### Example: Load
+
+```ts
+const spark_credit_agent_usage = await client.SparkCreditAgentUsage().load({ id: 'spark_credit_agent_usage_id', organization_id: 'organization_id' })
+```
+
+
+### SparkCreditUsageTotal
+
+Create an instance: `const spark_credit_usage_total = client.SparkCreditUsageTotal()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `compute_minutes_used` | `string` |  |
+| `compute_usd` | `string` |  |
+| `inference_usd` | `string` |  |
+
+#### Example: List
+
+```ts
+const spark_credit_usage_totals = await client.SparkCreditUsageTotal().list({ organization_id: "example" })
 ```
 
 
@@ -13384,6 +29232,135 @@ const static_site_domain = await client.StaticSiteDomain().create({
 ```
 
 
+### StatusChange
+
+Create an instance: `const status_change = client.StatusChange()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_id` | `string` |  |
+| `id` | `string` |  |
+| `patchsets` | `any[]` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+
+#### Example: Load
+
+```ts
+const status_change = await client.StatusChange().load({ id: 'status_change_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+
+### StatusCommit
+
+Create an instance: `const status_commit = client.StatusCommit()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `checks` | `any[]` |  |
+| `commit_sha` | `string` |  |
+| `counts` | `Record<string, any>` |  |
+| `id` | `string` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `total` | `number` |  |
+
+#### Example: Load
+
+```ts
+const status_commit = await client.StatusCommit().load({ id: 'status_commit_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+
+### StatusPatchset
+
+Create an instance: `const status_patchset = client.StatusPatchset()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `checks` | `any[]` |  |
+| `checks_status` | `string | null` |  |
+| `commit_sha` | `string | null` |  |
+| `counts` | `Record<string, any>` |  |
+| `id` | `string` |  |
+| `patchset_id` | `string` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `total` | `number` |  |
+
+#### Example: Load
+
+```ts
+const status_patchset = await client.StatusPatchset().load({ id: 'status_patchset_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+
+### StripeWebhook
+
+Create an instance: `const stripe_webhook = client.StripeWebhook()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const stripe_webhook = await client.StripeWebhook().create({
+})
+```
+
+
+### SubmitTelemetry
+
+Create an instance: `const submit_telemetry = client.SubmitTelemetry()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const submit_telemetry = await client.SubmitTelemetry().create({
+})
+```
+
+
 ### SubscriptionModel
 
 Create an instance: `const subscription_model = client.SubscriptionModel()`
@@ -13409,6 +29386,174 @@ Create an instance: `const subscription_model = client.SubscriptionModel()`
 
 ```ts
 const subscription_models = await client.SubscriptionModel().list({ agent_id: "example", organization_id: "example", profile_id: "example" })
+```
+
+
+### SwarmEvent
+
+Create an instance: `const swarm_event = client.SwarmEvent()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_swarm_id` | `string` |  |
+| `attempt_id` | `string | null` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `id` | `number` |  |
+| `kind` | `string` |  |
+| `payload` | `Record<string, any>` |  |
+| `reason` | `string | null` |  |
+| `scheduler_generation` | `number | null` |  |
+| `task_id` | `string | null` |  |
+
+#### Example: List
+
+```ts
+const swarm_events = await client.SwarmEvent().list({ swarm_id: "example" })
+```
+
+
+### SwarmLive
+
+Create an instance: `const swarm_live = client.SwarmLive()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### SwarmNote
+
+Create an instance: `const swarm_note = client.SwarmNote()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `task_id` | `string | null` | A task public id; omitted |
+| `text` | `string` |  |
+
+#### Example: Create
+
+```ts
+const swarm_note = await client.SwarmNote().create({
+  swarm_id: 'example_swarm_id',
+  text: 'example_text',
+})
+```
+
+
+### SwarmTask
+
+Create an instance: `const swarm_task = client.SwarmTask()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `acceptance_commands` | `any[]` |  |
+| `agent_swarm_id` | `string` |  |
+| `assigned_runner_id` | `string | null` |  |
+| `blocked_reason` | `string | null` |  |
+| `changes` | `any[]` |  |
+| `commit_count` | `number` |  |
+| `commit_sha_result` | `string | null` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `current_attempt_id` | `string | null` |  |
+| `deadline_at` | `string | null` |  |
+| `depends_on_task_ids` | `any[]` |  |
+| `depth` | `number` |  |
+| `diff_artifact_url` | `string | null` |  |
+| `display_id` | `number` |  |
+| `environment_profile` | `string | null` |  |
+| `error_message` | `string | null` |  |
+| `failure_code` | `string | null` |  |
+| `finished_at` | `string | null` |  |
+| `finished_at_label` | `string | null` |  |
+| `harness` | `string` |  |
+| `id` | `string` |  |
+| `input_revision` | `string | null` |  |
+| `iteration` | `number` |  |
+| `landing_state` | `string` |  |
+| `model` | `string | null` |  |
+| `model_provider` | `string | null` |  |
+| `number` | `number` |  |
+| `organization_id` | `string` |  |
+| `owned_paths` | `any[]` |  |
+| `parent_task_id` | `string | null` |  |
+| `position` | `number` |  |
+| `prompt` | `string` |  |
+| `queued_at` | `string | null` |  |
+| `queued_at_label` | `string | null` |  |
+| `reasoning_effort` | `string | null` |  |
+| `recent_activity` | `any[]` |  |
+| `repo_url` | `string` |  |
+| `result` | `Record<string, any>` |  |
+| `retry_number` | `number` |  |
+| `role` | `string` |  |
+| `run_id` | `string | null` |  |
+| `stack_after_task_id` | `string | null` |  |
+| `started_at` | `string | null` |  |
+| `started_at_label` | `string | null` |  |
+| `status` | `string` |  |
+| `title` | `string | null` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+
+#### Example: List
+
+```ts
+const swarm_tasks = await client.SwarmTask().list({ swarm_id: "example" })
+```
+
+
+### TaskLease
+
+Create an instance: `const task_lease = client.TaskLease()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Create
+
+```ts
+const task_lease = await client.TaskLease().create({
+  swarm_id: 'example_swarm_id',
+  task_id: 'example_task_id',
+})
 ```
 
 
@@ -13439,6 +29584,436 @@ const thread_preview = await client.ThreadPreview().create({
   thread_id: 'example_thread_id',
   port: 1,
 })
+```
+
+
+### ThreadPreviewAccess
+
+Create an instance: `const thread_preview_access = client.ThreadPreviewAccess()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### ToolFeedback
+
+Create an instance: `const tool_feedback = client.ToolFeedback()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `category` | `string` |  |
+| `created_at` | `string` |  |
+| `details` | `string` |  |
+| `feedback` | `Record<string, any>` |  |
+| `id` | `string` |  |
+| `metadata` | `Record<string, any>` | Caller-supplied session context; no secrets or transcripts |
+| `organization_id` | `string` |  |
+| `source` | `string` |  |
+| `summary` | `string` |  |
+| `user_id` | `string` |  |
+
+#### Example: Load
+
+```ts
+const tool_feedback = await client.ToolFeedback().load({ id: 'tool_feedback_id', organization_id: 'organization_id' })
+```
+
+#### Example: Create
+
+```ts
+const tool_feedback = await client.ToolFeedback().create({
+  organization_id: 'example_organization_id',
+  feedback: {},
+})
+```
+
+
+### Transcript
+
+Create an instance: `const transcript = client.Transcript()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent` | `string` |  |
+| `author` | `Record<string, any>` |  |
+| `checkpoint_pagination` | `Record<string, any>` |  |
+| `checkpoints` | `any[]` |  |
+| `id` | `string` |  |
+| `last_checkpoint_at` | `string | null` |  |
+| `selected_checkpoint` | `any` |  |
+| `source_url` | `string` |  |
+| `started_at` | `string` |  |
+| `status` | `string` |  |
+| `title` | `string | null` |  |
+
+#### Example: List
+
+```ts
+const transcripts = await client.Transcript().list({ repo: "example" })
+```
+
+
+### V1Message
+
+Create an instance: `const v1_message = client.V1Message()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const v1_message = await client.V1Message().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+
+### VcBranch
+
+Create an instance: `const vc_branch = client.VcBranch()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `target_commit_id` | `string` |  |
+
+#### Example: List
+
+```ts
+const vc_branchs = await client.VcBranch().list({ organization_id: "example", repo_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const vc_branch = await client.VcBranch().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+
+### VcBrowser
+
+Create an instance: `const vc_browser = client.VcBrowser()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### VcChange
+
+Create an instance: `const vc_change = client.VcChange()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activity` | `any[]` |  |
+| `canonical_path` | `string` |  |
+| `change` | `any` |  |
+| `checks` | `any[]` |  |
+| `checks_status` | `string` |  |
+| `description` | `string | null` |  |
+| `group` | `Record<string, any> | null` |  |
+| `id` | `string` |  |
+| `jj_change_id` | `string | null` |  |
+| `labels` | `any[]` |  |
+| `landing` | `Record<string, any>` | Server-computed submitted-together closure and landing preflight. |
+| `number` | `number` |  |
+| `patchset_number` | `number | null` |  |
+| `previews` | `any[]` |  |
+| `primary_status` | `string | null` |  |
+| `public_id` | `string` |  |
+| `related_changes` | `any[]` |  |
+| `relation_chain` | `any[]` |  |
+| `restack_state` | `string` |  |
+| `review_summary` | `Record<string, any>` |  |
+| `stack` | `any` |  |
+| `status` | `string` |  |
+| `sync` | `Record<string, any>` |  |
+| `target` | `Record<string, any>` |  |
+| `target_advanced` | `boolean` |  |
+| `target_branch` | `string` |  |
+| `title` | `string` |  |
+| `url` | `string` |  |
+
+#### Example: Load
+
+```ts
+const vc_change = await client.VcChange().load({ id: 'vc_change_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### Example: List
+
+```ts
+const vc_changes = await client.VcChange().list({ organization_id: "example", repo_id: "example" })
+```
+
+
+### VcChangeGroup
+
+Create an instance: `const vc_change_group = client.VcChangeGroup()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `changes` | `any[]` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `number` | `number` |  |
+| `status` | `string` |  |
+| `title` | `string | null` |  |
+
+#### Example: Load
+
+```ts
+const vc_change_group = await client.VcChangeGroup().load({ id: 'vc_change_group_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### Example: List
+
+```ts
+const vc_change_groups = await client.VcChangeGroup().list({ organization_id: "example", repo_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const vc_change_group = await client.VcChangeGroup().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  name: 'example_name',
+})
+```
+
+
+### VcFile
+
+Create an instance: `const vc_file = client.VcFile()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `paths` | `any[]` |  |
+| `truncated` | `boolean` |  |
+
+#### Example: List
+
+```ts
+const vc_files = await client.VcFile().list({ organization_id: "example", repo_id: "example", ref: "example" })
+```
+
+
+### VcMergeQueue
+
+Create an instance: `const vc_merge_queue = client.VcMergeQueue()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `analytics` | `Record<string, any>` | Queue performance for the reporting window. |
+| `id` | `string` |  |
+| `policy` | `Record<string, any>` |  |
+| `queue` | `Record<string, any>` |  |
+| `target_branches` | `any[]` | Bookmark names for the target picker. |
+
+#### Example: Load
+
+```ts
+const vc_merge_queue = await client.VcMergeQueue().load({ id: 'vc_merge_queue_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### Example: List
+
+```ts
+const vc_merge_queues = await client.VcMergeQueue().list({ organization_id: "example", repo_id: "example" })
+```
+
+
+### VcStack
+
+Create an instance: `const vc_stack = client.VcStack()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `alias_ref_name` | `string | null` |  |
+| `changes` | `any[]` |  |
+| `code` | `string` |  |
+| `id` | `string` |  |
+| `landing` | `Record<string, any>` | Compact landing state for the Stack CLI. |
+| `member_count` | `number` |  |
+| `name` | `string | null` |  |
+| `ref_name` | `string` |  |
+| `status` | `string` |  |
+| `tip_change_number` | `number | null` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string` |  |
+
+#### Example: Load
+
+```ts
+const vc_stack = await client.VcStack().load({ id: 'vc_stack_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### Example: List
+
+```ts
+const vc_stacks = await client.VcStack().list({ organization_id: "example", repo_id: "example" })
+```
+
+
+### VcsNode
+
+Create an instance: `const vcs_node = client.VcsNode()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `string | null` |  |
+| `account_id` | `string | null` |  |
+| `account_login` | `string` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string | null` |  |
+| `id` | `string` |  |
+| `installation_id` | `string` |  |
+| `installed_at` | `string | null` |  |
+| `installed_at_label` | `string | null` |  |
+| `manage_access_url` | `string` |  |
+| `organization_id` | `string` |  |
+| `permission_entries` | `any[]` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `Record<string, any>` |  |
+| `status` | `string` |  |
+| `suspended_at` | `string | null` |  |
+| `suspended_at_label` | `string | null` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string | null` |  |
+
+#### Example: List
+
+```ts
+const vcs_nodes = await client.VcsNode().list({ organization_id: "example" })
+```
+
+
+### VcsSetting
+
+Create an instance: `const vcs_setting = client.VcsSetting()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `boolean` |  |
+| `can_manage_sandbox_region` | `boolean` |  |
+| `dedicated_outbound_ip_addresses` | `any[]` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` |  |
+| `organization` | `Record<string, any>` |  |
+| `sandbox_regions` | `any[]` |  |
+
+#### Example: List
+
+```ts
+const vcs_settings = await client.VcsSetting().list({ organization_id: "example" })
 ```
 
 
@@ -13780,6 +30355,67 @@ const verify_browser_session = await client.VerifyBrowserSession().create({
 ```
 
 
+### VerifyEmailVerification
+
+Create an instance: `const verify_email_verification = client.VerifyEmailVerification()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ts
+const verify_email_verifications = await client.VerifyEmailVerification().list()
+```
+
+
+### VerifySignalIntegration
+
+Create an instance: `const verify_signal_integration = client.VerifySignalIntegration()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `api_token_stored` | `boolean` |  |
+| `config` | `Record<string, any>` |  |
+| `created_at` | `string | null` |  |
+| `failure_message` | `string | null` |  |
+| `id` | `string` | Public id (`sint_…`). |
+| `inbound_path` | `string` |  |
+| `inbound_url` | `string` | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `string | null` |  |
+| `last_verified_at` | `string | null` |  |
+| `mode` | `string` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `provider` | `string` |  |
+| `rejected_signature_count` | `number` | Deliveries rejected for a bad or missing signature. |
+| `status` | `string` |  |
+| `target_count` | `number` |  |
+| `unmapped_delivery_count` | `number` | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `string | null` |  |
+| `webhook_secret_stored` | `boolean` |  |
+
+#### Example: Create
+
+```ts
+const verify_signal_integration = await client.VerifySignalIntegration().create({
+  id: 'example_id',
+  organization_id: 'example_organization_id',
+})
+```
+
+
 ### VerifyStaticSiteDomain
 
 Create an instance: `const verify_static_site_domain = client.VerifyStaticSiteDomain()`
@@ -13858,6 +30494,24 @@ const version_logs = await client.VersionLog().list({ binary_id: "example", orga
 ```
 
 
+### WaitlistApplication
+
+Create an instance: `const waitlist_application = client.WaitlistApplication()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ts
+const waitlist_application = await client.WaitlistApplication().create({
+})
+```
+
+
 ### WebBotAuth
 
 Create an instance: `const web_bot_auth = client.WebBotAuth()`
@@ -13883,6 +30537,23 @@ const web_bot_auth = await client.WebBotAuth().create({
   origin: 'example_origin',
 })
 ```
+
+
+### WebhookGitlab
+
+Create an instance: `const webhook_gitlab = client.WebhookGitlab()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### WorkflowRunStep
@@ -13928,6 +30599,122 @@ Create an instance: `const workflow_trigger_skipped = client.WorkflowTriggerSkip
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+
+### WorkspaceActivity
+
+Create an instance: `const workspace_activity = client.WorkspaceActivity()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `live_activity` | `any[]` |  |
+| `recent_items` | `any[]` |  |
+| `unresolved_notification_count` | `number` |  |
+
+#### Example: Load
+
+```ts
+const workspace_activity = await client.WorkspaceActivity().load({ organization_id: 'organization_id' })
+```
+
+
+### WorkspaceActivityNotification
+
+Create an instance: `const workspace_activity_notification = client.WorkspaceActivityNotification()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### WorkspaceSpace
+
+Create an instance: `const workspace_space = client.WorkspaceSpace()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `string` |  |
+| `default_branch` | `string` |  |
+| `description` | `string | null` |  |
+| `hidden` | `boolean` |  |
+| `icon_name` | `string` |  |
+| `id` | `string` |  |
+| `import_status` | `string | null` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `position` | `number | null` |  |
+| `repository_id` | `string` |  |
+| `repository_slug` | `string` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```ts
+const workspace_space = await client.WorkspaceSpace().load({ id: 'workspace_space_id', organization_id: 'organization_id' })
+```
+
+#### Example: List
+
+```ts
+const workspace_spaces = await client.WorkspaceSpace().list({ organization_id: "example" })
+```
+
+#### Example: Create
+
+```ts
+const workspace_space = await client.WorkspaceSpace().create({
+  organization_id: 'example_organization_id',
+  icon_name: 'example_icon_name',
+  name: 'example_name',
+  slug: 'example_slug',
+})
+```
+
+
+### WorkspaceSpacePreference
+
+Create an instance: `const workspace_space_preference = client.WorkspaceSpacePreference()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `preferences` | `any[]` |  |
+| `spaces` | `any[]` |  |
 
 ## Features
 
@@ -14087,7 +30874,7 @@ activated earlier.
 
 ## Open types
 
-12 fields are carried as open values rather than typed structures.
+17 fields are carried as open values rather than typed structures.
 This follows from the API definition, not from a gap in this SDK: the
 definition describes them with untagged unions —
 `oneOf`/`anyOf` branches with no `discriminator` — so it never states which
@@ -14101,14 +30888,19 @@ guarantee.
 | `agent_automation` | `version` | 12 | 12 levels |
 | `agent_interaction` | `interactions` | 12 | 17 levels |
 | `automation_event` | `version` | 12 | 12 levels |
+| `control_computer_control_operation` | `result` | 10 | 2 levels |
+| `device_control_operation` | `result` | 10 | 2 levels |
 | `local_thread_operation` | `result` | 10 | 2 levels |
 | `spark_agent_local_thread` | `result` | 10 | 2 levels |
+| `workspace_activity` | `recent_items` | 7 | 1 level |
 | `page_agent` | `inbox` | 6 | 14 levels |
 | `agent` | `configuration` | 5 | 9 levels |
 | `agent_manager` | `configuration` | 5 | 9 levels |
 | `interaction_response` | `answer` | 5 | 3 levels |
 | `page_agent` | `new_configuration` | 5 | 9 levels |
 | `page_agent` | `selected_agent` | 5 | 15 levels |
+| `change` | `result` | 4 | 9 levels |
+| `workspace_activity` | `live_activity` | 4 | 1 level |
 
 These values round-trip unchanged — read them, modify them, send them back. If
 the API adds a `discriminator` to the definition, regenerating will type them.
@@ -14191,11 +30983,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const pageprojectrun = client.PageProjectRun()
-await pageprojectrun.load({ id: "example_id", organization_id: "example", project_id: "example" })
+const agentoperation = client.AgentOperation()
+await agentoperation.load({ agent_id: "example", id: "example_id", organization_id: "example" })
 
-// pageprojectrun.data() now returns the pageprojectrun data from the last `load`
-// pageprojectrun.match() returns { id: "example_id" }
+// agentoperation.data() now returns the agentoperation data from the last `load`
+// agentoperation.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

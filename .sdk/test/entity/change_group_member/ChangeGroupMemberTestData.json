@@ -1,0 +1,66 @@
+{
+  "existing": {
+    "change_group_member": {
+      "CHANGE_GROUP_MEMBER00": {
+        "change_id": "CHANGE01",
+        "changes": [],
+        "id": "CHANGE_GROUP_MEMBER00",
+        "name": "s49",
+        "number": 74,
+        "status": "s4b",
+        "title": "s4c",
+        "change_group_id": "CHANGE_GROUP01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "CHANGE_GROUP_MEMBER01": {
+        "change_id": "CHANGE01",
+        "changes": [],
+        "id": "CHANGE_GROUP_MEMBER01",
+        "name": "s8f",
+        "number": 144,
+        "status": "s91",
+        "title": "s92",
+        "change_group_id": "CHANGE_GROUP01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "CHANGE_GROUP_MEMBER02": {
+        "change_id": "CHANGE01",
+        "changes": [],
+        "id": "CHANGE_GROUP_MEMBER02",
+        "name": "sd5",
+        "number": 214,
+        "status": "sd7",
+        "title": "sd8",
+        "change_group_id": "CHANGE_GROUP01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "change_group_member": {
+      "change_group_member_ref01": {
+        "change_id": "CHANGE01",
+        "changes": [],
+        "name": "s11b",
+        "number": 284,
+        "status": "s11d",
+        "title": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups/{id}/members": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups/{id}/members/{change_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

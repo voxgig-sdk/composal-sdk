@@ -1,0 +1,21 @@
+$kind: http-request
+id: "9dc5def2-bdd8-52a8-aef9-57d097d85360"
+description: |-
+  The `list` operation of **cli_release**.
+
+  SDK: `client.CliRelease().list()`
+url: "{{base}}/api/v1/cli_releases"
+method: GET
+headers:
+  Accept: application/json
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("cli_release_id")) pm.collectionVariables.set("cli_release_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

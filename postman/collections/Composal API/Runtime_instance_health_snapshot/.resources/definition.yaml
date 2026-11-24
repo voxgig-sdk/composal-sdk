@@ -1,0 +1,8 @@
+$kind: collection
+id: "4c8ee059-9343-5436-b47b-2bd459cd0d17"
+description: |-
+  The **runtime_instance_health_snapshot** entity. Its requests address one record by `{{runtime_instance_health_snapshot_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 459000

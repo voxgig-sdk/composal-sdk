@@ -1,0 +1,42 @@
+$kind: http-request
+id: babc47f2-e8ae-5785-9152-759d2fbf7aff
+description: |-
+  The `sync` action of **vc_change**, a route of its `create` operation.
+
+  SDK: `client.VcChange().create({ "organization_id": "organization_id", "repo_id": "repo_id", $action: "sync" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/sync"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_change belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_change belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "git_publication_id": "example",
+      "message": "example",
+      "reviewers": [
+        "example"
+      ],
+      "remove_reviewers": [
+        "example"
+      ],
+      "labels": [
+        "example"
+      ],
+      "draft": true,
+      "assets": [
+        {
+          "id": "example",
+          "alias": "example"
+        }
+      ]
+    }
+order: 18000

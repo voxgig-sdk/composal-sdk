@@ -1,0 +1,25 @@
+$kind: http-request
+id: "1737210f-2017-59a2-bf6b-99a390122f75"
+description: |-
+  The `create` operation of **artifact_package_mirror**.
+
+  SDK: `client.ArtifactPackageMirror().create({  })`
+url: "{{base}}/api/v1/artifacts/package_mirrors"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("artifact_package_mirror_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

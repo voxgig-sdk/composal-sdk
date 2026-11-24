@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "swarm_live": {
+      "SWARM_LIVE00": {
+        "swarm_id": "SWARM01",
+        "id": "SWARM_LIVE00"
+      },
+      "SWARM_LIVE01": {
+        "swarm_id": "SWARM01",
+        "id": "SWARM_LIVE01"
+      },
+      "SWARM_LIVE02": {
+        "swarm_id": "SWARM01",
+        "id": "SWARM_LIVE02"
+      }
+    }
+  },
+  "new": {
+    "swarm_live": {
+      "swarm_live_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/agent/swarms/{id}/live/replay": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "patchset_diff": {
+      "PATCHSET_DIFF00": {
+        "files": [],
+        "id": "PATCHSET_DIFF00",
+        "patchset": {},
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "patchset_id": "PATCHSET01",
+        "repo_id": "REPO01"
+      },
+      "PATCHSET_DIFF01": {
+        "files": [],
+        "id": "PATCHSET_DIFF01",
+        "patchset": {},
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "patchset_id": "PATCHSET01",
+        "repo_id": "REPO01"
+      },
+      "PATCHSET_DIFF02": {
+        "files": [],
+        "id": "PATCHSET_DIFF02",
+        "patchset": {},
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "patchset_id": "PATCHSET01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "patchset_diff": {
+      "patchset_diff_ref01": {
+        "files": [],
+        "patchset": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/patchsets/{patchset_number}/diff/{fingerprint}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

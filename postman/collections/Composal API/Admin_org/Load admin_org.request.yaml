@@ -1,0 +1,15 @@
+$kind: http-request
+id: "489cc712-7a86-51f5-8aa1-42a3d756ba04"
+description: |-
+  The `load` operation of **admin_org**.
+
+  SDK: `client.AdminOrg().load({ id: "example_id" })`
+url: "{{base}}/api/v1/admin/organizations/:org_slug"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{admin_org_id}}"
+    description: The admin_org this request addresses.
+order: 2000

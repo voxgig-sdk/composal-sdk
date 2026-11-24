@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "vc_merge_queue": {
+      "VC_MERGE_QUEUE00": {
+        "analytics": {},
+        "id": "VC_MERGE_QUEUE00",
+        "policy": {},
+        "queue": {},
+        "target_branches": [],
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "VC_MERGE_QUEUE01": {
+        "analytics": {},
+        "id": "VC_MERGE_QUEUE01",
+        "policy": {},
+        "queue": {},
+        "target_branches": [],
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "VC_MERGE_QUEUE02": {
+        "analytics": {},
+        "id": "VC_MERGE_QUEUE02",
+        "policy": {},
+        "queue": {},
+        "target_branches": [],
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "vc_merge_queue": {
+      "vc_merge_queue_ref01": {
+        "analytics": {},
+        "policy": {},
+        "queue": {},
+        "target_branches": []
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/pause": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/resume": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/concurrency": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/skip_ci": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

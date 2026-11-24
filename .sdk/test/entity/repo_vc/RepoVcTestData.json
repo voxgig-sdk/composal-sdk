@@ -1,0 +1,73 @@
+{
+  "existing": {
+    "repo_vc": {
+      "REPO_VC00": {
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "REPO_VC00"
+      },
+      "REPO_VC01": {
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "REPO_VC01"
+      },
+      "REPO_VC02": {
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "REPO_VC02"
+      }
+    }
+  },
+  "new": {
+    "repo_vc": {
+      "repo_vc_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commit_file": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/blame": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/tree": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/archive.zip": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/blob": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_policy": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/trunk_tip": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_policy": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

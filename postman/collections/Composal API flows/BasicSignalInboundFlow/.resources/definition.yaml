@@ -1,0 +1,4 @@
+$kind: collection
+id: "4933e959-3717-5fd4-bad5-6a9adfef0ce8"
+description: "The `BasicSignalInboundFlow` flow of **signal_inbound**."
+order: 382000

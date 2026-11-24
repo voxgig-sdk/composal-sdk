@@ -1,0 +1,25 @@
+$kind: http-request
+id: bcb36bfa-9db6-5b6d-85b6-882db0f3832b
+description: |-
+  The `rename` action of **device**, a route of its `create` operation.
+
+  SDK: `client.Device().create({ "organization_id": "organization_id", "id": "ID", $action: "rename" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/rename"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example"
+    }
+order: 12000

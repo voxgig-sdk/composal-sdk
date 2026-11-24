@@ -1,0 +1,29 @@
+$kind: http-request
+id: c2706e33-1434-50d0-8a61-3a7cd4bdb97a
+description: |-
+  The `create` operation of **backend_runner_pool**.
+
+  SDK: `client.BackendRunnerPool().create({ backend_id: "example" })`
+url: "{{base}}/api/v1/bazel/backends/:backend_id/runner_pools"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: backend_id
+    value: "{{backend_id}}"
+    description: "Input: backend_id."
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("backend_runner_pool_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

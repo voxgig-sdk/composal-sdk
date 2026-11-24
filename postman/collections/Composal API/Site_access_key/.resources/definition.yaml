@@ -1,0 +1,9 @@
+$kind: collection
+id: "6b798d9a-3156-5bd0-94b4-75859dc55915"
+description: |-
+  The **site_access_key** entity, which belongs to a organization and a site. Its requests address one record by `{{site_access_key_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 476000

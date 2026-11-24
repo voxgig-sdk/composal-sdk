@@ -1,0 +1,10 @@
+$kind: collection
+id: "4dbe7f47-fcde-5c99-b36b-54b8d903d43e"
+description: |-
+  The **agent_session_roder_handoff** entity, which belongs to a organization and a repo and a agent_session. Its requests address one record by `{{agent_session_roder_handoff_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `checkpoint_id` | string |  |  |
+  | `purpose` | string |  |  |
+order: 51000

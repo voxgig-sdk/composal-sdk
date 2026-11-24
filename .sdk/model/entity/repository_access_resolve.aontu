@@ -1,0 +1,184 @@
+# Entity: repository_access_resolve
+
+main: kit: entity: repository_access_resolve: {
+
+  alias: field: {}
+
+  fields: {
+    default_branch: {
+      h: "Default Branch"
+      n: "default_branch"
+      r: true
+      t: "`$STRING`"
+    }
+    git_auth_username: {
+      h: "Git Auth Username"
+      n: "git_auth_username"
+      r: true
+      t: "`$STRING`"
+    }
+    git_https_clone_url: {
+      fo: "uri"
+      h: "Git Https Clone Url"
+      n: "git_https_clone_url"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    git_https_supported: {
+      h: "Git Https Supported"
+      n: "git_https_supported"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    github_access_warnings: {
+      h: "Github Access Warnings"
+      n: "github_access_warnings"
+      r: false
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+    membership_role: {
+      h: "Membership Role"
+      n: "membership_role"
+      r: true
+      t: "`$STRING`"
+    }
+    organization_id: {
+      h: "Organization Id"
+      n: "organization_id"
+      r: true
+      t: "`$STRING`"
+    }
+    organization_name: {
+      h: "Organization Name"
+      n: "organization_name"
+      r: true
+      t: "`$STRING`"
+    }
+    organization_slug: {
+      h: "Organization Slug"
+      n: "organization_slug"
+      r: true
+      t: "`$STRING`"
+    }
+    repository_id: {
+      h: "Repository Id"
+      n: "repository_id"
+      r: true
+      t: "`$STRING`"
+    }
+    repository_name: {
+      h: "Repository Name"
+      n: "repository_name"
+      r: true
+      t: "`$STRING`"
+    }
+    repository_slug: {
+      h: "Repository Slug"
+      n: "repository_slug"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+    parts: [
+      "resolve_id"
+      "id"
+    ]
+    sep: "/"
+  }
+
+  name: "repository_access_resolve"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/repository_access/resolve/{org_slug}/{repo_slug}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "resolve_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/repository_access/resolve/{org_slug}/{repo_slug}"
+          q: {
+            exist: [
+              "id"
+              "resolve_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "resolve_id"
+              repo_slug: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "repository_access"
+            }
+            {
+              lit: "resolve"
+            }
+            {
+              var: "resolve_id"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.repository`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

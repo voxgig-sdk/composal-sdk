@@ -1,0 +1,26 @@
+# BasicAuditEventFlow
+
+main: kit: flow: BasicAuditEventFlow:
+{
+  entity: "audit_event",
+  kind: "basic",
+  name: "BasicAuditEventFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "audit_event_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAuditEventFlow"
+}

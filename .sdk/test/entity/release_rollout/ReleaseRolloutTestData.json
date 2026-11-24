@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "release_rollout": {
+      "RELEASE_ROLLOUT00": {
+        "id": "RELEASE_ROLLOUT00",
+        "release_id": "RELEASE01"
+      },
+      "RELEASE_ROLLOUT01": {
+        "id": "RELEASE_ROLLOUT01",
+        "release_id": "RELEASE01"
+      },
+      "RELEASE_ROLLOUT02": {
+        "id": "RELEASE_ROLLOUT02",
+        "release_id": "RELEASE01"
+      }
+    }
+  },
+  "new": {
+    "release_rollout": {
+      "release_rollout_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/execution/releases/{release_id}/rollouts/{id}/complete": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/execution/releases/{release_id}/rollouts/{id}/fail": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/execution/releases/{release_id}/rollouts/{id}/start": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/execution/releases/{release_id}/rollouts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/execution/releases/{release_id}/rollouts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/execution/releases/{release_id}/rollouts/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

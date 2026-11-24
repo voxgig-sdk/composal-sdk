@@ -1,0 +1,40 @@
+# BasicRepoStatFlow
+
+main: kit: flow: BasicRepoStatFlow:
+{
+  entity: "repo_stat",
+  kind: "basic",
+  name: "BasicRepoStatFlow",
+  step: [
+    {
+      i: {
+        ref: "repo_stat_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "repo_stat_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRepoStatFlow"
+}

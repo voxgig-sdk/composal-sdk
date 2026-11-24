@@ -1,0 +1,8 @@
+$kind: collection
+id: "300eb36a-45f7-5870-9c15-d7a82e4f854e"
+description: |-
+  The **agent_integration_callback** entity. Its requests address one record by `{{agent_integration_callback_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 29000

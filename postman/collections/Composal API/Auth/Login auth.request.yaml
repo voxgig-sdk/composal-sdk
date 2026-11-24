@@ -1,0 +1,19 @@
+$kind: http-request
+id: e4b24c04-3a0b-57c3-8eda-10d17aeb2b0a
+description: |-
+  The `login` action of **auth**, a route of its `create` operation.
+
+  SDK: `client.Auth().create({ $action: "login" })`
+url: "{{base}}/api/v1/auth/login"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "email": "user@example.com",
+      "password": "example"
+    }
+order: 6000

@@ -1,0 +1,19 @@
+$kind: http-request
+id: c07fec5d-ca97-5b64-a9e3-cc0e2f1902b1
+description: |-
+  The `update` operation of **webhook_gitlab**.
+
+  SDK: `client.WebhookGitlab().update({ id: "example" })`
+url: "{{base}}/api/v1/webhooks/gitlab/:connection_key"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: connection_key
+    value: "{{webhook_gitlab_id}}"
+    description: The webhook_gitlab this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 1000

@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "commit_diff": {
+      "COMMIT_DIFF00": {
+        "files": [],
+        "id": "COMMIT_DIFF00",
+        "parent_id": "PARENT01",
+        "commit_id": "COMMIT01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "COMMIT_DIFF01": {
+        "files": [],
+        "id": "COMMIT_DIFF01",
+        "parent_id": "PARENT01",
+        "commit_id": "COMMIT01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "COMMIT_DIFF02": {
+        "files": [],
+        "id": "COMMIT_DIFF02",
+        "parent_id": "PARENT01",
+        "commit_id": "COMMIT01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "commit_diff": {
+      "commit_diff_ref01": {
+        "files": [],
+        "parent_id": "PARENT01"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits/{id}/diff/{fingerprint}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

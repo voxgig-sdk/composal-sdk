@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "label": {
+      "LABEL00": {
+        "changes_count": 40,
+        "id": "LABEL00",
+        "name": "s2a",
+        "slug": "s2b",
+        "organization_id": "ORGANIZATION01"
+      },
+      "LABEL01": {
+        "changes_count": 80,
+        "id": "LABEL01",
+        "name": "s52",
+        "slug": "s53",
+        "organization_id": "ORGANIZATION01"
+      },
+      "LABEL02": {
+        "changes_count": 120,
+        "id": "LABEL02",
+        "name": "s7a",
+        "slug": "s7b",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "label": {
+      "label_ref01": {
+        "changes_count": 160,
+        "name": "sa2",
+        "slug": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/labels": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+$kind: collection
+id: e357084a-4928-5e48-8ed9-213b4f3b53c8
+description: |-
+  The **runner_lease** entity. Its requests address one record by `{{runner_lease_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 456000

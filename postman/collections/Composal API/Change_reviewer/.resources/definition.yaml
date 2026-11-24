@@ -1,0 +1,15 @@
+$kind: collection
+id: "90ed14f5-9c81-5e62-b2cb-d59fa0e08d90"
+description: |-
+  The **change_reviewer** entity, which belongs to a organization and a repo and a change. Its requests address one record by `{{change_reviewer_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `add` | array |  |  |
+  | `email` | string | yes |  |
+  | `name` | string | yes |  |
+  | `remove` | array |  |  |
+  | `removed_reviewers` | array | yes |  |
+  | `requested_reviewers` | array | yes |  |
+  | `reviewers` | array | yes |  |
+order: 167000

@@ -1,0 +1,15 @@
+$kind: http-request
+id: "4eef0650-1b4e-5bc1-8939-8ca701753bc8"
+description: |-
+  The `load` operation of **github_onboarding**.
+
+  SDK: `client.GithubOnboarding().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/github_onboarding"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this github_onboarding belongs to.
+order: 1000

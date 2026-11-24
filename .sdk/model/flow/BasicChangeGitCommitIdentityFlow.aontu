@@ -1,0 +1,47 @@
+# BasicChangeGitCommitIdentityFlow
+
+main: kit: flow: BasicChangeGitCommitIdentityFlow:
+{
+  entity: "change_git_commit_identity",
+  kind: "basic",
+  name: "BasicChangeGitCommitIdentityFlow",
+  step: [
+    {
+      i: {
+        ref: "change_git_commit_identity_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "change_git_commit_identity_ref01",
+        srcdatavar: "change_git_commit_identity_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "change_git_commit_identity01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-change_git_commit_identity_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicChangeGitCommitIdentityFlow"
+}

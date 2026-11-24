@@ -1,0 +1,27 @@
+# BasicSparkAgentSiteFlow
+
+main: kit: flow: BasicSparkAgentSiteFlow:
+{
+  entity: "spark_agent_site",
+  kind: "basic",
+  name: "BasicSparkAgentSiteFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "spark_agent_site_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSparkAgentSiteFlow"
+}

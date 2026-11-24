@@ -1,0 +1,99 @@
+# BasicArtifactPackageMirrorFlow
+
+main: kit: flow: BasicArtifactPackageMirrorFlow:
+{
+  entity: "artifact_package_mirror",
+  kind: "basic",
+  name: "BasicArtifactPackageMirrorFlow",
+  step: [
+    {
+      i: {
+        ref: "artifact_package_mirror_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "artifact_package_mirror_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "artifact_package_mirror_ref01",
+        srcdatavar: "artifact_package_mirror_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-artifact_package_mirror_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "artifact_package_mirror_ref01",
+        srcdatavar: "artifact_package_mirror_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "artifact_package_mirror01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-artifact_package_mirror_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "artifact_package_mirror_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "artifact_package_mirror01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "artifact_package_mirror_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicArtifactPackageMirrorFlow"
+}

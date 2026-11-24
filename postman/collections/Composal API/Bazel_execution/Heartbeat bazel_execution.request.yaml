@@ -1,0 +1,19 @@
+$kind: http-request
+id: ef149a07-45c6-5244-a414-110897ae4dde
+description: |-
+  The `heartbeat` action of **bazel_execution**, a route of its `create` operation.
+
+  SDK: `client.BazelExecution().create({ "id": "ID", $action: "heartbeat" })`
+url: "{{base}}/api/v1/bazel/executions/:id/heartbeat"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{bazel_execution_id}}"
+    description: The bazel_execution this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

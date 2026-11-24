@@ -1,0 +1,8 @@
+$kind: collection
+id: "91b4179a-86d1-579b-8c95-cbf0d7427945"
+description: |-
+  The **agent_event** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_event_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 24000

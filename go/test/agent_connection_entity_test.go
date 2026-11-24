@@ -39,7 +39,7 @@ func TestAgentConnectionEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.AgentConnection(nil).List(map[string]any{"agent_id": 1, "organization_id": "x"}, nil)
+		_, err := client.AgentConnection(nil).List(map[string]any{"organization_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -64,12 +64,12 @@ func TestAgentConnectionEntity(t *testing.T) {
 			}
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
-			t.Log("LIVE STEP {\"id\":\"agent_connection.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup\"}")
-			t.Log("LIVE STEP {\"id\":\"agent_connection.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}\"}")
-			t.Log("LIVE STEP {\"id\":\"agent_connection.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}\"}")
+			t.Log("LIVE STEP {\"id\":\"agent_connection.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agent_connections/{id}/adopt_custody\"}")
+			t.Log("LIVE STEP {\"id\":\"agent_connection.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/agent_connections/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"agent_connection.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agent_connections/{id}\"}")
 			t.Log("LIVE STEP {\"id\":\"agent_connection.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
 		if setup.live {
-			for _, _liveKey := range []string{"agent01", "organization01"} {
+			for _, _liveKey := range []string{"organization01"} {
 				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
 					liveMiss(t, agent_connectionEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_AGENT_CONNECTION_ENTID", _liveKey)
 				}
@@ -85,7 +85,7 @@ func TestAgentConnectionEntity(t *testing.T) {
 			livePace()
 			liveExisting(t, agent_connectionEntityLiveStrict, setup.data, "agent_connection", "id", _liveId,
 				func() (any, error) {
-					return client.AgentConnection(nil).List(map[string]any{"agent_id": setup.idmap["agent01"], "organization_id": setup.idmap["organization01"]}, nil)
+					return client.AgentConnection(nil).List(map[string]any{"organization_id": setup.idmap["organization01"]}, nil)
 				})
 		}
 
@@ -105,7 +105,6 @@ func TestAgentConnectionEntity(t *testing.T) {
 		// LIST
 		agentConnectionRef01Ent := client.AgentConnection(nil)
 		agentConnectionRef01Match := map[string]any{
-			"agent_id": setup.idmap["agent01"],
 			"organization_id": setup.idmap["organization01"],
 		}
 
@@ -125,15 +124,15 @@ func TestAgentConnectionEntity(t *testing.T) {
 		agentConnectionRef01MatchDt0 := map[string]any{
 			"id": agentConnectionRef01Data["id"],
 		}
-		if v := setup.idmap["agent_id"]; v != nil {
-			agentConnectionRef01MatchDt0["agent_id"] = v
-		} else {
-			agentConnectionRef01MatchDt0["agent_id"] = setup.idmap["agent01"]
-		}
-		if v := setup.idmap["organization_id"]; v != nil {
+		switch v := agentConnectionRef01Data["organization_id"].(type) {
+		case string, bool, float64, int, int64:
 			agentConnectionRef01MatchDt0["organization_id"] = v
-		} else {
-			agentConnectionRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
+		default:
+			if v := setup.idmap["organization_id"]; v != nil {
+				agentConnectionRef01MatchDt0["organization_id"] = v
+			} else {
+				agentConnectionRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
+			}
 		}
 		agentConnectionRef01DataDt0Loaded, err := agentConnectionRef01Ent.Load(agentConnectionRef01MatchDt0, nil)
 		if err != nil {
@@ -151,7 +150,7 @@ func TestAgentConnectionEntity(t *testing.T) {
 		}
 
 		if setup.live {
-			for _, _liveKey := range []string{"agent01", "organization01"} {
+			for _, _liveKey := range []string{"organization01"} {
 				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
 					liveMiss(t, agent_connectionEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_AGENT_CONNECTION_ENTID", _liveKey)
 				}
@@ -167,7 +166,6 @@ func TestAgentConnectionEntity(t *testing.T) {
 		agentConnectionRef01Ent := client.AgentConnection(nil)
 		agentConnectionRef01Data := core.ToMapAny(vs.GetProp(
 			vs.GetPath(setup.data, []any{"new", "agent_connection"}), "agent_connection_ref01"))
-		agentConnectionRef01Data["agent_id"] = setup.idmap["agent01"]
 		agentConnectionRef01Data["organization_id"] = setup.idmap["organization01"]
 
 		agentConnectionRef01DataResult, err := agentConnectionRef01Ent.Create(agentConnectionRef01Data, nil)
@@ -187,7 +185,6 @@ func TestAgentConnectionEntity(t *testing.T) {
 		}
 		// LIST
 		agentConnectionRef01Match := map[string]any{
-			"agent_id": setup.idmap["agent01"],
 			"organization_id": setup.idmap["organization01"],
 		}
 
@@ -211,11 +208,10 @@ func TestAgentConnectionEntity(t *testing.T) {
 		// UPDATE
 		agentConnectionRef01DataUp0Up := map[string]any{
 			"id": agentConnectionRef01Data["id"],
-			"agent_id": setup.idmap["agent_id"],
 			"organization_id": setup.idmap["organization_id"],
 		}
 
-		agentConnectionRef01MarkdefUp0Name := "agent_card_url"
+		agentConnectionRef01MarkdefUp0Name := "admin_disabled_at"
 		agentConnectionRef01MarkdefUp0Value := fmt.Sprintf("Mark01-agent_connection_ref01_%d", setup.now)
 		agentConnectionRef01DataUp0Up[agentConnectionRef01MarkdefUp0Name] = agentConnectionRef01MarkdefUp0Value
 
@@ -241,15 +237,15 @@ func TestAgentConnectionEntity(t *testing.T) {
 		agentConnectionRef01MatchDt0 := map[string]any{
 			"id": agentConnectionRef01Data["id"],
 		}
-		if v := setup.idmap["agent_id"]; v != nil {
-			agentConnectionRef01MatchDt0["agent_id"] = v
-		} else {
-			agentConnectionRef01MatchDt0["agent_id"] = setup.idmap["agent01"]
-		}
-		if v := setup.idmap["organization_id"]; v != nil {
+		switch v := agentConnectionRef01Data["organization_id"].(type) {
+		case string, bool, float64, int, int64:
 			agentConnectionRef01MatchDt0["organization_id"] = v
-		} else {
-			agentConnectionRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
+		default:
+			if v := setup.idmap["organization_id"]; v != nil {
+				agentConnectionRef01MatchDt0["organization_id"] = v
+			} else {
+				agentConnectionRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
+			}
 		}
 		agentConnectionRef01DataDt0Loaded, err := agentConnectionRef01Ent.Load(agentConnectionRef01MatchDt0, nil)
 		if err != nil {
@@ -270,11 +266,6 @@ func TestAgentConnectionEntity(t *testing.T) {
 		agentConnectionRef01MatchRm0 := map[string]any{
 			"id": agentConnectionRef01Data["id"],
 		}
-		if v := setup.idmap["agent_id"]; v != nil {
-			agentConnectionRef01MatchRm0["agent_id"] = v
-		} else {
-			agentConnectionRef01MatchRm0["agent_id"] = setup.idmap["agent01"]
-		}
 		if v := setup.idmap["organization_id"]; v != nil {
 			agentConnectionRef01MatchRm0["organization_id"] = v
 		} else {
@@ -290,7 +281,6 @@ func TestAgentConnectionEntity(t *testing.T) {
 		}
 		// LIST
 		agentConnectionRef01MatchRt0 := map[string]any{
-			"agent_id": setup.idmap["agent01"],
 			"organization_id": setup.idmap["organization01"],
 		}
 
@@ -336,7 +326,7 @@ func agent_connectionBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"agent_connection01", "agent_connection02", "agent_connection03", "organization01", "organization02", "organization03", "agent01", "agent02", "agent03"},
+		[]any{"agent_connection01", "agent_connection02", "agent_connection03", "organization01", "organization02", "organization03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",
@@ -360,10 +350,6 @@ func agent_connectionBasicSetup(extra map[string]any) *entityTestSetup {
 	idmapResolved := core.ToMapAny(env["COMPOSAL_TEST_AGENT_CONNECTION_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
-	}
-	// Add agent_id alias for update test.
-	if idmapResolved["agent_id"] == nil {
-		idmapResolved["agent_id"] = idmapResolved["agent01"]
 	}
 	// Add organization_id alias for update test.
 	if idmapResolved["organization_id"] == nil {

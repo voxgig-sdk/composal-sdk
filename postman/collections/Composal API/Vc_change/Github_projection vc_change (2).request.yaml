@@ -1,0 +1,25 @@
+$kind: http-request
+id: b4a6fcf9-05e3-5483-8479-1f937c0fc04e
+description: |-
+  The `github_projection` action of **vc_change**, a route of its `create` operation.
+
+  SDK: `client.VcChange().create({ "organization_id": "organization_id", "repo_id": "repo_id", "id": "ID", $action: "github_projection" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/:id/github_projection"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_change belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_change belongs to.
+  - key: id
+    value: "{{vc_change_id}}"
+    description: The vc_change this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 10000

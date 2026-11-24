@@ -1,0 +1,87 @@
+# Entity: local_agent_decision
+
+main: kit: entity: local_agent_decision: {
+
+  alias: field: {}
+
+  fields: {
+    request: {
+      h: "Request"
+      n: "request"
+      r: true
+      sh: "A native OpenAI Decisions request for gpt-6-luna, at most 1600 KiB, with inline images only"
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "local_agent_decision"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "request"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/local_agent/decisions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/local_agent/decisions"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "local_agent"
+            }
+            {
+              lit: "decisions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

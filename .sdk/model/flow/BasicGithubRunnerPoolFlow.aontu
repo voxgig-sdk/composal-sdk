@@ -1,0 +1,57 @@
+# BasicGithubRunnerPoolFlow
+
+main: kit: flow: BasicGithubRunnerPoolFlow:
+{
+  entity: "github_runner_pool",
+  kind: "basic",
+  name: "BasicGithubRunnerPoolFlow",
+  step: [
+    {
+      i: {
+        ref: "github_runner_pool_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "github_runner_pool_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "github_runner_pool_ref01",
+        srcdatavar: "github_runner_pool_ref01_data",
+        suffix: "_up0",
+        textfield: "github_app_installation_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-github_runner_pool_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGithubRunnerPoolFlow"
+}

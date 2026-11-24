@@ -1,0 +1,24 @@
+$kind: http-request
+id: "6a7a99c3-145a-59fe-9c30-6e4064b138e6"
+description: |-
+  The `submit_preview` action of **vc_change**, a route of its `load` operation.
+
+  SDK: `client.VcChange().load({ "organization_id": "organization_id", "repo_id": "repo_id", "head": "head", $action: "submit_preview" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/submit_preview?head={{head}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: base
+    value: ""
+    disabled: true
+  - key: head
+    value: "{{head}}"
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_change belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_change belongs to.
+order: 16000

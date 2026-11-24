@@ -1,0 +1,21 @@
+$kind: http-request
+id: "26f4472c-7374-56e6-a4e6-129a770b684c"
+description: |-
+  The `load` operation of **status_commit**.
+
+  SDK: `client.StatusCommit().load({ id: "example_id", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/ci/status/commits/:commit_sha"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this status_commit belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this status_commit belongs to.
+  - key: commit_sha
+    value: "{{status_commit_id}}"
+    description: The status_commit this request addresses.
+order: 1000

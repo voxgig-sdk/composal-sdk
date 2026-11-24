@@ -1,0 +1,22 @@
+# BasicLocalAgentDecisionFlow
+
+main: kit: flow: BasicLocalAgentDecisionFlow:
+{
+  entity: "local_agent_decision",
+  kind: "basic",
+  name: "BasicLocalAgentDecisionFlow",
+  step: [
+    {
+      i: {
+        ref: "local_agent_decision_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicLocalAgentDecisionFlow"
+}

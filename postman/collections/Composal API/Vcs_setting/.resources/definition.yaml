@@ -1,0 +1,14 @@
+$kind: collection
+id: "822d8818-7e77-5237-bc48-0bebbda4ab48"
+description: |-
+  The **vcs_setting** entity, which belongs to a organization. Its requests address one record by `{{vcs_setting_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `can_manage_pr_scenario_writing` | boolean | yes |  |
+  | `can_manage_sandbox_region` | boolean | yes |  |
+  | `dedicated_outbound_ip_addresses` | array | yes |  |
+  | `default_trunk_bookmark` | string | yes |  |
+  | `organization` | object | yes |  |
+  | `sandbox_regions` | array | yes |  |
+order: 531000

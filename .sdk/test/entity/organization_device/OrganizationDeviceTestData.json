@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "organization_device": {
+      "ORGANIZATION_DEVICE00": {
+        "id": "ORGANIZATION_DEVICE00",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ORGANIZATION_DEVICE01": {
+        "id": "ORGANIZATION_DEVICE01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ORGANIZATION_DEVICE02": {
+        "id": "ORGANIZATION_DEVICE02",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "organization_device": {
+      "organization_device_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/control": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

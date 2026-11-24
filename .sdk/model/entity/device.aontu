@@ -1,0 +1,1294 @@
+# Entity: device
+
+main: kit: entity: device: {
+
+  alias: field: {}
+
+  fields: {
+    architecture: {
+      h: "Architecture"
+      n: "architecture"
+      r: true
+      t: "`$STRING`"
+    }
+    channel: {
+      h: "Channel"
+      n: "channel"
+      r: true
+      t: "`$STRING`"
+    }
+    coding_connection: {
+      h: "Coding Connection"
+      n: "coding_connection"
+      r: true
+      sh: "Independent organization coding-control service state for the current device owner."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    connection_checked_at: {
+      fo: "date-time"
+      h: "Connection Checked At"
+      n: "connection_checked_at"
+      r: true
+      sh: "When this native presence observation was obtained; null when unobserved or unavailable."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    connection_status: {
+      h: "Connection Status"
+      n: "connection_status"
+      r: true
+      sh: "Display-only native presence."
+      t: "`$STRING`"
+    }
+    control_delivery_policy: {
+      h: "Control Delivery Policy"
+      n: "control_delivery_policy"
+      r: true
+      t: "`$OBJECT`"
+    }
+    control_spawn_policy: {
+      h: "Control Spawn Policy"
+      n: "control_spawn_policy"
+      r: true
+      t: "`$OBJECT`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    device: {
+      h: "Device"
+      n: "device"
+      r: true
+      t: "`$OBJECT`"
+    }
+    environment: {
+      h: "Environment"
+      n: "environment"
+      r: true
+      t: "`$STRING`"
+    }
+    execution_available: {
+      h: "Execution Available"
+      n: "execution_available"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    native_device_id: {
+      h: "Native Device Id"
+      n: "native_device_id"
+      r: true
+      t: "`$STRING`"
+    }
+    paired_at: {
+      fo: "date-time"
+      h: "Paired At"
+      n: "paired_at"
+      r: true
+      t: "`$STRING`"
+    }
+    pairing_generation: {
+      h: "Pairing Generation"
+      n: "pairing_generation"
+      r: true
+      t: "`$INTEGER`"
+    }
+    platform: {
+      h: "Platform"
+      n: "platform"
+      r: true
+      t: "`$STRING`"
+    }
+    project_visibility: {
+      h: "Project Visibility"
+      n: "project_visibility"
+      r: true
+      sh: "Folder discovery and new-thread selection."
+      t: "`$OBJECT`"
+    }
+    provider_status: {
+      h: "Provider Status"
+      n: "provider_status"
+      r: false
+      sh: "Recent native provider observations; absent on older API replicas."
+      t: "`$ARRAY`"
+    }
+    revoked_at: {
+      fo: "date-time"
+      h: "Revoked At"
+      n: "revoked_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    scheduled_check_ins: {
+      h: "Scheduled Check Ins"
+      n: "scheduled_check_ins"
+      r: false
+      sh: "Whether the owner's private agents may check this computer's connection during scheduled runs."
+      t: "`$BOOLEAN`"
+    }
+    user_browser_access: {
+      h: "User Browser Access"
+      n: "user_browser_access"
+      r: true
+      sh: "Whether agents may use the owner's own Chrome-family browser here: off, only tabs agents open or the owner shares, or every tab."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "device"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "transport"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/connection"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/connection"
+          q: {
+            "$action": "connection"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_registration_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "connection"
+            }
+          ]
+          t: {
+            req: {
+              transport: "`reqdata.transport`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "restricted"
+            "version"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_delivery_policy"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_delivery_policy"
+          q: {
+            "$action": "control_delivery_policy"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_registration_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "control_delivery_policy"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "max_agents"
+            "repositories"
+            "version"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_spawn_policy"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_spawn_policy"
+          q: {
+            "$action": "control_spawn_policy"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_registration_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "control_spawn_policy"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "transport"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/desktop_connection"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/desktop_connection"
+          q: {
+            "$action": "desktop_connection"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_registration_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "desktop_connection"
+            }
+          ]
+          t: {
+            req: {
+              transport: "`reqdata.transport`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "transport"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/process_surface"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/process_surface"
+          q: {
+            "$action": "process_surface"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_registration_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "process_surface"
+            }
+          ]
+          t: {
+            req: {
+              transport: "`reqdata.transport`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "folders"
+            "mode"
+            "version"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/project_visibility"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/project_visibility"
+          q: {
+            "$action": "project_visibility"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_registration_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "project_visibility"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "architecture"
+            "channel"
+            "name"
+            "platform"
+            "public_key"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/reconnect"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/reconnect"
+          q: {
+            "$action": "reconnect"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_registration_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "reconnect"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "name"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/rename"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/rename"
+          q: {
+            "$action": "rename"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_registration_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "rename"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/retry_control"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/retry_control"
+          q: {
+            "$action": "retry_control"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_registration_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "retry_control"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "pairing_generation"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/revoke"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/revoke"
+          q: {
+            "$action": "revoke"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_registration_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "revoke"
+            }
+          ]
+          t: {
+            req: {
+              pairing_generation: "`reqdata.pairing_generation`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "access"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/user_browser_access"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/user_browser_access"
+          q: {
+            "$action": "user_browser_access"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_registration_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "user_browser_access"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/devices"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: false
+                explode: true
+                k: "query"
+                n: "include_revoked"
+                or: "include_revoked"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/devices"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+          ]
+          t: {
+            page: {
+              cursor: "`body.next_cursor`"
+            }
+            req: "`reqdata`"
+            res: "`body.devices`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_registration_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.device`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_delivery_policy"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_delivery_policy"
+          q: {
+            "$action": "control_delivery_policy"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_registration_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "control_delivery_policy"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_spawn_policy"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_spawn_policy"
+          q: {
+            "$action": "control_spawn_policy"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_registration_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "control_spawn_policy"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

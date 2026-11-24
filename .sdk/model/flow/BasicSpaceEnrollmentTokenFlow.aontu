@@ -1,0 +1,117 @@
+# BasicSpaceEnrollmentTokenFlow
+
+main: kit: flow: BasicSpaceEnrollmentTokenFlow:
+{
+  entity: "space_enrollment_token",
+  kind: "basic",
+  name: "BasicSpaceEnrollmentTokenFlow",
+  step: [
+    {
+      i: {
+        ref: "space_enrollment_token_ref01"
+      }
+
+      m: {
+        space_id: "space01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        space_id: "space01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "space_enrollment_token_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        space_id: "space01"
+      }
+
+      i: {
+        ref: "space_enrollment_token_ref01",
+        srcdatavar: "space_enrollment_token_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-space_enrollment_token_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "space_enrollment_token_ref01",
+        srcdatavar: "space_enrollment_token_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "space_enrollment_token01",
+        space_id: "space01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-space_enrollment_token_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "space_enrollment_token_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "space_enrollment_token01",
+        space_id: "space01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        space_id: "space01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "space_enrollment_token_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSpaceEnrollmentTokenFlow"
+}

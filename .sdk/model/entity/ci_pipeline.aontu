@@ -1,0 +1,354 @@
+# Entity: ci_pipeline
+
+main: kit: entity: ci_pipeline: {
+
+  alias: field: {}
+
+  fields: {
+    ci_runner_pool_id: {
+      h: "Ci Runner Pool Id"
+      n: "ci_runner_pool_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    concurrency_key: {
+      h: "Concurrency Key"
+      n: "concurrency_key"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    default_branch: {
+      h: "Default Branch"
+      n: "default_branch"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    hosted_app_id: {
+      h: "Hosted App Id"
+      n: "hosted_app_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    organization_id: {
+      h: "Organization Id"
+      n: "organization_id"
+      r: true
+      t: "`$STRING`"
+    }
+    repository_id: {
+      h: "Repository Id"
+      n: "repository_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    required_capabilities_csv: {
+      h: "Required Capabilities Csv"
+      n: "required_capabilities_csv"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    runner_pool: {
+      h: "Runner Pool"
+      n: "runner_pool"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    runs: {
+      h: "Runs"
+      n: "runs"
+      r: true
+      t: "`$ARRAY`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: true
+      t: "`$STRING`"
+    }
+    source_kind: {
+      h: "Source Kind"
+      n: "source_kind"
+      r: true
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    status_label: {
+      h: "Status Label"
+      n: "status_label"
+      r: true
+      t: "`$STRING`"
+    }
+    status_state: {
+      h: "Status State"
+      n: "status_state"
+      r: true
+      t: "`$STRING`"
+    }
+    status_tone: {
+      h: "Status Tone"
+      n: "status_tone"
+      r: true
+      t: "`$STRING`"
+    }
+    trigger_on_pull_request: {
+      h: "Trigger On Pull Request"
+      n: "trigger_on_pull_request"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    trigger_on_push: {
+      h: "Trigger On Push"
+      n: "trigger_on_push"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    trigger_on_schedule: {
+      h: "Trigger On Schedule"
+      n: "trigger_on_schedule"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    workflow_path: {
+      h: "Workflow Path"
+      n: "workflow_path"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "ci_pipeline"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/ci/pipelines"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/ci/pipelines"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "pipelines"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/ci/pipelines"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/ci/pipelines"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "pipelines"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.pipelines`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/ci/pipelines/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/ci/pipelines/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "pipelines"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.pipeline`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

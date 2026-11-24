@@ -1,0 +1,61 @@
+# BasicWorkspaceSpaceFlow
+
+main: kit: flow: BasicWorkspaceSpaceFlow:
+{
+  entity: "workspace_space",
+  kind: "basic",
+  name: "BasicWorkspaceSpaceFlow",
+  step: [
+    {
+      i: {
+        ref: "workspace_space_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "workspace_space_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "workspace_space_ref01",
+        srcdatavar: "workspace_space_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "workspace_space01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-workspace_space_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWorkspaceSpaceFlow"
+}

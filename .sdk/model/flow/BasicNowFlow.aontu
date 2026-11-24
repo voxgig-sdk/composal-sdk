@@ -1,0 +1,32 @@
+# BasicNowFlow
+
+main: kit: flow: BasicNowFlow:
+{
+  entity: "now",
+  kind: "basic",
+  name: "BasicNowFlow",
+  step: [
+    {
+      i: {
+        ref: "now_ref01",
+        srcdatavar: "now_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "now01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-now_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNowFlow"
+}

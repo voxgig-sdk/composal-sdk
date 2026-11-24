@@ -1,0 +1,107 @@
+{
+  "existing": {
+    "repository_import_session": {
+      "REPOSITORY_IMPORT_SESSION00": {
+        "action_required": "saa",
+        "authorization_endpoint": "sab",
+        "can_authorize_github": true,
+        "client_name": "sad",
+        "client_version": "sae",
+        "created_at": "saf",
+        "error_message": "sb0",
+        "expires_at": "sb1",
+        "git_imports": [],
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "github_connected": true,
+        "id": "REPOSITORY_IMPORT_SESSION00",
+        "idempotency_key": "sb6",
+        "organization_id": "ORGANIZATION01",
+        "organization_slug": "sb8",
+        "status": "sb9",
+        "updated_at": "sba"
+      },
+      "REPOSITORY_IMPORT_SESSION01": {
+        "action_required": "s154",
+        "authorization_endpoint": "s155",
+        "can_authorize_github": true,
+        "client_name": "s157",
+        "client_version": "s158",
+        "created_at": "s159",
+        "error_message": "s15a",
+        "expires_at": "s15b",
+        "git_imports": [],
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "github_connected": true,
+        "id": "REPOSITORY_IMPORT_SESSION01",
+        "idempotency_key": "s160",
+        "organization_id": "ORGANIZATION01",
+        "organization_slug": "s162",
+        "status": "s163",
+        "updated_at": "s164"
+      },
+      "REPOSITORY_IMPORT_SESSION02": {
+        "action_required": "s1fe",
+        "authorization_endpoint": "s1ff",
+        "can_authorize_github": true,
+        "client_name": "s201",
+        "client_version": "s202",
+        "created_at": "s203",
+        "error_message": "s204",
+        "expires_at": "s205",
+        "git_imports": [],
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "github_connected": true,
+        "id": "REPOSITORY_IMPORT_SESSION02",
+        "idempotency_key": "s20a",
+        "organization_id": "ORGANIZATION01",
+        "organization_slug": "s20c",
+        "status": "s20d",
+        "updated_at": "s20e"
+      }
+    }
+  },
+  "new": {
+    "repository_import_session": {
+      "repository_import_session_ref01": {
+        "action_required": "s2a8",
+        "authorization_endpoint": "s2a9",
+        "can_authorize_github": true,
+        "client_name": "s2ab",
+        "client_version": "s2ac",
+        "created_at": "s2ad",
+        "error_message": "s2ae",
+        "expires_at": "s2af",
+        "git_imports": [],
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "github_connected": true,
+        "idempotency_key": "s2b4",
+        "organization_id": "ORGANIZATION01",
+        "organization_slug": "s2b6",
+        "status": "s2b7",
+        "updated_at": "s2b8"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/repository_import_sessions/{id}/authorization": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/repository_import_sessions/{id}/cancel": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/repository_import_sessions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/repository_import_sessions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

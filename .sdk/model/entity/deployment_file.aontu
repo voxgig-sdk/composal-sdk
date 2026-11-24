@@ -89,7 +89,7 @@ main: kit: entity: deployment_file: {
 
 
   relations: ancestors: [
-    [path("$.main.kit.entity.static_site")]
+    [path("$.main.kit.entity.static_site") path("$.main.kit.entity.deployment")]
   ]
 
 }

@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "auth_openai": {
+      "AUTH_OPENAI00": {
+        "id": "AUTH_OPENAI00"
+      },
+      "AUTH_OPENAI01": {
+        "id": "AUTH_OPENAI01"
+      },
+      "AUTH_OPENAI02": {
+        "id": "AUTH_OPENAI02"
+      }
+    }
+  },
+  "new": {
+    "auth_openai": {
+      "auth_openai_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/auth/openai/callback": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/auth/openai/start": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

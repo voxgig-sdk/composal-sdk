@@ -1,0 +1,1311 @@
+# Entity: task_lease
+
+main: kit: entity: task_lease: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "task_lease"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "provider"
+            "request"
+          ]
+          co: {
+            id: "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_jev"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "x_vex_lease_token"
+                or: "X-Vex-Lease-Token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "swarm_id"
+                or: "swarm_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "task_id"
+                or: "task_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_jev"
+          q: {
+            "$action": "verify_jev"
+            exist: [
+              "id"
+              "swarm_id"
+              "task_id"
+              "x_vex_lease_token"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              swarm_id: "swarm_id"
+              task_id: "task_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "swarms"
+            }
+            {
+              var: "swarm_id"
+            }
+            {
+              lit: "tasks"
+            }
+            {
+              var: "task_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "verify_jev"
+            }
+          ]
+          t: {
+            req: {
+              provider: "`reqdata.provider`"
+              request: "`reqdata.request`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "arguments"
+            "tool"
+          ]
+          co: {
+            id: "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_knowledge"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "x_vex_lease_token"
+                or: "X-Vex-Lease-Token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "swarm_id"
+                or: "swarm_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "task_id"
+                or: "task_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_knowledge"
+          q: {
+            "$action": "verify_knowledge"
+            exist: [
+              "id"
+              "swarm_id"
+              "task_id"
+              "x_vex_lease_token"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              swarm_id: "swarm_id"
+              task_id: "task_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "swarms"
+            }
+            {
+              var: "swarm_id"
+            }
+            {
+              lit: "tasks"
+            }
+            {
+              var: "task_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "verify_knowledge"
+            }
+          ]
+          t: {
+            req: {
+              arguments: "`reqdata.argument`"
+              tool: "`reqdata.tool`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "cleanup"
+            "outcomes"
+            "replay"
+            "steps"
+          ]
+          co: {
+            id: "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_learning"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "x_vex_lease_token"
+                or: "X-Vex-Lease-Token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "swarm_id"
+                or: "swarm_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "task_id"
+                or: "task_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_learning"
+          q: {
+            "$action": "verify_learning"
+            exist: [
+              "id"
+              "swarm_id"
+              "task_id"
+              "x_vex_lease_token"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              swarm_id: "swarm_id"
+              task_id: "task_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "swarms"
+            }
+            {
+              var: "swarm_id"
+            }
+            {
+              lit: "tasks"
+            }
+            {
+              var: "task_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "verify_learning"
+            }
+          ]
+          t: {
+            req: {
+              cleanup: "`reqdata.cleanup`"
+              outcomes: "`reqdata.outcome`"
+              replay: "`reqdata.replay`"
+              steps: "`reqdata.step`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "learned"
+            "replayed"
+          ]
+          co: {
+            id: "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_sign_in"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "x_vex_lease_token"
+                or: "X-Vex-Lease-Token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "swarm_id"
+                or: "swarm_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "task_id"
+                or: "task_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_sign_in"
+          q: {
+            "$action": "verify_sign_in"
+            exist: [
+              "id"
+              "swarm_id"
+              "task_id"
+              "x_vex_lease_token"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              swarm_id: "swarm_id"
+              task_id: "task_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "swarms"
+            }
+            {
+              var: "swarm_id"
+            }
+            {
+              lit: "tasks"
+            }
+            {
+              var: "task_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "verify_sign_in"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/browser_task_activity"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "swarm_id"
+                or: "swarm_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "task_id"
+                or: "task_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/browser_task_activity"
+          q: {
+            "$action": "browser_task_activity"
+            exist: [
+              "id"
+              "swarm_id"
+              "task_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              swarm_id: "swarm_id"
+              task_id: "task_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "swarms"
+            }
+            {
+              var: "swarm_id"
+            }
+            {
+              lit: "tasks"
+            }
+            {
+              var: "task_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "browser_task_activity"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "lease_token"
+            "worker_identity"
+          ]
+          co: {
+            id: "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/claim"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "swarm_id"
+                or: "swarm_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "task_id"
+                or: "task_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/claim"
+          q: {
+            "$action": "claim"
+            exist: [
+              "id"
+              "swarm_id"
+              "task_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              swarm_id: "swarm_id"
+              task_id: "task_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "swarms"
+            }
+            {
+              var: "swarm_id"
+            }
+            {
+              lit: "tasks"
+            }
+            {
+              var: "task_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "claim"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/evidence"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "swarm_id"
+                or: "swarm_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "task_id"
+                or: "task_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/evidence"
+          q: {
+            "$action": "evidence"
+            exist: [
+              "id"
+              "swarm_id"
+              "task_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              swarm_id: "swarm_id"
+              task_id: "task_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "swarms"
+            }
+            {
+              var: "swarm_id"
+            }
+            {
+              lit: "tasks"
+            }
+            {
+              var: "task_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "evidence"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/heartbeat"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "swarm_id"
+                or: "swarm_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "task_id"
+                or: "task_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/heartbeat"
+          q: {
+            "$action": "heartbeat"
+            exist: [
+              "id"
+              "swarm_id"
+              "task_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              swarm_id: "swarm_id"
+              task_id: "task_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "swarms"
+            }
+            {
+              var: "swarm_id"
+            }
+            {
+              lit: "tasks"
+            }
+            {
+              var: "task_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "heartbeat"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/release"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "swarm_id"
+                or: "swarm_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "task_id"
+                or: "task_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/release"
+          q: {
+            "$action": "release"
+            exist: [
+              "id"
+              "swarm_id"
+              "task_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              swarm_id: "swarm_id"
+              task_id: "task_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "swarms"
+            }
+            {
+              var: "swarm_id"
+            }
+            {
+              lit: "tasks"
+            }
+            {
+              var: "task_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "release"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "result"
+            "result_contract"
+          ]
+          co: {
+            id: "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/result"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "x_vex_lease_token"
+                or: "X-Vex-Lease-Token"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "swarm_id"
+                or: "swarm_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "task_id"
+                or: "task_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "cancelled_recovery"
+                or: "cancelled_recovery"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "validate_only"
+                or: "validate_only"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/result"
+          q: {
+            "$action": "result"
+            exist: [
+              "id"
+              "swarm_id"
+              "task_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              swarm_id: "swarm_id"
+              task_id: "task_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "swarms"
+            }
+            {
+              var: "swarm_id"
+            }
+            {
+              lit: "tasks"
+            }
+            {
+              var: "task_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "result"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_mail"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "swarm_id"
+                or: "swarm_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "task_id"
+                or: "task_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_mail"
+          q: {
+            "$action": "verify_mail"
+            exist: [
+              "id"
+              "swarm_id"
+              "task_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              swarm_id: "swarm_id"
+              task_id: "task_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "swarms"
+            }
+            {
+              var: "swarm_id"
+            }
+            {
+              lit: "tasks"
+            }
+            {
+              var: "task_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "verify_mail"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "arguments"
+            "tool"
+          ]
+          co: {
+            id: "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_product_map"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "x_vex_lease_token"
+                or: "X-Vex-Lease-Token"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "swarm_id"
+                or: "swarm_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "task_id"
+                or: "task_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_product_map"
+          q: {
+            "$action": "verify_product_map"
+            exist: [
+              "id"
+              "swarm_id"
+              "task_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              swarm_id: "swarm_id"
+              task_id: "task_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "swarms"
+            }
+            {
+              var: "swarm_id"
+            }
+            {
+              lit: "tasks"
+            }
+            {
+              var: "task_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "verify_product_map"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "swarm_id"
+                or: "swarm_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "task_id"
+                or: "task_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases"
+          q: {
+            exist: [
+              "swarm_id"
+              "task_id"
+            ]
+          }
+          r: {
+            param: {
+              swarm_id: "swarm_id"
+              task_id: "task_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "swarms"
+            }
+            {
+              var: "swarm_id"
+            }
+            {
+              lit: "tasks"
+            }
+            {
+              var: "task_id"
+            }
+            {
+              lit: "leases"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

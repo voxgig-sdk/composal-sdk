@@ -1,0 +1,26 @@
+$kind: http-request
+id: cff174b8-6b4c-5b51-a5aa-c8c99ceb8fe8
+description: |-
+  The `lease` action of **device_invocation**, a route of its `create` operation.
+
+  SDK: `client.DeviceInvocation().create({ "organization_id": "organization_id", "device_id": "device_id", $action: "lease" })`
+url: "{{base}}/api/v1/device_runtime/organizations/:organization_id/devices/:device_id/invocations/lease"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device_invocation belongs to.
+  - key: device_id
+    value: "{{device_id}}"
+    description: The device this device_invocation belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "challenge": "example",
+      "signature": "example"
+    }
+order: 2000

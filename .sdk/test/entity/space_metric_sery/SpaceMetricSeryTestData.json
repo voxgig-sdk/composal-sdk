@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "space_metric_sery": {
+      "SPACE_METRIC_SERY00": {
+        "space_id": "SPACE01",
+        "id": "SPACE_METRIC_SERY00"
+      },
+      "SPACE_METRIC_SERY01": {
+        "space_id": "SPACE01",
+        "id": "SPACE_METRIC_SERY01"
+      },
+      "SPACE_METRIC_SERY02": {
+        "space_id": "SPACE01",
+        "id": "SPACE_METRIC_SERY02"
+      }
+    }
+  },
+  "new": {
+    "space_metric_sery": {
+      "space_metric_sery_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/observability/spaces/{space_id}/metric_series": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/spaces/{space_id}/metric_series": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

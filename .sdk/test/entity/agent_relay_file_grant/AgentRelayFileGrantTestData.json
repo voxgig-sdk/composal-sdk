@@ -1,0 +1,102 @@
+{
+  "existing": {
+    "agent_relay_file_grant": {
+      "AGENT_RELAY_FILE_GRANT00": {
+        "access_mode": "s96",
+        "connection_generation": 151,
+        "connection_id": "CONNECTION01",
+        "connection_name": "s99",
+        "created_at": "s9a",
+        "expected_generation": 155,
+        "id": "AGENT_RELAY_FILE_GRANT00",
+        "key": "s9d",
+        "provider": "s9e",
+        "resource_id": "RESOURCE01",
+        "resource_kind": "sa0",
+        "revoked": false,
+        "revoked_at": "sa2",
+        "snapshot_supported": false,
+        "source_operation_id": "SOURCE_OPERATION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_RELAY_FILE_GRANT01": {
+        "access_mode": "s12c",
+        "connection_generation": 301,
+        "connection_id": "CONNECTION01",
+        "connection_name": "s12f",
+        "created_at": "s130",
+        "expected_generation": 305,
+        "id": "AGENT_RELAY_FILE_GRANT01",
+        "key": "s133",
+        "provider": "s134",
+        "resource_id": "RESOURCE01",
+        "resource_kind": "s136",
+        "revoked": false,
+        "revoked_at": "s138",
+        "snapshot_supported": false,
+        "source_operation_id": "SOURCE_OPERATION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_RELAY_FILE_GRANT02": {
+        "access_mode": "s1c2",
+        "connection_generation": 451,
+        "connection_id": "CONNECTION01",
+        "connection_name": "s1c5",
+        "created_at": "s1c6",
+        "expected_generation": 455,
+        "id": "AGENT_RELAY_FILE_GRANT02",
+        "key": "s1c9",
+        "provider": "s1ca",
+        "resource_id": "RESOURCE01",
+        "resource_kind": "s1cc",
+        "revoked": false,
+        "revoked_at": "s1ce",
+        "snapshot_supported": false,
+        "source_operation_id": "SOURCE_OPERATION01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_relay_file_grant": {
+      "agent_relay_file_grant_ref01": {
+        "access_mode": "s258",
+        "connection_generation": 601,
+        "connection_id": "CONNECTION01",
+        "connection_name": "s25b",
+        "created_at": "s25c",
+        "expected_generation": 605,
+        "key": "s25f",
+        "provider": "s260",
+        "resource_id": "RESOURCE01",
+        "resource_kind": "s262",
+        "revoked": false,
+        "revoked_at": "s264",
+        "snapshot_supported": false,
+        "source_operation_id": "SOURCE_OPERATION01"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agent_relay_file_grants": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agent_relay_file_grants": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agent_relay_file_grants/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/agent_relay_file_grants/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

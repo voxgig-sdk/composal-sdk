@@ -1,0 +1,22 @@
+$kind: http-request
+id: "57a4fb65-1856-52c8-8cf8-a3ae18fff8b2"
+description: |-
+  The `remove` operation of **artifact_cache_namespace**.
+
+  SDK: `client.ArtifactCacheNamespace().remove({ id: "example_id" })`
+url: "{{base}}/api/v1/artifacts/cache_namespaces/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_cache_namespace_id}}"
+    description: The artifact_cache_namespace this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("artifact_cache_namespace_id")
+      }
+    language: text/javascript
+order: 9000

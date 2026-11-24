@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "github_pull_request": {
+      "GITHUB_PULL_REQUEST00": {
+        "capabilities": {},
+        "content": {},
+        "fetched_at": "s52",
+        "id": "GITHUB_PULL_REQUEST00",
+        "magic_merge": "s54",
+        "pull_request": "s55",
+        "stack": {},
+        "transcript_paths": [],
+        "organization_id": "ORGANIZATION01",
+        "pull_request_id": "PULL_REQUEST01"
+      },
+      "GITHUB_PULL_REQUEST01": {
+        "capabilities": {},
+        "content": {},
+        "fetched_at": "sa2",
+        "id": "GITHUB_PULL_REQUEST01",
+        "magic_merge": "sa4",
+        "pull_request": "sa5",
+        "stack": {},
+        "transcript_paths": [],
+        "organization_id": "ORGANIZATION01",
+        "pull_request_id": "PULL_REQUEST01"
+      },
+      "GITHUB_PULL_REQUEST02": {
+        "capabilities": {},
+        "content": {},
+        "fetched_at": "sf2",
+        "id": "GITHUB_PULL_REQUEST02",
+        "magic_merge": "sf4",
+        "pull_request": "sf5",
+        "stack": {},
+        "transcript_paths": [],
+        "organization_id": "ORGANIZATION01",
+        "pull_request_id": "PULL_REQUEST01"
+      }
+    }
+  },
+  "new": {
+    "github_pull_request": {
+      "github_pull_request_ref01": {
+        "capabilities": {},
+        "content": {},
+        "fetched_at": "s142",
+        "magic_merge": "s144",
+        "pull_request": "s145",
+        "stack": {},
+        "transcript_paths": []
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/github/pull_requests/refresh": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

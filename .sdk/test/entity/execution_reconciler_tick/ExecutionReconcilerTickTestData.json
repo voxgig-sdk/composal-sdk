@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "execution_reconciler_tick": {
+      "EXECUTION_RECONCILER_TICK00": {
+        "id": "EXECUTION_RECONCILER_TICK00"
+      },
+      "EXECUTION_RECONCILER_TICK01": {
+        "id": "EXECUTION_RECONCILER_TICK01"
+      },
+      "EXECUTION_RECONCILER_TICK02": {
+        "id": "EXECUTION_RECONCILER_TICK02"
+      }
+    }
+  },
+  "new": {
+    "execution_reconciler_tick": {
+      "execution_reconciler_tick_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/execution/reconciler_ticks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/execution/reconciler_ticks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/execution/reconciler_ticks/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

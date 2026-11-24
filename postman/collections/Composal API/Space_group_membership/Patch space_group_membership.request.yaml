@@ -1,0 +1,22 @@
+$kind: http-request
+id: "56c61d7e-4b7c-5f40-8a9a-b9863a492fe1"
+description: |-
+  The `patch` operation of **space_group_membership**.
+
+  SDK: `client.SpaceGroupMembership().patch({ id: "example", space_id: "example" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/group_memberships/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: id
+    value: "{{space_group_membership_id}}"
+    description: The space_group_membership this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

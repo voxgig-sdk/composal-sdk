@@ -1,0 +1,21 @@
+$kind: http-request
+id: "83cb1e5c-65ec-5848-bf52-5d08386d099f"
+description: |-
+  The `list` operation of **auth_registration_option**.
+
+  SDK: `client.AuthRegistrationOption().list()`
+url: "{{base}}/api/v1/auth/registration_options"
+method: GET
+headers:
+  Accept: application/json
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("auth_registration_option_id")) pm.collectionVariables.set("auth_registration_option_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

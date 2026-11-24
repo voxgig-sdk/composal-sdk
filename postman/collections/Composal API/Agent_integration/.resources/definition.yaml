@@ -1,31 +1,38 @@
 $kind: collection
 id: "7bc39cb8-baf7-52a1-b2ff-60595874ac83"
 description: |-
-  The **agent_integration** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_integration_id}}`, which a list or a create remembers.
+  The **agent_integration** entity, which belongs to a organization. Its requests address one record by `{{agent_integration_id}}`, which a list or a create remembers.
 
   | field | type | required | |
   |---|---|---|---|
   | `account_counts` | object | yes |  |
-  | `accounts_path` | string | yes |  |
-  | `added_toolkits` | array | yes |  |
+  | `can_cancel_sign_in` | boolean |  |  |
+  | `can_delete` | boolean | yes |  |
+  | `can_disconnect` | boolean | yes |  |
+  | `can_enable` | boolean | yes |  |
   | `can_manage` | boolean | yes |  |
-  | `can_manage_organization` | boolean | yes |  |
+  | `can_manage_sharing` | boolean | yes |  |
+  | `can_reconnect` | boolean | yes |  |
+  | `can_sync` | boolean | yes |  |
   | `catalog` | array | yes |  |
-  | `connect_as` | string | yes |  |
-  | `connect_as_by_toolkit` | object | yes |  |
+  | `connected_by` | string | yes |  |
+  | `connected_by_you` | boolean | yes |  |
   | `connected_counts` | object | yes |  |
-  | `connection_id` | string | yes |  |
   | `connections` | array | yes |  |
-  | `email` | object | yes |  |
-  | `enabled` | boolean | yes |  |
-  | `enabled_toolkits` | array | yes |  |
+  | `creation_key` | string |  |  |
+  | `creation_key_digest` | string |  |  |
   | `generation` | integer | yes |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
   | `pagination` | object | yes |  |
   | `pending_counts` | object | yes |  |
-  | `personal_creation_key_supported` | boolean |  |  |
-  | `private_agent` | boolean | yes |  |
-  | `shared_agent_personal_accounts_enabled` | boolean | yes |  |
-  | `slack` | object | yes |  |
-  | `webhook_connections` | array | yes |  |
-  | `webhooks_available` | boolean | yes |  |
-order: 14000
+  | `provider_disabled_reason` | string | yes |  |
+  | `provider_identity` | object | yes |  |
+  | `provider_name` | string | yes |  |
+  | `reference` | string | yes |  |
+  | `sharing_status` | string |  |  |
+  | `status` | string | yes |  |
+  | `team_sharing_enabled` | boolean | yes |  |
+  | `team_sharing_version` | integer | yes |  |
+  | `toolkit` | string | yes |  |
+order: 27000

@@ -1,0 +1,18 @@
+$kind: http-request
+id: "576c14d9-5fb4-586c-a3e2-390057fcf007"
+description: |-
+  The `load` operation of **artefact**.
+
+  SDK: `client.Artefact().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/artefacts/:artefact_ref"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this artefact belongs to.
+  - key: artefact_ref
+    value: "{{artefact_id}}"
+    description: The artefact this request addresses.
+order: 2000

@@ -37,7 +37,7 @@ class TestAgentSkillEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.AgentSkill(None).list({"agent_id": 1, "organization_id": "x"}, None)
+            client.AgentSkill(None).list({"organization_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,17 +46,20 @@ class TestAgentSkillEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list"]:
+        for _op in ["create", "list", "load", "remove"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "agent_skill." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
-            print("LIVE STEP {\"id\":\"agent_skill.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/skills\"}")
+            print("LIVE STEP {\"id\":\"agent_skill.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agent_skills\"}")
+            print("LIVE STEP {\"id\":\"agent_skill.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/agent_skills/{id}/audience\"}")
+            print("LIVE STEP {\"id\":\"agent_skill.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agent_skills/{id}\"}")
+            print("LIVE STEP {\"id\":\"agent_skill.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
             return self._run_get_only_flow(setup)
 
         if setup["live"]:
-            for _live_key in ["agent01", "organization01"]:
+            for _live_key in ["organization01"]:
                 if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
                     runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_AGENT_SKILL_ENTID")
         client = setup["client"]
@@ -67,30 +70,76 @@ class TestAgentSkillEntity:
         agent_skill_ref01_ent = client.AgentSkill(None)
         agent_skill_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.agent_skill"), "agent_skill_ref01"))
-        agent_skill_ref01_data["agent_id"] = setup["idmap"]["agent01"]
         agent_skill_ref01_data["organization_id"] = setup["idmap"]["organization01"]
 
         agent_skill_ref01_data = helpers.to_map(runner.entity_data(agent_skill_ref01_ent.create(agent_skill_ref01_data, None)))
         assert agent_skill_ref01_data is not None
+        assert agent_skill_ref01_data["id"] is not None
 
         if setup["live"]:
             runner.live_pace()
         # LIST
         agent_skill_ref01_match = {
-            "agent_id": setup["idmap"]["agent01"],
             "organization_id": setup["idmap"]["organization01"],
         }
 
         agent_skill_ref01_list_result = agent_skill_ref01_ent.list(agent_skill_ref01_match, None)
         assert isinstance(agent_skill_ref01_list_result, list)
 
+        found_item = vs.select(
+            runner.entity_list_to_data(agent_skill_ref01_list_result),
+            {"id": agent_skill_ref01_data["id"]})
+        assert not vs.isempty(found_item)
+
+        if setup["live"]:
+            runner.live_pace()
+        # LOAD
+        agent_skill_ref01_match_dt0 = {
+            "id": agent_skill_ref01_data["id"],
+        }
+        agent_skill_ref01_data_dt0_loaded = agent_skill_ref01_ent.load(agent_skill_ref01_match_dt0, None)
+        agent_skill_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(agent_skill_ref01_data_dt0_loaded))
+        assert agent_skill_ref01_data_dt0_load_result is not None
+        if not setup["live"]:
+            assert runner.live_same_id(agent_skill_ref01_data_dt0_load_result.get("id"), agent_skill_ref01_data["id"])
+
+        if setup["live"]:
+            runner.live_pace()
+        # REMOVE
+        agent_skill_ref01_match_rm0 = {
+            "id": agent_skill_ref01_data["id"],
+        }
+        agent_skill_ref01_match_rm0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
+        agent_skill_ref01_ent.remove(agent_skill_ref01_match_rm0, None)
+
+        if setup["live"]:
+            runner.live_pace()
+        # LIST
+        agent_skill_ref01_match_rt0 = {
+            "organization_id": setup["idmap"]["organization01"],
+        }
+
+        agent_skill_ref01_list_rt0_result = agent_skill_ref01_ent.list(agent_skill_ref01_match_rt0, None)
+        assert isinstance(agent_skill_ref01_list_rt0_result, list)
+
+        not_found_item = vs.select(
+            runner.entity_list_to_data(agent_skill_ref01_list_rt0_result),
+            {"id": agent_skill_ref01_data["id"]})
+        assert vs.isempty(not_found_item)
+
 
     def _run_get_only_flow(self, setup):
         if setup["live"]:
-            for _live_key in ["agent01", "organization01"]:
+            for _live_key in ["organization01"]:
                 if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
                     runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_AGENT_SKILL_ENTID")
         client = setup["client"]
+        if setup["live"]:
+            _live_id = None if setup.get("synthetic_only") else setup["idmap"].get("agent_skill01")
+            runner.live_pace()
+            runner.live_existing(setup, LIVE_STRICT, "agent_skill",
+                                 lambda: client.AgentSkill(None).list({"organization_id": setup["idmap"].get("organization01")}, None),
+                                 "id", _live_id)
 
         # Bootstrap entity data from existing test data.
         agent_skill_ref01_data_raw = vs.items(helpers.to_map(
@@ -104,12 +153,23 @@ class TestAgentSkillEntity:
         # LIST
         agent_skill_ref01_ent = client.AgentSkill(None)
         agent_skill_ref01_match = {
-            "agent_id": setup["idmap"]["agent01"],
             "organization_id": setup["idmap"]["organization01"],
         }
 
         agent_skill_ref01_list_result = agent_skill_ref01_ent.list(agent_skill_ref01_match, None)
         assert isinstance(agent_skill_ref01_list_result, list)
+
+        if setup["live"]:
+            runner.live_pace()
+        # LOAD
+        agent_skill_ref01_match_dt0 = {
+            "id": agent_skill_ref01_data["id"],
+        }
+        agent_skill_ref01_data_dt0_loaded = agent_skill_ref01_ent.load(agent_skill_ref01_match_dt0, None)
+        agent_skill_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(agent_skill_ref01_data_dt0_loaded))
+        assert agent_skill_ref01_data_dt0_load_result is not None
+        if not setup["live"]:
+            assert runner.live_same_id(agent_skill_ref01_data_dt0_load_result.get("id"), agent_skill_ref01_data["id"])
 
 
 
@@ -129,7 +189,7 @@ def _agent_skill_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["agent_skill01", "agent_skill02", "agent_skill03", "organization01", "organization02", "organization03", "agent01", "agent02", "agent03"],
+        ["agent_skill01", "agent_skill02", "agent_skill03", "organization01", "organization02", "organization03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

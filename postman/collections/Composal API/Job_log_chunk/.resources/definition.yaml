@@ -1,0 +1,20 @@
+$kind: collection
+id: "21461458-18a2-5509-8818-0845e15568e6"
+description: |-
+  The **job_log_chunk** entity. Its requests address one record by `{{job_log_chunk_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `byte_size` | integer | yes |  |
+  | `ci_job_id` | string | yes |  |
+  | `ci_pipeline_run_id` | string | yes |  |
+  | `ci_step_id` | string | yes |  |
+  | `content` | string | yes |  |
+  | `content_format` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `sequence_number` | integer | yes |  |
+  | `stream` | string | yes |  |
+  | `updated_at` | string | yes |  |
+order: 288000

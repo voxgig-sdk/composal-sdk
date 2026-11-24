@@ -1,0 +1,11 @@
+$kind: collection
+id: "26cc74b2-0cf3-5510-aa3c-032b2fad3f4a"
+description: |-
+  The **spark_credit_usage_total** entity, which belongs to a organization. Its requests address one record by `{{spark_credit_usage_total_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `compute_minutes_used` | string | yes |  |
+  | `compute_usd` | string | yes |  |
+  | `inference_usd` | string | yes |  |
+order: 504000

@@ -1,0 +1,104 @@
+# Entity: setting_mutation_lease
+
+main: kit: entity: setting_mutation_lease: {
+
+  alias: field: {}
+
+  name: "setting_mutation_lease"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "reason"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/mutation_lease/clear"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_id"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/mutation_lease/clear"
+          q: {
+            "$action": "clear"
+            exist: [
+              "organization_id"
+              "repo_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+              repo_slug: "repo_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "repos"
+            }
+            {
+              var: "repo_id"
+            }
+            {
+              lit: "settings"
+            }
+            {
+              lit: "mutation_lease"
+            }
+            {
+              lit: "clear"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.repo")]
+  ]
+
+}

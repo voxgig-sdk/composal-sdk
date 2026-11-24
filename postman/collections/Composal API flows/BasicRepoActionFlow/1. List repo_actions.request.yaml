@@ -1,0 +1,70 @@
+$kind: http-request
+id: cb74e4ee-f5dd-55ad-9e64-0a13b9873001
+description: |-
+  The `list` operation of **repo_action**.
+
+  SDK: `client.RepoAction().list({ organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/pages/actions"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: pipeline_id
+    value: ""
+    disabled: true
+  - key: range
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_action belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_action belongs to.
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","repo_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("1. List repo_actions: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const recs = body?.["action_runs"] || []
+      const keys = Array.isArray(recs) ? recs.map((rec) => String(at(rec, "id"))) : []
+      if (null == pm.variables.get("repo_action_ref01") && (true || "true" === String(pm.variables.get("getonly")).toLowerCase())) {
+        if (Array.isArray(recs) && null != recs[0]) {
+          pm.variables.set("repo_action_ref01", String(at(recs[0], "id")))
+        }
+        else if (pm.response.code < 300) {
+          pm.variables.set("repo_action_ref01__empty", "true")
+        }
+      }
+      if (null != pm.variables.get("repo_action_ref01")) pm.test("1. List repo_actions: the record is listed", () => {
+        pm.expect(keys).to.include(String(pm.variables.get("repo_action_ref01")))
+      })
+    language: text/javascript
+order: 1000

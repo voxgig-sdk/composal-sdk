@@ -1,0 +1,21 @@
+$kind: http-request
+id: adcfc0ad-4460-578c-87a3-e2e4b73fc4ee
+description: |-
+  The `list` operation of **execution_release**.
+
+  SDK: `client.ExecutionRelease().list()`
+url: "{{base}}/api/v1/execution/releases"
+method: GET
+headers:
+  Accept: application/json
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("execution_release_id")) pm.collectionVariables.set("execution_release_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

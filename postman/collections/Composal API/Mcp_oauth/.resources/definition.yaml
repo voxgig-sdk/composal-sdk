@@ -1,0 +1,8 @@
+$kind: collection
+id: "23680827-af79-5e6d-aa5b-535d62208caf"
+description: |-
+  The **mcp_oauth** entity. Its requests address one record by `{{mcp_oauth_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 312000

@@ -1,0 +1,23 @@
+# BasicGitlabConnectionFlow
+
+main: kit: flow: BasicGitlabConnectionFlow:
+{
+  entity: "gitlab_connection",
+  kind: "basic",
+  name: "BasicGitlabConnectionFlow",
+  step: [
+    {
+      i: {
+        ref: "gitlab_connection_ref01"
+      }
+
+      m: {
+        connection_id: "connection01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicGitlabConnectionFlow"
+}

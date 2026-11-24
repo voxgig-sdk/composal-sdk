@@ -1,0 +1,4 @@
+$kind: collection
+id: "819ac07e-9085-5b8f-869e-7d1b9a232d90"
+description: "The `BasicAgentSessionCheckpointFlow` flow of **agent_session_checkpoint**."
+order: 38000

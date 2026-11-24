@@ -1,0 +1,79 @@
+{
+  "existing": {
+    "repository_access_resolve": {
+      "REPOSITORY_ACCESS_RESOLVE00": {
+        "default_branch": "s82",
+        "git_auth_username": "s83",
+        "git_https_clone_url": "s84",
+        "git_https_supported": false,
+        "github_access_warnings": [],
+        "id": "REPOSITORY_ACCESS_RESOLVE00",
+        "membership_role": "s88",
+        "organization_id": "ORGANIZATION01",
+        "organization_name": "s8a",
+        "organization_slug": "s8b",
+        "repository_id": "REPOSITORY01",
+        "repository_name": "s8d",
+        "repository_slug": "s8e",
+        "resolve_id": "RESOLVE01"
+      },
+      "REPOSITORY_ACCESS_RESOLVE01": {
+        "default_branch": "s104",
+        "git_auth_username": "s105",
+        "git_https_clone_url": "s106",
+        "git_https_supported": false,
+        "github_access_warnings": [],
+        "id": "REPOSITORY_ACCESS_RESOLVE01",
+        "membership_role": "s10a",
+        "organization_id": "ORGANIZATION01",
+        "organization_name": "s10c",
+        "organization_slug": "s10d",
+        "repository_id": "REPOSITORY01",
+        "repository_name": "s10f",
+        "repository_slug": "s110",
+        "resolve_id": "RESOLVE01"
+      },
+      "REPOSITORY_ACCESS_RESOLVE02": {
+        "default_branch": "s186",
+        "git_auth_username": "s187",
+        "git_https_clone_url": "s188",
+        "git_https_supported": false,
+        "github_access_warnings": [],
+        "id": "REPOSITORY_ACCESS_RESOLVE02",
+        "membership_role": "s18c",
+        "organization_id": "ORGANIZATION01",
+        "organization_name": "s18e",
+        "organization_slug": "s18f",
+        "repository_id": "REPOSITORY01",
+        "repository_name": "s191",
+        "repository_slug": "s192",
+        "resolve_id": "RESOLVE01"
+      }
+    }
+  },
+  "new": {
+    "repository_access_resolve": {
+      "repository_access_resolve_ref01": {
+        "default_branch": "s208",
+        "git_auth_username": "s209",
+        "git_https_clone_url": "s20a",
+        "git_https_supported": false,
+        "github_access_warnings": [],
+        "membership_role": "s20e",
+        "organization_id": "ORGANIZATION01",
+        "organization_name": "s210",
+        "organization_slug": "s211",
+        "repository_id": "REPOSITORY01",
+        "repository_name": "s213",
+        "repository_slug": "s214"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/repository_access/resolve/{org_slug}/{repo_slug}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

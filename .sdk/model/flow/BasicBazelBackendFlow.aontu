@@ -1,0 +1,99 @@
+# BasicBazelBackendFlow
+
+main: kit: flow: BasicBazelBackendFlow:
+{
+  entity: "bazel_backend",
+  kind: "basic",
+  name: "BasicBazelBackendFlow",
+  step: [
+    {
+      i: {
+        ref: "bazel_backend_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "bazel_backend_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "bazel_backend_ref01",
+        srcdatavar: "bazel_backend_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-bazel_backend_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "bazel_backend_ref01",
+        srcdatavar: "bazel_backend_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "bazel_backend01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-bazel_backend_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "bazel_backend_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "bazel_backend01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "bazel_backend_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBazelBackendFlow"
+}

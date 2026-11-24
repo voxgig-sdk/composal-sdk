@@ -30,4 +30,4 @@ description: |-
   | `updated_at` | string | yes |  |
   | `verify_network_connection_id` | string | yes |  |
   | `version` | integer | yes |  |
-order: 166000
+order: 394000

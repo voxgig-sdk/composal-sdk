@@ -1,0 +1,18 @@
+$kind: http-request
+id: ede6932b-64df-57e3-b508-a859ec58904c
+description: |-
+  The `load` operation of **workspace_space**.
+
+  SDK: `client.WorkspaceSpace().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/workspace_spaces/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this workspace_space belongs to.
+  - key: id
+    value: "{{workspace_space_id}}"
+    description: The workspace_space this request addresses.
+order: 2000

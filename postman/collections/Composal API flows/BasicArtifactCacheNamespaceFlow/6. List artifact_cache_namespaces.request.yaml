@@ -1,0 +1,48 @@
+$kind: http-request
+id: "23c30ffd-3e35-5a5b-93bc-fce33b4707bb"
+description: |-
+  The `list` operation of **artifact_cache_namespace**.
+
+  SDK: `client.ArtifactCacheNamespace().list()`
+url: "{{base}}/api/v1/artifacts/cache_namespaces"
+method: GET
+headers:
+  Accept: application/json
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("6. List artifact_cache_namespaces: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const recs = body || []
+      const keys = Array.isArray(recs) ? recs.map((rec) => String(at(rec, "id"))) : []
+      if (null != pm.variables.get("artifact_cache_namespace_ref01_removed")) pm.test("6. List artifact_cache_namespaces: the removed record is gone", () => {
+        pm.expect(keys).to.not.include(pm.variables.get("artifact_cache_namespace_ref01_removed"))
+      })
+    language: text/javascript
+order: 6000

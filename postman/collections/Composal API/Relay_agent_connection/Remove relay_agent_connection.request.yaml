@@ -1,0 +1,30 @@
+$kind: http-request
+id: "6b7c2f3e-a2c4-5caa-a1be-3289402eb858"
+description: |-
+  The `remove` operation of **relay_agent_connection**.
+
+  SDK: `client.RelayAgentConnection().remove({ agent_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/relay/connections/:connection_id"
+method: DELETE
+headers:
+  Accept: application/json
+  X-Composal-Relay-Scope: "{{x_composal_relay_scope}}"
+  X-Composal-Requester-Id: "{{x_composal_requester_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this relay_agent_connection belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this relay_agent_connection belongs to.
+  - key: connection_id
+    value: "{{relay_agent_connection_id}}"
+    description: The relay_agent_connection this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("relay_agent_connection_id")
+      }
+    language: text/javascript
+order: 7000

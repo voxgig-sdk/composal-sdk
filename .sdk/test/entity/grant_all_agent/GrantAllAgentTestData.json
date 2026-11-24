@@ -1,0 +1,46 @@
+{
+  "existing": {
+    "grant_all_agent": {
+      "GRANT_ALL_AGENT00": {
+        "all_agents_access": true,
+        "enabled": false,
+        "execution_available": true,
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01",
+        "id": "GRANT_ALL_AGENT00"
+      },
+      "GRANT_ALL_AGENT01": {
+        "all_agents_access": true,
+        "enabled": false,
+        "execution_available": true,
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01",
+        "id": "GRANT_ALL_AGENT01"
+      },
+      "GRANT_ALL_AGENT02": {
+        "all_agents_access": true,
+        "enabled": false,
+        "execution_available": true,
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01",
+        "id": "GRANT_ALL_AGENT02"
+      }
+    }
+  },
+  "new": {
+    "grant_all_agent": {
+      "grant_all_agent_ref01": {
+        "all_agents_access": true,
+        "enabled": false,
+        "execution_available": true
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/all_agents": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

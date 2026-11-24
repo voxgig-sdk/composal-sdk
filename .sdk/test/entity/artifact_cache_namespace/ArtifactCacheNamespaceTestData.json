@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "artifact_cache_namespace": {
+      "ARTIFACT_CACHE_NAMESPACE00": {
+        "id": "ARTIFACT_CACHE_NAMESPACE00"
+      },
+      "ARTIFACT_CACHE_NAMESPACE01": {
+        "id": "ARTIFACT_CACHE_NAMESPACE01"
+      },
+      "ARTIFACT_CACHE_NAMESPACE02": {
+        "id": "ARTIFACT_CACHE_NAMESPACE02"
+      }
+    }
+  },
+  "new": {
+    "artifact_cache_namespace": {
+      "artifact_cache_namespace_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/artifacts/cache_namespaces/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/artifacts/cache_namespaces/{id}/pause": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/artifacts/cache_namespaces/{id}/resume": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/artifacts/cache_namespaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/artifacts/cache_namespaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/artifacts/cache_namespaces/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/artifacts/cache_namespaces/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/artifacts/cache_namespaces/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/artifacts/cache_namespaces/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+# BasicInvocationControlFlow
+
+main: kit: flow: BasicInvocationControlFlow:
+{
+  entity: "invocation_control",
+  kind: "basic",
+  name: "BasicInvocationControlFlow",
+  step: [
+    {
+      i: {
+        ref: "invocation_control_ref01"
+      }
+
+      m: {
+        device_id: "device01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicInvocationControlFlow"
+}

@@ -1,0 +1,32 @@
+# BasicDeploymentFlow
+
+main: kit: flow: BasicDeploymentFlow:
+{
+  entity: "deployment",
+  kind: "basic",
+  name: "BasicDeploymentFlow",
+  step: [
+    {
+      i: {
+        ref: "deployment_ref01",
+        srcdatavar: "deployment_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "deployment01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-deployment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeploymentFlow"
+}

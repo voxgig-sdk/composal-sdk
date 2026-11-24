@@ -1,0 +1,4 @@
+$kind: collection
+id: "887b07b2-e03e-5930-a67d-5e3526cb0569"
+description: "The `BasicPairingEventFlow` flow of **pairing_event**."
+order: 304000

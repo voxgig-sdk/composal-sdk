@@ -1,0 +1,17 @@
+$kind: collection
+id: "30547919-1aa8-5c18-aede-f10acc4268a2"
+description: |-
+  The **device_folder_listing** entity, which belongs to a organization and a device. Its requests address one record by `{{device_folder_listing_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `code` | string |  |  |
+  | `error` | string |  |  |
+  | `folders` | array |  |  |
+  | `id` | string | yes |  |
+  | `key` | string | yes |  |
+  | `parent` | string |  |  |
+  | `path` | string |  |  |
+  | `state` | string | yes |  |
+  | `truncated` | boolean |  |  |
+order: 216000

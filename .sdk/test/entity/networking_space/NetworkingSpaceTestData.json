@@ -1,0 +1,77 @@
+{
+  "existing": {
+    "networking_space": {
+      "NETWORKING_SPACE00": {
+        "id": "NETWORKING_SPACE00"
+      },
+      "NETWORKING_SPACE01": {
+        "id": "NETWORKING_SPACE01"
+      },
+      "NETWORKING_SPACE02": {
+        "id": "NETWORKING_SPACE02"
+      }
+    }
+  },
+  "new": {
+    "networking_space": {
+      "networking_space_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/networking/spaces/{id}/activate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/networking/spaces/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/networking/spaces/{id}/pause": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/networking/spaces/{id}/validate_route": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/networking/spaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/networking/spaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/networking/spaces/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/networking/spaces/{space_id}/catalog": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/networking/spaces/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/networking/spaces/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/networking/spaces/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

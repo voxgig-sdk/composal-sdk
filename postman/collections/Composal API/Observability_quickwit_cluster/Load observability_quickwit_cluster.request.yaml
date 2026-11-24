@@ -1,0 +1,15 @@
+$kind: http-request
+id: ec7c20e7-9308-576c-aa03-72f0e9b12843
+description: |-
+  The `load` operation of **observability_quickwit_cluster**.
+
+  SDK: `client.ObservabilityQuickwitCluster().load({ id: "example_id" })`
+url: "{{base}}/api/v1/observability/quickwit_clusters/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{observability_quickwit_cluster_id}}"
+    description: The observability_quickwit_cluster this request addresses.
+order: 2000

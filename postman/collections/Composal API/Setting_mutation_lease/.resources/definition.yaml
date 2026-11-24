@@ -1,0 +1,8 @@
+$kind: collection
+id: b01972d0-2219-5230-a56e-89a276962ff8
+description: |-
+  The **setting_mutation_lease** entity, which belongs to a organization and a repo. Its requests address one record by `{{setting_mutation_lease_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 468000

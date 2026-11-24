@@ -42,9 +42,25 @@ client = ComposalSDK.test
 
 ### Instance Methods
 
+#### `A2aWellKnown(data = nil)`
+
+Create a new `A2aWellKnown` entity instance. Pass `nil` for no initial data.
+
+#### `AdminOrg(data = nil)`
+
+Create a new `AdminOrg` entity instance. Pass `nil` for no initial data.
+
 #### `Agent(data = nil)`
 
 Create a new `Agent` entity instance. Pass `nil` for no initial data.
+
+#### `AgentApp(data = nil)`
+
+Create a new `AgentApp` entity instance. Pass `nil` for no initial data.
+
+#### `AgentAppInstall(data = nil)`
+
+Create a new `AgentAppInstall` entity instance. Pass `nil` for no initial data.
 
 #### `AgentAttachment(data = nil)`
 
@@ -70,6 +86,30 @@ Create a new `AgentComputer` entity instance. Pass `nil` for no initial data.
 
 Create a new `AgentConnection` entity instance. Pass `nil` for no initial data.
 
+#### `AgentConnectionDelegation(data = nil)`
+
+Create a new `AgentConnectionDelegation` entity instance. Pass `nil` for no initial data.
+
+#### `AgentConnectionGrant(data = nil)`
+
+Create a new `AgentConnectionGrant` entity instance. Pass `nil` for no initial data.
+
+#### `AgentConnectionResource(data = nil)`
+
+Create a new `AgentConnectionResource` entity instance. Pass `nil` for no initial data.
+
+#### `AgentConnectionSafetyControl(data = nil)`
+
+Create a new `AgentConnectionSafetyControl` entity instance. Pass `nil` for no initial data.
+
+#### `AgentConnectionTriggerSubscription(data = nil)`
+
+Create a new `AgentConnectionTriggerSubscription` entity instance. Pass `nil` for no initial data.
+
+#### `AgentContextCheckpoint(data = nil)`
+
+Create a new `AgentContextCheckpoint` entity instance. Pass `nil` for no initial data.
+
 #### `AgentControlFlow(data = nil)`
 
 Create a new `AgentControlFlow` entity instance. Pass `nil` for no initial data.
@@ -82,6 +122,10 @@ Create a new `AgentCoordination` entity instance. Pass `nil` for no initial data
 
 Create a new `AgentEmail` entity instance. Pass `nil` for no initial data.
 
+#### `AgentEvent(data = nil)`
+
+Create a new `AgentEvent` entity instance. Pass `nil` for no initial data.
+
 #### `AgentFile(data = nil)`
 
 Create a new `AgentFile` entity instance. Pass `nil` for no initial data.
@@ -93,6 +137,14 @@ Create a new `AgentInput` entity instance. Pass `nil` for no initial data.
 #### `AgentIntegration(data = nil)`
 
 Create a new `AgentIntegration` entity instance. Pass `nil` for no initial data.
+
+#### `AgentIntegrationAccount(data = nil)`
+
+Create a new `AgentIntegrationAccount` entity instance. Pass `nil` for no initial data.
+
+#### `AgentIntegrationCallback(data = nil)`
+
+Create a new `AgentIntegrationCallback` entity instance. Pass `nil` for no initial data.
 
 #### `AgentInteraction(data = nil)`
 
@@ -138,6 +190,14 @@ Create a new `AgentPullRequest` entity instance. Pass `nil` for no initial data.
 
 Create a new `AgentQuestion` entity instance. Pass `nil` for no initial data.
 
+#### `AgentRelayFileGrant(data = nil)`
+
+Create a new `AgentRelayFileGrant` entity instance. Pass `nil` for no initial data.
+
+#### `AgentRelayFileGrantAccount(data = nil)`
+
+Create a new `AgentRelayFileGrantAccount` entity instance. Pass `nil` for no initial data.
+
 #### `AgentRepository(data = nil)`
 
 Create a new `AgentRepository` entity instance. Pass `nil` for no initial data.
@@ -145,6 +205,10 @@ Create a new `AgentRepository` entity instance. Pass `nil` for no initial data.
 #### `AgentResource(data = nil)`
 
 Create a new `AgentResource` entity instance. Pass `nil` for no initial data.
+
+#### `AgentRoder(data = nil)`
+
+Create a new `AgentRoder` entity instance. Pass `nil` for no initial data.
 
 #### `AgentRoutine(data = nil)`
 
@@ -157,6 +221,18 @@ Create a new `AgentRun` entity instance. Pass `nil` for no initial data.
 #### `AgentRuntime(data = nil)`
 
 Create a new `AgentRuntime` entity instance. Pass `nil` for no initial data.
+
+#### `AgentSession(data = nil)`
+
+Create a new `AgentSession` entity instance. Pass `nil` for no initial data.
+
+#### `AgentSessionCheckpoint(data = nil)`
+
+Create a new `AgentSessionCheckpoint` entity instance. Pass `nil` for no initial data.
+
+#### `AgentSessionRoderHandoff(data = nil)`
+
+Create a new `AgentSessionRoderHandoff` entity instance. Pass `nil` for no initial data.
 
 #### `AgentSetting(data = nil)`
 
@@ -186,6 +262,10 @@ Create a new `AgentSubagent` entity instance. Pass `nil` for no initial data.
 
 Create a new `AgentSubscription` entity instance. Pass `nil` for no initial data.
 
+#### `AgentSwarm(data = nil)`
+
+Create a new `AgentSwarm` entity instance. Pass `nil` for no initial data.
+
 #### `AgentTeammate(data = nil)`
 
 Create a new `AgentTeammate` entity instance. Pass `nil` for no initial data.
@@ -202,6 +282,10 @@ Create a new `AgentThread` entity instance. Pass `nil` for no initial data.
 
 Create a new `AgentTool` entity instance. Pass `nil` for no initial data.
 
+#### `AgentUsage(data = nil)`
+
+Create a new `AgentUsage` entity instance. Pass `nil` for no initial data.
+
 #### `AgentVerifyProject(data = nil)`
 
 Create a new `AgentVerifyProject` entity instance. Pass `nil` for no initial data.
@@ -209,6 +293,10 @@ Create a new `AgentVerifyProject` entity instance. Pass `nil` for no initial dat
 #### `AgentWait(data = nil)`
 
 Create a new `AgentWait` entity instance. Pass `nil` for no initial data.
+
+#### `AgentWebPreview(data = nil)`
+
+Create a new `AgentWebPreview` entity instance. Pass `nil` for no initial data.
 
 #### `AgentWebhook(data = nil)`
 
@@ -242,6 +330,18 @@ Create a new `AgentWorkspace` entity instance. Pass `nil` for no initial data.
 
 Create a new `AgentWritePermission` entity instance. Pass `nil` for no initial data.
 
+#### `Agreement(data = nil)`
+
+Create a new `Agreement` entity instance. Pass `nil` for no initial data.
+
+#### `AgreementAccessRequest(data = nil)`
+
+Create a new `AgreementAccessRequest` entity instance. Pass `nil` for no initial data.
+
+#### `AlertRuleEvent(data = nil)`
+
+Create a new `AlertRuleEvent` entity instance. Pass `nil` for no initial data.
+
 #### `AllocationLog(data = nil)`
 
 Create a new `AllocationLog` entity instance. Pass `nil` for no initial data.
@@ -249,6 +349,14 @@ Create a new `AllocationLog` entity instance. Pass `nil` for no initial data.
 #### `App(data = nil)`
 
 Create a new `App` entity instance. Pass `nil` for no initial data.
+
+#### `AppAccess(data = nil)`
+
+Create a new `AppAccess` entity instance. Pass `nil` for no initial data.
+
+#### `AppAccessJwk(data = nil)`
+
+Create a new `AppAccessJwk` entity instance. Pass `nil` for no initial data.
 
 #### `AppCdn(data = nil)`
 
@@ -322,9 +430,77 @@ Create a new `AppServicePlacement` entity instance. Pass `nil` for no initial da
 
 Create a new `AppStorageResource` entity instance. Pass `nil` for no initial data.
 
+#### `Artefact(data = nil)`
+
+Create a new `Artefact` entity instance. Pass `nil` for no initial data.
+
+#### `ArtefactCommentThread(data = nil)`
+
+Create a new `ArtefactCommentThread` entity instance. Pass `nil` for no initial data.
+
+#### `ArtefactRevision(data = nil)`
+
+Create a new `ArtefactRevision` entity instance. Pass `nil` for no initial data.
+
+#### `ArtefactViewToken(data = nil)`
+
+Create a new `ArtefactViewToken` entity instance. Pass `nil` for no initial data.
+
+#### `Artifact(data = nil)`
+
+Create a new `Artifact` entity instance. Pass `nil` for no initial data.
+
+#### `ArtifactCacheNamespace(data = nil)`
+
+Create a new `ArtifactCacheNamespace` entity instance. Pass `nil` for no initial data.
+
+#### `ArtifactImageRepository(data = nil)`
+
+Create a new `ArtifactImageRepository` entity instance. Pass `nil` for no initial data.
+
+#### `ArtifactPackageMirror(data = nil)`
+
+Create a new `ArtifactPackageMirror` entity instance. Pass `nil` for no initial data.
+
+#### `ArtifactRetentionPolicy(data = nil)`
+
+Create a new `ArtifactRetentionPolicy` entity instance. Pass `nil` for no initial data.
+
 #### `AttachmentPart(data = nil)`
 
 Create a new `AttachmentPart` entity instance. Pass `nil` for no initial data.
+
+#### `AuditEvent(data = nil)`
+
+Create a new `AuditEvent` entity instance. Pass `nil` for no initial data.
+
+#### `Auth(data = nil)`
+
+Create a new `Auth` entity instance. Pass `nil` for no initial data.
+
+#### `AuthCli(data = nil)`
+
+Create a new `AuthCli` entity instance. Pass `nil` for no initial data.
+
+#### `AuthGithub(data = nil)`
+
+Create a new `AuthGithub` entity instance. Pass `nil` for no initial data.
+
+#### `AuthGoogle(data = nil)`
+
+Create a new `AuthGoogle` entity instance. Pass `nil` for no initial data.
+
+#### `AuthOpenai(data = nil)`
+
+Create a new `AuthOpenai` entity instance. Pass `nil` for no initial data.
+
+#### `AuthPasswordReset(data = nil)`
+
+Create a new `AuthPasswordReset` entity instance. Pass `nil` for no initial data.
+
+#### `AuthRegistrationOption(data = nil)`
+
+Create a new `AuthRegistrationOption` entity instance. Pass `nil` for no initial data.
 
 #### `AutomationEvent(data = nil)`
 
@@ -334,6 +510,74 @@ Create a new `AutomationEvent` entity instance. Pass `nil` for no initial data.
 
 Create a new `AutomationRun` entity instance. Pass `nil` for no initial data.
 
+#### `BackendRunnerPool(data = nil)`
+
+Create a new `BackendRunnerPool` entity instance. Pass `nil` for no initial data.
+
+#### `Bazel(data = nil)`
+
+Create a new `Bazel` entity instance. Pass `nil` for no initial data.
+
+#### `BazelActionResult(data = nil)`
+
+Create a new `BazelActionResult` entity instance. Pass `nil` for no initial data.
+
+#### `BazelBackend(data = nil)`
+
+Create a new `BazelBackend` entity instance. Pass `nil` for no initial data.
+
+#### `BazelBlob(data = nil)`
+
+Create a new `BazelBlob` entity instance. Pass `nil` for no initial data.
+
+#### `BazelExecution(data = nil)`
+
+Create a new `BazelExecution` entity instance. Pass `nil` for no initial data.
+
+#### `BazelFindMissingBlob(data = nil)`
+
+Create a new `BazelFindMissingBlob` entity instance. Pass `nil` for no initial data.
+
+#### `Billing(data = nil)`
+
+Create a new `Billing` entity instance. Pass `nil` for no initial data.
+
+#### `BillingAddon(data = nil)`
+
+Create a new `BillingAddon` entity instance. Pass `nil` for no initial data.
+
+#### `BillingCheckoutSession(data = nil)`
+
+Create a new `BillingCheckoutSession` entity instance. Pass `nil` for no initial data.
+
+#### `BillingInvoice(data = nil)`
+
+Create a new `BillingInvoice` entity instance. Pass `nil` for no initial data.
+
+#### `BillingPackage(data = nil)`
+
+Create a new `BillingPackage` entity instance. Pass `nil` for no initial data.
+
+#### `BillingPortalSession(data = nil)`
+
+Create a new `BillingPortalSession` entity instance. Pass `nil` for no initial data.
+
+#### `BillingPrepaidPeriod(data = nil)`
+
+Create a new `BillingPrepaidPeriod` entity instance. Pass `nil` for no initial data.
+
+#### `BillingPrepaidPurchase(data = nil)`
+
+Create a new `BillingPrepaidPurchase` entity instance. Pass `nil` for no initial data.
+
+#### `BillingTokenTopUp(data = nil)`
+
+Create a new `BillingTokenTopUp` entity instance. Pass `nil` for no initial data.
+
+#### `BillingUsage(data = nil)`
+
+Create a new `BillingUsage` entity instance. Pass `nil` for no initial data.
+
 #### `Binary(data = nil)`
 
 Create a new `Binary` entity instance. Pass `nil` for no initial data.
@@ -341,6 +585,10 @@ Create a new `Binary` entity instance. Pass `nil` for no initial data.
 #### `BinaryVersion(data = nil)`
 
 Create a new `BinaryVersion` entity instance. Pass `nil` for no initial data.
+
+#### `BookmarkProtectionRefreshGithubRequiredCheck(data = nil)`
+
+Create a new `BookmarkProtectionRefreshGithubRequiredCheck` entity instance. Pass `nil` for no initial data.
 
 #### `BrowserEgressCandidate(data = nil)`
 
@@ -378,6 +626,10 @@ Create a new `BrowserSessionScreenshot` entity instance. Pass `nil` for no initi
 
 Create a new `BrowserSessionTask` entity instance. Pass `nil` for no initial data.
 
+#### `CacheNamespaceEntry(data = nil)`
+
+Create a new `CacheNamespaceEntry` entity instance. Pass `nil` for no initial data.
+
 #### `CatalogSelector(data = nil)`
 
 Create a new `CatalogSelector` entity instance. Pass `nil` for no initial data.
@@ -398,6 +650,122 @@ Create a new `CdnSpace` entity instance. Pass `nil` for no initial data.
 
 Create a new `CdnSpaceObject` entity instance. Pass `nil` for no initial data.
 
+#### `Change(data = nil)`
+
+Create a new `Change` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeAsset(data = nil)`
+
+Create a new `ChangeAsset` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeComment(data = nil)`
+
+Create a new `ChangeComment` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeFileReviewCheckpoint(data = nil)`
+
+Create a new `ChangeFileReviewCheckpoint` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeGitBranchSubmission(data = nil)`
+
+Create a new `ChangeGitBranchSubmission` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeGitCommitIdentity(data = nil)`
+
+Create a new `ChangeGitCommitIdentity` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeGitPublication(data = nil)`
+
+Create a new `ChangeGitPublication` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeGroupMember(data = nil)`
+
+Create a new `ChangeGroupMember` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeLabel(data = nil)`
+
+Create a new `ChangeLabel` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeLandingHold(data = nil)`
+
+Create a new `ChangeLandingHold` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeLandingRequest(data = nil)`
+
+Create a new `ChangeLandingRequest` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeRequestChange(data = nil)`
+
+Create a new `ChangeRequestChange` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeReviewer(data = nil)`
+
+Create a new `ChangeReviewer` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeTranscript(data = nil)`
+
+Create a new `ChangeTranscript` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeTranscriptSummary(data = nil)`
+
+Create a new `ChangeTranscriptSummary` entity instance. Pass `nil` for no initial data.
+
+#### `CheckpointPrepareChunk(data = nil)`
+
+Create a new `CheckpointPrepareChunk` entity instance. Pass `nil` for no initial data.
+
+#### `CiNode(data = nil)`
+
+Create a new `CiNode` entity instance. Pass `nil` for no initial data.
+
+#### `CiPipeline(data = nil)`
+
+Create a new `CiPipeline` entity instance. Pass `nil` for no initial data.
+
+#### `CiPipelineRun(data = nil)`
+
+Create a new `CiPipelineRun` entity instance. Pass `nil` for no initial data.
+
+#### `CiRunnerPool(data = nil)`
+
+Create a new `CiRunnerPool` entity instance. Pass `nil` for no initial data.
+
+#### `CiStatus(data = nil)`
+
+Create a new `CiStatus` entity instance. Pass `nil` for no initial data.
+
+#### `CliEvent(data = nil)`
+
+Create a new `CliEvent` entity instance. Pass `nil` for no initial data.
+
+#### `CliRelease(data = nil)`
+
+Create a new `CliRelease` entity instance. Pass `nil` for no initial data.
+
+#### `CloudWorkspaceBackupObject(data = nil)`
+
+Create a new `CloudWorkspaceBackupObject` entity instance. Pass `nil` for no initial data.
+
+#### `CodeRuleEvaluation(data = nil)`
+
+Create a new `CodeRuleEvaluation` entity instance. Pass `nil` for no initial data.
+
+#### `ComSiteAccess(data = nil)`
+
+Create a new `ComSiteAccess` entity instance. Pass `nil` for no initial data.
+
+#### `ComSiteAccessSession(data = nil)`
+
+Create a new `ComSiteAccessSession` entity instance. Pass `nil` for no initial data.
+
+#### `CommentThreadComment(data = nil)`
+
+Create a new `CommentThreadComment` entity instance. Pass `nil` for no initial data.
+
+#### `CommitDiff(data = nil)`
+
+Create a new `CommitDiff` entity instance. Pass `nil` for no initial data.
+
 #### `ConnectionRequest(data = nil)`
 
 Create a new `ConnectionRequest` entity instance. Pass `nil` for no initial data.
@@ -405,6 +773,18 @@ Create a new `ConnectionRequest` entity instance. Pass `nil` for no initial data
 #### `ConnectionSource(data = nil)`
 
 Create a new `ConnectionSource` entity instance. Pass `nil` for no initial data.
+
+#### `ContactSubmission(data = nil)`
+
+Create a new `ContactSubmission` entity instance. Pass `nil` for no initial data.
+
+#### `ControlComputer(data = nil)`
+
+Create a new `ControlComputer` entity instance. Pass `nil` for no initial data.
+
+#### `ControlComputerControlOperation(data = nil)`
+
+Create a new `ControlComputerControlOperation` entity instance. Pass `nil` for no initial data.
 
 #### `CoordinationWait(data = nil)`
 
@@ -446,13 +826,109 @@ Create a new `DemoShare` entity instance. Pass `nil` for no initial data.
 
 Create a new `DemoShareSegment` entity instance. Pass `nil` for no initial data.
 
+#### `Deployment(data = nil)`
+
+Create a new `Deployment` entity instance. Pass `nil` for no initial data.
+
 #### `DeploymentDashboardNomad(data = nil)`
 
 Create a new `DeploymentDashboardNomad` entity instance. Pass `nil` for no initial data.
 
+#### `DeploymentDetail(data = nil)`
+
+Create a new `DeploymentDetail` entity instance. Pass `nil` for no initial data.
+
 #### `DeploymentFile(data = nil)`
 
 Create a new `DeploymentFile` entity instance. Pass `nil` for no initial data.
+
+#### `DeploymentLog(data = nil)`
+
+Create a new `DeploymentLog` entity instance. Pass `nil` for no initial data.
+
+#### `DeploymentMetric(data = nil)`
+
+Create a new `DeploymentMetric` entity instance. Pass `nil` for no initial data.
+
+#### `DeploymentPreview(data = nil)`
+
+Create a new `DeploymentPreview` entity instance. Pass `nil` for no initial data.
+
+#### `DeploymentSetting(data = nil)`
+
+Create a new `DeploymentSetting` entity instance. Pass `nil` for no initial data.
+
+#### `DesktopLocalAgentModel(data = nil)`
+
+Create a new `DesktopLocalAgentModel` entity instance. Pass `nil` for no initial data.
+
+#### `DesktopLocalAgentResponse(data = nil)`
+
+Create a new `DesktopLocalAgentResponse` entity instance. Pass `nil` for no initial data.
+
+#### `Device(data = nil)`
+
+Create a new `Device` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceBrowserOperation(data = nil)`
+
+Create a new `DeviceBrowserOperation` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceControlMessage(data = nil)`
+
+Create a new `DeviceControlMessage` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceControlOperation(data = nil)`
+
+Create a new `DeviceControlOperation` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceEnterpriseRelay(data = nil)`
+
+Create a new `DeviceEnterpriseRelay` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceFolderListing(data = nil)`
+
+Create a new `DeviceFolderListing` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceGrant(data = nil)`
+
+Create a new `DeviceGrant` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceInvocation(data = nil)`
+
+Create a new `DeviceInvocation` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceLocalEvent(data = nil)`
+
+Create a new `DeviceLocalEvent` entity instance. Pass `nil` for no initial data.
+
+#### `DevicePairing(data = nil)`
+
+Create a new `DevicePairing` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceProject(data = nil)`
+
+Create a new `DeviceProject` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceScheduledCheckIn(data = nil)`
+
+Create a new `DeviceScheduledCheckIn` entity instance. Pass `nil` for no initial data.
+
+#### `DockerBuilder(data = nil)`
+
+Create a new `DockerBuilder` entity instance. Pass `nil` for no initial data.
+
+#### `DockerBuilderSession(data = nil)`
+
+Create a new `DockerBuilderSession` entity instance. Pass `nil` for no initial data.
+
+#### `DockerBuilderSetting(data = nil)`
+
+Create a new `DockerBuilderSetting` entity instance. Pass `nil` for no initial data.
+
+#### `DomainDnsIntegration(data = nil)`
+
+Create a new `DomainDnsIntegration` entity instance. Pass `nil` for no initial data.
 
 #### `DomainPathRule(data = nil)`
 
@@ -461,6 +937,14 @@ Create a new `DomainPathRule` entity instance. Pass `nil` for no initial data.
 #### `Dream(data = nil)`
 
 Create a new `Dream` entity instance. Pass `nil` for no initial data.
+
+#### `Edge(data = nil)`
+
+Create a new `Edge` entity instance. Pass `nil` for no initial data.
+
+#### `EmailVerification(data = nil)`
+
+Create a new `EmailVerification` entity instance. Pass `nil` for no initial data.
 
 #### `Environment(data = nil)`
 
@@ -494,6 +978,22 @@ Create a new `EnvironmentTestAccount` entity instance. Pass `nil` for no initial
 
 Create a new `Evidence` entity instance. Pass `nil` for no initial data.
 
+#### `ExecutionDesiredState(data = nil)`
+
+Create a new `ExecutionDesiredState` entity instance. Pass `nil` for no initial data.
+
+#### `ExecutionReconcilerTick(data = nil)`
+
+Create a new `ExecutionReconcilerTick` entity instance. Pass `nil` for no initial data.
+
+#### `ExecutionRelease(data = nil)`
+
+Create a new `ExecutionRelease` entity instance. Pass `nil` for no initial data.
+
+#### `ExecutionRuntimeInstance(data = nil)`
+
+Create a new `ExecutionRuntimeInstance` entity instance. Pass `nil` for no initial data.
+
 #### `Exploration(data = nil)`
 
 Create a new `Exploration` entity instance. Pass `nil` for no initial data.
@@ -514,17 +1014,145 @@ Create a new `ExplorationScenario` entity instance. Pass `nil` for no initial da
 
 Create a new `Finding` entity instance. Pass `nil` for no initial data.
 
+#### `Gh(data = nil)`
+
+Create a new `Gh` entity instance. Pass `nil` for no initial data.
+
+#### `GitImport(data = nil)`
+
+Create a new `GitImport` entity instance. Pass `nil` for no initial data.
+
+#### `Github(data = nil)`
+
+Create a new `Github` entity instance. Pass `nil` for no initial data.
+
+#### `GithubApp(data = nil)`
+
+Create a new `GithubApp` entity instance. Pass `nil` for no initial data.
+
+#### `GithubAppImportableRepository(data = nil)`
+
+Create a new `GithubAppImportableRepository` entity instance. Pass `nil` for no initial data.
+
+#### `GithubAppInstallation(data = nil)`
+
+Create a new `GithubAppInstallation` entity instance. Pass `nil` for no initial data.
+
+#### `GithubAppInstallationAuthorization(data = nil)`
+
+Create a new `GithubAppInstallationAuthorization` entity instance. Pass `nil` for no initial data.
+
+#### `GithubAppUserAuthorization(data = nil)`
+
+Create a new `GithubAppUserAuthorization` entity instance. Pass `nil` for no initial data.
+
+#### `GithubCiRepository(data = nil)`
+
+Create a new `GithubCiRepository` entity instance. Pass `nil` for no initial data.
+
+#### `GithubCiRepositoryCompatibilityReport(data = nil)`
+
+Create a new `GithubCiRepositoryCompatibilityReport` entity instance. Pass `nil` for no initial data.
+
 #### `GithubConnection(data = nil)`
 
 Create a new `GithubConnection` entity instance. Pass `nil` for no initial data.
+
+#### `GithubIntegration(data = nil)`
+
+Create a new `GithubIntegration` entity instance. Pass `nil` for no initial data.
+
+#### `GithubOnboarding(data = nil)`
+
+Create a new `GithubOnboarding` entity instance. Pass `nil` for no initial data.
+
+#### `GithubOnboardingBranch(data = nil)`
+
+Create a new `GithubOnboardingBranch` entity instance. Pass `nil` for no initial data.
+
+#### `GithubOnboardingImport(data = nil)`
+
+Create a new `GithubOnboardingImport` entity instance. Pass `nil` for no initial data.
+
+#### `GithubOnboardingImportBatch(data = nil)`
+
+Create a new `GithubOnboardingImportBatch` entity instance. Pass `nil` for no initial data.
+
+#### `GithubOnboardingImportItem(data = nil)`
+
+Create a new `GithubOnboardingImportItem` entity instance. Pass `nil` for no initial data.
+
+#### `GithubPullRequest(data = nil)`
+
+Create a new `GithubPullRequest` entity instance. Pass `nil` for no initial data.
+
+#### `GithubRunnerAdmission(data = nil)`
+
+Create a new `GithubRunnerAdmission` entity instance. Pass `nil` for no initial data.
+
+#### `GithubRunnerCache(data = nil)`
+
+Create a new `GithubRunnerCache` entity instance. Pass `nil` for no initial data.
+
+#### `GithubRunnerEgress(data = nil)`
+
+Create a new `GithubRunnerEgress` entity instance. Pass `nil` for no initial data.
+
+#### `GithubRunnerHistory(data = nil)`
+
+Create a new `GithubRunnerHistory` entity instance. Pass `nil` for no initial data.
+
+#### `GithubRunnerImage(data = nil)`
+
+Create a new `GithubRunnerImage` entity instance. Pass `nil` for no initial data.
+
+#### `GithubRunnerPool(data = nil)`
+
+Create a new `GithubRunnerPool` entity instance. Pass `nil` for no initial data.
+
+#### `GithubRunnerSetup(data = nil)`
+
+Create a new `GithubRunnerSetup` entity instance. Pass `nil` for no initial data.
+
+#### `Gitlab(data = nil)`
+
+Create a new `Gitlab` entity instance. Pass `nil` for no initial data.
+
+#### `GitlabConnection(data = nil)`
+
+Create a new `GitlabConnection` entity instance. Pass `nil` for no initial data.
+
+#### `GitlabImport(data = nil)`
+
+Create a new `GitlabImport` entity instance. Pass `nil` for no initial data.
+
+#### `GitlabOauth(data = nil)`
+
+Create a new `GitlabOauth` entity instance. Pass `nil` for no initial data.
+
+#### `GrantAllAgent(data = nil)`
+
+Create a new `GrantAllAgent` entity instance. Pass `nil` for no initial data.
 
 #### `HostingAppDomain(data = nil)`
 
 Create a new `HostingAppDomain` entity instance. Pass `nil` for no initial data.
 
+#### `IdentityOrganization(data = nil)`
+
+Create a new `IdentityOrganization` entity instance. Pass `nil` for no initial data.
+
 #### `ImageRepository(data = nil)`
 
 Create a new `ImageRepository` entity instance. Pass `nil` for no initial data.
+
+#### `ImageRepositoryTag(data = nil)`
+
+Create a new `ImageRepositoryTag` entity instance. Pass `nil` for no initial data.
+
+#### `ImportBranchPolicy(data = nil)`
+
+Create a new `ImportBranchPolicy` entity instance. Pass `nil` for no initial data.
 
 #### `Integration(data = nil)`
 
@@ -538,6 +1166,22 @@ Create a new `InteractionResponse` entity instance. Pass `nil` for no initial da
 
 Create a new `Invitation` entity instance. Pass `nil` for no initial data.
 
+#### `InvocationControl(data = nil)`
+
+Create a new `InvocationControl` entity instance. Pass `nil` for no initial data.
+
+#### `JobLogChunk(data = nil)`
+
+Create a new `JobLogChunk` entity instance. Pass `nil` for no initial data.
+
+#### `JobStep(data = nil)`
+
+Create a new `JobStep` entity instance. Pass `nil` for no initial data.
+
+#### `JobWorkspace(data = nil)`
+
+Create a new `JobWorkspace` entity instance. Pass `nil` for no initial data.
+
 #### `JourneyVariantReplay(data = nil)`
 
 Create a new `JourneyVariantReplay` entity instance. Pass `nil` for no initial data.
@@ -545,6 +1189,54 @@ Create a new `JourneyVariantReplay` entity instance. Pass `nil` for no initial d
 #### `Knowledge(data = nil)`
 
 Create a new `Knowledge` entity instance. Pass `nil` for no initial data.
+
+#### `Known(data = nil)`
+
+Create a new `Known` entity instance. Pass `nil` for no initial data.
+
+#### `Label(data = nil)`
+
+Create a new `Label` entity instance. Pass `nil` for no initial data.
+
+#### `LeaseArtifact(data = nil)`
+
+Create a new `LeaseArtifact` entity instance. Pass `nil` for no initial data.
+
+#### `LeaseCache(data = nil)`
+
+Create a new `LeaseCache` entity instance. Pass `nil` for no initial data.
+
+#### `LeaseLogChunk(data = nil)`
+
+Create a new `LeaseLogChunk` entity instance. Pass `nil` for no initial data.
+
+#### `LeaseReconciliation(data = nil)`
+
+Create a new `LeaseReconciliation` entity instance. Pass `nil` for no initial data.
+
+#### `LeaseStep(data = nil)`
+
+Create a new `LeaseStep` entity instance. Pass `nil` for no initial data.
+
+#### `LeaseVerifyDiagnostic(data = nil)`
+
+Create a new `LeaseVerifyDiagnostic` entity instance. Pass `nil` for no initial data.
+
+#### `LeaseVerifySecret(data = nil)`
+
+Create a new `LeaseVerifySecret` entity instance. Pass `nil` for no initial data.
+
+#### `LeaseWorkspace(data = nil)`
+
+Create a new `LeaseWorkspace` entity instance. Pass `nil` for no initial data.
+
+#### `LocalAgentDecision(data = nil)`
+
+Create a new `LocalAgentDecision` entity instance. Pass `nil` for no initial data.
+
+#### `LocalAgentResponse(data = nil)`
+
+Create a new `LocalAgentResponse` entity instance. Pass `nil` for no initial data.
 
 #### `LocalThreadDelivery(data = nil)`
 
@@ -557,6 +1249,22 @@ Create a new `LocalThreadOperation` entity instance. Pass `nil` for no initial d
 #### `Location(data = nil)`
 
 Create a new `Location` entity instance. Pass `nil` for no initial data.
+
+#### `LogStreamChunk(data = nil)`
+
+Create a new `LogStreamChunk` entity instance. Pass `nil` for no initial data.
+
+#### `LogoImage(data = nil)`
+
+Create a new `LogoImage` entity instance. Pass `nil` for no initial data.
+
+#### `MarketingSetting(data = nil)`
+
+Create a new `MarketingSetting` entity instance. Pass `nil` for no initial data.
+
+#### `McpOauth(data = nil)`
+
+Create a new `McpOauth` entity instance. Pass `nil` for no initial data.
 
 #### `Me(data = nil)`
 
@@ -582,9 +1290,17 @@ Create a new `Member` entity instance. Pass `nil` for no initial data.
 
 Create a new `Memory` entity instance. Pass `nil` for no initial data.
 
+#### `MergeQueueEntry(data = nil)`
+
+Create a new `MergeQueueEntry` entity instance. Pass `nil` for no initial data.
+
 #### `MergeRequest(data = nil)`
 
 Create a new `MergeRequest` entity instance. Pass `nil` for no initial data.
+
+#### `MergeResolution(data = nil)`
+
+Create a new `MergeResolution` entity instance. Pass `nil` for no initial data.
 
 #### `MessagingConversationMessage(data = nil)`
 
@@ -598,9 +1314,37 @@ Create a new `MessagingConversationUpload` entity instance. Pass `nil` for no in
 
 Create a new `MetricQuery` entity instance. Pass `nil` for no initial data.
 
+#### `MetronomeWebhook(data = nil)`
+
+Create a new `MetronomeWebhook` entity instance. Pass `nil` for no initial data.
+
+#### `ModelSubscriptionAccount(data = nil)`
+
+Create a new `ModelSubscriptionAccount` entity instance. Pass `nil` for no initial data.
+
+#### `ModelSubscriptionAccountConnection(data = nil)`
+
+Create a new `ModelSubscriptionAccountConnection` entity instance. Pass `nil` for no initial data.
+
 #### `NetworkConnection(data = nil)`
 
 Create a new `NetworkConnection` entity instance. Pass `nil` for no initial data.
+
+#### `NetworkingSpace(data = nil)`
+
+Create a new `NetworkingSpace` entity instance. Pass `nil` for no initial data.
+
+#### `Node(data = nil)`
+
+Create a new `Node` entity instance. Pass `nil` for no initial data.
+
+#### `NodeCertificate(data = nil)`
+
+Create a new `NodeCertificate` entity instance. Pass `nil` for no initial data.
+
+#### `NodeLease(data = nil)`
+
+Create a new `NodeLease` entity instance. Pass `nil` for no initial data.
 
 #### `NomadAllocation(data = nil)`
 
@@ -610,9 +1354,113 @@ Create a new `NomadAllocation` entity instance. Pass `nil` for no initial data.
 
 Create a new `NomadLog` entity instance. Pass `nil` for no initial data.
 
+#### `Now(data = nil)`
+
+Create a new `Now` entity instance. Pass `nil` for no initial data.
+
+#### `ObservabilityClickhouseCluster(data = nil)`
+
+Create a new `ObservabilityClickhouseCluster` entity instance. Pass `nil` for no initial data.
+
+#### `ObservabilityQuickwitCluster(data = nil)`
+
+Create a new `ObservabilityQuickwitCluster` entity instance. Pass `nil` for no initial data.
+
+#### `ObservabilitySpace(data = nil)`
+
+Create a new `ObservabilitySpace` entity instance. Pass `nil` for no initial data.
+
+#### `Openapi(data = nil)`
+
+Create a new `Openapi` entity instance. Pass `nil` for no initial data.
+
+#### `OrgInvitation(data = nil)`
+
+Create a new `OrgInvitation` entity instance. Pass `nil` for no initial data.
+
 #### `Organization(data = nil)`
 
 Create a new `Organization` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationApp(data = nil)`
+
+Create a new `OrganizationApp` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationControl(data = nil)`
+
+Create a new `OrganizationControl` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationDevice(data = nil)`
+
+Create a new `OrganizationDevice` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationIdentityCertificate(data = nil)`
+
+Create a new `OrganizationIdentityCertificate` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationInteraction(data = nil)`
+
+Create a new `OrganizationInteraction` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationInvitation(data = nil)`
+
+Create a new `OrganizationInvitation` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationMessageFile(data = nil)`
+
+Create a new `OrganizationMessageFile` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationOidcTrust(data = nil)`
+
+Create a new `OrganizationOidcTrust` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationRunEvent(data = nil)`
+
+Create a new `OrganizationRunEvent` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationRunOutcome(data = nil)`
+
+Create a new `OrganizationRunOutcome` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationRunUsage(data = nil)`
+
+Create a new `OrganizationRunUsage` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationSandbox(data = nil)`
+
+Create a new `OrganizationSandbox` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationSecret(data = nil)`
+
+Create a new `OrganizationSecret` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationServiceAccount(data = nil)`
+
+Create a new `OrganizationServiceAccount` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationSetting(data = nil)`
+
+Create a new `OrganizationSetting` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationSite(data = nil)`
+
+Create a new `OrganizationSite` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationSubscription(data = nil)`
+
+Create a new `OrganizationSubscription` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationTool(data = nil)`
+
+Create a new `OrganizationTool` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationWorkloadIdentity(data = nil)`
+
+Create a new `OrganizationWorkloadIdentity` entity instance. Pass `nil` for no initial data.
+
+#### `OtelIngest(data = nil)`
+
+Create a new `OtelIngest` entity instance. Pass `nil` for no initial data.
 
 #### `Page(data = nil)`
 
@@ -622,9 +1470,33 @@ Create a new `Page` entity instance. Pass `nil` for no initial data.
 
 Create a new `PageAgent` entity instance. Pass `nil` for no initial data.
 
+#### `PageArtefact(data = nil)`
+
+Create a new `PageArtefact` entity instance. Pass `nil` for no initial data.
+
+#### `PageCiPipelineRun(data = nil)`
+
+Create a new `PageCiPipelineRun` entity instance. Pass `nil` for no initial data.
+
 #### `PageProjectRun(data = nil)`
 
 Create a new `PageProjectRun` entity instance. Pass `nil` for no initial data.
+
+#### `PageRepoVcCommit(data = nil)`
+
+Create a new `PageRepoVcCommit` entity instance. Pass `nil` for no initial data.
+
+#### `PagesBilling(data = nil)`
+
+Create a new `PagesBilling` entity instance. Pass `nil` for no initial data.
+
+#### `PagesGithubOnboarding(data = nil)`
+
+Create a new `PagesGithubOnboarding` entity instance. Pass `nil` for no initial data.
+
+#### `PagesMember(data = nil)`
+
+Create a new `PagesMember` entity instance. Pass `nil` for no initial data.
 
 #### `PagesProjectCredential(data = nil)`
 
@@ -641,6 +1513,30 @@ Create a new `PagesProjectRun` entity instance. Pass `nil` for no initial data.
 #### `PagesProjectScenario(data = nil)`
 
 Create a new `PagesProjectScenario` entity instance. Pass `nil` for no initial data.
+
+#### `PagesRegistry(data = nil)`
+
+Create a new `PagesRegistry` entity instance. Pass `nil` for no initial data.
+
+#### `PagesSession(data = nil)`
+
+Create a new `PagesSession` entity instance. Pass `nil` for no initial data.
+
+#### `Pairing(data = nil)`
+
+Create a new `Pairing` entity instance. Pass `nil` for no initial data.
+
+#### `PairingEvent(data = nil)`
+
+Create a new `PairingEvent` entity instance. Pass `nil` for no initial data.
+
+#### `ParallelV1(data = nil)`
+
+Create a new `ParallelV1` entity instance. Pass `nil` for no initial data.
+
+#### `PatchsetDiff(data = nil)`
+
+Create a new `PatchsetDiff` entity instance. Pass `nil` for no initial data.
 
 #### `PersonalAccessToken(data = nil)`
 
@@ -661,6 +1557,14 @@ Create a new `PreviewSecret` entity instance. Pass `nil` for no initial data.
 #### `PreviewSharingApproval(data = nil)`
 
 Create a new `PreviewSharingApproval` entity instance. Pass `nil` for no initial data.
+
+#### `ProactiveAgentWaitlistEntry(data = nil)`
+
+Create a new `ProactiveAgentWaitlistEntry` entity instance. Pass `nil` for no initial data.
+
+#### `Product(data = nil)`
+
+Create a new `Product` entity instance. Pass `nil` for no initial data.
 
 #### `ProductMapIdentityDecision(data = nil)`
 
@@ -758,6 +1662,14 @@ Create a new `ProjectSetting` entity instance. Pass `nil` for no initial data.
 
 Create a new `PullRequest` entity instance. Pass `nil` for no initial data.
 
+#### `PullRequestAction(data = nil)`
+
+Create a new `PullRequestAction` entity instance. Pass `nil` for no initial data.
+
+#### `PullRequestMagicMerge(data = nil)`
+
+Create a new `PullRequestMagicMerge` entity instance. Pass `nil` for no initial data.
+
 #### `PullRequestSetting(data = nil)`
 
 Create a new `PullRequestSetting` entity instance. Pass `nil` for no initial data.
@@ -769,6 +1681,14 @@ Create a new `PullRequestSettingAddRepository` entity instance. Pass `nil` for n
 #### `PullRequestSettingDetectComment(data = nil)`
 
 Create a new `PullRequestSettingDetectComment` entity instance. Pass `nil` for no initial data.
+
+#### `PullRequestTranscript(data = nil)`
+
+Create a new `PullRequestTranscript` entity instance. Pass `nil` for no initial data.
+
+#### `PullZone(data = nil)`
+
+Create a new `PullZone` entity instance. Pass `nil` for no initial data.
 
 #### `Recorder(data = nil)`
 
@@ -782,9 +1702,73 @@ Create a new `Registry` entity instance. Pass `nil` for no initial data.
 
 Create a new `RegistryV2` entity instance. Pass `nil` for no initial data.
 
+#### `RelayAgentConnection(data = nil)`
+
+Create a new `RelayAgentConnection` entity instance. Pass `nil` for no initial data.
+
 #### `RelayAgentLocalThread(data = nil)`
 
 Create a new `RelayAgentLocalThread` entity instance. Pass `nil` for no initial data.
+
+#### `RelaySignal(data = nil)`
+
+Create a new `RelaySignal` entity instance. Pass `nil` for no initial data.
+
+#### `ReleaseRollout(data = nil)`
+
+Create a new `ReleaseRollout` entity instance. Pass `nil` for no initial data.
+
+#### `Repo(data = nil)`
+
+Create a new `Repo` entity instance. Pass `nil` for no initial data.
+
+#### `RepoAccessToken(data = nil)`
+
+Create a new `RepoAccessToken` entity instance. Pass `nil` for no initial data.
+
+#### `RepoAction(data = nil)`
+
+Create a new `RepoAction` entity instance. Pass `nil` for no initial data.
+
+#### `RepoAgentCheckpoint(data = nil)`
+
+Create a new `RepoAgentCheckpoint` entity instance. Pass `nil` for no initial data.
+
+#### `RepoAgentSession(data = nil)`
+
+Create a new `RepoAgentSession` entity instance. Pass `nil` for no initial data.
+
+#### `RepoBookmarkProtection(data = nil)`
+
+Create a new `RepoBookmarkProtection` entity instance. Pass `nil` for no initial data.
+
+#### `RepoBookmarkProtectionEvent(data = nil)`
+
+Create a new `RepoBookmarkProtectionEvent` entity instance. Pass `nil` for no initial data.
+
+#### `RepoCloudWorkspaceBackup(data = nil)`
+
+Create a new `RepoCloudWorkspaceBackup` entity instance. Pass `nil` for no initial data.
+
+#### `RepoCodeRule(data = nil)`
+
+Create a new `RepoCodeRule` entity instance. Pass `nil` for no initial data.
+
+#### `RepoSetting(data = nil)`
+
+Create a new `RepoSetting` entity instance. Pass `nil` for no initial data.
+
+#### `RepoStat(data = nil)`
+
+Create a new `RepoStat` entity instance. Pass `nil` for no initial data.
+
+#### `RepoVc(data = nil)`
+
+Create a new `RepoVc` entity instance. Pass `nil` for no initial data.
+
+#### `RepoVcCommit(data = nil)`
+
+Create a new `RepoVcCommit` entity instance. Pass `nil` for no initial data.
 
 #### `ReportReplay(data = nil)`
 
@@ -793,6 +1777,66 @@ Create a new `ReportReplay` entity instance. Pass `nil` for no initial data.
 #### `ReportScenario(data = nil)`
 
 Create a new `ReportScenario` entity instance. Pass `nil` for no initial data.
+
+#### `RepositoryAccess(data = nil)`
+
+Create a new `RepositoryAccess` entity instance. Pass `nil` for no initial data.
+
+#### `RepositoryAccessResolve(data = nil)`
+
+Create a new `RepositoryAccessResolve` entity instance. Pass `nil` for no initial data.
+
+#### `RepositoryEvent(data = nil)`
+
+Create a new `RepositoryEvent` entity instance. Pass `nil` for no initial data.
+
+#### `RepositoryImport(data = nil)`
+
+Create a new `RepositoryImport` entity instance. Pass `nil` for no initial data.
+
+#### `RepositoryImportSession(data = nil)`
+
+Create a new `RepositoryImportSession` entity instance. Pass `nil` for no initial data.
+
+#### `RepositoryImportSessionRepository(data = nil)`
+
+Create a new `RepositoryImportSessionRepository` entity instance. Pass `nil` for no initial data.
+
+#### `RepositoryImportSessionSelection(data = nil)`
+
+Create a new `RepositoryImportSessionSelection` entity instance. Pass `nil` for no initial data.
+
+#### `RepositorySandboxEnvironment(data = nil)`
+
+Create a new `RepositorySandboxEnvironment` entity instance. Pass `nil` for no initial data.
+
+#### `RoderCodeRepair(data = nil)`
+
+Create a new `RoderCodeRepair` entity instance. Pass `nil` for no initial data.
+
+#### `RoderCodeRepairSetting(data = nil)`
+
+Create a new `RoderCodeRepairSetting` entity instance. Pass `nil` for no initial data.
+
+#### `RoderMachine(data = nil)`
+
+Create a new `RoderMachine` entity instance. Pass `nil` for no initial data.
+
+#### `RoderRun(data = nil)`
+
+Create a new `RoderRun` entity instance. Pass `nil` for no initial data.
+
+#### `RoderWorkspaceCredential(data = nil)`
+
+Create a new `RoderWorkspaceCredential` entity instance. Pass `nil` for no initial data.
+
+#### `RunArtifact(data = nil)`
+
+Create a new `RunArtifact` entity instance. Pass `nil` for no initial data.
+
+#### `RunJob(data = nil)`
+
+Create a new `RunJob` entity instance. Pass `nil` for no initial data.
 
 #### `RunScenarioRun(data = nil)`
 
@@ -810,6 +1854,30 @@ Create a new `RunSearch` entity instance. Pass `nil` for no initial data.
 
 Create a new `RunUpdate` entity instance. Pass `nil` for no initial data.
 
+#### `RunWorkspaceCredential(data = nil)`
+
+Create a new `RunWorkspaceCredential` entity instance. Pass `nil` for no initial data.
+
+#### `RunnerLease(data = nil)`
+
+Create a new `RunnerLease` entity instance. Pass `nil` for no initial data.
+
+#### `RunnerPoolNodeEnrollmentToken(data = nil)`
+
+Create a new `RunnerPoolNodeEnrollmentToken` entity instance. Pass `nil` for no initial data.
+
+#### `RunnerPoolRunner(data = nil)`
+
+Create a new `RunnerPoolRunner` entity instance. Pass `nil` for no initial data.
+
+#### `RuntimeInstanceHealthSnapshot(data = nil)`
+
+Create a new `RuntimeInstanceHealthSnapshot` entity instance. Pass `nil` for no initial data.
+
+#### `SandboxIntegration(data = nil)`
+
+Create a new `SandboxIntegration` entity instance. Pass `nil` for no initial data.
+
 #### `ScenarioRevision(data = nil)`
 
 Create a new `ScenarioRevision` entity instance. Pass `nil` for no initial data.
@@ -822,21 +1890,169 @@ Create a new `ScenarioRunLesson` entity instance. Pass `nil` for no initial data
 
 Create a new `ScenarioRunScenarioEdit` entity instance. Pass `nil` for no initial data.
 
+#### `SecretGrant(data = nil)`
+
+Create a new `SecretGrant` entity instance. Pass `nil` for no initial data.
+
+#### `SecretVersion(data = nil)`
+
+Create a new `SecretVersion` entity instance. Pass `nil` for no initial data.
+
 #### `ServiceEndpoint(data = nil)`
 
 Create a new `ServiceEndpoint` entity instance. Pass `nil` for no initial data.
+
+#### `Setting(data = nil)`
+
+Create a new `Setting` entity instance. Pass `nil` for no initial data.
+
+#### `SettingMutationLease(data = nil)`
+
+Create a new `SettingMutationLease` entity instance. Pass `nil` for no initial data.
+
+#### `Signal(data = nil)`
+
+Create a new `Signal` entity instance. Pass `nil` for no initial data.
+
+#### `SignalInbound(data = nil)`
+
+Create a new `SignalInbound` entity instance. Pass `nil` for no initial data.
+
+#### `SignalIntegration(data = nil)`
+
+Create a new `SignalIntegration` entity instance. Pass `nil` for no initial data.
+
+#### `SignalIntegrationDelivery(data = nil)`
+
+Create a new `SignalIntegrationDelivery` entity instance. Pass `nil` for no initial data.
+
+#### `SignalIntegrationTarget(data = nil)`
+
+Create a new `SignalIntegrationTarget` entity instance. Pass `nil` for no initial data.
+
+#### `SignalSubscription(data = nil)`
+
+Create a new `SignalSubscription` entity instance. Pass `nil` for no initial data.
+
+#### `Site(data = nil)`
+
+Create a new `Site` entity instance. Pass `nil` for no initial data.
+
+#### `SiteAccessKey(data = nil)`
+
+Create a new `SiteAccessKey` entity instance. Pass `nil` for no initial data.
 
 #### `SitePreview(data = nil)`
 
 Create a new `SitePreview` entity instance. Pass `nil` for no initial data.
 
+#### `SiteSecret(data = nil)`
+
+Create a new `SiteSecret` entity instance. Pass `nil` for no initial data.
+
 #### `SlackChannel(data = nil)`
 
 Create a new `SlackChannel` entity instance. Pass `nil` for no initial data.
 
+#### `SourceConnection(data = nil)`
+
+Create a new `SourceConnection` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceAlertRule(data = nil)`
+
+Create a new `SpaceAlertRule` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceAuditEvent(data = nil)`
+
+Create a new `SpaceAuditEvent` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceDnsRecord(data = nil)`
+
+Create a new `SpaceDnsRecord` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceEnrollmentToken(data = nil)`
+
+Create a new `SpaceEnrollmentToken` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceGateway(data = nil)`
+
+Create a new `SpaceGateway` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceGroup(data = nil)`
+
+Create a new `SpaceGroup` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceGroupMembership(data = nil)`
+
+Create a new `SpaceGroupMembership` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceLogStream(data = nil)`
+
+Create a new `SpaceLogStream` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceMetricSery(data = nil)`
+
+Create a new `SpaceMetricSery` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceOtelCollector(data = nil)`
+
+Create a new `SpaceOtelCollector` entity instance. Pass `nil` for no initial data.
+
+#### `SpacePeer(data = nil)`
+
+Create a new `SpacePeer` entity instance. Pass `nil` for no initial data.
+
+#### `SpacePeerAttachment(data = nil)`
+
+Create a new `SpacePeerAttachment` entity instance. Pass `nil` for no initial data.
+
+#### `SpacePolicy(data = nil)`
+
+Create a new `SpacePolicy` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceSegment(data = nil)`
+
+Create a new `SpaceSegment` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceTraceSpan(data = nil)`
+
+Create a new `SpaceTraceSpan` entity instance. Pass `nil` for no initial data.
+
+#### `Spark(data = nil)`
+
+Create a new `Spark` entity instance. Pass `nil` for no initial data.
+
+#### `SparkAgentIntegration(data = nil)`
+
+Create a new `SparkAgentIntegration` entity instance. Pass `nil` for no initial data.
+
 #### `SparkAgentLocalThread(data = nil)`
 
 Create a new `SparkAgentLocalThread` entity instance. Pass `nil` for no initial data.
+
+#### `SparkAgentSite(data = nil)`
+
+Create a new `SparkAgentSite` entity instance. Pass `nil` for no initial data.
+
+#### `SparkAgentSkill(data = nil)`
+
+Create a new `SparkAgentSkill` entity instance. Pass `nil` for no initial data.
+
+#### `SparkAgentThread(data = nil)`
+
+Create a new `SparkAgentThread` entity instance. Pass `nil` for no initial data.
+
+#### `SparkCredit(data = nil)`
+
+Create a new `SparkCredit` entity instance. Pass `nil` for no initial data.
+
+#### `SparkCreditAgentUsage(data = nil)`
+
+Create a new `SparkCreditAgentUsage` entity instance. Pass `nil` for no initial data.
+
+#### `SparkCreditUsageTotal(data = nil)`
+
+Create a new `SparkCreditUsageTotal` entity instance. Pass `nil` for no initial data.
 
 #### `StaticSite(data = nil)`
 
@@ -850,13 +2066,105 @@ Create a new `StaticSiteDeployment` entity instance. Pass `nil` for no initial d
 
 Create a new `StaticSiteDomain` entity instance. Pass `nil` for no initial data.
 
+#### `StatusChange(data = nil)`
+
+Create a new `StatusChange` entity instance. Pass `nil` for no initial data.
+
+#### `StatusCommit(data = nil)`
+
+Create a new `StatusCommit` entity instance. Pass `nil` for no initial data.
+
+#### `StatusPatchset(data = nil)`
+
+Create a new `StatusPatchset` entity instance. Pass `nil` for no initial data.
+
+#### `StripeWebhook(data = nil)`
+
+Create a new `StripeWebhook` entity instance. Pass `nil` for no initial data.
+
+#### `SubmitTelemetry(data = nil)`
+
+Create a new `SubmitTelemetry` entity instance. Pass `nil` for no initial data.
+
 #### `SubscriptionModel(data = nil)`
 
 Create a new `SubscriptionModel` entity instance. Pass `nil` for no initial data.
 
+#### `SwarmEvent(data = nil)`
+
+Create a new `SwarmEvent` entity instance. Pass `nil` for no initial data.
+
+#### `SwarmLive(data = nil)`
+
+Create a new `SwarmLive` entity instance. Pass `nil` for no initial data.
+
+#### `SwarmNote(data = nil)`
+
+Create a new `SwarmNote` entity instance. Pass `nil` for no initial data.
+
+#### `SwarmTask(data = nil)`
+
+Create a new `SwarmTask` entity instance. Pass `nil` for no initial data.
+
+#### `TaskLease(data = nil)`
+
+Create a new `TaskLease` entity instance. Pass `nil` for no initial data.
+
 #### `ThreadPreview(data = nil)`
 
 Create a new `ThreadPreview` entity instance. Pass `nil` for no initial data.
+
+#### `ThreadPreviewAccess(data = nil)`
+
+Create a new `ThreadPreviewAccess` entity instance. Pass `nil` for no initial data.
+
+#### `ToolFeedback(data = nil)`
+
+Create a new `ToolFeedback` entity instance. Pass `nil` for no initial data.
+
+#### `Transcript(data = nil)`
+
+Create a new `Transcript` entity instance. Pass `nil` for no initial data.
+
+#### `V1Message(data = nil)`
+
+Create a new `V1Message` entity instance. Pass `nil` for no initial data.
+
+#### `VcBranch(data = nil)`
+
+Create a new `VcBranch` entity instance. Pass `nil` for no initial data.
+
+#### `VcBrowser(data = nil)`
+
+Create a new `VcBrowser` entity instance. Pass `nil` for no initial data.
+
+#### `VcChange(data = nil)`
+
+Create a new `VcChange` entity instance. Pass `nil` for no initial data.
+
+#### `VcChangeGroup(data = nil)`
+
+Create a new `VcChangeGroup` entity instance. Pass `nil` for no initial data.
+
+#### `VcFile(data = nil)`
+
+Create a new `VcFile` entity instance. Pass `nil` for no initial data.
+
+#### `VcMergeQueue(data = nil)`
+
+Create a new `VcMergeQueue` entity instance. Pass `nil` for no initial data.
+
+#### `VcStack(data = nil)`
+
+Create a new `VcStack` entity instance. Pass `nil` for no initial data.
+
+#### `VcsNode(data = nil)`
+
+Create a new `VcsNode` entity instance. Pass `nil` for no initial data.
+
+#### `VcsSetting(data = nil)`
+
+Create a new `VcsSetting` entity instance. Pass `nil` for no initial data.
 
 #### `VerificationProjectCredential(data = nil)`
 
@@ -882,6 +2190,14 @@ Create a new `VerifyAppDomain` entity instance. Pass `nil` for no initial data.
 
 Create a new `VerifyBrowserSession` entity instance. Pass `nil` for no initial data.
 
+#### `VerifyEmailVerification(data = nil)`
+
+Create a new `VerifyEmailVerification` entity instance. Pass `nil` for no initial data.
+
+#### `VerifySignalIntegration(data = nil)`
+
+Create a new `VerifySignalIntegration` entity instance. Pass `nil` for no initial data.
+
 #### `VerifyStaticSiteDomain(data = nil)`
 
 Create a new `VerifyStaticSiteDomain` entity instance. Pass `nil` for no initial data.
@@ -890,9 +2206,17 @@ Create a new `VerifyStaticSiteDomain` entity instance. Pass `nil` for no initial
 
 Create a new `VersionLog` entity instance. Pass `nil` for no initial data.
 
+#### `WaitlistApplication(data = nil)`
+
+Create a new `WaitlistApplication` entity instance. Pass `nil` for no initial data.
+
 #### `WebBotAuth(data = nil)`
 
 Create a new `WebBotAuth` entity instance. Pass `nil` for no initial data.
+
+#### `WebhookGitlab(data = nil)`
+
+Create a new `WebhookGitlab` entity instance. Pass `nil` for no initial data.
 
 #### `WorkflowRunStep(data = nil)`
 
@@ -905,6 +2229,22 @@ Create a new `WorkflowRunStopNotice` entity instance. Pass `nil` for no initial 
 #### `WorkflowTriggerSkipped(data = nil)`
 
 Create a new `WorkflowTriggerSkipped` entity instance. Pass `nil` for no initial data.
+
+#### `WorkspaceActivity(data = nil)`
+
+Create a new `WorkspaceActivity` entity instance. Pass `nil` for no initial data.
+
+#### `WorkspaceActivityNotification(data = nil)`
+
+Create a new `WorkspaceActivityNotification` entity instance. Pass `nil` for no initial data.
+
+#### `WorkspaceSpace(data = nil)`
+
+Create a new `WorkspaceSpace` entity instance. Pass `nil` for no initial data.
+
+#### `WorkspaceSpacePreference(data = nil)`
+
+Create a new `WorkspaceSpacePreference` entity instance. Pass `nil` for no initial data.
 
 #### `options_map -> Hash`
 
@@ -940,6 +2280,159 @@ Prepare a fetch definition without sending the request. Accepts the
 same parameters as `direct()`. Raises on error.
 
 **Returns:** `Hash` (the fetch definition; raises on error)
+
+
+---
+
+## A2aWellKnownEntity
+
+```ruby
+a2a_well_known = client.A2aWellKnown
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `A2aWellKnownEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AdminOrgEntity
+
+```ruby
+admin_org = client.AdminOrg
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `billing_email` | `Object` | Yes |  |
+| `billing_reason` | `String` | No | Required when setting an agreed price |
+| `customize_onboarding_packages` | `Boolean` | No |  |
+| `deployment_usage_visibility` | `String` | Yes |  |
+| `deployment_usage_visible` | `Boolean` | Yes |  |
+| `id` | `String` | Yes |  |
+| `monthly_price_dollars` | `Object` | No | Ongoing USD workspace price, for example '50.00' |
+| `monthly_price_override_cents` | `Object` | Yes |  |
+| `name` | `String` | Yes |  |
+| `onboarding_custom_pricing` | `Boolean` | No |  |
+| `onboarding_package_keys` | `Object` | No | Package keys offered when customizing onboarding. |
+| `owner_email` | `String` | Yes |  |
+| `package_id` | `Object` | Yes | Active customer package public ID. |
+| `skip_payment` | `Boolean` | No | Grant the selected package as an ongoing complimentary subscription with monthly included usage and package limits. |
+| `slug` | `String` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update |
+| --- | --- | --- | --- | --- |
+| `billing_email` | - | - | - | - |
+| `billing_reason` | - | - | - | - |
+| `customize_onboarding_packages` | - | - | - | - |
+| `deployment_usage_visibility` | - | - | - | - |
+| `deployment_usage_visible` | - | - | - | - |
+| `id` | - | - | - | - |
+| `monthly_price_dollars` | - | - | - | - |
+| `monthly_price_override_cents` | - | - | - | - |
+| `name` | - | - | - | - |
+| `onboarding_custom_pricing` | - | - | - | - |
+| `onboarding_package_keys` | - | - | - | - |
+| `owner_email` | - | - | - | - |
+| `package_id` | - | - | Yes | - |
+| `skip_payment` | - | - | - | - |
+| `slug` | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.AdminOrg.create({
+  "name" => "example_name", # String
+  "owner_email" => "example_owner_email", # String
+  "slug" => "example_slug", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.AdminOrg.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.AdminOrg.load({ "id" => "admin_org_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AdminOrgEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
 
 
 ---
@@ -1107,6 +2600,154 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `AgentEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AgentAppEntity
+
+```ruby
+agent_app = client.AgentApp
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `author` | `Hash` | Yes |  |
+| `can_message` | `Boolean` | Yes | The viewer may send input to the author agent |
+| `deployments_count` | `Integer` | Yes | Increases with every deploy of the site |
+| `description` | `String` | Yes |  |
+| `hidden_install_count` | `Integer` | Yes | Installs by agents the viewer cannot open |
+| `id` | `String` | Yes |  |
+| `install_count` | `Integer` | Yes |  |
+| `install_targets` | `Array` | Yes | Active agents the viewer owns or manages, which they can install apps on |
+| `installed_by` | `Array` | Yes |  |
+| `installed_target_ids` | `Array` | Yes | Install targets of the viewer that have this app installed |
+| `items` | `Array` | Yes |  |
+| `mcp_url` | `Object` | Yes |  |
+| `next_cursor` | `Object` | Yes | Pass as cursor to load older apps |
+| `owner` | `Hash` | Yes | The person who controls the author agent |
+| `thread` | `Object` | Yes | The thread that published the app, when the viewer can open the author agent |
+| `title` | `String` | Yes |  |
+| `url` | `String` | Yes |  |
+| `visibility` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.AgentApp.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.AgentApp.load({ "id" => "agent_app_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentAppEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AgentAppInstallEntity
+
+```ruby
+agent_app_install = client.AgentAppInstall
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+| `installed` | `Boolean` | Yes |  |
+
+### Operations
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.AgentAppInstall.remove({ "id" => "agent_app_install_id", "agent_app_id" => "agent_app_id", "organization_id" => "organization_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.AgentAppInstall.update({
+  "id" => "agent_app_install_id",
+  "agent_app_id" => "agent_app_id",
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentAppInstallEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -1424,49 +3065,48 @@ agent_connection = client.AgentConnection
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `agent_card_url` | `String` | Yes |  |
-| `auth_scheme` | `String` | Yes |  |
-| `can_configure` | `Boolean` | Yes |  |
-| `can_disconnect` | `Boolean` | Yes |  |
-| `can_setup` | `Boolean` | Yes |  |
+| `actions` | `Array` | Yes |  |
+| `activity` | `Array` | Yes |  |
+| `admin_disabled_at` | `Object` | No |  |
+| `agent_tools` | `Boolean` | No |  |
+| `authentication` | `String` | Yes |  |
+| `authorized_at` | `Object` | Yes |  |
+| `can_create_account` | `Boolean` | No | Whether another account can be created directly from this provider. |
+| `capabilities` | `Hash` | Yes |  |
+| `catalog_section` | `String` | No | Server-owned grouping in the agent integration catalog. |
+| `category` | `String` | No | Short product label, such as CRM or Email. |
+| `certification` | `String` | Yes |  |
+| `checked_at` | `Object` | Yes |  |
 | `connection` | `Hash` | Yes |  |
-| `credential` | `Object` | No | Write-only outbound key. |
-| `error_code` | `Object` | Yes |  |
-| `expected_generation` | `Integer` | Yes |  |
+| `consent` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `creation_key` | `String` | No | Reuse the same key to recover the account after an interrupted response. |
+| `custodian_id` | `Object` | Yes |  |
+| `description` | `String` | No | One-line catalog description of the app. |
+| `disabled_reason` | `Object` | No |  |
+| `failure_code` | `Object` | Yes |  |
 | `generation` | `Integer` | Yes |  |
+| `grants` | `Array` | Yes |  |
+| `grants_pagination` | `Hash` | Yes |  |
 | `id` | `String` | Yes |  |
+| `limits` | `Hash` | Yes |  |
 | `name` | `String` | Yes |  |
-| `remote_agent` | `Object` | Yes |  |
-| `requester_id` | `String` | Yes |  |
-| `retired_at` | `Object` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `owner_name` | `String` | No |  |
+| `ownership_kind` | `String` | Yes |  |
+| `pagination` | `Hash` | Yes |  |
+| `policy_digest` | `String` | Yes |  |
+| `provider` | `Hash` | Yes |  |
+| `provider_disabled_reason` | `Object` | No |  |
+| `provider_identity` | `Hash` | Yes |  |
 | `revoked_at` | `Object` | Yes |  |
-| `scope_key` | `String` | Yes |  |
-| `source_operation_id` | `Object` | Yes |  |
-| `state` | `String` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `agent_card_url` | - | - | - | - | - |
-| `auth_scheme` | - | - | - | - | - |
-| `can_configure` | - | - | - | - | - |
-| `can_disconnect` | - | - | - | - | - |
-| `can_setup` | - | - | - | - | - |
-| `connection` | - | - | - | - | - |
-| `credential` | - | - | - | - | - |
-| `error_code` | - | - | - | - | - |
-| `expected_generation` | - | - | - | - | - |
-| `generation` | - | - | - | - | - |
-| `id` | - | - | - | - | - |
-| `name` | - | - | - | - | - |
-| `remote_agent` | - | - | Yes | Yes | - |
-| `requester_id` | - | - | - | - | - |
-| `retired_at` | - | - | - | - | - |
-| `revoked_at` | - | - | - | - | - |
-| `scope_key` | - | - | - | - | - |
-| `source_operation_id` | - | - | Yes | - | - |
-| `state` | - | - | - | - | - |
+| `schema_version` | `Integer` | Yes |  |
+| `status` | `String` | Yes |  |
+| `toolkit` | `String` | Yes |  |
+| `triggers` | `Array` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `user_id` | `String` | Yes |  |
+| `version` | `String` | Yes |  |
 
 ### Operations
 
@@ -1476,11 +3116,9 @@ Create a new entity with the given data. Returns the created entity and raises o
 
 ```ruby
 result = client.AgentConnection.create({
-  "agent_id" => "example_agent_id", # String
   "organization_id" => "example_organization_id", # String
-  "agent_card_url" => "example_agent_card_url", # String
-  "auth_scheme" => "example_auth_scheme", # String
   "name" => "example_name", # String
+  "toolkit" => "example_toolkit", # String
 })
 ```
 
@@ -1489,7 +3127,7 @@ result = client.AgentConnection.create({
 List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
-results = client.AgentConnection.list({ "agent_id" => "example", "organization_id" => "example" })
+results = client.AgentConnection.list({ "organization_id" => "example" })
 results.each { |item| puts item.data_get }
 ```
 
@@ -1498,7 +3136,19 @@ results.each { |item| puts item.data_get }
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-result = client.AgentConnection.load({ "id" => "agent_connection_id", "agent_id" => "agent_id", "organization_id" => "organization_id" })
+result = client.AgentConnection.load({ "id" => "agent_connection_id", "organization_id" => "organization_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.AgentConnection.patch({
+  "id" => "agent_connection_id",
+  "organization_id" => "organization_id",
+  # Only the fields to change
+})
 ```
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -1506,7 +3156,7 @@ result = client.AgentConnection.load({ "id" => "agent_connection_id", "agent_id"
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```ruby
-result = client.AgentConnection.remove({ "id" => "agent_connection_id", "agent_id" => "agent_id", "organization_id" => "organization_id" })
+result = client.AgentConnection.remove({ "id" => "agent_connection_id", "organization_id" => "organization_id" })
 ```
 
 #### `update(reqdata, ctrl = nil) -> result`
@@ -1516,7 +3166,6 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```ruby
 result = client.AgentConnection.update({
   "id" => "agent_connection_id",
-  "agent_id" => "agent_id",
   "organization_id" => "organization_id",
   # Fields to update
 })
@@ -1543,6 +3192,433 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `AgentConnectionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionDelegationEntity
+
+```ruby
+agent_connection_delegation = client.AgentConnectionDelegation
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `authorized_by_id` | `String` | Yes |  |
+| `automation_connection_grant_id` | `String` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `member_name` | `String` | Yes |  |
+| `revoked_at` | `Object` | Yes |  |
+| `roles` | `Array` | Yes |  |
+| `usable` | `Boolean` | Yes |  |
+| `user_id` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.AgentConnectionDelegation.list({ "agent_connection_id" => "example", "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentConnectionDelegationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionGrantEntity
+
+```ruby
+agent_connection_grant = client.AgentConnectionGrant
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `actions` | `Array` | Yes |  |
+| `agent_connection_id` | `String` | Yes |  |
+| `automation_id` | `String` | Yes |  |
+| `connection_generation` | `Integer` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `revision` | `Integer` | Yes |  |
+| `revoked_at` | `Object` | Yes |  |
+| `status` | `String` | Yes |  |
+| `usable` | `Boolean` | Yes |  |
+| `user_id` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.AgentConnectionGrant.list({ "agent_connection_id" => "example", "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentConnectionGrantEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionResourceEntity
+
+```ruby
+agent_connection_resource = client.AgentConnectionResource
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cursor` | `Object` | No |  |
+| `next_cursor` | `Object` | Yes |  |
+| `query` | `String` | No |  |
+| `resources` | `Array` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.AgentConnectionResource.create({
+  "agent_connection_id" => "example_agent_connection_id", # String
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentConnectionResourceEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionSafetyControlEntity
+
+```ruby
+agent_connection_safety_control = client.AgentConnectionSafetyControl
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `admin_disabled_at` | `Object` | No |  |
+| `authorized_at` | `Object` | Yes |  |
+| `checked_at` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `custodian_id` | `Object` | Yes |  |
+| `failure_code` | `Object` | Yes |  |
+| `generation` | `Integer` | Yes |  |
+| `id` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `owner_name` | `String` | No |  |
+| `ownership_kind` | `String` | Yes |  |
+| `provider_disabled_reason` | `Object` | No |  |
+| `provider_identity` | `Hash` | Yes |  |
+| `revoked_at` | `Object` | Yes |  |
+| `status` | `String` | Yes |  |
+| `toolkit` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `user_id` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.AgentConnectionSafetyControl.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentConnectionSafetyControlEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionTriggerSubscriptionEntity
+
+```ruby
+agent_connection_trigger_subscription = client.AgentConnectionTriggerSubscription
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_connection_id` | `String` | Yes |  |
+| `configuration` | `Hash` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `defaults` | `Hash` | Yes |  |
+| `delivery` | `String` | Yes |  |
+| `enabled` | `Boolean` | Yes |  |
+| `failure_code` | `Object` | Yes |  |
+| `failure_request_id` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `latency` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
+| `reconcile_at` | `String` | Yes |  |
+| `reconciliation_uncertain` | `Boolean` | Yes |  |
+| `remote_enabled` | `Object` | Yes |  |
+| `replacement_id` | `Object` | Yes |  |
+| `retired_at` | `Object` | Yes |  |
+| `retirement_completed_at` | `Object` | Yes |  |
+| `schema` | `Hash` | Yes |  |
+| `slug` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `toolkit` | `String` | Yes |  |
+| `toolkit_version` | `String` | Yes |  |
+| `trigger_slug` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `version` | `String` | Yes |  |
+| `waiting_for_retirement` | `Boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.AgentConnectionTriggerSubscription.create({
+  "agent_connection_id" => "example_agent_connection_id", # String
+  "organization_id" => "example_organization_id", # String
+  "configuration" => {}, # Hash
+  "trigger_slug" => "example_trigger_slug", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.AgentConnectionTriggerSubscription.list({ "agent_connection_id" => "example", "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.AgentConnectionTriggerSubscription.patch({
+  "id" => "agent_connection_trigger_subscription_id",
+  "agent_connection_id" => "agent_connection_id",
+  "organization_id" => "organization_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.AgentConnectionTriggerSubscription.remove({ "id" => "agent_connection_trigger_subscription_id", "agent_connection_id" => "agent_connection_id", "organization_id" => "organization_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.AgentConnectionTriggerSubscription.update({
+  "id" => "agent_connection_trigger_subscription_id",
+  "agent_connection_id" => "agent_connection_id",
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentConnectionTriggerSubscriptionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AgentContextCheckpointEntity
+
+```ruby
+agent_context_checkpoint = client.AgentContextCheckpoint
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentContextCheckpointEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -1736,6 +3812,53 @@ Return the entity name.
 
 ---
 
+## AgentEventEntity
+
+```ruby
+agent_event = client.AgentEvent
+```
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.AgentEvent.list({ "agent_id" => "example", "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentEventEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## AgentFileEntity
 
 ```ruby
@@ -1870,28 +3993,35 @@ agent_integration = client.AgentIntegration
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `account_counts` | `Hash` | Yes | Accounts the viewer can see per toolkit, across all account pages. |
-| `accounts_path` | `String` | Yes | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
-| `added_toolkits` | `Array` | Yes | Apps with a connected or connecting account the viewer can see. |
+| `can_cancel_sign_in` | `Boolean` | No | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `Boolean` | Yes |  |
+| `can_disconnect` | `Boolean` | Yes |  |
+| `can_enable` | `Boolean` | Yes |  |
 | `can_manage` | `Boolean` | Yes |  |
-| `can_manage_organization` | `Boolean` | Yes |  |
+| `can_manage_sharing` | `Boolean` | Yes |  |
+| `can_reconnect` | `Boolean` | Yes |  |
+| `can_sync` | `Boolean` | Yes | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
 | `catalog` | `Array` | Yes |  |
-| `connect_as` | `Object` | Yes | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
-| `connect_as_by_toolkit` | `Hash` | Yes | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_by` | `Object` | Yes | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `Boolean` | Yes | True when the viewer is the person whose sign-in this account is. |
 | `connected_counts` | `Hash` | Yes | Signed-in accounts per toolkit, across all account pages. |
-| `connection_id` | `String` | Yes |  |
 | `connections` | `Array` | Yes |  |
-| `email` | `Hash` | Yes | A native agent's own email address. |
-| `enabled` | `Boolean` | Yes |  |
-| `enabled_toolkits` | `Array` | Yes | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `creation_key` | `String` | No | Stable identity for retrying this creation; retain it after an uncertain response. |
+| `creation_key_digest` | `Object` | No | SHA-256 of the unfinished setup key for its original creator. |
 | `generation` | `Integer` | Yes |  |
+| `id` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
 | `pagination` | `Hash` | Yes |  |
 | `pending_counts` | `Hash` | Yes | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
-| `personal_creation_key_supported` | `Boolean` | No | The personal account creation endpoint honors a creation key. |
-| `private_agent` | `Boolean` | Yes | Only the agent's owner can chat with it. |
-| `shared_agent_personal_accounts_enabled` | `Boolean` | Yes | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
-| `slack` | `Hash` | Yes |  |
-| `webhook_connections` | `Array` | Yes |  |
-| `webhooks_available` | `Boolean` | Yes |  |
+| `provider_disabled_reason` | `Object` | Yes |  |
+| `provider_identity` | `Hash` | Yes |  |
+| `provider_name` | `Object` | Yes | The app's display name; null for a custom MCP server, which uses the account name. |
+| `reference` | `String` | Yes | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `String` | No | Agent account audience, including legacy personal and paused access. |
+| `status` | `String` | Yes |  |
+| `team_sharing_enabled` | `Boolean` | Yes |  |
+| `team_sharing_version` | `Integer` | Yes |  |
+| `toolkit` | `String` | Yes |  |
 
 ### Operations
 
@@ -1901,11 +4031,9 @@ Create a new entity with the given data. Returns the created entity and raises o
 
 ```ruby
 result = client.AgentIntegration.create({
-  "agent_id" => "example_agent_id", # String
   "organization_id" => "example_organization_id", # String
-  "connection_id" => "example_connection_id", # String
-  "enabled" => true, # Boolean
-  "generation" => 1, # Integer
+  "name" => "example_name", # String
+  "toolkit" => "example_toolkit", # String
 })
 ```
 
@@ -1914,8 +4042,24 @@ result = client.AgentIntegration.create({
 List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
-results = client.AgentIntegration.list({ "agent_id" => "example", "organization_id" => "example" })
+results = client.AgentIntegration.list({ "organization_id" => "example" })
 results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.AgentIntegration.load({ "id" => "agent_integration_id", "organization_id" => "organization_id" })
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.AgentIntegration.remove({ "id" => "agent_integration_id", "organization_id" => "organization_id" })
 ```
 
 ### Common Methods
@@ -1939,6 +4083,125 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `AgentIntegrationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AgentIntegrationAccountEntity
+
+```ruby
+agent_integration_account = client.AgentIntegrationAccount
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_cancel_sign_in` | `Boolean` | No | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `Boolean` | Yes |  |
+| `can_disconnect` | `Boolean` | Yes |  |
+| `can_enable` | `Boolean` | Yes |  |
+| `can_manage_sharing` | `Boolean` | Yes |  |
+| `can_reconnect` | `Boolean` | Yes |  |
+| `can_sync` | `Boolean` | Yes | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
+| `connected_by` | `Object` | Yes | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `Boolean` | Yes | True when the viewer is the person whose sign-in this account is. |
+| `creation_key_digest` | `Object` | No | SHA-256 of the unfinished setup key for its original creator. |
+| `generation` | `Integer` | Yes |  |
+| `id` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
+| `provider_disabled_reason` | `Object` | Yes |  |
+| `provider_identity` | `Hash` | Yes |  |
+| `reference` | `String` | Yes | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `String` | No | Agent account audience, including legacy personal and paused access. |
+| `status` | `String` | Yes |  |
+| `team_sharing_enabled` | `Boolean` | Yes |  |
+| `team_sharing_version` | `Integer` | Yes |  |
+| `toolkit` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.AgentIntegrationAccount.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentIntegrationAccountEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AgentIntegrationCallbackEntity
+
+```ruby
+agent_integration_callback = client.AgentIntegrationCallback
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.AgentIntegrationCallback.load({ "connection_id" => "connection_id", "state" => "state" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentIntegrationCallbackEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -2742,6 +5005,164 @@ Return the entity name.
 
 ---
 
+## AgentRelayFileGrantEntity
+
+```ruby
+agent_relay_file_grant = client.AgentRelayFileGrant
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access_mode` | `String` | Yes |  |
+| `connection_generation` | `Integer` | Yes |  |
+| `connection_id` | `String` | Yes |  |
+| `connection_name` | `String` | Yes | Current display name of the selected account. |
+| `created_at` | `String` | Yes |  |
+| `expected_generation` | `Integer` | Yes |  |
+| `id` | `String` | Yes |  |
+| `key` | `String` | Yes |  |
+| `provider` | `String` | Yes |  |
+| `resource_id` | `String` | Yes |  |
+| `resource_kind` | `String` | Yes |  |
+| `revoked` | `Boolean` | Yes |  |
+| `revoked_at` | `Object` | Yes |  |
+| `snapshot_supported` | `Boolean` | No | Whether this selected permission supports snapshot controls. |
+| `source_operation_id` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.AgentRelayFileGrant.create({
+  "organization_id" => "example_organization_id", # String
+  "access_mode" => "example_access_mode", # String
+  "connection_id" => "example_connection_id", # String
+  "expected_generation" => 1, # Integer
+  "key" => "example_key", # String
+  "resource_id" => "example_resource_id", # String
+  "resource_kind" => "example_resource_kind", # String
+  "source_operation_id" => "example_source_operation_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.AgentRelayFileGrant.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.AgentRelayFileGrant.load({ "id" => "agent_relay_file_grant_id", "organization_id" => "organization_id" })
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.AgentRelayFileGrant.remove({ "id" => "agent_relay_file_grant_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentRelayFileGrantEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AgentRelayFileGrantAccountEntity
+
+```ruby
+agent_relay_file_grant_account = client.AgentRelayFileGrantAccount
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access_modes` | `Array` | No | Supported file access modes. |
+| `generation` | `Integer` | Yes |  |
+| `id` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
+| `provider` | `String` | Yes |  |
+| `resource_kind` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.AgentRelayFileGrantAccount.list({ "organization_id" => "example", "source_operation_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentRelayFileGrantAccountEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## AgentRepositoryEntity
 
 ```ruby
@@ -2860,6 +5281,52 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `AgentResourceEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AgentRoderEntity
+
+```ruby
+agent_roder = client.AgentRoder
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentRoderEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -3064,6 +5531,184 @@ Return the entity name.
 
 ---
 
+## AgentSessionEntity
+
+```ruby
+agent_session = client.AgentSession
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentSessionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AgentSessionCheckpointEntity
+
+```ruby
+agent_session_checkpoint = client.AgentSessionCheckpoint
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.AgentSessionCheckpoint.create({
+  "agent_session_id" => "example_agent_session_id", # String
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.AgentSessionCheckpoint.list({ "agent_session_id" => "example", "organization_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.AgentSessionCheckpoint.load({ "id" => "agent_session_checkpoint_id", "agent_session_id" => "agent_session_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentSessionCheckpointEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AgentSessionRoderHandoffEntity
+
+```ruby
+agent_session_roder_handoff = client.AgentSessionRoderHandoff
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `checkpoint_id` | `String` | No | Public id of the checkpoint to hand off. |
+| `purpose` | `String` | No | Handoff intent; defaults to `continue`. |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.AgentSessionRoderHandoff.create({
+  "agent_session_id" => "example_agent_session_id", # String
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentSessionRoderHandoffEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## AgentSettingEntity
 
 ```ruby
@@ -3184,24 +5829,40 @@ agent_site = client.AgentSite
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `deployed_at` | `String` | Yes |  |
-| `deployments_count` | `Integer` | Yes |  |
-| `hostname` | `String` | Yes |  |
-| `https` | `String` | Yes | Whether the organization's certificate serves this site over HTTPS |
+| `author` | `Hash` | Yes |  |
+| `can_message` | `Boolean` | Yes | The viewer may send input to the author agent |
+| `deployments_count` | `Integer` | Yes | Increases with every deploy of the site |
+| `description` | `Object` | Yes | The team app description, when the site is a team app |
+| `icon_url` | `Object` | Yes | Path of the site's generated icon, versioned by the picture; null until one is generated |
 | `id` | `String` | Yes |  |
-| `name` | `String` | Yes |  |
+| `name` | `String` | Yes | The site's DNS label |
+| `owner` | `Hash` | Yes | The person who controls the author agent |
+| `thread` | `Object` | Yes | The thread that published the site as a team app, when the viewer can open the author agent |
+| `title` | `String` | Yes | The team app title, or the site name read as words |
 | `url` | `String` | Yes |  |
 | `visibility` | `String` | Yes |  |
 
 ### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
 List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
-results = client.AgentSite.list({ "agent_id" => "example", "organization_id" => "example" })
+results = client.AgentSite.list({ "organization_id" => "example" })
 results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.AgentSite.load({ "id" => "agent_site_id", "organization_id" => "organization_id" })
 ```
 
 ### Common Methods
@@ -3244,15 +5905,19 @@ agent_skill = client.AgentSkill
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `available` | `Boolean` | Yes |  |
-| `can_configure` | `Boolean` | Yes |  |
-| `can_manage` | `Boolean` | Yes |  |
-| `configuration_state` | `String` | No | The requested managed skill selection is awaiting runtime qualification. |
-| `description` | `String` | Yes |  |
-| `enabled` | `Boolean` | Yes |  |
-| `name` | `String` | Yes |  |
+| `agents` | `Array` | Yes | Active V2 agents the viewer can see whose owner is still a member |
+| `audience` | `Hash` | Yes |  |
+| `can_manage_library` | `Boolean` | Yes |  |
+| `content` | `String` | Yes | The skill's SKILL.md |
+| `files` | `Array` | Yes |  |
+| `id` | `String` | No |  |
+| `marketplace` | `String` | No |  |
+| `pending` | `Boolean` | Yes | Some agent is still applying a change; check again shortly |
+| `plugin` | `String` | No | The marketplace entry id |
+| `revision` | `String` | Yes | The commit SHA returned by preview |
+| `skill` | `Hash` | Yes |  |
 | `skills` | `Array` | Yes |  |
-| `version` | `String` | Yes |  |
+| `source` | `String` | No | owner/repo, a GitHub or skills.sh link, or npx skills add owner/repo [--skill NAME ...] |
 
 ### Operations
 
@@ -3262,11 +5927,10 @@ Create a new entity with the given data. Returns the created entity and raises o
 
 ```ruby
 result = client.AgentSkill.create({
-  "agent_id" => "example_agent_id", # String
   "organization_id" => "example_organization_id", # String
-  "enabled" => true, # Boolean
-  "name" => "example_name", # String
-  "version" => "example_version", # String
+  "audience" => {}, # Hash
+  "revision" => "example_revision", # String
+  "skills" => [], # Array
 })
 ```
 
@@ -3275,9 +5939,29 @@ result = client.AgentSkill.create({
 List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
-results = client.AgentSkill.list({ "agent_id" => "example", "organization_id" => "example" })
+results = client.AgentSkill.list({ "organization_id" => "example" })
 results.each { |item| puts item.data_get }
 ```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.AgentSkill.load({ "id" => "agent_skill_id", "organization_id" => "organization_id" })
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.AgentSkill.remove({ "id" => "agent_skill_id", "organization_id" => "organization_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
 
 ### Common Methods
 
@@ -3473,6 +6157,182 @@ Return the entity name.
 
 ---
 
+## AgentSwarmEntity
+
+```ruby
+agent_swarm = client.AgentSwarm
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `base_bookmark` | `Object` | Yes | An existing bookmark to start from and land on; the plain form of `target.kind = bookmark`. |
+| `base_ref` | `Object` | Yes |  |
+| `base_revision` | `Object` | Yes | 64-hex commit id; skips the head lookup |
+| `budget` | `Hash` | Yes |  |
+| `canceled_at` | `Object` | Yes |  |
+| `canceled_count` | `Integer` | Yes |  |
+| `concurrency_key` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `creator_user_id` | `Object` | Yes |  |
+| `deadline_at` | `Object` | Yes |  |
+| `display_id` | `Integer` | Yes |  |
+| `done_count` | `Integer` | Yes |  |
+| `environment` | `Hash` | Yes |  |
+| `failed_count` | `Integer` | Yes |  |
+| `finished_at` | `Object` | Yes |  |
+| `finished_at_label` | `Object` | Yes |  |
+| `github` | `Hash` | Yes |  |
+| `goal` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `model` | `Object` | Yes |  |
+| `model_provider` | `Object` | Yes |  |
+| `number` | `Integer` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `organization_slug` | `Object` | Yes |  |
+| `outcome` | `Object` | Yes |  |
+| `phase` | `Object` | Yes |  |
+| `policy` | `Hash` | Yes | Every key is optional and defaults to AgentSwarm::POLICY_DEFAULTS. |
+| `queued_at` | `Object` | Yes |  |
+| `queued_at_label` | `Object` | Yes |  |
+| `repository` | `String` | No | Repository slug inside the organization |
+| `repository_id` | `Object` | Yes |  |
+| `repository_slug` | `Object` | Yes |  |
+| `reserved` | `Hash` | Yes |  |
+| `scheduler_generation` | `Integer` | Yes |  |
+| `skipped_count` | `Integer` | Yes |  |
+| `slug` | `String` | Yes |  |
+| `started_at` | `Object` | Yes |  |
+| `started_at_label` | `Object` | Yes |  |
+| `status` | `String` | Yes |  |
+| `summary` | `Hash` | Yes |  |
+| `target` | `Hash` | Yes | Where the swarm lands. |
+| `task_count` | `Integer` | Yes |  |
+| `task_template_json` | `Object` | Yes |  |
+| `tasks` | `Array` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+| `usage` | `Hash` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update |
+| --- | --- | --- | --- | --- |
+| `base_bookmark` | - | - | Yes | - |
+| `base_ref` | - | - | Yes | - |
+| `base_revision` | - | - | Yes | - |
+| `budget` | - | - | Yes | - |
+| `canceled_at` | - | - | - | - |
+| `canceled_count` | - | - | - | - |
+| `concurrency_key` | - | - | Yes | - |
+| `created_at` | - | - | - | - |
+| `created_at_label` | - | - | - | - |
+| `creator_user_id` | - | - | - | - |
+| `deadline_at` | - | - | - | - |
+| `display_id` | - | - | - | - |
+| `done_count` | - | - | - | - |
+| `environment` | - | - | Yes | - |
+| `failed_count` | - | - | - | - |
+| `finished_at` | - | - | - | - |
+| `finished_at_label` | - | - | - | - |
+| `github` | - | - | - | - |
+| `goal` | - | - | Yes | - |
+| `id` | - | - | - | - |
+| `model` | - | - | Yes | - |
+| `model_provider` | - | - | Yes | - |
+| `number` | - | - | - | - |
+| `organization_id` | - | - | - | - |
+| `organization_slug` | - | - | - | - |
+| `outcome` | - | - | - | - |
+| `phase` | - | - | - | - |
+| `policy` | - | - | Yes | - |
+| `queued_at` | - | - | Yes | - |
+| `queued_at_label` | - | - | - | - |
+| `repository` | - | - | - | - |
+| `repository_id` | - | - | - | - |
+| `repository_slug` | - | - | - | - |
+| `reserved` | - | - | - | - |
+| `scheduler_generation` | - | - | - | - |
+| `skipped_count` | - | - | - | - |
+| `slug` | - | - | Yes | - |
+| `started_at` | - | - | - | - |
+| `started_at_label` | - | - | - | - |
+| `status` | - | - | - | - |
+| `summary` | - | - | - | - |
+| `target` | - | - | - | - |
+| `task_count` | - | - | - | - |
+| `task_template_json` | - | - | Yes | - |
+| `tasks` | - | - | Yes | - |
+| `updated_at` | - | - | - | - |
+| `updated_at_label` | - | - | - | - |
+| `usage` | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.AgentSwarm.create({
+  "organization_slug" => "example_organization_slug", # Object
+  "target" => {}, # Hash
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.AgentSwarm.list({ "org" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.AgentSwarm.load({ "id" => "agent_swarm_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentSwarmEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## AgentTeammateEntity
 
 ```ruby
@@ -3582,30 +6442,7 @@ agent_thread = client.AgentThread
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_count` | `Object` | No | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` | `Boolean` | Yes |  |
-| `execution` | `Object` | No |  |
-| `first_input` | `Object` | No |  |
-| `first_input_key` | `String` | No | Idempotency-Key that finds the first message through input_delivery. |
-| `first_input_requester_membership_id` | `String` | No | Membership the first message was sent as, for input_delivery. |
 | `id` | `String` | No |  |
-| `inherit_context` | `Boolean` | No | Include the source conversation through its last completed reply. |
-| `local_activities` | `Hash` | Yes | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | `Integer` | Yes | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` | `Object` | Yes |  |
-| `local_scope_key` | `Object` | Yes |  |
-| `local_status_pending` | `Boolean` | Yes | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` | `Array` | Yes |  |
-| `main_thread_id` | `String` | Yes |  |
-| `message` | `String` | No | The thread's first message. |
-| `next_cursor` | `Object` | Yes |  |
-| `parent_conversation_id` | `String` | No | Optional source conversation belonging to this agent. |
-| `requester_membership_id` | `String` | No |  |
-| `selected_thread` | `Object` | Yes |  |
-| `thread` | `Hash` | Yes |  |
-| `threads` | `Array` | Yes |  |
-| `title` | `String` | No |  |
-| `total_archived_count` | `Object` | Yes | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
 
 ### Operations
 
@@ -3615,8 +6452,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 
 ```ruby
 result = client.AgentThread.create({
-  "agent_id" => "example_agent_id", # String
-  "organization_id" => "example_organization_id", # String
 })
 ```
 
@@ -3625,8 +6460,16 @@ result = client.AgentThread.create({
 List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
-results = client.AgentThread.list({ "agent_id" => "example", "organization_id" => "example" })
+results = client.AgentThread.list
 results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.AgentThread.load({ "id" => "agent_thread_id" })
 ```
 
 ### Common Methods
@@ -3705,6 +6548,65 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `AgentToolEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AgentUsageEntity
+
+```ruby
+agent_usage = client.AgentUsage
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `days` | `Array` | Yes | One cell per (day, model), ascending by day then model. |
+| `ended_at` | `String` | Yes |  |
+| `pricing_version` | `String` | Yes | The price table in effect now; rows carry the version they were priced at. |
+| `source` | `String` | Yes | Which store served the rows. |
+| `started_at` | `String` | Yes |  |
+| `user_days` | `Array` | Yes | One cell per (day, person), ascending by day. |
+| `users` | `Array` | Yes | One row per (person, model), descending by tokens. |
+| `window` | `String` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.AgentUsage.load({ "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentUsageEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -3824,6 +6726,62 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `AgentWaitEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AgentWebPreviewEntity
+
+```ruby
+agent_web_preview = client.AgentWebPreview
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `description` | `Object` | Yes |  |
+| `icon_url` | `Object` | Yes |  |
+| `image_url` | `Object` | Yes |  |
+| `title` | `Object` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.AgentWebPreview.list({ "token" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgentWebPreviewEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -4477,6 +7435,192 @@ Return the entity name.
 
 ---
 
+## AgreementEntity
+
+```ruby
+agreement = client.Agreement
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `body` | `Object` | Yes | Markdown text, or null until staff grant the organization access. |
+| `effective_on_label` | `String` | Yes |  |
+| `key` | `String` | Yes |  |
+| `summary` | `String` | Yes |  |
+| `title` | `String` | Yes |  |
+| `version` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.Agreement.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgreementEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AgreementAccessRequestEntity
+
+```ruby
+agreement_access_request = client.AgreementAccessRequest
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.AgreementAccessRequest.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AgreementAccessRequestEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AlertRuleEventEntity
+
+```ruby
+alert_rule_event = client.AlertRuleEvent
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.AlertRuleEvent.create({
+  "alert_rule_id" => "example_alert_rule_id", # String
+  "space_id" => "example_space_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.AlertRuleEvent.list({ "alert_rule_id" => "example", "space_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.AlertRuleEvent.load({ "id" => "alert_rule_event_id", "alert_rule_id" => "alert_rule_id", "space_id" => "space_id" })
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.AlertRuleEvent.remove({ "id" => "alert_rule_event_id", "alert_rule_id" => "alert_rule_id", "space_id" => "space_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AlertRuleEventEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## AllocationLogEntity
 
 ```ruby
@@ -4670,6 +7814,95 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `AppEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AppAccessEntity
+
+```ruby
+app_access = client.AppAccess
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AppAccessEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AppAccessJwkEntity
+
+```ruby
+app_access_jwk = client.AppAccessJwk
+```
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.AppAccessJwk.list
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AppAccessJwkEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -6903,6 +10136,883 @@ Return the entity name.
 
 ---
 
+## ArtefactEntity
+
+```ruby
+artefact = client.Artefact
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `automation_invocation_id` | `Object` | No |  |
+| `byte_size` | `Integer` | Yes |  |
+| `checksum_sha256` | `String` | Yes |  |
+| `content_type` | `String` | Yes |  |
+| `created_at` | `Object` | No |  |
+| `created_by_user_id` | `Object` | No |  |
+| `description` | `Object` | No |  |
+| `document_key` | `String` | No | Stable document identity shared by all revisions. |
+| `entrypoint` | `String` | No |  |
+| `expires_at` | `Object` | No |  |
+| `filename` | `String` | Yes |  |
+| `files` | `Array` | No |  |
+| `harness` | `Object` | No |  |
+| `harness_version` | `Object` | No |  |
+| `id` | `String` | Yes |  |
+| `kind` | `String` | Yes |  |
+| `model` | `Object` | No |  |
+| `organization_id` | `String` | Yes |  |
+| `published_at` | `Object` | No |  |
+| `repository_id` | `Object` | No |  |
+| `slug` | `String` | Yes |  |
+| `source` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `title` | `String` | Yes |  |
+| `vcs_agent_checkpoint_id` | `Object` | No |  |
+| `vcs_agent_session_id` | `Object` | No |  |
+| `version` | `Integer` | Yes |  |
+| `view_url` | `String` | Yes |  |
+| `web_url` | `String` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- | --- |
+| `automation_invocation_id` | - | - | - | - | - | - |
+| `byte_size` | - | - | - | - | - | - |
+| `checksum_sha256` | - | - | - | - | - | - |
+| `content_type` | - | - | - | - | - | - |
+| `created_at` | - | - | - | - | - | - |
+| `created_by_user_id` | - | - | - | - | - | - |
+| `description` | - | - | - | - | - | - |
+| `document_key` | - | - | - | - | - | - |
+| `entrypoint` | - | - | - | - | - | - |
+| `expires_at` | - | - | - | - | - | - |
+| `filename` | - | - | - | - | - | - |
+| `files` | - | - | - | - | - | - |
+| `harness` | - | - | - | - | - | - |
+| `harness_version` | - | - | - | - | - | - |
+| `id` | - | - | - | - | - | - |
+| `kind` | - | - | - | - | Yes | - |
+| `model` | - | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - | - |
+| `published_at` | - | - | - | - | - | - |
+| `repository_id` | - | - | - | - | - | - |
+| `slug` | - | - | - | - | - | - |
+| `source` | - | - | - | - | - | - |
+| `status` | - | - | - | - | - | - |
+| `title` | - | - | - | - | Yes | - |
+| `vcs_agent_checkpoint_id` | - | - | - | - | - | - |
+| `vcs_agent_session_id` | - | - | - | - | - | - |
+| `version` | - | - | - | - | - | - |
+| `view_url` | - | - | - | - | - | - |
+| `web_url` | - | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.Artefact.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.Artefact.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.Artefact.load({ "id" => "artefact_id", "organization_id" => "organization_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.Artefact.patch({
+  "id" => "artefact_id",
+  "organization_id" => "organization_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.Artefact.remove({ "id" => "artefact_id", "organization_id" => "organization_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.Artefact.update({
+  "id" => "artefact_id",
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ArtefactEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ArtefactCommentThreadEntity
+
+```ruby
+artefact_comment_thread = client.ArtefactCommentThread
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `anchor` | `String` | Yes | The `#anchor` written into the Markdown. |
+| `body` | `String` | Yes |  |
+| `comments` | `Array` | Yes |  |
+| `id` | `String` | Yes | The anchor key. |
+| `quote` | `String` | No |  |
+| `resolved` | `Boolean` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | update |
+| --- | --- | --- | --- |
+| `anchor` | - | - | - |
+| `body` | - | - | - |
+| `comments` | - | - | - |
+| `id` | - | - | - |
+| `quote` | Yes | - | Yes |
+| `resolved` | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ArtefactCommentThread.create({
+  "artefact_id" => "example_artefact_id", # String
+  "organization_id" => "example_organization_id", # String
+  "anchor" => "example_anchor", # String
+  "body" => "example_body", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ArtefactCommentThread.list({ "artefact_id" => "example", "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.ArtefactCommentThread.update({
+  "artefact_id" => "artefact_id",
+  "id" => "id",
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ArtefactCommentThreadEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ArtefactRevisionEntity
+
+```ruby
+artefact_revision = client.ArtefactRevision
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `base_version` | `Integer` | Yes | The newest version the editor started from. |
+| `content` | `String` | Yes | Markdown, including CriticMarkup suggestions and comment anchors. |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ArtefactRevision.create({
+  "artefact_id" => "example_artefact_id", # String
+  "organization_id" => "example_organization_id", # String
+  "base_version" => 1, # Integer
+  "content" => "example_content", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ArtefactRevisionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ArtefactViewTokenEntity
+
+```ruby
+artefact_view_token = client.ArtefactViewToken
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `expires_in` | `Integer` | Yes |  |
+| `file` | `String` | No | Exact manifest path. |
+| `organization_slug` | `String` | No | If provided, must match the organization addressed by the route. |
+| `version` | `Integer` | No |  |
+| `viewer_url` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ArtefactViewToken.create({
+  "artefact_id" => "example_artefact_id", # String
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ArtefactViewTokenEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ArtifactEntity
+
+```ruby
+artifact = client.Artifact
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.Artifact.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.Artifact.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.Artifact.load({ "id" => "artifact_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.Artifact.patch({
+  "id" => "artifact_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.Artifact.remove({ "id" => "artifact_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.Artifact.update({
+  "id" => "artifact_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ArtifactEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ArtifactCacheNamespaceEntity
+
+```ruby
+artifact_cache_namespace = client.ArtifactCacheNamespace
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ArtifactCacheNamespace.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ArtifactCacheNamespace.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ArtifactCacheNamespace.load({ "id" => "artifact_cache_namespace_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.ArtifactCacheNamespace.patch({
+  "id" => "artifact_cache_namespace_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.ArtifactCacheNamespace.remove({ "id" => "artifact_cache_namespace_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.ArtifactCacheNamespace.update({
+  "id" => "artifact_cache_namespace_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ArtifactCacheNamespaceEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ArtifactImageRepositoryEntity
+
+```ruby
+artifact_image_repository = client.ArtifactImageRepository
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ArtifactImageRepository.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ArtifactImageRepository.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ArtifactImageRepository.load({ "id" => "artifact_image_repository_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.ArtifactImageRepository.patch({
+  "id" => "artifact_image_repository_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.ArtifactImageRepository.remove({ "id" => "artifact_image_repository_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.ArtifactImageRepository.update({
+  "id" => "artifact_image_repository_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ArtifactImageRepositoryEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ArtifactPackageMirrorEntity
+
+```ruby
+artifact_package_mirror = client.ArtifactPackageMirror
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ArtifactPackageMirror.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ArtifactPackageMirror.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ArtifactPackageMirror.load({ "id" => "artifact_package_mirror_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.ArtifactPackageMirror.patch({
+  "id" => "artifact_package_mirror_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.ArtifactPackageMirror.remove({ "id" => "artifact_package_mirror_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.ArtifactPackageMirror.update({
+  "id" => "artifact_package_mirror_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ArtifactPackageMirrorEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ArtifactRetentionPolicyEntity
+
+```ruby
+artifact_retention_policy = client.ArtifactRetentionPolicy
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ArtifactRetentionPolicy.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ArtifactRetentionPolicy.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ArtifactRetentionPolicy.load({ "id" => "artifact_retention_policy_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.ArtifactRetentionPolicy.patch({
+  "id" => "artifact_retention_policy_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.ArtifactRetentionPolicy.remove({ "id" => "artifact_retention_policy_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.ArtifactRetentionPolicy.update({
+  "id" => "artifact_retention_policy_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ArtifactRetentionPolicyEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## AttachmentPartEntity
 
 ```ruby
@@ -6952,6 +11062,415 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `AttachmentPartEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AuditEventEntity
+
+```ruby
+audit_event = client.AuditEvent
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `String` | Yes |  |
+| `actor_kind` | `String` | Yes |  |
+| `actor_user_id` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `observability_space_id` | `Object` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `payload` | `Object` | Yes |  |
+| `request_id` | `Object` | Yes |  |
+| `severity` | `String` | Yes |  |
+| `subject_id` | `String` | Yes |  |
+| `subject_kind` | `String` | Yes |  |
+| `subject_name` | `Object` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.AuditEvent.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AuditEventEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AuthEntity
+
+```ruby
+auth = client.Auth
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AuthEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AuthCliEntity
+
+```ruby
+auth_cli = client.AuthCli
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AuthCliEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AuthGithubEntity
+
+```ruby
+auth_github = client.AuthGithub
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AuthGithubEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AuthGoogleEntity
+
+```ruby
+auth_google = client.AuthGoogle
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AuthGoogleEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AuthOpenaiEntity
+
+```ruby
+auth_openai = client.AuthOpenai
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AuthOpenaiEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AuthPasswordResetEntity
+
+```ruby
+auth_password_reset = client.AuthPasswordReset
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email` | `String` | Yes |  |
+| `message` | `String` | Yes |  |
+| `password` | `String` | Yes |  |
+| `token` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.AuthPasswordReset.create({
+  "email" => "example_email", # String
+})
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.AuthPasswordReset.update({
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AuthPasswordResetEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## AuthRegistrationOptionEntity
+
+```ruby
+auth_registration_option = client.AuthRegistrationOption
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email_password_signup_enabled` | `Boolean` | Yes |  |
+| `openai_sign_in_enabled` | `Boolean` | No | Whether ChatGPT identity sign-in is configured and enabled for rollout. |
+| `turnstile_site_key` | `Object` | Yes |  |
+| `waitlist_enabled` | `Boolean` | Yes | New public signups require waitlist approval when enabled. |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.AuthRegistrationOption.list
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `AuthRegistrationOptionEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -7119,6 +11638,1109 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `AutomationRunEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BackendRunnerPoolEntity
+
+```ruby
+backend_runner_pool = client.BackendRunnerPool
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.BackendRunnerPool.create({
+  "backend_id" => "example_backend_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.BackendRunnerPool.list({ "backend_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.BackendRunnerPool.remove({ "id" => "backend_runner_pool_id", "backend_id" => "backend_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BackendRunnerPoolEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BazelEntity
+
+```ruby
+bazel = client.Bazel
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BazelEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BazelActionResultEntity
+
+```ruby
+bazel_action_result = client.BazelActionResult
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.BazelActionResult.load({ "id" => "bazel_action_result_id", "action_result_id" => "action_result_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.BazelActionResult.update({
+  "id" => "bazel_action_result_id",
+  "action_result_id" => "action_result_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BazelActionResultEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BazelBackendEntity
+
+```ruby
+bazel_backend = client.BazelBackend
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.BazelBackend.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.BazelBackend.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.BazelBackend.load({ "id" => "bazel_backend_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.BazelBackend.patch({
+  "id" => "bazel_backend_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.BazelBackend.remove({ "id" => "bazel_backend_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.BazelBackend.update({
+  "id" => "bazel_backend_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BazelBackendEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BazelBlobEntity
+
+```ruby
+bazel_blob = client.BazelBlob
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.BazelBlob.load({ "id" => "bazel_blob_id", "blob_id" => "blob_id", "hash" => "hash" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.BazelBlob.update({
+  "id" => "bazel_blob_id",
+  "blob_id" => "blob_id",
+  "hash" => "hash",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BazelBlobEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BazelExecutionEntity
+
+```ruby
+bazel_execution = client.BazelExecution
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.BazelExecution.create({
+})
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.BazelExecution.load({ "id" => "bazel_execution_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BazelExecutionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BazelFindMissingBlobEntity
+
+```ruby
+bazel_find_missing_blob = client.BazelFindMissingBlob
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.BazelFindMissingBlob.create({
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BazelFindMissingBlobEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BillingEntity
+
+```ruby
+billing = client.Billing
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `Array` | Yes |  |
+| `breakdown` | `Object` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `Object` | Yes |  |
+| `can_manage_contact` | `Boolean` | Yes |  |
+| `can_manage_extra_spend` | `Boolean` | Yes |  |
+| `can_manage_local_subscription` | `Boolean` | Yes |  |
+| `can_manage_payment_method` | `Boolean` | Yes |  |
+| `can_set_up_billing` | `Boolean` | Yes |  |
+| `customer` | `Object` | Yes |  |
+| `deployment_usage_visible` | `Boolean` | Yes |  |
+| `entitlements` | `Hash` | Yes |  |
+| `extra_spend_enabled` | `Boolean` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `Boolean` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `String` | Yes |  |
+| `package` | `Object` | Yes |  |
+| `prepaid` | `Object` | Yes |  |
+| `preview` | `Object` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `Hash` | Yes |  |
+| `stripe` | `Hash` | Yes |  |
+| `subscription` | `Object` | Yes |  |
+| `token_account` | `Hash` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.Billing.load({ "organization_id" => "organization_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BillingEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BillingAddonEntity
+
+```ruby
+billing_addon = client.BillingAddon
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `Array` | Yes |  |
+| `breakdown` | `Object` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `Object` | Yes |  |
+| `can_manage_contact` | `Boolean` | Yes |  |
+| `can_manage_extra_spend` | `Boolean` | Yes |  |
+| `can_manage_local_subscription` | `Boolean` | Yes |  |
+| `can_manage_payment_method` | `Boolean` | Yes |  |
+| `can_set_up_billing` | `Boolean` | Yes |  |
+| `customer` | `Object` | Yes |  |
+| `deployment_usage_visible` | `Boolean` | Yes |  |
+| `entitlements` | `Hash` | Yes |  |
+| `extra_spend_enabled` | `Boolean` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `Boolean` | Yes | Whether the `billing` feature is on for this organization. |
+| `id` | `String` | No |  |
+| `organization_id` | `String` | Yes |  |
+| `package` | `Object` | Yes |  |
+| `prepaid` | `Object` | Yes |  |
+| `preview` | `Object` | Yes | Metronome draft invoice and credits, or null. |
+| `quantity` | `Integer` | Yes |  |
+| `storage_usage` | `Hash` | Yes |  |
+| `stripe` | `Hash` | Yes |  |
+| `subscription` | `Object` | Yes |  |
+| `token_account` | `Hash` | Yes |  |
+
+### Operations
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.BillingAddon.update({
+  "id" => "id",
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BillingAddonEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BillingCheckoutSessionEntity
+
+```ruby
+billing_checkout_session = client.BillingCheckoutSession
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cancel_url` | `String` | No |  |
+| `coupon_code` | `String` | No |  |
+| `entry_point` | `String` | No | Where the owner chose to pay, for product analytics. |
+| `package_key` | `String` | No |  |
+| `package_revision` | `Integer` | No |  |
+| `success_url` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.BillingCheckoutSession.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BillingCheckoutSessionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BillingInvoiceEntity
+
+```ruby
+billing_invoice = client.BillingInvoice
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `amount_due_cents` | `Integer` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `currency` | `String` | Yes |  |
+| `hosted_invoice_url` | `Object` | No |  |
+| `id` | `String` | Yes |  |
+| `invoice_pdf` | `Object` | No |  |
+| `metronome_invoice_id` | `Object` | No | Metronome's id for the invoice it pushed |
+| `number` | `Object` | No |  |
+| `period_ended_at` | `Object` | No |  |
+| `period_started_at` | `Object` | No |  |
+| `status` | `String` | Yes |  |
+| `total_cents` | `Integer` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.BillingInvoice.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BillingInvoiceEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BillingPackageEntity
+
+```ruby
+billing_package = client.BillingPackage
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `Array` | Yes |  |
+| `base_price_cents` | `Integer` | Yes |  |
+| `billing_interval` | `String` | Yes |  |
+| `billing_policy` | `String` | Yes |  |
+| `ci_included_spend_cents` | `Integer` | No | Monthly USD credit in cents shared by all CI charges, including runners, cache, storage and add-ons; replaces CI unit allowances when positive. |
+| `currency` | `String` | Yes |  |
+| `key` | `String` | Yes |  |
+| `max_seats` | `Object` | No |  |
+| `name` | `String` | Yes |  |
+| `pay_as_you_go_enabled` | `Boolean` | Yes |  |
+| `rates` | `Array` | Yes |  |
+| `revision` | `Integer` | Yes |  |
+| `roder_daily_run_limit` | `Integer` | No |  |
+| `roder_run_concurrency_limit` | `Integer` | No |  |
+| `seat_price_cents` | `Integer` | Yes |  |
+| `trial_days` | `Integer` | Yes |  |
+| `visibility` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.BillingPackage.list
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BillingPackageEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BillingPortalSessionEntity
+
+```ruby
+billing_portal_session = client.BillingPortalSession
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `return_url` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.BillingPortalSession.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BillingPortalSessionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BillingPrepaidPeriodEntity
+
+```ruby
+billing_prepaid_period = client.BillingPrepaidPeriod
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_at` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `currency` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `last_error` | `Object` | Yes |  |
+| `minutes` | `Integer` | Yes |  |
+| `net_amount_cents` | `Integer` | Yes |  |
+| `paid_at` | `Object` | Yes |  |
+| `paid_total_cents` | `Object` | Yes |  |
+| `payment_action_url` | `Object` | Yes |  |
+| `period_ended_at` | `String` | Yes |  |
+| `period_started_at` | `String` | Yes |  |
+| `receipt_url` | `Object` | Yes |  |
+| `refunded_net_cents` | `Integer` | Yes |  |
+| `state` | `String` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.BillingPrepaidPeriod.load({ "id" => "billing_prepaid_period_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BillingPrepaidPeriodEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BillingPrepaidPurchaseEntity
+
+```ruby
+billing_prepaid_purchase = client.BillingPrepaidPurchase
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_at` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `currency` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `last_error` | `Object` | Yes |  |
+| `minutes` | `Integer` | Yes |  |
+| `net_amount_cents` | `Integer` | Yes |  |
+| `paid_at` | `Object` | Yes |  |
+| `paid_total_cents` | `Object` | Yes |  |
+| `payment_action_url` | `Object` | Yes |  |
+| `prepaid` | `Hash` | Yes |  |
+| `purchase` | `Hash` | Yes |  |
+| `receipt_url` | `Object` | Yes |  |
+| `refunded_net_cents` | `Integer` | Yes |  |
+| `request_key` | `String` | Yes |  |
+| `state` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.BillingPrepaidPurchase.create({
+  "organization_id" => "example_organization_id", # String
+  "minutes" => 1, # Integer
+  "request_key" => "example_request_key", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.BillingPrepaidPurchase.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.BillingPrepaidPurchase.load({ "id" => "billing_prepaid_purchase_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BillingPrepaidPurchaseEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BillingTokenTopUpEntity
+
+```ruby
+billing_token_top_up = client.BillingTokenTopUp
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `amount_cents` | `Integer` | Yes |  |
+| `request_key` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.BillingTokenTopUp.create({
+  "organization_id" => "example_organization_id", # String
+  "amount_cents" => 1, # Integer
+  "request_key" => "example_request_key", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BillingTokenTopUpEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BillingUsageEntity
+
+```ruby
+billing_usage = client.BillingUsage
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BillingUsageEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -7330,6 +12952,85 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `BinaryVersionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## BookmarkProtectionRefreshGithubRequiredCheckEntity
+
+```ruby
+bookmark_protection_refresh_github_required_check = client.BookmarkProtectionRefreshGithubRequiredCheck
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `exclusions` | `Array` | Yes |  |
+| `fetched_at` | `Object` | No |  |
+| `fetched_at_label` | `Object` | No |  |
+| `github_branch` | `String` | Yes |  |
+| `github_owner` | `Object` | No |  |
+| `github_repository_name` | `Object` | No |  |
+| `last_error` | `Object` | No |  |
+| `proven` | `Boolean` | Yes |  |
+| `requirements` | `Array` | Yes |  |
+| `stale` | `Boolean` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | create |
+| --- | --- |
+| `exclusions` | - |
+| `fetched_at` | - |
+| `fetched_at_label` | - |
+| `github_branch` | Yes |
+| `github_owner` | - |
+| `github_repository_name` | - |
+| `last_error` | - |
+| `proven` | - |
+| `requirements` | - |
+| `stale` | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.BookmarkProtectionRefreshGithubRequiredCheck.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `BookmarkProtectionRefreshGithubRequiredCheckEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -7971,6 +13672,109 @@ Return the entity name.
 
 ---
 
+## CacheNamespaceEntryEntity
+
+```ruby
+cache_namespace_entry = client.CacheNamespaceEntry
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.CacheNamespaceEntry.create({
+  "cache_namespace_id" => "example_cache_namespace_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.CacheNamespaceEntry.list({ "cache_namespace_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.CacheNamespaceEntry.load({ "id" => "cache_namespace_entry_id", "cache_namespace_id" => "cache_namespace_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.CacheNamespaceEntry.patch({
+  "id" => "cache_namespace_entry_id",
+  "cache_namespace_id" => "cache_namespace_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.CacheNamespaceEntry.remove({ "id" => "cache_namespace_entry_id", "cache_namespace_id" => "cache_namespace_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.CacheNamespaceEntry.update({
+  "id" => "cache_namespace_entry_id",
+  "cache_namespace_id" => "cache_namespace_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `CacheNamespaceEntryEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## CatalogSelectorEntity
 
 ```ruby
@@ -8406,6 +14210,2013 @@ Return the entity name.
 
 ---
 
+## ChangeEntity
+
+```ruby
+change = client.Change
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `counts` | `Hash` | Yes | Counts for each state across the active non-state filters. |
+| `filters` | `Hash` | Yes |  |
+| `github_sync` | `Hash` | Yes |  |
+| `result` | `Object` | Yes | What this page is a page of. |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.Change.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ChangeEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ChangeAssetEntity
+
+```ruby
+change_asset = client.ChangeAsset
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `alias` | `String` | Yes |  |
+| `byte_size` | `Integer` | Yes |  |
+| `checksum_md5` | `String` | Yes |  |
+| `checksum_sha256` | `String` | Yes |  |
+| `content_type` | `String` | Yes |  |
+| `filename` | `String` | Yes |  |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ChangeAsset.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "alias" => "example_alias", # String
+  "byte_size" => 1, # Integer
+  "checksum_md5" => "example_checksum_md5", # String
+  "checksum_sha256" => "example_checksum_sha256", # String
+  "content_type" => "example_content_type", # String
+  "filename" => "example_filename", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ChangeAssetEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ChangeCommentEntity
+
+```ruby
+change_comment = client.ChangeComment
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `body` | `String` | Yes |  |
+| `capabilities` | `Hash` | Yes |  |
+| `change_id` | `Object` | No |  |
+| `created_at` | `Object` | No |  |
+| `created_at_label` | `Object` | No |  |
+| `id` | `String` | Yes |  |
+| `kind` | `Object` | No |  |
+| `line` | `Object` | No |  |
+| `outdated` | `Boolean` | Yes |  |
+| `parent_comment_id` | `Object` | No |  |
+| `patchset_id` | `Object` | No |  |
+| `patchset_number` | `Object` | Yes |  |
+| `path` | `Object` | No |  |
+| `replies` | `Array` | No |  |
+| `resolved` | `Boolean` | Yes |  |
+| `resolved_at` | `Object` | No |  |
+| `resolved_at_label` | `Object` | No |  |
+| `resolved_by` | `Hash` | Yes |  |
+| `side` | `Object` | No |  |
+| `updated_at` | `Object` | No |  |
+| `updated_at_label` | `Object` | No |  |
+| `user` | `Hash` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `body` | - | - |
+| `capabilities` | - | - |
+| `change_id` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `id` | - | - |
+| `kind` | - | - |
+| `line` | - | - |
+| `outdated` | - | - |
+| `parent_comment_id` | - | - |
+| `patchset_id` | Yes | - |
+| `patchset_number` | - | - |
+| `path` | - | - |
+| `replies` | - | - |
+| `resolved` | - | - |
+| `resolved_at` | - | - |
+| `resolved_at_label` | - | - |
+| `resolved_by` | - | - |
+| `side` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+| `user` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ChangeComment.create({
+  "change_id" => "example_change_id", # String
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "body" => "example_body", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ChangeComment.list({ "change_id" => "example", "organization_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ChangeCommentEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ChangeFileReviewCheckpointEntity
+
+```ruby
+change_file_review_checkpoint = client.ChangeFileReviewCheckpoint
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `patchset_id` | `String` | Yes |  |
+| `path` | `String` | Yes |  |
+| `request_id` | `String` | Yes |  |
+| `review_action` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ChangeFileReviewCheckpoint.create({
+  "change_id" => "example_change_id", # String
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "patchset_id" => "example_patchset_id", # String
+  "path" => "example_path", # String
+  "request_id" => "example_request_id", # String
+  "review_action" => "example_review_action", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ChangeFileReviewCheckpointEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ChangeGitBranchSubmissionEntity
+
+```ruby
+change_git_branch_submission = client.ChangeGitBranchSubmission
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ChangeGitBranchSubmission.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ChangeGitBranchSubmissionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ChangeGitCommitIdentityEntity
+
+```ruby
+change_git_commit_identity = client.ChangeGitCommitIdentity
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_id` | `String` | Yes |  |
+| `change_number` | `Integer` | Yes |  |
+| `git_commit_id` | `String` | Yes |  |
+| `git_commit_ids` | `Array` | Yes |  |
+| `id` | `String` | No |  |
+| `identities` | `Array` | Yes |  |
+| `missing_git_commit_ids` | `Array` | Yes |  |
+| `patchset_number` | `Integer` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ChangeGitCommitIdentity.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "git_commit_ids" => [], # Array
+})
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ChangeGitCommitIdentity.load({ "id" => "change_git_commit_identity_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ChangeGitCommitIdentityEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ChangeGitPublicationEntity
+
+```ruby
+change_git_publication = client.ChangeGitPublication
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `expected_target_commit_id` | `String` | Yes |  |
+| `id` | `String` | No |  |
+| `operation_key` | `String` | Yes |  |
+| `publication_id` | `String` | Yes |  |
+| `request` | `Hash` | Yes |  |
+| `request_digest` | `String` | Yes |  |
+| `revisions` | `Array` | Yes |  |
+| `status` | `String` | Yes |  |
+| `transfer_refs` | `Array` | No | Immutable receipt-owned refs returned by preparation; transfer each exact Git target before polling readiness. |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ChangeGitPublication.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "operation_key" => "example_operation_key", # String
+  "request" => {}, # Hash
+})
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ChangeGitPublication.load({ "id" => "change_git_publication_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ChangeGitPublicationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ChangeGroupMemberEntity
+
+```ruby
+change_group_member = client.ChangeGroupMember
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_id` | `String` | Yes | Change number |
+| `changes` | `Array` | Yes |  |
+| `id` | `String` | No |  |
+| `name` | `String` | No |  |
+| `number` | `Integer` | No |  |
+| `status` | `String` | Yes |  |
+| `title` | `Object` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ChangeGroupMember.create({
+  "change_group_id" => "example_change_group_id", # String
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "change_id" => "example_change_id", # String
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.ChangeGroupMember.remove({ "id" => "change_group_member_id", "change_group_id" => "change_group_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ChangeGroupMemberEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ChangeLabelEntity
+
+```ruby
+change_label = client.ChangeLabel
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accepted` | `Boolean` | No |  |
+| `add` | `Array` | No |  |
+| `approval` | `Hash` | Yes |  |
+| `assets` | `Array` | No | Proof assets referenced from the description as `vex-asset:<id>`. |
+| `author` | `Object` | No | Human user summary or organization automation identity. |
+| `capabilities` | `Hash` | Yes |  |
+| `change_key` | `String` | No |  |
+| `checks` | `Array` | No |  |
+| `checks_status` | `String` | No |  |
+| `comments` | `Array` | No |  |
+| `comments_count` | `Integer` | No |  |
+| `comments_count_label` | `String` | No |  |
+| `commit_message` | `Object` | No |  |
+| `current_patchset` | `Hash` | Yes |  |
+| `description` | `Object` | No |  |
+| `draft` | `Boolean` | No |  |
+| `folded_into_number` | `Object` | No |  |
+| `github_projection_status` | `Object` | No |  |
+| `github_pull_request` | `Hash` | Yes |  |
+| `github_pull_requests` | `Array` | No |  |
+| `group` | `Object` | No |  |
+| `has_description` | `Boolean` | No | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
+| `id` | `String` | Yes |  |
+| `jj_change_id` | `Object` | No |  |
+| `labels` | `Array` | No |  |
+| `landable` | `Boolean` | No |  |
+| `landed_by` | `Hash` | Yes |  |
+| `number` | `Integer` | Yes |  |
+| `orphaned` | `Boolean` | No |  |
+| `orphaned_at` | `String` | No |  |
+| `orphaned_at_label` | `String` | No |  |
+| `orphaned_reason` | `String` | No |  |
+| `parent_change_id` | `Object` | No |  |
+| `parent_change_number` | `Object` | No |  |
+| `patchset_number` | `Object` | No |  |
+| `patchsets` | `Array` | No |  |
+| `primary_status` | `Object` | No |  |
+| `public_id` | `String` | No |  |
+| `relation_chain` | `Array` | No |  |
+| `remove` | `Array` | No |  |
+| `requested_changes` | `Boolean` | No |  |
+| `restack_state` | `String` | No |  |
+| `reviewer_candidates` | `Array` | No | Organization members available to the reviewer picker on this page. |
+| `reviewers` | `Array` | No |  |
+| `stable_change_id` | `String` | No |  |
+| `stack` | `Object` | No |  |
+| `status` | `String` | Yes |  |
+| `target_branch` | `String` | Yes |  |
+| `title` | `String` | Yes |  |
+| `unresolved_comments_count_label` | `String` | No |  |
+| `url` | `String` | No |  |
+| `votes` | `Array` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.ChangeLabel.update({
+  "change_id" => "change_id",
+  "organization_id" => "organization_id",
+  "repo_id" => "repo_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ChangeLabelEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ChangeLandingHoldEntity
+
+```ruby
+change_landing_hold = client.ChangeLandingHold
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ChangeLandingHoldEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ChangeLandingRequestEntity
+
+```ruby
+change_landing_request = client.ChangeLandingRequest
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_ids` | `Array` | No |  |
+| `count` | `Integer` | Yes |  |
+| `defer_until_ready` | `Boolean` | No | Admit the request while approvals or checks are pending |
+| `expected_requirement_version` | `String` | No |  |
+| `expected_scope_version` | `String` | No |  |
+| `head_change_id` | `String` | No |  |
+| `id` | `Object` | No |  |
+| `numbers` | `Array` | Yes |  |
+| `override_acknowledged` | `Boolean` | No |  |
+| `override_codes` | `Array` | No |  |
+| `position` | `Integer` | No |  |
+| `priority` | `String` | No |  |
+| `scope_version` | `String` | Yes |  |
+| `state` | `String` | Yes |  |
+| `version` | `Integer` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ChangeLandingRequest.create({
+  "change_id" => "example_change_id", # String
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.ChangeLandingRequest.remove({ "id" => "change_landing_request_id", "change_id" => "change_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ChangeLandingRequestEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ChangeRequestChangeEntity
+
+```ruby
+change_request_change = client.ChangeRequestChange
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `message` | `Object` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ChangeRequestChange.create({
+  "change_id" => "example_change_id", # String
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ChangeRequestChangeEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ChangeReviewerEntity
+
+```ruby
+change_reviewer = client.ChangeReviewer
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `add` | `Array` | No |  |
+| `email` | `String` | Yes |  |
+| `name` | `Object` | Yes |  |
+| `remove` | `Array` | No |  |
+| `removed_reviewers` | `Array` | Yes |  |
+| `requested_reviewers` | `Array` | Yes |  |
+| `reviewers` | `Array` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ChangeReviewer.list({ "change_id" => "example", "organization_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.ChangeReviewer.update({
+  "change_id" => "change_id",
+  "organization_id" => "organization_id",
+  "repo_id" => "repo_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ChangeReviewerEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ChangeTranscriptEntity
+
+```ruby
+change_transcript = client.ChangeTranscript
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capture_kind` | `String` | Yes |  |
+| `captured_at` | `String` | Yes |  |
+| `harness` | `Hash` | Yes |  |
+| `id` | `String` | Yes |  |
+| `original_resume` | `Object` | No |  |
+| `patchset_commit_id` | `String` | Yes |  |
+| `patchset_number` | `Integer` | Yes |  |
+| `redaction_count` | `Integer` | Yes |  |
+| `session_id` | `Object` | No |  |
+| `session_title` | `Object` | No |  |
+| `status` | `String` | Yes |  |
+| `superseded` | `Boolean` | Yes |  |
+| `user` | `Hash` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ChangeTranscript.list({ "change_id" => "example", "organization_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ChangeTranscriptEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ChangeTranscriptSummaryEntity
+
+```ruby
+change_transcript_summary = client.ChangeTranscriptSummary
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `summaries` | `Hash` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ChangeTranscriptSummary.list({ "organization_id" => "example", "ids" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ChangeTranscriptSummaryEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## CheckpointPrepareChunkEntity
+
+```ruby
+checkpoint_prepare_chunk = client.CheckpointPrepareChunk
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.CheckpointPrepareChunk.create({
+  "agent_session_id" => "example_agent_session_id", # String
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `CheckpointPrepareChunkEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## CiNodeEntity
+
+```ruby
+ci_node = client.CiNode
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `architecture` | `Object` | Yes |  |
+| `bazel_enabled` | `Boolean` | Yes |  |
+| `bazel_properties_json` | `Object` | Yes |  |
+| `ci_runner_pool_id` | `String` | Yes |  |
+| `cordoned_at` | `Object` | Yes |  |
+| `cordoned_at_label` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `health_state` | `String` | Yes |  |
+| `heartbeat_age_seconds` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `kind` | `String` | Yes |  |
+| `labels_csv` | `Object` | Yes |  |
+| `last_seen_at` | `Object` | Yes |  |
+| `last_seen_at_label` | `Object` | Yes |  |
+| `name` | `String` | Yes |  |
+| `network_peer_id` | `Object` | Yes |  |
+| `node_capabilities_csv` | `Object` | Yes |  |
+| `node_certificate_expires_at` | `Object` | Yes |  |
+| `node_certificate_expires_at_label` | `Object` | Yes |  |
+| `node_certificate_fingerprint_sha256` | `Object` | Yes |  |
+| `node_certificate_serial` | `Object` | Yes |  |
+| `offline_at` | `Object` | Yes |  |
+| `offline_at_label` | `Object` | Yes |  |
+| `online_at` | `Object` | Yes |  |
+| `online_at_label` | `Object` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `os` | `Object` | Yes |  |
+| `revoked_at` | `Object` | Yes |  |
+| `revoked_at_label` | `Object` | Yes |  |
+| `schedulable` | `Boolean` | Yes |  |
+| `slug` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+| `version` | `Object` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.CiNode.load({ "id" => "ci_node_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `CiNodeEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## CiPipelineEntity
+
+```ruby
+ci_pipeline = client.CiPipeline
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `ci_runner_pool_id` | `Object` | Yes |  |
+| `concurrency_key` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `default_branch` | `Object` | Yes |  |
+| `description` | `Object` | Yes |  |
+| `hosted_app_id` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `repository_id` | `Object` | Yes |  |
+| `required_capabilities_csv` | `Object` | Yes |  |
+| `runner_pool` | `Object` | Yes |  |
+| `runs` | `Array` | Yes |  |
+| `slug` | `String` | Yes |  |
+| `source_kind` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `status_label` | `String` | Yes |  |
+| `status_state` | `String` | Yes |  |
+| `status_tone` | `String` | Yes |  |
+| `trigger_on_pull_request` | `Boolean` | Yes |  |
+| `trigger_on_push` | `Boolean` | Yes |  |
+| `trigger_on_schedule` | `Boolean` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `workflow_path` | `Object` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.CiPipeline.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.CiPipeline.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.CiPipeline.load({ "id" => "ci_pipeline_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `CiPipelineEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## CiPipelineRunEntity
+
+```ruby
+ci_pipeline_run = client.CiPipelineRun
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active` | `Boolean` | Yes |  |
+| `canceled_at` | `Object` | Yes |  |
+| `ci_pipeline_id` | `String` | Yes |  |
+| `ci_runner_pool_id` | `Object` | Yes |  |
+| `commit_sha` | `Object` | Yes |  |
+| `concurrency_key` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `creator_user_id` | `Object` | Yes |  |
+| `display_id` | `Integer` | Yes |  |
+| `failed` | `Boolean` | Yes |  |
+| `finished_at` | `Object` | Yes |  |
+| `hosted_app_id` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `jobs` | `Array` | Yes |  |
+| `message` | `Object` | Yes |  |
+| `number` | `Integer` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `parameters_json` | `Object` | Yes |  |
+| `queued_at` | `Object` | Yes |  |
+| `ref_name` | `Object` | Yes |  |
+| `repository_id` | `Object` | Yes |  |
+| `required_capabilities_csv` | `Object` | Yes |  |
+| `retry_number` | `Integer` | Yes |  |
+| `retryable` | `Boolean` | Yes |  |
+| `slug` | `String` | Yes |  |
+| `source_url` | `Object` | Yes |  |
+| `started_at` | `Object` | Yes |  |
+| `status` | `String` | Yes |  |
+| `status_label` | `String` | Yes |  |
+| `status_state` | `String` | Yes |  |
+| `status_tone` | `String` | Yes |  |
+| `trigger_kind` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.CiPipelineRun.create({
+  "pipeline_id" => "example_pipeline_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.CiPipelineRun.list({ "pipeline_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.CiPipelineRun.load({ "id" => "ci_pipeline_run_id", "pipeline_id" => "pipeline_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `CiPipelineRunEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## CiRunnerPoolEntity
+
+```ruby
+ci_runner_pool = client.CiRunnerPool
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `bazel_enabled` | `Boolean` | Yes |  |
+| `bazel_properties_json` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `description` | `Object` | Yes |  |
+| `elastic_config_json` | `Object` | Yes |  |
+| `elastic_provider_kind` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `isolation_mode` | `String` | Yes |  |
+| `labels_csv` | `Object` | Yes |  |
+| `max_concurrency` | `Integer` | Yes |  |
+| `modal_capacity` | `Hash` | Yes |  |
+| `modal_runner_invocations` | `Array` | Yes |  |
+| `name` | `String` | Yes |  |
+| `network_space_id` | `Object` | Yes |  |
+| `node_capabilities_csv` | `Object` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `runner_count_label` | `String` | Yes |  |
+| `runner_kind` | `String` | Yes |  |
+| `runners` | `Array` | Yes |  |
+| `slug` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `bazel_enabled` | - | - | - | - | - |
+| `bazel_properties_json` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `description` | - | - | - | - | Yes |
+| `elastic_config_json` | - | - | - | - | Yes |
+| `elastic_provider_kind` | - | - | - | - | Yes |
+| `id` | - | - | - | - | - |
+| `isolation_mode` | - | - | - | - | Yes |
+| `labels_csv` | - | - | - | - | Yes |
+| `max_concurrency` | - | - | - | - | Yes |
+| `modal_capacity` | - | - | - | - | - |
+| `modal_runner_invocations` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `network_space_id` | - | - | - | - | - |
+| `node_capabilities_csv` | - | - | - | - | Yes |
+| `organization_id` | - | - | - | - | - |
+| `runner_count_label` | - | - | - | - | - |
+| `runner_kind` | - | - | - | - | Yes |
+| `runners` | - | - | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | Yes |
+| `updated_at` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.CiRunnerPool.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.CiRunnerPool.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.CiRunnerPool.load({ "id" => "ci_runner_pool_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.CiRunnerPool.patch({
+  "id" => "ci_runner_pool_id",
+  # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.CiRunnerPool.update({
+  "id" => "ci_runner_pool_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `CiRunnerPoolEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## CiStatusEntity
+
+```ruby
+ci_status = client.CiStatus
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `CiStatusEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## CliEventEntity
+
+```ruby
+cli_event = client.CliEvent
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `event` | `String` | Yes |  |
+| `properties` | `Hash` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.CliEvent.create({
+  "event" => "example_event", # String
+  "properties" => {}, # Hash
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `CliEventEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## CliReleaseEntity
+
+```ruby
+cli_release = client.CliRelease
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.CliRelease.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.CliRelease.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `CliReleaseEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## CloudWorkspaceBackupObjectEntity
+
+```ruby
+cloud_workspace_backup_object = client.CloudWorkspaceBackupObject
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.CloudWorkspaceBackupObject.load({ "id" => "cloud_workspace_backup_object_id", "cloud_workspace_backup_id" => "cloud_workspace_backup_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `CloudWorkspaceBackupObjectEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## CodeRuleEvaluationEntity
+
+```ruby
+code_rule_evaluation = client.CodeRuleEvaluation
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `advisory` | `Boolean` | Yes |  |
+| `coverage` | `Hash` | Yes |  |
+| `diff` | `String` | Yes | UTF-8 complete unified patch using a/ old and b/ new prefixes; at most 1 MiB |
+| `duration_ms` | `Integer` | Yes |  |
+| `evaluator_version` | `String` | No |  |
+| `input_digest` | `Object` | No |  |
+| `limits` | `Hash` | No |  |
+| `model` | `String` | No |  |
+| `requests` | `Hash` | Yes |  |
+| `schema_version` | `Integer` | Yes |  |
+| `snapshot_digest` | `Object` | No |  |
+| `unchecked` | `Array` | Yes |  |
+| `verdicts` | `Array` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.CodeRuleEvaluation.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "diff" => "example_diff", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `CodeRuleEvaluationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ComSiteAccessEntity
+
+```ruby
+com_site_access = client.ComSiteAccess
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ComSiteAccessEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ComSiteAccessSessionEntity
+
+```ruby
+com_site_access_session = client.ComSiteAccessSession
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cookie_name` | `String` | Yes |  |
+| `host` | `String` | Yes | Site hostname, for example docs.acme.composal.page |
+| `max_age` | `Integer` | Yes |  |
+| `session_token` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ComSiteAccessSession.create({
+  "host" => "example_host", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ComSiteAccessSessionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## CommentThreadCommentEntity
+
+```ruby
+comment_thread_comment = client.CommentThreadComment
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `body` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.CommentThreadComment.create({
+  "artefact_id" => "example_artefact_id", # String
+  "comment_thread_id" => "example_comment_thread_id", # String
+  "organization_id" => "example_organization_id", # String
+  "body" => "example_body", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `CommentThreadCommentEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## CommitDiffEntity
+
+```ruby
+commit_diff = client.CommitDiff
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `files` | `Array` | Yes |  |
+| `id` | `String` | No |  |
+| `parent_id` | `Object` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.CommitDiff.load({ "id" => "commit_diff_id", "commit_id" => "commit_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `CommitDiffEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## ConnectionRequestEntity
 
 ```ruby
@@ -8519,6 +16330,207 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `ConnectionSourceEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ContactSubmissionEntity
+
+```ruby
+contact_submission = client.ContactSubmission
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `company` | `Object` | No |  |
+| `email` | `String` | Yes | Stored downcased and stripped. |
+| `message` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
+| `website` | `Object` | No | Honeypot. |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ContactSubmission.create({
+  "email" => "example_email", # String
+  "message" => "example_message", # String
+  "name" => "example_name", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ContactSubmissionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ControlComputerEntity
+
+```ruby
+control_computer = client.ControlComputer
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `connection` | `Hash` | Yes | A point-in-time control transport observation. |
+| `consent` | `Hash` | Yes |  |
+| `device` | `Hash` | Yes |  |
+| `id` | `String` | No |  |
+| `provider_status` | `Array` | No |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ControlComputer.list({ "organization_id" => "example", "persistent_agent_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ControlComputerEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ControlComputerControlOperationEntity
+
+```ruby
+control_computer_control_operation = client.ControlComputerControlOperation
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `String` | Yes |  |
+| `arguments` | `Hash` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `delivery` | `Hash` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `String` | Yes |  |
+| `diagnostic_code` | `String` | No | Approved product error code retained after copied diagnostics expire. |
+| `end` | `Hash` | Yes |  |
+| `expires_at` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `key` | `String` | Yes |  |
+| `provider` | `String` | Yes |  |
+| `references` | `Hash` | Yes |  |
+| `result` | `Object` | Yes |  |
+| `result_expired` | `Boolean` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ControlComputerControlOperation.create({
+  "control_computer_id" => "example_control_computer_id", # String
+  "organization_id" => "example_organization_id", # String
+  "action" => "example_action", # String
+  "arguments" => {}, # Hash
+  "key" => "example_key", # String
+})
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ControlComputerControlOperation.load({ "id" => "control_computer_control_operation_id", "control_computer_id" => "control_computer_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ControlComputerControlOperationEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -9297,6 +17309,93 @@ Return the entity name.
 
 ---
 
+## DeploymentEntity
+
+```ruby
+deployment = client.Deployment
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app` | `Hash` | Yes |  |
+| `artifact_locator` | `Object` | Yes |  |
+| `build_duration_seconds` | `Object` | Yes |  |
+| `build_source` | `Object` | Yes |  |
+| `build_status` | `String` | Yes |  |
+| `children` | `Array` | Yes |  |
+| `ci_pipeline_id` | `Object` | Yes |  |
+| `ci_pipeline_run_id` | `Object` | Yes |  |
+| `commit_sha` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `creator` | `Object` | Yes |  |
+| `deployed_url` | `Object` | Yes |  |
+| `duration_seconds` | `Object` | Yes |  |
+| `environment` | `Hash` | Yes |  |
+| `history_kind` | `String` | Yes |  |
+| `history_reason` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `is_live` | `Boolean` | Yes |  |
+| `is_rollback` | `Boolean` | Yes |  |
+| `live_region_count` | `Integer` | Yes |  |
+| `number` | `Integer` | Yes |  |
+| `placement` | `Object` | Yes |  |
+| `region_count` | `Integer` | Yes |  |
+| `replicas_per_region` | `Integer` | Yes |  |
+| `rollback_reason` | `Object` | Yes |  |
+| `rollback_source_release_id` | `Object` | Yes |  |
+| `rollback_target_release_id` | `Object` | Yes |  |
+| `rollout_predecessor_id` | `Object` | Yes |  |
+| `rollout_status` | `String` | Yes |  |
+| `rollout_strategy` | `String` | Yes |  |
+| `service` | `Hash` | Yes |  |
+| `source_ref` | `Object` | Yes |  |
+| `status` | `String` | Yes |  |
+| `total_replicas` | `Integer` | Yes |  |
+| `trigger_kind` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.Deployment.load({ "id" => "deployment_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DeploymentEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## DeploymentDashboardNomadEntity
 
 ```ruby
@@ -9330,6 +17429,79 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `DeploymentDashboardNomadEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DeploymentDetailEntity
+
+```ruby
+deployment_detail = client.DeploymentDetail
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `Array` | Yes |  |
+| `app` | `Object` | Yes |  |
+| `app_id` | `Object` | Yes |  |
+| `audit_events` | `Array` | Yes |  |
+| `capacity` | `Hash` | Yes |  |
+| `data_resources` | `Array` | Yes |  |
+| `deploy_targets` | `Array` | Yes |  |
+| `deployments` | `Array` | Yes |  |
+| `desired_states` | `Array` | Yes |  |
+| `environments` | `Array` | Yes |  |
+| `filters` | `Hash` | Yes | The option lists the deployments page's app, service and stage pickers narrow by. |
+| `health` | `Hash` | Yes | The rolled-up state of the selected scope. |
+| `nomad` | `Hash` | Yes | The Nomad footprint of the selected scope, deduplicated. |
+| `operations` | `Array` | Yes |  |
+| `placements` | `Array` | Yes |  |
+| `reconciler_ticks` | `Array` | Yes |  |
+| `releases` | `Array` | Yes |  |
+| `runtime_instances` | `Array` | Yes |  |
+| `service_bindings` | `Array` | Yes |  |
+| `service_views` | `Array` | Yes |  |
+| `storage_resources` | `Array` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.DeploymentDetail.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DeploymentDetailEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -9380,6 +17552,1539 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `DeploymentFileEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DeploymentLogEntity
+
+```ruby
+deployment_log = client.DeploymentLog
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `allocation_id` | `String` | Yes |  |
+| `app_environment_id` | `Object` | Yes |  |
+| `app_release_id` | `Object` | Yes |  |
+| `app_service_id` | `Object` | Yes |  |
+| `details` | `Object` | Yes |  |
+| `environment_name` | `String` | Yes |  |
+| `release_version` | `Object` | Yes |  |
+| `service_name` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `task` | `Object` | Yes |  |
+| `unreachable_reason` | `Object` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.DeploymentLog.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DeploymentLogEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DeploymentMetricEntity
+
+```ruby
+deployment_metric = client.DeploymentMetric
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `auto_deploy` | `Boolean` | Yes |  |
+| `environment_id` | `String` | Yes |  |
+| `environment_name` | `String` | Yes |  |
+| `placement_id` | `String` | Yes |  |
+| `redeploy` | `Boolean` | Yes |  |
+| `region_count` | `Integer` | Yes |  |
+| `replicas_per_region` | `Integer` | Yes |  |
+| `rollout_strategy` | `String` | Yes |  |
+| `service_id` | `String` | Yes |  |
+| `service_name` | `String` | Yes |  |
+| `source_ref` | `Object` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.DeploymentMetric.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DeploymentMetricEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DeploymentPreviewEntity
+
+```ruby
+deployment_preview = client.DeploymentPreview
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access` | `String` | Yes |  |
+| `app_environment_id` | `String` | Yes |  |
+| `app_name` | `String` | Yes |  |
+| `app_preview_profile_id` | `String` | Yes |  |
+| `app_slug` | `String` | Yes |  |
+| `change_number` | `Object` | Yes |  |
+| `created_at` | `String` | No |  |
+| `created_by_user_id` | `String` | No |  |
+| `expires_at` | `String` | Yes |  |
+| `generation` | `Integer` | Yes |  |
+| `health` | `String` | Yes |  |
+| `hosted_app_id` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `latest_operation_status` | `Object` | Yes |  |
+| `name` | `String` | Yes |  |
+| `owner_name` | `Object` | Yes |  |
+| `profile_name` | `String` | Yes |  |
+| `resource_overrides` | `Hash` | No | Service public IDs mapped to resource overrides. |
+| `retained` | `Boolean` | Yes |  |
+| `slug` | `String` | Yes |  |
+| `snapshot_version` | `Integer` | Yes |  |
+| `source_revision` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `updated_at` | `String` | No |  |
+| `urls` | `Array` | Yes |  |
+| `vcs_change_id` | `Object` | No |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.DeploymentPreview.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DeploymentPreviewEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DeploymentSettingEntity
+
+```ruby
+deployment_setting = client.DeploymentSetting
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `code` | `String` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
+| `nomad_datacenter` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.DeploymentSetting.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DeploymentSettingEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DesktopLocalAgentModelEntity
+
+```ruby
+desktop_local_agent_model = client.DesktopLocalAgentModel
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.DesktopLocalAgentModel.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DesktopLocalAgentModelEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DesktopLocalAgentResponseEntity
+
+```ruby
+desktop_local_agent_response = client.DesktopLocalAgentResponse
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `input` | `Array` | Yes |  |
+| `max_output_tokens` | `Integer` | No |  |
+| `model` | `String` | Yes |  |
+| `store` | `Boolean` | Yes |  |
+| `stream` | `Boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.DesktopLocalAgentResponse.create({
+  "organization_id" => "example_organization_id", # String
+  "input" => [], # Array
+  "model" => "example_model", # String
+  "store" => true, # Boolean
+  "stream" => true, # Boolean
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DesktopLocalAgentResponseEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DeviceEntity
+
+```ruby
+device = client.Device
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `architecture` | `String` | Yes |  |
+| `channel` | `String` | Yes |  |
+| `coding_connection` | `Object` | Yes | Independent organization coding-control service state for the current device owner. |
+| `connection_checked_at` | `Object` | Yes | When this native presence observation was obtained; null when unobserved or unavailable. |
+| `connection_status` | `String` | Yes | Display-only native presence. |
+| `control_delivery_policy` | `Hash` | Yes |  |
+| `control_spawn_policy` | `Hash` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `device` | `Hash` | Yes |  |
+| `environment` | `String` | Yes |  |
+| `execution_available` | `Boolean` | Yes |  |
+| `id` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
+| `native_device_id` | `String` | Yes |  |
+| `paired_at` | `String` | Yes |  |
+| `pairing_generation` | `Integer` | Yes |  |
+| `platform` | `String` | Yes |  |
+| `project_visibility` | `Hash` | Yes | Folder discovery and new-thread selection. |
+| `provider_status` | `Array` | No | Recent native provider observations; absent on older API replicas. |
+| `revoked_at` | `Object` | Yes |  |
+| `scheduled_check_ins` | `Boolean` | No | Whether the owner's private agents may check this computer's connection during scheduled runs. |
+| `user_browser_access` | `String` | Yes | Whether agents may use the owner's own Chrome-family browser here: off, only tabs agents open or the owner shares, or every tab. |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.Device.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.Device.load({ "id" => "device_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DeviceEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DeviceBrowserOperationEntity
+
+```ruby
+device_browser_operation = client.DeviceBrowserOperation
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `command` | `String` | Yes | The in-app browser takes open through open_external; the person's own browser (arguments.browser user) takes open, tabs, share_tab, navigate, back, reload, screenshot, read, click, type, press, scroll and close. |
+| `created_at` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.DeviceBrowserOperation.list({ "device_id" => "example", "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DeviceBrowserOperationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DeviceControlMessageEntity
+
+```ruby
+device_control_message = client.DeviceControlMessage
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_id` | `String` | Yes |  |
+| `agent_name` | `String` | Yes |  |
+| `expires_at` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `sender` | `Object` | Yes |  |
+| `text` | `Object` | Yes |  |
+| `text_omitted` | `Boolean` | Yes |  |
+| `thread` | `Hash` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.DeviceControlMessage.list({ "device_id" => "example", "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DeviceControlMessageEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DeviceControlOperationEntity
+
+```ruby
+device_control_operation = client.DeviceControlOperation
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `String` | Yes |  |
+| `arguments` | `Hash` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `delivery` | `Hash` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `String` | Yes |  |
+| `diagnostic_code` | `String` | No | Approved product error code retained after copied diagnostics expire. |
+| `end` | `Hash` | Yes |  |
+| `expires_at` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `key` | `String` | Yes |  |
+| `provider` | `String` | Yes |  |
+| `references` | `Hash` | Yes |  |
+| `result` | `Object` | Yes |  |
+| `result_expired` | `Boolean` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.DeviceControlOperation.create({
+  "device_id" => "example_device_id", # String
+  "organization_id" => "example_organization_id", # String
+  "action" => "example_action", # String
+  "arguments" => {}, # Hash
+  "key" => "example_key", # String
+})
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.DeviceControlOperation.load({ "id" => "device_control_operation_id", "device_id" => "device_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DeviceControlOperationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DeviceEnterpriseRelayEntity
+
+```ruby
+device_enterprise_relay = client.DeviceEnterpriseRelay
+```
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.DeviceEnterpriseRelay.list
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DeviceEnterpriseRelayEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DeviceFolderListingEntity
+
+```ruby
+device_folder_listing = client.DeviceFolderListing
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `code` | `String` | No |  |
+| `error` | `String` | No |  |
+| `folders` | `Array` | No |  |
+| `id` | `String` | Yes |  |
+| `key` | `String` | Yes | Stable idempotency key for this listing. |
+| `parent` | `Object` | No |  |
+| `path` | `String` | No | The resolved folder. |
+| `state` | `String` | Yes |  |
+| `truncated` | `Boolean` | No |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `code` | - | - |
+| `error` | - | - |
+| `folders` | - | - |
+| `id` | - | - |
+| `key` | - | - |
+| `parent` | - | - |
+| `path` | - | Yes |
+| `state` | - | - |
+| `truncated` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.DeviceFolderListing.create({
+  "device_id" => "example_device_id", # String
+  "organization_id" => "example_organization_id", # String
+  "key" => "example_key", # String
+  "path" => "example_path", # String
+})
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.DeviceFolderListing.load({ "id" => "device_folder_listing_id", "device_id" => "device_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DeviceFolderListingEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DeviceGrantEntity
+
+```ruby
+device_grant = client.DeviceGrant
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_grants` | `Array` | Yes |  |
+| `agent_choices` | `Array` | Yes | Eligible picker choices, with current owner grant targets, on the first page only. |
+| `agent_id` | `String` | Yes |  |
+| `all_agents_access` | `Boolean` | Yes | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `capabilities` | `Array` | Yes |  |
+| `execution_available` | `Boolean` | Yes |  |
+| `grants` | `Array` | Yes |  |
+| `id` | `String` | No |  |
+| `next_cursor` | `Object` | Yes |  |
+| `principal_id` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.DeviceGrant.create({
+  "device_id" => "example_device_id", # String
+  "organization_id" => "example_organization_id", # String
+  "agent_id" => "example_agent_id", # String
+  "capabilities" => [], # Array
+  "principal_id" => "example_principal_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.DeviceGrant.list({ "device_id" => "example", "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DeviceGrantEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DeviceInvocationEntity
+
+```ruby
+device_invocation = client.DeviceInvocation
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DeviceInvocationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DeviceLocalEventEntity
+
+```ruby
+device_local_event = client.DeviceLocalEvent
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `event` | `String` | Yes |  |
+| `recorded` | `Boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.DeviceLocalEvent.create({
+  "device_id" => "example_device_id", # String
+  "organization_id" => "example_organization_id", # String
+  "event" => "example_event", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DeviceLocalEventEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DevicePairingEntity
+
+```ruby
+device_pairing = client.DevicePairing
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `architecture` | `String` | Yes |  |
+| `channel` | `String` | Yes |  |
+| `id` | `String` | No |  |
+| `name` | `String` | Yes |  |
+| `platform` | `String` | Yes |  |
+| `public_key` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.DevicePairing.create({
+  "organization_id" => "example_organization_id", # String
+  "architecture" => "example_architecture", # String
+  "channel" => "example_channel", # String
+  "name" => "example_name", # String
+  "platform" => "example_platform", # String
+  "public_key" => "example_public_key", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DevicePairingEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DeviceProjectEntity
+
+```ruby
+device_project = client.DeviceProject
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.DeviceProject.remove({ "id" => "device_project_id", "device_id" => "device_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DeviceProjectEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DeviceScheduledCheckInEntity
+
+```ruby
+device_scheduled_check_in = client.DeviceScheduledCheckIn
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `enabled` | `Boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.DeviceScheduledCheckIn.create({
+  "device_id" => "example_device_id", # String
+  "organization_id" => "example_organization_id", # String
+  "enabled" => true, # Boolean
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DeviceScheduledCheckInEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DockerBuilderEntity
+
+```ruby
+docker_builder = client.DockerBuilder
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `backend` | `String` | Yes |  |
+| `created_at` | `Object` | Yes |  |
+| `gateway_url` | `Object` | No | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `Integer` | Yes |  |
+| `id` | `String` | Yes |  |
+| `last_activity_at` | `Object` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `ready_at` | `Object` | Yes |  |
+| `slept_at` | `Object` | Yes |  |
+| `slug` | `String` | Yes |  |
+| `startup_attempt` | `Integer` | Yes |  |
+| `startup_failure` | `Object` | Yes | Safe failure reason for the most recent startup attempt |
+| `startup_stage` | `Object` | Yes |  |
+| `status` | `String` | Yes |  |
+| `updated_at` | `Object` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `backend` | - | - | Yes | - | - |
+| `created_at` | - | - | - | - | - |
+| `gateway_url` | - | - | - | - | - |
+| `generation` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `last_activity_at` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `ready_at` | - | - | - | - | - |
+| `slept_at` | - | - | - | - | - |
+| `slug` | - | - | Yes | - | - |
+| `startup_attempt` | - | - | - | - | - |
+| `startup_failure` | - | - | - | - | - |
+| `startup_stage` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.DockerBuilder.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.DockerBuilder.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.DockerBuilder.load({ "id" => "docker_builder_id", "organization_id" => "organization_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.DockerBuilder.patch({
+  "id" => "docker_builder_id",
+  "organization_id" => "organization_id",
+  # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.DockerBuilder.update({
+  "id" => "docker_builder_id",
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DockerBuilderEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DockerBuilderSessionEntity
+
+```ruby
+docker_builder_session = client.DockerBuilderSession
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `String` | Yes |  |
+| `docker_builder_id` | `String` | Yes |  |
+| `expires_at` | `String` | Yes |  |
+| `gateway_url` | `Object` | No | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `Integer` | Yes |  |
+| `id` | `String` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `revoked_at` | `Object` | Yes |  |
+| `user_id` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.DockerBuilderSession.create({
+  "docker_builder_id" => "example_docker_builder_id", # String
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.DockerBuilderSession.load({ "id" => "docker_builder_session_id", "organization_id" => "organization_id" })
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.DockerBuilderSession.remove({ "id" => "docker_builder_session_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DockerBuilderSessionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DockerBuilderSettingEntity
+
+```ruby
+docker_builder_setting = client.DockerBuilderSetting
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `docker_builder_settings` | `Hash` | Yes |  |
+| `idle_timeout_seconds` | `Integer` | Yes |  |
+| `max_concurrency` | `Integer` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `region` | `String` | Yes |  |
+| `runtime_timeout_seconds` | `Integer` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | update | patch |
+| --- | --- | --- | --- |
+| `docker_builder_settings` | - | - | - |
+| `idle_timeout_seconds` | - | - | Yes |
+| `max_concurrency` | - | - | Yes |
+| `organization_id` | - | - | - |
+| `region` | - | - | Yes |
+| `runtime_timeout_seconds` | - | - | Yes |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.DockerBuilderSetting.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.DockerBuilderSetting.patch({
+  "organization_id" => "organization_id",
+  # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.DockerBuilderSetting.update({
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DockerBuilderSettingEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## DomainDnsIntegrationEntity
+
+```ruby
+domain_dns_integration = client.DomainDnsIntegration
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_label` | `Object` | Yes |  |
+| `api_token` | `String` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `failure_message` | `Object` | Yes |  |
+| `has_token` | `Boolean` | Yes |  |
+| `id` | `String` | Yes |  |
+| `last_verified_at` | `Object` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `provider` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `account_label` | - | Yes |
+| `api_token` | - | - |
+| `created_at` | - | - |
+| `failure_message` | - | - |
+| `has_token` | - | - |
+| `id` | - | - |
+| `last_verified_at` | - | - |
+| `organization_id` | - | - |
+| `provider` | - | - |
+| `status` | - | - |
+| `updated_at` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.DomainDnsIntegration.create({
+  "organization_id" => "example_organization_id", # String
+  "api_token" => "example_api_token", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.DomainDnsIntegration.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `DomainDnsIntegrationEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -9594,6 +19299,90 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `DreamEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## EdgeEntity
+
+```ruby
+edge = client.Edge
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `EdgeEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## EmailVerificationEntity
+
+```ruby
+email_verification = client.EmailVerification
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `EmailVerificationEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -10397,6 +20186,379 @@ Return the entity name.
 
 ---
 
+## ExecutionDesiredStateEntity
+
+```ruby
+execution_desired_state = client.ExecutionDesiredState
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `desired_state` | `Hash` | Yes |  |
+| `id` | `String` | No |  |
+| `stop_observed` | `Boolean` | Yes | True only for archived zero-capacity states with all known jobs stopped and allocations terminated. |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ExecutionDesiredState.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ExecutionDesiredState.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ExecutionDesiredState.load({ "id" => "execution_desired_state_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.ExecutionDesiredState.patch({
+  "id" => "execution_desired_state_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.ExecutionDesiredState.remove({ "id" => "execution_desired_state_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.ExecutionDesiredState.update({
+  "id" => "execution_desired_state_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ExecutionDesiredStateEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ExecutionReconcilerTickEntity
+
+```ruby
+execution_reconciler_tick = client.ExecutionReconcilerTick
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ExecutionReconcilerTick.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ExecutionReconcilerTick.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ExecutionReconcilerTick.load({ "id" => "execution_reconciler_tick_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ExecutionReconcilerTickEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ExecutionReleaseEntity
+
+```ruby
+execution_release = client.ExecutionRelease
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ExecutionRelease.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ExecutionRelease.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ExecutionRelease.load({ "id" => "execution_release_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ExecutionReleaseEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ExecutionRuntimeInstanceEntity
+
+```ruby
+execution_runtime_instance = client.ExecutionRuntimeInstance
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter_kind` | `String` | Yes |  |
+| `app_environment_id` | `String` | Yes |  |
+| `app_release_id` | `Object` | Yes |  |
+| `app_service_id` | `String` | Yes |  |
+| `booted_at` | `Object` | Yes |  |
+| `booted_at_label` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `hosted_app_id` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `instance_key` | `String` | Yes |  |
+| `last_reconciled_at` | `Object` | Yes |  |
+| `last_reconciled_at_label` | `Object` | Yes |  |
+| `last_seen_at` | `Object` | Yes |  |
+| `last_seen_at_label` | `Object` | Yes |  |
+| `location` | `Object` | Yes |  |
+| `location_id` | `String` | Yes |  |
+| `network_peer_id` | `Object` | Yes |  |
+| `nomad_allocation_id` | `Object` | Yes |  |
+| `nomad_task_name` | `Object` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `private_ipv4` | `Object` | Yes |  |
+| `private_ipv6` | `Object` | Yes |  |
+| `provider_instance_id` | `Object` | Yes |  |
+| `public_endpoint` | `Object` | Yes |  |
+| `service_name` | `String` | Yes | Name of the Vex service this instance runs, in the same vocabulary as `vex deploy list`. |
+| `slug` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `terminated_at` | `Object` | Yes |  |
+| `terminated_at_label` | `Object` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ExecutionRuntimeInstance.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ExecutionRuntimeInstance.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ExecutionRuntimeInstance.load({ "id" => "execution_runtime_instance_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.ExecutionRuntimeInstance.patch({
+  "id" => "execution_runtime_instance_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.ExecutionRuntimeInstance.remove({ "id" => "execution_runtime_instance_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.ExecutionRuntimeInstance.update({
+  "id" => "execution_runtime_instance_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ExecutionRuntimeInstanceEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## ExplorationEntity
 
 ```ruby
@@ -10934,6 +21096,744 @@ Return the entity name.
 
 ---
 
+## GhEntity
+
+```ruby
+gh = client.Gh
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capabilities` | `Hash` | Yes |  |
+| `content` | `Hash` | Yes |  |
+| `fetched_at` | `String` | Yes |  |
+| `id` | `String` | No |  |
+| `magic_merge` | `Object` | Yes |  |
+| `pull_request` | `Object` | Yes |  |
+| `stack` | `Hash` | Yes |  |
+| `transcript_paths` | `Array` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.Gh.load({ "id" => "gh_id", "gh_id" => "gh_id", "github_repo" => "github_repo", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GhEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GitImportEntity
+
+```ruby
+git_import = client.GitImport
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `destination_mode` | `String` | Yes |  |
+| `error` | `Object` | No |  |
+| `git_default_branch` | `String` | No | Original Git symbolic HEAD branch, independent of the branch selected for JJ conversion |
+| `git_status` | `String` | Yes |  |
+| `git_url` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `idempotency_key` | `String` | Yes |  |
+| `name` | `String` | No |  |
+| `native_status` | `String` | Yes |  |
+| `organization` | `String` | Yes |  |
+| `repository_id` | `Object` | No |  |
+| `root_path` | `String` | Yes |  |
+| `slug` | `String` | Yes |  |
+| `source_branch` | `String` | Yes |  |
+| `target_branch` | `String` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `destination_mode` | - | - |
+| `error` | - | - |
+| `git_default_branch` | - | - |
+| `git_status` | - | - |
+| `git_url` | - | - |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `name` | - | - |
+| `native_status` | - | - |
+| `organization` | - | - |
+| `repository_id` | - | - |
+| `root_path` | - | - |
+| `slug` | - | - |
+| `source_branch` | - | - |
+| `target_branch` | - | Yes |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.GitImport.create({
+  "organization_id" => "example_organization_id", # String
+  "destination_mode" => "example_destination_mode", # String
+  "idempotency_key" => "example_idempotency_key", # String
+  "root_path" => "example_root_path", # String
+  "slug" => "example_slug", # String
+  "source_branch" => "example_source_branch", # String
+})
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.GitImport.load({ "id" => "git_import_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GitImportEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubEntity
+
+```ruby
+github = client.Github
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubAppEntity
+
+```ruby
+github_app = client.GithubApp
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubAppEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubAppImportableRepositoryEntity
+
+```ruby
+github_app_importable_repository = client.GithubAppImportableRepository
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_login` | `String` | Yes |  |
+| `github_app_installation_id` | `String` | Yes |  |
+| `next_page` | `Object` | Yes | Next GitHub page for this installation |
+| `repositories` | `Array` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.GithubAppImportableRepository.list
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubAppImportableRepositoryEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubAppInstallationEntity
+
+```ruby
+github_app_installation = client.GithubAppInstallation
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `Object` | Yes |  |
+| `account_id` | `Object` | Yes |  |
+| `account_login` | `String` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `installation_id` | `String` | Yes |  |
+| `installed_at` | `Object` | Yes |  |
+| `installed_at_label` | `Object` | Yes |  |
+| `manage_access_url` | `String` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `permission_entries` | `Array` | Yes | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `Hash` | Yes |  |
+| `status` | `String` | Yes |  |
+| `suspended_at` | `Object` | Yes |  |
+| `suspended_at_label` | `Object` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.GithubAppInstallation.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.GithubAppInstallation.remove({ "id" => "github_app_installation_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubAppInstallationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubAppInstallationAuthorizationEntity
+
+```ruby
+github_app_installation_authorization = client.GithubAppInstallationAuthorization
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `installation_url` | `String` | Yes |  |
+| `organization_slug` | `String` | Yes | Vex organization slug whose installation will be linked. |
+| `return_target` | `String` | Yes | Server-validated Vex application target used after verification. |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.GithubAppInstallationAuthorization.create({
+  "organization_slug" => "example_organization_slug", # String
+  "return_target" => "example_return_target", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubAppInstallationAuthorizationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubAppUserAuthorizationEntity
+
+```ruby
+github_app_user_authorization = client.GithubAppUserAuthorization
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.GithubAppUserAuthorization.create({
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubAppUserAuthorizationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubCiRepositoryEntity
+
+```ruby
+github_ci_repository = client.GithubCiRepository
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adoption_mode` | `String` | Yes |  |
+| `check_name_prefix` | `String` | Yes |  |
+| `ci_runner_pool_id` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `default_branch` | `String` | Yes |  |
+| `github_app_installation_id` | `String` | Yes |  |
+| `github_repository_id` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `last_compatibility_status` | `Object` | Yes |  |
+| `last_error_message` | `Object` | Yes |  |
+| `last_head_sha` | `Object` | Yes |  |
+| `last_pull_request_number` | `Object` | Yes |  |
+| `last_ref` | `Object` | Yes |  |
+| `last_webhook_action` | `Object` | Yes |  |
+| `last_webhook_at` | `Object` | Yes |  |
+| `last_webhook_at_label` | `Object` | Yes |  |
+| `last_webhook_delivery_id` | `Object` | Yes |  |
+| `last_webhook_event` | `Object` | Yes |  |
+| `metadata` | `Hash` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `permission_status` | `String` | Yes |  |
+| `repository_full_name` | `String` | Yes |  |
+| `repository_name` | `String` | Yes |  |
+| `repository_owner` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+| `webhook_delivery_count` | `Integer` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `adoption_mode` | - | - | Yes | Yes | Yes |
+| `check_name_prefix` | - | - | Yes | Yes | Yes |
+| `ci_runner_pool_id` | - | - | Yes | Yes | Yes |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `default_branch` | - | - | Yes | Yes | Yes |
+| `github_app_installation_id` | - | - | - | - | - |
+| `github_repository_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `last_compatibility_status` | - | - | - | - | - |
+| `last_error_message` | - | - | - | - | - |
+| `last_head_sha` | - | - | - | - | - |
+| `last_pull_request_number` | - | - | - | - | - |
+| `last_ref` | - | - | - | - | - |
+| `last_webhook_action` | - | - | - | - | - |
+| `last_webhook_at` | - | - | - | - | - |
+| `last_webhook_at_label` | - | - | - | - | - |
+| `last_webhook_delivery_id` | - | - | - | - | - |
+| `last_webhook_event` | - | - | - | - | - |
+| `metadata` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `permission_status` | - | - | - | Yes | Yes |
+| `repository_full_name` | - | - | - | - | - |
+| `repository_name` | - | - | - | - | - |
+| `repository_owner` | - | - | - | - | - |
+| `status` | - | - | Yes | Yes | Yes |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
+| `webhook_delivery_count` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.GithubCiRepository.create({
+  "organization_id" => "example_organization_id", # String
+  "github_app_installation_id" => "example_github_app_installation_id", # String
+  "github_repository_id" => "example_github_repository_id", # String
+  "repository_name" => "example_repository_name", # String
+  "repository_owner" => "example_repository_owner", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.GithubCiRepository.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.GithubCiRepository.load({ "id" => "github_ci_repository_id", "organization_id" => "organization_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.GithubCiRepository.patch({
+  "id" => "github_ci_repository_id",
+  "organization_id" => "organization_id",
+  # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.GithubCiRepository.update({
+  "id" => "github_ci_repository_id",
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubCiRepositoryEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubCiRepositoryCompatibilityReportEntity
+
+```ruby
+github_ci_repository_compatibility_report = client.GithubCiRepositoryCompatibilityReport
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `analyzed_at` | `String` | Yes |  |
+| `analyzed_at_label` | `Object` | Yes |  |
+| `ci_pipeline_id` | `Object` | Yes |  |
+| `ci_pipeline_run_id` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `diagnostics` | `Array` | Yes |  |
+| `errors` | `Array` | Yes |  |
+| `event_action` | `Object` | Yes |  |
+| `event_name` | `String` | Yes |  |
+| `execution_allowed` | `Boolean` | Yes |  |
+| `github_ci_repository_id` | `String` | Yes |  |
+| `head_sha` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `metadata` | `Hash` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `parser_version` | `String` | Yes |  |
+| `pull_request_number` | `Object` | Yes |  |
+| `ref_name` | `Object` | Yes |  |
+| `referenced_actions` | `Array` | Yes |  |
+| `required_secrets` | `Array` | Yes |  |
+| `runner_labels` | `Array` | Yes |  |
+| `source_blob_sha` | `Object` | Yes |  |
+| `source_sha` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `supported_features` | `Hash` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+| `warnings` | `Array` | Yes |  |
+| `workflow_name` | `Object` | Yes |  |
+| `workflow_path` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.GithubCiRepositoryCompatibilityReport.list({ "github_ci_repository_id" => "example", "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.GithubCiRepositoryCompatibilityReport.load({ "id" => "github_ci_repository_compatibility_report_id", "github_ci_repository_id" => "github_ci_repository_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubCiRepositoryCompatibilityReportEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## GithubConnectionEntity
 
 ```ruby
@@ -10995,6 +21895,1220 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `GithubConnectionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubIntegrationEntity
+
+```ruby
+github_integration = client.GithubIntegration
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `Object` | Yes |  |
+| `account_login` | `String` | Yes |  |
+| `connection_status` | `String` | Yes |  |
+| `connection_status_label` | `String` | Yes |  |
+| `github_installation` | `Object` | Yes |  |
+| `health` | `Hash` | Yes |  |
+| `id` | `String` | Yes |  |
+| `imported_repositories_count` | `Integer` | Yes |  |
+| `imported_repositories_count_label` | `String` | Yes |  |
+| `organization` | `Hash` | Yes |  |
+| `pagination` | `Hash` | Yes |  |
+| `repositories` | `Array` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.GithubIntegration.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.GithubIntegration.load({ "id" => "github_integration_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubIntegrationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingEntity
+
+```ruby
+github_onboarding = client.GithubOnboarding
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accounts` | `Array` | Yes |  |
+| `active_batch_id` | `Object` | Yes | The batch the wizard's import step should resume — the most recent batch still working, else the most recent overall. |
+| `batches` | `Array` | Yes |  |
+| `capabilities` | `Hash` | Yes |  |
+| `installations` | `Array` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.GithubOnboarding.load({ "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubOnboardingEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingBranchEntity
+
+```ruby
+github_onboarding_branch = client.GithubOnboardingBranch
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `branches` | `Array` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.GithubOnboardingBranch.list({ "organization_id" => "example", "github_app_installation_id" => "example", "name" => "example", "owner" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubOnboardingBranchEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingImportEntity
+
+```ruby
+github_onboarding_import = client.GithubOnboardingImport
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_login` | `String` | Yes |  |
+| `complete` | `Boolean` | Yes | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `String` | Yes |  |
+| `failed_item_count` | `Integer` | Yes |  |
+| `github_app_installation_id` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `imported_item_count` | `Integer` | Yes |  |
+| `item_count` | `Integer` | Yes |  |
+| `items` | `Array` | Yes |  |
+| `repositories` | `Object` | Yes |  |
+| `status` | `String` | Yes |  |
+| `terminal_item_count` | `Integer` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.GithubOnboardingImport.create({
+  "organization_id" => "example_organization_id", # String
+  "github_app_installation_id" => "example_github_app_installation_id", # String
+  "repositories" => "example_repositories", # Object
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubOnboardingImportEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingImportBatchEntity
+
+```ruby
+github_onboarding_import_batch = client.GithubOnboardingImportBatch
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_login` | `String` | Yes |  |
+| `complete` | `Boolean` | Yes | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `String` | Yes |  |
+| `failed_item_count` | `Integer` | Yes |  |
+| `github_app_installation_id` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `imported_item_count` | `Integer` | Yes |  |
+| `item_count` | `Integer` | Yes |  |
+| `items` | `Array` | Yes |  |
+| `status` | `String` | Yes |  |
+| `terminal_item_count` | `Integer` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.GithubOnboardingImportBatch.load({ "id" => "github_onboarding_import_batch_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubOnboardingImportBatchEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingImportItemEntity
+
+```ruby
+github_onboarding_import_item = client.GithubOnboardingImportItem
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubOnboardingImportItemEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubPullRequestEntity
+
+```ruby
+github_pull_request = client.GithubPullRequest
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capabilities` | `Hash` | Yes |  |
+| `content` | `Hash` | Yes |  |
+| `fetched_at` | `String` | Yes |  |
+| `id` | `String` | No |  |
+| `magic_merge` | `Object` | Yes |  |
+| `pull_request` | `Object` | Yes |  |
+| `stack` | `Hash` | Yes |  |
+| `transcript_paths` | `Array` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.GithubPullRequest.load({ "id" => "github_pull_request_id", "organization_id" => "organization_id", "pull_request_id" => "pull_request_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubPullRequestEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerAdmissionEntity
+
+```ruby
+github_runner_admission = client.GithubRunnerAdmission
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.GithubRunnerAdmission.create({
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubRunnerAdmissionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerCacheEntity
+
+```ruby
+github_runner_cache = client.GithubRunnerCache
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `entry_id` | `String` | No |  |
+| `key` | `String` | No |  |
+| `matched_key` | `String` | No |  |
+| `ok` | `Boolean` | Yes |  |
+| `operation` | `String` | Yes |  |
+| `restore_keys` | `Array` | No |  |
+| `signed_download_url` | `String` | No |  |
+| `size_bytes` | `String` | No |  |
+| `upload_path` | `String` | No |  |
+| `version` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.GithubRunnerCache.create({
+  "operation" => "example_operation", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubRunnerCacheEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerEgressEntity
+
+```ruby
+github_runner_egress = client.GithubRunnerEgress
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_request` | `Boolean` | Yes |  |
+| `cidr` | `Object` | Yes |  |
+| `ipv4` | `Object` | Yes |  |
+| `requested_at_label` | `Object` | Yes |  |
+| `status` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.GithubRunnerEgress.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.GithubRunnerEgress.load({ "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubRunnerEgressEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerHistoryEntity
+
+```ruby
+github_runner_history = client.GithubRunnerHistory
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `Array` | Yes |  |
+| `counts` | `Hash` | Yes |  |
+| `observed_at` | `String` | Yes |  |
+| `pagination` | `Hash` | Yes |  |
+| `repositories` | `Array` | Yes |  |
+| `runs` | `Array` | Yes |  |
+| `setup` | `Object` | No | CI onboarding. |
+| `success_rate` | `Object` | Yes |  |
+| `usage` | `Hash` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.GithubRunnerHistory.load({ "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubRunnerHistoryEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerImageEntity
+
+```ruby
+github_runner_image = client.GithubRunnerImage
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `image_reference` | `String` | Yes | Immutable linux/amd64 Ubuntu 24.04 image, registry/repository@sha256:digest, with Node 22+ |
+| `last_error` | `Object` | Yes |  |
+| `modal_image_id` | `Object` | Yes |  |
+| `name` | `String` | Yes |  |
+| `registry_secret_name` | `Object` | Yes | Name of an organization CI secret containing REGISTRY_USERNAME and REGISTRY_PASSWORD JSON fields |
+| `status` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `created_at` | - | - | - |
+| `id` | - | - | - |
+| `image_reference` | - | - | - |
+| `last_error` | - | - | - |
+| `modal_image_id` | - | - | - |
+| `name` | - | - | - |
+| `registry_secret_name` | - | - | Yes |
+| `status` | - | - | - |
+| `updated_at` | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.GithubRunnerImage.create({
+  "organization_id" => "example_organization_id", # String
+  "image_reference" => "example_image_reference", # String
+  "name" => "example_name", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.GithubRunnerImage.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.GithubRunnerImage.load({ "id" => "github_runner_image_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubRunnerImageEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerPoolEntity
+
+```ruby
+github_runner_pool = client.GithubRunnerPool
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cpu_millicores` | `Integer` | Yes |  |
+| `enabled` | `Boolean` | Yes |  |
+| `github_app_installation_id` | `String` | Yes |  |
+| `github_repository_id` | `String` | Yes |  |
+| `github_runner_image` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `image` | `Object` | No | Organization image name or ID; null restores the standard image |
+| `invocations` | `Array` | Yes |  |
+| `label` | `String` | Yes |  |
+| `last_error` | `Object` | Yes |  |
+| `last_polled_at` | `Object` | Yes |  |
+| `max_concurrency` | `Integer` | Yes |  |
+| `memory_mb` | `Integer` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `provider` | `String` | Yes |  |
+| `repository_full_name` | `String` | Yes |  |
+| `runtime_kind` | `String` | Yes |  |
+| `timeout_seconds` | `Integer` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | update |
+| --- | --- | --- | --- |
+| `cpu_millicores` | - | - | - |
+| `enabled` | - | Yes | Yes |
+| `github_app_installation_id` | - | - | - |
+| `github_repository_id` | - | - | - |
+| `github_runner_image` | - | - | - |
+| `id` | - | - | - |
+| `image` | - | - | - |
+| `invocations` | - | - | - |
+| `label` | - | Yes | - |
+| `last_error` | - | - | - |
+| `last_polled_at` | - | - | - |
+| `max_concurrency` | - | Yes | Yes |
+| `memory_mb` | - | - | - |
+| `organization_id` | - | - | - |
+| `provider` | - | Yes | Yes |
+| `repository_full_name` | - | - | - |
+| `runtime_kind` | - | - | - |
+| `timeout_seconds` | - | Yes | Yes |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.GithubRunnerPool.create({
+  "organization_id" => "example_organization_id", # String
+  "github_app_installation_id" => "example_github_app_installation_id", # String
+  "repository_full_name" => "example_repository_full_name", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.GithubRunnerPool.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.GithubRunnerPool.update({
+  "id" => "id",
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubRunnerPoolEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerSetupEntity
+
+```ruby
+github_runner_setup = client.GithubRunnerSetup
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `error` | `Object` | Yes |  |
+| `github_repository_connection_id` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `pull_request_url` | `Object` | Yes |  |
+| `repository_full_name` | `String` | Yes |  |
+| `roder_thread_id` | `Object` | Yes |  |
+| `runner_labels` | `Array` | Yes |  |
+| `status` | `String` | Yes |  |
+| `status_label` | `String` | Yes |  |
+| `summary` | `Object` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.GithubRunnerSetup.create({
+  "organization_id" => "example_organization_id", # String
+  "github_repository_connection_id" => "example_github_repository_connection_id", # String
+})
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.GithubRunnerSetup.load({ "id" => "github_runner_setup_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GithubRunnerSetupEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GitlabEntity
+
+```ruby
+gitlab = client.Gitlab
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `configured` | `Boolean` | Yes |  |
+| `connections` | `Array` | Yes |  |
+| `integrations` | `Array` | Yes |  |
+| `inventory_error` | `Object` | No |  |
+| `next_page` | `Object` | Yes |  |
+| `organization` | `Hash` | Yes |  |
+| `projects` | `Array` | Yes |  |
+| `redirect_uri` | `Object` | Yes | The OAuth redirect URI a self-managed GitLab application must use; null when GitLab callbacks aren't configured. |
+| `selected_integration_id` | `Object` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.Gitlab.load({ "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GitlabEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GitlabConnectionEntity
+
+```ruby
+gitlab_connection = client.GitlabConnection
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GitlabConnectionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GitlabImportEntity
+
+```ruby
+gitlab_import = client.GitlabImport
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `integration_id` | `String` | Yes |  |
+| `project_id` | `Integer` | Yes |  |
+| `repo_slug` | `String` | No |  |
+| `source_branch` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.GitlabImport.create({
+  "organization_id" => "example_organization_id", # String
+  "integration_id" => "example_integration_id", # String
+  "project_id" => 1, # Integer
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GitlabImportEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GitlabOauthEntity
+
+```ruby
+gitlab_oauth = client.GitlabOauth
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GitlabOauthEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## GrantAllAgentEntity
+
+```ruby
+grant_all_agent = client.GrantAllAgent
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `all_agents_access` | `Boolean` | Yes |  |
+| `enabled` | `Boolean` | Yes |  |
+| `execution_available` | `Boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.GrantAllAgent.create({
+  "device_id" => "example_device_id", # String
+  "organization_id" => "example_organization_id", # String
+  "enabled" => true, # Boolean
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `GrantAllAgentEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -11160,6 +23274,54 @@ Return the entity name.
 
 ---
 
+## IdentityOrganizationEntity
+
+```ruby
+identity_organization = client.IdentityOrganization
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `IdentityOrganizationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## ImageRepositoryEntity
 
 ```ruby
@@ -11250,6 +23412,141 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `ImageRepositoryEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ImageRepositoryTagEntity
+
+```ruby
+image_repository_tag = client.ImageRepositoryTag
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `image_repository` | `Hash` | Yes |  |
+| `name` | `String` | Yes |  |
+| `registry_url` | `String` | Yes |  |
+| `tags` | `Array` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ImageRepositoryTag.list({ "image_repository_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ImageRepositoryTagEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ImportBranchPolicyEntity
+
+```ruby
+import_branch_policy = client.ImportBranchPolicy
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `Boolean` | Yes |  |
+| `can_manage_sandbox_region` | `Boolean` | Yes |  |
+| `dedicated_outbound_ip_addresses` | `Array` | Yes | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `String` | Yes |  |
+| `organization` | `Hash` | Yes |  |
+| `sandbox_regions` | `Array` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ImportBranchPolicy.load({ "organization_id" => "organization_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.ImportBranchPolicy.patch({
+  "organization_id" => "organization_id",
+  # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.ImportBranchPolicy.update({
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ImportBranchPolicyEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -11456,6 +23753,310 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `InvitationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## InvocationControlEntity
+
+```ruby
+invocation_control = client.InvocationControl
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `InvocationControlEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## JobLogChunkEntity
+
+```ruby
+job_log_chunk = client.JobLogChunk
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `byte_size` | `Integer` | Yes |  |
+| `ci_job_id` | `Object` | Yes |  |
+| `ci_pipeline_run_id` | `Object` | Yes |  |
+| `ci_step_id` | `Object` | Yes |  |
+| `content` | `String` | Yes |  |
+| `content_format` | `String` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `sequence_number` | `Integer` | Yes |  |
+| `stream` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.JobLogChunk.create({
+  "job_id" => "example_job_id", # String
+  "pipeline_id" => "example_pipeline_id", # String
+  "run_id" => "example_run_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.JobLogChunk.list({ "job_id" => "example", "pipeline_id" => "example", "run_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `JobLogChunkEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## JobStepEntity
+
+```ruby
+job_step = client.JobStep
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.JobStep.create({
+  "job_id" => "example_job_id", # String
+  "pipeline_id" => "example_pipeline_id", # String
+  "run_id" => "example_run_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.JobStep.list({ "job_id" => "example", "pipeline_id" => "example", "run_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.JobStep.patch({
+  "id" => "id",
+  "job_id" => "job_id",
+  "pipeline_id" => "pipeline_id",
+  "run_id" => "run_id",
+  # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.JobStep.update({
+  "id" => "id",
+  "job_id" => "job_id",
+  "pipeline_id" => "pipeline_id",
+  "run_id" => "run_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `JobStepEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## JobWorkspaceEntity
+
+```ruby
+job_workspace = client.JobWorkspace
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.JobWorkspace.create({
+  "job_id" => "example_job_id", # String
+  "pipeline_id" => "example_pipeline_id", # String
+  "run_id" => "example_run_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.JobWorkspace.list({ "job_id" => "example", "pipeline_id" => "example", "run_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.JobWorkspace.patch({
+  "id" => "id",
+  "job_id" => "job_id",
+  "pipeline_id" => "pipeline_id",
+  "run_id" => "run_id",
+  # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.JobWorkspace.update({
+  "id" => "id",
+  "job_id" => "job_id",
+  "pipeline_id" => "pipeline_id",
+  "run_id" => "run_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `JobWorkspaceEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -11684,6 +24285,636 @@ Return the entity name.
 
 ---
 
+## KnownEntity
+
+```ruby
+known = client.Known
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `KnownEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## LabelEntity
+
+```ruby
+label = client.Label
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `changes_count` | `Integer` | Yes |  |
+| `id` | `String` | Yes |  |
+| `name` | `String` | Yes | Display name |
+| `slug` | `String` | Yes | Normalized identity used for filtering and lookup. |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.Label.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `LabelEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## LeaseArtifactEntity
+
+```ruby
+lease_artifact = client.LeaseArtifact
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.LeaseArtifact.create({
+  "lease_id" => "example_lease_id", # String
+  "node_id" => "example_node_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `LeaseArtifactEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## LeaseCacheEntity
+
+```ruby
+lease_cache = client.LeaseCache
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `LeaseCacheEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## LeaseLogChunkEntity
+
+```ruby
+lease_log_chunk = client.LeaseLogChunk
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.LeaseLogChunk.create({
+  "lease_id" => "example_lease_id", # String
+  "node_id" => "example_node_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `LeaseLogChunkEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## LeaseReconciliationEntity
+
+```ruby
+lease_reconciliation = client.LeaseReconciliation
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `LeaseReconciliationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## LeaseStepEntity
+
+```ruby
+lease_step = client.LeaseStep
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.LeaseStep.update({
+  "id" => "id",
+  "lease_id" => "lease_id",
+  "node_id" => "node_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `LeaseStepEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## LeaseVerifyDiagnosticEntity
+
+```ruby
+lease_verify_diagnostic = client.LeaseVerifyDiagnostic
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `browser_events` | `Hash` | Yes |  |
+| `live_browser` | `Hash` | Yes |  |
+| `live_view` | `Hash` | Yes | The tester's read-only live stream for page viewers. |
+| `steps` | `Array` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.LeaseVerifyDiagnostic.create({
+  "lease_id" => "example_lease_id", # String
+  "swarm_id" => "example_swarm_id", # String
+  "task_id" => "example_task_id", # String
+  "browser_events" => {}, # Hash
+  "live_browser" => {}, # Hash
+  "live_view" => {}, # Hash
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `LeaseVerifyDiagnosticEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## LeaseVerifySecretEntity
+
+```ruby
+lease_verify_secret = client.LeaseVerifySecret
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.LeaseVerifySecret.create({
+  "lease_id" => "example_lease_id", # String
+  "swarm_id" => "example_swarm_id", # String
+  "task_id" => "example_task_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `LeaseVerifySecretEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## LeaseWorkspaceEntity
+
+```ruby
+lease_workspace = client.LeaseWorkspace
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.LeaseWorkspace.update({
+  "id" => "id",
+  "lease_id" => "lease_id",
+  "node_id" => "node_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `LeaseWorkspaceEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## LocalAgentDecisionEntity
+
+```ruby
+local_agent_decision = client.LocalAgentDecision
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `request` | `Hash` | Yes | A native OpenAI Decisions request for gpt-6-luna, at most 1600 KiB, with inline images only |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.LocalAgentDecision.create({
+  "organization_id" => "example_organization_id", # String
+  "request" => {}, # Hash
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `LocalAgentDecisionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## LocalAgentResponseEntity
+
+```ruby
+local_agent_response = client.LocalAgentResponse
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `input` | `Array` | Yes |  |
+| `model` | `String` | Yes |  |
+| `service_tier` | `Object` | No |  |
+| `store` | `Boolean` | Yes |  |
+| `stream` | `Boolean` | Yes |  |
+| `tools` | `Array` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.LocalAgentResponse.create({
+  "organization_id" => "example_organization_id", # String
+  "input" => [], # Array
+  "model" => "example_model", # String
+  "store" => true, # Boolean
+  "stream" => true, # Boolean
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `LocalAgentResponseEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## LocalThreadDeliveryEntity
 
 ```ruby
@@ -11886,6 +25117,262 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `LocationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## LogStreamChunkEntity
+
+```ruby
+log_stream_chunk = client.LogStreamChunk
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.LogStreamChunk.create({
+  "log_stream_id" => "example_log_stream_id", # String
+  "space_id" => "example_space_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.LogStreamChunk.list({ "log_stream_id" => "example", "space_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.LogStreamChunk.load({ "id" => "log_stream_chunk_id", "log_stream_id" => "log_stream_id", "space_id" => "space_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `LogStreamChunkEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## LogoImageEntity
+
+```ruby
+logo_image = client.LogoImage
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_products` | `Array` | Yes | Products this organization has activated (PRD 144). |
+| `agents_only` | `Boolean` | No | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `Boolean` | Yes | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `github_prs_authored_by_change_author` | `Boolean` | Yes |  |
+| `id` | `String` | Yes |  |
+| `logo_url` | `Object` | Yes |  |
+| `member_count` | `Integer` | Yes |  |
+| `name` | `String` | Yes |  |
+| `pending_invitation_count` | `Integer` | Yes |  |
+| `personal` | `Boolean` | Yes |  |
+| `repository_count` | `Integer` | Yes |  |
+| `role` | `Object` | Yes |  |
+| `sandbox_region` | `String` | Yes |  |
+| `shared_agent_personal_accounts_enabled` | `Boolean` | No | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `String` | Yes |  |
+| `source_control_providers` | `Array` | No | Connected source control providers for this organization. |
+| `source_ui_enabled` | `Boolean` | No | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `String` | Yes | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+| `verify_pr_scenario_writing_enabled` | `Boolean` | Yes |  |
+
+### Operations
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.LogoImage.remove({ "organization_id" => "organization_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.LogoImage.update({
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `LogoImageEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## MarketingSettingEntity
+
+```ruby
+marketing_setting = client.MarketingSetting
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `call_first` | `Boolean` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.MarketingSetting.list
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `MarketingSettingEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## McpOauthEntity
+
+```ruby
+mcp_oauth = client.McpOauth
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `McpOauthEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -12405,6 +25892,86 @@ Return the entity name.
 
 ---
 
+## MergeQueueEntryEntity
+
+```ruby
+merge_queue_entry = client.MergeQueueEntry
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `analytics` | `Hash` | Yes | Queue performance for the reporting window. |
+| `change_id` | `Object` | No |  |
+| `expected_target_commit_id` | `Object` | No |  |
+| `expected_target_version` | `Object` | No |  |
+| `expected_version` | `Integer` | Yes |  |
+| `github_pr_number` | `Object` | No |  |
+| `id` | `String` | No |  |
+| `idempotency_key` | `String` | Yes |  |
+| `kind` | `String` | Yes |  |
+| `policy` | `Hash` | Yes |  |
+| `priority` | `String` | No |  |
+| `queue` | `Hash` | Yes |  |
+| `target_branches` | `Array` | No | Bookmark names for the target picker. |
+| `when_ready` | `Object` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.MergeQueueEntry.create({
+  "merge_queue_id" => "example_merge_queue_id", # String
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "expected_version" => 1, # Integer
+  "idempotency_key" => "example_idempotency_key", # String
+  "kind" => "example_kind", # String
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.MergeQueueEntry.remove({ "id" => "merge_queue_entry_id", "merge_queue_id" => "merge_queue_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `MergeQueueEntryEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## MergeRequestEntity
 
 ```ruby
@@ -12530,6 +26097,72 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `MergeRequestEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## MergeResolutionEntity
+
+```ruby
+merge_resolution = client.MergeResolution
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `String` | Yes |  |
+| `base` | `String` | Yes | Common ancestor file contents |
+| `content` | `Object` | No |  |
+| `context` | `Hash` | No | Optional surrounding files keyed by path |
+| `duration_ms` | `Integer` | Yes |  |
+| `fallback` | `Boolean` | Yes |  |
+| `model` | `String` | No |  |
+| `ours` | `String` | Yes | Current / left file contents |
+| `path` | `String` | No | Repository-relative path of the conflicted file |
+| `resolved` | `Boolean` | Yes |  |
+| `theirs` | `String` | Yes | Incoming / right file contents |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.MergeResolution.create({
+  "base" => "example_base", # String
+  "ours" => "example_ours", # String
+  "theirs" => "example_theirs", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `MergeResolutionEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -12715,6 +26348,219 @@ Return the entity name.
 
 ---
 
+## MetronomeWebhookEntity
+
+```ruby
+metronome_webhook = client.MetronomeWebhook
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.MetronomeWebhook.create({
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `MetronomeWebhookEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ModelSubscriptionAccountEntity
+
+```ruby
+model_subscription_account = client.ModelSubscriptionAccount
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accounts` | `Array` | Yes |  |
+| `agents` | `Array` | Yes |  |
+| `can_disconnect` | `Boolean` | Yes |  |
+| `connection_agent` | `Object` | Yes |  |
+| `email` | `String` | No |  |
+| `id` | `String` | Yes |  |
+| `label` | `String` | Yes |  |
+| `provider` | `String` | Yes |  |
+| `saved` | `Boolean` | Yes |  |
+| `status` | `String` | Yes |  |
+| `usable` | `Boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ModelSubscriptionAccount.create({
+  "label" => "example_label", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ModelSubscriptionAccount.list
+results.each { |item| puts item.data_get }
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.ModelSubscriptionAccount.patch({
+  "id" => "model_subscription_account_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.ModelSubscriptionAccount.remove({ "id" => "model_subscription_account_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.ModelSubscriptionAccount.update({
+  "id" => "model_subscription_account_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ModelSubscriptionAccountEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ModelSubscriptionAccountConnectionEntity
+
+```ruby
+model_subscription_account_connection = client.ModelSubscriptionAccountConnection
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ModelSubscriptionAccountConnection.load({ "id" => "model_subscription_account_connection_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.ModelSubscriptionAccountConnection.update({
+  "id" => "model_subscription_account_connection_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ModelSubscriptionAccountConnectionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## NetworkConnectionEntity
 
 ```ruby
@@ -12809,6 +26655,279 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `NetworkConnectionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## NetworkingSpaceEntity
+
+```ruby
+networking_space = client.NetworkingSpace
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.NetworkingSpace.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.NetworkingSpace.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.NetworkingSpace.load({ "id" => "networking_space_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.NetworkingSpace.patch({
+  "id" => "networking_space_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.NetworkingSpace.remove({ "id" => "networking_space_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.NetworkingSpace.update({
+  "id" => "networking_space_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `NetworkingSpaceEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## NodeEntity
+
+```ruby
+node = client.Node
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `Object` | Yes |  |
+| `account_id` | `Object` | Yes |  |
+| `account_login` | `String` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `installation_id` | `String` | Yes |  |
+| `installed_at` | `Object` | Yes |  |
+| `installed_at_label` | `Object` | Yes |  |
+| `manage_access_url` | `String` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `permission_entries` | `Array` | Yes | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `Hash` | Yes |  |
+| `status` | `String` | Yes |  |
+| `suspended_at` | `Object` | Yes |  |
+| `suspended_at_label` | `Object` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.Node.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `NodeEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## NodeCertificateEntity
+
+```ruby
+node_certificate = client.NodeCertificate
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `NodeCertificateEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## NodeLeaseEntity
+
+```ruby
+node_lease = client.NodeLease
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.NodeLease.list({ "node_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `NodeLeaseEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -12941,6 +27060,468 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `NomadLogEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## NowEntity
+
+```ruby
+now = client.Now
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `needs_attention` | `Array` | Yes |  |
+| `pagination` | `Hash` | Yes |  |
+| `recently_landed` | `Array` | Yes |  |
+| `shipping_now` | `Array` | Yes |  |
+| `summary` | `Hash` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.Now.load({ "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `NowEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ObservabilityClickhouseClusterEntity
+
+```ruby
+observability_clickhouse_cluster = client.ObservabilityClickhouseCluster
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ObservabilityClickhouseCluster.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ObservabilityClickhouseCluster.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ObservabilityClickhouseCluster.load({ "id" => "observability_clickhouse_cluster_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.ObservabilityClickhouseCluster.patch({
+  "id" => "observability_clickhouse_cluster_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.ObservabilityClickhouseCluster.remove({ "id" => "observability_clickhouse_cluster_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.ObservabilityClickhouseCluster.update({
+  "id" => "observability_clickhouse_cluster_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ObservabilityClickhouseClusterEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ObservabilityQuickwitClusterEntity
+
+```ruby
+observability_quickwit_cluster = client.ObservabilityQuickwitCluster
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ObservabilityQuickwitCluster.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ObservabilityQuickwitCluster.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ObservabilityQuickwitCluster.load({ "id" => "observability_quickwit_cluster_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.ObservabilityQuickwitCluster.patch({
+  "id" => "observability_quickwit_cluster_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.ObservabilityQuickwitCluster.remove({ "id" => "observability_quickwit_cluster_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.ObservabilityQuickwitCluster.update({
+  "id" => "observability_quickwit_cluster_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ObservabilityQuickwitClusterEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ObservabilitySpaceEntity
+
+```ruby
+observability_space = client.ObservabilitySpace
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ObservabilitySpace.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ObservabilitySpace.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ObservabilitySpace.load({ "id" => "observability_space_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.ObservabilitySpace.patch({
+  "id" => "observability_space_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.ObservabilitySpace.remove({ "id" => "observability_space_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.ObservabilitySpace.update({
+  "id" => "observability_space_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ObservabilitySpaceEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OpenapiEntity
+
+```ruby
+openapi = client.Openapi
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.Openapi.load()
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OpenapiEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrgInvitationEntity
+
+```ruby
+org_invitation = client.OrgInvitation
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+| `invitation` | `Hash` | Yes |  |
+| `registration_options` | `Object` | Yes |  |
+| `requires_password_setup` | `Boolean` | Yes |  |
+| `start_guided_setup` | `Boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.OrgInvitation.load({ "id" => "org_invitation_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrgInvitationEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -13087,6 +27668,1333 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `OrganizationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationAppEntity
+
+```ruby
+organization_app = client.OrganizationApp
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.OrganizationApp.list({ "organization_id" => "example", "native_agent_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationAppEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationControlEntity
+
+```ruby
+organization_control = client.OrganizationControl
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationControlEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationDeviceEntity
+
+```ruby
+organization_device = client.OrganizationDevice
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationDeviceEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationIdentityCertificateEntity
+
+```ruby
+organization_identity_certificate = client.OrganizationIdentityCertificate
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.OrganizationIdentityCertificate.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.OrganizationIdentityCertificate.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.OrganizationIdentityCertificate.load({ "id" => "organization_identity_certificate_id", "organization_id" => "organization_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.OrganizationIdentityCertificate.patch({
+  "id" => "organization_identity_certificate_id",
+  "organization_id" => "organization_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.OrganizationIdentityCertificate.remove({ "id" => "organization_identity_certificate_id", "organization_id" => "organization_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.OrganizationIdentityCertificate.update({
+  "id" => "organization_identity_certificate_id",
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationIdentityCertificateEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationInteractionEntity
+
+```ruby
+organization_interaction = client.OrganizationInteraction
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.OrganizationInteraction.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationInteractionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationInvitationEntity
+
+```ruby
+organization_invitation = client.OrganizationInvitation
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email` | `String` | Yes |  |
+| `id` | `String` | No |  |
+| `role` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.OrganizationInvitation.create({
+  "organization_id" => "example_organization_id", # String
+  "email" => "example_email", # String
+  "role" => "example_role", # String
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.OrganizationInvitation.remove({ "id" => "organization_invitation_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationInvitationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationMessageFileEntity
+
+```ruby
+organization_message_file = client.OrganizationMessageFile
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.OrganizationMessageFile.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationMessageFileEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationOidcTrustEntity
+
+```ruby
+organization_oidc_trust = client.OrganizationOidcTrust
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.OrganizationOidcTrust.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.OrganizationOidcTrust.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.OrganizationOidcTrust.load({ "id" => "organization_oidc_trust_id", "organization_id" => "organization_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.OrganizationOidcTrust.patch({
+  "id" => "organization_oidc_trust_id",
+  "organization_id" => "organization_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.OrganizationOidcTrust.remove({ "id" => "organization_oidc_trust_id", "organization_id" => "organization_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.OrganizationOidcTrust.update({
+  "id" => "organization_oidc_trust_id",
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationOidcTrustEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationRunEventEntity
+
+```ruby
+organization_run_event = client.OrganizationRunEvent
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.OrganizationRunEvent.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationRunEventEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationRunOutcomeEntity
+
+```ruby
+organization_run_outcome = client.OrganizationRunOutcome
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.OrganizationRunOutcome.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationRunOutcomeEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationRunUsageEntity
+
+```ruby
+organization_run_usage = client.OrganizationRunUsage
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.OrganizationRunUsage.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationRunUsageEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSandboxEntity
+
+```ruby
+organization_sandbox = client.OrganizationSandbox
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationSandboxEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSecretEntity
+
+```ruby
+organization_secret = client.OrganizationSecret
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app_environment_id` | `Object` | Yes |  |
+| `app_service_id` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `created_by` | `Object` | Yes |  |
+| `current_version` | `Object` | Yes |  |
+| `description` | `Object` | Yes |  |
+| `env_key` | `String` | Yes |  |
+| `expose_to_build` | `Boolean` | Yes |  |
+| `expose_to_ci` | `Boolean` | Yes |  |
+| `hosted_app_id` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `last_accessed_at` | `Object` | Yes |  |
+| `last_accessed_at_label` | `Object` | Yes |  |
+| `last_accessed_by` | `Object` | Yes |  |
+| `latest_version_number` | `Object` | Yes |  |
+| `name` | `String` | Yes |  |
+| `organization_id` | `Object` | Yes |  |
+| `owner_service_account_id` | `Object` | Yes |  |
+| `rotation_policy` | `Object` | Yes |  |
+| `scope_kind` | `String` | Yes |  |
+| `slug` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.OrganizationSecret.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.OrganizationSecret.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.OrganizationSecret.load({ "id" => "organization_secret_id", "organization_id" => "organization_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.OrganizationSecret.patch({
+  "id" => "organization_secret_id",
+  "organization_id" => "organization_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.OrganizationSecret.remove({ "id" => "organization_secret_id", "organization_id" => "organization_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.OrganizationSecret.update({
+  "id" => "organization_secret_id",
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationSecretEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationServiceAccountEntity
+
+```ruby
+organization_service_account = client.OrganizationServiceAccount
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.OrganizationServiceAccount.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.OrganizationServiceAccount.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.OrganizationServiceAccount.load({ "id" => "organization_service_account_id", "organization_id" => "organization_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.OrganizationServiceAccount.patch({
+  "id" => "organization_service_account_id",
+  "organization_id" => "organization_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.OrganizationServiceAccount.remove({ "id" => "organization_service_account_id", "organization_id" => "organization_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.OrganizationServiceAccount.update({
+  "id" => "organization_service_account_id",
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationServiceAccountEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSettingEntity
+
+```ruby
+organization_setting = client.OrganizationSetting
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `concurrent_run_limit_override` | `Object` | No |  |
+| `customize_onboarding_packages` | `Boolean` | No |  |
+| `daily_run_limit_override` | `Object` | No |  |
+| `deployment_usage_visibility` | `String` | No |  |
+| `monthly_browser_minutes_limit_override` | `Object` | No |  |
+| `monthly_budget_dollars` | `Object` | No |  |
+| `name` | `String` | No |  |
+| `onboarding_custom_pricing` | `Boolean` | No |  |
+| `onboarding_package_keys` | `Array` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.OrganizationSetting.update({
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationSettingEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSiteEntity
+
+```ruby
+organization_site = client.OrganizationSite
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.OrganizationSite.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.OrganizationSite.list({ "organization_id" => "example", "native_agent_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.OrganizationSite.remove({ "id" => "organization_site_id", "organization_id" => "organization_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.OrganizationSite.update({
+  "id" => "organization_site_id",
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationSiteEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSubscriptionEntity
+
+```ruby
+organization_subscription = client.OrganizationSubscription
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationSubscriptionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationToolEntity
+
+```ruby
+organization_tool = client.OrganizationTool
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `arguments` | `Hash` | Yes |  |
+| `native_agent_id` | `String` | Yes |  |
+| `tool` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.OrganizationTool.create({
+  "organization_id" => "example_organization_id", # String
+  "arguments" => {}, # Hash
+  "native_agent_id" => "example_native_agent_id", # String
+  "tool" => "example_tool", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationToolEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OrganizationWorkloadIdentityEntity
+
+```ruby
+organization_workload_identity = client.OrganizationWorkloadIdentity
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.OrganizationWorkloadIdentity.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.OrganizationWorkloadIdentity.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.OrganizationWorkloadIdentity.load({ "id" => "organization_workload_identity_id", "organization_id" => "organization_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.OrganizationWorkloadIdentity.patch({
+  "id" => "organization_workload_identity_id",
+  "organization_id" => "organization_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.OrganizationWorkloadIdentity.remove({ "id" => "organization_workload_identity_id", "organization_id" => "organization_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.OrganizationWorkloadIdentity.update({
+  "id" => "organization_workload_identity_id",
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OrganizationWorkloadIdentityEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## OtelIngestEntity
+
+```ruby
+otel_ingest = client.OtelIngest
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `OtelIngestEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -13244,6 +29152,163 @@ Return the entity name.
 
 ---
 
+## PageArtefactEntity
+
+```ruby
+page_artefact = client.PageArtefact
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `artefact` | `Object` | Yes |  |
+| `automation` | `Object` | Yes |  |
+| `automation_invocation_id` | `Object` | No |  |
+| `byte_size` | `Integer` | Yes |  |
+| `checksum_sha256` | `String` | Yes |  |
+| `comment_threads` | `Array` | Yes |  |
+| `content_type` | `String` | Yes |  |
+| `created_at` | `Object` | No |  |
+| `created_by_user_id` | `Object` | No |  |
+| `description` | `Object` | No |  |
+| `document_key` | `String` | No | Stable document identity shared by all revisions. |
+| `draft` | `Object` | Yes | The autosaved working copy of the newest Markdown version; null for older versions and other files. |
+| `entrypoint` | `String` | No |  |
+| `expires_at` | `Object` | No |  |
+| `filename` | `String` | Yes |  |
+| `files` | `Array` | No |  |
+| `harness` | `Object` | No |  |
+| `harness_version` | `Object` | No |  |
+| `id` | `String` | Yes |  |
+| `kind` | `String` | Yes |  |
+| `kinds` | `Array` | Yes |  |
+| `model` | `Object` | No |  |
+| `organization` | `Hash` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `pagination` | `Hash` | Yes |  |
+| `permissions` | `Hash` | Yes |  |
+| `preview` | `Hash` | Yes |  |
+| `published_at` | `Object` | No |  |
+| `published_at_label` | `Object` | Yes |  |
+| `publisher` | `Object` | Yes |  |
+| `repository` | `Object` | Yes |  |
+| `repository_id` | `Object` | No |  |
+| `selected_path` | `String` | No |  |
+| `slug` | `String` | Yes |  |
+| `source` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `title` | `String` | Yes |  |
+| `vcs_agent_checkpoint_id` | `Object` | No |  |
+| `vcs_agent_session_id` | `Object` | No |  |
+| `version` | `Integer` | Yes |  |
+| `versions` | `Array` | Yes |  |
+| `view_url` | `String` | Yes |  |
+| `web_url` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.PageArtefact.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.PageArtefact.load({ "id" => "page_artefact_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `PageArtefactEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## PageCiPipelineRunEntity
+
+```ruby
+page_ci_pipeline_run = client.PageCiPipelineRun
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `error` | `Object` | Yes |  |
+| `id` | `String` | No |  |
+| `jobs` | `Array` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.PageCiPipelineRun.load({ "id" => "page_ci_pipeline_run_id", "pipeline_id" => "pipeline_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `PageCiPipelineRunEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## PageProjectRunEntity
 
 ```ruby
@@ -13299,6 +29364,254 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `PageProjectRunEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## PageRepoVcCommitEntity
+
+```ruby
+page_repo_vc_commit = client.PageRepoVcCommit
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `commit` | `Object` | Yes |  |
+| `diff_path` | `String` | Yes | Fingerprinted path serving this commit range's file diff. |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.PageRepoVcCommit.load({ "id" => "page_repo_vc_commit_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `PageRepoVcCommitEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## PagesBillingEntity
+
+```ruby
+pages_billing = client.PagesBilling
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `Array` | Yes |  |
+| `breakdown` | `Object` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `Object` | Yes |  |
+| `can_manage_contact` | `Boolean` | Yes |  |
+| `can_manage_extra_spend` | `Boolean` | Yes |  |
+| `can_manage_local_subscription` | `Boolean` | Yes |  |
+| `can_manage_payment_method` | `Boolean` | Yes |  |
+| `can_set_up_billing` | `Boolean` | Yes |  |
+| `customer` | `Object` | Yes |  |
+| `deployment_usage_visible` | `Boolean` | Yes |  |
+| `entitlements` | `Hash` | Yes |  |
+| `extra_spend_enabled` | `Boolean` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `Boolean` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `String` | Yes |  |
+| `package` | `Object` | Yes |  |
+| `prepaid` | `Object` | Yes |  |
+| `preview` | `Object` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `Hash` | Yes |  |
+| `stripe` | `Hash` | Yes |  |
+| `subscription` | `Object` | Yes |  |
+| `token_account` | `Hash` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.PagesBilling.load({ "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `PagesBillingEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## PagesGithubOnboardingEntity
+
+```ruby
+pages_github_onboarding = client.PagesGithubOnboarding
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `onboarding` | `Hash` | Yes |  |
+| `organization` | `Hash` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.PagesGithubOnboarding.load({ "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `PagesGithubOnboardingEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## PagesMemberEntity
+
+```ruby
+pages_member = client.PagesMember
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accepted_at` | `Object` | Yes |  |
+| `accepted_by_user` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `email` | `String` | Yes |  |
+| `email_delivery_status` | `String` | No |  |
+| `expires_at` | `Object` | Yes |  |
+| `expires_at_label` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `invite_url` | `Object` | Yes |  |
+| `invited_by_user` | `Object` | Yes |  |
+| `organization` | `Hash` | Yes |  |
+| `revoked_at` | `Object` | Yes |  |
+| `role` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.PagesMember.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `PagesMemberEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -13546,6 +29859,422 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `PagesProjectScenarioEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## PagesRegistryEntity
+
+```ruby
+pages_registry = client.PagesRegistry
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_repository_count` | `Integer` | Yes |  |
+| `error` | `Object` | Yes |  |
+| `pagination` | `Hash` | Yes |  |
+| `repositories` | `Array` | Yes |  |
+| `repository_count` | `Integer` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.PagesRegistry.load({ "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `PagesRegistryEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## PagesSessionEntity
+
+```ruby
+pages_session = client.PagesSession
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter` | `String` | No |  |
+| `created_at` | `Object` | Yes |  |
+| `cursor` | `String` | No |  |
+| `ended_at` | `Object` | Yes |  |
+| `external_session_id` | `String` | Yes |  |
+| `facets` | `Hash` | Yes |  |
+| `from` | `String` | No |  |
+| `github_access_warnings` | `Array` | No |  |
+| `harness` | `String` | Yes | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `String` | Yes |  |
+| `last_activity_at` | `Object` | Yes | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `Object` | Yes |  |
+| `limit` | `Integer` | No |  |
+| `markers` | `Array` | Yes |  |
+| `max_bytes` | `Integer` | No |  |
+| `mode` | `String` | No |  |
+| `offset` | `Integer` | No |  |
+| `pagination` | `Hash` | Yes |  |
+| `query` | `String` | No |  |
+| `repo` | `String` | No |  |
+| `repository` | `Object` | Yes |  |
+| `search` | `Object` | No |  |
+| `search_enabled` | `Boolean` | No |  |
+| `session` | `Object` | Yes | Identical serialization to the org sessions page's expanded session, so the web reuses one session-detail builder. |
+| `sessions` | `Array` | Yes |  |
+| `started_at` | `Object` | Yes |  |
+| `stats` | `Hash` | Yes |  |
+| `status` | `String` | No |  |
+| `title` | `Object` | Yes |  |
+| `to` | `String` | No |  |
+| `token_stats` | `Object` | Yes |  |
+| `transcript_index` | `Object` | Yes |  |
+| `transcript_stats` | `Object` | Yes |  |
+| `updated_at` | `Object` | Yes |  |
+| `user` | `Object` | Yes |  |
+| `user_id` | `String` | No |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `adapter` | - | Yes | - |
+| `created_at` | - | - | - |
+| `cursor` | - | - | - |
+| `ended_at` | - | - | - |
+| `external_session_id` | - | - | - |
+| `facets` | - | - | - |
+| `from` | - | - | - |
+| `github_access_warnings` | - | - | - |
+| `harness` | - | - | - |
+| `id` | - | - | - |
+| `last_activity_at` | - | - | - |
+| `last_checkpoint_at` | - | - | - |
+| `limit` | - | - | - |
+| `markers` | - | - | - |
+| `max_bytes` | - | - | - |
+| `mode` | - | - | - |
+| `offset` | - | - | - |
+| `pagination` | - | - | - |
+| `query` | - | - | - |
+| `repo` | - | - | - |
+| `repository` | - | - | - |
+| `search` | - | - | - |
+| `search_enabled` | - | - | - |
+| `session` | - | - | - |
+| `sessions` | - | - | - |
+| `started_at` | - | - | - |
+| `stats` | - | - | - |
+| `status` | - | Yes | - |
+| `title` | - | - | - |
+| `to` | - | - | - |
+| `token_stats` | - | - | - |
+| `transcript_index` | - | - | - |
+| `transcript_stats` | - | - | - |
+| `updated_at` | - | - | - |
+| `user` | - | - | - |
+| `user_id` | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.PagesSession.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.PagesSession.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.PagesSession.load({ "id" => "pages_session_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `PagesSessionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## PairingEntity
+
+```ruby
+pairing = client.Pairing
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.Pairing.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.Pairing.list
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.Pairing.load({ "id" => "pairing_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `PairingEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## PairingEventEntity
+
+```ruby
+pairing_event = client.PairingEvent
+```
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.PairingEvent.list({ "pairing_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `PairingEventEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ParallelV1Entity
+
+```ruby
+parallel_v1 = client.ParallelV1
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ParallelV1Entity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## PatchsetDiffEntity
+
+```ruby
+patchset_diff = client.PatchsetDiff
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `files` | `Array` | Yes |  |
+| `id` | `String` | No |  |
+| `patchset` | `Hash` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.PatchsetDiff.load({ "id" => "patchset_diff_id", "change_id" => "change_id", "organization_id" => "organization_id", "patchset_id" => "patchset_id", "repo_id" => "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `PatchsetDiffEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -13904,6 +30633,155 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `PreviewSharingApprovalEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ProactiveAgentWaitlistEntryEntity
+
+```ruby
+proactive_agent_waitlist_entry = client.ProactiveAgentWaitlistEntry
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email` | `String` | Yes |  |
+| `first_task` | `Object` | No | The first job they would hand an agent. |
+| `invite_code` | `Object` | No | The referral code of the invite link they arrived through. |
+| `places_per_referral` | `Integer` | Yes | Most places one referral moves the entry up; fewer when boosted entries are ahead. |
+| `position` | `Integer` | Yes | 1-based place in the queue. |
+| `position_after_next_referral` | `Integer` | Yes | The place one more referral would give this entry, as Rails would assign it. |
+| `referral_code` | `String` | Yes | Shared in this entry's invite link. |
+| `referral_count` | `Integer` | Yes | People who joined through this entry's link. |
+| `total` | `Integer` | Yes | Display total including a random increment per signup; not the actual number of entries. |
+| `website` | `Object` | No | Honeypot. |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ProactiveAgentWaitlistEntry.create({
+  "email" => "example_email", # String
+})
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ProactiveAgentWaitlistEntry.load({ "id" => "proactive_agent_waitlist_entry_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ProactiveAgentWaitlistEntryEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ProductEntity
+
+```ruby
+product = client.Product
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_products` | `Array` | Yes | Products this organization has activated (PRD 144). |
+| `agents_only` | `Boolean` | No | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `Boolean` | Yes | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `github_prs_authored_by_change_author` | `Boolean` | Yes |  |
+| `id` | `String` | Yes |  |
+| `logo_url` | `Object` | Yes |  |
+| `member_count` | `Integer` | Yes |  |
+| `name` | `String` | Yes |  |
+| `pending_invitation_count` | `Integer` | Yes |  |
+| `personal` | `Boolean` | Yes |  |
+| `product` | `String` | Yes |  |
+| `repository_count` | `Integer` | Yes |  |
+| `role` | `Object` | Yes |  |
+| `sandbox_region` | `String` | Yes |  |
+| `shared_agent_personal_accounts_enabled` | `Boolean` | No | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `String` | Yes |  |
+| `source_control_providers` | `Array` | No | Connected source control providers for this organization. |
+| `source_ui_enabled` | `Boolean` | No | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `String` | Yes | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+| `verify_pr_scenario_writing_enabled` | `Boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.Product.create({
+  "organization_id" => "example_organization_id", # String
+  "product" => "example_product", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ProductEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -15954,6 +32832,122 @@ Return the entity name.
 
 ---
 
+## PullRequestActionEntity
+
+```ruby
+pull_request_action = client.PullRequestAction
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action_name` | `String` | Yes |  |
+| `body` | `String` | No |  |
+| `comment_id` | `String` | No |  |
+| `comments` | `Array` | No |  |
+| `event` | `String` | No |  |
+| `expected_head_sha` | `String` | No |  |
+| `id` | `Object` | No |  |
+| `label` | `String` | No |  |
+| `line` | `Integer` | No |  |
+| `node_id` | `Object` | No |  |
+| `operation_key` | `String` | Yes |  |
+| `path` | `String` | No |  |
+| `run_id` | `String` | No |  |
+| `side` | `String` | No |  |
+| `start_line` | `Integer` | No |  |
+| `start_side` | `String` | No |  |
+| `thread_id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.PullRequestAction.create({
+  "number" => "example_number", # String
+  "organization_id" => "example_organization_id", # String
+  "pull_request_id" => "example_pull_request_id", # String
+  "action_name" => "example_action_name", # String
+  "operation_key" => "example_operation_key", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `PullRequestActionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## PullRequestMagicMergeEntity
+
+```ruby
+pull_request_magic_merge = client.PullRequestMagicMerge
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `PullRequestMagicMergeEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## PullRequestSettingEntity
 
 ```ruby
@@ -16225,6 +33219,128 @@ Return the entity name.
 
 ---
 
+## PullRequestTranscriptEntity
+
+```ruby
+pull_request_transcript = client.PullRequestTranscript
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter` | `String` | Yes |  |
+| `created_at` | `Object` | Yes |  |
+| `ended_at` | `Object` | Yes |  |
+| `external_session_id` | `String` | Yes |  |
+| `harness` | `String` | Yes | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `String` | Yes |  |
+| `last_activity_at` | `Object` | Yes | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `Object` | Yes |  |
+| `repository` | `Object` | Yes |  |
+| `started_at` | `Object` | Yes |  |
+| `stats` | `Hash` | Yes |  |
+| `status` | `String` | Yes |  |
+| `title` | `Object` | Yes |  |
+| `updated_at` | `Object` | Yes |  |
+| `user` | `Object` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.PullRequestTranscript.list({ "organization_id" => "example", "pull_request_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `PullRequestTranscriptEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## PullZoneEntity
+
+```ruby
+pull_zone = client.PullZone
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
+| `slug` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.PullZone.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `PullZoneEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## RecorderEntity
 
 ```ruby
@@ -16363,6 +33479,144 @@ Return the entity name.
 
 ---
 
+## RelayAgentConnectionEntity
+
+```ruby
+relay_agent_connection = client.RelayAgentConnection
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_card_url` | `String` | Yes |  |
+| `auth_scheme` | `String` | Yes |  |
+| `can_configure` | `Boolean` | Yes |  |
+| `can_disconnect` | `Boolean` | Yes |  |
+| `can_setup` | `Boolean` | Yes |  |
+| `connection` | `Hash` | Yes |  |
+| `credential` | `Object` | No | Write-only outbound key. |
+| `error_code` | `Object` | Yes |  |
+| `expected_generation` | `Integer` | Yes |  |
+| `generation` | `Integer` | Yes |  |
+| `id` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
+| `remote_agent` | `Object` | Yes |  |
+| `requester_id` | `String` | Yes |  |
+| `retired_at` | `Object` | Yes |  |
+| `revoked_at` | `Object` | Yes |  |
+| `scope_key` | `String` | Yes |  |
+| `source_operation_id` | `Object` | Yes |  |
+| `state` | `String` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | remove |
+| --- | --- | --- | --- | --- | --- |
+| `agent_card_url` | - | - | - | - | - |
+| `auth_scheme` | - | - | - | - | - |
+| `can_configure` | - | - | - | - | - |
+| `can_disconnect` | - | - | - | - | - |
+| `can_setup` | - | - | - | - | - |
+| `connection` | - | - | - | - | - |
+| `credential` | - | - | - | - | - |
+| `error_code` | - | - | - | - | - |
+| `expected_generation` | - | - | - | - | - |
+| `generation` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `remote_agent` | - | - | Yes | Yes | - |
+| `requester_id` | - | - | - | - | - |
+| `retired_at` | - | - | - | - | - |
+| `revoked_at` | - | - | - | - | - |
+| `scope_key` | - | - | - | - | - |
+| `source_operation_id` | - | - | Yes | - | - |
+| `state` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RelayAgentConnection.create({
+  "agent_id" => "example_agent_id", # String
+  "organization_id" => "example_organization_id", # String
+  "agent_card_url" => "example_agent_card_url", # String
+  "auth_scheme" => "example_auth_scheme", # String
+  "name" => "example_name", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RelayAgentConnection.list({ "agent_id" => "example", "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.RelayAgentConnection.load({ "id" => "relay_agent_connection_id", "agent_id" => "agent_id", "organization_id" => "organization_id" })
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.RelayAgentConnection.remove({ "id" => "relay_agent_connection_id", "agent_id" => "agent_id", "organization_id" => "organization_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.RelayAgentConnection.update({
+  "id" => "relay_agent_connection_id",
+  "agent_id" => "agent_id",
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RelayAgentConnectionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## RelayAgentLocalThreadEntity
 
 ```ruby
@@ -16406,6 +33660,1207 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `RelayAgentLocalThreadEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RelaySignalEntity
+
+```ruby
+relay_signal = client.RelaySignal
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RelaySignal.create({
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RelaySignalEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ReleaseRolloutEntity
+
+```ruby
+release_rollout = client.ReleaseRollout
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ReleaseRollout.create({
+  "release_id" => "example_release_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.ReleaseRollout.list({ "release_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ReleaseRollout.load({ "id" => "release_rollout_id", "release_id" => "release_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ReleaseRolloutEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepoEntity
+
+```ruby
+repo = client.Repo
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_retry_import` | `Boolean` | Yes | True when a failed client import can be requeued for CLI resume. |
+| `can_retry_sync` | `Boolean` | Yes | True when the latest sync run failed and can be retried. |
+| `disclaimer` | `Object` | Yes |  |
+| `federated_in_home` | `Boolean` | Yes | True when this Space is a folder virtual repository inside the organization Home monorepo. |
+| `github_repository` | `Object` | Yes |  |
+| `icon_name` | `String` | Yes |  |
+| `id` | `String` | Yes | Virtual repository public ID for non-Home rows; Home uses the physical repository public ID. |
+| `import_item_id` | `Object` | Yes |  |
+| `is_home` | `Boolean` | Yes |  |
+| `name` | `String` | Yes |  |
+| `remote_repository` | `Object` | No |  |
+| `root_path` | `Object` | Yes | Home-relative folder path when federated_in_home is true; null otherwise. |
+| `slug` | `String` | Yes |  |
+| `sync_error_message` | `Object` | Yes |  |
+| `sync_provider` | `String` | No |  |
+| `sync_status` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.Repo.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.Repo.remove({ "id" => "repo_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepoEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepoAccessTokenEntity
+
+```ruby
+repo_access_token = client.RepoAccessToken
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access_token` | `Hash` | Yes |  |
+| `active` | `Boolean` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `credential_purpose` | `String` | No | Issues a revocable read-write system credential valid for one hour. |
+| `expires_at` | `Object` | Yes |  |
+| `expires_at_label` | `Object` | Yes |  |
+| `expires_in_days` | `Object` | No |  |
+| `id` | `String` | Yes |  |
+| `last_used_at` | `Object` | Yes |  |
+| `last_used_at_label` | `Object` | Yes |  |
+| `name` | `String` | Yes |  |
+| `permission_level` | `String` | No |  |
+| `plain_text_token` | `String` | Yes |  |
+| `revoked_at` | `Object` | Yes |  |
+| `revoked_at_label` | `Object` | Yes |  |
+| `token_preview` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | remove |
+| --- | --- | --- | --- |
+| `access_token` | - | - | - |
+| `active` | - | - | - |
+| `created_at` | - | - | - |
+| `created_at_label` | - | - | - |
+| `credential_purpose` | - | - | - |
+| `expires_at` | - | - | - |
+| `expires_at_label` | - | - | - |
+| `expires_in_days` | - | - | - |
+| `id` | - | - | - |
+| `last_used_at` | - | - | - |
+| `last_used_at_label` | - | - | - |
+| `name` | - | - | - |
+| `permission_level` | Yes | - | - |
+| `plain_text_token` | - | - | - |
+| `revoked_at` | - | - | - |
+| `revoked_at_label` | - | - | - |
+| `token_preview` | - | - | - |
+| `updated_at` | - | - | - |
+| `updated_at_label` | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RepoAccessToken.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "name" => "example_name", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RepoAccessToken.list({ "organization_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.RepoAccessToken.remove({ "id" => "repo_access_token_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepoAccessTokenEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepoActionEntity
+
+```ruby
+repo_action = client.RepoAction
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `pipeline` | `Hash` | Yes |  |
+| `run` | `Hash` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RepoAction.list({ "organization_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepoActionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepoAgentCheckpointEntity
+
+```ruby
+repo_agent_checkpoint = client.RepoAgentCheckpoint
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.RepoAgentCheckpoint.load({ "id" => "repo_agent_checkpoint_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepoAgentCheckpointEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepoAgentSessionEntity
+
+```ruby
+repo_agent_session = client.RepoAgentSession
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter` | `String` | No |  |
+| `agent_session` | `Hash` | Yes |  |
+| `external_session_id` | `String` | No |  |
+| `id` | `String` | No |  |
+| `status` | `String` | No |  |
+| `title` | `Object` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RepoAgentSession.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RepoAgentSession.list({ "organization_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.RepoAgentSession.load({ "id" => "repo_agent_session_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.RepoAgentSession.patch({
+  "id" => "repo_agent_session_id",
+  "organization_id" => "organization_id",
+  "repo_id" => "repo_id",
+  # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.RepoAgentSession.update({
+  "id" => "repo_agent_session_id",
+  "organization_id" => "organization_id",
+  "repo_id" => "repo_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepoAgentSessionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepoBookmarkProtectionEntity
+
+```ruby
+repo_bookmark_protection = client.RepoBookmarkProtection
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `actor_policy` | `Hash` | Yes |  |
+| `bypass_mode` | `String` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_by_user_id` | `Object` | Yes |  |
+| `enabled` | `Boolean` | Yes |  |
+| `id` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `priority` | `Integer` | Yes |  |
+| `repository_id` | `String` | Yes |  |
+| `requirements` | `Hash` | Yes |  |
+| `target_kind` | `String` | Yes |  |
+| `target_pattern` | `Object` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_by_user_id` | `Object` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- | --- |
+| `actor_policy` | - | - | Yes | Yes | Yes | - |
+| `bypass_mode` | - | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - | - |
+| `created_by_user_id` | - | - | - | - | - | - |
+| `enabled` | - | - | Yes | Yes | Yes | - |
+| `id` | - | - | - | - | - | - |
+| `name` | - | - | Yes | Yes | Yes | - |
+| `organization_id` | - | - | - | - | - | - |
+| `priority` | - | - | Yes | Yes | Yes | - |
+| `repository_id` | - | - | - | - | - | - |
+| `requirements` | - | - | Yes | Yes | Yes | - |
+| `target_kind` | - | - | Yes | Yes | Yes | - |
+| `target_pattern` | - | - | Yes | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - | - |
+| `updated_by_user_id` | - | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RepoBookmarkProtection.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RepoBookmarkProtection.list({ "organization_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.RepoBookmarkProtection.load({ "id" => "repo_bookmark_protection_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.RepoBookmarkProtection.patch({
+  "id" => "repo_bookmark_protection_id",
+  "organization_id" => "organization_id",
+  "repo_id" => "repo_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.RepoBookmarkProtection.remove({ "id" => "repo_bookmark_protection_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.RepoBookmarkProtection.update({
+  "id" => "repo_bookmark_protection_id",
+  "organization_id" => "organization_id",
+  "repo_id" => "repo_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepoBookmarkProtectionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepoBookmarkProtectionEventEntity
+
+```ruby
+repo_bookmark_protection_event = client.RepoBookmarkProtectionEvent
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `String` | Yes |  |
+| `actor_kind` | `String` | Yes |  |
+| `actor_label` | `Object` | Yes |  |
+| `actor_user_id` | `Object` | Yes |  |
+| `bookmark_name` | `String` | Yes |  |
+| `bookmark_protection_rule_id` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `decision` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `intent` | `Object` | Yes |  |
+| `metadata` | `Hash` | Yes |  |
+| `new_target` | `Object` | Yes |  |
+| `old_target` | `Object` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `reason_codes` | `Array` | Yes |  |
+| `repository_id` | `String` | Yes |  |
+| `source_request_id` | `Object` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RepoBookmarkProtectionEvent.list({ "organization_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepoBookmarkProtectionEventEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepoCloudWorkspaceBackupEntity
+
+```ruby
+repo_cloud_workspace_backup = client.RepoCloudWorkspaceBackup
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RepoCloudWorkspaceBackup.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RepoCloudWorkspaceBackup.list({ "organization_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.RepoCloudWorkspaceBackup.load({ "id" => "repo_cloud_workspace_backup_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepoCloudWorkspaceBackupEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepoCodeRuleEntity
+
+```ruby
+repo_code_rule = client.RepoCodeRule
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_revision_number` | `Object` | Yes |  |
+| `capabilities` | `Hash` | Yes |  |
+| `code_rule` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `definition` | `Hash` | Yes |  |
+| `draft_pending` | `Boolean` | Yes | The latest revision is not the active one |
+| `enabled` | `Boolean` | Yes |  |
+| `expected_version` | `Integer` | Yes |  |
+| `id` | `String` | Yes |  |
+| `latest_revision_number` | `Integer` | Yes |  |
+| `name` | `String` | Yes | Name of the latest revision |
+| `repository` | `Hash` | Yes |  |
+| `scope` | `Array` | Yes |  |
+| `slug` | `String` | Yes |  |
+| `state_version` | `Integer` | Yes | Send back as expected_version on every mutation |
+| `updated_at` | `String` | Yes |  |
+| `web_url` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RepoCodeRule.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "definition" => {}, # Hash
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RepoCodeRule.list({ "organization_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.RepoCodeRule.load({ "id" => "repo_code_rule_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.RepoCodeRule.patch({
+  "id" => "repo_code_rule_id",
+  "organization_id" => "organization_id",
+  "repo_id" => "repo_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.RepoCodeRule.remove({ "id" => "repo_code_rule_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.RepoCodeRule.update({
+  "id" => "repo_code_rule_id",
+  "organization_id" => "organization_id",
+  "repo_id" => "repo_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepoCodeRuleEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepoSettingEntity
+
+```ruby
+repo_setting = client.RepoSetting
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active` | `Boolean` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `description` | `Object` | Yes |  |
+| `expires_at` | `Object` | Yes |  |
+| `expires_at_label` | `Object` | Yes |  |
+| `icon_name` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `last_used_at` | `Object` | Yes |  |
+| `last_used_at_label` | `Object` | Yes |  |
+| `merge_authority` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `permission_level` | `String` | Yes |  |
+| `revoked_at` | `Object` | Yes |  |
+| `revoked_at_label` | `Object` | Yes |  |
+| `slug` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `token_preview` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | update |
+| --- | --- | --- |
+| `active` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `description` | - | Yes |
+| `expires_at` | - | - |
+| `expires_at_label` | - | - |
+| `icon_name` | - | Yes |
+| `id` | - | - |
+| `last_used_at` | - | - |
+| `last_used_at_label` | - | - |
+| `merge_authority` | - | - |
+| `name` | - | Yes |
+| `organization_id` | - | - |
+| `permission_level` | - | - |
+| `revoked_at` | - | - |
+| `revoked_at_label` | - | - |
+| `slug` | - | - |
+| `status` | - | Yes |
+| `token_preview` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RepoSetting.list({ "organization_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.RepoSetting.update({
+  "organization_id" => "organization_id",
+  "repo_id" => "repo_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepoSettingEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepoStatEntity
+
+```ruby
+repo_stat = client.RepoStat
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `repository_stats` | `Hash` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RepoStat.list({ "organization_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepoStatEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepoVcEntity
+
+```ruby
+repo_vc = client.RepoVc
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepoVcEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepoVcCommitEntity
+
+```ruby
+repo_vc_commit = client.RepoVcCommit
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `name` | `String` | Yes |  |
+| `target_commit_id` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RepoVcCommit.list({ "organization_id" => "example", "repo_id" => "example", "ref" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepoVcCommitEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -16527,6 +34982,986 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `ReportScenarioEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepositoryAccessEntity
+
+```ruby
+repository_access = client.RepositoryAccess
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepositoryAccessEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepositoryAccessResolveEntity
+
+```ruby
+repository_access_resolve = client.RepositoryAccessResolve
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `default_branch` | `String` | Yes |  |
+| `git_auth_username` | `String` | Yes |  |
+| `git_https_clone_url` | `Object` | Yes |  |
+| `git_https_supported` | `Boolean` | Yes |  |
+| `github_access_warnings` | `Array` | No |  |
+| `id` | `String` | No |  |
+| `membership_role` | `String` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `organization_name` | `String` | Yes |  |
+| `organization_slug` | `String` | Yes |  |
+| `repository_id` | `String` | Yes |  |
+| `repository_name` | `String` | Yes |  |
+| `repository_slug` | `String` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.RepositoryAccessResolve.load({ "id" => "repository_access_resolve_id", "resolve_id" => "resolve_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepositoryAccessResolveEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepositoryEventEntity
+
+```ruby
+repository_event = client.RepositoryEvent
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepositoryEventEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepositoryImportEntity
+
+```ruby
+repository_import = client.RepositoryImport
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_connections` | `Boolean` | Yes |  |
+| `github_imports` | `Array` | Yes |  |
+| `github_installations` | `Array` | Yes |  |
+| `gitlab_configured` | `Boolean` | Yes |  |
+| `gitlab_imports` | `Array` | Yes |  |
+| `gitlab_integrations` | `Array` | Yes |  |
+| `gitlab_redirect_uri` | `Object` | Yes |  |
+| `gitlab_self_managed_available` | `Boolean` | Yes |  |
+| `inventory_errors` | `Array` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `repositories` | `Array` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.RepositoryImport.load({ "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepositoryImportEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepositoryImportSessionEntity
+
+```ruby
+repository_import_session = client.RepositoryImportSession
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action_required` | `String` | No |  |
+| `authorization_endpoint` | `String` | No |  |
+| `can_authorize_github` | `Boolean` | Yes |  |
+| `client_name` | `Object` | Yes |  |
+| `client_version` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `error_message` | `Object` | Yes |  |
+| `expires_at` | `String` | Yes |  |
+| `git_imports` | `Array` | Yes |  |
+| `github_app_installation_id` | `Object` | Yes |  |
+| `github_connected` | `Boolean` | Yes |  |
+| `id` | `String` | Yes |  |
+| `idempotency_key` | `String` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `organization_slug` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `action_required` | - | - |
+| `authorization_endpoint` | - | - |
+| `can_authorize_github` | - | - |
+| `client_name` | - | Yes |
+| `client_version` | - | Yes |
+| `created_at` | - | - |
+| `error_message` | - | - |
+| `expires_at` | - | - |
+| `git_imports` | - | - |
+| `github_app_installation_id` | - | Yes |
+| `github_connected` | - | - |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `organization_id` | - | - |
+| `organization_slug` | - | - |
+| `status` | - | - |
+| `updated_at` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RepositoryImportSession.create({
+  "organization_id" => "example_organization_id", # String
+  "idempotency_key" => "example_idempotency_key", # String
+})
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.RepositoryImportSession.load({ "id" => "repository_import_session_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepositoryImportSessionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepositoryImportSessionRepositoryEntity
+
+```ruby
+repository_import_session_repository = client.RepositoryImportSessionRepository
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `default_branch` | `Object` | Yes |  |
+| `full_name` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
+| `owner` | `String` | Yes |  |
+| `private` | `Boolean` | Yes |  |
+| `reason` | `Object` | No |  |
+| `selectable` | `Boolean` | Yes |  |
+| `status` | `String` | Yes |  |
+| `visibility` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RepositoryImportSessionRepository.list({ "repository_import_session_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepositoryImportSessionRepositoryEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepositoryImportSessionSelectionEntity
+
+```ruby
+repository_import_session_selection = client.RepositoryImportSessionSelection
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `repositories` | `Object` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RepositoryImportSessionSelection.create({
+  "repository_import_session_id" => "example_repository_import_session_id", # String
+  "repositories" => "example_repositories", # Object
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepositoryImportSessionSelectionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RepositorySandboxEnvironmentEntity
+
+```ruby
+repository_sandbox_environment = client.RepositorySandboxEnvironment
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.RepositorySandboxEnvironment.load({ "id" => "repository_sandbox_environment_id", "repository_id" => "repository_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RepositorySandboxEnvironmentEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RoderCodeRepairEntity
+
+```ruby
+roder_code_repair = client.RoderCodeRepair
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `base_sha` | `String` | Yes |  |
+| `cancel_requested` | `Boolean` | Yes |  |
+| `failure_code` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `launch_state` | `String` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `repository_slug` | `String` | Yes |  |
+| `roder_thread_id` | `Object` | Yes |  |
+| `roder_turn_id` | `Object` | Yes |  |
+| `scenario_run_id` | `String` | Yes |  |
+| `task` | `Object` | Yes |  |
+| `trigger_kind` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RoderCodeRepair.create({
+  "base_sha" => "example_base_sha", # String
+  "organization_id" => "example_organization_id", # String
+  "repository_slug" => "example_repository_slug", # String
+  "scenario_run_id" => "example_scenario_run_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RoderCodeRepair.list({ "scenario_run_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.RoderCodeRepair.load({ "id" => "roder_code_repair_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RoderCodeRepairEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RoderCodeRepairSettingEntity
+
+```ruby
+roder_code_repair_setting = client.RoderCodeRepairSetting
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available` | `Boolean` | Yes |  |
+| `daily_limit` | `Integer` | Yes |  |
+| `enabled` | `Boolean` | Yes |  |
+| `enabled_at` | `Object` | Yes |  |
+| `operator_user_id` | `Object` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `repository_slug` | `Object` | Yes | Connected Composal repository required when enabling |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `available` | - | - |
+| `daily_limit` | - | - |
+| `enabled` | - | - |
+| `enabled_at` | - | - |
+| `operator_user_id` | - | - |
+| `organization_id` | - | - |
+| `repository_slug` | - | Yes |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RoderCodeRepairSetting.create({
+  "enabled" => true, # Boolean
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RoderCodeRepairSetting.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RoderCodeRepairSettingEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RoderMachineEntity
+
+```ruby
+roder_machine = client.RoderMachine
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.RoderMachine.update({
+  "id" => "id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RoderMachineEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RoderRunEntity
+
+```ruby
+roder_run = client.RoderRun
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RoderRunEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RoderWorkspaceCredentialEntity
+
+```ruby
+roder_workspace_credential = client.RoderWorkspaceCredential
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `api_token` | `String` | Yes | Short-lived personal access token for the spawning user. |
+| `author_email` | `String` | Yes |  |
+| `author_name` | `String` | Yes |  |
+| `clone_url` | `String` | Yes |  |
+| `default_branch` | `String` | Yes |  |
+| `expires_at` | `String` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `repository_id` | `String` | Yes |  |
+| `repository_slug` | `String` | Yes |  |
+| `repository_spec` | `String` | Yes | The explicitly selected physical repository address. |
+| `required_lifetime_seconds` | `Integer` | Yes | Lifetime the pending clone or command must be able to complete within. |
+| `token` | `String` | Yes | Short-lived read/write repository credential. |
+| `username` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RoderWorkspaceCredential.create({
+  "required_lifetime_seconds" => 1, # Integer
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RoderWorkspaceCredentialEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RunArtifactEntity
+
+```ruby
+run_artifact = client.RunArtifact
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RunArtifact.create({
+  "pipeline_id" => "example_pipeline_id", # String
+  "run_id" => "example_run_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RunArtifact.list({ "pipeline_id" => "example", "run_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RunArtifactEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RunJobEntity
+
+```ruby
+run_job = client.RunJob
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active` | `Boolean` | Yes |  |
+| `allow_failure` | `Boolean` | Yes |  |
+| `cache_archive_observations` | `Object` | Yes | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `ci_pipeline_run_id` | `String` | Yes |  |
+| `ci_runner_id` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `dependencies_csv` | `Object` | Yes |  |
+| `display_id` | `Integer` | Yes |  |
+| `environment_csv` | `Object` | Yes |  |
+| `execution_order` | `Integer` | Yes |  |
+| `execution_profile` | `Object` | No |  |
+| `exit_code` | `Object` | Yes |  |
+| `failed` | `Boolean` | Yes |  |
+| `finished_at` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `kind` | `String` | Yes |  |
+| `log_chunks` | `Array` | Yes |  |
+| `name` | `String` | Yes |  |
+| `number` | `Integer` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `queued_at` | `Object` | Yes |  |
+| `reconciliation_id` | `Object` | No |  |
+| `retry_number` | `Integer` | Yes |  |
+| `reuse` | `Object` | Yes |  |
+| `runner_label_selector` | `Object` | Yes |  |
+| `slug` | `String` | Yes |  |
+| `started_at` | `Object` | Yes |  |
+| `status` | `String` | Yes |  |
+| `status_label` | `String` | Yes |  |
+| `status_state` | `String` | Yes |  |
+| `status_tone` | `String` | Yes |  |
+| `steps` | `Array` | Yes |  |
+| `timeout_seconds` | `Object` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RunJob.create({
+  "pipeline_id" => "example_pipeline_id", # String
+  "run_id" => "example_run_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RunJob.list({ "pipeline_id" => "example", "run_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.RunJob.load({ "id" => "run_job_id", "pipeline_id" => "pipeline_id", "run_id" => "run_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RunJobEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -16773,6 +36208,498 @@ Return the entity name.
 
 ---
 
+## RunWorkspaceCredentialEntity
+
+```ruby
+run_workspace_credential = client.RunWorkspaceCredential
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RunWorkspaceCredential.create({
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RunWorkspaceCredentialEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RunnerLeaseEntity
+
+```ruby
+runner_lease = client.RunnerLease
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RunnerLease.create({
+  "runner_id" => "example_runner_id", # String
+  "runner_pool_id" => "example_runner_pool_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RunnerLease.list({ "runner_id" => "example", "runner_pool_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RunnerLeaseEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RunnerPoolNodeEnrollmentTokenEntity
+
+```ruby
+runner_pool_node_enrollment_token = client.RunnerPoolNodeEnrollmentToken
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capabilities_csv` | `Object` | Yes |  |
+| `ci_runner_pool_id` | `String` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `creator_user_id` | `Object` | Yes |  |
+| `description` | `Object` | Yes |  |
+| `expires_at` | `Object` | Yes |  |
+| `expires_at_label` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `kind` | `String` | Yes |  |
+| `last_used_at` | `Object` | Yes |  |
+| `last_used_at_label` | `Object` | Yes |  |
+| `name` | `String` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `raw_token` | `Object` | Yes |  |
+| `revoked_at` | `Object` | Yes |  |
+| `status` | `String` | Yes |  |
+| `token_hint` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+| `usage_count` | `Integer` | Yes |  |
+| `usage_count_label` | `String` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `capabilities_csv` | - | Yes |
+| `ci_runner_pool_id` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `creator_user_id` | - | - |
+| `description` | - | Yes |
+| `expires_at` | - | Yes |
+| `expires_at_label` | - | - |
+| `id` | - | - |
+| `kind` | - | Yes |
+| `last_used_at` | - | - |
+| `last_used_at_label` | - | - |
+| `name` | - | - |
+| `organization_id` | - | - |
+| `raw_token` | - | - |
+| `revoked_at` | - | - |
+| `status` | - | - |
+| `token_hint` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+| `usage_count` | - | - |
+| `usage_count_label` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RunnerPoolNodeEnrollmentToken.create({
+  "runner_pool_id" => "example_runner_pool_id", # String
+  "name" => "example_name", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RunnerPoolNodeEnrollmentToken.list({ "runner_pool_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RunnerPoolNodeEnrollmentTokenEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RunnerPoolRunnerEntity
+
+```ruby
+runner_pool_runner = client.RunnerPoolRunner
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RunnerPoolRunner.create({
+  "runner_pool_id" => "example_runner_pool_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RunnerPoolRunner.list({ "runner_pool_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.RunnerPoolRunner.load({ "id" => "runner_pool_runner_id", "runner_pool_id" => "runner_pool_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.RunnerPoolRunner.patch({
+  "id" => "runner_pool_runner_id",
+  "runner_pool_id" => "runner_pool_id",
+  # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.RunnerPoolRunner.update({
+  "id" => "runner_pool_runner_id",
+  "runner_pool_id" => "runner_pool_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RunnerPoolRunnerEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## RuntimeInstanceHealthSnapshotEntity
+
+```ruby
+runtime_instance_health_snapshot = client.RuntimeInstanceHealthSnapshot
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.RuntimeInstanceHealthSnapshot.create({
+  "runtime_instance_id" => "example_runtime_instance_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.RuntimeInstanceHealthSnapshot.list({ "runtime_instance_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `RuntimeInstanceHealthSnapshotEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SandboxIntegrationEntity
+
+```ruby
+sandbox_integration = client.SandboxIntegration
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage` | `Boolean` | Yes |  |
+| `catalog` | `Array` | Yes |  |
+| `configuration` | `Hash` | Yes |  |
+| `connected_profiles` | `Hash` | Yes | Connected profiles per provider across the organization. |
+| `credentials` | `Hash` | Yes |  |
+| `enabled` | `Boolean` | Yes |  |
+| `id` | `String` | Yes |  |
+| `integrations` | `Array` | Yes |  |
+| `name` | `String` | Yes |  |
+| `provider` | `String` | Yes |  |
+| `version` | `Integer` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | update | patch |
+| --- | --- | --- | --- | --- |
+| `can_manage` | - | - | - | - |
+| `catalog` | - | - | - | - |
+| `configuration` | - | - | - | - |
+| `connected_profiles` | - | - | - | - |
+| `credentials` | - | - | Yes | Yes |
+| `enabled` | - | - | Yes | Yes |
+| `id` | - | - | - | - |
+| `integrations` | - | - | - | - |
+| `name` | - | - | Yes | Yes |
+| `provider` | - | - | - | - |
+| `version` | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SandboxIntegration.create({
+  "organization_id" => "example_organization_id", # String
+  "configuration" => {}, # Hash
+  "credentials" => {}, # Hash
+  "name" => "example_name", # String
+  "provider" => "example_provider", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SandboxIntegration.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.SandboxIntegration.patch({
+  "id" => "id",
+  "organization_id" => "organization_id",
+  # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SandboxIntegration.update({
+  "id" => "id",
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SandboxIntegrationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## ScenarioRevisionEntity
 
 ```ruby
@@ -16936,6 +36863,218 @@ Return the entity name.
 
 ---
 
+## SecretGrantEntity
+
+```ruby
+secret_grant = client.SecretGrant
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SecretGrant.create({
+  "organization_id" => "example_organization_id", # String
+  "secret_id" => "example_secret_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SecretGrant.list({ "organization_id" => "example", "secret_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.SecretGrant.load({ "id" => "secret_grant_id", "organization_id" => "organization_id", "secret_id" => "secret_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.SecretGrant.patch({
+  "id" => "secret_grant_id",
+  "organization_id" => "organization_id",
+  "secret_id" => "secret_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.SecretGrant.remove({ "id" => "secret_grant_id", "organization_id" => "organization_id", "secret_id" => "secret_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SecretGrant.update({
+  "id" => "secret_grant_id",
+  "organization_id" => "organization_id",
+  "secret_id" => "secret_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SecretGrantEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SecretVersionEntity
+
+```ruby
+secret_version = client.SecretVersion
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SecretVersion.create({
+  "organization_id" => "example_organization_id", # String
+  "secret_id" => "example_secret_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SecretVersion.list({ "organization_id" => "example", "secret_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.SecretVersion.load({ "id" => "secret_version_id", "organization_id" => "organization_id", "secret_id" => "secret_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.SecretVersion.patch({
+  "id" => "secret_version_id",
+  "organization_id" => "organization_id",
+  "secret_id" => "secret_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.SecretVersion.remove({ "id" => "secret_version_id", "organization_id" => "organization_id", "secret_id" => "secret_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SecretVersion.update({
+  "id" => "secret_version_id",
+  "organization_id" => "organization_id",
+  "secret_id" => "secret_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SecretVersionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## ServiceEndpointEntity
 
 ```ruby
@@ -17042,6 +37181,799 @@ Return the entity name.
 
 ---
 
+## SettingEntity
+
+```ruby
+setting = client.Setting
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `Boolean` | Yes |  |
+| `can_manage_sandbox_region` | `Boolean` | Yes |  |
+| `dedicated_outbound_ip_addresses` | `Array` | Yes | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `String` | Yes |  |
+| `organization` | `Hash` | Yes |  |
+| `sandbox_regions` | `Array` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.Setting.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SettingEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SettingMutationLeaseEntity
+
+```ruby
+setting_mutation_lease = client.SettingMutationLease
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SettingMutationLeaseEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SignalEntity
+
+```ruby
+signal = client.Signal
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `acked_at` | `Object` | Yes |  |
+| `acked_by` | `Object` | Yes | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | `Hash` | Yes | Dispatched-run summary (docs §6c). |
+| `app_service_id` | `Object` | Yes |  |
+| `attribution` | `Hash` | Yes | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
+| `created_at` | `String` | Yes | ISO8601 row insert time — retention math and debugging only. |
+| `dedupe_key` | `Object` | Yes |  |
+| `hosted_app_id` | `Object` | Yes |  |
+| `id` | `String` | Yes | The signal's own `sig_…` public id — also the paging cursor value. |
+| `kind` | `String` | Yes | A frozen taxonomy kind (§1) or an `app.custom.*` kind. |
+| `links` | `Hash` | Yes | Canonical, relative API paths built from real routes (docs §6a). |
+| `occurred_at` | `String` | Yes | ISO8601 domain event time — what the UI displays and `since` filters on. |
+| `organization_id` | `String` | Yes |  |
+| `payload` | `Hash` | Yes | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
+| `recovery` | `Hash` | Yes | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | `Hash` | Yes | Recovery pairing (docs §6b). |
+| `severity` | `String` | Yes | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
+| `source` | `Hash` | Yes | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
+| `subject_id` | `Object` | Yes |  |
+| `subject_type` | `Object` | Yes | Polymorphic pointer: `AppDeployment`, `RuntimeInstance`, `AlertEvent`, `HostedApp`, or `SignalSubscription`. |
+| `summary` | `String` | Yes | One-line, kind-composed human sentence for the feed row (docs §6d, e.g. |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.Signal.create({
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.Signal.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.Signal.load({ "id" => "signal_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SignalEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SignalInboundEntity
+
+```ruby
+signal_inbound = client.SignalInbound
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SignalInbound.update({
+  "id" => "id",
+  "inbound_id" => "inbound_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SignalInboundEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SignalIntegrationEntity
+
+```ruby
+signal_integration = client.SignalIntegration
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `api_token` | `String` | No | Optional provider API token for target discovery and backfill. |
+| `api_token_stored` | `Boolean` | Yes |  |
+| `config` | `Hash` | Yes |  |
+| `created_at` | `Object` | No |  |
+| `failure_message` | `Object` | Yes |  |
+| `id` | `String` | Yes | Public id (`sint_…`). |
+| `inbound_path` | `String` | Yes |  |
+| `inbound_url` | `String` | Yes | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `Object` | No |  |
+| `last_verified_at` | `Object` | No |  |
+| `mode` | `String` | Yes | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `String` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `provider` | `String` | Yes |  |
+| `rejected_signature_count` | `Integer` | Yes | Deliveries rejected for a bad or missing signature. |
+| `status` | `String` | Yes |  |
+| `target_count` | `Integer` | Yes |  |
+| `unmapped_delivery_count` | `Integer` | Yes | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `Object` | No |  |
+| `webhook_secret` | `String` | No | The provider's signing secret. |
+| `webhook_secret_stored` | `Boolean` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- | --- |
+| `api_token` | - | - | - | - | - | - |
+| `api_token_stored` | - | - | - | - | - | - |
+| `config` | - | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - | - |
+| `failure_message` | - | - | - | - | - | - |
+| `id` | - | - | - | - | - | - |
+| `inbound_path` | - | - | - | - | - | - |
+| `inbound_url` | - | - | - | - | - | - |
+| `last_received_at` | - | - | - | - | - | - |
+| `last_verified_at` | - | - | - | - | - | - |
+| `mode` | - | - | Yes | Yes | Yes | - |
+| `name` | - | - | - | Yes | Yes | - |
+| `organization_id` | - | - | - | - | - | - |
+| `provider` | - | - | - | - | - | - |
+| `rejected_signature_count` | - | - | - | - | - | - |
+| `status` | - | - | - | Yes | Yes | - |
+| `target_count` | - | - | - | - | - | - |
+| `unmapped_delivery_count` | - | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - | - |
+| `webhook_secret` | - | - | - | - | - | - |
+| `webhook_secret_stored` | - | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SignalIntegration.create({
+  "organization_id" => "example_organization_id", # String
+  "name" => "example_name", # String
+  "provider" => "example_provider", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SignalIntegration.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.SignalIntegration.load({ "id" => "signal_integration_id", "organization_id" => "organization_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.SignalIntegration.patch({
+  "id" => "signal_integration_id",
+  "organization_id" => "organization_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.SignalIntegration.remove({ "id" => "signal_integration_id", "organization_id" => "organization_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SignalIntegration.update({
+  "id" => "signal_integration_id",
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SignalIntegrationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SignalIntegrationDeliveryEntity
+
+```ruby
+signal_integration_delivery = client.SignalIntegrationDelivery
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `attempt_count` | `Integer` | Yes |  |
+| `created_at` | `Object` | No |  |
+| `delivery_id` | `String` | Yes | The provider's delivery id, or a `content-…` id derived from the event kind, its timestamp header and the body checksum when it sends none. |
+| `event_kind` | `Object` | No |  |
+| `id` | `String` | Yes | Public id (`sdel_…`). |
+| `last_error` | `Object` | No |  |
+| `ops_signal_id` | `Object` | No | Public id (`sig_…`) of the signal this delivery emitted. |
+| `organization_id` | `String` | Yes |  |
+| `processed_at` | `Object` | No |  |
+| `provider` | `String` | Yes |  |
+| `received_at` | `Object` | No |  |
+| `signal_integration_id` | `String` | Yes |  |
+| `state` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SignalIntegrationDelivery.list({ "organization_id" => "example", "signal_integration_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SignalIntegrationDeliveryEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SignalIntegrationTargetEntity
+
+```ruby
+signal_integration_target = client.SignalIntegrationTarget
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app_service_id` | `Object` | No |  |
+| `created_at` | `Object` | No |  |
+| `display_name` | `Object` | No |  |
+| `enabled` | `Boolean` | Yes |  |
+| `external_id` | `String` | Yes |  |
+| `external_kind` | `String` | Yes |  |
+| `external_slug` | `Object` | No |  |
+| `hosted_app_id` | `Object` | No |  |
+| `id` | `String` | Yes | Public id (`stgt_…`). |
+| `organization_id` | `String` | Yes |  |
+| `signal_integration_id` | `String` | Yes |  |
+| `signal_integration_targets` | `Array` | Yes |  |
+| `targets` | `Array` | Yes |  |
+| `updated_at` | `Object` | No |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SignalIntegrationTarget.list({ "organization_id" => "example", "signal_integration_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SignalIntegrationTarget.update({
+  "organization_id" => "organization_id",
+  "signal_integration_id" => "signal_integration_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SignalIntegrationTargetEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SignalSubscriptionEntity
+
+```ruby
+signal_subscription = client.SignalSubscription
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SignalSubscription.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SignalSubscription.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.SignalSubscription.load({ "id" => "signal_subscription_id", "organization_id" => "organization_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.SignalSubscription.patch({
+  "id" => "signal_subscription_id",
+  "organization_id" => "organization_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.SignalSubscription.remove({ "id" => "signal_subscription_id", "organization_id" => "organization_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SignalSubscription.update({
+  "id" => "signal_subscription_id",
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SignalSubscriptionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SiteEntity
+
+```ruby
+site = client.Site
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_at` | `Object` | Yes |  |
+| `activated_at_label` | `Object` | Yes |  |
+| `commit_sha` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `creator_user_id` | `Object` | Yes |  |
+| `deploy_slug` | `String` | Yes |  |
+| `failure_message` | `Object` | Yes |  |
+| `file_count` | `Integer` | Yes |  |
+| `file_count_label` | `String` | Yes |  |
+| `finished_at` | `Object` | Yes |  |
+| `finished_at_label` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `is_active` | `Boolean` | Yes |  |
+| `source_ref` | `Object` | Yes |  |
+| `started_at` | `Object` | Yes |  |
+| `started_at_label` | `Object` | Yes |  |
+| `static_site_id` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `total_bytes` | `Integer` | Yes |  |
+| `total_bytes_label` | `String` | Yes |  |
+| `trigger_kind` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+| `uploaded_at` | `Object` | Yes |  |
+| `uploaded_at_label` | `Object` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.Site.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SiteEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SiteAccessKeyEntity
+
+```ruby
+site_access_key = client.SiteAccessKey
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SiteAccessKey.create({
+  "organization_id" => "example_organization_id", # String
+  "site_id" => "example_site_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SiteAccessKey.list({ "organization_id" => "example", "site_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.SiteAccessKey.remove({ "id" => "site_access_key_id", "organization_id" => "organization_id", "site_id" => "site_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SiteAccessKeyEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## SitePreviewEntity
 
 ```ruby
@@ -17087,6 +38019,73 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `SitePreviewEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SiteSecretEntity
+
+```ruby
+site_secret = client.SiteSecret
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+| `native_agent_id` | `String` | Yes |  |
+| `value` | `String` | Yes |  |
+
+### Operations
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.SiteSecret.remove({ "id" => "site_secret_id", "organization_id" => "organization_id", "site_id" => "site_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SiteSecret.update({
+  "id" => "site_secret_id",
+  "organization_id" => "organization_id",
+  "site_id" => "site_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SiteSecretEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -17145,6 +38144,1612 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `SlackChannelEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SourceConnectionEntity
+
+```ruby
+source_connection = client.SourceConnection
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SourceConnectionEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SpaceAlertRuleEntity
+
+```ruby
+space_alert_rule = client.SpaceAlertRule
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SpaceAlertRule.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SpaceAlertRule.list({ "space_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.SpaceAlertRule.load({ "id" => "space_alert_rule_id", "space_id" => "space_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.SpaceAlertRule.patch({
+  "id" => "space_alert_rule_id",
+  "space_id" => "space_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.SpaceAlertRule.remove({ "id" => "space_alert_rule_id", "space_id" => "space_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SpaceAlertRule.update({
+  "id" => "space_alert_rule_id",
+  "space_id" => "space_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SpaceAlertRuleEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SpaceAuditEventEntity
+
+```ruby
+space_audit_event = client.SpaceAuditEvent
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SpaceAuditEvent.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SpaceAuditEvent.list({ "space_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SpaceAuditEventEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SpaceDnsRecordEntity
+
+```ruby
+space_dns_record = client.SpaceDnsRecord
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SpaceDnsRecord.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SpaceDnsRecord.list({ "space_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.SpaceDnsRecord.load({ "id" => "space_dns_record_id", "space_id" => "space_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.SpaceDnsRecord.patch({
+  "id" => "space_dns_record_id",
+  "space_id" => "space_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.SpaceDnsRecord.remove({ "id" => "space_dns_record_id", "space_id" => "space_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SpaceDnsRecord.update({
+  "id" => "space_dns_record_id",
+  "space_id" => "space_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SpaceDnsRecordEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SpaceEnrollmentTokenEntity
+
+```ruby
+space_enrollment_token = client.SpaceEnrollmentToken
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SpaceEnrollmentToken.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SpaceEnrollmentToken.list({ "space_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.SpaceEnrollmentToken.load({ "id" => "space_enrollment_token_id", "space_id" => "space_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.SpaceEnrollmentToken.patch({
+  "id" => "space_enrollment_token_id",
+  "space_id" => "space_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.SpaceEnrollmentToken.remove({ "id" => "space_enrollment_token_id", "space_id" => "space_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SpaceEnrollmentToken.update({
+  "id" => "space_enrollment_token_id",
+  "space_id" => "space_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SpaceEnrollmentTokenEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SpaceGatewayEntity
+
+```ruby
+space_gateway = client.SpaceGateway
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SpaceGateway.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SpaceGateway.list({ "space_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.SpaceGateway.load({ "id" => "space_gateway_id", "space_id" => "space_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.SpaceGateway.patch({
+  "id" => "space_gateway_id",
+  "space_id" => "space_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.SpaceGateway.remove({ "id" => "space_gateway_id", "space_id" => "space_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SpaceGateway.update({
+  "id" => "space_gateway_id",
+  "space_id" => "space_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SpaceGatewayEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SpaceGroupEntity
+
+```ruby
+space_group = client.SpaceGroup
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SpaceGroup.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SpaceGroup.list({ "space_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.SpaceGroup.patch({
+  "id" => "space_group_id",
+  "space_id" => "space_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.SpaceGroup.remove({ "id" => "space_group_id", "space_id" => "space_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SpaceGroup.update({
+  "id" => "space_group_id",
+  "space_id" => "space_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SpaceGroupEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SpaceGroupMembershipEntity
+
+```ruby
+space_group_membership = client.SpaceGroupMembership
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SpaceGroupMembership.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SpaceGroupMembership.list({ "space_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.SpaceGroupMembership.patch({
+  "id" => "space_group_membership_id",
+  "space_id" => "space_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.SpaceGroupMembership.remove({ "id" => "space_group_membership_id", "space_id" => "space_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SpaceGroupMembership.update({
+  "id" => "space_group_membership_id",
+  "space_id" => "space_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SpaceGroupMembershipEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SpaceLogStreamEntity
+
+```ruby
+space_log_stream = client.SpaceLogStream
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SpaceLogStream.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SpaceLogStream.list({ "space_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SpaceLogStreamEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SpaceMetricSeryEntity
+
+```ruby
+space_metric_sery = client.SpaceMetricSery
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SpaceMetricSery.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SpaceMetricSery.list({ "space_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SpaceMetricSeryEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SpaceOtelCollectorEntity
+
+```ruby
+space_otel_collector = client.SpaceOtelCollector
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SpaceOtelCollector.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SpaceOtelCollector.list({ "space_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.SpaceOtelCollector.load({ "id" => "space_otel_collector_id", "space_id" => "space_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.SpaceOtelCollector.patch({
+  "id" => "space_otel_collector_id",
+  "space_id" => "space_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.SpaceOtelCollector.remove({ "id" => "space_otel_collector_id", "space_id" => "space_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SpaceOtelCollector.update({
+  "id" => "space_otel_collector_id",
+  "space_id" => "space_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SpaceOtelCollectorEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SpacePeerEntity
+
+```ruby
+space_peer = client.SpacePeer
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SpacePeer.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SpacePeer.list({ "space_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.SpacePeer.load({ "id" => "space_peer_id", "space_id" => "space_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.SpacePeer.patch({
+  "id" => "space_peer_id",
+  "space_id" => "space_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.SpacePeer.remove({ "id" => "space_peer_id", "space_id" => "space_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SpacePeer.update({
+  "id" => "space_peer_id",
+  "space_id" => "space_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SpacePeerEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SpacePeerAttachmentEntity
+
+```ruby
+space_peer_attachment = client.SpacePeerAttachment
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SpacePeerAttachment.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SpacePeerAttachment.list({ "space_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.SpacePeerAttachment.patch({
+  "id" => "space_peer_attachment_id",
+  "space_id" => "space_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.SpacePeerAttachment.remove({ "id" => "space_peer_attachment_id", "space_id" => "space_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SpacePeerAttachment.update({
+  "id" => "space_peer_attachment_id",
+  "space_id" => "space_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SpacePeerAttachmentEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SpacePolicyEntity
+
+```ruby
+space_policy = client.SpacePolicy
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SpacePolicy.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SpacePolicy.list({ "space_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.SpacePolicy.load({ "id" => "space_policy_id", "space_id" => "space_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.SpacePolicy.patch({
+  "id" => "space_policy_id",
+  "space_id" => "space_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.SpacePolicy.remove({ "id" => "space_policy_id", "space_id" => "space_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SpacePolicy.update({
+  "id" => "space_policy_id",
+  "space_id" => "space_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SpacePolicyEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SpaceSegmentEntity
+
+```ruby
+space_segment = client.SpaceSegment
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SpaceSegment.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SpaceSegment.list({ "space_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.SpaceSegment.load({ "id" => "space_segment_id", "space_id" => "space_id" })
+```
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.SpaceSegment.patch({
+  "id" => "space_segment_id",
+  "space_id" => "space_id",
+  # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.SpaceSegment.remove({ "id" => "space_segment_id", "space_id" => "space_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SpaceSegment.update({
+  "id" => "space_segment_id",
+  "space_id" => "space_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SpaceSegmentEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SpaceTraceSpanEntity
+
+```ruby
+space_trace_span = client.SpaceTraceSpan
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SpaceTraceSpan.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SpaceTraceSpan.list({ "space_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SpaceTraceSpanEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SparkEntity
+
+```ruby
+spark = client.Spark
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_products` | `Array` | Yes | Products this organization has activated (PRD 144). |
+| `agents_only` | `Boolean` | No | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `Boolean` | Yes | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `can_manage` | `Boolean` | Yes |  |
+| `compute_credit_cents` | `Object` | Yes | Included compute the workspace started Sparks with, when it is on compute billing. |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `credit_cents` | `Object` | Yes | Inference credit the workspace started Sparks with. |
+| `first_spark` | `Object` | Yes | Null until the first Spark exists or when the viewer cannot read it. |
+| `github_connected` | `Boolean` | Yes |  |
+| `github_prs_authored_by_change_author` | `Boolean` | Yes |  |
+| `id` | `String` | Yes |  |
+| `jsonrpc` | `String` | Yes |  |
+| `logo_url` | `Object` | Yes |  |
+| `member_count` | `Integer` | Yes |  |
+| `method` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
+| `params` | `Hash` | No |  |
+| `pending_invitation_count` | `Integer` | Yes |  |
+| `personal` | `Boolean` | Yes |  |
+| `repository_count` | `Integer` | Yes |  |
+| `role` | `Object` | Yes |  |
+| `sandbox_region` | `String` | Yes |  |
+| `shared_agent_personal_accounts_enabled` | `Boolean` | No | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `String` | Yes |  |
+| `source_control_providers` | `Array` | No | Connected source control providers for this organization. |
+| `source_ui_enabled` | `Boolean` | No | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `started` | `Boolean` | Yes | Whether the workspace has started Sparks. |
+| `timezone` | `String` | Yes | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+| `verify_pr_scenario_writing_enabled` | `Boolean` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `activated_products` | - | - |
+| `agents_only` | - | - |
+| `can_activate_products` | - | - |
+| `can_manage` | - | - |
+| `compute_credit_cents` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `credit_cents` | - | - |
+| `first_spark` | - | - |
+| `github_connected` | - | - |
+| `github_prs_authored_by_change_author` | - | - |
+| `id` | - | Yes |
+| `jsonrpc` | - | - |
+| `logo_url` | - | - |
+| `member_count` | - | - |
+| `method` | - | - |
+| `name` | - | - |
+| `params` | - | - |
+| `pending_invitation_count` | - | - |
+| `personal` | - | - |
+| `repository_count` | - | - |
+| `role` | - | - |
+| `sandbox_region` | - | - |
+| `shared_agent_personal_accounts_enabled` | - | - |
+| `slug` | - | - |
+| `source_control_providers` | - | - |
+| `source_ui_enabled` | - | - |
+| `started` | - | - |
+| `timezone` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+| `verify_pr_scenario_writing_enabled` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.Spark.create({
+  "jsonrpc" => "example_jsonrpc", # String
+  "method" => "example_method", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.Spark.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SparkEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SparkAgentIntegrationEntity
+
+```ruby
+spark_agent_integration = client.SparkAgentIntegration
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_counts` | `Hash` | Yes | Accounts the viewer can see per toolkit, across all account pages. |
+| `accounts_path` | `String` | Yes | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
+| `added_toolkits` | `Array` | Yes | Apps with a connected or connecting account the viewer can see. |
+| `can_manage` | `Boolean` | Yes |  |
+| `can_manage_organization` | `Boolean` | Yes |  |
+| `catalog` | `Array` | Yes |  |
+| `connect_as` | `Object` | Yes | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
+| `connect_as_by_toolkit` | `Hash` | Yes | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_counts` | `Hash` | Yes | Signed-in accounts per toolkit, across all account pages. |
+| `connection_id` | `String` | Yes |  |
+| `connections` | `Array` | Yes |  |
+| `email` | `Hash` | Yes | A native agent's own email address. |
+| `enabled` | `Boolean` | Yes |  |
+| `enabled_toolkits` | `Array` | Yes | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `generation` | `Integer` | Yes |  |
+| `pagination` | `Hash` | Yes |  |
+| `pending_counts` | `Hash` | Yes | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
+| `personal_creation_key_supported` | `Boolean` | No | The personal account creation endpoint honors a creation key. |
+| `private_agent` | `Boolean` | Yes | Only the agent's owner can chat with it. |
+| `shared_agent_personal_accounts_enabled` | `Boolean` | Yes | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
+| `slack` | `Hash` | Yes |  |
+| `webhook_connections` | `Array` | Yes |  |
+| `webhooks_available` | `Boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SparkAgentIntegration.create({
+  "agent_id" => "example_agent_id", # String
+  "organization_id" => "example_organization_id", # String
+  "connection_id" => "example_connection_id", # String
+  "enabled" => true, # Boolean
+  "generation" => 1, # Integer
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SparkAgentIntegration.list({ "agent_id" => "example", "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SparkAgentIntegrationEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -17248,6 +39853,484 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `SparkAgentLocalThreadEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SparkAgentSiteEntity
+
+```ruby
+spark_agent_site = client.SparkAgentSite
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `deployed_at` | `String` | Yes |  |
+| `deployments_count` | `Integer` | Yes |  |
+| `hostname` | `String` | Yes |  |
+| `https` | `String` | Yes | Whether the organization's certificate serves this site over HTTPS |
+| `id` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
+| `url` | `String` | Yes |  |
+| `visibility` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SparkAgentSite.list({ "agent_id" => "example", "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SparkAgentSiteEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SparkAgentSkillEntity
+
+```ruby
+spark_agent_skill = client.SparkAgentSkill
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available` | `Boolean` | Yes |  |
+| `can_configure` | `Boolean` | Yes |  |
+| `can_manage` | `Boolean` | Yes |  |
+| `configuration_state` | `String` | No | The requested managed skill selection is awaiting runtime qualification. |
+| `description` | `String` | Yes |  |
+| `enabled` | `Boolean` | Yes |  |
+| `name` | `String` | Yes |  |
+| `skills` | `Array` | Yes |  |
+| `version` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SparkAgentSkill.create({
+  "agent_id" => "example_agent_id", # String
+  "organization_id" => "example_organization_id", # String
+  "enabled" => true, # Boolean
+  "name" => "example_name", # String
+  "version" => "example_version", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SparkAgentSkill.list({ "agent_id" => "example", "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SparkAgentSkillEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SparkAgentThreadEntity
+
+```ruby
+spark_agent_thread = client.SparkAgentThread
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `archived_count` | `Object` | No | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
+| `can_create` | `Boolean` | Yes |  |
+| `execution` | `Object` | No |  |
+| `first_input` | `Object` | No |  |
+| `first_input_key` | `String` | No | Idempotency-Key that finds the first message through input_delivery. |
+| `first_input_requester_membership_id` | `String` | No | Membership the first message was sent as, for input_delivery. |
+| `id` | `String` | No |  |
+| `inherit_context` | `Boolean` | No | Include the source conversation through its last completed reply. |
+| `local_activities` | `Hash` | Yes | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
+| `local_archived_count` | `Integer` | Yes | Local Claude Code and Codex threads archived on their computers. |
+| `local_next_cursor` | `Object` | Yes |  |
+| `local_scope_key` | `Object` | Yes |  |
+| `local_status_pending` | `Boolean` | Yes | A computer is reporting newer local thread statuses; read the page again shortly. |
+| `local_threads` | `Array` | Yes |  |
+| `main_thread_id` | `String` | Yes |  |
+| `message` | `String` | No | The thread's first message. |
+| `next_cursor` | `Object` | Yes |  |
+| `parent_conversation_id` | `String` | No | Optional source conversation belonging to this agent. |
+| `requester_membership_id` | `String` | No |  |
+| `selected_thread` | `Object` | Yes |  |
+| `thread` | `Hash` | Yes |  |
+| `threads` | `Array` | Yes |  |
+| `title` | `String` | No |  |
+| `total_archived_count` | `Object` | Yes | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SparkAgentThread.create({
+  "agent_id" => "example_agent_id", # String
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SparkAgentThread.list({ "agent_id" => "example", "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SparkAgentThreadEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SparkCreditEntity
+
+```ruby
+spark_credit = client.SparkCredit
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `amount_cents` | `Integer` | No | Purchase amount in USD cents. |
+| `autofill` | `Object` | Yes |  |
+| `autofill_payment_unconfirmed` | `Boolean` | Yes |  |
+| `available_usd` | `String` | Yes |  |
+| `billing_unit` | `String` | No | Compute minute quote version returned by the billing summary. |
+| `can_manage` | `Boolean` | Yes |  |
+| `compute_minutes` | `Hash` | Yes |  |
+| `compute_usd` | `String` | No |  |
+| `credits_per_usd` | `Integer` | Yes |  |
+| `inference_usd` | `String` | No |  |
+| `kind` | `String` | Yes |  |
+| `payment_method` | `Object` | Yes |  |
+| `payments_enabled` | `Boolean` | Yes |  |
+| `plan` | `String` | No |  |
+| `plans` | `Array` | Yes |  |
+| `quoted_credits_cents` | `Integer` | No | Grant shown for a top-up or subscription, in usage cents. |
+| `quoted_price_cents` | `Integer` | No | Monthly cash price shown for a subscription, in USD cents. |
+| `refill_limits_cents` | `Array` | Yes |  |
+| `refill_options` | `Array` | Yes |  |
+| `refill_thresholds_cents` | `Array` | Yes |  |
+| `request_key` | `String` | Yes |  |
+| `settings` | `Object` | Yes |  |
+| `starter_cents` | `Integer` | Yes |  |
+| `top_up_max_cents` | `Integer` | Yes | Maximum manual top-up, in USD cents. |
+| `top_up_step_cents` | `Integer` | Yes | Minimum manual top-up and increment, in USD cents. |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `amount_cents` | - | - | - | - | - |
+| `autofill` | - | - | - | - | - |
+| `autofill_payment_unconfirmed` | - | - | - | - | - |
+| `available_usd` | - | - | - | - | - |
+| `billing_unit` | - | - | - | - | - |
+| `can_manage` | - | - | - | - | - |
+| `compute_minutes` | - | - | - | - | - |
+| `compute_usd` | - | - | - | - | - |
+| `credits_per_usd` | - | - | - | - | - |
+| `inference_usd` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `payment_method` | - | - | - | - | - |
+| `payments_enabled` | - | - | - | - | - |
+| `plan` | - | Yes | - | - | Yes |
+| `plans` | - | - | - | - | - |
+| `quoted_credits_cents` | - | - | - | - | - |
+| `quoted_price_cents` | - | - | - | - | - |
+| `refill_limits_cents` | - | - | - | - | - |
+| `refill_options` | - | - | - | - | - |
+| `refill_thresholds_cents` | - | - | - | - | - |
+| `request_key` | - | - | - | - | - |
+| `settings` | - | - | - | - | - |
+| `starter_cents` | - | - | - | - | - |
+| `top_up_max_cents` | - | - | - | - | - |
+| `top_up_step_cents` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SparkCredit.create({
+  "organization_id" => "example_organization_id", # String
+  "kind" => "example_kind", # String
+  "request_key" => "example_request_key", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SparkCredit.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.SparkCredit.patch({
+  "organization_id" => "organization_id",
+  # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.SparkCredit.update({
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SparkCreditEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SparkCreditAgentUsageEntity
+
+```ruby
+spark_credit_agent_usage = client.SparkCreditAgentUsage
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agents` | `Array` | Yes |  |
+| `all` | `Hash` | Yes |  |
+| `days` | `Array` | Yes |  |
+| `id` | `String` | No |  |
+| `owners` | `Array` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.SparkCreditAgentUsage.load({ "id" => "spark_credit_agent_usage_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SparkCreditAgentUsageEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SparkCreditUsageTotalEntity
+
+```ruby
+spark_credit_usage_total = client.SparkCreditUsageTotal
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `compute_minutes_used` | `String` | Yes |  |
+| `compute_usd` | `String` | Yes |  |
+| `inference_usd` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SparkCreditUsageTotal.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SparkCreditUsageTotalEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -17652,6 +40735,280 @@ Return the entity name.
 
 ---
 
+## StatusChangeEntity
+
+```ruby
+status_change = client.StatusChange
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_id` | `String` | Yes |  |
+| `id` | `String` | No |  |
+| `patchsets` | `Array` | Yes |  |
+| `status` | `String` | Yes |  |
+| `status_label` | `String` | Yes |  |
+| `status_state` | `String` | Yes |  |
+| `status_tone` | `String` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.StatusChange.load({ "id" => "status_change_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `StatusChangeEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## StatusCommitEntity
+
+```ruby
+status_commit = client.StatusCommit
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `checks` | `Array` | Yes |  |
+| `commit_sha` | `String` | Yes |  |
+| `counts` | `Hash` | Yes |  |
+| `id` | `String` | No |  |
+| `status` | `String` | Yes |  |
+| `status_label` | `String` | Yes |  |
+| `status_state` | `String` | Yes |  |
+| `status_tone` | `String` | Yes |  |
+| `total` | `Integer` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.StatusCommit.load({ "id" => "status_commit_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `StatusCommitEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## StatusPatchsetEntity
+
+```ruby
+status_patchset = client.StatusPatchset
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `checks` | `Array` | Yes |  |
+| `checks_status` | `Object` | Yes |  |
+| `commit_sha` | `Object` | Yes |  |
+| `counts` | `Hash` | Yes |  |
+| `id` | `String` | No |  |
+| `patchset_id` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `status_label` | `String` | Yes |  |
+| `status_state` | `String` | Yes |  |
+| `status_tone` | `String` | Yes |  |
+| `total` | `Integer` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.StatusPatchset.load({ "id" => "status_patchset_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `StatusPatchsetEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## StripeWebhookEntity
+
+```ruby
+stripe_webhook = client.StripeWebhook
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.StripeWebhook.create({
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `StripeWebhookEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SubmitTelemetryEntity
+
+```ruby
+submit_telemetry = client.SubmitTelemetry
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SubmitTelemetry.create({
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SubmitTelemetryEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## SubscriptionModelEntity
 
 ```ruby
@@ -17701,6 +41058,326 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `SubscriptionModelEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SwarmEventEntity
+
+```ruby
+swarm_event = client.SwarmEvent
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_swarm_id` | `String` | Yes |  |
+| `attempt_id` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `id` | `Integer` | Yes |  |
+| `kind` | `String` | Yes |  |
+| `payload` | `Hash` | Yes |  |
+| `reason` | `Object` | Yes |  |
+| `scheduler_generation` | `Object` | Yes |  |
+| `task_id` | `Object` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SwarmEvent.list({ "swarm_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SwarmEventEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SwarmLiveEntity
+
+```ruby
+swarm_live = client.SwarmLive
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SwarmLiveEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SwarmNoteEntity
+
+```ruby
+swarm_note = client.SwarmNote
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `task_id` | `Object` | No | A task public id; omitted |
+| `text` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.SwarmNote.create({
+  "swarm_id" => "example_swarm_id", # String
+  "text" => "example_text", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SwarmNoteEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## SwarmTaskEntity
+
+```ruby
+swarm_task = client.SwarmTask
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `acceptance_commands` | `Array` | Yes |  |
+| `agent_swarm_id` | `String` | Yes |  |
+| `assigned_runner_id` | `Object` | Yes |  |
+| `blocked_reason` | `Object` | Yes |  |
+| `changes` | `Array` | Yes |  |
+| `commit_count` | `Integer` | Yes |  |
+| `commit_sha_result` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `current_attempt_id` | `Object` | Yes |  |
+| `deadline_at` | `Object` | Yes |  |
+| `depends_on_task_ids` | `Array` | Yes |  |
+| `depth` | `Integer` | Yes |  |
+| `diff_artifact_url` | `Object` | Yes |  |
+| `display_id` | `Integer` | Yes |  |
+| `environment_profile` | `Object` | Yes |  |
+| `error_message` | `Object` | Yes |  |
+| `failure_code` | `Object` | Yes |  |
+| `finished_at` | `Object` | Yes |  |
+| `finished_at_label` | `Object` | Yes |  |
+| `harness` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `input_revision` | `Object` | Yes |  |
+| `iteration` | `Integer` | Yes |  |
+| `landing_state` | `String` | Yes |  |
+| `model` | `Object` | Yes |  |
+| `model_provider` | `Object` | Yes |  |
+| `number` | `Integer` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `owned_paths` | `Array` | Yes |  |
+| `parent_task_id` | `Object` | Yes |  |
+| `position` | `Integer` | Yes |  |
+| `prompt` | `String` | Yes |  |
+| `queued_at` | `Object` | Yes |  |
+| `queued_at_label` | `Object` | Yes |  |
+| `reasoning_effort` | `Object` | Yes |  |
+| `recent_activity` | `Array` | Yes |  |
+| `repo_url` | `String` | Yes |  |
+| `result` | `Hash` | Yes |  |
+| `retry_number` | `Integer` | Yes |  |
+| `role` | `String` | Yes |  |
+| `run_id` | `Object` | Yes |  |
+| `stack_after_task_id` | `Object` | Yes |  |
+| `started_at` | `Object` | Yes |  |
+| `started_at_label` | `Object` | Yes |  |
+| `status` | `String` | Yes |  |
+| `title` | `Object` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.SwarmTask.list({ "swarm_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `SwarmTaskEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## TaskLeaseEntity
+
+```ruby
+task_lease = client.TaskLease
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.TaskLease.create({
+  "swarm_id" => "example_swarm_id", # String
+  "task_id" => "example_task_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `TaskLeaseEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -17760,6 +41437,875 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `ThreadPreviewEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ThreadPreviewAccessEntity
+
+```ruby
+thread_preview_access = client.ThreadPreviewAccess
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ThreadPreviewAccessEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## ToolFeedbackEntity
+
+```ruby
+tool_feedback = client.ToolFeedback
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `category` | `String` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `details` | `String` | Yes |  |
+| `feedback` | `Hash` | Yes |  |
+| `id` | `String` | Yes |  |
+| `metadata` | `Hash` | Yes | Caller-supplied session context; no secrets or transcripts |
+| `organization_id` | `String` | Yes |  |
+| `source` | `String` | Yes |  |
+| `summary` | `String` | Yes |  |
+| `user_id` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.ToolFeedback.create({
+  "organization_id" => "example_organization_id", # String
+  "feedback" => {}, # Hash
+})
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.ToolFeedback.load({ "id" => "tool_feedback_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `ToolFeedbackEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## TranscriptEntity
+
+```ruby
+transcript = client.Transcript
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent` | `String` | Yes |  |
+| `author` | `Hash` | Yes |  |
+| `checkpoint_pagination` | `Hash` | Yes |  |
+| `checkpoints` | `Array` | Yes |  |
+| `id` | `String` | Yes |  |
+| `last_checkpoint_at` | `Object` | Yes |  |
+| `selected_checkpoint` | `Object` | Yes |  |
+| `source_url` | `String` | Yes |  |
+| `started_at` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `title` | `Object` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.Transcript.list({ "repo" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `TranscriptEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## V1MessageEntity
+
+```ruby
+v1_message = client.V1Message
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.V1Message.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `V1MessageEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## VcBranchEntity
+
+```ruby
+vc_branch = client.VcBranch
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+| `name` | `String` | Yes |  |
+| `target_commit_id` | `String` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.VcBranch.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.VcBranch.list({ "organization_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `remove(reqmatch, ctrl = nil) -> result`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```ruby
+result = client.VcBranch.remove({ "id" => "vc_branch_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `VcBranchEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## VcBrowserEntity
+
+```ruby
+vc_browser = client.VcBrowser
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `VcBrowserEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## VcChangeEntity
+
+```ruby
+vc_change = client.VcChange
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `Array` | Yes |  |
+| `canonical_path` | `String` | Yes |  |
+| `change` | `Object` | Yes |  |
+| `checks` | `Array` | No |  |
+| `checks_status` | `String` | No |  |
+| `description` | `Object` | No |  |
+| `group` | `Object` | No |  |
+| `id` | `String` | Yes |  |
+| `jj_change_id` | `Object` | No |  |
+| `labels` | `Array` | No |  |
+| `landing` | `Hash` | Yes | Server-computed submitted-together closure and landing preflight. |
+| `number` | `Integer` | Yes |  |
+| `patchset_number` | `Object` | No |  |
+| `previews` | `Array` | Yes |  |
+| `primary_status` | `Object` | No |  |
+| `public_id` | `String` | No |  |
+| `related_changes` | `Array` | Yes |  |
+| `relation_chain` | `Array` | Yes |  |
+| `restack_state` | `String` | No |  |
+| `review_summary` | `Hash` | No |  |
+| `stack` | `Object` | No |  |
+| `status` | `String` | Yes |  |
+| `sync` | `Hash` | Yes |  |
+| `target` | `Hash` | Yes |  |
+| `target_advanced` | `Boolean` | Yes |  |
+| `target_branch` | `String` | Yes |  |
+| `title` | `String` | Yes |  |
+| `url` | `String` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.VcChange.list({ "organization_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.VcChange.load({ "id" => "vc_change_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `VcChangeEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## VcChangeGroupEntity
+
+```ruby
+vc_change_group = client.VcChangeGroup
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `changes` | `Array` | Yes |  |
+| `id` | `String` | No |  |
+| `name` | `String` | No |  |
+| `number` | `Integer` | No |  |
+| `status` | `String` | Yes |  |
+| `title` | `Object` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `changes` | - | - | - |
+| `id` | - | - | - |
+| `name` | - | - | Yes |
+| `number` | - | - | - |
+| `status` | - | - | - |
+| `title` | - | - | Yes |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.VcChangeGroup.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "name" => "example_name", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.VcChangeGroup.list({ "organization_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.VcChangeGroup.load({ "id" => "vc_change_group_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `VcChangeGroupEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## VcFileEntity
+
+```ruby
+vc_file = client.VcFile
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `paths` | `Array` | Yes |  |
+| `truncated` | `Boolean` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.VcFile.list({ "organization_id" => "example", "repo_id" => "example", "ref" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `VcFileEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## VcMergeQueueEntity
+
+```ruby
+vc_merge_queue = client.VcMergeQueue
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `analytics` | `Hash` | Yes | Queue performance for the reporting window. |
+| `id` | `String` | No |  |
+| `policy` | `Hash` | Yes |  |
+| `queue` | `Hash` | Yes |  |
+| `target_branches` | `Array` | No | Bookmark names for the target picker. |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.VcMergeQueue.list({ "organization_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.VcMergeQueue.load({ "id" => "vc_merge_queue_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `VcMergeQueueEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## VcStackEntity
+
+```ruby
+vc_stack = client.VcStack
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `alias_ref_name` | `Object` | Yes |  |
+| `changes` | `Array` | Yes |  |
+| `code` | `String` | Yes |  |
+| `id` | `String` | No |  |
+| `landing` | `Hash` | Yes | Compact landing state for the Stack CLI. |
+| `member_count` | `Integer` | Yes |  |
+| `name` | `Object` | Yes |  |
+| `ref_name` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `tip_change_number` | `Object` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `String` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.VcStack.list({ "organization_id" => "example", "repo_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.VcStack.load({ "id" => "vc_stack_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `VcStackEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## VcsNodeEntity
+
+```ruby
+vcs_node = client.VcsNode
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `Object` | Yes |  |
+| `account_id` | `Object` | Yes |  |
+| `account_login` | `String` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `created_at_label` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `installation_id` | `String` | Yes |  |
+| `installed_at` | `Object` | Yes |  |
+| `installed_at_label` | `Object` | Yes |  |
+| `manage_access_url` | `String` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `permission_entries` | `Array` | Yes | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `Hash` | Yes |  |
+| `status` | `String` | Yes |  |
+| `suspended_at` | `Object` | Yes |  |
+| `suspended_at_label` | `Object` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+| `updated_at_label` | `Object` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.VcsNode.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `VcsNodeEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## VcsSettingEntity
+
+```ruby
+vcs_setting = client.VcsSetting
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `Boolean` | Yes |  |
+| `can_manage_sandbox_region` | `Boolean` | Yes |  |
+| `dedicated_outbound_ip_addresses` | `Array` | Yes | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `String` | Yes |  |
+| `organization` | `Hash` | Yes |  |
+| `sandbox_regions` | `Array` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.VcsSetting.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `VcsSettingEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -18490,6 +43036,126 @@ Return the entity name.
 
 ---
 
+## VerifyEmailVerificationEntity
+
+```ruby
+verify_email_verification = client.VerifyEmailVerification
+```
+
+### Operations
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.VerifyEmailVerification.list
+results.each { |item| puts item.data_get }
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `VerifyEmailVerificationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## VerifySignalIntegrationEntity
+
+```ruby
+verify_signal_integration = client.VerifySignalIntegration
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `api_token_stored` | `Boolean` | Yes |  |
+| `config` | `Hash` | Yes |  |
+| `created_at` | `Object` | No |  |
+| `failure_message` | `Object` | Yes |  |
+| `id` | `String` | Yes | Public id (`sint_…`). |
+| `inbound_path` | `String` | Yes |  |
+| `inbound_url` | `String` | Yes | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `Object` | No |  |
+| `last_verified_at` | `Object` | No |  |
+| `mode` | `String` | Yes | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `String` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `provider` | `String` | Yes |  |
+| `rejected_signature_count` | `Integer` | Yes | Deliveries rejected for a bad or missing signature. |
+| `status` | `String` | Yes |  |
+| `target_count` | `Integer` | Yes |  |
+| `unmapped_delivery_count` | `Integer` | Yes | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `Object` | No |  |
+| `webhook_secret_stored` | `Boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.VerifySignalIntegration.create({
+  "id" => "example_id", # String
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `VerifySignalIntegrationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## VerifyStaticSiteDomainEntity
 
 ```ruby
@@ -18627,6 +43293,53 @@ Return the entity name.
 
 ---
 
+## WaitlistApplicationEntity
+
+```ruby
+waitlist_application = client.WaitlistApplication
+```
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.WaitlistApplication.create({
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `WaitlistApplicationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
 ## WebBotAuthEntity
 
 ```ruby
@@ -18674,6 +43387,61 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `WebBotAuthEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## WebhookGitlabEntity
+
+```ruby
+webhook_gitlab = client.WebhookGitlab
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.WebhookGitlab.update({
+  "id" => "id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `WebhookGitlabEntity` instance with the same client and
 options.
 
 #### `get_name -> String`
@@ -18812,6 +43580,272 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `WorkflowTriggerSkippedEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## WorkspaceActivityEntity
+
+```ruby
+workspace_activity = client.WorkspaceActivity
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `live_activity` | `Array` | Yes |  |
+| `recent_items` | `Array` | Yes |  |
+| `unresolved_notification_count` | `Integer` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.WorkspaceActivity.load({ "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `WorkspaceActivityEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## WorkspaceActivityNotificationEntity
+
+```ruby
+workspace_activity_notification = client.WorkspaceActivityNotification
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `WorkspaceActivityNotificationEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## WorkspaceSpaceEntity
+
+```ruby
+workspace_space = client.WorkspaceSpace
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `String` | Yes |  |
+| `default_branch` | `String` | No |  |
+| `description` | `Object` | Yes |  |
+| `hidden` | `Boolean` | Yes |  |
+| `icon_name` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `import_status` | `Object` | Yes |  |
+| `name` | `String` | Yes |  |
+| `organization_id` | `String` | Yes |  |
+| `position` | `Object` | Yes |  |
+| `repository_id` | `String` | Yes |  |
+| `repository_slug` | `String` | Yes |  |
+| `slug` | `String` | Yes |  |
+| `status` | `String` | Yes |  |
+| `updated_at` | `String` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `created_at` | - | - | - |
+| `default_branch` | - | - | - |
+| `description` | - | - | Yes |
+| `hidden` | - | - | - |
+| `icon_name` | - | - | - |
+| `id` | - | - | - |
+| `import_status` | - | - | - |
+| `name` | - | - | - |
+| `organization_id` | - | - | - |
+| `position` | - | - | - |
+| `repository_id` | - | - | - |
+| `repository_slug` | - | - | - |
+| `slug` | - | - | - |
+| `status` | - | - | - |
+| `updated_at` | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```ruby
+result = client.WorkspaceSpace.create({
+  "organization_id" => "example_organization_id", # String
+  "icon_name" => "example_icon_name", # String
+  "name" => "example_name", # String
+  "slug" => "example_slug", # String
+})
+```
+
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+
+```ruby
+results = client.WorkspaceSpace.list({ "organization_id" => "example" })
+results.each { |item| puts item.data_get }
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.WorkspaceSpace.load({ "id" => "workspace_space_id", "organization_id" => "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `WorkspaceSpaceEntity` instance with the same client and
+options.
+
+#### `get_name -> String`
+
+Return the entity name.
+
+
+---
+
+## WorkspaceSpacePreferenceEntity
+
+```ruby
+workspace_space_preference = client.WorkspaceSpacePreference
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `preferences` | `Array` | Yes |  |
+| `spaces` | `Array` | Yes |  |
+
+### Operations
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```ruby
+result = client.WorkspaceSpacePreference.update({
+  "organization_id" => "organization_id",
+  # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get -> Hash`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get -> Hash`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make -> Entity`
+
+Create a new `WorkspaceSpacePreferenceEntity` instance with the same client and
 options.
 
 #### `get_name -> String`

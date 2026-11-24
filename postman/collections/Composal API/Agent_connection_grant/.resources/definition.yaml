@@ -1,0 +1,20 @@
+$kind: collection
+id: beed2d8a-8f12-5bce-9e91-cea9652869d5
+description: |-
+  The **agent_connection_grant** entity, which belongs to a organization and a agent_connection. Its requests address one record by `{{agent_connection_grant_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `actions` | array | yes |  |
+  | `agent_connection_id` | string | yes |  |
+  | `automation_id` | string | yes |  |
+  | `connection_generation` | integer | yes |  |
+  | `created_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `revision` | integer | yes |  |
+  | `revoked_at` | string | yes |  |
+  | `status` | string | yes |  |
+  | `usable` | boolean | yes |  |
+  | `user_id` | string | yes |  |
+order: 14000

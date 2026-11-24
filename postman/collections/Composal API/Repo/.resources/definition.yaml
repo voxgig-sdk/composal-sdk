@@ -1,0 +1,24 @@
+$kind: collection
+id: fb1808d8-0144-54b4-8640-0b22b2f67857
+description: |-
+  The **repo** entity, which belongs to a organization. Its requests address one record by `{{repo_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `can_retry_import` | boolean | yes |  |
+  | `can_retry_sync` | boolean | yes |  |
+  | `disclaimer` | string | yes |  |
+  | `federated_in_home` | boolean | yes |  |
+  | `github_repository` | string | yes |  |
+  | `icon_name` | string | yes |  |
+  | `id` | string | yes |  |
+  | `import_item_id` | string | yes |  |
+  | `is_home` | boolean | yes |  |
+  | `name` | string | yes |  |
+  | `remote_repository` | string |  |  |
+  | `root_path` | string | yes |  |
+  | `slug` | string | yes |  |
+  | `sync_error_message` | string | yes |  |
+  | `sync_provider` | string |  |  |
+  | `sync_status` | string | yes |  |
+order: 18000

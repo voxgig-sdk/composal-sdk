@@ -1,0 +1,8 @@
+$kind: collection
+id: f14a8714-8e3f-5583-b91e-fa06edecb938
+description: |-
+  The **agent_roder** entity. Its requests address one record by `{{agent_roder_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 45000

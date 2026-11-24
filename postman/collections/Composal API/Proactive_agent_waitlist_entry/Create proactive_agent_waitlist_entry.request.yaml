@@ -1,0 +1,31 @@
+$kind: http-request
+id: ecd21c96-2cbe-569b-86c9-13c75ef4d369
+description: |-
+  The `create` operation of **proactive_agent_waitlist_entry**.
+
+  SDK: `client.ProactiveAgentWaitlistEntry().create({ email: "example" })`
+url: "{{base}}/api/v1/proactive_agent_waitlist_entries"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "email": "example",
+      "first_task": "example",
+      "invite_code": "example",
+      "website": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("proactive_agent_waitlist_entry_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

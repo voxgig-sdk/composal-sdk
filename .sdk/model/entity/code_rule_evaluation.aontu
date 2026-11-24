@@ -1,0 +1,191 @@
+# Entity: code_rule_evaluation
+
+main: kit: entity: code_rule_evaluation: {
+
+  alias: field: {}
+
+  fields: {
+    advisory: {
+      h: "Advisory"
+      n: "advisory"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    coverage: {
+      h: "Coverage"
+      n: "coverage"
+      r: true
+      t: "`$OBJECT`"
+    }
+    diff: {
+      h: "Diff"
+      n: "diff"
+      r: true
+      sh: "UTF-8 complete unified patch using a/ old and b/ new prefixes; at most 1 MiB"
+      t: "`$STRING`"
+    }
+    duration_ms: {
+      h: "Duration Ms"
+      n: "duration_ms"
+      r: true
+      t: "`$INTEGER`"
+    }
+    evaluator_version: {
+      h: "Evaluator Version"
+      n: "evaluator_version"
+      r: false
+      t: "`$STRING`"
+    }
+    input_digest: {
+      h: "Input Digest"
+      n: "input_digest"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    limits: {
+      h: "Limits"
+      n: "limits"
+      r: false
+      t: "`$OBJECT`"
+    }
+    model: {
+      h: "Model"
+      n: "model"
+      r: false
+      t: "`$STRING`"
+    }
+    requests: {
+      h: "Requests"
+      n: "requests"
+      r: true
+      t: "`$OBJECT`"
+    }
+    schema_version: {
+      h: "Schema Version"
+      n: "schema_version"
+      r: true
+      t: "`$INTEGER`"
+    }
+    snapshot_digest: {
+      h: "Snapshot Digest"
+      n: "snapshot_digest"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    unchecked: {
+      h: "Unchecked"
+      n: "unchecked"
+      r: true
+      t: "`$ARRAY`"
+    }
+    verdicts: {
+      h: "Verdicts"
+      n: "verdicts"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "code_rule_evaluation"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "diff"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/evaluations"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_id"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/evaluations"
+          q: {
+            exist: [
+              "organization_id"
+              "repo_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+              repo_slug: "repo_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "repos"
+            }
+            {
+              var: "repo_id"
+            }
+            {
+              lit: "code_rules"
+            }
+            {
+              lit: "evaluations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.repo")]
+  ]
+
+}

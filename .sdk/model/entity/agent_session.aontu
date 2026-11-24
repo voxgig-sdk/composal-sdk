@@ -1,0 +1,176 @@
+# Entity: agent_session
+
+main: kit: entity: agent_session: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "agent_session"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/agent_sessions/{session_id}/transcript"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "session_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "session_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "around_event"
+                or: "around_event"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "checkpoint"
+                or: "checkpoint"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "event_digest"
+                or: "event_digest"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: false
+                explode: true
+                k: "query"
+                n: "include_tool"
+                or: "include_tools"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: 50
+                explode: true
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 32768
+                explode: true
+                k: "query"
+                n: "max_byte"
+                or: "max_bytes"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "source_ref"
+                or: "source_ref"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/agent_sessions/{session_id}/transcript"
+          q: {
+            "$action": "transcript"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              session_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent_sessions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "transcript"
+            }
+          ]
+          t: {
+            page: {
+              more: "`body.has_more`"
+            }
+            req: "`reqdata`"
+            res: "`body.events`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

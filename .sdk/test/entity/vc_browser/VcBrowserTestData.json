@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "vc_browser": {
+      "VC_BROWSER00": {
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "VC_BROWSER00"
+      },
+      "VC_BROWSER01": {
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "VC_BROWSER01"
+      },
+      "VC_BROWSER02": {
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "VC_BROWSER02"
+      }
+    }
+  },
+  "new": {
+    "vc_browser": {
+      "vc_browser_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/browser/file": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/browser/tree": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

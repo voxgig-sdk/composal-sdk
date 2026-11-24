@@ -1,0 +1,23 @@
+$kind: collection
+id: e52747ca-6258-5856-af4a-72d9e739c8ea
+description: |-
+  The **billing_prepaid_period** entity, which belongs to a organization. Its requests address one record by `{{billing_prepaid_period_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `activated_at` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `currency` | string | yes |  |
+  | `id` | string | yes |  |
+  | `last_error` | string | yes |  |
+  | `minutes` | integer | yes |  |
+  | `net_amount_cents` | integer | yes |  |
+  | `paid_at` | string | yes |  |
+  | `paid_total_cents` | integer | yes |  |
+  | `payment_action_url` | string | yes |  |
+  | `period_ended_at` | string | yes |  |
+  | `period_started_at` | string | yes |  |
+  | `receipt_url` | string | yes |  |
+  | `refunded_net_cents` | integer | yes |  |
+  | `state` | string | yes |  |
+order: 134000

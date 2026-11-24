@@ -1,0 +1,11 @@
+$kind: collection
+id: "2183f7b4-b748-584f-807e-497aa53cdeae"
+description: |-
+  The **execution_desired_state** entity. Its requests address one record by `{{execution_desired_state_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `desired_state` | object | yes |  |
+  | `id` | string |  |  |
+  | `stop_observed` | boolean | yes |  |
+order: 239000

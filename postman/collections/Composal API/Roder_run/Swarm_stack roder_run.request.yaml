@@ -1,0 +1,15 @@
+$kind: http-request
+id: f7ca5a95-7f87-53e5-9403-45ab184472a9
+description: |-
+  The `swarm_stack` action of **roder_run**, a route of its `create` operation.
+
+  SDK: `client.RoderRun().create({ $action: "swarm_stack" })`
+url: "{{base}}/api/v1/agent/roder/run/swarm_stack"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 2000

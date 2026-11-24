@@ -1,0 +1,17 @@
+$kind: collection
+id: "34e2dc32-d7b8-57be-a1cd-81dd8f7030c1"
+description: |-
+  The **change_git_publication** entity, which belongs to a organization and a repo. Its requests address one record by `{{change_git_publication_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `expected_target_commit_id` | string | yes |  |
+  | `id` | string |  |  |
+  | `operation_key` | string | yes |  |
+  | `publication_id` | string | yes |  |
+  | `request` | object | yes |  |
+  | `request_digest` | string | yes |  |
+  | `revisions` | array | yes |  |
+  | `status` | string | yes |  |
+  | `transfer_refs` | array |  |  |
+order: 161000

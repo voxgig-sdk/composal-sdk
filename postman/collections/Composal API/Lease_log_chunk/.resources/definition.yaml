@@ -1,0 +1,8 @@
+$kind: collection
+id: "9141b1a4-5360-5fd5-a8ed-182da0ac4544"
+description: |-
+  The **lease_log_chunk** entity, which belongs to a node. Its requests address one record by `{{lease_log_chunk_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 298000

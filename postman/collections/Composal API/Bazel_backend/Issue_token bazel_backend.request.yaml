@@ -1,0 +1,19 @@
+$kind: http-request
+id: c556c7d5-3075-51ce-8bb6-dba21d35000d
+description: |-
+  The `issue_token` action of **bazel_backend**, a route of its `create` operation.
+
+  SDK: `client.BazelBackend().create({ "id": "ID", $action: "issue_token" })`
+url: "{{base}}/api/v1/bazel/backends/:id/issue_token"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{bazel_backend_id}}"
+    description: The bazel_backend this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

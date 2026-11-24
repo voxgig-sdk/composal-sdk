@@ -1,0 +1,21 @@
+$kind: http-request
+id: a51c01fb-aa46-5238-baf4-e4f642e90405
+description: |-
+  The `load` operation of **repo_cloud_workspace_backup**.
+
+  SDK: `client.RepoCloudWorkspaceBackup().load({ id: "example_id", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/cloud_workspace_backups/:backup_key"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_cloud_workspace_backup belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_cloud_workspace_backup belongs to.
+  - key: backup_key
+    value: "{{repo_cloud_workspace_backup_id}}"
+    description: The repo_cloud_workspace_backup this request addresses.
+order: 2000

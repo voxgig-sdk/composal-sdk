@@ -1,0 +1,8 @@
+$kind: collection
+id: "21ef752d-13ad-53b8-8fe4-6abdcce4a11a"
+description: |-
+  The **known** entity. Its requests address one record by `{{known_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 293000

@@ -1,0 +1,11 @@
+$kind: collection
+id: aafb6abe-9b41-5ff1-9cdf-1419828d3a41
+description: |-
+  The **workspace_activity** entity, which belongs to a organization. Its requests address one record by `{{workspace_activity_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `live_activity` | array | yes |  |
+  | `recent_items` | array | yes |  |
+  | `unresolved_notification_count` | integer | yes |  |
+order: 548000

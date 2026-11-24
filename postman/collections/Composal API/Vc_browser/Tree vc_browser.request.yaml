@@ -1,0 +1,27 @@
+$kind: http-request
+id: "9f99d2d6-e3a4-5b22-ae48-4411d6212142"
+description: |-
+  The `tree` action of **vc_browser**, a route of its `load` operation.
+
+  SDK: `client.VcBrowser().load({ "organization_id": "organization_id", "repo_id": "repo_id", "ref": "ID", $action: "tree" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/browser/tree?ref={{vc_browser_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: path
+    value: ""
+    disabled: true
+  - key: recursive
+    value: "true"
+    disabled: true
+  - key: ref
+    value: "{{vc_browser_id}}"
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_browser belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_browser belongs to.
+order: 2000

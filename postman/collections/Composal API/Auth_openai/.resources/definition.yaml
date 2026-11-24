@@ -1,0 +1,8 @@
+$kind: collection
+id: "5b9b433b-2fdb-5110-89e6-a386117ea6ec"
+description: |-
+  The **auth_openai** entity. Its requests address one record by `{{auth_openai_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 116000

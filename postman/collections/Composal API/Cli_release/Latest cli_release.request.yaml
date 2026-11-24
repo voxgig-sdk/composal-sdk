@@ -1,0 +1,11 @@
+$kind: http-request
+id: "5b71bef3-9a9e-5a60-a0c1-a75fe5962cdf"
+description: |-
+  The `latest` action of **cli_release**, a route of its `load` operation.
+
+  SDK: `client.CliRelease().load({ $action: "latest" })`
+url: "{{base}}/api/v1/cli_releases/latest"
+method: GET
+headers:
+  Accept: application/json
+order: 3000

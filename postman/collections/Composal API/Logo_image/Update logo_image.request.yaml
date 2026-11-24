@@ -1,0 +1,19 @@
+$kind: http-request
+id: "8cb83c8c-29a2-528a-a33f-af0dbcb00fc8"
+description: |-
+  The `update` operation of **logo_image**.
+
+  SDK: `client.LogoImage().update({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/logo_image"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this logo_image belongs to.
+body:
+  type: json
+  content: "{}"
+order: 1000

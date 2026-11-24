@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "repo_stat": {
+      "REPO_STAT00": {
+        "repository_stats": {},
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "REPO_STAT00"
+      },
+      "REPO_STAT01": {
+        "repository_stats": {},
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "REPO_STAT01"
+      },
+      "REPO_STAT02": {
+        "repository_stats": {},
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "REPO_STAT02"
+      }
+    }
+  },
+  "new": {
+    "repo_stat": {
+      "repo_stat_ref01": {
+        "repository_stats": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/stats/refresh": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/stats": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

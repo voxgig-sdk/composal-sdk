@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "repository_access": {
+      "REPOSITORY_ACCESS00": {
+        "id": "REPOSITORY_ACCESS00"
+      },
+      "REPOSITORY_ACCESS01": {
+        "id": "REPOSITORY_ACCESS01"
+      },
+      "REPOSITORY_ACCESS02": {
+        "id": "REPOSITORY_ACCESS02"
+      }
+    }
+  },
+  "new": {
+    "repository_access": {
+      "repository_access_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/repository_access/authorize": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/repository_access/authorize_git": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/repository_access/catalog": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

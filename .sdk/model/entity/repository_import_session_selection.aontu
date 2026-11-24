@@ -1,0 +1,93 @@
+# Entity: repository_import_session_selection
+
+main: kit: entity: repository_import_session_selection: {
+
+  alias: field: {}
+
+  fields: {
+    repositories: {
+      h: "Repositories"
+      n: "repositories"
+      r: true
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 0
+      }
+    }
+  }
+
+  name: "repository_import_session_selection"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "repositories"
+          ]
+          co: {
+            id: "POST /api/v1/repository_import_sessions/{id}/selections"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "repository_import_session_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/repository_import_sessions/{id}/selections"
+          q: {
+            exist: [
+              "repository_import_session_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "repository_import_session_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "repository_import_sessions"
+            }
+            {
+              var: "repository_import_session_id"
+            }
+            {
+              lit: "selections"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository_import_session")]
+  ]
+
+}

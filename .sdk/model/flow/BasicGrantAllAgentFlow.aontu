@@ -1,0 +1,23 @@
+# BasicGrantAllAgentFlow
+
+main: kit: flow: BasicGrantAllAgentFlow:
+{
+  entity: "grant_all_agent",
+  kind: "basic",
+  name: "BasicGrantAllAgentFlow",
+  step: [
+    {
+      i: {
+        ref: "grant_all_agent_ref01"
+      }
+
+      m: {
+        device_id: "device01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicGrantAllAgentFlow"
+}

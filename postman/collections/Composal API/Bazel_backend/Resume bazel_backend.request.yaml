@@ -1,0 +1,19 @@
+$kind: http-request
+id: "4b7624d2-2f0d-5d78-a991-521546a13ac0"
+description: |-
+  The `resume` action of **bazel_backend**, a route of its `create` operation.
+
+  SDK: `client.BazelBackend().create({ "id": "ID", $action: "resume" })`
+url: "{{base}}/api/v1/bazel/backends/:id/resume"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{bazel_backend_id}}"
+    description: The bazel_backend this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 8000

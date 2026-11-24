@@ -1,0 +1,18 @@
+$kind: collection
+id: "611d462e-282d-57aa-a406-f91b05120f28"
+description: |-
+  The **github_runner_setup** entity, which belongs to a organization. Its requests address one record by `{{github_runner_setup_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `error` | string | yes |  |
+  | `github_repository_connection_id` | string | yes |  |
+  | `id` | string | yes |  |
+  | `pull_request_url` | string | yes |  |
+  | `repository_full_name` | string | yes |  |
+  | `roder_thread_id` | string | yes |  |
+  | `runner_labels` | array | yes |  |
+  | `status` | string | yes |  |
+  | `status_label` | string | yes |  |
+  | `summary` | string | yes |  |
+order: 273000

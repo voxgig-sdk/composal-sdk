@@ -1,0 +1,21 @@
+$kind: http-request
+id: c690dafc-853f-52f4-95e8-3ac03d9ba7c0
+description: |-
+  The `marketplace` action of **agent_skill**, a route of its `load` operation.
+
+  SDK: `client.AgentSkill().load({ "organization_id": "organization_id", "source": "source", $action: "marketplace" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_skills/marketplace?source={{source}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: q
+    value: ""
+    disabled: true
+  - key: source
+    value: "{{source}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_skill belongs to.
+order: 5000

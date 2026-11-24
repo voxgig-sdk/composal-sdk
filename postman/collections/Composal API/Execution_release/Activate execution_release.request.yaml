@@ -1,0 +1,19 @@
+$kind: http-request
+id: ba6dcd07-5318-57ca-ac92-eb4a88287e28
+description: |-
+  The `activate` action of **execution_release**, a route of its `create` operation.
+
+  SDK: `client.ExecutionRelease().create({ "id": "ID", $action: "activate" })`
+url: "{{base}}/api/v1/execution/releases/:id/activate"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{execution_release_id}}"
+    description: The execution_release this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

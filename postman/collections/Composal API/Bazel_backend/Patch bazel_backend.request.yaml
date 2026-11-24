@@ -1,0 +1,19 @@
+$kind: http-request
+id: "585c19d8-c3f0-517f-98c1-e2864b58b82f"
+description: |-
+  The `patch` operation of **bazel_backend**.
+
+  SDK: `client.BazelBackend().patch({ id: "example" })`
+url: "{{base}}/api/v1/bazel/backends/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{bazel_backend_id}}"
+    description: The bazel_backend this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

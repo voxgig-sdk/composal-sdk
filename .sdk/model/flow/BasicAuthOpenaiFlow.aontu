@@ -1,0 +1,28 @@
+# BasicAuthOpenaiFlow
+
+main: kit: flow: BasicAuthOpenaiFlow:
+{
+  entity: "auth_openai",
+  kind: "basic",
+  name: "BasicAuthOpenaiFlow",
+  step: [
+    {
+      i: {
+        ref: "auth_openai_ref01",
+        srcdatavar: "auth_openai_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-auth_openai_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAuthOpenaiFlow"
+}

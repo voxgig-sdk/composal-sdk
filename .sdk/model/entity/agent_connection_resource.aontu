@@ -1,0 +1,136 @@
+# Entity: agent_connection_resource
+
+main: kit: entity: agent_connection_resource: {
+
+  alias: field: {}
+
+  fields: {
+    cursor: {
+      h: "Cursor"
+      n: "cursor"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    next_cursor: {
+      h: "Next Cursor"
+      n: "next_cursor"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    query: {
+      h: "Query"
+      n: "query"
+      r: false
+      t: "`$STRING`"
+    }
+    resources: {
+      h: "Resources"
+      n: "resources"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "agent_connection_resource"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "cursor"
+            "query"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agent_connections/{id}/resources"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_connection_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agent_connections/{id}/resources"
+          q: {
+            exist: [
+              "agent_connection_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_connection_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_connections"
+            }
+            {
+              var: "agent_connection_id"
+            }
+            {
+              lit: "resources"
+            }
+          ]
+          t: {
+            req: {
+              cursor: "`reqdata.cursor`"
+              query: "`reqdata.query`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent_connection")]
+  ]
+
+}

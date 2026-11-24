@@ -1,0 +1,42 @@
+{
+  "existing": {
+    "device_local_event": {
+      "DEVICE_LOCAL_EVENT00": {
+        "event": "s14",
+        "recorded": false,
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01",
+        "id": "DEVICE_LOCAL_EVENT00"
+      },
+      "DEVICE_LOCAL_EVENT01": {
+        "event": "s28",
+        "recorded": false,
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01",
+        "id": "DEVICE_LOCAL_EVENT01"
+      },
+      "DEVICE_LOCAL_EVENT02": {
+        "event": "s3c",
+        "recorded": false,
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01",
+        "id": "DEVICE_LOCAL_EVENT02"
+      }
+    }
+  },
+  "new": {
+    "device_local_event": {
+      "device_local_event_ref01": {
+        "event": "s50",
+        "recorded": false
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/local_events": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

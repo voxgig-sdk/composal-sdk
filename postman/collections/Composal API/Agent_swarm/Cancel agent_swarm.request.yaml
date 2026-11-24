@@ -1,0 +1,22 @@
+$kind: http-request
+id: "8f5fbec0-d215-5d0b-bc87-f3d18535c0e9"
+description: |-
+  The `cancel` action of **agent_swarm**, a route of its `create` operation.
+
+  SDK: `client.AgentSwarm().create({ "id": "ID", $action: "cancel" })`
+url: "{{base}}/api/v1/agent/swarms/:id/cancel"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{agent_swarm_id}}"
+    description: The agent_swarm this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "reason": "example"
+    }
+order: 4000

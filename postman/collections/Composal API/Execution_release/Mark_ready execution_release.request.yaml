@@ -1,0 +1,19 @@
+$kind: http-request
+id: "07664f1e-d604-5131-b1dd-31f11ad9b165"
+description: |-
+  The `mark_ready` action of **execution_release**, a route of its `create` operation.
+
+  SDK: `client.ExecutionRelease().create({ "id": "ID", $action: "mark_ready" })`
+url: "{{base}}/api/v1/execution/releases/:id/mark_ready"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{execution_release_id}}"
+    description: The execution_release this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

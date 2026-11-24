@@ -1,0 +1,28 @@
+$kind: http-request
+id: f12b44fd-68dc-56cf-a017-2cc1ddee2c3b
+description: |-
+  The `replay` action of **swarm_live**, a route of its `load` operation.
+
+  SDK: `client.SwarmLive().load({ "swarm_id": "swarm_id", $action: "replay" })`
+url: "{{base}}/api/v1/agent/swarms/:id/live/replay"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: after_event_id
+    value: ""
+    disabled: true
+  - key: after_seq
+    value: ""
+    disabled: true
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: limit
+    value: ""
+    disabled: true
+pathVariables:
+  - key: id
+    value: "{{swarm_id}}"
+    description: "Input: swarm_id."
+order: 1000

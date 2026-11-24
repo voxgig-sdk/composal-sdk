@@ -1,0 +1,80 @@
+{
+  "existing": {
+    "docker_builder_session": {
+      "DOCKER_BUILDER_SESSION00": {
+        "created_at": "s5a",
+        "docker_builder_id": "DOCKER_BUILDER01",
+        "expires_at": "s5c",
+        "gateway_url": "s5d",
+        "generation": 94,
+        "id": "DOCKER_BUILDER_SESSION00",
+        "organization_id": "ORGANIZATION01",
+        "revoked_at": "s61",
+        "user_id": "USER01"
+      },
+      "DOCKER_BUILDER_SESSION01": {
+        "created_at": "sb4",
+        "docker_builder_id": "DOCKER_BUILDER01",
+        "expires_at": "sb6",
+        "gateway_url": "sb7",
+        "generation": 184,
+        "id": "DOCKER_BUILDER_SESSION01",
+        "organization_id": "ORGANIZATION01",
+        "revoked_at": "sbb",
+        "user_id": "USER01"
+      },
+      "DOCKER_BUILDER_SESSION02": {
+        "created_at": "s10e",
+        "docker_builder_id": "DOCKER_BUILDER01",
+        "expires_at": "s110",
+        "gateway_url": "s111",
+        "generation": 274,
+        "id": "DOCKER_BUILDER_SESSION02",
+        "organization_id": "ORGANIZATION01",
+        "revoked_at": "s115",
+        "user_id": "USER01"
+      }
+    }
+  },
+  "new": {
+    "docker_builder_session": {
+      "docker_builder_session_ref01": {
+        "created_at": "s168",
+        "docker_builder_id": "DOCKER_BUILDER01",
+        "expires_at": "s16a",
+        "gateway_url": "s16b",
+        "generation": 364,
+        "organization_id": "ORGANIZATION01",
+        "revoked_at": "s16f",
+        "user_id": "USER01"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/docker_builders/{docker_builder_id}/sessions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/docker_builder_sessions/{id}/refresh": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/docker_builder_sessions/authorize": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/docker_builder_sessions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/docker_builder_sessions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

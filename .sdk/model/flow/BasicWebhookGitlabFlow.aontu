@@ -1,0 +1,28 @@
+# BasicWebhookGitlabFlow
+
+main: kit: flow: BasicWebhookGitlabFlow:
+{
+  entity: "webhook_gitlab",
+  kind: "basic",
+  name: "BasicWebhookGitlabFlow",
+  step: [
+    {
+      i: {
+        ref: "webhook_gitlab_ref01",
+        srcdatavar: "webhook_gitlab_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-webhook_gitlab_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWebhookGitlabFlow"
+}

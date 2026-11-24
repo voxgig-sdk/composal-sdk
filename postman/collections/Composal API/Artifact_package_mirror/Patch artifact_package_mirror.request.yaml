@@ -1,0 +1,19 @@
+$kind: http-request
+id: bd83f963-d1de-567f-a3c6-7ccc6bc5d282
+description: |-
+  The `patch` operation of **artifact_package_mirror**.
+
+  SDK: `client.ArtifactPackageMirror().patch({ id: "example" })`
+url: "{{base}}/api/v1/artifacts/package_mirrors/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_package_mirror_id}}"
+    description: The artifact_package_mirror this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

@@ -1,0 +1,19 @@
+$kind: http-request
+id: "4fb4344f-de09-5c4f-bd16-b37aa100745c"
+description: |-
+  The `activate` action of **observability_clickhouse_cluster**, a route of its `create` operation.
+
+  SDK: `client.ObservabilityClickhouseCluster().create({ "id": "ID", $action: "activate" })`
+url: "{{base}}/api/v1/observability/clickhouse_clusters/:id/activate"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{observability_clickhouse_cluster_id}}"
+    description: The observability_clickhouse_cluster this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

@@ -1,0 +1,100 @@
+# BasicAlertRuleEventFlow
+
+main: kit: flow: BasicAlertRuleEventFlow:
+{
+  entity: "alert_rule_event",
+  kind: "basic",
+  name: "BasicAlertRuleEventFlow",
+  step: [
+    {
+      i: {
+        ref: "alert_rule_event_ref01"
+      }
+
+      m: {
+        alert_rule_id: "alert_rule01",
+        space_id: "space01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        alert_rule_id: "alert_rule01",
+        space_id: "space01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "alert_rule_event_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "alert_rule_event_ref01",
+        srcdatavar: "alert_rule_event_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        alert_rule_id: "alert_rule01",
+        id: "alert_rule_event01",
+        space_id: "space01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-alert_rule_event_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "alert_rule_event_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        alert_rule_id: "alert_rule01",
+        id: "alert_rule_event01",
+        space_id: "space01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        alert_rule_id: "alert_rule01",
+        space_id: "space01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "alert_rule_event_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAlertRuleEventFlow"
+}

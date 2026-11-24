@@ -1,0 +1,25 @@
+$kind: http-request
+id: "436d8458-02a5-5355-a9fb-88e6f827b018"
+description: |-
+  The `discover` action of **agent_connection_trigger_subscription**, a route of its `create` operation.
+
+  SDK: `client.AgentConnectionTriggerSubscription().create({ "organization_id": "organization_id", "agent_connection_id": "agent_connection_id", "id": "ID", $action: "discover" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_connections/:agent_connection_id/trigger_subscriptions/:id/discover"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_connection_trigger_subscription belongs to.
+  - key: agent_connection_id
+    value: "{{agent_connection_id}}"
+    description: The agent_connection this agent_connection_trigger_subscription belongs to.
+  - key: id
+    value: "{{agent_connection_trigger_subscription_id}}"
+    description: The agent_connection_trigger_subscription this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

@@ -7,17 +7,19 @@ main: kit: flow: BasicChangeFlow:
   name: "BasicChangeFlow",
   step: [
     {
-      i: {
-        ref: "change_ref01"
-      }
-
       m: {
-        change_id: "change01",
-        organization_id: "organization01",
-        repo_id: "repo01"
+        organization_id: "organization01"
       }
 
-      o: "create"
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "change_ref01"
+          }
+        }
+      ]
     }
   ],
   "key$": "BasicChangeFlow"

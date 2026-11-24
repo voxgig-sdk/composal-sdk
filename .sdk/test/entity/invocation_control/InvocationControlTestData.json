@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "invocation_control": {
+      "INVOCATION_CONTROL00": {
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01",
+        "id": "INVOCATION_CONTROL00"
+      },
+      "INVOCATION_CONTROL01": {
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01",
+        "id": "INVOCATION_CONTROL01"
+      },
+      "INVOCATION_CONTROL02": {
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01",
+        "id": "INVOCATION_CONTROL02"
+      }
+    }
+  },
+  "new": {
+    "invocation_control": {
+      "invocation_control_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/control/challenge": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/control/lease": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

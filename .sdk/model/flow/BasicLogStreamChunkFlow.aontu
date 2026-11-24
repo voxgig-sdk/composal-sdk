@@ -1,0 +1,64 @@
+# BasicLogStreamChunkFlow
+
+main: kit: flow: BasicLogStreamChunkFlow:
+{
+  entity: "log_stream_chunk",
+  kind: "basic",
+  name: "BasicLogStreamChunkFlow",
+  step: [
+    {
+      i: {
+        ref: "log_stream_chunk_ref01"
+      }
+
+      m: {
+        log_stream_id: "log_stream01",
+        space_id: "space01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        log_stream_id: "log_stream01",
+        space_id: "space01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "log_stream_chunk_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "log_stream_chunk_ref01",
+        srcdatavar: "log_stream_chunk_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "log_stream_chunk01",
+        log_stream_id: "log_stream01",
+        space_id: "space01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-log_stream_chunk_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLogStreamChunkFlow"
+}

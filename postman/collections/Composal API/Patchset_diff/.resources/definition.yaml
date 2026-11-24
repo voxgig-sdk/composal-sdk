@@ -1,0 +1,11 @@
+$kind: collection
+id: "127804c3-bf5d-55af-b1d1-3c75386abf17"
+description: |-
+  The **patchset_diff** entity, which belongs to a organization and a repo and a change. Its requests address one record by `{{patchset_diff_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `files` | array | yes |  |
+  | `id` | string |  |  |
+  | `patchset` | object | yes |  |
+order: 378000

@@ -1,0 +1,19 @@
+$kind: http-request
+id: "1e6ab4ad-9860-508d-bb4f-65895b328d54"
+description: |-
+  The `validate` action of **repository_sandbox_environment**, a route of its `create` operation.
+
+  SDK: `client.RepositorySandboxEnvironment().create({ "repository_id": "repository_id", $action: "validate" })`
+url: "{{base}}/api/v1/repositories/:repository/sandbox_environments/validate"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: repository
+    value: "{{repository_id}}"
+    description: "Input: repository_id."
+body:
+  type: json
+  content: "{}"
+order: 2000

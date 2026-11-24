@@ -1,0 +1,85 @@
+{
+  "existing": {
+    "change_transcript": {
+      "CHANGE_TRANSCRIPT00": {
+        "capture_kind": "s82",
+        "captured_at": "s83",
+        "harness": {},
+        "id": "CHANGE_TRANSCRIPT00",
+        "original_resume": "s86",
+        "patchset_commit_id": "PATCHSET_COMMIT01",
+        "patchset_number": 136,
+        "redaction_count": 137,
+        "session_id": "SESSION01",
+        "session_title": "s8b",
+        "status": "s8c",
+        "superseded": false,
+        "user": {},
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "CHANGE_TRANSCRIPT01": {
+        "capture_kind": "s104",
+        "captured_at": "s105",
+        "harness": {},
+        "id": "CHANGE_TRANSCRIPT01",
+        "original_resume": "s108",
+        "patchset_commit_id": "PATCHSET_COMMIT01",
+        "patchset_number": 266,
+        "redaction_count": 267,
+        "session_id": "SESSION01",
+        "session_title": "s10d",
+        "status": "s10e",
+        "superseded": false,
+        "user": {},
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "CHANGE_TRANSCRIPT02": {
+        "capture_kind": "s186",
+        "captured_at": "s187",
+        "harness": {},
+        "id": "CHANGE_TRANSCRIPT02",
+        "original_resume": "s18a",
+        "patchset_commit_id": "PATCHSET_COMMIT01",
+        "patchset_number": 396,
+        "redaction_count": 397,
+        "session_id": "SESSION01",
+        "session_title": "s18f",
+        "status": "s190",
+        "superseded": false,
+        "user": {},
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "change_transcript": {
+      "change_transcript_ref01": {
+        "capture_kind": "s208",
+        "captured_at": "s209",
+        "harness": {},
+        "original_resume": "s20c",
+        "patchset_commit_id": "PATCHSET_COMMIT01",
+        "patchset_number": 526,
+        "redaction_count": 527,
+        "session_id": "SESSION01",
+        "session_title": "s211",
+        "status": "s212",
+        "superseded": false,
+        "user": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/transcripts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

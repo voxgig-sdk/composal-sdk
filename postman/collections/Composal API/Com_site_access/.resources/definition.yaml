@@ -1,0 +1,8 @@
+$kind: collection
+id: d7643799-d1be-5fae-9f5e-c68f923eea66
+description: |-
+  The **com_site_access** entity. Its requests address one record by `{{com_site_access_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 180000

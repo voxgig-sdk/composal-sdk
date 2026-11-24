@@ -1,0 +1,12 @@
+$kind: collection
+id: f56b9b80-b480-5e20-8332-277d674655b6
+description: |-
+  The **auth_password_reset** entity. Its requests address one record by `{{auth_password_reset_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `email` | string | yes |  |
+  | `message` | string | yes |  |
+  | `password` | string | yes |  |
+  | `token` | string | yes |  |
+order: 117000

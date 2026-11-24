@@ -1,0 +1,106 @@
+{
+  "existing": {
+    "billing_prepaid_purchase": {
+      "BILLING_PREPAID_PURCHASE00": {
+        "activated_at": "sa0",
+        "created_at": "sa1",
+        "currency": "sa2",
+        "id": "BILLING_PREPAID_PURCHASE00",
+        "last_error": "sa4",
+        "minutes": 165,
+        "net_amount_cents": 166,
+        "paid_at": "sa7",
+        "paid_total_cents": "sa8",
+        "payment_action_url": "sa9",
+        "prepaid": {},
+        "purchase": {},
+        "receipt_url": "sac",
+        "refunded_net_cents": 173,
+        "request_key": "sae",
+        "state": "saf",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BILLING_PREPAID_PURCHASE01": {
+        "activated_at": "s140",
+        "created_at": "s141",
+        "currency": "s142",
+        "id": "BILLING_PREPAID_PURCHASE01",
+        "last_error": "s144",
+        "minutes": 325,
+        "net_amount_cents": 326,
+        "paid_at": "s147",
+        "paid_total_cents": "s148",
+        "payment_action_url": "s149",
+        "prepaid": {},
+        "purchase": {},
+        "receipt_url": "s14c",
+        "refunded_net_cents": 333,
+        "request_key": "s14e",
+        "state": "s14f",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BILLING_PREPAID_PURCHASE02": {
+        "activated_at": "s1e0",
+        "created_at": "s1e1",
+        "currency": "s1e2",
+        "id": "BILLING_PREPAID_PURCHASE02",
+        "last_error": "s1e4",
+        "minutes": 485,
+        "net_amount_cents": 486,
+        "paid_at": "s1e7",
+        "paid_total_cents": "s1e8",
+        "payment_action_url": "s1e9",
+        "prepaid": {},
+        "purchase": {},
+        "receipt_url": "s1ec",
+        "refunded_net_cents": 493,
+        "request_key": "s1ee",
+        "state": "s1ef",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "billing_prepaid_purchase": {
+      "billing_prepaid_purchase_ref01": {
+        "activated_at": "s280",
+        "created_at": "s281",
+        "currency": "s282",
+        "last_error": "s284",
+        "minutes": 645,
+        "net_amount_cents": 646,
+        "paid_at": "s287",
+        "paid_total_cents": "s288",
+        "payment_action_url": "s289",
+        "prepaid": {},
+        "purchase": {},
+        "receipt_url": "s28c",
+        "refunded_net_cents": 653,
+        "request_key": "s28e",
+        "state": "s28f"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/billing/prepaid_purchases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/billing/prepaid_purchases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/billing/prepaid_purchases/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/billing/prepaid_purchases/{id}/payment_page": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

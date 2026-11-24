@@ -1,0 +1,70 @@
+{
+  "existing": {
+    "space_alert_rule": {
+      "SPACE_ALERT_RULE00": {
+        "id": "SPACE_ALERT_RULE00",
+        "space_id": "SPACE01"
+      },
+      "SPACE_ALERT_RULE01": {
+        "id": "SPACE_ALERT_RULE01",
+        "space_id": "SPACE01"
+      },
+      "SPACE_ALERT_RULE02": {
+        "id": "SPACE_ALERT_RULE02",
+        "space_id": "SPACE01"
+      }
+    }
+  },
+  "new": {
+    "space_alert_rule": {
+      "space_alert_rule_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/observability/spaces/{space_id}/alert_rules/{id}/activate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/observability/spaces/{space_id}/alert_rules/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/observability/spaces/{space_id}/alert_rules/{id}/pause": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/observability/spaces/{space_id}/alert_rules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/spaces/{space_id}/alert_rules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/spaces/{space_id}/alert_rules/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/observability/spaces/{space_id}/alert_rules/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/observability/spaces/{space_id}/alert_rules/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/observability/spaces/{space_id}/alert_rules/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

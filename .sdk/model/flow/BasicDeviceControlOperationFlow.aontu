@@ -8,6 +8,19 @@ main: kit: flow: BasicDeviceControlOperationFlow:
   step: [
     {
       i: {
+        ref: "device_control_operation_ref01"
+      }
+
+      m: {
+        device_id: "device01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
         ref: "device_control_operation_ref01",
         srcdatavar: "device_control_operation_ref01_data",
         suffix: "_dt0"

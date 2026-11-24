@@ -1,0 +1,28 @@
+$kind: http-request
+id: "0abde002-57ea-5cfd-95b7-20452a3665f0"
+description: |-
+  The `remove` operation of **repo_bookmark_protection**.
+
+  SDK: `client.RepoBookmarkProtection().remove({ id: "example_id", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/bookmark_protections/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_bookmark_protection belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_bookmark_protection belongs to.
+  - key: id
+    value: "{{repo_bookmark_protection_id}}"
+    description: The repo_bookmark_protection this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("repo_bookmark_protection_id")
+      }
+    language: text/javascript
+order: 7000

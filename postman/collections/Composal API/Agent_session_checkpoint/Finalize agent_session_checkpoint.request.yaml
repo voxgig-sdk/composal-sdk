@@ -1,0 +1,28 @@
+$kind: http-request
+id: eb4db131-3838-53d3-b438-c5293847f351
+description: |-
+  The `finalize` action of **agent_session_checkpoint**, a route of its `create` operation.
+
+  SDK: `client.AgentSessionCheckpoint().create({ "organization_id": "organization_id", "repo_id": "repo_id", "agent_session_id": "agent_session_id", "id": "ID", $action: "finalize" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/agent_sessions/:agent_session_id/checkpoints/:id/finalize"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this agent_session_checkpoint belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this agent_session_checkpoint belongs to.
+  - key: agent_session_id
+    value: "{{agent_session_id}}"
+    description: The agent_session this agent_session_checkpoint belongs to.
+  - key: id
+    value: "{{agent_session_checkpoint_id}}"
+    description: The agent_session_checkpoint this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

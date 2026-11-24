@@ -1,0 +1,48 @@
+$kind: http-request
+id: "43b933b8-4c31-5d10-9efb-a6ca3b426028"
+description: |-
+  The `list` operation of **transcript**.
+
+  SDK: `client.Transcript().list({ repo: "example" })`
+url: "{{base}}/api/v1/transcripts?repo={{repo}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: change
+    value: ""
+    disabled: true
+  - key: checkpoint_cursor
+    value: ""
+    disabled: true
+  - key: commit
+    value: ""
+    disabled: true
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: limit
+    value: "20"
+    disabled: true
+  - key: patchset
+    value: ""
+    disabled: true
+  - key: pr
+    value: ""
+    disabled: true
+  - key: repo
+    value: "{{repo}}"
+  - key: session
+    value: ""
+    disabled: true
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["sessions"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("transcript_id")) pm.collectionVariables.set("transcript_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

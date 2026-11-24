@@ -1,0 +1,36 @@
+$kind: http-request
+id: f6f5b054-c26b-56e4-b378-e0d35e011b8e
+description: |-
+  The `update` operation of **change_label**.
+
+  SDK: `client.ChangeLabel().update({ change_id: "example", organization_id: "example", repo_id: "example", add: [] })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/:id/labels"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this change_label belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this change_label belongs to.
+  - key: id
+    value: "{{change_id}}"
+    description: The change this change_label belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "labels": [
+        "example"
+      ],
+      "add": [
+        "example"
+      ],
+      "remove": [
+        "example"
+      ]
+    }
+order: 1000

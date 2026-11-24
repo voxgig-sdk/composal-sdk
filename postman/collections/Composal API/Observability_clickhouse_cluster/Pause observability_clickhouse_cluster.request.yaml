@@ -1,0 +1,19 @@
+$kind: http-request
+id: f6e42949-20ce-5f5b-bec4-c8d41f0efeb8
+description: |-
+  The `pause` action of **observability_clickhouse_cluster**, a route of its `create` operation.
+
+  SDK: `client.ObservabilityClickhouseCluster().create({ "id": "ID", $action: "pause" })`
+url: "{{base}}/api/v1/observability/clickhouse_clusters/:id/pause"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{observability_clickhouse_cluster_id}}"
+    description: The observability_clickhouse_cluster this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 9000

@@ -1,0 +1,19 @@
+$kind: http-request
+id: "06592b90-981e-5efd-a1a5-1470f2d5132c"
+description: |-
+  The `update` operation of **observability_clickhouse_cluster**.
+
+  SDK: `client.ObservabilityClickhouseCluster().update({ id: "example" })`
+url: "{{base}}/api/v1/observability/clickhouse_clusters/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{observability_clickhouse_cluster_id}}"
+    description: The observability_clickhouse_cluster this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

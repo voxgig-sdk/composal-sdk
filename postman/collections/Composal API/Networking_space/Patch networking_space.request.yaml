@@ -1,0 +1,19 @@
+$kind: http-request
+id: "82af6cd3-a71f-546f-8489-36bc5eb36842"
+description: |-
+  The `patch` operation of **networking_space**.
+
+  SDK: `client.NetworkingSpace().patch({ id: "example" })`
+url: "{{base}}/api/v1/networking/spaces/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{networking_space_id}}"
+    description: The networking_space this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

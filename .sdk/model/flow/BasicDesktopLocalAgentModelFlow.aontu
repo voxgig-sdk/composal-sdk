@@ -1,0 +1,26 @@
+# BasicDesktopLocalAgentModelFlow
+
+main: kit: flow: BasicDesktopLocalAgentModelFlow:
+{
+  entity: "desktop_local_agent_model",
+  kind: "basic",
+  name: "BasicDesktopLocalAgentModelFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "desktop_local_agent_model_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDesktopLocalAgentModelFlow"
+}

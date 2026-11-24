@@ -1,0 +1,25 @@
+$kind: collection
+id: "87ccd813-be05-5752-8689-daf9684250c7"
+description: |-
+  The **pull_request_action** entity, which belongs to a organization and a pull_request. Its requests address one record by `{{pull_request_action_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `action_name` | string | yes |  |
+  | `body` | string |  |  |
+  | `comment_id` | string |  |  |
+  | `comments` | array |  |  |
+  | `event` | string |  |  |
+  | `expected_head_sha` | string |  |  |
+  | `id` | string |  |  |
+  | `label` | string |  |  |
+  | `line` | integer |  |  |
+  | `node_id` | string |  |  |
+  | `operation_key` | string | yes |  |
+  | `path` | string |  |  |
+  | `run_id` | string |  |  |
+  | `side` | string |  |  |
+  | `start_line` | integer |  |  |
+  | `start_side` | string |  |  |
+  | `thread_id` | string |  |  |
+order: 408000

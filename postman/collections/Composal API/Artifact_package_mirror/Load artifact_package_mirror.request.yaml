@@ -1,0 +1,15 @@
+$kind: http-request
+id: "00163ede-62a9-5038-ae23-2618e7a446ab"
+description: |-
+  The `load` operation of **artifact_package_mirror**.
+
+  SDK: `client.ArtifactPackageMirror().load({ id: "example_id" })`
+url: "{{base}}/api/v1/artifacts/package_mirrors/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_package_mirror_id}}"
+    description: The artifact_package_mirror this request addresses.
+order: 2000

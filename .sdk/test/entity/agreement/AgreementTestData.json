@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "agreement": {
+      "AGREEMENT00": {
+        "body": "s3c",
+        "effective_on_label": "s3d",
+        "key": "s3e",
+        "summary": "s3f",
+        "title": "s40",
+        "version": "s41",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGREEMENT01": {
+        "body": "s78",
+        "effective_on_label": "s79",
+        "key": "s7a",
+        "summary": "s7b",
+        "title": "s7c",
+        "version": "s7d",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGREEMENT02": {
+        "body": "sb4",
+        "effective_on_label": "sb5",
+        "key": "sb6",
+        "summary": "sb7",
+        "title": "sb8",
+        "version": "sb9",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agreement": {
+      "agreement_ref01": {
+        "body": "sf0",
+        "effective_on_label": "sf1",
+        "key": "sf2",
+        "summary": "sf3",
+        "title": "sf4",
+        "version": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/pages/agreements": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

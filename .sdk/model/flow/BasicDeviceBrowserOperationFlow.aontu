@@ -1,0 +1,41 @@
+# BasicDeviceBrowserOperationFlow
+
+main: kit: flow: BasicDeviceBrowserOperationFlow:
+{
+  entity: "device_browser_operation",
+  kind: "basic",
+  name: "BasicDeviceBrowserOperationFlow",
+  step: [
+    {
+      i: {
+        ref: "device_browser_operation_ref01"
+      }
+
+      m: {
+        device_id: "device01",
+        id: "id01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        device_id: "device01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "device_browser_operation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeviceBrowserOperationFlow"
+}

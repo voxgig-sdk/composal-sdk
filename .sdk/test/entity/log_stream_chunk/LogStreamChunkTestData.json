@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "log_stream_chunk": {
+      "LOG_STREAM_CHUNK00": {
+        "id": "LOG_STREAM_CHUNK00",
+        "log_stream_id": "LOG_STREAM01",
+        "space_id": "SPACE01"
+      },
+      "LOG_STREAM_CHUNK01": {
+        "id": "LOG_STREAM_CHUNK01",
+        "log_stream_id": "LOG_STREAM01",
+        "space_id": "SPACE01"
+      },
+      "LOG_STREAM_CHUNK02": {
+        "id": "LOG_STREAM_CHUNK02",
+        "log_stream_id": "LOG_STREAM01",
+        "space_id": "SPACE01"
+      }
+    }
+  },
+  "new": {
+    "log_stream_chunk": {
+      "log_stream_chunk_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

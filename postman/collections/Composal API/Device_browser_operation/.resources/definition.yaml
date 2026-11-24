@@ -1,0 +1,11 @@
+$kind: collection
+id: "7a907883-ed92-5a23-b2d1-cde8a2dd04cb"
+description: |-
+  The **device_browser_operation** entity, which belongs to a organization and a device. Its requests address one record by `{{device_browser_operation_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `command` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `id` | string | yes |  |
+order: 212000

@@ -1,0 +1,19 @@
+$kind: http-request
+id: daa7b723-06f7-5226-84bd-1908c6ff5abc
+description: |-
+  The `cancel` action of **roder_code_repair**, a route of its `create` operation.
+
+  SDK: `client.RoderCodeRepair().create({ "id": "ID", $action: "cancel" })`
+url: "{{base}}/api/v1/agent/roder/code_repairs/:id/cancel"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{roder_code_repair_id}}"
+    description: The roder_code_repair this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

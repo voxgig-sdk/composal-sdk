@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "observability_clickhouse_cluster": {
+      "OBSERVABILITY_CLICKHOUSE_CLUSTER00": {
+        "id": "OBSERVABILITY_CLICKHOUSE_CLUSTER00"
+      },
+      "OBSERVABILITY_CLICKHOUSE_CLUSTER01": {
+        "id": "OBSERVABILITY_CLICKHOUSE_CLUSTER01"
+      },
+      "OBSERVABILITY_CLICKHOUSE_CLUSTER02": {
+        "id": "OBSERVABILITY_CLICKHOUSE_CLUSTER02"
+      }
+    }
+  },
+  "new": {
+    "observability_clickhouse_cluster": {
+      "observability_clickhouse_cluster_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/observability/clickhouse_clusters/{id}/activate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/observability/clickhouse_clusters/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/observability/clickhouse_clusters/{id}/deploy": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/observability/clickhouse_clusters/{id}/pause": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/observability/clickhouse_clusters": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/clickhouse_clusters": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/clickhouse_clusters/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/observability/clickhouse_clusters/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/observability/clickhouse_clusters/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/observability/clickhouse_clusters/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

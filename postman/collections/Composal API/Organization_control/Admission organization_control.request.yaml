@@ -1,0 +1,24 @@
+$kind: http-request
+id: "22be7475-0e61-5e32-83e8-104e5c1cc5da"
+description: |-
+  The `admission` action of **organization_control**, a route of its `create` operation.
+
+  SDK: `client.OrganizationControl().create({ "organization_id": "organization_id", $action: "admission" })`
+url: "{{base}}/api/v1/spark/organizations/:organization_id/control/admission"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_control belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "device_id": "{{device_id}}",
+      "native_device_id": "example",
+      "pairing_generation": 1
+    }
+order: 1000

@@ -1,0 +1,50 @@
+# BasicSignalIntegrationTargetFlow
+
+main: kit: flow: BasicSignalIntegrationTargetFlow:
+{
+  entity: "signal_integration_target",
+  kind: "basic",
+  name: "BasicSignalIntegrationTargetFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        signal_integration_id: "signal_integration01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "signal_integration_target_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "signal_integration_target_ref01",
+        srcdatavar: "signal_integration_target_ref01_data",
+        suffix: "_up0",
+        textfield: "app_service_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-signal_integration_target_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSignalIntegrationTargetFlow"
+}

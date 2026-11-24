@@ -1,0 +1,55 @@
+# Entity: marketing_setting
+
+main: kit: entity: marketing_setting: {
+
+  alias: field: {}
+
+  fields: {
+    call_first: {
+      h: "Call First"
+      n: "call_first"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "marketing_setting"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/marketing_settings"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/marketing_settings"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "marketing_settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

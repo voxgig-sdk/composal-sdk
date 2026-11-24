@@ -1,0 +1,136 @@
+{
+  "existing": {
+    "relay_agent_connection": {
+      "RELAY_AGENT_CONNECTION00": {
+        "agent_card_url": "sbe",
+        "auth_scheme": "sbf",
+        "can_configure": true,
+        "can_disconnect": false,
+        "can_setup": true,
+        "connection": {},
+        "credential": "sc4",
+        "error_code": "sc5",
+        "expected_generation": 198,
+        "generation": 199,
+        "id": "RELAY_AGENT_CONNECTION00",
+        "name": "sc9",
+        "remote_agent": "sca",
+        "requester_id": "REQUESTER01",
+        "retired_at": "scc",
+        "revoked_at": "scd",
+        "scope_key": "sce",
+        "source_operation_id": "SOURCE_OPERATION01",
+        "state": "sd0",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "RELAY_AGENT_CONNECTION01": {
+        "agent_card_url": "s17c",
+        "auth_scheme": "s17d",
+        "can_configure": true,
+        "can_disconnect": false,
+        "can_setup": true,
+        "connection": {},
+        "credential": "s182",
+        "error_code": "s183",
+        "expected_generation": 388,
+        "generation": 389,
+        "id": "RELAY_AGENT_CONNECTION01",
+        "name": "s187",
+        "remote_agent": "s188",
+        "requester_id": "REQUESTER01",
+        "retired_at": "s18a",
+        "revoked_at": "s18b",
+        "scope_key": "s18c",
+        "source_operation_id": "SOURCE_OPERATION01",
+        "state": "s18e",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "RELAY_AGENT_CONNECTION02": {
+        "agent_card_url": "s23a",
+        "auth_scheme": "s23b",
+        "can_configure": true,
+        "can_disconnect": false,
+        "can_setup": true,
+        "connection": {},
+        "credential": "s240",
+        "error_code": "s241",
+        "expected_generation": 578,
+        "generation": 579,
+        "id": "RELAY_AGENT_CONNECTION02",
+        "name": "s245",
+        "remote_agent": "s246",
+        "requester_id": "REQUESTER01",
+        "retired_at": "s248",
+        "revoked_at": "s249",
+        "scope_key": "s24a",
+        "source_operation_id": "SOURCE_OPERATION01",
+        "state": "s24c",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "relay_agent_connection": {
+      "relay_agent_connection_ref01": {
+        "agent_card_url": "s2f8",
+        "auth_scheme": "s2f9",
+        "can_configure": true,
+        "can_disconnect": false,
+        "can_setup": true,
+        "connection": {},
+        "credential": "s2fe",
+        "error_code": "s2ff",
+        "expected_generation": 768,
+        "generation": 769,
+        "name": "s303",
+        "remote_agent": "s304",
+        "requester_id": "REQUESTER01",
+        "retired_at": "s306",
+        "revoked_at": "s307",
+        "scope_key": "s308",
+        "source_operation_id": "SOURCE_OPERATION01",
+        "state": "s30a"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/change": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+$kind: collection
+id: b2f88186-a056-5ea4-81af-01f9c6eecf59
+description: |-
+  The **a2a_well_known** entity. Its requests address one record by `{{a2a_well_known_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 1000

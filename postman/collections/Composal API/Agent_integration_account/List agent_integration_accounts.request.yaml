@@ -1,0 +1,41 @@
+$kind: http-request
+id: cff7354a-d18e-5bbe-88b3-767d5e27dd5b
+description: |-
+  The `list` operation of **agent_integration_account**.
+
+  SDK: `client.AgentIntegrationAccount().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_integrations/accounts"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: enableable
+    value: ""
+    disabled: true
+  - key: limit
+    value: ""
+    disabled: true
+  - key: q
+    value: ""
+    disabled: true
+  - key: toolkit
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_integration_account belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["connections"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("agent_integration_account_id")) pm.collectionVariables.set("agent_integration_account_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

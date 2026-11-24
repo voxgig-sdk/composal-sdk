@@ -1,0 +1,138 @@
+{
+  "existing": {
+    "signal_integration": {
+      "SIGNAL_INTEGRATION00": {
+        "api_token": "sd2",
+        "api_token_stored": false,
+        "config": {},
+        "created_at": "sd5",
+        "failure_message": "sd6",
+        "id": "SIGNAL_INTEGRATION00",
+        "inbound_path": "sd8",
+        "inbound_url": "sd9",
+        "last_received_at": "sda",
+        "last_verified_at": "sdb",
+        "mode": "sdc",
+        "name": "sdd",
+        "organization_id": "ORGANIZATION01",
+        "provider": "sdf",
+        "rejected_signature_count": 224,
+        "status": "se1",
+        "target_count": 226,
+        "unmapped_delivery_count": 227,
+        "updated_at": "se4",
+        "webhook_secret": "se5",
+        "webhook_secret_stored": true
+      },
+      "SIGNAL_INTEGRATION01": {
+        "api_token": "s1a4",
+        "api_token_stored": false,
+        "config": {},
+        "created_at": "s1a7",
+        "failure_message": "s1a8",
+        "id": "SIGNAL_INTEGRATION01",
+        "inbound_path": "s1aa",
+        "inbound_url": "s1ab",
+        "last_received_at": "s1ac",
+        "last_verified_at": "s1ad",
+        "mode": "s1ae",
+        "name": "s1af",
+        "organization_id": "ORGANIZATION01",
+        "provider": "s1b1",
+        "rejected_signature_count": 434,
+        "status": "s1b3",
+        "target_count": 436,
+        "unmapped_delivery_count": 437,
+        "updated_at": "s1b6",
+        "webhook_secret": "s1b7",
+        "webhook_secret_stored": true
+      },
+      "SIGNAL_INTEGRATION02": {
+        "api_token": "s276",
+        "api_token_stored": false,
+        "config": {},
+        "created_at": "s279",
+        "failure_message": "s27a",
+        "id": "SIGNAL_INTEGRATION02",
+        "inbound_path": "s27c",
+        "inbound_url": "s27d",
+        "last_received_at": "s27e",
+        "last_verified_at": "s27f",
+        "mode": "s280",
+        "name": "s281",
+        "organization_id": "ORGANIZATION01",
+        "provider": "s283",
+        "rejected_signature_count": 644,
+        "status": "s285",
+        "target_count": 646,
+        "unmapped_delivery_count": 647,
+        "updated_at": "s288",
+        "webhook_secret": "s289",
+        "webhook_secret_stored": true
+      }
+    }
+  },
+  "new": {
+    "signal_integration": {
+      "signal_integration_ref01": {
+        "api_token": "s348",
+        "api_token_stored": false,
+        "config": {},
+        "created_at": "s34b",
+        "failure_message": "s34c",
+        "inbound_path": "s34e",
+        "inbound_url": "s34f",
+        "last_received_at": "s350",
+        "last_verified_at": "s351",
+        "mode": "s352",
+        "name": "s353",
+        "organization_id": "ORGANIZATION01",
+        "provider": "s355",
+        "rejected_signature_count": 854,
+        "status": "s357",
+        "target_count": 856,
+        "unmapped_delivery_count": 857,
+        "updated_at": "s35a",
+        "webhook_secret": "s35b",
+        "webhook_secret_stored": true
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/signal_integrations/{id}/regenerate_inbound_token": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/signal_integrations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/signal_integrations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/signal_integrations/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/signal_integrations/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/signal_integrations/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/signal_integrations/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

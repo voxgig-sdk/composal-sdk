@@ -1,0 +1,42 @@
+{
+  "existing": {
+    "agent_roder": {
+      "AGENT_RODER00": {
+        "id": "AGENT_RODER00"
+      },
+      "AGENT_RODER01": {
+        "id": "AGENT_RODER01"
+      },
+      "AGENT_RODER02": {
+        "id": "AGENT_RODER02"
+      }
+    }
+  },
+  "new": {
+    "agent_roder": {
+      "agent_roder_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/agent/roder/browser_executor_authorization": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/agent/roder/session": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/agent/roder/workspace_authorization": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/agent/roder/browser_authorization": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

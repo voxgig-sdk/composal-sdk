@@ -1,0 +1,14 @@
+$kind: collection
+id: bd5418d1-35d4-5e8e-973f-efa6f4f028db
+description: |-
+  The **artefact_comment_thread** entity, which belongs to a organization and a artefact. Its requests address one record by `{{artefact_comment_thread_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `anchor` | string | yes |  |
+  | `body` | string | yes |  |
+  | `comments` | array | yes |  |
+  | `id` | string | yes |  |
+  | `quote` | string |  |  |
+  | `resolved` | boolean | yes |  |
+order: 102000

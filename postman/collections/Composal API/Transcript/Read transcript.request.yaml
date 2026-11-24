@@ -1,0 +1,33 @@
+$kind: http-request
+id: dbc1a912-f2b4-518d-9615-1eb925959e2e
+description: |-
+  The `read` action of **transcript**, a route of its `load` operation.
+
+  SDK: `client.Transcript().load({ $action: "read" })`
+url: "{{base}}/api/v1/transcripts/read"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: around_event
+    value: ""
+    disabled: true
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: event_digest
+    value: ""
+    disabled: true
+  - key: include_tools
+    value: "false"
+    disabled: true
+  - key: limit
+    value: "50"
+    disabled: true
+  - key: max_bytes
+    value: "32768"
+    disabled: true
+  - key: source_ref
+    value: ""
+    disabled: true
+order: 2000

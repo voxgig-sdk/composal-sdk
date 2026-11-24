@@ -12,4 +12,4 @@ description: |-
   | `in_effect` | boolean | yes |  |
   | `last_used_at` | string | yes |  |
   | `tool` | string | yes |  |
-order: 51000
+order: 75000

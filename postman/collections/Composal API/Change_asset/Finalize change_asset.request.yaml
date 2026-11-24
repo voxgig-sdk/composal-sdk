@@ -1,0 +1,28 @@
+$kind: http-request
+id: e6b12218-64d5-52b7-8125-b65414cf1ab0
+description: |-
+  The `finalize` action of **change_asset**, a route of its `create` operation.
+
+  SDK: `client.ChangeAsset().create({ "organization_id": "organization_id", "repo_id": "repo_id", "id": "ID", $action: "finalize" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/assets/:id/finalize"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this change_asset belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this change_asset belongs to.
+  - key: id
+    value: "{{change_asset_id}}"
+    description: The change_asset this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "blob_signed_id": "example"
+    }
+order: 2000

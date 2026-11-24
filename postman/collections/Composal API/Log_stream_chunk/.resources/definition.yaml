@@ -1,0 +1,9 @@
+$kind: collection
+id: "5bf3ebe3-cafd-566f-8d41-9889b43c7f8e"
+description: |-
+  The **log_stream_chunk** entity. Its requests address one record by `{{log_stream_chunk_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 309000

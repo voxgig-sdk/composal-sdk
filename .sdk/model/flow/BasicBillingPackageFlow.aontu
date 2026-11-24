@@ -1,0 +1,22 @@
+# BasicBillingPackageFlow
+
+main: kit: flow: BasicBillingPackageFlow:
+{
+  entity: "billing_package",
+  kind: "basic",
+  name: "BasicBillingPackageFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "billing_package_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBillingPackageFlow"
+}

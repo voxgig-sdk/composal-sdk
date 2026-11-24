@@ -1,0 +1,22 @@
+$kind: http-request
+id: edcb14eb-ea30-512e-a8ce-66b5eec2598d
+description: |-
+  The `load` operation of **repository_import**.
+
+  SDK: `client.RepositoryImport().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/pages/repository_import"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: accounts_only
+    value: ""
+    disabled: true
+  - key: search
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repository_import belongs to.
+order: 1000

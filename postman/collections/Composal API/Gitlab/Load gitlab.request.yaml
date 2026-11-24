@@ -1,0 +1,31 @@
+$kind: http-request
+id: bd83f4fe-f823-5fa3-aa8f-af91fd1c3207
+description: |-
+  The `load` operation of **gitlab**.
+
+  SDK: `client.Gitlab().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/gitlab"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: connection_ids
+    value: ""
+    disabled: true
+  - key: integration_id
+    value: ""
+    disabled: true
+  - key: page
+    value: ""
+    disabled: true
+  - key: search
+    value: ""
+    disabled: true
+  - key: sort
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this gitlab belongs to.
+order: 1000

@@ -20,4 +20,4 @@ description: |-
   | `slug` | string | yes |  |
   | `source_ref` | string |  |  |
   | `storage_binding_resources` | object |  |  |
-order: 64000
+order: 93000

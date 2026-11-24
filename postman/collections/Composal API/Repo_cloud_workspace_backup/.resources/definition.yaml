@@ -1,0 +1,9 @@
+$kind: collection
+id: "6d349692-181c-53d6-baa7-e36f246dfa0b"
+description: |-
+  The **repo_cloud_workspace_backup** entity, which belongs to a organization and a repo. Its requests address one record by `{{repo_cloud_workspace_backup_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 428000

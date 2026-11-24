@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "change_git_branch_submission": {
+      "CHANGE_GIT_BRANCH_SUBMISSION00": {
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CHANGE_GIT_BRANCH_SUBMISSION00"
+      },
+      "CHANGE_GIT_BRANCH_SUBMISSION01": {
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CHANGE_GIT_BRANCH_SUBMISSION01"
+      },
+      "CHANGE_GIT_BRANCH_SUBMISSION02": {
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CHANGE_GIT_BRANCH_SUBMISSION02"
+      }
+    }
+  },
+  "new": {
+    "change_git_branch_submission": {
+      "change_git_branch_submission_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_branch_submissions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+$kind: http-request
+id: de8a5d37-0076-5332-8161-6972aa3ce1b0
+description: |-
+  The `update` operation of **workspace_space_preference**.
+
+  SDK: `client.WorkspaceSpacePreference().update({ organization_id: "example", preferences: [] })`
+url: "{{base}}/api/v1/organizations/:organization_id/workspace_spaces/preferences"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this workspace_space_preference belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "preferences": [
+        {
+          "space_public_id": "example",
+          "hidden": true,
+          "position": 1
+        }
+      ]
+    }
+order: 1000

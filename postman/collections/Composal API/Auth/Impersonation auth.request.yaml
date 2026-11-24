@@ -1,0 +1,11 @@
+$kind: http-request
+id: "171c2407-687b-55f7-8224-dcf9112ea697"
+description: |-
+  The `impersonation` action of **auth**, a route of its `load` operation.
+
+  SDK: `client.Auth().load({ $action: "impersonation" })`
+url: "{{base}}/api/v1/auth/impersonation"
+method: GET
+headers:
+  Accept: application/json
+order: 5000

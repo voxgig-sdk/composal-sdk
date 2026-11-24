@@ -1,0 +1,203 @@
+# Entity: bazel_blob
+
+main: kit: entity: bazel_blob: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+    parts: [
+      "blob_id"
+      "hash"
+      "id"
+    ]
+    sep: "/"
+  }
+
+  name: "bazel_blob"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/bazel/blobs/{kind}/{hash}/{size_bytes}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "blob_id"
+                or: "kind"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "hash"
+                or: "hash"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "size_bytes"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/bazel/blobs/{kind}/{hash}/{size_bytes}"
+          q: {
+            exist: [
+              "blob_id"
+              "hash"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              hash: "hash"
+              kind: "blob_id"
+              size_bytes: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "bazel"
+            }
+            {
+              lit: "blobs"
+            }
+            {
+              var: "blob_id"
+            }
+            {
+              var: "hash"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "PUT /api/v1/bazel/blobs/{kind}/{hash}/{size_bytes}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "blob_id"
+                or: "kind"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "hash"
+                or: "hash"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "size_bytes"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/bazel/blobs/{kind}/{hash}/{size_bytes}"
+          q: {
+            exist: [
+              "blob_id"
+              "hash"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              hash: "hash"
+              kind: "blob_id"
+              size_bytes: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "bazel"
+            }
+            {
+              lit: "blobs"
+            }
+            {
+              var: "blob_id"
+            }
+            {
+              var: "hash"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

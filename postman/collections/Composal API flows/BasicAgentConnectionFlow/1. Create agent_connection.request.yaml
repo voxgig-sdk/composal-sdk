@@ -3,32 +3,23 @@ id: c89de24e-93ee-550d-81f0-cb0b5a876669
 description: |-
   The `create` operation of **agent_connection**.
 
-  SDK: `client.AgentConnection().create({ agent_id: "example", organization_id: "example", agent_card_url: "example", auth_scheme: "example", name: "example" })`
-url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/relay/connections"
+  SDK: `client.AgentConnection().create({ organization_id: "example", name: "example", toolkit: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_connections"
 method: POST
 headers:
   Accept: application/json
   Content-Type: application/json
-  Idempotency-Key: "{{idempotency_key}}"
-  X-Composal-Relay-Scope: "{{x_composal_relay_scope}}"
-  X-Composal-Requester-Id: "{{x_composal_requester_id}}"
 pathVariables:
   - key: organization_id
     value: "{{organization_id}}"
     description: The organization this agent_connection belongs to.
-  - key: id
-    value: "{{agent_id}}"
-    description: The agent this agent_connection belongs to.
 body:
   type: json
   content: |-
     {
+      "toolkit": "example",
       "name": "example",
-      "auth_scheme": "bearer",
-      "credential": "example",
-      "remote_agent": "example",
-      "agent_card_url": "https://example.com",
-      "source_operation_id": "example"
+      "creation_key": "example"
     }
 scripts:
   - type: beforeRequest
@@ -36,7 +27,7 @@ scripts:
       const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
       const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
       const getonly = flag("getonly", false)
-      const missing = ["base","organization_id","agent_id","idempotency_key","x_composal_relay_scope","x_composal_requester_id"].filter((name) => !given(name))
+      const missing = ["base","organization_id"].filter((name) => !given(name))
       if (!given("apikey")) missing.unshift("apikey")
       const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
       if (getonly && "GET" !== pm.request.method) {

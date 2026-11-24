@@ -34,7 +34,7 @@ func TestAgentConnectionDirect(t *testing.T) {
 			return
 		}
 		if setup.live {
-			for _, _liveKey := range []string{"agent01", "organization01"} {
+			for _, _liveKey := range []string{"organization01"} {
 				if v := setup.idmap[_liveKey]; v == nil {
 					liveMiss(t, agent_connectionDirectLiveStrict, "Live test blocked: needs %s via COMPOSAL_TEST_AGENT_CONNECTION_ENTID", _liveKey)
 					return
@@ -49,18 +49,13 @@ func TestAgentConnectionDirect(t *testing.T) {
 		params := map[string]any{}
 		query := map[string]any{}
 		if setup.live {
-			params["agent_id"] = setup.idmap["agent01"]
-		} else {
-			params["agent_id"] = "direct01"
-		}
-		if setup.live {
 			params["organization_id"] = setup.idmap["organization01"]
 		} else {
-			params["organization_id"] = "direct02"
+			params["organization_id"] = "direct01"
 		}
 
 		result, err := client.Direct(map[string]any{
-			"path":   "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections",
+			"path":   "api/v1/organizations/{organization_id}/agent_connections",
 			"method": "GET",
 			"params": params,
 			"query":  query,
@@ -109,9 +104,6 @@ func TestAgentConnectionDirect(t *testing.T) {
 				if !strings.Contains(url, "direct01") {
 					t.Fatalf("expected url to contain direct01, got %v", url)
 				}
-				if !strings.Contains(url, "direct02") {
-					t.Fatalf("expected url to contain direct02, got %v", url)
-				}
 			}
 		}
 	})
@@ -130,7 +122,7 @@ func TestAgentConnectionDirect(t *testing.T) {
 			return
 		}
 		if setup.live {
-			for _, _liveKey := range []string{"agent01", "organization01"} {
+			for _, _liveKey := range []string{"organization01"} {
 				if v := setup.idmap[_liveKey]; v == nil {
 					liveMiss(t, agent_connectionDirectLiveStrict, "Live test blocked: needs %s via COMPOSAL_TEST_AGENT_CONNECTION_ENTID", _liveKey)
 					return
@@ -145,12 +137,10 @@ func TestAgentConnectionDirect(t *testing.T) {
 		params := map[string]any{}
 		query := map[string]any{}
 		if setup.live {
-			query["change"] = "configure"
 			listParams := map[string]any{}
-			listParams["agent_id"] = setup.idmap["agent01"]
 			listParams["organization_id"] = setup.idmap["organization01"]
 			listResult, listErr := client.Direct(map[string]any{
-				"path":   "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections",
+				"path":   "api/v1/organizations/{organization_id}/agent_connections",
 				"method": "GET",
 				"params": listParams,
 			})
@@ -172,17 +162,14 @@ func TestAgentConnectionDirect(t *testing.T) {
 				liveMiss(t, agent_connectionDirectLiveStrict, "Live load blocked: discovery returned no usable identity")
 			}
 			params["id"] = firstEnt["id"]
-			params["agent_id"] = setup.idmap["agent01"]
 			params["organization_id"] = setup.idmap["organization01"]
 		} else {
-			params["agent_id"] = "direct01"
-			params["id"] = "direct02"
-			params["id"] = "direct03"
-			params["organization_id"] = "direct04"
+			params["id"] = "direct01"
+			params["organization_id"] = "direct02"
 		}
 
 		result, err := client.Direct(map[string]any{
-			"path":   "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections/{id}/change",
+			"path":   "api/v1/organizations/{organization_id}/agent_connections/{id}",
 			"method": "GET",
 			"params": params,
 			"query":  query,
@@ -234,12 +221,6 @@ func TestAgentConnectionDirect(t *testing.T) {
 				}
 				if !strings.Contains(url, "direct02") {
 					t.Fatalf("expected url to contain direct02, got %v", url)
-				}
-				if !strings.Contains(url, "direct03") {
-					t.Fatalf("expected url to contain direct03, got %v", url)
-				}
-				if !strings.Contains(url, "direct04") {
-					t.Fatalf("expected url to contain direct04, got %v", url)
 				}
 			}
 		}

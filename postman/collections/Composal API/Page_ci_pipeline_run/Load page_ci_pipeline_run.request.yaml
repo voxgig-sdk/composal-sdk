@@ -1,0 +1,18 @@
+$kind: http-request
+id: "4cc8f43c-afb2-5829-bc1b-dd969f59f65d"
+description: |-
+  The `load` operation of **page_ci_pipeline_run**.
+
+  SDK: `client.PageCiPipelineRun().load({ id: "example_id", pipeline_id: "example" })`
+url: "{{base}}/api/v1/ci/pipelines/:pipeline_id/runs/:run_id/page"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: pipeline_id
+    value: "{{pipeline_id}}"
+    description: "Input: pipeline_id."
+  - key: run_id
+    value: "{{page_ci_pipeline_run_id}}"
+    description: The page_ci_pipeline_run this request addresses.
+order: 1000

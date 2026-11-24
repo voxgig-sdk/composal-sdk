@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "agent_web_preview": {
+      "AGENT_WEB_PREVIEW00": {
+        "description": "s28",
+        "icon_url": "s29",
+        "image_url": "s2a",
+        "title": "s2b"
+      },
+      "AGENT_WEB_PREVIEW01": {
+        "description": "s50",
+        "icon_url": "s51",
+        "image_url": "s52",
+        "title": "s53"
+      },
+      "AGENT_WEB_PREVIEW02": {
+        "description": "s78",
+        "icon_url": "s79",
+        "image_url": "s7a",
+        "title": "s7b"
+      }
+    }
+  },
+  "new": {
+    "agent_web_preview": {
+      "agent_web_preview_ref01": {
+        "description": "sa0",
+        "icon_url": "sa1",
+        "image_url": "sa2",
+        "title": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/agent_web_previews": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+$kind: collection
+id: "7ddf4d0a-da28-5d1f-a104-b016aaf97121"
+description: |-
+  The **stripe_webhook** entity. Its requests address one record by `{{stripe_webhook_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 510000

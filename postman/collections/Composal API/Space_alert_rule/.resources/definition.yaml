@@ -1,0 +1,9 @@
+$kind: collection
+id: "42215a42-3ac4-51b0-adcb-a590d913c850"
+description: |-
+  The **space_alert_rule** entity. Its requests address one record by `{{space_alert_rule_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 481000

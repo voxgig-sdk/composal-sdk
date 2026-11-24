@@ -1,0 +1,4 @@
+$kind: collection
+id: "0ec6b2e0-ba8a-5de9-accd-c2d609ef53d7"
+description: "The `BasicBazelExecutionFlow` flow of **bazel_execution**."
+order: 99000

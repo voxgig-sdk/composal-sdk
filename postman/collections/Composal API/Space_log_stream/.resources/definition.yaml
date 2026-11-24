@@ -1,0 +1,8 @@
+$kind: collection
+id: "310db304-2f49-5614-8920-5fe0f950bdd0"
+description: |-
+  The **space_log_stream** entity. Its requests address one record by `{{space_log_stream_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 488000

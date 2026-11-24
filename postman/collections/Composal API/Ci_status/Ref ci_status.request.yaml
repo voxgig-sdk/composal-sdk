@@ -1,0 +1,22 @@
+$kind: http-request
+id: "3f2bfa2c-02a4-5562-99a4-9019124e7247"
+description: |-
+  The `ref` action of **ci_status**, a route of its `load` operation.
+
+  SDK: `client.CiStatus().load({ "organization_id": "organization_id", "repo_id": "repo_id", $action: "ref" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/ci/status/ref"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: ref
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this ci_status belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this ci_status belongs to.
+order: 1000

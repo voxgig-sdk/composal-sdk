@@ -1,0 +1,26 @@
+# BasicSparkCreditUsageTotalFlow
+
+main: kit: flow: BasicSparkCreditUsageTotalFlow:
+{
+  entity: "spark_credit_usage_total",
+  kind: "basic",
+  name: "BasicSparkCreditUsageTotalFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "spark_credit_usage_total_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSparkCreditUsageTotalFlow"
+}

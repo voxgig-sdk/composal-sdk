@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "space_audit_event": {
+      "SPACE_AUDIT_EVENT00": {
+        "space_id": "SPACE01",
+        "id": "SPACE_AUDIT_EVENT00"
+      },
+      "SPACE_AUDIT_EVENT01": {
+        "space_id": "SPACE01",
+        "id": "SPACE_AUDIT_EVENT01"
+      },
+      "SPACE_AUDIT_EVENT02": {
+        "space_id": "SPACE01",
+        "id": "SPACE_AUDIT_EVENT02"
+      }
+    }
+  },
+  "new": {
+    "space_audit_event": {
+      "space_audit_event_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/observability/spaces/{space_id}/audit_events": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/spaces/{space_id}/audit_events": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

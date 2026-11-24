@@ -1,0 +1,26 @@
+# BasicPairingEventFlow
+
+main: kit: flow: BasicPairingEventFlow:
+{
+  entity: "pairing_event",
+  kind: "basic",
+  name: "BasicPairingEventFlow",
+  step: [
+    {
+      m: {
+        pairing_id: "pairing01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "pairing_event_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPairingEventFlow"
+}

@@ -1,0 +1,40 @@
+$kind: http-request
+id: "53f0d628-4fe0-5edf-8c51-1c9ee2688248"
+description: |-
+  The `transcript` action of **agent_session**, a route of its `load` operation.
+
+  SDK: `client.AgentSession().load({ "id": "ID", $action: "transcript" })`
+url: "{{base}}/api/v1/agent_sessions/:session_id/transcript"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: around_event
+    value: ""
+    disabled: true
+  - key: checkpoint
+    value: ""
+    disabled: true
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: event_digest
+    value: ""
+    disabled: true
+  - key: include_tools
+    value: "false"
+    disabled: true
+  - key: limit
+    value: "50"
+    disabled: true
+  - key: max_bytes
+    value: "32768"
+    disabled: true
+  - key: source_ref
+    value: ""
+    disabled: true
+pathVariables:
+  - key: session_id
+    value: "{{agent_session_id}}"
+    description: The agent_session this request addresses.
+order: 1000

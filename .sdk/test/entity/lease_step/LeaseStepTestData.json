@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "lease_step": {
+      "LEASE_STEP00": {
+        "id": "LEASE_STEP00",
+        "lease_id": "LEASE01",
+        "node_id": "NODE01"
+      },
+      "LEASE_STEP01": {
+        "id": "LEASE_STEP01",
+        "lease_id": "LEASE01",
+        "node_id": "NODE01"
+      },
+      "LEASE_STEP02": {
+        "id": "LEASE_STEP02",
+        "lease_id": "LEASE01",
+        "node_id": "NODE01"
+      }
+    }
+  },
+  "new": {
+    "lease_step": {
+      "lease_step_ref01": {}
+    }
+  },
+  "requests": {
+    "PATCH /api/v1/ci/nodes/{id}/leases/{lease_id}/steps/{ci_step_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

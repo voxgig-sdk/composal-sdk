@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "artifact_package_mirror": {
+      "ARTIFACT_PACKAGE_MIRROR00": {
+        "id": "ARTIFACT_PACKAGE_MIRROR00"
+      },
+      "ARTIFACT_PACKAGE_MIRROR01": {
+        "id": "ARTIFACT_PACKAGE_MIRROR01"
+      },
+      "ARTIFACT_PACKAGE_MIRROR02": {
+        "id": "ARTIFACT_PACKAGE_MIRROR02"
+      }
+    }
+  },
+  "new": {
+    "artifact_package_mirror": {
+      "artifact_package_mirror_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/artifacts/package_mirrors/{id}/pause": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/artifacts/package_mirrors/{id}/resume": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/artifacts/package_mirrors/{id}/sync": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/artifacts/package_mirrors": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/artifacts/package_mirrors": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/artifacts/package_mirrors/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/artifacts/package_mirrors/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/artifacts/package_mirrors/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/artifacts/package_mirrors/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

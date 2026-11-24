@@ -1,0 +1,8 @@
+$kind: collection
+id: "46643df7-58af-586e-8f95-168380614fb3"
+description: |-
+  The **waitlist_application** entity. Its requests address one record by `{{waitlist_application_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 542000

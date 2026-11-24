@@ -1,0 +1,31 @@
+$kind: http-request
+id: b783885c-cd67-5fcc-9c45-eea863dd0621
+description: |-
+  The `create` operation of **roder_code_repair**.
+
+  SDK: `client.RoderCodeRepair().create({ base_sha: "example", organization_id: "example", repository_slug: "example", scenario_run_id: "example" })`
+url: "{{base}}/api/v1/agent/roder/code_repairs"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "organization_id": "{{organization_id}}",
+      "scenario_run_id": "example",
+      "repository_slug": "example",
+      "base_sha": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("roder_code_repair_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

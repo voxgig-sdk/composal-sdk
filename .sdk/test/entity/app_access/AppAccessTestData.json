@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "app_access": {
+      "APP_ACCESS00": {
+        "id": "APP_ACCESS00"
+      },
+      "APP_ACCESS01": {
+        "id": "APP_ACCESS01"
+      },
+      "APP_ACCESS02": {
+        "id": "APP_ACCESS02"
+      }
+    }
+  },
+  "new": {
+    "app_access": {
+      "app_access_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/app_access/callback": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/app_access/start": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

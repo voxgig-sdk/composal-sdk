@@ -1,0 +1,9 @@
+$kind: collection
+id: d4312160-7944-5a7d-b649-5f0f3fde45e8
+description: |-
+  The **artifact_retention_policy** entity. Its requests address one record by `{{artifact_retention_policy_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 109000

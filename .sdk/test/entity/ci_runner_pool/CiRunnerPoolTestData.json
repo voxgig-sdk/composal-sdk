@@ -1,0 +1,137 @@
+{
+  "existing": {
+    "ci_runner_pool": {
+      "CI_RUNNER_POOL00": {
+        "bazel_enabled": true,
+        "bazel_properties_json": "sdd",
+        "created_at": "sde",
+        "description": "sdf",
+        "elastic_config_json": "se0",
+        "elastic_provider_kind": "se1",
+        "id": "CI_RUNNER_POOL00",
+        "isolation_mode": "se3",
+        "labels_csv": "se4",
+        "max_concurrency": 229,
+        "modal_capacity": {},
+        "modal_runner_invocations": [],
+        "name": "se8",
+        "network_space_id": "NETWORK_SPACE01",
+        "node_capabilities_csv": "sea",
+        "organization_id": "ORGANIZATION01",
+        "runner_count_label": "sec",
+        "runner_kind": "sed",
+        "runners": [],
+        "slug": "sef",
+        "status": "sf0",
+        "updated_at": "sf1"
+      },
+      "CI_RUNNER_POOL01": {
+        "bazel_enabled": true,
+        "bazel_properties_json": "s1b9",
+        "created_at": "s1ba",
+        "description": "s1bb",
+        "elastic_config_json": "s1bc",
+        "elastic_provider_kind": "s1bd",
+        "id": "CI_RUNNER_POOL01",
+        "isolation_mode": "s1bf",
+        "labels_csv": "s1c0",
+        "max_concurrency": 449,
+        "modal_capacity": {},
+        "modal_runner_invocations": [],
+        "name": "s1c4",
+        "network_space_id": "NETWORK_SPACE01",
+        "node_capabilities_csv": "s1c6",
+        "organization_id": "ORGANIZATION01",
+        "runner_count_label": "s1c8",
+        "runner_kind": "s1c9",
+        "runners": [],
+        "slug": "s1cb",
+        "status": "s1cc",
+        "updated_at": "s1cd"
+      },
+      "CI_RUNNER_POOL02": {
+        "bazel_enabled": true,
+        "bazel_properties_json": "s295",
+        "created_at": "s296",
+        "description": "s297",
+        "elastic_config_json": "s298",
+        "elastic_provider_kind": "s299",
+        "id": "CI_RUNNER_POOL02",
+        "isolation_mode": "s29b",
+        "labels_csv": "s29c",
+        "max_concurrency": 669,
+        "modal_capacity": {},
+        "modal_runner_invocations": [],
+        "name": "s2a0",
+        "network_space_id": "NETWORK_SPACE01",
+        "node_capabilities_csv": "s2a2",
+        "organization_id": "ORGANIZATION01",
+        "runner_count_label": "s2a4",
+        "runner_kind": "s2a5",
+        "runners": [],
+        "slug": "s2a7",
+        "status": "s2a8",
+        "updated_at": "s2a9"
+      }
+    }
+  },
+  "new": {
+    "ci_runner_pool": {
+      "ci_runner_pool_ref01": {
+        "bazel_enabled": true,
+        "bazel_properties_json": "s371",
+        "created_at": "s372",
+        "description": "s373",
+        "elastic_config_json": "s374",
+        "elastic_provider_kind": "s375",
+        "isolation_mode": "s377",
+        "labels_csv": "s378",
+        "max_concurrency": 889,
+        "modal_capacity": {},
+        "modal_runner_invocations": [],
+        "name": "s37c",
+        "network_space_id": "NETWORK_SPACE01",
+        "node_capabilities_csv": "s37e",
+        "organization_id": "ORGANIZATION01",
+        "runner_count_label": "s380",
+        "runner_kind": "s381",
+        "runners": [],
+        "slug": "s383",
+        "status": "s384",
+        "updated_at": "s385"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/ci/runner_pools/{id}/promote_reconciliation_runtime": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/ci/runner_pools": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/ci/runner_pools": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/ci/runner_pools/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/ci/runner_pools/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/ci/runner_pools/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

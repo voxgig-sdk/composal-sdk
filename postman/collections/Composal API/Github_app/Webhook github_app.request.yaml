@@ -1,0 +1,15 @@
+$kind: http-request
+id: "9ffb6214-c5be-576b-a2ee-082d7a573f18"
+description: |-
+  The `webhook` action of **github_app**, a route of its `create` operation.
+
+  SDK: `client.GithubApp().create({ $action: "webhook" })`
+url: "{{base}}/api/v1/github_app/webhook"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 1000

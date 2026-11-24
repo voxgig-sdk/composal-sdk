@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "repo_action": {
+      "REPO_ACTION00": {
+        "pipeline": {},
+        "run": {},
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "REPO_ACTION01": {
+        "pipeline": {},
+        "run": {},
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "REPO_ACTION02": {
+        "pipeline": {},
+        "run": {},
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "repo_action": {
+      "repo_action_ref01": {
+        "pipeline": {},
+        "run": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/actions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

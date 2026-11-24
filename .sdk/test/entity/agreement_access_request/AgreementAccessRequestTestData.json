@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "agreement_access_request": {
+      "AGREEMENT_ACCESS_REQUEST00": {
+        "organization_id": "ORGANIZATION01",
+        "id": "AGREEMENT_ACCESS_REQUEST00"
+      },
+      "AGREEMENT_ACCESS_REQUEST01": {
+        "organization_id": "ORGANIZATION01",
+        "id": "AGREEMENT_ACCESS_REQUEST01"
+      },
+      "AGREEMENT_ACCESS_REQUEST02": {
+        "organization_id": "ORGANIZATION01",
+        "id": "AGREEMENT_ACCESS_REQUEST02"
+      }
+    }
+  },
+  "new": {
+    "agreement_access_request": {
+      "agreement_access_request_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agreement_access_request": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

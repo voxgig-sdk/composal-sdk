@@ -1,0 +1,22 @@
+$kind: collection
+id: ee8074e6-f8bc-5ca2-98e5-a0990fb79838
+description: |-
+  The **merge_queue_entry** entity, which belongs to a organization and a repo. Its requests address one record by `{{merge_queue_entry_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `analytics` | object | yes |  |
+  | `change_id` | string |  |  |
+  | `expected_target_commit_id` | string |  |  |
+  | `expected_target_version` | integer |  |  |
+  | `expected_version` | integer | yes |  |
+  | `github_pr_number` | integer |  |  |
+  | `id` | string |  |  |
+  | `idempotency_key` | string | yes |  |
+  | `kind` | string | yes |  |
+  | `policy` | object | yes |  |
+  | `priority` | string |  |  |
+  | `queue` | object | yes |  |
+  | `target_branches` | array |  |  |
+  | `when_ready` | boolean |  |  |
+order: 319000

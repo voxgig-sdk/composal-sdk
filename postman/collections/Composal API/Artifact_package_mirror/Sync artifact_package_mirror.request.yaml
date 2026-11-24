@@ -1,0 +1,19 @@
+$kind: http-request
+id: b6fecd4f-87e6-5af0-b3d1-412676083981
+description: |-
+  The `sync` action of **artifact_package_mirror**, a route of its `create` operation.
+
+  SDK: `client.ArtifactPackageMirror().create({ "id": "ID", $action: "sync" })`
+url: "{{base}}/api/v1/artifacts/package_mirrors/:id/sync"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_package_mirror_id}}"
+    description: The artifact_package_mirror this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 8000

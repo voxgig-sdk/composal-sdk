@@ -1,0 +1,18 @@
+$kind: http-request
+id: "509f34b8-8350-5f43-b4b2-9d39e51dfcec"
+description: |-
+  The `resend` action of **email_verification**, a route of its `create` operation.
+
+  SDK: `client.EmailVerification().create({ $action: "resend" })`
+url: "{{base}}/api/v1/email_verifications/resend"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "email": "user@example.com"
+    }
+order: 1000

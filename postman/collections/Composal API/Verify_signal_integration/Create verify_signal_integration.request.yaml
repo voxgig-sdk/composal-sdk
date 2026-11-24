@@ -1,0 +1,32 @@
+$kind: http-request
+id: "65170888-2444-5999-9c13-4d7bf7123dcc"
+description: |-
+  The `create` operation of **verify_signal_integration**.
+
+  SDK: `client.VerifySignalIntegration().create({ id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/signal_integrations/:id/verify"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verify_signal_integration belongs to.
+  - key: id
+    value: "{{verify_signal_integration_id}}"
+    description: The verify_signal_integration this request addresses.
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body?.["signal_integration"]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("verify_signal_integration_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

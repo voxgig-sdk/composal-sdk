@@ -1,0 +1,8 @@
+$kind: collection
+id: "45223cbb-a85f-5395-ab7e-e5b0069a71eb"
+description: |-
+  The **metronome_webhook** entity. Its requests address one record by `{{metronome_webhook_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 325000

@@ -1,0 +1,30 @@
+$kind: http-request
+id: e84230e8-6267-52c1-a485-a7a2ba054399
+description: |-
+  The `simulate` action of **repo_bookmark_protection**, a route of its `create` operation.
+
+  SDK: `client.RepoBookmarkProtection().create({ "organization_id": "organization_id", "repo_id": "repo_id", $action: "simulate" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/bookmark_protections/simulate"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_bookmark_protection belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_bookmark_protection belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "bookmark": "example",
+      "to": "example",
+      "from": "example",
+      "intent": "example",
+      "actor_kind": "example",
+      "change_id": "{{change_id}}"
+    }
+order: 6000

@@ -1,0 +1,35 @@
+$kind: http-request
+id: e3fb162b-8cb2-5bfd-a81d-bcc0f7da96aa
+description: |-
+  The `create` operation of **device_local_event**.
+
+  SDK: `client.DeviceLocalEvent().create({ device_id: "example", organization_id: "example", event: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/local_events"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device_local_event belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this device_local_event belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "event": "device_local_enabled"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("device_local_event_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

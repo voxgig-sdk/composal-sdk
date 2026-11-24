@@ -1,0 +1,26 @@
+# BasicChangeTranscriptSummaryFlow
+
+main: kit: flow: BasicChangeTranscriptSummaryFlow:
+{
+  entity: "change_transcript_summary",
+  kind: "basic",
+  name: "BasicChangeTranscriptSummaryFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "change_transcript_summary_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicChangeTranscriptSummaryFlow"
+}

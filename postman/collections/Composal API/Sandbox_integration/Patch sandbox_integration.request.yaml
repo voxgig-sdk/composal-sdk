@@ -1,0 +1,28 @@
+$kind: http-request
+id: d85f810b-d6a5-5732-a5d2-5e4f02531777
+description: |-
+  The `patch` operation of **sandbox_integration**.
+
+  SDK: `client.SandboxIntegration().patch({ id: "example", organization_id: "example", credentials: {} })`
+url: "{{base}}/api/v1/organizations/:organization_id/sandbox_integrations/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this sandbox_integration belongs to.
+  - key: id
+    value: "{{sandbox_integration_id}}"
+    description: The sandbox_integration this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "credentials": {},
+      "enabled": true,
+      "version": 1
+    }
+order: 4000

@@ -1,0 +1,28 @@
+$kind: http-request
+id: ae2091b3-d5f1-5325-96e5-50d10b7cacd2
+description: |-
+  The `patch` operation of **job_workspace**.
+
+  SDK: `client.JobWorkspace().patch({ id: "example", job_id: "example", pipeline_id: "example", run_id: "example" })`
+url: "{{base}}/api/v1/ci/pipelines/:pipeline_id/runs/:run_id/jobs/:job_id/workspaces/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: pipeline_id
+    value: "{{pipeline_id}}"
+    description: "Input: pipeline_id."
+  - key: run_id
+    value: "{{run_id}}"
+    description: "Input: run_id."
+  - key: job_id
+    value: "{{job_id}}"
+    description: "Input: job_id."
+  - key: id
+    value: "{{job_workspace_id}}"
+    description: The job_workspace this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

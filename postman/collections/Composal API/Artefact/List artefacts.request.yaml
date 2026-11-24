@@ -1,0 +1,62 @@
+$kind: http-request
+id: e35fd50f-5585-5eb0-b8dc-39646dbaf170
+description: |-
+  The `list` operation of **artefact**.
+
+  SDK: `client.Artefact().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/artefacts"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: author
+    value: ""
+    disabled: true
+  - key: created_by_agent
+    value: ""
+    disabled: true
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: editable
+    value: ""
+    disabled: true
+  - key: harness
+    value: ""
+    disabled: true
+  - key: kind
+    value: ""
+    disabled: true
+  - key: limit
+    value: "100"
+    disabled: true
+  - key: model
+    value: ""
+    disabled: true
+  - key: q
+    value: ""
+    disabled: true
+  - key: repo
+    value: ""
+    disabled: true
+  - key: slug
+    value: ""
+    disabled: true
+  - key: source
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this artefact belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["artefacts"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("artefact_id")) pm.collectionVariables.set("artefact_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

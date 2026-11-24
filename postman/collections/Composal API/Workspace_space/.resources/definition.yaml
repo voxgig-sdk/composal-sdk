@@ -1,0 +1,23 @@
+$kind: collection
+id: "0d77a9ee-d5c9-555c-9371-dbc2ba112307"
+description: |-
+  The **workspace_space** entity, which belongs to a organization. Its requests address one record by `{{workspace_space_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `created_at` | string | yes |  |
+  | `default_branch` | string |  |  |
+  | `description` | string | yes |  |
+  | `hidden` | boolean | yes |  |
+  | `icon_name` | string | yes |  |
+  | `id` | string | yes |  |
+  | `import_status` | string | yes |  |
+  | `name` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `position` | integer | yes |  |
+  | `repository_id` | string | yes |  |
+  | `repository_slug` | string | yes |  |
+  | `slug` | string | yes |  |
+  | `status` | string | yes |  |
+  | `updated_at` | string | yes |  |
+order: 550000

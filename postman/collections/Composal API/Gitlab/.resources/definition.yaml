@@ -1,0 +1,17 @@
+$kind: collection
+id: f64be03f-779a-5d99-a9b8-8b5079ccfd1d
+description: |-
+  The **gitlab** entity, which belongs to a organization. Its requests address one record by `{{gitlab_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `configured` | boolean | yes |  |
+  | `connections` | array | yes |  |
+  | `integrations` | array | yes |  |
+  | `inventory_error` | string |  |  |
+  | `next_page` | integer | yes |  |
+  | `organization` | object | yes |  |
+  | `projects` | array | yes |  |
+  | `redirect_uri` | string | yes |  |
+  | `selected_integration_id` | string | yes |  |
+order: 274000

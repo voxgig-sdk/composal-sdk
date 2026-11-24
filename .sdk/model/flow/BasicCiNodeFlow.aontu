@@ -1,0 +1,40 @@
+# BasicCiNodeFlow
+
+main: kit: flow: BasicCiNodeFlow:
+{
+  entity: "ci_node",
+  kind: "basic",
+  name: "BasicCiNodeFlow",
+  step: [
+    {
+      i: {
+        ref: "ci_node_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "ci_node_ref01",
+        srcdatavar: "ci_node_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "ci_node01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ci_node_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCiNodeFlow"
+}

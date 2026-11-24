@@ -1,0 +1,20 @@
+$kind: http-request
+id: c829e668-68aa-53c2-8eb6-30ebadd8d3f1
+description: |-
+  The `complete` action of **github_app_installation_authorization**, a route of its `create` operation.
+
+  SDK: `client.GithubAppInstallationAuthorization().create({ $action: "complete" })`
+url: "{{base}}/api/v1/github_app/installation_authorizations/complete"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "code": "example",
+      "error": "example",
+      "state": "example"
+    }
+order: 2000

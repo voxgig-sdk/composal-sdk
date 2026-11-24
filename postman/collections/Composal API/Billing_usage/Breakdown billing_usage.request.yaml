@@ -1,0 +1,22 @@
+$kind: http-request
+id: "58f53d0c-7789-5ed7-b367-6de3bde5923d"
+description: |-
+  The `breakdown` action of **billing_usage**, a route of its `load` operation.
+
+  SDK: `client.BillingUsage().load({ "organization_id": "organization_id", $action: "breakdown" })`
+url: "{{base}}/api/v1/organizations/:organization_id/billing/usage/breakdown"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: meter
+    value: ""
+    disabled: true
+  - key: window
+    value: "24h"
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this billing_usage belongs to.
+order: 1000

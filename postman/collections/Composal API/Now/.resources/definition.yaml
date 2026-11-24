@@ -1,0 +1,13 @@
+$kind: collection
+id: dd5d8d82-fb06-5600-a000-2fee32b48c18
+description: |-
+  The **now** entity, which belongs to a organization. Its requests address one record by `{{now_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `needs_attention` | array | yes |  |
+  | `pagination` | object | yes |  |
+  | `recently_landed` | array | yes |  |
+  | `shipping_now` | array | yes |  |
+  | `summary` | object | yes |  |
+order: 334000

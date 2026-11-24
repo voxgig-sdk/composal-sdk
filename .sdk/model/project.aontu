@@ -57,10 +57,6 @@ main: kit: target: py: publish: registry: package: 'voxgig-sdk-composal-sdk'
 main: kit: target: lua: publish: registry: package: 'voxgig-sdk-composal-sdk'
 main: kit: target: php: publish: registry: package: 'voxgig-sdk/composal-sdk'
 main: kit: target: rb: publish: registry: package: 'voxgig-sdk-composal-sdk'
-# --- cedar: copies (written by cedar-regen.sh, do not hand-edit)
-# Regenerated in full: not listed in admin data/customized.csv.
-main: kit: copies: 'overwrite'
-# --- end cedar: copies
 # --- cedar: secrets active (written by cedar-regen.sh, do not hand-edit)
 main: kit: feature: secrets: active: true
 # --- end cedar: secrets active

@@ -1,0 +1,14 @@
+$kind: collection
+id: "87941128-c60a-5530-93dc-bb96a9e9f1a8"
+description: |-
+  The **docker_builder_setting** entity, which belongs to a organization. Its requests address one record by `{{docker_builder_setting_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `docker_builder_settings` | object | yes |  |
+  | `idle_timeout_seconds` | integer | yes |  |
+  | `max_concurrency` | integer | yes |  |
+  | `organization_id` | string | yes |  |
+  | `region` | string | yes |  |
+  | `runtime_timeout_seconds` | integer | yes |  |
+order: 225000

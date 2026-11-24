@@ -1,0 +1,112 @@
+{
+  "existing": {
+    "deployment_detail": {
+      "DEPLOYMENT_DETAIL00": {
+        "activity": [],
+        "app": "sd3",
+        "app_id": "APP01",
+        "audit_events": [],
+        "capacity": {},
+        "data_resources": [],
+        "deploy_targets": [],
+        "deployments": [],
+        "desired_states": [],
+        "environments": [],
+        "filters": {},
+        "health": {},
+        "nomad": {},
+        "operations": [],
+        "placements": [],
+        "reconciler_ticks": [],
+        "releases": [],
+        "runtime_instances": [],
+        "service_bindings": [],
+        "service_views": [],
+        "storage_resources": [],
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEPLOYMENT_DETAIL01": {
+        "activity": [],
+        "app": "s1a5",
+        "app_id": "APP01",
+        "audit_events": [],
+        "capacity": {},
+        "data_resources": [],
+        "deploy_targets": [],
+        "deployments": [],
+        "desired_states": [],
+        "environments": [],
+        "filters": {},
+        "health": {},
+        "nomad": {},
+        "operations": [],
+        "placements": [],
+        "reconciler_ticks": [],
+        "releases": [],
+        "runtime_instances": [],
+        "service_bindings": [],
+        "service_views": [],
+        "storage_resources": [],
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEPLOYMENT_DETAIL02": {
+        "activity": [],
+        "app": "s277",
+        "app_id": "APP01",
+        "audit_events": [],
+        "capacity": {},
+        "data_resources": [],
+        "deploy_targets": [],
+        "deployments": [],
+        "desired_states": [],
+        "environments": [],
+        "filters": {},
+        "health": {},
+        "nomad": {},
+        "operations": [],
+        "placements": [],
+        "reconciler_ticks": [],
+        "releases": [],
+        "runtime_instances": [],
+        "service_bindings": [],
+        "service_views": [],
+        "storage_resources": [],
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "deployment_detail": {
+      "deployment_detail_ref01": {
+        "activity": [],
+        "app": "s349",
+        "app_id": "APP01",
+        "audit_events": [],
+        "capacity": {},
+        "data_resources": [],
+        "deploy_targets": [],
+        "deployments": [],
+        "desired_states": [],
+        "environments": [],
+        "filters": {},
+        "health": {},
+        "nomad": {},
+        "operations": [],
+        "placements": [],
+        "reconciler_ticks": [],
+        "releases": [],
+        "runtime_instances": [],
+        "service_bindings": [],
+        "service_views": [],
+        "storage_resources": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/pages/deployments/details": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

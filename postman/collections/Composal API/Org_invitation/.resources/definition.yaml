@@ -1,0 +1,13 @@
+$kind: collection
+id: "1da63c1d-6c16-5a5d-811c-eddd4148ae95"
+description: |-
+  The **org_invitation** entity. Its requests address one record by `{{org_invitation_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+  | `invitation` | object | yes |  |
+  | `registration_options` | any | yes |  |
+  | `requires_password_setup` | boolean | yes |  |
+  | `start_guided_setup` | boolean | yes |  |
+order: 339000

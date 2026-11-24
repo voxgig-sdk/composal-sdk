@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "spark_credit_agent_usage": {
+      "SPARK_CREDIT_AGENT_USAGE00": {
+        "agents": [],
+        "all": {},
+        "days": [],
+        "id": "SPARK_CREDIT_AGENT_USAGE00",
+        "owners": [],
+        "organization_id": "ORGANIZATION01"
+      },
+      "SPARK_CREDIT_AGENT_USAGE01": {
+        "agents": [],
+        "all": {},
+        "days": [],
+        "id": "SPARK_CREDIT_AGENT_USAGE01",
+        "owners": [],
+        "organization_id": "ORGANIZATION01"
+      },
+      "SPARK_CREDIT_AGENT_USAGE02": {
+        "agents": [],
+        "all": {},
+        "days": [],
+        "id": "SPARK_CREDIT_AGENT_USAGE02",
+        "owners": [],
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "spark_credit_agent_usage": {
+      "spark_credit_agent_usage_ref01": {
+        "agents": [],
+        "all": {},
+        "days": [],
+        "owners": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/spark_credits/agent_usage/{agent_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

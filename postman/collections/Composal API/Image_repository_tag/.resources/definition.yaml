@@ -1,0 +1,12 @@
+$kind: collection
+id: "2d806442-3191-5534-ad61-0025602e2c1a"
+description: |-
+  The **image_repository_tag** entity, which belongs to a image_repository. Its requests address one record by `{{image_repository_tag_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `image_repository` | object | yes |  |
+  | `name` | string | yes |  |
+  | `registry_url` | string | yes |  |
+  | `tags` | array | yes |  |
+order: 282000

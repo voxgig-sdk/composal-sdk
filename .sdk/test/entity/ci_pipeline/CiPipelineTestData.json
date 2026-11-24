@@ -1,0 +1,130 @@
+{
+  "existing": {
+    "ci_pipeline": {
+      "CI_PIPELINE00": {
+        "ci_runner_pool_id": "CI_RUNNER_POOL01",
+        "concurrency_key": "sf1",
+        "created_at": "sf2",
+        "default_branch": "sf3",
+        "description": "sf4",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "CI_PIPELINE00",
+        "name": "sf7",
+        "organization_id": "ORGANIZATION01",
+        "repository_id": "REPOSITORY01",
+        "required_capabilities_csv": "sfa",
+        "runner_pool": "sfb",
+        "runs": [],
+        "slug": "sfd",
+        "source_kind": "sfe",
+        "status": "sff",
+        "status_label": "s100",
+        "status_state": "s101",
+        "status_tone": "s102",
+        "trigger_on_pull_request": false,
+        "trigger_on_push": true,
+        "trigger_on_schedule": false,
+        "updated_at": "s106",
+        "workflow_path": "s107"
+      },
+      "CI_PIPELINE01": {
+        "ci_runner_pool_id": "CI_RUNNER_POOL01",
+        "concurrency_key": "s1e1",
+        "created_at": "s1e2",
+        "default_branch": "s1e3",
+        "description": "s1e4",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "CI_PIPELINE01",
+        "name": "s1e7",
+        "organization_id": "ORGANIZATION01",
+        "repository_id": "REPOSITORY01",
+        "required_capabilities_csv": "s1ea",
+        "runner_pool": "s1eb",
+        "runs": [],
+        "slug": "s1ed",
+        "source_kind": "s1ee",
+        "status": "s1ef",
+        "status_label": "s1f0",
+        "status_state": "s1f1",
+        "status_tone": "s1f2",
+        "trigger_on_pull_request": false,
+        "trigger_on_push": true,
+        "trigger_on_schedule": false,
+        "updated_at": "s1f6",
+        "workflow_path": "s1f7"
+      },
+      "CI_PIPELINE02": {
+        "ci_runner_pool_id": "CI_RUNNER_POOL01",
+        "concurrency_key": "s2d1",
+        "created_at": "s2d2",
+        "default_branch": "s2d3",
+        "description": "s2d4",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "CI_PIPELINE02",
+        "name": "s2d7",
+        "organization_id": "ORGANIZATION01",
+        "repository_id": "REPOSITORY01",
+        "required_capabilities_csv": "s2da",
+        "runner_pool": "s2db",
+        "runs": [],
+        "slug": "s2dd",
+        "source_kind": "s2de",
+        "status": "s2df",
+        "status_label": "s2e0",
+        "status_state": "s2e1",
+        "status_tone": "s2e2",
+        "trigger_on_pull_request": false,
+        "trigger_on_push": true,
+        "trigger_on_schedule": false,
+        "updated_at": "s2e6",
+        "workflow_path": "s2e7"
+      }
+    }
+  },
+  "new": {
+    "ci_pipeline": {
+      "ci_pipeline_ref01": {
+        "ci_runner_pool_id": "CI_RUNNER_POOL01",
+        "concurrency_key": "s3c1",
+        "created_at": "s3c2",
+        "default_branch": "s3c3",
+        "description": "s3c4",
+        "hosted_app_id": "HOSTED_APP01",
+        "name": "s3c7",
+        "organization_id": "ORGANIZATION01",
+        "repository_id": "REPOSITORY01",
+        "required_capabilities_csv": "s3ca",
+        "runner_pool": "s3cb",
+        "runs": [],
+        "slug": "s3cd",
+        "source_kind": "s3ce",
+        "status": "s3cf",
+        "status_label": "s3d0",
+        "status_state": "s3d1",
+        "status_tone": "s3d2",
+        "trigger_on_pull_request": false,
+        "trigger_on_push": true,
+        "trigger_on_schedule": false,
+        "updated_at": "s3d6",
+        "workflow_path": "s3d7"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/ci/pipelines": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/ci/pipelines": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/ci/pipelines/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

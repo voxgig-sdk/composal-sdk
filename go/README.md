@@ -4,7 +4,7 @@
 
 The Golang SDK for the Composal API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
-It exposes the API as capitalised, semantic **Entities** — e.g. `client.Agent(nil)` — each with the same small set of operations (`List`, `Load`, `Create`, `Update`, `Patch`, `Remove`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.A2aWellKnown(nil)` — each with the same small set of operations (`List`, `Load`, `Create`, `Update`, `Patch`, `Remove`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
@@ -44,7 +44,6 @@ wrapper), so check `err` and read a record through the entity's
 package main
 
 import (
-    "fmt"
     "os"
     sdk "github.com/voxgig-sdk/composal-sdk/go"
 )
@@ -54,35 +53,7 @@ func main() {
         "apikey": os.Getenv("COMPOSAL_APIKEY"),
     })
 
-    // List agent records — the value is a []any of entities, one per record.
-    agents, err := client.Agent(nil).List(map[string]any{"organization_id": "example"}, nil)
-    if err != nil {
-        panic(err)
-    }
-    for _, item := range agents.([]any) {
-        fmt.Println(item.(sdk.Entity).Data())
-    }
-
-    // Load a single agent — the value is the entity; Data() reads its record.
-    agent, err := client.Agent(nil).Load(map[string]any{"id": "example_id", "organization_id": "example_organization_id"}, nil)
-    if err != nil {
-        panic(err)
-    }
-    fmt.Println(agent.(sdk.Entity).Data())
-
-    // Create a agent.
-    created, err := client.Agent(nil).Create(map[string]any{"organization_id": "example_organization_id", "name": "example_name"}, nil)
-    if err != nil {
-        panic(err)
-    }
-    fmt.Println(created.(sdk.Entity).Data())
-
-    // Remove a agent.
-    removed, err := client.Agent(nil).Remove(map[string]any{"id": "example_id", "organization_id": "example_organization_id"}, nil)
-    if err != nil {
-        panic(err)
-    }
-    fmt.Println(removed.(sdk.Entity).Data())
+    _ = client
 }
 ```
 
@@ -93,12 +64,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-pageprojectrun, err := client.PageProjectRun(nil).Load(map[string]any{"id": "example_id", "organization_id": "example", "project_id": "example"}, nil)
+agentoperation, err := client.AgentOperation(nil).Load(map[string]any{"agent_id": "example", "id": "example_id", "organization_id": "example"}, nil)
 if err != nil {
     // handle err
     return
 }
-_ = pageprojectrun
+_ = agentoperation
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -162,13 +133,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-pageProjectRun, err := client.PageProjectRun(nil).Load(
-    map[string]any{"id": "test01", "organization_id": "example", "project_id": "example"}, nil,
+agentOperation, err := client.AgentOperation(nil).Load(
+    map[string]any{"id": "test01", "agent_id": "example", "organization_id": "example"}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(pageProjectRun.(sdk.Entity).Data()) // the entity's mock record
+fmt.Println(agentOperation.(sdk.Entity).Data()) // the entity's mock record
 ```
 
 ### Use a custom fetch function
@@ -247,19 +218,32 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
+| `A2aWellKnown` | `(data map[string]any) ComposalEntityBase` | Create an A2aWellKnown entity instance. |
+| `AdminOrg` | `(data map[string]any) ComposalEntityBase` | Create an AdminOrg entity instance. |
 | `Agent` | `(data map[string]any) ComposalEntityBase` | Create an Agent entity instance. |
+| `AgentApp` | `(data map[string]any) ComposalEntityBase` | Create an AgentApp entity instance. |
+| `AgentAppInstall` | `(data map[string]any) ComposalEntityBase` | Create an AgentAppInstall entity instance. |
 | `AgentAttachment` | `(data map[string]any) ComposalEntityBase` | Create an AgentAttachment entity instance. |
 | `AgentAutomation` | `(data map[string]any) ComposalEntityBase` | Create an AgentAutomation entity instance. |
 | `AgentAvatar` | `(data map[string]any) ComposalEntityBase` | Create an AgentAvatar entity instance. |
 | `AgentCommand` | `(data map[string]any) ComposalEntityBase` | Create an AgentCommand entity instance. |
 | `AgentComputer` | `(data map[string]any) ComposalEntityBase` | Create an AgentComputer entity instance. |
 | `AgentConnection` | `(data map[string]any) ComposalEntityBase` | Create an AgentConnection entity instance. |
+| `AgentConnectionDelegation` | `(data map[string]any) ComposalEntityBase` | Create an AgentConnectionDelegation entity instance. |
+| `AgentConnectionGrant` | `(data map[string]any) ComposalEntityBase` | Create an AgentConnectionGrant entity instance. |
+| `AgentConnectionResource` | `(data map[string]any) ComposalEntityBase` | Create an AgentConnectionResource entity instance. |
+| `AgentConnectionSafetyControl` | `(data map[string]any) ComposalEntityBase` | Create an AgentConnectionSafetyControl entity instance. |
+| `AgentConnectionTriggerSubscription` | `(data map[string]any) ComposalEntityBase` | Create an AgentConnectionTriggerSubscription entity instance. |
+| `AgentContextCheckpoint` | `(data map[string]any) ComposalEntityBase` | Create an AgentContextCheckpoint entity instance. |
 | `AgentControlFlow` | `(data map[string]any) ComposalEntityBase` | Create an AgentControlFlow entity instance. |
 | `AgentCoordination` | `(data map[string]any) ComposalEntityBase` | Create an AgentCoordination entity instance. |
 | `AgentEmail` | `(data map[string]any) ComposalEntityBase` | Create an AgentEmail entity instance. |
+| `AgentEvent` | `(data map[string]any) ComposalEntityBase` | Create an AgentEvent entity instance. |
 | `AgentFile` | `(data map[string]any) ComposalEntityBase` | Create an AgentFile entity instance. |
 | `AgentInput` | `(data map[string]any) ComposalEntityBase` | Create an AgentInput entity instance. |
 | `AgentIntegration` | `(data map[string]any) ComposalEntityBase` | Create an AgentIntegration entity instance. |
+| `AgentIntegrationAccount` | `(data map[string]any) ComposalEntityBase` | Create an AgentIntegrationAccount entity instance. |
+| `AgentIntegrationCallback` | `(data map[string]any) ComposalEntityBase` | Create an AgentIntegrationCallback entity instance. |
 | `AgentInteraction` | `(data map[string]any) ComposalEntityBase` | Create an AgentInteraction entity instance. |
 | `AgentLibrary` | `(data map[string]any) ComposalEntityBase` | Create an AgentLibrary entity instance. |
 | `AgentManager` | `(data map[string]any) ComposalEntityBase` | Create an AgentManager entity instance. |
@@ -271,11 +255,17 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `AgentProvisioning` | `(data map[string]any) ComposalEntityBase` | Create an AgentProvisioning entity instance. |
 | `AgentPullRequest` | `(data map[string]any) ComposalEntityBase` | Create an AgentPullRequest entity instance. |
 | `AgentQuestion` | `(data map[string]any) ComposalEntityBase` | Create an AgentQuestion entity instance. |
+| `AgentRelayFileGrant` | `(data map[string]any) ComposalEntityBase` | Create an AgentRelayFileGrant entity instance. |
+| `AgentRelayFileGrantAccount` | `(data map[string]any) ComposalEntityBase` | Create an AgentRelayFileGrantAccount entity instance. |
 | `AgentRepository` | `(data map[string]any) ComposalEntityBase` | Create an AgentRepository entity instance. |
 | `AgentResource` | `(data map[string]any) ComposalEntityBase` | Create an AgentResource entity instance. |
+| `AgentRoder` | `(data map[string]any) ComposalEntityBase` | Create an AgentRoder entity instance. |
 | `AgentRoutine` | `(data map[string]any) ComposalEntityBase` | Create an AgentRoutine entity instance. |
 | `AgentRun` | `(data map[string]any) ComposalEntityBase` | Create an AgentRun entity instance. |
 | `AgentRuntime` | `(data map[string]any) ComposalEntityBase` | Create an AgentRuntime entity instance. |
+| `AgentSession` | `(data map[string]any) ComposalEntityBase` | Create an AgentSession entity instance. |
+| `AgentSessionCheckpoint` | `(data map[string]any) ComposalEntityBase` | Create an AgentSessionCheckpoint entity instance. |
+| `AgentSessionRoderHandoff` | `(data map[string]any) ComposalEntityBase` | Create an AgentSessionRoderHandoff entity instance. |
 | `AgentSetting` | `(data map[string]any) ComposalEntityBase` | Create an AgentSetting entity instance. |
 | `AgentSharing` | `(data map[string]any) ComposalEntityBase` | Create an AgentSharing entity instance. |
 | `AgentSite` | `(data map[string]any) ComposalEntityBase` | Create an AgentSite entity instance. |
@@ -283,12 +273,15 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `AgentSlack` | `(data map[string]any) ComposalEntityBase` | Create an AgentSlack entity instance. |
 | `AgentSubagent` | `(data map[string]any) ComposalEntityBase` | Create an AgentSubagent entity instance. |
 | `AgentSubscription` | `(data map[string]any) ComposalEntityBase` | Create an AgentSubscription entity instance. |
+| `AgentSwarm` | `(data map[string]any) ComposalEntityBase` | Create an AgentSwarm entity instance. |
 | `AgentTeammate` | `(data map[string]any) ComposalEntityBase` | Create an AgentTeammate entity instance. |
 | `AgentTerminal` | `(data map[string]any) ComposalEntityBase` | Create an AgentTerminal entity instance. |
 | `AgentThread` | `(data map[string]any) ComposalEntityBase` | Create an AgentThread entity instance. |
 | `AgentTool` | `(data map[string]any) ComposalEntityBase` | Create an AgentTool entity instance. |
+| `AgentUsage` | `(data map[string]any) ComposalEntityBase` | Create an AgentUsage entity instance. |
 | `AgentVerifyProject` | `(data map[string]any) ComposalEntityBase` | Create an AgentVerifyProject entity instance. |
 | `AgentWait` | `(data map[string]any) ComposalEntityBase` | Create an AgentWait entity instance. |
+| `AgentWebPreview` | `(data map[string]any) ComposalEntityBase` | Create an AgentWebPreview entity instance. |
 | `AgentWebhook` | `(data map[string]any) ComposalEntityBase` | Create an AgentWebhook entity instance. |
 | `AgentWork` | `(data map[string]any) ComposalEntityBase` | Create an AgentWork entity instance. |
 | `AgentWorkflow` | `(data map[string]any) ComposalEntityBase` | Create an AgentWorkflow entity instance. |
@@ -297,8 +290,13 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `AgentWorkflowTrigger` | `(data map[string]any) ComposalEntityBase` | Create an AgentWorkflowTrigger entity instance. |
 | `AgentWorkspace` | `(data map[string]any) ComposalEntityBase` | Create an AgentWorkspace entity instance. |
 | `AgentWritePermission` | `(data map[string]any) ComposalEntityBase` | Create an AgentWritePermission entity instance. |
+| `Agreement` | `(data map[string]any) ComposalEntityBase` | Create an Agreement entity instance. |
+| `AgreementAccessRequest` | `(data map[string]any) ComposalEntityBase` | Create an AgreementAccessRequest entity instance. |
+| `AlertRuleEvent` | `(data map[string]any) ComposalEntityBase` | Create an AlertRuleEvent entity instance. |
 | `AllocationLog` | `(data map[string]any) ComposalEntityBase` | Create an AllocationLog entity instance. |
 | `App` | `(data map[string]any) ComposalEntityBase` | Create an App entity instance. |
+| `AppAccess` | `(data map[string]any) ComposalEntityBase` | Create an AppAccess entity instance. |
+| `AppAccessJwk` | `(data map[string]any) ComposalEntityBase` | Create an AppAccessJwk entity instance. |
 | `AppCdn` | `(data map[string]any) ComposalEntityBase` | Create an AppCdn entity instance. |
 | `AppConfigVariable` | `(data map[string]any) ComposalEntityBase` | Create an AppConfigVariable entity instance. |
 | `AppDataResource` | `(data map[string]any) ComposalEntityBase` | Create an AppDataResource entity instance. |
@@ -317,11 +315,46 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `AppServiceBinding` | `(data map[string]any) ComposalEntityBase` | Create an AppServiceBinding entity instance. |
 | `AppServicePlacement` | `(data map[string]any) ComposalEntityBase` | Create an AppServicePlacement entity instance. |
 | `AppStorageResource` | `(data map[string]any) ComposalEntityBase` | Create an AppStorageResource entity instance. |
+| `Artefact` | `(data map[string]any) ComposalEntityBase` | Create an Artefact entity instance. |
+| `ArtefactCommentThread` | `(data map[string]any) ComposalEntityBase` | Create an ArtefactCommentThread entity instance. |
+| `ArtefactRevision` | `(data map[string]any) ComposalEntityBase` | Create an ArtefactRevision entity instance. |
+| `ArtefactViewToken` | `(data map[string]any) ComposalEntityBase` | Create an ArtefactViewToken entity instance. |
+| `Artifact` | `(data map[string]any) ComposalEntityBase` | Create an Artifact entity instance. |
+| `ArtifactCacheNamespace` | `(data map[string]any) ComposalEntityBase` | Create an ArtifactCacheNamespace entity instance. |
+| `ArtifactImageRepository` | `(data map[string]any) ComposalEntityBase` | Create an ArtifactImageRepository entity instance. |
+| `ArtifactPackageMirror` | `(data map[string]any) ComposalEntityBase` | Create an ArtifactPackageMirror entity instance. |
+| `ArtifactRetentionPolicy` | `(data map[string]any) ComposalEntityBase` | Create an ArtifactRetentionPolicy entity instance. |
 | `AttachmentPart` | `(data map[string]any) ComposalEntityBase` | Create an AttachmentPart entity instance. |
+| `AuditEvent` | `(data map[string]any) ComposalEntityBase` | Create an AuditEvent entity instance. |
+| `Auth` | `(data map[string]any) ComposalEntityBase` | Create an Auth entity instance. |
+| `AuthCli` | `(data map[string]any) ComposalEntityBase` | Create an AuthCli entity instance. |
+| `AuthGithub` | `(data map[string]any) ComposalEntityBase` | Create an AuthGithub entity instance. |
+| `AuthGoogle` | `(data map[string]any) ComposalEntityBase` | Create an AuthGoogle entity instance. |
+| `AuthOpenai` | `(data map[string]any) ComposalEntityBase` | Create an AuthOpenai entity instance. |
+| `AuthPasswordReset` | `(data map[string]any) ComposalEntityBase` | Create an AuthPasswordReset entity instance. |
+| `AuthRegistrationOption` | `(data map[string]any) ComposalEntityBase` | Create an AuthRegistrationOption entity instance. |
 | `AutomationEvent` | `(data map[string]any) ComposalEntityBase` | Create an AutomationEvent entity instance. |
 | `AutomationRun` | `(data map[string]any) ComposalEntityBase` | Create an AutomationRun entity instance. |
+| `BackendRunnerPool` | `(data map[string]any) ComposalEntityBase` | Create a BackendRunnerPool entity instance. |
+| `Bazel` | `(data map[string]any) ComposalEntityBase` | Create a Bazel entity instance. |
+| `BazelActionResult` | `(data map[string]any) ComposalEntityBase` | Create a BazelActionResult entity instance. |
+| `BazelBackend` | `(data map[string]any) ComposalEntityBase` | Create a BazelBackend entity instance. |
+| `BazelBlob` | `(data map[string]any) ComposalEntityBase` | Create a BazelBlob entity instance. |
+| `BazelExecution` | `(data map[string]any) ComposalEntityBase` | Create a BazelExecution entity instance. |
+| `BazelFindMissingBlob` | `(data map[string]any) ComposalEntityBase` | Create a BazelFindMissingBlob entity instance. |
+| `Billing` | `(data map[string]any) ComposalEntityBase` | Create a Billing entity instance. |
+| `BillingAddon` | `(data map[string]any) ComposalEntityBase` | Create a BillingAddon entity instance. |
+| `BillingCheckoutSession` | `(data map[string]any) ComposalEntityBase` | Create a BillingCheckoutSession entity instance. |
+| `BillingInvoice` | `(data map[string]any) ComposalEntityBase` | Create a BillingInvoice entity instance. |
+| `BillingPackage` | `(data map[string]any) ComposalEntityBase` | Create a BillingPackage entity instance. |
+| `BillingPortalSession` | `(data map[string]any) ComposalEntityBase` | Create a BillingPortalSession entity instance. |
+| `BillingPrepaidPeriod` | `(data map[string]any) ComposalEntityBase` | Create a BillingPrepaidPeriod entity instance. |
+| `BillingPrepaidPurchase` | `(data map[string]any) ComposalEntityBase` | Create a BillingPrepaidPurchase entity instance. |
+| `BillingTokenTopUp` | `(data map[string]any) ComposalEntityBase` | Create a BillingTokenTopUp entity instance. |
+| `BillingUsage` | `(data map[string]any) ComposalEntityBase` | Create a BillingUsage entity instance. |
 | `Binary` | `(data map[string]any) ComposalEntityBase` | Create a Binary entity instance. |
 | `BinaryVersion` | `(data map[string]any) ComposalEntityBase` | Create a BinaryVersion entity instance. |
+| `BookmarkProtectionRefreshGithubRequiredCheck` | `(data map[string]any) ComposalEntityBase` | Create a BookmarkProtectionRefreshGithubRequiredCheck entity instance. |
 | `BrowserEgressCandidate` | `(data map[string]any) ComposalEntityBase` | Create a BrowserEgressCandidate entity instance. |
 | `BrowserSession` | `(data map[string]any) ComposalEntityBase` | Create a BrowserSession entity instance. |
 | `BrowserSessionConnection` | `(data map[string]any) ComposalEntityBase` | Create a BrowserSessionConnection entity instance. |
@@ -331,13 +364,46 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `BrowserSessionRecording` | `(data map[string]any) ComposalEntityBase` | Create a BrowserSessionRecording entity instance. |
 | `BrowserSessionScreenshot` | `(data map[string]any) ComposalEntityBase` | Create a BrowserSessionScreenshot entity instance. |
 | `BrowserSessionTask` | `(data map[string]any) ComposalEntityBase` | Create a BrowserSessionTask entity instance. |
+| `CacheNamespaceEntry` | `(data map[string]any) ComposalEntityBase` | Create a CacheNamespaceEntry entity instance. |
 | `CatalogSelector` | `(data map[string]any) ComposalEntityBase` | Create a CatalogSelector entity instance. |
 | `CdnDeployment` | `(data map[string]any) ComposalEntityBase` | Create a CdnDeployment entity instance. |
 | `CdnHostname` | `(data map[string]any) ComposalEntityBase` | Create a CdnHostname entity instance. |
 | `CdnSpace` | `(data map[string]any) ComposalEntityBase` | Create a CdnSpace entity instance. |
 | `CdnSpaceObject` | `(data map[string]any) ComposalEntityBase` | Create a CdnSpaceObject entity instance. |
+| `Change` | `(data map[string]any) ComposalEntityBase` | Create a Change entity instance. |
+| `ChangeAsset` | `(data map[string]any) ComposalEntityBase` | Create a ChangeAsset entity instance. |
+| `ChangeComment` | `(data map[string]any) ComposalEntityBase` | Create a ChangeComment entity instance. |
+| `ChangeFileReviewCheckpoint` | `(data map[string]any) ComposalEntityBase` | Create a ChangeFileReviewCheckpoint entity instance. |
+| `ChangeGitBranchSubmission` | `(data map[string]any) ComposalEntityBase` | Create a ChangeGitBranchSubmission entity instance. |
+| `ChangeGitCommitIdentity` | `(data map[string]any) ComposalEntityBase` | Create a ChangeGitCommitIdentity entity instance. |
+| `ChangeGitPublication` | `(data map[string]any) ComposalEntityBase` | Create a ChangeGitPublication entity instance. |
+| `ChangeGroupMember` | `(data map[string]any) ComposalEntityBase` | Create a ChangeGroupMember entity instance. |
+| `ChangeLabel` | `(data map[string]any) ComposalEntityBase` | Create a ChangeLabel entity instance. |
+| `ChangeLandingHold` | `(data map[string]any) ComposalEntityBase` | Create a ChangeLandingHold entity instance. |
+| `ChangeLandingRequest` | `(data map[string]any) ComposalEntityBase` | Create a ChangeLandingRequest entity instance. |
+| `ChangeRequestChange` | `(data map[string]any) ComposalEntityBase` | Create a ChangeRequestChange entity instance. |
+| `ChangeReviewer` | `(data map[string]any) ComposalEntityBase` | Create a ChangeReviewer entity instance. |
+| `ChangeTranscript` | `(data map[string]any) ComposalEntityBase` | Create a ChangeTranscript entity instance. |
+| `ChangeTranscriptSummary` | `(data map[string]any) ComposalEntityBase` | Create a ChangeTranscriptSummary entity instance. |
+| `CheckpointPrepareChunk` | `(data map[string]any) ComposalEntityBase` | Create a CheckpointPrepareChunk entity instance. |
+| `CiNode` | `(data map[string]any) ComposalEntityBase` | Create a CiNode entity instance. |
+| `CiPipeline` | `(data map[string]any) ComposalEntityBase` | Create a CiPipeline entity instance. |
+| `CiPipelineRun` | `(data map[string]any) ComposalEntityBase` | Create a CiPipelineRun entity instance. |
+| `CiRunnerPool` | `(data map[string]any) ComposalEntityBase` | Create a CiRunnerPool entity instance. |
+| `CiStatus` | `(data map[string]any) ComposalEntityBase` | Create a CiStatus entity instance. |
+| `CliEvent` | `(data map[string]any) ComposalEntityBase` | Create a CliEvent entity instance. |
+| `CliRelease` | `(data map[string]any) ComposalEntityBase` | Create a CliRelease entity instance. |
+| `CloudWorkspaceBackupObject` | `(data map[string]any) ComposalEntityBase` | Create a CloudWorkspaceBackupObject entity instance. |
+| `CodeRuleEvaluation` | `(data map[string]any) ComposalEntityBase` | Create a CodeRuleEvaluation entity instance. |
+| `ComSiteAccess` | `(data map[string]any) ComposalEntityBase` | Create a ComSiteAccess entity instance. |
+| `ComSiteAccessSession` | `(data map[string]any) ComposalEntityBase` | Create a ComSiteAccessSession entity instance. |
+| `CommentThreadComment` | `(data map[string]any) ComposalEntityBase` | Create a CommentThreadComment entity instance. |
+| `CommitDiff` | `(data map[string]any) ComposalEntityBase` | Create a CommitDiff entity instance. |
 | `ConnectionRequest` | `(data map[string]any) ComposalEntityBase` | Create a ConnectionRequest entity instance. |
 | `ConnectionSource` | `(data map[string]any) ComposalEntityBase` | Create a ConnectionSource entity instance. |
+| `ContactSubmission` | `(data map[string]any) ComposalEntityBase` | Create a ContactSubmission entity instance. |
+| `ControlComputer` | `(data map[string]any) ComposalEntityBase` | Create a ControlComputer entity instance. |
+| `ControlComputerControlOperation` | `(data map[string]any) ComposalEntityBase` | Create a ControlComputerControlOperation entity instance. |
 | `CoordinationWait` | `(data map[string]any) ComposalEntityBase` | Create a CoordinationWait entity instance. |
 | `CredentialSignInCheck` | `(data map[string]any) ComposalEntityBase` | Create a CredentialSignInCheck entity instance. |
 | `DataResourceRotateCredential` | `(data map[string]any) ComposalEntityBase` | Create a DataResourceRotateCredential entity instance. |
@@ -348,10 +414,36 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `DeepScanOption` | `(data map[string]any) ComposalEntityBase` | Create a DeepScanOption entity instance. |
 | `DemoShare` | `(data map[string]any) ComposalEntityBase` | Create a DemoShare entity instance. |
 | `DemoShareSegment` | `(data map[string]any) ComposalEntityBase` | Create a DemoShareSegment entity instance. |
+| `Deployment` | `(data map[string]any) ComposalEntityBase` | Create a Deployment entity instance. |
 | `DeploymentDashboardNomad` | `(data map[string]any) ComposalEntityBase` | Create a DeploymentDashboardNomad entity instance. |
+| `DeploymentDetail` | `(data map[string]any) ComposalEntityBase` | Create a DeploymentDetail entity instance. |
 | `DeploymentFile` | `(data map[string]any) ComposalEntityBase` | Create a DeploymentFile entity instance. |
+| `DeploymentLog` | `(data map[string]any) ComposalEntityBase` | Create a DeploymentLog entity instance. |
+| `DeploymentMetric` | `(data map[string]any) ComposalEntityBase` | Create a DeploymentMetric entity instance. |
+| `DeploymentPreview` | `(data map[string]any) ComposalEntityBase` | Create a DeploymentPreview entity instance. |
+| `DeploymentSetting` | `(data map[string]any) ComposalEntityBase` | Create a DeploymentSetting entity instance. |
+| `DesktopLocalAgentModel` | `(data map[string]any) ComposalEntityBase` | Create a DesktopLocalAgentModel entity instance. |
+| `DesktopLocalAgentResponse` | `(data map[string]any) ComposalEntityBase` | Create a DesktopLocalAgentResponse entity instance. |
+| `Device` | `(data map[string]any) ComposalEntityBase` | Create a Device entity instance. |
+| `DeviceBrowserOperation` | `(data map[string]any) ComposalEntityBase` | Create a DeviceBrowserOperation entity instance. |
+| `DeviceControlMessage` | `(data map[string]any) ComposalEntityBase` | Create a DeviceControlMessage entity instance. |
+| `DeviceControlOperation` | `(data map[string]any) ComposalEntityBase` | Create a DeviceControlOperation entity instance. |
+| `DeviceEnterpriseRelay` | `(data map[string]any) ComposalEntityBase` | Create a DeviceEnterpriseRelay entity instance. |
+| `DeviceFolderListing` | `(data map[string]any) ComposalEntityBase` | Create a DeviceFolderListing entity instance. |
+| `DeviceGrant` | `(data map[string]any) ComposalEntityBase` | Create a DeviceGrant entity instance. |
+| `DeviceInvocation` | `(data map[string]any) ComposalEntityBase` | Create a DeviceInvocation entity instance. |
+| `DeviceLocalEvent` | `(data map[string]any) ComposalEntityBase` | Create a DeviceLocalEvent entity instance. |
+| `DevicePairing` | `(data map[string]any) ComposalEntityBase` | Create a DevicePairing entity instance. |
+| `DeviceProject` | `(data map[string]any) ComposalEntityBase` | Create a DeviceProject entity instance. |
+| `DeviceScheduledCheckIn` | `(data map[string]any) ComposalEntityBase` | Create a DeviceScheduledCheckIn entity instance. |
+| `DockerBuilder` | `(data map[string]any) ComposalEntityBase` | Create a DockerBuilder entity instance. |
+| `DockerBuilderSession` | `(data map[string]any) ComposalEntityBase` | Create a DockerBuilderSession entity instance. |
+| `DockerBuilderSetting` | `(data map[string]any) ComposalEntityBase` | Create a DockerBuilderSetting entity instance. |
+| `DomainDnsIntegration` | `(data map[string]any) ComposalEntityBase` | Create a DomainDnsIntegration entity instance. |
 | `DomainPathRule` | `(data map[string]any) ComposalEntityBase` | Create a DomainPathRule entity instance. |
 | `Dream` | `(data map[string]any) ComposalEntityBase` | Create a Dream entity instance. |
+| `Edge` | `(data map[string]any) ComposalEntityBase` | Create an Edge entity instance. |
+| `EmailVerification` | `(data map[string]any) ComposalEntityBase` | Create an EmailVerification entity instance. |
 | `Environment` | `(data map[string]any) ComposalEntityBase` | Create an Environment entity instance. |
 | `EnvironmentDiscoveryRun` | `(data map[string]any) ComposalEntityBase` | Create an EnvironmentDiscoveryRun entity instance. |
 | `EnvironmentExploration` | `(data map[string]any) ComposalEntityBase` | Create an EnvironmentExploration entity instance. |
@@ -360,48 +452,153 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `EnvironmentSecretBinding` | `(data map[string]any) ComposalEntityBase` | Create an EnvironmentSecretBinding entity instance. |
 | `EnvironmentTestAccount` | `(data map[string]any) ComposalEntityBase` | Create an EnvironmentTestAccount entity instance. |
 | `Evidence` | `(data map[string]any) ComposalEntityBase` | Create an Evidence entity instance. |
+| `ExecutionDesiredState` | `(data map[string]any) ComposalEntityBase` | Create an ExecutionDesiredState entity instance. |
+| `ExecutionReconcilerTick` | `(data map[string]any) ComposalEntityBase` | Create an ExecutionReconcilerTick entity instance. |
+| `ExecutionRelease` | `(data map[string]any) ComposalEntityBase` | Create an ExecutionRelease entity instance. |
+| `ExecutionRuntimeInstance` | `(data map[string]any) ComposalEntityBase` | Create an ExecutionRuntimeInstance entity instance. |
 | `Exploration` | `(data map[string]any) ComposalEntityBase` | Create an Exploration entity instance. |
 | `ExplorationMessage` | `(data map[string]any) ComposalEntityBase` | Create an ExplorationMessage entity instance. |
 | `ExplorationReport` | `(data map[string]any) ComposalEntityBase` | Create an ExplorationReport entity instance. |
 | `ExplorationScenario` | `(data map[string]any) ComposalEntityBase` | Create an ExplorationScenario entity instance. |
 | `Finding` | `(data map[string]any) ComposalEntityBase` | Create a Finding entity instance. |
+| `Gh` | `(data map[string]any) ComposalEntityBase` | Create a Gh entity instance. |
+| `GitImport` | `(data map[string]any) ComposalEntityBase` | Create a GitImport entity instance. |
+| `Github` | `(data map[string]any) ComposalEntityBase` | Create a Github entity instance. |
+| `GithubApp` | `(data map[string]any) ComposalEntityBase` | Create a GithubApp entity instance. |
+| `GithubAppImportableRepository` | `(data map[string]any) ComposalEntityBase` | Create a GithubAppImportableRepository entity instance. |
+| `GithubAppInstallation` | `(data map[string]any) ComposalEntityBase` | Create a GithubAppInstallation entity instance. |
+| `GithubAppInstallationAuthorization` | `(data map[string]any) ComposalEntityBase` | Create a GithubAppInstallationAuthorization entity instance. |
+| `GithubAppUserAuthorization` | `(data map[string]any) ComposalEntityBase` | Create a GithubAppUserAuthorization entity instance. |
+| `GithubCiRepository` | `(data map[string]any) ComposalEntityBase` | Create a GithubCiRepository entity instance. |
+| `GithubCiRepositoryCompatibilityReport` | `(data map[string]any) ComposalEntityBase` | Create a GithubCiRepositoryCompatibilityReport entity instance. |
 | `GithubConnection` | `(data map[string]any) ComposalEntityBase` | Create a GithubConnection entity instance. |
+| `GithubIntegration` | `(data map[string]any) ComposalEntityBase` | Create a GithubIntegration entity instance. |
+| `GithubOnboarding` | `(data map[string]any) ComposalEntityBase` | Create a GithubOnboarding entity instance. |
+| `GithubOnboardingBranch` | `(data map[string]any) ComposalEntityBase` | Create a GithubOnboardingBranch entity instance. |
+| `GithubOnboardingImport` | `(data map[string]any) ComposalEntityBase` | Create a GithubOnboardingImport entity instance. |
+| `GithubOnboardingImportBatch` | `(data map[string]any) ComposalEntityBase` | Create a GithubOnboardingImportBatch entity instance. |
+| `GithubOnboardingImportItem` | `(data map[string]any) ComposalEntityBase` | Create a GithubOnboardingImportItem entity instance. |
+| `GithubPullRequest` | `(data map[string]any) ComposalEntityBase` | Create a GithubPullRequest entity instance. |
+| `GithubRunnerAdmission` | `(data map[string]any) ComposalEntityBase` | Create a GithubRunnerAdmission entity instance. |
+| `GithubRunnerCache` | `(data map[string]any) ComposalEntityBase` | Create a GithubRunnerCache entity instance. |
+| `GithubRunnerEgress` | `(data map[string]any) ComposalEntityBase` | Create a GithubRunnerEgress entity instance. |
+| `GithubRunnerHistory` | `(data map[string]any) ComposalEntityBase` | Create a GithubRunnerHistory entity instance. |
+| `GithubRunnerImage` | `(data map[string]any) ComposalEntityBase` | Create a GithubRunnerImage entity instance. |
+| `GithubRunnerPool` | `(data map[string]any) ComposalEntityBase` | Create a GithubRunnerPool entity instance. |
+| `GithubRunnerSetup` | `(data map[string]any) ComposalEntityBase` | Create a GithubRunnerSetup entity instance. |
+| `Gitlab` | `(data map[string]any) ComposalEntityBase` | Create a Gitlab entity instance. |
+| `GitlabConnection` | `(data map[string]any) ComposalEntityBase` | Create a GitlabConnection entity instance. |
+| `GitlabImport` | `(data map[string]any) ComposalEntityBase` | Create a GitlabImport entity instance. |
+| `GitlabOauth` | `(data map[string]any) ComposalEntityBase` | Create a GitlabOauth entity instance. |
+| `GrantAllAgent` | `(data map[string]any) ComposalEntityBase` | Create a GrantAllAgent entity instance. |
 | `HostingAppDomain` | `(data map[string]any) ComposalEntityBase` | Create a HostingAppDomain entity instance. |
+| `IdentityOrganization` | `(data map[string]any) ComposalEntityBase` | Create an IdentityOrganization entity instance. |
 | `ImageRepository` | `(data map[string]any) ComposalEntityBase` | Create an ImageRepository entity instance. |
+| `ImageRepositoryTag` | `(data map[string]any) ComposalEntityBase` | Create an ImageRepositoryTag entity instance. |
+| `ImportBranchPolicy` | `(data map[string]any) ComposalEntityBase` | Create an ImportBranchPolicy entity instance. |
 | `Integration` | `(data map[string]any) ComposalEntityBase` | Create an Integration entity instance. |
 | `InteractionResponse` | `(data map[string]any) ComposalEntityBase` | Create an InteractionResponse entity instance. |
 | `Invitation` | `(data map[string]any) ComposalEntityBase` | Create an Invitation entity instance. |
+| `InvocationControl` | `(data map[string]any) ComposalEntityBase` | Create an InvocationControl entity instance. |
+| `JobLogChunk` | `(data map[string]any) ComposalEntityBase` | Create a JobLogChunk entity instance. |
+| `JobStep` | `(data map[string]any) ComposalEntityBase` | Create a JobStep entity instance. |
+| `JobWorkspace` | `(data map[string]any) ComposalEntityBase` | Create a JobWorkspace entity instance. |
 | `JourneyVariantReplay` | `(data map[string]any) ComposalEntityBase` | Create a JourneyVariantReplay entity instance. |
 | `Knowledge` | `(data map[string]any) ComposalEntityBase` | Create a Knowledge entity instance. |
+| `Known` | `(data map[string]any) ComposalEntityBase` | Create a Known entity instance. |
+| `Label` | `(data map[string]any) ComposalEntityBase` | Create a Label entity instance. |
+| `LeaseArtifact` | `(data map[string]any) ComposalEntityBase` | Create a LeaseArtifact entity instance. |
+| `LeaseCache` | `(data map[string]any) ComposalEntityBase` | Create a LeaseCache entity instance. |
+| `LeaseLogChunk` | `(data map[string]any) ComposalEntityBase` | Create a LeaseLogChunk entity instance. |
+| `LeaseReconciliation` | `(data map[string]any) ComposalEntityBase` | Create a LeaseReconciliation entity instance. |
+| `LeaseStep` | `(data map[string]any) ComposalEntityBase` | Create a LeaseStep entity instance. |
+| `LeaseVerifyDiagnostic` | `(data map[string]any) ComposalEntityBase` | Create a LeaseVerifyDiagnostic entity instance. |
+| `LeaseVerifySecret` | `(data map[string]any) ComposalEntityBase` | Create a LeaseVerifySecret entity instance. |
+| `LeaseWorkspace` | `(data map[string]any) ComposalEntityBase` | Create a LeaseWorkspace entity instance. |
+| `LocalAgentDecision` | `(data map[string]any) ComposalEntityBase` | Create a LocalAgentDecision entity instance. |
+| `LocalAgentResponse` | `(data map[string]any) ComposalEntityBase` | Create a LocalAgentResponse entity instance. |
 | `LocalThreadDelivery` | `(data map[string]any) ComposalEntityBase` | Create a LocalThreadDelivery entity instance. |
 | `LocalThreadOperation` | `(data map[string]any) ComposalEntityBase` | Create a LocalThreadOperation entity instance. |
 | `Location` | `(data map[string]any) ComposalEntityBase` | Create a Location entity instance. |
+| `LogStreamChunk` | `(data map[string]any) ComposalEntityBase` | Create a LogStreamChunk entity instance. |
+| `LogoImage` | `(data map[string]any) ComposalEntityBase` | Create a LogoImage entity instance. |
+| `MarketingSetting` | `(data map[string]any) ComposalEntityBase` | Create a MarketingSetting entity instance. |
+| `McpOauth` | `(data map[string]any) ComposalEntityBase` | Create a McpOauth entity instance. |
 | `Me` | `(data map[string]any) ComposalEntityBase` | Create a Me entity instance. |
 | `MeEmail` | `(data map[string]any) ComposalEntityBase` | Create a MeEmail entity instance. |
 | `MeOnboarding` | `(data map[string]any) ComposalEntityBase` | Create a MeOnboarding entity instance. |
 | `MediaFile` | `(data map[string]any) ComposalEntityBase` | Create a MediaFile entity instance. |
 | `Member` | `(data map[string]any) ComposalEntityBase` | Create a Member entity instance. |
 | `Memory` | `(data map[string]any) ComposalEntityBase` | Create a Memory entity instance. |
+| `MergeQueueEntry` | `(data map[string]any) ComposalEntityBase` | Create a MergeQueueEntry entity instance. |
 | `MergeRequest` | `(data map[string]any) ComposalEntityBase` | Create a MergeRequest entity instance. |
+| `MergeResolution` | `(data map[string]any) ComposalEntityBase` | Create a MergeResolution entity instance. |
 | `MessagingConversationMessage` | `(data map[string]any) ComposalEntityBase` | Create a MessagingConversationMessage entity instance. |
 | `MessagingConversationUpload` | `(data map[string]any) ComposalEntityBase` | Create a MessagingConversationUpload entity instance. |
 | `MetricQuery` | `(data map[string]any) ComposalEntityBase` | Create a MetricQuery entity instance. |
+| `MetronomeWebhook` | `(data map[string]any) ComposalEntityBase` | Create a MetronomeWebhook entity instance. |
+| `ModelSubscriptionAccount` | `(data map[string]any) ComposalEntityBase` | Create a ModelSubscriptionAccount entity instance. |
+| `ModelSubscriptionAccountConnection` | `(data map[string]any) ComposalEntityBase` | Create a ModelSubscriptionAccountConnection entity instance. |
 | `NetworkConnection` | `(data map[string]any) ComposalEntityBase` | Create a NetworkConnection entity instance. |
+| `NetworkingSpace` | `(data map[string]any) ComposalEntityBase` | Create a NetworkingSpace entity instance. |
+| `Node` | `(data map[string]any) ComposalEntityBase` | Create a Node entity instance. |
+| `NodeCertificate` | `(data map[string]any) ComposalEntityBase` | Create a NodeCertificate entity instance. |
+| `NodeLease` | `(data map[string]any) ComposalEntityBase` | Create a NodeLease entity instance. |
 | `NomadAllocation` | `(data map[string]any) ComposalEntityBase` | Create a NomadAllocation entity instance. |
 | `NomadLog` | `(data map[string]any) ComposalEntityBase` | Create a NomadLog entity instance. |
+| `Now` | `(data map[string]any) ComposalEntityBase` | Create a Now entity instance. |
+| `ObservabilityClickhouseCluster` | `(data map[string]any) ComposalEntityBase` | Create an ObservabilityClickhouseCluster entity instance. |
+| `ObservabilityQuickwitCluster` | `(data map[string]any) ComposalEntityBase` | Create an ObservabilityQuickwitCluster entity instance. |
+| `ObservabilitySpace` | `(data map[string]any) ComposalEntityBase` | Create an ObservabilitySpace entity instance. |
+| `Openapi` | `(data map[string]any) ComposalEntityBase` | Create an Openapi entity instance. |
+| `OrgInvitation` | `(data map[string]any) ComposalEntityBase` | Create an OrgInvitation entity instance. |
 | `Organization` | `(data map[string]any) ComposalEntityBase` | Create an Organization entity instance. |
+| `OrganizationApp` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationApp entity instance. |
+| `OrganizationControl` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationControl entity instance. |
+| `OrganizationDevice` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationDevice entity instance. |
+| `OrganizationIdentityCertificate` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationIdentityCertificate entity instance. |
+| `OrganizationInteraction` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationInteraction entity instance. |
+| `OrganizationInvitation` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationInvitation entity instance. |
+| `OrganizationMessageFile` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationMessageFile entity instance. |
+| `OrganizationOidcTrust` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationOidcTrust entity instance. |
+| `OrganizationRunEvent` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationRunEvent entity instance. |
+| `OrganizationRunOutcome` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationRunOutcome entity instance. |
+| `OrganizationRunUsage` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationRunUsage entity instance. |
+| `OrganizationSandbox` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationSandbox entity instance. |
+| `OrganizationSecret` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationSecret entity instance. |
+| `OrganizationServiceAccount` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationServiceAccount entity instance. |
+| `OrganizationSetting` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationSetting entity instance. |
+| `OrganizationSite` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationSite entity instance. |
+| `OrganizationSubscription` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationSubscription entity instance. |
+| `OrganizationTool` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationTool entity instance. |
+| `OrganizationWorkloadIdentity` | `(data map[string]any) ComposalEntityBase` | Create an OrganizationWorkloadIdentity entity instance. |
+| `OtelIngest` | `(data map[string]any) ComposalEntityBase` | Create an OtelIngest entity instance. |
 | `Page` | `(data map[string]any) ComposalEntityBase` | Create a Page entity instance. |
 | `PageAgent` | `(data map[string]any) ComposalEntityBase` | Create a PageAgent entity instance. |
+| `PageArtefact` | `(data map[string]any) ComposalEntityBase` | Create a PageArtefact entity instance. |
+| `PageCiPipelineRun` | `(data map[string]any) ComposalEntityBase` | Create a PageCiPipelineRun entity instance. |
 | `PageProjectRun` | `(data map[string]any) ComposalEntityBase` | Create a PageProjectRun entity instance. |
+| `PageRepoVcCommit` | `(data map[string]any) ComposalEntityBase` | Create a PageRepoVcCommit entity instance. |
+| `PagesBilling` | `(data map[string]any) ComposalEntityBase` | Create a PagesBilling entity instance. |
+| `PagesGithubOnboarding` | `(data map[string]any) ComposalEntityBase` | Create a PagesGithubOnboarding entity instance. |
+| `PagesMember` | `(data map[string]any) ComposalEntityBase` | Create a PagesMember entity instance. |
 | `PagesProjectCredential` | `(data map[string]any) ComposalEntityBase` | Create a PagesProjectCredential entity instance. |
 | `PagesProjectPersona` | `(data map[string]any) ComposalEntityBase` | Create a PagesProjectPersona entity instance. |
 | `PagesProjectRun` | `(data map[string]any) ComposalEntityBase` | Create a PagesProjectRun entity instance. |
 | `PagesProjectScenario` | `(data map[string]any) ComposalEntityBase` | Create a PagesProjectScenario entity instance. |
+| `PagesRegistry` | `(data map[string]any) ComposalEntityBase` | Create a PagesRegistry entity instance. |
+| `PagesSession` | `(data map[string]any) ComposalEntityBase` | Create a PagesSession entity instance. |
+| `Pairing` | `(data map[string]any) ComposalEntityBase` | Create a Pairing entity instance. |
+| `PairingEvent` | `(data map[string]any) ComposalEntityBase` | Create a PairingEvent entity instance. |
+| `ParallelV1` | `(data map[string]any) ComposalEntityBase` | Create a ParallelV1 entity instance. |
+| `PatchsetDiff` | `(data map[string]any) ComposalEntityBase` | Create a PatchsetDiff entity instance. |
 | `PersonalAccessToken` | `(data map[string]any) ComposalEntityBase` | Create a PersonalAccessToken entity instance. |
 | `PreviewOperation` | `(data map[string]any) ComposalEntityBase` | Create a PreviewOperation entity instance. |
 | `PreviewProfileSecretBinding` | `(data map[string]any) ComposalEntityBase` | Create a PreviewProfileSecretBinding entity instance. |
 | `PreviewSecret` | `(data map[string]any) ComposalEntityBase` | Create a PreviewSecret entity instance. |
 | `PreviewSharingApproval` | `(data map[string]any) ComposalEntityBase` | Create a PreviewSharingApproval entity instance. |
+| `ProactiveAgentWaitlistEntry` | `(data map[string]any) ComposalEntityBase` | Create a ProactiveAgentWaitlistEntry entity instance. |
+| `Product` | `(data map[string]any) ComposalEntityBase` | Create a Product entity instance. |
 | `ProductMapIdentityDecision` | `(data map[string]any) ComposalEntityBase` | Create a ProductMapIdentityDecision entity instance. |
 | `ProductMapJourney` | `(data map[string]any) ComposalEntityBase` | Create a ProductMapJourney entity instance. |
 | `ProductMapJourneyReplay` | `(data map[string]any) ComposalEntityBase` | Create a ProductMapJourneyReplay entity instance. |
@@ -426,43 +623,152 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `ProjectScenarioRow` | `(data map[string]any) ComposalEntityBase` | Create a ProjectScenarioRow entity instance. |
 | `ProjectSetting` | `(data map[string]any) ComposalEntityBase` | Create a ProjectSetting entity instance. |
 | `PullRequest` | `(data map[string]any) ComposalEntityBase` | Create a PullRequest entity instance. |
+| `PullRequestAction` | `(data map[string]any) ComposalEntityBase` | Create a PullRequestAction entity instance. |
+| `PullRequestMagicMerge` | `(data map[string]any) ComposalEntityBase` | Create a PullRequestMagicMerge entity instance. |
 | `PullRequestSetting` | `(data map[string]any) ComposalEntityBase` | Create a PullRequestSetting entity instance. |
 | `PullRequestSettingAddRepository` | `(data map[string]any) ComposalEntityBase` | Create a PullRequestSettingAddRepository entity instance. |
 | `PullRequestSettingDetectComment` | `(data map[string]any) ComposalEntityBase` | Create a PullRequestSettingDetectComment entity instance. |
+| `PullRequestTranscript` | `(data map[string]any) ComposalEntityBase` | Create a PullRequestTranscript entity instance. |
+| `PullZone` | `(data map[string]any) ComposalEntityBase` | Create a PullZone entity instance. |
 | `Recorder` | `(data map[string]any) ComposalEntityBase` | Create a Recorder entity instance. |
 | `Registry` | `(data map[string]any) ComposalEntityBase` | Create a Registry entity instance. |
 | `RegistryV2` | `(data map[string]any) ComposalEntityBase` | Create a RegistryV2 entity instance. |
+| `RelayAgentConnection` | `(data map[string]any) ComposalEntityBase` | Create a RelayAgentConnection entity instance. |
 | `RelayAgentLocalThread` | `(data map[string]any) ComposalEntityBase` | Create a RelayAgentLocalThread entity instance. |
+| `RelaySignal` | `(data map[string]any) ComposalEntityBase` | Create a RelaySignal entity instance. |
+| `ReleaseRollout` | `(data map[string]any) ComposalEntityBase` | Create a ReleaseRollout entity instance. |
+| `Repo` | `(data map[string]any) ComposalEntityBase` | Create a Repo entity instance. |
+| `RepoAccessToken` | `(data map[string]any) ComposalEntityBase` | Create a RepoAccessToken entity instance. |
+| `RepoAction` | `(data map[string]any) ComposalEntityBase` | Create a RepoAction entity instance. |
+| `RepoAgentCheckpoint` | `(data map[string]any) ComposalEntityBase` | Create a RepoAgentCheckpoint entity instance. |
+| `RepoAgentSession` | `(data map[string]any) ComposalEntityBase` | Create a RepoAgentSession entity instance. |
+| `RepoBookmarkProtection` | `(data map[string]any) ComposalEntityBase` | Create a RepoBookmarkProtection entity instance. |
+| `RepoBookmarkProtectionEvent` | `(data map[string]any) ComposalEntityBase` | Create a RepoBookmarkProtectionEvent entity instance. |
+| `RepoCloudWorkspaceBackup` | `(data map[string]any) ComposalEntityBase` | Create a RepoCloudWorkspaceBackup entity instance. |
+| `RepoCodeRule` | `(data map[string]any) ComposalEntityBase` | Create a RepoCodeRule entity instance. |
+| `RepoSetting` | `(data map[string]any) ComposalEntityBase` | Create a RepoSetting entity instance. |
+| `RepoStat` | `(data map[string]any) ComposalEntityBase` | Create a RepoStat entity instance. |
+| `RepoVc` | `(data map[string]any) ComposalEntityBase` | Create a RepoVc entity instance. |
+| `RepoVcCommit` | `(data map[string]any) ComposalEntityBase` | Create a RepoVcCommit entity instance. |
 | `ReportReplay` | `(data map[string]any) ComposalEntityBase` | Create a ReportReplay entity instance. |
 | `ReportScenario` | `(data map[string]any) ComposalEntityBase` | Create a ReportScenario entity instance. |
+| `RepositoryAccess` | `(data map[string]any) ComposalEntityBase` | Create a RepositoryAccess entity instance. |
+| `RepositoryAccessResolve` | `(data map[string]any) ComposalEntityBase` | Create a RepositoryAccessResolve entity instance. |
+| `RepositoryEvent` | `(data map[string]any) ComposalEntityBase` | Create a RepositoryEvent entity instance. |
+| `RepositoryImport` | `(data map[string]any) ComposalEntityBase` | Create a RepositoryImport entity instance. |
+| `RepositoryImportSession` | `(data map[string]any) ComposalEntityBase` | Create a RepositoryImportSession entity instance. |
+| `RepositoryImportSessionRepository` | `(data map[string]any) ComposalEntityBase` | Create a RepositoryImportSessionRepository entity instance. |
+| `RepositoryImportSessionSelection` | `(data map[string]any) ComposalEntityBase` | Create a RepositoryImportSessionSelection entity instance. |
+| `RepositorySandboxEnvironment` | `(data map[string]any) ComposalEntityBase` | Create a RepositorySandboxEnvironment entity instance. |
+| `RoderCodeRepair` | `(data map[string]any) ComposalEntityBase` | Create a RoderCodeRepair entity instance. |
+| `RoderCodeRepairSetting` | `(data map[string]any) ComposalEntityBase` | Create a RoderCodeRepairSetting entity instance. |
+| `RoderMachine` | `(data map[string]any) ComposalEntityBase` | Create a RoderMachine entity instance. |
+| `RoderRun` | `(data map[string]any) ComposalEntityBase` | Create a RoderRun entity instance. |
+| `RoderWorkspaceCredential` | `(data map[string]any) ComposalEntityBase` | Create a RoderWorkspaceCredential entity instance. |
+| `RunArtifact` | `(data map[string]any) ComposalEntityBase` | Create a RunArtifact entity instance. |
+| `RunJob` | `(data map[string]any) ComposalEntityBase` | Create a RunJob entity instance. |
 | `RunScenarioRun` | `(data map[string]any) ComposalEntityBase` | Create a RunScenarioRun entity instance. |
 | `RunScheduleOption` | `(data map[string]any) ComposalEntityBase` | Create a RunScheduleOption entity instance. |
 | `RunSearch` | `(data map[string]any) ComposalEntityBase` | Create a RunSearch entity instance. |
 | `RunUpdate` | `(data map[string]any) ComposalEntityBase` | Create a RunUpdate entity instance. |
+| `RunWorkspaceCredential` | `(data map[string]any) ComposalEntityBase` | Create a RunWorkspaceCredential entity instance. |
+| `RunnerLease` | `(data map[string]any) ComposalEntityBase` | Create a RunnerLease entity instance. |
+| `RunnerPoolNodeEnrollmentToken` | `(data map[string]any) ComposalEntityBase` | Create a RunnerPoolNodeEnrollmentToken entity instance. |
+| `RunnerPoolRunner` | `(data map[string]any) ComposalEntityBase` | Create a RunnerPoolRunner entity instance. |
+| `RuntimeInstanceHealthSnapshot` | `(data map[string]any) ComposalEntityBase` | Create a RuntimeInstanceHealthSnapshot entity instance. |
+| `SandboxIntegration` | `(data map[string]any) ComposalEntityBase` | Create a SandboxIntegration entity instance. |
 | `ScenarioRevision` | `(data map[string]any) ComposalEntityBase` | Create a ScenarioRevision entity instance. |
 | `ScenarioRunLesson` | `(data map[string]any) ComposalEntityBase` | Create a ScenarioRunLesson entity instance. |
 | `ScenarioRunScenarioEdit` | `(data map[string]any) ComposalEntityBase` | Create a ScenarioRunScenarioEdit entity instance. |
+| `SecretGrant` | `(data map[string]any) ComposalEntityBase` | Create a SecretGrant entity instance. |
+| `SecretVersion` | `(data map[string]any) ComposalEntityBase` | Create a SecretVersion entity instance. |
 | `ServiceEndpoint` | `(data map[string]any) ComposalEntityBase` | Create a ServiceEndpoint entity instance. |
+| `Setting` | `(data map[string]any) ComposalEntityBase` | Create a Setting entity instance. |
+| `SettingMutationLease` | `(data map[string]any) ComposalEntityBase` | Create a SettingMutationLease entity instance. |
+| `Signal` | `(data map[string]any) ComposalEntityBase` | Create a Signal entity instance. |
+| `SignalInbound` | `(data map[string]any) ComposalEntityBase` | Create a SignalInbound entity instance. |
+| `SignalIntegration` | `(data map[string]any) ComposalEntityBase` | Create a SignalIntegration entity instance. |
+| `SignalIntegrationDelivery` | `(data map[string]any) ComposalEntityBase` | Create a SignalIntegrationDelivery entity instance. |
+| `SignalIntegrationTarget` | `(data map[string]any) ComposalEntityBase` | Create a SignalIntegrationTarget entity instance. |
+| `SignalSubscription` | `(data map[string]any) ComposalEntityBase` | Create a SignalSubscription entity instance. |
+| `Site` | `(data map[string]any) ComposalEntityBase` | Create a Site entity instance. |
+| `SiteAccessKey` | `(data map[string]any) ComposalEntityBase` | Create a SiteAccessKey entity instance. |
 | `SitePreview` | `(data map[string]any) ComposalEntityBase` | Create a SitePreview entity instance. |
+| `SiteSecret` | `(data map[string]any) ComposalEntityBase` | Create a SiteSecret entity instance. |
 | `SlackChannel` | `(data map[string]any) ComposalEntityBase` | Create a SlackChannel entity instance. |
+| `SourceConnection` | `(data map[string]any) ComposalEntityBase` | Create a SourceConnection entity instance. |
+| `SpaceAlertRule` | `(data map[string]any) ComposalEntityBase` | Create a SpaceAlertRule entity instance. |
+| `SpaceAuditEvent` | `(data map[string]any) ComposalEntityBase` | Create a SpaceAuditEvent entity instance. |
+| `SpaceDnsRecord` | `(data map[string]any) ComposalEntityBase` | Create a SpaceDnsRecord entity instance. |
+| `SpaceEnrollmentToken` | `(data map[string]any) ComposalEntityBase` | Create a SpaceEnrollmentToken entity instance. |
+| `SpaceGateway` | `(data map[string]any) ComposalEntityBase` | Create a SpaceGateway entity instance. |
+| `SpaceGroup` | `(data map[string]any) ComposalEntityBase` | Create a SpaceGroup entity instance. |
+| `SpaceGroupMembership` | `(data map[string]any) ComposalEntityBase` | Create a SpaceGroupMembership entity instance. |
+| `SpaceLogStream` | `(data map[string]any) ComposalEntityBase` | Create a SpaceLogStream entity instance. |
+| `SpaceMetricSery` | `(data map[string]any) ComposalEntityBase` | Create a SpaceMetricSery entity instance. |
+| `SpaceOtelCollector` | `(data map[string]any) ComposalEntityBase` | Create a SpaceOtelCollector entity instance. |
+| `SpacePeer` | `(data map[string]any) ComposalEntityBase` | Create a SpacePeer entity instance. |
+| `SpacePeerAttachment` | `(data map[string]any) ComposalEntityBase` | Create a SpacePeerAttachment entity instance. |
+| `SpacePolicy` | `(data map[string]any) ComposalEntityBase` | Create a SpacePolicy entity instance. |
+| `SpaceSegment` | `(data map[string]any) ComposalEntityBase` | Create a SpaceSegment entity instance. |
+| `SpaceTraceSpan` | `(data map[string]any) ComposalEntityBase` | Create a SpaceTraceSpan entity instance. |
+| `Spark` | `(data map[string]any) ComposalEntityBase` | Create a Spark entity instance. |
+| `SparkAgentIntegration` | `(data map[string]any) ComposalEntityBase` | Create a SparkAgentIntegration entity instance. |
 | `SparkAgentLocalThread` | `(data map[string]any) ComposalEntityBase` | Create a SparkAgentLocalThread entity instance. |
+| `SparkAgentSite` | `(data map[string]any) ComposalEntityBase` | Create a SparkAgentSite entity instance. |
+| `SparkAgentSkill` | `(data map[string]any) ComposalEntityBase` | Create a SparkAgentSkill entity instance. |
+| `SparkAgentThread` | `(data map[string]any) ComposalEntityBase` | Create a SparkAgentThread entity instance. |
+| `SparkCredit` | `(data map[string]any) ComposalEntityBase` | Create a SparkCredit entity instance. |
+| `SparkCreditAgentUsage` | `(data map[string]any) ComposalEntityBase` | Create a SparkCreditAgentUsage entity instance. |
+| `SparkCreditUsageTotal` | `(data map[string]any) ComposalEntityBase` | Create a SparkCreditUsageTotal entity instance. |
 | `StaticSite` | `(data map[string]any) ComposalEntityBase` | Create a StaticSite entity instance. |
 | `StaticSiteDeployment` | `(data map[string]any) ComposalEntityBase` | Create a StaticSiteDeployment entity instance. |
 | `StaticSiteDomain` | `(data map[string]any) ComposalEntityBase` | Create a StaticSiteDomain entity instance. |
+| `StatusChange` | `(data map[string]any) ComposalEntityBase` | Create a StatusChange entity instance. |
+| `StatusCommit` | `(data map[string]any) ComposalEntityBase` | Create a StatusCommit entity instance. |
+| `StatusPatchset` | `(data map[string]any) ComposalEntityBase` | Create a StatusPatchset entity instance. |
+| `StripeWebhook` | `(data map[string]any) ComposalEntityBase` | Create a StripeWebhook entity instance. |
+| `SubmitTelemetry` | `(data map[string]any) ComposalEntityBase` | Create a SubmitTelemetry entity instance. |
 | `SubscriptionModel` | `(data map[string]any) ComposalEntityBase` | Create a SubscriptionModel entity instance. |
+| `SwarmEvent` | `(data map[string]any) ComposalEntityBase` | Create a SwarmEvent entity instance. |
+| `SwarmLive` | `(data map[string]any) ComposalEntityBase` | Create a SwarmLive entity instance. |
+| `SwarmNote` | `(data map[string]any) ComposalEntityBase` | Create a SwarmNote entity instance. |
+| `SwarmTask` | `(data map[string]any) ComposalEntityBase` | Create a SwarmTask entity instance. |
+| `TaskLease` | `(data map[string]any) ComposalEntityBase` | Create a TaskLease entity instance. |
 | `ThreadPreview` | `(data map[string]any) ComposalEntityBase` | Create a ThreadPreview entity instance. |
+| `ThreadPreviewAccess` | `(data map[string]any) ComposalEntityBase` | Create a ThreadPreviewAccess entity instance. |
+| `ToolFeedback` | `(data map[string]any) ComposalEntityBase` | Create a ToolFeedback entity instance. |
+| `Transcript` | `(data map[string]any) ComposalEntityBase` | Create a Transcript entity instance. |
+| `V1Message` | `(data map[string]any) ComposalEntityBase` | Create a V1Message entity instance. |
+| `VcBranch` | `(data map[string]any) ComposalEntityBase` | Create a VcBranch entity instance. |
+| `VcBrowser` | `(data map[string]any) ComposalEntityBase` | Create a VcBrowser entity instance. |
+| `VcChange` | `(data map[string]any) ComposalEntityBase` | Create a VcChange entity instance. |
+| `VcChangeGroup` | `(data map[string]any) ComposalEntityBase` | Create a VcChangeGroup entity instance. |
+| `VcFile` | `(data map[string]any) ComposalEntityBase` | Create a VcFile entity instance. |
+| `VcMergeQueue` | `(data map[string]any) ComposalEntityBase` | Create a VcMergeQueue entity instance. |
+| `VcStack` | `(data map[string]any) ComposalEntityBase` | Create a VcStack entity instance. |
+| `VcsNode` | `(data map[string]any) ComposalEntityBase` | Create a VcsNode entity instance. |
+| `VcsSetting` | `(data map[string]any) ComposalEntityBase` | Create a VcsSetting entity instance. |
 | `VerificationProjectCredential` | `(data map[string]any) ComposalEntityBase` | Create a VerificationProjectCredential entity instance. |
 | `VerificationProjectPersona` | `(data map[string]any) ComposalEntityBase` | Create a VerificationProjectPersona entity instance. |
 | `VerificationProjectRun` | `(data map[string]any) ComposalEntityBase` | Create a VerificationProjectRun entity instance. |
 | `VerificationProjectScenario` | `(data map[string]any) ComposalEntityBase` | Create a VerificationProjectScenario entity instance. |
 | `VerifyAppDomain` | `(data map[string]any) ComposalEntityBase` | Create a VerifyAppDomain entity instance. |
 | `VerifyBrowserSession` | `(data map[string]any) ComposalEntityBase` | Create a VerifyBrowserSession entity instance. |
+| `VerifyEmailVerification` | `(data map[string]any) ComposalEntityBase` | Create a VerifyEmailVerification entity instance. |
+| `VerifySignalIntegration` | `(data map[string]any) ComposalEntityBase` | Create a VerifySignalIntegration entity instance. |
 | `VerifyStaticSiteDomain` | `(data map[string]any) ComposalEntityBase` | Create a VerifyStaticSiteDomain entity instance. |
 | `VersionLog` | `(data map[string]any) ComposalEntityBase` | Create a VersionLog entity instance. |
+| `WaitlistApplication` | `(data map[string]any) ComposalEntityBase` | Create a WaitlistApplication entity instance. |
 | `WebBotAuth` | `(data map[string]any) ComposalEntityBase` | Create a WebBotAuth entity instance. |
+| `WebhookGitlab` | `(data map[string]any) ComposalEntityBase` | Create a WebhookGitlab entity instance. |
 | `WorkflowRunStep` | `(data map[string]any) ComposalEntityBase` | Create a WorkflowRunStep entity instance. |
 | `WorkflowRunStopNotice` | `(data map[string]any) ComposalEntityBase` | Create a WorkflowRunStopNotice entity instance. |
 | `WorkflowTriggerSkipped` | `(data map[string]any) ComposalEntityBase` | Create a WorkflowTriggerSkipped entity instance. |
+| `WorkspaceActivity` | `(data map[string]any) ComposalEntityBase` | Create a WorkspaceActivity entity instance. |
+| `WorkspaceActivityNotification` | `(data map[string]any) ComposalEntityBase` | Create a WorkspaceActivityNotification entity instance. |
+| `WorkspaceSpace` | `(data map[string]any) ComposalEntityBase` | Create a WorkspaceSpace entity instance. |
+| `WorkspaceSpacePreference` | `(data map[string]any) ComposalEntityBase` | Create a WorkspaceSpacePreference entity instance. |
 
 ### Entity interface (ComposalEntityBase)
 
@@ -495,14 +801,47 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    agent, err := client.Agent(nil).List(map[string]any{"organization_id": "example"}, nil)
+    adminOrg, err := client.AdminOrg(nil).List(nil, nil)
     if err != nil { /* handle */ }
-    // agent is a []any of entities, one per record
+    // adminOrg is a []any of entities, one per record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
+
+#### A2aWellKnown
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/control/a2a/{connection_id}/.well-known/agent-card.json`
+
+#### AdminOrg
+
+| Field | Description |
+| --- | --- |
+| `"billing_email"` |  |
+| `"billing_reason"` | Required when setting an agreed price |
+| `"customize_onboarding_packages"` |  |
+| `"deployment_usage_visibility"` |  |
+| `"deployment_usage_visible"` |  |
+| `"id"` |  |
+| `"monthly_price_dollars"` | Ongoing USD workspace price, for example '50.00' |
+| `"monthly_price_override_cents"` |  |
+| `"name"` |  |
+| `"onboarding_custom_pricing"` |  |
+| `"onboarding_package_keys"` | Package keys offered when customizing onboarding. |
+| `"owner_email"` |  |
+| `"package_id"` | Active customer package public ID. |
+| `"skip_payment"` | Grant the selected package as an ongoing complimentary subscription with monthly included usage and package limits. |
+| `"slug"` |  |
+
+Operations: Create, List, Load, Update.
+
+API path: `/api/v1/admin/organizations/{org_slug}/checkout_session`
 
 #### Agent
 
@@ -554,6 +893,44 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 Operations: Create, List, Load, Remove, Update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/browser_opened`
+
+#### AgentApp
+
+| Field | Description |
+| --- | --- |
+| `"author"` |  |
+| `"can_message"` | The viewer may send input to the author agent |
+| `"deployments_count"` | Increases with every deploy of the site |
+| `"description"` |  |
+| `"hidden_install_count"` | Installs by agents the viewer cannot open |
+| `"id"` |  |
+| `"install_count"` |  |
+| `"install_targets"` | Active agents the viewer owns or manages, which they can install apps on |
+| `"installed_by"` |  |
+| `"installed_target_ids"` | Install targets of the viewer that have this app installed |
+| `"items"` |  |
+| `"mcp_url"` |  |
+| `"next_cursor"` | Pass as cursor to load older apps |
+| `"owner"` | The person who controls the author agent |
+| `"thread"` | The thread that published the app, when the viewer can open the author agent |
+| `"title"` |  |
+| `"url"` |  |
+| `"visibility"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/agent_apps/{id}/opened`
+
+#### AgentAppInstall
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+| `"installed"` |  |
+
+Operations: Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/agent_apps/{id}/installs/{agent_id}`
 
 #### AgentAttachment
 
@@ -628,29 +1005,177 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/computer/co
 
 | Field | Description |
 | --- | --- |
-| `"agent_card_url"` |  |
-| `"auth_scheme"` |  |
-| `"can_configure"` |  |
-| `"can_disconnect"` |  |
-| `"can_setup"` |  |
+| `"actions"` |  |
+| `"activity"` |  |
+| `"admin_disabled_at"` |  |
+| `"agent_tools"` |  |
+| `"authentication"` |  |
+| `"authorized_at"` |  |
+| `"can_create_account"` | Whether another account can be created directly from this provider. |
+| `"capabilities"` |  |
+| `"catalog_section"` | Server-owned grouping in the agent integration catalog. |
+| `"category"` | Short product label, such as CRM or Email. |
+| `"certification"` |  |
+| `"checked_at"` |  |
 | `"connection"` |  |
-| `"credential"` | Write-only outbound key. |
-| `"error_code"` |  |
-| `"expected_generation"` |  |
+| `"consent"` |  |
+| `"created_at"` |  |
+| `"creation_key"` | Reuse the same key to recover the account after an interrupted response. |
+| `"custodian_id"` |  |
+| `"description"` | One-line catalog description of the app. |
+| `"disabled_reason"` |  |
+| `"failure_code"` |  |
+| `"generation"` |  |
+| `"grants"` |  |
+| `"grants_pagination"` |  |
+| `"id"` |  |
+| `"limits"` |  |
+| `"name"` |  |
+| `"organization_id"` |  |
+| `"owner_name"` |  |
+| `"ownership_kind"` |  |
+| `"pagination"` |  |
+| `"policy_digest"` |  |
+| `"provider"` |  |
+| `"provider_disabled_reason"` |  |
+| `"provider_identity"` |  |
+| `"revoked_at"` |  |
+| `"schema_version"` |  |
+| `"status"` |  |
+| `"toolkit"` |  |
+| `"triggers"` |  |
+| `"updated_at"` |  |
+| `"user_id"` |  |
+| `"version"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/adopt_custody`
+
+#### AgentConnectionDelegation
+
+| Field | Description |
+| --- | --- |
+| `"authorized_by_id"` |  |
+| `"automation_connection_grant_id"` |  |
+| `"created_at"` |  |
+| `"id"` |  |
+| `"member_name"` |  |
+| `"revoked_at"` |  |
+| `"roles"` |  |
+| `"usable"` |  |
+| `"user_id"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/delegations`
+
+#### AgentConnectionGrant
+
+| Field | Description |
+| --- | --- |
+| `"actions"` |  |
+| `"agent_connection_id"` |  |
+| `"automation_id"` |  |
+| `"connection_generation"` |  |
+| `"created_at"` |  |
+| `"id"` |  |
+| `"organization_id"` |  |
+| `"revision"` |  |
+| `"revoked_at"` |  |
+| `"status"` |  |
+| `"usable"` |  |
+| `"user_id"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/grants`
+
+#### AgentConnectionResource
+
+| Field | Description |
+| --- | --- |
+| `"cursor"` |  |
+| `"next_cursor"` |  |
+| `"query"` |  |
+| `"resources"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/resources`
+
+#### AgentConnectionSafetyControl
+
+| Field | Description |
+| --- | --- |
+| `"admin_disabled_at"` |  |
+| `"authorized_at"` |  |
+| `"checked_at"` |  |
+| `"created_at"` |  |
+| `"custodian_id"` |  |
+| `"failure_code"` |  |
 | `"generation"` |  |
 | `"id"` |  |
 | `"name"` |  |
-| `"remote_agent"` |  |
-| `"requester_id"` |  |
-| `"retired_at"` |  |
+| `"organization_id"` |  |
+| `"owner_name"` |  |
+| `"ownership_kind"` |  |
+| `"provider_disabled_reason"` |  |
+| `"provider_identity"` |  |
 | `"revoked_at"` |  |
-| `"scope_key"` |  |
-| `"source_operation_id"` |  |
-| `"state"` |  |
+| `"status"` |  |
+| `"toolkit"` |  |
+| `"updated_at"` |  |
+| `"user_id"` |  |
 
-Operations: Create, List, Load, Remove, Update.
+Operations: List.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup`
+API path: `/api/v1/organizations/{organization_id}/agent_connections/safety_controls`
+
+#### AgentConnectionTriggerSubscription
+
+| Field | Description |
+| --- | --- |
+| `"agent_connection_id"` |  |
+| `"configuration"` |  |
+| `"created_at"` |  |
+| `"defaults"` |  |
+| `"delivery"` |  |
+| `"enabled"` |  |
+| `"failure_code"` |  |
+| `"failure_request_id"` |  |
+| `"id"` |  |
+| `"latency"` |  |
+| `"name"` |  |
+| `"reconcile_at"` |  |
+| `"reconciliation_uncertain"` |  |
+| `"remote_enabled"` |  |
+| `"replacement_id"` |  |
+| `"retired_at"` |  |
+| `"retirement_completed_at"` |  |
+| `"schema"` |  |
+| `"slug"` |  |
+| `"status"` |  |
+| `"toolkit"` |  |
+| `"toolkit_version"` |  |
+| `"trigger_slug"` |  |
+| `"updated_at"` |  |
+| `"version"` |  |
+| `"waiting_for_retirement"` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}/discover`
+
+#### AgentContextCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/agent_context/checkpoints/{checkpoint_id}/transcript`
 
 #### AgentControlFlow
 
@@ -701,6 +1226,15 @@ Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/email/{message_id}`
 
+#### AgentEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/events`
+
 #### AgentFile
 
 | Field | Description |
@@ -738,32 +1272,78 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/inputs`
 | Field | Description |
 | --- | --- |
 | `"account_counts"` | Accounts the viewer can see per toolkit, across all account pages. |
-| `"accounts_path"` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
-| `"added_toolkits"` | Apps with a connected or connecting account the viewer can see. |
+| `"can_cancel_sign_in"` | The viewer can cancel the unfinished authorization attempt. |
+| `"can_delete"` |  |
+| `"can_disconnect"` |  |
+| `"can_enable"` |  |
 | `"can_manage"` |  |
-| `"can_manage_organization"` |  |
+| `"can_manage_sharing"` |  |
+| `"can_reconnect"` |  |
+| `"can_sync"` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
 | `"catalog"` |  |
-| `"connect_as"` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
-| `"connect_as_by_toolkit"` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `"connected_by"` | Name of the person whose sign-in this account is. |
+| `"connected_by_you"` | True when the viewer is the person whose sign-in this account is. |
 | `"connected_counts"` | Signed-in accounts per toolkit, across all account pages. |
-| `"connection_id"` |  |
 | `"connections"` |  |
-| `"email"` | A native agent's own email address. |
-| `"enabled"` |  |
-| `"enabled_toolkits"` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `"creation_key"` | Stable identity for retrying this creation; retain it after an uncertain response. |
+| `"creation_key_digest"` | SHA-256 of the unfinished setup key for its original creator. |
 | `"generation"` |  |
+| `"id"` |  |
+| `"name"` |  |
 | `"pagination"` |  |
 | `"pending_counts"` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
-| `"personal_creation_key_supported"` | The personal account creation endpoint honors a creation key. |
-| `"private_agent"` | Only the agent's owner can chat with it. |
-| `"shared_agent_personal_accounts_enabled"` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
-| `"slack"` |  |
-| `"webhook_connections"` |  |
-| `"webhooks_available"` |  |
+| `"provider_disabled_reason"` |  |
+| `"provider_identity"` |  |
+| `"provider_name"` | The app's display name; null for a custom MCP server, which uses the account name. |
+| `"reference"` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `"sharing_status"` | Agent account audience, including legacy personal and paused access. |
+| `"status"` |  |
+| `"team_sharing_enabled"` |  |
+| `"team_sharing_version"` |  |
+| `"toolkit"` |  |
 
-Operations: Create, List.
+Operations: Create, List, Load, Remove.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations`
+API path: `/api/v1/organizations/{organization_id}/agent_integrations/{id}/authorize`
+
+#### AgentIntegrationAccount
+
+| Field | Description |
+| --- | --- |
+| `"can_cancel_sign_in"` | The viewer can cancel the unfinished authorization attempt. |
+| `"can_delete"` |  |
+| `"can_disconnect"` |  |
+| `"can_enable"` |  |
+| `"can_manage_sharing"` |  |
+| `"can_reconnect"` |  |
+| `"can_sync"` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
+| `"connected_by"` | Name of the person whose sign-in this account is. |
+| `"connected_by_you"` | True when the viewer is the person whose sign-in this account is. |
+| `"creation_key_digest"` | SHA-256 of the unfinished setup key for its original creator. |
+| `"generation"` |  |
+| `"id"` |  |
+| `"name"` |  |
+| `"provider_disabled_reason"` |  |
+| `"provider_identity"` |  |
+| `"reference"` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `"sharing_status"` | Agent account audience, including legacy personal and paused access. |
+| `"status"` |  |
+| `"team_sharing_enabled"` |  |
+| `"team_sharing_version"` |  |
+| `"toolkit"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agent_integrations/accounts`
+
+#### AgentIntegrationCallback
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/agent_integration_callback`
 
 #### AgentInteraction
 
@@ -991,6 +1571,45 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/questions/{question_id}/answer`
 
+#### AgentRelayFileGrant
+
+| Field | Description |
+| --- | --- |
+| `"access_mode"` |  |
+| `"connection_generation"` |  |
+| `"connection_id"` |  |
+| `"connection_name"` | Current display name of the selected account. |
+| `"created_at"` |  |
+| `"expected_generation"` |  |
+| `"id"` |  |
+| `"key"` |  |
+| `"provider"` |  |
+| `"resource_id"` |  |
+| `"resource_kind"` |  |
+| `"revoked"` |  |
+| `"revoked_at"` |  |
+| `"snapshot_supported"` | Whether this selected permission supports snapshot controls. |
+| `"source_operation_id"` |  |
+
+Operations: Create, List, Load, Remove.
+
+API path: `/api/v1/organizations/{organization_id}/agent_relay_file_grants`
+
+#### AgentRelayFileGrantAccount
+
+| Field | Description |
+| --- | --- |
+| `"access_modes"` | Supported file access modes. |
+| `"generation"` |  |
+| `"id"` |  |
+| `"name"` |  |
+| `"provider"` |  |
+| `"resource_kind"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agent_relay_file_grants/accounts`
+
 #### AgentRepository
 
 | Field | Description |
@@ -1019,6 +1638,15 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/repositorie
 Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resources`
+
+#### AgentRoder
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/agent/roder/browser_executor_authorization`
 
 #### AgentRoutine
 
@@ -1079,6 +1707,37 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/runtime/reset`
 
+#### AgentSession
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/agent_sessions/{session_id}/transcript`
+
+#### AgentSessionCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize`
+
+#### AgentSessionRoderHandoff
+
+| Field | Description |
+| --- | --- |
+| `"checkpoint_id"` | Public id of the checkpoint to hand off. |
+| `"purpose"` | Handoff intent; defaults to `continue`. |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/roder_handoffs`
+
 #### AgentSetting
 
 | Field | Description |
@@ -1105,36 +1764,44 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/sharing/review`
 
 | Field | Description |
 | --- | --- |
-| `"deployed_at"` |  |
-| `"deployments_count"` |  |
-| `"hostname"` |  |
-| `"https"` | Whether the organization's certificate serves this site over HTTPS |
+| `"author"` |  |
+| `"can_message"` | The viewer may send input to the author agent |
+| `"deployments_count"` | Increases with every deploy of the site |
+| `"description"` | The team app description, when the site is a team app |
+| `"icon_url"` | Path of the site's generated icon, versioned by the picture; null until one is generated |
 | `"id"` |  |
-| `"name"` |  |
+| `"name"` | The site's DNS label |
+| `"owner"` | The person who controls the author agent |
+| `"thread"` | The thread that published the site as a team app, when the viewer can open the author agent |
+| `"title"` | The team app title, or the site name read as words |
 | `"url"` |  |
 | `"visibility"` |  |
 
-Operations: List.
+Operations: Create, List, Load.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/sites`
+API path: `/api/v1/organizations/{organization_id}/agent_sites/{id}/opened`
 
 #### AgentSkill
 
 | Field | Description |
 | --- | --- |
-| `"available"` |  |
-| `"can_configure"` |  |
-| `"can_manage"` |  |
-| `"configuration_state"` | The requested managed skill selection is awaiting runtime qualification. |
-| `"description"` |  |
-| `"enabled"` |  |
-| `"name"` |  |
+| `"agents"` | Active V2 agents the viewer can see whose owner is still a member |
+| `"audience"` |  |
+| `"can_manage_library"` |  |
+| `"content"` | The skill's SKILL.md |
+| `"files"` |  |
+| `"id"` |  |
+| `"marketplace"` |  |
+| `"pending"` | Some agent is still applying a change; check again shortly |
+| `"plugin"` | The marketplace entry id |
+| `"revision"` | The commit SHA returned by preview |
+| `"skill"` |  |
 | `"skills"` |  |
-| `"version"` |  |
+| `"source"` | owner/repo, a GitHub or skills.sh link, or npx skills add owner/repo [--skill NAME ...] |
 
-Operations: Create, List.
+Operations: Create, List, Load, Remove, Update.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/skills`
+API path: `/api/v1/organizations/{organization_id}/agent_skills`
 
 #### AgentSlack
 
@@ -1175,6 +1842,63 @@ Operations: Create, List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions`
 
+#### AgentSwarm
+
+| Field | Description |
+| --- | --- |
+| `"base_bookmark"` | An existing bookmark to start from and land on; the plain form of `target.kind = bookmark`. |
+| `"base_ref"` |  |
+| `"base_revision"` | 64-hex commit id; skips the head lookup |
+| `"budget"` |  |
+| `"canceled_at"` |  |
+| `"canceled_count"` |  |
+| `"concurrency_key"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"creator_user_id"` |  |
+| `"deadline_at"` |  |
+| `"display_id"` |  |
+| `"done_count"` |  |
+| `"environment"` |  |
+| `"failed_count"` |  |
+| `"finished_at"` |  |
+| `"finished_at_label"` |  |
+| `"github"` |  |
+| `"goal"` |  |
+| `"id"` |  |
+| `"model"` |  |
+| `"model_provider"` |  |
+| `"number"` |  |
+| `"organization_id"` |  |
+| `"organization_slug"` |  |
+| `"outcome"` |  |
+| `"phase"` |  |
+| `"policy"` | Every key is optional and defaults to AgentSwarm::POLICY_DEFAULTS. |
+| `"queued_at"` |  |
+| `"queued_at_label"` |  |
+| `"repository"` | Repository slug inside the organization |
+| `"repository_id"` |  |
+| `"repository_slug"` |  |
+| `"reserved"` |  |
+| `"scheduler_generation"` |  |
+| `"skipped_count"` |  |
+| `"slug"` |  |
+| `"started_at"` |  |
+| `"started_at_label"` |  |
+| `"status"` |  |
+| `"summary"` |  |
+| `"target"` | Where the swarm lands. |
+| `"task_count"` |  |
+| `"task_template_json"` |  |
+| `"tasks"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+| `"usage"` |  |
+
+Operations: Create, List, Load, Update.
+
+API path: `/api/v1/agent/swarms/{id}/cancel`
+
 #### AgentTeammate
 
 | Field | Description |
@@ -1202,34 +1926,11 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/terminal/co
 
 | Field | Description |
 | --- | --- |
-| `"archived_count"` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `"can_create"` |  |
-| `"execution"` |  |
-| `"first_input"` |  |
-| `"first_input_key"` | Idempotency-Key that finds the first message through input_delivery. |
-| `"first_input_requester_membership_id"` | Membership the first message was sent as, for input_delivery. |
 | `"id"` |  |
-| `"inherit_context"` | Include the source conversation through its last completed reply. |
-| `"local_activities"` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `"local_archived_count"` | Local Claude Code and Codex threads archived on their computers. |
-| `"local_next_cursor"` |  |
-| `"local_scope_key"` |  |
-| `"local_status_pending"` | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `"local_threads"` |  |
-| `"main_thread_id"` |  |
-| `"message"` | The thread's first message. |
-| `"next_cursor"` |  |
-| `"parent_conversation_id"` | Optional source conversation belonging to this agent. |
-| `"requester_membership_id"` |  |
-| `"selected_thread"` |  |
-| `"thread"` |  |
-| `"threads"` |  |
-| `"title"` |  |
-| `"total_archived_count"` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
 
-Operations: Create, List.
+Operations: Create, List, Load.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive`
+API path: `/api/v1/agent/threads/{id}/archive`
 
 #### AgentTool
 
@@ -1242,6 +1943,23 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{th
 Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/tools`
+
+#### AgentUsage
+
+| Field | Description |
+| --- | --- |
+| `"days"` | One cell per (day, model), ascending by day then model. |
+| `"ended_at"` |  |
+| `"pricing_version"` | The price table in effect now; rows carry the version they were priced at. |
+| `"source"` | Which store served the rows. |
+| `"started_at"` |  |
+| `"user_days"` | One cell per (day, person), ascending by day. |
+| `"users"` | One row per (person, model), descending by tokens. |
+| `"window"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/agent_usage`
 
 #### AgentVerifyProject
 
@@ -1268,6 +1986,19 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/verify_proj
 Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/waits/{wait_id}/stop`
+
+#### AgentWebPreview
+
+| Field | Description |
+| --- | --- |
+| `"description"` |  |
+| `"icon_url"` |  |
+| `"image_url"` |  |
+| `"title"` |  |
+
+Operations: List.
+
+API path: `/api/v1/agent_web_previews`
 
 #### AgentWebhook
 
@@ -1457,6 +2188,40 @@ Operations: List, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/write_permissions`
 
+#### Agreement
+
+| Field | Description |
+| --- | --- |
+| `"body"` | Markdown text, or null until staff grant the organization access. |
+| `"effective_on_label"` |  |
+| `"key"` |  |
+| `"summary"` |  |
+| `"title"` |  |
+| `"version"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/agreements`
+
+#### AgreementAccessRequest
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/agreement_access_request`
+
+#### AlertRuleEvent
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Remove.
+
+API path: `/api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/acknowledge`
+
 #### AllocationLog
 
 | Field | Description |
@@ -1500,6 +2265,24 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/
 Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{id}/activate`
+
+#### AppAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/app_access/callback`
+
+#### AppAccessJwk
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/app_access/jwks`
 
 #### AppCdn
 
@@ -1980,6 +2763,134 @@ Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/storage_resources/{id}/archive`
 
+#### Artefact
+
+| Field | Description |
+| --- | --- |
+| `"automation_invocation_id"` |  |
+| `"byte_size"` |  |
+| `"checksum_sha256"` |  |
+| `"content_type"` |  |
+| `"created_at"` |  |
+| `"created_by_user_id"` |  |
+| `"description"` |  |
+| `"document_key"` | Stable document identity shared by all revisions. |
+| `"entrypoint"` |  |
+| `"expires_at"` |  |
+| `"filename"` |  |
+| `"files"` |  |
+| `"harness"` |  |
+| `"harness_version"` |  |
+| `"id"` |  |
+| `"kind"` |  |
+| `"model"` |  |
+| `"organization_id"` |  |
+| `"published_at"` |  |
+| `"repository_id"` |  |
+| `"slug"` |  |
+| `"source"` |  |
+| `"status"` |  |
+| `"title"` |  |
+| `"vcs_agent_checkpoint_id"` |  |
+| `"vcs_agent_session_id"` |  |
+| `"version"` |  |
+| `"view_url"` |  |
+| `"web_url"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts`
+
+#### ArtefactCommentThread
+
+| Field | Description |
+| --- | --- |
+| `"anchor"` | The `#anchor` written into the Markdown. |
+| `"body"` |  |
+| `"comments"` |  |
+| `"id"` | The anchor key. |
+| `"quote"` |  |
+| `"resolved"` |  |
+
+Operations: Create, List, Update.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads`
+
+#### ArtefactRevision
+
+| Field | Description |
+| --- | --- |
+| `"base_version"` | The newest version the editor started from. |
+| `"content"` | Markdown, including CriticMarkup suggestions and comment anchors. |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/revisions`
+
+#### ArtefactViewToken
+
+| Field | Description |
+| --- | --- |
+| `"expires_in"` |  |
+| `"file"` | Exact manifest path. |
+| `"organization_slug"` | If provided, must match the organization addressed by the route. |
+| `"version"` |  |
+| `"viewer_url"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/view_tokens`
+
+#### Artifact
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/artifacts/{id}/expire`
+
+#### ArtifactCacheNamespace
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/cache_namespaces/{id}/archive`
+
+#### ArtifactImageRepository
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/image_repositories/{id}/archive`
+
+#### ArtifactPackageMirror
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/package_mirrors/{id}/pause`
+
+#### ArtifactRetentionPolicy
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/retention_policies`
+
 #### AttachmentPart
 
 | Field | Description |
@@ -1989,6 +2900,102 @@ API path: `/api/v1/hosting/apps/{app_id}/storage_resources/{id}/archive`
 Operations: Update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/attachments/{attachment_id}/parts/{index}`
+
+#### AuditEvent
+
+| Field | Description |
+| --- | --- |
+| `"action"` |  |
+| `"actor_kind"` |  |
+| `"actor_user_id"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"id"` |  |
+| `"observability_space_id"` |  |
+| `"organization_id"` |  |
+| `"payload"` |  |
+| `"request_id"` |  |
+| `"severity"` |  |
+| `"subject_id"` |  |
+| `"subject_kind"` |  |
+| `"subject_name"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/audit_events`
+
+#### Auth
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load, Remove.
+
+API path: `/api/v1/auth/apple`
+
+#### AuthCli
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/auth/cli/complete`
+
+#### AuthGithub
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/auth/github/start`
+
+#### AuthGoogle
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/auth/google/start`
+
+#### AuthOpenai
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/auth/openai/callback`
+
+#### AuthPasswordReset
+
+| Field | Description |
+| --- | --- |
+| `"email"` |  |
+| `"message"` |  |
+| `"password"` |  |
+| `"token"` |  |
+
+Operations: Create, Update.
+
+API path: `/api/v1/auth/password_resets`
+
+#### AuthRegistrationOption
+
+| Field | Description |
+| --- | --- |
+| `"email_password_signup_enabled"` |  |
+| `"openai_sign_in_enabled"` | Whether ChatGPT identity sign-in is configured and enabled for rollout. |
+| `"turnstile_site_key"` |  |
+| `"waitlist_enabled"` | New public signups require waitlist approval when enabled. |
+
+Operations: List.
+
+API path: `/api/v1/auth/registration_options`
 
 #### AutomationEvent
 
@@ -2061,6 +3068,277 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/runs`
 
+#### BackendRunnerPool
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/bazel/backends/{backend_id}/runner_pools`
+
+#### Bazel
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/bazel/authorize`
+
+#### BazelActionResult
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Load, Update.
+
+API path: `/api/v1/bazel/action_results/{hash}/{size_bytes}`
+
+#### BazelBackend
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/bazel/backends/{id}/issue_token`
+
+#### BazelBlob
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Load, Update.
+
+API path: `/api/v1/bazel/blobs/{kind}/{hash}/{size_bytes}`
+
+#### BazelExecution
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/bazel/executions/{id}/complete`
+
+#### BazelFindMissingBlob
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/bazel/find_missing_blobs`
+
+#### Billing
+
+| Field | Description |
+| --- | --- |
+| `"addons"` |  |
+| `"breakdown"` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `"budget"` |  |
+| `"can_manage_contact"` |  |
+| `"can_manage_extra_spend"` |  |
+| `"can_manage_local_subscription"` |  |
+| `"can_manage_payment_method"` |  |
+| `"can_set_up_billing"` |  |
+| `"customer"` |  |
+| `"deployment_usage_visible"` |  |
+| `"entitlements"` |  |
+| `"extra_spend_enabled"` | Organization consent to paid overages across all metered usage. |
+| `"feature_enabled"` | Whether the `billing` feature is on for this organization. |
+| `"organization_id"` |  |
+| `"package"` |  |
+| `"prepaid"` |  |
+| `"preview"` | Metronome draft invoice and credits, or null. |
+| `"storage_usage"` |  |
+| `"stripe"` |  |
+| `"subscription"` |  |
+| `"token_account"` |  |
+
+Operations: Load, Update.
+
+API path: `/api/v1/organizations/{organization_id}/billing`
+
+#### BillingAddon
+
+| Field | Description |
+| --- | --- |
+| `"addons"` |  |
+| `"breakdown"` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `"budget"` |  |
+| `"can_manage_contact"` |  |
+| `"can_manage_extra_spend"` |  |
+| `"can_manage_local_subscription"` |  |
+| `"can_manage_payment_method"` |  |
+| `"can_set_up_billing"` |  |
+| `"customer"` |  |
+| `"deployment_usage_visible"` |  |
+| `"entitlements"` |  |
+| `"extra_spend_enabled"` | Organization consent to paid overages across all metered usage. |
+| `"feature_enabled"` | Whether the `billing` feature is on for this organization. |
+| `"id"` |  |
+| `"organization_id"` |  |
+| `"package"` |  |
+| `"prepaid"` |  |
+| `"preview"` | Metronome draft invoice and credits, or null. |
+| `"quantity"` |  |
+| `"storage_usage"` |  |
+| `"stripe"` |  |
+| `"subscription"` |  |
+| `"token_account"` |  |
+
+Operations: Update.
+
+API path: `/api/v1/organizations/{organization_id}/billing/addons/{addon_key}`
+
+#### BillingCheckoutSession
+
+| Field | Description |
+| --- | --- |
+| `"cancel_url"` |  |
+| `"coupon_code"` |  |
+| `"entry_point"` | Where the owner chose to pay, for product analytics. |
+| `"package_key"` |  |
+| `"package_revision"` |  |
+| `"success_url"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/billing/checkout_sessions`
+
+#### BillingInvoice
+
+| Field | Description |
+| --- | --- |
+| `"amount_due_cents"` |  |
+| `"created_at"` |  |
+| `"currency"` |  |
+| `"hosted_invoice_url"` |  |
+| `"id"` |  |
+| `"invoice_pdf"` |  |
+| `"metronome_invoice_id"` | Metronome's id for the invoice it pushed |
+| `"number"` |  |
+| `"period_ended_at"` |  |
+| `"period_started_at"` |  |
+| `"status"` |  |
+| `"total_cents"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/billing/invoices`
+
+#### BillingPackage
+
+| Field | Description |
+| --- | --- |
+| `"addons"` |  |
+| `"base_price_cents"` |  |
+| `"billing_interval"` |  |
+| `"billing_policy"` |  |
+| `"ci_included_spend_cents"` | Monthly USD credit in cents shared by all CI charges, including runners, cache, storage and add-ons; replaces CI unit allowances when positive. |
+| `"currency"` |  |
+| `"key"` |  |
+| `"max_seats"` |  |
+| `"name"` |  |
+| `"pay_as_you_go_enabled"` |  |
+| `"rates"` |  |
+| `"revision"` |  |
+| `"roder_daily_run_limit"` |  |
+| `"roder_run_concurrency_limit"` |  |
+| `"seat_price_cents"` |  |
+| `"trial_days"` |  |
+| `"visibility"` |  |
+
+Operations: List.
+
+API path: `/api/v1/billing/packages`
+
+#### BillingPortalSession
+
+| Field | Description |
+| --- | --- |
+| `"return_url"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/billing/portal_sessions`
+
+#### BillingPrepaidPeriod
+
+| Field | Description |
+| --- | --- |
+| `"activated_at"` |  |
+| `"created_at"` |  |
+| `"currency"` |  |
+| `"id"` |  |
+| `"last_error"` |  |
+| `"minutes"` |  |
+| `"net_amount_cents"` |  |
+| `"paid_at"` |  |
+| `"paid_total_cents"` |  |
+| `"payment_action_url"` |  |
+| `"period_ended_at"` |  |
+| `"period_started_at"` |  |
+| `"receipt_url"` |  |
+| `"refunded_net_cents"` |  |
+| `"state"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/billing/prepaid_periods/{id}`
+
+#### BillingPrepaidPurchase
+
+| Field | Description |
+| --- | --- |
+| `"activated_at"` |  |
+| `"created_at"` |  |
+| `"currency"` |  |
+| `"id"` |  |
+| `"last_error"` |  |
+| `"minutes"` |  |
+| `"net_amount_cents"` |  |
+| `"paid_at"` |  |
+| `"paid_total_cents"` |  |
+| `"payment_action_url"` |  |
+| `"prepaid"` |  |
+| `"purchase"` |  |
+| `"receipt_url"` |  |
+| `"refunded_net_cents"` |  |
+| `"request_key"` |  |
+| `"state"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/billing/prepaid_purchases`
+
+#### BillingTokenTopUp
+
+| Field | Description |
+| --- | --- |
+| `"amount_cents"` |  |
+| `"request_key"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/billing/token_top_ups`
+
+#### BillingUsage
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/billing/usage/breakdown`
+
 #### Binary
 
 | Field | Description |
@@ -2129,6 +3407,25 @@ API path: `/api/v1/organizations/{organization_id}/verify/binaries/{id}/archive`
 Operations: Create, List, Load, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/cancel`
+
+#### BookmarkProtectionRefreshGithubRequiredCheck
+
+| Field | Description |
+| --- | --- |
+| `"exclusions"` |  |
+| `"fetched_at"` |  |
+| `"fetched_at_label"` |  |
+| `"github_branch"` |  |
+| `"github_owner"` |  |
+| `"github_repository_name"` |  |
+| `"last_error"` |  |
+| `"proven"` |  |
+| `"requirements"` |  |
+| `"stale"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections/refresh_github_required_checks`
 
 #### BrowserEgressCandidate
 
@@ -2290,6 +3587,16 @@ Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks/{id}/cancel`
 
+#### CacheNamespaceEntry
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/evict`
+
 #### CatalogSelector
 
 | Field | Description |
@@ -2348,6 +3655,556 @@ Operations: List, Load, Remove, Update.
 
 API path: `/api/v1/cdn_spaces/{cdn_space_id}/objects`
 
+#### Change
+
+| Field | Description |
+| --- | --- |
+| `"counts"` | Counts for each state across the active non-state filters. |
+| `"filters"` |  |
+| `"github_sync"` |  |
+| `"result"` | What this page is a page of. |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/changes`
+
+#### ChangeAsset
+
+| Field | Description |
+| --- | --- |
+| `"alias"` |  |
+| `"byte_size"` |  |
+| `"checksum_md5"` |  |
+| `"checksum_sha256"` |  |
+| `"content_type"` |  |
+| `"filename"` |  |
+| `"id"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/assets/{id}/finalize`
+
+#### ChangeComment
+
+| Field | Description |
+| --- | --- |
+| `"body"` |  |
+| `"capabilities"` |  |
+| `"change_id"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"id"` |  |
+| `"kind"` |  |
+| `"line"` |  |
+| `"outdated"` |  |
+| `"parent_comment_id"` |  |
+| `"patchset_id"` |  |
+| `"patchset_number"` |  |
+| `"path"` |  |
+| `"replies"` |  |
+| `"resolved"` |  |
+| `"resolved_at"` |  |
+| `"resolved_at_label"` |  |
+| `"resolved_by"` |  |
+| `"side"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+| `"user"` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve`
+
+#### ChangeFileReviewCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `"patchset_id"` |  |
+| `"path"` |  |
+| `"request_id"` |  |
+| `"review_action"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/file_review_checkpoints`
+
+#### ChangeGitBranchSubmission
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_branch_submissions`
+
+#### ChangeGitCommitIdentity
+
+| Field | Description |
+| --- | --- |
+| `"change_id"` |  |
+| `"change_number"` |  |
+| `"git_commit_id"` |  |
+| `"git_commit_ids"` |  |
+| `"id"` |  |
+| `"identities"` |  |
+| `"missing_git_commit_ids"` |  |
+| `"patchset_number"` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_commit_identities`
+
+#### ChangeGitPublication
+
+| Field | Description |
+| --- | --- |
+| `"expected_target_commit_id"` |  |
+| `"id"` |  |
+| `"operation_key"` |  |
+| `"publication_id"` |  |
+| `"request"` |  |
+| `"request_digest"` |  |
+| `"revisions"` |  |
+| `"status"` |  |
+| `"transfer_refs"` | Immutable receipt-owned refs returned by preparation; transfer each exact Git target before polling readiness. |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_publications`
+
+#### ChangeGroupMember
+
+| Field | Description |
+| --- | --- |
+| `"change_id"` | Change number |
+| `"changes"` |  |
+| `"id"` |  |
+| `"name"` |  |
+| `"number"` |  |
+| `"status"` |  |
+| `"title"` |  |
+
+Operations: Create, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups/{id}/members`
+
+#### ChangeLabel
+
+| Field | Description |
+| --- | --- |
+| `"accepted"` |  |
+| `"add"` |  |
+| `"approval"` |  |
+| `"assets"` | Proof assets referenced from the description as `vex-asset:<id>`. |
+| `"author"` | Human user summary or organization automation identity. |
+| `"capabilities"` |  |
+| `"change_key"` |  |
+| `"checks"` |  |
+| `"checks_status"` |  |
+| `"comments"` |  |
+| `"comments_count"` |  |
+| `"comments_count_label"` |  |
+| `"commit_message"` |  |
+| `"current_patchset"` |  |
+| `"description"` |  |
+| `"draft"` |  |
+| `"folded_into_number"` |  |
+| `"github_projection_status"` |  |
+| `"github_pull_request"` |  |
+| `"github_pull_requests"` |  |
+| `"group"` |  |
+| `"has_description"` | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
+| `"id"` |  |
+| `"jj_change_id"` |  |
+| `"labels"` |  |
+| `"landable"` |  |
+| `"landed_by"` |  |
+| `"number"` |  |
+| `"orphaned"` |  |
+| `"orphaned_at"` |  |
+| `"orphaned_at_label"` |  |
+| `"orphaned_reason"` |  |
+| `"parent_change_id"` |  |
+| `"parent_change_number"` |  |
+| `"patchset_number"` |  |
+| `"patchsets"` |  |
+| `"primary_status"` |  |
+| `"public_id"` |  |
+| `"relation_chain"` |  |
+| `"remove"` |  |
+| `"requested_changes"` |  |
+| `"restack_state"` |  |
+| `"reviewer_candidates"` | Organization members available to the reviewer picker on this page. |
+| `"reviewers"` |  |
+| `"stable_change_id"` |  |
+| `"stack"` |  |
+| `"status"` |  |
+| `"target_branch"` |  |
+| `"title"` |  |
+| `"unresolved_comments_count_label"` |  |
+| `"url"` |  |
+| `"votes"` |  |
+
+Operations: Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/labels`
+
+#### ChangeLandingHold
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_hold/release`
+
+#### ChangeLandingRequest
+
+| Field | Description |
+| --- | --- |
+| `"change_ids"` |  |
+| `"count"` |  |
+| `"defer_until_ready"` | Admit the request while approvals or checks are pending |
+| `"expected_requirement_version"` |  |
+| `"expected_scope_version"` |  |
+| `"head_change_id"` |  |
+| `"id"` |  |
+| `"numbers"` |  |
+| `"override_acknowledged"` |  |
+| `"override_codes"` |  |
+| `"position"` |  |
+| `"priority"` |  |
+| `"scope_version"` |  |
+| `"state"` |  |
+| `"version"` |  |
+
+Operations: Create, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_requests`
+
+#### ChangeRequestChange
+
+| Field | Description |
+| --- | --- |
+| `"message"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/request_changes`
+
+#### ChangeReviewer
+
+| Field | Description |
+| --- | --- |
+| `"add"` |  |
+| `"email"` |  |
+| `"name"` |  |
+| `"remove"` |  |
+| `"removed_reviewers"` |  |
+| `"requested_reviewers"` |  |
+| `"reviewers"` |  |
+
+Operations: List, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/reviewers`
+
+#### ChangeTranscript
+
+| Field | Description |
+| --- | --- |
+| `"capture_kind"` |  |
+| `"captured_at"` |  |
+| `"harness"` |  |
+| `"id"` |  |
+| `"original_resume"` |  |
+| `"patchset_commit_id"` |  |
+| `"patchset_number"` |  |
+| `"redaction_count"` |  |
+| `"session_id"` |  |
+| `"session_title"` |  |
+| `"status"` |  |
+| `"superseded"` |  |
+| `"user"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/transcripts`
+
+#### ChangeTranscriptSummary
+
+| Field | Description |
+| --- | --- |
+| `"summaries"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/changes/transcript_summaries`
+
+#### CheckpointPrepareChunk
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/prepare_chunks`
+
+#### CiNode
+
+| Field | Description |
+| --- | --- |
+| `"architecture"` |  |
+| `"bazel_enabled"` |  |
+| `"bazel_properties_json"` |  |
+| `"ci_runner_pool_id"` |  |
+| `"cordoned_at"` |  |
+| `"cordoned_at_label"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"health_state"` |  |
+| `"heartbeat_age_seconds"` |  |
+| `"id"` |  |
+| `"kind"` |  |
+| `"labels_csv"` |  |
+| `"last_seen_at"` |  |
+| `"last_seen_at_label"` |  |
+| `"name"` |  |
+| `"network_peer_id"` |  |
+| `"node_capabilities_csv"` |  |
+| `"node_certificate_expires_at"` |  |
+| `"node_certificate_expires_at_label"` |  |
+| `"node_certificate_fingerprint_sha256"` |  |
+| `"node_certificate_serial"` |  |
+| `"offline_at"` |  |
+| `"offline_at_label"` |  |
+| `"online_at"` |  |
+| `"online_at_label"` |  |
+| `"organization_id"` |  |
+| `"os"` |  |
+| `"revoked_at"` |  |
+| `"revoked_at_label"` |  |
+| `"schedulable"` |  |
+| `"slug"` |  |
+| `"status"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+| `"version"` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/ci/nodes/{id}/cordon`
+
+#### CiPipeline
+
+| Field | Description |
+| --- | --- |
+| `"ci_runner_pool_id"` |  |
+| `"concurrency_key"` |  |
+| `"created_at"` |  |
+| `"default_branch"` |  |
+| `"description"` |  |
+| `"hosted_app_id"` |  |
+| `"id"` |  |
+| `"name"` |  |
+| `"organization_id"` |  |
+| `"repository_id"` |  |
+| `"required_capabilities_csv"` |  |
+| `"runner_pool"` |  |
+| `"runs"` |  |
+| `"slug"` |  |
+| `"source_kind"` |  |
+| `"status"` |  |
+| `"status_label"` |  |
+| `"status_state"` |  |
+| `"status_tone"` |  |
+| `"trigger_on_pull_request"` |  |
+| `"trigger_on_push"` |  |
+| `"trigger_on_schedule"` |  |
+| `"updated_at"` |  |
+| `"workflow_path"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/ci/pipelines`
+
+#### CiPipelineRun
+
+| Field | Description |
+| --- | --- |
+| `"active"` |  |
+| `"canceled_at"` |  |
+| `"ci_pipeline_id"` |  |
+| `"ci_runner_pool_id"` |  |
+| `"commit_sha"` |  |
+| `"concurrency_key"` |  |
+| `"created_at"` |  |
+| `"creator_user_id"` |  |
+| `"display_id"` |  |
+| `"failed"` |  |
+| `"finished_at"` |  |
+| `"hosted_app_id"` |  |
+| `"id"` |  |
+| `"jobs"` |  |
+| `"message"` |  |
+| `"number"` |  |
+| `"organization_id"` |  |
+| `"parameters_json"` |  |
+| `"queued_at"` |  |
+| `"ref_name"` |  |
+| `"repository_id"` |  |
+| `"required_capabilities_csv"` |  |
+| `"retry_number"` |  |
+| `"retryable"` |  |
+| `"slug"` |  |
+| `"source_url"` |  |
+| `"started_at"` |  |
+| `"status"` |  |
+| `"status_label"` |  |
+| `"status_state"` |  |
+| `"status_tone"` |  |
+| `"trigger_kind"` |  |
+| `"updated_at"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{id}/retry`
+
+#### CiRunnerPool
+
+| Field | Description |
+| --- | --- |
+| `"bazel_enabled"` |  |
+| `"bazel_properties_json"` |  |
+| `"created_at"` |  |
+| `"description"` |  |
+| `"elastic_config_json"` |  |
+| `"elastic_provider_kind"` |  |
+| `"id"` |  |
+| `"isolation_mode"` |  |
+| `"labels_csv"` |  |
+| `"max_concurrency"` |  |
+| `"modal_capacity"` |  |
+| `"modal_runner_invocations"` |  |
+| `"name"` |  |
+| `"network_space_id"` |  |
+| `"node_capabilities_csv"` |  |
+| `"organization_id"` |  |
+| `"runner_count_label"` |  |
+| `"runner_kind"` |  |
+| `"runners"` |  |
+| `"slug"` |  |
+| `"status"` |  |
+| `"updated_at"` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/ci/runner_pools/{id}/promote_reconciliation_runtime`
+
+#### CiStatus
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/ref`
+
+#### CliEvent
+
+| Field | Description |
+| --- | --- |
+| `"event"` |  |
+| `"properties"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/cli_events`
+
+#### CliRelease
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/cli_releases`
+
+#### CloudWorkspaceBackupObject
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/objects/{object_key}`
+
+#### CodeRuleEvaluation
+
+| Field | Description |
+| --- | --- |
+| `"advisory"` |  |
+| `"coverage"` |  |
+| `"diff"` | UTF-8 complete unified patch using a/ old and b/ new prefixes; at most 1 MiB |
+| `"duration_ms"` |  |
+| `"evaluator_version"` |  |
+| `"input_digest"` |  |
+| `"limits"` |  |
+| `"model"` |  |
+| `"requests"` |  |
+| `"schema_version"` |  |
+| `"snapshot_digest"` |  |
+| `"unchecked"` |  |
+| `"verdicts"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/evaluations`
+
+#### ComSiteAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/com_site_access/redeem`
+
+#### ComSiteAccessSession
+
+| Field | Description |
+| --- | --- |
+| `"cookie_name"` |  |
+| `"host"` | Site hostname, for example docs.acme.composal.page |
+| `"max_age"` |  |
+| `"session_token"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/com_site_access/sessions`
+
+#### CommentThreadComment
+
+| Field | Description |
+| --- | --- |
+| `"body"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads/{anchor}/comments`
+
+#### CommitDiff
+
+| Field | Description |
+| --- | --- |
+| `"files"` |  |
+| `"id"` |  |
+| `"parent_id"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits/{id}/diff/{fingerprint}`
+
 #### ConnectionRequest
 
 | Field | Description |
@@ -2384,6 +4241,58 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/conne
 Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/sources`
+
+#### ContactSubmission
+
+| Field | Description |
+| --- | --- |
+| `"company"` |  |
+| `"email"` | Stored downcased and stripped. |
+| `"message"` |  |
+| `"name"` |  |
+| `"website"` | Honeypot. |
+
+Operations: Create.
+
+API path: `/api/v1/contact_submissions`
+
+#### ControlComputer
+
+| Field | Description |
+| --- | --- |
+| `"connection"` | A point-in-time control transport observation. |
+| `"consent"` |  |
+| `"device"` |  |
+| `"id"` |  |
+| `"provider_status"` |  |
+
+Operations: List, Update.
+
+API path: `/api/v1/organizations/{organization_id}/control_computers`
+
+#### ControlComputerControlOperation
+
+| Field | Description |
+| --- | --- |
+| `"action"` |  |
+| `"arguments"` |  |
+| `"created_at"` |  |
+| `"delivery"` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `"device_id"` |  |
+| `"diagnostic_code"` | Approved product error code retained after copied diagnostics expire. |
+| `"end"` |  |
+| `"expires_at"` |  |
+| `"id"` |  |
+| `"key"` |  |
+| `"provider"` |  |
+| `"references"` |  |
+| `"result"` |  |
+| `"result_expired"` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `"state"` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/control_computers/{computer}/control_operations`
 
 #### CoordinationWait
 
@@ -2641,6 +4550,51 @@ Operations: Load.
 
 API path: `/api/v1/verify/demo_shares/{token}/segments/{segment_id}`
 
+#### Deployment
+
+| Field | Description |
+| --- | --- |
+| `"app"` |  |
+| `"artifact_locator"` |  |
+| `"build_duration_seconds"` |  |
+| `"build_source"` |  |
+| `"build_status"` |  |
+| `"children"` |  |
+| `"ci_pipeline_id"` |  |
+| `"ci_pipeline_run_id"` |  |
+| `"commit_sha"` |  |
+| `"created_at"` |  |
+| `"creator"` |  |
+| `"deployed_url"` |  |
+| `"duration_seconds"` |  |
+| `"environment"` |  |
+| `"history_kind"` |  |
+| `"history_reason"` |  |
+| `"id"` |  |
+| `"is_live"` |  |
+| `"is_rollback"` |  |
+| `"live_region_count"` |  |
+| `"number"` |  |
+| `"placement"` |  |
+| `"region_count"` |  |
+| `"replicas_per_region"` |  |
+| `"rollback_reason"` |  |
+| `"rollback_source_release_id"` |  |
+| `"rollback_target_release_id"` |  |
+| `"rollout_predecessor_id"` |  |
+| `"rollout_status"` |  |
+| `"rollout_strategy"` |  |
+| `"service"` |  |
+| `"source_ref"` |  |
+| `"status"` |  |
+| `"total_replicas"` |  |
+| `"trigger_kind"` |  |
+| `"updated_at"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/{deployment_id}`
+
 #### DeploymentDashboardNomad
 
 | Field | Description |
@@ -2650,6 +4604,36 @@ Operations: Load.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocation`
 
+#### DeploymentDetail
+
+| Field | Description |
+| --- | --- |
+| `"activity"` |  |
+| `"app"` |  |
+| `"app_id"` |  |
+| `"audit_events"` |  |
+| `"capacity"` |  |
+| `"data_resources"` |  |
+| `"deploy_targets"` |  |
+| `"deployments"` |  |
+| `"desired_states"` |  |
+| `"environments"` |  |
+| `"filters"` | The option lists the deployments page's app, service and stage pickers narrow by. |
+| `"health"` | The rolled-up state of the selected scope. |
+| `"nomad"` | The Nomad footprint of the selected scope, deduplicated. |
+| `"operations"` |  |
+| `"placements"` |  |
+| `"reconciler_ticks"` |  |
+| `"releases"` |  |
+| `"runtime_instances"` |  |
+| `"service_bindings"` |  |
+| `"service_views"` |  |
+| `"storage_resources"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/details`
+
 #### DeploymentFile
 
 | Field | Description |
@@ -2658,6 +4642,383 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocation`
 Operations: Update.
 
 API path: `/api/v1/static_sites/{static_site_id}/deployments/{id}/files`
+
+#### DeploymentLog
+
+| Field | Description |
+| --- | --- |
+| `"allocation_id"` |  |
+| `"app_environment_id"` |  |
+| `"app_release_id"` |  |
+| `"app_service_id"` |  |
+| `"details"` |  |
+| `"environment_name"` |  |
+| `"release_version"` |  |
+| `"service_name"` |  |
+| `"status"` |  |
+| `"task"` |  |
+| `"unreachable_reason"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/logs`
+
+#### DeploymentMetric
+
+| Field | Description |
+| --- | --- |
+| `"auto_deploy"` |  |
+| `"environment_id"` |  |
+| `"environment_name"` |  |
+| `"placement_id"` |  |
+| `"redeploy"` |  |
+| `"region_count"` |  |
+| `"replicas_per_region"` |  |
+| `"rollout_strategy"` |  |
+| `"service_id"` |  |
+| `"service_name"` |  |
+| `"source_ref"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/metrics`
+
+#### DeploymentPreview
+
+| Field | Description |
+| --- | --- |
+| `"access"` |  |
+| `"app_environment_id"` |  |
+| `"app_name"` |  |
+| `"app_preview_profile_id"` |  |
+| `"app_slug"` |  |
+| `"change_number"` |  |
+| `"created_at"` |  |
+| `"created_by_user_id"` |  |
+| `"expires_at"` |  |
+| `"generation"` |  |
+| `"health"` |  |
+| `"hosted_app_id"` |  |
+| `"id"` |  |
+| `"latest_operation_status"` |  |
+| `"name"` |  |
+| `"owner_name"` |  |
+| `"profile_name"` |  |
+| `"resource_overrides"` | Service public IDs mapped to resource overrides. |
+| `"retained"` |  |
+| `"slug"` |  |
+| `"snapshot_version"` |  |
+| `"source_revision"` |  |
+| `"status"` |  |
+| `"updated_at"` |  |
+| `"urls"` |  |
+| `"vcs_change_id"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/previews`
+
+#### DeploymentSetting
+
+| Field | Description |
+| --- | --- |
+| `"code"` |  |
+| `"created_at"` |  |
+| `"id"` |  |
+| `"name"` |  |
+| `"nomad_datacenter"` |  |
+| `"updated_at"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/settings`
+
+#### DesktopLocalAgentModel
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+| `"name"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/desktop_local_agent/models`
+
+#### DesktopLocalAgentResponse
+
+| Field | Description |
+| --- | --- |
+| `"input"` |  |
+| `"max_output_tokens"` |  |
+| `"model"` |  |
+| `"store"` |  |
+| `"stream"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/desktop_local_agent/responses`
+
+#### Device
+
+| Field | Description |
+| --- | --- |
+| `"architecture"` |  |
+| `"channel"` |  |
+| `"coding_connection"` | Independent organization coding-control service state for the current device owner. |
+| `"connection_checked_at"` | When this native presence observation was obtained; null when unobserved or unavailable. |
+| `"connection_status"` | Display-only native presence. |
+| `"control_delivery_policy"` |  |
+| `"control_spawn_policy"` |  |
+| `"created_at"` |  |
+| `"device"` |  |
+| `"environment"` |  |
+| `"execution_available"` |  |
+| `"id"` |  |
+| `"name"` |  |
+| `"native_device_id"` |  |
+| `"paired_at"` |  |
+| `"pairing_generation"` |  |
+| `"platform"` |  |
+| `"project_visibility"` | Folder discovery and new-thread selection. |
+| `"provider_status"` | Recent native provider observations; absent on older API replicas. |
+| `"revoked_at"` |  |
+| `"scheduled_check_ins"` | Whether the owner's private agents may check this computer's connection during scheduled runs. |
+| `"user_browser_access"` | Whether agents may use the owner's own Chrome-family browser here: off, only tabs agents open or the owner shares, or every tab. |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/connection`
+
+#### DeviceBrowserOperation
+
+| Field | Description |
+| --- | --- |
+| `"command"` | The in-app browser takes open through open_external; the person's own browser (arguments.browser user) takes open, tabs, share_tab, navigate, back, reload, screenshot, read, click, type, press, scroll and close. |
+| `"created_at"` |  |
+| `"id"` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/browser_operations/{id}/claim`
+
+#### DeviceControlMessage
+
+| Field | Description |
+| --- | --- |
+| `"agent_id"` |  |
+| `"agent_name"` |  |
+| `"expires_at"` |  |
+| `"id"` |  |
+| `"sender"` |  |
+| `"text"` |  |
+| `"text_omitted"` |  |
+| `"thread"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_messages`
+
+#### DeviceControlOperation
+
+| Field | Description |
+| --- | --- |
+| `"action"` |  |
+| `"arguments"` |  |
+| `"created_at"` |  |
+| `"delivery"` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `"device_id"` |  |
+| `"diagnostic_code"` | Approved product error code retained after copied diagnostics expire. |
+| `"end"` |  |
+| `"expires_at"` |  |
+| `"id"` |  |
+| `"key"` |  |
+| `"provider"` |  |
+| `"references"` |  |
+| `"result"` |  |
+| `"result_expired"` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `"state"` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations`
+
+#### DeviceEnterpriseRelay
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/spark/devices/enterprise_relays`
+
+#### DeviceFolderListing
+
+| Field | Description |
+| --- | --- |
+| `"code"` |  |
+| `"error"` |  |
+| `"folders"` |  |
+| `"id"` |  |
+| `"key"` | Stable idempotency key for this listing. |
+| `"parent"` |  |
+| `"path"` | The resolved folder. |
+| `"state"` |  |
+| `"truncated"` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/folder_listings`
+
+#### DeviceGrant
+
+| Field | Description |
+| --- | --- |
+| `"active_grants"` |  |
+| `"agent_choices"` | Eligible picker choices, with current owner grant targets, on the first page only. |
+| `"agent_id"` |  |
+| `"all_agents_access"` | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `"capabilities"` |  |
+| `"execution_available"` |  |
+| `"grants"` |  |
+| `"id"` |  |
+| `"next_cursor"` |  |
+| `"principal_id"` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/{device_grant_id}/revise`
+
+#### DeviceInvocation
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/challenge`
+
+#### DeviceLocalEvent
+
+| Field | Description |
+| --- | --- |
+| `"event"` |  |
+| `"recorded"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/local_events`
+
+#### DevicePairing
+
+| Field | Description |
+| --- | --- |
+| `"architecture"` |  |
+| `"channel"` |  |
+| `"id"` |  |
+| `"name"` |  |
+| `"platform"` |  |
+| `"public_key"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/pairings/{device_pairing_intent_id}/complete`
+
+#### DeviceProject
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Remove.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/projects/{id}`
+
+#### DeviceScheduledCheckIn
+
+| Field | Description |
+| --- | --- |
+| `"enabled"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/scheduled_check_ins`
+
+#### DockerBuilder
+
+| Field | Description |
+| --- | --- |
+| `"backend"` |  |
+| `"created_at"` |  |
+| `"gateway_url"` | Organization-addressed public WSS gateway; null until configured |
+| `"generation"` |  |
+| `"id"` |  |
+| `"last_activity_at"` |  |
+| `"organization_id"` |  |
+| `"ready_at"` |  |
+| `"slept_at"` |  |
+| `"slug"` |  |
+| `"startup_attempt"` |  |
+| `"startup_failure"` | Safe failure reason for the most recent startup attempt |
+| `"startup_stage"` |  |
+| `"status"` |  |
+| `"updated_at"` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/docker_builders/{id}/recover`
+
+#### DockerBuilderSession
+
+| Field | Description |
+| --- | --- |
+| `"created_at"` |  |
+| `"docker_builder_id"` |  |
+| `"expires_at"` |  |
+| `"gateway_url"` | Organization-addressed public WSS gateway; null until configured |
+| `"generation"` |  |
+| `"id"` |  |
+| `"organization_id"` |  |
+| `"revoked_at"` |  |
+| `"user_id"` |  |
+
+Operations: Create, Load, Remove.
+
+API path: `/api/v1/organizations/{organization_id}/docker_builders/{docker_builder_id}/sessions`
+
+#### DockerBuilderSetting
+
+| Field | Description |
+| --- | --- |
+| `"docker_builder_settings"` |  |
+| `"idle_timeout_seconds"` |  |
+| `"max_concurrency"` |  |
+| `"organization_id"` |  |
+| `"region"` |  |
+| `"runtime_timeout_seconds"` |  |
+
+Operations: List, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/docker_builder_settings`
+
+#### DomainDnsIntegration
+
+| Field | Description |
+| --- | --- |
+| `"account_label"` |  |
+| `"api_token"` |  |
+| `"created_at"` |  |
+| `"failure_message"` |  |
+| `"has_token"` |  |
+| `"id"` |  |
+| `"last_verified_at"` |  |
+| `"organization_id"` |  |
+| `"provider"` |  |
+| `"status"` |  |
+| `"updated_at"` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/domain_dns_integrations`
 
 #### DomainPathRule
 
@@ -2704,6 +5065,24 @@ API path: `/api/v1/hosting/apps/{app_id}/domains/{domain_id}/path_rules`
 Operations: Create, List, Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/dreams/{id}/resume`
+
+#### Edge
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/edge/tls-check`
+
+#### EmailVerification
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/email_verifications/resend`
 
 #### Environment
 
@@ -2915,6 +5294,79 @@ API path: `/api/v1/organizations/{organization_id}/verify/environments/{verify_e
 Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/evidence/{id}`
+
+#### ExecutionDesiredState
+
+| Field | Description |
+| --- | --- |
+| `"desired_state"` |  |
+| `"id"` |  |
+| `"stop_observed"` | True only for archived zero-capacity states with all known jobs stopped and allocations terminated. |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/execution/desired_states/{id}/reconcile`
+
+#### ExecutionReconcilerTick
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/execution/reconciler_ticks`
+
+#### ExecutionRelease
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/execution/releases/{id}/activate`
+
+#### ExecutionRuntimeInstance
+
+| Field | Description |
+| --- | --- |
+| `"adapter_kind"` |  |
+| `"app_environment_id"` |  |
+| `"app_release_id"` |  |
+| `"app_service_id"` |  |
+| `"booted_at"` |  |
+| `"booted_at_label"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"hosted_app_id"` |  |
+| `"id"` |  |
+| `"instance_key"` |  |
+| `"last_reconciled_at"` |  |
+| `"last_reconciled_at_label"` |  |
+| `"last_seen_at"` |  |
+| `"last_seen_at_label"` |  |
+| `"location"` |  |
+| `"location_id"` |  |
+| `"network_peer_id"` |  |
+| `"nomad_allocation_id"` |  |
+| `"nomad_task_name"` |  |
+| `"organization_id"` |  |
+| `"private_ipv4"` |  |
+| `"private_ipv6"` |  |
+| `"provider_instance_id"` |  |
+| `"public_endpoint"` |  |
+| `"service_name"` | Name of the Vex service this instance runs, in the same vocabulary as `vex deploy list`. |
+| `"slug"` |  |
+| `"status"` |  |
+| `"terminated_at"` |  |
+| `"terminated_at_label"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/execution/runtime_instances/{id}/refresh`
 
 #### Exploration
 
@@ -3129,6 +5581,204 @@ Operations: List, Load, Patch, Update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/findings`
 
+#### Gh
+
+| Field | Description |
+| --- | --- |
+| `"capabilities"` |  |
+| `"content"` |  |
+| `"fetched_at"` |  |
+| `"id"` |  |
+| `"magic_merge"` |  |
+| `"pull_request"` |  |
+| `"stack"` |  |
+| `"transcript_paths"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/gh/{github_owner}/{github_repo}/{number}`
+
+#### GitImport
+
+| Field | Description |
+| --- | --- |
+| `"destination_mode"` |  |
+| `"error"` |  |
+| `"git_default_branch"` | Original Git symbolic HEAD branch, independent of the branch selected for JJ conversion |
+| `"git_status"` |  |
+| `"git_url"` |  |
+| `"id"` |  |
+| `"idempotency_key"` |  |
+| `"name"` |  |
+| `"native_status"` |  |
+| `"organization"` |  |
+| `"repository_id"` |  |
+| `"root_path"` |  |
+| `"slug"` |  |
+| `"source_branch"` |  |
+| `"target_branch"` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/git_imports/{id}/complete`
+
+#### Github
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/github/repository_lookup`
+
+#### GithubApp
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/github_app/webhook`
+
+#### GithubAppImportableRepository
+
+| Field | Description |
+| --- | --- |
+| `"account_login"` |  |
+| `"github_app_installation_id"` |  |
+| `"next_page"` | Next GitHub page for this installation |
+| `"repositories"` |  |
+
+Operations: List.
+
+API path: `/api/v1/github_app/importable_repositories`
+
+#### GithubAppInstallation
+
+| Field | Description |
+| --- | --- |
+| `"account_avatar_url"` |  |
+| `"account_id"` |  |
+| `"account_login"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"id"` |  |
+| `"installation_id"` |  |
+| `"installed_at"` |  |
+| `"installed_at_label"` |  |
+| `"manage_access_url"` |  |
+| `"organization_id"` |  |
+| `"permission_entries"` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `"permissions"` |  |
+| `"status"` |  |
+| `"suspended_at"` |  |
+| `"suspended_at_label"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/organizations/{organization_id}/github_app/installations/{id}/check_connection`
+
+#### GithubAppInstallationAuthorization
+
+| Field | Description |
+| --- | --- |
+| `"installation_url"` |  |
+| `"organization_slug"` | Vex organization slug whose installation will be linked. |
+| `"return_target"` | Server-validated Vex application target used after verification. |
+
+Operations: Create.
+
+API path: `/api/v1/github_app/installation_authorizations`
+
+#### GithubAppUserAuthorization
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/github_app/user_authorizations`
+
+#### GithubCiRepository
+
+| Field | Description |
+| --- | --- |
+| `"adoption_mode"` |  |
+| `"check_name_prefix"` |  |
+| `"ci_runner_pool_id"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"default_branch"` |  |
+| `"github_app_installation_id"` |  |
+| `"github_repository_id"` |  |
+| `"id"` |  |
+| `"last_compatibility_status"` |  |
+| `"last_error_message"` |  |
+| `"last_head_sha"` |  |
+| `"last_pull_request_number"` |  |
+| `"last_ref"` |  |
+| `"last_webhook_action"` |  |
+| `"last_webhook_at"` |  |
+| `"last_webhook_at_label"` |  |
+| `"last_webhook_delivery_id"` |  |
+| `"last_webhook_event"` |  |
+| `"metadata"` |  |
+| `"organization_id"` |  |
+| `"permission_status"` |  |
+| `"repository_full_name"` |  |
+| `"repository_name"` |  |
+| `"repository_owner"` |  |
+| `"status"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+| `"webhook_delivery_count"` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/github_ci_repositories`
+
+#### GithubCiRepositoryCompatibilityReport
+
+| Field | Description |
+| --- | --- |
+| `"analyzed_at"` |  |
+| `"analyzed_at_label"` |  |
+| `"ci_pipeline_id"` |  |
+| `"ci_pipeline_run_id"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"diagnostics"` |  |
+| `"errors"` |  |
+| `"event_action"` |  |
+| `"event_name"` |  |
+| `"execution_allowed"` |  |
+| `"github_ci_repository_id"` |  |
+| `"head_sha"` |  |
+| `"id"` |  |
+| `"metadata"` |  |
+| `"organization_id"` |  |
+| `"parser_version"` |  |
+| `"pull_request_number"` |  |
+| `"ref_name"` |  |
+| `"referenced_actions"` |  |
+| `"required_secrets"` |  |
+| `"runner_labels"` |  |
+| `"source_blob_sha"` |  |
+| `"source_sha"` |  |
+| `"status"` |  |
+| `"supported_features"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+| `"warnings"` |  |
+| `"workflow_name"` |  |
+| `"workflow_path"` |  |
+
+Operations: List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_ci_repositories/{github_ci_repository_id}/compatibility_reports`
+
 #### GithubConnection
 
 | Field | Description |
@@ -3143,6 +5793,307 @@ API path: `/api/v1/organizations/{organization_id}/verify/findings`
 Operations: Create, List.
 
 API path: `/api/v1/organizations/{organization_id}/verify/github_connections`
+
+#### GithubIntegration
+
+| Field | Description |
+| --- | --- |
+| `"account_avatar_url"` |  |
+| `"account_login"` |  |
+| `"connection_status"` |  |
+| `"connection_status_label"` |  |
+| `"github_installation"` |  |
+| `"health"` |  |
+| `"id"` |  |
+| `"imported_repositories_count"` |  |
+| `"imported_repositories_count_label"` |  |
+| `"organization"` |  |
+| `"pagination"` |  |
+| `"repositories"` |  |
+
+Operations: List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/github_integrations`
+
+#### GithubOnboarding
+
+| Field | Description |
+| --- | --- |
+| `"accounts"` |  |
+| `"active_batch_id"` | The batch the wizard's import step should resume — the most recent batch still working, else the most recent overall. |
+| `"batches"` |  |
+| `"capabilities"` |  |
+| `"installations"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding`
+
+#### GithubOnboardingBranch
+
+| Field | Description |
+| --- | --- |
+| `"branches"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/branches`
+
+#### GithubOnboardingImport
+
+| Field | Description |
+| --- | --- |
+| `"account_login"` |  |
+| `"complete"` | Whether every item has settled and the wizard should treat the import as finished. |
+| `"created_at"` |  |
+| `"failed_item_count"` |  |
+| `"github_app_installation_id"` |  |
+| `"id"` |  |
+| `"imported_item_count"` |  |
+| `"item_count"` |  |
+| `"items"` |  |
+| `"repositories"` |  |
+| `"status"` |  |
+| `"terminal_item_count"` |  |
+| `"updated_at"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/imports`
+
+#### GithubOnboardingImportBatch
+
+| Field | Description |
+| --- | --- |
+| `"account_login"` |  |
+| `"complete"` | Whether every item has settled and the wizard should treat the import as finished. |
+| `"created_at"` |  |
+| `"failed_item_count"` |  |
+| `"github_app_installation_id"` |  |
+| `"id"` |  |
+| `"imported_item_count"` |  |
+| `"item_count"` |  |
+| `"items"` |  |
+| `"status"` |  |
+| `"terminal_item_count"` |  |
+| `"updated_at"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/import_batches/{github_import_batch_id}`
+
+#### GithubOnboardingImportItem
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/import_items/{github_import_batch_item_id}/retry`
+
+#### GithubPullRequest
+
+| Field | Description |
+| --- | --- |
+| `"capabilities"` |  |
+| `"content"` |  |
+| `"fetched_at"` |  |
+| `"id"` |  |
+| `"magic_merge"` |  |
+| `"pull_request"` |  |
+| `"stack"` |  |
+| `"transcript_paths"` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{org_slug}/github/pull_requests/refresh`
+
+#### GithubRunnerAdmission
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/github_runner_admission`
+
+#### GithubRunnerCache
+
+| Field | Description |
+| --- | --- |
+| `"entry_id"` |  |
+| `"key"` |  |
+| `"matched_key"` |  |
+| `"ok"` |  |
+| `"operation"` |  |
+| `"restore_keys"` |  |
+| `"signed_download_url"` |  |
+| `"size_bytes"` |  |
+| `"upload_path"` |  |
+| `"version"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/github_runner_cache`
+
+#### GithubRunnerEgress
+
+| Field | Description |
+| --- | --- |
+| `"can_request"` |  |
+| `"cidr"` |  |
+| `"ipv4"` |  |
+| `"requested_at_label"` |  |
+| `"status"` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_egress`
+
+#### GithubRunnerHistory
+
+| Field | Description |
+| --- | --- |
+| `"activity"` |  |
+| `"counts"` |  |
+| `"observed_at"` |  |
+| `"pagination"` |  |
+| `"repositories"` |  |
+| `"runs"` |  |
+| `"setup"` | CI onboarding. |
+| `"success_rate"` |  |
+| `"usage"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/github_runner_history`
+
+#### GithubRunnerImage
+
+| Field | Description |
+| --- | --- |
+| `"created_at"` |  |
+| `"id"` |  |
+| `"image_reference"` | Immutable linux/amd64 Ubuntu 24.04 image, registry/repository@sha256:digest, with Node 22+ |
+| `"last_error"` |  |
+| `"modal_image_id"` |  |
+| `"name"` |  |
+| `"registry_secret_name"` | Name of an organization CI secret containing REGISTRY_USERNAME and REGISTRY_PASSWORD JSON fields |
+| `"status"` |  |
+| `"updated_at"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_images/{id}/prepare`
+
+#### GithubRunnerPool
+
+| Field | Description |
+| --- | --- |
+| `"cpu_millicores"` |  |
+| `"enabled"` |  |
+| `"github_app_installation_id"` |  |
+| `"github_repository_id"` |  |
+| `"github_runner_image"` |  |
+| `"id"` |  |
+| `"image"` | Organization image name or ID; null restores the standard image |
+| `"invocations"` |  |
+| `"label"` |  |
+| `"last_error"` |  |
+| `"last_polled_at"` |  |
+| `"max_concurrency"` |  |
+| `"memory_mb"` |  |
+| `"organization_id"` |  |
+| `"provider"` |  |
+| `"repository_full_name"` |  |
+| `"runtime_kind"` |  |
+| `"timeout_seconds"` |  |
+
+Operations: Create, List, Update.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_pools`
+
+#### GithubRunnerSetup
+
+| Field | Description |
+| --- | --- |
+| `"error"` |  |
+| `"github_repository_connection_id"` |  |
+| `"id"` |  |
+| `"pull_request_url"` |  |
+| `"repository_full_name"` |  |
+| `"roder_thread_id"` |  |
+| `"runner_labels"` |  |
+| `"status"` |  |
+| `"status_label"` |  |
+| `"summary"` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_setup`
+
+#### Gitlab
+
+| Field | Description |
+| --- | --- |
+| `"configured"` |  |
+| `"connections"` |  |
+| `"integrations"` |  |
+| `"inventory_error"` |  |
+| `"next_page"` |  |
+| `"organization"` |  |
+| `"projects"` |  |
+| `"redirect_uri"` | The OAuth redirect URI a self-managed GitLab application must use; null when GitLab callbacks aren't configured. |
+| `"selected_integration_id"` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{org_slug}/gitlab/authorize`
+
+#### GitlabConnection
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/gitlab/connections/{connection_id}/control`
+
+#### GitlabImport
+
+| Field | Description |
+| --- | --- |
+| `"integration_id"` |  |
+| `"project_id"` |  |
+| `"repo_slug"` |  |
+| `"source_branch"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/gitlab/imports`
+
+#### GitlabOauth
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/gitlab/oauth/callback`
+
+#### GrantAllAgent
+
+| Field | Description |
+| --- | --- |
+| `"all_agents_access"` |  |
+| `"enabled"` |  |
+| `"execution_available"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/all_agents`
 
 #### HostingAppDomain
 
@@ -3176,6 +6127,16 @@ Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/domains/{id}/disable`
 
+#### IdentityOrganization
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/identity/organizations/{organization_id}/catalog`
+
 #### ImageRepository
 
 | Field | Description |
@@ -3199,6 +6160,34 @@ API path: `/api/v1/hosting/apps/{app_id}/domains/{id}/disable`
 Operations: Create, List.
 
 API path: `/api/v1/organizations/{org_slug}/image_repositories`
+
+#### ImageRepositoryTag
+
+| Field | Description |
+| --- | --- |
+| `"image_repository"` |  |
+| `"name"` |  |
+| `"registry_url"` |  |
+| `"tags"` |  |
+
+Operations: List.
+
+API path: `/api/v1/artifacts/image_repositories/{id}/tags`
+
+#### ImportBranchPolicy
+
+| Field | Description |
+| --- | --- |
+| `"can_manage_pr_scenario_writing"` |  |
+| `"can_manage_sandbox_region"` |  |
+| `"dedicated_outbound_ip_addresses"` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `"default_trunk_bookmark"` |  |
+| `"organization"` |  |
+| `"sandbox_regions"` |  |
+
+Operations: Load, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/import_branch_policy`
 
 #### Integration
 
@@ -3250,6 +6239,56 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/interaction
 Operations: Create, List, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/invitations`
+
+#### InvocationControl
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/control/challenge`
+
+#### JobLogChunk
+
+| Field | Description |
+| --- | --- |
+| `"byte_size"` |  |
+| `"ci_job_id"` |  |
+| `"ci_pipeline_run_id"` |  |
+| `"ci_step_id"` |  |
+| `"content"` |  |
+| `"content_format"` |  |
+| `"created_at"` |  |
+| `"id"` |  |
+| `"organization_id"` |  |
+| `"sequence_number"` |  |
+| `"stream"` |  |
+| `"updated_at"` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/log_chunks`
+
+#### JobStep
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Patch, Update.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps`
+
+#### JobWorkspace
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Patch, Update.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces`
 
 #### JourneyVariantReplay
 
@@ -3309,6 +6348,132 @@ Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/knowledge`
 
+#### Known
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/.well-known/agent-card.json`
+
+#### Label
+
+| Field | Description |
+| --- | --- |
+| `"changes_count"` |  |
+| `"id"` |  |
+| `"name"` | Display name |
+| `"slug"` | Normalized identity used for filtering and lookup. |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/labels`
+
+#### LeaseArtifact
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/artifacts`
+
+#### LeaseCache
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/cache/restore`
+
+#### LeaseLogChunk
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/log_chunks`
+
+#### LeaseReconciliation
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/reconciliations/{reconciliation_id}/output`
+
+#### LeaseStep
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Update.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/steps/{ci_step_id}`
+
+#### LeaseVerifyDiagnostic
+
+| Field | Description |
+| --- | --- |
+| `"browser_events"` |  |
+| `"live_browser"` |  |
+| `"live_view"` | The tester's read-only live stream for page viewers. |
+| `"steps"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_diagnostics`
+
+#### LeaseVerifySecret
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_secrets`
+
+#### LeaseWorkspace
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Update.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/workspaces/{ci_workspace_id}`
+
+#### LocalAgentDecision
+
+| Field | Description |
+| --- | --- |
+| `"request"` | A native OpenAI Decisions request for gpt-6-luna, at most 1600 KiB, with inline images only |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/local_agent/decisions`
+
+#### LocalAgentResponse
+
+| Field | Description |
+| --- | --- |
+| `"input"` |  |
+| `"model"` |  |
+| `"service_tier"` |  |
+| `"store"` |  |
+| `"stream"` |  |
+| `"tools"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/local_agent/responses`
+
 #### LocalThreadDelivery
 
 | Field | Description |
@@ -3363,6 +6528,67 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threa
 Operations: List.
 
 API path: `/api/v1/hosting/locations`
+
+#### LogStreamChunk
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks`
+
+#### LogoImage
+
+| Field | Description |
+| --- | --- |
+| `"activated_products"` | Products this organization has activated (PRD 144). |
+| `"agents_only"` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `"can_activate_products"` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"github_prs_authored_by_change_author"` |  |
+| `"id"` |  |
+| `"logo_url"` |  |
+| `"member_count"` |  |
+| `"name"` |  |
+| `"pending_invitation_count"` |  |
+| `"personal"` |  |
+| `"repository_count"` |  |
+| `"role"` |  |
+| `"sandbox_region"` |  |
+| `"shared_agent_personal_accounts_enabled"` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `"slug"` |  |
+| `"source_control_providers"` | Connected source control providers for this organization. |
+| `"source_ui_enabled"` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `"timezone"` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+| `"verify_pr_scenario_writing_enabled"` |  |
+
+Operations: Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/logo_image`
+
+#### MarketingSetting
+
+| Field | Description |
+| --- | --- |
+| `"call_first"` |  |
+
+Operations: List.
+
+API path: `/api/v1/marketing_settings`
+
+#### McpOauth
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/mcp/oauth/consent`
 
 #### Me
 
@@ -3490,6 +6716,29 @@ Operations: Create, List, Load, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/memories`
 
+#### MergeQueueEntry
+
+| Field | Description |
+| --- | --- |
+| `"analytics"` | Queue performance for the reporting window. |
+| `"change_id"` |  |
+| `"expected_target_commit_id"` |  |
+| `"expected_target_version"` |  |
+| `"expected_version"` |  |
+| `"github_pr_number"` |  |
+| `"id"` |  |
+| `"idempotency_key"` |  |
+| `"kind"` |  |
+| `"policy"` |  |
+| `"priority"` |  |
+| `"queue"` |  |
+| `"target_branches"` | Bookmark names for the target picker. |
+| `"when_ready"` |  |
+
+Operations: Create, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/merge`
+
 #### MergeRequest
 
 | Field | Description |
@@ -3531,6 +6780,26 @@ API path: `/api/v1/organizations/{organization_id}/verify/memories`
 Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun`
+
+#### MergeResolution
+
+| Field | Description |
+| --- | --- |
+| `"action"` |  |
+| `"base"` | Common ancestor file contents |
+| `"content"` |  |
+| `"context"` | Optional surrounding files keyed by path |
+| `"duration_ms"` |  |
+| `"fallback"` |  |
+| `"model"` |  |
+| `"ours"` | Current / left file contents |
+| `"path"` | Repository-relative path of the conflicted file |
+| `"resolved"` |  |
+| `"theirs"` | Incoming / right file contents |
+
+Operations: Create.
+
+API path: `/api/v1/merge_resolutions`
 
 #### MessagingConversationMessage
 
@@ -3575,6 +6844,45 @@ Operations: List.
 
 API path: `/api/v1/hosting/metrics/queries`
 
+#### MetronomeWebhook
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/metronome/webhooks`
+
+#### ModelSubscriptionAccount
+
+| Field | Description |
+| --- | --- |
+| `"accounts"` |  |
+| `"agents"` |  |
+| `"can_disconnect"` |  |
+| `"connection_agent"` |  |
+| `"email"` |  |
+| `"id"` |  |
+| `"label"` |  |
+| `"provider"` |  |
+| `"saved"` |  |
+| `"status"` |  |
+| `"usable"` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/model_subscription_accounts`
+
+#### ModelSubscriptionAccountConnection
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Load, Update.
+
+API path: `/api/v1/model_subscription_accounts/connection/{agent_id}`
+
 #### NetworkConnection
 
 | Field | Description |
@@ -3593,6 +6901,62 @@ API path: `/api/v1/hosting/metrics/queries`
 Operations: Create, Patch, Update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/network_connections`
+
+#### NetworkingSpace
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{id}/activate`
+
+#### Node
+
+| Field | Description |
+| --- | --- |
+| `"account_avatar_url"` |  |
+| `"account_id"` |  |
+| `"account_login"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"id"` |  |
+| `"installation_id"` |  |
+| `"installed_at"` |  |
+| `"installed_at_label"` |  |
+| `"manage_access_url"` |  |
+| `"organization_id"` |  |
+| `"permission_entries"` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `"permissions"` |  |
+| `"status"` |  |
+| `"suspended_at"` |  |
+| `"suspended_at_label"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/pages/nodes`
+
+#### NodeCertificate
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/certificate/rotate`
+
+#### NodeLease
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/claim`
 
 #### NomadAllocation
 
@@ -3641,6 +7005,73 @@ Operations: List.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs`
 
+#### Now
+
+| Field | Description |
+| --- | --- |
+| `"needs_attention"` |  |
+| `"pagination"` |  |
+| `"recently_landed"` |  |
+| `"shipping_now"` |  |
+| `"summary"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/now`
+
+#### ObservabilityClickhouseCluster
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/clickhouse_clusters/{id}/activate`
+
+#### ObservabilityQuickwitCluster
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/quickwit_clusters/{id}/activate`
+
+#### ObservabilitySpace
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/spaces/{id}/activate`
+
+#### Openapi
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/openapi`
+
+#### OrgInvitation
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+| `"invitation"` |  |
+| `"registration_options"` |  |
+| `"requires_password_setup"` |  |
+| `"start_guided_setup"` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/org_invitations/{token}/accept`
+
 #### Organization
 
 | Field | Description |
@@ -3673,6 +7104,233 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs`
 Operations: Create, List, Load, Patch, Update.
 
 API path: `/api/v1/organizations`
+
+#### OrganizationApp
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: List, Remove, Update.
+
+API path: `/api/v1/spark/organizations/{organization_id}/apps`
+
+#### OrganizationControl
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/control/admission`
+
+#### OrganizationDevice
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/control`
+
+#### OrganizationIdentityCertificate
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/identity_certificates/{id}/expire`
+
+#### OrganizationInteraction
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/interactions`
+
+#### OrganizationInvitation
+
+| Field | Description |
+| --- | --- |
+| `"email"` |  |
+| `"id"` |  |
+| `"role"` |  |
+
+Operations: Create, Remove.
+
+API path: `/api/v1/admin/organizations/{org_slug}/invitations`
+
+#### OrganizationMessageFile
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/message_files`
+
+#### OrganizationOidcTrust
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/activate`
+
+#### OrganizationRunEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/run_events`
+
+#### OrganizationRunOutcome
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/run_outcomes`
+
+#### OrganizationRunUsage
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/run_usages`
+
+#### OrganizationSandbox
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sandbox/automation-cleanup`
+
+#### OrganizationSecret
+
+| Field | Description |
+| --- | --- |
+| `"app_environment_id"` |  |
+| `"app_service_id"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"created_by"` |  |
+| `"current_version"` |  |
+| `"description"` |  |
+| `"env_key"` |  |
+| `"expose_to_build"` |  |
+| `"expose_to_ci"` |  |
+| `"hosted_app_id"` |  |
+| `"id"` |  |
+| `"last_accessed_at"` |  |
+| `"last_accessed_at_label"` |  |
+| `"last_accessed_by"` |  |
+| `"latest_version_number"` |  |
+| `"name"` |  |
+| `"organization_id"` |  |
+| `"owner_service_account_id"` |  |
+| `"rotation_policy"` |  |
+| `"scope_kind"` |  |
+| `"slug"` |  |
+| `"status"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/secrets/{id}/disable`
+
+#### OrganizationServiceAccount
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/service_accounts/{id}/activate`
+
+#### OrganizationSetting
+
+| Field | Description |
+| --- | --- |
+| `"concurrent_run_limit_override"` |  |
+| `"customize_onboarding_packages"` |  |
+| `"daily_run_limit_override"` |  |
+| `"deployment_usage_visibility"` |  |
+| `"monthly_browser_minutes_limit_override"` |  |
+| `"monthly_budget_dollars"` |  |
+| `"name"` |  |
+| `"onboarding_custom_pricing"` |  |
+| `"onboarding_package_keys"` |  |
+
+Operations: Update.
+
+API path: `/api/v1/admin/organizations/{org_slug}/settings`
+
+#### OrganizationSite
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Remove, Update.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/token`
+
+#### OrganizationSubscription
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/subscriptions/selection`
+
+#### OrganizationTool
+
+| Field | Description |
+| --- | --- |
+| `"arguments"` |  |
+| `"native_agent_id"` |  |
+| `"tool"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/tools`
+
+#### OrganizationWorkloadIdentity
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/workload_identities/{id}/activate`
+
+#### OtelIngest
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/otel_ingest/authorize`
 
 #### Page
 
@@ -3729,6 +7387,70 @@ Operations: Create, List, Load.
 
 API path: `/api/v1/organizations/{organization_id}/agents/page/activity`
 
+#### PageArtefact
+
+| Field | Description |
+| --- | --- |
+| `"artefact"` |  |
+| `"automation"` |  |
+| `"automation_invocation_id"` |  |
+| `"byte_size"` |  |
+| `"checksum_sha256"` |  |
+| `"comment_threads"` |  |
+| `"content_type"` |  |
+| `"created_at"` |  |
+| `"created_by_user_id"` |  |
+| `"description"` |  |
+| `"document_key"` | Stable document identity shared by all revisions. |
+| `"draft"` | The autosaved working copy of the newest Markdown version; null for older versions and other files. |
+| `"entrypoint"` |  |
+| `"expires_at"` |  |
+| `"filename"` |  |
+| `"files"` |  |
+| `"harness"` |  |
+| `"harness_version"` |  |
+| `"id"` |  |
+| `"kind"` |  |
+| `"kinds"` |  |
+| `"model"` |  |
+| `"organization"` |  |
+| `"organization_id"` |  |
+| `"pagination"` |  |
+| `"permissions"` |  |
+| `"preview"` |  |
+| `"published_at"` |  |
+| `"published_at_label"` |  |
+| `"publisher"` |  |
+| `"repository"` |  |
+| `"repository_id"` |  |
+| `"selected_path"` |  |
+| `"slug"` |  |
+| `"source"` |  |
+| `"status"` |  |
+| `"title"` |  |
+| `"vcs_agent_checkpoint_id"` |  |
+| `"vcs_agent_session_id"` |  |
+| `"version"` |  |
+| `"versions"` |  |
+| `"view_url"` |  |
+| `"web_url"` |  |
+
+Operations: List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/page`
+
+#### PageCiPipelineRun
+
+| Field | Description |
+| --- | --- |
+| `"error"` |  |
+| `"id"` |  |
+| `"jobs"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/page`
+
 #### PageProjectRun
 
 | Field | Description |
@@ -3750,6 +7472,85 @@ API path: `/api/v1/organizations/{organization_id}/agents/page/activity`
 Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/page`
+
+#### PageRepoVcCommit
+
+| Field | Description |
+| --- | --- |
+| `"commit"` |  |
+| `"diff_path"` | Fingerprinted path serving this commit range's file diff. |
+| `"id"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits/{id}/page`
+
+#### PagesBilling
+
+| Field | Description |
+| --- | --- |
+| `"addons"` |  |
+| `"breakdown"` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `"budget"` |  |
+| `"can_manage_contact"` |  |
+| `"can_manage_extra_spend"` |  |
+| `"can_manage_local_subscription"` |  |
+| `"can_manage_payment_method"` |  |
+| `"can_set_up_billing"` |  |
+| `"customer"` |  |
+| `"deployment_usage_visible"` |  |
+| `"entitlements"` |  |
+| `"extra_spend_enabled"` | Organization consent to paid overages across all metered usage. |
+| `"feature_enabled"` | Whether the `billing` feature is on for this organization. |
+| `"organization_id"` |  |
+| `"package"` |  |
+| `"prepaid"` |  |
+| `"preview"` | Metronome draft invoice and credits, or null. |
+| `"storage_usage"` |  |
+| `"stripe"` |  |
+| `"subscription"` |  |
+| `"token_account"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/billing`
+
+#### PagesGithubOnboarding
+
+| Field | Description |
+| --- | --- |
+| `"onboarding"` |  |
+| `"organization"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/github_onboarding`
+
+#### PagesMember
+
+| Field | Description |
+| --- | --- |
+| `"accepted_at"` |  |
+| `"accepted_by_user"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"email"` |  |
+| `"email_delivery_status"` |  |
+| `"expires_at"` |  |
+| `"expires_at_label"` |  |
+| `"id"` |  |
+| `"invite_url"` |  |
+| `"invited_by_user"` |  |
+| `"organization"` |  |
+| `"revoked_at"` |  |
+| `"role"` |  |
+| `"status"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/members`
 
 #### PagesProjectCredential
 
@@ -3826,6 +7627,105 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenarios`
 
+#### PagesRegistry
+
+| Field | Description |
+| --- | --- |
+| `"active_repository_count"` |  |
+| `"error"` |  |
+| `"pagination"` |  |
+| `"repositories"` |  |
+| `"repository_count"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/registry`
+
+#### PagesSession
+
+| Field | Description |
+| --- | --- |
+| `"adapter"` |  |
+| `"created_at"` |  |
+| `"cursor"` |  |
+| `"ended_at"` |  |
+| `"external_session_id"` |  |
+| `"facets"` |  |
+| `"from"` |  |
+| `"github_access_warnings"` |  |
+| `"harness"` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `"id"` |  |
+| `"last_activity_at"` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `"last_checkpoint_at"` |  |
+| `"limit"` |  |
+| `"markers"` |  |
+| `"max_bytes"` |  |
+| `"mode"` |  |
+| `"offset"` |  |
+| `"pagination"` |  |
+| `"query"` |  |
+| `"repo"` |  |
+| `"repository"` |  |
+| `"search"` |  |
+| `"search_enabled"` |  |
+| `"session"` | Identical serialization to the org sessions page's expanded session, so the web reuses one session-detail builder. |
+| `"sessions"` |  |
+| `"started_at"` |  |
+| `"stats"` |  |
+| `"status"` |  |
+| `"title"` |  |
+| `"to"` |  |
+| `"token_stats"` |  |
+| `"transcript_index"` |  |
+| `"transcript_stats"` |  |
+| `"updated_at"` |  |
+| `"user"` |  |
+| `"user_id"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/sessions`
+
+#### Pairing
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/relay/pairings`
+
+#### PairingEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/relay/pairings/{id}/events`
+
+#### ParallelV1
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/local_agent/parallel/v1/extract`
+
+#### PatchsetDiff
+
+| Field | Description |
+| --- | --- |
+| `"files"` |  |
+| `"id"` |  |
+| `"patchset"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/patchsets/{patchset_number}/diff/{fingerprint}`
+
 #### PersonalAccessToken
 
 | Field | Description |
@@ -3893,6 +7793,58 @@ API path: `/api/v1/hosting/apps/{app_id}/previews/{preview_id}/secrets/{id}/rota
 Operations: Create, List.
 
 API path: `/api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals`
+
+#### ProactiveAgentWaitlistEntry
+
+| Field | Description |
+| --- | --- |
+| `"email"` |  |
+| `"first_task"` | The first job they would hand an agent. |
+| `"invite_code"` | The referral code of the invite link they arrived through. |
+| `"places_per_referral"` | Most places one referral moves the entry up; fewer when boosted entries are ahead. |
+| `"position"` | 1-based place in the queue. |
+| `"position_after_next_referral"` | The place one more referral would give this entry, as Rails would assign it. |
+| `"referral_code"` | Shared in this entry's invite link. |
+| `"referral_count"` | People who joined through this entry's link. |
+| `"total"` | Display total including a random increment per signup; not the actual number of entries. |
+| `"website"` | Honeypot. |
+
+Operations: Create, Load.
+
+API path: `/api/v1/proactive_agent_waitlist_entries`
+
+#### Product
+
+| Field | Description |
+| --- | --- |
+| `"activated_products"` | Products this organization has activated (PRD 144). |
+| `"agents_only"` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `"can_activate_products"` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"github_prs_authored_by_change_author"` |  |
+| `"id"` |  |
+| `"logo_url"` |  |
+| `"member_count"` |  |
+| `"name"` |  |
+| `"pending_invitation_count"` |  |
+| `"personal"` |  |
+| `"product"` |  |
+| `"repository_count"` |  |
+| `"role"` |  |
+| `"sandbox_region"` |  |
+| `"shared_agent_personal_accounts_enabled"` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `"slug"` |  |
+| `"source_control_providers"` | Connected source control providers for this organization. |
+| `"source_ui_enabled"` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `"timezone"` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+| `"verify_pr_scenario_writing_enabled"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/products`
 
 #### ProductMapIdentityDecision
 
@@ -4434,6 +8386,41 @@ Operations: Create, Load, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share`
 
+#### PullRequestAction
+
+| Field | Description |
+| --- | --- |
+| `"action_name"` |  |
+| `"body"` |  |
+| `"comment_id"` |  |
+| `"comments"` |  |
+| `"event"` |  |
+| `"expected_head_sha"` |  |
+| `"id"` |  |
+| `"label"` |  |
+| `"line"` |  |
+| `"node_id"` |  |
+| `"operation_key"` |  |
+| `"path"` |  |
+| `"run_id"` |  |
+| `"side"` |  |
+| `"start_line"` |  |
+| `"start_side"` |  |
+| `"thread_id"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/actions`
+
+#### PullRequestMagicMerge
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/merge`
+
 #### PullRequestSetting
 
 | Field | Description |
@@ -4534,6 +8521,42 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/verify/pull_request_settings/detect_comments`
 
+#### PullRequestTranscript
+
+| Field | Description |
+| --- | --- |
+| `"adapter"` |  |
+| `"created_at"` |  |
+| `"ended_at"` |  |
+| `"external_session_id"` |  |
+| `"harness"` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `"id"` |  |
+| `"last_activity_at"` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `"last_checkpoint_at"` |  |
+| `"repository"` |  |
+| `"started_at"` |  |
+| `"stats"` |  |
+| `"status"` |  |
+| `"title"` |  |
+| `"updated_at"` |  |
+| `"user"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/pull_request/{number}/transcripts`
+
+#### PullZone
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+| `"name"` |  |
+| `"slug"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/pull_zones`
+
 #### Recorder
 
 | Field | Description |
@@ -4564,6 +8587,34 @@ Operations: Create.
 
 API path: `/api/v1/registry/v2/authorize`
 
+#### RelayAgentConnection
+
+| Field | Description |
+| --- | --- |
+| `"agent_card_url"` |  |
+| `"auth_scheme"` |  |
+| `"can_configure"` |  |
+| `"can_disconnect"` |  |
+| `"can_setup"` |  |
+| `"connection"` |  |
+| `"credential"` | Write-only outbound key. |
+| `"error_code"` |  |
+| `"expected_generation"` |  |
+| `"generation"` |  |
+| `"id"` |  |
+| `"name"` |  |
+| `"remote_agent"` |  |
+| `"requester_id"` |  |
+| `"retired_at"` |  |
+| `"revoked_at"` |  |
+| `"scope_key"` |  |
+| `"source_operation_id"` |  |
+| `"state"` |  |
+
+Operations: Create, List, Load, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup`
+
 #### RelayAgentLocalThread
 
 | Field | Description |
@@ -4573,6 +8624,263 @@ API path: `/api/v1/registry/v2/authorize`
 Operations: Remove.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/relay`
+
+#### RelaySignal
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/relay/signals`
+
+#### ReleaseRollout
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/execution/releases/{release_id}/rollouts/{id}/complete`
+
+#### Repo
+
+| Field | Description |
+| --- | --- |
+| `"can_retry_import"` | True when a failed client import can be requeued for CLI resume. |
+| `"can_retry_sync"` | True when the latest sync run failed and can be retried. |
+| `"disclaimer"` |  |
+| `"federated_in_home"` | True when this Space is a folder virtual repository inside the organization Home monorepo. |
+| `"github_repository"` |  |
+| `"icon_name"` |  |
+| `"id"` | Virtual repository public ID for non-Home rows; Home uses the physical repository public ID. |
+| `"import_item_id"` |  |
+| `"is_home"` |  |
+| `"name"` |  |
+| `"remote_repository"` |  |
+| `"root_path"` | Home-relative folder path when federated_in_home is true; null otherwise. |
+| `"slug"` |  |
+| `"sync_error_message"` |  |
+| `"sync_provider"` |  |
+| `"sync_status"` |  |
+
+Operations: List, Load, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos`
+
+#### RepoAccessToken
+
+| Field | Description |
+| --- | --- |
+| `"access_token"` |  |
+| `"active"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"credential_purpose"` | Issues a revocable read-write system credential valid for one hour. |
+| `"expires_at"` |  |
+| `"expires_at_label"` |  |
+| `"expires_in_days"` |  |
+| `"id"` |  |
+| `"last_used_at"` |  |
+| `"last_used_at_label"` |  |
+| `"name"` |  |
+| `"permission_level"` |  |
+| `"plain_text_token"` |  |
+| `"revoked_at"` |  |
+| `"revoked_at_label"` |  |
+| `"token_preview"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/access_tokens`
+
+#### RepoAction
+
+| Field | Description |
+| --- | --- |
+| `"pipeline"` |  |
+| `"run"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/actions`
+
+#### RepoAgentCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_checkpoints/{id}`
+
+#### RepoAgentSession
+
+| Field | Description |
+| --- | --- |
+| `"adapter"` |  |
+| `"agent_session"` |  |
+| `"external_session_id"` |  |
+| `"id"` |  |
+| `"status"` |  |
+| `"title"` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete`
+
+#### RepoBookmarkProtection
+
+| Field | Description |
+| --- | --- |
+| `"actor_policy"` |  |
+| `"bypass_mode"` |  |
+| `"created_at"` |  |
+| `"created_by_user_id"` |  |
+| `"enabled"` |  |
+| `"id"` |  |
+| `"name"` |  |
+| `"organization_id"` |  |
+| `"priority"` |  |
+| `"repository_id"` |  |
+| `"requirements"` |  |
+| `"target_kind"` |  |
+| `"target_pattern"` |  |
+| `"updated_at"` |  |
+| `"updated_by_user_id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections`
+
+#### RepoBookmarkProtectionEvent
+
+| Field | Description |
+| --- | --- |
+| `"action"` |  |
+| `"actor_kind"` |  |
+| `"actor_label"` |  |
+| `"actor_user_id"` |  |
+| `"bookmark_name"` |  |
+| `"bookmark_protection_rule_id"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"decision"` |  |
+| `"id"` |  |
+| `"intent"` |  |
+| `"metadata"` |  |
+| `"new_target"` |  |
+| `"old_target"` |  |
+| `"organization_id"` |  |
+| `"reason_codes"` |  |
+| `"repository_id"` |  |
+| `"source_request_id"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protection_events`
+
+#### RepoCloudWorkspaceBackup
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/restore_request`
+
+#### RepoCodeRule
+
+| Field | Description |
+| --- | --- |
+| `"active_revision_number"` |  |
+| `"capabilities"` |  |
+| `"code_rule"` |  |
+| `"created_at"` |  |
+| `"definition"` |  |
+| `"draft_pending"` | The latest revision is not the active one |
+| `"enabled"` |  |
+| `"expected_version"` |  |
+| `"id"` |  |
+| `"latest_revision_number"` |  |
+| `"name"` | Name of the latest revision |
+| `"repository"` |  |
+| `"scope"` |  |
+| `"slug"` |  |
+| `"state_version"` | Send back as expected_version on every mutation |
+| `"updated_at"` |  |
+| `"web_url"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules`
+
+#### RepoSetting
+
+| Field | Description |
+| --- | --- |
+| `"active"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"description"` |  |
+| `"expires_at"` |  |
+| `"expires_at_label"` |  |
+| `"icon_name"` |  |
+| `"id"` |  |
+| `"last_used_at"` |  |
+| `"last_used_at_label"` |  |
+| `"merge_authority"` |  |
+| `"name"` |  |
+| `"organization_id"` |  |
+| `"permission_level"` |  |
+| `"revoked_at"` |  |
+| `"revoked_at_label"` |  |
+| `"slug"` |  |
+| `"status"` |  |
+| `"token_preview"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+
+Operations: List, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings`
+
+#### RepoStat
+
+| Field | Description |
+| --- | --- |
+| `"repository_stats"` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/stats/refresh`
+
+#### RepoVc
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commit_file`
+
+#### RepoVcCommit
+
+| Field | Description |
+| --- | --- |
+| `"name"` |  |
+| `"target_commit_id"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits`
 
 #### ReportReplay
 
@@ -4607,6 +8915,260 @@ API path: `/api/v1/organizations/{organization_id}/verify/explorations/{id}/repo
 Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/verify/explorations/{id}/report/scenarios`
+
+#### RepositoryAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/repository_access/authorize`
+
+#### RepositoryAccessResolve
+
+| Field | Description |
+| --- | --- |
+| `"default_branch"` |  |
+| `"git_auth_username"` |  |
+| `"git_https_clone_url"` |  |
+| `"git_https_supported"` |  |
+| `"github_access_warnings"` |  |
+| `"id"` |  |
+| `"membership_role"` |  |
+| `"organization_id"` |  |
+| `"organization_name"` |  |
+| `"organization_slug"` |  |
+| `"repository_id"` |  |
+| `"repository_name"` |  |
+| `"repository_slug"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/repository_access/resolve/{org_slug}/{repo_slug}`
+
+#### RepositoryEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/repository_events/walgit`
+
+#### RepositoryImport
+
+| Field | Description |
+| --- | --- |
+| `"can_manage_connections"` |  |
+| `"github_imports"` |  |
+| `"github_installations"` |  |
+| `"gitlab_configured"` |  |
+| `"gitlab_imports"` |  |
+| `"gitlab_integrations"` |  |
+| `"gitlab_redirect_uri"` |  |
+| `"gitlab_self_managed_available"` |  |
+| `"inventory_errors"` |  |
+| `"organization_id"` |  |
+| `"repositories"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/repository_import`
+
+#### RepositoryImportSession
+
+| Field | Description |
+| --- | --- |
+| `"action_required"` |  |
+| `"authorization_endpoint"` |  |
+| `"can_authorize_github"` |  |
+| `"client_name"` |  |
+| `"client_version"` |  |
+| `"created_at"` |  |
+| `"error_message"` |  |
+| `"expires_at"` |  |
+| `"git_imports"` |  |
+| `"github_app_installation_id"` |  |
+| `"github_connected"` |  |
+| `"id"` |  |
+| `"idempotency_key"` |  |
+| `"organization_id"` |  |
+| `"organization_slug"` |  |
+| `"status"` |  |
+| `"updated_at"` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/repository_import_sessions/{id}/authorization`
+
+#### RepositoryImportSessionRepository
+
+| Field | Description |
+| --- | --- |
+| `"default_branch"` |  |
+| `"full_name"` |  |
+| `"name"` |  |
+| `"owner"` |  |
+| `"private"` |  |
+| `"reason"` |  |
+| `"selectable"` |  |
+| `"status"` |  |
+| `"visibility"` |  |
+
+Operations: List.
+
+API path: `/api/v1/repository_import_sessions/{id}/repositories`
+
+#### RepositoryImportSessionSelection
+
+| Field | Description |
+| --- | --- |
+| `"repositories"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/repository_import_sessions/{id}/selections`
+
+#### RepositorySandboxEnvironment
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/repositories/{repository}/sandbox_environments/validate`
+
+#### RoderCodeRepair
+
+| Field | Description |
+| --- | --- |
+| `"base_sha"` |  |
+| `"cancel_requested"` |  |
+| `"failure_code"` |  |
+| `"id"` |  |
+| `"launch_state"` |  |
+| `"organization_id"` |  |
+| `"repository_slug"` |  |
+| `"roder_thread_id"` |  |
+| `"roder_turn_id"` |  |
+| `"scenario_run_id"` |  |
+| `"task"` |  |
+| `"trigger_kind"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/agent/roder/code_repairs/{id}/cancel`
+
+#### RoderCodeRepairSetting
+
+| Field | Description |
+| --- | --- |
+| `"available"` |  |
+| `"daily_limit"` |  |
+| `"enabled"` |  |
+| `"enabled_at"` |  |
+| `"operator_user_id"` |  |
+| `"organization_id"` |  |
+| `"repository_slug"` | Connected Composal repository required when enabling |
+
+Operations: Create, List.
+
+API path: `/api/v1/agent/roder/code_repair_settings`
+
+#### RoderMachine
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Update.
+
+API path: `/api/v1/agent/roder/machines/{public_id}`
+
+#### RoderRun
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/agent/roder/run/swarm_activity`
+
+#### RoderWorkspaceCredential
+
+| Field | Description |
+| --- | --- |
+| `"api_token"` | Short-lived personal access token for the spawning user. |
+| `"author_email"` |  |
+| `"author_name"` |  |
+| `"clone_url"` |  |
+| `"default_branch"` |  |
+| `"expires_at"` |  |
+| `"organization_id"` |  |
+| `"repository_id"` |  |
+| `"repository_slug"` |  |
+| `"repository_spec"` | The explicitly selected physical repository address. |
+| `"required_lifetime_seconds"` | Lifetime the pending clone or command must be able to complete within. |
+| `"token"` | Short-lived read/write repository credential. |
+| `"username"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/agent/roder/workspace_credentials`
+
+#### RunArtifact
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts`
+
+#### RunJob
+
+| Field | Description |
+| --- | --- |
+| `"active"` |  |
+| `"allow_failure"` |  |
+| `"cache_archive_observations"` | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `"ci_pipeline_run_id"` |  |
+| `"ci_runner_id"` |  |
+| `"created_at"` |  |
+| `"dependencies_csv"` |  |
+| `"display_id"` |  |
+| `"environment_csv"` |  |
+| `"execution_order"` |  |
+| `"execution_profile"` |  |
+| `"exit_code"` |  |
+| `"failed"` |  |
+| `"finished_at"` |  |
+| `"id"` |  |
+| `"kind"` |  |
+| `"log_chunks"` |  |
+| `"name"` |  |
+| `"number"` |  |
+| `"organization_id"` |  |
+| `"queued_at"` |  |
+| `"reconciliation_id"` |  |
+| `"retry_number"` |  |
+| `"reuse"` |  |
+| `"runner_label_selector"` |  |
+| `"slug"` |  |
+| `"started_at"` |  |
+| `"status"` |  |
+| `"status_label"` |  |
+| `"status_state"` |  |
+| `"status_tone"` |  |
+| `"steps"` |  |
+| `"timeout_seconds"` |  |
+| `"updated_at"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs`
 
 #### RunScenarioRun
 
@@ -4675,6 +9237,95 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/verify/run_updates`
 
+#### RunWorkspaceCredential
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/agent/roder/run/workspace_credentials`
+
+#### RunnerLease
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim`
+
+#### RunnerPoolNodeEnrollmentToken
+
+| Field | Description |
+| --- | --- |
+| `"capabilities_csv"` |  |
+| `"ci_runner_pool_id"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"creator_user_id"` |  |
+| `"description"` |  |
+| `"expires_at"` |  |
+| `"expires_at_label"` |  |
+| `"id"` |  |
+| `"kind"` |  |
+| `"last_used_at"` |  |
+| `"last_used_at_label"` |  |
+| `"name"` |  |
+| `"organization_id"` |  |
+| `"raw_token"` |  |
+| `"revoked_at"` |  |
+| `"status"` |  |
+| `"token_hint"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+| `"usage_count"` |  |
+| `"usage_count_label"` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/ci/runner_pools/{runner_pool_id}/node_enrollment_tokens/{id}/revoke`
+
+#### RunnerPoolRunner
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat`
+
+#### RuntimeInstanceHealthSnapshot
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots`
+
+#### SandboxIntegration
+
+| Field | Description |
+| --- | --- |
+| `"can_manage"` |  |
+| `"catalog"` |  |
+| `"configuration"` |  |
+| `"connected_profiles"` | Connected profiles per provider across the organization. |
+| `"credentials"` |  |
+| `"enabled"` |  |
+| `"id"` |  |
+| `"integrations"` |  |
+| `"name"` |  |
+| `"provider"` |  |
+| `"version"` |  |
+
+Operations: Create, List, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/sandbox_integrations`
+
 #### ScenarioRevision
 
 | Field | Description |
@@ -4713,6 +9364,26 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/run`
 
+#### SecretGrant
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}/restore`
+
+#### SecretVersion
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}/redact`
+
 #### ServiceEndpoint
 
 | Field | Description |
@@ -4722,6 +9393,200 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints`
+
+#### Setting
+
+| Field | Description |
+| --- | --- |
+| `"can_manage_pr_scenario_writing"` |  |
+| `"can_manage_sandbox_region"` |  |
+| `"dedicated_outbound_ip_addresses"` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `"default_trunk_bookmark"` |  |
+| `"organization"` |  |
+| `"sandbox_regions"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/settings`
+
+#### SettingMutationLease
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/mutation_lease/clear`
+
+#### Signal
+
+| Field | Description |
+| --- | --- |
+| `"acked_at"` |  |
+| `"acked_by"` | Who acked the signal, read from `acked_by_user_id`. |
+| `"agent_runs"` | Dispatched-run summary (docs §6c). |
+| `"app_service_id"` |  |
+| `"attribution"` | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
+| `"created_at"` | ISO8601 row insert time — retention math and debugging only. |
+| `"dedupe_key"` |  |
+| `"hosted_app_id"` |  |
+| `"id"` | The signal's own `sig_…` public id — also the paging cursor value. |
+| `"kind"` | A frozen taxonomy kind (§1) or an `app.custom.*` kind. |
+| `"links"` | Canonical, relative API paths built from real routes (docs §6a). |
+| `"occurred_at"` | ISO8601 domain event time — what the UI displays and `since` filters on. |
+| `"organization_id"` |  |
+| `"payload"` | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
+| `"recovery"` | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `"resolution"` | Recovery pairing (docs §6b). |
+| `"severity"` | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
+| `"source"` | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
+| `"subject_id"` |  |
+| `"subject_type"` | Polymorphic pointer: `AppDeployment`, `RuntimeInstance`, `AlertEvent`, `HostedApp`, or `SignalSubscription`. |
+| `"summary"` | One-line, kind-composed human sentence for the feed row (docs §6d, e.g. |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/signals/{id}/ack`
+
+#### SignalInbound
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Update.
+
+API path: `/api/v1/signals/inbound/{provider}/{inbound_token}`
+
+#### SignalIntegration
+
+| Field | Description |
+| --- | --- |
+| `"api_token"` | Optional provider API token for target discovery and backfill. |
+| `"api_token_stored"` |  |
+| `"config"` |  |
+| `"created_at"` |  |
+| `"failure_message"` |  |
+| `"id"` | Public id (`sint_…`). |
+| `"inbound_path"` |  |
+| `"inbound_url"` | The absolute URL to paste into the provider's webhook configuration. |
+| `"last_received_at"` |  |
+| `"last_verified_at"` |  |
+| `"mode"` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `"name"` |  |
+| `"organization_id"` |  |
+| `"provider"` |  |
+| `"rejected_signature_count"` | Deliveries rejected for a bad or missing signature. |
+| `"status"` |  |
+| `"target_count"` |  |
+| `"unmapped_delivery_count"` | Deliveries accepted whose provider resource matched no enabled target. |
+| `"updated_at"` |  |
+| `"webhook_secret"` | The provider's signing secret. |
+| `"webhook_secret_stored"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{id}/regenerate_inbound_token`
+
+#### SignalIntegrationDelivery
+
+| Field | Description |
+| --- | --- |
+| `"attempt_count"` |  |
+| `"created_at"` |  |
+| `"delivery_id"` | The provider's delivery id, or a `content-…` id derived from the event kind, its timestamp header and the body checksum when it sends none. |
+| `"event_kind"` |  |
+| `"id"` | Public id (`sdel_…`). |
+| `"last_error"` |  |
+| `"ops_signal_id"` | Public id (`sig_…`) of the signal this delivery emitted. |
+| `"organization_id"` |  |
+| `"processed_at"` |  |
+| `"provider"` |  |
+| `"received_at"` |  |
+| `"signal_integration_id"` |  |
+| `"state"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/deliveries`
+
+#### SignalIntegrationTarget
+
+| Field | Description |
+| --- | --- |
+| `"app_service_id"` |  |
+| `"created_at"` |  |
+| `"display_name"` |  |
+| `"enabled"` |  |
+| `"external_id"` |  |
+| `"external_kind"` |  |
+| `"external_slug"` |  |
+| `"hosted_app_id"` |  |
+| `"id"` | Public id (`stgt_…`). |
+| `"organization_id"` |  |
+| `"signal_integration_id"` |  |
+| `"signal_integration_targets"` |  |
+| `"targets"` |  |
+| `"updated_at"` |  |
+
+Operations: List, Update.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/targets`
+
+#### SignalSubscription
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/signal_subscriptions`
+
+#### Site
+
+| Field | Description |
+| --- | --- |
+| `"activated_at"` |  |
+| `"activated_at_label"` |  |
+| `"commit_sha"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"creator_user_id"` |  |
+| `"deploy_slug"` |  |
+| `"failure_message"` |  |
+| `"file_count"` |  |
+| `"file_count_label"` |  |
+| `"finished_at"` |  |
+| `"finished_at_label"` |  |
+| `"id"` |  |
+| `"is_active"` |  |
+| `"source_ref"` |  |
+| `"started_at"` |  |
+| `"started_at_label"` |  |
+| `"static_site_id"` |  |
+| `"status"` |  |
+| `"total_bytes"` |  |
+| `"total_bytes_label"` |  |
+| `"trigger_kind"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+| `"uploaded_at"` |  |
+| `"uploaded_at_label"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/sites`
+
+#### SiteAccessKey
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys`
 
 #### SitePreview
 
@@ -4734,6 +9599,18 @@ API path: `/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints`
 Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/site_preview`
+
+#### SiteSecret
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+| `"native_agent_id"` |  |
+| `"value"` |  |
+
+Operations: Remove, Update.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/secrets/{secret_name}`
 
 #### SlackChannel
 
@@ -4749,6 +9626,235 @@ API path: `/api/v1/organizations/{organization_id}/verify/site_preview`
 Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/slack/channels`
+
+#### SourceConnection
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/source_connections/{id}/refresh`
+
+#### SpaceAlertRule
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/spaces/{space_id}/alert_rules/{id}/activate`
+
+#### SpaceAuditEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/observability/spaces/{space_id}/audit_events`
+
+#### SpaceDnsRecord
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/dns_records`
+
+#### SpaceEnrollmentToken
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}/revoke`
+
+#### SpaceGateway
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/gateways/{id}/heartbeat`
+
+#### SpaceGroup
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/groups`
+
+#### SpaceGroupMembership
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/group_memberships`
+
+#### SpaceLogStream
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/observability/spaces/{space_id}/log_streams`
+
+#### SpaceMetricSery
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/observability/spaces/{space_id}/metric_series`
+
+#### SpaceOtelCollector
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/spaces/{space_id}/otel_collectors/{id}/activate`
+
+#### SpacePeer
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/peers/{id}/approve`
+
+#### SpacePeerAttachment
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/peer_attachments`
+
+#### SpacePolicy
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/policies/{id}/activate`
+
+#### SpaceSegment
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/segments`
+
+#### SpaceTraceSpan
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/observability/spaces/{space_id}/trace_spans`
+
+#### Spark
+
+| Field | Description |
+| --- | --- |
+| `"activated_products"` | Products this organization has activated (PRD 144). |
+| `"agents_only"` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `"can_activate_products"` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `"can_manage"` |  |
+| `"compute_credit_cents"` | Included compute the workspace started Sparks with, when it is on compute billing. |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"credit_cents"` | Inference credit the workspace started Sparks with. |
+| `"first_spark"` | Null until the first Spark exists or when the viewer cannot read it. |
+| `"github_connected"` |  |
+| `"github_prs_authored_by_change_author"` |  |
+| `"id"` |  |
+| `"jsonrpc"` |  |
+| `"logo_url"` |  |
+| `"member_count"` |  |
+| `"method"` |  |
+| `"name"` |  |
+| `"params"` |  |
+| `"pending_invitation_count"` |  |
+| `"personal"` |  |
+| `"repository_count"` |  |
+| `"role"` |  |
+| `"sandbox_region"` |  |
+| `"shared_agent_personal_accounts_enabled"` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `"slug"` |  |
+| `"source_control_providers"` | Connected source control providers for this organization. |
+| `"source_ui_enabled"` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `"started"` | Whether the workspace has started Sparks. |
+| `"timezone"` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+| `"verify_pr_scenario_writing_enabled"` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/sparks`
+
+#### SparkAgentIntegration
+
+| Field | Description |
+| --- | --- |
+| `"account_counts"` | Accounts the viewer can see per toolkit, across all account pages. |
+| `"accounts_path"` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
+| `"added_toolkits"` | Apps with a connected or connecting account the viewer can see. |
+| `"can_manage"` |  |
+| `"can_manage_organization"` |  |
+| `"catalog"` |  |
+| `"connect_as"` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
+| `"connect_as_by_toolkit"` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `"connected_counts"` | Signed-in accounts per toolkit, across all account pages. |
+| `"connection_id"` |  |
+| `"connections"` |  |
+| `"email"` | A native agent's own email address. |
+| `"enabled"` |  |
+| `"enabled_toolkits"` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `"generation"` |  |
+| `"pagination"` |  |
+| `"pending_counts"` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
+| `"personal_creation_key_supported"` | The personal account creation endpoint honors a creation key. |
+| `"private_agent"` | Only the agent's owner can chat with it. |
+| `"shared_agent_personal_accounts_enabled"` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
+| `"slack"` |  |
+| `"webhook_connections"` |  |
+| `"webhooks_available"` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations`
 
 #### SparkAgentLocalThread
 
@@ -4791,6 +9897,134 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/slack/chann
 Operations: Create, Load, Update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads`
+
+#### SparkAgentSite
+
+| Field | Description |
+| --- | --- |
+| `"deployed_at"` |  |
+| `"deployments_count"` |  |
+| `"hostname"` |  |
+| `"https"` | Whether the organization's certificate serves this site over HTTPS |
+| `"id"` |  |
+| `"name"` |  |
+| `"url"` |  |
+| `"visibility"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/sites`
+
+#### SparkAgentSkill
+
+| Field | Description |
+| --- | --- |
+| `"available"` |  |
+| `"can_configure"` |  |
+| `"can_manage"` |  |
+| `"configuration_state"` | The requested managed skill selection is awaiting runtime qualification. |
+| `"description"` |  |
+| `"enabled"` |  |
+| `"name"` |  |
+| `"skills"` |  |
+| `"version"` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/skills`
+
+#### SparkAgentThread
+
+| Field | Description |
+| --- | --- |
+| `"archived_count"` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
+| `"can_create"` |  |
+| `"execution"` |  |
+| `"first_input"` |  |
+| `"first_input_key"` | Idempotency-Key that finds the first message through input_delivery. |
+| `"first_input_requester_membership_id"` | Membership the first message was sent as, for input_delivery. |
+| `"id"` |  |
+| `"inherit_context"` | Include the source conversation through its last completed reply. |
+| `"local_activities"` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
+| `"local_archived_count"` | Local Claude Code and Codex threads archived on their computers. |
+| `"local_next_cursor"` |  |
+| `"local_scope_key"` |  |
+| `"local_status_pending"` | A computer is reporting newer local thread statuses; read the page again shortly. |
+| `"local_threads"` |  |
+| `"main_thread_id"` |  |
+| `"message"` | The thread's first message. |
+| `"next_cursor"` |  |
+| `"parent_conversation_id"` | Optional source conversation belonging to this agent. |
+| `"requester_membership_id"` |  |
+| `"selected_thread"` |  |
+| `"thread"` |  |
+| `"threads"` |  |
+| `"title"` |  |
+| `"total_archived_count"` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive`
+
+#### SparkCredit
+
+| Field | Description |
+| --- | --- |
+| `"amount_cents"` | Purchase amount in USD cents. |
+| `"autofill"` |  |
+| `"autofill_payment_unconfirmed"` |  |
+| `"available_usd"` |  |
+| `"billing_unit"` | Compute minute quote version returned by the billing summary. |
+| `"can_manage"` |  |
+| `"compute_minutes"` |  |
+| `"compute_usd"` |  |
+| `"credits_per_usd"` |  |
+| `"inference_usd"` |  |
+| `"kind"` |  |
+| `"payment_method"` |  |
+| `"payments_enabled"` |  |
+| `"plan"` |  |
+| `"plans"` |  |
+| `"quoted_credits_cents"` | Grant shown for a top-up or subscription, in usage cents. |
+| `"quoted_price_cents"` | Monthly cash price shown for a subscription, in USD cents. |
+| `"refill_limits_cents"` |  |
+| `"refill_options"` |  |
+| `"refill_thresholds_cents"` |  |
+| `"request_key"` |  |
+| `"settings"` |  |
+| `"starter_cents"` |  |
+| `"top_up_max_cents"` | Maximum manual top-up, in USD cents. |
+| `"top_up_step_cents"` | Minimum manual top-up and increment, in USD cents. |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/organizations/{org_slug}/spark_credits`
+
+#### SparkCreditAgentUsage
+
+| Field | Description |
+| --- | --- |
+| `"agents"` |  |
+| `"all"` |  |
+| `"days"` |  |
+| `"id"` |  |
+| `"owners"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/spark_credits/agent_usage/{agent_id}`
+
+#### SparkCreditUsageTotal
+
+| Field | Description |
+| --- | --- |
+| `"compute_minutes_used"` |  |
+| `"compute_usd"` |  |
+| `"inference_usd"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/spark_credits/usage_totals`
 
 #### StaticSite
 
@@ -4887,6 +10121,78 @@ Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/static_sites/{static_site_id}/domains/{id}/provision`
 
+#### StatusChange
+
+| Field | Description |
+| --- | --- |
+| `"change_id"` |  |
+| `"id"` |  |
+| `"patchsets"` |  |
+| `"status"` |  |
+| `"status_label"` |  |
+| `"status_state"` |  |
+| `"status_tone"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/changes/{id}`
+
+#### StatusCommit
+
+| Field | Description |
+| --- | --- |
+| `"checks"` |  |
+| `"commit_sha"` |  |
+| `"counts"` |  |
+| `"id"` |  |
+| `"status"` |  |
+| `"status_label"` |  |
+| `"status_state"` |  |
+| `"status_tone"` |  |
+| `"total"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/commits/{commit_sha}`
+
+#### StatusPatchset
+
+| Field | Description |
+| --- | --- |
+| `"checks"` |  |
+| `"checks_status"` |  |
+| `"commit_sha"` |  |
+| `"counts"` |  |
+| `"id"` |  |
+| `"patchset_id"` |  |
+| `"status"` |  |
+| `"status_label"` |  |
+| `"status_state"` |  |
+| `"status_tone"` |  |
+| `"total"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/patchsets/{id}`
+
+#### StripeWebhook
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/stripe/webhooks`
+
+#### SubmitTelemetry
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/submit_telemetry`
+
 #### SubscriptionModel
 
 | Field | Description |
@@ -4902,6 +10208,113 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions/models`
 
+#### SwarmEvent
+
+| Field | Description |
+| --- | --- |
+| `"agent_swarm_id"` |  |
+| `"attempt_id"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"id"` |  |
+| `"kind"` |  |
+| `"payload"` |  |
+| `"reason"` |  |
+| `"scheduler_generation"` |  |
+| `"task_id"` |  |
+
+Operations: List.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/events`
+
+#### SwarmLive
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/agent/swarms/{id}/live/replay`
+
+#### SwarmNote
+
+| Field | Description |
+| --- | --- |
+| `"task_id"` | A task public id; omitted |
+| `"text"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/notes`
+
+#### SwarmTask
+
+| Field | Description |
+| --- | --- |
+| `"acceptance_commands"` |  |
+| `"agent_swarm_id"` |  |
+| `"assigned_runner_id"` |  |
+| `"blocked_reason"` |  |
+| `"changes"` |  |
+| `"commit_count"` |  |
+| `"commit_sha_result"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"current_attempt_id"` |  |
+| `"deadline_at"` |  |
+| `"depends_on_task_ids"` |  |
+| `"depth"` |  |
+| `"diff_artifact_url"` |  |
+| `"display_id"` |  |
+| `"environment_profile"` |  |
+| `"error_message"` |  |
+| `"failure_code"` |  |
+| `"finished_at"` |  |
+| `"finished_at_label"` |  |
+| `"harness"` |  |
+| `"id"` |  |
+| `"input_revision"` |  |
+| `"iteration"` |  |
+| `"landing_state"` |  |
+| `"model"` |  |
+| `"model_provider"` |  |
+| `"number"` |  |
+| `"organization_id"` |  |
+| `"owned_paths"` |  |
+| `"parent_task_id"` |  |
+| `"position"` |  |
+| `"prompt"` |  |
+| `"queued_at"` |  |
+| `"queued_at_label"` |  |
+| `"reasoning_effort"` |  |
+| `"recent_activity"` |  |
+| `"repo_url"` |  |
+| `"result"` |  |
+| `"retry_number"` |  |
+| `"role"` |  |
+| `"run_id"` |  |
+| `"stack_after_task_id"` |  |
+| `"started_at"` |  |
+| `"started_at_label"` |  |
+| `"status"` |  |
+| `"title"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+
+Operations: List, Load.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks`
+
+#### TaskLease
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_jev`
+
 #### ThreadPreview
 
 | Field | Description |
@@ -4913,6 +10326,224 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptio
 Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/previews`
+
+#### ThreadPreviewAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/thread_preview_access/redeem`
+
+#### ToolFeedback
+
+| Field | Description |
+| --- | --- |
+| `"category"` |  |
+| `"created_at"` |  |
+| `"details"` |  |
+| `"feedback"` |  |
+| `"id"` |  |
+| `"metadata"` | Caller-supplied session context; no secrets or transcripts |
+| `"organization_id"` |  |
+| `"source"` |  |
+| `"summary"` |  |
+| `"user_id"` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/tool_feedbacks`
+
+#### Transcript
+
+| Field | Description |
+| --- | --- |
+| `"agent"` |  |
+| `"author"` |  |
+| `"checkpoint_pagination"` |  |
+| `"checkpoints"` |  |
+| `"id"` |  |
+| `"last_checkpoint_at"` |  |
+| `"selected_checkpoint"` |  |
+| `"source_url"` |  |
+| `"started_at"` |  |
+| `"status"` |  |
+| `"title"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/transcripts/search`
+
+#### V1Message
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/inference/v1/messages`
+
+#### VcBranch
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+| `"name"` |  |
+| `"target_commit_id"` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/branches`
+
+#### VcBrowser
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/browser/file`
+
+#### VcChange
+
+| Field | Description |
+| --- | --- |
+| `"activity"` |  |
+| `"canonical_path"` |  |
+| `"change"` |  |
+| `"checks"` |  |
+| `"checks_status"` |  |
+| `"description"` |  |
+| `"group"` |  |
+| `"id"` |  |
+| `"jj_change_id"` |  |
+| `"labels"` |  |
+| `"landing"` | Server-computed submitted-together closure and landing preflight. |
+| `"number"` |  |
+| `"patchset_number"` |  |
+| `"previews"` |  |
+| `"primary_status"` |  |
+| `"public_id"` |  |
+| `"related_changes"` |  |
+| `"relation_chain"` |  |
+| `"restack_state"` |  |
+| `"review_summary"` |  |
+| `"stack"` |  |
+| `"status"` |  |
+| `"sync"` |  |
+| `"target"` |  |
+| `"target_advanced"` |  |
+| `"target_branch"` |  |
+| `"title"` |  |
+| `"url"` |  |
+
+Operations: Create, List, Load, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/abandon`
+
+#### VcChangeGroup
+
+| Field | Description |
+| --- | --- |
+| `"changes"` |  |
+| `"id"` |  |
+| `"name"` |  |
+| `"number"` |  |
+| `"status"` |  |
+| `"title"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups`
+
+#### VcFile
+
+| Field | Description |
+| --- | --- |
+| `"paths"` |  |
+| `"truncated"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/files`
+
+#### VcMergeQueue
+
+| Field | Description |
+| --- | --- |
+| `"analytics"` | Queue performance for the reporting window. |
+| `"id"` |  |
+| `"policy"` |  |
+| `"queue"` |  |
+| `"target_branches"` | Bookmark names for the target picker. |
+
+Operations: Create, List, Load, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/pause`
+
+#### VcStack
+
+| Field | Description |
+| --- | --- |
+| `"alias_ref_name"` |  |
+| `"changes"` |  |
+| `"code"` |  |
+| `"id"` |  |
+| `"landing"` | Compact landing state for the Stack CLI. |
+| `"member_count"` |  |
+| `"name"` |  |
+| `"ref_name"` |  |
+| `"status"` |  |
+| `"tip_change_number"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+
+Operations: List, Load, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/stacks`
+
+#### VcsNode
+
+| Field | Description |
+| --- | --- |
+| `"account_avatar_url"` |  |
+| `"account_id"` |  |
+| `"account_login"` |  |
+| `"created_at"` |  |
+| `"created_at_label"` |  |
+| `"id"` |  |
+| `"installation_id"` |  |
+| `"installed_at"` |  |
+| `"installed_at_label"` |  |
+| `"manage_access_url"` |  |
+| `"organization_id"` |  |
+| `"permission_entries"` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `"permissions"` |  |
+| `"status"` |  |
+| `"suspended_at"` |  |
+| `"suspended_at_label"` |  |
+| `"updated_at"` |  |
+| `"updated_at_label"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/vcs_nodes`
+
+#### VcsSetting
+
+| Field | Description |
+| --- | --- |
+| `"can_manage_pr_scenario_writing"` |  |
+| `"can_manage_sandbox_region"` |  |
+| `"dedicated_outbound_ip_addresses"` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `"default_trunk_bookmark"` |  |
+| `"organization"` |  |
+| `"sandbox_regions"` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/vcs_settings`
 
 #### VerificationProjectCredential
 
@@ -5087,6 +10718,43 @@ Operations: Create, Load, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/browser_sessions/{id}/save`
 
+#### VerifyEmailVerification
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/email_verifications/verify`
+
+#### VerifySignalIntegration
+
+| Field | Description |
+| --- | --- |
+| `"api_token_stored"` |  |
+| `"config"` |  |
+| `"created_at"` |  |
+| `"failure_message"` |  |
+| `"id"` | Public id (`sint_…`). |
+| `"inbound_path"` |  |
+| `"inbound_url"` | The absolute URL to paste into the provider's webhook configuration. |
+| `"last_received_at"` |  |
+| `"last_verified_at"` |  |
+| `"mode"` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `"name"` |  |
+| `"organization_id"` |  |
+| `"provider"` |  |
+| `"rejected_signature_count"` | Deliveries rejected for a bad or missing signature. |
+| `"status"` |  |
+| `"target_count"` |  |
+| `"unmapped_delivery_count"` | Deliveries accepted whose provider resource matched no enabled target. |
+| `"updated_at"` |  |
+| `"webhook_secret_stored"` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{id}/verify`
+
 #### VerifyStaticSiteDomain
 
 | Field | Description |
@@ -5136,6 +10804,15 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/logs`
 
+#### WaitlistApplication
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/waitlist_applications`
+
 #### WebBotAuth
 
 | Field | Description |
@@ -5147,6 +10824,16 @@ API path: `/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/v
 Operations: Create.
 
 API path: `/api/v1/verify/web_bot_auth`
+
+#### WebhookGitlab
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Update.
+
+API path: `/api/v1/webhooks/gitlab/{connection_key}`
 
 #### WorkflowRunStep
 
@@ -5177,9 +10864,141 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers/{trigger_id}/skipped/{delivery_id}/run`
 
+#### WorkspaceActivity
+
+| Field | Description |
+| --- | --- |
+| `"live_activity"` |  |
+| `"recent_items"` |  |
+| `"unresolved_notification_count"` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/workspace_activity`
+
+#### WorkspaceActivityNotification
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Update.
+
+API path: `/api/v1/organizations/{org_slug}/workspace_activity/notifications/{id}/dismissal`
+
+#### WorkspaceSpace
+
+| Field | Description |
+| --- | --- |
+| `"created_at"` |  |
+| `"default_branch"` |  |
+| `"description"` |  |
+| `"hidden"` |  |
+| `"icon_name"` |  |
+| `"id"` |  |
+| `"import_status"` |  |
+| `"name"` |  |
+| `"organization_id"` |  |
+| `"position"` |  |
+| `"repository_id"` |  |
+| `"repository_slug"` |  |
+| `"slug"` |  |
+| `"status"` |  |
+| `"updated_at"` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/workspace_spaces`
+
+#### WorkspaceSpacePreference
+
+| Field | Description |
+| --- | --- |
+| `"preferences"` |  |
+| `"spaces"` |  |
+
+Operations: Update.
+
+API path: `/api/v1/organizations/{organization_id}/workspace_spaces/preferences`
+
 
 
 ## Entities
+
+
+### A2aWellKnown
+
+Create an instance: `a2aWellKnown := client.A2aWellKnown(nil)`
+
+
+### AdminOrg
+
+Create an instance: `adminOrg := client.AdminOrg(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `billing_email` | `any` |  |
+| `billing_reason` | `string` | Required when setting an agreed price |
+| `customize_onboarding_packages` | `bool` |  |
+| `deployment_usage_visibility` | `string` |  |
+| `deployment_usage_visible` | `bool` |  |
+| `id` | `string` |  |
+| `monthly_price_dollars` | `any` | Ongoing USD workspace price, for example '50.00' |
+| `monthly_price_override_cents` | `any` |  |
+| `name` | `string` |  |
+| `onboarding_custom_pricing` | `bool` |  |
+| `onboarding_package_keys` | `any` | Package keys offered when customizing onboarding. |
+| `owner_email` | `string` |  |
+| `package_id` | `any` | Active customer package public ID. |
+| `skip_payment` | `bool` | Grant the selected package as an ongoing complimentary subscription with monthly included usage and package limits. |
+| `slug` | `string` |  |
+
+#### Example: Load
+
+```go
+adminOrg, err := client.AdminOrg(nil).Load(map[string]any{"id": "admin_org_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(adminOrg.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+adminOrgs, err := client.AdminOrg(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range adminOrgs.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.AdminOrg(nil).Create(map[string]any{
+    "name": "example_name",
+    "owner_email": "example_owner_email",
+    "slug": "example_slug",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
 
 
 ### Agent
@@ -5277,6 +11096,83 @@ if err != nil {
 }
 fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
+
+
+### AgentApp
+
+Create an instance: `agentApp := client.AgentApp(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `author` | `map[string]any` |  |
+| `can_message` | `bool` | The viewer may send input to the author agent |
+| `deployments_count` | `int` | Increases with every deploy of the site |
+| `description` | `string` |  |
+| `hidden_install_count` | `int` | Installs by agents the viewer cannot open |
+| `id` | `string` |  |
+| `install_count` | `int` |  |
+| `install_targets` | `[]any` | Active agents the viewer owns or manages, which they can install apps on |
+| `installed_by` | `[]any` |  |
+| `installed_target_ids` | `[]any` | Install targets of the viewer that have this app installed |
+| `items` | `[]any` |  |
+| `mcp_url` | `any` |  |
+| `next_cursor` | `any` | Pass as cursor to load older apps |
+| `owner` | `map[string]any` | The person who controls the author agent |
+| `thread` | `any` | The thread that published the app, when the viewer can open the author agent |
+| `title` | `string` |  |
+| `url` | `string` |  |
+| `visibility` | `string` |  |
+
+#### Example: Load
+
+```go
+agentApp, err := client.AgentApp(nil).Load(map[string]any{"id": "agent_app_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(agentApp.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+agentApps, err := client.AgentApp(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range agentApps.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### AgentAppInstall
+
+Create an instance: `agentAppInstall := client.AgentAppInstall(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `installed` | `bool` |  |
 
 
 ### AgentAttachment
@@ -5427,36 +11323,60 @@ Create an instance: `agentConnection := client.AgentConnection(nil)`
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 | `Create(data, ctrl)` | Create a new entity with the given data. |
 | `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
 | `Remove(match, ctrl)` | Remove the matching entity. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `agent_card_url` | `string` |  |
-| `auth_scheme` | `string` |  |
-| `can_configure` | `bool` |  |
-| `can_disconnect` | `bool` |  |
-| `can_setup` | `bool` |  |
+| `actions` | `[]any` |  |
+| `activity` | `[]any` |  |
+| `admin_disabled_at` | `any` |  |
+| `agent_tools` | `bool` |  |
+| `authentication` | `string` |  |
+| `authorized_at` | `any` |  |
+| `can_create_account` | `bool` | Whether another account can be created directly from this provider. |
+| `capabilities` | `map[string]any` |  |
+| `catalog_section` | `string` | Server-owned grouping in the agent integration catalog. |
+| `category` | `string` | Short product label, such as CRM or Email. |
+| `certification` | `string` |  |
+| `checked_at` | `any` |  |
 | `connection` | `map[string]any` |  |
-| `credential` | `any` | Write-only outbound key. |
-| `error_code` | `any` |  |
-| `expected_generation` | `int` |  |
+| `consent` | `any` |  |
+| `created_at` | `string` |  |
+| `creation_key` | `string` | Reuse the same key to recover the account after an interrupted response. |
+| `custodian_id` | `any` |  |
+| `description` | `string` | One-line catalog description of the app. |
+| `disabled_reason` | `any` |  |
+| `failure_code` | `any` |  |
 | `generation` | `int` |  |
+| `grants` | `[]any` |  |
+| `grants_pagination` | `map[string]any` |  |
 | `id` | `string` |  |
+| `limits` | `map[string]any` |  |
 | `name` | `string` |  |
-| `remote_agent` | `any` |  |
-| `requester_id` | `string` |  |
-| `retired_at` | `any` |  |
+| `organization_id` | `string` |  |
+| `owner_name` | `string` |  |
+| `ownership_kind` | `string` |  |
+| `pagination` | `map[string]any` |  |
+| `policy_digest` | `string` |  |
+| `provider` | `map[string]any` |  |
+| `provider_disabled_reason` | `any` |  |
+| `provider_identity` | `map[string]any` |  |
 | `revoked_at` | `any` |  |
-| `scope_key` | `string` |  |
-| `source_operation_id` | `any` |  |
-| `state` | `string` |  |
+| `schema_version` | `int` |  |
+| `status` | `string` |  |
+| `toolkit` | `string` |  |
+| `triggers` | `[]any` |  |
+| `updated_at` | `string` |  |
+| `user_id` | `string` |  |
+| `version` | `string` |  |
 
 #### Example: Load
 
 ```go
-agentConnection, err := client.AgentConnection(nil).Load(map[string]any{"id": "agent_connection_id", "agent_id": "agent_id", "organization_id": "organization_id"}, nil)
+agentConnection, err := client.AgentConnection(nil).Load(map[string]any{"id": "agent_connection_id", "organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -5466,7 +11386,7 @@ fmt.Println(agentConnection.(sdk.Entity).Data()) // the loaded entity's record
 #### Example: List
 
 ```go
-agentConnections, err := client.AgentConnection(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+agentConnections, err := client.AgentConnection(nil).List(map[string]any{"organization_id": "example"}, nil)
 if err != nil {
     panic(err)
 }
@@ -5480,17 +11400,260 @@ for _, item := range agentConnections.([]any) {
 
 ```go
 result, err := client.AgentConnection(nil).Create(map[string]any{
-    "agent_id": "example_agent_id",
     "organization_id": "example_organization_id",
-    "agent_card_url": "example_agent_card_url",
-    "auth_scheme": "example_auth_scheme",
     "name": "example_name",
+    "toolkit": "example_toolkit",
 }, nil)
 if err != nil {
     panic(err)
 }
 fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
+
+
+### AgentConnectionDelegation
+
+Create an instance: `agentConnectionDelegation := client.AgentConnectionDelegation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `authorized_by_id` | `string` |  |
+| `automation_connection_grant_id` | `string` |  |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `member_name` | `string` |  |
+| `revoked_at` | `any` |  |
+| `roles` | `[]any` |  |
+| `usable` | `bool` |  |
+| `user_id` | `string` |  |
+
+#### Example: List
+
+```go
+agentConnectionDelegations, err := client.AgentConnectionDelegation(nil).List(map[string]any{"agent_connection_id": "example", "organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range agentConnectionDelegations.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### AgentConnectionGrant
+
+Create an instance: `agentConnectionGrant := client.AgentConnectionGrant(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `actions` | `[]any` |  |
+| `agent_connection_id` | `string` |  |
+| `automation_id` | `string` |  |
+| `connection_generation` | `int` |  |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `organization_id` | `string` |  |
+| `revision` | `int` |  |
+| `revoked_at` | `any` |  |
+| `status` | `string` |  |
+| `usable` | `bool` |  |
+| `user_id` | `string` |  |
+
+#### Example: List
+
+```go
+agentConnectionGrants, err := client.AgentConnectionGrant(nil).List(map[string]any{"agent_connection_id": "example", "organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range agentConnectionGrants.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### AgentConnectionResource
+
+Create an instance: `agentConnectionResource := client.AgentConnectionResource(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cursor` | `any` |  |
+| `next_cursor` | `any` |  |
+| `query` | `string` |  |
+| `resources` | `[]any` |  |
+
+#### Example: Create
+
+```go
+result, err := client.AgentConnectionResource(nil).Create(map[string]any{
+    "agent_connection_id": "example_agent_connection_id",
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### AgentConnectionSafetyControl
+
+Create an instance: `agentConnectionSafetyControl := client.AgentConnectionSafetyControl(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `admin_disabled_at` | `any` |  |
+| `authorized_at` | `any` |  |
+| `checked_at` | `any` |  |
+| `created_at` | `string` |  |
+| `custodian_id` | `any` |  |
+| `failure_code` | `any` |  |
+| `generation` | `int` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `owner_name` | `string` |  |
+| `ownership_kind` | `string` |  |
+| `provider_disabled_reason` | `any` |  |
+| `provider_identity` | `map[string]any` |  |
+| `revoked_at` | `any` |  |
+| `status` | `string` |  |
+| `toolkit` | `string` |  |
+| `updated_at` | `string` |  |
+| `user_id` | `string` |  |
+
+#### Example: List
+
+```go
+agentConnectionSafetyControls, err := client.AgentConnectionSafetyControl(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range agentConnectionSafetyControls.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### AgentConnectionTriggerSubscription
+
+Create an instance: `agentConnectionTriggerSubscription := client.AgentConnectionTriggerSubscription(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_connection_id` | `string` |  |
+| `configuration` | `map[string]any` |  |
+| `created_at` | `string` |  |
+| `defaults` | `map[string]any` |  |
+| `delivery` | `string` |  |
+| `enabled` | `bool` |  |
+| `failure_code` | `any` |  |
+| `failure_request_id` | `any` |  |
+| `id` | `string` |  |
+| `latency` | `string` |  |
+| `name` | `string` |  |
+| `reconcile_at` | `string` |  |
+| `reconciliation_uncertain` | `bool` |  |
+| `remote_enabled` | `any` |  |
+| `replacement_id` | `any` |  |
+| `retired_at` | `any` |  |
+| `retirement_completed_at` | `any` |  |
+| `schema` | `map[string]any` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `toolkit` | `string` |  |
+| `toolkit_version` | `string` |  |
+| `trigger_slug` | `string` |  |
+| `updated_at` | `string` |  |
+| `version` | `string` |  |
+| `waiting_for_retirement` | `bool` |  |
+
+#### Example: List
+
+```go
+agentConnectionTriggerSubscriptions, err := client.AgentConnectionTriggerSubscription(nil).List(map[string]any{"agent_connection_id": "example", "organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range agentConnectionTriggerSubscriptions.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.AgentConnectionTriggerSubscription(nil).Create(map[string]any{
+    "agent_connection_id": "example_agent_connection_id",
+    "organization_id": "example_organization_id",
+    "configuration": map[string]any{},
+    "trigger_slug": "example_trigger_slug",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### AgentContextCheckpoint
+
+Create an instance: `agentContextCheckpoint := client.AgentContextCheckpoint(nil)`
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### AgentControlFlow
@@ -5591,6 +11754,30 @@ fmt.Println(agentEmail.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
+### AgentEvent
+
+Create an instance: `agentEvent := client.AgentEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Example: List
+
+```go
+agentEvents, err := client.AgentEvent(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range agentEvents.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
 ### AgentFile
 
 Create an instance: `agentFile := client.AgentFile(nil)`
@@ -5673,40 +11860,59 @@ Create an instance: `agentIntegration := client.AgentIntegration(nil)`
 | Method | Description |
 | --- | --- |
 | `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
 | `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
 | `account_counts` | `map[string]any` | Accounts the viewer can see per toolkit, across all account pages. |
-| `accounts_path` | `string` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
-| `added_toolkits` | `[]any` | Apps with a connected or connecting account the viewer can see. |
+| `can_cancel_sign_in` | `bool` | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `bool` |  |
+| `can_disconnect` | `bool` |  |
+| `can_enable` | `bool` |  |
 | `can_manage` | `bool` |  |
-| `can_manage_organization` | `bool` |  |
+| `can_manage_sharing` | `bool` |  |
+| `can_reconnect` | `bool` |  |
+| `can_sync` | `bool` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
 | `catalog` | `[]any` |  |
-| `connect_as` | `any` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
-| `connect_as_by_toolkit` | `map[string]any` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_by` | `any` | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `bool` | True when the viewer is the person whose sign-in this account is. |
 | `connected_counts` | `map[string]any` | Signed-in accounts per toolkit, across all account pages. |
-| `connection_id` | `string` |  |
 | `connections` | `[]any` |  |
-| `email` | `map[string]any` | A native agent's own email address. |
-| `enabled` | `bool` |  |
-| `enabled_toolkits` | `[]any` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `creation_key` | `string` | Stable identity for retrying this creation; retain it after an uncertain response. |
+| `creation_key_digest` | `any` | SHA-256 of the unfinished setup key for its original creator. |
 | `generation` | `int` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
 | `pagination` | `map[string]any` |  |
 | `pending_counts` | `map[string]any` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
-| `personal_creation_key_supported` | `bool` | The personal account creation endpoint honors a creation key. |
-| `private_agent` | `bool` | Only the agent's owner can chat with it. |
-| `shared_agent_personal_accounts_enabled` | `bool` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
-| `slack` | `map[string]any` |  |
-| `webhook_connections` | `[]any` |  |
-| `webhooks_available` | `bool` |  |
+| `provider_disabled_reason` | `any` |  |
+| `provider_identity` | `map[string]any` |  |
+| `provider_name` | `any` | The app's display name; null for a custom MCP server, which uses the account name. |
+| `reference` | `string` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `string` | Agent account audience, including legacy personal and paused access. |
+| `status` | `string` |  |
+| `team_sharing_enabled` | `bool` |  |
+| `team_sharing_version` | `int` |  |
+| `toolkit` | `string` |  |
+
+#### Example: Load
+
+```go
+agentIntegration, err := client.AgentIntegration(nil).Load(map[string]any{"id": "agent_integration_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(agentIntegration.(sdk.Entity).Data()) // the loaded entity's record
+```
 
 #### Example: List
 
 ```go
-agentIntegrations, err := client.AgentIntegration(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+agentIntegrations, err := client.AgentIntegration(nil).List(map[string]any{"organization_id": "example"}, nil)
 if err != nil {
     panic(err)
 }
@@ -5720,16 +11926,85 @@ for _, item := range agentIntegrations.([]any) {
 
 ```go
 result, err := client.AgentIntegration(nil).Create(map[string]any{
-    "agent_id": "example_agent_id",
     "organization_id": "example_organization_id",
-    "connection_id": "example_connection_id",
-    "enabled": true,
-    "generation": 1,
+    "name": "example_name",
+    "toolkit": "example_toolkit",
 }, nil)
 if err != nil {
     panic(err)
 }
 fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### AgentIntegrationAccount
+
+Create an instance: `agentIntegrationAccount := client.AgentIntegrationAccount(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_cancel_sign_in` | `bool` | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `bool` |  |
+| `can_disconnect` | `bool` |  |
+| `can_enable` | `bool` |  |
+| `can_manage_sharing` | `bool` |  |
+| `can_reconnect` | `bool` |  |
+| `can_sync` | `bool` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
+| `connected_by` | `any` | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `bool` | True when the viewer is the person whose sign-in this account is. |
+| `creation_key_digest` | `any` | SHA-256 of the unfinished setup key for its original creator. |
+| `generation` | `int` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `provider_disabled_reason` | `any` |  |
+| `provider_identity` | `map[string]any` |  |
+| `reference` | `string` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `string` | Agent account audience, including legacy personal and paused access. |
+| `status` | `string` |  |
+| `team_sharing_enabled` | `bool` |  |
+| `team_sharing_version` | `int` |  |
+| `toolkit` | `string` |  |
+
+#### Example: List
+
+```go
+agentIntegrationAccounts, err := client.AgentIntegrationAccount(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range agentIntegrationAccounts.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### AgentIntegrationCallback
+
+Create an instance: `agentIntegrationCallback := client.AgentIntegrationCallback(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Example: Load
+
+```go
+agentIntegrationCallback, err := client.AgentIntegrationCallback(nil).Load(map[string]any{"connection_id": "connection_id", "state": "state"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(agentIntegrationCallback.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -6135,6 +12410,117 @@ Create an instance: `agentQuestion := client.AgentQuestion(nil)`
 | `id` | `string` |  |
 
 
+### AgentRelayFileGrant
+
+Create an instance: `agentRelayFileGrant := client.AgentRelayFileGrant(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access_mode` | `string` |  |
+| `connection_generation` | `int` |  |
+| `connection_id` | `string` |  |
+| `connection_name` | `string` | Current display name of the selected account. |
+| `created_at` | `string` |  |
+| `expected_generation` | `int` |  |
+| `id` | `string` |  |
+| `key` | `string` |  |
+| `provider` | `string` |  |
+| `resource_id` | `string` |  |
+| `resource_kind` | `string` |  |
+| `revoked` | `bool` |  |
+| `revoked_at` | `any` |  |
+| `snapshot_supported` | `bool` | Whether this selected permission supports snapshot controls. |
+| `source_operation_id` | `string` |  |
+
+#### Example: Load
+
+```go
+agentRelayFileGrant, err := client.AgentRelayFileGrant(nil).Load(map[string]any{"id": "agent_relay_file_grant_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(agentRelayFileGrant.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+agentRelayFileGrants, err := client.AgentRelayFileGrant(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range agentRelayFileGrants.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.AgentRelayFileGrant(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "access_mode": "example_access_mode",
+    "connection_id": "example_connection_id",
+    "expected_generation": 1,
+    "key": "example_key",
+    "resource_id": "example_resource_id",
+    "resource_kind": "example_resource_kind",
+    "source_operation_id": "example_source_operation_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### AgentRelayFileGrantAccount
+
+Create an instance: `agentRelayFileGrantAccount := client.AgentRelayFileGrantAccount(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access_modes` | `[]any` | Supported file access modes. |
+| `generation` | `int` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `provider` | `string` |  |
+| `resource_kind` | `string` |  |
+
+#### Example: List
+
+```go
+agentRelayFileGrantAccounts, err := client.AgentRelayFileGrantAccount(nil).List(map[string]any{"organization_id": "example", "source_operation_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range agentRelayFileGrantAccounts.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
 ### AgentRepository
 
 Create an instance: `agentRepository := client.AgentRepository(nil)`
@@ -6203,6 +12589,11 @@ for _, item := range agentResources.([]any) {
     fmt.Println(item.(sdk.Entity).Data())
 }
 ```
+
+
+### AgentRoder
+
+Create an instance: `agentRoder := client.AgentRoder(nil)`
 
 
 ### AgentRoutine
@@ -6303,6 +12694,105 @@ Create an instance: `agentRuntime := client.AgentRuntime(nil)`
 | `volume` | `any` |  |
 
 
+### AgentSession
+
+Create an instance: `agentSession := client.AgentSession(nil)`
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### AgentSessionCheckpoint
+
+Create an instance: `agentSessionCheckpoint := client.AgentSessionCheckpoint(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+agentSessionCheckpoint, err := client.AgentSessionCheckpoint(nil).Load(map[string]any{"id": "agent_session_checkpoint_id", "agent_session_id": "agent_session_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(agentSessionCheckpoint.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+agentSessionCheckpoints, err := client.AgentSessionCheckpoint(nil).List(map[string]any{"agent_session_id": "example", "organization_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range agentSessionCheckpoints.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.AgentSessionCheckpoint(nil).Create(map[string]any{
+    "agent_session_id": "example_agent_session_id",
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### AgentSessionRoderHandoff
+
+Create an instance: `agentSessionRoderHandoff := client.AgentSessionRoderHandoff(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `checkpoint_id` | `string` | Public id of the checkpoint to hand off. |
+| `purpose` | `string` | Handoff intent; defaults to `continue`. |
+
+#### Example: Create
+
+```go
+result, err := client.AgentSessionRoderHandoff(nil).Create(map[string]any{
+    "agent_session_id": "example_agent_session_id",
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
 ### AgentSetting
 
 Create an instance: `agentSetting := client.AgentSetting(nil)`
@@ -6351,24 +12841,39 @@ Create an instance: `agentSite := client.AgentSite(nil)`
 | Method | Description |
 | --- | --- |
 | `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `deployed_at` | `string` |  |
-| `deployments_count` | `int` |  |
-| `hostname` | `string` |  |
-| `https` | `string` | Whether the organization's certificate serves this site over HTTPS |
+| `author` | `map[string]any` |  |
+| `can_message` | `bool` | The viewer may send input to the author agent |
+| `deployments_count` | `int` | Increases with every deploy of the site |
+| `description` | `any` | The team app description, when the site is a team app |
+| `icon_url` | `any` | Path of the site's generated icon, versioned by the picture; null until one is generated |
 | `id` | `string` |  |
-| `name` | `string` |  |
+| `name` | `string` | The site's DNS label |
+| `owner` | `map[string]any` | The person who controls the author agent |
+| `thread` | `any` | The thread that published the site as a team app, when the viewer can open the author agent |
+| `title` | `string` | The team app title, or the site name read as words |
 | `url` | `string` |  |
 | `visibility` | `string` |  |
+
+#### Example: Load
+
+```go
+agentSite, err := client.AgentSite(nil).Load(map[string]any{"id": "agent_site_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(agentSite.(sdk.Entity).Data()) // the loaded entity's record
+```
 
 #### Example: List
 
 ```go
-agentSites, err := client.AgentSite(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+agentSites, err := client.AgentSite(nil).List(map[string]any{"organization_id": "example"}, nil)
 if err != nil {
     panic(err)
 }
@@ -6388,26 +12893,42 @@ Create an instance: `agentSkill := client.AgentSkill(nil)`
 | Method | Description |
 | --- | --- |
 | `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
 | `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `available` | `bool` |  |
-| `can_configure` | `bool` |  |
-| `can_manage` | `bool` |  |
-| `configuration_state` | `string` | The requested managed skill selection is awaiting runtime qualification. |
-| `description` | `string` |  |
-| `enabled` | `bool` |  |
-| `name` | `string` |  |
+| `agents` | `[]any` | Active V2 agents the viewer can see whose owner is still a member |
+| `audience` | `map[string]any` |  |
+| `can_manage_library` | `bool` |  |
+| `content` | `string` | The skill's SKILL.md |
+| `files` | `[]any` |  |
+| `id` | `string` |  |
+| `marketplace` | `string` |  |
+| `pending` | `bool` | Some agent is still applying a change; check again shortly |
+| `plugin` | `string` | The marketplace entry id |
+| `revision` | `string` | The commit SHA returned by preview |
+| `skill` | `map[string]any` |  |
 | `skills` | `[]any` |  |
-| `version` | `string` |  |
+| `source` | `string` | owner/repo, a GitHub or skills.sh link, or npx skills add owner/repo [--skill NAME ...] |
+
+#### Example: Load
+
+```go
+agentSkill, err := client.AgentSkill(nil).Load(map[string]any{"id": "agent_skill_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(agentSkill.(sdk.Entity).Data()) // the loaded entity's record
+```
 
 #### Example: List
 
 ```go
-agentSkills, err := client.AgentSkill(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+agentSkills, err := client.AgentSkill(nil).List(map[string]any{"organization_id": "example"}, nil)
 if err != nil {
     panic(err)
 }
@@ -6421,11 +12942,10 @@ for _, item := range agentSkills.([]any) {
 
 ```go
 result, err := client.AgentSkill(nil).Create(map[string]any{
-    "agent_id": "example_agent_id",
     "organization_id": "example_organization_id",
-    "enabled": true,
-    "name": "example_name",
-    "version": "example_version",
+    "audience": map[string]any{},
+    "revision": "example_revision",
+    "skills": []any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -6518,6 +13038,108 @@ fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
+### AgentSwarm
+
+Create an instance: `agentSwarm := client.AgentSwarm(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `base_bookmark` | `any` | An existing bookmark to start from and land on; the plain form of `target.kind = bookmark`. |
+| `base_ref` | `any` |  |
+| `base_revision` | `any` | 64-hex commit id; skips the head lookup |
+| `budget` | `map[string]any` |  |
+| `canceled_at` | `any` |  |
+| `canceled_count` | `int` |  |
+| `concurrency_key` | `any` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `creator_user_id` | `any` |  |
+| `deadline_at` | `any` |  |
+| `display_id` | `int` |  |
+| `done_count` | `int` |  |
+| `environment` | `map[string]any` |  |
+| `failed_count` | `int` |  |
+| `finished_at` | `any` |  |
+| `finished_at_label` | `any` |  |
+| `github` | `map[string]any` |  |
+| `goal` | `any` |  |
+| `id` | `string` |  |
+| `model` | `any` |  |
+| `model_provider` | `any` |  |
+| `number` | `int` |  |
+| `organization_id` | `string` |  |
+| `organization_slug` | `any` |  |
+| `outcome` | `any` |  |
+| `phase` | `any` |  |
+| `policy` | `map[string]any` | Every key is optional and defaults to AgentSwarm::POLICY_DEFAULTS. |
+| `queued_at` | `any` |  |
+| `queued_at_label` | `any` |  |
+| `repository` | `string` | Repository slug inside the organization |
+| `repository_id` | `any` |  |
+| `repository_slug` | `any` |  |
+| `reserved` | `map[string]any` |  |
+| `scheduler_generation` | `int` |  |
+| `skipped_count` | `int` |  |
+| `slug` | `string` |  |
+| `started_at` | `any` |  |
+| `started_at_label` | `any` |  |
+| `status` | `string` |  |
+| `summary` | `map[string]any` |  |
+| `target` | `map[string]any` | Where the swarm lands. |
+| `task_count` | `int` |  |
+| `task_template_json` | `any` |  |
+| `tasks` | `[]any` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+| `usage` | `map[string]any` |  |
+
+#### Example: Load
+
+```go
+agentSwarm, err := client.AgentSwarm(nil).Load(map[string]any{"id": "agent_swarm_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(agentSwarm.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+agentSwarms, err := client.AgentSwarm(nil).List(map[string]any{"org": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range agentSwarms.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.AgentSwarm(nil).Create(map[string]any{
+    "organization_slug": "example_organization_slug",
+    "target": map[string]any{},
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
 ### AgentTeammate
 
 Create an instance: `agentTeammate := client.AgentTeammate(nil)`
@@ -6566,41 +13188,29 @@ Create an instance: `agentThread := client.AgentThread(nil)`
 | Method | Description |
 | --- | --- |
 | `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
 | `Create(data, ctrl)` | Create a new entity with the given data. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `archived_count` | `any` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` | `bool` |  |
-| `execution` | `any` |  |
-| `first_input` | `any` |  |
-| `first_input_key` | `string` | Idempotency-Key that finds the first message through input_delivery. |
-| `first_input_requester_membership_id` | `string` | Membership the first message was sent as, for input_delivery. |
 | `id` | `string` |  |
-| `inherit_context` | `bool` | Include the source conversation through its last completed reply. |
-| `local_activities` | `map[string]any` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | `int` | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` | `any` |  |
-| `local_scope_key` | `any` |  |
-| `local_status_pending` | `bool` | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` | `[]any` |  |
-| `main_thread_id` | `string` |  |
-| `message` | `string` | The thread's first message. |
-| `next_cursor` | `any` |  |
-| `parent_conversation_id` | `string` | Optional source conversation belonging to this agent. |
-| `requester_membership_id` | `string` |  |
-| `selected_thread` | `any` |  |
-| `thread` | `map[string]any` |  |
-| `threads` | `[]any` |  |
-| `title` | `string` |  |
-| `total_archived_count` | `any` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+#### Example: Load
+
+```go
+agentThread, err := client.AgentThread(nil).Load(map[string]any{"id": "agent_thread_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(agentThread.(sdk.Entity).Data()) // the loaded entity's record
+```
 
 #### Example: List
 
 ```go
-agentThreads, err := client.AgentThread(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+agentThreads, err := client.AgentThread(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -6614,8 +13224,6 @@ for _, item := range agentThreads.([]any) {
 
 ```go
 result, err := client.AgentThread(nil).Create(map[string]any{
-    "agent_id": "example_agent_id",
-    "organization_id": "example_organization_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -6653,6 +13261,40 @@ if err != nil {
 for _, item := range agentTools.([]any) {
     fmt.Println(item.(sdk.Entity).Data())
 }
+```
+
+
+### AgentUsage
+
+Create an instance: `agentUsage := client.AgentUsage(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `days` | `[]any` | One cell per (day, model), ascending by day then model. |
+| `ended_at` | `string` |  |
+| `pricing_version` | `string` | The price table in effect now; rows carry the version they were priced at. |
+| `source` | `string` | Which store served the rows. |
+| `started_at` | `string` |  |
+| `user_days` | `[]any` | One cell per (day, person), ascending by day. |
+| `users` | `[]any` | One row per (person, model), descending by tokens. |
+| `window` | `string` |  |
+
+#### Example: Load
+
+```go
+agentUsage, err := client.AgentUsage(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(agentUsage.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -6702,6 +13344,39 @@ Create an instance: `agentWait := client.AgentWait(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+
+### AgentWebPreview
+
+Create an instance: `agentWebPreview := client.AgentWebPreview(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `description` | `any` |  |
+| `icon_url` | `any` |  |
+| `image_url` | `any` |  |
+| `title` | `any` |  |
+
+#### Example: List
+
+```go
+agentWebPreviews, err := client.AgentWebPreview(nil).List(map[string]any{"token": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range agentWebPreviews.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
 
 
 ### AgentWebhook
@@ -7089,6 +13764,120 @@ for _, item := range agentWritePermissions.([]any) {
 ```
 
 
+### Agreement
+
+Create an instance: `agreement := client.Agreement(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `body` | `any` | Markdown text, or null until staff grant the organization access. |
+| `effective_on_label` | `string` |  |
+| `key` | `string` |  |
+| `summary` | `string` |  |
+| `title` | `string` |  |
+| `version` | `string` |  |
+
+#### Example: List
+
+```go
+agreements, err := client.Agreement(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range agreements.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### AgreementAccessRequest
+
+Create an instance: `agreementAccessRequest := client.AgreementAccessRequest(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.AgreementAccessRequest(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### AlertRuleEvent
+
+Create an instance: `alertRuleEvent := client.AlertRuleEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+alertRuleEvent, err := client.AlertRuleEvent(nil).Load(map[string]any{"id": "alert_rule_event_id", "alert_rule_id": "alert_rule_id", "space_id": "space_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(alertRuleEvent.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+alertRuleEvents, err := client.AlertRuleEvent(nil).List(map[string]any{"alert_rule_id": "example", "space_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range alertRuleEvents.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.AlertRuleEvent(nil).Create(map[string]any{
+    "alert_rule_id": "example_alert_rule_id",
+    "space_id": "example_space_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
 ### AllocationLog
 
 Create an instance: `allocationLog := client.AllocationLog(nil)`
@@ -7201,6 +13990,35 @@ if err != nil {
     panic(err)
 }
 fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### AppAccess
+
+Create an instance: `appAccess := client.AppAccess(nil)`
+
+
+### AppAccessJwk
+
+Create an instance: `appAccessJwk := client.AppAccessJwk(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Example: List
+
+```go
+appAccessJwks, err := client.AppAccessJwk(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range appAccessJwks.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -8429,6 +15247,490 @@ fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
+### Artefact
+
+Create an instance: `artefact := client.Artefact(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `automation_invocation_id` | `any` |  |
+| `byte_size` | `int` |  |
+| `checksum_sha256` | `string` |  |
+| `content_type` | `string` |  |
+| `created_at` | `any` |  |
+| `created_by_user_id` | `any` |  |
+| `description` | `any` |  |
+| `document_key` | `string` | Stable document identity shared by all revisions. |
+| `entrypoint` | `string` |  |
+| `expires_at` | `any` |  |
+| `filename` | `string` |  |
+| `files` | `[]any` |  |
+| `harness` | `any` |  |
+| `harness_version` | `any` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `model` | `any` |  |
+| `organization_id` | `string` |  |
+| `published_at` | `any` |  |
+| `repository_id` | `any` |  |
+| `slug` | `string` |  |
+| `source` | `string` |  |
+| `status` | `string` |  |
+| `title` | `string` |  |
+| `vcs_agent_checkpoint_id` | `any` |  |
+| `vcs_agent_session_id` | `any` |  |
+| `version` | `int` |  |
+| `view_url` | `string` |  |
+| `web_url` | `string` |  |
+
+#### Example: Load
+
+```go
+artefact, err := client.Artefact(nil).Load(map[string]any{"id": "artefact_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(artefact.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+artefacts, err := client.Artefact(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range artefacts.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.Artefact(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ArtefactCommentThread
+
+Create an instance: `artefactCommentThread := client.ArtefactCommentThread(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `anchor` | `string` | The `#anchor` written into the Markdown. |
+| `body` | `string` |  |
+| `comments` | `[]any` |  |
+| `id` | `string` | The anchor key. |
+| `quote` | `string` |  |
+| `resolved` | `bool` |  |
+
+#### Example: List
+
+```go
+artefactCommentThreads, err := client.ArtefactCommentThread(nil).List(map[string]any{"artefact_id": "example", "organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range artefactCommentThreads.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.ArtefactCommentThread(nil).Create(map[string]any{
+    "artefact_id": "example_artefact_id",
+    "organization_id": "example_organization_id",
+    "anchor": "example_anchor",
+    "body": "example_body",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ArtefactRevision
+
+Create an instance: `artefactRevision := client.ArtefactRevision(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `base_version` | `int` | The newest version the editor started from. |
+| `content` | `string` | Markdown, including CriticMarkup suggestions and comment anchors. |
+
+#### Example: Create
+
+```go
+result, err := client.ArtefactRevision(nil).Create(map[string]any{
+    "artefact_id": "example_artefact_id",
+    "organization_id": "example_organization_id",
+    "base_version": 1,
+    "content": "example_content",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ArtefactViewToken
+
+Create an instance: `artefactViewToken := client.ArtefactViewToken(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `expires_in` | `int` |  |
+| `file` | `string` | Exact manifest path. |
+| `organization_slug` | `string` | If provided, must match the organization addressed by the route. |
+| `version` | `int` |  |
+| `viewer_url` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.ArtefactViewToken(nil).Create(map[string]any{
+    "artefact_id": "example_artefact_id",
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### Artifact
+
+Create an instance: `artifact := client.Artifact(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+artifact, err := client.Artifact(nil).Load(map[string]any{"id": "artifact_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(artifact.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+artifacts, err := client.Artifact(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range artifacts.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.Artifact(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ArtifactCacheNamespace
+
+Create an instance: `artifactCacheNamespace := client.ArtifactCacheNamespace(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+artifactCacheNamespace, err := client.ArtifactCacheNamespace(nil).Load(map[string]any{"id": "artifact_cache_namespace_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(artifactCacheNamespace.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+artifactCacheNamespaces, err := client.ArtifactCacheNamespace(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range artifactCacheNamespaces.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.ArtifactCacheNamespace(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ArtifactImageRepository
+
+Create an instance: `artifactImageRepository := client.ArtifactImageRepository(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+artifactImageRepository, err := client.ArtifactImageRepository(nil).Load(map[string]any{"id": "artifact_image_repository_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(artifactImageRepository.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+artifactImageRepositorys, err := client.ArtifactImageRepository(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range artifactImageRepositorys.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.ArtifactImageRepository(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ArtifactPackageMirror
+
+Create an instance: `artifactPackageMirror := client.ArtifactPackageMirror(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+artifactPackageMirror, err := client.ArtifactPackageMirror(nil).Load(map[string]any{"id": "artifact_package_mirror_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(artifactPackageMirror.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+artifactPackageMirrors, err := client.ArtifactPackageMirror(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range artifactPackageMirrors.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.ArtifactPackageMirror(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ArtifactRetentionPolicy
+
+Create an instance: `artifactRetentionPolicy := client.ArtifactRetentionPolicy(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+artifactRetentionPolicy, err := client.ArtifactRetentionPolicy(nil).Load(map[string]any{"id": "artifact_retention_policy_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(artifactRetentionPolicy.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+artifactRetentionPolicys, err := client.ArtifactRetentionPolicy(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range artifactRetentionPolicys.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.ArtifactRetentionPolicy(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
 ### AttachmentPart
 
 Create an instance: `attachmentPart := client.AttachmentPart(nil)`
@@ -8444,6 +15746,142 @@ Create an instance: `attachmentPart := client.AttachmentPart(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+
+### AuditEvent
+
+Create an instance: `auditEvent := client.AuditEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `actor_kind` | `string` |  |
+| `actor_user_id` | `any` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `id` | `string` |  |
+| `observability_space_id` | `any` |  |
+| `organization_id` | `string` |  |
+| `payload` | `any` |  |
+| `request_id` | `any` |  |
+| `severity` | `string` |  |
+| `subject_id` | `string` |  |
+| `subject_kind` | `string` |  |
+| `subject_name` | `any` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+
+#### Example: List
+
+```go
+auditEvents, err := client.AuditEvent(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range auditEvents.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### Auth
+
+Create an instance: `auth := client.Auth(nil)`
+
+
+### AuthCli
+
+Create an instance: `authCli := client.AuthCli(nil)`
+
+
+### AuthGithub
+
+Create an instance: `authGithub := client.AuthGithub(nil)`
+
+
+### AuthGoogle
+
+Create an instance: `authGoogle := client.AuthGoogle(nil)`
+
+
+### AuthOpenai
+
+Create an instance: `authOpenai := client.AuthOpenai(nil)`
+
+
+### AuthPasswordReset
+
+Create an instance: `authPasswordReset := client.AuthPasswordReset(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email` | `string` |  |
+| `message` | `string` |  |
+| `password` | `string` |  |
+| `token` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.AuthPasswordReset(nil).Create(map[string]any{
+    "email": "example_email",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### AuthRegistrationOption
+
+Create an instance: `authRegistrationOption := client.AuthRegistrationOption(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email_password_signup_enabled` | `bool` |  |
+| `openai_sign_in_enabled` | `bool` | Whether ChatGPT identity sign-in is configured and enabled for rollout. |
+| `turnstile_site_key` | `any` |  |
+| `waitlist_enabled` | `bool` | New public signups require waitlist approval when enabled. |
+
+#### Example: List
+
+```go
+authRegistrationOptions, err := client.AuthRegistrationOption(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range authRegistrationOptions.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
 
 
 ### AutomationEvent
@@ -8546,6 +15984,613 @@ if err != nil {
 }
 fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
+
+
+### BackendRunnerPool
+
+Create an instance: `backendRunnerPool := client.BackendRunnerPool(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```go
+backendRunnerPools, err := client.BackendRunnerPool(nil).List(map[string]any{"backend_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range backendRunnerPools.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.BackendRunnerPool(nil).Create(map[string]any{
+    "backend_id": "example_backend_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### Bazel
+
+Create an instance: `bazel := client.Bazel(nil)`
+
+
+### BazelActionResult
+
+Create an instance: `bazelActionResult := client.BazelActionResult(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+bazelActionResult, err := client.BazelActionResult(nil).Load(map[string]any{"id": "bazel_action_result_id", "action_result_id": "action_result_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(bazelActionResult.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### BazelBackend
+
+Create an instance: `bazelBackend := client.BazelBackend(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+bazelBackend, err := client.BazelBackend(nil).Load(map[string]any{"id": "bazel_backend_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(bazelBackend.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+bazelBackends, err := client.BazelBackend(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range bazelBackends.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.BazelBackend(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### BazelBlob
+
+Create an instance: `bazelBlob := client.BazelBlob(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+bazelBlob, err := client.BazelBlob(nil).Load(map[string]any{"id": "bazel_blob_id", "blob_id": "blob_id", "hash": "hash"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(bazelBlob.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### BazelExecution
+
+Create an instance: `bazelExecution := client.BazelExecution(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+bazelExecution, err := client.BazelExecution(nil).Load(map[string]any{"id": "bazel_execution_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(bazelExecution.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: Create
+
+```go
+result, err := client.BazelExecution(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### BazelFindMissingBlob
+
+Create an instance: `bazelFindMissingBlob := client.BazelFindMissingBlob(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.BazelFindMissingBlob(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### Billing
+
+Create an instance: `billing := client.Billing(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `[]any` |  |
+| `breakdown` | `any` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` |  |
+| `can_manage_contact` | `bool` |  |
+| `can_manage_extra_spend` | `bool` |  |
+| `can_manage_local_subscription` | `bool` |  |
+| `can_manage_payment_method` | `bool` |  |
+| `can_set_up_billing` | `bool` |  |
+| `customer` | `any` |  |
+| `deployment_usage_visible` | `bool` |  |
+| `entitlements` | `map[string]any` |  |
+| `extra_spend_enabled` | `bool` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` |  |
+| `package` | `any` |  |
+| `prepaid` | `any` |  |
+| `preview` | `any` | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `map[string]any` |  |
+| `stripe` | `map[string]any` |  |
+| `subscription` | `any` |  |
+| `token_account` | `map[string]any` |  |
+
+#### Example: Load
+
+```go
+billing, err := client.Billing(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(billing.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### BillingAddon
+
+Create an instance: `billingAddon := client.BillingAddon(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `[]any` |  |
+| `breakdown` | `any` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` |  |
+| `can_manage_contact` | `bool` |  |
+| `can_manage_extra_spend` | `bool` |  |
+| `can_manage_local_subscription` | `bool` |  |
+| `can_manage_payment_method` | `bool` |  |
+| `can_set_up_billing` | `bool` |  |
+| `customer` | `any` |  |
+| `deployment_usage_visible` | `bool` |  |
+| `entitlements` | `map[string]any` |  |
+| `extra_spend_enabled` | `bool` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Whether the `billing` feature is on for this organization. |
+| `id` | `string` |  |
+| `organization_id` | `string` |  |
+| `package` | `any` |  |
+| `prepaid` | `any` |  |
+| `preview` | `any` | Metronome draft invoice and credits, or null. |
+| `quantity` | `int` |  |
+| `storage_usage` | `map[string]any` |  |
+| `stripe` | `map[string]any` |  |
+| `subscription` | `any` |  |
+| `token_account` | `map[string]any` |  |
+
+
+### BillingCheckoutSession
+
+Create an instance: `billingCheckoutSession := client.BillingCheckoutSession(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cancel_url` | `string` |  |
+| `coupon_code` | `string` |  |
+| `entry_point` | `string` | Where the owner chose to pay, for product analytics. |
+| `package_key` | `string` |  |
+| `package_revision` | `int` |  |
+| `success_url` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.BillingCheckoutSession(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### BillingInvoice
+
+Create an instance: `billingInvoice := client.BillingInvoice(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `amount_due_cents` | `int` |  |
+| `created_at` | `string` |  |
+| `currency` | `string` |  |
+| `hosted_invoice_url` | `any` |  |
+| `id` | `string` |  |
+| `invoice_pdf` | `any` |  |
+| `metronome_invoice_id` | `any` | Metronome's id for the invoice it pushed |
+| `number` | `any` |  |
+| `period_ended_at` | `any` |  |
+| `period_started_at` | `any` |  |
+| `status` | `string` |  |
+| `total_cents` | `int` |  |
+
+#### Example: List
+
+```go
+billingInvoices, err := client.BillingInvoice(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range billingInvoices.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### BillingPackage
+
+Create an instance: `billingPackage := client.BillingPackage(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `[]any` |  |
+| `base_price_cents` | `int` |  |
+| `billing_interval` | `string` |  |
+| `billing_policy` | `string` |  |
+| `ci_included_spend_cents` | `int` | Monthly USD credit in cents shared by all CI charges, including runners, cache, storage and add-ons; replaces CI unit allowances when positive. |
+| `currency` | `string` |  |
+| `key` | `string` |  |
+| `max_seats` | `any` |  |
+| `name` | `string` |  |
+| `pay_as_you_go_enabled` | `bool` |  |
+| `rates` | `[]any` |  |
+| `revision` | `int` |  |
+| `roder_daily_run_limit` | `int` |  |
+| `roder_run_concurrency_limit` | `int` |  |
+| `seat_price_cents` | `int` |  |
+| `trial_days` | `int` |  |
+| `visibility` | `string` |  |
+
+#### Example: List
+
+```go
+billingPackages, err := client.BillingPackage(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range billingPackages.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### BillingPortalSession
+
+Create an instance: `billingPortalSession := client.BillingPortalSession(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `return_url` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.BillingPortalSession(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### BillingPrepaidPeriod
+
+Create an instance: `billingPrepaidPeriod := client.BillingPrepaidPeriod(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_at` | `any` |  |
+| `created_at` | `string` |  |
+| `currency` | `string` |  |
+| `id` | `string` |  |
+| `last_error` | `any` |  |
+| `minutes` | `int` |  |
+| `net_amount_cents` | `int` |  |
+| `paid_at` | `any` |  |
+| `paid_total_cents` | `any` |  |
+| `payment_action_url` | `any` |  |
+| `period_ended_at` | `string` |  |
+| `period_started_at` | `string` |  |
+| `receipt_url` | `any` |  |
+| `refunded_net_cents` | `int` |  |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```go
+billingPrepaidPeriod, err := client.BillingPrepaidPeriod(nil).Load(map[string]any{"id": "billing_prepaid_period_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(billingPrepaidPeriod.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### BillingPrepaidPurchase
+
+Create an instance: `billingPrepaidPurchase := client.BillingPrepaidPurchase(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_at` | `any` |  |
+| `created_at` | `string` |  |
+| `currency` | `string` |  |
+| `id` | `string` |  |
+| `last_error` | `any` |  |
+| `minutes` | `int` |  |
+| `net_amount_cents` | `int` |  |
+| `paid_at` | `any` |  |
+| `paid_total_cents` | `any` |  |
+| `payment_action_url` | `any` |  |
+| `prepaid` | `map[string]any` |  |
+| `purchase` | `map[string]any` |  |
+| `receipt_url` | `any` |  |
+| `refunded_net_cents` | `int` |  |
+| `request_key` | `string` |  |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```go
+billingPrepaidPurchase, err := client.BillingPrepaidPurchase(nil).Load(map[string]any{"id": "billing_prepaid_purchase_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(billingPrepaidPurchase.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+billingPrepaidPurchases, err := client.BillingPrepaidPurchase(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range billingPrepaidPurchases.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.BillingPrepaidPurchase(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "minutes": 1,
+    "request_key": "example_request_key",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### BillingTokenTopUp
+
+Create an instance: `billingTokenTopUp := client.BillingTokenTopUp(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `amount_cents` | `int` |  |
+| `request_key` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.BillingTokenTopUp(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "amount_cents": 1,
+    "request_key": "example_request_key",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### BillingUsage
+
+Create an instance: `billingUsage := client.BillingUsage(nil)`
 
 
 ### Binary
@@ -8710,6 +16755,45 @@ result, err := client.BinaryVersion(nil).Create(map[string]any{
     "project_id": "example_project_id",
     "download_url": "example_download_url",
     "idempotency_key": "example_idempotency_key",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### BookmarkProtectionRefreshGithubRequiredCheck
+
+Create an instance: `bookmarkProtectionRefreshGithubRequiredCheck := client.BookmarkProtectionRefreshGithubRequiredCheck(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `exclusions` | `[]any` |  |
+| `fetched_at` | `any` |  |
+| `fetched_at_label` | `any` |  |
+| `github_branch` | `string` |  |
+| `github_owner` | `any` |  |
+| `github_repository_name` | `any` |  |
+| `last_error` | `any` |  |
+| `proven` | `bool` |  |
+| `requirements` | `[]any` |  |
+| `stale` | `bool` |  |
+
+#### Example: Create
+
+```go
+result, err := client.BookmarkProtectionRefreshGithubRequiredCheck(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -9076,6 +17160,63 @@ fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
+### CacheNamespaceEntry
+
+Create an instance: `cacheNamespaceEntry := client.CacheNamespaceEntry(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+cacheNamespaceEntry, err := client.CacheNamespaceEntry(nil).Load(map[string]any{"id": "cache_namespace_entry_id", "cache_namespace_id": "cache_namespace_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(cacheNamespaceEntry.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+cacheNamespaceEntrys, err := client.CacheNamespaceEntry(nil).List(map[string]any{"cache_namespace_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range cacheNamespaceEntrys.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.CacheNamespaceEntry(nil).Create(map[string]any{
+    "cache_namespace_id": "example_cache_namespace_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
 ### CatalogSelector
 
 Create an instance: `catalogSelector := client.CatalogSelector(nil)`
@@ -9328,6 +17469,1173 @@ for _, item := range cdnSpaceObjects.([]any) {
 ```
 
 
+### Change
+
+Create an instance: `change := client.Change(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `counts` | `map[string]any` | Counts for each state across the active non-state filters. |
+| `filters` | `map[string]any` |  |
+| `github_sync` | `map[string]any` |  |
+| `result` | `any` | What this page is a page of. |
+
+#### Example: List
+
+```go
+changes, err := client.Change(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range changes.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### ChangeAsset
+
+Create an instance: `changeAsset := client.ChangeAsset(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `alias` | `string` |  |
+| `byte_size` | `int` |  |
+| `checksum_md5` | `string` |  |
+| `checksum_sha256` | `string` |  |
+| `content_type` | `string` |  |
+| `filename` | `string` |  |
+| `id` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.ChangeAsset(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+    "alias": "example_alias",
+    "byte_size": 1,
+    "checksum_md5": "example_checksum_md5",
+    "checksum_sha256": "example_checksum_sha256",
+    "content_type": "example_content_type",
+    "filename": "example_filename",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ChangeComment
+
+Create an instance: `changeComment := client.ChangeComment(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `body` | `string` |  |
+| `capabilities` | `map[string]any` |  |
+| `change_id` | `any` |  |
+| `created_at` | `any` |  |
+| `created_at_label` | `any` |  |
+| `id` | `string` |  |
+| `kind` | `any` |  |
+| `line` | `any` |  |
+| `outdated` | `bool` |  |
+| `parent_comment_id` | `any` |  |
+| `patchset_id` | `any` |  |
+| `patchset_number` | `any` |  |
+| `path` | `any` |  |
+| `replies` | `[]any` |  |
+| `resolved` | `bool` |  |
+| `resolved_at` | `any` |  |
+| `resolved_at_label` | `any` |  |
+| `resolved_by` | `map[string]any` |  |
+| `side` | `any` |  |
+| `updated_at` | `any` |  |
+| `updated_at_label` | `any` |  |
+| `user` | `map[string]any` |  |
+
+#### Example: List
+
+```go
+changeComments, err := client.ChangeComment(nil).List(map[string]any{"change_id": "example", "organization_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range changeComments.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.ChangeComment(nil).Create(map[string]any{
+    "change_id": "example_change_id",
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+    "body": "example_body",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ChangeFileReviewCheckpoint
+
+Create an instance: `changeFileReviewCheckpoint := client.ChangeFileReviewCheckpoint(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `patchset_id` | `string` |  |
+| `path` | `string` |  |
+| `request_id` | `string` |  |
+| `review_action` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.ChangeFileReviewCheckpoint(nil).Create(map[string]any{
+    "change_id": "example_change_id",
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+    "patchset_id": "example_patchset_id",
+    "path": "example_path",
+    "request_id": "example_request_id",
+    "review_action": "example_review_action",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ChangeGitBranchSubmission
+
+Create an instance: `changeGitBranchSubmission := client.ChangeGitBranchSubmission(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.ChangeGitBranchSubmission(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ChangeGitCommitIdentity
+
+Create an instance: `changeGitCommitIdentity := client.ChangeGitCommitIdentity(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_id` | `string` |  |
+| `change_number` | `int` |  |
+| `git_commit_id` | `string` |  |
+| `git_commit_ids` | `[]any` |  |
+| `id` | `string` |  |
+| `identities` | `[]any` |  |
+| `missing_git_commit_ids` | `[]any` |  |
+| `patchset_number` | `int` |  |
+
+#### Example: Load
+
+```go
+changeGitCommitIdentity, err := client.ChangeGitCommitIdentity(nil).Load(map[string]any{"id": "change_git_commit_identity_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(changeGitCommitIdentity.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: Create
+
+```go
+result, err := client.ChangeGitCommitIdentity(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+    "git_commit_ids": []any{},
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ChangeGitPublication
+
+Create an instance: `changeGitPublication := client.ChangeGitPublication(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `expected_target_commit_id` | `string` |  |
+| `id` | `string` |  |
+| `operation_key` | `string` |  |
+| `publication_id` | `string` |  |
+| `request` | `map[string]any` |  |
+| `request_digest` | `string` |  |
+| `revisions` | `[]any` |  |
+| `status` | `string` |  |
+| `transfer_refs` | `[]any` | Immutable receipt-owned refs returned by preparation; transfer each exact Git target before polling readiness. |
+
+#### Example: Load
+
+```go
+changeGitPublication, err := client.ChangeGitPublication(nil).Load(map[string]any{"id": "change_git_publication_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(changeGitPublication.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: Create
+
+```go
+result, err := client.ChangeGitPublication(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+    "operation_key": "example_operation_key",
+    "request": map[string]any{},
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ChangeGroupMember
+
+Create an instance: `changeGroupMember := client.ChangeGroupMember(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_id` | `string` | Change number |
+| `changes` | `[]any` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `number` | `int` |  |
+| `status` | `string` |  |
+| `title` | `any` |  |
+
+#### Example: Create
+
+```go
+result, err := client.ChangeGroupMember(nil).Create(map[string]any{
+    "change_group_id": "example_change_group_id",
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+    "change_id": "example_change_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ChangeLabel
+
+Create an instance: `changeLabel := client.ChangeLabel(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accepted` | `bool` |  |
+| `add` | `[]any` |  |
+| `approval` | `map[string]any` |  |
+| `assets` | `[]any` | Proof assets referenced from the description as `vex-asset:<id>`. |
+| `author` | `any` | Human user summary or organization automation identity. |
+| `capabilities` | `map[string]any` |  |
+| `change_key` | `string` |  |
+| `checks` | `[]any` |  |
+| `checks_status` | `string` |  |
+| `comments` | `[]any` |  |
+| `comments_count` | `int` |  |
+| `comments_count_label` | `string` |  |
+| `commit_message` | `any` |  |
+| `current_patchset` | `map[string]any` |  |
+| `description` | `any` |  |
+| `draft` | `bool` |  |
+| `folded_into_number` | `any` |  |
+| `github_projection_status` | `any` |  |
+| `github_pull_request` | `map[string]any` |  |
+| `github_pull_requests` | `[]any` |  |
+| `group` | `any` |  |
+| `has_description` | `bool` | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
+| `id` | `string` |  |
+| `jj_change_id` | `any` |  |
+| `labels` | `[]any` |  |
+| `landable` | `bool` |  |
+| `landed_by` | `map[string]any` |  |
+| `number` | `int` |  |
+| `orphaned` | `bool` |  |
+| `orphaned_at` | `string` |  |
+| `orphaned_at_label` | `string` |  |
+| `orphaned_reason` | `string` |  |
+| `parent_change_id` | `any` |  |
+| `parent_change_number` | `any` |  |
+| `patchset_number` | `any` |  |
+| `patchsets` | `[]any` |  |
+| `primary_status` | `any` |  |
+| `public_id` | `string` |  |
+| `relation_chain` | `[]any` |  |
+| `remove` | `[]any` |  |
+| `requested_changes` | `bool` |  |
+| `restack_state` | `string` |  |
+| `reviewer_candidates` | `[]any` | Organization members available to the reviewer picker on this page. |
+| `reviewers` | `[]any` |  |
+| `stable_change_id` | `string` |  |
+| `stack` | `any` |  |
+| `status` | `string` |  |
+| `target_branch` | `string` |  |
+| `title` | `string` |  |
+| `unresolved_comments_count_label` | `string` |  |
+| `url` | `string` |  |
+| `votes` | `[]any` |  |
+
+
+### ChangeLandingHold
+
+Create an instance: `changeLandingHold := client.ChangeLandingHold(nil)`
+
+
+### ChangeLandingRequest
+
+Create an instance: `changeLandingRequest := client.ChangeLandingRequest(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_ids` | `[]any` |  |
+| `count` | `int` |  |
+| `defer_until_ready` | `bool` | Admit the request while approvals or checks are pending |
+| `expected_requirement_version` | `string` |  |
+| `expected_scope_version` | `string` |  |
+| `head_change_id` | `string` |  |
+| `id` | `any` |  |
+| `numbers` | `[]any` |  |
+| `override_acknowledged` | `bool` |  |
+| `override_codes` | `[]any` |  |
+| `position` | `int` |  |
+| `priority` | `string` |  |
+| `scope_version` | `string` |  |
+| `state` | `string` |  |
+| `version` | `int` |  |
+
+#### Example: Create
+
+```go
+result, err := client.ChangeLandingRequest(nil).Create(map[string]any{
+    "change_id": "example_change_id",
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ChangeRequestChange
+
+Create an instance: `changeRequestChange := client.ChangeRequestChange(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `message` | `any` |  |
+
+#### Example: Create
+
+```go
+result, err := client.ChangeRequestChange(nil).Create(map[string]any{
+    "change_id": "example_change_id",
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ChangeReviewer
+
+Create an instance: `changeReviewer := client.ChangeReviewer(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `add` | `[]any` |  |
+| `email` | `string` |  |
+| `name` | `any` |  |
+| `remove` | `[]any` |  |
+| `removed_reviewers` | `[]any` |  |
+| `requested_reviewers` | `[]any` |  |
+| `reviewers` | `[]any` |  |
+
+#### Example: List
+
+```go
+changeReviewers, err := client.ChangeReviewer(nil).List(map[string]any{"change_id": "example", "organization_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range changeReviewers.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### ChangeTranscript
+
+Create an instance: `changeTranscript := client.ChangeTranscript(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capture_kind` | `string` |  |
+| `captured_at` | `string` |  |
+| `harness` | `map[string]any` |  |
+| `id` | `string` |  |
+| `original_resume` | `any` |  |
+| `patchset_commit_id` | `string` |  |
+| `patchset_number` | `int` |  |
+| `redaction_count` | `int` |  |
+| `session_id` | `any` |  |
+| `session_title` | `any` |  |
+| `status` | `string` |  |
+| `superseded` | `bool` |  |
+| `user` | `map[string]any` |  |
+
+#### Example: List
+
+```go
+changeTranscripts, err := client.ChangeTranscript(nil).List(map[string]any{"change_id": "example", "organization_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range changeTranscripts.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### ChangeTranscriptSummary
+
+Create an instance: `changeTranscriptSummary := client.ChangeTranscriptSummary(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `summaries` | `map[string]any` |  |
+
+#### Example: List
+
+```go
+changeTranscriptSummarys, err := client.ChangeTranscriptSummary(nil).List(map[string]any{"organization_id": "example", "ids": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range changeTranscriptSummarys.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### CheckpointPrepareChunk
+
+Create an instance: `checkpointPrepareChunk := client.CheckpointPrepareChunk(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.CheckpointPrepareChunk(nil).Create(map[string]any{
+    "agent_session_id": "example_agent_session_id",
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### CiNode
+
+Create an instance: `ciNode := client.CiNode(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `architecture` | `any` |  |
+| `bazel_enabled` | `bool` |  |
+| `bazel_properties_json` | `any` |  |
+| `ci_runner_pool_id` | `string` |  |
+| `cordoned_at` | `any` |  |
+| `cordoned_at_label` | `any` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `health_state` | `string` |  |
+| `heartbeat_age_seconds` | `any` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `labels_csv` | `any` |  |
+| `last_seen_at` | `any` |  |
+| `last_seen_at_label` | `any` |  |
+| `name` | `string` |  |
+| `network_peer_id` | `any` |  |
+| `node_capabilities_csv` | `any` |  |
+| `node_certificate_expires_at` | `any` |  |
+| `node_certificate_expires_at_label` | `any` |  |
+| `node_certificate_fingerprint_sha256` | `any` |  |
+| `node_certificate_serial` | `any` |  |
+| `offline_at` | `any` |  |
+| `offline_at_label` | `any` |  |
+| `online_at` | `any` |  |
+| `online_at_label` | `any` |  |
+| `organization_id` | `string` |  |
+| `os` | `any` |  |
+| `revoked_at` | `any` |  |
+| `revoked_at_label` | `any` |  |
+| `schedulable` | `bool` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+| `version` | `any` |  |
+
+#### Example: Load
+
+```go
+ciNode, err := client.CiNode(nil).Load(map[string]any{"id": "ci_node_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(ciNode.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### CiPipeline
+
+Create an instance: `ciPipeline := client.CiPipeline(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `ci_runner_pool_id` | `any` |  |
+| `concurrency_key` | `any` |  |
+| `created_at` | `string` |  |
+| `default_branch` | `any` |  |
+| `description` | `any` |  |
+| `hosted_app_id` | `any` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `repository_id` | `any` |  |
+| `required_capabilities_csv` | `any` |  |
+| `runner_pool` | `any` |  |
+| `runs` | `[]any` |  |
+| `slug` | `string` |  |
+| `source_kind` | `string` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `trigger_on_pull_request` | `bool` |  |
+| `trigger_on_push` | `bool` |  |
+| `trigger_on_schedule` | `bool` |  |
+| `updated_at` | `string` |  |
+| `workflow_path` | `any` |  |
+
+#### Example: Load
+
+```go
+ciPipeline, err := client.CiPipeline(nil).Load(map[string]any{"id": "ci_pipeline_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(ciPipeline.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+ciPipelines, err := client.CiPipeline(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range ciPipelines.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.CiPipeline(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### CiPipelineRun
+
+Create an instance: `ciPipelineRun := client.CiPipelineRun(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active` | `bool` |  |
+| `canceled_at` | `any` |  |
+| `ci_pipeline_id` | `string` |  |
+| `ci_runner_pool_id` | `any` |  |
+| `commit_sha` | `any` |  |
+| `concurrency_key` | `any` |  |
+| `created_at` | `string` |  |
+| `creator_user_id` | `any` |  |
+| `display_id` | `int` |  |
+| `failed` | `bool` |  |
+| `finished_at` | `any` |  |
+| `hosted_app_id` | `any` |  |
+| `id` | `string` |  |
+| `jobs` | `[]any` |  |
+| `message` | `any` |  |
+| `number` | `int` |  |
+| `organization_id` | `string` |  |
+| `parameters_json` | `any` |  |
+| `queued_at` | `any` |  |
+| `ref_name` | `any` |  |
+| `repository_id` | `any` |  |
+| `required_capabilities_csv` | `any` |  |
+| `retry_number` | `int` |  |
+| `retryable` | `bool` |  |
+| `slug` | `string` |  |
+| `source_url` | `any` |  |
+| `started_at` | `any` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `trigger_kind` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```go
+ciPipelineRun, err := client.CiPipelineRun(nil).Load(map[string]any{"id": "ci_pipeline_run_id", "pipeline_id": "pipeline_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(ciPipelineRun.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+ciPipelineRuns, err := client.CiPipelineRun(nil).List(map[string]any{"pipeline_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range ciPipelineRuns.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.CiPipelineRun(nil).Create(map[string]any{
+    "pipeline_id": "example_pipeline_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### CiRunnerPool
+
+Create an instance: `ciRunnerPool := client.CiRunnerPool(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `bazel_enabled` | `bool` |  |
+| `bazel_properties_json` | `any` |  |
+| `created_at` | `string` |  |
+| `description` | `any` |  |
+| `elastic_config_json` | `any` |  |
+| `elastic_provider_kind` | `any` |  |
+| `id` | `string` |  |
+| `isolation_mode` | `string` |  |
+| `labels_csv` | `any` |  |
+| `max_concurrency` | `int` |  |
+| `modal_capacity` | `map[string]any` |  |
+| `modal_runner_invocations` | `[]any` |  |
+| `name` | `string` |  |
+| `network_space_id` | `any` |  |
+| `node_capabilities_csv` | `any` |  |
+| `organization_id` | `string` |  |
+| `runner_count_label` | `string` |  |
+| `runner_kind` | `string` |  |
+| `runners` | `[]any` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```go
+ciRunnerPool, err := client.CiRunnerPool(nil).Load(map[string]any{"id": "ci_runner_pool_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(ciRunnerPool.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+ciRunnerPools, err := client.CiRunnerPool(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range ciRunnerPools.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.CiRunnerPool(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### CiStatus
+
+Create an instance: `ciStatus := client.CiStatus(nil)`
+
+
+### CliEvent
+
+Create an instance: `cliEvent := client.CliEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `event` | `string` |  |
+| `properties` | `map[string]any` |  |
+
+#### Example: Create
+
+```go
+result, err := client.CliEvent(nil).Create(map[string]any{
+    "event": "example_event",
+    "properties": map[string]any{},
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### CliRelease
+
+Create an instance: `cliRelease := client.CliRelease(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: List
+
+```go
+cliReleases, err := client.CliRelease(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range cliReleases.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.CliRelease(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### CloudWorkspaceBackupObject
+
+Create an instance: `cloudWorkspaceBackupObject := client.CloudWorkspaceBackupObject(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+cloudWorkspaceBackupObject, err := client.CloudWorkspaceBackupObject(nil).Load(map[string]any{"id": "cloud_workspace_backup_object_id", "cloud_workspace_backup_id": "cloud_workspace_backup_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(cloudWorkspaceBackupObject.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### CodeRuleEvaluation
+
+Create an instance: `codeRuleEvaluation := client.CodeRuleEvaluation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `advisory` | `bool` |  |
+| `coverage` | `map[string]any` |  |
+| `diff` | `string` | UTF-8 complete unified patch using a/ old and b/ new prefixes; at most 1 MiB |
+| `duration_ms` | `int` |  |
+| `evaluator_version` | `string` |  |
+| `input_digest` | `any` |  |
+| `limits` | `map[string]any` |  |
+| `model` | `string` |  |
+| `requests` | `map[string]any` |  |
+| `schema_version` | `int` |  |
+| `snapshot_digest` | `any` |  |
+| `unchecked` | `[]any` |  |
+| `verdicts` | `[]any` |  |
+
+#### Example: Create
+
+```go
+result, err := client.CodeRuleEvaluation(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+    "diff": "example_diff",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ComSiteAccess
+
+Create an instance: `comSiteAccess := client.ComSiteAccess(nil)`
+
+
+### ComSiteAccessSession
+
+Create an instance: `comSiteAccessSession := client.ComSiteAccessSession(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cookie_name` | `string` |  |
+| `host` | `string` | Site hostname, for example docs.acme.composal.page |
+| `max_age` | `int` |  |
+| `session_token` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.ComSiteAccessSession(nil).Create(map[string]any{
+    "host": "example_host",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### CommentThreadComment
+
+Create an instance: `commentThreadComment := client.CommentThreadComment(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `body` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.CommentThreadComment(nil).Create(map[string]any{
+    "artefact_id": "example_artefact_id",
+    "comment_thread_id": "example_comment_thread_id",
+    "organization_id": "example_organization_id",
+    "body": "example_body",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### CommitDiff
+
+Create an instance: `commitDiff := client.CommitDiff(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `files` | `[]any` |  |
+| `id` | `string` |  |
+| `parent_id` | `any` |  |
+
+#### Example: Load
+
+```go
+commitDiff, err := client.CommitDiff(nil).Load(map[string]any{"id": "commit_diff_id", "commit_id": "commit_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(commitDiff.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
 ### ConnectionRequest
 
 Create an instance: `connectionRequest := client.ConnectionRequest(nil)`
@@ -9399,6 +18707,133 @@ if err != nil {
 for _, item := range connectionSources.([]any) {
     fmt.Println(item.(sdk.Entity).Data())
 }
+```
+
+
+### ContactSubmission
+
+Create an instance: `contactSubmission := client.ContactSubmission(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `company` | `any` |  |
+| `email` | `string` | Stored downcased and stripped. |
+| `message` | `string` |  |
+| `name` | `string` |  |
+| `website` | `any` | Honeypot. |
+
+#### Example: Create
+
+```go
+result, err := client.ContactSubmission(nil).Create(map[string]any{
+    "email": "example_email",
+    "message": "example_message",
+    "name": "example_name",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ControlComputer
+
+Create an instance: `controlComputer := client.ControlComputer(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `connection` | `map[string]any` | A point-in-time control transport observation. |
+| `consent` | `map[string]any` |  |
+| `device` | `map[string]any` |  |
+| `id` | `string` |  |
+| `provider_status` | `[]any` |  |
+
+#### Example: List
+
+```go
+controlComputers, err := client.ControlComputer(nil).List(map[string]any{"organization_id": "example", "persistent_agent_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range controlComputers.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### ControlComputerControlOperation
+
+Create an instance: `controlComputerControlOperation := client.ControlComputerControlOperation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `arguments` | `map[string]any` |  |
+| `created_at` | `string` |  |
+| `delivery` | `map[string]any` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` |  |
+| `diagnostic_code` | `string` | Approved product error code retained after copied diagnostics expire. |
+| `end` | `map[string]any` |  |
+| `expires_at` | `string` |  |
+| `id` | `string` |  |
+| `key` | `string` |  |
+| `provider` | `string` |  |
+| `references` | `map[string]any` |  |
+| `result` | `any` |  |
+| `result_expired` | `bool` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```go
+controlComputerControlOperation, err := client.ControlComputerControlOperation(nil).Load(map[string]any{"id": "control_computer_control_operation_id", "control_computer_id": "control_computer_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(controlComputerControlOperation.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: Create
+
+```go
+result, err := client.ControlComputerControlOperation(nil).Create(map[string]any{
+    "control_computer_id": "example_control_computer_id",
+    "organization_id": "example_organization_id",
+    "action": "example_action",
+    "arguments": map[string]any{},
+    "key": "example_key",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
@@ -9880,9 +19315,121 @@ fmt.Println(demoShareSegment.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
+### Deployment
+
+Create an instance: `deployment := client.Deployment(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `app` | `map[string]any` |  |
+| `artifact_locator` | `any` |  |
+| `build_duration_seconds` | `any` |  |
+| `build_source` | `any` |  |
+| `build_status` | `string` |  |
+| `children` | `[]any` |  |
+| `ci_pipeline_id` | `any` |  |
+| `ci_pipeline_run_id` | `any` |  |
+| `commit_sha` | `any` |  |
+| `created_at` | `string` |  |
+| `creator` | `any` |  |
+| `deployed_url` | `any` |  |
+| `duration_seconds` | `any` |  |
+| `environment` | `map[string]any` |  |
+| `history_kind` | `string` |  |
+| `history_reason` | `any` |  |
+| `id` | `string` |  |
+| `is_live` | `bool` |  |
+| `is_rollback` | `bool` |  |
+| `live_region_count` | `int` |  |
+| `number` | `int` |  |
+| `placement` | `any` |  |
+| `region_count` | `int` |  |
+| `replicas_per_region` | `int` |  |
+| `rollback_reason` | `any` |  |
+| `rollback_source_release_id` | `any` |  |
+| `rollback_target_release_id` | `any` |  |
+| `rollout_predecessor_id` | `any` |  |
+| `rollout_status` | `string` |  |
+| `rollout_strategy` | `string` |  |
+| `service` | `map[string]any` |  |
+| `source_ref` | `any` |  |
+| `status` | `string` |  |
+| `total_replicas` | `int` |  |
+| `trigger_kind` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```go
+deployment, err := client.Deployment(nil).Load(map[string]any{"id": "deployment_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(deployment.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
 ### DeploymentDashboardNomad
 
 Create an instance: `deploymentDashboardNomad := client.DeploymentDashboardNomad(nil)`
+
+
+### DeploymentDetail
+
+Create an instance: `deploymentDetail := client.DeploymentDetail(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activity` | `[]any` |  |
+| `app` | `any` |  |
+| `app_id` | `any` |  |
+| `audit_events` | `[]any` |  |
+| `capacity` | `map[string]any` |  |
+| `data_resources` | `[]any` |  |
+| `deploy_targets` | `[]any` |  |
+| `deployments` | `[]any` |  |
+| `desired_states` | `[]any` |  |
+| `environments` | `[]any` |  |
+| `filters` | `map[string]any` | The option lists the deployments page's app, service and stage pickers narrow by. |
+| `health` | `map[string]any` | The rolled-up state of the selected scope. |
+| `nomad` | `map[string]any` | The Nomad footprint of the selected scope, deduplicated. |
+| `operations` | `[]any` |  |
+| `placements` | `[]any` |  |
+| `reconciler_ticks` | `[]any` |  |
+| `releases` | `[]any` |  |
+| `runtime_instances` | `[]any` |  |
+| `service_bindings` | `[]any` |  |
+| `service_views` | `[]any` |  |
+| `storage_resources` | `[]any` |  |
+
+#### Example: List
+
+```go
+deploymentDetails, err := client.DeploymentDetail(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range deploymentDetails.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
 
 
 ### DeploymentFile
@@ -9894,6 +19441,899 @@ Create an instance: `deploymentFile := client.DeploymentFile(nil)`
 | Method | Description |
 | --- | --- |
 | `Update(data, ctrl)` | Update an existing entity. |
+
+
+### DeploymentLog
+
+Create an instance: `deploymentLog := client.DeploymentLog(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `allocation_id` | `string` |  |
+| `app_environment_id` | `any` |  |
+| `app_release_id` | `any` |  |
+| `app_service_id` | `any` |  |
+| `details` | `any` |  |
+| `environment_name` | `string` |  |
+| `release_version` | `any` |  |
+| `service_name` | `string` |  |
+| `status` | `string` |  |
+| `task` | `any` |  |
+| `unreachable_reason` | `any` |  |
+
+#### Example: List
+
+```go
+deploymentLogs, err := client.DeploymentLog(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range deploymentLogs.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### DeploymentMetric
+
+Create an instance: `deploymentMetric := client.DeploymentMetric(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `auto_deploy` | `bool` |  |
+| `environment_id` | `string` |  |
+| `environment_name` | `string` |  |
+| `placement_id` | `string` |  |
+| `redeploy` | `bool` |  |
+| `region_count` | `int` |  |
+| `replicas_per_region` | `int` |  |
+| `rollout_strategy` | `string` |  |
+| `service_id` | `string` |  |
+| `service_name` | `string` |  |
+| `source_ref` | `any` |  |
+
+#### Example: List
+
+```go
+deploymentMetrics, err := client.DeploymentMetric(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range deploymentMetrics.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### DeploymentPreview
+
+Create an instance: `deploymentPreview := client.DeploymentPreview(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access` | `string` |  |
+| `app_environment_id` | `string` |  |
+| `app_name` | `string` |  |
+| `app_preview_profile_id` | `string` |  |
+| `app_slug` | `string` |  |
+| `change_number` | `any` |  |
+| `created_at` | `string` |  |
+| `created_by_user_id` | `string` |  |
+| `expires_at` | `string` |  |
+| `generation` | `int` |  |
+| `health` | `string` |  |
+| `hosted_app_id` | `string` |  |
+| `id` | `string` |  |
+| `latest_operation_status` | `any` |  |
+| `name` | `string` |  |
+| `owner_name` | `any` |  |
+| `profile_name` | `string` |  |
+| `resource_overrides` | `map[string]any` | Service public IDs mapped to resource overrides. |
+| `retained` | `bool` |  |
+| `slug` | `string` |  |
+| `snapshot_version` | `int` |  |
+| `source_revision` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `urls` | `[]any` |  |
+| `vcs_change_id` | `any` |  |
+
+#### Example: List
+
+```go
+deploymentPreviews, err := client.DeploymentPreview(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range deploymentPreviews.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### DeploymentSetting
+
+Create an instance: `deploymentSetting := client.DeploymentSetting(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `code` | `string` |  |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `nomad_datacenter` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: List
+
+```go
+deploymentSettings, err := client.DeploymentSetting(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range deploymentSettings.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### DesktopLocalAgentModel
+
+Create an instance: `desktopLocalAgentModel := client.DesktopLocalAgentModel(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `name` | `string` |  |
+
+#### Example: List
+
+```go
+desktopLocalAgentModels, err := client.DesktopLocalAgentModel(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range desktopLocalAgentModels.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### DesktopLocalAgentResponse
+
+Create an instance: `desktopLocalAgentResponse := client.DesktopLocalAgentResponse(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `input` | `[]any` |  |
+| `max_output_tokens` | `int` |  |
+| `model` | `string` |  |
+| `store` | `bool` |  |
+| `stream` | `bool` |  |
+
+#### Example: Create
+
+```go
+result, err := client.DesktopLocalAgentResponse(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "input": []any{},
+    "model": "example_model",
+    "store": true,
+    "stream": true,
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### Device
+
+Create an instance: `device := client.Device(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `architecture` | `string` |  |
+| `channel` | `string` |  |
+| `coding_connection` | `any` | Independent organization coding-control service state for the current device owner. |
+| `connection_checked_at` | `any` | When this native presence observation was obtained; null when unobserved or unavailable. |
+| `connection_status` | `string` | Display-only native presence. |
+| `control_delivery_policy` | `map[string]any` |  |
+| `control_spawn_policy` | `map[string]any` |  |
+| `created_at` | `string` |  |
+| `device` | `map[string]any` |  |
+| `environment` | `string` |  |
+| `execution_available` | `bool` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `native_device_id` | `string` |  |
+| `paired_at` | `string` |  |
+| `pairing_generation` | `int` |  |
+| `platform` | `string` |  |
+| `project_visibility` | `map[string]any` | Folder discovery and new-thread selection. |
+| `provider_status` | `[]any` | Recent native provider observations; absent on older API replicas. |
+| `revoked_at` | `any` |  |
+| `scheduled_check_ins` | `bool` | Whether the owner's private agents may check this computer's connection during scheduled runs. |
+| `user_browser_access` | `string` | Whether agents may use the owner's own Chrome-family browser here: off, only tabs agents open or the owner shares, or every tab. |
+
+#### Example: Load
+
+```go
+device, err := client.Device(nil).Load(map[string]any{"id": "device_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(device.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+devices, err := client.Device(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range devices.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### DeviceBrowserOperation
+
+Create an instance: `deviceBrowserOperation := client.DeviceBrowserOperation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `command` | `string` | The in-app browser takes open through open_external; the person's own browser (arguments.browser user) takes open, tabs, share_tab, navigate, back, reload, screenshot, read, click, type, press, scroll and close. |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+
+#### Example: List
+
+```go
+deviceBrowserOperations, err := client.DeviceBrowserOperation(nil).List(map[string]any{"device_id": "example", "organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range deviceBrowserOperations.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### DeviceControlMessage
+
+Create an instance: `deviceControlMessage := client.DeviceControlMessage(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_id` | `string` |  |
+| `agent_name` | `string` |  |
+| `expires_at` | `string` |  |
+| `id` | `string` |  |
+| `sender` | `any` |  |
+| `text` | `any` |  |
+| `text_omitted` | `bool` |  |
+| `thread` | `map[string]any` |  |
+
+#### Example: List
+
+```go
+deviceControlMessages, err := client.DeviceControlMessage(nil).List(map[string]any{"device_id": "example", "organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range deviceControlMessages.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### DeviceControlOperation
+
+Create an instance: `deviceControlOperation := client.DeviceControlOperation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `arguments` | `map[string]any` |  |
+| `created_at` | `string` |  |
+| `delivery` | `map[string]any` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` |  |
+| `diagnostic_code` | `string` | Approved product error code retained after copied diagnostics expire. |
+| `end` | `map[string]any` |  |
+| `expires_at` | `string` |  |
+| `id` | `string` |  |
+| `key` | `string` |  |
+| `provider` | `string` |  |
+| `references` | `map[string]any` |  |
+| `result` | `any` |  |
+| `result_expired` | `bool` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```go
+deviceControlOperation, err := client.DeviceControlOperation(nil).Load(map[string]any{"id": "device_control_operation_id", "device_id": "device_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(deviceControlOperation.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: Create
+
+```go
+result, err := client.DeviceControlOperation(nil).Create(map[string]any{
+    "device_id": "example_device_id",
+    "organization_id": "example_organization_id",
+    "action": "example_action",
+    "arguments": map[string]any{},
+    "key": "example_key",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### DeviceEnterpriseRelay
+
+Create an instance: `deviceEnterpriseRelay := client.DeviceEnterpriseRelay(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Example: List
+
+```go
+deviceEnterpriseRelays, err := client.DeviceEnterpriseRelay(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range deviceEnterpriseRelays.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### DeviceFolderListing
+
+Create an instance: `deviceFolderListing := client.DeviceFolderListing(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `code` | `string` |  |
+| `error` | `string` |  |
+| `folders` | `[]any` |  |
+| `id` | `string` |  |
+| `key` | `string` | Stable idempotency key for this listing. |
+| `parent` | `any` |  |
+| `path` | `string` | The resolved folder. |
+| `state` | `string` |  |
+| `truncated` | `bool` |  |
+
+#### Example: Load
+
+```go
+deviceFolderListing, err := client.DeviceFolderListing(nil).Load(map[string]any{"id": "device_folder_listing_id", "device_id": "device_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(deviceFolderListing.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: Create
+
+```go
+result, err := client.DeviceFolderListing(nil).Create(map[string]any{
+    "device_id": "example_device_id",
+    "organization_id": "example_organization_id",
+    "key": "example_key",
+    "path": "example_path",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### DeviceGrant
+
+Create an instance: `deviceGrant := client.DeviceGrant(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active_grants` | `[]any` |  |
+| `agent_choices` | `[]any` | Eligible picker choices, with current owner grant targets, on the first page only. |
+| `agent_id` | `string` |  |
+| `all_agents_access` | `bool` | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `capabilities` | `[]any` |  |
+| `execution_available` | `bool` |  |
+| `grants` | `[]any` |  |
+| `id` | `string` |  |
+| `next_cursor` | `any` |  |
+| `principal_id` | `string` |  |
+
+#### Example: List
+
+```go
+deviceGrants, err := client.DeviceGrant(nil).List(map[string]any{"device_id": "example", "organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range deviceGrants.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.DeviceGrant(nil).Create(map[string]any{
+    "device_id": "example_device_id",
+    "organization_id": "example_organization_id",
+    "agent_id": "example_agent_id",
+    "capabilities": []any{},
+    "principal_id": "example_principal_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### DeviceInvocation
+
+Create an instance: `deviceInvocation := client.DeviceInvocation(nil)`
+
+
+### DeviceLocalEvent
+
+Create an instance: `deviceLocalEvent := client.DeviceLocalEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `event` | `string` |  |
+| `recorded` | `bool` |  |
+
+#### Example: Create
+
+```go
+result, err := client.DeviceLocalEvent(nil).Create(map[string]any{
+    "device_id": "example_device_id",
+    "organization_id": "example_organization_id",
+    "event": "example_event",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### DevicePairing
+
+Create an instance: `devicePairing := client.DevicePairing(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `architecture` | `string` |  |
+| `channel` | `string` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `platform` | `string` |  |
+| `public_key` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.DevicePairing(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "architecture": "example_architecture",
+    "channel": "example_channel",
+    "name": "example_name",
+    "platform": "example_platform",
+    "public_key": "example_public_key",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### DeviceProject
+
+Create an instance: `deviceProject := client.DeviceProject(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### DeviceScheduledCheckIn
+
+Create an instance: `deviceScheduledCheckIn := client.DeviceScheduledCheckIn(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `enabled` | `bool` |  |
+
+#### Example: Create
+
+```go
+result, err := client.DeviceScheduledCheckIn(nil).Create(map[string]any{
+    "device_id": "example_device_id",
+    "organization_id": "example_organization_id",
+    "enabled": true,
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### DockerBuilder
+
+Create an instance: `dockerBuilder := client.DockerBuilder(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `backend` | `string` |  |
+| `created_at` | `any` |  |
+| `gateway_url` | `any` | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `int` |  |
+| `id` | `string` |  |
+| `last_activity_at` | `any` |  |
+| `organization_id` | `string` |  |
+| `ready_at` | `any` |  |
+| `slept_at` | `any` |  |
+| `slug` | `string` |  |
+| `startup_attempt` | `int` |  |
+| `startup_failure` | `any` | Safe failure reason for the most recent startup attempt |
+| `startup_stage` | `any` |  |
+| `status` | `string` |  |
+| `updated_at` | `any` |  |
+
+#### Example: Load
+
+```go
+dockerBuilder, err := client.DockerBuilder(nil).Load(map[string]any{"id": "docker_builder_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(dockerBuilder.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+dockerBuilders, err := client.DockerBuilder(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range dockerBuilders.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.DockerBuilder(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### DockerBuilderSession
+
+Create an instance: `dockerBuilderSession := client.DockerBuilderSession(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `string` |  |
+| `docker_builder_id` | `string` |  |
+| `expires_at` | `string` |  |
+| `gateway_url` | `any` | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `int` |  |
+| `id` | `string` |  |
+| `organization_id` | `string` |  |
+| `revoked_at` | `any` |  |
+| `user_id` | `string` |  |
+
+#### Example: Load
+
+```go
+dockerBuilderSession, err := client.DockerBuilderSession(nil).Load(map[string]any{"id": "docker_builder_session_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(dockerBuilderSession.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: Create
+
+```go
+result, err := client.DockerBuilderSession(nil).Create(map[string]any{
+    "docker_builder_id": "example_docker_builder_id",
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### DockerBuilderSetting
+
+Create an instance: `dockerBuilderSetting := client.DockerBuilderSetting(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `docker_builder_settings` | `map[string]any` |  |
+| `idle_timeout_seconds` | `int` |  |
+| `max_concurrency` | `int` |  |
+| `organization_id` | `string` |  |
+| `region` | `string` |  |
+| `runtime_timeout_seconds` | `int` |  |
+
+#### Example: List
+
+```go
+dockerBuilderSettings, err := client.DockerBuilderSetting(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range dockerBuilderSettings.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### DomainDnsIntegration
+
+Create an instance: `domainDnsIntegration := client.DomainDnsIntegration(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_label` | `any` |  |
+| `api_token` | `string` |  |
+| `created_at` | `string` |  |
+| `failure_message` | `any` |  |
+| `has_token` | `bool` |  |
+| `id` | `string` |  |
+| `last_verified_at` | `any` |  |
+| `organization_id` | `string` |  |
+| `provider` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: List
+
+```go
+domainDnsIntegrations, err := client.DomainDnsIntegration(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range domainDnsIntegrations.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.DomainDnsIntegration(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "api_token": "example_api_token",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
 
 
 ### DomainPathRule
@@ -10021,6 +20461,16 @@ for _, item := range dreams.([]any) {
     fmt.Println(item.(sdk.Entity).Data())
 }
 ```
+
+
+### Edge
+
+Create an instance: `edge := client.Edge(nil)`
+
+
+### EmailVerification
+
+Create an instance: `emailVerification := client.EmailVerification(nil)`
 
 
 ### Environment
@@ -10439,6 +20889,257 @@ fmt.Println(evidence.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
+### ExecutionDesiredState
+
+Create an instance: `executionDesiredState := client.ExecutionDesiredState(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `desired_state` | `map[string]any` |  |
+| `id` | `string` |  |
+| `stop_observed` | `bool` | True only for archived zero-capacity states with all known jobs stopped and allocations terminated. |
+
+#### Example: Load
+
+```go
+executionDesiredState, err := client.ExecutionDesiredState(nil).Load(map[string]any{"id": "execution_desired_state_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(executionDesiredState.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+executionDesiredStates, err := client.ExecutionDesiredState(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range executionDesiredStates.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.ExecutionDesiredState(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ExecutionReconcilerTick
+
+Create an instance: `executionReconcilerTick := client.ExecutionReconcilerTick(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+executionReconcilerTick, err := client.ExecutionReconcilerTick(nil).Load(map[string]any{"id": "execution_reconciler_tick_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(executionReconcilerTick.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+executionReconcilerTicks, err := client.ExecutionReconcilerTick(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range executionReconcilerTicks.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.ExecutionReconcilerTick(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ExecutionRelease
+
+Create an instance: `executionRelease := client.ExecutionRelease(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+executionRelease, err := client.ExecutionRelease(nil).Load(map[string]any{"id": "execution_release_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(executionRelease.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+executionReleases, err := client.ExecutionRelease(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range executionReleases.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.ExecutionRelease(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ExecutionRuntimeInstance
+
+Create an instance: `executionRuntimeInstance := client.ExecutionRuntimeInstance(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter_kind` | `string` |  |
+| `app_environment_id` | `string` |  |
+| `app_release_id` | `any` |  |
+| `app_service_id` | `string` |  |
+| `booted_at` | `any` |  |
+| `booted_at_label` | `any` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `hosted_app_id` | `string` |  |
+| `id` | `string` |  |
+| `instance_key` | `string` |  |
+| `last_reconciled_at` | `any` |  |
+| `last_reconciled_at_label` | `any` |  |
+| `last_seen_at` | `any` |  |
+| `last_seen_at_label` | `any` |  |
+| `location` | `any` |  |
+| `location_id` | `string` |  |
+| `network_peer_id` | `any` |  |
+| `nomad_allocation_id` | `any` |  |
+| `nomad_task_name` | `any` |  |
+| `organization_id` | `string` |  |
+| `private_ipv4` | `any` |  |
+| `private_ipv6` | `any` |  |
+| `provider_instance_id` | `any` |  |
+| `public_endpoint` | `any` |  |
+| `service_name` | `string` | Name of the Vex service this instance runs, in the same vocabulary as `vex deploy list`. |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `terminated_at` | `any` |  |
+| `terminated_at_label` | `any` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+
+#### Example: Load
+
+```go
+executionRuntimeInstance, err := client.ExecutionRuntimeInstance(nil).Load(map[string]any{"id": "execution_runtime_instance_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(executionRuntimeInstance.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+executionRuntimeInstances, err := client.ExecutionRuntimeInstance(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range executionRuntimeInstances.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.ExecutionRuntimeInstance(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
 ### Exploration
 
 Create an instance: `exploration := client.Exploration(nil)`
@@ -10768,6 +21469,403 @@ for _, item := range findings.([]any) {
 ```
 
 
+### Gh
+
+Create an instance: `gh := client.Gh(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capabilities` | `map[string]any` |  |
+| `content` | `map[string]any` |  |
+| `fetched_at` | `string` |  |
+| `id` | `string` |  |
+| `magic_merge` | `any` |  |
+| `pull_request` | `any` |  |
+| `stack` | `map[string]any` |  |
+| `transcript_paths` | `[]any` |  |
+
+#### Example: Load
+
+```go
+gh, err := client.Gh(nil).Load(map[string]any{"id": "gh_id", "gh_id": "gh_id", "github_repo": "github_repo", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(gh.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### GitImport
+
+Create an instance: `gitImport := client.GitImport(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `destination_mode` | `string` |  |
+| `error` | `any` |  |
+| `git_default_branch` | `string` | Original Git symbolic HEAD branch, independent of the branch selected for JJ conversion |
+| `git_status` | `string` |  |
+| `git_url` | `string` |  |
+| `id` | `string` |  |
+| `idempotency_key` | `string` |  |
+| `name` | `string` |  |
+| `native_status` | `string` |  |
+| `organization` | `string` |  |
+| `repository_id` | `any` |  |
+| `root_path` | `string` |  |
+| `slug` | `string` |  |
+| `source_branch` | `string` |  |
+| `target_branch` | `string` |  |
+
+#### Example: Load
+
+```go
+gitImport, err := client.GitImport(nil).Load(map[string]any{"id": "git_import_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(gitImport.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: Create
+
+```go
+result, err := client.GitImport(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "destination_mode": "example_destination_mode",
+    "idempotency_key": "example_idempotency_key",
+    "root_path": "example_root_path",
+    "slug": "example_slug",
+    "source_branch": "example_source_branch",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### Github
+
+Create an instance: `github := client.Github(nil)`
+
+
+### GithubApp
+
+Create an instance: `githubApp := client.GithubApp(nil)`
+
+
+### GithubAppImportableRepository
+
+Create an instance: `githubAppImportableRepository := client.GithubAppImportableRepository(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_login` | `string` |  |
+| `github_app_installation_id` | `string` |  |
+| `next_page` | `any` | Next GitHub page for this installation |
+| `repositories` | `[]any` |  |
+
+#### Example: List
+
+```go
+githubAppImportableRepositorys, err := client.GithubAppImportableRepository(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range githubAppImportableRepositorys.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### GithubAppInstallation
+
+Create an instance: `githubAppInstallation := client.GithubAppInstallation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `any` |  |
+| `account_id` | `any` |  |
+| `account_login` | `string` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `id` | `string` |  |
+| `installation_id` | `string` |  |
+| `installed_at` | `any` |  |
+| `installed_at_label` | `any` |  |
+| `manage_access_url` | `string` |  |
+| `organization_id` | `string` |  |
+| `permission_entries` | `[]any` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `map[string]any` |  |
+| `status` | `string` |  |
+| `suspended_at` | `any` |  |
+| `suspended_at_label` | `any` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+
+#### Example: List
+
+```go
+githubAppInstallations, err := client.GithubAppInstallation(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range githubAppInstallations.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### GithubAppInstallationAuthorization
+
+Create an instance: `githubAppInstallationAuthorization := client.GithubAppInstallationAuthorization(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `installation_url` | `string` |  |
+| `organization_slug` | `string` | Vex organization slug whose installation will be linked. |
+| `return_target` | `string` | Server-validated Vex application target used after verification. |
+
+#### Example: Create
+
+```go
+result, err := client.GithubAppInstallationAuthorization(nil).Create(map[string]any{
+    "organization_slug": "example_organization_slug",
+    "return_target": "example_return_target",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### GithubAppUserAuthorization
+
+Create an instance: `githubAppUserAuthorization := client.GithubAppUserAuthorization(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.GithubAppUserAuthorization(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### GithubCiRepository
+
+Create an instance: `githubCiRepository := client.GithubCiRepository(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adoption_mode` | `string` |  |
+| `check_name_prefix` | `string` |  |
+| `ci_runner_pool_id` | `any` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `default_branch` | `string` |  |
+| `github_app_installation_id` | `string` |  |
+| `github_repository_id` | `string` |  |
+| `id` | `string` |  |
+| `last_compatibility_status` | `any` |  |
+| `last_error_message` | `any` |  |
+| `last_head_sha` | `any` |  |
+| `last_pull_request_number` | `any` |  |
+| `last_ref` | `any` |  |
+| `last_webhook_action` | `any` |  |
+| `last_webhook_at` | `any` |  |
+| `last_webhook_at_label` | `any` |  |
+| `last_webhook_delivery_id` | `any` |  |
+| `last_webhook_event` | `any` |  |
+| `metadata` | `map[string]any` |  |
+| `organization_id` | `string` |  |
+| `permission_status` | `string` |  |
+| `repository_full_name` | `string` |  |
+| `repository_name` | `string` |  |
+| `repository_owner` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+| `webhook_delivery_count` | `int` |  |
+
+#### Example: Load
+
+```go
+githubCiRepository, err := client.GithubCiRepository(nil).Load(map[string]any{"id": "github_ci_repository_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(githubCiRepository.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+githubCiRepositorys, err := client.GithubCiRepository(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range githubCiRepositorys.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.GithubCiRepository(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "github_app_installation_id": "example_github_app_installation_id",
+    "github_repository_id": "example_github_repository_id",
+    "repository_name": "example_repository_name",
+    "repository_owner": "example_repository_owner",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### GithubCiRepositoryCompatibilityReport
+
+Create an instance: `githubCiRepositoryCompatibilityReport := client.GithubCiRepositoryCompatibilityReport(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `analyzed_at` | `string` |  |
+| `analyzed_at_label` | `any` |  |
+| `ci_pipeline_id` | `any` |  |
+| `ci_pipeline_run_id` | `any` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `diagnostics` | `[]any` |  |
+| `errors` | `[]any` |  |
+| `event_action` | `any` |  |
+| `event_name` | `string` |  |
+| `execution_allowed` | `bool` |  |
+| `github_ci_repository_id` | `string` |  |
+| `head_sha` | `any` |  |
+| `id` | `string` |  |
+| `metadata` | `map[string]any` |  |
+| `organization_id` | `string` |  |
+| `parser_version` | `string` |  |
+| `pull_request_number` | `any` |  |
+| `ref_name` | `any` |  |
+| `referenced_actions` | `[]any` |  |
+| `required_secrets` | `[]any` |  |
+| `runner_labels` | `[]any` |  |
+| `source_blob_sha` | `any` |  |
+| `source_sha` | `string` |  |
+| `status` | `string` |  |
+| `supported_features` | `map[string]any` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+| `warnings` | `[]any` |  |
+| `workflow_name` | `any` |  |
+| `workflow_path` | `string` |  |
+
+#### Example: Load
+
+```go
+githubCiRepositoryCompatibilityReport, err := client.GithubCiRepositoryCompatibilityReport(nil).Load(map[string]any{"id": "github_ci_repository_compatibility_report_id", "github_ci_repository_id": "github_ci_repository_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(githubCiRepositoryCompatibilityReport.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+githubCiRepositoryCompatibilityReports, err := client.GithubCiRepositoryCompatibilityReport(nil).List(map[string]any{"github_ci_repository_id": "example", "organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range githubCiRepositoryCompatibilityReports.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
 ### GithubConnection
 
 Create an instance: `githubConnection := client.GithubConnection(nil)`
@@ -10810,6 +21908,679 @@ result, err := client.GithubConnection(nil).Create(map[string]any{
     "organization_id": "example_organization_id",
     "github_app_installation_id": "example_github_app_installation_id",
     "repositories": []any{},
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### GithubIntegration
+
+Create an instance: `githubIntegration := client.GithubIntegration(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `any` |  |
+| `account_login` | `string` |  |
+| `connection_status` | `string` |  |
+| `connection_status_label` | `string` |  |
+| `github_installation` | `any` |  |
+| `health` | `map[string]any` |  |
+| `id` | `string` |  |
+| `imported_repositories_count` | `int` |  |
+| `imported_repositories_count_label` | `string` |  |
+| `organization` | `map[string]any` |  |
+| `pagination` | `map[string]any` |  |
+| `repositories` | `[]any` |  |
+
+#### Example: Load
+
+```go
+githubIntegration, err := client.GithubIntegration(nil).Load(map[string]any{"id": "github_integration_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(githubIntegration.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+githubIntegrations, err := client.GithubIntegration(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range githubIntegrations.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### GithubOnboarding
+
+Create an instance: `githubOnboarding := client.GithubOnboarding(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accounts` | `[]any` |  |
+| `active_batch_id` | `any` | The batch the wizard's import step should resume — the most recent batch still working, else the most recent overall. |
+| `batches` | `[]any` |  |
+| `capabilities` | `map[string]any` |  |
+| `installations` | `[]any` |  |
+
+#### Example: Load
+
+```go
+githubOnboarding, err := client.GithubOnboarding(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(githubOnboarding.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### GithubOnboardingBranch
+
+Create an instance: `githubOnboardingBranch := client.GithubOnboardingBranch(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `branches` | `[]any` |  |
+
+#### Example: List
+
+```go
+githubOnboardingBranchs, err := client.GithubOnboardingBranch(nil).List(map[string]any{"organization_id": "example", "github_app_installation_id": "example", "name": "example", "owner": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range githubOnboardingBranchs.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### GithubOnboardingImport
+
+Create an instance: `githubOnboardingImport := client.GithubOnboardingImport(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_login` | `string` |  |
+| `complete` | `bool` | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `string` |  |
+| `failed_item_count` | `int` |  |
+| `github_app_installation_id` | `string` |  |
+| `id` | `string` |  |
+| `imported_item_count` | `int` |  |
+| `item_count` | `int` |  |
+| `items` | `[]any` |  |
+| `repositories` | `any` |  |
+| `status` | `string` |  |
+| `terminal_item_count` | `int` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.GithubOnboardingImport(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "github_app_installation_id": "example_github_app_installation_id",
+    "repositories": "example_repositories",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### GithubOnboardingImportBatch
+
+Create an instance: `githubOnboardingImportBatch := client.GithubOnboardingImportBatch(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_login` | `string` |  |
+| `complete` | `bool` | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `string` |  |
+| `failed_item_count` | `int` |  |
+| `github_app_installation_id` | `string` |  |
+| `id` | `string` |  |
+| `imported_item_count` | `int` |  |
+| `item_count` | `int` |  |
+| `items` | `[]any` |  |
+| `status` | `string` |  |
+| `terminal_item_count` | `int` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```go
+githubOnboardingImportBatch, err := client.GithubOnboardingImportBatch(nil).Load(map[string]any{"id": "github_onboarding_import_batch_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(githubOnboardingImportBatch.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### GithubOnboardingImportItem
+
+Create an instance: `githubOnboardingImportItem := client.GithubOnboardingImportItem(nil)`
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### GithubPullRequest
+
+Create an instance: `githubPullRequest := client.GithubPullRequest(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capabilities` | `map[string]any` |  |
+| `content` | `map[string]any` |  |
+| `fetched_at` | `string` |  |
+| `id` | `string` |  |
+| `magic_merge` | `any` |  |
+| `pull_request` | `any` |  |
+| `stack` | `map[string]any` |  |
+| `transcript_paths` | `[]any` |  |
+
+#### Example: Load
+
+```go
+githubPullRequest, err := client.GithubPullRequest(nil).Load(map[string]any{"id": "github_pull_request_id", "organization_id": "organization_id", "pull_request_id": "pull_request_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(githubPullRequest.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### GithubRunnerAdmission
+
+Create an instance: `githubRunnerAdmission := client.GithubRunnerAdmission(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.GithubRunnerAdmission(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### GithubRunnerCache
+
+Create an instance: `githubRunnerCache := client.GithubRunnerCache(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `entry_id` | `string` |  |
+| `key` | `string` |  |
+| `matched_key` | `string` |  |
+| `ok` | `bool` |  |
+| `operation` | `string` |  |
+| `restore_keys` | `[]any` |  |
+| `signed_download_url` | `string` |  |
+| `size_bytes` | `string` |  |
+| `upload_path` | `string` |  |
+| `version` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.GithubRunnerCache(nil).Create(map[string]any{
+    "operation": "example_operation",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### GithubRunnerEgress
+
+Create an instance: `githubRunnerEgress := client.GithubRunnerEgress(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_request` | `bool` |  |
+| `cidr` | `any` |  |
+| `ipv4` | `any` |  |
+| `requested_at_label` | `any` |  |
+| `status` | `string` |  |
+
+#### Example: Load
+
+```go
+githubRunnerEgress, err := client.GithubRunnerEgress(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(githubRunnerEgress.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: Create
+
+```go
+result, err := client.GithubRunnerEgress(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### GithubRunnerHistory
+
+Create an instance: `githubRunnerHistory := client.GithubRunnerHistory(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activity` | `[]any` |  |
+| `counts` | `map[string]any` |  |
+| `observed_at` | `string` |  |
+| `pagination` | `map[string]any` |  |
+| `repositories` | `[]any` |  |
+| `runs` | `[]any` |  |
+| `setup` | `any` | CI onboarding. |
+| `success_rate` | `any` |  |
+| `usage` | `map[string]any` |  |
+
+#### Example: Load
+
+```go
+githubRunnerHistory, err := client.GithubRunnerHistory(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(githubRunnerHistory.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### GithubRunnerImage
+
+Create an instance: `githubRunnerImage := client.GithubRunnerImage(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `image_reference` | `string` | Immutable linux/amd64 Ubuntu 24.04 image, registry/repository@sha256:digest, with Node 22+ |
+| `last_error` | `any` |  |
+| `modal_image_id` | `any` |  |
+| `name` | `string` |  |
+| `registry_secret_name` | `any` | Name of an organization CI secret containing REGISTRY_USERNAME and REGISTRY_PASSWORD JSON fields |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```go
+githubRunnerImage, err := client.GithubRunnerImage(nil).Load(map[string]any{"id": "github_runner_image_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(githubRunnerImage.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+githubRunnerImages, err := client.GithubRunnerImage(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range githubRunnerImages.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.GithubRunnerImage(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "image_reference": "example_image_reference",
+    "name": "example_name",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### GithubRunnerPool
+
+Create an instance: `githubRunnerPool := client.GithubRunnerPool(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cpu_millicores` | `int` |  |
+| `enabled` | `bool` |  |
+| `github_app_installation_id` | `string` |  |
+| `github_repository_id` | `string` |  |
+| `github_runner_image` | `any` |  |
+| `id` | `string` |  |
+| `image` | `any` | Organization image name or ID; null restores the standard image |
+| `invocations` | `[]any` |  |
+| `label` | `string` |  |
+| `last_error` | `any` |  |
+| `last_polled_at` | `any` |  |
+| `max_concurrency` | `int` |  |
+| `memory_mb` | `int` |  |
+| `organization_id` | `string` |  |
+| `provider` | `string` |  |
+| `repository_full_name` | `string` |  |
+| `runtime_kind` | `string` |  |
+| `timeout_seconds` | `int` |  |
+
+#### Example: List
+
+```go
+githubRunnerPools, err := client.GithubRunnerPool(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range githubRunnerPools.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.GithubRunnerPool(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "github_app_installation_id": "example_github_app_installation_id",
+    "repository_full_name": "example_repository_full_name",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### GithubRunnerSetup
+
+Create an instance: `githubRunnerSetup := client.GithubRunnerSetup(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `error` | `any` |  |
+| `github_repository_connection_id` | `string` |  |
+| `id` | `string` |  |
+| `pull_request_url` | `any` |  |
+| `repository_full_name` | `string` |  |
+| `roder_thread_id` | `any` |  |
+| `runner_labels` | `[]any` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `summary` | `any` |  |
+
+#### Example: Load
+
+```go
+githubRunnerSetup, err := client.GithubRunnerSetup(nil).Load(map[string]any{"id": "github_runner_setup_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(githubRunnerSetup.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: Create
+
+```go
+result, err := client.GithubRunnerSetup(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "github_repository_connection_id": "example_github_repository_connection_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### Gitlab
+
+Create an instance: `gitlab := client.Gitlab(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `configured` | `bool` |  |
+| `connections` | `[]any` |  |
+| `integrations` | `[]any` |  |
+| `inventory_error` | `any` |  |
+| `next_page` | `any` |  |
+| `organization` | `map[string]any` |  |
+| `projects` | `[]any` |  |
+| `redirect_uri` | `any` | The OAuth redirect URI a self-managed GitLab application must use; null when GitLab callbacks aren't configured. |
+| `selected_integration_id` | `any` |  |
+
+#### Example: Load
+
+```go
+gitlab, err := client.Gitlab(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(gitlab.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### GitlabConnection
+
+Create an instance: `gitlabConnection := client.GitlabConnection(nil)`
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### GitlabImport
+
+Create an instance: `gitlabImport := client.GitlabImport(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `integration_id` | `string` |  |
+| `project_id` | `int` |  |
+| `repo_slug` | `string` |  |
+| `source_branch` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.GitlabImport(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "integration_id": "example_integration_id",
+    "project_id": 1,
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### GitlabOauth
+
+Create an instance: `gitlabOauth := client.GitlabOauth(nil)`
+
+
+### GrantAllAgent
+
+Create an instance: `grantAllAgent := client.GrantAllAgent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `all_agents_access` | `bool` |  |
+| `enabled` | `bool` |  |
+| `execution_available` | `bool` |  |
+
+#### Example: Create
+
+```go
+result, err := client.GrantAllAgent(nil).Create(map[string]any{
+    "device_id": "example_device_id",
+    "organization_id": "example_organization_id",
+    "enabled": true,
 }, nil)
 if err != nil {
     panic(err)
@@ -10900,6 +22671,17 @@ fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
+### IdentityOrganization
+
+Create an instance: `identityOrganization := client.IdentityOrganization(nil)`
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
 ### ImageRepository
 
 Create an instance: `imageRepository := client.ImageRepository(nil)`
@@ -10956,6 +22738,73 @@ if err != nil {
     panic(err)
 }
 fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ImageRepositoryTag
+
+Create an instance: `imageRepositoryTag := client.ImageRepositoryTag(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `image_repository` | `map[string]any` |  |
+| `name` | `string` |  |
+| `registry_url` | `string` |  |
+| `tags` | `[]any` |  |
+
+#### Example: List
+
+```go
+imageRepositoryTags, err := client.ImageRepositoryTag(nil).List(map[string]any{"image_repository_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range imageRepositoryTags.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### ImportBranchPolicy
+
+Create an instance: `importBranchPolicy := client.ImportBranchPolicy(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `bool` |  |
+| `can_manage_sandbox_region` | `bool` |  |
+| `dedicated_outbound_ip_addresses` | `[]any` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` |  |
+| `organization` | `map[string]any` |  |
+| `sandbox_regions` | `[]any` |  |
+
+#### Example: Load
+
+```go
+importBranchPolicy, err := client.ImportBranchPolicy(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(importBranchPolicy.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -11090,6 +22939,161 @@ fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
+### InvocationControl
+
+Create an instance: `invocationControl := client.InvocationControl(nil)`
+
+
+### JobLogChunk
+
+Create an instance: `jobLogChunk := client.JobLogChunk(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `byte_size` | `int` |  |
+| `ci_job_id` | `any` |  |
+| `ci_pipeline_run_id` | `any` |  |
+| `ci_step_id` | `any` |  |
+| `content` | `string` |  |
+| `content_format` | `string` |  |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `organization_id` | `string` |  |
+| `sequence_number` | `int` |  |
+| `stream` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: List
+
+```go
+jobLogChunks, err := client.JobLogChunk(nil).List(map[string]any{"job_id": "example", "pipeline_id": "example", "run_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range jobLogChunks.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.JobLogChunk(nil).Create(map[string]any{
+    "job_id": "example_job_id",
+    "pipeline_id": "example_pipeline_id",
+    "run_id": "example_run_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### JobStep
+
+Create an instance: `jobStep := client.JobStep(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```go
+jobSteps, err := client.JobStep(nil).List(map[string]any{"job_id": "example", "pipeline_id": "example", "run_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range jobSteps.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.JobStep(nil).Create(map[string]any{
+    "job_id": "example_job_id",
+    "pipeline_id": "example_pipeline_id",
+    "run_id": "example_run_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### JobWorkspace
+
+Create an instance: `jobWorkspace := client.JobWorkspace(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```go
+jobWorkspaces, err := client.JobWorkspace(nil).List(map[string]any{"job_id": "example", "pipeline_id": "example", "run_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range jobWorkspaces.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.JobWorkspace(nil).Create(map[string]any{
+    "job_id": "example_job_id",
+    "pipeline_id": "example_pipeline_id",
+    "run_id": "example_run_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
 ### JourneyVariantReplay
 
 Create an instance: `journeyVariantReplay := client.JourneyVariantReplay(nil)`
@@ -11200,6 +23204,272 @@ result, err := client.Knowledge(nil).Create(map[string]any{
     "markdown": "example_markdown",
     "project_id": "example_project_id",
     "title": "example_title",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### Known
+
+Create an instance: `known := client.Known(nil)`
+
+
+### Label
+
+Create an instance: `label := client.Label(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `changes_count` | `int` |  |
+| `id` | `string` |  |
+| `name` | `string` | Display name |
+| `slug` | `string` | Normalized identity used for filtering and lookup. |
+
+#### Example: List
+
+```go
+labels, err := client.Label(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range labels.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### LeaseArtifact
+
+Create an instance: `leaseArtifact := client.LeaseArtifact(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.LeaseArtifact(nil).Create(map[string]any{
+    "lease_id": "example_lease_id",
+    "node_id": "example_node_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### LeaseCache
+
+Create an instance: `leaseCache := client.LeaseCache(nil)`
+
+
+### LeaseLogChunk
+
+Create an instance: `leaseLogChunk := client.LeaseLogChunk(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.LeaseLogChunk(nil).Create(map[string]any{
+    "lease_id": "example_lease_id",
+    "node_id": "example_node_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### LeaseReconciliation
+
+Create an instance: `leaseReconciliation := client.LeaseReconciliation(nil)`
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### LeaseStep
+
+Create an instance: `leaseStep := client.LeaseStep(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### LeaseVerifyDiagnostic
+
+Create an instance: `leaseVerifyDiagnostic := client.LeaseVerifyDiagnostic(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `browser_events` | `map[string]any` |  |
+| `live_browser` | `map[string]any` |  |
+| `live_view` | `map[string]any` | The tester's read-only live stream for page viewers. |
+| `steps` | `[]any` |  |
+
+#### Example: Create
+
+```go
+result, err := client.LeaseVerifyDiagnostic(nil).Create(map[string]any{
+    "lease_id": "example_lease_id",
+    "swarm_id": "example_swarm_id",
+    "task_id": "example_task_id",
+    "browser_events": map[string]any{},
+    "live_browser": map[string]any{},
+    "live_view": map[string]any{},
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### LeaseVerifySecret
+
+Create an instance: `leaseVerifySecret := client.LeaseVerifySecret(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.LeaseVerifySecret(nil).Create(map[string]any{
+    "lease_id": "example_lease_id",
+    "swarm_id": "example_swarm_id",
+    "task_id": "example_task_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### LeaseWorkspace
+
+Create an instance: `leaseWorkspace := client.LeaseWorkspace(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### LocalAgentDecision
+
+Create an instance: `localAgentDecision := client.LocalAgentDecision(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `request` | `map[string]any` | A native OpenAI Decisions request for gpt-6-luna, at most 1600 KiB, with inline images only |
+
+#### Example: Create
+
+```go
+result, err := client.LocalAgentDecision(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "request": map[string]any{},
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### LocalAgentResponse
+
+Create an instance: `localAgentResponse := client.LocalAgentResponse(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `input` | `[]any` |  |
+| `model` | `string` |  |
+| `service_tier` | `any` |  |
+| `store` | `bool` |  |
+| `stream` | `bool` |  |
+| `tools` | `[]any` |  |
+
+#### Example: Create
+
+```go
+result, err := client.LocalAgentResponse(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "input": []any{},
+    "model": "example_model",
+    "store": true,
+    "stream": true,
 }, nil)
 if err != nil {
     panic(err)
@@ -11334,6 +23604,136 @@ for _, item := range locations.([]any) {
     fmt.Println(item.(sdk.Entity).Data())
 }
 ```
+
+
+### LogStreamChunk
+
+Create an instance: `logStreamChunk := client.LogStreamChunk(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+logStreamChunk, err := client.LogStreamChunk(nil).Load(map[string]any{"id": "log_stream_chunk_id", "log_stream_id": "log_stream_id", "space_id": "space_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(logStreamChunk.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+logStreamChunks, err := client.LogStreamChunk(nil).List(map[string]any{"log_stream_id": "example", "space_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range logStreamChunks.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.LogStreamChunk(nil).Create(map[string]any{
+    "log_stream_id": "example_log_stream_id",
+    "space_id": "example_space_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### LogoImage
+
+Create an instance: `logoImage := client.LogoImage(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_products` | `[]any` | Products this organization has activated (PRD 144). |
+| `agents_only` | `bool` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `bool` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `github_prs_authored_by_change_author` | `bool` |  |
+| `id` | `string` |  |
+| `logo_url` | `any` |  |
+| `member_count` | `int` |  |
+| `name` | `string` |  |
+| `pending_invitation_count` | `int` |  |
+| `personal` | `bool` |  |
+| `repository_count` | `int` |  |
+| `role` | `any` |  |
+| `sandbox_region` | `string` |  |
+| `shared_agent_personal_accounts_enabled` | `bool` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` |  |
+| `source_control_providers` | `[]any` | Connected source control providers for this organization. |
+| `source_ui_enabled` | `bool` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `string` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+| `verify_pr_scenario_writing_enabled` | `bool` |  |
+
+
+### MarketingSetting
+
+Create an instance: `marketingSetting := client.MarketingSetting(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `call_first` | `bool` |  |
+
+#### Example: List
+
+```go
+marketingSettings, err := client.MarketingSetting(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range marketingSettings.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### McpOauth
+
+Create an instance: `mcpOauth := client.McpOauth(nil)`
 
 
 ### Me
@@ -11599,6 +23999,54 @@ fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
+### MergeQueueEntry
+
+Create an instance: `mergeQueueEntry := client.MergeQueueEntry(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `analytics` | `map[string]any` | Queue performance for the reporting window. |
+| `change_id` | `any` |  |
+| `expected_target_commit_id` | `any` |  |
+| `expected_target_version` | `any` |  |
+| `expected_version` | `int` |  |
+| `github_pr_number` | `any` |  |
+| `id` | `string` |  |
+| `idempotency_key` | `string` |  |
+| `kind` | `string` |  |
+| `policy` | `map[string]any` |  |
+| `priority` | `string` |  |
+| `queue` | `map[string]any` |  |
+| `target_branches` | `[]any` | Bookmark names for the target picker. |
+| `when_ready` | `any` |  |
+
+#### Example: Create
+
+```go
+result, err := client.MergeQueueEntry(nil).Create(map[string]any{
+    "merge_queue_id": "example_merge_queue_id",
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+    "expected_version": 1,
+    "idempotency_key": "example_idempotency_key",
+    "kind": "example_kind",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
 ### MergeRequest
 
 Create an instance: `mergeRequest := client.MergeRequest(nil)`
@@ -11665,6 +24113,47 @@ result, err := client.MergeRequest(nil).Create(map[string]any{
     "organization_id": "example_organization_id",
     "idempotency_key": "example_idempotency_key",
     "number": 1,
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### MergeResolution
+
+Create an instance: `mergeResolution := client.MergeResolution(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `base` | `string` | Common ancestor file contents |
+| `content` | `any` |  |
+| `context` | `map[string]any` | Optional surrounding files keyed by path |
+| `duration_ms` | `int` |  |
+| `fallback` | `bool` |  |
+| `model` | `string` |  |
+| `ours` | `string` | Current / left file contents |
+| `path` | `string` | Repository-relative path of the conflicted file |
+| `resolved` | `bool` |  |
+| `theirs` | `string` | Incoming / right file contents |
+
+#### Example: Create
+
+```go
+result, err := client.MergeResolution(nil).Create(map[string]any{
+    "base": "example_base",
+    "ours": "example_ours",
+    "theirs": "example_theirs",
 }, nil)
 if err != nil {
     panic(err)
@@ -11776,6 +24265,112 @@ for _, item := range metricQuerys.([]any) {
 ```
 
 
+### MetronomeWebhook
+
+Create an instance: `metronomeWebhook := client.MetronomeWebhook(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.MetronomeWebhook(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ModelSubscriptionAccount
+
+Create an instance: `modelSubscriptionAccount := client.ModelSubscriptionAccount(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accounts` | `[]any` |  |
+| `agents` | `[]any` |  |
+| `can_disconnect` | `bool` |  |
+| `connection_agent` | `any` |  |
+| `email` | `string` |  |
+| `id` | `string` |  |
+| `label` | `string` |  |
+| `provider` | `string` |  |
+| `saved` | `bool` |  |
+| `status` | `string` |  |
+| `usable` | `bool` |  |
+
+#### Example: List
+
+```go
+modelSubscriptionAccounts, err := client.ModelSubscriptionAccount(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range modelSubscriptionAccounts.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.ModelSubscriptionAccount(nil).Create(map[string]any{
+    "label": "example_label",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ModelSubscriptionAccountConnection
+
+Create an instance: `modelSubscriptionAccountConnection := client.ModelSubscriptionAccountConnection(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+modelSubscriptionAccountConnection, err := client.ModelSubscriptionAccountConnection(nil).Load(map[string]any{"id": "model_subscription_account_connection_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(modelSubscriptionAccountConnection.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
 ### NetworkConnection
 
 Create an instance: `networkConnection := client.NetworkConnection(nil)`
@@ -11814,6 +24409,144 @@ if err != nil {
     panic(err)
 }
 fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### NetworkingSpace
+
+Create an instance: `networkingSpace := client.NetworkingSpace(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+networkingSpace, err := client.NetworkingSpace(nil).Load(map[string]any{"id": "networking_space_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(networkingSpace.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+networkingSpaces, err := client.NetworkingSpace(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range networkingSpaces.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.NetworkingSpace(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### Node
+
+Create an instance: `node := client.Node(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `any` |  |
+| `account_id` | `any` |  |
+| `account_login` | `string` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `id` | `string` |  |
+| `installation_id` | `string` |  |
+| `installed_at` | `any` |  |
+| `installed_at_label` | `any` |  |
+| `manage_access_url` | `string` |  |
+| `organization_id` | `string` |  |
+| `permission_entries` | `[]any` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `map[string]any` |  |
+| `status` | `string` |  |
+| `suspended_at` | `any` |  |
+| `suspended_at_label` | `any` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+
+#### Example: List
+
+```go
+nodes, err := client.Node(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range nodes.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### NodeCertificate
+
+Create an instance: `nodeCertificate := client.NodeCertificate(nil)`
+
+
+### NodeLease
+
+Create an instance: `nodeLease := client.NodeLease(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```go
+nodeLeases, err := client.NodeLease(nil).List(map[string]any{"node_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range nodeLeases.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -11901,6 +24634,257 @@ for _, item := range nomadLogs.([]any) {
 ```
 
 
+### Now
+
+Create an instance: `now := client.Now(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `needs_attention` | `[]any` |  |
+| `pagination` | `map[string]any` |  |
+| `recently_landed` | `[]any` |  |
+| `shipping_now` | `[]any` |  |
+| `summary` | `map[string]any` |  |
+
+#### Example: Load
+
+```go
+now, err := client.Now(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(now.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### ObservabilityClickhouseCluster
+
+Create an instance: `observabilityClickhouseCluster := client.ObservabilityClickhouseCluster(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+observabilityClickhouseCluster, err := client.ObservabilityClickhouseCluster(nil).Load(map[string]any{"id": "observability_clickhouse_cluster_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(observabilityClickhouseCluster.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+observabilityClickhouseClusters, err := client.ObservabilityClickhouseCluster(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range observabilityClickhouseClusters.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.ObservabilityClickhouseCluster(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ObservabilityQuickwitCluster
+
+Create an instance: `observabilityQuickwitCluster := client.ObservabilityQuickwitCluster(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+observabilityQuickwitCluster, err := client.ObservabilityQuickwitCluster(nil).Load(map[string]any{"id": "observability_quickwit_cluster_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(observabilityQuickwitCluster.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+observabilityQuickwitClusters, err := client.ObservabilityQuickwitCluster(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range observabilityQuickwitClusters.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.ObservabilityQuickwitCluster(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ObservabilitySpace
+
+Create an instance: `observabilitySpace := client.ObservabilitySpace(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+observabilitySpace, err := client.ObservabilitySpace(nil).Load(map[string]any{"id": "observability_space_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(observabilitySpace.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+observabilitySpaces, err := client.ObservabilitySpace(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range observabilitySpaces.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.ObservabilitySpace(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### Openapi
+
+Create an instance: `openapi := client.Openapi(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Example: Load
+
+```go
+openapi, err := client.Openapi(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(openapi.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### OrgInvitation
+
+Create an instance: `orgInvitation := client.OrgInvitation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `invitation` | `map[string]any` |  |
+| `registration_options` | `any` |  |
+| `requires_password_setup` | `bool` |  |
+| `start_guided_setup` | `bool` |  |
+
+#### Example: Load
+
+```go
+orgInvitation, err := client.OrgInvitation(nil).Load(map[string]any{"id": "org_invitation_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(orgInvitation.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
 ### Organization
 
 Create an instance: `organization := client.Organization(nil)`
@@ -11979,6 +24963,629 @@ if err != nil {
 }
 fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
+
+
+### OrganizationApp
+
+Create an instance: `organizationApp := client.OrganizationApp(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```go
+organizationApps, err := client.OrganizationApp(nil).List(map[string]any{"organization_id": "example", "native_agent_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range organizationApps.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### OrganizationControl
+
+Create an instance: `organizationControl := client.OrganizationControl(nil)`
+
+
+### OrganizationDevice
+
+Create an instance: `organizationDevice := client.OrganizationDevice(nil)`
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### OrganizationIdentityCertificate
+
+Create an instance: `organizationIdentityCertificate := client.OrganizationIdentityCertificate(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+organizationIdentityCertificate, err := client.OrganizationIdentityCertificate(nil).Load(map[string]any{"id": "organization_identity_certificate_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(organizationIdentityCertificate.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+organizationIdentityCertificates, err := client.OrganizationIdentityCertificate(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range organizationIdentityCertificates.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.OrganizationIdentityCertificate(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### OrganizationInteraction
+
+Create an instance: `organizationInteraction := client.OrganizationInteraction(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.OrganizationInteraction(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### OrganizationInvitation
+
+Create an instance: `organizationInvitation := client.OrganizationInvitation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email` | `string` |  |
+| `id` | `string` |  |
+| `role` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.OrganizationInvitation(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "email": "example_email",
+    "role": "example_role",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### OrganizationMessageFile
+
+Create an instance: `organizationMessageFile := client.OrganizationMessageFile(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.OrganizationMessageFile(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### OrganizationOidcTrust
+
+Create an instance: `organizationOidcTrust := client.OrganizationOidcTrust(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+organizationOidcTrust, err := client.OrganizationOidcTrust(nil).Load(map[string]any{"id": "organization_oidc_trust_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(organizationOidcTrust.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+organizationOidcTrusts, err := client.OrganizationOidcTrust(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range organizationOidcTrusts.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.OrganizationOidcTrust(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### OrganizationRunEvent
+
+Create an instance: `organizationRunEvent := client.OrganizationRunEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.OrganizationRunEvent(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### OrganizationRunOutcome
+
+Create an instance: `organizationRunOutcome := client.OrganizationRunOutcome(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.OrganizationRunOutcome(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### OrganizationRunUsage
+
+Create an instance: `organizationRunUsage := client.OrganizationRunUsage(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.OrganizationRunUsage(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### OrganizationSandbox
+
+Create an instance: `organizationSandbox := client.OrganizationSandbox(nil)`
+
+
+### OrganizationSecret
+
+Create an instance: `organizationSecret := client.OrganizationSecret(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `app_environment_id` | `any` |  |
+| `app_service_id` | `any` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `created_by` | `any` |  |
+| `current_version` | `any` |  |
+| `description` | `any` |  |
+| `env_key` | `string` |  |
+| `expose_to_build` | `bool` |  |
+| `expose_to_ci` | `bool` |  |
+| `hosted_app_id` | `any` |  |
+| `id` | `string` |  |
+| `last_accessed_at` | `any` |  |
+| `last_accessed_at_label` | `any` |  |
+| `last_accessed_by` | `any` |  |
+| `latest_version_number` | `any` |  |
+| `name` | `string` |  |
+| `organization_id` | `any` |  |
+| `owner_service_account_id` | `any` |  |
+| `rotation_policy` | `any` |  |
+| `scope_kind` | `string` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+
+#### Example: Load
+
+```go
+organizationSecret, err := client.OrganizationSecret(nil).Load(map[string]any{"id": "organization_secret_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(organizationSecret.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+organizationSecrets, err := client.OrganizationSecret(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range organizationSecrets.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.OrganizationSecret(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### OrganizationServiceAccount
+
+Create an instance: `organizationServiceAccount := client.OrganizationServiceAccount(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+organizationServiceAccount, err := client.OrganizationServiceAccount(nil).Load(map[string]any{"id": "organization_service_account_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(organizationServiceAccount.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+organizationServiceAccounts, err := client.OrganizationServiceAccount(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range organizationServiceAccounts.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.OrganizationServiceAccount(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### OrganizationSetting
+
+Create an instance: `organizationSetting := client.OrganizationSetting(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `concurrent_run_limit_override` | `any` |  |
+| `customize_onboarding_packages` | `bool` |  |
+| `daily_run_limit_override` | `any` |  |
+| `deployment_usage_visibility` | `string` |  |
+| `monthly_browser_minutes_limit_override` | `any` |  |
+| `monthly_budget_dollars` | `any` |  |
+| `name` | `string` |  |
+| `onboarding_custom_pricing` | `bool` |  |
+| `onboarding_package_keys` | `[]any` |  |
+
+
+### OrganizationSite
+
+Create an instance: `organizationSite := client.OrganizationSite(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```go
+organizationSites, err := client.OrganizationSite(nil).List(map[string]any{"organization_id": "example", "native_agent_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range organizationSites.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.OrganizationSite(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### OrganizationSubscription
+
+Create an instance: `organizationSubscription := client.OrganizationSubscription(nil)`
+
+
+### OrganizationTool
+
+Create an instance: `organizationTool := client.OrganizationTool(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `arguments` | `map[string]any` |  |
+| `native_agent_id` | `string` |  |
+| `tool` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.OrganizationTool(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "arguments": map[string]any{},
+    "native_agent_id": "example_native_agent_id",
+    "tool": "example_tool",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### OrganizationWorkloadIdentity
+
+Create an instance: `organizationWorkloadIdentity := client.OrganizationWorkloadIdentity(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+organizationWorkloadIdentity, err := client.OrganizationWorkloadIdentity(nil).Load(map[string]any{"id": "organization_workload_identity_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(organizationWorkloadIdentity.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+organizationWorkloadIdentitys, err := client.OrganizationWorkloadIdentity(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range organizationWorkloadIdentitys.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.OrganizationWorkloadIdentity(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### OtelIngest
+
+Create an instance: `otelIngest := client.OtelIngest(nil)`
 
 
 ### Page
@@ -12073,6 +25680,118 @@ for _, item := range pageAgents.([]any) {
 ```
 
 
+### PageArtefact
+
+Create an instance: `pageArtefact := client.PageArtefact(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `artefact` | `any` |  |
+| `automation` | `any` |  |
+| `automation_invocation_id` | `any` |  |
+| `byte_size` | `int` |  |
+| `checksum_sha256` | `string` |  |
+| `comment_threads` | `[]any` |  |
+| `content_type` | `string` |  |
+| `created_at` | `any` |  |
+| `created_by_user_id` | `any` |  |
+| `description` | `any` |  |
+| `document_key` | `string` | Stable document identity shared by all revisions. |
+| `draft` | `any` | The autosaved working copy of the newest Markdown version; null for older versions and other files. |
+| `entrypoint` | `string` |  |
+| `expires_at` | `any` |  |
+| `filename` | `string` |  |
+| `files` | `[]any` |  |
+| `harness` | `any` |  |
+| `harness_version` | `any` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `kinds` | `[]any` |  |
+| `model` | `any` |  |
+| `organization` | `map[string]any` |  |
+| `organization_id` | `string` |  |
+| `pagination` | `map[string]any` |  |
+| `permissions` | `map[string]any` |  |
+| `preview` | `map[string]any` |  |
+| `published_at` | `any` |  |
+| `published_at_label` | `any` |  |
+| `publisher` | `any` |  |
+| `repository` | `any` |  |
+| `repository_id` | `any` |  |
+| `selected_path` | `string` |  |
+| `slug` | `string` |  |
+| `source` | `string` |  |
+| `status` | `string` |  |
+| `title` | `string` |  |
+| `vcs_agent_checkpoint_id` | `any` |  |
+| `vcs_agent_session_id` | `any` |  |
+| `version` | `int` |  |
+| `versions` | `[]any` |  |
+| `view_url` | `string` |  |
+| `web_url` | `string` |  |
+
+#### Example: Load
+
+```go
+pageArtefact, err := client.PageArtefact(nil).Load(map[string]any{"id": "page_artefact_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(pageArtefact.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+pageArtefacts, err := client.PageArtefact(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range pageArtefacts.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### PageCiPipelineRun
+
+Create an instance: `pageCiPipelineRun := client.PageCiPipelineRun(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `error` | `any` |  |
+| `id` | `string` |  |
+| `jobs` | `[]any` |  |
+
+#### Example: Load
+
+```go
+pageCiPipelineRun, err := client.PageCiPipelineRun(nil).Load(map[string]any{"id": "page_ci_pipeline_run_id", "pipeline_id": "pipeline_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(pageCiPipelineRun.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
 ### PageProjectRun
 
 Create an instance: `pageProjectRun := client.PageProjectRun(nil)`
@@ -12109,6 +25828,156 @@ if err != nil {
     panic(err)
 }
 fmt.Println(pageProjectRun.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### PageRepoVcCommit
+
+Create an instance: `pageRepoVcCommit := client.PageRepoVcCommit(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `commit` | `any` |  |
+| `diff_path` | `string` | Fingerprinted path serving this commit range's file diff. |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+pageRepoVcCommit, err := client.PageRepoVcCommit(nil).Load(map[string]any{"id": "page_repo_vc_commit_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(pageRepoVcCommit.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### PagesBilling
+
+Create an instance: `pagesBilling := client.PagesBilling(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `[]any` |  |
+| `breakdown` | `any` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` |  |
+| `can_manage_contact` | `bool` |  |
+| `can_manage_extra_spend` | `bool` |  |
+| `can_manage_local_subscription` | `bool` |  |
+| `can_manage_payment_method` | `bool` |  |
+| `can_set_up_billing` | `bool` |  |
+| `customer` | `any` |  |
+| `deployment_usage_visible` | `bool` |  |
+| `entitlements` | `map[string]any` |  |
+| `extra_spend_enabled` | `bool` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` |  |
+| `package` | `any` |  |
+| `prepaid` | `any` |  |
+| `preview` | `any` | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `map[string]any` |  |
+| `stripe` | `map[string]any` |  |
+| `subscription` | `any` |  |
+| `token_account` | `map[string]any` |  |
+
+#### Example: Load
+
+```go
+pagesBilling, err := client.PagesBilling(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(pagesBilling.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### PagesGithubOnboarding
+
+Create an instance: `pagesGithubOnboarding := client.PagesGithubOnboarding(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `onboarding` | `map[string]any` |  |
+| `organization` | `map[string]any` |  |
+
+#### Example: Load
+
+```go
+pagesGithubOnboarding, err := client.PagesGithubOnboarding(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(pagesGithubOnboarding.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### PagesMember
+
+Create an instance: `pagesMember := client.PagesMember(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accepted_at` | `any` |  |
+| `accepted_by_user` | `any` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `email` | `string` |  |
+| `email_delivery_status` | `string` |  |
+| `expires_at` | `any` |  |
+| `expires_at_label` | `any` |  |
+| `id` | `string` |  |
+| `invite_url` | `any` |  |
+| `invited_by_user` | `any` |  |
+| `organization` | `map[string]any` |  |
+| `revoked_at` | `any` |  |
+| `role` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+
+#### Example: List
+
+```go
+pagesMembers, err := client.PagesMember(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range pagesMembers.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -12264,6 +26133,237 @@ if err != nil {
 for _, item := range pagesProjectScenarios.([]any) {
     fmt.Println(item.(sdk.Entity).Data())
 }
+```
+
+
+### PagesRegistry
+
+Create an instance: `pagesRegistry := client.PagesRegistry(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active_repository_count` | `int` |  |
+| `error` | `any` |  |
+| `pagination` | `map[string]any` |  |
+| `repositories` | `[]any` |  |
+| `repository_count` | `int` |  |
+
+#### Example: Load
+
+```go
+pagesRegistry, err := client.PagesRegistry(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(pagesRegistry.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### PagesSession
+
+Create an instance: `pagesSession := client.PagesSession(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter` | `string` |  |
+| `created_at` | `any` |  |
+| `cursor` | `string` |  |
+| `ended_at` | `any` |  |
+| `external_session_id` | `string` |  |
+| `facets` | `map[string]any` |  |
+| `from` | `string` |  |
+| `github_access_warnings` | `[]any` |  |
+| `harness` | `string` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `string` |  |
+| `last_activity_at` | `any` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `any` |  |
+| `limit` | `int` |  |
+| `markers` | `[]any` |  |
+| `max_bytes` | `int` |  |
+| `mode` | `string` |  |
+| `offset` | `int` |  |
+| `pagination` | `map[string]any` |  |
+| `query` | `string` |  |
+| `repo` | `string` |  |
+| `repository` | `any` |  |
+| `search` | `any` |  |
+| `search_enabled` | `bool` |  |
+| `session` | `any` | Identical serialization to the org sessions page's expanded session, so the web reuses one session-detail builder. |
+| `sessions` | `[]any` |  |
+| `started_at` | `any` |  |
+| `stats` | `map[string]any` |  |
+| `status` | `string` |  |
+| `title` | `any` |  |
+| `to` | `string` |  |
+| `token_stats` | `any` |  |
+| `transcript_index` | `any` |  |
+| `transcript_stats` | `any` |  |
+| `updated_at` | `any` |  |
+| `user` | `any` |  |
+| `user_id` | `string` |  |
+
+#### Example: Load
+
+```go
+pagesSession, err := client.PagesSession(nil).Load(map[string]any{"id": "pages_session_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(pagesSession.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+pagesSessions, err := client.PagesSession(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range pagesSessions.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.PagesSession(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### Pairing
+
+Create an instance: `pairing := client.Pairing(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+pairing, err := client.Pairing(nil).Load(map[string]any{"id": "pairing_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(pairing.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+pairings, err := client.Pairing(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range pairings.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.Pairing(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### PairingEvent
+
+Create an instance: `pairingEvent := client.PairingEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Example: List
+
+```go
+pairingEvents, err := client.PairingEvent(nil).List(map[string]any{"pairing_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range pairingEvents.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### ParallelV1
+
+Create an instance: `parallelV1 := client.ParallelV1(nil)`
+
+
+### PatchsetDiff
+
+Create an instance: `patchsetDiff := client.PatchsetDiff(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `files` | `[]any` |  |
+| `id` | `string` |  |
+| `patchset` | `map[string]any` |  |
+
+#### Example: Load
+
+```go
+patchsetDiff, err := client.PatchsetDiff(nil).Load(map[string]any{"id": "patchset_diff_id", "change_id": "change_id", "organization_id": "organization_id", "patchset_id": "patchset_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(patchsetDiff.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -12471,6 +26571,108 @@ result, err := client.PreviewSharingApproval(nil).Create(map[string]any{
     "app_id": "example_app_id",
     "preview_id": "example_preview_id",
     "snapshot_version": 1,
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ProactiveAgentWaitlistEntry
+
+Create an instance: `proactiveAgentWaitlistEntry := client.ProactiveAgentWaitlistEntry(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email` | `string` |  |
+| `first_task` | `any` | The first job they would hand an agent. |
+| `invite_code` | `any` | The referral code of the invite link they arrived through. |
+| `places_per_referral` | `int` | Most places one referral moves the entry up; fewer when boosted entries are ahead. |
+| `position` | `int` | 1-based place in the queue. |
+| `position_after_next_referral` | `int` | The place one more referral would give this entry, as Rails would assign it. |
+| `referral_code` | `string` | Shared in this entry's invite link. |
+| `referral_count` | `int` | People who joined through this entry's link. |
+| `total` | `int` | Display total including a random increment per signup; not the actual number of entries. |
+| `website` | `any` | Honeypot. |
+
+#### Example: Load
+
+```go
+proactiveAgentWaitlistEntry, err := client.ProactiveAgentWaitlistEntry(nil).Load(map[string]any{"id": "proactive_agent_waitlist_entry_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(proactiveAgentWaitlistEntry.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: Create
+
+```go
+result, err := client.ProactiveAgentWaitlistEntry(nil).Create(map[string]any{
+    "email": "example_email",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### Product
+
+Create an instance: `product := client.Product(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_products` | `[]any` | Products this organization has activated (PRD 144). |
+| `agents_only` | `bool` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `bool` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `github_prs_authored_by_change_author` | `bool` |  |
+| `id` | `string` |  |
+| `logo_url` | `any` |  |
+| `member_count` | `int` |  |
+| `name` | `string` |  |
+| `pending_invitation_count` | `int` |  |
+| `personal` | `bool` |  |
+| `product` | `string` |  |
+| `repository_count` | `int` |  |
+| `role` | `any` |  |
+| `sandbox_region` | `string` |  |
+| `shared_agent_personal_accounts_enabled` | `bool` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` |  |
+| `source_control_providers` | `[]any` | Connected source control providers for this organization. |
+| `source_ui_enabled` | `bool` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `string` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+| `verify_pr_scenario_writing_enabled` | `bool` |  |
+
+#### Example: Create
+
+```go
+result, err := client.Product(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "product": "example_product",
 }, nil)
 if err != nil {
     panic(err)
@@ -13701,6 +27903,60 @@ fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
+### PullRequestAction
+
+Create an instance: `pullRequestAction := client.PullRequestAction(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action_name` | `string` |  |
+| `body` | `string` |  |
+| `comment_id` | `string` |  |
+| `comments` | `[]any` |  |
+| `event` | `string` |  |
+| `expected_head_sha` | `string` |  |
+| `id` | `any` |  |
+| `label` | `string` |  |
+| `line` | `int` |  |
+| `node_id` | `any` |  |
+| `operation_key` | `string` |  |
+| `path` | `string` |  |
+| `run_id` | `string` |  |
+| `side` | `string` |  |
+| `start_line` | `int` |  |
+| `start_side` | `string` |  |
+| `thread_id` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.PullRequestAction(nil).Create(map[string]any{
+    "number": "example_number",
+    "organization_id": "example_organization_id",
+    "pull_request_id": "example_pull_request_id",
+    "action_name": "example_action_name",
+    "operation_key": "example_operation_key",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### PullRequestMagicMerge
+
+Create an instance: `pullRequestMagicMerge := client.PullRequestMagicMerge(nil)`
+
+
 ### PullRequestSetting
 
 Create an instance: `pullRequestSetting := client.PullRequestSetting(nil)`
@@ -13902,6 +28158,82 @@ fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
+### PullRequestTranscript
+
+Create an instance: `pullRequestTranscript := client.PullRequestTranscript(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter` | `string` |  |
+| `created_at` | `any` |  |
+| `ended_at` | `any` |  |
+| `external_session_id` | `string` |  |
+| `harness` | `string` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `string` |  |
+| `last_activity_at` | `any` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `any` |  |
+| `repository` | `any` |  |
+| `started_at` | `any` |  |
+| `stats` | `map[string]any` |  |
+| `status` | `string` |  |
+| `title` | `any` |  |
+| `updated_at` | `any` |  |
+| `user` | `any` |  |
+
+#### Example: List
+
+```go
+pullRequestTranscripts, err := client.PullRequestTranscript(nil).List(map[string]any{"organization_id": "example", "pull_request_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range pullRequestTranscripts.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### PullZone
+
+Create an instance: `pullZone := client.PullZone(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `slug` | `string` |  |
+
+#### Example: List
+
+```go
+pullZones, err := client.PullZone(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range pullZones.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
 ### Recorder
 
 Create an instance: `recorder := client.Recorder(nil)`
@@ -13941,6 +28273,84 @@ Create an instance: `registry := client.Registry(nil)`
 Create an instance: `registryV2 := client.RegistryV2(nil)`
 
 
+### RelayAgentConnection
+
+Create an instance: `relayAgentConnection := client.RelayAgentConnection(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_card_url` | `string` |  |
+| `auth_scheme` | `string` |  |
+| `can_configure` | `bool` |  |
+| `can_disconnect` | `bool` |  |
+| `can_setup` | `bool` |  |
+| `connection` | `map[string]any` |  |
+| `credential` | `any` | Write-only outbound key. |
+| `error_code` | `any` |  |
+| `expected_generation` | `int` |  |
+| `generation` | `int` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `remote_agent` | `any` |  |
+| `requester_id` | `string` |  |
+| `retired_at` | `any` |  |
+| `revoked_at` | `any` |  |
+| `scope_key` | `string` |  |
+| `source_operation_id` | `any` |  |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```go
+relayAgentConnection, err := client.RelayAgentConnection(nil).Load(map[string]any{"id": "relay_agent_connection_id", "agent_id": "agent_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(relayAgentConnection.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+relayAgentConnections, err := client.RelayAgentConnection(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range relayAgentConnections.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.RelayAgentConnection(nil).Create(map[string]any{
+    "agent_id": "example_agent_id",
+    "organization_id": "example_organization_id",
+    "agent_card_url": "example_agent_card_url",
+    "auth_scheme": "example_auth_scheme",
+    "name": "example_name",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
 ### RelayAgentLocalThread
 
 Create an instance: `relayAgentLocalThread := client.RelayAgentLocalThread(nil)`
@@ -13956,6 +28366,680 @@ Create an instance: `relayAgentLocalThread := client.RelayAgentLocalThread(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+
+### RelaySignal
+
+Create an instance: `relaySignal := client.RelaySignal(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.RelaySignal(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ReleaseRollout
+
+Create an instance: `releaseRollout := client.ReleaseRollout(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+releaseRollout, err := client.ReleaseRollout(nil).Load(map[string]any{"id": "release_rollout_id", "release_id": "release_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(releaseRollout.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+releaseRollouts, err := client.ReleaseRollout(nil).List(map[string]any{"release_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range releaseRollouts.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.ReleaseRollout(nil).Create(map[string]any{
+    "release_id": "example_release_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### Repo
+
+Create an instance: `repo := client.Repo(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_retry_import` | `bool` | True when a failed client import can be requeued for CLI resume. |
+| `can_retry_sync` | `bool` | True when the latest sync run failed and can be retried. |
+| `disclaimer` | `any` |  |
+| `federated_in_home` | `bool` | True when this Space is a folder virtual repository inside the organization Home monorepo. |
+| `github_repository` | `any` |  |
+| `icon_name` | `string` |  |
+| `id` | `string` | Virtual repository public ID for non-Home rows; Home uses the physical repository public ID. |
+| `import_item_id` | `any` |  |
+| `is_home` | `bool` |  |
+| `name` | `string` |  |
+| `remote_repository` | `any` |  |
+| `root_path` | `any` | Home-relative folder path when federated_in_home is true; null otherwise. |
+| `slug` | `string` |  |
+| `sync_error_message` | `any` |  |
+| `sync_provider` | `string` |  |
+| `sync_status` | `string` |  |
+
+#### Example: List
+
+```go
+repos, err := client.Repo(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range repos.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### RepoAccessToken
+
+Create an instance: `repoAccessToken := client.RepoAccessToken(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access_token` | `map[string]any` |  |
+| `active` | `bool` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `credential_purpose` | `string` | Issues a revocable read-write system credential valid for one hour. |
+| `expires_at` | `any` |  |
+| `expires_at_label` | `any` |  |
+| `expires_in_days` | `any` |  |
+| `id` | `string` |  |
+| `last_used_at` | `any` |  |
+| `last_used_at_label` | `any` |  |
+| `name` | `string` |  |
+| `permission_level` | `string` |  |
+| `plain_text_token` | `string` |  |
+| `revoked_at` | `any` |  |
+| `revoked_at_label` | `any` |  |
+| `token_preview` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+
+#### Example: List
+
+```go
+repoAccessTokens, err := client.RepoAccessToken(nil).List(map[string]any{"organization_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range repoAccessTokens.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.RepoAccessToken(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+    "name": "example_name",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### RepoAction
+
+Create an instance: `repoAction := client.RepoAction(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `pipeline` | `map[string]any` |  |
+| `run` | `map[string]any` |  |
+
+#### Example: List
+
+```go
+repoActions, err := client.RepoAction(nil).List(map[string]any{"organization_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range repoActions.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### RepoAgentCheckpoint
+
+Create an instance: `repoAgentCheckpoint := client.RepoAgentCheckpoint(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+repoAgentCheckpoint, err := client.RepoAgentCheckpoint(nil).Load(map[string]any{"id": "repo_agent_checkpoint_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(repoAgentCheckpoint.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### RepoAgentSession
+
+Create an instance: `repoAgentSession := client.RepoAgentSession(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter` | `string` |  |
+| `agent_session` | `map[string]any` |  |
+| `external_session_id` | `string` |  |
+| `id` | `string` |  |
+| `status` | `string` |  |
+| `title` | `any` |  |
+
+#### Example: Load
+
+```go
+repoAgentSession, err := client.RepoAgentSession(nil).Load(map[string]any{"id": "repo_agent_session_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(repoAgentSession.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+repoAgentSessions, err := client.RepoAgentSession(nil).List(map[string]any{"organization_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range repoAgentSessions.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.RepoAgentSession(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### RepoBookmarkProtection
+
+Create an instance: `repoBookmarkProtection := client.RepoBookmarkProtection(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `actor_policy` | `map[string]any` |  |
+| `bypass_mode` | `string` |  |
+| `created_at` | `string` |  |
+| `created_by_user_id` | `any` |  |
+| `enabled` | `bool` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `priority` | `int` |  |
+| `repository_id` | `string` |  |
+| `requirements` | `map[string]any` |  |
+| `target_kind` | `string` |  |
+| `target_pattern` | `any` |  |
+| `updated_at` | `string` |  |
+| `updated_by_user_id` | `any` |  |
+
+#### Example: Load
+
+```go
+repoBookmarkProtection, err := client.RepoBookmarkProtection(nil).Load(map[string]any{"id": "repo_bookmark_protection_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(repoBookmarkProtection.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+repoBookmarkProtections, err := client.RepoBookmarkProtection(nil).List(map[string]any{"organization_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range repoBookmarkProtections.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.RepoBookmarkProtection(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### RepoBookmarkProtectionEvent
+
+Create an instance: `repoBookmarkProtectionEvent := client.RepoBookmarkProtectionEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `actor_kind` | `string` |  |
+| `actor_label` | `any` |  |
+| `actor_user_id` | `any` |  |
+| `bookmark_name` | `string` |  |
+| `bookmark_protection_rule_id` | `any` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `decision` | `string` |  |
+| `id` | `string` |  |
+| `intent` | `any` |  |
+| `metadata` | `map[string]any` |  |
+| `new_target` | `any` |  |
+| `old_target` | `any` |  |
+| `organization_id` | `string` |  |
+| `reason_codes` | `[]any` |  |
+| `repository_id` | `string` |  |
+| `source_request_id` | `any` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+
+#### Example: List
+
+```go
+repoBookmarkProtectionEvents, err := client.RepoBookmarkProtectionEvent(nil).List(map[string]any{"organization_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range repoBookmarkProtectionEvents.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### RepoCloudWorkspaceBackup
+
+Create an instance: `repoCloudWorkspaceBackup := client.RepoCloudWorkspaceBackup(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+repoCloudWorkspaceBackup, err := client.RepoCloudWorkspaceBackup(nil).Load(map[string]any{"id": "repo_cloud_workspace_backup_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(repoCloudWorkspaceBackup.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+repoCloudWorkspaceBackups, err := client.RepoCloudWorkspaceBackup(nil).List(map[string]any{"organization_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range repoCloudWorkspaceBackups.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.RepoCloudWorkspaceBackup(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### RepoCodeRule
+
+Create an instance: `repoCodeRule := client.RepoCodeRule(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active_revision_number` | `any` |  |
+| `capabilities` | `map[string]any` |  |
+| `code_rule` | `any` |  |
+| `created_at` | `string` |  |
+| `definition` | `map[string]any` |  |
+| `draft_pending` | `bool` | The latest revision is not the active one |
+| `enabled` | `bool` |  |
+| `expected_version` | `int` |  |
+| `id` | `string` |  |
+| `latest_revision_number` | `int` |  |
+| `name` | `string` | Name of the latest revision |
+| `repository` | `map[string]any` |  |
+| `scope` | `[]any` |  |
+| `slug` | `string` |  |
+| `state_version` | `int` | Send back as expected_version on every mutation |
+| `updated_at` | `string` |  |
+| `web_url` | `string` |  |
+
+#### Example: Load
+
+```go
+repoCodeRule, err := client.RepoCodeRule(nil).Load(map[string]any{"id": "repo_code_rule_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(repoCodeRule.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+repoCodeRules, err := client.RepoCodeRule(nil).List(map[string]any{"organization_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range repoCodeRules.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.RepoCodeRule(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+    "definition": map[string]any{},
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### RepoSetting
+
+Create an instance: `repoSetting := client.RepoSetting(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active` | `bool` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `description` | `any` |  |
+| `expires_at` | `any` |  |
+| `expires_at_label` | `any` |  |
+| `icon_name` | `string` |  |
+| `id` | `string` |  |
+| `last_used_at` | `any` |  |
+| `last_used_at_label` | `any` |  |
+| `merge_authority` | `string` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `permission_level` | `string` |  |
+| `revoked_at` | `any` |  |
+| `revoked_at_label` | `any` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `token_preview` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+
+#### Example: List
+
+```go
+repoSettings, err := client.RepoSetting(nil).List(map[string]any{"organization_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range repoSettings.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### RepoStat
+
+Create an instance: `repoStat := client.RepoStat(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `repository_stats` | `map[string]any` |  |
+
+#### Example: List
+
+```go
+repoStats, err := client.RepoStat(nil).List(map[string]any{"organization_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range repoStats.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### RepoVc
+
+Create an instance: `repoVc := client.RepoVc(nil)`
+
+
+### RepoVcCommit
+
+Create an instance: `repoVcCommit := client.RepoVcCommit(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `name` | `string` |  |
+| `target_commit_id` | `string` |  |
+
+#### Example: List
+
+```go
+repoVcCommits, err := client.RepoVcCommit(nil).List(map[string]any{"organization_id": "example", "repo_id": "example", "ref": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range repoVcCommits.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
 
 
 ### ReportReplay
@@ -14021,6 +29105,551 @@ Create an instance: `reportScenario := client.ReportScenario(nil)`
 result, err := client.ReportScenario(nil).Create(map[string]any{
     "exploration_id": "example_exploration_id",
     "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### RepositoryAccess
+
+Create an instance: `repositoryAccess := client.RepositoryAccess(nil)`
+
+
+### RepositoryAccessResolve
+
+Create an instance: `repositoryAccessResolve := client.RepositoryAccessResolve(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `default_branch` | `string` |  |
+| `git_auth_username` | `string` |  |
+| `git_https_clone_url` | `any` |  |
+| `git_https_supported` | `bool` |  |
+| `github_access_warnings` | `[]any` |  |
+| `id` | `string` |  |
+| `membership_role` | `string` |  |
+| `organization_id` | `string` |  |
+| `organization_name` | `string` |  |
+| `organization_slug` | `string` |  |
+| `repository_id` | `string` |  |
+| `repository_name` | `string` |  |
+| `repository_slug` | `string` |  |
+
+#### Example: Load
+
+```go
+repositoryAccessResolve, err := client.RepositoryAccessResolve(nil).Load(map[string]any{"id": "repository_access_resolve_id", "resolve_id": "resolve_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(repositoryAccessResolve.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### RepositoryEvent
+
+Create an instance: `repositoryEvent := client.RepositoryEvent(nil)`
+
+
+### RepositoryImport
+
+Create an instance: `repositoryImport := client.RepositoryImport(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_connections` | `bool` |  |
+| `github_imports` | `[]any` |  |
+| `github_installations` | `[]any` |  |
+| `gitlab_configured` | `bool` |  |
+| `gitlab_imports` | `[]any` |  |
+| `gitlab_integrations` | `[]any` |  |
+| `gitlab_redirect_uri` | `any` |  |
+| `gitlab_self_managed_available` | `bool` |  |
+| `inventory_errors` | `[]any` |  |
+| `organization_id` | `string` |  |
+| `repositories` | `[]any` |  |
+
+#### Example: Load
+
+```go
+repositoryImport, err := client.RepositoryImport(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(repositoryImport.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### RepositoryImportSession
+
+Create an instance: `repositoryImportSession := client.RepositoryImportSession(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action_required` | `string` |  |
+| `authorization_endpoint` | `string` |  |
+| `can_authorize_github` | `bool` |  |
+| `client_name` | `any` |  |
+| `client_version` | `any` |  |
+| `created_at` | `string` |  |
+| `error_message` | `any` |  |
+| `expires_at` | `string` |  |
+| `git_imports` | `[]any` |  |
+| `github_app_installation_id` | `any` |  |
+| `github_connected` | `bool` |  |
+| `id` | `string` |  |
+| `idempotency_key` | `string` |  |
+| `organization_id` | `string` |  |
+| `organization_slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```go
+repositoryImportSession, err := client.RepositoryImportSession(nil).Load(map[string]any{"id": "repository_import_session_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(repositoryImportSession.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: Create
+
+```go
+result, err := client.RepositoryImportSession(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "idempotency_key": "example_idempotency_key",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### RepositoryImportSessionRepository
+
+Create an instance: `repositoryImportSessionRepository := client.RepositoryImportSessionRepository(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `default_branch` | `any` |  |
+| `full_name` | `string` |  |
+| `name` | `string` |  |
+| `owner` | `string` |  |
+| `private` | `bool` |  |
+| `reason` | `any` |  |
+| `selectable` | `bool` |  |
+| `status` | `string` |  |
+| `visibility` | `string` |  |
+
+#### Example: List
+
+```go
+repositoryImportSessionRepositorys, err := client.RepositoryImportSessionRepository(nil).List(map[string]any{"repository_import_session_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range repositoryImportSessionRepositorys.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### RepositoryImportSessionSelection
+
+Create an instance: `repositoryImportSessionSelection := client.RepositoryImportSessionSelection(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `repositories` | `any` |  |
+
+#### Example: Create
+
+```go
+result, err := client.RepositoryImportSessionSelection(nil).Create(map[string]any{
+    "repository_import_session_id": "example_repository_import_session_id",
+    "repositories": "example_repositories",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### RepositorySandboxEnvironment
+
+Create an instance: `repositorySandboxEnvironment := client.RepositorySandboxEnvironment(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+repositorySandboxEnvironment, err := client.RepositorySandboxEnvironment(nil).Load(map[string]any{"id": "repository_sandbox_environment_id", "repository_id": "repository_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(repositorySandboxEnvironment.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### RoderCodeRepair
+
+Create an instance: `roderCodeRepair := client.RoderCodeRepair(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `base_sha` | `string` |  |
+| `cancel_requested` | `bool` |  |
+| `failure_code` | `any` |  |
+| `id` | `string` |  |
+| `launch_state` | `string` |  |
+| `organization_id` | `string` |  |
+| `repository_slug` | `string` |  |
+| `roder_thread_id` | `any` |  |
+| `roder_turn_id` | `any` |  |
+| `scenario_run_id` | `string` |  |
+| `task` | `any` |  |
+| `trigger_kind` | `string` |  |
+
+#### Example: Load
+
+```go
+roderCodeRepair, err := client.RoderCodeRepair(nil).Load(map[string]any{"id": "roder_code_repair_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(roderCodeRepair.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+roderCodeRepairs, err := client.RoderCodeRepair(nil).List(map[string]any{"scenario_run_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range roderCodeRepairs.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.RoderCodeRepair(nil).Create(map[string]any{
+    "base_sha": "example_base_sha",
+    "organization_id": "example_organization_id",
+    "repository_slug": "example_repository_slug",
+    "scenario_run_id": "example_scenario_run_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### RoderCodeRepairSetting
+
+Create an instance: `roderCodeRepairSetting := client.RoderCodeRepairSetting(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `available` | `bool` |  |
+| `daily_limit` | `int` |  |
+| `enabled` | `bool` |  |
+| `enabled_at` | `any` |  |
+| `operator_user_id` | `any` |  |
+| `organization_id` | `string` |  |
+| `repository_slug` | `any` | Connected Composal repository required when enabling |
+
+#### Example: List
+
+```go
+roderCodeRepairSettings, err := client.RoderCodeRepairSetting(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range roderCodeRepairSettings.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.RoderCodeRepairSetting(nil).Create(map[string]any{
+    "enabled": true,
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### RoderMachine
+
+Create an instance: `roderMachine := client.RoderMachine(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### RoderRun
+
+Create an instance: `roderRun := client.RoderRun(nil)`
+
+
+### RoderWorkspaceCredential
+
+Create an instance: `roderWorkspaceCredential := client.RoderWorkspaceCredential(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `api_token` | `string` | Short-lived personal access token for the spawning user. |
+| `author_email` | `string` |  |
+| `author_name` | `string` |  |
+| `clone_url` | `string` |  |
+| `default_branch` | `string` |  |
+| `expires_at` | `string` |  |
+| `organization_id` | `string` |  |
+| `repository_id` | `string` |  |
+| `repository_slug` | `string` |  |
+| `repository_spec` | `string` | The explicitly selected physical repository address. |
+| `required_lifetime_seconds` | `int` | Lifetime the pending clone or command must be able to complete within. |
+| `token` | `string` | Short-lived read/write repository credential. |
+| `username` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.RoderWorkspaceCredential(nil).Create(map[string]any{
+    "required_lifetime_seconds": 1,
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### RunArtifact
+
+Create an instance: `runArtifact := client.RunArtifact(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: List
+
+```go
+runArtifacts, err := client.RunArtifact(nil).List(map[string]any{"pipeline_id": "example", "run_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range runArtifacts.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.RunArtifact(nil).Create(map[string]any{
+    "pipeline_id": "example_pipeline_id",
+    "run_id": "example_run_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### RunJob
+
+Create an instance: `runJob := client.RunJob(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active` | `bool` |  |
+| `allow_failure` | `bool` |  |
+| `cache_archive_observations` | `any` | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `ci_pipeline_run_id` | `string` |  |
+| `ci_runner_id` | `any` |  |
+| `created_at` | `string` |  |
+| `dependencies_csv` | `any` |  |
+| `display_id` | `int` |  |
+| `environment_csv` | `any` |  |
+| `execution_order` | `int` |  |
+| `execution_profile` | `any` |  |
+| `exit_code` | `any` |  |
+| `failed` | `bool` |  |
+| `finished_at` | `any` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `log_chunks` | `[]any` |  |
+| `name` | `string` |  |
+| `number` | `int` |  |
+| `organization_id` | `string` |  |
+| `queued_at` | `any` |  |
+| `reconciliation_id` | `any` |  |
+| `retry_number` | `int` |  |
+| `reuse` | `any` |  |
+| `runner_label_selector` | `any` |  |
+| `slug` | `string` |  |
+| `started_at` | `any` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `steps` | `[]any` |  |
+| `timeout_seconds` | `any` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```go
+runJob, err := client.RunJob(nil).Load(map[string]any{"id": "run_job_id", "pipeline_id": "pipeline_id", "run_id": "run_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(runJob.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+runJobs, err := client.RunJob(nil).List(map[string]any{"pipeline_id": "example", "run_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range runJobs.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.RunJob(nil).Create(map[string]any{
+    "pipeline_id": "example_pipeline_id",
+    "run_id": "example_run_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -14154,6 +29783,289 @@ for _, item := range runUpdates.([]any) {
 ```
 
 
+### RunWorkspaceCredential
+
+Create an instance: `runWorkspaceCredential := client.RunWorkspaceCredential(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.RunWorkspaceCredential(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### RunnerLease
+
+Create an instance: `runnerLease := client.RunnerLease(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```go
+runnerLeases, err := client.RunnerLease(nil).List(map[string]any{"runner_id": "example", "runner_pool_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range runnerLeases.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.RunnerLease(nil).Create(map[string]any{
+    "runner_id": "example_runner_id",
+    "runner_pool_id": "example_runner_pool_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### RunnerPoolNodeEnrollmentToken
+
+Create an instance: `runnerPoolNodeEnrollmentToken := client.RunnerPoolNodeEnrollmentToken(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capabilities_csv` | `any` |  |
+| `ci_runner_pool_id` | `string` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `creator_user_id` | `any` |  |
+| `description` | `any` |  |
+| `expires_at` | `any` |  |
+| `expires_at_label` | `any` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `last_used_at` | `any` |  |
+| `last_used_at_label` | `any` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `raw_token` | `any` |  |
+| `revoked_at` | `any` |  |
+| `status` | `string` |  |
+| `token_hint` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+| `usage_count` | `int` |  |
+| `usage_count_label` | `string` |  |
+
+#### Example: List
+
+```go
+runnerPoolNodeEnrollmentTokens, err := client.RunnerPoolNodeEnrollmentToken(nil).List(map[string]any{"runner_pool_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range runnerPoolNodeEnrollmentTokens.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.RunnerPoolNodeEnrollmentToken(nil).Create(map[string]any{
+    "runner_pool_id": "example_runner_pool_id",
+    "name": "example_name",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### RunnerPoolRunner
+
+Create an instance: `runnerPoolRunner := client.RunnerPoolRunner(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+runnerPoolRunner, err := client.RunnerPoolRunner(nil).Load(map[string]any{"id": "runner_pool_runner_id", "runner_pool_id": "runner_pool_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(runnerPoolRunner.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+runnerPoolRunners, err := client.RunnerPoolRunner(nil).List(map[string]any{"runner_pool_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range runnerPoolRunners.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.RunnerPoolRunner(nil).Create(map[string]any{
+    "runner_pool_id": "example_runner_pool_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### RuntimeInstanceHealthSnapshot
+
+Create an instance: `runtimeInstanceHealthSnapshot := client.RuntimeInstanceHealthSnapshot(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: List
+
+```go
+runtimeInstanceHealthSnapshots, err := client.RuntimeInstanceHealthSnapshot(nil).List(map[string]any{"runtime_instance_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range runtimeInstanceHealthSnapshots.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.RuntimeInstanceHealthSnapshot(nil).Create(map[string]any{
+    "runtime_instance_id": "example_runtime_instance_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SandboxIntegration
+
+Create an instance: `sandboxIntegration := client.SandboxIntegration(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage` | `bool` |  |
+| `catalog` | `[]any` |  |
+| `configuration` | `map[string]any` |  |
+| `connected_profiles` | `map[string]any` | Connected profiles per provider across the organization. |
+| `credentials` | `map[string]any` |  |
+| `enabled` | `bool` |  |
+| `id` | `string` |  |
+| `integrations` | `[]any` |  |
+| `name` | `string` |  |
+| `provider` | `string` |  |
+| `version` | `int` |  |
+
+#### Example: List
+
+```go
+sandboxIntegrations, err := client.SandboxIntegration(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range sandboxIntegrations.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SandboxIntegration(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "configuration": map[string]any{},
+    "credentials": map[string]any{},
+    "name": "example_name",
+    "provider": "example_provider",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
 ### ScenarioRevision
 
 Create an instance: `scenarioRevision := client.ScenarioRevision(nil)`
@@ -14232,6 +30144,122 @@ fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 Create an instance: `scenarioRunScenarioEdit := client.ScenarioRunScenarioEdit(nil)`
 
 
+### SecretGrant
+
+Create an instance: `secretGrant := client.SecretGrant(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+secretGrant, err := client.SecretGrant(nil).Load(map[string]any{"id": "secret_grant_id", "organization_id": "organization_id", "secret_id": "secret_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(secretGrant.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+secretGrants, err := client.SecretGrant(nil).List(map[string]any{"organization_id": "example", "secret_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range secretGrants.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SecretGrant(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "secret_id": "example_secret_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SecretVersion
+
+Create an instance: `secretVersion := client.SecretVersion(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+secretVersion, err := client.SecretVersion(nil).Load(map[string]any{"id": "secret_version_id", "organization_id": "organization_id", "secret_id": "secret_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(secretVersion.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+secretVersions, err := client.SecretVersion(nil).List(map[string]any{"organization_id": "example", "secret_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range secretVersions.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SecretVersion(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "secret_id": "example_secret_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
 ### ServiceEndpoint
 
 Create an instance: `serviceEndpoint := client.ServiceEndpoint(nil)`
@@ -14290,6 +30318,458 @@ fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
+### Setting
+
+Create an instance: `setting := client.Setting(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `bool` |  |
+| `can_manage_sandbox_region` | `bool` |  |
+| `dedicated_outbound_ip_addresses` | `[]any` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` |  |
+| `organization` | `map[string]any` |  |
+| `sandbox_regions` | `[]any` |  |
+
+#### Example: List
+
+```go
+settings, err := client.Setting(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range settings.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### SettingMutationLease
+
+Create an instance: `settingMutationLease := client.SettingMutationLease(nil)`
+
+
+### Signal
+
+Create an instance: `signal := client.Signal(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `acked_at` | `any` |  |
+| `acked_by` | `any` | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | `map[string]any` | Dispatched-run summary (docs §6c). |
+| `app_service_id` | `any` |  |
+| `attribution` | `map[string]any` | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
+| `created_at` | `string` | ISO8601 row insert time — retention math and debugging only. |
+| `dedupe_key` | `any` |  |
+| `hosted_app_id` | `any` |  |
+| `id` | `string` | The signal's own `sig_…` public id — also the paging cursor value. |
+| `kind` | `string` | A frozen taxonomy kind (§1) or an `app.custom.*` kind. |
+| `links` | `map[string]any` | Canonical, relative API paths built from real routes (docs §6a). |
+| `occurred_at` | `string` | ISO8601 domain event time — what the UI displays and `since` filters on. |
+| `organization_id` | `string` |  |
+| `payload` | `map[string]any` | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
+| `recovery` | `map[string]any` | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | `map[string]any` | Recovery pairing (docs §6b). |
+| `severity` | `string` | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
+| `source` | `map[string]any` | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
+| `subject_id` | `any` |  |
+| `subject_type` | `any` | Polymorphic pointer: `AppDeployment`, `RuntimeInstance`, `AlertEvent`, `HostedApp`, or `SignalSubscription`. |
+| `summary` | `string` | One-line, kind-composed human sentence for the feed row (docs §6d, e.g. |
+
+#### Example: Load
+
+```go
+signal, err := client.Signal(nil).Load(map[string]any{"id": "signal_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(signal.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+signals, err := client.Signal(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range signals.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.Signal(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SignalInbound
+
+Create an instance: `signalInbound := client.SignalInbound(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### SignalIntegration
+
+Create an instance: `signalIntegration := client.SignalIntegration(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `api_token` | `string` | Optional provider API token for target discovery and backfill. |
+| `api_token_stored` | `bool` |  |
+| `config` | `map[string]any` |  |
+| `created_at` | `any` |  |
+| `failure_message` | `any` |  |
+| `id` | `string` | Public id (`sint_…`). |
+| `inbound_path` | `string` |  |
+| `inbound_url` | `string` | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `any` |  |
+| `last_verified_at` | `any` |  |
+| `mode` | `string` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `provider` | `string` |  |
+| `rejected_signature_count` | `int` | Deliveries rejected for a bad or missing signature. |
+| `status` | `string` |  |
+| `target_count` | `int` |  |
+| `unmapped_delivery_count` | `int` | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `any` |  |
+| `webhook_secret` | `string` | The provider's signing secret. |
+| `webhook_secret_stored` | `bool` |  |
+
+#### Example: Load
+
+```go
+signalIntegration, err := client.SignalIntegration(nil).Load(map[string]any{"id": "signal_integration_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(signalIntegration.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+signalIntegrations, err := client.SignalIntegration(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range signalIntegrations.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SignalIntegration(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "name": "example_name",
+    "provider": "example_provider",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SignalIntegrationDelivery
+
+Create an instance: `signalIntegrationDelivery := client.SignalIntegrationDelivery(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `attempt_count` | `int` |  |
+| `created_at` | `any` |  |
+| `delivery_id` | `string` | The provider's delivery id, or a `content-…` id derived from the event kind, its timestamp header and the body checksum when it sends none. |
+| `event_kind` | `any` |  |
+| `id` | `string` | Public id (`sdel_…`). |
+| `last_error` | `any` |  |
+| `ops_signal_id` | `any` | Public id (`sig_…`) of the signal this delivery emitted. |
+| `organization_id` | `string` |  |
+| `processed_at` | `any` |  |
+| `provider` | `string` |  |
+| `received_at` | `any` |  |
+| `signal_integration_id` | `string` |  |
+| `state` | `string` |  |
+
+#### Example: List
+
+```go
+signalIntegrationDeliverys, err := client.SignalIntegrationDelivery(nil).List(map[string]any{"organization_id": "example", "signal_integration_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range signalIntegrationDeliverys.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### SignalIntegrationTarget
+
+Create an instance: `signalIntegrationTarget := client.SignalIntegrationTarget(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `app_service_id` | `any` |  |
+| `created_at` | `any` |  |
+| `display_name` | `any` |  |
+| `enabled` | `bool` |  |
+| `external_id` | `string` |  |
+| `external_kind` | `string` |  |
+| `external_slug` | `any` |  |
+| `hosted_app_id` | `any` |  |
+| `id` | `string` | Public id (`stgt_…`). |
+| `organization_id` | `string` |  |
+| `signal_integration_id` | `string` |  |
+| `signal_integration_targets` | `[]any` |  |
+| `targets` | `[]any` |  |
+| `updated_at` | `any` |  |
+
+#### Example: List
+
+```go
+signalIntegrationTargets, err := client.SignalIntegrationTarget(nil).List(map[string]any{"organization_id": "example", "signal_integration_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range signalIntegrationTargets.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### SignalSubscription
+
+Create an instance: `signalSubscription := client.SignalSubscription(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+signalSubscription, err := client.SignalSubscription(nil).Load(map[string]any{"id": "signal_subscription_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(signalSubscription.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+signalSubscriptions, err := client.SignalSubscription(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range signalSubscriptions.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SignalSubscription(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### Site
+
+Create an instance: `site := client.Site(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_at` | `any` |  |
+| `activated_at_label` | `any` |  |
+| `commit_sha` | `any` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `creator_user_id` | `any` |  |
+| `deploy_slug` | `string` |  |
+| `failure_message` | `any` |  |
+| `file_count` | `int` |  |
+| `file_count_label` | `string` |  |
+| `finished_at` | `any` |  |
+| `finished_at_label` | `any` |  |
+| `id` | `string` |  |
+| `is_active` | `bool` |  |
+| `source_ref` | `any` |  |
+| `started_at` | `any` |  |
+| `started_at_label` | `any` |  |
+| `static_site_id` | `string` |  |
+| `status` | `string` |  |
+| `total_bytes` | `int` |  |
+| `total_bytes_label` | `string` |  |
+| `trigger_kind` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+| `uploaded_at` | `any` |  |
+| `uploaded_at_label` | `any` |  |
+
+#### Example: List
+
+```go
+sites, err := client.Site(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range sites.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### SiteAccessKey
+
+Create an instance: `siteAccessKey := client.SiteAccessKey(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```go
+siteAccessKeys, err := client.SiteAccessKey(nil).List(map[string]any{"organization_id": "example", "site_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range siteAccessKeys.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SiteAccessKey(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "site_id": "example_site_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
 ### SitePreview
 
 Create an instance: `sitePreview := client.SitePreview(nil)`
@@ -14317,6 +30797,26 @@ if err != nil {
 }
 fmt.Println(sitePreview.(sdk.Entity).Data()) // the loaded entity's record
 ```
+
+
+### SiteSecret
+
+Create an instance: `siteSecret := client.SiteSecret(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `native_agent_id` | `string` |  |
+| `value` | `string` |  |
 
 
 ### SlackChannel
@@ -14351,6 +30851,903 @@ if err != nil {
 for _, item := range slackChannels.([]any) {
     fmt.Println(item.(sdk.Entity).Data())
 }
+```
+
+
+### SourceConnection
+
+Create an instance: `sourceConnection := client.SourceConnection(nil)`
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### SpaceAlertRule
+
+Create an instance: `spaceAlertRule := client.SpaceAlertRule(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+spaceAlertRule, err := client.SpaceAlertRule(nil).Load(map[string]any{"id": "space_alert_rule_id", "space_id": "space_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(spaceAlertRule.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+spaceAlertRules, err := client.SpaceAlertRule(nil).List(map[string]any{"space_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range spaceAlertRules.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SpaceAlertRule(nil).Create(map[string]any{
+    "space_id": "example_space_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SpaceAuditEvent
+
+Create an instance: `spaceAuditEvent := client.SpaceAuditEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: List
+
+```go
+spaceAuditEvents, err := client.SpaceAuditEvent(nil).List(map[string]any{"space_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range spaceAuditEvents.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SpaceAuditEvent(nil).Create(map[string]any{
+    "space_id": "example_space_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SpaceDnsRecord
+
+Create an instance: `spaceDnsRecord := client.SpaceDnsRecord(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+spaceDnsRecord, err := client.SpaceDnsRecord(nil).Load(map[string]any{"id": "space_dns_record_id", "space_id": "space_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(spaceDnsRecord.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+spaceDnsRecords, err := client.SpaceDnsRecord(nil).List(map[string]any{"space_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range spaceDnsRecords.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SpaceDnsRecord(nil).Create(map[string]any{
+    "space_id": "example_space_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SpaceEnrollmentToken
+
+Create an instance: `spaceEnrollmentToken := client.SpaceEnrollmentToken(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+spaceEnrollmentToken, err := client.SpaceEnrollmentToken(nil).Load(map[string]any{"id": "space_enrollment_token_id", "space_id": "space_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(spaceEnrollmentToken.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+spaceEnrollmentTokens, err := client.SpaceEnrollmentToken(nil).List(map[string]any{"space_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range spaceEnrollmentTokens.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SpaceEnrollmentToken(nil).Create(map[string]any{
+    "space_id": "example_space_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SpaceGateway
+
+Create an instance: `spaceGateway := client.SpaceGateway(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+spaceGateway, err := client.SpaceGateway(nil).Load(map[string]any{"id": "space_gateway_id", "space_id": "space_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(spaceGateway.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+spaceGateways, err := client.SpaceGateway(nil).List(map[string]any{"space_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range spaceGateways.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SpaceGateway(nil).Create(map[string]any{
+    "space_id": "example_space_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SpaceGroup
+
+Create an instance: `spaceGroup := client.SpaceGroup(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```go
+spaceGroups, err := client.SpaceGroup(nil).List(map[string]any{"space_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range spaceGroups.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SpaceGroup(nil).Create(map[string]any{
+    "space_id": "example_space_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SpaceGroupMembership
+
+Create an instance: `spaceGroupMembership := client.SpaceGroupMembership(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```go
+spaceGroupMemberships, err := client.SpaceGroupMembership(nil).List(map[string]any{"space_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range spaceGroupMemberships.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SpaceGroupMembership(nil).Create(map[string]any{
+    "space_id": "example_space_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SpaceLogStream
+
+Create an instance: `spaceLogStream := client.SpaceLogStream(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: List
+
+```go
+spaceLogStreams, err := client.SpaceLogStream(nil).List(map[string]any{"space_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range spaceLogStreams.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SpaceLogStream(nil).Create(map[string]any{
+    "space_id": "example_space_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SpaceMetricSery
+
+Create an instance: `spaceMetricSery := client.SpaceMetricSery(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: List
+
+```go
+spaceMetricSerys, err := client.SpaceMetricSery(nil).List(map[string]any{"space_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range spaceMetricSerys.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SpaceMetricSery(nil).Create(map[string]any{
+    "space_id": "example_space_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SpaceOtelCollector
+
+Create an instance: `spaceOtelCollector := client.SpaceOtelCollector(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+spaceOtelCollector, err := client.SpaceOtelCollector(nil).Load(map[string]any{"id": "space_otel_collector_id", "space_id": "space_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(spaceOtelCollector.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+spaceOtelCollectors, err := client.SpaceOtelCollector(nil).List(map[string]any{"space_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range spaceOtelCollectors.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SpaceOtelCollector(nil).Create(map[string]any{
+    "space_id": "example_space_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SpacePeer
+
+Create an instance: `spacePeer := client.SpacePeer(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+spacePeer, err := client.SpacePeer(nil).Load(map[string]any{"id": "space_peer_id", "space_id": "space_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(spacePeer.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+spacePeers, err := client.SpacePeer(nil).List(map[string]any{"space_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range spacePeers.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SpacePeer(nil).Create(map[string]any{
+    "space_id": "example_space_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SpacePeerAttachment
+
+Create an instance: `spacePeerAttachment := client.SpacePeerAttachment(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```go
+spacePeerAttachments, err := client.SpacePeerAttachment(nil).List(map[string]any{"space_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range spacePeerAttachments.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SpacePeerAttachment(nil).Create(map[string]any{
+    "space_id": "example_space_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SpacePolicy
+
+Create an instance: `spacePolicy := client.SpacePolicy(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+spacePolicy, err := client.SpacePolicy(nil).Load(map[string]any{"id": "space_policy_id", "space_id": "space_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(spacePolicy.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+spacePolicys, err := client.SpacePolicy(nil).List(map[string]any{"space_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range spacePolicys.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SpacePolicy(nil).Create(map[string]any{
+    "space_id": "example_space_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SpaceSegment
+
+Create an instance: `spaceSegment := client.SpaceSegment(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```go
+spaceSegment, err := client.SpaceSegment(nil).Load(map[string]any{"id": "space_segment_id", "space_id": "space_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(spaceSegment.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+spaceSegments, err := client.SpaceSegment(nil).List(map[string]any{"space_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range spaceSegments.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SpaceSegment(nil).Create(map[string]any{
+    "space_id": "example_space_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SpaceTraceSpan
+
+Create an instance: `spaceTraceSpan := client.SpaceTraceSpan(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: List
+
+```go
+spaceTraceSpans, err := client.SpaceTraceSpan(nil).List(map[string]any{"space_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range spaceTraceSpans.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SpaceTraceSpan(nil).Create(map[string]any{
+    "space_id": "example_space_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### Spark
+
+Create an instance: `spark := client.Spark(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_products` | `[]any` | Products this organization has activated (PRD 144). |
+| `agents_only` | `bool` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `bool` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `can_manage` | `bool` |  |
+| `compute_credit_cents` | `any` | Included compute the workspace started Sparks with, when it is on compute billing. |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `credit_cents` | `any` | Inference credit the workspace started Sparks with. |
+| `first_spark` | `any` | Null until the first Spark exists or when the viewer cannot read it. |
+| `github_connected` | `bool` |  |
+| `github_prs_authored_by_change_author` | `bool` |  |
+| `id` | `string` |  |
+| `jsonrpc` | `string` |  |
+| `logo_url` | `any` |  |
+| `member_count` | `int` |  |
+| `method` | `string` |  |
+| `name` | `string` |  |
+| `params` | `map[string]any` |  |
+| `pending_invitation_count` | `int` |  |
+| `personal` | `bool` |  |
+| `repository_count` | `int` |  |
+| `role` | `any` |  |
+| `sandbox_region` | `string` |  |
+| `shared_agent_personal_accounts_enabled` | `bool` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` |  |
+| `source_control_providers` | `[]any` | Connected source control providers for this organization. |
+| `source_ui_enabled` | `bool` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `started` | `bool` | Whether the workspace has started Sparks. |
+| `timezone` | `string` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+| `verify_pr_scenario_writing_enabled` | `bool` |  |
+
+#### Example: List
+
+```go
+sparks, err := client.Spark(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range sparks.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.Spark(nil).Create(map[string]any{
+    "jsonrpc": "example_jsonrpc",
+    "method": "example_method",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SparkAgentIntegration
+
+Create an instance: `sparkAgentIntegration := client.SparkAgentIntegration(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_counts` | `map[string]any` | Accounts the viewer can see per toolkit, across all account pages. |
+| `accounts_path` | `string` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
+| `added_toolkits` | `[]any` | Apps with a connected or connecting account the viewer can see. |
+| `can_manage` | `bool` |  |
+| `can_manage_organization` | `bool` |  |
+| `catalog` | `[]any` |  |
+| `connect_as` | `any` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
+| `connect_as_by_toolkit` | `map[string]any` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_counts` | `map[string]any` | Signed-in accounts per toolkit, across all account pages. |
+| `connection_id` | `string` |  |
+| `connections` | `[]any` |  |
+| `email` | `map[string]any` | A native agent's own email address. |
+| `enabled` | `bool` |  |
+| `enabled_toolkits` | `[]any` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `generation` | `int` |  |
+| `pagination` | `map[string]any` |  |
+| `pending_counts` | `map[string]any` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
+| `personal_creation_key_supported` | `bool` | The personal account creation endpoint honors a creation key. |
+| `private_agent` | `bool` | Only the agent's owner can chat with it. |
+| `shared_agent_personal_accounts_enabled` | `bool` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
+| `slack` | `map[string]any` |  |
+| `webhook_connections` | `[]any` |  |
+| `webhooks_available` | `bool` |  |
+
+#### Example: List
+
+```go
+sparkAgentIntegrations, err := client.SparkAgentIntegration(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range sparkAgentIntegrations.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SparkAgentIntegration(nil).Create(map[string]any{
+    "agent_id": "example_agent_id",
+    "organization_id": "example_organization_id",
+    "connection_id": "example_connection_id",
+    "enabled": true,
+    "generation": 1,
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
@@ -14428,6 +31825,299 @@ if err != nil {
     panic(err)
 }
 fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SparkAgentSite
+
+Create an instance: `sparkAgentSite := client.SparkAgentSite(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `deployed_at` | `string` |  |
+| `deployments_count` | `int` |  |
+| `hostname` | `string` |  |
+| `https` | `string` | Whether the organization's certificate serves this site over HTTPS |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `url` | `string` |  |
+| `visibility` | `string` |  |
+
+#### Example: List
+
+```go
+sparkAgentSites, err := client.SparkAgentSite(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range sparkAgentSites.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### SparkAgentSkill
+
+Create an instance: `sparkAgentSkill := client.SparkAgentSkill(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `available` | `bool` |  |
+| `can_configure` | `bool` |  |
+| `can_manage` | `bool` |  |
+| `configuration_state` | `string` | The requested managed skill selection is awaiting runtime qualification. |
+| `description` | `string` |  |
+| `enabled` | `bool` |  |
+| `name` | `string` |  |
+| `skills` | `[]any` |  |
+| `version` | `string` |  |
+
+#### Example: List
+
+```go
+sparkAgentSkills, err := client.SparkAgentSkill(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range sparkAgentSkills.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SparkAgentSkill(nil).Create(map[string]any{
+    "agent_id": "example_agent_id",
+    "organization_id": "example_organization_id",
+    "enabled": true,
+    "name": "example_name",
+    "version": "example_version",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SparkAgentThread
+
+Create an instance: `sparkAgentThread := client.SparkAgentThread(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `archived_count` | `any` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
+| `can_create` | `bool` |  |
+| `execution` | `any` |  |
+| `first_input` | `any` |  |
+| `first_input_key` | `string` | Idempotency-Key that finds the first message through input_delivery. |
+| `first_input_requester_membership_id` | `string` | Membership the first message was sent as, for input_delivery. |
+| `id` | `string` |  |
+| `inherit_context` | `bool` | Include the source conversation through its last completed reply. |
+| `local_activities` | `map[string]any` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
+| `local_archived_count` | `int` | Local Claude Code and Codex threads archived on their computers. |
+| `local_next_cursor` | `any` |  |
+| `local_scope_key` | `any` |  |
+| `local_status_pending` | `bool` | A computer is reporting newer local thread statuses; read the page again shortly. |
+| `local_threads` | `[]any` |  |
+| `main_thread_id` | `string` |  |
+| `message` | `string` | The thread's first message. |
+| `next_cursor` | `any` |  |
+| `parent_conversation_id` | `string` | Optional source conversation belonging to this agent. |
+| `requester_membership_id` | `string` |  |
+| `selected_thread` | `any` |  |
+| `thread` | `map[string]any` |  |
+| `threads` | `[]any` |  |
+| `title` | `string` |  |
+| `total_archived_count` | `any` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+#### Example: List
+
+```go
+sparkAgentThreads, err := client.SparkAgentThread(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range sparkAgentThreads.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SparkAgentThread(nil).Create(map[string]any{
+    "agent_id": "example_agent_id",
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SparkCredit
+
+Create an instance: `sparkCredit := client.SparkCredit(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+| `Patch(data, ctrl)` | Change part of an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `amount_cents` | `int` | Purchase amount in USD cents. |
+| `autofill` | `any` |  |
+| `autofill_payment_unconfirmed` | `bool` |  |
+| `available_usd` | `string` |  |
+| `billing_unit` | `string` | Compute minute quote version returned by the billing summary. |
+| `can_manage` | `bool` |  |
+| `compute_minutes` | `map[string]any` |  |
+| `compute_usd` | `string` |  |
+| `credits_per_usd` | `int` |  |
+| `inference_usd` | `string` |  |
+| `kind` | `string` |  |
+| `payment_method` | `any` |  |
+| `payments_enabled` | `bool` |  |
+| `plan` | `string` |  |
+| `plans` | `[]any` |  |
+| `quoted_credits_cents` | `int` | Grant shown for a top-up or subscription, in usage cents. |
+| `quoted_price_cents` | `int` | Monthly cash price shown for a subscription, in USD cents. |
+| `refill_limits_cents` | `[]any` |  |
+| `refill_options` | `[]any` |  |
+| `refill_thresholds_cents` | `[]any` |  |
+| `request_key` | `string` |  |
+| `settings` | `any` |  |
+| `starter_cents` | `int` |  |
+| `top_up_max_cents` | `int` | Maximum manual top-up, in USD cents. |
+| `top_up_step_cents` | `int` | Minimum manual top-up and increment, in USD cents. |
+
+#### Example: List
+
+```go
+sparkCredits, err := client.SparkCredit(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range sparkCredits.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.SparkCredit(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "kind": "example_kind",
+    "request_key": "example_request_key",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SparkCreditAgentUsage
+
+Create an instance: `sparkCreditAgentUsage := client.SparkCreditAgentUsage(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agents` | `[]any` |  |
+| `all` | `map[string]any` |  |
+| `days` | `[]any` |  |
+| `id` | `string` |  |
+| `owners` | `[]any` |  |
+
+#### Example: Load
+
+```go
+sparkCreditAgentUsage, err := client.SparkCreditAgentUsage(nil).Load(map[string]any{"id": "spark_credit_agent_usage_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(sparkCreditAgentUsage.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### SparkCreditUsageTotal
+
+Create an instance: `sparkCreditUsageTotal := client.SparkCreditUsageTotal(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `compute_minutes_used` | `string` |  |
+| `compute_usd` | `string` |  |
+| `inference_usd` | `string` |  |
+
+#### Example: List
+
+```go
+sparkCreditUsageTotals, err := client.SparkCreditUsageTotal(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range sparkCreditUsageTotals.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -14667,6 +32357,155 @@ fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
+### StatusChange
+
+Create an instance: `statusChange := client.StatusChange(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_id` | `string` |  |
+| `id` | `string` |  |
+| `patchsets` | `[]any` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+
+#### Example: Load
+
+```go
+statusChange, err := client.StatusChange(nil).Load(map[string]any{"id": "status_change_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(statusChange.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### StatusCommit
+
+Create an instance: `statusCommit := client.StatusCommit(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `checks` | `[]any` |  |
+| `commit_sha` | `string` |  |
+| `counts` | `map[string]any` |  |
+| `id` | `string` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `total` | `int` |  |
+
+#### Example: Load
+
+```go
+statusCommit, err := client.StatusCommit(nil).Load(map[string]any{"id": "status_commit_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(statusCommit.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### StatusPatchset
+
+Create an instance: `statusPatchset := client.StatusPatchset(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `checks` | `[]any` |  |
+| `checks_status` | `any` |  |
+| `commit_sha` | `any` |  |
+| `counts` | `map[string]any` |  |
+| `id` | `string` |  |
+| `patchset_id` | `string` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `total` | `int` |  |
+
+#### Example: Load
+
+```go
+statusPatchset, err := client.StatusPatchset(nil).Load(map[string]any{"id": "status_patchset_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(statusPatchset.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### StripeWebhook
+
+Create an instance: `stripeWebhook := client.StripeWebhook(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.StripeWebhook(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SubmitTelemetry
+
+Create an instance: `submitTelemetry := client.SubmitTelemetry(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.SubmitTelemetry(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
 ### SubscriptionModel
 
 Create an instance: `subscriptionModel := client.SubscriptionModel(nil)`
@@ -14702,6 +32541,189 @@ for _, item := range subscriptionModels.([]any) {
 ```
 
 
+### SwarmEvent
+
+Create an instance: `swarmEvent := client.SwarmEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_swarm_id` | `string` |  |
+| `attempt_id` | `any` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `id` | `int` |  |
+| `kind` | `string` |  |
+| `payload` | `map[string]any` |  |
+| `reason` | `any` |  |
+| `scheduler_generation` | `any` |  |
+| `task_id` | `any` |  |
+
+#### Example: List
+
+```go
+swarmEvents, err := client.SwarmEvent(nil).List(map[string]any{"swarm_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range swarmEvents.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### SwarmLive
+
+Create an instance: `swarmLive := client.SwarmLive(nil)`
+
+
+### SwarmNote
+
+Create an instance: `swarmNote := client.SwarmNote(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `task_id` | `any` | A task public id; omitted |
+| `text` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.SwarmNote(nil).Create(map[string]any{
+    "swarm_id": "example_swarm_id",
+    "text": "example_text",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### SwarmTask
+
+Create an instance: `swarmTask := client.SwarmTask(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `acceptance_commands` | `[]any` |  |
+| `agent_swarm_id` | `string` |  |
+| `assigned_runner_id` | `any` |  |
+| `blocked_reason` | `any` |  |
+| `changes` | `[]any` |  |
+| `commit_count` | `int` |  |
+| `commit_sha_result` | `any` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `current_attempt_id` | `any` |  |
+| `deadline_at` | `any` |  |
+| `depends_on_task_ids` | `[]any` |  |
+| `depth` | `int` |  |
+| `diff_artifact_url` | `any` |  |
+| `display_id` | `int` |  |
+| `environment_profile` | `any` |  |
+| `error_message` | `any` |  |
+| `failure_code` | `any` |  |
+| `finished_at` | `any` |  |
+| `finished_at_label` | `any` |  |
+| `harness` | `string` |  |
+| `id` | `string` |  |
+| `input_revision` | `any` |  |
+| `iteration` | `int` |  |
+| `landing_state` | `string` |  |
+| `model` | `any` |  |
+| `model_provider` | `any` |  |
+| `number` | `int` |  |
+| `organization_id` | `string` |  |
+| `owned_paths` | `[]any` |  |
+| `parent_task_id` | `any` |  |
+| `position` | `int` |  |
+| `prompt` | `string` |  |
+| `queued_at` | `any` |  |
+| `queued_at_label` | `any` |  |
+| `reasoning_effort` | `any` |  |
+| `recent_activity` | `[]any` |  |
+| `repo_url` | `string` |  |
+| `result` | `map[string]any` |  |
+| `retry_number` | `int` |  |
+| `role` | `string` |  |
+| `run_id` | `any` |  |
+| `stack_after_task_id` | `any` |  |
+| `started_at` | `any` |  |
+| `started_at_label` | `any` |  |
+| `status` | `string` |  |
+| `title` | `any` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+
+#### Example: List
+
+```go
+swarmTasks, err := client.SwarmTask(nil).List(map[string]any{"swarm_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range swarmTasks.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### TaskLease
+
+Create an instance: `taskLease := client.TaskLease(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.TaskLease(nil).Create(map[string]any{
+    "swarm_id": "example_swarm_id",
+    "task_id": "example_task_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
 ### ThreadPreview
 
 Create an instance: `threadPreview := client.ThreadPreview(nil)`
@@ -14733,6 +32755,515 @@ if err != nil {
     panic(err)
 }
 fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### ThreadPreviewAccess
+
+Create an instance: `threadPreviewAccess := client.ThreadPreviewAccess(nil)`
+
+
+### ToolFeedback
+
+Create an instance: `toolFeedback := client.ToolFeedback(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `category` | `string` |  |
+| `created_at` | `string` |  |
+| `details` | `string` |  |
+| `feedback` | `map[string]any` |  |
+| `id` | `string` |  |
+| `metadata` | `map[string]any` | Caller-supplied session context; no secrets or transcripts |
+| `organization_id` | `string` |  |
+| `source` | `string` |  |
+| `summary` | `string` |  |
+| `user_id` | `string` |  |
+
+#### Example: Load
+
+```go
+toolFeedback, err := client.ToolFeedback(nil).Load(map[string]any{"id": "tool_feedback_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(toolFeedback.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: Create
+
+```go
+result, err := client.ToolFeedback(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "feedback": map[string]any{},
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### Transcript
+
+Create an instance: `transcript := client.Transcript(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent` | `string` |  |
+| `author` | `map[string]any` |  |
+| `checkpoint_pagination` | `map[string]any` |  |
+| `checkpoints` | `[]any` |  |
+| `id` | `string` |  |
+| `last_checkpoint_at` | `any` |  |
+| `selected_checkpoint` | `any` |  |
+| `source_url` | `string` |  |
+| `started_at` | `string` |  |
+| `status` | `string` |  |
+| `title` | `any` |  |
+
+#### Example: List
+
+```go
+transcripts, err := client.Transcript(nil).List(map[string]any{"repo": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range transcripts.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### V1Message
+
+Create an instance: `v1Message := client.V1Message(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.V1Message(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### VcBranch
+
+Create an instance: `vcBranch := client.VcBranch(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `target_commit_id` | `string` |  |
+
+#### Example: List
+
+```go
+vcBranchs, err := client.VcBranch(nil).List(map[string]any{"organization_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range vcBranchs.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.VcBranch(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### VcBrowser
+
+Create an instance: `vcBrowser := client.VcBrowser(nil)`
+
+
+### VcChange
+
+Create an instance: `vcChange := client.VcChange(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activity` | `[]any` |  |
+| `canonical_path` | `string` |  |
+| `change` | `any` |  |
+| `checks` | `[]any` |  |
+| `checks_status` | `string` |  |
+| `description` | `any` |  |
+| `group` | `any` |  |
+| `id` | `string` |  |
+| `jj_change_id` | `any` |  |
+| `labels` | `[]any` |  |
+| `landing` | `map[string]any` | Server-computed submitted-together closure and landing preflight. |
+| `number` | `int` |  |
+| `patchset_number` | `any` |  |
+| `previews` | `[]any` |  |
+| `primary_status` | `any` |  |
+| `public_id` | `string` |  |
+| `related_changes` | `[]any` |  |
+| `relation_chain` | `[]any` |  |
+| `restack_state` | `string` |  |
+| `review_summary` | `map[string]any` |  |
+| `stack` | `any` |  |
+| `status` | `string` |  |
+| `sync` | `map[string]any` |  |
+| `target` | `map[string]any` |  |
+| `target_advanced` | `bool` |  |
+| `target_branch` | `string` |  |
+| `title` | `string` |  |
+| `url` | `string` |  |
+
+#### Example: Load
+
+```go
+vcChange, err := client.VcChange(nil).Load(map[string]any{"id": "vc_change_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(vcChange.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+vcChanges, err := client.VcChange(nil).List(map[string]any{"organization_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range vcChanges.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### VcChangeGroup
+
+Create an instance: `vcChangeGroup := client.VcChangeGroup(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `changes` | `[]any` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `number` | `int` |  |
+| `status` | `string` |  |
+| `title` | `any` |  |
+
+#### Example: Load
+
+```go
+vcChangeGroup, err := client.VcChangeGroup(nil).Load(map[string]any{"id": "vc_change_group_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(vcChangeGroup.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+vcChangeGroups, err := client.VcChangeGroup(nil).List(map[string]any{"organization_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range vcChangeGroups.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.VcChangeGroup(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "repo_id": "example_repo_id",
+    "name": "example_name",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### VcFile
+
+Create an instance: `vcFile := client.VcFile(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `paths` | `[]any` |  |
+| `truncated` | `bool` |  |
+
+#### Example: List
+
+```go
+vcFiles, err := client.VcFile(nil).List(map[string]any{"organization_id": "example", "repo_id": "example", "ref": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range vcFiles.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### VcMergeQueue
+
+Create an instance: `vcMergeQueue := client.VcMergeQueue(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `analytics` | `map[string]any` | Queue performance for the reporting window. |
+| `id` | `string` |  |
+| `policy` | `map[string]any` |  |
+| `queue` | `map[string]any` |  |
+| `target_branches` | `[]any` | Bookmark names for the target picker. |
+
+#### Example: Load
+
+```go
+vcMergeQueue, err := client.VcMergeQueue(nil).Load(map[string]any{"id": "vc_merge_queue_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(vcMergeQueue.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+vcMergeQueues, err := client.VcMergeQueue(nil).List(map[string]any{"organization_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range vcMergeQueues.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### VcStack
+
+Create an instance: `vcStack := client.VcStack(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `alias_ref_name` | `any` |  |
+| `changes` | `[]any` |  |
+| `code` | `string` |  |
+| `id` | `string` |  |
+| `landing` | `map[string]any` | Compact landing state for the Stack CLI. |
+| `member_count` | `int` |  |
+| `name` | `any` |  |
+| `ref_name` | `string` |  |
+| `status` | `string` |  |
+| `tip_change_number` | `any` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string` |  |
+
+#### Example: Load
+
+```go
+vcStack, err := client.VcStack(nil).Load(map[string]any{"id": "vc_stack_id", "organization_id": "organization_id", "repo_id": "repo_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(vcStack.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+vcStacks, err := client.VcStack(nil).List(map[string]any{"organization_id": "example", "repo_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range vcStacks.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### VcsNode
+
+Create an instance: `vcsNode := client.VcsNode(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `any` |  |
+| `account_id` | `any` |  |
+| `account_login` | `string` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `any` |  |
+| `id` | `string` |  |
+| `installation_id` | `string` |  |
+| `installed_at` | `any` |  |
+| `installed_at_label` | `any` |  |
+| `manage_access_url` | `string` |  |
+| `organization_id` | `string` |  |
+| `permission_entries` | `[]any` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `map[string]any` |  |
+| `status` | `string` |  |
+| `suspended_at` | `any` |  |
+| `suspended_at_label` | `any` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `any` |  |
+
+#### Example: List
+
+```go
+vcsNodes, err := client.VcsNode(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range vcsNodes.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### VcsSetting
+
+Create an instance: `vcsSetting := client.VcsSetting(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `bool` |  |
+| `can_manage_sandbox_region` | `bool` |  |
+| `dedicated_outbound_ip_addresses` | `[]any` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` |  |
+| `organization` | `map[string]any` |  |
+| `sandbox_regions` | `[]any` |  |
+
+#### Example: List
+
+```go
+vcsSettings, err := client.VcsSetting(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range vcsSettings.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -15141,6 +33672,78 @@ fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
+### VerifyEmailVerification
+
+Create an instance: `verifyEmailVerification := client.VerifyEmailVerification(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Example: List
+
+```go
+verifyEmailVerifications, err := client.VerifyEmailVerification(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range verifyEmailVerifications.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+
+### VerifySignalIntegration
+
+Create an instance: `verifySignalIntegration := client.VerifySignalIntegration(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `api_token_stored` | `bool` |  |
+| `config` | `map[string]any` |  |
+| `created_at` | `any` |  |
+| `failure_message` | `any` |  |
+| `id` | `string` | Public id (`sint_…`). |
+| `inbound_path` | `string` |  |
+| `inbound_url` | `string` | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `any` |  |
+| `last_verified_at` | `any` |  |
+| `mode` | `string` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `provider` | `string` |  |
+| `rejected_signature_count` | `int` | Deliveries rejected for a bad or missing signature. |
+| `status` | `string` |  |
+| `target_count` | `int` |  |
+| `unmapped_delivery_count` | `int` | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `any` |  |
+| `webhook_secret_stored` | `bool` |  |
+
+#### Example: Create
+
+```go
+result, err := client.VerifySignalIntegration(nil).Create(map[string]any{
+    "id": "example_id",
+    "organization_id": "example_organization_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
 ### VerifyStaticSiteDomain
 
 Create an instance: `verifyStaticSiteDomain := client.VerifyStaticSiteDomain(nil)`
@@ -15230,6 +33833,28 @@ for _, item := range versionLogs.([]any) {
 ```
 
 
+### WaitlistApplication
+
+Create an instance: `waitlistApplication := client.WaitlistApplication(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```go
+result, err := client.WaitlistApplication(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
 ### WebBotAuth
 
 Create an instance: `webBotAuth := client.WebBotAuth(nil)`
@@ -15261,6 +33886,23 @@ fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
 ```
 
 
+### WebhookGitlab
+
+Create an instance: `webhookGitlab := client.WebhookGitlab(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
 ### WorkflowRunStep
 
 Create an instance: `workflowRunStep := client.WorkflowRunStep(nil)`
@@ -15286,6 +33928,135 @@ Create an instance: `workflowTriggerSkipped := client.WorkflowTriggerSkipped(nil
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+
+### WorkspaceActivity
+
+Create an instance: `workspaceActivity := client.WorkspaceActivity(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `live_activity` | `[]any` |  |
+| `recent_items` | `[]any` |  |
+| `unresolved_notification_count` | `int` |  |
+
+#### Example: Load
+
+```go
+workspaceActivity, err := client.WorkspaceActivity(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(workspaceActivity.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+
+### WorkspaceActivityNotification
+
+Create an instance: `workspaceActivityNotification := client.WorkspaceActivityNotification(nil)`
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### WorkspaceSpace
+
+Create an instance: `workspaceSpace := client.WorkspaceSpace(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `string` |  |
+| `default_branch` | `string` |  |
+| `description` | `any` |  |
+| `hidden` | `bool` |  |
+| `icon_name` | `string` |  |
+| `id` | `string` |  |
+| `import_status` | `any` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `position` | `any` |  |
+| `repository_id` | `string` |  |
+| `repository_slug` | `string` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```go
+workspaceSpace, err := client.WorkspaceSpace(nil).Load(map[string]any{"id": "workspace_space_id", "organization_id": "organization_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(workspaceSpace.(sdk.Entity).Data()) // the loaded entity's record
+```
+
+#### Example: List
+
+```go
+workspaceSpaces, err := client.WorkspaceSpace(nil).List(map[string]any{"organization_id": "example"}, nil)
+if err != nil {
+    panic(err)
+}
+// A []any of entities, one per record.
+for _, item := range workspaceSpaces.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
+```
+
+#### Example: Create
+
+```go
+result, err := client.WorkspaceSpace(nil).Create(map[string]any{
+    "organization_id": "example_organization_id",
+    "icon_name": "example_icon_name",
+    "name": "example_name",
+    "slug": "example_slug",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data()) // the created entity's record
+```
+
+
+### WorkspaceSpacePreference
+
+Create an instance: `workspaceSpacePreference := client.WorkspaceSpacePreference(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `preferences` | `[]any` |  |
+| `spaces` | `[]any` |  |
 
 ## Features
 
@@ -15445,7 +34216,7 @@ activated earlier.
 
 ## Open types
 
-12 fields are carried as open values rather than typed structures.
+17 fields are carried as open values rather than typed structures.
 This follows from the API definition, not from a gap in this SDK: the
 definition describes them with untagged unions —
 `oneOf`/`anyOf` branches with no `discriminator` — so it never states which
@@ -15459,14 +34230,19 @@ guarantee.
 | `agent_automation` | `version` | 12 | 12 levels |
 | `agent_interaction` | `interactions` | 12 | 17 levels |
 | `automation_event` | `version` | 12 | 12 levels |
+| `control_computer_control_operation` | `result` | 10 | 2 levels |
+| `device_control_operation` | `result` | 10 | 2 levels |
 | `local_thread_operation` | `result` | 10 | 2 levels |
 | `spark_agent_local_thread` | `result` | 10 | 2 levels |
+| `workspace_activity` | `recent_items` | 7 | 1 level |
 | `page_agent` | `inbox` | 6 | 14 levels |
 | `agent` | `configuration` | 5 | 9 levels |
 | `agent_manager` | `configuration` | 5 | 9 levels |
 | `interaction_response` | `answer` | 5 | 3 levels |
 | `page_agent` | `new_configuration` | 5 | 9 levels |
 | `page_agent` | `selected_agent` | 5 | 15 levels |
+| `change` | `result` | 4 | 9 levels |
+| `workspace_activity` | `live_activity` | 4 | 1 level |
 
 These values round-trip unchanged — read them, modify them, send them back. If
 the API adds a `discriminator` to the definition, regenerating will type them.
@@ -15555,11 +34331,11 @@ Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-pageprojectrun := client.PageProjectRun(nil)
-pageprojectrun.Load(map[string]any{"id": "example_id", "organization_id": "example", "project_id": "example"}, nil)
+agentoperation := client.AgentOperation(nil)
+agentoperation.Load(map[string]any{"agent_id": "example", "id": "example_id", "organization_id": "example"}, nil)
 
-// pageprojectrun.Data() now returns the pageprojectrun data from the last load
-// pageprojectrun.Match() returns the last match criteria
+// agentoperation.Data() now returns the agentoperation data from the last load
+// agentoperation.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

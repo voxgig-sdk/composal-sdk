@@ -1,0 +1,25 @@
+$kind: http-request
+id: "774c5548-42b5-5e7a-9080-fb489dd68589"
+description: |-
+  The `remove` operation of **docker_builder_session**.
+
+  SDK: `client.DockerBuilderSession().remove({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/docker_builder_sessions/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this docker_builder_session belongs to.
+  - key: id
+    value: "{{docker_builder_session_id}}"
+    description: The docker_builder_session this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("docker_builder_session_id")
+      }
+    language: text/javascript
+order: 5000

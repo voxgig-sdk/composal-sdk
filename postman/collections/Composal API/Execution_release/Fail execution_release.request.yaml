@@ -1,0 +1,19 @@
+$kind: http-request
+id: "2035e9f8-12d3-5cb3-b555-6d9c22b3d98b"
+description: |-
+  The `fail` action of **execution_release**, a route of its `create` operation.
+
+  SDK: `client.ExecutionRelease().create({ "id": "ID", $action: "fail" })`
+url: "{{base}}/api/v1/execution/releases/:id/fail"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{execution_release_id}}"
+    description: The execution_release this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

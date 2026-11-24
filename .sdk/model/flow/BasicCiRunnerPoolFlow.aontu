@@ -1,0 +1,71 @@
+# BasicCiRunnerPoolFlow
+
+main: kit: flow: BasicCiRunnerPoolFlow:
+{
+  entity: "ci_runner_pool",
+  kind: "basic",
+  name: "BasicCiRunnerPoolFlow",
+  step: [
+    {
+      i: {
+        ref: "ci_runner_pool_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "ci_runner_pool_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "ci_runner_pool_ref01",
+        srcdatavar: "ci_runner_pool_ref01_data",
+        suffix: "_up0",
+        textfield: "bazel_properties_json"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ci_runner_pool_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "ci_runner_pool_ref01",
+        srcdatavar: "ci_runner_pool_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "ci_runner_pool01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ci_runner_pool_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCiRunnerPoolFlow"
+}

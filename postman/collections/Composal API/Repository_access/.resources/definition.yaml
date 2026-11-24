@@ -1,0 +1,8 @@
+$kind: collection
+id: aba15f6e-3bd3-51df-beb3-663492644235
+description: |-
+  The **repository_access** entity. Its requests address one record by `{{repository_access_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 436000

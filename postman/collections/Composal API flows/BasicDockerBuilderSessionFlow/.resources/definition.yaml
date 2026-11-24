@@ -1,0 +1,4 @@
+$kind: collection
+id: "59bb274c-a34b-56b9-82d6-f4aa0d8ad210"
+description: "The `BasicDockerBuilderSessionFlow` flow of **docker_builder_session**."
+order: 186000

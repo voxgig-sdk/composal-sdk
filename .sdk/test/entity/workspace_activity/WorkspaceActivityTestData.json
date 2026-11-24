@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "workspace_activity": {
+      "WORKSPACE_ACTIVITY00": {
+        "live_activity": [],
+        "recent_items": [],
+        "unresolved_notification_count": 32,
+        "organization_id": "ORGANIZATION01",
+        "id": "WORKSPACE_ACTIVITY00"
+      },
+      "WORKSPACE_ACTIVITY01": {
+        "live_activity": [],
+        "recent_items": [],
+        "unresolved_notification_count": 62,
+        "organization_id": "ORGANIZATION01",
+        "id": "WORKSPACE_ACTIVITY01"
+      },
+      "WORKSPACE_ACTIVITY02": {
+        "live_activity": [],
+        "recent_items": [],
+        "unresolved_notification_count": 92,
+        "organization_id": "ORGANIZATION01",
+        "id": "WORKSPACE_ACTIVITY02"
+      }
+    }
+  },
+  "new": {
+    "workspace_activity": {
+      "workspace_activity_ref01": {
+        "live_activity": [],
+        "recent_items": [],
+        "unresolved_notification_count": 122
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/pages/workspace_activity": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

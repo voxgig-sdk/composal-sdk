@@ -34,7 +34,7 @@ class TestAgentConnectionDirect:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
         if setup["live"]:
-            for _live_key in ["agent01", "organization01"]:
+            for _live_key in ["organization01"]:
                 if setup["idmap"].get(_live_key) is None:
                     runner.live_miss(LIVE_STRICT, f"Live test blocked: needs {_live_key} via COMPOSAL_TEST_AGENT_CONNECTION_ENTID")
 
@@ -45,16 +45,12 @@ class TestAgentConnectionDirect:
         params = {}
         query = {}
         if setup["live"]:
-            params["agent_id"] = setup["idmap"].get("agent01")
-        else:
-            params["agent_id"] = "direct01"
-        if setup["live"]:
             params["organization_id"] = setup["idmap"].get("organization01")
         else:
-            params["organization_id"] = "direct02"
+            params["organization_id"] = "direct01"
 
         result = client.direct({
-            "path": "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections",
+            "path": "api/v1/organizations/{organization_id}/agent_connections",
             "method": "GET",
             "params": params,
             "query": query,
@@ -78,7 +74,7 @@ class TestAgentConnectionDirect:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
         if setup["live"]:
-            for _live_key in ["agent01", "organization01"]:
+            for _live_key in ["organization01"]:
                 if setup["idmap"].get(_live_key) is None:
                     runner.live_miss(LIVE_STRICT, f"Live test blocked: needs {_live_key} via COMPOSAL_TEST_AGENT_CONNECTION_ENTID")
 
@@ -89,11 +85,10 @@ class TestAgentConnectionDirect:
         params = {}
         query = {}
         if setup["live"]:
-            query["change"] = "configure"
             list_result = client.direct({
-                "path": "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections",
+                "path": "api/v1/organizations/{organization_id}/agent_connections",
                 "method": "GET",
-                "params": {"agent_id": setup["idmap"].get("agent01"), "organization_id": setup["idmap"].get("organization01")},
+                "params": {"organization_id": setup["idmap"].get("organization01")},
             })
             if not _live_ok(list_result):
                 runner.live_miss(LIVE_STRICT, "Live list discovery failed: " + runner.live_describe(list_result))
@@ -106,18 +101,15 @@ class TestAgentConnectionDirect:
             if first.get("id") is None:
                 runner.live_miss(LIVE_STRICT, "Live load blocked: discovery returned no usable identity")
             params["id"] = first.get("id")
-            params["agent_id"] = setup["idmap"].get("agent01")
             params["organization_id"] = setup["idmap"].get("organization01")
             pass
         else:
-            params["agent_id"] = "direct01"
-            params["id"] = "direct02"
-            params["id"] = "direct03"
-            params["organization_id"] = "direct04"
+            params["id"] = "direct01"
+            params["organization_id"] = "direct02"
             pass
 
         result = client.direct({
-            "path": "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections/{id}/change",
+            "path": "api/v1/organizations/{organization_id}/agent_connections/{id}",
             "method": "GET",
             "params": params,
             "query": query,

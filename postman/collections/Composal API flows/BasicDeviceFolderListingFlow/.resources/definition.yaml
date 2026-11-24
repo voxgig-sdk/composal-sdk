@@ -1,0 +1,4 @@
+$kind: collection
+id: a92d0875-c929-56f1-90de-74acd72e4d9f
+description: "The `BasicDeviceFolderListingFlow` flow of **device_folder_listing**."
+order: 180000

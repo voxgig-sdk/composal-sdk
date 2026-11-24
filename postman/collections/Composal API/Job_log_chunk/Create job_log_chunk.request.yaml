@@ -1,0 +1,35 @@
+$kind: http-request
+id: "0b17f0b9-0c0c-5ea8-b0d3-cec2d45572f0"
+description: |-
+  The `create` operation of **job_log_chunk**.
+
+  SDK: `client.JobLogChunk().create({ job_id: "example", pipeline_id: "example", run_id: "example" })`
+url: "{{base}}/api/v1/ci/pipelines/:pipeline_id/runs/:run_id/jobs/:job_id/log_chunks"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: pipeline_id
+    value: "{{pipeline_id}}"
+    description: "Input: pipeline_id."
+  - key: run_id
+    value: "{{run_id}}"
+    description: "Input: run_id."
+  - key: job_id
+    value: "{{job_id}}"
+    description: "Input: job_id."
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("job_log_chunk_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

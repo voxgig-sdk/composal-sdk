@@ -1,0 +1,15 @@
+$kind: collection
+id: "4b71fc7c-7122-5ef3-b3f8-9ae7171c94df"
+description: |-
+  The **roder_code_repair_setting** entity. Its requests address one record by `{{roder_code_repair_setting_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `available` | boolean | yes |  |
+  | `daily_limit` | integer | yes |  |
+  | `enabled` | boolean | yes |  |
+  | `enabled_at` | string | yes |  |
+  | `operator_user_id` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `repository_slug` | string | yes |  |
+order: 445000

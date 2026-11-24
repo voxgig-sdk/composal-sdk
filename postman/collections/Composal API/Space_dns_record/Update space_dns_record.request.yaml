@@ -1,0 +1,22 @@
+$kind: http-request
+id: b6838f6e-cebc-5860-a202-4fd61cb00d77
+description: |-
+  The `update` operation of **space_dns_record**.
+
+  SDK: `client.SpaceDnsRecord().update({ id: "example", space_id: "example" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/dns_records/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: id
+    value: "{{space_dns_record_id}}"
+    description: The space_dns_record this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

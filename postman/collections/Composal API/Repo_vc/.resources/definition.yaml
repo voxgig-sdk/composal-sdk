@@ -1,0 +1,8 @@
+$kind: collection
+id: "59835ede-cf77-59ec-9640-0ad57705d4e8"
+description: |-
+  The **repo_vc** entity, which belongs to a organization and a repo. Its requests address one record by `{{repo_vc_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 432000

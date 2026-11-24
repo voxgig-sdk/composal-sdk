@@ -1,0 +1,19 @@
+$kind: http-request
+id: a2a9c3a8-ef23-553c-a49a-f5e7ef2564a4
+description: |-
+  The `update` operation of **import_branch_policy**.
+
+  SDK: `client.ImportBranchPolicy().update({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/import_branch_policy"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this import_branch_policy belongs to.
+body:
+  type: json
+  content: "{}"
+order: 2000

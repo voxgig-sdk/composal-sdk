@@ -1,0 +1,8 @@
+$kind: collection
+id: "3ea8d5da-2322-53dd-b300-a0d43859087e"
+description: |-
+  The **openapi** entity. Its requests address one record by `{{openapi_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 338000

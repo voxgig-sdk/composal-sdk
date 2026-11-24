@@ -1,0 +1,30 @@
+$kind: http-request
+id: f20c5a5b-9ab9-55b6-95fc-0032d088c591
+description: |-
+  The `create` operation of **model_subscription_account**.
+
+  SDK: `client.ModelSubscriptionAccount().create({ label: "example" })`
+url: "{{base}}/api/v1/model_subscription_accounts"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "action_name": "claude",
+      "token": "example",
+      "label": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("model_subscription_account_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

@@ -1,0 +1,15 @@
+$kind: http-request
+id: "6ec5af84-0c9d-517f-99a0-42dc0cfa14c7"
+description: |-
+  The `load` operation of **proactive_agent_waitlist_entry**.
+
+  SDK: `client.ProactiveAgentWaitlistEntry().load({ id: "example_id" })`
+url: "{{base}}/api/v1/proactive_agent_waitlist_entries/:referral_code"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: referral_code
+    value: "{{proactive_agent_waitlist_entry_id}}"
+    description: The proactive_agent_waitlist_entry this request addresses.
+order: 1000

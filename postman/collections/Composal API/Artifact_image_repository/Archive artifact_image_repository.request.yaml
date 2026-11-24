@@ -1,0 +1,19 @@
+$kind: http-request
+id: "124de302-0231-54f0-bf07-e2203e533f9a"
+description: |-
+  The `archive` action of **artifact_image_repository**, a route of its `create` operation.
+
+  SDK: `client.ArtifactImageRepository().create({ "id": "ID", $action: "archive" })`
+url: "{{base}}/api/v1/artifacts/image_repositories/:id/archive"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_image_repository_id}}"
+    description: The artifact_image_repository this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

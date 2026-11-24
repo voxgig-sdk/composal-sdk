@@ -1,0 +1,24 @@
+# BasicLeaseVerifyDiagnosticFlow
+
+main: kit: flow: BasicLeaseVerifyDiagnosticFlow:
+{
+  entity: "lease_verify_diagnostic",
+  kind: "basic",
+  name: "BasicLeaseVerifyDiagnosticFlow",
+  step: [
+    {
+      i: {
+        ref: "lease_verify_diagnostic_ref01"
+      }
+
+      m: {
+        lease_id: "lease01",
+        swarm_id: "swarm01",
+        task_id: "task01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicLeaseVerifyDiagnosticFlow"
+}

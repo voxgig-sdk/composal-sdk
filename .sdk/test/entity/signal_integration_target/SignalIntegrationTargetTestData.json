@@ -1,0 +1,85 @@
+{
+  "existing": {
+    "signal_integration_target": {
+      "SIGNAL_INTEGRATION_TARGET00": {
+        "app_service_id": "APP_SERVICE01",
+        "created_at": "s8d",
+        "display_name": "s8e",
+        "enabled": false,
+        "external_id": "EXTERNAL01",
+        "external_kind": "s91",
+        "external_slug": "s92",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "SIGNAL_INTEGRATION_TARGET00",
+        "organization_id": "ORGANIZATION01",
+        "signal_integration_id": "SIGNAL_INTEGRATION01",
+        "signal_integration_targets": [],
+        "targets": [],
+        "updated_at": "s99"
+      },
+      "SIGNAL_INTEGRATION_TARGET01": {
+        "app_service_id": "APP_SERVICE01",
+        "created_at": "s119",
+        "display_name": "s11a",
+        "enabled": false,
+        "external_id": "EXTERNAL01",
+        "external_kind": "s11d",
+        "external_slug": "s11e",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "SIGNAL_INTEGRATION_TARGET01",
+        "organization_id": "ORGANIZATION01",
+        "signal_integration_id": "SIGNAL_INTEGRATION01",
+        "signal_integration_targets": [],
+        "targets": [],
+        "updated_at": "s125"
+      },
+      "SIGNAL_INTEGRATION_TARGET02": {
+        "app_service_id": "APP_SERVICE01",
+        "created_at": "s1a5",
+        "display_name": "s1a6",
+        "enabled": false,
+        "external_id": "EXTERNAL01",
+        "external_kind": "s1a9",
+        "external_slug": "s1aa",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "SIGNAL_INTEGRATION_TARGET02",
+        "organization_id": "ORGANIZATION01",
+        "signal_integration_id": "SIGNAL_INTEGRATION01",
+        "signal_integration_targets": [],
+        "targets": [],
+        "updated_at": "s1b1"
+      }
+    }
+  },
+  "new": {
+    "signal_integration_target": {
+      "signal_integration_target_ref01": {
+        "app_service_id": "APP_SERVICE01",
+        "created_at": "s231",
+        "display_name": "s232",
+        "enabled": false,
+        "external_id": "EXTERNAL01",
+        "external_kind": "s235",
+        "external_slug": "s236",
+        "hosted_app_id": "HOSTED_APP01",
+        "organization_id": "ORGANIZATION01",
+        "signal_integration_id": "SIGNAL_INTEGRATION01",
+        "signal_integration_targets": [],
+        "targets": [],
+        "updated_at": "s23d"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/targets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/targets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

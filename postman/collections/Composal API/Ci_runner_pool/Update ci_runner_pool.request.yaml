@@ -1,0 +1,19 @@
+$kind: http-request
+id: "0ff1fe8a-9697-5045-ace1-d6640bce012f"
+description: |-
+  The `update` operation of **ci_runner_pool**.
+
+  SDK: `client.CiRunnerPool().update({ id: "example" })`
+url: "{{base}}/api/v1/ci/runner_pools/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{ci_runner_pool_id}}"
+    description: The ci_runner_pool this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

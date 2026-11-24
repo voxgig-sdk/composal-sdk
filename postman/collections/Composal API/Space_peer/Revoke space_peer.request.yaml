@@ -1,0 +1,22 @@
+$kind: http-request
+id: "3dcc466e-7c60-54a3-8698-a70b16f728f2"
+description: |-
+  The `revoke` action of **space_peer**, a route of its `create` operation.
+
+  SDK: `client.SpacePeer().create({ "space_id": "space_id", "id": "ID", $action: "revoke" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/peers/:id/revoke"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: id
+    value: "{{space_peer_id}}"
+    description: The space_peer this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 9000

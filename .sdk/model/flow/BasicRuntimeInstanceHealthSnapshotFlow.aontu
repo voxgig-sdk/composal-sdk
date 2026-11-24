@@ -1,0 +1,38 @@
+# BasicRuntimeInstanceHealthSnapshotFlow
+
+main: kit: flow: BasicRuntimeInstanceHealthSnapshotFlow:
+{
+  entity: "runtime_instance_health_snapshot",
+  kind: "basic",
+  name: "BasicRuntimeInstanceHealthSnapshotFlow",
+  step: [
+    {
+      i: {
+        ref: "runtime_instance_health_snapshot_ref01"
+      }
+
+      m: {
+        runtime_instance_id: "runtime_instance01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        runtime_instance_id: "runtime_instance01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "runtime_instance_health_snapshot_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRuntimeInstanceHealthSnapshotFlow"
+}

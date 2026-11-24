@@ -1,0 +1,18 @@
+# BasicStripeWebhookFlow
+
+main: kit: flow: BasicStripeWebhookFlow:
+{
+  entity: "stripe_webhook",
+  kind: "basic",
+  name: "BasicStripeWebhookFlow",
+  step: [
+    {
+      i: {
+        ref: "stripe_webhook_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicStripeWebhookFlow"
+}

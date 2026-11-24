@@ -1,0 +1,18 @@
+$kind: http-request
+id: "26f81e3a-87e9-5b99-b110-2f5ff396d459"
+description: |-
+  The `load` operation of **github_onboarding_import_batch**.
+
+  SDK: `client.GithubOnboardingImportBatch().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/github_onboarding/import_batches/:github_import_batch_id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this github_onboarding_import_batch belongs to.
+  - key: github_import_batch_id
+    value: "{{github_onboarding_import_batch_id}}"
+    description: The github_onboarding_import_batch this request addresses.
+order: 1000

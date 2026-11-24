@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "local_agent_decision": {
+      "LOCAL_AGENT_DECISION00": {
+        "request": {},
+        "organization_id": "ORGANIZATION01",
+        "id": "LOCAL_AGENT_DECISION00"
+      },
+      "LOCAL_AGENT_DECISION01": {
+        "request": {},
+        "organization_id": "ORGANIZATION01",
+        "id": "LOCAL_AGENT_DECISION01"
+      },
+      "LOCAL_AGENT_DECISION02": {
+        "request": {},
+        "organization_id": "ORGANIZATION01",
+        "id": "LOCAL_AGENT_DECISION02"
+      }
+    }
+  },
+  "new": {
+    "local_agent_decision": {
+      "local_agent_decision_ref01": {
+        "request": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/local_agent/decisions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

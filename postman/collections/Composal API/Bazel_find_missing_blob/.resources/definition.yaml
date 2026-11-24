@@ -1,0 +1,8 @@
+$kind: collection
+id: "793e8559-d9a7-5c8a-bbc1-9ff40cff7846"
+description: |-
+  The **bazel_find_missing_blob** entity. Its requests address one record by `{{bazel_find_missing_blob_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 127000

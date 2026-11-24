@@ -290,6 +290,39 @@ class AgentIntegrationEntity
     }
 
     
+    /**
+     * Load a single AgentIntegration.
+     *
+     * @param AgentIntegrationLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed AgentIntegrationLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return AgentIntegrationEntity The loaded AgentIntegration entity, whose data_get() reads
+     *   its record; throws ComposalError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
+    {
+        $utility = $this->_utility;
+        $ctx = ($utility->make_context)([
+            "opname" => "load",
+            "ctrl" => $ctrl,
+            "match" => $this->_match,
+            "data" => $this->_data,
+            "reqmatch" => $reqmatch,
+        ], $this->_entctx);
+
+        return $this->_run_op($ctx, function () use ($ctx) {
+            if ($ctx->result) {
+                if ($ctx->result->resmatch) {
+                    $this->_match = $ctx->result->resmatch;
+                }
+                if ($ctx->result->resdata) {
+                    $this->_data = ComposalHelpers::to_map(Struct::clone($ctx->result->resdata)) ?? [];
+                }
+            }
+        });
+    }
+
+
 
     
     /**
@@ -360,6 +393,39 @@ class AgentIntegrationEntity
     
 
     
+    /**
+     * Remove an AgentIntegration matching the given criteria.
+     *
+     * @param AgentIntegrationRemoveMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; AgentIntegrationRemoveMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return AgentIntegrationEntity The removed AgentIntegration entity, marked as deleted; throws
+     *   ComposalError on failure (item-5 convention).
+     */
+    public function remove(?array $reqmatch = null, $ctrl = null): mixed
+    {
+        $utility = $this->_utility;
+        $ctx = ($utility->make_context)([
+            "opname" => "remove",
+            "ctrl" => $ctrl,
+            "match" => $this->_match,
+            "data" => $this->_data,
+            "reqmatch" => $reqmatch,
+        ], $this->_entctx);
+
+        return $this->_run_op($ctx, function () use ($ctx) {
+            if ($ctx->result) {
+                if ($ctx->result->resmatch) {
+                    $this->_match = $ctx->result->resmatch;
+                }
+                if ($ctx->result->resdata) {
+                    $this->_data = ComposalHelpers::to_map(Struct::clone($ctx->result->resdata)) ?? [];
+                }
+            }
+        });
+    }
+
+
 
     private function _run_op($ctx, callable $post_done): mixed
     {

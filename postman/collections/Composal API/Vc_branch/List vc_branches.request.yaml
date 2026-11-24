@@ -1,0 +1,28 @@
+$kind: http-request
+id: f6f78c49-4a84-56fd-aa3f-846527b7cf4e
+description: |-
+  The `list` operation of **vc_branch**.
+
+  SDK: `client.VcBranch().list({ organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/branches"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_branch belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_branch belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["branches"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("vc_branch_id")) pm.collectionVariables.set("vc_branch_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

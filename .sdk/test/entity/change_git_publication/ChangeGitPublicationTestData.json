@@ -1,0 +1,71 @@
+{
+  "existing": {
+    "change_git_publication": {
+      "CHANGE_GIT_PUBLICATION00": {
+        "expected_target_commit_id": "EXPECTED_TARGET_COMMIT01",
+        "id": "CHANGE_GIT_PUBLICATION00",
+        "operation_key": "s5c",
+        "publication_id": "PUBLICATION01",
+        "request": {},
+        "request_digest": "s5f",
+        "revisions": [],
+        "status": "s61",
+        "transfer_refs": [],
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "CHANGE_GIT_PUBLICATION01": {
+        "expected_target_commit_id": "EXPECTED_TARGET_COMMIT01",
+        "id": "CHANGE_GIT_PUBLICATION01",
+        "operation_key": "sb6",
+        "publication_id": "PUBLICATION01",
+        "request": {},
+        "request_digest": "sb9",
+        "revisions": [],
+        "status": "sbb",
+        "transfer_refs": [],
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "CHANGE_GIT_PUBLICATION02": {
+        "expected_target_commit_id": "EXPECTED_TARGET_COMMIT01",
+        "id": "CHANGE_GIT_PUBLICATION02",
+        "operation_key": "s110",
+        "publication_id": "PUBLICATION01",
+        "request": {},
+        "request_digest": "s113",
+        "revisions": [],
+        "status": "s115",
+        "transfer_refs": [],
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "change_git_publication": {
+      "change_git_publication_ref01": {
+        "expected_target_commit_id": "EXPECTED_TARGET_COMMIT01",
+        "operation_key": "s16a",
+        "publication_id": "PUBLICATION01",
+        "request": {},
+        "request_digest": "s16d",
+        "revisions": [],
+        "status": "s16f",
+        "transfer_refs": []
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_publications": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_publications/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

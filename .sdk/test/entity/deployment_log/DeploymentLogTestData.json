@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "deployment_log": {
+      "DEPLOYMENT_LOG00": {
+        "allocation_id": "ALLOCATION01",
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_release_id": "APP_RELEASE01",
+        "app_service_id": "APP_SERVICE01",
+        "details": "s72",
+        "environment_name": "s73",
+        "release_version": "s74",
+        "service_name": "s75",
+        "status": "s76",
+        "task": "s77",
+        "unreachable_reason": "s78",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEPLOYMENT_LOG01": {
+        "allocation_id": "ALLOCATION01",
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_release_id": "APP_RELEASE01",
+        "app_service_id": "APP_SERVICE01",
+        "details": "se0",
+        "environment_name": "se1",
+        "release_version": "se2",
+        "service_name": "se3",
+        "status": "se4",
+        "task": "se5",
+        "unreachable_reason": "se6",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEPLOYMENT_LOG02": {
+        "allocation_id": "ALLOCATION01",
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_release_id": "APP_RELEASE01",
+        "app_service_id": "APP_SERVICE01",
+        "details": "s14e",
+        "environment_name": "s14f",
+        "release_version": "s150",
+        "service_name": "s151",
+        "status": "s152",
+        "task": "s153",
+        "unreachable_reason": "s154",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "deployment_log": {
+      "deployment_log_ref01": {
+        "allocation_id": "ALLOCATION01",
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_release_id": "APP_RELEASE01",
+        "app_service_id": "APP_SERVICE01",
+        "details": "s1bc",
+        "environment_name": "s1bd",
+        "release_version": "s1be",
+        "service_name": "s1bf",
+        "status": "s1c0",
+        "task": "s1c1",
+        "unreachable_reason": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/pages/deployments/logs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

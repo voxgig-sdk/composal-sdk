@@ -1,0 +1,9 @@
+$kind: collection
+id: c76062c1-ae28-58b9-8b94-d01b5967f0c5
+description: |-
+  The **signal_subscription** entity, which belongs to a organization. Its requests address one record by `{{signal_subscription_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 474000

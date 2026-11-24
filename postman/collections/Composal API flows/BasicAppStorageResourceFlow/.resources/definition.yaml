@@ -1,4 +1,4 @@
 $kind: collection
 id: acf52640-3c21-5311-989c-a721ae9a01c9
 description: "The `BasicAppStorageResourceFlow` flow of **app_storage_resource**."
-order: 57000
+order: 80000

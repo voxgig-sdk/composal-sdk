@@ -1,0 +1,21 @@
+$kind: http-request
+id: "297a4f61-6e8f-5d79-9c07-abcf44d1c1b9"
+description: |-
+  The `load` operation of **change_git_commit_identity**.
+
+  SDK: `client.ChangeGitCommitIdentity().load({ id: "example_id", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/git_commit_identities/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this change_git_commit_identity belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this change_git_commit_identity belongs to.
+  - key: id
+    value: "{{change_git_commit_identity_id}}"
+    description: The change_git_commit_identity this request addresses.
+order: 1000

@@ -1,0 +1,28 @@
+$kind: http-request
+id: "9256eb9d-8d71-563c-b962-ce02f3105894"
+description: |-
+  The `swarm_activity` action of **roder_run**, a route of its `create` operation.
+
+  SDK: `client.RoderRun().create({ $action: "swarm_activity" })`
+url: "{{base}}/api/v1/agent/roder/run/swarm_activity"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "events": [
+        {
+          "kind": "shell",
+          "ts": "2026-01-01T00:00:00Z",
+          "summary": "example",
+          "exit_code": 1,
+          "duration_ms": 1,
+          "path": "example",
+          "payload": {}
+        }
+      ]
+    }
+order: 1000

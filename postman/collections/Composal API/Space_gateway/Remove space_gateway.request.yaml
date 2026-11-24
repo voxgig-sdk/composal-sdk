@@ -1,0 +1,25 @@
+$kind: http-request
+id: "56665680-394b-5cc0-a08d-c12da110d75e"
+description: |-
+  The `remove` operation of **space_gateway**.
+
+  SDK: `client.SpaceGateway().remove({ id: "example_id", space_id: "example" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/gateways/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: id
+    value: "{{space_gateway_id}}"
+    description: The space_gateway this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("space_gateway_id")
+      }
+    language: text/javascript
+order: 9000

@@ -1,0 +1,19 @@
+$kind: http-request
+id: f7b70c23-374f-5ec9-96ae-07d20ec208e7
+description: |-
+  The `patch` operation of **observability_space**.
+
+  SDK: `client.ObservabilitySpace().patch({ id: "example" })`
+url: "{{base}}/api/v1/observability/spaces/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{observability_space_id}}"
+    description: The observability_space this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

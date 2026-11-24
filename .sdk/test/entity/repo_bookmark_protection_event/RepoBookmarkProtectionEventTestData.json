@@ -1,0 +1,107 @@
+{
+  "existing": {
+    "repo_bookmark_protection_event": {
+      "REPO_BOOKMARK_PROTECTION_EVENT00": {
+        "action": "sc8",
+        "actor_kind": "sc9",
+        "actor_label": "sca",
+        "actor_user_id": "ACTOR_USER01",
+        "bookmark_name": "scc",
+        "bookmark_protection_rule_id": "BOOKMARK_PROTECTION_RULE01",
+        "created_at": "sce",
+        "created_at_label": "scf",
+        "decision": "sd0",
+        "id": "REPO_BOOKMARK_PROTECTION_EVENT00",
+        "intent": "sd2",
+        "metadata": {},
+        "new_target": "sd4",
+        "old_target": "sd5",
+        "organization_id": "ORGANIZATION01",
+        "reason_codes": [],
+        "repository_id": "REPOSITORY01",
+        "source_request_id": "SOURCE_REQUEST01",
+        "updated_at": "sda",
+        "updated_at_label": "sdb",
+        "repo_id": "REPO01"
+      },
+      "REPO_BOOKMARK_PROTECTION_EVENT01": {
+        "action": "s190",
+        "actor_kind": "s191",
+        "actor_label": "s192",
+        "actor_user_id": "ACTOR_USER01",
+        "bookmark_name": "s194",
+        "bookmark_protection_rule_id": "BOOKMARK_PROTECTION_RULE01",
+        "created_at": "s196",
+        "created_at_label": "s197",
+        "decision": "s198",
+        "id": "REPO_BOOKMARK_PROTECTION_EVENT01",
+        "intent": "s19a",
+        "metadata": {},
+        "new_target": "s19c",
+        "old_target": "s19d",
+        "organization_id": "ORGANIZATION01",
+        "reason_codes": [],
+        "repository_id": "REPOSITORY01",
+        "source_request_id": "SOURCE_REQUEST01",
+        "updated_at": "s1a2",
+        "updated_at_label": "s1a3",
+        "repo_id": "REPO01"
+      },
+      "REPO_BOOKMARK_PROTECTION_EVENT02": {
+        "action": "s258",
+        "actor_kind": "s259",
+        "actor_label": "s25a",
+        "actor_user_id": "ACTOR_USER01",
+        "bookmark_name": "s25c",
+        "bookmark_protection_rule_id": "BOOKMARK_PROTECTION_RULE01",
+        "created_at": "s25e",
+        "created_at_label": "s25f",
+        "decision": "s260",
+        "id": "REPO_BOOKMARK_PROTECTION_EVENT02",
+        "intent": "s262",
+        "metadata": {},
+        "new_target": "s264",
+        "old_target": "s265",
+        "organization_id": "ORGANIZATION01",
+        "reason_codes": [],
+        "repository_id": "REPOSITORY01",
+        "source_request_id": "SOURCE_REQUEST01",
+        "updated_at": "s26a",
+        "updated_at_label": "s26b",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "repo_bookmark_protection_event": {
+      "repo_bookmark_protection_event_ref01": {
+        "action": "s320",
+        "actor_kind": "s321",
+        "actor_label": "s322",
+        "actor_user_id": "ACTOR_USER01",
+        "bookmark_name": "s324",
+        "bookmark_protection_rule_id": "BOOKMARK_PROTECTION_RULE01",
+        "created_at": "s326",
+        "created_at_label": "s327",
+        "decision": "s328",
+        "intent": "s32a",
+        "metadata": {},
+        "new_target": "s32c",
+        "old_target": "s32d",
+        "organization_id": "ORGANIZATION01",
+        "reason_codes": [],
+        "repository_id": "REPOSITORY01",
+        "source_request_id": "SOURCE_REQUEST01",
+        "updated_at": "s332",
+        "updated_at_label": "s333"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protection_events": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

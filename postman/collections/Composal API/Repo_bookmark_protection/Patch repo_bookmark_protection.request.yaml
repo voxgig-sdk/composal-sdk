@@ -1,0 +1,43 @@
+$kind: http-request
+id: "85fa807b-1320-5f53-974f-6d083b3b51a1"
+description: |-
+  The `patch` operation of **repo_bookmark_protection**.
+
+  SDK: `client.RepoBookmarkProtection().patch({ id: "example", organization_id: "example", repo_id: "example", actor_policy: {} })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/bookmark_protections/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_bookmark_protection belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_bookmark_protection belongs to.
+  - key: id
+    value: "{{repo_bookmark_protection_id}}"
+    description: The repo_bookmark_protection this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "enabled": true,
+      "priority": 1,
+      "target_kind": "exact",
+      "target_pattern": "example",
+      "bypass_mode": "admins",
+      "requirements": {
+        "ci": {
+          "mode": "none",
+          "require_all": true,
+          "required_checks": [
+            "example"
+          ]
+        }
+      },
+      "actor_policy": {}
+    }
+order: 5000

@@ -1,0 +1,19 @@
+$kind: http-request
+id: "454e520b-0b6b-5a26-b245-9b647a0d233d"
+description: |-
+  The `archive` action of **observability_quickwit_cluster**, a route of its `create` operation.
+
+  SDK: `client.ObservabilityQuickwitCluster().create({ "id": "ID", $action: "archive" })`
+url: "{{base}}/api/v1/observability/quickwit_clusters/:id/archive"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{observability_quickwit_cluster_id}}"
+    description: The observability_quickwit_cluster this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 7000

@@ -33,7 +33,7 @@ class AgentSiteEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->AgentSite(null)->list(["agent_id" => 1, "organization_id" => 'x'], null);
+            $client->AgentSite(null)->list(["organization_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,21 +45,29 @@ class AgentSiteEntityTest extends TestCase
         $setup = agent_site_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["list"] as $_op) {
+        foreach (["list", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "agent_site." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
                 return;
             }
         }
+        if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
+            fwrite(STDOUT, 'LIVE STEP {"id":"agent_site.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agent_sites/{id}/opened"}' . "\n");
         if (!empty($setup["live"])) {
-            foreach (["agent01", "organization01"] as $_liveKey) {
+            foreach (["organization01"] as $_liveKey) {
                 if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
                     Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_AGENT_SITE_ENTID");
                 }
             }
         }
         $client = $setup["client"];
+        if (!empty($setup["live"])) {
+            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["agent_site01"] ?? null) : null;
+            Runner::live_pace();
+            Runner::live_existing($setup, self::LIVE_STRICT, "agent_site",
+                fn() => $client->AgentSite(null)->list(["organization_id" => $setup["idmap"]["organization01"] ?? null], null), "id", $_liveId);
+        }
 
         // Bootstrap entity data from existing test data.
         $agent_site_ref01_data_raw = Vs::items(Helpers::to_map(
@@ -75,12 +83,75 @@ class AgentSiteEntityTest extends TestCase
         // LIST
         $agent_site_ref01_ent = $client->AgentSite(null);
         $agent_site_ref01_match = [
-            "agent_id" => $setup["idmap"]["agent01"],
             "organization_id" => $setup["idmap"]["organization01"],
         ];
 
         $agent_site_ref01_list_result = $agent_site_ref01_ent->list($agent_site_ref01_match, null);
         $this->assertIsArray($agent_site_ref01_list_result);
+
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
+        // LOAD
+        $agent_site_ref01_match_dt0 = [
+            "id" => $agent_site_ref01_data["id"],
+        ];
+        $agent_site_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
+        $agent_site_ref01_data_dt0_loaded = $agent_site_ref01_ent->load($agent_site_ref01_match_dt0, null);
+        $agent_site_ref01_data_dt0_load_result = Helpers::to_map(is_object($agent_site_ref01_data_dt0_loaded) && method_exists($agent_site_ref01_data_dt0_loaded, 'data_get') ? $agent_site_ref01_data_dt0_loaded->data_get() : $agent_site_ref01_data_dt0_loaded);
+        $this->assertNotNull($agent_site_ref01_data_dt0_load_result);
+        $this->assertTrue(Runner::live_same_id($agent_site_ref01_data_dt0_load_result["id"] ?? null, $agent_site_ref01_data["id"]));
+
+            return;
+        }
+
+        if (!empty($setup["live"])) {
+            foreach (["organization01"] as $_liveKey) {
+                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
+                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_AGENT_SITE_ENTID");
+                }
+            }
+        }
+        $client = $setup["client"];
+        if (!empty($setup["live"])) {
+            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["agent_site01"] ?? null) : null;
+            Runner::live_pace();
+            Runner::live_existing($setup, self::LIVE_STRICT, "agent_site",
+                fn() => $client->AgentSite(null)->list(["organization_id" => $setup["idmap"]["organization01"] ?? null], null), "id", $_liveId);
+        }
+
+        // Bootstrap entity data from existing test data.
+        $agent_site_ref01_data_raw = Vs::items(Helpers::to_map(
+            Vs::getpath($setup["data"], "existing.agent_site")));
+        $agent_site_ref01_data = null;
+        if (count($agent_site_ref01_data_raw) > 0) {
+            $agent_site_ref01_data = Helpers::to_map($agent_site_ref01_data_raw[0][1]);
+        }
+
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
+        // LIST
+        $agent_site_ref01_ent = $client->AgentSite(null);
+        $agent_site_ref01_match = [
+            "organization_id" => $setup["idmap"]["organization01"],
+        ];
+
+        $agent_site_ref01_list_result = $agent_site_ref01_ent->list($agent_site_ref01_match, null);
+        $this->assertIsArray($agent_site_ref01_list_result);
+
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
+        // LOAD
+        $agent_site_ref01_match_dt0 = [
+            "id" => $agent_site_ref01_data["id"],
+        ];
+        $agent_site_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
+        $agent_site_ref01_data_dt0_loaded = $agent_site_ref01_ent->load($agent_site_ref01_match_dt0, null);
+        $agent_site_ref01_data_dt0_load_result = Helpers::to_map(is_object($agent_site_ref01_data_dt0_loaded) && method_exists($agent_site_ref01_data_dt0_loaded, 'data_get') ? $agent_site_ref01_data_dt0_loaded->data_get() : $agent_site_ref01_data_dt0_loaded);
+        $this->assertNotNull($agent_site_ref01_data_dt0_load_result);
+        $this->assertTrue(Runner::live_same_id($agent_site_ref01_data_dt0_load_result["id"] ?? null, $agent_site_ref01_data["id"]));
 
     }
 }
@@ -100,7 +171,7 @@ function agent_site_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["agent_site01", "agent_site02", "agent_site03", "organization01", "organization02", "organization03", "agent01", "agent02", "agent03"] as $k) {
+    foreach (["agent_site01", "agent_site02", "agent_site03", "organization01", "organization02", "organization03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

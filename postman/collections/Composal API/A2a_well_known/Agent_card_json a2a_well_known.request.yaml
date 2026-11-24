@@ -1,0 +1,15 @@
+$kind: http-request
+id: "6f59b508-3c25-57da-a479-faf4f6d9953b"
+description: |-
+  The `agent_card_json` action of **a2a_well_known**, a route of its `load` operation.
+
+  SDK: `client.A2aWellKnown().load({ "a2a_id": "a2a_id", $action: "agent_card_json" })`
+url: "{{base}}/api/v1/control/a2a/:connection_id/.well-known/agent-card.json"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: connection_id
+    value: "{{a2a_id}}"
+    description: "Input: a2a_id."
+order: 1000

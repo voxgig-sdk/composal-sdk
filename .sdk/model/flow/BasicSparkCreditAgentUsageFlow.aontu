@@ -1,0 +1,33 @@
+# BasicSparkCreditAgentUsageFlow
+
+main: kit: flow: BasicSparkCreditAgentUsageFlow:
+{
+  entity: "spark_credit_agent_usage",
+  kind: "basic",
+  name: "BasicSparkCreditAgentUsageFlow",
+  step: [
+    {
+      i: {
+        ref: "spark_credit_agent_usage_ref01",
+        srcdatavar: "spark_credit_agent_usage_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "spark_credit_agent_usage01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-spark_credit_agent_usage_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSparkCreditAgentUsageFlow"
+}

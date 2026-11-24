@@ -1,0 +1,34 @@
+$kind: http-request
+id: c0f1ce03-2c12-5f31-8f72-cac4138ca05f
+description: |-
+  The `diff` action of **vc_change**, a route of its `load` operation.
+
+  SDK: `client.VcChange().load({ "organization_id": "organization_id", "repo_id": "repo_id", "id": "ID", $action: "diff" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/:change_id/diff"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: base
+    value: ""
+    disabled: true
+  - key: base_patchset_number
+    value: ""
+    disabled: true
+  - key: head
+    value: ""
+    disabled: true
+  - key: head_patchset_number
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_change belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_change belongs to.
+  - key: change_id
+    value: "{{vc_change_id}}"
+    description: The vc_change this request addresses.
+order: 7000

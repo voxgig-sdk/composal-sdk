@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "repository_import_session_repository": {
+      "REPOSITORY_IMPORT_SESSION_REPOSITORY00": {
+        "default_branch": "s5a",
+        "full_name": "s5b",
+        "name": "s5c",
+        "owner": "s5d",
+        "private": true,
+        "reason": "s5f",
+        "selectable": true,
+        "status": "s61",
+        "visibility": "s62",
+        "repository_import_session_id": "REPOSITORY_IMPORT_SESSION01"
+      },
+      "REPOSITORY_IMPORT_SESSION_REPOSITORY01": {
+        "default_branch": "sb4",
+        "full_name": "sb5",
+        "name": "sb6",
+        "owner": "sb7",
+        "private": true,
+        "reason": "sb9",
+        "selectable": true,
+        "status": "sbb",
+        "visibility": "sbc",
+        "repository_import_session_id": "REPOSITORY_IMPORT_SESSION01"
+      },
+      "REPOSITORY_IMPORT_SESSION_REPOSITORY02": {
+        "default_branch": "s10e",
+        "full_name": "s10f",
+        "name": "s110",
+        "owner": "s111",
+        "private": true,
+        "reason": "s113",
+        "selectable": true,
+        "status": "s115",
+        "visibility": "s116",
+        "repository_import_session_id": "REPOSITORY_IMPORT_SESSION01"
+      }
+    }
+  },
+  "new": {
+    "repository_import_session_repository": {
+      "repository_import_session_repository_ref01": {
+        "default_branch": "s168",
+        "full_name": "s169",
+        "name": "s16a",
+        "owner": "s16b",
+        "private": true,
+        "reason": "s16d",
+        "selectable": true,
+        "status": "s16f",
+        "visibility": "s170"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/repository_import_sessions/{id}/repositories": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

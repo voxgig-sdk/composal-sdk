@@ -1,0 +1,330 @@
+# Entity: change_landing_request
+
+main: kit: entity: change_landing_request: {
+
+  alias: field: {}
+
+  fields: {
+    change_ids: {
+      h: "Change Ids"
+      n: "change_ids"
+      r: false
+      t: "`$ARRAY`"
+    }
+    count: {
+      h: "Count"
+      n: "count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    defer_until_ready: {
+      h: "Defer Until Ready"
+      n: "defer_until_ready"
+      r: false
+      sh: "Admit the request while approvals or checks are pending"
+      t: "`$BOOLEAN`"
+    }
+    expected_requirement_version: {
+      h: "Expected Requirement Version"
+      n: "expected_requirement_version"
+      r: false
+      t: "`$STRING`"
+    }
+    expected_scope_version: {
+      h: "Expected Scope Version"
+      n: "expected_scope_version"
+      r: false
+      t: "`$STRING`"
+    }
+    head_change_id: {
+      h: "Head Change Id"
+      n: "head_change_id"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    numbers: {
+      h: "Numbers"
+      n: "numbers"
+      r: true
+      t: "`$ARRAY`"
+    }
+    override_acknowledged: {
+      h: "Override Acknowledged"
+      n: "override_acknowledged"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    override_codes: {
+      h: "Override Codes"
+      n: "override_codes"
+      r: false
+      t: "`$ARRAY`"
+    }
+    position: {
+      h: "Position"
+      n: "position"
+      r: false
+      t: "`$INTEGER`"
+    }
+    priority: {
+      h: "Priority"
+      n: "priority"
+      r: false
+      t: "`$STRING`"
+    }
+    scope_version: {
+      h: "Scope Version"
+      n: "scope_version"
+      r: true
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: true
+      t: "`$STRING`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "change_landing_request"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "defer_until_ready"
+            "expected_requirement_version"
+            "expected_scope_version"
+            "override_acknowledged"
+            "override_codes"
+            "priority"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_requests"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "change_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_id"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_requests"
+          q: {
+            exist: [
+              "change_id"
+              "organization_id"
+              "repo_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "change_id"
+              org_slug: "organization_id"
+              repo_slug: "repo_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "repos"
+            }
+            {
+              var: "repo_id"
+            }
+            {
+              lit: "vcs"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              var: "change_id"
+            }
+            {
+              lit: "landing_requests"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.request`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          bf: [
+            "expected_version"
+          ]
+          co: {
+            id: "DELETE /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_requests/{entry_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "change_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "entry_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_id"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_requests/{entry_id}"
+          q: {
+            exist: [
+              "change_id"
+              "id"
+              "organization_id"
+              "repo_id"
+            ]
+          }
+          r: {
+            param: {
+              entry_id: "id"
+              id: "change_id"
+              org_slug: "organization_id"
+              repo_slug: "repo_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "repos"
+            }
+            {
+              var: "repo_id"
+            }
+            {
+              lit: "vcs"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              var: "change_id"
+            }
+            {
+              lit: "landing_requests"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.repo") path("$.main.kit.entity.change")]
+  ]
+
+}

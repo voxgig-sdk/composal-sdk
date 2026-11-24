@@ -1,0 +1,58 @@
+# Entity: gitlab_oauth
+
+main: kit: entity: gitlab_oauth: {
+
+  alias: field: {}
+
+  name: "gitlab_oauth"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/gitlab/oauth/callback"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/gitlab/oauth/callback"
+          q: {
+            "$action": "callback"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "gitlab"
+            }
+            {
+              lit: "oauth"
+            }
+            {
+              lit: "callback"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

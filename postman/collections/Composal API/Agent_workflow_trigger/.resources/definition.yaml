@@ -32,4 +32,4 @@ description: |-
   | `today_count` | integer | yes |  |
   | `trigger` | object | yes |  |
   | `workflow_path` | string | yes |  |
-order: 49000
+order: 73000

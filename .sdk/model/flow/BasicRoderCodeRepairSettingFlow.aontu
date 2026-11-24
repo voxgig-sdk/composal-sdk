@@ -1,0 +1,30 @@
+# BasicRoderCodeRepairSettingFlow
+
+main: kit: flow: BasicRoderCodeRepairSettingFlow:
+{
+  entity: "roder_code_repair_setting",
+  kind: "basic",
+  name: "BasicRoderCodeRepairSettingFlow",
+  step: [
+    {
+      i: {
+        ref: "roder_code_repair_setting_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "roder_code_repair_setting_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRoderCodeRepairSettingFlow"
+}

@@ -1,0 +1,4 @@
+$kind: collection
+id: cc83fa68-4a42-5f3b-8f88-f01236645260
+description: "The `BasicAgentConnectionGrantFlow` flow of **agent_connection_grant**."
+order: 11000

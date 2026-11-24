@@ -1,0 +1,4 @@
+$kind: collection
+id: a2d54867-9112-50d9-b656-5bca71622655
+description: "The `BasicCiPipelineRunFlow` flow of **ci_pipeline_run**."
+order: 142000

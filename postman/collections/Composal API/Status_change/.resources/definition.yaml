@@ -1,0 +1,15 @@
+$kind: collection
+id: "7e1efc63-1b0a-5fec-a323-439f1f999bb2"
+description: |-
+  The **status_change** entity, which belongs to a organization and a repo. Its requests address one record by `{{status_change_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `change_id` | string | yes |  |
+  | `id` | string |  |  |
+  | `patchsets` | array | yes |  |
+  | `status` | string | yes |  |
+  | `status_label` | string | yes |  |
+  | `status_state` | string | yes |  |
+  | `status_tone` | string | yes |  |
+order: 507000

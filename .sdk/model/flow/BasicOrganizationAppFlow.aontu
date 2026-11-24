@@ -1,0 +1,48 @@
+# BasicOrganizationAppFlow
+
+main: kit: flow: BasicOrganizationAppFlow:
+{
+  entity: "organization_app",
+  kind: "basic",
+  name: "BasicOrganizationAppFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "organization_app_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "organization_app_ref01",
+        srcdatavar: "organization_app_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-organization_app_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOrganizationAppFlow"
+}

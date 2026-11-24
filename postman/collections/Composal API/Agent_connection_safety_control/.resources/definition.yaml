@@ -1,0 +1,27 @@
+$kind: collection
+id: "29d6b42c-5d0e-5846-8ec2-ad48b66e6a3e"
+description: |-
+  The **agent_connection_safety_control** entity, which belongs to a organization. Its requests address one record by `{{agent_connection_safety_control_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `admin_disabled_at` | string |  |  |
+  | `authorized_at` | string | yes |  |
+  | `checked_at` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `custodian_id` | string | yes |  |
+  | `failure_code` | string | yes |  |
+  | `generation` | integer | yes |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `owner_name` | string |  |  |
+  | `ownership_kind` | string | yes |  |
+  | `provider_disabled_reason` | string |  |  |
+  | `provider_identity` | object | yes |  |
+  | `revoked_at` | string | yes |  |
+  | `status` | string | yes |  |
+  | `toolkit` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `user_id` | string | yes |  |
+order: 16000

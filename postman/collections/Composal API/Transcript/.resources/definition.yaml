@@ -1,0 +1,19 @@
+$kind: collection
+id: "5be77ae9-008a-52ec-98f4-86f2781ed8a5"
+description: |-
+  The **transcript** entity, which belongs to a organization. Its requests address one record by `{{transcript_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `agent` | string | yes |  |
+  | `author` | object | yes |  |
+  | `checkpoint_pagination` | object | yes |  |
+  | `checkpoints` | array | yes |  |
+  | `id` | string | yes |  |
+  | `last_checkpoint_at` | string | yes |  |
+  | `selected_checkpoint` | any | yes |  |
+  | `source_url` | string | yes |  |
+  | `started_at` | string | yes |  |
+  | `status` | string | yes |  |
+  | `title` | string | yes |  |
+order: 521000

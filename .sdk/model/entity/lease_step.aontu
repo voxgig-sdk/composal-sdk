@@ -1,0 +1,122 @@
+# Entity: lease_step
+
+main: kit: entity: lease_step: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "lease_step"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "PATCH /api/v1/ci/nodes/{id}/leases/{lease_id}/steps/{ci_step_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "ci_step_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "lease_id"
+                or: "lease_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "node_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v1/ci/nodes/{id}/leases/{lease_id}/steps/{ci_step_id}"
+          q: {
+            exist: [
+              "id"
+              "lease_id"
+              "node_id"
+            ]
+          }
+          r: {
+            param: {
+              ci_step_id: "id"
+              id: "node_id"
+              lease_id: "lease_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "nodes"
+            }
+            {
+              var: "node_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "lease_id"
+            }
+            {
+              lit: "steps"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.node")]
+  ]
+
+}

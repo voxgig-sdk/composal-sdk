@@ -1,0 +1,16 @@
+$kind: http-request
+id: d939a762-3396-52d4-89ce-c6c901c84686
+description: |-
+  The `authorize` action of **otel_ingest**, a route of its `create` operation.
+
+  SDK: `client.OtelIngest().create({ "x_vex_organization": "x_vex_organization", $action: "authorize" })`
+url: "{{base}}/api/v1/otel_ingest/authorize"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  X-Vex-Organization: "{{x_vex_organization}}"
+body:
+  type: json
+  content: "{}"
+order: 1000

@@ -1,0 +1,62 @@
+{
+  "existing": {
+    "device_control_message": {
+      "DEVICE_CONTROL_MESSAGE00": {
+        "agent_id": "AGENT01",
+        "agent_name": "s51",
+        "expires_at": "s52",
+        "id": "DEVICE_CONTROL_MESSAGE00",
+        "sender": "s54",
+        "text": "s55",
+        "text_omitted": true,
+        "thread": {},
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEVICE_CONTROL_MESSAGE01": {
+        "agent_id": "AGENT01",
+        "agent_name": "sa1",
+        "expires_at": "sa2",
+        "id": "DEVICE_CONTROL_MESSAGE01",
+        "sender": "sa4",
+        "text": "sa5",
+        "text_omitted": true,
+        "thread": {},
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEVICE_CONTROL_MESSAGE02": {
+        "agent_id": "AGENT01",
+        "agent_name": "sf1",
+        "expires_at": "sf2",
+        "id": "DEVICE_CONTROL_MESSAGE02",
+        "sender": "sf4",
+        "text": "sf5",
+        "text_omitted": true,
+        "thread": {},
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "device_control_message": {
+      "device_control_message_ref01": {
+        "agent_id": "AGENT01",
+        "agent_name": "s141",
+        "expires_at": "s142",
+        "sender": "s144",
+        "text": "s145",
+        "text_omitted": true,
+        "thread": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_messages": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

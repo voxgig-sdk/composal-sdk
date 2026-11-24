@@ -1,0 +1,35 @@
+$kind: http-request
+id: e9726eba-4bd8-59cc-b097-5635488a5293
+description: |-
+  The `create` operation of **checkpoint_prepare_chunk**.
+
+  SDK: `client.CheckpointPrepareChunk().create({ agent_session_id: "example", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/agent_sessions/:agent_session_id/checkpoints/prepare_chunks"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this checkpoint_prepare_chunk belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this checkpoint_prepare_chunk belongs to.
+  - key: agent_session_id
+    value: "{{agent_session_id}}"
+    description: The agent_session this checkpoint_prepare_chunk belongs to.
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("checkpoint_prepare_chunk_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

@@ -1,0 +1,23 @@
+# BasicArtefactRevisionFlow
+
+main: kit: flow: BasicArtefactRevisionFlow:
+{
+  entity: "artefact_revision",
+  kind: "basic",
+  name: "BasicArtefactRevisionFlow",
+  step: [
+    {
+      i: {
+        ref: "artefact_revision_ref01"
+      }
+
+      m: {
+        artefact_id: "artefact01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicArtefactRevisionFlow"
+}

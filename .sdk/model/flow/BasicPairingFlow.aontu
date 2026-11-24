@@ -1,0 +1,52 @@
+# BasicPairingFlow
+
+main: kit: flow: BasicPairingFlow:
+{
+  entity: "pairing",
+  kind: "basic",
+  name: "BasicPairingFlow",
+  step: [
+    {
+      i: {
+        ref: "pairing_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "pairing_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "pairing_ref01",
+        srcdatavar: "pairing_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "pairing01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pairing_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPairingFlow"
+}

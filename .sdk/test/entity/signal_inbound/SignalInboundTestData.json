@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "signal_inbound": {
+      "SIGNAL_INBOUND00": {
+        "id": "SIGNAL_INBOUND00",
+        "inbound_id": "INBOUND01"
+      },
+      "SIGNAL_INBOUND01": {
+        "id": "SIGNAL_INBOUND01",
+        "inbound_id": "INBOUND01"
+      },
+      "SIGNAL_INBOUND02": {
+        "id": "SIGNAL_INBOUND02",
+        "inbound_id": "INBOUND01"
+      }
+    }
+  },
+  "new": {
+    "signal_inbound": {
+      "signal_inbound_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/signals/inbound/{provider}/{inbound_token}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

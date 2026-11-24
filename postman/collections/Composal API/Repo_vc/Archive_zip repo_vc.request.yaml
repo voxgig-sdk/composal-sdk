@@ -1,0 +1,18 @@
+$kind: http-request
+id: de40a9d4-d79c-5288-aa25-4221db1ad367
+description: |-
+  The `archive_zip` action of **repo_vc**, a route of its `load` operation.
+
+  SDK: `client.RepoVc().load({ "organization_id": "organization_id", "repo_id": "repo_id", $action: "archive_zip" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/archive.zip"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_vc belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_vc belongs to.
+order: 1000

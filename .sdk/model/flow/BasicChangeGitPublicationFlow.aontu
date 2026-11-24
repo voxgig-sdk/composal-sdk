@@ -1,0 +1,47 @@
+# BasicChangeGitPublicationFlow
+
+main: kit: flow: BasicChangeGitPublicationFlow:
+{
+  entity: "change_git_publication",
+  kind: "basic",
+  name: "BasicChangeGitPublicationFlow",
+  step: [
+    {
+      i: {
+        ref: "change_git_publication_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "change_git_publication_ref01",
+        srcdatavar: "change_git_publication_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "change_git_publication01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-change_git_publication_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicChangeGitPublicationFlow"
+}

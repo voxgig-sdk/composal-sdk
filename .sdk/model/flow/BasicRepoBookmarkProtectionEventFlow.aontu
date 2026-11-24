@@ -1,0 +1,27 @@
+# BasicRepoBookmarkProtectionEventFlow
+
+main: kit: flow: BasicRepoBookmarkProtectionEventFlow:
+{
+  entity: "repo_bookmark_protection_event",
+  kind: "basic",
+  name: "BasicRepoBookmarkProtectionEventFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "repo_bookmark_protection_event_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRepoBookmarkProtectionEventFlow"
+}

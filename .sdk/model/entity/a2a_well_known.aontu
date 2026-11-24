@@ -1,0 +1,90 @@
+# Entity: a2a_well_known
+
+main: kit: entity: a2a_well_known: {
+
+  alias: field: {}
+
+  name: "a2a_well_known"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/control/a2a/{connection_id}/.well-known/agent-card.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "a2a_id"
+                or: "connection_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "a2a_id"
+                or: "connection_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/control/a2a/{connection_id}/.well-known/agent-card.json"
+          q: {
+            "$action": "agent_card_json"
+            exist: [
+              "a2a_id"
+            ]
+          }
+          r: {
+            param: {
+              connection_id: "a2a_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "control"
+            }
+            {
+              lit: "a2a"
+            }
+            {
+              var: "a2a_id"
+            }
+            {
+              lit: ".well-known"
+            }
+            {
+              lit: "agent-card.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

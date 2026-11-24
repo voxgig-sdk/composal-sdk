@@ -1,0 +1,9 @@
+$kind: collection
+id: "298cf613-bf73-5bcc-a17a-b418d16c33fb"
+description: |-
+  The **observability_clickhouse_cluster** entity. Its requests address one record by `{{observability_clickhouse_cluster_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 335000

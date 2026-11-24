@@ -1,0 +1,14 @@
+$kind: collection
+id: "276e8bfc-7c42-5529-b6d5-037192e42982"
+description: |-
+  The **setting** entity, which belongs to a organization. Its requests address one record by `{{setting_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `can_manage_pr_scenario_writing` | boolean | yes |  |
+  | `can_manage_sandbox_region` | boolean | yes |  |
+  | `dedicated_outbound_ip_addresses` | array | yes |  |
+  | `default_trunk_bookmark` | string | yes |  |
+  | `organization` | object | yes |  |
+  | `sandbox_regions` | array | yes |  |
+order: 467000

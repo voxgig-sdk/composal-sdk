@@ -1,0 +1,124 @@
+{
+  "existing": {
+    "logo_image": {
+      "LOGO_IMAGE00": {
+        "activated_products": [],
+        "agents_only": false,
+        "can_activate_products": true,
+        "created_at": "se9",
+        "created_at_label": "sea",
+        "github_prs_authored_by_change_author": false,
+        "id": "LOGO_IMAGE00",
+        "logo_url": "sed",
+        "member_count": 238,
+        "name": "sef",
+        "pending_invitation_count": 240,
+        "personal": false,
+        "repository_count": 242,
+        "role": "sf3",
+        "sandbox_region": "sf4",
+        "shared_agent_personal_accounts_enabled": false,
+        "slug": "sf6",
+        "source_control_providers": [],
+        "source_ui_enabled": true,
+        "timezone": "sf9",
+        "updated_at": "sfa",
+        "updated_at_label": "sfb",
+        "verify_pr_scenario_writing_enabled": true,
+        "organization_id": "ORGANIZATION01"
+      },
+      "LOGO_IMAGE01": {
+        "activated_products": [],
+        "agents_only": false,
+        "can_activate_products": true,
+        "created_at": "s1cf",
+        "created_at_label": "s1d0",
+        "github_prs_authored_by_change_author": false,
+        "id": "LOGO_IMAGE01",
+        "logo_url": "s1d3",
+        "member_count": 468,
+        "name": "s1d5",
+        "pending_invitation_count": 470,
+        "personal": false,
+        "repository_count": 472,
+        "role": "s1d9",
+        "sandbox_region": "s1da",
+        "shared_agent_personal_accounts_enabled": false,
+        "slug": "s1dc",
+        "source_control_providers": [],
+        "source_ui_enabled": true,
+        "timezone": "s1df",
+        "updated_at": "s1e0",
+        "updated_at_label": "s1e1",
+        "verify_pr_scenario_writing_enabled": true,
+        "organization_id": "ORGANIZATION01"
+      },
+      "LOGO_IMAGE02": {
+        "activated_products": [],
+        "agents_only": false,
+        "can_activate_products": true,
+        "created_at": "s2b5",
+        "created_at_label": "s2b6",
+        "github_prs_authored_by_change_author": false,
+        "id": "LOGO_IMAGE02",
+        "logo_url": "s2b9",
+        "member_count": 698,
+        "name": "s2bb",
+        "pending_invitation_count": 700,
+        "personal": false,
+        "repository_count": 702,
+        "role": "s2bf",
+        "sandbox_region": "s2c0",
+        "shared_agent_personal_accounts_enabled": false,
+        "slug": "s2c2",
+        "source_control_providers": [],
+        "source_ui_enabled": true,
+        "timezone": "s2c5",
+        "updated_at": "s2c6",
+        "updated_at_label": "s2c7",
+        "verify_pr_scenario_writing_enabled": true,
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "logo_image": {
+      "logo_image_ref01": {
+        "activated_products": [],
+        "agents_only": false,
+        "can_activate_products": true,
+        "created_at": "s39b",
+        "created_at_label": "s39c",
+        "github_prs_authored_by_change_author": false,
+        "logo_url": "s39f",
+        "member_count": 928,
+        "name": "s3a1",
+        "pending_invitation_count": 930,
+        "personal": false,
+        "repository_count": 932,
+        "role": "s3a5",
+        "sandbox_region": "s3a6",
+        "shared_agent_personal_accounts_enabled": false,
+        "slug": "s3a8",
+        "source_control_providers": [],
+        "source_ui_enabled": true,
+        "timezone": "s3ab",
+        "updated_at": "s3ac",
+        "updated_at_label": "s3ad",
+        "verify_pr_scenario_writing_enabled": true
+      }
+    }
+  },
+  "requests": {
+    "DELETE /api/v1/organizations/{organization_id}/logo_image": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/logo_image": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

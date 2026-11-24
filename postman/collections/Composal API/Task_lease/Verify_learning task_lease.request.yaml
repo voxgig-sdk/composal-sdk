@@ -1,0 +1,68 @@
+$kind: http-request
+id: "25229310-4d48-51e0-8b96-12a9e2e5a2f9"
+description: |-
+  The `verify_learning` action of **task_lease**, a route of its `create` operation.
+
+  SDK: `client.TaskLease().create({ "swarm_id": "swarm_id", "task_id": "task_id", "id": "ID", "x_vex_lease_token": "x_vex_lease_token", $action: "verify_learning" })`
+url: "{{base}}/api/v1/agent/swarms/:swarm_id/tasks/:task_id/leases/:id/verify_learning"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  X-Vex-Lease-Token: "{{x_vex_lease_token}}"
+pathVariables:
+  - key: swarm_id
+    value: "{{swarm_id}}"
+    description: "Input: swarm_id."
+  - key: task_id
+    value: "{{task_id}}"
+    description: "Input: task_id."
+  - key: id
+    value: "{{task_lease_id}}"
+    description: The task_lease this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "steps": [
+        {
+          "step_index": 1,
+          "actions": [
+            {}
+          ],
+          "postcondition": [
+            {}
+          ],
+          "source": "replayed"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome_index": 1,
+          "postcondition": [
+            {}
+          ],
+          "source": "replayed"
+        }
+      ],
+      "cleanup": {
+        "actions": [
+          {}
+        ],
+        "postcondition": [
+          {}
+        ],
+        "source": "replayed"
+      },
+      "replay": {
+        "offered_steps": 1,
+        "replayed_steps": 1,
+        "healed_actions": 1,
+        "model_from_step": 1,
+        "replay_ms": 1,
+        "offered_outcomes": 1,
+        "replayed_outcomes": 1,
+        "cleanup_replayed": true
+      }
+    }
+order: 10000

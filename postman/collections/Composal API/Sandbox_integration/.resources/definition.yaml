@@ -1,0 +1,19 @@
+$kind: collection
+id: efdb12da-c4af-5494-b721-198fa6797398
+description: |-
+  The **sandbox_integration** entity, which belongs to a organization. Its requests address one record by `{{sandbox_integration_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `can_manage` | boolean | yes |  |
+  | `catalog` | array | yes |  |
+  | `configuration` | object | yes |  |
+  | `connected_profiles` | object | yes |  |
+  | `credentials` | object | yes |  |
+  | `enabled` | boolean | yes |  |
+  | `id` | string | yes |  |
+  | `integrations` | array | yes |  |
+  | `name` | string | yes |  |
+  | `provider` | string | yes |  |
+  | `version` | integer | yes |  |
+order: 460000

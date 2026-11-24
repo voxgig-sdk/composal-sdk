@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "workspace_activity_notification": {
+      "WORKSPACE_ACTIVITY_NOTIFICATION00": {
+        "id": "WORKSPACE_ACTIVITY_NOTIFICATION00",
+        "organization_id": "ORGANIZATION01"
+      },
+      "WORKSPACE_ACTIVITY_NOTIFICATION01": {
+        "id": "WORKSPACE_ACTIVITY_NOTIFICATION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "WORKSPACE_ACTIVITY_NOTIFICATION02": {
+        "id": "WORKSPACE_ACTIVITY_NOTIFICATION02",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "workspace_activity_notification": {
+      "workspace_activity_notification_ref01": {}
+    }
+  },
+  "requests": {
+    "PATCH /api/v1/organizations/{org_slug}/workspace_activity/notifications/{id}/dismissal": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

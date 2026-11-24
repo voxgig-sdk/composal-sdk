@@ -1,0 +1,35 @@
+# BasicGhFlow
+
+main: kit: flow: BasicGhFlow:
+{
+  entity: "gh",
+  kind: "basic",
+  name: "BasicGhFlow",
+  step: [
+    {
+      i: {
+        ref: "gh_ref01",
+        srcdatavar: "gh_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        gh_id: "gh01",
+        github_repo: "github_repo01",
+        id: "gh01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-gh_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGhFlow"
+}

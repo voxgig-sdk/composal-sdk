@@ -1,0 +1,4 @@
+$kind: collection
+id: "3b1bab6b-6488-5ced-901b-6fa6db77f2da"
+description: "The `BasicMergeQueueEntryFlow` flow of **merge_queue_entry**."
+order: 259000

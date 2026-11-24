@@ -1,0 +1,17 @@
+$kind: collection
+id: "8f3d94a6-4e62-5f69-b9e4-ed5a50549772"
+description: |-
+  The **status_commit** entity, which belongs to a organization and a repo. Its requests address one record by `{{status_commit_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `checks` | array | yes |  |
+  | `commit_sha` | string | yes |  |
+  | `counts` | object | yes |  |
+  | `id` | string |  |  |
+  | `status` | string | yes |  |
+  | `status_label` | string | yes |  |
+  | `status_state` | string | yes |  |
+  | `status_tone` | string | yes |  |
+  | `total` | integer | yes |  |
+order: 508000

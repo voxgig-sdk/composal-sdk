@@ -1,0 +1,86 @@
+{
+  "existing": {
+    "sandbox_integration": {
+      "SANDBOX_INTEGRATION00": {
+        "can_manage": true,
+        "catalog": [],
+        "configuration": {},
+        "connected_profiles": {},
+        "credentials": {},
+        "enabled": false,
+        "id": "SANDBOX_INTEGRATION00",
+        "integrations": [],
+        "name": "s76",
+        "provider": "s77",
+        "version": 120,
+        "organization_id": "ORGANIZATION01"
+      },
+      "SANDBOX_INTEGRATION01": {
+        "can_manage": true,
+        "catalog": [],
+        "configuration": {},
+        "connected_profiles": {},
+        "credentials": {},
+        "enabled": false,
+        "id": "SANDBOX_INTEGRATION01",
+        "integrations": [],
+        "name": "se4",
+        "provider": "se5",
+        "version": 230,
+        "organization_id": "ORGANIZATION01"
+      },
+      "SANDBOX_INTEGRATION02": {
+        "can_manage": true,
+        "catalog": [],
+        "configuration": {},
+        "connected_profiles": {},
+        "credentials": {},
+        "enabled": false,
+        "id": "SANDBOX_INTEGRATION02",
+        "integrations": [],
+        "name": "s152",
+        "provider": "s153",
+        "version": 340,
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "sandbox_integration": {
+      "sandbox_integration_ref01": {
+        "can_manage": true,
+        "catalog": [],
+        "configuration": {},
+        "connected_profiles": {},
+        "credentials": {},
+        "enabled": false,
+        "integrations": [],
+        "name": "s1c0",
+        "provider": "s1c1",
+        "version": 450
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/sandbox_integrations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/sandbox_integrations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/sandbox_integrations/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/sandbox_integrations/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

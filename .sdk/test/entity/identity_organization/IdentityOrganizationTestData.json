@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "identity_organization": {
+      "IDENTITY_ORGANIZATION00": {
+        "id": "IDENTITY_ORGANIZATION00"
+      },
+      "IDENTITY_ORGANIZATION01": {
+        "id": "IDENTITY_ORGANIZATION01"
+      },
+      "IDENTITY_ORGANIZATION02": {
+        "id": "IDENTITY_ORGANIZATION02"
+      }
+    }
+  },
+  "new": {
+    "identity_organization": {
+      "identity_organization_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/identity/organizations/{organization_id}/catalog": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

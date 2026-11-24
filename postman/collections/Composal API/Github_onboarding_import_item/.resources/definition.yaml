@@ -1,0 +1,9 @@
+$kind: collection
+id: "2e0fe81e-3640-51c7-a818-d0668d1dc898"
+description: |-
+  The **github_onboarding_import_item** entity, which belongs to a organization. Its requests address one record by `{{github_onboarding_import_item_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 264000

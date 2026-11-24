@@ -1,0 +1,8 @@
+$kind: collection
+id: ab5681c6-d0b0-5925-953a-55c98cd1e8fa
+description: |-
+  The **organization_message_file** entity, which belongs to a organization. Its requests address one record by `{{organization_message_file_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 346000

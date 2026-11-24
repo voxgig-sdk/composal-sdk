@@ -1,0 +1,15 @@
+$kind: http-request
+id: "52bdc988-f924-57ac-a2e6-d177af45f1fc"
+description: |-
+  The `claim` action of **pairing**, a route of its `create` operation.
+
+  SDK: `client.Pairing().create({ $action: "claim" })`
+url: "{{base}}/api/v1/relay/pairings/claim"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 4000

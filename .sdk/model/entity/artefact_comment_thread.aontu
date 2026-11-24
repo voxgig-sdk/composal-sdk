@@ -1,0 +1,314 @@
+# Entity: artefact_comment_thread
+
+main: kit: entity: artefact_comment_thread: {
+
+  alias: field: {}
+
+  fields: {
+    anchor: {
+      h: "Anchor"
+      n: "anchor"
+      r: true
+      sh: "The `#anchor` written into the Markdown."
+      t: "`$STRING`"
+    }
+    body: {
+      h: "Body"
+      n: "body"
+      r: true
+      t: "`$STRING`"
+    }
+    comments: {
+      h: "Comments"
+      n: "comments"
+      r: true
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The anchor key."
+      t: "`$STRING`"
+    }
+    quote: {
+      h: "Quote"
+      n: "quote"
+      op: {
+        list: {
+          req: true
+          type: "`$STRING`"
+        }
+        update: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      t: "`$STRING`"
+    }
+    resolved: {
+      h: "Resolved"
+      n: "resolved"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "artefact_comment_thread"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "anchor"
+            "body"
+            "quote"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "artefact_id"
+                or: "artefact_ref"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads"
+          q: {
+            exist: [
+              "artefact_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              artefact_ref: "artefact_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "artefacts"
+            }
+            {
+              var: "artefact_id"
+            }
+            {
+              lit: "comment_threads"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.thread`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "artefact_id"
+                or: "artefact_ref"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads"
+          q: {
+            exist: [
+              "artefact_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              artefact_ref: "artefact_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "artefacts"
+            }
+            {
+              var: "artefact_id"
+            }
+            {
+              lit: "comment_threads"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.threads`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "resolved"
+          ]
+          co: {
+            id: "PATCH /api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads/{anchor}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "artefact_id"
+                or: "artefact_ref"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "anchor"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads/{anchor}"
+          q: {
+            exist: [
+              "artefact_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              anchor: "id"
+              artefact_ref: "artefact_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "artefacts"
+            }
+            {
+              var: "artefact_id"
+            }
+            {
+              lit: "comment_threads"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.thread`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.artefact")]
+  ]
+
+}

@@ -1,0 +1,22 @@
+# BasicLocalAgentResponseFlow
+
+main: kit: flow: BasicLocalAgentResponseFlow:
+{
+  entity: "local_agent_response",
+  kind: "basic",
+  name: "BasicLocalAgentResponseFlow",
+  step: [
+    {
+      i: {
+        ref: "local_agent_response_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicLocalAgentResponseFlow"
+}

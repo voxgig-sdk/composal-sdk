@@ -1,0 +1,29 @@
+$kind: http-request
+id: "617165cc-bced-53e2-a772-124a4d23e4fe"
+description: |-
+  The `verify_product_map` action of **task_lease**, a route of its `create` operation.
+
+  SDK: `client.TaskLease().create({ "swarm_id": "swarm_id", "task_id": "task_id", "id": "ID", $action: "verify_product_map" })`
+url: "{{base}}/api/v1/agent/swarms/:swarm_id/tasks/:task_id/leases/:id/verify_product_map"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: swarm_id
+    value: "{{swarm_id}}"
+    description: "Input: swarm_id."
+  - key: task_id
+    value: "{{task_id}}"
+    description: "Input: task_id."
+  - key: id
+    value: "{{task_lease_id}}"
+    description: The task_lease this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "tool": "example",
+      "arguments": {}
+    }
+order: 12000

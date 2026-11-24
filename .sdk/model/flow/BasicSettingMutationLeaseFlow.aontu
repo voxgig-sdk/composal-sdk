@@ -1,0 +1,23 @@
+# BasicSettingMutationLeaseFlow
+
+main: kit: flow: BasicSettingMutationLeaseFlow:
+{
+  entity: "setting_mutation_lease",
+  kind: "basic",
+  name: "BasicSettingMutationLeaseFlow",
+  step: [
+    {
+      i: {
+        ref: "setting_mutation_lease_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicSettingMutationLeaseFlow"
+}

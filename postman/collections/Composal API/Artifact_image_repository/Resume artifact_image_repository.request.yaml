@@ -1,0 +1,19 @@
+$kind: http-request
+id: dbe99e85-850e-5e14-ac35-b5c8105ba37c
+description: |-
+  The `resume` action of **artifact_image_repository**, a route of its `create` operation.
+
+  SDK: `client.ArtifactImageRepository().create({ "id": "ID", $action: "resume" })`
+url: "{{base}}/api/v1/artifacts/image_repositories/:id/resume"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_image_repository_id}}"
+    description: The artifact_image_repository this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 9000

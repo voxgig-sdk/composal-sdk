@@ -1,0 +1,66 @@
+# BasicJobWorkspaceFlow
+
+main: kit: flow: BasicJobWorkspaceFlow:
+{
+  entity: "job_workspace",
+  kind: "basic",
+  name: "BasicJobWorkspaceFlow",
+  step: [
+    {
+      i: {
+        ref: "job_workspace_ref01"
+      }
+
+      m: {
+        job_id: "job01",
+        pipeline_id: "pipeline01",
+        run_id: "run01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        job_id: "job01",
+        pipeline_id: "pipeline01",
+        run_id: "run01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "job_workspace_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        job_id: "job01",
+        pipeline_id: "pipeline01",
+        run_id: "run01"
+      }
+
+      i: {
+        ref: "job_workspace_ref01",
+        srcdatavar: "job_workspace_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-job_workspace_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicJobWorkspaceFlow"
+}

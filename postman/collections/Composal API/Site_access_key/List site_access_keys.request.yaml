@@ -1,0 +1,28 @@
+$kind: http-request
+id: "784e13c4-4f85-5961-8950-83c7e6ab0910"
+description: |-
+  The `list` operation of **site_access_key**.
+
+  SDK: `client.SiteAccessKey().list({ organization_id: "example", site_id: "example" })`
+url: "{{base}}/api/v1/spark/organizations/:organization_id/sites/:name/access_keys"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this site_access_key belongs to.
+  - key: name
+    value: "{{site_id}}"
+    description: The site this site_access_key belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("site_access_key_id")) pm.collectionVariables.set("site_access_key_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

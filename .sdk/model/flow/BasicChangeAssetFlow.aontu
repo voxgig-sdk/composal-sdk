@@ -1,0 +1,23 @@
+# BasicChangeAssetFlow
+
+main: kit: flow: BasicChangeAssetFlow:
+{
+  entity: "change_asset",
+  kind: "basic",
+  name: "BasicChangeAssetFlow",
+  step: [
+    {
+      i: {
+        ref: "change_asset_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicChangeAssetFlow"
+}

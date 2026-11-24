@@ -1,0 +1,477 @@
+# Entity: node_lease
+
+main: kit: entity: node_lease: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "node_lease"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/ci/nodes/{id}/leases/{lease_id}/claim"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "lease_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "node_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/ci/nodes/{id}/leases/{lease_id}/claim"
+          q: {
+            "$action": "claim"
+            exist: [
+              "id"
+              "node_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "node_id"
+              lease_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "nodes"
+            }
+            {
+              var: "node_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "claim"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/ci/nodes/{id}/leases/{lease_id}/heartbeat"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "lease_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "node_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/ci/nodes/{id}/leases/{lease_id}/heartbeat"
+          q: {
+            "$action": "heartbeat"
+            exist: [
+              "id"
+              "node_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "node_id"
+              lease_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "nodes"
+            }
+            {
+              var: "node_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "heartbeat"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/ci/nodes/{id}/leases/{lease_id}/release"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "lease_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "node_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/ci/nodes/{id}/leases/{lease_id}/release"
+          q: {
+            "$action": "release"
+            exist: [
+              "id"
+              "node_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "node_id"
+              lease_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "nodes"
+            }
+            {
+              var: "node_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "release"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/ci/nodes/{id}/leases"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "node_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/ci/nodes/{id}/leases"
+          q: {
+            exist: [
+              "node_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "node_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "nodes"
+            }
+            {
+              var: "node_id"
+            }
+            {
+              lit: "leases"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/ci/nodes/{id}/leases/{lease_id}/job"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "lease_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "node_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/ci/nodes/{id}/leases/{lease_id}/job"
+          q: {
+            "$action": "job"
+            exist: [
+              "id"
+              "node_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "node_id"
+              lease_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "nodes"
+            }
+            {
+              var: "node_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "job"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/ci/nodes/{id}/leases/{lease_id}/workspace_archive"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "lease_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "node_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/ci/nodes/{id}/leases/{lease_id}/workspace_archive"
+          q: {
+            "$action": "workspace_archive"
+            exist: [
+              "id"
+              "node_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "node_id"
+              lease_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "nodes"
+            }
+            {
+              var: "node_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "workspace_archive"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.node")]
+  ]
+
+}

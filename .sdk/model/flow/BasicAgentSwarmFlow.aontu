@@ -1,0 +1,71 @@
+# BasicAgentSwarmFlow
+
+main: kit: flow: BasicAgentSwarmFlow:
+{
+  entity: "agent_swarm",
+  kind: "basic",
+  name: "BasicAgentSwarmFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_swarm_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_swarm_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_swarm_ref01",
+        srcdatavar: "agent_swarm_ref01_data",
+        suffix: "_up0",
+        textfield: "base_bookmark"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_swarm_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_swarm_ref01",
+        srcdatavar: "agent_swarm_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "agent_swarm01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_swarm_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentSwarmFlow"
+}

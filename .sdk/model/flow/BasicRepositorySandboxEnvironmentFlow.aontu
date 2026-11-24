@@ -1,0 +1,45 @@
+# BasicRepositorySandboxEnvironmentFlow
+
+main: kit: flow: BasicRepositorySandboxEnvironmentFlow:
+{
+  entity: "repository_sandbox_environment",
+  kind: "basic",
+  name: "BasicRepositorySandboxEnvironmentFlow",
+  step: [
+    {
+      i: {
+        ref: "repository_sandbox_environment_ref01"
+      }
+
+      m: {
+        repository_id: "repository01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "repository_sandbox_environment_ref01",
+        srcdatavar: "repository_sandbox_environment_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "repository_sandbox_environment01",
+        repository_id: "repository01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-repository_sandbox_environment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRepositorySandboxEnvironmentFlow"
+}

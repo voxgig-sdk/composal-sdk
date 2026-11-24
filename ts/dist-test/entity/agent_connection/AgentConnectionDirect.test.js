@@ -29,18 +29,16 @@ const utility_1 = require("../../utility");
         const setup = directSetup({ id: 'direct01' });
         if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-load-agent_connection', setup.live))
             return;
-        if ((0, utility_1.skipIfMissingIds)(t, setup, ["agent01", "organization01"], LIVE_STRICT))
+        if ((0, utility_1.skipIfMissingIds)(t, setup, ["organization01"], LIVE_STRICT))
             return;
         const { client, calls } = setup;
         const params = {};
         const query = {};
         if (setup.live) {
-            query.change = "configure";
             const listResult = await client.direct({
-                path: 'api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections',
+                path: 'api/v1/organizations/{organization_id}/agent_connections',
                 method: 'GET',
                 params: {
-                    agent_id: setup.idmap['agent01'],
                     organization_id: setup.idmap['organization01'],
                 },
             });
@@ -59,17 +57,14 @@ const utility_1 = require("../../utility");
                 return void (0, utility_1.liveMiss)(t, LIVE_STRICT, 'Live load blocked: discovery returned no usable identity');
             }
             params.id = candidateId;
-            params.agent_id = setup.idmap['agent01'];
             params.organization_id = setup.idmap['organization01'];
         }
         else {
-            params.agent_id = 'direct01';
-            params.id = 'direct02';
-            params.id = 'direct03';
-            params.organization_id = 'direct04';
+            params.id = 'direct01';
+            params.organization_id = 'direct02';
         }
         const result = await client.direct({
-            path: 'api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections/{id}/change',
+            path: 'api/v1/organizations/{organization_id}/agent_connections/{id}',
             method: 'GET',
             params,
             query,
@@ -91,8 +86,6 @@ const utility_1 = require("../../utility");
             (0, node_assert_1.default)(calls[0].init.method === 'GET');
             (0, node_assert_1.default)(calls[0].url.includes('direct01'));
             (0, node_assert_1.default)(calls[0].url.includes('direct02'));
-            (0, node_assert_1.default)(calls[0].url.includes('direct03'));
-            (0, node_assert_1.default)(calls[0].url.includes('direct04'));
         }
     });
     (0, node_test_1.test)('direct-list-agent_connection', async (t) => {
@@ -103,21 +96,19 @@ const utility_1 = require("../../utility");
         const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }]);
         if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-list-agent_connection', setup.live))
             return;
-        if ((0, utility_1.skipIfMissingIds)(t, setup, ["agent01", "organization01"], LIVE_STRICT))
+        if ((0, utility_1.skipIfMissingIds)(t, setup, ["organization01"], LIVE_STRICT))
             return;
         const { client, calls } = setup;
         const params = {};
         const query = {};
         if (setup.live) {
-            params.agent_id = setup.idmap['agent01'];
             params.organization_id = setup.idmap['organization01'];
         }
         else {
-            params.agent_id = 'direct01';
-            params.organization_id = 'direct02';
+            params.organization_id = 'direct01';
         }
         const result = await client.direct({
-            path: 'api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections',
+            path: 'api/v1/organizations/{organization_id}/agent_connections',
             method: 'GET',
             params,
             query,
@@ -140,7 +131,6 @@ const utility_1 = require("../../utility");
             (0, node_assert_1.default)(calls.length === 1);
             (0, node_assert_1.default)(calls[0].init.method === 'GET');
             (0, node_assert_1.default)(calls[0].url.includes('direct01'));
-            (0, node_assert_1.default)(calls[0].url.includes('direct02'));
         }
     });
 });

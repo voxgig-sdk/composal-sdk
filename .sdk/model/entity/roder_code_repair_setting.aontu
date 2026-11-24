@@ -1,0 +1,185 @@
+# Entity: roder_code_repair_setting
+
+main: kit: entity: roder_code_repair_setting: {
+
+  alias: field: {}
+
+  fields: {
+    available: {
+      h: "Available"
+      n: "available"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    daily_limit: {
+      h: "Daily Limit"
+      n: "daily_limit"
+      r: true
+      t: "`$INTEGER`"
+    }
+    enabled: {
+      h: "Enabled"
+      n: "enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    enabled_at: {
+      fo: "date-time"
+      h: "Enabled At"
+      n: "enabled_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    operator_user_id: {
+      h: "Operator User Id"
+      n: "operator_user_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    organization_id: {
+      h: "Organization Id"
+      n: "organization_id"
+      r: true
+      t: "`$STRING`"
+    }
+    repository_slug: {
+      h: "Repository Slug"
+      n: "repository_slug"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "Connected Composal repository required when enabling"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  name: "roder_code_repair_setting"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "enabled"
+            "organization_id"
+            "repository_slug"
+          ]
+          co: {
+            id: "POST /api/v1/agent/roder/code_repair_settings"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/agent/roder/code_repair_settings"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "roder"
+            }
+            {
+              lit: "code_repair_settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/agent/roder/code_repair_settings"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/agent/roder/code_repair_settings"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "roder"
+            }
+            {
+              lit: "code_repair_settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

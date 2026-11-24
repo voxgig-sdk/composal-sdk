@@ -1,0 +1,14 @@
+$kind: collection
+id: f0ea8575-57b6-5761-9821-a10c06dd2518
+description: |-
+  The **deployment_setting** entity, which belongs to a organization. Its requests address one record by `{{deployment_setting_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `code` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `nomad_datacenter` | string | yes |  |
+  | `updated_at` | string | yes |  |
+order: 208000

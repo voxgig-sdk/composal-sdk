@@ -1,0 +1,8 @@
+$kind: collection
+id: "607ba3dc-00fc-52a7-b329-b260a9c56605"
+description: |-
+  The **app_access** entity. Its requests address one record by `{{app_access_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 81000

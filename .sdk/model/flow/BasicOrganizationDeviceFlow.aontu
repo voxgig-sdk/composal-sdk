@@ -1,0 +1,23 @@
+# BasicOrganizationDeviceFlow
+
+main: kit: flow: BasicOrganizationDeviceFlow:
+{
+  entity: "organization_device",
+  kind: "basic",
+  name: "BasicOrganizationDeviceFlow",
+  step: [
+    {
+      i: {
+        ref: "organization_device_ref01"
+      }
+
+      m: {
+        device_id: "device01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicOrganizationDeviceFlow"
+}

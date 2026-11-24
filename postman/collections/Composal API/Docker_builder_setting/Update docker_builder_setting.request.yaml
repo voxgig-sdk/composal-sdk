@@ -1,0 +1,19 @@
+$kind: http-request
+id: "6e06c06a-9030-5e23-98b3-f467fc39af94"
+description: |-
+  The `update` operation of **docker_builder_setting**.
+
+  SDK: `client.DockerBuilderSetting().update({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/docker_builder_settings"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this docker_builder_setting belongs to.
+body:
+  type: json
+  content: "{}"
+order: 2000

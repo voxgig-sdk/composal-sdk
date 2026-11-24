@@ -1,0 +1,29 @@
+$kind: http-request
+id: "9d66f1f9-07c3-5aef-9282-a6049a594b95"
+description: |-
+  The `project_visibility` action of **device**, a route of its `create` operation.
+
+  SDK: `client.Device().create({ "organization_id": "organization_id", "id": "ID", $action: "project_visibility" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/project_visibility"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "mode": "all",
+      "folders": [
+        "example"
+      ],
+      "version": 1
+    }
+order: 10000

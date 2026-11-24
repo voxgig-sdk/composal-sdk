@@ -1,0 +1,11 @@
+$kind: collection
+id: ea797382-cce3-522a-baf5-b4bee016ba79
+description: |-
+  The **organization_tool** entity, which belongs to a organization. Its requests address one record by `{{organization_tool_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `arguments` | object | yes |  |
+  | `native_agent_id` | string | yes |  |
+  | `tool` | string | yes |  |
+order: 357000

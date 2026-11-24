@@ -1,0 +1,4 @@
+$kind: collection
+id: "10d2b04c-38be-5851-bcbc-3ef992bd9a79"
+description: "The `BasicAgentConnectionTriggerSubscriptionFlow` flow of **agent_connection_trigger_subscription**."
+order: 14000

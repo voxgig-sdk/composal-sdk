@@ -4,7 +4,7 @@
 
 The Ruby SDK for the Composal API — an entity-oriented client using idiomatic Ruby conventions.
 
-The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Agent` — with named operations (`list`/`load`/`create`/`update`/`patch`/`remove`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.A2aWellKnown` — with named operations (`list`/`load`/`create`/`update`/`patch`/`remove`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
 
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
@@ -41,21 +41,6 @@ client = ComposalSDK.new({
 })
 ```
 
-### 2. List agent records
-
-```ruby
-begin
-  # list returns an Array of Agent entities, one per record; data_get reads the record.
-  agents = client.Agent.list({ "organization_id" => "example" })
-  agents.each do |item|
-    record = item.data_get
-    puts "#{record["id"]} #{record["attention"]}"
-  end
-rescue => err
-  warn "list failed: #{err}"
-end
-```
-
 ### 3. Load an agent
 
 Agent is nested under organization, so provide the `organization_id`.
@@ -70,16 +55,6 @@ rescue => err
 end
 ```
 
-### 4. Create, update, and remove
-
-```ruby
-# create returns the ENTITY — call data_get for the created Agent record.
-created = client.Agent.create({ "organization_id" => "example_organization_id", "name" => "example_name" })
-
-# Remove
-client.Agent.remove({ "id" => created.data_get["id"], "organization_id" => "example_organization_id" })
-```
-
 
 ## Error handling
 
@@ -87,7 +62,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  pageprojectrun = client.PageProjectRun.load({ "id" => "example_id", "organization_id" => "example", "project_id" => "example" })
+  agentoperation = client.AgentOperation.load({ "agent_id" => "example", "id" => "example_id", "organization_id" => "example" })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -155,13 +130,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
 client = ComposalSDK.test({
-  "entity" => { "page_project_run" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "agent_operation" => { "test01" => { "id" => "test01" } } },
 })
 
 # Entity ops return the ENTITY (raises on error);
 # data_get reads its mock record.
-pageprojectrun = client.PageProjectRun.load({ "id" => "test01", "organization_id" => "example", "project_id" => "example" })
-puts pageprojectrun.data_get
+agentoperation = client.AgentOperation.load({ "id" => "test01", "agent_id" => "example", "organization_id" => "example" })
+puts agentoperation.data_get
 ```
 
 ### Use a custom fetch function
@@ -239,19 +214,32 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
+| `A2aWellKnown` | `(data) -> A2aWellKnownEntity` | Create an A2aWellKnown entity instance. |
+| `AdminOrg` | `(data) -> AdminOrgEntity` | Create an AdminOrg entity instance. |
 | `Agent` | `(data) -> AgentEntity` | Create an Agent entity instance. |
+| `AgentApp` | `(data) -> AgentAppEntity` | Create an AgentApp entity instance. |
+| `AgentAppInstall` | `(data) -> AgentAppInstallEntity` | Create an AgentAppInstall entity instance. |
 | `AgentAttachment` | `(data) -> AgentAttachmentEntity` | Create an AgentAttachment entity instance. |
 | `AgentAutomation` | `(data) -> AgentAutomationEntity` | Create an AgentAutomation entity instance. |
 | `AgentAvatar` | `(data) -> AgentAvatarEntity` | Create an AgentAvatar entity instance. |
 | `AgentCommand` | `(data) -> AgentCommandEntity` | Create an AgentCommand entity instance. |
 | `AgentComputer` | `(data) -> AgentComputerEntity` | Create an AgentComputer entity instance. |
 | `AgentConnection` | `(data) -> AgentConnectionEntity` | Create an AgentConnection entity instance. |
+| `AgentConnectionDelegation` | `(data) -> AgentConnectionDelegationEntity` | Create an AgentConnectionDelegation entity instance. |
+| `AgentConnectionGrant` | `(data) -> AgentConnectionGrantEntity` | Create an AgentConnectionGrant entity instance. |
+| `AgentConnectionResource` | `(data) -> AgentConnectionResourceEntity` | Create an AgentConnectionResource entity instance. |
+| `AgentConnectionSafetyControl` | `(data) -> AgentConnectionSafetyControlEntity` | Create an AgentConnectionSafetyControl entity instance. |
+| `AgentConnectionTriggerSubscription` | `(data) -> AgentConnectionTriggerSubscriptionEntity` | Create an AgentConnectionTriggerSubscription entity instance. |
+| `AgentContextCheckpoint` | `(data) -> AgentContextCheckpointEntity` | Create an AgentContextCheckpoint entity instance. |
 | `AgentControlFlow` | `(data) -> AgentControlFlowEntity` | Create an AgentControlFlow entity instance. |
 | `AgentCoordination` | `(data) -> AgentCoordinationEntity` | Create an AgentCoordination entity instance. |
 | `AgentEmail` | `(data) -> AgentEmailEntity` | Create an AgentEmail entity instance. |
+| `AgentEvent` | `(data) -> AgentEventEntity` | Create an AgentEvent entity instance. |
 | `AgentFile` | `(data) -> AgentFileEntity` | Create an AgentFile entity instance. |
 | `AgentInput` | `(data) -> AgentInputEntity` | Create an AgentInput entity instance. |
 | `AgentIntegration` | `(data) -> AgentIntegrationEntity` | Create an AgentIntegration entity instance. |
+| `AgentIntegrationAccount` | `(data) -> AgentIntegrationAccountEntity` | Create an AgentIntegrationAccount entity instance. |
+| `AgentIntegrationCallback` | `(data) -> AgentIntegrationCallbackEntity` | Create an AgentIntegrationCallback entity instance. |
 | `AgentInteraction` | `(data) -> AgentInteractionEntity` | Create an AgentInteraction entity instance. |
 | `AgentLibrary` | `(data) -> AgentLibraryEntity` | Create an AgentLibrary entity instance. |
 | `AgentManager` | `(data) -> AgentManagerEntity` | Create an AgentManager entity instance. |
@@ -263,11 +251,17 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `AgentProvisioning` | `(data) -> AgentProvisioningEntity` | Create an AgentProvisioning entity instance. |
 | `AgentPullRequest` | `(data) -> AgentPullRequestEntity` | Create an AgentPullRequest entity instance. |
 | `AgentQuestion` | `(data) -> AgentQuestionEntity` | Create an AgentQuestion entity instance. |
+| `AgentRelayFileGrant` | `(data) -> AgentRelayFileGrantEntity` | Create an AgentRelayFileGrant entity instance. |
+| `AgentRelayFileGrantAccount` | `(data) -> AgentRelayFileGrantAccountEntity` | Create an AgentRelayFileGrantAccount entity instance. |
 | `AgentRepository` | `(data) -> AgentRepositoryEntity` | Create an AgentRepository entity instance. |
 | `AgentResource` | `(data) -> AgentResourceEntity` | Create an AgentResource entity instance. |
+| `AgentRoder` | `(data) -> AgentRoderEntity` | Create an AgentRoder entity instance. |
 | `AgentRoutine` | `(data) -> AgentRoutineEntity` | Create an AgentRoutine entity instance. |
 | `AgentRun` | `(data) -> AgentRunEntity` | Create an AgentRun entity instance. |
 | `AgentRuntime` | `(data) -> AgentRuntimeEntity` | Create an AgentRuntime entity instance. |
+| `AgentSession` | `(data) -> AgentSessionEntity` | Create an AgentSession entity instance. |
+| `AgentSessionCheckpoint` | `(data) -> AgentSessionCheckpointEntity` | Create an AgentSessionCheckpoint entity instance. |
+| `AgentSessionRoderHandoff` | `(data) -> AgentSessionRoderHandoffEntity` | Create an AgentSessionRoderHandoff entity instance. |
 | `AgentSetting` | `(data) -> AgentSettingEntity` | Create an AgentSetting entity instance. |
 | `AgentSharing` | `(data) -> AgentSharingEntity` | Create an AgentSharing entity instance. |
 | `AgentSite` | `(data) -> AgentSiteEntity` | Create an AgentSite entity instance. |
@@ -275,12 +269,15 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `AgentSlack` | `(data) -> AgentSlackEntity` | Create an AgentSlack entity instance. |
 | `AgentSubagent` | `(data) -> AgentSubagentEntity` | Create an AgentSubagent entity instance. |
 | `AgentSubscription` | `(data) -> AgentSubscriptionEntity` | Create an AgentSubscription entity instance. |
+| `AgentSwarm` | `(data) -> AgentSwarmEntity` | Create an AgentSwarm entity instance. |
 | `AgentTeammate` | `(data) -> AgentTeammateEntity` | Create an AgentTeammate entity instance. |
 | `AgentTerminal` | `(data) -> AgentTerminalEntity` | Create an AgentTerminal entity instance. |
 | `AgentThread` | `(data) -> AgentThreadEntity` | Create an AgentThread entity instance. |
 | `AgentTool` | `(data) -> AgentToolEntity` | Create an AgentTool entity instance. |
+| `AgentUsage` | `(data) -> AgentUsageEntity` | Create an AgentUsage entity instance. |
 | `AgentVerifyProject` | `(data) -> AgentVerifyProjectEntity` | Create an AgentVerifyProject entity instance. |
 | `AgentWait` | `(data) -> AgentWaitEntity` | Create an AgentWait entity instance. |
+| `AgentWebPreview` | `(data) -> AgentWebPreviewEntity` | Create an AgentWebPreview entity instance. |
 | `AgentWebhook` | `(data) -> AgentWebhookEntity` | Create an AgentWebhook entity instance. |
 | `AgentWork` | `(data) -> AgentWorkEntity` | Create an AgentWork entity instance. |
 | `AgentWorkflow` | `(data) -> AgentWorkflowEntity` | Create an AgentWorkflow entity instance. |
@@ -289,8 +286,13 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `AgentWorkflowTrigger` | `(data) -> AgentWorkflowTriggerEntity` | Create an AgentWorkflowTrigger entity instance. |
 | `AgentWorkspace` | `(data) -> AgentWorkspaceEntity` | Create an AgentWorkspace entity instance. |
 | `AgentWritePermission` | `(data) -> AgentWritePermissionEntity` | Create an AgentWritePermission entity instance. |
+| `Agreement` | `(data) -> AgreementEntity` | Create an Agreement entity instance. |
+| `AgreementAccessRequest` | `(data) -> AgreementAccessRequestEntity` | Create an AgreementAccessRequest entity instance. |
+| `AlertRuleEvent` | `(data) -> AlertRuleEventEntity` | Create an AlertRuleEvent entity instance. |
 | `AllocationLog` | `(data) -> AllocationLogEntity` | Create an AllocationLog entity instance. |
 | `App` | `(data) -> AppEntity` | Create an App entity instance. |
+| `AppAccess` | `(data) -> AppAccessEntity` | Create an AppAccess entity instance. |
+| `AppAccessJwk` | `(data) -> AppAccessJwkEntity` | Create an AppAccessJwk entity instance. |
 | `AppCdn` | `(data) -> AppCdnEntity` | Create an AppCdn entity instance. |
 | `AppConfigVariable` | `(data) -> AppConfigVariableEntity` | Create an AppConfigVariable entity instance. |
 | `AppDataResource` | `(data) -> AppDataResourceEntity` | Create an AppDataResource entity instance. |
@@ -309,11 +311,46 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `AppServiceBinding` | `(data) -> AppServiceBindingEntity` | Create an AppServiceBinding entity instance. |
 | `AppServicePlacement` | `(data) -> AppServicePlacementEntity` | Create an AppServicePlacement entity instance. |
 | `AppStorageResource` | `(data) -> AppStorageResourceEntity` | Create an AppStorageResource entity instance. |
+| `Artefact` | `(data) -> ArtefactEntity` | Create an Artefact entity instance. |
+| `ArtefactCommentThread` | `(data) -> ArtefactCommentThreadEntity` | Create an ArtefactCommentThread entity instance. |
+| `ArtefactRevision` | `(data) -> ArtefactRevisionEntity` | Create an ArtefactRevision entity instance. |
+| `ArtefactViewToken` | `(data) -> ArtefactViewTokenEntity` | Create an ArtefactViewToken entity instance. |
+| `Artifact` | `(data) -> ArtifactEntity` | Create an Artifact entity instance. |
+| `ArtifactCacheNamespace` | `(data) -> ArtifactCacheNamespaceEntity` | Create an ArtifactCacheNamespace entity instance. |
+| `ArtifactImageRepository` | `(data) -> ArtifactImageRepositoryEntity` | Create an ArtifactImageRepository entity instance. |
+| `ArtifactPackageMirror` | `(data) -> ArtifactPackageMirrorEntity` | Create an ArtifactPackageMirror entity instance. |
+| `ArtifactRetentionPolicy` | `(data) -> ArtifactRetentionPolicyEntity` | Create an ArtifactRetentionPolicy entity instance. |
 | `AttachmentPart` | `(data) -> AttachmentPartEntity` | Create an AttachmentPart entity instance. |
+| `AuditEvent` | `(data) -> AuditEventEntity` | Create an AuditEvent entity instance. |
+| `Auth` | `(data) -> AuthEntity` | Create an Auth entity instance. |
+| `AuthCli` | `(data) -> AuthCliEntity` | Create an AuthCli entity instance. |
+| `AuthGithub` | `(data) -> AuthGithubEntity` | Create an AuthGithub entity instance. |
+| `AuthGoogle` | `(data) -> AuthGoogleEntity` | Create an AuthGoogle entity instance. |
+| `AuthOpenai` | `(data) -> AuthOpenaiEntity` | Create an AuthOpenai entity instance. |
+| `AuthPasswordReset` | `(data) -> AuthPasswordResetEntity` | Create an AuthPasswordReset entity instance. |
+| `AuthRegistrationOption` | `(data) -> AuthRegistrationOptionEntity` | Create an AuthRegistrationOption entity instance. |
 | `AutomationEvent` | `(data) -> AutomationEventEntity` | Create an AutomationEvent entity instance. |
 | `AutomationRun` | `(data) -> AutomationRunEntity` | Create an AutomationRun entity instance. |
+| `BackendRunnerPool` | `(data) -> BackendRunnerPoolEntity` | Create a BackendRunnerPool entity instance. |
+| `Bazel` | `(data) -> BazelEntity` | Create a Bazel entity instance. |
+| `BazelActionResult` | `(data) -> BazelActionResultEntity` | Create a BazelActionResult entity instance. |
+| `BazelBackend` | `(data) -> BazelBackendEntity` | Create a BazelBackend entity instance. |
+| `BazelBlob` | `(data) -> BazelBlobEntity` | Create a BazelBlob entity instance. |
+| `BazelExecution` | `(data) -> BazelExecutionEntity` | Create a BazelExecution entity instance. |
+| `BazelFindMissingBlob` | `(data) -> BazelFindMissingBlobEntity` | Create a BazelFindMissingBlob entity instance. |
+| `Billing` | `(data) -> BillingEntity` | Create a Billing entity instance. |
+| `BillingAddon` | `(data) -> BillingAddonEntity` | Create a BillingAddon entity instance. |
+| `BillingCheckoutSession` | `(data) -> BillingCheckoutSessionEntity` | Create a BillingCheckoutSession entity instance. |
+| `BillingInvoice` | `(data) -> BillingInvoiceEntity` | Create a BillingInvoice entity instance. |
+| `BillingPackage` | `(data) -> BillingPackageEntity` | Create a BillingPackage entity instance. |
+| `BillingPortalSession` | `(data) -> BillingPortalSessionEntity` | Create a BillingPortalSession entity instance. |
+| `BillingPrepaidPeriod` | `(data) -> BillingPrepaidPeriodEntity` | Create a BillingPrepaidPeriod entity instance. |
+| `BillingPrepaidPurchase` | `(data) -> BillingPrepaidPurchaseEntity` | Create a BillingPrepaidPurchase entity instance. |
+| `BillingTokenTopUp` | `(data) -> BillingTokenTopUpEntity` | Create a BillingTokenTopUp entity instance. |
+| `BillingUsage` | `(data) -> BillingUsageEntity` | Create a BillingUsage entity instance. |
 | `Binary` | `(data) -> BinaryEntity` | Create a Binary entity instance. |
 | `BinaryVersion` | `(data) -> BinaryVersionEntity` | Create a BinaryVersion entity instance. |
+| `BookmarkProtectionRefreshGithubRequiredCheck` | `(data) -> BookmarkProtectionRefreshGithubRequiredCheckEntity` | Create a BookmarkProtectionRefreshGithubRequiredCheck entity instance. |
 | `BrowserEgressCandidate` | `(data) -> BrowserEgressCandidateEntity` | Create a BrowserEgressCandidate entity instance. |
 | `BrowserSession` | `(data) -> BrowserSessionEntity` | Create a BrowserSession entity instance. |
 | `BrowserSessionConnection` | `(data) -> BrowserSessionConnectionEntity` | Create a BrowserSessionConnection entity instance. |
@@ -323,13 +360,46 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `BrowserSessionRecording` | `(data) -> BrowserSessionRecordingEntity` | Create a BrowserSessionRecording entity instance. |
 | `BrowserSessionScreenshot` | `(data) -> BrowserSessionScreenshotEntity` | Create a BrowserSessionScreenshot entity instance. |
 | `BrowserSessionTask` | `(data) -> BrowserSessionTaskEntity` | Create a BrowserSessionTask entity instance. |
+| `CacheNamespaceEntry` | `(data) -> CacheNamespaceEntryEntity` | Create a CacheNamespaceEntry entity instance. |
 | `CatalogSelector` | `(data) -> CatalogSelectorEntity` | Create a CatalogSelector entity instance. |
 | `CdnDeployment` | `(data) -> CdnDeploymentEntity` | Create a CdnDeployment entity instance. |
 | `CdnHostname` | `(data) -> CdnHostnameEntity` | Create a CdnHostname entity instance. |
 | `CdnSpace` | `(data) -> CdnSpaceEntity` | Create a CdnSpace entity instance. |
 | `CdnSpaceObject` | `(data) -> CdnSpaceObjectEntity` | Create a CdnSpaceObject entity instance. |
+| `Change` | `(data) -> ChangeEntity` | Create a Change entity instance. |
+| `ChangeAsset` | `(data) -> ChangeAssetEntity` | Create a ChangeAsset entity instance. |
+| `ChangeComment` | `(data) -> ChangeCommentEntity` | Create a ChangeComment entity instance. |
+| `ChangeFileReviewCheckpoint` | `(data) -> ChangeFileReviewCheckpointEntity` | Create a ChangeFileReviewCheckpoint entity instance. |
+| `ChangeGitBranchSubmission` | `(data) -> ChangeGitBranchSubmissionEntity` | Create a ChangeGitBranchSubmission entity instance. |
+| `ChangeGitCommitIdentity` | `(data) -> ChangeGitCommitIdentityEntity` | Create a ChangeGitCommitIdentity entity instance. |
+| `ChangeGitPublication` | `(data) -> ChangeGitPublicationEntity` | Create a ChangeGitPublication entity instance. |
+| `ChangeGroupMember` | `(data) -> ChangeGroupMemberEntity` | Create a ChangeGroupMember entity instance. |
+| `ChangeLabel` | `(data) -> ChangeLabelEntity` | Create a ChangeLabel entity instance. |
+| `ChangeLandingHold` | `(data) -> ChangeLandingHoldEntity` | Create a ChangeLandingHold entity instance. |
+| `ChangeLandingRequest` | `(data) -> ChangeLandingRequestEntity` | Create a ChangeLandingRequest entity instance. |
+| `ChangeRequestChange` | `(data) -> ChangeRequestChangeEntity` | Create a ChangeRequestChange entity instance. |
+| `ChangeReviewer` | `(data) -> ChangeReviewerEntity` | Create a ChangeReviewer entity instance. |
+| `ChangeTranscript` | `(data) -> ChangeTranscriptEntity` | Create a ChangeTranscript entity instance. |
+| `ChangeTranscriptSummary` | `(data) -> ChangeTranscriptSummaryEntity` | Create a ChangeTranscriptSummary entity instance. |
+| `CheckpointPrepareChunk` | `(data) -> CheckpointPrepareChunkEntity` | Create a CheckpointPrepareChunk entity instance. |
+| `CiNode` | `(data) -> CiNodeEntity` | Create a CiNode entity instance. |
+| `CiPipeline` | `(data) -> CiPipelineEntity` | Create a CiPipeline entity instance. |
+| `CiPipelineRun` | `(data) -> CiPipelineRunEntity` | Create a CiPipelineRun entity instance. |
+| `CiRunnerPool` | `(data) -> CiRunnerPoolEntity` | Create a CiRunnerPool entity instance. |
+| `CiStatus` | `(data) -> CiStatusEntity` | Create a CiStatus entity instance. |
+| `CliEvent` | `(data) -> CliEventEntity` | Create a CliEvent entity instance. |
+| `CliRelease` | `(data) -> CliReleaseEntity` | Create a CliRelease entity instance. |
+| `CloudWorkspaceBackupObject` | `(data) -> CloudWorkspaceBackupObjectEntity` | Create a CloudWorkspaceBackupObject entity instance. |
+| `CodeRuleEvaluation` | `(data) -> CodeRuleEvaluationEntity` | Create a CodeRuleEvaluation entity instance. |
+| `ComSiteAccess` | `(data) -> ComSiteAccessEntity` | Create a ComSiteAccess entity instance. |
+| `ComSiteAccessSession` | `(data) -> ComSiteAccessSessionEntity` | Create a ComSiteAccessSession entity instance. |
+| `CommentThreadComment` | `(data) -> CommentThreadCommentEntity` | Create a CommentThreadComment entity instance. |
+| `CommitDiff` | `(data) -> CommitDiffEntity` | Create a CommitDiff entity instance. |
 | `ConnectionRequest` | `(data) -> ConnectionRequestEntity` | Create a ConnectionRequest entity instance. |
 | `ConnectionSource` | `(data) -> ConnectionSourceEntity` | Create a ConnectionSource entity instance. |
+| `ContactSubmission` | `(data) -> ContactSubmissionEntity` | Create a ContactSubmission entity instance. |
+| `ControlComputer` | `(data) -> ControlComputerEntity` | Create a ControlComputer entity instance. |
+| `ControlComputerControlOperation` | `(data) -> ControlComputerControlOperationEntity` | Create a ControlComputerControlOperation entity instance. |
 | `CoordinationWait` | `(data) -> CoordinationWaitEntity` | Create a CoordinationWait entity instance. |
 | `CredentialSignInCheck` | `(data) -> CredentialSignInCheckEntity` | Create a CredentialSignInCheck entity instance. |
 | `DataResourceRotateCredential` | `(data) -> DataResourceRotateCredentialEntity` | Create a DataResourceRotateCredential entity instance. |
@@ -340,10 +410,36 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `DeepScanOption` | `(data) -> DeepScanOptionEntity` | Create a DeepScanOption entity instance. |
 | `DemoShare` | `(data) -> DemoShareEntity` | Create a DemoShare entity instance. |
 | `DemoShareSegment` | `(data) -> DemoShareSegmentEntity` | Create a DemoShareSegment entity instance. |
+| `Deployment` | `(data) -> DeploymentEntity` | Create a Deployment entity instance. |
 | `DeploymentDashboardNomad` | `(data) -> DeploymentDashboardNomadEntity` | Create a DeploymentDashboardNomad entity instance. |
+| `DeploymentDetail` | `(data) -> DeploymentDetailEntity` | Create a DeploymentDetail entity instance. |
 | `DeploymentFile` | `(data) -> DeploymentFileEntity` | Create a DeploymentFile entity instance. |
+| `DeploymentLog` | `(data) -> DeploymentLogEntity` | Create a DeploymentLog entity instance. |
+| `DeploymentMetric` | `(data) -> DeploymentMetricEntity` | Create a DeploymentMetric entity instance. |
+| `DeploymentPreview` | `(data) -> DeploymentPreviewEntity` | Create a DeploymentPreview entity instance. |
+| `DeploymentSetting` | `(data) -> DeploymentSettingEntity` | Create a DeploymentSetting entity instance. |
+| `DesktopLocalAgentModel` | `(data) -> DesktopLocalAgentModelEntity` | Create a DesktopLocalAgentModel entity instance. |
+| `DesktopLocalAgentResponse` | `(data) -> DesktopLocalAgentResponseEntity` | Create a DesktopLocalAgentResponse entity instance. |
+| `Device` | `(data) -> DeviceEntity` | Create a Device entity instance. |
+| `DeviceBrowserOperation` | `(data) -> DeviceBrowserOperationEntity` | Create a DeviceBrowserOperation entity instance. |
+| `DeviceControlMessage` | `(data) -> DeviceControlMessageEntity` | Create a DeviceControlMessage entity instance. |
+| `DeviceControlOperation` | `(data) -> DeviceControlOperationEntity` | Create a DeviceControlOperation entity instance. |
+| `DeviceEnterpriseRelay` | `(data) -> DeviceEnterpriseRelayEntity` | Create a DeviceEnterpriseRelay entity instance. |
+| `DeviceFolderListing` | `(data) -> DeviceFolderListingEntity` | Create a DeviceFolderListing entity instance. |
+| `DeviceGrant` | `(data) -> DeviceGrantEntity` | Create a DeviceGrant entity instance. |
+| `DeviceInvocation` | `(data) -> DeviceInvocationEntity` | Create a DeviceInvocation entity instance. |
+| `DeviceLocalEvent` | `(data) -> DeviceLocalEventEntity` | Create a DeviceLocalEvent entity instance. |
+| `DevicePairing` | `(data) -> DevicePairingEntity` | Create a DevicePairing entity instance. |
+| `DeviceProject` | `(data) -> DeviceProjectEntity` | Create a DeviceProject entity instance. |
+| `DeviceScheduledCheckIn` | `(data) -> DeviceScheduledCheckInEntity` | Create a DeviceScheduledCheckIn entity instance. |
+| `DockerBuilder` | `(data) -> DockerBuilderEntity` | Create a DockerBuilder entity instance. |
+| `DockerBuilderSession` | `(data) -> DockerBuilderSessionEntity` | Create a DockerBuilderSession entity instance. |
+| `DockerBuilderSetting` | `(data) -> DockerBuilderSettingEntity` | Create a DockerBuilderSetting entity instance. |
+| `DomainDnsIntegration` | `(data) -> DomainDnsIntegrationEntity` | Create a DomainDnsIntegration entity instance. |
 | `DomainPathRule` | `(data) -> DomainPathRuleEntity` | Create a DomainPathRule entity instance. |
 | `Dream` | `(data) -> DreamEntity` | Create a Dream entity instance. |
+| `Edge` | `(data) -> EdgeEntity` | Create an Edge entity instance. |
+| `EmailVerification` | `(data) -> EmailVerificationEntity` | Create an EmailVerification entity instance. |
 | `Environment` | `(data) -> EnvironmentEntity` | Create an Environment entity instance. |
 | `EnvironmentDiscoveryRun` | `(data) -> EnvironmentDiscoveryRunEntity` | Create an EnvironmentDiscoveryRun entity instance. |
 | `EnvironmentExploration` | `(data) -> EnvironmentExplorationEntity` | Create an EnvironmentExploration entity instance. |
@@ -352,48 +448,153 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `EnvironmentSecretBinding` | `(data) -> EnvironmentSecretBindingEntity` | Create an EnvironmentSecretBinding entity instance. |
 | `EnvironmentTestAccount` | `(data) -> EnvironmentTestAccountEntity` | Create an EnvironmentTestAccount entity instance. |
 | `Evidence` | `(data) -> EvidenceEntity` | Create an Evidence entity instance. |
+| `ExecutionDesiredState` | `(data) -> ExecutionDesiredStateEntity` | Create an ExecutionDesiredState entity instance. |
+| `ExecutionReconcilerTick` | `(data) -> ExecutionReconcilerTickEntity` | Create an ExecutionReconcilerTick entity instance. |
+| `ExecutionRelease` | `(data) -> ExecutionReleaseEntity` | Create an ExecutionRelease entity instance. |
+| `ExecutionRuntimeInstance` | `(data) -> ExecutionRuntimeInstanceEntity` | Create an ExecutionRuntimeInstance entity instance. |
 | `Exploration` | `(data) -> ExplorationEntity` | Create an Exploration entity instance. |
 | `ExplorationMessage` | `(data) -> ExplorationMessageEntity` | Create an ExplorationMessage entity instance. |
 | `ExplorationReport` | `(data) -> ExplorationReportEntity` | Create an ExplorationReport entity instance. |
 | `ExplorationScenario` | `(data) -> ExplorationScenarioEntity` | Create an ExplorationScenario entity instance. |
 | `Finding` | `(data) -> FindingEntity` | Create a Finding entity instance. |
+| `Gh` | `(data) -> GhEntity` | Create a Gh entity instance. |
+| `GitImport` | `(data) -> GitImportEntity` | Create a GitImport entity instance. |
+| `Github` | `(data) -> GithubEntity` | Create a Github entity instance. |
+| `GithubApp` | `(data) -> GithubAppEntity` | Create a GithubApp entity instance. |
+| `GithubAppImportableRepository` | `(data) -> GithubAppImportableRepositoryEntity` | Create a GithubAppImportableRepository entity instance. |
+| `GithubAppInstallation` | `(data) -> GithubAppInstallationEntity` | Create a GithubAppInstallation entity instance. |
+| `GithubAppInstallationAuthorization` | `(data) -> GithubAppInstallationAuthorizationEntity` | Create a GithubAppInstallationAuthorization entity instance. |
+| `GithubAppUserAuthorization` | `(data) -> GithubAppUserAuthorizationEntity` | Create a GithubAppUserAuthorization entity instance. |
+| `GithubCiRepository` | `(data) -> GithubCiRepositoryEntity` | Create a GithubCiRepository entity instance. |
+| `GithubCiRepositoryCompatibilityReport` | `(data) -> GithubCiRepositoryCompatibilityReportEntity` | Create a GithubCiRepositoryCompatibilityReport entity instance. |
 | `GithubConnection` | `(data) -> GithubConnectionEntity` | Create a GithubConnection entity instance. |
+| `GithubIntegration` | `(data) -> GithubIntegrationEntity` | Create a GithubIntegration entity instance. |
+| `GithubOnboarding` | `(data) -> GithubOnboardingEntity` | Create a GithubOnboarding entity instance. |
+| `GithubOnboardingBranch` | `(data) -> GithubOnboardingBranchEntity` | Create a GithubOnboardingBranch entity instance. |
+| `GithubOnboardingImport` | `(data) -> GithubOnboardingImportEntity` | Create a GithubOnboardingImport entity instance. |
+| `GithubOnboardingImportBatch` | `(data) -> GithubOnboardingImportBatchEntity` | Create a GithubOnboardingImportBatch entity instance. |
+| `GithubOnboardingImportItem` | `(data) -> GithubOnboardingImportItemEntity` | Create a GithubOnboardingImportItem entity instance. |
+| `GithubPullRequest` | `(data) -> GithubPullRequestEntity` | Create a GithubPullRequest entity instance. |
+| `GithubRunnerAdmission` | `(data) -> GithubRunnerAdmissionEntity` | Create a GithubRunnerAdmission entity instance. |
+| `GithubRunnerCache` | `(data) -> GithubRunnerCacheEntity` | Create a GithubRunnerCache entity instance. |
+| `GithubRunnerEgress` | `(data) -> GithubRunnerEgressEntity` | Create a GithubRunnerEgress entity instance. |
+| `GithubRunnerHistory` | `(data) -> GithubRunnerHistoryEntity` | Create a GithubRunnerHistory entity instance. |
+| `GithubRunnerImage` | `(data) -> GithubRunnerImageEntity` | Create a GithubRunnerImage entity instance. |
+| `GithubRunnerPool` | `(data) -> GithubRunnerPoolEntity` | Create a GithubRunnerPool entity instance. |
+| `GithubRunnerSetup` | `(data) -> GithubRunnerSetupEntity` | Create a GithubRunnerSetup entity instance. |
+| `Gitlab` | `(data) -> GitlabEntity` | Create a Gitlab entity instance. |
+| `GitlabConnection` | `(data) -> GitlabConnectionEntity` | Create a GitlabConnection entity instance. |
+| `GitlabImport` | `(data) -> GitlabImportEntity` | Create a GitlabImport entity instance. |
+| `GitlabOauth` | `(data) -> GitlabOauthEntity` | Create a GitlabOauth entity instance. |
+| `GrantAllAgent` | `(data) -> GrantAllAgentEntity` | Create a GrantAllAgent entity instance. |
 | `HostingAppDomain` | `(data) -> HostingAppDomainEntity` | Create a HostingAppDomain entity instance. |
+| `IdentityOrganization` | `(data) -> IdentityOrganizationEntity` | Create an IdentityOrganization entity instance. |
 | `ImageRepository` | `(data) -> ImageRepositoryEntity` | Create an ImageRepository entity instance. |
+| `ImageRepositoryTag` | `(data) -> ImageRepositoryTagEntity` | Create an ImageRepositoryTag entity instance. |
+| `ImportBranchPolicy` | `(data) -> ImportBranchPolicyEntity` | Create an ImportBranchPolicy entity instance. |
 | `Integration` | `(data) -> IntegrationEntity` | Create an Integration entity instance. |
 | `InteractionResponse` | `(data) -> InteractionResponseEntity` | Create an InteractionResponse entity instance. |
 | `Invitation` | `(data) -> InvitationEntity` | Create an Invitation entity instance. |
+| `InvocationControl` | `(data) -> InvocationControlEntity` | Create an InvocationControl entity instance. |
+| `JobLogChunk` | `(data) -> JobLogChunkEntity` | Create a JobLogChunk entity instance. |
+| `JobStep` | `(data) -> JobStepEntity` | Create a JobStep entity instance. |
+| `JobWorkspace` | `(data) -> JobWorkspaceEntity` | Create a JobWorkspace entity instance. |
 | `JourneyVariantReplay` | `(data) -> JourneyVariantReplayEntity` | Create a JourneyVariantReplay entity instance. |
 | `Knowledge` | `(data) -> KnowledgeEntity` | Create a Knowledge entity instance. |
+| `Known` | `(data) -> KnownEntity` | Create a Known entity instance. |
+| `Label` | `(data) -> LabelEntity` | Create a Label entity instance. |
+| `LeaseArtifact` | `(data) -> LeaseArtifactEntity` | Create a LeaseArtifact entity instance. |
+| `LeaseCache` | `(data) -> LeaseCacheEntity` | Create a LeaseCache entity instance. |
+| `LeaseLogChunk` | `(data) -> LeaseLogChunkEntity` | Create a LeaseLogChunk entity instance. |
+| `LeaseReconciliation` | `(data) -> LeaseReconciliationEntity` | Create a LeaseReconciliation entity instance. |
+| `LeaseStep` | `(data) -> LeaseStepEntity` | Create a LeaseStep entity instance. |
+| `LeaseVerifyDiagnostic` | `(data) -> LeaseVerifyDiagnosticEntity` | Create a LeaseVerifyDiagnostic entity instance. |
+| `LeaseVerifySecret` | `(data) -> LeaseVerifySecretEntity` | Create a LeaseVerifySecret entity instance. |
+| `LeaseWorkspace` | `(data) -> LeaseWorkspaceEntity` | Create a LeaseWorkspace entity instance. |
+| `LocalAgentDecision` | `(data) -> LocalAgentDecisionEntity` | Create a LocalAgentDecision entity instance. |
+| `LocalAgentResponse` | `(data) -> LocalAgentResponseEntity` | Create a LocalAgentResponse entity instance. |
 | `LocalThreadDelivery` | `(data) -> LocalThreadDeliveryEntity` | Create a LocalThreadDelivery entity instance. |
 | `LocalThreadOperation` | `(data) -> LocalThreadOperationEntity` | Create a LocalThreadOperation entity instance. |
 | `Location` | `(data) -> LocationEntity` | Create a Location entity instance. |
+| `LogStreamChunk` | `(data) -> LogStreamChunkEntity` | Create a LogStreamChunk entity instance. |
+| `LogoImage` | `(data) -> LogoImageEntity` | Create a LogoImage entity instance. |
+| `MarketingSetting` | `(data) -> MarketingSettingEntity` | Create a MarketingSetting entity instance. |
+| `McpOauth` | `(data) -> McpOauthEntity` | Create a McpOauth entity instance. |
 | `Me` | `(data) -> MeEntity` | Create a Me entity instance. |
 | `MeEmail` | `(data) -> MeEmailEntity` | Create a MeEmail entity instance. |
 | `MeOnboarding` | `(data) -> MeOnboardingEntity` | Create a MeOnboarding entity instance. |
 | `MediaFile` | `(data) -> MediaFileEntity` | Create a MediaFile entity instance. |
 | `Member` | `(data) -> MemberEntity` | Create a Member entity instance. |
 | `Memory` | `(data) -> MemoryEntity` | Create a Memory entity instance. |
+| `MergeQueueEntry` | `(data) -> MergeQueueEntryEntity` | Create a MergeQueueEntry entity instance. |
 | `MergeRequest` | `(data) -> MergeRequestEntity` | Create a MergeRequest entity instance. |
+| `MergeResolution` | `(data) -> MergeResolutionEntity` | Create a MergeResolution entity instance. |
 | `MessagingConversationMessage` | `(data) -> MessagingConversationMessageEntity` | Create a MessagingConversationMessage entity instance. |
 | `MessagingConversationUpload` | `(data) -> MessagingConversationUploadEntity` | Create a MessagingConversationUpload entity instance. |
 | `MetricQuery` | `(data) -> MetricQueryEntity` | Create a MetricQuery entity instance. |
+| `MetronomeWebhook` | `(data) -> MetronomeWebhookEntity` | Create a MetronomeWebhook entity instance. |
+| `ModelSubscriptionAccount` | `(data) -> ModelSubscriptionAccountEntity` | Create a ModelSubscriptionAccount entity instance. |
+| `ModelSubscriptionAccountConnection` | `(data) -> ModelSubscriptionAccountConnectionEntity` | Create a ModelSubscriptionAccountConnection entity instance. |
 | `NetworkConnection` | `(data) -> NetworkConnectionEntity` | Create a NetworkConnection entity instance. |
+| `NetworkingSpace` | `(data) -> NetworkingSpaceEntity` | Create a NetworkingSpace entity instance. |
+| `Node` | `(data) -> NodeEntity` | Create a Node entity instance. |
+| `NodeCertificate` | `(data) -> NodeCertificateEntity` | Create a NodeCertificate entity instance. |
+| `NodeLease` | `(data) -> NodeLeaseEntity` | Create a NodeLease entity instance. |
 | `NomadAllocation` | `(data) -> NomadAllocationEntity` | Create a NomadAllocation entity instance. |
 | `NomadLog` | `(data) -> NomadLogEntity` | Create a NomadLog entity instance. |
+| `Now` | `(data) -> NowEntity` | Create a Now entity instance. |
+| `ObservabilityClickhouseCluster` | `(data) -> ObservabilityClickhouseClusterEntity` | Create an ObservabilityClickhouseCluster entity instance. |
+| `ObservabilityQuickwitCluster` | `(data) -> ObservabilityQuickwitClusterEntity` | Create an ObservabilityQuickwitCluster entity instance. |
+| `ObservabilitySpace` | `(data) -> ObservabilitySpaceEntity` | Create an ObservabilitySpace entity instance. |
+| `Openapi` | `(data) -> OpenapiEntity` | Create an Openapi entity instance. |
+| `OrgInvitation` | `(data) -> OrgInvitationEntity` | Create an OrgInvitation entity instance. |
 | `Organization` | `(data) -> OrganizationEntity` | Create an Organization entity instance. |
+| `OrganizationApp` | `(data) -> OrganizationAppEntity` | Create an OrganizationApp entity instance. |
+| `OrganizationControl` | `(data) -> OrganizationControlEntity` | Create an OrganizationControl entity instance. |
+| `OrganizationDevice` | `(data) -> OrganizationDeviceEntity` | Create an OrganizationDevice entity instance. |
+| `OrganizationIdentityCertificate` | `(data) -> OrganizationIdentityCertificateEntity` | Create an OrganizationIdentityCertificate entity instance. |
+| `OrganizationInteraction` | `(data) -> OrganizationInteractionEntity` | Create an OrganizationInteraction entity instance. |
+| `OrganizationInvitation` | `(data) -> OrganizationInvitationEntity` | Create an OrganizationInvitation entity instance. |
+| `OrganizationMessageFile` | `(data) -> OrganizationMessageFileEntity` | Create an OrganizationMessageFile entity instance. |
+| `OrganizationOidcTrust` | `(data) -> OrganizationOidcTrustEntity` | Create an OrganizationOidcTrust entity instance. |
+| `OrganizationRunEvent` | `(data) -> OrganizationRunEventEntity` | Create an OrganizationRunEvent entity instance. |
+| `OrganizationRunOutcome` | `(data) -> OrganizationRunOutcomeEntity` | Create an OrganizationRunOutcome entity instance. |
+| `OrganizationRunUsage` | `(data) -> OrganizationRunUsageEntity` | Create an OrganizationRunUsage entity instance. |
+| `OrganizationSandbox` | `(data) -> OrganizationSandboxEntity` | Create an OrganizationSandbox entity instance. |
+| `OrganizationSecret` | `(data) -> OrganizationSecretEntity` | Create an OrganizationSecret entity instance. |
+| `OrganizationServiceAccount` | `(data) -> OrganizationServiceAccountEntity` | Create an OrganizationServiceAccount entity instance. |
+| `OrganizationSetting` | `(data) -> OrganizationSettingEntity` | Create an OrganizationSetting entity instance. |
+| `OrganizationSite` | `(data) -> OrganizationSiteEntity` | Create an OrganizationSite entity instance. |
+| `OrganizationSubscription` | `(data) -> OrganizationSubscriptionEntity` | Create an OrganizationSubscription entity instance. |
+| `OrganizationTool` | `(data) -> OrganizationToolEntity` | Create an OrganizationTool entity instance. |
+| `OrganizationWorkloadIdentity` | `(data) -> OrganizationWorkloadIdentityEntity` | Create an OrganizationWorkloadIdentity entity instance. |
+| `OtelIngest` | `(data) -> OtelIngestEntity` | Create an OtelIngest entity instance. |
 | `Page` | `(data) -> PageEntity` | Create a Page entity instance. |
 | `PageAgent` | `(data) -> PageAgentEntity` | Create a PageAgent entity instance. |
+| `PageArtefact` | `(data) -> PageArtefactEntity` | Create a PageArtefact entity instance. |
+| `PageCiPipelineRun` | `(data) -> PageCiPipelineRunEntity` | Create a PageCiPipelineRun entity instance. |
 | `PageProjectRun` | `(data) -> PageProjectRunEntity` | Create a PageProjectRun entity instance. |
+| `PageRepoVcCommit` | `(data) -> PageRepoVcCommitEntity` | Create a PageRepoVcCommit entity instance. |
+| `PagesBilling` | `(data) -> PagesBillingEntity` | Create a PagesBilling entity instance. |
+| `PagesGithubOnboarding` | `(data) -> PagesGithubOnboardingEntity` | Create a PagesGithubOnboarding entity instance. |
+| `PagesMember` | `(data) -> PagesMemberEntity` | Create a PagesMember entity instance. |
 | `PagesProjectCredential` | `(data) -> PagesProjectCredentialEntity` | Create a PagesProjectCredential entity instance. |
 | `PagesProjectPersona` | `(data) -> PagesProjectPersonaEntity` | Create a PagesProjectPersona entity instance. |
 | `PagesProjectRun` | `(data) -> PagesProjectRunEntity` | Create a PagesProjectRun entity instance. |
 | `PagesProjectScenario` | `(data) -> PagesProjectScenarioEntity` | Create a PagesProjectScenario entity instance. |
+| `PagesRegistry` | `(data) -> PagesRegistryEntity` | Create a PagesRegistry entity instance. |
+| `PagesSession` | `(data) -> PagesSessionEntity` | Create a PagesSession entity instance. |
+| `Pairing` | `(data) -> PairingEntity` | Create a Pairing entity instance. |
+| `PairingEvent` | `(data) -> PairingEventEntity` | Create a PairingEvent entity instance. |
+| `ParallelV1` | `(data) -> ParallelV1Entity` | Create a ParallelV1 entity instance. |
+| `PatchsetDiff` | `(data) -> PatchsetDiffEntity` | Create a PatchsetDiff entity instance. |
 | `PersonalAccessToken` | `(data) -> PersonalAccessTokenEntity` | Create a PersonalAccessToken entity instance. |
 | `PreviewOperation` | `(data) -> PreviewOperationEntity` | Create a PreviewOperation entity instance. |
 | `PreviewProfileSecretBinding` | `(data) -> PreviewProfileSecretBindingEntity` | Create a PreviewProfileSecretBinding entity instance. |
 | `PreviewSecret` | `(data) -> PreviewSecretEntity` | Create a PreviewSecret entity instance. |
 | `PreviewSharingApproval` | `(data) -> PreviewSharingApprovalEntity` | Create a PreviewSharingApproval entity instance. |
+| `ProactiveAgentWaitlistEntry` | `(data) -> ProactiveAgentWaitlistEntryEntity` | Create a ProactiveAgentWaitlistEntry entity instance. |
+| `Product` | `(data) -> ProductEntity` | Create a Product entity instance. |
 | `ProductMapIdentityDecision` | `(data) -> ProductMapIdentityDecisionEntity` | Create a ProductMapIdentityDecision entity instance. |
 | `ProductMapJourney` | `(data) -> ProductMapJourneyEntity` | Create a ProductMapJourney entity instance. |
 | `ProductMapJourneyReplay` | `(data) -> ProductMapJourneyReplayEntity` | Create a ProductMapJourneyReplay entity instance. |
@@ -418,43 +619,152 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `ProjectScenarioRow` | `(data) -> ProjectScenarioRowEntity` | Create a ProjectScenarioRow entity instance. |
 | `ProjectSetting` | `(data) -> ProjectSettingEntity` | Create a ProjectSetting entity instance. |
 | `PullRequest` | `(data) -> PullRequestEntity` | Create a PullRequest entity instance. |
+| `PullRequestAction` | `(data) -> PullRequestActionEntity` | Create a PullRequestAction entity instance. |
+| `PullRequestMagicMerge` | `(data) -> PullRequestMagicMergeEntity` | Create a PullRequestMagicMerge entity instance. |
 | `PullRequestSetting` | `(data) -> PullRequestSettingEntity` | Create a PullRequestSetting entity instance. |
 | `PullRequestSettingAddRepository` | `(data) -> PullRequestSettingAddRepositoryEntity` | Create a PullRequestSettingAddRepository entity instance. |
 | `PullRequestSettingDetectComment` | `(data) -> PullRequestSettingDetectCommentEntity` | Create a PullRequestSettingDetectComment entity instance. |
+| `PullRequestTranscript` | `(data) -> PullRequestTranscriptEntity` | Create a PullRequestTranscript entity instance. |
+| `PullZone` | `(data) -> PullZoneEntity` | Create a PullZone entity instance. |
 | `Recorder` | `(data) -> RecorderEntity` | Create a Recorder entity instance. |
 | `Registry` | `(data) -> RegistryEntity` | Create a Registry entity instance. |
 | `RegistryV2` | `(data) -> RegistryV2Entity` | Create a RegistryV2 entity instance. |
+| `RelayAgentConnection` | `(data) -> RelayAgentConnectionEntity` | Create a RelayAgentConnection entity instance. |
 | `RelayAgentLocalThread` | `(data) -> RelayAgentLocalThreadEntity` | Create a RelayAgentLocalThread entity instance. |
+| `RelaySignal` | `(data) -> RelaySignalEntity` | Create a RelaySignal entity instance. |
+| `ReleaseRollout` | `(data) -> ReleaseRolloutEntity` | Create a ReleaseRollout entity instance. |
+| `Repo` | `(data) -> RepoEntity` | Create a Repo entity instance. |
+| `RepoAccessToken` | `(data) -> RepoAccessTokenEntity` | Create a RepoAccessToken entity instance. |
+| `RepoAction` | `(data) -> RepoActionEntity` | Create a RepoAction entity instance. |
+| `RepoAgentCheckpoint` | `(data) -> RepoAgentCheckpointEntity` | Create a RepoAgentCheckpoint entity instance. |
+| `RepoAgentSession` | `(data) -> RepoAgentSessionEntity` | Create a RepoAgentSession entity instance. |
+| `RepoBookmarkProtection` | `(data) -> RepoBookmarkProtectionEntity` | Create a RepoBookmarkProtection entity instance. |
+| `RepoBookmarkProtectionEvent` | `(data) -> RepoBookmarkProtectionEventEntity` | Create a RepoBookmarkProtectionEvent entity instance. |
+| `RepoCloudWorkspaceBackup` | `(data) -> RepoCloudWorkspaceBackupEntity` | Create a RepoCloudWorkspaceBackup entity instance. |
+| `RepoCodeRule` | `(data) -> RepoCodeRuleEntity` | Create a RepoCodeRule entity instance. |
+| `RepoSetting` | `(data) -> RepoSettingEntity` | Create a RepoSetting entity instance. |
+| `RepoStat` | `(data) -> RepoStatEntity` | Create a RepoStat entity instance. |
+| `RepoVc` | `(data) -> RepoVcEntity` | Create a RepoVc entity instance. |
+| `RepoVcCommit` | `(data) -> RepoVcCommitEntity` | Create a RepoVcCommit entity instance. |
 | `ReportReplay` | `(data) -> ReportReplayEntity` | Create a ReportReplay entity instance. |
 | `ReportScenario` | `(data) -> ReportScenarioEntity` | Create a ReportScenario entity instance. |
+| `RepositoryAccess` | `(data) -> RepositoryAccessEntity` | Create a RepositoryAccess entity instance. |
+| `RepositoryAccessResolve` | `(data) -> RepositoryAccessResolveEntity` | Create a RepositoryAccessResolve entity instance. |
+| `RepositoryEvent` | `(data) -> RepositoryEventEntity` | Create a RepositoryEvent entity instance. |
+| `RepositoryImport` | `(data) -> RepositoryImportEntity` | Create a RepositoryImport entity instance. |
+| `RepositoryImportSession` | `(data) -> RepositoryImportSessionEntity` | Create a RepositoryImportSession entity instance. |
+| `RepositoryImportSessionRepository` | `(data) -> RepositoryImportSessionRepositoryEntity` | Create a RepositoryImportSessionRepository entity instance. |
+| `RepositoryImportSessionSelection` | `(data) -> RepositoryImportSessionSelectionEntity` | Create a RepositoryImportSessionSelection entity instance. |
+| `RepositorySandboxEnvironment` | `(data) -> RepositorySandboxEnvironmentEntity` | Create a RepositorySandboxEnvironment entity instance. |
+| `RoderCodeRepair` | `(data) -> RoderCodeRepairEntity` | Create a RoderCodeRepair entity instance. |
+| `RoderCodeRepairSetting` | `(data) -> RoderCodeRepairSettingEntity` | Create a RoderCodeRepairSetting entity instance. |
+| `RoderMachine` | `(data) -> RoderMachineEntity` | Create a RoderMachine entity instance. |
+| `RoderRun` | `(data) -> RoderRunEntity` | Create a RoderRun entity instance. |
+| `RoderWorkspaceCredential` | `(data) -> RoderWorkspaceCredentialEntity` | Create a RoderWorkspaceCredential entity instance. |
+| `RunArtifact` | `(data) -> RunArtifactEntity` | Create a RunArtifact entity instance. |
+| `RunJob` | `(data) -> RunJobEntity` | Create a RunJob entity instance. |
 | `RunScenarioRun` | `(data) -> RunScenarioRunEntity` | Create a RunScenarioRun entity instance. |
 | `RunScheduleOption` | `(data) -> RunScheduleOptionEntity` | Create a RunScheduleOption entity instance. |
 | `RunSearch` | `(data) -> RunSearchEntity` | Create a RunSearch entity instance. |
 | `RunUpdate` | `(data) -> RunUpdateEntity` | Create a RunUpdate entity instance. |
+| `RunWorkspaceCredential` | `(data) -> RunWorkspaceCredentialEntity` | Create a RunWorkspaceCredential entity instance. |
+| `RunnerLease` | `(data) -> RunnerLeaseEntity` | Create a RunnerLease entity instance. |
+| `RunnerPoolNodeEnrollmentToken` | `(data) -> RunnerPoolNodeEnrollmentTokenEntity` | Create a RunnerPoolNodeEnrollmentToken entity instance. |
+| `RunnerPoolRunner` | `(data) -> RunnerPoolRunnerEntity` | Create a RunnerPoolRunner entity instance. |
+| `RuntimeInstanceHealthSnapshot` | `(data) -> RuntimeInstanceHealthSnapshotEntity` | Create a RuntimeInstanceHealthSnapshot entity instance. |
+| `SandboxIntegration` | `(data) -> SandboxIntegrationEntity` | Create a SandboxIntegration entity instance. |
 | `ScenarioRevision` | `(data) -> ScenarioRevisionEntity` | Create a ScenarioRevision entity instance. |
 | `ScenarioRunLesson` | `(data) -> ScenarioRunLessonEntity` | Create a ScenarioRunLesson entity instance. |
 | `ScenarioRunScenarioEdit` | `(data) -> ScenarioRunScenarioEditEntity` | Create a ScenarioRunScenarioEdit entity instance. |
+| `SecretGrant` | `(data) -> SecretGrantEntity` | Create a SecretGrant entity instance. |
+| `SecretVersion` | `(data) -> SecretVersionEntity` | Create a SecretVersion entity instance. |
 | `ServiceEndpoint` | `(data) -> ServiceEndpointEntity` | Create a ServiceEndpoint entity instance. |
+| `Setting` | `(data) -> SettingEntity` | Create a Setting entity instance. |
+| `SettingMutationLease` | `(data) -> SettingMutationLeaseEntity` | Create a SettingMutationLease entity instance. |
+| `Signal` | `(data) -> SignalEntity` | Create a Signal entity instance. |
+| `SignalInbound` | `(data) -> SignalInboundEntity` | Create a SignalInbound entity instance. |
+| `SignalIntegration` | `(data) -> SignalIntegrationEntity` | Create a SignalIntegration entity instance. |
+| `SignalIntegrationDelivery` | `(data) -> SignalIntegrationDeliveryEntity` | Create a SignalIntegrationDelivery entity instance. |
+| `SignalIntegrationTarget` | `(data) -> SignalIntegrationTargetEntity` | Create a SignalIntegrationTarget entity instance. |
+| `SignalSubscription` | `(data) -> SignalSubscriptionEntity` | Create a SignalSubscription entity instance. |
+| `Site` | `(data) -> SiteEntity` | Create a Site entity instance. |
+| `SiteAccessKey` | `(data) -> SiteAccessKeyEntity` | Create a SiteAccessKey entity instance. |
 | `SitePreview` | `(data) -> SitePreviewEntity` | Create a SitePreview entity instance. |
+| `SiteSecret` | `(data) -> SiteSecretEntity` | Create a SiteSecret entity instance. |
 | `SlackChannel` | `(data) -> SlackChannelEntity` | Create a SlackChannel entity instance. |
+| `SourceConnection` | `(data) -> SourceConnectionEntity` | Create a SourceConnection entity instance. |
+| `SpaceAlertRule` | `(data) -> SpaceAlertRuleEntity` | Create a SpaceAlertRule entity instance. |
+| `SpaceAuditEvent` | `(data) -> SpaceAuditEventEntity` | Create a SpaceAuditEvent entity instance. |
+| `SpaceDnsRecord` | `(data) -> SpaceDnsRecordEntity` | Create a SpaceDnsRecord entity instance. |
+| `SpaceEnrollmentToken` | `(data) -> SpaceEnrollmentTokenEntity` | Create a SpaceEnrollmentToken entity instance. |
+| `SpaceGateway` | `(data) -> SpaceGatewayEntity` | Create a SpaceGateway entity instance. |
+| `SpaceGroup` | `(data) -> SpaceGroupEntity` | Create a SpaceGroup entity instance. |
+| `SpaceGroupMembership` | `(data) -> SpaceGroupMembershipEntity` | Create a SpaceGroupMembership entity instance. |
+| `SpaceLogStream` | `(data) -> SpaceLogStreamEntity` | Create a SpaceLogStream entity instance. |
+| `SpaceMetricSery` | `(data) -> SpaceMetricSeryEntity` | Create a SpaceMetricSery entity instance. |
+| `SpaceOtelCollector` | `(data) -> SpaceOtelCollectorEntity` | Create a SpaceOtelCollector entity instance. |
+| `SpacePeer` | `(data) -> SpacePeerEntity` | Create a SpacePeer entity instance. |
+| `SpacePeerAttachment` | `(data) -> SpacePeerAttachmentEntity` | Create a SpacePeerAttachment entity instance. |
+| `SpacePolicy` | `(data) -> SpacePolicyEntity` | Create a SpacePolicy entity instance. |
+| `SpaceSegment` | `(data) -> SpaceSegmentEntity` | Create a SpaceSegment entity instance. |
+| `SpaceTraceSpan` | `(data) -> SpaceTraceSpanEntity` | Create a SpaceTraceSpan entity instance. |
+| `Spark` | `(data) -> SparkEntity` | Create a Spark entity instance. |
+| `SparkAgentIntegration` | `(data) -> SparkAgentIntegrationEntity` | Create a SparkAgentIntegration entity instance. |
 | `SparkAgentLocalThread` | `(data) -> SparkAgentLocalThreadEntity` | Create a SparkAgentLocalThread entity instance. |
+| `SparkAgentSite` | `(data) -> SparkAgentSiteEntity` | Create a SparkAgentSite entity instance. |
+| `SparkAgentSkill` | `(data) -> SparkAgentSkillEntity` | Create a SparkAgentSkill entity instance. |
+| `SparkAgentThread` | `(data) -> SparkAgentThreadEntity` | Create a SparkAgentThread entity instance. |
+| `SparkCredit` | `(data) -> SparkCreditEntity` | Create a SparkCredit entity instance. |
+| `SparkCreditAgentUsage` | `(data) -> SparkCreditAgentUsageEntity` | Create a SparkCreditAgentUsage entity instance. |
+| `SparkCreditUsageTotal` | `(data) -> SparkCreditUsageTotalEntity` | Create a SparkCreditUsageTotal entity instance. |
 | `StaticSite` | `(data) -> StaticSiteEntity` | Create a StaticSite entity instance. |
 | `StaticSiteDeployment` | `(data) -> StaticSiteDeploymentEntity` | Create a StaticSiteDeployment entity instance. |
 | `StaticSiteDomain` | `(data) -> StaticSiteDomainEntity` | Create a StaticSiteDomain entity instance. |
+| `StatusChange` | `(data) -> StatusChangeEntity` | Create a StatusChange entity instance. |
+| `StatusCommit` | `(data) -> StatusCommitEntity` | Create a StatusCommit entity instance. |
+| `StatusPatchset` | `(data) -> StatusPatchsetEntity` | Create a StatusPatchset entity instance. |
+| `StripeWebhook` | `(data) -> StripeWebhookEntity` | Create a StripeWebhook entity instance. |
+| `SubmitTelemetry` | `(data) -> SubmitTelemetryEntity` | Create a SubmitTelemetry entity instance. |
 | `SubscriptionModel` | `(data) -> SubscriptionModelEntity` | Create a SubscriptionModel entity instance. |
+| `SwarmEvent` | `(data) -> SwarmEventEntity` | Create a SwarmEvent entity instance. |
+| `SwarmLive` | `(data) -> SwarmLiveEntity` | Create a SwarmLive entity instance. |
+| `SwarmNote` | `(data) -> SwarmNoteEntity` | Create a SwarmNote entity instance. |
+| `SwarmTask` | `(data) -> SwarmTaskEntity` | Create a SwarmTask entity instance. |
+| `TaskLease` | `(data) -> TaskLeaseEntity` | Create a TaskLease entity instance. |
 | `ThreadPreview` | `(data) -> ThreadPreviewEntity` | Create a ThreadPreview entity instance. |
+| `ThreadPreviewAccess` | `(data) -> ThreadPreviewAccessEntity` | Create a ThreadPreviewAccess entity instance. |
+| `ToolFeedback` | `(data) -> ToolFeedbackEntity` | Create a ToolFeedback entity instance. |
+| `Transcript` | `(data) -> TranscriptEntity` | Create a Transcript entity instance. |
+| `V1Message` | `(data) -> V1MessageEntity` | Create a V1Message entity instance. |
+| `VcBranch` | `(data) -> VcBranchEntity` | Create a VcBranch entity instance. |
+| `VcBrowser` | `(data) -> VcBrowserEntity` | Create a VcBrowser entity instance. |
+| `VcChange` | `(data) -> VcChangeEntity` | Create a VcChange entity instance. |
+| `VcChangeGroup` | `(data) -> VcChangeGroupEntity` | Create a VcChangeGroup entity instance. |
+| `VcFile` | `(data) -> VcFileEntity` | Create a VcFile entity instance. |
+| `VcMergeQueue` | `(data) -> VcMergeQueueEntity` | Create a VcMergeQueue entity instance. |
+| `VcStack` | `(data) -> VcStackEntity` | Create a VcStack entity instance. |
+| `VcsNode` | `(data) -> VcsNodeEntity` | Create a VcsNode entity instance. |
+| `VcsSetting` | `(data) -> VcsSettingEntity` | Create a VcsSetting entity instance. |
 | `VerificationProjectCredential` | `(data) -> VerificationProjectCredentialEntity` | Create a VerificationProjectCredential entity instance. |
 | `VerificationProjectPersona` | `(data) -> VerificationProjectPersonaEntity` | Create a VerificationProjectPersona entity instance. |
 | `VerificationProjectRun` | `(data) -> VerificationProjectRunEntity` | Create a VerificationProjectRun entity instance. |
 | `VerificationProjectScenario` | `(data) -> VerificationProjectScenarioEntity` | Create a VerificationProjectScenario entity instance. |
 | `VerifyAppDomain` | `(data) -> VerifyAppDomainEntity` | Create a VerifyAppDomain entity instance. |
 | `VerifyBrowserSession` | `(data) -> VerifyBrowserSessionEntity` | Create a VerifyBrowserSession entity instance. |
+| `VerifyEmailVerification` | `(data) -> VerifyEmailVerificationEntity` | Create a VerifyEmailVerification entity instance. |
+| `VerifySignalIntegration` | `(data) -> VerifySignalIntegrationEntity` | Create a VerifySignalIntegration entity instance. |
 | `VerifyStaticSiteDomain` | `(data) -> VerifyStaticSiteDomainEntity` | Create a VerifyStaticSiteDomain entity instance. |
 | `VersionLog` | `(data) -> VersionLogEntity` | Create a VersionLog entity instance. |
+| `WaitlistApplication` | `(data) -> WaitlistApplicationEntity` | Create a WaitlistApplication entity instance. |
 | `WebBotAuth` | `(data) -> WebBotAuthEntity` | Create a WebBotAuth entity instance. |
+| `WebhookGitlab` | `(data) -> WebhookGitlabEntity` | Create a WebhookGitlab entity instance. |
 | `WorkflowRunStep` | `(data) -> WorkflowRunStepEntity` | Create a WorkflowRunStep entity instance. |
 | `WorkflowRunStopNotice` | `(data) -> WorkflowRunStopNoticeEntity` | Create a WorkflowRunStopNotice entity instance. |
 | `WorkflowTriggerSkipped` | `(data) -> WorkflowTriggerSkippedEntity` | Create a WorkflowTriggerSkipped entity instance. |
+| `WorkspaceActivity` | `(data) -> WorkspaceActivityEntity` | Create a WorkspaceActivity entity instance. |
+| `WorkspaceActivityNotification` | `(data) -> WorkspaceActivityNotificationEntity` | Create a WorkspaceActivityNotification entity instance. |
+| `WorkspaceSpace` | `(data) -> WorkspaceSpaceEntity` | Create a WorkspaceSpace entity instance. |
+| `WorkspaceSpacePreference` | `(data) -> WorkspaceSpacePreferenceEntity` | Create a WorkspaceSpacePreference entity instance. |
 
 ### Entity interface
 
@@ -494,6 +804,39 @@ returns a result `Hash` with these keys:
 | `err` | `Error` | Present when `ok` is `false`. |
 
 ### Entities
+
+#### A2aWellKnown
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/control/a2a/{connection_id}/.well-known/agent-card.json`
+
+#### AdminOrg
+
+| Field | Description |
+| --- | --- |
+| `billing_email` |  |
+| `billing_reason` | Required when setting an agreed price |
+| `customize_onboarding_packages` |  |
+| `deployment_usage_visibility` |  |
+| `deployment_usage_visible` |  |
+| `id` |  |
+| `monthly_price_dollars` | Ongoing USD workspace price, for example '50.00' |
+| `monthly_price_override_cents` |  |
+| `name` |  |
+| `onboarding_custom_pricing` |  |
+| `onboarding_package_keys` | Package keys offered when customizing onboarding. |
+| `owner_email` |  |
+| `package_id` | Active customer package public ID. |
+| `skip_payment` | Grant the selected package as an ongoing complimentary subscription with monthly included usage and package limits. |
+| `slug` |  |
+
+Operations: Create, List, Load, Update.
+
+API path: `/api/v1/admin/organizations/{org_slug}/checkout_session`
 
 #### Agent
 
@@ -545,6 +888,44 @@ returns a result `Hash` with these keys:
 Operations: Create, List, Load, Remove, Update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/browser_opened`
+
+#### AgentApp
+
+| Field | Description |
+| --- | --- |
+| `author` |  |
+| `can_message` | The viewer may send input to the author agent |
+| `deployments_count` | Increases with every deploy of the site |
+| `description` |  |
+| `hidden_install_count` | Installs by agents the viewer cannot open |
+| `id` |  |
+| `install_count` |  |
+| `install_targets` | Active agents the viewer owns or manages, which they can install apps on |
+| `installed_by` |  |
+| `installed_target_ids` | Install targets of the viewer that have this app installed |
+| `items` |  |
+| `mcp_url` |  |
+| `next_cursor` | Pass as cursor to load older apps |
+| `owner` | The person who controls the author agent |
+| `thread` | The thread that published the app, when the viewer can open the author agent |
+| `title` |  |
+| `url` |  |
+| `visibility` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/agent_apps/{id}/opened`
+
+#### AgentAppInstall
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `installed` |  |
+
+Operations: Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/agent_apps/{id}/installs/{agent_id}`
 
 #### AgentAttachment
 
@@ -619,29 +1000,177 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/computer/co
 
 | Field | Description |
 | --- | --- |
-| `agent_card_url` |  |
-| `auth_scheme` |  |
-| `can_configure` |  |
-| `can_disconnect` |  |
-| `can_setup` |  |
+| `actions` |  |
+| `activity` |  |
+| `admin_disabled_at` |  |
+| `agent_tools` |  |
+| `authentication` |  |
+| `authorized_at` |  |
+| `can_create_account` | Whether another account can be created directly from this provider. |
+| `capabilities` |  |
+| `catalog_section` | Server-owned grouping in the agent integration catalog. |
+| `category` | Short product label, such as CRM or Email. |
+| `certification` |  |
+| `checked_at` |  |
 | `connection` |  |
-| `credential` | Write-only outbound key. |
-| `error_code` |  |
-| `expected_generation` |  |
+| `consent` |  |
+| `created_at` |  |
+| `creation_key` | Reuse the same key to recover the account after an interrupted response. |
+| `custodian_id` |  |
+| `description` | One-line catalog description of the app. |
+| `disabled_reason` |  |
+| `failure_code` |  |
+| `generation` |  |
+| `grants` |  |
+| `grants_pagination` |  |
+| `id` |  |
+| `limits` |  |
+| `name` |  |
+| `organization_id` |  |
+| `owner_name` |  |
+| `ownership_kind` |  |
+| `pagination` |  |
+| `policy_digest` |  |
+| `provider` |  |
+| `provider_disabled_reason` |  |
+| `provider_identity` |  |
+| `revoked_at` |  |
+| `schema_version` |  |
+| `status` |  |
+| `toolkit` |  |
+| `triggers` |  |
+| `updated_at` |  |
+| `user_id` |  |
+| `version` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/adopt_custody`
+
+#### AgentConnectionDelegation
+
+| Field | Description |
+| --- | --- |
+| `authorized_by_id` |  |
+| `automation_connection_grant_id` |  |
+| `created_at` |  |
+| `id` |  |
+| `member_name` |  |
+| `revoked_at` |  |
+| `roles` |  |
+| `usable` |  |
+| `user_id` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/delegations`
+
+#### AgentConnectionGrant
+
+| Field | Description |
+| --- | --- |
+| `actions` |  |
+| `agent_connection_id` |  |
+| `automation_id` |  |
+| `connection_generation` |  |
+| `created_at` |  |
+| `id` |  |
+| `organization_id` |  |
+| `revision` |  |
+| `revoked_at` |  |
+| `status` |  |
+| `usable` |  |
+| `user_id` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/grants`
+
+#### AgentConnectionResource
+
+| Field | Description |
+| --- | --- |
+| `cursor` |  |
+| `next_cursor` |  |
+| `query` |  |
+| `resources` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/resources`
+
+#### AgentConnectionSafetyControl
+
+| Field | Description |
+| --- | --- |
+| `admin_disabled_at` |  |
+| `authorized_at` |  |
+| `checked_at` |  |
+| `created_at` |  |
+| `custodian_id` |  |
+| `failure_code` |  |
 | `generation` |  |
 | `id` |  |
 | `name` |  |
-| `remote_agent` |  |
-| `requester_id` |  |
-| `retired_at` |  |
+| `organization_id` |  |
+| `owner_name` |  |
+| `ownership_kind` |  |
+| `provider_disabled_reason` |  |
+| `provider_identity` |  |
 | `revoked_at` |  |
-| `scope_key` |  |
-| `source_operation_id` |  |
-| `state` |  |
+| `status` |  |
+| `toolkit` |  |
+| `updated_at` |  |
+| `user_id` |  |
 
-Operations: Create, List, Load, Remove, Update.
+Operations: List.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup`
+API path: `/api/v1/organizations/{organization_id}/agent_connections/safety_controls`
+
+#### AgentConnectionTriggerSubscription
+
+| Field | Description |
+| --- | --- |
+| `agent_connection_id` |  |
+| `configuration` |  |
+| `created_at` |  |
+| `defaults` |  |
+| `delivery` |  |
+| `enabled` |  |
+| `failure_code` |  |
+| `failure_request_id` |  |
+| `id` |  |
+| `latency` |  |
+| `name` |  |
+| `reconcile_at` |  |
+| `reconciliation_uncertain` |  |
+| `remote_enabled` |  |
+| `replacement_id` |  |
+| `retired_at` |  |
+| `retirement_completed_at` |  |
+| `schema` |  |
+| `slug` |  |
+| `status` |  |
+| `toolkit` |  |
+| `toolkit_version` |  |
+| `trigger_slug` |  |
+| `updated_at` |  |
+| `version` |  |
+| `waiting_for_retirement` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}/discover`
+
+#### AgentContextCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/agent_context/checkpoints/{checkpoint_id}/transcript`
 
 #### AgentControlFlow
 
@@ -692,6 +1221,15 @@ Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/email/{message_id}`
 
+#### AgentEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/events`
+
 #### AgentFile
 
 | Field | Description |
@@ -729,32 +1267,78 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/inputs`
 | Field | Description |
 | --- | --- |
 | `account_counts` | Accounts the viewer can see per toolkit, across all account pages. |
-| `accounts_path` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
-| `added_toolkits` | Apps with a connected or connecting account the viewer can see. |
+| `can_cancel_sign_in` | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` |  |
+| `can_disconnect` |  |
+| `can_enable` |  |
 | `can_manage` |  |
-| `can_manage_organization` |  |
+| `can_manage_sharing` |  |
+| `can_reconnect` |  |
+| `can_sync` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
 | `catalog` |  |
-| `connect_as` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
-| `connect_as_by_toolkit` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_by` | Name of the person whose sign-in this account is. |
+| `connected_by_you` | True when the viewer is the person whose sign-in this account is. |
 | `connected_counts` | Signed-in accounts per toolkit, across all account pages. |
-| `connection_id` |  |
 | `connections` |  |
-| `email` | A native agent's own email address. |
-| `enabled` |  |
-| `enabled_toolkits` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `creation_key` | Stable identity for retrying this creation; retain it after an uncertain response. |
+| `creation_key_digest` | SHA-256 of the unfinished setup key for its original creator. |
 | `generation` |  |
+| `id` |  |
+| `name` |  |
 | `pagination` |  |
 | `pending_counts` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
-| `personal_creation_key_supported` | The personal account creation endpoint honors a creation key. |
-| `private_agent` | Only the agent's owner can chat with it. |
-| `shared_agent_personal_accounts_enabled` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
-| `slack` |  |
-| `webhook_connections` |  |
-| `webhooks_available` |  |
+| `provider_disabled_reason` |  |
+| `provider_identity` |  |
+| `provider_name` | The app's display name; null for a custom MCP server, which uses the account name. |
+| `reference` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | Agent account audience, including legacy personal and paused access. |
+| `status` |  |
+| `team_sharing_enabled` |  |
+| `team_sharing_version` |  |
+| `toolkit` |  |
 
-Operations: Create, List.
+Operations: Create, List, Load, Remove.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations`
+API path: `/api/v1/organizations/{organization_id}/agent_integrations/{id}/authorize`
+
+#### AgentIntegrationAccount
+
+| Field | Description |
+| --- | --- |
+| `can_cancel_sign_in` | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` |  |
+| `can_disconnect` |  |
+| `can_enable` |  |
+| `can_manage_sharing` |  |
+| `can_reconnect` |  |
+| `can_sync` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
+| `connected_by` | Name of the person whose sign-in this account is. |
+| `connected_by_you` | True when the viewer is the person whose sign-in this account is. |
+| `creation_key_digest` | SHA-256 of the unfinished setup key for its original creator. |
+| `generation` |  |
+| `id` |  |
+| `name` |  |
+| `provider_disabled_reason` |  |
+| `provider_identity` |  |
+| `reference` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | Agent account audience, including legacy personal and paused access. |
+| `status` |  |
+| `team_sharing_enabled` |  |
+| `team_sharing_version` |  |
+| `toolkit` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agent_integrations/accounts`
+
+#### AgentIntegrationCallback
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/agent_integration_callback`
 
 #### AgentInteraction
 
@@ -982,6 +1566,45 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/questions/{question_id}/answer`
 
+#### AgentRelayFileGrant
+
+| Field | Description |
+| --- | --- |
+| `access_mode` |  |
+| `connection_generation` |  |
+| `connection_id` |  |
+| `connection_name` | Current display name of the selected account. |
+| `created_at` |  |
+| `expected_generation` |  |
+| `id` |  |
+| `key` |  |
+| `provider` |  |
+| `resource_id` |  |
+| `resource_kind` |  |
+| `revoked` |  |
+| `revoked_at` |  |
+| `snapshot_supported` | Whether this selected permission supports snapshot controls. |
+| `source_operation_id` |  |
+
+Operations: Create, List, Load, Remove.
+
+API path: `/api/v1/organizations/{organization_id}/agent_relay_file_grants`
+
+#### AgentRelayFileGrantAccount
+
+| Field | Description |
+| --- | --- |
+| `access_modes` | Supported file access modes. |
+| `generation` |  |
+| `id` |  |
+| `name` |  |
+| `provider` |  |
+| `resource_kind` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agent_relay_file_grants/accounts`
+
 #### AgentRepository
 
 | Field | Description |
@@ -1010,6 +1633,15 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/repositorie
 Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resources`
+
+#### AgentRoder
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/agent/roder/browser_executor_authorization`
 
 #### AgentRoutine
 
@@ -1070,6 +1702,37 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/runtime/reset`
 
+#### AgentSession
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/agent_sessions/{session_id}/transcript`
+
+#### AgentSessionCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize`
+
+#### AgentSessionRoderHandoff
+
+| Field | Description |
+| --- | --- |
+| `checkpoint_id` | Public id of the checkpoint to hand off. |
+| `purpose` | Handoff intent; defaults to `continue`. |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/roder_handoffs`
+
 #### AgentSetting
 
 | Field | Description |
@@ -1096,36 +1759,44 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/sharing/review`
 
 | Field | Description |
 | --- | --- |
-| `deployed_at` |  |
-| `deployments_count` |  |
-| `hostname` |  |
-| `https` | Whether the organization's certificate serves this site over HTTPS |
+| `author` |  |
+| `can_message` | The viewer may send input to the author agent |
+| `deployments_count` | Increases with every deploy of the site |
+| `description` | The team app description, when the site is a team app |
+| `icon_url` | Path of the site's generated icon, versioned by the picture; null until one is generated |
 | `id` |  |
-| `name` |  |
+| `name` | The site's DNS label |
+| `owner` | The person who controls the author agent |
+| `thread` | The thread that published the site as a team app, when the viewer can open the author agent |
+| `title` | The team app title, or the site name read as words |
 | `url` |  |
 | `visibility` |  |
 
-Operations: List.
+Operations: Create, List, Load.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/sites`
+API path: `/api/v1/organizations/{organization_id}/agent_sites/{id}/opened`
 
 #### AgentSkill
 
 | Field | Description |
 | --- | --- |
-| `available` |  |
-| `can_configure` |  |
-| `can_manage` |  |
-| `configuration_state` | The requested managed skill selection is awaiting runtime qualification. |
-| `description` |  |
-| `enabled` |  |
-| `name` |  |
+| `agents` | Active V2 agents the viewer can see whose owner is still a member |
+| `audience` |  |
+| `can_manage_library` |  |
+| `content` | The skill's SKILL.md |
+| `files` |  |
+| `id` |  |
+| `marketplace` |  |
+| `pending` | Some agent is still applying a change; check again shortly |
+| `plugin` | The marketplace entry id |
+| `revision` | The commit SHA returned by preview |
+| `skill` |  |
 | `skills` |  |
-| `version` |  |
+| `source` | owner/repo, a GitHub or skills.sh link, or npx skills add owner/repo [--skill NAME ...] |
 
-Operations: Create, List.
+Operations: Create, List, Load, Remove, Update.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/skills`
+API path: `/api/v1/organizations/{organization_id}/agent_skills`
 
 #### AgentSlack
 
@@ -1166,6 +1837,63 @@ Operations: Create, List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions`
 
+#### AgentSwarm
+
+| Field | Description |
+| --- | --- |
+| `base_bookmark` | An existing bookmark to start from and land on; the plain form of `target.kind = bookmark`. |
+| `base_ref` |  |
+| `base_revision` | 64-hex commit id; skips the head lookup |
+| `budget` |  |
+| `canceled_at` |  |
+| `canceled_count` |  |
+| `concurrency_key` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `creator_user_id` |  |
+| `deadline_at` |  |
+| `display_id` |  |
+| `done_count` |  |
+| `environment` |  |
+| `failed_count` |  |
+| `finished_at` |  |
+| `finished_at_label` |  |
+| `github` |  |
+| `goal` |  |
+| `id` |  |
+| `model` |  |
+| `model_provider` |  |
+| `number` |  |
+| `organization_id` |  |
+| `organization_slug` |  |
+| `outcome` |  |
+| `phase` |  |
+| `policy` | Every key is optional and defaults to AgentSwarm::POLICY_DEFAULTS. |
+| `queued_at` |  |
+| `queued_at_label` |  |
+| `repository` | Repository slug inside the organization |
+| `repository_id` |  |
+| `repository_slug` |  |
+| `reserved` |  |
+| `scheduler_generation` |  |
+| `skipped_count` |  |
+| `slug` |  |
+| `started_at` |  |
+| `started_at_label` |  |
+| `status` |  |
+| `summary` |  |
+| `target` | Where the swarm lands. |
+| `task_count` |  |
+| `task_template_json` |  |
+| `tasks` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `usage` |  |
+
+Operations: Create, List, Load, Update.
+
+API path: `/api/v1/agent/swarms/{id}/cancel`
+
 #### AgentTeammate
 
 | Field | Description |
@@ -1193,34 +1921,11 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/terminal/co
 
 | Field | Description |
 | --- | --- |
-| `archived_count` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` |  |
-| `execution` |  |
-| `first_input` |  |
-| `first_input_key` | Idempotency-Key that finds the first message through input_delivery. |
-| `first_input_requester_membership_id` | Membership the first message was sent as, for input_delivery. |
 | `id` |  |
-| `inherit_context` | Include the source conversation through its last completed reply. |
-| `local_activities` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` |  |
-| `local_scope_key` |  |
-| `local_status_pending` | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` |  |
-| `main_thread_id` |  |
-| `message` | The thread's first message. |
-| `next_cursor` |  |
-| `parent_conversation_id` | Optional source conversation belonging to this agent. |
-| `requester_membership_id` |  |
-| `selected_thread` |  |
-| `thread` |  |
-| `threads` |  |
-| `title` |  |
-| `total_archived_count` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
 
-Operations: Create, List.
+Operations: Create, List, Load.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive`
+API path: `/api/v1/agent/threads/{id}/archive`
 
 #### AgentTool
 
@@ -1233,6 +1938,23 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{th
 Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/tools`
+
+#### AgentUsage
+
+| Field | Description |
+| --- | --- |
+| `days` | One cell per (day, model), ascending by day then model. |
+| `ended_at` |  |
+| `pricing_version` | The price table in effect now; rows carry the version they were priced at. |
+| `source` | Which store served the rows. |
+| `started_at` |  |
+| `user_days` | One cell per (day, person), ascending by day. |
+| `users` | One row per (person, model), descending by tokens. |
+| `window` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/agent_usage`
 
 #### AgentVerifyProject
 
@@ -1259,6 +1981,19 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/verify_proj
 Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/waits/{wait_id}/stop`
+
+#### AgentWebPreview
+
+| Field | Description |
+| --- | --- |
+| `description` |  |
+| `icon_url` |  |
+| `image_url` |  |
+| `title` |  |
+
+Operations: List.
+
+API path: `/api/v1/agent_web_previews`
 
 #### AgentWebhook
 
@@ -1448,6 +2183,40 @@ Operations: List, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/write_permissions`
 
+#### Agreement
+
+| Field | Description |
+| --- | --- |
+| `body` | Markdown text, or null until staff grant the organization access. |
+| `effective_on_label` |  |
+| `key` |  |
+| `summary` |  |
+| `title` |  |
+| `version` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/agreements`
+
+#### AgreementAccessRequest
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/agreement_access_request`
+
+#### AlertRuleEvent
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Remove.
+
+API path: `/api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/acknowledge`
+
 #### AllocationLog
 
 | Field | Description |
@@ -1491,6 +2260,24 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/
 Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{id}/activate`
+
+#### AppAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/app_access/callback`
+
+#### AppAccessJwk
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/app_access/jwks`
 
 #### AppCdn
 
@@ -1971,6 +2758,134 @@ Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/storage_resources/{id}/archive`
 
+#### Artefact
+
+| Field | Description |
+| --- | --- |
+| `automation_invocation_id` |  |
+| `byte_size` |  |
+| `checksum_sha256` |  |
+| `content_type` |  |
+| `created_at` |  |
+| `created_by_user_id` |  |
+| `description` |  |
+| `document_key` | Stable document identity shared by all revisions. |
+| `entrypoint` |  |
+| `expires_at` |  |
+| `filename` |  |
+| `files` |  |
+| `harness` |  |
+| `harness_version` |  |
+| `id` |  |
+| `kind` |  |
+| `model` |  |
+| `organization_id` |  |
+| `published_at` |  |
+| `repository_id` |  |
+| `slug` |  |
+| `source` |  |
+| `status` |  |
+| `title` |  |
+| `vcs_agent_checkpoint_id` |  |
+| `vcs_agent_session_id` |  |
+| `version` |  |
+| `view_url` |  |
+| `web_url` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts`
+
+#### ArtefactCommentThread
+
+| Field | Description |
+| --- | --- |
+| `anchor` | The `#anchor` written into the Markdown. |
+| `body` |  |
+| `comments` |  |
+| `id` | The anchor key. |
+| `quote` |  |
+| `resolved` |  |
+
+Operations: Create, List, Update.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads`
+
+#### ArtefactRevision
+
+| Field | Description |
+| --- | --- |
+| `base_version` | The newest version the editor started from. |
+| `content` | Markdown, including CriticMarkup suggestions and comment anchors. |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/revisions`
+
+#### ArtefactViewToken
+
+| Field | Description |
+| --- | --- |
+| `expires_in` |  |
+| `file` | Exact manifest path. |
+| `organization_slug` | If provided, must match the organization addressed by the route. |
+| `version` |  |
+| `viewer_url` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/view_tokens`
+
+#### Artifact
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/artifacts/{id}/expire`
+
+#### ArtifactCacheNamespace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/cache_namespaces/{id}/archive`
+
+#### ArtifactImageRepository
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/image_repositories/{id}/archive`
+
+#### ArtifactPackageMirror
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/package_mirrors/{id}/pause`
+
+#### ArtifactRetentionPolicy
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/retention_policies`
+
 #### AttachmentPart
 
 | Field | Description |
@@ -1980,6 +2895,102 @@ API path: `/api/v1/hosting/apps/{app_id}/storage_resources/{id}/archive`
 Operations: Update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/attachments/{attachment_id}/parts/{index}`
+
+#### AuditEvent
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `actor_kind` |  |
+| `actor_user_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `observability_space_id` |  |
+| `organization_id` |  |
+| `payload` |  |
+| `request_id` |  |
+| `severity` |  |
+| `subject_id` |  |
+| `subject_kind` |  |
+| `subject_name` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/audit_events`
+
+#### Auth
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load, Remove.
+
+API path: `/api/v1/auth/apple`
+
+#### AuthCli
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/auth/cli/complete`
+
+#### AuthGithub
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/auth/github/start`
+
+#### AuthGoogle
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/auth/google/start`
+
+#### AuthOpenai
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/auth/openai/callback`
+
+#### AuthPasswordReset
+
+| Field | Description |
+| --- | --- |
+| `email` |  |
+| `message` |  |
+| `password` |  |
+| `token` |  |
+
+Operations: Create, Update.
+
+API path: `/api/v1/auth/password_resets`
+
+#### AuthRegistrationOption
+
+| Field | Description |
+| --- | --- |
+| `email_password_signup_enabled` |  |
+| `openai_sign_in_enabled` | Whether ChatGPT identity sign-in is configured and enabled for rollout. |
+| `turnstile_site_key` |  |
+| `waitlist_enabled` | New public signups require waitlist approval when enabled. |
+
+Operations: List.
+
+API path: `/api/v1/auth/registration_options`
 
 #### AutomationEvent
 
@@ -2052,6 +3063,277 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/runs`
 
+#### BackendRunnerPool
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/bazel/backends/{backend_id}/runner_pools`
+
+#### Bazel
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/bazel/authorize`
+
+#### BazelActionResult
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load, Update.
+
+API path: `/api/v1/bazel/action_results/{hash}/{size_bytes}`
+
+#### BazelBackend
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/bazel/backends/{id}/issue_token`
+
+#### BazelBlob
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load, Update.
+
+API path: `/api/v1/bazel/blobs/{kind}/{hash}/{size_bytes}`
+
+#### BazelExecution
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/bazel/executions/{id}/complete`
+
+#### BazelFindMissingBlob
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/bazel/find_missing_blobs`
+
+#### Billing
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `breakdown` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` |  |
+| `can_manage_contact` |  |
+| `can_manage_extra_spend` |  |
+| `can_manage_local_subscription` |  |
+| `can_manage_payment_method` |  |
+| `can_set_up_billing` |  |
+| `customer` |  |
+| `deployment_usage_visible` |  |
+| `entitlements` |  |
+| `extra_spend_enabled` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | Whether the `billing` feature is on for this organization. |
+| `organization_id` |  |
+| `package` |  |
+| `prepaid` |  |
+| `preview` | Metronome draft invoice and credits, or null. |
+| `storage_usage` |  |
+| `stripe` |  |
+| `subscription` |  |
+| `token_account` |  |
+
+Operations: Load, Update.
+
+API path: `/api/v1/organizations/{organization_id}/billing`
+
+#### BillingAddon
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `breakdown` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` |  |
+| `can_manage_contact` |  |
+| `can_manage_extra_spend` |  |
+| `can_manage_local_subscription` |  |
+| `can_manage_payment_method` |  |
+| `can_set_up_billing` |  |
+| `customer` |  |
+| `deployment_usage_visible` |  |
+| `entitlements` |  |
+| `extra_spend_enabled` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | Whether the `billing` feature is on for this organization. |
+| `id` |  |
+| `organization_id` |  |
+| `package` |  |
+| `prepaid` |  |
+| `preview` | Metronome draft invoice and credits, or null. |
+| `quantity` |  |
+| `storage_usage` |  |
+| `stripe` |  |
+| `subscription` |  |
+| `token_account` |  |
+
+Operations: Update.
+
+API path: `/api/v1/organizations/{organization_id}/billing/addons/{addon_key}`
+
+#### BillingCheckoutSession
+
+| Field | Description |
+| --- | --- |
+| `cancel_url` |  |
+| `coupon_code` |  |
+| `entry_point` | Where the owner chose to pay, for product analytics. |
+| `package_key` |  |
+| `package_revision` |  |
+| `success_url` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/billing/checkout_sessions`
+
+#### BillingInvoice
+
+| Field | Description |
+| --- | --- |
+| `amount_due_cents` |  |
+| `created_at` |  |
+| `currency` |  |
+| `hosted_invoice_url` |  |
+| `id` |  |
+| `invoice_pdf` |  |
+| `metronome_invoice_id` | Metronome's id for the invoice it pushed |
+| `number` |  |
+| `period_ended_at` |  |
+| `period_started_at` |  |
+| `status` |  |
+| `total_cents` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/billing/invoices`
+
+#### BillingPackage
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `base_price_cents` |  |
+| `billing_interval` |  |
+| `billing_policy` |  |
+| `ci_included_spend_cents` | Monthly USD credit in cents shared by all CI charges, including runners, cache, storage and add-ons; replaces CI unit allowances when positive. |
+| `currency` |  |
+| `key` |  |
+| `max_seats` |  |
+| `name` |  |
+| `pay_as_you_go_enabled` |  |
+| `rates` |  |
+| `revision` |  |
+| `roder_daily_run_limit` |  |
+| `roder_run_concurrency_limit` |  |
+| `seat_price_cents` |  |
+| `trial_days` |  |
+| `visibility` |  |
+
+Operations: List.
+
+API path: `/api/v1/billing/packages`
+
+#### BillingPortalSession
+
+| Field | Description |
+| --- | --- |
+| `return_url` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/billing/portal_sessions`
+
+#### BillingPrepaidPeriod
+
+| Field | Description |
+| --- | --- |
+| `activated_at` |  |
+| `created_at` |  |
+| `currency` |  |
+| `id` |  |
+| `last_error` |  |
+| `minutes` |  |
+| `net_amount_cents` |  |
+| `paid_at` |  |
+| `paid_total_cents` |  |
+| `payment_action_url` |  |
+| `period_ended_at` |  |
+| `period_started_at` |  |
+| `receipt_url` |  |
+| `refunded_net_cents` |  |
+| `state` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/billing/prepaid_periods/{id}`
+
+#### BillingPrepaidPurchase
+
+| Field | Description |
+| --- | --- |
+| `activated_at` |  |
+| `created_at` |  |
+| `currency` |  |
+| `id` |  |
+| `last_error` |  |
+| `minutes` |  |
+| `net_amount_cents` |  |
+| `paid_at` |  |
+| `paid_total_cents` |  |
+| `payment_action_url` |  |
+| `prepaid` |  |
+| `purchase` |  |
+| `receipt_url` |  |
+| `refunded_net_cents` |  |
+| `request_key` |  |
+| `state` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/billing/prepaid_purchases`
+
+#### BillingTokenTopUp
+
+| Field | Description |
+| --- | --- |
+| `amount_cents` |  |
+| `request_key` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/billing/token_top_ups`
+
+#### BillingUsage
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/billing/usage/breakdown`
+
 #### Binary
 
 | Field | Description |
@@ -2120,6 +3402,25 @@ API path: `/api/v1/organizations/{organization_id}/verify/binaries/{id}/archive`
 Operations: Create, List, Load, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/cancel`
+
+#### BookmarkProtectionRefreshGithubRequiredCheck
+
+| Field | Description |
+| --- | --- |
+| `exclusions` |  |
+| `fetched_at` |  |
+| `fetched_at_label` |  |
+| `github_branch` |  |
+| `github_owner` |  |
+| `github_repository_name` |  |
+| `last_error` |  |
+| `proven` |  |
+| `requirements` |  |
+| `stale` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections/refresh_github_required_checks`
 
 #### BrowserEgressCandidate
 
@@ -2281,6 +3582,16 @@ Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks/{id}/cancel`
 
+#### CacheNamespaceEntry
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/evict`
+
 #### CatalogSelector
 
 | Field | Description |
@@ -2339,6 +3650,556 @@ Operations: List, Load, Remove, Update.
 
 API path: `/api/v1/cdn_spaces/{cdn_space_id}/objects`
 
+#### Change
+
+| Field | Description |
+| --- | --- |
+| `counts` | Counts for each state across the active non-state filters. |
+| `filters` |  |
+| `github_sync` |  |
+| `result` | What this page is a page of. |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/changes`
+
+#### ChangeAsset
+
+| Field | Description |
+| --- | --- |
+| `alias` |  |
+| `byte_size` |  |
+| `checksum_md5` |  |
+| `checksum_sha256` |  |
+| `content_type` |  |
+| `filename` |  |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/assets/{id}/finalize`
+
+#### ChangeComment
+
+| Field | Description |
+| --- | --- |
+| `body` |  |
+| `capabilities` |  |
+| `change_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `kind` |  |
+| `line` |  |
+| `outdated` |  |
+| `parent_comment_id` |  |
+| `patchset_id` |  |
+| `patchset_number` |  |
+| `path` |  |
+| `replies` |  |
+| `resolved` |  |
+| `resolved_at` |  |
+| `resolved_at_label` |  |
+| `resolved_by` |  |
+| `side` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `user` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve`
+
+#### ChangeFileReviewCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `patchset_id` |  |
+| `path` |  |
+| `request_id` |  |
+| `review_action` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/file_review_checkpoints`
+
+#### ChangeGitBranchSubmission
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_branch_submissions`
+
+#### ChangeGitCommitIdentity
+
+| Field | Description |
+| --- | --- |
+| `change_id` |  |
+| `change_number` |  |
+| `git_commit_id` |  |
+| `git_commit_ids` |  |
+| `id` |  |
+| `identities` |  |
+| `missing_git_commit_ids` |  |
+| `patchset_number` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_commit_identities`
+
+#### ChangeGitPublication
+
+| Field | Description |
+| --- | --- |
+| `expected_target_commit_id` |  |
+| `id` |  |
+| `operation_key` |  |
+| `publication_id` |  |
+| `request` |  |
+| `request_digest` |  |
+| `revisions` |  |
+| `status` |  |
+| `transfer_refs` | Immutable receipt-owned refs returned by preparation; transfer each exact Git target before polling readiness. |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_publications`
+
+#### ChangeGroupMember
+
+| Field | Description |
+| --- | --- |
+| `change_id` | Change number |
+| `changes` |  |
+| `id` |  |
+| `name` |  |
+| `number` |  |
+| `status` |  |
+| `title` |  |
+
+Operations: Create, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups/{id}/members`
+
+#### ChangeLabel
+
+| Field | Description |
+| --- | --- |
+| `accepted` |  |
+| `add` |  |
+| `approval` |  |
+| `assets` | Proof assets referenced from the description as `vex-asset:<id>`. |
+| `author` | Human user summary or organization automation identity. |
+| `capabilities` |  |
+| `change_key` |  |
+| `checks` |  |
+| `checks_status` |  |
+| `comments` |  |
+| `comments_count` |  |
+| `comments_count_label` |  |
+| `commit_message` |  |
+| `current_patchset` |  |
+| `description` |  |
+| `draft` |  |
+| `folded_into_number` |  |
+| `github_projection_status` |  |
+| `github_pull_request` |  |
+| `github_pull_requests` |  |
+| `group` |  |
+| `has_description` | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
+| `id` |  |
+| `jj_change_id` |  |
+| `labels` |  |
+| `landable` |  |
+| `landed_by` |  |
+| `number` |  |
+| `orphaned` |  |
+| `orphaned_at` |  |
+| `orphaned_at_label` |  |
+| `orphaned_reason` |  |
+| `parent_change_id` |  |
+| `parent_change_number` |  |
+| `patchset_number` |  |
+| `patchsets` |  |
+| `primary_status` |  |
+| `public_id` |  |
+| `relation_chain` |  |
+| `remove` |  |
+| `requested_changes` |  |
+| `restack_state` |  |
+| `reviewer_candidates` | Organization members available to the reviewer picker on this page. |
+| `reviewers` |  |
+| `stable_change_id` |  |
+| `stack` |  |
+| `status` |  |
+| `target_branch` |  |
+| `title` |  |
+| `unresolved_comments_count_label` |  |
+| `url` |  |
+| `votes` |  |
+
+Operations: Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/labels`
+
+#### ChangeLandingHold
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_hold/release`
+
+#### ChangeLandingRequest
+
+| Field | Description |
+| --- | --- |
+| `change_ids` |  |
+| `count` |  |
+| `defer_until_ready` | Admit the request while approvals or checks are pending |
+| `expected_requirement_version` |  |
+| `expected_scope_version` |  |
+| `head_change_id` |  |
+| `id` |  |
+| `numbers` |  |
+| `override_acknowledged` |  |
+| `override_codes` |  |
+| `position` |  |
+| `priority` |  |
+| `scope_version` |  |
+| `state` |  |
+| `version` |  |
+
+Operations: Create, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_requests`
+
+#### ChangeRequestChange
+
+| Field | Description |
+| --- | --- |
+| `message` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/request_changes`
+
+#### ChangeReviewer
+
+| Field | Description |
+| --- | --- |
+| `add` |  |
+| `email` |  |
+| `name` |  |
+| `remove` |  |
+| `removed_reviewers` |  |
+| `requested_reviewers` |  |
+| `reviewers` |  |
+
+Operations: List, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/reviewers`
+
+#### ChangeTranscript
+
+| Field | Description |
+| --- | --- |
+| `capture_kind` |  |
+| `captured_at` |  |
+| `harness` |  |
+| `id` |  |
+| `original_resume` |  |
+| `patchset_commit_id` |  |
+| `patchset_number` |  |
+| `redaction_count` |  |
+| `session_id` |  |
+| `session_title` |  |
+| `status` |  |
+| `superseded` |  |
+| `user` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/transcripts`
+
+#### ChangeTranscriptSummary
+
+| Field | Description |
+| --- | --- |
+| `summaries` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/changes/transcript_summaries`
+
+#### CheckpointPrepareChunk
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/prepare_chunks`
+
+#### CiNode
+
+| Field | Description |
+| --- | --- |
+| `architecture` |  |
+| `bazel_enabled` |  |
+| `bazel_properties_json` |  |
+| `ci_runner_pool_id` |  |
+| `cordoned_at` |  |
+| `cordoned_at_label` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `health_state` |  |
+| `heartbeat_age_seconds` |  |
+| `id` |  |
+| `kind` |  |
+| `labels_csv` |  |
+| `last_seen_at` |  |
+| `last_seen_at_label` |  |
+| `name` |  |
+| `network_peer_id` |  |
+| `node_capabilities_csv` |  |
+| `node_certificate_expires_at` |  |
+| `node_certificate_expires_at_label` |  |
+| `node_certificate_fingerprint_sha256` |  |
+| `node_certificate_serial` |  |
+| `offline_at` |  |
+| `offline_at_label` |  |
+| `online_at` |  |
+| `online_at_label` |  |
+| `organization_id` |  |
+| `os` |  |
+| `revoked_at` |  |
+| `revoked_at_label` |  |
+| `schedulable` |  |
+| `slug` |  |
+| `status` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `version` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/ci/nodes/{id}/cordon`
+
+#### CiPipeline
+
+| Field | Description |
+| --- | --- |
+| `ci_runner_pool_id` |  |
+| `concurrency_key` |  |
+| `created_at` |  |
+| `default_branch` |  |
+| `description` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `name` |  |
+| `organization_id` |  |
+| `repository_id` |  |
+| `required_capabilities_csv` |  |
+| `runner_pool` |  |
+| `runs` |  |
+| `slug` |  |
+| `source_kind` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `trigger_on_pull_request` |  |
+| `trigger_on_push` |  |
+| `trigger_on_schedule` |  |
+| `updated_at` |  |
+| `workflow_path` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/ci/pipelines`
+
+#### CiPipelineRun
+
+| Field | Description |
+| --- | --- |
+| `active` |  |
+| `canceled_at` |  |
+| `ci_pipeline_id` |  |
+| `ci_runner_pool_id` |  |
+| `commit_sha` |  |
+| `concurrency_key` |  |
+| `created_at` |  |
+| `creator_user_id` |  |
+| `display_id` |  |
+| `failed` |  |
+| `finished_at` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `jobs` |  |
+| `message` |  |
+| `number` |  |
+| `organization_id` |  |
+| `parameters_json` |  |
+| `queued_at` |  |
+| `ref_name` |  |
+| `repository_id` |  |
+| `required_capabilities_csv` |  |
+| `retry_number` |  |
+| `retryable` |  |
+| `slug` |  |
+| `source_url` |  |
+| `started_at` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `trigger_kind` |  |
+| `updated_at` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{id}/retry`
+
+#### CiRunnerPool
+
+| Field | Description |
+| --- | --- |
+| `bazel_enabled` |  |
+| `bazel_properties_json` |  |
+| `created_at` |  |
+| `description` |  |
+| `elastic_config_json` |  |
+| `elastic_provider_kind` |  |
+| `id` |  |
+| `isolation_mode` |  |
+| `labels_csv` |  |
+| `max_concurrency` |  |
+| `modal_capacity` |  |
+| `modal_runner_invocations` |  |
+| `name` |  |
+| `network_space_id` |  |
+| `node_capabilities_csv` |  |
+| `organization_id` |  |
+| `runner_count_label` |  |
+| `runner_kind` |  |
+| `runners` |  |
+| `slug` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/ci/runner_pools/{id}/promote_reconciliation_runtime`
+
+#### CiStatus
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/ref`
+
+#### CliEvent
+
+| Field | Description |
+| --- | --- |
+| `event` |  |
+| `properties` |  |
+
+Operations: Create.
+
+API path: `/api/v1/cli_events`
+
+#### CliRelease
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/cli_releases`
+
+#### CloudWorkspaceBackupObject
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/objects/{object_key}`
+
+#### CodeRuleEvaluation
+
+| Field | Description |
+| --- | --- |
+| `advisory` |  |
+| `coverage` |  |
+| `diff` | UTF-8 complete unified patch using a/ old and b/ new prefixes; at most 1 MiB |
+| `duration_ms` |  |
+| `evaluator_version` |  |
+| `input_digest` |  |
+| `limits` |  |
+| `model` |  |
+| `requests` |  |
+| `schema_version` |  |
+| `snapshot_digest` |  |
+| `unchecked` |  |
+| `verdicts` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/evaluations`
+
+#### ComSiteAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/com_site_access/redeem`
+
+#### ComSiteAccessSession
+
+| Field | Description |
+| --- | --- |
+| `cookie_name` |  |
+| `host` | Site hostname, for example docs.acme.composal.page |
+| `max_age` |  |
+| `session_token` |  |
+
+Operations: Create.
+
+API path: `/api/v1/com_site_access/sessions`
+
+#### CommentThreadComment
+
+| Field | Description |
+| --- | --- |
+| `body` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads/{anchor}/comments`
+
+#### CommitDiff
+
+| Field | Description |
+| --- | --- |
+| `files` |  |
+| `id` |  |
+| `parent_id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits/{id}/diff/{fingerprint}`
+
 #### ConnectionRequest
 
 | Field | Description |
@@ -2375,6 +4236,58 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/conne
 Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/sources`
+
+#### ContactSubmission
+
+| Field | Description |
+| --- | --- |
+| `company` |  |
+| `email` | Stored downcased and stripped. |
+| `message` |  |
+| `name` |  |
+| `website` | Honeypot. |
+
+Operations: Create.
+
+API path: `/api/v1/contact_submissions`
+
+#### ControlComputer
+
+| Field | Description |
+| --- | --- |
+| `connection` | A point-in-time control transport observation. |
+| `consent` |  |
+| `device` |  |
+| `id` |  |
+| `provider_status` |  |
+
+Operations: List, Update.
+
+API path: `/api/v1/organizations/{organization_id}/control_computers`
+
+#### ControlComputerControlOperation
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `arguments` |  |
+| `created_at` |  |
+| `delivery` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` |  |
+| `diagnostic_code` | Approved product error code retained after copied diagnostics expire. |
+| `end` |  |
+| `expires_at` |  |
+| `id` |  |
+| `key` |  |
+| `provider` |  |
+| `references` |  |
+| `result` |  |
+| `result_expired` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/control_computers/{computer}/control_operations`
 
 #### CoordinationWait
 
@@ -2632,6 +4545,51 @@ Operations: Load.
 
 API path: `/api/v1/verify/demo_shares/{token}/segments/{segment_id}`
 
+#### Deployment
+
+| Field | Description |
+| --- | --- |
+| `app` |  |
+| `artifact_locator` |  |
+| `build_duration_seconds` |  |
+| `build_source` |  |
+| `build_status` |  |
+| `children` |  |
+| `ci_pipeline_id` |  |
+| `ci_pipeline_run_id` |  |
+| `commit_sha` |  |
+| `created_at` |  |
+| `creator` |  |
+| `deployed_url` |  |
+| `duration_seconds` |  |
+| `environment` |  |
+| `history_kind` |  |
+| `history_reason` |  |
+| `id` |  |
+| `is_live` |  |
+| `is_rollback` |  |
+| `live_region_count` |  |
+| `number` |  |
+| `placement` |  |
+| `region_count` |  |
+| `replicas_per_region` |  |
+| `rollback_reason` |  |
+| `rollback_source_release_id` |  |
+| `rollback_target_release_id` |  |
+| `rollout_predecessor_id` |  |
+| `rollout_status` |  |
+| `rollout_strategy` |  |
+| `service` |  |
+| `source_ref` |  |
+| `status` |  |
+| `total_replicas` |  |
+| `trigger_kind` |  |
+| `updated_at` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/{deployment_id}`
+
 #### DeploymentDashboardNomad
 
 | Field | Description |
@@ -2641,6 +4599,36 @@ Operations: Load.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocation`
 
+#### DeploymentDetail
+
+| Field | Description |
+| --- | --- |
+| `activity` |  |
+| `app` |  |
+| `app_id` |  |
+| `audit_events` |  |
+| `capacity` |  |
+| `data_resources` |  |
+| `deploy_targets` |  |
+| `deployments` |  |
+| `desired_states` |  |
+| `environments` |  |
+| `filters` | The option lists the deployments page's app, service and stage pickers narrow by. |
+| `health` | The rolled-up state of the selected scope. |
+| `nomad` | The Nomad footprint of the selected scope, deduplicated. |
+| `operations` |  |
+| `placements` |  |
+| `reconciler_ticks` |  |
+| `releases` |  |
+| `runtime_instances` |  |
+| `service_bindings` |  |
+| `service_views` |  |
+| `storage_resources` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/details`
+
 #### DeploymentFile
 
 | Field | Description |
@@ -2649,6 +4637,383 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocation`
 Operations: Update.
 
 API path: `/api/v1/static_sites/{static_site_id}/deployments/{id}/files`
+
+#### DeploymentLog
+
+| Field | Description |
+| --- | --- |
+| `allocation_id` |  |
+| `app_environment_id` |  |
+| `app_release_id` |  |
+| `app_service_id` |  |
+| `details` |  |
+| `environment_name` |  |
+| `release_version` |  |
+| `service_name` |  |
+| `status` |  |
+| `task` |  |
+| `unreachable_reason` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/logs`
+
+#### DeploymentMetric
+
+| Field | Description |
+| --- | --- |
+| `auto_deploy` |  |
+| `environment_id` |  |
+| `environment_name` |  |
+| `placement_id` |  |
+| `redeploy` |  |
+| `region_count` |  |
+| `replicas_per_region` |  |
+| `rollout_strategy` |  |
+| `service_id` |  |
+| `service_name` |  |
+| `source_ref` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/metrics`
+
+#### DeploymentPreview
+
+| Field | Description |
+| --- | --- |
+| `access` |  |
+| `app_environment_id` |  |
+| `app_name` |  |
+| `app_preview_profile_id` |  |
+| `app_slug` |  |
+| `change_number` |  |
+| `created_at` |  |
+| `created_by_user_id` |  |
+| `expires_at` |  |
+| `generation` |  |
+| `health` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `latest_operation_status` |  |
+| `name` |  |
+| `owner_name` |  |
+| `profile_name` |  |
+| `resource_overrides` | Service public IDs mapped to resource overrides. |
+| `retained` |  |
+| `slug` |  |
+| `snapshot_version` |  |
+| `source_revision` |  |
+| `status` |  |
+| `updated_at` |  |
+| `urls` |  |
+| `vcs_change_id` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/previews`
+
+#### DeploymentSetting
+
+| Field | Description |
+| --- | --- |
+| `code` |  |
+| `created_at` |  |
+| `id` |  |
+| `name` |  |
+| `nomad_datacenter` |  |
+| `updated_at` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/settings`
+
+#### DesktopLocalAgentModel
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `name` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/desktop_local_agent/models`
+
+#### DesktopLocalAgentResponse
+
+| Field | Description |
+| --- | --- |
+| `input` |  |
+| `max_output_tokens` |  |
+| `model` |  |
+| `store` |  |
+| `stream` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/desktop_local_agent/responses`
+
+#### Device
+
+| Field | Description |
+| --- | --- |
+| `architecture` |  |
+| `channel` |  |
+| `coding_connection` | Independent organization coding-control service state for the current device owner. |
+| `connection_checked_at` | When this native presence observation was obtained; null when unobserved or unavailable. |
+| `connection_status` | Display-only native presence. |
+| `control_delivery_policy` |  |
+| `control_spawn_policy` |  |
+| `created_at` |  |
+| `device` |  |
+| `environment` |  |
+| `execution_available` |  |
+| `id` |  |
+| `name` |  |
+| `native_device_id` |  |
+| `paired_at` |  |
+| `pairing_generation` |  |
+| `platform` |  |
+| `project_visibility` | Folder discovery and new-thread selection. |
+| `provider_status` | Recent native provider observations; absent on older API replicas. |
+| `revoked_at` |  |
+| `scheduled_check_ins` | Whether the owner's private agents may check this computer's connection during scheduled runs. |
+| `user_browser_access` | Whether agents may use the owner's own Chrome-family browser here: off, only tabs agents open or the owner shares, or every tab. |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/connection`
+
+#### DeviceBrowserOperation
+
+| Field | Description |
+| --- | --- |
+| `command` | The in-app browser takes open through open_external; the person's own browser (arguments.browser user) takes open, tabs, share_tab, navigate, back, reload, screenshot, read, click, type, press, scroll and close. |
+| `created_at` |  |
+| `id` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/browser_operations/{id}/claim`
+
+#### DeviceControlMessage
+
+| Field | Description |
+| --- | --- |
+| `agent_id` |  |
+| `agent_name` |  |
+| `expires_at` |  |
+| `id` |  |
+| `sender` |  |
+| `text` |  |
+| `text_omitted` |  |
+| `thread` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_messages`
+
+#### DeviceControlOperation
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `arguments` |  |
+| `created_at` |  |
+| `delivery` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` |  |
+| `diagnostic_code` | Approved product error code retained after copied diagnostics expire. |
+| `end` |  |
+| `expires_at` |  |
+| `id` |  |
+| `key` |  |
+| `provider` |  |
+| `references` |  |
+| `result` |  |
+| `result_expired` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations`
+
+#### DeviceEnterpriseRelay
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/spark/devices/enterprise_relays`
+
+#### DeviceFolderListing
+
+| Field | Description |
+| --- | --- |
+| `code` |  |
+| `error` |  |
+| `folders` |  |
+| `id` |  |
+| `key` | Stable idempotency key for this listing. |
+| `parent` |  |
+| `path` | The resolved folder. |
+| `state` |  |
+| `truncated` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/folder_listings`
+
+#### DeviceGrant
+
+| Field | Description |
+| --- | --- |
+| `active_grants` |  |
+| `agent_choices` | Eligible picker choices, with current owner grant targets, on the first page only. |
+| `agent_id` |  |
+| `all_agents_access` | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `capabilities` |  |
+| `execution_available` |  |
+| `grants` |  |
+| `id` |  |
+| `next_cursor` |  |
+| `principal_id` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/{device_grant_id}/revise`
+
+#### DeviceInvocation
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/challenge`
+
+#### DeviceLocalEvent
+
+| Field | Description |
+| --- | --- |
+| `event` |  |
+| `recorded` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/local_events`
+
+#### DevicePairing
+
+| Field | Description |
+| --- | --- |
+| `architecture` |  |
+| `channel` |  |
+| `id` |  |
+| `name` |  |
+| `platform` |  |
+| `public_key` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/pairings/{device_pairing_intent_id}/complete`
+
+#### DeviceProject
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Remove.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/projects/{id}`
+
+#### DeviceScheduledCheckIn
+
+| Field | Description |
+| --- | --- |
+| `enabled` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/scheduled_check_ins`
+
+#### DockerBuilder
+
+| Field | Description |
+| --- | --- |
+| `backend` |  |
+| `created_at` |  |
+| `gateway_url` | Organization-addressed public WSS gateway; null until configured |
+| `generation` |  |
+| `id` |  |
+| `last_activity_at` |  |
+| `organization_id` |  |
+| `ready_at` |  |
+| `slept_at` |  |
+| `slug` |  |
+| `startup_attempt` |  |
+| `startup_failure` | Safe failure reason for the most recent startup attempt |
+| `startup_stage` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/docker_builders/{id}/recover`
+
+#### DockerBuilderSession
+
+| Field | Description |
+| --- | --- |
+| `created_at` |  |
+| `docker_builder_id` |  |
+| `expires_at` |  |
+| `gateway_url` | Organization-addressed public WSS gateway; null until configured |
+| `generation` |  |
+| `id` |  |
+| `organization_id` |  |
+| `revoked_at` |  |
+| `user_id` |  |
+
+Operations: Create, Load, Remove.
+
+API path: `/api/v1/organizations/{organization_id}/docker_builders/{docker_builder_id}/sessions`
+
+#### DockerBuilderSetting
+
+| Field | Description |
+| --- | --- |
+| `docker_builder_settings` |  |
+| `idle_timeout_seconds` |  |
+| `max_concurrency` |  |
+| `organization_id` |  |
+| `region` |  |
+| `runtime_timeout_seconds` |  |
+
+Operations: List, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/docker_builder_settings`
+
+#### DomainDnsIntegration
+
+| Field | Description |
+| --- | --- |
+| `account_label` |  |
+| `api_token` |  |
+| `created_at` |  |
+| `failure_message` |  |
+| `has_token` |  |
+| `id` |  |
+| `last_verified_at` |  |
+| `organization_id` |  |
+| `provider` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/domain_dns_integrations`
 
 #### DomainPathRule
 
@@ -2695,6 +5060,24 @@ API path: `/api/v1/hosting/apps/{app_id}/domains/{domain_id}/path_rules`
 Operations: Create, List, Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/dreams/{id}/resume`
+
+#### Edge
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/edge/tls-check`
+
+#### EmailVerification
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/email_verifications/resend`
 
 #### Environment
 
@@ -2906,6 +5289,79 @@ API path: `/api/v1/organizations/{organization_id}/verify/environments/{verify_e
 Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/evidence/{id}`
+
+#### ExecutionDesiredState
+
+| Field | Description |
+| --- | --- |
+| `desired_state` |  |
+| `id` |  |
+| `stop_observed` | True only for archived zero-capacity states with all known jobs stopped and allocations terminated. |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/execution/desired_states/{id}/reconcile`
+
+#### ExecutionReconcilerTick
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/execution/reconciler_ticks`
+
+#### ExecutionRelease
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/execution/releases/{id}/activate`
+
+#### ExecutionRuntimeInstance
+
+| Field | Description |
+| --- | --- |
+| `adapter_kind` |  |
+| `app_environment_id` |  |
+| `app_release_id` |  |
+| `app_service_id` |  |
+| `booted_at` |  |
+| `booted_at_label` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `instance_key` |  |
+| `last_reconciled_at` |  |
+| `last_reconciled_at_label` |  |
+| `last_seen_at` |  |
+| `last_seen_at_label` |  |
+| `location` |  |
+| `location_id` |  |
+| `network_peer_id` |  |
+| `nomad_allocation_id` |  |
+| `nomad_task_name` |  |
+| `organization_id` |  |
+| `private_ipv4` |  |
+| `private_ipv6` |  |
+| `provider_instance_id` |  |
+| `public_endpoint` |  |
+| `service_name` | Name of the Vex service this instance runs, in the same vocabulary as `vex deploy list`. |
+| `slug` |  |
+| `status` |  |
+| `terminated_at` |  |
+| `terminated_at_label` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/execution/runtime_instances/{id}/refresh`
 
 #### Exploration
 
@@ -3120,6 +5576,204 @@ Operations: List, Load, Patch, Update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/findings`
 
+#### Gh
+
+| Field | Description |
+| --- | --- |
+| `capabilities` |  |
+| `content` |  |
+| `fetched_at` |  |
+| `id` |  |
+| `magic_merge` |  |
+| `pull_request` |  |
+| `stack` |  |
+| `transcript_paths` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/gh/{github_owner}/{github_repo}/{number}`
+
+#### GitImport
+
+| Field | Description |
+| --- | --- |
+| `destination_mode` |  |
+| `error` |  |
+| `git_default_branch` | Original Git symbolic HEAD branch, independent of the branch selected for JJ conversion |
+| `git_status` |  |
+| `git_url` |  |
+| `id` |  |
+| `idempotency_key` |  |
+| `name` |  |
+| `native_status` |  |
+| `organization` |  |
+| `repository_id` |  |
+| `root_path` |  |
+| `slug` |  |
+| `source_branch` |  |
+| `target_branch` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/git_imports/{id}/complete`
+
+#### Github
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/github/repository_lookup`
+
+#### GithubApp
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/github_app/webhook`
+
+#### GithubAppImportableRepository
+
+| Field | Description |
+| --- | --- |
+| `account_login` |  |
+| `github_app_installation_id` |  |
+| `next_page` | Next GitHub page for this installation |
+| `repositories` |  |
+
+Operations: List.
+
+API path: `/api/v1/github_app/importable_repositories`
+
+#### GithubAppInstallation
+
+| Field | Description |
+| --- | --- |
+| `account_avatar_url` |  |
+| `account_id` |  |
+| `account_login` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `installation_id` |  |
+| `installed_at` |  |
+| `installed_at_label` |  |
+| `manage_access_url` |  |
+| `organization_id` |  |
+| `permission_entries` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` |  |
+| `status` |  |
+| `suspended_at` |  |
+| `suspended_at_label` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/organizations/{organization_id}/github_app/installations/{id}/check_connection`
+
+#### GithubAppInstallationAuthorization
+
+| Field | Description |
+| --- | --- |
+| `installation_url` |  |
+| `organization_slug` | Vex organization slug whose installation will be linked. |
+| `return_target` | Server-validated Vex application target used after verification. |
+
+Operations: Create.
+
+API path: `/api/v1/github_app/installation_authorizations`
+
+#### GithubAppUserAuthorization
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/github_app/user_authorizations`
+
+#### GithubCiRepository
+
+| Field | Description |
+| --- | --- |
+| `adoption_mode` |  |
+| `check_name_prefix` |  |
+| `ci_runner_pool_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `default_branch` |  |
+| `github_app_installation_id` |  |
+| `github_repository_id` |  |
+| `id` |  |
+| `last_compatibility_status` |  |
+| `last_error_message` |  |
+| `last_head_sha` |  |
+| `last_pull_request_number` |  |
+| `last_ref` |  |
+| `last_webhook_action` |  |
+| `last_webhook_at` |  |
+| `last_webhook_at_label` |  |
+| `last_webhook_delivery_id` |  |
+| `last_webhook_event` |  |
+| `metadata` |  |
+| `organization_id` |  |
+| `permission_status` |  |
+| `repository_full_name` |  |
+| `repository_name` |  |
+| `repository_owner` |  |
+| `status` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `webhook_delivery_count` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/github_ci_repositories`
+
+#### GithubCiRepositoryCompatibilityReport
+
+| Field | Description |
+| --- | --- |
+| `analyzed_at` |  |
+| `analyzed_at_label` |  |
+| `ci_pipeline_id` |  |
+| `ci_pipeline_run_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `diagnostics` |  |
+| `errors` |  |
+| `event_action` |  |
+| `event_name` |  |
+| `execution_allowed` |  |
+| `github_ci_repository_id` |  |
+| `head_sha` |  |
+| `id` |  |
+| `metadata` |  |
+| `organization_id` |  |
+| `parser_version` |  |
+| `pull_request_number` |  |
+| `ref_name` |  |
+| `referenced_actions` |  |
+| `required_secrets` |  |
+| `runner_labels` |  |
+| `source_blob_sha` |  |
+| `source_sha` |  |
+| `status` |  |
+| `supported_features` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `warnings` |  |
+| `workflow_name` |  |
+| `workflow_path` |  |
+
+Operations: List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_ci_repositories/{github_ci_repository_id}/compatibility_reports`
+
 #### GithubConnection
 
 | Field | Description |
@@ -3134,6 +5788,307 @@ API path: `/api/v1/organizations/{organization_id}/verify/findings`
 Operations: Create, List.
 
 API path: `/api/v1/organizations/{organization_id}/verify/github_connections`
+
+#### GithubIntegration
+
+| Field | Description |
+| --- | --- |
+| `account_avatar_url` |  |
+| `account_login` |  |
+| `connection_status` |  |
+| `connection_status_label` |  |
+| `github_installation` |  |
+| `health` |  |
+| `id` |  |
+| `imported_repositories_count` |  |
+| `imported_repositories_count_label` |  |
+| `organization` |  |
+| `pagination` |  |
+| `repositories` |  |
+
+Operations: List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/github_integrations`
+
+#### GithubOnboarding
+
+| Field | Description |
+| --- | --- |
+| `accounts` |  |
+| `active_batch_id` | The batch the wizard's import step should resume — the most recent batch still working, else the most recent overall. |
+| `batches` |  |
+| `capabilities` |  |
+| `installations` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding`
+
+#### GithubOnboardingBranch
+
+| Field | Description |
+| --- | --- |
+| `branches` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/branches`
+
+#### GithubOnboardingImport
+
+| Field | Description |
+| --- | --- |
+| `account_login` |  |
+| `complete` | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` |  |
+| `failed_item_count` |  |
+| `github_app_installation_id` |  |
+| `id` |  |
+| `imported_item_count` |  |
+| `item_count` |  |
+| `items` |  |
+| `repositories` |  |
+| `status` |  |
+| `terminal_item_count` |  |
+| `updated_at` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/imports`
+
+#### GithubOnboardingImportBatch
+
+| Field | Description |
+| --- | --- |
+| `account_login` |  |
+| `complete` | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` |  |
+| `failed_item_count` |  |
+| `github_app_installation_id` |  |
+| `id` |  |
+| `imported_item_count` |  |
+| `item_count` |  |
+| `items` |  |
+| `status` |  |
+| `terminal_item_count` |  |
+| `updated_at` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/import_batches/{github_import_batch_id}`
+
+#### GithubOnboardingImportItem
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/import_items/{github_import_batch_item_id}/retry`
+
+#### GithubPullRequest
+
+| Field | Description |
+| --- | --- |
+| `capabilities` |  |
+| `content` |  |
+| `fetched_at` |  |
+| `id` |  |
+| `magic_merge` |  |
+| `pull_request` |  |
+| `stack` |  |
+| `transcript_paths` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{org_slug}/github/pull_requests/refresh`
+
+#### GithubRunnerAdmission
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/github_runner_admission`
+
+#### GithubRunnerCache
+
+| Field | Description |
+| --- | --- |
+| `entry_id` |  |
+| `key` |  |
+| `matched_key` |  |
+| `ok` |  |
+| `operation` |  |
+| `restore_keys` |  |
+| `signed_download_url` |  |
+| `size_bytes` |  |
+| `upload_path` |  |
+| `version` |  |
+
+Operations: Create.
+
+API path: `/api/v1/github_runner_cache`
+
+#### GithubRunnerEgress
+
+| Field | Description |
+| --- | --- |
+| `can_request` |  |
+| `cidr` |  |
+| `ipv4` |  |
+| `requested_at_label` |  |
+| `status` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_egress`
+
+#### GithubRunnerHistory
+
+| Field | Description |
+| --- | --- |
+| `activity` |  |
+| `counts` |  |
+| `observed_at` |  |
+| `pagination` |  |
+| `repositories` |  |
+| `runs` |  |
+| `setup` | CI onboarding. |
+| `success_rate` |  |
+| `usage` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/github_runner_history`
+
+#### GithubRunnerImage
+
+| Field | Description |
+| --- | --- |
+| `created_at` |  |
+| `id` |  |
+| `image_reference` | Immutable linux/amd64 Ubuntu 24.04 image, registry/repository@sha256:digest, with Node 22+ |
+| `last_error` |  |
+| `modal_image_id` |  |
+| `name` |  |
+| `registry_secret_name` | Name of an organization CI secret containing REGISTRY_USERNAME and REGISTRY_PASSWORD JSON fields |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_images/{id}/prepare`
+
+#### GithubRunnerPool
+
+| Field | Description |
+| --- | --- |
+| `cpu_millicores` |  |
+| `enabled` |  |
+| `github_app_installation_id` |  |
+| `github_repository_id` |  |
+| `github_runner_image` |  |
+| `id` |  |
+| `image` | Organization image name or ID; null restores the standard image |
+| `invocations` |  |
+| `label` |  |
+| `last_error` |  |
+| `last_polled_at` |  |
+| `max_concurrency` |  |
+| `memory_mb` |  |
+| `organization_id` |  |
+| `provider` |  |
+| `repository_full_name` |  |
+| `runtime_kind` |  |
+| `timeout_seconds` |  |
+
+Operations: Create, List, Update.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_pools`
+
+#### GithubRunnerSetup
+
+| Field | Description |
+| --- | --- |
+| `error` |  |
+| `github_repository_connection_id` |  |
+| `id` |  |
+| `pull_request_url` |  |
+| `repository_full_name` |  |
+| `roder_thread_id` |  |
+| `runner_labels` |  |
+| `status` |  |
+| `status_label` |  |
+| `summary` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_setup`
+
+#### Gitlab
+
+| Field | Description |
+| --- | --- |
+| `configured` |  |
+| `connections` |  |
+| `integrations` |  |
+| `inventory_error` |  |
+| `next_page` |  |
+| `organization` |  |
+| `projects` |  |
+| `redirect_uri` | The OAuth redirect URI a self-managed GitLab application must use; null when GitLab callbacks aren't configured. |
+| `selected_integration_id` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{org_slug}/gitlab/authorize`
+
+#### GitlabConnection
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/gitlab/connections/{connection_id}/control`
+
+#### GitlabImport
+
+| Field | Description |
+| --- | --- |
+| `integration_id` |  |
+| `project_id` |  |
+| `repo_slug` |  |
+| `source_branch` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/gitlab/imports`
+
+#### GitlabOauth
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/gitlab/oauth/callback`
+
+#### GrantAllAgent
+
+| Field | Description |
+| --- | --- |
+| `all_agents_access` |  |
+| `enabled` |  |
+| `execution_available` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/all_agents`
 
 #### HostingAppDomain
 
@@ -3167,6 +6122,16 @@ Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/domains/{id}/disable`
 
+#### IdentityOrganization
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/identity/organizations/{organization_id}/catalog`
+
 #### ImageRepository
 
 | Field | Description |
@@ -3190,6 +6155,34 @@ API path: `/api/v1/hosting/apps/{app_id}/domains/{id}/disable`
 Operations: Create, List.
 
 API path: `/api/v1/organizations/{org_slug}/image_repositories`
+
+#### ImageRepositoryTag
+
+| Field | Description |
+| --- | --- |
+| `image_repository` |  |
+| `name` |  |
+| `registry_url` |  |
+| `tags` |  |
+
+Operations: List.
+
+API path: `/api/v1/artifacts/image_repositories/{id}/tags`
+
+#### ImportBranchPolicy
+
+| Field | Description |
+| --- | --- |
+| `can_manage_pr_scenario_writing` |  |
+| `can_manage_sandbox_region` |  |
+| `dedicated_outbound_ip_addresses` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` |  |
+| `organization` |  |
+| `sandbox_regions` |  |
+
+Operations: Load, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/import_branch_policy`
 
 #### Integration
 
@@ -3241,6 +6234,56 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/interaction
 Operations: Create, List, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/invitations`
+
+#### InvocationControl
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/control/challenge`
+
+#### JobLogChunk
+
+| Field | Description |
+| --- | --- |
+| `byte_size` |  |
+| `ci_job_id` |  |
+| `ci_pipeline_run_id` |  |
+| `ci_step_id` |  |
+| `content` |  |
+| `content_format` |  |
+| `created_at` |  |
+| `id` |  |
+| `organization_id` |  |
+| `sequence_number` |  |
+| `stream` |  |
+| `updated_at` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/log_chunks`
+
+#### JobStep
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Patch, Update.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps`
+
+#### JobWorkspace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Patch, Update.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces`
 
 #### JourneyVariantReplay
 
@@ -3300,6 +6343,132 @@ Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/knowledge`
 
+#### Known
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/.well-known/agent-card.json`
+
+#### Label
+
+| Field | Description |
+| --- | --- |
+| `changes_count` |  |
+| `id` |  |
+| `name` | Display name |
+| `slug` | Normalized identity used for filtering and lookup. |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/labels`
+
+#### LeaseArtifact
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/artifacts`
+
+#### LeaseCache
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/cache/restore`
+
+#### LeaseLogChunk
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/log_chunks`
+
+#### LeaseReconciliation
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/reconciliations/{reconciliation_id}/output`
+
+#### LeaseStep
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Update.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/steps/{ci_step_id}`
+
+#### LeaseVerifyDiagnostic
+
+| Field | Description |
+| --- | --- |
+| `browser_events` |  |
+| `live_browser` |  |
+| `live_view` | The tester's read-only live stream for page viewers. |
+| `steps` |  |
+
+Operations: Create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_diagnostics`
+
+#### LeaseVerifySecret
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_secrets`
+
+#### LeaseWorkspace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Update.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/workspaces/{ci_workspace_id}`
+
+#### LocalAgentDecision
+
+| Field | Description |
+| --- | --- |
+| `request` | A native OpenAI Decisions request for gpt-6-luna, at most 1600 KiB, with inline images only |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/local_agent/decisions`
+
+#### LocalAgentResponse
+
+| Field | Description |
+| --- | --- |
+| `input` |  |
+| `model` |  |
+| `service_tier` |  |
+| `store` |  |
+| `stream` |  |
+| `tools` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/local_agent/responses`
+
 #### LocalThreadDelivery
 
 | Field | Description |
@@ -3354,6 +6523,67 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threa
 Operations: List.
 
 API path: `/api/v1/hosting/locations`
+
+#### LogStreamChunk
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks`
+
+#### LogoImage
+
+| Field | Description |
+| --- | --- |
+| `activated_products` | Products this organization has activated (PRD 144). |
+| `agents_only` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` |  |
+| `created_at_label` |  |
+| `github_prs_authored_by_change_author` |  |
+| `id` |  |
+| `logo_url` |  |
+| `member_count` |  |
+| `name` |  |
+| `pending_invitation_count` |  |
+| `personal` |  |
+| `repository_count` |  |
+| `role` |  |
+| `sandbox_region` |  |
+| `shared_agent_personal_accounts_enabled` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` |  |
+| `source_control_providers` | Connected source control providers for this organization. |
+| `source_ui_enabled` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `verify_pr_scenario_writing_enabled` |  |
+
+Operations: Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/logo_image`
+
+#### MarketingSetting
+
+| Field | Description |
+| --- | --- |
+| `call_first` |  |
+
+Operations: List.
+
+API path: `/api/v1/marketing_settings`
+
+#### McpOauth
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/mcp/oauth/consent`
 
 #### Me
 
@@ -3481,6 +6711,29 @@ Operations: Create, List, Load, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/memories`
 
+#### MergeQueueEntry
+
+| Field | Description |
+| --- | --- |
+| `analytics` | Queue performance for the reporting window. |
+| `change_id` |  |
+| `expected_target_commit_id` |  |
+| `expected_target_version` |  |
+| `expected_version` |  |
+| `github_pr_number` |  |
+| `id` |  |
+| `idempotency_key` |  |
+| `kind` |  |
+| `policy` |  |
+| `priority` |  |
+| `queue` |  |
+| `target_branches` | Bookmark names for the target picker. |
+| `when_ready` |  |
+
+Operations: Create, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/merge`
+
 #### MergeRequest
 
 | Field | Description |
@@ -3522,6 +6775,26 @@ API path: `/api/v1/organizations/{organization_id}/verify/memories`
 Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun`
+
+#### MergeResolution
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `base` | Common ancestor file contents |
+| `content` |  |
+| `context` | Optional surrounding files keyed by path |
+| `duration_ms` |  |
+| `fallback` |  |
+| `model` |  |
+| `ours` | Current / left file contents |
+| `path` | Repository-relative path of the conflicted file |
+| `resolved` |  |
+| `theirs` | Incoming / right file contents |
+
+Operations: Create.
+
+API path: `/api/v1/merge_resolutions`
 
 #### MessagingConversationMessage
 
@@ -3566,6 +6839,45 @@ Operations: List.
 
 API path: `/api/v1/hosting/metrics/queries`
 
+#### MetronomeWebhook
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/metronome/webhooks`
+
+#### ModelSubscriptionAccount
+
+| Field | Description |
+| --- | --- |
+| `accounts` |  |
+| `agents` |  |
+| `can_disconnect` |  |
+| `connection_agent` |  |
+| `email` |  |
+| `id` |  |
+| `label` |  |
+| `provider` |  |
+| `saved` |  |
+| `status` |  |
+| `usable` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/model_subscription_accounts`
+
+#### ModelSubscriptionAccountConnection
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load, Update.
+
+API path: `/api/v1/model_subscription_accounts/connection/{agent_id}`
+
 #### NetworkConnection
 
 | Field | Description |
@@ -3584,6 +6896,62 @@ API path: `/api/v1/hosting/metrics/queries`
 Operations: Create, Patch, Update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/network_connections`
+
+#### NetworkingSpace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{id}/activate`
+
+#### Node
+
+| Field | Description |
+| --- | --- |
+| `account_avatar_url` |  |
+| `account_id` |  |
+| `account_login` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `installation_id` |  |
+| `installed_at` |  |
+| `installed_at_label` |  |
+| `manage_access_url` |  |
+| `organization_id` |  |
+| `permission_entries` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` |  |
+| `status` |  |
+| `suspended_at` |  |
+| `suspended_at_label` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/pages/nodes`
+
+#### NodeCertificate
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/certificate/rotate`
+
+#### NodeLease
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/claim`
 
 #### NomadAllocation
 
@@ -3632,6 +7000,73 @@ Operations: List.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs`
 
+#### Now
+
+| Field | Description |
+| --- | --- |
+| `needs_attention` |  |
+| `pagination` |  |
+| `recently_landed` |  |
+| `shipping_now` |  |
+| `summary` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/now`
+
+#### ObservabilityClickhouseCluster
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/clickhouse_clusters/{id}/activate`
+
+#### ObservabilityQuickwitCluster
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/quickwit_clusters/{id}/activate`
+
+#### ObservabilitySpace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/spaces/{id}/activate`
+
+#### Openapi
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/openapi`
+
+#### OrgInvitation
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `invitation` |  |
+| `registration_options` |  |
+| `requires_password_setup` |  |
+| `start_guided_setup` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/org_invitations/{token}/accept`
+
 #### Organization
 
 | Field | Description |
@@ -3664,6 +7099,233 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs`
 Operations: Create, List, Load, Patch, Update.
 
 API path: `/api/v1/organizations`
+
+#### OrganizationApp
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: List, Remove, Update.
+
+API path: `/api/v1/spark/organizations/{organization_id}/apps`
+
+#### OrganizationControl
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/control/admission`
+
+#### OrganizationDevice
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/control`
+
+#### OrganizationIdentityCertificate
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/identity_certificates/{id}/expire`
+
+#### OrganizationInteraction
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/interactions`
+
+#### OrganizationInvitation
+
+| Field | Description |
+| --- | --- |
+| `email` |  |
+| `id` |  |
+| `role` |  |
+
+Operations: Create, Remove.
+
+API path: `/api/v1/admin/organizations/{org_slug}/invitations`
+
+#### OrganizationMessageFile
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/message_files`
+
+#### OrganizationOidcTrust
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/activate`
+
+#### OrganizationRunEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/run_events`
+
+#### OrganizationRunOutcome
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/run_outcomes`
+
+#### OrganizationRunUsage
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/run_usages`
+
+#### OrganizationSandbox
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sandbox/automation-cleanup`
+
+#### OrganizationSecret
+
+| Field | Description |
+| --- | --- |
+| `app_environment_id` |  |
+| `app_service_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `created_by` |  |
+| `current_version` |  |
+| `description` |  |
+| `env_key` |  |
+| `expose_to_build` |  |
+| `expose_to_ci` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `last_accessed_at` |  |
+| `last_accessed_at_label` |  |
+| `last_accessed_by` |  |
+| `latest_version_number` |  |
+| `name` |  |
+| `organization_id` |  |
+| `owner_service_account_id` |  |
+| `rotation_policy` |  |
+| `scope_kind` |  |
+| `slug` |  |
+| `status` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/secrets/{id}/disable`
+
+#### OrganizationServiceAccount
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/service_accounts/{id}/activate`
+
+#### OrganizationSetting
+
+| Field | Description |
+| --- | --- |
+| `concurrent_run_limit_override` |  |
+| `customize_onboarding_packages` |  |
+| `daily_run_limit_override` |  |
+| `deployment_usage_visibility` |  |
+| `monthly_browser_minutes_limit_override` |  |
+| `monthly_budget_dollars` |  |
+| `name` |  |
+| `onboarding_custom_pricing` |  |
+| `onboarding_package_keys` |  |
+
+Operations: Update.
+
+API path: `/api/v1/admin/organizations/{org_slug}/settings`
+
+#### OrganizationSite
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Remove, Update.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/token`
+
+#### OrganizationSubscription
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/subscriptions/selection`
+
+#### OrganizationTool
+
+| Field | Description |
+| --- | --- |
+| `arguments` |  |
+| `native_agent_id` |  |
+| `tool` |  |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/tools`
+
+#### OrganizationWorkloadIdentity
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/workload_identities/{id}/activate`
+
+#### OtelIngest
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/otel_ingest/authorize`
 
 #### Page
 
@@ -3720,6 +7382,70 @@ Operations: Create, List, Load.
 
 API path: `/api/v1/organizations/{organization_id}/agents/page/activity`
 
+#### PageArtefact
+
+| Field | Description |
+| --- | --- |
+| `artefact` |  |
+| `automation` |  |
+| `automation_invocation_id` |  |
+| `byte_size` |  |
+| `checksum_sha256` |  |
+| `comment_threads` |  |
+| `content_type` |  |
+| `created_at` |  |
+| `created_by_user_id` |  |
+| `description` |  |
+| `document_key` | Stable document identity shared by all revisions. |
+| `draft` | The autosaved working copy of the newest Markdown version; null for older versions and other files. |
+| `entrypoint` |  |
+| `expires_at` |  |
+| `filename` |  |
+| `files` |  |
+| `harness` |  |
+| `harness_version` |  |
+| `id` |  |
+| `kind` |  |
+| `kinds` |  |
+| `model` |  |
+| `organization` |  |
+| `organization_id` |  |
+| `pagination` |  |
+| `permissions` |  |
+| `preview` |  |
+| `published_at` |  |
+| `published_at_label` |  |
+| `publisher` |  |
+| `repository` |  |
+| `repository_id` |  |
+| `selected_path` |  |
+| `slug` |  |
+| `source` |  |
+| `status` |  |
+| `title` |  |
+| `vcs_agent_checkpoint_id` |  |
+| `vcs_agent_session_id` |  |
+| `version` |  |
+| `versions` |  |
+| `view_url` |  |
+| `web_url` |  |
+
+Operations: List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/page`
+
+#### PageCiPipelineRun
+
+| Field | Description |
+| --- | --- |
+| `error` |  |
+| `id` |  |
+| `jobs` |  |
+
+Operations: Load.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/page`
+
 #### PageProjectRun
 
 | Field | Description |
@@ -3741,6 +7467,85 @@ API path: `/api/v1/organizations/{organization_id}/agents/page/activity`
 Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/page`
+
+#### PageRepoVcCommit
+
+| Field | Description |
+| --- | --- |
+| `commit` |  |
+| `diff_path` | Fingerprinted path serving this commit range's file diff. |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits/{id}/page`
+
+#### PagesBilling
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `breakdown` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` |  |
+| `can_manage_contact` |  |
+| `can_manage_extra_spend` |  |
+| `can_manage_local_subscription` |  |
+| `can_manage_payment_method` |  |
+| `can_set_up_billing` |  |
+| `customer` |  |
+| `deployment_usage_visible` |  |
+| `entitlements` |  |
+| `extra_spend_enabled` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | Whether the `billing` feature is on for this organization. |
+| `organization_id` |  |
+| `package` |  |
+| `prepaid` |  |
+| `preview` | Metronome draft invoice and credits, or null. |
+| `storage_usage` |  |
+| `stripe` |  |
+| `subscription` |  |
+| `token_account` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/billing`
+
+#### PagesGithubOnboarding
+
+| Field | Description |
+| --- | --- |
+| `onboarding` |  |
+| `organization` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/github_onboarding`
+
+#### PagesMember
+
+| Field | Description |
+| --- | --- |
+| `accepted_at` |  |
+| `accepted_by_user` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `email` |  |
+| `email_delivery_status` |  |
+| `expires_at` |  |
+| `expires_at_label` |  |
+| `id` |  |
+| `invite_url` |  |
+| `invited_by_user` |  |
+| `organization` |  |
+| `revoked_at` |  |
+| `role` |  |
+| `status` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/members`
 
 #### PagesProjectCredential
 
@@ -3817,6 +7622,105 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenarios`
 
+#### PagesRegistry
+
+| Field | Description |
+| --- | --- |
+| `active_repository_count` |  |
+| `error` |  |
+| `pagination` |  |
+| `repositories` |  |
+| `repository_count` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/registry`
+
+#### PagesSession
+
+| Field | Description |
+| --- | --- |
+| `adapter` |  |
+| `created_at` |  |
+| `cursor` |  |
+| `ended_at` |  |
+| `external_session_id` |  |
+| `facets` |  |
+| `from` |  |
+| `github_access_warnings` |  |
+| `harness` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` |  |
+| `last_activity_at` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` |  |
+| `limit` |  |
+| `markers` |  |
+| `max_bytes` |  |
+| `mode` |  |
+| `offset` |  |
+| `pagination` |  |
+| `query` |  |
+| `repo` |  |
+| `repository` |  |
+| `search` |  |
+| `search_enabled` |  |
+| `session` | Identical serialization to the org sessions page's expanded session, so the web reuses one session-detail builder. |
+| `sessions` |  |
+| `started_at` |  |
+| `stats` |  |
+| `status` |  |
+| `title` |  |
+| `to` |  |
+| `token_stats` |  |
+| `transcript_index` |  |
+| `transcript_stats` |  |
+| `updated_at` |  |
+| `user` |  |
+| `user_id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/sessions`
+
+#### Pairing
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/relay/pairings`
+
+#### PairingEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/relay/pairings/{id}/events`
+
+#### ParallelV1
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/local_agent/parallel/v1/extract`
+
+#### PatchsetDiff
+
+| Field | Description |
+| --- | --- |
+| `files` |  |
+| `id` |  |
+| `patchset` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/patchsets/{patchset_number}/diff/{fingerprint}`
+
 #### PersonalAccessToken
 
 | Field | Description |
@@ -3884,6 +7788,58 @@ API path: `/api/v1/hosting/apps/{app_id}/previews/{preview_id}/secrets/{id}/rota
 Operations: Create, List.
 
 API path: `/api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals`
+
+#### ProactiveAgentWaitlistEntry
+
+| Field | Description |
+| --- | --- |
+| `email` |  |
+| `first_task` | The first job they would hand an agent. |
+| `invite_code` | The referral code of the invite link they arrived through. |
+| `places_per_referral` | Most places one referral moves the entry up; fewer when boosted entries are ahead. |
+| `position` | 1-based place in the queue. |
+| `position_after_next_referral` | The place one more referral would give this entry, as Rails would assign it. |
+| `referral_code` | Shared in this entry's invite link. |
+| `referral_count` | People who joined through this entry's link. |
+| `total` | Display total including a random increment per signup; not the actual number of entries. |
+| `website` | Honeypot. |
+
+Operations: Create, Load.
+
+API path: `/api/v1/proactive_agent_waitlist_entries`
+
+#### Product
+
+| Field | Description |
+| --- | --- |
+| `activated_products` | Products this organization has activated (PRD 144). |
+| `agents_only` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` |  |
+| `created_at_label` |  |
+| `github_prs_authored_by_change_author` |  |
+| `id` |  |
+| `logo_url` |  |
+| `member_count` |  |
+| `name` |  |
+| `pending_invitation_count` |  |
+| `personal` |  |
+| `product` |  |
+| `repository_count` |  |
+| `role` |  |
+| `sandbox_region` |  |
+| `shared_agent_personal_accounts_enabled` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` |  |
+| `source_control_providers` | Connected source control providers for this organization. |
+| `source_ui_enabled` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `verify_pr_scenario_writing_enabled` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/products`
 
 #### ProductMapIdentityDecision
 
@@ -4425,6 +8381,41 @@ Operations: Create, Load, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share`
 
+#### PullRequestAction
+
+| Field | Description |
+| --- | --- |
+| `action_name` |  |
+| `body` |  |
+| `comment_id` |  |
+| `comments` |  |
+| `event` |  |
+| `expected_head_sha` |  |
+| `id` |  |
+| `label` |  |
+| `line` |  |
+| `node_id` |  |
+| `operation_key` |  |
+| `path` |  |
+| `run_id` |  |
+| `side` |  |
+| `start_line` |  |
+| `start_side` |  |
+| `thread_id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/actions`
+
+#### PullRequestMagicMerge
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/merge`
+
 #### PullRequestSetting
 
 | Field | Description |
@@ -4525,6 +8516,42 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/verify/pull_request_settings/detect_comments`
 
+#### PullRequestTranscript
+
+| Field | Description |
+| --- | --- |
+| `adapter` |  |
+| `created_at` |  |
+| `ended_at` |  |
+| `external_session_id` |  |
+| `harness` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` |  |
+| `last_activity_at` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` |  |
+| `repository` |  |
+| `started_at` |  |
+| `stats` |  |
+| `status` |  |
+| `title` |  |
+| `updated_at` |  |
+| `user` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/pull_request/{number}/transcripts`
+
+#### PullZone
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `name` |  |
+| `slug` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/pull_zones`
+
 #### Recorder
 
 | Field | Description |
@@ -4555,6 +8582,34 @@ Operations: Create.
 
 API path: `/api/v1/registry/v2/authorize`
 
+#### RelayAgentConnection
+
+| Field | Description |
+| --- | --- |
+| `agent_card_url` |  |
+| `auth_scheme` |  |
+| `can_configure` |  |
+| `can_disconnect` |  |
+| `can_setup` |  |
+| `connection` |  |
+| `credential` | Write-only outbound key. |
+| `error_code` |  |
+| `expected_generation` |  |
+| `generation` |  |
+| `id` |  |
+| `name` |  |
+| `remote_agent` |  |
+| `requester_id` |  |
+| `retired_at` |  |
+| `revoked_at` |  |
+| `scope_key` |  |
+| `source_operation_id` |  |
+| `state` |  |
+
+Operations: Create, List, Load, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup`
+
 #### RelayAgentLocalThread
 
 | Field | Description |
@@ -4564,6 +8619,263 @@ API path: `/api/v1/registry/v2/authorize`
 Operations: Remove.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/relay`
+
+#### RelaySignal
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/relay/signals`
+
+#### ReleaseRollout
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/execution/releases/{release_id}/rollouts/{id}/complete`
+
+#### Repo
+
+| Field | Description |
+| --- | --- |
+| `can_retry_import` | True when a failed client import can be requeued for CLI resume. |
+| `can_retry_sync` | True when the latest sync run failed and can be retried. |
+| `disclaimer` |  |
+| `federated_in_home` | True when this Space is a folder virtual repository inside the organization Home monorepo. |
+| `github_repository` |  |
+| `icon_name` |  |
+| `id` | Virtual repository public ID for non-Home rows; Home uses the physical repository public ID. |
+| `import_item_id` |  |
+| `is_home` |  |
+| `name` |  |
+| `remote_repository` |  |
+| `root_path` | Home-relative folder path when federated_in_home is true; null otherwise. |
+| `slug` |  |
+| `sync_error_message` |  |
+| `sync_provider` |  |
+| `sync_status` |  |
+
+Operations: List, Load, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos`
+
+#### RepoAccessToken
+
+| Field | Description |
+| --- | --- |
+| `access_token` |  |
+| `active` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `credential_purpose` | Issues a revocable read-write system credential valid for one hour. |
+| `expires_at` |  |
+| `expires_at_label` |  |
+| `expires_in_days` |  |
+| `id` |  |
+| `last_used_at` |  |
+| `last_used_at_label` |  |
+| `name` |  |
+| `permission_level` |  |
+| `plain_text_token` |  |
+| `revoked_at` |  |
+| `revoked_at_label` |  |
+| `token_preview` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/access_tokens`
+
+#### RepoAction
+
+| Field | Description |
+| --- | --- |
+| `pipeline` |  |
+| `run` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/actions`
+
+#### RepoAgentCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_checkpoints/{id}`
+
+#### RepoAgentSession
+
+| Field | Description |
+| --- | --- |
+| `adapter` |  |
+| `agent_session` |  |
+| `external_session_id` |  |
+| `id` |  |
+| `status` |  |
+| `title` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete`
+
+#### RepoBookmarkProtection
+
+| Field | Description |
+| --- | --- |
+| `actor_policy` |  |
+| `bypass_mode` |  |
+| `created_at` |  |
+| `created_by_user_id` |  |
+| `enabled` |  |
+| `id` |  |
+| `name` |  |
+| `organization_id` |  |
+| `priority` |  |
+| `repository_id` |  |
+| `requirements` |  |
+| `target_kind` |  |
+| `target_pattern` |  |
+| `updated_at` |  |
+| `updated_by_user_id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections`
+
+#### RepoBookmarkProtectionEvent
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `actor_kind` |  |
+| `actor_label` |  |
+| `actor_user_id` |  |
+| `bookmark_name` |  |
+| `bookmark_protection_rule_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `decision` |  |
+| `id` |  |
+| `intent` |  |
+| `metadata` |  |
+| `new_target` |  |
+| `old_target` |  |
+| `organization_id` |  |
+| `reason_codes` |  |
+| `repository_id` |  |
+| `source_request_id` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protection_events`
+
+#### RepoCloudWorkspaceBackup
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/restore_request`
+
+#### RepoCodeRule
+
+| Field | Description |
+| --- | --- |
+| `active_revision_number` |  |
+| `capabilities` |  |
+| `code_rule` |  |
+| `created_at` |  |
+| `definition` |  |
+| `draft_pending` | The latest revision is not the active one |
+| `enabled` |  |
+| `expected_version` |  |
+| `id` |  |
+| `latest_revision_number` |  |
+| `name` | Name of the latest revision |
+| `repository` |  |
+| `scope` |  |
+| `slug` |  |
+| `state_version` | Send back as expected_version on every mutation |
+| `updated_at` |  |
+| `web_url` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules`
+
+#### RepoSetting
+
+| Field | Description |
+| --- | --- |
+| `active` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `description` |  |
+| `expires_at` |  |
+| `expires_at_label` |  |
+| `icon_name` |  |
+| `id` |  |
+| `last_used_at` |  |
+| `last_used_at_label` |  |
+| `merge_authority` |  |
+| `name` |  |
+| `organization_id` |  |
+| `permission_level` |  |
+| `revoked_at` |  |
+| `revoked_at_label` |  |
+| `slug` |  |
+| `status` |  |
+| `token_preview` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings`
+
+#### RepoStat
+
+| Field | Description |
+| --- | --- |
+| `repository_stats` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/stats/refresh`
+
+#### RepoVc
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commit_file`
+
+#### RepoVcCommit
+
+| Field | Description |
+| --- | --- |
+| `name` |  |
+| `target_commit_id` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits`
 
 #### ReportReplay
 
@@ -4598,6 +8910,260 @@ API path: `/api/v1/organizations/{organization_id}/verify/explorations/{id}/repo
 Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/verify/explorations/{id}/report/scenarios`
+
+#### RepositoryAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/repository_access/authorize`
+
+#### RepositoryAccessResolve
+
+| Field | Description |
+| --- | --- |
+| `default_branch` |  |
+| `git_auth_username` |  |
+| `git_https_clone_url` |  |
+| `git_https_supported` |  |
+| `github_access_warnings` |  |
+| `id` |  |
+| `membership_role` |  |
+| `organization_id` |  |
+| `organization_name` |  |
+| `organization_slug` |  |
+| `repository_id` |  |
+| `repository_name` |  |
+| `repository_slug` |  |
+
+Operations: Load.
+
+API path: `/api/v1/repository_access/resolve/{org_slug}/{repo_slug}`
+
+#### RepositoryEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/repository_events/walgit`
+
+#### RepositoryImport
+
+| Field | Description |
+| --- | --- |
+| `can_manage_connections` |  |
+| `github_imports` |  |
+| `github_installations` |  |
+| `gitlab_configured` |  |
+| `gitlab_imports` |  |
+| `gitlab_integrations` |  |
+| `gitlab_redirect_uri` |  |
+| `gitlab_self_managed_available` |  |
+| `inventory_errors` |  |
+| `organization_id` |  |
+| `repositories` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/repository_import`
+
+#### RepositoryImportSession
+
+| Field | Description |
+| --- | --- |
+| `action_required` |  |
+| `authorization_endpoint` |  |
+| `can_authorize_github` |  |
+| `client_name` |  |
+| `client_version` |  |
+| `created_at` |  |
+| `error_message` |  |
+| `expires_at` |  |
+| `git_imports` |  |
+| `github_app_installation_id` |  |
+| `github_connected` |  |
+| `id` |  |
+| `idempotency_key` |  |
+| `organization_id` |  |
+| `organization_slug` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/repository_import_sessions/{id}/authorization`
+
+#### RepositoryImportSessionRepository
+
+| Field | Description |
+| --- | --- |
+| `default_branch` |  |
+| `full_name` |  |
+| `name` |  |
+| `owner` |  |
+| `private` |  |
+| `reason` |  |
+| `selectable` |  |
+| `status` |  |
+| `visibility` |  |
+
+Operations: List.
+
+API path: `/api/v1/repository_import_sessions/{id}/repositories`
+
+#### RepositoryImportSessionSelection
+
+| Field | Description |
+| --- | --- |
+| `repositories` |  |
+
+Operations: Create.
+
+API path: `/api/v1/repository_import_sessions/{id}/selections`
+
+#### RepositorySandboxEnvironment
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/repositories/{repository}/sandbox_environments/validate`
+
+#### RoderCodeRepair
+
+| Field | Description |
+| --- | --- |
+| `base_sha` |  |
+| `cancel_requested` |  |
+| `failure_code` |  |
+| `id` |  |
+| `launch_state` |  |
+| `organization_id` |  |
+| `repository_slug` |  |
+| `roder_thread_id` |  |
+| `roder_turn_id` |  |
+| `scenario_run_id` |  |
+| `task` |  |
+| `trigger_kind` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/agent/roder/code_repairs/{id}/cancel`
+
+#### RoderCodeRepairSetting
+
+| Field | Description |
+| --- | --- |
+| `available` |  |
+| `daily_limit` |  |
+| `enabled` |  |
+| `enabled_at` |  |
+| `operator_user_id` |  |
+| `organization_id` |  |
+| `repository_slug` | Connected Composal repository required when enabling |
+
+Operations: Create, List.
+
+API path: `/api/v1/agent/roder/code_repair_settings`
+
+#### RoderMachine
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Update.
+
+API path: `/api/v1/agent/roder/machines/{public_id}`
+
+#### RoderRun
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/agent/roder/run/swarm_activity`
+
+#### RoderWorkspaceCredential
+
+| Field | Description |
+| --- | --- |
+| `api_token` | Short-lived personal access token for the spawning user. |
+| `author_email` |  |
+| `author_name` |  |
+| `clone_url` |  |
+| `default_branch` |  |
+| `expires_at` |  |
+| `organization_id` |  |
+| `repository_id` |  |
+| `repository_slug` |  |
+| `repository_spec` | The explicitly selected physical repository address. |
+| `required_lifetime_seconds` | Lifetime the pending clone or command must be able to complete within. |
+| `token` | Short-lived read/write repository credential. |
+| `username` |  |
+
+Operations: Create.
+
+API path: `/api/v1/agent/roder/workspace_credentials`
+
+#### RunArtifact
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts`
+
+#### RunJob
+
+| Field | Description |
+| --- | --- |
+| `active` |  |
+| `allow_failure` |  |
+| `cache_archive_observations` | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `ci_pipeline_run_id` |  |
+| `ci_runner_id` |  |
+| `created_at` |  |
+| `dependencies_csv` |  |
+| `display_id` |  |
+| `environment_csv` |  |
+| `execution_order` |  |
+| `execution_profile` |  |
+| `exit_code` |  |
+| `failed` |  |
+| `finished_at` |  |
+| `id` |  |
+| `kind` |  |
+| `log_chunks` |  |
+| `name` |  |
+| `number` |  |
+| `organization_id` |  |
+| `queued_at` |  |
+| `reconciliation_id` |  |
+| `retry_number` |  |
+| `reuse` |  |
+| `runner_label_selector` |  |
+| `slug` |  |
+| `started_at` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `steps` |  |
+| `timeout_seconds` |  |
+| `updated_at` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs`
 
 #### RunScenarioRun
 
@@ -4666,6 +9232,95 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/verify/run_updates`
 
+#### RunWorkspaceCredential
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/agent/roder/run/workspace_credentials`
+
+#### RunnerLease
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim`
+
+#### RunnerPoolNodeEnrollmentToken
+
+| Field | Description |
+| --- | --- |
+| `capabilities_csv` |  |
+| `ci_runner_pool_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `creator_user_id` |  |
+| `description` |  |
+| `expires_at` |  |
+| `expires_at_label` |  |
+| `id` |  |
+| `kind` |  |
+| `last_used_at` |  |
+| `last_used_at_label` |  |
+| `name` |  |
+| `organization_id` |  |
+| `raw_token` |  |
+| `revoked_at` |  |
+| `status` |  |
+| `token_hint` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `usage_count` |  |
+| `usage_count_label` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/ci/runner_pools/{runner_pool_id}/node_enrollment_tokens/{id}/revoke`
+
+#### RunnerPoolRunner
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat`
+
+#### RuntimeInstanceHealthSnapshot
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots`
+
+#### SandboxIntegration
+
+| Field | Description |
+| --- | --- |
+| `can_manage` |  |
+| `catalog` |  |
+| `configuration` |  |
+| `connected_profiles` | Connected profiles per provider across the organization. |
+| `credentials` |  |
+| `enabled` |  |
+| `id` |  |
+| `integrations` |  |
+| `name` |  |
+| `provider` |  |
+| `version` |  |
+
+Operations: Create, List, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/sandbox_integrations`
+
 #### ScenarioRevision
 
 | Field | Description |
@@ -4704,6 +9359,26 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/run`
 
+#### SecretGrant
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}/restore`
+
+#### SecretVersion
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}/redact`
+
 #### ServiceEndpoint
 
 | Field | Description |
@@ -4713,6 +9388,200 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints`
+
+#### Setting
+
+| Field | Description |
+| --- | --- |
+| `can_manage_pr_scenario_writing` |  |
+| `can_manage_sandbox_region` |  |
+| `dedicated_outbound_ip_addresses` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` |  |
+| `organization` |  |
+| `sandbox_regions` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/settings`
+
+#### SettingMutationLease
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/mutation_lease/clear`
+
+#### Signal
+
+| Field | Description |
+| --- | --- |
+| `acked_at` |  |
+| `acked_by` | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | Dispatched-run summary (docs §6c). |
+| `app_service_id` |  |
+| `attribution` | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
+| `created_at` | ISO8601 row insert time — retention math and debugging only. |
+| `dedupe_key` |  |
+| `hosted_app_id` |  |
+| `id` | The signal's own `sig_…` public id — also the paging cursor value. |
+| `kind` | A frozen taxonomy kind (§1) or an `app.custom.*` kind. |
+| `links` | Canonical, relative API paths built from real routes (docs §6a). |
+| `occurred_at` | ISO8601 domain event time — what the UI displays and `since` filters on. |
+| `organization_id` |  |
+| `payload` | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
+| `recovery` | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | Recovery pairing (docs §6b). |
+| `severity` | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
+| `source` | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
+| `subject_id` |  |
+| `subject_type` | Polymorphic pointer: `AppDeployment`, `RuntimeInstance`, `AlertEvent`, `HostedApp`, or `SignalSubscription`. |
+| `summary` | One-line, kind-composed human sentence for the feed row (docs §6d, e.g. |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/signals/{id}/ack`
+
+#### SignalInbound
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Update.
+
+API path: `/api/v1/signals/inbound/{provider}/{inbound_token}`
+
+#### SignalIntegration
+
+| Field | Description |
+| --- | --- |
+| `api_token` | Optional provider API token for target discovery and backfill. |
+| `api_token_stored` |  |
+| `config` |  |
+| `created_at` |  |
+| `failure_message` |  |
+| `id` | Public id (`sint_…`). |
+| `inbound_path` |  |
+| `inbound_url` | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` |  |
+| `last_verified_at` |  |
+| `mode` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` |  |
+| `organization_id` |  |
+| `provider` |  |
+| `rejected_signature_count` | Deliveries rejected for a bad or missing signature. |
+| `status` |  |
+| `target_count` |  |
+| `unmapped_delivery_count` | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` |  |
+| `webhook_secret` | The provider's signing secret. |
+| `webhook_secret_stored` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{id}/regenerate_inbound_token`
+
+#### SignalIntegrationDelivery
+
+| Field | Description |
+| --- | --- |
+| `attempt_count` |  |
+| `created_at` |  |
+| `delivery_id` | The provider's delivery id, or a `content-…` id derived from the event kind, its timestamp header and the body checksum when it sends none. |
+| `event_kind` |  |
+| `id` | Public id (`sdel_…`). |
+| `last_error` |  |
+| `ops_signal_id` | Public id (`sig_…`) of the signal this delivery emitted. |
+| `organization_id` |  |
+| `processed_at` |  |
+| `provider` |  |
+| `received_at` |  |
+| `signal_integration_id` |  |
+| `state` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/deliveries`
+
+#### SignalIntegrationTarget
+
+| Field | Description |
+| --- | --- |
+| `app_service_id` |  |
+| `created_at` |  |
+| `display_name` |  |
+| `enabled` |  |
+| `external_id` |  |
+| `external_kind` |  |
+| `external_slug` |  |
+| `hosted_app_id` |  |
+| `id` | Public id (`stgt_…`). |
+| `organization_id` |  |
+| `signal_integration_id` |  |
+| `signal_integration_targets` |  |
+| `targets` |  |
+| `updated_at` |  |
+
+Operations: List, Update.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/targets`
+
+#### SignalSubscription
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/signal_subscriptions`
+
+#### Site
+
+| Field | Description |
+| --- | --- |
+| `activated_at` |  |
+| `activated_at_label` |  |
+| `commit_sha` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `creator_user_id` |  |
+| `deploy_slug` |  |
+| `failure_message` |  |
+| `file_count` |  |
+| `file_count_label` |  |
+| `finished_at` |  |
+| `finished_at_label` |  |
+| `id` |  |
+| `is_active` |  |
+| `source_ref` |  |
+| `started_at` |  |
+| `started_at_label` |  |
+| `static_site_id` |  |
+| `status` |  |
+| `total_bytes` |  |
+| `total_bytes_label` |  |
+| `trigger_kind` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `uploaded_at` |  |
+| `uploaded_at_label` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/sites`
+
+#### SiteAccessKey
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys`
 
 #### SitePreview
 
@@ -4725,6 +9594,18 @@ API path: `/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints`
 Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/site_preview`
+
+#### SiteSecret
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `native_agent_id` |  |
+| `value` |  |
+
+Operations: Remove, Update.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/secrets/{secret_name}`
 
 #### SlackChannel
 
@@ -4740,6 +9621,235 @@ API path: `/api/v1/organizations/{organization_id}/verify/site_preview`
 Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/slack/channels`
+
+#### SourceConnection
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/source_connections/{id}/refresh`
+
+#### SpaceAlertRule
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/spaces/{space_id}/alert_rules/{id}/activate`
+
+#### SpaceAuditEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/observability/spaces/{space_id}/audit_events`
+
+#### SpaceDnsRecord
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/dns_records`
+
+#### SpaceEnrollmentToken
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}/revoke`
+
+#### SpaceGateway
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/gateways/{id}/heartbeat`
+
+#### SpaceGroup
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/groups`
+
+#### SpaceGroupMembership
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/group_memberships`
+
+#### SpaceLogStream
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/observability/spaces/{space_id}/log_streams`
+
+#### SpaceMetricSery
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/observability/spaces/{space_id}/metric_series`
+
+#### SpaceOtelCollector
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/spaces/{space_id}/otel_collectors/{id}/activate`
+
+#### SpacePeer
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/peers/{id}/approve`
+
+#### SpacePeerAttachment
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/peer_attachments`
+
+#### SpacePolicy
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/policies/{id}/activate`
+
+#### SpaceSegment
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/segments`
+
+#### SpaceTraceSpan
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/observability/spaces/{space_id}/trace_spans`
+
+#### Spark
+
+| Field | Description |
+| --- | --- |
+| `activated_products` | Products this organization has activated (PRD 144). |
+| `agents_only` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `can_manage` |  |
+| `compute_credit_cents` | Included compute the workspace started Sparks with, when it is on compute billing. |
+| `created_at` |  |
+| `created_at_label` |  |
+| `credit_cents` | Inference credit the workspace started Sparks with. |
+| `first_spark` | Null until the first Spark exists or when the viewer cannot read it. |
+| `github_connected` |  |
+| `github_prs_authored_by_change_author` |  |
+| `id` |  |
+| `jsonrpc` |  |
+| `logo_url` |  |
+| `member_count` |  |
+| `method` |  |
+| `name` |  |
+| `params` |  |
+| `pending_invitation_count` |  |
+| `personal` |  |
+| `repository_count` |  |
+| `role` |  |
+| `sandbox_region` |  |
+| `shared_agent_personal_accounts_enabled` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` |  |
+| `source_control_providers` | Connected source control providers for this organization. |
+| `source_ui_enabled` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `started` | Whether the workspace has started Sparks. |
+| `timezone` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `verify_pr_scenario_writing_enabled` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/sparks`
+
+#### SparkAgentIntegration
+
+| Field | Description |
+| --- | --- |
+| `account_counts` | Accounts the viewer can see per toolkit, across all account pages. |
+| `accounts_path` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
+| `added_toolkits` | Apps with a connected or connecting account the viewer can see. |
+| `can_manage` |  |
+| `can_manage_organization` |  |
+| `catalog` |  |
+| `connect_as` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
+| `connect_as_by_toolkit` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_counts` | Signed-in accounts per toolkit, across all account pages. |
+| `connection_id` |  |
+| `connections` |  |
+| `email` | A native agent's own email address. |
+| `enabled` |  |
+| `enabled_toolkits` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `generation` |  |
+| `pagination` |  |
+| `pending_counts` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
+| `personal_creation_key_supported` | The personal account creation endpoint honors a creation key. |
+| `private_agent` | Only the agent's owner can chat with it. |
+| `shared_agent_personal_accounts_enabled` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
+| `slack` |  |
+| `webhook_connections` |  |
+| `webhooks_available` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations`
 
 #### SparkAgentLocalThread
 
@@ -4782,6 +9892,134 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/slack/chann
 Operations: Create, Load, Update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads`
+
+#### SparkAgentSite
+
+| Field | Description |
+| --- | --- |
+| `deployed_at` |  |
+| `deployments_count` |  |
+| `hostname` |  |
+| `https` | Whether the organization's certificate serves this site over HTTPS |
+| `id` |  |
+| `name` |  |
+| `url` |  |
+| `visibility` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/sites`
+
+#### SparkAgentSkill
+
+| Field | Description |
+| --- | --- |
+| `available` |  |
+| `can_configure` |  |
+| `can_manage` |  |
+| `configuration_state` | The requested managed skill selection is awaiting runtime qualification. |
+| `description` |  |
+| `enabled` |  |
+| `name` |  |
+| `skills` |  |
+| `version` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/skills`
+
+#### SparkAgentThread
+
+| Field | Description |
+| --- | --- |
+| `archived_count` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
+| `can_create` |  |
+| `execution` |  |
+| `first_input` |  |
+| `first_input_key` | Idempotency-Key that finds the first message through input_delivery. |
+| `first_input_requester_membership_id` | Membership the first message was sent as, for input_delivery. |
+| `id` |  |
+| `inherit_context` | Include the source conversation through its last completed reply. |
+| `local_activities` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
+| `local_archived_count` | Local Claude Code and Codex threads archived on their computers. |
+| `local_next_cursor` |  |
+| `local_scope_key` |  |
+| `local_status_pending` | A computer is reporting newer local thread statuses; read the page again shortly. |
+| `local_threads` |  |
+| `main_thread_id` |  |
+| `message` | The thread's first message. |
+| `next_cursor` |  |
+| `parent_conversation_id` | Optional source conversation belonging to this agent. |
+| `requester_membership_id` |  |
+| `selected_thread` |  |
+| `thread` |  |
+| `threads` |  |
+| `title` |  |
+| `total_archived_count` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive`
+
+#### SparkCredit
+
+| Field | Description |
+| --- | --- |
+| `amount_cents` | Purchase amount in USD cents. |
+| `autofill` |  |
+| `autofill_payment_unconfirmed` |  |
+| `available_usd` |  |
+| `billing_unit` | Compute minute quote version returned by the billing summary. |
+| `can_manage` |  |
+| `compute_minutes` |  |
+| `compute_usd` |  |
+| `credits_per_usd` |  |
+| `inference_usd` |  |
+| `kind` |  |
+| `payment_method` |  |
+| `payments_enabled` |  |
+| `plan` |  |
+| `plans` |  |
+| `quoted_credits_cents` | Grant shown for a top-up or subscription, in usage cents. |
+| `quoted_price_cents` | Monthly cash price shown for a subscription, in USD cents. |
+| `refill_limits_cents` |  |
+| `refill_options` |  |
+| `refill_thresholds_cents` |  |
+| `request_key` |  |
+| `settings` |  |
+| `starter_cents` |  |
+| `top_up_max_cents` | Maximum manual top-up, in USD cents. |
+| `top_up_step_cents` | Minimum manual top-up and increment, in USD cents. |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/organizations/{org_slug}/spark_credits`
+
+#### SparkCreditAgentUsage
+
+| Field | Description |
+| --- | --- |
+| `agents` |  |
+| `all` |  |
+| `days` |  |
+| `id` |  |
+| `owners` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/spark_credits/agent_usage/{agent_id}`
+
+#### SparkCreditUsageTotal
+
+| Field | Description |
+| --- | --- |
+| `compute_minutes_used` |  |
+| `compute_usd` |  |
+| `inference_usd` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/spark_credits/usage_totals`
 
 #### StaticSite
 
@@ -4878,6 +10116,78 @@ Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/static_sites/{static_site_id}/domains/{id}/provision`
 
+#### StatusChange
+
+| Field | Description |
+| --- | --- |
+| `change_id` |  |
+| `id` |  |
+| `patchsets` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/changes/{id}`
+
+#### StatusCommit
+
+| Field | Description |
+| --- | --- |
+| `checks` |  |
+| `commit_sha` |  |
+| `counts` |  |
+| `id` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `total` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/commits/{commit_sha}`
+
+#### StatusPatchset
+
+| Field | Description |
+| --- | --- |
+| `checks` |  |
+| `checks_status` |  |
+| `commit_sha` |  |
+| `counts` |  |
+| `id` |  |
+| `patchset_id` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `total` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/patchsets/{id}`
+
+#### StripeWebhook
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/stripe/webhooks`
+
+#### SubmitTelemetry
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/submit_telemetry`
+
 #### SubscriptionModel
 
 | Field | Description |
@@ -4893,6 +10203,113 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions/models`
 
+#### SwarmEvent
+
+| Field | Description |
+| --- | --- |
+| `agent_swarm_id` |  |
+| `attempt_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `kind` |  |
+| `payload` |  |
+| `reason` |  |
+| `scheduler_generation` |  |
+| `task_id` |  |
+
+Operations: List.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/events`
+
+#### SwarmLive
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/agent/swarms/{id}/live/replay`
+
+#### SwarmNote
+
+| Field | Description |
+| --- | --- |
+| `task_id` | A task public id; omitted |
+| `text` |  |
+
+Operations: Create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/notes`
+
+#### SwarmTask
+
+| Field | Description |
+| --- | --- |
+| `acceptance_commands` |  |
+| `agent_swarm_id` |  |
+| `assigned_runner_id` |  |
+| `blocked_reason` |  |
+| `changes` |  |
+| `commit_count` |  |
+| `commit_sha_result` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `current_attempt_id` |  |
+| `deadline_at` |  |
+| `depends_on_task_ids` |  |
+| `depth` |  |
+| `diff_artifact_url` |  |
+| `display_id` |  |
+| `environment_profile` |  |
+| `error_message` |  |
+| `failure_code` |  |
+| `finished_at` |  |
+| `finished_at_label` |  |
+| `harness` |  |
+| `id` |  |
+| `input_revision` |  |
+| `iteration` |  |
+| `landing_state` |  |
+| `model` |  |
+| `model_provider` |  |
+| `number` |  |
+| `organization_id` |  |
+| `owned_paths` |  |
+| `parent_task_id` |  |
+| `position` |  |
+| `prompt` |  |
+| `queued_at` |  |
+| `queued_at_label` |  |
+| `reasoning_effort` |  |
+| `recent_activity` |  |
+| `repo_url` |  |
+| `result` |  |
+| `retry_number` |  |
+| `role` |  |
+| `run_id` |  |
+| `stack_after_task_id` |  |
+| `started_at` |  |
+| `started_at_label` |  |
+| `status` |  |
+| `title` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List, Load.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks`
+
+#### TaskLease
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_jev`
+
 #### ThreadPreview
 
 | Field | Description |
@@ -4904,6 +10321,224 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptio
 Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/previews`
+
+#### ThreadPreviewAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/thread_preview_access/redeem`
+
+#### ToolFeedback
+
+| Field | Description |
+| --- | --- |
+| `category` |  |
+| `created_at` |  |
+| `details` |  |
+| `feedback` |  |
+| `id` |  |
+| `metadata` | Caller-supplied session context; no secrets or transcripts |
+| `organization_id` |  |
+| `source` |  |
+| `summary` |  |
+| `user_id` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/tool_feedbacks`
+
+#### Transcript
+
+| Field | Description |
+| --- | --- |
+| `agent` |  |
+| `author` |  |
+| `checkpoint_pagination` |  |
+| `checkpoints` |  |
+| `id` |  |
+| `last_checkpoint_at` |  |
+| `selected_checkpoint` |  |
+| `source_url` |  |
+| `started_at` |  |
+| `status` |  |
+| `title` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/transcripts/search`
+
+#### V1Message
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/inference/v1/messages`
+
+#### VcBranch
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `name` |  |
+| `target_commit_id` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/branches`
+
+#### VcBrowser
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/browser/file`
+
+#### VcChange
+
+| Field | Description |
+| --- | --- |
+| `activity` |  |
+| `canonical_path` |  |
+| `change` |  |
+| `checks` |  |
+| `checks_status` |  |
+| `description` |  |
+| `group` |  |
+| `id` |  |
+| `jj_change_id` |  |
+| `labels` |  |
+| `landing` | Server-computed submitted-together closure and landing preflight. |
+| `number` |  |
+| `patchset_number` |  |
+| `previews` |  |
+| `primary_status` |  |
+| `public_id` |  |
+| `related_changes` |  |
+| `relation_chain` |  |
+| `restack_state` |  |
+| `review_summary` |  |
+| `stack` |  |
+| `status` |  |
+| `sync` |  |
+| `target` |  |
+| `target_advanced` |  |
+| `target_branch` |  |
+| `title` |  |
+| `url` |  |
+
+Operations: Create, List, Load, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/abandon`
+
+#### VcChangeGroup
+
+| Field | Description |
+| --- | --- |
+| `changes` |  |
+| `id` |  |
+| `name` |  |
+| `number` |  |
+| `status` |  |
+| `title` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups`
+
+#### VcFile
+
+| Field | Description |
+| --- | --- |
+| `paths` |  |
+| `truncated` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/files`
+
+#### VcMergeQueue
+
+| Field | Description |
+| --- | --- |
+| `analytics` | Queue performance for the reporting window. |
+| `id` |  |
+| `policy` |  |
+| `queue` |  |
+| `target_branches` | Bookmark names for the target picker. |
+
+Operations: Create, List, Load, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/pause`
+
+#### VcStack
+
+| Field | Description |
+| --- | --- |
+| `alias_ref_name` |  |
+| `changes` |  |
+| `code` |  |
+| `id` |  |
+| `landing` | Compact landing state for the Stack CLI. |
+| `member_count` |  |
+| `name` |  |
+| `ref_name` |  |
+| `status` |  |
+| `tip_change_number` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List, Load, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/stacks`
+
+#### VcsNode
+
+| Field | Description |
+| --- | --- |
+| `account_avatar_url` |  |
+| `account_id` |  |
+| `account_login` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `installation_id` |  |
+| `installed_at` |  |
+| `installed_at_label` |  |
+| `manage_access_url` |  |
+| `organization_id` |  |
+| `permission_entries` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` |  |
+| `status` |  |
+| `suspended_at` |  |
+| `suspended_at_label` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/vcs_nodes`
+
+#### VcsSetting
+
+| Field | Description |
+| --- | --- |
+| `can_manage_pr_scenario_writing` |  |
+| `can_manage_sandbox_region` |  |
+| `dedicated_outbound_ip_addresses` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` |  |
+| `organization` |  |
+| `sandbox_regions` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/vcs_settings`
 
 #### VerificationProjectCredential
 
@@ -5078,6 +10713,43 @@ Operations: Create, Load, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/browser_sessions/{id}/save`
 
+#### VerifyEmailVerification
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/email_verifications/verify`
+
+#### VerifySignalIntegration
+
+| Field | Description |
+| --- | --- |
+| `api_token_stored` |  |
+| `config` |  |
+| `created_at` |  |
+| `failure_message` |  |
+| `id` | Public id (`sint_…`). |
+| `inbound_path` |  |
+| `inbound_url` | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` |  |
+| `last_verified_at` |  |
+| `mode` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` |  |
+| `organization_id` |  |
+| `provider` |  |
+| `rejected_signature_count` | Deliveries rejected for a bad or missing signature. |
+| `status` |  |
+| `target_count` |  |
+| `unmapped_delivery_count` | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` |  |
+| `webhook_secret_stored` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{id}/verify`
+
 #### VerifyStaticSiteDomain
 
 | Field | Description |
@@ -5127,6 +10799,15 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/logs`
 
+#### WaitlistApplication
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/waitlist_applications`
+
 #### WebBotAuth
 
 | Field | Description |
@@ -5138,6 +10819,16 @@ API path: `/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/v
 Operations: Create.
 
 API path: `/api/v1/verify/web_bot_auth`
+
+#### WebhookGitlab
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Update.
+
+API path: `/api/v1/webhooks/gitlab/{connection_key}`
 
 #### WorkflowRunStep
 
@@ -5168,9 +10859,136 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers/{trigger_id}/skipped/{delivery_id}/run`
 
+#### WorkspaceActivity
+
+| Field | Description |
+| --- | --- |
+| `live_activity` |  |
+| `recent_items` |  |
+| `unresolved_notification_count` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/workspace_activity`
+
+#### WorkspaceActivityNotification
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Update.
+
+API path: `/api/v1/organizations/{org_slug}/workspace_activity/notifications/{id}/dismissal`
+
+#### WorkspaceSpace
+
+| Field | Description |
+| --- | --- |
+| `created_at` |  |
+| `default_branch` |  |
+| `description` |  |
+| `hidden` |  |
+| `icon_name` |  |
+| `id` |  |
+| `import_status` |  |
+| `name` |  |
+| `organization_id` |  |
+| `position` |  |
+| `repository_id` |  |
+| `repository_slug` |  |
+| `slug` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/workspace_spaces`
+
+#### WorkspaceSpacePreference
+
+| Field | Description |
+| --- | --- |
+| `preferences` |  |
+| `spaces` |  |
+
+Operations: Update.
+
+API path: `/api/v1/organizations/{organization_id}/workspace_spaces/preferences`
+
 
 
 ## Entities
+
+
+### A2aWellKnown
+
+Create an instance: `a2a_well_known = client.A2aWellKnown`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AdminOrg
+
+Create an instance: `admin_org = client.AdminOrg`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `billing_email` | `Object` |  |
+| `billing_reason` | `String` | Required when setting an agreed price |
+| `customize_onboarding_packages` | `Boolean` |  |
+| `deployment_usage_visibility` | `String` |  |
+| `deployment_usage_visible` | `Boolean` |  |
+| `id` | `String` |  |
+| `monthly_price_dollars` | `Object` | Ongoing USD workspace price, for example '50.00' |
+| `monthly_price_override_cents` | `Object` |  |
+| `name` | `String` |  |
+| `onboarding_custom_pricing` | `Boolean` |  |
+| `onboarding_package_keys` | `Object` | Package keys offered when customizing onboarding. |
+| `owner_email` | `String` |  |
+| `package_id` | `Object` | Active customer package public ID. |
+| `skip_payment` | `Boolean` | Grant the selected package as an ongoing complimentary subscription with monthly included usage and package limits. |
+| `slug` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the AdminOrg record (raises on error).
+admin_org = client.AdminOrg.load({ "id" => "admin_org_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of AdminOrg entities, one per record (raises on error).
+admin_orgs = client.AdminOrg.list
+admin_orgs.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+admin_org = client.AdminOrg.create({
+  "name" => "example_name", # String
+  "owner_email" => "example_owner_email", # String
+  "slug" => "example_slug", # String
+})
+```
 
 
 ### Agent
@@ -5257,6 +11075,76 @@ agent = client.Agent.create({
   "name" => "example_name", # String
 })
 ```
+
+
+### AgentApp
+
+Create an instance: `agent_app = client.AgentApp`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `author` | `Hash` |  |
+| `can_message` | `Boolean` | The viewer may send input to the author agent |
+| `deployments_count` | `Integer` | Increases with every deploy of the site |
+| `description` | `String` |  |
+| `hidden_install_count` | `Integer` | Installs by agents the viewer cannot open |
+| `id` | `String` |  |
+| `install_count` | `Integer` |  |
+| `install_targets` | `Array` | Active agents the viewer owns or manages, which they can install apps on |
+| `installed_by` | `Array` |  |
+| `installed_target_ids` | `Array` | Install targets of the viewer that have this app installed |
+| `items` | `Array` |  |
+| `mcp_url` | `Object` |  |
+| `next_cursor` | `Object` | Pass as cursor to load older apps |
+| `owner` | `Hash` | The person who controls the author agent |
+| `thread` | `Object` | The thread that published the app, when the viewer can open the author agent |
+| `title` | `String` |  |
+| `url` | `String` |  |
+| `visibility` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the AgentApp record (raises on error).
+agent_app = client.AgentApp.load({ "id" => "agent_app_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of AgentApp entities, one per record (raises on error).
+agent_apps = client.AgentApp.list({ "organization_id" => "example" })
+agent_apps.each { |item| puts item.data_get }
+```
+
+
+### AgentAppInstall
+
+Create an instance: `agent_app_install = client.AgentAppInstall`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+| `installed` | `Boolean` |  |
 
 
 ### AgentAttachment
@@ -5403,6 +11291,7 @@ Create an instance: `agent_connection = client.AgentConnection`
 | `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
 
@@ -5410,38 +11299,61 @@ Create an instance: `agent_connection = client.AgentConnection`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `agent_card_url` | `String` |  |
-| `auth_scheme` | `String` |  |
-| `can_configure` | `Boolean` |  |
-| `can_disconnect` | `Boolean` |  |
-| `can_setup` | `Boolean` |  |
+| `actions` | `Array` |  |
+| `activity` | `Array` |  |
+| `admin_disabled_at` | `Object` |  |
+| `agent_tools` | `Boolean` |  |
+| `authentication` | `String` |  |
+| `authorized_at` | `Object` |  |
+| `can_create_account` | `Boolean` | Whether another account can be created directly from this provider. |
+| `capabilities` | `Hash` |  |
+| `catalog_section` | `String` | Server-owned grouping in the agent integration catalog. |
+| `category` | `String` | Short product label, such as CRM or Email. |
+| `certification` | `String` |  |
+| `checked_at` | `Object` |  |
 | `connection` | `Hash` |  |
-| `credential` | `Object` | Write-only outbound key. |
-| `error_code` | `Object` |  |
-| `expected_generation` | `Integer` |  |
+| `consent` | `Object` |  |
+| `created_at` | `String` |  |
+| `creation_key` | `String` | Reuse the same key to recover the account after an interrupted response. |
+| `custodian_id` | `Object` |  |
+| `description` | `String` | One-line catalog description of the app. |
+| `disabled_reason` | `Object` |  |
+| `failure_code` | `Object` |  |
 | `generation` | `Integer` |  |
+| `grants` | `Array` |  |
+| `grants_pagination` | `Hash` |  |
 | `id` | `String` |  |
+| `limits` | `Hash` |  |
 | `name` | `String` |  |
-| `remote_agent` | `Object` |  |
-| `requester_id` | `String` |  |
-| `retired_at` | `Object` |  |
+| `organization_id` | `String` |  |
+| `owner_name` | `String` |  |
+| `ownership_kind` | `String` |  |
+| `pagination` | `Hash` |  |
+| `policy_digest` | `String` |  |
+| `provider` | `Hash` |  |
+| `provider_disabled_reason` | `Object` |  |
+| `provider_identity` | `Hash` |  |
 | `revoked_at` | `Object` |  |
-| `scope_key` | `String` |  |
-| `source_operation_id` | `Object` |  |
-| `state` | `String` |  |
+| `schema_version` | `Integer` |  |
+| `status` | `String` |  |
+| `toolkit` | `String` |  |
+| `triggers` | `Array` |  |
+| `updated_at` | `String` |  |
+| `user_id` | `String` |  |
+| `version` | `String` |  |
 
 #### Example: Load
 
 ```ruby
 # load returns the ENTITY — call data_get for the AgentConnection record (raises on error).
-agent_connection = client.AgentConnection.load({ "id" => "agent_connection_id", "agent_id" => "agent_id", "organization_id" => "organization_id" })
+agent_connection = client.AgentConnection.load({ "id" => "agent_connection_id", "organization_id" => "organization_id" })
 ```
 
 #### Example: List
 
 ```ruby
 # list returns an Array of AgentConnection entities, one per record (raises on error).
-agent_connections = client.AgentConnection.list({ "agent_id" => "example", "organization_id" => "example" })
+agent_connections = client.AgentConnection.list({ "organization_id" => "example" })
 agent_connections.each { |item| puts item.data_get }
 ```
 
@@ -5449,13 +11361,234 @@ agent_connections.each { |item| puts item.data_get }
 
 ```ruby
 agent_connection = client.AgentConnection.create({
-  "agent_id" => "example_agent_id", # String
   "organization_id" => "example_organization_id", # String
-  "agent_card_url" => "example_agent_card_url", # String
-  "auth_scheme" => "example_auth_scheme", # String
   "name" => "example_name", # String
+  "toolkit" => "example_toolkit", # String
 })
 ```
+
+
+### AgentConnectionDelegation
+
+Create an instance: `agent_connection_delegation = client.AgentConnectionDelegation`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `authorized_by_id` | `String` |  |
+| `automation_connection_grant_id` | `String` |  |
+| `created_at` | `String` |  |
+| `id` | `String` |  |
+| `member_name` | `String` |  |
+| `revoked_at` | `Object` |  |
+| `roles` | `Array` |  |
+| `usable` | `Boolean` |  |
+| `user_id` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of AgentConnectionDelegation entities, one per record (raises on error).
+agent_connection_delegations = client.AgentConnectionDelegation.list({ "agent_connection_id" => "example", "organization_id" => "example" })
+agent_connection_delegations.each { |item| puts item.data_get }
+```
+
+
+### AgentConnectionGrant
+
+Create an instance: `agent_connection_grant = client.AgentConnectionGrant`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `actions` | `Array` |  |
+| `agent_connection_id` | `String` |  |
+| `automation_id` | `String` |  |
+| `connection_generation` | `Integer` |  |
+| `created_at` | `String` |  |
+| `id` | `String` |  |
+| `organization_id` | `String` |  |
+| `revision` | `Integer` |  |
+| `revoked_at` | `Object` |  |
+| `status` | `String` |  |
+| `usable` | `Boolean` |  |
+| `user_id` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of AgentConnectionGrant entities, one per record (raises on error).
+agent_connection_grants = client.AgentConnectionGrant.list({ "agent_connection_id" => "example", "organization_id" => "example" })
+agent_connection_grants.each { |item| puts item.data_get }
+```
+
+
+### AgentConnectionResource
+
+Create an instance: `agent_connection_resource = client.AgentConnectionResource`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cursor` | `Object` |  |
+| `next_cursor` | `Object` |  |
+| `query` | `String` |  |
+| `resources` | `Array` |  |
+
+#### Example: Create
+
+```ruby
+agent_connection_resource = client.AgentConnectionResource.create({
+  "agent_connection_id" => "example_agent_connection_id", # String
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### AgentConnectionSafetyControl
+
+Create an instance: `agent_connection_safety_control = client.AgentConnectionSafetyControl`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `admin_disabled_at` | `Object` |  |
+| `authorized_at` | `Object` |  |
+| `checked_at` | `Object` |  |
+| `created_at` | `String` |  |
+| `custodian_id` | `Object` |  |
+| `failure_code` | `Object` |  |
+| `generation` | `Integer` |  |
+| `id` | `String` |  |
+| `name` | `String` |  |
+| `organization_id` | `String` |  |
+| `owner_name` | `String` |  |
+| `ownership_kind` | `String` |  |
+| `provider_disabled_reason` | `Object` |  |
+| `provider_identity` | `Hash` |  |
+| `revoked_at` | `Object` |  |
+| `status` | `String` |  |
+| `toolkit` | `String` |  |
+| `updated_at` | `String` |  |
+| `user_id` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of AgentConnectionSafetyControl entities, one per record (raises on error).
+agent_connection_safety_controls = client.AgentConnectionSafetyControl.list({ "organization_id" => "example" })
+agent_connection_safety_controls.each { |item| puts item.data_get }
+```
+
+
+### AgentConnectionTriggerSubscription
+
+Create an instance: `agent_connection_trigger_subscription = client.AgentConnectionTriggerSubscription`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_connection_id` | `String` |  |
+| `configuration` | `Hash` |  |
+| `created_at` | `String` |  |
+| `defaults` | `Hash` |  |
+| `delivery` | `String` |  |
+| `enabled` | `Boolean` |  |
+| `failure_code` | `Object` |  |
+| `failure_request_id` | `Object` |  |
+| `id` | `String` |  |
+| `latency` | `String` |  |
+| `name` | `String` |  |
+| `reconcile_at` | `String` |  |
+| `reconciliation_uncertain` | `Boolean` |  |
+| `remote_enabled` | `Object` |  |
+| `replacement_id` | `Object` |  |
+| `retired_at` | `Object` |  |
+| `retirement_completed_at` | `Object` |  |
+| `schema` | `Hash` |  |
+| `slug` | `String` |  |
+| `status` | `String` |  |
+| `toolkit` | `String` |  |
+| `toolkit_version` | `String` |  |
+| `trigger_slug` | `String` |  |
+| `updated_at` | `String` |  |
+| `version` | `String` |  |
+| `waiting_for_retirement` | `Boolean` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of AgentConnectionTriggerSubscription entities, one per record (raises on error).
+agent_connection_trigger_subscriptions = client.AgentConnectionTriggerSubscription.list({ "agent_connection_id" => "example", "organization_id" => "example" })
+agent_connection_trigger_subscriptions.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+agent_connection_trigger_subscription = client.AgentConnectionTriggerSubscription.create({
+  "agent_connection_id" => "example_agent_connection_id", # String
+  "organization_id" => "example_organization_id", # String
+  "configuration" => {}, # Hash
+  "trigger_slug" => "example_trigger_slug", # String
+})
+```
+
+
+### AgentContextCheckpoint
+
+Create an instance: `agent_context_checkpoint = client.AgentContextCheckpoint`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
 
 
 ### AgentControlFlow
@@ -5552,6 +11685,25 @@ agent_email = client.AgentEmail.load({ "id" => "agent_email_id", "agent_id" => "
 ```
 
 
+### AgentEvent
+
+Create an instance: `agent_event = client.AgentEvent`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ruby
+# list returns an Array of AgentEvent entities, one per record (raises on error).
+agent_events = client.AgentEvent.list({ "agent_id" => "example", "organization_id" => "example" })
+agent_events.each { |item| puts item.data_get }
+```
+
+
 ### AgentFile
 
 Create an instance: `agent_file = client.AgentFile`
@@ -5628,40 +11780,56 @@ Create an instance: `agent_integration = client.AgentIntegration`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
 | `account_counts` | `Hash` | Accounts the viewer can see per toolkit, across all account pages. |
-| `accounts_path` | `String` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
-| `added_toolkits` | `Array` | Apps with a connected or connecting account the viewer can see. |
+| `can_cancel_sign_in` | `Boolean` | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `Boolean` |  |
+| `can_disconnect` | `Boolean` |  |
+| `can_enable` | `Boolean` |  |
 | `can_manage` | `Boolean` |  |
-| `can_manage_organization` | `Boolean` |  |
+| `can_manage_sharing` | `Boolean` |  |
+| `can_reconnect` | `Boolean` |  |
+| `can_sync` | `Boolean` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
 | `catalog` | `Array` |  |
-| `connect_as` | `Object` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
-| `connect_as_by_toolkit` | `Hash` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_by` | `Object` | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `Boolean` | True when the viewer is the person whose sign-in this account is. |
 | `connected_counts` | `Hash` | Signed-in accounts per toolkit, across all account pages. |
-| `connection_id` | `String` |  |
 | `connections` | `Array` |  |
-| `email` | `Hash` | A native agent's own email address. |
-| `enabled` | `Boolean` |  |
-| `enabled_toolkits` | `Array` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `creation_key` | `String` | Stable identity for retrying this creation; retain it after an uncertain response. |
+| `creation_key_digest` | `Object` | SHA-256 of the unfinished setup key for its original creator. |
 | `generation` | `Integer` |  |
+| `id` | `String` |  |
+| `name` | `String` |  |
 | `pagination` | `Hash` |  |
 | `pending_counts` | `Hash` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
-| `personal_creation_key_supported` | `Boolean` | The personal account creation endpoint honors a creation key. |
-| `private_agent` | `Boolean` | Only the agent's owner can chat with it. |
-| `shared_agent_personal_accounts_enabled` | `Boolean` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
-| `slack` | `Hash` |  |
-| `webhook_connections` | `Array` |  |
-| `webhooks_available` | `Boolean` |  |
+| `provider_disabled_reason` | `Object` |  |
+| `provider_identity` | `Hash` |  |
+| `provider_name` | `Object` | The app's display name; null for a custom MCP server, which uses the account name. |
+| `reference` | `String` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `String` | Agent account audience, including legacy personal and paused access. |
+| `status` | `String` |  |
+| `team_sharing_enabled` | `Boolean` |  |
+| `team_sharing_version` | `Integer` |  |
+| `toolkit` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the AgentIntegration record (raises on error).
+agent_integration = client.AgentIntegration.load({ "id" => "agent_integration_id", "organization_id" => "organization_id" })
+```
 
 #### Example: List
 
 ```ruby
 # list returns an Array of AgentIntegration entities, one per record (raises on error).
-agent_integrations = client.AgentIntegration.list({ "agent_id" => "example", "organization_id" => "example" })
+agent_integrations = client.AgentIntegration.list({ "organization_id" => "example" })
 agent_integrations.each { |item| puts item.data_get }
 ```
 
@@ -5669,12 +11837,73 @@ agent_integrations.each { |item| puts item.data_get }
 
 ```ruby
 agent_integration = client.AgentIntegration.create({
-  "agent_id" => "example_agent_id", # String
   "organization_id" => "example_organization_id", # String
-  "connection_id" => "example_connection_id", # String
-  "enabled" => true, # Boolean
-  "generation" => 1, # Integer
+  "name" => "example_name", # String
+  "toolkit" => "example_toolkit", # String
 })
+```
+
+
+### AgentIntegrationAccount
+
+Create an instance: `agent_integration_account = client.AgentIntegrationAccount`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_cancel_sign_in` | `Boolean` | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `Boolean` |  |
+| `can_disconnect` | `Boolean` |  |
+| `can_enable` | `Boolean` |  |
+| `can_manage_sharing` | `Boolean` |  |
+| `can_reconnect` | `Boolean` |  |
+| `can_sync` | `Boolean` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
+| `connected_by` | `Object` | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `Boolean` | True when the viewer is the person whose sign-in this account is. |
+| `creation_key_digest` | `Object` | SHA-256 of the unfinished setup key for its original creator. |
+| `generation` | `Integer` |  |
+| `id` | `String` |  |
+| `name` | `String` |  |
+| `provider_disabled_reason` | `Object` |  |
+| `provider_identity` | `Hash` |  |
+| `reference` | `String` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `String` | Agent account audience, including legacy personal and paused access. |
+| `status` | `String` |  |
+| `team_sharing_enabled` | `Boolean` |  |
+| `team_sharing_version` | `Integer` |  |
+| `toolkit` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of AgentIntegrationAccount entities, one per record (raises on error).
+agent_integration_accounts = client.AgentIntegrationAccount.list({ "organization_id" => "example" })
+agent_integration_accounts.each { |item| puts item.data_get }
+```
+
+
+### AgentIntegrationCallback
+
+Create an instance: `agent_integration_callback = client.AgentIntegrationCallback`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the AgentIntegrationCallback record (raises on error).
+agent_integration_callback = client.AgentIntegrationCallback.load({ "connection_id" => "connection_id", "state" => "state" })
 ```
 
 
@@ -6067,6 +12296,100 @@ Create an instance: `agent_question = client.AgentQuestion`
 | `id` | `String` |  |
 
 
+### AgentRelayFileGrant
+
+Create an instance: `agent_relay_file_grant = client.AgentRelayFileGrant`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access_mode` | `String` |  |
+| `connection_generation` | `Integer` |  |
+| `connection_id` | `String` |  |
+| `connection_name` | `String` | Current display name of the selected account. |
+| `created_at` | `String` |  |
+| `expected_generation` | `Integer` |  |
+| `id` | `String` |  |
+| `key` | `String` |  |
+| `provider` | `String` |  |
+| `resource_id` | `String` |  |
+| `resource_kind` | `String` |  |
+| `revoked` | `Boolean` |  |
+| `revoked_at` | `Object` |  |
+| `snapshot_supported` | `Boolean` | Whether this selected permission supports snapshot controls. |
+| `source_operation_id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the AgentRelayFileGrant record (raises on error).
+agent_relay_file_grant = client.AgentRelayFileGrant.load({ "id" => "agent_relay_file_grant_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of AgentRelayFileGrant entities, one per record (raises on error).
+agent_relay_file_grants = client.AgentRelayFileGrant.list({ "organization_id" => "example" })
+agent_relay_file_grants.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+agent_relay_file_grant = client.AgentRelayFileGrant.create({
+  "organization_id" => "example_organization_id", # String
+  "access_mode" => "example_access_mode", # String
+  "connection_id" => "example_connection_id", # String
+  "expected_generation" => 1, # Integer
+  "key" => "example_key", # String
+  "resource_id" => "example_resource_id", # String
+  "resource_kind" => "example_resource_kind", # String
+  "source_operation_id" => "example_source_operation_id", # String
+})
+```
+
+
+### AgentRelayFileGrantAccount
+
+Create an instance: `agent_relay_file_grant_account = client.AgentRelayFileGrantAccount`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access_modes` | `Array` | Supported file access modes. |
+| `generation` | `Integer` |  |
+| `id` | `String` |  |
+| `name` | `String` |  |
+| `provider` | `String` |  |
+| `resource_kind` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of AgentRelayFileGrantAccount entities, one per record (raises on error).
+agent_relay_file_grant_accounts = client.AgentRelayFileGrantAccount.list({ "organization_id" => "example", "source_operation_id" => "example" })
+agent_relay_file_grant_accounts.each { |item| puts item.data_get }
+```
+
+
 ### AgentRepository
 
 Create an instance: `agent_repository = client.AgentRepository`
@@ -6125,6 +12448,18 @@ Create an instance: `agent_resource = client.AgentResource`
 agent_resources = client.AgentResource.list({ "agent_id" => "example", "organization_id" => "example" })
 agent_resources.each { |item| puts item.data_get }
 ```
+
+
+### AgentRoder
+
+Create an instance: `agent_roder = client.AgentRoder`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
 
 
 ### AgentRoutine
@@ -6223,6 +12558,95 @@ Create an instance: `agent_runtime = client.AgentRuntime`
 | `volume` | `Object` |  |
 
 
+### AgentSession
+
+Create an instance: `agent_session = client.AgentSession`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+
+### AgentSessionCheckpoint
+
+Create an instance: `agent_session_checkpoint = client.AgentSessionCheckpoint`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the AgentSessionCheckpoint record (raises on error).
+agent_session_checkpoint = client.AgentSessionCheckpoint.load({ "id" => "agent_session_checkpoint_id", "agent_session_id" => "agent_session_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of AgentSessionCheckpoint entities, one per record (raises on error).
+agent_session_checkpoints = client.AgentSessionCheckpoint.list({ "agent_session_id" => "example", "organization_id" => "example", "repo_id" => "example" })
+agent_session_checkpoints.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+agent_session_checkpoint = client.AgentSessionCheckpoint.create({
+  "agent_session_id" => "example_agent_session_id", # String
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+
+### AgentSessionRoderHandoff
+
+Create an instance: `agent_session_roder_handoff = client.AgentSessionRoderHandoff`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `checkpoint_id` | `String` | Public id of the checkpoint to hand off. |
+| `purpose` | `String` | Handoff intent; defaults to `continue`. |
+
+#### Example: Create
+
+```ruby
+agent_session_roder_handoff = client.AgentSessionRoderHandoff.create({
+  "agent_session_id" => "example_agent_session_id", # String
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+
 ### AgentSetting
 
 Create an instance: `agent_setting = client.AgentSetting`
@@ -6271,26 +12695,39 @@ Create an instance: `agent_site = client.AgentSite`
 
 | Method | Description |
 | --- | --- |
+| `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `deployed_at` | `String` |  |
-| `deployments_count` | `Integer` |  |
-| `hostname` | `String` |  |
-| `https` | `String` | Whether the organization's certificate serves this site over HTTPS |
+| `author` | `Hash` |  |
+| `can_message` | `Boolean` | The viewer may send input to the author agent |
+| `deployments_count` | `Integer` | Increases with every deploy of the site |
+| `description` | `Object` | The team app description, when the site is a team app |
+| `icon_url` | `Object` | Path of the site's generated icon, versioned by the picture; null until one is generated |
 | `id` | `String` |  |
-| `name` | `String` |  |
+| `name` | `String` | The site's DNS label |
+| `owner` | `Hash` | The person who controls the author agent |
+| `thread` | `Object` | The thread that published the site as a team app, when the viewer can open the author agent |
+| `title` | `String` | The team app title, or the site name read as words |
 | `url` | `String` |  |
 | `visibility` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the AgentSite record (raises on error).
+agent_site = client.AgentSite.load({ "id" => "agent_site_id", "organization_id" => "organization_id" })
+```
 
 #### Example: List
 
 ```ruby
 # list returns an Array of AgentSite entities, one per record (raises on error).
-agent_sites = client.AgentSite.list({ "agent_id" => "example", "organization_id" => "example" })
+agent_sites = client.AgentSite.list({ "organization_id" => "example" })
 agent_sites.each { |item| puts item.data_get }
 ```
 
@@ -6305,26 +12742,40 @@ Create an instance: `agent_skill = client.AgentSkill`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `available` | `Boolean` |  |
-| `can_configure` | `Boolean` |  |
-| `can_manage` | `Boolean` |  |
-| `configuration_state` | `String` | The requested managed skill selection is awaiting runtime qualification. |
-| `description` | `String` |  |
-| `enabled` | `Boolean` |  |
-| `name` | `String` |  |
+| `agents` | `Array` | Active V2 agents the viewer can see whose owner is still a member |
+| `audience` | `Hash` |  |
+| `can_manage_library` | `Boolean` |  |
+| `content` | `String` | The skill's SKILL.md |
+| `files` | `Array` |  |
+| `id` | `String` |  |
+| `marketplace` | `String` |  |
+| `pending` | `Boolean` | Some agent is still applying a change; check again shortly |
+| `plugin` | `String` | The marketplace entry id |
+| `revision` | `String` | The commit SHA returned by preview |
+| `skill` | `Hash` |  |
 | `skills` | `Array` |  |
-| `version` | `String` |  |
+| `source` | `String` | owner/repo, a GitHub or skills.sh link, or npx skills add owner/repo [--skill NAME ...] |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the AgentSkill record (raises on error).
+agent_skill = client.AgentSkill.load({ "id" => "agent_skill_id", "organization_id" => "organization_id" })
+```
 
 #### Example: List
 
 ```ruby
 # list returns an Array of AgentSkill entities, one per record (raises on error).
-agent_skills = client.AgentSkill.list({ "agent_id" => "example", "organization_id" => "example" })
+agent_skills = client.AgentSkill.list({ "organization_id" => "example" })
 agent_skills.each { |item| puts item.data_get }
 ```
 
@@ -6332,11 +12783,10 @@ agent_skills.each { |item| puts item.data_get }
 
 ```ruby
 agent_skill = client.AgentSkill.create({
-  "agent_id" => "example_agent_id", # String
   "organization_id" => "example_organization_id", # String
-  "enabled" => true, # Boolean
-  "name" => "example_name", # String
-  "version" => "example_version", # String
+  "audience" => {}, # Hash
+  "revision" => "example_revision", # String
+  "skills" => [], # Array
 })
 ```
 
@@ -6417,6 +12867,97 @@ agent_subscription = client.AgentSubscription.create({
 ```
 
 
+### AgentSwarm
+
+Create an instance: `agent_swarm = client.AgentSwarm`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `base_bookmark` | `Object` | An existing bookmark to start from and land on; the plain form of `target.kind = bookmark`. |
+| `base_ref` | `Object` |  |
+| `base_revision` | `Object` | 64-hex commit id; skips the head lookup |
+| `budget` | `Hash` |  |
+| `canceled_at` | `Object` |  |
+| `canceled_count` | `Integer` |  |
+| `concurrency_key` | `Object` |  |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `creator_user_id` | `Object` |  |
+| `deadline_at` | `Object` |  |
+| `display_id` | `Integer` |  |
+| `done_count` | `Integer` |  |
+| `environment` | `Hash` |  |
+| `failed_count` | `Integer` |  |
+| `finished_at` | `Object` |  |
+| `finished_at_label` | `Object` |  |
+| `github` | `Hash` |  |
+| `goal` | `Object` |  |
+| `id` | `String` |  |
+| `model` | `Object` |  |
+| `model_provider` | `Object` |  |
+| `number` | `Integer` |  |
+| `organization_id` | `String` |  |
+| `organization_slug` | `Object` |  |
+| `outcome` | `Object` |  |
+| `phase` | `Object` |  |
+| `policy` | `Hash` | Every key is optional and defaults to AgentSwarm::POLICY_DEFAULTS. |
+| `queued_at` | `Object` |  |
+| `queued_at_label` | `Object` |  |
+| `repository` | `String` | Repository slug inside the organization |
+| `repository_id` | `Object` |  |
+| `repository_slug` | `Object` |  |
+| `reserved` | `Hash` |  |
+| `scheduler_generation` | `Integer` |  |
+| `skipped_count` | `Integer` |  |
+| `slug` | `String` |  |
+| `started_at` | `Object` |  |
+| `started_at_label` | `Object` |  |
+| `status` | `String` |  |
+| `summary` | `Hash` |  |
+| `target` | `Hash` | Where the swarm lands. |
+| `task_count` | `Integer` |  |
+| `task_template_json` | `Object` |  |
+| `tasks` | `Array` |  |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+| `usage` | `Hash` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the AgentSwarm record (raises on error).
+agent_swarm = client.AgentSwarm.load({ "id" => "agent_swarm_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of AgentSwarm entities, one per record (raises on error).
+agent_swarms = client.AgentSwarm.list({ "org" => "example" })
+agent_swarms.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+agent_swarm = client.AgentSwarm.create({
+  "organization_slug" => "example_organization_slug", # Object
+  "target" => {}, # Hash
+})
+```
+
+
 ### AgentTeammate
 
 Create an instance: `agent_teammate = client.AgentTeammate`
@@ -6467,41 +13008,26 @@ Create an instance: `agent_thread = client.AgentThread`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `archived_count` | `Object` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` | `Boolean` |  |
-| `execution` | `Object` |  |
-| `first_input` | `Object` |  |
-| `first_input_key` | `String` | Idempotency-Key that finds the first message through input_delivery. |
-| `first_input_requester_membership_id` | `String` | Membership the first message was sent as, for input_delivery. |
 | `id` | `String` |  |
-| `inherit_context` | `Boolean` | Include the source conversation through its last completed reply. |
-| `local_activities` | `Hash` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | `Integer` | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` | `Object` |  |
-| `local_scope_key` | `Object` |  |
-| `local_status_pending` | `Boolean` | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` | `Array` |  |
-| `main_thread_id` | `String` |  |
-| `message` | `String` | The thread's first message. |
-| `next_cursor` | `Object` |  |
-| `parent_conversation_id` | `String` | Optional source conversation belonging to this agent. |
-| `requester_membership_id` | `String` |  |
-| `selected_thread` | `Object` |  |
-| `thread` | `Hash` |  |
-| `threads` | `Array` |  |
-| `title` | `String` |  |
-| `total_archived_count` | `Object` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the AgentThread record (raises on error).
+agent_thread = client.AgentThread.load({ "id" => "agent_thread_id" })
+```
 
 #### Example: List
 
 ```ruby
 # list returns an Array of AgentThread entities, one per record (raises on error).
-agent_threads = client.AgentThread.list({ "agent_id" => "example", "organization_id" => "example" })
+agent_threads = client.AgentThread.list
 agent_threads.each { |item| puts item.data_get }
 ```
 
@@ -6509,8 +13035,6 @@ agent_threads.each { |item| puts item.data_get }
 
 ```ruby
 agent_thread = client.AgentThread.create({
-  "agent_id" => "example_agent_id", # String
-  "organization_id" => "example_organization_id", # String
 })
 ```
 
@@ -6539,6 +13063,37 @@ Create an instance: `agent_tool = client.AgentTool`
 # list returns an Array of AgentTool entities, one per record (raises on error).
 agent_tools = client.AgentTool.list({ "agent_id" => "example", "organization_id" => "example" })
 agent_tools.each { |item| puts item.data_get }
+```
+
+
+### AgentUsage
+
+Create an instance: `agent_usage = client.AgentUsage`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `days` | `Array` | One cell per (day, model), ascending by day then model. |
+| `ended_at` | `String` |  |
+| `pricing_version` | `String` | The price table in effect now; rows carry the version they were priced at. |
+| `source` | `String` | Which store served the rows. |
+| `started_at` | `String` |  |
+| `user_days` | `Array` | One cell per (day, person), ascending by day. |
+| `users` | `Array` | One row per (person, model), descending by tokens. |
+| `window` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the AgentUsage record (raises on error).
+agent_usage = client.AgentUsage.load({ "organization_id" => "organization_id" })
 ```
 
 
@@ -6589,6 +13144,34 @@ Create an instance: `agent_wait = client.AgentWait`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `String` |  |
+
+
+### AgentWebPreview
+
+Create an instance: `agent_web_preview = client.AgentWebPreview`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `description` | `Object` |  |
+| `icon_url` | `Object` |  |
+| `image_url` | `Object` |  |
+| `title` | `Object` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of AgentWebPreview entities, one per record (raises on error).
+agent_web_previews = client.AgentWebPreview.list({ "token" => "example" })
+agent_web_previews.each { |item| puts item.data_get }
+```
 
 
 ### AgentWebhook
@@ -6939,6 +13522,99 @@ agent_write_permissions.each { |item| puts item.data_get }
 ```
 
 
+### Agreement
+
+Create an instance: `agreement = client.Agreement`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `body` | `Object` | Markdown text, or null until staff grant the organization access. |
+| `effective_on_label` | `String` |  |
+| `key` | `String` |  |
+| `summary` | `String` |  |
+| `title` | `String` |  |
+| `version` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of Agreement entities, one per record (raises on error).
+agreements = client.Agreement.list({ "organization_id" => "example" })
+agreements.each { |item| puts item.data_get }
+```
+
+
+### AgreementAccessRequest
+
+Create an instance: `agreement_access_request = client.AgreementAccessRequest`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+agreement_access_request = client.AgreementAccessRequest.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### AlertRuleEvent
+
+Create an instance: `alert_rule_event = client.AlertRuleEvent`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the AlertRuleEvent record (raises on error).
+alert_rule_event = client.AlertRuleEvent.load({ "id" => "alert_rule_event_id", "alert_rule_id" => "alert_rule_id", "space_id" => "space_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of AlertRuleEvent entities, one per record (raises on error).
+alert_rule_events = client.AlertRuleEvent.list({ "alert_rule_id" => "example", "space_id" => "example" })
+alert_rule_events.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+alert_rule_event = client.AlertRuleEvent.create({
+  "alert_rule_id" => "example_alert_rule_id", # String
+  "space_id" => "example_space_id", # String
+})
+```
+
+
 ### AllocationLog
 
 Create an instance: `allocation_log = client.AllocationLog`
@@ -7034,6 +13710,36 @@ app = client.App.create({
   "root_path" => "example_root_path", # String
   "slug" => "example_slug", # String
 })
+```
+
+
+### AppAccess
+
+Create an instance: `app_access = client.AppAccess`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AppAccessJwk
+
+Create an instance: `app_access_jwk = client.AppAccessJwk`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ruby
+# list returns an Array of AppAccessJwk entities, one per record (raises on error).
+app_access_jwks = client.AppAccessJwk.list
+app_access_jwks.each { |item| puts item.data_get }
 ```
 
 
@@ -8088,6 +14794,401 @@ app_storage_resource = client.AppStorageResource.create({
 ```
 
 
+### Artefact
+
+Create an instance: `artefact = client.Artefact`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `automation_invocation_id` | `Object` |  |
+| `byte_size` | `Integer` |  |
+| `checksum_sha256` | `String` |  |
+| `content_type` | `String` |  |
+| `created_at` | `Object` |  |
+| `created_by_user_id` | `Object` |  |
+| `description` | `Object` |  |
+| `document_key` | `String` | Stable document identity shared by all revisions. |
+| `entrypoint` | `String` |  |
+| `expires_at` | `Object` |  |
+| `filename` | `String` |  |
+| `files` | `Array` |  |
+| `harness` | `Object` |  |
+| `harness_version` | `Object` |  |
+| `id` | `String` |  |
+| `kind` | `String` |  |
+| `model` | `Object` |  |
+| `organization_id` | `String` |  |
+| `published_at` | `Object` |  |
+| `repository_id` | `Object` |  |
+| `slug` | `String` |  |
+| `source` | `String` |  |
+| `status` | `String` |  |
+| `title` | `String` |  |
+| `vcs_agent_checkpoint_id` | `Object` |  |
+| `vcs_agent_session_id` | `Object` |  |
+| `version` | `Integer` |  |
+| `view_url` | `String` |  |
+| `web_url` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the Artefact record (raises on error).
+artefact = client.Artefact.load({ "id" => "artefact_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of Artefact entities, one per record (raises on error).
+artefacts = client.Artefact.list({ "organization_id" => "example" })
+artefacts.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+artefact = client.Artefact.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### ArtefactCommentThread
+
+Create an instance: `artefact_comment_thread = client.ArtefactCommentThread`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `anchor` | `String` | The `#anchor` written into the Markdown. |
+| `body` | `String` |  |
+| `comments` | `Array` |  |
+| `id` | `String` | The anchor key. |
+| `quote` | `String` |  |
+| `resolved` | `Boolean` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of ArtefactCommentThread entities, one per record (raises on error).
+artefact_comment_threads = client.ArtefactCommentThread.list({ "artefact_id" => "example", "organization_id" => "example" })
+artefact_comment_threads.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+artefact_comment_thread = client.ArtefactCommentThread.create({
+  "artefact_id" => "example_artefact_id", # String
+  "organization_id" => "example_organization_id", # String
+  "anchor" => "example_anchor", # String
+  "body" => "example_body", # String
+})
+```
+
+
+### ArtefactRevision
+
+Create an instance: `artefact_revision = client.ArtefactRevision`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `base_version` | `Integer` | The newest version the editor started from. |
+| `content` | `String` | Markdown, including CriticMarkup suggestions and comment anchors. |
+
+#### Example: Create
+
+```ruby
+artefact_revision = client.ArtefactRevision.create({
+  "artefact_id" => "example_artefact_id", # String
+  "organization_id" => "example_organization_id", # String
+  "base_version" => 1, # Integer
+  "content" => "example_content", # String
+})
+```
+
+
+### ArtefactViewToken
+
+Create an instance: `artefact_view_token = client.ArtefactViewToken`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `expires_in` | `Integer` |  |
+| `file` | `String` | Exact manifest path. |
+| `organization_slug` | `String` | If provided, must match the organization addressed by the route. |
+| `version` | `Integer` |  |
+| `viewer_url` | `String` |  |
+
+#### Example: Create
+
+```ruby
+artefact_view_token = client.ArtefactViewToken.create({
+  "artefact_id" => "example_artefact_id", # String
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### Artifact
+
+Create an instance: `artifact = client.Artifact`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the Artifact record (raises on error).
+artifact = client.Artifact.load({ "id" => "artifact_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of Artifact entities, one per record (raises on error).
+artifacts = client.Artifact.list
+artifacts.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+artifact = client.Artifact.create({
+})
+```
+
+
+### ArtifactCacheNamespace
+
+Create an instance: `artifact_cache_namespace = client.ArtifactCacheNamespace`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ArtifactCacheNamespace record (raises on error).
+artifact_cache_namespace = client.ArtifactCacheNamespace.load({ "id" => "artifact_cache_namespace_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of ArtifactCacheNamespace entities, one per record (raises on error).
+artifact_cache_namespaces = client.ArtifactCacheNamespace.list
+artifact_cache_namespaces.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+artifact_cache_namespace = client.ArtifactCacheNamespace.create({
+})
+```
+
+
+### ArtifactImageRepository
+
+Create an instance: `artifact_image_repository = client.ArtifactImageRepository`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ArtifactImageRepository record (raises on error).
+artifact_image_repository = client.ArtifactImageRepository.load({ "id" => "artifact_image_repository_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of ArtifactImageRepository entities, one per record (raises on error).
+artifact_image_repositorys = client.ArtifactImageRepository.list
+artifact_image_repositorys.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+artifact_image_repository = client.ArtifactImageRepository.create({
+})
+```
+
+
+### ArtifactPackageMirror
+
+Create an instance: `artifact_package_mirror = client.ArtifactPackageMirror`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ArtifactPackageMirror record (raises on error).
+artifact_package_mirror = client.ArtifactPackageMirror.load({ "id" => "artifact_package_mirror_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of ArtifactPackageMirror entities, one per record (raises on error).
+artifact_package_mirrors = client.ArtifactPackageMirror.list
+artifact_package_mirrors.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+artifact_package_mirror = client.ArtifactPackageMirror.create({
+})
+```
+
+
+### ArtifactRetentionPolicy
+
+Create an instance: `artifact_retention_policy = client.ArtifactRetentionPolicy`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ArtifactRetentionPolicy record (raises on error).
+artifact_retention_policy = client.ArtifactRetentionPolicy.load({ "id" => "artifact_retention_policy_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of ArtifactRetentionPolicy entities, one per record (raises on error).
+artifact_retention_policys = client.ArtifactRetentionPolicy.list
+artifact_retention_policys.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+artifact_retention_policy = client.ArtifactRetentionPolicy.create({
+})
+```
+
+
 ### AttachmentPart
 
 Create an instance: `attachment_part = client.AttachmentPart`
@@ -8103,6 +15204,160 @@ Create an instance: `attachment_part = client.AttachmentPart`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `String` |  |
+
+
+### AuditEvent
+
+Create an instance: `audit_event = client.AuditEvent`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `String` |  |
+| `actor_kind` | `String` |  |
+| `actor_user_id` | `Object` |  |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `id` | `String` |  |
+| `observability_space_id` | `Object` |  |
+| `organization_id` | `String` |  |
+| `payload` | `Object` |  |
+| `request_id` | `Object` |  |
+| `severity` | `String` |  |
+| `subject_id` | `String` |  |
+| `subject_kind` | `String` |  |
+| `subject_name` | `Object` |  |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of AuditEvent entities, one per record (raises on error).
+audit_events = client.AuditEvent.list({ "organization_id" => "example" })
+audit_events.each { |item| puts item.data_get }
+```
+
+
+### Auth
+
+Create an instance: `auth = client.Auth`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+
+### AuthCli
+
+Create an instance: `auth_cli = client.AuthCli`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### AuthGithub
+
+Create an instance: `auth_github = client.AuthGithub`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AuthGoogle
+
+Create an instance: `auth_google = client.AuthGoogle`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AuthOpenai
+
+Create an instance: `auth_openai = client.AuthOpenai`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AuthPasswordReset
+
+Create an instance: `auth_password_reset = client.AuthPasswordReset`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email` | `String` |  |
+| `message` | `String` |  |
+| `password` | `String` |  |
+| `token` | `String` |  |
+
+#### Example: Create
+
+```ruby
+auth_password_reset = client.AuthPasswordReset.create({
+  "email" => "example_email", # String
+})
+```
+
+
+### AuthRegistrationOption
+
+Create an instance: `auth_registration_option = client.AuthRegistrationOption`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email_password_signup_enabled` | `Boolean` |  |
+| `openai_sign_in_enabled` | `Boolean` | Whether ChatGPT identity sign-in is configured and enabled for rollout. |
+| `turnstile_site_key` | `Object` |  |
+| `waitlist_enabled` | `Boolean` | New public signups require waitlist approval when enabled. |
+
+#### Example: List
+
+```ruby
+# list returns an Array of AuthRegistrationOption entities, one per record (raises on error).
+auth_registration_options = client.AuthRegistrationOption.list
+auth_registration_options.each { |item| puts item.data_get }
+```
 
 
 ### AutomationEvent
@@ -8201,6 +15456,548 @@ automation_run = client.AutomationRun.create({
   "version_id" => "example_version_id", # String
 })
 ```
+
+
+### BackendRunnerPool
+
+Create an instance: `backend_runner_pool = client.BackendRunnerPool`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of BackendRunnerPool entities, one per record (raises on error).
+backend_runner_pools = client.BackendRunnerPool.list({ "backend_id" => "example" })
+backend_runner_pools.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+backend_runner_pool = client.BackendRunnerPool.create({
+  "backend_id" => "example_backend_id", # String
+})
+```
+
+
+### Bazel
+
+Create an instance: `bazel = client.Bazel`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### BazelActionResult
+
+Create an instance: `bazel_action_result = client.BazelActionResult`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the BazelActionResult record (raises on error).
+bazel_action_result = client.BazelActionResult.load({ "id" => "bazel_action_result_id", "action_result_id" => "action_result_id" })
+```
+
+
+### BazelBackend
+
+Create an instance: `bazel_backend = client.BazelBackend`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the BazelBackend record (raises on error).
+bazel_backend = client.BazelBackend.load({ "id" => "bazel_backend_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of BazelBackend entities, one per record (raises on error).
+bazel_backends = client.BazelBackend.list
+bazel_backends.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+bazel_backend = client.BazelBackend.create({
+})
+```
+
+
+### BazelBlob
+
+Create an instance: `bazel_blob = client.BazelBlob`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the BazelBlob record (raises on error).
+bazel_blob = client.BazelBlob.load({ "id" => "bazel_blob_id", "blob_id" => "blob_id", "hash" => "hash" })
+```
+
+
+### BazelExecution
+
+Create an instance: `bazel_execution = client.BazelExecution`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the BazelExecution record (raises on error).
+bazel_execution = client.BazelExecution.load({ "id" => "bazel_execution_id" })
+```
+
+#### Example: Create
+
+```ruby
+bazel_execution = client.BazelExecution.create({
+})
+```
+
+
+### BazelFindMissingBlob
+
+Create an instance: `bazel_find_missing_blob = client.BazelFindMissingBlob`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+bazel_find_missing_blob = client.BazelFindMissingBlob.create({
+})
+```
+
+
+### Billing
+
+Create an instance: `billing = client.Billing`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `Array` |  |
+| `breakdown` | `Object` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `Object` |  |
+| `can_manage_contact` | `Boolean` |  |
+| `can_manage_extra_spend` | `Boolean` |  |
+| `can_manage_local_subscription` | `Boolean` |  |
+| `can_manage_payment_method` | `Boolean` |  |
+| `can_set_up_billing` | `Boolean` |  |
+| `customer` | `Object` |  |
+| `deployment_usage_visible` | `Boolean` |  |
+| `entitlements` | `Hash` |  |
+| `extra_spend_enabled` | `Boolean` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `Boolean` | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `String` |  |
+| `package` | `Object` |  |
+| `prepaid` | `Object` |  |
+| `preview` | `Object` | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `Hash` |  |
+| `stripe` | `Hash` |  |
+| `subscription` | `Object` |  |
+| `token_account` | `Hash` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the Billing record (raises on error).
+billing = client.Billing.load({ "organization_id" => "organization_id" })
+```
+
+
+### BillingAddon
+
+Create an instance: `billing_addon = client.BillingAddon`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `Array` |  |
+| `breakdown` | `Object` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `Object` |  |
+| `can_manage_contact` | `Boolean` |  |
+| `can_manage_extra_spend` | `Boolean` |  |
+| `can_manage_local_subscription` | `Boolean` |  |
+| `can_manage_payment_method` | `Boolean` |  |
+| `can_set_up_billing` | `Boolean` |  |
+| `customer` | `Object` |  |
+| `deployment_usage_visible` | `Boolean` |  |
+| `entitlements` | `Hash` |  |
+| `extra_spend_enabled` | `Boolean` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `Boolean` | Whether the `billing` feature is on for this organization. |
+| `id` | `String` |  |
+| `organization_id` | `String` |  |
+| `package` | `Object` |  |
+| `prepaid` | `Object` |  |
+| `preview` | `Object` | Metronome draft invoice and credits, or null. |
+| `quantity` | `Integer` |  |
+| `storage_usage` | `Hash` |  |
+| `stripe` | `Hash` |  |
+| `subscription` | `Object` |  |
+| `token_account` | `Hash` |  |
+
+
+### BillingCheckoutSession
+
+Create an instance: `billing_checkout_session = client.BillingCheckoutSession`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cancel_url` | `String` |  |
+| `coupon_code` | `String` |  |
+| `entry_point` | `String` | Where the owner chose to pay, for product analytics. |
+| `package_key` | `String` |  |
+| `package_revision` | `Integer` |  |
+| `success_url` | `String` |  |
+
+#### Example: Create
+
+```ruby
+billing_checkout_session = client.BillingCheckoutSession.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### BillingInvoice
+
+Create an instance: `billing_invoice = client.BillingInvoice`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `amount_due_cents` | `Integer` |  |
+| `created_at` | `String` |  |
+| `currency` | `String` |  |
+| `hosted_invoice_url` | `Object` |  |
+| `id` | `String` |  |
+| `invoice_pdf` | `Object` |  |
+| `metronome_invoice_id` | `Object` | Metronome's id for the invoice it pushed |
+| `number` | `Object` |  |
+| `period_ended_at` | `Object` |  |
+| `period_started_at` | `Object` |  |
+| `status` | `String` |  |
+| `total_cents` | `Integer` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of BillingInvoice entities, one per record (raises on error).
+billing_invoices = client.BillingInvoice.list({ "organization_id" => "example" })
+billing_invoices.each { |item| puts item.data_get }
+```
+
+
+### BillingPackage
+
+Create an instance: `billing_package = client.BillingPackage`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `Array` |  |
+| `base_price_cents` | `Integer` |  |
+| `billing_interval` | `String` |  |
+| `billing_policy` | `String` |  |
+| `ci_included_spend_cents` | `Integer` | Monthly USD credit in cents shared by all CI charges, including runners, cache, storage and add-ons; replaces CI unit allowances when positive. |
+| `currency` | `String` |  |
+| `key` | `String` |  |
+| `max_seats` | `Object` |  |
+| `name` | `String` |  |
+| `pay_as_you_go_enabled` | `Boolean` |  |
+| `rates` | `Array` |  |
+| `revision` | `Integer` |  |
+| `roder_daily_run_limit` | `Integer` |  |
+| `roder_run_concurrency_limit` | `Integer` |  |
+| `seat_price_cents` | `Integer` |  |
+| `trial_days` | `Integer` |  |
+| `visibility` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of BillingPackage entities, one per record (raises on error).
+billing_packages = client.BillingPackage.list
+billing_packages.each { |item| puts item.data_get }
+```
+
+
+### BillingPortalSession
+
+Create an instance: `billing_portal_session = client.BillingPortalSession`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `return_url` | `String` |  |
+
+#### Example: Create
+
+```ruby
+billing_portal_session = client.BillingPortalSession.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### BillingPrepaidPeriod
+
+Create an instance: `billing_prepaid_period = client.BillingPrepaidPeriod`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_at` | `Object` |  |
+| `created_at` | `String` |  |
+| `currency` | `String` |  |
+| `id` | `String` |  |
+| `last_error` | `Object` |  |
+| `minutes` | `Integer` |  |
+| `net_amount_cents` | `Integer` |  |
+| `paid_at` | `Object` |  |
+| `paid_total_cents` | `Object` |  |
+| `payment_action_url` | `Object` |  |
+| `period_ended_at` | `String` |  |
+| `period_started_at` | `String` |  |
+| `receipt_url` | `Object` |  |
+| `refunded_net_cents` | `Integer` |  |
+| `state` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the BillingPrepaidPeriod record (raises on error).
+billing_prepaid_period = client.BillingPrepaidPeriod.load({ "id" => "billing_prepaid_period_id", "organization_id" => "organization_id" })
+```
+
+
+### BillingPrepaidPurchase
+
+Create an instance: `billing_prepaid_purchase = client.BillingPrepaidPurchase`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_at` | `Object` |  |
+| `created_at` | `String` |  |
+| `currency` | `String` |  |
+| `id` | `String` |  |
+| `last_error` | `Object` |  |
+| `minutes` | `Integer` |  |
+| `net_amount_cents` | `Integer` |  |
+| `paid_at` | `Object` |  |
+| `paid_total_cents` | `Object` |  |
+| `payment_action_url` | `Object` |  |
+| `prepaid` | `Hash` |  |
+| `purchase` | `Hash` |  |
+| `receipt_url` | `Object` |  |
+| `refunded_net_cents` | `Integer` |  |
+| `request_key` | `String` |  |
+| `state` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the BillingPrepaidPurchase record (raises on error).
+billing_prepaid_purchase = client.BillingPrepaidPurchase.load({ "id" => "billing_prepaid_purchase_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of BillingPrepaidPurchase entities, one per record (raises on error).
+billing_prepaid_purchases = client.BillingPrepaidPurchase.list({ "organization_id" => "example" })
+billing_prepaid_purchases.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+billing_prepaid_purchase = client.BillingPrepaidPurchase.create({
+  "organization_id" => "example_organization_id", # String
+  "minutes" => 1, # Integer
+  "request_key" => "example_request_key", # String
+})
+```
+
+
+### BillingTokenTopUp
+
+Create an instance: `billing_token_top_up = client.BillingTokenTopUp`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `amount_cents` | `Integer` |  |
+| `request_key` | `String` |  |
+
+#### Example: Create
+
+```ruby
+billing_token_top_up = client.BillingTokenTopUp.create({
+  "organization_id" => "example_organization_id", # String
+  "amount_cents" => 1, # Integer
+  "request_key" => "example_request_key", # String
+})
+```
+
+
+### BillingUsage
+
+Create an instance: `billing_usage = client.BillingUsage`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
 
 
 ### Binary
@@ -8345,6 +16142,41 @@ binary_version = client.BinaryVersion.create({
   "project_id" => "example_project_id", # String
   "download_url" => "example_download_url", # String
   "idempotency_key" => "example_idempotency_key", # String
+})
+```
+
+
+### BookmarkProtectionRefreshGithubRequiredCheck
+
+Create an instance: `bookmark_protection_refresh_github_required_check = client.BookmarkProtectionRefreshGithubRequiredCheck`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `exclusions` | `Array` |  |
+| `fetched_at` | `Object` |  |
+| `fetched_at_label` | `Object` |  |
+| `github_branch` | `String` |  |
+| `github_owner` | `Object` |  |
+| `github_repository_name` | `Object` |  |
+| `last_error` | `Object` |  |
+| `proven` | `Boolean` |  |
+| `requirements` | `Array` |  |
+| `stale` | `Boolean` |  |
+
+#### Example: Create
+
+```ruby
+bookmark_protection_refresh_github_required_check = client.BookmarkProtectionRefreshGithubRequiredCheck.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
 })
 ```
 
@@ -8665,6 +16497,51 @@ browser_session_task = client.BrowserSessionTask.create({
 ```
 
 
+### CacheNamespaceEntry
+
+Create an instance: `cache_namespace_entry = client.CacheNamespaceEntry`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the CacheNamespaceEntry record (raises on error).
+cache_namespace_entry = client.CacheNamespaceEntry.load({ "id" => "cache_namespace_entry_id", "cache_namespace_id" => "cache_namespace_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of CacheNamespaceEntry entities, one per record (raises on error).
+cache_namespace_entrys = client.CacheNamespaceEntry.list({ "cache_namespace_id" => "example" })
+cache_namespace_entrys.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+cache_namespace_entry = client.CacheNamespaceEntry.create({
+  "cache_namespace_id" => "example_cache_namespace_id", # String
+})
+```
+
+
 ### CatalogSelector
 
 Create an instance: `catalog_selector = client.CatalogSelector`
@@ -8868,6 +16745,1053 @@ cdn_space_objects.each { |item| puts item.data_get }
 ```
 
 
+### Change
+
+Create an instance: `change = client.Change`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `counts` | `Hash` | Counts for each state across the active non-state filters. |
+| `filters` | `Hash` |  |
+| `github_sync` | `Hash` |  |
+| `result` | `Object` | What this page is a page of. |
+
+#### Example: List
+
+```ruby
+# list returns an Array of Change entities, one per record (raises on error).
+changes = client.Change.list({ "organization_id" => "example" })
+changes.each { |item| puts item.data_get }
+```
+
+
+### ChangeAsset
+
+Create an instance: `change_asset = client.ChangeAsset`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `alias` | `String` |  |
+| `byte_size` | `Integer` |  |
+| `checksum_md5` | `String` |  |
+| `checksum_sha256` | `String` |  |
+| `content_type` | `String` |  |
+| `filename` | `String` |  |
+| `id` | `String` |  |
+
+#### Example: Create
+
+```ruby
+change_asset = client.ChangeAsset.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "alias" => "example_alias", # String
+  "byte_size" => 1, # Integer
+  "checksum_md5" => "example_checksum_md5", # String
+  "checksum_sha256" => "example_checksum_sha256", # String
+  "content_type" => "example_content_type", # String
+  "filename" => "example_filename", # String
+})
+```
+
+
+### ChangeComment
+
+Create an instance: `change_comment = client.ChangeComment`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `body` | `String` |  |
+| `capabilities` | `Hash` |  |
+| `change_id` | `Object` |  |
+| `created_at` | `Object` |  |
+| `created_at_label` | `Object` |  |
+| `id` | `String` |  |
+| `kind` | `Object` |  |
+| `line` | `Object` |  |
+| `outdated` | `Boolean` |  |
+| `parent_comment_id` | `Object` |  |
+| `patchset_id` | `Object` |  |
+| `patchset_number` | `Object` |  |
+| `path` | `Object` |  |
+| `replies` | `Array` |  |
+| `resolved` | `Boolean` |  |
+| `resolved_at` | `Object` |  |
+| `resolved_at_label` | `Object` |  |
+| `resolved_by` | `Hash` |  |
+| `side` | `Object` |  |
+| `updated_at` | `Object` |  |
+| `updated_at_label` | `Object` |  |
+| `user` | `Hash` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of ChangeComment entities, one per record (raises on error).
+change_comments = client.ChangeComment.list({ "change_id" => "example", "organization_id" => "example", "repo_id" => "example" })
+change_comments.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+change_comment = client.ChangeComment.create({
+  "change_id" => "example_change_id", # String
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "body" => "example_body", # String
+})
+```
+
+
+### ChangeFileReviewCheckpoint
+
+Create an instance: `change_file_review_checkpoint = client.ChangeFileReviewCheckpoint`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `patchset_id` | `String` |  |
+| `path` | `String` |  |
+| `request_id` | `String` |  |
+| `review_action` | `String` |  |
+
+#### Example: Create
+
+```ruby
+change_file_review_checkpoint = client.ChangeFileReviewCheckpoint.create({
+  "change_id" => "example_change_id", # String
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "patchset_id" => "example_patchset_id", # String
+  "path" => "example_path", # String
+  "request_id" => "example_request_id", # String
+  "review_action" => "example_review_action", # String
+})
+```
+
+
+### ChangeGitBranchSubmission
+
+Create an instance: `change_git_branch_submission = client.ChangeGitBranchSubmission`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+change_git_branch_submission = client.ChangeGitBranchSubmission.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+
+### ChangeGitCommitIdentity
+
+Create an instance: `change_git_commit_identity = client.ChangeGitCommitIdentity`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_id` | `String` |  |
+| `change_number` | `Integer` |  |
+| `git_commit_id` | `String` |  |
+| `git_commit_ids` | `Array` |  |
+| `id` | `String` |  |
+| `identities` | `Array` |  |
+| `missing_git_commit_ids` | `Array` |  |
+| `patchset_number` | `Integer` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ChangeGitCommitIdentity record (raises on error).
+change_git_commit_identity = client.ChangeGitCommitIdentity.load({ "id" => "change_git_commit_identity_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### Example: Create
+
+```ruby
+change_git_commit_identity = client.ChangeGitCommitIdentity.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "git_commit_ids" => [], # Array
+})
+```
+
+
+### ChangeGitPublication
+
+Create an instance: `change_git_publication = client.ChangeGitPublication`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `expected_target_commit_id` | `String` |  |
+| `id` | `String` |  |
+| `operation_key` | `String` |  |
+| `publication_id` | `String` |  |
+| `request` | `Hash` |  |
+| `request_digest` | `String` |  |
+| `revisions` | `Array` |  |
+| `status` | `String` |  |
+| `transfer_refs` | `Array` | Immutable receipt-owned refs returned by preparation; transfer each exact Git target before polling readiness. |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ChangeGitPublication record (raises on error).
+change_git_publication = client.ChangeGitPublication.load({ "id" => "change_git_publication_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### Example: Create
+
+```ruby
+change_git_publication = client.ChangeGitPublication.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "operation_key" => "example_operation_key", # String
+  "request" => {}, # Hash
+})
+```
+
+
+### ChangeGroupMember
+
+Create an instance: `change_group_member = client.ChangeGroupMember`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_id` | `String` | Change number |
+| `changes` | `Array` |  |
+| `id` | `String` |  |
+| `name` | `String` |  |
+| `number` | `Integer` |  |
+| `status` | `String` |  |
+| `title` | `Object` |  |
+
+#### Example: Create
+
+```ruby
+change_group_member = client.ChangeGroupMember.create({
+  "change_group_id" => "example_change_group_id", # String
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "change_id" => "example_change_id", # String
+})
+```
+
+
+### ChangeLabel
+
+Create an instance: `change_label = client.ChangeLabel`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accepted` | `Boolean` |  |
+| `add` | `Array` |  |
+| `approval` | `Hash` |  |
+| `assets` | `Array` | Proof assets referenced from the description as `vex-asset:<id>`. |
+| `author` | `Object` | Human user summary or organization automation identity. |
+| `capabilities` | `Hash` |  |
+| `change_key` | `String` |  |
+| `checks` | `Array` |  |
+| `checks_status` | `String` |  |
+| `comments` | `Array` |  |
+| `comments_count` | `Integer` |  |
+| `comments_count_label` | `String` |  |
+| `commit_message` | `Object` |  |
+| `current_patchset` | `Hash` |  |
+| `description` | `Object` |  |
+| `draft` | `Boolean` |  |
+| `folded_into_number` | `Object` |  |
+| `github_projection_status` | `Object` |  |
+| `github_pull_request` | `Hash` |  |
+| `github_pull_requests` | `Array` |  |
+| `group` | `Object` |  |
+| `has_description` | `Boolean` | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
+| `id` | `String` |  |
+| `jj_change_id` | `Object` |  |
+| `labels` | `Array` |  |
+| `landable` | `Boolean` |  |
+| `landed_by` | `Hash` |  |
+| `number` | `Integer` |  |
+| `orphaned` | `Boolean` |  |
+| `orphaned_at` | `String` |  |
+| `orphaned_at_label` | `String` |  |
+| `orphaned_reason` | `String` |  |
+| `parent_change_id` | `Object` |  |
+| `parent_change_number` | `Object` |  |
+| `patchset_number` | `Object` |  |
+| `patchsets` | `Array` |  |
+| `primary_status` | `Object` |  |
+| `public_id` | `String` |  |
+| `relation_chain` | `Array` |  |
+| `remove` | `Array` |  |
+| `requested_changes` | `Boolean` |  |
+| `restack_state` | `String` |  |
+| `reviewer_candidates` | `Array` | Organization members available to the reviewer picker on this page. |
+| `reviewers` | `Array` |  |
+| `stable_change_id` | `String` |  |
+| `stack` | `Object` |  |
+| `status` | `String` |  |
+| `target_branch` | `String` |  |
+| `title` | `String` |  |
+| `unresolved_comments_count_label` | `String` |  |
+| `url` | `String` |  |
+| `votes` | `Array` |  |
+
+
+### ChangeLandingHold
+
+Create an instance: `change_landing_hold = client.ChangeLandingHold`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### ChangeLandingRequest
+
+Create an instance: `change_landing_request = client.ChangeLandingRequest`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_ids` | `Array` |  |
+| `count` | `Integer` |  |
+| `defer_until_ready` | `Boolean` | Admit the request while approvals or checks are pending |
+| `expected_requirement_version` | `String` |  |
+| `expected_scope_version` | `String` |  |
+| `head_change_id` | `String` |  |
+| `id` | `Object` |  |
+| `numbers` | `Array` |  |
+| `override_acknowledged` | `Boolean` |  |
+| `override_codes` | `Array` |  |
+| `position` | `Integer` |  |
+| `priority` | `String` |  |
+| `scope_version` | `String` |  |
+| `state` | `String` |  |
+| `version` | `Integer` |  |
+
+#### Example: Create
+
+```ruby
+change_landing_request = client.ChangeLandingRequest.create({
+  "change_id" => "example_change_id", # String
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+
+### ChangeRequestChange
+
+Create an instance: `change_request_change = client.ChangeRequestChange`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `message` | `Object` |  |
+
+#### Example: Create
+
+```ruby
+change_request_change = client.ChangeRequestChange.create({
+  "change_id" => "example_change_id", # String
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+
+### ChangeReviewer
+
+Create an instance: `change_reviewer = client.ChangeReviewer`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `add` | `Array` |  |
+| `email` | `String` |  |
+| `name` | `Object` |  |
+| `remove` | `Array` |  |
+| `removed_reviewers` | `Array` |  |
+| `requested_reviewers` | `Array` |  |
+| `reviewers` | `Array` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of ChangeReviewer entities, one per record (raises on error).
+change_reviewers = client.ChangeReviewer.list({ "change_id" => "example", "organization_id" => "example", "repo_id" => "example" })
+change_reviewers.each { |item| puts item.data_get }
+```
+
+
+### ChangeTranscript
+
+Create an instance: `change_transcript = client.ChangeTranscript`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capture_kind` | `String` |  |
+| `captured_at` | `String` |  |
+| `harness` | `Hash` |  |
+| `id` | `String` |  |
+| `original_resume` | `Object` |  |
+| `patchset_commit_id` | `String` |  |
+| `patchset_number` | `Integer` |  |
+| `redaction_count` | `Integer` |  |
+| `session_id` | `Object` |  |
+| `session_title` | `Object` |  |
+| `status` | `String` |  |
+| `superseded` | `Boolean` |  |
+| `user` | `Hash` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of ChangeTranscript entities, one per record (raises on error).
+change_transcripts = client.ChangeTranscript.list({ "change_id" => "example", "organization_id" => "example", "repo_id" => "example" })
+change_transcripts.each { |item| puts item.data_get }
+```
+
+
+### ChangeTranscriptSummary
+
+Create an instance: `change_transcript_summary = client.ChangeTranscriptSummary`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `summaries` | `Hash` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of ChangeTranscriptSummary entities, one per record (raises on error).
+change_transcript_summarys = client.ChangeTranscriptSummary.list({ "organization_id" => "example", "ids" => "example" })
+change_transcript_summarys.each { |item| puts item.data_get }
+```
+
+
+### CheckpointPrepareChunk
+
+Create an instance: `checkpoint_prepare_chunk = client.CheckpointPrepareChunk`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+checkpoint_prepare_chunk = client.CheckpointPrepareChunk.create({
+  "agent_session_id" => "example_agent_session_id", # String
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+
+### CiNode
+
+Create an instance: `ci_node = client.CiNode`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `architecture` | `Object` |  |
+| `bazel_enabled` | `Boolean` |  |
+| `bazel_properties_json` | `Object` |  |
+| `ci_runner_pool_id` | `String` |  |
+| `cordoned_at` | `Object` |  |
+| `cordoned_at_label` | `Object` |  |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `health_state` | `String` |  |
+| `heartbeat_age_seconds` | `Object` |  |
+| `id` | `String` |  |
+| `kind` | `String` |  |
+| `labels_csv` | `Object` |  |
+| `last_seen_at` | `Object` |  |
+| `last_seen_at_label` | `Object` |  |
+| `name` | `String` |  |
+| `network_peer_id` | `Object` |  |
+| `node_capabilities_csv` | `Object` |  |
+| `node_certificate_expires_at` | `Object` |  |
+| `node_certificate_expires_at_label` | `Object` |  |
+| `node_certificate_fingerprint_sha256` | `Object` |  |
+| `node_certificate_serial` | `Object` |  |
+| `offline_at` | `Object` |  |
+| `offline_at_label` | `Object` |  |
+| `online_at` | `Object` |  |
+| `online_at_label` | `Object` |  |
+| `organization_id` | `String` |  |
+| `os` | `Object` |  |
+| `revoked_at` | `Object` |  |
+| `revoked_at_label` | `Object` |  |
+| `schedulable` | `Boolean` |  |
+| `slug` | `String` |  |
+| `status` | `String` |  |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+| `version` | `Object` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the CiNode record (raises on error).
+ci_node = client.CiNode.load({ "id" => "ci_node_id" })
+```
+
+
+### CiPipeline
+
+Create an instance: `ci_pipeline = client.CiPipeline`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `ci_runner_pool_id` | `Object` |  |
+| `concurrency_key` | `Object` |  |
+| `created_at` | `String` |  |
+| `default_branch` | `Object` |  |
+| `description` | `Object` |  |
+| `hosted_app_id` | `Object` |  |
+| `id` | `String` |  |
+| `name` | `String` |  |
+| `organization_id` | `String` |  |
+| `repository_id` | `Object` |  |
+| `required_capabilities_csv` | `Object` |  |
+| `runner_pool` | `Object` |  |
+| `runs` | `Array` |  |
+| `slug` | `String` |  |
+| `source_kind` | `String` |  |
+| `status` | `String` |  |
+| `status_label` | `String` |  |
+| `status_state` | `String` |  |
+| `status_tone` | `String` |  |
+| `trigger_on_pull_request` | `Boolean` |  |
+| `trigger_on_push` | `Boolean` |  |
+| `trigger_on_schedule` | `Boolean` |  |
+| `updated_at` | `String` |  |
+| `workflow_path` | `Object` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the CiPipeline record (raises on error).
+ci_pipeline = client.CiPipeline.load({ "id" => "ci_pipeline_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of CiPipeline entities, one per record (raises on error).
+ci_pipelines = client.CiPipeline.list
+ci_pipelines.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+ci_pipeline = client.CiPipeline.create({
+})
+```
+
+
+### CiPipelineRun
+
+Create an instance: `ci_pipeline_run = client.CiPipelineRun`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active` | `Boolean` |  |
+| `canceled_at` | `Object` |  |
+| `ci_pipeline_id` | `String` |  |
+| `ci_runner_pool_id` | `Object` |  |
+| `commit_sha` | `Object` |  |
+| `concurrency_key` | `Object` |  |
+| `created_at` | `String` |  |
+| `creator_user_id` | `Object` |  |
+| `display_id` | `Integer` |  |
+| `failed` | `Boolean` |  |
+| `finished_at` | `Object` |  |
+| `hosted_app_id` | `Object` |  |
+| `id` | `String` |  |
+| `jobs` | `Array` |  |
+| `message` | `Object` |  |
+| `number` | `Integer` |  |
+| `organization_id` | `String` |  |
+| `parameters_json` | `Object` |  |
+| `queued_at` | `Object` |  |
+| `ref_name` | `Object` |  |
+| `repository_id` | `Object` |  |
+| `required_capabilities_csv` | `Object` |  |
+| `retry_number` | `Integer` |  |
+| `retryable` | `Boolean` |  |
+| `slug` | `String` |  |
+| `source_url` | `Object` |  |
+| `started_at` | `Object` |  |
+| `status` | `String` |  |
+| `status_label` | `String` |  |
+| `status_state` | `String` |  |
+| `status_tone` | `String` |  |
+| `trigger_kind` | `String` |  |
+| `updated_at` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the CiPipelineRun record (raises on error).
+ci_pipeline_run = client.CiPipelineRun.load({ "id" => "ci_pipeline_run_id", "pipeline_id" => "pipeline_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of CiPipelineRun entities, one per record (raises on error).
+ci_pipeline_runs = client.CiPipelineRun.list({ "pipeline_id" => "example" })
+ci_pipeline_runs.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+ci_pipeline_run = client.CiPipelineRun.create({
+  "pipeline_id" => "example_pipeline_id", # String
+})
+```
+
+
+### CiRunnerPool
+
+Create an instance: `ci_runner_pool = client.CiRunnerPool`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `bazel_enabled` | `Boolean` |  |
+| `bazel_properties_json` | `Object` |  |
+| `created_at` | `String` |  |
+| `description` | `Object` |  |
+| `elastic_config_json` | `Object` |  |
+| `elastic_provider_kind` | `Object` |  |
+| `id` | `String` |  |
+| `isolation_mode` | `String` |  |
+| `labels_csv` | `Object` |  |
+| `max_concurrency` | `Integer` |  |
+| `modal_capacity` | `Hash` |  |
+| `modal_runner_invocations` | `Array` |  |
+| `name` | `String` |  |
+| `network_space_id` | `Object` |  |
+| `node_capabilities_csv` | `Object` |  |
+| `organization_id` | `String` |  |
+| `runner_count_label` | `String` |  |
+| `runner_kind` | `String` |  |
+| `runners` | `Array` |  |
+| `slug` | `String` |  |
+| `status` | `String` |  |
+| `updated_at` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the CiRunnerPool record (raises on error).
+ci_runner_pool = client.CiRunnerPool.load({ "id" => "ci_runner_pool_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of CiRunnerPool entities, one per record (raises on error).
+ci_runner_pools = client.CiRunnerPool.list
+ci_runner_pools.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+ci_runner_pool = client.CiRunnerPool.create({
+})
+```
+
+
+### CiStatus
+
+Create an instance: `ci_status = client.CiStatus`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### CliEvent
+
+Create an instance: `cli_event = client.CliEvent`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `event` | `String` |  |
+| `properties` | `Hash` |  |
+
+#### Example: Create
+
+```ruby
+cli_event = client.CliEvent.create({
+  "event" => "example_event", # String
+  "properties" => {}, # Hash
+})
+```
+
+
+### CliRelease
+
+Create an instance: `cli_release = client.CliRelease`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Example: List
+
+```ruby
+# list returns an Array of CliRelease entities, one per record (raises on error).
+cli_releases = client.CliRelease.list
+cli_releases.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+cli_release = client.CliRelease.create({
+})
+```
+
+
+### CloudWorkspaceBackupObject
+
+Create an instance: `cloud_workspace_backup_object = client.CloudWorkspaceBackupObject`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the CloudWorkspaceBackupObject record (raises on error).
+cloud_workspace_backup_object = client.CloudWorkspaceBackupObject.load({ "id" => "cloud_workspace_backup_object_id", "cloud_workspace_backup_id" => "cloud_workspace_backup_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+
+### CodeRuleEvaluation
+
+Create an instance: `code_rule_evaluation = client.CodeRuleEvaluation`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `advisory` | `Boolean` |  |
+| `coverage` | `Hash` |  |
+| `diff` | `String` | UTF-8 complete unified patch using a/ old and b/ new prefixes; at most 1 MiB |
+| `duration_ms` | `Integer` |  |
+| `evaluator_version` | `String` |  |
+| `input_digest` | `Object` |  |
+| `limits` | `Hash` |  |
+| `model` | `String` |  |
+| `requests` | `Hash` |  |
+| `schema_version` | `Integer` |  |
+| `snapshot_digest` | `Object` |  |
+| `unchecked` | `Array` |  |
+| `verdicts` | `Array` |  |
+
+#### Example: Create
+
+```ruby
+code_rule_evaluation = client.CodeRuleEvaluation.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "diff" => "example_diff", # String
+})
+```
+
+
+### ComSiteAccess
+
+Create an instance: `com_site_access = client.ComSiteAccess`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### ComSiteAccessSession
+
+Create an instance: `com_site_access_session = client.ComSiteAccessSession`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cookie_name` | `String` |  |
+| `host` | `String` | Site hostname, for example docs.acme.composal.page |
+| `max_age` | `Integer` |  |
+| `session_token` | `String` |  |
+
+#### Example: Create
+
+```ruby
+com_site_access_session = client.ComSiteAccessSession.create({
+  "host" => "example_host", # String
+})
+```
+
+
+### CommentThreadComment
+
+Create an instance: `comment_thread_comment = client.CommentThreadComment`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `body` | `String` |  |
+
+#### Example: Create
+
+```ruby
+comment_thread_comment = client.CommentThreadComment.create({
+  "artefact_id" => "example_artefact_id", # String
+  "comment_thread_id" => "example_comment_thread_id", # String
+  "organization_id" => "example_organization_id", # String
+  "body" => "example_body", # String
+})
+```
+
+
+### CommitDiff
+
+Create an instance: `commit_diff = client.CommitDiff`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `files` | `Array` |  |
+| `id` | `String` |  |
+| `parent_id` | `Object` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the CommitDiff record (raises on error).
+commit_diff = client.CommitDiff.load({ "id" => "commit_diff_id", "commit_id" => "commit_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+
 ### ConnectionRequest
 
 Create an instance: `connection_request = client.ConnectionRequest`
@@ -8931,6 +17855,118 @@ Create an instance: `connection_source = client.ConnectionSource`
 # list returns an Array of ConnectionSource entities, one per record (raises on error).
 connection_sources = client.ConnectionSource.list({ "agent_id" => "example", "organization_id" => "example" })
 connection_sources.each { |item| puts item.data_get }
+```
+
+
+### ContactSubmission
+
+Create an instance: `contact_submission = client.ContactSubmission`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `company` | `Object` |  |
+| `email` | `String` | Stored downcased and stripped. |
+| `message` | `String` |  |
+| `name` | `String` |  |
+| `website` | `Object` | Honeypot. |
+
+#### Example: Create
+
+```ruby
+contact_submission = client.ContactSubmission.create({
+  "email" => "example_email", # String
+  "message" => "example_message", # String
+  "name" => "example_name", # String
+})
+```
+
+
+### ControlComputer
+
+Create an instance: `control_computer = client.ControlComputer`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `connection` | `Hash` | A point-in-time control transport observation. |
+| `consent` | `Hash` |  |
+| `device` | `Hash` |  |
+| `id` | `String` |  |
+| `provider_status` | `Array` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of ControlComputer entities, one per record (raises on error).
+control_computers = client.ControlComputer.list({ "organization_id" => "example", "persistent_agent_id" => "example" })
+control_computers.each { |item| puts item.data_get }
+```
+
+
+### ControlComputerControlOperation
+
+Create an instance: `control_computer_control_operation = client.ControlComputerControlOperation`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `String` |  |
+| `arguments` | `Hash` |  |
+| `created_at` | `String` |  |
+| `delivery` | `Hash` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `String` |  |
+| `diagnostic_code` | `String` | Approved product error code retained after copied diagnostics expire. |
+| `end` | `Hash` |  |
+| `expires_at` | `String` |  |
+| `id` | `String` |  |
+| `key` | `String` |  |
+| `provider` | `String` |  |
+| `references` | `Hash` |  |
+| `result` | `Object` |  |
+| `result_expired` | `Boolean` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ControlComputerControlOperation record (raises on error).
+control_computer_control_operation = client.ControlComputerControlOperation.load({ "id" => "control_computer_control_operation_id", "control_computer_id" => "control_computer_id", "organization_id" => "organization_id" })
+```
+
+#### Example: Create
+
+```ruby
+control_computer_control_operation = client.ControlComputerControlOperation.create({
+  "control_computer_id" => "example_control_computer_id", # String
+  "organization_id" => "example_organization_id", # String
+  "action" => "example_action", # String
+  "arguments" => {}, # Hash
+  "key" => "example_key", # String
+})
 ```
 
 
@@ -9362,6 +18398,65 @@ demo_share_segment = client.DemoShareSegment.load({ "id" => "demo_share_segment_
 ```
 
 
+### Deployment
+
+Create an instance: `deployment = client.Deployment`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `app` | `Hash` |  |
+| `artifact_locator` | `Object` |  |
+| `build_duration_seconds` | `Object` |  |
+| `build_source` | `Object` |  |
+| `build_status` | `String` |  |
+| `children` | `Array` |  |
+| `ci_pipeline_id` | `Object` |  |
+| `ci_pipeline_run_id` | `Object` |  |
+| `commit_sha` | `Object` |  |
+| `created_at` | `String` |  |
+| `creator` | `Object` |  |
+| `deployed_url` | `Object` |  |
+| `duration_seconds` | `Object` |  |
+| `environment` | `Hash` |  |
+| `history_kind` | `String` |  |
+| `history_reason` | `Object` |  |
+| `id` | `String` |  |
+| `is_live` | `Boolean` |  |
+| `is_rollback` | `Boolean` |  |
+| `live_region_count` | `Integer` |  |
+| `number` | `Integer` |  |
+| `placement` | `Object` |  |
+| `region_count` | `Integer` |  |
+| `replicas_per_region` | `Integer` |  |
+| `rollback_reason` | `Object` |  |
+| `rollback_source_release_id` | `Object` |  |
+| `rollback_target_release_id` | `Object` |  |
+| `rollout_predecessor_id` | `Object` |  |
+| `rollout_status` | `String` |  |
+| `rollout_strategy` | `String` |  |
+| `service` | `Hash` |  |
+| `source_ref` | `Object` |  |
+| `status` | `String` |  |
+| `total_replicas` | `Integer` |  |
+| `trigger_kind` | `String` |  |
+| `updated_at` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the Deployment record (raises on error).
+deployment = client.Deployment.load({ "id" => "deployment_id", "organization_id" => "organization_id" })
+```
+
+
 ### DeploymentDashboardNomad
 
 Create an instance: `deployment_dashboard_nomad = client.DeploymentDashboardNomad`
@@ -9373,6 +18468,51 @@ Create an instance: `deployment_dashboard_nomad = client.DeploymentDashboardNoma
 | `load(match)` | Load a single entity by match criteria. |
 
 
+### DeploymentDetail
+
+Create an instance: `deployment_detail = client.DeploymentDetail`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activity` | `Array` |  |
+| `app` | `Object` |  |
+| `app_id` | `Object` |  |
+| `audit_events` | `Array` |  |
+| `capacity` | `Hash` |  |
+| `data_resources` | `Array` |  |
+| `deploy_targets` | `Array` |  |
+| `deployments` | `Array` |  |
+| `desired_states` | `Array` |  |
+| `environments` | `Array` |  |
+| `filters` | `Hash` | The option lists the deployments page's app, service and stage pickers narrow by. |
+| `health` | `Hash` | The rolled-up state of the selected scope. |
+| `nomad` | `Hash` | The Nomad footprint of the selected scope, deduplicated. |
+| `operations` | `Array` |  |
+| `placements` | `Array` |  |
+| `reconciler_ticks` | `Array` |  |
+| `releases` | `Array` |  |
+| `runtime_instances` | `Array` |  |
+| `service_bindings` | `Array` |  |
+| `service_views` | `Array` |  |
+| `storage_resources` | `Array` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of DeploymentDetail entities, one per record (raises on error).
+deployment_details = client.DeploymentDetail.list({ "organization_id" => "example" })
+deployment_details.each { |item| puts item.data_get }
+```
+
+
 ### DeploymentFile
 
 Create an instance: `deployment_file = client.DeploymentFile`
@@ -9382,6 +18522,787 @@ Create an instance: `deployment_file = client.DeploymentFile`
 | Method | Description |
 | --- | --- |
 | `update(data)` | Update an existing entity. |
+
+
+### DeploymentLog
+
+Create an instance: `deployment_log = client.DeploymentLog`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `allocation_id` | `String` |  |
+| `app_environment_id` | `Object` |  |
+| `app_release_id` | `Object` |  |
+| `app_service_id` | `Object` |  |
+| `details` | `Object` |  |
+| `environment_name` | `String` |  |
+| `release_version` | `Object` |  |
+| `service_name` | `String` |  |
+| `status` | `String` |  |
+| `task` | `Object` |  |
+| `unreachable_reason` | `Object` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of DeploymentLog entities, one per record (raises on error).
+deployment_logs = client.DeploymentLog.list({ "organization_id" => "example" })
+deployment_logs.each { |item| puts item.data_get }
+```
+
+
+### DeploymentMetric
+
+Create an instance: `deployment_metric = client.DeploymentMetric`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `auto_deploy` | `Boolean` |  |
+| `environment_id` | `String` |  |
+| `environment_name` | `String` |  |
+| `placement_id` | `String` |  |
+| `redeploy` | `Boolean` |  |
+| `region_count` | `Integer` |  |
+| `replicas_per_region` | `Integer` |  |
+| `rollout_strategy` | `String` |  |
+| `service_id` | `String` |  |
+| `service_name` | `String` |  |
+| `source_ref` | `Object` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of DeploymentMetric entities, one per record (raises on error).
+deployment_metrics = client.DeploymentMetric.list({ "organization_id" => "example" })
+deployment_metrics.each { |item| puts item.data_get }
+```
+
+
+### DeploymentPreview
+
+Create an instance: `deployment_preview = client.DeploymentPreview`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access` | `String` |  |
+| `app_environment_id` | `String` |  |
+| `app_name` | `String` |  |
+| `app_preview_profile_id` | `String` |  |
+| `app_slug` | `String` |  |
+| `change_number` | `Object` |  |
+| `created_at` | `String` |  |
+| `created_by_user_id` | `String` |  |
+| `expires_at` | `String` |  |
+| `generation` | `Integer` |  |
+| `health` | `String` |  |
+| `hosted_app_id` | `String` |  |
+| `id` | `String` |  |
+| `latest_operation_status` | `Object` |  |
+| `name` | `String` |  |
+| `owner_name` | `Object` |  |
+| `profile_name` | `String` |  |
+| `resource_overrides` | `Hash` | Service public IDs mapped to resource overrides. |
+| `retained` | `Boolean` |  |
+| `slug` | `String` |  |
+| `snapshot_version` | `Integer` |  |
+| `source_revision` | `String` |  |
+| `status` | `String` |  |
+| `updated_at` | `String` |  |
+| `urls` | `Array` |  |
+| `vcs_change_id` | `Object` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of DeploymentPreview entities, one per record (raises on error).
+deployment_previews = client.DeploymentPreview.list({ "organization_id" => "example" })
+deployment_previews.each { |item| puts item.data_get }
+```
+
+
+### DeploymentSetting
+
+Create an instance: `deployment_setting = client.DeploymentSetting`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `code` | `String` |  |
+| `created_at` | `String` |  |
+| `id` | `String` |  |
+| `name` | `String` |  |
+| `nomad_datacenter` | `String` |  |
+| `updated_at` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of DeploymentSetting entities, one per record (raises on error).
+deployment_settings = client.DeploymentSetting.list({ "organization_id" => "example" })
+deployment_settings.each { |item| puts item.data_get }
+```
+
+
+### DesktopLocalAgentModel
+
+Create an instance: `desktop_local_agent_model = client.DesktopLocalAgentModel`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+| `name` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of DesktopLocalAgentModel entities, one per record (raises on error).
+desktop_local_agent_models = client.DesktopLocalAgentModel.list({ "organization_id" => "example" })
+desktop_local_agent_models.each { |item| puts item.data_get }
+```
+
+
+### DesktopLocalAgentResponse
+
+Create an instance: `desktop_local_agent_response = client.DesktopLocalAgentResponse`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `input` | `Array` |  |
+| `max_output_tokens` | `Integer` |  |
+| `model` | `String` |  |
+| `store` | `Boolean` |  |
+| `stream` | `Boolean` |  |
+
+#### Example: Create
+
+```ruby
+desktop_local_agent_response = client.DesktopLocalAgentResponse.create({
+  "organization_id" => "example_organization_id", # String
+  "input" => [], # Array
+  "model" => "example_model", # String
+  "store" => true, # Boolean
+  "stream" => true, # Boolean
+})
+```
+
+
+### Device
+
+Create an instance: `device = client.Device`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `architecture` | `String` |  |
+| `channel` | `String` |  |
+| `coding_connection` | `Object` | Independent organization coding-control service state for the current device owner. |
+| `connection_checked_at` | `Object` | When this native presence observation was obtained; null when unobserved or unavailable. |
+| `connection_status` | `String` | Display-only native presence. |
+| `control_delivery_policy` | `Hash` |  |
+| `control_spawn_policy` | `Hash` |  |
+| `created_at` | `String` |  |
+| `device` | `Hash` |  |
+| `environment` | `String` |  |
+| `execution_available` | `Boolean` |  |
+| `id` | `String` |  |
+| `name` | `String` |  |
+| `native_device_id` | `String` |  |
+| `paired_at` | `String` |  |
+| `pairing_generation` | `Integer` |  |
+| `platform` | `String` |  |
+| `project_visibility` | `Hash` | Folder discovery and new-thread selection. |
+| `provider_status` | `Array` | Recent native provider observations; absent on older API replicas. |
+| `revoked_at` | `Object` |  |
+| `scheduled_check_ins` | `Boolean` | Whether the owner's private agents may check this computer's connection during scheduled runs. |
+| `user_browser_access` | `String` | Whether agents may use the owner's own Chrome-family browser here: off, only tabs agents open or the owner shares, or every tab. |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the Device record (raises on error).
+device = client.Device.load({ "id" => "device_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of Device entities, one per record (raises on error).
+devices = client.Device.list({ "organization_id" => "example" })
+devices.each { |item| puts item.data_get }
+```
+
+
+### DeviceBrowserOperation
+
+Create an instance: `device_browser_operation = client.DeviceBrowserOperation`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `command` | `String` | The in-app browser takes open through open_external; the person's own browser (arguments.browser user) takes open, tabs, share_tab, navigate, back, reload, screenshot, read, click, type, press, scroll and close. |
+| `created_at` | `String` |  |
+| `id` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of DeviceBrowserOperation entities, one per record (raises on error).
+device_browser_operations = client.DeviceBrowserOperation.list({ "device_id" => "example", "organization_id" => "example" })
+device_browser_operations.each { |item| puts item.data_get }
+```
+
+
+### DeviceControlMessage
+
+Create an instance: `device_control_message = client.DeviceControlMessage`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_id` | `String` |  |
+| `agent_name` | `String` |  |
+| `expires_at` | `String` |  |
+| `id` | `String` |  |
+| `sender` | `Object` |  |
+| `text` | `Object` |  |
+| `text_omitted` | `Boolean` |  |
+| `thread` | `Hash` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of DeviceControlMessage entities, one per record (raises on error).
+device_control_messages = client.DeviceControlMessage.list({ "device_id" => "example", "organization_id" => "example" })
+device_control_messages.each { |item| puts item.data_get }
+```
+
+
+### DeviceControlOperation
+
+Create an instance: `device_control_operation = client.DeviceControlOperation`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `String` |  |
+| `arguments` | `Hash` |  |
+| `created_at` | `String` |  |
+| `delivery` | `Hash` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `String` |  |
+| `diagnostic_code` | `String` | Approved product error code retained after copied diagnostics expire. |
+| `end` | `Hash` |  |
+| `expires_at` | `String` |  |
+| `id` | `String` |  |
+| `key` | `String` |  |
+| `provider` | `String` |  |
+| `references` | `Hash` |  |
+| `result` | `Object` |  |
+| `result_expired` | `Boolean` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the DeviceControlOperation record (raises on error).
+device_control_operation = client.DeviceControlOperation.load({ "id" => "device_control_operation_id", "device_id" => "device_id", "organization_id" => "organization_id" })
+```
+
+#### Example: Create
+
+```ruby
+device_control_operation = client.DeviceControlOperation.create({
+  "device_id" => "example_device_id", # String
+  "organization_id" => "example_organization_id", # String
+  "action" => "example_action", # String
+  "arguments" => {}, # Hash
+  "key" => "example_key", # String
+})
+```
+
+
+### DeviceEnterpriseRelay
+
+Create an instance: `device_enterprise_relay = client.DeviceEnterpriseRelay`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ruby
+# list returns an Array of DeviceEnterpriseRelay entities, one per record (raises on error).
+device_enterprise_relays = client.DeviceEnterpriseRelay.list
+device_enterprise_relays.each { |item| puts item.data_get }
+```
+
+
+### DeviceFolderListing
+
+Create an instance: `device_folder_listing = client.DeviceFolderListing`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `code` | `String` |  |
+| `error` | `String` |  |
+| `folders` | `Array` |  |
+| `id` | `String` |  |
+| `key` | `String` | Stable idempotency key for this listing. |
+| `parent` | `Object` |  |
+| `path` | `String` | The resolved folder. |
+| `state` | `String` |  |
+| `truncated` | `Boolean` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the DeviceFolderListing record (raises on error).
+device_folder_listing = client.DeviceFolderListing.load({ "id" => "device_folder_listing_id", "device_id" => "device_id", "organization_id" => "organization_id" })
+```
+
+#### Example: Create
+
+```ruby
+device_folder_listing = client.DeviceFolderListing.create({
+  "device_id" => "example_device_id", # String
+  "organization_id" => "example_organization_id", # String
+  "key" => "example_key", # String
+  "path" => "example_path", # String
+})
+```
+
+
+### DeviceGrant
+
+Create an instance: `device_grant = client.DeviceGrant`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active_grants` | `Array` |  |
+| `agent_choices` | `Array` | Eligible picker choices, with current owner grant targets, on the first page only. |
+| `agent_id` | `String` |  |
+| `all_agents_access` | `Boolean` | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `capabilities` | `Array` |  |
+| `execution_available` | `Boolean` |  |
+| `grants` | `Array` |  |
+| `id` | `String` |  |
+| `next_cursor` | `Object` |  |
+| `principal_id` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of DeviceGrant entities, one per record (raises on error).
+device_grants = client.DeviceGrant.list({ "device_id" => "example", "organization_id" => "example" })
+device_grants.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+device_grant = client.DeviceGrant.create({
+  "device_id" => "example_device_id", # String
+  "organization_id" => "example_organization_id", # String
+  "agent_id" => "example_agent_id", # String
+  "capabilities" => [], # Array
+  "principal_id" => "example_principal_id", # String
+})
+```
+
+
+### DeviceInvocation
+
+Create an instance: `device_invocation = client.DeviceInvocation`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### DeviceLocalEvent
+
+Create an instance: `device_local_event = client.DeviceLocalEvent`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `event` | `String` |  |
+| `recorded` | `Boolean` |  |
+
+#### Example: Create
+
+```ruby
+device_local_event = client.DeviceLocalEvent.create({
+  "device_id" => "example_device_id", # String
+  "organization_id" => "example_organization_id", # String
+  "event" => "example_event", # String
+})
+```
+
+
+### DevicePairing
+
+Create an instance: `device_pairing = client.DevicePairing`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `architecture` | `String` |  |
+| `channel` | `String` |  |
+| `id` | `String` |  |
+| `name` | `String` |  |
+| `platform` | `String` |  |
+| `public_key` | `String` |  |
+
+#### Example: Create
+
+```ruby
+device_pairing = client.DevicePairing.create({
+  "organization_id" => "example_organization_id", # String
+  "architecture" => "example_architecture", # String
+  "channel" => "example_channel", # String
+  "name" => "example_name", # String
+  "platform" => "example_platform", # String
+  "public_key" => "example_public_key", # String
+})
+```
+
+
+### DeviceProject
+
+Create an instance: `device_project = client.DeviceProject`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+
+### DeviceScheduledCheckIn
+
+Create an instance: `device_scheduled_check_in = client.DeviceScheduledCheckIn`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `enabled` | `Boolean` |  |
+
+#### Example: Create
+
+```ruby
+device_scheduled_check_in = client.DeviceScheduledCheckIn.create({
+  "device_id" => "example_device_id", # String
+  "organization_id" => "example_organization_id", # String
+  "enabled" => true, # Boolean
+})
+```
+
+
+### DockerBuilder
+
+Create an instance: `docker_builder = client.DockerBuilder`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `backend` | `String` |  |
+| `created_at` | `Object` |  |
+| `gateway_url` | `Object` | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `Integer` |  |
+| `id` | `String` |  |
+| `last_activity_at` | `Object` |  |
+| `organization_id` | `String` |  |
+| `ready_at` | `Object` |  |
+| `slept_at` | `Object` |  |
+| `slug` | `String` |  |
+| `startup_attempt` | `Integer` |  |
+| `startup_failure` | `Object` | Safe failure reason for the most recent startup attempt |
+| `startup_stage` | `Object` |  |
+| `status` | `String` |  |
+| `updated_at` | `Object` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the DockerBuilder record (raises on error).
+docker_builder = client.DockerBuilder.load({ "id" => "docker_builder_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of DockerBuilder entities, one per record (raises on error).
+docker_builders = client.DockerBuilder.list({ "organization_id" => "example" })
+docker_builders.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+docker_builder = client.DockerBuilder.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### DockerBuilderSession
+
+Create an instance: `docker_builder_session = client.DockerBuilderSession`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `String` |  |
+| `docker_builder_id` | `String` |  |
+| `expires_at` | `String` |  |
+| `gateway_url` | `Object` | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `Integer` |  |
+| `id` | `String` |  |
+| `organization_id` | `String` |  |
+| `revoked_at` | `Object` |  |
+| `user_id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the DockerBuilderSession record (raises on error).
+docker_builder_session = client.DockerBuilderSession.load({ "id" => "docker_builder_session_id", "organization_id" => "organization_id" })
+```
+
+#### Example: Create
+
+```ruby
+docker_builder_session = client.DockerBuilderSession.create({
+  "docker_builder_id" => "example_docker_builder_id", # String
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### DockerBuilderSetting
+
+Create an instance: `docker_builder_setting = client.DockerBuilderSetting`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `docker_builder_settings` | `Hash` |  |
+| `idle_timeout_seconds` | `Integer` |  |
+| `max_concurrency` | `Integer` |  |
+| `organization_id` | `String` |  |
+| `region` | `String` |  |
+| `runtime_timeout_seconds` | `Integer` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of DockerBuilderSetting entities, one per record (raises on error).
+docker_builder_settings = client.DockerBuilderSetting.list({ "organization_id" => "example" })
+docker_builder_settings.each { |item| puts item.data_get }
+```
+
+
+### DomainDnsIntegration
+
+Create an instance: `domain_dns_integration = client.DomainDnsIntegration`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_label` | `Object` |  |
+| `api_token` | `String` |  |
+| `created_at` | `String` |  |
+| `failure_message` | `Object` |  |
+| `has_token` | `Boolean` |  |
+| `id` | `String` |  |
+| `last_verified_at` | `Object` |  |
+| `organization_id` | `String` |  |
+| `provider` | `String` |  |
+| `status` | `String` |  |
+| `updated_at` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of DomainDnsIntegration entities, one per record (raises on error).
+domain_dns_integrations = client.DomainDnsIntegration.list({ "organization_id" => "example" })
+domain_dns_integrations.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+domain_dns_integration = client.DomainDnsIntegration.create({
+  "organization_id" => "example_organization_id", # String
+  "api_token" => "example_api_token", # String
+})
+```
 
 
 ### DomainPathRule
@@ -9490,6 +19411,28 @@ dream = client.Dream.load({ "id" => "dream_id", "organization_id" => "organizati
 dreams = client.Dream.list({ "organization_id" => "example", "project_id" => "example" })
 dreams.each { |item| puts item.data_get }
 ```
+
+
+### Edge
+
+Create an instance: `edge = client.Edge`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### EmailVerification
+
+Create an instance: `email_verification = client.EmailVerification`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
 
 
 ### Environment
@@ -9867,6 +19810,209 @@ evidence = client.Evidence.load({ "id" => "evidence_id", "organization_id" => "o
 ```
 
 
+### ExecutionDesiredState
+
+Create an instance: `execution_desired_state = client.ExecutionDesiredState`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `desired_state` | `Hash` |  |
+| `id` | `String` |  |
+| `stop_observed` | `Boolean` | True only for archived zero-capacity states with all known jobs stopped and allocations terminated. |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ExecutionDesiredState record (raises on error).
+execution_desired_state = client.ExecutionDesiredState.load({ "id" => "execution_desired_state_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of ExecutionDesiredState entities, one per record (raises on error).
+execution_desired_states = client.ExecutionDesiredState.list
+execution_desired_states.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+execution_desired_state = client.ExecutionDesiredState.create({
+})
+```
+
+
+### ExecutionReconcilerTick
+
+Create an instance: `execution_reconciler_tick = client.ExecutionReconcilerTick`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ExecutionReconcilerTick record (raises on error).
+execution_reconciler_tick = client.ExecutionReconcilerTick.load({ "id" => "execution_reconciler_tick_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of ExecutionReconcilerTick entities, one per record (raises on error).
+execution_reconciler_ticks = client.ExecutionReconcilerTick.list
+execution_reconciler_ticks.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+execution_reconciler_tick = client.ExecutionReconcilerTick.create({
+})
+```
+
+
+### ExecutionRelease
+
+Create an instance: `execution_release = client.ExecutionRelease`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ExecutionRelease record (raises on error).
+execution_release = client.ExecutionRelease.load({ "id" => "execution_release_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of ExecutionRelease entities, one per record (raises on error).
+execution_releases = client.ExecutionRelease.list
+execution_releases.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+execution_release = client.ExecutionRelease.create({
+})
+```
+
+
+### ExecutionRuntimeInstance
+
+Create an instance: `execution_runtime_instance = client.ExecutionRuntimeInstance`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter_kind` | `String` |  |
+| `app_environment_id` | `String` |  |
+| `app_release_id` | `Object` |  |
+| `app_service_id` | `String` |  |
+| `booted_at` | `Object` |  |
+| `booted_at_label` | `Object` |  |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `hosted_app_id` | `String` |  |
+| `id` | `String` |  |
+| `instance_key` | `String` |  |
+| `last_reconciled_at` | `Object` |  |
+| `last_reconciled_at_label` | `Object` |  |
+| `last_seen_at` | `Object` |  |
+| `last_seen_at_label` | `Object` |  |
+| `location` | `Object` |  |
+| `location_id` | `String` |  |
+| `network_peer_id` | `Object` |  |
+| `nomad_allocation_id` | `Object` |  |
+| `nomad_task_name` | `Object` |  |
+| `organization_id` | `String` |  |
+| `private_ipv4` | `Object` |  |
+| `private_ipv6` | `Object` |  |
+| `provider_instance_id` | `Object` |  |
+| `public_endpoint` | `Object` |  |
+| `service_name` | `String` | Name of the Vex service this instance runs, in the same vocabulary as `vex deploy list`. |
+| `slug` | `String` |  |
+| `status` | `String` |  |
+| `terminated_at` | `Object` |  |
+| `terminated_at_label` | `Object` |  |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ExecutionRuntimeInstance record (raises on error).
+execution_runtime_instance = client.ExecutionRuntimeInstance.load({ "id" => "execution_runtime_instance_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of ExecutionRuntimeInstance entities, one per record (raises on error).
+execution_runtime_instances = client.ExecutionRuntimeInstance.list
+execution_runtime_instances.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+execution_runtime_instance = client.ExecutionRuntimeInstance.create({
+})
+```
+
+
 ### Exploration
 
 Create an instance: `exploration = client.Exploration`
@@ -10175,6 +20321,368 @@ findings.each { |item| puts item.data_get }
 ```
 
 
+### Gh
+
+Create an instance: `gh = client.Gh`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capabilities` | `Hash` |  |
+| `content` | `Hash` |  |
+| `fetched_at` | `String` |  |
+| `id` | `String` |  |
+| `magic_merge` | `Object` |  |
+| `pull_request` | `Object` |  |
+| `stack` | `Hash` |  |
+| `transcript_paths` | `Array` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the Gh record (raises on error).
+gh = client.Gh.load({ "id" => "gh_id", "gh_id" => "gh_id", "github_repo" => "github_repo", "organization_id" => "organization_id" })
+```
+
+
+### GitImport
+
+Create an instance: `git_import = client.GitImport`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `destination_mode` | `String` |  |
+| `error` | `Object` |  |
+| `git_default_branch` | `String` | Original Git symbolic HEAD branch, independent of the branch selected for JJ conversion |
+| `git_status` | `String` |  |
+| `git_url` | `String` |  |
+| `id` | `String` |  |
+| `idempotency_key` | `String` |  |
+| `name` | `String` |  |
+| `native_status` | `String` |  |
+| `organization` | `String` |  |
+| `repository_id` | `Object` |  |
+| `root_path` | `String` |  |
+| `slug` | `String` |  |
+| `source_branch` | `String` |  |
+| `target_branch` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the GitImport record (raises on error).
+git_import = client.GitImport.load({ "id" => "git_import_id" })
+```
+
+#### Example: Create
+
+```ruby
+git_import = client.GitImport.create({
+  "organization_id" => "example_organization_id", # String
+  "destination_mode" => "example_destination_mode", # String
+  "idempotency_key" => "example_idempotency_key", # String
+  "root_path" => "example_root_path", # String
+  "slug" => "example_slug", # String
+  "source_branch" => "example_source_branch", # String
+})
+```
+
+
+### Github
+
+Create an instance: `github = client.Github`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### GithubApp
+
+Create an instance: `github_app = client.GithubApp`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### GithubAppImportableRepository
+
+Create an instance: `github_app_importable_repository = client.GithubAppImportableRepository`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_login` | `String` |  |
+| `github_app_installation_id` | `String` |  |
+| `next_page` | `Object` | Next GitHub page for this installation |
+| `repositories` | `Array` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of GithubAppImportableRepository entities, one per record (raises on error).
+github_app_importable_repositorys = client.GithubAppImportableRepository.list
+github_app_importable_repositorys.each { |item| puts item.data_get }
+```
+
+
+### GithubAppInstallation
+
+Create an instance: `github_app_installation = client.GithubAppInstallation`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `Object` |  |
+| `account_id` | `Object` |  |
+| `account_login` | `String` |  |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `id` | `String` |  |
+| `installation_id` | `String` |  |
+| `installed_at` | `Object` |  |
+| `installed_at_label` | `Object` |  |
+| `manage_access_url` | `String` |  |
+| `organization_id` | `String` |  |
+| `permission_entries` | `Array` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `Hash` |  |
+| `status` | `String` |  |
+| `suspended_at` | `Object` |  |
+| `suspended_at_label` | `Object` |  |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of GithubAppInstallation entities, one per record (raises on error).
+github_app_installations = client.GithubAppInstallation.list({ "organization_id" => "example" })
+github_app_installations.each { |item| puts item.data_get }
+```
+
+
+### GithubAppInstallationAuthorization
+
+Create an instance: `github_app_installation_authorization = client.GithubAppInstallationAuthorization`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `installation_url` | `String` |  |
+| `organization_slug` | `String` | Vex organization slug whose installation will be linked. |
+| `return_target` | `String` | Server-validated Vex application target used after verification. |
+
+#### Example: Create
+
+```ruby
+github_app_installation_authorization = client.GithubAppInstallationAuthorization.create({
+  "organization_slug" => "example_organization_slug", # String
+  "return_target" => "example_return_target", # String
+})
+```
+
+
+### GithubAppUserAuthorization
+
+Create an instance: `github_app_user_authorization = client.GithubAppUserAuthorization`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+github_app_user_authorization = client.GithubAppUserAuthorization.create({
+})
+```
+
+
+### GithubCiRepository
+
+Create an instance: `github_ci_repository = client.GithubCiRepository`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adoption_mode` | `String` |  |
+| `check_name_prefix` | `String` |  |
+| `ci_runner_pool_id` | `Object` |  |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `default_branch` | `String` |  |
+| `github_app_installation_id` | `String` |  |
+| `github_repository_id` | `String` |  |
+| `id` | `String` |  |
+| `last_compatibility_status` | `Object` |  |
+| `last_error_message` | `Object` |  |
+| `last_head_sha` | `Object` |  |
+| `last_pull_request_number` | `Object` |  |
+| `last_ref` | `Object` |  |
+| `last_webhook_action` | `Object` |  |
+| `last_webhook_at` | `Object` |  |
+| `last_webhook_at_label` | `Object` |  |
+| `last_webhook_delivery_id` | `Object` |  |
+| `last_webhook_event` | `Object` |  |
+| `metadata` | `Hash` |  |
+| `organization_id` | `String` |  |
+| `permission_status` | `String` |  |
+| `repository_full_name` | `String` |  |
+| `repository_name` | `String` |  |
+| `repository_owner` | `String` |  |
+| `status` | `String` |  |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+| `webhook_delivery_count` | `Integer` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the GithubCiRepository record (raises on error).
+github_ci_repository = client.GithubCiRepository.load({ "id" => "github_ci_repository_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of GithubCiRepository entities, one per record (raises on error).
+github_ci_repositorys = client.GithubCiRepository.list({ "organization_id" => "example" })
+github_ci_repositorys.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+github_ci_repository = client.GithubCiRepository.create({
+  "organization_id" => "example_organization_id", # String
+  "github_app_installation_id" => "example_github_app_installation_id", # String
+  "github_repository_id" => "example_github_repository_id", # String
+  "repository_name" => "example_repository_name", # String
+  "repository_owner" => "example_repository_owner", # String
+})
+```
+
+
+### GithubCiRepositoryCompatibilityReport
+
+Create an instance: `github_ci_repository_compatibility_report = client.GithubCiRepositoryCompatibilityReport`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `analyzed_at` | `String` |  |
+| `analyzed_at_label` | `Object` |  |
+| `ci_pipeline_id` | `Object` |  |
+| `ci_pipeline_run_id` | `Object` |  |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `diagnostics` | `Array` |  |
+| `errors` | `Array` |  |
+| `event_action` | `Object` |  |
+| `event_name` | `String` |  |
+| `execution_allowed` | `Boolean` |  |
+| `github_ci_repository_id` | `String` |  |
+| `head_sha` | `Object` |  |
+| `id` | `String` |  |
+| `metadata` | `Hash` |  |
+| `organization_id` | `String` |  |
+| `parser_version` | `String` |  |
+| `pull_request_number` | `Object` |  |
+| `ref_name` | `Object` |  |
+| `referenced_actions` | `Array` |  |
+| `required_secrets` | `Array` |  |
+| `runner_labels` | `Array` |  |
+| `source_blob_sha` | `Object` |  |
+| `source_sha` | `String` |  |
+| `status` | `String` |  |
+| `supported_features` | `Hash` |  |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+| `warnings` | `Array` |  |
+| `workflow_name` | `Object` |  |
+| `workflow_path` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the GithubCiRepositoryCompatibilityReport record (raises on error).
+github_ci_repository_compatibility_report = client.GithubCiRepositoryCompatibilityReport.load({ "id" => "github_ci_repository_compatibility_report_id", "github_ci_repository_id" => "github_ci_repository_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of GithubCiRepositoryCompatibilityReport entities, one per record (raises on error).
+github_ci_repository_compatibility_reports = client.GithubCiRepositoryCompatibilityReport.list({ "github_ci_repository_id" => "example", "organization_id" => "example" })
+github_ci_repository_compatibility_reports.each { |item| puts item.data_get }
+```
+
+
 ### GithubConnection
 
 Create an instance: `github_connection = client.GithubConnection`
@@ -10212,6 +20720,616 @@ github_connection = client.GithubConnection.create({
   "organization_id" => "example_organization_id", # String
   "github_app_installation_id" => "example_github_app_installation_id", # String
   "repositories" => [], # Array
+})
+```
+
+
+### GithubIntegration
+
+Create an instance: `github_integration = client.GithubIntegration`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `Object` |  |
+| `account_login` | `String` |  |
+| `connection_status` | `String` |  |
+| `connection_status_label` | `String` |  |
+| `github_installation` | `Object` |  |
+| `health` | `Hash` |  |
+| `id` | `String` |  |
+| `imported_repositories_count` | `Integer` |  |
+| `imported_repositories_count_label` | `String` |  |
+| `organization` | `Hash` |  |
+| `pagination` | `Hash` |  |
+| `repositories` | `Array` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the GithubIntegration record (raises on error).
+github_integration = client.GithubIntegration.load({ "id" => "github_integration_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of GithubIntegration entities, one per record (raises on error).
+github_integrations = client.GithubIntegration.list({ "organization_id" => "example" })
+github_integrations.each { |item| puts item.data_get }
+```
+
+
+### GithubOnboarding
+
+Create an instance: `github_onboarding = client.GithubOnboarding`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accounts` | `Array` |  |
+| `active_batch_id` | `Object` | The batch the wizard's import step should resume — the most recent batch still working, else the most recent overall. |
+| `batches` | `Array` |  |
+| `capabilities` | `Hash` |  |
+| `installations` | `Array` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the GithubOnboarding record (raises on error).
+github_onboarding = client.GithubOnboarding.load({ "organization_id" => "organization_id" })
+```
+
+
+### GithubOnboardingBranch
+
+Create an instance: `github_onboarding_branch = client.GithubOnboardingBranch`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `branches` | `Array` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of GithubOnboardingBranch entities, one per record (raises on error).
+github_onboarding_branchs = client.GithubOnboardingBranch.list({ "organization_id" => "example", "github_app_installation_id" => "example", "name" => "example", "owner" => "example" })
+github_onboarding_branchs.each { |item| puts item.data_get }
+```
+
+
+### GithubOnboardingImport
+
+Create an instance: `github_onboarding_import = client.GithubOnboardingImport`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_login` | `String` |  |
+| `complete` | `Boolean` | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `String` |  |
+| `failed_item_count` | `Integer` |  |
+| `github_app_installation_id` | `String` |  |
+| `id` | `String` |  |
+| `imported_item_count` | `Integer` |  |
+| `item_count` | `Integer` |  |
+| `items` | `Array` |  |
+| `repositories` | `Object` |  |
+| `status` | `String` |  |
+| `terminal_item_count` | `Integer` |  |
+| `updated_at` | `String` |  |
+
+#### Example: Create
+
+```ruby
+github_onboarding_import = client.GithubOnboardingImport.create({
+  "organization_id" => "example_organization_id", # String
+  "github_app_installation_id" => "example_github_app_installation_id", # String
+  "repositories" => "example_repositories", # Object
+})
+```
+
+
+### GithubOnboardingImportBatch
+
+Create an instance: `github_onboarding_import_batch = client.GithubOnboardingImportBatch`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_login` | `String` |  |
+| `complete` | `Boolean` | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `String` |  |
+| `failed_item_count` | `Integer` |  |
+| `github_app_installation_id` | `String` |  |
+| `id` | `String` |  |
+| `imported_item_count` | `Integer` |  |
+| `item_count` | `Integer` |  |
+| `items` | `Array` |  |
+| `status` | `String` |  |
+| `terminal_item_count` | `Integer` |  |
+| `updated_at` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the GithubOnboardingImportBatch record (raises on error).
+github_onboarding_import_batch = client.GithubOnboardingImportBatch.load({ "id" => "github_onboarding_import_batch_id", "organization_id" => "organization_id" })
+```
+
+
+### GithubOnboardingImportItem
+
+Create an instance: `github_onboarding_import_item = client.GithubOnboardingImportItem`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+
+### GithubPullRequest
+
+Create an instance: `github_pull_request = client.GithubPullRequest`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capabilities` | `Hash` |  |
+| `content` | `Hash` |  |
+| `fetched_at` | `String` |  |
+| `id` | `String` |  |
+| `magic_merge` | `Object` |  |
+| `pull_request` | `Object` |  |
+| `stack` | `Hash` |  |
+| `transcript_paths` | `Array` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the GithubPullRequest record (raises on error).
+github_pull_request = client.GithubPullRequest.load({ "id" => "github_pull_request_id", "organization_id" => "organization_id", "pull_request_id" => "pull_request_id" })
+```
+
+
+### GithubRunnerAdmission
+
+Create an instance: `github_runner_admission = client.GithubRunnerAdmission`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+github_runner_admission = client.GithubRunnerAdmission.create({
+})
+```
+
+
+### GithubRunnerCache
+
+Create an instance: `github_runner_cache = client.GithubRunnerCache`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `entry_id` | `String` |  |
+| `key` | `String` |  |
+| `matched_key` | `String` |  |
+| `ok` | `Boolean` |  |
+| `operation` | `String` |  |
+| `restore_keys` | `Array` |  |
+| `signed_download_url` | `String` |  |
+| `size_bytes` | `String` |  |
+| `upload_path` | `String` |  |
+| `version` | `String` |  |
+
+#### Example: Create
+
+```ruby
+github_runner_cache = client.GithubRunnerCache.create({
+  "operation" => "example_operation", # String
+})
+```
+
+
+### GithubRunnerEgress
+
+Create an instance: `github_runner_egress = client.GithubRunnerEgress`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_request` | `Boolean` |  |
+| `cidr` | `Object` |  |
+| `ipv4` | `Object` |  |
+| `requested_at_label` | `Object` |  |
+| `status` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the GithubRunnerEgress record (raises on error).
+github_runner_egress = client.GithubRunnerEgress.load({ "organization_id" => "organization_id" })
+```
+
+#### Example: Create
+
+```ruby
+github_runner_egress = client.GithubRunnerEgress.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### GithubRunnerHistory
+
+Create an instance: `github_runner_history = client.GithubRunnerHistory`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activity` | `Array` |  |
+| `counts` | `Hash` |  |
+| `observed_at` | `String` |  |
+| `pagination` | `Hash` |  |
+| `repositories` | `Array` |  |
+| `runs` | `Array` |  |
+| `setup` | `Object` | CI onboarding. |
+| `success_rate` | `Object` |  |
+| `usage` | `Hash` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the GithubRunnerHistory record (raises on error).
+github_runner_history = client.GithubRunnerHistory.load({ "organization_id" => "organization_id" })
+```
+
+
+### GithubRunnerImage
+
+Create an instance: `github_runner_image = client.GithubRunnerImage`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `String` |  |
+| `id` | `String` |  |
+| `image_reference` | `String` | Immutable linux/amd64 Ubuntu 24.04 image, registry/repository@sha256:digest, with Node 22+ |
+| `last_error` | `Object` |  |
+| `modal_image_id` | `Object` |  |
+| `name` | `String` |  |
+| `registry_secret_name` | `Object` | Name of an organization CI secret containing REGISTRY_USERNAME and REGISTRY_PASSWORD JSON fields |
+| `status` | `String` |  |
+| `updated_at` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the GithubRunnerImage record (raises on error).
+github_runner_image = client.GithubRunnerImage.load({ "id" => "github_runner_image_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of GithubRunnerImage entities, one per record (raises on error).
+github_runner_images = client.GithubRunnerImage.list({ "organization_id" => "example" })
+github_runner_images.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+github_runner_image = client.GithubRunnerImage.create({
+  "organization_id" => "example_organization_id", # String
+  "image_reference" => "example_image_reference", # String
+  "name" => "example_name", # String
+})
+```
+
+
+### GithubRunnerPool
+
+Create an instance: `github_runner_pool = client.GithubRunnerPool`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cpu_millicores` | `Integer` |  |
+| `enabled` | `Boolean` |  |
+| `github_app_installation_id` | `String` |  |
+| `github_repository_id` | `String` |  |
+| `github_runner_image` | `Object` |  |
+| `id` | `String` |  |
+| `image` | `Object` | Organization image name or ID; null restores the standard image |
+| `invocations` | `Array` |  |
+| `label` | `String` |  |
+| `last_error` | `Object` |  |
+| `last_polled_at` | `Object` |  |
+| `max_concurrency` | `Integer` |  |
+| `memory_mb` | `Integer` |  |
+| `organization_id` | `String` |  |
+| `provider` | `String` |  |
+| `repository_full_name` | `String` |  |
+| `runtime_kind` | `String` |  |
+| `timeout_seconds` | `Integer` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of GithubRunnerPool entities, one per record (raises on error).
+github_runner_pools = client.GithubRunnerPool.list({ "organization_id" => "example" })
+github_runner_pools.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+github_runner_pool = client.GithubRunnerPool.create({
+  "organization_id" => "example_organization_id", # String
+  "github_app_installation_id" => "example_github_app_installation_id", # String
+  "repository_full_name" => "example_repository_full_name", # String
+})
+```
+
+
+### GithubRunnerSetup
+
+Create an instance: `github_runner_setup = client.GithubRunnerSetup`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `error` | `Object` |  |
+| `github_repository_connection_id` | `String` |  |
+| `id` | `String` |  |
+| `pull_request_url` | `Object` |  |
+| `repository_full_name` | `String` |  |
+| `roder_thread_id` | `Object` |  |
+| `runner_labels` | `Array` |  |
+| `status` | `String` |  |
+| `status_label` | `String` |  |
+| `summary` | `Object` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the GithubRunnerSetup record (raises on error).
+github_runner_setup = client.GithubRunnerSetup.load({ "id" => "github_runner_setup_id", "organization_id" => "organization_id" })
+```
+
+#### Example: Create
+
+```ruby
+github_runner_setup = client.GithubRunnerSetup.create({
+  "organization_id" => "example_organization_id", # String
+  "github_repository_connection_id" => "example_github_repository_connection_id", # String
+})
+```
+
+
+### Gitlab
+
+Create an instance: `gitlab = client.Gitlab`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `configured` | `Boolean` |  |
+| `connections` | `Array` |  |
+| `integrations` | `Array` |  |
+| `inventory_error` | `Object` |  |
+| `next_page` | `Object` |  |
+| `organization` | `Hash` |  |
+| `projects` | `Array` |  |
+| `redirect_uri` | `Object` | The OAuth redirect URI a self-managed GitLab application must use; null when GitLab callbacks aren't configured. |
+| `selected_integration_id` | `Object` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the Gitlab record (raises on error).
+gitlab = client.Gitlab.load({ "organization_id" => "organization_id" })
+```
+
+
+### GitlabConnection
+
+Create an instance: `gitlab_connection = client.GitlabConnection`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+
+### GitlabImport
+
+Create an instance: `gitlab_import = client.GitlabImport`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `integration_id` | `String` |  |
+| `project_id` | `Integer` |  |
+| `repo_slug` | `String` |  |
+| `source_branch` | `String` |  |
+
+#### Example: Create
+
+```ruby
+gitlab_import = client.GitlabImport.create({
+  "organization_id" => "example_organization_id", # String
+  "integration_id" => "example_integration_id", # String
+  "project_id" => 1, # Integer
+})
+```
+
+
+### GitlabOauth
+
+Create an instance: `gitlab_oauth = client.GitlabOauth`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### GrantAllAgent
+
+Create an instance: `grant_all_agent = client.GrantAllAgent`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `all_agents_access` | `Boolean` |  |
+| `enabled` | `Boolean` |  |
+| `execution_available` | `Boolean` |  |
+
+#### Example: Create
+
+```ruby
+grant_all_agent = client.GrantAllAgent.create({
+  "device_id" => "example_device_id", # String
+  "organization_id" => "example_organization_id", # String
+  "enabled" => true, # Boolean
 })
 ```
 
@@ -10286,6 +21404,23 @@ hosting_app_domain = client.HostingAppDomain.create({
 ```
 
 
+### IdentityOrganization
+
+Create an instance: `identity_organization = client.IdentityOrganization`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+
 ### ImageRepository
 
 Create an instance: `image_repository = client.ImageRepository`
@@ -10333,6 +21468,65 @@ image_repository = client.ImageRepository.create({
   "name" => "example_name", # String
   "slug" => "example_slug", # String
 })
+```
+
+
+### ImageRepositoryTag
+
+Create an instance: `image_repository_tag = client.ImageRepositoryTag`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `image_repository` | `Hash` |  |
+| `name` | `String` |  |
+| `registry_url` | `String` |  |
+| `tags` | `Array` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of ImageRepositoryTag entities, one per record (raises on error).
+image_repository_tags = client.ImageRepositoryTag.list({ "image_repository_id" => "example" })
+image_repository_tags.each { |item| puts item.data_get }
+```
+
+
+### ImportBranchPolicy
+
+Create an instance: `import_branch_policy = client.ImportBranchPolicy`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `Boolean` |  |
+| `can_manage_sandbox_region` | `Boolean` |  |
+| `dedicated_outbound_ip_addresses` | `Array` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `String` |  |
+| `organization` | `Hash` |  |
+| `sandbox_regions` | `Array` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ImportBranchPolicy record (raises on error).
+import_branch_policy = client.ImportBranchPolicy.load({ "organization_id" => "organization_id" })
 ```
 
 
@@ -10449,6 +21643,140 @@ invitation = client.Invitation.create({
 ```
 
 
+### InvocationControl
+
+Create an instance: `invocation_control = client.InvocationControl`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### JobLogChunk
+
+Create an instance: `job_log_chunk = client.JobLogChunk`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `byte_size` | `Integer` |  |
+| `ci_job_id` | `Object` |  |
+| `ci_pipeline_run_id` | `Object` |  |
+| `ci_step_id` | `Object` |  |
+| `content` | `String` |  |
+| `content_format` | `String` |  |
+| `created_at` | `String` |  |
+| `id` | `String` |  |
+| `organization_id` | `String` |  |
+| `sequence_number` | `Integer` |  |
+| `stream` | `String` |  |
+| `updated_at` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of JobLogChunk entities, one per record (raises on error).
+job_log_chunks = client.JobLogChunk.list({ "job_id" => "example", "pipeline_id" => "example", "run_id" => "example" })
+job_log_chunks.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+job_log_chunk = client.JobLogChunk.create({
+  "job_id" => "example_job_id", # String
+  "pipeline_id" => "example_pipeline_id", # String
+  "run_id" => "example_run_id", # String
+})
+```
+
+
+### JobStep
+
+Create an instance: `job_step = client.JobStep`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of JobStep entities, one per record (raises on error).
+job_steps = client.JobStep.list({ "job_id" => "example", "pipeline_id" => "example", "run_id" => "example" })
+job_steps.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+job_step = client.JobStep.create({
+  "job_id" => "example_job_id", # String
+  "pipeline_id" => "example_pipeline_id", # String
+  "run_id" => "example_run_id", # String
+})
+```
+
+
+### JobWorkspace
+
+Create an instance: `job_workspace = client.JobWorkspace`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of JobWorkspace entities, one per record (raises on error).
+job_workspaces = client.JobWorkspace.list({ "job_id" => "example", "pipeline_id" => "example", "run_id" => "example" })
+job_workspaces.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+job_workspace = client.JobWorkspace.create({
+  "job_id" => "example_job_id", # String
+  "pipeline_id" => "example_pipeline_id", # String
+  "run_id" => "example_run_id", # String
+})
+```
+
+
 ### JourneyVariantReplay
 
 Create an instance: `journey_variant_replay = client.JourneyVariantReplay`
@@ -10552,6 +21880,261 @@ knowledge = client.Knowledge.create({
   "markdown" => "example_markdown", # String
   "project_id" => "example_project_id", # String
   "title" => "example_title", # String
+})
+```
+
+
+### Known
+
+Create an instance: `known = client.Known`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### Label
+
+Create an instance: `label = client.Label`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `changes_count` | `Integer` |  |
+| `id` | `String` |  |
+| `name` | `String` | Display name |
+| `slug` | `String` | Normalized identity used for filtering and lookup. |
+
+#### Example: List
+
+```ruby
+# list returns an Array of Label entities, one per record (raises on error).
+labels = client.Label.list({ "organization_id" => "example" })
+labels.each { |item| puts item.data_get }
+```
+
+
+### LeaseArtifact
+
+Create an instance: `lease_artifact = client.LeaseArtifact`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+lease_artifact = client.LeaseArtifact.create({
+  "lease_id" => "example_lease_id", # String
+  "node_id" => "example_node_id", # String
+})
+```
+
+
+### LeaseCache
+
+Create an instance: `lease_cache = client.LeaseCache`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### LeaseLogChunk
+
+Create an instance: `lease_log_chunk = client.LeaseLogChunk`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+lease_log_chunk = client.LeaseLogChunk.create({
+  "lease_id" => "example_lease_id", # String
+  "node_id" => "example_node_id", # String
+})
+```
+
+
+### LeaseReconciliation
+
+Create an instance: `lease_reconciliation = client.LeaseReconciliation`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+
+### LeaseStep
+
+Create an instance: `lease_step = client.LeaseStep`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+
+### LeaseVerifyDiagnostic
+
+Create an instance: `lease_verify_diagnostic = client.LeaseVerifyDiagnostic`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `browser_events` | `Hash` |  |
+| `live_browser` | `Hash` |  |
+| `live_view` | `Hash` | The tester's read-only live stream for page viewers. |
+| `steps` | `Array` |  |
+
+#### Example: Create
+
+```ruby
+lease_verify_diagnostic = client.LeaseVerifyDiagnostic.create({
+  "lease_id" => "example_lease_id", # String
+  "swarm_id" => "example_swarm_id", # String
+  "task_id" => "example_task_id", # String
+  "browser_events" => {}, # Hash
+  "live_browser" => {}, # Hash
+  "live_view" => {}, # Hash
+})
+```
+
+
+### LeaseVerifySecret
+
+Create an instance: `lease_verify_secret = client.LeaseVerifySecret`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+lease_verify_secret = client.LeaseVerifySecret.create({
+  "lease_id" => "example_lease_id", # String
+  "swarm_id" => "example_swarm_id", # String
+  "task_id" => "example_task_id", # String
+})
+```
+
+
+### LeaseWorkspace
+
+Create an instance: `lease_workspace = client.LeaseWorkspace`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+
+### LocalAgentDecision
+
+Create an instance: `local_agent_decision = client.LocalAgentDecision`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `request` | `Hash` | A native OpenAI Decisions request for gpt-6-luna, at most 1600 KiB, with inline images only |
+
+#### Example: Create
+
+```ruby
+local_agent_decision = client.LocalAgentDecision.create({
+  "organization_id" => "example_organization_id", # String
+  "request" => {}, # Hash
+})
+```
+
+
+### LocalAgentResponse
+
+Create an instance: `local_agent_response = client.LocalAgentResponse`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `input` | `Array` |  |
+| `model` | `String` |  |
+| `service_tier` | `Object` |  |
+| `store` | `Boolean` |  |
+| `stream` | `Boolean` |  |
+| `tools` | `Array` |  |
+
+#### Example: Create
+
+```ruby
+local_agent_response = client.LocalAgentResponse.create({
+  "organization_id" => "example_organization_id", # String
+  "input" => [], # Array
+  "model" => "example_model", # String
+  "store" => true, # Boolean
+  "stream" => true, # Boolean
 })
 ```
 
@@ -10667,6 +22250,126 @@ Create an instance: `location = client.Location`
 locations = client.Location.list
 locations.each { |item| puts item.data_get }
 ```
+
+
+### LogStreamChunk
+
+Create an instance: `log_stream_chunk = client.LogStreamChunk`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the LogStreamChunk record (raises on error).
+log_stream_chunk = client.LogStreamChunk.load({ "id" => "log_stream_chunk_id", "log_stream_id" => "log_stream_id", "space_id" => "space_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of LogStreamChunk entities, one per record (raises on error).
+log_stream_chunks = client.LogStreamChunk.list({ "log_stream_id" => "example", "space_id" => "example" })
+log_stream_chunks.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+log_stream_chunk = client.LogStreamChunk.create({
+  "log_stream_id" => "example_log_stream_id", # String
+  "space_id" => "example_space_id", # String
+})
+```
+
+
+### LogoImage
+
+Create an instance: `logo_image = client.LogoImage`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_products` | `Array` | Products this organization has activated (PRD 144). |
+| `agents_only` | `Boolean` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `Boolean` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `github_prs_authored_by_change_author` | `Boolean` |  |
+| `id` | `String` |  |
+| `logo_url` | `Object` |  |
+| `member_count` | `Integer` |  |
+| `name` | `String` |  |
+| `pending_invitation_count` | `Integer` |  |
+| `personal` | `Boolean` |  |
+| `repository_count` | `Integer` |  |
+| `role` | `Object` |  |
+| `sandbox_region` | `String` |  |
+| `shared_agent_personal_accounts_enabled` | `Boolean` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `String` |  |
+| `source_control_providers` | `Array` | Connected source control providers for this organization. |
+| `source_ui_enabled` | `Boolean` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `String` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+| `verify_pr_scenario_writing_enabled` | `Boolean` |  |
+
+
+### MarketingSetting
+
+Create an instance: `marketing_setting = client.MarketingSetting`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `call_first` | `Boolean` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of MarketingSetting entities, one per record (raises on error).
+marketing_settings = client.MarketingSetting.list
+marketing_settings.each { |item| puts item.data_get }
+```
+
+
+### McpOauth
+
+Create an instance: `mcp_oauth = client.McpOauth`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
 
 
 ### Me
@@ -10908,6 +22611,50 @@ memory = client.Memory.create({
 ```
 
 
+### MergeQueueEntry
+
+Create an instance: `merge_queue_entry = client.MergeQueueEntry`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `analytics` | `Hash` | Queue performance for the reporting window. |
+| `change_id` | `Object` |  |
+| `expected_target_commit_id` | `Object` |  |
+| `expected_target_version` | `Object` |  |
+| `expected_version` | `Integer` |  |
+| `github_pr_number` | `Object` |  |
+| `id` | `String` |  |
+| `idempotency_key` | `String` |  |
+| `kind` | `String` |  |
+| `policy` | `Hash` |  |
+| `priority` | `String` |  |
+| `queue` | `Hash` |  |
+| `target_branches` | `Array` | Bookmark names for the target picker. |
+| `when_ready` | `Object` |  |
+
+#### Example: Create
+
+```ruby
+merge_queue_entry = client.MergeQueueEntry.create({
+  "merge_queue_id" => "example_merge_queue_id", # String
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "expected_version" => 1, # Integer
+  "idempotency_key" => "example_idempotency_key", # String
+  "kind" => "example_kind", # String
+})
+```
+
+
 ### MergeRequest
 
 Create an instance: `merge_request = client.MergeRequest`
@@ -10971,6 +22718,43 @@ merge_request = client.MergeRequest.create({
   "organization_id" => "example_organization_id", # String
   "idempotency_key" => "example_idempotency_key", # String
   "number" => 1, # Integer
+})
+```
+
+
+### MergeResolution
+
+Create an instance: `merge_resolution = client.MergeResolution`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `String` |  |
+| `base` | `String` | Common ancestor file contents |
+| `content` | `Object` |  |
+| `context` | `Hash` | Optional surrounding files keyed by path |
+| `duration_ms` | `Integer` |  |
+| `fallback` | `Boolean` |  |
+| `model` | `String` |  |
+| `ours` | `String` | Current / left file contents |
+| `path` | `String` | Repository-relative path of the conflicted file |
+| `resolved` | `Boolean` |  |
+| `theirs` | `String` | Incoming / right file contents |
+
+#### Example: Create
+
+```ruby
+merge_resolution = client.MergeResolution.create({
+  "base" => "example_base", # String
+  "ours" => "example_ours", # String
+  "theirs" => "example_theirs", # String
 })
 ```
 
@@ -11065,6 +22849,96 @@ metric_querys.each { |item| puts item.data_get }
 ```
 
 
+### MetronomeWebhook
+
+Create an instance: `metronome_webhook = client.MetronomeWebhook`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+metronome_webhook = client.MetronomeWebhook.create({
+})
+```
+
+
+### ModelSubscriptionAccount
+
+Create an instance: `model_subscription_account = client.ModelSubscriptionAccount`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accounts` | `Array` |  |
+| `agents` | `Array` |  |
+| `can_disconnect` | `Boolean` |  |
+| `connection_agent` | `Object` |  |
+| `email` | `String` |  |
+| `id` | `String` |  |
+| `label` | `String` |  |
+| `provider` | `String` |  |
+| `saved` | `Boolean` |  |
+| `status` | `String` |  |
+| `usable` | `Boolean` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of ModelSubscriptionAccount entities, one per record (raises on error).
+model_subscription_accounts = client.ModelSubscriptionAccount.list
+model_subscription_accounts.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+model_subscription_account = client.ModelSubscriptionAccount.create({
+  "label" => "example_label", # String
+})
+```
+
+
+### ModelSubscriptionAccountConnection
+
+Create an instance: `model_subscription_account_connection = client.ModelSubscriptionAccountConnection`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ModelSubscriptionAccountConnection record (raises on error).
+model_subscription_account_connection = client.ModelSubscriptionAccountConnection.load({ "id" => "model_subscription_account_connection_id" })
+```
+
+
 ### NetworkConnection
 
 Create an instance: `network_connection = client.NetworkConnection`
@@ -11099,6 +22973,130 @@ network_connection = client.NetworkConnection.create({
   "organization_id" => "example_organization_id", # String
   "name" => "example_name", # String
 })
+```
+
+
+### NetworkingSpace
+
+Create an instance: `networking_space = client.NetworkingSpace`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the NetworkingSpace record (raises on error).
+networking_space = client.NetworkingSpace.load({ "id" => "networking_space_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of NetworkingSpace entities, one per record (raises on error).
+networking_spaces = client.NetworkingSpace.list
+networking_spaces.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+networking_space = client.NetworkingSpace.create({
+})
+```
+
+
+### Node
+
+Create an instance: `node = client.Node`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `Object` |  |
+| `account_id` | `Object` |  |
+| `account_login` | `String` |  |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `id` | `String` |  |
+| `installation_id` | `String` |  |
+| `installed_at` | `Object` |  |
+| `installed_at_label` | `Object` |  |
+| `manage_access_url` | `String` |  |
+| `organization_id` | `String` |  |
+| `permission_entries` | `Array` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `Hash` |  |
+| `status` | `String` |  |
+| `suspended_at` | `Object` |  |
+| `suspended_at_label` | `Object` |  |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of Node entities, one per record (raises on error).
+nodes = client.Node.list({ "organization_id" => "example" })
+nodes.each { |item| puts item.data_get }
+```
+
+
+### NodeCertificate
+
+Create an instance: `node_certificate = client.NodeCertificate`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### NodeLease
+
+Create an instance: `node_lease = client.NodeLease`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of NodeLease entities, one per record (raises on error).
+node_leases = client.NodeLease.list({ "node_id" => "example" })
+node_leases.each { |item| puts item.data_get }
 ```
 
 
@@ -11178,6 +23176,213 @@ nomad_logs.each { |item| puts item.data_get }
 ```
 
 
+### Now
+
+Create an instance: `now = client.Now`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `needs_attention` | `Array` |  |
+| `pagination` | `Hash` |  |
+| `recently_landed` | `Array` |  |
+| `shipping_now` | `Array` |  |
+| `summary` | `Hash` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the Now record (raises on error).
+now = client.Now.load({ "organization_id" => "organization_id" })
+```
+
+
+### ObservabilityClickhouseCluster
+
+Create an instance: `observability_clickhouse_cluster = client.ObservabilityClickhouseCluster`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ObservabilityClickhouseCluster record (raises on error).
+observability_clickhouse_cluster = client.ObservabilityClickhouseCluster.load({ "id" => "observability_clickhouse_cluster_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of ObservabilityClickhouseCluster entities, one per record (raises on error).
+observability_clickhouse_clusters = client.ObservabilityClickhouseCluster.list
+observability_clickhouse_clusters.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+observability_clickhouse_cluster = client.ObservabilityClickhouseCluster.create({
+})
+```
+
+
+### ObservabilityQuickwitCluster
+
+Create an instance: `observability_quickwit_cluster = client.ObservabilityQuickwitCluster`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ObservabilityQuickwitCluster record (raises on error).
+observability_quickwit_cluster = client.ObservabilityQuickwitCluster.load({ "id" => "observability_quickwit_cluster_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of ObservabilityQuickwitCluster entities, one per record (raises on error).
+observability_quickwit_clusters = client.ObservabilityQuickwitCluster.list
+observability_quickwit_clusters.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+observability_quickwit_cluster = client.ObservabilityQuickwitCluster.create({
+})
+```
+
+
+### ObservabilitySpace
+
+Create an instance: `observability_space = client.ObservabilitySpace`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ObservabilitySpace record (raises on error).
+observability_space = client.ObservabilitySpace.load({ "id" => "observability_space_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of ObservabilitySpace entities, one per record (raises on error).
+observability_spaces = client.ObservabilitySpace.list
+observability_spaces.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+observability_space = client.ObservabilitySpace.create({
+})
+```
+
+
+### Openapi
+
+Create an instance: `openapi = client.Openapi`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the Openapi record (raises on error).
+openapi = client.Openapi.load()
+```
+
+
+### OrgInvitation
+
+Create an instance: `org_invitation = client.OrgInvitation`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+| `invitation` | `Hash` |  |
+| `registration_options` | `Object` |  |
+| `requires_password_setup` | `Boolean` |  |
+| `start_guided_setup` | `Boolean` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the OrgInvitation record (raises on error).
+org_invitation = client.OrgInvitation.load({ "id" => "org_invitation_id" })
+```
+
+
 ### Organization
 
 Create an instance: `organization = client.Organization`
@@ -11244,6 +23449,559 @@ organization = client.Organization.create({
   "slug" => "example_slug", # String
 })
 ```
+
+
+### OrganizationApp
+
+Create an instance: `organization_app = client.OrganizationApp`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of OrganizationApp entities, one per record (raises on error).
+organization_apps = client.OrganizationApp.list({ "organization_id" => "example", "native_agent_id" => "example" })
+organization_apps.each { |item| puts item.data_get }
+```
+
+
+### OrganizationControl
+
+Create an instance: `organization_control = client.OrganizationControl`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### OrganizationDevice
+
+Create an instance: `organization_device = client.OrganizationDevice`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+
+### OrganizationIdentityCertificate
+
+Create an instance: `organization_identity_certificate = client.OrganizationIdentityCertificate`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the OrganizationIdentityCertificate record (raises on error).
+organization_identity_certificate = client.OrganizationIdentityCertificate.load({ "id" => "organization_identity_certificate_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of OrganizationIdentityCertificate entities, one per record (raises on error).
+organization_identity_certificates = client.OrganizationIdentityCertificate.list({ "organization_id" => "example" })
+organization_identity_certificates.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+organization_identity_certificate = client.OrganizationIdentityCertificate.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### OrganizationInteraction
+
+Create an instance: `organization_interaction = client.OrganizationInteraction`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+organization_interaction = client.OrganizationInteraction.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### OrganizationInvitation
+
+Create an instance: `organization_invitation = client.OrganizationInvitation`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email` | `String` |  |
+| `id` | `String` |  |
+| `role` | `String` |  |
+
+#### Example: Create
+
+```ruby
+organization_invitation = client.OrganizationInvitation.create({
+  "organization_id" => "example_organization_id", # String
+  "email" => "example_email", # String
+  "role" => "example_role", # String
+})
+```
+
+
+### OrganizationMessageFile
+
+Create an instance: `organization_message_file = client.OrganizationMessageFile`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+organization_message_file = client.OrganizationMessageFile.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### OrganizationOidcTrust
+
+Create an instance: `organization_oidc_trust = client.OrganizationOidcTrust`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the OrganizationOidcTrust record (raises on error).
+organization_oidc_trust = client.OrganizationOidcTrust.load({ "id" => "organization_oidc_trust_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of OrganizationOidcTrust entities, one per record (raises on error).
+organization_oidc_trusts = client.OrganizationOidcTrust.list({ "organization_id" => "example" })
+organization_oidc_trusts.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+organization_oidc_trust = client.OrganizationOidcTrust.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### OrganizationRunEvent
+
+Create an instance: `organization_run_event = client.OrganizationRunEvent`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+organization_run_event = client.OrganizationRunEvent.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### OrganizationRunOutcome
+
+Create an instance: `organization_run_outcome = client.OrganizationRunOutcome`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+organization_run_outcome = client.OrganizationRunOutcome.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### OrganizationRunUsage
+
+Create an instance: `organization_run_usage = client.OrganizationRunUsage`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+organization_run_usage = client.OrganizationRunUsage.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### OrganizationSandbox
+
+Create an instance: `organization_sandbox = client.OrganizationSandbox`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### OrganizationSecret
+
+Create an instance: `organization_secret = client.OrganizationSecret`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `app_environment_id` | `Object` |  |
+| `app_service_id` | `Object` |  |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `created_by` | `Object` |  |
+| `current_version` | `Object` |  |
+| `description` | `Object` |  |
+| `env_key` | `String` |  |
+| `expose_to_build` | `Boolean` |  |
+| `expose_to_ci` | `Boolean` |  |
+| `hosted_app_id` | `Object` |  |
+| `id` | `String` |  |
+| `last_accessed_at` | `Object` |  |
+| `last_accessed_at_label` | `Object` |  |
+| `last_accessed_by` | `Object` |  |
+| `latest_version_number` | `Object` |  |
+| `name` | `String` |  |
+| `organization_id` | `Object` |  |
+| `owner_service_account_id` | `Object` |  |
+| `rotation_policy` | `Object` |  |
+| `scope_kind` | `String` |  |
+| `slug` | `String` |  |
+| `status` | `String` |  |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the OrganizationSecret record (raises on error).
+organization_secret = client.OrganizationSecret.load({ "id" => "organization_secret_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of OrganizationSecret entities, one per record (raises on error).
+organization_secrets = client.OrganizationSecret.list({ "organization_id" => "example" })
+organization_secrets.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+organization_secret = client.OrganizationSecret.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### OrganizationServiceAccount
+
+Create an instance: `organization_service_account = client.OrganizationServiceAccount`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the OrganizationServiceAccount record (raises on error).
+organization_service_account = client.OrganizationServiceAccount.load({ "id" => "organization_service_account_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of OrganizationServiceAccount entities, one per record (raises on error).
+organization_service_accounts = client.OrganizationServiceAccount.list({ "organization_id" => "example" })
+organization_service_accounts.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+organization_service_account = client.OrganizationServiceAccount.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### OrganizationSetting
+
+Create an instance: `organization_setting = client.OrganizationSetting`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `concurrent_run_limit_override` | `Object` |  |
+| `customize_onboarding_packages` | `Boolean` |  |
+| `daily_run_limit_override` | `Object` |  |
+| `deployment_usage_visibility` | `String` |  |
+| `monthly_browser_minutes_limit_override` | `Object` |  |
+| `monthly_budget_dollars` | `Object` |  |
+| `name` | `String` |  |
+| `onboarding_custom_pricing` | `Boolean` |  |
+| `onboarding_package_keys` | `Array` |  |
+
+
+### OrganizationSite
+
+Create an instance: `organization_site = client.OrganizationSite`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of OrganizationSite entities, one per record (raises on error).
+organization_sites = client.OrganizationSite.list({ "organization_id" => "example", "native_agent_id" => "example" })
+organization_sites.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+organization_site = client.OrganizationSite.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### OrganizationSubscription
+
+Create an instance: `organization_subscription = client.OrganizationSubscription`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### OrganizationTool
+
+Create an instance: `organization_tool = client.OrganizationTool`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `arguments` | `Hash` |  |
+| `native_agent_id` | `String` |  |
+| `tool` | `String` |  |
+
+#### Example: Create
+
+```ruby
+organization_tool = client.OrganizationTool.create({
+  "organization_id" => "example_organization_id", # String
+  "arguments" => {}, # Hash
+  "native_agent_id" => "example_native_agent_id", # String
+  "tool" => "example_tool", # String
+})
+```
+
+
+### OrganizationWorkloadIdentity
+
+Create an instance: `organization_workload_identity = client.OrganizationWorkloadIdentity`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the OrganizationWorkloadIdentity record (raises on error).
+organization_workload_identity = client.OrganizationWorkloadIdentity.load({ "id" => "organization_workload_identity_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of OrganizationWorkloadIdentity entities, one per record (raises on error).
+organization_workload_identitys = client.OrganizationWorkloadIdentity.list({ "organization_id" => "example" })
+organization_workload_identitys.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+organization_workload_identity = client.OrganizationWorkloadIdentity.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### OtelIngest
+
+Create an instance: `otel_ingest = client.OtelIngest`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
 
 
 ### Page
@@ -11332,6 +24090,107 @@ page_agents.each { |item| puts item.data_get }
 ```
 
 
+### PageArtefact
+
+Create an instance: `page_artefact = client.PageArtefact`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `artefact` | `Object` |  |
+| `automation` | `Object` |  |
+| `automation_invocation_id` | `Object` |  |
+| `byte_size` | `Integer` |  |
+| `checksum_sha256` | `String` |  |
+| `comment_threads` | `Array` |  |
+| `content_type` | `String` |  |
+| `created_at` | `Object` |  |
+| `created_by_user_id` | `Object` |  |
+| `description` | `Object` |  |
+| `document_key` | `String` | Stable document identity shared by all revisions. |
+| `draft` | `Object` | The autosaved working copy of the newest Markdown version; null for older versions and other files. |
+| `entrypoint` | `String` |  |
+| `expires_at` | `Object` |  |
+| `filename` | `String` |  |
+| `files` | `Array` |  |
+| `harness` | `Object` |  |
+| `harness_version` | `Object` |  |
+| `id` | `String` |  |
+| `kind` | `String` |  |
+| `kinds` | `Array` |  |
+| `model` | `Object` |  |
+| `organization` | `Hash` |  |
+| `organization_id` | `String` |  |
+| `pagination` | `Hash` |  |
+| `permissions` | `Hash` |  |
+| `preview` | `Hash` |  |
+| `published_at` | `Object` |  |
+| `published_at_label` | `Object` |  |
+| `publisher` | `Object` |  |
+| `repository` | `Object` |  |
+| `repository_id` | `Object` |  |
+| `selected_path` | `String` |  |
+| `slug` | `String` |  |
+| `source` | `String` |  |
+| `status` | `String` |  |
+| `title` | `String` |  |
+| `vcs_agent_checkpoint_id` | `Object` |  |
+| `vcs_agent_session_id` | `Object` |  |
+| `version` | `Integer` |  |
+| `versions` | `Array` |  |
+| `view_url` | `String` |  |
+| `web_url` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the PageArtefact record (raises on error).
+page_artefact = client.PageArtefact.load({ "id" => "page_artefact_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of PageArtefact entities, one per record (raises on error).
+page_artefacts = client.PageArtefact.list({ "organization_id" => "example" })
+page_artefacts.each { |item| puts item.data_get }
+```
+
+
+### PageCiPipelineRun
+
+Create an instance: `page_ci_pipeline_run = client.PageCiPipelineRun`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `error` | `Object` |  |
+| `id` | `String` |  |
+| `jobs` | `Array` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the PageCiPipelineRun record (raises on error).
+page_ci_pipeline_run = client.PageCiPipelineRun.load({ "id" => "page_ci_pipeline_run_id", "pipeline_id" => "pipeline_id" })
+```
+
+
 ### PageProjectRun
 
 Create an instance: `page_project_run = client.PageProjectRun`
@@ -11365,6 +24224,142 @@ Create an instance: `page_project_run = client.PageProjectRun`
 ```ruby
 # load returns the ENTITY — call data_get for the PageProjectRun record (raises on error).
 page_project_run = client.PageProjectRun.load({ "id" => "page_project_run_id", "organization_id" => "organization_id", "project_id" => "project_id" })
+```
+
+
+### PageRepoVcCommit
+
+Create an instance: `page_repo_vc_commit = client.PageRepoVcCommit`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `commit` | `Object` |  |
+| `diff_path` | `String` | Fingerprinted path serving this commit range's file diff. |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the PageRepoVcCommit record (raises on error).
+page_repo_vc_commit = client.PageRepoVcCommit.load({ "id" => "page_repo_vc_commit_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+
+### PagesBilling
+
+Create an instance: `pages_billing = client.PagesBilling`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `Array` |  |
+| `breakdown` | `Object` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `Object` |  |
+| `can_manage_contact` | `Boolean` |  |
+| `can_manage_extra_spend` | `Boolean` |  |
+| `can_manage_local_subscription` | `Boolean` |  |
+| `can_manage_payment_method` | `Boolean` |  |
+| `can_set_up_billing` | `Boolean` |  |
+| `customer` | `Object` |  |
+| `deployment_usage_visible` | `Boolean` |  |
+| `entitlements` | `Hash` |  |
+| `extra_spend_enabled` | `Boolean` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `Boolean` | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `String` |  |
+| `package` | `Object` |  |
+| `prepaid` | `Object` |  |
+| `preview` | `Object` | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `Hash` |  |
+| `stripe` | `Hash` |  |
+| `subscription` | `Object` |  |
+| `token_account` | `Hash` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the PagesBilling record (raises on error).
+pages_billing = client.PagesBilling.load({ "organization_id" => "organization_id" })
+```
+
+
+### PagesGithubOnboarding
+
+Create an instance: `pages_github_onboarding = client.PagesGithubOnboarding`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `onboarding` | `Hash` |  |
+| `organization` | `Hash` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the PagesGithubOnboarding record (raises on error).
+pages_github_onboarding = client.PagesGithubOnboarding.load({ "organization_id" => "organization_id" })
+```
+
+
+### PagesMember
+
+Create an instance: `pages_member = client.PagesMember`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accepted_at` | `Object` |  |
+| `accepted_by_user` | `Object` |  |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `email` | `String` |  |
+| `email_delivery_status` | `String` |  |
+| `expires_at` | `Object` |  |
+| `expires_at_label` | `Object` |  |
+| `id` | `String` |  |
+| `invite_url` | `Object` |  |
+| `invited_by_user` | `Object` |  |
+| `organization` | `Hash` |  |
+| `revoked_at` | `Object` |  |
+| `role` | `String` |  |
+| `status` | `String` |  |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of PagesMember entities, one per record (raises on error).
+pages_members = client.PagesMember.list({ "organization_id" => "example" })
+pages_members.each { |item| puts item.data_get }
 ```
 
 
@@ -11500,6 +24495,208 @@ Create an instance: `pages_project_scenario = client.PagesProjectScenario`
 # list returns an Array of PagesProjectScenario entities, one per record (raises on error).
 pages_project_scenarios = client.PagesProjectScenario.list({ "organization_id" => "example", "project_id" => "example" })
 pages_project_scenarios.each { |item| puts item.data_get }
+```
+
+
+### PagesRegistry
+
+Create an instance: `pages_registry = client.PagesRegistry`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active_repository_count` | `Integer` |  |
+| `error` | `Object` |  |
+| `pagination` | `Hash` |  |
+| `repositories` | `Array` |  |
+| `repository_count` | `Integer` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the PagesRegistry record (raises on error).
+pages_registry = client.PagesRegistry.load({ "organization_id" => "organization_id" })
+```
+
+
+### PagesSession
+
+Create an instance: `pages_session = client.PagesSession`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter` | `String` |  |
+| `created_at` | `Object` |  |
+| `cursor` | `String` |  |
+| `ended_at` | `Object` |  |
+| `external_session_id` | `String` |  |
+| `facets` | `Hash` |  |
+| `from` | `String` |  |
+| `github_access_warnings` | `Array` |  |
+| `harness` | `String` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `String` |  |
+| `last_activity_at` | `Object` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `Object` |  |
+| `limit` | `Integer` |  |
+| `markers` | `Array` |  |
+| `max_bytes` | `Integer` |  |
+| `mode` | `String` |  |
+| `offset` | `Integer` |  |
+| `pagination` | `Hash` |  |
+| `query` | `String` |  |
+| `repo` | `String` |  |
+| `repository` | `Object` |  |
+| `search` | `Object` |  |
+| `search_enabled` | `Boolean` |  |
+| `session` | `Object` | Identical serialization to the org sessions page's expanded session, so the web reuses one session-detail builder. |
+| `sessions` | `Array` |  |
+| `started_at` | `Object` |  |
+| `stats` | `Hash` |  |
+| `status` | `String` |  |
+| `title` | `Object` |  |
+| `to` | `String` |  |
+| `token_stats` | `Object` |  |
+| `transcript_index` | `Object` |  |
+| `transcript_stats` | `Object` |  |
+| `updated_at` | `Object` |  |
+| `user` | `Object` |  |
+| `user_id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the PagesSession record (raises on error).
+pages_session = client.PagesSession.load({ "id" => "pages_session_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of PagesSession entities, one per record (raises on error).
+pages_sessions = client.PagesSession.list({ "organization_id" => "example" })
+pages_sessions.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+pages_session = client.PagesSession.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### Pairing
+
+Create an instance: `pairing = client.Pairing`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the Pairing record (raises on error).
+pairing = client.Pairing.load({ "id" => "pairing_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of Pairing entities, one per record (raises on error).
+pairings = client.Pairing.list
+pairings.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+pairing = client.Pairing.create({
+})
+```
+
+
+### PairingEvent
+
+Create an instance: `pairing_event = client.PairingEvent`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ruby
+# list returns an Array of PairingEvent entities, one per record (raises on error).
+pairing_events = client.PairingEvent.list({ "pairing_id" => "example" })
+pairing_events.each { |item| puts item.data_get }
+```
+
+
+### ParallelV1
+
+Create an instance: `parallel_v1 = client.ParallelV1`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### PatchsetDiff
+
+Create an instance: `patchset_diff = client.PatchsetDiff`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `files` | `Array` |  |
+| `id` | `String` |  |
+| `patchset` | `Hash` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the PatchsetDiff record (raises on error).
+patchset_diff = client.PatchsetDiff.load({ "id" => "patchset_diff_id", "change_id" => "change_id", "organization_id" => "organization_id", "patchset_id" => "patchset_id", "repo_id" => "repo_id" })
 ```
 
 
@@ -11675,6 +24872,97 @@ preview_sharing_approval = client.PreviewSharingApproval.create({
   "app_id" => "example_app_id", # String
   "preview_id" => "example_preview_id", # String
   "snapshot_version" => 1, # Integer
+})
+```
+
+
+### ProactiveAgentWaitlistEntry
+
+Create an instance: `proactive_agent_waitlist_entry = client.ProactiveAgentWaitlistEntry`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email` | `String` |  |
+| `first_task` | `Object` | The first job they would hand an agent. |
+| `invite_code` | `Object` | The referral code of the invite link they arrived through. |
+| `places_per_referral` | `Integer` | Most places one referral moves the entry up; fewer when boosted entries are ahead. |
+| `position` | `Integer` | 1-based place in the queue. |
+| `position_after_next_referral` | `Integer` | The place one more referral would give this entry, as Rails would assign it. |
+| `referral_code` | `String` | Shared in this entry's invite link. |
+| `referral_count` | `Integer` | People who joined through this entry's link. |
+| `total` | `Integer` | Display total including a random increment per signup; not the actual number of entries. |
+| `website` | `Object` | Honeypot. |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ProactiveAgentWaitlistEntry record (raises on error).
+proactive_agent_waitlist_entry = client.ProactiveAgentWaitlistEntry.load({ "id" => "proactive_agent_waitlist_entry_id" })
+```
+
+#### Example: Create
+
+```ruby
+proactive_agent_waitlist_entry = client.ProactiveAgentWaitlistEntry.create({
+  "email" => "example_email", # String
+})
+```
+
+
+### Product
+
+Create an instance: `product = client.Product`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_products` | `Array` | Products this organization has activated (PRD 144). |
+| `agents_only` | `Boolean` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `Boolean` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `github_prs_authored_by_change_author` | `Boolean` |  |
+| `id` | `String` |  |
+| `logo_url` | `Object` |  |
+| `member_count` | `Integer` |  |
+| `name` | `String` |  |
+| `pending_invitation_count` | `Integer` |  |
+| `personal` | `Boolean` |  |
+| `product` | `String` |  |
+| `repository_count` | `Integer` |  |
+| `role` | `Object` |  |
+| `sandbox_region` | `String` |  |
+| `shared_agent_personal_accounts_enabled` | `Boolean` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `String` |  |
+| `source_control_providers` | `Array` | Connected source control providers for this organization. |
+| `source_ui_enabled` | `Boolean` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `String` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+| `verify_pr_scenario_writing_enabled` | `Boolean` |  |
+
+#### Example: Create
+
+```ruby
+product = client.Product.create({
+  "organization_id" => "example_organization_id", # String
+  "product" => "example_product", # String
 })
 ```
 
@@ -12752,6 +26040,62 @@ pull_request = client.PullRequest.create({
 ```
 
 
+### PullRequestAction
+
+Create an instance: `pull_request_action = client.PullRequestAction`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action_name` | `String` |  |
+| `body` | `String` |  |
+| `comment_id` | `String` |  |
+| `comments` | `Array` |  |
+| `event` | `String` |  |
+| `expected_head_sha` | `String` |  |
+| `id` | `Object` |  |
+| `label` | `String` |  |
+| `line` | `Integer` |  |
+| `node_id` | `Object` |  |
+| `operation_key` | `String` |  |
+| `path` | `String` |  |
+| `run_id` | `String` |  |
+| `side` | `String` |  |
+| `start_line` | `Integer` |  |
+| `start_side` | `String` |  |
+| `thread_id` | `String` |  |
+
+#### Example: Create
+
+```ruby
+pull_request_action = client.PullRequestAction.create({
+  "number" => "example_number", # String
+  "organization_id" => "example_organization_id", # String
+  "pull_request_id" => "example_pull_request_id", # String
+  "action_name" => "example_action_name", # String
+  "operation_key" => "example_operation_key", # String
+})
+```
+
+
+### PullRequestMagicMerge
+
+Create an instance: `pull_request_magic_merge = client.PullRequestMagicMerge`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
 ### PullRequestSetting
 
 Create an instance: `pull_request_setting = client.PullRequestSetting`
@@ -12936,6 +26280,72 @@ pull_request_setting_detect_comment = client.PullRequestSettingDetectComment.cre
 ```
 
 
+### PullRequestTranscript
+
+Create an instance: `pull_request_transcript = client.PullRequestTranscript`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter` | `String` |  |
+| `created_at` | `Object` |  |
+| `ended_at` | `Object` |  |
+| `external_session_id` | `String` |  |
+| `harness` | `String` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `String` |  |
+| `last_activity_at` | `Object` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `Object` |  |
+| `repository` | `Object` |  |
+| `started_at` | `Object` |  |
+| `stats` | `Hash` |  |
+| `status` | `String` |  |
+| `title` | `Object` |  |
+| `updated_at` | `Object` |  |
+| `user` | `Object` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of PullRequestTranscript entities, one per record (raises on error).
+pull_request_transcripts = client.PullRequestTranscript.list({ "organization_id" => "example", "pull_request_id" => "example", "repo_id" => "example" })
+pull_request_transcripts.each { |item| puts item.data_get }
+```
+
+
+### PullZone
+
+Create an instance: `pull_zone = client.PullZone`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+| `name` | `String` |  |
+| `slug` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of PullZone entities, one per record (raises on error).
+pull_zones = client.PullZone.list({ "organization_id" => "example" })
+pull_zones.each { |item| puts item.data_get }
+```
+
+
 ### Recorder
 
 Create an instance: `recorder = client.Recorder`
@@ -12984,6 +26394,72 @@ Create an instance: `registry_v2 = client.RegistryV2`
 | `create(data)` | Create a new entity with the given data. |
 
 
+### RelayAgentConnection
+
+Create an instance: `relay_agent_connection = client.RelayAgentConnection`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_card_url` | `String` |  |
+| `auth_scheme` | `String` |  |
+| `can_configure` | `Boolean` |  |
+| `can_disconnect` | `Boolean` |  |
+| `can_setup` | `Boolean` |  |
+| `connection` | `Hash` |  |
+| `credential` | `Object` | Write-only outbound key. |
+| `error_code` | `Object` |  |
+| `expected_generation` | `Integer` |  |
+| `generation` | `Integer` |  |
+| `id` | `String` |  |
+| `name` | `String` |  |
+| `remote_agent` | `Object` |  |
+| `requester_id` | `String` |  |
+| `retired_at` | `Object` |  |
+| `revoked_at` | `Object` |  |
+| `scope_key` | `String` |  |
+| `source_operation_id` | `Object` |  |
+| `state` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the RelayAgentConnection record (raises on error).
+relay_agent_connection = client.RelayAgentConnection.load({ "id" => "relay_agent_connection_id", "agent_id" => "agent_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of RelayAgentConnection entities, one per record (raises on error).
+relay_agent_connections = client.RelayAgentConnection.list({ "agent_id" => "example", "organization_id" => "example" })
+relay_agent_connections.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+relay_agent_connection = client.RelayAgentConnection.create({
+  "agent_id" => "example_agent_id", # String
+  "organization_id" => "example_organization_id", # String
+  "agent_card_url" => "example_agent_card_url", # String
+  "auth_scheme" => "example_auth_scheme", # String
+  "name" => "example_name", # String
+})
+```
+
+
 ### RelayAgentLocalThread
 
 Create an instance: `relay_agent_local_thread = client.RelayAgentLocalThread`
@@ -12999,6 +26475,584 @@ Create an instance: `relay_agent_local_thread = client.RelayAgentLocalThread`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `String` |  |
+
+
+### RelaySignal
+
+Create an instance: `relay_signal = client.RelaySignal`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+relay_signal = client.RelaySignal.create({
+})
+```
+
+
+### ReleaseRollout
+
+Create an instance: `release_rollout = client.ReleaseRollout`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ReleaseRollout record (raises on error).
+release_rollout = client.ReleaseRollout.load({ "id" => "release_rollout_id", "release_id" => "release_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of ReleaseRollout entities, one per record (raises on error).
+release_rollouts = client.ReleaseRollout.list({ "release_id" => "example" })
+release_rollouts.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+release_rollout = client.ReleaseRollout.create({
+  "release_id" => "example_release_id", # String
+})
+```
+
+
+### Repo
+
+Create an instance: `repo = client.Repo`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_retry_import` | `Boolean` | True when a failed client import can be requeued for CLI resume. |
+| `can_retry_sync` | `Boolean` | True when the latest sync run failed and can be retried. |
+| `disclaimer` | `Object` |  |
+| `federated_in_home` | `Boolean` | True when this Space is a folder virtual repository inside the organization Home monorepo. |
+| `github_repository` | `Object` |  |
+| `icon_name` | `String` |  |
+| `id` | `String` | Virtual repository public ID for non-Home rows; Home uses the physical repository public ID. |
+| `import_item_id` | `Object` |  |
+| `is_home` | `Boolean` |  |
+| `name` | `String` |  |
+| `remote_repository` | `Object` |  |
+| `root_path` | `Object` | Home-relative folder path when federated_in_home is true; null otherwise. |
+| `slug` | `String` |  |
+| `sync_error_message` | `Object` |  |
+| `sync_provider` | `String` |  |
+| `sync_status` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of Repo entities, one per record (raises on error).
+repos = client.Repo.list({ "organization_id" => "example" })
+repos.each { |item| puts item.data_get }
+```
+
+
+### RepoAccessToken
+
+Create an instance: `repo_access_token = client.RepoAccessToken`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access_token` | `Hash` |  |
+| `active` | `Boolean` |  |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `credential_purpose` | `String` | Issues a revocable read-write system credential valid for one hour. |
+| `expires_at` | `Object` |  |
+| `expires_at_label` | `Object` |  |
+| `expires_in_days` | `Object` |  |
+| `id` | `String` |  |
+| `last_used_at` | `Object` |  |
+| `last_used_at_label` | `Object` |  |
+| `name` | `String` |  |
+| `permission_level` | `String` |  |
+| `plain_text_token` | `String` |  |
+| `revoked_at` | `Object` |  |
+| `revoked_at_label` | `Object` |  |
+| `token_preview` | `String` |  |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of RepoAccessToken entities, one per record (raises on error).
+repo_access_tokens = client.RepoAccessToken.list({ "organization_id" => "example", "repo_id" => "example" })
+repo_access_tokens.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+repo_access_token = client.RepoAccessToken.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "name" => "example_name", # String
+})
+```
+
+
+### RepoAction
+
+Create an instance: `repo_action = client.RepoAction`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `pipeline` | `Hash` |  |
+| `run` | `Hash` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of RepoAction entities, one per record (raises on error).
+repo_actions = client.RepoAction.list({ "organization_id" => "example", "repo_id" => "example" })
+repo_actions.each { |item| puts item.data_get }
+```
+
+
+### RepoAgentCheckpoint
+
+Create an instance: `repo_agent_checkpoint = client.RepoAgentCheckpoint`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the RepoAgentCheckpoint record (raises on error).
+repo_agent_checkpoint = client.RepoAgentCheckpoint.load({ "id" => "repo_agent_checkpoint_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+
+### RepoAgentSession
+
+Create an instance: `repo_agent_session = client.RepoAgentSession`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter` | `String` |  |
+| `agent_session` | `Hash` |  |
+| `external_session_id` | `String` |  |
+| `id` | `String` |  |
+| `status` | `String` |  |
+| `title` | `Object` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the RepoAgentSession record (raises on error).
+repo_agent_session = client.RepoAgentSession.load({ "id" => "repo_agent_session_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of RepoAgentSession entities, one per record (raises on error).
+repo_agent_sessions = client.RepoAgentSession.list({ "organization_id" => "example", "repo_id" => "example" })
+repo_agent_sessions.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+repo_agent_session = client.RepoAgentSession.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+
+### RepoBookmarkProtection
+
+Create an instance: `repo_bookmark_protection = client.RepoBookmarkProtection`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `actor_policy` | `Hash` |  |
+| `bypass_mode` | `String` |  |
+| `created_at` | `String` |  |
+| `created_by_user_id` | `Object` |  |
+| `enabled` | `Boolean` |  |
+| `id` | `String` |  |
+| `name` | `String` |  |
+| `organization_id` | `String` |  |
+| `priority` | `Integer` |  |
+| `repository_id` | `String` |  |
+| `requirements` | `Hash` |  |
+| `target_kind` | `String` |  |
+| `target_pattern` | `Object` |  |
+| `updated_at` | `String` |  |
+| `updated_by_user_id` | `Object` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the RepoBookmarkProtection record (raises on error).
+repo_bookmark_protection = client.RepoBookmarkProtection.load({ "id" => "repo_bookmark_protection_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of RepoBookmarkProtection entities, one per record (raises on error).
+repo_bookmark_protections = client.RepoBookmarkProtection.list({ "organization_id" => "example", "repo_id" => "example" })
+repo_bookmark_protections.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+repo_bookmark_protection = client.RepoBookmarkProtection.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+
+### RepoBookmarkProtectionEvent
+
+Create an instance: `repo_bookmark_protection_event = client.RepoBookmarkProtectionEvent`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `String` |  |
+| `actor_kind` | `String` |  |
+| `actor_label` | `Object` |  |
+| `actor_user_id` | `Object` |  |
+| `bookmark_name` | `String` |  |
+| `bookmark_protection_rule_id` | `Object` |  |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `decision` | `String` |  |
+| `id` | `String` |  |
+| `intent` | `Object` |  |
+| `metadata` | `Hash` |  |
+| `new_target` | `Object` |  |
+| `old_target` | `Object` |  |
+| `organization_id` | `String` |  |
+| `reason_codes` | `Array` |  |
+| `repository_id` | `String` |  |
+| `source_request_id` | `Object` |  |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of RepoBookmarkProtectionEvent entities, one per record (raises on error).
+repo_bookmark_protection_events = client.RepoBookmarkProtectionEvent.list({ "organization_id" => "example", "repo_id" => "example" })
+repo_bookmark_protection_events.each { |item| puts item.data_get }
+```
+
+
+### RepoCloudWorkspaceBackup
+
+Create an instance: `repo_cloud_workspace_backup = client.RepoCloudWorkspaceBackup`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the RepoCloudWorkspaceBackup record (raises on error).
+repo_cloud_workspace_backup = client.RepoCloudWorkspaceBackup.load({ "id" => "repo_cloud_workspace_backup_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of RepoCloudWorkspaceBackup entities, one per record (raises on error).
+repo_cloud_workspace_backups = client.RepoCloudWorkspaceBackup.list({ "organization_id" => "example", "repo_id" => "example" })
+repo_cloud_workspace_backups.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+repo_cloud_workspace_backup = client.RepoCloudWorkspaceBackup.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+
+### RepoCodeRule
+
+Create an instance: `repo_code_rule = client.RepoCodeRule`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active_revision_number` | `Object` |  |
+| `capabilities` | `Hash` |  |
+| `code_rule` | `Object` |  |
+| `created_at` | `String` |  |
+| `definition` | `Hash` |  |
+| `draft_pending` | `Boolean` | The latest revision is not the active one |
+| `enabled` | `Boolean` |  |
+| `expected_version` | `Integer` |  |
+| `id` | `String` |  |
+| `latest_revision_number` | `Integer` |  |
+| `name` | `String` | Name of the latest revision |
+| `repository` | `Hash` |  |
+| `scope` | `Array` |  |
+| `slug` | `String` |  |
+| `state_version` | `Integer` | Send back as expected_version on every mutation |
+| `updated_at` | `String` |  |
+| `web_url` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the RepoCodeRule record (raises on error).
+repo_code_rule = client.RepoCodeRule.load({ "id" => "repo_code_rule_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of RepoCodeRule entities, one per record (raises on error).
+repo_code_rules = client.RepoCodeRule.list({ "organization_id" => "example", "repo_id" => "example" })
+repo_code_rules.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+repo_code_rule = client.RepoCodeRule.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "definition" => {}, # Hash
+})
+```
+
+
+### RepoSetting
+
+Create an instance: `repo_setting = client.RepoSetting`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active` | `Boolean` |  |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `description` | `Object` |  |
+| `expires_at` | `Object` |  |
+| `expires_at_label` | `Object` |  |
+| `icon_name` | `String` |  |
+| `id` | `String` |  |
+| `last_used_at` | `Object` |  |
+| `last_used_at_label` | `Object` |  |
+| `merge_authority` | `String` |  |
+| `name` | `String` |  |
+| `organization_id` | `String` |  |
+| `permission_level` | `String` |  |
+| `revoked_at` | `Object` |  |
+| `revoked_at_label` | `Object` |  |
+| `slug` | `String` |  |
+| `status` | `String` |  |
+| `token_preview` | `String` |  |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of RepoSetting entities, one per record (raises on error).
+repo_settings = client.RepoSetting.list({ "organization_id" => "example", "repo_id" => "example" })
+repo_settings.each { |item| puts item.data_get }
+```
+
+
+### RepoStat
+
+Create an instance: `repo_stat = client.RepoStat`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `repository_stats` | `Hash` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of RepoStat entities, one per record (raises on error).
+repo_stats = client.RepoStat.list({ "organization_id" => "example", "repo_id" => "example" })
+repo_stats.each { |item| puts item.data_get }
+```
+
+
+### RepoVc
+
+Create an instance: `repo_vc = client.RepoVc`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+
+### RepoVcCommit
+
+Create an instance: `repo_vc_commit = client.RepoVcCommit`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `name` | `String` |  |
+| `target_commit_id` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of RepoVcCommit entities, one per record (raises on error).
+repo_vc_commits = client.RepoVcCommit.list({ "organization_id" => "example", "repo_id" => "example", "ref" => "example" })
+repo_vc_commits.each { |item| puts item.data_get }
+```
 
 
 ### ReportReplay
@@ -13061,6 +27115,500 @@ Create an instance: `report_scenario = client.ReportScenario`
 report_scenario = client.ReportScenario.create({
   "exploration_id" => "example_exploration_id", # String
   "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### RepositoryAccess
+
+Create an instance: `repository_access = client.RepositoryAccess`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### RepositoryAccessResolve
+
+Create an instance: `repository_access_resolve = client.RepositoryAccessResolve`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `default_branch` | `String` |  |
+| `git_auth_username` | `String` |  |
+| `git_https_clone_url` | `Object` |  |
+| `git_https_supported` | `Boolean` |  |
+| `github_access_warnings` | `Array` |  |
+| `id` | `String` |  |
+| `membership_role` | `String` |  |
+| `organization_id` | `String` |  |
+| `organization_name` | `String` |  |
+| `organization_slug` | `String` |  |
+| `repository_id` | `String` |  |
+| `repository_name` | `String` |  |
+| `repository_slug` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the RepositoryAccessResolve record (raises on error).
+repository_access_resolve = client.RepositoryAccessResolve.load({ "id" => "repository_access_resolve_id", "resolve_id" => "resolve_id" })
+```
+
+
+### RepositoryEvent
+
+Create an instance: `repository_event = client.RepositoryEvent`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### RepositoryImport
+
+Create an instance: `repository_import = client.RepositoryImport`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_connections` | `Boolean` |  |
+| `github_imports` | `Array` |  |
+| `github_installations` | `Array` |  |
+| `gitlab_configured` | `Boolean` |  |
+| `gitlab_imports` | `Array` |  |
+| `gitlab_integrations` | `Array` |  |
+| `gitlab_redirect_uri` | `Object` |  |
+| `gitlab_self_managed_available` | `Boolean` |  |
+| `inventory_errors` | `Array` |  |
+| `organization_id` | `String` |  |
+| `repositories` | `Array` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the RepositoryImport record (raises on error).
+repository_import = client.RepositoryImport.load({ "organization_id" => "organization_id" })
+```
+
+
+### RepositoryImportSession
+
+Create an instance: `repository_import_session = client.RepositoryImportSession`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action_required` | `String` |  |
+| `authorization_endpoint` | `String` |  |
+| `can_authorize_github` | `Boolean` |  |
+| `client_name` | `Object` |  |
+| `client_version` | `Object` |  |
+| `created_at` | `String` |  |
+| `error_message` | `Object` |  |
+| `expires_at` | `String` |  |
+| `git_imports` | `Array` |  |
+| `github_app_installation_id` | `Object` |  |
+| `github_connected` | `Boolean` |  |
+| `id` | `String` |  |
+| `idempotency_key` | `String` |  |
+| `organization_id` | `String` |  |
+| `organization_slug` | `String` |  |
+| `status` | `String` |  |
+| `updated_at` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the RepositoryImportSession record (raises on error).
+repository_import_session = client.RepositoryImportSession.load({ "id" => "repository_import_session_id" })
+```
+
+#### Example: Create
+
+```ruby
+repository_import_session = client.RepositoryImportSession.create({
+  "organization_id" => "example_organization_id", # String
+  "idempotency_key" => "example_idempotency_key", # String
+})
+```
+
+
+### RepositoryImportSessionRepository
+
+Create an instance: `repository_import_session_repository = client.RepositoryImportSessionRepository`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `default_branch` | `Object` |  |
+| `full_name` | `String` |  |
+| `name` | `String` |  |
+| `owner` | `String` |  |
+| `private` | `Boolean` |  |
+| `reason` | `Object` |  |
+| `selectable` | `Boolean` |  |
+| `status` | `String` |  |
+| `visibility` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of RepositoryImportSessionRepository entities, one per record (raises on error).
+repository_import_session_repositorys = client.RepositoryImportSessionRepository.list({ "repository_import_session_id" => "example" })
+repository_import_session_repositorys.each { |item| puts item.data_get }
+```
+
+
+### RepositoryImportSessionSelection
+
+Create an instance: `repository_import_session_selection = client.RepositoryImportSessionSelection`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `repositories` | `Object` |  |
+
+#### Example: Create
+
+```ruby
+repository_import_session_selection = client.RepositoryImportSessionSelection.create({
+  "repository_import_session_id" => "example_repository_import_session_id", # String
+  "repositories" => "example_repositories", # Object
+})
+```
+
+
+### RepositorySandboxEnvironment
+
+Create an instance: `repository_sandbox_environment = client.RepositorySandboxEnvironment`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the RepositorySandboxEnvironment record (raises on error).
+repository_sandbox_environment = client.RepositorySandboxEnvironment.load({ "id" => "repository_sandbox_environment_id", "repository_id" => "repository_id" })
+```
+
+
+### RoderCodeRepair
+
+Create an instance: `roder_code_repair = client.RoderCodeRepair`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `base_sha` | `String` |  |
+| `cancel_requested` | `Boolean` |  |
+| `failure_code` | `Object` |  |
+| `id` | `String` |  |
+| `launch_state` | `String` |  |
+| `organization_id` | `String` |  |
+| `repository_slug` | `String` |  |
+| `roder_thread_id` | `Object` |  |
+| `roder_turn_id` | `Object` |  |
+| `scenario_run_id` | `String` |  |
+| `task` | `Object` |  |
+| `trigger_kind` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the RoderCodeRepair record (raises on error).
+roder_code_repair = client.RoderCodeRepair.load({ "id" => "roder_code_repair_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of RoderCodeRepair entities, one per record (raises on error).
+roder_code_repairs = client.RoderCodeRepair.list({ "scenario_run_id" => "example" })
+roder_code_repairs.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+roder_code_repair = client.RoderCodeRepair.create({
+  "base_sha" => "example_base_sha", # String
+  "organization_id" => "example_organization_id", # String
+  "repository_slug" => "example_repository_slug", # String
+  "scenario_run_id" => "example_scenario_run_id", # String
+})
+```
+
+
+### RoderCodeRepairSetting
+
+Create an instance: `roder_code_repair_setting = client.RoderCodeRepairSetting`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `available` | `Boolean` |  |
+| `daily_limit` | `Integer` |  |
+| `enabled` | `Boolean` |  |
+| `enabled_at` | `Object` |  |
+| `operator_user_id` | `Object` |  |
+| `organization_id` | `String` |  |
+| `repository_slug` | `Object` | Connected Composal repository required when enabling |
+
+#### Example: List
+
+```ruby
+# list returns an Array of RoderCodeRepairSetting entities, one per record (raises on error).
+roder_code_repair_settings = client.RoderCodeRepairSetting.list({ "organization_id" => "example" })
+roder_code_repair_settings.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+roder_code_repair_setting = client.RoderCodeRepairSetting.create({
+  "enabled" => true, # Boolean
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### RoderMachine
+
+Create an instance: `roder_machine = client.RoderMachine`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+
+### RoderRun
+
+Create an instance: `roder_run = client.RoderRun`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### RoderWorkspaceCredential
+
+Create an instance: `roder_workspace_credential = client.RoderWorkspaceCredential`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `api_token` | `String` | Short-lived personal access token for the spawning user. |
+| `author_email` | `String` |  |
+| `author_name` | `String` |  |
+| `clone_url` | `String` |  |
+| `default_branch` | `String` |  |
+| `expires_at` | `String` |  |
+| `organization_id` | `String` |  |
+| `repository_id` | `String` |  |
+| `repository_slug` | `String` |  |
+| `repository_spec` | `String` | The explicitly selected physical repository address. |
+| `required_lifetime_seconds` | `Integer` | Lifetime the pending clone or command must be able to complete within. |
+| `token` | `String` | Short-lived read/write repository credential. |
+| `username` | `String` |  |
+
+#### Example: Create
+
+```ruby
+roder_workspace_credential = client.RoderWorkspaceCredential.create({
+  "required_lifetime_seconds" => 1, # Integer
+})
+```
+
+
+### RunArtifact
+
+Create an instance: `run_artifact = client.RunArtifact`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ruby
+# list returns an Array of RunArtifact entities, one per record (raises on error).
+run_artifacts = client.RunArtifact.list({ "pipeline_id" => "example", "run_id" => "example" })
+run_artifacts.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+run_artifact = client.RunArtifact.create({
+  "pipeline_id" => "example_pipeline_id", # String
+  "run_id" => "example_run_id", # String
+})
+```
+
+
+### RunJob
+
+Create an instance: `run_job = client.RunJob`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active` | `Boolean` |  |
+| `allow_failure` | `Boolean` |  |
+| `cache_archive_observations` | `Object` | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `ci_pipeline_run_id` | `String` |  |
+| `ci_runner_id` | `Object` |  |
+| `created_at` | `String` |  |
+| `dependencies_csv` | `Object` |  |
+| `display_id` | `Integer` |  |
+| `environment_csv` | `Object` |  |
+| `execution_order` | `Integer` |  |
+| `execution_profile` | `Object` |  |
+| `exit_code` | `Object` |  |
+| `failed` | `Boolean` |  |
+| `finished_at` | `Object` |  |
+| `id` | `String` |  |
+| `kind` | `String` |  |
+| `log_chunks` | `Array` |  |
+| `name` | `String` |  |
+| `number` | `Integer` |  |
+| `organization_id` | `String` |  |
+| `queued_at` | `Object` |  |
+| `reconciliation_id` | `Object` |  |
+| `retry_number` | `Integer` |  |
+| `reuse` | `Object` |  |
+| `runner_label_selector` | `Object` |  |
+| `slug` | `String` |  |
+| `started_at` | `Object` |  |
+| `status` | `String` |  |
+| `status_label` | `String` |  |
+| `status_state` | `String` |  |
+| `status_tone` | `String` |  |
+| `steps` | `Array` |  |
+| `timeout_seconds` | `Object` |  |
+| `updated_at` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the RunJob record (raises on error).
+run_job = client.RunJob.load({ "id" => "run_job_id", "pipeline_id" => "pipeline_id", "run_id" => "run_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of RunJob entities, one per record (raises on error).
+run_jobs = client.RunJob.list({ "pipeline_id" => "example", "run_id" => "example" })
+run_jobs.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+run_job = client.RunJob.create({
+  "pipeline_id" => "example_pipeline_id", # String
+  "run_id" => "example_run_id", # String
 })
 ```
 
@@ -13184,6 +27732,237 @@ run_updates.each { |item| puts item.data_get }
 ```
 
 
+### RunWorkspaceCredential
+
+Create an instance: `run_workspace_credential = client.RunWorkspaceCredential`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+run_workspace_credential = client.RunWorkspaceCredential.create({
+})
+```
+
+
+### RunnerLease
+
+Create an instance: `runner_lease = client.RunnerLease`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of RunnerLease entities, one per record (raises on error).
+runner_leases = client.RunnerLease.list({ "runner_id" => "example", "runner_pool_id" => "example" })
+runner_leases.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+runner_lease = client.RunnerLease.create({
+  "runner_id" => "example_runner_id", # String
+  "runner_pool_id" => "example_runner_pool_id", # String
+})
+```
+
+
+### RunnerPoolNodeEnrollmentToken
+
+Create an instance: `runner_pool_node_enrollment_token = client.RunnerPoolNodeEnrollmentToken`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capabilities_csv` | `Object` |  |
+| `ci_runner_pool_id` | `String` |  |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `creator_user_id` | `Object` |  |
+| `description` | `Object` |  |
+| `expires_at` | `Object` |  |
+| `expires_at_label` | `Object` |  |
+| `id` | `String` |  |
+| `kind` | `String` |  |
+| `last_used_at` | `Object` |  |
+| `last_used_at_label` | `Object` |  |
+| `name` | `String` |  |
+| `organization_id` | `String` |  |
+| `raw_token` | `Object` |  |
+| `revoked_at` | `Object` |  |
+| `status` | `String` |  |
+| `token_hint` | `String` |  |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+| `usage_count` | `Integer` |  |
+| `usage_count_label` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of RunnerPoolNodeEnrollmentToken entities, one per record (raises on error).
+runner_pool_node_enrollment_tokens = client.RunnerPoolNodeEnrollmentToken.list({ "runner_pool_id" => "example" })
+runner_pool_node_enrollment_tokens.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+runner_pool_node_enrollment_token = client.RunnerPoolNodeEnrollmentToken.create({
+  "runner_pool_id" => "example_runner_pool_id", # String
+  "name" => "example_name", # String
+})
+```
+
+
+### RunnerPoolRunner
+
+Create an instance: `runner_pool_runner = client.RunnerPoolRunner`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the RunnerPoolRunner record (raises on error).
+runner_pool_runner = client.RunnerPoolRunner.load({ "id" => "runner_pool_runner_id", "runner_pool_id" => "runner_pool_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of RunnerPoolRunner entities, one per record (raises on error).
+runner_pool_runners = client.RunnerPoolRunner.list({ "runner_pool_id" => "example" })
+runner_pool_runners.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+runner_pool_runner = client.RunnerPoolRunner.create({
+  "runner_pool_id" => "example_runner_pool_id", # String
+})
+```
+
+
+### RuntimeInstanceHealthSnapshot
+
+Create an instance: `runtime_instance_health_snapshot = client.RuntimeInstanceHealthSnapshot`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ruby
+# list returns an Array of RuntimeInstanceHealthSnapshot entities, one per record (raises on error).
+runtime_instance_health_snapshots = client.RuntimeInstanceHealthSnapshot.list({ "runtime_instance_id" => "example" })
+runtime_instance_health_snapshots.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+runtime_instance_health_snapshot = client.RuntimeInstanceHealthSnapshot.create({
+  "runtime_instance_id" => "example_runtime_instance_id", # String
+})
+```
+
+
+### SandboxIntegration
+
+Create an instance: `sandbox_integration = client.SandboxIntegration`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage` | `Boolean` |  |
+| `catalog` | `Array` |  |
+| `configuration` | `Hash` |  |
+| `connected_profiles` | `Hash` | Connected profiles per provider across the organization. |
+| `credentials` | `Hash` |  |
+| `enabled` | `Boolean` |  |
+| `id` | `String` |  |
+| `integrations` | `Array` |  |
+| `name` | `String` |  |
+| `provider` | `String` |  |
+| `version` | `Integer` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SandboxIntegration entities, one per record (raises on error).
+sandbox_integrations = client.SandboxIntegration.list({ "organization_id" => "example" })
+sandbox_integrations.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+sandbox_integration = client.SandboxIntegration.create({
+  "organization_id" => "example_organization_id", # String
+  "configuration" => {}, # Hash
+  "credentials" => {}, # Hash
+  "name" => "example_name", # String
+  "provider" => "example_provider", # String
+})
+```
+
+
 ### ScenarioRevision
 
 Create an instance: `scenario_revision = client.ScenarioRevision`
@@ -13259,6 +28038,98 @@ Create an instance: `scenario_run_scenario_edit = client.ScenarioRunScenarioEdit
 | `create(data)` | Create a new entity with the given data. |
 
 
+### SecretGrant
+
+Create an instance: `secret_grant = client.SecretGrant`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the SecretGrant record (raises on error).
+secret_grant = client.SecretGrant.load({ "id" => "secret_grant_id", "organization_id" => "organization_id", "secret_id" => "secret_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of SecretGrant entities, one per record (raises on error).
+secret_grants = client.SecretGrant.list({ "organization_id" => "example", "secret_id" => "example" })
+secret_grants.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+secret_grant = client.SecretGrant.create({
+  "organization_id" => "example_organization_id", # String
+  "secret_id" => "example_secret_id", # String
+})
+```
+
+
+### SecretVersion
+
+Create an instance: `secret_version = client.SecretVersion`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the SecretVersion record (raises on error).
+secret_version = client.SecretVersion.load({ "id" => "secret_version_id", "organization_id" => "organization_id", "secret_id" => "secret_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of SecretVersion entities, one per record (raises on error).
+secret_versions = client.SecretVersion.list({ "organization_id" => "example", "secret_id" => "example" })
+secret_versions.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+secret_version = client.SecretVersion.create({
+  "organization_id" => "example_organization_id", # String
+  "secret_id" => "example_secret_id", # String
+})
+```
+
+
 ### ServiceEndpoint
 
 Create an instance: `service_endpoint = client.ServiceEndpoint`
@@ -13305,6 +28176,399 @@ service_endpoint = client.ServiceEndpoint.create({
 ```
 
 
+### Setting
+
+Create an instance: `setting = client.Setting`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `Boolean` |  |
+| `can_manage_sandbox_region` | `Boolean` |  |
+| `dedicated_outbound_ip_addresses` | `Array` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `String` |  |
+| `organization` | `Hash` |  |
+| `sandbox_regions` | `Array` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of Setting entities, one per record (raises on error).
+settings = client.Setting.list({ "organization_id" => "example" })
+settings.each { |item| puts item.data_get }
+```
+
+
+### SettingMutationLease
+
+Create an instance: `setting_mutation_lease = client.SettingMutationLease`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### Signal
+
+Create an instance: `signal = client.Signal`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `acked_at` | `Object` |  |
+| `acked_by` | `Object` | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | `Hash` | Dispatched-run summary (docs §6c). |
+| `app_service_id` | `Object` |  |
+| `attribution` | `Hash` | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
+| `created_at` | `String` | ISO8601 row insert time — retention math and debugging only. |
+| `dedupe_key` | `Object` |  |
+| `hosted_app_id` | `Object` |  |
+| `id` | `String` | The signal's own `sig_…` public id — also the paging cursor value. |
+| `kind` | `String` | A frozen taxonomy kind (§1) or an `app.custom.*` kind. |
+| `links` | `Hash` | Canonical, relative API paths built from real routes (docs §6a). |
+| `occurred_at` | `String` | ISO8601 domain event time — what the UI displays and `since` filters on. |
+| `organization_id` | `String` |  |
+| `payload` | `Hash` | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
+| `recovery` | `Hash` | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | `Hash` | Recovery pairing (docs §6b). |
+| `severity` | `String` | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
+| `source` | `Hash` | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
+| `subject_id` | `Object` |  |
+| `subject_type` | `Object` | Polymorphic pointer: `AppDeployment`, `RuntimeInstance`, `AlertEvent`, `HostedApp`, or `SignalSubscription`. |
+| `summary` | `String` | One-line, kind-composed human sentence for the feed row (docs §6d, e.g. |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the Signal record (raises on error).
+signal = client.Signal.load({ "id" => "signal_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of Signal entities, one per record (raises on error).
+signals = client.Signal.list({ "organization_id" => "example" })
+signals.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+signal = client.Signal.create({
+})
+```
+
+
+### SignalInbound
+
+Create an instance: `signal_inbound = client.SignalInbound`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+
+### SignalIntegration
+
+Create an instance: `signal_integration = client.SignalIntegration`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `api_token` | `String` | Optional provider API token for target discovery and backfill. |
+| `api_token_stored` | `Boolean` |  |
+| `config` | `Hash` |  |
+| `created_at` | `Object` |  |
+| `failure_message` | `Object` |  |
+| `id` | `String` | Public id (`sint_…`). |
+| `inbound_path` | `String` |  |
+| `inbound_url` | `String` | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `Object` |  |
+| `last_verified_at` | `Object` |  |
+| `mode` | `String` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `String` |  |
+| `organization_id` | `String` |  |
+| `provider` | `String` |  |
+| `rejected_signature_count` | `Integer` | Deliveries rejected for a bad or missing signature. |
+| `status` | `String` |  |
+| `target_count` | `Integer` |  |
+| `unmapped_delivery_count` | `Integer` | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `Object` |  |
+| `webhook_secret` | `String` | The provider's signing secret. |
+| `webhook_secret_stored` | `Boolean` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the SignalIntegration record (raises on error).
+signal_integration = client.SignalIntegration.load({ "id" => "signal_integration_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of SignalIntegration entities, one per record (raises on error).
+signal_integrations = client.SignalIntegration.list({ "organization_id" => "example" })
+signal_integrations.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+signal_integration = client.SignalIntegration.create({
+  "organization_id" => "example_organization_id", # String
+  "name" => "example_name", # String
+  "provider" => "example_provider", # String
+})
+```
+
+
+### SignalIntegrationDelivery
+
+Create an instance: `signal_integration_delivery = client.SignalIntegrationDelivery`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `attempt_count` | `Integer` |  |
+| `created_at` | `Object` |  |
+| `delivery_id` | `String` | The provider's delivery id, or a `content-…` id derived from the event kind, its timestamp header and the body checksum when it sends none. |
+| `event_kind` | `Object` |  |
+| `id` | `String` | Public id (`sdel_…`). |
+| `last_error` | `Object` |  |
+| `ops_signal_id` | `Object` | Public id (`sig_…`) of the signal this delivery emitted. |
+| `organization_id` | `String` |  |
+| `processed_at` | `Object` |  |
+| `provider` | `String` |  |
+| `received_at` | `Object` |  |
+| `signal_integration_id` | `String` |  |
+| `state` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SignalIntegrationDelivery entities, one per record (raises on error).
+signal_integration_deliverys = client.SignalIntegrationDelivery.list({ "organization_id" => "example", "signal_integration_id" => "example" })
+signal_integration_deliverys.each { |item| puts item.data_get }
+```
+
+
+### SignalIntegrationTarget
+
+Create an instance: `signal_integration_target = client.SignalIntegrationTarget`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `app_service_id` | `Object` |  |
+| `created_at` | `Object` |  |
+| `display_name` | `Object` |  |
+| `enabled` | `Boolean` |  |
+| `external_id` | `String` |  |
+| `external_kind` | `String` |  |
+| `external_slug` | `Object` |  |
+| `hosted_app_id` | `Object` |  |
+| `id` | `String` | Public id (`stgt_…`). |
+| `organization_id` | `String` |  |
+| `signal_integration_id` | `String` |  |
+| `signal_integration_targets` | `Array` |  |
+| `targets` | `Array` |  |
+| `updated_at` | `Object` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SignalIntegrationTarget entities, one per record (raises on error).
+signal_integration_targets = client.SignalIntegrationTarget.list({ "organization_id" => "example", "signal_integration_id" => "example" })
+signal_integration_targets.each { |item| puts item.data_get }
+```
+
+
+### SignalSubscription
+
+Create an instance: `signal_subscription = client.SignalSubscription`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the SignalSubscription record (raises on error).
+signal_subscription = client.SignalSubscription.load({ "id" => "signal_subscription_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of SignalSubscription entities, one per record (raises on error).
+signal_subscriptions = client.SignalSubscription.list({ "organization_id" => "example" })
+signal_subscriptions.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+signal_subscription = client.SignalSubscription.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### Site
+
+Create an instance: `site = client.Site`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_at` | `Object` |  |
+| `activated_at_label` | `Object` |  |
+| `commit_sha` | `Object` |  |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `creator_user_id` | `Object` |  |
+| `deploy_slug` | `String` |  |
+| `failure_message` | `Object` |  |
+| `file_count` | `Integer` |  |
+| `file_count_label` | `String` |  |
+| `finished_at` | `Object` |  |
+| `finished_at_label` | `Object` |  |
+| `id` | `String` |  |
+| `is_active` | `Boolean` |  |
+| `source_ref` | `Object` |  |
+| `started_at` | `Object` |  |
+| `started_at_label` | `Object` |  |
+| `static_site_id` | `String` |  |
+| `status` | `String` |  |
+| `total_bytes` | `Integer` |  |
+| `total_bytes_label` | `String` |  |
+| `trigger_kind` | `String` |  |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+| `uploaded_at` | `Object` |  |
+| `uploaded_at_label` | `Object` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of Site entities, one per record (raises on error).
+sites = client.Site.list({ "organization_id" => "example" })
+sites.each { |item| puts item.data_get }
+```
+
+
+### SiteAccessKey
+
+Create an instance: `site_access_key = client.SiteAccessKey`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SiteAccessKey entities, one per record (raises on error).
+site_access_keys = client.SiteAccessKey.list({ "organization_id" => "example", "site_id" => "example" })
+site_access_keys.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+site_access_key = client.SiteAccessKey.create({
+  "organization_id" => "example_organization_id", # String
+  "site_id" => "example_site_id", # String
+})
+```
+
+
 ### SitePreview
 
 Create an instance: `site_preview = client.SitePreview`
@@ -13329,6 +28593,26 @@ Create an instance: `site_preview = client.SitePreview`
 # load returns the ENTITY — call data_get for the SitePreview record (raises on error).
 site_preview = client.SitePreview.load({ "organization_id" => "organization_id", "url" => "url" })
 ```
+
+
+### SiteSecret
+
+Create an instance: `site_secret = client.SiteSecret`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+| `native_agent_id` | `String` |  |
+| `value` | `String` |  |
 
 
 ### SlackChannel
@@ -13358,6 +28642,732 @@ Create an instance: `slack_channel = client.SlackChannel`
 # list returns an Array of SlackChannel entities, one per record (raises on error).
 slack_channels = client.SlackChannel.list({ "agent_id" => "example", "organization_id" => "example" })
 slack_channels.each { |item| puts item.data_get }
+```
+
+
+### SourceConnection
+
+Create an instance: `source_connection = client.SourceConnection`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+
+### SpaceAlertRule
+
+Create an instance: `space_alert_rule = client.SpaceAlertRule`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the SpaceAlertRule record (raises on error).
+space_alert_rule = client.SpaceAlertRule.load({ "id" => "space_alert_rule_id", "space_id" => "space_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of SpaceAlertRule entities, one per record (raises on error).
+space_alert_rules = client.SpaceAlertRule.list({ "space_id" => "example" })
+space_alert_rules.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+space_alert_rule = client.SpaceAlertRule.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+
+### SpaceAuditEvent
+
+Create an instance: `space_audit_event = client.SpaceAuditEvent`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SpaceAuditEvent entities, one per record (raises on error).
+space_audit_events = client.SpaceAuditEvent.list({ "space_id" => "example" })
+space_audit_events.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+space_audit_event = client.SpaceAuditEvent.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+
+### SpaceDnsRecord
+
+Create an instance: `space_dns_record = client.SpaceDnsRecord`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the SpaceDnsRecord record (raises on error).
+space_dns_record = client.SpaceDnsRecord.load({ "id" => "space_dns_record_id", "space_id" => "space_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of SpaceDnsRecord entities, one per record (raises on error).
+space_dns_records = client.SpaceDnsRecord.list({ "space_id" => "example" })
+space_dns_records.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+space_dns_record = client.SpaceDnsRecord.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+
+### SpaceEnrollmentToken
+
+Create an instance: `space_enrollment_token = client.SpaceEnrollmentToken`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the SpaceEnrollmentToken record (raises on error).
+space_enrollment_token = client.SpaceEnrollmentToken.load({ "id" => "space_enrollment_token_id", "space_id" => "space_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of SpaceEnrollmentToken entities, one per record (raises on error).
+space_enrollment_tokens = client.SpaceEnrollmentToken.list({ "space_id" => "example" })
+space_enrollment_tokens.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+space_enrollment_token = client.SpaceEnrollmentToken.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+
+### SpaceGateway
+
+Create an instance: `space_gateway = client.SpaceGateway`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the SpaceGateway record (raises on error).
+space_gateway = client.SpaceGateway.load({ "id" => "space_gateway_id", "space_id" => "space_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of SpaceGateway entities, one per record (raises on error).
+space_gateways = client.SpaceGateway.list({ "space_id" => "example" })
+space_gateways.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+space_gateway = client.SpaceGateway.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+
+### SpaceGroup
+
+Create an instance: `space_group = client.SpaceGroup`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SpaceGroup entities, one per record (raises on error).
+space_groups = client.SpaceGroup.list({ "space_id" => "example" })
+space_groups.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+space_group = client.SpaceGroup.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+
+### SpaceGroupMembership
+
+Create an instance: `space_group_membership = client.SpaceGroupMembership`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SpaceGroupMembership entities, one per record (raises on error).
+space_group_memberships = client.SpaceGroupMembership.list({ "space_id" => "example" })
+space_group_memberships.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+space_group_membership = client.SpaceGroupMembership.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+
+### SpaceLogStream
+
+Create an instance: `space_log_stream = client.SpaceLogStream`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SpaceLogStream entities, one per record (raises on error).
+space_log_streams = client.SpaceLogStream.list({ "space_id" => "example" })
+space_log_streams.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+space_log_stream = client.SpaceLogStream.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+
+### SpaceMetricSery
+
+Create an instance: `space_metric_sery = client.SpaceMetricSery`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SpaceMetricSery entities, one per record (raises on error).
+space_metric_serys = client.SpaceMetricSery.list({ "space_id" => "example" })
+space_metric_serys.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+space_metric_sery = client.SpaceMetricSery.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+
+### SpaceOtelCollector
+
+Create an instance: `space_otel_collector = client.SpaceOtelCollector`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the SpaceOtelCollector record (raises on error).
+space_otel_collector = client.SpaceOtelCollector.load({ "id" => "space_otel_collector_id", "space_id" => "space_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of SpaceOtelCollector entities, one per record (raises on error).
+space_otel_collectors = client.SpaceOtelCollector.list({ "space_id" => "example" })
+space_otel_collectors.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+space_otel_collector = client.SpaceOtelCollector.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+
+### SpacePeer
+
+Create an instance: `space_peer = client.SpacePeer`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the SpacePeer record (raises on error).
+space_peer = client.SpacePeer.load({ "id" => "space_peer_id", "space_id" => "space_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of SpacePeer entities, one per record (raises on error).
+space_peers = client.SpacePeer.list({ "space_id" => "example" })
+space_peers.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+space_peer = client.SpacePeer.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+
+### SpacePeerAttachment
+
+Create an instance: `space_peer_attachment = client.SpacePeerAttachment`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SpacePeerAttachment entities, one per record (raises on error).
+space_peer_attachments = client.SpacePeerAttachment.list({ "space_id" => "example" })
+space_peer_attachments.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+space_peer_attachment = client.SpacePeerAttachment.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+
+### SpacePolicy
+
+Create an instance: `space_policy = client.SpacePolicy`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the SpacePolicy record (raises on error).
+space_policy = client.SpacePolicy.load({ "id" => "space_policy_id", "space_id" => "space_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of SpacePolicy entities, one per record (raises on error).
+space_policys = client.SpacePolicy.list({ "space_id" => "example" })
+space_policys.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+space_policy = client.SpacePolicy.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+
+### SpaceSegment
+
+Create an instance: `space_segment = client.SpaceSegment`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the SpaceSegment record (raises on error).
+space_segment = client.SpaceSegment.load({ "id" => "space_segment_id", "space_id" => "space_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of SpaceSegment entities, one per record (raises on error).
+space_segments = client.SpaceSegment.list({ "space_id" => "example" })
+space_segments.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+space_segment = client.SpaceSegment.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+
+### SpaceTraceSpan
+
+Create an instance: `space_trace_span = client.SpaceTraceSpan`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SpaceTraceSpan entities, one per record (raises on error).
+space_trace_spans = client.SpaceTraceSpan.list({ "space_id" => "example" })
+space_trace_spans.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+space_trace_span = client.SpaceTraceSpan.create({
+  "space_id" => "example_space_id", # String
+})
+```
+
+
+### Spark
+
+Create an instance: `spark = client.Spark`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_products` | `Array` | Products this organization has activated (PRD 144). |
+| `agents_only` | `Boolean` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `Boolean` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `can_manage` | `Boolean` |  |
+| `compute_credit_cents` | `Object` | Included compute the workspace started Sparks with, when it is on compute billing. |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `credit_cents` | `Object` | Inference credit the workspace started Sparks with. |
+| `first_spark` | `Object` | Null until the first Spark exists or when the viewer cannot read it. |
+| `github_connected` | `Boolean` |  |
+| `github_prs_authored_by_change_author` | `Boolean` |  |
+| `id` | `String` |  |
+| `jsonrpc` | `String` |  |
+| `logo_url` | `Object` |  |
+| `member_count` | `Integer` |  |
+| `method` | `String` |  |
+| `name` | `String` |  |
+| `params` | `Hash` |  |
+| `pending_invitation_count` | `Integer` |  |
+| `personal` | `Boolean` |  |
+| `repository_count` | `Integer` |  |
+| `role` | `Object` |  |
+| `sandbox_region` | `String` |  |
+| `shared_agent_personal_accounts_enabled` | `Boolean` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `String` |  |
+| `source_control_providers` | `Array` | Connected source control providers for this organization. |
+| `source_ui_enabled` | `Boolean` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `started` | `Boolean` | Whether the workspace has started Sparks. |
+| `timezone` | `String` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+| `verify_pr_scenario_writing_enabled` | `Boolean` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of Spark entities, one per record (raises on error).
+sparks = client.Spark.list({ "organization_id" => "example" })
+sparks.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+spark = client.Spark.create({
+  "jsonrpc" => "example_jsonrpc", # String
+  "method" => "example_method", # String
+})
+```
+
+
+### SparkAgentIntegration
+
+Create an instance: `spark_agent_integration = client.SparkAgentIntegration`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_counts` | `Hash` | Accounts the viewer can see per toolkit, across all account pages. |
+| `accounts_path` | `String` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
+| `added_toolkits` | `Array` | Apps with a connected or connecting account the viewer can see. |
+| `can_manage` | `Boolean` |  |
+| `can_manage_organization` | `Boolean` |  |
+| `catalog` | `Array` |  |
+| `connect_as` | `Object` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
+| `connect_as_by_toolkit` | `Hash` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_counts` | `Hash` | Signed-in accounts per toolkit, across all account pages. |
+| `connection_id` | `String` |  |
+| `connections` | `Array` |  |
+| `email` | `Hash` | A native agent's own email address. |
+| `enabled` | `Boolean` |  |
+| `enabled_toolkits` | `Array` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `generation` | `Integer` |  |
+| `pagination` | `Hash` |  |
+| `pending_counts` | `Hash` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
+| `personal_creation_key_supported` | `Boolean` | The personal account creation endpoint honors a creation key. |
+| `private_agent` | `Boolean` | Only the agent's owner can chat with it. |
+| `shared_agent_personal_accounts_enabled` | `Boolean` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
+| `slack` | `Hash` |  |
+| `webhook_connections` | `Array` |  |
+| `webhooks_available` | `Boolean` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SparkAgentIntegration entities, one per record (raises on error).
+spark_agent_integrations = client.SparkAgentIntegration.list({ "agent_id" => "example", "organization_id" => "example" })
+spark_agent_integrations.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+spark_agent_integration = client.SparkAgentIntegration.create({
+  "agent_id" => "example_agent_id", # String
+  "organization_id" => "example_organization_id", # String
+  "connection_id" => "example_connection_id", # String
+  "enabled" => true, # Boolean
+  "generation" => 1, # Integer
+})
 ```
 
 
@@ -13429,6 +29439,260 @@ spark_agent_local_thread = client.SparkAgentLocalThread.create({
   "provider" => "example_provider", # String
   "thread_id" => "example_thread_id", # String
 })
+```
+
+
+### SparkAgentSite
+
+Create an instance: `spark_agent_site = client.SparkAgentSite`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `deployed_at` | `String` |  |
+| `deployments_count` | `Integer` |  |
+| `hostname` | `String` |  |
+| `https` | `String` | Whether the organization's certificate serves this site over HTTPS |
+| `id` | `String` |  |
+| `name` | `String` |  |
+| `url` | `String` |  |
+| `visibility` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SparkAgentSite entities, one per record (raises on error).
+spark_agent_sites = client.SparkAgentSite.list({ "agent_id" => "example", "organization_id" => "example" })
+spark_agent_sites.each { |item| puts item.data_get }
+```
+
+
+### SparkAgentSkill
+
+Create an instance: `spark_agent_skill = client.SparkAgentSkill`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `available` | `Boolean` |  |
+| `can_configure` | `Boolean` |  |
+| `can_manage` | `Boolean` |  |
+| `configuration_state` | `String` | The requested managed skill selection is awaiting runtime qualification. |
+| `description` | `String` |  |
+| `enabled` | `Boolean` |  |
+| `name` | `String` |  |
+| `skills` | `Array` |  |
+| `version` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SparkAgentSkill entities, one per record (raises on error).
+spark_agent_skills = client.SparkAgentSkill.list({ "agent_id" => "example", "organization_id" => "example" })
+spark_agent_skills.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+spark_agent_skill = client.SparkAgentSkill.create({
+  "agent_id" => "example_agent_id", # String
+  "organization_id" => "example_organization_id", # String
+  "enabled" => true, # Boolean
+  "name" => "example_name", # String
+  "version" => "example_version", # String
+})
+```
+
+
+### SparkAgentThread
+
+Create an instance: `spark_agent_thread = client.SparkAgentThread`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `archived_count` | `Object` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
+| `can_create` | `Boolean` |  |
+| `execution` | `Object` |  |
+| `first_input` | `Object` |  |
+| `first_input_key` | `String` | Idempotency-Key that finds the first message through input_delivery. |
+| `first_input_requester_membership_id` | `String` | Membership the first message was sent as, for input_delivery. |
+| `id` | `String` |  |
+| `inherit_context` | `Boolean` | Include the source conversation through its last completed reply. |
+| `local_activities` | `Hash` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
+| `local_archived_count` | `Integer` | Local Claude Code and Codex threads archived on their computers. |
+| `local_next_cursor` | `Object` |  |
+| `local_scope_key` | `Object` |  |
+| `local_status_pending` | `Boolean` | A computer is reporting newer local thread statuses; read the page again shortly. |
+| `local_threads` | `Array` |  |
+| `main_thread_id` | `String` |  |
+| `message` | `String` | The thread's first message. |
+| `next_cursor` | `Object` |  |
+| `parent_conversation_id` | `String` | Optional source conversation belonging to this agent. |
+| `requester_membership_id` | `String` |  |
+| `selected_thread` | `Object` |  |
+| `thread` | `Hash` |  |
+| `threads` | `Array` |  |
+| `title` | `String` |  |
+| `total_archived_count` | `Object` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SparkAgentThread entities, one per record (raises on error).
+spark_agent_threads = client.SparkAgentThread.list({ "agent_id" => "example", "organization_id" => "example" })
+spark_agent_threads.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+spark_agent_thread = client.SparkAgentThread.create({
+  "agent_id" => "example_agent_id", # String
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### SparkCredit
+
+Create an instance: `spark_credit = client.SparkCredit`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `amount_cents` | `Integer` | Purchase amount in USD cents. |
+| `autofill` | `Object` |  |
+| `autofill_payment_unconfirmed` | `Boolean` |  |
+| `available_usd` | `String` |  |
+| `billing_unit` | `String` | Compute minute quote version returned by the billing summary. |
+| `can_manage` | `Boolean` |  |
+| `compute_minutes` | `Hash` |  |
+| `compute_usd` | `String` |  |
+| `credits_per_usd` | `Integer` |  |
+| `inference_usd` | `String` |  |
+| `kind` | `String` |  |
+| `payment_method` | `Object` |  |
+| `payments_enabled` | `Boolean` |  |
+| `plan` | `String` |  |
+| `plans` | `Array` |  |
+| `quoted_credits_cents` | `Integer` | Grant shown for a top-up or subscription, in usage cents. |
+| `quoted_price_cents` | `Integer` | Monthly cash price shown for a subscription, in USD cents. |
+| `refill_limits_cents` | `Array` |  |
+| `refill_options` | `Array` |  |
+| `refill_thresholds_cents` | `Array` |  |
+| `request_key` | `String` |  |
+| `settings` | `Object` |  |
+| `starter_cents` | `Integer` |  |
+| `top_up_max_cents` | `Integer` | Maximum manual top-up, in USD cents. |
+| `top_up_step_cents` | `Integer` | Minimum manual top-up and increment, in USD cents. |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SparkCredit entities, one per record (raises on error).
+spark_credits = client.SparkCredit.list({ "organization_id" => "example" })
+spark_credits.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+spark_credit = client.SparkCredit.create({
+  "organization_id" => "example_organization_id", # String
+  "kind" => "example_kind", # String
+  "request_key" => "example_request_key", # String
+})
+```
+
+
+### SparkCreditAgentUsage
+
+Create an instance: `spark_credit_agent_usage = client.SparkCreditAgentUsage`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agents` | `Array` |  |
+| `all` | `Hash` |  |
+| `days` | `Array` |  |
+| `id` | `String` |  |
+| `owners` | `Array` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the SparkCreditAgentUsage record (raises on error).
+spark_credit_agent_usage = client.SparkCreditAgentUsage.load({ "id" => "spark_credit_agent_usage_id", "organization_id" => "organization_id" })
+```
+
+
+### SparkCreditUsageTotal
+
+Create an instance: `spark_credit_usage_total = client.SparkCreditUsageTotal`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `compute_minutes_used` | `String` |  |
+| `compute_usd` | `String` |  |
+| `inference_usd` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SparkCreditUsageTotal entities, one per record (raises on error).
+spark_credit_usage_totals = client.SparkCreditUsageTotal.list({ "organization_id" => "example" })
+spark_credit_usage_totals.each { |item| puts item.data_get }
 ```
 
 
@@ -13632,6 +29896,138 @@ static_site_domain = client.StaticSiteDomain.create({
 ```
 
 
+### StatusChange
+
+Create an instance: `status_change = client.StatusChange`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_id` | `String` |  |
+| `id` | `String` |  |
+| `patchsets` | `Array` |  |
+| `status` | `String` |  |
+| `status_label` | `String` |  |
+| `status_state` | `String` |  |
+| `status_tone` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the StatusChange record (raises on error).
+status_change = client.StatusChange.load({ "id" => "status_change_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+
+### StatusCommit
+
+Create an instance: `status_commit = client.StatusCommit`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `checks` | `Array` |  |
+| `commit_sha` | `String` |  |
+| `counts` | `Hash` |  |
+| `id` | `String` |  |
+| `status` | `String` |  |
+| `status_label` | `String` |  |
+| `status_state` | `String` |  |
+| `status_tone` | `String` |  |
+| `total` | `Integer` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the StatusCommit record (raises on error).
+status_commit = client.StatusCommit.load({ "id" => "status_commit_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+
+### StatusPatchset
+
+Create an instance: `status_patchset = client.StatusPatchset`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `checks` | `Array` |  |
+| `checks_status` | `Object` |  |
+| `commit_sha` | `Object` |  |
+| `counts` | `Hash` |  |
+| `id` | `String` |  |
+| `patchset_id` | `String` |  |
+| `status` | `String` |  |
+| `status_label` | `String` |  |
+| `status_state` | `String` |  |
+| `status_tone` | `String` |  |
+| `total` | `Integer` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the StatusPatchset record (raises on error).
+status_patchset = client.StatusPatchset.load({ "id" => "status_patchset_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+
+### StripeWebhook
+
+Create an instance: `stripe_webhook = client.StripeWebhook`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+stripe_webhook = client.StripeWebhook.create({
+})
+```
+
+
+### SubmitTelemetry
+
+Create an instance: `submit_telemetry = client.SubmitTelemetry`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+submit_telemetry = client.SubmitTelemetry.create({
+})
+```
+
+
 ### SubscriptionModel
 
 Create an instance: `subscription_model = client.SubscriptionModel`
@@ -13662,6 +30058,178 @@ subscription_models.each { |item| puts item.data_get }
 ```
 
 
+### SwarmEvent
+
+Create an instance: `swarm_event = client.SwarmEvent`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_swarm_id` | `String` |  |
+| `attempt_id` | `Object` |  |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `id` | `Integer` |  |
+| `kind` | `String` |  |
+| `payload` | `Hash` |  |
+| `reason` | `Object` |  |
+| `scheduler_generation` | `Object` |  |
+| `task_id` | `Object` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SwarmEvent entities, one per record (raises on error).
+swarm_events = client.SwarmEvent.list({ "swarm_id" => "example" })
+swarm_events.each { |item| puts item.data_get }
+```
+
+
+### SwarmLive
+
+Create an instance: `swarm_live = client.SwarmLive`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### SwarmNote
+
+Create an instance: `swarm_note = client.SwarmNote`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `task_id` | `Object` | A task public id; omitted |
+| `text` | `String` |  |
+
+#### Example: Create
+
+```ruby
+swarm_note = client.SwarmNote.create({
+  "swarm_id" => "example_swarm_id", # String
+  "text" => "example_text", # String
+})
+```
+
+
+### SwarmTask
+
+Create an instance: `swarm_task = client.SwarmTask`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `acceptance_commands` | `Array` |  |
+| `agent_swarm_id` | `String` |  |
+| `assigned_runner_id` | `Object` |  |
+| `blocked_reason` | `Object` |  |
+| `changes` | `Array` |  |
+| `commit_count` | `Integer` |  |
+| `commit_sha_result` | `Object` |  |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `current_attempt_id` | `Object` |  |
+| `deadline_at` | `Object` |  |
+| `depends_on_task_ids` | `Array` |  |
+| `depth` | `Integer` |  |
+| `diff_artifact_url` | `Object` |  |
+| `display_id` | `Integer` |  |
+| `environment_profile` | `Object` |  |
+| `error_message` | `Object` |  |
+| `failure_code` | `Object` |  |
+| `finished_at` | `Object` |  |
+| `finished_at_label` | `Object` |  |
+| `harness` | `String` |  |
+| `id` | `String` |  |
+| `input_revision` | `Object` |  |
+| `iteration` | `Integer` |  |
+| `landing_state` | `String` |  |
+| `model` | `Object` |  |
+| `model_provider` | `Object` |  |
+| `number` | `Integer` |  |
+| `organization_id` | `String` |  |
+| `owned_paths` | `Array` |  |
+| `parent_task_id` | `Object` |  |
+| `position` | `Integer` |  |
+| `prompt` | `String` |  |
+| `queued_at` | `Object` |  |
+| `queued_at_label` | `Object` |  |
+| `reasoning_effort` | `Object` |  |
+| `recent_activity` | `Array` |  |
+| `repo_url` | `String` |  |
+| `result` | `Hash` |  |
+| `retry_number` | `Integer` |  |
+| `role` | `String` |  |
+| `run_id` | `Object` |  |
+| `stack_after_task_id` | `Object` |  |
+| `started_at` | `Object` |  |
+| `started_at_label` | `Object` |  |
+| `status` | `String` |  |
+| `title` | `Object` |  |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of SwarmTask entities, one per record (raises on error).
+swarm_tasks = client.SwarmTask.list({ "swarm_id" => "example" })
+swarm_tasks.each { |item| puts item.data_get }
+```
+
+
+### TaskLease
+
+Create an instance: `task_lease = client.TaskLease`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+#### Example: Create
+
+```ruby
+task_lease = client.TaskLease.create({
+  "swarm_id" => "example_swarm_id", # String
+  "task_id" => "example_task_id", # String
+})
+```
+
+
 ### ThreadPreview
 
 Create an instance: `thread_preview = client.ThreadPreview`
@@ -13689,6 +30257,459 @@ thread_preview = client.ThreadPreview.create({
   "thread_id" => "example_thread_id", # String
   "port" => 1, # Integer
 })
+```
+
+
+### ThreadPreviewAccess
+
+Create an instance: `thread_preview_access = client.ThreadPreviewAccess`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### ToolFeedback
+
+Create an instance: `tool_feedback = client.ToolFeedback`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `category` | `String` |  |
+| `created_at` | `String` |  |
+| `details` | `String` |  |
+| `feedback` | `Hash` |  |
+| `id` | `String` |  |
+| `metadata` | `Hash` | Caller-supplied session context; no secrets or transcripts |
+| `organization_id` | `String` |  |
+| `source` | `String` |  |
+| `summary` | `String` |  |
+| `user_id` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the ToolFeedback record (raises on error).
+tool_feedback = client.ToolFeedback.load({ "id" => "tool_feedback_id", "organization_id" => "organization_id" })
+```
+
+#### Example: Create
+
+```ruby
+tool_feedback = client.ToolFeedback.create({
+  "organization_id" => "example_organization_id", # String
+  "feedback" => {}, # Hash
+})
+```
+
+
+### Transcript
+
+Create an instance: `transcript = client.Transcript`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent` | `String` |  |
+| `author` | `Hash` |  |
+| `checkpoint_pagination` | `Hash` |  |
+| `checkpoints` | `Array` |  |
+| `id` | `String` |  |
+| `last_checkpoint_at` | `Object` |  |
+| `selected_checkpoint` | `Object` |  |
+| `source_url` | `String` |  |
+| `started_at` | `String` |  |
+| `status` | `String` |  |
+| `title` | `Object` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of Transcript entities, one per record (raises on error).
+transcripts = client.Transcript.list({ "repo" => "example" })
+transcripts.each { |item| puts item.data_get }
+```
+
+
+### V1Message
+
+Create an instance: `v1_message = client.V1Message`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+v1_message = client.V1Message.create({
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
+### VcBranch
+
+Create an instance: `vc_branch = client.VcBranch`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+| `name` | `String` |  |
+| `target_commit_id` | `String` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of VcBranch entities, one per record (raises on error).
+vc_branchs = client.VcBranch.list({ "organization_id" => "example", "repo_id" => "example" })
+vc_branchs.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+vc_branch = client.VcBranch.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+})
+```
+
+
+### VcBrowser
+
+Create an instance: `vc_browser = client.VcBrowser`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### VcChange
+
+Create an instance: `vc_change = client.VcChange`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activity` | `Array` |  |
+| `canonical_path` | `String` |  |
+| `change` | `Object` |  |
+| `checks` | `Array` |  |
+| `checks_status` | `String` |  |
+| `description` | `Object` |  |
+| `group` | `Object` |  |
+| `id` | `String` |  |
+| `jj_change_id` | `Object` |  |
+| `labels` | `Array` |  |
+| `landing` | `Hash` | Server-computed submitted-together closure and landing preflight. |
+| `number` | `Integer` |  |
+| `patchset_number` | `Object` |  |
+| `previews` | `Array` |  |
+| `primary_status` | `Object` |  |
+| `public_id` | `String` |  |
+| `related_changes` | `Array` |  |
+| `relation_chain` | `Array` |  |
+| `restack_state` | `String` |  |
+| `review_summary` | `Hash` |  |
+| `stack` | `Object` |  |
+| `status` | `String` |  |
+| `sync` | `Hash` |  |
+| `target` | `Hash` |  |
+| `target_advanced` | `Boolean` |  |
+| `target_branch` | `String` |  |
+| `title` | `String` |  |
+| `url` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the VcChange record (raises on error).
+vc_change = client.VcChange.load({ "id" => "vc_change_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of VcChange entities, one per record (raises on error).
+vc_changes = client.VcChange.list({ "organization_id" => "example", "repo_id" => "example" })
+vc_changes.each { |item| puts item.data_get }
+```
+
+
+### VcChangeGroup
+
+Create an instance: `vc_change_group = client.VcChangeGroup`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `changes` | `Array` |  |
+| `id` | `String` |  |
+| `name` | `String` |  |
+| `number` | `Integer` |  |
+| `status` | `String` |  |
+| `title` | `Object` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the VcChangeGroup record (raises on error).
+vc_change_group = client.VcChangeGroup.load({ "id" => "vc_change_group_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of VcChangeGroup entities, one per record (raises on error).
+vc_change_groups = client.VcChangeGroup.list({ "organization_id" => "example", "repo_id" => "example" })
+vc_change_groups.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+vc_change_group = client.VcChangeGroup.create({
+  "organization_id" => "example_organization_id", # String
+  "repo_id" => "example_repo_id", # String
+  "name" => "example_name", # String
+})
+```
+
+
+### VcFile
+
+Create an instance: `vc_file = client.VcFile`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `paths` | `Array` |  |
+| `truncated` | `Boolean` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of VcFile entities, one per record (raises on error).
+vc_files = client.VcFile.list({ "organization_id" => "example", "repo_id" => "example", "ref" => "example" })
+vc_files.each { |item| puts item.data_get }
+```
+
+
+### VcMergeQueue
+
+Create an instance: `vc_merge_queue = client.VcMergeQueue`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `analytics` | `Hash` | Queue performance for the reporting window. |
+| `id` | `String` |  |
+| `policy` | `Hash` |  |
+| `queue` | `Hash` |  |
+| `target_branches` | `Array` | Bookmark names for the target picker. |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the VcMergeQueue record (raises on error).
+vc_merge_queue = client.VcMergeQueue.load({ "id" => "vc_merge_queue_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of VcMergeQueue entities, one per record (raises on error).
+vc_merge_queues = client.VcMergeQueue.list({ "organization_id" => "example", "repo_id" => "example" })
+vc_merge_queues.each { |item| puts item.data_get }
+```
+
+
+### VcStack
+
+Create an instance: `vc_stack = client.VcStack`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `alias_ref_name` | `Object` |  |
+| `changes` | `Array` |  |
+| `code` | `String` |  |
+| `id` | `String` |  |
+| `landing` | `Hash` | Compact landing state for the Stack CLI. |
+| `member_count` | `Integer` |  |
+| `name` | `Object` |  |
+| `ref_name` | `String` |  |
+| `status` | `String` |  |
+| `tip_change_number` | `Object` |  |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the VcStack record (raises on error).
+vc_stack = client.VcStack.load({ "id" => "vc_stack_id", "organization_id" => "organization_id", "repo_id" => "repo_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of VcStack entities, one per record (raises on error).
+vc_stacks = client.VcStack.list({ "organization_id" => "example", "repo_id" => "example" })
+vc_stacks.each { |item| puts item.data_get }
+```
+
+
+### VcsNode
+
+Create an instance: `vcs_node = client.VcsNode`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `Object` |  |
+| `account_id` | `Object` |  |
+| `account_login` | `String` |  |
+| `created_at` | `String` |  |
+| `created_at_label` | `Object` |  |
+| `id` | `String` |  |
+| `installation_id` | `String` |  |
+| `installed_at` | `Object` |  |
+| `installed_at_label` | `Object` |  |
+| `manage_access_url` | `String` |  |
+| `organization_id` | `String` |  |
+| `permission_entries` | `Array` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `Hash` |  |
+| `status` | `String` |  |
+| `suspended_at` | `Object` |  |
+| `suspended_at_label` | `Object` |  |
+| `updated_at` | `String` |  |
+| `updated_at_label` | `Object` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of VcsNode entities, one per record (raises on error).
+vcs_nodes = client.VcsNode.list({ "organization_id" => "example" })
+vcs_nodes.each { |item| puts item.data_get }
+```
+
+
+### VcsSetting
+
+Create an instance: `vcs_setting = client.VcsSetting`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `Boolean` |  |
+| `can_manage_sandbox_region` | `Boolean` |  |
+| `dedicated_outbound_ip_addresses` | `Array` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `String` |  |
+| `organization` | `Hash` |  |
+| `sandbox_regions` | `Array` |  |
+
+#### Example: List
+
+```ruby
+# list returns an Array of VcsSetting entities, one per record (raises on error).
+vcs_settings = client.VcsSetting.list({ "organization_id" => "example" })
+vcs_settings.each { |item| puts item.data_get }
 ```
 
 
@@ -14043,6 +31064,69 @@ verify_browser_session = client.VerifyBrowserSession.create({
 ```
 
 
+### VerifyEmailVerification
+
+Create an instance: `verify_email_verification = client.VerifyEmailVerification`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```ruby
+# list returns an Array of VerifyEmailVerification entities, one per record (raises on error).
+verify_email_verifications = client.VerifyEmailVerification.list
+verify_email_verifications.each { |item| puts item.data_get }
+```
+
+
+### VerifySignalIntegration
+
+Create an instance: `verify_signal_integration = client.VerifySignalIntegration`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `api_token_stored` | `Boolean` |  |
+| `config` | `Hash` |  |
+| `created_at` | `Object` |  |
+| `failure_message` | `Object` |  |
+| `id` | `String` | Public id (`sint_…`). |
+| `inbound_path` | `String` |  |
+| `inbound_url` | `String` | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `Object` |  |
+| `last_verified_at` | `Object` |  |
+| `mode` | `String` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `String` |  |
+| `organization_id` | `String` |  |
+| `provider` | `String` |  |
+| `rejected_signature_count` | `Integer` | Deliveries rejected for a bad or missing signature. |
+| `status` | `String` |  |
+| `target_count` | `Integer` |  |
+| `unmapped_delivery_count` | `Integer` | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `Object` |  |
+| `webhook_secret_stored` | `Boolean` |  |
+
+#### Example: Create
+
+```ruby
+verify_signal_integration = client.VerifySignalIntegration.create({
+  "id" => "example_id", # String
+  "organization_id" => "example_organization_id", # String
+})
+```
+
+
 ### VerifyStaticSiteDomain
 
 Create an instance: `verify_static_site_domain = client.VerifyStaticSiteDomain`
@@ -14123,6 +31207,24 @@ version_logs.each { |item| puts item.data_get }
 ```
 
 
+### WaitlistApplication
+
+Create an instance: `waitlist_application = client.WaitlistApplication`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```ruby
+waitlist_application = client.WaitlistApplication.create({
+})
+```
+
+
 ### WebBotAuth
 
 Create an instance: `web_bot_auth = client.WebBotAuth`
@@ -14148,6 +31250,23 @@ web_bot_auth = client.WebBotAuth.create({
   "origin" => "example_origin", # String
 })
 ```
+
+
+### WebhookGitlab
+
+Create an instance: `webhook_gitlab = client.WebhookGitlab`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
 
 
 ### WorkflowRunStep
@@ -14193,6 +31312,126 @@ Create an instance: `workflow_trigger_skipped = client.WorkflowTriggerSkipped`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `String` |  |
+
+
+### WorkspaceActivity
+
+Create an instance: `workspace_activity = client.WorkspaceActivity`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `live_activity` | `Array` |  |
+| `recent_items` | `Array` |  |
+| `unresolved_notification_count` | `Integer` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the WorkspaceActivity record (raises on error).
+workspace_activity = client.WorkspaceActivity.load({ "organization_id" => "organization_id" })
+```
+
+
+### WorkspaceActivityNotification
+
+Create an instance: `workspace_activity_notification = client.WorkspaceActivityNotification`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
+
+### WorkspaceSpace
+
+Create an instance: `workspace_space = client.WorkspaceSpace`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `String` |  |
+| `default_branch` | `String` |  |
+| `description` | `Object` |  |
+| `hidden` | `Boolean` |  |
+| `icon_name` | `String` |  |
+| `id` | `String` |  |
+| `import_status` | `Object` |  |
+| `name` | `String` |  |
+| `organization_id` | `String` |  |
+| `position` | `Object` |  |
+| `repository_id` | `String` |  |
+| `repository_slug` | `String` |  |
+| `slug` | `String` |  |
+| `status` | `String` |  |
+| `updated_at` | `String` |  |
+
+#### Example: Load
+
+```ruby
+# load returns the ENTITY — call data_get for the WorkspaceSpace record (raises on error).
+workspace_space = client.WorkspaceSpace.load({ "id" => "workspace_space_id", "organization_id" => "organization_id" })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of WorkspaceSpace entities, one per record (raises on error).
+workspace_spaces = client.WorkspaceSpace.list({ "organization_id" => "example" })
+workspace_spaces.each { |item| puts item.data_get }
+```
+
+#### Example: Create
+
+```ruby
+workspace_space = client.WorkspaceSpace.create({
+  "organization_id" => "example_organization_id", # String
+  "icon_name" => "example_icon_name", # String
+  "name" => "example_name", # String
+  "slug" => "example_slug", # String
+})
+```
+
+
+### WorkspaceSpacePreference
+
+Create an instance: `workspace_space_preference = client.WorkspaceSpacePreference`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `preferences` | `Array` |  |
+| `spaces` | `Array` |  |
 
 ## Features
 
@@ -14352,7 +31591,7 @@ activated earlier.
 
 ## Open types
 
-12 fields are carried as open values rather than typed structures.
+17 fields are carried as open values rather than typed structures.
 This follows from the API definition, not from a gap in this SDK: the
 definition describes them with untagged unions —
 `oneOf`/`anyOf` branches with no `discriminator` — so it never states which
@@ -14366,14 +31605,19 @@ guarantee.
 | `agent_automation` | `version` | 12 | 12 levels |
 | `agent_interaction` | `interactions` | 12 | 17 levels |
 | `automation_event` | `version` | 12 | 12 levels |
+| `control_computer_control_operation` | `result` | 10 | 2 levels |
+| `device_control_operation` | `result` | 10 | 2 levels |
 | `local_thread_operation` | `result` | 10 | 2 levels |
 | `spark_agent_local_thread` | `result` | 10 | 2 levels |
+| `workspace_activity` | `recent_items` | 7 | 1 level |
 | `page_agent` | `inbox` | 6 | 14 levels |
 | `agent` | `configuration` | 5 | 9 levels |
 | `agent_manager` | `configuration` | 5 | 9 levels |
 | `interaction_response` | `answer` | 5 | 3 levels |
 | `page_agent` | `new_configuration` | 5 | 9 levels |
 | `page_agent` | `selected_agent` | 5 | 15 levels |
+| `change` | `result` | 4 | 9 levels |
+| `workspace_activity` | `live_activity` | 4 | 1 level |
 
 These values round-trip unchanged — read them, modify them, send them back. If
 the API adds a `discriminator` to the definition, regenerating will type them.
@@ -14464,11 +31708,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-pageprojectrun = client.PageProjectRun
-pageprojectrun.load({ "id" => "example_id", "organization_id" => "example", "project_id" => "example" })
+agentoperation = client.AgentOperation
+agentoperation.load({ "agent_id" => "example", "id" => "example_id", "organization_id" => "example" })
 
-# pageprojectrun.data_get now returns the pageprojectrun data from the last load
-# pageprojectrun.match_get returns the last match criteria
+# agentoperation.data_get now returns the agentoperation data from the last load
+# agentoperation.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

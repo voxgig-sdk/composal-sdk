@@ -222,6 +222,35 @@ class AgentSkillEntity
   end
 
   
+  # Load a single AgentSkill.
+  #
+  # @param reqmatch [AgentSkillLoadMatch, Hash, nil] match criteria (id/query fields);
+  #   optional — an entity with no id-like key loads with no match (nil is treated
+  #   as an empty match, so client.AgentSkill.load works with no args).
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [AgentSkillEntity] the loaded AgentSkill entity (data_get reads its record);
+  #   raises ComposalError on failure
+  def load(reqmatch = nil, ctrl = nil)
+    utility = @_utility
+    ctx = utility.make_context.call({
+      "opname" => "load",
+      "ctrl" => ctrl,
+      "match" => @_match,
+      "data" => @_data,
+      "reqmatch" => reqmatch,
+    }, @_entctx)
+
+    _run_op(ctx) do
+      if ctx.result
+        @_match = ctx.result.resmatch if ctx.result.resmatch
+        if ctx.result.resdata
+          @_data = ComposalHelpers.to_map(VoxgigStruct.clone(ctx.result.resdata)) || {}
+        end
+      end
+    end
+  end
+
+
 
   
   # List AgentSkill items matching the given filter.
@@ -281,10 +310,64 @@ class AgentSkillEntity
 
 
   
+  # Update an existing AgentSkill.
+  #
+  # @param reqdata [AgentSkillUpdateData, Hash, nil] body data
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [AgentSkillEntity] the updated AgentSkill entity (data_get reads its record);
+  #   raises ComposalError on failure
+  def update(reqdata, ctrl = nil)
+    utility = @_utility
+    ctx = utility.make_context.call({
+      "opname" => "update",
+      "ctrl" => ctrl,
+      "match" => @_match,
+      "data" => @_data,
+      "reqdata" => reqdata,
+    }, @_entctx)
+
+    _run_op(ctx) do
+      if ctx.result
+        @_match = ctx.result.resmatch if ctx.result.resmatch
+        if ctx.result.resdata
+          @_data = ComposalHelpers.to_map(VoxgigStruct.clone(ctx.result.resdata)) || {}
+        end
+      end
+    end
+  end
+
+
 
   
 
   
+  # Remove an AgentSkill matching the given criteria.
+  #
+  # @param reqmatch [AgentSkillRemoveMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [AgentSkillEntity] the removed AgentSkill entity, marked as deleted; raises
+  #   ComposalError on failure
+  def remove(reqmatch = nil, ctrl = nil)
+    utility = @_utility
+    ctx = utility.make_context.call({
+      "opname" => "remove",
+      "ctrl" => ctrl,
+      "match" => @_match,
+      "data" => @_data,
+      "reqmatch" => reqmatch,
+    }, @_entctx)
+
+    _run_op(ctx) do
+      if ctx.result
+        @_match = ctx.result.resmatch if ctx.result.resmatch
+        if ctx.result.resdata
+          @_data = ComposalHelpers.to_map(VoxgigStruct.clone(ctx.result.resdata)) || {}
+        end
+      end
+    end
+  end
+
+
 
   private
 

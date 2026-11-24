@@ -1,0 +1,9 @@
+$kind: collection
+id: "8e23a523-e0eb-50ae-90ad-27640502dcd2"
+description: |-
+  The **runner_pool_runner** entity. Its requests address one record by `{{runner_pool_runner_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 458000

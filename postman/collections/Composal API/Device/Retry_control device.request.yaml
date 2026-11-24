@@ -1,0 +1,22 @@
+$kind: http-request
+id: "8e2dc4b8-eea1-5899-8218-9747ec10eff9"
+description: |-
+  The `retry_control` action of **device**, a route of its `create` operation.
+
+  SDK: `client.Device().create({ "organization_id": "organization_id", "id": "ID", $action: "retry_control" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/retry_control"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 13000

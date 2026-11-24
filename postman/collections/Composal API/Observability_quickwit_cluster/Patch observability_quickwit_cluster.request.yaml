@@ -1,0 +1,19 @@
+$kind: http-request
+id: "6dda6250-eb00-59bf-b5b3-d8b4588793f0"
+description: |-
+  The `patch` operation of **observability_quickwit_cluster**.
+
+  SDK: `client.ObservabilityQuickwitCluster().patch({ id: "example" })`
+url: "{{base}}/api/v1/observability/quickwit_clusters/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{observability_quickwit_cluster_id}}"
+    description: The observability_quickwit_cluster this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

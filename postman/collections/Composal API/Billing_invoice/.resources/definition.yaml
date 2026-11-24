@@ -1,0 +1,20 @@
+$kind: collection
+id: "9a7ca451-0ae3-5fce-86f5-8c2ce1aa2f03"
+description: |-
+  The **billing_invoice** entity, which belongs to a organization. Its requests address one record by `{{billing_invoice_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `amount_due_cents` | integer | yes |  |
+  | `created_at` | string | yes |  |
+  | `currency` | string | yes |  |
+  | `hosted_invoice_url` | string |  |  |
+  | `id` | string | yes |  |
+  | `invoice_pdf` | string |  |  |
+  | `metronome_invoice_id` | string |  |  |
+  | `number` | string |  |  |
+  | `period_ended_at` | string |  |  |
+  | `period_started_at` | string |  |  |
+  | `status` | string | yes |  |
+  | `total_cents` | integer | yes |  |
+order: 131000

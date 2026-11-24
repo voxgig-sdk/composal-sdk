@@ -339,6 +339,33 @@ class AgentConnectionEntity
 
 
   
+  # Change part of an existing AgentConnection: only the fields given are sent.
+  #
+  # @param reqdata [AgentConnectionPatchData, Hash, nil] body data
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [AgentConnectionEntity] the patched AgentConnection entity (data_get reads its record);
+  #   raises ComposalError on failure
+  def patch(reqdata, ctrl = nil)
+    utility = @_utility
+    ctx = utility.make_context.call({
+      "opname" => "patch",
+      "ctrl" => ctrl,
+      "match" => @_match,
+      "data" => @_data,
+      "reqdata" => reqdata,
+    }, @_entctx)
+
+    _run_op(ctx) do
+      if ctx.result
+        @_match = ctx.result.resmatch if ctx.result.resmatch
+        if ctx.result.resdata
+          @_data = ComposalHelpers.to_map(VoxgigStruct.clone(ctx.result.resdata)) || {}
+        end
+      end
+    end
+  end
+
+
 
   
   # Remove an AgentConnection matching the given criteria.

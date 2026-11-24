@@ -1,0 +1,86 @@
+{
+  "existing": {
+    "job_log_chunk": {
+      "JOB_LOG_CHUNK00": {
+        "byte_size": 120,
+        "ci_job_id": "CI_JOB01",
+        "ci_pipeline_run_id": "CI_PIPELINE_RUN01",
+        "ci_step_id": "CI_STEP01",
+        "content": "s7c",
+        "content_format": "s7d",
+        "created_at": "s7e",
+        "id": "JOB_LOG_CHUNK00",
+        "organization_id": "ORGANIZATION01",
+        "sequence_number": 129,
+        "stream": "s82",
+        "updated_at": "s83",
+        "job_id": "JOB01",
+        "pipeline_id": "PIPELINE01",
+        "run_id": "RUN01"
+      },
+      "JOB_LOG_CHUNK01": {
+        "byte_size": 240,
+        "ci_job_id": "CI_JOB01",
+        "ci_pipeline_run_id": "CI_PIPELINE_RUN01",
+        "ci_step_id": "CI_STEP01",
+        "content": "sf4",
+        "content_format": "sf5",
+        "created_at": "sf6",
+        "id": "JOB_LOG_CHUNK01",
+        "organization_id": "ORGANIZATION01",
+        "sequence_number": 249,
+        "stream": "sfa",
+        "updated_at": "sfb",
+        "job_id": "JOB01",
+        "pipeline_id": "PIPELINE01",
+        "run_id": "RUN01"
+      },
+      "JOB_LOG_CHUNK02": {
+        "byte_size": 360,
+        "ci_job_id": "CI_JOB01",
+        "ci_pipeline_run_id": "CI_PIPELINE_RUN01",
+        "ci_step_id": "CI_STEP01",
+        "content": "s16c",
+        "content_format": "s16d",
+        "created_at": "s16e",
+        "id": "JOB_LOG_CHUNK02",
+        "organization_id": "ORGANIZATION01",
+        "sequence_number": 369,
+        "stream": "s172",
+        "updated_at": "s173",
+        "job_id": "JOB01",
+        "pipeline_id": "PIPELINE01",
+        "run_id": "RUN01"
+      }
+    }
+  },
+  "new": {
+    "job_log_chunk": {
+      "job_log_chunk_ref01": {
+        "byte_size": 480,
+        "ci_job_id": "CI_JOB01",
+        "ci_pipeline_run_id": "CI_PIPELINE_RUN01",
+        "ci_step_id": "CI_STEP01",
+        "content": "s1e4",
+        "content_format": "s1e5",
+        "created_at": "s1e6",
+        "organization_id": "ORGANIZATION01",
+        "sequence_number": 489,
+        "stream": "s1ea",
+        "updated_at": "s1eb"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/log_chunks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/log_chunks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

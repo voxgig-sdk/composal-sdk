@@ -1,0 +1,4 @@
+$kind: collection
+id: "4d0626db-e955-5b34-b0ef-e265ce8aa0cb"
+description: "The `BasicGithubRunnerEgressFlow` flow of **github_runner_egress**."
+order: 222000

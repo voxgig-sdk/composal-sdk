@@ -1,0 +1,19 @@
+$kind: http-request
+id: "78a2b1af-d592-59f8-929c-8eb60cb0fbed"
+description: |-
+  The `issue_contract` action of **artifact**, a route of its `create` operation.
+
+  SDK: `client.Artifact().create({ "id": "ID", $action: "issue_contract" })`
+url: "{{base}}/api/v1/artifacts/artifacts/:id/issue_contract"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_id}}"
+    description: The artifact this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 7000

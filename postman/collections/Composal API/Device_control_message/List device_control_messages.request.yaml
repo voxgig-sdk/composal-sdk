@@ -1,0 +1,32 @@
+$kind: http-request
+id: e981d65d-90bb-56dd-84aa-0cd1d92a2ad0
+description: |-
+  The `list` operation of **device_control_message**.
+
+  SDK: `client.DeviceControlMessage().list({ device_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/control_messages"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: cursor
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device_control_message belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this device_control_message belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["messages"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("device_control_message_id")) pm.collectionVariables.set("device_control_message_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

@@ -1,0 +1,8 @@
+$kind: collection
+id: "7cc0cb0f-00ec-5fc3-8ceb-f16d35747db1"
+description: |-
+  The **device_enterprise_relay** entity. Its requests address one record by `{{device_enterprise_relay_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 215000

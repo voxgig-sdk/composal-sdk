@@ -1,16 +1,20 @@
 $kind: collection
 id: d6cacec7-aeef-53d6-bb04-453cbc0d3212
 description: |-
-  The **agent_site** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_site_id}}`, which a list or a create remembers.
+  The **agent_site** entity, which belongs to a organization. Its requests address one record by `{{agent_site_id}}`, which a list or a create remembers.
 
   | field | type | required | |
   |---|---|---|---|
-  | `deployed_at` | string | yes |  |
+  | `author` | object | yes |  |
+  | `can_message` | boolean | yes |  |
   | `deployments_count` | integer | yes |  |
-  | `hostname` | string | yes |  |
-  | `https` | string | yes |  |
+  | `description` | string | yes |  |
+  | `icon_url` | string | yes |  |
   | `id` | string | yes |  |
   | `name` | string | yes |  |
+  | `owner` | object | yes |  |
+  | `thread` | any | yes |  |
+  | `title` | string | yes |  |
   | `url` | string | yes |  |
   | `visibility` | string | yes |  |
-order: 33000
+order: 54000

@@ -6,6 +6,67 @@
 -- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
 -- edit by hand.
 
+---@class A2aWellKnown
+
+---@class A2aWellKnownLoadMatch
+---@field a2a_id string
+
+---@class AdminOrg
+---@field billing_email string|nil
+---@field billing_reason? string
+---@field customize_onboarding_packages? boolean
+---@field deployment_usage_visibility string
+---@field deployment_usage_visible boolean
+---@field id string
+---@field monthly_price_dollars? string|number
+---@field monthly_price_override_cents number|nil
+---@field name string
+---@field onboarding_custom_pricing? boolean
+---@field onboarding_package_keys? table|nil
+---@field owner_email string
+---@field package_id string|nil
+---@field skip_payment? boolean
+---@field slug string
+
+---@class AdminOrgLoadMatch
+---@field id string
+
+---@class AdminOrgListMatch
+---@field billing_email? string|nil
+---@field billing_reason? string
+---@field customize_onboarding_packages? boolean
+---@field deployment_usage_visibility? string
+---@field deployment_usage_visible? boolean
+---@field id? string
+---@field monthly_price_dollars? string|number
+---@field monthly_price_override_cents? number|nil
+---@field name? string
+---@field onboarding_custom_pricing? boolean
+---@field onboarding_package_keys? table|nil
+---@field owner_email? string
+---@field package_id? string|nil
+---@field skip_payment? boolean
+---@field slug? string
+
+---@class AdminOrgCreateData
+---@field billing_reason? string
+---@field customize_onboarding_packages? boolean
+---@field monthly_price_dollars? string|number
+---@field name string
+---@field onboarding_custom_pricing? boolean
+---@field onboarding_package_keys? table|nil
+---@field owner_email string
+---@field package_id? string|nil
+---@field skip_payment? boolean
+---@field slug string
+
+---@class AdminOrgUpdateData
+---@field id string
+---@field billing_email? string|nil
+---@field monthly_price_dollars? string|number
+---@field package_id? string|nil
+---@field reason? any
+
 ---@class Agent
 ---@field attention string|nil
 ---@field avatar? string|nil
@@ -99,6 +160,54 @@
 ---@field id string
 ---@field organization_id string
 
+---@class AgentApp
+---@field author table
+---@field can_message boolean
+---@field deployments_count number
+---@field description string
+---@field hidden_install_count number
+---@field id string
+---@field install_count number
+---@field install_targets table
+---@field installed_by table
+---@field installed_target_ids table
+---@field items table
+---@field mcp_url string|nil
+---@field next_cursor string|nil
+---@field owner table
+---@field thread any
+---@field title string
+---@field url string
+---@field visibility string
+
+---@class AgentAppLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class AgentAppListMatch
+---@field organization_id string
+---@field cursor? string
+
+---@class AgentAppCreateData
+---@field id string
+---@field organization_id string
+---@field surface? any
+---@field view? any
+
+---@class AgentAppInstall
+---@field id? string
+---@field installed boolean
+
+---@class AgentAppInstallUpdateData
+---@field agent_app_id string
+---@field id string
+---@field organization_id string
+
+---@class AgentAppInstallRemoveMatch
+---@field agent_app_id string
+---@field id string
+---@field organization_id string
+
 ---@class AgentAttachment
 ---@field byte_size number
 ---@field content_type string
@@ -188,62 +297,220 @@
 ---@field prepare? any
 
 ---@class AgentConnection
----@field agent_card_url string
----@field auth_scheme string
----@field can_configure boolean
----@field can_disconnect boolean
----@field can_setup boolean
+---@field actions table
+---@field activity table
+---@field admin_disabled_at? string|nil
+---@field agent_tools? boolean
+---@field authentication string
+---@field authorized_at string|nil
+---@field can_create_account? boolean
+---@field capabilities table
+---@field catalog_section? string
+---@field category? string
+---@field certification string
+---@field checked_at string|nil
 ---@field connection table
----@field credential? string|nil
----@field error_code string|nil
----@field expected_generation number
+---@field consent table|nil
+---@field created_at string
+---@field creation_key? string
+---@field custodian_id string|nil
+---@field description? string
+---@field disabled_reason? string|nil
+---@field failure_code string|nil
 ---@field generation number
+---@field grants table
+---@field grants_pagination table
 ---@field id string
+---@field limits table
 ---@field name string
----@field remote_agent string|nil
----@field requester_id string
----@field retired_at string|nil
+---@field organization_id string
+---@field owner_name? string
+---@field ownership_kind string
+---@field pagination table
+---@field policy_digest string
+---@field provider table
+---@field provider_disabled_reason? string|nil
+---@field provider_identity table
 ---@field revoked_at string|nil
----@field scope_key string
----@field source_operation_id string|nil
----@field state string
+---@field schema_version number
+---@field status string
+---@field toolkit string
+---@field triggers table
+---@field updated_at string
+---@field user_id string
+---@field version string
 
 ---@class AgentConnectionLoadMatch
----@field agent_id string
 ---@field id string
 ---@field organization_id string
+---@field cursor? string
+---@field grants_cursor? string
+---@field grants_limit? number
+---@field limit? number
 
 ---@class AgentConnectionListMatch
----@field agent_id string
 ---@field organization_id string
 ---@field cursor? string
 ---@field limit? number
----@field selected_connection_id? string
 
 ---@class AgentConnectionCreateData
----@field agent_id string
 ---@field organization_id string
----@field agent_card_url string
----@field auth_scheme string
----@field credential? string|nil
+---@field creation_key? string
 ---@field name string
----@field remote_agent? string|nil
----@field source_operation_id? string|nil
+---@field toolkit string
 
 ---@class AgentConnectionUpdateData
----@field agent_id string
 ---@field id string
 ---@field organization_id string
----@field auth_scheme? string
----@field credential? string|nil
----@field expected_generation? number
 ---@field name? string
----@field remote_agent? string|nil
+
+---@class AgentConnectionPatchData
+---@field id string
+---@field organization_id string
+---@field name? string
 
 ---@class AgentConnectionRemoveMatch
----@field agent_id string
 ---@field id string
 ---@field organization_id string
+
+---@class AgentConnectionDelegation
+---@field authorized_by_id string
+---@field automation_connection_grant_id string
+---@field created_at string
+---@field id string
+---@field member_name string
+---@field revoked_at string|nil
+---@field roles table
+---@field usable boolean
+---@field user_id string
+
+---@class AgentConnectionDelegationListMatch
+---@field agent_connection_id string
+---@field organization_id string
+
+---@class AgentConnectionGrant
+---@field actions table
+---@field agent_connection_id string
+---@field automation_id string
+---@field connection_generation number
+---@field created_at string
+---@field id string
+---@field organization_id string
+---@field revision number
+---@field revoked_at string|nil
+---@field status string
+---@field usable boolean
+---@field user_id string
+
+---@class AgentConnectionGrantListMatch
+---@field agent_connection_id string
+---@field organization_id string
+
+---@class AgentConnectionResource
+---@field cursor? string|nil
+---@field next_cursor string|nil
+---@field query? string
+---@field resources table
+
+---@class AgentConnectionResourceCreateData
+---@field agent_connection_id string
+---@field organization_id string
+---@field cursor? string|nil
+---@field query? string
+
+---@class AgentConnectionSafetyControl
+---@field admin_disabled_at? string|nil
+---@field authorized_at string|nil
+---@field checked_at string|nil
+---@field created_at string
+---@field custodian_id string|nil
+---@field failure_code string|nil
+---@field generation number
+---@field id string
+---@field name string
+---@field organization_id string
+---@field owner_name? string
+---@field ownership_kind string
+---@field provider_disabled_reason? string|nil
+---@field provider_identity table
+---@field revoked_at string|nil
+---@field status string
+---@field toolkit string
+---@field updated_at string
+---@field user_id string
+
+---@class AgentConnectionSafetyControlListMatch
+---@field organization_id string
+---@field cursor? string
+---@field limit? number
+
+---@class AgentConnectionTriggerSubscription
+---@field agent_connection_id string
+---@field configuration table
+---@field created_at string
+---@field defaults table
+---@field delivery string
+---@field enabled boolean
+---@field failure_code string|nil
+---@field failure_request_id string|nil
+---@field id string
+---@field latency string
+---@field name string
+---@field reconcile_at string
+---@field reconciliation_uncertain boolean
+---@field remote_enabled boolean|nil
+---@field replacement_id string|nil
+---@field retired_at string|nil
+---@field retirement_completed_at string|nil
+---@field schema table
+---@field slug string
+---@field status string
+---@field toolkit string
+---@field toolkit_version string
+---@field trigger_slug string
+---@field updated_at string
+---@field version string
+---@field waiting_for_retirement boolean
+
+---@class AgentConnectionTriggerSubscriptionListMatch
+---@field agent_connection_id string
+---@field organization_id string
+---@field cursor? string
+---@field limit? number
+
+---@class AgentConnectionTriggerSubscriptionCreateData
+---@field agent_connection_id string
+---@field organization_id string
+---@field configuration table
+---@field trigger_slug string
+
+---@class AgentConnectionTriggerSubscriptionUpdateData
+---@field agent_connection_id string
+---@field id string
+---@field organization_id string
+---@field enabled? boolean
+
+---@class AgentConnectionTriggerSubscriptionPatchData
+---@field agent_connection_id string
+---@field id string
+---@field organization_id string
+---@field enabled? boolean
+
+---@class AgentConnectionTriggerSubscriptionRemoveMatch
+---@field agent_connection_id string
+---@field id string
+---@field organization_id string
+
+---@class AgentContextCheckpoint
+---@field id? string
+
+---@class AgentContextCheckpointLoadMatch
+---@field change_id string
+---@field id string
+---@field organization_id string
+---@field repo_id string
+---@field expected_commit_id string
+---@field max_byte? number
 
 ---@class AgentControlFlow
 ---@field can_cancel boolean
@@ -298,6 +565,14 @@
 ---@field id string
 ---@field organization_id string
 
+---@class AgentEvent
+
+---@class AgentEventListMatch
+---@field agent_id string
+---@field organization_id string
+---@field conversation_id? string
+---@field device_activity_provider? string
+
 ---@class AgentFile
 ---@field content_type string
 ---@field download_url string
@@ -336,48 +611,95 @@
 
 ---@class AgentIntegration
 ---@field account_counts table
----@field accounts_path string
----@field added_toolkits table
+---@field can_cancel_sign_in? boolean
+---@field can_delete boolean
+---@field can_disconnect boolean
+---@field can_enable boolean
 ---@field can_manage boolean
----@field can_manage_organization boolean
+---@field can_manage_sharing boolean
+---@field can_reconnect boolean
+---@field can_sync boolean
 ---@field catalog table
----@field connect_as string|nil
----@field connect_as_by_toolkit table
+---@field connected_by string|nil
+---@field connected_by_you boolean
 ---@field connected_counts table
----@field connection_id string
 ---@field connections table
----@field email table
----@field enabled boolean
----@field enabled_toolkits table
+---@field creation_key? string
+---@field creation_key_digest? string|nil
 ---@field generation number
+---@field id string
+---@field name string
 ---@field pagination table
 ---@field pending_counts table
----@field personal_creation_key_supported? boolean
----@field private_agent boolean
----@field shared_agent_personal_accounts_enabled boolean
----@field slack table
----@field webhook_connections table
----@field webhooks_available boolean
+---@field provider_disabled_reason string|nil
+---@field provider_identity table
+---@field provider_name string|nil
+---@field reference string
+---@field sharing_status? string
+---@field status string
+---@field team_sharing_enabled boolean
+---@field team_sharing_version number
+---@field toolkit string
+
+---@class AgentIntegrationLoadMatch
+---@field id string
+---@field organization_id string
 
 ---@class AgentIntegrationListMatch
----@field agent_id string
 ---@field organization_id string
----@field catalog_q? string
 ---@field cursor? string
+---@field enableable? boolean
 ---@field limit? number
 ---@field q? string
 ---@field toolkit? string
 
 ---@class AgentIntegrationCreateData
----@field agent_id string
+---@field organization_id string
+---@field creation_key? string
+---@field name string
+---@field toolkit string
+
+---@class AgentIntegrationRemoveMatch
+---@field id string
+---@field organization_id string
+
+---@class AgentIntegrationAccount
+---@field can_cancel_sign_in? boolean
+---@field can_delete boolean
+---@field can_disconnect boolean
+---@field can_enable boolean
+---@field can_manage_sharing boolean
+---@field can_reconnect boolean
+---@field can_sync boolean
+---@field connected_by string|nil
+---@field connected_by_you boolean
+---@field creation_key_digest? string|nil
+---@field generation number
+---@field id string
+---@field name string
+---@field provider_disabled_reason string|nil
+---@field provider_identity table
+---@field reference string
+---@field sharing_status? string
+---@field status string
+---@field team_sharing_enabled boolean
+---@field team_sharing_version number
+---@field toolkit string
+
+---@class AgentIntegrationAccountListMatch
 ---@field organization_id string
 ---@field cursor? string
+---@field enableable? boolean
 ---@field limit? number
 ---@field q? string
 ---@field toolkit? string
+
+---@class AgentIntegrationCallback
+
+---@class AgentIntegrationCallbackLoadMatch
+---@field code? string
 ---@field connection_id string
----@field enabled boolean
----@field generation number
+---@field state string
 
 ---@class AgentInteraction
 ---@field id? string
@@ -645,6 +967,61 @@
 ---@field answers? any
 ---@field conversation_id? any
 
+---@class AgentRelayFileGrant
+---@field access_mode string
+---@field connection_generation number
+---@field connection_id string
+---@field connection_name string
+---@field created_at string
+---@field expected_generation number
+---@field id string
+---@field key string
+---@field provider string
+---@field resource_id string
+---@field resource_kind string
+---@field revoked boolean
+---@field revoked_at string|nil
+---@field snapshot_supported? boolean
+---@field source_operation_id string
+
+---@class AgentRelayFileGrantLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class AgentRelayFileGrantListMatch
+---@field organization_id string
+---@field cursor? string
+---@field limit? number
+---@field request_key? string
+---@field source_operation_id? string
+
+---@class AgentRelayFileGrantCreateData
+---@field organization_id string
+---@field access_mode string
+---@field connection_id string
+---@field expected_generation number
+---@field key string
+---@field resource_id string
+---@field resource_kind string
+---@field source_operation_id string
+
+---@class AgentRelayFileGrantRemoveMatch
+---@field id string
+---@field organization_id string
+
+---@class AgentRelayFileGrantAccount
+---@field access_modes? table
+---@field generation number
+---@field id string
+---@field name string
+---@field provider string
+---@field resource_kind string
+
+---@class AgentRelayFileGrantAccountListMatch
+---@field organization_id string
+---@field cursor? string
+---@field source_operation_id string
+
 ---@class AgentRepository
 ---@field can_manage boolean
 ---@field environments table
@@ -674,6 +1051,18 @@
 ---@class AgentResourceListMatch
 ---@field agent_id string
 ---@field organization_id string
+
+---@class AgentRoder
+
+---@class AgentRoderLoadMatch
+---@field organization_id string
+
+---@class AgentRoderCreateData
+---@field checkpoint_handoff? any
+---@field github_repository? any
+---@field organization_id? any
+---@field repository_slug? any
+---@field session_purpose? any
 
 ---@class AgentRoutine
 ---@field can_manage boolean
@@ -737,6 +1126,50 @@
 ---@field acknowledge_data_loss? any
 ---@field expected_version? any
 
+---@class AgentSession
+---@field id? string
+
+---@class AgentSessionLoadMatch
+---@field id string
+---@field around_event? number
+---@field checkpoint? string
+---@field cursor? string
+---@field event_digest? string
+---@field include_tool? boolean
+---@field limit? number
+---@field max_byte? number
+---@field source_ref? string
+
+---@class AgentSessionCheckpoint
+---@field id? string
+
+---@class AgentSessionCheckpointLoadMatch
+---@field agent_session_id string
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class AgentSessionCheckpointListMatch
+---@field agent_session_id string
+---@field organization_id string
+---@field repo_id string
+
+---@class AgentSessionCheckpointCreateData
+---@field agent_session_id string
+---@field organization_id string
+---@field repo_id string
+
+---@class AgentSessionRoderHandoff
+---@field checkpoint_id? string
+---@field purpose? string
+
+---@class AgentSessionRoderHandoffCreateData
+---@field agent_session_id string
+---@field organization_id string
+---@field repo_id string
+---@field checkpoint_id? string
+---@field purpose? string
+
 ---@class AgentSetting
 ---@field can_manage boolean
 ---@field expected_version string
@@ -760,42 +1193,74 @@
 ---@field organization_id string
 
 ---@class AgentSite
----@field deployed_at string
+---@field author table
+---@field can_message boolean
 ---@field deployments_count number
----@field hostname string
----@field https string
+---@field description string|nil
+---@field icon_url string|nil
 ---@field id string
 ---@field name string
+---@field owner table
+---@field thread any
+---@field title string
 ---@field url string
 ---@field visibility string
 
+---@class AgentSiteLoadMatch
+---@field id string
+---@field organization_id string
+
 ---@class AgentSiteListMatch
----@field agent_id string
 ---@field organization_id string
 ---@field cursor? string
----@field limit? number
+
+---@class AgentSiteCreateData
+---@field id string
+---@field organization_id string
+---@field surface? any
+---@field view? any
 
 ---@class AgentSkill
----@field available boolean
----@field can_configure boolean
----@field can_manage boolean
----@field configuration_state? string
----@field description string
----@field enabled boolean
----@field name string
+---@field agents table
+---@field audience table
+---@field can_manage_library boolean
+---@field content string
+---@field files table
+---@field id? string
+---@field marketplace? string
+---@field pending boolean
+---@field plugin? string
+---@field revision string
+---@field skill table
 ---@field skills table
----@field version string
+---@field source? string
+
+---@class AgentSkillLoadMatch
+---@field id string
+---@field organization_id string
 
 ---@class AgentSkillListMatch
----@field agent_id string
 ---@field organization_id string
 
 ---@class AgentSkillCreateData
----@field agent_id string
 ---@field organization_id string
----@field enabled boolean
----@field name string
----@field version string
+---@field audience table
+---@field marketplace? string
+---@field plugin? string
+---@field revision string
+---@field skills table
+---@field source? string
+
+---@class AgentSkillUpdateData
+---@field id string
+---@field organization_id string
+---@field agent_ids? any
+---@field mode? any
+---@field new_agents? any
+
+---@class AgentSkillRemoveMatch
+---@field id string
+---@field organization_id string
 
 ---@class AgentSlack
 
@@ -854,6 +1319,87 @@
 ---@field value? any
 ---@field version? any
 
+---@class AgentSwarm
+---@field base_bookmark string|nil
+---@field base_ref string|nil
+---@field base_revision string|nil
+---@field budget table
+---@field canceled_at string|nil
+---@field canceled_count number
+---@field concurrency_key string|nil
+---@field created_at string
+---@field created_at_label string|nil
+---@field creator_user_id string|nil
+---@field deadline_at string|nil
+---@field display_id number
+---@field done_count number
+---@field environment table
+---@field failed_count number
+---@field finished_at string|nil
+---@field finished_at_label string|nil
+---@field github table
+---@field goal string|nil
+---@field id string
+---@field model string|nil
+---@field model_provider string|nil
+---@field number number
+---@field organization_id string
+---@field organization_slug string|nil
+---@field outcome string|nil
+---@field phase string|nil
+---@field policy table
+---@field queued_at string|nil
+---@field queued_at_label string|nil
+---@field repository? string
+---@field repository_id string|nil
+---@field repository_slug string|nil
+---@field reserved table
+---@field scheduler_generation number
+---@field skipped_count number
+---@field slug string
+---@field started_at string|nil
+---@field started_at_label string|nil
+---@field status string
+---@field summary table
+---@field target table
+---@field task_count number
+---@field task_template_json string|nil
+---@field tasks table
+---@field updated_at string
+---@field updated_at_label string|nil
+---@field usage table
+
+---@class AgentSwarmLoadMatch
+---@field id string
+
+---@class AgentSwarmListMatch
+---@field org string
+---@field page? number
+---@field per_page? number
+
+---@class AgentSwarmCreateData
+---@field base_bookmark? string|nil
+---@field base_ref? string|nil
+---@field base_revision? string|nil
+---@field budget? table
+---@field concurrency_key? string|nil
+---@field environment? table
+---@field goal? string|nil
+---@field model? string|nil
+---@field model_provider? string|nil
+---@field organization_slug string|nil
+---@field policy? table
+---@field queued_at? string|nil
+---@field repository? string
+---@field slug? string
+---@field target table
+---@field task_template_json? string|nil
+---@field tasks? table
+
+---@class AgentSwarmUpdateData
+---@field id string
+---@field policy? table
+
 ---@class AgentTeammate
 ---@field avatar string|nil
 ---@field id string
@@ -873,48 +1419,15 @@
 ---@field organization_id string
 
 ---@class AgentThread
----@field archived_count? number|nil
----@field can_create boolean
----@field execution? any
----@field first_input? any
----@field first_input_key? string
----@field first_input_requester_membership_id? string
 ---@field id? string
----@field inherit_context? boolean
----@field local_activities table
----@field local_archived_count number
----@field local_next_cursor string|nil
----@field local_scope_key string|nil
----@field local_status_pending boolean
----@field local_threads table
----@field main_thread_id string
----@field message? string
----@field next_cursor string|nil
----@field parent_conversation_id? string
----@field requester_membership_id? string
----@field selected_thread any
----@field thread table
----@field threads table
----@field title? string
----@field total_archived_count number|nil
+
+---@class AgentThreadLoadMatch
+---@field id string
 
 ---@class AgentThreadListMatch
----@field agent_id string
----@field organization_id string
----@field archived? boolean
----@field conversation_id? string
----@field cursor? string
----@field local_cursor? string
+---@field id? string
 
 ---@class AgentThreadCreateData
----@field agent_id string
----@field organization_id string
----@field execution? any
----@field inherit_context? boolean
----@field message? string
----@field parent_conversation_id? string
----@field requester_membership_id? string
----@field title? string
 
 ---@class AgentTool
 ---@field description? string
@@ -924,6 +1437,20 @@
 ---@class AgentToolListMatch
 ---@field agent_id string
 ---@field organization_id string
+
+---@class AgentUsage
+---@field days table
+---@field ended_at string
+---@field pricing_version string
+---@field source string
+---@field started_at string
+---@field user_days table
+---@field users table
+---@field window string
+
+---@class AgentUsageLoadMatch
+---@field organization_id string
+---@field window? string
 
 ---@class AgentVerifyProject
 ---@field available boolean
@@ -951,6 +1478,16 @@
 ---@field agent_id string
 ---@field id string
 ---@field organization_id string
+
+---@class AgentWebPreview
+---@field description string|nil
+---@field icon_url string|nil
+---@field image_url string|nil
+---@field title string|nil
+
+---@class AgentWebPreviewListMatch
+---@field asset? string
+---@field token string
 
 ---@class AgentWebhook
 ---@field action string
@@ -1209,6 +1746,43 @@
 ---@field id string
 ---@field organization_id string
 
+---@class Agreement
+---@field body string|nil
+---@field effective_on_label string
+---@field key string
+---@field summary string
+---@field title string
+---@field version string
+
+---@class AgreementListMatch
+---@field organization_id string
+
+---@class AgreementAccessRequest
+
+---@class AgreementAccessRequestCreateData
+---@field organization_id string
+
+---@class AlertRuleEvent
+---@field id? string
+
+---@class AlertRuleEventLoadMatch
+---@field alert_rule_id string
+---@field id string
+---@field space_id string
+
+---@class AlertRuleEventListMatch
+---@field alert_rule_id string
+---@field space_id string
+
+---@class AlertRuleEventCreateData
+---@field alert_rule_id string
+---@field space_id string
+
+---@class AlertRuleEventRemoveMatch
+---@field alert_rule_id string
+---@field id string
+---@field space_id string
+
 ---@class AllocationLog
 ---@field allocation_id string
 ---@field environment? string
@@ -1287,6 +1861,14 @@
 
 ---@class AppRemoveMatch
 ---@field id string
+
+---@class AppAccess
+
+---@class AppAccessLoadMatch
+
+---@class AppAccessJwk
+
+---@class AppAccessJwkListMatch
 
 ---@class AppCdn
 ---@field app_environment_id string|nil
@@ -2210,6 +2792,223 @@
 ---@field app_id string
 ---@field id string
 
+---@class Artefact
+---@field automation_invocation_id? string|nil
+---@field byte_size number
+---@field checksum_sha256 string
+---@field content_type string
+---@field created_at? string|nil
+---@field created_by_user_id? string|nil
+---@field description? string|nil
+---@field document_key? string
+---@field entrypoint? string
+---@field expires_at? string|nil
+---@field filename string
+---@field files? table
+---@field harness? string|nil
+---@field harness_version? string|nil
+---@field id string
+---@field kind string
+---@field model? string|nil
+---@field organization_id string
+---@field published_at? string|nil
+---@field repository_id? string|nil
+---@field slug string
+---@field source string
+---@field status string
+---@field title string
+---@field vcs_agent_checkpoint_id? string|nil
+---@field vcs_agent_session_id? string|nil
+---@field version number
+---@field view_url string
+---@field web_url string
+
+---@class ArtefactLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class ArtefactListMatch
+---@field organization_id string
+---@field author? string
+---@field created_by_agent? string
+---@field cursor? string
+---@field editable? string
+---@field harness? string
+---@field kind? string
+---@field limit? number
+---@field model? string
+---@field q? string
+---@field repo? string
+---@field slug? string
+---@field source? string
+
+---@class ArtefactCreateData
+---@field organization_id string
+
+---@class ArtefactUpdateData
+---@field id string
+---@field organization_id string
+
+---@class ArtefactPatchData
+---@field id string
+---@field organization_id string
+---@field description? string|nil
+---@field kind? string
+---@field title? string
+
+---@class ArtefactRemoveMatch
+---@field id string
+---@field organization_id string
+
+---@class ArtefactCommentThread
+---@field anchor string
+---@field body string
+---@field comments table
+---@field id string
+---@field quote? string
+---@field resolved boolean
+
+---@class ArtefactCommentThreadListMatch
+---@field artefact_id string
+---@field organization_id string
+
+---@class ArtefactCommentThreadCreateData
+---@field artefact_id string
+---@field organization_id string
+---@field anchor string
+---@field body string
+---@field quote? string
+
+---@class ArtefactCommentThreadUpdateData
+---@field artefact_id string
+---@field id string
+---@field organization_id string
+---@field resolved? boolean
+
+---@class ArtefactRevision
+---@field base_version number
+---@field content string
+
+---@class ArtefactRevisionCreateData
+---@field artefact_id string
+---@field organization_id string
+---@field base_version number
+---@field content string
+
+---@class ArtefactViewToken
+---@field expires_in number
+---@field file? string
+---@field organization_slug? string
+---@field version? number
+---@field viewer_url string
+
+---@class ArtefactViewTokenCreateData
+---@field artefact_id string
+---@field organization_id string
+---@field file? string
+---@field organization_slug? string
+---@field version? number
+
+---@class Artifact
+---@field id? string
+
+---@class ArtifactLoadMatch
+---@field id string
+
+---@class ArtifactListMatch
+---@field id? string
+
+---@class ArtifactCreateData
+
+---@class ArtifactUpdateData
+---@field id string
+
+---@class ArtifactPatchData
+---@field id string
+
+---@class ArtifactRemoveMatch
+---@field id string
+
+---@class ArtifactCacheNamespace
+---@field id? string
+
+---@class ArtifactCacheNamespaceLoadMatch
+---@field id string
+
+---@class ArtifactCacheNamespaceListMatch
+---@field id? string
+
+---@class ArtifactCacheNamespaceCreateData
+
+---@class ArtifactCacheNamespaceUpdateData
+---@field id string
+
+---@class ArtifactCacheNamespacePatchData
+---@field id string
+
+---@class ArtifactCacheNamespaceRemoveMatch
+---@field id string
+
+---@class ArtifactImageRepository
+---@field id? string
+
+---@class ArtifactImageRepositoryLoadMatch
+---@field id string
+
+---@class ArtifactImageRepositoryListMatch
+---@field id? string
+
+---@class ArtifactImageRepositoryCreateData
+
+---@class ArtifactImageRepositoryUpdateData
+---@field id string
+
+---@class ArtifactImageRepositoryPatchData
+---@field id string
+
+---@class ArtifactImageRepositoryRemoveMatch
+---@field id string
+
+---@class ArtifactPackageMirror
+---@field id? string
+
+---@class ArtifactPackageMirrorLoadMatch
+---@field id string
+
+---@class ArtifactPackageMirrorListMatch
+---@field id? string
+
+---@class ArtifactPackageMirrorCreateData
+
+---@class ArtifactPackageMirrorUpdateData
+---@field id string
+
+---@class ArtifactPackageMirrorPatchData
+---@field id string
+
+---@class ArtifactPackageMirrorRemoveMatch
+---@field id string
+
+---@class ArtifactRetentionPolicy
+---@field id? string
+
+---@class ArtifactRetentionPolicyLoadMatch
+---@field id string
+
+---@class ArtifactRetentionPolicyListMatch
+---@field id? string
+
+---@class ArtifactRetentionPolicyCreateData
+
+---@class ArtifactRetentionPolicyUpdateData
+---@field id string
+
+---@class ArtifactRetentionPolicyPatchData
+---@field id string
+
+---@class ArtifactRetentionPolicyRemoveMatch
+---@field id string
+
 ---@class AttachmentPart
 ---@field id? string
 
@@ -2218,6 +3017,99 @@
 ---@field attachment_id string
 ---@field id string
 ---@field organization_id string
+
+---@class AuditEvent
+---@field action string
+---@field actor_kind string
+---@field actor_user_id string|nil
+---@field created_at string
+---@field created_at_label string|nil
+---@field id string
+---@field observability_space_id string|nil
+---@field organization_id string
+---@field payload any
+---@field request_id string|nil
+---@field severity string
+---@field subject_id string
+---@field subject_kind string
+---@field subject_name string|nil
+---@field updated_at string
+---@field updated_at_label string|nil
+
+---@class AuditEventListMatch
+---@field organization_id string
+
+---@class Auth
+
+---@class AuthLoadMatch
+
+---@class AuthCreateData
+---@field cli_login_id? any
+---@field code? any
+---@field email? any
+---@field invite_code? any
+---@field login_id? any
+---@field name? any
+---@field organization_invitation_token? any
+---@field password? any
+---@field polling_token? any
+---@field redirect_uri? any
+---@field state? any
+---@field turnstile_token? any
+
+---@class AuthRemoveMatch
+
+---@class AuthCli
+
+---@class AuthCliCreateData
+---@field client_kind? any
+---@field intent? any
+---@field login_id? any
+---@field name? any
+---@field organization_id? any
+---@field organization_slug? any
+
+---@class AuthGithub
+
+---@class AuthGithubLoadMatch
+---@field redirect_uri string
+
+---@class AuthGoogle
+
+---@class AuthGoogleLoadMatch
+---@field redirect_uri string
+
+---@class AuthOpenai
+
+---@class AuthOpenaiLoadMatch
+---@field code? string
+---@field error? string
+---@field state string
+
+---@class AuthPasswordReset
+---@field email string
+---@field message string
+---@field password string
+---@field token string
+
+---@class AuthPasswordResetCreateData
+---@field email string
+
+---@class AuthPasswordResetUpdateData
+---@field password? string
+---@field token? string
+
+---@class AuthRegistrationOption
+---@field email_password_signup_enabled boolean
+---@field openai_sign_in_enabled? boolean
+---@field turnstile_site_key string|nil
+---@field waitlist_enabled boolean
+
+---@class AuthRegistrationOptionListMatch
+---@field email_password_signup_enabled? boolean
+---@field openai_sign_in_enabled? boolean
+---@field turnstile_site_key? string|nil
+---@field waitlist_enabled? boolean
 
 ---@class AutomationEvent
 ---@field action string
@@ -2292,6 +3184,288 @@
 ---@field input table
 ---@field request_id string
 ---@field version_id string
+
+---@class BackendRunnerPool
+---@field id? string
+
+---@class BackendRunnerPoolListMatch
+---@field backend_id string
+
+---@class BackendRunnerPoolCreateData
+---@field backend_id string
+
+---@class BackendRunnerPoolRemoveMatch
+---@field backend_id string
+---@field id string
+
+---@class Bazel
+
+---@class BazelCreateData
+
+---@class BazelActionResult
+---@field id? string
+
+---@class BazelActionResultLoadMatch
+---@field action_result_id string
+---@field id string
+
+---@class BazelActionResultUpdateData
+---@field action_result_id string
+---@field id string
+
+---@class BazelBackend
+---@field id? string
+
+---@class BazelBackendLoadMatch
+---@field id string
+
+---@class BazelBackendListMatch
+---@field id? string
+
+---@class BazelBackendCreateData
+
+---@class BazelBackendUpdateData
+---@field id string
+
+---@class BazelBackendPatchData
+---@field id string
+
+---@class BazelBackendRemoveMatch
+---@field id string
+
+---@class BazelBlob
+---@field id? string
+
+---@class BazelBlobLoadMatch
+---@field blob_id string
+---@field hash string
+---@field id string
+
+---@class BazelBlobUpdateData
+---@field blob_id string
+---@field hash string
+---@field id string
+
+---@class BazelExecution
+---@field id? string
+
+---@class BazelExecutionLoadMatch
+---@field id string
+
+---@class BazelExecutionCreateData
+
+---@class BazelFindMissingBlob
+
+---@class BazelFindMissingBlobCreateData
+
+---@class Billing
+---@field addons table
+---@field breakdown any
+---@field budget any
+---@field can_manage_contact boolean
+---@field can_manage_extra_spend boolean
+---@field can_manage_local_subscription boolean
+---@field can_manage_payment_method boolean
+---@field can_set_up_billing boolean
+---@field customer any
+---@field deployment_usage_visible boolean
+---@field entitlements table
+---@field extra_spend_enabled boolean
+---@field feature_enabled boolean
+---@field organization_id string
+---@field package any
+---@field prepaid any
+---@field preview any
+---@field storage_usage table
+---@field stripe table
+---@field subscription any
+---@field token_account table
+
+---@class BillingLoadMatch
+---@field organization_id string
+
+---@class BillingUpdateData
+---@field organization_id string
+---@field billing_email? any
+---@field cancel_at_period_end? any
+---@field enabled? any
+---@field monthly_cap_cents? any
+
+---@class BillingAddon
+---@field addons table
+---@field breakdown any
+---@field budget any
+---@field can_manage_contact boolean
+---@field can_manage_extra_spend boolean
+---@field can_manage_local_subscription boolean
+---@field can_manage_payment_method boolean
+---@field can_set_up_billing boolean
+---@field customer any
+---@field deployment_usage_visible boolean
+---@field entitlements table
+---@field extra_spend_enabled boolean
+---@field feature_enabled boolean
+---@field id? string
+---@field organization_id string
+---@field package any
+---@field prepaid any
+---@field preview any
+---@field quantity number
+---@field storage_usage table
+---@field stripe table
+---@field subscription any
+---@field token_account table
+
+---@class BillingAddonUpdateData
+---@field id string
+---@field organization_id string
+---@field quantity? number
+
+---@class BillingCheckoutSession
+---@field cancel_url? string
+---@field coupon_code? string
+---@field entry_point? string
+---@field package_key? string
+---@field package_revision? number
+---@field success_url? string
+
+---@class BillingCheckoutSessionCreateData
+---@field organization_id string
+---@field cancel_url? string
+---@field coupon_code? string
+---@field entry_point? string
+---@field package_key? string
+---@field package_revision? number
+---@field success_url? string
+
+---@class BillingInvoice
+---@field amount_due_cents number
+---@field created_at string
+---@field currency string
+---@field hosted_invoice_url? string|nil
+---@field id string
+---@field invoice_pdf? string|nil
+---@field metronome_invoice_id? string|nil
+---@field number? string|nil
+---@field period_ended_at? string|nil
+---@field period_started_at? string|nil
+---@field status string
+---@field total_cents number
+
+---@class BillingInvoiceListMatch
+---@field organization_id string
+
+---@class BillingPackage
+---@field addons table
+---@field base_price_cents number
+---@field billing_interval string
+---@field billing_policy string
+---@field ci_included_spend_cents? number
+---@field currency string
+---@field key string
+---@field max_seats? number|nil
+---@field name string
+---@field pay_as_you_go_enabled boolean
+---@field rates table
+---@field revision number
+---@field roder_daily_run_limit? number
+---@field roder_run_concurrency_limit? number
+---@field seat_price_cents number
+---@field trial_days number
+---@field visibility string
+
+---@class BillingPackageListMatch
+---@field addons? table
+---@field base_price_cents? number
+---@field billing_interval? string
+---@field billing_policy? string
+---@field ci_included_spend_cents? number
+---@field currency? string
+---@field key? string
+---@field max_seats? number|nil
+---@field name? string
+---@field pay_as_you_go_enabled? boolean
+---@field rates? table
+---@field revision? number
+---@field roder_daily_run_limit? number
+---@field roder_run_concurrency_limit? number
+---@field seat_price_cents? number
+---@field trial_days? number
+---@field visibility? string
+
+---@class BillingPortalSession
+---@field return_url? string
+
+---@class BillingPortalSessionCreateData
+---@field organization_id string
+---@field return_url? string
+
+---@class BillingPrepaidPeriod
+---@field activated_at string|nil
+---@field created_at string
+---@field currency string
+---@field id string
+---@field last_error string|nil
+---@field minutes number
+---@field net_amount_cents number
+---@field paid_at string|nil
+---@field paid_total_cents number|nil
+---@field payment_action_url string|nil
+---@field period_ended_at string
+---@field period_started_at string
+---@field receipt_url string|nil
+---@field refunded_net_cents number
+---@field state string
+
+---@class BillingPrepaidPeriodLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class BillingPrepaidPurchase
+---@field activated_at string|nil
+---@field created_at string
+---@field currency string
+---@field id string
+---@field last_error string|nil
+---@field minutes number
+---@field net_amount_cents number
+---@field paid_at string|nil
+---@field paid_total_cents number|nil
+---@field payment_action_url string|nil
+---@field prepaid table
+---@field purchase table
+---@field receipt_url string|nil
+---@field refunded_net_cents number
+---@field request_key string
+---@field state string
+
+---@class BillingPrepaidPurchaseLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class BillingPrepaidPurchaseListMatch
+---@field organization_id string
+
+---@class BillingPrepaidPurchaseCreateData
+---@field organization_id string
+---@field minutes number
+---@field request_key string
+
+---@class BillingTokenTopUp
+---@field amount_cents number
+---@field request_key string
+
+---@class BillingTokenTopUpCreateData
+---@field organization_id string
+---@field amount_cents number
+---@field request_key string
+
+---@class BillingUsage
+
+---@class BillingUsageLoadMatch
+---@field organization_id string
+---@field meter? string
+---@field window? string
 
 ---@class Binary
 ---@field accepts_versions boolean
@@ -2407,6 +3581,23 @@
 ---@field id string
 ---@field organization_id string
 ---@field project_id string
+
+---@class BookmarkProtectionRefreshGithubRequiredCheck
+---@field exclusions table
+---@field fetched_at? string|nil
+---@field fetched_at_label? string|nil
+---@field github_branch string
+---@field github_owner? string|nil
+---@field github_repository_name? string|nil
+---@field last_error? string|nil
+---@field proven boolean
+---@field requirements table
+---@field stale boolean
+
+---@class BookmarkProtectionRefreshGithubRequiredCheckCreateData
+---@field organization_id string
+---@field repo_id string
+---@field github_branch? string
 
 ---@class BrowserEgressCandidate
 ---@field id string
@@ -2575,6 +3766,31 @@
 ---@field max_seconds? number
 ---@field outcome? string|nil
 
+---@class CacheNamespaceEntry
+---@field id? string
+
+---@class CacheNamespaceEntryLoadMatch
+---@field cache_namespace_id string
+---@field id string
+
+---@class CacheNamespaceEntryListMatch
+---@field cache_namespace_id string
+
+---@class CacheNamespaceEntryCreateData
+---@field cache_namespace_id string
+
+---@class CacheNamespaceEntryUpdateData
+---@field cache_namespace_id string
+---@field id string
+
+---@class CacheNamespaceEntryPatchData
+---@field cache_namespace_id string
+---@field id string
+
+---@class CacheNamespaceEntryRemoveMatch
+---@field cache_namespace_id string
+---@field id string
+
 ---@class CatalogSelector
 ---@field app table
 
@@ -2678,6 +3894,629 @@
 ---@field cdn_space_id string
 ---@field id string
 
+---@class Change
+---@field counts table
+---@field filters table
+---@field github_sync table
+---@field result any
+
+---@class ChangeListMatch
+---@field organization_id string
+---@field author? string
+---@field awaiting_review? boolean
+---@field direction? string
+---@field group_page? string
+---@field label? string
+---@field mine? boolean
+---@field number? number
+---@field page? number
+---@field q? string
+---@field repo? string
+---@field sort? string
+---@field source? string
+---@field stack? string
+---@field state? string
+---@field target? string
+---@field tips_only? boolean
+---@field view? string
+
+---@class ChangeAsset
+---@field alias string
+---@field byte_size number
+---@field checksum_md5 string
+---@field checksum_sha256 string
+---@field content_type string
+---@field filename string
+---@field id? string
+
+---@class ChangeAssetCreateData
+---@field organization_id string
+---@field repo_id string
+---@field alias string
+---@field byte_size number
+---@field checksum_md5 string
+---@field checksum_sha256 string
+---@field content_type string
+---@field filename string
+
+---@class ChangeComment
+---@field body string
+---@field capabilities table
+---@field change_id? string|nil
+---@field created_at? string|nil
+---@field created_at_label? string|nil
+---@field id string
+---@field kind? string|nil
+---@field line? number|nil
+---@field outdated boolean
+---@field parent_comment_id? string|nil
+---@field patchset_id? string|nil
+---@field patchset_number number|nil
+---@field path? string|nil
+---@field replies? table
+---@field resolved boolean
+---@field resolved_at? string|nil
+---@field resolved_at_label? string|nil
+---@field resolved_by table
+---@field side? string|nil
+---@field updated_at? string|nil
+---@field updated_at_label? string|nil
+---@field user table
+
+---@class ChangeCommentListMatch
+---@field change_id string
+---@field organization_id string
+---@field repo_id string
+---@field path? string
+---@field resolved? boolean
+
+---@class ChangeCommentCreateData
+---@field change_id string
+---@field organization_id string
+---@field repo_id string
+---@field body string
+---@field kind? string|nil
+---@field line? number|nil
+---@field parent_comment_id? string|nil
+---@field patchset_id? string|nil
+---@field path? string|nil
+---@field side? string|nil
+
+---@class ChangeFileReviewCheckpoint
+---@field patchset_id string
+---@field path string
+---@field request_id string
+---@field review_action string
+
+---@class ChangeFileReviewCheckpointCreateData
+---@field change_id string
+---@field organization_id string
+---@field repo_id string
+---@field patchset_id string
+---@field path string
+---@field request_id string
+---@field review_action string
+
+---@class ChangeGitBranchSubmission
+
+---@class ChangeGitBranchSubmissionCreateData
+---@field organization_id string
+---@field repo_id string
+
+---@class ChangeGitCommitIdentity
+---@field change_id string
+---@field change_number number
+---@field git_commit_id string
+---@field git_commit_ids table
+---@field id? string
+---@field identities table
+---@field missing_git_commit_ids table
+---@field patchset_number number
+
+---@class ChangeGitCommitIdentityLoadMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class ChangeGitCommitIdentityCreateData
+---@field organization_id string
+---@field repo_id string
+---@field git_commit_ids table
+
+---@class ChangeGitPublication
+---@field expected_target_commit_id string
+---@field id? string
+---@field operation_key string
+---@field publication_id string
+---@field request table
+---@field request_digest string
+---@field revisions table
+---@field status string
+---@field transfer_refs? table
+
+---@class ChangeGitPublicationLoadMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class ChangeGitPublicationCreateData
+---@field organization_id string
+---@field repo_id string
+---@field operation_key string
+---@field request table
+
+---@class ChangeGroupMember
+---@field change_id string
+---@field changes table
+---@field id? string
+---@field name? string
+---@field number? number
+---@field status string
+---@field title string|nil
+
+---@class ChangeGroupMemberCreateData
+---@field change_group_id string
+---@field organization_id string
+---@field repo_id string
+---@field change_id string
+
+---@class ChangeGroupMemberRemoveMatch
+---@field change_group_id string
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class ChangeLabel
+---@field accepted? boolean
+---@field add? table
+---@field approval table
+---@field assets? table
+---@field author? any
+---@field capabilities table
+---@field change_key? string
+---@field checks? table
+---@field checks_status? string
+---@field comments? table
+---@field comments_count? number
+---@field comments_count_label? string
+---@field commit_message? string|nil
+---@field current_patchset table
+---@field description? string|nil
+---@field draft? boolean
+---@field folded_into_number? number|nil
+---@field github_projection_status? string|nil
+---@field github_pull_request table
+---@field github_pull_requests? table
+---@field group? table|nil
+---@field has_description? boolean
+---@field id string
+---@field jj_change_id? string|nil
+---@field labels? table
+---@field landable? boolean
+---@field landed_by table
+---@field number number
+---@field orphaned? boolean
+---@field orphaned_at? string
+---@field orphaned_at_label? string
+---@field orphaned_reason? string
+---@field parent_change_id? string|nil
+---@field parent_change_number? number|nil
+---@field patchset_number? number|nil
+---@field patchsets? table
+---@field primary_status? string|nil
+---@field public_id? string
+---@field relation_chain? table
+---@field remove? table
+---@field requested_changes? boolean
+---@field restack_state? string
+---@field reviewer_candidates? table
+---@field reviewers? table
+---@field stable_change_id? string
+---@field stack? any
+---@field status string
+---@field target_branch string
+---@field title string
+---@field unresolved_comments_count_label? string
+---@field url? string
+---@field votes? table
+
+---@class ChangeLabelUpdateData
+---@field change_id string
+---@field organization_id string
+---@field repo_id string
+---@field add? table
+---@field labels? table
+---@field remove? table
+
+---@class ChangeLandingHold
+
+---@class ChangeLandingHoldCreateData
+---@field change_id string
+---@field organization_id string
+---@field repo_id string
+
+---@class ChangeLandingRequest
+---@field change_ids? table
+---@field count number
+---@field defer_until_ready? boolean
+---@field expected_requirement_version? string
+---@field expected_scope_version? string
+---@field head_change_id? string
+---@field id? string|nil
+---@field numbers table
+---@field override_acknowledged? boolean
+---@field override_codes? table
+---@field position? number
+---@field priority? string
+---@field scope_version string
+---@field state string
+---@field version? number
+
+---@class ChangeLandingRequestCreateData
+---@field change_id string
+---@field organization_id string
+---@field repo_id string
+---@field defer_until_ready? boolean
+---@field expected_requirement_version? string
+---@field expected_scope_version? string
+---@field override_acknowledged? boolean
+---@field override_codes? table
+---@field priority? string
+
+---@class ChangeLandingRequestRemoveMatch
+---@field change_id string
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class ChangeRequestChange
+---@field message? string|nil
+
+---@class ChangeRequestChangeCreateData
+---@field change_id string
+---@field organization_id string
+---@field repo_id string
+---@field message? string|nil
+
+---@class ChangeReviewer
+---@field add? table
+---@field email string
+---@field name string|nil
+---@field remove? table
+---@field removed_reviewers table
+---@field requested_reviewers table
+---@field reviewers table
+
+---@class ChangeReviewerListMatch
+---@field change_id string
+---@field organization_id string
+---@field repo_id string
+
+---@class ChangeReviewerUpdateData
+---@field change_id string
+---@field organization_id string
+---@field repo_id string
+---@field add? table
+---@field remove? table
+
+---@class ChangeTranscript
+---@field capture_kind string
+---@field captured_at string
+---@field harness table
+---@field id string
+---@field original_resume? any
+---@field patchset_commit_id string
+---@field patchset_number number
+---@field redaction_count number
+---@field session_id? string|nil
+---@field session_title? string|nil
+---@field status string
+---@field superseded boolean
+---@field user table
+
+---@class ChangeTranscriptListMatch
+---@field change_id string
+---@field organization_id string
+---@field repo_id string
+
+---@class ChangeTranscriptSummary
+---@field summaries table
+
+---@class ChangeTranscriptSummaryListMatch
+---@field organization_id string
+---@field ids string
+
+---@class CheckpointPrepareChunk
+
+---@class CheckpointPrepareChunkCreateData
+---@field agent_session_id string
+---@field organization_id string
+---@field repo_id string
+
+---@class CiNode
+---@field architecture string|nil
+---@field bazel_enabled boolean
+---@field bazel_properties_json string|nil
+---@field ci_runner_pool_id string
+---@field cordoned_at string|nil
+---@field cordoned_at_label string|nil
+---@field created_at string
+---@field created_at_label string|nil
+---@field health_state string
+---@field heartbeat_age_seconds number|nil
+---@field id string
+---@field kind string
+---@field labels_csv string|nil
+---@field last_seen_at string|nil
+---@field last_seen_at_label string|nil
+---@field name string
+---@field network_peer_id string|nil
+---@field node_capabilities_csv string|nil
+---@field node_certificate_expires_at string|nil
+---@field node_certificate_expires_at_label string|nil
+---@field node_certificate_fingerprint_sha256 string|nil
+---@field node_certificate_serial string|nil
+---@field offline_at string|nil
+---@field offline_at_label string|nil
+---@field online_at string|nil
+---@field online_at_label string|nil
+---@field organization_id string
+---@field os string|nil
+---@field revoked_at string|nil
+---@field revoked_at_label string|nil
+---@field schedulable boolean
+---@field slug string
+---@field status string
+---@field updated_at string
+---@field updated_at_label string|nil
+---@field version string|nil
+
+---@class CiNodeLoadMatch
+---@field id string
+
+---@class CiNodeCreateData
+
+---@class CiPipeline
+---@field ci_runner_pool_id string|nil
+---@field concurrency_key string|nil
+---@field created_at string
+---@field default_branch string|nil
+---@field description string|nil
+---@field hosted_app_id string|nil
+---@field id string
+---@field name string
+---@field organization_id string
+---@field repository_id string|nil
+---@field required_capabilities_csv string|nil
+---@field runner_pool table|nil
+---@field runs table
+---@field slug string
+---@field source_kind string
+---@field status string
+---@field status_label string
+---@field status_state string
+---@field status_tone string
+---@field trigger_on_pull_request boolean
+---@field trigger_on_push boolean
+---@field trigger_on_schedule boolean
+---@field updated_at string
+---@field workflow_path string|nil
+
+---@class CiPipelineLoadMatch
+---@field id string
+
+---@class CiPipelineListMatch
+---@field ci_runner_pool_id? string|nil
+---@field concurrency_key? string|nil
+---@field created_at? string
+---@field default_branch? string|nil
+---@field description? string|nil
+---@field hosted_app_id? string|nil
+---@field id? string
+---@field name? string
+---@field organization_id? string
+---@field repository_id? string|nil
+---@field required_capabilities_csv? string|nil
+---@field runner_pool? table|nil
+---@field runs? table
+---@field slug? string
+---@field source_kind? string
+---@field status? string
+---@field status_label? string
+---@field status_state? string
+---@field status_tone? string
+---@field trigger_on_pull_request? boolean
+---@field trigger_on_push? boolean
+---@field trigger_on_schedule? boolean
+---@field updated_at? string
+---@field workflow_path? string|nil
+
+---@class CiPipelineCreateData
+
+---@class CiPipelineRun
+---@field active boolean
+---@field canceled_at string|nil
+---@field ci_pipeline_id string
+---@field ci_runner_pool_id string|nil
+---@field commit_sha string|nil
+---@field concurrency_key string|nil
+---@field created_at string
+---@field creator_user_id string|nil
+---@field display_id number
+---@field failed boolean
+---@field finished_at string|nil
+---@field hosted_app_id string|nil
+---@field id string
+---@field jobs table
+---@field message string|nil
+---@field number number
+---@field organization_id string
+---@field parameters_json string|nil
+---@field queued_at string|nil
+---@field ref_name string|nil
+---@field repository_id string|nil
+---@field required_capabilities_csv string|nil
+---@field retry_number number
+---@field retryable boolean
+---@field slug string
+---@field source_url string|nil
+---@field started_at string|nil
+---@field status string
+---@field status_label string
+---@field status_state string
+---@field status_tone string
+---@field trigger_kind string
+---@field updated_at string
+
+---@class CiPipelineRunLoadMatch
+---@field id string
+---@field pipeline_id string
+
+---@class CiPipelineRunListMatch
+---@field pipeline_id string
+
+---@class CiPipelineRunCreateData
+---@field pipeline_id string
+
+---@class CiRunnerPool
+---@field bazel_enabled boolean
+---@field bazel_properties_json string|nil
+---@field created_at string
+---@field description string|nil
+---@field elastic_config_json string|nil
+---@field elastic_provider_kind string|nil
+---@field id string
+---@field isolation_mode string
+---@field labels_csv string|nil
+---@field max_concurrency number
+---@field modal_capacity table
+---@field modal_runner_invocations table
+---@field name string
+---@field network_space_id string|nil
+---@field node_capabilities_csv string|nil
+---@field organization_id string
+---@field runner_count_label string
+---@field runner_kind string
+---@field runners table
+---@field slug string
+---@field status string
+---@field updated_at string
+
+---@class CiRunnerPoolLoadMatch
+---@field id string
+
+---@class CiRunnerPoolListMatch
+---@field organization_id? string
+
+---@class CiRunnerPoolCreateData
+
+---@class CiRunnerPoolUpdateData
+---@field id string
+
+---@class CiRunnerPoolPatchData
+---@field id string
+---@field description? string|nil
+---@field elastic_config_json? string|nil
+---@field elastic_provider_kind? string|nil
+---@field isolation_mode? string
+---@field labels_csv? string|nil
+---@field max_concurrency? number
+---@field node_capabilities_csv? string|nil
+---@field runner_kind? string
+---@field status? string
+
+---@class CiStatus
+
+---@class CiStatusLoadMatch
+---@field organization_id string
+---@field repo_id string
+---@field ref? string
+
+---@class CliEvent
+---@field event string
+---@field properties table
+
+---@class CliEventCreateData
+---@field event string
+---@field properties table
+
+---@class CliRelease
+
+---@class CliReleaseLoadMatch
+
+---@class CliReleaseListMatch
+
+---@class CliReleaseCreateData
+
+---@class CloudWorkspaceBackupObject
+---@field id? string
+
+---@class CloudWorkspaceBackupObjectLoadMatch
+---@field cloud_workspace_backup_id string
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class CodeRuleEvaluation
+---@field advisory boolean
+---@field coverage table
+---@field diff string
+---@field duration_ms number
+---@field evaluator_version? string
+---@field input_digest? string|nil
+---@field limits? table
+---@field model? string
+---@field requests table
+---@field schema_version number
+---@field snapshot_digest? string|nil
+---@field unchecked table
+---@field verdicts table
+
+---@class CodeRuleEvaluationCreateData
+---@field organization_id string
+---@field repo_id string
+---@field diff string
+
+---@class ComSiteAccess
+
+---@class ComSiteAccessLoadMatch
+---@field host string
+---@field return_to? string
+
+---@class ComSiteAccessCreateData
+---@field host? any
+---@field token? any
+
+---@class ComSiteAccessSession
+---@field cookie_name string
+---@field host string
+---@field max_age number
+---@field session_token string
+
+---@class ComSiteAccessSessionCreateData
+---@field host string
+
+---@class CommentThreadComment
+---@field body string
+
+---@class CommentThreadCommentCreateData
+---@field artefact_id string
+---@field comment_thread_id string
+---@field organization_id string
+---@field body string
+
+---@class CommitDiff
+---@field files table
+---@field id? string
+---@field parent_id string|nil
+
+---@class CommitDiffLoadMatch
+---@field commit_id string
+---@field id string
+---@field organization_id string
+---@field repo_id string
+---@field parent? string
+
 ---@class ConnectionRequest
 ---@field agent_card_url string
 ---@field auth_scheme string
@@ -2711,6 +4550,70 @@
 ---@field organization_id string
 ---@field cursor? string
 ---@field limit? number
+
+---@class ContactSubmission
+---@field company? string|nil
+---@field email string
+---@field message string
+---@field name string
+---@field website? string|nil
+
+---@class ContactSubmissionCreateData
+---@field company? string|nil
+---@field email string
+---@field message string
+---@field name string
+---@field website? string|nil
+
+---@class ControlComputer
+---@field connection table
+---@field consent table
+---@field device table
+---@field id? string
+---@field provider_status? table
+
+---@class ControlComputerListMatch
+---@field organization_id string
+---@field cursor? string
+---@field observe_connection? boolean
+---@field persistent_agent_id string
+
+---@class ControlComputerUpdateData
+---@field id string
+---@field organization_id string
+---@field enabled? any
+---@field expected_revision? any
+---@field persistent_agent_id? any
+---@field providers? any
+
+---@class ControlComputerControlOperation
+---@field action string
+---@field arguments table
+---@field created_at string
+---@field delivery table
+---@field device_id string
+---@field diagnostic_code? string
+---@field end table
+---@field expires_at string
+---@field id string
+---@field key string
+---@field provider string
+---@field references table
+---@field result any
+---@field result_expired boolean
+---@field state string
+
+---@class ControlComputerControlOperationLoadMatch
+---@field control_computer_id string
+---@field id string
+---@field organization_id string
+
+---@class ControlComputerControlOperationCreateData
+---@field control_computer_id string
+---@field organization_id string
+---@field action string
+---@field arguments table
+---@field key string
 
 ---@class CoordinationWait
 ---@field can_stop boolean
@@ -2978,6 +4881,48 @@
 ---@field demo_share_id string
 ---@field id string
 
+---@class Deployment
+---@field app table
+---@field artifact_locator string|nil
+---@field build_duration_seconds number|nil
+---@field build_source table|nil
+---@field build_status string
+---@field children table
+---@field ci_pipeline_id string|nil
+---@field ci_pipeline_run_id string|nil
+---@field commit_sha string|nil
+---@field created_at string
+---@field creator table|nil
+---@field deployed_url string|nil
+---@field duration_seconds number|nil
+---@field environment table
+---@field history_kind string
+---@field history_reason string|nil
+---@field id string
+---@field is_live boolean
+---@field is_rollback boolean
+---@field live_region_count number
+---@field number number
+---@field placement table|nil
+---@field region_count number
+---@field replicas_per_region number
+---@field rollback_reason string|nil
+---@field rollback_source_release_id string|nil
+---@field rollback_target_release_id string|nil
+---@field rollout_predecessor_id string|nil
+---@field rollout_status string
+---@field rollout_strategy string
+---@field service table
+---@field source_ref string|nil
+---@field status string
+---@field total_replicas number
+---@field trigger_kind string
+---@field updated_at string
+
+---@class DeploymentLoadMatch
+---@field id string
+---@field organization_id string
+
 ---@class DeploymentDashboardNomad
 
 ---@class DeploymentDashboardNomadLoadMatch
@@ -2986,11 +4931,471 @@
 ---@field location? string
 ---@field service? string
 
+---@class DeploymentDetail
+---@field activity table
+---@field app any
+---@field app_id string|nil
+---@field audit_events table
+---@field capacity table
+---@field data_resources table
+---@field deploy_targets table
+---@field deployments table
+---@field desired_states table
+---@field environments table
+---@field filters table
+---@field health table
+---@field nomad table
+---@field operations table
+---@field placements table
+---@field reconciler_ticks table
+---@field releases table
+---@field runtime_instances table
+---@field service_bindings table
+---@field service_views table
+---@field storage_resources table
+
+---@class DeploymentDetailListMatch
+---@field organization_id string
+---@field app? string
+---@field environment? string
+---@field service? string
+
 ---@class DeploymentFile
 
 ---@class DeploymentFileUpdateData
 ---@field deployment_id string
 ---@field static_site_id string
+
+---@class DeploymentLog
+---@field allocation_id string
+---@field app_environment_id string|nil
+---@field app_release_id string|nil
+---@field app_service_id string|nil
+---@field details any
+---@field environment_name string
+---@field release_version string|nil
+---@field service_name string
+---@field status string
+---@field task string|nil
+---@field unreachable_reason string|nil
+
+---@class DeploymentLogListMatch
+---@field organization_id string
+---@field app? string
+---@field environment? string
+---@field limit? number
+---@field log_location? string
+---@field log_service? string
+---@field service? string
+
+---@class DeploymentMetric
+---@field auto_deploy boolean
+---@field environment_id string
+---@field environment_name string
+---@field placement_id string
+---@field redeploy boolean
+---@field region_count number
+---@field replicas_per_region number
+---@field rollout_strategy string
+---@field service_id string
+---@field service_name string
+---@field source_ref string|nil
+
+---@class DeploymentMetricListMatch
+---@field organization_id string
+---@field app? string
+---@field environment? string
+---@field metrics_range? string
+---@field service? string
+
+---@class DeploymentPreview
+---@field access string
+---@field app_environment_id string
+---@field app_name string
+---@field app_preview_profile_id string
+---@field app_slug string
+---@field change_number number|nil
+---@field created_at? string
+---@field created_by_user_id? string
+---@field expires_at string
+---@field generation number
+---@field health string
+---@field hosted_app_id string
+---@field id string
+---@field latest_operation_status string|nil
+---@field name string
+---@field owner_name string|nil
+---@field profile_name string
+---@field resource_overrides? table
+---@field retained boolean
+---@field slug string
+---@field snapshot_version number
+---@field source_revision string
+---@field status string
+---@field updated_at? string
+---@field urls table
+---@field vcs_change_id? string|nil
+
+---@class DeploymentPreviewListMatch
+---@field organization_id string
+---@field app? string
+---@field change? string
+---@field expiry? string
+---@field health? string
+---@field owner? string
+---@field page? number
+
+---@class DeploymentSetting
+---@field code string
+---@field created_at string
+---@field id string
+---@field name string
+---@field nomad_datacenter string
+---@field updated_at string
+
+---@class DeploymentSettingListMatch
+---@field organization_id string
+---@field app? string
+---@field environment? string
+---@field service? string
+
+---@class DesktopLocalAgentModel
+---@field id string
+---@field name string
+
+---@class DesktopLocalAgentModelListMatch
+---@field organization_id string
+
+---@class DesktopLocalAgentResponse
+---@field input table
+---@field max_output_tokens? number
+---@field model string
+---@field store boolean
+---@field stream boolean
+
+---@class DesktopLocalAgentResponseCreateData
+---@field organization_id string
+---@field input table
+---@field max_output_tokens? number
+---@field model string
+---@field store boolean
+---@field stream boolean
+
+---@class Device
+---@field architecture string
+---@field channel string
+---@field coding_connection table|nil
+---@field connection_checked_at string|nil
+---@field connection_status string
+---@field control_delivery_policy table
+---@field control_spawn_policy table
+---@field created_at string
+---@field device table
+---@field environment string
+---@field execution_available boolean
+---@field id string
+---@field name string
+---@field native_device_id string
+---@field paired_at string
+---@field pairing_generation number
+---@field platform string
+---@field project_visibility table
+---@field provider_status? table
+---@field revoked_at string|nil
+---@field scheduled_check_ins? boolean
+---@field user_browser_access string
+
+---@class DeviceLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class DeviceListMatch
+---@field organization_id string
+---@field cursor? string
+---@field include_revoked? boolean
+
+---@class DeviceCreateData
+---@field id string
+---@field organization_id string
+---@field architecture string
+---@field channel string
+---@field name string
+---@field pairing_generation number
+---@field platform string
+---@field access? any
+---@field folders? any
+---@field max_agents? any
+---@field mode? any
+---@field public_key? any
+---@field repositories? any
+---@field restricted? any
+---@field transport? any
+---@field version? any
+
+---@class DeviceBrowserOperation
+---@field command string
+---@field created_at string
+---@field id string
+
+---@class DeviceBrowserOperationListMatch
+---@field device_id string
+---@field organization_id string
+
+---@class DeviceBrowserOperationCreateData
+---@field device_id string
+---@field id string
+---@field organization_id string
+---@field claim_token? any
+---@field response? any
+
+---@class DeviceControlMessage
+---@field agent_id string
+---@field agent_name string
+---@field expires_at string
+---@field id string
+---@field sender string|nil
+---@field text string|nil
+---@field text_omitted boolean
+---@field thread table
+
+---@class DeviceControlMessageListMatch
+---@field device_id string
+---@field organization_id string
+---@field cursor? string
+
+---@class DeviceControlOperation
+---@field action string
+---@field arguments table
+---@field created_at string
+---@field delivery table
+---@field device_id string
+---@field diagnostic_code? string
+---@field end table
+---@field expires_at string
+---@field id string
+---@field key string
+---@field provider string
+---@field references table
+---@field result any
+---@field result_expired boolean
+---@field state string
+
+---@class DeviceControlOperationLoadMatch
+---@field device_id string
+---@field id string
+---@field organization_id string
+
+---@class DeviceControlOperationCreateData
+---@field device_id string
+---@field organization_id string
+---@field action string
+---@field arguments table
+---@field key string
+
+---@class DeviceEnterpriseRelay
+
+---@class DeviceEnterpriseRelayListMatch
+
+---@class DeviceFolderListing
+---@field code? string
+---@field error? string
+---@field folders? table
+---@field id string
+---@field key string
+---@field parent? string|nil
+---@field path? string
+---@field state string
+---@field truncated? boolean
+
+---@class DeviceFolderListingLoadMatch
+---@field device_id string
+---@field id string
+---@field organization_id string
+
+---@class DeviceFolderListingCreateData
+---@field device_id string
+---@field organization_id string
+---@field key string
+---@field path string
+
+---@class DeviceGrant
+---@field active_grants table
+---@field agent_choices table
+---@field agent_id string
+---@field all_agents_access boolean
+---@field capabilities table
+---@field execution_available boolean
+---@field grants table
+---@field id? string
+---@field next_cursor string|nil
+---@field principal_id string
+
+---@class DeviceGrantListMatch
+---@field device_id string
+---@field organization_id string
+---@field cursor? string
+
+---@class DeviceGrantCreateData
+---@field device_id string
+---@field organization_id string
+---@field agent_id string
+---@field capabilities table
+---@field principal_id string
+
+---@class DeviceInvocation
+
+---@class DeviceInvocationCreateData
+---@field device_id string
+---@field organization_id string
+---@field challenge? any
+---@field invocation_id? any
+---@field request_hash? any
+---@field signature? any
+
+---@class DeviceLocalEvent
+---@field event string
+---@field recorded boolean
+
+---@class DeviceLocalEventCreateData
+---@field device_id string
+---@field organization_id string
+---@field event string
+
+---@class DevicePairing
+---@field architecture string
+---@field channel string
+---@field id? string
+---@field name string
+---@field platform string
+---@field public_key string
+
+---@class DevicePairingCreateData
+---@field organization_id string
+---@field architecture string
+---@field channel string
+---@field name string
+---@field platform string
+---@field public_key string
+
+---@class DeviceProject
+---@field id? string
+
+---@class DeviceProjectRemoveMatch
+---@field device_id string
+---@field id string
+---@field organization_id string
+
+---@class DeviceScheduledCheckIn
+---@field enabled boolean
+
+---@class DeviceScheduledCheckInCreateData
+---@field device_id string
+---@field organization_id string
+---@field enabled boolean
+
+---@class DockerBuilder
+---@field backend string
+---@field created_at string|nil
+---@field gateway_url? string|nil
+---@field generation number
+---@field id string
+---@field last_activity_at string|nil
+---@field organization_id string
+---@field ready_at string|nil
+---@field slept_at string|nil
+---@field slug string
+---@field startup_attempt number
+---@field startup_failure string|nil
+---@field startup_stage string|nil
+---@field status string
+---@field updated_at string|nil
+
+---@class DockerBuilderLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class DockerBuilderListMatch
+---@field organization_id string
+---@field slug? string
+
+---@class DockerBuilderCreateData
+---@field organization_id string
+---@field backend? string
+---@field slug? string
+
+---@class DockerBuilderUpdateData
+---@field id string
+---@field organization_id string
+
+---@class DockerBuilderPatchData
+---@field id string
+---@field organization_id string
+---@field slug? string
+
+---@class DockerBuilderSession
+---@field created_at string
+---@field docker_builder_id string
+---@field expires_at string
+---@field gateway_url? string|nil
+---@field generation number
+---@field id string
+---@field organization_id string
+---@field revoked_at string|nil
+---@field user_id string
+
+---@class DockerBuilderSessionLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class DockerBuilderSessionCreateData
+---@field docker_builder_id string
+---@field organization_id string
+
+---@class DockerBuilderSessionRemoveMatch
+---@field id string
+---@field organization_id string
+
+---@class DockerBuilderSetting
+---@field docker_builder_settings table
+---@field idle_timeout_seconds number
+---@field max_concurrency number
+---@field organization_id string
+---@field region string
+---@field runtime_timeout_seconds number
+
+---@class DockerBuilderSettingListMatch
+---@field organization_id string
+
+---@class DockerBuilderSettingUpdateData
+---@field organization_id string
+
+---@class DockerBuilderSettingPatchData
+---@field organization_id string
+---@field idle_timeout_seconds? number
+---@field max_concurrency? number
+---@field region? string
+---@field runtime_timeout_seconds? number
+
+---@class DomainDnsIntegration
+---@field account_label string|nil
+---@field api_token string
+---@field created_at string
+---@field failure_message string|nil
+---@field has_token boolean
+---@field id string
+---@field last_verified_at string|nil
+---@field organization_id string
+---@field provider string
+---@field status string
+---@field updated_at string
+
+---@class DomainDnsIntegrationListMatch
+---@field organization_id string
+
+---@class DomainDnsIntegrationCreateData
+---@field organization_id string
+---@field account_label? string|nil
+---@field api_token string
 
 ---@class DomainPathRule
 ---@field action_kind string
@@ -3094,6 +5499,15 @@
 ---@field skipped number
 ---@field tab string
 ---@field timezone string
+
+---@class Edge
+
+---@class EdgeLoadMatch
+
+---@class EmailVerification
+
+---@class EmailVerificationCreateData
+---@field email? any
 
 ---@class Environment
 ---@field active_revision_id string|nil
@@ -3378,6 +5792,107 @@
 ---@field repository_id? string
 ---@field scenario_run_id? string
 
+---@class ExecutionDesiredState
+---@field desired_state table
+---@field id? string
+---@field stop_observed boolean
+
+---@class ExecutionDesiredStateLoadMatch
+---@field id string
+
+---@class ExecutionDesiredStateListMatch
+---@field desired_state? table
+---@field id? string
+---@field stop_observed? boolean
+
+---@class ExecutionDesiredStateCreateData
+
+---@class ExecutionDesiredStateUpdateData
+---@field id string
+
+---@class ExecutionDesiredStatePatchData
+---@field id string
+
+---@class ExecutionDesiredStateRemoveMatch
+---@field id string
+
+---@class ExecutionReconcilerTick
+---@field id? string
+
+---@class ExecutionReconcilerTickLoadMatch
+---@field id string
+
+---@class ExecutionReconcilerTickListMatch
+---@field id? string
+
+---@class ExecutionReconcilerTickCreateData
+
+---@class ExecutionRelease
+---@field id? string
+
+---@class ExecutionReleaseLoadMatch
+---@field id string
+
+---@class ExecutionReleaseListMatch
+---@field id? string
+
+---@class ExecutionReleaseCreateData
+
+---@class ExecutionRuntimeInstance
+---@field adapter_kind string
+---@field app_environment_id string
+---@field app_release_id string|nil
+---@field app_service_id string
+---@field booted_at string|nil
+---@field booted_at_label string|nil
+---@field created_at string
+---@field created_at_label string|nil
+---@field hosted_app_id string
+---@field id string
+---@field instance_key string
+---@field last_reconciled_at string|nil
+---@field last_reconciled_at_label string|nil
+---@field last_seen_at string|nil
+---@field last_seen_at_label string|nil
+---@field location any
+---@field location_id string
+---@field network_peer_id string|nil
+---@field nomad_allocation_id string|nil
+---@field nomad_task_name string|nil
+---@field organization_id string
+---@field private_ipv4 string|nil
+---@field private_ipv6 string|nil
+---@field provider_instance_id string|nil
+---@field public_endpoint string|nil
+---@field service_name string
+---@field slug string
+---@field status string
+---@field terminated_at string|nil
+---@field terminated_at_label string|nil
+---@field updated_at string
+---@field updated_at_label string|nil
+
+---@class ExecutionRuntimeInstanceLoadMatch
+---@field id string
+
+---@class ExecutionRuntimeInstanceListMatch
+---@field app_environment_id? string
+---@field app_service_id? string
+---@field hosted_app_id? string
+---@field limit? number
+---@field page? number
+
+---@class ExecutionRuntimeInstanceCreateData
+
+---@class ExecutionRuntimeInstanceUpdateData
+---@field id string
+
+---@class ExecutionRuntimeInstancePatchData
+---@field id string
+
+---@class ExecutionRuntimeInstanceRemoveMatch
+---@field id string
+
 ---@class Exploration
 ---@field account_id? string|nil
 ---@field active table
@@ -3625,6 +6140,259 @@
 ---@field reason? string
 ---@field status? string
 
+---@class Gh
+---@field capabilities table
+---@field content table
+---@field fetched_at string
+---@field id? string
+---@field magic_merge table|nil
+---@field pull_request any
+---@field stack table
+---@field transcript_paths table
+
+---@class GhLoadMatch
+---@field gh_id string
+---@field github_repo string
+---@field id string
+---@field organization_id string
+---@field check_id? string
+---@field cursor? string
+---@field job_id? string
+---@field page? number
+---@field run_id? string
+---@field section? string
+---@field thread_id? string
+
+---@class GitImport
+---@field destination_mode string
+---@field error? string|nil
+---@field git_default_branch? string
+---@field git_status string
+---@field git_url string
+---@field id string
+---@field idempotency_key string
+---@field name? string
+---@field native_status string
+---@field organization string
+---@field repository_id? string|nil
+---@field root_path string
+---@field slug string
+---@field source_branch string
+---@field target_branch string
+
+---@class GitImportLoadMatch
+---@field id string
+
+---@class GitImportCreateData
+---@field organization_id string
+---@field destination_mode string
+---@field git_default_branch? string
+---@field idempotency_key string
+---@field name? string
+---@field root_path string
+---@field slug string
+---@field source_branch string
+---@field target_branch? string
+
+---@class Github
+
+---@class GithubLoadMatch
+---@field name string
+---@field owner string
+
+---@class GithubApp
+
+---@class GithubAppCreateData
+
+---@class GithubAppImportableRepository
+---@field account_login string
+---@field github_app_installation_id string
+---@field next_page number|nil
+---@field repositories table
+
+---@class GithubAppImportableRepositoryListMatch
+---@field github_app_installation_id? string
+---@field page? number
+
+---@class GithubAppInstallation
+---@field account_avatar_url string|nil
+---@field account_id string|nil
+---@field account_login string
+---@field created_at string
+---@field created_at_label string|nil
+---@field id string
+---@field installation_id string
+---@field installed_at string|nil
+---@field installed_at_label string|nil
+---@field manage_access_url string
+---@field organization_id string
+---@field permission_entries table
+---@field permissions table
+---@field status string
+---@field suspended_at string|nil
+---@field suspended_at_label string|nil
+---@field updated_at string
+---@field updated_at_label string|nil
+
+---@class GithubAppInstallationListMatch
+---@field organization_id string
+
+---@class GithubAppInstallationCreateData
+---@field id string
+---@field organization_id string
+---@field account_avatar_url string|nil
+---@field account_id string|nil
+---@field account_login string
+---@field created_at string
+---@field created_at_label string|nil
+---@field installation_id string
+---@field installed_at string|nil
+---@field installed_at_label string|nil
+---@field manage_access_url string
+---@field permission_entries table
+---@field permissions table
+---@field status string
+---@field suspended_at string|nil
+---@field suspended_at_label string|nil
+---@field updated_at string
+---@field updated_at_label string|nil
+
+---@class GithubAppInstallationRemoveMatch
+---@field id string
+---@field organization_id string
+---@field force? boolean
+---@field uninstall_on_github? boolean
+
+---@class GithubAppInstallationAuthorization
+---@field installation_url string
+---@field organization_slug string
+---@field return_target string
+
+---@class GithubAppInstallationAuthorizationCreateData
+---@field organization_slug string
+---@field return_target string
+
+---@class GithubAppUserAuthorization
+
+---@class GithubAppUserAuthorizationCreateData
+
+---@class GithubCiRepository
+---@field adoption_mode string
+---@field check_name_prefix string
+---@field ci_runner_pool_id string|nil
+---@field created_at string
+---@field created_at_label string|nil
+---@field default_branch string
+---@field github_app_installation_id string
+---@field github_repository_id string
+---@field id string
+---@field last_compatibility_status string|nil
+---@field last_error_message string|nil
+---@field last_head_sha string|nil
+---@field last_pull_request_number number|nil
+---@field last_ref string|nil
+---@field last_webhook_action string|nil
+---@field last_webhook_at string|nil
+---@field last_webhook_at_label string|nil
+---@field last_webhook_delivery_id string|nil
+---@field last_webhook_event string|nil
+---@field metadata table
+---@field organization_id string
+---@field permission_status string
+---@field repository_full_name string
+---@field repository_name string
+---@field repository_owner string
+---@field status string
+---@field updated_at string
+---@field updated_at_label string|nil
+---@field webhook_delivery_count number
+
+---@class GithubCiRepositoryLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class GithubCiRepositoryListMatch
+---@field organization_id string
+---@field adoption_mode? string
+---@field status? string
+
+---@class GithubCiRepositoryCreateData
+---@field organization_id string
+---@field adoption_mode? string
+---@field check_name_prefix? string
+---@field ci_runner_pool_id? string|nil
+---@field default_branch? string
+---@field github_app_installation_id string
+---@field github_repository_id string
+---@field repository_name string
+---@field repository_owner string
+---@field status? string
+
+---@class GithubCiRepositoryUpdateData
+---@field id string
+---@field organization_id string
+---@field adoption_mode? string
+---@field check_name_prefix? string
+---@field ci_runner_pool_id? string|nil
+---@field default_branch? string
+---@field permission_status? string
+---@field status? string
+
+---@class GithubCiRepositoryPatchData
+---@field id string
+---@field organization_id string
+---@field adoption_mode? string
+---@field check_name_prefix? string
+---@field ci_runner_pool_id? string|nil
+---@field default_branch? string
+---@field permission_status? string
+---@field status? string
+
+---@class GithubCiRepositoryCompatibilityReport
+---@field analyzed_at string
+---@field analyzed_at_label string|nil
+---@field ci_pipeline_id string|nil
+---@field ci_pipeline_run_id string|nil
+---@field created_at string
+---@field created_at_label string|nil
+---@field diagnostics table
+---@field errors table
+---@field event_action string|nil
+---@field event_name string
+---@field execution_allowed boolean
+---@field github_ci_repository_id string
+---@field head_sha string|nil
+---@field id string
+---@field metadata table
+---@field organization_id string
+---@field parser_version string
+---@field pull_request_number number|nil
+---@field ref_name string|nil
+---@field referenced_actions table
+---@field required_secrets table
+---@field runner_labels table
+---@field source_blob_sha string|nil
+---@field source_sha string
+---@field status string
+---@field supported_features table
+---@field updated_at string
+---@field updated_at_label string|nil
+---@field warnings table
+---@field workflow_name string|nil
+---@field workflow_path string
+
+---@class GithubCiRepositoryCompatibilityReportLoadMatch
+---@field github_ci_repository_id string
+---@field id string
+---@field organization_id string
+
+---@class GithubCiRepositoryCompatibilityReportListMatch
+---@field github_ci_repository_id string
+---@field organization_id string
+---@field event_name? string
+---@field source_sha? string
+---@field status? string
+
 ---@class GithubConnection
 ---@field accounts table
 ---@field github_app_installation_id string
@@ -3644,6 +6412,325 @@
 ---@field project_id? string
 ---@field replace? boolean
 ---@field repositories table
+
+---@class GithubIntegration
+---@field account_avatar_url string|nil
+---@field account_login string
+---@field connection_status string
+---@field connection_status_label string
+---@field github_installation any
+---@field health table
+---@field id string
+---@field imported_repositories_count number
+---@field imported_repositories_count_label string
+---@field organization table
+---@field pagination table
+---@field repositories table
+
+---@class GithubIntegrationLoadMatch
+---@field id string
+---@field organization_id string
+---@field page? number
+
+---@class GithubIntegrationListMatch
+---@field organization_id string
+
+---@class GithubOnboarding
+---@field accounts table
+---@field active_batch_id string|nil
+---@field batches table
+---@field capabilities table
+---@field installations table
+
+---@class GithubOnboardingLoadMatch
+---@field organization_id string
+
+---@class GithubOnboardingBranch
+---@field branches table
+
+---@class GithubOnboardingBranchListMatch
+---@field organization_id string
+---@field github_app_installation_id string
+---@field name string
+---@field owner string
+
+---@class GithubOnboardingImport
+---@field account_login string
+---@field complete boolean
+---@field created_at string
+---@field failed_item_count number
+---@field github_app_installation_id string
+---@field id string
+---@field imported_item_count number
+---@field item_count number
+---@field items table
+---@field repositories any
+---@field status string
+---@field terminal_item_count number
+---@field updated_at string
+
+---@class GithubOnboardingImportCreateData
+---@field organization_id string
+---@field github_app_installation_id string
+---@field repositories any
+
+---@class GithubOnboardingImportBatch
+---@field account_login string
+---@field complete boolean
+---@field created_at string
+---@field failed_item_count number
+---@field github_app_installation_id string
+---@field id string
+---@field imported_item_count number
+---@field item_count number
+---@field items table
+---@field status string
+---@field terminal_item_count number
+---@field updated_at string
+
+---@class GithubOnboardingImportBatchLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class GithubOnboardingImportItem
+---@field id? string
+
+---@class GithubOnboardingImportItemCreateData
+---@field id string
+---@field organization_id string
+
+---@class GithubPullRequest
+---@field capabilities table
+---@field content table
+---@field fetched_at string
+---@field id? string
+---@field magic_merge table|nil
+---@field pull_request any
+---@field stack table
+---@field transcript_paths table
+
+---@class GithubPullRequestLoadMatch
+---@field id string
+---@field organization_id string
+---@field pull_request_id string
+---@field check_id? string
+---@field cursor? string
+---@field job_id? string
+---@field page? number
+---@field run_id? string
+---@field section? string
+---@field thread_id? string
+
+---@class GithubPullRequestCreateData
+---@field organization_id string
+
+---@class GithubRunnerAdmission
+
+---@class GithubRunnerAdmissionCreateData
+
+---@class GithubRunnerCache
+---@field entry_id? string
+---@field key? string
+---@field matched_key? string
+---@field ok boolean
+---@field operation string
+---@field restore_keys? table
+---@field signed_download_url? string
+---@field size_bytes? string
+---@field upload_path? string
+---@field version? string
+
+---@class GithubRunnerCacheCreateData
+---@field entry_id? string
+---@field key? string
+---@field operation string
+---@field restore_keys? table
+---@field size_bytes? string
+---@field version? string
+
+---@class GithubRunnerEgress
+---@field can_request boolean
+---@field cidr string|nil
+---@field ipv4 string|nil
+---@field requested_at_label string|nil
+---@field status string
+
+---@class GithubRunnerEgressLoadMatch
+---@field organization_id string
+
+---@class GithubRunnerEgressCreateData
+---@field organization_id string
+
+---@class GithubRunnerHistory
+---@field activity table
+---@field counts table
+---@field observed_at string
+---@field pagination table
+---@field repositories table
+---@field runs table
+---@field setup? any
+---@field success_rate number|nil
+---@field usage table
+
+---@class GithubRunnerHistoryLoadMatch
+---@field organization_id string
+---@field day? number
+---@field page? number
+---@field q? string
+---@field repository? string
+---@field status? string
+
+---@class GithubRunnerImage
+---@field created_at string
+---@field id string
+---@field image_reference string
+---@field last_error string|nil
+---@field modal_image_id string|nil
+---@field name string
+---@field registry_secret_name string|nil
+---@field status string
+---@field updated_at string
+
+---@class GithubRunnerImageLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class GithubRunnerImageListMatch
+---@field organization_id string
+
+---@class GithubRunnerImageCreateData
+---@field organization_id string
+---@field image_reference string
+---@field name string
+---@field registry_secret_name? string|nil
+
+---@class GithubRunnerPool
+---@field cpu_millicores number
+---@field enabled boolean
+---@field github_app_installation_id string
+---@field github_repository_id string
+---@field github_runner_image any
+---@field id string
+---@field image? string|nil
+---@field invocations table
+---@field label string
+---@field last_error string|nil
+---@field last_polled_at string|nil
+---@field max_concurrency number
+---@field memory_mb number
+---@field organization_id string
+---@field provider string
+---@field repository_full_name string
+---@field runtime_kind string
+---@field timeout_seconds number
+
+---@class GithubRunnerPoolListMatch
+---@field organization_id string
+
+---@class GithubRunnerPoolCreateData
+---@field organization_id string
+---@field enabled? boolean
+---@field github_app_installation_id string
+---@field image? string|nil
+---@field label? string
+---@field max_concurrency? number
+---@field provider? string
+---@field repository_full_name string
+---@field timeout_seconds? number
+
+---@class GithubRunnerPoolUpdateData
+---@field id string
+---@field organization_id string
+---@field enabled? boolean
+---@field image? string|nil
+---@field max_concurrency? number
+---@field provider? string
+---@field timeout_seconds? number
+
+---@class GithubRunnerSetup
+---@field error string|nil
+---@field github_repository_connection_id string
+---@field id string
+---@field pull_request_url string|nil
+---@field repository_full_name string
+---@field roder_thread_id string|nil
+---@field runner_labels table
+---@field status string
+---@field status_label string
+---@field summary string|nil
+
+---@class GithubRunnerSetupLoadMatch
+---@field organization_id string
+---@field id string
+
+---@class GithubRunnerSetupCreateData
+---@field organization_id string
+---@field github_repository_connection_id string
+
+---@class Gitlab
+---@field configured boolean
+---@field connections table
+---@field integrations table
+---@field inventory_error? string|nil
+---@field next_page number|nil
+---@field organization table
+---@field projects table
+---@field redirect_uri string|nil
+---@field selected_integration_id string|nil
+
+---@class GitlabLoadMatch
+---@field organization_id string
+---@field connection_id? string
+---@field integration_id? string
+---@field page? number
+---@field search? string
+---@field sort? string
+
+---@class GitlabCreateData
+---@field organization_id string
+---@field client_id? any
+---@field client_secret? any
+---@field instance_url? any
+---@field integration_id? any
+---@field return_target? any
+---@field webhook_authentication? any
+
+---@class GitlabConnection
+---@field id? string
+
+---@class GitlabConnectionCreateData
+---@field id string
+---@field organization_id string
+---@field action_name? any
+---@field integration_id? any
+---@field source_branch? any
+
+---@class GitlabImport
+---@field integration_id string
+---@field project_id number
+---@field repo_slug? string
+---@field source_branch? string
+
+---@class GitlabImportCreateData
+---@field organization_id string
+---@field integration_id string
+---@field project_id number
+---@field repo_slug? string
+---@field source_branch? string
+
+---@class GitlabOauth
+
+---@class GitlabOauthLoadMatch
+
+---@class GrantAllAgent
+---@field all_agents_access boolean
+---@field enabled boolean
+---@field execution_available boolean
+
+---@class GrantAllAgentCreateData
+---@field device_id string
+---@field organization_id string
+---@field enabled boolean
 
 ---@class HostingAppDomain
 ---@field app_environment_id string|nil
@@ -3700,6 +6787,12 @@
 ---@field app_id string
 ---@field id string
 
+---@class IdentityOrganization
+---@field id? string
+
+---@class IdentityOrganizationLoadMatch
+---@field id string
+
 ---@class ImageRepository
 ---@field auth_configured boolean
 ---@field created_at string
@@ -3730,6 +6823,33 @@
 ---@field slug string
 ---@field status? string
 ---@field visibility? string
+
+---@class ImageRepositoryTag
+---@field image_repository table
+---@field name string
+---@field registry_url string
+---@field tags table
+
+---@class ImageRepositoryTagListMatch
+---@field image_repository_id string
+
+---@class ImportBranchPolicy
+---@field can_manage_pr_scenario_writing boolean
+---@field can_manage_sandbox_region boolean
+---@field dedicated_outbound_ip_addresses table
+---@field default_trunk_bookmark string
+---@field organization table
+---@field sandbox_regions table
+
+---@class ImportBranchPolicyLoadMatch
+---@field organization_id string
+
+---@class ImportBranchPolicyUpdateData
+---@field organization_id string
+
+---@class ImportBranchPolicyPatchData
+---@field organization_id string
+---@field default_trunk_bookmark? string
 
 ---@class Integration
 ---@field github table
@@ -3783,6 +6903,91 @@
 ---@class InvitationRemoveMatch
 ---@field id string
 ---@field organization_id string
+
+---@class InvocationControl
+
+---@class InvocationControlCreateData
+---@field device_id string
+---@field organization_id string
+---@field challenge? any
+---@field invocation_id? any
+---@field request_hash? any
+---@field signature? any
+
+---@class JobLogChunk
+---@field byte_size number
+---@field ci_job_id string|nil
+---@field ci_pipeline_run_id string|nil
+---@field ci_step_id string|nil
+---@field content string
+---@field content_format string
+---@field created_at string
+---@field id string
+---@field organization_id string
+---@field sequence_number number
+---@field stream string
+---@field updated_at string
+
+---@class JobLogChunkListMatch
+---@field job_id string
+---@field pipeline_id string
+---@field run_id string
+---@field after_sequence? number
+
+---@class JobLogChunkCreateData
+---@field job_id string
+---@field pipeline_id string
+---@field run_id string
+
+---@class JobStep
+---@field id? string
+
+---@class JobStepListMatch
+---@field job_id string
+---@field pipeline_id string
+---@field run_id string
+
+---@class JobStepCreateData
+---@field job_id string
+---@field pipeline_id string
+---@field run_id string
+
+---@class JobStepUpdateData
+---@field id string
+---@field job_id string
+---@field pipeline_id string
+---@field run_id string
+
+---@class JobStepPatchData
+---@field id string
+---@field job_id string
+---@field pipeline_id string
+---@field run_id string
+
+---@class JobWorkspace
+---@field id? string
+
+---@class JobWorkspaceListMatch
+---@field job_id string
+---@field pipeline_id string
+---@field run_id string
+
+---@class JobWorkspaceCreateData
+---@field job_id string
+---@field pipeline_id string
+---@field run_id string
+
+---@class JobWorkspaceUpdateData
+---@field id string
+---@field job_id string
+---@field pipeline_id string
+---@field run_id string
+
+---@class JobWorkspacePatchData
+---@field id string
+---@field job_id string
+---@field pipeline_id string
+---@field run_id string
 
 ---@class JourneyVariantReplay
 ---@field actor_id string|nil
@@ -3865,6 +7070,110 @@
 ---@field id string
 ---@field organization_id string
 
+---@class Known
+
+---@class KnownLoadMatch
+
+---@class Label
+---@field changes_count number
+---@field id string
+---@field name string
+---@field slug string
+
+---@class LabelListMatch
+---@field organization_id string
+---@field include_unused? boolean
+---@field limit? number
+---@field q? string
+
+---@class LeaseArtifact
+
+---@class LeaseArtifactCreateData
+---@field lease_id string
+---@field node_id string
+
+---@class LeaseCache
+
+---@class LeaseCacheCreateData
+---@field lease_id string
+---@field node_id string
+
+---@class LeaseLogChunk
+
+---@class LeaseLogChunkCreateData
+---@field lease_id string
+---@field node_id string
+
+---@class LeaseReconciliation
+---@field id? string
+
+---@class LeaseReconciliationCreateData
+---@field id string
+---@field lease_id string
+---@field node_id string
+
+---@class LeaseStep
+---@field id? string
+
+---@class LeaseStepUpdateData
+---@field id string
+---@field lease_id string
+---@field node_id string
+
+---@class LeaseVerifyDiagnostic
+---@field browser_events table
+---@field live_browser table
+---@field live_view table
+---@field steps? table
+
+---@class LeaseVerifyDiagnosticCreateData
+---@field lease_id string
+---@field swarm_id string
+---@field task_id string
+---@field browser_events table
+---@field live_browser table
+---@field live_view table
+---@field steps? table
+
+---@class LeaseVerifySecret
+
+---@class LeaseVerifySecretCreateData
+---@field lease_id string
+---@field swarm_id string
+---@field task_id string
+
+---@class LeaseWorkspace
+---@field id? string
+
+---@class LeaseWorkspaceUpdateData
+---@field id string
+---@field lease_id string
+---@field node_id string
+
+---@class LocalAgentDecision
+---@field request table
+
+---@class LocalAgentDecisionCreateData
+---@field organization_id string
+---@field request table
+
+---@class LocalAgentResponse
+---@field input table
+---@field model string
+---@field service_tier? string|nil
+---@field store boolean
+---@field stream boolean
+---@field tools? table
+
+---@class LocalAgentResponseCreateData
+---@field organization_id string
+---@field input table
+---@field model string
+---@field service_tier? string|nil
+---@field store boolean
+---@field stream boolean
+---@field tools? table
+
 ---@class LocalThreadDelivery
 ---@field decision string
 ---@field decision_pending boolean
@@ -3935,6 +7244,70 @@
 ---@field name? string
 ---@field nomad_datacenter? string
 ---@field updated_at? string
+
+---@class LogStreamChunk
+---@field id? string
+
+---@class LogStreamChunkLoadMatch
+---@field id string
+---@field log_stream_id string
+---@field space_id string
+
+---@class LogStreamChunkListMatch
+---@field log_stream_id string
+---@field space_id string
+
+---@class LogStreamChunkCreateData
+---@field log_stream_id string
+---@field space_id string
+
+---@class LogoImage
+---@field activated_products table
+---@field agents_only? boolean
+---@field can_activate_products boolean
+---@field created_at string
+---@field created_at_label string|nil
+---@field github_prs_authored_by_change_author boolean
+---@field id string
+---@field logo_url string|nil
+---@field member_count number
+---@field name string
+---@field pending_invitation_count number
+---@field personal boolean
+---@field repository_count number
+---@field role string|nil
+---@field sandbox_region string
+---@field shared_agent_personal_accounts_enabled? boolean
+---@field slug string
+---@field source_control_providers? table
+---@field source_ui_enabled? boolean
+---@field timezone string
+---@field updated_at string
+---@field updated_at_label string|nil
+---@field verify_pr_scenario_writing_enabled boolean
+
+---@class LogoImageUpdateData
+---@field organization_id string
+
+---@class LogoImageRemoveMatch
+---@field organization_id string
+
+---@class MarketingSetting
+---@field call_first boolean
+
+---@class MarketingSettingListMatch
+---@field call_first? boolean
+
+---@class McpOauth
+
+---@class McpOauthLoadMatch
+---@field request string
+
+---@class McpOauthCreateData
+---@field all_organizations? any
+---@field approve? any
+---@field organization_id? any
+---@field request? any
 
 ---@class Me
 ---@field active_organization any
@@ -4164,6 +7537,42 @@
 ---@field organization_id string
 ---@field project_id? string
 
+---@class MergeQueueEntry
+---@field analytics table
+---@field change_id? string|nil
+---@field expected_target_commit_id? string|nil
+---@field expected_target_version? number|nil
+---@field expected_version number
+---@field github_pr_number? number|nil
+---@field id? string
+---@field idempotency_key string
+---@field kind string
+---@field policy table
+---@field priority? string
+---@field queue table
+---@field target_branches? table
+---@field when_ready? boolean|nil
+
+---@class MergeQueueEntryCreateData
+---@field merge_queue_id string
+---@field organization_id string
+---@field repo_id string
+---@field change_id? string|nil
+---@field expected_target_commit_id? string|nil
+---@field expected_target_version? number|nil
+---@field expected_version number
+---@field github_pr_number? number|nil
+---@field idempotency_key string
+---@field kind string
+---@field priority? string
+---@field when_ready? boolean|nil
+
+---@class MergeQueueEntryRemoveMatch
+---@field id string
+---@field merge_queue_id string
+---@field organization_id string
+---@field repo_id string
+
 ---@class MergeRequest
 ---@field available_tests table
 ---@field base_sha string
@@ -4213,6 +7622,26 @@
 ---@field project_id? string|nil
 ---@field repository_id? string
 
+---@class MergeResolution
+---@field action string
+---@field base string
+---@field content? string|nil
+---@field context? table
+---@field duration_ms number
+---@field fallback boolean
+---@field model? string
+---@field ours string
+---@field path? string
+---@field resolved boolean
+---@field theirs string
+
+---@class MergeResolutionCreateData
+---@field base string
+---@field context? table
+---@field ours string
+---@field path? string
+---@field theirs string
+
 ---@class MessagingConversationMessage
 ---@field attachment_limit number
 ---@field attachment_max_bytes number
@@ -4254,6 +7683,67 @@
 
 ---@class MetricQueryListMatch
 
+---@class MetronomeWebhook
+
+---@class MetronomeWebhookCreateData
+
+---@class ModelSubscriptionAccount
+---@field accounts table
+---@field agents table
+---@field can_disconnect boolean
+---@field connection_agent table|nil
+---@field email? string
+---@field id string
+---@field label string
+---@field provider string
+---@field saved boolean
+---@field status string
+---@field usable boolean
+
+---@class ModelSubscriptionAccountListMatch
+---@field accounts? table
+---@field agents? table
+---@field can_disconnect? boolean
+---@field connection_agent? table|nil
+---@field email? string
+---@field id? string
+---@field label? string
+---@field provider? string
+---@field saved? boolean
+---@field status? string
+---@field usable? boolean
+
+---@class ModelSubscriptionAccountCreateData
+---@field label string
+---@field action_name? any
+---@field agent_id? any
+---@field profile_id? any
+---@field token? any
+
+---@class ModelSubscriptionAccountUpdateData
+---@field id string
+
+---@class ModelSubscriptionAccountPatchData
+---@field id string
+---@field label? string
+
+---@class ModelSubscriptionAccountRemoveMatch
+---@field id string
+
+---@class ModelSubscriptionAccountConnection
+---@field id? string
+
+---@class ModelSubscriptionAccountConnectionLoadMatch
+---@field id string
+
+---@class ModelSubscriptionAccountConnectionUpdateData
+---@field id string
+---@field action_name? any
+---@field login_id? any
+---@field method? any
+---@field step_id? any
+---@field value? any
+
 ---@class NetworkConnection
 ---@field aws_client_vpn_profile? string
 ---@field created_at string
@@ -4290,6 +7780,68 @@
 ---@field oauth_client_secret? string
 ---@field provider? string
 ---@field status? string
+
+---@class NetworkingSpace
+---@field id? string
+
+---@class NetworkingSpaceLoadMatch
+---@field id string
+
+---@class NetworkingSpaceListMatch
+---@field id? string
+
+---@class NetworkingSpaceCreateData
+
+---@class NetworkingSpaceUpdateData
+---@field id string
+
+---@class NetworkingSpacePatchData
+---@field id string
+
+---@class NetworkingSpaceRemoveMatch
+---@field id string
+
+---@class Node
+---@field account_avatar_url string|nil
+---@field account_id string|nil
+---@field account_login string
+---@field created_at string
+---@field created_at_label string|nil
+---@field id string
+---@field installation_id string
+---@field installed_at string|nil
+---@field installed_at_label string|nil
+---@field manage_access_url string
+---@field organization_id string
+---@field permission_entries table
+---@field permissions table
+---@field status string
+---@field suspended_at string|nil
+---@field suspended_at_label string|nil
+---@field updated_at string
+---@field updated_at_label string|nil
+
+---@class NodeListMatch
+---@field organization_id string
+
+---@class NodeCertificate
+
+---@class NodeCertificateCreateData
+---@field node_id string
+
+---@class NodeLease
+---@field id? string
+
+---@class NodeLeaseLoadMatch
+---@field id string
+---@field node_id string
+
+---@class NodeLeaseListMatch
+---@field node_id string
+
+---@class NodeLeaseCreateData
+---@field id string
+---@field node_id string
 
 ---@class NomadAllocation
 ---@field allocation_id string
@@ -4337,6 +7889,94 @@
 ---@field service? string
 ---@field task? string
 ---@field type? string
+
+---@class Now
+---@field needs_attention table
+---@field pagination table
+---@field recently_landed table
+---@field shipping_now table
+---@field summary table
+
+---@class NowLoadMatch
+---@field organization_id string
+---@field page? number
+
+---@class ObservabilityClickhouseCluster
+---@field id? string
+
+---@class ObservabilityClickhouseClusterLoadMatch
+---@field id string
+
+---@class ObservabilityClickhouseClusterListMatch
+---@field id? string
+
+---@class ObservabilityClickhouseClusterCreateData
+
+---@class ObservabilityClickhouseClusterUpdateData
+---@field id string
+
+---@class ObservabilityClickhouseClusterPatchData
+---@field id string
+
+---@class ObservabilityClickhouseClusterRemoveMatch
+---@field id string
+
+---@class ObservabilityQuickwitCluster
+---@field id? string
+
+---@class ObservabilityQuickwitClusterLoadMatch
+---@field id string
+
+---@class ObservabilityQuickwitClusterListMatch
+---@field id? string
+
+---@class ObservabilityQuickwitClusterCreateData
+
+---@class ObservabilityQuickwitClusterUpdateData
+---@field id string
+
+---@class ObservabilityQuickwitClusterPatchData
+---@field id string
+
+---@class ObservabilityQuickwitClusterRemoveMatch
+---@field id string
+
+---@class ObservabilitySpace
+---@field id? string
+
+---@class ObservabilitySpaceLoadMatch
+---@field id string
+
+---@class ObservabilitySpaceListMatch
+---@field id? string
+
+---@class ObservabilitySpaceCreateData
+
+---@class ObservabilitySpaceUpdateData
+---@field id string
+
+---@class ObservabilitySpacePatchData
+---@field id string
+
+---@class ObservabilitySpaceRemoveMatch
+---@field id string
+
+---@class Openapi
+
+---@class OpenapiLoadMatch
+
+---@class OrgInvitation
+---@field id? string
+---@field invitation table
+---@field registration_options any
+---@field requires_password_setup boolean
+---@field start_guided_setup boolean
+
+---@class OrgInvitationLoadMatch
+---@field id string
+
+---@class OrgInvitationCreateData
+---@field id string
 
 ---@class Organization
 ---@field activated_products table
@@ -4420,6 +8060,294 @@
 ---@field timezone? string
 ---@field verify_pr_scenario_writing_enabled? boolean
 
+---@class OrganizationApp
+---@field id? string
+
+---@class OrganizationAppListMatch
+---@field organization_id string
+---@field context? boolean
+---@field installed? boolean
+---@field native_agent_id string
+
+---@class OrganizationAppUpdateData
+---@field id string
+---@field organization_id string
+
+---@class OrganizationAppRemoveMatch
+---@field id string
+---@field organization_id string
+
+---@class OrganizationControl
+
+---@class OrganizationControlCreateData
+---@field organization_id string
+---@field device_id? any
+---@field native_device_id? any
+---@field pairing_generation? any
+
+---@class OrganizationDevice
+---@field id? string
+
+---@class OrganizationDeviceCreateData
+---@field id string
+---@field organization_id string
+---@field payload? any
+---@field signature? any
+
+---@class OrganizationIdentityCertificate
+---@field id? string
+
+---@class OrganizationIdentityCertificateLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class OrganizationIdentityCertificateListMatch
+---@field organization_id string
+
+---@class OrganizationIdentityCertificateCreateData
+---@field organization_id string
+
+---@class OrganizationIdentityCertificateUpdateData
+---@field id string
+---@field organization_id string
+
+---@class OrganizationIdentityCertificatePatchData
+---@field id string
+---@field organization_id string
+
+---@class OrganizationIdentityCertificateRemoveMatch
+---@field id string
+---@field organization_id string
+
+---@class OrganizationInteraction
+
+---@class OrganizationInteractionCreateData
+---@field organization_id string
+
+---@class OrganizationInvitation
+---@field email string
+---@field id? string
+---@field role string
+
+---@class OrganizationInvitationCreateData
+---@field organization_id string
+---@field email string
+---@field role string
+
+---@class OrganizationInvitationRemoveMatch
+---@field id string
+---@field organization_id string
+
+---@class OrganizationMessageFile
+
+---@class OrganizationMessageFileCreateData
+---@field organization_id string
+
+---@class OrganizationOidcTrust
+---@field id? string
+
+---@class OrganizationOidcTrustLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class OrganizationOidcTrustListMatch
+---@field organization_id string
+
+---@class OrganizationOidcTrustCreateData
+---@field organization_id string
+
+---@class OrganizationOidcTrustUpdateData
+---@field id string
+---@field organization_id string
+
+---@class OrganizationOidcTrustPatchData
+---@field id string
+---@field organization_id string
+
+---@class OrganizationOidcTrustRemoveMatch
+---@field id string
+---@field organization_id string
+
+---@class OrganizationRunEvent
+
+---@class OrganizationRunEventCreateData
+---@field organization_id string
+
+---@class OrganizationRunOutcome
+
+---@class OrganizationRunOutcomeCreateData
+---@field organization_id string
+
+---@class OrganizationRunUsage
+
+---@class OrganizationRunUsageCreateData
+---@field organization_id string
+
+---@class OrganizationSandbox
+
+---@class OrganizationSandboxCreateData
+---@field organization_id string
+
+---@class OrganizationSecret
+---@field app_environment_id string|nil
+---@field app_service_id string|nil
+---@field created_at string
+---@field created_at_label string|nil
+---@field created_by table|nil
+---@field current_version table|nil
+---@field description string|nil
+---@field env_key string
+---@field expose_to_build boolean
+---@field expose_to_ci boolean
+---@field hosted_app_id string|nil
+---@field id string
+---@field last_accessed_at string|nil
+---@field last_accessed_at_label string|nil
+---@field last_accessed_by table|nil
+---@field latest_version_number number|nil
+---@field name string
+---@field organization_id string|nil
+---@field owner_service_account_id string|nil
+---@field rotation_policy string|nil
+---@field scope_kind string
+---@field slug string
+---@field status string
+---@field updated_at string
+---@field updated_at_label string|nil
+
+---@class OrganizationSecretLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class OrganizationSecretListMatch
+---@field organization_id string
+
+---@class OrganizationSecretCreateData
+---@field organization_id string
+
+---@class OrganizationSecretUpdateData
+---@field id string
+---@field organization_id string
+
+---@class OrganizationSecretPatchData
+---@field id string
+---@field organization_id string
+
+---@class OrganizationSecretRemoveMatch
+---@field id string
+---@field organization_id string
+
+---@class OrganizationServiceAccount
+---@field id? string
+
+---@class OrganizationServiceAccountLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class OrganizationServiceAccountListMatch
+---@field organization_id string
+
+---@class OrganizationServiceAccountCreateData
+---@field organization_id string
+
+---@class OrganizationServiceAccountUpdateData
+---@field id string
+---@field organization_id string
+
+---@class OrganizationServiceAccountPatchData
+---@field id string
+---@field organization_id string
+
+---@class OrganizationServiceAccountRemoveMatch
+---@field id string
+---@field organization_id string
+
+---@class OrganizationSetting
+---@field concurrent_run_limit_override? number|nil
+---@field customize_onboarding_packages? boolean
+---@field daily_run_limit_override? number|nil
+---@field deployment_usage_visibility? string
+---@field monthly_browser_minutes_limit_override? number|nil
+---@field monthly_budget_dollars? string|number|nil
+---@field name? string
+---@field onboarding_custom_pricing? boolean
+---@field onboarding_package_keys? table
+
+---@class OrganizationSettingUpdateData
+---@field organization_id string
+---@field concurrent_run_limit_override? number|nil
+---@field customize_onboarding_packages? boolean
+---@field daily_run_limit_override? number|nil
+---@field deployment_usage_visibility? string
+---@field monthly_browser_minutes_limit_override? number|nil
+---@field monthly_budget_dollars? string|number|nil
+---@field name? string
+---@field onboarding_custom_pricing? boolean
+---@field onboarding_package_keys? table
+
+---@class OrganizationSite
+---@field id? string
+
+---@class OrganizationSiteListMatch
+---@field organization_id string
+---@field native_agent_id string
+
+---@class OrganizationSiteCreateData
+---@field organization_id string
+
+---@class OrganizationSiteUpdateData
+---@field id string
+---@field organization_id string
+
+---@class OrganizationSiteRemoveMatch
+---@field id string
+---@field organization_id string
+
+---@class OrganizationSubscription
+
+---@class OrganizationSubscriptionCreateData
+---@field organization_id string
+
+---@class OrganizationTool
+---@field arguments table
+---@field native_agent_id string
+---@field tool string
+
+---@class OrganizationToolCreateData
+---@field organization_id string
+---@field arguments table
+---@field native_agent_id string
+---@field tool string
+
+---@class OrganizationWorkloadIdentity
+---@field id? string
+
+---@class OrganizationWorkloadIdentityLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class OrganizationWorkloadIdentityListMatch
+---@field organization_id string
+
+---@class OrganizationWorkloadIdentityCreateData
+---@field organization_id string
+
+---@class OrganizationWorkloadIdentityUpdateData
+---@field id string
+---@field organization_id string
+
+---@class OrganizationWorkloadIdentityPatchData
+---@field id string
+---@field organization_id string
+
+---@class OrganizationWorkloadIdentityRemoveMatch
+---@field id string
+---@field organization_id string
+
+---@class OtelIngest
+
+---@class OtelIngestCreateData
+
 ---@class Page
 ---@field active_runs table
 ---@field checkout_required boolean
@@ -4491,6 +8419,79 @@
 ---@field organization_id string
 ---@field agent_ids? any
 
+---@class PageArtefact
+---@field artefact any
+---@field automation table|nil
+---@field automation_invocation_id? string|nil
+---@field byte_size number
+---@field checksum_sha256 string
+---@field comment_threads table
+---@field content_type string
+---@field created_at? string|nil
+---@field created_by_user_id? string|nil
+---@field description? string|nil
+---@field document_key? string
+---@field draft table|nil
+---@field entrypoint? string
+---@field expires_at? string|nil
+---@field filename string
+---@field files? table
+---@field harness? string|nil
+---@field harness_version? string|nil
+---@field id string
+---@field kind string
+---@field kinds table
+---@field model? string|nil
+---@field organization table
+---@field organization_id string
+---@field pagination table
+---@field permissions table
+---@field preview table
+---@field published_at? string|nil
+---@field published_at_label string|nil
+---@field publisher table|nil
+---@field repository table|nil
+---@field repository_id? string|nil
+---@field selected_path? string
+---@field slug string
+---@field source string
+---@field status string
+---@field title string
+---@field vcs_agent_checkpoint_id? string|nil
+---@field vcs_agent_session_id? string|nil
+---@field version number
+---@field versions table
+---@field view_url string
+---@field web_url string
+
+---@class PageArtefactLoadMatch
+---@field id string
+---@field organization_id string
+---@field file? string
+---@field version? number
+---@field versions_page? number
+
+---@class PageArtefactListMatch
+---@field organization_id string
+---@field author? string
+---@field harness? string
+---@field kind? string
+---@field model? string
+---@field page? number
+---@field q? string
+---@field repo? string
+---@field slug? string
+---@field source? string
+
+---@class PageCiPipelineRun
+---@field error string|nil
+---@field id? string
+---@field jobs table
+
+---@class PageCiPipelineRunLoadMatch
+---@field id string
+---@field pipeline_id string
+
 ---@class PageProjectRun
 ---@field available_tests table
 ---@field fix_scenario_count number
@@ -4513,6 +8514,74 @@
 ---@field browser? string
 ---@field detail? boolean
 ---@field page? number
+
+---@class PageRepoVcCommit
+---@field commit any
+---@field diff_path string
+---@field id? string
+
+---@class PageRepoVcCommitLoadMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+---@field parent? string
+
+---@class PagesBilling
+---@field addons table
+---@field breakdown any
+---@field budget any
+---@field can_manage_contact boolean
+---@field can_manage_extra_spend boolean
+---@field can_manage_local_subscription boolean
+---@field can_manage_payment_method boolean
+---@field can_set_up_billing boolean
+---@field customer any
+---@field deployment_usage_visible boolean
+---@field entitlements table
+---@field extra_spend_enabled boolean
+---@field feature_enabled boolean
+---@field organization_id string
+---@field package any
+---@field prepaid any
+---@field preview any
+---@field storage_usage table
+---@field stripe table
+---@field subscription any
+---@field token_account table
+
+---@class PagesBillingLoadMatch
+---@field organization_id string
+
+---@class PagesGithubOnboarding
+---@field onboarding table
+---@field organization table
+
+---@class PagesGithubOnboardingLoadMatch
+---@field organization_id string
+---@field github_app_installation_id? string
+---@field github_import_batch_id? string
+
+---@class PagesMember
+---@field accepted_at string|nil
+---@field accepted_by_user any
+---@field created_at string
+---@field created_at_label string|nil
+---@field email string
+---@field email_delivery_status? string
+---@field expires_at string|nil
+---@field expires_at_label string|nil
+---@field id string
+---@field invite_url string|nil
+---@field invited_by_user any
+---@field organization table
+---@field revoked_at string|nil
+---@field role string
+---@field status string
+---@field updated_at string
+---@field updated_at_label string|nil
+
+---@class PagesMemberListMatch
+---@field organization_id string
 
 ---@class PagesProjectCredential
 ---@field browser_authentication? table|nil
@@ -4584,6 +8653,122 @@
 ---@field project_id string
 ---@field limit? number
 ---@field sort? string
+
+---@class PagesRegistry
+---@field active_repository_count number
+---@field error string|nil
+---@field pagination table
+---@field repositories table
+---@field repository_count number
+
+---@class PagesRegistryLoadMatch
+---@field organization_id string
+---@field page? number
+
+---@class PagesSession
+---@field adapter? string
+---@field created_at string|nil
+---@field cursor? string
+---@field ended_at string|nil
+---@field external_session_id string
+---@field facets table
+---@field from? string
+---@field github_access_warnings? table
+---@field harness string
+---@field id string
+---@field last_activity_at string|nil
+---@field last_checkpoint_at string|nil
+---@field limit? number
+---@field markers table
+---@field max_bytes? number
+---@field mode? string
+---@field offset? number
+---@field pagination table
+---@field query? string
+---@field repo? string
+---@field repository any
+---@field search? any
+---@field search_enabled? boolean
+---@field session any
+---@field sessions table
+---@field started_at string|nil
+---@field stats table
+---@field status? string
+---@field title string|nil
+---@field to? string
+---@field token_stats any
+---@field transcript_index any
+---@field transcript_stats any
+---@field updated_at string|nil
+---@field user any
+---@field user_id? string
+
+---@class PagesSessionLoadMatch
+---@field id string
+---@field organization_id string
+---@field around_event? number
+---@field checkpoint? string
+---@field event_digest? string
+
+---@class PagesSessionListMatch
+---@field organization_id string
+---@field adapter? string
+---@field from? string
+---@field limit? number
+---@field offset? number
+---@field repo? string
+---@field session? string
+---@field status? string
+---@field to? string
+---@field user_id? string
+
+---@class PagesSessionCreateData
+---@field organization_id string
+---@field adapter? string
+---@field cursor? string
+---@field from? string
+---@field limit? number
+---@field max_bytes? number
+---@field mode? string
+---@field offset? number
+---@field query? string
+---@field repo? string
+---@field status? string
+---@field to? string
+---@field user_id? string
+
+---@class Pairing
+---@field id? string
+
+---@class PairingLoadMatch
+---@field id string
+
+---@class PairingListMatch
+---@field id? string
+
+---@class PairingCreateData
+
+---@class PairingEvent
+
+---@class PairingEventListMatch
+---@field pairing_id string
+
+---@class ParallelV1
+
+---@class ParallelV1CreateData
+---@field organization_id string
+
+---@class PatchsetDiff
+---@field files table
+---@field id? string
+---@field patchset table
+
+---@class PatchsetDiffLoadMatch
+---@field change_id string
+---@field id string
+---@field organization_id string
+---@field patchset_id string
+---@field repo_id string
 
 ---@class PersonalAccessToken
 ---@field id? string
@@ -4673,6 +8858,57 @@
 ---@field default_secrets? table
 ---@field snapshot_version number
 ---@field source_keys? table
+
+---@class ProactiveAgentWaitlistEntry
+---@field email string
+---@field first_task? string|nil
+---@field invite_code? string|nil
+---@field places_per_referral number
+---@field position number
+---@field position_after_next_referral number
+---@field referral_code string
+---@field referral_count number
+---@field total number
+---@field website? string|nil
+
+---@class ProactiveAgentWaitlistEntryLoadMatch
+---@field id string
+
+---@class ProactiveAgentWaitlistEntryCreateData
+---@field email string
+---@field first_task? string|nil
+---@field invite_code? string|nil
+---@field website? string|nil
+
+---@class Product
+---@field activated_products table
+---@field agents_only? boolean
+---@field can_activate_products boolean
+---@field created_at string
+---@field created_at_label string|nil
+---@field github_prs_authored_by_change_author boolean
+---@field id string
+---@field logo_url string|nil
+---@field member_count number
+---@field name string
+---@field pending_invitation_count number
+---@field personal boolean
+---@field product string
+---@field repository_count number
+---@field role string|nil
+---@field sandbox_region string
+---@field shared_agent_personal_accounts_enabled? boolean
+---@field slug string
+---@field source_control_providers? table
+---@field source_ui_enabled? boolean
+---@field timezone string
+---@field updated_at string
+---@field updated_at_label string|nil
+---@field verify_pr_scenario_writing_enabled boolean
+
+---@class ProductCreateData
+---@field organization_id string
+---@field product string
 
 ---@class ProductMapIdentityDecision
 ---@field observations table
@@ -5521,6 +9757,57 @@
 ---@field id string
 ---@field organization_id string
 
+---@class PullRequestAction
+---@field action_name string
+---@field body? string
+---@field comment_id? string
+---@field comments? table
+---@field event? string
+---@field expected_head_sha? string
+---@field id? string|nil
+---@field label? string
+---@field line? number
+---@field node_id? string|nil
+---@field operation_key string
+---@field path? string
+---@field run_id? string
+---@field side? string
+---@field start_line? number
+---@field start_side? string
+---@field thread_id? string
+
+---@class PullRequestActionCreateData
+---@field number string
+---@field organization_id string
+---@field pull_request_id string
+---@field action_name string
+---@field body? string
+---@field comment_id? string
+---@field comments? table
+---@field event? string
+---@field expected_head_sha? string
+---@field label? string
+---@field line? number
+---@field operation_key string
+---@field path? string
+---@field run_id? string
+---@field side? string
+---@field start_line? number
+---@field start_side? string
+---@field thread_id? string
+
+---@class PullRequestMagicMerge
+
+---@class PullRequestMagicMergeCreateData
+---@field number string
+---@field organization_id string
+---@field pull_request_id string
+---@field expected_base_sha? any
+---@field expected_head_sha? any
+---@field idempotency_key? any
+---@field mode? any
+---@field resolutions? any
+
 ---@class PullRequestSetting
 ---@field app_preview_profile_id? string|nil
 ---@field app_service_id? string|nil
@@ -5662,6 +9949,40 @@
 ---@field project_id string
 ---@field repository_id? string
 
+---@class PullRequestTranscript
+---@field adapter string
+---@field created_at string|nil
+---@field ended_at string|nil
+---@field external_session_id string
+---@field harness string
+---@field id string
+---@field last_activity_at string|nil
+---@field last_checkpoint_at string|nil
+---@field repository any
+---@field started_at string|nil
+---@field stats table
+---@field status string
+---@field title string|nil
+---@field updated_at string|nil
+---@field user any
+
+---@class PullRequestTranscriptListMatch
+---@field organization_id string
+---@field pull_request_id string
+---@field repo_id string
+---@field cursor? string
+---@field limit? number
+---@field paginated? boolean
+
+---@class PullZone
+---@field id string
+---@field name string
+---@field slug string
+
+---@class PullZoneListMatch
+---@field organization_id string
+---@field app? string
+
 ---@class Recorder
 ---@field id string
 ---@field name string
@@ -5678,6 +9999,64 @@
 
 ---@class RegistryV2CreateData
 
+---@class RelayAgentConnection
+---@field agent_card_url string
+---@field auth_scheme string
+---@field can_configure boolean
+---@field can_disconnect boolean
+---@field can_setup boolean
+---@field connection table
+---@field credential? string|nil
+---@field error_code string|nil
+---@field expected_generation number
+---@field generation number
+---@field id string
+---@field name string
+---@field remote_agent string|nil
+---@field requester_id string
+---@field retired_at string|nil
+---@field revoked_at string|nil
+---@field scope_key string
+---@field source_operation_id string|nil
+---@field state string
+
+---@class RelayAgentConnectionLoadMatch
+---@field agent_id string
+---@field id string
+---@field organization_id string
+
+---@class RelayAgentConnectionListMatch
+---@field agent_id string
+---@field organization_id string
+---@field cursor? string
+---@field limit? number
+---@field selected_connection_id? string
+
+---@class RelayAgentConnectionCreateData
+---@field agent_id string
+---@field organization_id string
+---@field agent_card_url string
+---@field auth_scheme string
+---@field credential? string|nil
+---@field name string
+---@field remote_agent? string|nil
+---@field source_operation_id? string|nil
+
+---@class RelayAgentConnectionUpdateData
+---@field agent_id string
+---@field id string
+---@field organization_id string
+---@field auth_scheme? string
+---@field credential? string|nil
+---@field expected_generation? number
+---@field name? string
+---@field remote_agent? string|nil
+
+---@class RelayAgentConnectionRemoveMatch
+---@field agent_id string
+---@field id string
+---@field organization_id string
+
 ---@class RelayAgentLocalThread
 ---@field id? string
 
@@ -5685,6 +10064,396 @@
 ---@field agent_id string
 ---@field id string
 ---@field organization_id string
+
+---@class RelaySignal
+
+---@class RelaySignalCreateData
+
+---@class ReleaseRollout
+---@field id? string
+
+---@class ReleaseRolloutLoadMatch
+---@field id string
+---@field release_id string
+
+---@class ReleaseRolloutListMatch
+---@field release_id string
+
+---@class ReleaseRolloutCreateData
+---@field release_id string
+
+---@class Repo
+---@field can_retry_import boolean
+---@field can_retry_sync boolean
+---@field disclaimer string|nil
+---@field federated_in_home boolean
+---@field github_repository string|nil
+---@field icon_name string
+---@field id string
+---@field import_item_id string|nil
+---@field is_home boolean
+---@field name string
+---@field remote_repository? string|nil
+---@field root_path string|nil
+---@field slug string
+---@field sync_error_message string|nil
+---@field sync_provider? string
+---@field sync_status string
+
+---@class RepoLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class RepoListMatch
+---@field organization_id string
+---@field direction? string
+---@field page? number
+---@field q? string
+---@field sort? string
+
+---@class RepoRemoveMatch
+---@field id string
+---@field organization_id string
+
+---@class RepoAccessToken
+---@field access_token table
+---@field active boolean
+---@field created_at string
+---@field created_at_label string|nil
+---@field credential_purpose? string
+---@field expires_at string|nil
+---@field expires_at_label string|nil
+---@field expires_in_days? number|nil
+---@field id string
+---@field last_used_at string|nil
+---@field last_used_at_label string|nil
+---@field name string
+---@field permission_level? string
+---@field plain_text_token string
+---@field revoked_at string|nil
+---@field revoked_at_label string|nil
+---@field token_preview string
+---@field updated_at string
+---@field updated_at_label string|nil
+
+---@class RepoAccessTokenListMatch
+---@field organization_id string
+---@field repo_id string
+
+---@class RepoAccessTokenCreateData
+---@field organization_id string
+---@field repo_id string
+---@field credential_purpose? string
+---@field expires_in_days? number|nil
+---@field name string
+---@field permission_level? string
+
+---@class RepoAccessTokenRemoveMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class RepoAction
+---@field pipeline table
+---@field run table
+
+---@class RepoActionListMatch
+---@field organization_id string
+---@field repo_id string
+---@field pipeline_id? string
+---@field range? string
+
+---@class RepoAgentCheckpoint
+---@field id? string
+
+---@class RepoAgentCheckpointLoadMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class RepoAgentSession
+---@field adapter? string
+---@field agent_session table
+---@field external_session_id? string
+---@field id? string
+---@field status? string
+---@field title? string|nil
+
+---@class RepoAgentSessionLoadMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class RepoAgentSessionListMatch
+---@field organization_id string
+---@field repo_id string
+
+---@class RepoAgentSessionCreateData
+---@field organization_id string
+---@field repo_id string
+
+---@class RepoAgentSessionUpdateData
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class RepoAgentSessionPatchData
+---@field id string
+---@field organization_id string
+---@field repo_id string
+---@field agent_session? table
+
+---@class RepoBookmarkProtection
+---@field actor_policy table
+---@field bypass_mode string
+---@field created_at string
+---@field created_by_user_id string|nil
+---@field enabled boolean
+---@field id string
+---@field name string
+---@field organization_id string
+---@field priority number
+---@field repository_id string
+---@field requirements table
+---@field target_kind string
+---@field target_pattern string|nil
+---@field updated_at string
+---@field updated_by_user_id string|nil
+
+---@class RepoBookmarkProtectionLoadMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class RepoBookmarkProtectionListMatch
+---@field organization_id string
+---@field repo_id string
+
+---@class RepoBookmarkProtectionCreateData
+---@field organization_id string
+---@field repo_id string
+---@field actor_policy? table
+---@field bypass_mode? string
+---@field enabled? boolean
+---@field name? string
+---@field priority? number
+---@field requirements? table
+---@field target_kind? string
+---@field target_pattern? string|nil
+
+---@class RepoBookmarkProtectionUpdateData
+---@field id string
+---@field organization_id string
+---@field repo_id string
+---@field actor_policy? table
+---@field bypass_mode? string
+---@field enabled? boolean
+---@field name? string
+---@field priority? number
+---@field requirements? table
+---@field target_kind? string
+---@field target_pattern? string|nil
+
+---@class RepoBookmarkProtectionPatchData
+---@field id string
+---@field organization_id string
+---@field repo_id string
+---@field actor_policy? table
+---@field bypass_mode? string
+---@field enabled? boolean
+---@field name? string
+---@field priority? number
+---@field requirements? table
+---@field target_kind? string
+---@field target_pattern? string|nil
+
+---@class RepoBookmarkProtectionRemoveMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class RepoBookmarkProtectionEvent
+---@field action string
+---@field actor_kind string
+---@field actor_label string|nil
+---@field actor_user_id string|nil
+---@field bookmark_name string
+---@field bookmark_protection_rule_id string|nil
+---@field created_at string
+---@field created_at_label string|nil
+---@field decision string
+---@field id string
+---@field intent string|nil
+---@field metadata table
+---@field new_target string|nil
+---@field old_target string|nil
+---@field organization_id string
+---@field reason_codes table
+---@field repository_id string
+---@field source_request_id string|nil
+---@field updated_at string
+---@field updated_at_label string|nil
+
+---@class RepoBookmarkProtectionEventListMatch
+---@field organization_id string
+---@field repo_id string
+---@field bookmark? string
+---@field limit? number
+
+---@class RepoCloudWorkspaceBackup
+---@field id? string
+
+---@class RepoCloudWorkspaceBackupLoadMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class RepoCloudWorkspaceBackupListMatch
+---@field organization_id string
+---@field repo_id string
+
+---@class RepoCloudWorkspaceBackupCreateData
+---@field organization_id string
+---@field repo_id string
+
+---@class RepoCodeRule
+---@field active_revision_number number|nil
+---@field capabilities table
+---@field code_rule any
+---@field created_at string
+---@field definition table
+---@field draft_pending boolean
+---@field enabled boolean
+---@field expected_version number
+---@field id string
+---@field latest_revision_number number
+---@field name string
+---@field repository table
+---@field scope table
+---@field slug string
+---@field state_version number
+---@field updated_at string
+---@field web_url string
+
+---@class RepoCodeRuleLoadMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class RepoCodeRuleListMatch
+---@field organization_id string
+---@field repo_id string
+---@field rule? string
+
+---@class RepoCodeRuleCreateData
+---@field organization_id string
+---@field repo_id string
+---@field definition table
+
+---@class RepoCodeRuleUpdateData
+---@field id string
+---@field organization_id string
+---@field repo_id string
+---@field definition? table
+---@field expected_version? number
+
+---@class RepoCodeRulePatchData
+---@field id string
+---@field organization_id string
+---@field repo_id string
+---@field definition? table
+---@field expected_version? number
+
+---@class RepoCodeRuleRemoveMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class RepoSetting
+---@field active boolean
+---@field created_at string
+---@field created_at_label string|nil
+---@field description string|nil
+---@field expires_at string|nil
+---@field expires_at_label string|nil
+---@field icon_name string
+---@field id string
+---@field last_used_at string|nil
+---@field last_used_at_label string|nil
+---@field merge_authority string
+---@field name string
+---@field organization_id string
+---@field permission_level string
+---@field revoked_at string|nil
+---@field revoked_at_label string|nil
+---@field slug string
+---@field status string
+---@field token_preview string
+---@field updated_at string
+---@field updated_at_label string|nil
+
+---@class RepoSettingListMatch
+---@field organization_id string
+---@field repo_id string
+
+---@class RepoSettingUpdateData
+---@field organization_id string
+---@field repo_id string
+---@field description? string|nil
+---@field icon_name? string
+---@field name? string
+---@field status? string
+
+---@class RepoStat
+---@field repository_stats table
+
+---@class RepoStatListMatch
+---@field organization_id string
+---@field repo_id string
+
+---@class RepoStatCreateData
+---@field organization_id string
+---@field repo_id string
+---@field repository_stats table
+
+---@class RepoVc
+
+---@class RepoVcLoadMatch
+---@field organization_id string
+---@field repo_id string
+---@field path? string
+---@field ref? string
+
+---@class RepoVcCreateData
+---@field organization_id string
+---@field repo_id string
+---@field from? any
+---@field into? any
+
+---@class RepoVcUpdateData
+---@field organization_id string
+---@field repo_id string
+---@field auto_land_enabled? any
+---@field expected_version? any
+---@field github_merge_gate? any
+---@field merge_authority? any
+---@field merge_github_repository_connection_id? any
+---@field queue_concurrency? any
+---@field queue_validation_mode? any
+
+---@class RepoVcCommit
+---@field name string
+---@field target_commit_id string
+
+---@class RepoVcCommitListMatch
+---@field organization_id string
+---@field repo_id string
+---@field limit? number
+---@field offset? number
+---@field page? number
+---@field path? string
+---@field q? string
+---@field ref string
 
 ---@class ReportReplay
 ---@field agent_id string
@@ -5717,6 +10486,246 @@
 ---@field exploration_id string
 ---@field organization_id string
 ---@field project_id? string
+
+---@class RepositoryAccess
+
+---@class RepositoryAccessLoadMatch
+---@field organization_slug? string
+
+---@class RepositoryAccessCreateData
+
+---@class RepositoryAccessResolve
+---@field default_branch string
+---@field git_auth_username string
+---@field git_https_clone_url string|nil
+---@field git_https_supported boolean
+---@field github_access_warnings? table
+---@field id? string
+---@field membership_role string
+---@field organization_id string
+---@field organization_name string
+---@field organization_slug string
+---@field repository_id string
+---@field repository_name string
+---@field repository_slug string
+
+---@class RepositoryAccessResolveLoadMatch
+---@field id string
+---@field resolve_id string
+
+---@class RepositoryEvent
+
+---@class RepositoryEventCreateData
+
+---@class RepositoryImport
+---@field can_manage_connections boolean
+---@field github_imports table
+---@field github_installations table
+---@field gitlab_configured boolean
+---@field gitlab_imports table
+---@field gitlab_integrations table
+---@field gitlab_redirect_uri string|nil
+---@field gitlab_self_managed_available boolean
+---@field inventory_errors table
+---@field organization_id string
+---@field repositories table
+
+---@class RepositoryImportLoadMatch
+---@field organization_id string
+---@field accounts_only? boolean
+---@field search? string
+
+---@class RepositoryImportSession
+---@field action_required? string
+---@field authorization_endpoint? string
+---@field can_authorize_github boolean
+---@field client_name string|nil
+---@field client_version string|nil
+---@field created_at string
+---@field error_message string|nil
+---@field expires_at string
+---@field git_imports table
+---@field github_app_installation_id string|nil
+---@field github_connected boolean
+---@field id string
+---@field idempotency_key string
+---@field organization_id string
+---@field organization_slug string
+---@field status string
+---@field updated_at string
+
+---@class RepositoryImportSessionLoadMatch
+---@field id string
+
+---@class RepositoryImportSessionCreateData
+---@field organization_id string
+---@field client_name? string|nil
+---@field client_version? string|nil
+---@field github_app_installation_id? string|nil
+---@field idempotency_key string
+
+---@class RepositoryImportSessionRepository
+---@field default_branch string|nil
+---@field full_name string
+---@field name string
+---@field owner string
+---@field private boolean
+---@field reason? string|nil
+---@field selectable boolean
+---@field status string
+---@field visibility string
+
+---@class RepositoryImportSessionRepositoryListMatch
+---@field repository_import_session_id string
+---@field q? string
+
+---@class RepositoryImportSessionSelection
+---@field repositories any
+
+---@class RepositoryImportSessionSelectionCreateData
+---@field repository_import_session_id string
+---@field repositories any
+
+---@class RepositorySandboxEnvironment
+---@field id? string
+
+---@class RepositorySandboxEnvironmentLoadMatch
+---@field id string
+---@field repository_id string
+
+---@class RepositorySandboxEnvironmentCreateData
+---@field repository_id string
+
+---@class RoderCodeRepair
+---@field base_sha string
+---@field cancel_requested boolean
+---@field failure_code string|nil
+---@field id string
+---@field launch_state string
+---@field organization_id string
+---@field repository_slug string
+---@field roder_thread_id string|nil
+---@field roder_turn_id string|nil
+---@field scenario_run_id string
+---@field task table|nil
+---@field trigger_kind string
+
+---@class RoderCodeRepairLoadMatch
+---@field id string
+
+---@class RoderCodeRepairListMatch
+---@field scenario_run_id string
+
+---@class RoderCodeRepairCreateData
+---@field base_sha string
+---@field organization_id string
+---@field repository_slug string
+---@field scenario_run_id string
+
+---@class RoderCodeRepairSetting
+---@field available boolean
+---@field daily_limit number
+---@field enabled boolean
+---@field enabled_at string|nil
+---@field operator_user_id string|nil
+---@field organization_id string
+---@field repository_slug string|nil
+
+---@class RoderCodeRepairSettingListMatch
+---@field organization_id string
+
+---@class RoderCodeRepairSettingCreateData
+---@field enabled boolean
+---@field organization_id string
+---@field repository_slug? string|nil
+
+---@class RoderMachine
+---@field id? string
+
+---@class RoderMachineUpdateData
+---@field id string
+
+---@class RoderRun
+
+---@class RoderRunCreateData
+---@field events? any
+
+---@class RoderWorkspaceCredential
+---@field api_token string
+---@field author_email string
+---@field author_name string
+---@field clone_url string
+---@field default_branch string
+---@field expires_at string
+---@field organization_id string
+---@field repository_id string
+---@field repository_slug string
+---@field repository_spec string
+---@field required_lifetime_seconds number
+---@field token string
+---@field username string
+
+---@class RoderWorkspaceCredentialCreateData
+---@field required_lifetime_seconds number
+
+---@class RunArtifact
+
+---@class RunArtifactListMatch
+---@field pipeline_id string
+---@field run_id string
+
+---@class RunArtifactCreateData
+---@field pipeline_id string
+---@field run_id string
+
+---@class RunJob
+---@field active boolean
+---@field allow_failure boolean
+---@field cache_archive_observations table|nil
+---@field ci_pipeline_run_id string
+---@field ci_runner_id string|nil
+---@field created_at string
+---@field dependencies_csv string|nil
+---@field display_id number
+---@field environment_csv string|nil
+---@field execution_order number
+---@field execution_profile? string|nil
+---@field exit_code number|nil
+---@field failed boolean
+---@field finished_at string|nil
+---@field id string
+---@field kind string
+---@field log_chunks table
+---@field name string
+---@field number number
+---@field organization_id string
+---@field queued_at string|nil
+---@field reconciliation_id? string|nil
+---@field retry_number number
+---@field reuse table|nil
+---@field runner_label_selector string|nil
+---@field slug string
+---@field started_at string|nil
+---@field status string
+---@field status_label string
+---@field status_state string
+---@field status_tone string
+---@field steps table
+---@field timeout_seconds number|nil
+---@field updated_at string
+
+---@class RunJobLoadMatch
+---@field id string
+---@field pipeline_id string
+---@field run_id string
+
+---@class RunJobListMatch
+---@field pipeline_id string
+---@field run_id string
+
+---@class RunJobCreateData
+---@field pipeline_id string
+---@field run_id string
 
 ---@class RunScenarioRun
 ---@field id? string
@@ -5787,6 +10796,125 @@
 ---@field status? string
 ---@field verify_environment_id? string
 
+---@class RunWorkspaceCredential
+
+---@class RunWorkspaceCredentialCreateData
+
+---@class RunnerLease
+---@field id? string
+
+---@class RunnerLeaseListMatch
+---@field runner_id string
+---@field runner_pool_id string
+
+---@class RunnerLeaseCreateData
+---@field runner_id string
+---@field runner_pool_id string
+
+---@class RunnerPoolNodeEnrollmentToken
+---@field capabilities_csv string|nil
+---@field ci_runner_pool_id string
+---@field created_at string
+---@field created_at_label string|nil
+---@field creator_user_id string|nil
+---@field description string|nil
+---@field expires_at string|nil
+---@field expires_at_label string|nil
+---@field id string
+---@field kind string
+---@field last_used_at string|nil
+---@field last_used_at_label string|nil
+---@field name string
+---@field organization_id string
+---@field raw_token string|nil
+---@field revoked_at string|nil
+---@field status string
+---@field token_hint string
+---@field updated_at string
+---@field updated_at_label string|nil
+---@field usage_count number
+---@field usage_count_label string
+
+---@class RunnerPoolNodeEnrollmentTokenListMatch
+---@field runner_pool_id string
+
+---@class RunnerPoolNodeEnrollmentTokenCreateData
+---@field runner_pool_id string
+---@field capabilities_csv? string|nil
+---@field description? string|nil
+---@field expires_at? string|nil
+---@field kind? string
+---@field name string
+
+---@class RunnerPoolRunner
+---@field id? string
+
+---@class RunnerPoolRunnerLoadMatch
+---@field id string
+---@field runner_pool_id string
+
+---@class RunnerPoolRunnerListMatch
+---@field runner_pool_id string
+
+---@class RunnerPoolRunnerCreateData
+---@field runner_pool_id string
+
+---@class RunnerPoolRunnerUpdateData
+---@field id string
+---@field runner_pool_id string
+
+---@class RunnerPoolRunnerPatchData
+---@field id string
+---@field runner_pool_id string
+
+---@class RuntimeInstanceHealthSnapshot
+
+---@class RuntimeInstanceHealthSnapshotListMatch
+---@field runtime_instance_id string
+
+---@class RuntimeInstanceHealthSnapshotCreateData
+---@field runtime_instance_id string
+
+---@class SandboxIntegration
+---@field can_manage boolean
+---@field catalog table
+---@field configuration table
+---@field connected_profiles table
+---@field credentials table
+---@field enabled boolean
+---@field id string
+---@field integrations table
+---@field name string
+---@field provider string
+---@field version number
+
+---@class SandboxIntegrationListMatch
+---@field organization_id string
+---@field provider? string
+
+---@class SandboxIntegrationCreateData
+---@field organization_id string
+---@field configuration table
+---@field credentials table
+---@field name string
+---@field provider string
+
+---@class SandboxIntegrationUpdateData
+---@field id string
+---@field organization_id string
+---@field credentials? table
+---@field enabled? boolean
+---@field name? string
+---@field version? number
+
+---@class SandboxIntegrationPatchData
+---@field id string
+---@field organization_id string
+---@field credentials? table
+---@field enabled? boolean
+---@field name? string
+---@field version? number
+
 ---@class ScenarioRevision
 ---@field action string
 ---@field batch string
@@ -5831,6 +10959,68 @@
 ---@field version? any
 ---@field viewer_time_zone? any
 
+---@class SecretGrant
+---@field id? string
+
+---@class SecretGrantLoadMatch
+---@field id string
+---@field organization_id string
+---@field secret_id string
+
+---@class SecretGrantListMatch
+---@field organization_id string
+---@field secret_id string
+
+---@class SecretGrantCreateData
+---@field organization_id string
+---@field secret_id string
+
+---@class SecretGrantUpdateData
+---@field id string
+---@field organization_id string
+---@field secret_id string
+
+---@class SecretGrantPatchData
+---@field id string
+---@field organization_id string
+---@field secret_id string
+
+---@class SecretGrantRemoveMatch
+---@field id string
+---@field organization_id string
+---@field secret_id string
+
+---@class SecretVersion
+---@field id? string
+
+---@class SecretVersionLoadMatch
+---@field id string
+---@field organization_id string
+---@field secret_id string
+
+---@class SecretVersionListMatch
+---@field organization_id string
+---@field secret_id string
+
+---@class SecretVersionCreateData
+---@field organization_id string
+---@field secret_id string
+
+---@class SecretVersionUpdateData
+---@field id string
+---@field organization_id string
+---@field secret_id string
+
+---@class SecretVersionPatchData
+---@field id string
+---@field organization_id string
+---@field secret_id string
+
+---@class SecretVersionRemoveMatch
+---@field id string
+---@field organization_id string
+---@field secret_id string
+
 ---@class ServiceEndpoint
 ---@field id? string
 
@@ -5862,6 +11052,257 @@
 ---@field id string
 ---@field service_id string
 
+---@class Setting
+---@field can_manage_pr_scenario_writing boolean
+---@field can_manage_sandbox_region boolean
+---@field dedicated_outbound_ip_addresses table
+---@field default_trunk_bookmark string
+---@field organization table
+---@field sandbox_regions table
+
+---@class SettingListMatch
+---@field organization_id string
+
+---@class SettingMutationLease
+
+---@class SettingMutationLeaseCreateData
+---@field organization_id string
+---@field repo_id string
+---@field reason? any
+
+---@class Signal
+---@field acked_at string|nil
+---@field acked_by table|nil
+---@field agent_runs table
+---@field app_service_id string|nil
+---@field attribution table
+---@field created_at string
+---@field dedupe_key string|nil
+---@field hosted_app_id string|nil
+---@field id string
+---@field kind string
+---@field links table
+---@field occurred_at string
+---@field organization_id string
+---@field payload table
+---@field recovery table
+---@field resolution table
+---@field severity string
+---@field source table
+---@field subject_id string|nil
+---@field subject_type string|nil
+---@field summary string
+
+---@class SignalLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class SignalListMatch
+---@field organization_id string
+---@field after_id? string
+---@field before_id? string
+---@field hosted_app_id? string
+---@field integration_id? string
+---@field kind? string
+---@field limit? number
+---@field min_severity? string
+---@field order? string
+---@field severity? string
+---@field since? string
+---@field source? string
+---@field subscription_id? string
+---@field unacked? boolean
+
+---@class SignalCreateData
+
+---@class SignalInbound
+---@field id? string
+
+---@class SignalInboundUpdateData
+---@field id string
+---@field inbound_id string
+
+---@class SignalIntegration
+---@field api_token? string
+---@field api_token_stored boolean
+---@field config table
+---@field created_at? string|nil
+---@field failure_message string|nil
+---@field id string
+---@field inbound_path string
+---@field inbound_url string
+---@field last_received_at? string|nil
+---@field last_verified_at? string|nil
+---@field mode string
+---@field name string
+---@field organization_id string
+---@field provider string
+---@field rejected_signature_count number
+---@field status string
+---@field target_count number
+---@field unmapped_delivery_count number
+---@field updated_at? string|nil
+---@field webhook_secret? string
+---@field webhook_secret_stored boolean
+
+---@class SignalIntegrationLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class SignalIntegrationListMatch
+---@field organization_id string
+
+---@class SignalIntegrationCreateData
+---@field organization_id string
+---@field api_token? string
+---@field config? table
+---@field mode? string
+---@field name string
+---@field provider string
+---@field webhook_secret? string
+
+---@class SignalIntegrationUpdateData
+---@field id string
+---@field organization_id string
+---@field api_token? string
+---@field config? table
+---@field mode? string
+---@field name? string
+---@field status? string
+---@field webhook_secret? string
+
+---@class SignalIntegrationPatchData
+---@field id string
+---@field organization_id string
+---@field api_token? string
+---@field config? table
+---@field mode? string
+---@field name? string
+---@field status? string
+---@field webhook_secret? string
+
+---@class SignalIntegrationRemoveMatch
+---@field id string
+---@field organization_id string
+
+---@class SignalIntegrationDelivery
+---@field attempt_count number
+---@field created_at? string|nil
+---@field delivery_id string
+---@field event_kind? string|nil
+---@field id string
+---@field last_error? string|nil
+---@field ops_signal_id? string|nil
+---@field organization_id string
+---@field processed_at? string|nil
+---@field provider string
+---@field received_at? string|nil
+---@field signal_integration_id string
+---@field state string
+
+---@class SignalIntegrationDeliveryListMatch
+---@field organization_id string
+---@field signal_integration_id string
+---@field limit? number
+
+---@class SignalIntegrationTarget
+---@field app_service_id? string|nil
+---@field created_at? string|nil
+---@field display_name? string|nil
+---@field enabled boolean
+---@field external_id string
+---@field external_kind string
+---@field external_slug? string|nil
+---@field hosted_app_id? string|nil
+---@field id string
+---@field organization_id string
+---@field signal_integration_id string
+---@field signal_integration_targets table
+---@field targets table
+---@field updated_at? string|nil
+
+---@class SignalIntegrationTargetListMatch
+---@field organization_id string
+---@field signal_integration_id string
+
+---@class SignalIntegrationTargetUpdateData
+---@field organization_id string
+---@field signal_integration_id string
+---@field targets? table
+
+---@class SignalSubscription
+---@field id? string
+
+---@class SignalSubscriptionLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class SignalSubscriptionListMatch
+---@field organization_id string
+
+---@class SignalSubscriptionCreateData
+---@field organization_id string
+
+---@class SignalSubscriptionUpdateData
+---@field id string
+---@field organization_id string
+
+---@class SignalSubscriptionPatchData
+---@field id string
+---@field organization_id string
+
+---@class SignalSubscriptionRemoveMatch
+---@field id string
+---@field organization_id string
+
+---@class Site
+---@field activated_at string|nil
+---@field activated_at_label string|nil
+---@field commit_sha string|nil
+---@field created_at string
+---@field created_at_label string|nil
+---@field creator_user_id string|nil
+---@field deploy_slug string
+---@field failure_message string|nil
+---@field file_count number
+---@field file_count_label string
+---@field finished_at string|nil
+---@field finished_at_label string|nil
+---@field id string
+---@field is_active boolean
+---@field source_ref string|nil
+---@field started_at string|nil
+---@field started_at_label string|nil
+---@field static_site_id string
+---@field status string
+---@field total_bytes number
+---@field total_bytes_label string
+---@field trigger_kind string
+---@field updated_at string
+---@field updated_at_label string|nil
+---@field uploaded_at string|nil
+---@field uploaded_at_label string|nil
+
+---@class SiteListMatch
+---@field organization_id string
+---@field site? string
+
+---@class SiteAccessKey
+---@field id? string
+
+---@class SiteAccessKeyListMatch
+---@field organization_id string
+---@field site_id string
+
+---@class SiteAccessKeyCreateData
+---@field organization_id string
+---@field site_id string
+
+---@class SiteAccessKeyRemoveMatch
+---@field id string
+---@field organization_id string
+---@field site_id string
+
 ---@class SitePreview
 ---@field icon_data_url string|nil
 ---@field title string|nil
@@ -5870,6 +11311,23 @@
 ---@class SitePreviewLoadMatch
 ---@field organization_id string
 ---@field url string
+
+---@class SiteSecret
+---@field id? string
+---@field native_agent_id string
+---@field value string
+
+---@class SiteSecretUpdateData
+---@field id string
+---@field organization_id string
+---@field site_id string
+---@field native_agent_id? string
+---@field value? string
+
+---@class SiteSecretRemoveMatch
+---@field id string
+---@field organization_id string
+---@field site_id string
 
 ---@class SlackChannel
 ---@field id string
@@ -5886,6 +11344,395 @@
 ---@field kind? string
 ---@field q? string
 ---@field refresh? boolean
+
+---@class SourceConnection
+---@field id? string
+
+---@class SourceConnectionCreateData
+---@field id string
+
+---@class SpaceAlertRule
+---@field id? string
+
+---@class SpaceAlertRuleLoadMatch
+---@field id string
+---@field space_id string
+
+---@class SpaceAlertRuleListMatch
+---@field space_id string
+
+---@class SpaceAlertRuleCreateData
+---@field space_id string
+
+---@class SpaceAlertRuleUpdateData
+---@field id string
+---@field space_id string
+
+---@class SpaceAlertRulePatchData
+---@field id string
+---@field space_id string
+
+---@class SpaceAlertRuleRemoveMatch
+---@field id string
+---@field space_id string
+
+---@class SpaceAuditEvent
+
+---@class SpaceAuditEventListMatch
+---@field space_id string
+
+---@class SpaceAuditEventCreateData
+---@field space_id string
+
+---@class SpaceDnsRecord
+---@field id? string
+
+---@class SpaceDnsRecordLoadMatch
+---@field id string
+---@field space_id string
+
+---@class SpaceDnsRecordListMatch
+---@field space_id string
+
+---@class SpaceDnsRecordCreateData
+---@field space_id string
+
+---@class SpaceDnsRecordUpdateData
+---@field id string
+---@field space_id string
+
+---@class SpaceDnsRecordPatchData
+---@field id string
+---@field space_id string
+
+---@class SpaceDnsRecordRemoveMatch
+---@field id string
+---@field space_id string
+
+---@class SpaceEnrollmentToken
+---@field id? string
+
+---@class SpaceEnrollmentTokenLoadMatch
+---@field id string
+---@field space_id string
+
+---@class SpaceEnrollmentTokenListMatch
+---@field space_id string
+
+---@class SpaceEnrollmentTokenCreateData
+---@field space_id string
+
+---@class SpaceEnrollmentTokenUpdateData
+---@field id string
+---@field space_id string
+
+---@class SpaceEnrollmentTokenPatchData
+---@field id string
+---@field space_id string
+
+---@class SpaceEnrollmentTokenRemoveMatch
+---@field id string
+---@field space_id string
+
+---@class SpaceGateway
+---@field id? string
+
+---@class SpaceGatewayLoadMatch
+---@field id string
+---@field space_id string
+
+---@class SpaceGatewayListMatch
+---@field space_id string
+
+---@class SpaceGatewayCreateData
+---@field space_id string
+
+---@class SpaceGatewayUpdateData
+---@field id string
+---@field space_id string
+
+---@class SpaceGatewayPatchData
+---@field id string
+---@field space_id string
+
+---@class SpaceGatewayRemoveMatch
+---@field id string
+---@field space_id string
+
+---@class SpaceGroup
+---@field id? string
+
+---@class SpaceGroupListMatch
+---@field space_id string
+
+---@class SpaceGroupCreateData
+---@field space_id string
+
+---@class SpaceGroupUpdateData
+---@field id string
+---@field space_id string
+
+---@class SpaceGroupPatchData
+---@field id string
+---@field space_id string
+
+---@class SpaceGroupRemoveMatch
+---@field id string
+---@field space_id string
+
+---@class SpaceGroupMembership
+---@field id? string
+
+---@class SpaceGroupMembershipListMatch
+---@field space_id string
+
+---@class SpaceGroupMembershipCreateData
+---@field space_id string
+
+---@class SpaceGroupMembershipUpdateData
+---@field id string
+---@field space_id string
+
+---@class SpaceGroupMembershipPatchData
+---@field id string
+---@field space_id string
+
+---@class SpaceGroupMembershipRemoveMatch
+---@field id string
+---@field space_id string
+
+---@class SpaceLogStream
+
+---@class SpaceLogStreamListMatch
+---@field space_id string
+
+---@class SpaceLogStreamCreateData
+---@field space_id string
+
+---@class SpaceMetricSery
+
+---@class SpaceMetricSeryListMatch
+---@field space_id string
+
+---@class SpaceMetricSeryCreateData
+---@field space_id string
+
+---@class SpaceOtelCollector
+---@field id? string
+
+---@class SpaceOtelCollectorLoadMatch
+---@field id string
+---@field space_id string
+
+---@class SpaceOtelCollectorListMatch
+---@field space_id string
+
+---@class SpaceOtelCollectorCreateData
+---@field space_id string
+
+---@class SpaceOtelCollectorUpdateData
+---@field id string
+---@field space_id string
+
+---@class SpaceOtelCollectorPatchData
+---@field id string
+---@field space_id string
+
+---@class SpaceOtelCollectorRemoveMatch
+---@field id string
+---@field space_id string
+
+---@class SpacePeer
+---@field id? string
+
+---@class SpacePeerLoadMatch
+---@field id string
+---@field space_id string
+
+---@class SpacePeerListMatch
+---@field space_id string
+
+---@class SpacePeerCreateData
+---@field space_id string
+
+---@class SpacePeerUpdateData
+---@field id string
+---@field space_id string
+
+---@class SpacePeerPatchData
+---@field id string
+---@field space_id string
+
+---@class SpacePeerRemoveMatch
+---@field id string
+---@field space_id string
+
+---@class SpacePeerAttachment
+---@field id? string
+
+---@class SpacePeerAttachmentListMatch
+---@field space_id string
+
+---@class SpacePeerAttachmentCreateData
+---@field space_id string
+
+---@class SpacePeerAttachmentUpdateData
+---@field id string
+---@field space_id string
+
+---@class SpacePeerAttachmentPatchData
+---@field id string
+---@field space_id string
+
+---@class SpacePeerAttachmentRemoveMatch
+---@field id string
+---@field space_id string
+
+---@class SpacePolicy
+---@field id? string
+
+---@class SpacePolicyLoadMatch
+---@field id string
+---@field space_id string
+
+---@class SpacePolicyListMatch
+---@field space_id string
+
+---@class SpacePolicyCreateData
+---@field space_id string
+
+---@class SpacePolicyUpdateData
+---@field id string
+---@field space_id string
+
+---@class SpacePolicyPatchData
+---@field id string
+---@field space_id string
+
+---@class SpacePolicyRemoveMatch
+---@field id string
+---@field space_id string
+
+---@class SpaceSegment
+---@field id? string
+
+---@class SpaceSegmentLoadMatch
+---@field id string
+---@field space_id string
+
+---@class SpaceSegmentListMatch
+---@field space_id string
+
+---@class SpaceSegmentCreateData
+---@field space_id string
+
+---@class SpaceSegmentUpdateData
+---@field id string
+---@field space_id string
+
+---@class SpaceSegmentPatchData
+---@field id string
+---@field space_id string
+
+---@class SpaceSegmentRemoveMatch
+---@field id string
+---@field space_id string
+
+---@class SpaceTraceSpan
+
+---@class SpaceTraceSpanListMatch
+---@field space_id string
+
+---@class SpaceTraceSpanCreateData
+---@field space_id string
+
+---@class Spark
+---@field activated_products table
+---@field agents_only? boolean
+---@field can_activate_products boolean
+---@field can_manage boolean
+---@field compute_credit_cents number|nil
+---@field created_at string
+---@field created_at_label string|nil
+---@field credit_cents number|nil
+---@field first_spark table|nil
+---@field github_connected boolean
+---@field github_prs_authored_by_change_author boolean
+---@field id string
+---@field jsonrpc string
+---@field logo_url string|nil
+---@field member_count number
+---@field method string
+---@field name string
+---@field params? table
+---@field pending_invitation_count number
+---@field personal boolean
+---@field repository_count number
+---@field role string|nil
+---@field sandbox_region string
+---@field shared_agent_personal_accounts_enabled? boolean
+---@field slug string
+---@field source_control_providers? table
+---@field source_ui_enabled? boolean
+---@field started boolean
+---@field timezone string
+---@field updated_at string
+---@field updated_at_label string|nil
+---@field verify_pr_scenario_writing_enabled boolean
+
+---@class SparkListMatch
+---@field organization_id string
+
+---@class SparkCreateData
+---@field id? string
+---@field jsonrpc string
+---@field method string
+---@field params? table
+
+---@class SparkAgentIntegration
+---@field account_counts table
+---@field accounts_path string
+---@field added_toolkits table
+---@field can_manage boolean
+---@field can_manage_organization boolean
+---@field catalog table
+---@field connect_as string|nil
+---@field connect_as_by_toolkit table
+---@field connected_counts table
+---@field connection_id string
+---@field connections table
+---@field email table
+---@field enabled boolean
+---@field enabled_toolkits table
+---@field generation number
+---@field pagination table
+---@field pending_counts table
+---@field personal_creation_key_supported? boolean
+---@field private_agent boolean
+---@field shared_agent_personal_accounts_enabled boolean
+---@field slack table
+---@field webhook_connections table
+---@field webhooks_available boolean
+
+---@class SparkAgentIntegrationListMatch
+---@field agent_id string
+---@field organization_id string
+---@field catalog_q? string
+---@field cursor? string
+---@field limit? number
+---@field q? string
+---@field toolkit? string
+
+---@class SparkAgentIntegrationCreateData
+---@field agent_id string
+---@field organization_id string
+---@field cursor? string
+---@field limit? number
+---@field q? string
+---@field toolkit? string
+---@field connection_id string
+---@field enabled boolean
+---@field generation number
 
 ---@class SparkAgentLocalThread
 ---@field action string
@@ -5945,6 +11792,159 @@
 ---@field expected_version? any
 ---@field reply_with_final_answer? any
 ---@field restricted? any
+
+---@class SparkAgentSite
+---@field deployed_at string
+---@field deployments_count number
+---@field hostname string
+---@field https string
+---@field id string
+---@field name string
+---@field url string
+---@field visibility string
+
+---@class SparkAgentSiteListMatch
+---@field agent_id string
+---@field organization_id string
+---@field cursor? string
+---@field limit? number
+
+---@class SparkAgentSkill
+---@field available boolean
+---@field can_configure boolean
+---@field can_manage boolean
+---@field configuration_state? string
+---@field description string
+---@field enabled boolean
+---@field name string
+---@field skills table
+---@field version string
+
+---@class SparkAgentSkillListMatch
+---@field agent_id string
+---@field organization_id string
+
+---@class SparkAgentSkillCreateData
+---@field agent_id string
+---@field organization_id string
+---@field enabled boolean
+---@field name string
+---@field version string
+
+---@class SparkAgentThread
+---@field archived_count? number|nil
+---@field can_create boolean
+---@field execution? any
+---@field first_input? any
+---@field first_input_key? string
+---@field first_input_requester_membership_id? string
+---@field id? string
+---@field inherit_context? boolean
+---@field local_activities table
+---@field local_archived_count number
+---@field local_next_cursor string|nil
+---@field local_scope_key string|nil
+---@field local_status_pending boolean
+---@field local_threads table
+---@field main_thread_id string
+---@field message? string
+---@field next_cursor string|nil
+---@field parent_conversation_id? string
+---@field requester_membership_id? string
+---@field selected_thread any
+---@field thread table
+---@field threads table
+---@field title? string
+---@field total_archived_count number|nil
+
+---@class SparkAgentThreadListMatch
+---@field agent_id string
+---@field organization_id string
+---@field archived? boolean
+---@field conversation_id? string
+---@field cursor? string
+---@field local_cursor? string
+
+---@class SparkAgentThreadCreateData
+---@field agent_id string
+---@field organization_id string
+---@field execution? any
+---@field inherit_context? boolean
+---@field message? string
+---@field parent_conversation_id? string
+---@field requester_membership_id? string
+---@field title? string
+
+---@class SparkCredit
+---@field amount_cents? number
+---@field autofill any
+---@field autofill_payment_unconfirmed boolean
+---@field available_usd string
+---@field billing_unit? string
+---@field can_manage boolean
+---@field compute_minutes table
+---@field compute_usd? string
+---@field credits_per_usd number
+---@field inference_usd? string
+---@field kind string
+---@field payment_method table|nil
+---@field payments_enabled boolean
+---@field plan? string
+---@field plans table
+---@field quoted_credits_cents? number
+---@field quoted_price_cents? number
+---@field refill_limits_cents table
+---@field refill_options table
+---@field refill_thresholds_cents table
+---@field request_key string
+---@field settings any
+---@field starter_cents number
+---@field top_up_max_cents number
+---@field top_up_step_cents number
+
+---@class SparkCreditLoadMatch
+---@field organization_id string
+
+---@class SparkCreditListMatch
+---@field organization_id string
+---@field view? string
+
+---@class SparkCreditCreateData
+---@field organization_id string
+---@field amount_cents? number
+---@field billing_unit? string
+---@field kind string
+---@field plan? string
+---@field quoted_credits_cents? number
+---@field quoted_price_cents? number
+---@field request_key string
+
+---@class SparkCreditUpdateData
+---@field organization_id string
+
+---@class SparkCreditPatchData
+---@field organization_id string
+---@field view? string
+---@field settings? any
+
+---@class SparkCreditAgentUsage
+---@field agents table
+---@field all table
+---@field days table
+---@field id? string
+---@field owners table
+
+---@class SparkCreditAgentUsageLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class SparkCreditUsageTotal
+---@field compute_minutes_used string
+---@field compute_usd string
+---@field inference_usd string
+
+---@class SparkCreditUsageTotalListMatch
+---@field organization_id string
 
 ---@class StaticSite
 ---@field active_deployment_id string|nil
@@ -6083,6 +12083,62 @@
 ---@field id string
 ---@field static_site_id string
 
+---@class StatusChange
+---@field change_id string
+---@field id? string
+---@field patchsets table
+---@field status string
+---@field status_label string
+---@field status_state string
+---@field status_tone string
+
+---@class StatusChangeLoadMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class StatusCommit
+---@field checks table
+---@field commit_sha string
+---@field counts table
+---@field id? string
+---@field status string
+---@field status_label string
+---@field status_state string
+---@field status_tone string
+---@field total number
+
+---@class StatusCommitLoadMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class StatusPatchset
+---@field checks table
+---@field checks_status string|nil
+---@field commit_sha string|nil
+---@field counts table
+---@field id? string
+---@field patchset_id string
+---@field status string
+---@field status_label string
+---@field status_state string
+---@field status_tone string
+---@field total number
+
+---@class StatusPatchsetLoadMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class StripeWebhook
+
+---@class StripeWebhookCreateData
+
+---@class SubmitTelemetry
+
+---@class SubmitTelemetryCreateData
+
 ---@class SubscriptionModel
 ---@field default_reasoning? string
 ---@field id string
@@ -6096,6 +12152,109 @@
 ---@field organization_id string
 ---@field profile_id string
 
+---@class SwarmEvent
+---@field agent_swarm_id string
+---@field attempt_id string|nil
+---@field created_at string
+---@field created_at_label string|nil
+---@field id number
+---@field kind string
+---@field payload table
+---@field reason string|nil
+---@field scheduler_generation number|nil
+---@field task_id string|nil
+
+---@class SwarmEventListMatch
+---@field swarm_id string
+---@field after? number
+---@field kind? string
+---@field limit? number
+
+---@class SwarmLive
+
+---@class SwarmLiveLoadMatch
+---@field swarm_id string
+---@field after_event_id? number
+---@field after_seq? number
+---@field cursor? string
+---@field limit? number
+
+---@class SwarmNote
+---@field task_id? string|nil
+---@field text string
+
+---@class SwarmNoteCreateData
+---@field swarm_id string
+---@field task_id? string|nil
+---@field text string
+
+---@class SwarmTask
+---@field acceptance_commands table
+---@field agent_swarm_id string
+---@field assigned_runner_id string|nil
+---@field blocked_reason string|nil
+---@field changes table
+---@field commit_count number
+---@field commit_sha_result string|nil
+---@field created_at string
+---@field created_at_label string|nil
+---@field current_attempt_id string|nil
+---@field deadline_at string|nil
+---@field depends_on_task_ids table
+---@field depth number
+---@field diff_artifact_url string|nil
+---@field display_id number
+---@field environment_profile string|nil
+---@field error_message string|nil
+---@field failure_code string|nil
+---@field finished_at string|nil
+---@field finished_at_label string|nil
+---@field harness string
+---@field id string
+---@field input_revision string|nil
+---@field iteration number
+---@field landing_state string
+---@field model string|nil
+---@field model_provider string|nil
+---@field number number
+---@field organization_id string
+---@field owned_paths table
+---@field parent_task_id string|nil
+---@field position number
+---@field prompt string
+---@field queued_at string|nil
+---@field queued_at_label string|nil
+---@field reasoning_effort string|nil
+---@field recent_activity table
+---@field repo_url string
+---@field result table
+---@field retry_number number
+---@field role string
+---@field run_id string|nil
+---@field stack_after_task_id string|nil
+---@field started_at string|nil
+---@field started_at_label string|nil
+---@field status string
+---@field title string|nil
+---@field updated_at string
+---@field updated_at_label string|nil
+
+---@class SwarmTaskLoadMatch
+---@field id string
+---@field swarm_id string
+---@field after_seq? number
+---@field limit? number
+
+---@class SwarmTaskListMatch
+---@field swarm_id string
+
+---@class TaskLease
+---@field id? string
+
+---@class TaskLeaseCreateData
+---@field swarm_id string
+---@field task_id string
+
 ---@class ThreadPreview
 ---@field expires_at string|nil
 ---@field port number
@@ -6106,6 +12265,328 @@
 ---@field organization_id string
 ---@field thread_id string
 ---@field port number
+
+---@class ThreadPreviewAccess
+
+---@class ThreadPreviewAccessLoadMatch
+---@field host string
+---@field return_to? string
+
+---@class ThreadPreviewAccessCreateData
+---@field host? any
+---@field token? any
+
+---@class ToolFeedback
+---@field category string
+---@field created_at string
+---@field details string
+---@field feedback table
+---@field id string
+---@field metadata table
+---@field organization_id string
+---@field source string
+---@field summary string
+---@field user_id string
+
+---@class ToolFeedbackLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class ToolFeedbackCreateData
+---@field organization_id string
+---@field feedback table
+
+---@class Transcript
+---@field agent string
+---@field author table
+---@field checkpoint_pagination table
+---@field checkpoints table
+---@field id string
+---@field last_checkpoint_at string|nil
+---@field selected_checkpoint any
+---@field source_url string
+---@field started_at string
+---@field status string
+---@field title string|nil
+
+---@class TranscriptLoadMatch
+---@field around_event? number
+---@field cursor? string
+---@field event_digest? string
+---@field include_tool? boolean
+---@field limit? number
+---@field max_byte? number
+---@field source_ref? string
+
+---@class TranscriptListMatch
+---@field change? string
+---@field checkpoint_cursor? string
+---@field commit? string
+---@field cursor? string
+---@field limit? number
+---@field patchset? number
+---@field pr? string
+---@field repo string
+---@field session? string
+
+---@class TranscriptCreateData
+---@field organization_id string
+---@field status string
+---@field adapter? any
+---@field cursor? any
+---@field from? any
+---@field limit? any
+---@field max_bytes? any
+---@field mode? any
+---@field query? any
+---@field repo? any
+---@field to? any
+---@field user? any
+
+---@class V1Message
+
+---@class V1MessageCreateData
+---@field organization_id string
+
+---@class VcBranch
+---@field id? string
+---@field name string
+---@field target_commit_id string
+
+---@class VcBranchListMatch
+---@field organization_id string
+---@field repo_id string
+
+---@class VcBranchCreateData
+---@field organization_id string
+---@field repo_id string
+
+---@class VcBranchRemoveMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class VcBrowser
+
+---@class VcBrowserLoadMatch
+---@field organization_id string
+---@field repo_id string
+---@field file? string
+---@field path? string
+---@field ref string
+---@field recursive? boolean
+
+---@class VcChange
+---@field activity table
+---@field canonical_path string
+---@field change any
+---@field checks? table
+---@field checks_status? string
+---@field description? string|nil
+---@field group? table|nil
+---@field id string
+---@field jj_change_id? string|nil
+---@field labels? table
+---@field landing table
+---@field number number
+---@field patchset_number? number|nil
+---@field previews table
+---@field primary_status? string|nil
+---@field public_id? string
+---@field related_changes table
+---@field relation_chain table
+---@field restack_state? string
+---@field review_summary? table
+---@field stack? any
+---@field status string
+---@field sync table
+---@field target table
+---@field target_advanced boolean
+---@field target_branch string
+---@field title string
+---@field url? string
+
+---@class VcChangeLoadMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class VcChangeListMatch
+---@field organization_id string
+---@field repo_id string
+---@field group? string
+---@field label? string
+---@field limit? number
+---@field mine? boolean
+---@field page? number
+---@field status? string
+---@field target? string
+
+---@class VcChangeCreateData
+---@field id? string
+---@field organization_id string
+---@field repo_id string
+---@field description? string|nil
+---@field labels? table
+---@field title string
+---@field assets? any
+---@field base? any
+---@field draft? any
+---@field dry_run? any
+---@field expected_base_commit_id? any
+---@field expected_head_commit_id? any
+---@field expected_review_head_commit_id? any
+---@field expected_review_patchset_number? any
+---@field git_publication_id? any
+---@field head? any
+---@field into? any
+---@field message? any
+---@field remove_reviewers? any
+---@field request_id? any
+---@field reviewers? any
+---@field transcript_chat? any
+
+---@class VcChangeUpdateData
+---@field id string
+---@field organization_id string
+---@field repo_id string
+---@field description? string|nil
+---@field assets? any
+
+---@class VcChangeGroup
+---@field changes table
+---@field id? string
+---@field name? string
+---@field number? number
+---@field status string
+---@field title string|nil
+
+---@class VcChangeGroupLoadMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class VcChangeGroupListMatch
+---@field organization_id string
+---@field repo_id string
+
+---@class VcChangeGroupCreateData
+---@field organization_id string
+---@field repo_id string
+---@field name string
+---@field title? string|nil
+
+---@class VcFile
+---@field paths table
+---@field truncated boolean
+
+---@class VcFileListMatch
+---@field organization_id string
+---@field repo_id string
+---@field prefix? string
+---@field ref string
+
+---@class VcMergeQueue
+---@field analytics table
+---@field id? string
+---@field policy table
+---@field queue table
+---@field target_branches? table
+
+---@class VcMergeQueueLoadMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+---@field change? string
+---@field entry_id? string
+---@field page? number
+---@field window_day? number
+
+---@class VcMergeQueueListMatch
+---@field organization_id string
+---@field repo_id string
+---@field change? string
+---@field entry_id? string
+---@field page? number
+---@field target? string
+---@field window_day? number
+
+---@class VcMergeQueueCreateData
+---@field id string
+---@field organization_id string
+---@field repo_id string
+---@field expected_version? any
+
+---@class VcMergeQueueUpdateData
+---@field id string
+---@field organization_id string
+---@field repo_id string
+---@field concurrency? any
+---@field enabled? any
+---@field expected_version? any
+
+---@class VcStack
+---@field alias_ref_name string|nil
+---@field changes table
+---@field code string
+---@field id? string
+---@field landing table
+---@field member_count number
+---@field name string|nil
+---@field ref_name string
+---@field status string
+---@field tip_change_number number|nil
+---@field updated_at string
+---@field updated_at_label string
+
+---@class VcStackLoadMatch
+---@field id string
+---@field organization_id string
+---@field repo_id string
+
+---@class VcStackListMatch
+---@field organization_id string
+---@field repo_id string
+
+---@class VcStackUpdateData
+---@field id string
+---@field organization_id string
+---@field repo_id string
+---@field name? string|nil
+
+---@class VcsNode
+---@field account_avatar_url string|nil
+---@field account_id string|nil
+---@field account_login string
+---@field created_at string
+---@field created_at_label string|nil
+---@field id string
+---@field installation_id string
+---@field installed_at string|nil
+---@field installed_at_label string|nil
+---@field manage_access_url string
+---@field organization_id string
+---@field permission_entries table
+---@field permissions table
+---@field status string
+---@field suspended_at string|nil
+---@field suspended_at_label string|nil
+---@field updated_at string
+---@field updated_at_label string|nil
+
+---@class VcsNodeListMatch
+---@field organization_id string
+
+---@class VcsSetting
+---@field can_manage_pr_scenario_writing boolean
+---@field can_manage_sandbox_region boolean
+---@field dedicated_outbound_ip_addresses table
+---@field default_trunk_bookmark string
+---@field organization table
+---@field sandbox_regions table
+
+---@class VcsSettingListMatch
+---@field organization_id string
 
 ---@class VerificationProjectCredential
 ---@field browser_authentication? table|nil
@@ -6490,6 +12971,35 @@
 ---@field id string
 ---@field organization_id string
 
+---@class VerifyEmailVerification
+
+---@class VerifyEmailVerificationListMatch
+
+---@class VerifySignalIntegration
+---@field api_token_stored boolean
+---@field config table
+---@field created_at? string|nil
+---@field failure_message string|nil
+---@field id string
+---@field inbound_path string
+---@field inbound_url string
+---@field last_received_at? string|nil
+---@field last_verified_at? string|nil
+---@field mode string
+---@field name string
+---@field organization_id string
+---@field provider string
+---@field rejected_signature_count number
+---@field status string
+---@field target_count number
+---@field unmapped_delivery_count number
+---@field updated_at? string|nil
+---@field webhook_secret_stored boolean
+
+---@class VerifySignalIntegrationCreateData
+---@field id string
+---@field organization_id string
+
 ---@class VerifyStaticSiteDomain
 ---@field app_environment_id string|nil
 ---@field app_service_id string|nil
@@ -6535,6 +13045,16 @@
 ---@field version_id string
 ---@field project_id string
 
+---@class WaitlistApplication
+
+---@class WaitlistApplicationCreateData
+---@field company_name? any
+---@field company_size? any
+---@field email? any
+---@field invite_code? any
+---@field name? any
+---@field use_case? any
+
 ---@class WebBotAuth
 ---@field expires_at string
 ---@field origin string
@@ -6542,6 +13062,12 @@
 
 ---@class WebBotAuthCreateData
 ---@field origin string
+
+---@class WebhookGitlab
+---@field id? string
+
+---@class WebhookGitlabUpdateData
+---@field id string
 
 ---@class WorkflowRunStep
 ---@field id? string
@@ -6567,6 +13093,61 @@
 ---@field id string
 ---@field organization_id string
 ---@field workflow_trigger_id string
+
+---@class WorkspaceActivity
+---@field live_activity table
+---@field recent_items table
+---@field unresolved_notification_count number
+
+---@class WorkspaceActivityLoadMatch
+---@field organization_id string
+
+---@class WorkspaceActivityNotification
+---@field id? string
+
+---@class WorkspaceActivityNotificationUpdateData
+---@field id string
+---@field organization_id string
+
+---@class WorkspaceSpace
+---@field created_at string
+---@field default_branch? string
+---@field description string|nil
+---@field hidden boolean
+---@field icon_name string
+---@field id string
+---@field import_status string|nil
+---@field name string
+---@field organization_id string
+---@field position number|nil
+---@field repository_id string
+---@field repository_slug string
+---@field slug string
+---@field status string
+---@field updated_at string
+
+---@class WorkspaceSpaceLoadMatch
+---@field id string
+---@field organization_id string
+
+---@class WorkspaceSpaceListMatch
+---@field organization_id string
+
+---@class WorkspaceSpaceCreateData
+---@field organization_id string
+---@field default_branch? string
+---@field description? string|nil
+---@field icon_name string
+---@field name string
+---@field slug string
+
+---@class WorkspaceSpacePreference
+---@field preferences table
+---@field spaces table
+
+---@class WorkspaceSpacePreferenceUpdateData
+---@field organization_id string
+---@field preferences? table
 
 local M = {}
 

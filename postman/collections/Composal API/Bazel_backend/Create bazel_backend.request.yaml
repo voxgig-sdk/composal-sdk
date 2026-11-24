@@ -1,0 +1,25 @@
+$kind: http-request
+id: "07c4c6bb-a009-5af5-87e4-59d214a1106a"
+description: |-
+  The `create` operation of **bazel_backend**.
+
+  SDK: `client.BazelBackend().create({  })`
+url: "{{base}}/api/v1/bazel/backends"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("bazel_backend_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

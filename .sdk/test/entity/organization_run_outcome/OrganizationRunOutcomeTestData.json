@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "organization_run_outcome": {
+      "ORGANIZATION_RUN_OUTCOME00": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_RUN_OUTCOME00"
+      },
+      "ORGANIZATION_RUN_OUTCOME01": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_RUN_OUTCOME01"
+      },
+      "ORGANIZATION_RUN_OUTCOME02": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_RUN_OUTCOME02"
+      }
+    }
+  },
+  "new": {
+    "organization_run_outcome": {
+      "organization_run_outcome_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/spark/organizations/{organization_id}/run_outcomes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,161 @@
+# Entity: github_app_installation_authorization
+
+main: kit: entity: github_app_installation_authorization: {
+
+  alias: field: {}
+
+  fields: {
+    installation_url: {
+      fo: "uri"
+      h: "Installation Url"
+      n: "installation_url"
+      r: true
+      t: "`$STRING`"
+    }
+    organization_slug: {
+      h: "Organization Slug"
+      n: "organization_slug"
+      r: true
+      sh: "Vex organization slug whose installation will be linked."
+      t: "`$STRING`"
+    }
+    return_target: {
+      h: "Return Target"
+      n: "return_target"
+      r: true
+      sh: "Server-validated Vex application target used after verification."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "github_app_installation_authorization"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "organization_slug"
+            "return_target"
+          ]
+          co: {
+            id: "POST /api/v1/github_app/installation_authorizations"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/github_app/installation_authorizations"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "github_app"
+            }
+            {
+              lit: "installation_authorizations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "code"
+            "error"
+            "state"
+          ]
+          co: {
+            id: "POST /api/v1/github_app/installation_authorizations/complete"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/github_app/installation_authorizations/complete"
+          q: {
+            "$action": "complete"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "github_app"
+            }
+            {
+              lit: "installation_authorizations"
+            }
+            {
+              lit: "complete"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "installation_id"
+            "setup_action"
+            "state"
+          ]
+          co: {
+            id: "POST /api/v1/github_app/installation_authorizations/setup"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/github_app/installation_authorizations/setup"
+          q: {
+            "$action": "setup"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "github_app"
+            }
+            {
+              lit: "installation_authorizations"
+            }
+            {
+              lit: "setup"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

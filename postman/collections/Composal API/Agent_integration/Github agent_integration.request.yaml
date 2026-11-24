@@ -1,0 +1,19 @@
+$kind: http-request
+id: "64405af8-74ce-5c4d-a633-5e18a617105e"
+description: |-
+  The `github` action of **agent_integration**, a route of its `load` operation.
+
+  SDK: `client.AgentIntegration().load({ "organization_id": "organization_id", $action: "github" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_integrations/github"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: installation
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_integration belongs to.
+order: 10000

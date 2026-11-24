@@ -1,0 +1,18 @@
+# BasicRelaySignalFlow
+
+main: kit: flow: BasicRelaySignalFlow:
+{
+  entity: "relay_signal",
+  kind: "basic",
+  name: "BasicRelaySignalFlow",
+  step: [
+    {
+      i: {
+        ref: "relay_signal_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicRelaySignalFlow"
+}

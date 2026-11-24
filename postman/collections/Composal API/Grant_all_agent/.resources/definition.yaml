@@ -1,0 +1,11 @@
+$kind: collection
+id: b8615b58-611a-57ce-b873-a2cced1a894e
+description: |-
+  The **grant_all_agent** entity, which belongs to a organization and a device. Its requests address one record by `{{grant_all_agent_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `all_agents_access` | boolean | yes |  |
+  | `enabled` | boolean | yes |  |
+  | `execution_available` | boolean | yes |  |
+order: 278000

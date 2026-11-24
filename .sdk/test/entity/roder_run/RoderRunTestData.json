@@ -1,0 +1,42 @@
+{
+  "existing": {
+    "roder_run": {
+      "RODER_RUN00": {
+        "id": "RODER_RUN00"
+      },
+      "RODER_RUN01": {
+        "id": "RODER_RUN01"
+      },
+      "RODER_RUN02": {
+        "id": "RODER_RUN02"
+      }
+    }
+  },
+  "new": {
+    "roder_run": {
+      "roder_run_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/agent/roder/run/swarm_activity": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/agent/roder/run/swarm_stack": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/agent/roder/run/swarm_transcript": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/agent/roder/run/workspace_authorization": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

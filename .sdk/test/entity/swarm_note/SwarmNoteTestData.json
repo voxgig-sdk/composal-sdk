@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "swarm_note": {
+      "SWARM_NOTE00": {
+        "task_id": "TASK01",
+        "text": "s15",
+        "swarm_id": "SWARM01",
+        "id": "SWARM_NOTE00"
+      },
+      "SWARM_NOTE01": {
+        "task_id": "TASK01",
+        "text": "s29",
+        "swarm_id": "SWARM01",
+        "id": "SWARM_NOTE01"
+      },
+      "SWARM_NOTE02": {
+        "task_id": "TASK01",
+        "text": "s3d",
+        "swarm_id": "SWARM01",
+        "id": "SWARM_NOTE02"
+      }
+    }
+  },
+  "new": {
+    "swarm_note": {
+      "swarm_note_ref01": {
+        "task_id": "TASK01",
+        "text": "s51"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/agent/swarms/{swarm_id}/notes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

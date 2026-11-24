@@ -1,0 +1,27 @@
+$kind: http-request
+id: "1e169b12-d78b-5f35-8eb3-88c8b2cac826"
+description: |-
+  The `sharing` action of **agent_integration**, a route of its `create` operation.
+
+  SDK: `client.AgentIntegration().create({ "organization_id": "organization_id", "id": "ID", $action: "sharing" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_integrations/:id/sharing"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_integration belongs to.
+  - key: id
+    value: "{{agent_integration_id}}"
+    description: The agent_integration this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "enabled": true,
+      "expected_version": 1,
+      "expected_generation": 1
+    }
+order: 11000

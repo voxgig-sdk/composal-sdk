@@ -24,4 +24,4 @@ description: |-
   | `pull_request` | object | yes |  |
   | `repository_id` | string |  |  |
   | `runs` | array | yes |  |
-order: 180000
+order: 265000

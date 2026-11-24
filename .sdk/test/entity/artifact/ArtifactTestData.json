@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "artifact": {
+      "ARTIFACT00": {
+        "id": "ARTIFACT00"
+      },
+      "ARTIFACT01": {
+        "id": "ARTIFACT01"
+      },
+      "ARTIFACT02": {
+        "id": "ARTIFACT02"
+      }
+    }
+  },
+  "new": {
+    "artifact": {
+      "artifact_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/artifacts/artifacts/{id}/expire": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/artifacts/artifacts/{id}/issue_contract": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/artifacts/artifacts/{id}/restore": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/artifacts/artifacts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/artifacts/artifacts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/artifacts/artifacts/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/artifacts/artifacts/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/artifacts/artifacts/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/artifacts/artifacts/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

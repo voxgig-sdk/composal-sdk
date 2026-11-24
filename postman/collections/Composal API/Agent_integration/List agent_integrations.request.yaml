@@ -1,18 +1,18 @@
 $kind: http-request
-id: "57182201-1f1f-57bf-8de7-58e2206a312c"
+id: "23ccb0ed-78db-5f05-b1db-a4770f763859"
 description: |-
   The `list` operation of **agent_integration**.
 
-  SDK: `client.AgentIntegration().list({ agent_id: "example", organization_id: "example" })`
-url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/integrations"
+  SDK: `client.AgentIntegration().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_integrations"
 method: GET
 headers:
   Accept: application/json
 queryParams:
-  - key: catalog_q
+  - key: cursor
     value: ""
     disabled: true
-  - key: cursor
+  - key: enableable
     value: ""
     disabled: true
   - key: limit
@@ -28,9 +28,6 @@ pathVariables:
   - key: organization_id
     value: "{{organization_id}}"
     description: The organization this agent_integration belongs to.
-  - key: id
-    value: "{{agent_id}}"
-    description: The agent this agent_integration belongs to.
 scripts:
   - type: afterResponse
     code: |-

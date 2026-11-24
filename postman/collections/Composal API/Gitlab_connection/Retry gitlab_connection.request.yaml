@@ -1,0 +1,22 @@
+$kind: http-request
+id: b8aef14a-0b7b-5fec-b263-ca775962e60f
+description: |-
+  The `retry` action of **gitlab_connection**, a route of its `create` operation.
+
+  SDK: `client.GitlabConnection().create({ "organization_id": "organization_id", "id": "ID", $action: "retry" })`
+url: "{{base}}/api/v1/organizations/:org_slug/gitlab/connections/:connection_id/retry"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this gitlab_connection belongs to.
+  - key: connection_id
+    value: "{{gitlab_connection_id}}"
+    description: The gitlab_connection this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 2000

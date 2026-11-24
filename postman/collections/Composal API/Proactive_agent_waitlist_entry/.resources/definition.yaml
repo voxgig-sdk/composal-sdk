@@ -1,0 +1,18 @@
+$kind: collection
+id: "76e1f9dc-50a4-5585-b3bd-eaa7b1ef1ed5"
+description: |-
+  The **proactive_agent_waitlist_entry** entity. Its requests address one record by `{{proactive_agent_waitlist_entry_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `email` | string | yes |  |
+  | `first_task` | string |  |  |
+  | `invite_code` | string |  |  |
+  | `places_per_referral` | integer | yes |  |
+  | `position` | integer | yes |  |
+  | `position_after_next_referral` | integer | yes |  |
+  | `referral_code` | string | yes |  |
+  | `referral_count` | integer | yes |  |
+  | `total` | integer | yes |  |
+  | `website` | string |  |  |
+order: 384000

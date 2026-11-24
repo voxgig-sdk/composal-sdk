@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "edge": {
+      "EDGE00": {
+        "id": "EDGE00"
+      },
+      "EDGE01": {
+        "id": "EDGE01"
+      },
+      "EDGE02": {
+        "id": "EDGE02"
+      }
+    }
+  },
+  "new": {
+    "edge": {
+      "edge_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/edge/tls-check": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

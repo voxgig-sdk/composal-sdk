@@ -1,0 +1,37 @@
+$kind: http-request
+id: "48b91729-c2c3-5910-a960-816a5a81a7b9"
+description: |-
+  The `create` operation of **artefact_comment_thread**.
+
+  SDK: `client.ArtefactCommentThread().create({ artefact_id: "example", organization_id: "example", anchor: "example", body: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/artefacts/:artefact_ref/comment_threads"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this artefact_comment_thread belongs to.
+  - key: artefact_ref
+    value: "{{artefact_id}}"
+    description: The artefact this artefact_comment_thread belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "anchor": "example",
+      "quote": "example",
+      "body": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body?.["thread"]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("artefact_comment_thread_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

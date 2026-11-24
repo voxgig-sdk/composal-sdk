@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "cloud_workspace_backup_object": {
+      "CLOUD_WORKSPACE_BACKUP_OBJECT00": {
+        "id": "CLOUD_WORKSPACE_BACKUP_OBJECT00",
+        "cloud_workspace_backup_id": "CLOUD_WORKSPACE_BACKUP01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "CLOUD_WORKSPACE_BACKUP_OBJECT01": {
+        "id": "CLOUD_WORKSPACE_BACKUP_OBJECT01",
+        "cloud_workspace_backup_id": "CLOUD_WORKSPACE_BACKUP01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "CLOUD_WORKSPACE_BACKUP_OBJECT02": {
+        "id": "CLOUD_WORKSPACE_BACKUP_OBJECT02",
+        "cloud_workspace_backup_id": "CLOUD_WORKSPACE_BACKUP01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "cloud_workspace_backup_object": {
+      "cloud_workspace_backup_object_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/objects/{object_key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

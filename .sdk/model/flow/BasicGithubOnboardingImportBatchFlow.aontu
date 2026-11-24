@@ -1,0 +1,33 @@
+# BasicGithubOnboardingImportBatchFlow
+
+main: kit: flow: BasicGithubOnboardingImportBatchFlow:
+{
+  entity: "github_onboarding_import_batch",
+  kind: "basic",
+  name: "BasicGithubOnboardingImportBatchFlow",
+  step: [
+    {
+      i: {
+        ref: "github_onboarding_import_batch_ref01",
+        srcdatavar: "github_onboarding_import_batch_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "github_onboarding_import_batch01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-github_onboarding_import_batch_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGithubOnboardingImportBatchFlow"
+}

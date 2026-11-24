@@ -1,0 +1,28 @@
+$kind: http-request
+id: "096ef078-c869-54c8-b13e-676099f6f662"
+description: |-
+  The `load` operation of **commit_diff**.
+
+  SDK: `client.CommitDiff().load({ commit_id: "example", id: "example_id", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/commits/:id/diff/:fingerprint"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: parent
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this commit_diff belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this commit_diff belongs to.
+  - key: id
+    value: "{{commit_id}}"
+    description: "Input: commit_id."
+  - key: fingerprint
+    value: "{{commit_diff_id}}"
+    description: The commit_diff this request addresses.
+order: 1000

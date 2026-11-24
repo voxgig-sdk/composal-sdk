@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "repo_cloud_workspace_backup": {
+      "REPO_CLOUD_WORKSPACE_BACKUP00": {
+        "id": "REPO_CLOUD_WORKSPACE_BACKUP00",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "REPO_CLOUD_WORKSPACE_BACKUP01": {
+        "id": "REPO_CLOUD_WORKSPACE_BACKUP01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "REPO_CLOUD_WORKSPACE_BACKUP02": {
+        "id": "REPO_CLOUD_WORKSPACE_BACKUP02",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "repo_cloud_workspace_backup": {
+      "repo_cloud_workspace_backup_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/restore_request": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

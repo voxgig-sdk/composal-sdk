@@ -1,0 +1,9 @@
+$kind: collection
+id: "8f934e76-838f-530e-b450-23e594f3b55d"
+description: |-
+  The **device_project** entity, which belongs to a organization and a device. Its requests address one record by `{{device_project_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 221000

@@ -1,0 +1,68 @@
+# BasicRepoVcFlow
+
+main: kit: flow: BasicRepoVcFlow:
+{
+  entity: "repo_vc",
+  kind: "basic",
+  name: "BasicRepoVcFlow",
+  step: [
+    {
+      i: {
+        ref: "repo_vc_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "repo_vc_ref01",
+        srcdatavar: "repo_vc_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-repo_vc_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "repo_vc_ref01",
+        srcdatavar: "repo_vc_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "repo_vc01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-repo_vc_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRepoVcFlow"
+}

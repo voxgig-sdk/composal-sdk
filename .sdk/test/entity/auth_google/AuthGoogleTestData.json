@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "auth_google": {
+      "AUTH_GOOGLE00": {
+        "id": "AUTH_GOOGLE00"
+      },
+      "AUTH_GOOGLE01": {
+        "id": "AUTH_GOOGLE01"
+      },
+      "AUTH_GOOGLE02": {
+        "id": "AUTH_GOOGLE02"
+      }
+    }
+  },
+  "new": {
+    "auth_google": {
+      "auth_google_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/auth/google/start": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

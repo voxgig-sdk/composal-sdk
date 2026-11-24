@@ -1,0 +1,9 @@
+$kind: collection
+id: "6cede103-77b8-5c30-bfb6-38454ab5a3e9"
+description: |-
+  The **organization_site** entity, which belongs to a organization. Its requests address one record by `{{organization_site_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 355000

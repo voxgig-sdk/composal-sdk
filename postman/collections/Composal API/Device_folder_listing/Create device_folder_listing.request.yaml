@@ -1,0 +1,36 @@
+$kind: http-request
+id: "3da86402-e7ea-5181-9160-74dceaac4eb2"
+description: |-
+  The `create` operation of **device_folder_listing**.
+
+  SDK: `client.DeviceFolderListing().create({ device_id: "example", organization_id: "example", key: "example", path: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/folder_listings"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device_folder_listing belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this device_folder_listing belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "key": "example",
+      "path": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body?.["listing"]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("device_folder_listing_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

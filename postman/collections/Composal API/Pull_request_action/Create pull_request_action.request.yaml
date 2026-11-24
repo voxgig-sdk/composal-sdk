@@ -1,0 +1,59 @@
+$kind: http-request
+id: "0c4a31a2-4057-51af-b9c1-431109d03654"
+description: |-
+  The `create` operation of **pull_request_action**.
+
+  SDK: `client.PullRequestAction().create({ number: "example", organization_id: "example", pull_request_id: "example", action_name: "example", operation_key: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/github/pull_requests/:github_repository_id/:number/actions"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this pull_request_action belongs to.
+  - key: github_repository_id
+    value: "{{pull_request_id}}"
+    description: The pull_request this pull_request_action belongs to.
+  - key: number
+    value: "{{number}}"
+    description: "Input: number."
+body:
+  type: json
+  content: |-
+    {
+      "operation_key": "example",
+      "action_name": "comment",
+      "body": "example",
+      "expected_head_sha": "example",
+      "event": "COMMENT",
+      "path": "example",
+      "line": 1,
+      "side": "LEFT",
+      "start_line": 1,
+      "start_side": "example",
+      "comment_id": "example",
+      "thread_id": "example",
+      "label": "example",
+      "run_id": "example",
+      "comments": [
+        {
+          "path": "example",
+          "line": 1,
+          "side": "LEFT",
+          "body": "example"
+        }
+      ]
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body?.["result"]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("pull_request_action_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

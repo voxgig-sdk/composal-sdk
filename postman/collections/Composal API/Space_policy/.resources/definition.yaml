@@ -1,0 +1,9 @@
+$kind: collection
+id: "7716258b-019d-534c-acbd-b22d1803ac52"
+description: |-
+  The **space_policy** entity. Its requests address one record by `{{space_policy_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 493000

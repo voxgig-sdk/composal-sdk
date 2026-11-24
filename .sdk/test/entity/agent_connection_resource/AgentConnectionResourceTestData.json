@@ -1,0 +1,50 @@
+{
+  "existing": {
+    "agent_connection_resource": {
+      "AGENT_CONNECTION_RESOURCE00": {
+        "cursor": "s28",
+        "next_cursor": "s29",
+        "query": "s2a",
+        "resources": [],
+        "agent_connection_id": "AGENT_CONNECTION01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_CONNECTION_RESOURCE00"
+      },
+      "AGENT_CONNECTION_RESOURCE01": {
+        "cursor": "s50",
+        "next_cursor": "s51",
+        "query": "s52",
+        "resources": [],
+        "agent_connection_id": "AGENT_CONNECTION01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_CONNECTION_RESOURCE01"
+      },
+      "AGENT_CONNECTION_RESOURCE02": {
+        "cursor": "s78",
+        "next_cursor": "s79",
+        "query": "s7a",
+        "resources": [],
+        "agent_connection_id": "AGENT_CONNECTION01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_CONNECTION_RESOURCE02"
+      }
+    }
+  },
+  "new": {
+    "agent_connection_resource": {
+      "agent_connection_resource_ref01": {
+        "cursor": "sa0",
+        "next_cursor": "sa1",
+        "query": "sa2",
+        "resources": []
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agent_connections/{id}/resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

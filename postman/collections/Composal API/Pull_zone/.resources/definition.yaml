@@ -1,0 +1,11 @@
+$kind: collection
+id: c4b578cc-85ad-56a7-b69e-c02a6c26ce7b
+description: |-
+  The **pull_zone** entity, which belongs to a organization. Its requests address one record by `{{pull_zone_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `slug` | string | yes |  |
+order: 414000

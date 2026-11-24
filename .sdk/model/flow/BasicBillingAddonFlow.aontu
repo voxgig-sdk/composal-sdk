@@ -1,0 +1,32 @@
+# BasicBillingAddonFlow
+
+main: kit: flow: BasicBillingAddonFlow:
+{
+  entity: "billing_addon",
+  kind: "basic",
+  name: "BasicBillingAddonFlow",
+  step: [
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "billing_addon_ref01",
+        srcdatavar: "billing_addon_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-billing_addon_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBillingAddonFlow"
+}

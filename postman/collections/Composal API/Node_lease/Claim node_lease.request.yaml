@@ -1,0 +1,22 @@
+$kind: http-request
+id: a324af00-af1d-5f2b-ad90-0621dd76d643
+description: |-
+  The `claim` action of **node_lease**, a route of its `create` operation.
+
+  SDK: `client.NodeLease().create({ "node_id": "node_id", "id": "ID", $action: "claim" })`
+url: "{{base}}/api/v1/ci/nodes/:id/leases/:lease_id/claim"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{node_id}}"
+    description: The node this node_lease belongs to.
+  - key: lease_id
+    value: "{{node_lease_id}}"
+    description: The node_lease this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 2000

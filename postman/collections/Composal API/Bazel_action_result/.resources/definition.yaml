@@ -1,0 +1,9 @@
+$kind: collection
+id: "415e0405-22d4-5236-8688-679098e2ceec"
+description: |-
+  The **bazel_action_result** entity. Its requests address one record by `{{bazel_action_result_action_result_id}}` and `{{bazel_action_result_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 123000

@@ -1,0 +1,38 @@
+$kind: http-request
+id: "82f6c7d2-8a44-523a-8c55-e5d745366441"
+description: |-
+  The `list` operation of **github_ci_repository_compatibility_report**.
+
+  SDK: `client.GithubCiRepositoryCompatibilityReport().list({ github_ci_repository_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/github_ci_repositories/:github_ci_repository_id/compatibility_reports"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: event_name
+    value: ""
+    disabled: true
+  - key: source_sha
+    value: ""
+    disabled: true
+  - key: status
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this github_ci_repository_compatibility_report belongs to.
+  - key: github_ci_repository_id
+    value: "{{github_ci_repository_id}}"
+    description: The github_ci_repository this github_ci_repository_compatibility_report belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["ci_workflow_compatibility_reports"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("github_ci_repository_compatibility_report_id")) pm.collectionVariables.set("github_ci_repository_compatibility_report_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

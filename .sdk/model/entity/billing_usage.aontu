@@ -1,0 +1,102 @@
+# Entity: billing_usage
+
+main: kit: entity: billing_usage: {
+
+  alias: field: {}
+
+  name: "billing_usage"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/billing/usage/breakdown"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "meter"
+                or: "meter"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: "24h"
+                explode: true
+                k: "query"
+                n: "window"
+                or: "window"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/billing/usage/breakdown"
+          q: {
+            "$action": "breakdown"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "billing"
+            }
+            {
+              lit: "usage"
+            }
+            {
+              lit: "breakdown"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

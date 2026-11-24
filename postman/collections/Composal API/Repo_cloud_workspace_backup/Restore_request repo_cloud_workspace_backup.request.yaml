@@ -1,0 +1,25 @@
+$kind: http-request
+id: b9499817-d1cb-549f-8bbc-6c57aee89e2d
+description: |-
+  The `restore_request` action of **repo_cloud_workspace_backup**, a route of its `create` operation.
+
+  SDK: `client.RepoCloudWorkspaceBackup().create({ "organization_id": "organization_id", "repo_id": "repo_id", "id": "ID", $action: "restore_request" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/cloud_workspace_backups/:backup_key/restore_request"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_cloud_workspace_backup belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_cloud_workspace_backup belongs to.
+  - key: backup_key
+    value: "{{repo_cloud_workspace_backup_id}}"
+    description: The repo_cloud_workspace_backup this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

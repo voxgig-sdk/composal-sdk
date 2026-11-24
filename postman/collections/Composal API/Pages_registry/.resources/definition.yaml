@@ -1,0 +1,13 @@
+$kind: collection
+id: "0079cb7a-b9e5-5718-83d7-dab72c80a0c7"
+description: |-
+  The **pages_registry** entity, which belongs to a organization. Its requests address one record by `{{pages_registry_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `active_repository_count` | integer | yes |  |
+  | `error` | string | yes |  |
+  | `pagination` | object | yes |  |
+  | `repositories` | array | yes |  |
+  | `repository_count` | integer | yes |  |
+order: 373000

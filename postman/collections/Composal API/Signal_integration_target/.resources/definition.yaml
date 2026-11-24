@@ -1,0 +1,22 @@
+$kind: collection
+id: "95befc4c-3688-53fb-9652-e908fd7d3969"
+description: |-
+  The **signal_integration_target** entity, which belongs to a organization and a signal_integration. Its requests address one record by `{{signal_integration_target_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `app_service_id` | string |  |  |
+  | `created_at` | string |  |  |
+  | `display_name` | string |  |  |
+  | `enabled` | boolean | yes |  |
+  | `external_id` | string | yes |  |
+  | `external_kind` | string | yes |  |
+  | `external_slug` | string |  |  |
+  | `hosted_app_id` | string |  |  |
+  | `id` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `signal_integration_id` | string | yes |  |
+  | `signal_integration_targets` | array | yes |  |
+  | `targets` | array | yes |  |
+  | `updated_at` | string |  |  |
+order: 473000

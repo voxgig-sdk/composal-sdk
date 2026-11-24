@@ -1,0 +1,117 @@
+# Entity: grant_all_agent
+
+main: kit: entity: grant_all_agent: {
+
+  alias: field: {}
+
+  fields: {
+    all_agents_access: {
+      h: "All Agents Access"
+      n: "all_agents_access"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    enabled: {
+      h: "Enabled"
+      n: "enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    execution_available: {
+      h: "Execution Available"
+      n: "execution_available"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "grant_all_agent"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "enabled"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/all_agents"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "device_id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/all_agents"
+          q: {
+            exist: [
+              "device_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_registration_id: "device_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "device_id"
+            }
+            {
+              lit: "grants"
+            }
+            {
+              lit: "all_agents"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.device")]
+  ]
+
+}

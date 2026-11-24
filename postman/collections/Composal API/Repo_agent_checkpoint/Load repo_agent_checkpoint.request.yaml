@@ -1,0 +1,21 @@
+$kind: http-request
+id: "5ea9b323-e787-5377-9d0e-db469eb3b950"
+description: |-
+  The `load` operation of **repo_agent_checkpoint**.
+
+  SDK: `client.RepoAgentCheckpoint().load({ id: "example_id", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/agent_checkpoints/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_agent_checkpoint belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_agent_checkpoint belongs to.
+  - key: id
+    value: "{{repo_agent_checkpoint_id}}"
+    description: The repo_agent_checkpoint this request addresses.
+order: 1000

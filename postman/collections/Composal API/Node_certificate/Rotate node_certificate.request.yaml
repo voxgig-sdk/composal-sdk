@@ -1,0 +1,19 @@
+$kind: http-request
+id: ddd6e174-3607-55c1-84d1-a64e781cb8e1
+description: |-
+  The `rotate` action of **node_certificate**, a route of its `create` operation.
+
+  SDK: `client.NodeCertificate().create({ "node_id": "node_id", $action: "rotate" })`
+url: "{{base}}/api/v1/ci/nodes/:id/certificate/rotate"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{node_id}}"
+    description: The node this node_certificate belongs to.
+body:
+  type: json
+  content: "{}"
+order: 1000

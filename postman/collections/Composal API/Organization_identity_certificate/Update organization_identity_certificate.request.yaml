@@ -1,0 +1,22 @@
+$kind: http-request
+id: f2dd53fa-7adc-58f7-b04f-94ce82e4185f
+description: |-
+  The `update` operation of **organization_identity_certificate**.
+
+  SDK: `client.OrganizationIdentityCertificate().update({ id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/identity/organizations/:organization_id/identity_certificates/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_identity_certificate belongs to.
+  - key: id
+    value: "{{organization_identity_certificate_id}}"
+    description: The organization_identity_certificate this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

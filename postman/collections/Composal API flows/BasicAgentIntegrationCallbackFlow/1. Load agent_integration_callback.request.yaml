@@ -1,0 +1,57 @@
+$kind: http-request
+id: ed953530-b216-5046-b41c-92ae45621da8
+description: |-
+  The `load` operation of **agent_integration_callback**.
+
+  SDK: `client.AgentIntegrationCallback().load({ connection_id: "example", state: "example" })`
+url: "{{base}}/api/v1/agent_integration_callback?connection_id={{connection_id}}&state={{state}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: code
+    value: ""
+    disabled: true
+  - key: connection_id
+    value: "{{connection_id}}"
+  - key: state
+    value: "{{state}}"
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","connection_id","state"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("1. Load agent_integration_callback: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      if ("Mark01-agent_integration_callback_ref01" === pm.variables.get("agent_integration_callback_ref01_marked")) pm.test("1. Load agent_integration_callback: the update reads back", () => {
+        pm.expect(JSON.stringify(body)).to.include("Mark01-agent_integration_callback_ref01")
+      })
+      pm.test("1. Load agent_integration_callback: the record is the one asked for", () => {
+        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("agent_integration_callback_id")))
+      })
+    language: text/javascript
+order: 1000

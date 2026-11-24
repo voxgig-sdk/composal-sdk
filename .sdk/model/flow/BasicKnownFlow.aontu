@@ -1,0 +1,28 @@
+# BasicKnownFlow
+
+main: kit: flow: BasicKnownFlow:
+{
+  entity: "known",
+  kind: "basic",
+  name: "BasicKnownFlow",
+  step: [
+    {
+      i: {
+        ref: "known_ref01",
+        srcdatavar: "known_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-known_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicKnownFlow"
+}

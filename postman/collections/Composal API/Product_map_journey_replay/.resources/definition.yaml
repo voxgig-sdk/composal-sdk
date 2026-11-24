@@ -22,4 +22,4 @@ description: |-
   | `status` | string | yes |  |
   | `updated_at` | string | yes |  |
   | `variant_id` | string | yes |  |
-order: 160000
+order: 388000

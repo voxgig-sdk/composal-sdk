@@ -39,25 +39,87 @@ describe('AgentIntegrationDirect', async () => {
   })
 
 
-  test('direct-list-agent_integration', async (t: any) => {
+  test('direct-load-agent_integration', async (t: any) => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
-    const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
-    if (maybeSkipControl(t, 'direct', 'direct-list-agent_integration', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["agent01","organization01"], LIVE_STRICT)) return
+    const setup = directSetup({ id: 'direct01' })
+    if (maybeSkipControl(t, 'direct', 'direct-load-agent_integration', setup.live)) return
+    if (skipIfMissingIds(t, setup, ["organization01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
-      params.agent_id = setup.idmap['agent01']
+      const listResult: any = await client.direct({
+        path: 'api/v1/organizations/{organization_id}/agent_integrations',
+        method: 'GET',
+        params: {
+        organization_id: setup.idmap['organization01'],
+        },
+      })
+      if (!listResult.ok || listResult.status < 200 || listResult.status >= 300) {
+        return void liveMiss(t, LIVE_STRICT, 'Live list discovery failed: ' + describeLive(listResult))
+      }
+      const listArr = unwrapListData(listResult.data)
+      if (null == listArr) {
+        return void liveMiss(t, LIVE_STRICT, 'Live list discovery returned no list: ' + describeLive(listResult))
+      }
+      if (0 === listArr.length) {
+        return void liveEmpty(t, 'The account has no agent_integration record to load')
+      }
+      const candidateId = listArr[0]?.id
+      if (null == candidateId) {
+        return void liveMiss(t, LIVE_STRICT, 'Live load blocked: discovery returned no usable identity')
+      }
+      params.id = candidateId
       params.organization_id = setup.idmap['organization01']
     } else {
-      params.agent_id = 'direct01'
+      params.id = 'direct01'
       params.organization_id = 'direct02'
     }
 
     const result: any = await client.direct({
-      path: 'api/v1/organizations/{organization_id}/agents/{agent_id}/spark/integrations',
+      path: 'api/v1/organizations/{organization_id}/agent_integrations/{id}',
+      method: 'GET',
+      params,
+      query,
+    })
+
+    if (setup.live) {
+      if (!result.ok || result.status < 200 || result.status >= 300) {
+        return void liveMiss(t, LIVE_STRICT, 'Live load failed: ' + describeLive(result))
+      }
+      if (!(null != result.data)) {
+        return void liveMiss(t, LIVE_STRICT, 'Live load returned no data: ' + describeLive(result))
+      }
+    } else {
+      assert(result.ok === true)
+      assert(result.status === 200)
+      assert(null != result.data)
+      assert(result.data.id === 'direct01')
+      assert(calls.length === 1)
+      assert(calls[0].init.method === 'GET')
+      assert(calls[0].url.includes('direct01'))
+      assert(calls[0].url.includes('direct02'))
+    }
+  })
+
+  test('direct-list-agent_integration', async (t: any) => {
+    if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
+    const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
+    if (maybeSkipControl(t, 'direct', 'direct-list-agent_integration', setup.live)) return
+    if (skipIfMissingIds(t, setup, ["organization01"], LIVE_STRICT)) return
+    const { client, calls } = setup
+
+    const params: any = {}
+    const query: any = {}
+    if (setup.live) {
+      params.organization_id = setup.idmap['organization01']
+    } else {
+      params.organization_id = 'direct01'
+    }
+
+    const result: any = await client.direct({
+      path: 'api/v1/organizations/{organization_id}/agent_integrations',
       method: 'GET',
       params,
       query,
@@ -80,7 +142,6 @@ describe('AgentIntegrationDirect', async () => {
       assert(calls.length === 1)
       assert(calls[0].init.method === 'GET')
       assert(calls[0].url.includes('direct01'))
-      assert(calls[0].url.includes('direct02'))
     }
   })
 

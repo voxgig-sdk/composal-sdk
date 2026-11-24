@@ -1,0 +1,18 @@
+$kind: http-request
+id: "8c90a555-99ae-5160-9b3d-993ae439d206"
+description: |-
+  The `load` operation of **signal**.
+
+  SDK: `client.Signal().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/signals/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this signal belongs to.
+  - key: id
+    value: "{{signal_id}}"
+    description: The signal this request addresses.
+order: 2000

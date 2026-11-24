@@ -1,0 +1,19 @@
+$kind: http-request
+id: "2e11b7b8-fce0-5d3f-b35b-1547cfc43a7a"
+description: |-
+  The `pause` action of **observability_space**, a route of its `create` operation.
+
+  SDK: `client.ObservabilitySpace().create({ "id": "ID", $action: "pause" })`
+url: "{{base}}/api/v1/observability/spaces/:id/pause"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{observability_space_id}}"
+    description: The observability_space this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 8000

@@ -1,0 +1,29 @@
+$kind: http-request
+id: "6235bb46-5b81-5b45-a687-b720af3ea127"
+description: |-
+  The `list` operation of **site**.
+
+  SDK: `client.Site().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/pages/sites"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: site
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this site belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["deployments"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("site_id")) pm.collectionVariables.set("site_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

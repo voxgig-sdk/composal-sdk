@@ -1,0 +1,8 @@
+$kind: collection
+id: "856fbb01-33da-5a2a-8547-fd9d4f671552"
+description: |-
+  The **otel_ingest** entity. Its requests address one record by `{{otel_ingest_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 359000

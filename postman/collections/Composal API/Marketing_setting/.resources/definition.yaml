@@ -1,0 +1,9 @@
+$kind: collection
+id: "50b26ce6-3c95-5564-8410-320d25ef496c"
+description: |-
+  The **marketing_setting** entity. Its requests address one record by `{{marketing_setting_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `call_first` | boolean | yes |  |
+order: 311000

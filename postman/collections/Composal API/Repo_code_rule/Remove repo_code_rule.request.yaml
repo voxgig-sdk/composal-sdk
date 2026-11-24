@@ -1,0 +1,28 @@
+$kind: http-request
+id: "33c5e3de-bed7-57db-ab60-1b40e8839d34"
+description: |-
+  The `remove` operation of **repo_code_rule**.
+
+  SDK: `client.RepoCodeRule().remove({ id: "example_id", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/code_rules/:rule"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_code_rule belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_code_rule belongs to.
+  - key: rule
+    value: "{{repo_code_rule_id}}"
+    description: The repo_code_rule this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("repo_code_rule_id")
+      }
+    language: text/javascript
+order: 7000

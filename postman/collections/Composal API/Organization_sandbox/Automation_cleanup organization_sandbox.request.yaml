@@ -1,0 +1,19 @@
+$kind: http-request
+id: "46ae9973-6c38-5bb8-9402-abb719906a11"
+description: |-
+  The `automation_cleanup` action of **organization_sandbox**, a route of its `create` operation.
+
+  SDK: `client.OrganizationSandbox().create({ "organization_id": "organization_id", $action: "automation_cleanup" })`
+url: "{{base}}/api/v1/spark/organizations/:organization_id/sandbox/automation-cleanup"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_sandbox belongs to.
+body:
+  type: json
+  content: "{}"
+order: 1000

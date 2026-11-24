@@ -1,0 +1,35 @@
+$kind: http-request
+id: "0bb7b5ad-f9b0-522f-87ab-f3f9d343de32"
+description: |-
+  The `create` operation of **agent_session_checkpoint**.
+
+  SDK: `client.AgentSessionCheckpoint().create({ agent_session_id: "example", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/agent_sessions/:agent_session_id/checkpoints"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this agent_session_checkpoint belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this agent_session_checkpoint belongs to.
+  - key: agent_session_id
+    value: "{{agent_session_id}}"
+    description: The agent_session this agent_session_checkpoint belongs to.
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("agent_session_checkpoint_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

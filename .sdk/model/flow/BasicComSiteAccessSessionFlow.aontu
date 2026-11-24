@@ -1,0 +1,18 @@
+# BasicComSiteAccessSessionFlow
+
+main: kit: flow: BasicComSiteAccessSessionFlow:
+{
+  entity: "com_site_access_session",
+  kind: "basic",
+  name: "BasicComSiteAccessSessionFlow",
+  step: [
+    {
+      i: {
+        ref: "com_site_access_session_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicComSiteAccessSessionFlow"
+}

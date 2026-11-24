@@ -1,0 +1,9 @@
+$kind: collection
+id: "39a49f22-123c-50c8-ae7a-7d92bb26a7ec"
+description: |-
+  The **comment_thread_comment** entity, which belongs to a organization and a artefact. Its requests address one record by `{{comment_thread_comment_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `body` | string | yes |  |
+order: 182000

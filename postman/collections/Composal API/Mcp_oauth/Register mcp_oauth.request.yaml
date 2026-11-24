@@ -1,0 +1,15 @@
+$kind: http-request
+id: f560f37d-9b06-5266-8aca-54eb052746d9
+description: |-
+  The `register` action of **mcp_oauth**, a route of its `create` operation.
+
+  SDK: `client.McpOauth().create({ $action: "register" })`
+url: "{{base}}/api/v1/mcp/oauth/register"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 4000

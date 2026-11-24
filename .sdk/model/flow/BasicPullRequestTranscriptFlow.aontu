@@ -1,0 +1,28 @@
+# BasicPullRequestTranscriptFlow
+
+main: kit: flow: BasicPullRequestTranscriptFlow:
+{
+  entity: "pull_request_transcript",
+  kind: "basic",
+  name: "BasicPullRequestTranscriptFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        pull_request_id: "pull_request01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "pull_request_transcript_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPullRequestTranscriptFlow"
+}

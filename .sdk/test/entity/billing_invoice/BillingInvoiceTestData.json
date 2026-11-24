@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "billing_invoice": {
+      "BILLING_INVOICE00": {
+        "amount_due_cents": 120,
+        "created_at": "s79",
+        "currency": "s7a",
+        "hosted_invoice_url": "s7b",
+        "id": "BILLING_INVOICE00",
+        "invoice_pdf": "s7d",
+        "metronome_invoice_id": "METRONOME_INVOICE01",
+        "number": "s7f",
+        "period_ended_at": "s80",
+        "period_started_at": "s81",
+        "status": "s82",
+        "total_cents": 131,
+        "organization_id": "ORGANIZATION01"
+      },
+      "BILLING_INVOICE01": {
+        "amount_due_cents": 240,
+        "created_at": "sf1",
+        "currency": "sf2",
+        "hosted_invoice_url": "sf3",
+        "id": "BILLING_INVOICE01",
+        "invoice_pdf": "sf5",
+        "metronome_invoice_id": "METRONOME_INVOICE01",
+        "number": "sf7",
+        "period_ended_at": "sf8",
+        "period_started_at": "sf9",
+        "status": "sfa",
+        "total_cents": 251,
+        "organization_id": "ORGANIZATION01"
+      },
+      "BILLING_INVOICE02": {
+        "amount_due_cents": 360,
+        "created_at": "s169",
+        "currency": "s16a",
+        "hosted_invoice_url": "s16b",
+        "id": "BILLING_INVOICE02",
+        "invoice_pdf": "s16d",
+        "metronome_invoice_id": "METRONOME_INVOICE01",
+        "number": "s16f",
+        "period_ended_at": "s170",
+        "period_started_at": "s171",
+        "status": "s172",
+        "total_cents": 371,
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "billing_invoice": {
+      "billing_invoice_ref01": {
+        "amount_due_cents": 480,
+        "created_at": "s1e1",
+        "currency": "s1e2",
+        "hosted_invoice_url": "s1e3",
+        "invoice_pdf": "s1e5",
+        "metronome_invoice_id": "METRONOME_INVOICE01",
+        "number": "s1e7",
+        "period_ended_at": "s1e8",
+        "period_started_at": "s1e9",
+        "status": "s1ea",
+        "total_cents": 491
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/billing/invoices": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

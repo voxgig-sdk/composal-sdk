@@ -1,0 +1,4 @@
+$kind: collection
+id: "5c4dc002-a497-5cae-8e5e-5fbfb2786cb3"
+description: "The `BasicSwarmEventFlow` flow of **swarm_event**."
+order: 423000

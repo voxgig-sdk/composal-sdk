@@ -1,0 +1,19 @@
+$kind: http-request
+id: "3006fb17-b728-56f4-93f2-7c7a8ee5760e"
+description: |-
+  The `update` operation of **artifact_image_repository**.
+
+  SDK: `client.ArtifactImageRepository().update({ id: "example" })`
+url: "{{base}}/api/v1/artifacts/image_repositories/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_image_repository_id}}"
+    description: The artifact_image_repository this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

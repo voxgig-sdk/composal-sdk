@@ -1,0 +1,18 @@
+$kind: http-request
+id: c80b09d5-4973-5050-9d31-5cab994afc5c
+description: |-
+  The `payment_page` action of **billing_prepaid_period**, a route of its `load` operation.
+
+  SDK: `client.BillingPrepaidPeriod().load({ "organization_id": "organization_id", "id": "ID", $action: "payment_page" })`
+url: "{{base}}/api/v1/organizations/:organization_id/billing/prepaid_periods/:id/payment_page"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this billing_prepaid_period belongs to.
+  - key: id
+    value: "{{billing_prepaid_period_id}}"
+    description: The billing_prepaid_period this request addresses.
+order: 2000

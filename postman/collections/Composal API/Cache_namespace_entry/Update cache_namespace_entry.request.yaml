@@ -1,0 +1,22 @@
+$kind: http-request
+id: e9390b3f-06e4-5ede-bf6a-0d065f6241d1
+description: |-
+  The `update` operation of **cache_namespace_entry**.
+
+  SDK: `client.CacheNamespaceEntry().update({ cache_namespace_id: "example", id: "example" })`
+url: "{{base}}/api/v1/artifacts/cache_namespaces/:cache_namespace_id/entries/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: cache_namespace_id
+    value: "{{cache_namespace_id}}"
+    description: "Input: cache_namespace_id."
+  - key: id
+    value: "{{cache_namespace_entry_id}}"
+    description: The cache_namespace_entry this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

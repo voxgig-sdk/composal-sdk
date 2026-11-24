@@ -1,0 +1,15 @@
+$kind: http-request
+id: "4c3e5cd3-0cb1-529d-9f47-ee9bbb266ce5"
+description: |-
+  The `catalog` action of **identity_organization**, a route of its `load` operation.
+
+  SDK: `client.IdentityOrganization().load({ "id": "ID", $action: "catalog" })`
+url: "{{base}}/api/v1/identity/organizations/:organization_id/catalog"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{identity_organization_id}}"
+    description: The identity_organization this request addresses.
+order: 1000

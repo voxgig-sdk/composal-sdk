@@ -15,11 +15,121 @@ local _test_dir = debug.getinfo(1, "S").source:match("^@(.+/)")  or "./"
 local LIVE_STRICT = true
 
 
+local BaseFeature = require("feature.base_feature")
+
+local FailHook = {}
+FailHook.__index = FailHook
+setmetatable(FailHook, { __index = BaseFeature })
+
+function FailHook.new()
+  local self = setmetatable(BaseFeature.new(), FailHook)
+  self.name = "failhook"
+  self.unexpected = 0
+  return self
+end
+
+function FailHook:init(_ctx, _options) end
+function FailHook:PreSpec(_ctx) error("agent_thread hook failed") end
+function FailHook:PreUnexpected(_ctx) self.unexpected = self.unexpected + 1 end
+
+local function errtext(err)
+  if type(err) == "table" then
+    return tostring(err.msg or err.message or "")
+  end
+  return tostring(err)
+end
+
 describe("AgentThreadEntity", function()
   it("should create instance", function()
     local testsdk = sdk.test(nil, nil)
     local ent = testsdk:AgentThread(nil)
     assert.is_not_nil(ent)
+  end)
+
+  -- Feature #4: the entity stream(action, ...) method runs the op pipeline and
+  -- returns an iterator over result items. With the streaming feature active it
+  -- yields the feature's incremental output; otherwise it falls back to the
+  -- materialised list so stream always yields.
+  it("should stream", function()
+    local seed = {
+      entity = {
+        ["agent_thread"] = {
+          s1 = { id = "s1" },
+          s2 = { id = "s2" },
+          s3 = { id = "s3" },
+        },
+      },
+    }
+
+    -- Fallback: streaming inactive -> yields the materialised list items.
+    local base = sdk.test(seed, nil)
+    local seen = {}
+    for item in base:AgentThread(nil):stream("list", nil, nil) do
+      table.insert(seen, item)
+    end
+    assert.are.equal(3, #seen)
+
+    -- Inbound: streaming active -> yields each item from the feature.
+    local config = require("config_shared")()
+    if type(config.feature) == "table" and config.feature.streaming ~= nil then
+      local streamsdk = sdk.test(seed, { feature = { streaming = { active = true } } })
+      local got = {}
+      for item in streamsdk:AgentThread(nil):stream("list", nil, nil) do
+        if vs.islist(item) then
+          for _, sub in ipairs(item) do
+            table.insert(got, sub)
+          end
+        else
+          table.insert(got, item)
+        end
+      end
+      assert.are.equal(3, #got)
+    end
+  end)
+
+  it("should report a failed stream", function()
+    local offline = { net = { offline = true } }
+    local ok, err = pcall(function()
+      for _ in sdk.test(offline, nil):AgentThread(nil):stream("list", nil, nil) do end
+    end)
+    assert.is_false(ok)
+    assert.truthy(string.find(errtext(err), "offline", 1, true))
+
+    for _ in sdk.test(offline, nil):AgentThread(nil):stream("list", nil, { ctrl = { throw = false } }) do end
+
+    local config = require("config_shared")()
+    if type(config.feature) == "table" and config.feature.rbac ~= nil then
+      local denied = sdk.test(nil, { feature = { rbac = { active = true, deny = true } } })
+      local dok, derr = pcall(function()
+        for _ in denied:AgentThread(nil):stream("list", nil, nil) do end
+      end)
+      assert.is_false(dok)
+      assert.are.equal("rbac_denied", type(derr) == "table" and derr.code or nil)
+    end
+  end)
+
+  it("should leave the caller's ctrl", function()
+    local explain = {}
+    local ctrl = { explain = explain }
+    for _ in sdk.test(nil, nil):AgentThread(nil):stream("list", nil, { ctrl = ctrl }) do end
+    assert.is_nil(ctrl.stream)
+    assert.are.equal(explain, ctrl.explain)
+    assert.is_not_nil(next(explain))
+  end)
+
+  it("should fire PreUnexpected", function()
+    local hook = FailHook.new()
+    local client = sdk.new({ feature = { test = { active = true } }, extend = { hook } })
+
+    local out, err = client:AgentThread(nil):list(nil, nil)
+    assert.is_nil(out)
+    assert.truthy(string.find(errtext(err), "hook failed", 1, true))
+    assert.is_true(hook.unexpected > 0)
+
+    local fired = hook.unexpected
+    out, err = client:AgentThread(nil):list(nil, { throw = false })
+    assert.is_nil(err)
+    assert.is_true(hook.unexpected > fired)
   end)
 
   it("should refuse an invalid request", function()
@@ -29,7 +139,7 @@ describe("AgentThreadEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:AgentThread(nil):list({ ["agent_id"] = 1, ["organization_id"] = "x" }, nil)
+    local _, err = client:AgentThread(nil):list({ ["id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +147,7 @@ describe("AgentThreadEntity", function()
     local setup = agent_thread_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list"}) do
+    for _, _op in ipairs({"create", "list", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "agent_thread." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -45,15 +155,18 @@ describe("AgentThreadEntity", function()
       end
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
-      print("LIVE STEP {\"id\":\"agent_thread.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"agent01", "organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_AGENT_THREAD_ENTID")
-        end
-      end
-    end
+      print("LIVE STEP {\"id\":\"agent_thread.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/agent/threads/{id}/archive\"}")
     local client = setup.client
+    if setup.live then
+      local _live_id = nil
+      if not setup.synthetic_only then
+        _live_id = setup.idmap["agent_thread01"]
+      end
+      runner.live_pace()
+      runner.live_existing(pending, setup, LIVE_STRICT, "agent_thread", function()
+        return client:AgentThread(nil):list({}, nil)
+      end, "id", _live_id)
+    end
 
     -- Bootstrap entity data from existing test data.
     local agent_thread_ref01_data_raw = vs.items(helpers.to_map(
@@ -68,25 +181,30 @@ describe("AgentThreadEntity", function()
     end
     -- LIST
     local agent_thread_ref01_ent = client:AgentThread(nil)
-    local agent_thread_ref01_match = {
-      ["agent_id"] = setup.idmap["agent01"],
-      ["organization_id"] = setup.idmap["organization01"],
-    }
+    local agent_thread_ref01_match = {}
 
     local agent_thread_ref01_list_result, err = agent_thread_ref01_ent:list(agent_thread_ref01_match, nil)
     assert.is_nil(err)
     assert.is_table(agent_thread_ref01_list_result)
 
+    if setup.live then
+      runner.live_pace()
+    end
+    -- LOAD
+    local agent_thread_ref01_match_dt0 = {
+      id = agent_thread_ref01_data["id"],
+    }
+    local agent_thread_ref01_data_dt0_loaded, err = agent_thread_ref01_ent:load(agent_thread_ref01_match_dt0, nil)
+    assert.is_nil(err)
+    local agent_thread_ref01_data_dt0_load_result = helpers.to_map(type(agent_thread_ref01_data_dt0_loaded) == 'table' and agent_thread_ref01_data_dt0_loaded.data_get and agent_thread_ref01_data_dt0_loaded:data_get() or agent_thread_ref01_data_dt0_loaded)
+    assert.is_not_nil(agent_thread_ref01_data_dt0_load_result)
+    if not setup.live then
+      assert.is_true(runner.live_same_id(agent_thread_ref01_data_dt0_load_result["id"], agent_thread_ref01_data["id"]))
+    end
+
       return
     end
 
-    if setup.live then
-      for _, _live_key in ipairs({"agent01", "organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_AGENT_THREAD_ENTID")
-        end
-      end
-    end
     local client = setup.client
 
     if setup.live then
@@ -96,8 +214,6 @@ describe("AgentThreadEntity", function()
     local agent_thread_ref01_ent = client:AgentThread(nil)
     local agent_thread_ref01_data = helpers.to_map(vs.getprop(
       vs.getpath(setup.data, "new.agent_thread"), "agent_thread_ref01"))
-    agent_thread_ref01_data["agent_id"] = setup.idmap["agent01"]
-    agent_thread_ref01_data["organization_id"] = setup.idmap["organization01"]
 
     local agent_thread_ref01_data_result, err = agent_thread_ref01_ent:create(agent_thread_ref01_data, nil)
     assert.is_nil(err)
@@ -109,10 +225,7 @@ describe("AgentThreadEntity", function()
       runner.live_pace()
     end
     -- LIST
-    local agent_thread_ref01_match = {
-      ["agent_id"] = setup.idmap["agent01"],
-      ["organization_id"] = setup.idmap["organization01"],
-    }
+    local agent_thread_ref01_match = {}
 
     local agent_thread_ref01_list_result, err = agent_thread_ref01_ent:list(agent_thread_ref01_match, nil)
     assert.is_nil(err)
@@ -122,6 +235,21 @@ describe("AgentThreadEntity", function()
       runner.entity_list_to_data(agent_thread_ref01_list_result),
       { id = agent_thread_ref01_data["id"] })
     assert.is_false(vs.isempty(found_item))
+
+    if setup.live then
+      runner.live_pace()
+    end
+    -- LOAD
+    local agent_thread_ref01_match_dt0 = {
+      id = agent_thread_ref01_data["id"],
+    }
+    local agent_thread_ref01_data_dt0_loaded, err = agent_thread_ref01_ent:load(agent_thread_ref01_match_dt0, nil)
+    assert.is_nil(err)
+    local agent_thread_ref01_data_dt0_load_result = helpers.to_map(type(agent_thread_ref01_data_dt0_loaded) == 'table' and agent_thread_ref01_data_dt0_loaded.data_get and agent_thread_ref01_data_dt0_loaded:data_get() or agent_thread_ref01_data_dt0_loaded)
+    assert.is_not_nil(agent_thread_ref01_data_dt0_load_result)
+    if not setup.live then
+      assert.is_true(runner.live_same_id(agent_thread_ref01_data_dt0_load_result["id"], agent_thread_ref01_data["id"]))
+    end
 
   end)
 end)
@@ -146,7 +274,7 @@ function agent_thread_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "agent_thread01", "agent_thread02", "agent_thread03", "organization01", "organization02", "organization03", "agent01", "agent02", "agent03" },
+    { "agent_thread01", "agent_thread02", "agent_thread03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

@@ -1,0 +1,23 @@
+$kind: collection
+id: b5774d10-dd05-535d-872d-f747441356d6
+description: |-
+  The **agent_relay_file_grant** entity, which belongs to a organization. Its requests address one record by `{{agent_relay_file_grant_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `access_mode` | string | yes |  |
+  | `connection_generation` | integer | yes |  |
+  | `connection_id` | string | yes |  |
+  | `connection_name` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `expected_generation` | integer | yes |  |
+  | `id` | string | yes |  |
+  | `key` | string | yes |  |
+  | `provider` | string | yes |  |
+  | `resource_id` | string | yes |  |
+  | `resource_kind` | string | yes |  |
+  | `revoked` | boolean | yes |  |
+  | `revoked_at` | string | yes |  |
+  | `snapshot_supported` | boolean |  |  |
+  | `source_operation_id` | string | yes |  |
+order: 41000

@@ -1,0 +1,19 @@
+$kind: http-request
+id: "85596c68-8fae-5353-8a01-e347b5e3c4fe"
+description: |-
+  The `fail` action of **bazel_execution**, a route of its `create` operation.
+
+  SDK: `client.BazelExecution().create({ "id": "ID", $action: "fail" })`
+url: "{{base}}/api/v1/bazel/executions/:id/fail"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{bazel_execution_id}}"
+    description: The bazel_execution this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

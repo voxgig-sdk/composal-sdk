@@ -1,0 +1,28 @@
+$kind: http-request
+id: "9594eed1-5b2c-5ad9-bcb8-6df6589469ae"
+description: |-
+  The `list` operation of **log_stream_chunk**.
+
+  SDK: `client.LogStreamChunk().list({ log_stream_id: "example", space_id: "example" })`
+url: "{{base}}/api/v1/observability/spaces/:space_id/log_streams/:log_stream_id/chunks"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: log_stream_id
+    value: "{{log_stream_id}}"
+    description: "Input: log_stream_id."
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("log_stream_chunk_id")) pm.collectionVariables.set("log_stream_chunk_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

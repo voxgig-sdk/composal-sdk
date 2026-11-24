@@ -7,19 +7,15 @@ main: kit: flow: BasicGitlabFlow:
   name: "BasicGitlabFlow",
   step: [
     {
-      m: {
-        org_slug: "org_slug01"
+      i: {
+        ref: "gitlab_ref01"
       }
 
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "gitlab_ref01"
-          }
-        }
-      ]
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
     }
 
     {
@@ -27,6 +23,10 @@ main: kit: flow: BasicGitlabFlow:
         ref: "gitlab_ref01",
         srcdatavar: "gitlab_ref01_data",
         suffix: "_dt0"
+      }
+
+      m: {
+        id: "gitlab01"
       }
 
       o: "load",

@@ -1,0 +1,22 @@
+# BasicBillingCheckoutSessionFlow
+
+main: kit: flow: BasicBillingCheckoutSessionFlow:
+{
+  entity: "billing_checkout_session",
+  kind: "basic",
+  name: "BasicBillingCheckoutSessionFlow",
+  step: [
+    {
+      i: {
+        ref: "billing_checkout_session_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicBillingCheckoutSessionFlow"
+}

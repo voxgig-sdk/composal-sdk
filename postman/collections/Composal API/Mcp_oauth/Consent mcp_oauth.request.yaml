@@ -1,0 +1,14 @@
+$kind: http-request
+id: a05df5ac-fc00-5a8c-8e2f-af2a4433d4db
+description: |-
+  The `consent` action of **mcp_oauth**, a route of its `load` operation.
+
+  SDK: `client.McpOauth().load({ "request": "ID", $action: "consent" })`
+url: "{{base}}/api/v1/mcp/oauth/consent?request={{mcp_oauth_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: request
+    value: "{{mcp_oauth_id}}"
+order: 2000

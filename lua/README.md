@@ -4,7 +4,7 @@
 
 The Lua SDK for the Composal API — an entity-oriented client using Lua conventions.
 
-It exposes the API as capitalised, semantic **Entities** — e.g. `client:Agent()` — each with the same small set of operations (`list`, `load`, `create`, `update`, `patch`, `remove`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:A2aWellKnown()` — each with the same small set of operations (`list`, `load`, `create`, `update`, `patch`, `remove`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
@@ -35,22 +35,6 @@ local client = sdk.new({
 })
 ```
 
-### 2. List agent records
-
-Entity operations return `(value, err)`. For `list`, `value` is an
-array of entities, one per record — iterate it directly (there is no
-wrapper), and read each record with `data_get()`.
-
-```lua
-local agents, err = client:Agent():list({ organization_id = "example" })
-if err then error(err) end
-
-for _, item in ipairs(agents) do
-  local rec = item:data_get()
-  print(rec["id"])
-end
-```
-
 ### 3. Load an agent
 
 Agent is nested under organization, so provide the `organization_id`.
@@ -64,17 +48,6 @@ local rec = agent:data_get()
 print(rec["id"])
 ```
 
-### 4. Create, update, and remove
-
-```lua
--- Create
-local created, err = client:Agent():create({ organization_id = "example_organization_id", name = "example_name" })
-if err then error(err) end
-
--- Remove
-client:Agent():remove({ id = created:data_get()["id"], organization_id = "example_organization_id" })
-```
-
 
 ## Error handling
 
@@ -82,7 +55,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local pageprojectrun, err = client:PageProjectRun():load({ id = "example_id", organization_id = "example", project_id = "example" })
+local agentoperation, err = client:AgentOperation():load({ agent_id = "example", id = "example_id", organization_id = "example" })
 if err then error(err) end
 ```
 
@@ -140,7 +113,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:PageProjectRun():load({ id = "test01", organization_id = "example", project_id = "example" })
+local result, err = client:AgentOperation():load({ id = "test01", agent_id = "example", organization_id = "example" })
 -- result is the entity; data_get() reads its mock record; err is set on failure
 ```
 
@@ -233,19 +206,32 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
+| `A2aWellKnown` | `(data) -> A2aWellKnownEntity` | Create an A2aWellKnown entity instance. |
+| `AdminOrg` | `(data) -> AdminOrgEntity` | Create an AdminOrg entity instance. |
 | `Agent` | `(data) -> AgentEntity` | Create an Agent entity instance. |
+| `AgentApp` | `(data) -> AgentAppEntity` | Create an AgentApp entity instance. |
+| `AgentAppInstall` | `(data) -> AgentAppInstallEntity` | Create an AgentAppInstall entity instance. |
 | `AgentAttachment` | `(data) -> AgentAttachmentEntity` | Create an AgentAttachment entity instance. |
 | `AgentAutomation` | `(data) -> AgentAutomationEntity` | Create an AgentAutomation entity instance. |
 | `AgentAvatar` | `(data) -> AgentAvatarEntity` | Create an AgentAvatar entity instance. |
 | `AgentCommand` | `(data) -> AgentCommandEntity` | Create an AgentCommand entity instance. |
 | `AgentComputer` | `(data) -> AgentComputerEntity` | Create an AgentComputer entity instance. |
 | `AgentConnection` | `(data) -> AgentConnectionEntity` | Create an AgentConnection entity instance. |
+| `AgentConnectionDelegation` | `(data) -> AgentConnectionDelegationEntity` | Create an AgentConnectionDelegation entity instance. |
+| `AgentConnectionGrant` | `(data) -> AgentConnectionGrantEntity` | Create an AgentConnectionGrant entity instance. |
+| `AgentConnectionResource` | `(data) -> AgentConnectionResourceEntity` | Create an AgentConnectionResource entity instance. |
+| `AgentConnectionSafetyControl` | `(data) -> AgentConnectionSafetyControlEntity` | Create an AgentConnectionSafetyControl entity instance. |
+| `AgentConnectionTriggerSubscription` | `(data) -> AgentConnectionTriggerSubscriptionEntity` | Create an AgentConnectionTriggerSubscription entity instance. |
+| `AgentContextCheckpoint` | `(data) -> AgentContextCheckpointEntity` | Create an AgentContextCheckpoint entity instance. |
 | `AgentControlFlow` | `(data) -> AgentControlFlowEntity` | Create an AgentControlFlow entity instance. |
 | `AgentCoordination` | `(data) -> AgentCoordinationEntity` | Create an AgentCoordination entity instance. |
 | `AgentEmail` | `(data) -> AgentEmailEntity` | Create an AgentEmail entity instance. |
+| `AgentEvent` | `(data) -> AgentEventEntity` | Create an AgentEvent entity instance. |
 | `AgentFile` | `(data) -> AgentFileEntity` | Create an AgentFile entity instance. |
 | `AgentInput` | `(data) -> AgentInputEntity` | Create an AgentInput entity instance. |
 | `AgentIntegration` | `(data) -> AgentIntegrationEntity` | Create an AgentIntegration entity instance. |
+| `AgentIntegrationAccount` | `(data) -> AgentIntegrationAccountEntity` | Create an AgentIntegrationAccount entity instance. |
+| `AgentIntegrationCallback` | `(data) -> AgentIntegrationCallbackEntity` | Create an AgentIntegrationCallback entity instance. |
 | `AgentInteraction` | `(data) -> AgentInteractionEntity` | Create an AgentInteraction entity instance. |
 | `AgentLibrary` | `(data) -> AgentLibraryEntity` | Create an AgentLibrary entity instance. |
 | `AgentManager` | `(data) -> AgentManagerEntity` | Create an AgentManager entity instance. |
@@ -257,11 +243,17 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `AgentProvisioning` | `(data) -> AgentProvisioningEntity` | Create an AgentProvisioning entity instance. |
 | `AgentPullRequest` | `(data) -> AgentPullRequestEntity` | Create an AgentPullRequest entity instance. |
 | `AgentQuestion` | `(data) -> AgentQuestionEntity` | Create an AgentQuestion entity instance. |
+| `AgentRelayFileGrant` | `(data) -> AgentRelayFileGrantEntity` | Create an AgentRelayFileGrant entity instance. |
+| `AgentRelayFileGrantAccount` | `(data) -> AgentRelayFileGrantAccountEntity` | Create an AgentRelayFileGrantAccount entity instance. |
 | `AgentRepository` | `(data) -> AgentRepositoryEntity` | Create an AgentRepository entity instance. |
 | `AgentResource` | `(data) -> AgentResourceEntity` | Create an AgentResource entity instance. |
+| `AgentRoder` | `(data) -> AgentRoderEntity` | Create an AgentRoder entity instance. |
 | `AgentRoutine` | `(data) -> AgentRoutineEntity` | Create an AgentRoutine entity instance. |
 | `AgentRun` | `(data) -> AgentRunEntity` | Create an AgentRun entity instance. |
 | `AgentRuntime` | `(data) -> AgentRuntimeEntity` | Create an AgentRuntime entity instance. |
+| `AgentSession` | `(data) -> AgentSessionEntity` | Create an AgentSession entity instance. |
+| `AgentSessionCheckpoint` | `(data) -> AgentSessionCheckpointEntity` | Create an AgentSessionCheckpoint entity instance. |
+| `AgentSessionRoderHandoff` | `(data) -> AgentSessionRoderHandoffEntity` | Create an AgentSessionRoderHandoff entity instance. |
 | `AgentSetting` | `(data) -> AgentSettingEntity` | Create an AgentSetting entity instance. |
 | `AgentSharing` | `(data) -> AgentSharingEntity` | Create an AgentSharing entity instance. |
 | `AgentSite` | `(data) -> AgentSiteEntity` | Create an AgentSite entity instance. |
@@ -269,12 +261,15 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `AgentSlack` | `(data) -> AgentSlackEntity` | Create an AgentSlack entity instance. |
 | `AgentSubagent` | `(data) -> AgentSubagentEntity` | Create an AgentSubagent entity instance. |
 | `AgentSubscription` | `(data) -> AgentSubscriptionEntity` | Create an AgentSubscription entity instance. |
+| `AgentSwarm` | `(data) -> AgentSwarmEntity` | Create an AgentSwarm entity instance. |
 | `AgentTeammate` | `(data) -> AgentTeammateEntity` | Create an AgentTeammate entity instance. |
 | `AgentTerminal` | `(data) -> AgentTerminalEntity` | Create an AgentTerminal entity instance. |
 | `AgentThread` | `(data) -> AgentThreadEntity` | Create an AgentThread entity instance. |
 | `AgentTool` | `(data) -> AgentToolEntity` | Create an AgentTool entity instance. |
+| `AgentUsage` | `(data) -> AgentUsageEntity` | Create an AgentUsage entity instance. |
 | `AgentVerifyProject` | `(data) -> AgentVerifyProjectEntity` | Create an AgentVerifyProject entity instance. |
 | `AgentWait` | `(data) -> AgentWaitEntity` | Create an AgentWait entity instance. |
+| `AgentWebPreview` | `(data) -> AgentWebPreviewEntity` | Create an AgentWebPreview entity instance. |
 | `AgentWebhook` | `(data) -> AgentWebhookEntity` | Create an AgentWebhook entity instance. |
 | `AgentWork` | `(data) -> AgentWorkEntity` | Create an AgentWork entity instance. |
 | `AgentWorkflow` | `(data) -> AgentWorkflowEntity` | Create an AgentWorkflow entity instance. |
@@ -283,8 +278,13 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `AgentWorkflowTrigger` | `(data) -> AgentWorkflowTriggerEntity` | Create an AgentWorkflowTrigger entity instance. |
 | `AgentWorkspace` | `(data) -> AgentWorkspaceEntity` | Create an AgentWorkspace entity instance. |
 | `AgentWritePermission` | `(data) -> AgentWritePermissionEntity` | Create an AgentWritePermission entity instance. |
+| `Agreement` | `(data) -> AgreementEntity` | Create an Agreement entity instance. |
+| `AgreementAccessRequest` | `(data) -> AgreementAccessRequestEntity` | Create an AgreementAccessRequest entity instance. |
+| `AlertRuleEvent` | `(data) -> AlertRuleEventEntity` | Create an AlertRuleEvent entity instance. |
 | `AllocationLog` | `(data) -> AllocationLogEntity` | Create an AllocationLog entity instance. |
 | `App` | `(data) -> AppEntity` | Create an App entity instance. |
+| `AppAccess` | `(data) -> AppAccessEntity` | Create an AppAccess entity instance. |
+| `AppAccessJwk` | `(data) -> AppAccessJwkEntity` | Create an AppAccessJwk entity instance. |
 | `AppCdn` | `(data) -> AppCdnEntity` | Create an AppCdn entity instance. |
 | `AppConfigVariable` | `(data) -> AppConfigVariableEntity` | Create an AppConfigVariable entity instance. |
 | `AppDataResource` | `(data) -> AppDataResourceEntity` | Create an AppDataResource entity instance. |
@@ -303,11 +303,46 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `AppServiceBinding` | `(data) -> AppServiceBindingEntity` | Create an AppServiceBinding entity instance. |
 | `AppServicePlacement` | `(data) -> AppServicePlacementEntity` | Create an AppServicePlacement entity instance. |
 | `AppStorageResource` | `(data) -> AppStorageResourceEntity` | Create an AppStorageResource entity instance. |
+| `Artefact` | `(data) -> ArtefactEntity` | Create an Artefact entity instance. |
+| `ArtefactCommentThread` | `(data) -> ArtefactCommentThreadEntity` | Create an ArtefactCommentThread entity instance. |
+| `ArtefactRevision` | `(data) -> ArtefactRevisionEntity` | Create an ArtefactRevision entity instance. |
+| `ArtefactViewToken` | `(data) -> ArtefactViewTokenEntity` | Create an ArtefactViewToken entity instance. |
+| `Artifact` | `(data) -> ArtifactEntity` | Create an Artifact entity instance. |
+| `ArtifactCacheNamespace` | `(data) -> ArtifactCacheNamespaceEntity` | Create an ArtifactCacheNamespace entity instance. |
+| `ArtifactImageRepository` | `(data) -> ArtifactImageRepositoryEntity` | Create an ArtifactImageRepository entity instance. |
+| `ArtifactPackageMirror` | `(data) -> ArtifactPackageMirrorEntity` | Create an ArtifactPackageMirror entity instance. |
+| `ArtifactRetentionPolicy` | `(data) -> ArtifactRetentionPolicyEntity` | Create an ArtifactRetentionPolicy entity instance. |
 | `AttachmentPart` | `(data) -> AttachmentPartEntity` | Create an AttachmentPart entity instance. |
+| `AuditEvent` | `(data) -> AuditEventEntity` | Create an AuditEvent entity instance. |
+| `Auth` | `(data) -> AuthEntity` | Create an Auth entity instance. |
+| `AuthCli` | `(data) -> AuthCliEntity` | Create an AuthCli entity instance. |
+| `AuthGithub` | `(data) -> AuthGithubEntity` | Create an AuthGithub entity instance. |
+| `AuthGoogle` | `(data) -> AuthGoogleEntity` | Create an AuthGoogle entity instance. |
+| `AuthOpenai` | `(data) -> AuthOpenaiEntity` | Create an AuthOpenai entity instance. |
+| `AuthPasswordReset` | `(data) -> AuthPasswordResetEntity` | Create an AuthPasswordReset entity instance. |
+| `AuthRegistrationOption` | `(data) -> AuthRegistrationOptionEntity` | Create an AuthRegistrationOption entity instance. |
 | `AutomationEvent` | `(data) -> AutomationEventEntity` | Create an AutomationEvent entity instance. |
 | `AutomationRun` | `(data) -> AutomationRunEntity` | Create an AutomationRun entity instance. |
+| `BackendRunnerPool` | `(data) -> BackendRunnerPoolEntity` | Create a BackendRunnerPool entity instance. |
+| `Bazel` | `(data) -> BazelEntity` | Create a Bazel entity instance. |
+| `BazelActionResult` | `(data) -> BazelActionResultEntity` | Create a BazelActionResult entity instance. |
+| `BazelBackend` | `(data) -> BazelBackendEntity` | Create a BazelBackend entity instance. |
+| `BazelBlob` | `(data) -> BazelBlobEntity` | Create a BazelBlob entity instance. |
+| `BazelExecution` | `(data) -> BazelExecutionEntity` | Create a BazelExecution entity instance. |
+| `BazelFindMissingBlob` | `(data) -> BazelFindMissingBlobEntity` | Create a BazelFindMissingBlob entity instance. |
+| `Billing` | `(data) -> BillingEntity` | Create a Billing entity instance. |
+| `BillingAddon` | `(data) -> BillingAddonEntity` | Create a BillingAddon entity instance. |
+| `BillingCheckoutSession` | `(data) -> BillingCheckoutSessionEntity` | Create a BillingCheckoutSession entity instance. |
+| `BillingInvoice` | `(data) -> BillingInvoiceEntity` | Create a BillingInvoice entity instance. |
+| `BillingPackage` | `(data) -> BillingPackageEntity` | Create a BillingPackage entity instance. |
+| `BillingPortalSession` | `(data) -> BillingPortalSessionEntity` | Create a BillingPortalSession entity instance. |
+| `BillingPrepaidPeriod` | `(data) -> BillingPrepaidPeriodEntity` | Create a BillingPrepaidPeriod entity instance. |
+| `BillingPrepaidPurchase` | `(data) -> BillingPrepaidPurchaseEntity` | Create a BillingPrepaidPurchase entity instance. |
+| `BillingTokenTopUp` | `(data) -> BillingTokenTopUpEntity` | Create a BillingTokenTopUp entity instance. |
+| `BillingUsage` | `(data) -> BillingUsageEntity` | Create a BillingUsage entity instance. |
 | `Binary` | `(data) -> BinaryEntity` | Create a Binary entity instance. |
 | `BinaryVersion` | `(data) -> BinaryVersionEntity` | Create a BinaryVersion entity instance. |
+| `BookmarkProtectionRefreshGithubRequiredCheck` | `(data) -> BookmarkProtectionRefreshGithubRequiredCheckEntity` | Create a BookmarkProtectionRefreshGithubRequiredCheck entity instance. |
 | `BrowserEgressCandidate` | `(data) -> BrowserEgressCandidateEntity` | Create a BrowserEgressCandidate entity instance. |
 | `BrowserSession` | `(data) -> BrowserSessionEntity` | Create a BrowserSession entity instance. |
 | `BrowserSessionConnection` | `(data) -> BrowserSessionConnectionEntity` | Create a BrowserSessionConnection entity instance. |
@@ -317,13 +352,46 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `BrowserSessionRecording` | `(data) -> BrowserSessionRecordingEntity` | Create a BrowserSessionRecording entity instance. |
 | `BrowserSessionScreenshot` | `(data) -> BrowserSessionScreenshotEntity` | Create a BrowserSessionScreenshot entity instance. |
 | `BrowserSessionTask` | `(data) -> BrowserSessionTaskEntity` | Create a BrowserSessionTask entity instance. |
+| `CacheNamespaceEntry` | `(data) -> CacheNamespaceEntryEntity` | Create a CacheNamespaceEntry entity instance. |
 | `CatalogSelector` | `(data) -> CatalogSelectorEntity` | Create a CatalogSelector entity instance. |
 | `CdnDeployment` | `(data) -> CdnDeploymentEntity` | Create a CdnDeployment entity instance. |
 | `CdnHostname` | `(data) -> CdnHostnameEntity` | Create a CdnHostname entity instance. |
 | `CdnSpace` | `(data) -> CdnSpaceEntity` | Create a CdnSpace entity instance. |
 | `CdnSpaceObject` | `(data) -> CdnSpaceObjectEntity` | Create a CdnSpaceObject entity instance. |
+| `Change` | `(data) -> ChangeEntity` | Create a Change entity instance. |
+| `ChangeAsset` | `(data) -> ChangeAssetEntity` | Create a ChangeAsset entity instance. |
+| `ChangeComment` | `(data) -> ChangeCommentEntity` | Create a ChangeComment entity instance. |
+| `ChangeFileReviewCheckpoint` | `(data) -> ChangeFileReviewCheckpointEntity` | Create a ChangeFileReviewCheckpoint entity instance. |
+| `ChangeGitBranchSubmission` | `(data) -> ChangeGitBranchSubmissionEntity` | Create a ChangeGitBranchSubmission entity instance. |
+| `ChangeGitCommitIdentity` | `(data) -> ChangeGitCommitIdentityEntity` | Create a ChangeGitCommitIdentity entity instance. |
+| `ChangeGitPublication` | `(data) -> ChangeGitPublicationEntity` | Create a ChangeGitPublication entity instance. |
+| `ChangeGroupMember` | `(data) -> ChangeGroupMemberEntity` | Create a ChangeGroupMember entity instance. |
+| `ChangeLabel` | `(data) -> ChangeLabelEntity` | Create a ChangeLabel entity instance. |
+| `ChangeLandingHold` | `(data) -> ChangeLandingHoldEntity` | Create a ChangeLandingHold entity instance. |
+| `ChangeLandingRequest` | `(data) -> ChangeLandingRequestEntity` | Create a ChangeLandingRequest entity instance. |
+| `ChangeRequestChange` | `(data) -> ChangeRequestChangeEntity` | Create a ChangeRequestChange entity instance. |
+| `ChangeReviewer` | `(data) -> ChangeReviewerEntity` | Create a ChangeReviewer entity instance. |
+| `ChangeTranscript` | `(data) -> ChangeTranscriptEntity` | Create a ChangeTranscript entity instance. |
+| `ChangeTranscriptSummary` | `(data) -> ChangeTranscriptSummaryEntity` | Create a ChangeTranscriptSummary entity instance. |
+| `CheckpointPrepareChunk` | `(data) -> CheckpointPrepareChunkEntity` | Create a CheckpointPrepareChunk entity instance. |
+| `CiNode` | `(data) -> CiNodeEntity` | Create a CiNode entity instance. |
+| `CiPipeline` | `(data) -> CiPipelineEntity` | Create a CiPipeline entity instance. |
+| `CiPipelineRun` | `(data) -> CiPipelineRunEntity` | Create a CiPipelineRun entity instance. |
+| `CiRunnerPool` | `(data) -> CiRunnerPoolEntity` | Create a CiRunnerPool entity instance. |
+| `CiStatus` | `(data) -> CiStatusEntity` | Create a CiStatus entity instance. |
+| `CliEvent` | `(data) -> CliEventEntity` | Create a CliEvent entity instance. |
+| `CliRelease` | `(data) -> CliReleaseEntity` | Create a CliRelease entity instance. |
+| `CloudWorkspaceBackupObject` | `(data) -> CloudWorkspaceBackupObjectEntity` | Create a CloudWorkspaceBackupObject entity instance. |
+| `CodeRuleEvaluation` | `(data) -> CodeRuleEvaluationEntity` | Create a CodeRuleEvaluation entity instance. |
+| `ComSiteAccess` | `(data) -> ComSiteAccessEntity` | Create a ComSiteAccess entity instance. |
+| `ComSiteAccessSession` | `(data) -> ComSiteAccessSessionEntity` | Create a ComSiteAccessSession entity instance. |
+| `CommentThreadComment` | `(data) -> CommentThreadCommentEntity` | Create a CommentThreadComment entity instance. |
+| `CommitDiff` | `(data) -> CommitDiffEntity` | Create a CommitDiff entity instance. |
 | `ConnectionRequest` | `(data) -> ConnectionRequestEntity` | Create a ConnectionRequest entity instance. |
 | `ConnectionSource` | `(data) -> ConnectionSourceEntity` | Create a ConnectionSource entity instance. |
+| `ContactSubmission` | `(data) -> ContactSubmissionEntity` | Create a ContactSubmission entity instance. |
+| `ControlComputer` | `(data) -> ControlComputerEntity` | Create a ControlComputer entity instance. |
+| `ControlComputerControlOperation` | `(data) -> ControlComputerControlOperationEntity` | Create a ControlComputerControlOperation entity instance. |
 | `CoordinationWait` | `(data) -> CoordinationWaitEntity` | Create a CoordinationWait entity instance. |
 | `CredentialSignInCheck` | `(data) -> CredentialSignInCheckEntity` | Create a CredentialSignInCheck entity instance. |
 | `DataResourceRotateCredential` | `(data) -> DataResourceRotateCredentialEntity` | Create a DataResourceRotateCredential entity instance. |
@@ -334,10 +402,36 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `DeepScanOption` | `(data) -> DeepScanOptionEntity` | Create a DeepScanOption entity instance. |
 | `DemoShare` | `(data) -> DemoShareEntity` | Create a DemoShare entity instance. |
 | `DemoShareSegment` | `(data) -> DemoShareSegmentEntity` | Create a DemoShareSegment entity instance. |
+| `Deployment` | `(data) -> DeploymentEntity` | Create a Deployment entity instance. |
 | `DeploymentDashboardNomad` | `(data) -> DeploymentDashboardNomadEntity` | Create a DeploymentDashboardNomad entity instance. |
+| `DeploymentDetail` | `(data) -> DeploymentDetailEntity` | Create a DeploymentDetail entity instance. |
 | `DeploymentFile` | `(data) -> DeploymentFileEntity` | Create a DeploymentFile entity instance. |
+| `DeploymentLog` | `(data) -> DeploymentLogEntity` | Create a DeploymentLog entity instance. |
+| `DeploymentMetric` | `(data) -> DeploymentMetricEntity` | Create a DeploymentMetric entity instance. |
+| `DeploymentPreview` | `(data) -> DeploymentPreviewEntity` | Create a DeploymentPreview entity instance. |
+| `DeploymentSetting` | `(data) -> DeploymentSettingEntity` | Create a DeploymentSetting entity instance. |
+| `DesktopLocalAgentModel` | `(data) -> DesktopLocalAgentModelEntity` | Create a DesktopLocalAgentModel entity instance. |
+| `DesktopLocalAgentResponse` | `(data) -> DesktopLocalAgentResponseEntity` | Create a DesktopLocalAgentResponse entity instance. |
+| `Device` | `(data) -> DeviceEntity` | Create a Device entity instance. |
+| `DeviceBrowserOperation` | `(data) -> DeviceBrowserOperationEntity` | Create a DeviceBrowserOperation entity instance. |
+| `DeviceControlMessage` | `(data) -> DeviceControlMessageEntity` | Create a DeviceControlMessage entity instance. |
+| `DeviceControlOperation` | `(data) -> DeviceControlOperationEntity` | Create a DeviceControlOperation entity instance. |
+| `DeviceEnterpriseRelay` | `(data) -> DeviceEnterpriseRelayEntity` | Create a DeviceEnterpriseRelay entity instance. |
+| `DeviceFolderListing` | `(data) -> DeviceFolderListingEntity` | Create a DeviceFolderListing entity instance. |
+| `DeviceGrant` | `(data) -> DeviceGrantEntity` | Create a DeviceGrant entity instance. |
+| `DeviceInvocation` | `(data) -> DeviceInvocationEntity` | Create a DeviceInvocation entity instance. |
+| `DeviceLocalEvent` | `(data) -> DeviceLocalEventEntity` | Create a DeviceLocalEvent entity instance. |
+| `DevicePairing` | `(data) -> DevicePairingEntity` | Create a DevicePairing entity instance. |
+| `DeviceProject` | `(data) -> DeviceProjectEntity` | Create a DeviceProject entity instance. |
+| `DeviceScheduledCheckIn` | `(data) -> DeviceScheduledCheckInEntity` | Create a DeviceScheduledCheckIn entity instance. |
+| `DockerBuilder` | `(data) -> DockerBuilderEntity` | Create a DockerBuilder entity instance. |
+| `DockerBuilderSession` | `(data) -> DockerBuilderSessionEntity` | Create a DockerBuilderSession entity instance. |
+| `DockerBuilderSetting` | `(data) -> DockerBuilderSettingEntity` | Create a DockerBuilderSetting entity instance. |
+| `DomainDnsIntegration` | `(data) -> DomainDnsIntegrationEntity` | Create a DomainDnsIntegration entity instance. |
 | `DomainPathRule` | `(data) -> DomainPathRuleEntity` | Create a DomainPathRule entity instance. |
 | `Dream` | `(data) -> DreamEntity` | Create a Dream entity instance. |
+| `Edge` | `(data) -> EdgeEntity` | Create an Edge entity instance. |
+| `EmailVerification` | `(data) -> EmailVerificationEntity` | Create an EmailVerification entity instance. |
 | `Environment` | `(data) -> EnvironmentEntity` | Create an Environment entity instance. |
 | `EnvironmentDiscoveryRun` | `(data) -> EnvironmentDiscoveryRunEntity` | Create an EnvironmentDiscoveryRun entity instance. |
 | `EnvironmentExploration` | `(data) -> EnvironmentExplorationEntity` | Create an EnvironmentExploration entity instance. |
@@ -346,48 +440,153 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `EnvironmentSecretBinding` | `(data) -> EnvironmentSecretBindingEntity` | Create an EnvironmentSecretBinding entity instance. |
 | `EnvironmentTestAccount` | `(data) -> EnvironmentTestAccountEntity` | Create an EnvironmentTestAccount entity instance. |
 | `Evidence` | `(data) -> EvidenceEntity` | Create an Evidence entity instance. |
+| `ExecutionDesiredState` | `(data) -> ExecutionDesiredStateEntity` | Create an ExecutionDesiredState entity instance. |
+| `ExecutionReconcilerTick` | `(data) -> ExecutionReconcilerTickEntity` | Create an ExecutionReconcilerTick entity instance. |
+| `ExecutionRelease` | `(data) -> ExecutionReleaseEntity` | Create an ExecutionRelease entity instance. |
+| `ExecutionRuntimeInstance` | `(data) -> ExecutionRuntimeInstanceEntity` | Create an ExecutionRuntimeInstance entity instance. |
 | `Exploration` | `(data) -> ExplorationEntity` | Create an Exploration entity instance. |
 | `ExplorationMessage` | `(data) -> ExplorationMessageEntity` | Create an ExplorationMessage entity instance. |
 | `ExplorationReport` | `(data) -> ExplorationReportEntity` | Create an ExplorationReport entity instance. |
 | `ExplorationScenario` | `(data) -> ExplorationScenarioEntity` | Create an ExplorationScenario entity instance. |
 | `Finding` | `(data) -> FindingEntity` | Create a Finding entity instance. |
+| `Gh` | `(data) -> GhEntity` | Create a Gh entity instance. |
+| `GitImport` | `(data) -> GitImportEntity` | Create a GitImport entity instance. |
+| `Github` | `(data) -> GithubEntity` | Create a Github entity instance. |
+| `GithubApp` | `(data) -> GithubAppEntity` | Create a GithubApp entity instance. |
+| `GithubAppImportableRepository` | `(data) -> GithubAppImportableRepositoryEntity` | Create a GithubAppImportableRepository entity instance. |
+| `GithubAppInstallation` | `(data) -> GithubAppInstallationEntity` | Create a GithubAppInstallation entity instance. |
+| `GithubAppInstallationAuthorization` | `(data) -> GithubAppInstallationAuthorizationEntity` | Create a GithubAppInstallationAuthorization entity instance. |
+| `GithubAppUserAuthorization` | `(data) -> GithubAppUserAuthorizationEntity` | Create a GithubAppUserAuthorization entity instance. |
+| `GithubCiRepository` | `(data) -> GithubCiRepositoryEntity` | Create a GithubCiRepository entity instance. |
+| `GithubCiRepositoryCompatibilityReport` | `(data) -> GithubCiRepositoryCompatibilityReportEntity` | Create a GithubCiRepositoryCompatibilityReport entity instance. |
 | `GithubConnection` | `(data) -> GithubConnectionEntity` | Create a GithubConnection entity instance. |
+| `GithubIntegration` | `(data) -> GithubIntegrationEntity` | Create a GithubIntegration entity instance. |
+| `GithubOnboarding` | `(data) -> GithubOnboardingEntity` | Create a GithubOnboarding entity instance. |
+| `GithubOnboardingBranch` | `(data) -> GithubOnboardingBranchEntity` | Create a GithubOnboardingBranch entity instance. |
+| `GithubOnboardingImport` | `(data) -> GithubOnboardingImportEntity` | Create a GithubOnboardingImport entity instance. |
+| `GithubOnboardingImportBatch` | `(data) -> GithubOnboardingImportBatchEntity` | Create a GithubOnboardingImportBatch entity instance. |
+| `GithubOnboardingImportItem` | `(data) -> GithubOnboardingImportItemEntity` | Create a GithubOnboardingImportItem entity instance. |
+| `GithubPullRequest` | `(data) -> GithubPullRequestEntity` | Create a GithubPullRequest entity instance. |
+| `GithubRunnerAdmission` | `(data) -> GithubRunnerAdmissionEntity` | Create a GithubRunnerAdmission entity instance. |
+| `GithubRunnerCache` | `(data) -> GithubRunnerCacheEntity` | Create a GithubRunnerCache entity instance. |
+| `GithubRunnerEgress` | `(data) -> GithubRunnerEgressEntity` | Create a GithubRunnerEgress entity instance. |
+| `GithubRunnerHistory` | `(data) -> GithubRunnerHistoryEntity` | Create a GithubRunnerHistory entity instance. |
+| `GithubRunnerImage` | `(data) -> GithubRunnerImageEntity` | Create a GithubRunnerImage entity instance. |
+| `GithubRunnerPool` | `(data) -> GithubRunnerPoolEntity` | Create a GithubRunnerPool entity instance. |
+| `GithubRunnerSetup` | `(data) -> GithubRunnerSetupEntity` | Create a GithubRunnerSetup entity instance. |
+| `Gitlab` | `(data) -> GitlabEntity` | Create a Gitlab entity instance. |
+| `GitlabConnection` | `(data) -> GitlabConnectionEntity` | Create a GitlabConnection entity instance. |
+| `GitlabImport` | `(data) -> GitlabImportEntity` | Create a GitlabImport entity instance. |
+| `GitlabOauth` | `(data) -> GitlabOauthEntity` | Create a GitlabOauth entity instance. |
+| `GrantAllAgent` | `(data) -> GrantAllAgentEntity` | Create a GrantAllAgent entity instance. |
 | `HostingAppDomain` | `(data) -> HostingAppDomainEntity` | Create a HostingAppDomain entity instance. |
+| `IdentityOrganization` | `(data) -> IdentityOrganizationEntity` | Create an IdentityOrganization entity instance. |
 | `ImageRepository` | `(data) -> ImageRepositoryEntity` | Create an ImageRepository entity instance. |
+| `ImageRepositoryTag` | `(data) -> ImageRepositoryTagEntity` | Create an ImageRepositoryTag entity instance. |
+| `ImportBranchPolicy` | `(data) -> ImportBranchPolicyEntity` | Create an ImportBranchPolicy entity instance. |
 | `Integration` | `(data) -> IntegrationEntity` | Create an Integration entity instance. |
 | `InteractionResponse` | `(data) -> InteractionResponseEntity` | Create an InteractionResponse entity instance. |
 | `Invitation` | `(data) -> InvitationEntity` | Create an Invitation entity instance. |
+| `InvocationControl` | `(data) -> InvocationControlEntity` | Create an InvocationControl entity instance. |
+| `JobLogChunk` | `(data) -> JobLogChunkEntity` | Create a JobLogChunk entity instance. |
+| `JobStep` | `(data) -> JobStepEntity` | Create a JobStep entity instance. |
+| `JobWorkspace` | `(data) -> JobWorkspaceEntity` | Create a JobWorkspace entity instance. |
 | `JourneyVariantReplay` | `(data) -> JourneyVariantReplayEntity` | Create a JourneyVariantReplay entity instance. |
 | `Knowledge` | `(data) -> KnowledgeEntity` | Create a Knowledge entity instance. |
+| `Known` | `(data) -> KnownEntity` | Create a Known entity instance. |
+| `Label` | `(data) -> LabelEntity` | Create a Label entity instance. |
+| `LeaseArtifact` | `(data) -> LeaseArtifactEntity` | Create a LeaseArtifact entity instance. |
+| `LeaseCache` | `(data) -> LeaseCacheEntity` | Create a LeaseCache entity instance. |
+| `LeaseLogChunk` | `(data) -> LeaseLogChunkEntity` | Create a LeaseLogChunk entity instance. |
+| `LeaseReconciliation` | `(data) -> LeaseReconciliationEntity` | Create a LeaseReconciliation entity instance. |
+| `LeaseStep` | `(data) -> LeaseStepEntity` | Create a LeaseStep entity instance. |
+| `LeaseVerifyDiagnostic` | `(data) -> LeaseVerifyDiagnosticEntity` | Create a LeaseVerifyDiagnostic entity instance. |
+| `LeaseVerifySecret` | `(data) -> LeaseVerifySecretEntity` | Create a LeaseVerifySecret entity instance. |
+| `LeaseWorkspace` | `(data) -> LeaseWorkspaceEntity` | Create a LeaseWorkspace entity instance. |
+| `LocalAgentDecision` | `(data) -> LocalAgentDecisionEntity` | Create a LocalAgentDecision entity instance. |
+| `LocalAgentResponse` | `(data) -> LocalAgentResponseEntity` | Create a LocalAgentResponse entity instance. |
 | `LocalThreadDelivery` | `(data) -> LocalThreadDeliveryEntity` | Create a LocalThreadDelivery entity instance. |
 | `LocalThreadOperation` | `(data) -> LocalThreadOperationEntity` | Create a LocalThreadOperation entity instance. |
 | `Location` | `(data) -> LocationEntity` | Create a Location entity instance. |
+| `LogStreamChunk` | `(data) -> LogStreamChunkEntity` | Create a LogStreamChunk entity instance. |
+| `LogoImage` | `(data) -> LogoImageEntity` | Create a LogoImage entity instance. |
+| `MarketingSetting` | `(data) -> MarketingSettingEntity` | Create a MarketingSetting entity instance. |
+| `McpOauth` | `(data) -> McpOauthEntity` | Create a McpOauth entity instance. |
 | `Me` | `(data) -> MeEntity` | Create a Me entity instance. |
 | `MeEmail` | `(data) -> MeEmailEntity` | Create a MeEmail entity instance. |
 | `MeOnboarding` | `(data) -> MeOnboardingEntity` | Create a MeOnboarding entity instance. |
 | `MediaFile` | `(data) -> MediaFileEntity` | Create a MediaFile entity instance. |
 | `Member` | `(data) -> MemberEntity` | Create a Member entity instance. |
 | `Memory` | `(data) -> MemoryEntity` | Create a Memory entity instance. |
+| `MergeQueueEntry` | `(data) -> MergeQueueEntryEntity` | Create a MergeQueueEntry entity instance. |
 | `MergeRequest` | `(data) -> MergeRequestEntity` | Create a MergeRequest entity instance. |
+| `MergeResolution` | `(data) -> MergeResolutionEntity` | Create a MergeResolution entity instance. |
 | `MessagingConversationMessage` | `(data) -> MessagingConversationMessageEntity` | Create a MessagingConversationMessage entity instance. |
 | `MessagingConversationUpload` | `(data) -> MessagingConversationUploadEntity` | Create a MessagingConversationUpload entity instance. |
 | `MetricQuery` | `(data) -> MetricQueryEntity` | Create a MetricQuery entity instance. |
+| `MetronomeWebhook` | `(data) -> MetronomeWebhookEntity` | Create a MetronomeWebhook entity instance. |
+| `ModelSubscriptionAccount` | `(data) -> ModelSubscriptionAccountEntity` | Create a ModelSubscriptionAccount entity instance. |
+| `ModelSubscriptionAccountConnection` | `(data) -> ModelSubscriptionAccountConnectionEntity` | Create a ModelSubscriptionAccountConnection entity instance. |
 | `NetworkConnection` | `(data) -> NetworkConnectionEntity` | Create a NetworkConnection entity instance. |
+| `NetworkingSpace` | `(data) -> NetworkingSpaceEntity` | Create a NetworkingSpace entity instance. |
+| `Node` | `(data) -> NodeEntity` | Create a Node entity instance. |
+| `NodeCertificate` | `(data) -> NodeCertificateEntity` | Create a NodeCertificate entity instance. |
+| `NodeLease` | `(data) -> NodeLeaseEntity` | Create a NodeLease entity instance. |
 | `NomadAllocation` | `(data) -> NomadAllocationEntity` | Create a NomadAllocation entity instance. |
 | `NomadLog` | `(data) -> NomadLogEntity` | Create a NomadLog entity instance. |
+| `Now` | `(data) -> NowEntity` | Create a Now entity instance. |
+| `ObservabilityClickhouseCluster` | `(data) -> ObservabilityClickhouseClusterEntity` | Create an ObservabilityClickhouseCluster entity instance. |
+| `ObservabilityQuickwitCluster` | `(data) -> ObservabilityQuickwitClusterEntity` | Create an ObservabilityQuickwitCluster entity instance. |
+| `ObservabilitySpace` | `(data) -> ObservabilitySpaceEntity` | Create an ObservabilitySpace entity instance. |
+| `Openapi` | `(data) -> OpenapiEntity` | Create an Openapi entity instance. |
+| `OrgInvitation` | `(data) -> OrgInvitationEntity` | Create an OrgInvitation entity instance. |
 | `Organization` | `(data) -> OrganizationEntity` | Create an Organization entity instance. |
+| `OrganizationApp` | `(data) -> OrganizationAppEntity` | Create an OrganizationApp entity instance. |
+| `OrganizationControl` | `(data) -> OrganizationControlEntity` | Create an OrganizationControl entity instance. |
+| `OrganizationDevice` | `(data) -> OrganizationDeviceEntity` | Create an OrganizationDevice entity instance. |
+| `OrganizationIdentityCertificate` | `(data) -> OrganizationIdentityCertificateEntity` | Create an OrganizationIdentityCertificate entity instance. |
+| `OrganizationInteraction` | `(data) -> OrganizationInteractionEntity` | Create an OrganizationInteraction entity instance. |
+| `OrganizationInvitation` | `(data) -> OrganizationInvitationEntity` | Create an OrganizationInvitation entity instance. |
+| `OrganizationMessageFile` | `(data) -> OrganizationMessageFileEntity` | Create an OrganizationMessageFile entity instance. |
+| `OrganizationOidcTrust` | `(data) -> OrganizationOidcTrustEntity` | Create an OrganizationOidcTrust entity instance. |
+| `OrganizationRunEvent` | `(data) -> OrganizationRunEventEntity` | Create an OrganizationRunEvent entity instance. |
+| `OrganizationRunOutcome` | `(data) -> OrganizationRunOutcomeEntity` | Create an OrganizationRunOutcome entity instance. |
+| `OrganizationRunUsage` | `(data) -> OrganizationRunUsageEntity` | Create an OrganizationRunUsage entity instance. |
+| `OrganizationSandbox` | `(data) -> OrganizationSandboxEntity` | Create an OrganizationSandbox entity instance. |
+| `OrganizationSecret` | `(data) -> OrganizationSecretEntity` | Create an OrganizationSecret entity instance. |
+| `OrganizationServiceAccount` | `(data) -> OrganizationServiceAccountEntity` | Create an OrganizationServiceAccount entity instance. |
+| `OrganizationSetting` | `(data) -> OrganizationSettingEntity` | Create an OrganizationSetting entity instance. |
+| `OrganizationSite` | `(data) -> OrganizationSiteEntity` | Create an OrganizationSite entity instance. |
+| `OrganizationSubscription` | `(data) -> OrganizationSubscriptionEntity` | Create an OrganizationSubscription entity instance. |
+| `OrganizationTool` | `(data) -> OrganizationToolEntity` | Create an OrganizationTool entity instance. |
+| `OrganizationWorkloadIdentity` | `(data) -> OrganizationWorkloadIdentityEntity` | Create an OrganizationWorkloadIdentity entity instance. |
+| `OtelIngest` | `(data) -> OtelIngestEntity` | Create an OtelIngest entity instance. |
 | `Page` | `(data) -> PageEntity` | Create a Page entity instance. |
 | `PageAgent` | `(data) -> PageAgentEntity` | Create a PageAgent entity instance. |
+| `PageArtefact` | `(data) -> PageArtefactEntity` | Create a PageArtefact entity instance. |
+| `PageCiPipelineRun` | `(data) -> PageCiPipelineRunEntity` | Create a PageCiPipelineRun entity instance. |
 | `PageProjectRun` | `(data) -> PageProjectRunEntity` | Create a PageProjectRun entity instance. |
+| `PageRepoVcCommit` | `(data) -> PageRepoVcCommitEntity` | Create a PageRepoVcCommit entity instance. |
+| `PagesBilling` | `(data) -> PagesBillingEntity` | Create a PagesBilling entity instance. |
+| `PagesGithubOnboarding` | `(data) -> PagesGithubOnboardingEntity` | Create a PagesGithubOnboarding entity instance. |
+| `PagesMember` | `(data) -> PagesMemberEntity` | Create a PagesMember entity instance. |
 | `PagesProjectCredential` | `(data) -> PagesProjectCredentialEntity` | Create a PagesProjectCredential entity instance. |
 | `PagesProjectPersona` | `(data) -> PagesProjectPersonaEntity` | Create a PagesProjectPersona entity instance. |
 | `PagesProjectRun` | `(data) -> PagesProjectRunEntity` | Create a PagesProjectRun entity instance. |
 | `PagesProjectScenario` | `(data) -> PagesProjectScenarioEntity` | Create a PagesProjectScenario entity instance. |
+| `PagesRegistry` | `(data) -> PagesRegistryEntity` | Create a PagesRegistry entity instance. |
+| `PagesSession` | `(data) -> PagesSessionEntity` | Create a PagesSession entity instance. |
+| `Pairing` | `(data) -> PairingEntity` | Create a Pairing entity instance. |
+| `PairingEvent` | `(data) -> PairingEventEntity` | Create a PairingEvent entity instance. |
+| `ParallelV1` | `(data) -> ParallelV1Entity` | Create a ParallelV1 entity instance. |
+| `PatchsetDiff` | `(data) -> PatchsetDiffEntity` | Create a PatchsetDiff entity instance. |
 | `PersonalAccessToken` | `(data) -> PersonalAccessTokenEntity` | Create a PersonalAccessToken entity instance. |
 | `PreviewOperation` | `(data) -> PreviewOperationEntity` | Create a PreviewOperation entity instance. |
 | `PreviewProfileSecretBinding` | `(data) -> PreviewProfileSecretBindingEntity` | Create a PreviewProfileSecretBinding entity instance. |
 | `PreviewSecret` | `(data) -> PreviewSecretEntity` | Create a PreviewSecret entity instance. |
 | `PreviewSharingApproval` | `(data) -> PreviewSharingApprovalEntity` | Create a PreviewSharingApproval entity instance. |
+| `ProactiveAgentWaitlistEntry` | `(data) -> ProactiveAgentWaitlistEntryEntity` | Create a ProactiveAgentWaitlistEntry entity instance. |
+| `Product` | `(data) -> ProductEntity` | Create a Product entity instance. |
 | `ProductMapIdentityDecision` | `(data) -> ProductMapIdentityDecisionEntity` | Create a ProductMapIdentityDecision entity instance. |
 | `ProductMapJourney` | `(data) -> ProductMapJourneyEntity` | Create a ProductMapJourney entity instance. |
 | `ProductMapJourneyReplay` | `(data) -> ProductMapJourneyReplayEntity` | Create a ProductMapJourneyReplay entity instance. |
@@ -412,43 +611,152 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `ProjectScenarioRow` | `(data) -> ProjectScenarioRowEntity` | Create a ProjectScenarioRow entity instance. |
 | `ProjectSetting` | `(data) -> ProjectSettingEntity` | Create a ProjectSetting entity instance. |
 | `PullRequest` | `(data) -> PullRequestEntity` | Create a PullRequest entity instance. |
+| `PullRequestAction` | `(data) -> PullRequestActionEntity` | Create a PullRequestAction entity instance. |
+| `PullRequestMagicMerge` | `(data) -> PullRequestMagicMergeEntity` | Create a PullRequestMagicMerge entity instance. |
 | `PullRequestSetting` | `(data) -> PullRequestSettingEntity` | Create a PullRequestSetting entity instance. |
 | `PullRequestSettingAddRepository` | `(data) -> PullRequestSettingAddRepositoryEntity` | Create a PullRequestSettingAddRepository entity instance. |
 | `PullRequestSettingDetectComment` | `(data) -> PullRequestSettingDetectCommentEntity` | Create a PullRequestSettingDetectComment entity instance. |
+| `PullRequestTranscript` | `(data) -> PullRequestTranscriptEntity` | Create a PullRequestTranscript entity instance. |
+| `PullZone` | `(data) -> PullZoneEntity` | Create a PullZone entity instance. |
 | `Recorder` | `(data) -> RecorderEntity` | Create a Recorder entity instance. |
 | `Registry` | `(data) -> RegistryEntity` | Create a Registry entity instance. |
 | `RegistryV2` | `(data) -> RegistryV2Entity` | Create a RegistryV2 entity instance. |
+| `RelayAgentConnection` | `(data) -> RelayAgentConnectionEntity` | Create a RelayAgentConnection entity instance. |
 | `RelayAgentLocalThread` | `(data) -> RelayAgentLocalThreadEntity` | Create a RelayAgentLocalThread entity instance. |
+| `RelaySignal` | `(data) -> RelaySignalEntity` | Create a RelaySignal entity instance. |
+| `ReleaseRollout` | `(data) -> ReleaseRolloutEntity` | Create a ReleaseRollout entity instance. |
+| `Repo` | `(data) -> RepoEntity` | Create a Repo entity instance. |
+| `RepoAccessToken` | `(data) -> RepoAccessTokenEntity` | Create a RepoAccessToken entity instance. |
+| `RepoAction` | `(data) -> RepoActionEntity` | Create a RepoAction entity instance. |
+| `RepoAgentCheckpoint` | `(data) -> RepoAgentCheckpointEntity` | Create a RepoAgentCheckpoint entity instance. |
+| `RepoAgentSession` | `(data) -> RepoAgentSessionEntity` | Create a RepoAgentSession entity instance. |
+| `RepoBookmarkProtection` | `(data) -> RepoBookmarkProtectionEntity` | Create a RepoBookmarkProtection entity instance. |
+| `RepoBookmarkProtectionEvent` | `(data) -> RepoBookmarkProtectionEventEntity` | Create a RepoBookmarkProtectionEvent entity instance. |
+| `RepoCloudWorkspaceBackup` | `(data) -> RepoCloudWorkspaceBackupEntity` | Create a RepoCloudWorkspaceBackup entity instance. |
+| `RepoCodeRule` | `(data) -> RepoCodeRuleEntity` | Create a RepoCodeRule entity instance. |
+| `RepoSetting` | `(data) -> RepoSettingEntity` | Create a RepoSetting entity instance. |
+| `RepoStat` | `(data) -> RepoStatEntity` | Create a RepoStat entity instance. |
+| `RepoVc` | `(data) -> RepoVcEntity` | Create a RepoVc entity instance. |
+| `RepoVcCommit` | `(data) -> RepoVcCommitEntity` | Create a RepoVcCommit entity instance. |
 | `ReportReplay` | `(data) -> ReportReplayEntity` | Create a ReportReplay entity instance. |
 | `ReportScenario` | `(data) -> ReportScenarioEntity` | Create a ReportScenario entity instance. |
+| `RepositoryAccess` | `(data) -> RepositoryAccessEntity` | Create a RepositoryAccess entity instance. |
+| `RepositoryAccessResolve` | `(data) -> RepositoryAccessResolveEntity` | Create a RepositoryAccessResolve entity instance. |
+| `RepositoryEvent` | `(data) -> RepositoryEventEntity` | Create a RepositoryEvent entity instance. |
+| `RepositoryImport` | `(data) -> RepositoryImportEntity` | Create a RepositoryImport entity instance. |
+| `RepositoryImportSession` | `(data) -> RepositoryImportSessionEntity` | Create a RepositoryImportSession entity instance. |
+| `RepositoryImportSessionRepository` | `(data) -> RepositoryImportSessionRepositoryEntity` | Create a RepositoryImportSessionRepository entity instance. |
+| `RepositoryImportSessionSelection` | `(data) -> RepositoryImportSessionSelectionEntity` | Create a RepositoryImportSessionSelection entity instance. |
+| `RepositorySandboxEnvironment` | `(data) -> RepositorySandboxEnvironmentEntity` | Create a RepositorySandboxEnvironment entity instance. |
+| `RoderCodeRepair` | `(data) -> RoderCodeRepairEntity` | Create a RoderCodeRepair entity instance. |
+| `RoderCodeRepairSetting` | `(data) -> RoderCodeRepairSettingEntity` | Create a RoderCodeRepairSetting entity instance. |
+| `RoderMachine` | `(data) -> RoderMachineEntity` | Create a RoderMachine entity instance. |
+| `RoderRun` | `(data) -> RoderRunEntity` | Create a RoderRun entity instance. |
+| `RoderWorkspaceCredential` | `(data) -> RoderWorkspaceCredentialEntity` | Create a RoderWorkspaceCredential entity instance. |
+| `RunArtifact` | `(data) -> RunArtifactEntity` | Create a RunArtifact entity instance. |
+| `RunJob` | `(data) -> RunJobEntity` | Create a RunJob entity instance. |
 | `RunScenarioRun` | `(data) -> RunScenarioRunEntity` | Create a RunScenarioRun entity instance. |
 | `RunScheduleOption` | `(data) -> RunScheduleOptionEntity` | Create a RunScheduleOption entity instance. |
 | `RunSearch` | `(data) -> RunSearchEntity` | Create a RunSearch entity instance. |
 | `RunUpdate` | `(data) -> RunUpdateEntity` | Create a RunUpdate entity instance. |
+| `RunWorkspaceCredential` | `(data) -> RunWorkspaceCredentialEntity` | Create a RunWorkspaceCredential entity instance. |
+| `RunnerLease` | `(data) -> RunnerLeaseEntity` | Create a RunnerLease entity instance. |
+| `RunnerPoolNodeEnrollmentToken` | `(data) -> RunnerPoolNodeEnrollmentTokenEntity` | Create a RunnerPoolNodeEnrollmentToken entity instance. |
+| `RunnerPoolRunner` | `(data) -> RunnerPoolRunnerEntity` | Create a RunnerPoolRunner entity instance. |
+| `RuntimeInstanceHealthSnapshot` | `(data) -> RuntimeInstanceHealthSnapshotEntity` | Create a RuntimeInstanceHealthSnapshot entity instance. |
+| `SandboxIntegration` | `(data) -> SandboxIntegrationEntity` | Create a SandboxIntegration entity instance. |
 | `ScenarioRevision` | `(data) -> ScenarioRevisionEntity` | Create a ScenarioRevision entity instance. |
 | `ScenarioRunLesson` | `(data) -> ScenarioRunLessonEntity` | Create a ScenarioRunLesson entity instance. |
 | `ScenarioRunScenarioEdit` | `(data) -> ScenarioRunScenarioEditEntity` | Create a ScenarioRunScenarioEdit entity instance. |
+| `SecretGrant` | `(data) -> SecretGrantEntity` | Create a SecretGrant entity instance. |
+| `SecretVersion` | `(data) -> SecretVersionEntity` | Create a SecretVersion entity instance. |
 | `ServiceEndpoint` | `(data) -> ServiceEndpointEntity` | Create a ServiceEndpoint entity instance. |
+| `Setting` | `(data) -> SettingEntity` | Create a Setting entity instance. |
+| `SettingMutationLease` | `(data) -> SettingMutationLeaseEntity` | Create a SettingMutationLease entity instance. |
+| `Signal` | `(data) -> SignalEntity` | Create a Signal entity instance. |
+| `SignalInbound` | `(data) -> SignalInboundEntity` | Create a SignalInbound entity instance. |
+| `SignalIntegration` | `(data) -> SignalIntegrationEntity` | Create a SignalIntegration entity instance. |
+| `SignalIntegrationDelivery` | `(data) -> SignalIntegrationDeliveryEntity` | Create a SignalIntegrationDelivery entity instance. |
+| `SignalIntegrationTarget` | `(data) -> SignalIntegrationTargetEntity` | Create a SignalIntegrationTarget entity instance. |
+| `SignalSubscription` | `(data) -> SignalSubscriptionEntity` | Create a SignalSubscription entity instance. |
+| `Site` | `(data) -> SiteEntity` | Create a Site entity instance. |
+| `SiteAccessKey` | `(data) -> SiteAccessKeyEntity` | Create a SiteAccessKey entity instance. |
 | `SitePreview` | `(data) -> SitePreviewEntity` | Create a SitePreview entity instance. |
+| `SiteSecret` | `(data) -> SiteSecretEntity` | Create a SiteSecret entity instance. |
 | `SlackChannel` | `(data) -> SlackChannelEntity` | Create a SlackChannel entity instance. |
+| `SourceConnection` | `(data) -> SourceConnectionEntity` | Create a SourceConnection entity instance. |
+| `SpaceAlertRule` | `(data) -> SpaceAlertRuleEntity` | Create a SpaceAlertRule entity instance. |
+| `SpaceAuditEvent` | `(data) -> SpaceAuditEventEntity` | Create a SpaceAuditEvent entity instance. |
+| `SpaceDnsRecord` | `(data) -> SpaceDnsRecordEntity` | Create a SpaceDnsRecord entity instance. |
+| `SpaceEnrollmentToken` | `(data) -> SpaceEnrollmentTokenEntity` | Create a SpaceEnrollmentToken entity instance. |
+| `SpaceGateway` | `(data) -> SpaceGatewayEntity` | Create a SpaceGateway entity instance. |
+| `SpaceGroup` | `(data) -> SpaceGroupEntity` | Create a SpaceGroup entity instance. |
+| `SpaceGroupMembership` | `(data) -> SpaceGroupMembershipEntity` | Create a SpaceGroupMembership entity instance. |
+| `SpaceLogStream` | `(data) -> SpaceLogStreamEntity` | Create a SpaceLogStream entity instance. |
+| `SpaceMetricSery` | `(data) -> SpaceMetricSeryEntity` | Create a SpaceMetricSery entity instance. |
+| `SpaceOtelCollector` | `(data) -> SpaceOtelCollectorEntity` | Create a SpaceOtelCollector entity instance. |
+| `SpacePeer` | `(data) -> SpacePeerEntity` | Create a SpacePeer entity instance. |
+| `SpacePeerAttachment` | `(data) -> SpacePeerAttachmentEntity` | Create a SpacePeerAttachment entity instance. |
+| `SpacePolicy` | `(data) -> SpacePolicyEntity` | Create a SpacePolicy entity instance. |
+| `SpaceSegment` | `(data) -> SpaceSegmentEntity` | Create a SpaceSegment entity instance. |
+| `SpaceTraceSpan` | `(data) -> SpaceTraceSpanEntity` | Create a SpaceTraceSpan entity instance. |
+| `Spark` | `(data) -> SparkEntity` | Create a Spark entity instance. |
+| `SparkAgentIntegration` | `(data) -> SparkAgentIntegrationEntity` | Create a SparkAgentIntegration entity instance. |
 | `SparkAgentLocalThread` | `(data) -> SparkAgentLocalThreadEntity` | Create a SparkAgentLocalThread entity instance. |
+| `SparkAgentSite` | `(data) -> SparkAgentSiteEntity` | Create a SparkAgentSite entity instance. |
+| `SparkAgentSkill` | `(data) -> SparkAgentSkillEntity` | Create a SparkAgentSkill entity instance. |
+| `SparkAgentThread` | `(data) -> SparkAgentThreadEntity` | Create a SparkAgentThread entity instance. |
+| `SparkCredit` | `(data) -> SparkCreditEntity` | Create a SparkCredit entity instance. |
+| `SparkCreditAgentUsage` | `(data) -> SparkCreditAgentUsageEntity` | Create a SparkCreditAgentUsage entity instance. |
+| `SparkCreditUsageTotal` | `(data) -> SparkCreditUsageTotalEntity` | Create a SparkCreditUsageTotal entity instance. |
 | `StaticSite` | `(data) -> StaticSiteEntity` | Create a StaticSite entity instance. |
 | `StaticSiteDeployment` | `(data) -> StaticSiteDeploymentEntity` | Create a StaticSiteDeployment entity instance. |
 | `StaticSiteDomain` | `(data) -> StaticSiteDomainEntity` | Create a StaticSiteDomain entity instance. |
+| `StatusChange` | `(data) -> StatusChangeEntity` | Create a StatusChange entity instance. |
+| `StatusCommit` | `(data) -> StatusCommitEntity` | Create a StatusCommit entity instance. |
+| `StatusPatchset` | `(data) -> StatusPatchsetEntity` | Create a StatusPatchset entity instance. |
+| `StripeWebhook` | `(data) -> StripeWebhookEntity` | Create a StripeWebhook entity instance. |
+| `SubmitTelemetry` | `(data) -> SubmitTelemetryEntity` | Create a SubmitTelemetry entity instance. |
 | `SubscriptionModel` | `(data) -> SubscriptionModelEntity` | Create a SubscriptionModel entity instance. |
+| `SwarmEvent` | `(data) -> SwarmEventEntity` | Create a SwarmEvent entity instance. |
+| `SwarmLive` | `(data) -> SwarmLiveEntity` | Create a SwarmLive entity instance. |
+| `SwarmNote` | `(data) -> SwarmNoteEntity` | Create a SwarmNote entity instance. |
+| `SwarmTask` | `(data) -> SwarmTaskEntity` | Create a SwarmTask entity instance. |
+| `TaskLease` | `(data) -> TaskLeaseEntity` | Create a TaskLease entity instance. |
 | `ThreadPreview` | `(data) -> ThreadPreviewEntity` | Create a ThreadPreview entity instance. |
+| `ThreadPreviewAccess` | `(data) -> ThreadPreviewAccessEntity` | Create a ThreadPreviewAccess entity instance. |
+| `ToolFeedback` | `(data) -> ToolFeedbackEntity` | Create a ToolFeedback entity instance. |
+| `Transcript` | `(data) -> TranscriptEntity` | Create a Transcript entity instance. |
+| `V1Message` | `(data) -> V1MessageEntity` | Create a V1Message entity instance. |
+| `VcBranch` | `(data) -> VcBranchEntity` | Create a VcBranch entity instance. |
+| `VcBrowser` | `(data) -> VcBrowserEntity` | Create a VcBrowser entity instance. |
+| `VcChange` | `(data) -> VcChangeEntity` | Create a VcChange entity instance. |
+| `VcChangeGroup` | `(data) -> VcChangeGroupEntity` | Create a VcChangeGroup entity instance. |
+| `VcFile` | `(data) -> VcFileEntity` | Create a VcFile entity instance. |
+| `VcMergeQueue` | `(data) -> VcMergeQueueEntity` | Create a VcMergeQueue entity instance. |
+| `VcStack` | `(data) -> VcStackEntity` | Create a VcStack entity instance. |
+| `VcsNode` | `(data) -> VcsNodeEntity` | Create a VcsNode entity instance. |
+| `VcsSetting` | `(data) -> VcsSettingEntity` | Create a VcsSetting entity instance. |
 | `VerificationProjectCredential` | `(data) -> VerificationProjectCredentialEntity` | Create a VerificationProjectCredential entity instance. |
 | `VerificationProjectPersona` | `(data) -> VerificationProjectPersonaEntity` | Create a VerificationProjectPersona entity instance. |
 | `VerificationProjectRun` | `(data) -> VerificationProjectRunEntity` | Create a VerificationProjectRun entity instance. |
 | `VerificationProjectScenario` | `(data) -> VerificationProjectScenarioEntity` | Create a VerificationProjectScenario entity instance. |
 | `VerifyAppDomain` | `(data) -> VerifyAppDomainEntity` | Create a VerifyAppDomain entity instance. |
 | `VerifyBrowserSession` | `(data) -> VerifyBrowserSessionEntity` | Create a VerifyBrowserSession entity instance. |
+| `VerifyEmailVerification` | `(data) -> VerifyEmailVerificationEntity` | Create a VerifyEmailVerification entity instance. |
+| `VerifySignalIntegration` | `(data) -> VerifySignalIntegrationEntity` | Create a VerifySignalIntegration entity instance. |
 | `VerifyStaticSiteDomain` | `(data) -> VerifyStaticSiteDomainEntity` | Create a VerifyStaticSiteDomain entity instance. |
 | `VersionLog` | `(data) -> VersionLogEntity` | Create a VersionLog entity instance. |
+| `WaitlistApplication` | `(data) -> WaitlistApplicationEntity` | Create a WaitlistApplication entity instance. |
 | `WebBotAuth` | `(data) -> WebBotAuthEntity` | Create a WebBotAuth entity instance. |
+| `WebhookGitlab` | `(data) -> WebhookGitlabEntity` | Create a WebhookGitlab entity instance. |
 | `WorkflowRunStep` | `(data) -> WorkflowRunStepEntity` | Create a WorkflowRunStep entity instance. |
 | `WorkflowRunStopNotice` | `(data) -> WorkflowRunStopNoticeEntity` | Create a WorkflowRunStopNotice entity instance. |
 | `WorkflowTriggerSkipped` | `(data) -> WorkflowTriggerSkippedEntity` | Create a WorkflowTriggerSkipped entity instance. |
+| `WorkspaceActivity` | `(data) -> WorkspaceActivityEntity` | Create a WorkspaceActivity entity instance. |
+| `WorkspaceActivityNotification` | `(data) -> WorkspaceActivityNotificationEntity` | Create a WorkspaceActivityNotification entity instance. |
+| `WorkspaceSpace` | `(data) -> WorkspaceSpaceEntity` | Create a WorkspaceSpace entity instance. |
+| `WorkspaceSpacePreference` | `(data) -> WorkspaceSpacePreferenceEntity` | Create a WorkspaceSpacePreference entity instance. |
 
 ### Entity interface
 
@@ -481,14 +789,47 @@ itself — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local agent, err = client:Agent():load({ id = "example_id", organization_id = "example" })
+    local a2a_well_known, err = client:A2aWellKnown():load({ a2a_id = "example" })
     if err then error(err) end
-    -- agent is the loaded entity
+    -- a2a_well_known is the loaded entity
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
 
 ### Entities
+
+#### A2aWellKnown
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/control/a2a/{connection_id}/.well-known/agent-card.json`
+
+#### AdminOrg
+
+| Field | Description |
+| --- | --- |
+| `billing_email` |  |
+| `billing_reason` | Required when setting an agreed price |
+| `customize_onboarding_packages` |  |
+| `deployment_usage_visibility` |  |
+| `deployment_usage_visible` |  |
+| `id` |  |
+| `monthly_price_dollars` | Ongoing USD workspace price, for example '50.00' |
+| `monthly_price_override_cents` |  |
+| `name` |  |
+| `onboarding_custom_pricing` |  |
+| `onboarding_package_keys` | Package keys offered when customizing onboarding. |
+| `owner_email` |  |
+| `package_id` | Active customer package public ID. |
+| `skip_payment` | Grant the selected package as an ongoing complimentary subscription with monthly included usage and package limits. |
+| `slug` |  |
+
+Operations: Create, List, Load, Update.
+
+API path: `/api/v1/admin/organizations/{org_slug}/checkout_session`
 
 #### Agent
 
@@ -540,6 +881,44 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 Operations: Create, List, Load, Remove, Update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/browser_opened`
+
+#### AgentApp
+
+| Field | Description |
+| --- | --- |
+| `author` |  |
+| `can_message` | The viewer may send input to the author agent |
+| `deployments_count` | Increases with every deploy of the site |
+| `description` |  |
+| `hidden_install_count` | Installs by agents the viewer cannot open |
+| `id` |  |
+| `install_count` |  |
+| `install_targets` | Active agents the viewer owns or manages, which they can install apps on |
+| `installed_by` |  |
+| `installed_target_ids` | Install targets of the viewer that have this app installed |
+| `items` |  |
+| `mcp_url` |  |
+| `next_cursor` | Pass as cursor to load older apps |
+| `owner` | The person who controls the author agent |
+| `thread` | The thread that published the app, when the viewer can open the author agent |
+| `title` |  |
+| `url` |  |
+| `visibility` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/agent_apps/{id}/opened`
+
+#### AgentAppInstall
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `installed` |  |
+
+Operations: Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/agent_apps/{id}/installs/{agent_id}`
 
 #### AgentAttachment
 
@@ -614,29 +993,177 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/computer/co
 
 | Field | Description |
 | --- | --- |
-| `agent_card_url` |  |
-| `auth_scheme` |  |
-| `can_configure` |  |
-| `can_disconnect` |  |
-| `can_setup` |  |
+| `actions` |  |
+| `activity` |  |
+| `admin_disabled_at` |  |
+| `agent_tools` |  |
+| `authentication` |  |
+| `authorized_at` |  |
+| `can_create_account` | Whether another account can be created directly from this provider. |
+| `capabilities` |  |
+| `catalog_section` | Server-owned grouping in the agent integration catalog. |
+| `category` | Short product label, such as CRM or Email. |
+| `certification` |  |
+| `checked_at` |  |
 | `connection` |  |
-| `credential` | Write-only outbound key. |
-| `error_code` |  |
-| `expected_generation` |  |
+| `consent` |  |
+| `created_at` |  |
+| `creation_key` | Reuse the same key to recover the account after an interrupted response. |
+| `custodian_id` |  |
+| `description` | One-line catalog description of the app. |
+| `disabled_reason` |  |
+| `failure_code` |  |
+| `generation` |  |
+| `grants` |  |
+| `grants_pagination` |  |
+| `id` |  |
+| `limits` |  |
+| `name` |  |
+| `organization_id` |  |
+| `owner_name` |  |
+| `ownership_kind` |  |
+| `pagination` |  |
+| `policy_digest` |  |
+| `provider` |  |
+| `provider_disabled_reason` |  |
+| `provider_identity` |  |
+| `revoked_at` |  |
+| `schema_version` |  |
+| `status` |  |
+| `toolkit` |  |
+| `triggers` |  |
+| `updated_at` |  |
+| `user_id` |  |
+| `version` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/adopt_custody`
+
+#### AgentConnectionDelegation
+
+| Field | Description |
+| --- | --- |
+| `authorized_by_id` |  |
+| `automation_connection_grant_id` |  |
+| `created_at` |  |
+| `id` |  |
+| `member_name` |  |
+| `revoked_at` |  |
+| `roles` |  |
+| `usable` |  |
+| `user_id` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/delegations`
+
+#### AgentConnectionGrant
+
+| Field | Description |
+| --- | --- |
+| `actions` |  |
+| `agent_connection_id` |  |
+| `automation_id` |  |
+| `connection_generation` |  |
+| `created_at` |  |
+| `id` |  |
+| `organization_id` |  |
+| `revision` |  |
+| `revoked_at` |  |
+| `status` |  |
+| `usable` |  |
+| `user_id` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/grants`
+
+#### AgentConnectionResource
+
+| Field | Description |
+| --- | --- |
+| `cursor` |  |
+| `next_cursor` |  |
+| `query` |  |
+| `resources` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{id}/resources`
+
+#### AgentConnectionSafetyControl
+
+| Field | Description |
+| --- | --- |
+| `admin_disabled_at` |  |
+| `authorized_at` |  |
+| `checked_at` |  |
+| `created_at` |  |
+| `custodian_id` |  |
+| `failure_code` |  |
 | `generation` |  |
 | `id` |  |
 | `name` |  |
-| `remote_agent` |  |
-| `requester_id` |  |
-| `retired_at` |  |
+| `organization_id` |  |
+| `owner_name` |  |
+| `ownership_kind` |  |
+| `provider_disabled_reason` |  |
+| `provider_identity` |  |
 | `revoked_at` |  |
-| `scope_key` |  |
-| `source_operation_id` |  |
-| `state` |  |
+| `status` |  |
+| `toolkit` |  |
+| `updated_at` |  |
+| `user_id` |  |
 
-Operations: Create, List, Load, Remove, Update.
+Operations: List.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup`
+API path: `/api/v1/organizations/{organization_id}/agent_connections/safety_controls`
+
+#### AgentConnectionTriggerSubscription
+
+| Field | Description |
+| --- | --- |
+| `agent_connection_id` |  |
+| `configuration` |  |
+| `created_at` |  |
+| `defaults` |  |
+| `delivery` |  |
+| `enabled` |  |
+| `failure_code` |  |
+| `failure_request_id` |  |
+| `id` |  |
+| `latency` |  |
+| `name` |  |
+| `reconcile_at` |  |
+| `reconciliation_uncertain` |  |
+| `remote_enabled` |  |
+| `replacement_id` |  |
+| `retired_at` |  |
+| `retirement_completed_at` |  |
+| `schema` |  |
+| `slug` |  |
+| `status` |  |
+| `toolkit` |  |
+| `toolkit_version` |  |
+| `trigger_slug` |  |
+| `updated_at` |  |
+| `version` |  |
+| `waiting_for_retirement` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}/discover`
+
+#### AgentContextCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/agent_context/checkpoints/{checkpoint_id}/transcript`
 
 #### AgentControlFlow
 
@@ -687,6 +1214,15 @@ Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/email/{message_id}`
 
+#### AgentEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/events`
+
 #### AgentFile
 
 | Field | Description |
@@ -724,32 +1260,78 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/inputs`
 | Field | Description |
 | --- | --- |
 | `account_counts` | Accounts the viewer can see per toolkit, across all account pages. |
-| `accounts_path` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
-| `added_toolkits` | Apps with a connected or connecting account the viewer can see. |
+| `can_cancel_sign_in` | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` |  |
+| `can_disconnect` |  |
+| `can_enable` |  |
 | `can_manage` |  |
-| `can_manage_organization` |  |
+| `can_manage_sharing` |  |
+| `can_reconnect` |  |
+| `can_sync` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
 | `catalog` |  |
-| `connect_as` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
-| `connect_as_by_toolkit` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_by` | Name of the person whose sign-in this account is. |
+| `connected_by_you` | True when the viewer is the person whose sign-in this account is. |
 | `connected_counts` | Signed-in accounts per toolkit, across all account pages. |
-| `connection_id` |  |
 | `connections` |  |
-| `email` | A native agent's own email address. |
-| `enabled` |  |
-| `enabled_toolkits` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `creation_key` | Stable identity for retrying this creation; retain it after an uncertain response. |
+| `creation_key_digest` | SHA-256 of the unfinished setup key for its original creator. |
 | `generation` |  |
+| `id` |  |
+| `name` |  |
 | `pagination` |  |
 | `pending_counts` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
-| `personal_creation_key_supported` | The personal account creation endpoint honors a creation key. |
-| `private_agent` | Only the agent's owner can chat with it. |
-| `shared_agent_personal_accounts_enabled` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
-| `slack` |  |
-| `webhook_connections` |  |
-| `webhooks_available` |  |
+| `provider_disabled_reason` |  |
+| `provider_identity` |  |
+| `provider_name` | The app's display name; null for a custom MCP server, which uses the account name. |
+| `reference` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | Agent account audience, including legacy personal and paused access. |
+| `status` |  |
+| `team_sharing_enabled` |  |
+| `team_sharing_version` |  |
+| `toolkit` |  |
 
-Operations: Create, List.
+Operations: Create, List, Load, Remove.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations`
+API path: `/api/v1/organizations/{organization_id}/agent_integrations/{id}/authorize`
+
+#### AgentIntegrationAccount
+
+| Field | Description |
+| --- | --- |
+| `can_cancel_sign_in` | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` |  |
+| `can_disconnect` |  |
+| `can_enable` |  |
+| `can_manage_sharing` |  |
+| `can_reconnect` |  |
+| `can_sync` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
+| `connected_by` | Name of the person whose sign-in this account is. |
+| `connected_by_you` | True when the viewer is the person whose sign-in this account is. |
+| `creation_key_digest` | SHA-256 of the unfinished setup key for its original creator. |
+| `generation` |  |
+| `id` |  |
+| `name` |  |
+| `provider_disabled_reason` |  |
+| `provider_identity` |  |
+| `reference` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | Agent account audience, including legacy personal and paused access. |
+| `status` |  |
+| `team_sharing_enabled` |  |
+| `team_sharing_version` |  |
+| `toolkit` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agent_integrations/accounts`
+
+#### AgentIntegrationCallback
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/agent_integration_callback`
 
 #### AgentInteraction
 
@@ -977,6 +1559,45 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/questions/{question_id}/answer`
 
+#### AgentRelayFileGrant
+
+| Field | Description |
+| --- | --- |
+| `access_mode` |  |
+| `connection_generation` |  |
+| `connection_id` |  |
+| `connection_name` | Current display name of the selected account. |
+| `created_at` |  |
+| `expected_generation` |  |
+| `id` |  |
+| `key` |  |
+| `provider` |  |
+| `resource_id` |  |
+| `resource_kind` |  |
+| `revoked` |  |
+| `revoked_at` |  |
+| `snapshot_supported` | Whether this selected permission supports snapshot controls. |
+| `source_operation_id` |  |
+
+Operations: Create, List, Load, Remove.
+
+API path: `/api/v1/organizations/{organization_id}/agent_relay_file_grants`
+
+#### AgentRelayFileGrantAccount
+
+| Field | Description |
+| --- | --- |
+| `access_modes` | Supported file access modes. |
+| `generation` |  |
+| `id` |  |
+| `name` |  |
+| `provider` |  |
+| `resource_kind` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agent_relay_file_grants/accounts`
+
 #### AgentRepository
 
 | Field | Description |
@@ -1005,6 +1626,15 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/repositorie
 Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resources`
+
+#### AgentRoder
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/agent/roder/browser_executor_authorization`
 
 #### AgentRoutine
 
@@ -1065,6 +1695,37 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/runtime/reset`
 
+#### AgentSession
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/agent_sessions/{session_id}/transcript`
+
+#### AgentSessionCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize`
+
+#### AgentSessionRoderHandoff
+
+| Field | Description |
+| --- | --- |
+| `checkpoint_id` | Public id of the checkpoint to hand off. |
+| `purpose` | Handoff intent; defaults to `continue`. |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/roder_handoffs`
+
 #### AgentSetting
 
 | Field | Description |
@@ -1091,36 +1752,44 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/sharing/review`
 
 | Field | Description |
 | --- | --- |
-| `deployed_at` |  |
-| `deployments_count` |  |
-| `hostname` |  |
-| `https` | Whether the organization's certificate serves this site over HTTPS |
+| `author` |  |
+| `can_message` | The viewer may send input to the author agent |
+| `deployments_count` | Increases with every deploy of the site |
+| `description` | The team app description, when the site is a team app |
+| `icon_url` | Path of the site's generated icon, versioned by the picture; null until one is generated |
 | `id` |  |
-| `name` |  |
+| `name` | The site's DNS label |
+| `owner` | The person who controls the author agent |
+| `thread` | The thread that published the site as a team app, when the viewer can open the author agent |
+| `title` | The team app title, or the site name read as words |
 | `url` |  |
 | `visibility` |  |
 
-Operations: List.
+Operations: Create, List, Load.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/sites`
+API path: `/api/v1/organizations/{organization_id}/agent_sites/{id}/opened`
 
 #### AgentSkill
 
 | Field | Description |
 | --- | --- |
-| `available` |  |
-| `can_configure` |  |
-| `can_manage` |  |
-| `configuration_state` | The requested managed skill selection is awaiting runtime qualification. |
-| `description` |  |
-| `enabled` |  |
-| `name` |  |
+| `agents` | Active V2 agents the viewer can see whose owner is still a member |
+| `audience` |  |
+| `can_manage_library` |  |
+| `content` | The skill's SKILL.md |
+| `files` |  |
+| `id` |  |
+| `marketplace` |  |
+| `pending` | Some agent is still applying a change; check again shortly |
+| `plugin` | The marketplace entry id |
+| `revision` | The commit SHA returned by preview |
+| `skill` |  |
 | `skills` |  |
-| `version` |  |
+| `source` | owner/repo, a GitHub or skills.sh link, or npx skills add owner/repo [--skill NAME ...] |
 
-Operations: Create, List.
+Operations: Create, List, Load, Remove, Update.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/skills`
+API path: `/api/v1/organizations/{organization_id}/agent_skills`
 
 #### AgentSlack
 
@@ -1161,6 +1830,63 @@ Operations: Create, List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions`
 
+#### AgentSwarm
+
+| Field | Description |
+| --- | --- |
+| `base_bookmark` | An existing bookmark to start from and land on; the plain form of `target.kind = bookmark`. |
+| `base_ref` |  |
+| `base_revision` | 64-hex commit id; skips the head lookup |
+| `budget` |  |
+| `canceled_at` |  |
+| `canceled_count` |  |
+| `concurrency_key` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `creator_user_id` |  |
+| `deadline_at` |  |
+| `display_id` |  |
+| `done_count` |  |
+| `environment` |  |
+| `failed_count` |  |
+| `finished_at` |  |
+| `finished_at_label` |  |
+| `github` |  |
+| `goal` |  |
+| `id` |  |
+| `model` |  |
+| `model_provider` |  |
+| `number` |  |
+| `organization_id` |  |
+| `organization_slug` |  |
+| `outcome` |  |
+| `phase` |  |
+| `policy` | Every key is optional and defaults to AgentSwarm::POLICY_DEFAULTS. |
+| `queued_at` |  |
+| `queued_at_label` |  |
+| `repository` | Repository slug inside the organization |
+| `repository_id` |  |
+| `repository_slug` |  |
+| `reserved` |  |
+| `scheduler_generation` |  |
+| `skipped_count` |  |
+| `slug` |  |
+| `started_at` |  |
+| `started_at_label` |  |
+| `status` |  |
+| `summary` |  |
+| `target` | Where the swarm lands. |
+| `task_count` |  |
+| `task_template_json` |  |
+| `tasks` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `usage` |  |
+
+Operations: Create, List, Load, Update.
+
+API path: `/api/v1/agent/swarms/{id}/cancel`
+
 #### AgentTeammate
 
 | Field | Description |
@@ -1188,34 +1914,11 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/terminal/co
 
 | Field | Description |
 | --- | --- |
-| `archived_count` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` |  |
-| `execution` |  |
-| `first_input` |  |
-| `first_input_key` | Idempotency-Key that finds the first message through input_delivery. |
-| `first_input_requester_membership_id` | Membership the first message was sent as, for input_delivery. |
 | `id` |  |
-| `inherit_context` | Include the source conversation through its last completed reply. |
-| `local_activities` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` |  |
-| `local_scope_key` |  |
-| `local_status_pending` | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` |  |
-| `main_thread_id` |  |
-| `message` | The thread's first message. |
-| `next_cursor` |  |
-| `parent_conversation_id` | Optional source conversation belonging to this agent. |
-| `requester_membership_id` |  |
-| `selected_thread` |  |
-| `thread` |  |
-| `threads` |  |
-| `title` |  |
-| `total_archived_count` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
 
-Operations: Create, List.
+Operations: Create, List, Load.
 
-API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive`
+API path: `/api/v1/agent/threads/{id}/archive`
 
 #### AgentTool
 
@@ -1228,6 +1931,23 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{th
 Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/tools`
+
+#### AgentUsage
+
+| Field | Description |
+| --- | --- |
+| `days` | One cell per (day, model), ascending by day then model. |
+| `ended_at` |  |
+| `pricing_version` | The price table in effect now; rows carry the version they were priced at. |
+| `source` | Which store served the rows. |
+| `started_at` |  |
+| `user_days` | One cell per (day, person), ascending by day. |
+| `users` | One row per (person, model), descending by tokens. |
+| `window` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/agent_usage`
 
 #### AgentVerifyProject
 
@@ -1254,6 +1974,19 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/verify_proj
 Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/waits/{wait_id}/stop`
+
+#### AgentWebPreview
+
+| Field | Description |
+| --- | --- |
+| `description` |  |
+| `icon_url` |  |
+| `image_url` |  |
+| `title` |  |
+
+Operations: List.
+
+API path: `/api/v1/agent_web_previews`
 
 #### AgentWebhook
 
@@ -1443,6 +2176,40 @@ Operations: List, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/write_permissions`
 
+#### Agreement
+
+| Field | Description |
+| --- | --- |
+| `body` | Markdown text, or null until staff grant the organization access. |
+| `effective_on_label` |  |
+| `key` |  |
+| `summary` |  |
+| `title` |  |
+| `version` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/agreements`
+
+#### AgreementAccessRequest
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/agreement_access_request`
+
+#### AlertRuleEvent
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Remove.
+
+API path: `/api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/acknowledge`
+
 #### AllocationLog
 
 | Field | Description |
@@ -1486,6 +2253,24 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/
 Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{id}/activate`
+
+#### AppAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/app_access/callback`
+
+#### AppAccessJwk
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/app_access/jwks`
 
 #### AppCdn
 
@@ -1966,6 +2751,134 @@ Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/storage_resources/{id}/archive`
 
+#### Artefact
+
+| Field | Description |
+| --- | --- |
+| `automation_invocation_id` |  |
+| `byte_size` |  |
+| `checksum_sha256` |  |
+| `content_type` |  |
+| `created_at` |  |
+| `created_by_user_id` |  |
+| `description` |  |
+| `document_key` | Stable document identity shared by all revisions. |
+| `entrypoint` |  |
+| `expires_at` |  |
+| `filename` |  |
+| `files` |  |
+| `harness` |  |
+| `harness_version` |  |
+| `id` |  |
+| `kind` |  |
+| `model` |  |
+| `organization_id` |  |
+| `published_at` |  |
+| `repository_id` |  |
+| `slug` |  |
+| `source` |  |
+| `status` |  |
+| `title` |  |
+| `vcs_agent_checkpoint_id` |  |
+| `vcs_agent_session_id` |  |
+| `version` |  |
+| `view_url` |  |
+| `web_url` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts`
+
+#### ArtefactCommentThread
+
+| Field | Description |
+| --- | --- |
+| `anchor` | The `#anchor` written into the Markdown. |
+| `body` |  |
+| `comments` |  |
+| `id` | The anchor key. |
+| `quote` |  |
+| `resolved` |  |
+
+Operations: Create, List, Update.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads`
+
+#### ArtefactRevision
+
+| Field | Description |
+| --- | --- |
+| `base_version` | The newest version the editor started from. |
+| `content` | Markdown, including CriticMarkup suggestions and comment anchors. |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/revisions`
+
+#### ArtefactViewToken
+
+| Field | Description |
+| --- | --- |
+| `expires_in` |  |
+| `file` | Exact manifest path. |
+| `organization_slug` | If provided, must match the organization addressed by the route. |
+| `version` |  |
+| `viewer_url` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/view_tokens`
+
+#### Artifact
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/artifacts/{id}/expire`
+
+#### ArtifactCacheNamespace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/cache_namespaces/{id}/archive`
+
+#### ArtifactImageRepository
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/image_repositories/{id}/archive`
+
+#### ArtifactPackageMirror
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/package_mirrors/{id}/pause`
+
+#### ArtifactRetentionPolicy
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/retention_policies`
+
 #### AttachmentPart
 
 | Field | Description |
@@ -1975,6 +2888,102 @@ API path: `/api/v1/hosting/apps/{app_id}/storage_resources/{id}/archive`
 Operations: Update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/attachments/{attachment_id}/parts/{index}`
+
+#### AuditEvent
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `actor_kind` |  |
+| `actor_user_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `observability_space_id` |  |
+| `organization_id` |  |
+| `payload` |  |
+| `request_id` |  |
+| `severity` |  |
+| `subject_id` |  |
+| `subject_kind` |  |
+| `subject_name` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/audit_events`
+
+#### Auth
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load, Remove.
+
+API path: `/api/v1/auth/apple`
+
+#### AuthCli
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/auth/cli/complete`
+
+#### AuthGithub
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/auth/github/start`
+
+#### AuthGoogle
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/auth/google/start`
+
+#### AuthOpenai
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/auth/openai/callback`
+
+#### AuthPasswordReset
+
+| Field | Description |
+| --- | --- |
+| `email` |  |
+| `message` |  |
+| `password` |  |
+| `token` |  |
+
+Operations: Create, Update.
+
+API path: `/api/v1/auth/password_resets`
+
+#### AuthRegistrationOption
+
+| Field | Description |
+| --- | --- |
+| `email_password_signup_enabled` |  |
+| `openai_sign_in_enabled` | Whether ChatGPT identity sign-in is configured and enabled for rollout. |
+| `turnstile_site_key` |  |
+| `waitlist_enabled` | New public signups require waitlist approval when enabled. |
+
+Operations: List.
+
+API path: `/api/v1/auth/registration_options`
 
 #### AutomationEvent
 
@@ -2047,6 +3056,277 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/runs`
 
+#### BackendRunnerPool
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/bazel/backends/{backend_id}/runner_pools`
+
+#### Bazel
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/bazel/authorize`
+
+#### BazelActionResult
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load, Update.
+
+API path: `/api/v1/bazel/action_results/{hash}/{size_bytes}`
+
+#### BazelBackend
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/bazel/backends/{id}/issue_token`
+
+#### BazelBlob
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load, Update.
+
+API path: `/api/v1/bazel/blobs/{kind}/{hash}/{size_bytes}`
+
+#### BazelExecution
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/bazel/executions/{id}/complete`
+
+#### BazelFindMissingBlob
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/bazel/find_missing_blobs`
+
+#### Billing
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `breakdown` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` |  |
+| `can_manage_contact` |  |
+| `can_manage_extra_spend` |  |
+| `can_manage_local_subscription` |  |
+| `can_manage_payment_method` |  |
+| `can_set_up_billing` |  |
+| `customer` |  |
+| `deployment_usage_visible` |  |
+| `entitlements` |  |
+| `extra_spend_enabled` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | Whether the `billing` feature is on for this organization. |
+| `organization_id` |  |
+| `package` |  |
+| `prepaid` |  |
+| `preview` | Metronome draft invoice and credits, or null. |
+| `storage_usage` |  |
+| `stripe` |  |
+| `subscription` |  |
+| `token_account` |  |
+
+Operations: Load, Update.
+
+API path: `/api/v1/organizations/{organization_id}/billing`
+
+#### BillingAddon
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `breakdown` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` |  |
+| `can_manage_contact` |  |
+| `can_manage_extra_spend` |  |
+| `can_manage_local_subscription` |  |
+| `can_manage_payment_method` |  |
+| `can_set_up_billing` |  |
+| `customer` |  |
+| `deployment_usage_visible` |  |
+| `entitlements` |  |
+| `extra_spend_enabled` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | Whether the `billing` feature is on for this organization. |
+| `id` |  |
+| `organization_id` |  |
+| `package` |  |
+| `prepaid` |  |
+| `preview` | Metronome draft invoice and credits, or null. |
+| `quantity` |  |
+| `storage_usage` |  |
+| `stripe` |  |
+| `subscription` |  |
+| `token_account` |  |
+
+Operations: Update.
+
+API path: `/api/v1/organizations/{organization_id}/billing/addons/{addon_key}`
+
+#### BillingCheckoutSession
+
+| Field | Description |
+| --- | --- |
+| `cancel_url` |  |
+| `coupon_code` |  |
+| `entry_point` | Where the owner chose to pay, for product analytics. |
+| `package_key` |  |
+| `package_revision` |  |
+| `success_url` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/billing/checkout_sessions`
+
+#### BillingInvoice
+
+| Field | Description |
+| --- | --- |
+| `amount_due_cents` |  |
+| `created_at` |  |
+| `currency` |  |
+| `hosted_invoice_url` |  |
+| `id` |  |
+| `invoice_pdf` |  |
+| `metronome_invoice_id` | Metronome's id for the invoice it pushed |
+| `number` |  |
+| `period_ended_at` |  |
+| `period_started_at` |  |
+| `status` |  |
+| `total_cents` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/billing/invoices`
+
+#### BillingPackage
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `base_price_cents` |  |
+| `billing_interval` |  |
+| `billing_policy` |  |
+| `ci_included_spend_cents` | Monthly USD credit in cents shared by all CI charges, including runners, cache, storage and add-ons; replaces CI unit allowances when positive. |
+| `currency` |  |
+| `key` |  |
+| `max_seats` |  |
+| `name` |  |
+| `pay_as_you_go_enabled` |  |
+| `rates` |  |
+| `revision` |  |
+| `roder_daily_run_limit` |  |
+| `roder_run_concurrency_limit` |  |
+| `seat_price_cents` |  |
+| `trial_days` |  |
+| `visibility` |  |
+
+Operations: List.
+
+API path: `/api/v1/billing/packages`
+
+#### BillingPortalSession
+
+| Field | Description |
+| --- | --- |
+| `return_url` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/billing/portal_sessions`
+
+#### BillingPrepaidPeriod
+
+| Field | Description |
+| --- | --- |
+| `activated_at` |  |
+| `created_at` |  |
+| `currency` |  |
+| `id` |  |
+| `last_error` |  |
+| `minutes` |  |
+| `net_amount_cents` |  |
+| `paid_at` |  |
+| `paid_total_cents` |  |
+| `payment_action_url` |  |
+| `period_ended_at` |  |
+| `period_started_at` |  |
+| `receipt_url` |  |
+| `refunded_net_cents` |  |
+| `state` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/billing/prepaid_periods/{id}`
+
+#### BillingPrepaidPurchase
+
+| Field | Description |
+| --- | --- |
+| `activated_at` |  |
+| `created_at` |  |
+| `currency` |  |
+| `id` |  |
+| `last_error` |  |
+| `minutes` |  |
+| `net_amount_cents` |  |
+| `paid_at` |  |
+| `paid_total_cents` |  |
+| `payment_action_url` |  |
+| `prepaid` |  |
+| `purchase` |  |
+| `receipt_url` |  |
+| `refunded_net_cents` |  |
+| `request_key` |  |
+| `state` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/billing/prepaid_purchases`
+
+#### BillingTokenTopUp
+
+| Field | Description |
+| --- | --- |
+| `amount_cents` |  |
+| `request_key` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/billing/token_top_ups`
+
+#### BillingUsage
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/billing/usage/breakdown`
+
 #### Binary
 
 | Field | Description |
@@ -2115,6 +3395,25 @@ API path: `/api/v1/organizations/{organization_id}/verify/binaries/{id}/archive`
 Operations: Create, List, Load, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/cancel`
+
+#### BookmarkProtectionRefreshGithubRequiredCheck
+
+| Field | Description |
+| --- | --- |
+| `exclusions` |  |
+| `fetched_at` |  |
+| `fetched_at_label` |  |
+| `github_branch` |  |
+| `github_owner` |  |
+| `github_repository_name` |  |
+| `last_error` |  |
+| `proven` |  |
+| `requirements` |  |
+| `stale` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections/refresh_github_required_checks`
 
 #### BrowserEgressCandidate
 
@@ -2276,6 +3575,16 @@ Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks/{id}/cancel`
 
+#### CacheNamespaceEntry
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/evict`
+
 #### CatalogSelector
 
 | Field | Description |
@@ -2334,6 +3643,556 @@ Operations: List, Load, Remove, Update.
 
 API path: `/api/v1/cdn_spaces/{cdn_space_id}/objects`
 
+#### Change
+
+| Field | Description |
+| --- | --- |
+| `counts` | Counts for each state across the active non-state filters. |
+| `filters` |  |
+| `github_sync` |  |
+| `result` | What this page is a page of. |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/changes`
+
+#### ChangeAsset
+
+| Field | Description |
+| --- | --- |
+| `alias` |  |
+| `byte_size` |  |
+| `checksum_md5` |  |
+| `checksum_sha256` |  |
+| `content_type` |  |
+| `filename` |  |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/assets/{id}/finalize`
+
+#### ChangeComment
+
+| Field | Description |
+| --- | --- |
+| `body` |  |
+| `capabilities` |  |
+| `change_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `kind` |  |
+| `line` |  |
+| `outdated` |  |
+| `parent_comment_id` |  |
+| `patchset_id` |  |
+| `patchset_number` |  |
+| `path` |  |
+| `replies` |  |
+| `resolved` |  |
+| `resolved_at` |  |
+| `resolved_at_label` |  |
+| `resolved_by` |  |
+| `side` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `user` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve`
+
+#### ChangeFileReviewCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `patchset_id` |  |
+| `path` |  |
+| `request_id` |  |
+| `review_action` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/file_review_checkpoints`
+
+#### ChangeGitBranchSubmission
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_branch_submissions`
+
+#### ChangeGitCommitIdentity
+
+| Field | Description |
+| --- | --- |
+| `change_id` |  |
+| `change_number` |  |
+| `git_commit_id` |  |
+| `git_commit_ids` |  |
+| `id` |  |
+| `identities` |  |
+| `missing_git_commit_ids` |  |
+| `patchset_number` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_commit_identities`
+
+#### ChangeGitPublication
+
+| Field | Description |
+| --- | --- |
+| `expected_target_commit_id` |  |
+| `id` |  |
+| `operation_key` |  |
+| `publication_id` |  |
+| `request` |  |
+| `request_digest` |  |
+| `revisions` |  |
+| `status` |  |
+| `transfer_refs` | Immutable receipt-owned refs returned by preparation; transfer each exact Git target before polling readiness. |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/git_publications`
+
+#### ChangeGroupMember
+
+| Field | Description |
+| --- | --- |
+| `change_id` | Change number |
+| `changes` |  |
+| `id` |  |
+| `name` |  |
+| `number` |  |
+| `status` |  |
+| `title` |  |
+
+Operations: Create, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups/{id}/members`
+
+#### ChangeLabel
+
+| Field | Description |
+| --- | --- |
+| `accepted` |  |
+| `add` |  |
+| `approval` |  |
+| `assets` | Proof assets referenced from the description as `vex-asset:<id>`. |
+| `author` | Human user summary or organization automation identity. |
+| `capabilities` |  |
+| `change_key` |  |
+| `checks` |  |
+| `checks_status` |  |
+| `comments` |  |
+| `comments_count` |  |
+| `comments_count_label` |  |
+| `commit_message` |  |
+| `current_patchset` |  |
+| `description` |  |
+| `draft` |  |
+| `folded_into_number` |  |
+| `github_projection_status` |  |
+| `github_pull_request` |  |
+| `github_pull_requests` |  |
+| `group` |  |
+| `has_description` | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
+| `id` |  |
+| `jj_change_id` |  |
+| `labels` |  |
+| `landable` |  |
+| `landed_by` |  |
+| `number` |  |
+| `orphaned` |  |
+| `orphaned_at` |  |
+| `orphaned_at_label` |  |
+| `orphaned_reason` |  |
+| `parent_change_id` |  |
+| `parent_change_number` |  |
+| `patchset_number` |  |
+| `patchsets` |  |
+| `primary_status` |  |
+| `public_id` |  |
+| `relation_chain` |  |
+| `remove` |  |
+| `requested_changes` |  |
+| `restack_state` |  |
+| `reviewer_candidates` | Organization members available to the reviewer picker on this page. |
+| `reviewers` |  |
+| `stable_change_id` |  |
+| `stack` |  |
+| `status` |  |
+| `target_branch` |  |
+| `title` |  |
+| `unresolved_comments_count_label` |  |
+| `url` |  |
+| `votes` |  |
+
+Operations: Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/labels`
+
+#### ChangeLandingHold
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_hold/release`
+
+#### ChangeLandingRequest
+
+| Field | Description |
+| --- | --- |
+| `change_ids` |  |
+| `count` |  |
+| `defer_until_ready` | Admit the request while approvals or checks are pending |
+| `expected_requirement_version` |  |
+| `expected_scope_version` |  |
+| `head_change_id` |  |
+| `id` |  |
+| `numbers` |  |
+| `override_acknowledged` |  |
+| `override_codes` |  |
+| `position` |  |
+| `priority` |  |
+| `scope_version` |  |
+| `state` |  |
+| `version` |  |
+
+Operations: Create, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_requests`
+
+#### ChangeRequestChange
+
+| Field | Description |
+| --- | --- |
+| `message` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/request_changes`
+
+#### ChangeReviewer
+
+| Field | Description |
+| --- | --- |
+| `add` |  |
+| `email` |  |
+| `name` |  |
+| `remove` |  |
+| `removed_reviewers` |  |
+| `requested_reviewers` |  |
+| `reviewers` |  |
+
+Operations: List, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/reviewers`
+
+#### ChangeTranscript
+
+| Field | Description |
+| --- | --- |
+| `capture_kind` |  |
+| `captured_at` |  |
+| `harness` |  |
+| `id` |  |
+| `original_resume` |  |
+| `patchset_commit_id` |  |
+| `patchset_number` |  |
+| `redaction_count` |  |
+| `session_id` |  |
+| `session_title` |  |
+| `status` |  |
+| `superseded` |  |
+| `user` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/transcripts`
+
+#### ChangeTranscriptSummary
+
+| Field | Description |
+| --- | --- |
+| `summaries` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/changes/transcript_summaries`
+
+#### CheckpointPrepareChunk
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/prepare_chunks`
+
+#### CiNode
+
+| Field | Description |
+| --- | --- |
+| `architecture` |  |
+| `bazel_enabled` |  |
+| `bazel_properties_json` |  |
+| `ci_runner_pool_id` |  |
+| `cordoned_at` |  |
+| `cordoned_at_label` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `health_state` |  |
+| `heartbeat_age_seconds` |  |
+| `id` |  |
+| `kind` |  |
+| `labels_csv` |  |
+| `last_seen_at` |  |
+| `last_seen_at_label` |  |
+| `name` |  |
+| `network_peer_id` |  |
+| `node_capabilities_csv` |  |
+| `node_certificate_expires_at` |  |
+| `node_certificate_expires_at_label` |  |
+| `node_certificate_fingerprint_sha256` |  |
+| `node_certificate_serial` |  |
+| `offline_at` |  |
+| `offline_at_label` |  |
+| `online_at` |  |
+| `online_at_label` |  |
+| `organization_id` |  |
+| `os` |  |
+| `revoked_at` |  |
+| `revoked_at_label` |  |
+| `schedulable` |  |
+| `slug` |  |
+| `status` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `version` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/ci/nodes/{id}/cordon`
+
+#### CiPipeline
+
+| Field | Description |
+| --- | --- |
+| `ci_runner_pool_id` |  |
+| `concurrency_key` |  |
+| `created_at` |  |
+| `default_branch` |  |
+| `description` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `name` |  |
+| `organization_id` |  |
+| `repository_id` |  |
+| `required_capabilities_csv` |  |
+| `runner_pool` |  |
+| `runs` |  |
+| `slug` |  |
+| `source_kind` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `trigger_on_pull_request` |  |
+| `trigger_on_push` |  |
+| `trigger_on_schedule` |  |
+| `updated_at` |  |
+| `workflow_path` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/ci/pipelines`
+
+#### CiPipelineRun
+
+| Field | Description |
+| --- | --- |
+| `active` |  |
+| `canceled_at` |  |
+| `ci_pipeline_id` |  |
+| `ci_runner_pool_id` |  |
+| `commit_sha` |  |
+| `concurrency_key` |  |
+| `created_at` |  |
+| `creator_user_id` |  |
+| `display_id` |  |
+| `failed` |  |
+| `finished_at` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `jobs` |  |
+| `message` |  |
+| `number` |  |
+| `organization_id` |  |
+| `parameters_json` |  |
+| `queued_at` |  |
+| `ref_name` |  |
+| `repository_id` |  |
+| `required_capabilities_csv` |  |
+| `retry_number` |  |
+| `retryable` |  |
+| `slug` |  |
+| `source_url` |  |
+| `started_at` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `trigger_kind` |  |
+| `updated_at` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{id}/retry`
+
+#### CiRunnerPool
+
+| Field | Description |
+| --- | --- |
+| `bazel_enabled` |  |
+| `bazel_properties_json` |  |
+| `created_at` |  |
+| `description` |  |
+| `elastic_config_json` |  |
+| `elastic_provider_kind` |  |
+| `id` |  |
+| `isolation_mode` |  |
+| `labels_csv` |  |
+| `max_concurrency` |  |
+| `modal_capacity` |  |
+| `modal_runner_invocations` |  |
+| `name` |  |
+| `network_space_id` |  |
+| `node_capabilities_csv` |  |
+| `organization_id` |  |
+| `runner_count_label` |  |
+| `runner_kind` |  |
+| `runners` |  |
+| `slug` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/ci/runner_pools/{id}/promote_reconciliation_runtime`
+
+#### CiStatus
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/ref`
+
+#### CliEvent
+
+| Field | Description |
+| --- | --- |
+| `event` |  |
+| `properties` |  |
+
+Operations: Create.
+
+API path: `/api/v1/cli_events`
+
+#### CliRelease
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/cli_releases`
+
+#### CloudWorkspaceBackupObject
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/objects/{object_key}`
+
+#### CodeRuleEvaluation
+
+| Field | Description |
+| --- | --- |
+| `advisory` |  |
+| `coverage` |  |
+| `diff` | UTF-8 complete unified patch using a/ old and b/ new prefixes; at most 1 MiB |
+| `duration_ms` |  |
+| `evaluator_version` |  |
+| `input_digest` |  |
+| `limits` |  |
+| `model` |  |
+| `requests` |  |
+| `schema_version` |  |
+| `snapshot_digest` |  |
+| `unchecked` |  |
+| `verdicts` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/evaluations`
+
+#### ComSiteAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/com_site_access/redeem`
+
+#### ComSiteAccessSession
+
+| Field | Description |
+| --- | --- |
+| `cookie_name` |  |
+| `host` | Site hostname, for example docs.acme.composal.page |
+| `max_age` |  |
+| `session_token` |  |
+
+Operations: Create.
+
+API path: `/api/v1/com_site_access/sessions`
+
+#### CommentThreadComment
+
+| Field | Description |
+| --- | --- |
+| `body` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads/{anchor}/comments`
+
+#### CommitDiff
+
+| Field | Description |
+| --- | --- |
+| `files` |  |
+| `id` |  |
+| `parent_id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits/{id}/diff/{fingerprint}`
+
 #### ConnectionRequest
 
 | Field | Description |
@@ -2370,6 +4229,58 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/conne
 Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/sources`
+
+#### ContactSubmission
+
+| Field | Description |
+| --- | --- |
+| `company` |  |
+| `email` | Stored downcased and stripped. |
+| `message` |  |
+| `name` |  |
+| `website` | Honeypot. |
+
+Operations: Create.
+
+API path: `/api/v1/contact_submissions`
+
+#### ControlComputer
+
+| Field | Description |
+| --- | --- |
+| `connection` | A point-in-time control transport observation. |
+| `consent` |  |
+| `device` |  |
+| `id` |  |
+| `provider_status` |  |
+
+Operations: List, Update.
+
+API path: `/api/v1/organizations/{organization_id}/control_computers`
+
+#### ControlComputerControlOperation
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `arguments` |  |
+| `created_at` |  |
+| `delivery` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` |  |
+| `diagnostic_code` | Approved product error code retained after copied diagnostics expire. |
+| `end` |  |
+| `expires_at` |  |
+| `id` |  |
+| `key` |  |
+| `provider` |  |
+| `references` |  |
+| `result` |  |
+| `result_expired` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/control_computers/{computer}/control_operations`
 
 #### CoordinationWait
 
@@ -2627,6 +4538,51 @@ Operations: Load.
 
 API path: `/api/v1/verify/demo_shares/{token}/segments/{segment_id}`
 
+#### Deployment
+
+| Field | Description |
+| --- | --- |
+| `app` |  |
+| `artifact_locator` |  |
+| `build_duration_seconds` |  |
+| `build_source` |  |
+| `build_status` |  |
+| `children` |  |
+| `ci_pipeline_id` |  |
+| `ci_pipeline_run_id` |  |
+| `commit_sha` |  |
+| `created_at` |  |
+| `creator` |  |
+| `deployed_url` |  |
+| `duration_seconds` |  |
+| `environment` |  |
+| `history_kind` |  |
+| `history_reason` |  |
+| `id` |  |
+| `is_live` |  |
+| `is_rollback` |  |
+| `live_region_count` |  |
+| `number` |  |
+| `placement` |  |
+| `region_count` |  |
+| `replicas_per_region` |  |
+| `rollback_reason` |  |
+| `rollback_source_release_id` |  |
+| `rollback_target_release_id` |  |
+| `rollout_predecessor_id` |  |
+| `rollout_status` |  |
+| `rollout_strategy` |  |
+| `service` |  |
+| `source_ref` |  |
+| `status` |  |
+| `total_replicas` |  |
+| `trigger_kind` |  |
+| `updated_at` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/{deployment_id}`
+
 #### DeploymentDashboardNomad
 
 | Field | Description |
@@ -2636,6 +4592,36 @@ Operations: Load.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocation`
 
+#### DeploymentDetail
+
+| Field | Description |
+| --- | --- |
+| `activity` |  |
+| `app` |  |
+| `app_id` |  |
+| `audit_events` |  |
+| `capacity` |  |
+| `data_resources` |  |
+| `deploy_targets` |  |
+| `deployments` |  |
+| `desired_states` |  |
+| `environments` |  |
+| `filters` | The option lists the deployments page's app, service and stage pickers narrow by. |
+| `health` | The rolled-up state of the selected scope. |
+| `nomad` | The Nomad footprint of the selected scope, deduplicated. |
+| `operations` |  |
+| `placements` |  |
+| `reconciler_ticks` |  |
+| `releases` |  |
+| `runtime_instances` |  |
+| `service_bindings` |  |
+| `service_views` |  |
+| `storage_resources` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/details`
+
 #### DeploymentFile
 
 | Field | Description |
@@ -2644,6 +4630,383 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocation`
 Operations: Update.
 
 API path: `/api/v1/static_sites/{static_site_id}/deployments/{id}/files`
+
+#### DeploymentLog
+
+| Field | Description |
+| --- | --- |
+| `allocation_id` |  |
+| `app_environment_id` |  |
+| `app_release_id` |  |
+| `app_service_id` |  |
+| `details` |  |
+| `environment_name` |  |
+| `release_version` |  |
+| `service_name` |  |
+| `status` |  |
+| `task` |  |
+| `unreachable_reason` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/logs`
+
+#### DeploymentMetric
+
+| Field | Description |
+| --- | --- |
+| `auto_deploy` |  |
+| `environment_id` |  |
+| `environment_name` |  |
+| `placement_id` |  |
+| `redeploy` |  |
+| `region_count` |  |
+| `replicas_per_region` |  |
+| `rollout_strategy` |  |
+| `service_id` |  |
+| `service_name` |  |
+| `source_ref` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/metrics`
+
+#### DeploymentPreview
+
+| Field | Description |
+| --- | --- |
+| `access` |  |
+| `app_environment_id` |  |
+| `app_name` |  |
+| `app_preview_profile_id` |  |
+| `app_slug` |  |
+| `change_number` |  |
+| `created_at` |  |
+| `created_by_user_id` |  |
+| `expires_at` |  |
+| `generation` |  |
+| `health` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `latest_operation_status` |  |
+| `name` |  |
+| `owner_name` |  |
+| `profile_name` |  |
+| `resource_overrides` | Service public IDs mapped to resource overrides. |
+| `retained` |  |
+| `slug` |  |
+| `snapshot_version` |  |
+| `source_revision` |  |
+| `status` |  |
+| `updated_at` |  |
+| `urls` |  |
+| `vcs_change_id` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/previews`
+
+#### DeploymentSetting
+
+| Field | Description |
+| --- | --- |
+| `code` |  |
+| `created_at` |  |
+| `id` |  |
+| `name` |  |
+| `nomad_datacenter` |  |
+| `updated_at` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/deployments/settings`
+
+#### DesktopLocalAgentModel
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `name` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/desktop_local_agent/models`
+
+#### DesktopLocalAgentResponse
+
+| Field | Description |
+| --- | --- |
+| `input` |  |
+| `max_output_tokens` |  |
+| `model` |  |
+| `store` |  |
+| `stream` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/desktop_local_agent/responses`
+
+#### Device
+
+| Field | Description |
+| --- | --- |
+| `architecture` |  |
+| `channel` |  |
+| `coding_connection` | Independent organization coding-control service state for the current device owner. |
+| `connection_checked_at` | When this native presence observation was obtained; null when unobserved or unavailable. |
+| `connection_status` | Display-only native presence. |
+| `control_delivery_policy` |  |
+| `control_spawn_policy` |  |
+| `created_at` |  |
+| `device` |  |
+| `environment` |  |
+| `execution_available` |  |
+| `id` |  |
+| `name` |  |
+| `native_device_id` |  |
+| `paired_at` |  |
+| `pairing_generation` |  |
+| `platform` |  |
+| `project_visibility` | Folder discovery and new-thread selection. |
+| `provider_status` | Recent native provider observations; absent on older API replicas. |
+| `revoked_at` |  |
+| `scheduled_check_ins` | Whether the owner's private agents may check this computer's connection during scheduled runs. |
+| `user_browser_access` | Whether agents may use the owner's own Chrome-family browser here: off, only tabs agents open or the owner shares, or every tab. |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/connection`
+
+#### DeviceBrowserOperation
+
+| Field | Description |
+| --- | --- |
+| `command` | The in-app browser takes open through open_external; the person's own browser (arguments.browser user) takes open, tabs, share_tab, navigate, back, reload, screenshot, read, click, type, press, scroll and close. |
+| `created_at` |  |
+| `id` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/browser_operations/{id}/claim`
+
+#### DeviceControlMessage
+
+| Field | Description |
+| --- | --- |
+| `agent_id` |  |
+| `agent_name` |  |
+| `expires_at` |  |
+| `id` |  |
+| `sender` |  |
+| `text` |  |
+| `text_omitted` |  |
+| `thread` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_messages`
+
+#### DeviceControlOperation
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `arguments` |  |
+| `created_at` |  |
+| `delivery` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` |  |
+| `diagnostic_code` | Approved product error code retained after copied diagnostics expire. |
+| `end` |  |
+| `expires_at` |  |
+| `id` |  |
+| `key` |  |
+| `provider` |  |
+| `references` |  |
+| `result` |  |
+| `result_expired` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations`
+
+#### DeviceEnterpriseRelay
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/spark/devices/enterprise_relays`
+
+#### DeviceFolderListing
+
+| Field | Description |
+| --- | --- |
+| `code` |  |
+| `error` |  |
+| `folders` |  |
+| `id` |  |
+| `key` | Stable idempotency key for this listing. |
+| `parent` |  |
+| `path` | The resolved folder. |
+| `state` |  |
+| `truncated` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/folder_listings`
+
+#### DeviceGrant
+
+| Field | Description |
+| --- | --- |
+| `active_grants` |  |
+| `agent_choices` | Eligible picker choices, with current owner grant targets, on the first page only. |
+| `agent_id` |  |
+| `all_agents_access` | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `capabilities` |  |
+| `execution_available` |  |
+| `grants` |  |
+| `id` |  |
+| `next_cursor` |  |
+| `principal_id` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/{device_grant_id}/revise`
+
+#### DeviceInvocation
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/challenge`
+
+#### DeviceLocalEvent
+
+| Field | Description |
+| --- | --- |
+| `event` |  |
+| `recorded` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/local_events`
+
+#### DevicePairing
+
+| Field | Description |
+| --- | --- |
+| `architecture` |  |
+| `channel` |  |
+| `id` |  |
+| `name` |  |
+| `platform` |  |
+| `public_key` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/pairings/{device_pairing_intent_id}/complete`
+
+#### DeviceProject
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Remove.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/projects/{id}`
+
+#### DeviceScheduledCheckIn
+
+| Field | Description |
+| --- | --- |
+| `enabled` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/scheduled_check_ins`
+
+#### DockerBuilder
+
+| Field | Description |
+| --- | --- |
+| `backend` |  |
+| `created_at` |  |
+| `gateway_url` | Organization-addressed public WSS gateway; null until configured |
+| `generation` |  |
+| `id` |  |
+| `last_activity_at` |  |
+| `organization_id` |  |
+| `ready_at` |  |
+| `slept_at` |  |
+| `slug` |  |
+| `startup_attempt` |  |
+| `startup_failure` | Safe failure reason for the most recent startup attempt |
+| `startup_stage` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/docker_builders/{id}/recover`
+
+#### DockerBuilderSession
+
+| Field | Description |
+| --- | --- |
+| `created_at` |  |
+| `docker_builder_id` |  |
+| `expires_at` |  |
+| `gateway_url` | Organization-addressed public WSS gateway; null until configured |
+| `generation` |  |
+| `id` |  |
+| `organization_id` |  |
+| `revoked_at` |  |
+| `user_id` |  |
+
+Operations: Create, Load, Remove.
+
+API path: `/api/v1/organizations/{organization_id}/docker_builders/{docker_builder_id}/sessions`
+
+#### DockerBuilderSetting
+
+| Field | Description |
+| --- | --- |
+| `docker_builder_settings` |  |
+| `idle_timeout_seconds` |  |
+| `max_concurrency` |  |
+| `organization_id` |  |
+| `region` |  |
+| `runtime_timeout_seconds` |  |
+
+Operations: List, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/docker_builder_settings`
+
+#### DomainDnsIntegration
+
+| Field | Description |
+| --- | --- |
+| `account_label` |  |
+| `api_token` |  |
+| `created_at` |  |
+| `failure_message` |  |
+| `has_token` |  |
+| `id` |  |
+| `last_verified_at` |  |
+| `organization_id` |  |
+| `provider` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/domain_dns_integrations`
 
 #### DomainPathRule
 
@@ -2690,6 +5053,24 @@ API path: `/api/v1/hosting/apps/{app_id}/domains/{domain_id}/path_rules`
 Operations: Create, List, Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/dreams/{id}/resume`
+
+#### Edge
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/edge/tls-check`
+
+#### EmailVerification
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/email_verifications/resend`
 
 #### Environment
 
@@ -2901,6 +5282,79 @@ API path: `/api/v1/organizations/{organization_id}/verify/environments/{verify_e
 Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/evidence/{id}`
+
+#### ExecutionDesiredState
+
+| Field | Description |
+| --- | --- |
+| `desired_state` |  |
+| `id` |  |
+| `stop_observed` | True only for archived zero-capacity states with all known jobs stopped and allocations terminated. |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/execution/desired_states/{id}/reconcile`
+
+#### ExecutionReconcilerTick
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/execution/reconciler_ticks`
+
+#### ExecutionRelease
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/execution/releases/{id}/activate`
+
+#### ExecutionRuntimeInstance
+
+| Field | Description |
+| --- | --- |
+| `adapter_kind` |  |
+| `app_environment_id` |  |
+| `app_release_id` |  |
+| `app_service_id` |  |
+| `booted_at` |  |
+| `booted_at_label` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `instance_key` |  |
+| `last_reconciled_at` |  |
+| `last_reconciled_at_label` |  |
+| `last_seen_at` |  |
+| `last_seen_at_label` |  |
+| `location` |  |
+| `location_id` |  |
+| `network_peer_id` |  |
+| `nomad_allocation_id` |  |
+| `nomad_task_name` |  |
+| `organization_id` |  |
+| `private_ipv4` |  |
+| `private_ipv6` |  |
+| `provider_instance_id` |  |
+| `public_endpoint` |  |
+| `service_name` | Name of the Vex service this instance runs, in the same vocabulary as `vex deploy list`. |
+| `slug` |  |
+| `status` |  |
+| `terminated_at` |  |
+| `terminated_at_label` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/execution/runtime_instances/{id}/refresh`
 
 #### Exploration
 
@@ -3115,6 +5569,204 @@ Operations: List, Load, Patch, Update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/findings`
 
+#### Gh
+
+| Field | Description |
+| --- | --- |
+| `capabilities` |  |
+| `content` |  |
+| `fetched_at` |  |
+| `id` |  |
+| `magic_merge` |  |
+| `pull_request` |  |
+| `stack` |  |
+| `transcript_paths` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/gh/{github_owner}/{github_repo}/{number}`
+
+#### GitImport
+
+| Field | Description |
+| --- | --- |
+| `destination_mode` |  |
+| `error` |  |
+| `git_default_branch` | Original Git symbolic HEAD branch, independent of the branch selected for JJ conversion |
+| `git_status` |  |
+| `git_url` |  |
+| `id` |  |
+| `idempotency_key` |  |
+| `name` |  |
+| `native_status` |  |
+| `organization` |  |
+| `repository_id` |  |
+| `root_path` |  |
+| `slug` |  |
+| `source_branch` |  |
+| `target_branch` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/git_imports/{id}/complete`
+
+#### Github
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/github/repository_lookup`
+
+#### GithubApp
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/github_app/webhook`
+
+#### GithubAppImportableRepository
+
+| Field | Description |
+| --- | --- |
+| `account_login` |  |
+| `github_app_installation_id` |  |
+| `next_page` | Next GitHub page for this installation |
+| `repositories` |  |
+
+Operations: List.
+
+API path: `/api/v1/github_app/importable_repositories`
+
+#### GithubAppInstallation
+
+| Field | Description |
+| --- | --- |
+| `account_avatar_url` |  |
+| `account_id` |  |
+| `account_login` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `installation_id` |  |
+| `installed_at` |  |
+| `installed_at_label` |  |
+| `manage_access_url` |  |
+| `organization_id` |  |
+| `permission_entries` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` |  |
+| `status` |  |
+| `suspended_at` |  |
+| `suspended_at_label` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/organizations/{organization_id}/github_app/installations/{id}/check_connection`
+
+#### GithubAppInstallationAuthorization
+
+| Field | Description |
+| --- | --- |
+| `installation_url` |  |
+| `organization_slug` | Vex organization slug whose installation will be linked. |
+| `return_target` | Server-validated Vex application target used after verification. |
+
+Operations: Create.
+
+API path: `/api/v1/github_app/installation_authorizations`
+
+#### GithubAppUserAuthorization
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/github_app/user_authorizations`
+
+#### GithubCiRepository
+
+| Field | Description |
+| --- | --- |
+| `adoption_mode` |  |
+| `check_name_prefix` |  |
+| `ci_runner_pool_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `default_branch` |  |
+| `github_app_installation_id` |  |
+| `github_repository_id` |  |
+| `id` |  |
+| `last_compatibility_status` |  |
+| `last_error_message` |  |
+| `last_head_sha` |  |
+| `last_pull_request_number` |  |
+| `last_ref` |  |
+| `last_webhook_action` |  |
+| `last_webhook_at` |  |
+| `last_webhook_at_label` |  |
+| `last_webhook_delivery_id` |  |
+| `last_webhook_event` |  |
+| `metadata` |  |
+| `organization_id` |  |
+| `permission_status` |  |
+| `repository_full_name` |  |
+| `repository_name` |  |
+| `repository_owner` |  |
+| `status` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `webhook_delivery_count` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/github_ci_repositories`
+
+#### GithubCiRepositoryCompatibilityReport
+
+| Field | Description |
+| --- | --- |
+| `analyzed_at` |  |
+| `analyzed_at_label` |  |
+| `ci_pipeline_id` |  |
+| `ci_pipeline_run_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `diagnostics` |  |
+| `errors` |  |
+| `event_action` |  |
+| `event_name` |  |
+| `execution_allowed` |  |
+| `github_ci_repository_id` |  |
+| `head_sha` |  |
+| `id` |  |
+| `metadata` |  |
+| `organization_id` |  |
+| `parser_version` |  |
+| `pull_request_number` |  |
+| `ref_name` |  |
+| `referenced_actions` |  |
+| `required_secrets` |  |
+| `runner_labels` |  |
+| `source_blob_sha` |  |
+| `source_sha` |  |
+| `status` |  |
+| `supported_features` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `warnings` |  |
+| `workflow_name` |  |
+| `workflow_path` |  |
+
+Operations: List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_ci_repositories/{github_ci_repository_id}/compatibility_reports`
+
 #### GithubConnection
 
 | Field | Description |
@@ -3129,6 +5781,307 @@ API path: `/api/v1/organizations/{organization_id}/verify/findings`
 Operations: Create, List.
 
 API path: `/api/v1/organizations/{organization_id}/verify/github_connections`
+
+#### GithubIntegration
+
+| Field | Description |
+| --- | --- |
+| `account_avatar_url` |  |
+| `account_login` |  |
+| `connection_status` |  |
+| `connection_status_label` |  |
+| `github_installation` |  |
+| `health` |  |
+| `id` |  |
+| `imported_repositories_count` |  |
+| `imported_repositories_count_label` |  |
+| `organization` |  |
+| `pagination` |  |
+| `repositories` |  |
+
+Operations: List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/github_integrations`
+
+#### GithubOnboarding
+
+| Field | Description |
+| --- | --- |
+| `accounts` |  |
+| `active_batch_id` | The batch the wizard's import step should resume — the most recent batch still working, else the most recent overall. |
+| `batches` |  |
+| `capabilities` |  |
+| `installations` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding`
+
+#### GithubOnboardingBranch
+
+| Field | Description |
+| --- | --- |
+| `branches` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/branches`
+
+#### GithubOnboardingImport
+
+| Field | Description |
+| --- | --- |
+| `account_login` |  |
+| `complete` | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` |  |
+| `failed_item_count` |  |
+| `github_app_installation_id` |  |
+| `id` |  |
+| `imported_item_count` |  |
+| `item_count` |  |
+| `items` |  |
+| `repositories` |  |
+| `status` |  |
+| `terminal_item_count` |  |
+| `updated_at` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/imports`
+
+#### GithubOnboardingImportBatch
+
+| Field | Description |
+| --- | --- |
+| `account_login` |  |
+| `complete` | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` |  |
+| `failed_item_count` |  |
+| `github_app_installation_id` |  |
+| `id` |  |
+| `imported_item_count` |  |
+| `item_count` |  |
+| `items` |  |
+| `status` |  |
+| `terminal_item_count` |  |
+| `updated_at` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/import_batches/{github_import_batch_id}`
+
+#### GithubOnboardingImportItem
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/github_onboarding/import_items/{github_import_batch_item_id}/retry`
+
+#### GithubPullRequest
+
+| Field | Description |
+| --- | --- |
+| `capabilities` |  |
+| `content` |  |
+| `fetched_at` |  |
+| `id` |  |
+| `magic_merge` |  |
+| `pull_request` |  |
+| `stack` |  |
+| `transcript_paths` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{org_slug}/github/pull_requests/refresh`
+
+#### GithubRunnerAdmission
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/github_runner_admission`
+
+#### GithubRunnerCache
+
+| Field | Description |
+| --- | --- |
+| `entry_id` |  |
+| `key` |  |
+| `matched_key` |  |
+| `ok` |  |
+| `operation` |  |
+| `restore_keys` |  |
+| `signed_download_url` |  |
+| `size_bytes` |  |
+| `upload_path` |  |
+| `version` |  |
+
+Operations: Create.
+
+API path: `/api/v1/github_runner_cache`
+
+#### GithubRunnerEgress
+
+| Field | Description |
+| --- | --- |
+| `can_request` |  |
+| `cidr` |  |
+| `ipv4` |  |
+| `requested_at_label` |  |
+| `status` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_egress`
+
+#### GithubRunnerHistory
+
+| Field | Description |
+| --- | --- |
+| `activity` |  |
+| `counts` |  |
+| `observed_at` |  |
+| `pagination` |  |
+| `repositories` |  |
+| `runs` |  |
+| `setup` | CI onboarding. |
+| `success_rate` |  |
+| `usage` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/github_runner_history`
+
+#### GithubRunnerImage
+
+| Field | Description |
+| --- | --- |
+| `created_at` |  |
+| `id` |  |
+| `image_reference` | Immutable linux/amd64 Ubuntu 24.04 image, registry/repository@sha256:digest, with Node 22+ |
+| `last_error` |  |
+| `modal_image_id` |  |
+| `name` |  |
+| `registry_secret_name` | Name of an organization CI secret containing REGISTRY_USERNAME and REGISTRY_PASSWORD JSON fields |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_images/{id}/prepare`
+
+#### GithubRunnerPool
+
+| Field | Description |
+| --- | --- |
+| `cpu_millicores` |  |
+| `enabled` |  |
+| `github_app_installation_id` |  |
+| `github_repository_id` |  |
+| `github_runner_image` |  |
+| `id` |  |
+| `image` | Organization image name or ID; null restores the standard image |
+| `invocations` |  |
+| `label` |  |
+| `last_error` |  |
+| `last_polled_at` |  |
+| `max_concurrency` |  |
+| `memory_mb` |  |
+| `organization_id` |  |
+| `provider` |  |
+| `repository_full_name` |  |
+| `runtime_kind` |  |
+| `timeout_seconds` |  |
+
+Operations: Create, List, Update.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_pools`
+
+#### GithubRunnerSetup
+
+| Field | Description |
+| --- | --- |
+| `error` |  |
+| `github_repository_connection_id` |  |
+| `id` |  |
+| `pull_request_url` |  |
+| `repository_full_name` |  |
+| `roder_thread_id` |  |
+| `runner_labels` |  |
+| `status` |  |
+| `status_label` |  |
+| `summary` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/github_runner_setup`
+
+#### Gitlab
+
+| Field | Description |
+| --- | --- |
+| `configured` |  |
+| `connections` |  |
+| `integrations` |  |
+| `inventory_error` |  |
+| `next_page` |  |
+| `organization` |  |
+| `projects` |  |
+| `redirect_uri` | The OAuth redirect URI a self-managed GitLab application must use; null when GitLab callbacks aren't configured. |
+| `selected_integration_id` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{org_slug}/gitlab/authorize`
+
+#### GitlabConnection
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/gitlab/connections/{connection_id}/control`
+
+#### GitlabImport
+
+| Field | Description |
+| --- | --- |
+| `integration_id` |  |
+| `project_id` |  |
+| `repo_slug` |  |
+| `source_branch` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/gitlab/imports`
+
+#### GitlabOauth
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/gitlab/oauth/callback`
+
+#### GrantAllAgent
+
+| Field | Description |
+| --- | --- |
+| `all_agents_access` |  |
+| `enabled` |  |
+| `execution_available` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/all_agents`
 
 #### HostingAppDomain
 
@@ -3162,6 +6115,16 @@ Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/domains/{id}/disable`
 
+#### IdentityOrganization
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/identity/organizations/{organization_id}/catalog`
+
 #### ImageRepository
 
 | Field | Description |
@@ -3185,6 +6148,34 @@ API path: `/api/v1/hosting/apps/{app_id}/domains/{id}/disable`
 Operations: Create, List.
 
 API path: `/api/v1/organizations/{org_slug}/image_repositories`
+
+#### ImageRepositoryTag
+
+| Field | Description |
+| --- | --- |
+| `image_repository` |  |
+| `name` |  |
+| `registry_url` |  |
+| `tags` |  |
+
+Operations: List.
+
+API path: `/api/v1/artifacts/image_repositories/{id}/tags`
+
+#### ImportBranchPolicy
+
+| Field | Description |
+| --- | --- |
+| `can_manage_pr_scenario_writing` |  |
+| `can_manage_sandbox_region` |  |
+| `dedicated_outbound_ip_addresses` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` |  |
+| `organization` |  |
+| `sandbox_regions` |  |
+
+Operations: Load, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/import_branch_policy`
 
 #### Integration
 
@@ -3236,6 +6227,56 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/interaction
 Operations: Create, List, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/invitations`
+
+#### InvocationControl
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/control/challenge`
+
+#### JobLogChunk
+
+| Field | Description |
+| --- | --- |
+| `byte_size` |  |
+| `ci_job_id` |  |
+| `ci_pipeline_run_id` |  |
+| `ci_step_id` |  |
+| `content` |  |
+| `content_format` |  |
+| `created_at` |  |
+| `id` |  |
+| `organization_id` |  |
+| `sequence_number` |  |
+| `stream` |  |
+| `updated_at` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/log_chunks`
+
+#### JobStep
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Patch, Update.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps`
+
+#### JobWorkspace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Patch, Update.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces`
 
 #### JourneyVariantReplay
 
@@ -3295,6 +6336,132 @@ Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/knowledge`
 
+#### Known
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/.well-known/agent-card.json`
+
+#### Label
+
+| Field | Description |
+| --- | --- |
+| `changes_count` |  |
+| `id` |  |
+| `name` | Display name |
+| `slug` | Normalized identity used for filtering and lookup. |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/labels`
+
+#### LeaseArtifact
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/artifacts`
+
+#### LeaseCache
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/cache/restore`
+
+#### LeaseLogChunk
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/log_chunks`
+
+#### LeaseReconciliation
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/reconciliations/{reconciliation_id}/output`
+
+#### LeaseStep
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Update.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/steps/{ci_step_id}`
+
+#### LeaseVerifyDiagnostic
+
+| Field | Description |
+| --- | --- |
+| `browser_events` |  |
+| `live_browser` |  |
+| `live_view` | The tester's read-only live stream for page viewers. |
+| `steps` |  |
+
+Operations: Create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_diagnostics`
+
+#### LeaseVerifySecret
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_secrets`
+
+#### LeaseWorkspace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Update.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/workspaces/{ci_workspace_id}`
+
+#### LocalAgentDecision
+
+| Field | Description |
+| --- | --- |
+| `request` | A native OpenAI Decisions request for gpt-6-luna, at most 1600 KiB, with inline images only |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/local_agent/decisions`
+
+#### LocalAgentResponse
+
+| Field | Description |
+| --- | --- |
+| `input` |  |
+| `model` |  |
+| `service_tier` |  |
+| `store` |  |
+| `stream` |  |
+| `tools` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/local_agent/responses`
+
 #### LocalThreadDelivery
 
 | Field | Description |
@@ -3349,6 +6516,67 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threa
 Operations: List.
 
 API path: `/api/v1/hosting/locations`
+
+#### LogStreamChunk
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks`
+
+#### LogoImage
+
+| Field | Description |
+| --- | --- |
+| `activated_products` | Products this organization has activated (PRD 144). |
+| `agents_only` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` |  |
+| `created_at_label` |  |
+| `github_prs_authored_by_change_author` |  |
+| `id` |  |
+| `logo_url` |  |
+| `member_count` |  |
+| `name` |  |
+| `pending_invitation_count` |  |
+| `personal` |  |
+| `repository_count` |  |
+| `role` |  |
+| `sandbox_region` |  |
+| `shared_agent_personal_accounts_enabled` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` |  |
+| `source_control_providers` | Connected source control providers for this organization. |
+| `source_ui_enabled` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `verify_pr_scenario_writing_enabled` |  |
+
+Operations: Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/logo_image`
+
+#### MarketingSetting
+
+| Field | Description |
+| --- | --- |
+| `call_first` |  |
+
+Operations: List.
+
+API path: `/api/v1/marketing_settings`
+
+#### McpOauth
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/mcp/oauth/consent`
 
 #### Me
 
@@ -3476,6 +6704,29 @@ Operations: Create, List, Load, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/memories`
 
+#### MergeQueueEntry
+
+| Field | Description |
+| --- | --- |
+| `analytics` | Queue performance for the reporting window. |
+| `change_id` |  |
+| `expected_target_commit_id` |  |
+| `expected_target_version` |  |
+| `expected_version` |  |
+| `github_pr_number` |  |
+| `id` |  |
+| `idempotency_key` |  |
+| `kind` |  |
+| `policy` |  |
+| `priority` |  |
+| `queue` |  |
+| `target_branches` | Bookmark names for the target picker. |
+| `when_ready` |  |
+
+Operations: Create, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/merge`
+
 #### MergeRequest
 
 | Field | Description |
@@ -3517,6 +6768,26 @@ API path: `/api/v1/organizations/{organization_id}/verify/memories`
 Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun`
+
+#### MergeResolution
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `base` | Common ancestor file contents |
+| `content` |  |
+| `context` | Optional surrounding files keyed by path |
+| `duration_ms` |  |
+| `fallback` |  |
+| `model` |  |
+| `ours` | Current / left file contents |
+| `path` | Repository-relative path of the conflicted file |
+| `resolved` |  |
+| `theirs` | Incoming / right file contents |
+
+Operations: Create.
+
+API path: `/api/v1/merge_resolutions`
 
 #### MessagingConversationMessage
 
@@ -3561,6 +6832,45 @@ Operations: List.
 
 API path: `/api/v1/hosting/metrics/queries`
 
+#### MetronomeWebhook
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/metronome/webhooks`
+
+#### ModelSubscriptionAccount
+
+| Field | Description |
+| --- | --- |
+| `accounts` |  |
+| `agents` |  |
+| `can_disconnect` |  |
+| `connection_agent` |  |
+| `email` |  |
+| `id` |  |
+| `label` |  |
+| `provider` |  |
+| `saved` |  |
+| `status` |  |
+| `usable` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/model_subscription_accounts`
+
+#### ModelSubscriptionAccountConnection
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load, Update.
+
+API path: `/api/v1/model_subscription_accounts/connection/{agent_id}`
+
 #### NetworkConnection
 
 | Field | Description |
@@ -3579,6 +6889,62 @@ API path: `/api/v1/hosting/metrics/queries`
 Operations: Create, Patch, Update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/network_connections`
+
+#### NetworkingSpace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{id}/activate`
+
+#### Node
+
+| Field | Description |
+| --- | --- |
+| `account_avatar_url` |  |
+| `account_id` |  |
+| `account_login` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `installation_id` |  |
+| `installed_at` |  |
+| `installed_at_label` |  |
+| `manage_access_url` |  |
+| `organization_id` |  |
+| `permission_entries` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` |  |
+| `status` |  |
+| `suspended_at` |  |
+| `suspended_at_label` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/pages/nodes`
+
+#### NodeCertificate
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/ci/nodes/{id}/certificate/rotate`
+
+#### NodeLease
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/claim`
 
 #### NomadAllocation
 
@@ -3627,6 +6993,73 @@ Operations: List.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs`
 
+#### Now
+
+| Field | Description |
+| --- | --- |
+| `needs_attention` |  |
+| `pagination` |  |
+| `recently_landed` |  |
+| `shipping_now` |  |
+| `summary` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/now`
+
+#### ObservabilityClickhouseCluster
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/clickhouse_clusters/{id}/activate`
+
+#### ObservabilityQuickwitCluster
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/quickwit_clusters/{id}/activate`
+
+#### ObservabilitySpace
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/spaces/{id}/activate`
+
+#### Openapi
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/openapi`
+
+#### OrgInvitation
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `invitation` |  |
+| `registration_options` |  |
+| `requires_password_setup` |  |
+| `start_guided_setup` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/org_invitations/{token}/accept`
+
 #### Organization
 
 | Field | Description |
@@ -3659,6 +7092,233 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs`
 Operations: Create, List, Load, Patch, Update.
 
 API path: `/api/v1/organizations`
+
+#### OrganizationApp
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: List, Remove, Update.
+
+API path: `/api/v1/spark/organizations/{organization_id}/apps`
+
+#### OrganizationControl
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/control/admission`
+
+#### OrganizationDevice
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/control`
+
+#### OrganizationIdentityCertificate
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/identity_certificates/{id}/expire`
+
+#### OrganizationInteraction
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/interactions`
+
+#### OrganizationInvitation
+
+| Field | Description |
+| --- | --- |
+| `email` |  |
+| `id` |  |
+| `role` |  |
+
+Operations: Create, Remove.
+
+API path: `/api/v1/admin/organizations/{org_slug}/invitations`
+
+#### OrganizationMessageFile
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/message_files`
+
+#### OrganizationOidcTrust
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/activate`
+
+#### OrganizationRunEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/run_events`
+
+#### OrganizationRunOutcome
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/run_outcomes`
+
+#### OrganizationRunUsage
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/run_usages`
+
+#### OrganizationSandbox
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sandbox/automation-cleanup`
+
+#### OrganizationSecret
+
+| Field | Description |
+| --- | --- |
+| `app_environment_id` |  |
+| `app_service_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `created_by` |  |
+| `current_version` |  |
+| `description` |  |
+| `env_key` |  |
+| `expose_to_build` |  |
+| `expose_to_ci` |  |
+| `hosted_app_id` |  |
+| `id` |  |
+| `last_accessed_at` |  |
+| `last_accessed_at_label` |  |
+| `last_accessed_by` |  |
+| `latest_version_number` |  |
+| `name` |  |
+| `organization_id` |  |
+| `owner_service_account_id` |  |
+| `rotation_policy` |  |
+| `scope_kind` |  |
+| `slug` |  |
+| `status` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/secrets/{id}/disable`
+
+#### OrganizationServiceAccount
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/service_accounts/{id}/activate`
+
+#### OrganizationSetting
+
+| Field | Description |
+| --- | --- |
+| `concurrent_run_limit_override` |  |
+| `customize_onboarding_packages` |  |
+| `daily_run_limit_override` |  |
+| `deployment_usage_visibility` |  |
+| `monthly_browser_minutes_limit_override` |  |
+| `monthly_budget_dollars` |  |
+| `name` |  |
+| `onboarding_custom_pricing` |  |
+| `onboarding_package_keys` |  |
+
+Operations: Update.
+
+API path: `/api/v1/admin/organizations/{org_slug}/settings`
+
+#### OrganizationSite
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Remove, Update.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/token`
+
+#### OrganizationSubscription
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/subscriptions/selection`
+
+#### OrganizationTool
+
+| Field | Description |
+| --- | --- |
+| `arguments` |  |
+| `native_agent_id` |  |
+| `tool` |  |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/tools`
+
+#### OrganizationWorkloadIdentity
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/workload_identities/{id}/activate`
+
+#### OtelIngest
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/otel_ingest/authorize`
 
 #### Page
 
@@ -3715,6 +7375,70 @@ Operations: Create, List, Load.
 
 API path: `/api/v1/organizations/{organization_id}/agents/page/activity`
 
+#### PageArtefact
+
+| Field | Description |
+| --- | --- |
+| `artefact` |  |
+| `automation` |  |
+| `automation_invocation_id` |  |
+| `byte_size` |  |
+| `checksum_sha256` |  |
+| `comment_threads` |  |
+| `content_type` |  |
+| `created_at` |  |
+| `created_by_user_id` |  |
+| `description` |  |
+| `document_key` | Stable document identity shared by all revisions. |
+| `draft` | The autosaved working copy of the newest Markdown version; null for older versions and other files. |
+| `entrypoint` |  |
+| `expires_at` |  |
+| `filename` |  |
+| `files` |  |
+| `harness` |  |
+| `harness_version` |  |
+| `id` |  |
+| `kind` |  |
+| `kinds` |  |
+| `model` |  |
+| `organization` |  |
+| `organization_id` |  |
+| `pagination` |  |
+| `permissions` |  |
+| `preview` |  |
+| `published_at` |  |
+| `published_at_label` |  |
+| `publisher` |  |
+| `repository` |  |
+| `repository_id` |  |
+| `selected_path` |  |
+| `slug` |  |
+| `source` |  |
+| `status` |  |
+| `title` |  |
+| `vcs_agent_checkpoint_id` |  |
+| `vcs_agent_session_id` |  |
+| `version` |  |
+| `versions` |  |
+| `view_url` |  |
+| `web_url` |  |
+
+Operations: List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/artefacts/page`
+
+#### PageCiPipelineRun
+
+| Field | Description |
+| --- | --- |
+| `error` |  |
+| `id` |  |
+| `jobs` |  |
+
+Operations: Load.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/page`
+
 #### PageProjectRun
 
 | Field | Description |
@@ -3736,6 +7460,85 @@ API path: `/api/v1/organizations/{organization_id}/agents/page/activity`
 Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/page`
+
+#### PageRepoVcCommit
+
+| Field | Description |
+| --- | --- |
+| `commit` |  |
+| `diff_path` | Fingerprinted path serving this commit range's file diff. |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits/{id}/page`
+
+#### PagesBilling
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `breakdown` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` |  |
+| `can_manage_contact` |  |
+| `can_manage_extra_spend` |  |
+| `can_manage_local_subscription` |  |
+| `can_manage_payment_method` |  |
+| `can_set_up_billing` |  |
+| `customer` |  |
+| `deployment_usage_visible` |  |
+| `entitlements` |  |
+| `extra_spend_enabled` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | Whether the `billing` feature is on for this organization. |
+| `organization_id` |  |
+| `package` |  |
+| `prepaid` |  |
+| `preview` | Metronome draft invoice and credits, or null. |
+| `storage_usage` |  |
+| `stripe` |  |
+| `subscription` |  |
+| `token_account` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/billing`
+
+#### PagesGithubOnboarding
+
+| Field | Description |
+| --- | --- |
+| `onboarding` |  |
+| `organization` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/github_onboarding`
+
+#### PagesMember
+
+| Field | Description |
+| --- | --- |
+| `accepted_at` |  |
+| `accepted_by_user` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `email` |  |
+| `email_delivery_status` |  |
+| `expires_at` |  |
+| `expires_at_label` |  |
+| `id` |  |
+| `invite_url` |  |
+| `invited_by_user` |  |
+| `organization` |  |
+| `revoked_at` |  |
+| `role` |  |
+| `status` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/members`
 
 #### PagesProjectCredential
 
@@ -3812,6 +7615,105 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenarios`
 
+#### PagesRegistry
+
+| Field | Description |
+| --- | --- |
+| `active_repository_count` |  |
+| `error` |  |
+| `pagination` |  |
+| `repositories` |  |
+| `repository_count` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/registry`
+
+#### PagesSession
+
+| Field | Description |
+| --- | --- |
+| `adapter` |  |
+| `created_at` |  |
+| `cursor` |  |
+| `ended_at` |  |
+| `external_session_id` |  |
+| `facets` |  |
+| `from` |  |
+| `github_access_warnings` |  |
+| `harness` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` |  |
+| `last_activity_at` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` |  |
+| `limit` |  |
+| `markers` |  |
+| `max_bytes` |  |
+| `mode` |  |
+| `offset` |  |
+| `pagination` |  |
+| `query` |  |
+| `repo` |  |
+| `repository` |  |
+| `search` |  |
+| `search_enabled` |  |
+| `session` | Identical serialization to the org sessions page's expanded session, so the web reuses one session-detail builder. |
+| `sessions` |  |
+| `started_at` |  |
+| `stats` |  |
+| `status` |  |
+| `title` |  |
+| `to` |  |
+| `token_stats` |  |
+| `transcript_index` |  |
+| `transcript_stats` |  |
+| `updated_at` |  |
+| `user` |  |
+| `user_id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/sessions`
+
+#### Pairing
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/relay/pairings`
+
+#### PairingEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/relay/pairings/{id}/events`
+
+#### ParallelV1
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/local_agent/parallel/v1/extract`
+
+#### PatchsetDiff
+
+| Field | Description |
+| --- | --- |
+| `files` |  |
+| `id` |  |
+| `patchset` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/patchsets/{patchset_number}/diff/{fingerprint}`
+
 #### PersonalAccessToken
 
 | Field | Description |
@@ -3879,6 +7781,58 @@ API path: `/api/v1/hosting/apps/{app_id}/previews/{preview_id}/secrets/{id}/rota
 Operations: Create, List.
 
 API path: `/api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals`
+
+#### ProactiveAgentWaitlistEntry
+
+| Field | Description |
+| --- | --- |
+| `email` |  |
+| `first_task` | The first job they would hand an agent. |
+| `invite_code` | The referral code of the invite link they arrived through. |
+| `places_per_referral` | Most places one referral moves the entry up; fewer when boosted entries are ahead. |
+| `position` | 1-based place in the queue. |
+| `position_after_next_referral` | The place one more referral would give this entry, as Rails would assign it. |
+| `referral_code` | Shared in this entry's invite link. |
+| `referral_count` | People who joined through this entry's link. |
+| `total` | Display total including a random increment per signup; not the actual number of entries. |
+| `website` | Honeypot. |
+
+Operations: Create, Load.
+
+API path: `/api/v1/proactive_agent_waitlist_entries`
+
+#### Product
+
+| Field | Description |
+| --- | --- |
+| `activated_products` | Products this organization has activated (PRD 144). |
+| `agents_only` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` |  |
+| `created_at_label` |  |
+| `github_prs_authored_by_change_author` |  |
+| `id` |  |
+| `logo_url` |  |
+| `member_count` |  |
+| `name` |  |
+| `pending_invitation_count` |  |
+| `personal` |  |
+| `product` |  |
+| `repository_count` |  |
+| `role` |  |
+| `sandbox_region` |  |
+| `shared_agent_personal_accounts_enabled` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` |  |
+| `source_control_providers` | Connected source control providers for this organization. |
+| `source_ui_enabled` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `verify_pr_scenario_writing_enabled` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/products`
 
 #### ProductMapIdentityDecision
 
@@ -4420,6 +8374,41 @@ Operations: Create, Load, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share`
 
+#### PullRequestAction
+
+| Field | Description |
+| --- | --- |
+| `action_name` |  |
+| `body` |  |
+| `comment_id` |  |
+| `comments` |  |
+| `event` |  |
+| `expected_head_sha` |  |
+| `id` |  |
+| `label` |  |
+| `line` |  |
+| `node_id` |  |
+| `operation_key` |  |
+| `path` |  |
+| `run_id` |  |
+| `side` |  |
+| `start_line` |  |
+| `start_side` |  |
+| `thread_id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/actions`
+
+#### PullRequestMagicMerge
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/merge`
+
 #### PullRequestSetting
 
 | Field | Description |
@@ -4520,6 +8509,42 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/verify/pull_request_settings/detect_comments`
 
+#### PullRequestTranscript
+
+| Field | Description |
+| --- | --- |
+| `adapter` |  |
+| `created_at` |  |
+| `ended_at` |  |
+| `external_session_id` |  |
+| `harness` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` |  |
+| `last_activity_at` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` |  |
+| `repository` |  |
+| `started_at` |  |
+| `stats` |  |
+| `status` |  |
+| `title` |  |
+| `updated_at` |  |
+| `user` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/pull_request/{number}/transcripts`
+
+#### PullZone
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `name` |  |
+| `slug` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/pull_zones`
+
 #### Recorder
 
 | Field | Description |
@@ -4550,6 +8575,34 @@ Operations: Create.
 
 API path: `/api/v1/registry/v2/authorize`
 
+#### RelayAgentConnection
+
+| Field | Description |
+| --- | --- |
+| `agent_card_url` |  |
+| `auth_scheme` |  |
+| `can_configure` |  |
+| `can_disconnect` |  |
+| `can_setup` |  |
+| `connection` |  |
+| `credential` | Write-only outbound key. |
+| `error_code` |  |
+| `expected_generation` |  |
+| `generation` |  |
+| `id` |  |
+| `name` |  |
+| `remote_agent` |  |
+| `requester_id` |  |
+| `retired_at` |  |
+| `revoked_at` |  |
+| `scope_key` |  |
+| `source_operation_id` |  |
+| `state` |  |
+
+Operations: Create, List, Load, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup`
+
 #### RelayAgentLocalThread
 
 | Field | Description |
@@ -4559,6 +8612,263 @@ API path: `/api/v1/registry/v2/authorize`
 Operations: Remove.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/relay`
+
+#### RelaySignal
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/relay/signals`
+
+#### ReleaseRollout
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/execution/releases/{release_id}/rollouts/{id}/complete`
+
+#### Repo
+
+| Field | Description |
+| --- | --- |
+| `can_retry_import` | True when a failed client import can be requeued for CLI resume. |
+| `can_retry_sync` | True when the latest sync run failed and can be retried. |
+| `disclaimer` |  |
+| `federated_in_home` | True when this Space is a folder virtual repository inside the organization Home monorepo. |
+| `github_repository` |  |
+| `icon_name` |  |
+| `id` | Virtual repository public ID for non-Home rows; Home uses the physical repository public ID. |
+| `import_item_id` |  |
+| `is_home` |  |
+| `name` |  |
+| `remote_repository` |  |
+| `root_path` | Home-relative folder path when federated_in_home is true; null otherwise. |
+| `slug` |  |
+| `sync_error_message` |  |
+| `sync_provider` |  |
+| `sync_status` |  |
+
+Operations: List, Load, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos`
+
+#### RepoAccessToken
+
+| Field | Description |
+| --- | --- |
+| `access_token` |  |
+| `active` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `credential_purpose` | Issues a revocable read-write system credential valid for one hour. |
+| `expires_at` |  |
+| `expires_at_label` |  |
+| `expires_in_days` |  |
+| `id` |  |
+| `last_used_at` |  |
+| `last_used_at_label` |  |
+| `name` |  |
+| `permission_level` |  |
+| `plain_text_token` |  |
+| `revoked_at` |  |
+| `revoked_at_label` |  |
+| `token_preview` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/access_tokens`
+
+#### RepoAction
+
+| Field | Description |
+| --- | --- |
+| `pipeline` |  |
+| `run` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/actions`
+
+#### RepoAgentCheckpoint
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_checkpoints/{id}`
+
+#### RepoAgentSession
+
+| Field | Description |
+| --- | --- |
+| `adapter` |  |
+| `agent_session` |  |
+| `external_session_id` |  |
+| `id` |  |
+| `status` |  |
+| `title` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete`
+
+#### RepoBookmarkProtection
+
+| Field | Description |
+| --- | --- |
+| `actor_policy` |  |
+| `bypass_mode` |  |
+| `created_at` |  |
+| `created_by_user_id` |  |
+| `enabled` |  |
+| `id` |  |
+| `name` |  |
+| `organization_id` |  |
+| `priority` |  |
+| `repository_id` |  |
+| `requirements` |  |
+| `target_kind` |  |
+| `target_pattern` |  |
+| `updated_at` |  |
+| `updated_by_user_id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections`
+
+#### RepoBookmarkProtectionEvent
+
+| Field | Description |
+| --- | --- |
+| `action` |  |
+| `actor_kind` |  |
+| `actor_label` |  |
+| `actor_user_id` |  |
+| `bookmark_name` |  |
+| `bookmark_protection_rule_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `decision` |  |
+| `id` |  |
+| `intent` |  |
+| `metadata` |  |
+| `new_target` |  |
+| `old_target` |  |
+| `organization_id` |  |
+| `reason_codes` |  |
+| `repository_id` |  |
+| `source_request_id` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protection_events`
+
+#### RepoCloudWorkspaceBackup
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/restore_request`
+
+#### RepoCodeRule
+
+| Field | Description |
+| --- | --- |
+| `active_revision_number` |  |
+| `capabilities` |  |
+| `code_rule` |  |
+| `created_at` |  |
+| `definition` |  |
+| `draft_pending` | The latest revision is not the active one |
+| `enabled` |  |
+| `expected_version` |  |
+| `id` |  |
+| `latest_revision_number` |  |
+| `name` | Name of the latest revision |
+| `repository` |  |
+| `scope` |  |
+| `slug` |  |
+| `state_version` | Send back as expected_version on every mutation |
+| `updated_at` |  |
+| `web_url` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules`
+
+#### RepoSetting
+
+| Field | Description |
+| --- | --- |
+| `active` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `description` |  |
+| `expires_at` |  |
+| `expires_at_label` |  |
+| `icon_name` |  |
+| `id` |  |
+| `last_used_at` |  |
+| `last_used_at_label` |  |
+| `merge_authority` |  |
+| `name` |  |
+| `organization_id` |  |
+| `permission_level` |  |
+| `revoked_at` |  |
+| `revoked_at_label` |  |
+| `slug` |  |
+| `status` |  |
+| `token_preview` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings`
+
+#### RepoStat
+
+| Field | Description |
+| --- | --- |
+| `repository_stats` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/stats/refresh`
+
+#### RepoVc
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commit_file`
+
+#### RepoVcCommit
+
+| Field | Description |
+| --- | --- |
+| `name` |  |
+| `target_commit_id` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits`
 
 #### ReportReplay
 
@@ -4593,6 +8903,260 @@ API path: `/api/v1/organizations/{organization_id}/verify/explorations/{id}/repo
 Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/verify/explorations/{id}/report/scenarios`
+
+#### RepositoryAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/repository_access/authorize`
+
+#### RepositoryAccessResolve
+
+| Field | Description |
+| --- | --- |
+| `default_branch` |  |
+| `git_auth_username` |  |
+| `git_https_clone_url` |  |
+| `git_https_supported` |  |
+| `github_access_warnings` |  |
+| `id` |  |
+| `membership_role` |  |
+| `organization_id` |  |
+| `organization_name` |  |
+| `organization_slug` |  |
+| `repository_id` |  |
+| `repository_name` |  |
+| `repository_slug` |  |
+
+Operations: Load.
+
+API path: `/api/v1/repository_access/resolve/{org_slug}/{repo_slug}`
+
+#### RepositoryEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/repository_events/walgit`
+
+#### RepositoryImport
+
+| Field | Description |
+| --- | --- |
+| `can_manage_connections` |  |
+| `github_imports` |  |
+| `github_installations` |  |
+| `gitlab_configured` |  |
+| `gitlab_imports` |  |
+| `gitlab_integrations` |  |
+| `gitlab_redirect_uri` |  |
+| `gitlab_self_managed_available` |  |
+| `inventory_errors` |  |
+| `organization_id` |  |
+| `repositories` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/repository_import`
+
+#### RepositoryImportSession
+
+| Field | Description |
+| --- | --- |
+| `action_required` |  |
+| `authorization_endpoint` |  |
+| `can_authorize_github` |  |
+| `client_name` |  |
+| `client_version` |  |
+| `created_at` |  |
+| `error_message` |  |
+| `expires_at` |  |
+| `git_imports` |  |
+| `github_app_installation_id` |  |
+| `github_connected` |  |
+| `id` |  |
+| `idempotency_key` |  |
+| `organization_id` |  |
+| `organization_slug` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/repository_import_sessions/{id}/authorization`
+
+#### RepositoryImportSessionRepository
+
+| Field | Description |
+| --- | --- |
+| `default_branch` |  |
+| `full_name` |  |
+| `name` |  |
+| `owner` |  |
+| `private` |  |
+| `reason` |  |
+| `selectable` |  |
+| `status` |  |
+| `visibility` |  |
+
+Operations: List.
+
+API path: `/api/v1/repository_import_sessions/{id}/repositories`
+
+#### RepositoryImportSessionSelection
+
+| Field | Description |
+| --- | --- |
+| `repositories` |  |
+
+Operations: Create.
+
+API path: `/api/v1/repository_import_sessions/{id}/selections`
+
+#### RepositorySandboxEnvironment
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/repositories/{repository}/sandbox_environments/validate`
+
+#### RoderCodeRepair
+
+| Field | Description |
+| --- | --- |
+| `base_sha` |  |
+| `cancel_requested` |  |
+| `failure_code` |  |
+| `id` |  |
+| `launch_state` |  |
+| `organization_id` |  |
+| `repository_slug` |  |
+| `roder_thread_id` |  |
+| `roder_turn_id` |  |
+| `scenario_run_id` |  |
+| `task` |  |
+| `trigger_kind` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/agent/roder/code_repairs/{id}/cancel`
+
+#### RoderCodeRepairSetting
+
+| Field | Description |
+| --- | --- |
+| `available` |  |
+| `daily_limit` |  |
+| `enabled` |  |
+| `enabled_at` |  |
+| `operator_user_id` |  |
+| `organization_id` |  |
+| `repository_slug` | Connected Composal repository required when enabling |
+
+Operations: Create, List.
+
+API path: `/api/v1/agent/roder/code_repair_settings`
+
+#### RoderMachine
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Update.
+
+API path: `/api/v1/agent/roder/machines/{public_id}`
+
+#### RoderRun
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/agent/roder/run/swarm_activity`
+
+#### RoderWorkspaceCredential
+
+| Field | Description |
+| --- | --- |
+| `api_token` | Short-lived personal access token for the spawning user. |
+| `author_email` |  |
+| `author_name` |  |
+| `clone_url` |  |
+| `default_branch` |  |
+| `expires_at` |  |
+| `organization_id` |  |
+| `repository_id` |  |
+| `repository_slug` |  |
+| `repository_spec` | The explicitly selected physical repository address. |
+| `required_lifetime_seconds` | Lifetime the pending clone or command must be able to complete within. |
+| `token` | Short-lived read/write repository credential. |
+| `username` |  |
+
+Operations: Create.
+
+API path: `/api/v1/agent/roder/workspace_credentials`
+
+#### RunArtifact
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts`
+
+#### RunJob
+
+| Field | Description |
+| --- | --- |
+| `active` |  |
+| `allow_failure` |  |
+| `cache_archive_observations` | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `ci_pipeline_run_id` |  |
+| `ci_runner_id` |  |
+| `created_at` |  |
+| `dependencies_csv` |  |
+| `display_id` |  |
+| `environment_csv` |  |
+| `execution_order` |  |
+| `execution_profile` |  |
+| `exit_code` |  |
+| `failed` |  |
+| `finished_at` |  |
+| `id` |  |
+| `kind` |  |
+| `log_chunks` |  |
+| `name` |  |
+| `number` |  |
+| `organization_id` |  |
+| `queued_at` |  |
+| `reconciliation_id` |  |
+| `retry_number` |  |
+| `reuse` |  |
+| `runner_label_selector` |  |
+| `slug` |  |
+| `started_at` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `steps` |  |
+| `timeout_seconds` |  |
+| `updated_at` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs`
 
 #### RunScenarioRun
 
@@ -4661,6 +9225,95 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/verify/run_updates`
 
+#### RunWorkspaceCredential
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/agent/roder/run/workspace_credentials`
+
+#### RunnerLease
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim`
+
+#### RunnerPoolNodeEnrollmentToken
+
+| Field | Description |
+| --- | --- |
+| `capabilities_csv` |  |
+| `ci_runner_pool_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `creator_user_id` |  |
+| `description` |  |
+| `expires_at` |  |
+| `expires_at_label` |  |
+| `id` |  |
+| `kind` |  |
+| `last_used_at` |  |
+| `last_used_at_label` |  |
+| `name` |  |
+| `organization_id` |  |
+| `raw_token` |  |
+| `revoked_at` |  |
+| `status` |  |
+| `token_hint` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `usage_count` |  |
+| `usage_count_label` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/ci/runner_pools/{runner_pool_id}/node_enrollment_tokens/{id}/revoke`
+
+#### RunnerPoolRunner
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat`
+
+#### RuntimeInstanceHealthSnapshot
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots`
+
+#### SandboxIntegration
+
+| Field | Description |
+| --- | --- |
+| `can_manage` |  |
+| `catalog` |  |
+| `configuration` |  |
+| `connected_profiles` | Connected profiles per provider across the organization. |
+| `credentials` |  |
+| `enabled` |  |
+| `id` |  |
+| `integrations` |  |
+| `name` |  |
+| `provider` |  |
+| `version` |  |
+
+Operations: Create, List, Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/sandbox_integrations`
+
 #### ScenarioRevision
 
 | Field | Description |
@@ -4699,6 +9352,26 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/run`
 
+#### SecretGrant
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}/restore`
+
+#### SecretVersion
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}/redact`
+
 #### ServiceEndpoint
 
 | Field | Description |
@@ -4708,6 +9381,200 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints`
+
+#### Setting
+
+| Field | Description |
+| --- | --- |
+| `can_manage_pr_scenario_writing` |  |
+| `can_manage_sandbox_region` |  |
+| `dedicated_outbound_ip_addresses` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` |  |
+| `organization` |  |
+| `sandbox_regions` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/settings`
+
+#### SettingMutationLease
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/mutation_lease/clear`
+
+#### Signal
+
+| Field | Description |
+| --- | --- |
+| `acked_at` |  |
+| `acked_by` | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | Dispatched-run summary (docs §6c). |
+| `app_service_id` |  |
+| `attribution` | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
+| `created_at` | ISO8601 row insert time — retention math and debugging only. |
+| `dedupe_key` |  |
+| `hosted_app_id` |  |
+| `id` | The signal's own `sig_…` public id — also the paging cursor value. |
+| `kind` | A frozen taxonomy kind (§1) or an `app.custom.*` kind. |
+| `links` | Canonical, relative API paths built from real routes (docs §6a). |
+| `occurred_at` | ISO8601 domain event time — what the UI displays and `since` filters on. |
+| `organization_id` |  |
+| `payload` | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
+| `recovery` | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | Recovery pairing (docs §6b). |
+| `severity` | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
+| `source` | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
+| `subject_id` |  |
+| `subject_type` | Polymorphic pointer: `AppDeployment`, `RuntimeInstance`, `AlertEvent`, `HostedApp`, or `SignalSubscription`. |
+| `summary` | One-line, kind-composed human sentence for the feed row (docs §6d, e.g. |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/signals/{id}/ack`
+
+#### SignalInbound
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Update.
+
+API path: `/api/v1/signals/inbound/{provider}/{inbound_token}`
+
+#### SignalIntegration
+
+| Field | Description |
+| --- | --- |
+| `api_token` | Optional provider API token for target discovery and backfill. |
+| `api_token_stored` |  |
+| `config` |  |
+| `created_at` |  |
+| `failure_message` |  |
+| `id` | Public id (`sint_…`). |
+| `inbound_path` |  |
+| `inbound_url` | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` |  |
+| `last_verified_at` |  |
+| `mode` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` |  |
+| `organization_id` |  |
+| `provider` |  |
+| `rejected_signature_count` | Deliveries rejected for a bad or missing signature. |
+| `status` |  |
+| `target_count` |  |
+| `unmapped_delivery_count` | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` |  |
+| `webhook_secret` | The provider's signing secret. |
+| `webhook_secret_stored` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{id}/regenerate_inbound_token`
+
+#### SignalIntegrationDelivery
+
+| Field | Description |
+| --- | --- |
+| `attempt_count` |  |
+| `created_at` |  |
+| `delivery_id` | The provider's delivery id, or a `content-…` id derived from the event kind, its timestamp header and the body checksum when it sends none. |
+| `event_kind` |  |
+| `id` | Public id (`sdel_…`). |
+| `last_error` |  |
+| `ops_signal_id` | Public id (`sig_…`) of the signal this delivery emitted. |
+| `organization_id` |  |
+| `processed_at` |  |
+| `provider` |  |
+| `received_at` |  |
+| `signal_integration_id` |  |
+| `state` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/deliveries`
+
+#### SignalIntegrationTarget
+
+| Field | Description |
+| --- | --- |
+| `app_service_id` |  |
+| `created_at` |  |
+| `display_name` |  |
+| `enabled` |  |
+| `external_id` |  |
+| `external_kind` |  |
+| `external_slug` |  |
+| `hosted_app_id` |  |
+| `id` | Public id (`stgt_…`). |
+| `organization_id` |  |
+| `signal_integration_id` |  |
+| `signal_integration_targets` |  |
+| `targets` |  |
+| `updated_at` |  |
+
+Operations: List, Update.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/targets`
+
+#### SignalSubscription
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/organizations/{organization_id}/signal_subscriptions`
+
+#### Site
+
+| Field | Description |
+| --- | --- |
+| `activated_at` |  |
+| `activated_at_label` |  |
+| `commit_sha` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `creator_user_id` |  |
+| `deploy_slug` |  |
+| `failure_message` |  |
+| `file_count` |  |
+| `file_count_label` |  |
+| `finished_at` |  |
+| `finished_at_label` |  |
+| `id` |  |
+| `is_active` |  |
+| `source_ref` |  |
+| `started_at` |  |
+| `started_at_label` |  |
+| `static_site_id` |  |
+| `status` |  |
+| `total_bytes` |  |
+| `total_bytes_label` |  |
+| `trigger_kind` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `uploaded_at` |  |
+| `uploaded_at_label` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/sites`
+
+#### SiteAccessKey
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys`
 
 #### SitePreview
 
@@ -4720,6 +9587,18 @@ API path: `/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints`
 Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/site_preview`
+
+#### SiteSecret
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `native_agent_id` |  |
+| `value` |  |
+
+Operations: Remove, Update.
+
+API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/secrets/{secret_name}`
 
 #### SlackChannel
 
@@ -4735,6 +9614,235 @@ API path: `/api/v1/organizations/{organization_id}/verify/site_preview`
 Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/slack/channels`
+
+#### SourceConnection
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/source_connections/{id}/refresh`
+
+#### SpaceAlertRule
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/spaces/{space_id}/alert_rules/{id}/activate`
+
+#### SpaceAuditEvent
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/observability/spaces/{space_id}/audit_events`
+
+#### SpaceDnsRecord
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/dns_records`
+
+#### SpaceEnrollmentToken
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}/revoke`
+
+#### SpaceGateway
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/gateways/{id}/heartbeat`
+
+#### SpaceGroup
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/groups`
+
+#### SpaceGroupMembership
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/group_memberships`
+
+#### SpaceLogStream
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/observability/spaces/{space_id}/log_streams`
+
+#### SpaceMetricSery
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/observability/spaces/{space_id}/metric_series`
+
+#### SpaceOtelCollector
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/observability/spaces/{space_id}/otel_collectors/{id}/activate`
+
+#### SpacePeer
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/peers/{id}/approve`
+
+#### SpacePeerAttachment
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/peer_attachments`
+
+#### SpacePolicy
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/policies/{id}/activate`
+
+#### SpaceSegment
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create, List, Load, Patch, Remove, Update.
+
+API path: `/api/v1/networking/spaces/{space_id}/segments`
+
+#### SpaceTraceSpan
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, List.
+
+API path: `/api/v1/observability/spaces/{space_id}/trace_spans`
+
+#### Spark
+
+| Field | Description |
+| --- | --- |
+| `activated_products` | Products this organization has activated (PRD 144). |
+| `agents_only` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `can_manage` |  |
+| `compute_credit_cents` | Included compute the workspace started Sparks with, when it is on compute billing. |
+| `created_at` |  |
+| `created_at_label` |  |
+| `credit_cents` | Inference credit the workspace started Sparks with. |
+| `first_spark` | Null until the first Spark exists or when the viewer cannot read it. |
+| `github_connected` |  |
+| `github_prs_authored_by_change_author` |  |
+| `id` |  |
+| `jsonrpc` |  |
+| `logo_url` |  |
+| `member_count` |  |
+| `method` |  |
+| `name` |  |
+| `params` |  |
+| `pending_invitation_count` |  |
+| `personal` |  |
+| `repository_count` |  |
+| `role` |  |
+| `sandbox_region` |  |
+| `shared_agent_personal_accounts_enabled` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` |  |
+| `source_control_providers` | Connected source control providers for this organization. |
+| `source_ui_enabled` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `started` | Whether the workspace has started Sparks. |
+| `timezone` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` |  |
+| `updated_at_label` |  |
+| `verify_pr_scenario_writing_enabled` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/sparks`
+
+#### SparkAgentIntegration
+
+| Field | Description |
+| --- | --- |
+| `account_counts` | Accounts the viewer can see per toolkit, across all account pages. |
+| `accounts_path` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
+| `added_toolkits` | Apps with a connected or connecting account the viewer can see. |
+| `can_manage` |  |
+| `can_manage_organization` |  |
+| `catalog` |  |
+| `connect_as` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
+| `connect_as_by_toolkit` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_counts` | Signed-in accounts per toolkit, across all account pages. |
+| `connection_id` |  |
+| `connections` |  |
+| `email` | A native agent's own email address. |
+| `enabled` |  |
+| `enabled_toolkits` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `generation` |  |
+| `pagination` |  |
+| `pending_counts` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
+| `personal_creation_key_supported` | The personal account creation endpoint honors a creation key. |
+| `private_agent` | Only the agent's owner can chat with it. |
+| `shared_agent_personal_accounts_enabled` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
+| `slack` |  |
+| `webhook_connections` |  |
+| `webhooks_available` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations`
 
 #### SparkAgentLocalThread
 
@@ -4777,6 +9885,134 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/slack/chann
 Operations: Create, Load, Update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads`
+
+#### SparkAgentSite
+
+| Field | Description |
+| --- | --- |
+| `deployed_at` |  |
+| `deployments_count` |  |
+| `hostname` |  |
+| `https` | Whether the organization's certificate serves this site over HTTPS |
+| `id` |  |
+| `name` |  |
+| `url` |  |
+| `visibility` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/sites`
+
+#### SparkAgentSkill
+
+| Field | Description |
+| --- | --- |
+| `available` |  |
+| `can_configure` |  |
+| `can_manage` |  |
+| `configuration_state` | The requested managed skill selection is awaiting runtime qualification. |
+| `description` |  |
+| `enabled` |  |
+| `name` |  |
+| `skills` |  |
+| `version` |  |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/skills`
+
+#### SparkAgentThread
+
+| Field | Description |
+| --- | --- |
+| `archived_count` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
+| `can_create` |  |
+| `execution` |  |
+| `first_input` |  |
+| `first_input_key` | Idempotency-Key that finds the first message through input_delivery. |
+| `first_input_requester_membership_id` | Membership the first message was sent as, for input_delivery. |
+| `id` |  |
+| `inherit_context` | Include the source conversation through its last completed reply. |
+| `local_activities` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
+| `local_archived_count` | Local Claude Code and Codex threads archived on their computers. |
+| `local_next_cursor` |  |
+| `local_scope_key` |  |
+| `local_status_pending` | A computer is reporting newer local thread statuses; read the page again shortly. |
+| `local_threads` |  |
+| `main_thread_id` |  |
+| `message` | The thread's first message. |
+| `next_cursor` |  |
+| `parent_conversation_id` | Optional source conversation belonging to this agent. |
+| `requester_membership_id` |  |
+| `selected_thread` |  |
+| `thread` |  |
+| `threads` |  |
+| `title` |  |
+| `total_archived_count` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+Operations: Create, List.
+
+API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive`
+
+#### SparkCredit
+
+| Field | Description |
+| --- | --- |
+| `amount_cents` | Purchase amount in USD cents. |
+| `autofill` |  |
+| `autofill_payment_unconfirmed` |  |
+| `available_usd` |  |
+| `billing_unit` | Compute minute quote version returned by the billing summary. |
+| `can_manage` |  |
+| `compute_minutes` |  |
+| `compute_usd` |  |
+| `credits_per_usd` |  |
+| `inference_usd` |  |
+| `kind` |  |
+| `payment_method` |  |
+| `payments_enabled` |  |
+| `plan` |  |
+| `plans` |  |
+| `quoted_credits_cents` | Grant shown for a top-up or subscription, in usage cents. |
+| `quoted_price_cents` | Monthly cash price shown for a subscription, in USD cents. |
+| `refill_limits_cents` |  |
+| `refill_options` |  |
+| `refill_thresholds_cents` |  |
+| `request_key` |  |
+| `settings` |  |
+| `starter_cents` |  |
+| `top_up_max_cents` | Maximum manual top-up, in USD cents. |
+| `top_up_step_cents` | Minimum manual top-up and increment, in USD cents. |
+
+Operations: Create, List, Load, Patch, Update.
+
+API path: `/api/v1/organizations/{org_slug}/spark_credits`
+
+#### SparkCreditAgentUsage
+
+| Field | Description |
+| --- | --- |
+| `agents` |  |
+| `all` |  |
+| `days` |  |
+| `id` |  |
+| `owners` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/spark_credits/agent_usage/{agent_id}`
+
+#### SparkCreditUsageTotal
+
+| Field | Description |
+| --- | --- |
+| `compute_minutes_used` |  |
+| `compute_usd` |  |
+| `inference_usd` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/spark_credits/usage_totals`
 
 #### StaticSite
 
@@ -4873,6 +10109,78 @@ Operations: Create, List, Load, Patch, Remove, Update.
 
 API path: `/api/v1/static_sites/{static_site_id}/domains/{id}/provision`
 
+#### StatusChange
+
+| Field | Description |
+| --- | --- |
+| `change_id` |  |
+| `id` |  |
+| `patchsets` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/changes/{id}`
+
+#### StatusCommit
+
+| Field | Description |
+| --- | --- |
+| `checks` |  |
+| `commit_sha` |  |
+| `counts` |  |
+| `id` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `total` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/commits/{commit_sha}`
+
+#### StatusPatchset
+
+| Field | Description |
+| --- | --- |
+| `checks` |  |
+| `checks_status` |  |
+| `commit_sha` |  |
+| `counts` |  |
+| `id` |  |
+| `patchset_id` |  |
+| `status` |  |
+| `status_label` |  |
+| `status_state` |  |
+| `status_tone` |  |
+| `total` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/patchsets/{id}`
+
+#### StripeWebhook
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/stripe/webhooks`
+
+#### SubmitTelemetry
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/submit_telemetry`
+
 #### SubscriptionModel
 
 | Field | Description |
@@ -4888,6 +10196,113 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions/models`
 
+#### SwarmEvent
+
+| Field | Description |
+| --- | --- |
+| `agent_swarm_id` |  |
+| `attempt_id` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `kind` |  |
+| `payload` |  |
+| `reason` |  |
+| `scheduler_generation` |  |
+| `task_id` |  |
+
+Operations: List.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/events`
+
+#### SwarmLive
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/agent/swarms/{id}/live/replay`
+
+#### SwarmNote
+
+| Field | Description |
+| --- | --- |
+| `task_id` | A task public id; omitted |
+| `text` |  |
+
+Operations: Create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/notes`
+
+#### SwarmTask
+
+| Field | Description |
+| --- | --- |
+| `acceptance_commands` |  |
+| `agent_swarm_id` |  |
+| `assigned_runner_id` |  |
+| `blocked_reason` |  |
+| `changes` |  |
+| `commit_count` |  |
+| `commit_sha_result` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `current_attempt_id` |  |
+| `deadline_at` |  |
+| `depends_on_task_ids` |  |
+| `depth` |  |
+| `diff_artifact_url` |  |
+| `display_id` |  |
+| `environment_profile` |  |
+| `error_message` |  |
+| `failure_code` |  |
+| `finished_at` |  |
+| `finished_at_label` |  |
+| `harness` |  |
+| `id` |  |
+| `input_revision` |  |
+| `iteration` |  |
+| `landing_state` |  |
+| `model` |  |
+| `model_provider` |  |
+| `number` |  |
+| `organization_id` |  |
+| `owned_paths` |  |
+| `parent_task_id` |  |
+| `position` |  |
+| `prompt` |  |
+| `queued_at` |  |
+| `queued_at_label` |  |
+| `reasoning_effort` |  |
+| `recent_activity` |  |
+| `repo_url` |  |
+| `result` |  |
+| `retry_number` |  |
+| `role` |  |
+| `run_id` |  |
+| `stack_after_task_id` |  |
+| `started_at` |  |
+| `started_at_label` |  |
+| `status` |  |
+| `title` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List, Load.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks`
+
+#### TaskLease
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Create.
+
+API path: `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_jev`
+
 #### ThreadPreview
 
 | Field | Description |
@@ -4899,6 +10314,224 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptio
 Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/previews`
+
+#### ThreadPreviewAccess
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create, Load.
+
+API path: `/api/v1/thread_preview_access/redeem`
+
+#### ToolFeedback
+
+| Field | Description |
+| --- | --- |
+| `category` |  |
+| `created_at` |  |
+| `details` |  |
+| `feedback` |  |
+| `id` |  |
+| `metadata` | Caller-supplied session context; no secrets or transcripts |
+| `organization_id` |  |
+| `source` |  |
+| `summary` |  |
+| `user_id` |  |
+
+Operations: Create, Load.
+
+API path: `/api/v1/organizations/{organization_id}/tool_feedbacks`
+
+#### Transcript
+
+| Field | Description |
+| --- | --- |
+| `agent` |  |
+| `author` |  |
+| `checkpoint_pagination` |  |
+| `checkpoints` |  |
+| `id` |  |
+| `last_checkpoint_at` |  |
+| `selected_checkpoint` |  |
+| `source_url` |  |
+| `started_at` |  |
+| `status` |  |
+| `title` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/transcripts/search`
+
+#### V1Message
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/spark/organizations/{organization_id}/inference/v1/messages`
+
+#### VcBranch
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+| `name` |  |
+| `target_commit_id` |  |
+
+Operations: Create, List, Remove.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/branches`
+
+#### VcBrowser
+
+| Field | Description |
+| --- | --- |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/browser/file`
+
+#### VcChange
+
+| Field | Description |
+| --- | --- |
+| `activity` |  |
+| `canonical_path` |  |
+| `change` |  |
+| `checks` |  |
+| `checks_status` |  |
+| `description` |  |
+| `group` |  |
+| `id` |  |
+| `jj_change_id` |  |
+| `labels` |  |
+| `landing` | Server-computed submitted-together closure and landing preflight. |
+| `number` |  |
+| `patchset_number` |  |
+| `previews` |  |
+| `primary_status` |  |
+| `public_id` |  |
+| `related_changes` |  |
+| `relation_chain` |  |
+| `restack_state` |  |
+| `review_summary` |  |
+| `stack` |  |
+| `status` |  |
+| `sync` |  |
+| `target` |  |
+| `target_advanced` |  |
+| `target_branch` |  |
+| `title` |  |
+| `url` |  |
+
+Operations: Create, List, Load, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/abandon`
+
+#### VcChangeGroup
+
+| Field | Description |
+| --- | --- |
+| `changes` |  |
+| `id` |  |
+| `name` |  |
+| `number` |  |
+| `status` |  |
+| `title` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups`
+
+#### VcFile
+
+| Field | Description |
+| --- | --- |
+| `paths` |  |
+| `truncated` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/files`
+
+#### VcMergeQueue
+
+| Field | Description |
+| --- | --- |
+| `analytics` | Queue performance for the reporting window. |
+| `id` |  |
+| `policy` |  |
+| `queue` |  |
+| `target_branches` | Bookmark names for the target picker. |
+
+Operations: Create, List, Load, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/pause`
+
+#### VcStack
+
+| Field | Description |
+| --- | --- |
+| `alias_ref_name` |  |
+| `changes` |  |
+| `code` |  |
+| `id` |  |
+| `landing` | Compact landing state for the Stack CLI. |
+| `member_count` |  |
+| `name` |  |
+| `ref_name` |  |
+| `status` |  |
+| `tip_change_number` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List, Load, Update.
+
+API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/stacks`
+
+#### VcsNode
+
+| Field | Description |
+| --- | --- |
+| `account_avatar_url` |  |
+| `account_id` |  |
+| `account_login` |  |
+| `created_at` |  |
+| `created_at_label` |  |
+| `id` |  |
+| `installation_id` |  |
+| `installed_at` |  |
+| `installed_at_label` |  |
+| `manage_access_url` |  |
+| `organization_id` |  |
+| `permission_entries` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` |  |
+| `status` |  |
+| `suspended_at` |  |
+| `suspended_at_label` |  |
+| `updated_at` |  |
+| `updated_at_label` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/vcs_nodes`
+
+#### VcsSetting
+
+| Field | Description |
+| --- | --- |
+| `can_manage_pr_scenario_writing` |  |
+| `can_manage_sandbox_region` |  |
+| `dedicated_outbound_ip_addresses` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` |  |
+| `organization` |  |
+| `sandbox_regions` |  |
+
+Operations: List.
+
+API path: `/api/v1/organizations/{org_slug}/pages/vcs_settings`
 
 #### VerificationProjectCredential
 
@@ -5073,6 +10706,43 @@ Operations: Create, Load, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/verify/browser_sessions/{id}/save`
 
+#### VerifyEmailVerification
+
+| Field | Description |
+| --- | --- |
+
+Operations: List.
+
+API path: `/api/v1/email_verifications/verify`
+
+#### VerifySignalIntegration
+
+| Field | Description |
+| --- | --- |
+| `api_token_stored` |  |
+| `config` |  |
+| `created_at` |  |
+| `failure_message` |  |
+| `id` | Public id (`sint_…`). |
+| `inbound_path` |  |
+| `inbound_url` | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` |  |
+| `last_verified_at` |  |
+| `mode` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` |  |
+| `organization_id` |  |
+| `provider` |  |
+| `rejected_signature_count` | Deliveries rejected for a bad or missing signature. |
+| `status` |  |
+| `target_count` |  |
+| `unmapped_delivery_count` | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` |  |
+| `webhook_secret_stored` |  |
+
+Operations: Create.
+
+API path: `/api/v1/organizations/{organization_id}/signal_integrations/{id}/verify`
+
 #### VerifyStaticSiteDomain
 
 | Field | Description |
@@ -5122,6 +10792,15 @@ Operations: List.
 
 API path: `/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/logs`
 
+#### WaitlistApplication
+
+| Field | Description |
+| --- | --- |
+
+Operations: Create.
+
+API path: `/api/v1/waitlist_applications`
+
 #### WebBotAuth
 
 | Field | Description |
@@ -5133,6 +10812,16 @@ API path: `/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/v
 Operations: Create.
 
 API path: `/api/v1/verify/web_bot_auth`
+
+#### WebhookGitlab
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Update.
+
+API path: `/api/v1/webhooks/gitlab/{connection_key}`
 
 #### WorkflowRunStep
 
@@ -5163,9 +10852,133 @@ Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers/{trigger_id}/skipped/{delivery_id}/run`
 
+#### WorkspaceActivity
+
+| Field | Description |
+| --- | --- |
+| `live_activity` |  |
+| `recent_items` |  |
+| `unresolved_notification_count` |  |
+
+Operations: Load.
+
+API path: `/api/v1/organizations/{org_slug}/pages/workspace_activity`
+
+#### WorkspaceActivityNotification
+
+| Field | Description |
+| --- | --- |
+| `id` |  |
+
+Operations: Update.
+
+API path: `/api/v1/organizations/{org_slug}/workspace_activity/notifications/{id}/dismissal`
+
+#### WorkspaceSpace
+
+| Field | Description |
+| --- | --- |
+| `created_at` |  |
+| `default_branch` |  |
+| `description` |  |
+| `hidden` |  |
+| `icon_name` |  |
+| `id` |  |
+| `import_status` |  |
+| `name` |  |
+| `organization_id` |  |
+| `position` |  |
+| `repository_id` |  |
+| `repository_slug` |  |
+| `slug` |  |
+| `status` |  |
+| `updated_at` |  |
+
+Operations: Create, List, Load.
+
+API path: `/api/v1/organizations/{organization_id}/workspace_spaces`
+
+#### WorkspaceSpacePreference
+
+| Field | Description |
+| --- | --- |
+| `preferences` |  |
+| `spaces` |  |
+
+Operations: Update.
+
+API path: `/api/v1/organizations/{organization_id}/workspace_spaces/preferences`
+
 
 
 ## Entities
+
+
+### A2aWellKnown
+
+Create an instance: `local a2a_well_known = client:A2aWellKnown(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AdminOrg
+
+Create an instance: `local admin_org = client:AdminOrg(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `billing_email` | `string|nil` |  |
+| `billing_reason` | `string` | Required when setting an agreed price |
+| `customize_onboarding_packages` | `boolean` |  |
+| `deployment_usage_visibility` | `string` |  |
+| `deployment_usage_visible` | `boolean` |  |
+| `id` | `string` |  |
+| `monthly_price_dollars` | `string|number` | Ongoing USD workspace price, for example '50.00' |
+| `monthly_price_override_cents` | `number|nil` |  |
+| `name` | `string` |  |
+| `onboarding_custom_pricing` | `boolean` |  |
+| `onboarding_package_keys` | `table|nil` | Package keys offered when customizing onboarding. |
+| `owner_email` | `string` |  |
+| `package_id` | `string|nil` | Active customer package public ID. |
+| `skip_payment` | `boolean` | Grant the selected package as an ongoing complimentary subscription with monthly included usage and package limits. |
+| `slug` | `string` |  |
+
+#### Example: Load
+
+```lua
+local admin_org, err = client:AdminOrg():load({ id = "admin_org_id" })
+```
+
+#### Example: List
+
+```lua
+local admin_orgs, err = client:AdminOrg():list()
+```
+
+#### Example: Create
+
+```lua
+local admin_org, err = client:AdminOrg():create({
+  name = "example_name", -- string
+  owner_email = "example_owner_email", -- string
+  slug = "example_slug", -- string
+})
+```
 
 
 ### Agent
@@ -5249,6 +11062,73 @@ local agent, err = client:Agent():create({
   name = "example_name", -- string
 })
 ```
+
+
+### AgentApp
+
+Create an instance: `local agent_app = client:AgentApp(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `author` | `table` |  |
+| `can_message` | `boolean` | The viewer may send input to the author agent |
+| `deployments_count` | `number` | Increases with every deploy of the site |
+| `description` | `string` |  |
+| `hidden_install_count` | `number` | Installs by agents the viewer cannot open |
+| `id` | `string` |  |
+| `install_count` | `number` |  |
+| `install_targets` | `table` | Active agents the viewer owns or manages, which they can install apps on |
+| `installed_by` | `table` |  |
+| `installed_target_ids` | `table` | Install targets of the viewer that have this app installed |
+| `items` | `table` |  |
+| `mcp_url` | `string|nil` |  |
+| `next_cursor` | `string|nil` | Pass as cursor to load older apps |
+| `owner` | `table` | The person who controls the author agent |
+| `thread` | `any` | The thread that published the app, when the viewer can open the author agent |
+| `title` | `string` |  |
+| `url` | `string` |  |
+| `visibility` | `string` |  |
+
+#### Example: Load
+
+```lua
+local agent_app, err = client:AgentApp():load({ id = "agent_app_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local agent_apps, err = client:AgentApp():list({ organization_id = "example" })
+```
+
+
+### AgentAppInstall
+
+Create an instance: `local agent_app_install = client:AgentAppInstall(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `installed` | `boolean` |  |
 
 
 ### AgentAttachment
@@ -5390,6 +11270,7 @@ Create an instance: `local agent_connection = client:AgentConnection(nil)`
 | `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
 
@@ -5397,49 +11278,285 @@ Create an instance: `local agent_connection = client:AgentConnection(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `agent_card_url` | `string` |  |
-| `auth_scheme` | `string` |  |
-| `can_configure` | `boolean` |  |
-| `can_disconnect` | `boolean` |  |
-| `can_setup` | `boolean` |  |
+| `actions` | `table` |  |
+| `activity` | `table` |  |
+| `admin_disabled_at` | `string|nil` |  |
+| `agent_tools` | `boolean` |  |
+| `authentication` | `string` |  |
+| `authorized_at` | `string|nil` |  |
+| `can_create_account` | `boolean` | Whether another account can be created directly from this provider. |
+| `capabilities` | `table` |  |
+| `catalog_section` | `string` | Server-owned grouping in the agent integration catalog. |
+| `category` | `string` | Short product label, such as CRM or Email. |
+| `certification` | `string` |  |
+| `checked_at` | `string|nil` |  |
 | `connection` | `table` |  |
-| `credential` | `string|nil` | Write-only outbound key. |
-| `error_code` | `string|nil` |  |
-| `expected_generation` | `number` |  |
+| `consent` | `table|nil` |  |
+| `created_at` | `string` |  |
+| `creation_key` | `string` | Reuse the same key to recover the account after an interrupted response. |
+| `custodian_id` | `string|nil` |  |
+| `description` | `string` | One-line catalog description of the app. |
+| `disabled_reason` | `string|nil` |  |
+| `failure_code` | `string|nil` |  |
 | `generation` | `number` |  |
+| `grants` | `table` |  |
+| `grants_pagination` | `table` |  |
 | `id` | `string` |  |
+| `limits` | `table` |  |
 | `name` | `string` |  |
-| `remote_agent` | `string|nil` |  |
-| `requester_id` | `string` |  |
-| `retired_at` | `string|nil` |  |
+| `organization_id` | `string` |  |
+| `owner_name` | `string` |  |
+| `ownership_kind` | `string` |  |
+| `pagination` | `table` |  |
+| `policy_digest` | `string` |  |
+| `provider` | `table` |  |
+| `provider_disabled_reason` | `string|nil` |  |
+| `provider_identity` | `table` |  |
 | `revoked_at` | `string|nil` |  |
-| `scope_key` | `string` |  |
-| `source_operation_id` | `string|nil` |  |
-| `state` | `string` |  |
+| `schema_version` | `number` |  |
+| `status` | `string` |  |
+| `toolkit` | `string` |  |
+| `triggers` | `table` |  |
+| `updated_at` | `string` |  |
+| `user_id` | `string` |  |
+| `version` | `string` |  |
 
 #### Example: Load
 
 ```lua
-local agent_connection, err = client:AgentConnection():load({ id = "agent_connection_id", agent_id = "agent_id", organization_id = "organization_id" })
+local agent_connection, err = client:AgentConnection():load({ id = "agent_connection_id", organization_id = "organization_id" })
 ```
 
 #### Example: List
 
 ```lua
-local agent_connections, err = client:AgentConnection():list({ agent_id = "example", organization_id = "example" })
+local agent_connections, err = client:AgentConnection():list({ organization_id = "example" })
 ```
 
 #### Example: Create
 
 ```lua
 local agent_connection, err = client:AgentConnection():create({
-  agent_id = "example_agent_id", -- string
   organization_id = "example_organization_id", -- string
-  agent_card_url = "example_agent_card_url", -- string
-  auth_scheme = "example_auth_scheme", -- string
   name = "example_name", -- string
+  toolkit = "example_toolkit", -- string
 })
 ```
+
+
+### AgentConnectionDelegation
+
+Create an instance: `local agent_connection_delegation = client:AgentConnectionDelegation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `authorized_by_id` | `string` |  |
+| `automation_connection_grant_id` | `string` |  |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `member_name` | `string` |  |
+| `revoked_at` | `string|nil` |  |
+| `roles` | `table` |  |
+| `usable` | `boolean` |  |
+| `user_id` | `string` |  |
+
+#### Example: List
+
+```lua
+local agent_connection_delegations, err = client:AgentConnectionDelegation():list({ agent_connection_id = "example", organization_id = "example" })
+```
+
+
+### AgentConnectionGrant
+
+Create an instance: `local agent_connection_grant = client:AgentConnectionGrant(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `actions` | `table` |  |
+| `agent_connection_id` | `string` |  |
+| `automation_id` | `string` |  |
+| `connection_generation` | `number` |  |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `organization_id` | `string` |  |
+| `revision` | `number` |  |
+| `revoked_at` | `string|nil` |  |
+| `status` | `string` |  |
+| `usable` | `boolean` |  |
+| `user_id` | `string` |  |
+
+#### Example: List
+
+```lua
+local agent_connection_grants, err = client:AgentConnectionGrant():list({ agent_connection_id = "example", organization_id = "example" })
+```
+
+
+### AgentConnectionResource
+
+Create an instance: `local agent_connection_resource = client:AgentConnectionResource(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cursor` | `string|nil` |  |
+| `next_cursor` | `string|nil` |  |
+| `query` | `string` |  |
+| `resources` | `table` |  |
+
+#### Example: Create
+
+```lua
+local agent_connection_resource, err = client:AgentConnectionResource():create({
+  agent_connection_id = "example_agent_connection_id", -- string
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### AgentConnectionSafetyControl
+
+Create an instance: `local agent_connection_safety_control = client:AgentConnectionSafetyControl(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `admin_disabled_at` | `string|nil` |  |
+| `authorized_at` | `string|nil` |  |
+| `checked_at` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `custodian_id` | `string|nil` |  |
+| `failure_code` | `string|nil` |  |
+| `generation` | `number` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `owner_name` | `string` |  |
+| `ownership_kind` | `string` |  |
+| `provider_disabled_reason` | `string|nil` |  |
+| `provider_identity` | `table` |  |
+| `revoked_at` | `string|nil` |  |
+| `status` | `string` |  |
+| `toolkit` | `string` |  |
+| `updated_at` | `string` |  |
+| `user_id` | `string` |  |
+
+#### Example: List
+
+```lua
+local agent_connection_safety_controls, err = client:AgentConnectionSafetyControl():list({ organization_id = "example" })
+```
+
+
+### AgentConnectionTriggerSubscription
+
+Create an instance: `local agent_connection_trigger_subscription = client:AgentConnectionTriggerSubscription(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_connection_id` | `string` |  |
+| `configuration` | `table` |  |
+| `created_at` | `string` |  |
+| `defaults` | `table` |  |
+| `delivery` | `string` |  |
+| `enabled` | `boolean` |  |
+| `failure_code` | `string|nil` |  |
+| `failure_request_id` | `string|nil` |  |
+| `id` | `string` |  |
+| `latency` | `string` |  |
+| `name` | `string` |  |
+| `reconcile_at` | `string` |  |
+| `reconciliation_uncertain` | `boolean` |  |
+| `remote_enabled` | `boolean|nil` |  |
+| `replacement_id` | `string|nil` |  |
+| `retired_at` | `string|nil` |  |
+| `retirement_completed_at` | `string|nil` |  |
+| `schema` | `table` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `toolkit` | `string` |  |
+| `toolkit_version` | `string` |  |
+| `trigger_slug` | `string` |  |
+| `updated_at` | `string` |  |
+| `version` | `string` |  |
+| `waiting_for_retirement` | `boolean` |  |
+
+#### Example: List
+
+```lua
+local agent_connection_trigger_subscriptions, err = client:AgentConnectionTriggerSubscription():list({ agent_connection_id = "example", organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local agent_connection_trigger_subscription, err = client:AgentConnectionTriggerSubscription():create({
+  agent_connection_id = "example_agent_connection_id", -- string
+  organization_id = "example_organization_id", -- string
+  configuration = {}, -- table
+  trigger_slug = "example_trigger_slug", -- string
+})
+```
+
+
+### AgentContextCheckpoint
+
+Create an instance: `local agent_context_checkpoint = client:AgentContextCheckpoint(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### AgentControlFlow
@@ -5532,6 +11649,23 @@ local agent_email, err = client:AgentEmail():load({ id = "agent_email_id", agent
 ```
 
 
+### AgentEvent
+
+Create an instance: `local agent_event = client:AgentEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```lua
+local agent_events, err = client:AgentEvent():list({ agent_id = "example", organization_id = "example" })
+```
+
+
 ### AgentFile
 
 Create an instance: `local agent_file = client:AgentFile(nil)`
@@ -5607,51 +11741,124 @@ Create an instance: `local agent_integration = client:AgentIntegration(nil)`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
 | `account_counts` | `table` | Accounts the viewer can see per toolkit, across all account pages. |
-| `accounts_path` | `string` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
-| `added_toolkits` | `table` | Apps with a connected or connecting account the viewer can see. |
+| `can_cancel_sign_in` | `boolean` | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `boolean` |  |
+| `can_disconnect` | `boolean` |  |
+| `can_enable` | `boolean` |  |
 | `can_manage` | `boolean` |  |
-| `can_manage_organization` | `boolean` |  |
+| `can_manage_sharing` | `boolean` |  |
+| `can_reconnect` | `boolean` |  |
+| `can_sync` | `boolean` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
 | `catalog` | `table` |  |
-| `connect_as` | `string|nil` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
-| `connect_as_by_toolkit` | `table` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_by` | `string|nil` | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `boolean` | True when the viewer is the person whose sign-in this account is. |
 | `connected_counts` | `table` | Signed-in accounts per toolkit, across all account pages. |
-| `connection_id` | `string` |  |
 | `connections` | `table` |  |
-| `email` | `table` | A native agent's own email address. |
-| `enabled` | `boolean` |  |
-| `enabled_toolkits` | `table` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `creation_key` | `string` | Stable identity for retrying this creation; retain it after an uncertain response. |
+| `creation_key_digest` | `string|nil` | SHA-256 of the unfinished setup key for its original creator. |
 | `generation` | `number` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
 | `pagination` | `table` |  |
 | `pending_counts` | `table` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
-| `personal_creation_key_supported` | `boolean` | The personal account creation endpoint honors a creation key. |
-| `private_agent` | `boolean` | Only the agent's owner can chat with it. |
-| `shared_agent_personal_accounts_enabled` | `boolean` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
-| `slack` | `table` |  |
-| `webhook_connections` | `table` |  |
-| `webhooks_available` | `boolean` |  |
+| `provider_disabled_reason` | `string|nil` |  |
+| `provider_identity` | `table` |  |
+| `provider_name` | `string|nil` | The app's display name; null for a custom MCP server, which uses the account name. |
+| `reference` | `string` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `string` | Agent account audience, including legacy personal and paused access. |
+| `status` | `string` |  |
+| `team_sharing_enabled` | `boolean` |  |
+| `team_sharing_version` | `number` |  |
+| `toolkit` | `string` |  |
+
+#### Example: Load
+
+```lua
+local agent_integration, err = client:AgentIntegration():load({ id = "agent_integration_id", organization_id = "organization_id" })
+```
 
 #### Example: List
 
 ```lua
-local agent_integrations, err = client:AgentIntegration():list({ agent_id = "example", organization_id = "example" })
+local agent_integrations, err = client:AgentIntegration():list({ organization_id = "example" })
 ```
 
 #### Example: Create
 
 ```lua
 local agent_integration, err = client:AgentIntegration():create({
-  agent_id = "example_agent_id", -- string
   organization_id = "example_organization_id", -- string
-  connection_id = "example_connection_id", -- string
-  enabled = true, -- boolean
-  generation = 1, -- number
+  name = "example_name", -- string
+  toolkit = "example_toolkit", -- string
 })
+```
+
+
+### AgentIntegrationAccount
+
+Create an instance: `local agent_integration_account = client:AgentIntegrationAccount(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_cancel_sign_in` | `boolean` | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `boolean` |  |
+| `can_disconnect` | `boolean` |  |
+| `can_enable` | `boolean` |  |
+| `can_manage_sharing` | `boolean` |  |
+| `can_reconnect` | `boolean` |  |
+| `can_sync` | `boolean` | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
+| `connected_by` | `string|nil` | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `boolean` | True when the viewer is the person whose sign-in this account is. |
+| `creation_key_digest` | `string|nil` | SHA-256 of the unfinished setup key for its original creator. |
+| `generation` | `number` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `provider_disabled_reason` | `string|nil` |  |
+| `provider_identity` | `table` |  |
+| `reference` | `string` | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `string` | Agent account audience, including legacy personal and paused access. |
+| `status` | `string` |  |
+| `team_sharing_enabled` | `boolean` |  |
+| `team_sharing_version` | `number` |  |
+| `toolkit` | `string` |  |
+
+#### Example: List
+
+```lua
+local agent_integration_accounts, err = client:AgentIntegrationAccount():list({ organization_id = "example" })
+```
+
+
+### AgentIntegrationCallback
+
+Create an instance: `local agent_integration_callback = client:AgentIntegrationCallback(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Example: Load
+
+```lua
+local agent_integration_callback, err = client:AgentIntegrationCallback():load({ connection_id = "connection_id", state = "state" })
 ```
 
 
@@ -6034,6 +12241,95 @@ Create an instance: `local agent_question = client:AgentQuestion(nil)`
 | `id` | `string` |  |
 
 
+### AgentRelayFileGrant
+
+Create an instance: `local agent_relay_file_grant = client:AgentRelayFileGrant(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access_mode` | `string` |  |
+| `connection_generation` | `number` |  |
+| `connection_id` | `string` |  |
+| `connection_name` | `string` | Current display name of the selected account. |
+| `created_at` | `string` |  |
+| `expected_generation` | `number` |  |
+| `id` | `string` |  |
+| `key` | `string` |  |
+| `provider` | `string` |  |
+| `resource_id` | `string` |  |
+| `resource_kind` | `string` |  |
+| `revoked` | `boolean` |  |
+| `revoked_at` | `string|nil` |  |
+| `snapshot_supported` | `boolean` | Whether this selected permission supports snapshot controls. |
+| `source_operation_id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local agent_relay_file_grant, err = client:AgentRelayFileGrant():load({ id = "agent_relay_file_grant_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local agent_relay_file_grants, err = client:AgentRelayFileGrant():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local agent_relay_file_grant, err = client:AgentRelayFileGrant():create({
+  organization_id = "example_organization_id", -- string
+  access_mode = "example_access_mode", -- string
+  connection_id = "example_connection_id", -- string
+  expected_generation = 1, -- number
+  key = "example_key", -- string
+  resource_id = "example_resource_id", -- string
+  resource_kind = "example_resource_kind", -- string
+  source_operation_id = "example_source_operation_id", -- string
+})
+```
+
+
+### AgentRelayFileGrantAccount
+
+Create an instance: `local agent_relay_file_grant_account = client:AgentRelayFileGrantAccount(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access_modes` | `table` | Supported file access modes. |
+| `generation` | `number` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `provider` | `string` |  |
+| `resource_kind` | `string` |  |
+
+#### Example: List
+
+```lua
+local agent_relay_file_grant_accounts, err = client:AgentRelayFileGrantAccount():list({ organization_id = "example", source_operation_id = "example" })
+```
+
+
 ### AgentRepository
 
 Create an instance: `local agent_repository = client:AgentRepository(nil)`
@@ -6088,6 +12384,18 @@ Create an instance: `local agent_resource = client:AgentResource(nil)`
 ```lua
 local agent_resources, err = client:AgentResource():list({ agent_id = "example", organization_id = "example" })
 ```
+
+
+### AgentRoder
+
+Create an instance: `local agent_roder = client:AgentRoder(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
 
 
 ### AgentRoutine
@@ -6183,6 +12491,92 @@ Create an instance: `local agent_runtime = client:AgentRuntime(nil)`
 | `volume` | `table|nil` |  |
 
 
+### AgentSession
+
+Create an instance: `local agent_session = client:AgentSession(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### AgentSessionCheckpoint
+
+Create an instance: `local agent_session_checkpoint = client:AgentSessionCheckpoint(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local agent_session_checkpoint, err = client:AgentSessionCheckpoint():load({ id = "agent_session_checkpoint_id", agent_session_id = "agent_session_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### Example: List
+
+```lua
+local agent_session_checkpoints, err = client:AgentSessionCheckpoint():list({ agent_session_id = "example", organization_id = "example", repo_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local agent_session_checkpoint, err = client:AgentSessionCheckpoint():create({
+  agent_session_id = "example_agent_session_id", -- string
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+})
+```
+
+
+### AgentSessionRoderHandoff
+
+Create an instance: `local agent_session_roder_handoff = client:AgentSessionRoderHandoff(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `checkpoint_id` | `string` | Public id of the checkpoint to hand off. |
+| `purpose` | `string` | Handoff intent; defaults to `continue`. |
+
+#### Example: Create
+
+```lua
+local agent_session_roder_handoff, err = client:AgentSessionRoderHandoff():create({
+  agent_session_id = "example_agent_session_id", -- string
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+})
+```
+
+
 ### AgentSetting
 
 Create an instance: `local agent_setting = client:AgentSetting(nil)`
@@ -6229,25 +12623,37 @@ Create an instance: `local agent_site = client:AgentSite(nil)`
 
 | Method | Description |
 | --- | --- |
+| `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `deployed_at` | `string` |  |
-| `deployments_count` | `number` |  |
-| `hostname` | `string` |  |
-| `https` | `string` | Whether the organization's certificate serves this site over HTTPS |
+| `author` | `table` |  |
+| `can_message` | `boolean` | The viewer may send input to the author agent |
+| `deployments_count` | `number` | Increases with every deploy of the site |
+| `description` | `string|nil` | The team app description, when the site is a team app |
+| `icon_url` | `string|nil` | Path of the site's generated icon, versioned by the picture; null until one is generated |
 | `id` | `string` |  |
-| `name` | `string` |  |
+| `name` | `string` | The site's DNS label |
+| `owner` | `table` | The person who controls the author agent |
+| `thread` | `any` | The thread that published the site as a team app, when the viewer can open the author agent |
+| `title` | `string` | The team app title, or the site name read as words |
 | `url` | `string` |  |
 | `visibility` | `string` |  |
+
+#### Example: Load
+
+```lua
+local agent_site, err = client:AgentSite():load({ id = "agent_site_id", organization_id = "organization_id" })
+```
 
 #### Example: List
 
 ```lua
-local agent_sites, err = client:AgentSite():list({ agent_id = "example", organization_id = "example" })
+local agent_sites, err = client:AgentSite():list({ organization_id = "example" })
 ```
 
 
@@ -6261,36 +12667,48 @@ Create an instance: `local agent_skill = client:AgentSkill(nil)`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `available` | `boolean` |  |
-| `can_configure` | `boolean` |  |
-| `can_manage` | `boolean` |  |
-| `configuration_state` | `string` | The requested managed skill selection is awaiting runtime qualification. |
-| `description` | `string` |  |
-| `enabled` | `boolean` |  |
-| `name` | `string` |  |
+| `agents` | `table` | Active V2 agents the viewer can see whose owner is still a member |
+| `audience` | `table` |  |
+| `can_manage_library` | `boolean` |  |
+| `content` | `string` | The skill's SKILL.md |
+| `files` | `table` |  |
+| `id` | `string` |  |
+| `marketplace` | `string` |  |
+| `pending` | `boolean` | Some agent is still applying a change; check again shortly |
+| `plugin` | `string` | The marketplace entry id |
+| `revision` | `string` | The commit SHA returned by preview |
+| `skill` | `table` |  |
 | `skills` | `table` |  |
-| `version` | `string` |  |
+| `source` | `string` | owner/repo, a GitHub or skills.sh link, or npx skills add owner/repo [--skill NAME ...] |
+
+#### Example: Load
+
+```lua
+local agent_skill, err = client:AgentSkill():load({ id = "agent_skill_id", organization_id = "organization_id" })
+```
 
 #### Example: List
 
 ```lua
-local agent_skills, err = client:AgentSkill():list({ agent_id = "example", organization_id = "example" })
+local agent_skills, err = client:AgentSkill():list({ organization_id = "example" })
 ```
 
 #### Example: Create
 
 ```lua
 local agent_skill, err = client:AgentSkill():create({
-  agent_id = "example_agent_id", -- string
   organization_id = "example_organization_id", -- string
-  enabled = true, -- boolean
-  name = "example_name", -- string
-  version = "example_version", -- string
+  audience = {}, -- table
+  revision = "example_revision", -- string
+  skills = {}, -- table
 })
 ```
 
@@ -6367,6 +12785,94 @@ local agent_subscription, err = client:AgentSubscription():create({
 ```
 
 
+### AgentSwarm
+
+Create an instance: `local agent_swarm = client:AgentSwarm(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `base_bookmark` | `string|nil` | An existing bookmark to start from and land on; the plain form of `target.kind = bookmark`. |
+| `base_ref` | `string|nil` |  |
+| `base_revision` | `string|nil` | 64-hex commit id; skips the head lookup |
+| `budget` | `table` |  |
+| `canceled_at` | `string|nil` |  |
+| `canceled_count` | `number` |  |
+| `concurrency_key` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `creator_user_id` | `string|nil` |  |
+| `deadline_at` | `string|nil` |  |
+| `display_id` | `number` |  |
+| `done_count` | `number` |  |
+| `environment` | `table` |  |
+| `failed_count` | `number` |  |
+| `finished_at` | `string|nil` |  |
+| `finished_at_label` | `string|nil` |  |
+| `github` | `table` |  |
+| `goal` | `string|nil` |  |
+| `id` | `string` |  |
+| `model` | `string|nil` |  |
+| `model_provider` | `string|nil` |  |
+| `number` | `number` |  |
+| `organization_id` | `string` |  |
+| `organization_slug` | `string|nil` |  |
+| `outcome` | `string|nil` |  |
+| `phase` | `string|nil` |  |
+| `policy` | `table` | Every key is optional and defaults to AgentSwarm::POLICY_DEFAULTS. |
+| `queued_at` | `string|nil` |  |
+| `queued_at_label` | `string|nil` |  |
+| `repository` | `string` | Repository slug inside the organization |
+| `repository_id` | `string|nil` |  |
+| `repository_slug` | `string|nil` |  |
+| `reserved` | `table` |  |
+| `scheduler_generation` | `number` |  |
+| `skipped_count` | `number` |  |
+| `slug` | `string` |  |
+| `started_at` | `string|nil` |  |
+| `started_at_label` | `string|nil` |  |
+| `status` | `string` |  |
+| `summary` | `table` |  |
+| `target` | `table` | Where the swarm lands. |
+| `task_count` | `number` |  |
+| `task_template_json` | `string|nil` |  |
+| `tasks` | `table` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+| `usage` | `table` |  |
+
+#### Example: Load
+
+```lua
+local agent_swarm, err = client:AgentSwarm():load({ id = "agent_swarm_id" })
+```
+
+#### Example: List
+
+```lua
+local agent_swarms, err = client:AgentSwarm():list({ org = "example" })
+```
+
+#### Example: Create
+
+```lua
+local agent_swarm, err = client:AgentSwarm():create({
+  organization_slug = "example_organization_slug", -- string|nil
+  target = {}, -- table
+})
+```
+
+
 ### AgentTeammate
 
 Create an instance: `local agent_teammate = client:AgentTeammate(nil)`
@@ -6415,48 +12921,30 @@ Create an instance: `local agent_thread = client:AgentThread(nil)`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 | `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `archived_count` | `number|nil` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` | `boolean` |  |
-| `execution` | `any` |  |
-| `first_input` | `any` |  |
-| `first_input_key` | `string` | Idempotency-Key that finds the first message through input_delivery. |
-| `first_input_requester_membership_id` | `string` | Membership the first message was sent as, for input_delivery. |
 | `id` | `string` |  |
-| `inherit_context` | `boolean` | Include the source conversation through its last completed reply. |
-| `local_activities` | `table` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | `number` | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` | `string|nil` |  |
-| `local_scope_key` | `string|nil` |  |
-| `local_status_pending` | `boolean` | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` | `table` |  |
-| `main_thread_id` | `string` |  |
-| `message` | `string` | The thread's first message. |
-| `next_cursor` | `string|nil` |  |
-| `parent_conversation_id` | `string` | Optional source conversation belonging to this agent. |
-| `requester_membership_id` | `string` |  |
-| `selected_thread` | `any` |  |
-| `thread` | `table` |  |
-| `threads` | `table` |  |
-| `title` | `string` |  |
-| `total_archived_count` | `number|nil` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+#### Example: Load
+
+```lua
+local agent_thread, err = client:AgentThread():load({ id = "agent_thread_id" })
+```
 
 #### Example: List
 
 ```lua
-local agent_threads, err = client:AgentThread():list({ agent_id = "example", organization_id = "example" })
+local agent_threads, err = client:AgentThread():list()
 ```
 
 #### Example: Create
 
 ```lua
 local agent_thread, err = client:AgentThread():create({
-  agent_id = "example_agent_id", -- string
-  organization_id = "example_organization_id", -- string
 })
 ```
 
@@ -6483,6 +12971,36 @@ Create an instance: `local agent_tool = client:AgentTool(nil)`
 
 ```lua
 local agent_tools, err = client:AgentTool():list({ agent_id = "example", organization_id = "example" })
+```
+
+
+### AgentUsage
+
+Create an instance: `local agent_usage = client:AgentUsage(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `days` | `table` | One cell per (day, model), ascending by day then model. |
+| `ended_at` | `string` |  |
+| `pricing_version` | `string` | The price table in effect now; rows carry the version they were priced at. |
+| `source` | `string` | Which store served the rows. |
+| `started_at` | `string` |  |
+| `user_days` | `table` | One cell per (day, person), ascending by day. |
+| `users` | `table` | One row per (person, model), descending by tokens. |
+| `window` | `string` |  |
+
+#### Example: Load
+
+```lua
+local agent_usage, err = client:AgentUsage():load({ organization_id = "organization_id" })
 ```
 
 
@@ -6531,6 +13049,32 @@ Create an instance: `local agent_wait = client:AgentWait(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+
+### AgentWebPreview
+
+Create an instance: `local agent_web_preview = client:AgentWebPreview(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `description` | `string|nil` |  |
+| `icon_url` | `string|nil` |  |
+| `image_url` | `string|nil` |  |
+| `title` | `string|nil` |  |
+
+#### Example: List
+
+```lua
+local agent_web_previews, err = client:AgentWebPreview():list({ token = "example" })
+```
 
 
 ### AgentWebhook
@@ -6867,6 +13411,94 @@ local agent_write_permissions, err = client:AgentWritePermission():list({ agent_
 ```
 
 
+### Agreement
+
+Create an instance: `local agreement = client:Agreement(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `body` | `string|nil` | Markdown text, or null until staff grant the organization access. |
+| `effective_on_label` | `string` |  |
+| `key` | `string` |  |
+| `summary` | `string` |  |
+| `title` | `string` |  |
+| `version` | `string` |  |
+
+#### Example: List
+
+```lua
+local agreements, err = client:Agreement():list({ organization_id = "example" })
+```
+
+
+### AgreementAccessRequest
+
+Create an instance: `local agreement_access_request = client:AgreementAccessRequest(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local agreement_access_request, err = client:AgreementAccessRequest():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### AlertRuleEvent
+
+Create an instance: `local alert_rule_event = client:AlertRuleEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local alert_rule_event, err = client:AlertRuleEvent():load({ id = "alert_rule_event_id", alert_rule_id = "alert_rule_id", space_id = "space_id" })
+```
+
+#### Example: List
+
+```lua
+local alert_rule_events, err = client:AlertRuleEvent():list({ alert_rule_id = "example", space_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local alert_rule_event, err = client:AlertRuleEvent():create({
+  alert_rule_id = "example_alert_rule_id", -- string
+  space_id = "example_space_id", -- string
+})
+```
+
+
 ### AllocationLog
 
 Create an instance: `local allocation_log = client:AllocationLog(nil)`
@@ -6957,6 +13589,34 @@ local app, err = client:App():create({
   root_path = "example_root_path", -- string
   slug = "example_slug", -- string
 })
+```
+
+
+### AppAccess
+
+Create an instance: `local app_access = client:AppAccess(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AppAccessJwk
+
+Create an instance: `local app_access_jwk = client:AppAccessJwk(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```lua
+local app_access_jwks, err = client:AppAccessJwk():list()
 ```
 
 
@@ -7967,6 +14627,381 @@ local app_storage_resource, err = client:AppStorageResource():create({
 ```
 
 
+### Artefact
+
+Create an instance: `local artefact = client:Artefact(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `automation_invocation_id` | `string|nil` |  |
+| `byte_size` | `number` |  |
+| `checksum_sha256` | `string` |  |
+| `content_type` | `string` |  |
+| `created_at` | `string|nil` |  |
+| `created_by_user_id` | `string|nil` |  |
+| `description` | `string|nil` |  |
+| `document_key` | `string` | Stable document identity shared by all revisions. |
+| `entrypoint` | `string` |  |
+| `expires_at` | `string|nil` |  |
+| `filename` | `string` |  |
+| `files` | `table` |  |
+| `harness` | `string|nil` |  |
+| `harness_version` | `string|nil` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `model` | `string|nil` |  |
+| `organization_id` | `string` |  |
+| `published_at` | `string|nil` |  |
+| `repository_id` | `string|nil` |  |
+| `slug` | `string` |  |
+| `source` | `string` |  |
+| `status` | `string` |  |
+| `title` | `string` |  |
+| `vcs_agent_checkpoint_id` | `string|nil` |  |
+| `vcs_agent_session_id` | `string|nil` |  |
+| `version` | `number` |  |
+| `view_url` | `string` |  |
+| `web_url` | `string` |  |
+
+#### Example: Load
+
+```lua
+local artefact, err = client:Artefact():load({ id = "artefact_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local artefacts, err = client:Artefact():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local artefact, err = client:Artefact():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### ArtefactCommentThread
+
+Create an instance: `local artefact_comment_thread = client:ArtefactCommentThread(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `anchor` | `string` | The `#anchor` written into the Markdown. |
+| `body` | `string` |  |
+| `comments` | `table` |  |
+| `id` | `string` | The anchor key. |
+| `quote` | `string` |  |
+| `resolved` | `boolean` |  |
+
+#### Example: List
+
+```lua
+local artefact_comment_threads, err = client:ArtefactCommentThread():list({ artefact_id = "example", organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local artefact_comment_thread, err = client:ArtefactCommentThread():create({
+  artefact_id = "example_artefact_id", -- string
+  organization_id = "example_organization_id", -- string
+  anchor = "example_anchor", -- string
+  body = "example_body", -- string
+})
+```
+
+
+### ArtefactRevision
+
+Create an instance: `local artefact_revision = client:ArtefactRevision(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `base_version` | `number` | The newest version the editor started from. |
+| `content` | `string` | Markdown, including CriticMarkup suggestions and comment anchors. |
+
+#### Example: Create
+
+```lua
+local artefact_revision, err = client:ArtefactRevision():create({
+  artefact_id = "example_artefact_id", -- string
+  organization_id = "example_organization_id", -- string
+  base_version = 1, -- number
+  content = "example_content", -- string
+})
+```
+
+
+### ArtefactViewToken
+
+Create an instance: `local artefact_view_token = client:ArtefactViewToken(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `expires_in` | `number` |  |
+| `file` | `string` | Exact manifest path. |
+| `organization_slug` | `string` | If provided, must match the organization addressed by the route. |
+| `version` | `number` |  |
+| `viewer_url` | `string` |  |
+
+#### Example: Create
+
+```lua
+local artefact_view_token, err = client:ArtefactViewToken():create({
+  artefact_id = "example_artefact_id", -- string
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### Artifact
+
+Create an instance: `local artifact = client:Artifact(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local artifact, err = client:Artifact():load({ id = "artifact_id" })
+```
+
+#### Example: List
+
+```lua
+local artifacts, err = client:Artifact():list()
+```
+
+#### Example: Create
+
+```lua
+local artifact, err = client:Artifact():create({
+})
+```
+
+
+### ArtifactCacheNamespace
+
+Create an instance: `local artifact_cache_namespace = client:ArtifactCacheNamespace(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local artifact_cache_namespace, err = client:ArtifactCacheNamespace():load({ id = "artifact_cache_namespace_id" })
+```
+
+#### Example: List
+
+```lua
+local artifact_cache_namespaces, err = client:ArtifactCacheNamespace():list()
+```
+
+#### Example: Create
+
+```lua
+local artifact_cache_namespace, err = client:ArtifactCacheNamespace():create({
+})
+```
+
+
+### ArtifactImageRepository
+
+Create an instance: `local artifact_image_repository = client:ArtifactImageRepository(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local artifact_image_repository, err = client:ArtifactImageRepository():load({ id = "artifact_image_repository_id" })
+```
+
+#### Example: List
+
+```lua
+local artifact_image_repositorys, err = client:ArtifactImageRepository():list()
+```
+
+#### Example: Create
+
+```lua
+local artifact_image_repository, err = client:ArtifactImageRepository():create({
+})
+```
+
+
+### ArtifactPackageMirror
+
+Create an instance: `local artifact_package_mirror = client:ArtifactPackageMirror(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local artifact_package_mirror, err = client:ArtifactPackageMirror():load({ id = "artifact_package_mirror_id" })
+```
+
+#### Example: List
+
+```lua
+local artifact_package_mirrors, err = client:ArtifactPackageMirror():list()
+```
+
+#### Example: Create
+
+```lua
+local artifact_package_mirror, err = client:ArtifactPackageMirror():create({
+})
+```
+
+
+### ArtifactRetentionPolicy
+
+Create an instance: `local artifact_retention_policy = client:ArtifactRetentionPolicy(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local artifact_retention_policy, err = client:ArtifactRetentionPolicy():load({ id = "artifact_retention_policy_id" })
+```
+
+#### Example: List
+
+```lua
+local artifact_retention_policys, err = client:ArtifactRetentionPolicy():list()
+```
+
+#### Example: Create
+
+```lua
+local artifact_retention_policy, err = client:ArtifactRetentionPolicy():create({
+})
+```
+
+
 ### AttachmentPart
 
 Create an instance: `local attachment_part = client:AttachmentPart(nil)`
@@ -7982,6 +15017,156 @@ Create an instance: `local attachment_part = client:AttachmentPart(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+
+### AuditEvent
+
+Create an instance: `local audit_event = client:AuditEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `actor_kind` | `string` |  |
+| `actor_user_id` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `id` | `string` |  |
+| `observability_space_id` | `string|nil` |  |
+| `organization_id` | `string` |  |
+| `payload` | `any` |  |
+| `request_id` | `string|nil` |  |
+| `severity` | `string` |  |
+| `subject_id` | `string` |  |
+| `subject_kind` | `string` |  |
+| `subject_name` | `string|nil` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+
+#### Example: List
+
+```lua
+local audit_events, err = client:AuditEvent():list({ organization_id = "example" })
+```
+
+
+### Auth
+
+Create an instance: `local auth = client:Auth(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+
+### AuthCli
+
+Create an instance: `local auth_cli = client:AuthCli(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### AuthGithub
+
+Create an instance: `local auth_github = client:AuthGithub(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AuthGoogle
+
+Create an instance: `local auth_google = client:AuthGoogle(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AuthOpenai
+
+Create an instance: `local auth_openai = client:AuthOpenai(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### AuthPasswordReset
+
+Create an instance: `local auth_password_reset = client:AuthPasswordReset(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email` | `string` |  |
+| `message` | `string` |  |
+| `password` | `string` |  |
+| `token` | `string` |  |
+
+#### Example: Create
+
+```lua
+local auth_password_reset, err = client:AuthPasswordReset():create({
+  email = "example_email", -- string
+})
+```
+
+
+### AuthRegistrationOption
+
+Create an instance: `local auth_registration_option = client:AuthRegistrationOption(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email_password_signup_enabled` | `boolean` |  |
+| `openai_sign_in_enabled` | `boolean` | Whether ChatGPT identity sign-in is configured and enabled for rollout. |
+| `turnstile_site_key` | `string|nil` |  |
+| `waitlist_enabled` | `boolean` | New public signups require waitlist approval when enabled. |
+
+#### Example: List
+
+```lua
+local auth_registration_options, err = client:AuthRegistrationOption():list()
+```
 
 
 ### AutomationEvent
@@ -8080,6 +15265,531 @@ local automation_run, err = client:AutomationRun():create({
   version_id = "example_version_id", -- string
 })
 ```
+
+
+### BackendRunnerPool
+
+Create an instance: `local backend_runner_pool = client:BackendRunnerPool(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```lua
+local backend_runner_pools, err = client:BackendRunnerPool():list({ backend_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local backend_runner_pool, err = client:BackendRunnerPool():create({
+  backend_id = "example_backend_id", -- string
+})
+```
+
+
+### Bazel
+
+Create an instance: `local bazel = client:Bazel(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### BazelActionResult
+
+Create an instance: `local bazel_action_result = client:BazelActionResult(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local bazel_action_result, err = client:BazelActionResult():load({ id = "bazel_action_result_id", action_result_id = "action_result_id" })
+```
+
+
+### BazelBackend
+
+Create an instance: `local bazel_backend = client:BazelBackend(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local bazel_backend, err = client:BazelBackend():load({ id = "bazel_backend_id" })
+```
+
+#### Example: List
+
+```lua
+local bazel_backends, err = client:BazelBackend():list()
+```
+
+#### Example: Create
+
+```lua
+local bazel_backend, err = client:BazelBackend():create({
+})
+```
+
+
+### BazelBlob
+
+Create an instance: `local bazel_blob = client:BazelBlob(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local bazel_blob, err = client:BazelBlob():load({ id = "bazel_blob_id", blob_id = "blob_id", hash = "hash" })
+```
+
+
+### BazelExecution
+
+Create an instance: `local bazel_execution = client:BazelExecution(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local bazel_execution, err = client:BazelExecution():load({ id = "bazel_execution_id" })
+```
+
+#### Example: Create
+
+```lua
+local bazel_execution, err = client:BazelExecution():create({
+})
+```
+
+
+### BazelFindMissingBlob
+
+Create an instance: `local bazel_find_missing_blob = client:BazelFindMissingBlob(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local bazel_find_missing_blob, err = client:BazelFindMissingBlob():create({
+})
+```
+
+
+### Billing
+
+Create an instance: `local billing = client:Billing(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `table` |  |
+| `breakdown` | `any` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` |  |
+| `can_manage_contact` | `boolean` |  |
+| `can_manage_extra_spend` | `boolean` |  |
+| `can_manage_local_subscription` | `boolean` |  |
+| `can_manage_payment_method` | `boolean` |  |
+| `can_set_up_billing` | `boolean` |  |
+| `customer` | `any` |  |
+| `deployment_usage_visible` | `boolean` |  |
+| `entitlements` | `table` |  |
+| `extra_spend_enabled` | `boolean` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` |  |
+| `package` | `any` |  |
+| `prepaid` | `any` |  |
+| `preview` | `any` | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `table` |  |
+| `stripe` | `table` |  |
+| `subscription` | `any` |  |
+| `token_account` | `table` |  |
+
+#### Example: Load
+
+```lua
+local billing, err = client:Billing():load({ organization_id = "organization_id" })
+```
+
+
+### BillingAddon
+
+Create an instance: `local billing_addon = client:BillingAddon(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `table` |  |
+| `breakdown` | `any` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` |  |
+| `can_manage_contact` | `boolean` |  |
+| `can_manage_extra_spend` | `boolean` |  |
+| `can_manage_local_subscription` | `boolean` |  |
+| `can_manage_payment_method` | `boolean` |  |
+| `can_set_up_billing` | `boolean` |  |
+| `customer` | `any` |  |
+| `deployment_usage_visible` | `boolean` |  |
+| `entitlements` | `table` |  |
+| `extra_spend_enabled` | `boolean` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Whether the `billing` feature is on for this organization. |
+| `id` | `string` |  |
+| `organization_id` | `string` |  |
+| `package` | `any` |  |
+| `prepaid` | `any` |  |
+| `preview` | `any` | Metronome draft invoice and credits, or null. |
+| `quantity` | `number` |  |
+| `storage_usage` | `table` |  |
+| `stripe` | `table` |  |
+| `subscription` | `any` |  |
+| `token_account` | `table` |  |
+
+
+### BillingCheckoutSession
+
+Create an instance: `local billing_checkout_session = client:BillingCheckoutSession(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cancel_url` | `string` |  |
+| `coupon_code` | `string` |  |
+| `entry_point` | `string` | Where the owner chose to pay, for product analytics. |
+| `package_key` | `string` |  |
+| `package_revision` | `number` |  |
+| `success_url` | `string` |  |
+
+#### Example: Create
+
+```lua
+local billing_checkout_session, err = client:BillingCheckoutSession():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### BillingInvoice
+
+Create an instance: `local billing_invoice = client:BillingInvoice(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `amount_due_cents` | `number` |  |
+| `created_at` | `string` |  |
+| `currency` | `string` |  |
+| `hosted_invoice_url` | `string|nil` |  |
+| `id` | `string` |  |
+| `invoice_pdf` | `string|nil` |  |
+| `metronome_invoice_id` | `string|nil` | Metronome's id for the invoice it pushed |
+| `number` | `string|nil` |  |
+| `period_ended_at` | `string|nil` |  |
+| `period_started_at` | `string|nil` |  |
+| `status` | `string` |  |
+| `total_cents` | `number` |  |
+
+#### Example: List
+
+```lua
+local billing_invoices, err = client:BillingInvoice():list({ organization_id = "example" })
+```
+
+
+### BillingPackage
+
+Create an instance: `local billing_package = client:BillingPackage(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `table` |  |
+| `base_price_cents` | `number` |  |
+| `billing_interval` | `string` |  |
+| `billing_policy` | `string` |  |
+| `ci_included_spend_cents` | `number` | Monthly USD credit in cents shared by all CI charges, including runners, cache, storage and add-ons; replaces CI unit allowances when positive. |
+| `currency` | `string` |  |
+| `key` | `string` |  |
+| `max_seats` | `number|nil` |  |
+| `name` | `string` |  |
+| `pay_as_you_go_enabled` | `boolean` |  |
+| `rates` | `table` |  |
+| `revision` | `number` |  |
+| `roder_daily_run_limit` | `number` |  |
+| `roder_run_concurrency_limit` | `number` |  |
+| `seat_price_cents` | `number` |  |
+| `trial_days` | `number` |  |
+| `visibility` | `string` |  |
+
+#### Example: List
+
+```lua
+local billing_packages, err = client:BillingPackage():list()
+```
+
+
+### BillingPortalSession
+
+Create an instance: `local billing_portal_session = client:BillingPortalSession(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `return_url` | `string` |  |
+
+#### Example: Create
+
+```lua
+local billing_portal_session, err = client:BillingPortalSession():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### BillingPrepaidPeriod
+
+Create an instance: `local billing_prepaid_period = client:BillingPrepaidPeriod(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_at` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `currency` | `string` |  |
+| `id` | `string` |  |
+| `last_error` | `string|nil` |  |
+| `minutes` | `number` |  |
+| `net_amount_cents` | `number` |  |
+| `paid_at` | `string|nil` |  |
+| `paid_total_cents` | `number|nil` |  |
+| `payment_action_url` | `string|nil` |  |
+| `period_ended_at` | `string` |  |
+| `period_started_at` | `string` |  |
+| `receipt_url` | `string|nil` |  |
+| `refunded_net_cents` | `number` |  |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```lua
+local billing_prepaid_period, err = client:BillingPrepaidPeriod():load({ id = "billing_prepaid_period_id", organization_id = "organization_id" })
+```
+
+
+### BillingPrepaidPurchase
+
+Create an instance: `local billing_prepaid_purchase = client:BillingPrepaidPurchase(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_at` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `currency` | `string` |  |
+| `id` | `string` |  |
+| `last_error` | `string|nil` |  |
+| `minutes` | `number` |  |
+| `net_amount_cents` | `number` |  |
+| `paid_at` | `string|nil` |  |
+| `paid_total_cents` | `number|nil` |  |
+| `payment_action_url` | `string|nil` |  |
+| `prepaid` | `table` |  |
+| `purchase` | `table` |  |
+| `receipt_url` | `string|nil` |  |
+| `refunded_net_cents` | `number` |  |
+| `request_key` | `string` |  |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```lua
+local billing_prepaid_purchase, err = client:BillingPrepaidPurchase():load({ id = "billing_prepaid_purchase_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local billing_prepaid_purchases, err = client:BillingPrepaidPurchase():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local billing_prepaid_purchase, err = client:BillingPrepaidPurchase():create({
+  organization_id = "example_organization_id", -- string
+  minutes = 1, -- number
+  request_key = "example_request_key", -- string
+})
+```
+
+
+### BillingTokenTopUp
+
+Create an instance: `local billing_token_top_up = client:BillingTokenTopUp(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `amount_cents` | `number` |  |
+| `request_key` | `string` |  |
+
+#### Example: Create
+
+```lua
+local billing_token_top_up, err = client:BillingTokenTopUp():create({
+  organization_id = "example_organization_id", -- string
+  amount_cents = 1, -- number
+  request_key = "example_request_key", -- string
+})
+```
+
+
+### BillingUsage
+
+Create an instance: `local billing_usage = client:BillingUsage(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
 
 
 ### Binary
@@ -8218,6 +15928,41 @@ local binary_version, err = client:BinaryVersion():create({
   project_id = "example_project_id", -- string
   download_url = "example_download_url", -- string
   idempotency_key = "example_idempotency_key", -- string
+})
+```
+
+
+### BookmarkProtectionRefreshGithubRequiredCheck
+
+Create an instance: `local bookmark_protection_refresh_github_required_check = client:BookmarkProtectionRefreshGithubRequiredCheck(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `exclusions` | `table` |  |
+| `fetched_at` | `string|nil` |  |
+| `fetched_at_label` | `string|nil` |  |
+| `github_branch` | `string` |  |
+| `github_owner` | `string|nil` |  |
+| `github_repository_name` | `string|nil` |  |
+| `last_error` | `string|nil` |  |
+| `proven` | `boolean` |  |
+| `requirements` | `table` |  |
+| `stale` | `boolean` |  |
+
+#### Example: Create
+
+```lua
+local bookmark_protection_refresh_github_required_check, err = client:BookmarkProtectionRefreshGithubRequiredCheck():create({
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
 })
 ```
 
@@ -8530,6 +16275,48 @@ local browser_session_task, err = client:BrowserSessionTask():create({
 ```
 
 
+### CacheNamespaceEntry
+
+Create an instance: `local cache_namespace_entry = client:CacheNamespaceEntry(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local cache_namespace_entry, err = client:CacheNamespaceEntry():load({ id = "cache_namespace_entry_id", cache_namespace_id = "cache_namespace_id" })
+```
+
+#### Example: List
+
+```lua
+local cache_namespace_entrys, err = client:CacheNamespaceEntry():list({ cache_namespace_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local cache_namespace_entry, err = client:CacheNamespaceEntry():create({
+  cache_namespace_id = "example_cache_namespace_id", -- string
+})
+```
+
+
 ### CatalogSelector
 
 Create an instance: `local catalog_selector = client:CatalogSelector(nil)`
@@ -8719,6 +16506,1027 @@ local cdn_space_objects, err = client:CdnSpaceObject():list({ cdn_space_id = "ex
 ```
 
 
+### Change
+
+Create an instance: `local change = client:Change(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `counts` | `table` | Counts for each state across the active non-state filters. |
+| `filters` | `table` |  |
+| `github_sync` | `table` |  |
+| `result` | `any` | What this page is a page of. |
+
+#### Example: List
+
+```lua
+local changes, err = client:Change():list({ organization_id = "example" })
+```
+
+
+### ChangeAsset
+
+Create an instance: `local change_asset = client:ChangeAsset(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `alias` | `string` |  |
+| `byte_size` | `number` |  |
+| `checksum_md5` | `string` |  |
+| `checksum_sha256` | `string` |  |
+| `content_type` | `string` |  |
+| `filename` | `string` |  |
+| `id` | `string` |  |
+
+#### Example: Create
+
+```lua
+local change_asset, err = client:ChangeAsset():create({
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+  alias = "example_alias", -- string
+  byte_size = 1, -- number
+  checksum_md5 = "example_checksum_md5", -- string
+  checksum_sha256 = "example_checksum_sha256", -- string
+  content_type = "example_content_type", -- string
+  filename = "example_filename", -- string
+})
+```
+
+
+### ChangeComment
+
+Create an instance: `local change_comment = client:ChangeComment(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `body` | `string` |  |
+| `capabilities` | `table` |  |
+| `change_id` | `string|nil` |  |
+| `created_at` | `string|nil` |  |
+| `created_at_label` | `string|nil` |  |
+| `id` | `string` |  |
+| `kind` | `string|nil` |  |
+| `line` | `number|nil` |  |
+| `outdated` | `boolean` |  |
+| `parent_comment_id` | `string|nil` |  |
+| `patchset_id` | `string|nil` |  |
+| `patchset_number` | `number|nil` |  |
+| `path` | `string|nil` |  |
+| `replies` | `table` |  |
+| `resolved` | `boolean` |  |
+| `resolved_at` | `string|nil` |  |
+| `resolved_at_label` | `string|nil` |  |
+| `resolved_by` | `table` |  |
+| `side` | `string|nil` |  |
+| `updated_at` | `string|nil` |  |
+| `updated_at_label` | `string|nil` |  |
+| `user` | `table` |  |
+
+#### Example: List
+
+```lua
+local change_comments, err = client:ChangeComment():list({ change_id = "example", organization_id = "example", repo_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local change_comment, err = client:ChangeComment():create({
+  change_id = "example_change_id", -- string
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+  body = "example_body", -- string
+})
+```
+
+
+### ChangeFileReviewCheckpoint
+
+Create an instance: `local change_file_review_checkpoint = client:ChangeFileReviewCheckpoint(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `patchset_id` | `string` |  |
+| `path` | `string` |  |
+| `request_id` | `string` |  |
+| `review_action` | `string` |  |
+
+#### Example: Create
+
+```lua
+local change_file_review_checkpoint, err = client:ChangeFileReviewCheckpoint():create({
+  change_id = "example_change_id", -- string
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+  patchset_id = "example_patchset_id", -- string
+  path = "example_path", -- string
+  request_id = "example_request_id", -- string
+  review_action = "example_review_action", -- string
+})
+```
+
+
+### ChangeGitBranchSubmission
+
+Create an instance: `local change_git_branch_submission = client:ChangeGitBranchSubmission(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local change_git_branch_submission, err = client:ChangeGitBranchSubmission():create({
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+})
+```
+
+
+### ChangeGitCommitIdentity
+
+Create an instance: `local change_git_commit_identity = client:ChangeGitCommitIdentity(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_id` | `string` |  |
+| `change_number` | `number` |  |
+| `git_commit_id` | `string` |  |
+| `git_commit_ids` | `table` |  |
+| `id` | `string` |  |
+| `identities` | `table` |  |
+| `missing_git_commit_ids` | `table` |  |
+| `patchset_number` | `number` |  |
+
+#### Example: Load
+
+```lua
+local change_git_commit_identity, err = client:ChangeGitCommitIdentity():load({ id = "change_git_commit_identity_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### Example: Create
+
+```lua
+local change_git_commit_identity, err = client:ChangeGitCommitIdentity():create({
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+  git_commit_ids = {}, -- table
+})
+```
+
+
+### ChangeGitPublication
+
+Create an instance: `local change_git_publication = client:ChangeGitPublication(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `expected_target_commit_id` | `string` |  |
+| `id` | `string` |  |
+| `operation_key` | `string` |  |
+| `publication_id` | `string` |  |
+| `request` | `table` |  |
+| `request_digest` | `string` |  |
+| `revisions` | `table` |  |
+| `status` | `string` |  |
+| `transfer_refs` | `table` | Immutable receipt-owned refs returned by preparation; transfer each exact Git target before polling readiness. |
+
+#### Example: Load
+
+```lua
+local change_git_publication, err = client:ChangeGitPublication():load({ id = "change_git_publication_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### Example: Create
+
+```lua
+local change_git_publication, err = client:ChangeGitPublication():create({
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+  operation_key = "example_operation_key", -- string
+  request = {}, -- table
+})
+```
+
+
+### ChangeGroupMember
+
+Create an instance: `local change_group_member = client:ChangeGroupMember(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_id` | `string` | Change number |
+| `changes` | `table` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `number` | `number` |  |
+| `status` | `string` |  |
+| `title` | `string|nil` |  |
+
+#### Example: Create
+
+```lua
+local change_group_member, err = client:ChangeGroupMember():create({
+  change_group_id = "example_change_group_id", -- string
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+  change_id = "example_change_id", -- string
+})
+```
+
+
+### ChangeLabel
+
+Create an instance: `local change_label = client:ChangeLabel(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accepted` | `boolean` |  |
+| `add` | `table` |  |
+| `approval` | `table` |  |
+| `assets` | `table` | Proof assets referenced from the description as `vex-asset:<id>`. |
+| `author` | `any` | Human user summary or organization automation identity. |
+| `capabilities` | `table` |  |
+| `change_key` | `string` |  |
+| `checks` | `table` |  |
+| `checks_status` | `string` |  |
+| `comments` | `table` |  |
+| `comments_count` | `number` |  |
+| `comments_count_label` | `string` |  |
+| `commit_message` | `string|nil` |  |
+| `current_patchset` | `table` |  |
+| `description` | `string|nil` |  |
+| `draft` | `boolean` |  |
+| `folded_into_number` | `number|nil` |  |
+| `github_projection_status` | `string|nil` |  |
+| `github_pull_request` | `table` |  |
+| `github_pull_requests` | `table` |  |
+| `group` | `table|nil` |  |
+| `has_description` | `boolean` | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
+| `id` | `string` |  |
+| `jj_change_id` | `string|nil` |  |
+| `labels` | `table` |  |
+| `landable` | `boolean` |  |
+| `landed_by` | `table` |  |
+| `number` | `number` |  |
+| `orphaned` | `boolean` |  |
+| `orphaned_at` | `string` |  |
+| `orphaned_at_label` | `string` |  |
+| `orphaned_reason` | `string` |  |
+| `parent_change_id` | `string|nil` |  |
+| `parent_change_number` | `number|nil` |  |
+| `patchset_number` | `number|nil` |  |
+| `patchsets` | `table` |  |
+| `primary_status` | `string|nil` |  |
+| `public_id` | `string` |  |
+| `relation_chain` | `table` |  |
+| `remove` | `table` |  |
+| `requested_changes` | `boolean` |  |
+| `restack_state` | `string` |  |
+| `reviewer_candidates` | `table` | Organization members available to the reviewer picker on this page. |
+| `reviewers` | `table` |  |
+| `stable_change_id` | `string` |  |
+| `stack` | `any` |  |
+| `status` | `string` |  |
+| `target_branch` | `string` |  |
+| `title` | `string` |  |
+| `unresolved_comments_count_label` | `string` |  |
+| `url` | `string` |  |
+| `votes` | `table` |  |
+
+
+### ChangeLandingHold
+
+Create an instance: `local change_landing_hold = client:ChangeLandingHold(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### ChangeLandingRequest
+
+Create an instance: `local change_landing_request = client:ChangeLandingRequest(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_ids` | `table` |  |
+| `count` | `number` |  |
+| `defer_until_ready` | `boolean` | Admit the request while approvals or checks are pending |
+| `expected_requirement_version` | `string` |  |
+| `expected_scope_version` | `string` |  |
+| `head_change_id` | `string` |  |
+| `id` | `string|nil` |  |
+| `numbers` | `table` |  |
+| `override_acknowledged` | `boolean` |  |
+| `override_codes` | `table` |  |
+| `position` | `number` |  |
+| `priority` | `string` |  |
+| `scope_version` | `string` |  |
+| `state` | `string` |  |
+| `version` | `number` |  |
+
+#### Example: Create
+
+```lua
+local change_landing_request, err = client:ChangeLandingRequest():create({
+  change_id = "example_change_id", -- string
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+})
+```
+
+
+### ChangeRequestChange
+
+Create an instance: `local change_request_change = client:ChangeRequestChange(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `message` | `string|nil` |  |
+
+#### Example: Create
+
+```lua
+local change_request_change, err = client:ChangeRequestChange():create({
+  change_id = "example_change_id", -- string
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+})
+```
+
+
+### ChangeReviewer
+
+Create an instance: `local change_reviewer = client:ChangeReviewer(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `add` | `table` |  |
+| `email` | `string` |  |
+| `name` | `string|nil` |  |
+| `remove` | `table` |  |
+| `removed_reviewers` | `table` |  |
+| `requested_reviewers` | `table` |  |
+| `reviewers` | `table` |  |
+
+#### Example: List
+
+```lua
+local change_reviewers, err = client:ChangeReviewer():list({ change_id = "example", organization_id = "example", repo_id = "example" })
+```
+
+
+### ChangeTranscript
+
+Create an instance: `local change_transcript = client:ChangeTranscript(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capture_kind` | `string` |  |
+| `captured_at` | `string` |  |
+| `harness` | `table` |  |
+| `id` | `string` |  |
+| `original_resume` | `any` |  |
+| `patchset_commit_id` | `string` |  |
+| `patchset_number` | `number` |  |
+| `redaction_count` | `number` |  |
+| `session_id` | `string|nil` |  |
+| `session_title` | `string|nil` |  |
+| `status` | `string` |  |
+| `superseded` | `boolean` |  |
+| `user` | `table` |  |
+
+#### Example: List
+
+```lua
+local change_transcripts, err = client:ChangeTranscript():list({ change_id = "example", organization_id = "example", repo_id = "example" })
+```
+
+
+### ChangeTranscriptSummary
+
+Create an instance: `local change_transcript_summary = client:ChangeTranscriptSummary(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `summaries` | `table` |  |
+
+#### Example: List
+
+```lua
+local change_transcript_summarys, err = client:ChangeTranscriptSummary():list({ organization_id = "example", ids = "example" })
+```
+
+
+### CheckpointPrepareChunk
+
+Create an instance: `local checkpoint_prepare_chunk = client:CheckpointPrepareChunk(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local checkpoint_prepare_chunk, err = client:CheckpointPrepareChunk():create({
+  agent_session_id = "example_agent_session_id", -- string
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+})
+```
+
+
+### CiNode
+
+Create an instance: `local ci_node = client:CiNode(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `architecture` | `string|nil` |  |
+| `bazel_enabled` | `boolean` |  |
+| `bazel_properties_json` | `string|nil` |  |
+| `ci_runner_pool_id` | `string` |  |
+| `cordoned_at` | `string|nil` |  |
+| `cordoned_at_label` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `health_state` | `string` |  |
+| `heartbeat_age_seconds` | `number|nil` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `labels_csv` | `string|nil` |  |
+| `last_seen_at` | `string|nil` |  |
+| `last_seen_at_label` | `string|nil` |  |
+| `name` | `string` |  |
+| `network_peer_id` | `string|nil` |  |
+| `node_capabilities_csv` | `string|nil` |  |
+| `node_certificate_expires_at` | `string|nil` |  |
+| `node_certificate_expires_at_label` | `string|nil` |  |
+| `node_certificate_fingerprint_sha256` | `string|nil` |  |
+| `node_certificate_serial` | `string|nil` |  |
+| `offline_at` | `string|nil` |  |
+| `offline_at_label` | `string|nil` |  |
+| `online_at` | `string|nil` |  |
+| `online_at_label` | `string|nil` |  |
+| `organization_id` | `string` |  |
+| `os` | `string|nil` |  |
+| `revoked_at` | `string|nil` |  |
+| `revoked_at_label` | `string|nil` |  |
+| `schedulable` | `boolean` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+| `version` | `string|nil` |  |
+
+#### Example: Load
+
+```lua
+local ci_node, err = client:CiNode():load({ id = "ci_node_id" })
+```
+
+
+### CiPipeline
+
+Create an instance: `local ci_pipeline = client:CiPipeline(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `ci_runner_pool_id` | `string|nil` |  |
+| `concurrency_key` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `default_branch` | `string|nil` |  |
+| `description` | `string|nil` |  |
+| `hosted_app_id` | `string|nil` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `repository_id` | `string|nil` |  |
+| `required_capabilities_csv` | `string|nil` |  |
+| `runner_pool` | `table|nil` |  |
+| `runs` | `table` |  |
+| `slug` | `string` |  |
+| `source_kind` | `string` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `trigger_on_pull_request` | `boolean` |  |
+| `trigger_on_push` | `boolean` |  |
+| `trigger_on_schedule` | `boolean` |  |
+| `updated_at` | `string` |  |
+| `workflow_path` | `string|nil` |  |
+
+#### Example: Load
+
+```lua
+local ci_pipeline, err = client:CiPipeline():load({ id = "ci_pipeline_id" })
+```
+
+#### Example: List
+
+```lua
+local ci_pipelines, err = client:CiPipeline():list()
+```
+
+#### Example: Create
+
+```lua
+local ci_pipeline, err = client:CiPipeline():create({
+})
+```
+
+
+### CiPipelineRun
+
+Create an instance: `local ci_pipeline_run = client:CiPipelineRun(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active` | `boolean` |  |
+| `canceled_at` | `string|nil` |  |
+| `ci_pipeline_id` | `string` |  |
+| `ci_runner_pool_id` | `string|nil` |  |
+| `commit_sha` | `string|nil` |  |
+| `concurrency_key` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `creator_user_id` | `string|nil` |  |
+| `display_id` | `number` |  |
+| `failed` | `boolean` |  |
+| `finished_at` | `string|nil` |  |
+| `hosted_app_id` | `string|nil` |  |
+| `id` | `string` |  |
+| `jobs` | `table` |  |
+| `message` | `string|nil` |  |
+| `number` | `number` |  |
+| `organization_id` | `string` |  |
+| `parameters_json` | `string|nil` |  |
+| `queued_at` | `string|nil` |  |
+| `ref_name` | `string|nil` |  |
+| `repository_id` | `string|nil` |  |
+| `required_capabilities_csv` | `string|nil` |  |
+| `retry_number` | `number` |  |
+| `retryable` | `boolean` |  |
+| `slug` | `string` |  |
+| `source_url` | `string|nil` |  |
+| `started_at` | `string|nil` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `trigger_kind` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```lua
+local ci_pipeline_run, err = client:CiPipelineRun():load({ id = "ci_pipeline_run_id", pipeline_id = "pipeline_id" })
+```
+
+#### Example: List
+
+```lua
+local ci_pipeline_runs, err = client:CiPipelineRun():list({ pipeline_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local ci_pipeline_run, err = client:CiPipelineRun():create({
+  pipeline_id = "example_pipeline_id", -- string
+})
+```
+
+
+### CiRunnerPool
+
+Create an instance: `local ci_runner_pool = client:CiRunnerPool(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `bazel_enabled` | `boolean` |  |
+| `bazel_properties_json` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `description` | `string|nil` |  |
+| `elastic_config_json` | `string|nil` |  |
+| `elastic_provider_kind` | `string|nil` |  |
+| `id` | `string` |  |
+| `isolation_mode` | `string` |  |
+| `labels_csv` | `string|nil` |  |
+| `max_concurrency` | `number` |  |
+| `modal_capacity` | `table` |  |
+| `modal_runner_invocations` | `table` |  |
+| `name` | `string` |  |
+| `network_space_id` | `string|nil` |  |
+| `node_capabilities_csv` | `string|nil` |  |
+| `organization_id` | `string` |  |
+| `runner_count_label` | `string` |  |
+| `runner_kind` | `string` |  |
+| `runners` | `table` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```lua
+local ci_runner_pool, err = client:CiRunnerPool():load({ id = "ci_runner_pool_id" })
+```
+
+#### Example: List
+
+```lua
+local ci_runner_pools, err = client:CiRunnerPool():list()
+```
+
+#### Example: Create
+
+```lua
+local ci_runner_pool, err = client:CiRunnerPool():create({
+})
+```
+
+
+### CiStatus
+
+Create an instance: `local ci_status = client:CiStatus(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### CliEvent
+
+Create an instance: `local cli_event = client:CliEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `event` | `string` |  |
+| `properties` | `table` |  |
+
+#### Example: Create
+
+```lua
+local cli_event, err = client:CliEvent():create({
+  event = "example_event", -- string
+  properties = {}, -- table
+})
+```
+
+
+### CliRelease
+
+Create an instance: `local cli_release = client:CliRelease(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Example: List
+
+```lua
+local cli_releases, err = client:CliRelease():list()
+```
+
+#### Example: Create
+
+```lua
+local cli_release, err = client:CliRelease():create({
+})
+```
+
+
+### CloudWorkspaceBackupObject
+
+Create an instance: `local cloud_workspace_backup_object = client:CloudWorkspaceBackupObject(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local cloud_workspace_backup_object, err = client:CloudWorkspaceBackupObject():load({ id = "cloud_workspace_backup_object_id", cloud_workspace_backup_id = "cloud_workspace_backup_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+
+### CodeRuleEvaluation
+
+Create an instance: `local code_rule_evaluation = client:CodeRuleEvaluation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `advisory` | `boolean` |  |
+| `coverage` | `table` |  |
+| `diff` | `string` | UTF-8 complete unified patch using a/ old and b/ new prefixes; at most 1 MiB |
+| `duration_ms` | `number` |  |
+| `evaluator_version` | `string` |  |
+| `input_digest` | `string|nil` |  |
+| `limits` | `table` |  |
+| `model` | `string` |  |
+| `requests` | `table` |  |
+| `schema_version` | `number` |  |
+| `snapshot_digest` | `string|nil` |  |
+| `unchecked` | `table` |  |
+| `verdicts` | `table` |  |
+
+#### Example: Create
+
+```lua
+local code_rule_evaluation, err = client:CodeRuleEvaluation():create({
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+  diff = "example_diff", -- string
+})
+```
+
+
+### ComSiteAccess
+
+Create an instance: `local com_site_access = client:ComSiteAccess(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### ComSiteAccessSession
+
+Create an instance: `local com_site_access_session = client:ComSiteAccessSession(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cookie_name` | `string` |  |
+| `host` | `string` | Site hostname, for example docs.acme.composal.page |
+| `max_age` | `number` |  |
+| `session_token` | `string` |  |
+
+#### Example: Create
+
+```lua
+local com_site_access_session, err = client:ComSiteAccessSession():create({
+  host = "example_host", -- string
+})
+```
+
+
+### CommentThreadComment
+
+Create an instance: `local comment_thread_comment = client:CommentThreadComment(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `body` | `string` |  |
+
+#### Example: Create
+
+```lua
+local comment_thread_comment, err = client:CommentThreadComment():create({
+  artefact_id = "example_artefact_id", -- string
+  comment_thread_id = "example_comment_thread_id", -- string
+  organization_id = "example_organization_id", -- string
+  body = "example_body", -- string
+})
+```
+
+
+### CommitDiff
+
+Create an instance: `local commit_diff = client:CommitDiff(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `files` | `table` |  |
+| `id` | `string` |  |
+| `parent_id` | `string|nil` |  |
+
+#### Example: Load
+
+```lua
+local commit_diff, err = client:CommitDiff():load({ id = "commit_diff_id", commit_id = "commit_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+
 ### ConnectionRequest
 
 Create an instance: `local connection_request = client:ConnectionRequest(nil)`
@@ -8779,6 +17587,115 @@ Create an instance: `local connection_source = client:ConnectionSource(nil)`
 
 ```lua
 local connection_sources, err = client:ConnectionSource():list({ agent_id = "example", organization_id = "example" })
+```
+
+
+### ContactSubmission
+
+Create an instance: `local contact_submission = client:ContactSubmission(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `company` | `string|nil` |  |
+| `email` | `string` | Stored downcased and stripped. |
+| `message` | `string` |  |
+| `name` | `string` |  |
+| `website` | `string|nil` | Honeypot. |
+
+#### Example: Create
+
+```lua
+local contact_submission, err = client:ContactSubmission():create({
+  email = "example_email", -- string
+  message = "example_message", -- string
+  name = "example_name", -- string
+})
+```
+
+
+### ControlComputer
+
+Create an instance: `local control_computer = client:ControlComputer(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `connection` | `table` | A point-in-time control transport observation. |
+| `consent` | `table` |  |
+| `device` | `table` |  |
+| `id` | `string` |  |
+| `provider_status` | `table` |  |
+
+#### Example: List
+
+```lua
+local control_computers, err = client:ControlComputer():list({ organization_id = "example", persistent_agent_id = "example" })
+```
+
+
+### ControlComputerControlOperation
+
+Create an instance: `local control_computer_control_operation = client:ControlComputerControlOperation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `arguments` | `table` |  |
+| `created_at` | `string` |  |
+| `delivery` | `table` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` |  |
+| `diagnostic_code` | `string` | Approved product error code retained after copied diagnostics expire. |
+| `end` | `table` |  |
+| `expires_at` | `string` |  |
+| `id` | `string` |  |
+| `key` | `string` |  |
+| `provider` | `string` |  |
+| `references` | `table` |  |
+| `result` | `any` |  |
+| `result_expired` | `boolean` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```lua
+local control_computer_control_operation, err = client:ControlComputerControlOperation():load({ id = "control_computer_control_operation_id", control_computer_id = "control_computer_id", organization_id = "organization_id" })
+```
+
+#### Example: Create
+
+```lua
+local control_computer_control_operation, err = client:ControlComputerControlOperation():create({
+  control_computer_id = "example_control_computer_id", -- string
+  organization_id = "example_organization_id", -- string
+  action = "example_action", -- string
+  arguments = {}, -- table
+  key = "example_key", -- string
+})
 ```
 
 
@@ -9197,6 +18114,64 @@ local demo_share_segment, err = client:DemoShareSegment():load({ id = "demo_shar
 ```
 
 
+### Deployment
+
+Create an instance: `local deployment = client:Deployment(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `app` | `table` |  |
+| `artifact_locator` | `string|nil` |  |
+| `build_duration_seconds` | `number|nil` |  |
+| `build_source` | `table|nil` |  |
+| `build_status` | `string` |  |
+| `children` | `table` |  |
+| `ci_pipeline_id` | `string|nil` |  |
+| `ci_pipeline_run_id` | `string|nil` |  |
+| `commit_sha` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `creator` | `table|nil` |  |
+| `deployed_url` | `string|nil` |  |
+| `duration_seconds` | `number|nil` |  |
+| `environment` | `table` |  |
+| `history_kind` | `string` |  |
+| `history_reason` | `string|nil` |  |
+| `id` | `string` |  |
+| `is_live` | `boolean` |  |
+| `is_rollback` | `boolean` |  |
+| `live_region_count` | `number` |  |
+| `number` | `number` |  |
+| `placement` | `table|nil` |  |
+| `region_count` | `number` |  |
+| `replicas_per_region` | `number` |  |
+| `rollback_reason` | `string|nil` |  |
+| `rollback_source_release_id` | `string|nil` |  |
+| `rollback_target_release_id` | `string|nil` |  |
+| `rollout_predecessor_id` | `string|nil` |  |
+| `rollout_status` | `string` |  |
+| `rollout_strategy` | `string` |  |
+| `service` | `table` |  |
+| `source_ref` | `string|nil` |  |
+| `status` | `string` |  |
+| `total_replicas` | `number` |  |
+| `trigger_kind` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```lua
+local deployment, err = client:Deployment():load({ id = "deployment_id", organization_id = "organization_id" })
+```
+
+
 ### DeploymentDashboardNomad
 
 Create an instance: `local deployment_dashboard_nomad = client:DeploymentDashboardNomad(nil)`
@@ -9208,6 +18183,49 @@ Create an instance: `local deployment_dashboard_nomad = client:DeploymentDashboa
 | `load(match)` | Load a single entity by match criteria. |
 
 
+### DeploymentDetail
+
+Create an instance: `local deployment_detail = client:DeploymentDetail(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activity` | `table` |  |
+| `app` | `any` |  |
+| `app_id` | `string|nil` |  |
+| `audit_events` | `table` |  |
+| `capacity` | `table` |  |
+| `data_resources` | `table` |  |
+| `deploy_targets` | `table` |  |
+| `deployments` | `table` |  |
+| `desired_states` | `table` |  |
+| `environments` | `table` |  |
+| `filters` | `table` | The option lists the deployments page's app, service and stage pickers narrow by. |
+| `health` | `table` | The rolled-up state of the selected scope. |
+| `nomad` | `table` | The Nomad footprint of the selected scope, deduplicated. |
+| `operations` | `table` |  |
+| `placements` | `table` |  |
+| `reconciler_ticks` | `table` |  |
+| `releases` | `table` |  |
+| `runtime_instances` | `table` |  |
+| `service_bindings` | `table` |  |
+| `service_views` | `table` |  |
+| `storage_resources` | `table` |  |
+
+#### Example: List
+
+```lua
+local deployment_details, err = client:DeploymentDetail():list({ organization_id = "example" })
+```
+
+
 ### DeploymentFile
 
 Create an instance: `local deployment_file = client:DeploymentFile(nil)`
@@ -9217,6 +18235,756 @@ Create an instance: `local deployment_file = client:DeploymentFile(nil)`
 | Method | Description |
 | --- | --- |
 | `update(data)` | Update an existing entity. |
+
+
+### DeploymentLog
+
+Create an instance: `local deployment_log = client:DeploymentLog(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `allocation_id` | `string` |  |
+| `app_environment_id` | `string|nil` |  |
+| `app_release_id` | `string|nil` |  |
+| `app_service_id` | `string|nil` |  |
+| `details` | `any` |  |
+| `environment_name` | `string` |  |
+| `release_version` | `string|nil` |  |
+| `service_name` | `string` |  |
+| `status` | `string` |  |
+| `task` | `string|nil` |  |
+| `unreachable_reason` | `string|nil` |  |
+
+#### Example: List
+
+```lua
+local deployment_logs, err = client:DeploymentLog():list({ organization_id = "example" })
+```
+
+
+### DeploymentMetric
+
+Create an instance: `local deployment_metric = client:DeploymentMetric(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `auto_deploy` | `boolean` |  |
+| `environment_id` | `string` |  |
+| `environment_name` | `string` |  |
+| `placement_id` | `string` |  |
+| `redeploy` | `boolean` |  |
+| `region_count` | `number` |  |
+| `replicas_per_region` | `number` |  |
+| `rollout_strategy` | `string` |  |
+| `service_id` | `string` |  |
+| `service_name` | `string` |  |
+| `source_ref` | `string|nil` |  |
+
+#### Example: List
+
+```lua
+local deployment_metrics, err = client:DeploymentMetric():list({ organization_id = "example" })
+```
+
+
+### DeploymentPreview
+
+Create an instance: `local deployment_preview = client:DeploymentPreview(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access` | `string` |  |
+| `app_environment_id` | `string` |  |
+| `app_name` | `string` |  |
+| `app_preview_profile_id` | `string` |  |
+| `app_slug` | `string` |  |
+| `change_number` | `number|nil` |  |
+| `created_at` | `string` |  |
+| `created_by_user_id` | `string` |  |
+| `expires_at` | `string` |  |
+| `generation` | `number` |  |
+| `health` | `string` |  |
+| `hosted_app_id` | `string` |  |
+| `id` | `string` |  |
+| `latest_operation_status` | `string|nil` |  |
+| `name` | `string` |  |
+| `owner_name` | `string|nil` |  |
+| `profile_name` | `string` |  |
+| `resource_overrides` | `table` | Service public IDs mapped to resource overrides. |
+| `retained` | `boolean` |  |
+| `slug` | `string` |  |
+| `snapshot_version` | `number` |  |
+| `source_revision` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `urls` | `table` |  |
+| `vcs_change_id` | `string|nil` |  |
+
+#### Example: List
+
+```lua
+local deployment_previews, err = client:DeploymentPreview():list({ organization_id = "example" })
+```
+
+
+### DeploymentSetting
+
+Create an instance: `local deployment_setting = client:DeploymentSetting(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `code` | `string` |  |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `nomad_datacenter` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: List
+
+```lua
+local deployment_settings, err = client:DeploymentSetting():list({ organization_id = "example" })
+```
+
+
+### DesktopLocalAgentModel
+
+Create an instance: `local desktop_local_agent_model = client:DesktopLocalAgentModel(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `name` | `string` |  |
+
+#### Example: List
+
+```lua
+local desktop_local_agent_models, err = client:DesktopLocalAgentModel():list({ organization_id = "example" })
+```
+
+
+### DesktopLocalAgentResponse
+
+Create an instance: `local desktop_local_agent_response = client:DesktopLocalAgentResponse(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `input` | `table` |  |
+| `max_output_tokens` | `number` |  |
+| `model` | `string` |  |
+| `store` | `boolean` |  |
+| `stream` | `boolean` |  |
+
+#### Example: Create
+
+```lua
+local desktop_local_agent_response, err = client:DesktopLocalAgentResponse():create({
+  organization_id = "example_organization_id", -- string
+  input = {}, -- table
+  model = "example_model", -- string
+  store = true, -- boolean
+  stream = true, -- boolean
+})
+```
+
+
+### Device
+
+Create an instance: `local device = client:Device(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `architecture` | `string` |  |
+| `channel` | `string` |  |
+| `coding_connection` | `table|nil` | Independent organization coding-control service state for the current device owner. |
+| `connection_checked_at` | `string|nil` | When this native presence observation was obtained; null when unobserved or unavailable. |
+| `connection_status` | `string` | Display-only native presence. |
+| `control_delivery_policy` | `table` |  |
+| `control_spawn_policy` | `table` |  |
+| `created_at` | `string` |  |
+| `device` | `table` |  |
+| `environment` | `string` |  |
+| `execution_available` | `boolean` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `native_device_id` | `string` |  |
+| `paired_at` | `string` |  |
+| `pairing_generation` | `number` |  |
+| `platform` | `string` |  |
+| `project_visibility` | `table` | Folder discovery and new-thread selection. |
+| `provider_status` | `table` | Recent native provider observations; absent on older API replicas. |
+| `revoked_at` | `string|nil` |  |
+| `scheduled_check_ins` | `boolean` | Whether the owner's private agents may check this computer's connection during scheduled runs. |
+| `user_browser_access` | `string` | Whether agents may use the owner's own Chrome-family browser here: off, only tabs agents open or the owner shares, or every tab. |
+
+#### Example: Load
+
+```lua
+local device, err = client:Device():load({ id = "device_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local devices, err = client:Device():list({ organization_id = "example" })
+```
+
+
+### DeviceBrowserOperation
+
+Create an instance: `local device_browser_operation = client:DeviceBrowserOperation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `command` | `string` | The in-app browser takes open through open_external; the person's own browser (arguments.browser user) takes open, tabs, share_tab, navigate, back, reload, screenshot, read, click, type, press, scroll and close. |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+
+#### Example: List
+
+```lua
+local device_browser_operations, err = client:DeviceBrowserOperation():list({ device_id = "example", organization_id = "example" })
+```
+
+
+### DeviceControlMessage
+
+Create an instance: `local device_control_message = client:DeviceControlMessage(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_id` | `string` |  |
+| `agent_name` | `string` |  |
+| `expires_at` | `string` |  |
+| `id` | `string` |  |
+| `sender` | `string|nil` |  |
+| `text` | `string|nil` |  |
+| `text_omitted` | `boolean` |  |
+| `thread` | `table` |  |
+
+#### Example: List
+
+```lua
+local device_control_messages, err = client:DeviceControlMessage():list({ device_id = "example", organization_id = "example" })
+```
+
+
+### DeviceControlOperation
+
+Create an instance: `local device_control_operation = client:DeviceControlOperation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `arguments` | `table` |  |
+| `created_at` | `string` |  |
+| `delivery` | `table` | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` |  |
+| `diagnostic_code` | `string` | Approved product error code retained after copied diagnostics expire. |
+| `end` | `table` |  |
+| `expires_at` | `string` |  |
+| `id` | `string` |  |
+| `key` | `string` |  |
+| `provider` | `string` |  |
+| `references` | `table` |  |
+| `result` | `any` |  |
+| `result_expired` | `boolean` | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```lua
+local device_control_operation, err = client:DeviceControlOperation():load({ id = "device_control_operation_id", device_id = "device_id", organization_id = "organization_id" })
+```
+
+#### Example: Create
+
+```lua
+local device_control_operation, err = client:DeviceControlOperation():create({
+  device_id = "example_device_id", -- string
+  organization_id = "example_organization_id", -- string
+  action = "example_action", -- string
+  arguments = {}, -- table
+  key = "example_key", -- string
+})
+```
+
+
+### DeviceEnterpriseRelay
+
+Create an instance: `local device_enterprise_relay = client:DeviceEnterpriseRelay(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```lua
+local device_enterprise_relays, err = client:DeviceEnterpriseRelay():list()
+```
+
+
+### DeviceFolderListing
+
+Create an instance: `local device_folder_listing = client:DeviceFolderListing(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `code` | `string` |  |
+| `error` | `string` |  |
+| `folders` | `table` |  |
+| `id` | `string` |  |
+| `key` | `string` | Stable idempotency key for this listing. |
+| `parent` | `string|nil` |  |
+| `path` | `string` | The resolved folder. |
+| `state` | `string` |  |
+| `truncated` | `boolean` |  |
+
+#### Example: Load
+
+```lua
+local device_folder_listing, err = client:DeviceFolderListing():load({ id = "device_folder_listing_id", device_id = "device_id", organization_id = "organization_id" })
+```
+
+#### Example: Create
+
+```lua
+local device_folder_listing, err = client:DeviceFolderListing():create({
+  device_id = "example_device_id", -- string
+  organization_id = "example_organization_id", -- string
+  key = "example_key", -- string
+  path = "example_path", -- string
+})
+```
+
+
+### DeviceGrant
+
+Create an instance: `local device_grant = client:DeviceGrant(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active_grants` | `table` |  |
+| `agent_choices` | `table` | Eligible picker choices, with current owner grant targets, on the first page only. |
+| `agent_id` | `string` |  |
+| `all_agents_access` | `boolean` | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `capabilities` | `table` |  |
+| `execution_available` | `boolean` |  |
+| `grants` | `table` |  |
+| `id` | `string` |  |
+| `next_cursor` | `string|nil` |  |
+| `principal_id` | `string` |  |
+
+#### Example: List
+
+```lua
+local device_grants, err = client:DeviceGrant():list({ device_id = "example", organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local device_grant, err = client:DeviceGrant():create({
+  device_id = "example_device_id", -- string
+  organization_id = "example_organization_id", -- string
+  agent_id = "example_agent_id", -- string
+  capabilities = {}, -- table
+  principal_id = "example_principal_id", -- string
+})
+```
+
+
+### DeviceInvocation
+
+Create an instance: `local device_invocation = client:DeviceInvocation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### DeviceLocalEvent
+
+Create an instance: `local device_local_event = client:DeviceLocalEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `event` | `string` |  |
+| `recorded` | `boolean` |  |
+
+#### Example: Create
+
+```lua
+local device_local_event, err = client:DeviceLocalEvent():create({
+  device_id = "example_device_id", -- string
+  organization_id = "example_organization_id", -- string
+  event = "example_event", -- string
+})
+```
+
+
+### DevicePairing
+
+Create an instance: `local device_pairing = client:DevicePairing(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `architecture` | `string` |  |
+| `channel` | `string` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `platform` | `string` |  |
+| `public_key` | `string` |  |
+
+#### Example: Create
+
+```lua
+local device_pairing, err = client:DevicePairing():create({
+  organization_id = "example_organization_id", -- string
+  architecture = "example_architecture", -- string
+  channel = "example_channel", -- string
+  name = "example_name", -- string
+  platform = "example_platform", -- string
+  public_key = "example_public_key", -- string
+})
+```
+
+
+### DeviceProject
+
+Create an instance: `local device_project = client:DeviceProject(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### DeviceScheduledCheckIn
+
+Create an instance: `local device_scheduled_check_in = client:DeviceScheduledCheckIn(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `enabled` | `boolean` |  |
+
+#### Example: Create
+
+```lua
+local device_scheduled_check_in, err = client:DeviceScheduledCheckIn():create({
+  device_id = "example_device_id", -- string
+  organization_id = "example_organization_id", -- string
+  enabled = true, -- boolean
+})
+```
+
+
+### DockerBuilder
+
+Create an instance: `local docker_builder = client:DockerBuilder(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `backend` | `string` |  |
+| `created_at` | `string|nil` |  |
+| `gateway_url` | `string|nil` | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `number` |  |
+| `id` | `string` |  |
+| `last_activity_at` | `string|nil` |  |
+| `organization_id` | `string` |  |
+| `ready_at` | `string|nil` |  |
+| `slept_at` | `string|nil` |  |
+| `slug` | `string` |  |
+| `startup_attempt` | `number` |  |
+| `startup_failure` | `string|nil` | Safe failure reason for the most recent startup attempt |
+| `startup_stage` | `string|nil` |  |
+| `status` | `string` |  |
+| `updated_at` | `string|nil` |  |
+
+#### Example: Load
+
+```lua
+local docker_builder, err = client:DockerBuilder():load({ id = "docker_builder_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local docker_builders, err = client:DockerBuilder():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local docker_builder, err = client:DockerBuilder():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### DockerBuilderSession
+
+Create an instance: `local docker_builder_session = client:DockerBuilderSession(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `string` |  |
+| `docker_builder_id` | `string` |  |
+| `expires_at` | `string` |  |
+| `gateway_url` | `string|nil` | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `number` |  |
+| `id` | `string` |  |
+| `organization_id` | `string` |  |
+| `revoked_at` | `string|nil` |  |
+| `user_id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local docker_builder_session, err = client:DockerBuilderSession():load({ id = "docker_builder_session_id", organization_id = "organization_id" })
+```
+
+#### Example: Create
+
+```lua
+local docker_builder_session, err = client:DockerBuilderSession():create({
+  docker_builder_id = "example_docker_builder_id", -- string
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### DockerBuilderSetting
+
+Create an instance: `local docker_builder_setting = client:DockerBuilderSetting(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `docker_builder_settings` | `table` |  |
+| `idle_timeout_seconds` | `number` |  |
+| `max_concurrency` | `number` |  |
+| `organization_id` | `string` |  |
+| `region` | `string` |  |
+| `runtime_timeout_seconds` | `number` |  |
+
+#### Example: List
+
+```lua
+local docker_builder_settings, err = client:DockerBuilderSetting():list({ organization_id = "example" })
+```
+
+
+### DomainDnsIntegration
+
+Create an instance: `local domain_dns_integration = client:DomainDnsIntegration(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_label` | `string|nil` |  |
+| `api_token` | `string` |  |
+| `created_at` | `string` |  |
+| `failure_message` | `string|nil` |  |
+| `has_token` | `boolean` |  |
+| `id` | `string` |  |
+| `last_verified_at` | `string|nil` |  |
+| `organization_id` | `string` |  |
+| `provider` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: List
+
+```lua
+local domain_dns_integrations, err = client:DomainDnsIntegration():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local domain_dns_integration, err = client:DomainDnsIntegration():create({
+  organization_id = "example_organization_id", -- string
+  api_token = "example_api_token", -- string
+})
+```
 
 
 ### DomainPathRule
@@ -9319,6 +19087,28 @@ local dream, err = client:Dream():load({ id = "dream_id", organization_id = "org
 ```lua
 local dreams, err = client:Dream():list({ organization_id = "example", project_id = "example" })
 ```
+
+
+### Edge
+
+Create an instance: `local edge = client:Edge(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### EmailVerification
+
+Create an instance: `local email_verification = client:EmailVerification(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
 
 
 ### Environment
@@ -9686,6 +19476,197 @@ local evidence, err = client:Evidence():load({ id = "evidence_id", organization_
 ```
 
 
+### ExecutionDesiredState
+
+Create an instance: `local execution_desired_state = client:ExecutionDesiredState(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `desired_state` | `table` |  |
+| `id` | `string` |  |
+| `stop_observed` | `boolean` | True only for archived zero-capacity states with all known jobs stopped and allocations terminated. |
+
+#### Example: Load
+
+```lua
+local execution_desired_state, err = client:ExecutionDesiredState():load({ id = "execution_desired_state_id" })
+```
+
+#### Example: List
+
+```lua
+local execution_desired_states, err = client:ExecutionDesiredState():list()
+```
+
+#### Example: Create
+
+```lua
+local execution_desired_state, err = client:ExecutionDesiredState():create({
+})
+```
+
+
+### ExecutionReconcilerTick
+
+Create an instance: `local execution_reconciler_tick = client:ExecutionReconcilerTick(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local execution_reconciler_tick, err = client:ExecutionReconcilerTick():load({ id = "execution_reconciler_tick_id" })
+```
+
+#### Example: List
+
+```lua
+local execution_reconciler_ticks, err = client:ExecutionReconcilerTick():list()
+```
+
+#### Example: Create
+
+```lua
+local execution_reconciler_tick, err = client:ExecutionReconcilerTick():create({
+})
+```
+
+
+### ExecutionRelease
+
+Create an instance: `local execution_release = client:ExecutionRelease(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local execution_release, err = client:ExecutionRelease():load({ id = "execution_release_id" })
+```
+
+#### Example: List
+
+```lua
+local execution_releases, err = client:ExecutionRelease():list()
+```
+
+#### Example: Create
+
+```lua
+local execution_release, err = client:ExecutionRelease():create({
+})
+```
+
+
+### ExecutionRuntimeInstance
+
+Create an instance: `local execution_runtime_instance = client:ExecutionRuntimeInstance(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter_kind` | `string` |  |
+| `app_environment_id` | `string` |  |
+| `app_release_id` | `string|nil` |  |
+| `app_service_id` | `string` |  |
+| `booted_at` | `string|nil` |  |
+| `booted_at_label` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `hosted_app_id` | `string` |  |
+| `id` | `string` |  |
+| `instance_key` | `string` |  |
+| `last_reconciled_at` | `string|nil` |  |
+| `last_reconciled_at_label` | `string|nil` |  |
+| `last_seen_at` | `string|nil` |  |
+| `last_seen_at_label` | `string|nil` |  |
+| `location` | `any` |  |
+| `location_id` | `string` |  |
+| `network_peer_id` | `string|nil` |  |
+| `nomad_allocation_id` | `string|nil` |  |
+| `nomad_task_name` | `string|nil` |  |
+| `organization_id` | `string` |  |
+| `private_ipv4` | `string|nil` |  |
+| `private_ipv6` | `string|nil` |  |
+| `provider_instance_id` | `string|nil` |  |
+| `public_endpoint` | `string|nil` |  |
+| `service_name` | `string` | Name of the Vex service this instance runs, in the same vocabulary as `vex deploy list`. |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `terminated_at` | `string|nil` |  |
+| `terminated_at_label` | `string|nil` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+
+#### Example: Load
+
+```lua
+local execution_runtime_instance, err = client:ExecutionRuntimeInstance():load({ id = "execution_runtime_instance_id" })
+```
+
+#### Example: List
+
+```lua
+local execution_runtime_instances, err = client:ExecutionRuntimeInstance():list()
+```
+
+#### Example: Create
+
+```lua
+local execution_runtime_instance, err = client:ExecutionRuntimeInstance():create({
+})
+```
+
+
 ### Exploration
 
 Create an instance: `local exploration = client:Exploration(nil)`
@@ -9988,6 +19969,356 @@ local findings, err = client:Finding():list({ organization_id = "example" })
 ```
 
 
+### Gh
+
+Create an instance: `local gh = client:Gh(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capabilities` | `table` |  |
+| `content` | `table` |  |
+| `fetched_at` | `string` |  |
+| `id` | `string` |  |
+| `magic_merge` | `table|nil` |  |
+| `pull_request` | `any` |  |
+| `stack` | `table` |  |
+| `transcript_paths` | `table` |  |
+
+#### Example: Load
+
+```lua
+local gh, err = client:Gh():load({ id = "gh_id", gh_id = "gh_id", github_repo = "github_repo", organization_id = "organization_id" })
+```
+
+
+### GitImport
+
+Create an instance: `local git_import = client:GitImport(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `destination_mode` | `string` |  |
+| `error` | `string|nil` |  |
+| `git_default_branch` | `string` | Original Git symbolic HEAD branch, independent of the branch selected for JJ conversion |
+| `git_status` | `string` |  |
+| `git_url` | `string` |  |
+| `id` | `string` |  |
+| `idempotency_key` | `string` |  |
+| `name` | `string` |  |
+| `native_status` | `string` |  |
+| `organization` | `string` |  |
+| `repository_id` | `string|nil` |  |
+| `root_path` | `string` |  |
+| `slug` | `string` |  |
+| `source_branch` | `string` |  |
+| `target_branch` | `string` |  |
+
+#### Example: Load
+
+```lua
+local git_import, err = client:GitImport():load({ id = "git_import_id" })
+```
+
+#### Example: Create
+
+```lua
+local git_import, err = client:GitImport():create({
+  organization_id = "example_organization_id", -- string
+  destination_mode = "example_destination_mode", -- string
+  idempotency_key = "example_idempotency_key", -- string
+  root_path = "example_root_path", -- string
+  slug = "example_slug", -- string
+  source_branch = "example_source_branch", -- string
+})
+```
+
+
+### Github
+
+Create an instance: `local github = client:Github(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### GithubApp
+
+Create an instance: `local github_app = client:GithubApp(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### GithubAppImportableRepository
+
+Create an instance: `local github_app_importable_repository = client:GithubAppImportableRepository(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_login` | `string` |  |
+| `github_app_installation_id` | `string` |  |
+| `next_page` | `number|nil` | Next GitHub page for this installation |
+| `repositories` | `table` |  |
+
+#### Example: List
+
+```lua
+local github_app_importable_repositorys, err = client:GithubAppImportableRepository():list()
+```
+
+
+### GithubAppInstallation
+
+Create an instance: `local github_app_installation = client:GithubAppInstallation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `string|nil` |  |
+| `account_id` | `string|nil` |  |
+| `account_login` | `string` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `id` | `string` |  |
+| `installation_id` | `string` |  |
+| `installed_at` | `string|nil` |  |
+| `installed_at_label` | `string|nil` |  |
+| `manage_access_url` | `string` |  |
+| `organization_id` | `string` |  |
+| `permission_entries` | `table` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `table` |  |
+| `status` | `string` |  |
+| `suspended_at` | `string|nil` |  |
+| `suspended_at_label` | `string|nil` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+
+#### Example: List
+
+```lua
+local github_app_installations, err = client:GithubAppInstallation():list({ organization_id = "example" })
+```
+
+
+### GithubAppInstallationAuthorization
+
+Create an instance: `local github_app_installation_authorization = client:GithubAppInstallationAuthorization(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `installation_url` | `string` |  |
+| `organization_slug` | `string` | Vex organization slug whose installation will be linked. |
+| `return_target` | `string` | Server-validated Vex application target used after verification. |
+
+#### Example: Create
+
+```lua
+local github_app_installation_authorization, err = client:GithubAppInstallationAuthorization():create({
+  organization_slug = "example_organization_slug", -- string
+  return_target = "example_return_target", -- string
+})
+```
+
+
+### GithubAppUserAuthorization
+
+Create an instance: `local github_app_user_authorization = client:GithubAppUserAuthorization(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local github_app_user_authorization, err = client:GithubAppUserAuthorization():create({
+})
+```
+
+
+### GithubCiRepository
+
+Create an instance: `local github_ci_repository = client:GithubCiRepository(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adoption_mode` | `string` |  |
+| `check_name_prefix` | `string` |  |
+| `ci_runner_pool_id` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `default_branch` | `string` |  |
+| `github_app_installation_id` | `string` |  |
+| `github_repository_id` | `string` |  |
+| `id` | `string` |  |
+| `last_compatibility_status` | `string|nil` |  |
+| `last_error_message` | `string|nil` |  |
+| `last_head_sha` | `string|nil` |  |
+| `last_pull_request_number` | `number|nil` |  |
+| `last_ref` | `string|nil` |  |
+| `last_webhook_action` | `string|nil` |  |
+| `last_webhook_at` | `string|nil` |  |
+| `last_webhook_at_label` | `string|nil` |  |
+| `last_webhook_delivery_id` | `string|nil` |  |
+| `last_webhook_event` | `string|nil` |  |
+| `metadata` | `table` |  |
+| `organization_id` | `string` |  |
+| `permission_status` | `string` |  |
+| `repository_full_name` | `string` |  |
+| `repository_name` | `string` |  |
+| `repository_owner` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+| `webhook_delivery_count` | `number` |  |
+
+#### Example: Load
+
+```lua
+local github_ci_repository, err = client:GithubCiRepository():load({ id = "github_ci_repository_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local github_ci_repositorys, err = client:GithubCiRepository():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local github_ci_repository, err = client:GithubCiRepository():create({
+  organization_id = "example_organization_id", -- string
+  github_app_installation_id = "example_github_app_installation_id", -- string
+  github_repository_id = "example_github_repository_id", -- string
+  repository_name = "example_repository_name", -- string
+  repository_owner = "example_repository_owner", -- string
+})
+```
+
+
+### GithubCiRepositoryCompatibilityReport
+
+Create an instance: `local github_ci_repository_compatibility_report = client:GithubCiRepositoryCompatibilityReport(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `analyzed_at` | `string` |  |
+| `analyzed_at_label` | `string|nil` |  |
+| `ci_pipeline_id` | `string|nil` |  |
+| `ci_pipeline_run_id` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `diagnostics` | `table` |  |
+| `errors` | `table` |  |
+| `event_action` | `string|nil` |  |
+| `event_name` | `string` |  |
+| `execution_allowed` | `boolean` |  |
+| `github_ci_repository_id` | `string` |  |
+| `head_sha` | `string|nil` |  |
+| `id` | `string` |  |
+| `metadata` | `table` |  |
+| `organization_id` | `string` |  |
+| `parser_version` | `string` |  |
+| `pull_request_number` | `number|nil` |  |
+| `ref_name` | `string|nil` |  |
+| `referenced_actions` | `table` |  |
+| `required_secrets` | `table` |  |
+| `runner_labels` | `table` |  |
+| `source_blob_sha` | `string|nil` |  |
+| `source_sha` | `string` |  |
+| `status` | `string` |  |
+| `supported_features` | `table` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+| `warnings` | `table` |  |
+| `workflow_name` | `string|nil` |  |
+| `workflow_path` | `string` |  |
+
+#### Example: Load
+
+```lua
+local github_ci_repository_compatibility_report, err = client:GithubCiRepositoryCompatibilityReport():load({ id = "github_ci_repository_compatibility_report_id", github_ci_repository_id = "github_ci_repository_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local github_ci_repository_compatibility_reports, err = client:GithubCiRepositoryCompatibilityReport():list({ github_ci_repository_id = "example", organization_id = "example" })
+```
+
+
 ### GithubConnection
 
 Create an instance: `local github_connection = client:GithubConnection(nil)`
@@ -10023,6 +20354,599 @@ local github_connection, err = client:GithubConnection():create({
   organization_id = "example_organization_id", -- string
   github_app_installation_id = "example_github_app_installation_id", -- string
   repositories = {}, -- table
+})
+```
+
+
+### GithubIntegration
+
+Create an instance: `local github_integration = client:GithubIntegration(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `string|nil` |  |
+| `account_login` | `string` |  |
+| `connection_status` | `string` |  |
+| `connection_status_label` | `string` |  |
+| `github_installation` | `any` |  |
+| `health` | `table` |  |
+| `id` | `string` |  |
+| `imported_repositories_count` | `number` |  |
+| `imported_repositories_count_label` | `string` |  |
+| `organization` | `table` |  |
+| `pagination` | `table` |  |
+| `repositories` | `table` |  |
+
+#### Example: Load
+
+```lua
+local github_integration, err = client:GithubIntegration():load({ id = "github_integration_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local github_integrations, err = client:GithubIntegration():list({ organization_id = "example" })
+```
+
+
+### GithubOnboarding
+
+Create an instance: `local github_onboarding = client:GithubOnboarding(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accounts` | `table` |  |
+| `active_batch_id` | `string|nil` | The batch the wizard's import step should resume — the most recent batch still working, else the most recent overall. |
+| `batches` | `table` |  |
+| `capabilities` | `table` |  |
+| `installations` | `table` |  |
+
+#### Example: Load
+
+```lua
+local github_onboarding, err = client:GithubOnboarding():load({ organization_id = "organization_id" })
+```
+
+
+### GithubOnboardingBranch
+
+Create an instance: `local github_onboarding_branch = client:GithubOnboardingBranch(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `branches` | `table` |  |
+
+#### Example: List
+
+```lua
+local github_onboarding_branchs, err = client:GithubOnboardingBranch():list({ organization_id = "example", github_app_installation_id = "example", name = "example", owner = "example" })
+```
+
+
+### GithubOnboardingImport
+
+Create an instance: `local github_onboarding_import = client:GithubOnboardingImport(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_login` | `string` |  |
+| `complete` | `boolean` | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `string` |  |
+| `failed_item_count` | `number` |  |
+| `github_app_installation_id` | `string` |  |
+| `id` | `string` |  |
+| `imported_item_count` | `number` |  |
+| `item_count` | `number` |  |
+| `items` | `table` |  |
+| `repositories` | `any` |  |
+| `status` | `string` |  |
+| `terminal_item_count` | `number` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Create
+
+```lua
+local github_onboarding_import, err = client:GithubOnboardingImport():create({
+  organization_id = "example_organization_id", -- string
+  github_app_installation_id = "example_github_app_installation_id", -- string
+  repositories = "example_repositories", -- any
+})
+```
+
+
+### GithubOnboardingImportBatch
+
+Create an instance: `local github_onboarding_import_batch = client:GithubOnboardingImportBatch(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_login` | `string` |  |
+| `complete` | `boolean` | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `string` |  |
+| `failed_item_count` | `number` |  |
+| `github_app_installation_id` | `string` |  |
+| `id` | `string` |  |
+| `imported_item_count` | `number` |  |
+| `item_count` | `number` |  |
+| `items` | `table` |  |
+| `status` | `string` |  |
+| `terminal_item_count` | `number` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```lua
+local github_onboarding_import_batch, err = client:GithubOnboardingImportBatch():load({ id = "github_onboarding_import_batch_id", organization_id = "organization_id" })
+```
+
+
+### GithubOnboardingImportItem
+
+Create an instance: `local github_onboarding_import_item = client:GithubOnboardingImportItem(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### GithubPullRequest
+
+Create an instance: `local github_pull_request = client:GithubPullRequest(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capabilities` | `table` |  |
+| `content` | `table` |  |
+| `fetched_at` | `string` |  |
+| `id` | `string` |  |
+| `magic_merge` | `table|nil` |  |
+| `pull_request` | `any` |  |
+| `stack` | `table` |  |
+| `transcript_paths` | `table` |  |
+
+#### Example: Load
+
+```lua
+local github_pull_request, err = client:GithubPullRequest():load({ id = "github_pull_request_id", organization_id = "organization_id", pull_request_id = "pull_request_id" })
+```
+
+
+### GithubRunnerAdmission
+
+Create an instance: `local github_runner_admission = client:GithubRunnerAdmission(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local github_runner_admission, err = client:GithubRunnerAdmission():create({
+})
+```
+
+
+### GithubRunnerCache
+
+Create an instance: `local github_runner_cache = client:GithubRunnerCache(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `entry_id` | `string` |  |
+| `key` | `string` |  |
+| `matched_key` | `string` |  |
+| `ok` | `boolean` |  |
+| `operation` | `string` |  |
+| `restore_keys` | `table` |  |
+| `signed_download_url` | `string` |  |
+| `size_bytes` | `string` |  |
+| `upload_path` | `string` |  |
+| `version` | `string` |  |
+
+#### Example: Create
+
+```lua
+local github_runner_cache, err = client:GithubRunnerCache():create({
+  operation = "example_operation", -- string
+})
+```
+
+
+### GithubRunnerEgress
+
+Create an instance: `local github_runner_egress = client:GithubRunnerEgress(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_request` | `boolean` |  |
+| `cidr` | `string|nil` |  |
+| `ipv4` | `string|nil` |  |
+| `requested_at_label` | `string|nil` |  |
+| `status` | `string` |  |
+
+#### Example: Load
+
+```lua
+local github_runner_egress, err = client:GithubRunnerEgress():load({ organization_id = "organization_id" })
+```
+
+#### Example: Create
+
+```lua
+local github_runner_egress, err = client:GithubRunnerEgress():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### GithubRunnerHistory
+
+Create an instance: `local github_runner_history = client:GithubRunnerHistory(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activity` | `table` |  |
+| `counts` | `table` |  |
+| `observed_at` | `string` |  |
+| `pagination` | `table` |  |
+| `repositories` | `table` |  |
+| `runs` | `table` |  |
+| `setup` | `any` | CI onboarding. |
+| `success_rate` | `number|nil` |  |
+| `usage` | `table` |  |
+
+#### Example: Load
+
+```lua
+local github_runner_history, err = client:GithubRunnerHistory():load({ organization_id = "organization_id" })
+```
+
+
+### GithubRunnerImage
+
+Create an instance: `local github_runner_image = client:GithubRunnerImage(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `image_reference` | `string` | Immutable linux/amd64 Ubuntu 24.04 image, registry/repository@sha256:digest, with Node 22+ |
+| `last_error` | `string|nil` |  |
+| `modal_image_id` | `string|nil` |  |
+| `name` | `string` |  |
+| `registry_secret_name` | `string|nil` | Name of an organization CI secret containing REGISTRY_USERNAME and REGISTRY_PASSWORD JSON fields |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```lua
+local github_runner_image, err = client:GithubRunnerImage():load({ id = "github_runner_image_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local github_runner_images, err = client:GithubRunnerImage():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local github_runner_image, err = client:GithubRunnerImage():create({
+  organization_id = "example_organization_id", -- string
+  image_reference = "example_image_reference", -- string
+  name = "example_name", -- string
+})
+```
+
+
+### GithubRunnerPool
+
+Create an instance: `local github_runner_pool = client:GithubRunnerPool(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `cpu_millicores` | `number` |  |
+| `enabled` | `boolean` |  |
+| `github_app_installation_id` | `string` |  |
+| `github_repository_id` | `string` |  |
+| `github_runner_image` | `any` |  |
+| `id` | `string` |  |
+| `image` | `string|nil` | Organization image name or ID; null restores the standard image |
+| `invocations` | `table` |  |
+| `label` | `string` |  |
+| `last_error` | `string|nil` |  |
+| `last_polled_at` | `string|nil` |  |
+| `max_concurrency` | `number` |  |
+| `memory_mb` | `number` |  |
+| `organization_id` | `string` |  |
+| `provider` | `string` |  |
+| `repository_full_name` | `string` |  |
+| `runtime_kind` | `string` |  |
+| `timeout_seconds` | `number` |  |
+
+#### Example: List
+
+```lua
+local github_runner_pools, err = client:GithubRunnerPool():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local github_runner_pool, err = client:GithubRunnerPool():create({
+  organization_id = "example_organization_id", -- string
+  github_app_installation_id = "example_github_app_installation_id", -- string
+  repository_full_name = "example_repository_full_name", -- string
+})
+```
+
+
+### GithubRunnerSetup
+
+Create an instance: `local github_runner_setup = client:GithubRunnerSetup(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `error` | `string|nil` |  |
+| `github_repository_connection_id` | `string` |  |
+| `id` | `string` |  |
+| `pull_request_url` | `string|nil` |  |
+| `repository_full_name` | `string` |  |
+| `roder_thread_id` | `string|nil` |  |
+| `runner_labels` | `table` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `summary` | `string|nil` |  |
+
+#### Example: Load
+
+```lua
+local github_runner_setup, err = client:GithubRunnerSetup():load({ id = "github_runner_setup_id", organization_id = "organization_id" })
+```
+
+#### Example: Create
+
+```lua
+local github_runner_setup, err = client:GithubRunnerSetup():create({
+  organization_id = "example_organization_id", -- string
+  github_repository_connection_id = "example_github_repository_connection_id", -- string
+})
+```
+
+
+### Gitlab
+
+Create an instance: `local gitlab = client:Gitlab(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `configured` | `boolean` |  |
+| `connections` | `table` |  |
+| `integrations` | `table` |  |
+| `inventory_error` | `string|nil` |  |
+| `next_page` | `number|nil` |  |
+| `organization` | `table` |  |
+| `projects` | `table` |  |
+| `redirect_uri` | `string|nil` | The OAuth redirect URI a self-managed GitLab application must use; null when GitLab callbacks aren't configured. |
+| `selected_integration_id` | `string|nil` |  |
+
+#### Example: Load
+
+```lua
+local gitlab, err = client:Gitlab():load({ organization_id = "organization_id" })
+```
+
+
+### GitlabConnection
+
+Create an instance: `local gitlab_connection = client:GitlabConnection(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### GitlabImport
+
+Create an instance: `local gitlab_import = client:GitlabImport(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `integration_id` | `string` |  |
+| `project_id` | `number` |  |
+| `repo_slug` | `string` |  |
+| `source_branch` | `string` |  |
+
+#### Example: Create
+
+```lua
+local gitlab_import, err = client:GitlabImport():create({
+  organization_id = "example_organization_id", -- string
+  integration_id = "example_integration_id", -- string
+  project_id = 1, -- number
+})
+```
+
+
+### GitlabOauth
+
+Create an instance: `local gitlab_oauth = client:GitlabOauth(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### GrantAllAgent
+
+Create an instance: `local grant_all_agent = client:GrantAllAgent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `all_agents_access` | `boolean` |  |
+| `enabled` | `boolean` |  |
+| `execution_available` | `boolean` |  |
+
+#### Example: Create
+
+```lua
+local grant_all_agent, err = client:GrantAllAgent():create({
+  device_id = "example_device_id", -- string
+  organization_id = "example_organization_id", -- string
+  enabled = true, -- boolean
 })
 ```
 
@@ -10094,6 +21018,23 @@ local hosting_app_domain, err = client:HostingAppDomain():create({
 ```
 
 
+### IdentityOrganization
+
+Create an instance: `local identity_organization = client:IdentityOrganization(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
 ### ImageRepository
 
 Create an instance: `local image_repository = client:ImageRepository(nil)`
@@ -10139,6 +21080,62 @@ local image_repository, err = client:ImageRepository():create({
   name = "example_name", -- string
   slug = "example_slug", -- string
 })
+```
+
+
+### ImageRepositoryTag
+
+Create an instance: `local image_repository_tag = client:ImageRepositoryTag(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `image_repository` | `table` |  |
+| `name` | `string` |  |
+| `registry_url` | `string` |  |
+| `tags` | `table` |  |
+
+#### Example: List
+
+```lua
+local image_repository_tags, err = client:ImageRepositoryTag():list({ image_repository_id = "example" })
+```
+
+
+### ImportBranchPolicy
+
+Create an instance: `local import_branch_policy = client:ImportBranchPolicy(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `boolean` |  |
+| `can_manage_sandbox_region` | `boolean` |  |
+| `dedicated_outbound_ip_addresses` | `table` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` |  |
+| `organization` | `table` |  |
+| `sandbox_regions` | `table` |  |
+
+#### Example: Load
+
+```lua
+local import_branch_policy, err = client:ImportBranchPolicy():load({ organization_id = "organization_id" })
 ```
 
 
@@ -10251,6 +21248,134 @@ local invitation, err = client:Invitation():create({
 ```
 
 
+### InvocationControl
+
+Create an instance: `local invocation_control = client:InvocationControl(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### JobLogChunk
+
+Create an instance: `local job_log_chunk = client:JobLogChunk(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `byte_size` | `number` |  |
+| `ci_job_id` | `string|nil` |  |
+| `ci_pipeline_run_id` | `string|nil` |  |
+| `ci_step_id` | `string|nil` |  |
+| `content` | `string` |  |
+| `content_format` | `string` |  |
+| `created_at` | `string` |  |
+| `id` | `string` |  |
+| `organization_id` | `string` |  |
+| `sequence_number` | `number` |  |
+| `stream` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: List
+
+```lua
+local job_log_chunks, err = client:JobLogChunk():list({ job_id = "example", pipeline_id = "example", run_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local job_log_chunk, err = client:JobLogChunk():create({
+  job_id = "example_job_id", -- string
+  pipeline_id = "example_pipeline_id", -- string
+  run_id = "example_run_id", -- string
+})
+```
+
+
+### JobStep
+
+Create an instance: `local job_step = client:JobStep(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```lua
+local job_steps, err = client:JobStep():list({ job_id = "example", pipeline_id = "example", run_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local job_step, err = client:JobStep():create({
+  job_id = "example_job_id", -- string
+  pipeline_id = "example_pipeline_id", -- string
+  run_id = "example_run_id", -- string
+})
+```
+
+
+### JobWorkspace
+
+Create an instance: `local job_workspace = client:JobWorkspace(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```lua
+local job_workspaces, err = client:JobWorkspace():list({ job_id = "example", pipeline_id = "example", run_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local job_workspace, err = client:JobWorkspace():create({
+  job_id = "example_job_id", -- string
+  pipeline_id = "example_pipeline_id", -- string
+  run_id = "example_run_id", -- string
+})
+```
+
+
 ### JourneyVariantReplay
 
 Create an instance: `local journey_variant_replay = client:JourneyVariantReplay(nil)`
@@ -10353,6 +21478,259 @@ local knowledge, err = client:Knowledge():create({
   markdown = "example_markdown", -- string
   project_id = "example_project_id", -- string
   title = "example_title", -- string
+})
+```
+
+
+### Known
+
+Create an instance: `local known = client:Known(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### Label
+
+Create an instance: `local label = client:Label(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `changes_count` | `number` |  |
+| `id` | `string` |  |
+| `name` | `string` | Display name |
+| `slug` | `string` | Normalized identity used for filtering and lookup. |
+
+#### Example: List
+
+```lua
+local labels, err = client:Label():list({ organization_id = "example" })
+```
+
+
+### LeaseArtifact
+
+Create an instance: `local lease_artifact = client:LeaseArtifact(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local lease_artifact, err = client:LeaseArtifact():create({
+  lease_id = "example_lease_id", -- string
+  node_id = "example_node_id", -- string
+})
+```
+
+
+### LeaseCache
+
+Create an instance: `local lease_cache = client:LeaseCache(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### LeaseLogChunk
+
+Create an instance: `local lease_log_chunk = client:LeaseLogChunk(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local lease_log_chunk, err = client:LeaseLogChunk():create({
+  lease_id = "example_lease_id", -- string
+  node_id = "example_node_id", -- string
+})
+```
+
+
+### LeaseReconciliation
+
+Create an instance: `local lease_reconciliation = client:LeaseReconciliation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### LeaseStep
+
+Create an instance: `local lease_step = client:LeaseStep(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### LeaseVerifyDiagnostic
+
+Create an instance: `local lease_verify_diagnostic = client:LeaseVerifyDiagnostic(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `browser_events` | `table` |  |
+| `live_browser` | `table` |  |
+| `live_view` | `table` | The tester's read-only live stream for page viewers. |
+| `steps` | `table` |  |
+
+#### Example: Create
+
+```lua
+local lease_verify_diagnostic, err = client:LeaseVerifyDiagnostic():create({
+  lease_id = "example_lease_id", -- string
+  swarm_id = "example_swarm_id", -- string
+  task_id = "example_task_id", -- string
+  browser_events = {}, -- table
+  live_browser = {}, -- table
+  live_view = {}, -- table
+})
+```
+
+
+### LeaseVerifySecret
+
+Create an instance: `local lease_verify_secret = client:LeaseVerifySecret(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local lease_verify_secret, err = client:LeaseVerifySecret():create({
+  lease_id = "example_lease_id", -- string
+  swarm_id = "example_swarm_id", -- string
+  task_id = "example_task_id", -- string
+})
+```
+
+
+### LeaseWorkspace
+
+Create an instance: `local lease_workspace = client:LeaseWorkspace(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### LocalAgentDecision
+
+Create an instance: `local local_agent_decision = client:LocalAgentDecision(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `request` | `table` | A native OpenAI Decisions request for gpt-6-luna, at most 1600 KiB, with inline images only |
+
+#### Example: Create
+
+```lua
+local local_agent_decision, err = client:LocalAgentDecision():create({
+  organization_id = "example_organization_id", -- string
+  request = {}, -- table
+})
+```
+
+
+### LocalAgentResponse
+
+Create an instance: `local local_agent_response = client:LocalAgentResponse(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `input` | `table` |  |
+| `model` | `string` |  |
+| `service_tier` | `string|nil` |  |
+| `store` | `boolean` |  |
+| `stream` | `boolean` |  |
+| `tools` | `table` |  |
+
+#### Example: Create
+
+```lua
+local local_agent_response, err = client:LocalAgentResponse():create({
+  organization_id = "example_organization_id", -- string
+  input = {}, -- table
+  model = "example_model", -- string
+  store = true, -- boolean
+  stream = true, -- boolean
 })
 ```
 
@@ -10464,6 +21842,121 @@ Create an instance: `local location = client:Location(nil)`
 ```lua
 local locations, err = client:Location():list()
 ```
+
+
+### LogStreamChunk
+
+Create an instance: `local log_stream_chunk = client:LogStreamChunk(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local log_stream_chunk, err = client:LogStreamChunk():load({ id = "log_stream_chunk_id", log_stream_id = "log_stream_id", space_id = "space_id" })
+```
+
+#### Example: List
+
+```lua
+local log_stream_chunks, err = client:LogStreamChunk():list({ log_stream_id = "example", space_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local log_stream_chunk, err = client:LogStreamChunk():create({
+  log_stream_id = "example_log_stream_id", -- string
+  space_id = "example_space_id", -- string
+})
+```
+
+
+### LogoImage
+
+Create an instance: `local logo_image = client:LogoImage(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_products` | `table` | Products this organization has activated (PRD 144). |
+| `agents_only` | `boolean` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `boolean` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `github_prs_authored_by_change_author` | `boolean` |  |
+| `id` | `string` |  |
+| `logo_url` | `string|nil` |  |
+| `member_count` | `number` |  |
+| `name` | `string` |  |
+| `pending_invitation_count` | `number` |  |
+| `personal` | `boolean` |  |
+| `repository_count` | `number` |  |
+| `role` | `string|nil` |  |
+| `sandbox_region` | `string` |  |
+| `shared_agent_personal_accounts_enabled` | `boolean` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` |  |
+| `source_control_providers` | `table` | Connected source control providers for this organization. |
+| `source_ui_enabled` | `boolean` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `string` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+| `verify_pr_scenario_writing_enabled` | `boolean` |  |
+
+
+### MarketingSetting
+
+Create an instance: `local marketing_setting = client:MarketingSetting(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `call_first` | `boolean` |  |
+
+#### Example: List
+
+```lua
+local marketing_settings, err = client:MarketingSetting():list()
+```
+
+
+### McpOauth
+
+Create an instance: `local mcp_oauth = client:McpOauth(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
 
 
 ### Me
@@ -10696,6 +22189,50 @@ local memory, err = client:Memory():create({
 ```
 
 
+### MergeQueueEntry
+
+Create an instance: `local merge_queue_entry = client:MergeQueueEntry(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `analytics` | `table` | Queue performance for the reporting window. |
+| `change_id` | `string|nil` |  |
+| `expected_target_commit_id` | `string|nil` |  |
+| `expected_target_version` | `number|nil` |  |
+| `expected_version` | `number` |  |
+| `github_pr_number` | `number|nil` |  |
+| `id` | `string` |  |
+| `idempotency_key` | `string` |  |
+| `kind` | `string` |  |
+| `policy` | `table` |  |
+| `priority` | `string` |  |
+| `queue` | `table` |  |
+| `target_branches` | `table` | Bookmark names for the target picker. |
+| `when_ready` | `boolean|nil` |  |
+
+#### Example: Create
+
+```lua
+local merge_queue_entry, err = client:MergeQueueEntry():create({
+  merge_queue_id = "example_merge_queue_id", -- string
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+  expected_version = 1, -- number
+  idempotency_key = "example_idempotency_key", -- string
+  kind = "example_kind", -- string
+})
+```
+
+
 ### MergeRequest
 
 Create an instance: `local merge_request = client:MergeRequest(nil)`
@@ -10758,6 +22295,43 @@ local merge_request, err = client:MergeRequest():create({
   organization_id = "example_organization_id", -- string
   idempotency_key = "example_idempotency_key", -- string
   number = 1, -- number
+})
+```
+
+
+### MergeResolution
+
+Create an instance: `local merge_resolution = client:MergeResolution(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `base` | `string` | Common ancestor file contents |
+| `content` | `string|nil` |  |
+| `context` | `table` | Optional surrounding files keyed by path |
+| `duration_ms` | `number` |  |
+| `fallback` | `boolean` |  |
+| `model` | `string` |  |
+| `ours` | `string` | Current / left file contents |
+| `path` | `string` | Repository-relative path of the conflicted file |
+| `resolved` | `boolean` |  |
+| `theirs` | `string` | Incoming / right file contents |
+
+#### Example: Create
+
+```lua
+local merge_resolution, err = client:MergeResolution():create({
+  base = "example_base", -- string
+  ours = "example_ours", -- string
+  theirs = "example_theirs", -- string
 })
 ```
 
@@ -10850,6 +22424,93 @@ local metric_querys, err = client:MetricQuery():list()
 ```
 
 
+### MetronomeWebhook
+
+Create an instance: `local metronome_webhook = client:MetronomeWebhook(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local metronome_webhook, err = client:MetronomeWebhook():create({
+})
+```
+
+
+### ModelSubscriptionAccount
+
+Create an instance: `local model_subscription_account = client:ModelSubscriptionAccount(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accounts` | `table` |  |
+| `agents` | `table` |  |
+| `can_disconnect` | `boolean` |  |
+| `connection_agent` | `table|nil` |  |
+| `email` | `string` |  |
+| `id` | `string` |  |
+| `label` | `string` |  |
+| `provider` | `string` |  |
+| `saved` | `boolean` |  |
+| `status` | `string` |  |
+| `usable` | `boolean` |  |
+
+#### Example: List
+
+```lua
+local model_subscription_accounts, err = client:ModelSubscriptionAccount():list()
+```
+
+#### Example: Create
+
+```lua
+local model_subscription_account, err = client:ModelSubscriptionAccount():create({
+  label = "example_label", -- string
+})
+```
+
+
+### ModelSubscriptionAccountConnection
+
+Create an instance: `local model_subscription_account_connection = client:ModelSubscriptionAccountConnection(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local model_subscription_account_connection, err = client:ModelSubscriptionAccountConnection():load({ id = "model_subscription_account_connection_id" })
+```
+
+
 ### NetworkConnection
 
 Create an instance: `local network_connection = client:NetworkConnection(nil)`
@@ -10884,6 +22545,123 @@ local network_connection, err = client:NetworkConnection():create({
   organization_id = "example_organization_id", -- string
   name = "example_name", -- string
 })
+```
+
+
+### NetworkingSpace
+
+Create an instance: `local networking_space = client:NetworkingSpace(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local networking_space, err = client:NetworkingSpace():load({ id = "networking_space_id" })
+```
+
+#### Example: List
+
+```lua
+local networking_spaces, err = client:NetworkingSpace():list()
+```
+
+#### Example: Create
+
+```lua
+local networking_space, err = client:NetworkingSpace():create({
+})
+```
+
+
+### Node
+
+Create an instance: `local node = client:Node(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `string|nil` |  |
+| `account_id` | `string|nil` |  |
+| `account_login` | `string` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `id` | `string` |  |
+| `installation_id` | `string` |  |
+| `installed_at` | `string|nil` |  |
+| `installed_at_label` | `string|nil` |  |
+| `manage_access_url` | `string` |  |
+| `organization_id` | `string` |  |
+| `permission_entries` | `table` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `table` |  |
+| `status` | `string` |  |
+| `suspended_at` | `string|nil` |  |
+| `suspended_at_label` | `string|nil` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+
+#### Example: List
+
+```lua
+local nodes, err = client:Node():list({ organization_id = "example" })
+```
+
+
+### NodeCertificate
+
+Create an instance: `local node_certificate = client:NodeCertificate(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### NodeLease
+
+Create an instance: `local node_lease = client:NodeLease(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```lua
+local node_leases, err = client:NodeLease():list({ node_id = "example" })
 ```
 
 
@@ -10960,6 +22738,201 @@ local nomad_logs, err = client:NomadLog():list({ app_id = "example" })
 ```
 
 
+### Now
+
+Create an instance: `local now = client:Now(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `needs_attention` | `table` |  |
+| `pagination` | `table` |  |
+| `recently_landed` | `table` |  |
+| `shipping_now` | `table` |  |
+| `summary` | `table` |  |
+
+#### Example: Load
+
+```lua
+local now, err = client:Now():load({ organization_id = "organization_id" })
+```
+
+
+### ObservabilityClickhouseCluster
+
+Create an instance: `local observability_clickhouse_cluster = client:ObservabilityClickhouseCluster(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local observability_clickhouse_cluster, err = client:ObservabilityClickhouseCluster():load({ id = "observability_clickhouse_cluster_id" })
+```
+
+#### Example: List
+
+```lua
+local observability_clickhouse_clusters, err = client:ObservabilityClickhouseCluster():list()
+```
+
+#### Example: Create
+
+```lua
+local observability_clickhouse_cluster, err = client:ObservabilityClickhouseCluster():create({
+})
+```
+
+
+### ObservabilityQuickwitCluster
+
+Create an instance: `local observability_quickwit_cluster = client:ObservabilityQuickwitCluster(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local observability_quickwit_cluster, err = client:ObservabilityQuickwitCluster():load({ id = "observability_quickwit_cluster_id" })
+```
+
+#### Example: List
+
+```lua
+local observability_quickwit_clusters, err = client:ObservabilityQuickwitCluster():list()
+```
+
+#### Example: Create
+
+```lua
+local observability_quickwit_cluster, err = client:ObservabilityQuickwitCluster():create({
+})
+```
+
+
+### ObservabilitySpace
+
+Create an instance: `local observability_space = client:ObservabilitySpace(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local observability_space, err = client:ObservabilitySpace():load({ id = "observability_space_id" })
+```
+
+#### Example: List
+
+```lua
+local observability_spaces, err = client:ObservabilitySpace():list()
+```
+
+#### Example: Create
+
+```lua
+local observability_space, err = client:ObservabilitySpace():create({
+})
+```
+
+
+### Openapi
+
+Create an instance: `local openapi = client:Openapi(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Example: Load
+
+```lua
+local openapi, err = client:Openapi():load()
+```
+
+
+### OrgInvitation
+
+Create an instance: `local org_invitation = client:OrgInvitation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `invitation` | `table` |  |
+| `registration_options` | `any` |  |
+| `requires_password_setup` | `boolean` |  |
+| `start_guided_setup` | `boolean` |  |
+
+#### Example: Load
+
+```lua
+local org_invitation, err = client:OrgInvitation():load({ id = "org_invitation_id" })
+```
+
+
 ### Organization
 
 Create an instance: `local organization = client:Organization(nil)`
@@ -11023,6 +22996,540 @@ local organization, err = client:Organization():create({
   slug = "example_slug", -- string
 })
 ```
+
+
+### OrganizationApp
+
+Create an instance: `local organization_app = client:OrganizationApp(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```lua
+local organization_apps, err = client:OrganizationApp():list({ organization_id = "example", native_agent_id = "example" })
+```
+
+
+### OrganizationControl
+
+Create an instance: `local organization_control = client:OrganizationControl(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### OrganizationDevice
+
+Create an instance: `local organization_device = client:OrganizationDevice(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### OrganizationIdentityCertificate
+
+Create an instance: `local organization_identity_certificate = client:OrganizationIdentityCertificate(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local organization_identity_certificate, err = client:OrganizationIdentityCertificate():load({ id = "organization_identity_certificate_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local organization_identity_certificates, err = client:OrganizationIdentityCertificate():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local organization_identity_certificate, err = client:OrganizationIdentityCertificate():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### OrganizationInteraction
+
+Create an instance: `local organization_interaction = client:OrganizationInteraction(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local organization_interaction, err = client:OrganizationInteraction():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### OrganizationInvitation
+
+Create an instance: `local organization_invitation = client:OrganizationInvitation(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email` | `string` |  |
+| `id` | `string` |  |
+| `role` | `string` |  |
+
+#### Example: Create
+
+```lua
+local organization_invitation, err = client:OrganizationInvitation():create({
+  organization_id = "example_organization_id", -- string
+  email = "example_email", -- string
+  role = "example_role", -- string
+})
+```
+
+
+### OrganizationMessageFile
+
+Create an instance: `local organization_message_file = client:OrganizationMessageFile(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local organization_message_file, err = client:OrganizationMessageFile():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### OrganizationOidcTrust
+
+Create an instance: `local organization_oidc_trust = client:OrganizationOidcTrust(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local organization_oidc_trust, err = client:OrganizationOidcTrust():load({ id = "organization_oidc_trust_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local organization_oidc_trusts, err = client:OrganizationOidcTrust():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local organization_oidc_trust, err = client:OrganizationOidcTrust():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### OrganizationRunEvent
+
+Create an instance: `local organization_run_event = client:OrganizationRunEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local organization_run_event, err = client:OrganizationRunEvent():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### OrganizationRunOutcome
+
+Create an instance: `local organization_run_outcome = client:OrganizationRunOutcome(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local organization_run_outcome, err = client:OrganizationRunOutcome():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### OrganizationRunUsage
+
+Create an instance: `local organization_run_usage = client:OrganizationRunUsage(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local organization_run_usage, err = client:OrganizationRunUsage():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### OrganizationSandbox
+
+Create an instance: `local organization_sandbox = client:OrganizationSandbox(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### OrganizationSecret
+
+Create an instance: `local organization_secret = client:OrganizationSecret(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `app_environment_id` | `string|nil` |  |
+| `app_service_id` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `created_by` | `table|nil` |  |
+| `current_version` | `table|nil` |  |
+| `description` | `string|nil` |  |
+| `env_key` | `string` |  |
+| `expose_to_build` | `boolean` |  |
+| `expose_to_ci` | `boolean` |  |
+| `hosted_app_id` | `string|nil` |  |
+| `id` | `string` |  |
+| `last_accessed_at` | `string|nil` |  |
+| `last_accessed_at_label` | `string|nil` |  |
+| `last_accessed_by` | `table|nil` |  |
+| `latest_version_number` | `number|nil` |  |
+| `name` | `string` |  |
+| `organization_id` | `string|nil` |  |
+| `owner_service_account_id` | `string|nil` |  |
+| `rotation_policy` | `string|nil` |  |
+| `scope_kind` | `string` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+
+#### Example: Load
+
+```lua
+local organization_secret, err = client:OrganizationSecret():load({ id = "organization_secret_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local organization_secrets, err = client:OrganizationSecret():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local organization_secret, err = client:OrganizationSecret():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### OrganizationServiceAccount
+
+Create an instance: `local organization_service_account = client:OrganizationServiceAccount(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local organization_service_account, err = client:OrganizationServiceAccount():load({ id = "organization_service_account_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local organization_service_accounts, err = client:OrganizationServiceAccount():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local organization_service_account, err = client:OrganizationServiceAccount():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### OrganizationSetting
+
+Create an instance: `local organization_setting = client:OrganizationSetting(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `concurrent_run_limit_override` | `number|nil` |  |
+| `customize_onboarding_packages` | `boolean` |  |
+| `daily_run_limit_override` | `number|nil` |  |
+| `deployment_usage_visibility` | `string` |  |
+| `monthly_browser_minutes_limit_override` | `number|nil` |  |
+| `monthly_budget_dollars` | `string|number|nil` |  |
+| `name` | `string` |  |
+| `onboarding_custom_pricing` | `boolean` |  |
+| `onboarding_package_keys` | `table` |  |
+
+
+### OrganizationSite
+
+Create an instance: `local organization_site = client:OrganizationSite(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```lua
+local organization_sites, err = client:OrganizationSite():list({ organization_id = "example", native_agent_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local organization_site, err = client:OrganizationSite():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### OrganizationSubscription
+
+Create an instance: `local organization_subscription = client:OrganizationSubscription(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### OrganizationTool
+
+Create an instance: `local organization_tool = client:OrganizationTool(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `arguments` | `table` |  |
+| `native_agent_id` | `string` |  |
+| `tool` | `string` |  |
+
+#### Example: Create
+
+```lua
+local organization_tool, err = client:OrganizationTool():create({
+  organization_id = "example_organization_id", -- string
+  arguments = {}, -- table
+  native_agent_id = "example_native_agent_id", -- string
+  tool = "example_tool", -- string
+})
+```
+
+
+### OrganizationWorkloadIdentity
+
+Create an instance: `local organization_workload_identity = client:OrganizationWorkloadIdentity(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local organization_workload_identity, err = client:OrganizationWorkloadIdentity():load({ id = "organization_workload_identity_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local organization_workload_identitys, err = client:OrganizationWorkloadIdentity():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local organization_workload_identity, err = client:OrganizationWorkloadIdentity():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### OtelIngest
+
+Create an instance: `local otel_ingest = client:OtelIngest(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
 
 
 ### Page
@@ -11108,6 +23615,103 @@ local page_agents, err = client:PageAgent():list({ organization_id = "example" }
 ```
 
 
+### PageArtefact
+
+Create an instance: `local page_artefact = client:PageArtefact(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `artefact` | `any` |  |
+| `automation` | `table|nil` |  |
+| `automation_invocation_id` | `string|nil` |  |
+| `byte_size` | `number` |  |
+| `checksum_sha256` | `string` |  |
+| `comment_threads` | `table` |  |
+| `content_type` | `string` |  |
+| `created_at` | `string|nil` |  |
+| `created_by_user_id` | `string|nil` |  |
+| `description` | `string|nil` |  |
+| `document_key` | `string` | Stable document identity shared by all revisions. |
+| `draft` | `table|nil` | The autosaved working copy of the newest Markdown version; null for older versions and other files. |
+| `entrypoint` | `string` |  |
+| `expires_at` | `string|nil` |  |
+| `filename` | `string` |  |
+| `files` | `table` |  |
+| `harness` | `string|nil` |  |
+| `harness_version` | `string|nil` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `kinds` | `table` |  |
+| `model` | `string|nil` |  |
+| `organization` | `table` |  |
+| `organization_id` | `string` |  |
+| `pagination` | `table` |  |
+| `permissions` | `table` |  |
+| `preview` | `table` |  |
+| `published_at` | `string|nil` |  |
+| `published_at_label` | `string|nil` |  |
+| `publisher` | `table|nil` |  |
+| `repository` | `table|nil` |  |
+| `repository_id` | `string|nil` |  |
+| `selected_path` | `string` |  |
+| `slug` | `string` |  |
+| `source` | `string` |  |
+| `status` | `string` |  |
+| `title` | `string` |  |
+| `vcs_agent_checkpoint_id` | `string|nil` |  |
+| `vcs_agent_session_id` | `string|nil` |  |
+| `version` | `number` |  |
+| `versions` | `table` |  |
+| `view_url` | `string` |  |
+| `web_url` | `string` |  |
+
+#### Example: Load
+
+```lua
+local page_artefact, err = client:PageArtefact():load({ id = "page_artefact_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local page_artefacts, err = client:PageArtefact():list({ organization_id = "example" })
+```
+
+
+### PageCiPipelineRun
+
+Create an instance: `local page_ci_pipeline_run = client:PageCiPipelineRun(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `error` | `string|nil` |  |
+| `id` | `string` |  |
+| `jobs` | `table` |  |
+
+#### Example: Load
+
+```lua
+local page_ci_pipeline_run, err = client:PageCiPipelineRun():load({ id = "page_ci_pipeline_run_id", pipeline_id = "pipeline_id" })
+```
+
+
 ### PageProjectRun
 
 Create an instance: `local page_project_run = client:PageProjectRun(nil)`
@@ -11140,6 +23744,137 @@ Create an instance: `local page_project_run = client:PageProjectRun(nil)`
 
 ```lua
 local page_project_run, err = client:PageProjectRun():load({ id = "page_project_run_id", organization_id = "organization_id", project_id = "project_id" })
+```
+
+
+### PageRepoVcCommit
+
+Create an instance: `local page_repo_vc_commit = client:PageRepoVcCommit(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `commit` | `any` |  |
+| `diff_path` | `string` | Fingerprinted path serving this commit range's file diff. |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local page_repo_vc_commit, err = client:PageRepoVcCommit():load({ id = "page_repo_vc_commit_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+
+### PagesBilling
+
+Create an instance: `local pages_billing = client:PagesBilling(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `table` |  |
+| `breakdown` | `any` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` |  |
+| `can_manage_contact` | `boolean` |  |
+| `can_manage_extra_spend` | `boolean` |  |
+| `can_manage_local_subscription` | `boolean` |  |
+| `can_manage_payment_method` | `boolean` |  |
+| `can_set_up_billing` | `boolean` |  |
+| `customer` | `any` |  |
+| `deployment_usage_visible` | `boolean` |  |
+| `entitlements` | `table` |  |
+| `extra_spend_enabled` | `boolean` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` |  |
+| `package` | `any` |  |
+| `prepaid` | `any` |  |
+| `preview` | `any` | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `table` |  |
+| `stripe` | `table` |  |
+| `subscription` | `any` |  |
+| `token_account` | `table` |  |
+
+#### Example: Load
+
+```lua
+local pages_billing, err = client:PagesBilling():load({ organization_id = "organization_id" })
+```
+
+
+### PagesGithubOnboarding
+
+Create an instance: `local pages_github_onboarding = client:PagesGithubOnboarding(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `onboarding` | `table` |  |
+| `organization` | `table` |  |
+
+#### Example: Load
+
+```lua
+local pages_github_onboarding, err = client:PagesGithubOnboarding():load({ organization_id = "organization_id" })
+```
+
+
+### PagesMember
+
+Create an instance: `local pages_member = client:PagesMember(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `accepted_at` | `string|nil` |  |
+| `accepted_by_user` | `any` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `email` | `string` |  |
+| `email_delivery_status` | `string` |  |
+| `expires_at` | `string|nil` |  |
+| `expires_at_label` | `string|nil` |  |
+| `id` | `string` |  |
+| `invite_url` | `string|nil` |  |
+| `invited_by_user` | `any` |  |
+| `organization` | `table` |  |
+| `revoked_at` | `string|nil` |  |
+| `role` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+
+#### Example: List
+
+```lua
+local pages_members, err = client:PagesMember():list({ organization_id = "example" })
 ```
 
 
@@ -11267,6 +24002,198 @@ Create an instance: `local pages_project_scenario = client:PagesProjectScenario(
 
 ```lua
 local pages_project_scenarios, err = client:PagesProjectScenario():list({ organization_id = "example", project_id = "example" })
+```
+
+
+### PagesRegistry
+
+Create an instance: `local pages_registry = client:PagesRegistry(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active_repository_count` | `number` |  |
+| `error` | `string|nil` |  |
+| `pagination` | `table` |  |
+| `repositories` | `table` |  |
+| `repository_count` | `number` |  |
+
+#### Example: Load
+
+```lua
+local pages_registry, err = client:PagesRegistry():load({ organization_id = "organization_id" })
+```
+
+
+### PagesSession
+
+Create an instance: `local pages_session = client:PagesSession(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter` | `string` |  |
+| `created_at` | `string|nil` |  |
+| `cursor` | `string` |  |
+| `ended_at` | `string|nil` |  |
+| `external_session_id` | `string` |  |
+| `facets` | `table` |  |
+| `from` | `string` |  |
+| `github_access_warnings` | `table` |  |
+| `harness` | `string` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `string` |  |
+| `last_activity_at` | `string|nil` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `string|nil` |  |
+| `limit` | `number` |  |
+| `markers` | `table` |  |
+| `max_bytes` | `number` |  |
+| `mode` | `string` |  |
+| `offset` | `number` |  |
+| `pagination` | `table` |  |
+| `query` | `string` |  |
+| `repo` | `string` |  |
+| `repository` | `any` |  |
+| `search` | `any` |  |
+| `search_enabled` | `boolean` |  |
+| `session` | `any` | Identical serialization to the org sessions page's expanded session, so the web reuses one session-detail builder. |
+| `sessions` | `table` |  |
+| `started_at` | `string|nil` |  |
+| `stats` | `table` |  |
+| `status` | `string` |  |
+| `title` | `string|nil` |  |
+| `to` | `string` |  |
+| `token_stats` | `any` |  |
+| `transcript_index` | `any` |  |
+| `transcript_stats` | `any` |  |
+| `updated_at` | `string|nil` |  |
+| `user` | `any` |  |
+| `user_id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local pages_session, err = client:PagesSession():load({ id = "pages_session_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local pages_sessions, err = client:PagesSession():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local pages_session, err = client:PagesSession():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### Pairing
+
+Create an instance: `local pairing = client:Pairing(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local pairing, err = client:Pairing():load({ id = "pairing_id" })
+```
+
+#### Example: List
+
+```lua
+local pairings, err = client:Pairing():list()
+```
+
+#### Example: Create
+
+```lua
+local pairing, err = client:Pairing():create({
+})
+```
+
+
+### PairingEvent
+
+Create an instance: `local pairing_event = client:PairingEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```lua
+local pairing_events, err = client:PairingEvent():list({ pairing_id = "example" })
+```
+
+
+### ParallelV1
+
+Create an instance: `local parallel_v1 = client:ParallelV1(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### PatchsetDiff
+
+Create an instance: `local patchset_diff = client:PatchsetDiff(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `files` | `table` |  |
+| `id` | `string` |  |
+| `patchset` | `table` |  |
+
+#### Example: Load
+
+```lua
+local patchset_diff, err = client:PatchsetDiff():load({ id = "patchset_diff_id", change_id = "change_id", organization_id = "organization_id", patchset_id = "patchset_id", repo_id = "repo_id" })
 ```
 
 
@@ -11434,6 +24361,96 @@ local preview_sharing_approval, err = client:PreviewSharingApproval():create({
   app_id = "example_app_id", -- string
   preview_id = "example_preview_id", -- string
   snapshot_version = 1, -- number
+})
+```
+
+
+### ProactiveAgentWaitlistEntry
+
+Create an instance: `local proactive_agent_waitlist_entry = client:ProactiveAgentWaitlistEntry(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `email` | `string` |  |
+| `first_task` | `string|nil` | The first job they would hand an agent. |
+| `invite_code` | `string|nil` | The referral code of the invite link they arrived through. |
+| `places_per_referral` | `number` | Most places one referral moves the entry up; fewer when boosted entries are ahead. |
+| `position` | `number` | 1-based place in the queue. |
+| `position_after_next_referral` | `number` | The place one more referral would give this entry, as Rails would assign it. |
+| `referral_code` | `string` | Shared in this entry's invite link. |
+| `referral_count` | `number` | People who joined through this entry's link. |
+| `total` | `number` | Display total including a random increment per signup; not the actual number of entries. |
+| `website` | `string|nil` | Honeypot. |
+
+#### Example: Load
+
+```lua
+local proactive_agent_waitlist_entry, err = client:ProactiveAgentWaitlistEntry():load({ id = "proactive_agent_waitlist_entry_id" })
+```
+
+#### Example: Create
+
+```lua
+local proactive_agent_waitlist_entry, err = client:ProactiveAgentWaitlistEntry():create({
+  email = "example_email", -- string
+})
+```
+
+
+### Product
+
+Create an instance: `local product = client:Product(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_products` | `table` | Products this organization has activated (PRD 144). |
+| `agents_only` | `boolean` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `boolean` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `github_prs_authored_by_change_author` | `boolean` |  |
+| `id` | `string` |  |
+| `logo_url` | `string|nil` |  |
+| `member_count` | `number` |  |
+| `name` | `string` |  |
+| `pending_invitation_count` | `number` |  |
+| `personal` | `boolean` |  |
+| `product` | `string` |  |
+| `repository_count` | `number` |  |
+| `role` | `string|nil` |  |
+| `sandbox_region` | `string` |  |
+| `shared_agent_personal_accounts_enabled` | `boolean` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` |  |
+| `source_control_providers` | `table` | Connected source control providers for this organization. |
+| `source_ui_enabled` | `boolean` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `string` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+| `verify_pr_scenario_writing_enabled` | `boolean` |  |
+
+#### Example: Create
+
+```lua
+local product, err = client:Product():create({
+  organization_id = "example_organization_id", -- string
+  product = "example_product", -- string
 })
 ```
 
@@ -12471,6 +25488,62 @@ local pull_request, err = client:PullRequest():create({
 ```
 
 
+### PullRequestAction
+
+Create an instance: `local pull_request_action = client:PullRequestAction(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action_name` | `string` |  |
+| `body` | `string` |  |
+| `comment_id` | `string` |  |
+| `comments` | `table` |  |
+| `event` | `string` |  |
+| `expected_head_sha` | `string` |  |
+| `id` | `string|nil` |  |
+| `label` | `string` |  |
+| `line` | `number` |  |
+| `node_id` | `string|nil` |  |
+| `operation_key` | `string` |  |
+| `path` | `string` |  |
+| `run_id` | `string` |  |
+| `side` | `string` |  |
+| `start_line` | `number` |  |
+| `start_side` | `string` |  |
+| `thread_id` | `string` |  |
+
+#### Example: Create
+
+```lua
+local pull_request_action, err = client:PullRequestAction():create({
+  number = "example_number", -- string
+  organization_id = "example_organization_id", -- string
+  pull_request_id = "example_pull_request_id", -- string
+  action_name = "example_action_name", -- string
+  operation_key = "example_operation_key", -- string
+})
+```
+
+
+### PullRequestMagicMerge
+
+Create an instance: `local pull_request_magic_merge = client:PullRequestMagicMerge(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
 ### PullRequestSetting
 
 Create an instance: `local pull_request_setting = client:PullRequestSetting(nil)`
@@ -12653,6 +25726,68 @@ local pull_request_setting_detect_comment, err = client:PullRequestSettingDetect
 ```
 
 
+### PullRequestTranscript
+
+Create an instance: `local pull_request_transcript = client:PullRequestTranscript(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter` | `string` |  |
+| `created_at` | `string|nil` |  |
+| `ended_at` | `string|nil` |  |
+| `external_session_id` | `string` |  |
+| `harness` | `string` | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `string` |  |
+| `last_activity_at` | `string|nil` | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `string|nil` |  |
+| `repository` | `any` |  |
+| `started_at` | `string|nil` |  |
+| `stats` | `table` |  |
+| `status` | `string` |  |
+| `title` | `string|nil` |  |
+| `updated_at` | `string|nil` |  |
+| `user` | `any` |  |
+
+#### Example: List
+
+```lua
+local pull_request_transcripts, err = client:PullRequestTranscript():list({ organization_id = "example", pull_request_id = "example", repo_id = "example" })
+```
+
+
+### PullZone
+
+Create an instance: `local pull_zone = client:PullZone(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `slug` | `string` |  |
+
+#### Example: List
+
+```lua
+local pull_zones, err = client:PullZone():list({ organization_id = "example" })
+```
+
+
 ### Recorder
 
 Create an instance: `local recorder = client:Recorder(nil)`
@@ -12700,6 +25835,69 @@ Create an instance: `local registry_v2 = client:RegistryV2(nil)`
 | `create(data)` | Create a new entity with the given data. |
 
 
+### RelayAgentConnection
+
+Create an instance: `local relay_agent_connection = client:RelayAgentConnection(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_card_url` | `string` |  |
+| `auth_scheme` | `string` |  |
+| `can_configure` | `boolean` |  |
+| `can_disconnect` | `boolean` |  |
+| `can_setup` | `boolean` |  |
+| `connection` | `table` |  |
+| `credential` | `string|nil` | Write-only outbound key. |
+| `error_code` | `string|nil` |  |
+| `expected_generation` | `number` |  |
+| `generation` | `number` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `remote_agent` | `string|nil` |  |
+| `requester_id` | `string` |  |
+| `retired_at` | `string|nil` |  |
+| `revoked_at` | `string|nil` |  |
+| `scope_key` | `string` |  |
+| `source_operation_id` | `string|nil` |  |
+| `state` | `string` |  |
+
+#### Example: Load
+
+```lua
+local relay_agent_connection, err = client:RelayAgentConnection():load({ id = "relay_agent_connection_id", agent_id = "agent_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local relay_agent_connections, err = client:RelayAgentConnection():list({ agent_id = "example", organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local relay_agent_connection, err = client:RelayAgentConnection():create({
+  agent_id = "example_agent_id", -- string
+  organization_id = "example_organization_id", -- string
+  agent_card_url = "example_agent_card_url", -- string
+  auth_scheme = "example_auth_scheme", -- string
+  name = "example_name", -- string
+})
+```
+
+
 ### RelayAgentLocalThread
 
 Create an instance: `local relay_agent_local_thread = client:RelayAgentLocalThread(nil)`
@@ -12715,6 +25913,554 @@ Create an instance: `local relay_agent_local_thread = client:RelayAgentLocalThre
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+
+### RelaySignal
+
+Create an instance: `local relay_signal = client:RelaySignal(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local relay_signal, err = client:RelaySignal():create({
+})
+```
+
+
+### ReleaseRollout
+
+Create an instance: `local release_rollout = client:ReleaseRollout(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local release_rollout, err = client:ReleaseRollout():load({ id = "release_rollout_id", release_id = "release_id" })
+```
+
+#### Example: List
+
+```lua
+local release_rollouts, err = client:ReleaseRollout():list({ release_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local release_rollout, err = client:ReleaseRollout():create({
+  release_id = "example_release_id", -- string
+})
+```
+
+
+### Repo
+
+Create an instance: `local repo = client:Repo(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_retry_import` | `boolean` | True when a failed client import can be requeued for CLI resume. |
+| `can_retry_sync` | `boolean` | True when the latest sync run failed and can be retried. |
+| `disclaimer` | `string|nil` |  |
+| `federated_in_home` | `boolean` | True when this Space is a folder virtual repository inside the organization Home monorepo. |
+| `github_repository` | `string|nil` |  |
+| `icon_name` | `string` |  |
+| `id` | `string` | Virtual repository public ID for non-Home rows; Home uses the physical repository public ID. |
+| `import_item_id` | `string|nil` |  |
+| `is_home` | `boolean` |  |
+| `name` | `string` |  |
+| `remote_repository` | `string|nil` |  |
+| `root_path` | `string|nil` | Home-relative folder path when federated_in_home is true; null otherwise. |
+| `slug` | `string` |  |
+| `sync_error_message` | `string|nil` |  |
+| `sync_provider` | `string` |  |
+| `sync_status` | `string` |  |
+
+#### Example: List
+
+```lua
+local repos, err = client:Repo():list({ organization_id = "example" })
+```
+
+
+### RepoAccessToken
+
+Create an instance: `local repo_access_token = client:RepoAccessToken(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `access_token` | `table` |  |
+| `active` | `boolean` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `credential_purpose` | `string` | Issues a revocable read-write system credential valid for one hour. |
+| `expires_at` | `string|nil` |  |
+| `expires_at_label` | `string|nil` |  |
+| `expires_in_days` | `number|nil` |  |
+| `id` | `string` |  |
+| `last_used_at` | `string|nil` |  |
+| `last_used_at_label` | `string|nil` |  |
+| `name` | `string` |  |
+| `permission_level` | `string` |  |
+| `plain_text_token` | `string` |  |
+| `revoked_at` | `string|nil` |  |
+| `revoked_at_label` | `string|nil` |  |
+| `token_preview` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+
+#### Example: List
+
+```lua
+local repo_access_tokens, err = client:RepoAccessToken():list({ organization_id = "example", repo_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local repo_access_token, err = client:RepoAccessToken():create({
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+  name = "example_name", -- string
+})
+```
+
+
+### RepoAction
+
+Create an instance: `local repo_action = client:RepoAction(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `pipeline` | `table` |  |
+| `run` | `table` |  |
+
+#### Example: List
+
+```lua
+local repo_actions, err = client:RepoAction():list({ organization_id = "example", repo_id = "example" })
+```
+
+
+### RepoAgentCheckpoint
+
+Create an instance: `local repo_agent_checkpoint = client:RepoAgentCheckpoint(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local repo_agent_checkpoint, err = client:RepoAgentCheckpoint():load({ id = "repo_agent_checkpoint_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+
+### RepoAgentSession
+
+Create an instance: `local repo_agent_session = client:RepoAgentSession(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `adapter` | `string` |  |
+| `agent_session` | `table` |  |
+| `external_session_id` | `string` |  |
+| `id` | `string` |  |
+| `status` | `string` |  |
+| `title` | `string|nil` |  |
+
+#### Example: Load
+
+```lua
+local repo_agent_session, err = client:RepoAgentSession():load({ id = "repo_agent_session_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### Example: List
+
+```lua
+local repo_agent_sessions, err = client:RepoAgentSession():list({ organization_id = "example", repo_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local repo_agent_session, err = client:RepoAgentSession():create({
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+})
+```
+
+
+### RepoBookmarkProtection
+
+Create an instance: `local repo_bookmark_protection = client:RepoBookmarkProtection(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `actor_policy` | `table` |  |
+| `bypass_mode` | `string` |  |
+| `created_at` | `string` |  |
+| `created_by_user_id` | `string|nil` |  |
+| `enabled` | `boolean` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `priority` | `number` |  |
+| `repository_id` | `string` |  |
+| `requirements` | `table` |  |
+| `target_kind` | `string` |  |
+| `target_pattern` | `string|nil` |  |
+| `updated_at` | `string` |  |
+| `updated_by_user_id` | `string|nil` |  |
+
+#### Example: Load
+
+```lua
+local repo_bookmark_protection, err = client:RepoBookmarkProtection():load({ id = "repo_bookmark_protection_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### Example: List
+
+```lua
+local repo_bookmark_protections, err = client:RepoBookmarkProtection():list({ organization_id = "example", repo_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local repo_bookmark_protection, err = client:RepoBookmarkProtection():create({
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+})
+```
+
+
+### RepoBookmarkProtectionEvent
+
+Create an instance: `local repo_bookmark_protection_event = client:RepoBookmarkProtectionEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action` | `string` |  |
+| `actor_kind` | `string` |  |
+| `actor_label` | `string|nil` |  |
+| `actor_user_id` | `string|nil` |  |
+| `bookmark_name` | `string` |  |
+| `bookmark_protection_rule_id` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `decision` | `string` |  |
+| `id` | `string` |  |
+| `intent` | `string|nil` |  |
+| `metadata` | `table` |  |
+| `new_target` | `string|nil` |  |
+| `old_target` | `string|nil` |  |
+| `organization_id` | `string` |  |
+| `reason_codes` | `table` |  |
+| `repository_id` | `string` |  |
+| `source_request_id` | `string|nil` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+
+#### Example: List
+
+```lua
+local repo_bookmark_protection_events, err = client:RepoBookmarkProtectionEvent():list({ organization_id = "example", repo_id = "example" })
+```
+
+
+### RepoCloudWorkspaceBackup
+
+Create an instance: `local repo_cloud_workspace_backup = client:RepoCloudWorkspaceBackup(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local repo_cloud_workspace_backup, err = client:RepoCloudWorkspaceBackup():load({ id = "repo_cloud_workspace_backup_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### Example: List
+
+```lua
+local repo_cloud_workspace_backups, err = client:RepoCloudWorkspaceBackup():list({ organization_id = "example", repo_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local repo_cloud_workspace_backup, err = client:RepoCloudWorkspaceBackup():create({
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+})
+```
+
+
+### RepoCodeRule
+
+Create an instance: `local repo_code_rule = client:RepoCodeRule(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active_revision_number` | `number|nil` |  |
+| `capabilities` | `table` |  |
+| `code_rule` | `any` |  |
+| `created_at` | `string` |  |
+| `definition` | `table` |  |
+| `draft_pending` | `boolean` | The latest revision is not the active one |
+| `enabled` | `boolean` |  |
+| `expected_version` | `number` |  |
+| `id` | `string` |  |
+| `latest_revision_number` | `number` |  |
+| `name` | `string` | Name of the latest revision |
+| `repository` | `table` |  |
+| `scope` | `table` |  |
+| `slug` | `string` |  |
+| `state_version` | `number` | Send back as expected_version on every mutation |
+| `updated_at` | `string` |  |
+| `web_url` | `string` |  |
+
+#### Example: Load
+
+```lua
+local repo_code_rule, err = client:RepoCodeRule():load({ id = "repo_code_rule_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### Example: List
+
+```lua
+local repo_code_rules, err = client:RepoCodeRule():list({ organization_id = "example", repo_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local repo_code_rule, err = client:RepoCodeRule():create({
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+  definition = {}, -- table
+})
+```
+
+
+### RepoSetting
+
+Create an instance: `local repo_setting = client:RepoSetting(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active` | `boolean` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `description` | `string|nil` |  |
+| `expires_at` | `string|nil` |  |
+| `expires_at_label` | `string|nil` |  |
+| `icon_name` | `string` |  |
+| `id` | `string` |  |
+| `last_used_at` | `string|nil` |  |
+| `last_used_at_label` | `string|nil` |  |
+| `merge_authority` | `string` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `permission_level` | `string` |  |
+| `revoked_at` | `string|nil` |  |
+| `revoked_at_label` | `string|nil` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `token_preview` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+
+#### Example: List
+
+```lua
+local repo_settings, err = client:RepoSetting():list({ organization_id = "example", repo_id = "example" })
+```
+
+
+### RepoStat
+
+Create an instance: `local repo_stat = client:RepoStat(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `repository_stats` | `table` |  |
+
+#### Example: List
+
+```lua
+local repo_stats, err = client:RepoStat():list({ organization_id = "example", repo_id = "example" })
+```
+
+
+### RepoVc
+
+Create an instance: `local repo_vc = client:RepoVc(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+
+### RepoVcCommit
+
+Create an instance: `local repo_vc_commit = client:RepoVcCommit(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `name` | `string` |  |
+| `target_commit_id` | `string` |  |
+
+#### Example: List
+
+```lua
+local repo_vc_commits, err = client:RepoVcCommit():list({ organization_id = "example", repo_id = "example", ref = "example" })
+```
 
 
 ### ReportReplay
@@ -12776,6 +26522,484 @@ Create an instance: `local report_scenario = client:ReportScenario(nil)`
 local report_scenario, err = client:ReportScenario():create({
   exploration_id = "example_exploration_id", -- string
   organization_id = "example_organization_id", -- string
+})
+```
+
+
+### RepositoryAccess
+
+Create an instance: `local repository_access = client:RepositoryAccess(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### RepositoryAccessResolve
+
+Create an instance: `local repository_access_resolve = client:RepositoryAccessResolve(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `default_branch` | `string` |  |
+| `git_auth_username` | `string` |  |
+| `git_https_clone_url` | `string|nil` |  |
+| `git_https_supported` | `boolean` |  |
+| `github_access_warnings` | `table` |  |
+| `id` | `string` |  |
+| `membership_role` | `string` |  |
+| `organization_id` | `string` |  |
+| `organization_name` | `string` |  |
+| `organization_slug` | `string` |  |
+| `repository_id` | `string` |  |
+| `repository_name` | `string` |  |
+| `repository_slug` | `string` |  |
+
+#### Example: Load
+
+```lua
+local repository_access_resolve, err = client:RepositoryAccessResolve():load({ id = "repository_access_resolve_id", resolve_id = "resolve_id" })
+```
+
+
+### RepositoryEvent
+
+Create an instance: `local repository_event = client:RepositoryEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### RepositoryImport
+
+Create an instance: `local repository_import = client:RepositoryImport(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_connections` | `boolean` |  |
+| `github_imports` | `table` |  |
+| `github_installations` | `table` |  |
+| `gitlab_configured` | `boolean` |  |
+| `gitlab_imports` | `table` |  |
+| `gitlab_integrations` | `table` |  |
+| `gitlab_redirect_uri` | `string|nil` |  |
+| `gitlab_self_managed_available` | `boolean` |  |
+| `inventory_errors` | `table` |  |
+| `organization_id` | `string` |  |
+| `repositories` | `table` |  |
+
+#### Example: Load
+
+```lua
+local repository_import, err = client:RepositoryImport():load({ organization_id = "organization_id" })
+```
+
+
+### RepositoryImportSession
+
+Create an instance: `local repository_import_session = client:RepositoryImportSession(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `action_required` | `string` |  |
+| `authorization_endpoint` | `string` |  |
+| `can_authorize_github` | `boolean` |  |
+| `client_name` | `string|nil` |  |
+| `client_version` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `error_message` | `string|nil` |  |
+| `expires_at` | `string` |  |
+| `git_imports` | `table` |  |
+| `github_app_installation_id` | `string|nil` |  |
+| `github_connected` | `boolean` |  |
+| `id` | `string` |  |
+| `idempotency_key` | `string` |  |
+| `organization_id` | `string` |  |
+| `organization_slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```lua
+local repository_import_session, err = client:RepositoryImportSession():load({ id = "repository_import_session_id" })
+```
+
+#### Example: Create
+
+```lua
+local repository_import_session, err = client:RepositoryImportSession():create({
+  organization_id = "example_organization_id", -- string
+  idempotency_key = "example_idempotency_key", -- string
+})
+```
+
+
+### RepositoryImportSessionRepository
+
+Create an instance: `local repository_import_session_repository = client:RepositoryImportSessionRepository(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `default_branch` | `string|nil` |  |
+| `full_name` | `string` |  |
+| `name` | `string` |  |
+| `owner` | `string` |  |
+| `private` | `boolean` |  |
+| `reason` | `string|nil` |  |
+| `selectable` | `boolean` |  |
+| `status` | `string` |  |
+| `visibility` | `string` |  |
+
+#### Example: List
+
+```lua
+local repository_import_session_repositorys, err = client:RepositoryImportSessionRepository():list({ repository_import_session_id = "example" })
+```
+
+
+### RepositoryImportSessionSelection
+
+Create an instance: `local repository_import_session_selection = client:RepositoryImportSessionSelection(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `repositories` | `any` |  |
+
+#### Example: Create
+
+```lua
+local repository_import_session_selection, err = client:RepositoryImportSessionSelection():create({
+  repository_import_session_id = "example_repository_import_session_id", -- string
+  repositories = "example_repositories", -- any
+})
+```
+
+
+### RepositorySandboxEnvironment
+
+Create an instance: `local repository_sandbox_environment = client:RepositorySandboxEnvironment(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local repository_sandbox_environment, err = client:RepositorySandboxEnvironment():load({ id = "repository_sandbox_environment_id", repository_id = "repository_id" })
+```
+
+
+### RoderCodeRepair
+
+Create an instance: `local roder_code_repair = client:RoderCodeRepair(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `base_sha` | `string` |  |
+| `cancel_requested` | `boolean` |  |
+| `failure_code` | `string|nil` |  |
+| `id` | `string` |  |
+| `launch_state` | `string` |  |
+| `organization_id` | `string` |  |
+| `repository_slug` | `string` |  |
+| `roder_thread_id` | `string|nil` |  |
+| `roder_turn_id` | `string|nil` |  |
+| `scenario_run_id` | `string` |  |
+| `task` | `table|nil` |  |
+| `trigger_kind` | `string` |  |
+
+#### Example: Load
+
+```lua
+local roder_code_repair, err = client:RoderCodeRepair():load({ id = "roder_code_repair_id" })
+```
+
+#### Example: List
+
+```lua
+local roder_code_repairs, err = client:RoderCodeRepair():list({ scenario_run_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local roder_code_repair, err = client:RoderCodeRepair():create({
+  base_sha = "example_base_sha", -- string
+  organization_id = "example_organization_id", -- string
+  repository_slug = "example_repository_slug", -- string
+  scenario_run_id = "example_scenario_run_id", -- string
+})
+```
+
+
+### RoderCodeRepairSetting
+
+Create an instance: `local roder_code_repair_setting = client:RoderCodeRepairSetting(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `available` | `boolean` |  |
+| `daily_limit` | `number` |  |
+| `enabled` | `boolean` |  |
+| `enabled_at` | `string|nil` |  |
+| `operator_user_id` | `string|nil` |  |
+| `organization_id` | `string` |  |
+| `repository_slug` | `string|nil` | Connected Composal repository required when enabling |
+
+#### Example: List
+
+```lua
+local roder_code_repair_settings, err = client:RoderCodeRepairSetting():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local roder_code_repair_setting, err = client:RoderCodeRepairSetting():create({
+  enabled = true, -- boolean
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### RoderMachine
+
+Create an instance: `local roder_machine = client:RoderMachine(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### RoderRun
+
+Create an instance: `local roder_run = client:RoderRun(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### RoderWorkspaceCredential
+
+Create an instance: `local roder_workspace_credential = client:RoderWorkspaceCredential(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `api_token` | `string` | Short-lived personal access token for the spawning user. |
+| `author_email` | `string` |  |
+| `author_name` | `string` |  |
+| `clone_url` | `string` |  |
+| `default_branch` | `string` |  |
+| `expires_at` | `string` |  |
+| `organization_id` | `string` |  |
+| `repository_id` | `string` |  |
+| `repository_slug` | `string` |  |
+| `repository_spec` | `string` | The explicitly selected physical repository address. |
+| `required_lifetime_seconds` | `number` | Lifetime the pending clone or command must be able to complete within. |
+| `token` | `string` | Short-lived read/write repository credential. |
+| `username` | `string` |  |
+
+#### Example: Create
+
+```lua
+local roder_workspace_credential, err = client:RoderWorkspaceCredential():create({
+  required_lifetime_seconds = 1, -- number
+})
+```
+
+
+### RunArtifact
+
+Create an instance: `local run_artifact = client:RunArtifact(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```lua
+local run_artifacts, err = client:RunArtifact():list({ pipeline_id = "example", run_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local run_artifact, err = client:RunArtifact():create({
+  pipeline_id = "example_pipeline_id", -- string
+  run_id = "example_run_id", -- string
+})
+```
+
+
+### RunJob
+
+Create an instance: `local run_job = client:RunJob(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `active` | `boolean` |  |
+| `allow_failure` | `boolean` |  |
+| `cache_archive_observations` | `table|nil` | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `ci_pipeline_run_id` | `string` |  |
+| `ci_runner_id` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `dependencies_csv` | `string|nil` |  |
+| `display_id` | `number` |  |
+| `environment_csv` | `string|nil` |  |
+| `execution_order` | `number` |  |
+| `execution_profile` | `string|nil` |  |
+| `exit_code` | `number|nil` |  |
+| `failed` | `boolean` |  |
+| `finished_at` | `string|nil` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `log_chunks` | `table` |  |
+| `name` | `string` |  |
+| `number` | `number` |  |
+| `organization_id` | `string` |  |
+| `queued_at` | `string|nil` |  |
+| `reconciliation_id` | `string|nil` |  |
+| `retry_number` | `number` |  |
+| `reuse` | `table|nil` |  |
+| `runner_label_selector` | `string|nil` |  |
+| `slug` | `string` |  |
+| `started_at` | `string|nil` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `steps` | `table` |  |
+| `timeout_seconds` | `number|nil` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```lua
+local run_job, err = client:RunJob():load({ id = "run_job_id", pipeline_id = "pipeline_id", run_id = "run_id" })
+```
+
+#### Example: List
+
+```lua
+local run_jobs, err = client:RunJob():list({ pipeline_id = "example", run_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local run_job, err = client:RunJob():create({
+  pipeline_id = "example_pipeline_id", -- string
+  run_id = "example_run_id", -- string
 })
 ```
 
@@ -12894,6 +27118,226 @@ local run_updates, err = client:RunUpdate():list({ organization_id = "example" }
 ```
 
 
+### RunWorkspaceCredential
+
+Create an instance: `local run_workspace_credential = client:RunWorkspaceCredential(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local run_workspace_credential, err = client:RunWorkspaceCredential():create({
+})
+```
+
+
+### RunnerLease
+
+Create an instance: `local runner_lease = client:RunnerLease(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```lua
+local runner_leases, err = client:RunnerLease():list({ runner_id = "example", runner_pool_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local runner_lease, err = client:RunnerLease():create({
+  runner_id = "example_runner_id", -- string
+  runner_pool_id = "example_runner_pool_id", -- string
+})
+```
+
+
+### RunnerPoolNodeEnrollmentToken
+
+Create an instance: `local runner_pool_node_enrollment_token = client:RunnerPoolNodeEnrollmentToken(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `capabilities_csv` | `string|nil` |  |
+| `ci_runner_pool_id` | `string` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `creator_user_id` | `string|nil` |  |
+| `description` | `string|nil` |  |
+| `expires_at` | `string|nil` |  |
+| `expires_at_label` | `string|nil` |  |
+| `id` | `string` |  |
+| `kind` | `string` |  |
+| `last_used_at` | `string|nil` |  |
+| `last_used_at_label` | `string|nil` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `raw_token` | `string|nil` |  |
+| `revoked_at` | `string|nil` |  |
+| `status` | `string` |  |
+| `token_hint` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+| `usage_count` | `number` |  |
+| `usage_count_label` | `string` |  |
+
+#### Example: List
+
+```lua
+local runner_pool_node_enrollment_tokens, err = client:RunnerPoolNodeEnrollmentToken():list({ runner_pool_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local runner_pool_node_enrollment_token, err = client:RunnerPoolNodeEnrollmentToken():create({
+  runner_pool_id = "example_runner_pool_id", -- string
+  name = "example_name", -- string
+})
+```
+
+
+### RunnerPoolRunner
+
+Create an instance: `local runner_pool_runner = client:RunnerPoolRunner(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local runner_pool_runner, err = client:RunnerPoolRunner():load({ id = "runner_pool_runner_id", runner_pool_id = "runner_pool_id" })
+```
+
+#### Example: List
+
+```lua
+local runner_pool_runners, err = client:RunnerPoolRunner():list({ runner_pool_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local runner_pool_runner, err = client:RunnerPoolRunner():create({
+  runner_pool_id = "example_runner_pool_id", -- string
+})
+```
+
+
+### RuntimeInstanceHealthSnapshot
+
+Create an instance: `local runtime_instance_health_snapshot = client:RuntimeInstanceHealthSnapshot(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```lua
+local runtime_instance_health_snapshots, err = client:RuntimeInstanceHealthSnapshot():list({ runtime_instance_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local runtime_instance_health_snapshot, err = client:RuntimeInstanceHealthSnapshot():create({
+  runtime_instance_id = "example_runtime_instance_id", -- string
+})
+```
+
+
+### SandboxIntegration
+
+Create an instance: `local sandbox_integration = client:SandboxIntegration(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage` | `boolean` |  |
+| `catalog` | `table` |  |
+| `configuration` | `table` |  |
+| `connected_profiles` | `table` | Connected profiles per provider across the organization. |
+| `credentials` | `table` |  |
+| `enabled` | `boolean` |  |
+| `id` | `string` |  |
+| `integrations` | `table` |  |
+| `name` | `string` |  |
+| `provider` | `string` |  |
+| `version` | `number` |  |
+
+#### Example: List
+
+```lua
+local sandbox_integrations, err = client:SandboxIntegration():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local sandbox_integration, err = client:SandboxIntegration():create({
+  organization_id = "example_organization_id", -- string
+  configuration = {}, -- table
+  credentials = {}, -- table
+  name = "example_name", -- string
+  provider = "example_provider", -- string
+})
+```
+
+
 ### ScenarioRevision
 
 Create an instance: `local scenario_revision = client:ScenarioRevision(nil)`
@@ -12967,6 +27411,92 @@ Create an instance: `local scenario_run_scenario_edit = client:ScenarioRunScenar
 | `create(data)` | Create a new entity with the given data. |
 
 
+### SecretGrant
+
+Create an instance: `local secret_grant = client:SecretGrant(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local secret_grant, err = client:SecretGrant():load({ id = "secret_grant_id", organization_id = "organization_id", secret_id = "secret_id" })
+```
+
+#### Example: List
+
+```lua
+local secret_grants, err = client:SecretGrant():list({ organization_id = "example", secret_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local secret_grant, err = client:SecretGrant():create({
+  organization_id = "example_organization_id", -- string
+  secret_id = "example_secret_id", -- string
+})
+```
+
+
+### SecretVersion
+
+Create an instance: `local secret_version = client:SecretVersion(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local secret_version, err = client:SecretVersion():load({ id = "secret_version_id", organization_id = "organization_id", secret_id = "secret_id" })
+```
+
+#### Example: List
+
+```lua
+local secret_versions, err = client:SecretVersion():list({ organization_id = "example", secret_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local secret_version, err = client:SecretVersion():create({
+  organization_id = "example_organization_id", -- string
+  secret_id = "example_secret_id", -- string
+})
+```
+
+
 ### ServiceEndpoint
 
 Create an instance: `local service_endpoint = client:ServiceEndpoint(nil)`
@@ -13010,6 +27540,380 @@ local service_endpoint, err = client:ServiceEndpoint():create({
 ```
 
 
+### Setting
+
+Create an instance: `local setting = client:Setting(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `boolean` |  |
+| `can_manage_sandbox_region` | `boolean` |  |
+| `dedicated_outbound_ip_addresses` | `table` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` |  |
+| `organization` | `table` |  |
+| `sandbox_regions` | `table` |  |
+
+#### Example: List
+
+```lua
+local settings, err = client:Setting():list({ organization_id = "example" })
+```
+
+
+### SettingMutationLease
+
+Create an instance: `local setting_mutation_lease = client:SettingMutationLease(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+
+### Signal
+
+Create an instance: `local signal = client:Signal(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `acked_at` | `string|nil` |  |
+| `acked_by` | `table|nil` | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | `table` | Dispatched-run summary (docs §6c). |
+| `app_service_id` | `string|nil` |  |
+| `attribution` | `table` | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
+| `created_at` | `string` | ISO8601 row insert time — retention math and debugging only. |
+| `dedupe_key` | `string|nil` |  |
+| `hosted_app_id` | `string|nil` |  |
+| `id` | `string` | The signal's own `sig_…` public id — also the paging cursor value. |
+| `kind` | `string` | A frozen taxonomy kind (§1) or an `app.custom.*` kind. |
+| `links` | `table` | Canonical, relative API paths built from real routes (docs §6a). |
+| `occurred_at` | `string` | ISO8601 domain event time — what the UI displays and `since` filters on. |
+| `organization_id` | `string` |  |
+| `payload` | `table` | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
+| `recovery` | `table` | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | `table` | Recovery pairing (docs §6b). |
+| `severity` | `string` | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
+| `source` | `table` | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
+| `subject_id` | `string|nil` |  |
+| `subject_type` | `string|nil` | Polymorphic pointer: `AppDeployment`, `RuntimeInstance`, `AlertEvent`, `HostedApp`, or `SignalSubscription`. |
+| `summary` | `string` | One-line, kind-composed human sentence for the feed row (docs §6d, e.g. |
+
+#### Example: Load
+
+```lua
+local signal, err = client:Signal():load({ id = "signal_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local signals, err = client:Signal():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local signal, err = client:Signal():create({
+})
+```
+
+
+### SignalInbound
+
+Create an instance: `local signal_inbound = client:SignalInbound(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### SignalIntegration
+
+Create an instance: `local signal_integration = client:SignalIntegration(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `api_token` | `string` | Optional provider API token for target discovery and backfill. |
+| `api_token_stored` | `boolean` |  |
+| `config` | `table` |  |
+| `created_at` | `string|nil` |  |
+| `failure_message` | `string|nil` |  |
+| `id` | `string` | Public id (`sint_…`). |
+| `inbound_path` | `string` |  |
+| `inbound_url` | `string` | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `string|nil` |  |
+| `last_verified_at` | `string|nil` |  |
+| `mode` | `string` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `provider` | `string` |  |
+| `rejected_signature_count` | `number` | Deliveries rejected for a bad or missing signature. |
+| `status` | `string` |  |
+| `target_count` | `number` |  |
+| `unmapped_delivery_count` | `number` | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `string|nil` |  |
+| `webhook_secret` | `string` | The provider's signing secret. |
+| `webhook_secret_stored` | `boolean` |  |
+
+#### Example: Load
+
+```lua
+local signal_integration, err = client:SignalIntegration():load({ id = "signal_integration_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local signal_integrations, err = client:SignalIntegration():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local signal_integration, err = client:SignalIntegration():create({
+  organization_id = "example_organization_id", -- string
+  name = "example_name", -- string
+  provider = "example_provider", -- string
+})
+```
+
+
+### SignalIntegrationDelivery
+
+Create an instance: `local signal_integration_delivery = client:SignalIntegrationDelivery(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `attempt_count` | `number` |  |
+| `created_at` | `string|nil` |  |
+| `delivery_id` | `string` | The provider's delivery id, or a `content-…` id derived from the event kind, its timestamp header and the body checksum when it sends none. |
+| `event_kind` | `string|nil` |  |
+| `id` | `string` | Public id (`sdel_…`). |
+| `last_error` | `string|nil` |  |
+| `ops_signal_id` | `string|nil` | Public id (`sig_…`) of the signal this delivery emitted. |
+| `organization_id` | `string` |  |
+| `processed_at` | `string|nil` |  |
+| `provider` | `string` |  |
+| `received_at` | `string|nil` |  |
+| `signal_integration_id` | `string` |  |
+| `state` | `string` |  |
+
+#### Example: List
+
+```lua
+local signal_integration_deliverys, err = client:SignalIntegrationDelivery():list({ organization_id = "example", signal_integration_id = "example" })
+```
+
+
+### SignalIntegrationTarget
+
+Create an instance: `local signal_integration_target = client:SignalIntegrationTarget(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `app_service_id` | `string|nil` |  |
+| `created_at` | `string|nil` |  |
+| `display_name` | `string|nil` |  |
+| `enabled` | `boolean` |  |
+| `external_id` | `string` |  |
+| `external_kind` | `string` |  |
+| `external_slug` | `string|nil` |  |
+| `hosted_app_id` | `string|nil` |  |
+| `id` | `string` | Public id (`stgt_…`). |
+| `organization_id` | `string` |  |
+| `signal_integration_id` | `string` |  |
+| `signal_integration_targets` | `table` |  |
+| `targets` | `table` |  |
+| `updated_at` | `string|nil` |  |
+
+#### Example: List
+
+```lua
+local signal_integration_targets, err = client:SignalIntegrationTarget():list({ organization_id = "example", signal_integration_id = "example" })
+```
+
+
+### SignalSubscription
+
+Create an instance: `local signal_subscription = client:SignalSubscription(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local signal_subscription, err = client:SignalSubscription():load({ id = "signal_subscription_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local signal_subscriptions, err = client:SignalSubscription():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local signal_subscription, err = client:SignalSubscription():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### Site
+
+Create an instance: `local site = client:Site(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_at` | `string|nil` |  |
+| `activated_at_label` | `string|nil` |  |
+| `commit_sha` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `creator_user_id` | `string|nil` |  |
+| `deploy_slug` | `string` |  |
+| `failure_message` | `string|nil` |  |
+| `file_count` | `number` |  |
+| `file_count_label` | `string` |  |
+| `finished_at` | `string|nil` |  |
+| `finished_at_label` | `string|nil` |  |
+| `id` | `string` |  |
+| `is_active` | `boolean` |  |
+| `source_ref` | `string|nil` |  |
+| `started_at` | `string|nil` |  |
+| `started_at_label` | `string|nil` |  |
+| `static_site_id` | `string` |  |
+| `status` | `string` |  |
+| `total_bytes` | `number` |  |
+| `total_bytes_label` | `string` |  |
+| `trigger_kind` | `string` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+| `uploaded_at` | `string|nil` |  |
+| `uploaded_at_label` | `string|nil` |  |
+
+#### Example: List
+
+```lua
+local sites, err = client:Site():list({ organization_id = "example" })
+```
+
+
+### SiteAccessKey
+
+Create an instance: `local site_access_key = client:SiteAccessKey(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```lua
+local site_access_keys, err = client:SiteAccessKey():list({ organization_id = "example", site_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local site_access_key, err = client:SiteAccessKey():create({
+  organization_id = "example_organization_id", -- string
+  site_id = "example_site_id", -- string
+})
+```
+
+
 ### SitePreview
 
 Create an instance: `local site_preview = client:SitePreview(nil)`
@@ -13033,6 +27937,26 @@ Create an instance: `local site_preview = client:SitePreview(nil)`
 ```lua
 local site_preview, err = client:SitePreview():load({ organization_id = "organization_id", url = "url" })
 ```
+
+
+### SiteSecret
+
+Create an instance: `local site_secret = client:SiteSecret(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `native_agent_id` | `string` |  |
+| `value` | `string` |  |
 
 
 ### SlackChannel
@@ -13060,6 +27984,690 @@ Create an instance: `local slack_channel = client:SlackChannel(nil)`
 
 ```lua
 local slack_channels, err = client:SlackChannel():list({ agent_id = "example", organization_id = "example" })
+```
+
+
+### SourceConnection
+
+Create an instance: `local source_connection = client:SourceConnection(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### SpaceAlertRule
+
+Create an instance: `local space_alert_rule = client:SpaceAlertRule(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local space_alert_rule, err = client:SpaceAlertRule():load({ id = "space_alert_rule_id", space_id = "space_id" })
+```
+
+#### Example: List
+
+```lua
+local space_alert_rules, err = client:SpaceAlertRule():list({ space_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local space_alert_rule, err = client:SpaceAlertRule():create({
+  space_id = "example_space_id", -- string
+})
+```
+
+
+### SpaceAuditEvent
+
+Create an instance: `local space_audit_event = client:SpaceAuditEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```lua
+local space_audit_events, err = client:SpaceAuditEvent():list({ space_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local space_audit_event, err = client:SpaceAuditEvent():create({
+  space_id = "example_space_id", -- string
+})
+```
+
+
+### SpaceDnsRecord
+
+Create an instance: `local space_dns_record = client:SpaceDnsRecord(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local space_dns_record, err = client:SpaceDnsRecord():load({ id = "space_dns_record_id", space_id = "space_id" })
+```
+
+#### Example: List
+
+```lua
+local space_dns_records, err = client:SpaceDnsRecord():list({ space_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local space_dns_record, err = client:SpaceDnsRecord():create({
+  space_id = "example_space_id", -- string
+})
+```
+
+
+### SpaceEnrollmentToken
+
+Create an instance: `local space_enrollment_token = client:SpaceEnrollmentToken(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local space_enrollment_token, err = client:SpaceEnrollmentToken():load({ id = "space_enrollment_token_id", space_id = "space_id" })
+```
+
+#### Example: List
+
+```lua
+local space_enrollment_tokens, err = client:SpaceEnrollmentToken():list({ space_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local space_enrollment_token, err = client:SpaceEnrollmentToken():create({
+  space_id = "example_space_id", -- string
+})
+```
+
+
+### SpaceGateway
+
+Create an instance: `local space_gateway = client:SpaceGateway(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local space_gateway, err = client:SpaceGateway():load({ id = "space_gateway_id", space_id = "space_id" })
+```
+
+#### Example: List
+
+```lua
+local space_gateways, err = client:SpaceGateway():list({ space_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local space_gateway, err = client:SpaceGateway():create({
+  space_id = "example_space_id", -- string
+})
+```
+
+
+### SpaceGroup
+
+Create an instance: `local space_group = client:SpaceGroup(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```lua
+local space_groups, err = client:SpaceGroup():list({ space_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local space_group, err = client:SpaceGroup():create({
+  space_id = "example_space_id", -- string
+})
+```
+
+
+### SpaceGroupMembership
+
+Create an instance: `local space_group_membership = client:SpaceGroupMembership(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```lua
+local space_group_memberships, err = client:SpaceGroupMembership():list({ space_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local space_group_membership, err = client:SpaceGroupMembership():create({
+  space_id = "example_space_id", -- string
+})
+```
+
+
+### SpaceLogStream
+
+Create an instance: `local space_log_stream = client:SpaceLogStream(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```lua
+local space_log_streams, err = client:SpaceLogStream():list({ space_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local space_log_stream, err = client:SpaceLogStream():create({
+  space_id = "example_space_id", -- string
+})
+```
+
+
+### SpaceMetricSery
+
+Create an instance: `local space_metric_sery = client:SpaceMetricSery(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```lua
+local space_metric_serys, err = client:SpaceMetricSery():list({ space_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local space_metric_sery, err = client:SpaceMetricSery():create({
+  space_id = "example_space_id", -- string
+})
+```
+
+
+### SpaceOtelCollector
+
+Create an instance: `local space_otel_collector = client:SpaceOtelCollector(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local space_otel_collector, err = client:SpaceOtelCollector():load({ id = "space_otel_collector_id", space_id = "space_id" })
+```
+
+#### Example: List
+
+```lua
+local space_otel_collectors, err = client:SpaceOtelCollector():list({ space_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local space_otel_collector, err = client:SpaceOtelCollector():create({
+  space_id = "example_space_id", -- string
+})
+```
+
+
+### SpacePeer
+
+Create an instance: `local space_peer = client:SpacePeer(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local space_peer, err = client:SpacePeer():load({ id = "space_peer_id", space_id = "space_id" })
+```
+
+#### Example: List
+
+```lua
+local space_peers, err = client:SpacePeer():list({ space_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local space_peer, err = client:SpacePeer():create({
+  space_id = "example_space_id", -- string
+})
+```
+
+
+### SpacePeerAttachment
+
+Create an instance: `local space_peer_attachment = client:SpacePeerAttachment(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: List
+
+```lua
+local space_peer_attachments, err = client:SpacePeerAttachment():list({ space_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local space_peer_attachment, err = client:SpacePeerAttachment():create({
+  space_id = "example_space_id", -- string
+})
+```
+
+
+### SpacePolicy
+
+Create an instance: `local space_policy = client:SpacePolicy(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local space_policy, err = client:SpacePolicy():load({ id = "space_policy_id", space_id = "space_id" })
+```
+
+#### Example: List
+
+```lua
+local space_policys, err = client:SpacePolicy():list({ space_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local space_policy, err = client:SpacePolicy():create({
+  space_id = "example_space_id", -- string
+})
+```
+
+
+### SpaceSegment
+
+Create an instance: `local space_segment = client:SpaceSegment(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local space_segment, err = client:SpaceSegment():load({ id = "space_segment_id", space_id = "space_id" })
+```
+
+#### Example: List
+
+```lua
+local space_segments, err = client:SpaceSegment():list({ space_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local space_segment, err = client:SpaceSegment():create({
+  space_id = "example_space_id", -- string
+})
+```
+
+
+### SpaceTraceSpan
+
+Create an instance: `local space_trace_span = client:SpaceTraceSpan(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```lua
+local space_trace_spans, err = client:SpaceTraceSpan():list({ space_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local space_trace_span, err = client:SpaceTraceSpan():create({
+  space_id = "example_space_id", -- string
+})
+```
+
+
+### Spark
+
+Create an instance: `local spark = client:Spark(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activated_products` | `table` | Products this organization has activated (PRD 144). |
+| `agents_only` | `boolean` | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `boolean` | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `can_manage` | `boolean` |  |
+| `compute_credit_cents` | `number|nil` | Included compute the workspace started Sparks with, when it is on compute billing. |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `credit_cents` | `number|nil` | Inference credit the workspace started Sparks with. |
+| `first_spark` | `table|nil` | Null until the first Spark exists or when the viewer cannot read it. |
+| `github_connected` | `boolean` |  |
+| `github_prs_authored_by_change_author` | `boolean` |  |
+| `id` | `string` |  |
+| `jsonrpc` | `string` |  |
+| `logo_url` | `string|nil` |  |
+| `member_count` | `number` |  |
+| `method` | `string` |  |
+| `name` | `string` |  |
+| `params` | `table` |  |
+| `pending_invitation_count` | `number` |  |
+| `personal` | `boolean` |  |
+| `repository_count` | `number` |  |
+| `role` | `string|nil` |  |
+| `sandbox_region` | `string` |  |
+| `shared_agent_personal_accounts_enabled` | `boolean` | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` |  |
+| `source_control_providers` | `table` | Connected source control providers for this organization. |
+| `source_ui_enabled` | `boolean` | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `started` | `boolean` | Whether the workspace has started Sparks. |
+| `timezone` | `string` | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+| `verify_pr_scenario_writing_enabled` | `boolean` |  |
+
+#### Example: List
+
+```lua
+local sparks, err = client:Spark():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local spark, err = client:Spark():create({
+  jsonrpc = "example_jsonrpc", -- string
+  method = "example_method", -- string
+})
+```
+
+
+### SparkAgentIntegration
+
+Create an instance: `local spark_agent_integration = client:SparkAgentIntegration(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_counts` | `table` | Accounts the viewer can see per toolkit, across all account pages. |
+| `accounts_path` | `string` | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
+| `added_toolkits` | `table` | Apps with a connected or connecting account the viewer can see. |
+| `can_manage` | `boolean` |  |
+| `can_manage_organization` | `boolean` |  |
+| `catalog` | `table` |  |
+| `connect_as` | `string|nil` | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
+| `connect_as_by_toolkit` | `table` | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_counts` | `table` | Signed-in accounts per toolkit, across all account pages. |
+| `connection_id` | `string` |  |
+| `connections` | `table` |  |
+| `email` | `table` | A native agent's own email address. |
+| `enabled` | `boolean` |  |
+| `enabled_toolkits` | `table` | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `generation` | `number` |  |
+| `pagination` | `table` |  |
+| `pending_counts` | `table` | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
+| `personal_creation_key_supported` | `boolean` | The personal account creation endpoint honors a creation key. |
+| `private_agent` | `boolean` | Only the agent's owner can chat with it. |
+| `shared_agent_personal_accounts_enabled` | `boolean` | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
+| `slack` | `table` |  |
+| `webhook_connections` | `table` |  |
+| `webhooks_available` | `boolean` |  |
+
+#### Example: List
+
+```lua
+local spark_agent_integrations, err = client:SparkAgentIntegration():list({ agent_id = "example", organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local spark_agent_integration, err = client:SparkAgentIntegration():create({
+  agent_id = "example_agent_id", -- string
+  organization_id = "example_organization_id", -- string
+  connection_id = "example_connection_id", -- string
+  enabled = true, -- boolean
+  generation = 1, -- number
+})
 ```
 
 
@@ -13130,6 +28738,249 @@ local spark_agent_local_thread, err = client:SparkAgentLocalThread():create({
   provider = "example_provider", -- string
   thread_id = "example_thread_id", -- string
 })
+```
+
+
+### SparkAgentSite
+
+Create an instance: `local spark_agent_site = client:SparkAgentSite(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `deployed_at` | `string` |  |
+| `deployments_count` | `number` |  |
+| `hostname` | `string` |  |
+| `https` | `string` | Whether the organization's certificate serves this site over HTTPS |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `url` | `string` |  |
+| `visibility` | `string` |  |
+
+#### Example: List
+
+```lua
+local spark_agent_sites, err = client:SparkAgentSite():list({ agent_id = "example", organization_id = "example" })
+```
+
+
+### SparkAgentSkill
+
+Create an instance: `local spark_agent_skill = client:SparkAgentSkill(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `available` | `boolean` |  |
+| `can_configure` | `boolean` |  |
+| `can_manage` | `boolean` |  |
+| `configuration_state` | `string` | The requested managed skill selection is awaiting runtime qualification. |
+| `description` | `string` |  |
+| `enabled` | `boolean` |  |
+| `name` | `string` |  |
+| `skills` | `table` |  |
+| `version` | `string` |  |
+
+#### Example: List
+
+```lua
+local spark_agent_skills, err = client:SparkAgentSkill():list({ agent_id = "example", organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local spark_agent_skill, err = client:SparkAgentSkill():create({
+  agent_id = "example_agent_id", -- string
+  organization_id = "example_organization_id", -- string
+  enabled = true, -- boolean
+  name = "example_name", -- string
+  version = "example_version", -- string
+})
+```
+
+
+### SparkAgentThread
+
+Create an instance: `local spark_agent_thread = client:SparkAgentThread(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `archived_count` | `number|nil` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
+| `can_create` | `boolean` |  |
+| `execution` | `any` |  |
+| `first_input` | `any` |  |
+| `first_input_key` | `string` | Idempotency-Key that finds the first message through input_delivery. |
+| `first_input_requester_membership_id` | `string` | Membership the first message was sent as, for input_delivery. |
+| `id` | `string` |  |
+| `inherit_context` | `boolean` | Include the source conversation through its last completed reply. |
+| `local_activities` | `table` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
+| `local_archived_count` | `number` | Local Claude Code and Codex threads archived on their computers. |
+| `local_next_cursor` | `string|nil` |  |
+| `local_scope_key` | `string|nil` |  |
+| `local_status_pending` | `boolean` | A computer is reporting newer local thread statuses; read the page again shortly. |
+| `local_threads` | `table` |  |
+| `main_thread_id` | `string` |  |
+| `message` | `string` | The thread's first message. |
+| `next_cursor` | `string|nil` |  |
+| `parent_conversation_id` | `string` | Optional source conversation belonging to this agent. |
+| `requester_membership_id` | `string` |  |
+| `selected_thread` | `any` |  |
+| `thread` | `table` |  |
+| `threads` | `table` |  |
+| `title` | `string` |  |
+| `total_archived_count` | `number|nil` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+#### Example: List
+
+```lua
+local spark_agent_threads, err = client:SparkAgentThread():list({ agent_id = "example", organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local spark_agent_thread, err = client:SparkAgentThread():create({
+  agent_id = "example_agent_id", -- string
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### SparkCredit
+
+Create an instance: `local spark_credit = client:SparkCredit(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `amount_cents` | `number` | Purchase amount in USD cents. |
+| `autofill` | `any` |  |
+| `autofill_payment_unconfirmed` | `boolean` |  |
+| `available_usd` | `string` |  |
+| `billing_unit` | `string` | Compute minute quote version returned by the billing summary. |
+| `can_manage` | `boolean` |  |
+| `compute_minutes` | `table` |  |
+| `compute_usd` | `string` |  |
+| `credits_per_usd` | `number` |  |
+| `inference_usd` | `string` |  |
+| `kind` | `string` |  |
+| `payment_method` | `table|nil` |  |
+| `payments_enabled` | `boolean` |  |
+| `plan` | `string` |  |
+| `plans` | `table` |  |
+| `quoted_credits_cents` | `number` | Grant shown for a top-up or subscription, in usage cents. |
+| `quoted_price_cents` | `number` | Monthly cash price shown for a subscription, in USD cents. |
+| `refill_limits_cents` | `table` |  |
+| `refill_options` | `table` |  |
+| `refill_thresholds_cents` | `table` |  |
+| `request_key` | `string` |  |
+| `settings` | `any` |  |
+| `starter_cents` | `number` |  |
+| `top_up_max_cents` | `number` | Maximum manual top-up, in USD cents. |
+| `top_up_step_cents` | `number` | Minimum manual top-up and increment, in USD cents. |
+
+#### Example: List
+
+```lua
+local spark_credits, err = client:SparkCredit():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local spark_credit, err = client:SparkCredit():create({
+  organization_id = "example_organization_id", -- string
+  kind = "example_kind", -- string
+  request_key = "example_request_key", -- string
+})
+```
+
+
+### SparkCreditAgentUsage
+
+Create an instance: `local spark_credit_agent_usage = client:SparkCreditAgentUsage(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agents` | `table` |  |
+| `all` | `table` |  |
+| `days` | `table` |  |
+| `id` | `string` |  |
+| `owners` | `table` |  |
+
+#### Example: Load
+
+```lua
+local spark_credit_agent_usage, err = client:SparkCreditAgentUsage():load({ id = "spark_credit_agent_usage_id", organization_id = "organization_id" })
+```
+
+
+### SparkCreditUsageTotal
+
+Create an instance: `local spark_credit_usage_total = client:SparkCreditUsageTotal(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `compute_minutes_used` | `string` |  |
+| `compute_usd` | `string` |  |
+| `inference_usd` | `string` |  |
+
+#### Example: List
+
+```lua
+local spark_credit_usage_totals, err = client:SparkCreditUsageTotal():list({ organization_id = "example" })
 ```
 
 
@@ -13324,6 +29175,135 @@ local static_site_domain, err = client:StaticSiteDomain():create({
 ```
 
 
+### StatusChange
+
+Create an instance: `local status_change = client:StatusChange(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `change_id` | `string` |  |
+| `id` | `string` |  |
+| `patchsets` | `table` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+
+#### Example: Load
+
+```lua
+local status_change, err = client:StatusChange():load({ id = "status_change_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+
+### StatusCommit
+
+Create an instance: `local status_commit = client:StatusCommit(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `checks` | `table` |  |
+| `commit_sha` | `string` |  |
+| `counts` | `table` |  |
+| `id` | `string` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `total` | `number` |  |
+
+#### Example: Load
+
+```lua
+local status_commit, err = client:StatusCommit():load({ id = "status_commit_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+
+### StatusPatchset
+
+Create an instance: `local status_patchset = client:StatusPatchset(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `checks` | `table` |  |
+| `checks_status` | `string|nil` |  |
+| `commit_sha` | `string|nil` |  |
+| `counts` | `table` |  |
+| `id` | `string` |  |
+| `patchset_id` | `string` |  |
+| `status` | `string` |  |
+| `status_label` | `string` |  |
+| `status_state` | `string` |  |
+| `status_tone` | `string` |  |
+| `total` | `number` |  |
+
+#### Example: Load
+
+```lua
+local status_patchset, err = client:StatusPatchset():load({ id = "status_patchset_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+
+### StripeWebhook
+
+Create an instance: `local stripe_webhook = client:StripeWebhook(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local stripe_webhook, err = client:StripeWebhook():create({
+})
+```
+
+
+### SubmitTelemetry
+
+Create an instance: `local submit_telemetry = client:SubmitTelemetry(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local submit_telemetry, err = client:SubmitTelemetry():create({
+})
+```
+
+
 ### SubscriptionModel
 
 Create an instance: `local subscription_model = client:SubscriptionModel(nil)`
@@ -13349,6 +29329,174 @@ Create an instance: `local subscription_model = client:SubscriptionModel(nil)`
 
 ```lua
 local subscription_models, err = client:SubscriptionModel():list({ agent_id = "example", organization_id = "example", profile_id = "example" })
+```
+
+
+### SwarmEvent
+
+Create an instance: `local swarm_event = client:SwarmEvent(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent_swarm_id` | `string` |  |
+| `attempt_id` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `id` | `number` |  |
+| `kind` | `string` |  |
+| `payload` | `table` |  |
+| `reason` | `string|nil` |  |
+| `scheduler_generation` | `number|nil` |  |
+| `task_id` | `string|nil` |  |
+
+#### Example: List
+
+```lua
+local swarm_events, err = client:SwarmEvent():list({ swarm_id = "example" })
+```
+
+
+### SwarmLive
+
+Create an instance: `local swarm_live = client:SwarmLive(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### SwarmNote
+
+Create an instance: `local swarm_note = client:SwarmNote(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `task_id` | `string|nil` | A task public id; omitted |
+| `text` | `string` |  |
+
+#### Example: Create
+
+```lua
+local swarm_note, err = client:SwarmNote():create({
+  swarm_id = "example_swarm_id", -- string
+  text = "example_text", -- string
+})
+```
+
+
+### SwarmTask
+
+Create an instance: `local swarm_task = client:SwarmTask(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `acceptance_commands` | `table` |  |
+| `agent_swarm_id` | `string` |  |
+| `assigned_runner_id` | `string|nil` |  |
+| `blocked_reason` | `string|nil` |  |
+| `changes` | `table` |  |
+| `commit_count` | `number` |  |
+| `commit_sha_result` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `current_attempt_id` | `string|nil` |  |
+| `deadline_at` | `string|nil` |  |
+| `depends_on_task_ids` | `table` |  |
+| `depth` | `number` |  |
+| `diff_artifact_url` | `string|nil` |  |
+| `display_id` | `number` |  |
+| `environment_profile` | `string|nil` |  |
+| `error_message` | `string|nil` |  |
+| `failure_code` | `string|nil` |  |
+| `finished_at` | `string|nil` |  |
+| `finished_at_label` | `string|nil` |  |
+| `harness` | `string` |  |
+| `id` | `string` |  |
+| `input_revision` | `string|nil` |  |
+| `iteration` | `number` |  |
+| `landing_state` | `string` |  |
+| `model` | `string|nil` |  |
+| `model_provider` | `string|nil` |  |
+| `number` | `number` |  |
+| `organization_id` | `string` |  |
+| `owned_paths` | `table` |  |
+| `parent_task_id` | `string|nil` |  |
+| `position` | `number` |  |
+| `prompt` | `string` |  |
+| `queued_at` | `string|nil` |  |
+| `queued_at_label` | `string|nil` |  |
+| `reasoning_effort` | `string|nil` |  |
+| `recent_activity` | `table` |  |
+| `repo_url` | `string` |  |
+| `result` | `table` |  |
+| `retry_number` | `number` |  |
+| `role` | `string` |  |
+| `run_id` | `string|nil` |  |
+| `stack_after_task_id` | `string|nil` |  |
+| `started_at` | `string|nil` |  |
+| `started_at_label` | `string|nil` |  |
+| `status` | `string` |  |
+| `title` | `string|nil` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+
+#### Example: List
+
+```lua
+local swarm_tasks, err = client:SwarmTask():list({ swarm_id = "example" })
+```
+
+
+### TaskLease
+
+Create an instance: `local task_lease = client:TaskLease(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+#### Example: Create
+
+```lua
+local task_lease, err = client:TaskLease():create({
+  swarm_id = "example_swarm_id", -- string
+  task_id = "example_task_id", -- string
+})
 ```
 
 
@@ -13379,6 +29527,436 @@ local thread_preview, err = client:ThreadPreview():create({
   thread_id = "example_thread_id", -- string
   port = 1, -- number
 })
+```
+
+
+### ThreadPreviewAccess
+
+Create an instance: `local thread_preview_access = client:ThreadPreviewAccess(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### ToolFeedback
+
+Create an instance: `local tool_feedback = client:ToolFeedback(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `category` | `string` |  |
+| `created_at` | `string` |  |
+| `details` | `string` |  |
+| `feedback` | `table` |  |
+| `id` | `string` |  |
+| `metadata` | `table` | Caller-supplied session context; no secrets or transcripts |
+| `organization_id` | `string` |  |
+| `source` | `string` |  |
+| `summary` | `string` |  |
+| `user_id` | `string` |  |
+
+#### Example: Load
+
+```lua
+local tool_feedback, err = client:ToolFeedback():load({ id = "tool_feedback_id", organization_id = "organization_id" })
+```
+
+#### Example: Create
+
+```lua
+local tool_feedback, err = client:ToolFeedback():create({
+  organization_id = "example_organization_id", -- string
+  feedback = {}, -- table
+})
+```
+
+
+### Transcript
+
+Create an instance: `local transcript = client:Transcript(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `agent` | `string` |  |
+| `author` | `table` |  |
+| `checkpoint_pagination` | `table` |  |
+| `checkpoints` | `table` |  |
+| `id` | `string` |  |
+| `last_checkpoint_at` | `string|nil` |  |
+| `selected_checkpoint` | `any` |  |
+| `source_url` | `string` |  |
+| `started_at` | `string` |  |
+| `status` | `string` |  |
+| `title` | `string|nil` |  |
+
+#### Example: List
+
+```lua
+local transcripts, err = client:Transcript():list({ repo = "example" })
+```
+
+
+### V1Message
+
+Create an instance: `local v1_message = client:V1Message(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local v1_message, err = client:V1Message():create({
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
+### VcBranch
+
+Create an instance: `local vc_branch = client:VcBranch(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `target_commit_id` | `string` |  |
+
+#### Example: List
+
+```lua
+local vc_branchs, err = client:VcBranch():list({ organization_id = "example", repo_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local vc_branch, err = client:VcBranch():create({
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+})
+```
+
+
+### VcBrowser
+
+Create an instance: `local vc_browser = client:VcBrowser(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+
+### VcChange
+
+Create an instance: `local vc_change = client:VcChange(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `activity` | `table` |  |
+| `canonical_path` | `string` |  |
+| `change` | `any` |  |
+| `checks` | `table` |  |
+| `checks_status` | `string` |  |
+| `description` | `string|nil` |  |
+| `group` | `table|nil` |  |
+| `id` | `string` |  |
+| `jj_change_id` | `string|nil` |  |
+| `labels` | `table` |  |
+| `landing` | `table` | Server-computed submitted-together closure and landing preflight. |
+| `number` | `number` |  |
+| `patchset_number` | `number|nil` |  |
+| `previews` | `table` |  |
+| `primary_status` | `string|nil` |  |
+| `public_id` | `string` |  |
+| `related_changes` | `table` |  |
+| `relation_chain` | `table` |  |
+| `restack_state` | `string` |  |
+| `review_summary` | `table` |  |
+| `stack` | `any` |  |
+| `status` | `string` |  |
+| `sync` | `table` |  |
+| `target` | `table` |  |
+| `target_advanced` | `boolean` |  |
+| `target_branch` | `string` |  |
+| `title` | `string` |  |
+| `url` | `string` |  |
+
+#### Example: Load
+
+```lua
+local vc_change, err = client:VcChange():load({ id = "vc_change_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### Example: List
+
+```lua
+local vc_changes, err = client:VcChange():list({ organization_id = "example", repo_id = "example" })
+```
+
+
+### VcChangeGroup
+
+Create an instance: `local vc_change_group = client:VcChangeGroup(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `changes` | `table` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
+| `number` | `number` |  |
+| `status` | `string` |  |
+| `title` | `string|nil` |  |
+
+#### Example: Load
+
+```lua
+local vc_change_group, err = client:VcChangeGroup():load({ id = "vc_change_group_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### Example: List
+
+```lua
+local vc_change_groups, err = client:VcChangeGroup():list({ organization_id = "example", repo_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local vc_change_group, err = client:VcChangeGroup():create({
+  organization_id = "example_organization_id", -- string
+  repo_id = "example_repo_id", -- string
+  name = "example_name", -- string
+})
+```
+
+
+### VcFile
+
+Create an instance: `local vc_file = client:VcFile(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `paths` | `table` |  |
+| `truncated` | `boolean` |  |
+
+#### Example: List
+
+```lua
+local vc_files, err = client:VcFile():list({ organization_id = "example", repo_id = "example", ref = "example" })
+```
+
+
+### VcMergeQueue
+
+Create an instance: `local vc_merge_queue = client:VcMergeQueue(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `analytics` | `table` | Queue performance for the reporting window. |
+| `id` | `string` |  |
+| `policy` | `table` |  |
+| `queue` | `table` |  |
+| `target_branches` | `table` | Bookmark names for the target picker. |
+
+#### Example: Load
+
+```lua
+local vc_merge_queue, err = client:VcMergeQueue():load({ id = "vc_merge_queue_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### Example: List
+
+```lua
+local vc_merge_queues, err = client:VcMergeQueue():list({ organization_id = "example", repo_id = "example" })
+```
+
+
+### VcStack
+
+Create an instance: `local vc_stack = client:VcStack(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `alias_ref_name` | `string|nil` |  |
+| `changes` | `table` |  |
+| `code` | `string` |  |
+| `id` | `string` |  |
+| `landing` | `table` | Compact landing state for the Stack CLI. |
+| `member_count` | `number` |  |
+| `name` | `string|nil` |  |
+| `ref_name` | `string` |  |
+| `status` | `string` |  |
+| `tip_change_number` | `number|nil` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string` |  |
+
+#### Example: Load
+
+```lua
+local vc_stack, err = client:VcStack():load({ id = "vc_stack_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### Example: List
+
+```lua
+local vc_stacks, err = client:VcStack():list({ organization_id = "example", repo_id = "example" })
+```
+
+
+### VcsNode
+
+Create an instance: `local vcs_node = client:VcsNode(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_avatar_url` | `string|nil` |  |
+| `account_id` | `string|nil` |  |
+| `account_login` | `string` |  |
+| `created_at` | `string` |  |
+| `created_at_label` | `string|nil` |  |
+| `id` | `string` |  |
+| `installation_id` | `string` |  |
+| `installed_at` | `string|nil` |  |
+| `installed_at_label` | `string|nil` |  |
+| `manage_access_url` | `string` |  |
+| `organization_id` | `string` |  |
+| `permission_entries` | `table` | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `table` |  |
+| `status` | `string` |  |
+| `suspended_at` | `string|nil` |  |
+| `suspended_at_label` | `string|nil` |  |
+| `updated_at` | `string` |  |
+| `updated_at_label` | `string|nil` |  |
+
+#### Example: List
+
+```lua
+local vcs_nodes, err = client:VcsNode():list({ organization_id = "example" })
+```
+
+
+### VcsSetting
+
+Create an instance: `local vcs_setting = client:VcsSetting(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `boolean` |  |
+| `can_manage_sandbox_region` | `boolean` |  |
+| `dedicated_outbound_ip_addresses` | `table` | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` |  |
+| `organization` | `table` |  |
+| `sandbox_regions` | `table` |  |
+
+#### Example: List
+
+```lua
+local vcs_settings, err = client:VcsSetting():list({ organization_id = "example" })
 ```
 
 
@@ -13720,6 +30298,67 @@ local verify_browser_session, err = client:VerifyBrowserSession():create({
 ```
 
 
+### VerifyEmailVerification
+
+Create an instance: `local verify_email_verification = client:VerifyEmailVerification(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Example: List
+
+```lua
+local verify_email_verifications, err = client:VerifyEmailVerification():list()
+```
+
+
+### VerifySignalIntegration
+
+Create an instance: `local verify_signal_integration = client:VerifySignalIntegration(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `api_token_stored` | `boolean` |  |
+| `config` | `table` |  |
+| `created_at` | `string|nil` |  |
+| `failure_message` | `string|nil` |  |
+| `id` | `string` | Public id (`sint_…`). |
+| `inbound_path` | `string` |  |
+| `inbound_url` | `string` | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `string|nil` |  |
+| `last_verified_at` | `string|nil` |  |
+| `mode` | `string` | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `provider` | `string` |  |
+| `rejected_signature_count` | `number` | Deliveries rejected for a bad or missing signature. |
+| `status` | `string` |  |
+| `target_count` | `number` |  |
+| `unmapped_delivery_count` | `number` | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `string|nil` |  |
+| `webhook_secret_stored` | `boolean` |  |
+
+#### Example: Create
+
+```lua
+local verify_signal_integration, err = client:VerifySignalIntegration():create({
+  id = "example_id", -- string
+  organization_id = "example_organization_id", -- string
+})
+```
+
+
 ### VerifyStaticSiteDomain
 
 Create an instance: `local verify_static_site_domain = client:VerifyStaticSiteDomain(nil)`
@@ -13798,6 +30437,24 @@ local version_logs, err = client:VersionLog():list({ binary_id = "example", orga
 ```
 
 
+### WaitlistApplication
+
+Create an instance: `local waitlist_application = client:WaitlistApplication(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Example: Create
+
+```lua
+local waitlist_application, err = client:WaitlistApplication():create({
+})
+```
+
+
 ### WebBotAuth
 
 Create an instance: `local web_bot_auth = client:WebBotAuth(nil)`
@@ -13823,6 +30480,23 @@ local web_bot_auth, err = client:WebBotAuth():create({
   origin = "example_origin", -- string
 })
 ```
+
+
+### WebhookGitlab
+
+Create an instance: `local webhook_gitlab = client:WebhookGitlab(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### WorkflowRunStep
@@ -13868,6 +30542,122 @@ Create an instance: `local workflow_trigger_skipped = client:WorkflowTriggerSkip
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+
+### WorkspaceActivity
+
+Create an instance: `local workspace_activity = client:WorkspaceActivity(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `live_activity` | `table` |  |
+| `recent_items` | `table` |  |
+| `unresolved_notification_count` | `number` |  |
+
+#### Example: Load
+
+```lua
+local workspace_activity, err = client:WorkspaceActivity():load({ organization_id = "organization_id" })
+```
+
+
+### WorkspaceActivityNotification
+
+Create an instance: `local workspace_activity_notification = client:WorkspaceActivityNotification(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### WorkspaceSpace
+
+Create an instance: `local workspace_space = client:WorkspaceSpace(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `string` |  |
+| `default_branch` | `string` |  |
+| `description` | `string|nil` |  |
+| `hidden` | `boolean` |  |
+| `icon_name` | `string` |  |
+| `id` | `string` |  |
+| `import_status` | `string|nil` |  |
+| `name` | `string` |  |
+| `organization_id` | `string` |  |
+| `position` | `number|nil` |  |
+| `repository_id` | `string` |  |
+| `repository_slug` | `string` |  |
+| `slug` | `string` |  |
+| `status` | `string` |  |
+| `updated_at` | `string` |  |
+
+#### Example: Load
+
+```lua
+local workspace_space, err = client:WorkspaceSpace():load({ id = "workspace_space_id", organization_id = "organization_id" })
+```
+
+#### Example: List
+
+```lua
+local workspace_spaces, err = client:WorkspaceSpace():list({ organization_id = "example" })
+```
+
+#### Example: Create
+
+```lua
+local workspace_space, err = client:WorkspaceSpace():create({
+  organization_id = "example_organization_id", -- string
+  icon_name = "example_icon_name", -- string
+  name = "example_name", -- string
+  slug = "example_slug", -- string
+})
+```
+
+
+### WorkspaceSpacePreference
+
+Create an instance: `local workspace_space_preference = client:WorkspaceSpacePreference(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `preferences` | `table` |  |
+| `spaces` | `table` |  |
 
 ## Features
 
@@ -14027,7 +30817,7 @@ activated earlier.
 
 ## Open types
 
-12 fields are carried as open values rather than typed structures.
+17 fields are carried as open values rather than typed structures.
 This follows from the API definition, not from a gap in this SDK: the
 definition describes them with untagged unions —
 `oneOf`/`anyOf` branches with no `discriminator` — so it never states which
@@ -14041,14 +30831,19 @@ guarantee.
 | `agent_automation` | `version` | 12 | 12 levels |
 | `agent_interaction` | `interactions` | 12 | 17 levels |
 | `automation_event` | `version` | 12 | 12 levels |
+| `control_computer_control_operation` | `result` | 10 | 2 levels |
+| `device_control_operation` | `result` | 10 | 2 levels |
 | `local_thread_operation` | `result` | 10 | 2 levels |
 | `spark_agent_local_thread` | `result` | 10 | 2 levels |
+| `workspace_activity` | `recent_items` | 7 | 1 level |
 | `page_agent` | `inbox` | 6 | 14 levels |
 | `agent` | `configuration` | 5 | 9 levels |
 | `agent_manager` | `configuration` | 5 | 9 levels |
 | `interaction_response` | `answer` | 5 | 3 levels |
 | `page_agent` | `new_configuration` | 5 | 9 levels |
 | `page_agent` | `selected_agent` | 5 | 15 levels |
+| `change` | `result` | 4 | 9 levels |
+| `workspace_activity` | `live_activity` | 4 | 1 level |
 
 These values round-trip unchanged — read them, modify them, send them back. If
 the API adds a `discriminator` to the definition, regenerating will type them.
@@ -14139,11 +30934,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local pageprojectrun = client:PageProjectRun()
-pageprojectrun:load({ id = "example_id", organization_id = "example", project_id = "example" })
+local agentoperation = client:AgentOperation()
+agentoperation:load({ agent_id = "example", id = "example_id", organization_id = "example" })
 
--- pageprojectrun:data_get() now returns the pageprojectrun data from the last load
--- pageprojectrun:match_get() returns the last match criteria
+-- agentoperation:data_get() now returns the agentoperation data from the last load
+-- agentoperation:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

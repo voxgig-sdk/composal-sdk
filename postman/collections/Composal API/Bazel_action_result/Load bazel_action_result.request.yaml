@@ -1,0 +1,18 @@
+$kind: http-request
+id: "457bc354-977e-57db-8b35-75f7f701f7ba"
+description: |-
+  The `load` operation of **bazel_action_result**.
+
+  SDK: `client.BazelActionResult().load({ action_result_id: "example", id: "example_id" })`
+url: "{{base}}/api/v1/bazel/action_results/:hash/:size_bytes"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: hash
+    value: "{{bazel_action_result_action_result_id}}"
+    description: The bazel_action_result this request addresses.
+  - key: size_bytes
+    value: "{{bazel_action_result_id}}"
+    description: The bazel_action_result this request addresses.
+order: 1000

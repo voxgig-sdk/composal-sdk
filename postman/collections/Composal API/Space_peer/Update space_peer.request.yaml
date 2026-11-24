@@ -1,0 +1,22 @@
+$kind: http-request
+id: a542a1ff-fdc5-5eff-9d7b-1295034f9e3c
+description: |-
+  The `update` operation of **space_peer**.
+
+  SDK: `client.SpacePeer().update({ id: "example", space_id: "example" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/peers/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: id
+    value: "{{space_peer_id}}"
+    description: The space_peer this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

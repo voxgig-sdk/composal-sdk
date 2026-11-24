@@ -1,0 +1,22 @@
+$kind: http-request
+id: "20ceb4c4-975d-5d3b-9171-d2e53c7446c4"
+description: |-
+  The `agent_session` action of **github_runner_setup**, a route of its `create` operation.
+
+  SDK: `client.GithubRunnerSetup().create({ "organization_id": "organization_id", $action: "agent_session" })`
+url: "{{base}}/api/v1/organizations/:organization_id/github_runner_setup/agent_session"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this github_runner_setup belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "id": "{{github_runner_setup_id}}"
+    }
+order: 3000

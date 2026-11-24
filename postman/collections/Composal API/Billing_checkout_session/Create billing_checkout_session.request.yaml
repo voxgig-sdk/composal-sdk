@@ -1,0 +1,37 @@
+$kind: http-request
+id: c69d1660-ead1-5576-8593-2059280dd38c
+description: |-
+  The `create` operation of **billing_checkout_session**.
+
+  SDK: `client.BillingCheckoutSession().create({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/billing/checkout_sessions"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this billing_checkout_session belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "success_url": "example",
+      "cancel_url": "example",
+      "coupon_code": "example",
+      "package_key": "example",
+      "package_revision": 1,
+      "entry_point": "onboarding"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("billing_checkout_session_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

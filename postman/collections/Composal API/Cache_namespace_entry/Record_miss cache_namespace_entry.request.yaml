@@ -1,0 +1,22 @@
+$kind: http-request
+id: "143cce23-df2c-58c1-bb7b-8fa1a992b0e9"
+description: |-
+  The `record_miss` action of **cache_namespace_entry**, a route of its `create` operation.
+
+  SDK: `client.CacheNamespaceEntry().create({ "cache_namespace_id": "cache_namespace_id", "id": "ID", $action: "record_miss" })`
+url: "{{base}}/api/v1/artifacts/cache_namespaces/:cache_namespace_id/entries/:id/record_miss"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: cache_namespace_id
+    value: "{{cache_namespace_id}}"
+    description: "Input: cache_namespace_id."
+  - key: id
+    value: "{{cache_namespace_entry_id}}"
+    description: The cache_namespace_entry this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 9000

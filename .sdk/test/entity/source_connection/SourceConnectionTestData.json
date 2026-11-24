@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "source_connection": {
+      "SOURCE_CONNECTION00": {
+        "id": "SOURCE_CONNECTION00"
+      },
+      "SOURCE_CONNECTION01": {
+        "id": "SOURCE_CONNECTION01"
+      },
+      "SOURCE_CONNECTION02": {
+        "id": "SOURCE_CONNECTION02"
+      }
+    }
+  },
+  "new": {
+    "source_connection": {
+      "source_connection_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/source_connections/{id}/refresh": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

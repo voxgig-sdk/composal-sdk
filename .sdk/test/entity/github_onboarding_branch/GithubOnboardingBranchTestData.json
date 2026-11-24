@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "github_onboarding_branch": {
+      "GITHUB_ONBOARDING_BRANCH00": {
+        "branches": [],
+        "organization_id": "ORGANIZATION01"
+      },
+      "GITHUB_ONBOARDING_BRANCH01": {
+        "branches": [],
+        "organization_id": "ORGANIZATION01"
+      },
+      "GITHUB_ONBOARDING_BRANCH02": {
+        "branches": [],
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "github_onboarding_branch": {
+      "github_onboarding_branch_ref01": {
+        "branches": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/github_onboarding/branches": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

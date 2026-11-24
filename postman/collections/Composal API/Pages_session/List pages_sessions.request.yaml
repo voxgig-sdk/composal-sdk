@@ -1,0 +1,53 @@
+$kind: http-request
+id: "6f3e46fc-0676-5558-8f6b-f1ef9411a413"
+description: |-
+  The `list` operation of **pages_session**.
+
+  SDK: `client.PagesSession().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/pages/sessions"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: adapter
+    value: ""
+    disabled: true
+  - key: from
+    value: ""
+    disabled: true
+  - key: limit
+    value: ""
+    disabled: true
+  - key: offset
+    value: ""
+    disabled: true
+  - key: repo
+    value: ""
+    disabled: true
+  - key: session
+    value: ""
+    disabled: true
+  - key: status
+    value: ""
+    disabled: true
+  - key: to
+    value: ""
+    disabled: true
+  - key: user_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this pages_session belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["sessions"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("pages_session_id")) pm.collectionVariables.set("pages_session_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

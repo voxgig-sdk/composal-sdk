@@ -1,0 +1,74 @@
+$kind: http-request
+id: "3a4a6ede-2d20-5f09-8934-954c0aa8bb5c"
+description: |-
+  The `create` operation of **merge_queue_entry**.
+
+  SDK: `client.MergeQueueEntry().create({ merge_queue_id: "example", organization_id: "example", repo_id: "example", expected_version: 1, idempotency_key: "example", kind: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/merge_queues/:target/entries"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this merge_queue_entry belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this merge_queue_entry belongs to.
+  - key: target
+    value: "{{merge_queue_id}}"
+    description: "Input: merge_queue_id."
+body:
+  type: json
+  content: |-
+    {
+      "kind": "change",
+      "change_id": "{{change_id}}",
+      "github_pr_number": 1,
+      "idempotency_key": "example",
+      "expected_version": 1,
+      "expected_target_commit_id": "example",
+      "expected_target_version": 1,
+      "when_ready": true,
+      "priority": "normal"
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","repo_id","merge_queue_id","change_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("1. Create merge_queue_entry: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const made = body
+      pm.test("1. Create merge_queue_entry: the record carries its key", () => {
+        pm.expect(made, "record").to.be.an("object")
+        pm.expect(at(made, "id"), "id").to.exist
+      })
+      if (null != made && null != at(made, "id")) pm.variables.set("merge_queue_entry_ref01", String(at(made, "id")))
+    language: text/javascript
+order: 1000

@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "cli_release": {
+      "CLI_RELEASE00": {
+        "id": "CLI_RELEASE00"
+      },
+      "CLI_RELEASE01": {
+        "id": "CLI_RELEASE01"
+      },
+      "CLI_RELEASE02": {
+        "id": "CLI_RELEASE02"
+      }
+    }
+  },
+  "new": {
+    "cli_release": {
+      "cli_release_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/cli_releases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/cli_releases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/cli_releases/latest": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+$kind: collection
+id: "49a6ffa9-2227-5730-b6d7-7e7b1c0f6e69"
+description: |-
+  The **organization_run_event** entity, which belongs to a organization. Its requests address one record by `{{organization_run_event_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 348000

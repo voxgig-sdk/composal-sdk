@@ -1,0 +1,10 @@
+$kind: collection
+id: "2f182f55-5d26-52b2-b249-4e0a3d1415c3"
+description: |-
+  The **repo_action** entity, which belongs to a organization and a repo. Its requests address one record by `{{repo_action_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `pipeline` | object | yes |  |
+  | `run` | object | yes |  |
+order: 423000

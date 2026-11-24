@@ -1,0 +1,26 @@
+$kind: http-request
+id: "83ef8a59-4242-5909-a920-a69bee7a01a0"
+description: |-
+  The `draft` action of **artefact**, a route of its `update` operation.
+
+  SDK: `client.Artefact().update({ "organization_id": "organization_id", "id": "ID", $action: "draft" })`
+url: "{{base}}/api/v1/organizations/:organization_id/artefacts/:artefact_ref/draft"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this artefact belongs to.
+  - key: artefact_ref
+    value: "{{artefact_id}}"
+    description: The artefact this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "content": "example",
+      "revision": 1
+    }
+order: 7000

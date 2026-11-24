@@ -1,0 +1,22 @@
+# BasicOrganizationInteractionFlow
+
+main: kit: flow: BasicOrganizationInteractionFlow:
+{
+  entity: "organization_interaction",
+  kind: "basic",
+  name: "BasicOrganizationInteractionFlow",
+  step: [
+    {
+      i: {
+        ref: "organization_interaction_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicOrganizationInteractionFlow"
+}

@@ -1,0 +1,28 @@
+# BasicWorkspaceSpacePreferenceFlow
+
+main: kit: flow: BasicWorkspaceSpacePreferenceFlow:
+{
+  entity: "workspace_space_preference",
+  kind: "basic",
+  name: "BasicWorkspaceSpacePreferenceFlow",
+  step: [
+    {
+      i: {
+        ref: "workspace_space_preference_ref01",
+        srcdatavar: "workspace_space_preference_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-workspace_space_preference_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWorkspaceSpacePreferenceFlow"
+}

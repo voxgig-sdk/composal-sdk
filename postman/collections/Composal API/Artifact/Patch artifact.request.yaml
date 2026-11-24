@@ -1,0 +1,19 @@
+$kind: http-request
+id: c40ceb3c-498a-5b5d-a502-79dea9ca48e5
+description: |-
+  The `patch` operation of **artifact**.
+
+  SDK: `client.Artifact().patch({ id: "example" })`
+url: "{{base}}/api/v1/artifacts/artifacts/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_id}}"
+    description: The artifact this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

@@ -1,0 +1,4 @@
+$kind: collection
+id: "91f6a8ca-c7db-5ce8-b7c8-85e4f96d1bf7"
+description: "The `BasicChangeGitBranchSubmissionFlow` flow of **change_git_branch_submission**."
+order: 130000

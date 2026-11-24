@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "contact_submission": {
+      "CONTACT_SUBMISSION00": {
+        "company": "s32",
+        "email": "s33",
+        "message": "s34",
+        "name": "s35",
+        "website": "s36",
+        "id": "CONTACT_SUBMISSION00"
+      },
+      "CONTACT_SUBMISSION01": {
+        "company": "s64",
+        "email": "s65",
+        "message": "s66",
+        "name": "s67",
+        "website": "s68",
+        "id": "CONTACT_SUBMISSION01"
+      },
+      "CONTACT_SUBMISSION02": {
+        "company": "s96",
+        "email": "s97",
+        "message": "s98",
+        "name": "s99",
+        "website": "s9a",
+        "id": "CONTACT_SUBMISSION02"
+      }
+    }
+  },
+  "new": {
+    "contact_submission": {
+      "contact_submission_ref01": {
+        "company": "sc8",
+        "email": "sc9",
+        "message": "sca",
+        "name": "scb",
+        "website": "scc"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/contact_submissions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

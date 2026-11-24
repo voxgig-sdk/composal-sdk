@@ -1,0 +1,13 @@
+$kind: collection
+id: "9b0a772d-fa53-5239-a17e-54b9cdde38f5"
+description: |-
+  The **contact_submission** entity. Its requests address one record by `{{contact_submission_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `company` | string |  |  |
+  | `email` | string | yes |  |
+  | `message` | string | yes |  |
+  | `name` | string | yes |  |
+  | `website` | string |  |  |
+order: 186000

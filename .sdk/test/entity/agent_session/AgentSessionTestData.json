@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "agent_session": {
+      "AGENT_SESSION00": {
+        "id": "AGENT_SESSION00"
+      },
+      "AGENT_SESSION01": {
+        "id": "AGENT_SESSION01"
+      },
+      "AGENT_SESSION02": {
+        "id": "AGENT_SESSION02"
+      }
+    }
+  },
+  "new": {
+    "agent_session": {
+      "agent_session_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/agent_sessions/{session_id}/transcript": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

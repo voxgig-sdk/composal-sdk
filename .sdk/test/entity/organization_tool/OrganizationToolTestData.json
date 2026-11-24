@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "organization_tool": {
+      "ORGANIZATION_TOOL00": {
+        "arguments": {},
+        "native_agent_id": "NATIVE_AGENT01",
+        "tool": "s20",
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_TOOL00"
+      },
+      "ORGANIZATION_TOOL01": {
+        "arguments": {},
+        "native_agent_id": "NATIVE_AGENT01",
+        "tool": "s3e",
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_TOOL01"
+      },
+      "ORGANIZATION_TOOL02": {
+        "arguments": {},
+        "native_agent_id": "NATIVE_AGENT01",
+        "tool": "s5c",
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_TOOL02"
+      }
+    }
+  },
+  "new": {
+    "organization_tool": {
+      "organization_tool_ref01": {
+        "arguments": {},
+        "native_agent_id": "NATIVE_AGENT01",
+        "tool": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/spark/organizations/{organization_id}/tools": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

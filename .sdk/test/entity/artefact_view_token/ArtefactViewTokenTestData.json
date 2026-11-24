@@ -1,0 +1,54 @@
+{
+  "existing": {
+    "artefact_view_token": {
+      "ARTEFACT_VIEW_TOKEN00": {
+        "expires_in": 50,
+        "file": "s33",
+        "organization_slug": "s34",
+        "version": 53,
+        "viewer_url": "s36",
+        "artefact_id": "ARTEFACT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "ARTEFACT_VIEW_TOKEN00"
+      },
+      "ARTEFACT_VIEW_TOKEN01": {
+        "expires_in": 100,
+        "file": "s65",
+        "organization_slug": "s66",
+        "version": 103,
+        "viewer_url": "s68",
+        "artefact_id": "ARTEFACT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "ARTEFACT_VIEW_TOKEN01"
+      },
+      "ARTEFACT_VIEW_TOKEN02": {
+        "expires_in": 150,
+        "file": "s97",
+        "organization_slug": "s98",
+        "version": 153,
+        "viewer_url": "s9a",
+        "artefact_id": "ARTEFACT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "ARTEFACT_VIEW_TOKEN02"
+      }
+    }
+  },
+  "new": {
+    "artefact_view_token": {
+      "artefact_view_token_ref01": {
+        "expires_in": 200,
+        "file": "sc9",
+        "organization_slug": "sca",
+        "version": 203,
+        "viewer_url": "scc"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/view_tokens": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

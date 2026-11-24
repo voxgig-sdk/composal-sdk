@@ -1,0 +1,73 @@
+{
+  "existing": {
+    "domain_dns_integration": {
+      "DOMAIN_DNS_INTEGRATION00": {
+        "account_label": "s6e",
+        "api_token": "s6f",
+        "created_at": "s70",
+        "failure_message": "s71",
+        "has_token": true,
+        "id": "DOMAIN_DNS_INTEGRATION00",
+        "last_verified_at": "s74",
+        "organization_id": "ORGANIZATION01",
+        "provider": "s76",
+        "status": "s77",
+        "updated_at": "s78"
+      },
+      "DOMAIN_DNS_INTEGRATION01": {
+        "account_label": "sdc",
+        "api_token": "sdd",
+        "created_at": "sde",
+        "failure_message": "sdf",
+        "has_token": true,
+        "id": "DOMAIN_DNS_INTEGRATION01",
+        "last_verified_at": "se2",
+        "organization_id": "ORGANIZATION01",
+        "provider": "se4",
+        "status": "se5",
+        "updated_at": "se6"
+      },
+      "DOMAIN_DNS_INTEGRATION02": {
+        "account_label": "s14a",
+        "api_token": "s14b",
+        "created_at": "s14c",
+        "failure_message": "s14d",
+        "has_token": true,
+        "id": "DOMAIN_DNS_INTEGRATION02",
+        "last_verified_at": "s150",
+        "organization_id": "ORGANIZATION01",
+        "provider": "s152",
+        "status": "s153",
+        "updated_at": "s154"
+      }
+    }
+  },
+  "new": {
+    "domain_dns_integration": {
+      "domain_dns_integration_ref01": {
+        "account_label": "s1b8",
+        "api_token": "s1b9",
+        "created_at": "s1ba",
+        "failure_message": "s1bb",
+        "has_token": true,
+        "last_verified_at": "s1be",
+        "organization_id": "ORGANIZATION01",
+        "provider": "s1c0",
+        "status": "s1c1",
+        "updated_at": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/domain_dns_integrations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/domain_dns_integrations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

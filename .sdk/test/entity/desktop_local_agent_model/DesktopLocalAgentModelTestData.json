@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "desktop_local_agent_model": {
+      "DESKTOP_LOCAL_AGENT_MODEL00": {
+        "id": "DESKTOP_LOCAL_AGENT_MODEL00",
+        "name": "s15",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DESKTOP_LOCAL_AGENT_MODEL01": {
+        "id": "DESKTOP_LOCAL_AGENT_MODEL01",
+        "name": "s29",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DESKTOP_LOCAL_AGENT_MODEL02": {
+        "id": "DESKTOP_LOCAL_AGENT_MODEL02",
+        "name": "s3d",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "desktop_local_agent_model": {
+      "desktop_local_agent_model_ref01": {
+        "name": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/desktop_local_agent/models": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

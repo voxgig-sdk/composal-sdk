@@ -1,0 +1,36 @@
+# BasicPatchsetDiffFlow
+
+main: kit: flow: BasicPatchsetDiffFlow:
+{
+  entity: "patchset_diff",
+  kind: "basic",
+  name: "BasicPatchsetDiffFlow",
+  step: [
+    {
+      i: {
+        ref: "patchset_diff_ref01",
+        srcdatavar: "patchset_diff_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        change_id: "change01",
+        id: "patchset_diff01",
+        organization_id: "organization01",
+        patchset_id: "patchset01",
+        repo_id: "repo01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-patchset_diff_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPatchsetDiffFlow"
+}

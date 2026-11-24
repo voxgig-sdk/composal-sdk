@@ -1,0 +1,23 @@
+# BasicDeviceLocalEventFlow
+
+main: kit: flow: BasicDeviceLocalEventFlow:
+{
+  entity: "device_local_event",
+  kind: "basic",
+  name: "BasicDeviceLocalEventFlow",
+  step: [
+    {
+      i: {
+        ref: "device_local_event_ref01"
+      }
+
+      m: {
+        device_id: "device01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicDeviceLocalEventFlow"
+}

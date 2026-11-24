@@ -1,0 +1,21 @@
+$kind: http-request
+id: aa3f2453-013f-5932-8b30-51e269773764
+description: |-
+  The `load` operation of **relay_agent_connection**.
+
+  SDK: `client.RelayAgentConnection().load({ agent_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/relay/connections/:connection_id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this relay_agent_connection belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this relay_agent_connection belongs to.
+  - key: connection_id
+    value: "{{relay_agent_connection_id}}"
+    description: The relay_agent_connection this request addresses.
+order: 2000

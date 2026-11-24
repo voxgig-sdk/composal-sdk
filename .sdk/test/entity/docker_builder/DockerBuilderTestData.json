@@ -1,0 +1,119 @@
+{
+  "existing": {
+    "docker_builder": {
+      "DOCKER_BUILDER00": {
+        "backend": "s96",
+        "created_at": "s97",
+        "gateway_url": "s98",
+        "generation": 153,
+        "id": "DOCKER_BUILDER00",
+        "last_activity_at": "s9b",
+        "organization_id": "ORGANIZATION01",
+        "ready_at": "s9d",
+        "slept_at": "s9e",
+        "slug": "s9f",
+        "startup_attempt": 160,
+        "startup_failure": "sa1",
+        "startup_stage": "sa2",
+        "status": "sa3",
+        "updated_at": "sa4"
+      },
+      "DOCKER_BUILDER01": {
+        "backend": "s12c",
+        "created_at": "s12d",
+        "gateway_url": "s12e",
+        "generation": 303,
+        "id": "DOCKER_BUILDER01",
+        "last_activity_at": "s131",
+        "organization_id": "ORGANIZATION01",
+        "ready_at": "s133",
+        "slept_at": "s134",
+        "slug": "s135",
+        "startup_attempt": 310,
+        "startup_failure": "s137",
+        "startup_stage": "s138",
+        "status": "s139",
+        "updated_at": "s13a"
+      },
+      "DOCKER_BUILDER02": {
+        "backend": "s1c2",
+        "created_at": "s1c3",
+        "gateway_url": "s1c4",
+        "generation": 453,
+        "id": "DOCKER_BUILDER02",
+        "last_activity_at": "s1c7",
+        "organization_id": "ORGANIZATION01",
+        "ready_at": "s1c9",
+        "slept_at": "s1ca",
+        "slug": "s1cb",
+        "startup_attempt": 460,
+        "startup_failure": "s1cd",
+        "startup_stage": "s1ce",
+        "status": "s1cf",
+        "updated_at": "s1d0"
+      }
+    }
+  },
+  "new": {
+    "docker_builder": {
+      "docker_builder_ref01": {
+        "backend": "s258",
+        "created_at": "s259",
+        "gateway_url": "s25a",
+        "generation": 603,
+        "last_activity_at": "s25d",
+        "organization_id": "ORGANIZATION01",
+        "ready_at": "s25f",
+        "slept_at": "s260",
+        "slug": "s261",
+        "startup_attempt": 610,
+        "startup_failure": "s263",
+        "startup_stage": "s264",
+        "status": "s265",
+        "updated_at": "s266"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/docker_builders/{id}/recover": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/docker_builders/{id}/sleep": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/docker_builders/{id}/wake": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/docker_builders": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/docker_builders": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/docker_builders/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/docker_builders/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/docker_builders/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

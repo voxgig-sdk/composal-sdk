@@ -22,4 +22,4 @@ scripts:
         pm.collectionVariables.unset("agent_id")
       }
     language: text/javascript
-order: 42000
+order: 43000

@@ -1,0 +1,30 @@
+$kind: http-request
+id: "29038199-fd12-5550-aaea-69b6751228a4"
+description: |-
+  The `consent` action of **control_computer**, a route of its `update` operation.
+
+  SDK: `client.ControlComputer().update({ "organization_id": "organization_id", "id": "ID", $action: "consent" })`
+url: "{{base}}/api/v1/organizations/:organization_id/control_computers/:computer/consent"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this control_computer belongs to.
+  - key: computer
+    value: "{{control_computer_id}}"
+    description: The control_computer this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "persistent_agent_id": "example",
+      "enabled": true,
+      "expected_revision": 1,
+      "providers": [
+        "codex"
+      ]
+    }
+order: 2000

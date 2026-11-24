@@ -1,0 +1,36 @@
+$kind: http-request
+id: cfcd7fa1-e8f3-5587-ae8a-f02a41db54fe
+description: |-
+  The `create` operation of **vc_change_group**.
+
+  SDK: `client.VcChangeGroup().create({ organization_id: "example", repo_id: "example", name: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/change_groups"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_change_group belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_change_group belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "title": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("vc_change_group_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

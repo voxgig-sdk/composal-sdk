@@ -1,0 +1,78 @@
+{
+  "existing": {
+    "github_runner_image": {
+      "GITHUB_RUNNER_IMAGE00": {
+        "created_at": "s5a",
+        "id": "GITHUB_RUNNER_IMAGE00",
+        "image_reference": "s5c",
+        "last_error": "s5d",
+        "modal_image_id": "MODAL_IMAGE01",
+        "name": "s5f",
+        "registry_secret_name": "s60",
+        "status": "s61",
+        "updated_at": "s62",
+        "organization_id": "ORGANIZATION01"
+      },
+      "GITHUB_RUNNER_IMAGE01": {
+        "created_at": "sb4",
+        "id": "GITHUB_RUNNER_IMAGE01",
+        "image_reference": "sb6",
+        "last_error": "sb7",
+        "modal_image_id": "MODAL_IMAGE01",
+        "name": "sb9",
+        "registry_secret_name": "sba",
+        "status": "sbb",
+        "updated_at": "sbc",
+        "organization_id": "ORGANIZATION01"
+      },
+      "GITHUB_RUNNER_IMAGE02": {
+        "created_at": "s10e",
+        "id": "GITHUB_RUNNER_IMAGE02",
+        "image_reference": "s110",
+        "last_error": "s111",
+        "modal_image_id": "MODAL_IMAGE01",
+        "name": "s113",
+        "registry_secret_name": "s114",
+        "status": "s115",
+        "updated_at": "s116",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "github_runner_image": {
+      "github_runner_image_ref01": {
+        "created_at": "s168",
+        "image_reference": "s16a",
+        "last_error": "s16b",
+        "modal_image_id": "MODAL_IMAGE01",
+        "name": "s16d",
+        "registry_secret_name": "s16e",
+        "status": "s16f",
+        "updated_at": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/github_runner_images/{id}/prepare": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/github_runner_images": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/github_runner_images": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/github_runner_images/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

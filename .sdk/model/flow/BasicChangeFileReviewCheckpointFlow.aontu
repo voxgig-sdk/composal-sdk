@@ -1,0 +1,24 @@
+# BasicChangeFileReviewCheckpointFlow
+
+main: kit: flow: BasicChangeFileReviewCheckpointFlow:
+{
+  entity: "change_file_review_checkpoint",
+  kind: "basic",
+  name: "BasicChangeFileReviewCheckpointFlow",
+  step: [
+    {
+      i: {
+        ref: "change_file_review_checkpoint_ref01"
+      }
+
+      m: {
+        change_id: "change01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicChangeFileReviewCheckpointFlow"
+}

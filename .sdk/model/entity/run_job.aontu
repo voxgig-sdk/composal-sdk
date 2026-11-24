@@ -1,0 +1,556 @@
+# Entity: run_job
+
+main: kit: entity: run_job: {
+
+  alias: field: {}
+
+  fields: {
+    active: {
+      h: "Active"
+      n: "active"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    allow_failure: {
+      h: "Allow Failure"
+      n: "allow_failure"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    cache_archive_observations: {
+      h: "Cache Archive Observations"
+      n: "cache_archive_observations"
+      r: true
+      sh: "Bounded server response history; it does not confirm runner extraction or test-result reuse."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    ci_pipeline_run_id: {
+      h: "Ci Pipeline Run Id"
+      n: "ci_pipeline_run_id"
+      r: true
+      t: "`$STRING`"
+    }
+    ci_runner_id: {
+      h: "Ci Runner Id"
+      n: "ci_runner_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    dependencies_csv: {
+      h: "Dependencies Csv"
+      n: "dependencies_csv"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    display_id: {
+      h: "Display Id"
+      n: "display_id"
+      r: true
+      t: "`$INTEGER`"
+    }
+    environment_csv: {
+      h: "Environment Csv"
+      n: "environment_csv"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    execution_order: {
+      h: "Execution Order"
+      n: "execution_order"
+      r: true
+      t: "`$INTEGER`"
+    }
+    execution_profile: {
+      h: "Execution Profile"
+      n: "execution_profile"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    exit_code: {
+      h: "Exit Code"
+      n: "exit_code"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    failed: {
+      h: "Failed"
+      n: "failed"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    finished_at: {
+      fo: "date-time"
+      h: "Finished At"
+      n: "finished_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    kind: {
+      h: "Kind"
+      n: "kind"
+      r: true
+      t: "`$STRING`"
+    }
+    log_chunks: {
+      h: "Log Chunks"
+      n: "log_chunks"
+      r: true
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    number: {
+      h: "Number"
+      n: "number"
+      r: true
+      t: "`$INTEGER`"
+    }
+    organization_id: {
+      h: "Organization Id"
+      n: "organization_id"
+      r: true
+      t: "`$STRING`"
+    }
+    queued_at: {
+      fo: "date-time"
+      h: "Queued At"
+      n: "queued_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    reconciliation_id: {
+      h: "Reconciliation Id"
+      n: "reconciliation_id"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    retry_number: {
+      h: "Retry Number"
+      n: "retry_number"
+      r: true
+      t: "`$INTEGER`"
+    }
+    reuse: {
+      h: "Reuse"
+      n: "reuse"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    runner_label_selector: {
+      h: "Runner Label Selector"
+      n: "runner_label_selector"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: true
+      t: "`$STRING`"
+    }
+    started_at: {
+      fo: "date-time"
+      h: "Started At"
+      n: "started_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    status_label: {
+      h: "Status Label"
+      n: "status_label"
+      r: true
+      t: "`$STRING`"
+    }
+    status_state: {
+      h: "Status State"
+      n: "status_state"
+      r: true
+      t: "`$STRING`"
+    }
+    status_tone: {
+      h: "Status Tone"
+      n: "status_tone"
+      r: true
+      t: "`$STRING`"
+    }
+    steps: {
+      h: "Steps"
+      n: "steps"
+      r: true
+      t: "`$ARRAY`"
+    }
+    timeout_seconds: {
+      h: "Timeout Seconds"
+      n: "timeout_seconds"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "run_job"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "pipeline_id"
+                or: "pipeline_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "run_id"
+                or: "run_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs"
+          q: {
+            exist: [
+              "pipeline_id"
+              "run_id"
+            ]
+          }
+          r: {
+            param: {
+              pipeline_id: "pipeline_id"
+              run_id: "run_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "pipelines"
+            }
+            {
+              var: "pipeline_id"
+            }
+            {
+              lit: "runs"
+            }
+            {
+              var: "run_id"
+            }
+            {
+              lit: "jobs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "pipeline_id"
+                or: "pipeline_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "run_id"
+                or: "run_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs"
+          q: {
+            exist: [
+              "pipeline_id"
+              "run_id"
+            ]
+          }
+          r: {
+            param: {
+              pipeline_id: "pipeline_id"
+              run_id: "run_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "pipelines"
+            }
+            {
+              var: "pipeline_id"
+            }
+            {
+              lit: "runs"
+            }
+            {
+              var: "run_id"
+            }
+            {
+              lit: "jobs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "pipeline_id"
+                or: "pipeline_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "run_id"
+                or: "run_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{id}"
+          q: {
+            exist: [
+              "id"
+              "pipeline_id"
+              "run_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              pipeline_id: "pipeline_id"
+              run_id: "run_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "pipelines"
+            }
+            {
+              var: "pipeline_id"
+            }
+            {
+              lit: "runs"
+            }
+            {
+              var: "run_id"
+            }
+            {
+              lit: "jobs"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.job`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

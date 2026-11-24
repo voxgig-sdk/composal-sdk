@@ -1,0 +1,22 @@
+$kind: http-request
+id: "3f3f74f1-ac4f-5721-b36b-73bd90735530"
+description: |-
+  The `archive` action of **space_alert_rule**, a route of its `create` operation.
+
+  SDK: `client.SpaceAlertRule().create({ "space_id": "space_id", "id": "ID", $action: "archive" })`
+url: "{{base}}/api/v1/observability/spaces/:space_id/alert_rules/:id/archive"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: id
+    value: "{{space_alert_rule_id}}"
+    description: The space_alert_rule this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 7000

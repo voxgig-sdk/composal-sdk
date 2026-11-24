@@ -1,0 +1,107 @@
+# Entity: image_repository_tag
+
+main: kit: entity: image_repository_tag: {
+
+  alias: field: {}
+
+  fields: {
+    image_repository: {
+      h: "Image Repository"
+      n: "image_repository"
+      r: true
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    registry_url: {
+      fo: "uri"
+      h: "Registry Url"
+      n: "registry_url"
+      r: true
+      t: "`$STRING`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "image_repository_tag"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/artifacts/image_repositories/{id}/tags"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "image_repository_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/artifacts/image_repositories/{id}/tags"
+          q: {
+            exist: [
+              "image_repository_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "image_repository_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "artifacts"
+            }
+            {
+              lit: "image_repositories"
+            }
+            {
+              var: "image_repository_id"
+            }
+            {
+              lit: "tags"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.image_repository")]
+  ]
+
+}

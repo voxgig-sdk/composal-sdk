@@ -1,0 +1,19 @@
+$kind: http-request
+id: c34b55cc-a0b0-5a10-8b67-33d9683f3988
+description: |-
+  The `load` operation of **pages_registry**.
+
+  SDK: `client.PagesRegistry().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/pages/registry"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: page
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this pages_registry belongs to.
+order: 1000

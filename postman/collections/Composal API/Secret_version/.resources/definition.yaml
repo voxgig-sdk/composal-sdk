@@ -1,0 +1,9 @@
+$kind: collection
+id: "7b232468-ef2b-5bd7-a6b1-7e91f6104572"
+description: |-
+  The **secret_version** entity, which belongs to a organization. Its requests address one record by `{{secret_version_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 465000

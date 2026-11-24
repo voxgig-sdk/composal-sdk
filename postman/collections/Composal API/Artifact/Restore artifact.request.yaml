@@ -1,0 +1,19 @@
+$kind: http-request
+id: "4d9b3378-5496-5aaf-b0b8-8a23057a8a0f"
+description: |-
+  The `restore` action of **artifact**, a route of its `create` operation.
+
+  SDK: `client.Artifact().create({ "id": "ID", $action: "restore" })`
+url: "{{base}}/api/v1/artifacts/artifacts/:id/restore"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_id}}"
+    description: The artifact this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 8000

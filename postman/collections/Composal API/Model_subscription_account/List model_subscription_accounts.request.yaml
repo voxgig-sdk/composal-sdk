@@ -1,0 +1,21 @@
+$kind: http-request
+id: f9032b1c-4833-58d1-97aa-c0483d0c4a23
+description: |-
+  The `list` operation of **model_subscription_account**.
+
+  SDK: `client.ModelSubscriptionAccount().list()`
+url: "{{base}}/api/v1/model_subscription_accounts"
+method: GET
+headers:
+  Accept: application/json
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["accounts"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("model_subscription_account_id")) pm.collectionVariables.set("model_subscription_account_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

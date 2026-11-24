@@ -1,0 +1,34 @@
+$kind: collection
+id: "9a7fc355-6492-5766-b365-1e80314065a3"
+description: |-
+  The **deployment_preview** entity, which belongs to a organization. Its requests address one record by `{{deployment_preview_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `access` | string | yes |  |
+  | `app_environment_id` | string | yes |  |
+  | `app_name` | string | yes |  |
+  | `app_preview_profile_id` | string | yes |  |
+  | `app_slug` | string | yes |  |
+  | `change_number` | integer | yes |  |
+  | `created_at` | string |  |  |
+  | `created_by_user_id` | string |  |  |
+  | `expires_at` | string | yes |  |
+  | `generation` | integer | yes |  |
+  | `health` | string | yes |  |
+  | `hosted_app_id` | string | yes |  |
+  | `id` | string | yes |  |
+  | `latest_operation_status` | string | yes |  |
+  | `name` | string | yes |  |
+  | `owner_name` | string | yes |  |
+  | `profile_name` | string | yes |  |
+  | `resource_overrides` | object |  |  |
+  | `retained` | boolean | yes |  |
+  | `slug` | string | yes |  |
+  | `snapshot_version` | integer | yes |  |
+  | `source_revision` | string | yes |  |
+  | `status` | string | yes |  |
+  | `updated_at` | string |  |  |
+  | `urls` | array | yes |  |
+  | `vcs_change_id` | string |  |  |
+order: 207000

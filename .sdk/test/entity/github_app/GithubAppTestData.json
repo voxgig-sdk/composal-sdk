@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "github_app": {
+      "GITHUB_APP00": {
+        "id": "GITHUB_APP00"
+      },
+      "GITHUB_APP01": {
+        "id": "GITHUB_APP01"
+      },
+      "GITHUB_APP02": {
+        "id": "GITHUB_APP02"
+      }
+    }
+  },
+  "new": {
+    "github_app": {
+      "github_app_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/github_app/webhook": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+$kind: http-request
+id: "4e30064a-2bd1-5da2-852d-b1c9642095d6"
+description: |-
+  The `load` operation of **ci_runner_pool**.
+
+  SDK: `client.CiRunnerPool().load({ id: "example_id" })`
+url: "{{base}}/api/v1/ci/runner_pools/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{ci_runner_pool_id}}"
+    description: The ci_runner_pool this request addresses.
+order: 2000

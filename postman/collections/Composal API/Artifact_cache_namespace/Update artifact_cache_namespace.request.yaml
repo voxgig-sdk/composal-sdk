@@ -1,0 +1,19 @@
+$kind: http-request
+id: e776e911-1ec3-5c77-9fe1-9a0f823c2f6b
+description: |-
+  The `update` operation of **artifact_cache_namespace**.
+
+  SDK: `client.ArtifactCacheNamespace().update({ id: "example" })`
+url: "{{base}}/api/v1/artifacts/cache_namespaces/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_cache_namespace_id}}"
+    description: The artifact_cache_namespace this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

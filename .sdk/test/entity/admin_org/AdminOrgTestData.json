@@ -1,0 +1,114 @@
+{
+  "existing": {
+    "admin_org": {
+      "ADMIN_ORG00": {
+        "billing_email": "s96",
+        "billing_reason": "s97",
+        "customize_onboarding_packages": true,
+        "deployment_usage_visibility": "s99",
+        "deployment_usage_visible": true,
+        "id": "ADMIN_ORG00",
+        "monthly_price_dollars": "s9c",
+        "monthly_price_override_cents": "s9d",
+        "name": "s9e",
+        "onboarding_custom_pricing": false,
+        "onboarding_package_keys": "sa0",
+        "owner_email": "sa1",
+        "package_id": "PACKAGE01",
+        "skip_payment": false,
+        "slug": "sa4"
+      },
+      "ADMIN_ORG01": {
+        "billing_email": "s12c",
+        "billing_reason": "s12d",
+        "customize_onboarding_packages": true,
+        "deployment_usage_visibility": "s12f",
+        "deployment_usage_visible": true,
+        "id": "ADMIN_ORG01",
+        "monthly_price_dollars": "s132",
+        "monthly_price_override_cents": "s133",
+        "name": "s134",
+        "onboarding_custom_pricing": false,
+        "onboarding_package_keys": "s136",
+        "owner_email": "s137",
+        "package_id": "PACKAGE01",
+        "skip_payment": false,
+        "slug": "s13a"
+      },
+      "ADMIN_ORG02": {
+        "billing_email": "s1c2",
+        "billing_reason": "s1c3",
+        "customize_onboarding_packages": true,
+        "deployment_usage_visibility": "s1c5",
+        "deployment_usage_visible": true,
+        "id": "ADMIN_ORG02",
+        "monthly_price_dollars": "s1c8",
+        "monthly_price_override_cents": "s1c9",
+        "name": "s1ca",
+        "onboarding_custom_pricing": false,
+        "onboarding_package_keys": "s1cc",
+        "owner_email": "s1cd",
+        "package_id": "PACKAGE01",
+        "skip_payment": false,
+        "slug": "s1d0"
+      }
+    }
+  },
+  "new": {
+    "admin_org": {
+      "admin_org_ref01": {
+        "billing_email": "s258",
+        "billing_reason": "s259",
+        "customize_onboarding_packages": true,
+        "deployment_usage_visibility": "s25b",
+        "deployment_usage_visible": true,
+        "monthly_price_dollars": "s25e",
+        "monthly_price_override_cents": "s25f",
+        "name": "s260",
+        "onboarding_custom_pricing": false,
+        "onboarding_package_keys": "s262",
+        "owner_email": "s263",
+        "package_id": "PACKAGE01",
+        "skip_payment": false,
+        "slug": "s266"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/admin/organizations/{org_slug}/checkout_session": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/admin/organizations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/admin/organizations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/admin/organizations/{org_slug}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/admin/organizations/{org_slug}/billing_agreement": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/admin/organizations/{org_slug}/billing_contact": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/admin/organizations/{org_slug}/package": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

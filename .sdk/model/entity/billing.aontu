@@ -1,0 +1,715 @@
+# Entity: billing
+
+main: kit: entity: billing: {
+
+  alias: field: {}
+
+  fields: {
+    addons: {
+      h: "Addons"
+      n: "addons"
+      r: true
+      t: "`$ARRAY`"
+    }
+    breakdown: {
+      h: "Breakdown"
+      n: "breakdown"
+      r: true
+      sh: "The 24-hour live series with its provenance; null only when the rollup fallback itself failed."
+      t: "`$ANY`"
+    }
+    budget: {
+      h: "Budget"
+      n: "budget"
+      r: true
+      t: "`$ANY`"
+    }
+    can_manage_contact: {
+      h: "Can Manage Contact"
+      n: "can_manage_contact"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_manage_extra_spend: {
+      h: "Can Manage Extra Spend"
+      n: "can_manage_extra_spend"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_manage_local_subscription: {
+      h: "Can Manage Local Subscription"
+      n: "can_manage_local_subscription"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_manage_payment_method: {
+      h: "Can Manage Payment Method"
+      n: "can_manage_payment_method"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_set_up_billing: {
+      h: "Can Set Up Billing"
+      n: "can_set_up_billing"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    customer: {
+      h: "Customer"
+      n: "customer"
+      r: true
+      t: "`$ANY`"
+    }
+    deployment_usage_visible: {
+      h: "Deployment Usage Visible"
+      n: "deployment_usage_visible"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    entitlements: {
+      h: "Entitlements"
+      n: "entitlements"
+      r: true
+      t: "`$OBJECT`"
+    }
+    extra_spend_enabled: {
+      h: "Extra Spend Enabled"
+      n: "extra_spend_enabled"
+      r: true
+      sh: "Organization consent to paid overages across all metered usage."
+      t: "`$BOOLEAN`"
+    }
+    feature_enabled: {
+      h: "Feature Enabled"
+      n: "feature_enabled"
+      r: true
+      sh: "Whether the `billing` feature is on for this organization."
+      t: "`$BOOLEAN`"
+    }
+    organization_id: {
+      h: "Organization Id"
+      n: "organization_id"
+      r: true
+      t: "`$STRING`"
+    }
+    package: {
+      h: "Package"
+      n: "package"
+      r: true
+      t: "`$ANY`"
+    }
+    prepaid: {
+      h: "Prepaid"
+      n: "prepaid"
+      r: true
+      t: "`$ANY`"
+    }
+    preview: {
+      h: "Preview"
+      n: "preview"
+      r: true
+      sh: "Metronome draft invoice and credits, or null."
+      t: "`$ANY`"
+    }
+    storage_usage: {
+      h: "Storage Usage"
+      n: "storage_usage"
+      r: true
+      t: "`$OBJECT`"
+    }
+    stripe: {
+      h: "Stripe"
+      n: "stripe"
+      r: true
+      t: "`$OBJECT`"
+    }
+    subscription: {
+      h: "Subscription"
+      n: "subscription"
+      r: true
+      t: "`$ANY`"
+    }
+    token_account: {
+      h: "Token Account"
+      n: "token_account"
+      r: true
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "billing"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/billing"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/billing"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "billing"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.addons`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/billing/usage"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/billing/usage"
+          q: {
+            "$action": "usage"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "billing"
+            }
+            {
+              lit: "usage"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.meters`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "PATCH /api/v1/organizations/{organization_id}/billing/budget"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v1/organizations/{organization_id}/billing/budget"
+          q: {
+            "$action": "budget"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "billing"
+            }
+            {
+              lit: "budget"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "monthly_cap_cents"
+          ]
+          co: {
+            id: "PUT /api/v1/organizations/{organization_id}/billing/budget"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/organizations/{organization_id}/billing/budget"
+          q: {
+            "$action": "budget"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "billing"
+            }
+            {
+              lit: "budget"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "billing_email"
+          ]
+          co: {
+            id: "PATCH /api/v1/organizations/{organization_id}/billing/contact"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v1/organizations/{organization_id}/billing/contact"
+          q: {
+            "$action": "contact"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "billing"
+            }
+            {
+              lit: "contact"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "PUT /api/v1/organizations/{organization_id}/billing/contact"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/organizations/{organization_id}/billing/contact"
+          q: {
+            "$action": "contact"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "billing"
+            }
+            {
+              lit: "contact"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "enabled"
+            "monthly_cap_cents"
+          ]
+          co: {
+            id: "PATCH /api/v1/organizations/{organization_id}/billing/extra_spend"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v1/organizations/{organization_id}/billing/extra_spend"
+          q: {
+            "$action": "extra_spend"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "billing"
+            }
+            {
+              lit: "extra_spend"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "enabled"
+            "monthly_cap_cents"
+          ]
+          co: {
+            id: "PUT /api/v1/organizations/{organization_id}/billing/extra_spend"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/organizations/{organization_id}/billing/extra_spend"
+          q: {
+            "$action": "extra_spend"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "billing"
+            }
+            {
+              lit: "extra_spend"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "cancel_at_period_end"
+          ]
+          co: {
+            id: "PATCH /api/v1/organizations/{organization_id}/billing/subscription"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v1/organizations/{organization_id}/billing/subscription"
+          q: {
+            "$action": "subscription"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "billing"
+            }
+            {
+              lit: "subscription"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "PUT /api/v1/organizations/{organization_id}/billing/subscription"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/organizations/{organization_id}/billing/subscription"
+          q: {
+            "$action": "subscription"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "billing"
+            }
+            {
+              lit: "subscription"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

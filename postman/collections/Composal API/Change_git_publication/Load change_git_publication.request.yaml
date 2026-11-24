@@ -1,0 +1,21 @@
+$kind: http-request
+id: e2ad1873-c44e-5a7b-baad-9cfdb8f5bdba
+description: |-
+  The `load` operation of **change_git_publication**.
+
+  SDK: `client.ChangeGitPublication().load({ id: "example_id", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/git_publications/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this change_git_publication belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this change_git_publication belongs to.
+  - key: id
+    value: "{{change_git_publication_id}}"
+    description: The change_git_publication this request addresses.
+order: 1000

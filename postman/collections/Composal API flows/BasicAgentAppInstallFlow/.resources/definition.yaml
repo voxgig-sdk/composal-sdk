@@ -1,0 +1,4 @@
+$kind: collection
+id: ac937301-f85f-510a-91ce-759312b0d482
+description: "The `BasicAgentAppInstallFlow` flow of **agent_app_install**."
+order: 5000

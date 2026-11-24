@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "backend_runner_pool": {
+      "BACKEND_RUNNER_POOL00": {
+        "id": "BACKEND_RUNNER_POOL00",
+        "backend_id": "BACKEND01"
+      },
+      "BACKEND_RUNNER_POOL01": {
+        "id": "BACKEND_RUNNER_POOL01",
+        "backend_id": "BACKEND01"
+      },
+      "BACKEND_RUNNER_POOL02": {
+        "id": "BACKEND_RUNNER_POOL02",
+        "backend_id": "BACKEND01"
+      }
+    }
+  },
+  "new": {
+    "backend_runner_pool": {
+      "backend_runner_pool_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/bazel/backends/{backend_id}/runner_pools": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/bazel/backends/{backend_id}/runner_pools": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/bazel/backends/{backend_id}/runner_pools/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -3,42 +3,22 @@ id: c0fd7bc0-f558-5bd6-998a-ebc0b67fc572
 description: |-
   The `create` operation of **agent_thread**.
 
-  SDK: `client.AgentThread().create({ agent_id: "example", organization_id: "example" })`
-url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/threads"
+  SDK: `client.AgentThread().create({  })`
+url: "{{base}}/api/v1/agent/threads"
 method: POST
 headers:
   Accept: application/json
   Content-Type: application/json
-  Idempotency-Key: "{{idempotency_key}}"
-pathVariables:
-  - key: organization_id
-    value: "{{organization_id}}"
-    description: The organization this agent_thread belongs to.
-  - key: id
-    value: "{{agent_id}}"
-    description: The agent this agent_thread belongs to.
 body:
   type: json
-  content: |-
-    {
-      "title": "example",
-      "message": "example",
-      "requester_membership_id": "example",
-      "execution": {
-        "kind": "example",
-        "device_id": "example",
-        "path": "example"
-      },
-      "parent_conversation_id": "example",
-      "inherit_context": true
-    }
+  content: "{}"
 scripts:
   - type: beforeRequest
     code: |-
       const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
       const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
       const getonly = flag("getonly", false)
-      const missing = ["base","organization_id","agent_id","idempotency_key"].filter((name) => !given(name))
+      const missing = ["base"].filter((name) => !given(name))
       if (!given("apikey")) missing.unshift("apikey")
       const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
       if (getonly && "GET" !== pm.request.method) {

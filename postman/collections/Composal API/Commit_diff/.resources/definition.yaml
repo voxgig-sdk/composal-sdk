@@ -1,0 +1,11 @@
+$kind: collection
+id: b0a4dc8f-9821-509c-b1c3-7ad43014bb2c
+description: |-
+  The **commit_diff** entity, which belongs to a organization and a repo. Its requests address one record by `{{commit_diff_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `files` | array | yes |  |
+  | `id` | string |  |  |
+  | `parent_id` | string | yes |  |
+order: 183000

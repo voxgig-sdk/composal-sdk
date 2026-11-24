@@ -32,4 +32,4 @@ description: |-
   | `picture_url` | string | yes |  |
   | `superadmin` | boolean |  |  |
   | `time_zone` | string |  |  |
-order: 133000
+order: 313000

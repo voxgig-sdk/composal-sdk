@@ -1,0 +1,46 @@
+{
+  "existing": {
+    "pull_request_magic_merge": {
+      "PULL_REQUEST_MAGIC_MERGE00": {
+        "number": "NUMBER01",
+        "organization_id": "ORGANIZATION01",
+        "pull_request_id": "PULL_REQUEST01",
+        "id": "PULL_REQUEST_MAGIC_MERGE00"
+      },
+      "PULL_REQUEST_MAGIC_MERGE01": {
+        "number": "NUMBER01",
+        "organization_id": "ORGANIZATION01",
+        "pull_request_id": "PULL_REQUEST01",
+        "id": "PULL_REQUEST_MAGIC_MERGE01"
+      },
+      "PULL_REQUEST_MAGIC_MERGE02": {
+        "number": "NUMBER01",
+        "organization_id": "ORGANIZATION01",
+        "pull_request_id": "PULL_REQUEST01",
+        "id": "PULL_REQUEST_MAGIC_MERGE02"
+      }
+    }
+  },
+  "new": {
+    "pull_request_magic_merge": {
+      "pull_request_magic_merge_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/merge": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/rebase": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/resolve": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

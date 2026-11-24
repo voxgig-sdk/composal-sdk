@@ -1,0 +1,44 @@
+# BasicGithubRunnerSetupFlow
+
+main: kit: flow: BasicGithubRunnerSetupFlow:
+{
+  entity: "github_runner_setup",
+  kind: "basic",
+  name: "BasicGithubRunnerSetupFlow",
+  step: [
+    {
+      i: {
+        ref: "github_runner_setup_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "github_runner_setup_ref01",
+        srcdatavar: "github_runner_setup_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "github_runner_setup01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-github_runner_setup_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGithubRunnerSetupFlow"
+}

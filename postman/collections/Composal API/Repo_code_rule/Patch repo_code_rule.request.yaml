@@ -1,0 +1,39 @@
+$kind: http-request
+id: "4dbdeb85-3ee0-5f01-a5b8-8c73aba36fdd"
+description: |-
+  The `patch` operation of **repo_code_rule**.
+
+  SDK: `client.RepoCodeRule().patch({ id: "example", organization_id: "example", repo_id: "example", definition: {} })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/code_rules/:rule"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_code_rule belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_code_rule belongs to.
+  - key: rule
+    value: "{{repo_code_rule_id}}"
+    description: The repo_code_rule this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "definition": {
+        "schema_version": 1,
+        "slug": "example",
+        "name": "example",
+        "description": "example",
+        "scope": [
+          "example"
+        ],
+        "source": "example",
+        "question": "example"
+      },
+      "expected_version": 1
+    }
+order: 5000

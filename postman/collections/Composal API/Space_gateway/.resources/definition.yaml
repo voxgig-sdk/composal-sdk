@@ -1,0 +1,9 @@
+$kind: collection
+id: "0911d5b8-7f9a-5815-a6e5-c1f6984fe7cb"
+description: |-
+  The **space_gateway** entity. Its requests address one record by `{{space_gateway_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 485000

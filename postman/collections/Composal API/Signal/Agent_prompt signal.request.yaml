@@ -1,0 +1,18 @@
+$kind: http-request
+id: "0d8e0527-cb0e-587a-8119-83c621a96b32"
+description: |-
+  The `agent_prompt` action of **signal**, a route of its `load` operation.
+
+  SDK: `client.Signal().load({ "organization_id": "organization_id", "id": "ID", $action: "agent_prompt" })`
+url: "{{base}}/api/v1/organizations/:organization_id/signals/:id/agent_prompt"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this signal belongs to.
+  - key: id
+    value: "{{signal_id}}"
+    description: The signal this request addresses.
+order: 6000

@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "lease_artifact": {
+      "LEASE_ARTIFACT00": {
+        "lease_id": "LEASE01",
+        "node_id": "NODE01",
+        "id": "LEASE_ARTIFACT00"
+      },
+      "LEASE_ARTIFACT01": {
+        "lease_id": "LEASE01",
+        "node_id": "NODE01",
+        "id": "LEASE_ARTIFACT01"
+      },
+      "LEASE_ARTIFACT02": {
+        "lease_id": "LEASE01",
+        "node_id": "NODE01",
+        "id": "LEASE_ARTIFACT02"
+      }
+    }
+  },
+  "new": {
+    "lease_artifact": {
+      "lease_artifact_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/ci/nodes/{id}/leases/{lease_id}/artifacts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

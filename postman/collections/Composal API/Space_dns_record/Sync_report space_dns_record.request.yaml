@@ -1,0 +1,19 @@
+$kind: http-request
+id: cd102f05-2a9c-543c-8256-c49b1d24629a
+description: |-
+  The `sync_report` action of **space_dns_record**, a route of its `create` operation.
+
+  SDK: `client.SpaceDnsRecord().create({ "space_id": "space_id", $action: "sync_report" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/dns_records/sync_report"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+body:
+  type: json
+  content: "{}"
+order: 7000

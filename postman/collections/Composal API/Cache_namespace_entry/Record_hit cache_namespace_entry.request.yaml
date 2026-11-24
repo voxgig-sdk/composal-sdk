@@ -1,0 +1,22 @@
+$kind: http-request
+id: "62927da9-204e-5fb5-876e-189439bd011e"
+description: |-
+  The `record_hit` action of **cache_namespace_entry**, a route of its `create` operation.
+
+  SDK: `client.CacheNamespaceEntry().create({ "cache_namespace_id": "cache_namespace_id", "id": "ID", $action: "record_hit" })`
+url: "{{base}}/api/v1/artifacts/cache_namespaces/:cache_namespace_id/entries/:id/record_hit"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: cache_namespace_id
+    value: "{{cache_namespace_id}}"
+    description: "Input: cache_namespace_id."
+  - key: id
+    value: "{{cache_namespace_entry_id}}"
+    description: The cache_namespace_entry this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 8000

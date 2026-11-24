@@ -1,0 +1,609 @@
+# Entity: deployment
+
+main: kit: entity: deployment: {
+
+  alias: field: {}
+
+  fields: {
+    app: {
+      h: "App"
+      n: "app"
+      r: true
+      t: "`$OBJECT`"
+    }
+    artifact_locator: {
+      h: "Artifact Locator"
+      n: "artifact_locator"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    build_duration_seconds: {
+      h: "Build Duration Seconds"
+      n: "build_duration_seconds"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    build_source: {
+      h: "Build Source"
+      n: "build_source"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    build_status: {
+      h: "Build Status"
+      n: "build_status"
+      r: true
+      t: "`$STRING`"
+    }
+    children: {
+      h: "Children"
+      n: "children"
+      r: true
+      t: "`$ARRAY`"
+    }
+    ci_pipeline_id: {
+      h: "Ci Pipeline Id"
+      n: "ci_pipeline_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    ci_pipeline_run_id: {
+      h: "Ci Pipeline Run Id"
+      n: "ci_pipeline_run_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    commit_sha: {
+      h: "Commit Sha"
+      n: "commit_sha"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    creator: {
+      h: "Creator"
+      n: "creator"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    deployed_url: {
+      fo: "uri"
+      h: "Deployed Url"
+      n: "deployed_url"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    duration_seconds: {
+      h: "Duration Seconds"
+      n: "duration_seconds"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    environment: {
+      h: "Environment"
+      n: "environment"
+      r: true
+      t: "`$OBJECT`"
+    }
+    history_kind: {
+      h: "History Kind"
+      n: "history_kind"
+      r: true
+      t: "`$STRING`"
+    }
+    history_reason: {
+      h: "History Reason"
+      n: "history_reason"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    is_live: {
+      h: "Is Live"
+      n: "is_live"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    is_rollback: {
+      h: "Is Rollback"
+      n: "is_rollback"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    live_region_count: {
+      h: "Live Region Count"
+      n: "live_region_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    number: {
+      h: "Number"
+      n: "number"
+      r: true
+      t: "`$INTEGER`"
+    }
+    placement: {
+      h: "Placement"
+      n: "placement"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    region_count: {
+      h: "Region Count"
+      n: "region_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    replicas_per_region: {
+      h: "Replicas Per Region"
+      n: "replicas_per_region"
+      r: true
+      t: "`$INTEGER`"
+    }
+    rollback_reason: {
+      h: "Rollback Reason"
+      n: "rollback_reason"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    rollback_source_release_id: {
+      h: "Rollback Source Release Id"
+      n: "rollback_source_release_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    rollback_target_release_id: {
+      h: "Rollback Target Release Id"
+      n: "rollback_target_release_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    rollout_predecessor_id: {
+      h: "Rollout Predecessor Id"
+      n: "rollout_predecessor_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    rollout_status: {
+      h: "Rollout Status"
+      n: "rollout_status"
+      r: true
+      t: "`$STRING`"
+    }
+    rollout_strategy: {
+      h: "Rollout Strategy"
+      n: "rollout_strategy"
+      r: true
+      t: "`$STRING`"
+    }
+    service: {
+      h: "Service"
+      n: "service"
+      r: true
+      t: "`$OBJECT`"
+    }
+    source_ref: {
+      h: "Source Ref"
+      n: "source_ref"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    total_replicas: {
+      h: "Total Replicas"
+      n: "total_replicas"
+      r: true
+      t: "`$INTEGER`"
+    }
+    trigger_kind: {
+      h: "Trigger Kind"
+      n: "trigger_kind"
+      r: true
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "deployment"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/pages/deployments/{deployment_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "deployment_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/pages/deployments/{deployment_id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              deployment_id: "id"
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "pages"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.operation`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/pages/deployments/architecture"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "app"
+                or: "app"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "environment"
+                or: "environment"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "service"
+                or: "service"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/pages/deployments/architecture"
+          q: {
+            "$action": "architecture"
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "pages"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              lit: "architecture"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.connections`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/pages/deployments/feed"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "app"
+                or: "app"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "environment"
+                or: "environment"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "service"
+                or: "service"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/pages/deployments/feed"
+          q: {
+            "$action": "feed"
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "pages"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              lit: "feed"
+            }
+          ]
+          t: {
+            page: {
+              next: "`body.pagination.next`"
+              total: "`body.pagination.count`"
+            }
+            req: "`reqdata`"
+            res: "`body.deploy_targets`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

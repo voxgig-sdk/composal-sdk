@@ -1,0 +1,109 @@
+{
+  "existing": {
+    "agent_app": {
+      "AGENT_APP00": {
+        "author": {},
+        "can_message": false,
+        "deployments_count": 182,
+        "description": "sb7",
+        "hidden_install_count": 184,
+        "id": "AGENT_APP00",
+        "install_count": 186,
+        "install_targets": [],
+        "installed_by": [],
+        "installed_target_ids": [],
+        "items": [],
+        "mcp_url": "sbf",
+        "next_cursor": "sc0",
+        "owner": {},
+        "thread": "sc2",
+        "title": "sc3",
+        "url": "sc4",
+        "visibility": "sc5",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_APP01": {
+        "author": {},
+        "can_message": false,
+        "deployments_count": 362,
+        "description": "s16b",
+        "hidden_install_count": 364,
+        "id": "AGENT_APP01",
+        "install_count": 366,
+        "install_targets": [],
+        "installed_by": [],
+        "installed_target_ids": [],
+        "items": [],
+        "mcp_url": "s173",
+        "next_cursor": "s174",
+        "owner": {},
+        "thread": "s176",
+        "title": "s177",
+        "url": "s178",
+        "visibility": "s179",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_APP02": {
+        "author": {},
+        "can_message": false,
+        "deployments_count": 542,
+        "description": "s21f",
+        "hidden_install_count": 544,
+        "id": "AGENT_APP02",
+        "install_count": 546,
+        "install_targets": [],
+        "installed_by": [],
+        "installed_target_ids": [],
+        "items": [],
+        "mcp_url": "s227",
+        "next_cursor": "s228",
+        "owner": {},
+        "thread": "s22a",
+        "title": "s22b",
+        "url": "s22c",
+        "visibility": "s22d",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_app": {
+      "agent_app_ref01": {
+        "author": {},
+        "can_message": false,
+        "deployments_count": 722,
+        "description": "s2d3",
+        "hidden_install_count": 724,
+        "install_count": 726,
+        "install_targets": [],
+        "installed_by": [],
+        "installed_target_ids": [],
+        "items": [],
+        "mcp_url": "s2db",
+        "next_cursor": "s2dc",
+        "owner": {},
+        "thread": "s2de",
+        "title": "s2df",
+        "url": "s2e0",
+        "visibility": "s2e1"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agent_apps/{id}/opened": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agent_apps": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agent_apps/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

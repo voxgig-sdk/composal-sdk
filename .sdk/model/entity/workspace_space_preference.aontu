@@ -1,0 +1,92 @@
+# Entity: workspace_space_preference
+
+main: kit: entity: workspace_space_preference: {
+
+  alias: field: {}
+
+  fields: {
+    preferences: {
+      h: "Preferences"
+      n: "preferences"
+      r: true
+      t: "`$ARRAY`"
+    }
+    spaces: {
+      h: "Spaces"
+      n: "spaces"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "workspace_space_preference"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "preferences"
+          ]
+          co: {
+            id: "PATCH /api/v1/organizations/{organization_id}/workspace_spaces/preferences"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v1/organizations/{organization_id}/workspace_spaces/preferences"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "workspace_spaces"
+            }
+            {
+              lit: "preferences"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

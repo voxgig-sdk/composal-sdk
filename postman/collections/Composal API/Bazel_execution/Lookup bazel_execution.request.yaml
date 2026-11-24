@@ -1,0 +1,11 @@
+$kind: http-request
+id: ca153404-b9e9-5f4f-b9ca-32d9eb3d5ea0
+description: |-
+  The `lookup` action of **bazel_execution**, a route of its `load` operation.
+
+  SDK: `client.BazelExecution().load({ $action: "lookup" })`
+url: "{{base}}/api/v1/bazel/executions/lookup"
+method: GET
+headers:
+  Accept: application/json
+order: 7000

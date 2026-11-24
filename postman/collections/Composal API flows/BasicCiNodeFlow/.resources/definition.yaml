@@ -1,0 +1,4 @@
+$kind: collection
+id: "995c34a0-6e64-5263-82cd-92532141907b"
+description: "The `BasicCiNodeFlow` flow of **ci_node**."
+order: 140000

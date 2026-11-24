@@ -1,0 +1,15 @@
+$kind: http-request
+id: "79952fe7-a7c3-5c94-99fc-4e6298aa41f5"
+description: |-
+  The `authorize` action of **bazel**, a route of its `create` operation.
+
+  SDK: `client.Bazel().create({ $action: "authorize" })`
+url: "{{base}}/api/v1/bazel/authorize"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 1000

@@ -1,0 +1,8 @@
+$kind: collection
+id: "16bb4fab-035c-5e5e-baea-88c33de3352a"
+description: |-
+  The **vc_browser** entity, which belongs to a organization and a repo. Its requests address one record by `{{vc_browser_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 524000

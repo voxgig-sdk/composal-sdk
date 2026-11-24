@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "github": {
+      "GITHUB00": {
+        "id": "GITHUB00"
+      },
+      "GITHUB01": {
+        "id": "GITHUB01"
+      },
+      "GITHUB02": {
+        "id": "GITHUB02"
+      }
+    }
+  },
+  "new": {
+    "github": {
+      "github_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/github/repository_lookup": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

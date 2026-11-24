@@ -1,0 +1,22 @@
+# BasicGitlabImportFlow
+
+main: kit: flow: BasicGitlabImportFlow:
+{
+  entity: "gitlab_import",
+  kind: "basic",
+  name: "BasicGitlabImportFlow",
+  step: [
+    {
+      i: {
+        ref: "gitlab_import_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicGitlabImportFlow"
+}

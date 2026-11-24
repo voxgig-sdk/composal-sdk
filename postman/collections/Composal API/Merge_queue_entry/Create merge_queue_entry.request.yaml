@@ -1,0 +1,46 @@
+$kind: http-request
+id: "54845873-a218-57f3-93ab-7d705c49eb22"
+description: |-
+  The `create` operation of **merge_queue_entry**.
+
+  SDK: `client.MergeQueueEntry().create({ merge_queue_id: "example", organization_id: "example", repo_id: "example", expected_version: 1, idempotency_key: "example", kind: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/merge_queues/:target/entries"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this merge_queue_entry belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this merge_queue_entry belongs to.
+  - key: target
+    value: "{{merge_queue_id}}"
+    description: "Input: merge_queue_id."
+body:
+  type: json
+  content: |-
+    {
+      "kind": "change",
+      "change_id": "{{change_id}}",
+      "github_pr_number": 1,
+      "idempotency_key": "example",
+      "expected_version": 1,
+      "expected_target_commit_id": "example",
+      "expected_target_version": 1,
+      "when_ready": true,
+      "priority": "normal"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("merge_queue_entry_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

@@ -1,0 +1,112 @@
+{
+  "existing": {
+    "pages_billing": {
+      "PAGES_BILLING00": {
+        "addons": [],
+        "breakdown": "sd3",
+        "budget": "sd4",
+        "can_manage_contact": false,
+        "can_manage_extra_spend": true,
+        "can_manage_local_subscription": false,
+        "can_manage_payment_method": true,
+        "can_set_up_billing": false,
+        "customer": "sda",
+        "deployment_usage_visible": false,
+        "entitlements": {},
+        "extra_spend_enabled": false,
+        "feature_enabled": true,
+        "organization_id": "ORGANIZATION01",
+        "package": "se0",
+        "prepaid": "se1",
+        "preview": "se2",
+        "storage_usage": {},
+        "stripe": {},
+        "subscription": "se5",
+        "token_account": {},
+        "id": "PAGES_BILLING00"
+      },
+      "PAGES_BILLING01": {
+        "addons": [],
+        "breakdown": "s1a5",
+        "budget": "s1a6",
+        "can_manage_contact": false,
+        "can_manage_extra_spend": true,
+        "can_manage_local_subscription": false,
+        "can_manage_payment_method": true,
+        "can_set_up_billing": false,
+        "customer": "s1ac",
+        "deployment_usage_visible": false,
+        "entitlements": {},
+        "extra_spend_enabled": false,
+        "feature_enabled": true,
+        "organization_id": "ORGANIZATION01",
+        "package": "s1b2",
+        "prepaid": "s1b3",
+        "preview": "s1b4",
+        "storage_usage": {},
+        "stripe": {},
+        "subscription": "s1b7",
+        "token_account": {},
+        "id": "PAGES_BILLING01"
+      },
+      "PAGES_BILLING02": {
+        "addons": [],
+        "breakdown": "s277",
+        "budget": "s278",
+        "can_manage_contact": false,
+        "can_manage_extra_spend": true,
+        "can_manage_local_subscription": false,
+        "can_manage_payment_method": true,
+        "can_set_up_billing": false,
+        "customer": "s27e",
+        "deployment_usage_visible": false,
+        "entitlements": {},
+        "extra_spend_enabled": false,
+        "feature_enabled": true,
+        "organization_id": "ORGANIZATION01",
+        "package": "s284",
+        "prepaid": "s285",
+        "preview": "s286",
+        "storage_usage": {},
+        "stripe": {},
+        "subscription": "s289",
+        "token_account": {},
+        "id": "PAGES_BILLING02"
+      }
+    }
+  },
+  "new": {
+    "pages_billing": {
+      "pages_billing_ref01": {
+        "addons": [],
+        "breakdown": "s349",
+        "budget": "s34a",
+        "can_manage_contact": false,
+        "can_manage_extra_spend": true,
+        "can_manage_local_subscription": false,
+        "can_manage_payment_method": true,
+        "can_set_up_billing": false,
+        "customer": "s350",
+        "deployment_usage_visible": false,
+        "entitlements": {},
+        "extra_spend_enabled": false,
+        "feature_enabled": true,
+        "organization_id": "ORGANIZATION01",
+        "package": "s356",
+        "prepaid": "s357",
+        "preview": "s358",
+        "storage_usage": {},
+        "stripe": {},
+        "subscription": "s35b",
+        "token_account": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/pages/billing": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

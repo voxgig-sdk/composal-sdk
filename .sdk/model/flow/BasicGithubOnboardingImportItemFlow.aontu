@@ -1,0 +1,23 @@
+# BasicGithubOnboardingImportItemFlow
+
+main: kit: flow: BasicGithubOnboardingImportItemFlow:
+{
+  entity: "github_onboarding_import_item",
+  kind: "basic",
+  name: "BasicGithubOnboardingImportItemFlow",
+  step: [
+    {
+      i: {
+        ref: "github_onboarding_import_item_ref01"
+      }
+
+      m: {
+        github_import_batch_item_id: "github_import_batch_item01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicGithubOnboardingImportItemFlow"
+}

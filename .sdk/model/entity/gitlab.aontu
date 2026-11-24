@@ -1,0 +1,277 @@
+# Entity: gitlab
+
+main: kit: entity: gitlab: {
+
+  alias: field: {}
+
+  fields: {
+    configured: {
+      h: "Configured"
+      n: "configured"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    connections: {
+      h: "Connections"
+      n: "connections"
+      r: true
+      t: "`$ARRAY`"
+    }
+    integrations: {
+      h: "Integrations"
+      n: "integrations"
+      r: true
+      t: "`$ARRAY`"
+    }
+    inventory_error: {
+      h: "Inventory Error"
+      n: "inventory_error"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    next_page: {
+      h: "Next Page"
+      n: "next_page"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    organization: {
+      h: "Organization"
+      n: "organization"
+      r: true
+      t: "`$OBJECT`"
+    }
+    projects: {
+      h: "Projects"
+      n: "projects"
+      r: true
+      t: "`$ARRAY`"
+    }
+    redirect_uri: {
+      h: "Redirect Uri"
+      n: "redirect_uri"
+      r: true
+      sh: "The OAuth redirect URI a self-managed GitLab application must use; null when GitLab callbacks aren't configured."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    selected_integration_id: {
+      h: "Selected Integration Id"
+      n: "selected_integration_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  name: "gitlab"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "client_id"
+            "client_secret"
+            "instance_url"
+            "integration_id"
+            "return_target"
+            "webhook_authentication"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{org_slug}/gitlab/authorize"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{org_slug}/gitlab/authorize"
+          q: {
+            "$action": "authorize"
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "gitlab"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/gitlab"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "connection_id"
+                or: "connection_ids"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "integration_id"
+                or: "integration_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/gitlab"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "gitlab"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.connections`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

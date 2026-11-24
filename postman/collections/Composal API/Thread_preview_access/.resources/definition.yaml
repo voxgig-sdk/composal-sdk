@@ -1,0 +1,8 @@
+$kind: collection
+id: "66650912-0318-5298-b5d5-1a6a7e0cdc15"
+description: |-
+  The **thread_preview_access** entity. Its requests address one record by `{{thread_preview_access_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 519000

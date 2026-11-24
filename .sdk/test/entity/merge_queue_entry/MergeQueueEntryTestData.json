@@ -1,0 +1,119 @@
+{
+  "existing": {
+    "merge_queue_entry": {
+      "MERGE_QUEUE_ENTRY00": {
+        "analytics": {},
+        "change_id": "CHANGE01",
+        "expected_target_commit_id": "EXPECTED_TARGET_COMMIT01",
+        "expected_target_version": "s8f",
+        "expected_version": 144,
+        "github_pr_number": "s91",
+        "id": "MERGE_QUEUE_ENTRY00",
+        "idempotency_key": "s93",
+        "kind": "s94",
+        "policy": {},
+        "priority": "s96",
+        "queue": {},
+        "target_branches": [],
+        "when_ready": "s99",
+        "merge_queue_id": "MERGE_QUEUE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "MERGE_QUEUE_ENTRY01": {
+        "analytics": {},
+        "change_id": "CHANGE01",
+        "expected_target_commit_id": "EXPECTED_TARGET_COMMIT01",
+        "expected_target_version": "s11b",
+        "expected_version": 284,
+        "github_pr_number": "s11d",
+        "id": "MERGE_QUEUE_ENTRY01",
+        "idempotency_key": "s11f",
+        "kind": "s120",
+        "policy": {},
+        "priority": "s122",
+        "queue": {},
+        "target_branches": [],
+        "when_ready": "s125",
+        "merge_queue_id": "MERGE_QUEUE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "MERGE_QUEUE_ENTRY02": {
+        "analytics": {},
+        "change_id": "CHANGE01",
+        "expected_target_commit_id": "EXPECTED_TARGET_COMMIT01",
+        "expected_target_version": "s1a7",
+        "expected_version": 424,
+        "github_pr_number": "s1a9",
+        "id": "MERGE_QUEUE_ENTRY02",
+        "idempotency_key": "s1ab",
+        "kind": "s1ac",
+        "policy": {},
+        "priority": "s1ae",
+        "queue": {},
+        "target_branches": [],
+        "when_ready": "s1b1",
+        "merge_queue_id": "MERGE_QUEUE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "merge_queue_entry": {
+      "merge_queue_entry_ref01": {
+        "analytics": {},
+        "change_id": "CHANGE01",
+        "expected_target_commit_id": "EXPECTED_TARGET_COMMIT01",
+        "expected_target_version": "s233",
+        "expected_version": 564,
+        "github_pr_number": "s235",
+        "idempotency_key": "s237",
+        "kind": "s238",
+        "policy": {},
+        "priority": "s23a",
+        "queue": {},
+        "target_branches": [],
+        "when_ready": "s23d"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/merge": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/promote": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/retry": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/skip_ci": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/validate_full": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

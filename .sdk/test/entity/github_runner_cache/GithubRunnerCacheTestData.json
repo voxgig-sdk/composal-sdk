@@ -1,0 +1,68 @@
+{
+  "existing": {
+    "github_runner_cache": {
+      "GITHUB_RUNNER_CACHE00": {
+        "entry_id": "ENTRY01",
+        "key": "s65",
+        "matched_key": "s66",
+        "ok": false,
+        "operation": "s68",
+        "restore_keys": [],
+        "signed_download_url": "s6a",
+        "size_bytes": "s6b",
+        "upload_path": "s6c",
+        "version": "s6d",
+        "id": "GITHUB_RUNNER_CACHE00"
+      },
+      "GITHUB_RUNNER_CACHE01": {
+        "entry_id": "ENTRY01",
+        "key": "sc9",
+        "matched_key": "sca",
+        "ok": false,
+        "operation": "scc",
+        "restore_keys": [],
+        "signed_download_url": "sce",
+        "size_bytes": "scf",
+        "upload_path": "sd0",
+        "version": "sd1",
+        "id": "GITHUB_RUNNER_CACHE01"
+      },
+      "GITHUB_RUNNER_CACHE02": {
+        "entry_id": "ENTRY01",
+        "key": "s12d",
+        "matched_key": "s12e",
+        "ok": false,
+        "operation": "s130",
+        "restore_keys": [],
+        "signed_download_url": "s132",
+        "size_bytes": "s133",
+        "upload_path": "s134",
+        "version": "s135",
+        "id": "GITHUB_RUNNER_CACHE02"
+      }
+    }
+  },
+  "new": {
+    "github_runner_cache": {
+      "github_runner_cache_ref01": {
+        "entry_id": "ENTRY01",
+        "key": "s191",
+        "matched_key": "s192",
+        "ok": false,
+        "operation": "s194",
+        "restore_keys": [],
+        "signed_download_url": "s196",
+        "size_bytes": "s197",
+        "upload_path": "s198",
+        "version": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/github_runner_cache": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

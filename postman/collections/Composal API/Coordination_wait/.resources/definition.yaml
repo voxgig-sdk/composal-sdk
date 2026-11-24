@@ -11,4 +11,4 @@ description: |-
   | `status` | string | yes |  |
   | `stop_state` | string | yes |  |
   | `wake_outcome` | string | yes |  |
-order: 93000
+order: 189000

@@ -1,0 +1,15 @@
+$kind: http-request
+id: "00e5cd3a-be2d-58c9-b717-8b8ff313e86f"
+description: |-
+  The `claim_next` action of **bazel_execution**, a route of its `create` operation.
+
+  SDK: `client.BazelExecution().create({ $action: "claim_next" })`
+url: "{{base}}/api/v1/bazel/executions/claim_next"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 3000

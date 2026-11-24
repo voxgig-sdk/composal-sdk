@@ -1,0 +1,19 @@
+$kind: http-request
+id: "78a8a237-b466-50c3-bf28-c75323f00017"
+description: |-
+  The `archive` action of **networking_space**, a route of its `create` operation.
+
+  SDK: `client.NetworkingSpace().create({ "id": "ID", $action: "archive" })`
+url: "{{base}}/api/v1/networking/spaces/:id/archive"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{networking_space_id}}"
+    description: The networking_space this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 7000

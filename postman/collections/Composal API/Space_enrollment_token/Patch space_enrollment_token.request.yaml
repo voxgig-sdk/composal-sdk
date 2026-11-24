@@ -1,0 +1,22 @@
+$kind: http-request
+id: "77f73687-8fd3-56d5-a902-664a277c6885"
+description: |-
+  The `patch` operation of **space_enrollment_token**.
+
+  SDK: `client.SpaceEnrollmentToken().patch({ id: "example", space_id: "example" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/enrollment_tokens/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: id
+    value: "{{space_enrollment_token_id}}"
+    description: The space_enrollment_token this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

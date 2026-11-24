@@ -1,0 +1,22 @@
+$kind: http-request
+id: "485284ce-8d3a-58a9-aeb9-483d68adc564"
+description: |-
+  The `approve` action of **space_peer**, a route of its `create` operation.
+
+  SDK: `client.SpacePeer().create({ "space_id": "space_id", "id": "ID", $action: "approve" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/peers/:id/approve"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: id
+    value: "{{space_peer_id}}"
+    description: The space_peer this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

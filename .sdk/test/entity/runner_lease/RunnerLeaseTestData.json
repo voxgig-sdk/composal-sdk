@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "runner_lease": {
+      "RUNNER_LEASE00": {
+        "id": "RUNNER_LEASE00",
+        "runner_id": "RUNNER01",
+        "runner_pool_id": "RUNNER_POOL01"
+      },
+      "RUNNER_LEASE01": {
+        "id": "RUNNER_LEASE01",
+        "runner_id": "RUNNER01",
+        "runner_pool_id": "RUNNER_POOL01"
+      },
+      "RUNNER_LEASE02": {
+        "id": "RUNNER_LEASE02",
+        "runner_id": "RUNNER01",
+        "runner_pool_id": "RUNNER_POOL01"
+      }
+    }
+  },
+  "new": {
+    "runner_lease": {
+      "runner_lease_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/heartbeat": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/release": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

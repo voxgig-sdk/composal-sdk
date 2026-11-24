@@ -1,0 +1,38 @@
+# BasicSpaceMetricSeryFlow
+
+main: kit: flow: BasicSpaceMetricSeryFlow:
+{
+  entity: "space_metric_sery",
+  kind: "basic",
+  name: "BasicSpaceMetricSeryFlow",
+  step: [
+    {
+      i: {
+        ref: "space_metric_sery_ref01"
+      }
+
+      m: {
+        space_id: "space01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        space_id: "space01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "space_metric_sery_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSpaceMetricSeryFlow"
+}

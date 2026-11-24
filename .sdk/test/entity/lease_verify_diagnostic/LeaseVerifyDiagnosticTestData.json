@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "lease_verify_diagnostic": {
+      "LEASE_VERIFY_DIAGNOSTIC00": {
+        "browser_events": {},
+        "live_browser": {},
+        "live_view": {},
+        "steps": [],
+        "lease_id": "LEASE01",
+        "swarm_id": "SWARM01",
+        "task_id": "TASK01",
+        "id": "LEASE_VERIFY_DIAGNOSTIC00"
+      },
+      "LEASE_VERIFY_DIAGNOSTIC01": {
+        "browser_events": {},
+        "live_browser": {},
+        "live_view": {},
+        "steps": [],
+        "lease_id": "LEASE01",
+        "swarm_id": "SWARM01",
+        "task_id": "TASK01",
+        "id": "LEASE_VERIFY_DIAGNOSTIC01"
+      },
+      "LEASE_VERIFY_DIAGNOSTIC02": {
+        "browser_events": {},
+        "live_browser": {},
+        "live_view": {},
+        "steps": [],
+        "lease_id": "LEASE01",
+        "swarm_id": "SWARM01",
+        "task_id": "TASK01",
+        "id": "LEASE_VERIFY_DIAGNOSTIC02"
+      }
+    }
+  },
+  "new": {
+    "lease_verify_diagnostic": {
+      "lease_verify_diagnostic_ref01": {
+        "browser_events": {},
+        "live_browser": {},
+        "live_view": {},
+        "steps": []
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_diagnostics": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

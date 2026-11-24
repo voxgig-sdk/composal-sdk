@@ -1,10 +1,10 @@
 $kind: http-request
-id: fbf086ec-74ae-5226-b029-e735a9d66f85
+id: "139a8d0c-1a1f-5878-b28b-ba8648f42c36"
 description: |-
   The `list` operation of **agent_connection**.
 
-  SDK: `client.AgentConnection().list({ agent_id: "example", organization_id: "example" })`
-url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/relay/connections"
+  SDK: `client.AgentConnection().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_connections"
 method: GET
 headers:
   Accept: application/json
@@ -13,24 +13,18 @@ queryParams:
     value: ""
     disabled: true
   - key: limit
-    value: "30"
-    disabled: true
-  - key: selected_connection_id
     value: ""
     disabled: true
 pathVariables:
   - key: organization_id
     value: "{{organization_id}}"
     description: The organization this agent_connection belongs to.
-  - key: id
-    value: "{{agent_id}}"
-    description: The agent this agent_connection belongs to.
 scripts:
   - type: afterResponse
     code: |-
       const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
       const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
-      const rec = (body?.["connections"] || [])[0]
+      const rec = (body?.["catalog"] || [])[0]
       if (pm.response.code < 300 && null != rec) {
         if (null != at(rec, "id") && !pm.collectionVariables.get("agent_connection_id")) pm.collectionVariables.set("agent_connection_id", String(at(rec, "id")))
       }

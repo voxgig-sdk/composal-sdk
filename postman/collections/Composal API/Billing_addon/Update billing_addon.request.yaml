@@ -1,0 +1,25 @@
+$kind: http-request
+id: ed494bc2-edb0-530a-92f5-3b20b07978fb
+description: |-
+  The `update` operation of **billing_addon**.
+
+  SDK: `client.BillingAddon().update({ id: "example", organization_id: "example", quantity: 1 })`
+url: "{{base}}/api/v1/organizations/:organization_id/billing/addons/:addon_key"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this billing_addon belongs to.
+  - key: addon_key
+    value: "{{billing_addon_id}}"
+    description: The billing_addon this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "quantity": 1
+    }
+order: 1000

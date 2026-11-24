@@ -1,0 +1,208 @@
+# Entity: change_transcript
+
+main: kit: entity: change_transcript: {
+
+  alias: field: {}
+
+  fields: {
+    capture_kind: {
+      h: "Capture Kind"
+      n: "capture_kind"
+      r: true
+      t: "`$STRING`"
+    }
+    captured_at: {
+      fo: "date-time"
+      h: "Captured At"
+      n: "captured_at"
+      r: true
+      t: "`$STRING`"
+    }
+    harness: {
+      h: "Harness"
+      n: "harness"
+      r: true
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    original_resume: {
+      h: "Original Resume"
+      n: "original_resume"
+      r: false
+      t: "`$ANY`"
+    }
+    patchset_commit_id: {
+      h: "Patchset Commit Id"
+      n: "patchset_commit_id"
+      r: true
+      t: "`$STRING`"
+    }
+    patchset_number: {
+      h: "Patchset Number"
+      n: "patchset_number"
+      r: true
+      t: "`$INTEGER`"
+    }
+    redaction_count: {
+      h: "Redaction Count"
+      n: "redaction_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    session_id: {
+      h: "Session Id"
+      n: "session_id"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    session_title: {
+      h: "Session Title"
+      n: "session_title"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    superseded: {
+      h: "Superseded"
+      n: "superseded"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    user: {
+      h: "User"
+      n: "user"
+      r: true
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "change_transcript"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/transcripts"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "change_id"
+                or: "change_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_id"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/transcripts"
+          q: {
+            exist: [
+              "change_id"
+              "organization_id"
+              "repo_id"
+            ]
+          }
+          r: {
+            param: {
+              change_id: "change_id"
+              org_slug: "organization_id"
+              repo_slug: "repo_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "repos"
+            }
+            {
+              var: "repo_id"
+            }
+            {
+              lit: "vcs"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              var: "change_id"
+            }
+            {
+              lit: "transcripts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.transcripts`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.repo") path("$.main.kit.entity.change")]
+  ]
+
+}

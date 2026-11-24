@@ -1,0 +1,98 @@
+{
+  "existing": {
+    "change_landing_request": {
+      "CHANGE_LANDING_REQUEST00": {
+        "change_ids": [],
+        "count": 151,
+        "defer_until_ready": true,
+        "expected_requirement_version": "s99",
+        "expected_scope_version": "s9a",
+        "head_change_id": "HEAD_CHANGE01",
+        "id": "CHANGE_LANDING_REQUEST00",
+        "numbers": [],
+        "override_acknowledged": true,
+        "override_codes": [],
+        "position": 160,
+        "priority": "sa1",
+        "scope_version": "sa2",
+        "state": "sa3",
+        "version": 164,
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "CHANGE_LANDING_REQUEST01": {
+        "change_ids": [],
+        "count": 301,
+        "defer_until_ready": true,
+        "expected_requirement_version": "s12f",
+        "expected_scope_version": "s130",
+        "head_change_id": "HEAD_CHANGE01",
+        "id": "CHANGE_LANDING_REQUEST01",
+        "numbers": [],
+        "override_acknowledged": true,
+        "override_codes": [],
+        "position": 310,
+        "priority": "s137",
+        "scope_version": "s138",
+        "state": "s139",
+        "version": 314,
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "CHANGE_LANDING_REQUEST02": {
+        "change_ids": [],
+        "count": 451,
+        "defer_until_ready": true,
+        "expected_requirement_version": "s1c5",
+        "expected_scope_version": "s1c6",
+        "head_change_id": "HEAD_CHANGE01",
+        "id": "CHANGE_LANDING_REQUEST02",
+        "numbers": [],
+        "override_acknowledged": true,
+        "override_codes": [],
+        "position": 460,
+        "priority": "s1cd",
+        "scope_version": "s1ce",
+        "state": "s1cf",
+        "version": 464,
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "change_landing_request": {
+      "change_landing_request_ref01": {
+        "change_ids": [],
+        "count": 601,
+        "defer_until_ready": true,
+        "expected_requirement_version": "s25b",
+        "expected_scope_version": "s25c",
+        "head_change_id": "HEAD_CHANGE01",
+        "numbers": [],
+        "override_acknowledged": true,
+        "override_codes": [],
+        "position": 610,
+        "priority": "s263",
+        "scope_version": "s264",
+        "state": "s265",
+        "version": 614
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_requests": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_requests/{entry_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

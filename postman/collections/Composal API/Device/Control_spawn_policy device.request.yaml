@@ -1,0 +1,18 @@
+$kind: http-request
+id: a89f0e94-9a62-5f39-bb81-304ee8893ae9
+description: |-
+  The `control_spawn_policy` action of **device**, a route of its `load` operation.
+
+  SDK: `client.Device().load({ "organization_id": "organization_id", "id": "ID", $action: "control_spawn_policy" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/control_spawn_policy"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this request addresses.
+order: 6000

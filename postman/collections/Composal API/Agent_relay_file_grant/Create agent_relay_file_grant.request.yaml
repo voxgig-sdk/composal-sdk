@@ -1,0 +1,38 @@
+$kind: http-request
+id: ca69899a-6f5e-5923-a1c6-590dec993840
+description: |-
+  The `create` operation of **agent_relay_file_grant**.
+
+  SDK: `client.AgentRelayFileGrant().create({ organization_id: "example", access_mode: "example", connection_id: "example", expected_generation: 1, key: "example", resource_id: "example", resource_kind: "example", source_operation_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_relay_file_grants"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_relay_file_grant belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "source_operation_id": "example",
+      "connection_id": "example",
+      "resource_kind": "notion_page",
+      "resource_id": "example",
+      "access_mode": "read",
+      "key": "example",
+      "expected_generation": 1
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body?.["grant"]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("agent_relay_file_grant_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

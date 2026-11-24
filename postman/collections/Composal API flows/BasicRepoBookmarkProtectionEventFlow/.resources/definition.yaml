@@ -1,0 +1,4 @@
+$kind: collection
+id: c570dbcc-3b00-5f29-814c-1fad019cd765
+description: "The `BasicRepoBookmarkProtectionEventFlow` flow of **repo_bookmark_protection_event**."
+order: 348000

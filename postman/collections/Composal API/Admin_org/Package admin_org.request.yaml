@@ -1,0 +1,22 @@
+$kind: http-request
+id: fd52da6f-e4ab-53ed-a641-0ddbdef8257f
+description: |-
+  The `package` action of **admin_org**, a route of its `update` operation.
+
+  SDK: `client.AdminOrg().update({ "id": "ID", $action: "package" })`
+url: "{{base}}/api/v1/admin/organizations/:org_slug/package"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{admin_org_id}}"
+    description: The admin_org this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "package_id": "example"
+    }
+order: 7000

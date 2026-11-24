@@ -1,0 +1,24 @@
+# BasicLeaseReconciliationFlow
+
+main: kit: flow: BasicLeaseReconciliationFlow:
+{
+  entity: "lease_reconciliation",
+  kind: "basic",
+  name: "BasicLeaseReconciliationFlow",
+  step: [
+    {
+      i: {
+        ref: "lease_reconciliation_ref01"
+      }
+
+      m: {
+        lease_id: "lease01",
+        node_id: "node01",
+        reconciliation_id: "reconciliation01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicLeaseReconciliationFlow"
+}

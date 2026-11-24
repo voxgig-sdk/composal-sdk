@@ -1,0 +1,19 @@
+$kind: http-request
+id: "6b64be2a-95f1-5dbf-b658-26858c0597e1"
+description: |-
+  The `complete` action of **git_import**, a route of its `create` operation.
+
+  SDK: `client.GitImport().create({ "id": "ID", $action: "complete" })`
+url: "{{base}}/api/v1/git_imports/:id/complete"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{git_import_id}}"
+    description: The git_import this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 3000

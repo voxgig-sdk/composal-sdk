@@ -1,0 +1,27 @@
+# BasicRepoActionFlow
+
+main: kit: flow: BasicRepoActionFlow:
+{
+  entity: "repo_action",
+  kind: "basic",
+  name: "BasicRepoActionFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "repo_action_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRepoActionFlow"
+}

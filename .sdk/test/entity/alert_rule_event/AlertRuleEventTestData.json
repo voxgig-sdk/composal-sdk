@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "alert_rule_event": {
+      "ALERT_RULE_EVENT00": {
+        "id": "ALERT_RULE_EVENT00",
+        "alert_rule_id": "ALERT_RULE01",
+        "space_id": "SPACE01"
+      },
+      "ALERT_RULE_EVENT01": {
+        "id": "ALERT_RULE_EVENT01",
+        "alert_rule_id": "ALERT_RULE01",
+        "space_id": "SPACE01"
+      },
+      "ALERT_RULE_EVENT02": {
+        "id": "ALERT_RULE_EVENT02",
+        "alert_rule_id": "ALERT_RULE01",
+        "space_id": "SPACE01"
+      }
+    }
+  },
+  "new": {
+    "alert_rule_event": {
+      "alert_rule_event_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/acknowledge": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/resolve": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/silence": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

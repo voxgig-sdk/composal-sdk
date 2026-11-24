@@ -1,0 +1,52 @@
+$kind: http-request
+id: "351423eb-fd3b-50f4-aade-fafbdebdab8c"
+description: |-
+  The `list` operation of **agent_skill**.
+
+  SDK: `client.AgentSkill().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_skills"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_skill belongs to.
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("5. List agent_skills: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const recs = body || []
+      const keys = Array.isArray(recs) ? recs.map((rec) => String(at(rec, "id"))) : []
+      if (null != pm.variables.get("agent_skill_ref01_removed")) pm.test("5. List agent_skills: the removed record is gone", () => {
+        pm.expect(keys).to.not.include(pm.variables.get("agent_skill_ref01_removed"))
+      })
+    language: text/javascript
+order: 5000

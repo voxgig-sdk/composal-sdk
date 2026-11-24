@@ -1,0 +1,15 @@
+$kind: http-request
+id: ca76d115-e324-5610-a342-824a10984a38
+description: |-
+  The `live` action of **agent_swarm**, a route of its `load` operation.
+
+  SDK: `client.AgentSwarm().load({ "id": "ID", $action: "live" })`
+url: "{{base}}/api/v1/agent/swarms/:id/live"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{agent_swarm_id}}"
+    description: The agent_swarm this request addresses.
+order: 5000

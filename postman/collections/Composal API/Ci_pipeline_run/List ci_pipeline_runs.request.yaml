@@ -1,0 +1,25 @@
+$kind: http-request
+id: "657eb26e-c235-5433-864c-11b1da9d6fe4"
+description: |-
+  The `list` operation of **ci_pipeline_run**.
+
+  SDK: `client.CiPipelineRun().list({ pipeline_id: "example" })`
+url: "{{base}}/api/v1/ci/pipelines/:pipeline_id/runs"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: pipeline_id
+    value: "{{pipeline_id}}"
+    description: "Input: pipeline_id."
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("ci_pipeline_run_id")) pm.collectionVariables.set("ci_pipeline_run_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

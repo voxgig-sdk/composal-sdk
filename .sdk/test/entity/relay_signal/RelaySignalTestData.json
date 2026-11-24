@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "relay_signal": {
+      "RELAY_SIGNAL00": {
+        "id": "RELAY_SIGNAL00"
+      },
+      "RELAY_SIGNAL01": {
+        "id": "RELAY_SIGNAL01"
+      },
+      "RELAY_SIGNAL02": {
+        "id": "RELAY_SIGNAL02"
+      }
+    }
+  },
+  "new": {
+    "relay_signal": {
+      "relay_signal_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/relay/signals": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

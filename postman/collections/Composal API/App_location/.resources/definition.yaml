@@ -12,4 +12,4 @@ description: |-
   | `name` | string | yes |  |
   | `nomad_datacenter` | string | yes |  |
   | `updated_at` | string | yes |  |
-order: 62000
+order: 91000

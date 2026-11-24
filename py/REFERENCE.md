@@ -42,9 +42,25 @@ client = ComposalSDK.test()
 
 ### Instance Methods
 
+#### `A2aWellKnown(data=None)`
+
+Create a new `A2aWellKnownEntity` instance. Pass `None` for no initial data.
+
+#### `AdminOrg(data=None)`
+
+Create a new `AdminOrgEntity` instance. Pass `None` for no initial data.
+
 #### `Agent(data=None)`
 
 Create a new `AgentEntity` instance. Pass `None` for no initial data.
+
+#### `AgentApp(data=None)`
+
+Create a new `AgentAppEntity` instance. Pass `None` for no initial data.
+
+#### `AgentAppInstall(data=None)`
+
+Create a new `AgentAppInstallEntity` instance. Pass `None` for no initial data.
 
 #### `AgentAttachment(data=None)`
 
@@ -70,6 +86,30 @@ Create a new `AgentComputerEntity` instance. Pass `None` for no initial data.
 
 Create a new `AgentConnectionEntity` instance. Pass `None` for no initial data.
 
+#### `AgentConnectionDelegation(data=None)`
+
+Create a new `AgentConnectionDelegationEntity` instance. Pass `None` for no initial data.
+
+#### `AgentConnectionGrant(data=None)`
+
+Create a new `AgentConnectionGrantEntity` instance. Pass `None` for no initial data.
+
+#### `AgentConnectionResource(data=None)`
+
+Create a new `AgentConnectionResourceEntity` instance. Pass `None` for no initial data.
+
+#### `AgentConnectionSafetyControl(data=None)`
+
+Create a new `AgentConnectionSafetyControlEntity` instance. Pass `None` for no initial data.
+
+#### `AgentConnectionTriggerSubscription(data=None)`
+
+Create a new `AgentConnectionTriggerSubscriptionEntity` instance. Pass `None` for no initial data.
+
+#### `AgentContextCheckpoint(data=None)`
+
+Create a new `AgentContextCheckpointEntity` instance. Pass `None` for no initial data.
+
 #### `AgentControlFlow(data=None)`
 
 Create a new `AgentControlFlowEntity` instance. Pass `None` for no initial data.
@@ -82,6 +122,10 @@ Create a new `AgentCoordinationEntity` instance. Pass `None` for no initial data
 
 Create a new `AgentEmailEntity` instance. Pass `None` for no initial data.
 
+#### `AgentEvent(data=None)`
+
+Create a new `AgentEventEntity` instance. Pass `None` for no initial data.
+
 #### `AgentFile(data=None)`
 
 Create a new `AgentFileEntity` instance. Pass `None` for no initial data.
@@ -93,6 +137,14 @@ Create a new `AgentInputEntity` instance. Pass `None` for no initial data.
 #### `AgentIntegration(data=None)`
 
 Create a new `AgentIntegrationEntity` instance. Pass `None` for no initial data.
+
+#### `AgentIntegrationAccount(data=None)`
+
+Create a new `AgentIntegrationAccountEntity` instance. Pass `None` for no initial data.
+
+#### `AgentIntegrationCallback(data=None)`
+
+Create a new `AgentIntegrationCallbackEntity` instance. Pass `None` for no initial data.
 
 #### `AgentInteraction(data=None)`
 
@@ -138,6 +190,14 @@ Create a new `AgentPullRequestEntity` instance. Pass `None` for no initial data.
 
 Create a new `AgentQuestionEntity` instance. Pass `None` for no initial data.
 
+#### `AgentRelayFileGrant(data=None)`
+
+Create a new `AgentRelayFileGrantEntity` instance. Pass `None` for no initial data.
+
+#### `AgentRelayFileGrantAccount(data=None)`
+
+Create a new `AgentRelayFileGrantAccountEntity` instance. Pass `None` for no initial data.
+
 #### `AgentRepository(data=None)`
 
 Create a new `AgentRepositoryEntity` instance. Pass `None` for no initial data.
@@ -145,6 +205,10 @@ Create a new `AgentRepositoryEntity` instance. Pass `None` for no initial data.
 #### `AgentResource(data=None)`
 
 Create a new `AgentResourceEntity` instance. Pass `None` for no initial data.
+
+#### `AgentRoder(data=None)`
+
+Create a new `AgentRoderEntity` instance. Pass `None` for no initial data.
 
 #### `AgentRoutine(data=None)`
 
@@ -157,6 +221,18 @@ Create a new `AgentRunEntity` instance. Pass `None` for no initial data.
 #### `AgentRuntime(data=None)`
 
 Create a new `AgentRuntimeEntity` instance. Pass `None` for no initial data.
+
+#### `AgentSession(data=None)`
+
+Create a new `AgentSessionEntity` instance. Pass `None` for no initial data.
+
+#### `AgentSessionCheckpoint(data=None)`
+
+Create a new `AgentSessionCheckpointEntity` instance. Pass `None` for no initial data.
+
+#### `AgentSessionRoderHandoff(data=None)`
+
+Create a new `AgentSessionRoderHandoffEntity` instance. Pass `None` for no initial data.
 
 #### `AgentSetting(data=None)`
 
@@ -186,6 +262,10 @@ Create a new `AgentSubagentEntity` instance. Pass `None` for no initial data.
 
 Create a new `AgentSubscriptionEntity` instance. Pass `None` for no initial data.
 
+#### `AgentSwarm(data=None)`
+
+Create a new `AgentSwarmEntity` instance. Pass `None` for no initial data.
+
 #### `AgentTeammate(data=None)`
 
 Create a new `AgentTeammateEntity` instance. Pass `None` for no initial data.
@@ -202,6 +282,10 @@ Create a new `AgentThreadEntity` instance. Pass `None` for no initial data.
 
 Create a new `AgentToolEntity` instance. Pass `None` for no initial data.
 
+#### `AgentUsage(data=None)`
+
+Create a new `AgentUsageEntity` instance. Pass `None` for no initial data.
+
 #### `AgentVerifyProject(data=None)`
 
 Create a new `AgentVerifyProjectEntity` instance. Pass `None` for no initial data.
@@ -209,6 +293,10 @@ Create a new `AgentVerifyProjectEntity` instance. Pass `None` for no initial dat
 #### `AgentWait(data=None)`
 
 Create a new `AgentWaitEntity` instance. Pass `None` for no initial data.
+
+#### `AgentWebPreview(data=None)`
+
+Create a new `AgentWebPreviewEntity` instance. Pass `None` for no initial data.
 
 #### `AgentWebhook(data=None)`
 
@@ -242,6 +330,18 @@ Create a new `AgentWorkspaceEntity` instance. Pass `None` for no initial data.
 
 Create a new `AgentWritePermissionEntity` instance. Pass `None` for no initial data.
 
+#### `Agreement(data=None)`
+
+Create a new `AgreementEntity` instance. Pass `None` for no initial data.
+
+#### `AgreementAccessRequest(data=None)`
+
+Create a new `AgreementAccessRequestEntity` instance. Pass `None` for no initial data.
+
+#### `AlertRuleEvent(data=None)`
+
+Create a new `AlertRuleEventEntity` instance. Pass `None` for no initial data.
+
 #### `AllocationLog(data=None)`
 
 Create a new `AllocationLogEntity` instance. Pass `None` for no initial data.
@@ -249,6 +349,14 @@ Create a new `AllocationLogEntity` instance. Pass `None` for no initial data.
 #### `App(data=None)`
 
 Create a new `AppEntity` instance. Pass `None` for no initial data.
+
+#### `AppAccess(data=None)`
+
+Create a new `AppAccessEntity` instance. Pass `None` for no initial data.
+
+#### `AppAccessJwk(data=None)`
+
+Create a new `AppAccessJwkEntity` instance. Pass `None` for no initial data.
 
 #### `AppCdn(data=None)`
 
@@ -322,9 +430,77 @@ Create a new `AppServicePlacementEntity` instance. Pass `None` for no initial da
 
 Create a new `AppStorageResourceEntity` instance. Pass `None` for no initial data.
 
+#### `Artefact(data=None)`
+
+Create a new `ArtefactEntity` instance. Pass `None` for no initial data.
+
+#### `ArtefactCommentThread(data=None)`
+
+Create a new `ArtefactCommentThreadEntity` instance. Pass `None` for no initial data.
+
+#### `ArtefactRevision(data=None)`
+
+Create a new `ArtefactRevisionEntity` instance. Pass `None` for no initial data.
+
+#### `ArtefactViewToken(data=None)`
+
+Create a new `ArtefactViewTokenEntity` instance. Pass `None` for no initial data.
+
+#### `Artifact(data=None)`
+
+Create a new `ArtifactEntity` instance. Pass `None` for no initial data.
+
+#### `ArtifactCacheNamespace(data=None)`
+
+Create a new `ArtifactCacheNamespaceEntity` instance. Pass `None` for no initial data.
+
+#### `ArtifactImageRepository(data=None)`
+
+Create a new `ArtifactImageRepositoryEntity` instance. Pass `None` for no initial data.
+
+#### `ArtifactPackageMirror(data=None)`
+
+Create a new `ArtifactPackageMirrorEntity` instance. Pass `None` for no initial data.
+
+#### `ArtifactRetentionPolicy(data=None)`
+
+Create a new `ArtifactRetentionPolicyEntity` instance. Pass `None` for no initial data.
+
 #### `AttachmentPart(data=None)`
 
 Create a new `AttachmentPartEntity` instance. Pass `None` for no initial data.
+
+#### `AuditEvent(data=None)`
+
+Create a new `AuditEventEntity` instance. Pass `None` for no initial data.
+
+#### `Auth(data=None)`
+
+Create a new `AuthEntity` instance. Pass `None` for no initial data.
+
+#### `AuthCli(data=None)`
+
+Create a new `AuthCliEntity` instance. Pass `None` for no initial data.
+
+#### `AuthGithub(data=None)`
+
+Create a new `AuthGithubEntity` instance. Pass `None` for no initial data.
+
+#### `AuthGoogle(data=None)`
+
+Create a new `AuthGoogleEntity` instance. Pass `None` for no initial data.
+
+#### `AuthOpenai(data=None)`
+
+Create a new `AuthOpenaiEntity` instance. Pass `None` for no initial data.
+
+#### `AuthPasswordReset(data=None)`
+
+Create a new `AuthPasswordResetEntity` instance. Pass `None` for no initial data.
+
+#### `AuthRegistrationOption(data=None)`
+
+Create a new `AuthRegistrationOptionEntity` instance. Pass `None` for no initial data.
 
 #### `AutomationEvent(data=None)`
 
@@ -334,6 +510,74 @@ Create a new `AutomationEventEntity` instance. Pass `None` for no initial data.
 
 Create a new `AutomationRunEntity` instance. Pass `None` for no initial data.
 
+#### `BackendRunnerPool(data=None)`
+
+Create a new `BackendRunnerPoolEntity` instance. Pass `None` for no initial data.
+
+#### `Bazel(data=None)`
+
+Create a new `BazelEntity` instance. Pass `None` for no initial data.
+
+#### `BazelActionResult(data=None)`
+
+Create a new `BazelActionResultEntity` instance. Pass `None` for no initial data.
+
+#### `BazelBackend(data=None)`
+
+Create a new `BazelBackendEntity` instance. Pass `None` for no initial data.
+
+#### `BazelBlob(data=None)`
+
+Create a new `BazelBlobEntity` instance. Pass `None` for no initial data.
+
+#### `BazelExecution(data=None)`
+
+Create a new `BazelExecutionEntity` instance. Pass `None` for no initial data.
+
+#### `BazelFindMissingBlob(data=None)`
+
+Create a new `BazelFindMissingBlobEntity` instance. Pass `None` for no initial data.
+
+#### `Billing(data=None)`
+
+Create a new `BillingEntity` instance. Pass `None` for no initial data.
+
+#### `BillingAddon(data=None)`
+
+Create a new `BillingAddonEntity` instance. Pass `None` for no initial data.
+
+#### `BillingCheckoutSession(data=None)`
+
+Create a new `BillingCheckoutSessionEntity` instance. Pass `None` for no initial data.
+
+#### `BillingInvoice(data=None)`
+
+Create a new `BillingInvoiceEntity` instance. Pass `None` for no initial data.
+
+#### `BillingPackage(data=None)`
+
+Create a new `BillingPackageEntity` instance. Pass `None` for no initial data.
+
+#### `BillingPortalSession(data=None)`
+
+Create a new `BillingPortalSessionEntity` instance. Pass `None` for no initial data.
+
+#### `BillingPrepaidPeriod(data=None)`
+
+Create a new `BillingPrepaidPeriodEntity` instance. Pass `None` for no initial data.
+
+#### `BillingPrepaidPurchase(data=None)`
+
+Create a new `BillingPrepaidPurchaseEntity` instance. Pass `None` for no initial data.
+
+#### `BillingTokenTopUp(data=None)`
+
+Create a new `BillingTokenTopUpEntity` instance. Pass `None` for no initial data.
+
+#### `BillingUsage(data=None)`
+
+Create a new `BillingUsageEntity` instance. Pass `None` for no initial data.
+
 #### `Binary(data=None)`
 
 Create a new `BinaryEntity` instance. Pass `None` for no initial data.
@@ -341,6 +585,10 @@ Create a new `BinaryEntity` instance. Pass `None` for no initial data.
 #### `BinaryVersion(data=None)`
 
 Create a new `BinaryVersionEntity` instance. Pass `None` for no initial data.
+
+#### `BookmarkProtectionRefreshGithubRequiredCheck(data=None)`
+
+Create a new `BookmarkProtectionRefreshGithubRequiredCheckEntity` instance. Pass `None` for no initial data.
 
 #### `BrowserEgressCandidate(data=None)`
 
@@ -378,6 +626,10 @@ Create a new `BrowserSessionScreenshotEntity` instance. Pass `None` for no initi
 
 Create a new `BrowserSessionTaskEntity` instance. Pass `None` for no initial data.
 
+#### `CacheNamespaceEntry(data=None)`
+
+Create a new `CacheNamespaceEntryEntity` instance. Pass `None` for no initial data.
+
 #### `CatalogSelector(data=None)`
 
 Create a new `CatalogSelectorEntity` instance. Pass `None` for no initial data.
@@ -398,6 +650,122 @@ Create a new `CdnSpaceEntity` instance. Pass `None` for no initial data.
 
 Create a new `CdnSpaceObjectEntity` instance. Pass `None` for no initial data.
 
+#### `Change(data=None)`
+
+Create a new `ChangeEntity` instance. Pass `None` for no initial data.
+
+#### `ChangeAsset(data=None)`
+
+Create a new `ChangeAssetEntity` instance. Pass `None` for no initial data.
+
+#### `ChangeComment(data=None)`
+
+Create a new `ChangeCommentEntity` instance. Pass `None` for no initial data.
+
+#### `ChangeFileReviewCheckpoint(data=None)`
+
+Create a new `ChangeFileReviewCheckpointEntity` instance. Pass `None` for no initial data.
+
+#### `ChangeGitBranchSubmission(data=None)`
+
+Create a new `ChangeGitBranchSubmissionEntity` instance. Pass `None` for no initial data.
+
+#### `ChangeGitCommitIdentity(data=None)`
+
+Create a new `ChangeGitCommitIdentityEntity` instance. Pass `None` for no initial data.
+
+#### `ChangeGitPublication(data=None)`
+
+Create a new `ChangeGitPublicationEntity` instance. Pass `None` for no initial data.
+
+#### `ChangeGroupMember(data=None)`
+
+Create a new `ChangeGroupMemberEntity` instance. Pass `None` for no initial data.
+
+#### `ChangeLabel(data=None)`
+
+Create a new `ChangeLabelEntity` instance. Pass `None` for no initial data.
+
+#### `ChangeLandingHold(data=None)`
+
+Create a new `ChangeLandingHoldEntity` instance. Pass `None` for no initial data.
+
+#### `ChangeLandingRequest(data=None)`
+
+Create a new `ChangeLandingRequestEntity` instance. Pass `None` for no initial data.
+
+#### `ChangeRequestChange(data=None)`
+
+Create a new `ChangeRequestChangeEntity` instance. Pass `None` for no initial data.
+
+#### `ChangeReviewer(data=None)`
+
+Create a new `ChangeReviewerEntity` instance. Pass `None` for no initial data.
+
+#### `ChangeTranscript(data=None)`
+
+Create a new `ChangeTranscriptEntity` instance. Pass `None` for no initial data.
+
+#### `ChangeTranscriptSummary(data=None)`
+
+Create a new `ChangeTranscriptSummaryEntity` instance. Pass `None` for no initial data.
+
+#### `CheckpointPrepareChunk(data=None)`
+
+Create a new `CheckpointPrepareChunkEntity` instance. Pass `None` for no initial data.
+
+#### `CiNode(data=None)`
+
+Create a new `CiNodeEntity` instance. Pass `None` for no initial data.
+
+#### `CiPipeline(data=None)`
+
+Create a new `CiPipelineEntity` instance. Pass `None` for no initial data.
+
+#### `CiPipelineRun(data=None)`
+
+Create a new `CiPipelineRunEntity` instance. Pass `None` for no initial data.
+
+#### `CiRunnerPool(data=None)`
+
+Create a new `CiRunnerPoolEntity` instance. Pass `None` for no initial data.
+
+#### `CiStatus(data=None)`
+
+Create a new `CiStatusEntity` instance. Pass `None` for no initial data.
+
+#### `CliEvent(data=None)`
+
+Create a new `CliEventEntity` instance. Pass `None` for no initial data.
+
+#### `CliRelease(data=None)`
+
+Create a new `CliReleaseEntity` instance. Pass `None` for no initial data.
+
+#### `CloudWorkspaceBackupObject(data=None)`
+
+Create a new `CloudWorkspaceBackupObjectEntity` instance. Pass `None` for no initial data.
+
+#### `CodeRuleEvaluation(data=None)`
+
+Create a new `CodeRuleEvaluationEntity` instance. Pass `None` for no initial data.
+
+#### `ComSiteAccess(data=None)`
+
+Create a new `ComSiteAccessEntity` instance. Pass `None` for no initial data.
+
+#### `ComSiteAccessSession(data=None)`
+
+Create a new `ComSiteAccessSessionEntity` instance. Pass `None` for no initial data.
+
+#### `CommentThreadComment(data=None)`
+
+Create a new `CommentThreadCommentEntity` instance. Pass `None` for no initial data.
+
+#### `CommitDiff(data=None)`
+
+Create a new `CommitDiffEntity` instance. Pass `None` for no initial data.
+
 #### `ConnectionRequest(data=None)`
 
 Create a new `ConnectionRequestEntity` instance. Pass `None` for no initial data.
@@ -405,6 +773,18 @@ Create a new `ConnectionRequestEntity` instance. Pass `None` for no initial data
 #### `ConnectionSource(data=None)`
 
 Create a new `ConnectionSourceEntity` instance. Pass `None` for no initial data.
+
+#### `ContactSubmission(data=None)`
+
+Create a new `ContactSubmissionEntity` instance. Pass `None` for no initial data.
+
+#### `ControlComputer(data=None)`
+
+Create a new `ControlComputerEntity` instance. Pass `None` for no initial data.
+
+#### `ControlComputerControlOperation(data=None)`
+
+Create a new `ControlComputerControlOperationEntity` instance. Pass `None` for no initial data.
 
 #### `CoordinationWait(data=None)`
 
@@ -446,13 +826,109 @@ Create a new `DemoShareEntity` instance. Pass `None` for no initial data.
 
 Create a new `DemoShareSegmentEntity` instance. Pass `None` for no initial data.
 
+#### `Deployment(data=None)`
+
+Create a new `DeploymentEntity` instance. Pass `None` for no initial data.
+
 #### `DeploymentDashboardNomad(data=None)`
 
 Create a new `DeploymentDashboardNomadEntity` instance. Pass `None` for no initial data.
 
+#### `DeploymentDetail(data=None)`
+
+Create a new `DeploymentDetailEntity` instance. Pass `None` for no initial data.
+
 #### `DeploymentFile(data=None)`
 
 Create a new `DeploymentFileEntity` instance. Pass `None` for no initial data.
+
+#### `DeploymentLog(data=None)`
+
+Create a new `DeploymentLogEntity` instance. Pass `None` for no initial data.
+
+#### `DeploymentMetric(data=None)`
+
+Create a new `DeploymentMetricEntity` instance. Pass `None` for no initial data.
+
+#### `DeploymentPreview(data=None)`
+
+Create a new `DeploymentPreviewEntity` instance. Pass `None` for no initial data.
+
+#### `DeploymentSetting(data=None)`
+
+Create a new `DeploymentSettingEntity` instance. Pass `None` for no initial data.
+
+#### `DesktopLocalAgentModel(data=None)`
+
+Create a new `DesktopLocalAgentModelEntity` instance. Pass `None` for no initial data.
+
+#### `DesktopLocalAgentResponse(data=None)`
+
+Create a new `DesktopLocalAgentResponseEntity` instance. Pass `None` for no initial data.
+
+#### `Device(data=None)`
+
+Create a new `DeviceEntity` instance. Pass `None` for no initial data.
+
+#### `DeviceBrowserOperation(data=None)`
+
+Create a new `DeviceBrowserOperationEntity` instance. Pass `None` for no initial data.
+
+#### `DeviceControlMessage(data=None)`
+
+Create a new `DeviceControlMessageEntity` instance. Pass `None` for no initial data.
+
+#### `DeviceControlOperation(data=None)`
+
+Create a new `DeviceControlOperationEntity` instance. Pass `None` for no initial data.
+
+#### `DeviceEnterpriseRelay(data=None)`
+
+Create a new `DeviceEnterpriseRelayEntity` instance. Pass `None` for no initial data.
+
+#### `DeviceFolderListing(data=None)`
+
+Create a new `DeviceFolderListingEntity` instance. Pass `None` for no initial data.
+
+#### `DeviceGrant(data=None)`
+
+Create a new `DeviceGrantEntity` instance. Pass `None` for no initial data.
+
+#### `DeviceInvocation(data=None)`
+
+Create a new `DeviceInvocationEntity` instance. Pass `None` for no initial data.
+
+#### `DeviceLocalEvent(data=None)`
+
+Create a new `DeviceLocalEventEntity` instance. Pass `None` for no initial data.
+
+#### `DevicePairing(data=None)`
+
+Create a new `DevicePairingEntity` instance. Pass `None` for no initial data.
+
+#### `DeviceProject(data=None)`
+
+Create a new `DeviceProjectEntity` instance. Pass `None` for no initial data.
+
+#### `DeviceScheduledCheckIn(data=None)`
+
+Create a new `DeviceScheduledCheckInEntity` instance. Pass `None` for no initial data.
+
+#### `DockerBuilder(data=None)`
+
+Create a new `DockerBuilderEntity` instance. Pass `None` for no initial data.
+
+#### `DockerBuilderSession(data=None)`
+
+Create a new `DockerBuilderSessionEntity` instance. Pass `None` for no initial data.
+
+#### `DockerBuilderSetting(data=None)`
+
+Create a new `DockerBuilderSettingEntity` instance. Pass `None` for no initial data.
+
+#### `DomainDnsIntegration(data=None)`
+
+Create a new `DomainDnsIntegrationEntity` instance. Pass `None` for no initial data.
 
 #### `DomainPathRule(data=None)`
 
@@ -461,6 +937,14 @@ Create a new `DomainPathRuleEntity` instance. Pass `None` for no initial data.
 #### `Dream(data=None)`
 
 Create a new `DreamEntity` instance. Pass `None` for no initial data.
+
+#### `Edge(data=None)`
+
+Create a new `EdgeEntity` instance. Pass `None` for no initial data.
+
+#### `EmailVerification(data=None)`
+
+Create a new `EmailVerificationEntity` instance. Pass `None` for no initial data.
 
 #### `Environment(data=None)`
 
@@ -494,6 +978,22 @@ Create a new `EnvironmentTestAccountEntity` instance. Pass `None` for no initial
 
 Create a new `EvidenceEntity` instance. Pass `None` for no initial data.
 
+#### `ExecutionDesiredState(data=None)`
+
+Create a new `ExecutionDesiredStateEntity` instance. Pass `None` for no initial data.
+
+#### `ExecutionReconcilerTick(data=None)`
+
+Create a new `ExecutionReconcilerTickEntity` instance. Pass `None` for no initial data.
+
+#### `ExecutionRelease(data=None)`
+
+Create a new `ExecutionReleaseEntity` instance. Pass `None` for no initial data.
+
+#### `ExecutionRuntimeInstance(data=None)`
+
+Create a new `ExecutionRuntimeInstanceEntity` instance. Pass `None` for no initial data.
+
 #### `Exploration(data=None)`
 
 Create a new `ExplorationEntity` instance. Pass `None` for no initial data.
@@ -514,17 +1014,145 @@ Create a new `ExplorationScenarioEntity` instance. Pass `None` for no initial da
 
 Create a new `FindingEntity` instance. Pass `None` for no initial data.
 
+#### `Gh(data=None)`
+
+Create a new `GhEntity` instance. Pass `None` for no initial data.
+
+#### `GitImport(data=None)`
+
+Create a new `GitImportEntity` instance. Pass `None` for no initial data.
+
+#### `Github(data=None)`
+
+Create a new `GithubEntity` instance. Pass `None` for no initial data.
+
+#### `GithubApp(data=None)`
+
+Create a new `GithubAppEntity` instance. Pass `None` for no initial data.
+
+#### `GithubAppImportableRepository(data=None)`
+
+Create a new `GithubAppImportableRepositoryEntity` instance. Pass `None` for no initial data.
+
+#### `GithubAppInstallation(data=None)`
+
+Create a new `GithubAppInstallationEntity` instance. Pass `None` for no initial data.
+
+#### `GithubAppInstallationAuthorization(data=None)`
+
+Create a new `GithubAppInstallationAuthorizationEntity` instance. Pass `None` for no initial data.
+
+#### `GithubAppUserAuthorization(data=None)`
+
+Create a new `GithubAppUserAuthorizationEntity` instance. Pass `None` for no initial data.
+
+#### `GithubCiRepository(data=None)`
+
+Create a new `GithubCiRepositoryEntity` instance. Pass `None` for no initial data.
+
+#### `GithubCiRepositoryCompatibilityReport(data=None)`
+
+Create a new `GithubCiRepositoryCompatibilityReportEntity` instance. Pass `None` for no initial data.
+
 #### `GithubConnection(data=None)`
 
 Create a new `GithubConnectionEntity` instance. Pass `None` for no initial data.
+
+#### `GithubIntegration(data=None)`
+
+Create a new `GithubIntegrationEntity` instance. Pass `None` for no initial data.
+
+#### `GithubOnboarding(data=None)`
+
+Create a new `GithubOnboardingEntity` instance. Pass `None` for no initial data.
+
+#### `GithubOnboardingBranch(data=None)`
+
+Create a new `GithubOnboardingBranchEntity` instance. Pass `None` for no initial data.
+
+#### `GithubOnboardingImport(data=None)`
+
+Create a new `GithubOnboardingImportEntity` instance. Pass `None` for no initial data.
+
+#### `GithubOnboardingImportBatch(data=None)`
+
+Create a new `GithubOnboardingImportBatchEntity` instance. Pass `None` for no initial data.
+
+#### `GithubOnboardingImportItem(data=None)`
+
+Create a new `GithubOnboardingImportItemEntity` instance. Pass `None` for no initial data.
+
+#### `GithubPullRequest(data=None)`
+
+Create a new `GithubPullRequestEntity` instance. Pass `None` for no initial data.
+
+#### `GithubRunnerAdmission(data=None)`
+
+Create a new `GithubRunnerAdmissionEntity` instance. Pass `None` for no initial data.
+
+#### `GithubRunnerCache(data=None)`
+
+Create a new `GithubRunnerCacheEntity` instance. Pass `None` for no initial data.
+
+#### `GithubRunnerEgress(data=None)`
+
+Create a new `GithubRunnerEgressEntity` instance. Pass `None` for no initial data.
+
+#### `GithubRunnerHistory(data=None)`
+
+Create a new `GithubRunnerHistoryEntity` instance. Pass `None` for no initial data.
+
+#### `GithubRunnerImage(data=None)`
+
+Create a new `GithubRunnerImageEntity` instance. Pass `None` for no initial data.
+
+#### `GithubRunnerPool(data=None)`
+
+Create a new `GithubRunnerPoolEntity` instance. Pass `None` for no initial data.
+
+#### `GithubRunnerSetup(data=None)`
+
+Create a new `GithubRunnerSetupEntity` instance. Pass `None` for no initial data.
+
+#### `Gitlab(data=None)`
+
+Create a new `GitlabEntity` instance. Pass `None` for no initial data.
+
+#### `GitlabConnection(data=None)`
+
+Create a new `GitlabConnectionEntity` instance. Pass `None` for no initial data.
+
+#### `GitlabImport(data=None)`
+
+Create a new `GitlabImportEntity` instance. Pass `None` for no initial data.
+
+#### `GitlabOauth(data=None)`
+
+Create a new `GitlabOauthEntity` instance. Pass `None` for no initial data.
+
+#### `GrantAllAgent(data=None)`
+
+Create a new `GrantAllAgentEntity` instance. Pass `None` for no initial data.
 
 #### `HostingAppDomain(data=None)`
 
 Create a new `HostingAppDomainEntity` instance. Pass `None` for no initial data.
 
+#### `IdentityOrganization(data=None)`
+
+Create a new `IdentityOrganizationEntity` instance. Pass `None` for no initial data.
+
 #### `ImageRepository(data=None)`
 
 Create a new `ImageRepositoryEntity` instance. Pass `None` for no initial data.
+
+#### `ImageRepositoryTag(data=None)`
+
+Create a new `ImageRepositoryTagEntity` instance. Pass `None` for no initial data.
+
+#### `ImportBranchPolicy(data=None)`
+
+Create a new `ImportBranchPolicyEntity` instance. Pass `None` for no initial data.
 
 #### `Integration(data=None)`
 
@@ -538,6 +1166,22 @@ Create a new `InteractionResponseEntity` instance. Pass `None` for no initial da
 
 Create a new `InvitationEntity` instance. Pass `None` for no initial data.
 
+#### `InvocationControl(data=None)`
+
+Create a new `InvocationControlEntity` instance. Pass `None` for no initial data.
+
+#### `JobLogChunk(data=None)`
+
+Create a new `JobLogChunkEntity` instance. Pass `None` for no initial data.
+
+#### `JobStep(data=None)`
+
+Create a new `JobStepEntity` instance. Pass `None` for no initial data.
+
+#### `JobWorkspace(data=None)`
+
+Create a new `JobWorkspaceEntity` instance. Pass `None` for no initial data.
+
 #### `JourneyVariantReplay(data=None)`
 
 Create a new `JourneyVariantReplayEntity` instance. Pass `None` for no initial data.
@@ -545,6 +1189,54 @@ Create a new `JourneyVariantReplayEntity` instance. Pass `None` for no initial d
 #### `Knowledge(data=None)`
 
 Create a new `KnowledgeEntity` instance. Pass `None` for no initial data.
+
+#### `Known(data=None)`
+
+Create a new `KnownEntity` instance. Pass `None` for no initial data.
+
+#### `Label(data=None)`
+
+Create a new `LabelEntity` instance. Pass `None` for no initial data.
+
+#### `LeaseArtifact(data=None)`
+
+Create a new `LeaseArtifactEntity` instance. Pass `None` for no initial data.
+
+#### `LeaseCache(data=None)`
+
+Create a new `LeaseCacheEntity` instance. Pass `None` for no initial data.
+
+#### `LeaseLogChunk(data=None)`
+
+Create a new `LeaseLogChunkEntity` instance. Pass `None` for no initial data.
+
+#### `LeaseReconciliation(data=None)`
+
+Create a new `LeaseReconciliationEntity` instance. Pass `None` for no initial data.
+
+#### `LeaseStep(data=None)`
+
+Create a new `LeaseStepEntity` instance. Pass `None` for no initial data.
+
+#### `LeaseVerifyDiagnostic(data=None)`
+
+Create a new `LeaseVerifyDiagnosticEntity` instance. Pass `None` for no initial data.
+
+#### `LeaseVerifySecret(data=None)`
+
+Create a new `LeaseVerifySecretEntity` instance. Pass `None` for no initial data.
+
+#### `LeaseWorkspace(data=None)`
+
+Create a new `LeaseWorkspaceEntity` instance. Pass `None` for no initial data.
+
+#### `LocalAgentDecision(data=None)`
+
+Create a new `LocalAgentDecisionEntity` instance. Pass `None` for no initial data.
+
+#### `LocalAgentResponse(data=None)`
+
+Create a new `LocalAgentResponseEntity` instance. Pass `None` for no initial data.
 
 #### `LocalThreadDelivery(data=None)`
 
@@ -557,6 +1249,22 @@ Create a new `LocalThreadOperationEntity` instance. Pass `None` for no initial d
 #### `Location(data=None)`
 
 Create a new `LocationEntity` instance. Pass `None` for no initial data.
+
+#### `LogStreamChunk(data=None)`
+
+Create a new `LogStreamChunkEntity` instance. Pass `None` for no initial data.
+
+#### `LogoImage(data=None)`
+
+Create a new `LogoImageEntity` instance. Pass `None` for no initial data.
+
+#### `MarketingSetting(data=None)`
+
+Create a new `MarketingSettingEntity` instance. Pass `None` for no initial data.
+
+#### `McpOauth(data=None)`
+
+Create a new `McpOauthEntity` instance. Pass `None` for no initial data.
 
 #### `Me(data=None)`
 
@@ -582,9 +1290,17 @@ Create a new `MemberEntity` instance. Pass `None` for no initial data.
 
 Create a new `MemoryEntity` instance. Pass `None` for no initial data.
 
+#### `MergeQueueEntry(data=None)`
+
+Create a new `MergeQueueEntryEntity` instance. Pass `None` for no initial data.
+
 #### `MergeRequest(data=None)`
 
 Create a new `MergeRequestEntity` instance. Pass `None` for no initial data.
+
+#### `MergeResolution(data=None)`
+
+Create a new `MergeResolutionEntity` instance. Pass `None` for no initial data.
 
 #### `MessagingConversationMessage(data=None)`
 
@@ -598,9 +1314,37 @@ Create a new `MessagingConversationUploadEntity` instance. Pass `None` for no in
 
 Create a new `MetricQueryEntity` instance. Pass `None` for no initial data.
 
+#### `MetronomeWebhook(data=None)`
+
+Create a new `MetronomeWebhookEntity` instance. Pass `None` for no initial data.
+
+#### `ModelSubscriptionAccount(data=None)`
+
+Create a new `ModelSubscriptionAccountEntity` instance. Pass `None` for no initial data.
+
+#### `ModelSubscriptionAccountConnection(data=None)`
+
+Create a new `ModelSubscriptionAccountConnectionEntity` instance. Pass `None` for no initial data.
+
 #### `NetworkConnection(data=None)`
 
 Create a new `NetworkConnectionEntity` instance. Pass `None` for no initial data.
+
+#### `NetworkingSpace(data=None)`
+
+Create a new `NetworkingSpaceEntity` instance. Pass `None` for no initial data.
+
+#### `Node(data=None)`
+
+Create a new `NodeEntity` instance. Pass `None` for no initial data.
+
+#### `NodeCertificate(data=None)`
+
+Create a new `NodeCertificateEntity` instance. Pass `None` for no initial data.
+
+#### `NodeLease(data=None)`
+
+Create a new `NodeLeaseEntity` instance. Pass `None` for no initial data.
 
 #### `NomadAllocation(data=None)`
 
@@ -610,9 +1354,113 @@ Create a new `NomadAllocationEntity` instance. Pass `None` for no initial data.
 
 Create a new `NomadLogEntity` instance. Pass `None` for no initial data.
 
+#### `Now(data=None)`
+
+Create a new `NowEntity` instance. Pass `None` for no initial data.
+
+#### `ObservabilityClickhouseCluster(data=None)`
+
+Create a new `ObservabilityClickhouseClusterEntity` instance. Pass `None` for no initial data.
+
+#### `ObservabilityQuickwitCluster(data=None)`
+
+Create a new `ObservabilityQuickwitClusterEntity` instance. Pass `None` for no initial data.
+
+#### `ObservabilitySpace(data=None)`
+
+Create a new `ObservabilitySpaceEntity` instance. Pass `None` for no initial data.
+
+#### `Openapi(data=None)`
+
+Create a new `OpenapiEntity` instance. Pass `None` for no initial data.
+
+#### `OrgInvitation(data=None)`
+
+Create a new `OrgInvitationEntity` instance. Pass `None` for no initial data.
+
 #### `Organization(data=None)`
 
 Create a new `OrganizationEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationApp(data=None)`
+
+Create a new `OrganizationAppEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationControl(data=None)`
+
+Create a new `OrganizationControlEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationDevice(data=None)`
+
+Create a new `OrganizationDeviceEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationIdentityCertificate(data=None)`
+
+Create a new `OrganizationIdentityCertificateEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationInteraction(data=None)`
+
+Create a new `OrganizationInteractionEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationInvitation(data=None)`
+
+Create a new `OrganizationInvitationEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationMessageFile(data=None)`
+
+Create a new `OrganizationMessageFileEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationOidcTrust(data=None)`
+
+Create a new `OrganizationOidcTrustEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationRunEvent(data=None)`
+
+Create a new `OrganizationRunEventEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationRunOutcome(data=None)`
+
+Create a new `OrganizationRunOutcomeEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationRunUsage(data=None)`
+
+Create a new `OrganizationRunUsageEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationSandbox(data=None)`
+
+Create a new `OrganizationSandboxEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationSecret(data=None)`
+
+Create a new `OrganizationSecretEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationServiceAccount(data=None)`
+
+Create a new `OrganizationServiceAccountEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationSetting(data=None)`
+
+Create a new `OrganizationSettingEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationSite(data=None)`
+
+Create a new `OrganizationSiteEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationSubscription(data=None)`
+
+Create a new `OrganizationSubscriptionEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationTool(data=None)`
+
+Create a new `OrganizationToolEntity` instance. Pass `None` for no initial data.
+
+#### `OrganizationWorkloadIdentity(data=None)`
+
+Create a new `OrganizationWorkloadIdentityEntity` instance. Pass `None` for no initial data.
+
+#### `OtelIngest(data=None)`
+
+Create a new `OtelIngestEntity` instance. Pass `None` for no initial data.
 
 #### `Page(data=None)`
 
@@ -622,9 +1470,33 @@ Create a new `PageEntity` instance. Pass `None` for no initial data.
 
 Create a new `PageAgentEntity` instance. Pass `None` for no initial data.
 
+#### `PageArtefact(data=None)`
+
+Create a new `PageArtefactEntity` instance. Pass `None` for no initial data.
+
+#### `PageCiPipelineRun(data=None)`
+
+Create a new `PageCiPipelineRunEntity` instance. Pass `None` for no initial data.
+
 #### `PageProjectRun(data=None)`
 
 Create a new `PageProjectRunEntity` instance. Pass `None` for no initial data.
+
+#### `PageRepoVcCommit(data=None)`
+
+Create a new `PageRepoVcCommitEntity` instance. Pass `None` for no initial data.
+
+#### `PagesBilling(data=None)`
+
+Create a new `PagesBillingEntity` instance. Pass `None` for no initial data.
+
+#### `PagesGithubOnboarding(data=None)`
+
+Create a new `PagesGithubOnboardingEntity` instance. Pass `None` for no initial data.
+
+#### `PagesMember(data=None)`
+
+Create a new `PagesMemberEntity` instance. Pass `None` for no initial data.
 
 #### `PagesProjectCredential(data=None)`
 
@@ -641,6 +1513,30 @@ Create a new `PagesProjectRunEntity` instance. Pass `None` for no initial data.
 #### `PagesProjectScenario(data=None)`
 
 Create a new `PagesProjectScenarioEntity` instance. Pass `None` for no initial data.
+
+#### `PagesRegistry(data=None)`
+
+Create a new `PagesRegistryEntity` instance. Pass `None` for no initial data.
+
+#### `PagesSession(data=None)`
+
+Create a new `PagesSessionEntity` instance. Pass `None` for no initial data.
+
+#### `Pairing(data=None)`
+
+Create a new `PairingEntity` instance. Pass `None` for no initial data.
+
+#### `PairingEvent(data=None)`
+
+Create a new `PairingEventEntity` instance. Pass `None` for no initial data.
+
+#### `ParallelV1(data=None)`
+
+Create a new `ParallelV1Entity` instance. Pass `None` for no initial data.
+
+#### `PatchsetDiff(data=None)`
+
+Create a new `PatchsetDiffEntity` instance. Pass `None` for no initial data.
 
 #### `PersonalAccessToken(data=None)`
 
@@ -661,6 +1557,14 @@ Create a new `PreviewSecretEntity` instance. Pass `None` for no initial data.
 #### `PreviewSharingApproval(data=None)`
 
 Create a new `PreviewSharingApprovalEntity` instance. Pass `None` for no initial data.
+
+#### `ProactiveAgentWaitlistEntry(data=None)`
+
+Create a new `ProactiveAgentWaitlistEntryEntity` instance. Pass `None` for no initial data.
+
+#### `Product(data=None)`
+
+Create a new `ProductEntity` instance. Pass `None` for no initial data.
 
 #### `ProductMapIdentityDecision(data=None)`
 
@@ -758,6 +1662,14 @@ Create a new `ProjectSettingEntity` instance. Pass `None` for no initial data.
 
 Create a new `PullRequestEntity` instance. Pass `None` for no initial data.
 
+#### `PullRequestAction(data=None)`
+
+Create a new `PullRequestActionEntity` instance. Pass `None` for no initial data.
+
+#### `PullRequestMagicMerge(data=None)`
+
+Create a new `PullRequestMagicMergeEntity` instance. Pass `None` for no initial data.
+
 #### `PullRequestSetting(data=None)`
 
 Create a new `PullRequestSettingEntity` instance. Pass `None` for no initial data.
@@ -769,6 +1681,14 @@ Create a new `PullRequestSettingAddRepositoryEntity` instance. Pass `None` for n
 #### `PullRequestSettingDetectComment(data=None)`
 
 Create a new `PullRequestSettingDetectCommentEntity` instance. Pass `None` for no initial data.
+
+#### `PullRequestTranscript(data=None)`
+
+Create a new `PullRequestTranscriptEntity` instance. Pass `None` for no initial data.
+
+#### `PullZone(data=None)`
+
+Create a new `PullZoneEntity` instance. Pass `None` for no initial data.
 
 #### `Recorder(data=None)`
 
@@ -782,9 +1702,73 @@ Create a new `RegistryEntity` instance. Pass `None` for no initial data.
 
 Create a new `RegistryV2Entity` instance. Pass `None` for no initial data.
 
+#### `RelayAgentConnection(data=None)`
+
+Create a new `RelayAgentConnectionEntity` instance. Pass `None` for no initial data.
+
 #### `RelayAgentLocalThread(data=None)`
 
 Create a new `RelayAgentLocalThreadEntity` instance. Pass `None` for no initial data.
+
+#### `RelaySignal(data=None)`
+
+Create a new `RelaySignalEntity` instance. Pass `None` for no initial data.
+
+#### `ReleaseRollout(data=None)`
+
+Create a new `ReleaseRolloutEntity` instance. Pass `None` for no initial data.
+
+#### `Repo(data=None)`
+
+Create a new `RepoEntity` instance. Pass `None` for no initial data.
+
+#### `RepoAccessToken(data=None)`
+
+Create a new `RepoAccessTokenEntity` instance. Pass `None` for no initial data.
+
+#### `RepoAction(data=None)`
+
+Create a new `RepoActionEntity` instance. Pass `None` for no initial data.
+
+#### `RepoAgentCheckpoint(data=None)`
+
+Create a new `RepoAgentCheckpointEntity` instance. Pass `None` for no initial data.
+
+#### `RepoAgentSession(data=None)`
+
+Create a new `RepoAgentSessionEntity` instance. Pass `None` for no initial data.
+
+#### `RepoBookmarkProtection(data=None)`
+
+Create a new `RepoBookmarkProtectionEntity` instance. Pass `None` for no initial data.
+
+#### `RepoBookmarkProtectionEvent(data=None)`
+
+Create a new `RepoBookmarkProtectionEventEntity` instance. Pass `None` for no initial data.
+
+#### `RepoCloudWorkspaceBackup(data=None)`
+
+Create a new `RepoCloudWorkspaceBackupEntity` instance. Pass `None` for no initial data.
+
+#### `RepoCodeRule(data=None)`
+
+Create a new `RepoCodeRuleEntity` instance. Pass `None` for no initial data.
+
+#### `RepoSetting(data=None)`
+
+Create a new `RepoSettingEntity` instance. Pass `None` for no initial data.
+
+#### `RepoStat(data=None)`
+
+Create a new `RepoStatEntity` instance. Pass `None` for no initial data.
+
+#### `RepoVc(data=None)`
+
+Create a new `RepoVcEntity` instance. Pass `None` for no initial data.
+
+#### `RepoVcCommit(data=None)`
+
+Create a new `RepoVcCommitEntity` instance. Pass `None` for no initial data.
 
 #### `ReportReplay(data=None)`
 
@@ -793,6 +1777,66 @@ Create a new `ReportReplayEntity` instance. Pass `None` for no initial data.
 #### `ReportScenario(data=None)`
 
 Create a new `ReportScenarioEntity` instance. Pass `None` for no initial data.
+
+#### `RepositoryAccess(data=None)`
+
+Create a new `RepositoryAccessEntity` instance. Pass `None` for no initial data.
+
+#### `RepositoryAccessResolve(data=None)`
+
+Create a new `RepositoryAccessResolveEntity` instance. Pass `None` for no initial data.
+
+#### `RepositoryEvent(data=None)`
+
+Create a new `RepositoryEventEntity` instance. Pass `None` for no initial data.
+
+#### `RepositoryImport(data=None)`
+
+Create a new `RepositoryImportEntity` instance. Pass `None` for no initial data.
+
+#### `RepositoryImportSession(data=None)`
+
+Create a new `RepositoryImportSessionEntity` instance. Pass `None` for no initial data.
+
+#### `RepositoryImportSessionRepository(data=None)`
+
+Create a new `RepositoryImportSessionRepositoryEntity` instance. Pass `None` for no initial data.
+
+#### `RepositoryImportSessionSelection(data=None)`
+
+Create a new `RepositoryImportSessionSelectionEntity` instance. Pass `None` for no initial data.
+
+#### `RepositorySandboxEnvironment(data=None)`
+
+Create a new `RepositorySandboxEnvironmentEntity` instance. Pass `None` for no initial data.
+
+#### `RoderCodeRepair(data=None)`
+
+Create a new `RoderCodeRepairEntity` instance. Pass `None` for no initial data.
+
+#### `RoderCodeRepairSetting(data=None)`
+
+Create a new `RoderCodeRepairSettingEntity` instance. Pass `None` for no initial data.
+
+#### `RoderMachine(data=None)`
+
+Create a new `RoderMachineEntity` instance. Pass `None` for no initial data.
+
+#### `RoderRun(data=None)`
+
+Create a new `RoderRunEntity` instance. Pass `None` for no initial data.
+
+#### `RoderWorkspaceCredential(data=None)`
+
+Create a new `RoderWorkspaceCredentialEntity` instance. Pass `None` for no initial data.
+
+#### `RunArtifact(data=None)`
+
+Create a new `RunArtifactEntity` instance. Pass `None` for no initial data.
+
+#### `RunJob(data=None)`
+
+Create a new `RunJobEntity` instance. Pass `None` for no initial data.
 
 #### `RunScenarioRun(data=None)`
 
@@ -810,6 +1854,30 @@ Create a new `RunSearchEntity` instance. Pass `None` for no initial data.
 
 Create a new `RunUpdateEntity` instance. Pass `None` for no initial data.
 
+#### `RunWorkspaceCredential(data=None)`
+
+Create a new `RunWorkspaceCredentialEntity` instance. Pass `None` for no initial data.
+
+#### `RunnerLease(data=None)`
+
+Create a new `RunnerLeaseEntity` instance. Pass `None` for no initial data.
+
+#### `RunnerPoolNodeEnrollmentToken(data=None)`
+
+Create a new `RunnerPoolNodeEnrollmentTokenEntity` instance. Pass `None` for no initial data.
+
+#### `RunnerPoolRunner(data=None)`
+
+Create a new `RunnerPoolRunnerEntity` instance. Pass `None` for no initial data.
+
+#### `RuntimeInstanceHealthSnapshot(data=None)`
+
+Create a new `RuntimeInstanceHealthSnapshotEntity` instance. Pass `None` for no initial data.
+
+#### `SandboxIntegration(data=None)`
+
+Create a new `SandboxIntegrationEntity` instance. Pass `None` for no initial data.
+
 #### `ScenarioRevision(data=None)`
 
 Create a new `ScenarioRevisionEntity` instance. Pass `None` for no initial data.
@@ -822,21 +1890,169 @@ Create a new `ScenarioRunLessonEntity` instance. Pass `None` for no initial data
 
 Create a new `ScenarioRunScenarioEditEntity` instance. Pass `None` for no initial data.
 
+#### `SecretGrant(data=None)`
+
+Create a new `SecretGrantEntity` instance. Pass `None` for no initial data.
+
+#### `SecretVersion(data=None)`
+
+Create a new `SecretVersionEntity` instance. Pass `None` for no initial data.
+
 #### `ServiceEndpoint(data=None)`
 
 Create a new `ServiceEndpointEntity` instance. Pass `None` for no initial data.
+
+#### `Setting(data=None)`
+
+Create a new `SettingEntity` instance. Pass `None` for no initial data.
+
+#### `SettingMutationLease(data=None)`
+
+Create a new `SettingMutationLeaseEntity` instance. Pass `None` for no initial data.
+
+#### `Signal(data=None)`
+
+Create a new `SignalEntity` instance. Pass `None` for no initial data.
+
+#### `SignalInbound(data=None)`
+
+Create a new `SignalInboundEntity` instance. Pass `None` for no initial data.
+
+#### `SignalIntegration(data=None)`
+
+Create a new `SignalIntegrationEntity` instance. Pass `None` for no initial data.
+
+#### `SignalIntegrationDelivery(data=None)`
+
+Create a new `SignalIntegrationDeliveryEntity` instance. Pass `None` for no initial data.
+
+#### `SignalIntegrationTarget(data=None)`
+
+Create a new `SignalIntegrationTargetEntity` instance. Pass `None` for no initial data.
+
+#### `SignalSubscription(data=None)`
+
+Create a new `SignalSubscriptionEntity` instance. Pass `None` for no initial data.
+
+#### `Site(data=None)`
+
+Create a new `SiteEntity` instance. Pass `None` for no initial data.
+
+#### `SiteAccessKey(data=None)`
+
+Create a new `SiteAccessKeyEntity` instance. Pass `None` for no initial data.
 
 #### `SitePreview(data=None)`
 
 Create a new `SitePreviewEntity` instance. Pass `None` for no initial data.
 
+#### `SiteSecret(data=None)`
+
+Create a new `SiteSecretEntity` instance. Pass `None` for no initial data.
+
 #### `SlackChannel(data=None)`
 
 Create a new `SlackChannelEntity` instance. Pass `None` for no initial data.
 
+#### `SourceConnection(data=None)`
+
+Create a new `SourceConnectionEntity` instance. Pass `None` for no initial data.
+
+#### `SpaceAlertRule(data=None)`
+
+Create a new `SpaceAlertRuleEntity` instance. Pass `None` for no initial data.
+
+#### `SpaceAuditEvent(data=None)`
+
+Create a new `SpaceAuditEventEntity` instance. Pass `None` for no initial data.
+
+#### `SpaceDnsRecord(data=None)`
+
+Create a new `SpaceDnsRecordEntity` instance. Pass `None` for no initial data.
+
+#### `SpaceEnrollmentToken(data=None)`
+
+Create a new `SpaceEnrollmentTokenEntity` instance. Pass `None` for no initial data.
+
+#### `SpaceGateway(data=None)`
+
+Create a new `SpaceGatewayEntity` instance. Pass `None` for no initial data.
+
+#### `SpaceGroup(data=None)`
+
+Create a new `SpaceGroupEntity` instance. Pass `None` for no initial data.
+
+#### `SpaceGroupMembership(data=None)`
+
+Create a new `SpaceGroupMembershipEntity` instance. Pass `None` for no initial data.
+
+#### `SpaceLogStream(data=None)`
+
+Create a new `SpaceLogStreamEntity` instance. Pass `None` for no initial data.
+
+#### `SpaceMetricSery(data=None)`
+
+Create a new `SpaceMetricSeryEntity` instance. Pass `None` for no initial data.
+
+#### `SpaceOtelCollector(data=None)`
+
+Create a new `SpaceOtelCollectorEntity` instance. Pass `None` for no initial data.
+
+#### `SpacePeer(data=None)`
+
+Create a new `SpacePeerEntity` instance. Pass `None` for no initial data.
+
+#### `SpacePeerAttachment(data=None)`
+
+Create a new `SpacePeerAttachmentEntity` instance. Pass `None` for no initial data.
+
+#### `SpacePolicy(data=None)`
+
+Create a new `SpacePolicyEntity` instance. Pass `None` for no initial data.
+
+#### `SpaceSegment(data=None)`
+
+Create a new `SpaceSegmentEntity` instance. Pass `None` for no initial data.
+
+#### `SpaceTraceSpan(data=None)`
+
+Create a new `SpaceTraceSpanEntity` instance. Pass `None` for no initial data.
+
+#### `Spark(data=None)`
+
+Create a new `SparkEntity` instance. Pass `None` for no initial data.
+
+#### `SparkAgentIntegration(data=None)`
+
+Create a new `SparkAgentIntegrationEntity` instance. Pass `None` for no initial data.
+
 #### `SparkAgentLocalThread(data=None)`
 
 Create a new `SparkAgentLocalThreadEntity` instance. Pass `None` for no initial data.
+
+#### `SparkAgentSite(data=None)`
+
+Create a new `SparkAgentSiteEntity` instance. Pass `None` for no initial data.
+
+#### `SparkAgentSkill(data=None)`
+
+Create a new `SparkAgentSkillEntity` instance. Pass `None` for no initial data.
+
+#### `SparkAgentThread(data=None)`
+
+Create a new `SparkAgentThreadEntity` instance. Pass `None` for no initial data.
+
+#### `SparkCredit(data=None)`
+
+Create a new `SparkCreditEntity` instance. Pass `None` for no initial data.
+
+#### `SparkCreditAgentUsage(data=None)`
+
+Create a new `SparkCreditAgentUsageEntity` instance. Pass `None` for no initial data.
+
+#### `SparkCreditUsageTotal(data=None)`
+
+Create a new `SparkCreditUsageTotalEntity` instance. Pass `None` for no initial data.
 
 #### `StaticSite(data=None)`
 
@@ -850,13 +2066,105 @@ Create a new `StaticSiteDeploymentEntity` instance. Pass `None` for no initial d
 
 Create a new `StaticSiteDomainEntity` instance. Pass `None` for no initial data.
 
+#### `StatusChange(data=None)`
+
+Create a new `StatusChangeEntity` instance. Pass `None` for no initial data.
+
+#### `StatusCommit(data=None)`
+
+Create a new `StatusCommitEntity` instance. Pass `None` for no initial data.
+
+#### `StatusPatchset(data=None)`
+
+Create a new `StatusPatchsetEntity` instance. Pass `None` for no initial data.
+
+#### `StripeWebhook(data=None)`
+
+Create a new `StripeWebhookEntity` instance. Pass `None` for no initial data.
+
+#### `SubmitTelemetry(data=None)`
+
+Create a new `SubmitTelemetryEntity` instance. Pass `None` for no initial data.
+
 #### `SubscriptionModel(data=None)`
 
 Create a new `SubscriptionModelEntity` instance. Pass `None` for no initial data.
 
+#### `SwarmEvent(data=None)`
+
+Create a new `SwarmEventEntity` instance. Pass `None` for no initial data.
+
+#### `SwarmLive(data=None)`
+
+Create a new `SwarmLiveEntity` instance. Pass `None` for no initial data.
+
+#### `SwarmNote(data=None)`
+
+Create a new `SwarmNoteEntity` instance. Pass `None` for no initial data.
+
+#### `SwarmTask(data=None)`
+
+Create a new `SwarmTaskEntity` instance. Pass `None` for no initial data.
+
+#### `TaskLease(data=None)`
+
+Create a new `TaskLeaseEntity` instance. Pass `None` for no initial data.
+
 #### `ThreadPreview(data=None)`
 
 Create a new `ThreadPreviewEntity` instance. Pass `None` for no initial data.
+
+#### `ThreadPreviewAccess(data=None)`
+
+Create a new `ThreadPreviewAccessEntity` instance. Pass `None` for no initial data.
+
+#### `ToolFeedback(data=None)`
+
+Create a new `ToolFeedbackEntity` instance. Pass `None` for no initial data.
+
+#### `Transcript(data=None)`
+
+Create a new `TranscriptEntity` instance. Pass `None` for no initial data.
+
+#### `V1Message(data=None)`
+
+Create a new `V1MessageEntity` instance. Pass `None` for no initial data.
+
+#### `VcBranch(data=None)`
+
+Create a new `VcBranchEntity` instance. Pass `None` for no initial data.
+
+#### `VcBrowser(data=None)`
+
+Create a new `VcBrowserEntity` instance. Pass `None` for no initial data.
+
+#### `VcChange(data=None)`
+
+Create a new `VcChangeEntity` instance. Pass `None` for no initial data.
+
+#### `VcChangeGroup(data=None)`
+
+Create a new `VcChangeGroupEntity` instance. Pass `None` for no initial data.
+
+#### `VcFile(data=None)`
+
+Create a new `VcFileEntity` instance. Pass `None` for no initial data.
+
+#### `VcMergeQueue(data=None)`
+
+Create a new `VcMergeQueueEntity` instance. Pass `None` for no initial data.
+
+#### `VcStack(data=None)`
+
+Create a new `VcStackEntity` instance. Pass `None` for no initial data.
+
+#### `VcsNode(data=None)`
+
+Create a new `VcsNodeEntity` instance. Pass `None` for no initial data.
+
+#### `VcsSetting(data=None)`
+
+Create a new `VcsSettingEntity` instance. Pass `None` for no initial data.
 
 #### `VerificationProjectCredential(data=None)`
 
@@ -882,6 +2190,14 @@ Create a new `VerifyAppDomainEntity` instance. Pass `None` for no initial data.
 
 Create a new `VerifyBrowserSessionEntity` instance. Pass `None` for no initial data.
 
+#### `VerifyEmailVerification(data=None)`
+
+Create a new `VerifyEmailVerificationEntity` instance. Pass `None` for no initial data.
+
+#### `VerifySignalIntegration(data=None)`
+
+Create a new `VerifySignalIntegrationEntity` instance. Pass `None` for no initial data.
+
 #### `VerifyStaticSiteDomain(data=None)`
 
 Create a new `VerifyStaticSiteDomainEntity` instance. Pass `None` for no initial data.
@@ -890,9 +2206,17 @@ Create a new `VerifyStaticSiteDomainEntity` instance. Pass `None` for no initial
 
 Create a new `VersionLogEntity` instance. Pass `None` for no initial data.
 
+#### `WaitlistApplication(data=None)`
+
+Create a new `WaitlistApplicationEntity` instance. Pass `None` for no initial data.
+
 #### `WebBotAuth(data=None)`
 
 Create a new `WebBotAuthEntity` instance. Pass `None` for no initial data.
+
+#### `WebhookGitlab(data=None)`
+
+Create a new `WebhookGitlabEntity` instance. Pass `None` for no initial data.
 
 #### `WorkflowRunStep(data=None)`
 
@@ -905,6 +2229,22 @@ Create a new `WorkflowRunStopNoticeEntity` instance. Pass `None` for no initial 
 #### `WorkflowTriggerSkipped(data=None)`
 
 Create a new `WorkflowTriggerSkippedEntity` instance. Pass `None` for no initial data.
+
+#### `WorkspaceActivity(data=None)`
+
+Create a new `WorkspaceActivityEntity` instance. Pass `None` for no initial data.
+
+#### `WorkspaceActivityNotification(data=None)`
+
+Create a new `WorkspaceActivityNotificationEntity` instance. Pass `None` for no initial data.
+
+#### `WorkspaceSpace(data=None)`
+
+Create a new `WorkspaceSpaceEntity` instance. Pass `None` for no initial data.
+
+#### `WorkspaceSpacePreference(data=None)`
+
+Create a new `WorkspaceSpacePreferenceEntity` instance. Pass `None` for no initial data.
 
 #### `options_map() -> dict`
 
@@ -934,6 +2274,158 @@ Make a direct HTTP request to any API endpoint. Returns a result `dict` with `ok
 #### `prepare(fetchargs=None) -> dict`
 
 Prepare a fetch definition without sending. Returns the `fetchdef` and raises on error.
+
+
+---
+
+## A2aWellKnownEntity
+
+```python
+a2a_well_known = client.A2aWellKnown()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> A2aWellKnownEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `A2aWellKnownEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AdminOrgEntity
+
+```python
+admin_org = client.AdminOrg()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `billing_email` | `str | None` | Yes |  |
+| `billing_reason` | `str` | No | Required when setting an agreed price |
+| `customize_onboarding_packages` | `bool` | No |  |
+| `deployment_usage_visibility` | `str` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `id` | `str` | Yes |  |
+| `monthly_price_dollars` | `str | float` | No | Ongoing USD workspace price, for example '50.00' |
+| `monthly_price_override_cents` | `int | None` | Yes |  |
+| `name` | `str` | Yes |  |
+| `onboarding_custom_pricing` | `bool` | No |  |
+| `onboarding_package_keys` | `list | None` | No | Package keys offered when customizing onboarding. |
+| `owner_email` | `str` | Yes |  |
+| `package_id` | `str | None` | Yes | Active customer package public ID. |
+| `skip_payment` | `bool` | No | Grant the selected package as an ongoing complimentary subscription with monthly included usage and package limits. |
+| `slug` | `str` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update |
+| --- | --- | --- | --- | --- |
+| `billing_email` | - | - | - | - |
+| `billing_reason` | - | - | - | - |
+| `customize_onboarding_packages` | - | - | - | - |
+| `deployment_usage_visibility` | - | - | - | - |
+| `deployment_usage_visible` | - | - | - | - |
+| `id` | - | - | - | - |
+| `monthly_price_dollars` | - | - | - | - |
+| `monthly_price_override_cents` | - | - | - | - |
+| `name` | - | - | - | - |
+| `onboarding_custom_pricing` | - | - | - | - |
+| `onboarding_package_keys` | - | - | - | - |
+| `owner_email` | - | - | - | - |
+| `package_id` | - | - | Yes | - |
+| `skip_payment` | - | - | - | - |
+| `slug` | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> AdminOrgEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.AdminOrg().create({
+    "name": "example_name",  # str
+    "owner_email": "example_owner_email",  # str
+    "slug": "example_slug",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[AdminOrgEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.AdminOrg().list()
+for admin_org in results:
+    print(admin_org.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> AdminOrgEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.AdminOrg().load({"id": "admin_org_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> AdminOrgEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AdminOrgEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
 
 
 ---
@@ -1102,6 +2594,153 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AgentEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AgentAppEntity
+
+```python
+agent_app = client.AgentApp()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `author` | `dict` | Yes |  |
+| `can_message` | `bool` | Yes | The viewer may send input to the author agent |
+| `deployments_count` | `int` | Yes | Increases with every deploy of the site |
+| `description` | `str` | Yes |  |
+| `hidden_install_count` | `int` | Yes | Installs by agents the viewer cannot open |
+| `id` | `str` | Yes |  |
+| `install_count` | `int` | Yes |  |
+| `install_targets` | `list` | Yes | Active agents the viewer owns or manages, which they can install apps on |
+| `installed_by` | `list` | Yes |  |
+| `installed_target_ids` | `list` | Yes | Install targets of the viewer that have this app installed |
+| `items` | `list` | Yes |  |
+| `mcp_url` | `str | None` | Yes |  |
+| `next_cursor` | `str | None` | Yes | Pass as cursor to load older apps |
+| `owner` | `dict` | Yes | The person who controls the author agent |
+| `thread` | `Any` | Yes | The thread that published the app, when the viewer can open the author agent |
+| `title` | `str` | Yes |  |
+| `url` | `str` | Yes |  |
+| `visibility` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> AgentAppEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `list(reqmatch=None, ctrl=None) -> list[AgentAppEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.AgentApp().list({"organization_id": "example"})
+for agent_app in results:
+    print(agent_app.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> AgentAppEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.AgentApp().load({"id": "agent_app_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentAppEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AgentAppInstallEntity
+
+```python
+agent_app_install = client.AgentAppInstall()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+| `installed` | `bool` | Yes |  |
+
+### Operations
+
+#### `remove(reqmatch, ctrl=None) -> AgentAppInstallEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.AgentAppInstall().remove({"id": "agent_app_install_id", "agent_app_id": "agent_app_id", "organization_id": "organization_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> AgentAppInstallEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.AgentAppInstall().update({
+    "id": "agent_app_install_id",
+    "agent_app_id": "agent_app_id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentAppInstallEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -1415,49 +3054,48 @@ agent_connection = client.AgentConnection()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `agent_card_url` | `str` | Yes |  |
-| `auth_scheme` | `str` | Yes |  |
-| `can_configure` | `bool` | Yes |  |
-| `can_disconnect` | `bool` | Yes |  |
-| `can_setup` | `bool` | Yes |  |
+| `actions` | `list` | Yes |  |
+| `activity` | `list` | Yes |  |
+| `admin_disabled_at` | `str | None` | No |  |
+| `agent_tools` | `bool` | No |  |
+| `authentication` | `str` | Yes |  |
+| `authorized_at` | `str | None` | Yes |  |
+| `can_create_account` | `bool` | No | Whether another account can be created directly from this provider. |
+| `capabilities` | `dict` | Yes |  |
+| `catalog_section` | `str` | No | Server-owned grouping in the agent integration catalog. |
+| `category` | `str` | No | Short product label, such as CRM or Email. |
+| `certification` | `str` | Yes |  |
+| `checked_at` | `str | None` | Yes |  |
 | `connection` | `dict` | Yes |  |
-| `credential` | `str | None` | No | Write-only outbound key. |
-| `error_code` | `str | None` | Yes |  |
-| `expected_generation` | `int` | Yes |  |
+| `consent` | `dict | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `creation_key` | `str` | No | Reuse the same key to recover the account after an interrupted response. |
+| `custodian_id` | `str | None` | Yes |  |
+| `description` | `str` | No | One-line catalog description of the app. |
+| `disabled_reason` | `str | None` | No |  |
+| `failure_code` | `str | None` | Yes |  |
 | `generation` | `int` | Yes |  |
+| `grants` | `list` | Yes |  |
+| `grants_pagination` | `dict` | Yes |  |
 | `id` | `str` | Yes |  |
+| `limits` | `dict` | Yes |  |
 | `name` | `str` | Yes |  |
-| `remote_agent` | `str | None` | Yes |  |
-| `requester_id` | `str` | Yes |  |
-| `retired_at` | `str | None` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `owner_name` | `str` | No |  |
+| `ownership_kind` | `str` | Yes |  |
+| `pagination` | `dict` | Yes |  |
+| `policy_digest` | `str` | Yes |  |
+| `provider` | `dict` | Yes |  |
+| `provider_disabled_reason` | `str | None` | No |  |
+| `provider_identity` | `dict` | Yes |  |
 | `revoked_at` | `str | None` | Yes |  |
-| `scope_key` | `str` | Yes |  |
-| `source_operation_id` | `str | None` | Yes |  |
-| `state` | `str` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `agent_card_url` | - | - | - | - | - |
-| `auth_scheme` | - | - | - | - | - |
-| `can_configure` | - | - | - | - | - |
-| `can_disconnect` | - | - | - | - | - |
-| `can_setup` | - | - | - | - | - |
-| `connection` | - | - | - | - | - |
-| `credential` | - | - | - | - | - |
-| `error_code` | - | - | - | - | - |
-| `expected_generation` | - | - | - | - | - |
-| `generation` | - | - | - | - | - |
-| `id` | - | - | - | - | - |
-| `name` | - | - | - | - | - |
-| `remote_agent` | - | - | Yes | Yes | - |
-| `requester_id` | - | - | - | - | - |
-| `retired_at` | - | - | - | - | - |
-| `revoked_at` | - | - | - | - | - |
-| `scope_key` | - | - | - | - | - |
-| `source_operation_id` | - | - | Yes | - | - |
-| `state` | - | - | - | - | - |
+| `schema_version` | `int` | Yes |  |
+| `status` | `str` | Yes |  |
+| `toolkit` | `str` | Yes |  |
+| `triggers` | `list` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `user_id` | `str` | Yes |  |
+| `version` | `str` | Yes |  |
 
 ### Operations
 
@@ -1467,11 +3105,9 @@ Create a new entity with the given data. Returns the created entity and raises o
 
 ```python
 result = client.AgentConnection().create({
-    "agent_id": "example_agent_id",  # str
     "organization_id": "example_organization_id",  # str
-    "agent_card_url": "example_agent_card_url",  # str
-    "auth_scheme": "example_auth_scheme",  # str
     "name": "example_name",  # str
+    "toolkit": "example_toolkit",  # str
 })
 ```
 
@@ -1480,7 +3116,7 @@ result = client.AgentConnection().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
 
 ```python
-results = client.AgentConnection().list({"agent_id": "example", "organization_id": "example"})
+results = client.AgentConnection().list({"organization_id": "example"})
 for agent_connection in results:
     print(agent_connection.data_get())
 ```
@@ -1490,7 +3126,19 @@ for agent_connection in results:
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-result = client.AgentConnection().load({"id": "agent_connection_id", "agent_id": "agent_id", "organization_id": "organization_id"})
+result = client.AgentConnection().load({"id": "agent_connection_id", "organization_id": "organization_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> AgentConnectionEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.AgentConnection().patch({
+    "id": "agent_connection_id",
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
 ```
 
 #### `remove(reqmatch, ctrl=None) -> AgentConnectionEntity`
@@ -1498,7 +3146,7 @@ result = client.AgentConnection().load({"id": "agent_connection_id", "agent_id":
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```python
-result = client.AgentConnection().remove({"id": "agent_connection_id", "agent_id": "agent_id", "organization_id": "organization_id"})
+result = client.AgentConnection().remove({"id": "agent_connection_id", "organization_id": "organization_id"})
 ```
 
 #### `update(reqdata, ctrl=None) -> AgentConnectionEntity`
@@ -1508,7 +3156,6 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```python
 result = client.AgentConnection().update({
     "id": "agent_connection_id",
-    "agent_id": "agent_id",
     "organization_id": "organization_id",
     # Fields to update
 })
@@ -1535,6 +3182,431 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AgentConnectionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionDelegationEntity
+
+```python
+agent_connection_delegation = client.AgentConnectionDelegation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `authorized_by_id` | `str` | Yes |  |
+| `automation_connection_grant_id` | `str` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `member_name` | `str` | Yes |  |
+| `revoked_at` | `str | None` | Yes |  |
+| `roles` | `list` | Yes |  |
+| `usable` | `bool` | Yes |  |
+| `user_id` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[AgentConnectionDelegationEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.AgentConnectionDelegation().list({"agent_connection_id": "example", "organization_id": "example"})
+for agent_connection_delegation in results:
+    print(agent_connection_delegation.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentConnectionDelegationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionGrantEntity
+
+```python
+agent_connection_grant = client.AgentConnectionGrant()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `actions` | `list` | Yes |  |
+| `agent_connection_id` | `str` | Yes |  |
+| `automation_id` | `str` | Yes |  |
+| `connection_generation` | `int` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `revision` | `int` | Yes |  |
+| `revoked_at` | `str | None` | Yes |  |
+| `status` | `str` | Yes |  |
+| `usable` | `bool` | Yes |  |
+| `user_id` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[AgentConnectionGrantEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.AgentConnectionGrant().list({"agent_connection_id": "example", "organization_id": "example"})
+for agent_connection_grant in results:
+    print(agent_connection_grant.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentConnectionGrantEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionResourceEntity
+
+```python
+agent_connection_resource = client.AgentConnectionResource()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cursor` | `str | None` | No |  |
+| `next_cursor` | `str | None` | Yes |  |
+| `query` | `str` | No |  |
+| `resources` | `list` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> AgentConnectionResourceEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.AgentConnectionResource().create({
+    "agent_connection_id": "example_agent_connection_id",  # str
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentConnectionResourceEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionSafetyControlEntity
+
+```python
+agent_connection_safety_control = client.AgentConnectionSafetyControl()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `admin_disabled_at` | `str | None` | No |  |
+| `authorized_at` | `str | None` | Yes |  |
+| `checked_at` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `custodian_id` | `str | None` | Yes |  |
+| `failure_code` | `str | None` | Yes |  |
+| `generation` | `int` | Yes |  |
+| `id` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `owner_name` | `str` | No |  |
+| `ownership_kind` | `str` | Yes |  |
+| `provider_disabled_reason` | `str | None` | No |  |
+| `provider_identity` | `dict` | Yes |  |
+| `revoked_at` | `str | None` | Yes |  |
+| `status` | `str` | Yes |  |
+| `toolkit` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `user_id` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[AgentConnectionSafetyControlEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.AgentConnectionSafetyControl().list({"organization_id": "example"})
+for agent_connection_safety_control in results:
+    print(agent_connection_safety_control.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentConnectionSafetyControlEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionTriggerSubscriptionEntity
+
+```python
+agent_connection_trigger_subscription = client.AgentConnectionTriggerSubscription()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_connection_id` | `str` | Yes |  |
+| `configuration` | `dict` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `defaults` | `dict` | Yes |  |
+| `delivery` | `str` | Yes |  |
+| `enabled` | `bool` | Yes |  |
+| `failure_code` | `str | None` | Yes |  |
+| `failure_request_id` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `latency` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+| `reconcile_at` | `str` | Yes |  |
+| `reconciliation_uncertain` | `bool` | Yes |  |
+| `remote_enabled` | `bool | None` | Yes |  |
+| `replacement_id` | `str | None` | Yes |  |
+| `retired_at` | `str | None` | Yes |  |
+| `retirement_completed_at` | `str | None` | Yes |  |
+| `schema` | `dict` | Yes |  |
+| `slug` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `toolkit` | `str` | Yes |  |
+| `toolkit_version` | `str` | Yes |  |
+| `trigger_slug` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `version` | `str` | Yes |  |
+| `waiting_for_retirement` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> AgentConnectionTriggerSubscriptionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.AgentConnectionTriggerSubscription().create({
+    "agent_connection_id": "example_agent_connection_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "configuration": {},  # dict
+    "trigger_slug": "example_trigger_slug",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[AgentConnectionTriggerSubscriptionEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.AgentConnectionTriggerSubscription().list({"agent_connection_id": "example", "organization_id": "example"})
+for agent_connection_trigger_subscription in results:
+    print(agent_connection_trigger_subscription.data_get())
+```
+
+#### `patch(reqdata, ctrl=None) -> AgentConnectionTriggerSubscriptionEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.AgentConnectionTriggerSubscription().patch({
+    "id": "agent_connection_trigger_subscription_id",
+    "agent_connection_id": "agent_connection_id",
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> AgentConnectionTriggerSubscriptionEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.AgentConnectionTriggerSubscription().remove({"id": "agent_connection_trigger_subscription_id", "agent_connection_id": "agent_connection_id", "organization_id": "organization_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> AgentConnectionTriggerSubscriptionEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.AgentConnectionTriggerSubscription().update({
+    "id": "agent_connection_trigger_subscription_id",
+    "agent_connection_id": "agent_connection_id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentConnectionTriggerSubscriptionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AgentContextCheckpointEntity
+
+```python
+agent_context_checkpoint = client.AgentContextCheckpoint()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> AgentContextCheckpointEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentContextCheckpointEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -1725,6 +3797,53 @@ Return the entity name.
 
 ---
 
+## AgentEventEntity
+
+```python
+agent_event = client.AgentEvent()
+```
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[AgentEventEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.AgentEvent().list({"agent_id": "example", "organization_id": "example"})
+for agent_event in results:
+    print(agent_event.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentEventEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## AgentFileEntity
 
 ```python
@@ -1857,28 +3976,35 @@ agent_integration = client.AgentIntegration()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `account_counts` | `dict` | Yes | Accounts the viewer can see per toolkit, across all account pages. |
-| `accounts_path` | `str` | Yes | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
-| `added_toolkits` | `list` | Yes | Apps with a connected or connecting account the viewer can see. |
+| `can_cancel_sign_in` | `bool` | No | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `bool` | Yes |  |
+| `can_disconnect` | `bool` | Yes |  |
+| `can_enable` | `bool` | Yes |  |
 | `can_manage` | `bool` | Yes |  |
-| `can_manage_organization` | `bool` | Yes |  |
+| `can_manage_sharing` | `bool` | Yes |  |
+| `can_reconnect` | `bool` | Yes |  |
+| `can_sync` | `bool` | Yes | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
 | `catalog` | `list` | Yes |  |
-| `connect_as` | `str | None` | Yes | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
-| `connect_as_by_toolkit` | `dict` | Yes | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_by` | `str | None` | Yes | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `bool` | Yes | True when the viewer is the person whose sign-in this account is. |
 | `connected_counts` | `dict` | Yes | Signed-in accounts per toolkit, across all account pages. |
-| `connection_id` | `str` | Yes |  |
 | `connections` | `list` | Yes |  |
-| `email` | `dict` | Yes | A native agent's own email address. |
-| `enabled` | `bool` | Yes |  |
-| `enabled_toolkits` | `list` | Yes | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `creation_key` | `str` | No | Stable identity for retrying this creation; retain it after an uncertain response. |
+| `creation_key_digest` | `str | None` | No | SHA-256 of the unfinished setup key for its original creator. |
 | `generation` | `int` | Yes |  |
+| `id` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
 | `pagination` | `dict` | Yes |  |
 | `pending_counts` | `dict` | Yes | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
-| `personal_creation_key_supported` | `bool` | No | The personal account creation endpoint honors a creation key. |
-| `private_agent` | `bool` | Yes | Only the agent's owner can chat with it. |
-| `shared_agent_personal_accounts_enabled` | `bool` | Yes | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
-| `slack` | `dict` | Yes |  |
-| `webhook_connections` | `list` | Yes |  |
-| `webhooks_available` | `bool` | Yes |  |
+| `provider_disabled_reason` | `str | None` | Yes |  |
+| `provider_identity` | `dict` | Yes |  |
+| `provider_name` | `str | None` | Yes | The app's display name; null for a custom MCP server, which uses the account name. |
+| `reference` | `str` | Yes | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `str` | No | Agent account audience, including legacy personal and paused access. |
+| `status` | `str` | Yes |  |
+| `team_sharing_enabled` | `bool` | Yes |  |
+| `team_sharing_version` | `int` | Yes |  |
+| `toolkit` | `str` | Yes |  |
 
 ### Operations
 
@@ -1888,11 +4014,9 @@ Create a new entity with the given data. Returns the created entity and raises o
 
 ```python
 result = client.AgentIntegration().create({
-    "agent_id": "example_agent_id",  # str
     "organization_id": "example_organization_id",  # str
-    "connection_id": "example_connection_id",  # str
-    "enabled": True,  # bool
-    "generation": 1,  # int
+    "name": "example_name",  # str
+    "toolkit": "example_toolkit",  # str
 })
 ```
 
@@ -1901,9 +4025,25 @@ result = client.AgentIntegration().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
 
 ```python
-results = client.AgentIntegration().list({"agent_id": "example", "organization_id": "example"})
+results = client.AgentIntegration().list({"organization_id": "example"})
 for agent_integration in results:
     print(agent_integration.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> AgentIntegrationEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.AgentIntegration().load({"id": "agent_integration_id", "organization_id": "organization_id"})
+```
+
+#### `remove(reqmatch, ctrl=None) -> AgentIntegrationEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.AgentIntegration().remove({"id": "agent_integration_id", "organization_id": "organization_id"})
 ```
 
 ### Common Methods
@@ -1927,6 +4067,124 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AgentIntegrationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AgentIntegrationAccountEntity
+
+```python
+agent_integration_account = client.AgentIntegrationAccount()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_cancel_sign_in` | `bool` | No | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `bool` | Yes |  |
+| `can_disconnect` | `bool` | Yes |  |
+| `can_enable` | `bool` | Yes |  |
+| `can_manage_sharing` | `bool` | Yes |  |
+| `can_reconnect` | `bool` | Yes |  |
+| `can_sync` | `bool` | Yes | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
+| `connected_by` | `str | None` | Yes | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `bool` | Yes | True when the viewer is the person whose sign-in this account is. |
+| `creation_key_digest` | `str | None` | No | SHA-256 of the unfinished setup key for its original creator. |
+| `generation` | `int` | Yes |  |
+| `id` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+| `provider_disabled_reason` | `str | None` | Yes |  |
+| `provider_identity` | `dict` | Yes |  |
+| `reference` | `str` | Yes | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `str` | No | Agent account audience, including legacy personal and paused access. |
+| `status` | `str` | Yes |  |
+| `team_sharing_enabled` | `bool` | Yes |  |
+| `team_sharing_version` | `int` | Yes |  |
+| `toolkit` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[AgentIntegrationAccountEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.AgentIntegrationAccount().list({"organization_id": "example"})
+for agent_integration_account in results:
+    print(agent_integration_account.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentIntegrationAccountEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AgentIntegrationCallbackEntity
+
+```python
+agent_integration_callback = client.AgentIntegrationCallback()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> AgentIntegrationCallbackEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.AgentIntegrationCallback().load({"connection_id": "connection_id", "state": "state"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentIntegrationCallbackEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -2721,6 +4979,164 @@ Return the entity name.
 
 ---
 
+## AgentRelayFileGrantEntity
+
+```python
+agent_relay_file_grant = client.AgentRelayFileGrant()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access_mode` | `str` | Yes |  |
+| `connection_generation` | `int` | Yes |  |
+| `connection_id` | `str` | Yes |  |
+| `connection_name` | `str` | Yes | Current display name of the selected account. |
+| `created_at` | `str` | Yes |  |
+| `expected_generation` | `int` | Yes |  |
+| `id` | `str` | Yes |  |
+| `key` | `str` | Yes |  |
+| `provider` | `str` | Yes |  |
+| `resource_id` | `str` | Yes |  |
+| `resource_kind` | `str` | Yes |  |
+| `revoked` | `bool` | Yes |  |
+| `revoked_at` | `str | None` | Yes |  |
+| `snapshot_supported` | `bool` | No | Whether this selected permission supports snapshot controls. |
+| `source_operation_id` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> AgentRelayFileGrantEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.AgentRelayFileGrant().create({
+    "organization_id": "example_organization_id",  # str
+    "access_mode": "example_access_mode",  # str
+    "connection_id": "example_connection_id",  # str
+    "expected_generation": 1,  # int
+    "key": "example_key",  # str
+    "resource_id": "example_resource_id",  # str
+    "resource_kind": "example_resource_kind",  # str
+    "source_operation_id": "example_source_operation_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[AgentRelayFileGrantEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.AgentRelayFileGrant().list({"organization_id": "example"})
+for agent_relay_file_grant in results:
+    print(agent_relay_file_grant.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> AgentRelayFileGrantEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.AgentRelayFileGrant().load({"id": "agent_relay_file_grant_id", "organization_id": "organization_id"})
+```
+
+#### `remove(reqmatch, ctrl=None) -> AgentRelayFileGrantEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.AgentRelayFileGrant().remove({"id": "agent_relay_file_grant_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentRelayFileGrantEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AgentRelayFileGrantAccountEntity
+
+```python
+agent_relay_file_grant_account = client.AgentRelayFileGrantAccount()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access_modes` | `list` | No | Supported file access modes. |
+| `generation` | `int` | Yes |  |
+| `id` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+| `provider` | `str` | Yes |  |
+| `resource_kind` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[AgentRelayFileGrantAccountEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.AgentRelayFileGrantAccount().list({"organization_id": "example", "source_operation_id": "example"})
+for agent_relay_file_grant_account in results:
+    print(agent_relay_file_grant_account.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentRelayFileGrantAccountEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## AgentRepositoryEntity
 
 ```python
@@ -2840,6 +5256,51 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AgentResourceEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AgentRoderEntity
+
+```python
+agent_roder = client.AgentRoder()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> AgentRoderEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl=None) -> AgentRoderEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentRoderEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -3041,6 +5502,182 @@ Return the entity name.
 
 ---
 
+## AgentSessionEntity
+
+```python
+agent_session = client.AgentSession()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> AgentSessionEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentSessionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AgentSessionCheckpointEntity
+
+```python
+agent_session_checkpoint = client.AgentSessionCheckpoint()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> AgentSessionCheckpointEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.AgentSessionCheckpoint().create({
+    "agent_session_id": "example_agent_session_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[AgentSessionCheckpointEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.AgentSessionCheckpoint().list({"agent_session_id": "example", "organization_id": "example", "repo_id": "example"})
+for agent_session_checkpoint in results:
+    print(agent_session_checkpoint.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> AgentSessionCheckpointEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.AgentSessionCheckpoint().load({"id": "agent_session_checkpoint_id", "agent_session_id": "agent_session_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentSessionCheckpointEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AgentSessionRoderHandoffEntity
+
+```python
+agent_session_roder_handoff = client.AgentSessionRoderHandoff()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `checkpoint_id` | `str` | No | Public id of the checkpoint to hand off. |
+| `purpose` | `str` | No | Handoff intent; defaults to `continue`. |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> AgentSessionRoderHandoffEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.AgentSessionRoderHandoff().create({
+    "agent_session_id": "example_agent_session_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentSessionRoderHandoffEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## AgentSettingEntity
 
 ```python
@@ -3160,25 +5797,41 @@ agent_site = client.AgentSite()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `deployed_at` | `str` | Yes |  |
-| `deployments_count` | `int` | Yes |  |
-| `hostname` | `str` | Yes |  |
-| `https` | `str` | Yes | Whether the organization's certificate serves this site over HTTPS |
+| `author` | `dict` | Yes |  |
+| `can_message` | `bool` | Yes | The viewer may send input to the author agent |
+| `deployments_count` | `int` | Yes | Increases with every deploy of the site |
+| `description` | `str | None` | Yes | The team app description, when the site is a team app |
+| `icon_url` | `str | None` | Yes | Path of the site's generated icon, versioned by the picture; null until one is generated |
 | `id` | `str` | Yes |  |
-| `name` | `str` | Yes |  |
+| `name` | `str` | Yes | The site's DNS label |
+| `owner` | `dict` | Yes | The person who controls the author agent |
+| `thread` | `Any` | Yes | The thread that published the site as a team app, when the viewer can open the author agent |
+| `title` | `str` | Yes | The team app title, or the site name read as words |
 | `url` | `str` | Yes |  |
 | `visibility` | `str` | Yes |  |
 
 ### Operations
+
+#### `create(reqdata, ctrl=None) -> AgentSiteEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 #### `list(reqmatch=None, ctrl=None) -> list[AgentSiteEntity]`
 
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
 
 ```python
-results = client.AgentSite().list({"agent_id": "example", "organization_id": "example"})
+results = client.AgentSite().list({"organization_id": "example"})
 for agent_site in results:
     print(agent_site.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> AgentSiteEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.AgentSite().load({"id": "agent_site_id", "organization_id": "organization_id"})
 ```
 
 ### Common Methods
@@ -3220,15 +5873,19 @@ agent_skill = client.AgentSkill()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `available` | `bool` | Yes |  |
-| `can_configure` | `bool` | Yes |  |
-| `can_manage` | `bool` | Yes |  |
-| `configuration_state` | `str` | No | The requested managed skill selection is awaiting runtime qualification. |
-| `description` | `str` | Yes |  |
-| `enabled` | `bool` | Yes |  |
-| `name` | `str` | Yes |  |
+| `agents` | `list` | Yes | Active V2 agents the viewer can see whose owner is still a member |
+| `audience` | `dict` | Yes |  |
+| `can_manage_library` | `bool` | Yes |  |
+| `content` | `str` | Yes | The skill's SKILL.md |
+| `files` | `list` | Yes |  |
+| `id` | `str` | No |  |
+| `marketplace` | `str` | No |  |
+| `pending` | `bool` | Yes | Some agent is still applying a change; check again shortly |
+| `plugin` | `str` | No | The marketplace entry id |
+| `revision` | `str` | Yes | The commit SHA returned by preview |
+| `skill` | `dict` | Yes |  |
 | `skills` | `list` | Yes |  |
-| `version` | `str` | Yes |  |
+| `source` | `str` | No | owner/repo, a GitHub or skills.sh link, or npx skills add owner/repo [--skill NAME ...] |
 
 ### Operations
 
@@ -3238,11 +5895,10 @@ Create a new entity with the given data. Returns the created entity and raises o
 
 ```python
 result = client.AgentSkill().create({
-    "agent_id": "example_agent_id",  # str
     "organization_id": "example_organization_id",  # str
-    "enabled": True,  # bool
-    "name": "example_name",  # str
-    "version": "example_version",  # str
+    "audience": {},  # dict
+    "revision": "example_revision",  # str
+    "skills": [],  # list
 })
 ```
 
@@ -3251,10 +5907,30 @@ result = client.AgentSkill().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
 
 ```python
-results = client.AgentSkill().list({"agent_id": "example", "organization_id": "example"})
+results = client.AgentSkill().list({"organization_id": "example"})
 for agent_skill in results:
     print(agent_skill.data_get())
 ```
+
+#### `load(reqmatch, ctrl=None) -> AgentSkillEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.AgentSkill().load({"id": "agent_skill_id", "organization_id": "organization_id"})
+```
+
+#### `remove(reqmatch, ctrl=None) -> AgentSkillEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.AgentSkill().remove({"id": "agent_skill_id", "organization_id": "organization_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> AgentSkillEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
 
 ### Common Methods
 
@@ -3448,6 +6124,182 @@ Return the entity name.
 
 ---
 
+## AgentSwarmEntity
+
+```python
+agent_swarm = client.AgentSwarm()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `base_bookmark` | `str | None` | Yes | An existing bookmark to start from and land on; the plain form of `target.kind = bookmark`. |
+| `base_ref` | `str | None` | Yes |  |
+| `base_revision` | `str | None` | Yes | 64-hex commit id; skips the head lookup |
+| `budget` | `dict` | Yes |  |
+| `canceled_at` | `str | None` | Yes |  |
+| `canceled_count` | `int` | Yes |  |
+| `concurrency_key` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `creator_user_id` | `str | None` | Yes |  |
+| `deadline_at` | `str | None` | Yes |  |
+| `display_id` | `int` | Yes |  |
+| `done_count` | `int` | Yes |  |
+| `environment` | `dict` | Yes |  |
+| `failed_count` | `int` | Yes |  |
+| `finished_at` | `str | None` | Yes |  |
+| `finished_at_label` | `str | None` | Yes |  |
+| `github` | `dict` | Yes |  |
+| `goal` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `model` | `str | None` | Yes |  |
+| `model_provider` | `str | None` | Yes |  |
+| `number` | `int` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `organization_slug` | `str | None` | Yes |  |
+| `outcome` | `str | None` | Yes |  |
+| `phase` | `str | None` | Yes |  |
+| `policy` | `dict` | Yes | Every key is optional and defaults to AgentSwarm::POLICY_DEFAULTS. |
+| `queued_at` | `str | None` | Yes |  |
+| `queued_at_label` | `str | None` | Yes |  |
+| `repository` | `str` | No | Repository slug inside the organization |
+| `repository_id` | `str | None` | Yes |  |
+| `repository_slug` | `str | None` | Yes |  |
+| `reserved` | `dict` | Yes |  |
+| `scheduler_generation` | `int` | Yes |  |
+| `skipped_count` | `int` | Yes |  |
+| `slug` | `str` | Yes |  |
+| `started_at` | `str | None` | Yes |  |
+| `started_at_label` | `str | None` | Yes |  |
+| `status` | `str` | Yes |  |
+| `summary` | `dict` | Yes |  |
+| `target` | `dict` | Yes | Where the swarm lands. |
+| `task_count` | `int` | Yes |  |
+| `task_template_json` | `str | None` | Yes |  |
+| `tasks` | `list` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+| `usage` | `dict` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update |
+| --- | --- | --- | --- | --- |
+| `base_bookmark` | - | - | Yes | - |
+| `base_ref` | - | - | Yes | - |
+| `base_revision` | - | - | Yes | - |
+| `budget` | - | - | Yes | - |
+| `canceled_at` | - | - | - | - |
+| `canceled_count` | - | - | - | - |
+| `concurrency_key` | - | - | Yes | - |
+| `created_at` | - | - | - | - |
+| `created_at_label` | - | - | - | - |
+| `creator_user_id` | - | - | - | - |
+| `deadline_at` | - | - | - | - |
+| `display_id` | - | - | - | - |
+| `done_count` | - | - | - | - |
+| `environment` | - | - | Yes | - |
+| `failed_count` | - | - | - | - |
+| `finished_at` | - | - | - | - |
+| `finished_at_label` | - | - | - | - |
+| `github` | - | - | - | - |
+| `goal` | - | - | Yes | - |
+| `id` | - | - | - | - |
+| `model` | - | - | Yes | - |
+| `model_provider` | - | - | Yes | - |
+| `number` | - | - | - | - |
+| `organization_id` | - | - | - | - |
+| `organization_slug` | - | - | - | - |
+| `outcome` | - | - | - | - |
+| `phase` | - | - | - | - |
+| `policy` | - | - | Yes | - |
+| `queued_at` | - | - | Yes | - |
+| `queued_at_label` | - | - | - | - |
+| `repository` | - | - | - | - |
+| `repository_id` | - | - | - | - |
+| `repository_slug` | - | - | - | - |
+| `reserved` | - | - | - | - |
+| `scheduler_generation` | - | - | - | - |
+| `skipped_count` | - | - | - | - |
+| `slug` | - | - | Yes | - |
+| `started_at` | - | - | - | - |
+| `started_at_label` | - | - | - | - |
+| `status` | - | - | - | - |
+| `summary` | - | - | - | - |
+| `target` | - | - | - | - |
+| `task_count` | - | - | - | - |
+| `task_template_json` | - | - | Yes | - |
+| `tasks` | - | - | Yes | - |
+| `updated_at` | - | - | - | - |
+| `updated_at_label` | - | - | - | - |
+| `usage` | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> AgentSwarmEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.AgentSwarm().create({
+    "organization_slug": "example_organization_slug",  # str | None
+    "target": {},  # dict
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[AgentSwarmEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.AgentSwarm().list({"org": "example"})
+for agent_swarm in results:
+    print(agent_swarm.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> AgentSwarmEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.AgentSwarm().load({"id": "agent_swarm_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> AgentSwarmEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentSwarmEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## AgentTeammateEntity
 
 ```python
@@ -3556,30 +6408,7 @@ agent_thread = client.AgentThread()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_count` | `int | None` | No | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` | `bool` | Yes |  |
-| `execution` | `Any` | No |  |
-| `first_input` | `Any` | No |  |
-| `first_input_key` | `str` | No | Idempotency-Key that finds the first message through input_delivery. |
-| `first_input_requester_membership_id` | `str` | No | Membership the first message was sent as, for input_delivery. |
 | `id` | `str` | No |  |
-| `inherit_context` | `bool` | No | Include the source conversation through its last completed reply. |
-| `local_activities` | `dict` | Yes | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | `int` | Yes | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` | `str | None` | Yes |  |
-| `local_scope_key` | `str | None` | Yes |  |
-| `local_status_pending` | `bool` | Yes | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` | `list` | Yes |  |
-| `main_thread_id` | `str` | Yes |  |
-| `message` | `str` | No | The thread's first message. |
-| `next_cursor` | `str | None` | Yes |  |
-| `parent_conversation_id` | `str` | No | Optional source conversation belonging to this agent. |
-| `requester_membership_id` | `str` | No |  |
-| `selected_thread` | `Any` | Yes |  |
-| `thread` | `dict` | Yes |  |
-| `threads` | `list` | Yes |  |
-| `title` | `str` | No |  |
-| `total_archived_count` | `int | None` | Yes | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
 
 ### Operations
 
@@ -3589,8 +6418,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 
 ```python
 result = client.AgentThread().create({
-    "agent_id": "example_agent_id",  # str
-    "organization_id": "example_organization_id",  # str
 })
 ```
 
@@ -3599,9 +6426,17 @@ result = client.AgentThread().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
 
 ```python
-results = client.AgentThread().list({"agent_id": "example", "organization_id": "example"})
+results = client.AgentThread().list()
 for agent_thread in results:
     print(agent_thread.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> AgentThreadEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.AgentThread().load({"id": "agent_thread_id"})
 ```
 
 ### Common Methods
@@ -3680,6 +6515,64 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AgentToolEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AgentUsageEntity
+
+```python
+agent_usage = client.AgentUsage()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `days` | `list` | Yes | One cell per (day, model), ascending by day then model. |
+| `ended_at` | `str` | Yes |  |
+| `pricing_version` | `str` | Yes | The price table in effect now; rows carry the version they were priced at. |
+| `source` | `str` | Yes | Which store served the rows. |
+| `started_at` | `str` | Yes |  |
+| `user_days` | `list` | Yes | One cell per (day, person), ascending by day. |
+| `users` | `list` | Yes | One row per (person, model), descending by tokens. |
+| `window` | `str` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> AgentUsageEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.AgentUsage().load({"organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentUsageEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -3798,6 +6691,62 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AgentWaitEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AgentWebPreviewEntity
+
+```python
+agent_web_preview = client.AgentWebPreview()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `description` | `str | None` | Yes |  |
+| `icon_url` | `str | None` | Yes |  |
+| `image_url` | `str | None` | Yes |  |
+| `title` | `str | None` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[AgentWebPreviewEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.AgentWebPreview().list({"token": "example"})
+for agent_web_preview in results:
+    print(agent_web_preview.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentWebPreviewEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -4447,6 +7396,191 @@ Return the entity name.
 
 ---
 
+## AgreementEntity
+
+```python
+agreement = client.Agreement()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `body` | `str | None` | Yes | Markdown text, or null until staff grant the organization access. |
+| `effective_on_label` | `str` | Yes |  |
+| `key` | `str` | Yes |  |
+| `summary` | `str` | Yes |  |
+| `title` | `str` | Yes |  |
+| `version` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[AgreementEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.Agreement().list({"organization_id": "example"})
+for agreement in results:
+    print(agreement.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgreementEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AgreementAccessRequestEntity
+
+```python
+agreement_access_request = client.AgreementAccessRequest()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> AgreementAccessRequestEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.AgreementAccessRequest().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgreementAccessRequestEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AlertRuleEventEntity
+
+```python
+alert_rule_event = client.AlertRuleEvent()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> AlertRuleEventEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.AlertRuleEvent().create({
+    "alert_rule_id": "example_alert_rule_id",  # str
+    "space_id": "example_space_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[AlertRuleEventEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.AlertRuleEvent().list({"alert_rule_id": "example", "space_id": "example"})
+for alert_rule_event in results:
+    print(alert_rule_event.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> AlertRuleEventEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.AlertRuleEvent().load({"id": "alert_rule_event_id", "alert_rule_id": "alert_rule_id", "space_id": "space_id"})
+```
+
+#### `remove(reqmatch, ctrl=None) -> AlertRuleEventEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.AlertRuleEvent().remove({"id": "alert_rule_event_id", "alert_rule_id": "alert_rule_id", "space_id": "space_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AlertRuleEventEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## AllocationLogEntity
 
 ```python
@@ -4641,6 +7775,94 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AppEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AppAccessEntity
+
+```python
+app_access = client.AppAccess()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> AppAccessEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AppAccessEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AppAccessJwkEntity
+
+```python
+app_access_jwk = client.AppAccessJwk()
+```
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[AppAccessJwkEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.AppAccessJwk().list()
+for app_access_jwk in results:
+    print(app_access_jwk.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AppAccessJwkEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -6870,6 +10092,881 @@ Return the entity name.
 
 ---
 
+## ArtefactEntity
+
+```python
+artefact = client.Artefact()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `automation_invocation_id` | `str | None` | No |  |
+| `byte_size` | `int` | Yes |  |
+| `checksum_sha256` | `str` | Yes |  |
+| `content_type` | `str` | Yes |  |
+| `created_at` | `str | None` | No |  |
+| `created_by_user_id` | `str | None` | No |  |
+| `description` | `str | None` | No |  |
+| `document_key` | `str` | No | Stable document identity shared by all revisions. |
+| `entrypoint` | `str` | No |  |
+| `expires_at` | `str | None` | No |  |
+| `filename` | `str` | Yes |  |
+| `files` | `list` | No |  |
+| `harness` | `str | None` | No |  |
+| `harness_version` | `str | None` | No |  |
+| `id` | `str` | Yes |  |
+| `kind` | `str` | Yes |  |
+| `model` | `str | None` | No |  |
+| `organization_id` | `str` | Yes |  |
+| `published_at` | `str | None` | No |  |
+| `repository_id` | `str | None` | No |  |
+| `slug` | `str` | Yes |  |
+| `source` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `title` | `str` | Yes |  |
+| `vcs_agent_checkpoint_id` | `str | None` | No |  |
+| `vcs_agent_session_id` | `str | None` | No |  |
+| `version` | `int` | Yes |  |
+| `view_url` | `str` | Yes |  |
+| `web_url` | `str` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- | --- |
+| `automation_invocation_id` | - | - | - | - | - | - |
+| `byte_size` | - | - | - | - | - | - |
+| `checksum_sha256` | - | - | - | - | - | - |
+| `content_type` | - | - | - | - | - | - |
+| `created_at` | - | - | - | - | - | - |
+| `created_by_user_id` | - | - | - | - | - | - |
+| `description` | - | - | - | - | - | - |
+| `document_key` | - | - | - | - | - | - |
+| `entrypoint` | - | - | - | - | - | - |
+| `expires_at` | - | - | - | - | - | - |
+| `filename` | - | - | - | - | - | - |
+| `files` | - | - | - | - | - | - |
+| `harness` | - | - | - | - | - | - |
+| `harness_version` | - | - | - | - | - | - |
+| `id` | - | - | - | - | - | - |
+| `kind` | - | - | - | - | Yes | - |
+| `model` | - | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - | - |
+| `published_at` | - | - | - | - | - | - |
+| `repository_id` | - | - | - | - | - | - |
+| `slug` | - | - | - | - | - | - |
+| `source` | - | - | - | - | - | - |
+| `status` | - | - | - | - | - | - |
+| `title` | - | - | - | - | Yes | - |
+| `vcs_agent_checkpoint_id` | - | - | - | - | - | - |
+| `vcs_agent_session_id` | - | - | - | - | - | - |
+| `version` | - | - | - | - | - | - |
+| `view_url` | - | - | - | - | - | - |
+| `web_url` | - | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ArtefactEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.Artefact().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[ArtefactEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.Artefact().list({"organization_id": "example"})
+for artefact in results:
+    print(artefact.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> ArtefactEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.Artefact().load({"id": "artefact_id", "organization_id": "organization_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> ArtefactEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.Artefact().patch({
+    "id": "artefact_id",
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> ArtefactEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.Artefact().remove({"id": "artefact_id", "organization_id": "organization_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> ArtefactEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.Artefact().update({
+    "id": "artefact_id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ArtefactEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ArtefactCommentThreadEntity
+
+```python
+artefact_comment_thread = client.ArtefactCommentThread()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `anchor` | `str` | Yes | The `#anchor` written into the Markdown. |
+| `body` | `str` | Yes |  |
+| `comments` | `list` | Yes |  |
+| `id` | `str` | Yes | The anchor key. |
+| `quote` | `str` | No |  |
+| `resolved` | `bool` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | update |
+| --- | --- | --- | --- |
+| `anchor` | - | - | - |
+| `body` | - | - | - |
+| `comments` | - | - | - |
+| `id` | - | - | - |
+| `quote` | Yes | - | Yes |
+| `resolved` | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ArtefactCommentThreadEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ArtefactCommentThread().create({
+    "artefact_id": "example_artefact_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "anchor": "example_anchor",  # str
+    "body": "example_body",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[ArtefactCommentThreadEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ArtefactCommentThread().list({"artefact_id": "example", "organization_id": "example"})
+for artefact_comment_thread in results:
+    print(artefact_comment_thread.data_get())
+```
+
+#### `update(reqdata, ctrl=None) -> ArtefactCommentThreadEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.ArtefactCommentThread().update({
+    "artefact_id": "artefact_id",
+    "id": "id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ArtefactCommentThreadEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ArtefactRevisionEntity
+
+```python
+artefact_revision = client.ArtefactRevision()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `base_version` | `int` | Yes | The newest version the editor started from. |
+| `content` | `str` | Yes | Markdown, including CriticMarkup suggestions and comment anchors. |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ArtefactRevisionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ArtefactRevision().create({
+    "artefact_id": "example_artefact_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "base_version": 1,  # int
+    "content": "example_content",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ArtefactRevisionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ArtefactViewTokenEntity
+
+```python
+artefact_view_token = client.ArtefactViewToken()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `expires_in` | `int` | Yes |  |
+| `file` | `str` | No | Exact manifest path. |
+| `organization_slug` | `str` | No | If provided, must match the organization addressed by the route. |
+| `version` | `int` | No |  |
+| `viewer_url` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ArtefactViewTokenEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ArtefactViewToken().create({
+    "artefact_id": "example_artefact_id",  # str
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ArtefactViewTokenEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ArtifactEntity
+
+```python
+artifact = client.Artifact()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ArtifactEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.Artifact().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[ArtifactEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.Artifact().list()
+for artifact in results:
+    print(artifact.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> ArtifactEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.Artifact().load({"id": "artifact_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> ArtifactEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.Artifact().patch({
+    "id": "artifact_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> ArtifactEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.Artifact().remove({"id": "artifact_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> ArtifactEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.Artifact().update({
+    "id": "artifact_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ArtifactEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ArtifactCacheNamespaceEntity
+
+```python
+artifact_cache_namespace = client.ArtifactCacheNamespace()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ArtifactCacheNamespaceEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ArtifactCacheNamespace().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[ArtifactCacheNamespaceEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ArtifactCacheNamespace().list()
+for artifact_cache_namespace in results:
+    print(artifact_cache_namespace.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> ArtifactCacheNamespaceEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ArtifactCacheNamespace().load({"id": "artifact_cache_namespace_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> ArtifactCacheNamespaceEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.ArtifactCacheNamespace().patch({
+    "id": "artifact_cache_namespace_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> ArtifactCacheNamespaceEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.ArtifactCacheNamespace().remove({"id": "artifact_cache_namespace_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> ArtifactCacheNamespaceEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.ArtifactCacheNamespace().update({
+    "id": "artifact_cache_namespace_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ArtifactCacheNamespaceEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ArtifactImageRepositoryEntity
+
+```python
+artifact_image_repository = client.ArtifactImageRepository()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ArtifactImageRepositoryEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ArtifactImageRepository().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[ArtifactImageRepositoryEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ArtifactImageRepository().list()
+for artifact_image_repository in results:
+    print(artifact_image_repository.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> ArtifactImageRepositoryEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ArtifactImageRepository().load({"id": "artifact_image_repository_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> ArtifactImageRepositoryEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.ArtifactImageRepository().patch({
+    "id": "artifact_image_repository_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> ArtifactImageRepositoryEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.ArtifactImageRepository().remove({"id": "artifact_image_repository_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> ArtifactImageRepositoryEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.ArtifactImageRepository().update({
+    "id": "artifact_image_repository_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ArtifactImageRepositoryEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ArtifactPackageMirrorEntity
+
+```python
+artifact_package_mirror = client.ArtifactPackageMirror()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ArtifactPackageMirrorEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ArtifactPackageMirror().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[ArtifactPackageMirrorEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ArtifactPackageMirror().list()
+for artifact_package_mirror in results:
+    print(artifact_package_mirror.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> ArtifactPackageMirrorEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ArtifactPackageMirror().load({"id": "artifact_package_mirror_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> ArtifactPackageMirrorEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.ArtifactPackageMirror().patch({
+    "id": "artifact_package_mirror_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> ArtifactPackageMirrorEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.ArtifactPackageMirror().remove({"id": "artifact_package_mirror_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> ArtifactPackageMirrorEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.ArtifactPackageMirror().update({
+    "id": "artifact_package_mirror_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ArtifactPackageMirrorEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ArtifactRetentionPolicyEntity
+
+```python
+artifact_retention_policy = client.ArtifactRetentionPolicy()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ArtifactRetentionPolicyEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ArtifactRetentionPolicy().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[ArtifactRetentionPolicyEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ArtifactRetentionPolicy().list()
+for artifact_retention_policy in results:
+    print(artifact_retention_policy.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> ArtifactRetentionPolicyEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ArtifactRetentionPolicy().load({"id": "artifact_retention_policy_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> ArtifactRetentionPolicyEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.ArtifactRetentionPolicy().patch({
+    "id": "artifact_retention_policy_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> ArtifactRetentionPolicyEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.ArtifactRetentionPolicy().remove({"id": "artifact_retention_policy_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> ArtifactRetentionPolicyEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.ArtifactRetentionPolicy().update({
+    "id": "artifact_retention_policy_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ArtifactRetentionPolicyEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## AttachmentPartEntity
 
 ```python
@@ -6919,6 +11016,409 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AttachmentPartEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AuditEventEntity
+
+```python
+audit_event = client.AuditEvent()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `str` | Yes |  |
+| `actor_kind` | `str` | Yes |  |
+| `actor_user_id` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `observability_space_id` | `str | None` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `payload` | `Any` | Yes |  |
+| `request_id` | `str | None` | Yes |  |
+| `severity` | `str` | Yes |  |
+| `subject_id` | `str` | Yes |  |
+| `subject_kind` | `str` | Yes |  |
+| `subject_name` | `str | None` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[AuditEventEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.AuditEvent().list({"organization_id": "example"})
+for audit_event in results:
+    print(audit_event.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AuditEventEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AuthEntity
+
+```python
+auth = client.Auth()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> AuthEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl=None) -> AuthEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+#### `remove(reqmatch, ctrl=None) -> AuthEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AuthEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AuthCliEntity
+
+```python
+auth_cli = client.AuthCli()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> AuthCliEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AuthCliEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AuthGithubEntity
+
+```python
+auth_github = client.AuthGithub()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> AuthGithubEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AuthGithubEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AuthGoogleEntity
+
+```python
+auth_google = client.AuthGoogle()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> AuthGoogleEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AuthGoogleEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AuthOpenaiEntity
+
+```python
+auth_openai = client.AuthOpenai()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> AuthOpenaiEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AuthOpenaiEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AuthPasswordResetEntity
+
+```python
+auth_password_reset = client.AuthPasswordReset()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email` | `str` | Yes |  |
+| `message` | `str` | Yes |  |
+| `password` | `str` | Yes |  |
+| `token` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> AuthPasswordResetEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.AuthPasswordReset().create({
+    "email": "example_email",  # str
+})
+```
+
+#### `update(reqdata, ctrl=None) -> AuthPasswordResetEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.AuthPasswordReset().update({
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AuthPasswordResetEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AuthRegistrationOptionEntity
+
+```python
+auth_registration_option = client.AuthRegistrationOption()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email_password_signup_enabled` | `bool` | Yes |  |
+| `openai_sign_in_enabled` | `bool` | No | Whether ChatGPT identity sign-in is configured and enabled for rollout. |
+| `turnstile_site_key` | `str | None` | Yes |  |
+| `waitlist_enabled` | `bool` | Yes | New public signups require waitlist approval when enabled. |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[AuthRegistrationOptionEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.AuthRegistrationOption().list()
+for auth_registration_option in results:
+    print(auth_registration_option.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AuthRegistrationOptionEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -7084,6 +11584,1097 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AutomationRunEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BackendRunnerPoolEntity
+
+```python
+backend_runner_pool = client.BackendRunnerPool()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> BackendRunnerPoolEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.BackendRunnerPool().create({
+    "backend_id": "example_backend_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[BackendRunnerPoolEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.BackendRunnerPool().list({"backend_id": "example"})
+for backend_runner_pool in results:
+    print(backend_runner_pool.data_get())
+```
+
+#### `remove(reqmatch, ctrl=None) -> BackendRunnerPoolEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.BackendRunnerPool().remove({"id": "backend_runner_pool_id", "backend_id": "backend_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BackendRunnerPoolEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BazelEntity
+
+```python
+bazel = client.Bazel()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> BazelEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BazelEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BazelActionResultEntity
+
+```python
+bazel_action_result = client.BazelActionResult()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> BazelActionResultEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.BazelActionResult().load({"id": "bazel_action_result_id", "action_result_id": "action_result_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> BazelActionResultEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.BazelActionResult().update({
+    "id": "bazel_action_result_id",
+    "action_result_id": "action_result_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BazelActionResultEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BazelBackendEntity
+
+```python
+bazel_backend = client.BazelBackend()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> BazelBackendEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.BazelBackend().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[BazelBackendEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.BazelBackend().list()
+for bazel_backend in results:
+    print(bazel_backend.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> BazelBackendEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.BazelBackend().load({"id": "bazel_backend_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> BazelBackendEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.BazelBackend().patch({
+    "id": "bazel_backend_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> BazelBackendEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.BazelBackend().remove({"id": "bazel_backend_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> BazelBackendEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.BazelBackend().update({
+    "id": "bazel_backend_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BazelBackendEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BazelBlobEntity
+
+```python
+bazel_blob = client.BazelBlob()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> BazelBlobEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.BazelBlob().load({"id": "bazel_blob_id", "blob_id": "blob_id", "hash": "hash"})
+```
+
+#### `update(reqdata, ctrl=None) -> BazelBlobEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.BazelBlob().update({
+    "id": "bazel_blob_id",
+    "blob_id": "blob_id",
+    "hash": "hash",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BazelBlobEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BazelExecutionEntity
+
+```python
+bazel_execution = client.BazelExecution()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> BazelExecutionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.BazelExecution().create({
+})
+```
+
+#### `load(reqmatch, ctrl=None) -> BazelExecutionEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.BazelExecution().load({"id": "bazel_execution_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BazelExecutionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BazelFindMissingBlobEntity
+
+```python
+bazel_find_missing_blob = client.BazelFindMissingBlob()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> BazelFindMissingBlobEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.BazelFindMissingBlob().create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BazelFindMissingBlobEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BillingEntity
+
+```python
+billing = client.Billing()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `list` | Yes |  |
+| `breakdown` | `Any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `Any` | Yes |  |
+| `can_manage_contact` | `bool` | Yes |  |
+| `can_manage_extra_spend` | `bool` | Yes |  |
+| `can_manage_local_subscription` | `bool` | Yes |  |
+| `can_manage_payment_method` | `bool` | Yes |  |
+| `can_set_up_billing` | `bool` | Yes |  |
+| `customer` | `Any` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `entitlements` | `dict` | Yes |  |
+| `extra_spend_enabled` | `bool` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `str` | Yes |  |
+| `package` | `Any` | Yes |  |
+| `prepaid` | `Any` | Yes |  |
+| `preview` | `Any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `dict` | Yes |  |
+| `stripe` | `dict` | Yes |  |
+| `subscription` | `Any` | Yes |  |
+| `token_account` | `dict` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> BillingEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.Billing().load({"organization_id": "organization_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> BillingEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BillingAddonEntity
+
+```python
+billing_addon = client.BillingAddon()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `list` | Yes |  |
+| `breakdown` | `Any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `Any` | Yes |  |
+| `can_manage_contact` | `bool` | Yes |  |
+| `can_manage_extra_spend` | `bool` | Yes |  |
+| `can_manage_local_subscription` | `bool` | Yes |  |
+| `can_manage_payment_method` | `bool` | Yes |  |
+| `can_set_up_billing` | `bool` | Yes |  |
+| `customer` | `Any` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `entitlements` | `dict` | Yes |  |
+| `extra_spend_enabled` | `bool` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Yes | Whether the `billing` feature is on for this organization. |
+| `id` | `str` | No |  |
+| `organization_id` | `str` | Yes |  |
+| `package` | `Any` | Yes |  |
+| `prepaid` | `Any` | Yes |  |
+| `preview` | `Any` | Yes | Metronome draft invoice and credits, or null. |
+| `quantity` | `int` | Yes |  |
+| `storage_usage` | `dict` | Yes |  |
+| `stripe` | `dict` | Yes |  |
+| `subscription` | `Any` | Yes |  |
+| `token_account` | `dict` | Yes |  |
+
+### Operations
+
+#### `update(reqdata, ctrl=None) -> BillingAddonEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.BillingAddon().update({
+    "id": "id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingAddonEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BillingCheckoutSessionEntity
+
+```python
+billing_checkout_session = client.BillingCheckoutSession()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cancel_url` | `str` | No |  |
+| `coupon_code` | `str` | No |  |
+| `entry_point` | `str` | No | Where the owner chose to pay, for product analytics. |
+| `package_key` | `str` | No |  |
+| `package_revision` | `int` | No |  |
+| `success_url` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> BillingCheckoutSessionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.BillingCheckoutSession().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingCheckoutSessionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BillingInvoiceEntity
+
+```python
+billing_invoice = client.BillingInvoice()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `amount_due_cents` | `int` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `currency` | `str` | Yes |  |
+| `hosted_invoice_url` | `str | None` | No |  |
+| `id` | `str` | Yes |  |
+| `invoice_pdf` | `str | None` | No |  |
+| `metronome_invoice_id` | `str | None` | No | Metronome's id for the invoice it pushed |
+| `number` | `str | None` | No |  |
+| `period_ended_at` | `str | None` | No |  |
+| `period_started_at` | `str | None` | No |  |
+| `status` | `str` | Yes |  |
+| `total_cents` | `int` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[BillingInvoiceEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.BillingInvoice().list({"organization_id": "example"})
+for billing_invoice in results:
+    print(billing_invoice.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingInvoiceEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BillingPackageEntity
+
+```python
+billing_package = client.BillingPackage()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `list` | Yes |  |
+| `base_price_cents` | `int` | Yes |  |
+| `billing_interval` | `str` | Yes |  |
+| `billing_policy` | `str` | Yes |  |
+| `ci_included_spend_cents` | `int` | No | Monthly USD credit in cents shared by all CI charges, including runners, cache, storage and add-ons; replaces CI unit allowances when positive. |
+| `currency` | `str` | Yes |  |
+| `key` | `str` | Yes |  |
+| `max_seats` | `int | None` | No |  |
+| `name` | `str` | Yes |  |
+| `pay_as_you_go_enabled` | `bool` | Yes |  |
+| `rates` | `list` | Yes |  |
+| `revision` | `int` | Yes |  |
+| `roder_daily_run_limit` | `int` | No |  |
+| `roder_run_concurrency_limit` | `int` | No |  |
+| `seat_price_cents` | `int` | Yes |  |
+| `trial_days` | `int` | Yes |  |
+| `visibility` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[BillingPackageEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.BillingPackage().list()
+for billing_package in results:
+    print(billing_package.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingPackageEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BillingPortalSessionEntity
+
+```python
+billing_portal_session = client.BillingPortalSession()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `return_url` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> BillingPortalSessionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.BillingPortalSession().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingPortalSessionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BillingPrepaidPeriodEntity
+
+```python
+billing_prepaid_period = client.BillingPrepaidPeriod()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_at` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `currency` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `last_error` | `str | None` | Yes |  |
+| `minutes` | `int` | Yes |  |
+| `net_amount_cents` | `int` | Yes |  |
+| `paid_at` | `str | None` | Yes |  |
+| `paid_total_cents` | `int | None` | Yes |  |
+| `payment_action_url` | `str | None` | Yes |  |
+| `period_ended_at` | `str` | Yes |  |
+| `period_started_at` | `str` | Yes |  |
+| `receipt_url` | `str | None` | Yes |  |
+| `refunded_net_cents` | `int` | Yes |  |
+| `state` | `str` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> BillingPrepaidPeriodEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.BillingPrepaidPeriod().load({"id": "billing_prepaid_period_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingPrepaidPeriodEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BillingPrepaidPurchaseEntity
+
+```python
+billing_prepaid_purchase = client.BillingPrepaidPurchase()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_at` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `currency` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `last_error` | `str | None` | Yes |  |
+| `minutes` | `int` | Yes |  |
+| `net_amount_cents` | `int` | Yes |  |
+| `paid_at` | `str | None` | Yes |  |
+| `paid_total_cents` | `int | None` | Yes |  |
+| `payment_action_url` | `str | None` | Yes |  |
+| `prepaid` | `dict` | Yes |  |
+| `purchase` | `dict` | Yes |  |
+| `receipt_url` | `str | None` | Yes |  |
+| `refunded_net_cents` | `int` | Yes |  |
+| `request_key` | `str` | Yes |  |
+| `state` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> BillingPrepaidPurchaseEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.BillingPrepaidPurchase().create({
+    "organization_id": "example_organization_id",  # str
+    "minutes": 1,  # int
+    "request_key": "example_request_key",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[BillingPrepaidPurchaseEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.BillingPrepaidPurchase().list({"organization_id": "example"})
+for billing_prepaid_purchase in results:
+    print(billing_prepaid_purchase.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> BillingPrepaidPurchaseEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.BillingPrepaidPurchase().load({"id": "billing_prepaid_purchase_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingPrepaidPurchaseEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BillingTokenTopUpEntity
+
+```python
+billing_token_top_up = client.BillingTokenTopUp()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `amount_cents` | `int` | Yes |  |
+| `request_key` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> BillingTokenTopUpEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.BillingTokenTopUp().create({
+    "organization_id": "example_organization_id",  # str
+    "amount_cents": 1,  # int
+    "request_key": "example_request_key",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingTokenTopUpEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BillingUsageEntity
+
+```python
+billing_usage = client.BillingUsage()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> BillingUsageEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingUsageEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -7295,6 +12886,84 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `BinaryVersionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BookmarkProtectionRefreshGithubRequiredCheckEntity
+
+```python
+bookmark_protection_refresh_github_required_check = client.BookmarkProtectionRefreshGithubRequiredCheck()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `exclusions` | `list` | Yes |  |
+| `fetched_at` | `str | None` | No |  |
+| `fetched_at_label` | `str | None` | No |  |
+| `github_branch` | `str` | Yes |  |
+| `github_owner` | `str | None` | No |  |
+| `github_repository_name` | `str | None` | No |  |
+| `last_error` | `str | None` | No |  |
+| `proven` | `bool` | Yes |  |
+| `requirements` | `list` | Yes |  |
+| `stale` | `bool` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | create |
+| --- | --- |
+| `exclusions` | - |
+| `fetched_at` | - |
+| `fetched_at_label` | - |
+| `github_branch` | Yes |
+| `github_owner` | - |
+| `github_repository_name` | - |
+| `last_error` | - |
+| `proven` | - |
+| `requirements` | - |
+| `stale` | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> BookmarkProtectionRefreshGithubRequiredCheckEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.BookmarkProtectionRefreshGithubRequiredCheck().create({
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BookmarkProtectionRefreshGithubRequiredCheckEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -7928,6 +13597,109 @@ Return the entity name.
 
 ---
 
+## CacheNamespaceEntryEntity
+
+```python
+cache_namespace_entry = client.CacheNamespaceEntry()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> CacheNamespaceEntryEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.CacheNamespaceEntry().create({
+    "cache_namespace_id": "example_cache_namespace_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[CacheNamespaceEntryEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.CacheNamespaceEntry().list({"cache_namespace_id": "example"})
+for cache_namespace_entry in results:
+    print(cache_namespace_entry.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> CacheNamespaceEntryEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.CacheNamespaceEntry().load({"id": "cache_namespace_entry_id", "cache_namespace_id": "cache_namespace_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> CacheNamespaceEntryEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.CacheNamespaceEntry().patch({
+    "id": "cache_namespace_entry_id",
+    "cache_namespace_id": "cache_namespace_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> CacheNamespaceEntryEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.CacheNamespaceEntry().remove({"id": "cache_namespace_entry_id", "cache_namespace_id": "cache_namespace_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> CacheNamespaceEntryEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.CacheNamespaceEntry().update({
+    "id": "cache_namespace_entry_id",
+    "cache_namespace_id": "cache_namespace_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CacheNamespaceEntryEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## CatalogSelectorEntity
 
 ```python
@@ -8363,6 +14135,1993 @@ Return the entity name.
 
 ---
 
+## ChangeEntity
+
+```python
+change = client.Change()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `counts` | `dict` | Yes | Counts for each state across the active non-state filters. |
+| `filters` | `dict` | Yes |  |
+| `github_sync` | `dict` | Yes |  |
+| `result` | `Any` | Yes | What this page is a page of. |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[ChangeEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.Change().list({"organization_id": "example"})
+for change in results:
+    print(change.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ChangeAssetEntity
+
+```python
+change_asset = client.ChangeAsset()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `alias` | `str` | Yes |  |
+| `byte_size` | `int` | Yes |  |
+| `checksum_md5` | `str` | Yes |  |
+| `checksum_sha256` | `str` | Yes |  |
+| `content_type` | `str` | Yes |  |
+| `filename` | `str` | Yes |  |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ChangeAssetEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ChangeAsset().create({
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+    "alias": "example_alias",  # str
+    "byte_size": 1,  # int
+    "checksum_md5": "example_checksum_md5",  # str
+    "checksum_sha256": "example_checksum_sha256",  # str
+    "content_type": "example_content_type",  # str
+    "filename": "example_filename",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeAssetEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ChangeCommentEntity
+
+```python
+change_comment = client.ChangeComment()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `body` | `str` | Yes |  |
+| `capabilities` | `dict` | Yes |  |
+| `change_id` | `str | None` | No |  |
+| `created_at` | `str | None` | No |  |
+| `created_at_label` | `str | None` | No |  |
+| `id` | `str` | Yes |  |
+| `kind` | `str | None` | No |  |
+| `line` | `int | None` | No |  |
+| `outdated` | `bool` | Yes |  |
+| `parent_comment_id` | `str | None` | No |  |
+| `patchset_id` | `str | None` | No |  |
+| `patchset_number` | `int | None` | Yes |  |
+| `path` | `str | None` | No |  |
+| `replies` | `list` | No |  |
+| `resolved` | `bool` | Yes |  |
+| `resolved_at` | `str | None` | No |  |
+| `resolved_at_label` | `str | None` | No |  |
+| `resolved_by` | `dict` | Yes |  |
+| `side` | `str | None` | No |  |
+| `updated_at` | `str | None` | No |  |
+| `updated_at_label` | `str | None` | No |  |
+| `user` | `dict` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `body` | - | - |
+| `capabilities` | - | - |
+| `change_id` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `id` | - | - |
+| `kind` | - | - |
+| `line` | - | - |
+| `outdated` | - | - |
+| `parent_comment_id` | - | - |
+| `patchset_id` | Yes | - |
+| `patchset_number` | - | - |
+| `path` | - | - |
+| `replies` | - | - |
+| `resolved` | - | - |
+| `resolved_at` | - | - |
+| `resolved_at_label` | - | - |
+| `resolved_by` | - | - |
+| `side` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+| `user` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ChangeCommentEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ChangeComment().create({
+    "change_id": "example_change_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+    "body": "example_body",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[ChangeCommentEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ChangeComment().list({"change_id": "example", "organization_id": "example", "repo_id": "example"})
+for change_comment in results:
+    print(change_comment.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeCommentEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ChangeFileReviewCheckpointEntity
+
+```python
+change_file_review_checkpoint = client.ChangeFileReviewCheckpoint()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `patchset_id` | `str` | Yes |  |
+| `path` | `str` | Yes |  |
+| `request_id` | `str` | Yes |  |
+| `review_action` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ChangeFileReviewCheckpointEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ChangeFileReviewCheckpoint().create({
+    "change_id": "example_change_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+    "patchset_id": "example_patchset_id",  # str
+    "path": "example_path",  # str
+    "request_id": "example_request_id",  # str
+    "review_action": "example_review_action",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeFileReviewCheckpointEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ChangeGitBranchSubmissionEntity
+
+```python
+change_git_branch_submission = client.ChangeGitBranchSubmission()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ChangeGitBranchSubmissionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ChangeGitBranchSubmission().create({
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeGitBranchSubmissionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ChangeGitCommitIdentityEntity
+
+```python
+change_git_commit_identity = client.ChangeGitCommitIdentity()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_id` | `str` | Yes |  |
+| `change_number` | `int` | Yes |  |
+| `git_commit_id` | `str` | Yes |  |
+| `git_commit_ids` | `list` | Yes |  |
+| `id` | `str` | No |  |
+| `identities` | `list` | Yes |  |
+| `missing_git_commit_ids` | `list` | Yes |  |
+| `patchset_number` | `int` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ChangeGitCommitIdentityEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ChangeGitCommitIdentity().create({
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+    "git_commit_ids": [],  # list
+})
+```
+
+#### `load(reqmatch, ctrl=None) -> ChangeGitCommitIdentityEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ChangeGitCommitIdentity().load({"id": "change_git_commit_identity_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeGitCommitIdentityEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ChangeGitPublicationEntity
+
+```python
+change_git_publication = client.ChangeGitPublication()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `expected_target_commit_id` | `str` | Yes |  |
+| `id` | `str` | No |  |
+| `operation_key` | `str` | Yes |  |
+| `publication_id` | `str` | Yes |  |
+| `request` | `dict` | Yes |  |
+| `request_digest` | `str` | Yes |  |
+| `revisions` | `list` | Yes |  |
+| `status` | `str` | Yes |  |
+| `transfer_refs` | `list` | No | Immutable receipt-owned refs returned by preparation; transfer each exact Git target before polling readiness. |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ChangeGitPublicationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ChangeGitPublication().create({
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+    "operation_key": "example_operation_key",  # str
+    "request": {},  # dict
+})
+```
+
+#### `load(reqmatch, ctrl=None) -> ChangeGitPublicationEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ChangeGitPublication().load({"id": "change_git_publication_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeGitPublicationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ChangeGroupMemberEntity
+
+```python
+change_group_member = client.ChangeGroupMember()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_id` | `str` | Yes | Change number |
+| `changes` | `list` | Yes |  |
+| `id` | `str` | No |  |
+| `name` | `str` | No |  |
+| `number` | `int` | No |  |
+| `status` | `str` | Yes |  |
+| `title` | `str | None` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ChangeGroupMemberEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ChangeGroupMember().create({
+    "change_group_id": "example_change_group_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+    "change_id": "example_change_id",  # str
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> ChangeGroupMemberEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.ChangeGroupMember().remove({"id": "change_group_member_id", "change_group_id": "change_group_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeGroupMemberEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ChangeLabelEntity
+
+```python
+change_label = client.ChangeLabel()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accepted` | `bool` | No |  |
+| `add` | `list` | No |  |
+| `approval` | `dict` | Yes |  |
+| `assets` | `list` | No | Proof assets referenced from the description as `vex-asset:<id>`. |
+| `author` | `Any` | No | Human user summary or organization automation identity. |
+| `capabilities` | `dict` | Yes |  |
+| `change_key` | `str` | No |  |
+| `checks` | `list` | No |  |
+| `checks_status` | `str` | No |  |
+| `comments` | `list` | No |  |
+| `comments_count` | `int` | No |  |
+| `comments_count_label` | `str` | No |  |
+| `commit_message` | `str | None` | No |  |
+| `current_patchset` | `dict` | Yes |  |
+| `description` | `str | None` | No |  |
+| `draft` | `bool` | No |  |
+| `folded_into_number` | `int | None` | No |  |
+| `github_projection_status` | `str | None` | No |  |
+| `github_pull_request` | `dict` | Yes |  |
+| `github_pull_requests` | `list` | No |  |
+| `group` | `dict | None` | No |  |
+| `has_description` | `bool` | No | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
+| `id` | `str` | Yes |  |
+| `jj_change_id` | `str | None` | No |  |
+| `labels` | `list` | No |  |
+| `landable` | `bool` | No |  |
+| `landed_by` | `dict` | Yes |  |
+| `number` | `int` | Yes |  |
+| `orphaned` | `bool` | No |  |
+| `orphaned_at` | `str` | No |  |
+| `orphaned_at_label` | `str` | No |  |
+| `orphaned_reason` | `str` | No |  |
+| `parent_change_id` | `str | None` | No |  |
+| `parent_change_number` | `int | None` | No |  |
+| `patchset_number` | `int | None` | No |  |
+| `patchsets` | `list` | No |  |
+| `primary_status` | `str | None` | No |  |
+| `public_id` | `str` | No |  |
+| `relation_chain` | `list` | No |  |
+| `remove` | `list` | No |  |
+| `requested_changes` | `bool` | No |  |
+| `restack_state` | `str` | No |  |
+| `reviewer_candidates` | `list` | No | Organization members available to the reviewer picker on this page. |
+| `reviewers` | `list` | No |  |
+| `stable_change_id` | `str` | No |  |
+| `stack` | `Any` | No |  |
+| `status` | `str` | Yes |  |
+| `target_branch` | `str` | Yes |  |
+| `title` | `str` | Yes |  |
+| `unresolved_comments_count_label` | `str` | No |  |
+| `url` | `str` | No |  |
+| `votes` | `list` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl=None) -> ChangeLabelEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.ChangeLabel().update({
+    "change_id": "change_id",
+    "organization_id": "organization_id",
+    "repo_id": "repo_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeLabelEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ChangeLandingHoldEntity
+
+```python
+change_landing_hold = client.ChangeLandingHold()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ChangeLandingHoldEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeLandingHoldEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ChangeLandingRequestEntity
+
+```python
+change_landing_request = client.ChangeLandingRequest()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_ids` | `list` | No |  |
+| `count` | `int` | Yes |  |
+| `defer_until_ready` | `bool` | No | Admit the request while approvals or checks are pending |
+| `expected_requirement_version` | `str` | No |  |
+| `expected_scope_version` | `str` | No |  |
+| `head_change_id` | `str` | No |  |
+| `id` | `str | None` | No |  |
+| `numbers` | `list` | Yes |  |
+| `override_acknowledged` | `bool` | No |  |
+| `override_codes` | `list` | No |  |
+| `position` | `int` | No |  |
+| `priority` | `str` | No |  |
+| `scope_version` | `str` | Yes |  |
+| `state` | `str` | Yes |  |
+| `version` | `int` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ChangeLandingRequestEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ChangeLandingRequest().create({
+    "change_id": "example_change_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> ChangeLandingRequestEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.ChangeLandingRequest().remove({"id": "change_landing_request_id", "change_id": "change_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeLandingRequestEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ChangeRequestChangeEntity
+
+```python
+change_request_change = client.ChangeRequestChange()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `message` | `str | None` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ChangeRequestChangeEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ChangeRequestChange().create({
+    "change_id": "example_change_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeRequestChangeEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ChangeReviewerEntity
+
+```python
+change_reviewer = client.ChangeReviewer()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `add` | `list` | No |  |
+| `email` | `str` | Yes |  |
+| `name` | `str | None` | Yes |  |
+| `remove` | `list` | No |  |
+| `removed_reviewers` | `list` | Yes |  |
+| `requested_reviewers` | `list` | Yes |  |
+| `reviewers` | `list` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[ChangeReviewerEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ChangeReviewer().list({"change_id": "example", "organization_id": "example", "repo_id": "example"})
+for change_reviewer in results:
+    print(change_reviewer.data_get())
+```
+
+#### `update(reqdata, ctrl=None) -> ChangeReviewerEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.ChangeReviewer().update({
+    "change_id": "change_id",
+    "organization_id": "organization_id",
+    "repo_id": "repo_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeReviewerEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ChangeTranscriptEntity
+
+```python
+change_transcript = client.ChangeTranscript()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capture_kind` | `str` | Yes |  |
+| `captured_at` | `str` | Yes |  |
+| `harness` | `dict` | Yes |  |
+| `id` | `str` | Yes |  |
+| `original_resume` | `Any` | No |  |
+| `patchset_commit_id` | `str` | Yes |  |
+| `patchset_number` | `int` | Yes |  |
+| `redaction_count` | `int` | Yes |  |
+| `session_id` | `str | None` | No |  |
+| `session_title` | `str | None` | No |  |
+| `status` | `str` | Yes |  |
+| `superseded` | `bool` | Yes |  |
+| `user` | `dict` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[ChangeTranscriptEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ChangeTranscript().list({"change_id": "example", "organization_id": "example", "repo_id": "example"})
+for change_transcript in results:
+    print(change_transcript.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeTranscriptEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ChangeTranscriptSummaryEntity
+
+```python
+change_transcript_summary = client.ChangeTranscriptSummary()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `summaries` | `dict` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[ChangeTranscriptSummaryEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ChangeTranscriptSummary().list({"organization_id": "example", "ids": "example"})
+for change_transcript_summary in results:
+    print(change_transcript_summary.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeTranscriptSummaryEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## CheckpointPrepareChunkEntity
+
+```python
+checkpoint_prepare_chunk = client.CheckpointPrepareChunk()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> CheckpointPrepareChunkEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.CheckpointPrepareChunk().create({
+    "agent_session_id": "example_agent_session_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CheckpointPrepareChunkEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## CiNodeEntity
+
+```python
+ci_node = client.CiNode()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `architecture` | `str | None` | Yes |  |
+| `bazel_enabled` | `bool` | Yes |  |
+| `bazel_properties_json` | `str | None` | Yes |  |
+| `ci_runner_pool_id` | `str` | Yes |  |
+| `cordoned_at` | `str | None` | Yes |  |
+| `cordoned_at_label` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `health_state` | `str` | Yes |  |
+| `heartbeat_age_seconds` | `int | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `kind` | `str` | Yes |  |
+| `labels_csv` | `str | None` | Yes |  |
+| `last_seen_at` | `str | None` | Yes |  |
+| `last_seen_at_label` | `str | None` | Yes |  |
+| `name` | `str` | Yes |  |
+| `network_peer_id` | `str | None` | Yes |  |
+| `node_capabilities_csv` | `str | None` | Yes |  |
+| `node_certificate_expires_at` | `str | None` | Yes |  |
+| `node_certificate_expires_at_label` | `str | None` | Yes |  |
+| `node_certificate_fingerprint_sha256` | `str | None` | Yes |  |
+| `node_certificate_serial` | `str | None` | Yes |  |
+| `offline_at` | `str | None` | Yes |  |
+| `offline_at_label` | `str | None` | Yes |  |
+| `online_at` | `str | None` | Yes |  |
+| `online_at_label` | `str | None` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `os` | `str | None` | Yes |  |
+| `revoked_at` | `str | None` | Yes |  |
+| `revoked_at_label` | `str | None` | Yes |  |
+| `schedulable` | `bool` | Yes |  |
+| `slug` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+| `version` | `str | None` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> CiNodeEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl=None) -> CiNodeEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.CiNode().load({"id": "ci_node_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CiNodeEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## CiPipelineEntity
+
+```python
+ci_pipeline = client.CiPipeline()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `ci_runner_pool_id` | `str | None` | Yes |  |
+| `concurrency_key` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `default_branch` | `str | None` | Yes |  |
+| `description` | `str | None` | Yes |  |
+| `hosted_app_id` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `repository_id` | `str | None` | Yes |  |
+| `required_capabilities_csv` | `str | None` | Yes |  |
+| `runner_pool` | `dict | None` | Yes |  |
+| `runs` | `list` | Yes |  |
+| `slug` | `str` | Yes |  |
+| `source_kind` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `status_label` | `str` | Yes |  |
+| `status_state` | `str` | Yes |  |
+| `status_tone` | `str` | Yes |  |
+| `trigger_on_pull_request` | `bool` | Yes |  |
+| `trigger_on_push` | `bool` | Yes |  |
+| `trigger_on_schedule` | `bool` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `workflow_path` | `str | None` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> CiPipelineEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.CiPipeline().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[CiPipelineEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.CiPipeline().list()
+for ci_pipeline in results:
+    print(ci_pipeline.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> CiPipelineEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.CiPipeline().load({"id": "ci_pipeline_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CiPipelineEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## CiPipelineRunEntity
+
+```python
+ci_pipeline_run = client.CiPipelineRun()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active` | `bool` | Yes |  |
+| `canceled_at` | `str | None` | Yes |  |
+| `ci_pipeline_id` | `str` | Yes |  |
+| `ci_runner_pool_id` | `str | None` | Yes |  |
+| `commit_sha` | `str | None` | Yes |  |
+| `concurrency_key` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `creator_user_id` | `str | None` | Yes |  |
+| `display_id` | `int` | Yes |  |
+| `failed` | `bool` | Yes |  |
+| `finished_at` | `str | None` | Yes |  |
+| `hosted_app_id` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `jobs` | `list` | Yes |  |
+| `message` | `str | None` | Yes |  |
+| `number` | `int` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `parameters_json` | `str | None` | Yes |  |
+| `queued_at` | `str | None` | Yes |  |
+| `ref_name` | `str | None` | Yes |  |
+| `repository_id` | `str | None` | Yes |  |
+| `required_capabilities_csv` | `str | None` | Yes |  |
+| `retry_number` | `int` | Yes |  |
+| `retryable` | `bool` | Yes |  |
+| `slug` | `str` | Yes |  |
+| `source_url` | `str | None` | Yes |  |
+| `started_at` | `str | None` | Yes |  |
+| `status` | `str` | Yes |  |
+| `status_label` | `str` | Yes |  |
+| `status_state` | `str` | Yes |  |
+| `status_tone` | `str` | Yes |  |
+| `trigger_kind` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> CiPipelineRunEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.CiPipelineRun().create({
+    "pipeline_id": "example_pipeline_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[CiPipelineRunEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.CiPipelineRun().list({"pipeline_id": "example"})
+for ci_pipeline_run in results:
+    print(ci_pipeline_run.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> CiPipelineRunEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.CiPipelineRun().load({"id": "ci_pipeline_run_id", "pipeline_id": "pipeline_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CiPipelineRunEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## CiRunnerPoolEntity
+
+```python
+ci_runner_pool = client.CiRunnerPool()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `bazel_enabled` | `bool` | Yes |  |
+| `bazel_properties_json` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `description` | `str | None` | Yes |  |
+| `elastic_config_json` | `str | None` | Yes |  |
+| `elastic_provider_kind` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `isolation_mode` | `str` | Yes |  |
+| `labels_csv` | `str | None` | Yes |  |
+| `max_concurrency` | `int` | Yes |  |
+| `modal_capacity` | `dict` | Yes |  |
+| `modal_runner_invocations` | `list` | Yes |  |
+| `name` | `str` | Yes |  |
+| `network_space_id` | `str | None` | Yes |  |
+| `node_capabilities_csv` | `str | None` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `runner_count_label` | `str` | Yes |  |
+| `runner_kind` | `str` | Yes |  |
+| `runners` | `list` | Yes |  |
+| `slug` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `bazel_enabled` | - | - | - | - | - |
+| `bazel_properties_json` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `description` | - | - | - | - | Yes |
+| `elastic_config_json` | - | - | - | - | Yes |
+| `elastic_provider_kind` | - | - | - | - | Yes |
+| `id` | - | - | - | - | - |
+| `isolation_mode` | - | - | - | - | Yes |
+| `labels_csv` | - | - | - | - | Yes |
+| `max_concurrency` | - | - | - | - | Yes |
+| `modal_capacity` | - | - | - | - | - |
+| `modal_runner_invocations` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `network_space_id` | - | - | - | - | - |
+| `node_capabilities_csv` | - | - | - | - | Yes |
+| `organization_id` | - | - | - | - | - |
+| `runner_count_label` | - | - | - | - | - |
+| `runner_kind` | - | - | - | - | Yes |
+| `runners` | - | - | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | Yes |
+| `updated_at` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> CiRunnerPoolEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.CiRunnerPool().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[CiRunnerPoolEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.CiRunnerPool().list()
+for ci_runner_pool in results:
+    print(ci_runner_pool.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> CiRunnerPoolEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.CiRunnerPool().load({"id": "ci_runner_pool_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> CiRunnerPoolEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.CiRunnerPool().patch({
+    "id": "ci_runner_pool_id",
+    # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl=None) -> CiRunnerPoolEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.CiRunnerPool().update({
+    "id": "ci_runner_pool_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CiRunnerPoolEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## CiStatusEntity
+
+```python
+ci_status = client.CiStatus()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> CiStatusEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CiStatusEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## CliEventEntity
+
+```python
+cli_event = client.CliEvent()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `event` | `str` | Yes |  |
+| `properties` | `dict` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> CliEventEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.CliEvent().create({
+    "event": "example_event",  # str
+    "properties": {},  # dict
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CliEventEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## CliReleaseEntity
+
+```python
+cli_release = client.CliRelease()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> CliReleaseEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.CliRelease().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[CliReleaseEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.CliRelease().list()
+for cli_release in results:
+    print(cli_release.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> CliReleaseEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CliReleaseEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## CloudWorkspaceBackupObjectEntity
+
+```python
+cloud_workspace_backup_object = client.CloudWorkspaceBackupObject()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> CloudWorkspaceBackupObjectEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.CloudWorkspaceBackupObject().load({"id": "cloud_workspace_backup_object_id", "cloud_workspace_backup_id": "cloud_workspace_backup_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CloudWorkspaceBackupObjectEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## CodeRuleEvaluationEntity
+
+```python
+code_rule_evaluation = client.CodeRuleEvaluation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `advisory` | `bool` | Yes |  |
+| `coverage` | `dict` | Yes |  |
+| `diff` | `str` | Yes | UTF-8 complete unified patch using a/ old and b/ new prefixes; at most 1 MiB |
+| `duration_ms` | `int` | Yes |  |
+| `evaluator_version` | `str` | No |  |
+| `input_digest` | `str | None` | No |  |
+| `limits` | `dict` | No |  |
+| `model` | `str` | No |  |
+| `requests` | `dict` | Yes |  |
+| `schema_version` | `int` | Yes |  |
+| `snapshot_digest` | `str | None` | No |  |
+| `unchecked` | `list` | Yes |  |
+| `verdicts` | `list` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> CodeRuleEvaluationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.CodeRuleEvaluation().create({
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+    "diff": "example_diff",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CodeRuleEvaluationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ComSiteAccessEntity
+
+```python
+com_site_access = client.ComSiteAccess()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ComSiteAccessEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl=None) -> ComSiteAccessEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ComSiteAccessEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ComSiteAccessSessionEntity
+
+```python
+com_site_access_session = client.ComSiteAccessSession()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cookie_name` | `str` | Yes |  |
+| `host` | `str` | Yes | Site hostname, for example docs.acme.composal.page |
+| `max_age` | `int` | Yes |  |
+| `session_token` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ComSiteAccessSessionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ComSiteAccessSession().create({
+    "host": "example_host",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ComSiteAccessSessionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## CommentThreadCommentEntity
+
+```python
+comment_thread_comment = client.CommentThreadComment()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `body` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> CommentThreadCommentEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.CommentThreadComment().create({
+    "artefact_id": "example_artefact_id",  # str
+    "comment_thread_id": "example_comment_thread_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "body": "example_body",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CommentThreadCommentEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## CommitDiffEntity
+
+```python
+commit_diff = client.CommitDiff()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `files` | `list` | Yes |  |
+| `id` | `str` | No |  |
+| `parent_id` | `str | None` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> CommitDiffEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.CommitDiff().load({"id": "commit_diff_id", "commit_id": "commit_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CommitDiffEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## ConnectionRequestEntity
 
 ```python
@@ -8476,6 +16235,205 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `ConnectionSourceEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ContactSubmissionEntity
+
+```python
+contact_submission = client.ContactSubmission()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `company` | `str | None` | No |  |
+| `email` | `str` | Yes | Stored downcased and stripped. |
+| `message` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+| `website` | `str | None` | No | Honeypot. |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ContactSubmissionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ContactSubmission().create({
+    "email": "example_email",  # str
+    "message": "example_message",  # str
+    "name": "example_name",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ContactSubmissionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ControlComputerEntity
+
+```python
+control_computer = client.ControlComputer()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `connection` | `dict` | Yes | A point-in-time control transport observation. |
+| `consent` | `dict` | Yes |  |
+| `device` | `dict` | Yes |  |
+| `id` | `str` | No |  |
+| `provider_status` | `list` | No |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[ControlComputerEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ControlComputer().list({"organization_id": "example", "persistent_agent_id": "example"})
+for control_computer in results:
+    print(control_computer.data_get())
+```
+
+#### `update(reqdata, ctrl=None) -> ControlComputerEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ControlComputerEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ControlComputerControlOperationEntity
+
+```python
+control_computer_control_operation = client.ControlComputerControlOperation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `str` | Yes |  |
+| `arguments` | `dict` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `delivery` | `dict` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `str` | Yes |  |
+| `diagnostic_code` | `str` | No | Approved product error code retained after copied diagnostics expire. |
+| `end` | `dict` | Yes |  |
+| `expires_at` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `key` | `str` | Yes |  |
+| `provider` | `str` | Yes |  |
+| `references` | `dict` | Yes |  |
+| `result` | `Any` | Yes |  |
+| `result_expired` | `bool` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ControlComputerControlOperationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ControlComputerControlOperation().create({
+    "control_computer_id": "example_control_computer_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "action": "example_action",  # str
+    "arguments": {},  # dict
+    "key": "example_key",  # str
+})
+```
+
+#### `load(reqmatch, ctrl=None) -> ControlComputerControlOperationEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ControlComputerControlOperation().load({"id": "control_computer_control_operation_id", "control_computer_id": "control_computer_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ControlComputerControlOperationEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -9248,6 +17206,92 @@ Return the entity name.
 
 ---
 
+## DeploymentEntity
+
+```python
+deployment = client.Deployment()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app` | `dict` | Yes |  |
+| `artifact_locator` | `str | None` | Yes |  |
+| `build_duration_seconds` | `int | None` | Yes |  |
+| `build_source` | `dict | None` | Yes |  |
+| `build_status` | `str` | Yes |  |
+| `children` | `list` | Yes |  |
+| `ci_pipeline_id` | `str | None` | Yes |  |
+| `ci_pipeline_run_id` | `str | None` | Yes |  |
+| `commit_sha` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `creator` | `dict | None` | Yes |  |
+| `deployed_url` | `str | None` | Yes |  |
+| `duration_seconds` | `int | None` | Yes |  |
+| `environment` | `dict` | Yes |  |
+| `history_kind` | `str` | Yes |  |
+| `history_reason` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `is_live` | `bool` | Yes |  |
+| `is_rollback` | `bool` | Yes |  |
+| `live_region_count` | `int` | Yes |  |
+| `number` | `int` | Yes |  |
+| `placement` | `dict | None` | Yes |  |
+| `region_count` | `int` | Yes |  |
+| `replicas_per_region` | `int` | Yes |  |
+| `rollback_reason` | `str | None` | Yes |  |
+| `rollback_source_release_id` | `str | None` | Yes |  |
+| `rollback_target_release_id` | `str | None` | Yes |  |
+| `rollout_predecessor_id` | `str | None` | Yes |  |
+| `rollout_status` | `str` | Yes |  |
+| `rollout_strategy` | `str` | Yes |  |
+| `service` | `dict` | Yes |  |
+| `source_ref` | `str | None` | Yes |  |
+| `status` | `str` | Yes |  |
+| `total_replicas` | `int` | Yes |  |
+| `trigger_kind` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> DeploymentEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.Deployment().load({"id": "deployment_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeploymentEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## DeploymentDashboardNomadEntity
 
 ```python
@@ -9281,6 +17325,79 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `DeploymentDashboardNomadEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DeploymentDetailEntity
+
+```python
+deployment_detail = client.DeploymentDetail()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `list` | Yes |  |
+| `app` | `Any` | Yes |  |
+| `app_id` | `str | None` | Yes |  |
+| `audit_events` | `list` | Yes |  |
+| `capacity` | `dict` | Yes |  |
+| `data_resources` | `list` | Yes |  |
+| `deploy_targets` | `list` | Yes |  |
+| `deployments` | `list` | Yes |  |
+| `desired_states` | `list` | Yes |  |
+| `environments` | `list` | Yes |  |
+| `filters` | `dict` | Yes | The option lists the deployments page's app, service and stage pickers narrow by. |
+| `health` | `dict` | Yes | The rolled-up state of the selected scope. |
+| `nomad` | `dict` | Yes | The Nomad footprint of the selected scope, deduplicated. |
+| `operations` | `list` | Yes |  |
+| `placements` | `list` | Yes |  |
+| `reconciler_ticks` | `list` | Yes |  |
+| `releases` | `list` | Yes |  |
+| `runtime_instances` | `list` | Yes |  |
+| `service_bindings` | `list` | Yes |  |
+| `service_views` | `list` | Yes |  |
+| `storage_resources` | `list` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[DeploymentDetailEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.DeploymentDetail().list({"organization_id": "example"})
+for deployment_detail in results:
+    print(deployment_detail.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeploymentDetailEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -9330,6 +17447,1530 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `DeploymentFileEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DeploymentLogEntity
+
+```python
+deployment_log = client.DeploymentLog()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `allocation_id` | `str` | Yes |  |
+| `app_environment_id` | `str | None` | Yes |  |
+| `app_release_id` | `str | None` | Yes |  |
+| `app_service_id` | `str | None` | Yes |  |
+| `details` | `Any` | Yes |  |
+| `environment_name` | `str` | Yes |  |
+| `release_version` | `str | None` | Yes |  |
+| `service_name` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `task` | `str | None` | Yes |  |
+| `unreachable_reason` | `str | None` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[DeploymentLogEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.DeploymentLog().list({"organization_id": "example"})
+for deployment_log in results:
+    print(deployment_log.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeploymentLogEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DeploymentMetricEntity
+
+```python
+deployment_metric = client.DeploymentMetric()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `auto_deploy` | `bool` | Yes |  |
+| `environment_id` | `str` | Yes |  |
+| `environment_name` | `str` | Yes |  |
+| `placement_id` | `str` | Yes |  |
+| `redeploy` | `bool` | Yes |  |
+| `region_count` | `int` | Yes |  |
+| `replicas_per_region` | `int` | Yes |  |
+| `rollout_strategy` | `str` | Yes |  |
+| `service_id` | `str` | Yes |  |
+| `service_name` | `str` | Yes |  |
+| `source_ref` | `str | None` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[DeploymentMetricEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.DeploymentMetric().list({"organization_id": "example"})
+for deployment_metric in results:
+    print(deployment_metric.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeploymentMetricEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DeploymentPreviewEntity
+
+```python
+deployment_preview = client.DeploymentPreview()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access` | `str` | Yes |  |
+| `app_environment_id` | `str` | Yes |  |
+| `app_name` | `str` | Yes |  |
+| `app_preview_profile_id` | `str` | Yes |  |
+| `app_slug` | `str` | Yes |  |
+| `change_number` | `int | None` | Yes |  |
+| `created_at` | `str` | No |  |
+| `created_by_user_id` | `str` | No |  |
+| `expires_at` | `str` | Yes |  |
+| `generation` | `int` | Yes |  |
+| `health` | `str` | Yes |  |
+| `hosted_app_id` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `latest_operation_status` | `str | None` | Yes |  |
+| `name` | `str` | Yes |  |
+| `owner_name` | `str | None` | Yes |  |
+| `profile_name` | `str` | Yes |  |
+| `resource_overrides` | `dict` | No | Service public IDs mapped to resource overrides. |
+| `retained` | `bool` | Yes |  |
+| `slug` | `str` | Yes |  |
+| `snapshot_version` | `int` | Yes |  |
+| `source_revision` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `updated_at` | `str` | No |  |
+| `urls` | `list` | Yes |  |
+| `vcs_change_id` | `str | None` | No |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[DeploymentPreviewEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.DeploymentPreview().list({"organization_id": "example"})
+for deployment_preview in results:
+    print(deployment_preview.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeploymentPreviewEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DeploymentSettingEntity
+
+```python
+deployment_setting = client.DeploymentSetting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `code` | `str` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+| `nomad_datacenter` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[DeploymentSettingEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.DeploymentSetting().list({"organization_id": "example"})
+for deployment_setting in results:
+    print(deployment_setting.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeploymentSettingEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DesktopLocalAgentModelEntity
+
+```python
+desktop_local_agent_model = client.DesktopLocalAgentModel()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[DesktopLocalAgentModelEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.DesktopLocalAgentModel().list({"organization_id": "example"})
+for desktop_local_agent_model in results:
+    print(desktop_local_agent_model.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DesktopLocalAgentModelEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DesktopLocalAgentResponseEntity
+
+```python
+desktop_local_agent_response = client.DesktopLocalAgentResponse()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `input` | `list` | Yes |  |
+| `max_output_tokens` | `int` | No |  |
+| `model` | `str` | Yes |  |
+| `store` | `bool` | Yes |  |
+| `stream` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> DesktopLocalAgentResponseEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.DesktopLocalAgentResponse().create({
+    "organization_id": "example_organization_id",  # str
+    "input": [],  # list
+    "model": "example_model",  # str
+    "store": True,  # bool
+    "stream": True,  # bool
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DesktopLocalAgentResponseEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DeviceEntity
+
+```python
+device = client.Device()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `architecture` | `str` | Yes |  |
+| `channel` | `str` | Yes |  |
+| `coding_connection` | `dict | None` | Yes | Independent organization coding-control service state for the current device owner. |
+| `connection_checked_at` | `str | None` | Yes | When this native presence observation was obtained; null when unobserved or unavailable. |
+| `connection_status` | `str` | Yes | Display-only native presence. |
+| `control_delivery_policy` | `dict` | Yes |  |
+| `control_spawn_policy` | `dict` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `device` | `dict` | Yes |  |
+| `environment` | `str` | Yes |  |
+| `execution_available` | `bool` | Yes |  |
+| `id` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+| `native_device_id` | `str` | Yes |  |
+| `paired_at` | `str` | Yes |  |
+| `pairing_generation` | `int` | Yes |  |
+| `platform` | `str` | Yes |  |
+| `project_visibility` | `dict` | Yes | Folder discovery and new-thread selection. |
+| `provider_status` | `list` | No | Recent native provider observations; absent on older API replicas. |
+| `revoked_at` | `str | None` | Yes |  |
+| `scheduled_check_ins` | `bool` | No | Whether the owner's private agents may check this computer's connection during scheduled runs. |
+| `user_browser_access` | `str` | Yes | Whether agents may use the owner's own Chrome-family browser here: off, only tabs agents open or the owner shares, or every tab. |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> DeviceEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `list(reqmatch=None, ctrl=None) -> list[DeviceEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.Device().list({"organization_id": "example"})
+for device in results:
+    print(device.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> DeviceEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.Device().load({"id": "device_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DeviceBrowserOperationEntity
+
+```python
+device_browser_operation = client.DeviceBrowserOperation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `command` | `str` | Yes | The in-app browser takes open through open_external; the person's own browser (arguments.browser user) takes open, tabs, share_tab, navigate, back, reload, screenshot, read, click, type, press, scroll and close. |
+| `created_at` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> DeviceBrowserOperationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `list(reqmatch=None, ctrl=None) -> list[DeviceBrowserOperationEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.DeviceBrowserOperation().list({"device_id": "example", "organization_id": "example"})
+for device_browser_operation in results:
+    print(device_browser_operation.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceBrowserOperationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DeviceControlMessageEntity
+
+```python
+device_control_message = client.DeviceControlMessage()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_id` | `str` | Yes |  |
+| `agent_name` | `str` | Yes |  |
+| `expires_at` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `sender` | `str | None` | Yes |  |
+| `text` | `str | None` | Yes |  |
+| `text_omitted` | `bool` | Yes |  |
+| `thread` | `dict` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[DeviceControlMessageEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.DeviceControlMessage().list({"device_id": "example", "organization_id": "example"})
+for device_control_message in results:
+    print(device_control_message.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceControlMessageEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DeviceControlOperationEntity
+
+```python
+device_control_operation = client.DeviceControlOperation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `str` | Yes |  |
+| `arguments` | `dict` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `delivery` | `dict` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `str` | Yes |  |
+| `diagnostic_code` | `str` | No | Approved product error code retained after copied diagnostics expire. |
+| `end` | `dict` | Yes |  |
+| `expires_at` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `key` | `str` | Yes |  |
+| `provider` | `str` | Yes |  |
+| `references` | `dict` | Yes |  |
+| `result` | `Any` | Yes |  |
+| `result_expired` | `bool` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> DeviceControlOperationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.DeviceControlOperation().create({
+    "device_id": "example_device_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "action": "example_action",  # str
+    "arguments": {},  # dict
+    "key": "example_key",  # str
+})
+```
+
+#### `load(reqmatch, ctrl=None) -> DeviceControlOperationEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.DeviceControlOperation().load({"id": "device_control_operation_id", "device_id": "device_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceControlOperationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DeviceEnterpriseRelayEntity
+
+```python
+device_enterprise_relay = client.DeviceEnterpriseRelay()
+```
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[DeviceEnterpriseRelayEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.DeviceEnterpriseRelay().list()
+for device_enterprise_relay in results:
+    print(device_enterprise_relay.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceEnterpriseRelayEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DeviceFolderListingEntity
+
+```python
+device_folder_listing = client.DeviceFolderListing()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `code` | `str` | No |  |
+| `error` | `str` | No |  |
+| `folders` | `list` | No |  |
+| `id` | `str` | Yes |  |
+| `key` | `str` | Yes | Stable idempotency key for this listing. |
+| `parent` | `str | None` | No |  |
+| `path` | `str` | No | The resolved folder. |
+| `state` | `str` | Yes |  |
+| `truncated` | `bool` | No |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `code` | - | - |
+| `error` | - | - |
+| `folders` | - | - |
+| `id` | - | - |
+| `key` | - | - |
+| `parent` | - | - |
+| `path` | - | Yes |
+| `state` | - | - |
+| `truncated` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> DeviceFolderListingEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.DeviceFolderListing().create({
+    "device_id": "example_device_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "key": "example_key",  # str
+    "path": "example_path",  # str
+})
+```
+
+#### `load(reqmatch, ctrl=None) -> DeviceFolderListingEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.DeviceFolderListing().load({"id": "device_folder_listing_id", "device_id": "device_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceFolderListingEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DeviceGrantEntity
+
+```python
+device_grant = client.DeviceGrant()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_grants` | `list` | Yes |  |
+| `agent_choices` | `list` | Yes | Eligible picker choices, with current owner grant targets, on the first page only. |
+| `agent_id` | `str` | Yes |  |
+| `all_agents_access` | `bool` | Yes | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `capabilities` | `list` | Yes |  |
+| `execution_available` | `bool` | Yes |  |
+| `grants` | `list` | Yes |  |
+| `id` | `str` | No |  |
+| `next_cursor` | `str | None` | Yes |  |
+| `principal_id` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> DeviceGrantEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.DeviceGrant().create({
+    "device_id": "example_device_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "agent_id": "example_agent_id",  # str
+    "capabilities": [],  # list
+    "principal_id": "example_principal_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[DeviceGrantEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.DeviceGrant().list({"device_id": "example", "organization_id": "example"})
+for device_grant in results:
+    print(device_grant.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceGrantEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DeviceInvocationEntity
+
+```python
+device_invocation = client.DeviceInvocation()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> DeviceInvocationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceInvocationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DeviceLocalEventEntity
+
+```python
+device_local_event = client.DeviceLocalEvent()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `event` | `str` | Yes |  |
+| `recorded` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> DeviceLocalEventEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.DeviceLocalEvent().create({
+    "device_id": "example_device_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "event": "example_event",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceLocalEventEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DevicePairingEntity
+
+```python
+device_pairing = client.DevicePairing()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `architecture` | `str` | Yes |  |
+| `channel` | `str` | Yes |  |
+| `id` | `str` | No |  |
+| `name` | `str` | Yes |  |
+| `platform` | `str` | Yes |  |
+| `public_key` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> DevicePairingEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.DevicePairing().create({
+    "organization_id": "example_organization_id",  # str
+    "architecture": "example_architecture",  # str
+    "channel": "example_channel",  # str
+    "name": "example_name",  # str
+    "platform": "example_platform",  # str
+    "public_key": "example_public_key",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DevicePairingEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DeviceProjectEntity
+
+```python
+device_project = client.DeviceProject()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `remove(reqmatch, ctrl=None) -> DeviceProjectEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.DeviceProject().remove({"id": "device_project_id", "device_id": "device_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceProjectEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DeviceScheduledCheckInEntity
+
+```python
+device_scheduled_check_in = client.DeviceScheduledCheckIn()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `enabled` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> DeviceScheduledCheckInEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.DeviceScheduledCheckIn().create({
+    "device_id": "example_device_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "enabled": True,  # bool
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceScheduledCheckInEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DockerBuilderEntity
+
+```python
+docker_builder = client.DockerBuilder()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `backend` | `str` | Yes |  |
+| `created_at` | `str | None` | Yes |  |
+| `gateway_url` | `str | None` | No | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `int` | Yes |  |
+| `id` | `str` | Yes |  |
+| `last_activity_at` | `str | None` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `ready_at` | `str | None` | Yes |  |
+| `slept_at` | `str | None` | Yes |  |
+| `slug` | `str` | Yes |  |
+| `startup_attempt` | `int` | Yes |  |
+| `startup_failure` | `str | None` | Yes | Safe failure reason for the most recent startup attempt |
+| `startup_stage` | `str | None` | Yes |  |
+| `status` | `str` | Yes |  |
+| `updated_at` | `str | None` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `backend` | - | - | Yes | - | - |
+| `created_at` | - | - | - | - | - |
+| `gateway_url` | - | - | - | - | - |
+| `generation` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `last_activity_at` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `ready_at` | - | - | - | - | - |
+| `slept_at` | - | - | - | - | - |
+| `slug` | - | - | Yes | - | - |
+| `startup_attempt` | - | - | - | - | - |
+| `startup_failure` | - | - | - | - | - |
+| `startup_stage` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> DockerBuilderEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.DockerBuilder().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[DockerBuilderEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.DockerBuilder().list({"organization_id": "example"})
+for docker_builder in results:
+    print(docker_builder.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> DockerBuilderEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.DockerBuilder().load({"id": "docker_builder_id", "organization_id": "organization_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> DockerBuilderEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.DockerBuilder().patch({
+    "id": "docker_builder_id",
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl=None) -> DockerBuilderEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.DockerBuilder().update({
+    "id": "docker_builder_id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DockerBuilderEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DockerBuilderSessionEntity
+
+```python
+docker_builder_session = client.DockerBuilderSession()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `str` | Yes |  |
+| `docker_builder_id` | `str` | Yes |  |
+| `expires_at` | `str` | Yes |  |
+| `gateway_url` | `str | None` | No | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `int` | Yes |  |
+| `id` | `str` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `revoked_at` | `str | None` | Yes |  |
+| `user_id` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> DockerBuilderSessionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.DockerBuilderSession().create({
+    "docker_builder_id": "example_docker_builder_id",  # str
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+#### `load(reqmatch, ctrl=None) -> DockerBuilderSessionEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.DockerBuilderSession().load({"id": "docker_builder_session_id", "organization_id": "organization_id"})
+```
+
+#### `remove(reqmatch, ctrl=None) -> DockerBuilderSessionEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.DockerBuilderSession().remove({"id": "docker_builder_session_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DockerBuilderSessionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DockerBuilderSettingEntity
+
+```python
+docker_builder_setting = client.DockerBuilderSetting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `docker_builder_settings` | `dict` | Yes |  |
+| `idle_timeout_seconds` | `int` | Yes |  |
+| `max_concurrency` | `int` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `region` | `str` | Yes |  |
+| `runtime_timeout_seconds` | `int` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | update | patch |
+| --- | --- | --- | --- |
+| `docker_builder_settings` | - | - | - |
+| `idle_timeout_seconds` | - | - | Yes |
+| `max_concurrency` | - | - | Yes |
+| `organization_id` | - | - | - |
+| `region` | - | - | Yes |
+| `runtime_timeout_seconds` | - | - | Yes |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[DockerBuilderSettingEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.DockerBuilderSetting().list({"organization_id": "example"})
+for docker_builder_setting in results:
+    print(docker_builder_setting.data_get())
+```
+
+#### `patch(reqdata, ctrl=None) -> DockerBuilderSettingEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.DockerBuilderSetting().patch({
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl=None) -> DockerBuilderSettingEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.DockerBuilderSetting().update({
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DockerBuilderSettingEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## DomainDnsIntegrationEntity
+
+```python
+domain_dns_integration = client.DomainDnsIntegration()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_label` | `str | None` | Yes |  |
+| `api_token` | `str` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `failure_message` | `str | None` | Yes |  |
+| `has_token` | `bool` | Yes |  |
+| `id` | `str` | Yes |  |
+| `last_verified_at` | `str | None` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `provider` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `account_label` | - | Yes |
+| `api_token` | - | - |
+| `created_at` | - | - |
+| `failure_message` | - | - |
+| `has_token` | - | - |
+| `id` | - | - |
+| `last_verified_at` | - | - |
+| `organization_id` | - | - |
+| `provider` | - | - |
+| `status` | - | - |
+| `updated_at` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> DomainDnsIntegrationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.DomainDnsIntegration().create({
+    "organization_id": "example_organization_id",  # str
+    "api_token": "example_api_token",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[DomainDnsIntegrationEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.DomainDnsIntegration().list({"organization_id": "example"})
+for domain_dns_integration in results:
+    print(domain_dns_integration.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DomainDnsIntegrationEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -9544,6 +19185,88 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `DreamEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## EdgeEntity
+
+```python
+edge = client.Edge()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> EdgeEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `EdgeEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## EmailVerificationEntity
+
+```python
+email_verification = client.EmailVerification()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> EmailVerificationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `EmailVerificationEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -10341,6 +20064,379 @@ Return the entity name.
 
 ---
 
+## ExecutionDesiredStateEntity
+
+```python
+execution_desired_state = client.ExecutionDesiredState()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `desired_state` | `dict` | Yes |  |
+| `id` | `str` | No |  |
+| `stop_observed` | `bool` | Yes | True only for archived zero-capacity states with all known jobs stopped and allocations terminated. |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ExecutionDesiredStateEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ExecutionDesiredState().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[ExecutionDesiredStateEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ExecutionDesiredState().list()
+for execution_desired_state in results:
+    print(execution_desired_state.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> ExecutionDesiredStateEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ExecutionDesiredState().load({"id": "execution_desired_state_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> ExecutionDesiredStateEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.ExecutionDesiredState().patch({
+    "id": "execution_desired_state_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> ExecutionDesiredStateEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.ExecutionDesiredState().remove({"id": "execution_desired_state_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> ExecutionDesiredStateEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.ExecutionDesiredState().update({
+    "id": "execution_desired_state_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ExecutionDesiredStateEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ExecutionReconcilerTickEntity
+
+```python
+execution_reconciler_tick = client.ExecutionReconcilerTick()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ExecutionReconcilerTickEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ExecutionReconcilerTick().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[ExecutionReconcilerTickEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ExecutionReconcilerTick().list()
+for execution_reconciler_tick in results:
+    print(execution_reconciler_tick.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> ExecutionReconcilerTickEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ExecutionReconcilerTick().load({"id": "execution_reconciler_tick_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ExecutionReconcilerTickEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ExecutionReleaseEntity
+
+```python
+execution_release = client.ExecutionRelease()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ExecutionReleaseEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ExecutionRelease().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[ExecutionReleaseEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ExecutionRelease().list()
+for execution_release in results:
+    print(execution_release.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> ExecutionReleaseEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ExecutionRelease().load({"id": "execution_release_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ExecutionReleaseEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ExecutionRuntimeInstanceEntity
+
+```python
+execution_runtime_instance = client.ExecutionRuntimeInstance()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter_kind` | `str` | Yes |  |
+| `app_environment_id` | `str` | Yes |  |
+| `app_release_id` | `str | None` | Yes |  |
+| `app_service_id` | `str` | Yes |  |
+| `booted_at` | `str | None` | Yes |  |
+| `booted_at_label` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `hosted_app_id` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `instance_key` | `str` | Yes |  |
+| `last_reconciled_at` | `str | None` | Yes |  |
+| `last_reconciled_at_label` | `str | None` | Yes |  |
+| `last_seen_at` | `str | None` | Yes |  |
+| `last_seen_at_label` | `str | None` | Yes |  |
+| `location` | `Any` | Yes |  |
+| `location_id` | `str` | Yes |  |
+| `network_peer_id` | `str | None` | Yes |  |
+| `nomad_allocation_id` | `str | None` | Yes |  |
+| `nomad_task_name` | `str | None` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `private_ipv4` | `str | None` | Yes |  |
+| `private_ipv6` | `str | None` | Yes |  |
+| `provider_instance_id` | `str | None` | Yes |  |
+| `public_endpoint` | `str | None` | Yes |  |
+| `service_name` | `str` | Yes | Name of the Vex service this instance runs, in the same vocabulary as `vex deploy list`. |
+| `slug` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `terminated_at` | `str | None` | Yes |  |
+| `terminated_at_label` | `str | None` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ExecutionRuntimeInstanceEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ExecutionRuntimeInstance().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[ExecutionRuntimeInstanceEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ExecutionRuntimeInstance().list()
+for execution_runtime_instance in results:
+    print(execution_runtime_instance.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> ExecutionRuntimeInstanceEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ExecutionRuntimeInstance().load({"id": "execution_runtime_instance_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> ExecutionRuntimeInstanceEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.ExecutionRuntimeInstance().patch({
+    "id": "execution_runtime_instance_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> ExecutionRuntimeInstanceEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.ExecutionRuntimeInstance().remove({"id": "execution_runtime_instance_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> ExecutionRuntimeInstanceEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.ExecutionRuntimeInstance().update({
+    "id": "execution_runtime_instance_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ExecutionRuntimeInstanceEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## ExplorationEntity
 
 ```python
@@ -10875,6 +20971,738 @@ Return the entity name.
 
 ---
 
+## GhEntity
+
+```python
+gh = client.Gh()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capabilities` | `dict` | Yes |  |
+| `content` | `dict` | Yes |  |
+| `fetched_at` | `str` | Yes |  |
+| `id` | `str` | No |  |
+| `magic_merge` | `dict | None` | Yes |  |
+| `pull_request` | `Any` | Yes |  |
+| `stack` | `dict` | Yes |  |
+| `transcript_paths` | `list` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> GhEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.Gh().load({"id": "gh_id", "gh_id": "gh_id", "github_repo": "github_repo", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GhEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GitImportEntity
+
+```python
+git_import = client.GitImport()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `destination_mode` | `str` | Yes |  |
+| `error` | `str | None` | No |  |
+| `git_default_branch` | `str` | No | Original Git symbolic HEAD branch, independent of the branch selected for JJ conversion |
+| `git_status` | `str` | Yes |  |
+| `git_url` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `idempotency_key` | `str` | Yes |  |
+| `name` | `str` | No |  |
+| `native_status` | `str` | Yes |  |
+| `organization` | `str` | Yes |  |
+| `repository_id` | `str | None` | No |  |
+| `root_path` | `str` | Yes |  |
+| `slug` | `str` | Yes |  |
+| `source_branch` | `str` | Yes |  |
+| `target_branch` | `str` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `destination_mode` | - | - |
+| `error` | - | - |
+| `git_default_branch` | - | - |
+| `git_status` | - | - |
+| `git_url` | - | - |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `name` | - | - |
+| `native_status` | - | - |
+| `organization` | - | - |
+| `repository_id` | - | - |
+| `root_path` | - | - |
+| `slug` | - | - |
+| `source_branch` | - | - |
+| `target_branch` | - | Yes |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GitImportEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.GitImport().create({
+    "organization_id": "example_organization_id",  # str
+    "destination_mode": "example_destination_mode",  # str
+    "idempotency_key": "example_idempotency_key",  # str
+    "root_path": "example_root_path",  # str
+    "slug": "example_slug",  # str
+    "source_branch": "example_source_branch",  # str
+})
+```
+
+#### `load(reqmatch, ctrl=None) -> GitImportEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.GitImport().load({"id": "git_import_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GitImportEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubEntity
+
+```python
+github = client.Github()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> GithubEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubAppEntity
+
+```python
+github_app = client.GithubApp()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GithubAppEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubAppEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubAppImportableRepositoryEntity
+
+```python
+github_app_importable_repository = client.GithubAppImportableRepository()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_login` | `str` | Yes |  |
+| `github_app_installation_id` | `str` | Yes |  |
+| `next_page` | `int | None` | Yes | Next GitHub page for this installation |
+| `repositories` | `list` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[GithubAppImportableRepositoryEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.GithubAppImportableRepository().list()
+for github_app_importable_repository in results:
+    print(github_app_importable_repository.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubAppImportableRepositoryEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubAppInstallationEntity
+
+```python
+github_app_installation = client.GithubAppInstallation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `str | None` | Yes |  |
+| `account_id` | `str | None` | Yes |  |
+| `account_login` | `str` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `installation_id` | `str` | Yes |  |
+| `installed_at` | `str | None` | Yes |  |
+| `installed_at_label` | `str | None` | Yes |  |
+| `manage_access_url` | `str` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `permission_entries` | `list` | Yes | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `dict` | Yes |  |
+| `status` | `str` | Yes |  |
+| `suspended_at` | `str | None` | Yes |  |
+| `suspended_at_label` | `str | None` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GithubAppInstallationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `list(reqmatch=None, ctrl=None) -> list[GithubAppInstallationEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.GithubAppInstallation().list({"organization_id": "example"})
+for github_app_installation in results:
+    print(github_app_installation.data_get())
+```
+
+#### `remove(reqmatch, ctrl=None) -> GithubAppInstallationEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.GithubAppInstallation().remove({"id": "github_app_installation_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubAppInstallationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubAppInstallationAuthorizationEntity
+
+```python
+github_app_installation_authorization = client.GithubAppInstallationAuthorization()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `installation_url` | `str` | Yes |  |
+| `organization_slug` | `str` | Yes | Vex organization slug whose installation will be linked. |
+| `return_target` | `str` | Yes | Server-validated Vex application target used after verification. |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GithubAppInstallationAuthorizationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.GithubAppInstallationAuthorization().create({
+    "organization_slug": "example_organization_slug",  # str
+    "return_target": "example_return_target",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubAppInstallationAuthorizationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubAppUserAuthorizationEntity
+
+```python
+github_app_user_authorization = client.GithubAppUserAuthorization()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GithubAppUserAuthorizationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.GithubAppUserAuthorization().create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubAppUserAuthorizationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubCiRepositoryEntity
+
+```python
+github_ci_repository = client.GithubCiRepository()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adoption_mode` | `str` | Yes |  |
+| `check_name_prefix` | `str` | Yes |  |
+| `ci_runner_pool_id` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `default_branch` | `str` | Yes |  |
+| `github_app_installation_id` | `str` | Yes |  |
+| `github_repository_id` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `last_compatibility_status` | `str | None` | Yes |  |
+| `last_error_message` | `str | None` | Yes |  |
+| `last_head_sha` | `str | None` | Yes |  |
+| `last_pull_request_number` | `int | None` | Yes |  |
+| `last_ref` | `str | None` | Yes |  |
+| `last_webhook_action` | `str | None` | Yes |  |
+| `last_webhook_at` | `str | None` | Yes |  |
+| `last_webhook_at_label` | `str | None` | Yes |  |
+| `last_webhook_delivery_id` | `str | None` | Yes |  |
+| `last_webhook_event` | `str | None` | Yes |  |
+| `metadata` | `dict` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `permission_status` | `str` | Yes |  |
+| `repository_full_name` | `str` | Yes |  |
+| `repository_name` | `str` | Yes |  |
+| `repository_owner` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+| `webhook_delivery_count` | `int` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `adoption_mode` | - | - | Yes | Yes | Yes |
+| `check_name_prefix` | - | - | Yes | Yes | Yes |
+| `ci_runner_pool_id` | - | - | Yes | Yes | Yes |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `default_branch` | - | - | Yes | Yes | Yes |
+| `github_app_installation_id` | - | - | - | - | - |
+| `github_repository_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `last_compatibility_status` | - | - | - | - | - |
+| `last_error_message` | - | - | - | - | - |
+| `last_head_sha` | - | - | - | - | - |
+| `last_pull_request_number` | - | - | - | - | - |
+| `last_ref` | - | - | - | - | - |
+| `last_webhook_action` | - | - | - | - | - |
+| `last_webhook_at` | - | - | - | - | - |
+| `last_webhook_at_label` | - | - | - | - | - |
+| `last_webhook_delivery_id` | - | - | - | - | - |
+| `last_webhook_event` | - | - | - | - | - |
+| `metadata` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `permission_status` | - | - | - | Yes | Yes |
+| `repository_full_name` | - | - | - | - | - |
+| `repository_name` | - | - | - | - | - |
+| `repository_owner` | - | - | - | - | - |
+| `status` | - | - | Yes | Yes | Yes |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
+| `webhook_delivery_count` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GithubCiRepositoryEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.GithubCiRepository().create({
+    "organization_id": "example_organization_id",  # str
+    "github_app_installation_id": "example_github_app_installation_id",  # str
+    "github_repository_id": "example_github_repository_id",  # str
+    "repository_name": "example_repository_name",  # str
+    "repository_owner": "example_repository_owner",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[GithubCiRepositoryEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.GithubCiRepository().list({"organization_id": "example"})
+for github_ci_repository in results:
+    print(github_ci_repository.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> GithubCiRepositoryEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.GithubCiRepository().load({"id": "github_ci_repository_id", "organization_id": "organization_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> GithubCiRepositoryEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.GithubCiRepository().patch({
+    "id": "github_ci_repository_id",
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl=None) -> GithubCiRepositoryEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.GithubCiRepository().update({
+    "id": "github_ci_repository_id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubCiRepositoryEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubCiRepositoryCompatibilityReportEntity
+
+```python
+github_ci_repository_compatibility_report = client.GithubCiRepositoryCompatibilityReport()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `analyzed_at` | `str` | Yes |  |
+| `analyzed_at_label` | `str | None` | Yes |  |
+| `ci_pipeline_id` | `str | None` | Yes |  |
+| `ci_pipeline_run_id` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `diagnostics` | `list` | Yes |  |
+| `errors` | `list` | Yes |  |
+| `event_action` | `str | None` | Yes |  |
+| `event_name` | `str` | Yes |  |
+| `execution_allowed` | `bool` | Yes |  |
+| `github_ci_repository_id` | `str` | Yes |  |
+| `head_sha` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `metadata` | `dict` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `parser_version` | `str` | Yes |  |
+| `pull_request_number` | `int | None` | Yes |  |
+| `ref_name` | `str | None` | Yes |  |
+| `referenced_actions` | `list` | Yes |  |
+| `required_secrets` | `list` | Yes |  |
+| `runner_labels` | `list` | Yes |  |
+| `source_blob_sha` | `str | None` | Yes |  |
+| `source_sha` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `supported_features` | `dict` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+| `warnings` | `list` | Yes |  |
+| `workflow_name` | `str | None` | Yes |  |
+| `workflow_path` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[GithubCiRepositoryCompatibilityReportEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.GithubCiRepositoryCompatibilityReport().list({"github_ci_repository_id": "example", "organization_id": "example"})
+for github_ci_repository_compatibility_report in results:
+    print(github_ci_repository_compatibility_report.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> GithubCiRepositoryCompatibilityReportEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.GithubCiRepositoryCompatibilityReport().load({"id": "github_ci_repository_compatibility_report_id", "github_ci_repository_id": "github_ci_repository_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubCiRepositoryCompatibilityReportEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## GithubConnectionEntity
 
 ```python
@@ -10937,6 +21765,1205 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `GithubConnectionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubIntegrationEntity
+
+```python
+github_integration = client.GithubIntegration()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `str | None` | Yes |  |
+| `account_login` | `str` | Yes |  |
+| `connection_status` | `str` | Yes |  |
+| `connection_status_label` | `str` | Yes |  |
+| `github_installation` | `Any` | Yes |  |
+| `health` | `dict` | Yes |  |
+| `id` | `str` | Yes |  |
+| `imported_repositories_count` | `int` | Yes |  |
+| `imported_repositories_count_label` | `str` | Yes |  |
+| `organization` | `dict` | Yes |  |
+| `pagination` | `dict` | Yes |  |
+| `repositories` | `list` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[GithubIntegrationEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.GithubIntegration().list({"organization_id": "example"})
+for github_integration in results:
+    print(github_integration.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> GithubIntegrationEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.GithubIntegration().load({"id": "github_integration_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubIntegrationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingEntity
+
+```python
+github_onboarding = client.GithubOnboarding()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accounts` | `list` | Yes |  |
+| `active_batch_id` | `str | None` | Yes | The batch the wizard's import step should resume — the most recent batch still working, else the most recent overall. |
+| `batches` | `list` | Yes |  |
+| `capabilities` | `dict` | Yes |  |
+| `installations` | `list` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> GithubOnboardingEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.GithubOnboarding().load({"organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubOnboardingEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingBranchEntity
+
+```python
+github_onboarding_branch = client.GithubOnboardingBranch()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `branches` | `list` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[GithubOnboardingBranchEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.GithubOnboardingBranch().list({"organization_id": "example", "github_app_installation_id": "example", "name": "example", "owner": "example"})
+for github_onboarding_branch in results:
+    print(github_onboarding_branch.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubOnboardingBranchEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingImportEntity
+
+```python
+github_onboarding_import = client.GithubOnboardingImport()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_login` | `str` | Yes |  |
+| `complete` | `bool` | Yes | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `str` | Yes |  |
+| `failed_item_count` | `int` | Yes |  |
+| `github_app_installation_id` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `imported_item_count` | `int` | Yes |  |
+| `item_count` | `int` | Yes |  |
+| `items` | `list` | Yes |  |
+| `repositories` | `Any` | Yes |  |
+| `status` | `str` | Yes |  |
+| `terminal_item_count` | `int` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GithubOnboardingImportEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.GithubOnboardingImport().create({
+    "organization_id": "example_organization_id",  # str
+    "github_app_installation_id": "example_github_app_installation_id",  # str
+    "repositories": "example_repositories",  # Any
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubOnboardingImportEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingImportBatchEntity
+
+```python
+github_onboarding_import_batch = client.GithubOnboardingImportBatch()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_login` | `str` | Yes |  |
+| `complete` | `bool` | Yes | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `str` | Yes |  |
+| `failed_item_count` | `int` | Yes |  |
+| `github_app_installation_id` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `imported_item_count` | `int` | Yes |  |
+| `item_count` | `int` | Yes |  |
+| `items` | `list` | Yes |  |
+| `status` | `str` | Yes |  |
+| `terminal_item_count` | `int` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> GithubOnboardingImportBatchEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.GithubOnboardingImportBatch().load({"id": "github_onboarding_import_batch_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubOnboardingImportBatchEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingImportItemEntity
+
+```python
+github_onboarding_import_item = client.GithubOnboardingImportItem()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GithubOnboardingImportItemEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubOnboardingImportItemEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubPullRequestEntity
+
+```python
+github_pull_request = client.GithubPullRequest()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capabilities` | `dict` | Yes |  |
+| `content` | `dict` | Yes |  |
+| `fetched_at` | `str` | Yes |  |
+| `id` | `str` | No |  |
+| `magic_merge` | `dict | None` | Yes |  |
+| `pull_request` | `Any` | Yes |  |
+| `stack` | `dict` | Yes |  |
+| `transcript_paths` | `list` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GithubPullRequestEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl=None) -> GithubPullRequestEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.GithubPullRequest().load({"id": "github_pull_request_id", "organization_id": "organization_id", "pull_request_id": "pull_request_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubPullRequestEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerAdmissionEntity
+
+```python
+github_runner_admission = client.GithubRunnerAdmission()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GithubRunnerAdmissionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.GithubRunnerAdmission().create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubRunnerAdmissionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerCacheEntity
+
+```python
+github_runner_cache = client.GithubRunnerCache()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `entry_id` | `str` | No |  |
+| `key` | `str` | No |  |
+| `matched_key` | `str` | No |  |
+| `ok` | `bool` | Yes |  |
+| `operation` | `str` | Yes |  |
+| `restore_keys` | `list` | No |  |
+| `signed_download_url` | `str` | No |  |
+| `size_bytes` | `str` | No |  |
+| `upload_path` | `str` | No |  |
+| `version` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GithubRunnerCacheEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.GithubRunnerCache().create({
+    "operation": "example_operation",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubRunnerCacheEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerEgressEntity
+
+```python
+github_runner_egress = client.GithubRunnerEgress()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_request` | `bool` | Yes |  |
+| `cidr` | `str | None` | Yes |  |
+| `ipv4` | `str | None` | Yes |  |
+| `requested_at_label` | `str | None` | Yes |  |
+| `status` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GithubRunnerEgressEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.GithubRunnerEgress().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+#### `load(reqmatch, ctrl=None) -> GithubRunnerEgressEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.GithubRunnerEgress().load({"organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubRunnerEgressEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerHistoryEntity
+
+```python
+github_runner_history = client.GithubRunnerHistory()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `list` | Yes |  |
+| `counts` | `dict` | Yes |  |
+| `observed_at` | `str` | Yes |  |
+| `pagination` | `dict` | Yes |  |
+| `repositories` | `list` | Yes |  |
+| `runs` | `list` | Yes |  |
+| `setup` | `Any` | No | CI onboarding. |
+| `success_rate` | `int | None` | Yes |  |
+| `usage` | `dict` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> GithubRunnerHistoryEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.GithubRunnerHistory().load({"organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubRunnerHistoryEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerImageEntity
+
+```python
+github_runner_image = client.GithubRunnerImage()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `image_reference` | `str` | Yes | Immutable linux/amd64 Ubuntu 24.04 image, registry/repository@sha256:digest, with Node 22+ |
+| `last_error` | `str | None` | Yes |  |
+| `modal_image_id` | `str | None` | Yes |  |
+| `name` | `str` | Yes |  |
+| `registry_secret_name` | `str | None` | Yes | Name of an organization CI secret containing REGISTRY_USERNAME and REGISTRY_PASSWORD JSON fields |
+| `status` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `created_at` | - | - | - |
+| `id` | - | - | - |
+| `image_reference` | - | - | - |
+| `last_error` | - | - | - |
+| `modal_image_id` | - | - | - |
+| `name` | - | - | - |
+| `registry_secret_name` | - | - | Yes |
+| `status` | - | - | - |
+| `updated_at` | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GithubRunnerImageEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.GithubRunnerImage().create({
+    "organization_id": "example_organization_id",  # str
+    "image_reference": "example_image_reference",  # str
+    "name": "example_name",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[GithubRunnerImageEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.GithubRunnerImage().list({"organization_id": "example"})
+for github_runner_image in results:
+    print(github_runner_image.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> GithubRunnerImageEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.GithubRunnerImage().load({"id": "github_runner_image_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubRunnerImageEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerPoolEntity
+
+```python
+github_runner_pool = client.GithubRunnerPool()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cpu_millicores` | `int` | Yes |  |
+| `enabled` | `bool` | Yes |  |
+| `github_app_installation_id` | `str` | Yes |  |
+| `github_repository_id` | `str` | Yes |  |
+| `github_runner_image` | `Any` | Yes |  |
+| `id` | `str` | Yes |  |
+| `image` | `str | None` | No | Organization image name or ID; null restores the standard image |
+| `invocations` | `list` | Yes |  |
+| `label` | `str` | Yes |  |
+| `last_error` | `str | None` | Yes |  |
+| `last_polled_at` | `str | None` | Yes |  |
+| `max_concurrency` | `int` | Yes |  |
+| `memory_mb` | `int` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `provider` | `str` | Yes |  |
+| `repository_full_name` | `str` | Yes |  |
+| `runtime_kind` | `str` | Yes |  |
+| `timeout_seconds` | `int` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | update |
+| --- | --- | --- | --- |
+| `cpu_millicores` | - | - | - |
+| `enabled` | - | Yes | Yes |
+| `github_app_installation_id` | - | - | - |
+| `github_repository_id` | - | - | - |
+| `github_runner_image` | - | - | - |
+| `id` | - | - | - |
+| `image` | - | - | - |
+| `invocations` | - | - | - |
+| `label` | - | Yes | - |
+| `last_error` | - | - | - |
+| `last_polled_at` | - | - | - |
+| `max_concurrency` | - | Yes | Yes |
+| `memory_mb` | - | - | - |
+| `organization_id` | - | - | - |
+| `provider` | - | Yes | Yes |
+| `repository_full_name` | - | - | - |
+| `runtime_kind` | - | - | - |
+| `timeout_seconds` | - | Yes | Yes |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GithubRunnerPoolEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.GithubRunnerPool().create({
+    "organization_id": "example_organization_id",  # str
+    "github_app_installation_id": "example_github_app_installation_id",  # str
+    "repository_full_name": "example_repository_full_name",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[GithubRunnerPoolEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.GithubRunnerPool().list({"organization_id": "example"})
+for github_runner_pool in results:
+    print(github_runner_pool.data_get())
+```
+
+#### `update(reqdata, ctrl=None) -> GithubRunnerPoolEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.GithubRunnerPool().update({
+    "id": "id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubRunnerPoolEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerSetupEntity
+
+```python
+github_runner_setup = client.GithubRunnerSetup()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `error` | `str | None` | Yes |  |
+| `github_repository_connection_id` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `pull_request_url` | `str | None` | Yes |  |
+| `repository_full_name` | `str` | Yes |  |
+| `roder_thread_id` | `str | None` | Yes |  |
+| `runner_labels` | `list` | Yes |  |
+| `status` | `str` | Yes |  |
+| `status_label` | `str` | Yes |  |
+| `summary` | `str | None` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GithubRunnerSetupEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.GithubRunnerSetup().create({
+    "organization_id": "example_organization_id",  # str
+    "github_repository_connection_id": "example_github_repository_connection_id",  # str
+})
+```
+
+#### `load(reqmatch, ctrl=None) -> GithubRunnerSetupEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.GithubRunnerSetup().load({"id": "github_runner_setup_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubRunnerSetupEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GitlabEntity
+
+```python
+gitlab = client.Gitlab()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `configured` | `bool` | Yes |  |
+| `connections` | `list` | Yes |  |
+| `integrations` | `list` | Yes |  |
+| `inventory_error` | `str | None` | No |  |
+| `next_page` | `int | None` | Yes |  |
+| `organization` | `dict` | Yes |  |
+| `projects` | `list` | Yes |  |
+| `redirect_uri` | `str | None` | Yes | The OAuth redirect URI a self-managed GitLab application must use; null when GitLab callbacks aren't configured. |
+| `selected_integration_id` | `str | None` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GitlabEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl=None) -> GitlabEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.Gitlab().load({"organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GitlabEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GitlabConnectionEntity
+
+```python
+gitlab_connection = client.GitlabConnection()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GitlabConnectionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GitlabConnectionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GitlabImportEntity
+
+```python
+gitlab_import = client.GitlabImport()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `integration_id` | `str` | Yes |  |
+| `project_id` | `int` | Yes |  |
+| `repo_slug` | `str` | No |  |
+| `source_branch` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GitlabImportEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.GitlabImport().create({
+    "organization_id": "example_organization_id",  # str
+    "integration_id": "example_integration_id",  # str
+    "project_id": 1,  # int
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GitlabImportEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GitlabOauthEntity
+
+```python
+gitlab_oauth = client.GitlabOauth()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> GitlabOauthEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GitlabOauthEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## GrantAllAgentEntity
+
+```python
+grant_all_agent = client.GrantAllAgent()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `all_agents_access` | `bool` | Yes |  |
+| `enabled` | `bool` | Yes |  |
+| `execution_available` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> GrantAllAgentEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.GrantAllAgent().create({
+    "device_id": "example_device_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "enabled": True,  # bool
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GrantAllAgentEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -11101,6 +23128,53 @@ Return the entity name.
 
 ---
 
+## IdentityOrganizationEntity
+
+```python
+identity_organization = client.IdentityOrganization()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> IdentityOrganizationEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `IdentityOrganizationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## ImageRepositoryEntity
 
 ```python
@@ -11192,6 +23266,140 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `ImageRepositoryEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ImageRepositoryTagEntity
+
+```python
+image_repository_tag = client.ImageRepositoryTag()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `image_repository` | `dict` | Yes |  |
+| `name` | `str` | Yes |  |
+| `registry_url` | `str` | Yes |  |
+| `tags` | `list` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[ImageRepositoryTagEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ImageRepositoryTag().list({"image_repository_id": "example"})
+for image_repository_tag in results:
+    print(image_repository_tag.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ImageRepositoryTagEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ImportBranchPolicyEntity
+
+```python
+import_branch_policy = client.ImportBranchPolicy()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `bool` | Yes |  |
+| `can_manage_sandbox_region` | `bool` | Yes |  |
+| `dedicated_outbound_ip_addresses` | `list` | Yes | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `str` | Yes |  |
+| `organization` | `dict` | Yes |  |
+| `sandbox_regions` | `list` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> ImportBranchPolicyEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ImportBranchPolicy().load({"organization_id": "organization_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> ImportBranchPolicyEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.ImportBranchPolicy().patch({
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl=None) -> ImportBranchPolicyEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.ImportBranchPolicy().update({
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ImportBranchPolicyEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -11397,6 +23605,309 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `InvitationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## InvocationControlEntity
+
+```python
+invocation_control = client.InvocationControl()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> InvocationControlEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `InvocationControlEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## JobLogChunkEntity
+
+```python
+job_log_chunk = client.JobLogChunk()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `byte_size` | `int` | Yes |  |
+| `ci_job_id` | `str | None` | Yes |  |
+| `ci_pipeline_run_id` | `str | None` | Yes |  |
+| `ci_step_id` | `str | None` | Yes |  |
+| `content` | `str` | Yes |  |
+| `content_format` | `str` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `sequence_number` | `int` | Yes |  |
+| `stream` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> JobLogChunkEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.JobLogChunk().create({
+    "job_id": "example_job_id",  # str
+    "pipeline_id": "example_pipeline_id",  # str
+    "run_id": "example_run_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[JobLogChunkEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.JobLogChunk().list({"job_id": "example", "pipeline_id": "example", "run_id": "example"})
+for job_log_chunk in results:
+    print(job_log_chunk.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `JobLogChunkEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## JobStepEntity
+
+```python
+job_step = client.JobStep()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> JobStepEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.JobStep().create({
+    "job_id": "example_job_id",  # str
+    "pipeline_id": "example_pipeline_id",  # str
+    "run_id": "example_run_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[JobStepEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.JobStep().list({"job_id": "example", "pipeline_id": "example", "run_id": "example"})
+for job_step in results:
+    print(job_step.data_get())
+```
+
+#### `patch(reqdata, ctrl=None) -> JobStepEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.JobStep().patch({
+    "id": "id",
+    "job_id": "job_id",
+    "pipeline_id": "pipeline_id",
+    "run_id": "run_id",
+    # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl=None) -> JobStepEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.JobStep().update({
+    "id": "id",
+    "job_id": "job_id",
+    "pipeline_id": "pipeline_id",
+    "run_id": "run_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `JobStepEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## JobWorkspaceEntity
+
+```python
+job_workspace = client.JobWorkspace()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> JobWorkspaceEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.JobWorkspace().create({
+    "job_id": "example_job_id",  # str
+    "pipeline_id": "example_pipeline_id",  # str
+    "run_id": "example_run_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[JobWorkspaceEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.JobWorkspace().list({"job_id": "example", "pipeline_id": "example", "run_id": "example"})
+for job_workspace in results:
+    print(job_workspace.data_get())
+```
+
+#### `patch(reqdata, ctrl=None) -> JobWorkspaceEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.JobWorkspace().patch({
+    "id": "id",
+    "job_id": "job_id",
+    "pipeline_id": "pipeline_id",
+    "run_id": "run_id",
+    # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl=None) -> JobWorkspaceEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.JobWorkspace().update({
+    "id": "id",
+    "job_id": "job_id",
+    "pipeline_id": "pipeline_id",
+    "run_id": "run_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `JobWorkspaceEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -11622,6 +24133,625 @@ Return the entity name.
 
 ---
 
+## KnownEntity
+
+```python
+known = client.Known()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> KnownEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `KnownEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## LabelEntity
+
+```python
+label = client.Label()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `changes_count` | `int` | Yes |  |
+| `id` | `str` | Yes |  |
+| `name` | `str` | Yes | Display name |
+| `slug` | `str` | Yes | Normalized identity used for filtering and lookup. |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[LabelEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.Label().list({"organization_id": "example"})
+for label in results:
+    print(label.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LabelEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## LeaseArtifactEntity
+
+```python
+lease_artifact = client.LeaseArtifact()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> LeaseArtifactEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.LeaseArtifact().create({
+    "lease_id": "example_lease_id",  # str
+    "node_id": "example_node_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LeaseArtifactEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## LeaseCacheEntity
+
+```python
+lease_cache = client.LeaseCache()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> LeaseCacheEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LeaseCacheEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## LeaseLogChunkEntity
+
+```python
+lease_log_chunk = client.LeaseLogChunk()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> LeaseLogChunkEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.LeaseLogChunk().create({
+    "lease_id": "example_lease_id",  # str
+    "node_id": "example_node_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LeaseLogChunkEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## LeaseReconciliationEntity
+
+```python
+lease_reconciliation = client.LeaseReconciliation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> LeaseReconciliationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LeaseReconciliationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## LeaseStepEntity
+
+```python
+lease_step = client.LeaseStep()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl=None) -> LeaseStepEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.LeaseStep().update({
+    "id": "id",
+    "lease_id": "lease_id",
+    "node_id": "node_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LeaseStepEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## LeaseVerifyDiagnosticEntity
+
+```python
+lease_verify_diagnostic = client.LeaseVerifyDiagnostic()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `browser_events` | `dict` | Yes |  |
+| `live_browser` | `dict` | Yes |  |
+| `live_view` | `dict` | Yes | The tester's read-only live stream for page viewers. |
+| `steps` | `list` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> LeaseVerifyDiagnosticEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.LeaseVerifyDiagnostic().create({
+    "lease_id": "example_lease_id",  # str
+    "swarm_id": "example_swarm_id",  # str
+    "task_id": "example_task_id",  # str
+    "browser_events": {},  # dict
+    "live_browser": {},  # dict
+    "live_view": {},  # dict
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LeaseVerifyDiagnosticEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## LeaseVerifySecretEntity
+
+```python
+lease_verify_secret = client.LeaseVerifySecret()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> LeaseVerifySecretEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.LeaseVerifySecret().create({
+    "lease_id": "example_lease_id",  # str
+    "swarm_id": "example_swarm_id",  # str
+    "task_id": "example_task_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LeaseVerifySecretEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## LeaseWorkspaceEntity
+
+```python
+lease_workspace = client.LeaseWorkspace()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl=None) -> LeaseWorkspaceEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.LeaseWorkspace().update({
+    "id": "id",
+    "lease_id": "lease_id",
+    "node_id": "node_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LeaseWorkspaceEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## LocalAgentDecisionEntity
+
+```python
+local_agent_decision = client.LocalAgentDecision()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `request` | `dict` | Yes | A native OpenAI Decisions request for gpt-6-luna, at most 1600 KiB, with inline images only |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> LocalAgentDecisionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.LocalAgentDecision().create({
+    "organization_id": "example_organization_id",  # str
+    "request": {},  # dict
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LocalAgentDecisionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## LocalAgentResponseEntity
+
+```python
+local_agent_response = client.LocalAgentResponse()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `input` | `list` | Yes |  |
+| `model` | `str` | Yes |  |
+| `service_tier` | `str | None` | No |  |
+| `store` | `bool` | Yes |  |
+| `stream` | `bool` | Yes |  |
+| `tools` | `list` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> LocalAgentResponseEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.LocalAgentResponse().create({
+    "organization_id": "example_organization_id",  # str
+    "input": [],  # list
+    "model": "example_model",  # str
+    "store": True,  # bool
+    "stream": True,  # bool
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LocalAgentResponseEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## LocalThreadDeliveryEntity
 
 ```python
@@ -11823,6 +24953,260 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `LocationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## LogStreamChunkEntity
+
+```python
+log_stream_chunk = client.LogStreamChunk()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> LogStreamChunkEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.LogStreamChunk().create({
+    "log_stream_id": "example_log_stream_id",  # str
+    "space_id": "example_space_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[LogStreamChunkEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.LogStreamChunk().list({"log_stream_id": "example", "space_id": "example"})
+for log_stream_chunk in results:
+    print(log_stream_chunk.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> LogStreamChunkEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.LogStreamChunk().load({"id": "log_stream_chunk_id", "log_stream_id": "log_stream_id", "space_id": "space_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LogStreamChunkEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## LogoImageEntity
+
+```python
+logo_image = client.LogoImage()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_products` | `list` | Yes | Products this organization has activated (PRD 144). |
+| `agents_only` | `bool` | No | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `bool` | Yes | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `github_prs_authored_by_change_author` | `bool` | Yes |  |
+| `id` | `str` | Yes |  |
+| `logo_url` | `str | None` | Yes |  |
+| `member_count` | `int` | Yes |  |
+| `name` | `str` | Yes |  |
+| `pending_invitation_count` | `int` | Yes |  |
+| `personal` | `bool` | Yes |  |
+| `repository_count` | `int` | Yes |  |
+| `role` | `str | None` | Yes |  |
+| `sandbox_region` | `str` | Yes |  |
+| `shared_agent_personal_accounts_enabled` | `bool` | No | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `str` | Yes |  |
+| `source_control_providers` | `list` | No | Connected source control providers for this organization. |
+| `source_ui_enabled` | `bool` | No | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `str` | Yes | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+| `verify_pr_scenario_writing_enabled` | `bool` | Yes |  |
+
+### Operations
+
+#### `remove(reqmatch, ctrl=None) -> LogoImageEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.LogoImage().remove({"organization_id": "organization_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> LogoImageEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.LogoImage().update({
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LogoImageEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## MarketingSettingEntity
+
+```python
+marketing_setting = client.MarketingSetting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `call_first` | `bool` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[MarketingSettingEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.MarketingSetting().list()
+for marketing_setting in results:
+    print(marketing_setting.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `MarketingSettingEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## McpOauthEntity
+
+```python
+mcp_oauth = client.McpOauth()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> McpOauthEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl=None) -> McpOauthEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `McpOauthEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -12338,6 +25722,85 @@ Return the entity name.
 
 ---
 
+## MergeQueueEntryEntity
+
+```python
+merge_queue_entry = client.MergeQueueEntry()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `analytics` | `dict` | Yes | Queue performance for the reporting window. |
+| `change_id` | `str | None` | No |  |
+| `expected_target_commit_id` | `str | None` | No |  |
+| `expected_target_version` | `int | None` | No |  |
+| `expected_version` | `int` | Yes |  |
+| `github_pr_number` | `int | None` | No |  |
+| `id` | `str` | No |  |
+| `idempotency_key` | `str` | Yes |  |
+| `kind` | `str` | Yes |  |
+| `policy` | `dict` | Yes |  |
+| `priority` | `str` | No |  |
+| `queue` | `dict` | Yes |  |
+| `target_branches` | `list` | No | Bookmark names for the target picker. |
+| `when_ready` | `bool | None` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> MergeQueueEntryEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.MergeQueueEntry().create({
+    "merge_queue_id": "example_merge_queue_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+    "expected_version": 1,  # int
+    "idempotency_key": "example_idempotency_key",  # str
+    "kind": "example_kind",  # str
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> MergeQueueEntryEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.MergeQueueEntry().remove({"id": "merge_queue_entry_id", "merge_queue_id": "merge_queue_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `MergeQueueEntryEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## MergeRequestEntity
 
 ```python
@@ -12463,6 +25926,71 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `MergeRequestEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## MergeResolutionEntity
+
+```python
+merge_resolution = client.MergeResolution()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `str` | Yes |  |
+| `base` | `str` | Yes | Common ancestor file contents |
+| `content` | `str | None` | No |  |
+| `context` | `dict` | No | Optional surrounding files keyed by path |
+| `duration_ms` | `int` | Yes |  |
+| `fallback` | `bool` | Yes |  |
+| `model` | `str` | No |  |
+| `ours` | `str` | Yes | Current / left file contents |
+| `path` | `str` | No | Repository-relative path of the conflicted file |
+| `resolved` | `bool` | Yes |  |
+| `theirs` | `str` | Yes | Incoming / right file contents |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> MergeResolutionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.MergeResolution().create({
+    "base": "example_base",  # str
+    "ours": "example_ours",  # str
+    "theirs": "example_theirs",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `MergeResolutionEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -12645,6 +26173,217 @@ Return the entity name.
 
 ---
 
+## MetronomeWebhookEntity
+
+```python
+metronome_webhook = client.MetronomeWebhook()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> MetronomeWebhookEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.MetronomeWebhook().create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `MetronomeWebhookEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ModelSubscriptionAccountEntity
+
+```python
+model_subscription_account = client.ModelSubscriptionAccount()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accounts` | `list` | Yes |  |
+| `agents` | `list` | Yes |  |
+| `can_disconnect` | `bool` | Yes |  |
+| `connection_agent` | `dict | None` | Yes |  |
+| `email` | `str` | No |  |
+| `id` | `str` | Yes |  |
+| `label` | `str` | Yes |  |
+| `provider` | `str` | Yes |  |
+| `saved` | `bool` | Yes |  |
+| `status` | `str` | Yes |  |
+| `usable` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ModelSubscriptionAccountEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ModelSubscriptionAccount().create({
+    "label": "example_label",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[ModelSubscriptionAccountEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ModelSubscriptionAccount().list()
+for model_subscription_account in results:
+    print(model_subscription_account.data_get())
+```
+
+#### `patch(reqdata, ctrl=None) -> ModelSubscriptionAccountEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.ModelSubscriptionAccount().patch({
+    "id": "model_subscription_account_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> ModelSubscriptionAccountEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.ModelSubscriptionAccount().remove({"id": "model_subscription_account_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> ModelSubscriptionAccountEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.ModelSubscriptionAccount().update({
+    "id": "model_subscription_account_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ModelSubscriptionAccountEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ModelSubscriptionAccountConnectionEntity
+
+```python
+model_subscription_account_connection = client.ModelSubscriptionAccountConnection()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> ModelSubscriptionAccountConnectionEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ModelSubscriptionAccountConnection().load({"id": "model_subscription_account_connection_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> ModelSubscriptionAccountConnectionEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.ModelSubscriptionAccountConnection().update({
+    "id": "model_subscription_account_connection_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ModelSubscriptionAccountConnectionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## NetworkConnectionEntity
 
 ```python
@@ -12739,6 +26478,278 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `NetworkConnectionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## NetworkingSpaceEntity
+
+```python
+networking_space = client.NetworkingSpace()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> NetworkingSpaceEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.NetworkingSpace().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[NetworkingSpaceEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.NetworkingSpace().list()
+for networking_space in results:
+    print(networking_space.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> NetworkingSpaceEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.NetworkingSpace().load({"id": "networking_space_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> NetworkingSpaceEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.NetworkingSpace().patch({
+    "id": "networking_space_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> NetworkingSpaceEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.NetworkingSpace().remove({"id": "networking_space_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> NetworkingSpaceEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.NetworkingSpace().update({
+    "id": "networking_space_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `NetworkingSpaceEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## NodeEntity
+
+```python
+node = client.Node()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `str | None` | Yes |  |
+| `account_id` | `str | None` | Yes |  |
+| `account_login` | `str` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `installation_id` | `str` | Yes |  |
+| `installed_at` | `str | None` | Yes |  |
+| `installed_at_label` | `str | None` | Yes |  |
+| `manage_access_url` | `str` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `permission_entries` | `list` | Yes | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `dict` | Yes |  |
+| `status` | `str` | Yes |  |
+| `suspended_at` | `str | None` | Yes |  |
+| `suspended_at_label` | `str | None` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[NodeEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.Node().list({"organization_id": "example"})
+for node in results:
+    print(node.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `NodeEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## NodeCertificateEntity
+
+```python
+node_certificate = client.NodeCertificate()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> NodeCertificateEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `NodeCertificateEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## NodeLeaseEntity
+
+```python
+node_lease = client.NodeLease()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> NodeLeaseEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `list(reqmatch=None, ctrl=None) -> list[NodeLeaseEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.NodeLease().list({"node_id": "example"})
+for node_lease in results:
+    print(node_lease.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> NodeLeaseEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `NodeLeaseEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -12870,6 +26881,465 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `NomadLogEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## NowEntity
+
+```python
+now = client.Now()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `needs_attention` | `list` | Yes |  |
+| `pagination` | `dict` | Yes |  |
+| `recently_landed` | `list` | Yes |  |
+| `shipping_now` | `list` | Yes |  |
+| `summary` | `dict` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> NowEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.Now().load({"organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `NowEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ObservabilityClickhouseClusterEntity
+
+```python
+observability_clickhouse_cluster = client.ObservabilityClickhouseCluster()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ObservabilityClickhouseClusterEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ObservabilityClickhouseCluster().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[ObservabilityClickhouseClusterEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ObservabilityClickhouseCluster().list()
+for observability_clickhouse_cluster in results:
+    print(observability_clickhouse_cluster.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> ObservabilityClickhouseClusterEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ObservabilityClickhouseCluster().load({"id": "observability_clickhouse_cluster_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> ObservabilityClickhouseClusterEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.ObservabilityClickhouseCluster().patch({
+    "id": "observability_clickhouse_cluster_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> ObservabilityClickhouseClusterEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.ObservabilityClickhouseCluster().remove({"id": "observability_clickhouse_cluster_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> ObservabilityClickhouseClusterEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.ObservabilityClickhouseCluster().update({
+    "id": "observability_clickhouse_cluster_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ObservabilityClickhouseClusterEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ObservabilityQuickwitClusterEntity
+
+```python
+observability_quickwit_cluster = client.ObservabilityQuickwitCluster()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ObservabilityQuickwitClusterEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ObservabilityQuickwitCluster().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[ObservabilityQuickwitClusterEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ObservabilityQuickwitCluster().list()
+for observability_quickwit_cluster in results:
+    print(observability_quickwit_cluster.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> ObservabilityQuickwitClusterEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ObservabilityQuickwitCluster().load({"id": "observability_quickwit_cluster_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> ObservabilityQuickwitClusterEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.ObservabilityQuickwitCluster().patch({
+    "id": "observability_quickwit_cluster_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> ObservabilityQuickwitClusterEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.ObservabilityQuickwitCluster().remove({"id": "observability_quickwit_cluster_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> ObservabilityQuickwitClusterEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.ObservabilityQuickwitCluster().update({
+    "id": "observability_quickwit_cluster_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ObservabilityQuickwitClusterEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ObservabilitySpaceEntity
+
+```python
+observability_space = client.ObservabilitySpace()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ObservabilitySpaceEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ObservabilitySpace().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[ObservabilitySpaceEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ObservabilitySpace().list()
+for observability_space in results:
+    print(observability_space.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> ObservabilitySpaceEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ObservabilitySpace().load({"id": "observability_space_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> ObservabilitySpaceEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.ObservabilitySpace().patch({
+    "id": "observability_space_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> ObservabilitySpaceEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.ObservabilitySpace().remove({"id": "observability_space_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> ObservabilitySpaceEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.ObservabilitySpace().update({
+    "id": "observability_space_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ObservabilitySpaceEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OpenapiEntity
+
+```python
+openapi = client.Openapi()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> OpenapiEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.Openapi().load()
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OpenapiEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrgInvitationEntity
+
+```python
+org_invitation = client.OrgInvitation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+| `invitation` | `dict` | Yes |  |
+| `registration_options` | `Any` | Yes |  |
+| `requires_password_setup` | `bool` | Yes |  |
+| `start_guided_setup` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OrgInvitationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl=None) -> OrgInvitationEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.OrgInvitation().load({"id": "org_invitation_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrgInvitationEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -13016,6 +27486,1320 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `OrganizationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationAppEntity
+
+```python
+organization_app = client.OrganizationApp()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[OrganizationAppEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.OrganizationApp().list({"organization_id": "example", "native_agent_id": "example"})
+for organization_app in results:
+    print(organization_app.data_get())
+```
+
+#### `remove(reqmatch, ctrl=None) -> OrganizationAppEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+#### `update(reqdata, ctrl=None) -> OrganizationAppEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationAppEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationControlEntity
+
+```python
+organization_control = client.OrganizationControl()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OrganizationControlEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationControlEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationDeviceEntity
+
+```python
+organization_device = client.OrganizationDevice()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OrganizationDeviceEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationDeviceEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationIdentityCertificateEntity
+
+```python
+organization_identity_certificate = client.OrganizationIdentityCertificate()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OrganizationIdentityCertificateEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.OrganizationIdentityCertificate().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[OrganizationIdentityCertificateEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.OrganizationIdentityCertificate().list({"organization_id": "example"})
+for organization_identity_certificate in results:
+    print(organization_identity_certificate.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> OrganizationIdentityCertificateEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.OrganizationIdentityCertificate().load({"id": "organization_identity_certificate_id", "organization_id": "organization_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> OrganizationIdentityCertificateEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.OrganizationIdentityCertificate().patch({
+    "id": "organization_identity_certificate_id",
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> OrganizationIdentityCertificateEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.OrganizationIdentityCertificate().remove({"id": "organization_identity_certificate_id", "organization_id": "organization_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> OrganizationIdentityCertificateEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.OrganizationIdentityCertificate().update({
+    "id": "organization_identity_certificate_id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationIdentityCertificateEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationInteractionEntity
+
+```python
+organization_interaction = client.OrganizationInteraction()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OrganizationInteractionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.OrganizationInteraction().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationInteractionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationInvitationEntity
+
+```python
+organization_invitation = client.OrganizationInvitation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email` | `str` | Yes |  |
+| `id` | `str` | No |  |
+| `role` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OrganizationInvitationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.OrganizationInvitation().create({
+    "organization_id": "example_organization_id",  # str
+    "email": "example_email",  # str
+    "role": "example_role",  # str
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> OrganizationInvitationEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.OrganizationInvitation().remove({"id": "organization_invitation_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationInvitationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationMessageFileEntity
+
+```python
+organization_message_file = client.OrganizationMessageFile()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OrganizationMessageFileEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.OrganizationMessageFile().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationMessageFileEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationOidcTrustEntity
+
+```python
+organization_oidc_trust = client.OrganizationOidcTrust()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OrganizationOidcTrustEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.OrganizationOidcTrust().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[OrganizationOidcTrustEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.OrganizationOidcTrust().list({"organization_id": "example"})
+for organization_oidc_trust in results:
+    print(organization_oidc_trust.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> OrganizationOidcTrustEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.OrganizationOidcTrust().load({"id": "organization_oidc_trust_id", "organization_id": "organization_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> OrganizationOidcTrustEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.OrganizationOidcTrust().patch({
+    "id": "organization_oidc_trust_id",
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> OrganizationOidcTrustEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.OrganizationOidcTrust().remove({"id": "organization_oidc_trust_id", "organization_id": "organization_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> OrganizationOidcTrustEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.OrganizationOidcTrust().update({
+    "id": "organization_oidc_trust_id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationOidcTrustEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationRunEventEntity
+
+```python
+organization_run_event = client.OrganizationRunEvent()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OrganizationRunEventEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.OrganizationRunEvent().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationRunEventEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationRunOutcomeEntity
+
+```python
+organization_run_outcome = client.OrganizationRunOutcome()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OrganizationRunOutcomeEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.OrganizationRunOutcome().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationRunOutcomeEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationRunUsageEntity
+
+```python
+organization_run_usage = client.OrganizationRunUsage()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OrganizationRunUsageEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.OrganizationRunUsage().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationRunUsageEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSandboxEntity
+
+```python
+organization_sandbox = client.OrganizationSandbox()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OrganizationSandboxEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationSandboxEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSecretEntity
+
+```python
+organization_secret = client.OrganizationSecret()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app_environment_id` | `str | None` | Yes |  |
+| `app_service_id` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `created_by` | `dict | None` | Yes |  |
+| `current_version` | `dict | None` | Yes |  |
+| `description` | `str | None` | Yes |  |
+| `env_key` | `str` | Yes |  |
+| `expose_to_build` | `bool` | Yes |  |
+| `expose_to_ci` | `bool` | Yes |  |
+| `hosted_app_id` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `last_accessed_at` | `str | None` | Yes |  |
+| `last_accessed_at_label` | `str | None` | Yes |  |
+| `last_accessed_by` | `dict | None` | Yes |  |
+| `latest_version_number` | `int | None` | Yes |  |
+| `name` | `str` | Yes |  |
+| `organization_id` | `str | None` | Yes |  |
+| `owner_service_account_id` | `str | None` | Yes |  |
+| `rotation_policy` | `str | None` | Yes |  |
+| `scope_kind` | `str` | Yes |  |
+| `slug` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OrganizationSecretEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.OrganizationSecret().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[OrganizationSecretEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.OrganizationSecret().list({"organization_id": "example"})
+for organization_secret in results:
+    print(organization_secret.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> OrganizationSecretEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.OrganizationSecret().load({"id": "organization_secret_id", "organization_id": "organization_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> OrganizationSecretEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.OrganizationSecret().patch({
+    "id": "organization_secret_id",
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> OrganizationSecretEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.OrganizationSecret().remove({"id": "organization_secret_id", "organization_id": "organization_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> OrganizationSecretEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.OrganizationSecret().update({
+    "id": "organization_secret_id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationSecretEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationServiceAccountEntity
+
+```python
+organization_service_account = client.OrganizationServiceAccount()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OrganizationServiceAccountEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.OrganizationServiceAccount().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[OrganizationServiceAccountEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.OrganizationServiceAccount().list({"organization_id": "example"})
+for organization_service_account in results:
+    print(organization_service_account.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> OrganizationServiceAccountEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.OrganizationServiceAccount().load({"id": "organization_service_account_id", "organization_id": "organization_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> OrganizationServiceAccountEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.OrganizationServiceAccount().patch({
+    "id": "organization_service_account_id",
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> OrganizationServiceAccountEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.OrganizationServiceAccount().remove({"id": "organization_service_account_id", "organization_id": "organization_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> OrganizationServiceAccountEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.OrganizationServiceAccount().update({
+    "id": "organization_service_account_id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationServiceAccountEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSettingEntity
+
+```python
+organization_setting = client.OrganizationSetting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `concurrent_run_limit_override` | `int | None` | No |  |
+| `customize_onboarding_packages` | `bool` | No |  |
+| `daily_run_limit_override` | `int | None` | No |  |
+| `deployment_usage_visibility` | `str` | No |  |
+| `monthly_browser_minutes_limit_override` | `int | None` | No |  |
+| `monthly_budget_dollars` | `str | float | None` | No |  |
+| `name` | `str` | No |  |
+| `onboarding_custom_pricing` | `bool` | No |  |
+| `onboarding_package_keys` | `list` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl=None) -> OrganizationSettingEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.OrganizationSetting().update({
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationSettingEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSiteEntity
+
+```python
+organization_site = client.OrganizationSite()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OrganizationSiteEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.OrganizationSite().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[OrganizationSiteEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.OrganizationSite().list({"organization_id": "example", "native_agent_id": "example"})
+for organization_site in results:
+    print(organization_site.data_get())
+```
+
+#### `remove(reqmatch, ctrl=None) -> OrganizationSiteEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.OrganizationSite().remove({"id": "organization_site_id", "organization_id": "organization_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> OrganizationSiteEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.OrganizationSite().update({
+    "id": "organization_site_id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationSiteEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSubscriptionEntity
+
+```python
+organization_subscription = client.OrganizationSubscription()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OrganizationSubscriptionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationSubscriptionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationToolEntity
+
+```python
+organization_tool = client.OrganizationTool()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `arguments` | `dict` | Yes |  |
+| `native_agent_id` | `str` | Yes |  |
+| `tool` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OrganizationToolEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.OrganizationTool().create({
+    "organization_id": "example_organization_id",  # str
+    "arguments": {},  # dict
+    "native_agent_id": "example_native_agent_id",  # str
+    "tool": "example_tool",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationToolEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OrganizationWorkloadIdentityEntity
+
+```python
+organization_workload_identity = client.OrganizationWorkloadIdentity()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OrganizationWorkloadIdentityEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.OrganizationWorkloadIdentity().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[OrganizationWorkloadIdentityEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.OrganizationWorkloadIdentity().list({"organization_id": "example"})
+for organization_workload_identity in results:
+    print(organization_workload_identity.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> OrganizationWorkloadIdentityEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.OrganizationWorkloadIdentity().load({"id": "organization_workload_identity_id", "organization_id": "organization_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> OrganizationWorkloadIdentityEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.OrganizationWorkloadIdentity().patch({
+    "id": "organization_workload_identity_id",
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> OrganizationWorkloadIdentityEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.OrganizationWorkloadIdentity().remove({"id": "organization_workload_identity_id", "organization_id": "organization_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> OrganizationWorkloadIdentityEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.OrganizationWorkloadIdentity().update({
+    "id": "organization_workload_identity_id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationWorkloadIdentityEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## OtelIngestEntity
+
+```python
+otel_ingest = client.OtelIngest()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> OtelIngestEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OtelIngestEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -13171,6 +28955,162 @@ Return the entity name.
 
 ---
 
+## PageArtefactEntity
+
+```python
+page_artefact = client.PageArtefact()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `artefact` | `Any` | Yes |  |
+| `automation` | `dict | None` | Yes |  |
+| `automation_invocation_id` | `str | None` | No |  |
+| `byte_size` | `int` | Yes |  |
+| `checksum_sha256` | `str` | Yes |  |
+| `comment_threads` | `list` | Yes |  |
+| `content_type` | `str` | Yes |  |
+| `created_at` | `str | None` | No |  |
+| `created_by_user_id` | `str | None` | No |  |
+| `description` | `str | None` | No |  |
+| `document_key` | `str` | No | Stable document identity shared by all revisions. |
+| `draft` | `dict | None` | Yes | The autosaved working copy of the newest Markdown version; null for older versions and other files. |
+| `entrypoint` | `str` | No |  |
+| `expires_at` | `str | None` | No |  |
+| `filename` | `str` | Yes |  |
+| `files` | `list` | No |  |
+| `harness` | `str | None` | No |  |
+| `harness_version` | `str | None` | No |  |
+| `id` | `str` | Yes |  |
+| `kind` | `str` | Yes |  |
+| `kinds` | `list` | Yes |  |
+| `model` | `str | None` | No |  |
+| `organization` | `dict` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `pagination` | `dict` | Yes |  |
+| `permissions` | `dict` | Yes |  |
+| `preview` | `dict` | Yes |  |
+| `published_at` | `str | None` | No |  |
+| `published_at_label` | `str | None` | Yes |  |
+| `publisher` | `dict | None` | Yes |  |
+| `repository` | `dict | None` | Yes |  |
+| `repository_id` | `str | None` | No |  |
+| `selected_path` | `str` | No |  |
+| `slug` | `str` | Yes |  |
+| `source` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `title` | `str` | Yes |  |
+| `vcs_agent_checkpoint_id` | `str | None` | No |  |
+| `vcs_agent_session_id` | `str | None` | No |  |
+| `version` | `int` | Yes |  |
+| `versions` | `list` | Yes |  |
+| `view_url` | `str` | Yes |  |
+| `web_url` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[PageArtefactEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.PageArtefact().list({"organization_id": "example"})
+for page_artefact in results:
+    print(page_artefact.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> PageArtefactEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.PageArtefact().load({"id": "page_artefact_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PageArtefactEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## PageCiPipelineRunEntity
+
+```python
+page_ci_pipeline_run = client.PageCiPipelineRun()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `error` | `str | None` | Yes |  |
+| `id` | `str` | No |  |
+| `jobs` | `list` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> PageCiPipelineRunEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.PageCiPipelineRun().load({"id": "page_ci_pipeline_run_id", "pipeline_id": "pipeline_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PageCiPipelineRunEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## PageProjectRunEntity
 
 ```python
@@ -13226,6 +29166,251 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `PageProjectRunEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## PageRepoVcCommitEntity
+
+```python
+page_repo_vc_commit = client.PageRepoVcCommit()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `commit` | `Any` | Yes |  |
+| `diff_path` | `str` | Yes | Fingerprinted path serving this commit range's file diff. |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> PageRepoVcCommitEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.PageRepoVcCommit().load({"id": "page_repo_vc_commit_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PageRepoVcCommitEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## PagesBillingEntity
+
+```python
+pages_billing = client.PagesBilling()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `list` | Yes |  |
+| `breakdown` | `Any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `Any` | Yes |  |
+| `can_manage_contact` | `bool` | Yes |  |
+| `can_manage_extra_spend` | `bool` | Yes |  |
+| `can_manage_local_subscription` | `bool` | Yes |  |
+| `can_manage_payment_method` | `bool` | Yes |  |
+| `can_set_up_billing` | `bool` | Yes |  |
+| `customer` | `Any` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `entitlements` | `dict` | Yes |  |
+| `extra_spend_enabled` | `bool` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `str` | Yes |  |
+| `package` | `Any` | Yes |  |
+| `prepaid` | `Any` | Yes |  |
+| `preview` | `Any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `dict` | Yes |  |
+| `stripe` | `dict` | Yes |  |
+| `subscription` | `Any` | Yes |  |
+| `token_account` | `dict` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> PagesBillingEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.PagesBilling().load({"organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PagesBillingEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## PagesGithubOnboardingEntity
+
+```python
+pages_github_onboarding = client.PagesGithubOnboarding()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `onboarding` | `dict` | Yes |  |
+| `organization` | `dict` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> PagesGithubOnboardingEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.PagesGithubOnboarding().load({"organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PagesGithubOnboardingEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## PagesMemberEntity
+
+```python
+pages_member = client.PagesMember()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accepted_at` | `str | None` | Yes |  |
+| `accepted_by_user` | `Any` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `email` | `str` | Yes |  |
+| `email_delivery_status` | `str` | No |  |
+| `expires_at` | `str | None` | Yes |  |
+| `expires_at_label` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `invite_url` | `str | None` | Yes |  |
+| `invited_by_user` | `Any` | Yes |  |
+| `organization` | `dict` | Yes |  |
+| `revoked_at` | `str | None` | Yes |  |
+| `role` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[PagesMemberEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.PagesMember().list({"organization_id": "example"})
+for pages_member in results:
+    print(pages_member.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PagesMemberEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -13473,6 +29658,419 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `PagesProjectScenarioEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## PagesRegistryEntity
+
+```python
+pages_registry = client.PagesRegistry()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_repository_count` | `int` | Yes |  |
+| `error` | `str | None` | Yes |  |
+| `pagination` | `dict` | Yes |  |
+| `repositories` | `list` | Yes |  |
+| `repository_count` | `int` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> PagesRegistryEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.PagesRegistry().load({"organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PagesRegistryEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## PagesSessionEntity
+
+```python
+pages_session = client.PagesSession()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter` | `str` | No |  |
+| `created_at` | `str | None` | Yes |  |
+| `cursor` | `str` | No |  |
+| `ended_at` | `str | None` | Yes |  |
+| `external_session_id` | `str` | Yes |  |
+| `facets` | `dict` | Yes |  |
+| `from` | `str` | No |  |
+| `github_access_warnings` | `list` | No |  |
+| `harness` | `str` | Yes | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `str` | Yes |  |
+| `last_activity_at` | `str | None` | Yes | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `str | None` | Yes |  |
+| `limit` | `int` | No |  |
+| `markers` | `list` | Yes |  |
+| `max_bytes` | `int` | No |  |
+| `mode` | `str` | No |  |
+| `offset` | `int` | No |  |
+| `pagination` | `dict` | Yes |  |
+| `query` | `str` | No |  |
+| `repo` | `str` | No |  |
+| `repository` | `Any` | Yes |  |
+| `search` | `Any` | No |  |
+| `search_enabled` | `bool` | No |  |
+| `session` | `Any` | Yes | Identical serialization to the org sessions page's expanded session, so the web reuses one session-detail builder. |
+| `sessions` | `list` | Yes |  |
+| `started_at` | `str | None` | Yes |  |
+| `stats` | `dict` | Yes |  |
+| `status` | `str` | No |  |
+| `title` | `str | None` | Yes |  |
+| `to` | `str` | No |  |
+| `token_stats` | `Any` | Yes |  |
+| `transcript_index` | `Any` | Yes |  |
+| `transcript_stats` | `Any` | Yes |  |
+| `updated_at` | `str | None` | Yes |  |
+| `user` | `Any` | Yes |  |
+| `user_id` | `str` | No |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `adapter` | - | Yes | - |
+| `created_at` | - | - | - |
+| `cursor` | - | - | - |
+| `ended_at` | - | - | - |
+| `external_session_id` | - | - | - |
+| `facets` | - | - | - |
+| `from` | - | - | - |
+| `github_access_warnings` | - | - | - |
+| `harness` | - | - | - |
+| `id` | - | - | - |
+| `last_activity_at` | - | - | - |
+| `last_checkpoint_at` | - | - | - |
+| `limit` | - | - | - |
+| `markers` | - | - | - |
+| `max_bytes` | - | - | - |
+| `mode` | - | - | - |
+| `offset` | - | - | - |
+| `pagination` | - | - | - |
+| `query` | - | - | - |
+| `repo` | - | - | - |
+| `repository` | - | - | - |
+| `search` | - | - | - |
+| `search_enabled` | - | - | - |
+| `session` | - | - | - |
+| `sessions` | - | - | - |
+| `started_at` | - | - | - |
+| `stats` | - | - | - |
+| `status` | - | Yes | - |
+| `title` | - | - | - |
+| `to` | - | - | - |
+| `token_stats` | - | - | - |
+| `transcript_index` | - | - | - |
+| `transcript_stats` | - | - | - |
+| `updated_at` | - | - | - |
+| `user` | - | - | - |
+| `user_id` | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> PagesSessionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.PagesSession().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[PagesSessionEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.PagesSession().list({"organization_id": "example"})
+for pages_session in results:
+    print(pages_session.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> PagesSessionEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.PagesSession().load({"id": "pages_session_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PagesSessionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## PairingEntity
+
+```python
+pairing = client.Pairing()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> PairingEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.Pairing().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[PairingEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.Pairing().list()
+for pairing in results:
+    print(pairing.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> PairingEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.Pairing().load({"id": "pairing_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PairingEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## PairingEventEntity
+
+```python
+pairing_event = client.PairingEvent()
+```
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[PairingEventEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.PairingEvent().list({"pairing_id": "example"})
+for pairing_event in results:
+    print(pairing_event.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PairingEventEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ParallelV1Entity
+
+```python
+parallel_v1 = client.ParallelV1()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ParallelV1Entity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ParallelV1Entity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## PatchsetDiffEntity
+
+```python
+patchset_diff = client.PatchsetDiff()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `files` | `list` | Yes |  |
+| `id` | `str` | No |  |
+| `patchset` | `dict` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> PatchsetDiffEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.PatchsetDiff().load({"id": "patchset_diff_id", "change_id": "change_id", "organization_id": "organization_id", "patchset_id": "patchset_id", "repo_id": "repo_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PatchsetDiffEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -13830,6 +30428,153 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `PreviewSharingApprovalEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ProactiveAgentWaitlistEntryEntity
+
+```python
+proactive_agent_waitlist_entry = client.ProactiveAgentWaitlistEntry()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email` | `str` | Yes |  |
+| `first_task` | `str | None` | No | The first job they would hand an agent. |
+| `invite_code` | `str | None` | No | The referral code of the invite link they arrived through. |
+| `places_per_referral` | `int` | Yes | Most places one referral moves the entry up; fewer when boosted entries are ahead. |
+| `position` | `int` | Yes | 1-based place in the queue. |
+| `position_after_next_referral` | `int` | Yes | The place one more referral would give this entry, as Rails would assign it. |
+| `referral_code` | `str` | Yes | Shared in this entry's invite link. |
+| `referral_count` | `int` | Yes | People who joined through this entry's link. |
+| `total` | `int` | Yes | Display total including a random increment per signup; not the actual number of entries. |
+| `website` | `str | None` | No | Honeypot. |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ProactiveAgentWaitlistEntryEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ProactiveAgentWaitlistEntry().create({
+    "email": "example_email",  # str
+})
+```
+
+#### `load(reqmatch, ctrl=None) -> ProactiveAgentWaitlistEntryEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ProactiveAgentWaitlistEntry().load({"id": "proactive_agent_waitlist_entry_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ProactiveAgentWaitlistEntryEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ProductEntity
+
+```python
+product = client.Product()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_products` | `list` | Yes | Products this organization has activated (PRD 144). |
+| `agents_only` | `bool` | No | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `bool` | Yes | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `github_prs_authored_by_change_author` | `bool` | Yes |  |
+| `id` | `str` | Yes |  |
+| `logo_url` | `str | None` | Yes |  |
+| `member_count` | `int` | Yes |  |
+| `name` | `str` | Yes |  |
+| `pending_invitation_count` | `int` | Yes |  |
+| `personal` | `bool` | Yes |  |
+| `product` | `str` | Yes |  |
+| `repository_count` | `int` | Yes |  |
+| `role` | `str | None` | Yes |  |
+| `sandbox_region` | `str` | Yes |  |
+| `shared_agent_personal_accounts_enabled` | `bool` | No | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `str` | Yes |  |
+| `source_control_providers` | `list` | No | Connected source control providers for this organization. |
+| `source_ui_enabled` | `bool` | No | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `str` | Yes | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+| `verify_pr_scenario_writing_enabled` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ProductEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.Product().create({
+    "organization_id": "example_organization_id",  # str
+    "product": "example_product",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ProductEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -15869,6 +32614,120 @@ Return the entity name.
 
 ---
 
+## PullRequestActionEntity
+
+```python
+pull_request_action = client.PullRequestAction()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action_name` | `str` | Yes |  |
+| `body` | `str` | No |  |
+| `comment_id` | `str` | No |  |
+| `comments` | `list` | No |  |
+| `event` | `str` | No |  |
+| `expected_head_sha` | `str` | No |  |
+| `id` | `str | None` | No |  |
+| `label` | `str` | No |  |
+| `line` | `int` | No |  |
+| `node_id` | `str | None` | No |  |
+| `operation_key` | `str` | Yes |  |
+| `path` | `str` | No |  |
+| `run_id` | `str` | No |  |
+| `side` | `str` | No |  |
+| `start_line` | `int` | No |  |
+| `start_side` | `str` | No |  |
+| `thread_id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> PullRequestActionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.PullRequestAction().create({
+    "number": "example_number",  # str
+    "organization_id": "example_organization_id",  # str
+    "pull_request_id": "example_pull_request_id",  # str
+    "action_name": "example_action_name",  # str
+    "operation_key": "example_operation_key",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PullRequestActionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## PullRequestMagicMergeEntity
+
+```python
+pull_request_magic_merge = client.PullRequestMagicMerge()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> PullRequestMagicMergeEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PullRequestMagicMergeEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## PullRequestSettingEntity
 
 ```python
@@ -16138,6 +32997,128 @@ Return the entity name.
 
 ---
 
+## PullRequestTranscriptEntity
+
+```python
+pull_request_transcript = client.PullRequestTranscript()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter` | `str` | Yes |  |
+| `created_at` | `str | None` | Yes |  |
+| `ended_at` | `str | None` | Yes |  |
+| `external_session_id` | `str` | Yes |  |
+| `harness` | `str` | Yes | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `str` | Yes |  |
+| `last_activity_at` | `str | None` | Yes | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `str | None` | Yes |  |
+| `repository` | `Any` | Yes |  |
+| `started_at` | `str | None` | Yes |  |
+| `stats` | `dict` | Yes |  |
+| `status` | `str` | Yes |  |
+| `title` | `str | None` | Yes |  |
+| `updated_at` | `str | None` | Yes |  |
+| `user` | `Any` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[PullRequestTranscriptEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.PullRequestTranscript().list({"organization_id": "example", "pull_request_id": "example", "repo_id": "example"})
+for pull_request_transcript in results:
+    print(pull_request_transcript.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PullRequestTranscriptEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## PullZoneEntity
+
+```python
+pull_zone = client.PullZone()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+| `slug` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[PullZoneEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.PullZone().list({"organization_id": "example"})
+for pull_zone in results:
+    print(pull_zone.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PullZoneEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## RecorderEntity
 
 ```python
@@ -16273,6 +33254,144 @@ Return the entity name.
 
 ---
 
+## RelayAgentConnectionEntity
+
+```python
+relay_agent_connection = client.RelayAgentConnection()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_card_url` | `str` | Yes |  |
+| `auth_scheme` | `str` | Yes |  |
+| `can_configure` | `bool` | Yes |  |
+| `can_disconnect` | `bool` | Yes |  |
+| `can_setup` | `bool` | Yes |  |
+| `connection` | `dict` | Yes |  |
+| `credential` | `str | None` | No | Write-only outbound key. |
+| `error_code` | `str | None` | Yes |  |
+| `expected_generation` | `int` | Yes |  |
+| `generation` | `int` | Yes |  |
+| `id` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+| `remote_agent` | `str | None` | Yes |  |
+| `requester_id` | `str` | Yes |  |
+| `retired_at` | `str | None` | Yes |  |
+| `revoked_at` | `str | None` | Yes |  |
+| `scope_key` | `str` | Yes |  |
+| `source_operation_id` | `str | None` | Yes |  |
+| `state` | `str` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | remove |
+| --- | --- | --- | --- | --- | --- |
+| `agent_card_url` | - | - | - | - | - |
+| `auth_scheme` | - | - | - | - | - |
+| `can_configure` | - | - | - | - | - |
+| `can_disconnect` | - | - | - | - | - |
+| `can_setup` | - | - | - | - | - |
+| `connection` | - | - | - | - | - |
+| `credential` | - | - | - | - | - |
+| `error_code` | - | - | - | - | - |
+| `expected_generation` | - | - | - | - | - |
+| `generation` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `remote_agent` | - | - | Yes | Yes | - |
+| `requester_id` | - | - | - | - | - |
+| `retired_at` | - | - | - | - | - |
+| `revoked_at` | - | - | - | - | - |
+| `scope_key` | - | - | - | - | - |
+| `source_operation_id` | - | - | Yes | - | - |
+| `state` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RelayAgentConnectionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RelayAgentConnection().create({
+    "agent_id": "example_agent_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "agent_card_url": "example_agent_card_url",  # str
+    "auth_scheme": "example_auth_scheme",  # str
+    "name": "example_name",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[RelayAgentConnectionEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RelayAgentConnection().list({"agent_id": "example", "organization_id": "example"})
+for relay_agent_connection in results:
+    print(relay_agent_connection.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> RelayAgentConnectionEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.RelayAgentConnection().load({"id": "relay_agent_connection_id", "agent_id": "agent_id", "organization_id": "organization_id"})
+```
+
+#### `remove(reqmatch, ctrl=None) -> RelayAgentConnectionEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.RelayAgentConnection().remove({"id": "relay_agent_connection_id", "agent_id": "agent_id", "organization_id": "organization_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> RelayAgentConnectionEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.RelayAgentConnection().update({
+    "id": "relay_agent_connection_id",
+    "agent_id": "agent_id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RelayAgentConnectionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## RelayAgentLocalThreadEntity
 
 ```python
@@ -16316,6 +33435,1204 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `RelayAgentLocalThreadEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RelaySignalEntity
+
+```python
+relay_signal = client.RelaySignal()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RelaySignalEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RelaySignal().create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RelaySignalEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ReleaseRolloutEntity
+
+```python
+release_rollout = client.ReleaseRollout()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ReleaseRolloutEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ReleaseRollout().create({
+    "release_id": "example_release_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[ReleaseRolloutEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.ReleaseRollout().list({"release_id": "example"})
+for release_rollout in results:
+    print(release_rollout.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> ReleaseRolloutEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ReleaseRollout().load({"id": "release_rollout_id", "release_id": "release_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ReleaseRolloutEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepoEntity
+
+```python
+repo = client.Repo()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_retry_import` | `bool` | Yes | True when a failed client import can be requeued for CLI resume. |
+| `can_retry_sync` | `bool` | Yes | True when the latest sync run failed and can be retried. |
+| `disclaimer` | `str | None` | Yes |  |
+| `federated_in_home` | `bool` | Yes | True when this Space is a folder virtual repository inside the organization Home monorepo. |
+| `github_repository` | `str | None` | Yes |  |
+| `icon_name` | `str` | Yes |  |
+| `id` | `str` | Yes | Virtual repository public ID for non-Home rows; Home uses the physical repository public ID. |
+| `import_item_id` | `str | None` | Yes |  |
+| `is_home` | `bool` | Yes |  |
+| `name` | `str` | Yes |  |
+| `remote_repository` | `str | None` | No |  |
+| `root_path` | `str | None` | Yes | Home-relative folder path when federated_in_home is true; null otherwise. |
+| `slug` | `str` | Yes |  |
+| `sync_error_message` | `str | None` | Yes |  |
+| `sync_provider` | `str` | No |  |
+| `sync_status` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[RepoEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.Repo().list({"organization_id": "example"})
+for repo in results:
+    print(repo.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> RepoEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+#### `remove(reqmatch, ctrl=None) -> RepoEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.Repo().remove({"id": "repo_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepoAccessTokenEntity
+
+```python
+repo_access_token = client.RepoAccessToken()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access_token` | `dict` | Yes |  |
+| `active` | `bool` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `credential_purpose` | `str` | No | Issues a revocable read-write system credential valid for one hour. |
+| `expires_at` | `str | None` | Yes |  |
+| `expires_at_label` | `str | None` | Yes |  |
+| `expires_in_days` | `int | None` | No |  |
+| `id` | `str` | Yes |  |
+| `last_used_at` | `str | None` | Yes |  |
+| `last_used_at_label` | `str | None` | Yes |  |
+| `name` | `str` | Yes |  |
+| `permission_level` | `str` | No |  |
+| `plain_text_token` | `str` | Yes |  |
+| `revoked_at` | `str | None` | Yes |  |
+| `revoked_at_label` | `str | None` | Yes |  |
+| `token_preview` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | remove |
+| --- | --- | --- | --- |
+| `access_token` | - | - | - |
+| `active` | - | - | - |
+| `created_at` | - | - | - |
+| `created_at_label` | - | - | - |
+| `credential_purpose` | - | - | - |
+| `expires_at` | - | - | - |
+| `expires_at_label` | - | - | - |
+| `expires_in_days` | - | - | - |
+| `id` | - | - | - |
+| `last_used_at` | - | - | - |
+| `last_used_at_label` | - | - | - |
+| `name` | - | - | - |
+| `permission_level` | Yes | - | - |
+| `plain_text_token` | - | - | - |
+| `revoked_at` | - | - | - |
+| `revoked_at_label` | - | - | - |
+| `token_preview` | - | - | - |
+| `updated_at` | - | - | - |
+| `updated_at_label` | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RepoAccessTokenEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RepoAccessToken().create({
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+    "name": "example_name",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[RepoAccessTokenEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RepoAccessToken().list({"organization_id": "example", "repo_id": "example"})
+for repo_access_token in results:
+    print(repo_access_token.data_get())
+```
+
+#### `remove(reqmatch, ctrl=None) -> RepoAccessTokenEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.RepoAccessToken().remove({"id": "repo_access_token_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoAccessTokenEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepoActionEntity
+
+```python
+repo_action = client.RepoAction()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `pipeline` | `dict` | Yes |  |
+| `run` | `dict` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[RepoActionEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RepoAction().list({"organization_id": "example", "repo_id": "example"})
+for repo_action in results:
+    print(repo_action.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoActionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepoAgentCheckpointEntity
+
+```python
+repo_agent_checkpoint = client.RepoAgentCheckpoint()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> RepoAgentCheckpointEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.RepoAgentCheckpoint().load({"id": "repo_agent_checkpoint_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoAgentCheckpointEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepoAgentSessionEntity
+
+```python
+repo_agent_session = client.RepoAgentSession()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter` | `str` | No |  |
+| `agent_session` | `dict` | Yes |  |
+| `external_session_id` | `str` | No |  |
+| `id` | `str` | No |  |
+| `status` | `str` | No |  |
+| `title` | `str | None` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RepoAgentSessionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RepoAgentSession().create({
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[RepoAgentSessionEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RepoAgentSession().list({"organization_id": "example", "repo_id": "example"})
+for repo_agent_session in results:
+    print(repo_agent_session.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> RepoAgentSessionEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.RepoAgentSession().load({"id": "repo_agent_session_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> RepoAgentSessionEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.RepoAgentSession().patch({
+    "id": "repo_agent_session_id",
+    "organization_id": "organization_id",
+    "repo_id": "repo_id",
+    # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl=None) -> RepoAgentSessionEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.RepoAgentSession().update({
+    "id": "repo_agent_session_id",
+    "organization_id": "organization_id",
+    "repo_id": "repo_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoAgentSessionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepoBookmarkProtectionEntity
+
+```python
+repo_bookmark_protection = client.RepoBookmarkProtection()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `actor_policy` | `dict` | Yes |  |
+| `bypass_mode` | `str` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_by_user_id` | `str | None` | Yes |  |
+| `enabled` | `bool` | Yes |  |
+| `id` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `priority` | `int` | Yes |  |
+| `repository_id` | `str` | Yes |  |
+| `requirements` | `dict` | Yes |  |
+| `target_kind` | `str` | Yes |  |
+| `target_pattern` | `str | None` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_by_user_id` | `str | None` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- | --- |
+| `actor_policy` | - | - | Yes | Yes | Yes | - |
+| `bypass_mode` | - | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - | - |
+| `created_by_user_id` | - | - | - | - | - | - |
+| `enabled` | - | - | Yes | Yes | Yes | - |
+| `id` | - | - | - | - | - | - |
+| `name` | - | - | Yes | Yes | Yes | - |
+| `organization_id` | - | - | - | - | - | - |
+| `priority` | - | - | Yes | Yes | Yes | - |
+| `repository_id` | - | - | - | - | - | - |
+| `requirements` | - | - | Yes | Yes | Yes | - |
+| `target_kind` | - | - | Yes | Yes | Yes | - |
+| `target_pattern` | - | - | Yes | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - | - |
+| `updated_by_user_id` | - | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RepoBookmarkProtectionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RepoBookmarkProtection().create({
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[RepoBookmarkProtectionEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RepoBookmarkProtection().list({"organization_id": "example", "repo_id": "example"})
+for repo_bookmark_protection in results:
+    print(repo_bookmark_protection.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> RepoBookmarkProtectionEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.RepoBookmarkProtection().load({"id": "repo_bookmark_protection_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> RepoBookmarkProtectionEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.RepoBookmarkProtection().patch({
+    "id": "repo_bookmark_protection_id",
+    "organization_id": "organization_id",
+    "repo_id": "repo_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> RepoBookmarkProtectionEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.RepoBookmarkProtection().remove({"id": "repo_bookmark_protection_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> RepoBookmarkProtectionEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.RepoBookmarkProtection().update({
+    "id": "repo_bookmark_protection_id",
+    "organization_id": "organization_id",
+    "repo_id": "repo_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoBookmarkProtectionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepoBookmarkProtectionEventEntity
+
+```python
+repo_bookmark_protection_event = client.RepoBookmarkProtectionEvent()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `str` | Yes |  |
+| `actor_kind` | `str` | Yes |  |
+| `actor_label` | `str | None` | Yes |  |
+| `actor_user_id` | `str | None` | Yes |  |
+| `bookmark_name` | `str` | Yes |  |
+| `bookmark_protection_rule_id` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `decision` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `intent` | `str | None` | Yes |  |
+| `metadata` | `dict` | Yes |  |
+| `new_target` | `str | None` | Yes |  |
+| `old_target` | `str | None` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `reason_codes` | `list` | Yes |  |
+| `repository_id` | `str` | Yes |  |
+| `source_request_id` | `str | None` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[RepoBookmarkProtectionEventEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RepoBookmarkProtectionEvent().list({"organization_id": "example", "repo_id": "example"})
+for repo_bookmark_protection_event in results:
+    print(repo_bookmark_protection_event.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoBookmarkProtectionEventEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepoCloudWorkspaceBackupEntity
+
+```python
+repo_cloud_workspace_backup = client.RepoCloudWorkspaceBackup()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RepoCloudWorkspaceBackupEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RepoCloudWorkspaceBackup().create({
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[RepoCloudWorkspaceBackupEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RepoCloudWorkspaceBackup().list({"organization_id": "example", "repo_id": "example"})
+for repo_cloud_workspace_backup in results:
+    print(repo_cloud_workspace_backup.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> RepoCloudWorkspaceBackupEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.RepoCloudWorkspaceBackup().load({"id": "repo_cloud_workspace_backup_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoCloudWorkspaceBackupEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepoCodeRuleEntity
+
+```python
+repo_code_rule = client.RepoCodeRule()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_revision_number` | `int | None` | Yes |  |
+| `capabilities` | `dict` | Yes |  |
+| `code_rule` | `Any` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `definition` | `dict` | Yes |  |
+| `draft_pending` | `bool` | Yes | The latest revision is not the active one |
+| `enabled` | `bool` | Yes |  |
+| `expected_version` | `int` | Yes |  |
+| `id` | `str` | Yes |  |
+| `latest_revision_number` | `int` | Yes |  |
+| `name` | `str` | Yes | Name of the latest revision |
+| `repository` | `dict` | Yes |  |
+| `scope` | `list` | Yes |  |
+| `slug` | `str` | Yes |  |
+| `state_version` | `int` | Yes | Send back as expected_version on every mutation |
+| `updated_at` | `str` | Yes |  |
+| `web_url` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RepoCodeRuleEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RepoCodeRule().create({
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+    "definition": {},  # dict
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[RepoCodeRuleEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RepoCodeRule().list({"organization_id": "example", "repo_id": "example"})
+for repo_code_rule in results:
+    print(repo_code_rule.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> RepoCodeRuleEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.RepoCodeRule().load({"id": "repo_code_rule_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> RepoCodeRuleEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.RepoCodeRule().patch({
+    "id": "repo_code_rule_id",
+    "organization_id": "organization_id",
+    "repo_id": "repo_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> RepoCodeRuleEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.RepoCodeRule().remove({"id": "repo_code_rule_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> RepoCodeRuleEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.RepoCodeRule().update({
+    "id": "repo_code_rule_id",
+    "organization_id": "organization_id",
+    "repo_id": "repo_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoCodeRuleEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepoSettingEntity
+
+```python
+repo_setting = client.RepoSetting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active` | `bool` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `description` | `str | None` | Yes |  |
+| `expires_at` | `str | None` | Yes |  |
+| `expires_at_label` | `str | None` | Yes |  |
+| `icon_name` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `last_used_at` | `str | None` | Yes |  |
+| `last_used_at_label` | `str | None` | Yes |  |
+| `merge_authority` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `permission_level` | `str` | Yes |  |
+| `revoked_at` | `str | None` | Yes |  |
+| `revoked_at_label` | `str | None` | Yes |  |
+| `slug` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `token_preview` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | update |
+| --- | --- | --- |
+| `active` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `description` | - | Yes |
+| `expires_at` | - | - |
+| `expires_at_label` | - | - |
+| `icon_name` | - | Yes |
+| `id` | - | - |
+| `last_used_at` | - | - |
+| `last_used_at_label` | - | - |
+| `merge_authority` | - | - |
+| `name` | - | Yes |
+| `organization_id` | - | - |
+| `permission_level` | - | - |
+| `revoked_at` | - | - |
+| `revoked_at_label` | - | - |
+| `slug` | - | - |
+| `status` | - | Yes |
+| `token_preview` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[RepoSettingEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RepoSetting().list({"organization_id": "example", "repo_id": "example"})
+for repo_setting in results:
+    print(repo_setting.data_get())
+```
+
+#### `update(reqdata, ctrl=None) -> RepoSettingEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.RepoSetting().update({
+    "organization_id": "organization_id",
+    "repo_id": "repo_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoSettingEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepoStatEntity
+
+```python
+repo_stat = client.RepoStat()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `repository_stats` | `dict` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RepoStatEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `list(reqmatch=None, ctrl=None) -> list[RepoStatEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RepoStat().list({"organization_id": "example", "repo_id": "example"})
+for repo_stat in results:
+    print(repo_stat.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoStatEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepoVcEntity
+
+```python
+repo_vc = client.RepoVc()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RepoVcEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl=None) -> RepoVcEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+#### `update(reqdata, ctrl=None) -> RepoVcEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoVcEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepoVcCommitEntity
+
+```python
+repo_vc_commit = client.RepoVcCommit()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `name` | `str` | Yes |  |
+| `target_commit_id` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[RepoVcCommitEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RepoVcCommit().list({"organization_id": "example", "repo_id": "example", "ref": "example"})
+for repo_vc_commit in results:
+    print(repo_vc_commit.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoVcCommitEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -16435,6 +34752,976 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `ReportScenarioEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepositoryAccessEntity
+
+```python
+repository_access = client.RepositoryAccess()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RepositoryAccessEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl=None) -> RepositoryAccessEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepositoryAccessEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepositoryAccessResolveEntity
+
+```python
+repository_access_resolve = client.RepositoryAccessResolve()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `default_branch` | `str` | Yes |  |
+| `git_auth_username` | `str` | Yes |  |
+| `git_https_clone_url` | `str | None` | Yes |  |
+| `git_https_supported` | `bool` | Yes |  |
+| `github_access_warnings` | `list` | No |  |
+| `id` | `str` | No |  |
+| `membership_role` | `str` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `organization_name` | `str` | Yes |  |
+| `organization_slug` | `str` | Yes |  |
+| `repository_id` | `str` | Yes |  |
+| `repository_name` | `str` | Yes |  |
+| `repository_slug` | `str` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> RepositoryAccessResolveEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.RepositoryAccessResolve().load({"id": "repository_access_resolve_id", "resolve_id": "resolve_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepositoryAccessResolveEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepositoryEventEntity
+
+```python
+repository_event = client.RepositoryEvent()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RepositoryEventEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepositoryEventEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepositoryImportEntity
+
+```python
+repository_import = client.RepositoryImport()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_connections` | `bool` | Yes |  |
+| `github_imports` | `list` | Yes |  |
+| `github_installations` | `list` | Yes |  |
+| `gitlab_configured` | `bool` | Yes |  |
+| `gitlab_imports` | `list` | Yes |  |
+| `gitlab_integrations` | `list` | Yes |  |
+| `gitlab_redirect_uri` | `str | None` | Yes |  |
+| `gitlab_self_managed_available` | `bool` | Yes |  |
+| `inventory_errors` | `list` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `repositories` | `list` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> RepositoryImportEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.RepositoryImport().load({"organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepositoryImportEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepositoryImportSessionEntity
+
+```python
+repository_import_session = client.RepositoryImportSession()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action_required` | `str` | No |  |
+| `authorization_endpoint` | `str` | No |  |
+| `can_authorize_github` | `bool` | Yes |  |
+| `client_name` | `str | None` | Yes |  |
+| `client_version` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `error_message` | `str | None` | Yes |  |
+| `expires_at` | `str` | Yes |  |
+| `git_imports` | `list` | Yes |  |
+| `github_app_installation_id` | `str | None` | Yes |  |
+| `github_connected` | `bool` | Yes |  |
+| `id` | `str` | Yes |  |
+| `idempotency_key` | `str` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `organization_slug` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `action_required` | - | - |
+| `authorization_endpoint` | - | - |
+| `can_authorize_github` | - | - |
+| `client_name` | - | Yes |
+| `client_version` | - | Yes |
+| `created_at` | - | - |
+| `error_message` | - | - |
+| `expires_at` | - | - |
+| `git_imports` | - | - |
+| `github_app_installation_id` | - | Yes |
+| `github_connected` | - | - |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `organization_id` | - | - |
+| `organization_slug` | - | - |
+| `status` | - | - |
+| `updated_at` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RepositoryImportSessionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RepositoryImportSession().create({
+    "organization_id": "example_organization_id",  # str
+    "idempotency_key": "example_idempotency_key",  # str
+})
+```
+
+#### `load(reqmatch, ctrl=None) -> RepositoryImportSessionEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.RepositoryImportSession().load({"id": "repository_import_session_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepositoryImportSessionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepositoryImportSessionRepositoryEntity
+
+```python
+repository_import_session_repository = client.RepositoryImportSessionRepository()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `default_branch` | `str | None` | Yes |  |
+| `full_name` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+| `owner` | `str` | Yes |  |
+| `private` | `bool` | Yes |  |
+| `reason` | `str | None` | No |  |
+| `selectable` | `bool` | Yes |  |
+| `status` | `str` | Yes |  |
+| `visibility` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[RepositoryImportSessionRepositoryEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RepositoryImportSessionRepository().list({"repository_import_session_id": "example"})
+for repository_import_session_repository in results:
+    print(repository_import_session_repository.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepositoryImportSessionRepositoryEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepositoryImportSessionSelectionEntity
+
+```python
+repository_import_session_selection = client.RepositoryImportSessionSelection()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `repositories` | `Any` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RepositoryImportSessionSelectionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RepositoryImportSessionSelection().create({
+    "repository_import_session_id": "example_repository_import_session_id",  # str
+    "repositories": "example_repositories",  # Any
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepositoryImportSessionSelectionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RepositorySandboxEnvironmentEntity
+
+```python
+repository_sandbox_environment = client.RepositorySandboxEnvironment()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RepositorySandboxEnvironmentEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl=None) -> RepositorySandboxEnvironmentEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.RepositorySandboxEnvironment().load({"id": "repository_sandbox_environment_id", "repository_id": "repository_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepositorySandboxEnvironmentEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RoderCodeRepairEntity
+
+```python
+roder_code_repair = client.RoderCodeRepair()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `base_sha` | `str` | Yes |  |
+| `cancel_requested` | `bool` | Yes |  |
+| `failure_code` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `launch_state` | `str` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `repository_slug` | `str` | Yes |  |
+| `roder_thread_id` | `str | None` | Yes |  |
+| `roder_turn_id` | `str | None` | Yes |  |
+| `scenario_run_id` | `str` | Yes |  |
+| `task` | `dict | None` | Yes |  |
+| `trigger_kind` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RoderCodeRepairEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RoderCodeRepair().create({
+    "base_sha": "example_base_sha",  # str
+    "organization_id": "example_organization_id",  # str
+    "repository_slug": "example_repository_slug",  # str
+    "scenario_run_id": "example_scenario_run_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[RoderCodeRepairEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RoderCodeRepair().list({"scenario_run_id": "example"})
+for roder_code_repair in results:
+    print(roder_code_repair.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> RoderCodeRepairEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.RoderCodeRepair().load({"id": "roder_code_repair_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RoderCodeRepairEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RoderCodeRepairSettingEntity
+
+```python
+roder_code_repair_setting = client.RoderCodeRepairSetting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available` | `bool` | Yes |  |
+| `daily_limit` | `int` | Yes |  |
+| `enabled` | `bool` | Yes |  |
+| `enabled_at` | `str | None` | Yes |  |
+| `operator_user_id` | `str | None` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `repository_slug` | `str | None` | Yes | Connected Composal repository required when enabling |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `available` | - | - |
+| `daily_limit` | - | - |
+| `enabled` | - | - |
+| `enabled_at` | - | - |
+| `operator_user_id` | - | - |
+| `organization_id` | - | - |
+| `repository_slug` | - | Yes |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RoderCodeRepairSettingEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RoderCodeRepairSetting().create({
+    "enabled": True,  # bool
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[RoderCodeRepairSettingEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RoderCodeRepairSetting().list({"organization_id": "example"})
+for roder_code_repair_setting in results:
+    print(roder_code_repair_setting.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RoderCodeRepairSettingEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RoderMachineEntity
+
+```python
+roder_machine = client.RoderMachine()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl=None) -> RoderMachineEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.RoderMachine().update({
+    "id": "id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RoderMachineEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RoderRunEntity
+
+```python
+roder_run = client.RoderRun()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RoderRunEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RoderRunEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RoderWorkspaceCredentialEntity
+
+```python
+roder_workspace_credential = client.RoderWorkspaceCredential()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `api_token` | `str` | Yes | Short-lived personal access token for the spawning user. |
+| `author_email` | `str` | Yes |  |
+| `author_name` | `str` | Yes |  |
+| `clone_url` | `str` | Yes |  |
+| `default_branch` | `str` | Yes |  |
+| `expires_at` | `str` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `repository_id` | `str` | Yes |  |
+| `repository_slug` | `str` | Yes |  |
+| `repository_spec` | `str` | Yes | The explicitly selected physical repository address. |
+| `required_lifetime_seconds` | `int` | Yes | Lifetime the pending clone or command must be able to complete within. |
+| `token` | `str` | Yes | Short-lived read/write repository credential. |
+| `username` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RoderWorkspaceCredentialEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RoderWorkspaceCredential().create({
+    "required_lifetime_seconds": 1,  # int
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RoderWorkspaceCredentialEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RunArtifactEntity
+
+```python
+run_artifact = client.RunArtifact()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RunArtifactEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RunArtifact().create({
+    "pipeline_id": "example_pipeline_id",  # str
+    "run_id": "example_run_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[RunArtifactEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RunArtifact().list({"pipeline_id": "example", "run_id": "example"})
+for run_artifact in results:
+    print(run_artifact.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RunArtifactEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RunJobEntity
+
+```python
+run_job = client.RunJob()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active` | `bool` | Yes |  |
+| `allow_failure` | `bool` | Yes |  |
+| `cache_archive_observations` | `dict | None` | Yes | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `ci_pipeline_run_id` | `str` | Yes |  |
+| `ci_runner_id` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `dependencies_csv` | `str | None` | Yes |  |
+| `display_id` | `int` | Yes |  |
+| `environment_csv` | `str | None` | Yes |  |
+| `execution_order` | `int` | Yes |  |
+| `execution_profile` | `str | None` | No |  |
+| `exit_code` | `int | None` | Yes |  |
+| `failed` | `bool` | Yes |  |
+| `finished_at` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `kind` | `str` | Yes |  |
+| `log_chunks` | `list` | Yes |  |
+| `name` | `str` | Yes |  |
+| `number` | `int` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `queued_at` | `str | None` | Yes |  |
+| `reconciliation_id` | `str | None` | No |  |
+| `retry_number` | `int` | Yes |  |
+| `reuse` | `dict | None` | Yes |  |
+| `runner_label_selector` | `str | None` | Yes |  |
+| `slug` | `str` | Yes |  |
+| `started_at` | `str | None` | Yes |  |
+| `status` | `str` | Yes |  |
+| `status_label` | `str` | Yes |  |
+| `status_state` | `str` | Yes |  |
+| `status_tone` | `str` | Yes |  |
+| `steps` | `list` | Yes |  |
+| `timeout_seconds` | `int | None` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RunJobEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RunJob().create({
+    "pipeline_id": "example_pipeline_id",  # str
+    "run_id": "example_run_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[RunJobEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RunJob().list({"pipeline_id": "example", "run_id": "example"})
+for run_job in results:
+    print(run_job.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> RunJobEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.RunJob().load({"id": "run_job_id", "pipeline_id": "pipeline_id", "run_id": "run_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RunJobEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -16678,6 +35965,497 @@ Return the entity name.
 
 ---
 
+## RunWorkspaceCredentialEntity
+
+```python
+run_workspace_credential = client.RunWorkspaceCredential()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RunWorkspaceCredentialEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RunWorkspaceCredential().create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RunWorkspaceCredentialEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RunnerLeaseEntity
+
+```python
+runner_lease = client.RunnerLease()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RunnerLeaseEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RunnerLease().create({
+    "runner_id": "example_runner_id",  # str
+    "runner_pool_id": "example_runner_pool_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[RunnerLeaseEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RunnerLease().list({"runner_id": "example", "runner_pool_id": "example"})
+for runner_lease in results:
+    print(runner_lease.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RunnerLeaseEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RunnerPoolNodeEnrollmentTokenEntity
+
+```python
+runner_pool_node_enrollment_token = client.RunnerPoolNodeEnrollmentToken()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capabilities_csv` | `str | None` | Yes |  |
+| `ci_runner_pool_id` | `str` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `creator_user_id` | `str | None` | Yes |  |
+| `description` | `str | None` | Yes |  |
+| `expires_at` | `str | None` | Yes |  |
+| `expires_at_label` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `kind` | `str` | Yes |  |
+| `last_used_at` | `str | None` | Yes |  |
+| `last_used_at_label` | `str | None` | Yes |  |
+| `name` | `str` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `raw_token` | `str | None` | Yes |  |
+| `revoked_at` | `str | None` | Yes |  |
+| `status` | `str` | Yes |  |
+| `token_hint` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+| `usage_count` | `int` | Yes |  |
+| `usage_count_label` | `str` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `capabilities_csv` | - | Yes |
+| `ci_runner_pool_id` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `creator_user_id` | - | - |
+| `description` | - | Yes |
+| `expires_at` | - | Yes |
+| `expires_at_label` | - | - |
+| `id` | - | - |
+| `kind` | - | Yes |
+| `last_used_at` | - | - |
+| `last_used_at_label` | - | - |
+| `name` | - | - |
+| `organization_id` | - | - |
+| `raw_token` | - | - |
+| `revoked_at` | - | - |
+| `status` | - | - |
+| `token_hint` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+| `usage_count` | - | - |
+| `usage_count_label` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RunnerPoolNodeEnrollmentTokenEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RunnerPoolNodeEnrollmentToken().create({
+    "runner_pool_id": "example_runner_pool_id",  # str
+    "name": "example_name",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[RunnerPoolNodeEnrollmentTokenEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RunnerPoolNodeEnrollmentToken().list({"runner_pool_id": "example"})
+for runner_pool_node_enrollment_token in results:
+    print(runner_pool_node_enrollment_token.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RunnerPoolNodeEnrollmentTokenEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RunnerPoolRunnerEntity
+
+```python
+runner_pool_runner = client.RunnerPoolRunner()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RunnerPoolRunnerEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RunnerPoolRunner().create({
+    "runner_pool_id": "example_runner_pool_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[RunnerPoolRunnerEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RunnerPoolRunner().list({"runner_pool_id": "example"})
+for runner_pool_runner in results:
+    print(runner_pool_runner.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> RunnerPoolRunnerEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.RunnerPoolRunner().load({"id": "runner_pool_runner_id", "runner_pool_id": "runner_pool_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> RunnerPoolRunnerEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.RunnerPoolRunner().patch({
+    "id": "runner_pool_runner_id",
+    "runner_pool_id": "runner_pool_id",
+    # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl=None) -> RunnerPoolRunnerEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.RunnerPoolRunner().update({
+    "id": "runner_pool_runner_id",
+    "runner_pool_id": "runner_pool_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RunnerPoolRunnerEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## RuntimeInstanceHealthSnapshotEntity
+
+```python
+runtime_instance_health_snapshot = client.RuntimeInstanceHealthSnapshot()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> RuntimeInstanceHealthSnapshotEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.RuntimeInstanceHealthSnapshot().create({
+    "runtime_instance_id": "example_runtime_instance_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[RuntimeInstanceHealthSnapshotEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.RuntimeInstanceHealthSnapshot().list({"runtime_instance_id": "example"})
+for runtime_instance_health_snapshot in results:
+    print(runtime_instance_health_snapshot.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RuntimeInstanceHealthSnapshotEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SandboxIntegrationEntity
+
+```python
+sandbox_integration = client.SandboxIntegration()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage` | `bool` | Yes |  |
+| `catalog` | `list` | Yes |  |
+| `configuration` | `dict` | Yes |  |
+| `connected_profiles` | `dict` | Yes | Connected profiles per provider across the organization. |
+| `credentials` | `dict` | Yes |  |
+| `enabled` | `bool` | Yes |  |
+| `id` | `str` | Yes |  |
+| `integrations` | `list` | Yes |  |
+| `name` | `str` | Yes |  |
+| `provider` | `str` | Yes |  |
+| `version` | `int` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | update | patch |
+| --- | --- | --- | --- | --- |
+| `can_manage` | - | - | - | - |
+| `catalog` | - | - | - | - |
+| `configuration` | - | - | - | - |
+| `connected_profiles` | - | - | - | - |
+| `credentials` | - | - | Yes | Yes |
+| `enabled` | - | - | Yes | Yes |
+| `id` | - | - | - | - |
+| `integrations` | - | - | - | - |
+| `name` | - | - | Yes | Yes |
+| `provider` | - | - | - | - |
+| `version` | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SandboxIntegrationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SandboxIntegration().create({
+    "organization_id": "example_organization_id",  # str
+    "configuration": {},  # dict
+    "credentials": {},  # dict
+    "name": "example_name",  # str
+    "provider": "example_provider",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SandboxIntegrationEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SandboxIntegration().list({"organization_id": "example"})
+for sandbox_integration in results:
+    print(sandbox_integration.data_get())
+```
+
+#### `patch(reqdata, ctrl=None) -> SandboxIntegrationEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.SandboxIntegration().patch({
+    "id": "id",
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl=None) -> SandboxIntegrationEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SandboxIntegration().update({
+    "id": "id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SandboxIntegrationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## ScenarioRevisionEntity
 
 ```python
@@ -16839,6 +36617,218 @@ Return the entity name.
 
 ---
 
+## SecretGrantEntity
+
+```python
+secret_grant = client.SecretGrant()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SecretGrantEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SecretGrant().create({
+    "organization_id": "example_organization_id",  # str
+    "secret_id": "example_secret_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SecretGrantEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SecretGrant().list({"organization_id": "example", "secret_id": "example"})
+for secret_grant in results:
+    print(secret_grant.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> SecretGrantEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.SecretGrant().load({"id": "secret_grant_id", "organization_id": "organization_id", "secret_id": "secret_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> SecretGrantEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.SecretGrant().patch({
+    "id": "secret_grant_id",
+    "organization_id": "organization_id",
+    "secret_id": "secret_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> SecretGrantEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.SecretGrant().remove({"id": "secret_grant_id", "organization_id": "organization_id", "secret_id": "secret_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> SecretGrantEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SecretGrant().update({
+    "id": "secret_grant_id",
+    "organization_id": "organization_id",
+    "secret_id": "secret_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SecretGrantEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SecretVersionEntity
+
+```python
+secret_version = client.SecretVersion()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SecretVersionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SecretVersion().create({
+    "organization_id": "example_organization_id",  # str
+    "secret_id": "example_secret_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SecretVersionEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SecretVersion().list({"organization_id": "example", "secret_id": "example"})
+for secret_version in results:
+    print(secret_version.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> SecretVersionEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.SecretVersion().load({"id": "secret_version_id", "organization_id": "organization_id", "secret_id": "secret_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> SecretVersionEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.SecretVersion().patch({
+    "id": "secret_version_id",
+    "organization_id": "organization_id",
+    "secret_id": "secret_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> SecretVersionEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.SecretVersion().remove({"id": "secret_version_id", "organization_id": "organization_id", "secret_id": "secret_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> SecretVersionEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SecretVersion().update({
+    "id": "secret_version_id",
+    "organization_id": "organization_id",
+    "secret_id": "secret_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SecretVersionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## ServiceEndpointEntity
 
 ```python
@@ -16945,6 +36935,797 @@ Return the entity name.
 
 ---
 
+## SettingEntity
+
+```python
+setting = client.Setting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `bool` | Yes |  |
+| `can_manage_sandbox_region` | `bool` | Yes |  |
+| `dedicated_outbound_ip_addresses` | `list` | Yes | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `str` | Yes |  |
+| `organization` | `dict` | Yes |  |
+| `sandbox_regions` | `list` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[SettingEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.Setting().list({"organization_id": "example"})
+for setting in results:
+    print(setting.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SettingEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SettingMutationLeaseEntity
+
+```python
+setting_mutation_lease = client.SettingMutationLease()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SettingMutationLeaseEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SettingMutationLeaseEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SignalEntity
+
+```python
+signal = client.Signal()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `acked_at` | `str | None` | Yes |  |
+| `acked_by` | `dict | None` | Yes | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | `dict` | Yes | Dispatched-run summary (docs §6c). |
+| `app_service_id` | `str | None` | Yes |  |
+| `attribution` | `dict` | Yes | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
+| `created_at` | `str` | Yes | ISO8601 row insert time — retention math and debugging only. |
+| `dedupe_key` | `str | None` | Yes |  |
+| `hosted_app_id` | `str | None` | Yes |  |
+| `id` | `str` | Yes | The signal's own `sig_…` public id — also the paging cursor value. |
+| `kind` | `str` | Yes | A frozen taxonomy kind (§1) or an `app.custom.*` kind. |
+| `links` | `dict` | Yes | Canonical, relative API paths built from real routes (docs §6a). |
+| `occurred_at` | `str` | Yes | ISO8601 domain event time — what the UI displays and `since` filters on. |
+| `organization_id` | `str` | Yes |  |
+| `payload` | `dict` | Yes | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
+| `recovery` | `dict` | Yes | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | `dict` | Yes | Recovery pairing (docs §6b). |
+| `severity` | `str` | Yes | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
+| `source` | `dict` | Yes | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
+| `subject_id` | `str | None` | Yes |  |
+| `subject_type` | `str | None` | Yes | Polymorphic pointer: `AppDeployment`, `RuntimeInstance`, `AlertEvent`, `HostedApp`, or `SignalSubscription`. |
+| `summary` | `str` | Yes | One-line, kind-composed human sentence for the feed row (docs §6d, e.g. |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SignalEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.Signal().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SignalEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.Signal().list({"organization_id": "example"})
+for signal in results:
+    print(signal.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> SignalEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.Signal().load({"id": "signal_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SignalEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SignalInboundEntity
+
+```python
+signal_inbound = client.SignalInbound()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl=None) -> SignalInboundEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SignalInbound().update({
+    "id": "id",
+    "inbound_id": "inbound_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SignalInboundEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SignalIntegrationEntity
+
+```python
+signal_integration = client.SignalIntegration()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `api_token` | `str` | No | Optional provider API token for target discovery and backfill. |
+| `api_token_stored` | `bool` | Yes |  |
+| `config` | `dict` | Yes |  |
+| `created_at` | `str | None` | No |  |
+| `failure_message` | `str | None` | Yes |  |
+| `id` | `str` | Yes | Public id (`sint_…`). |
+| `inbound_path` | `str` | Yes |  |
+| `inbound_url` | `str` | Yes | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `str | None` | No |  |
+| `last_verified_at` | `str | None` | No |  |
+| `mode` | `str` | Yes | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `str` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `provider` | `str` | Yes |  |
+| `rejected_signature_count` | `int` | Yes | Deliveries rejected for a bad or missing signature. |
+| `status` | `str` | Yes |  |
+| `target_count` | `int` | Yes |  |
+| `unmapped_delivery_count` | `int` | Yes | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `str | None` | No |  |
+| `webhook_secret` | `str` | No | The provider's signing secret. |
+| `webhook_secret_stored` | `bool` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- | --- |
+| `api_token` | - | - | - | - | - | - |
+| `api_token_stored` | - | - | - | - | - | - |
+| `config` | - | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - | - |
+| `failure_message` | - | - | - | - | - | - |
+| `id` | - | - | - | - | - | - |
+| `inbound_path` | - | - | - | - | - | - |
+| `inbound_url` | - | - | - | - | - | - |
+| `last_received_at` | - | - | - | - | - | - |
+| `last_verified_at` | - | - | - | - | - | - |
+| `mode` | - | - | Yes | Yes | Yes | - |
+| `name` | - | - | - | Yes | Yes | - |
+| `organization_id` | - | - | - | - | - | - |
+| `provider` | - | - | - | - | - | - |
+| `rejected_signature_count` | - | - | - | - | - | - |
+| `status` | - | - | - | Yes | Yes | - |
+| `target_count` | - | - | - | - | - | - |
+| `unmapped_delivery_count` | - | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - | - |
+| `webhook_secret` | - | - | - | - | - | - |
+| `webhook_secret_stored` | - | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SignalIntegrationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SignalIntegration().create({
+    "organization_id": "example_organization_id",  # str
+    "name": "example_name",  # str
+    "provider": "example_provider",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SignalIntegrationEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SignalIntegration().list({"organization_id": "example"})
+for signal_integration in results:
+    print(signal_integration.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> SignalIntegrationEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.SignalIntegration().load({"id": "signal_integration_id", "organization_id": "organization_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> SignalIntegrationEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.SignalIntegration().patch({
+    "id": "signal_integration_id",
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> SignalIntegrationEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.SignalIntegration().remove({"id": "signal_integration_id", "organization_id": "organization_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> SignalIntegrationEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SignalIntegration().update({
+    "id": "signal_integration_id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SignalIntegrationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SignalIntegrationDeliveryEntity
+
+```python
+signal_integration_delivery = client.SignalIntegrationDelivery()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `attempt_count` | `int` | Yes |  |
+| `created_at` | `str | None` | No |  |
+| `delivery_id` | `str` | Yes | The provider's delivery id, or a `content-…` id derived from the event kind, its timestamp header and the body checksum when it sends none. |
+| `event_kind` | `str | None` | No |  |
+| `id` | `str` | Yes | Public id (`sdel_…`). |
+| `last_error` | `str | None` | No |  |
+| `ops_signal_id` | `str | None` | No | Public id (`sig_…`) of the signal this delivery emitted. |
+| `organization_id` | `str` | Yes |  |
+| `processed_at` | `str | None` | No |  |
+| `provider` | `str` | Yes |  |
+| `received_at` | `str | None` | No |  |
+| `signal_integration_id` | `str` | Yes |  |
+| `state` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[SignalIntegrationDeliveryEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SignalIntegrationDelivery().list({"organization_id": "example", "signal_integration_id": "example"})
+for signal_integration_delivery in results:
+    print(signal_integration_delivery.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SignalIntegrationDeliveryEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SignalIntegrationTargetEntity
+
+```python
+signal_integration_target = client.SignalIntegrationTarget()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app_service_id` | `str | None` | No |  |
+| `created_at` | `str | None` | No |  |
+| `display_name` | `str | None` | No |  |
+| `enabled` | `bool` | Yes |  |
+| `external_id` | `str` | Yes |  |
+| `external_kind` | `str` | Yes |  |
+| `external_slug` | `str | None` | No |  |
+| `hosted_app_id` | `str | None` | No |  |
+| `id` | `str` | Yes | Public id (`stgt_…`). |
+| `organization_id` | `str` | Yes |  |
+| `signal_integration_id` | `str` | Yes |  |
+| `signal_integration_targets` | `list` | Yes |  |
+| `targets` | `list` | Yes |  |
+| `updated_at` | `str | None` | No |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[SignalIntegrationTargetEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SignalIntegrationTarget().list({"organization_id": "example", "signal_integration_id": "example"})
+for signal_integration_target in results:
+    print(signal_integration_target.data_get())
+```
+
+#### `update(reqdata, ctrl=None) -> SignalIntegrationTargetEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SignalIntegrationTarget().update({
+    "organization_id": "organization_id",
+    "signal_integration_id": "signal_integration_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SignalIntegrationTargetEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SignalSubscriptionEntity
+
+```python
+signal_subscription = client.SignalSubscription()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SignalSubscriptionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SignalSubscription().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SignalSubscriptionEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SignalSubscription().list({"organization_id": "example"})
+for signal_subscription in results:
+    print(signal_subscription.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> SignalSubscriptionEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.SignalSubscription().load({"id": "signal_subscription_id", "organization_id": "organization_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> SignalSubscriptionEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.SignalSubscription().patch({
+    "id": "signal_subscription_id",
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> SignalSubscriptionEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.SignalSubscription().remove({"id": "signal_subscription_id", "organization_id": "organization_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> SignalSubscriptionEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SignalSubscription().update({
+    "id": "signal_subscription_id",
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SignalSubscriptionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SiteEntity
+
+```python
+site = client.Site()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_at` | `str | None` | Yes |  |
+| `activated_at_label` | `str | None` | Yes |  |
+| `commit_sha` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `creator_user_id` | `str | None` | Yes |  |
+| `deploy_slug` | `str` | Yes |  |
+| `failure_message` | `str | None` | Yes |  |
+| `file_count` | `int` | Yes |  |
+| `file_count_label` | `str` | Yes |  |
+| `finished_at` | `str | None` | Yes |  |
+| `finished_at_label` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `is_active` | `bool` | Yes |  |
+| `source_ref` | `str | None` | Yes |  |
+| `started_at` | `str | None` | Yes |  |
+| `started_at_label` | `str | None` | Yes |  |
+| `static_site_id` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `total_bytes` | `int` | Yes |  |
+| `total_bytes_label` | `str` | Yes |  |
+| `trigger_kind` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+| `uploaded_at` | `str | None` | Yes |  |
+| `uploaded_at_label` | `str | None` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[SiteEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.Site().list({"organization_id": "example"})
+for site in results:
+    print(site.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SiteEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SiteAccessKeyEntity
+
+```python
+site_access_key = client.SiteAccessKey()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SiteAccessKeyEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SiteAccessKey().create({
+    "organization_id": "example_organization_id",  # str
+    "site_id": "example_site_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SiteAccessKeyEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SiteAccessKey().list({"organization_id": "example", "site_id": "example"})
+for site_access_key in results:
+    print(site_access_key.data_get())
+```
+
+#### `remove(reqmatch, ctrl=None) -> SiteAccessKeyEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.SiteAccessKey().remove({"id": "site_access_key_id", "organization_id": "organization_id", "site_id": "site_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SiteAccessKeyEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## SitePreviewEntity
 
 ```python
@@ -16990,6 +37771,72 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `SitePreviewEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SiteSecretEntity
+
+```python
+site_secret = client.SiteSecret()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+| `native_agent_id` | `str` | Yes |  |
+| `value` | `str` | Yes |  |
+
+### Operations
+
+#### `remove(reqmatch, ctrl=None) -> SiteSecretEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.SiteSecret().remove({"id": "site_secret_id", "organization_id": "organization_id", "site_id": "site_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> SiteSecretEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SiteSecret().update({
+    "id": "site_secret_id",
+    "organization_id": "organization_id",
+    "site_id": "site_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SiteSecretEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -17048,6 +37895,1611 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `SlackChannelEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SourceConnectionEntity
+
+```python
+source_connection = client.SourceConnection()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SourceConnectionEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SourceConnectionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SpaceAlertRuleEntity
+
+```python
+space_alert_rule = client.SpaceAlertRule()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SpaceAlertRuleEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SpaceAlertRule().create({
+    "space_id": "example_space_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SpaceAlertRuleEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SpaceAlertRule().list({"space_id": "example"})
+for space_alert_rule in results:
+    print(space_alert_rule.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> SpaceAlertRuleEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.SpaceAlertRule().load({"id": "space_alert_rule_id", "space_id": "space_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> SpaceAlertRuleEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.SpaceAlertRule().patch({
+    "id": "space_alert_rule_id",
+    "space_id": "space_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> SpaceAlertRuleEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.SpaceAlertRule().remove({"id": "space_alert_rule_id", "space_id": "space_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> SpaceAlertRuleEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SpaceAlertRule().update({
+    "id": "space_alert_rule_id",
+    "space_id": "space_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceAlertRuleEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SpaceAuditEventEntity
+
+```python
+space_audit_event = client.SpaceAuditEvent()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SpaceAuditEventEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SpaceAuditEvent().create({
+    "space_id": "example_space_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SpaceAuditEventEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SpaceAuditEvent().list({"space_id": "example"})
+for space_audit_event in results:
+    print(space_audit_event.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceAuditEventEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SpaceDnsRecordEntity
+
+```python
+space_dns_record = client.SpaceDnsRecord()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SpaceDnsRecordEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SpaceDnsRecord().create({
+    "space_id": "example_space_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SpaceDnsRecordEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SpaceDnsRecord().list({"space_id": "example"})
+for space_dns_record in results:
+    print(space_dns_record.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> SpaceDnsRecordEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.SpaceDnsRecord().load({"id": "space_dns_record_id", "space_id": "space_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> SpaceDnsRecordEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.SpaceDnsRecord().patch({
+    "id": "space_dns_record_id",
+    "space_id": "space_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> SpaceDnsRecordEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.SpaceDnsRecord().remove({"id": "space_dns_record_id", "space_id": "space_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> SpaceDnsRecordEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SpaceDnsRecord().update({
+    "id": "space_dns_record_id",
+    "space_id": "space_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceDnsRecordEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SpaceEnrollmentTokenEntity
+
+```python
+space_enrollment_token = client.SpaceEnrollmentToken()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SpaceEnrollmentTokenEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SpaceEnrollmentToken().create({
+    "space_id": "example_space_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SpaceEnrollmentTokenEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SpaceEnrollmentToken().list({"space_id": "example"})
+for space_enrollment_token in results:
+    print(space_enrollment_token.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> SpaceEnrollmentTokenEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.SpaceEnrollmentToken().load({"id": "space_enrollment_token_id", "space_id": "space_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> SpaceEnrollmentTokenEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.SpaceEnrollmentToken().patch({
+    "id": "space_enrollment_token_id",
+    "space_id": "space_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> SpaceEnrollmentTokenEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.SpaceEnrollmentToken().remove({"id": "space_enrollment_token_id", "space_id": "space_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> SpaceEnrollmentTokenEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SpaceEnrollmentToken().update({
+    "id": "space_enrollment_token_id",
+    "space_id": "space_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceEnrollmentTokenEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SpaceGatewayEntity
+
+```python
+space_gateway = client.SpaceGateway()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SpaceGatewayEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SpaceGateway().create({
+    "space_id": "example_space_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SpaceGatewayEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SpaceGateway().list({"space_id": "example"})
+for space_gateway in results:
+    print(space_gateway.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> SpaceGatewayEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.SpaceGateway().load({"id": "space_gateway_id", "space_id": "space_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> SpaceGatewayEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.SpaceGateway().patch({
+    "id": "space_gateway_id",
+    "space_id": "space_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> SpaceGatewayEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.SpaceGateway().remove({"id": "space_gateway_id", "space_id": "space_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> SpaceGatewayEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SpaceGateway().update({
+    "id": "space_gateway_id",
+    "space_id": "space_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceGatewayEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SpaceGroupEntity
+
+```python
+space_group = client.SpaceGroup()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SpaceGroupEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SpaceGroup().create({
+    "space_id": "example_space_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SpaceGroupEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SpaceGroup().list({"space_id": "example"})
+for space_group in results:
+    print(space_group.data_get())
+```
+
+#### `patch(reqdata, ctrl=None) -> SpaceGroupEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.SpaceGroup().patch({
+    "id": "space_group_id",
+    "space_id": "space_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> SpaceGroupEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.SpaceGroup().remove({"id": "space_group_id", "space_id": "space_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> SpaceGroupEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SpaceGroup().update({
+    "id": "space_group_id",
+    "space_id": "space_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceGroupEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SpaceGroupMembershipEntity
+
+```python
+space_group_membership = client.SpaceGroupMembership()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SpaceGroupMembershipEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SpaceGroupMembership().create({
+    "space_id": "example_space_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SpaceGroupMembershipEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SpaceGroupMembership().list({"space_id": "example"})
+for space_group_membership in results:
+    print(space_group_membership.data_get())
+```
+
+#### `patch(reqdata, ctrl=None) -> SpaceGroupMembershipEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.SpaceGroupMembership().patch({
+    "id": "space_group_membership_id",
+    "space_id": "space_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> SpaceGroupMembershipEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.SpaceGroupMembership().remove({"id": "space_group_membership_id", "space_id": "space_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> SpaceGroupMembershipEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SpaceGroupMembership().update({
+    "id": "space_group_membership_id",
+    "space_id": "space_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceGroupMembershipEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SpaceLogStreamEntity
+
+```python
+space_log_stream = client.SpaceLogStream()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SpaceLogStreamEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SpaceLogStream().create({
+    "space_id": "example_space_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SpaceLogStreamEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SpaceLogStream().list({"space_id": "example"})
+for space_log_stream in results:
+    print(space_log_stream.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceLogStreamEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SpaceMetricSeryEntity
+
+```python
+space_metric_sery = client.SpaceMetricSery()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SpaceMetricSeryEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SpaceMetricSery().create({
+    "space_id": "example_space_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SpaceMetricSeryEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SpaceMetricSery().list({"space_id": "example"})
+for space_metric_sery in results:
+    print(space_metric_sery.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceMetricSeryEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SpaceOtelCollectorEntity
+
+```python
+space_otel_collector = client.SpaceOtelCollector()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SpaceOtelCollectorEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SpaceOtelCollector().create({
+    "space_id": "example_space_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SpaceOtelCollectorEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SpaceOtelCollector().list({"space_id": "example"})
+for space_otel_collector in results:
+    print(space_otel_collector.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> SpaceOtelCollectorEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.SpaceOtelCollector().load({"id": "space_otel_collector_id", "space_id": "space_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> SpaceOtelCollectorEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.SpaceOtelCollector().patch({
+    "id": "space_otel_collector_id",
+    "space_id": "space_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> SpaceOtelCollectorEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.SpaceOtelCollector().remove({"id": "space_otel_collector_id", "space_id": "space_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> SpaceOtelCollectorEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SpaceOtelCollector().update({
+    "id": "space_otel_collector_id",
+    "space_id": "space_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceOtelCollectorEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SpacePeerEntity
+
+```python
+space_peer = client.SpacePeer()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SpacePeerEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SpacePeer().create({
+    "space_id": "example_space_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SpacePeerEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SpacePeer().list({"space_id": "example"})
+for space_peer in results:
+    print(space_peer.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> SpacePeerEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.SpacePeer().load({"id": "space_peer_id", "space_id": "space_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> SpacePeerEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.SpacePeer().patch({
+    "id": "space_peer_id",
+    "space_id": "space_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> SpacePeerEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.SpacePeer().remove({"id": "space_peer_id", "space_id": "space_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> SpacePeerEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SpacePeer().update({
+    "id": "space_peer_id",
+    "space_id": "space_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpacePeerEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SpacePeerAttachmentEntity
+
+```python
+space_peer_attachment = client.SpacePeerAttachment()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SpacePeerAttachmentEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SpacePeerAttachment().create({
+    "space_id": "example_space_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SpacePeerAttachmentEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SpacePeerAttachment().list({"space_id": "example"})
+for space_peer_attachment in results:
+    print(space_peer_attachment.data_get())
+```
+
+#### `patch(reqdata, ctrl=None) -> SpacePeerAttachmentEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.SpacePeerAttachment().patch({
+    "id": "space_peer_attachment_id",
+    "space_id": "space_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> SpacePeerAttachmentEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.SpacePeerAttachment().remove({"id": "space_peer_attachment_id", "space_id": "space_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> SpacePeerAttachmentEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SpacePeerAttachment().update({
+    "id": "space_peer_attachment_id",
+    "space_id": "space_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpacePeerAttachmentEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SpacePolicyEntity
+
+```python
+space_policy = client.SpacePolicy()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SpacePolicyEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SpacePolicy().create({
+    "space_id": "example_space_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SpacePolicyEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SpacePolicy().list({"space_id": "example"})
+for space_policy in results:
+    print(space_policy.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> SpacePolicyEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.SpacePolicy().load({"id": "space_policy_id", "space_id": "space_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> SpacePolicyEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.SpacePolicy().patch({
+    "id": "space_policy_id",
+    "space_id": "space_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> SpacePolicyEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.SpacePolicy().remove({"id": "space_policy_id", "space_id": "space_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> SpacePolicyEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SpacePolicy().update({
+    "id": "space_policy_id",
+    "space_id": "space_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpacePolicyEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SpaceSegmentEntity
+
+```python
+space_segment = client.SpaceSegment()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SpaceSegmentEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SpaceSegment().create({
+    "space_id": "example_space_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SpaceSegmentEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SpaceSegment().list({"space_id": "example"})
+for space_segment in results:
+    print(space_segment.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> SpaceSegmentEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.SpaceSegment().load({"id": "space_segment_id", "space_id": "space_id"})
+```
+
+#### `patch(reqdata, ctrl=None) -> SpaceSegmentEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.SpaceSegment().patch({
+    "id": "space_segment_id",
+    "space_id": "space_id",
+    # Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> SpaceSegmentEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.SpaceSegment().remove({"id": "space_segment_id", "space_id": "space_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> SpaceSegmentEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SpaceSegment().update({
+    "id": "space_segment_id",
+    "space_id": "space_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceSegmentEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SpaceTraceSpanEntity
+
+```python
+space_trace_span = client.SpaceTraceSpan()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SpaceTraceSpanEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SpaceTraceSpan().create({
+    "space_id": "example_space_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SpaceTraceSpanEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SpaceTraceSpan().list({"space_id": "example"})
+for space_trace_span in results:
+    print(space_trace_span.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceTraceSpanEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SparkEntity
+
+```python
+spark = client.Spark()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_products` | `list` | Yes | Products this organization has activated (PRD 144). |
+| `agents_only` | `bool` | No | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `bool` | Yes | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `can_manage` | `bool` | Yes |  |
+| `compute_credit_cents` | `int | None` | Yes | Included compute the workspace started Sparks with, when it is on compute billing. |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `credit_cents` | `int | None` | Yes | Inference credit the workspace started Sparks with. |
+| `first_spark` | `dict | None` | Yes | Null until the first Spark exists or when the viewer cannot read it. |
+| `github_connected` | `bool` | Yes |  |
+| `github_prs_authored_by_change_author` | `bool` | Yes |  |
+| `id` | `str` | Yes |  |
+| `jsonrpc` | `str` | Yes |  |
+| `logo_url` | `str | None` | Yes |  |
+| `member_count` | `int` | Yes |  |
+| `method` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+| `params` | `dict` | No |  |
+| `pending_invitation_count` | `int` | Yes |  |
+| `personal` | `bool` | Yes |  |
+| `repository_count` | `int` | Yes |  |
+| `role` | `str | None` | Yes |  |
+| `sandbox_region` | `str` | Yes |  |
+| `shared_agent_personal_accounts_enabled` | `bool` | No | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `str` | Yes |  |
+| `source_control_providers` | `list` | No | Connected source control providers for this organization. |
+| `source_ui_enabled` | `bool` | No | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `started` | `bool` | Yes | Whether the workspace has started Sparks. |
+| `timezone` | `str` | Yes | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+| `verify_pr_scenario_writing_enabled` | `bool` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `activated_products` | - | - |
+| `agents_only` | - | - |
+| `can_activate_products` | - | - |
+| `can_manage` | - | - |
+| `compute_credit_cents` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `credit_cents` | - | - |
+| `first_spark` | - | - |
+| `github_connected` | - | - |
+| `github_prs_authored_by_change_author` | - | - |
+| `id` | - | Yes |
+| `jsonrpc` | - | - |
+| `logo_url` | - | - |
+| `member_count` | - | - |
+| `method` | - | - |
+| `name` | - | - |
+| `params` | - | - |
+| `pending_invitation_count` | - | - |
+| `personal` | - | - |
+| `repository_count` | - | - |
+| `role` | - | - |
+| `sandbox_region` | - | - |
+| `shared_agent_personal_accounts_enabled` | - | - |
+| `slug` | - | - |
+| `source_control_providers` | - | - |
+| `source_ui_enabled` | - | - |
+| `started` | - | - |
+| `timezone` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+| `verify_pr_scenario_writing_enabled` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SparkEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.Spark().create({
+    "jsonrpc": "example_jsonrpc",  # str
+    "method": "example_method",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SparkEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.Spark().list({"organization_id": "example"})
+for spark in results:
+    print(spark.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SparkEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SparkAgentIntegrationEntity
+
+```python
+spark_agent_integration = client.SparkAgentIntegration()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_counts` | `dict` | Yes | Accounts the viewer can see per toolkit, across all account pages. |
+| `accounts_path` | `str` | Yes | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
+| `added_toolkits` | `list` | Yes | Apps with a connected or connecting account the viewer can see. |
+| `can_manage` | `bool` | Yes |  |
+| `can_manage_organization` | `bool` | Yes |  |
+| `catalog` | `list` | Yes |  |
+| `connect_as` | `str | None` | Yes | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
+| `connect_as_by_toolkit` | `dict` | Yes | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_counts` | `dict` | Yes | Signed-in accounts per toolkit, across all account pages. |
+| `connection_id` | `str` | Yes |  |
+| `connections` | `list` | Yes |  |
+| `email` | `dict` | Yes | A native agent's own email address. |
+| `enabled` | `bool` | Yes |  |
+| `enabled_toolkits` | `list` | Yes | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `generation` | `int` | Yes |  |
+| `pagination` | `dict` | Yes |  |
+| `pending_counts` | `dict` | Yes | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
+| `personal_creation_key_supported` | `bool` | No | The personal account creation endpoint honors a creation key. |
+| `private_agent` | `bool` | Yes | Only the agent's owner can chat with it. |
+| `shared_agent_personal_accounts_enabled` | `bool` | Yes | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
+| `slack` | `dict` | Yes |  |
+| `webhook_connections` | `list` | Yes |  |
+| `webhooks_available` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SparkAgentIntegrationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SparkAgentIntegration().create({
+    "agent_id": "example_agent_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "connection_id": "example_connection_id",  # str
+    "enabled": True,  # bool
+    "generation": 1,  # int
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SparkAgentIntegrationEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SparkAgentIntegration().list({"agent_id": "example", "organization_id": "example"})
+for spark_agent_integration in results:
+    print(spark_agent_integration.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SparkAgentIntegrationEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -17150,6 +39602,483 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `SparkAgentLocalThreadEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SparkAgentSiteEntity
+
+```python
+spark_agent_site = client.SparkAgentSite()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `deployed_at` | `str` | Yes |  |
+| `deployments_count` | `int` | Yes |  |
+| `hostname` | `str` | Yes |  |
+| `https` | `str` | Yes | Whether the organization's certificate serves this site over HTTPS |
+| `id` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+| `url` | `str` | Yes |  |
+| `visibility` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[SparkAgentSiteEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SparkAgentSite().list({"agent_id": "example", "organization_id": "example"})
+for spark_agent_site in results:
+    print(spark_agent_site.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SparkAgentSiteEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SparkAgentSkillEntity
+
+```python
+spark_agent_skill = client.SparkAgentSkill()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available` | `bool` | Yes |  |
+| `can_configure` | `bool` | Yes |  |
+| `can_manage` | `bool` | Yes |  |
+| `configuration_state` | `str` | No | The requested managed skill selection is awaiting runtime qualification. |
+| `description` | `str` | Yes |  |
+| `enabled` | `bool` | Yes |  |
+| `name` | `str` | Yes |  |
+| `skills` | `list` | Yes |  |
+| `version` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SparkAgentSkillEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SparkAgentSkill().create({
+    "agent_id": "example_agent_id",  # str
+    "organization_id": "example_organization_id",  # str
+    "enabled": True,  # bool
+    "name": "example_name",  # str
+    "version": "example_version",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SparkAgentSkillEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SparkAgentSkill().list({"agent_id": "example", "organization_id": "example"})
+for spark_agent_skill in results:
+    print(spark_agent_skill.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SparkAgentSkillEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SparkAgentThreadEntity
+
+```python
+spark_agent_thread = client.SparkAgentThread()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `archived_count` | `int | None` | No | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
+| `can_create` | `bool` | Yes |  |
+| `execution` | `Any` | No |  |
+| `first_input` | `Any` | No |  |
+| `first_input_key` | `str` | No | Idempotency-Key that finds the first message through input_delivery. |
+| `first_input_requester_membership_id` | `str` | No | Membership the first message was sent as, for input_delivery. |
+| `id` | `str` | No |  |
+| `inherit_context` | `bool` | No | Include the source conversation through its last completed reply. |
+| `local_activities` | `dict` | Yes | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
+| `local_archived_count` | `int` | Yes | Local Claude Code and Codex threads archived on their computers. |
+| `local_next_cursor` | `str | None` | Yes |  |
+| `local_scope_key` | `str | None` | Yes |  |
+| `local_status_pending` | `bool` | Yes | A computer is reporting newer local thread statuses; read the page again shortly. |
+| `local_threads` | `list` | Yes |  |
+| `main_thread_id` | `str` | Yes |  |
+| `message` | `str` | No | The thread's first message. |
+| `next_cursor` | `str | None` | Yes |  |
+| `parent_conversation_id` | `str` | No | Optional source conversation belonging to this agent. |
+| `requester_membership_id` | `str` | No |  |
+| `selected_thread` | `Any` | Yes |  |
+| `thread` | `dict` | Yes |  |
+| `threads` | `list` | Yes |  |
+| `title` | `str` | No |  |
+| `total_archived_count` | `int | None` | Yes | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SparkAgentThreadEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SparkAgentThread().create({
+    "agent_id": "example_agent_id",  # str
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SparkAgentThreadEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SparkAgentThread().list({"agent_id": "example", "organization_id": "example"})
+for spark_agent_thread in results:
+    print(spark_agent_thread.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SparkAgentThreadEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SparkCreditEntity
+
+```python
+spark_credit = client.SparkCredit()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `amount_cents` | `int` | No | Purchase amount in USD cents. |
+| `autofill` | `Any` | Yes |  |
+| `autofill_payment_unconfirmed` | `bool` | Yes |  |
+| `available_usd` | `str` | Yes |  |
+| `billing_unit` | `str` | No | Compute minute quote version returned by the billing summary. |
+| `can_manage` | `bool` | Yes |  |
+| `compute_minutes` | `dict` | Yes |  |
+| `compute_usd` | `str` | No |  |
+| `credits_per_usd` | `int` | Yes |  |
+| `inference_usd` | `str` | No |  |
+| `kind` | `str` | Yes |  |
+| `payment_method` | `dict | None` | Yes |  |
+| `payments_enabled` | `bool` | Yes |  |
+| `plan` | `str` | No |  |
+| `plans` | `list` | Yes |  |
+| `quoted_credits_cents` | `int` | No | Grant shown for a top-up or subscription, in usage cents. |
+| `quoted_price_cents` | `int` | No | Monthly cash price shown for a subscription, in USD cents. |
+| `refill_limits_cents` | `list` | Yes |  |
+| `refill_options` | `list` | Yes |  |
+| `refill_thresholds_cents` | `list` | Yes |  |
+| `request_key` | `str` | Yes |  |
+| `settings` | `Any` | Yes |  |
+| `starter_cents` | `int` | Yes |  |
+| `top_up_max_cents` | `int` | Yes | Maximum manual top-up, in USD cents. |
+| `top_up_step_cents` | `int` | Yes | Minimum manual top-up and increment, in USD cents. |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `amount_cents` | - | - | - | - | - |
+| `autofill` | - | - | - | - | - |
+| `autofill_payment_unconfirmed` | - | - | - | - | - |
+| `available_usd` | - | - | - | - | - |
+| `billing_unit` | - | - | - | - | - |
+| `can_manage` | - | - | - | - | - |
+| `compute_minutes` | - | - | - | - | - |
+| `compute_usd` | - | - | - | - | - |
+| `credits_per_usd` | - | - | - | - | - |
+| `inference_usd` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `payment_method` | - | - | - | - | - |
+| `payments_enabled` | - | - | - | - | - |
+| `plan` | - | Yes | - | - | Yes |
+| `plans` | - | - | - | - | - |
+| `quoted_credits_cents` | - | - | - | - | - |
+| `quoted_price_cents` | - | - | - | - | - |
+| `refill_limits_cents` | - | - | - | - | - |
+| `refill_options` | - | - | - | - | - |
+| `refill_thresholds_cents` | - | - | - | - | - |
+| `request_key` | - | - | - | - | - |
+| `settings` | - | - | - | - | - |
+| `starter_cents` | - | - | - | - | - |
+| `top_up_max_cents` | - | - | - | - | - |
+| `top_up_step_cents` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SparkCreditEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SparkCredit().create({
+    "organization_id": "example_organization_id",  # str
+    "kind": "example_kind",  # str
+    "request_key": "example_request_key",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[SparkCreditEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SparkCredit().list({"organization_id": "example"})
+for spark_credit in results:
+    print(spark_credit.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> SparkCreditEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+#### `patch(reqdata, ctrl=None) -> SparkCreditEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.SparkCredit().patch({
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl=None) -> SparkCreditEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.SparkCredit().update({
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SparkCreditEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SparkCreditAgentUsageEntity
+
+```python
+spark_credit_agent_usage = client.SparkCreditAgentUsage()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agents` | `list` | Yes |  |
+| `all` | `dict` | Yes |  |
+| `days` | `list` | Yes |  |
+| `id` | `str` | No |  |
+| `owners` | `list` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> SparkCreditAgentUsageEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.SparkCreditAgentUsage().load({"id": "spark_credit_agent_usage_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SparkCreditAgentUsageEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SparkCreditUsageTotalEntity
+
+```python
+spark_credit_usage_total = client.SparkCreditUsageTotal()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `compute_minutes_used` | `str` | Yes |  |
+| `compute_usd` | `str` | Yes |  |
+| `inference_usd` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[SparkCreditUsageTotalEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SparkCreditUsageTotal().list({"organization_id": "example"})
+for spark_credit_usage_total in results:
+    print(spark_credit_usage_total.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SparkCreditUsageTotalEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -17553,6 +40482,275 @@ Return the entity name.
 
 ---
 
+## StatusChangeEntity
+
+```python
+status_change = client.StatusChange()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_id` | `str` | Yes |  |
+| `id` | `str` | No |  |
+| `patchsets` | `list` | Yes |  |
+| `status` | `str` | Yes |  |
+| `status_label` | `str` | Yes |  |
+| `status_state` | `str` | Yes |  |
+| `status_tone` | `str` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> StatusChangeEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.StatusChange().load({"id": "status_change_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `StatusChangeEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## StatusCommitEntity
+
+```python
+status_commit = client.StatusCommit()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `checks` | `list` | Yes |  |
+| `commit_sha` | `str` | Yes |  |
+| `counts` | `dict` | Yes |  |
+| `id` | `str` | No |  |
+| `status` | `str` | Yes |  |
+| `status_label` | `str` | Yes |  |
+| `status_state` | `str` | Yes |  |
+| `status_tone` | `str` | Yes |  |
+| `total` | `int` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> StatusCommitEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.StatusCommit().load({"id": "status_commit_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `StatusCommitEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## StatusPatchsetEntity
+
+```python
+status_patchset = client.StatusPatchset()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `checks` | `list` | Yes |  |
+| `checks_status` | `str | None` | Yes |  |
+| `commit_sha` | `str | None` | Yes |  |
+| `counts` | `dict` | Yes |  |
+| `id` | `str` | No |  |
+| `patchset_id` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `status_label` | `str` | Yes |  |
+| `status_state` | `str` | Yes |  |
+| `status_tone` | `str` | Yes |  |
+| `total` | `int` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> StatusPatchsetEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.StatusPatchset().load({"id": "status_patchset_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `StatusPatchsetEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## StripeWebhookEntity
+
+```python
+stripe_webhook = client.StripeWebhook()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> StripeWebhookEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.StripeWebhook().create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `StripeWebhookEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SubmitTelemetryEntity
+
+```python
+submit_telemetry = client.SubmitTelemetry()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SubmitTelemetryEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SubmitTelemetry().create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SubmitTelemetryEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## SubscriptionModelEntity
 
 ```python
@@ -17611,6 +40809,323 @@ Return the entity name.
 
 ---
 
+## SwarmEventEntity
+
+```python
+swarm_event = client.SwarmEvent()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_swarm_id` | `str` | Yes |  |
+| `attempt_id` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `id` | `int` | Yes |  |
+| `kind` | `str` | Yes |  |
+| `payload` | `dict` | Yes |  |
+| `reason` | `str | None` | Yes |  |
+| `scheduler_generation` | `int | None` | Yes |  |
+| `task_id` | `str | None` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[SwarmEventEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SwarmEvent().list({"swarm_id": "example"})
+for swarm_event in results:
+    print(swarm_event.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SwarmEventEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SwarmLiveEntity
+
+```python
+swarm_live = client.SwarmLive()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> SwarmLiveEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SwarmLiveEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SwarmNoteEntity
+
+```python
+swarm_note = client.SwarmNote()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `task_id` | `str | None` | No | A task public id; omitted |
+| `text` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> SwarmNoteEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.SwarmNote().create({
+    "swarm_id": "example_swarm_id",  # str
+    "text": "example_text",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SwarmNoteEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SwarmTaskEntity
+
+```python
+swarm_task = client.SwarmTask()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `acceptance_commands` | `list` | Yes |  |
+| `agent_swarm_id` | `str` | Yes |  |
+| `assigned_runner_id` | `str | None` | Yes |  |
+| `blocked_reason` | `str | None` | Yes |  |
+| `changes` | `list` | Yes |  |
+| `commit_count` | `int` | Yes |  |
+| `commit_sha_result` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `current_attempt_id` | `str | None` | Yes |  |
+| `deadline_at` | `str | None` | Yes |  |
+| `depends_on_task_ids` | `list` | Yes |  |
+| `depth` | `int` | Yes |  |
+| `diff_artifact_url` | `str | None` | Yes |  |
+| `display_id` | `int` | Yes |  |
+| `environment_profile` | `str | None` | Yes |  |
+| `error_message` | `str | None` | Yes |  |
+| `failure_code` | `str | None` | Yes |  |
+| `finished_at` | `str | None` | Yes |  |
+| `finished_at_label` | `str | None` | Yes |  |
+| `harness` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `input_revision` | `str | None` | Yes |  |
+| `iteration` | `int` | Yes |  |
+| `landing_state` | `str` | Yes |  |
+| `model` | `str | None` | Yes |  |
+| `model_provider` | `str | None` | Yes |  |
+| `number` | `int` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `owned_paths` | `list` | Yes |  |
+| `parent_task_id` | `str | None` | Yes |  |
+| `position` | `int` | Yes |  |
+| `prompt` | `str` | Yes |  |
+| `queued_at` | `str | None` | Yes |  |
+| `queued_at_label` | `str | None` | Yes |  |
+| `reasoning_effort` | `str | None` | Yes |  |
+| `recent_activity` | `list` | Yes |  |
+| `repo_url` | `str` | Yes |  |
+| `result` | `dict` | Yes |  |
+| `retry_number` | `int` | Yes |  |
+| `role` | `str` | Yes |  |
+| `run_id` | `str | None` | Yes |  |
+| `stack_after_task_id` | `str | None` | Yes |  |
+| `started_at` | `str | None` | Yes |  |
+| `started_at_label` | `str | None` | Yes |  |
+| `status` | `str` | Yes |  |
+| `title` | `str | None` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[SwarmTaskEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.SwarmTask().list({"swarm_id": "example"})
+for swarm_task in results:
+    print(swarm_task.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> SwarmTaskEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SwarmTaskEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## TaskLeaseEntity
+
+```python
+task_lease = client.TaskLease()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> TaskLeaseEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.TaskLease().create({
+    "swarm_id": "example_swarm_id",  # str
+    "task_id": "example_task_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `TaskLeaseEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## ThreadPreviewEntity
 
 ```python
@@ -17661,6 +41176,871 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `ThreadPreviewEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ThreadPreviewAccessEntity
+
+```python
+thread_preview_access = client.ThreadPreviewAccess()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ThreadPreviewAccessEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `load(reqmatch, ctrl=None) -> ThreadPreviewAccessEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ThreadPreviewAccessEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ToolFeedbackEntity
+
+```python
+tool_feedback = client.ToolFeedback()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `category` | `str` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `details` | `str` | Yes |  |
+| `feedback` | `dict` | Yes |  |
+| `id` | `str` | Yes |  |
+| `metadata` | `dict` | Yes | Caller-supplied session context; no secrets or transcripts |
+| `organization_id` | `str` | Yes |  |
+| `source` | `str` | Yes |  |
+| `summary` | `str` | Yes |  |
+| `user_id` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> ToolFeedbackEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.ToolFeedback().create({
+    "organization_id": "example_organization_id",  # str
+    "feedback": {},  # dict
+})
+```
+
+#### `load(reqmatch, ctrl=None) -> ToolFeedbackEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.ToolFeedback().load({"id": "tool_feedback_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ToolFeedbackEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## TranscriptEntity
+
+```python
+transcript = client.Transcript()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent` | `str` | Yes |  |
+| `author` | `dict` | Yes |  |
+| `checkpoint_pagination` | `dict` | Yes |  |
+| `checkpoints` | `list` | Yes |  |
+| `id` | `str` | Yes |  |
+| `last_checkpoint_at` | `str | None` | Yes |  |
+| `selected_checkpoint` | `Any` | Yes |  |
+| `source_url` | `str` | Yes |  |
+| `started_at` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `title` | `str | None` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> TranscriptEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `list(reqmatch=None, ctrl=None) -> list[TranscriptEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.Transcript().list({"repo": "example"})
+for transcript in results:
+    print(transcript.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> TranscriptEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `TranscriptEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## V1MessageEntity
+
+```python
+v1_message = client.V1Message()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> V1MessageEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.V1Message().create({
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `V1MessageEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## VcBranchEntity
+
+```python
+vc_branch = client.VcBranch()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+| `name` | `str` | Yes |  |
+| `target_commit_id` | `str` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> VcBranchEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.VcBranch().create({
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[VcBranchEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.VcBranch().list({"organization_id": "example", "repo_id": "example"})
+for vc_branch in results:
+    print(vc_branch.data_get())
+```
+
+#### `remove(reqmatch, ctrl=None) -> VcBranchEntity`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
+
+```python
+result = client.VcBranch().remove({"id": "vc_branch_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VcBranchEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## VcBrowserEntity
+
+```python
+vc_browser = client.VcBrowser()
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> VcBrowserEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VcBrowserEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## VcChangeEntity
+
+```python
+vc_change = client.VcChange()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `list` | Yes |  |
+| `canonical_path` | `str` | Yes |  |
+| `change` | `Any` | Yes |  |
+| `checks` | `list` | No |  |
+| `checks_status` | `str` | No |  |
+| `description` | `str | None` | No |  |
+| `group` | `dict | None` | No |  |
+| `id` | `str` | Yes |  |
+| `jj_change_id` | `str | None` | No |  |
+| `labels` | `list` | No |  |
+| `landing` | `dict` | Yes | Server-computed submitted-together closure and landing preflight. |
+| `number` | `int` | Yes |  |
+| `patchset_number` | `int | None` | No |  |
+| `previews` | `list` | Yes |  |
+| `primary_status` | `str | None` | No |  |
+| `public_id` | `str` | No |  |
+| `related_changes` | `list` | Yes |  |
+| `relation_chain` | `list` | Yes |  |
+| `restack_state` | `str` | No |  |
+| `review_summary` | `dict` | No |  |
+| `stack` | `Any` | No |  |
+| `status` | `str` | Yes |  |
+| `sync` | `dict` | Yes |  |
+| `target` | `dict` | Yes |  |
+| `target_advanced` | `bool` | Yes |  |
+| `target_branch` | `str` | Yes |  |
+| `title` | `str` | Yes |  |
+| `url` | `str` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> VcChangeEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `list(reqmatch=None, ctrl=None) -> list[VcChangeEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.VcChange().list({"organization_id": "example", "repo_id": "example"})
+for vc_change in results:
+    print(vc_change.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> VcChangeEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.VcChange().load({"id": "vc_change_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> VcChangeEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VcChangeEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## VcChangeGroupEntity
+
+```python
+vc_change_group = client.VcChangeGroup()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `changes` | `list` | Yes |  |
+| `id` | `str` | No |  |
+| `name` | `str` | No |  |
+| `number` | `int` | No |  |
+| `status` | `str` | Yes |  |
+| `title` | `str | None` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `changes` | - | - | - |
+| `id` | - | - | - |
+| `name` | - | - | Yes |
+| `number` | - | - | - |
+| `status` | - | - | - |
+| `title` | - | - | Yes |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> VcChangeGroupEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.VcChangeGroup().create({
+    "organization_id": "example_organization_id",  # str
+    "repo_id": "example_repo_id",  # str
+    "name": "example_name",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[VcChangeGroupEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.VcChangeGroup().list({"organization_id": "example", "repo_id": "example"})
+for vc_change_group in results:
+    print(vc_change_group.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> VcChangeGroupEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.VcChangeGroup().load({"id": "vc_change_group_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VcChangeGroupEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## VcFileEntity
+
+```python
+vc_file = client.VcFile()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `paths` | `list` | Yes |  |
+| `truncated` | `bool` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[VcFileEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.VcFile().list({"organization_id": "example", "repo_id": "example", "ref": "example"})
+for vc_file in results:
+    print(vc_file.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VcFileEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## VcMergeQueueEntity
+
+```python
+vc_merge_queue = client.VcMergeQueue()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `analytics` | `dict` | Yes | Queue performance for the reporting window. |
+| `id` | `str` | No |  |
+| `policy` | `dict` | Yes |  |
+| `queue` | `dict` | Yes |  |
+| `target_branches` | `list` | No | Bookmark names for the target picker. |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> VcMergeQueueEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+#### `list(reqmatch=None, ctrl=None) -> list[VcMergeQueueEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.VcMergeQueue().list({"organization_id": "example", "repo_id": "example"})
+for vc_merge_queue in results:
+    print(vc_merge_queue.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> VcMergeQueueEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.VcMergeQueue().load({"id": "vc_merge_queue_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> VcMergeQueueEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VcMergeQueueEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## VcStackEntity
+
+```python
+vc_stack = client.VcStack()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `alias_ref_name` | `str | None` | Yes |  |
+| `changes` | `list` | Yes |  |
+| `code` | `str` | Yes |  |
+| `id` | `str` | No |  |
+| `landing` | `dict` | Yes | Compact landing state for the Stack CLI. |
+| `member_count` | `int` | Yes |  |
+| `name` | `str | None` | Yes |  |
+| `ref_name` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `tip_change_number` | `int | None` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[VcStackEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.VcStack().list({"organization_id": "example", "repo_id": "example"})
+for vc_stack in results:
+    print(vc_stack.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> VcStackEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.VcStack().load({"id": "vc_stack_id", "organization_id": "organization_id", "repo_id": "repo_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> VcStackEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VcStackEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## VcsNodeEntity
+
+```python
+vcs_node = client.VcsNode()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `str | None` | Yes |  |
+| `account_id` | `str | None` | Yes |  |
+| `account_login` | `str` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `created_at_label` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `installation_id` | `str` | Yes |  |
+| `installed_at` | `str | None` | Yes |  |
+| `installed_at_label` | `str | None` | Yes |  |
+| `manage_access_url` | `str` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `permission_entries` | `list` | Yes | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `dict` | Yes |  |
+| `status` | `str` | Yes |  |
+| `suspended_at` | `str | None` | Yes |  |
+| `suspended_at_label` | `str | None` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+| `updated_at_label` | `str | None` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[VcsNodeEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.VcsNode().list({"organization_id": "example"})
+for vcs_node in results:
+    print(vcs_node.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VcsNodeEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## VcsSettingEntity
+
+```python
+vcs_setting = client.VcsSetting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `bool` | Yes |  |
+| `can_manage_sandbox_region` | `bool` | Yes |  |
+| `dedicated_outbound_ip_addresses` | `list` | Yes | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `str` | Yes |  |
+| `organization` | `dict` | Yes |  |
+| `sandbox_regions` | `list` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[VcsSettingEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.VcsSetting().list({"organization_id": "example"})
+for vcs_setting in results:
+    print(vcs_setting.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VcsSettingEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -18388,6 +42768,125 @@ Return the entity name.
 
 ---
 
+## VerifyEmailVerificationEntity
+
+```python
+verify_email_verification = client.VerifyEmailVerification()
+```
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list[VerifyEmailVerificationEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.VerifyEmailVerification().list()
+for verify_email_verification in results:
+    print(verify_email_verification.data_get())
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VerifyEmailVerificationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## VerifySignalIntegrationEntity
+
+```python
+verify_signal_integration = client.VerifySignalIntegration()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `api_token_stored` | `bool` | Yes |  |
+| `config` | `dict` | Yes |  |
+| `created_at` | `str | None` | No |  |
+| `failure_message` | `str | None` | Yes |  |
+| `id` | `str` | Yes | Public id (`sint_…`). |
+| `inbound_path` | `str` | Yes |  |
+| `inbound_url` | `str` | Yes | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `str | None` | No |  |
+| `last_verified_at` | `str | None` | No |  |
+| `mode` | `str` | Yes | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `str` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `provider` | `str` | Yes |  |
+| `rejected_signature_count` | `int` | Yes | Deliveries rejected for a bad or missing signature. |
+| `status` | `str` | Yes |  |
+| `target_count` | `int` | Yes |  |
+| `unmapped_delivery_count` | `int` | Yes | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `str | None` | No |  |
+| `webhook_secret_stored` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> VerifySignalIntegrationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.VerifySignalIntegration().create({
+    "id": "example_id",  # str
+    "organization_id": "example_organization_id",  # str
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VerifySignalIntegrationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## VerifyStaticSiteDomainEntity
 
 ```python
@@ -18524,6 +43023,52 @@ Return the entity name.
 
 ---
 
+## WaitlistApplicationEntity
+
+```python
+waitlist_application = client.WaitlistApplication()
+```
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> WaitlistApplicationEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.WaitlistApplication().create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `WaitlistApplicationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## WebBotAuthEntity
 
 ```python
@@ -18571,6 +43116,60 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `WebBotAuthEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## WebhookGitlabEntity
+
+```python
+webhook_gitlab = client.WebhookGitlab()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl=None) -> WebhookGitlabEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.WebhookGitlab().update({
+    "id": "id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `WebhookGitlabEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -18706,6 +43305,269 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `WorkflowTriggerSkippedEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## WorkspaceActivityEntity
+
+```python
+workspace_activity = client.WorkspaceActivity()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `live_activity` | `list` | Yes |  |
+| `recent_items` | `list` | Yes |  |
+| `unresolved_notification_count` | `int` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl=None) -> WorkspaceActivityEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.WorkspaceActivity().load({"organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `WorkspaceActivityEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## WorkspaceActivityNotificationEntity
+
+```python
+workspace_activity_notification = client.WorkspaceActivityNotification()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl=None) -> WorkspaceActivityNotificationEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `WorkspaceActivityNotificationEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## WorkspaceSpaceEntity
+
+```python
+workspace_space = client.WorkspaceSpace()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `str` | Yes |  |
+| `default_branch` | `str` | No |  |
+| `description` | `str | None` | Yes |  |
+| `hidden` | `bool` | Yes |  |
+| `icon_name` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `import_status` | `str | None` | Yes |  |
+| `name` | `str` | Yes |  |
+| `organization_id` | `str` | Yes |  |
+| `position` | `int | None` | Yes |  |
+| `repository_id` | `str` | Yes |  |
+| `repository_slug` | `str` | Yes |  |
+| `slug` | `str` | Yes |  |
+| `status` | `str` | Yes |  |
+| `updated_at` | `str` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `created_at` | - | - | - |
+| `default_branch` | - | - | - |
+| `description` | - | - | Yes |
+| `hidden` | - | - | - |
+| `icon_name` | - | - | - |
+| `id` | - | - | - |
+| `import_status` | - | - | - |
+| `name` | - | - | - |
+| `organization_id` | - | - | - |
+| `position` | - | - | - |
+| `repository_id` | - | - | - |
+| `repository_slug` | - | - | - |
+| `slug` | - | - | - |
+| `status` | - | - | - |
+| `updated_at` | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> WorkspaceSpaceEntity`
+
+Create a new entity with the given data. Returns the created entity and raises on error.
+
+```python
+result = client.WorkspaceSpace().create({
+    "organization_id": "example_organization_id",  # str
+    "icon_name": "example_icon_name",  # str
+    "name": "example_name",  # str
+    "slug": "example_slug",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list[WorkspaceSpaceEntity]`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+
+```python
+results = client.WorkspaceSpace().list({"organization_id": "example"})
+for workspace_space in results:
+    print(workspace_space.data_get())
+```
+
+#### `load(reqmatch, ctrl=None) -> WorkspaceSpaceEntity`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.WorkspaceSpace().load({"id": "workspace_space_id", "organization_id": "organization_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `WorkspaceSpaceEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## WorkspaceSpacePreferenceEntity
+
+```python
+workspace_space_preference = client.WorkspaceSpacePreference()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `preferences` | `list` | Yes |  |
+| `spaces` | `list` | Yes |  |
+
+### Operations
+
+#### `update(reqdata, ctrl=None) -> WorkspaceSpacePreferenceEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.WorkspaceSpacePreference().update({
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `WorkspaceSpacePreferenceEntity` instance with the same options.
 
 #### `get_name() -> str`
 

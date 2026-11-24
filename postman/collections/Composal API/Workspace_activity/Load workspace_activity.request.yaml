@@ -1,0 +1,15 @@
+$kind: http-request
+id: ceca970e-5b21-5d6f-b618-e8fba11340c4
+description: |-
+  The `load` operation of **workspace_activity**.
+
+  SDK: `client.WorkspaceActivity().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/pages/workspace_activity"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this workspace_activity belongs to.
+order: 1000

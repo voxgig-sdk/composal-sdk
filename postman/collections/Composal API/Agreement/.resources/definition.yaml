@@ -1,0 +1,14 @@
+$kind: collection
+id: "14875f66-73ff-5850-bbe7-eb02975e383b"
+description: |-
+  The **agreement** entity, which belongs to a organization. Its requests address one record by `{{agreement_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `body` | string | yes |  |
+  | `effective_on_label` | string | yes |  |
+  | `key` | string | yes |  |
+  | `summary` | string | yes |  |
+  | `title` | string | yes |  |
+  | `version` | string | yes |  |
+order: 76000

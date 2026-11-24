@@ -1,0 +1,8 @@
+$kind: collection
+id: "535876c2-3045-5cc7-8af6-2b9f45885efd"
+description: |-
+  The **organization_subscription** entity, which belongs to a organization. Its requests address one record by `{{organization_subscription_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 356000

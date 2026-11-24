@@ -1,0 +1,33 @@
+$kind: http-request
+id: "013e31d9-468f-5327-bf7e-c708bb8d1f0d"
+description: |-
+  The `create` operation of **domain_dns_integration**.
+
+  SDK: `client.DomainDnsIntegration().create({ organization_id: "example", api_token: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/domain_dns_integrations"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this domain_dns_integration belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "api_token": "example",
+      "account_label": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("domain_dns_integration_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

@@ -1,0 +1,17 @@
+$kind: collection
+id: fe3e68c1-a71b-5b9c-a520-1baa93484e35
+description: |-
+  The **agent_connection_delegation** entity, which belongs to a organization and a agent_connection. Its requests address one record by `{{agent_connection_delegation_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `authorized_by_id` | string | yes |  |
+  | `automation_connection_grant_id` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `member_name` | string | yes |  |
+  | `revoked_at` | string | yes |  |
+  | `roles` | array | yes |  |
+  | `usable` | boolean | yes |  |
+  | `user_id` | string | yes |  |
+order: 13000

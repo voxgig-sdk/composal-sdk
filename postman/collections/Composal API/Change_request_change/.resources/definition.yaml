@@ -1,0 +1,9 @@
+$kind: collection
+id: "82136a0a-fcea-516c-be78-cfbdd5148c8a"
+description: |-
+  The **change_request_change** entity, which belongs to a organization and a repo and a change. Its requests address one record by `{{change_request_change_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `message` | string |  |  |
+order: 166000

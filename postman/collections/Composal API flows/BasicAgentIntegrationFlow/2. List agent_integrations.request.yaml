@@ -3,16 +3,16 @@ id: ac52a0b0-8d5b-5fdb-93ab-85b1ced3f670
 description: |-
   The `list` operation of **agent_integration**.
 
-  SDK: `client.AgentIntegration().list({ agent_id: "example", organization_id: "example" })`
-url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/integrations"
+  SDK: `client.AgentIntegration().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_integrations"
 method: GET
 headers:
   Accept: application/json
 queryParams:
-  - key: catalog_q
+  - key: cursor
     value: ""
     disabled: true
-  - key: cursor
+  - key: enableable
     value: ""
     disabled: true
   - key: limit
@@ -28,16 +28,13 @@ pathVariables:
   - key: organization_id
     value: "{{organization_id}}"
     description: The organization this agent_integration belongs to.
-  - key: id
-    value: "{{agent_id}}"
-    description: The agent this agent_integration belongs to.
 scripts:
   - type: beforeRequest
     code: |-
       const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
       const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
       const getonly = flag("getonly", false)
-      const missing = ["base","organization_id","agent_id"].filter((name) => !given(name))
+      const missing = ["base","organization_id"].filter((name) => !given(name))
       if (!given("apikey")) missing.unshift("apikey")
       const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
       if (getonly && "GET" !== pm.request.method) {

@@ -1,0 +1,29 @@
+$kind: http-request
+id: "904d1bc5-33ed-59b3-ae53-befe24ec8af8"
+description: |-
+  The `create` operation of **runtime_instance_health_snapshot**.
+
+  SDK: `client.RuntimeInstanceHealthSnapshot().create({ runtime_instance_id: "example" })`
+url: "{{base}}/api/v1/execution/runtime_instances/:runtime_instance_id/health_snapshots"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: runtime_instance_id
+    value: "{{runtime_instance_id}}"
+    description: "Input: runtime_instance_id."
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("runtime_instance_health_snapshot_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

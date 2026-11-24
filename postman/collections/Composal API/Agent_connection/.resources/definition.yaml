@@ -1,27 +1,50 @@
 $kind: collection
 id: "94b49429-36c6-5b34-84c1-c985fa825f58"
 description: |-
-  The **agent_connection** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_connection_id}}`, which a list or a create remembers.
+  The **agent_connection** entity, which belongs to a organization. Its requests address one record by `{{agent_connection_id}}`, which a list or a create remembers.
 
   | field | type | required | |
   |---|---|---|---|
-  | `agent_card_url` | string | yes |  |
-  | `auth_scheme` | string | yes |  |
-  | `can_configure` | boolean | yes |  |
-  | `can_disconnect` | boolean | yes |  |
-  | `can_setup` | boolean | yes |  |
+  | `actions` | array | yes |  |
+  | `activity` | array | yes |  |
+  | `admin_disabled_at` | string |  |  |
+  | `agent_tools` | boolean |  |  |
+  | `authentication` | string | yes |  |
+  | `authorized_at` | string | yes |  |
+  | `can_create_account` | boolean |  |  |
+  | `capabilities` | object | yes |  |
+  | `catalog_section` | string |  |  |
+  | `category` | string |  |  |
+  | `certification` | string | yes |  |
+  | `checked_at` | string | yes |  |
   | `connection` | object | yes |  |
-  | `credential` | string |  |  |
-  | `error_code` | string | yes |  |
-  | `expected_generation` | integer | yes |  |
+  | `consent` | object | yes |  |
+  | `created_at` | string | yes |  |
+  | `creation_key` | string |  |  |
+  | `custodian_id` | string | yes |  |
+  | `description` | string |  |  |
+  | `disabled_reason` | string |  |  |
+  | `failure_code` | string | yes |  |
   | `generation` | integer | yes |  |
+  | `grants` | array | yes |  |
+  | `grants_pagination` | object | yes |  |
   | `id` | string | yes |  |
+  | `limits` | object | yes |  |
   | `name` | string | yes |  |
-  | `remote_agent` | string | yes |  |
-  | `requester_id` | string | yes |  |
-  | `retired_at` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `owner_name` | string |  |  |
+  | `ownership_kind` | string | yes |  |
+  | `pagination` | object | yes |  |
+  | `policy_digest` | string | yes |  |
+  | `provider` | object | yes |  |
+  | `provider_disabled_reason` | string |  |  |
+  | `provider_identity` | object | yes |  |
   | `revoked_at` | string | yes |  |
-  | `scope_key` | string | yes |  |
-  | `source_operation_id` | string | yes |  |
-  | `state` | string | yes |  |
-order: 8000
+  | `schema_version` | integer | yes |  |
+  | `status` | string | yes |  |
+  | `toolkit` | string | yes |  |
+  | `triggers` | array | yes |  |
+  | `updated_at` | string | yes |  |
+  | `user_id` | string | yes |  |
+  | `version` | string | yes |  |
+order: 12000

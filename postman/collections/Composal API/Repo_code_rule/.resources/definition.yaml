@@ -1,0 +1,25 @@
+$kind: collection
+id: "8cb3715b-4600-5ad0-b9af-c415082a9862"
+description: |-
+  The **repo_code_rule** entity, which belongs to a organization and a repo. Its requests address one record by `{{repo_code_rule_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `active_revision_number` | integer | yes |  |
+  | `capabilities` | object | yes |  |
+  | `code_rule` | any | yes |  |
+  | `created_at` | string | yes |  |
+  | `definition` | object | yes |  |
+  | `draft_pending` | boolean | yes |  |
+  | `enabled` | boolean | yes |  |
+  | `expected_version` | integer | yes |  |
+  | `id` | string | yes |  |
+  | `latest_revision_number` | integer | yes |  |
+  | `name` | string | yes |  |
+  | `repository` | object | yes |  |
+  | `scope` | array | yes |  |
+  | `slug` | string | yes |  |
+  | `state_version` | integer | yes |  |
+  | `updated_at` | string | yes |  |
+  | `web_url` | string | yes |  |
+order: 429000

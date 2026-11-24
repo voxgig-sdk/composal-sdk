@@ -1,0 +1,19 @@
+$kind: http-request
+id: a28f7fff-910a-560c-8fb9-dd9716aa47d3
+description: |-
+  The `update` operation of **execution_runtime_instance**.
+
+  SDK: `client.ExecutionRuntimeInstance().update({ id: "example" })`
+url: "{{base}}/api/v1/execution/runtime_instances/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{execution_runtime_instance_id}}"
+    description: The execution_runtime_instance this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

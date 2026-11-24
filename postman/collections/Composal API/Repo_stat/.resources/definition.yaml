@@ -1,0 +1,9 @@
+$kind: collection
+id: "55907172-c4e0-54e1-b3c8-7cd3f42d9959"
+description: |-
+  The **repo_stat** entity, which belongs to a organization and a repo. Its requests address one record by `{{repo_stat_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `repository_stats` | object | yes |  |
+order: 431000

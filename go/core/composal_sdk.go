@@ -386,11 +386,43 @@ func (sdk *ComposalSDK) Graphql(
 }
 
 
+// A2aWellKnown returns a A2aWellKnown entity bound to this client.
+// Idiomatic usage: client.A2aWellKnown(nil).List(nil, nil) or
+// client.A2aWellKnown(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) A2aWellKnown(data map[string]any) ComposalEntityBase {
+	return NewA2aWellKnownEntityFunc(sdk, data)
+}
+
+
+// AdminOrg returns a AdminOrg entity bound to this client.
+// Idiomatic usage: client.AdminOrg(nil).List(nil, nil) or
+// client.AdminOrg(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AdminOrg(data map[string]any) ComposalEntityBase {
+	return NewAdminOrgEntityFunc(sdk, data)
+}
+
+
 // Agent returns a Agent entity bound to this client.
 // Idiomatic usage: client.Agent(nil).List(nil, nil) or
 // client.Agent(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) Agent(data map[string]any) ComposalEntityBase {
 	return NewAgentEntityFunc(sdk, data)
+}
+
+
+// AgentApp returns a AgentApp entity bound to this client.
+// Idiomatic usage: client.AgentApp(nil).List(nil, nil) or
+// client.AgentApp(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentApp(data map[string]any) ComposalEntityBase {
+	return NewAgentAppEntityFunc(sdk, data)
+}
+
+
+// AgentAppInstall returns a AgentAppInstall entity bound to this client.
+// Idiomatic usage: client.AgentAppInstall(nil).List(nil, nil) or
+// client.AgentAppInstall(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentAppInstall(data map[string]any) ComposalEntityBase {
+	return NewAgentAppInstallEntityFunc(sdk, data)
 }
 
 
@@ -442,6 +474,54 @@ func (sdk *ComposalSDK) AgentConnection(data map[string]any) ComposalEntityBase 
 }
 
 
+// AgentConnectionDelegation returns a AgentConnectionDelegation entity bound to this client.
+// Idiomatic usage: client.AgentConnectionDelegation(nil).List(nil, nil) or
+// client.AgentConnectionDelegation(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentConnectionDelegation(data map[string]any) ComposalEntityBase {
+	return NewAgentConnectionDelegationEntityFunc(sdk, data)
+}
+
+
+// AgentConnectionGrant returns a AgentConnectionGrant entity bound to this client.
+// Idiomatic usage: client.AgentConnectionGrant(nil).List(nil, nil) or
+// client.AgentConnectionGrant(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentConnectionGrant(data map[string]any) ComposalEntityBase {
+	return NewAgentConnectionGrantEntityFunc(sdk, data)
+}
+
+
+// AgentConnectionResource returns a AgentConnectionResource entity bound to this client.
+// Idiomatic usage: client.AgentConnectionResource(nil).List(nil, nil) or
+// client.AgentConnectionResource(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentConnectionResource(data map[string]any) ComposalEntityBase {
+	return NewAgentConnectionResourceEntityFunc(sdk, data)
+}
+
+
+// AgentConnectionSafetyControl returns a AgentConnectionSafetyControl entity bound to this client.
+// Idiomatic usage: client.AgentConnectionSafetyControl(nil).List(nil, nil) or
+// client.AgentConnectionSafetyControl(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentConnectionSafetyControl(data map[string]any) ComposalEntityBase {
+	return NewAgentConnectionSafetyControlEntityFunc(sdk, data)
+}
+
+
+// AgentConnectionTriggerSubscription returns a AgentConnectionTriggerSubscription entity bound to this client.
+// Idiomatic usage: client.AgentConnectionTriggerSubscription(nil).List(nil, nil) or
+// client.AgentConnectionTriggerSubscription(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentConnectionTriggerSubscription(data map[string]any) ComposalEntityBase {
+	return NewAgentConnectionTriggerSubscriptionEntityFunc(sdk, data)
+}
+
+
+// AgentContextCheckpoint returns a AgentContextCheckpoint entity bound to this client.
+// Idiomatic usage: client.AgentContextCheckpoint(nil).List(nil, nil) or
+// client.AgentContextCheckpoint(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentContextCheckpoint(data map[string]any) ComposalEntityBase {
+	return NewAgentContextCheckpointEntityFunc(sdk, data)
+}
+
+
 // AgentControlFlow returns a AgentControlFlow entity bound to this client.
 // Idiomatic usage: client.AgentControlFlow(nil).List(nil, nil) or
 // client.AgentControlFlow(nil).Load(map[string]any{"id": ...}, nil).
@@ -466,6 +546,14 @@ func (sdk *ComposalSDK) AgentEmail(data map[string]any) ComposalEntityBase {
 }
 
 
+// AgentEvent returns a AgentEvent entity bound to this client.
+// Idiomatic usage: client.AgentEvent(nil).List(nil, nil) or
+// client.AgentEvent(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentEvent(data map[string]any) ComposalEntityBase {
+	return NewAgentEventEntityFunc(sdk, data)
+}
+
+
 // AgentFile returns a AgentFile entity bound to this client.
 // Idiomatic usage: client.AgentFile(nil).List(nil, nil) or
 // client.AgentFile(nil).Load(map[string]any{"id": ...}, nil).
@@ -487,6 +575,22 @@ func (sdk *ComposalSDK) AgentInput(data map[string]any) ComposalEntityBase {
 // client.AgentIntegration(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) AgentIntegration(data map[string]any) ComposalEntityBase {
 	return NewAgentIntegrationEntityFunc(sdk, data)
+}
+
+
+// AgentIntegrationAccount returns a AgentIntegrationAccount entity bound to this client.
+// Idiomatic usage: client.AgentIntegrationAccount(nil).List(nil, nil) or
+// client.AgentIntegrationAccount(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentIntegrationAccount(data map[string]any) ComposalEntityBase {
+	return NewAgentIntegrationAccountEntityFunc(sdk, data)
+}
+
+
+// AgentIntegrationCallback returns a AgentIntegrationCallback entity bound to this client.
+// Idiomatic usage: client.AgentIntegrationCallback(nil).List(nil, nil) or
+// client.AgentIntegrationCallback(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentIntegrationCallback(data map[string]any) ComposalEntityBase {
+	return NewAgentIntegrationCallbackEntityFunc(sdk, data)
 }
 
 
@@ -578,6 +682,22 @@ func (sdk *ComposalSDK) AgentQuestion(data map[string]any) ComposalEntityBase {
 }
 
 
+// AgentRelayFileGrant returns a AgentRelayFileGrant entity bound to this client.
+// Idiomatic usage: client.AgentRelayFileGrant(nil).List(nil, nil) or
+// client.AgentRelayFileGrant(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentRelayFileGrant(data map[string]any) ComposalEntityBase {
+	return NewAgentRelayFileGrantEntityFunc(sdk, data)
+}
+
+
+// AgentRelayFileGrantAccount returns a AgentRelayFileGrantAccount entity bound to this client.
+// Idiomatic usage: client.AgentRelayFileGrantAccount(nil).List(nil, nil) or
+// client.AgentRelayFileGrantAccount(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentRelayFileGrantAccount(data map[string]any) ComposalEntityBase {
+	return NewAgentRelayFileGrantAccountEntityFunc(sdk, data)
+}
+
+
 // AgentRepository returns a AgentRepository entity bound to this client.
 // Idiomatic usage: client.AgentRepository(nil).List(nil, nil) or
 // client.AgentRepository(nil).Load(map[string]any{"id": ...}, nil).
@@ -591,6 +711,14 @@ func (sdk *ComposalSDK) AgentRepository(data map[string]any) ComposalEntityBase 
 // client.AgentResource(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) AgentResource(data map[string]any) ComposalEntityBase {
 	return NewAgentResourceEntityFunc(sdk, data)
+}
+
+
+// AgentRoder returns a AgentRoder entity bound to this client.
+// Idiomatic usage: client.AgentRoder(nil).List(nil, nil) or
+// client.AgentRoder(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentRoder(data map[string]any) ComposalEntityBase {
+	return NewAgentRoderEntityFunc(sdk, data)
 }
 
 
@@ -615,6 +743,30 @@ func (sdk *ComposalSDK) AgentRun(data map[string]any) ComposalEntityBase {
 // client.AgentRuntime(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) AgentRuntime(data map[string]any) ComposalEntityBase {
 	return NewAgentRuntimeEntityFunc(sdk, data)
+}
+
+
+// AgentSession returns a AgentSession entity bound to this client.
+// Idiomatic usage: client.AgentSession(nil).List(nil, nil) or
+// client.AgentSession(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentSession(data map[string]any) ComposalEntityBase {
+	return NewAgentSessionEntityFunc(sdk, data)
+}
+
+
+// AgentSessionCheckpoint returns a AgentSessionCheckpoint entity bound to this client.
+// Idiomatic usage: client.AgentSessionCheckpoint(nil).List(nil, nil) or
+// client.AgentSessionCheckpoint(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentSessionCheckpoint(data map[string]any) ComposalEntityBase {
+	return NewAgentSessionCheckpointEntityFunc(sdk, data)
+}
+
+
+// AgentSessionRoderHandoff returns a AgentSessionRoderHandoff entity bound to this client.
+// Idiomatic usage: client.AgentSessionRoderHandoff(nil).List(nil, nil) or
+// client.AgentSessionRoderHandoff(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentSessionRoderHandoff(data map[string]any) ComposalEntityBase {
+	return NewAgentSessionRoderHandoffEntityFunc(sdk, data)
 }
 
 
@@ -674,6 +826,14 @@ func (sdk *ComposalSDK) AgentSubscription(data map[string]any) ComposalEntityBas
 }
 
 
+// AgentSwarm returns a AgentSwarm entity bound to this client.
+// Idiomatic usage: client.AgentSwarm(nil).List(nil, nil) or
+// client.AgentSwarm(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentSwarm(data map[string]any) ComposalEntityBase {
+	return NewAgentSwarmEntityFunc(sdk, data)
+}
+
+
 // AgentTeammate returns a AgentTeammate entity bound to this client.
 // Idiomatic usage: client.AgentTeammate(nil).List(nil, nil) or
 // client.AgentTeammate(nil).Load(map[string]any{"id": ...}, nil).
@@ -706,6 +866,14 @@ func (sdk *ComposalSDK) AgentTool(data map[string]any) ComposalEntityBase {
 }
 
 
+// AgentUsage returns a AgentUsage entity bound to this client.
+// Idiomatic usage: client.AgentUsage(nil).List(nil, nil) or
+// client.AgentUsage(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentUsage(data map[string]any) ComposalEntityBase {
+	return NewAgentUsageEntityFunc(sdk, data)
+}
+
+
 // AgentVerifyProject returns a AgentVerifyProject entity bound to this client.
 // Idiomatic usage: client.AgentVerifyProject(nil).List(nil, nil) or
 // client.AgentVerifyProject(nil).Load(map[string]any{"id": ...}, nil).
@@ -719,6 +887,14 @@ func (sdk *ComposalSDK) AgentVerifyProject(data map[string]any) ComposalEntityBa
 // client.AgentWait(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) AgentWait(data map[string]any) ComposalEntityBase {
 	return NewAgentWaitEntityFunc(sdk, data)
+}
+
+
+// AgentWebPreview returns a AgentWebPreview entity bound to this client.
+// Idiomatic usage: client.AgentWebPreview(nil).List(nil, nil) or
+// client.AgentWebPreview(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgentWebPreview(data map[string]any) ComposalEntityBase {
+	return NewAgentWebPreviewEntityFunc(sdk, data)
 }
 
 
@@ -786,6 +962,30 @@ func (sdk *ComposalSDK) AgentWritePermission(data map[string]any) ComposalEntity
 }
 
 
+// Agreement returns a Agreement entity bound to this client.
+// Idiomatic usage: client.Agreement(nil).List(nil, nil) or
+// client.Agreement(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Agreement(data map[string]any) ComposalEntityBase {
+	return NewAgreementEntityFunc(sdk, data)
+}
+
+
+// AgreementAccessRequest returns a AgreementAccessRequest entity bound to this client.
+// Idiomatic usage: client.AgreementAccessRequest(nil).List(nil, nil) or
+// client.AgreementAccessRequest(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AgreementAccessRequest(data map[string]any) ComposalEntityBase {
+	return NewAgreementAccessRequestEntityFunc(sdk, data)
+}
+
+
+// AlertRuleEvent returns a AlertRuleEvent entity bound to this client.
+// Idiomatic usage: client.AlertRuleEvent(nil).List(nil, nil) or
+// client.AlertRuleEvent(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AlertRuleEvent(data map[string]any) ComposalEntityBase {
+	return NewAlertRuleEventEntityFunc(sdk, data)
+}
+
+
 // AllocationLog returns a AllocationLog entity bound to this client.
 // Idiomatic usage: client.AllocationLog(nil).List(nil, nil) or
 // client.AllocationLog(nil).Load(map[string]any{"id": ...}, nil).
@@ -799,6 +999,22 @@ func (sdk *ComposalSDK) AllocationLog(data map[string]any) ComposalEntityBase {
 // client.App(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) App(data map[string]any) ComposalEntityBase {
 	return NewAppEntityFunc(sdk, data)
+}
+
+
+// AppAccess returns a AppAccess entity bound to this client.
+// Idiomatic usage: client.AppAccess(nil).List(nil, nil) or
+// client.AppAccess(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AppAccess(data map[string]any) ComposalEntityBase {
+	return NewAppAccessEntityFunc(sdk, data)
+}
+
+
+// AppAccessJwk returns a AppAccessJwk entity bound to this client.
+// Idiomatic usage: client.AppAccessJwk(nil).List(nil, nil) or
+// client.AppAccessJwk(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AppAccessJwk(data map[string]any) ComposalEntityBase {
+	return NewAppAccessJwkEntityFunc(sdk, data)
 }
 
 
@@ -946,11 +1162,147 @@ func (sdk *ComposalSDK) AppStorageResource(data map[string]any) ComposalEntityBa
 }
 
 
+// Artefact returns a Artefact entity bound to this client.
+// Idiomatic usage: client.Artefact(nil).List(nil, nil) or
+// client.Artefact(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Artefact(data map[string]any) ComposalEntityBase {
+	return NewArtefactEntityFunc(sdk, data)
+}
+
+
+// ArtefactCommentThread returns a ArtefactCommentThread entity bound to this client.
+// Idiomatic usage: client.ArtefactCommentThread(nil).List(nil, nil) or
+// client.ArtefactCommentThread(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ArtefactCommentThread(data map[string]any) ComposalEntityBase {
+	return NewArtefactCommentThreadEntityFunc(sdk, data)
+}
+
+
+// ArtefactRevision returns a ArtefactRevision entity bound to this client.
+// Idiomatic usage: client.ArtefactRevision(nil).List(nil, nil) or
+// client.ArtefactRevision(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ArtefactRevision(data map[string]any) ComposalEntityBase {
+	return NewArtefactRevisionEntityFunc(sdk, data)
+}
+
+
+// ArtefactViewToken returns a ArtefactViewToken entity bound to this client.
+// Idiomatic usage: client.ArtefactViewToken(nil).List(nil, nil) or
+// client.ArtefactViewToken(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ArtefactViewToken(data map[string]any) ComposalEntityBase {
+	return NewArtefactViewTokenEntityFunc(sdk, data)
+}
+
+
+// Artifact returns a Artifact entity bound to this client.
+// Idiomatic usage: client.Artifact(nil).List(nil, nil) or
+// client.Artifact(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Artifact(data map[string]any) ComposalEntityBase {
+	return NewArtifactEntityFunc(sdk, data)
+}
+
+
+// ArtifactCacheNamespace returns a ArtifactCacheNamespace entity bound to this client.
+// Idiomatic usage: client.ArtifactCacheNamespace(nil).List(nil, nil) or
+// client.ArtifactCacheNamespace(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ArtifactCacheNamespace(data map[string]any) ComposalEntityBase {
+	return NewArtifactCacheNamespaceEntityFunc(sdk, data)
+}
+
+
+// ArtifactImageRepository returns a ArtifactImageRepository entity bound to this client.
+// Idiomatic usage: client.ArtifactImageRepository(nil).List(nil, nil) or
+// client.ArtifactImageRepository(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ArtifactImageRepository(data map[string]any) ComposalEntityBase {
+	return NewArtifactImageRepositoryEntityFunc(sdk, data)
+}
+
+
+// ArtifactPackageMirror returns a ArtifactPackageMirror entity bound to this client.
+// Idiomatic usage: client.ArtifactPackageMirror(nil).List(nil, nil) or
+// client.ArtifactPackageMirror(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ArtifactPackageMirror(data map[string]any) ComposalEntityBase {
+	return NewArtifactPackageMirrorEntityFunc(sdk, data)
+}
+
+
+// ArtifactRetentionPolicy returns a ArtifactRetentionPolicy entity bound to this client.
+// Idiomatic usage: client.ArtifactRetentionPolicy(nil).List(nil, nil) or
+// client.ArtifactRetentionPolicy(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ArtifactRetentionPolicy(data map[string]any) ComposalEntityBase {
+	return NewArtifactRetentionPolicyEntityFunc(sdk, data)
+}
+
+
 // AttachmentPart returns a AttachmentPart entity bound to this client.
 // Idiomatic usage: client.AttachmentPart(nil).List(nil, nil) or
 // client.AttachmentPart(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) AttachmentPart(data map[string]any) ComposalEntityBase {
 	return NewAttachmentPartEntityFunc(sdk, data)
+}
+
+
+// AuditEvent returns a AuditEvent entity bound to this client.
+// Idiomatic usage: client.AuditEvent(nil).List(nil, nil) or
+// client.AuditEvent(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AuditEvent(data map[string]any) ComposalEntityBase {
+	return NewAuditEventEntityFunc(sdk, data)
+}
+
+
+// Auth returns a Auth entity bound to this client.
+// Idiomatic usage: client.Auth(nil).List(nil, nil) or
+// client.Auth(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Auth(data map[string]any) ComposalEntityBase {
+	return NewAuthEntityFunc(sdk, data)
+}
+
+
+// AuthCli returns a AuthCli entity bound to this client.
+// Idiomatic usage: client.AuthCli(nil).List(nil, nil) or
+// client.AuthCli(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AuthCli(data map[string]any) ComposalEntityBase {
+	return NewAuthCliEntityFunc(sdk, data)
+}
+
+
+// AuthGithub returns a AuthGithub entity bound to this client.
+// Idiomatic usage: client.AuthGithub(nil).List(nil, nil) or
+// client.AuthGithub(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AuthGithub(data map[string]any) ComposalEntityBase {
+	return NewAuthGithubEntityFunc(sdk, data)
+}
+
+
+// AuthGoogle returns a AuthGoogle entity bound to this client.
+// Idiomatic usage: client.AuthGoogle(nil).List(nil, nil) or
+// client.AuthGoogle(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AuthGoogle(data map[string]any) ComposalEntityBase {
+	return NewAuthGoogleEntityFunc(sdk, data)
+}
+
+
+// AuthOpenai returns a AuthOpenai entity bound to this client.
+// Idiomatic usage: client.AuthOpenai(nil).List(nil, nil) or
+// client.AuthOpenai(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AuthOpenai(data map[string]any) ComposalEntityBase {
+	return NewAuthOpenaiEntityFunc(sdk, data)
+}
+
+
+// AuthPasswordReset returns a AuthPasswordReset entity bound to this client.
+// Idiomatic usage: client.AuthPasswordReset(nil).List(nil, nil) or
+// client.AuthPasswordReset(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AuthPasswordReset(data map[string]any) ComposalEntityBase {
+	return NewAuthPasswordResetEntityFunc(sdk, data)
+}
+
+
+// AuthRegistrationOption returns a AuthRegistrationOption entity bound to this client.
+// Idiomatic usage: client.AuthRegistrationOption(nil).List(nil, nil) or
+// client.AuthRegistrationOption(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) AuthRegistrationOption(data map[string]any) ComposalEntityBase {
+	return NewAuthRegistrationOptionEntityFunc(sdk, data)
 }
 
 
@@ -970,6 +1322,142 @@ func (sdk *ComposalSDK) AutomationRun(data map[string]any) ComposalEntityBase {
 }
 
 
+// BackendRunnerPool returns a BackendRunnerPool entity bound to this client.
+// Idiomatic usage: client.BackendRunnerPool(nil).List(nil, nil) or
+// client.BackendRunnerPool(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BackendRunnerPool(data map[string]any) ComposalEntityBase {
+	return NewBackendRunnerPoolEntityFunc(sdk, data)
+}
+
+
+// Bazel returns a Bazel entity bound to this client.
+// Idiomatic usage: client.Bazel(nil).List(nil, nil) or
+// client.Bazel(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Bazel(data map[string]any) ComposalEntityBase {
+	return NewBazelEntityFunc(sdk, data)
+}
+
+
+// BazelActionResult returns a BazelActionResult entity bound to this client.
+// Idiomatic usage: client.BazelActionResult(nil).List(nil, nil) or
+// client.BazelActionResult(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BazelActionResult(data map[string]any) ComposalEntityBase {
+	return NewBazelActionResultEntityFunc(sdk, data)
+}
+
+
+// BazelBackend returns a BazelBackend entity bound to this client.
+// Idiomatic usage: client.BazelBackend(nil).List(nil, nil) or
+// client.BazelBackend(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BazelBackend(data map[string]any) ComposalEntityBase {
+	return NewBazelBackendEntityFunc(sdk, data)
+}
+
+
+// BazelBlob returns a BazelBlob entity bound to this client.
+// Idiomatic usage: client.BazelBlob(nil).List(nil, nil) or
+// client.BazelBlob(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BazelBlob(data map[string]any) ComposalEntityBase {
+	return NewBazelBlobEntityFunc(sdk, data)
+}
+
+
+// BazelExecution returns a BazelExecution entity bound to this client.
+// Idiomatic usage: client.BazelExecution(nil).List(nil, nil) or
+// client.BazelExecution(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BazelExecution(data map[string]any) ComposalEntityBase {
+	return NewBazelExecutionEntityFunc(sdk, data)
+}
+
+
+// BazelFindMissingBlob returns a BazelFindMissingBlob entity bound to this client.
+// Idiomatic usage: client.BazelFindMissingBlob(nil).List(nil, nil) or
+// client.BazelFindMissingBlob(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BazelFindMissingBlob(data map[string]any) ComposalEntityBase {
+	return NewBazelFindMissingBlobEntityFunc(sdk, data)
+}
+
+
+// Billing returns a Billing entity bound to this client.
+// Idiomatic usage: client.Billing(nil).List(nil, nil) or
+// client.Billing(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Billing(data map[string]any) ComposalEntityBase {
+	return NewBillingEntityFunc(sdk, data)
+}
+
+
+// BillingAddon returns a BillingAddon entity bound to this client.
+// Idiomatic usage: client.BillingAddon(nil).List(nil, nil) or
+// client.BillingAddon(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BillingAddon(data map[string]any) ComposalEntityBase {
+	return NewBillingAddonEntityFunc(sdk, data)
+}
+
+
+// BillingCheckoutSession returns a BillingCheckoutSession entity bound to this client.
+// Idiomatic usage: client.BillingCheckoutSession(nil).List(nil, nil) or
+// client.BillingCheckoutSession(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BillingCheckoutSession(data map[string]any) ComposalEntityBase {
+	return NewBillingCheckoutSessionEntityFunc(sdk, data)
+}
+
+
+// BillingInvoice returns a BillingInvoice entity bound to this client.
+// Idiomatic usage: client.BillingInvoice(nil).List(nil, nil) or
+// client.BillingInvoice(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BillingInvoice(data map[string]any) ComposalEntityBase {
+	return NewBillingInvoiceEntityFunc(sdk, data)
+}
+
+
+// BillingPackage returns a BillingPackage entity bound to this client.
+// Idiomatic usage: client.BillingPackage(nil).List(nil, nil) or
+// client.BillingPackage(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BillingPackage(data map[string]any) ComposalEntityBase {
+	return NewBillingPackageEntityFunc(sdk, data)
+}
+
+
+// BillingPortalSession returns a BillingPortalSession entity bound to this client.
+// Idiomatic usage: client.BillingPortalSession(nil).List(nil, nil) or
+// client.BillingPortalSession(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BillingPortalSession(data map[string]any) ComposalEntityBase {
+	return NewBillingPortalSessionEntityFunc(sdk, data)
+}
+
+
+// BillingPrepaidPeriod returns a BillingPrepaidPeriod entity bound to this client.
+// Idiomatic usage: client.BillingPrepaidPeriod(nil).List(nil, nil) or
+// client.BillingPrepaidPeriod(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BillingPrepaidPeriod(data map[string]any) ComposalEntityBase {
+	return NewBillingPrepaidPeriodEntityFunc(sdk, data)
+}
+
+
+// BillingPrepaidPurchase returns a BillingPrepaidPurchase entity bound to this client.
+// Idiomatic usage: client.BillingPrepaidPurchase(nil).List(nil, nil) or
+// client.BillingPrepaidPurchase(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BillingPrepaidPurchase(data map[string]any) ComposalEntityBase {
+	return NewBillingPrepaidPurchaseEntityFunc(sdk, data)
+}
+
+
+// BillingTokenTopUp returns a BillingTokenTopUp entity bound to this client.
+// Idiomatic usage: client.BillingTokenTopUp(nil).List(nil, nil) or
+// client.BillingTokenTopUp(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BillingTokenTopUp(data map[string]any) ComposalEntityBase {
+	return NewBillingTokenTopUpEntityFunc(sdk, data)
+}
+
+
+// BillingUsage returns a BillingUsage entity bound to this client.
+// Idiomatic usage: client.BillingUsage(nil).List(nil, nil) or
+// client.BillingUsage(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BillingUsage(data map[string]any) ComposalEntityBase {
+	return NewBillingUsageEntityFunc(sdk, data)
+}
+
+
 // Binary returns a Binary entity bound to this client.
 // Idiomatic usage: client.Binary(nil).List(nil, nil) or
 // client.Binary(nil).Load(map[string]any{"id": ...}, nil).
@@ -983,6 +1471,14 @@ func (sdk *ComposalSDK) Binary(data map[string]any) ComposalEntityBase {
 // client.BinaryVersion(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) BinaryVersion(data map[string]any) ComposalEntityBase {
 	return NewBinaryVersionEntityFunc(sdk, data)
+}
+
+
+// BookmarkProtectionRefreshGithubRequiredCheck returns a BookmarkProtectionRefreshGithubRequiredCheck entity bound to this client.
+// Idiomatic usage: client.BookmarkProtectionRefreshGithubRequiredCheck(nil).List(nil, nil) or
+// client.BookmarkProtectionRefreshGithubRequiredCheck(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BookmarkProtectionRefreshGithubRequiredCheck(data map[string]any) ComposalEntityBase {
+	return NewBookmarkProtectionRefreshGithubRequiredCheckEntityFunc(sdk, data)
 }
 
 
@@ -1058,6 +1554,14 @@ func (sdk *ComposalSDK) BrowserSessionTask(data map[string]any) ComposalEntityBa
 }
 
 
+// CacheNamespaceEntry returns a CacheNamespaceEntry entity bound to this client.
+// Idiomatic usage: client.CacheNamespaceEntry(nil).List(nil, nil) or
+// client.CacheNamespaceEntry(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) CacheNamespaceEntry(data map[string]any) ComposalEntityBase {
+	return NewCacheNamespaceEntryEntityFunc(sdk, data)
+}
+
+
 // CatalogSelector returns a CatalogSelector entity bound to this client.
 // Idiomatic usage: client.CatalogSelector(nil).List(nil, nil) or
 // client.CatalogSelector(nil).Load(map[string]any{"id": ...}, nil).
@@ -1098,6 +1602,238 @@ func (sdk *ComposalSDK) CdnSpaceObject(data map[string]any) ComposalEntityBase {
 }
 
 
+// Change returns a Change entity bound to this client.
+// Idiomatic usage: client.Change(nil).List(nil, nil) or
+// client.Change(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Change(data map[string]any) ComposalEntityBase {
+	return NewChangeEntityFunc(sdk, data)
+}
+
+
+// ChangeAsset returns a ChangeAsset entity bound to this client.
+// Idiomatic usage: client.ChangeAsset(nil).List(nil, nil) or
+// client.ChangeAsset(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ChangeAsset(data map[string]any) ComposalEntityBase {
+	return NewChangeAssetEntityFunc(sdk, data)
+}
+
+
+// ChangeComment returns a ChangeComment entity bound to this client.
+// Idiomatic usage: client.ChangeComment(nil).List(nil, nil) or
+// client.ChangeComment(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ChangeComment(data map[string]any) ComposalEntityBase {
+	return NewChangeCommentEntityFunc(sdk, data)
+}
+
+
+// ChangeFileReviewCheckpoint returns a ChangeFileReviewCheckpoint entity bound to this client.
+// Idiomatic usage: client.ChangeFileReviewCheckpoint(nil).List(nil, nil) or
+// client.ChangeFileReviewCheckpoint(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ChangeFileReviewCheckpoint(data map[string]any) ComposalEntityBase {
+	return NewChangeFileReviewCheckpointEntityFunc(sdk, data)
+}
+
+
+// ChangeGitBranchSubmission returns a ChangeGitBranchSubmission entity bound to this client.
+// Idiomatic usage: client.ChangeGitBranchSubmission(nil).List(nil, nil) or
+// client.ChangeGitBranchSubmission(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ChangeGitBranchSubmission(data map[string]any) ComposalEntityBase {
+	return NewChangeGitBranchSubmissionEntityFunc(sdk, data)
+}
+
+
+// ChangeGitCommitIdentity returns a ChangeGitCommitIdentity entity bound to this client.
+// Idiomatic usage: client.ChangeGitCommitIdentity(nil).List(nil, nil) or
+// client.ChangeGitCommitIdentity(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ChangeGitCommitIdentity(data map[string]any) ComposalEntityBase {
+	return NewChangeGitCommitIdentityEntityFunc(sdk, data)
+}
+
+
+// ChangeGitPublication returns a ChangeGitPublication entity bound to this client.
+// Idiomatic usage: client.ChangeGitPublication(nil).List(nil, nil) or
+// client.ChangeGitPublication(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ChangeGitPublication(data map[string]any) ComposalEntityBase {
+	return NewChangeGitPublicationEntityFunc(sdk, data)
+}
+
+
+// ChangeGroupMember returns a ChangeGroupMember entity bound to this client.
+// Idiomatic usage: client.ChangeGroupMember(nil).List(nil, nil) or
+// client.ChangeGroupMember(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ChangeGroupMember(data map[string]any) ComposalEntityBase {
+	return NewChangeGroupMemberEntityFunc(sdk, data)
+}
+
+
+// ChangeLabel returns a ChangeLabel entity bound to this client.
+// Idiomatic usage: client.ChangeLabel(nil).List(nil, nil) or
+// client.ChangeLabel(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ChangeLabel(data map[string]any) ComposalEntityBase {
+	return NewChangeLabelEntityFunc(sdk, data)
+}
+
+
+// ChangeLandingHold returns a ChangeLandingHold entity bound to this client.
+// Idiomatic usage: client.ChangeLandingHold(nil).List(nil, nil) or
+// client.ChangeLandingHold(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ChangeLandingHold(data map[string]any) ComposalEntityBase {
+	return NewChangeLandingHoldEntityFunc(sdk, data)
+}
+
+
+// ChangeLandingRequest returns a ChangeLandingRequest entity bound to this client.
+// Idiomatic usage: client.ChangeLandingRequest(nil).List(nil, nil) or
+// client.ChangeLandingRequest(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ChangeLandingRequest(data map[string]any) ComposalEntityBase {
+	return NewChangeLandingRequestEntityFunc(sdk, data)
+}
+
+
+// ChangeRequestChange returns a ChangeRequestChange entity bound to this client.
+// Idiomatic usage: client.ChangeRequestChange(nil).List(nil, nil) or
+// client.ChangeRequestChange(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ChangeRequestChange(data map[string]any) ComposalEntityBase {
+	return NewChangeRequestChangeEntityFunc(sdk, data)
+}
+
+
+// ChangeReviewer returns a ChangeReviewer entity bound to this client.
+// Idiomatic usage: client.ChangeReviewer(nil).List(nil, nil) or
+// client.ChangeReviewer(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ChangeReviewer(data map[string]any) ComposalEntityBase {
+	return NewChangeReviewerEntityFunc(sdk, data)
+}
+
+
+// ChangeTranscript returns a ChangeTranscript entity bound to this client.
+// Idiomatic usage: client.ChangeTranscript(nil).List(nil, nil) or
+// client.ChangeTranscript(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ChangeTranscript(data map[string]any) ComposalEntityBase {
+	return NewChangeTranscriptEntityFunc(sdk, data)
+}
+
+
+// ChangeTranscriptSummary returns a ChangeTranscriptSummary entity bound to this client.
+// Idiomatic usage: client.ChangeTranscriptSummary(nil).List(nil, nil) or
+// client.ChangeTranscriptSummary(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ChangeTranscriptSummary(data map[string]any) ComposalEntityBase {
+	return NewChangeTranscriptSummaryEntityFunc(sdk, data)
+}
+
+
+// CheckpointPrepareChunk returns a CheckpointPrepareChunk entity bound to this client.
+// Idiomatic usage: client.CheckpointPrepareChunk(nil).List(nil, nil) or
+// client.CheckpointPrepareChunk(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) CheckpointPrepareChunk(data map[string]any) ComposalEntityBase {
+	return NewCheckpointPrepareChunkEntityFunc(sdk, data)
+}
+
+
+// CiNode returns a CiNode entity bound to this client.
+// Idiomatic usage: client.CiNode(nil).List(nil, nil) or
+// client.CiNode(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) CiNode(data map[string]any) ComposalEntityBase {
+	return NewCiNodeEntityFunc(sdk, data)
+}
+
+
+// CiPipeline returns a CiPipeline entity bound to this client.
+// Idiomatic usage: client.CiPipeline(nil).List(nil, nil) or
+// client.CiPipeline(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) CiPipeline(data map[string]any) ComposalEntityBase {
+	return NewCiPipelineEntityFunc(sdk, data)
+}
+
+
+// CiPipelineRun returns a CiPipelineRun entity bound to this client.
+// Idiomatic usage: client.CiPipelineRun(nil).List(nil, nil) or
+// client.CiPipelineRun(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) CiPipelineRun(data map[string]any) ComposalEntityBase {
+	return NewCiPipelineRunEntityFunc(sdk, data)
+}
+
+
+// CiRunnerPool returns a CiRunnerPool entity bound to this client.
+// Idiomatic usage: client.CiRunnerPool(nil).List(nil, nil) or
+// client.CiRunnerPool(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) CiRunnerPool(data map[string]any) ComposalEntityBase {
+	return NewCiRunnerPoolEntityFunc(sdk, data)
+}
+
+
+// CiStatus returns a CiStatus entity bound to this client.
+// Idiomatic usage: client.CiStatus(nil).List(nil, nil) or
+// client.CiStatus(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) CiStatus(data map[string]any) ComposalEntityBase {
+	return NewCiStatusEntityFunc(sdk, data)
+}
+
+
+// CliEvent returns a CliEvent entity bound to this client.
+// Idiomatic usage: client.CliEvent(nil).List(nil, nil) or
+// client.CliEvent(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) CliEvent(data map[string]any) ComposalEntityBase {
+	return NewCliEventEntityFunc(sdk, data)
+}
+
+
+// CliRelease returns a CliRelease entity bound to this client.
+// Idiomatic usage: client.CliRelease(nil).List(nil, nil) or
+// client.CliRelease(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) CliRelease(data map[string]any) ComposalEntityBase {
+	return NewCliReleaseEntityFunc(sdk, data)
+}
+
+
+// CloudWorkspaceBackupObject returns a CloudWorkspaceBackupObject entity bound to this client.
+// Idiomatic usage: client.CloudWorkspaceBackupObject(nil).List(nil, nil) or
+// client.CloudWorkspaceBackupObject(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) CloudWorkspaceBackupObject(data map[string]any) ComposalEntityBase {
+	return NewCloudWorkspaceBackupObjectEntityFunc(sdk, data)
+}
+
+
+// CodeRuleEvaluation returns a CodeRuleEvaluation entity bound to this client.
+// Idiomatic usage: client.CodeRuleEvaluation(nil).List(nil, nil) or
+// client.CodeRuleEvaluation(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) CodeRuleEvaluation(data map[string]any) ComposalEntityBase {
+	return NewCodeRuleEvaluationEntityFunc(sdk, data)
+}
+
+
+// ComSiteAccess returns a ComSiteAccess entity bound to this client.
+// Idiomatic usage: client.ComSiteAccess(nil).List(nil, nil) or
+// client.ComSiteAccess(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ComSiteAccess(data map[string]any) ComposalEntityBase {
+	return NewComSiteAccessEntityFunc(sdk, data)
+}
+
+
+// ComSiteAccessSession returns a ComSiteAccessSession entity bound to this client.
+// Idiomatic usage: client.ComSiteAccessSession(nil).List(nil, nil) or
+// client.ComSiteAccessSession(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ComSiteAccessSession(data map[string]any) ComposalEntityBase {
+	return NewComSiteAccessSessionEntityFunc(sdk, data)
+}
+
+
+// CommentThreadComment returns a CommentThreadComment entity bound to this client.
+// Idiomatic usage: client.CommentThreadComment(nil).List(nil, nil) or
+// client.CommentThreadComment(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) CommentThreadComment(data map[string]any) ComposalEntityBase {
+	return NewCommentThreadCommentEntityFunc(sdk, data)
+}
+
+
+// CommitDiff returns a CommitDiff entity bound to this client.
+// Idiomatic usage: client.CommitDiff(nil).List(nil, nil) or
+// client.CommitDiff(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) CommitDiff(data map[string]any) ComposalEntityBase {
+	return NewCommitDiffEntityFunc(sdk, data)
+}
+
+
 // ConnectionRequest returns a ConnectionRequest entity bound to this client.
 // Idiomatic usage: client.ConnectionRequest(nil).List(nil, nil) or
 // client.ConnectionRequest(nil).Load(map[string]any{"id": ...}, nil).
@@ -1111,6 +1847,30 @@ func (sdk *ComposalSDK) ConnectionRequest(data map[string]any) ComposalEntityBas
 // client.ConnectionSource(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) ConnectionSource(data map[string]any) ComposalEntityBase {
 	return NewConnectionSourceEntityFunc(sdk, data)
+}
+
+
+// ContactSubmission returns a ContactSubmission entity bound to this client.
+// Idiomatic usage: client.ContactSubmission(nil).List(nil, nil) or
+// client.ContactSubmission(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ContactSubmission(data map[string]any) ComposalEntityBase {
+	return NewContactSubmissionEntityFunc(sdk, data)
+}
+
+
+// ControlComputer returns a ControlComputer entity bound to this client.
+// Idiomatic usage: client.ControlComputer(nil).List(nil, nil) or
+// client.ControlComputer(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ControlComputer(data map[string]any) ComposalEntityBase {
+	return NewControlComputerEntityFunc(sdk, data)
+}
+
+
+// ControlComputerControlOperation returns a ControlComputerControlOperation entity bound to this client.
+// Idiomatic usage: client.ControlComputerControlOperation(nil).List(nil, nil) or
+// client.ControlComputerControlOperation(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ControlComputerControlOperation(data map[string]any) ComposalEntityBase {
+	return NewControlComputerControlOperationEntityFunc(sdk, data)
 }
 
 
@@ -1194,6 +1954,14 @@ func (sdk *ComposalSDK) DemoShareSegment(data map[string]any) ComposalEntityBase
 }
 
 
+// Deployment returns a Deployment entity bound to this client.
+// Idiomatic usage: client.Deployment(nil).List(nil, nil) or
+// client.Deployment(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Deployment(data map[string]any) ComposalEntityBase {
+	return NewDeploymentEntityFunc(sdk, data)
+}
+
+
 // DeploymentDashboardNomad returns a DeploymentDashboardNomad entity bound to this client.
 // Idiomatic usage: client.DeploymentDashboardNomad(nil).List(nil, nil) or
 // client.DeploymentDashboardNomad(nil).Load(map[string]any{"id": ...}, nil).
@@ -1202,11 +1970,195 @@ func (sdk *ComposalSDK) DeploymentDashboardNomad(data map[string]any) ComposalEn
 }
 
 
+// DeploymentDetail returns a DeploymentDetail entity bound to this client.
+// Idiomatic usage: client.DeploymentDetail(nil).List(nil, nil) or
+// client.DeploymentDetail(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DeploymentDetail(data map[string]any) ComposalEntityBase {
+	return NewDeploymentDetailEntityFunc(sdk, data)
+}
+
+
 // DeploymentFile returns a DeploymentFile entity bound to this client.
 // Idiomatic usage: client.DeploymentFile(nil).List(nil, nil) or
 // client.DeploymentFile(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) DeploymentFile(data map[string]any) ComposalEntityBase {
 	return NewDeploymentFileEntityFunc(sdk, data)
+}
+
+
+// DeploymentLog returns a DeploymentLog entity bound to this client.
+// Idiomatic usage: client.DeploymentLog(nil).List(nil, nil) or
+// client.DeploymentLog(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DeploymentLog(data map[string]any) ComposalEntityBase {
+	return NewDeploymentLogEntityFunc(sdk, data)
+}
+
+
+// DeploymentMetric returns a DeploymentMetric entity bound to this client.
+// Idiomatic usage: client.DeploymentMetric(nil).List(nil, nil) or
+// client.DeploymentMetric(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DeploymentMetric(data map[string]any) ComposalEntityBase {
+	return NewDeploymentMetricEntityFunc(sdk, data)
+}
+
+
+// DeploymentPreview returns a DeploymentPreview entity bound to this client.
+// Idiomatic usage: client.DeploymentPreview(nil).List(nil, nil) or
+// client.DeploymentPreview(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DeploymentPreview(data map[string]any) ComposalEntityBase {
+	return NewDeploymentPreviewEntityFunc(sdk, data)
+}
+
+
+// DeploymentSetting returns a DeploymentSetting entity bound to this client.
+// Idiomatic usage: client.DeploymentSetting(nil).List(nil, nil) or
+// client.DeploymentSetting(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DeploymentSetting(data map[string]any) ComposalEntityBase {
+	return NewDeploymentSettingEntityFunc(sdk, data)
+}
+
+
+// DesktopLocalAgentModel returns a DesktopLocalAgentModel entity bound to this client.
+// Idiomatic usage: client.DesktopLocalAgentModel(nil).List(nil, nil) or
+// client.DesktopLocalAgentModel(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DesktopLocalAgentModel(data map[string]any) ComposalEntityBase {
+	return NewDesktopLocalAgentModelEntityFunc(sdk, data)
+}
+
+
+// DesktopLocalAgentResponse returns a DesktopLocalAgentResponse entity bound to this client.
+// Idiomatic usage: client.DesktopLocalAgentResponse(nil).List(nil, nil) or
+// client.DesktopLocalAgentResponse(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DesktopLocalAgentResponse(data map[string]any) ComposalEntityBase {
+	return NewDesktopLocalAgentResponseEntityFunc(sdk, data)
+}
+
+
+// Device returns a Device entity bound to this client.
+// Idiomatic usage: client.Device(nil).List(nil, nil) or
+// client.Device(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Device(data map[string]any) ComposalEntityBase {
+	return NewDeviceEntityFunc(sdk, data)
+}
+
+
+// DeviceBrowserOperation returns a DeviceBrowserOperation entity bound to this client.
+// Idiomatic usage: client.DeviceBrowserOperation(nil).List(nil, nil) or
+// client.DeviceBrowserOperation(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DeviceBrowserOperation(data map[string]any) ComposalEntityBase {
+	return NewDeviceBrowserOperationEntityFunc(sdk, data)
+}
+
+
+// DeviceControlMessage returns a DeviceControlMessage entity bound to this client.
+// Idiomatic usage: client.DeviceControlMessage(nil).List(nil, nil) or
+// client.DeviceControlMessage(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DeviceControlMessage(data map[string]any) ComposalEntityBase {
+	return NewDeviceControlMessageEntityFunc(sdk, data)
+}
+
+
+// DeviceControlOperation returns a DeviceControlOperation entity bound to this client.
+// Idiomatic usage: client.DeviceControlOperation(nil).List(nil, nil) or
+// client.DeviceControlOperation(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DeviceControlOperation(data map[string]any) ComposalEntityBase {
+	return NewDeviceControlOperationEntityFunc(sdk, data)
+}
+
+
+// DeviceEnterpriseRelay returns a DeviceEnterpriseRelay entity bound to this client.
+// Idiomatic usage: client.DeviceEnterpriseRelay(nil).List(nil, nil) or
+// client.DeviceEnterpriseRelay(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DeviceEnterpriseRelay(data map[string]any) ComposalEntityBase {
+	return NewDeviceEnterpriseRelayEntityFunc(sdk, data)
+}
+
+
+// DeviceFolderListing returns a DeviceFolderListing entity bound to this client.
+// Idiomatic usage: client.DeviceFolderListing(nil).List(nil, nil) or
+// client.DeviceFolderListing(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DeviceFolderListing(data map[string]any) ComposalEntityBase {
+	return NewDeviceFolderListingEntityFunc(sdk, data)
+}
+
+
+// DeviceGrant returns a DeviceGrant entity bound to this client.
+// Idiomatic usage: client.DeviceGrant(nil).List(nil, nil) or
+// client.DeviceGrant(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DeviceGrant(data map[string]any) ComposalEntityBase {
+	return NewDeviceGrantEntityFunc(sdk, data)
+}
+
+
+// DeviceInvocation returns a DeviceInvocation entity bound to this client.
+// Idiomatic usage: client.DeviceInvocation(nil).List(nil, nil) or
+// client.DeviceInvocation(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DeviceInvocation(data map[string]any) ComposalEntityBase {
+	return NewDeviceInvocationEntityFunc(sdk, data)
+}
+
+
+// DeviceLocalEvent returns a DeviceLocalEvent entity bound to this client.
+// Idiomatic usage: client.DeviceLocalEvent(nil).List(nil, nil) or
+// client.DeviceLocalEvent(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DeviceLocalEvent(data map[string]any) ComposalEntityBase {
+	return NewDeviceLocalEventEntityFunc(sdk, data)
+}
+
+
+// DevicePairing returns a DevicePairing entity bound to this client.
+// Idiomatic usage: client.DevicePairing(nil).List(nil, nil) or
+// client.DevicePairing(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DevicePairing(data map[string]any) ComposalEntityBase {
+	return NewDevicePairingEntityFunc(sdk, data)
+}
+
+
+// DeviceProject returns a DeviceProject entity bound to this client.
+// Idiomatic usage: client.DeviceProject(nil).List(nil, nil) or
+// client.DeviceProject(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DeviceProject(data map[string]any) ComposalEntityBase {
+	return NewDeviceProjectEntityFunc(sdk, data)
+}
+
+
+// DeviceScheduledCheckIn returns a DeviceScheduledCheckIn entity bound to this client.
+// Idiomatic usage: client.DeviceScheduledCheckIn(nil).List(nil, nil) or
+// client.DeviceScheduledCheckIn(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DeviceScheduledCheckIn(data map[string]any) ComposalEntityBase {
+	return NewDeviceScheduledCheckInEntityFunc(sdk, data)
+}
+
+
+// DockerBuilder returns a DockerBuilder entity bound to this client.
+// Idiomatic usage: client.DockerBuilder(nil).List(nil, nil) or
+// client.DockerBuilder(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DockerBuilder(data map[string]any) ComposalEntityBase {
+	return NewDockerBuilderEntityFunc(sdk, data)
+}
+
+
+// DockerBuilderSession returns a DockerBuilderSession entity bound to this client.
+// Idiomatic usage: client.DockerBuilderSession(nil).List(nil, nil) or
+// client.DockerBuilderSession(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DockerBuilderSession(data map[string]any) ComposalEntityBase {
+	return NewDockerBuilderSessionEntityFunc(sdk, data)
+}
+
+
+// DockerBuilderSetting returns a DockerBuilderSetting entity bound to this client.
+// Idiomatic usage: client.DockerBuilderSetting(nil).List(nil, nil) or
+// client.DockerBuilderSetting(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DockerBuilderSetting(data map[string]any) ComposalEntityBase {
+	return NewDockerBuilderSettingEntityFunc(sdk, data)
+}
+
+
+// DomainDnsIntegration returns a DomainDnsIntegration entity bound to this client.
+// Idiomatic usage: client.DomainDnsIntegration(nil).List(nil, nil) or
+// client.DomainDnsIntegration(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) DomainDnsIntegration(data map[string]any) ComposalEntityBase {
+	return NewDomainDnsIntegrationEntityFunc(sdk, data)
 }
 
 
@@ -1223,6 +2175,22 @@ func (sdk *ComposalSDK) DomainPathRule(data map[string]any) ComposalEntityBase {
 // client.Dream(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) Dream(data map[string]any) ComposalEntityBase {
 	return NewDreamEntityFunc(sdk, data)
+}
+
+
+// Edge returns a Edge entity bound to this client.
+// Idiomatic usage: client.Edge(nil).List(nil, nil) or
+// client.Edge(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Edge(data map[string]any) ComposalEntityBase {
+	return NewEdgeEntityFunc(sdk, data)
+}
+
+
+// EmailVerification returns a EmailVerification entity bound to this client.
+// Idiomatic usage: client.EmailVerification(nil).List(nil, nil) or
+// client.EmailVerification(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) EmailVerification(data map[string]any) ComposalEntityBase {
+	return NewEmailVerificationEntityFunc(sdk, data)
 }
 
 
@@ -1290,6 +2258,38 @@ func (sdk *ComposalSDK) Evidence(data map[string]any) ComposalEntityBase {
 }
 
 
+// ExecutionDesiredState returns a ExecutionDesiredState entity bound to this client.
+// Idiomatic usage: client.ExecutionDesiredState(nil).List(nil, nil) or
+// client.ExecutionDesiredState(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ExecutionDesiredState(data map[string]any) ComposalEntityBase {
+	return NewExecutionDesiredStateEntityFunc(sdk, data)
+}
+
+
+// ExecutionReconcilerTick returns a ExecutionReconcilerTick entity bound to this client.
+// Idiomatic usage: client.ExecutionReconcilerTick(nil).List(nil, nil) or
+// client.ExecutionReconcilerTick(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ExecutionReconcilerTick(data map[string]any) ComposalEntityBase {
+	return NewExecutionReconcilerTickEntityFunc(sdk, data)
+}
+
+
+// ExecutionRelease returns a ExecutionRelease entity bound to this client.
+// Idiomatic usage: client.ExecutionRelease(nil).List(nil, nil) or
+// client.ExecutionRelease(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ExecutionRelease(data map[string]any) ComposalEntityBase {
+	return NewExecutionReleaseEntityFunc(sdk, data)
+}
+
+
+// ExecutionRuntimeInstance returns a ExecutionRuntimeInstance entity bound to this client.
+// Idiomatic usage: client.ExecutionRuntimeInstance(nil).List(nil, nil) or
+// client.ExecutionRuntimeInstance(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ExecutionRuntimeInstance(data map[string]any) ComposalEntityBase {
+	return NewExecutionRuntimeInstanceEntityFunc(sdk, data)
+}
+
+
 // Exploration returns a Exploration entity bound to this client.
 // Idiomatic usage: client.Exploration(nil).List(nil, nil) or
 // client.Exploration(nil).Load(map[string]any{"id": ...}, nil).
@@ -1330,11 +2330,243 @@ func (sdk *ComposalSDK) Finding(data map[string]any) ComposalEntityBase {
 }
 
 
+// Gh returns a Gh entity bound to this client.
+// Idiomatic usage: client.Gh(nil).List(nil, nil) or
+// client.Gh(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Gh(data map[string]any) ComposalEntityBase {
+	return NewGhEntityFunc(sdk, data)
+}
+
+
+// GitImport returns a GitImport entity bound to this client.
+// Idiomatic usage: client.GitImport(nil).List(nil, nil) or
+// client.GitImport(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GitImport(data map[string]any) ComposalEntityBase {
+	return NewGitImportEntityFunc(sdk, data)
+}
+
+
+// Github returns a Github entity bound to this client.
+// Idiomatic usage: client.Github(nil).List(nil, nil) or
+// client.Github(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Github(data map[string]any) ComposalEntityBase {
+	return NewGithubEntityFunc(sdk, data)
+}
+
+
+// GithubApp returns a GithubApp entity bound to this client.
+// Idiomatic usage: client.GithubApp(nil).List(nil, nil) or
+// client.GithubApp(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubApp(data map[string]any) ComposalEntityBase {
+	return NewGithubAppEntityFunc(sdk, data)
+}
+
+
+// GithubAppImportableRepository returns a GithubAppImportableRepository entity bound to this client.
+// Idiomatic usage: client.GithubAppImportableRepository(nil).List(nil, nil) or
+// client.GithubAppImportableRepository(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubAppImportableRepository(data map[string]any) ComposalEntityBase {
+	return NewGithubAppImportableRepositoryEntityFunc(sdk, data)
+}
+
+
+// GithubAppInstallation returns a GithubAppInstallation entity bound to this client.
+// Idiomatic usage: client.GithubAppInstallation(nil).List(nil, nil) or
+// client.GithubAppInstallation(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubAppInstallation(data map[string]any) ComposalEntityBase {
+	return NewGithubAppInstallationEntityFunc(sdk, data)
+}
+
+
+// GithubAppInstallationAuthorization returns a GithubAppInstallationAuthorization entity bound to this client.
+// Idiomatic usage: client.GithubAppInstallationAuthorization(nil).List(nil, nil) or
+// client.GithubAppInstallationAuthorization(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubAppInstallationAuthorization(data map[string]any) ComposalEntityBase {
+	return NewGithubAppInstallationAuthorizationEntityFunc(sdk, data)
+}
+
+
+// GithubAppUserAuthorization returns a GithubAppUserAuthorization entity bound to this client.
+// Idiomatic usage: client.GithubAppUserAuthorization(nil).List(nil, nil) or
+// client.GithubAppUserAuthorization(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubAppUserAuthorization(data map[string]any) ComposalEntityBase {
+	return NewGithubAppUserAuthorizationEntityFunc(sdk, data)
+}
+
+
+// GithubCiRepository returns a GithubCiRepository entity bound to this client.
+// Idiomatic usage: client.GithubCiRepository(nil).List(nil, nil) or
+// client.GithubCiRepository(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubCiRepository(data map[string]any) ComposalEntityBase {
+	return NewGithubCiRepositoryEntityFunc(sdk, data)
+}
+
+
+// GithubCiRepositoryCompatibilityReport returns a GithubCiRepositoryCompatibilityReport entity bound to this client.
+// Idiomatic usage: client.GithubCiRepositoryCompatibilityReport(nil).List(nil, nil) or
+// client.GithubCiRepositoryCompatibilityReport(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubCiRepositoryCompatibilityReport(data map[string]any) ComposalEntityBase {
+	return NewGithubCiRepositoryCompatibilityReportEntityFunc(sdk, data)
+}
+
+
 // GithubConnection returns a GithubConnection entity bound to this client.
 // Idiomatic usage: client.GithubConnection(nil).List(nil, nil) or
 // client.GithubConnection(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) GithubConnection(data map[string]any) ComposalEntityBase {
 	return NewGithubConnectionEntityFunc(sdk, data)
+}
+
+
+// GithubIntegration returns a GithubIntegration entity bound to this client.
+// Idiomatic usage: client.GithubIntegration(nil).List(nil, nil) or
+// client.GithubIntegration(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubIntegration(data map[string]any) ComposalEntityBase {
+	return NewGithubIntegrationEntityFunc(sdk, data)
+}
+
+
+// GithubOnboarding returns a GithubOnboarding entity bound to this client.
+// Idiomatic usage: client.GithubOnboarding(nil).List(nil, nil) or
+// client.GithubOnboarding(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubOnboarding(data map[string]any) ComposalEntityBase {
+	return NewGithubOnboardingEntityFunc(sdk, data)
+}
+
+
+// GithubOnboardingBranch returns a GithubOnboardingBranch entity bound to this client.
+// Idiomatic usage: client.GithubOnboardingBranch(nil).List(nil, nil) or
+// client.GithubOnboardingBranch(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubOnboardingBranch(data map[string]any) ComposalEntityBase {
+	return NewGithubOnboardingBranchEntityFunc(sdk, data)
+}
+
+
+// GithubOnboardingImport returns a GithubOnboardingImport entity bound to this client.
+// Idiomatic usage: client.GithubOnboardingImport(nil).List(nil, nil) or
+// client.GithubOnboardingImport(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubOnboardingImport(data map[string]any) ComposalEntityBase {
+	return NewGithubOnboardingImportEntityFunc(sdk, data)
+}
+
+
+// GithubOnboardingImportBatch returns a GithubOnboardingImportBatch entity bound to this client.
+// Idiomatic usage: client.GithubOnboardingImportBatch(nil).List(nil, nil) or
+// client.GithubOnboardingImportBatch(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubOnboardingImportBatch(data map[string]any) ComposalEntityBase {
+	return NewGithubOnboardingImportBatchEntityFunc(sdk, data)
+}
+
+
+// GithubOnboardingImportItem returns a GithubOnboardingImportItem entity bound to this client.
+// Idiomatic usage: client.GithubOnboardingImportItem(nil).List(nil, nil) or
+// client.GithubOnboardingImportItem(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubOnboardingImportItem(data map[string]any) ComposalEntityBase {
+	return NewGithubOnboardingImportItemEntityFunc(sdk, data)
+}
+
+
+// GithubPullRequest returns a GithubPullRequest entity bound to this client.
+// Idiomatic usage: client.GithubPullRequest(nil).List(nil, nil) or
+// client.GithubPullRequest(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubPullRequest(data map[string]any) ComposalEntityBase {
+	return NewGithubPullRequestEntityFunc(sdk, data)
+}
+
+
+// GithubRunnerAdmission returns a GithubRunnerAdmission entity bound to this client.
+// Idiomatic usage: client.GithubRunnerAdmission(nil).List(nil, nil) or
+// client.GithubRunnerAdmission(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubRunnerAdmission(data map[string]any) ComposalEntityBase {
+	return NewGithubRunnerAdmissionEntityFunc(sdk, data)
+}
+
+
+// GithubRunnerCache returns a GithubRunnerCache entity bound to this client.
+// Idiomatic usage: client.GithubRunnerCache(nil).List(nil, nil) or
+// client.GithubRunnerCache(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubRunnerCache(data map[string]any) ComposalEntityBase {
+	return NewGithubRunnerCacheEntityFunc(sdk, data)
+}
+
+
+// GithubRunnerEgress returns a GithubRunnerEgress entity bound to this client.
+// Idiomatic usage: client.GithubRunnerEgress(nil).List(nil, nil) or
+// client.GithubRunnerEgress(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubRunnerEgress(data map[string]any) ComposalEntityBase {
+	return NewGithubRunnerEgressEntityFunc(sdk, data)
+}
+
+
+// GithubRunnerHistory returns a GithubRunnerHistory entity bound to this client.
+// Idiomatic usage: client.GithubRunnerHistory(nil).List(nil, nil) or
+// client.GithubRunnerHistory(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubRunnerHistory(data map[string]any) ComposalEntityBase {
+	return NewGithubRunnerHistoryEntityFunc(sdk, data)
+}
+
+
+// GithubRunnerImage returns a GithubRunnerImage entity bound to this client.
+// Idiomatic usage: client.GithubRunnerImage(nil).List(nil, nil) or
+// client.GithubRunnerImage(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubRunnerImage(data map[string]any) ComposalEntityBase {
+	return NewGithubRunnerImageEntityFunc(sdk, data)
+}
+
+
+// GithubRunnerPool returns a GithubRunnerPool entity bound to this client.
+// Idiomatic usage: client.GithubRunnerPool(nil).List(nil, nil) or
+// client.GithubRunnerPool(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubRunnerPool(data map[string]any) ComposalEntityBase {
+	return NewGithubRunnerPoolEntityFunc(sdk, data)
+}
+
+
+// GithubRunnerSetup returns a GithubRunnerSetup entity bound to this client.
+// Idiomatic usage: client.GithubRunnerSetup(nil).List(nil, nil) or
+// client.GithubRunnerSetup(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GithubRunnerSetup(data map[string]any) ComposalEntityBase {
+	return NewGithubRunnerSetupEntityFunc(sdk, data)
+}
+
+
+// Gitlab returns a Gitlab entity bound to this client.
+// Idiomatic usage: client.Gitlab(nil).List(nil, nil) or
+// client.Gitlab(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Gitlab(data map[string]any) ComposalEntityBase {
+	return NewGitlabEntityFunc(sdk, data)
+}
+
+
+// GitlabConnection returns a GitlabConnection entity bound to this client.
+// Idiomatic usage: client.GitlabConnection(nil).List(nil, nil) or
+// client.GitlabConnection(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GitlabConnection(data map[string]any) ComposalEntityBase {
+	return NewGitlabConnectionEntityFunc(sdk, data)
+}
+
+
+// GitlabImport returns a GitlabImport entity bound to this client.
+// Idiomatic usage: client.GitlabImport(nil).List(nil, nil) or
+// client.GitlabImport(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GitlabImport(data map[string]any) ComposalEntityBase {
+	return NewGitlabImportEntityFunc(sdk, data)
+}
+
+
+// GitlabOauth returns a GitlabOauth entity bound to this client.
+// Idiomatic usage: client.GitlabOauth(nil).List(nil, nil) or
+// client.GitlabOauth(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GitlabOauth(data map[string]any) ComposalEntityBase {
+	return NewGitlabOauthEntityFunc(sdk, data)
+}
+
+
+// GrantAllAgent returns a GrantAllAgent entity bound to this client.
+// Idiomatic usage: client.GrantAllAgent(nil).List(nil, nil) or
+// client.GrantAllAgent(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) GrantAllAgent(data map[string]any) ComposalEntityBase {
+	return NewGrantAllAgentEntityFunc(sdk, data)
 }
 
 
@@ -1346,11 +2578,35 @@ func (sdk *ComposalSDK) HostingAppDomain(data map[string]any) ComposalEntityBase
 }
 
 
+// IdentityOrganization returns a IdentityOrganization entity bound to this client.
+// Idiomatic usage: client.IdentityOrganization(nil).List(nil, nil) or
+// client.IdentityOrganization(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) IdentityOrganization(data map[string]any) ComposalEntityBase {
+	return NewIdentityOrganizationEntityFunc(sdk, data)
+}
+
+
 // ImageRepository returns a ImageRepository entity bound to this client.
 // Idiomatic usage: client.ImageRepository(nil).List(nil, nil) or
 // client.ImageRepository(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) ImageRepository(data map[string]any) ComposalEntityBase {
 	return NewImageRepositoryEntityFunc(sdk, data)
+}
+
+
+// ImageRepositoryTag returns a ImageRepositoryTag entity bound to this client.
+// Idiomatic usage: client.ImageRepositoryTag(nil).List(nil, nil) or
+// client.ImageRepositoryTag(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ImageRepositoryTag(data map[string]any) ComposalEntityBase {
+	return NewImageRepositoryTagEntityFunc(sdk, data)
+}
+
+
+// ImportBranchPolicy returns a ImportBranchPolicy entity bound to this client.
+// Idiomatic usage: client.ImportBranchPolicy(nil).List(nil, nil) or
+// client.ImportBranchPolicy(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ImportBranchPolicy(data map[string]any) ComposalEntityBase {
+	return NewImportBranchPolicyEntityFunc(sdk, data)
 }
 
 
@@ -1378,6 +2634,38 @@ func (sdk *ComposalSDK) Invitation(data map[string]any) ComposalEntityBase {
 }
 
 
+// InvocationControl returns a InvocationControl entity bound to this client.
+// Idiomatic usage: client.InvocationControl(nil).List(nil, nil) or
+// client.InvocationControl(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) InvocationControl(data map[string]any) ComposalEntityBase {
+	return NewInvocationControlEntityFunc(sdk, data)
+}
+
+
+// JobLogChunk returns a JobLogChunk entity bound to this client.
+// Idiomatic usage: client.JobLogChunk(nil).List(nil, nil) or
+// client.JobLogChunk(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) JobLogChunk(data map[string]any) ComposalEntityBase {
+	return NewJobLogChunkEntityFunc(sdk, data)
+}
+
+
+// JobStep returns a JobStep entity bound to this client.
+// Idiomatic usage: client.JobStep(nil).List(nil, nil) or
+// client.JobStep(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) JobStep(data map[string]any) ComposalEntityBase {
+	return NewJobStepEntityFunc(sdk, data)
+}
+
+
+// JobWorkspace returns a JobWorkspace entity bound to this client.
+// Idiomatic usage: client.JobWorkspace(nil).List(nil, nil) or
+// client.JobWorkspace(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) JobWorkspace(data map[string]any) ComposalEntityBase {
+	return NewJobWorkspaceEntityFunc(sdk, data)
+}
+
+
 // JourneyVariantReplay returns a JourneyVariantReplay entity bound to this client.
 // Idiomatic usage: client.JourneyVariantReplay(nil).List(nil, nil) or
 // client.JourneyVariantReplay(nil).Load(map[string]any{"id": ...}, nil).
@@ -1391,6 +2679,102 @@ func (sdk *ComposalSDK) JourneyVariantReplay(data map[string]any) ComposalEntity
 // client.Knowledge(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) Knowledge(data map[string]any) ComposalEntityBase {
 	return NewKnowledgeEntityFunc(sdk, data)
+}
+
+
+// Known returns a Known entity bound to this client.
+// Idiomatic usage: client.Known(nil).List(nil, nil) or
+// client.Known(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Known(data map[string]any) ComposalEntityBase {
+	return NewKnownEntityFunc(sdk, data)
+}
+
+
+// Label returns a Label entity bound to this client.
+// Idiomatic usage: client.Label(nil).List(nil, nil) or
+// client.Label(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Label(data map[string]any) ComposalEntityBase {
+	return NewLabelEntityFunc(sdk, data)
+}
+
+
+// LeaseArtifact returns a LeaseArtifact entity bound to this client.
+// Idiomatic usage: client.LeaseArtifact(nil).List(nil, nil) or
+// client.LeaseArtifact(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) LeaseArtifact(data map[string]any) ComposalEntityBase {
+	return NewLeaseArtifactEntityFunc(sdk, data)
+}
+
+
+// LeaseCache returns a LeaseCache entity bound to this client.
+// Idiomatic usage: client.LeaseCache(nil).List(nil, nil) or
+// client.LeaseCache(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) LeaseCache(data map[string]any) ComposalEntityBase {
+	return NewLeaseCacheEntityFunc(sdk, data)
+}
+
+
+// LeaseLogChunk returns a LeaseLogChunk entity bound to this client.
+// Idiomatic usage: client.LeaseLogChunk(nil).List(nil, nil) or
+// client.LeaseLogChunk(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) LeaseLogChunk(data map[string]any) ComposalEntityBase {
+	return NewLeaseLogChunkEntityFunc(sdk, data)
+}
+
+
+// LeaseReconciliation returns a LeaseReconciliation entity bound to this client.
+// Idiomatic usage: client.LeaseReconciliation(nil).List(nil, nil) or
+// client.LeaseReconciliation(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) LeaseReconciliation(data map[string]any) ComposalEntityBase {
+	return NewLeaseReconciliationEntityFunc(sdk, data)
+}
+
+
+// LeaseStep returns a LeaseStep entity bound to this client.
+// Idiomatic usage: client.LeaseStep(nil).List(nil, nil) or
+// client.LeaseStep(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) LeaseStep(data map[string]any) ComposalEntityBase {
+	return NewLeaseStepEntityFunc(sdk, data)
+}
+
+
+// LeaseVerifyDiagnostic returns a LeaseVerifyDiagnostic entity bound to this client.
+// Idiomatic usage: client.LeaseVerifyDiagnostic(nil).List(nil, nil) or
+// client.LeaseVerifyDiagnostic(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) LeaseVerifyDiagnostic(data map[string]any) ComposalEntityBase {
+	return NewLeaseVerifyDiagnosticEntityFunc(sdk, data)
+}
+
+
+// LeaseVerifySecret returns a LeaseVerifySecret entity bound to this client.
+// Idiomatic usage: client.LeaseVerifySecret(nil).List(nil, nil) or
+// client.LeaseVerifySecret(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) LeaseVerifySecret(data map[string]any) ComposalEntityBase {
+	return NewLeaseVerifySecretEntityFunc(sdk, data)
+}
+
+
+// LeaseWorkspace returns a LeaseWorkspace entity bound to this client.
+// Idiomatic usage: client.LeaseWorkspace(nil).List(nil, nil) or
+// client.LeaseWorkspace(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) LeaseWorkspace(data map[string]any) ComposalEntityBase {
+	return NewLeaseWorkspaceEntityFunc(sdk, data)
+}
+
+
+// LocalAgentDecision returns a LocalAgentDecision entity bound to this client.
+// Idiomatic usage: client.LocalAgentDecision(nil).List(nil, nil) or
+// client.LocalAgentDecision(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) LocalAgentDecision(data map[string]any) ComposalEntityBase {
+	return NewLocalAgentDecisionEntityFunc(sdk, data)
+}
+
+
+// LocalAgentResponse returns a LocalAgentResponse entity bound to this client.
+// Idiomatic usage: client.LocalAgentResponse(nil).List(nil, nil) or
+// client.LocalAgentResponse(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) LocalAgentResponse(data map[string]any) ComposalEntityBase {
+	return NewLocalAgentResponseEntityFunc(sdk, data)
 }
 
 
@@ -1415,6 +2799,38 @@ func (sdk *ComposalSDK) LocalThreadOperation(data map[string]any) ComposalEntity
 // client.Location(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) Location(data map[string]any) ComposalEntityBase {
 	return NewLocationEntityFunc(sdk, data)
+}
+
+
+// LogStreamChunk returns a LogStreamChunk entity bound to this client.
+// Idiomatic usage: client.LogStreamChunk(nil).List(nil, nil) or
+// client.LogStreamChunk(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) LogStreamChunk(data map[string]any) ComposalEntityBase {
+	return NewLogStreamChunkEntityFunc(sdk, data)
+}
+
+
+// LogoImage returns a LogoImage entity bound to this client.
+// Idiomatic usage: client.LogoImage(nil).List(nil, nil) or
+// client.LogoImage(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) LogoImage(data map[string]any) ComposalEntityBase {
+	return NewLogoImageEntityFunc(sdk, data)
+}
+
+
+// MarketingSetting returns a MarketingSetting entity bound to this client.
+// Idiomatic usage: client.MarketingSetting(nil).List(nil, nil) or
+// client.MarketingSetting(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) MarketingSetting(data map[string]any) ComposalEntityBase {
+	return NewMarketingSettingEntityFunc(sdk, data)
+}
+
+
+// McpOauth returns a McpOauth entity bound to this client.
+// Idiomatic usage: client.McpOauth(nil).List(nil, nil) or
+// client.McpOauth(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) McpOauth(data map[string]any) ComposalEntityBase {
+	return NewMcpOauthEntityFunc(sdk, data)
 }
 
 
@@ -1466,11 +2882,27 @@ func (sdk *ComposalSDK) Memory(data map[string]any) ComposalEntityBase {
 }
 
 
+// MergeQueueEntry returns a MergeQueueEntry entity bound to this client.
+// Idiomatic usage: client.MergeQueueEntry(nil).List(nil, nil) or
+// client.MergeQueueEntry(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) MergeQueueEntry(data map[string]any) ComposalEntityBase {
+	return NewMergeQueueEntryEntityFunc(sdk, data)
+}
+
+
 // MergeRequest returns a MergeRequest entity bound to this client.
 // Idiomatic usage: client.MergeRequest(nil).List(nil, nil) or
 // client.MergeRequest(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) MergeRequest(data map[string]any) ComposalEntityBase {
 	return NewMergeRequestEntityFunc(sdk, data)
+}
+
+
+// MergeResolution returns a MergeResolution entity bound to this client.
+// Idiomatic usage: client.MergeResolution(nil).List(nil, nil) or
+// client.MergeResolution(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) MergeResolution(data map[string]any) ComposalEntityBase {
+	return NewMergeResolutionEntityFunc(sdk, data)
 }
 
 
@@ -1498,11 +2930,67 @@ func (sdk *ComposalSDK) MetricQuery(data map[string]any) ComposalEntityBase {
 }
 
 
+// MetronomeWebhook returns a MetronomeWebhook entity bound to this client.
+// Idiomatic usage: client.MetronomeWebhook(nil).List(nil, nil) or
+// client.MetronomeWebhook(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) MetronomeWebhook(data map[string]any) ComposalEntityBase {
+	return NewMetronomeWebhookEntityFunc(sdk, data)
+}
+
+
+// ModelSubscriptionAccount returns a ModelSubscriptionAccount entity bound to this client.
+// Idiomatic usage: client.ModelSubscriptionAccount(nil).List(nil, nil) or
+// client.ModelSubscriptionAccount(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ModelSubscriptionAccount(data map[string]any) ComposalEntityBase {
+	return NewModelSubscriptionAccountEntityFunc(sdk, data)
+}
+
+
+// ModelSubscriptionAccountConnection returns a ModelSubscriptionAccountConnection entity bound to this client.
+// Idiomatic usage: client.ModelSubscriptionAccountConnection(nil).List(nil, nil) or
+// client.ModelSubscriptionAccountConnection(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ModelSubscriptionAccountConnection(data map[string]any) ComposalEntityBase {
+	return NewModelSubscriptionAccountConnectionEntityFunc(sdk, data)
+}
+
+
 // NetworkConnection returns a NetworkConnection entity bound to this client.
 // Idiomatic usage: client.NetworkConnection(nil).List(nil, nil) or
 // client.NetworkConnection(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) NetworkConnection(data map[string]any) ComposalEntityBase {
 	return NewNetworkConnectionEntityFunc(sdk, data)
+}
+
+
+// NetworkingSpace returns a NetworkingSpace entity bound to this client.
+// Idiomatic usage: client.NetworkingSpace(nil).List(nil, nil) or
+// client.NetworkingSpace(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) NetworkingSpace(data map[string]any) ComposalEntityBase {
+	return NewNetworkingSpaceEntityFunc(sdk, data)
+}
+
+
+// Node returns a Node entity bound to this client.
+// Idiomatic usage: client.Node(nil).List(nil, nil) or
+// client.Node(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Node(data map[string]any) ComposalEntityBase {
+	return NewNodeEntityFunc(sdk, data)
+}
+
+
+// NodeCertificate returns a NodeCertificate entity bound to this client.
+// Idiomatic usage: client.NodeCertificate(nil).List(nil, nil) or
+// client.NodeCertificate(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) NodeCertificate(data map[string]any) ComposalEntityBase {
+	return NewNodeCertificateEntityFunc(sdk, data)
+}
+
+
+// NodeLease returns a NodeLease entity bound to this client.
+// Idiomatic usage: client.NodeLease(nil).List(nil, nil) or
+// client.NodeLease(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) NodeLease(data map[string]any) ComposalEntityBase {
+	return NewNodeLeaseEntityFunc(sdk, data)
 }
 
 
@@ -1522,11 +3010,219 @@ func (sdk *ComposalSDK) NomadLog(data map[string]any) ComposalEntityBase {
 }
 
 
+// Now returns a Now entity bound to this client.
+// Idiomatic usage: client.Now(nil).List(nil, nil) or
+// client.Now(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Now(data map[string]any) ComposalEntityBase {
+	return NewNowEntityFunc(sdk, data)
+}
+
+
+// ObservabilityClickhouseCluster returns a ObservabilityClickhouseCluster entity bound to this client.
+// Idiomatic usage: client.ObservabilityClickhouseCluster(nil).List(nil, nil) or
+// client.ObservabilityClickhouseCluster(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ObservabilityClickhouseCluster(data map[string]any) ComposalEntityBase {
+	return NewObservabilityClickhouseClusterEntityFunc(sdk, data)
+}
+
+
+// ObservabilityQuickwitCluster returns a ObservabilityQuickwitCluster entity bound to this client.
+// Idiomatic usage: client.ObservabilityQuickwitCluster(nil).List(nil, nil) or
+// client.ObservabilityQuickwitCluster(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ObservabilityQuickwitCluster(data map[string]any) ComposalEntityBase {
+	return NewObservabilityQuickwitClusterEntityFunc(sdk, data)
+}
+
+
+// ObservabilitySpace returns a ObservabilitySpace entity bound to this client.
+// Idiomatic usage: client.ObservabilitySpace(nil).List(nil, nil) or
+// client.ObservabilitySpace(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ObservabilitySpace(data map[string]any) ComposalEntityBase {
+	return NewObservabilitySpaceEntityFunc(sdk, data)
+}
+
+
+// Openapi returns a Openapi entity bound to this client.
+// Idiomatic usage: client.Openapi(nil).List(nil, nil) or
+// client.Openapi(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Openapi(data map[string]any) ComposalEntityBase {
+	return NewOpenapiEntityFunc(sdk, data)
+}
+
+
+// OrgInvitation returns a OrgInvitation entity bound to this client.
+// Idiomatic usage: client.OrgInvitation(nil).List(nil, nil) or
+// client.OrgInvitation(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrgInvitation(data map[string]any) ComposalEntityBase {
+	return NewOrgInvitationEntityFunc(sdk, data)
+}
+
+
 // Organization returns a Organization entity bound to this client.
 // Idiomatic usage: client.Organization(nil).List(nil, nil) or
 // client.Organization(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) Organization(data map[string]any) ComposalEntityBase {
 	return NewOrganizationEntityFunc(sdk, data)
+}
+
+
+// OrganizationApp returns a OrganizationApp entity bound to this client.
+// Idiomatic usage: client.OrganizationApp(nil).List(nil, nil) or
+// client.OrganizationApp(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationApp(data map[string]any) ComposalEntityBase {
+	return NewOrganizationAppEntityFunc(sdk, data)
+}
+
+
+// OrganizationControl returns a OrganizationControl entity bound to this client.
+// Idiomatic usage: client.OrganizationControl(nil).List(nil, nil) or
+// client.OrganizationControl(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationControl(data map[string]any) ComposalEntityBase {
+	return NewOrganizationControlEntityFunc(sdk, data)
+}
+
+
+// OrganizationDevice returns a OrganizationDevice entity bound to this client.
+// Idiomatic usage: client.OrganizationDevice(nil).List(nil, nil) or
+// client.OrganizationDevice(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationDevice(data map[string]any) ComposalEntityBase {
+	return NewOrganizationDeviceEntityFunc(sdk, data)
+}
+
+
+// OrganizationIdentityCertificate returns a OrganizationIdentityCertificate entity bound to this client.
+// Idiomatic usage: client.OrganizationIdentityCertificate(nil).List(nil, nil) or
+// client.OrganizationIdentityCertificate(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationIdentityCertificate(data map[string]any) ComposalEntityBase {
+	return NewOrganizationIdentityCertificateEntityFunc(sdk, data)
+}
+
+
+// OrganizationInteraction returns a OrganizationInteraction entity bound to this client.
+// Idiomatic usage: client.OrganizationInteraction(nil).List(nil, nil) or
+// client.OrganizationInteraction(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationInteraction(data map[string]any) ComposalEntityBase {
+	return NewOrganizationInteractionEntityFunc(sdk, data)
+}
+
+
+// OrganizationInvitation returns a OrganizationInvitation entity bound to this client.
+// Idiomatic usage: client.OrganizationInvitation(nil).List(nil, nil) or
+// client.OrganizationInvitation(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationInvitation(data map[string]any) ComposalEntityBase {
+	return NewOrganizationInvitationEntityFunc(sdk, data)
+}
+
+
+// OrganizationMessageFile returns a OrganizationMessageFile entity bound to this client.
+// Idiomatic usage: client.OrganizationMessageFile(nil).List(nil, nil) or
+// client.OrganizationMessageFile(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationMessageFile(data map[string]any) ComposalEntityBase {
+	return NewOrganizationMessageFileEntityFunc(sdk, data)
+}
+
+
+// OrganizationOidcTrust returns a OrganizationOidcTrust entity bound to this client.
+// Idiomatic usage: client.OrganizationOidcTrust(nil).List(nil, nil) or
+// client.OrganizationOidcTrust(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationOidcTrust(data map[string]any) ComposalEntityBase {
+	return NewOrganizationOidcTrustEntityFunc(sdk, data)
+}
+
+
+// OrganizationRunEvent returns a OrganizationRunEvent entity bound to this client.
+// Idiomatic usage: client.OrganizationRunEvent(nil).List(nil, nil) or
+// client.OrganizationRunEvent(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationRunEvent(data map[string]any) ComposalEntityBase {
+	return NewOrganizationRunEventEntityFunc(sdk, data)
+}
+
+
+// OrganizationRunOutcome returns a OrganizationRunOutcome entity bound to this client.
+// Idiomatic usage: client.OrganizationRunOutcome(nil).List(nil, nil) or
+// client.OrganizationRunOutcome(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationRunOutcome(data map[string]any) ComposalEntityBase {
+	return NewOrganizationRunOutcomeEntityFunc(sdk, data)
+}
+
+
+// OrganizationRunUsage returns a OrganizationRunUsage entity bound to this client.
+// Idiomatic usage: client.OrganizationRunUsage(nil).List(nil, nil) or
+// client.OrganizationRunUsage(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationRunUsage(data map[string]any) ComposalEntityBase {
+	return NewOrganizationRunUsageEntityFunc(sdk, data)
+}
+
+
+// OrganizationSandbox returns a OrganizationSandbox entity bound to this client.
+// Idiomatic usage: client.OrganizationSandbox(nil).List(nil, nil) or
+// client.OrganizationSandbox(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationSandbox(data map[string]any) ComposalEntityBase {
+	return NewOrganizationSandboxEntityFunc(sdk, data)
+}
+
+
+// OrganizationSecret returns a OrganizationSecret entity bound to this client.
+// Idiomatic usage: client.OrganizationSecret(nil).List(nil, nil) or
+// client.OrganizationSecret(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationSecret(data map[string]any) ComposalEntityBase {
+	return NewOrganizationSecretEntityFunc(sdk, data)
+}
+
+
+// OrganizationServiceAccount returns a OrganizationServiceAccount entity bound to this client.
+// Idiomatic usage: client.OrganizationServiceAccount(nil).List(nil, nil) or
+// client.OrganizationServiceAccount(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationServiceAccount(data map[string]any) ComposalEntityBase {
+	return NewOrganizationServiceAccountEntityFunc(sdk, data)
+}
+
+
+// OrganizationSetting returns a OrganizationSetting entity bound to this client.
+// Idiomatic usage: client.OrganizationSetting(nil).List(nil, nil) or
+// client.OrganizationSetting(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationSetting(data map[string]any) ComposalEntityBase {
+	return NewOrganizationSettingEntityFunc(sdk, data)
+}
+
+
+// OrganizationSite returns a OrganizationSite entity bound to this client.
+// Idiomatic usage: client.OrganizationSite(nil).List(nil, nil) or
+// client.OrganizationSite(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationSite(data map[string]any) ComposalEntityBase {
+	return NewOrganizationSiteEntityFunc(sdk, data)
+}
+
+
+// OrganizationSubscription returns a OrganizationSubscription entity bound to this client.
+// Idiomatic usage: client.OrganizationSubscription(nil).List(nil, nil) or
+// client.OrganizationSubscription(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationSubscription(data map[string]any) ComposalEntityBase {
+	return NewOrganizationSubscriptionEntityFunc(sdk, data)
+}
+
+
+// OrganizationTool returns a OrganizationTool entity bound to this client.
+// Idiomatic usage: client.OrganizationTool(nil).List(nil, nil) or
+// client.OrganizationTool(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationTool(data map[string]any) ComposalEntityBase {
+	return NewOrganizationToolEntityFunc(sdk, data)
+}
+
+
+// OrganizationWorkloadIdentity returns a OrganizationWorkloadIdentity entity bound to this client.
+// Idiomatic usage: client.OrganizationWorkloadIdentity(nil).List(nil, nil) or
+// client.OrganizationWorkloadIdentity(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OrganizationWorkloadIdentity(data map[string]any) ComposalEntityBase {
+	return NewOrganizationWorkloadIdentityEntityFunc(sdk, data)
+}
+
+
+// OtelIngest returns a OtelIngest entity bound to this client.
+// Idiomatic usage: client.OtelIngest(nil).List(nil, nil) or
+// client.OtelIngest(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) OtelIngest(data map[string]any) ComposalEntityBase {
+	return NewOtelIngestEntityFunc(sdk, data)
 }
 
 
@@ -1546,11 +3242,59 @@ func (sdk *ComposalSDK) PageAgent(data map[string]any) ComposalEntityBase {
 }
 
 
+// PageArtefact returns a PageArtefact entity bound to this client.
+// Idiomatic usage: client.PageArtefact(nil).List(nil, nil) or
+// client.PageArtefact(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) PageArtefact(data map[string]any) ComposalEntityBase {
+	return NewPageArtefactEntityFunc(sdk, data)
+}
+
+
+// PageCiPipelineRun returns a PageCiPipelineRun entity bound to this client.
+// Idiomatic usage: client.PageCiPipelineRun(nil).List(nil, nil) or
+// client.PageCiPipelineRun(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) PageCiPipelineRun(data map[string]any) ComposalEntityBase {
+	return NewPageCiPipelineRunEntityFunc(sdk, data)
+}
+
+
 // PageProjectRun returns a PageProjectRun entity bound to this client.
 // Idiomatic usage: client.PageProjectRun(nil).List(nil, nil) or
 // client.PageProjectRun(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) PageProjectRun(data map[string]any) ComposalEntityBase {
 	return NewPageProjectRunEntityFunc(sdk, data)
+}
+
+
+// PageRepoVcCommit returns a PageRepoVcCommit entity bound to this client.
+// Idiomatic usage: client.PageRepoVcCommit(nil).List(nil, nil) or
+// client.PageRepoVcCommit(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) PageRepoVcCommit(data map[string]any) ComposalEntityBase {
+	return NewPageRepoVcCommitEntityFunc(sdk, data)
+}
+
+
+// PagesBilling returns a PagesBilling entity bound to this client.
+// Idiomatic usage: client.PagesBilling(nil).List(nil, nil) or
+// client.PagesBilling(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) PagesBilling(data map[string]any) ComposalEntityBase {
+	return NewPagesBillingEntityFunc(sdk, data)
+}
+
+
+// PagesGithubOnboarding returns a PagesGithubOnboarding entity bound to this client.
+// Idiomatic usage: client.PagesGithubOnboarding(nil).List(nil, nil) or
+// client.PagesGithubOnboarding(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) PagesGithubOnboarding(data map[string]any) ComposalEntityBase {
+	return NewPagesGithubOnboardingEntityFunc(sdk, data)
+}
+
+
+// PagesMember returns a PagesMember entity bound to this client.
+// Idiomatic usage: client.PagesMember(nil).List(nil, nil) or
+// client.PagesMember(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) PagesMember(data map[string]any) ComposalEntityBase {
+	return NewPagesMemberEntityFunc(sdk, data)
 }
 
 
@@ -1583,6 +3327,54 @@ func (sdk *ComposalSDK) PagesProjectRun(data map[string]any) ComposalEntityBase 
 // client.PagesProjectScenario(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) PagesProjectScenario(data map[string]any) ComposalEntityBase {
 	return NewPagesProjectScenarioEntityFunc(sdk, data)
+}
+
+
+// PagesRegistry returns a PagesRegistry entity bound to this client.
+// Idiomatic usage: client.PagesRegistry(nil).List(nil, nil) or
+// client.PagesRegistry(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) PagesRegistry(data map[string]any) ComposalEntityBase {
+	return NewPagesRegistryEntityFunc(sdk, data)
+}
+
+
+// PagesSession returns a PagesSession entity bound to this client.
+// Idiomatic usage: client.PagesSession(nil).List(nil, nil) or
+// client.PagesSession(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) PagesSession(data map[string]any) ComposalEntityBase {
+	return NewPagesSessionEntityFunc(sdk, data)
+}
+
+
+// Pairing returns a Pairing entity bound to this client.
+// Idiomatic usage: client.Pairing(nil).List(nil, nil) or
+// client.Pairing(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Pairing(data map[string]any) ComposalEntityBase {
+	return NewPairingEntityFunc(sdk, data)
+}
+
+
+// PairingEvent returns a PairingEvent entity bound to this client.
+// Idiomatic usage: client.PairingEvent(nil).List(nil, nil) or
+// client.PairingEvent(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) PairingEvent(data map[string]any) ComposalEntityBase {
+	return NewPairingEventEntityFunc(sdk, data)
+}
+
+
+// ParallelV1 returns a ParallelV1 entity bound to this client.
+// Idiomatic usage: client.ParallelV1(nil).List(nil, nil) or
+// client.ParallelV1(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ParallelV1(data map[string]any) ComposalEntityBase {
+	return NewParallelV1EntityFunc(sdk, data)
+}
+
+
+// PatchsetDiff returns a PatchsetDiff entity bound to this client.
+// Idiomatic usage: client.PatchsetDiff(nil).List(nil, nil) or
+// client.PatchsetDiff(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) PatchsetDiff(data map[string]any) ComposalEntityBase {
+	return NewPatchsetDiffEntityFunc(sdk, data)
 }
 
 
@@ -1623,6 +3415,22 @@ func (sdk *ComposalSDK) PreviewSecret(data map[string]any) ComposalEntityBase {
 // client.PreviewSharingApproval(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) PreviewSharingApproval(data map[string]any) ComposalEntityBase {
 	return NewPreviewSharingApprovalEntityFunc(sdk, data)
+}
+
+
+// ProactiveAgentWaitlistEntry returns a ProactiveAgentWaitlistEntry entity bound to this client.
+// Idiomatic usage: client.ProactiveAgentWaitlistEntry(nil).List(nil, nil) or
+// client.ProactiveAgentWaitlistEntry(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ProactiveAgentWaitlistEntry(data map[string]any) ComposalEntityBase {
+	return NewProactiveAgentWaitlistEntryEntityFunc(sdk, data)
+}
+
+
+// Product returns a Product entity bound to this client.
+// Idiomatic usage: client.Product(nil).List(nil, nil) or
+// client.Product(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Product(data map[string]any) ComposalEntityBase {
+	return NewProductEntityFunc(sdk, data)
 }
 
 
@@ -1818,6 +3626,22 @@ func (sdk *ComposalSDK) PullRequest(data map[string]any) ComposalEntityBase {
 }
 
 
+// PullRequestAction returns a PullRequestAction entity bound to this client.
+// Idiomatic usage: client.PullRequestAction(nil).List(nil, nil) or
+// client.PullRequestAction(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) PullRequestAction(data map[string]any) ComposalEntityBase {
+	return NewPullRequestActionEntityFunc(sdk, data)
+}
+
+
+// PullRequestMagicMerge returns a PullRequestMagicMerge entity bound to this client.
+// Idiomatic usage: client.PullRequestMagicMerge(nil).List(nil, nil) or
+// client.PullRequestMagicMerge(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) PullRequestMagicMerge(data map[string]any) ComposalEntityBase {
+	return NewPullRequestMagicMergeEntityFunc(sdk, data)
+}
+
+
 // PullRequestSetting returns a PullRequestSetting entity bound to this client.
 // Idiomatic usage: client.PullRequestSetting(nil).List(nil, nil) or
 // client.PullRequestSetting(nil).Load(map[string]any{"id": ...}, nil).
@@ -1839,6 +3663,22 @@ func (sdk *ComposalSDK) PullRequestSettingAddRepository(data map[string]any) Com
 // client.PullRequestSettingDetectComment(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) PullRequestSettingDetectComment(data map[string]any) ComposalEntityBase {
 	return NewPullRequestSettingDetectCommentEntityFunc(sdk, data)
+}
+
+
+// PullRequestTranscript returns a PullRequestTranscript entity bound to this client.
+// Idiomatic usage: client.PullRequestTranscript(nil).List(nil, nil) or
+// client.PullRequestTranscript(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) PullRequestTranscript(data map[string]any) ComposalEntityBase {
+	return NewPullRequestTranscriptEntityFunc(sdk, data)
+}
+
+
+// PullZone returns a PullZone entity bound to this client.
+// Idiomatic usage: client.PullZone(nil).List(nil, nil) or
+// client.PullZone(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) PullZone(data map[string]any) ComposalEntityBase {
+	return NewPullZoneEntityFunc(sdk, data)
 }
 
 
@@ -1866,11 +3706,139 @@ func (sdk *ComposalSDK) RegistryV2(data map[string]any) ComposalEntityBase {
 }
 
 
+// RelayAgentConnection returns a RelayAgentConnection entity bound to this client.
+// Idiomatic usage: client.RelayAgentConnection(nil).List(nil, nil) or
+// client.RelayAgentConnection(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RelayAgentConnection(data map[string]any) ComposalEntityBase {
+	return NewRelayAgentConnectionEntityFunc(sdk, data)
+}
+
+
 // RelayAgentLocalThread returns a RelayAgentLocalThread entity bound to this client.
 // Idiomatic usage: client.RelayAgentLocalThread(nil).List(nil, nil) or
 // client.RelayAgentLocalThread(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) RelayAgentLocalThread(data map[string]any) ComposalEntityBase {
 	return NewRelayAgentLocalThreadEntityFunc(sdk, data)
+}
+
+
+// RelaySignal returns a RelaySignal entity bound to this client.
+// Idiomatic usage: client.RelaySignal(nil).List(nil, nil) or
+// client.RelaySignal(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RelaySignal(data map[string]any) ComposalEntityBase {
+	return NewRelaySignalEntityFunc(sdk, data)
+}
+
+
+// ReleaseRollout returns a ReleaseRollout entity bound to this client.
+// Idiomatic usage: client.ReleaseRollout(nil).List(nil, nil) or
+// client.ReleaseRollout(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ReleaseRollout(data map[string]any) ComposalEntityBase {
+	return NewReleaseRolloutEntityFunc(sdk, data)
+}
+
+
+// Repo returns a Repo entity bound to this client.
+// Idiomatic usage: client.Repo(nil).List(nil, nil) or
+// client.Repo(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Repo(data map[string]any) ComposalEntityBase {
+	return NewRepoEntityFunc(sdk, data)
+}
+
+
+// RepoAccessToken returns a RepoAccessToken entity bound to this client.
+// Idiomatic usage: client.RepoAccessToken(nil).List(nil, nil) or
+// client.RepoAccessToken(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepoAccessToken(data map[string]any) ComposalEntityBase {
+	return NewRepoAccessTokenEntityFunc(sdk, data)
+}
+
+
+// RepoAction returns a RepoAction entity bound to this client.
+// Idiomatic usage: client.RepoAction(nil).List(nil, nil) or
+// client.RepoAction(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepoAction(data map[string]any) ComposalEntityBase {
+	return NewRepoActionEntityFunc(sdk, data)
+}
+
+
+// RepoAgentCheckpoint returns a RepoAgentCheckpoint entity bound to this client.
+// Idiomatic usage: client.RepoAgentCheckpoint(nil).List(nil, nil) or
+// client.RepoAgentCheckpoint(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepoAgentCheckpoint(data map[string]any) ComposalEntityBase {
+	return NewRepoAgentCheckpointEntityFunc(sdk, data)
+}
+
+
+// RepoAgentSession returns a RepoAgentSession entity bound to this client.
+// Idiomatic usage: client.RepoAgentSession(nil).List(nil, nil) or
+// client.RepoAgentSession(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepoAgentSession(data map[string]any) ComposalEntityBase {
+	return NewRepoAgentSessionEntityFunc(sdk, data)
+}
+
+
+// RepoBookmarkProtection returns a RepoBookmarkProtection entity bound to this client.
+// Idiomatic usage: client.RepoBookmarkProtection(nil).List(nil, nil) or
+// client.RepoBookmarkProtection(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepoBookmarkProtection(data map[string]any) ComposalEntityBase {
+	return NewRepoBookmarkProtectionEntityFunc(sdk, data)
+}
+
+
+// RepoBookmarkProtectionEvent returns a RepoBookmarkProtectionEvent entity bound to this client.
+// Idiomatic usage: client.RepoBookmarkProtectionEvent(nil).List(nil, nil) or
+// client.RepoBookmarkProtectionEvent(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepoBookmarkProtectionEvent(data map[string]any) ComposalEntityBase {
+	return NewRepoBookmarkProtectionEventEntityFunc(sdk, data)
+}
+
+
+// RepoCloudWorkspaceBackup returns a RepoCloudWorkspaceBackup entity bound to this client.
+// Idiomatic usage: client.RepoCloudWorkspaceBackup(nil).List(nil, nil) or
+// client.RepoCloudWorkspaceBackup(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepoCloudWorkspaceBackup(data map[string]any) ComposalEntityBase {
+	return NewRepoCloudWorkspaceBackupEntityFunc(sdk, data)
+}
+
+
+// RepoCodeRule returns a RepoCodeRule entity bound to this client.
+// Idiomatic usage: client.RepoCodeRule(nil).List(nil, nil) or
+// client.RepoCodeRule(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepoCodeRule(data map[string]any) ComposalEntityBase {
+	return NewRepoCodeRuleEntityFunc(sdk, data)
+}
+
+
+// RepoSetting returns a RepoSetting entity bound to this client.
+// Idiomatic usage: client.RepoSetting(nil).List(nil, nil) or
+// client.RepoSetting(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepoSetting(data map[string]any) ComposalEntityBase {
+	return NewRepoSettingEntityFunc(sdk, data)
+}
+
+
+// RepoStat returns a RepoStat entity bound to this client.
+// Idiomatic usage: client.RepoStat(nil).List(nil, nil) or
+// client.RepoStat(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepoStat(data map[string]any) ComposalEntityBase {
+	return NewRepoStatEntityFunc(sdk, data)
+}
+
+
+// RepoVc returns a RepoVc entity bound to this client.
+// Idiomatic usage: client.RepoVc(nil).List(nil, nil) or
+// client.RepoVc(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepoVc(data map[string]any) ComposalEntityBase {
+	return NewRepoVcEntityFunc(sdk, data)
+}
+
+
+// RepoVcCommit returns a RepoVcCommit entity bound to this client.
+// Idiomatic usage: client.RepoVcCommit(nil).List(nil, nil) or
+// client.RepoVcCommit(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepoVcCommit(data map[string]any) ComposalEntityBase {
+	return NewRepoVcCommitEntityFunc(sdk, data)
 }
 
 
@@ -1887,6 +3855,126 @@ func (sdk *ComposalSDK) ReportReplay(data map[string]any) ComposalEntityBase {
 // client.ReportScenario(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) ReportScenario(data map[string]any) ComposalEntityBase {
 	return NewReportScenarioEntityFunc(sdk, data)
+}
+
+
+// RepositoryAccess returns a RepositoryAccess entity bound to this client.
+// Idiomatic usage: client.RepositoryAccess(nil).List(nil, nil) or
+// client.RepositoryAccess(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepositoryAccess(data map[string]any) ComposalEntityBase {
+	return NewRepositoryAccessEntityFunc(sdk, data)
+}
+
+
+// RepositoryAccessResolve returns a RepositoryAccessResolve entity bound to this client.
+// Idiomatic usage: client.RepositoryAccessResolve(nil).List(nil, nil) or
+// client.RepositoryAccessResolve(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepositoryAccessResolve(data map[string]any) ComposalEntityBase {
+	return NewRepositoryAccessResolveEntityFunc(sdk, data)
+}
+
+
+// RepositoryEvent returns a RepositoryEvent entity bound to this client.
+// Idiomatic usage: client.RepositoryEvent(nil).List(nil, nil) or
+// client.RepositoryEvent(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepositoryEvent(data map[string]any) ComposalEntityBase {
+	return NewRepositoryEventEntityFunc(sdk, data)
+}
+
+
+// RepositoryImport returns a RepositoryImport entity bound to this client.
+// Idiomatic usage: client.RepositoryImport(nil).List(nil, nil) or
+// client.RepositoryImport(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepositoryImport(data map[string]any) ComposalEntityBase {
+	return NewRepositoryImportEntityFunc(sdk, data)
+}
+
+
+// RepositoryImportSession returns a RepositoryImportSession entity bound to this client.
+// Idiomatic usage: client.RepositoryImportSession(nil).List(nil, nil) or
+// client.RepositoryImportSession(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepositoryImportSession(data map[string]any) ComposalEntityBase {
+	return NewRepositoryImportSessionEntityFunc(sdk, data)
+}
+
+
+// RepositoryImportSessionRepository returns a RepositoryImportSessionRepository entity bound to this client.
+// Idiomatic usage: client.RepositoryImportSessionRepository(nil).List(nil, nil) or
+// client.RepositoryImportSessionRepository(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepositoryImportSessionRepository(data map[string]any) ComposalEntityBase {
+	return NewRepositoryImportSessionRepositoryEntityFunc(sdk, data)
+}
+
+
+// RepositoryImportSessionSelection returns a RepositoryImportSessionSelection entity bound to this client.
+// Idiomatic usage: client.RepositoryImportSessionSelection(nil).List(nil, nil) or
+// client.RepositoryImportSessionSelection(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepositoryImportSessionSelection(data map[string]any) ComposalEntityBase {
+	return NewRepositoryImportSessionSelectionEntityFunc(sdk, data)
+}
+
+
+// RepositorySandboxEnvironment returns a RepositorySandboxEnvironment entity bound to this client.
+// Idiomatic usage: client.RepositorySandboxEnvironment(nil).List(nil, nil) or
+// client.RepositorySandboxEnvironment(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RepositorySandboxEnvironment(data map[string]any) ComposalEntityBase {
+	return NewRepositorySandboxEnvironmentEntityFunc(sdk, data)
+}
+
+
+// RoderCodeRepair returns a RoderCodeRepair entity bound to this client.
+// Idiomatic usage: client.RoderCodeRepair(nil).List(nil, nil) or
+// client.RoderCodeRepair(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RoderCodeRepair(data map[string]any) ComposalEntityBase {
+	return NewRoderCodeRepairEntityFunc(sdk, data)
+}
+
+
+// RoderCodeRepairSetting returns a RoderCodeRepairSetting entity bound to this client.
+// Idiomatic usage: client.RoderCodeRepairSetting(nil).List(nil, nil) or
+// client.RoderCodeRepairSetting(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RoderCodeRepairSetting(data map[string]any) ComposalEntityBase {
+	return NewRoderCodeRepairSettingEntityFunc(sdk, data)
+}
+
+
+// RoderMachine returns a RoderMachine entity bound to this client.
+// Idiomatic usage: client.RoderMachine(nil).List(nil, nil) or
+// client.RoderMachine(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RoderMachine(data map[string]any) ComposalEntityBase {
+	return NewRoderMachineEntityFunc(sdk, data)
+}
+
+
+// RoderRun returns a RoderRun entity bound to this client.
+// Idiomatic usage: client.RoderRun(nil).List(nil, nil) or
+// client.RoderRun(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RoderRun(data map[string]any) ComposalEntityBase {
+	return NewRoderRunEntityFunc(sdk, data)
+}
+
+
+// RoderWorkspaceCredential returns a RoderWorkspaceCredential entity bound to this client.
+// Idiomatic usage: client.RoderWorkspaceCredential(nil).List(nil, nil) or
+// client.RoderWorkspaceCredential(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RoderWorkspaceCredential(data map[string]any) ComposalEntityBase {
+	return NewRoderWorkspaceCredentialEntityFunc(sdk, data)
+}
+
+
+// RunArtifact returns a RunArtifact entity bound to this client.
+// Idiomatic usage: client.RunArtifact(nil).List(nil, nil) or
+// client.RunArtifact(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RunArtifact(data map[string]any) ComposalEntityBase {
+	return NewRunArtifactEntityFunc(sdk, data)
+}
+
+
+// RunJob returns a RunJob entity bound to this client.
+// Idiomatic usage: client.RunJob(nil).List(nil, nil) or
+// client.RunJob(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RunJob(data map[string]any) ComposalEntityBase {
+	return NewRunJobEntityFunc(sdk, data)
 }
 
 
@@ -1922,6 +4010,54 @@ func (sdk *ComposalSDK) RunUpdate(data map[string]any) ComposalEntityBase {
 }
 
 
+// RunWorkspaceCredential returns a RunWorkspaceCredential entity bound to this client.
+// Idiomatic usage: client.RunWorkspaceCredential(nil).List(nil, nil) or
+// client.RunWorkspaceCredential(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RunWorkspaceCredential(data map[string]any) ComposalEntityBase {
+	return NewRunWorkspaceCredentialEntityFunc(sdk, data)
+}
+
+
+// RunnerLease returns a RunnerLease entity bound to this client.
+// Idiomatic usage: client.RunnerLease(nil).List(nil, nil) or
+// client.RunnerLease(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RunnerLease(data map[string]any) ComposalEntityBase {
+	return NewRunnerLeaseEntityFunc(sdk, data)
+}
+
+
+// RunnerPoolNodeEnrollmentToken returns a RunnerPoolNodeEnrollmentToken entity bound to this client.
+// Idiomatic usage: client.RunnerPoolNodeEnrollmentToken(nil).List(nil, nil) or
+// client.RunnerPoolNodeEnrollmentToken(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RunnerPoolNodeEnrollmentToken(data map[string]any) ComposalEntityBase {
+	return NewRunnerPoolNodeEnrollmentTokenEntityFunc(sdk, data)
+}
+
+
+// RunnerPoolRunner returns a RunnerPoolRunner entity bound to this client.
+// Idiomatic usage: client.RunnerPoolRunner(nil).List(nil, nil) or
+// client.RunnerPoolRunner(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RunnerPoolRunner(data map[string]any) ComposalEntityBase {
+	return NewRunnerPoolRunnerEntityFunc(sdk, data)
+}
+
+
+// RuntimeInstanceHealthSnapshot returns a RuntimeInstanceHealthSnapshot entity bound to this client.
+// Idiomatic usage: client.RuntimeInstanceHealthSnapshot(nil).List(nil, nil) or
+// client.RuntimeInstanceHealthSnapshot(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) RuntimeInstanceHealthSnapshot(data map[string]any) ComposalEntityBase {
+	return NewRuntimeInstanceHealthSnapshotEntityFunc(sdk, data)
+}
+
+
+// SandboxIntegration returns a SandboxIntegration entity bound to this client.
+// Idiomatic usage: client.SandboxIntegration(nil).List(nil, nil) or
+// client.SandboxIntegration(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SandboxIntegration(data map[string]any) ComposalEntityBase {
+	return NewSandboxIntegrationEntityFunc(sdk, data)
+}
+
+
 // ScenarioRevision returns a ScenarioRevision entity bound to this client.
 // Idiomatic usage: client.ScenarioRevision(nil).List(nil, nil) or
 // client.ScenarioRevision(nil).Load(map[string]any{"id": ...}, nil).
@@ -1946,11 +4082,107 @@ func (sdk *ComposalSDK) ScenarioRunScenarioEdit(data map[string]any) ComposalEnt
 }
 
 
+// SecretGrant returns a SecretGrant entity bound to this client.
+// Idiomatic usage: client.SecretGrant(nil).List(nil, nil) or
+// client.SecretGrant(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SecretGrant(data map[string]any) ComposalEntityBase {
+	return NewSecretGrantEntityFunc(sdk, data)
+}
+
+
+// SecretVersion returns a SecretVersion entity bound to this client.
+// Idiomatic usage: client.SecretVersion(nil).List(nil, nil) or
+// client.SecretVersion(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SecretVersion(data map[string]any) ComposalEntityBase {
+	return NewSecretVersionEntityFunc(sdk, data)
+}
+
+
 // ServiceEndpoint returns a ServiceEndpoint entity bound to this client.
 // Idiomatic usage: client.ServiceEndpoint(nil).List(nil, nil) or
 // client.ServiceEndpoint(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) ServiceEndpoint(data map[string]any) ComposalEntityBase {
 	return NewServiceEndpointEntityFunc(sdk, data)
+}
+
+
+// Setting returns a Setting entity bound to this client.
+// Idiomatic usage: client.Setting(nil).List(nil, nil) or
+// client.Setting(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Setting(data map[string]any) ComposalEntityBase {
+	return NewSettingEntityFunc(sdk, data)
+}
+
+
+// SettingMutationLease returns a SettingMutationLease entity bound to this client.
+// Idiomatic usage: client.SettingMutationLease(nil).List(nil, nil) or
+// client.SettingMutationLease(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SettingMutationLease(data map[string]any) ComposalEntityBase {
+	return NewSettingMutationLeaseEntityFunc(sdk, data)
+}
+
+
+// Signal returns a Signal entity bound to this client.
+// Idiomatic usage: client.Signal(nil).List(nil, nil) or
+// client.Signal(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Signal(data map[string]any) ComposalEntityBase {
+	return NewSignalEntityFunc(sdk, data)
+}
+
+
+// SignalInbound returns a SignalInbound entity bound to this client.
+// Idiomatic usage: client.SignalInbound(nil).List(nil, nil) or
+// client.SignalInbound(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SignalInbound(data map[string]any) ComposalEntityBase {
+	return NewSignalInboundEntityFunc(sdk, data)
+}
+
+
+// SignalIntegration returns a SignalIntegration entity bound to this client.
+// Idiomatic usage: client.SignalIntegration(nil).List(nil, nil) or
+// client.SignalIntegration(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SignalIntegration(data map[string]any) ComposalEntityBase {
+	return NewSignalIntegrationEntityFunc(sdk, data)
+}
+
+
+// SignalIntegrationDelivery returns a SignalIntegrationDelivery entity bound to this client.
+// Idiomatic usage: client.SignalIntegrationDelivery(nil).List(nil, nil) or
+// client.SignalIntegrationDelivery(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SignalIntegrationDelivery(data map[string]any) ComposalEntityBase {
+	return NewSignalIntegrationDeliveryEntityFunc(sdk, data)
+}
+
+
+// SignalIntegrationTarget returns a SignalIntegrationTarget entity bound to this client.
+// Idiomatic usage: client.SignalIntegrationTarget(nil).List(nil, nil) or
+// client.SignalIntegrationTarget(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SignalIntegrationTarget(data map[string]any) ComposalEntityBase {
+	return NewSignalIntegrationTargetEntityFunc(sdk, data)
+}
+
+
+// SignalSubscription returns a SignalSubscription entity bound to this client.
+// Idiomatic usage: client.SignalSubscription(nil).List(nil, nil) or
+// client.SignalSubscription(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SignalSubscription(data map[string]any) ComposalEntityBase {
+	return NewSignalSubscriptionEntityFunc(sdk, data)
+}
+
+
+// Site returns a Site entity bound to this client.
+// Idiomatic usage: client.Site(nil).List(nil, nil) or
+// client.Site(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Site(data map[string]any) ComposalEntityBase {
+	return NewSiteEntityFunc(sdk, data)
+}
+
+
+// SiteAccessKey returns a SiteAccessKey entity bound to this client.
+// Idiomatic usage: client.SiteAccessKey(nil).List(nil, nil) or
+// client.SiteAccessKey(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SiteAccessKey(data map[string]any) ComposalEntityBase {
+	return NewSiteAccessKeyEntityFunc(sdk, data)
 }
 
 
@@ -1962,6 +4194,14 @@ func (sdk *ComposalSDK) SitePreview(data map[string]any) ComposalEntityBase {
 }
 
 
+// SiteSecret returns a SiteSecret entity bound to this client.
+// Idiomatic usage: client.SiteSecret(nil).List(nil, nil) or
+// client.SiteSecret(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SiteSecret(data map[string]any) ComposalEntityBase {
+	return NewSiteSecretEntityFunc(sdk, data)
+}
+
+
 // SlackChannel returns a SlackChannel entity bound to this client.
 // Idiomatic usage: client.SlackChannel(nil).List(nil, nil) or
 // client.SlackChannel(nil).Load(map[string]any{"id": ...}, nil).
@@ -1970,11 +4210,203 @@ func (sdk *ComposalSDK) SlackChannel(data map[string]any) ComposalEntityBase {
 }
 
 
+// SourceConnection returns a SourceConnection entity bound to this client.
+// Idiomatic usage: client.SourceConnection(nil).List(nil, nil) or
+// client.SourceConnection(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SourceConnection(data map[string]any) ComposalEntityBase {
+	return NewSourceConnectionEntityFunc(sdk, data)
+}
+
+
+// SpaceAlertRule returns a SpaceAlertRule entity bound to this client.
+// Idiomatic usage: client.SpaceAlertRule(nil).List(nil, nil) or
+// client.SpaceAlertRule(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SpaceAlertRule(data map[string]any) ComposalEntityBase {
+	return NewSpaceAlertRuleEntityFunc(sdk, data)
+}
+
+
+// SpaceAuditEvent returns a SpaceAuditEvent entity bound to this client.
+// Idiomatic usage: client.SpaceAuditEvent(nil).List(nil, nil) or
+// client.SpaceAuditEvent(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SpaceAuditEvent(data map[string]any) ComposalEntityBase {
+	return NewSpaceAuditEventEntityFunc(sdk, data)
+}
+
+
+// SpaceDnsRecord returns a SpaceDnsRecord entity bound to this client.
+// Idiomatic usage: client.SpaceDnsRecord(nil).List(nil, nil) or
+// client.SpaceDnsRecord(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SpaceDnsRecord(data map[string]any) ComposalEntityBase {
+	return NewSpaceDnsRecordEntityFunc(sdk, data)
+}
+
+
+// SpaceEnrollmentToken returns a SpaceEnrollmentToken entity bound to this client.
+// Idiomatic usage: client.SpaceEnrollmentToken(nil).List(nil, nil) or
+// client.SpaceEnrollmentToken(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SpaceEnrollmentToken(data map[string]any) ComposalEntityBase {
+	return NewSpaceEnrollmentTokenEntityFunc(sdk, data)
+}
+
+
+// SpaceGateway returns a SpaceGateway entity bound to this client.
+// Idiomatic usage: client.SpaceGateway(nil).List(nil, nil) or
+// client.SpaceGateway(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SpaceGateway(data map[string]any) ComposalEntityBase {
+	return NewSpaceGatewayEntityFunc(sdk, data)
+}
+
+
+// SpaceGroup returns a SpaceGroup entity bound to this client.
+// Idiomatic usage: client.SpaceGroup(nil).List(nil, nil) or
+// client.SpaceGroup(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SpaceGroup(data map[string]any) ComposalEntityBase {
+	return NewSpaceGroupEntityFunc(sdk, data)
+}
+
+
+// SpaceGroupMembership returns a SpaceGroupMembership entity bound to this client.
+// Idiomatic usage: client.SpaceGroupMembership(nil).List(nil, nil) or
+// client.SpaceGroupMembership(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SpaceGroupMembership(data map[string]any) ComposalEntityBase {
+	return NewSpaceGroupMembershipEntityFunc(sdk, data)
+}
+
+
+// SpaceLogStream returns a SpaceLogStream entity bound to this client.
+// Idiomatic usage: client.SpaceLogStream(nil).List(nil, nil) or
+// client.SpaceLogStream(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SpaceLogStream(data map[string]any) ComposalEntityBase {
+	return NewSpaceLogStreamEntityFunc(sdk, data)
+}
+
+
+// SpaceMetricSery returns a SpaceMetricSery entity bound to this client.
+// Idiomatic usage: client.SpaceMetricSery(nil).List(nil, nil) or
+// client.SpaceMetricSery(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SpaceMetricSery(data map[string]any) ComposalEntityBase {
+	return NewSpaceMetricSeryEntityFunc(sdk, data)
+}
+
+
+// SpaceOtelCollector returns a SpaceOtelCollector entity bound to this client.
+// Idiomatic usage: client.SpaceOtelCollector(nil).List(nil, nil) or
+// client.SpaceOtelCollector(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SpaceOtelCollector(data map[string]any) ComposalEntityBase {
+	return NewSpaceOtelCollectorEntityFunc(sdk, data)
+}
+
+
+// SpacePeer returns a SpacePeer entity bound to this client.
+// Idiomatic usage: client.SpacePeer(nil).List(nil, nil) or
+// client.SpacePeer(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SpacePeer(data map[string]any) ComposalEntityBase {
+	return NewSpacePeerEntityFunc(sdk, data)
+}
+
+
+// SpacePeerAttachment returns a SpacePeerAttachment entity bound to this client.
+// Idiomatic usage: client.SpacePeerAttachment(nil).List(nil, nil) or
+// client.SpacePeerAttachment(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SpacePeerAttachment(data map[string]any) ComposalEntityBase {
+	return NewSpacePeerAttachmentEntityFunc(sdk, data)
+}
+
+
+// SpacePolicy returns a SpacePolicy entity bound to this client.
+// Idiomatic usage: client.SpacePolicy(nil).List(nil, nil) or
+// client.SpacePolicy(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SpacePolicy(data map[string]any) ComposalEntityBase {
+	return NewSpacePolicyEntityFunc(sdk, data)
+}
+
+
+// SpaceSegment returns a SpaceSegment entity bound to this client.
+// Idiomatic usage: client.SpaceSegment(nil).List(nil, nil) or
+// client.SpaceSegment(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SpaceSegment(data map[string]any) ComposalEntityBase {
+	return NewSpaceSegmentEntityFunc(sdk, data)
+}
+
+
+// SpaceTraceSpan returns a SpaceTraceSpan entity bound to this client.
+// Idiomatic usage: client.SpaceTraceSpan(nil).List(nil, nil) or
+// client.SpaceTraceSpan(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SpaceTraceSpan(data map[string]any) ComposalEntityBase {
+	return NewSpaceTraceSpanEntityFunc(sdk, data)
+}
+
+
+// Spark returns a Spark entity bound to this client.
+// Idiomatic usage: client.Spark(nil).List(nil, nil) or
+// client.Spark(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Spark(data map[string]any) ComposalEntityBase {
+	return NewSparkEntityFunc(sdk, data)
+}
+
+
+// SparkAgentIntegration returns a SparkAgentIntegration entity bound to this client.
+// Idiomatic usage: client.SparkAgentIntegration(nil).List(nil, nil) or
+// client.SparkAgentIntegration(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SparkAgentIntegration(data map[string]any) ComposalEntityBase {
+	return NewSparkAgentIntegrationEntityFunc(sdk, data)
+}
+
+
 // SparkAgentLocalThread returns a SparkAgentLocalThread entity bound to this client.
 // Idiomatic usage: client.SparkAgentLocalThread(nil).List(nil, nil) or
 // client.SparkAgentLocalThread(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) SparkAgentLocalThread(data map[string]any) ComposalEntityBase {
 	return NewSparkAgentLocalThreadEntityFunc(sdk, data)
+}
+
+
+// SparkAgentSite returns a SparkAgentSite entity bound to this client.
+// Idiomatic usage: client.SparkAgentSite(nil).List(nil, nil) or
+// client.SparkAgentSite(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SparkAgentSite(data map[string]any) ComposalEntityBase {
+	return NewSparkAgentSiteEntityFunc(sdk, data)
+}
+
+
+// SparkAgentSkill returns a SparkAgentSkill entity bound to this client.
+// Idiomatic usage: client.SparkAgentSkill(nil).List(nil, nil) or
+// client.SparkAgentSkill(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SparkAgentSkill(data map[string]any) ComposalEntityBase {
+	return NewSparkAgentSkillEntityFunc(sdk, data)
+}
+
+
+// SparkAgentThread returns a SparkAgentThread entity bound to this client.
+// Idiomatic usage: client.SparkAgentThread(nil).List(nil, nil) or
+// client.SparkAgentThread(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SparkAgentThread(data map[string]any) ComposalEntityBase {
+	return NewSparkAgentThreadEntityFunc(sdk, data)
+}
+
+
+// SparkCredit returns a SparkCredit entity bound to this client.
+// Idiomatic usage: client.SparkCredit(nil).List(nil, nil) or
+// client.SparkCredit(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SparkCredit(data map[string]any) ComposalEntityBase {
+	return NewSparkCreditEntityFunc(sdk, data)
+}
+
+
+// SparkCreditAgentUsage returns a SparkCreditAgentUsage entity bound to this client.
+// Idiomatic usage: client.SparkCreditAgentUsage(nil).List(nil, nil) or
+// client.SparkCreditAgentUsage(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SparkCreditAgentUsage(data map[string]any) ComposalEntityBase {
+	return NewSparkCreditAgentUsageEntityFunc(sdk, data)
+}
+
+
+// SparkCreditUsageTotal returns a SparkCreditUsageTotal entity bound to this client.
+// Idiomatic usage: client.SparkCreditUsageTotal(nil).List(nil, nil) or
+// client.SparkCreditUsageTotal(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SparkCreditUsageTotal(data map[string]any) ComposalEntityBase {
+	return NewSparkCreditUsageTotalEntityFunc(sdk, data)
 }
 
 
@@ -2002,6 +4434,46 @@ func (sdk *ComposalSDK) StaticSiteDomain(data map[string]any) ComposalEntityBase
 }
 
 
+// StatusChange returns a StatusChange entity bound to this client.
+// Idiomatic usage: client.StatusChange(nil).List(nil, nil) or
+// client.StatusChange(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) StatusChange(data map[string]any) ComposalEntityBase {
+	return NewStatusChangeEntityFunc(sdk, data)
+}
+
+
+// StatusCommit returns a StatusCommit entity bound to this client.
+// Idiomatic usage: client.StatusCommit(nil).List(nil, nil) or
+// client.StatusCommit(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) StatusCommit(data map[string]any) ComposalEntityBase {
+	return NewStatusCommitEntityFunc(sdk, data)
+}
+
+
+// StatusPatchset returns a StatusPatchset entity bound to this client.
+// Idiomatic usage: client.StatusPatchset(nil).List(nil, nil) or
+// client.StatusPatchset(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) StatusPatchset(data map[string]any) ComposalEntityBase {
+	return NewStatusPatchsetEntityFunc(sdk, data)
+}
+
+
+// StripeWebhook returns a StripeWebhook entity bound to this client.
+// Idiomatic usage: client.StripeWebhook(nil).List(nil, nil) or
+// client.StripeWebhook(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) StripeWebhook(data map[string]any) ComposalEntityBase {
+	return NewStripeWebhookEntityFunc(sdk, data)
+}
+
+
+// SubmitTelemetry returns a SubmitTelemetry entity bound to this client.
+// Idiomatic usage: client.SubmitTelemetry(nil).List(nil, nil) or
+// client.SubmitTelemetry(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SubmitTelemetry(data map[string]any) ComposalEntityBase {
+	return NewSubmitTelemetryEntityFunc(sdk, data)
+}
+
+
 // SubscriptionModel returns a SubscriptionModel entity bound to this client.
 // Idiomatic usage: client.SubscriptionModel(nil).List(nil, nil) or
 // client.SubscriptionModel(nil).Load(map[string]any{"id": ...}, nil).
@@ -2010,11 +4482,155 @@ func (sdk *ComposalSDK) SubscriptionModel(data map[string]any) ComposalEntityBas
 }
 
 
+// SwarmEvent returns a SwarmEvent entity bound to this client.
+// Idiomatic usage: client.SwarmEvent(nil).List(nil, nil) or
+// client.SwarmEvent(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SwarmEvent(data map[string]any) ComposalEntityBase {
+	return NewSwarmEventEntityFunc(sdk, data)
+}
+
+
+// SwarmLive returns a SwarmLive entity bound to this client.
+// Idiomatic usage: client.SwarmLive(nil).List(nil, nil) or
+// client.SwarmLive(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SwarmLive(data map[string]any) ComposalEntityBase {
+	return NewSwarmLiveEntityFunc(sdk, data)
+}
+
+
+// SwarmNote returns a SwarmNote entity bound to this client.
+// Idiomatic usage: client.SwarmNote(nil).List(nil, nil) or
+// client.SwarmNote(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SwarmNote(data map[string]any) ComposalEntityBase {
+	return NewSwarmNoteEntityFunc(sdk, data)
+}
+
+
+// SwarmTask returns a SwarmTask entity bound to this client.
+// Idiomatic usage: client.SwarmTask(nil).List(nil, nil) or
+// client.SwarmTask(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) SwarmTask(data map[string]any) ComposalEntityBase {
+	return NewSwarmTaskEntityFunc(sdk, data)
+}
+
+
+// TaskLease returns a TaskLease entity bound to this client.
+// Idiomatic usage: client.TaskLease(nil).List(nil, nil) or
+// client.TaskLease(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) TaskLease(data map[string]any) ComposalEntityBase {
+	return NewTaskLeaseEntityFunc(sdk, data)
+}
+
+
 // ThreadPreview returns a ThreadPreview entity bound to this client.
 // Idiomatic usage: client.ThreadPreview(nil).List(nil, nil) or
 // client.ThreadPreview(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) ThreadPreview(data map[string]any) ComposalEntityBase {
 	return NewThreadPreviewEntityFunc(sdk, data)
+}
+
+
+// ThreadPreviewAccess returns a ThreadPreviewAccess entity bound to this client.
+// Idiomatic usage: client.ThreadPreviewAccess(nil).List(nil, nil) or
+// client.ThreadPreviewAccess(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ThreadPreviewAccess(data map[string]any) ComposalEntityBase {
+	return NewThreadPreviewAccessEntityFunc(sdk, data)
+}
+
+
+// ToolFeedback returns a ToolFeedback entity bound to this client.
+// Idiomatic usage: client.ToolFeedback(nil).List(nil, nil) or
+// client.ToolFeedback(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) ToolFeedback(data map[string]any) ComposalEntityBase {
+	return NewToolFeedbackEntityFunc(sdk, data)
+}
+
+
+// Transcript returns a Transcript entity bound to this client.
+// Idiomatic usage: client.Transcript(nil).List(nil, nil) or
+// client.Transcript(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) Transcript(data map[string]any) ComposalEntityBase {
+	return NewTranscriptEntityFunc(sdk, data)
+}
+
+
+// V1Message returns a V1Message entity bound to this client.
+// Idiomatic usage: client.V1Message(nil).List(nil, nil) or
+// client.V1Message(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) V1Message(data map[string]any) ComposalEntityBase {
+	return NewV1MessageEntityFunc(sdk, data)
+}
+
+
+// VcBranch returns a VcBranch entity bound to this client.
+// Idiomatic usage: client.VcBranch(nil).List(nil, nil) or
+// client.VcBranch(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) VcBranch(data map[string]any) ComposalEntityBase {
+	return NewVcBranchEntityFunc(sdk, data)
+}
+
+
+// VcBrowser returns a VcBrowser entity bound to this client.
+// Idiomatic usage: client.VcBrowser(nil).List(nil, nil) or
+// client.VcBrowser(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) VcBrowser(data map[string]any) ComposalEntityBase {
+	return NewVcBrowserEntityFunc(sdk, data)
+}
+
+
+// VcChange returns a VcChange entity bound to this client.
+// Idiomatic usage: client.VcChange(nil).List(nil, nil) or
+// client.VcChange(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) VcChange(data map[string]any) ComposalEntityBase {
+	return NewVcChangeEntityFunc(sdk, data)
+}
+
+
+// VcChangeGroup returns a VcChangeGroup entity bound to this client.
+// Idiomatic usage: client.VcChangeGroup(nil).List(nil, nil) or
+// client.VcChangeGroup(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) VcChangeGroup(data map[string]any) ComposalEntityBase {
+	return NewVcChangeGroupEntityFunc(sdk, data)
+}
+
+
+// VcFile returns a VcFile entity bound to this client.
+// Idiomatic usage: client.VcFile(nil).List(nil, nil) or
+// client.VcFile(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) VcFile(data map[string]any) ComposalEntityBase {
+	return NewVcFileEntityFunc(sdk, data)
+}
+
+
+// VcMergeQueue returns a VcMergeQueue entity bound to this client.
+// Idiomatic usage: client.VcMergeQueue(nil).List(nil, nil) or
+// client.VcMergeQueue(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) VcMergeQueue(data map[string]any) ComposalEntityBase {
+	return NewVcMergeQueueEntityFunc(sdk, data)
+}
+
+
+// VcStack returns a VcStack entity bound to this client.
+// Idiomatic usage: client.VcStack(nil).List(nil, nil) or
+// client.VcStack(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) VcStack(data map[string]any) ComposalEntityBase {
+	return NewVcStackEntityFunc(sdk, data)
+}
+
+
+// VcsNode returns a VcsNode entity bound to this client.
+// Idiomatic usage: client.VcsNode(nil).List(nil, nil) or
+// client.VcsNode(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) VcsNode(data map[string]any) ComposalEntityBase {
+	return NewVcsNodeEntityFunc(sdk, data)
+}
+
+
+// VcsSetting returns a VcsSetting entity bound to this client.
+// Idiomatic usage: client.VcsSetting(nil).List(nil, nil) or
+// client.VcsSetting(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) VcsSetting(data map[string]any) ComposalEntityBase {
+	return NewVcsSettingEntityFunc(sdk, data)
 }
 
 
@@ -2066,6 +4682,22 @@ func (sdk *ComposalSDK) VerifyBrowserSession(data map[string]any) ComposalEntity
 }
 
 
+// VerifyEmailVerification returns a VerifyEmailVerification entity bound to this client.
+// Idiomatic usage: client.VerifyEmailVerification(nil).List(nil, nil) or
+// client.VerifyEmailVerification(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) VerifyEmailVerification(data map[string]any) ComposalEntityBase {
+	return NewVerifyEmailVerificationEntityFunc(sdk, data)
+}
+
+
+// VerifySignalIntegration returns a VerifySignalIntegration entity bound to this client.
+// Idiomatic usage: client.VerifySignalIntegration(nil).List(nil, nil) or
+// client.VerifySignalIntegration(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) VerifySignalIntegration(data map[string]any) ComposalEntityBase {
+	return NewVerifySignalIntegrationEntityFunc(sdk, data)
+}
+
+
 // VerifyStaticSiteDomain returns a VerifyStaticSiteDomain entity bound to this client.
 // Idiomatic usage: client.VerifyStaticSiteDomain(nil).List(nil, nil) or
 // client.VerifyStaticSiteDomain(nil).Load(map[string]any{"id": ...}, nil).
@@ -2082,11 +4714,27 @@ func (sdk *ComposalSDK) VersionLog(data map[string]any) ComposalEntityBase {
 }
 
 
+// WaitlistApplication returns a WaitlistApplication entity bound to this client.
+// Idiomatic usage: client.WaitlistApplication(nil).List(nil, nil) or
+// client.WaitlistApplication(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) WaitlistApplication(data map[string]any) ComposalEntityBase {
+	return NewWaitlistApplicationEntityFunc(sdk, data)
+}
+
+
 // WebBotAuth returns a WebBotAuth entity bound to this client.
 // Idiomatic usage: client.WebBotAuth(nil).List(nil, nil) or
 // client.WebBotAuth(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) WebBotAuth(data map[string]any) ComposalEntityBase {
 	return NewWebBotAuthEntityFunc(sdk, data)
+}
+
+
+// WebhookGitlab returns a WebhookGitlab entity bound to this client.
+// Idiomatic usage: client.WebhookGitlab(nil).List(nil, nil) or
+// client.WebhookGitlab(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) WebhookGitlab(data map[string]any) ComposalEntityBase {
+	return NewWebhookGitlabEntityFunc(sdk, data)
 }
 
 
@@ -2111,6 +4759,38 @@ func (sdk *ComposalSDK) WorkflowRunStopNotice(data map[string]any) ComposalEntit
 // client.WorkflowTriggerSkipped(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) WorkflowTriggerSkipped(data map[string]any) ComposalEntityBase {
 	return NewWorkflowTriggerSkippedEntityFunc(sdk, data)
+}
+
+
+// WorkspaceActivity returns a WorkspaceActivity entity bound to this client.
+// Idiomatic usage: client.WorkspaceActivity(nil).List(nil, nil) or
+// client.WorkspaceActivity(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) WorkspaceActivity(data map[string]any) ComposalEntityBase {
+	return NewWorkspaceActivityEntityFunc(sdk, data)
+}
+
+
+// WorkspaceActivityNotification returns a WorkspaceActivityNotification entity bound to this client.
+// Idiomatic usage: client.WorkspaceActivityNotification(nil).List(nil, nil) or
+// client.WorkspaceActivityNotification(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) WorkspaceActivityNotification(data map[string]any) ComposalEntityBase {
+	return NewWorkspaceActivityNotificationEntityFunc(sdk, data)
+}
+
+
+// WorkspaceSpace returns a WorkspaceSpace entity bound to this client.
+// Idiomatic usage: client.WorkspaceSpace(nil).List(nil, nil) or
+// client.WorkspaceSpace(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) WorkspaceSpace(data map[string]any) ComposalEntityBase {
+	return NewWorkspaceSpaceEntityFunc(sdk, data)
+}
+
+
+// WorkspaceSpacePreference returns a WorkspaceSpacePreference entity bound to this client.
+// Idiomatic usage: client.WorkspaceSpacePreference(nil).List(nil, nil) or
+// client.WorkspaceSpacePreference(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) WorkspaceSpacePreference(data map[string]any) ComposalEntityBase {
+	return NewWorkspaceSpacePreferenceEntityFunc(sdk, data)
 }
 
 

@@ -1,0 +1,27 @@
+$kind: http-request
+id: "250b4463-d52c-5343-9c8e-922de49b4362"
+description: |-
+  The `file` action of **vc_browser**, a route of its `load` operation.
+
+  SDK: `client.VcBrowser().load({ "organization_id": "organization_id", "repo_id": "repo_id", "ref": "ID", $action: "file" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/browser/file?ref={{vc_browser_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: file
+    value: ""
+    disabled: true
+  - key: path
+    value: ""
+    disabled: true
+  - key: ref
+    value: "{{vc_browser_id}}"
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_browser belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_browser belongs to.
+order: 1000

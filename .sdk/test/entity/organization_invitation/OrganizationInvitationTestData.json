@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "organization_invitation": {
+      "ORGANIZATION_INVITATION00": {
+        "email": "s1e",
+        "id": "ORGANIZATION_INVITATION00",
+        "role": "s20",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ORGANIZATION_INVITATION01": {
+        "email": "s3c",
+        "id": "ORGANIZATION_INVITATION01",
+        "role": "s3e",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ORGANIZATION_INVITATION02": {
+        "email": "s5a",
+        "id": "ORGANIZATION_INVITATION02",
+        "role": "s5c",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "organization_invitation": {
+      "organization_invitation_ref01": {
+        "email": "s78",
+        "role": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/admin/organizations/{org_slug}/invitations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/admin/organizations/{org_slug}/invitations/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

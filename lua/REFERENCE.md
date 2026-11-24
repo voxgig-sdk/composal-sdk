@@ -41,9 +41,25 @@ local client = sdk.test()
 
 ### Instance Methods
 
+#### `A2aWellKnown(data)`
+
+Create a new `A2aWellKnown` entity instance. Pass `nil` for no initial data.
+
+#### `AdminOrg(data)`
+
+Create a new `AdminOrg` entity instance. Pass `nil` for no initial data.
+
 #### `Agent(data)`
 
 Create a new `Agent` entity instance. Pass `nil` for no initial data.
+
+#### `AgentApp(data)`
+
+Create a new `AgentApp` entity instance. Pass `nil` for no initial data.
+
+#### `AgentAppInstall(data)`
+
+Create a new `AgentAppInstall` entity instance. Pass `nil` for no initial data.
 
 #### `AgentAttachment(data)`
 
@@ -69,6 +85,30 @@ Create a new `AgentComputer` entity instance. Pass `nil` for no initial data.
 
 Create a new `AgentConnection` entity instance. Pass `nil` for no initial data.
 
+#### `AgentConnectionDelegation(data)`
+
+Create a new `AgentConnectionDelegation` entity instance. Pass `nil` for no initial data.
+
+#### `AgentConnectionGrant(data)`
+
+Create a new `AgentConnectionGrant` entity instance. Pass `nil` for no initial data.
+
+#### `AgentConnectionResource(data)`
+
+Create a new `AgentConnectionResource` entity instance. Pass `nil` for no initial data.
+
+#### `AgentConnectionSafetyControl(data)`
+
+Create a new `AgentConnectionSafetyControl` entity instance. Pass `nil` for no initial data.
+
+#### `AgentConnectionTriggerSubscription(data)`
+
+Create a new `AgentConnectionTriggerSubscription` entity instance. Pass `nil` for no initial data.
+
+#### `AgentContextCheckpoint(data)`
+
+Create a new `AgentContextCheckpoint` entity instance. Pass `nil` for no initial data.
+
 #### `AgentControlFlow(data)`
 
 Create a new `AgentControlFlow` entity instance. Pass `nil` for no initial data.
@@ -81,6 +121,10 @@ Create a new `AgentCoordination` entity instance. Pass `nil` for no initial data
 
 Create a new `AgentEmail` entity instance. Pass `nil` for no initial data.
 
+#### `AgentEvent(data)`
+
+Create a new `AgentEvent` entity instance. Pass `nil` for no initial data.
+
 #### `AgentFile(data)`
 
 Create a new `AgentFile` entity instance. Pass `nil` for no initial data.
@@ -92,6 +136,14 @@ Create a new `AgentInput` entity instance. Pass `nil` for no initial data.
 #### `AgentIntegration(data)`
 
 Create a new `AgentIntegration` entity instance. Pass `nil` for no initial data.
+
+#### `AgentIntegrationAccount(data)`
+
+Create a new `AgentIntegrationAccount` entity instance. Pass `nil` for no initial data.
+
+#### `AgentIntegrationCallback(data)`
+
+Create a new `AgentIntegrationCallback` entity instance. Pass `nil` for no initial data.
 
 #### `AgentInteraction(data)`
 
@@ -137,6 +189,14 @@ Create a new `AgentPullRequest` entity instance. Pass `nil` for no initial data.
 
 Create a new `AgentQuestion` entity instance. Pass `nil` for no initial data.
 
+#### `AgentRelayFileGrant(data)`
+
+Create a new `AgentRelayFileGrant` entity instance. Pass `nil` for no initial data.
+
+#### `AgentRelayFileGrantAccount(data)`
+
+Create a new `AgentRelayFileGrantAccount` entity instance. Pass `nil` for no initial data.
+
 #### `AgentRepository(data)`
 
 Create a new `AgentRepository` entity instance. Pass `nil` for no initial data.
@@ -144,6 +204,10 @@ Create a new `AgentRepository` entity instance. Pass `nil` for no initial data.
 #### `AgentResource(data)`
 
 Create a new `AgentResource` entity instance. Pass `nil` for no initial data.
+
+#### `AgentRoder(data)`
+
+Create a new `AgentRoder` entity instance. Pass `nil` for no initial data.
 
 #### `AgentRoutine(data)`
 
@@ -156,6 +220,18 @@ Create a new `AgentRun` entity instance. Pass `nil` for no initial data.
 #### `AgentRuntime(data)`
 
 Create a new `AgentRuntime` entity instance. Pass `nil` for no initial data.
+
+#### `AgentSession(data)`
+
+Create a new `AgentSession` entity instance. Pass `nil` for no initial data.
+
+#### `AgentSessionCheckpoint(data)`
+
+Create a new `AgentSessionCheckpoint` entity instance. Pass `nil` for no initial data.
+
+#### `AgentSessionRoderHandoff(data)`
+
+Create a new `AgentSessionRoderHandoff` entity instance. Pass `nil` for no initial data.
 
 #### `AgentSetting(data)`
 
@@ -185,6 +261,10 @@ Create a new `AgentSubagent` entity instance. Pass `nil` for no initial data.
 
 Create a new `AgentSubscription` entity instance. Pass `nil` for no initial data.
 
+#### `AgentSwarm(data)`
+
+Create a new `AgentSwarm` entity instance. Pass `nil` for no initial data.
+
 #### `AgentTeammate(data)`
 
 Create a new `AgentTeammate` entity instance. Pass `nil` for no initial data.
@@ -201,6 +281,10 @@ Create a new `AgentThread` entity instance. Pass `nil` for no initial data.
 
 Create a new `AgentTool` entity instance. Pass `nil` for no initial data.
 
+#### `AgentUsage(data)`
+
+Create a new `AgentUsage` entity instance. Pass `nil` for no initial data.
+
 #### `AgentVerifyProject(data)`
 
 Create a new `AgentVerifyProject` entity instance. Pass `nil` for no initial data.
@@ -208,6 +292,10 @@ Create a new `AgentVerifyProject` entity instance. Pass `nil` for no initial dat
 #### `AgentWait(data)`
 
 Create a new `AgentWait` entity instance. Pass `nil` for no initial data.
+
+#### `AgentWebPreview(data)`
+
+Create a new `AgentWebPreview` entity instance. Pass `nil` for no initial data.
 
 #### `AgentWebhook(data)`
 
@@ -241,6 +329,18 @@ Create a new `AgentWorkspace` entity instance. Pass `nil` for no initial data.
 
 Create a new `AgentWritePermission` entity instance. Pass `nil` for no initial data.
 
+#### `Agreement(data)`
+
+Create a new `Agreement` entity instance. Pass `nil` for no initial data.
+
+#### `AgreementAccessRequest(data)`
+
+Create a new `AgreementAccessRequest` entity instance. Pass `nil` for no initial data.
+
+#### `AlertRuleEvent(data)`
+
+Create a new `AlertRuleEvent` entity instance. Pass `nil` for no initial data.
+
 #### `AllocationLog(data)`
 
 Create a new `AllocationLog` entity instance. Pass `nil` for no initial data.
@@ -248,6 +348,14 @@ Create a new `AllocationLog` entity instance. Pass `nil` for no initial data.
 #### `App(data)`
 
 Create a new `App` entity instance. Pass `nil` for no initial data.
+
+#### `AppAccess(data)`
+
+Create a new `AppAccess` entity instance. Pass `nil` for no initial data.
+
+#### `AppAccessJwk(data)`
+
+Create a new `AppAccessJwk` entity instance. Pass `nil` for no initial data.
 
 #### `AppCdn(data)`
 
@@ -321,9 +429,77 @@ Create a new `AppServicePlacement` entity instance. Pass `nil` for no initial da
 
 Create a new `AppStorageResource` entity instance. Pass `nil` for no initial data.
 
+#### `Artefact(data)`
+
+Create a new `Artefact` entity instance. Pass `nil` for no initial data.
+
+#### `ArtefactCommentThread(data)`
+
+Create a new `ArtefactCommentThread` entity instance. Pass `nil` for no initial data.
+
+#### `ArtefactRevision(data)`
+
+Create a new `ArtefactRevision` entity instance. Pass `nil` for no initial data.
+
+#### `ArtefactViewToken(data)`
+
+Create a new `ArtefactViewToken` entity instance. Pass `nil` for no initial data.
+
+#### `Artifact(data)`
+
+Create a new `Artifact` entity instance. Pass `nil` for no initial data.
+
+#### `ArtifactCacheNamespace(data)`
+
+Create a new `ArtifactCacheNamespace` entity instance. Pass `nil` for no initial data.
+
+#### `ArtifactImageRepository(data)`
+
+Create a new `ArtifactImageRepository` entity instance. Pass `nil` for no initial data.
+
+#### `ArtifactPackageMirror(data)`
+
+Create a new `ArtifactPackageMirror` entity instance. Pass `nil` for no initial data.
+
+#### `ArtifactRetentionPolicy(data)`
+
+Create a new `ArtifactRetentionPolicy` entity instance. Pass `nil` for no initial data.
+
 #### `AttachmentPart(data)`
 
 Create a new `AttachmentPart` entity instance. Pass `nil` for no initial data.
+
+#### `AuditEvent(data)`
+
+Create a new `AuditEvent` entity instance. Pass `nil` for no initial data.
+
+#### `Auth(data)`
+
+Create a new `Auth` entity instance. Pass `nil` for no initial data.
+
+#### `AuthCli(data)`
+
+Create a new `AuthCli` entity instance. Pass `nil` for no initial data.
+
+#### `AuthGithub(data)`
+
+Create a new `AuthGithub` entity instance. Pass `nil` for no initial data.
+
+#### `AuthGoogle(data)`
+
+Create a new `AuthGoogle` entity instance. Pass `nil` for no initial data.
+
+#### `AuthOpenai(data)`
+
+Create a new `AuthOpenai` entity instance. Pass `nil` for no initial data.
+
+#### `AuthPasswordReset(data)`
+
+Create a new `AuthPasswordReset` entity instance. Pass `nil` for no initial data.
+
+#### `AuthRegistrationOption(data)`
+
+Create a new `AuthRegistrationOption` entity instance. Pass `nil` for no initial data.
 
 #### `AutomationEvent(data)`
 
@@ -333,6 +509,74 @@ Create a new `AutomationEvent` entity instance. Pass `nil` for no initial data.
 
 Create a new `AutomationRun` entity instance. Pass `nil` for no initial data.
 
+#### `BackendRunnerPool(data)`
+
+Create a new `BackendRunnerPool` entity instance. Pass `nil` for no initial data.
+
+#### `Bazel(data)`
+
+Create a new `Bazel` entity instance. Pass `nil` for no initial data.
+
+#### `BazelActionResult(data)`
+
+Create a new `BazelActionResult` entity instance. Pass `nil` for no initial data.
+
+#### `BazelBackend(data)`
+
+Create a new `BazelBackend` entity instance. Pass `nil` for no initial data.
+
+#### `BazelBlob(data)`
+
+Create a new `BazelBlob` entity instance. Pass `nil` for no initial data.
+
+#### `BazelExecution(data)`
+
+Create a new `BazelExecution` entity instance. Pass `nil` for no initial data.
+
+#### `BazelFindMissingBlob(data)`
+
+Create a new `BazelFindMissingBlob` entity instance. Pass `nil` for no initial data.
+
+#### `Billing(data)`
+
+Create a new `Billing` entity instance. Pass `nil` for no initial data.
+
+#### `BillingAddon(data)`
+
+Create a new `BillingAddon` entity instance. Pass `nil` for no initial data.
+
+#### `BillingCheckoutSession(data)`
+
+Create a new `BillingCheckoutSession` entity instance. Pass `nil` for no initial data.
+
+#### `BillingInvoice(data)`
+
+Create a new `BillingInvoice` entity instance. Pass `nil` for no initial data.
+
+#### `BillingPackage(data)`
+
+Create a new `BillingPackage` entity instance. Pass `nil` for no initial data.
+
+#### `BillingPortalSession(data)`
+
+Create a new `BillingPortalSession` entity instance. Pass `nil` for no initial data.
+
+#### `BillingPrepaidPeriod(data)`
+
+Create a new `BillingPrepaidPeriod` entity instance. Pass `nil` for no initial data.
+
+#### `BillingPrepaidPurchase(data)`
+
+Create a new `BillingPrepaidPurchase` entity instance. Pass `nil` for no initial data.
+
+#### `BillingTokenTopUp(data)`
+
+Create a new `BillingTokenTopUp` entity instance. Pass `nil` for no initial data.
+
+#### `BillingUsage(data)`
+
+Create a new `BillingUsage` entity instance. Pass `nil` for no initial data.
+
 #### `Binary(data)`
 
 Create a new `Binary` entity instance. Pass `nil` for no initial data.
@@ -340,6 +584,10 @@ Create a new `Binary` entity instance. Pass `nil` for no initial data.
 #### `BinaryVersion(data)`
 
 Create a new `BinaryVersion` entity instance. Pass `nil` for no initial data.
+
+#### `BookmarkProtectionRefreshGithubRequiredCheck(data)`
+
+Create a new `BookmarkProtectionRefreshGithubRequiredCheck` entity instance. Pass `nil` for no initial data.
 
 #### `BrowserEgressCandidate(data)`
 
@@ -377,6 +625,10 @@ Create a new `BrowserSessionScreenshot` entity instance. Pass `nil` for no initi
 
 Create a new `BrowserSessionTask` entity instance. Pass `nil` for no initial data.
 
+#### `CacheNamespaceEntry(data)`
+
+Create a new `CacheNamespaceEntry` entity instance. Pass `nil` for no initial data.
+
 #### `CatalogSelector(data)`
 
 Create a new `CatalogSelector` entity instance. Pass `nil` for no initial data.
@@ -397,6 +649,122 @@ Create a new `CdnSpace` entity instance. Pass `nil` for no initial data.
 
 Create a new `CdnSpaceObject` entity instance. Pass `nil` for no initial data.
 
+#### `Change(data)`
+
+Create a new `Change` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeAsset(data)`
+
+Create a new `ChangeAsset` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeComment(data)`
+
+Create a new `ChangeComment` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeFileReviewCheckpoint(data)`
+
+Create a new `ChangeFileReviewCheckpoint` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeGitBranchSubmission(data)`
+
+Create a new `ChangeGitBranchSubmission` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeGitCommitIdentity(data)`
+
+Create a new `ChangeGitCommitIdentity` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeGitPublication(data)`
+
+Create a new `ChangeGitPublication` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeGroupMember(data)`
+
+Create a new `ChangeGroupMember` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeLabel(data)`
+
+Create a new `ChangeLabel` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeLandingHold(data)`
+
+Create a new `ChangeLandingHold` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeLandingRequest(data)`
+
+Create a new `ChangeLandingRequest` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeRequestChange(data)`
+
+Create a new `ChangeRequestChange` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeReviewer(data)`
+
+Create a new `ChangeReviewer` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeTranscript(data)`
+
+Create a new `ChangeTranscript` entity instance. Pass `nil` for no initial data.
+
+#### `ChangeTranscriptSummary(data)`
+
+Create a new `ChangeTranscriptSummary` entity instance. Pass `nil` for no initial data.
+
+#### `CheckpointPrepareChunk(data)`
+
+Create a new `CheckpointPrepareChunk` entity instance. Pass `nil` for no initial data.
+
+#### `CiNode(data)`
+
+Create a new `CiNode` entity instance. Pass `nil` for no initial data.
+
+#### `CiPipeline(data)`
+
+Create a new `CiPipeline` entity instance. Pass `nil` for no initial data.
+
+#### `CiPipelineRun(data)`
+
+Create a new `CiPipelineRun` entity instance. Pass `nil` for no initial data.
+
+#### `CiRunnerPool(data)`
+
+Create a new `CiRunnerPool` entity instance. Pass `nil` for no initial data.
+
+#### `CiStatus(data)`
+
+Create a new `CiStatus` entity instance. Pass `nil` for no initial data.
+
+#### `CliEvent(data)`
+
+Create a new `CliEvent` entity instance. Pass `nil` for no initial data.
+
+#### `CliRelease(data)`
+
+Create a new `CliRelease` entity instance. Pass `nil` for no initial data.
+
+#### `CloudWorkspaceBackupObject(data)`
+
+Create a new `CloudWorkspaceBackupObject` entity instance. Pass `nil` for no initial data.
+
+#### `CodeRuleEvaluation(data)`
+
+Create a new `CodeRuleEvaluation` entity instance. Pass `nil` for no initial data.
+
+#### `ComSiteAccess(data)`
+
+Create a new `ComSiteAccess` entity instance. Pass `nil` for no initial data.
+
+#### `ComSiteAccessSession(data)`
+
+Create a new `ComSiteAccessSession` entity instance. Pass `nil` for no initial data.
+
+#### `CommentThreadComment(data)`
+
+Create a new `CommentThreadComment` entity instance. Pass `nil` for no initial data.
+
+#### `CommitDiff(data)`
+
+Create a new `CommitDiff` entity instance. Pass `nil` for no initial data.
+
 #### `ConnectionRequest(data)`
 
 Create a new `ConnectionRequest` entity instance. Pass `nil` for no initial data.
@@ -404,6 +772,18 @@ Create a new `ConnectionRequest` entity instance. Pass `nil` for no initial data
 #### `ConnectionSource(data)`
 
 Create a new `ConnectionSource` entity instance. Pass `nil` for no initial data.
+
+#### `ContactSubmission(data)`
+
+Create a new `ContactSubmission` entity instance. Pass `nil` for no initial data.
+
+#### `ControlComputer(data)`
+
+Create a new `ControlComputer` entity instance. Pass `nil` for no initial data.
+
+#### `ControlComputerControlOperation(data)`
+
+Create a new `ControlComputerControlOperation` entity instance. Pass `nil` for no initial data.
 
 #### `CoordinationWait(data)`
 
@@ -445,13 +825,109 @@ Create a new `DemoShare` entity instance. Pass `nil` for no initial data.
 
 Create a new `DemoShareSegment` entity instance. Pass `nil` for no initial data.
 
+#### `Deployment(data)`
+
+Create a new `Deployment` entity instance. Pass `nil` for no initial data.
+
 #### `DeploymentDashboardNomad(data)`
 
 Create a new `DeploymentDashboardNomad` entity instance. Pass `nil` for no initial data.
 
+#### `DeploymentDetail(data)`
+
+Create a new `DeploymentDetail` entity instance. Pass `nil` for no initial data.
+
 #### `DeploymentFile(data)`
 
 Create a new `DeploymentFile` entity instance. Pass `nil` for no initial data.
+
+#### `DeploymentLog(data)`
+
+Create a new `DeploymentLog` entity instance. Pass `nil` for no initial data.
+
+#### `DeploymentMetric(data)`
+
+Create a new `DeploymentMetric` entity instance. Pass `nil` for no initial data.
+
+#### `DeploymentPreview(data)`
+
+Create a new `DeploymentPreview` entity instance. Pass `nil` for no initial data.
+
+#### `DeploymentSetting(data)`
+
+Create a new `DeploymentSetting` entity instance. Pass `nil` for no initial data.
+
+#### `DesktopLocalAgentModel(data)`
+
+Create a new `DesktopLocalAgentModel` entity instance. Pass `nil` for no initial data.
+
+#### `DesktopLocalAgentResponse(data)`
+
+Create a new `DesktopLocalAgentResponse` entity instance. Pass `nil` for no initial data.
+
+#### `Device(data)`
+
+Create a new `Device` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceBrowserOperation(data)`
+
+Create a new `DeviceBrowserOperation` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceControlMessage(data)`
+
+Create a new `DeviceControlMessage` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceControlOperation(data)`
+
+Create a new `DeviceControlOperation` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceEnterpriseRelay(data)`
+
+Create a new `DeviceEnterpriseRelay` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceFolderListing(data)`
+
+Create a new `DeviceFolderListing` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceGrant(data)`
+
+Create a new `DeviceGrant` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceInvocation(data)`
+
+Create a new `DeviceInvocation` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceLocalEvent(data)`
+
+Create a new `DeviceLocalEvent` entity instance. Pass `nil` for no initial data.
+
+#### `DevicePairing(data)`
+
+Create a new `DevicePairing` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceProject(data)`
+
+Create a new `DeviceProject` entity instance. Pass `nil` for no initial data.
+
+#### `DeviceScheduledCheckIn(data)`
+
+Create a new `DeviceScheduledCheckIn` entity instance. Pass `nil` for no initial data.
+
+#### `DockerBuilder(data)`
+
+Create a new `DockerBuilder` entity instance. Pass `nil` for no initial data.
+
+#### `DockerBuilderSession(data)`
+
+Create a new `DockerBuilderSession` entity instance. Pass `nil` for no initial data.
+
+#### `DockerBuilderSetting(data)`
+
+Create a new `DockerBuilderSetting` entity instance. Pass `nil` for no initial data.
+
+#### `DomainDnsIntegration(data)`
+
+Create a new `DomainDnsIntegration` entity instance. Pass `nil` for no initial data.
 
 #### `DomainPathRule(data)`
 
@@ -460,6 +936,14 @@ Create a new `DomainPathRule` entity instance. Pass `nil` for no initial data.
 #### `Dream(data)`
 
 Create a new `Dream` entity instance. Pass `nil` for no initial data.
+
+#### `Edge(data)`
+
+Create a new `Edge` entity instance. Pass `nil` for no initial data.
+
+#### `EmailVerification(data)`
+
+Create a new `EmailVerification` entity instance. Pass `nil` for no initial data.
 
 #### `Environment(data)`
 
@@ -493,6 +977,22 @@ Create a new `EnvironmentTestAccount` entity instance. Pass `nil` for no initial
 
 Create a new `Evidence` entity instance. Pass `nil` for no initial data.
 
+#### `ExecutionDesiredState(data)`
+
+Create a new `ExecutionDesiredState` entity instance. Pass `nil` for no initial data.
+
+#### `ExecutionReconcilerTick(data)`
+
+Create a new `ExecutionReconcilerTick` entity instance. Pass `nil` for no initial data.
+
+#### `ExecutionRelease(data)`
+
+Create a new `ExecutionRelease` entity instance. Pass `nil` for no initial data.
+
+#### `ExecutionRuntimeInstance(data)`
+
+Create a new `ExecutionRuntimeInstance` entity instance. Pass `nil` for no initial data.
+
 #### `Exploration(data)`
 
 Create a new `Exploration` entity instance. Pass `nil` for no initial data.
@@ -513,17 +1013,145 @@ Create a new `ExplorationScenario` entity instance. Pass `nil` for no initial da
 
 Create a new `Finding` entity instance. Pass `nil` for no initial data.
 
+#### `Gh(data)`
+
+Create a new `Gh` entity instance. Pass `nil` for no initial data.
+
+#### `GitImport(data)`
+
+Create a new `GitImport` entity instance. Pass `nil` for no initial data.
+
+#### `Github(data)`
+
+Create a new `Github` entity instance. Pass `nil` for no initial data.
+
+#### `GithubApp(data)`
+
+Create a new `GithubApp` entity instance. Pass `nil` for no initial data.
+
+#### `GithubAppImportableRepository(data)`
+
+Create a new `GithubAppImportableRepository` entity instance. Pass `nil` for no initial data.
+
+#### `GithubAppInstallation(data)`
+
+Create a new `GithubAppInstallation` entity instance. Pass `nil` for no initial data.
+
+#### `GithubAppInstallationAuthorization(data)`
+
+Create a new `GithubAppInstallationAuthorization` entity instance. Pass `nil` for no initial data.
+
+#### `GithubAppUserAuthorization(data)`
+
+Create a new `GithubAppUserAuthorization` entity instance. Pass `nil` for no initial data.
+
+#### `GithubCiRepository(data)`
+
+Create a new `GithubCiRepository` entity instance. Pass `nil` for no initial data.
+
+#### `GithubCiRepositoryCompatibilityReport(data)`
+
+Create a new `GithubCiRepositoryCompatibilityReport` entity instance. Pass `nil` for no initial data.
+
 #### `GithubConnection(data)`
 
 Create a new `GithubConnection` entity instance. Pass `nil` for no initial data.
+
+#### `GithubIntegration(data)`
+
+Create a new `GithubIntegration` entity instance. Pass `nil` for no initial data.
+
+#### `GithubOnboarding(data)`
+
+Create a new `GithubOnboarding` entity instance. Pass `nil` for no initial data.
+
+#### `GithubOnboardingBranch(data)`
+
+Create a new `GithubOnboardingBranch` entity instance. Pass `nil` for no initial data.
+
+#### `GithubOnboardingImport(data)`
+
+Create a new `GithubOnboardingImport` entity instance. Pass `nil` for no initial data.
+
+#### `GithubOnboardingImportBatch(data)`
+
+Create a new `GithubOnboardingImportBatch` entity instance. Pass `nil` for no initial data.
+
+#### `GithubOnboardingImportItem(data)`
+
+Create a new `GithubOnboardingImportItem` entity instance. Pass `nil` for no initial data.
+
+#### `GithubPullRequest(data)`
+
+Create a new `GithubPullRequest` entity instance. Pass `nil` for no initial data.
+
+#### `GithubRunnerAdmission(data)`
+
+Create a new `GithubRunnerAdmission` entity instance. Pass `nil` for no initial data.
+
+#### `GithubRunnerCache(data)`
+
+Create a new `GithubRunnerCache` entity instance. Pass `nil` for no initial data.
+
+#### `GithubRunnerEgress(data)`
+
+Create a new `GithubRunnerEgress` entity instance. Pass `nil` for no initial data.
+
+#### `GithubRunnerHistory(data)`
+
+Create a new `GithubRunnerHistory` entity instance. Pass `nil` for no initial data.
+
+#### `GithubRunnerImage(data)`
+
+Create a new `GithubRunnerImage` entity instance. Pass `nil` for no initial data.
+
+#### `GithubRunnerPool(data)`
+
+Create a new `GithubRunnerPool` entity instance. Pass `nil` for no initial data.
+
+#### `GithubRunnerSetup(data)`
+
+Create a new `GithubRunnerSetup` entity instance. Pass `nil` for no initial data.
+
+#### `Gitlab(data)`
+
+Create a new `Gitlab` entity instance. Pass `nil` for no initial data.
+
+#### `GitlabConnection(data)`
+
+Create a new `GitlabConnection` entity instance. Pass `nil` for no initial data.
+
+#### `GitlabImport(data)`
+
+Create a new `GitlabImport` entity instance. Pass `nil` for no initial data.
+
+#### `GitlabOauth(data)`
+
+Create a new `GitlabOauth` entity instance. Pass `nil` for no initial data.
+
+#### `GrantAllAgent(data)`
+
+Create a new `GrantAllAgent` entity instance. Pass `nil` for no initial data.
 
 #### `HostingAppDomain(data)`
 
 Create a new `HostingAppDomain` entity instance. Pass `nil` for no initial data.
 
+#### `IdentityOrganization(data)`
+
+Create a new `IdentityOrganization` entity instance. Pass `nil` for no initial data.
+
 #### `ImageRepository(data)`
 
 Create a new `ImageRepository` entity instance. Pass `nil` for no initial data.
+
+#### `ImageRepositoryTag(data)`
+
+Create a new `ImageRepositoryTag` entity instance. Pass `nil` for no initial data.
+
+#### `ImportBranchPolicy(data)`
+
+Create a new `ImportBranchPolicy` entity instance. Pass `nil` for no initial data.
 
 #### `Integration(data)`
 
@@ -537,6 +1165,22 @@ Create a new `InteractionResponse` entity instance. Pass `nil` for no initial da
 
 Create a new `Invitation` entity instance. Pass `nil` for no initial data.
 
+#### `InvocationControl(data)`
+
+Create a new `InvocationControl` entity instance. Pass `nil` for no initial data.
+
+#### `JobLogChunk(data)`
+
+Create a new `JobLogChunk` entity instance. Pass `nil` for no initial data.
+
+#### `JobStep(data)`
+
+Create a new `JobStep` entity instance. Pass `nil` for no initial data.
+
+#### `JobWorkspace(data)`
+
+Create a new `JobWorkspace` entity instance. Pass `nil` for no initial data.
+
 #### `JourneyVariantReplay(data)`
 
 Create a new `JourneyVariantReplay` entity instance. Pass `nil` for no initial data.
@@ -544,6 +1188,54 @@ Create a new `JourneyVariantReplay` entity instance. Pass `nil` for no initial d
 #### `Knowledge(data)`
 
 Create a new `Knowledge` entity instance. Pass `nil` for no initial data.
+
+#### `Known(data)`
+
+Create a new `Known` entity instance. Pass `nil` for no initial data.
+
+#### `Label(data)`
+
+Create a new `Label` entity instance. Pass `nil` for no initial data.
+
+#### `LeaseArtifact(data)`
+
+Create a new `LeaseArtifact` entity instance. Pass `nil` for no initial data.
+
+#### `LeaseCache(data)`
+
+Create a new `LeaseCache` entity instance. Pass `nil` for no initial data.
+
+#### `LeaseLogChunk(data)`
+
+Create a new `LeaseLogChunk` entity instance. Pass `nil` for no initial data.
+
+#### `LeaseReconciliation(data)`
+
+Create a new `LeaseReconciliation` entity instance. Pass `nil` for no initial data.
+
+#### `LeaseStep(data)`
+
+Create a new `LeaseStep` entity instance. Pass `nil` for no initial data.
+
+#### `LeaseVerifyDiagnostic(data)`
+
+Create a new `LeaseVerifyDiagnostic` entity instance. Pass `nil` for no initial data.
+
+#### `LeaseVerifySecret(data)`
+
+Create a new `LeaseVerifySecret` entity instance. Pass `nil` for no initial data.
+
+#### `LeaseWorkspace(data)`
+
+Create a new `LeaseWorkspace` entity instance. Pass `nil` for no initial data.
+
+#### `LocalAgentDecision(data)`
+
+Create a new `LocalAgentDecision` entity instance. Pass `nil` for no initial data.
+
+#### `LocalAgentResponse(data)`
+
+Create a new `LocalAgentResponse` entity instance. Pass `nil` for no initial data.
 
 #### `LocalThreadDelivery(data)`
 
@@ -556,6 +1248,22 @@ Create a new `LocalThreadOperation` entity instance. Pass `nil` for no initial d
 #### `Location(data)`
 
 Create a new `Location` entity instance. Pass `nil` for no initial data.
+
+#### `LogStreamChunk(data)`
+
+Create a new `LogStreamChunk` entity instance. Pass `nil` for no initial data.
+
+#### `LogoImage(data)`
+
+Create a new `LogoImage` entity instance. Pass `nil` for no initial data.
+
+#### `MarketingSetting(data)`
+
+Create a new `MarketingSetting` entity instance. Pass `nil` for no initial data.
+
+#### `McpOauth(data)`
+
+Create a new `McpOauth` entity instance. Pass `nil` for no initial data.
 
 #### `Me(data)`
 
@@ -581,9 +1289,17 @@ Create a new `Member` entity instance. Pass `nil` for no initial data.
 
 Create a new `Memory` entity instance. Pass `nil` for no initial data.
 
+#### `MergeQueueEntry(data)`
+
+Create a new `MergeQueueEntry` entity instance. Pass `nil` for no initial data.
+
 #### `MergeRequest(data)`
 
 Create a new `MergeRequest` entity instance. Pass `nil` for no initial data.
+
+#### `MergeResolution(data)`
+
+Create a new `MergeResolution` entity instance. Pass `nil` for no initial data.
 
 #### `MessagingConversationMessage(data)`
 
@@ -597,9 +1313,37 @@ Create a new `MessagingConversationUpload` entity instance. Pass `nil` for no in
 
 Create a new `MetricQuery` entity instance. Pass `nil` for no initial data.
 
+#### `MetronomeWebhook(data)`
+
+Create a new `MetronomeWebhook` entity instance. Pass `nil` for no initial data.
+
+#### `ModelSubscriptionAccount(data)`
+
+Create a new `ModelSubscriptionAccount` entity instance. Pass `nil` for no initial data.
+
+#### `ModelSubscriptionAccountConnection(data)`
+
+Create a new `ModelSubscriptionAccountConnection` entity instance. Pass `nil` for no initial data.
+
 #### `NetworkConnection(data)`
 
 Create a new `NetworkConnection` entity instance. Pass `nil` for no initial data.
+
+#### `NetworkingSpace(data)`
+
+Create a new `NetworkingSpace` entity instance. Pass `nil` for no initial data.
+
+#### `Node(data)`
+
+Create a new `Node` entity instance. Pass `nil` for no initial data.
+
+#### `NodeCertificate(data)`
+
+Create a new `NodeCertificate` entity instance. Pass `nil` for no initial data.
+
+#### `NodeLease(data)`
+
+Create a new `NodeLease` entity instance. Pass `nil` for no initial data.
 
 #### `NomadAllocation(data)`
 
@@ -609,9 +1353,113 @@ Create a new `NomadAllocation` entity instance. Pass `nil` for no initial data.
 
 Create a new `NomadLog` entity instance. Pass `nil` for no initial data.
 
+#### `Now(data)`
+
+Create a new `Now` entity instance. Pass `nil` for no initial data.
+
+#### `ObservabilityClickhouseCluster(data)`
+
+Create a new `ObservabilityClickhouseCluster` entity instance. Pass `nil` for no initial data.
+
+#### `ObservabilityQuickwitCluster(data)`
+
+Create a new `ObservabilityQuickwitCluster` entity instance. Pass `nil` for no initial data.
+
+#### `ObservabilitySpace(data)`
+
+Create a new `ObservabilitySpace` entity instance. Pass `nil` for no initial data.
+
+#### `Openapi(data)`
+
+Create a new `Openapi` entity instance. Pass `nil` for no initial data.
+
+#### `OrgInvitation(data)`
+
+Create a new `OrgInvitation` entity instance. Pass `nil` for no initial data.
+
 #### `Organization(data)`
 
 Create a new `Organization` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationApp(data)`
+
+Create a new `OrganizationApp` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationControl(data)`
+
+Create a new `OrganizationControl` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationDevice(data)`
+
+Create a new `OrganizationDevice` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationIdentityCertificate(data)`
+
+Create a new `OrganizationIdentityCertificate` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationInteraction(data)`
+
+Create a new `OrganizationInteraction` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationInvitation(data)`
+
+Create a new `OrganizationInvitation` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationMessageFile(data)`
+
+Create a new `OrganizationMessageFile` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationOidcTrust(data)`
+
+Create a new `OrganizationOidcTrust` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationRunEvent(data)`
+
+Create a new `OrganizationRunEvent` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationRunOutcome(data)`
+
+Create a new `OrganizationRunOutcome` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationRunUsage(data)`
+
+Create a new `OrganizationRunUsage` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationSandbox(data)`
+
+Create a new `OrganizationSandbox` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationSecret(data)`
+
+Create a new `OrganizationSecret` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationServiceAccount(data)`
+
+Create a new `OrganizationServiceAccount` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationSetting(data)`
+
+Create a new `OrganizationSetting` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationSite(data)`
+
+Create a new `OrganizationSite` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationSubscription(data)`
+
+Create a new `OrganizationSubscription` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationTool(data)`
+
+Create a new `OrganizationTool` entity instance. Pass `nil` for no initial data.
+
+#### `OrganizationWorkloadIdentity(data)`
+
+Create a new `OrganizationWorkloadIdentity` entity instance. Pass `nil` for no initial data.
+
+#### `OtelIngest(data)`
+
+Create a new `OtelIngest` entity instance. Pass `nil` for no initial data.
 
 #### `Page(data)`
 
@@ -621,9 +1469,33 @@ Create a new `Page` entity instance. Pass `nil` for no initial data.
 
 Create a new `PageAgent` entity instance. Pass `nil` for no initial data.
 
+#### `PageArtefact(data)`
+
+Create a new `PageArtefact` entity instance. Pass `nil` for no initial data.
+
+#### `PageCiPipelineRun(data)`
+
+Create a new `PageCiPipelineRun` entity instance. Pass `nil` for no initial data.
+
 #### `PageProjectRun(data)`
 
 Create a new `PageProjectRun` entity instance. Pass `nil` for no initial data.
+
+#### `PageRepoVcCommit(data)`
+
+Create a new `PageRepoVcCommit` entity instance. Pass `nil` for no initial data.
+
+#### `PagesBilling(data)`
+
+Create a new `PagesBilling` entity instance. Pass `nil` for no initial data.
+
+#### `PagesGithubOnboarding(data)`
+
+Create a new `PagesGithubOnboarding` entity instance. Pass `nil` for no initial data.
+
+#### `PagesMember(data)`
+
+Create a new `PagesMember` entity instance. Pass `nil` for no initial data.
 
 #### `PagesProjectCredential(data)`
 
@@ -640,6 +1512,30 @@ Create a new `PagesProjectRun` entity instance. Pass `nil` for no initial data.
 #### `PagesProjectScenario(data)`
 
 Create a new `PagesProjectScenario` entity instance. Pass `nil` for no initial data.
+
+#### `PagesRegistry(data)`
+
+Create a new `PagesRegistry` entity instance. Pass `nil` for no initial data.
+
+#### `PagesSession(data)`
+
+Create a new `PagesSession` entity instance. Pass `nil` for no initial data.
+
+#### `Pairing(data)`
+
+Create a new `Pairing` entity instance. Pass `nil` for no initial data.
+
+#### `PairingEvent(data)`
+
+Create a new `PairingEvent` entity instance. Pass `nil` for no initial data.
+
+#### `ParallelV1(data)`
+
+Create a new `ParallelV1` entity instance. Pass `nil` for no initial data.
+
+#### `PatchsetDiff(data)`
+
+Create a new `PatchsetDiff` entity instance. Pass `nil` for no initial data.
 
 #### `PersonalAccessToken(data)`
 
@@ -660,6 +1556,14 @@ Create a new `PreviewSecret` entity instance. Pass `nil` for no initial data.
 #### `PreviewSharingApproval(data)`
 
 Create a new `PreviewSharingApproval` entity instance. Pass `nil` for no initial data.
+
+#### `ProactiveAgentWaitlistEntry(data)`
+
+Create a new `ProactiveAgentWaitlistEntry` entity instance. Pass `nil` for no initial data.
+
+#### `Product(data)`
+
+Create a new `Product` entity instance. Pass `nil` for no initial data.
 
 #### `ProductMapIdentityDecision(data)`
 
@@ -757,6 +1661,14 @@ Create a new `ProjectSetting` entity instance. Pass `nil` for no initial data.
 
 Create a new `PullRequest` entity instance. Pass `nil` for no initial data.
 
+#### `PullRequestAction(data)`
+
+Create a new `PullRequestAction` entity instance. Pass `nil` for no initial data.
+
+#### `PullRequestMagicMerge(data)`
+
+Create a new `PullRequestMagicMerge` entity instance. Pass `nil` for no initial data.
+
 #### `PullRequestSetting(data)`
 
 Create a new `PullRequestSetting` entity instance. Pass `nil` for no initial data.
@@ -768,6 +1680,14 @@ Create a new `PullRequestSettingAddRepository` entity instance. Pass `nil` for n
 #### `PullRequestSettingDetectComment(data)`
 
 Create a new `PullRequestSettingDetectComment` entity instance. Pass `nil` for no initial data.
+
+#### `PullRequestTranscript(data)`
+
+Create a new `PullRequestTranscript` entity instance. Pass `nil` for no initial data.
+
+#### `PullZone(data)`
+
+Create a new `PullZone` entity instance. Pass `nil` for no initial data.
 
 #### `Recorder(data)`
 
@@ -781,9 +1701,73 @@ Create a new `Registry` entity instance. Pass `nil` for no initial data.
 
 Create a new `RegistryV2` entity instance. Pass `nil` for no initial data.
 
+#### `RelayAgentConnection(data)`
+
+Create a new `RelayAgentConnection` entity instance. Pass `nil` for no initial data.
+
 #### `RelayAgentLocalThread(data)`
 
 Create a new `RelayAgentLocalThread` entity instance. Pass `nil` for no initial data.
+
+#### `RelaySignal(data)`
+
+Create a new `RelaySignal` entity instance. Pass `nil` for no initial data.
+
+#### `ReleaseRollout(data)`
+
+Create a new `ReleaseRollout` entity instance. Pass `nil` for no initial data.
+
+#### `Repo(data)`
+
+Create a new `Repo` entity instance. Pass `nil` for no initial data.
+
+#### `RepoAccessToken(data)`
+
+Create a new `RepoAccessToken` entity instance. Pass `nil` for no initial data.
+
+#### `RepoAction(data)`
+
+Create a new `RepoAction` entity instance. Pass `nil` for no initial data.
+
+#### `RepoAgentCheckpoint(data)`
+
+Create a new `RepoAgentCheckpoint` entity instance. Pass `nil` for no initial data.
+
+#### `RepoAgentSession(data)`
+
+Create a new `RepoAgentSession` entity instance. Pass `nil` for no initial data.
+
+#### `RepoBookmarkProtection(data)`
+
+Create a new `RepoBookmarkProtection` entity instance. Pass `nil` for no initial data.
+
+#### `RepoBookmarkProtectionEvent(data)`
+
+Create a new `RepoBookmarkProtectionEvent` entity instance. Pass `nil` for no initial data.
+
+#### `RepoCloudWorkspaceBackup(data)`
+
+Create a new `RepoCloudWorkspaceBackup` entity instance. Pass `nil` for no initial data.
+
+#### `RepoCodeRule(data)`
+
+Create a new `RepoCodeRule` entity instance. Pass `nil` for no initial data.
+
+#### `RepoSetting(data)`
+
+Create a new `RepoSetting` entity instance. Pass `nil` for no initial data.
+
+#### `RepoStat(data)`
+
+Create a new `RepoStat` entity instance. Pass `nil` for no initial data.
+
+#### `RepoVc(data)`
+
+Create a new `RepoVc` entity instance. Pass `nil` for no initial data.
+
+#### `RepoVcCommit(data)`
+
+Create a new `RepoVcCommit` entity instance. Pass `nil` for no initial data.
 
 #### `ReportReplay(data)`
 
@@ -792,6 +1776,66 @@ Create a new `ReportReplay` entity instance. Pass `nil` for no initial data.
 #### `ReportScenario(data)`
 
 Create a new `ReportScenario` entity instance. Pass `nil` for no initial data.
+
+#### `RepositoryAccess(data)`
+
+Create a new `RepositoryAccess` entity instance. Pass `nil` for no initial data.
+
+#### `RepositoryAccessResolve(data)`
+
+Create a new `RepositoryAccessResolve` entity instance. Pass `nil` for no initial data.
+
+#### `RepositoryEvent(data)`
+
+Create a new `RepositoryEvent` entity instance. Pass `nil` for no initial data.
+
+#### `RepositoryImport(data)`
+
+Create a new `RepositoryImport` entity instance. Pass `nil` for no initial data.
+
+#### `RepositoryImportSession(data)`
+
+Create a new `RepositoryImportSession` entity instance. Pass `nil` for no initial data.
+
+#### `RepositoryImportSessionRepository(data)`
+
+Create a new `RepositoryImportSessionRepository` entity instance. Pass `nil` for no initial data.
+
+#### `RepositoryImportSessionSelection(data)`
+
+Create a new `RepositoryImportSessionSelection` entity instance. Pass `nil` for no initial data.
+
+#### `RepositorySandboxEnvironment(data)`
+
+Create a new `RepositorySandboxEnvironment` entity instance. Pass `nil` for no initial data.
+
+#### `RoderCodeRepair(data)`
+
+Create a new `RoderCodeRepair` entity instance. Pass `nil` for no initial data.
+
+#### `RoderCodeRepairSetting(data)`
+
+Create a new `RoderCodeRepairSetting` entity instance. Pass `nil` for no initial data.
+
+#### `RoderMachine(data)`
+
+Create a new `RoderMachine` entity instance. Pass `nil` for no initial data.
+
+#### `RoderRun(data)`
+
+Create a new `RoderRun` entity instance. Pass `nil` for no initial data.
+
+#### `RoderWorkspaceCredential(data)`
+
+Create a new `RoderWorkspaceCredential` entity instance. Pass `nil` for no initial data.
+
+#### `RunArtifact(data)`
+
+Create a new `RunArtifact` entity instance. Pass `nil` for no initial data.
+
+#### `RunJob(data)`
+
+Create a new `RunJob` entity instance. Pass `nil` for no initial data.
 
 #### `RunScenarioRun(data)`
 
@@ -809,6 +1853,30 @@ Create a new `RunSearch` entity instance. Pass `nil` for no initial data.
 
 Create a new `RunUpdate` entity instance. Pass `nil` for no initial data.
 
+#### `RunWorkspaceCredential(data)`
+
+Create a new `RunWorkspaceCredential` entity instance. Pass `nil` for no initial data.
+
+#### `RunnerLease(data)`
+
+Create a new `RunnerLease` entity instance. Pass `nil` for no initial data.
+
+#### `RunnerPoolNodeEnrollmentToken(data)`
+
+Create a new `RunnerPoolNodeEnrollmentToken` entity instance. Pass `nil` for no initial data.
+
+#### `RunnerPoolRunner(data)`
+
+Create a new `RunnerPoolRunner` entity instance. Pass `nil` for no initial data.
+
+#### `RuntimeInstanceHealthSnapshot(data)`
+
+Create a new `RuntimeInstanceHealthSnapshot` entity instance. Pass `nil` for no initial data.
+
+#### `SandboxIntegration(data)`
+
+Create a new `SandboxIntegration` entity instance. Pass `nil` for no initial data.
+
 #### `ScenarioRevision(data)`
 
 Create a new `ScenarioRevision` entity instance. Pass `nil` for no initial data.
@@ -821,21 +1889,169 @@ Create a new `ScenarioRunLesson` entity instance. Pass `nil` for no initial data
 
 Create a new `ScenarioRunScenarioEdit` entity instance. Pass `nil` for no initial data.
 
+#### `SecretGrant(data)`
+
+Create a new `SecretGrant` entity instance. Pass `nil` for no initial data.
+
+#### `SecretVersion(data)`
+
+Create a new `SecretVersion` entity instance. Pass `nil` for no initial data.
+
 #### `ServiceEndpoint(data)`
 
 Create a new `ServiceEndpoint` entity instance. Pass `nil` for no initial data.
+
+#### `Setting(data)`
+
+Create a new `Setting` entity instance. Pass `nil` for no initial data.
+
+#### `SettingMutationLease(data)`
+
+Create a new `SettingMutationLease` entity instance. Pass `nil` for no initial data.
+
+#### `Signal(data)`
+
+Create a new `Signal` entity instance. Pass `nil` for no initial data.
+
+#### `SignalInbound(data)`
+
+Create a new `SignalInbound` entity instance. Pass `nil` for no initial data.
+
+#### `SignalIntegration(data)`
+
+Create a new `SignalIntegration` entity instance. Pass `nil` for no initial data.
+
+#### `SignalIntegrationDelivery(data)`
+
+Create a new `SignalIntegrationDelivery` entity instance. Pass `nil` for no initial data.
+
+#### `SignalIntegrationTarget(data)`
+
+Create a new `SignalIntegrationTarget` entity instance. Pass `nil` for no initial data.
+
+#### `SignalSubscription(data)`
+
+Create a new `SignalSubscription` entity instance. Pass `nil` for no initial data.
+
+#### `Site(data)`
+
+Create a new `Site` entity instance. Pass `nil` for no initial data.
+
+#### `SiteAccessKey(data)`
+
+Create a new `SiteAccessKey` entity instance. Pass `nil` for no initial data.
 
 #### `SitePreview(data)`
 
 Create a new `SitePreview` entity instance. Pass `nil` for no initial data.
 
+#### `SiteSecret(data)`
+
+Create a new `SiteSecret` entity instance. Pass `nil` for no initial data.
+
 #### `SlackChannel(data)`
 
 Create a new `SlackChannel` entity instance. Pass `nil` for no initial data.
 
+#### `SourceConnection(data)`
+
+Create a new `SourceConnection` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceAlertRule(data)`
+
+Create a new `SpaceAlertRule` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceAuditEvent(data)`
+
+Create a new `SpaceAuditEvent` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceDnsRecord(data)`
+
+Create a new `SpaceDnsRecord` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceEnrollmentToken(data)`
+
+Create a new `SpaceEnrollmentToken` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceGateway(data)`
+
+Create a new `SpaceGateway` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceGroup(data)`
+
+Create a new `SpaceGroup` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceGroupMembership(data)`
+
+Create a new `SpaceGroupMembership` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceLogStream(data)`
+
+Create a new `SpaceLogStream` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceMetricSery(data)`
+
+Create a new `SpaceMetricSery` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceOtelCollector(data)`
+
+Create a new `SpaceOtelCollector` entity instance. Pass `nil` for no initial data.
+
+#### `SpacePeer(data)`
+
+Create a new `SpacePeer` entity instance. Pass `nil` for no initial data.
+
+#### `SpacePeerAttachment(data)`
+
+Create a new `SpacePeerAttachment` entity instance. Pass `nil` for no initial data.
+
+#### `SpacePolicy(data)`
+
+Create a new `SpacePolicy` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceSegment(data)`
+
+Create a new `SpaceSegment` entity instance. Pass `nil` for no initial data.
+
+#### `SpaceTraceSpan(data)`
+
+Create a new `SpaceTraceSpan` entity instance. Pass `nil` for no initial data.
+
+#### `Spark(data)`
+
+Create a new `Spark` entity instance. Pass `nil` for no initial data.
+
+#### `SparkAgentIntegration(data)`
+
+Create a new `SparkAgentIntegration` entity instance. Pass `nil` for no initial data.
+
 #### `SparkAgentLocalThread(data)`
 
 Create a new `SparkAgentLocalThread` entity instance. Pass `nil` for no initial data.
+
+#### `SparkAgentSite(data)`
+
+Create a new `SparkAgentSite` entity instance. Pass `nil` for no initial data.
+
+#### `SparkAgentSkill(data)`
+
+Create a new `SparkAgentSkill` entity instance. Pass `nil` for no initial data.
+
+#### `SparkAgentThread(data)`
+
+Create a new `SparkAgentThread` entity instance. Pass `nil` for no initial data.
+
+#### `SparkCredit(data)`
+
+Create a new `SparkCredit` entity instance. Pass `nil` for no initial data.
+
+#### `SparkCreditAgentUsage(data)`
+
+Create a new `SparkCreditAgentUsage` entity instance. Pass `nil` for no initial data.
+
+#### `SparkCreditUsageTotal(data)`
+
+Create a new `SparkCreditUsageTotal` entity instance. Pass `nil` for no initial data.
 
 #### `StaticSite(data)`
 
@@ -849,13 +2065,105 @@ Create a new `StaticSiteDeployment` entity instance. Pass `nil` for no initial d
 
 Create a new `StaticSiteDomain` entity instance. Pass `nil` for no initial data.
 
+#### `StatusChange(data)`
+
+Create a new `StatusChange` entity instance. Pass `nil` for no initial data.
+
+#### `StatusCommit(data)`
+
+Create a new `StatusCommit` entity instance. Pass `nil` for no initial data.
+
+#### `StatusPatchset(data)`
+
+Create a new `StatusPatchset` entity instance. Pass `nil` for no initial data.
+
+#### `StripeWebhook(data)`
+
+Create a new `StripeWebhook` entity instance. Pass `nil` for no initial data.
+
+#### `SubmitTelemetry(data)`
+
+Create a new `SubmitTelemetry` entity instance. Pass `nil` for no initial data.
+
 #### `SubscriptionModel(data)`
 
 Create a new `SubscriptionModel` entity instance. Pass `nil` for no initial data.
 
+#### `SwarmEvent(data)`
+
+Create a new `SwarmEvent` entity instance. Pass `nil` for no initial data.
+
+#### `SwarmLive(data)`
+
+Create a new `SwarmLive` entity instance. Pass `nil` for no initial data.
+
+#### `SwarmNote(data)`
+
+Create a new `SwarmNote` entity instance. Pass `nil` for no initial data.
+
+#### `SwarmTask(data)`
+
+Create a new `SwarmTask` entity instance. Pass `nil` for no initial data.
+
+#### `TaskLease(data)`
+
+Create a new `TaskLease` entity instance. Pass `nil` for no initial data.
+
 #### `ThreadPreview(data)`
 
 Create a new `ThreadPreview` entity instance. Pass `nil` for no initial data.
+
+#### `ThreadPreviewAccess(data)`
+
+Create a new `ThreadPreviewAccess` entity instance. Pass `nil` for no initial data.
+
+#### `ToolFeedback(data)`
+
+Create a new `ToolFeedback` entity instance. Pass `nil` for no initial data.
+
+#### `Transcript(data)`
+
+Create a new `Transcript` entity instance. Pass `nil` for no initial data.
+
+#### `V1Message(data)`
+
+Create a new `V1Message` entity instance. Pass `nil` for no initial data.
+
+#### `VcBranch(data)`
+
+Create a new `VcBranch` entity instance. Pass `nil` for no initial data.
+
+#### `VcBrowser(data)`
+
+Create a new `VcBrowser` entity instance. Pass `nil` for no initial data.
+
+#### `VcChange(data)`
+
+Create a new `VcChange` entity instance. Pass `nil` for no initial data.
+
+#### `VcChangeGroup(data)`
+
+Create a new `VcChangeGroup` entity instance. Pass `nil` for no initial data.
+
+#### `VcFile(data)`
+
+Create a new `VcFile` entity instance. Pass `nil` for no initial data.
+
+#### `VcMergeQueue(data)`
+
+Create a new `VcMergeQueue` entity instance. Pass `nil` for no initial data.
+
+#### `VcStack(data)`
+
+Create a new `VcStack` entity instance. Pass `nil` for no initial data.
+
+#### `VcsNode(data)`
+
+Create a new `VcsNode` entity instance. Pass `nil` for no initial data.
+
+#### `VcsSetting(data)`
+
+Create a new `VcsSetting` entity instance. Pass `nil` for no initial data.
 
 #### `VerificationProjectCredential(data)`
 
@@ -881,6 +2189,14 @@ Create a new `VerifyAppDomain` entity instance. Pass `nil` for no initial data.
 
 Create a new `VerifyBrowserSession` entity instance. Pass `nil` for no initial data.
 
+#### `VerifyEmailVerification(data)`
+
+Create a new `VerifyEmailVerification` entity instance. Pass `nil` for no initial data.
+
+#### `VerifySignalIntegration(data)`
+
+Create a new `VerifySignalIntegration` entity instance. Pass `nil` for no initial data.
+
 #### `VerifyStaticSiteDomain(data)`
 
 Create a new `VerifyStaticSiteDomain` entity instance. Pass `nil` for no initial data.
@@ -889,9 +2205,17 @@ Create a new `VerifyStaticSiteDomain` entity instance. Pass `nil` for no initial
 
 Create a new `VersionLog` entity instance. Pass `nil` for no initial data.
 
+#### `WaitlistApplication(data)`
+
+Create a new `WaitlistApplication` entity instance. Pass `nil` for no initial data.
+
 #### `WebBotAuth(data)`
 
 Create a new `WebBotAuth` entity instance. Pass `nil` for no initial data.
+
+#### `WebhookGitlab(data)`
+
+Create a new `WebhookGitlab` entity instance. Pass `nil` for no initial data.
 
 #### `WorkflowRunStep(data)`
 
@@ -904,6 +2228,22 @@ Create a new `WorkflowRunStopNotice` entity instance. Pass `nil` for no initial 
 #### `WorkflowTriggerSkipped(data)`
 
 Create a new `WorkflowTriggerSkipped` entity instance. Pass `nil` for no initial data.
+
+#### `WorkspaceActivity(data)`
+
+Create a new `WorkspaceActivity` entity instance. Pass `nil` for no initial data.
+
+#### `WorkspaceActivityNotification(data)`
+
+Create a new `WorkspaceActivityNotification` entity instance. Pass `nil` for no initial data.
+
+#### `WorkspaceSpace(data)`
+
+Create a new `WorkspaceSpace` entity instance. Pass `nil` for no initial data.
+
+#### `WorkspaceSpacePreference(data)`
+
+Create a new `WorkspaceSpacePreference` entity instance. Pass `nil` for no initial data.
 
 #### `options_map() -> table`
 
@@ -937,6 +2277,158 @@ Prepare a fetch definition without sending the request. Accepts the
 same parameters as `direct()`.
 
 **Returns:** `table, err`
+
+
+---
+
+## A2aWellKnownEntity
+
+```lua
+local a2a_well_known = client:A2aWellKnown(nil)
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `A2aWellKnownEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AdminOrgEntity
+
+```lua
+local admin_org = client:AdminOrg(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `billing_email` | `string|nil` | Yes |  |
+| `billing_reason` | `string` | No | Required when setting an agreed price |
+| `customize_onboarding_packages` | `boolean` | No |  |
+| `deployment_usage_visibility` | `string` | Yes |  |
+| `deployment_usage_visible` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
+| `monthly_price_dollars` | `string|number` | No | Ongoing USD workspace price, for example '50.00' |
+| `monthly_price_override_cents` | `number|nil` | Yes |  |
+| `name` | `string` | Yes |  |
+| `onboarding_custom_pricing` | `boolean` | No |  |
+| `onboarding_package_keys` | `table|nil` | No | Package keys offered when customizing onboarding. |
+| `owner_email` | `string` | Yes |  |
+| `package_id` | `string|nil` | Yes | Active customer package public ID. |
+| `skip_payment` | `boolean` | No | Grant the selected package as an ongoing complimentary subscription with monthly included usage and package limits. |
+| `slug` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update |
+| --- | --- | --- | --- | --- |
+| `billing_email` | - | - | - | - |
+| `billing_reason` | - | - | - | - |
+| `customize_onboarding_packages` | - | - | - | - |
+| `deployment_usage_visibility` | - | - | - | - |
+| `deployment_usage_visible` | - | - | - | - |
+| `id` | - | - | - | - |
+| `monthly_price_dollars` | - | - | - | - |
+| `monthly_price_override_cents` | - | - | - | - |
+| `name` | - | - | - | - |
+| `onboarding_custom_pricing` | - | - | - | - |
+| `onboarding_package_keys` | - | - | - | - |
+| `owner_email` | - | - | - | - |
+| `package_id` | - | - | Yes | - |
+| `skip_payment` | - | - | - | - |
+| `slug` | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AdminOrg():create({
+  name = --[[ string ]],
+  owner_email = --[[ string ]],
+  slug = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:AdminOrg():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AdminOrg():load({ id = "admin_org_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AdminOrgEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
 
 
 ---
@@ -1103,6 +2595,153 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AgentEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AgentAppEntity
+
+```lua
+local agent_app = client:AgentApp(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `author` | `table` | Yes |  |
+| `can_message` | `boolean` | Yes | The viewer may send input to the author agent |
+| `deployments_count` | `number` | Yes | Increases with every deploy of the site |
+| `description` | `string` | Yes |  |
+| `hidden_install_count` | `number` | Yes | Installs by agents the viewer cannot open |
+| `id` | `string` | Yes |  |
+| `install_count` | `number` | Yes |  |
+| `install_targets` | `table` | Yes | Active agents the viewer owns or manages, which they can install apps on |
+| `installed_by` | `table` | Yes |  |
+| `installed_target_ids` | `table` | Yes | Install targets of the viewer that have this app installed |
+| `items` | `table` | Yes |  |
+| `mcp_url` | `string|nil` | Yes |  |
+| `next_cursor` | `string|nil` | Yes | Pass as cursor to load older apps |
+| `owner` | `table` | Yes | The person who controls the author agent |
+| `thread` | `any` | Yes | The thread that published the app, when the viewer can open the author agent |
+| `title` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `visibility` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:AgentApp():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentApp():load({ id = "agent_app_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentAppEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AgentAppInstallEntity
+
+```lua
+local agent_app_install = client:AgentAppInstall(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+| `installed` | `boolean` | Yes |  |
+
+### Operations
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentAppInstall():remove({ id = "agent_app_install_id", agent_app_id = "agent_app_id", organization_id = "organization_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentAppInstall():update({
+  id = "agent_app_install_id",
+  agent_app_id = "agent_app_id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentAppInstallEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -1418,49 +3057,48 @@ local agent_connection = client:AgentConnection(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `agent_card_url` | `string` | Yes |  |
-| `auth_scheme` | `string` | Yes |  |
-| `can_configure` | `boolean` | Yes |  |
-| `can_disconnect` | `boolean` | Yes |  |
-| `can_setup` | `boolean` | Yes |  |
+| `actions` | `table` | Yes |  |
+| `activity` | `table` | Yes |  |
+| `admin_disabled_at` | `string|nil` | No |  |
+| `agent_tools` | `boolean` | No |  |
+| `authentication` | `string` | Yes |  |
+| `authorized_at` | `string|nil` | Yes |  |
+| `can_create_account` | `boolean` | No | Whether another account can be created directly from this provider. |
+| `capabilities` | `table` | Yes |  |
+| `catalog_section` | `string` | No | Server-owned grouping in the agent integration catalog. |
+| `category` | `string` | No | Short product label, such as CRM or Email. |
+| `certification` | `string` | Yes |  |
+| `checked_at` | `string|nil` | Yes |  |
 | `connection` | `table` | Yes |  |
-| `credential` | `string|nil` | No | Write-only outbound key. |
-| `error_code` | `string|nil` | Yes |  |
-| `expected_generation` | `number` | Yes |  |
+| `consent` | `table|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `creation_key` | `string` | No | Reuse the same key to recover the account after an interrupted response. |
+| `custodian_id` | `string|nil` | Yes |  |
+| `description` | `string` | No | One-line catalog description of the app. |
+| `disabled_reason` | `string|nil` | No |  |
+| `failure_code` | `string|nil` | Yes |  |
 | `generation` | `number` | Yes |  |
+| `grants` | `table` | Yes |  |
+| `grants_pagination` | `table` | Yes |  |
 | `id` | `string` | Yes |  |
+| `limits` | `table` | Yes |  |
 | `name` | `string` | Yes |  |
-| `remote_agent` | `string|nil` | Yes |  |
-| `requester_id` | `string` | Yes |  |
-| `retired_at` | `string|nil` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `owner_name` | `string` | No |  |
+| `ownership_kind` | `string` | Yes |  |
+| `pagination` | `table` | Yes |  |
+| `policy_digest` | `string` | Yes |  |
+| `provider` | `table` | Yes |  |
+| `provider_disabled_reason` | `string|nil` | No |  |
+| `provider_identity` | `table` | Yes |  |
 | `revoked_at` | `string|nil` | Yes |  |
-| `scope_key` | `string` | Yes |  |
-| `source_operation_id` | `string|nil` | Yes |  |
-| `state` | `string` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `agent_card_url` | - | - | - | - | - |
-| `auth_scheme` | - | - | - | - | - |
-| `can_configure` | - | - | - | - | - |
-| `can_disconnect` | - | - | - | - | - |
-| `can_setup` | - | - | - | - | - |
-| `connection` | - | - | - | - | - |
-| `credential` | - | - | - | - | - |
-| `error_code` | - | - | - | - | - |
-| `expected_generation` | - | - | - | - | - |
-| `generation` | - | - | - | - | - |
-| `id` | - | - | - | - | - |
-| `name` | - | - | - | - | - |
-| `remote_agent` | - | - | Yes | Yes | - |
-| `requester_id` | - | - | - | - | - |
-| `retired_at` | - | - | - | - | - |
-| `revoked_at` | - | - | - | - | - |
-| `scope_key` | - | - | - | - | - |
-| `source_operation_id` | - | - | Yes | - | - |
-| `state` | - | - | - | - | - |
+| `schema_version` | `number` | Yes |  |
+| `status` | `string` | Yes |  |
+| `toolkit` | `string` | Yes |  |
+| `triggers` | `table` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `user_id` | `string` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -1470,11 +3108,9 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 
 ```lua
 local result, err = client:AgentConnection():create({
-  agent_id = --[[ string ]],
   organization_id = --[[ string ]],
-  agent_card_url = --[[ string ]],
-  auth_scheme = --[[ string ]],
   name = --[[ string ]],
+  toolkit = --[[ string ]],
 })
 ```
 
@@ -1483,7 +3119,7 @@ local result, err = client:AgentConnection():create({
 List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:AgentConnection():list({ agent_id = "example", organization_id = "example" })
+local results, err = client:AgentConnection():list({ organization_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -1491,7 +3127,19 @@ local results, err = client:AgentConnection():list({ agent_id = "example", organ
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local result, err = client:AgentConnection():load({ id = "agent_connection_id", agent_id = "agent_id", organization_id = "organization_id" })
+local result, err = client:AgentConnection():load({ id = "agent_connection_id", organization_id = "organization_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentConnection():patch({
+  id = "agent_connection_id",
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
 ```
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -1499,7 +3147,7 @@ local result, err = client:AgentConnection():load({ id = "agent_connection_id", 
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
 
 ```lua
-local result, err = client:AgentConnection():remove({ id = "agent_connection_id", agent_id = "agent_id", organization_id = "organization_id" })
+local result, err = client:AgentConnection():remove({ id = "agent_connection_id", organization_id = "organization_id" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -1509,7 +3157,6 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```lua
 local result, err = client:AgentConnection():update({
   id = "agent_connection_id",
-  agent_id = "agent_id",
   organization_id = "organization_id",
   -- Fields to update
 })
@@ -1536,6 +3183,429 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AgentConnectionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionDelegationEntity
+
+```lua
+local agent_connection_delegation = client:AgentConnectionDelegation(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `authorized_by_id` | `string` | Yes |  |
+| `automation_connection_grant_id` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `member_name` | `string` | Yes |  |
+| `revoked_at` | `string|nil` | Yes |  |
+| `roles` | `table` | Yes |  |
+| `usable` | `boolean` | Yes |  |
+| `user_id` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:AgentConnectionDelegation():list({ agent_connection_id = "example", organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentConnectionDelegationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionGrantEntity
+
+```lua
+local agent_connection_grant = client:AgentConnectionGrant(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `actions` | `table` | Yes |  |
+| `agent_connection_id` | `string` | Yes |  |
+| `automation_id` | `string` | Yes |  |
+| `connection_generation` | `number` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `revision` | `number` | Yes |  |
+| `revoked_at` | `string|nil` | Yes |  |
+| `status` | `string` | Yes |  |
+| `usable` | `boolean` | Yes |  |
+| `user_id` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:AgentConnectionGrant():list({ agent_connection_id = "example", organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentConnectionGrantEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionResourceEntity
+
+```lua
+local agent_connection_resource = client:AgentConnectionResource(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cursor` | `string|nil` | No |  |
+| `next_cursor` | `string|nil` | Yes |  |
+| `query` | `string` | No |  |
+| `resources` | `table` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentConnectionResource():create({
+  agent_connection_id = --[[ string ]],
+  organization_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentConnectionResourceEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionSafetyControlEntity
+
+```lua
+local agent_connection_safety_control = client:AgentConnectionSafetyControl(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `admin_disabled_at` | `string|nil` | No |  |
+| `authorized_at` | `string|nil` | Yes |  |
+| `checked_at` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `custodian_id` | `string|nil` | Yes |  |
+| `failure_code` | `string|nil` | Yes |  |
+| `generation` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `owner_name` | `string` | No |  |
+| `ownership_kind` | `string` | Yes |  |
+| `provider_disabled_reason` | `string|nil` | No |  |
+| `provider_identity` | `table` | Yes |  |
+| `revoked_at` | `string|nil` | Yes |  |
+| `status` | `string` | Yes |  |
+| `toolkit` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `user_id` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:AgentConnectionSafetyControl():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentConnectionSafetyControlEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionTriggerSubscriptionEntity
+
+```lua
+local agent_connection_trigger_subscription = client:AgentConnectionTriggerSubscription(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_connection_id` | `string` | Yes |  |
+| `configuration` | `table` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `defaults` | `table` | Yes |  |
+| `delivery` | `string` | Yes |  |
+| `enabled` | `boolean` | Yes |  |
+| `failure_code` | `string|nil` | Yes |  |
+| `failure_request_id` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `latency` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `reconcile_at` | `string` | Yes |  |
+| `reconciliation_uncertain` | `boolean` | Yes |  |
+| `remote_enabled` | `boolean|nil` | Yes |  |
+| `replacement_id` | `string|nil` | Yes |  |
+| `retired_at` | `string|nil` | Yes |  |
+| `retirement_completed_at` | `string|nil` | Yes |  |
+| `schema` | `table` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `toolkit` | `string` | Yes |  |
+| `toolkit_version` | `string` | Yes |  |
+| `trigger_slug` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `version` | `string` | Yes |  |
+| `waiting_for_retirement` | `boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentConnectionTriggerSubscription():create({
+  agent_connection_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  configuration = --[[ table ]],
+  trigger_slug = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:AgentConnectionTriggerSubscription():list({ agent_connection_id = "example", organization_id = "example" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentConnectionTriggerSubscription():patch({
+  id = "agent_connection_trigger_subscription_id",
+  agent_connection_id = "agent_connection_id",
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentConnectionTriggerSubscription():remove({ id = "agent_connection_trigger_subscription_id", agent_connection_id = "agent_connection_id", organization_id = "organization_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentConnectionTriggerSubscription():update({
+  id = "agent_connection_trigger_subscription_id",
+  agent_connection_id = "agent_connection_id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentConnectionTriggerSubscriptionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AgentContextCheckpointEntity
+
+```lua
+local agent_context_checkpoint = client:AgentContextCheckpoint(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentContextCheckpointEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -1728,6 +3798,52 @@ Return the entity name.
 
 ---
 
+## AgentEventEntity
+
+```lua
+local agent_event = client:AgentEvent(nil)
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:AgentEvent():list({ agent_id = "example", organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentEventEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## AgentFileEntity
 
 ```lua
@@ -1862,28 +3978,35 @@ local agent_integration = client:AgentIntegration(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `account_counts` | `table` | Yes | Accounts the viewer can see per toolkit, across all account pages. |
-| `accounts_path` | `string` | Yes | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
-| `added_toolkits` | `table` | Yes | Apps with a connected or connecting account the viewer can see. |
+| `can_cancel_sign_in` | `boolean` | No | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `boolean` | Yes |  |
+| `can_disconnect` | `boolean` | Yes |  |
+| `can_enable` | `boolean` | Yes |  |
 | `can_manage` | `boolean` | Yes |  |
-| `can_manage_organization` | `boolean` | Yes |  |
+| `can_manage_sharing` | `boolean` | Yes |  |
+| `can_reconnect` | `boolean` | Yes |  |
+| `can_sync` | `boolean` | Yes | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
 | `catalog` | `table` | Yes |  |
-| `connect_as` | `string|nil` | Yes | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
-| `connect_as_by_toolkit` | `table` | Yes | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_by` | `string|nil` | Yes | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `boolean` | Yes | True when the viewer is the person whose sign-in this account is. |
 | `connected_counts` | `table` | Yes | Signed-in accounts per toolkit, across all account pages. |
-| `connection_id` | `string` | Yes |  |
 | `connections` | `table` | Yes |  |
-| `email` | `table` | Yes | A native agent's own email address. |
-| `enabled` | `boolean` | Yes |  |
-| `enabled_toolkits` | `table` | Yes | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `creation_key` | `string` | No | Stable identity for retrying this creation; retain it after an uncertain response. |
+| `creation_key_digest` | `string|nil` | No | SHA-256 of the unfinished setup key for its original creator. |
 | `generation` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
 | `pagination` | `table` | Yes |  |
 | `pending_counts` | `table` | Yes | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
-| `personal_creation_key_supported` | `boolean` | No | The personal account creation endpoint honors a creation key. |
-| `private_agent` | `boolean` | Yes | Only the agent's owner can chat with it. |
-| `shared_agent_personal_accounts_enabled` | `boolean` | Yes | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
-| `slack` | `table` | Yes |  |
-| `webhook_connections` | `table` | Yes |  |
-| `webhooks_available` | `boolean` | Yes |  |
+| `provider_disabled_reason` | `string|nil` | Yes |  |
+| `provider_identity` | `table` | Yes |  |
+| `provider_name` | `string|nil` | Yes | The app's display name; null for a custom MCP server, which uses the account name. |
+| `reference` | `string` | Yes | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `string` | No | Agent account audience, including legacy personal and paused access. |
+| `status` | `string` | Yes |  |
+| `team_sharing_enabled` | `boolean` | Yes |  |
+| `team_sharing_version` | `number` | Yes |  |
+| `toolkit` | `string` | Yes |  |
 
 ### Operations
 
@@ -1893,11 +4016,9 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 
 ```lua
 local result, err = client:AgentIntegration():create({
-  agent_id = --[[ string ]],
   organization_id = --[[ string ]],
-  connection_id = --[[ string ]],
-  enabled = --[[ boolean ]],
-  generation = --[[ number ]],
+  name = --[[ string ]],
+  toolkit = --[[ string ]],
 })
 ```
 
@@ -1906,7 +4027,23 @@ local result, err = client:AgentIntegration():create({
 List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:AgentIntegration():list({ agent_id = "example", organization_id = "example" })
+local results, err = client:AgentIntegration():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentIntegration():load({ id = "agent_integration_id", organization_id = "organization_id" })
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentIntegration():remove({ id = "agent_integration_id", organization_id = "organization_id" })
 ```
 
 ### Common Methods
@@ -1930,6 +4067,124 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AgentIntegrationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AgentIntegrationAccountEntity
+
+```lua
+local agent_integration_account = client:AgentIntegrationAccount(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_cancel_sign_in` | `boolean` | No | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `boolean` | Yes |  |
+| `can_disconnect` | `boolean` | Yes |  |
+| `can_enable` | `boolean` | Yes |  |
+| `can_manage_sharing` | `boolean` | Yes |  |
+| `can_reconnect` | `boolean` | Yes |  |
+| `can_sync` | `boolean` | Yes | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
+| `connected_by` | `string|nil` | Yes | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `boolean` | Yes | True when the viewer is the person whose sign-in this account is. |
+| `creation_key_digest` | `string|nil` | No | SHA-256 of the unfinished setup key for its original creator. |
+| `generation` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `provider_disabled_reason` | `string|nil` | Yes |  |
+| `provider_identity` | `table` | Yes |  |
+| `reference` | `string` | Yes | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `string` | No | Agent account audience, including legacy personal and paused access. |
+| `status` | `string` | Yes |  |
+| `team_sharing_enabled` | `boolean` | Yes |  |
+| `team_sharing_version` | `number` | Yes |  |
+| `toolkit` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:AgentIntegrationAccount():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentIntegrationAccountEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AgentIntegrationCallbackEntity
+
+```lua
+local agent_integration_callback = client:AgentIntegrationCallback(nil)
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentIntegrationCallback():load({ connection_id = "connection_id", state = "state" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentIntegrationCallbackEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -2730,6 +4985,162 @@ Return the entity name.
 
 ---
 
+## AgentRelayFileGrantEntity
+
+```lua
+local agent_relay_file_grant = client:AgentRelayFileGrant(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access_mode` | `string` | Yes |  |
+| `connection_generation` | `number` | Yes |  |
+| `connection_id` | `string` | Yes |  |
+| `connection_name` | `string` | Yes | Current display name of the selected account. |
+| `created_at` | `string` | Yes |  |
+| `expected_generation` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `resource_id` | `string` | Yes |  |
+| `resource_kind` | `string` | Yes |  |
+| `revoked` | `boolean` | Yes |  |
+| `revoked_at` | `string|nil` | Yes |  |
+| `snapshot_supported` | `boolean` | No | Whether this selected permission supports snapshot controls. |
+| `source_operation_id` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentRelayFileGrant():create({
+  organization_id = --[[ string ]],
+  access_mode = --[[ string ]],
+  connection_id = --[[ string ]],
+  expected_generation = --[[ number ]],
+  key = --[[ string ]],
+  resource_id = --[[ string ]],
+  resource_kind = --[[ string ]],
+  source_operation_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:AgentRelayFileGrant():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentRelayFileGrant():load({ id = "agent_relay_file_grant_id", organization_id = "organization_id" })
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentRelayFileGrant():remove({ id = "agent_relay_file_grant_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentRelayFileGrantEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AgentRelayFileGrantAccountEntity
+
+```lua
+local agent_relay_file_grant_account = client:AgentRelayFileGrantAccount(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access_modes` | `table` | No | Supported file access modes. |
+| `generation` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `resource_kind` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:AgentRelayFileGrantAccount():list({ organization_id = "example", source_operation_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentRelayFileGrantAccountEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## AgentRepositoryEntity
 
 ```lua
@@ -2846,6 +5257,52 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AgentResourceEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AgentRoderEntity
+
+```lua
+local agent_roder = client:AgentRoder(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentRoderEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -3049,6 +5506,183 @@ Return the entity name.
 
 ---
 
+## AgentSessionEntity
+
+```lua
+local agent_session = client:AgentSession(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentSessionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AgentSessionCheckpointEntity
+
+```lua
+local agent_session_checkpoint = client:AgentSessionCheckpoint(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentSessionCheckpoint():create({
+  agent_session_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:AgentSessionCheckpoint():list({ agent_session_id = "example", organization_id = "example", repo_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentSessionCheckpoint():load({ id = "agent_session_checkpoint_id", agent_session_id = "agent_session_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentSessionCheckpointEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AgentSessionRoderHandoffEntity
+
+```lua
+local agent_session_roder_handoff = client:AgentSessionRoderHandoff(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `checkpoint_id` | `string` | No | Public id of the checkpoint to hand off. |
+| `purpose` | `string` | No | Handoff intent; defaults to `continue`. |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentSessionRoderHandoff():create({
+  agent_session_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentSessionRoderHandoffEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## AgentSettingEntity
 
 ```lua
@@ -3168,23 +5802,39 @@ local agent_site = client:AgentSite(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `deployed_at` | `string` | Yes |  |
-| `deployments_count` | `number` | Yes |  |
-| `hostname` | `string` | Yes |  |
-| `https` | `string` | Yes | Whether the organization's certificate serves this site over HTTPS |
+| `author` | `table` | Yes |  |
+| `can_message` | `boolean` | Yes | The viewer may send input to the author agent |
+| `deployments_count` | `number` | Yes | Increases with every deploy of the site |
+| `description` | `string|nil` | Yes | The team app description, when the site is a team app |
+| `icon_url` | `string|nil` | Yes | Path of the site's generated icon, versioned by the picture; null until one is generated |
 | `id` | `string` | Yes |  |
-| `name` | `string` | Yes |  |
+| `name` | `string` | Yes | The site's DNS label |
+| `owner` | `table` | Yes | The person who controls the author agent |
+| `thread` | `any` | Yes | The thread that published the site as a team app, when the viewer can open the author agent |
+| `title` | `string` | Yes | The team app title, or the site name read as words |
 | `url` | `string` | Yes |  |
 | `visibility` | `string` | Yes |  |
 
 ### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
 
 #### `list(reqmatch, ctrl) -> any, err`
 
 List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:AgentSite():list({ agent_id = "example", organization_id = "example" })
+local results, err = client:AgentSite():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentSite():load({ id = "agent_site_id", organization_id = "organization_id" })
 ```
 
 ### Common Methods
@@ -3227,15 +5877,19 @@ local agent_skill = client:AgentSkill(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `available` | `boolean` | Yes |  |
-| `can_configure` | `boolean` | Yes |  |
-| `can_manage` | `boolean` | Yes |  |
-| `configuration_state` | `string` | No | The requested managed skill selection is awaiting runtime qualification. |
-| `description` | `string` | Yes |  |
-| `enabled` | `boolean` | Yes |  |
-| `name` | `string` | Yes |  |
+| `agents` | `table` | Yes | Active V2 agents the viewer can see whose owner is still a member |
+| `audience` | `table` | Yes |  |
+| `can_manage_library` | `boolean` | Yes |  |
+| `content` | `string` | Yes | The skill's SKILL.md |
+| `files` | `table` | Yes |  |
+| `id` | `string` | No |  |
+| `marketplace` | `string` | No |  |
+| `pending` | `boolean` | Yes | Some agent is still applying a change; check again shortly |
+| `plugin` | `string` | No | The marketplace entry id |
+| `revision` | `string` | Yes | The commit SHA returned by preview |
+| `skill` | `table` | Yes |  |
 | `skills` | `table` | Yes |  |
-| `version` | `string` | Yes |  |
+| `source` | `string` | No | owner/repo, a GitHub or skills.sh link, or npx skills add owner/repo [--skill NAME ...] |
 
 ### Operations
 
@@ -3245,11 +5899,10 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 
 ```lua
 local result, err = client:AgentSkill():create({
-  agent_id = --[[ string ]],
   organization_id = --[[ string ]],
-  enabled = --[[ boolean ]],
-  name = --[[ string ]],
-  version = --[[ string ]],
+  audience = --[[ table ]],
+  revision = --[[ string ]],
+  skills = --[[ table ]],
 })
 ```
 
@@ -3258,8 +5911,28 @@ local result, err = client:AgentSkill():create({
 List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:AgentSkill():list({ agent_id = "example", organization_id = "example" })
+local results, err = client:AgentSkill():list({ organization_id = "example" })
 ```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentSkill():load({ id = "agent_skill_id", organization_id = "organization_id" })
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentSkill():remove({ id = "agent_skill_id", organization_id = "organization_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
 
 ### Common Methods
 
@@ -3453,6 +6126,181 @@ Return the entity name.
 
 ---
 
+## AgentSwarmEntity
+
+```lua
+local agent_swarm = client:AgentSwarm(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `base_bookmark` | `string|nil` | Yes | An existing bookmark to start from and land on; the plain form of `target.kind = bookmark`. |
+| `base_ref` | `string|nil` | Yes |  |
+| `base_revision` | `string|nil` | Yes | 64-hex commit id; skips the head lookup |
+| `budget` | `table` | Yes |  |
+| `canceled_at` | `string|nil` | Yes |  |
+| `canceled_count` | `number` | Yes |  |
+| `concurrency_key` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `creator_user_id` | `string|nil` | Yes |  |
+| `deadline_at` | `string|nil` | Yes |  |
+| `display_id` | `number` | Yes |  |
+| `done_count` | `number` | Yes |  |
+| `environment` | `table` | Yes |  |
+| `failed_count` | `number` | Yes |  |
+| `finished_at` | `string|nil` | Yes |  |
+| `finished_at_label` | `string|nil` | Yes |  |
+| `github` | `table` | Yes |  |
+| `goal` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `model` | `string|nil` | Yes |  |
+| `model_provider` | `string|nil` | Yes |  |
+| `number` | `number` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `organization_slug` | `string|nil` | Yes |  |
+| `outcome` | `string|nil` | Yes |  |
+| `phase` | `string|nil` | Yes |  |
+| `policy` | `table` | Yes | Every key is optional and defaults to AgentSwarm::POLICY_DEFAULTS. |
+| `queued_at` | `string|nil` | Yes |  |
+| `queued_at_label` | `string|nil` | Yes |  |
+| `repository` | `string` | No | Repository slug inside the organization |
+| `repository_id` | `string|nil` | Yes |  |
+| `repository_slug` | `string|nil` | Yes |  |
+| `reserved` | `table` | Yes |  |
+| `scheduler_generation` | `number` | Yes |  |
+| `skipped_count` | `number` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `started_at` | `string|nil` | Yes |  |
+| `started_at_label` | `string|nil` | Yes |  |
+| `status` | `string` | Yes |  |
+| `summary` | `table` | Yes |  |
+| `target` | `table` | Yes | Where the swarm lands. |
+| `task_count` | `number` | Yes |  |
+| `task_template_json` | `string|nil` | Yes |  |
+| `tasks` | `table` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+| `usage` | `table` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update |
+| --- | --- | --- | --- | --- |
+| `base_bookmark` | - | - | Yes | - |
+| `base_ref` | - | - | Yes | - |
+| `base_revision` | - | - | Yes | - |
+| `budget` | - | - | Yes | - |
+| `canceled_at` | - | - | - | - |
+| `canceled_count` | - | - | - | - |
+| `concurrency_key` | - | - | Yes | - |
+| `created_at` | - | - | - | - |
+| `created_at_label` | - | - | - | - |
+| `creator_user_id` | - | - | - | - |
+| `deadline_at` | - | - | - | - |
+| `display_id` | - | - | - | - |
+| `done_count` | - | - | - | - |
+| `environment` | - | - | Yes | - |
+| `failed_count` | - | - | - | - |
+| `finished_at` | - | - | - | - |
+| `finished_at_label` | - | - | - | - |
+| `github` | - | - | - | - |
+| `goal` | - | - | Yes | - |
+| `id` | - | - | - | - |
+| `model` | - | - | Yes | - |
+| `model_provider` | - | - | Yes | - |
+| `number` | - | - | - | - |
+| `organization_id` | - | - | - | - |
+| `organization_slug` | - | - | - | - |
+| `outcome` | - | - | - | - |
+| `phase` | - | - | - | - |
+| `policy` | - | - | Yes | - |
+| `queued_at` | - | - | Yes | - |
+| `queued_at_label` | - | - | - | - |
+| `repository` | - | - | - | - |
+| `repository_id` | - | - | - | - |
+| `repository_slug` | - | - | - | - |
+| `reserved` | - | - | - | - |
+| `scheduler_generation` | - | - | - | - |
+| `skipped_count` | - | - | - | - |
+| `slug` | - | - | Yes | - |
+| `started_at` | - | - | - | - |
+| `started_at_label` | - | - | - | - |
+| `status` | - | - | - | - |
+| `summary` | - | - | - | - |
+| `target` | - | - | - | - |
+| `task_count` | - | - | - | - |
+| `task_template_json` | - | - | Yes | - |
+| `tasks` | - | - | Yes | - |
+| `updated_at` | - | - | - | - |
+| `updated_at_label` | - | - | - | - |
+| `usage` | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentSwarm():create({
+  organization_slug = --[[ string|nil ]],
+  target = --[[ table ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:AgentSwarm():list({ org = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentSwarm():load({ id = "agent_swarm_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentSwarmEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## AgentTeammateEntity
 
 ```lua
@@ -3561,30 +6409,7 @@ local agent_thread = client:AgentThread(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_count` | `number|nil` | No | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` | `boolean` | Yes |  |
-| `execution` | `any` | No |  |
-| `first_input` | `any` | No |  |
-| `first_input_key` | `string` | No | Idempotency-Key that finds the first message through input_delivery. |
-| `first_input_requester_membership_id` | `string` | No | Membership the first message was sent as, for input_delivery. |
 | `id` | `string` | No |  |
-| `inherit_context` | `boolean` | No | Include the source conversation through its last completed reply. |
-| `local_activities` | `table` | Yes | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | `number` | Yes | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` | `string|nil` | Yes |  |
-| `local_scope_key` | `string|nil` | Yes |  |
-| `local_status_pending` | `boolean` | Yes | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` | `table` | Yes |  |
-| `main_thread_id` | `string` | Yes |  |
-| `message` | `string` | No | The thread's first message. |
-| `next_cursor` | `string|nil` | Yes |  |
-| `parent_conversation_id` | `string` | No | Optional source conversation belonging to this agent. |
-| `requester_membership_id` | `string` | No |  |
-| `selected_thread` | `any` | Yes |  |
-| `thread` | `table` | Yes |  |
-| `threads` | `table` | Yes |  |
-| `title` | `string` | No |  |
-| `total_archived_count` | `number|nil` | Yes | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
 
 ### Operations
 
@@ -3594,8 +6419,6 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 
 ```lua
 local result, err = client:AgentThread():create({
-  agent_id = --[[ string ]],
-  organization_id = --[[ string ]],
 })
 ```
 
@@ -3604,7 +6427,15 @@ local result, err = client:AgentThread():create({
 List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:AgentThread():list({ agent_id = "example", organization_id = "example" })
+local results, err = client:AgentThread():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentThread():load({ id = "agent_thread_id" })
 ```
 
 ### Common Methods
@@ -3682,6 +6513,65 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AgentToolEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AgentUsageEntity
+
+```lua
+local agent_usage = client:AgentUsage(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `days` | `table` | Yes | One cell per (day, model), ascending by day then model. |
+| `ended_at` | `string` | Yes |  |
+| `pricing_version` | `string` | Yes | The price table in effect now; rows carry the version they were priced at. |
+| `source` | `string` | Yes | Which store served the rows. |
+| `started_at` | `string` | Yes |  |
+| `user_days` | `table` | Yes | One cell per (day, person), ascending by day. |
+| `users` | `table` | Yes | One row per (person, model), descending by tokens. |
+| `window` | `string` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgentUsage():load({ organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentUsageEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -3800,6 +6690,61 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AgentWaitEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AgentWebPreviewEntity
+
+```lua
+local agent_web_preview = client:AgentWebPreview(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `description` | `string|nil` | Yes |  |
+| `icon_url` | `string|nil` | Yes |  |
+| `image_url` | `string|nil` | Yes |  |
+| `title` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:AgentWebPreview():list({ token = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgentWebPreviewEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -4448,6 +7393,190 @@ Return the entity name.
 
 ---
 
+## AgreementEntity
+
+```lua
+local agreement = client:Agreement(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `body` | `string|nil` | Yes | Markdown text, or null until staff grant the organization access. |
+| `effective_on_label` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `summary` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `version` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:Agreement():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgreementEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AgreementAccessRequestEntity
+
+```lua
+local agreement_access_request = client:AgreementAccessRequest(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AgreementAccessRequest():create({
+  organization_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AgreementAccessRequestEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AlertRuleEventEntity
+
+```lua
+local alert_rule_event = client:AlertRuleEvent(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AlertRuleEvent():create({
+  alert_rule_id = --[[ string ]],
+  space_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:AlertRuleEvent():list({ alert_rule_id = "example", space_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AlertRuleEvent():load({ id = "alert_rule_event_id", alert_rule_id = "alert_rule_id", space_id = "space_id" })
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AlertRuleEvent():remove({ id = "alert_rule_event_id", alert_rule_id = "alert_rule_id", space_id = "space_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AlertRuleEventEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## AllocationLogEntity
 
 ```lua
@@ -4639,6 +7768,94 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AppEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AppAccessEntity
+
+```lua
+local app_access = client:AppAccess(nil)
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AppAccessEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AppAccessJwkEntity
+
+```lua
+local app_access_jwk = client:AppAccessJwk(nil)
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:AppAccessJwk():list()
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AppAccessJwkEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -6857,6 +10074,876 @@ Return the entity name.
 
 ---
 
+## ArtefactEntity
+
+```lua
+local artefact = client:Artefact(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `automation_invocation_id` | `string|nil` | No |  |
+| `byte_size` | `number` | Yes |  |
+| `checksum_sha256` | `string` | Yes |  |
+| `content_type` | `string` | Yes |  |
+| `created_at` | `string|nil` | No |  |
+| `created_by_user_id` | `string|nil` | No |  |
+| `description` | `string|nil` | No |  |
+| `document_key` | `string` | No | Stable document identity shared by all revisions. |
+| `entrypoint` | `string` | No |  |
+| `expires_at` | `string|nil` | No |  |
+| `filename` | `string` | Yes |  |
+| `files` | `table` | No |  |
+| `harness` | `string|nil` | No |  |
+| `harness_version` | `string|nil` | No |  |
+| `id` | `string` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `model` | `string|nil` | No |  |
+| `organization_id` | `string` | Yes |  |
+| `published_at` | `string|nil` | No |  |
+| `repository_id` | `string|nil` | No |  |
+| `slug` | `string` | Yes |  |
+| `source` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `vcs_agent_checkpoint_id` | `string|nil` | No |  |
+| `vcs_agent_session_id` | `string|nil` | No |  |
+| `version` | `number` | Yes |  |
+| `view_url` | `string` | Yes |  |
+| `web_url` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- | --- |
+| `automation_invocation_id` | - | - | - | - | - | - |
+| `byte_size` | - | - | - | - | - | - |
+| `checksum_sha256` | - | - | - | - | - | - |
+| `content_type` | - | - | - | - | - | - |
+| `created_at` | - | - | - | - | - | - |
+| `created_by_user_id` | - | - | - | - | - | - |
+| `description` | - | - | - | - | - | - |
+| `document_key` | - | - | - | - | - | - |
+| `entrypoint` | - | - | - | - | - | - |
+| `expires_at` | - | - | - | - | - | - |
+| `filename` | - | - | - | - | - | - |
+| `files` | - | - | - | - | - | - |
+| `harness` | - | - | - | - | - | - |
+| `harness_version` | - | - | - | - | - | - |
+| `id` | - | - | - | - | - | - |
+| `kind` | - | - | - | - | Yes | - |
+| `model` | - | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - | - |
+| `published_at` | - | - | - | - | - | - |
+| `repository_id` | - | - | - | - | - | - |
+| `slug` | - | - | - | - | - | - |
+| `source` | - | - | - | - | - | - |
+| `status` | - | - | - | - | - | - |
+| `title` | - | - | - | - | Yes | - |
+| `vcs_agent_checkpoint_id` | - | - | - | - | - | - |
+| `vcs_agent_session_id` | - | - | - | - | - | - |
+| `version` | - | - | - | - | - | - |
+| `view_url` | - | - | - | - | - | - |
+| `web_url` | - | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Artefact():create({
+  organization_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:Artefact():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Artefact():load({ id = "artefact_id", organization_id = "organization_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Artefact():patch({
+  id = "artefact_id",
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Artefact():remove({ id = "artefact_id", organization_id = "organization_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Artefact():update({
+  id = "artefact_id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ArtefactEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ArtefactCommentThreadEntity
+
+```lua
+local artefact_comment_thread = client:ArtefactCommentThread(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `anchor` | `string` | Yes | The `#anchor` written into the Markdown. |
+| `body` | `string` | Yes |  |
+| `comments` | `table` | Yes |  |
+| `id` | `string` | Yes | The anchor key. |
+| `quote` | `string` | No |  |
+| `resolved` | `boolean` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | update |
+| --- | --- | --- | --- |
+| `anchor` | - | - | - |
+| `body` | - | - | - |
+| `comments` | - | - | - |
+| `id` | - | - | - |
+| `quote` | Yes | - | Yes |
+| `resolved` | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtefactCommentThread():create({
+  artefact_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  anchor = --[[ string ]],
+  body = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ArtefactCommentThread():list({ artefact_id = "example", organization_id = "example" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtefactCommentThread():update({
+  artefact_id = "artefact_id",
+  id = "id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ArtefactCommentThreadEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ArtefactRevisionEntity
+
+```lua
+local artefact_revision = client:ArtefactRevision(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `base_version` | `number` | Yes | The newest version the editor started from. |
+| `content` | `string` | Yes | Markdown, including CriticMarkup suggestions and comment anchors. |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtefactRevision():create({
+  artefact_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  base_version = --[[ number ]],
+  content = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ArtefactRevisionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ArtefactViewTokenEntity
+
+```lua
+local artefact_view_token = client:ArtefactViewToken(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `expires_in` | `number` | Yes |  |
+| `file` | `string` | No | Exact manifest path. |
+| `organization_slug` | `string` | No | If provided, must match the organization addressed by the route. |
+| `version` | `number` | No |  |
+| `viewer_url` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtefactViewToken():create({
+  artefact_id = --[[ string ]],
+  organization_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ArtefactViewTokenEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ArtifactEntity
+
+```lua
+local artifact = client:Artifact(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Artifact():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:Artifact():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Artifact():load({ id = "artifact_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Artifact():patch({
+  id = "artifact_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Artifact():remove({ id = "artifact_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Artifact():update({
+  id = "artifact_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ArtifactEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ArtifactCacheNamespaceEntity
+
+```lua
+local artifact_cache_namespace = client:ArtifactCacheNamespace(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactCacheNamespace():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ArtifactCacheNamespace():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactCacheNamespace():load({ id = "artifact_cache_namespace_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactCacheNamespace():patch({
+  id = "artifact_cache_namespace_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactCacheNamespace():remove({ id = "artifact_cache_namespace_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactCacheNamespace():update({
+  id = "artifact_cache_namespace_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ArtifactCacheNamespaceEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ArtifactImageRepositoryEntity
+
+```lua
+local artifact_image_repository = client:ArtifactImageRepository(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactImageRepository():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ArtifactImageRepository():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactImageRepository():load({ id = "artifact_image_repository_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactImageRepository():patch({
+  id = "artifact_image_repository_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactImageRepository():remove({ id = "artifact_image_repository_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactImageRepository():update({
+  id = "artifact_image_repository_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ArtifactImageRepositoryEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ArtifactPackageMirrorEntity
+
+```lua
+local artifact_package_mirror = client:ArtifactPackageMirror(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactPackageMirror():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ArtifactPackageMirror():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactPackageMirror():load({ id = "artifact_package_mirror_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactPackageMirror():patch({
+  id = "artifact_package_mirror_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactPackageMirror():remove({ id = "artifact_package_mirror_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactPackageMirror():update({
+  id = "artifact_package_mirror_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ArtifactPackageMirrorEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ArtifactRetentionPolicyEntity
+
+```lua
+local artifact_retention_policy = client:ArtifactRetentionPolicy(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactRetentionPolicy():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ArtifactRetentionPolicy():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactRetentionPolicy():load({ id = "artifact_retention_policy_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactRetentionPolicy():patch({
+  id = "artifact_retention_policy_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactRetentionPolicy():remove({ id = "artifact_retention_policy_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ArtifactRetentionPolicy():update({
+  id = "artifact_retention_policy_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ArtifactRetentionPolicyEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## AttachmentPartEntity
 
 ```lua
@@ -6906,6 +10993,413 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AttachmentPartEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AuditEventEntity
+
+```lua
+local audit_event = client:AuditEvent(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `actor_kind` | `string` | Yes |  |
+| `actor_user_id` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `observability_space_id` | `string|nil` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `payload` | `any` | Yes |  |
+| `request_id` | `string|nil` | Yes |  |
+| `severity` | `string` | Yes |  |
+| `subject_id` | `string` | Yes |  |
+| `subject_kind` | `string` | Yes |  |
+| `subject_name` | `string|nil` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:AuditEvent():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AuditEventEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AuthEntity
+
+```lua
+local auth = client:Auth(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AuthEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AuthCliEntity
+
+```lua
+local auth_cli = client:AuthCli(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AuthCliEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AuthGithubEntity
+
+```lua
+local auth_github = client:AuthGithub(nil)
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AuthGithubEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AuthGoogleEntity
+
+```lua
+local auth_google = client:AuthGoogle(nil)
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AuthGoogleEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AuthOpenaiEntity
+
+```lua
+local auth_openai = client:AuthOpenai(nil)
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AuthOpenaiEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AuthPasswordResetEntity
+
+```lua
+local auth_password_reset = client:AuthPasswordReset(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email` | `string` | Yes |  |
+| `message` | `string` | Yes |  |
+| `password` | `string` | Yes |  |
+| `token` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AuthPasswordReset():create({
+  email = --[[ string ]],
+})
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:AuthPasswordReset():update({
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AuthPasswordResetEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## AuthRegistrationOptionEntity
+
+```lua
+local auth_registration_option = client:AuthRegistrationOption(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email_password_signup_enabled` | `boolean` | Yes |  |
+| `openai_sign_in_enabled` | `boolean` | No | Whether ChatGPT identity sign-in is configured and enabled for rollout. |
+| `turnstile_site_key` | `string|nil` | Yes |  |
+| `waitlist_enabled` | `boolean` | Yes | New public signups require waitlist approval when enabled. |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:AuthRegistrationOption():list()
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AuthRegistrationOptionEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -7073,6 +11567,1104 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `AutomationRunEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BackendRunnerPoolEntity
+
+```lua
+local backend_runner_pool = client:BackendRunnerPool(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BackendRunnerPool():create({
+  backend_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:BackendRunnerPool():list({ backend_id = "example" })
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BackendRunnerPool():remove({ id = "backend_runner_pool_id", backend_id = "backend_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BackendRunnerPoolEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BazelEntity
+
+```lua
+local bazel = client:Bazel(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BazelEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BazelActionResultEntity
+
+```lua
+local bazel_action_result = client:BazelActionResult(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BazelActionResult():load({ id = "bazel_action_result_id", action_result_id = "action_result_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BazelActionResult():update({
+  id = "bazel_action_result_id",
+  action_result_id = "action_result_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BazelActionResultEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BazelBackendEntity
+
+```lua
+local bazel_backend = client:BazelBackend(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BazelBackend():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:BazelBackend():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BazelBackend():load({ id = "bazel_backend_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BazelBackend():patch({
+  id = "bazel_backend_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BazelBackend():remove({ id = "bazel_backend_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BazelBackend():update({
+  id = "bazel_backend_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BazelBackendEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BazelBlobEntity
+
+```lua
+local bazel_blob = client:BazelBlob(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BazelBlob():load({ id = "bazel_blob_id", blob_id = "blob_id", hash = "hash" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BazelBlob():update({
+  id = "bazel_blob_id",
+  blob_id = "blob_id",
+  hash = "hash",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BazelBlobEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BazelExecutionEntity
+
+```lua
+local bazel_execution = client:BazelExecution(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BazelExecution():create({
+})
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BazelExecution():load({ id = "bazel_execution_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BazelExecutionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BazelFindMissingBlobEntity
+
+```lua
+local bazel_find_missing_blob = client:BazelFindMissingBlob(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BazelFindMissingBlob():create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BazelFindMissingBlobEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BillingEntity
+
+```lua
+local billing = client:Billing(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `table` | Yes |  |
+| `breakdown` | `any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` | Yes |  |
+| `can_manage_contact` | `boolean` | Yes |  |
+| `can_manage_extra_spend` | `boolean` | Yes |  |
+| `can_manage_local_subscription` | `boolean` | Yes |  |
+| `can_manage_payment_method` | `boolean` | Yes |  |
+| `can_set_up_billing` | `boolean` | Yes |  |
+| `customer` | `any` | Yes |  |
+| `deployment_usage_visible` | `boolean` | Yes |  |
+| `entitlements` | `table` | Yes |  |
+| `extra_spend_enabled` | `boolean` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `any` | Yes |  |
+| `prepaid` | `any` | Yes |  |
+| `preview` | `any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `table` | Yes |  |
+| `stripe` | `table` | Yes |  |
+| `subscription` | `any` | Yes |  |
+| `token_account` | `table` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Billing():load({ organization_id = "organization_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BillingAddonEntity
+
+```lua
+local billing_addon = client:BillingAddon(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `table` | Yes |  |
+| `breakdown` | `any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` | Yes |  |
+| `can_manage_contact` | `boolean` | Yes |  |
+| `can_manage_extra_spend` | `boolean` | Yes |  |
+| `can_manage_local_subscription` | `boolean` | Yes |  |
+| `can_manage_payment_method` | `boolean` | Yes |  |
+| `can_set_up_billing` | `boolean` | Yes |  |
+| `customer` | `any` | Yes |  |
+| `deployment_usage_visible` | `boolean` | Yes |  |
+| `entitlements` | `table` | Yes |  |
+| `extra_spend_enabled` | `boolean` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Yes | Whether the `billing` feature is on for this organization. |
+| `id` | `string` | No |  |
+| `organization_id` | `string` | Yes |  |
+| `package` | `any` | Yes |  |
+| `prepaid` | `any` | Yes |  |
+| `preview` | `any` | Yes | Metronome draft invoice and credits, or null. |
+| `quantity` | `number` | Yes |  |
+| `storage_usage` | `table` | Yes |  |
+| `stripe` | `table` | Yes |  |
+| `subscription` | `any` | Yes |  |
+| `token_account` | `table` | Yes |  |
+
+### Operations
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BillingAddon():update({
+  id = "id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingAddonEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BillingCheckoutSessionEntity
+
+```lua
+local billing_checkout_session = client:BillingCheckoutSession(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cancel_url` | `string` | No |  |
+| `coupon_code` | `string` | No |  |
+| `entry_point` | `string` | No | Where the owner chose to pay, for product analytics. |
+| `package_key` | `string` | No |  |
+| `package_revision` | `number` | No |  |
+| `success_url` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BillingCheckoutSession():create({
+  organization_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingCheckoutSessionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BillingInvoiceEntity
+
+```lua
+local billing_invoice = client:BillingInvoice(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `amount_due_cents` | `number` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `currency` | `string` | Yes |  |
+| `hosted_invoice_url` | `string|nil` | No |  |
+| `id` | `string` | Yes |  |
+| `invoice_pdf` | `string|nil` | No |  |
+| `metronome_invoice_id` | `string|nil` | No | Metronome's id for the invoice it pushed |
+| `number` | `string|nil` | No |  |
+| `period_ended_at` | `string|nil` | No |  |
+| `period_started_at` | `string|nil` | No |  |
+| `status` | `string` | Yes |  |
+| `total_cents` | `number` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:BillingInvoice():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingInvoiceEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BillingPackageEntity
+
+```lua
+local billing_package = client:BillingPackage(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `table` | Yes |  |
+| `base_price_cents` | `number` | Yes |  |
+| `billing_interval` | `string` | Yes |  |
+| `billing_policy` | `string` | Yes |  |
+| `ci_included_spend_cents` | `number` | No | Monthly USD credit in cents shared by all CI charges, including runners, cache, storage and add-ons; replaces CI unit allowances when positive. |
+| `currency` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `max_seats` | `number|nil` | No |  |
+| `name` | `string` | Yes |  |
+| `pay_as_you_go_enabled` | `boolean` | Yes |  |
+| `rates` | `table` | Yes |  |
+| `revision` | `number` | Yes |  |
+| `roder_daily_run_limit` | `number` | No |  |
+| `roder_run_concurrency_limit` | `number` | No |  |
+| `seat_price_cents` | `number` | Yes |  |
+| `trial_days` | `number` | Yes |  |
+| `visibility` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:BillingPackage():list()
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingPackageEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BillingPortalSessionEntity
+
+```lua
+local billing_portal_session = client:BillingPortalSession(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `return_url` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BillingPortalSession():create({
+  organization_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingPortalSessionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BillingPrepaidPeriodEntity
+
+```lua
+local billing_prepaid_period = client:BillingPrepaidPeriod(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_at` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `currency` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_error` | `string|nil` | Yes |  |
+| `minutes` | `number` | Yes |  |
+| `net_amount_cents` | `number` | Yes |  |
+| `paid_at` | `string|nil` | Yes |  |
+| `paid_total_cents` | `number|nil` | Yes |  |
+| `payment_action_url` | `string|nil` | Yes |  |
+| `period_ended_at` | `string` | Yes |  |
+| `period_started_at` | `string` | Yes |  |
+| `receipt_url` | `string|nil` | Yes |  |
+| `refunded_net_cents` | `number` | Yes |  |
+| `state` | `string` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BillingPrepaidPeriod():load({ id = "billing_prepaid_period_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingPrepaidPeriodEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BillingPrepaidPurchaseEntity
+
+```lua
+local billing_prepaid_purchase = client:BillingPrepaidPurchase(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_at` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `currency` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_error` | `string|nil` | Yes |  |
+| `minutes` | `number` | Yes |  |
+| `net_amount_cents` | `number` | Yes |  |
+| `paid_at` | `string|nil` | Yes |  |
+| `paid_total_cents` | `number|nil` | Yes |  |
+| `payment_action_url` | `string|nil` | Yes |  |
+| `prepaid` | `table` | Yes |  |
+| `purchase` | `table` | Yes |  |
+| `receipt_url` | `string|nil` | Yes |  |
+| `refunded_net_cents` | `number` | Yes |  |
+| `request_key` | `string` | Yes |  |
+| `state` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BillingPrepaidPurchase():create({
+  organization_id = --[[ string ]],
+  minutes = --[[ number ]],
+  request_key = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:BillingPrepaidPurchase():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BillingPrepaidPurchase():load({ id = "billing_prepaid_purchase_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingPrepaidPurchaseEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BillingTokenTopUpEntity
+
+```lua
+local billing_token_top_up = client:BillingTokenTopUp(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `amount_cents` | `number` | Yes |  |
+| `request_key` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BillingTokenTopUp():create({
+  organization_id = --[[ string ]],
+  amount_cents = --[[ number ]],
+  request_key = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingTokenTopUpEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BillingUsageEntity
+
+```lua
+local billing_usage = client:BillingUsage(nil)
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingUsageEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -7282,6 +12874,85 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `BinaryVersionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BookmarkProtectionRefreshGithubRequiredCheckEntity
+
+```lua
+local bookmark_protection_refresh_github_required_check = client:BookmarkProtectionRefreshGithubRequiredCheck(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `exclusions` | `table` | Yes |  |
+| `fetched_at` | `string|nil` | No |  |
+| `fetched_at_label` | `string|nil` | No |  |
+| `github_branch` | `string` | Yes |  |
+| `github_owner` | `string|nil` | No |  |
+| `github_repository_name` | `string|nil` | No |  |
+| `last_error` | `string|nil` | No |  |
+| `proven` | `boolean` | Yes |  |
+| `requirements` | `table` | Yes |  |
+| `stale` | `boolean` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | create |
+| --- | --- |
+| `exclusions` | - |
+| `fetched_at` | - |
+| `fetched_at_label` | - |
+| `github_branch` | Yes |
+| `github_owner` | - |
+| `github_repository_name` | - |
+| `last_error` | - |
+| `proven` | - |
+| `requirements` | - |
+| `stale` | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BookmarkProtectionRefreshGithubRequiredCheck():create({
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BookmarkProtectionRefreshGithubRequiredCheckEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -7921,6 +13592,108 @@ Return the entity name.
 
 ---
 
+## CacheNamespaceEntryEntity
+
+```lua
+local cache_namespace_entry = client:CacheNamespaceEntry(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CacheNamespaceEntry():create({
+  cache_namespace_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:CacheNamespaceEntry():list({ cache_namespace_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CacheNamespaceEntry():load({ id = "cache_namespace_entry_id", cache_namespace_id = "cache_namespace_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CacheNamespaceEntry():patch({
+  id = "cache_namespace_entry_id",
+  cache_namespace_id = "cache_namespace_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CacheNamespaceEntry():remove({ id = "cache_namespace_entry_id", cache_namespace_id = "cache_namespace_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CacheNamespaceEntry():update({
+  id = "cache_namespace_entry_id",
+  cache_namespace_id = "cache_namespace_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CacheNamespaceEntryEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## CatalogSelectorEntity
 
 ```lua
@@ -8351,6 +14124,2004 @@ Return the entity name.
 
 ---
 
+## ChangeEntity
+
+```lua
+local change = client:Change(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `counts` | `table` | Yes | Counts for each state across the active non-state filters. |
+| `filters` | `table` | Yes |  |
+| `github_sync` | `table` | Yes |  |
+| `result` | `any` | Yes | What this page is a page of. |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:Change():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ChangeAssetEntity
+
+```lua
+local change_asset = client:ChangeAsset(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `alias` | `string` | Yes |  |
+| `byte_size` | `number` | Yes |  |
+| `checksum_md5` | `string` | Yes |  |
+| `checksum_sha256` | `string` | Yes |  |
+| `content_type` | `string` | Yes |  |
+| `filename` | `string` | Yes |  |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ChangeAsset():create({
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+  alias = --[[ string ]],
+  byte_size = --[[ number ]],
+  checksum_md5 = --[[ string ]],
+  checksum_sha256 = --[[ string ]],
+  content_type = --[[ string ]],
+  filename = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeAssetEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ChangeCommentEntity
+
+```lua
+local change_comment = client:ChangeComment(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `body` | `string` | Yes |  |
+| `capabilities` | `table` | Yes |  |
+| `change_id` | `string|nil` | No |  |
+| `created_at` | `string|nil` | No |  |
+| `created_at_label` | `string|nil` | No |  |
+| `id` | `string` | Yes |  |
+| `kind` | `string|nil` | No |  |
+| `line` | `number|nil` | No |  |
+| `outdated` | `boolean` | Yes |  |
+| `parent_comment_id` | `string|nil` | No |  |
+| `patchset_id` | `string|nil` | No |  |
+| `patchset_number` | `number|nil` | Yes |  |
+| `path` | `string|nil` | No |  |
+| `replies` | `table` | No |  |
+| `resolved` | `boolean` | Yes |  |
+| `resolved_at` | `string|nil` | No |  |
+| `resolved_at_label` | `string|nil` | No |  |
+| `resolved_by` | `table` | Yes |  |
+| `side` | `string|nil` | No |  |
+| `updated_at` | `string|nil` | No |  |
+| `updated_at_label` | `string|nil` | No |  |
+| `user` | `table` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `body` | - | - |
+| `capabilities` | - | - |
+| `change_id` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `id` | - | - |
+| `kind` | - | - |
+| `line` | - | - |
+| `outdated` | - | - |
+| `parent_comment_id` | - | - |
+| `patchset_id` | Yes | - |
+| `patchset_number` | - | - |
+| `path` | - | - |
+| `replies` | - | - |
+| `resolved` | - | - |
+| `resolved_at` | - | - |
+| `resolved_at_label` | - | - |
+| `resolved_by` | - | - |
+| `side` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+| `user` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ChangeComment():create({
+  change_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+  body = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ChangeComment():list({ change_id = "example", organization_id = "example", repo_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeCommentEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ChangeFileReviewCheckpointEntity
+
+```lua
+local change_file_review_checkpoint = client:ChangeFileReviewCheckpoint(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `patchset_id` | `string` | Yes |  |
+| `path` | `string` | Yes |  |
+| `request_id` | `string` | Yes |  |
+| `review_action` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ChangeFileReviewCheckpoint():create({
+  change_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+  patchset_id = --[[ string ]],
+  path = --[[ string ]],
+  request_id = --[[ string ]],
+  review_action = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeFileReviewCheckpointEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ChangeGitBranchSubmissionEntity
+
+```lua
+local change_git_branch_submission = client:ChangeGitBranchSubmission(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ChangeGitBranchSubmission():create({
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeGitBranchSubmissionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ChangeGitCommitIdentityEntity
+
+```lua
+local change_git_commit_identity = client:ChangeGitCommitIdentity(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_id` | `string` | Yes |  |
+| `change_number` | `number` | Yes |  |
+| `git_commit_id` | `string` | Yes |  |
+| `git_commit_ids` | `table` | Yes |  |
+| `id` | `string` | No |  |
+| `identities` | `table` | Yes |  |
+| `missing_git_commit_ids` | `table` | Yes |  |
+| `patchset_number` | `number` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ChangeGitCommitIdentity():create({
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+  git_commit_ids = --[[ table ]],
+})
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ChangeGitCommitIdentity():load({ id = "change_git_commit_identity_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeGitCommitIdentityEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ChangeGitPublicationEntity
+
+```lua
+local change_git_publication = client:ChangeGitPublication(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `expected_target_commit_id` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `operation_key` | `string` | Yes |  |
+| `publication_id` | `string` | Yes |  |
+| `request` | `table` | Yes |  |
+| `request_digest` | `string` | Yes |  |
+| `revisions` | `table` | Yes |  |
+| `status` | `string` | Yes |  |
+| `transfer_refs` | `table` | No | Immutable receipt-owned refs returned by preparation; transfer each exact Git target before polling readiness. |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ChangeGitPublication():create({
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+  operation_key = --[[ string ]],
+  request = --[[ table ]],
+})
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ChangeGitPublication():load({ id = "change_git_publication_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeGitPublicationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ChangeGroupMemberEntity
+
+```lua
+local change_group_member = client:ChangeGroupMember(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_id` | `string` | Yes | Change number |
+| `changes` | `table` | Yes |  |
+| `id` | `string` | No |  |
+| `name` | `string` | No |  |
+| `number` | `number` | No |  |
+| `status` | `string` | Yes |  |
+| `title` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ChangeGroupMember():create({
+  change_group_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+  change_id = --[[ string ]],
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ChangeGroupMember():remove({ id = "change_group_member_id", change_group_id = "change_group_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeGroupMemberEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ChangeLabelEntity
+
+```lua
+local change_label = client:ChangeLabel(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accepted` | `boolean` | No |  |
+| `add` | `table` | No |  |
+| `approval` | `table` | Yes |  |
+| `assets` | `table` | No | Proof assets referenced from the description as `vex-asset:<id>`. |
+| `author` | `any` | No | Human user summary or organization automation identity. |
+| `capabilities` | `table` | Yes |  |
+| `change_key` | `string` | No |  |
+| `checks` | `table` | No |  |
+| `checks_status` | `string` | No |  |
+| `comments` | `table` | No |  |
+| `comments_count` | `number` | No |  |
+| `comments_count_label` | `string` | No |  |
+| `commit_message` | `string|nil` | No |  |
+| `current_patchset` | `table` | Yes |  |
+| `description` | `string|nil` | No |  |
+| `draft` | `boolean` | No |  |
+| `folded_into_number` | `number|nil` | No |  |
+| `github_projection_status` | `string|nil` | No |  |
+| `github_pull_request` | `table` | Yes |  |
+| `github_pull_requests` | `table` | No |  |
+| `group` | `table|nil` | No |  |
+| `has_description` | `boolean` | No | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
+| `id` | `string` | Yes |  |
+| `jj_change_id` | `string|nil` | No |  |
+| `labels` | `table` | No |  |
+| `landable` | `boolean` | No |  |
+| `landed_by` | `table` | Yes |  |
+| `number` | `number` | Yes |  |
+| `orphaned` | `boolean` | No |  |
+| `orphaned_at` | `string` | No |  |
+| `orphaned_at_label` | `string` | No |  |
+| `orphaned_reason` | `string` | No |  |
+| `parent_change_id` | `string|nil` | No |  |
+| `parent_change_number` | `number|nil` | No |  |
+| `patchset_number` | `number|nil` | No |  |
+| `patchsets` | `table` | No |  |
+| `primary_status` | `string|nil` | No |  |
+| `public_id` | `string` | No |  |
+| `relation_chain` | `table` | No |  |
+| `remove` | `table` | No |  |
+| `requested_changes` | `boolean` | No |  |
+| `restack_state` | `string` | No |  |
+| `reviewer_candidates` | `table` | No | Organization members available to the reviewer picker on this page. |
+| `reviewers` | `table` | No |  |
+| `stable_change_id` | `string` | No |  |
+| `stack` | `any` | No |  |
+| `status` | `string` | Yes |  |
+| `target_branch` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `unresolved_comments_count_label` | `string` | No |  |
+| `url` | `string` | No |  |
+| `votes` | `table` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ChangeLabel():update({
+  change_id = "change_id",
+  organization_id = "organization_id",
+  repo_id = "repo_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeLabelEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ChangeLandingHoldEntity
+
+```lua
+local change_landing_hold = client:ChangeLandingHold(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeLandingHoldEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ChangeLandingRequestEntity
+
+```lua
+local change_landing_request = client:ChangeLandingRequest(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_ids` | `table` | No |  |
+| `count` | `number` | Yes |  |
+| `defer_until_ready` | `boolean` | No | Admit the request while approvals or checks are pending |
+| `expected_requirement_version` | `string` | No |  |
+| `expected_scope_version` | `string` | No |  |
+| `head_change_id` | `string` | No |  |
+| `id` | `string|nil` | No |  |
+| `numbers` | `table` | Yes |  |
+| `override_acknowledged` | `boolean` | No |  |
+| `override_codes` | `table` | No |  |
+| `position` | `number` | No |  |
+| `priority` | `string` | No |  |
+| `scope_version` | `string` | Yes |  |
+| `state` | `string` | Yes |  |
+| `version` | `number` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ChangeLandingRequest():create({
+  change_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ChangeLandingRequest():remove({ id = "change_landing_request_id", change_id = "change_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeLandingRequestEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ChangeRequestChangeEntity
+
+```lua
+local change_request_change = client:ChangeRequestChange(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `message` | `string|nil` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ChangeRequestChange():create({
+  change_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeRequestChangeEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ChangeReviewerEntity
+
+```lua
+local change_reviewer = client:ChangeReviewer(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `add` | `table` | No |  |
+| `email` | `string` | Yes |  |
+| `name` | `string|nil` | Yes |  |
+| `remove` | `table` | No |  |
+| `removed_reviewers` | `table` | Yes |  |
+| `requested_reviewers` | `table` | Yes |  |
+| `reviewers` | `table` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ChangeReviewer():list({ change_id = "example", organization_id = "example", repo_id = "example" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ChangeReviewer():update({
+  change_id = "change_id",
+  organization_id = "organization_id",
+  repo_id = "repo_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeReviewerEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ChangeTranscriptEntity
+
+```lua
+local change_transcript = client:ChangeTranscript(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capture_kind` | `string` | Yes |  |
+| `captured_at` | `string` | Yes |  |
+| `harness` | `table` | Yes |  |
+| `id` | `string` | Yes |  |
+| `original_resume` | `any` | No |  |
+| `patchset_commit_id` | `string` | Yes |  |
+| `patchset_number` | `number` | Yes |  |
+| `redaction_count` | `number` | Yes |  |
+| `session_id` | `string|nil` | No |  |
+| `session_title` | `string|nil` | No |  |
+| `status` | `string` | Yes |  |
+| `superseded` | `boolean` | Yes |  |
+| `user` | `table` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ChangeTranscript():list({ change_id = "example", organization_id = "example", repo_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeTranscriptEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ChangeTranscriptSummaryEntity
+
+```lua
+local change_transcript_summary = client:ChangeTranscriptSummary(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `summaries` | `table` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ChangeTranscriptSummary():list({ organization_id = "example", ids = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ChangeTranscriptSummaryEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## CheckpointPrepareChunkEntity
+
+```lua
+local checkpoint_prepare_chunk = client:CheckpointPrepareChunk(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CheckpointPrepareChunk():create({
+  agent_session_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CheckpointPrepareChunkEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## CiNodeEntity
+
+```lua
+local ci_node = client:CiNode(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `architecture` | `string|nil` | Yes |  |
+| `bazel_enabled` | `boolean` | Yes |  |
+| `bazel_properties_json` | `string|nil` | Yes |  |
+| `ci_runner_pool_id` | `string` | Yes |  |
+| `cordoned_at` | `string|nil` | Yes |  |
+| `cordoned_at_label` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `health_state` | `string` | Yes |  |
+| `heartbeat_age_seconds` | `number|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `labels_csv` | `string|nil` | Yes |  |
+| `last_seen_at` | `string|nil` | Yes |  |
+| `last_seen_at_label` | `string|nil` | Yes |  |
+| `name` | `string` | Yes |  |
+| `network_peer_id` | `string|nil` | Yes |  |
+| `node_capabilities_csv` | `string|nil` | Yes |  |
+| `node_certificate_expires_at` | `string|nil` | Yes |  |
+| `node_certificate_expires_at_label` | `string|nil` | Yes |  |
+| `node_certificate_fingerprint_sha256` | `string|nil` | Yes |  |
+| `node_certificate_serial` | `string|nil` | Yes |  |
+| `offline_at` | `string|nil` | Yes |  |
+| `offline_at_label` | `string|nil` | Yes |  |
+| `online_at` | `string|nil` | Yes |  |
+| `online_at_label` | `string|nil` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `os` | `string|nil` | Yes |  |
+| `revoked_at` | `string|nil` | Yes |  |
+| `revoked_at_label` | `string|nil` | Yes |  |
+| `schedulable` | `boolean` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+| `version` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CiNode():load({ id = "ci_node_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CiNodeEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## CiPipelineEntity
+
+```lua
+local ci_pipeline = client:CiPipeline(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `ci_runner_pool_id` | `string|nil` | Yes |  |
+| `concurrency_key` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `default_branch` | `string|nil` | Yes |  |
+| `description` | `string|nil` | Yes |  |
+| `hosted_app_id` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `repository_id` | `string|nil` | Yes |  |
+| `required_capabilities_csv` | `string|nil` | Yes |  |
+| `runner_pool` | `table|nil` | Yes |  |
+| `runs` | `table` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `source_kind` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `status_state` | `string` | Yes |  |
+| `status_tone` | `string` | Yes |  |
+| `trigger_on_pull_request` | `boolean` | Yes |  |
+| `trigger_on_push` | `boolean` | Yes |  |
+| `trigger_on_schedule` | `boolean` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `workflow_path` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CiPipeline():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:CiPipeline():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CiPipeline():load({ id = "ci_pipeline_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CiPipelineEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## CiPipelineRunEntity
+
+```lua
+local ci_pipeline_run = client:CiPipelineRun(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active` | `boolean` | Yes |  |
+| `canceled_at` | `string|nil` | Yes |  |
+| `ci_pipeline_id` | `string` | Yes |  |
+| `ci_runner_pool_id` | `string|nil` | Yes |  |
+| `commit_sha` | `string|nil` | Yes |  |
+| `concurrency_key` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `creator_user_id` | `string|nil` | Yes |  |
+| `display_id` | `number` | Yes |  |
+| `failed` | `boolean` | Yes |  |
+| `finished_at` | `string|nil` | Yes |  |
+| `hosted_app_id` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `jobs` | `table` | Yes |  |
+| `message` | `string|nil` | Yes |  |
+| `number` | `number` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `parameters_json` | `string|nil` | Yes |  |
+| `queued_at` | `string|nil` | Yes |  |
+| `ref_name` | `string|nil` | Yes |  |
+| `repository_id` | `string|nil` | Yes |  |
+| `required_capabilities_csv` | `string|nil` | Yes |  |
+| `retry_number` | `number` | Yes |  |
+| `retryable` | `boolean` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `source_url` | `string|nil` | Yes |  |
+| `started_at` | `string|nil` | Yes |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `status_state` | `string` | Yes |  |
+| `status_tone` | `string` | Yes |  |
+| `trigger_kind` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CiPipelineRun():create({
+  pipeline_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:CiPipelineRun():list({ pipeline_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CiPipelineRun():load({ id = "ci_pipeline_run_id", pipeline_id = "pipeline_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CiPipelineRunEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## CiRunnerPoolEntity
+
+```lua
+local ci_runner_pool = client:CiRunnerPool(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `bazel_enabled` | `boolean` | Yes |  |
+| `bazel_properties_json` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `description` | `string|nil` | Yes |  |
+| `elastic_config_json` | `string|nil` | Yes |  |
+| `elastic_provider_kind` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `isolation_mode` | `string` | Yes |  |
+| `labels_csv` | `string|nil` | Yes |  |
+| `max_concurrency` | `number` | Yes |  |
+| `modal_capacity` | `table` | Yes |  |
+| `modal_runner_invocations` | `table` | Yes |  |
+| `name` | `string` | Yes |  |
+| `network_space_id` | `string|nil` | Yes |  |
+| `node_capabilities_csv` | `string|nil` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `runner_count_label` | `string` | Yes |  |
+| `runner_kind` | `string` | Yes |  |
+| `runners` | `table` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `bazel_enabled` | - | - | - | - | - |
+| `bazel_properties_json` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `description` | - | - | - | - | Yes |
+| `elastic_config_json` | - | - | - | - | Yes |
+| `elastic_provider_kind` | - | - | - | - | Yes |
+| `id` | - | - | - | - | - |
+| `isolation_mode` | - | - | - | - | Yes |
+| `labels_csv` | - | - | - | - | Yes |
+| `max_concurrency` | - | - | - | - | Yes |
+| `modal_capacity` | - | - | - | - | - |
+| `modal_runner_invocations` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `network_space_id` | - | - | - | - | - |
+| `node_capabilities_csv` | - | - | - | - | Yes |
+| `organization_id` | - | - | - | - | - |
+| `runner_count_label` | - | - | - | - | - |
+| `runner_kind` | - | - | - | - | Yes |
+| `runners` | - | - | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | Yes |
+| `updated_at` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CiRunnerPool():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:CiRunnerPool():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CiRunnerPool():load({ id = "ci_runner_pool_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CiRunnerPool():patch({
+  id = "ci_runner_pool_id",
+  -- Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CiRunnerPool():update({
+  id = "ci_runner_pool_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CiRunnerPoolEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## CiStatusEntity
+
+```lua
+local ci_status = client:CiStatus(nil)
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CiStatusEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## CliEventEntity
+
+```lua
+local cli_event = client:CliEvent(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `event` | `string` | Yes |  |
+| `properties` | `table` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CliEvent():create({
+  event = --[[ string ]],
+  properties = --[[ table ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CliEventEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## CliReleaseEntity
+
+```lua
+local cli_release = client:CliRelease(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CliRelease():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:CliRelease():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CliReleaseEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## CloudWorkspaceBackupObjectEntity
+
+```lua
+local cloud_workspace_backup_object = client:CloudWorkspaceBackupObject(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CloudWorkspaceBackupObject():load({ id = "cloud_workspace_backup_object_id", cloud_workspace_backup_id = "cloud_workspace_backup_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CloudWorkspaceBackupObjectEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## CodeRuleEvaluationEntity
+
+```lua
+local code_rule_evaluation = client:CodeRuleEvaluation(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `advisory` | `boolean` | Yes |  |
+| `coverage` | `table` | Yes |  |
+| `diff` | `string` | Yes | UTF-8 complete unified patch using a/ old and b/ new prefixes; at most 1 MiB |
+| `duration_ms` | `number` | Yes |  |
+| `evaluator_version` | `string` | No |  |
+| `input_digest` | `string|nil` | No |  |
+| `limits` | `table` | No |  |
+| `model` | `string` | No |  |
+| `requests` | `table` | Yes |  |
+| `schema_version` | `number` | Yes |  |
+| `snapshot_digest` | `string|nil` | No |  |
+| `unchecked` | `table` | Yes |  |
+| `verdicts` | `table` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CodeRuleEvaluation():create({
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+  diff = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CodeRuleEvaluationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ComSiteAccessEntity
+
+```lua
+local com_site_access = client:ComSiteAccess(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ComSiteAccessEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ComSiteAccessSessionEntity
+
+```lua
+local com_site_access_session = client:ComSiteAccessSession(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cookie_name` | `string` | Yes |  |
+| `host` | `string` | Yes | Site hostname, for example docs.acme.composal.page |
+| `max_age` | `number` | Yes |  |
+| `session_token` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ComSiteAccessSession():create({
+  host = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ComSiteAccessSessionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## CommentThreadCommentEntity
+
+```lua
+local comment_thread_comment = client:CommentThreadComment(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `body` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CommentThreadComment():create({
+  artefact_id = --[[ string ]],
+  comment_thread_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  body = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CommentThreadCommentEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## CommitDiffEntity
+
+```lua
+local commit_diff = client:CommitDiff(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `files` | `table` | Yes |  |
+| `id` | `string` | No |  |
+| `parent_id` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CommitDiff():load({ id = "commit_diff_id", commit_id = "commit_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CommitDiffEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## ConnectionRequestEntity
 
 ```lua
@@ -8463,6 +16234,206 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `ConnectionSourceEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ContactSubmissionEntity
+
+```lua
+local contact_submission = client:ContactSubmission(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `company` | `string|nil` | No |  |
+| `email` | `string` | Yes | Stored downcased and stripped. |
+| `message` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `website` | `string|nil` | No | Honeypot. |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ContactSubmission():create({
+  email = --[[ string ]],
+  message = --[[ string ]],
+  name = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ContactSubmissionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ControlComputerEntity
+
+```lua
+local control_computer = client:ControlComputer(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `connection` | `table` | Yes | A point-in-time control transport observation. |
+| `consent` | `table` | Yes |  |
+| `device` | `table` | Yes |  |
+| `id` | `string` | No |  |
+| `provider_status` | `table` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ControlComputer():list({ organization_id = "example", persistent_agent_id = "example" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ControlComputerEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ControlComputerControlOperationEntity
+
+```lua
+local control_computer_control_operation = client:ControlComputerControlOperation(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `arguments` | `table` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `delivery` | `table` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` | Yes |  |
+| `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
+| `end` | `table` | Yes |  |
+| `expires_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `references` | `table` | Yes |  |
+| `result` | `any` | Yes |  |
+| `result_expired` | `boolean` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ControlComputerControlOperation():create({
+  control_computer_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  action = --[[ string ]],
+  arguments = --[[ table ]],
+  key = --[[ string ]],
+})
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ControlComputerControlOperation():load({ id = "control_computer_control_operation_id", control_computer_id = "control_computer_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ControlComputerControlOperationEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -9236,6 +17207,93 @@ Return the entity name.
 
 ---
 
+## DeploymentEntity
+
+```lua
+local deployment = client:Deployment(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app` | `table` | Yes |  |
+| `artifact_locator` | `string|nil` | Yes |  |
+| `build_duration_seconds` | `number|nil` | Yes |  |
+| `build_source` | `table|nil` | Yes |  |
+| `build_status` | `string` | Yes |  |
+| `children` | `table` | Yes |  |
+| `ci_pipeline_id` | `string|nil` | Yes |  |
+| `ci_pipeline_run_id` | `string|nil` | Yes |  |
+| `commit_sha` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `creator` | `table|nil` | Yes |  |
+| `deployed_url` | `string|nil` | Yes |  |
+| `duration_seconds` | `number|nil` | Yes |  |
+| `environment` | `table` | Yes |  |
+| `history_kind` | `string` | Yes |  |
+| `history_reason` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `is_live` | `boolean` | Yes |  |
+| `is_rollback` | `boolean` | Yes |  |
+| `live_region_count` | `number` | Yes |  |
+| `number` | `number` | Yes |  |
+| `placement` | `table|nil` | Yes |  |
+| `region_count` | `number` | Yes |  |
+| `replicas_per_region` | `number` | Yes |  |
+| `rollback_reason` | `string|nil` | Yes |  |
+| `rollback_source_release_id` | `string|nil` | Yes |  |
+| `rollback_target_release_id` | `string|nil` | Yes |  |
+| `rollout_predecessor_id` | `string|nil` | Yes |  |
+| `rollout_status` | `string` | Yes |  |
+| `rollout_strategy` | `string` | Yes |  |
+| `service` | `table` | Yes |  |
+| `source_ref` | `string|nil` | Yes |  |
+| `status` | `string` | Yes |  |
+| `total_replicas` | `number` | Yes |  |
+| `trigger_kind` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Deployment():load({ id = "deployment_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeploymentEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## DeploymentDashboardNomadEntity
 
 ```lua
@@ -9269,6 +17327,78 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `DeploymentDashboardNomadEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DeploymentDetailEntity
+
+```lua
+local deployment_detail = client:DeploymentDetail(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `table` | Yes |  |
+| `app` | `any` | Yes |  |
+| `app_id` | `string|nil` | Yes |  |
+| `audit_events` | `table` | Yes |  |
+| `capacity` | `table` | Yes |  |
+| `data_resources` | `table` | Yes |  |
+| `deploy_targets` | `table` | Yes |  |
+| `deployments` | `table` | Yes |  |
+| `desired_states` | `table` | Yes |  |
+| `environments` | `table` | Yes |  |
+| `filters` | `table` | Yes | The option lists the deployments page's app, service and stage pickers narrow by. |
+| `health` | `table` | Yes | The rolled-up state of the selected scope. |
+| `nomad` | `table` | Yes | The Nomad footprint of the selected scope, deduplicated. |
+| `operations` | `table` | Yes |  |
+| `placements` | `table` | Yes |  |
+| `reconciler_ticks` | `table` | Yes |  |
+| `releases` | `table` | Yes |  |
+| `runtime_instances` | `table` | Yes |  |
+| `service_bindings` | `table` | Yes |  |
+| `service_views` | `table` | Yes |  |
+| `storage_resources` | `table` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:DeploymentDetail():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeploymentDetailEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -9319,6 +17449,1526 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `DeploymentFileEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DeploymentLogEntity
+
+```lua
+local deployment_log = client:DeploymentLog(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `allocation_id` | `string` | Yes |  |
+| `app_environment_id` | `string|nil` | Yes |  |
+| `app_release_id` | `string|nil` | Yes |  |
+| `app_service_id` | `string|nil` | Yes |  |
+| `details` | `any` | Yes |  |
+| `environment_name` | `string` | Yes |  |
+| `release_version` | `string|nil` | Yes |  |
+| `service_name` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `task` | `string|nil` | Yes |  |
+| `unreachable_reason` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:DeploymentLog():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeploymentLogEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DeploymentMetricEntity
+
+```lua
+local deployment_metric = client:DeploymentMetric(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `auto_deploy` | `boolean` | Yes |  |
+| `environment_id` | `string` | Yes |  |
+| `environment_name` | `string` | Yes |  |
+| `placement_id` | `string` | Yes |  |
+| `redeploy` | `boolean` | Yes |  |
+| `region_count` | `number` | Yes |  |
+| `replicas_per_region` | `number` | Yes |  |
+| `rollout_strategy` | `string` | Yes |  |
+| `service_id` | `string` | Yes |  |
+| `service_name` | `string` | Yes |  |
+| `source_ref` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:DeploymentMetric():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeploymentMetricEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DeploymentPreviewEntity
+
+```lua
+local deployment_preview = client:DeploymentPreview(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access` | `string` | Yes |  |
+| `app_environment_id` | `string` | Yes |  |
+| `app_name` | `string` | Yes |  |
+| `app_preview_profile_id` | `string` | Yes |  |
+| `app_slug` | `string` | Yes |  |
+| `change_number` | `number|nil` | Yes |  |
+| `created_at` | `string` | No |  |
+| `created_by_user_id` | `string` | No |  |
+| `expires_at` | `string` | Yes |  |
+| `generation` | `number` | Yes |  |
+| `health` | `string` | Yes |  |
+| `hosted_app_id` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `latest_operation_status` | `string|nil` | Yes |  |
+| `name` | `string` | Yes |  |
+| `owner_name` | `string|nil` | Yes |  |
+| `profile_name` | `string` | Yes |  |
+| `resource_overrides` | `table` | No | Service public IDs mapped to resource overrides. |
+| `retained` | `boolean` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `snapshot_version` | `number` | Yes |  |
+| `source_revision` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | No |  |
+| `urls` | `table` | Yes |  |
+| `vcs_change_id` | `string|nil` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:DeploymentPreview():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeploymentPreviewEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DeploymentSettingEntity
+
+```lua
+local deployment_setting = client:DeploymentSetting(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `code` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `nomad_datacenter` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:DeploymentSetting():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeploymentSettingEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DesktopLocalAgentModelEntity
+
+```lua
+local desktop_local_agent_model = client:DesktopLocalAgentModel(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:DesktopLocalAgentModel():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DesktopLocalAgentModelEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DesktopLocalAgentResponseEntity
+
+```lua
+local desktop_local_agent_response = client:DesktopLocalAgentResponse(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `input` | `table` | Yes |  |
+| `max_output_tokens` | `number` | No |  |
+| `model` | `string` | Yes |  |
+| `store` | `boolean` | Yes |  |
+| `stream` | `boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DesktopLocalAgentResponse():create({
+  organization_id = --[[ string ]],
+  input = --[[ table ]],
+  model = --[[ string ]],
+  store = --[[ boolean ]],
+  stream = --[[ boolean ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DesktopLocalAgentResponseEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DeviceEntity
+
+```lua
+local device = client:Device(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `architecture` | `string` | Yes |  |
+| `channel` | `string` | Yes |  |
+| `coding_connection` | `table|nil` | Yes | Independent organization coding-control service state for the current device owner. |
+| `connection_checked_at` | `string|nil` | Yes | When this native presence observation was obtained; null when unobserved or unavailable. |
+| `connection_status` | `string` | Yes | Display-only native presence. |
+| `control_delivery_policy` | `table` | Yes |  |
+| `control_spawn_policy` | `table` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `device` | `table` | Yes |  |
+| `environment` | `string` | Yes |  |
+| `execution_available` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `native_device_id` | `string` | Yes |  |
+| `paired_at` | `string` | Yes |  |
+| `pairing_generation` | `number` | Yes |  |
+| `platform` | `string` | Yes |  |
+| `project_visibility` | `table` | Yes | Folder discovery and new-thread selection. |
+| `provider_status` | `table` | No | Recent native provider observations; absent on older API replicas. |
+| `revoked_at` | `string|nil` | Yes |  |
+| `scheduled_check_ins` | `boolean` | No | Whether the owner's private agents may check this computer's connection during scheduled runs. |
+| `user_browser_access` | `string` | Yes | Whether agents may use the owner's own Chrome-family browser here: off, only tabs agents open or the owner shares, or every tab. |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:Device():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Device():load({ id = "device_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DeviceBrowserOperationEntity
+
+```lua
+local device_browser_operation = client:DeviceBrowserOperation(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `command` | `string` | Yes | The in-app browser takes open through open_external; the person's own browser (arguments.browser user) takes open, tabs, share_tab, navigate, back, reload, screenshot, read, click, type, press, scroll and close. |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:DeviceBrowserOperation():list({ device_id = "example", organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceBrowserOperationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DeviceControlMessageEntity
+
+```lua
+local device_control_message = client:DeviceControlMessage(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_id` | `string` | Yes |  |
+| `agent_name` | `string` | Yes |  |
+| `expires_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `sender` | `string|nil` | Yes |  |
+| `text` | `string|nil` | Yes |  |
+| `text_omitted` | `boolean` | Yes |  |
+| `thread` | `table` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:DeviceControlMessage():list({ device_id = "example", organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceControlMessageEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DeviceControlOperationEntity
+
+```lua
+local device_control_operation = client:DeviceControlOperation(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `arguments` | `table` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `delivery` | `table` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` | Yes |  |
+| `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
+| `end` | `table` | Yes |  |
+| `expires_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `references` | `table` | Yes |  |
+| `result` | `any` | Yes |  |
+| `result_expired` | `boolean` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DeviceControlOperation():create({
+  device_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  action = --[[ string ]],
+  arguments = --[[ table ]],
+  key = --[[ string ]],
+})
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DeviceControlOperation():load({ id = "device_control_operation_id", device_id = "device_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceControlOperationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DeviceEnterpriseRelayEntity
+
+```lua
+local device_enterprise_relay = client:DeviceEnterpriseRelay(nil)
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:DeviceEnterpriseRelay():list()
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceEnterpriseRelayEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DeviceFolderListingEntity
+
+```lua
+local device_folder_listing = client:DeviceFolderListing(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `code` | `string` | No |  |
+| `error` | `string` | No |  |
+| `folders` | `table` | No |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes | Stable idempotency key for this listing. |
+| `parent` | `string|nil` | No |  |
+| `path` | `string` | No | The resolved folder. |
+| `state` | `string` | Yes |  |
+| `truncated` | `boolean` | No |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `code` | - | - |
+| `error` | - | - |
+| `folders` | - | - |
+| `id` | - | - |
+| `key` | - | - |
+| `parent` | - | - |
+| `path` | - | Yes |
+| `state` | - | - |
+| `truncated` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DeviceFolderListing():create({
+  device_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  key = --[[ string ]],
+  path = --[[ string ]],
+})
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DeviceFolderListing():load({ id = "device_folder_listing_id", device_id = "device_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceFolderListingEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DeviceGrantEntity
+
+```lua
+local device_grant = client:DeviceGrant(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_grants` | `table` | Yes |  |
+| `agent_choices` | `table` | Yes | Eligible picker choices, with current owner grant targets, on the first page only. |
+| `agent_id` | `string` | Yes |  |
+| `all_agents_access` | `boolean` | Yes | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `capabilities` | `table` | Yes |  |
+| `execution_available` | `boolean` | Yes |  |
+| `grants` | `table` | Yes |  |
+| `id` | `string` | No |  |
+| `next_cursor` | `string|nil` | Yes |  |
+| `principal_id` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DeviceGrant():create({
+  device_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  agent_id = --[[ string ]],
+  capabilities = --[[ table ]],
+  principal_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:DeviceGrant():list({ device_id = "example", organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceGrantEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DeviceInvocationEntity
+
+```lua
+local device_invocation = client:DeviceInvocation(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceInvocationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DeviceLocalEventEntity
+
+```lua
+local device_local_event = client:DeviceLocalEvent(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `event` | `string` | Yes |  |
+| `recorded` | `boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DeviceLocalEvent():create({
+  device_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  event = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceLocalEventEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DevicePairingEntity
+
+```lua
+local device_pairing = client:DevicePairing(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `architecture` | `string` | Yes |  |
+| `channel` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `name` | `string` | Yes |  |
+| `platform` | `string` | Yes |  |
+| `public_key` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DevicePairing():create({
+  organization_id = --[[ string ]],
+  architecture = --[[ string ]],
+  channel = --[[ string ]],
+  name = --[[ string ]],
+  platform = --[[ string ]],
+  public_key = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DevicePairingEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DeviceProjectEntity
+
+```lua
+local device_project = client:DeviceProject(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DeviceProject():remove({ id = "device_project_id", device_id = "device_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceProjectEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DeviceScheduledCheckInEntity
+
+```lua
+local device_scheduled_check_in = client:DeviceScheduledCheckIn(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `enabled` | `boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DeviceScheduledCheckIn():create({
+  device_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  enabled = --[[ boolean ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DeviceScheduledCheckInEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DockerBuilderEntity
+
+```lua
+local docker_builder = client:DockerBuilder(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `backend` | `string` | Yes |  |
+| `created_at` | `string|nil` | Yes |  |
+| `gateway_url` | `string|nil` | No | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_activity_at` | `string|nil` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `ready_at` | `string|nil` | Yes |  |
+| `slept_at` | `string|nil` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `startup_attempt` | `number` | Yes |  |
+| `startup_failure` | `string|nil` | Yes | Safe failure reason for the most recent startup attempt |
+| `startup_stage` | `string|nil` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string|nil` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `backend` | - | - | Yes | - | - |
+| `created_at` | - | - | - | - | - |
+| `gateway_url` | - | - | - | - | - |
+| `generation` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `last_activity_at` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `ready_at` | - | - | - | - | - |
+| `slept_at` | - | - | - | - | - |
+| `slug` | - | - | Yes | - | - |
+| `startup_attempt` | - | - | - | - | - |
+| `startup_failure` | - | - | - | - | - |
+| `startup_stage` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DockerBuilder():create({
+  organization_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:DockerBuilder():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DockerBuilder():load({ id = "docker_builder_id", organization_id = "organization_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DockerBuilder():patch({
+  id = "docker_builder_id",
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DockerBuilder():update({
+  id = "docker_builder_id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DockerBuilderEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DockerBuilderSessionEntity
+
+```lua
+local docker_builder_session = client:DockerBuilderSession(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `string` | Yes |  |
+| `docker_builder_id` | `string` | Yes |  |
+| `expires_at` | `string` | Yes |  |
+| `gateway_url` | `string|nil` | No | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `revoked_at` | `string|nil` | Yes |  |
+| `user_id` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DockerBuilderSession():create({
+  docker_builder_id = --[[ string ]],
+  organization_id = --[[ string ]],
+})
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DockerBuilderSession():load({ id = "docker_builder_session_id", organization_id = "organization_id" })
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DockerBuilderSession():remove({ id = "docker_builder_session_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DockerBuilderSessionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DockerBuilderSettingEntity
+
+```lua
+local docker_builder_setting = client:DockerBuilderSetting(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `docker_builder_settings` | `table` | Yes |  |
+| `idle_timeout_seconds` | `number` | Yes |  |
+| `max_concurrency` | `number` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `region` | `string` | Yes |  |
+| `runtime_timeout_seconds` | `number` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | update | patch |
+| --- | --- | --- | --- |
+| `docker_builder_settings` | - | - | - |
+| `idle_timeout_seconds` | - | - | Yes |
+| `max_concurrency` | - | - | Yes |
+| `organization_id` | - | - | - |
+| `region` | - | - | Yes |
+| `runtime_timeout_seconds` | - | - | Yes |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:DockerBuilderSetting():list({ organization_id = "example" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DockerBuilderSetting():patch({
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DockerBuilderSetting():update({
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DockerBuilderSettingEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DomainDnsIntegrationEntity
+
+```lua
+local domain_dns_integration = client:DomainDnsIntegration(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_label` | `string|nil` | Yes |  |
+| `api_token` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `failure_message` | `string|nil` | Yes |  |
+| `has_token` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_verified_at` | `string|nil` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `account_label` | - | Yes |
+| `api_token` | - | - |
+| `created_at` | - | - |
+| `failure_message` | - | - |
+| `has_token` | - | - |
+| `id` | - | - |
+| `last_verified_at` | - | - |
+| `organization_id` | - | - |
+| `provider` | - | - |
+| `status` | - | - |
+| `updated_at` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:DomainDnsIntegration():create({
+  organization_id = --[[ string ]],
+  api_token = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:DomainDnsIntegration():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DomainDnsIntegrationEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -9531,6 +19181,90 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `DreamEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## EdgeEntity
+
+```lua
+local edge = client:Edge(nil)
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `EdgeEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## EmailVerificationEntity
+
+```lua
+local email_verification = client:EmailVerification(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `EmailVerificationEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -10331,6 +20065,375 @@ Return the entity name.
 
 ---
 
+## ExecutionDesiredStateEntity
+
+```lua
+local execution_desired_state = client:ExecutionDesiredState(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `desired_state` | `table` | Yes |  |
+| `id` | `string` | No |  |
+| `stop_observed` | `boolean` | Yes | True only for archived zero-capacity states with all known jobs stopped and allocations terminated. |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ExecutionDesiredState():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ExecutionDesiredState():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ExecutionDesiredState():load({ id = "execution_desired_state_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ExecutionDesiredState():patch({
+  id = "execution_desired_state_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ExecutionDesiredState():remove({ id = "execution_desired_state_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ExecutionDesiredState():update({
+  id = "execution_desired_state_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ExecutionDesiredStateEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ExecutionReconcilerTickEntity
+
+```lua
+local execution_reconciler_tick = client:ExecutionReconcilerTick(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ExecutionReconcilerTick():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ExecutionReconcilerTick():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ExecutionReconcilerTick():load({ id = "execution_reconciler_tick_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ExecutionReconcilerTickEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ExecutionReleaseEntity
+
+```lua
+local execution_release = client:ExecutionRelease(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ExecutionRelease():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ExecutionRelease():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ExecutionRelease():load({ id = "execution_release_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ExecutionReleaseEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ExecutionRuntimeInstanceEntity
+
+```lua
+local execution_runtime_instance = client:ExecutionRuntimeInstance(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter_kind` | `string` | Yes |  |
+| `app_environment_id` | `string` | Yes |  |
+| `app_release_id` | `string|nil` | Yes |  |
+| `app_service_id` | `string` | Yes |  |
+| `booted_at` | `string|nil` | Yes |  |
+| `booted_at_label` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `hosted_app_id` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `instance_key` | `string` | Yes |  |
+| `last_reconciled_at` | `string|nil` | Yes |  |
+| `last_reconciled_at_label` | `string|nil` | Yes |  |
+| `last_seen_at` | `string|nil` | Yes |  |
+| `last_seen_at_label` | `string|nil` | Yes |  |
+| `location` | `any` | Yes |  |
+| `location_id` | `string` | Yes |  |
+| `network_peer_id` | `string|nil` | Yes |  |
+| `nomad_allocation_id` | `string|nil` | Yes |  |
+| `nomad_task_name` | `string|nil` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `private_ipv4` | `string|nil` | Yes |  |
+| `private_ipv6` | `string|nil` | Yes |  |
+| `provider_instance_id` | `string|nil` | Yes |  |
+| `public_endpoint` | `string|nil` | Yes |  |
+| `service_name` | `string` | Yes | Name of the Vex service this instance runs, in the same vocabulary as `vex deploy list`. |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `terminated_at` | `string|nil` | Yes |  |
+| `terminated_at_label` | `string|nil` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ExecutionRuntimeInstance():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ExecutionRuntimeInstance():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ExecutionRuntimeInstance():load({ id = "execution_runtime_instance_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ExecutionRuntimeInstance():patch({
+  id = "execution_runtime_instance_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ExecutionRuntimeInstance():remove({ id = "execution_runtime_instance_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ExecutionRuntimeInstance():update({
+  id = "execution_runtime_instance_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ExecutionRuntimeInstanceEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## ExplorationEntity
 
 ```lua
@@ -10866,6 +20969,740 @@ Return the entity name.
 
 ---
 
+## GhEntity
+
+```lua
+local gh = client:Gh(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capabilities` | `table` | Yes |  |
+| `content` | `table` | Yes |  |
+| `fetched_at` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `magic_merge` | `table|nil` | Yes |  |
+| `pull_request` | `any` | Yes |  |
+| `stack` | `table` | Yes |  |
+| `transcript_paths` | `table` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Gh():load({ id = "gh_id", gh_id = "gh_id", github_repo = "github_repo", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GhEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GitImportEntity
+
+```lua
+local git_import = client:GitImport(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `destination_mode` | `string` | Yes |  |
+| `error` | `string|nil` | No |  |
+| `git_default_branch` | `string` | No | Original Git symbolic HEAD branch, independent of the branch selected for JJ conversion |
+| `git_status` | `string` | Yes |  |
+| `git_url` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `idempotency_key` | `string` | Yes |  |
+| `name` | `string` | No |  |
+| `native_status` | `string` | Yes |  |
+| `organization` | `string` | Yes |  |
+| `repository_id` | `string|nil` | No |  |
+| `root_path` | `string` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `source_branch` | `string` | Yes |  |
+| `target_branch` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `destination_mode` | - | - |
+| `error` | - | - |
+| `git_default_branch` | - | - |
+| `git_status` | - | - |
+| `git_url` | - | - |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `name` | - | - |
+| `native_status` | - | - |
+| `organization` | - | - |
+| `repository_id` | - | - |
+| `root_path` | - | - |
+| `slug` | - | - |
+| `source_branch` | - | - |
+| `target_branch` | - | Yes |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GitImport():create({
+  organization_id = --[[ string ]],
+  destination_mode = --[[ string ]],
+  idempotency_key = --[[ string ]],
+  root_path = --[[ string ]],
+  slug = --[[ string ]],
+  source_branch = --[[ string ]],
+})
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GitImport():load({ id = "git_import_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GitImportEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubEntity
+
+```lua
+local github = client:Github(nil)
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubAppEntity
+
+```lua
+local github_app = client:GithubApp(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubAppEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubAppImportableRepositoryEntity
+
+```lua
+local github_app_importable_repository = client:GithubAppImportableRepository(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_login` | `string` | Yes |  |
+| `github_app_installation_id` | `string` | Yes |  |
+| `next_page` | `number|nil` | Yes | Next GitHub page for this installation |
+| `repositories` | `table` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:GithubAppImportableRepository():list()
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubAppImportableRepositoryEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubAppInstallationEntity
+
+```lua
+local github_app_installation = client:GithubAppInstallation(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `string|nil` | Yes |  |
+| `account_id` | `string|nil` | Yes |  |
+| `account_login` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `installation_id` | `string` | Yes |  |
+| `installed_at` | `string|nil` | Yes |  |
+| `installed_at_label` | `string|nil` | Yes |  |
+| `manage_access_url` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `permission_entries` | `table` | Yes | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `table` | Yes |  |
+| `status` | `string` | Yes |  |
+| `suspended_at` | `string|nil` | Yes |  |
+| `suspended_at_label` | `string|nil` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:GithubAppInstallation():list({ organization_id = "example" })
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubAppInstallation():remove({ id = "github_app_installation_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubAppInstallationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubAppInstallationAuthorizationEntity
+
+```lua
+local github_app_installation_authorization = client:GithubAppInstallationAuthorization(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `installation_url` | `string` | Yes |  |
+| `organization_slug` | `string` | Yes | Vex organization slug whose installation will be linked. |
+| `return_target` | `string` | Yes | Server-validated Vex application target used after verification. |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubAppInstallationAuthorization():create({
+  organization_slug = --[[ string ]],
+  return_target = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubAppInstallationAuthorizationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubAppUserAuthorizationEntity
+
+```lua
+local github_app_user_authorization = client:GithubAppUserAuthorization(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubAppUserAuthorization():create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubAppUserAuthorizationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubCiRepositoryEntity
+
+```lua
+local github_ci_repository = client:GithubCiRepository(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adoption_mode` | `string` | Yes |  |
+| `check_name_prefix` | `string` | Yes |  |
+| `ci_runner_pool_id` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `default_branch` | `string` | Yes |  |
+| `github_app_installation_id` | `string` | Yes |  |
+| `github_repository_id` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_compatibility_status` | `string|nil` | Yes |  |
+| `last_error_message` | `string|nil` | Yes |  |
+| `last_head_sha` | `string|nil` | Yes |  |
+| `last_pull_request_number` | `number|nil` | Yes |  |
+| `last_ref` | `string|nil` | Yes |  |
+| `last_webhook_action` | `string|nil` | Yes |  |
+| `last_webhook_at` | `string|nil` | Yes |  |
+| `last_webhook_at_label` | `string|nil` | Yes |  |
+| `last_webhook_delivery_id` | `string|nil` | Yes |  |
+| `last_webhook_event` | `string|nil` | Yes |  |
+| `metadata` | `table` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `permission_status` | `string` | Yes |  |
+| `repository_full_name` | `string` | Yes |  |
+| `repository_name` | `string` | Yes |  |
+| `repository_owner` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+| `webhook_delivery_count` | `number` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `adoption_mode` | - | - | Yes | Yes | Yes |
+| `check_name_prefix` | - | - | Yes | Yes | Yes |
+| `ci_runner_pool_id` | - | - | Yes | Yes | Yes |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `default_branch` | - | - | Yes | Yes | Yes |
+| `github_app_installation_id` | - | - | - | - | - |
+| `github_repository_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `last_compatibility_status` | - | - | - | - | - |
+| `last_error_message` | - | - | - | - | - |
+| `last_head_sha` | - | - | - | - | - |
+| `last_pull_request_number` | - | - | - | - | - |
+| `last_ref` | - | - | - | - | - |
+| `last_webhook_action` | - | - | - | - | - |
+| `last_webhook_at` | - | - | - | - | - |
+| `last_webhook_at_label` | - | - | - | - | - |
+| `last_webhook_delivery_id` | - | - | - | - | - |
+| `last_webhook_event` | - | - | - | - | - |
+| `metadata` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `permission_status` | - | - | - | Yes | Yes |
+| `repository_full_name` | - | - | - | - | - |
+| `repository_name` | - | - | - | - | - |
+| `repository_owner` | - | - | - | - | - |
+| `status` | - | - | Yes | Yes | Yes |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
+| `webhook_delivery_count` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubCiRepository():create({
+  organization_id = --[[ string ]],
+  github_app_installation_id = --[[ string ]],
+  github_repository_id = --[[ string ]],
+  repository_name = --[[ string ]],
+  repository_owner = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:GithubCiRepository():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubCiRepository():load({ id = "github_ci_repository_id", organization_id = "organization_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubCiRepository():patch({
+  id = "github_ci_repository_id",
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubCiRepository():update({
+  id = "github_ci_repository_id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubCiRepositoryEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubCiRepositoryCompatibilityReportEntity
+
+```lua
+local github_ci_repository_compatibility_report = client:GithubCiRepositoryCompatibilityReport(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `analyzed_at` | `string` | Yes |  |
+| `analyzed_at_label` | `string|nil` | Yes |  |
+| `ci_pipeline_id` | `string|nil` | Yes |  |
+| `ci_pipeline_run_id` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `diagnostics` | `table` | Yes |  |
+| `errors` | `table` | Yes |  |
+| `event_action` | `string|nil` | Yes |  |
+| `event_name` | `string` | Yes |  |
+| `execution_allowed` | `boolean` | Yes |  |
+| `github_ci_repository_id` | `string` | Yes |  |
+| `head_sha` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `metadata` | `table` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `parser_version` | `string` | Yes |  |
+| `pull_request_number` | `number|nil` | Yes |  |
+| `ref_name` | `string|nil` | Yes |  |
+| `referenced_actions` | `table` | Yes |  |
+| `required_secrets` | `table` | Yes |  |
+| `runner_labels` | `table` | Yes |  |
+| `source_blob_sha` | `string|nil` | Yes |  |
+| `source_sha` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `supported_features` | `table` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+| `warnings` | `table` | Yes |  |
+| `workflow_name` | `string|nil` | Yes |  |
+| `workflow_path` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:GithubCiRepositoryCompatibilityReport():list({ github_ci_repository_id = "example", organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubCiRepositoryCompatibilityReport():load({ id = "github_ci_repository_compatibility_report_id", github_ci_repository_id = "github_ci_repository_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubCiRepositoryCompatibilityReportEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## GithubConnectionEntity
 
 ```lua
@@ -10926,6 +21763,1216 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `GithubConnectionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubIntegrationEntity
+
+```lua
+local github_integration = client:GithubIntegration(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `string|nil` | Yes |  |
+| `account_login` | `string` | Yes |  |
+| `connection_status` | `string` | Yes |  |
+| `connection_status_label` | `string` | Yes |  |
+| `github_installation` | `any` | Yes |  |
+| `health` | `table` | Yes |  |
+| `id` | `string` | Yes |  |
+| `imported_repositories_count` | `number` | Yes |  |
+| `imported_repositories_count_label` | `string` | Yes |  |
+| `organization` | `table` | Yes |  |
+| `pagination` | `table` | Yes |  |
+| `repositories` | `table` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:GithubIntegration():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubIntegration():load({ id = "github_integration_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubIntegrationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingEntity
+
+```lua
+local github_onboarding = client:GithubOnboarding(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accounts` | `table` | Yes |  |
+| `active_batch_id` | `string|nil` | Yes | The batch the wizard's import step should resume — the most recent batch still working, else the most recent overall. |
+| `batches` | `table` | Yes |  |
+| `capabilities` | `table` | Yes |  |
+| `installations` | `table` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubOnboarding():load({ organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubOnboardingEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingBranchEntity
+
+```lua
+local github_onboarding_branch = client:GithubOnboardingBranch(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `branches` | `table` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:GithubOnboardingBranch():list({ organization_id = "example", github_app_installation_id = "example", name = "example", owner = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubOnboardingBranchEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingImportEntity
+
+```lua
+local github_onboarding_import = client:GithubOnboardingImport(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_login` | `string` | Yes |  |
+| `complete` | `boolean` | Yes | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `string` | Yes |  |
+| `failed_item_count` | `number` | Yes |  |
+| `github_app_installation_id` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `imported_item_count` | `number` | Yes |  |
+| `item_count` | `number` | Yes |  |
+| `items` | `table` | Yes |  |
+| `repositories` | `any` | Yes |  |
+| `status` | `string` | Yes |  |
+| `terminal_item_count` | `number` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubOnboardingImport():create({
+  organization_id = --[[ string ]],
+  github_app_installation_id = --[[ string ]],
+  repositories = --[[ any ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubOnboardingImportEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingImportBatchEntity
+
+```lua
+local github_onboarding_import_batch = client:GithubOnboardingImportBatch(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_login` | `string` | Yes |  |
+| `complete` | `boolean` | Yes | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `string` | Yes |  |
+| `failed_item_count` | `number` | Yes |  |
+| `github_app_installation_id` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `imported_item_count` | `number` | Yes |  |
+| `item_count` | `number` | Yes |  |
+| `items` | `table` | Yes |  |
+| `status` | `string` | Yes |  |
+| `terminal_item_count` | `number` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubOnboardingImportBatch():load({ id = "github_onboarding_import_batch_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubOnboardingImportBatchEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingImportItemEntity
+
+```lua
+local github_onboarding_import_item = client:GithubOnboardingImportItem(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubOnboardingImportItemEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubPullRequestEntity
+
+```lua
+local github_pull_request = client:GithubPullRequest(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capabilities` | `table` | Yes |  |
+| `content` | `table` | Yes |  |
+| `fetched_at` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `magic_merge` | `table|nil` | Yes |  |
+| `pull_request` | `any` | Yes |  |
+| `stack` | `table` | Yes |  |
+| `transcript_paths` | `table` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubPullRequest():load({ id = "github_pull_request_id", organization_id = "organization_id", pull_request_id = "pull_request_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubPullRequestEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerAdmissionEntity
+
+```lua
+local github_runner_admission = client:GithubRunnerAdmission(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubRunnerAdmission():create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubRunnerAdmissionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerCacheEntity
+
+```lua
+local github_runner_cache = client:GithubRunnerCache(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `entry_id` | `string` | No |  |
+| `key` | `string` | No |  |
+| `matched_key` | `string` | No |  |
+| `ok` | `boolean` | Yes |  |
+| `operation` | `string` | Yes |  |
+| `restore_keys` | `table` | No |  |
+| `signed_download_url` | `string` | No |  |
+| `size_bytes` | `string` | No |  |
+| `upload_path` | `string` | No |  |
+| `version` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubRunnerCache():create({
+  operation = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubRunnerCacheEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerEgressEntity
+
+```lua
+local github_runner_egress = client:GithubRunnerEgress(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_request` | `boolean` | Yes |  |
+| `cidr` | `string|nil` | Yes |  |
+| `ipv4` | `string|nil` | Yes |  |
+| `requested_at_label` | `string|nil` | Yes |  |
+| `status` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubRunnerEgress():create({
+  organization_id = --[[ string ]],
+})
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubRunnerEgress():load({ organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubRunnerEgressEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerHistoryEntity
+
+```lua
+local github_runner_history = client:GithubRunnerHistory(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `table` | Yes |  |
+| `counts` | `table` | Yes |  |
+| `observed_at` | `string` | Yes |  |
+| `pagination` | `table` | Yes |  |
+| `repositories` | `table` | Yes |  |
+| `runs` | `table` | Yes |  |
+| `setup` | `any` | No | CI onboarding. |
+| `success_rate` | `number|nil` | Yes |  |
+| `usage` | `table` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubRunnerHistory():load({ organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubRunnerHistoryEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerImageEntity
+
+```lua
+local github_runner_image = client:GithubRunnerImage(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `image_reference` | `string` | Yes | Immutable linux/amd64 Ubuntu 24.04 image, registry/repository@sha256:digest, with Node 22+ |
+| `last_error` | `string|nil` | Yes |  |
+| `modal_image_id` | `string|nil` | Yes |  |
+| `name` | `string` | Yes |  |
+| `registry_secret_name` | `string|nil` | Yes | Name of an organization CI secret containing REGISTRY_USERNAME and REGISTRY_PASSWORD JSON fields |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `created_at` | - | - | - |
+| `id` | - | - | - |
+| `image_reference` | - | - | - |
+| `last_error` | - | - | - |
+| `modal_image_id` | - | - | - |
+| `name` | - | - | - |
+| `registry_secret_name` | - | - | Yes |
+| `status` | - | - | - |
+| `updated_at` | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubRunnerImage():create({
+  organization_id = --[[ string ]],
+  image_reference = --[[ string ]],
+  name = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:GithubRunnerImage():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubRunnerImage():load({ id = "github_runner_image_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubRunnerImageEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerPoolEntity
+
+```lua
+local github_runner_pool = client:GithubRunnerPool(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cpu_millicores` | `number` | Yes |  |
+| `enabled` | `boolean` | Yes |  |
+| `github_app_installation_id` | `string` | Yes |  |
+| `github_repository_id` | `string` | Yes |  |
+| `github_runner_image` | `any` | Yes |  |
+| `id` | `string` | Yes |  |
+| `image` | `string|nil` | No | Organization image name or ID; null restores the standard image |
+| `invocations` | `table` | Yes |  |
+| `label` | `string` | Yes |  |
+| `last_error` | `string|nil` | Yes |  |
+| `last_polled_at` | `string|nil` | Yes |  |
+| `max_concurrency` | `number` | Yes |  |
+| `memory_mb` | `number` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `repository_full_name` | `string` | Yes |  |
+| `runtime_kind` | `string` | Yes |  |
+| `timeout_seconds` | `number` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | update |
+| --- | --- | --- | --- |
+| `cpu_millicores` | - | - | - |
+| `enabled` | - | Yes | Yes |
+| `github_app_installation_id` | - | - | - |
+| `github_repository_id` | - | - | - |
+| `github_runner_image` | - | - | - |
+| `id` | - | - | - |
+| `image` | - | - | - |
+| `invocations` | - | - | - |
+| `label` | - | Yes | - |
+| `last_error` | - | - | - |
+| `last_polled_at` | - | - | - |
+| `max_concurrency` | - | Yes | Yes |
+| `memory_mb` | - | - | - |
+| `organization_id` | - | - | - |
+| `provider` | - | Yes | Yes |
+| `repository_full_name` | - | - | - |
+| `runtime_kind` | - | - | - |
+| `timeout_seconds` | - | Yes | Yes |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubRunnerPool():create({
+  organization_id = --[[ string ]],
+  github_app_installation_id = --[[ string ]],
+  repository_full_name = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:GithubRunnerPool():list({ organization_id = "example" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubRunnerPool():update({
+  id = "id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubRunnerPoolEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerSetupEntity
+
+```lua
+local github_runner_setup = client:GithubRunnerSetup(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `error` | `string|nil` | Yes |  |
+| `github_repository_connection_id` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `pull_request_url` | `string|nil` | Yes |  |
+| `repository_full_name` | `string` | Yes |  |
+| `roder_thread_id` | `string|nil` | Yes |  |
+| `runner_labels` | `table` | Yes |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `summary` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubRunnerSetup():create({
+  organization_id = --[[ string ]],
+  github_repository_connection_id = --[[ string ]],
+})
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GithubRunnerSetup():load({ id = "github_runner_setup_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GithubRunnerSetupEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GitlabEntity
+
+```lua
+local gitlab = client:Gitlab(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `configured` | `boolean` | Yes |  |
+| `connections` | `table` | Yes |  |
+| `integrations` | `table` | Yes |  |
+| `inventory_error` | `string|nil` | No |  |
+| `next_page` | `number|nil` | Yes |  |
+| `organization` | `table` | Yes |  |
+| `projects` | `table` | Yes |  |
+| `redirect_uri` | `string|nil` | Yes | The OAuth redirect URI a self-managed GitLab application must use; null when GitLab callbacks aren't configured. |
+| `selected_integration_id` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Gitlab():load({ organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GitlabEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GitlabConnectionEntity
+
+```lua
+local gitlab_connection = client:GitlabConnection(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GitlabConnectionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GitlabImportEntity
+
+```lua
+local gitlab_import = client:GitlabImport(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `integration_id` | `string` | Yes |  |
+| `project_id` | `number` | Yes |  |
+| `repo_slug` | `string` | No |  |
+| `source_branch` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GitlabImport():create({
+  organization_id = --[[ string ]],
+  integration_id = --[[ string ]],
+  project_id = --[[ number ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GitlabImportEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GitlabOauthEntity
+
+```lua
+local gitlab_oauth = client:GitlabOauth(nil)
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GitlabOauthEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GrantAllAgentEntity
+
+```lua
+local grant_all_agent = client:GrantAllAgent(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `all_agents_access` | `boolean` | Yes |  |
+| `enabled` | `boolean` | Yes |  |
+| `execution_available` | `boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:GrantAllAgent():create({
+  device_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  enabled = --[[ boolean ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GrantAllAgentEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -11090,6 +23137,54 @@ Return the entity name.
 
 ---
 
+## IdentityOrganizationEntity
+
+```lua
+local identity_organization = client:IdentityOrganization(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `IdentityOrganizationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## ImageRepositoryEntity
 
 ```lua
@@ -11179,6 +23274,140 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `ImageRepositoryEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ImageRepositoryTagEntity
+
+```lua
+local image_repository_tag = client:ImageRepositoryTag(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `image_repository` | `table` | Yes |  |
+| `name` | `string` | Yes |  |
+| `registry_url` | `string` | Yes |  |
+| `tags` | `table` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ImageRepositoryTag():list({ image_repository_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ImageRepositoryTagEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ImportBranchPolicyEntity
+
+```lua
+local import_branch_policy = client:ImportBranchPolicy(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `boolean` | Yes |  |
+| `can_manage_sandbox_region` | `boolean` | Yes |  |
+| `dedicated_outbound_ip_addresses` | `table` | Yes | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` | Yes |  |
+| `organization` | `table` | Yes |  |
+| `sandbox_regions` | `table` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ImportBranchPolicy():load({ organization_id = "organization_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ImportBranchPolicy():patch({
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ImportBranchPolicy():update({
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ImportBranchPolicyEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -11383,6 +23612,307 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `InvitationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## InvocationControlEntity
+
+```lua
+local invocation_control = client:InvocationControl(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `InvocationControlEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## JobLogChunkEntity
+
+```lua
+local job_log_chunk = client:JobLogChunk(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `byte_size` | `number` | Yes |  |
+| `ci_job_id` | `string|nil` | Yes |  |
+| `ci_pipeline_run_id` | `string|nil` | Yes |  |
+| `ci_step_id` | `string|nil` | Yes |  |
+| `content` | `string` | Yes |  |
+| `content_format` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `sequence_number` | `number` | Yes |  |
+| `stream` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:JobLogChunk():create({
+  job_id = --[[ string ]],
+  pipeline_id = --[[ string ]],
+  run_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:JobLogChunk():list({ job_id = "example", pipeline_id = "example", run_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `JobLogChunkEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## JobStepEntity
+
+```lua
+local job_step = client:JobStep(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:JobStep():create({
+  job_id = --[[ string ]],
+  pipeline_id = --[[ string ]],
+  run_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:JobStep():list({ job_id = "example", pipeline_id = "example", run_id = "example" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:JobStep():patch({
+  id = "id",
+  job_id = "job_id",
+  pipeline_id = "pipeline_id",
+  run_id = "run_id",
+  -- Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:JobStep():update({
+  id = "id",
+  job_id = "job_id",
+  pipeline_id = "pipeline_id",
+  run_id = "run_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `JobStepEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## JobWorkspaceEntity
+
+```lua
+local job_workspace = client:JobWorkspace(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:JobWorkspace():create({
+  job_id = --[[ string ]],
+  pipeline_id = --[[ string ]],
+  run_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:JobWorkspace():list({ job_id = "example", pipeline_id = "example", run_id = "example" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:JobWorkspace():patch({
+  id = "id",
+  job_id = "job_id",
+  pipeline_id = "pipeline_id",
+  run_id = "run_id",
+  -- Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:JobWorkspace():update({
+  id = "id",
+  job_id = "job_id",
+  pipeline_id = "pipeline_id",
+  run_id = "run_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `JobWorkspaceEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -11611,6 +24141,635 @@ Return the entity name.
 
 ---
 
+## KnownEntity
+
+```lua
+local known = client:Known(nil)
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `KnownEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## LabelEntity
+
+```lua
+local label = client:Label(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `changes_count` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes | Display name |
+| `slug` | `string` | Yes | Normalized identity used for filtering and lookup. |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:Label():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LabelEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## LeaseArtifactEntity
+
+```lua
+local lease_artifact = client:LeaseArtifact(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:LeaseArtifact():create({
+  lease_id = --[[ string ]],
+  node_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LeaseArtifactEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## LeaseCacheEntity
+
+```lua
+local lease_cache = client:LeaseCache(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LeaseCacheEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## LeaseLogChunkEntity
+
+```lua
+local lease_log_chunk = client:LeaseLogChunk(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:LeaseLogChunk():create({
+  lease_id = --[[ string ]],
+  node_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LeaseLogChunkEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## LeaseReconciliationEntity
+
+```lua
+local lease_reconciliation = client:LeaseReconciliation(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LeaseReconciliationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## LeaseStepEntity
+
+```lua
+local lease_step = client:LeaseStep(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:LeaseStep():update({
+  id = "id",
+  lease_id = "lease_id",
+  node_id = "node_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LeaseStepEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## LeaseVerifyDiagnosticEntity
+
+```lua
+local lease_verify_diagnostic = client:LeaseVerifyDiagnostic(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `browser_events` | `table` | Yes |  |
+| `live_browser` | `table` | Yes |  |
+| `live_view` | `table` | Yes | The tester's read-only live stream for page viewers. |
+| `steps` | `table` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:LeaseVerifyDiagnostic():create({
+  lease_id = --[[ string ]],
+  swarm_id = --[[ string ]],
+  task_id = --[[ string ]],
+  browser_events = --[[ table ]],
+  live_browser = --[[ table ]],
+  live_view = --[[ table ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LeaseVerifyDiagnosticEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## LeaseVerifySecretEntity
+
+```lua
+local lease_verify_secret = client:LeaseVerifySecret(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:LeaseVerifySecret():create({
+  lease_id = --[[ string ]],
+  swarm_id = --[[ string ]],
+  task_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LeaseVerifySecretEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## LeaseWorkspaceEntity
+
+```lua
+local lease_workspace = client:LeaseWorkspace(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:LeaseWorkspace():update({
+  id = "id",
+  lease_id = "lease_id",
+  node_id = "node_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LeaseWorkspaceEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## LocalAgentDecisionEntity
+
+```lua
+local local_agent_decision = client:LocalAgentDecision(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `request` | `table` | Yes | A native OpenAI Decisions request for gpt-6-luna, at most 1600 KiB, with inline images only |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:LocalAgentDecision():create({
+  organization_id = --[[ string ]],
+  request = --[[ table ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LocalAgentDecisionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## LocalAgentResponseEntity
+
+```lua
+local local_agent_response = client:LocalAgentResponse(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `input` | `table` | Yes |  |
+| `model` | `string` | Yes |  |
+| `service_tier` | `string|nil` | No |  |
+| `store` | `boolean` | Yes |  |
+| `stream` | `boolean` | Yes |  |
+| `tools` | `table` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:LocalAgentResponse():create({
+  organization_id = --[[ string ]],
+  input = --[[ table ]],
+  model = --[[ string ]],
+  store = --[[ boolean ]],
+  stream = --[[ boolean ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LocalAgentResponseEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## LocalThreadDeliveryEntity
 
 ```lua
@@ -11812,6 +24971,260 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `LocationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## LogStreamChunkEntity
+
+```lua
+local log_stream_chunk = client:LogStreamChunk(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:LogStreamChunk():create({
+  log_stream_id = --[[ string ]],
+  space_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:LogStreamChunk():list({ log_stream_id = "example", space_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:LogStreamChunk():load({ id = "log_stream_chunk_id", log_stream_id = "log_stream_id", space_id = "space_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LogStreamChunkEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## LogoImageEntity
+
+```lua
+local logo_image = client:LogoImage(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_products` | `table` | Yes | Products this organization has activated (PRD 144). |
+| `agents_only` | `boolean` | No | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `boolean` | Yes | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `github_prs_authored_by_change_author` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
+| `logo_url` | `string|nil` | Yes |  |
+| `member_count` | `number` | Yes |  |
+| `name` | `string` | Yes |  |
+| `pending_invitation_count` | `number` | Yes |  |
+| `personal` | `boolean` | Yes |  |
+| `repository_count` | `number` | Yes |  |
+| `role` | `string|nil` | Yes |  |
+| `sandbox_region` | `string` | Yes |  |
+| `shared_agent_personal_accounts_enabled` | `boolean` | No | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` | Yes |  |
+| `source_control_providers` | `table` | No | Connected source control providers for this organization. |
+| `source_ui_enabled` | `boolean` | No | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `string` | Yes | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+| `verify_pr_scenario_writing_enabled` | `boolean` | Yes |  |
+
+### Operations
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:LogoImage():remove({ organization_id = "organization_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:LogoImage():update({
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LogoImageEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## MarketingSettingEntity
+
+```lua
+local marketing_setting = client:MarketingSetting(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `call_first` | `boolean` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:MarketingSetting():list()
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `MarketingSettingEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## McpOauthEntity
+
+```lua
+local mcp_oauth = client:McpOauth(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `McpOauthEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -12328,6 +25741,86 @@ Return the entity name.
 
 ---
 
+## MergeQueueEntryEntity
+
+```lua
+local merge_queue_entry = client:MergeQueueEntry(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `analytics` | `table` | Yes | Queue performance for the reporting window. |
+| `change_id` | `string|nil` | No |  |
+| `expected_target_commit_id` | `string|nil` | No |  |
+| `expected_target_version` | `number|nil` | No |  |
+| `expected_version` | `number` | Yes |  |
+| `github_pr_number` | `number|nil` | No |  |
+| `id` | `string` | No |  |
+| `idempotency_key` | `string` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `policy` | `table` | Yes |  |
+| `priority` | `string` | No |  |
+| `queue` | `table` | Yes |  |
+| `target_branches` | `table` | No | Bookmark names for the target picker. |
+| `when_ready` | `boolean|nil` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:MergeQueueEntry():create({
+  merge_queue_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+  expected_version = --[[ number ]],
+  idempotency_key = --[[ string ]],
+  kind = --[[ string ]],
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:MergeQueueEntry():remove({ id = "merge_queue_entry_id", merge_queue_id = "merge_queue_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `MergeQueueEntryEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## MergeRequestEntity
 
 ```lua
@@ -12453,6 +25946,72 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `MergeRequestEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## MergeResolutionEntity
+
+```lua
+local merge_resolution = client:MergeResolution(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `base` | `string` | Yes | Common ancestor file contents |
+| `content` | `string|nil` | No |  |
+| `context` | `table` | No | Optional surrounding files keyed by path |
+| `duration_ms` | `number` | Yes |  |
+| `fallback` | `boolean` | Yes |  |
+| `model` | `string` | No |  |
+| `ours` | `string` | Yes | Current / left file contents |
+| `path` | `string` | No | Repository-relative path of the conflicted file |
+| `resolved` | `boolean` | Yes |  |
+| `theirs` | `string` | Yes | Incoming / right file contents |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:MergeResolution():create({
+  base = --[[ string ]],
+  ours = --[[ string ]],
+  theirs = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `MergeResolutionEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -12637,6 +26196,218 @@ Return the entity name.
 
 ---
 
+## MetronomeWebhookEntity
+
+```lua
+local metronome_webhook = client:MetronomeWebhook(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:MetronomeWebhook():create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `MetronomeWebhookEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ModelSubscriptionAccountEntity
+
+```lua
+local model_subscription_account = client:ModelSubscriptionAccount(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accounts` | `table` | Yes |  |
+| `agents` | `table` | Yes |  |
+| `can_disconnect` | `boolean` | Yes |  |
+| `connection_agent` | `table|nil` | Yes |  |
+| `email` | `string` | No |  |
+| `id` | `string` | Yes |  |
+| `label` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `saved` | `boolean` | Yes |  |
+| `status` | `string` | Yes |  |
+| `usable` | `boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ModelSubscriptionAccount():create({
+  label = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ModelSubscriptionAccount():list()
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ModelSubscriptionAccount():patch({
+  id = "model_subscription_account_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ModelSubscriptionAccount():remove({ id = "model_subscription_account_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ModelSubscriptionAccount():update({
+  id = "model_subscription_account_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ModelSubscriptionAccountEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ModelSubscriptionAccountConnectionEntity
+
+```lua
+local model_subscription_account_connection = client:ModelSubscriptionAccountConnection(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ModelSubscriptionAccountConnection():load({ id = "model_subscription_account_connection_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ModelSubscriptionAccountConnection():update({
+  id = "model_subscription_account_connection_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ModelSubscriptionAccountConnectionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## NetworkConnectionEntity
 
 ```lua
@@ -12731,6 +26502,276 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `NetworkConnectionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## NetworkingSpaceEntity
+
+```lua
+local networking_space = client:NetworkingSpace(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:NetworkingSpace():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:NetworkingSpace():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:NetworkingSpace():load({ id = "networking_space_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:NetworkingSpace():patch({
+  id = "networking_space_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:NetworkingSpace():remove({ id = "networking_space_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:NetworkingSpace():update({
+  id = "networking_space_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `NetworkingSpaceEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## NodeEntity
+
+```lua
+local node = client:Node(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `string|nil` | Yes |  |
+| `account_id` | `string|nil` | Yes |  |
+| `account_login` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `installation_id` | `string` | Yes |  |
+| `installed_at` | `string|nil` | Yes |  |
+| `installed_at_label` | `string|nil` | Yes |  |
+| `manage_access_url` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `permission_entries` | `table` | Yes | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `table` | Yes |  |
+| `status` | `string` | Yes |  |
+| `suspended_at` | `string|nil` | Yes |  |
+| `suspended_at_label` | `string|nil` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:Node():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `NodeEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## NodeCertificateEntity
+
+```lua
+local node_certificate = client:NodeCertificate(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `NodeCertificateEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## NodeLeaseEntity
+
+```lua
+local node_lease = client:NodeLease(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:NodeLease():list({ node_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `NodeLeaseEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -12862,6 +26903,465 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `NomadLogEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## NowEntity
+
+```lua
+local now = client:Now(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `needs_attention` | `table` | Yes |  |
+| `pagination` | `table` | Yes |  |
+| `recently_landed` | `table` | Yes |  |
+| `shipping_now` | `table` | Yes |  |
+| `summary` | `table` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Now():load({ organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `NowEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ObservabilityClickhouseClusterEntity
+
+```lua
+local observability_clickhouse_cluster = client:ObservabilityClickhouseCluster(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ObservabilityClickhouseCluster():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ObservabilityClickhouseCluster():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ObservabilityClickhouseCluster():load({ id = "observability_clickhouse_cluster_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ObservabilityClickhouseCluster():patch({
+  id = "observability_clickhouse_cluster_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ObservabilityClickhouseCluster():remove({ id = "observability_clickhouse_cluster_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ObservabilityClickhouseCluster():update({
+  id = "observability_clickhouse_cluster_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ObservabilityClickhouseClusterEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ObservabilityQuickwitClusterEntity
+
+```lua
+local observability_quickwit_cluster = client:ObservabilityQuickwitCluster(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ObservabilityQuickwitCluster():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ObservabilityQuickwitCluster():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ObservabilityQuickwitCluster():load({ id = "observability_quickwit_cluster_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ObservabilityQuickwitCluster():patch({
+  id = "observability_quickwit_cluster_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ObservabilityQuickwitCluster():remove({ id = "observability_quickwit_cluster_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ObservabilityQuickwitCluster():update({
+  id = "observability_quickwit_cluster_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ObservabilityQuickwitClusterEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ObservabilitySpaceEntity
+
+```lua
+local observability_space = client:ObservabilitySpace(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ObservabilitySpace():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ObservabilitySpace():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ObservabilitySpace():load({ id = "observability_space_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ObservabilitySpace():patch({
+  id = "observability_space_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ObservabilitySpace():remove({ id = "observability_space_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ObservabilitySpace():update({
+  id = "observability_space_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ObservabilitySpaceEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OpenapiEntity
+
+```lua
+local openapi = client:Openapi(nil)
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Openapi():load()
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OpenapiEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrgInvitationEntity
+
+```lua
+local org_invitation = client:OrgInvitation(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+| `invitation` | `table` | Yes |  |
+| `registration_options` | `any` | Yes |  |
+| `requires_password_setup` | `boolean` | Yes |  |
+| `start_guided_setup` | `boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrgInvitation():load({ id = "org_invitation_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrgInvitationEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -13007,6 +27507,1326 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `OrganizationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationAppEntity
+
+```lua
+local organization_app = client:OrganizationApp(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:OrganizationApp():list({ organization_id = "example", native_agent_id = "example" })
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationAppEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationControlEntity
+
+```lua
+local organization_control = client:OrganizationControl(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationControlEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationDeviceEntity
+
+```lua
+local organization_device = client:OrganizationDevice(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationDeviceEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationIdentityCertificateEntity
+
+```lua
+local organization_identity_certificate = client:OrganizationIdentityCertificate(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationIdentityCertificate():create({
+  organization_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:OrganizationIdentityCertificate():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationIdentityCertificate():load({ id = "organization_identity_certificate_id", organization_id = "organization_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationIdentityCertificate():patch({
+  id = "organization_identity_certificate_id",
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationIdentityCertificate():remove({ id = "organization_identity_certificate_id", organization_id = "organization_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationIdentityCertificate():update({
+  id = "organization_identity_certificate_id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationIdentityCertificateEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationInteractionEntity
+
+```lua
+local organization_interaction = client:OrganizationInteraction(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationInteraction():create({
+  organization_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationInteractionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationInvitationEntity
+
+```lua
+local organization_invitation = client:OrganizationInvitation(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `role` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationInvitation():create({
+  organization_id = --[[ string ]],
+  email = --[[ string ]],
+  role = --[[ string ]],
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationInvitation():remove({ id = "organization_invitation_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationInvitationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationMessageFileEntity
+
+```lua
+local organization_message_file = client:OrganizationMessageFile(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationMessageFile():create({
+  organization_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationMessageFileEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationOidcTrustEntity
+
+```lua
+local organization_oidc_trust = client:OrganizationOidcTrust(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationOidcTrust():create({
+  organization_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:OrganizationOidcTrust():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationOidcTrust():load({ id = "organization_oidc_trust_id", organization_id = "organization_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationOidcTrust():patch({
+  id = "organization_oidc_trust_id",
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationOidcTrust():remove({ id = "organization_oidc_trust_id", organization_id = "organization_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationOidcTrust():update({
+  id = "organization_oidc_trust_id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationOidcTrustEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationRunEventEntity
+
+```lua
+local organization_run_event = client:OrganizationRunEvent(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationRunEvent():create({
+  organization_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationRunEventEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationRunOutcomeEntity
+
+```lua
+local organization_run_outcome = client:OrganizationRunOutcome(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationRunOutcome():create({
+  organization_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationRunOutcomeEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationRunUsageEntity
+
+```lua
+local organization_run_usage = client:OrganizationRunUsage(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationRunUsage():create({
+  organization_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationRunUsageEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSandboxEntity
+
+```lua
+local organization_sandbox = client:OrganizationSandbox(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationSandboxEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSecretEntity
+
+```lua
+local organization_secret = client:OrganizationSecret(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app_environment_id` | `string|nil` | Yes |  |
+| `app_service_id` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `created_by` | `table|nil` | Yes |  |
+| `current_version` | `table|nil` | Yes |  |
+| `description` | `string|nil` | Yes |  |
+| `env_key` | `string` | Yes |  |
+| `expose_to_build` | `boolean` | Yes |  |
+| `expose_to_ci` | `boolean` | Yes |  |
+| `hosted_app_id` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_accessed_at` | `string|nil` | Yes |  |
+| `last_accessed_at_label` | `string|nil` | Yes |  |
+| `last_accessed_by` | `table|nil` | Yes |  |
+| `latest_version_number` | `number|nil` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string|nil` | Yes |  |
+| `owner_service_account_id` | `string|nil` | Yes |  |
+| `rotation_policy` | `string|nil` | Yes |  |
+| `scope_kind` | `string` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationSecret():create({
+  organization_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:OrganizationSecret():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationSecret():load({ id = "organization_secret_id", organization_id = "organization_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationSecret():patch({
+  id = "organization_secret_id",
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationSecret():remove({ id = "organization_secret_id", organization_id = "organization_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationSecret():update({
+  id = "organization_secret_id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationSecretEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationServiceAccountEntity
+
+```lua
+local organization_service_account = client:OrganizationServiceAccount(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationServiceAccount():create({
+  organization_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:OrganizationServiceAccount():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationServiceAccount():load({ id = "organization_service_account_id", organization_id = "organization_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationServiceAccount():patch({
+  id = "organization_service_account_id",
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationServiceAccount():remove({ id = "organization_service_account_id", organization_id = "organization_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationServiceAccount():update({
+  id = "organization_service_account_id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationServiceAccountEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSettingEntity
+
+```lua
+local organization_setting = client:OrganizationSetting(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `concurrent_run_limit_override` | `number|nil` | No |  |
+| `customize_onboarding_packages` | `boolean` | No |  |
+| `daily_run_limit_override` | `number|nil` | No |  |
+| `deployment_usage_visibility` | `string` | No |  |
+| `monthly_browser_minutes_limit_override` | `number|nil` | No |  |
+| `monthly_budget_dollars` | `string|number|nil` | No |  |
+| `name` | `string` | No |  |
+| `onboarding_custom_pricing` | `boolean` | No |  |
+| `onboarding_package_keys` | `table` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationSetting():update({
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationSettingEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSiteEntity
+
+```lua
+local organization_site = client:OrganizationSite(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationSite():create({
+  organization_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:OrganizationSite():list({ organization_id = "example", native_agent_id = "example" })
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationSite():remove({ id = "organization_site_id", organization_id = "organization_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationSite():update({
+  id = "organization_site_id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationSiteEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSubscriptionEntity
+
+```lua
+local organization_subscription = client:OrganizationSubscription(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationSubscriptionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationToolEntity
+
+```lua
+local organization_tool = client:OrganizationTool(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `arguments` | `table` | Yes |  |
+| `native_agent_id` | `string` | Yes |  |
+| `tool` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationTool():create({
+  organization_id = --[[ string ]],
+  arguments = --[[ table ]],
+  native_agent_id = --[[ string ]],
+  tool = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationToolEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationWorkloadIdentityEntity
+
+```lua
+local organization_workload_identity = client:OrganizationWorkloadIdentity(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationWorkloadIdentity():create({
+  organization_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:OrganizationWorkloadIdentity():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationWorkloadIdentity():load({ id = "organization_workload_identity_id", organization_id = "organization_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationWorkloadIdentity():patch({
+  id = "organization_workload_identity_id",
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationWorkloadIdentity():remove({ id = "organization_workload_identity_id", organization_id = "organization_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:OrganizationWorkloadIdentity():update({
+  id = "organization_workload_identity_id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OrganizationWorkloadIdentityEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## OtelIngestEntity
+
+```lua
+local otel_ingest = client:OtelIngest(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `OtelIngestEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -13163,6 +28983,162 @@ Return the entity name.
 
 ---
 
+## PageArtefactEntity
+
+```lua
+local page_artefact = client:PageArtefact(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `artefact` | `any` | Yes |  |
+| `automation` | `table|nil` | Yes |  |
+| `automation_invocation_id` | `string|nil` | No |  |
+| `byte_size` | `number` | Yes |  |
+| `checksum_sha256` | `string` | Yes |  |
+| `comment_threads` | `table` | Yes |  |
+| `content_type` | `string` | Yes |  |
+| `created_at` | `string|nil` | No |  |
+| `created_by_user_id` | `string|nil` | No |  |
+| `description` | `string|nil` | No |  |
+| `document_key` | `string` | No | Stable document identity shared by all revisions. |
+| `draft` | `table|nil` | Yes | The autosaved working copy of the newest Markdown version; null for older versions and other files. |
+| `entrypoint` | `string` | No |  |
+| `expires_at` | `string|nil` | No |  |
+| `filename` | `string` | Yes |  |
+| `files` | `table` | No |  |
+| `harness` | `string|nil` | No |  |
+| `harness_version` | `string|nil` | No |  |
+| `id` | `string` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `kinds` | `table` | Yes |  |
+| `model` | `string|nil` | No |  |
+| `organization` | `table` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `pagination` | `table` | Yes |  |
+| `permissions` | `table` | Yes |  |
+| `preview` | `table` | Yes |  |
+| `published_at` | `string|nil` | No |  |
+| `published_at_label` | `string|nil` | Yes |  |
+| `publisher` | `table|nil` | Yes |  |
+| `repository` | `table|nil` | Yes |  |
+| `repository_id` | `string|nil` | No |  |
+| `selected_path` | `string` | No |  |
+| `slug` | `string` | Yes |  |
+| `source` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `vcs_agent_checkpoint_id` | `string|nil` | No |  |
+| `vcs_agent_session_id` | `string|nil` | No |  |
+| `version` | `number` | Yes |  |
+| `versions` | `table` | Yes |  |
+| `view_url` | `string` | Yes |  |
+| `web_url` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:PageArtefact():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:PageArtefact():load({ id = "page_artefact_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PageArtefactEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## PageCiPipelineRunEntity
+
+```lua
+local page_ci_pipeline_run = client:PageCiPipelineRun(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `error` | `string|nil` | Yes |  |
+| `id` | `string` | No |  |
+| `jobs` | `table` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:PageCiPipelineRun():load({ id = "page_ci_pipeline_run_id", pipeline_id = "pipeline_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PageCiPipelineRunEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## PageProjectRunEntity
 
 ```lua
@@ -13218,6 +29194,253 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `PageProjectRunEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## PageRepoVcCommitEntity
+
+```lua
+local page_repo_vc_commit = client:PageRepoVcCommit(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `commit` | `any` | Yes |  |
+| `diff_path` | `string` | Yes | Fingerprinted path serving this commit range's file diff. |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:PageRepoVcCommit():load({ id = "page_repo_vc_commit_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PageRepoVcCommitEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## PagesBillingEntity
+
+```lua
+local pages_billing = client:PagesBilling(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `table` | Yes |  |
+| `breakdown` | `any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` | Yes |  |
+| `can_manage_contact` | `boolean` | Yes |  |
+| `can_manage_extra_spend` | `boolean` | Yes |  |
+| `can_manage_local_subscription` | `boolean` | Yes |  |
+| `can_manage_payment_method` | `boolean` | Yes |  |
+| `can_set_up_billing` | `boolean` | Yes |  |
+| `customer` | `any` | Yes |  |
+| `deployment_usage_visible` | `boolean` | Yes |  |
+| `entitlements` | `table` | Yes |  |
+| `extra_spend_enabled` | `boolean` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `any` | Yes |  |
+| `prepaid` | `any` | Yes |  |
+| `preview` | `any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `table` | Yes |  |
+| `stripe` | `table` | Yes |  |
+| `subscription` | `any` | Yes |  |
+| `token_account` | `table` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:PagesBilling():load({ organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PagesBillingEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## PagesGithubOnboardingEntity
+
+```lua
+local pages_github_onboarding = client:PagesGithubOnboarding(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `onboarding` | `table` | Yes |  |
+| `organization` | `table` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:PagesGithubOnboarding():load({ organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PagesGithubOnboardingEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## PagesMemberEntity
+
+```lua
+local pages_member = client:PagesMember(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accepted_at` | `string|nil` | Yes |  |
+| `accepted_by_user` | `any` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `email` | `string` | Yes |  |
+| `email_delivery_status` | `string` | No |  |
+| `expires_at` | `string|nil` | Yes |  |
+| `expires_at_label` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `invite_url` | `string|nil` | Yes |  |
+| `invited_by_user` | `any` | Yes |  |
+| `organization` | `table` | Yes |  |
+| `revoked_at` | `string|nil` | Yes |  |
+| `role` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:PagesMember():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PagesMemberEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -13461,6 +29684,419 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `PagesProjectScenarioEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## PagesRegistryEntity
+
+```lua
+local pages_registry = client:PagesRegistry(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_repository_count` | `number` | Yes |  |
+| `error` | `string|nil` | Yes |  |
+| `pagination` | `table` | Yes |  |
+| `repositories` | `table` | Yes |  |
+| `repository_count` | `number` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:PagesRegistry():load({ organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PagesRegistryEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## PagesSessionEntity
+
+```lua
+local pages_session = client:PagesSession(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter` | `string` | No |  |
+| `created_at` | `string|nil` | Yes |  |
+| `cursor` | `string` | No |  |
+| `ended_at` | `string|nil` | Yes |  |
+| `external_session_id` | `string` | Yes |  |
+| `facets` | `table` | Yes |  |
+| `from` | `string` | No |  |
+| `github_access_warnings` | `table` | No |  |
+| `harness` | `string` | Yes | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `string` | Yes |  |
+| `last_activity_at` | `string|nil` | Yes | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `string|nil` | Yes |  |
+| `limit` | `number` | No |  |
+| `markers` | `table` | Yes |  |
+| `max_bytes` | `number` | No |  |
+| `mode` | `string` | No |  |
+| `offset` | `number` | No |  |
+| `pagination` | `table` | Yes |  |
+| `query` | `string` | No |  |
+| `repo` | `string` | No |  |
+| `repository` | `any` | Yes |  |
+| `search` | `any` | No |  |
+| `search_enabled` | `boolean` | No |  |
+| `session` | `any` | Yes | Identical serialization to the org sessions page's expanded session, so the web reuses one session-detail builder. |
+| `sessions` | `table` | Yes |  |
+| `started_at` | `string|nil` | Yes |  |
+| `stats` | `table` | Yes |  |
+| `status` | `string` | No |  |
+| `title` | `string|nil` | Yes |  |
+| `to` | `string` | No |  |
+| `token_stats` | `any` | Yes |  |
+| `transcript_index` | `any` | Yes |  |
+| `transcript_stats` | `any` | Yes |  |
+| `updated_at` | `string|nil` | Yes |  |
+| `user` | `any` | Yes |  |
+| `user_id` | `string` | No |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `adapter` | - | Yes | - |
+| `created_at` | - | - | - |
+| `cursor` | - | - | - |
+| `ended_at` | - | - | - |
+| `external_session_id` | - | - | - |
+| `facets` | - | - | - |
+| `from` | - | - | - |
+| `github_access_warnings` | - | - | - |
+| `harness` | - | - | - |
+| `id` | - | - | - |
+| `last_activity_at` | - | - | - |
+| `last_checkpoint_at` | - | - | - |
+| `limit` | - | - | - |
+| `markers` | - | - | - |
+| `max_bytes` | - | - | - |
+| `mode` | - | - | - |
+| `offset` | - | - | - |
+| `pagination` | - | - | - |
+| `query` | - | - | - |
+| `repo` | - | - | - |
+| `repository` | - | - | - |
+| `search` | - | - | - |
+| `search_enabled` | - | - | - |
+| `session` | - | - | - |
+| `sessions` | - | - | - |
+| `started_at` | - | - | - |
+| `stats` | - | - | - |
+| `status` | - | Yes | - |
+| `title` | - | - | - |
+| `to` | - | - | - |
+| `token_stats` | - | - | - |
+| `transcript_index` | - | - | - |
+| `transcript_stats` | - | - | - |
+| `updated_at` | - | - | - |
+| `user` | - | - | - |
+| `user_id` | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:PagesSession():create({
+  organization_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:PagesSession():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:PagesSession():load({ id = "pages_session_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PagesSessionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## PairingEntity
+
+```lua
+local pairing = client:Pairing(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Pairing():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:Pairing():list()
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Pairing():load({ id = "pairing_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PairingEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## PairingEventEntity
+
+```lua
+local pairing_event = client:PairingEvent(nil)
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:PairingEvent():list({ pairing_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PairingEventEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ParallelV1Entity
+
+```lua
+local parallel_v1 = client:ParallelV1(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ParallelV1Entity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## PatchsetDiffEntity
+
+```lua
+local patchset_diff = client:PatchsetDiff(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `files` | `table` | Yes |  |
+| `id` | `string` | No |  |
+| `patchset` | `table` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:PatchsetDiff():load({ id = "patchset_diff_id", change_id = "change_id", organization_id = "organization_id", patchset_id = "patchset_id", repo_id = "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PatchsetDiffEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -13815,6 +30451,155 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `PreviewSharingApprovalEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ProactiveAgentWaitlistEntryEntity
+
+```lua
+local proactive_agent_waitlist_entry = client:ProactiveAgentWaitlistEntry(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email` | `string` | Yes |  |
+| `first_task` | `string|nil` | No | The first job they would hand an agent. |
+| `invite_code` | `string|nil` | No | The referral code of the invite link they arrived through. |
+| `places_per_referral` | `number` | Yes | Most places one referral moves the entry up; fewer when boosted entries are ahead. |
+| `position` | `number` | Yes | 1-based place in the queue. |
+| `position_after_next_referral` | `number` | Yes | The place one more referral would give this entry, as Rails would assign it. |
+| `referral_code` | `string` | Yes | Shared in this entry's invite link. |
+| `referral_count` | `number` | Yes | People who joined through this entry's link. |
+| `total` | `number` | Yes | Display total including a random increment per signup; not the actual number of entries. |
+| `website` | `string|nil` | No | Honeypot. |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ProactiveAgentWaitlistEntry():create({
+  email = --[[ string ]],
+})
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ProactiveAgentWaitlistEntry():load({ id = "proactive_agent_waitlist_entry_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ProactiveAgentWaitlistEntryEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ProductEntity
+
+```lua
+local product = client:Product(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_products` | `table` | Yes | Products this organization has activated (PRD 144). |
+| `agents_only` | `boolean` | No | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `boolean` | Yes | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `github_prs_authored_by_change_author` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
+| `logo_url` | `string|nil` | Yes |  |
+| `member_count` | `number` | Yes |  |
+| `name` | `string` | Yes |  |
+| `pending_invitation_count` | `number` | Yes |  |
+| `personal` | `boolean` | Yes |  |
+| `product` | `string` | Yes |  |
+| `repository_count` | `number` | Yes |  |
+| `role` | `string|nil` | Yes |  |
+| `sandbox_region` | `string` | Yes |  |
+| `shared_agent_personal_accounts_enabled` | `boolean` | No | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` | Yes |  |
+| `source_control_providers` | `table` | No | Connected source control providers for this organization. |
+| `source_ui_enabled` | `boolean` | No | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `string` | Yes | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+| `verify_pr_scenario_writing_enabled` | `boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Product():create({
+  organization_id = --[[ string ]],
+  product = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ProductEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -15851,6 +32636,122 @@ Return the entity name.
 
 ---
 
+## PullRequestActionEntity
+
+```lua
+local pull_request_action = client:PullRequestAction(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action_name` | `string` | Yes |  |
+| `body` | `string` | No |  |
+| `comment_id` | `string` | No |  |
+| `comments` | `table` | No |  |
+| `event` | `string` | No |  |
+| `expected_head_sha` | `string` | No |  |
+| `id` | `string|nil` | No |  |
+| `label` | `string` | No |  |
+| `line` | `number` | No |  |
+| `node_id` | `string|nil` | No |  |
+| `operation_key` | `string` | Yes |  |
+| `path` | `string` | No |  |
+| `run_id` | `string` | No |  |
+| `side` | `string` | No |  |
+| `start_line` | `number` | No |  |
+| `start_side` | `string` | No |  |
+| `thread_id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:PullRequestAction():create({
+  number = --[[ string ]],
+  organization_id = --[[ string ]],
+  pull_request_id = --[[ string ]],
+  action_name = --[[ string ]],
+  operation_key = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PullRequestActionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## PullRequestMagicMergeEntity
+
+```lua
+local pull_request_magic_merge = client:PullRequestMagicMerge(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PullRequestMagicMergeEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## PullRequestSettingEntity
 
 ```lua
@@ -16121,6 +33022,126 @@ Return the entity name.
 
 ---
 
+## PullRequestTranscriptEntity
+
+```lua
+local pull_request_transcript = client:PullRequestTranscript(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter` | `string` | Yes |  |
+| `created_at` | `string|nil` | Yes |  |
+| `ended_at` | `string|nil` | Yes |  |
+| `external_session_id` | `string` | Yes |  |
+| `harness` | `string` | Yes | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `string` | Yes |  |
+| `last_activity_at` | `string|nil` | Yes | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `string|nil` | Yes |  |
+| `repository` | `any` | Yes |  |
+| `started_at` | `string|nil` | Yes |  |
+| `stats` | `table` | Yes |  |
+| `status` | `string` | Yes |  |
+| `title` | `string|nil` | Yes |  |
+| `updated_at` | `string|nil` | Yes |  |
+| `user` | `any` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:PullRequestTranscript():list({ organization_id = "example", pull_request_id = "example", repo_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PullRequestTranscriptEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## PullZoneEntity
+
+```lua
+local pull_zone = client:PullZone(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `slug` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:PullZone():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PullZoneEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## RecorderEntity
 
 ```lua
@@ -16259,6 +33280,143 @@ Return the entity name.
 
 ---
 
+## RelayAgentConnectionEntity
+
+```lua
+local relay_agent_connection = client:RelayAgentConnection(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_card_url` | `string` | Yes |  |
+| `auth_scheme` | `string` | Yes |  |
+| `can_configure` | `boolean` | Yes |  |
+| `can_disconnect` | `boolean` | Yes |  |
+| `can_setup` | `boolean` | Yes |  |
+| `connection` | `table` | Yes |  |
+| `credential` | `string|nil` | No | Write-only outbound key. |
+| `error_code` | `string|nil` | Yes |  |
+| `expected_generation` | `number` | Yes |  |
+| `generation` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `remote_agent` | `string|nil` | Yes |  |
+| `requester_id` | `string` | Yes |  |
+| `retired_at` | `string|nil` | Yes |  |
+| `revoked_at` | `string|nil` | Yes |  |
+| `scope_key` | `string` | Yes |  |
+| `source_operation_id` | `string|nil` | Yes |  |
+| `state` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | remove |
+| --- | --- | --- | --- | --- | --- |
+| `agent_card_url` | - | - | - | - | - |
+| `auth_scheme` | - | - | - | - | - |
+| `can_configure` | - | - | - | - | - |
+| `can_disconnect` | - | - | - | - | - |
+| `can_setup` | - | - | - | - | - |
+| `connection` | - | - | - | - | - |
+| `credential` | - | - | - | - | - |
+| `error_code` | - | - | - | - | - |
+| `expected_generation` | - | - | - | - | - |
+| `generation` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `remote_agent` | - | - | Yes | Yes | - |
+| `requester_id` | - | - | - | - | - |
+| `retired_at` | - | - | - | - | - |
+| `revoked_at` | - | - | - | - | - |
+| `scope_key` | - | - | - | - | - |
+| `source_operation_id` | - | - | Yes | - | - |
+| `state` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RelayAgentConnection():create({
+  agent_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  agent_card_url = --[[ string ]],
+  auth_scheme = --[[ string ]],
+  name = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RelayAgentConnection():list({ agent_id = "example", organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RelayAgentConnection():load({ id = "relay_agent_connection_id", agent_id = "agent_id", organization_id = "organization_id" })
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RelayAgentConnection():remove({ id = "relay_agent_connection_id", agent_id = "agent_id", organization_id = "organization_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RelayAgentConnection():update({
+  id = "relay_agent_connection_id",
+  agent_id = "agent_id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RelayAgentConnectionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## RelayAgentLocalThreadEntity
 
 ```lua
@@ -16302,6 +33460,1195 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `RelayAgentLocalThreadEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RelaySignalEntity
+
+```lua
+local relay_signal = client:RelaySignal(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RelaySignal():create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RelaySignalEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ReleaseRolloutEntity
+
+```lua
+local release_rollout = client:ReleaseRollout(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ReleaseRollout():create({
+  release_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:ReleaseRollout():list({ release_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ReleaseRollout():load({ id = "release_rollout_id", release_id = "release_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ReleaseRolloutEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepoEntity
+
+```lua
+local repo = client:Repo(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_retry_import` | `boolean` | Yes | True when a failed client import can be requeued for CLI resume. |
+| `can_retry_sync` | `boolean` | Yes | True when the latest sync run failed and can be retried. |
+| `disclaimer` | `string|nil` | Yes |  |
+| `federated_in_home` | `boolean` | Yes | True when this Space is a folder virtual repository inside the organization Home monorepo. |
+| `github_repository` | `string|nil` | Yes |  |
+| `icon_name` | `string` | Yes |  |
+| `id` | `string` | Yes | Virtual repository public ID for non-Home rows; Home uses the physical repository public ID. |
+| `import_item_id` | `string|nil` | Yes |  |
+| `is_home` | `boolean` | Yes |  |
+| `name` | `string` | Yes |  |
+| `remote_repository` | `string|nil` | No |  |
+| `root_path` | `string|nil` | Yes | Home-relative folder path when federated_in_home is true; null otherwise. |
+| `slug` | `string` | Yes |  |
+| `sync_error_message` | `string|nil` | Yes |  |
+| `sync_provider` | `string` | No |  |
+| `sync_status` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:Repo():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Repo():remove({ id = "repo_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepoAccessTokenEntity
+
+```lua
+local repo_access_token = client:RepoAccessToken(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access_token` | `table` | Yes |  |
+| `active` | `boolean` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `credential_purpose` | `string` | No | Issues a revocable read-write system credential valid for one hour. |
+| `expires_at` | `string|nil` | Yes |  |
+| `expires_at_label` | `string|nil` | Yes |  |
+| `expires_in_days` | `number|nil` | No |  |
+| `id` | `string` | Yes |  |
+| `last_used_at` | `string|nil` | Yes |  |
+| `last_used_at_label` | `string|nil` | Yes |  |
+| `name` | `string` | Yes |  |
+| `permission_level` | `string` | No |  |
+| `plain_text_token` | `string` | Yes |  |
+| `revoked_at` | `string|nil` | Yes |  |
+| `revoked_at_label` | `string|nil` | Yes |  |
+| `token_preview` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | remove |
+| --- | --- | --- | --- |
+| `access_token` | - | - | - |
+| `active` | - | - | - |
+| `created_at` | - | - | - |
+| `created_at_label` | - | - | - |
+| `credential_purpose` | - | - | - |
+| `expires_at` | - | - | - |
+| `expires_at_label` | - | - | - |
+| `expires_in_days` | - | - | - |
+| `id` | - | - | - |
+| `last_used_at` | - | - | - |
+| `last_used_at_label` | - | - | - |
+| `name` | - | - | - |
+| `permission_level` | Yes | - | - |
+| `plain_text_token` | - | - | - |
+| `revoked_at` | - | - | - |
+| `revoked_at_label` | - | - | - |
+| `token_preview` | - | - | - |
+| `updated_at` | - | - | - |
+| `updated_at_label` | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoAccessToken():create({
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+  name = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RepoAccessToken():list({ organization_id = "example", repo_id = "example" })
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoAccessToken():remove({ id = "repo_access_token_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoAccessTokenEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepoActionEntity
+
+```lua
+local repo_action = client:RepoAction(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `pipeline` | `table` | Yes |  |
+| `run` | `table` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RepoAction():list({ organization_id = "example", repo_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoActionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepoAgentCheckpointEntity
+
+```lua
+local repo_agent_checkpoint = client:RepoAgentCheckpoint(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoAgentCheckpoint():load({ id = "repo_agent_checkpoint_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoAgentCheckpointEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepoAgentSessionEntity
+
+```lua
+local repo_agent_session = client:RepoAgentSession(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter` | `string` | No |  |
+| `agent_session` | `table` | Yes |  |
+| `external_session_id` | `string` | No |  |
+| `id` | `string` | No |  |
+| `status` | `string` | No |  |
+| `title` | `string|nil` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoAgentSession():create({
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RepoAgentSession():list({ organization_id = "example", repo_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoAgentSession():load({ id = "repo_agent_session_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoAgentSession():patch({
+  id = "repo_agent_session_id",
+  organization_id = "organization_id",
+  repo_id = "repo_id",
+  -- Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoAgentSession():update({
+  id = "repo_agent_session_id",
+  organization_id = "organization_id",
+  repo_id = "repo_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoAgentSessionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepoBookmarkProtectionEntity
+
+```lua
+local repo_bookmark_protection = client:RepoBookmarkProtection(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `actor_policy` | `table` | Yes |  |
+| `bypass_mode` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_by_user_id` | `string|nil` | Yes |  |
+| `enabled` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `priority` | `number` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `requirements` | `table` | Yes |  |
+| `target_kind` | `string` | Yes |  |
+| `target_pattern` | `string|nil` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_by_user_id` | `string|nil` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- | --- |
+| `actor_policy` | - | - | Yes | Yes | Yes | - |
+| `bypass_mode` | - | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - | - |
+| `created_by_user_id` | - | - | - | - | - | - |
+| `enabled` | - | - | Yes | Yes | Yes | - |
+| `id` | - | - | - | - | - | - |
+| `name` | - | - | Yes | Yes | Yes | - |
+| `organization_id` | - | - | - | - | - | - |
+| `priority` | - | - | Yes | Yes | Yes | - |
+| `repository_id` | - | - | - | - | - | - |
+| `requirements` | - | - | Yes | Yes | Yes | - |
+| `target_kind` | - | - | Yes | Yes | Yes | - |
+| `target_pattern` | - | - | Yes | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - | - |
+| `updated_by_user_id` | - | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoBookmarkProtection():create({
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RepoBookmarkProtection():list({ organization_id = "example", repo_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoBookmarkProtection():load({ id = "repo_bookmark_protection_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoBookmarkProtection():patch({
+  id = "repo_bookmark_protection_id",
+  organization_id = "organization_id",
+  repo_id = "repo_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoBookmarkProtection():remove({ id = "repo_bookmark_protection_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoBookmarkProtection():update({
+  id = "repo_bookmark_protection_id",
+  organization_id = "organization_id",
+  repo_id = "repo_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoBookmarkProtectionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepoBookmarkProtectionEventEntity
+
+```lua
+local repo_bookmark_protection_event = client:RepoBookmarkProtectionEvent(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `actor_kind` | `string` | Yes |  |
+| `actor_label` | `string|nil` | Yes |  |
+| `actor_user_id` | `string|nil` | Yes |  |
+| `bookmark_name` | `string` | Yes |  |
+| `bookmark_protection_rule_id` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `decision` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `intent` | `string|nil` | Yes |  |
+| `metadata` | `table` | Yes |  |
+| `new_target` | `string|nil` | Yes |  |
+| `old_target` | `string|nil` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `reason_codes` | `table` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `source_request_id` | `string|nil` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RepoBookmarkProtectionEvent():list({ organization_id = "example", repo_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoBookmarkProtectionEventEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepoCloudWorkspaceBackupEntity
+
+```lua
+local repo_cloud_workspace_backup = client:RepoCloudWorkspaceBackup(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoCloudWorkspaceBackup():create({
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RepoCloudWorkspaceBackup():list({ organization_id = "example", repo_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoCloudWorkspaceBackup():load({ id = "repo_cloud_workspace_backup_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoCloudWorkspaceBackupEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepoCodeRuleEntity
+
+```lua
+local repo_code_rule = client:RepoCodeRule(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_revision_number` | `number|nil` | Yes |  |
+| `capabilities` | `table` | Yes |  |
+| `code_rule` | `any` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `definition` | `table` | Yes |  |
+| `draft_pending` | `boolean` | Yes | The latest revision is not the active one |
+| `enabled` | `boolean` | Yes |  |
+| `expected_version` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `latest_revision_number` | `number` | Yes |  |
+| `name` | `string` | Yes | Name of the latest revision |
+| `repository` | `table` | Yes |  |
+| `scope` | `table` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `state_version` | `number` | Yes | Send back as expected_version on every mutation |
+| `updated_at` | `string` | Yes |  |
+| `web_url` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoCodeRule():create({
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+  definition = --[[ table ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RepoCodeRule():list({ organization_id = "example", repo_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoCodeRule():load({ id = "repo_code_rule_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoCodeRule():patch({
+  id = "repo_code_rule_id",
+  organization_id = "organization_id",
+  repo_id = "repo_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoCodeRule():remove({ id = "repo_code_rule_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoCodeRule():update({
+  id = "repo_code_rule_id",
+  organization_id = "organization_id",
+  repo_id = "repo_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoCodeRuleEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepoSettingEntity
+
+```lua
+local repo_setting = client:RepoSetting(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active` | `boolean` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `description` | `string|nil` | Yes |  |
+| `expires_at` | `string|nil` | Yes |  |
+| `expires_at_label` | `string|nil` | Yes |  |
+| `icon_name` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_used_at` | `string|nil` | Yes |  |
+| `last_used_at_label` | `string|nil` | Yes |  |
+| `merge_authority` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `permission_level` | `string` | Yes |  |
+| `revoked_at` | `string|nil` | Yes |  |
+| `revoked_at_label` | `string|nil` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `token_preview` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | update |
+| --- | --- | --- |
+| `active` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `description` | - | Yes |
+| `expires_at` | - | - |
+| `expires_at_label` | - | - |
+| `icon_name` | - | Yes |
+| `id` | - | - |
+| `last_used_at` | - | - |
+| `last_used_at_label` | - | - |
+| `merge_authority` | - | - |
+| `name` | - | Yes |
+| `organization_id` | - | - |
+| `permission_level` | - | - |
+| `revoked_at` | - | - |
+| `revoked_at_label` | - | - |
+| `slug` | - | - |
+| `status` | - | Yes |
+| `token_preview` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RepoSetting():list({ organization_id = "example", repo_id = "example" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepoSetting():update({
+  organization_id = "organization_id",
+  repo_id = "repo_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoSettingEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepoStatEntity
+
+```lua
+local repo_stat = client:RepoStat(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `repository_stats` | `table` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RepoStat():list({ organization_id = "example", repo_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoStatEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepoVcEntity
+
+```lua
+local repo_vc = client:RepoVc(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoVcEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepoVcCommitEntity
+
+```lua
+local repo_vc_commit = client:RepoVcCommit(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `name` | `string` | Yes |  |
+| `target_commit_id` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RepoVcCommit():list({ organization_id = "example", repo_id = "example", ref = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepoVcCommitEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -16423,6 +34770,981 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `ReportScenarioEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepositoryAccessEntity
+
+```lua
+local repository_access = client:RepositoryAccess(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepositoryAccessEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepositoryAccessResolveEntity
+
+```lua
+local repository_access_resolve = client:RepositoryAccessResolve(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `default_branch` | `string` | Yes |  |
+| `git_auth_username` | `string` | Yes |  |
+| `git_https_clone_url` | `string|nil` | Yes |  |
+| `git_https_supported` | `boolean` | Yes |  |
+| `github_access_warnings` | `table` | No |  |
+| `id` | `string` | No |  |
+| `membership_role` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `organization_name` | `string` | Yes |  |
+| `organization_slug` | `string` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `repository_name` | `string` | Yes |  |
+| `repository_slug` | `string` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepositoryAccessResolve():load({ id = "repository_access_resolve_id", resolve_id = "resolve_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepositoryAccessResolveEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepositoryEventEntity
+
+```lua
+local repository_event = client:RepositoryEvent(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepositoryEventEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepositoryImportEntity
+
+```lua
+local repository_import = client:RepositoryImport(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_connections` | `boolean` | Yes |  |
+| `github_imports` | `table` | Yes |  |
+| `github_installations` | `table` | Yes |  |
+| `gitlab_configured` | `boolean` | Yes |  |
+| `gitlab_imports` | `table` | Yes |  |
+| `gitlab_integrations` | `table` | Yes |  |
+| `gitlab_redirect_uri` | `string|nil` | Yes |  |
+| `gitlab_self_managed_available` | `boolean` | Yes |  |
+| `inventory_errors` | `table` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `repositories` | `table` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepositoryImport():load({ organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepositoryImportEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepositoryImportSessionEntity
+
+```lua
+local repository_import_session = client:RepositoryImportSession(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action_required` | `string` | No |  |
+| `authorization_endpoint` | `string` | No |  |
+| `can_authorize_github` | `boolean` | Yes |  |
+| `client_name` | `string|nil` | Yes |  |
+| `client_version` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `error_message` | `string|nil` | Yes |  |
+| `expires_at` | `string` | Yes |  |
+| `git_imports` | `table` | Yes |  |
+| `github_app_installation_id` | `string|nil` | Yes |  |
+| `github_connected` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
+| `idempotency_key` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `organization_slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `action_required` | - | - |
+| `authorization_endpoint` | - | - |
+| `can_authorize_github` | - | - |
+| `client_name` | - | Yes |
+| `client_version` | - | Yes |
+| `created_at` | - | - |
+| `error_message` | - | - |
+| `expires_at` | - | - |
+| `git_imports` | - | - |
+| `github_app_installation_id` | - | Yes |
+| `github_connected` | - | - |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `organization_id` | - | - |
+| `organization_slug` | - | - |
+| `status` | - | - |
+| `updated_at` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepositoryImportSession():create({
+  organization_id = --[[ string ]],
+  idempotency_key = --[[ string ]],
+})
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepositoryImportSession():load({ id = "repository_import_session_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepositoryImportSessionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepositoryImportSessionRepositoryEntity
+
+```lua
+local repository_import_session_repository = client:RepositoryImportSessionRepository(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `default_branch` | `string|nil` | Yes |  |
+| `full_name` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `owner` | `string` | Yes |  |
+| `private` | `boolean` | Yes |  |
+| `reason` | `string|nil` | No |  |
+| `selectable` | `boolean` | Yes |  |
+| `status` | `string` | Yes |  |
+| `visibility` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RepositoryImportSessionRepository():list({ repository_import_session_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepositoryImportSessionRepositoryEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepositoryImportSessionSelectionEntity
+
+```lua
+local repository_import_session_selection = client:RepositoryImportSessionSelection(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `repositories` | `any` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepositoryImportSessionSelection():create({
+  repository_import_session_id = --[[ string ]],
+  repositories = --[[ any ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepositoryImportSessionSelectionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RepositorySandboxEnvironmentEntity
+
+```lua
+local repository_sandbox_environment = client:RepositorySandboxEnvironment(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RepositorySandboxEnvironment():load({ id = "repository_sandbox_environment_id", repository_id = "repository_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RepositorySandboxEnvironmentEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RoderCodeRepairEntity
+
+```lua
+local roder_code_repair = client:RoderCodeRepair(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `base_sha` | `string` | Yes |  |
+| `cancel_requested` | `boolean` | Yes |  |
+| `failure_code` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `launch_state` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `repository_slug` | `string` | Yes |  |
+| `roder_thread_id` | `string|nil` | Yes |  |
+| `roder_turn_id` | `string|nil` | Yes |  |
+| `scenario_run_id` | `string` | Yes |  |
+| `task` | `table|nil` | Yes |  |
+| `trigger_kind` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RoderCodeRepair():create({
+  base_sha = --[[ string ]],
+  organization_id = --[[ string ]],
+  repository_slug = --[[ string ]],
+  scenario_run_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RoderCodeRepair():list({ scenario_run_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RoderCodeRepair():load({ id = "roder_code_repair_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RoderCodeRepairEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RoderCodeRepairSettingEntity
+
+```lua
+local roder_code_repair_setting = client:RoderCodeRepairSetting(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available` | `boolean` | Yes |  |
+| `daily_limit` | `number` | Yes |  |
+| `enabled` | `boolean` | Yes |  |
+| `enabled_at` | `string|nil` | Yes |  |
+| `operator_user_id` | `string|nil` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `repository_slug` | `string|nil` | Yes | Connected Composal repository required when enabling |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `available` | - | - |
+| `daily_limit` | - | - |
+| `enabled` | - | - |
+| `enabled_at` | - | - |
+| `operator_user_id` | - | - |
+| `organization_id` | - | - |
+| `repository_slug` | - | Yes |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RoderCodeRepairSetting():create({
+  enabled = --[[ boolean ]],
+  organization_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RoderCodeRepairSetting():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RoderCodeRepairSettingEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RoderMachineEntity
+
+```lua
+local roder_machine = client:RoderMachine(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RoderMachine():update({
+  id = "id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RoderMachineEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RoderRunEntity
+
+```lua
+local roder_run = client:RoderRun(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RoderRunEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RoderWorkspaceCredentialEntity
+
+```lua
+local roder_workspace_credential = client:RoderWorkspaceCredential(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `api_token` | `string` | Yes | Short-lived personal access token for the spawning user. |
+| `author_email` | `string` | Yes |  |
+| `author_name` | `string` | Yes |  |
+| `clone_url` | `string` | Yes |  |
+| `default_branch` | `string` | Yes |  |
+| `expires_at` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `repository_slug` | `string` | Yes |  |
+| `repository_spec` | `string` | Yes | The explicitly selected physical repository address. |
+| `required_lifetime_seconds` | `number` | Yes | Lifetime the pending clone or command must be able to complete within. |
+| `token` | `string` | Yes | Short-lived read/write repository credential. |
+| `username` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RoderWorkspaceCredential():create({
+  required_lifetime_seconds = --[[ number ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RoderWorkspaceCredentialEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RunArtifactEntity
+
+```lua
+local run_artifact = client:RunArtifact(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RunArtifact():create({
+  pipeline_id = --[[ string ]],
+  run_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RunArtifact():list({ pipeline_id = "example", run_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RunArtifactEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RunJobEntity
+
+```lua
+local run_job = client:RunJob(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active` | `boolean` | Yes |  |
+| `allow_failure` | `boolean` | Yes |  |
+| `cache_archive_observations` | `table|nil` | Yes | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `ci_pipeline_run_id` | `string` | Yes |  |
+| `ci_runner_id` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `dependencies_csv` | `string|nil` | Yes |  |
+| `display_id` | `number` | Yes |  |
+| `environment_csv` | `string|nil` | Yes |  |
+| `execution_order` | `number` | Yes |  |
+| `execution_profile` | `string|nil` | No |  |
+| `exit_code` | `number|nil` | Yes |  |
+| `failed` | `boolean` | Yes |  |
+| `finished_at` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `log_chunks` | `table` | Yes |  |
+| `name` | `string` | Yes |  |
+| `number` | `number` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `queued_at` | `string|nil` | Yes |  |
+| `reconciliation_id` | `string|nil` | No |  |
+| `retry_number` | `number` | Yes |  |
+| `reuse` | `table|nil` | Yes |  |
+| `runner_label_selector` | `string|nil` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `started_at` | `string|nil` | Yes |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `status_state` | `string` | Yes |  |
+| `status_tone` | `string` | Yes |  |
+| `steps` | `table` | Yes |  |
+| `timeout_seconds` | `number|nil` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RunJob():create({
+  pipeline_id = --[[ string ]],
+  run_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RunJob():list({ pipeline_id = "example", run_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RunJob():load({ id = "run_job_id", pipeline_id = "pipeline_id", run_id = "run_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RunJobEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -16667,6 +35989,493 @@ Return the entity name.
 
 ---
 
+## RunWorkspaceCredentialEntity
+
+```lua
+local run_workspace_credential = client:RunWorkspaceCredential(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RunWorkspaceCredential():create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RunWorkspaceCredentialEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RunnerLeaseEntity
+
+```lua
+local runner_lease = client:RunnerLease(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RunnerLease():create({
+  runner_id = --[[ string ]],
+  runner_pool_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RunnerLease():list({ runner_id = "example", runner_pool_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RunnerLeaseEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RunnerPoolNodeEnrollmentTokenEntity
+
+```lua
+local runner_pool_node_enrollment_token = client:RunnerPoolNodeEnrollmentToken(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capabilities_csv` | `string|nil` | Yes |  |
+| `ci_runner_pool_id` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `creator_user_id` | `string|nil` | Yes |  |
+| `description` | `string|nil` | Yes |  |
+| `expires_at` | `string|nil` | Yes |  |
+| `expires_at_label` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `last_used_at` | `string|nil` | Yes |  |
+| `last_used_at_label` | `string|nil` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `raw_token` | `string|nil` | Yes |  |
+| `revoked_at` | `string|nil` | Yes |  |
+| `status` | `string` | Yes |  |
+| `token_hint` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+| `usage_count` | `number` | Yes |  |
+| `usage_count_label` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `capabilities_csv` | - | Yes |
+| `ci_runner_pool_id` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `creator_user_id` | - | - |
+| `description` | - | Yes |
+| `expires_at` | - | Yes |
+| `expires_at_label` | - | - |
+| `id` | - | - |
+| `kind` | - | Yes |
+| `last_used_at` | - | - |
+| `last_used_at_label` | - | - |
+| `name` | - | - |
+| `organization_id` | - | - |
+| `raw_token` | - | - |
+| `revoked_at` | - | - |
+| `status` | - | - |
+| `token_hint` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+| `usage_count` | - | - |
+| `usage_count_label` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RunnerPoolNodeEnrollmentToken():create({
+  runner_pool_id = --[[ string ]],
+  name = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RunnerPoolNodeEnrollmentToken():list({ runner_pool_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RunnerPoolNodeEnrollmentTokenEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RunnerPoolRunnerEntity
+
+```lua
+local runner_pool_runner = client:RunnerPoolRunner(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RunnerPoolRunner():create({
+  runner_pool_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RunnerPoolRunner():list({ runner_pool_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RunnerPoolRunner():load({ id = "runner_pool_runner_id", runner_pool_id = "runner_pool_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RunnerPoolRunner():patch({
+  id = "runner_pool_runner_id",
+  runner_pool_id = "runner_pool_id",
+  -- Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RunnerPoolRunner():update({
+  id = "runner_pool_runner_id",
+  runner_pool_id = "runner_pool_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RunnerPoolRunnerEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## RuntimeInstanceHealthSnapshotEntity
+
+```lua
+local runtime_instance_health_snapshot = client:RuntimeInstanceHealthSnapshot(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:RuntimeInstanceHealthSnapshot():create({
+  runtime_instance_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:RuntimeInstanceHealthSnapshot():list({ runtime_instance_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `RuntimeInstanceHealthSnapshotEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SandboxIntegrationEntity
+
+```lua
+local sandbox_integration = client:SandboxIntegration(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage` | `boolean` | Yes |  |
+| `catalog` | `table` | Yes |  |
+| `configuration` | `table` | Yes |  |
+| `connected_profiles` | `table` | Yes | Connected profiles per provider across the organization. |
+| `credentials` | `table` | Yes |  |
+| `enabled` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
+| `integrations` | `table` | Yes |  |
+| `name` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `version` | `number` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | update | patch |
+| --- | --- | --- | --- | --- |
+| `can_manage` | - | - | - | - |
+| `catalog` | - | - | - | - |
+| `configuration` | - | - | - | - |
+| `connected_profiles` | - | - | - | - |
+| `credentials` | - | - | Yes | Yes |
+| `enabled` | - | - | Yes | Yes |
+| `id` | - | - | - | - |
+| `integrations` | - | - | - | - |
+| `name` | - | - | Yes | Yes |
+| `provider` | - | - | - | - |
+| `version` | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SandboxIntegration():create({
+  organization_id = --[[ string ]],
+  configuration = --[[ table ]],
+  credentials = --[[ table ]],
+  name = --[[ string ]],
+  provider = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SandboxIntegration():list({ organization_id = "example" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SandboxIntegration():patch({
+  id = "id",
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SandboxIntegration():update({
+  id = "id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SandboxIntegrationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## ScenarioRevisionEntity
 
 ```lua
@@ -16829,6 +36638,216 @@ Return the entity name.
 
 ---
 
+## SecretGrantEntity
+
+```lua
+local secret_grant = client:SecretGrant(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SecretGrant():create({
+  organization_id = --[[ string ]],
+  secret_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SecretGrant():list({ organization_id = "example", secret_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SecretGrant():load({ id = "secret_grant_id", organization_id = "organization_id", secret_id = "secret_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SecretGrant():patch({
+  id = "secret_grant_id",
+  organization_id = "organization_id",
+  secret_id = "secret_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SecretGrant():remove({ id = "secret_grant_id", organization_id = "organization_id", secret_id = "secret_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SecretGrant():update({
+  id = "secret_grant_id",
+  organization_id = "organization_id",
+  secret_id = "secret_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SecretGrantEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SecretVersionEntity
+
+```lua
+local secret_version = client:SecretVersion(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SecretVersion():create({
+  organization_id = --[[ string ]],
+  secret_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SecretVersion():list({ organization_id = "example", secret_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SecretVersion():load({ id = "secret_version_id", organization_id = "organization_id", secret_id = "secret_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SecretVersion():patch({
+  id = "secret_version_id",
+  organization_id = "organization_id",
+  secret_id = "secret_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SecretVersion():remove({ id = "secret_version_id", organization_id = "organization_id", secret_id = "secret_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SecretVersion():update({
+  id = "secret_version_id",
+  organization_id = "organization_id",
+  secret_id = "secret_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SecretVersionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## ServiceEndpointEntity
 
 ```lua
@@ -16934,6 +36953,791 @@ Return the entity name.
 
 ---
 
+## SettingEntity
+
+```lua
+local setting = client:Setting(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `boolean` | Yes |  |
+| `can_manage_sandbox_region` | `boolean` | Yes |  |
+| `dedicated_outbound_ip_addresses` | `table` | Yes | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` | Yes |  |
+| `organization` | `table` | Yes |  |
+| `sandbox_regions` | `table` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:Setting():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SettingEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SettingMutationLeaseEntity
+
+```lua
+local setting_mutation_lease = client:SettingMutationLease(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SettingMutationLeaseEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SignalEntity
+
+```lua
+local signal = client:Signal(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `acked_at` | `string|nil` | Yes |  |
+| `acked_by` | `table|nil` | Yes | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | `table` | Yes | Dispatched-run summary (docs §6c). |
+| `app_service_id` | `string|nil` | Yes |  |
+| `attribution` | `table` | Yes | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
+| `created_at` | `string` | Yes | ISO8601 row insert time — retention math and debugging only. |
+| `dedupe_key` | `string|nil` | Yes |  |
+| `hosted_app_id` | `string|nil` | Yes |  |
+| `id` | `string` | Yes | The signal's own `sig_…` public id — also the paging cursor value. |
+| `kind` | `string` | Yes | A frozen taxonomy kind (§1) or an `app.custom.*` kind. |
+| `links` | `table` | Yes | Canonical, relative API paths built from real routes (docs §6a). |
+| `occurred_at` | `string` | Yes | ISO8601 domain event time — what the UI displays and `since` filters on. |
+| `organization_id` | `string` | Yes |  |
+| `payload` | `table` | Yes | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
+| `recovery` | `table` | Yes | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | `table` | Yes | Recovery pairing (docs §6b). |
+| `severity` | `string` | Yes | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
+| `source` | `table` | Yes | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
+| `subject_id` | `string|nil` | Yes |  |
+| `subject_type` | `string|nil` | Yes | Polymorphic pointer: `AppDeployment`, `RuntimeInstance`, `AlertEvent`, `HostedApp`, or `SignalSubscription`. |
+| `summary` | `string` | Yes | One-line, kind-composed human sentence for the feed row (docs §6d, e.g. |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Signal():create({
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:Signal():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Signal():load({ id = "signal_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SignalEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SignalInboundEntity
+
+```lua
+local signal_inbound = client:SignalInbound(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SignalInbound():update({
+  id = "id",
+  inbound_id = "inbound_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SignalInboundEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SignalIntegrationEntity
+
+```lua
+local signal_integration = client:SignalIntegration(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `api_token` | `string` | No | Optional provider API token for target discovery and backfill. |
+| `api_token_stored` | `boolean` | Yes |  |
+| `config` | `table` | Yes |  |
+| `created_at` | `string|nil` | No |  |
+| `failure_message` | `string|nil` | Yes |  |
+| `id` | `string` | Yes | Public id (`sint_…`). |
+| `inbound_path` | `string` | Yes |  |
+| `inbound_url` | `string` | Yes | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `string|nil` | No |  |
+| `last_verified_at` | `string|nil` | No |  |
+| `mode` | `string` | Yes | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `rejected_signature_count` | `number` | Yes | Deliveries rejected for a bad or missing signature. |
+| `status` | `string` | Yes |  |
+| `target_count` | `number` | Yes |  |
+| `unmapped_delivery_count` | `number` | Yes | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `string|nil` | No |  |
+| `webhook_secret` | `string` | No | The provider's signing secret. |
+| `webhook_secret_stored` | `boolean` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- | --- |
+| `api_token` | - | - | - | - | - | - |
+| `api_token_stored` | - | - | - | - | - | - |
+| `config` | - | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - | - |
+| `failure_message` | - | - | - | - | - | - |
+| `id` | - | - | - | - | - | - |
+| `inbound_path` | - | - | - | - | - | - |
+| `inbound_url` | - | - | - | - | - | - |
+| `last_received_at` | - | - | - | - | - | - |
+| `last_verified_at` | - | - | - | - | - | - |
+| `mode` | - | - | Yes | Yes | Yes | - |
+| `name` | - | - | - | Yes | Yes | - |
+| `organization_id` | - | - | - | - | - | - |
+| `provider` | - | - | - | - | - | - |
+| `rejected_signature_count` | - | - | - | - | - | - |
+| `status` | - | - | - | Yes | Yes | - |
+| `target_count` | - | - | - | - | - | - |
+| `unmapped_delivery_count` | - | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - | - |
+| `webhook_secret` | - | - | - | - | - | - |
+| `webhook_secret_stored` | - | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SignalIntegration():create({
+  organization_id = --[[ string ]],
+  name = --[[ string ]],
+  provider = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SignalIntegration():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SignalIntegration():load({ id = "signal_integration_id", organization_id = "organization_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SignalIntegration():patch({
+  id = "signal_integration_id",
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SignalIntegration():remove({ id = "signal_integration_id", organization_id = "organization_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SignalIntegration():update({
+  id = "signal_integration_id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SignalIntegrationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SignalIntegrationDeliveryEntity
+
+```lua
+local signal_integration_delivery = client:SignalIntegrationDelivery(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `attempt_count` | `number` | Yes |  |
+| `created_at` | `string|nil` | No |  |
+| `delivery_id` | `string` | Yes | The provider's delivery id, or a `content-…` id derived from the event kind, its timestamp header and the body checksum when it sends none. |
+| `event_kind` | `string|nil` | No |  |
+| `id` | `string` | Yes | Public id (`sdel_…`). |
+| `last_error` | `string|nil` | No |  |
+| `ops_signal_id` | `string|nil` | No | Public id (`sig_…`) of the signal this delivery emitted. |
+| `organization_id` | `string` | Yes |  |
+| `processed_at` | `string|nil` | No |  |
+| `provider` | `string` | Yes |  |
+| `received_at` | `string|nil` | No |  |
+| `signal_integration_id` | `string` | Yes |  |
+| `state` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SignalIntegrationDelivery():list({ organization_id = "example", signal_integration_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SignalIntegrationDeliveryEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SignalIntegrationTargetEntity
+
+```lua
+local signal_integration_target = client:SignalIntegrationTarget(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app_service_id` | `string|nil` | No |  |
+| `created_at` | `string|nil` | No |  |
+| `display_name` | `string|nil` | No |  |
+| `enabled` | `boolean` | Yes |  |
+| `external_id` | `string` | Yes |  |
+| `external_kind` | `string` | Yes |  |
+| `external_slug` | `string|nil` | No |  |
+| `hosted_app_id` | `string|nil` | No |  |
+| `id` | `string` | Yes | Public id (`stgt_…`). |
+| `organization_id` | `string` | Yes |  |
+| `signal_integration_id` | `string` | Yes |  |
+| `signal_integration_targets` | `table` | Yes |  |
+| `targets` | `table` | Yes |  |
+| `updated_at` | `string|nil` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SignalIntegrationTarget():list({ organization_id = "example", signal_integration_id = "example" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SignalIntegrationTarget():update({
+  organization_id = "organization_id",
+  signal_integration_id = "signal_integration_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SignalIntegrationTargetEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SignalSubscriptionEntity
+
+```lua
+local signal_subscription = client:SignalSubscription(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SignalSubscription():create({
+  organization_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SignalSubscription():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SignalSubscription():load({ id = "signal_subscription_id", organization_id = "organization_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SignalSubscription():patch({
+  id = "signal_subscription_id",
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SignalSubscription():remove({ id = "signal_subscription_id", organization_id = "organization_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SignalSubscription():update({
+  id = "signal_subscription_id",
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SignalSubscriptionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SiteEntity
+
+```lua
+local site = client:Site(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_at` | `string|nil` | Yes |  |
+| `activated_at_label` | `string|nil` | Yes |  |
+| `commit_sha` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `creator_user_id` | `string|nil` | Yes |  |
+| `deploy_slug` | `string` | Yes |  |
+| `failure_message` | `string|nil` | Yes |  |
+| `file_count` | `number` | Yes |  |
+| `file_count_label` | `string` | Yes |  |
+| `finished_at` | `string|nil` | Yes |  |
+| `finished_at_label` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `is_active` | `boolean` | Yes |  |
+| `source_ref` | `string|nil` | Yes |  |
+| `started_at` | `string|nil` | Yes |  |
+| `started_at_label` | `string|nil` | Yes |  |
+| `static_site_id` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `total_bytes` | `number` | Yes |  |
+| `total_bytes_label` | `string` | Yes |  |
+| `trigger_kind` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+| `uploaded_at` | `string|nil` | Yes |  |
+| `uploaded_at_label` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:Site():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SiteEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SiteAccessKeyEntity
+
+```lua
+local site_access_key = client:SiteAccessKey(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SiteAccessKey():create({
+  organization_id = --[[ string ]],
+  site_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SiteAccessKey():list({ organization_id = "example", site_id = "example" })
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SiteAccessKey():remove({ id = "site_access_key_id", organization_id = "organization_id", site_id = "site_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SiteAccessKeyEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## SitePreviewEntity
 
 ```lua
@@ -16979,6 +37783,73 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `SitePreviewEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SiteSecretEntity
+
+```lua
+local site_secret = client:SiteSecret(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+| `native_agent_id` | `string` | Yes |  |
+| `value` | `string` | Yes |  |
+
+### Operations
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SiteSecret():remove({ id = "site_secret_id", organization_id = "organization_id", site_id = "site_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SiteSecret():update({
+  id = "site_secret_id",
+  organization_id = "organization_id",
+  site_id = "site_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SiteSecretEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -17036,6 +37907,1595 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `SlackChannelEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SourceConnectionEntity
+
+```lua
+local source_connection = client:SourceConnection(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SourceConnectionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SpaceAlertRuleEntity
+
+```lua
+local space_alert_rule = client:SpaceAlertRule(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceAlertRule():create({
+  space_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SpaceAlertRule():list({ space_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceAlertRule():load({ id = "space_alert_rule_id", space_id = "space_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceAlertRule():patch({
+  id = "space_alert_rule_id",
+  space_id = "space_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceAlertRule():remove({ id = "space_alert_rule_id", space_id = "space_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceAlertRule():update({
+  id = "space_alert_rule_id",
+  space_id = "space_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceAlertRuleEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SpaceAuditEventEntity
+
+```lua
+local space_audit_event = client:SpaceAuditEvent(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceAuditEvent():create({
+  space_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SpaceAuditEvent():list({ space_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceAuditEventEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SpaceDnsRecordEntity
+
+```lua
+local space_dns_record = client:SpaceDnsRecord(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceDnsRecord():create({
+  space_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SpaceDnsRecord():list({ space_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceDnsRecord():load({ id = "space_dns_record_id", space_id = "space_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceDnsRecord():patch({
+  id = "space_dns_record_id",
+  space_id = "space_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceDnsRecord():remove({ id = "space_dns_record_id", space_id = "space_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceDnsRecord():update({
+  id = "space_dns_record_id",
+  space_id = "space_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceDnsRecordEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SpaceEnrollmentTokenEntity
+
+```lua
+local space_enrollment_token = client:SpaceEnrollmentToken(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceEnrollmentToken():create({
+  space_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SpaceEnrollmentToken():list({ space_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceEnrollmentToken():load({ id = "space_enrollment_token_id", space_id = "space_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceEnrollmentToken():patch({
+  id = "space_enrollment_token_id",
+  space_id = "space_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceEnrollmentToken():remove({ id = "space_enrollment_token_id", space_id = "space_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceEnrollmentToken():update({
+  id = "space_enrollment_token_id",
+  space_id = "space_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceEnrollmentTokenEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SpaceGatewayEntity
+
+```lua
+local space_gateway = client:SpaceGateway(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceGateway():create({
+  space_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SpaceGateway():list({ space_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceGateway():load({ id = "space_gateway_id", space_id = "space_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceGateway():patch({
+  id = "space_gateway_id",
+  space_id = "space_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceGateway():remove({ id = "space_gateway_id", space_id = "space_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceGateway():update({
+  id = "space_gateway_id",
+  space_id = "space_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceGatewayEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SpaceGroupEntity
+
+```lua
+local space_group = client:SpaceGroup(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceGroup():create({
+  space_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SpaceGroup():list({ space_id = "example" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceGroup():patch({
+  id = "space_group_id",
+  space_id = "space_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceGroup():remove({ id = "space_group_id", space_id = "space_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceGroup():update({
+  id = "space_group_id",
+  space_id = "space_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceGroupEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SpaceGroupMembershipEntity
+
+```lua
+local space_group_membership = client:SpaceGroupMembership(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceGroupMembership():create({
+  space_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SpaceGroupMembership():list({ space_id = "example" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceGroupMembership():patch({
+  id = "space_group_membership_id",
+  space_id = "space_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceGroupMembership():remove({ id = "space_group_membership_id", space_id = "space_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceGroupMembership():update({
+  id = "space_group_membership_id",
+  space_id = "space_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceGroupMembershipEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SpaceLogStreamEntity
+
+```lua
+local space_log_stream = client:SpaceLogStream(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceLogStream():create({
+  space_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SpaceLogStream():list({ space_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceLogStreamEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SpaceMetricSeryEntity
+
+```lua
+local space_metric_sery = client:SpaceMetricSery(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceMetricSery():create({
+  space_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SpaceMetricSery():list({ space_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceMetricSeryEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SpaceOtelCollectorEntity
+
+```lua
+local space_otel_collector = client:SpaceOtelCollector(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceOtelCollector():create({
+  space_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SpaceOtelCollector():list({ space_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceOtelCollector():load({ id = "space_otel_collector_id", space_id = "space_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceOtelCollector():patch({
+  id = "space_otel_collector_id",
+  space_id = "space_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceOtelCollector():remove({ id = "space_otel_collector_id", space_id = "space_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceOtelCollector():update({
+  id = "space_otel_collector_id",
+  space_id = "space_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceOtelCollectorEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SpacePeerEntity
+
+```lua
+local space_peer = client:SpacePeer(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpacePeer():create({
+  space_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SpacePeer():list({ space_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpacePeer():load({ id = "space_peer_id", space_id = "space_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpacePeer():patch({
+  id = "space_peer_id",
+  space_id = "space_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpacePeer():remove({ id = "space_peer_id", space_id = "space_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpacePeer():update({
+  id = "space_peer_id",
+  space_id = "space_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpacePeerEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SpacePeerAttachmentEntity
+
+```lua
+local space_peer_attachment = client:SpacePeerAttachment(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpacePeerAttachment():create({
+  space_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SpacePeerAttachment():list({ space_id = "example" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpacePeerAttachment():patch({
+  id = "space_peer_attachment_id",
+  space_id = "space_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpacePeerAttachment():remove({ id = "space_peer_attachment_id", space_id = "space_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpacePeerAttachment():update({
+  id = "space_peer_attachment_id",
+  space_id = "space_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpacePeerAttachmentEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SpacePolicyEntity
+
+```lua
+local space_policy = client:SpacePolicy(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpacePolicy():create({
+  space_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SpacePolicy():list({ space_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpacePolicy():load({ id = "space_policy_id", space_id = "space_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpacePolicy():patch({
+  id = "space_policy_id",
+  space_id = "space_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpacePolicy():remove({ id = "space_policy_id", space_id = "space_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpacePolicy():update({
+  id = "space_policy_id",
+  space_id = "space_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpacePolicyEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SpaceSegmentEntity
+
+```lua
+local space_segment = client:SpaceSegment(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceSegment():create({
+  space_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SpaceSegment():list({ space_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceSegment():load({ id = "space_segment_id", space_id = "space_id" })
+```
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceSegment():patch({
+  id = "space_segment_id",
+  space_id = "space_id",
+  -- Only the fields to change
+})
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceSegment():remove({ id = "space_segment_id", space_id = "space_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceSegment():update({
+  id = "space_segment_id",
+  space_id = "space_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceSegmentEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SpaceTraceSpanEntity
+
+```lua
+local space_trace_span = client:SpaceTraceSpan(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SpaceTraceSpan():create({
+  space_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SpaceTraceSpan():list({ space_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SpaceTraceSpanEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SparkEntity
+
+```lua
+local spark = client:Spark(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_products` | `table` | Yes | Products this organization has activated (PRD 144). |
+| `agents_only` | `boolean` | No | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `boolean` | Yes | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `can_manage` | `boolean` | Yes |  |
+| `compute_credit_cents` | `number|nil` | Yes | Included compute the workspace started Sparks with, when it is on compute billing. |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `credit_cents` | `number|nil` | Yes | Inference credit the workspace started Sparks with. |
+| `first_spark` | `table|nil` | Yes | Null until the first Spark exists or when the viewer cannot read it. |
+| `github_connected` | `boolean` | Yes |  |
+| `github_prs_authored_by_change_author` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
+| `jsonrpc` | `string` | Yes |  |
+| `logo_url` | `string|nil` | Yes |  |
+| `member_count` | `number` | Yes |  |
+| `method` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `params` | `table` | No |  |
+| `pending_invitation_count` | `number` | Yes |  |
+| `personal` | `boolean` | Yes |  |
+| `repository_count` | `number` | Yes |  |
+| `role` | `string|nil` | Yes |  |
+| `sandbox_region` | `string` | Yes |  |
+| `shared_agent_personal_accounts_enabled` | `boolean` | No | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` | Yes |  |
+| `source_control_providers` | `table` | No | Connected source control providers for this organization. |
+| `source_ui_enabled` | `boolean` | No | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `started` | `boolean` | Yes | Whether the workspace has started Sparks. |
+| `timezone` | `string` | Yes | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+| `verify_pr_scenario_writing_enabled` | `boolean` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `activated_products` | - | - |
+| `agents_only` | - | - |
+| `can_activate_products` | - | - |
+| `can_manage` | - | - |
+| `compute_credit_cents` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `credit_cents` | - | - |
+| `first_spark` | - | - |
+| `github_connected` | - | - |
+| `github_prs_authored_by_change_author` | - | - |
+| `id` | - | Yes |
+| `jsonrpc` | - | - |
+| `logo_url` | - | - |
+| `member_count` | - | - |
+| `method` | - | - |
+| `name` | - | - |
+| `params` | - | - |
+| `pending_invitation_count` | - | - |
+| `personal` | - | - |
+| `repository_count` | - | - |
+| `role` | - | - |
+| `sandbox_region` | - | - |
+| `shared_agent_personal_accounts_enabled` | - | - |
+| `slug` | - | - |
+| `source_control_providers` | - | - |
+| `source_ui_enabled` | - | - |
+| `started` | - | - |
+| `timezone` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+| `verify_pr_scenario_writing_enabled` | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Spark():create({
+  jsonrpc = --[[ string ]],
+  method = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:Spark():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SparkEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SparkAgentIntegrationEntity
+
+```lua
+local spark_agent_integration = client:SparkAgentIntegration(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_counts` | `table` | Yes | Accounts the viewer can see per toolkit, across all account pages. |
+| `accounts_path` | `string` | Yes | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
+| `added_toolkits` | `table` | Yes | Apps with a connected or connecting account the viewer can see. |
+| `can_manage` | `boolean` | Yes |  |
+| `can_manage_organization` | `boolean` | Yes |  |
+| `catalog` | `table` | Yes |  |
+| `connect_as` | `string|nil` | Yes | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
+| `connect_as_by_toolkit` | `table` | Yes | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_counts` | `table` | Yes | Signed-in accounts per toolkit, across all account pages. |
+| `connection_id` | `string` | Yes |  |
+| `connections` | `table` | Yes |  |
+| `email` | `table` | Yes | A native agent's own email address. |
+| `enabled` | `boolean` | Yes |  |
+| `enabled_toolkits` | `table` | Yes | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `generation` | `number` | Yes |  |
+| `pagination` | `table` | Yes |  |
+| `pending_counts` | `table` | Yes | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
+| `personal_creation_key_supported` | `boolean` | No | The personal account creation endpoint honors a creation key. |
+| `private_agent` | `boolean` | Yes | Only the agent's owner can chat with it. |
+| `shared_agent_personal_accounts_enabled` | `boolean` | Yes | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
+| `slack` | `table` | Yes |  |
+| `webhook_connections` | `table` | Yes |  |
+| `webhooks_available` | `boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SparkAgentIntegration():create({
+  agent_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  connection_id = --[[ string ]],
+  enabled = --[[ boolean ]],
+  generation = --[[ number ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SparkAgentIntegration():list({ agent_id = "example", organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SparkAgentIntegrationEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -17139,6 +39599,479 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `SparkAgentLocalThreadEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SparkAgentSiteEntity
+
+```lua
+local spark_agent_site = client:SparkAgentSite(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `deployed_at` | `string` | Yes |  |
+| `deployments_count` | `number` | Yes |  |
+| `hostname` | `string` | Yes |  |
+| `https` | `string` | Yes | Whether the organization's certificate serves this site over HTTPS |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `visibility` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SparkAgentSite():list({ agent_id = "example", organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SparkAgentSiteEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SparkAgentSkillEntity
+
+```lua
+local spark_agent_skill = client:SparkAgentSkill(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available` | `boolean` | Yes |  |
+| `can_configure` | `boolean` | Yes |  |
+| `can_manage` | `boolean` | Yes |  |
+| `configuration_state` | `string` | No | The requested managed skill selection is awaiting runtime qualification. |
+| `description` | `string` | Yes |  |
+| `enabled` | `boolean` | Yes |  |
+| `name` | `string` | Yes |  |
+| `skills` | `table` | Yes |  |
+| `version` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SparkAgentSkill():create({
+  agent_id = --[[ string ]],
+  organization_id = --[[ string ]],
+  enabled = --[[ boolean ]],
+  name = --[[ string ]],
+  version = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SparkAgentSkill():list({ agent_id = "example", organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SparkAgentSkillEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SparkAgentThreadEntity
+
+```lua
+local spark_agent_thread = client:SparkAgentThread(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `archived_count` | `number|nil` | No | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
+| `can_create` | `boolean` | Yes |  |
+| `execution` | `any` | No |  |
+| `first_input` | `any` | No |  |
+| `first_input_key` | `string` | No | Idempotency-Key that finds the first message through input_delivery. |
+| `first_input_requester_membership_id` | `string` | No | Membership the first message was sent as, for input_delivery. |
+| `id` | `string` | No |  |
+| `inherit_context` | `boolean` | No | Include the source conversation through its last completed reply. |
+| `local_activities` | `table` | Yes | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
+| `local_archived_count` | `number` | Yes | Local Claude Code and Codex threads archived on their computers. |
+| `local_next_cursor` | `string|nil` | Yes |  |
+| `local_scope_key` | `string|nil` | Yes |  |
+| `local_status_pending` | `boolean` | Yes | A computer is reporting newer local thread statuses; read the page again shortly. |
+| `local_threads` | `table` | Yes |  |
+| `main_thread_id` | `string` | Yes |  |
+| `message` | `string` | No | The thread's first message. |
+| `next_cursor` | `string|nil` | Yes |  |
+| `parent_conversation_id` | `string` | No | Optional source conversation belonging to this agent. |
+| `requester_membership_id` | `string` | No |  |
+| `selected_thread` | `any` | Yes |  |
+| `thread` | `table` | Yes |  |
+| `threads` | `table` | Yes |  |
+| `title` | `string` | No |  |
+| `total_archived_count` | `number|nil` | Yes | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SparkAgentThread():create({
+  agent_id = --[[ string ]],
+  organization_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SparkAgentThread():list({ agent_id = "example", organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SparkAgentThreadEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SparkCreditEntity
+
+```lua
+local spark_credit = client:SparkCredit(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `amount_cents` | `number` | No | Purchase amount in USD cents. |
+| `autofill` | `any` | Yes |  |
+| `autofill_payment_unconfirmed` | `boolean` | Yes |  |
+| `available_usd` | `string` | Yes |  |
+| `billing_unit` | `string` | No | Compute minute quote version returned by the billing summary. |
+| `can_manage` | `boolean` | Yes |  |
+| `compute_minutes` | `table` | Yes |  |
+| `compute_usd` | `string` | No |  |
+| `credits_per_usd` | `number` | Yes |  |
+| `inference_usd` | `string` | No |  |
+| `kind` | `string` | Yes |  |
+| `payment_method` | `table|nil` | Yes |  |
+| `payments_enabled` | `boolean` | Yes |  |
+| `plan` | `string` | No |  |
+| `plans` | `table` | Yes |  |
+| `quoted_credits_cents` | `number` | No | Grant shown for a top-up or subscription, in usage cents. |
+| `quoted_price_cents` | `number` | No | Monthly cash price shown for a subscription, in USD cents. |
+| `refill_limits_cents` | `table` | Yes |  |
+| `refill_options` | `table` | Yes |  |
+| `refill_thresholds_cents` | `table` | Yes |  |
+| `request_key` | `string` | Yes |  |
+| `settings` | `any` | Yes |  |
+| `starter_cents` | `number` | Yes |  |
+| `top_up_max_cents` | `number` | Yes | Maximum manual top-up, in USD cents. |
+| `top_up_step_cents` | `number` | Yes | Minimum manual top-up and increment, in USD cents. |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `amount_cents` | - | - | - | - | - |
+| `autofill` | - | - | - | - | - |
+| `autofill_payment_unconfirmed` | - | - | - | - | - |
+| `available_usd` | - | - | - | - | - |
+| `billing_unit` | - | - | - | - | - |
+| `can_manage` | - | - | - | - | - |
+| `compute_minutes` | - | - | - | - | - |
+| `compute_usd` | - | - | - | - | - |
+| `credits_per_usd` | - | - | - | - | - |
+| `inference_usd` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `payment_method` | - | - | - | - | - |
+| `payments_enabled` | - | - | - | - | - |
+| `plan` | - | Yes | - | - | Yes |
+| `plans` | - | - | - | - | - |
+| `quoted_credits_cents` | - | - | - | - | - |
+| `quoted_price_cents` | - | - | - | - | - |
+| `refill_limits_cents` | - | - | - | - | - |
+| `refill_options` | - | - | - | - | - |
+| `refill_thresholds_cents` | - | - | - | - | - |
+| `request_key` | - | - | - | - | - |
+| `settings` | - | - | - | - | - |
+| `starter_cents` | - | - | - | - | - |
+| `top_up_max_cents` | - | - | - | - | - |
+| `top_up_step_cents` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SparkCredit():create({
+  organization_id = --[[ string ]],
+  kind = --[[ string ]],
+  request_key = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SparkCredit():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SparkCredit():patch({
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SparkCredit():update({
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SparkCreditEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SparkCreditAgentUsageEntity
+
+```lua
+local spark_credit_agent_usage = client:SparkCreditAgentUsage(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agents` | `table` | Yes |  |
+| `all` | `table` | Yes |  |
+| `days` | `table` | Yes |  |
+| `id` | `string` | No |  |
+| `owners` | `table` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SparkCreditAgentUsage():load({ id = "spark_credit_agent_usage_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SparkCreditAgentUsageEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SparkCreditUsageTotalEntity
+
+```lua
+local spark_credit_usage_total = client:SparkCreditUsageTotal(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `compute_minutes_used` | `string` | Yes |  |
+| `compute_usd` | `string` | Yes |  |
+| `inference_usd` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SparkCreditUsageTotal():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SparkCreditUsageTotalEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -17540,6 +40473,280 @@ Return the entity name.
 
 ---
 
+## StatusChangeEntity
+
+```lua
+local status_change = client:StatusChange(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_id` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `patchsets` | `table` | Yes |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `status_state` | `string` | Yes |  |
+| `status_tone` | `string` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:StatusChange():load({ id = "status_change_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `StatusChangeEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## StatusCommitEntity
+
+```lua
+local status_commit = client:StatusCommit(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `checks` | `table` | Yes |  |
+| `commit_sha` | `string` | Yes |  |
+| `counts` | `table` | Yes |  |
+| `id` | `string` | No |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `status_state` | `string` | Yes |  |
+| `status_tone` | `string` | Yes |  |
+| `total` | `number` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:StatusCommit():load({ id = "status_commit_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `StatusCommitEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## StatusPatchsetEntity
+
+```lua
+local status_patchset = client:StatusPatchset(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `checks` | `table` | Yes |  |
+| `checks_status` | `string|nil` | Yes |  |
+| `commit_sha` | `string|nil` | Yes |  |
+| `counts` | `table` | Yes |  |
+| `id` | `string` | No |  |
+| `patchset_id` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `status_state` | `string` | Yes |  |
+| `status_tone` | `string` | Yes |  |
+| `total` | `number` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:StatusPatchset():load({ id = "status_patchset_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `StatusPatchsetEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## StripeWebhookEntity
+
+```lua
+local stripe_webhook = client:StripeWebhook(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:StripeWebhook():create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `StripeWebhookEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SubmitTelemetryEntity
+
+```lua
+local submit_telemetry = client:SubmitTelemetry(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SubmitTelemetry():create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SubmitTelemetryEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## SubscriptionModelEntity
 
 ```lua
@@ -17588,6 +40795,324 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `SubscriptionModelEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SwarmEventEntity
+
+```lua
+local swarm_event = client:SwarmEvent(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_swarm_id` | `string` | Yes |  |
+| `attempt_id` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `id` | `number` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `payload` | `table` | Yes |  |
+| `reason` | `string|nil` | Yes |  |
+| `scheduler_generation` | `number|nil` | Yes |  |
+| `task_id` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SwarmEvent():list({ swarm_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SwarmEventEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SwarmLiveEntity
+
+```lua
+local swarm_live = client:SwarmLive(nil)
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SwarmLiveEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SwarmNoteEntity
+
+```lua
+local swarm_note = client:SwarmNote(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `task_id` | `string|nil` | No | A task public id; omitted |
+| `text` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SwarmNote():create({
+  swarm_id = --[[ string ]],
+  text = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SwarmNoteEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SwarmTaskEntity
+
+```lua
+local swarm_task = client:SwarmTask(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `acceptance_commands` | `table` | Yes |  |
+| `agent_swarm_id` | `string` | Yes |  |
+| `assigned_runner_id` | `string|nil` | Yes |  |
+| `blocked_reason` | `string|nil` | Yes |  |
+| `changes` | `table` | Yes |  |
+| `commit_count` | `number` | Yes |  |
+| `commit_sha_result` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `current_attempt_id` | `string|nil` | Yes |  |
+| `deadline_at` | `string|nil` | Yes |  |
+| `depends_on_task_ids` | `table` | Yes |  |
+| `depth` | `number` | Yes |  |
+| `diff_artifact_url` | `string|nil` | Yes |  |
+| `display_id` | `number` | Yes |  |
+| `environment_profile` | `string|nil` | Yes |  |
+| `error_message` | `string|nil` | Yes |  |
+| `failure_code` | `string|nil` | Yes |  |
+| `finished_at` | `string|nil` | Yes |  |
+| `finished_at_label` | `string|nil` | Yes |  |
+| `harness` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `input_revision` | `string|nil` | Yes |  |
+| `iteration` | `number` | Yes |  |
+| `landing_state` | `string` | Yes |  |
+| `model` | `string|nil` | Yes |  |
+| `model_provider` | `string|nil` | Yes |  |
+| `number` | `number` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `owned_paths` | `table` | Yes |  |
+| `parent_task_id` | `string|nil` | Yes |  |
+| `position` | `number` | Yes |  |
+| `prompt` | `string` | Yes |  |
+| `queued_at` | `string|nil` | Yes |  |
+| `queued_at_label` | `string|nil` | Yes |  |
+| `reasoning_effort` | `string|nil` | Yes |  |
+| `recent_activity` | `table` | Yes |  |
+| `repo_url` | `string` | Yes |  |
+| `result` | `table` | Yes |  |
+| `retry_number` | `number` | Yes |  |
+| `role` | `string` | Yes |  |
+| `run_id` | `string|nil` | Yes |  |
+| `stack_after_task_id` | `string|nil` | Yes |  |
+| `started_at` | `string|nil` | Yes |  |
+| `started_at_label` | `string|nil` | Yes |  |
+| `status` | `string` | Yes |  |
+| `title` | `string|nil` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:SwarmTask():list({ swarm_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SwarmTaskEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## TaskLeaseEntity
+
+```lua
+local task_lease = client:TaskLease(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:TaskLease():create({
+  swarm_id = --[[ string ]],
+  task_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `TaskLeaseEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -17647,6 +41172,866 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `ThreadPreviewEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ThreadPreviewAccessEntity
+
+```lua
+local thread_preview_access = client:ThreadPreviewAccess(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ThreadPreviewAccessEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ToolFeedbackEntity
+
+```lua
+local tool_feedback = client:ToolFeedback(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `category` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `details` | `string` | Yes |  |
+| `feedback` | `table` | Yes |  |
+| `id` | `string` | Yes |  |
+| `metadata` | `table` | Yes | Caller-supplied session context; no secrets or transcripts |
+| `organization_id` | `string` | Yes |  |
+| `source` | `string` | Yes |  |
+| `summary` | `string` | Yes |  |
+| `user_id` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ToolFeedback():create({
+  organization_id = --[[ string ]],
+  feedback = --[[ table ]],
+})
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:ToolFeedback():load({ id = "tool_feedback_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ToolFeedbackEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## TranscriptEntity
+
+```lua
+local transcript = client:Transcript(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent` | `string` | Yes |  |
+| `author` | `table` | Yes |  |
+| `checkpoint_pagination` | `table` | Yes |  |
+| `checkpoints` | `table` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_checkpoint_at` | `string|nil` | Yes |  |
+| `selected_checkpoint` | `any` | Yes |  |
+| `source_url` | `string` | Yes |  |
+| `started_at` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `title` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:Transcript():list({ repo = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `TranscriptEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## V1MessageEntity
+
+```lua
+local v1_message = client:V1Message(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:V1Message():create({
+  organization_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `V1MessageEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## VcBranchEntity
+
+```lua
+local vc_branch = client:VcBranch(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+| `name` | `string` | Yes |  |
+| `target_commit_id` | `string` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:VcBranch():create({
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:VcBranch():list({ organization_id = "example", repo_id = "example" })
+```
+
+#### `remove(reqmatch, ctrl) -> any, err`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
+
+```lua
+local result, err = client:VcBranch():remove({ id = "vc_branch_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VcBranchEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## VcBrowserEntity
+
+```lua
+local vc_browser = client:VcBrowser(nil)
+```
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VcBrowserEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## VcChangeEntity
+
+```lua
+local vc_change = client:VcChange(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `table` | Yes |  |
+| `canonical_path` | `string` | Yes |  |
+| `change` | `any` | Yes |  |
+| `checks` | `table` | No |  |
+| `checks_status` | `string` | No |  |
+| `description` | `string|nil` | No |  |
+| `group` | `table|nil` | No |  |
+| `id` | `string` | Yes |  |
+| `jj_change_id` | `string|nil` | No |  |
+| `labels` | `table` | No |  |
+| `landing` | `table` | Yes | Server-computed submitted-together closure and landing preflight. |
+| `number` | `number` | Yes |  |
+| `patchset_number` | `number|nil` | No |  |
+| `previews` | `table` | Yes |  |
+| `primary_status` | `string|nil` | No |  |
+| `public_id` | `string` | No |  |
+| `related_changes` | `table` | Yes |  |
+| `relation_chain` | `table` | Yes |  |
+| `restack_state` | `string` | No |  |
+| `review_summary` | `table` | No |  |
+| `stack` | `any` | No |  |
+| `status` | `string` | Yes |  |
+| `sync` | `table` | Yes |  |
+| `target` | `table` | Yes |  |
+| `target_advanced` | `boolean` | Yes |  |
+| `target_branch` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `url` | `string` | No |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:VcChange():list({ organization_id = "example", repo_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:VcChange():load({ id = "vc_change_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VcChangeEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## VcChangeGroupEntity
+
+```lua
+local vc_change_group = client:VcChangeGroup(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `changes` | `table` | Yes |  |
+| `id` | `string` | No |  |
+| `name` | `string` | No |  |
+| `number` | `number` | No |  |
+| `status` | `string` | Yes |  |
+| `title` | `string|nil` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `changes` | - | - | - |
+| `id` | - | - | - |
+| `name` | - | - | Yes |
+| `number` | - | - | - |
+| `status` | - | - | - |
+| `title` | - | - | Yes |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:VcChangeGroup():create({
+  organization_id = --[[ string ]],
+  repo_id = --[[ string ]],
+  name = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:VcChangeGroup():list({ organization_id = "example", repo_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:VcChangeGroup():load({ id = "vc_change_group_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VcChangeGroupEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## VcFileEntity
+
+```lua
+local vc_file = client:VcFile(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `paths` | `table` | Yes |  |
+| `truncated` | `boolean` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:VcFile():list({ organization_id = "example", repo_id = "example", ref = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VcFileEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## VcMergeQueueEntity
+
+```lua
+local vc_merge_queue = client:VcMergeQueue(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `analytics` | `table` | Yes | Queue performance for the reporting window. |
+| `id` | `string` | No |  |
+| `policy` | `table` | Yes |  |
+| `queue` | `table` | Yes |  |
+| `target_branches` | `table` | No | Bookmark names for the target picker. |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:VcMergeQueue():list({ organization_id = "example", repo_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:VcMergeQueue():load({ id = "vc_merge_queue_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VcMergeQueueEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## VcStackEntity
+
+```lua
+local vc_stack = client:VcStack(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `alias_ref_name` | `string|nil` | Yes |  |
+| `changes` | `table` | Yes |  |
+| `code` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `landing` | `table` | Yes | Compact landing state for the Stack CLI. |
+| `member_count` | `number` | Yes |  |
+| `name` | `string|nil` | Yes |  |
+| `ref_name` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `tip_change_number` | `number|nil` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:VcStack():list({ organization_id = "example", repo_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:VcStack():load({ id = "vc_stack_id", organization_id = "organization_id", repo_id = "repo_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VcStackEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## VcsNodeEntity
+
+```lua
+local vcs_node = client:VcsNode(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `string|nil` | Yes |  |
+| `account_id` | `string|nil` | Yes |  |
+| `account_login` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `installation_id` | `string` | Yes |  |
+| `installed_at` | `string|nil` | Yes |  |
+| `installed_at_label` | `string|nil` | Yes |  |
+| `manage_access_url` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `permission_entries` | `table` | Yes | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `table` | Yes |  |
+| `status` | `string` | Yes |  |
+| `suspended_at` | `string|nil` | Yes |  |
+| `suspended_at_label` | `string|nil` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string|nil` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:VcsNode():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VcsNodeEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## VcsSettingEntity
+
+```lua
+local vcs_setting = client:VcsSetting(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `boolean` | Yes |  |
+| `can_manage_sandbox_region` | `boolean` | Yes |  |
+| `dedicated_outbound_ip_addresses` | `table` | Yes | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` | Yes |  |
+| `organization` | `table` | Yes |  |
+| `sandbox_regions` | `table` | Yes |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:VcsSetting():list({ organization_id = "example" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VcsSettingEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -18373,6 +42758,125 @@ Return the entity name.
 
 ---
 
+## VerifyEmailVerificationEntity
+
+```lua
+local verify_email_verification = client:VerifyEmailVerification(nil)
+```
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:VerifyEmailVerification():list()
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VerifyEmailVerificationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## VerifySignalIntegrationEntity
+
+```lua
+local verify_signal_integration = client:VerifySignalIntegration(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `api_token_stored` | `boolean` | Yes |  |
+| `config` | `table` | Yes |  |
+| `created_at` | `string|nil` | No |  |
+| `failure_message` | `string|nil` | Yes |  |
+| `id` | `string` | Yes | Public id (`sint_…`). |
+| `inbound_path` | `string` | Yes |  |
+| `inbound_url` | `string` | Yes | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `string|nil` | No |  |
+| `last_verified_at` | `string|nil` | No |  |
+| `mode` | `string` | Yes | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `rejected_signature_count` | `number` | Yes | Deliveries rejected for a bad or missing signature. |
+| `status` | `string` | Yes |  |
+| `target_count` | `number` | Yes |  |
+| `unmapped_delivery_count` | `number` | Yes | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `string|nil` | No |  |
+| `webhook_secret_stored` | `boolean` | Yes |  |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:VerifySignalIntegration():create({
+  id = --[[ string ]],
+  organization_id = --[[ string ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `VerifySignalIntegrationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## VerifyStaticSiteDomainEntity
 
 ```lua
@@ -18509,6 +43013,53 @@ Return the entity name.
 
 ---
 
+## WaitlistApplicationEntity
+
+```lua
+local waitlist_application = client:WaitlistApplication(nil)
+```
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:WaitlistApplication():create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `WaitlistApplicationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## WebBotAuthEntity
 
 ```lua
@@ -18556,6 +43107,61 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `WebBotAuthEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## WebhookGitlabEntity
+
+```lua
+local webhook_gitlab = client:WebhookGitlab(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:WebhookGitlab():update({
+  id = "id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `WebhookGitlabEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -18694,6 +43300,271 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `WorkflowTriggerSkippedEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## WorkspaceActivityEntity
+
+```lua
+local workspace_activity = client:WorkspaceActivity(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `live_activity` | `table` | Yes |  |
+| `recent_items` | `table` | Yes |  |
+| `unresolved_notification_count` | `number` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:WorkspaceActivity():load({ organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `WorkspaceActivityEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## WorkspaceActivityNotificationEntity
+
+```lua
+local workspace_activity_notification = client:WorkspaceActivityNotification(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `WorkspaceActivityNotificationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## WorkspaceSpaceEntity
+
+```lua
+local workspace_space = client:WorkspaceSpace(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `string` | Yes |  |
+| `default_branch` | `string` | No |  |
+| `description` | `string|nil` | Yes |  |
+| `hidden` | `boolean` | Yes |  |
+| `icon_name` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `import_status` | `string|nil` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `position` | `number|nil` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `repository_slug` | `string` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `created_at` | - | - | - |
+| `default_branch` | - | - | - |
+| `description` | - | - | Yes |
+| `hidden` | - | - | - |
+| `icon_name` | - | - | - |
+| `id` | - | - | - |
+| `import_status` | - | - | - |
+| `name` | - | - | - |
+| `organization_id` | - | - | - |
+| `position` | - | - | - |
+| `repository_id` | - | - | - |
+| `repository_slug` | - | - | - |
+| `slug` | - | - | - |
+| `status` | - | - | - |
+| `updated_at` | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:WorkspaceSpace():create({
+  organization_id = --[[ string ]],
+  icon_name = --[[ string ]],
+  name = --[[ string ]],
+  slug = --[[ string ]],
+})
+```
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+
+```lua
+local results, err = client:WorkspaceSpace():list({ organization_id = "example" })
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:WorkspaceSpace():load({ id = "workspace_space_id", organization_id = "organization_id" })
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `WorkspaceSpaceEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## WorkspaceSpacePreferenceEntity
+
+```lua
+local workspace_space_preference = client:WorkspaceSpacePreference(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `preferences` | `table` | Yes |  |
+| `spaces` | `table` | Yes |  |
+
+### Operations
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:WorkspaceSpacePreference():update({
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `WorkspaceSpacePreferenceEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`

@@ -1,0 +1,87 @@
+# BasicVcChangeFlow
+
+main: kit: flow: BasicVcChangeFlow:
+{
+  entity: "vc_change",
+  kind: "basic",
+  name: "BasicVcChangeFlow",
+  step: [
+    {
+      i: {
+        ref: "vc_change_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "vc_change_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      i: {
+        ref: "vc_change_ref01",
+        srcdatavar: "vc_change_ref01_data",
+        suffix: "_up0",
+        textfield: "canonical_path"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vc_change_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "vc_change_ref01",
+        srcdatavar: "vc_change_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "vc_change01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vc_change_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVcChangeFlow"
+}

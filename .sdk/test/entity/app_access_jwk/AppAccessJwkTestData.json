@@ -1,0 +1,21 @@
+{
+  "existing": {
+    "app_access_jwk": {
+      "APP_ACCESS_JWK00": {},
+      "APP_ACCESS_JWK01": {},
+      "APP_ACCESS_JWK02": {}
+    }
+  },
+  "new": {
+    "app_access_jwk": {
+      "app_access_jwk_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/app_access/jwks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

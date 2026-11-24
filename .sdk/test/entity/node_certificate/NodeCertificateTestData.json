@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "node_certificate": {
+      "NODE_CERTIFICATE00": {
+        "node_id": "NODE01",
+        "id": "NODE_CERTIFICATE00"
+      },
+      "NODE_CERTIFICATE01": {
+        "node_id": "NODE01",
+        "id": "NODE_CERTIFICATE01"
+      },
+      "NODE_CERTIFICATE02": {
+        "node_id": "NODE01",
+        "id": "NODE_CERTIFICATE02"
+      }
+    }
+  },
+  "new": {
+    "node_certificate": {
+      "node_certificate_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/ci/nodes/{id}/certificate/rotate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

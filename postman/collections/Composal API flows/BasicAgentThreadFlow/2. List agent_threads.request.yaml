@@ -3,38 +3,18 @@ id: "8c6f5204-01f8-561d-8280-b15f5bb7b22f"
 description: |-
   The `list` operation of **agent_thread**.
 
-  SDK: `client.AgentThread().list({ agent_id: "example", organization_id: "example" })`
-url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/threads"
+  SDK: `client.AgentThread().list()`
+url: "{{base}}/api/v1/agent/threads"
 method: GET
 headers:
   Accept: application/json
-queryParams:
-  - key: archived
-    value: exclude
-    disabled: true
-  - key: conversation_id
-    value: ""
-    disabled: true
-  - key: cursor
-    value: ""
-    disabled: true
-  - key: local_cursor
-    value: ""
-    disabled: true
-pathVariables:
-  - key: organization_id
-    value: "{{organization_id}}"
-    description: The organization this agent_thread belongs to.
-  - key: id
-    value: "{{agent_id}}"
-    description: The agent this agent_thread belongs to.
 scripts:
   - type: beforeRequest
     code: |-
       const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
       const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
       const getonly = flag("getonly", false)
-      const missing = ["base","organization_id","agent_id"].filter((name) => !given(name))
+      const missing = ["base"].filter((name) => !given(name))
       if (!given("apikey")) missing.unshift("apikey")
       const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
       if (getonly && "GET" !== pm.request.method) {

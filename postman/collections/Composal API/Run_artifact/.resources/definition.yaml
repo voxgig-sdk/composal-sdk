@@ -1,0 +1,8 @@
+$kind: collection
+id: "89568a77-76bb-5e32-b391-540c4b319dcb"
+description: |-
+  The **run_artifact** entity. Its requests address one record by `{{run_artifact_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 449000

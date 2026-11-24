@@ -1,0 +1,25 @@
+$kind: http-request
+id: "63040660-0c60-54d1-84df-490ce61d0859"
+description: |-
+  The `update` operation of **bazel_blob**.
+
+  SDK: `client.BazelBlob().update({ blob_id: "example", hash: "example", id: "example" })`
+url: "{{base}}/api/v1/bazel/blobs/:kind/:hash/:size_bytes"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: kind
+    value: "{{bazel_blob_blob_id}}"
+    description: The bazel_blob this request addresses.
+  - key: hash
+    value: "{{bazel_blob_hash}}"
+    description: The bazel_blob this request addresses.
+  - key: size_bytes
+    value: "{{bazel_blob_id}}"
+    description: The bazel_blob this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 2000

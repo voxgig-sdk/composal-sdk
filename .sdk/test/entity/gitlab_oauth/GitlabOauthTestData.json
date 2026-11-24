@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "gitlab_oauth": {
+      "GITLAB_OAUTH00": {
+        "id": "GITLAB_OAUTH00"
+      },
+      "GITLAB_OAUTH01": {
+        "id": "GITLAB_OAUTH01"
+      },
+      "GITLAB_OAUTH02": {
+        "id": "GITLAB_OAUTH02"
+      }
+    }
+  },
+  "new": {
+    "gitlab_oauth": {
+      "gitlab_oauth_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/gitlab/oauth/callback": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

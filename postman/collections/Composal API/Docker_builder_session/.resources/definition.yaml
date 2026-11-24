@@ -1,0 +1,17 @@
+$kind: collection
+id: "82caf2a3-aece-5cc4-b623-64c43aae3d4e"
+description: |-
+  The **docker_builder_session** entity, which belongs to a organization and a docker_builder. Its requests address one record by `{{docker_builder_session_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `created_at` | string | yes |  |
+  | `docker_builder_id` | string | yes |  |
+  | `expires_at` | string | yes |  |
+  | `gateway_url` | string |  |  |
+  | `generation` | integer | yes |  |
+  | `id` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `revoked_at` | string | yes |  |
+  | `user_id` | string | yes |  |
+order: 224000

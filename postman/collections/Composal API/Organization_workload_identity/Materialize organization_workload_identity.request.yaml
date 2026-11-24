@@ -1,0 +1,22 @@
+$kind: http-request
+id: ef231b53-4993-583c-aeda-3824e3c74b45
+description: |-
+  The `materialize` action of **organization_workload_identity**, a route of its `create` operation.
+
+  SDK: `client.OrganizationWorkloadIdentity().create({ "organization_id": "organization_id", "id": "ID", $action: "materialize" })`
+url: "{{base}}/api/v1/identity/organizations/:organization_id/workload_identities/:id/materialize"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_workload_identity belongs to.
+  - key: id
+    value: "{{organization_workload_identity_id}}"
+    description: The organization_workload_identity this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 8000

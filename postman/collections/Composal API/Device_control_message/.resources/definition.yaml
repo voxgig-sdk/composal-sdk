@@ -1,0 +1,16 @@
+$kind: collection
+id: cb1b53aa-69ea-58e9-a4f6-91b512e8e590
+description: |-
+  The **device_control_message** entity, which belongs to a organization and a device. Its requests address one record by `{{device_control_message_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `agent_id` | string | yes |  |
+  | `agent_name` | string | yes |  |
+  | `expires_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `sender` | string | yes |  |
+  | `text` | string | yes |  |
+  | `text_omitted` | boolean | yes |  |
+  | `thread` | object | yes |  |
+order: 213000

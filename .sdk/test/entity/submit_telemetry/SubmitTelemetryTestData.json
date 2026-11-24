@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "submit_telemetry": {
+      "SUBMIT_TELEMETRY00": {
+        "id": "SUBMIT_TELEMETRY00"
+      },
+      "SUBMIT_TELEMETRY01": {
+        "id": "SUBMIT_TELEMETRY01"
+      },
+      "SUBMIT_TELEMETRY02": {
+        "id": "SUBMIT_TELEMETRY02"
+      }
+    }
+  },
+  "new": {
+    "submit_telemetry": {
+      "submit_telemetry_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/submit_telemetry": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

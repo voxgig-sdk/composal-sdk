@@ -77,8 +77,16 @@ func runOp(client *sdk.ComposalSDK, op string, query *eng.Value, entityAtom eng.
 // emits one `case "<name>":` per entity defined in the SDK model.
 func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, error) {
 	switch strings.ToLower(name) {
+	case "a2a_well_known":
+		return client.A2aWellKnown(nil), nil
+	case "admin_org":
+		return client.AdminOrg(nil), nil
 	case "agent":
 		return client.Agent(nil), nil
+	case "agent_app":
+		return client.AgentApp(nil), nil
+	case "agent_app_install":
+		return client.AgentAppInstall(nil), nil
 	case "agent_attachment":
 		return client.AgentAttachment(nil), nil
 	case "agent_automation":
@@ -91,18 +99,36 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.AgentComputer(nil), nil
 	case "agent_connection":
 		return client.AgentConnection(nil), nil
+	case "agent_connection_delegation":
+		return client.AgentConnectionDelegation(nil), nil
+	case "agent_connection_grant":
+		return client.AgentConnectionGrant(nil), nil
+	case "agent_connection_resource":
+		return client.AgentConnectionResource(nil), nil
+	case "agent_connection_safety_control":
+		return client.AgentConnectionSafetyControl(nil), nil
+	case "agent_connection_trigger_subscription":
+		return client.AgentConnectionTriggerSubscription(nil), nil
+	case "agent_context_checkpoint":
+		return client.AgentContextCheckpoint(nil), nil
 	case "agent_control_flow":
 		return client.AgentControlFlow(nil), nil
 	case "agent_coordination":
 		return client.AgentCoordination(nil), nil
 	case "agent_email":
 		return client.AgentEmail(nil), nil
+	case "agent_event":
+		return client.AgentEvent(nil), nil
 	case "agent_file":
 		return client.AgentFile(nil), nil
 	case "agent_input":
 		return client.AgentInput(nil), nil
 	case "agent_integration":
 		return client.AgentIntegration(nil), nil
+	case "agent_integration_account":
+		return client.AgentIntegrationAccount(nil), nil
+	case "agent_integration_callback":
+		return client.AgentIntegrationCallback(nil), nil
 	case "agent_interaction":
 		return client.AgentInteraction(nil), nil
 	case "agent_library":
@@ -125,16 +151,28 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.AgentPullRequest(nil), nil
 	case "agent_question":
 		return client.AgentQuestion(nil), nil
+	case "agent_relay_file_grant":
+		return client.AgentRelayFileGrant(nil), nil
+	case "agent_relay_file_grant_account":
+		return client.AgentRelayFileGrantAccount(nil), nil
 	case "agent_repository":
 		return client.AgentRepository(nil), nil
 	case "agent_resource":
 		return client.AgentResource(nil), nil
+	case "agent_roder":
+		return client.AgentRoder(nil), nil
 	case "agent_routine":
 		return client.AgentRoutine(nil), nil
 	case "agent_run":
 		return client.AgentRun(nil), nil
 	case "agent_runtime":
 		return client.AgentRuntime(nil), nil
+	case "agent_session":
+		return client.AgentSession(nil), nil
+	case "agent_session_checkpoint":
+		return client.AgentSessionCheckpoint(nil), nil
+	case "agent_session_roder_handoff":
+		return client.AgentSessionRoderHandoff(nil), nil
 	case "agent_setting":
 		return client.AgentSetting(nil), nil
 	case "agent_sharing":
@@ -149,6 +187,8 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.AgentSubagent(nil), nil
 	case "agent_subscription":
 		return client.AgentSubscription(nil), nil
+	case "agent_swarm":
+		return client.AgentSwarm(nil), nil
 	case "agent_teammate":
 		return client.AgentTeammate(nil), nil
 	case "agent_terminal":
@@ -157,10 +197,14 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.AgentThread(nil), nil
 	case "agent_tool":
 		return client.AgentTool(nil), nil
+	case "agent_usage":
+		return client.AgentUsage(nil), nil
 	case "agent_verify_project":
 		return client.AgentVerifyProject(nil), nil
 	case "agent_wait":
 		return client.AgentWait(nil), nil
+	case "agent_web_preview":
+		return client.AgentWebPreview(nil), nil
 	case "agent_webhook":
 		return client.AgentWebhook(nil), nil
 	case "agent_work":
@@ -177,10 +221,20 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.AgentWorkspace(nil), nil
 	case "agent_write_permission":
 		return client.AgentWritePermission(nil), nil
+	case "agreement":
+		return client.Agreement(nil), nil
+	case "agreement_access_request":
+		return client.AgreementAccessRequest(nil), nil
+	case "alert_rule_event":
+		return client.AlertRuleEvent(nil), nil
 	case "allocation_log":
 		return client.AllocationLog(nil), nil
 	case "app":
 		return client.App(nil), nil
+	case "app_access":
+		return client.AppAccess(nil), nil
+	case "app_access_jwk":
+		return client.AppAccessJwk(nil), nil
 	case "app_cdn":
 		return client.AppCdn(nil), nil
 	case "app_config_variable":
@@ -217,16 +271,86 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.AppServicePlacement(nil), nil
 	case "app_storage_resource":
 		return client.AppStorageResource(nil), nil
+	case "artefact":
+		return client.Artefact(nil), nil
+	case "artefact_comment_thread":
+		return client.ArtefactCommentThread(nil), nil
+	case "artefact_revision":
+		return client.ArtefactRevision(nil), nil
+	case "artefact_view_token":
+		return client.ArtefactViewToken(nil), nil
+	case "artifact":
+		return client.Artifact(nil), nil
+	case "artifact_cache_namespace":
+		return client.ArtifactCacheNamespace(nil), nil
+	case "artifact_image_repository":
+		return client.ArtifactImageRepository(nil), nil
+	case "artifact_package_mirror":
+		return client.ArtifactPackageMirror(nil), nil
+	case "artifact_retention_policy":
+		return client.ArtifactRetentionPolicy(nil), nil
 	case "attachment_part":
 		return client.AttachmentPart(nil), nil
+	case "audit_event":
+		return client.AuditEvent(nil), nil
+	case "auth":
+		return client.Auth(nil), nil
+	case "auth_cli":
+		return client.AuthCli(nil), nil
+	case "auth_github":
+		return client.AuthGithub(nil), nil
+	case "auth_google":
+		return client.AuthGoogle(nil), nil
+	case "auth_openai":
+		return client.AuthOpenai(nil), nil
+	case "auth_password_reset":
+		return client.AuthPasswordReset(nil), nil
+	case "auth_registration_option":
+		return client.AuthRegistrationOption(nil), nil
 	case "automation_event":
 		return client.AutomationEvent(nil), nil
 	case "automation_run":
 		return client.AutomationRun(nil), nil
+	case "backend_runner_pool":
+		return client.BackendRunnerPool(nil), nil
+	case "bazel":
+		return client.Bazel(nil), nil
+	case "bazel_action_result":
+		return client.BazelActionResult(nil), nil
+	case "bazel_backend":
+		return client.BazelBackend(nil), nil
+	case "bazel_blob":
+		return client.BazelBlob(nil), nil
+	case "bazel_execution":
+		return client.BazelExecution(nil), nil
+	case "bazel_find_missing_blob":
+		return client.BazelFindMissingBlob(nil), nil
+	case "billing":
+		return client.Billing(nil), nil
+	case "billing_addon":
+		return client.BillingAddon(nil), nil
+	case "billing_checkout_session":
+		return client.BillingCheckoutSession(nil), nil
+	case "billing_invoice":
+		return client.BillingInvoice(nil), nil
+	case "billing_package":
+		return client.BillingPackage(nil), nil
+	case "billing_portal_session":
+		return client.BillingPortalSession(nil), nil
+	case "billing_prepaid_period":
+		return client.BillingPrepaidPeriod(nil), nil
+	case "billing_prepaid_purchase":
+		return client.BillingPrepaidPurchase(nil), nil
+	case "billing_token_top_up":
+		return client.BillingTokenTopUp(nil), nil
+	case "billing_usage":
+		return client.BillingUsage(nil), nil
 	case "binary":
 		return client.Binary(nil), nil
 	case "binary_version":
 		return client.BinaryVersion(nil), nil
+	case "bookmark_protection_refresh_github_required_check":
+		return client.BookmarkProtectionRefreshGithubRequiredCheck(nil), nil
 	case "browser_egress_candidate":
 		return client.BrowserEgressCandidate(nil), nil
 	case "browser_session":
@@ -245,6 +369,8 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.BrowserSessionScreenshot(nil), nil
 	case "browser_session_task":
 		return client.BrowserSessionTask(nil), nil
+	case "cache_namespace_entry":
+		return client.CacheNamespaceEntry(nil), nil
 	case "catalog_selector":
 		return client.CatalogSelector(nil), nil
 	case "cdn_deployment":
@@ -255,10 +381,74 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.CdnSpace(nil), nil
 	case "cdn_space_object":
 		return client.CdnSpaceObject(nil), nil
+	case "change":
+		return client.Change(nil), nil
+	case "change_asset":
+		return client.ChangeAsset(nil), nil
+	case "change_comment":
+		return client.ChangeComment(nil), nil
+	case "change_file_review_checkpoint":
+		return client.ChangeFileReviewCheckpoint(nil), nil
+	case "change_git_branch_submission":
+		return client.ChangeGitBranchSubmission(nil), nil
+	case "change_git_commit_identity":
+		return client.ChangeGitCommitIdentity(nil), nil
+	case "change_git_publication":
+		return client.ChangeGitPublication(nil), nil
+	case "change_group_member":
+		return client.ChangeGroupMember(nil), nil
+	case "change_label":
+		return client.ChangeLabel(nil), nil
+	case "change_landing_hold":
+		return client.ChangeLandingHold(nil), nil
+	case "change_landing_request":
+		return client.ChangeLandingRequest(nil), nil
+	case "change_request_change":
+		return client.ChangeRequestChange(nil), nil
+	case "change_reviewer":
+		return client.ChangeReviewer(nil), nil
+	case "change_transcript":
+		return client.ChangeTranscript(nil), nil
+	case "change_transcript_summary":
+		return client.ChangeTranscriptSummary(nil), nil
+	case "checkpoint_prepare_chunk":
+		return client.CheckpointPrepareChunk(nil), nil
+	case "ci_node":
+		return client.CiNode(nil), nil
+	case "ci_pipeline":
+		return client.CiPipeline(nil), nil
+	case "ci_pipeline_run":
+		return client.CiPipelineRun(nil), nil
+	case "ci_runner_pool":
+		return client.CiRunnerPool(nil), nil
+	case "ci_status":
+		return client.CiStatus(nil), nil
+	case "cli_event":
+		return client.CliEvent(nil), nil
+	case "cli_release":
+		return client.CliRelease(nil), nil
+	case "cloud_workspace_backup_object":
+		return client.CloudWorkspaceBackupObject(nil), nil
+	case "code_rule_evaluation":
+		return client.CodeRuleEvaluation(nil), nil
+	case "com_site_access":
+		return client.ComSiteAccess(nil), nil
+	case "com_site_access_session":
+		return client.ComSiteAccessSession(nil), nil
+	case "comment_thread_comment":
+		return client.CommentThreadComment(nil), nil
+	case "commit_diff":
+		return client.CommitDiff(nil), nil
 	case "connection_request":
 		return client.ConnectionRequest(nil), nil
 	case "connection_source":
 		return client.ConnectionSource(nil), nil
+	case "contact_submission":
+		return client.ContactSubmission(nil), nil
+	case "control_computer":
+		return client.ControlComputer(nil), nil
+	case "control_computer_control_operation":
+		return client.ControlComputerControlOperation(nil), nil
 	case "coordination_wait":
 		return client.CoordinationWait(nil), nil
 	case "credential_sign_in_check":
@@ -279,14 +469,66 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.DemoShare(nil), nil
 	case "demo_share_segment":
 		return client.DemoShareSegment(nil), nil
+	case "deployment":
+		return client.Deployment(nil), nil
 	case "deployment_dashboard_nomad":
 		return client.DeploymentDashboardNomad(nil), nil
+	case "deployment_detail":
+		return client.DeploymentDetail(nil), nil
 	case "deployment_file":
 		return client.DeploymentFile(nil), nil
+	case "deployment_log":
+		return client.DeploymentLog(nil), nil
+	case "deployment_metric":
+		return client.DeploymentMetric(nil), nil
+	case "deployment_preview":
+		return client.DeploymentPreview(nil), nil
+	case "deployment_setting":
+		return client.DeploymentSetting(nil), nil
+	case "desktop_local_agent_model":
+		return client.DesktopLocalAgentModel(nil), nil
+	case "desktop_local_agent_response":
+		return client.DesktopLocalAgentResponse(nil), nil
+	case "device":
+		return client.Device(nil), nil
+	case "device_browser_operation":
+		return client.DeviceBrowserOperation(nil), nil
+	case "device_control_message":
+		return client.DeviceControlMessage(nil), nil
+	case "device_control_operation":
+		return client.DeviceControlOperation(nil), nil
+	case "device_enterprise_relay":
+		return client.DeviceEnterpriseRelay(nil), nil
+	case "device_folder_listing":
+		return client.DeviceFolderListing(nil), nil
+	case "device_grant":
+		return client.DeviceGrant(nil), nil
+	case "device_invocation":
+		return client.DeviceInvocation(nil), nil
+	case "device_local_event":
+		return client.DeviceLocalEvent(nil), nil
+	case "device_pairing":
+		return client.DevicePairing(nil), nil
+	case "device_project":
+		return client.DeviceProject(nil), nil
+	case "device_scheduled_check_in":
+		return client.DeviceScheduledCheckIn(nil), nil
+	case "docker_builder":
+		return client.DockerBuilder(nil), nil
+	case "docker_builder_session":
+		return client.DockerBuilderSession(nil), nil
+	case "docker_builder_setting":
+		return client.DockerBuilderSetting(nil), nil
+	case "domain_dns_integration":
+		return client.DomainDnsIntegration(nil), nil
 	case "domain_path_rule":
 		return client.DomainPathRule(nil), nil
 	case "dream":
 		return client.Dream(nil), nil
+	case "edge":
+		return client.Edge(nil), nil
+	case "email_verification":
+		return client.EmailVerification(nil), nil
 	case "environment":
 		return client.Environment(nil), nil
 	case "environment_discovery_run":
@@ -303,6 +545,14 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.EnvironmentTestAccount(nil), nil
 	case "evidence":
 		return client.Evidence(nil), nil
+	case "execution_desired_state":
+		return client.ExecutionDesiredState(nil), nil
+	case "execution_reconciler_tick":
+		return client.ExecutionReconcilerTick(nil), nil
+	case "execution_release":
+		return client.ExecutionRelease(nil), nil
+	case "execution_runtime_instance":
+		return client.ExecutionRuntimeInstance(nil), nil
 	case "exploration":
 		return client.Exploration(nil), nil
 	case "exploration_message":
@@ -313,28 +563,132 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.ExplorationScenario(nil), nil
 	case "finding":
 		return client.Finding(nil), nil
+	case "gh":
+		return client.Gh(nil), nil
+	case "git_import":
+		return client.GitImport(nil), nil
+	case "github":
+		return client.Github(nil), nil
+	case "github_app":
+		return client.GithubApp(nil), nil
+	case "github_app_importable_repository":
+		return client.GithubAppImportableRepository(nil), nil
+	case "github_app_installation":
+		return client.GithubAppInstallation(nil), nil
+	case "github_app_installation_authorization":
+		return client.GithubAppInstallationAuthorization(nil), nil
+	case "github_app_user_authorization":
+		return client.GithubAppUserAuthorization(nil), nil
+	case "github_ci_repository":
+		return client.GithubCiRepository(nil), nil
+	case "github_ci_repository_compatibility_report":
+		return client.GithubCiRepositoryCompatibilityReport(nil), nil
 	case "github_connection":
 		return client.GithubConnection(nil), nil
+	case "github_integration":
+		return client.GithubIntegration(nil), nil
+	case "github_onboarding":
+		return client.GithubOnboarding(nil), nil
+	case "github_onboarding_branch":
+		return client.GithubOnboardingBranch(nil), nil
+	case "github_onboarding_import":
+		return client.GithubOnboardingImport(nil), nil
+	case "github_onboarding_import_batch":
+		return client.GithubOnboardingImportBatch(nil), nil
+	case "github_onboarding_import_item":
+		return client.GithubOnboardingImportItem(nil), nil
+	case "github_pull_request":
+		return client.GithubPullRequest(nil), nil
+	case "github_runner_admission":
+		return client.GithubRunnerAdmission(nil), nil
+	case "github_runner_cache":
+		return client.GithubRunnerCache(nil), nil
+	case "github_runner_egress":
+		return client.GithubRunnerEgress(nil), nil
+	case "github_runner_history":
+		return client.GithubRunnerHistory(nil), nil
+	case "github_runner_image":
+		return client.GithubRunnerImage(nil), nil
+	case "github_runner_pool":
+		return client.GithubRunnerPool(nil), nil
+	case "github_runner_setup":
+		return client.GithubRunnerSetup(nil), nil
+	case "gitlab":
+		return client.Gitlab(nil), nil
+	case "gitlab_connection":
+		return client.GitlabConnection(nil), nil
+	case "gitlab_import":
+		return client.GitlabImport(nil), nil
+	case "gitlab_oauth":
+		return client.GitlabOauth(nil), nil
+	case "grant_all_agent":
+		return client.GrantAllAgent(nil), nil
 	case "hosting_app_domain":
 		return client.HostingAppDomain(nil), nil
+	case "identity_organization":
+		return client.IdentityOrganization(nil), nil
 	case "image_repository":
 		return client.ImageRepository(nil), nil
+	case "image_repository_tag":
+		return client.ImageRepositoryTag(nil), nil
+	case "import_branch_policy":
+		return client.ImportBranchPolicy(nil), nil
 	case "integration":
 		return client.Integration(nil), nil
 	case "interaction_response":
 		return client.InteractionResponse(nil), nil
 	case "invitation":
 		return client.Invitation(nil), nil
+	case "invocation_control":
+		return client.InvocationControl(nil), nil
+	case "job_log_chunk":
+		return client.JobLogChunk(nil), nil
+	case "job_step":
+		return client.JobStep(nil), nil
+	case "job_workspace":
+		return client.JobWorkspace(nil), nil
 	case "journey_variant_replay":
 		return client.JourneyVariantReplay(nil), nil
 	case "knowledge":
 		return client.Knowledge(nil), nil
+	case "known":
+		return client.Known(nil), nil
+	case "label":
+		return client.Label(nil), nil
+	case "lease_artifact":
+		return client.LeaseArtifact(nil), nil
+	case "lease_cache":
+		return client.LeaseCache(nil), nil
+	case "lease_log_chunk":
+		return client.LeaseLogChunk(nil), nil
+	case "lease_reconciliation":
+		return client.LeaseReconciliation(nil), nil
+	case "lease_step":
+		return client.LeaseStep(nil), nil
+	case "lease_verify_diagnostic":
+		return client.LeaseVerifyDiagnostic(nil), nil
+	case "lease_verify_secret":
+		return client.LeaseVerifySecret(nil), nil
+	case "lease_workspace":
+		return client.LeaseWorkspace(nil), nil
+	case "local_agent_decision":
+		return client.LocalAgentDecision(nil), nil
+	case "local_agent_response":
+		return client.LocalAgentResponse(nil), nil
 	case "local_thread_delivery":
 		return client.LocalThreadDelivery(nil), nil
 	case "local_thread_operation":
 		return client.LocalThreadOperation(nil), nil
 	case "location":
 		return client.Location(nil), nil
+	case "log_stream_chunk":
+		return client.LogStreamChunk(nil), nil
+	case "logo_image":
+		return client.LogoImage(nil), nil
+	case "marketing_setting":
+		return client.MarketingSetting(nil), nil
+	case "mcp_oauth":
+		return client.McpOauth(nil), nil
 	case "me":
 		return client.Me(nil), nil
 	case "me_email":
@@ -347,28 +701,110 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.Member(nil), nil
 	case "memory":
 		return client.Memory(nil), nil
+	case "merge_queue_entry":
+		return client.MergeQueueEntry(nil), nil
 	case "merge_request":
 		return client.MergeRequest(nil), nil
+	case "merge_resolution":
+		return client.MergeResolution(nil), nil
 	case "messaging_conversation_message":
 		return client.MessagingConversationMessage(nil), nil
 	case "messaging_conversation_upload":
 		return client.MessagingConversationUpload(nil), nil
 	case "metric_query":
 		return client.MetricQuery(nil), nil
+	case "metronome_webhook":
+		return client.MetronomeWebhook(nil), nil
+	case "model_subscription_account":
+		return client.ModelSubscriptionAccount(nil), nil
+	case "model_subscription_account_connection":
+		return client.ModelSubscriptionAccountConnection(nil), nil
 	case "network_connection":
 		return client.NetworkConnection(nil), nil
+	case "networking_space":
+		return client.NetworkingSpace(nil), nil
+	case "node":
+		return client.Node(nil), nil
+	case "node_certificate":
+		return client.NodeCertificate(nil), nil
+	case "node_lease":
+		return client.NodeLease(nil), nil
 	case "nomad_allocation":
 		return client.NomadAllocation(nil), nil
 	case "nomad_log":
 		return client.NomadLog(nil), nil
+	case "now":
+		return client.Now(nil), nil
+	case "observability_clickhouse_cluster":
+		return client.ObservabilityClickhouseCluster(nil), nil
+	case "observability_quickwit_cluster":
+		return client.ObservabilityQuickwitCluster(nil), nil
+	case "observability_space":
+		return client.ObservabilitySpace(nil), nil
+	case "openapi":
+		return client.Openapi(nil), nil
+	case "org_invitation":
+		return client.OrgInvitation(nil), nil
 	case "organization":
 		return client.Organization(nil), nil
+	case "organization_app":
+		return client.OrganizationApp(nil), nil
+	case "organization_control":
+		return client.OrganizationControl(nil), nil
+	case "organization_device":
+		return client.OrganizationDevice(nil), nil
+	case "organization_identity_certificate":
+		return client.OrganizationIdentityCertificate(nil), nil
+	case "organization_interaction":
+		return client.OrganizationInteraction(nil), nil
+	case "organization_invitation":
+		return client.OrganizationInvitation(nil), nil
+	case "organization_message_file":
+		return client.OrganizationMessageFile(nil), nil
+	case "organization_oidc_trust":
+		return client.OrganizationOidcTrust(nil), nil
+	case "organization_run_event":
+		return client.OrganizationRunEvent(nil), nil
+	case "organization_run_outcome":
+		return client.OrganizationRunOutcome(nil), nil
+	case "organization_run_usage":
+		return client.OrganizationRunUsage(nil), nil
+	case "organization_sandbox":
+		return client.OrganizationSandbox(nil), nil
+	case "organization_secret":
+		return client.OrganizationSecret(nil), nil
+	case "organization_service_account":
+		return client.OrganizationServiceAccount(nil), nil
+	case "organization_setting":
+		return client.OrganizationSetting(nil), nil
+	case "organization_site":
+		return client.OrganizationSite(nil), nil
+	case "organization_subscription":
+		return client.OrganizationSubscription(nil), nil
+	case "organization_tool":
+		return client.OrganizationTool(nil), nil
+	case "organization_workload_identity":
+		return client.OrganizationWorkloadIdentity(nil), nil
+	case "otel_ingest":
+		return client.OtelIngest(nil), nil
 	case "page":
 		return client.Page(nil), nil
 	case "page_agent":
 		return client.PageAgent(nil), nil
+	case "page_artefact":
+		return client.PageArtefact(nil), nil
+	case "page_ci_pipeline_run":
+		return client.PageCiPipelineRun(nil), nil
 	case "page_project_run":
 		return client.PageProjectRun(nil), nil
+	case "page_repo_vc_commit":
+		return client.PageRepoVcCommit(nil), nil
+	case "pages_billing":
+		return client.PagesBilling(nil), nil
+	case "pages_github_onboarding":
+		return client.PagesGithubOnboarding(nil), nil
+	case "pages_member":
+		return client.PagesMember(nil), nil
 	case "pages_project_credential":
 		return client.PagesProjectCredential(nil), nil
 	case "pages_project_persona":
@@ -377,6 +813,18 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.PagesProjectRun(nil), nil
 	case "pages_project_scenario":
 		return client.PagesProjectScenario(nil), nil
+	case "pages_registry":
+		return client.PagesRegistry(nil), nil
+	case "pages_session":
+		return client.PagesSession(nil), nil
+	case "pairing":
+		return client.Pairing(nil), nil
+	case "pairing_event":
+		return client.PairingEvent(nil), nil
+	case "parallel_v1":
+		return client.ParallelV1(nil), nil
+	case "patchset_diff":
+		return client.PatchsetDiff(nil), nil
 	case "personal_access_token":
 		return client.PersonalAccessToken(nil), nil
 	case "preview_operation":
@@ -387,6 +835,10 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.PreviewSecret(nil), nil
 	case "preview_sharing_approval":
 		return client.PreviewSharingApproval(nil), nil
+	case "proactive_agent_waitlist_entry":
+		return client.ProactiveAgentWaitlistEntry(nil), nil
+	case "product":
+		return client.Product(nil), nil
 	case "product_map_identity_decision":
 		return client.ProductMapIdentityDecision(nil), nil
 	case "product_map_journey":
@@ -435,24 +887,94 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.ProjectSetting(nil), nil
 	case "pull_request":
 		return client.PullRequest(nil), nil
+	case "pull_request_action":
+		return client.PullRequestAction(nil), nil
+	case "pull_request_magic_merge":
+		return client.PullRequestMagicMerge(nil), nil
 	case "pull_request_setting":
 		return client.PullRequestSetting(nil), nil
 	case "pull_request_setting_add_repository":
 		return client.PullRequestSettingAddRepository(nil), nil
 	case "pull_request_setting_detect_comment":
 		return client.PullRequestSettingDetectComment(nil), nil
+	case "pull_request_transcript":
+		return client.PullRequestTranscript(nil), nil
+	case "pull_zone":
+		return client.PullZone(nil), nil
 	case "recorder":
 		return client.Recorder(nil), nil
 	case "registry":
 		return client.Registry(nil), nil
 	case "registry_v2":
 		return client.RegistryV2(nil), nil
+	case "relay_agent_connection":
+		return client.RelayAgentConnection(nil), nil
 	case "relay_agent_local_thread":
 		return client.RelayAgentLocalThread(nil), nil
+	case "relay_signal":
+		return client.RelaySignal(nil), nil
+	case "release_rollout":
+		return client.ReleaseRollout(nil), nil
+	case "repo":
+		return client.Repo(nil), nil
+	case "repo_access_token":
+		return client.RepoAccessToken(nil), nil
+	case "repo_action":
+		return client.RepoAction(nil), nil
+	case "repo_agent_checkpoint":
+		return client.RepoAgentCheckpoint(nil), nil
+	case "repo_agent_session":
+		return client.RepoAgentSession(nil), nil
+	case "repo_bookmark_protection":
+		return client.RepoBookmarkProtection(nil), nil
+	case "repo_bookmark_protection_event":
+		return client.RepoBookmarkProtectionEvent(nil), nil
+	case "repo_cloud_workspace_backup":
+		return client.RepoCloudWorkspaceBackup(nil), nil
+	case "repo_code_rule":
+		return client.RepoCodeRule(nil), nil
+	case "repo_setting":
+		return client.RepoSetting(nil), nil
+	case "repo_stat":
+		return client.RepoStat(nil), nil
+	case "repo_vc":
+		return client.RepoVc(nil), nil
+	case "repo_vc_commit":
+		return client.RepoVcCommit(nil), nil
 	case "report_replay":
 		return client.ReportReplay(nil), nil
 	case "report_scenario":
 		return client.ReportScenario(nil), nil
+	case "repository_access":
+		return client.RepositoryAccess(nil), nil
+	case "repository_access_resolve":
+		return client.RepositoryAccessResolve(nil), nil
+	case "repository_event":
+		return client.RepositoryEvent(nil), nil
+	case "repository_import":
+		return client.RepositoryImport(nil), nil
+	case "repository_import_session":
+		return client.RepositoryImportSession(nil), nil
+	case "repository_import_session_repository":
+		return client.RepositoryImportSessionRepository(nil), nil
+	case "repository_import_session_selection":
+		return client.RepositoryImportSessionSelection(nil), nil
+	case "repository_sandbox_environment":
+		return client.RepositorySandboxEnvironment(nil), nil
+	case "roder_code_repair":
+		return client.RoderCodeRepair(nil), nil
+	case "roder_code_repair_setting":
+		return client.RoderCodeRepairSetting(nil), nil
+	case "roder_machine":
+		return client.RoderMachine(nil), nil
+	case "roder_run":
+		return client.RoderRun(nil), nil
+	case "roder_workspace_credential":
+		return client.RoderWorkspaceCredential(nil), nil
+	case "run_artifact":
+		return client.RunArtifact(nil), nil
+	case "run_job":
+		return client.RunJob(nil), nil
 	case "run_scenario_run":
 		return client.RunScenarioRun(nil), nil
 	case "run_schedule_option":
@@ -461,30 +983,162 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.RunSearch(nil), nil
 	case "run_update":
 		return client.RunUpdate(nil), nil
+	case "run_workspace_credential":
+		return client.RunWorkspaceCredential(nil), nil
+	case "runner_lease":
+		return client.RunnerLease(nil), nil
+	case "runner_pool_node_enrollment_token":
+		return client.RunnerPoolNodeEnrollmentToken(nil), nil
+	case "runner_pool_runner":
+		return client.RunnerPoolRunner(nil), nil
+	case "runtime_instance_health_snapshot":
+		return client.RuntimeInstanceHealthSnapshot(nil), nil
+	case "sandbox_integration":
+		return client.SandboxIntegration(nil), nil
 	case "scenario_revision":
 		return client.ScenarioRevision(nil), nil
 	case "scenario_run_lesson":
 		return client.ScenarioRunLesson(nil), nil
 	case "scenario_run_scenario_edit":
 		return client.ScenarioRunScenarioEdit(nil), nil
+	case "secret_grant":
+		return client.SecretGrant(nil), nil
+	case "secret_version":
+		return client.SecretVersion(nil), nil
 	case "service_endpoint":
 		return client.ServiceEndpoint(nil), nil
+	case "setting":
+		return client.Setting(nil), nil
+	case "setting_mutation_lease":
+		return client.SettingMutationLease(nil), nil
+	case "signal":
+		return client.Signal(nil), nil
+	case "signal_inbound":
+		return client.SignalInbound(nil), nil
+	case "signal_integration":
+		return client.SignalIntegration(nil), nil
+	case "signal_integration_delivery":
+		return client.SignalIntegrationDelivery(nil), nil
+	case "signal_integration_target":
+		return client.SignalIntegrationTarget(nil), nil
+	case "signal_subscription":
+		return client.SignalSubscription(nil), nil
+	case "site":
+		return client.Site(nil), nil
+	case "site_access_key":
+		return client.SiteAccessKey(nil), nil
 	case "site_preview":
 		return client.SitePreview(nil), nil
+	case "site_secret":
+		return client.SiteSecret(nil), nil
 	case "slack_channel":
 		return client.SlackChannel(nil), nil
+	case "source_connection":
+		return client.SourceConnection(nil), nil
+	case "space_alert_rule":
+		return client.SpaceAlertRule(nil), nil
+	case "space_audit_event":
+		return client.SpaceAuditEvent(nil), nil
+	case "space_dns_record":
+		return client.SpaceDnsRecord(nil), nil
+	case "space_enrollment_token":
+		return client.SpaceEnrollmentToken(nil), nil
+	case "space_gateway":
+		return client.SpaceGateway(nil), nil
+	case "space_group":
+		return client.SpaceGroup(nil), nil
+	case "space_group_membership":
+		return client.SpaceGroupMembership(nil), nil
+	case "space_log_stream":
+		return client.SpaceLogStream(nil), nil
+	case "space_metric_sery":
+		return client.SpaceMetricSery(nil), nil
+	case "space_otel_collector":
+		return client.SpaceOtelCollector(nil), nil
+	case "space_peer":
+		return client.SpacePeer(nil), nil
+	case "space_peer_attachment":
+		return client.SpacePeerAttachment(nil), nil
+	case "space_policy":
+		return client.SpacePolicy(nil), nil
+	case "space_segment":
+		return client.SpaceSegment(nil), nil
+	case "space_trace_span":
+		return client.SpaceTraceSpan(nil), nil
+	case "spark":
+		return client.Spark(nil), nil
+	case "spark_agent_integration":
+		return client.SparkAgentIntegration(nil), nil
 	case "spark_agent_local_thread":
 		return client.SparkAgentLocalThread(nil), nil
+	case "spark_agent_site":
+		return client.SparkAgentSite(nil), nil
+	case "spark_agent_skill":
+		return client.SparkAgentSkill(nil), nil
+	case "spark_agent_thread":
+		return client.SparkAgentThread(nil), nil
+	case "spark_credit":
+		return client.SparkCredit(nil), nil
+	case "spark_credit_agent_usage":
+		return client.SparkCreditAgentUsage(nil), nil
+	case "spark_credit_usage_total":
+		return client.SparkCreditUsageTotal(nil), nil
 	case "static_site":
 		return client.StaticSite(nil), nil
 	case "static_site_deployment":
 		return client.StaticSiteDeployment(nil), nil
 	case "static_site_domain":
 		return client.StaticSiteDomain(nil), nil
+	case "status_change":
+		return client.StatusChange(nil), nil
+	case "status_commit":
+		return client.StatusCommit(nil), nil
+	case "status_patchset":
+		return client.StatusPatchset(nil), nil
+	case "stripe_webhook":
+		return client.StripeWebhook(nil), nil
+	case "submit_telemetry":
+		return client.SubmitTelemetry(nil), nil
 	case "subscription_model":
 		return client.SubscriptionModel(nil), nil
+	case "swarm_event":
+		return client.SwarmEvent(nil), nil
+	case "swarm_live":
+		return client.SwarmLive(nil), nil
+	case "swarm_note":
+		return client.SwarmNote(nil), nil
+	case "swarm_task":
+		return client.SwarmTask(nil), nil
+	case "task_lease":
+		return client.TaskLease(nil), nil
 	case "thread_preview":
 		return client.ThreadPreview(nil), nil
+	case "thread_preview_access":
+		return client.ThreadPreviewAccess(nil), nil
+	case "tool_feedback":
+		return client.ToolFeedback(nil), nil
+	case "transcript":
+		return client.Transcript(nil), nil
+	case "v1_message":
+		return client.V1Message(nil), nil
+	case "vc_branch":
+		return client.VcBranch(nil), nil
+	case "vc_browser":
+		return client.VcBrowser(nil), nil
+	case "vc_change":
+		return client.VcChange(nil), nil
+	case "vc_change_group":
+		return client.VcChangeGroup(nil), nil
+	case "vc_file":
+		return client.VcFile(nil), nil
+	case "vc_merge_queue":
+		return client.VcMergeQueue(nil), nil
+	case "vc_stack":
+		return client.VcStack(nil), nil
+	case "vcs_node":
+		return client.VcsNode(nil), nil
+	case "vcs_setting":
+		return client.VcsSetting(nil), nil
 	case "verification_project_credential":
 		return client.VerificationProjectCredential(nil), nil
 	case "verification_project_persona":
@@ -497,18 +1151,34 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.VerifyAppDomain(nil), nil
 	case "verify_browser_session":
 		return client.VerifyBrowserSession(nil), nil
+	case "verify_email_verification":
+		return client.VerifyEmailVerification(nil), nil
+	case "verify_signal_integration":
+		return client.VerifySignalIntegration(nil), nil
 	case "verify_static_site_domain":
 		return client.VerifyStaticSiteDomain(nil), nil
 	case "version_log":
 		return client.VersionLog(nil), nil
+	case "waitlist_application":
+		return client.WaitlistApplication(nil), nil
 	case "web_bot_auth":
 		return client.WebBotAuth(nil), nil
+	case "webhook_gitlab":
+		return client.WebhookGitlab(nil), nil
 	case "workflow_run_step":
 		return client.WorkflowRunStep(nil), nil
 	case "workflow_run_stop_notice":
 		return client.WorkflowRunStopNotice(nil), nil
 	case "workflow_trigger_skipped":
 		return client.WorkflowTriggerSkipped(nil), nil
+	case "workspace_activity":
+		return client.WorkspaceActivity(nil), nil
+	case "workspace_activity_notification":
+		return client.WorkspaceActivityNotification(nil), nil
+	case "workspace_space":
+		return client.WorkspaceSpace(nil), nil
+	case "workspace_space_preference":
+		return client.WorkspaceSpacePreference(nil), nil
 
 	}
 	return nil, fmt.Errorf("unknown entity %q", name)

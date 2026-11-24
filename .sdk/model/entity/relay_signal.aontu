@@ -1,0 +1,53 @@
+# Entity: relay_signal
+
+main: kit: entity: relay_signal: {
+
+  alias: field: {}
+
+  name: "relay_signal"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/relay/signals"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/relay/signals"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "relay"
+            }
+            {
+              lit: "signals"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

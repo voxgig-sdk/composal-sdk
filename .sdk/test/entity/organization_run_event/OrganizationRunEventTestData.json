@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "organization_run_event": {
+      "ORGANIZATION_RUN_EVENT00": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_RUN_EVENT00"
+      },
+      "ORGANIZATION_RUN_EVENT01": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_RUN_EVENT01"
+      },
+      "ORGANIZATION_RUN_EVENT02": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_RUN_EVENT02"
+      }
+    }
+  },
+  "new": {
+    "organization_run_event": {
+      "organization_run_event_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/spark/organizations/{organization_id}/run_events": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

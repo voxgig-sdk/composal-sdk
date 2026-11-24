@@ -1,0 +1,80 @@
+{
+  "existing": {
+    "space_peer": {
+      "SPACE_PEER00": {
+        "id": "SPACE_PEER00",
+        "space_id": "SPACE01"
+      },
+      "SPACE_PEER01": {
+        "id": "SPACE_PEER01",
+        "space_id": "SPACE01"
+      },
+      "SPACE_PEER02": {
+        "id": "SPACE_PEER02",
+        "space_id": "SPACE01"
+      }
+    }
+  },
+  "new": {
+    "space_peer": {
+      "space_peer_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/networking/spaces/{space_id}/peers/{id}/approve": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/networking/spaces/{space_id}/peers/{id}/revoke": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/networking/spaces/{space_id}/peers/{id}/suspend": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/networking/spaces/{space_id}/peers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/networking/spaces/{space_id}/peers/enroll": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/networking/spaces/{space_id}/peers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/networking/spaces/{space_id}/peers/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/networking/spaces/{space_id}/peers/{id}/bootstrap": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/networking/spaces/{space_id}/peers/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/networking/spaces/{space_id}/peers/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/networking/spaces/{space_id}/peers/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

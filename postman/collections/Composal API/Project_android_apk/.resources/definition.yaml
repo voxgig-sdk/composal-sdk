@@ -15,4 +15,4 @@ description: |-
   | `platform` | string |  |  |
   | `provider` | string |  |  |
   | `setup_command` | string |  |  |
-order: 164000
+order: 392000

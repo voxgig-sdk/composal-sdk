@@ -1,0 +1,22 @@
+# BasicOrganizationRunOutcomeFlow
+
+main: kit: flow: BasicOrganizationRunOutcomeFlow:
+{
+  entity: "organization_run_outcome",
+  kind: "basic",
+  name: "BasicOrganizationRunOutcomeFlow",
+  step: [
+    {
+      i: {
+        ref: "organization_run_outcome_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicOrganizationRunOutcomeFlow"
+}

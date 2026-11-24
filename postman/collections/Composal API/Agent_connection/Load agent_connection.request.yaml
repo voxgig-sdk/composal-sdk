@@ -1,21 +1,31 @@
 $kind: http-request
-id: "6f567219-6a75-5051-96f1-6ca0b5645622"
+id: f0f08623-2fa9-58e1-8b87-ae9a85f50690
 description: |-
   The `load` operation of **agent_connection**.
 
-  SDK: `client.AgentConnection().load({ agent_id: "example", id: "example_id", organization_id: "example" })`
-url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/relay/connections/:connection_id"
+  SDK: `client.AgentConnection().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_connections/:id"
 method: GET
 headers:
   Accept: application/json
+queryParams:
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: grants_cursor
+    value: ""
+    disabled: true
+  - key: grants_limit
+    value: "25"
+    disabled: true
+  - key: limit
+    value: "25"
+    disabled: true
 pathVariables:
   - key: organization_id
     value: "{{organization_id}}"
     description: The organization this agent_connection belongs to.
   - key: id
-    value: "{{agent_id}}"
-    description: The agent this agent_connection belongs to.
-  - key: connection_id
     value: "{{agent_connection_id}}"
     description: The agent_connection this request addresses.
 order: 2000

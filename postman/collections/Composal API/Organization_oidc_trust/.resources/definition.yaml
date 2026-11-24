@@ -1,0 +1,9 @@
+$kind: collection
+id: "91131ec1-bf58-5e91-8d2a-ad0588421533"
+description: |-
+  The **organization_oidc_trust** entity, which belongs to a organization. Its requests address one record by `{{organization_oidc_trust_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 347000

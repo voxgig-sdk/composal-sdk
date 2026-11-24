@@ -1,0 +1,11 @@
+$kind: http-request
+id: d5ac0e0d-8c17-5e07-8934-92c32fbfab96
+description: |-
+  The `authorize` action of **mcp_oauth**, a route of its `load` operation.
+
+  SDK: `client.McpOauth().load({ $action: "authorize" })`
+url: "{{base}}/api/v1/mcp/oauth/authorize"
+method: GET
+headers:
+  Accept: application/json
+order: 1000

@@ -1,0 +1,15 @@
+$kind: http-request
+id: eb1dacad-8951-5430-a180-b105ed934a8b
+description: |-
+  The `catalog` action of **agent_integration**, a route of its `load` operation.
+
+  SDK: `client.AgentIntegration().load({ "organization_id": "organization_id", $action: "catalog" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_integrations/catalog"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_integration belongs to.
+order: 6000

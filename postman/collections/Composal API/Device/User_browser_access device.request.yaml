@@ -1,0 +1,25 @@
+$kind: http-request
+id: e9553923-ab02-53fc-9989-240a17bd9258
+description: |-
+  The `user_browser_access` action of **device**, a route of its `create` operation.
+
+  SDK: `client.Device().create({ "organization_id": "organization_id", "id": "ID", $action: "user_browser_access" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/user_browser_access"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "access": "off"
+    }
+order: 15000

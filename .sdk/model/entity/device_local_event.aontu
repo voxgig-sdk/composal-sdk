@@ -1,0 +1,110 @@
+# Entity: device_local_event
+
+main: kit: entity: device_local_event: {
+
+  alias: field: {}
+
+  fields: {
+    event: {
+      h: "Event"
+      n: "event"
+      r: true
+      t: "`$STRING`"
+    }
+    recorded: {
+      h: "Recorded"
+      n: "recorded"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "device_local_event"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "event"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/local_events"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "device_id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/local_events"
+          q: {
+            exist: [
+              "device_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_registration_id: "device_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "device_id"
+            }
+            {
+              lit: "local_events"
+            }
+          ]
+          t: {
+            req: {
+              event: "`reqdata.event`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.device")]
+  ]
+
+}

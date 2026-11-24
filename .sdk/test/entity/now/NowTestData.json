@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "now": {
+      "NOW00": {
+        "needs_attention": [],
+        "pagination": {},
+        "recently_landed": [],
+        "shipping_now": [],
+        "summary": {},
+        "organization_id": "ORGANIZATION01",
+        "id": "NOW00"
+      },
+      "NOW01": {
+        "needs_attention": [],
+        "pagination": {},
+        "recently_landed": [],
+        "shipping_now": [],
+        "summary": {},
+        "organization_id": "ORGANIZATION01",
+        "id": "NOW01"
+      },
+      "NOW02": {
+        "needs_attention": [],
+        "pagination": {},
+        "recently_landed": [],
+        "shipping_now": [],
+        "summary": {},
+        "organization_id": "ORGANIZATION01",
+        "id": "NOW02"
+      }
+    }
+  },
+  "new": {
+    "now": {
+      "now_ref01": {
+        "needs_attention": [],
+        "pagination": {},
+        "recently_landed": [],
+        "shipping_now": [],
+        "summary": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/pages/now": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

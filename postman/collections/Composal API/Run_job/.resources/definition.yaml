@@ -1,0 +1,42 @@
+$kind: collection
+id: "9bcf86dd-e47e-5c08-858e-10e75bc8e096"
+description: |-
+  The **run_job** entity. Its requests address one record by `{{run_job_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `active` | boolean | yes |  |
+  | `allow_failure` | boolean | yes |  |
+  | `cache_archive_observations` | object | yes |  |
+  | `ci_pipeline_run_id` | string | yes |  |
+  | `ci_runner_id` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `dependencies_csv` | string | yes |  |
+  | `display_id` | integer | yes |  |
+  | `environment_csv` | string | yes |  |
+  | `execution_order` | integer | yes |  |
+  | `execution_profile` | string |  |  |
+  | `exit_code` | integer | yes |  |
+  | `failed` | boolean | yes |  |
+  | `finished_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `kind` | string | yes |  |
+  | `log_chunks` | array | yes |  |
+  | `name` | string | yes |  |
+  | `number` | integer | yes |  |
+  | `organization_id` | string | yes |  |
+  | `queued_at` | string | yes |  |
+  | `reconciliation_id` | string |  |  |
+  | `retry_number` | integer | yes |  |
+  | `reuse` | object | yes |  |
+  | `runner_label_selector` | string | yes |  |
+  | `slug` | string | yes |  |
+  | `started_at` | string | yes |  |
+  | `status` | string | yes |  |
+  | `status_label` | string | yes |  |
+  | `status_state` | string | yes |  |
+  | `status_tone` | string | yes |  |
+  | `steps` | array | yes |  |
+  | `timeout_seconds` | integer | yes |  |
+  | `updated_at` | string | yes |  |
+order: 450000

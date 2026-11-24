@@ -1,0 +1,9 @@
+$kind: collection
+id: e47bcb32-5d4e-5f4d-87d9-7e03aed6f161
+description: |-
+  The **organization_service_account** entity, which belongs to a organization. Its requests address one record by `{{organization_service_account_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 353000

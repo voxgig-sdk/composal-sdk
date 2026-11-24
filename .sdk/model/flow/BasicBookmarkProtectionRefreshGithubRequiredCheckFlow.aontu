@@ -1,0 +1,23 @@
+# BasicBookmarkProtectionRefreshGithubRequiredCheckFlow
+
+main: kit: flow: BasicBookmarkProtectionRefreshGithubRequiredCheckFlow:
+{
+  entity: "bookmark_protection_refresh_github_required_check",
+  kind: "basic",
+  name: "BasicBookmarkProtectionRefreshGithubRequiredCheckFlow",
+  step: [
+    {
+      i: {
+        ref: "bookmark_protection_refresh_github_required_check_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicBookmarkProtectionRefreshGithubRequiredCheckFlow"
+}

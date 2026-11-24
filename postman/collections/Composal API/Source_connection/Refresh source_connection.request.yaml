@@ -1,0 +1,19 @@
+$kind: http-request
+id: "6b3e0fe1-0c5a-5b97-affa-bdc42792b941"
+description: |-
+  The `refresh` action of **source_connection**, a route of its `create` operation.
+
+  SDK: `client.SourceConnection().create({ "id": "ID", $action: "refresh" })`
+url: "{{base}}/api/v1/source_connections/:id/refresh"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{source_connection_id}}"
+    description: The source_connection this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 1000

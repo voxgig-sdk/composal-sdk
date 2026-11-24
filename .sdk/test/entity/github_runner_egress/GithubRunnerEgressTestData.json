@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "github_runner_egress": {
+      "GITHUB_RUNNER_EGRESS00": {
+        "can_request": true,
+        "cidr": "s33",
+        "ipv4": "s34",
+        "requested_at_label": "s35",
+        "status": "s36",
+        "organization_id": "ORGANIZATION01",
+        "id": "GITHUB_RUNNER_EGRESS00"
+      },
+      "GITHUB_RUNNER_EGRESS01": {
+        "can_request": true,
+        "cidr": "s65",
+        "ipv4": "s66",
+        "requested_at_label": "s67",
+        "status": "s68",
+        "organization_id": "ORGANIZATION01",
+        "id": "GITHUB_RUNNER_EGRESS01"
+      },
+      "GITHUB_RUNNER_EGRESS02": {
+        "can_request": true,
+        "cidr": "s97",
+        "ipv4": "s98",
+        "requested_at_label": "s99",
+        "status": "s9a",
+        "organization_id": "ORGANIZATION01",
+        "id": "GITHUB_RUNNER_EGRESS02"
+      }
+    }
+  },
+  "new": {
+    "github_runner_egress": {
+      "github_runner_egress_ref01": {
+        "can_request": true,
+        "cidr": "sc9",
+        "ipv4": "sca",
+        "requested_at_label": "scb",
+        "status": "scc"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/github_runner_egress": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/github_runner_egress": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

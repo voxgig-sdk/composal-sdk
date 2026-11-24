@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "space_trace_span": {
+      "SPACE_TRACE_SPAN00": {
+        "space_id": "SPACE01",
+        "id": "SPACE_TRACE_SPAN00"
+      },
+      "SPACE_TRACE_SPAN01": {
+        "space_id": "SPACE01",
+        "id": "SPACE_TRACE_SPAN01"
+      },
+      "SPACE_TRACE_SPAN02": {
+        "space_id": "SPACE01",
+        "id": "SPACE_TRACE_SPAN02"
+      }
+    }
+  },
+  "new": {
+    "space_trace_span": {
+      "space_trace_span_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/observability/spaces/{space_id}/trace_spans": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/spaces/{space_id}/trace_spans": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

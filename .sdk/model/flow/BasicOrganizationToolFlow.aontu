@@ -1,0 +1,22 @@
+# BasicOrganizationToolFlow
+
+main: kit: flow: BasicOrganizationToolFlow:
+{
+  entity: "organization_tool",
+  kind: "basic",
+  name: "BasicOrganizationToolFlow",
+  step: [
+    {
+      i: {
+        ref: "organization_tool_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicOrganizationToolFlow"
+}

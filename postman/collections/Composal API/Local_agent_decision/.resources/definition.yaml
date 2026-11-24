@@ -1,0 +1,9 @@
+$kind: collection
+id: "64cb47fc-68cc-565f-9940-e4443d8b1526"
+description: |-
+  The **local_agent_decision** entity, which belongs to a organization. Its requests address one record by `{{local_agent_decision_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `request` | object | yes |  |
+order: 304000

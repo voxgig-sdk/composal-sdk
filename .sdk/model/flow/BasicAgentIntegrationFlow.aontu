@@ -12,7 +12,6 @@ main: kit: flow: BasicAgentIntegrationFlow:
       }
 
       m: {
-        agent_id: "agent01",
         organization_id: "organization01"
       }
 
@@ -21,7 +20,6 @@ main: kit: flow: BasicAgentIntegrationFlow:
 
     {
       m: {
-        agent_id: "agent01",
         organization_id: "organization01"
       }
 
@@ -29,6 +27,62 @@ main: kit: flow: BasicAgentIntegrationFlow:
       v: [
         {
           apply: "ItemExists",
+          def: {
+            ref: "agent_integration_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_integration_ref01",
+        srcdatavar: "agent_integration_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "agent_integration01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_integration_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_integration_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "agent_integration01",
+        organization_id: "organization01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
           def: {
             ref: "agent_integration_ref01"
           }

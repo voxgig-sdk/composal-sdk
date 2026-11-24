@@ -1,0 +1,17 @@
+$kind: collection
+id: a09cc824-b20c-563d-bc0e-a684e86def48
+description: |-
+  The **repository_import_session_repository** entity, which belongs to a repository_import_session. Its requests address one record by `{{repository_import_session_repository_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `default_branch` | string | yes |  |
+  | `full_name` | string | yes |  |
+  | `name` | string | yes |  |
+  | `owner` | string | yes |  |
+  | `private` | boolean | yes |  |
+  | `reason` | string |  |  |
+  | `selectable` | boolean | yes |  |
+  | `status` | string | yes |  |
+  | `visibility` | string | yes |  |
+order: 441000

@@ -1,0 +1,32 @@
+$kind: http-request
+id: db2ff057-dfab-5336-8e54-9b58c5b185ec
+description: |-
+  The `patch` operation of **spark_credit**.
+
+  SDK: `client.SparkCredit().patch({ organization_id: "example", settings: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/spark_credits"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+queryParams:
+  - key: view
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this spark_credit belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "settings": {
+        "amount_cents": 1,
+        "threshold_cents": 1,
+        "monthly_limit_cents": 1,
+        "quoted_credits_cents": 1,
+        "billing_unit": "example"
+      }
+    }
+order: 4000

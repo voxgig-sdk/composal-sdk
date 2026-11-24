@@ -1,0 +1,19 @@
+$kind: http-request
+id: efc7a2bf-46ff-5b87-848a-cb3fa832a240
+description: |-
+  The `update` operation of **execution_desired_state**.
+
+  SDK: `client.ExecutionDesiredState().update({ id: "example" })`
+url: "{{base}}/api/v1/execution/desired_states/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{execution_desired_state_id}}"
+    description: The execution_desired_state this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

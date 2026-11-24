@@ -1,0 +1,36 @@
+$kind: http-request
+id: d02b7995-8f50-57eb-ab25-0e3e4be51527
+description: |-
+  The `result` action of **task_lease**, a route of its `create` operation.
+
+  SDK: `client.TaskLease().create({ "swarm_id": "swarm_id", "task_id": "task_id", "id": "ID", $action: "result" })`
+url: "{{base}}/api/v1/agent/swarms/:swarm_id/tasks/:task_id/leases/:id/result"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+queryParams:
+  - key: cancelled_recovery
+    value: ""
+    disabled: true
+  - key: validate_only
+    value: ""
+    disabled: true
+pathVariables:
+  - key: swarm_id
+    value: "{{swarm_id}}"
+    description: "Input: swarm_id."
+  - key: task_id
+    value: "{{task_id}}"
+    description: "Input: task_id."
+  - key: id
+    value: "{{task_lease_id}}"
+    description: The task_lease this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "result_contract": "example",
+      "result": {}
+    }
+order: 7000

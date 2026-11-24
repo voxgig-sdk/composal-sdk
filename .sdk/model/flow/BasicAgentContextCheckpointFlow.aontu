@@ -1,0 +1,35 @@
+# BasicAgentContextCheckpointFlow
+
+main: kit: flow: BasicAgentContextCheckpointFlow:
+{
+  entity: "agent_context_checkpoint",
+  kind: "basic",
+  name: "BasicAgentContextCheckpointFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_context_checkpoint_ref01",
+        srcdatavar: "agent_context_checkpoint_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        change_id: "change01",
+        id: "agent_context_checkpoint01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_context_checkpoint_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentContextCheckpointFlow"
+}

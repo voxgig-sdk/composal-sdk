@@ -111,7 +111,7 @@ func deployment_fileBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"deployment_file01", "deployment_file02", "deployment_file03", "static_site01", "static_site02", "static_site03"},
+		[]any{"deployment_file01", "deployment_file02", "deployment_file03", "static_site01", "static_site02", "static_site03", "deployment01", "deployment02", "deployment03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

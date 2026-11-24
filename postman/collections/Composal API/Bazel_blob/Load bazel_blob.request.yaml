@@ -1,0 +1,21 @@
+$kind: http-request
+id: "59166eba-1691-5fe0-933c-4821834d2045"
+description: |-
+  The `load` operation of **bazel_blob**.
+
+  SDK: `client.BazelBlob().load({ blob_id: "example", hash: "example", id: "example_id" })`
+url: "{{base}}/api/v1/bazel/blobs/:kind/:hash/:size_bytes"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: kind
+    value: "{{bazel_blob_blob_id}}"
+    description: The bazel_blob this request addresses.
+  - key: hash
+    value: "{{bazel_blob_hash}}"
+    description: The bazel_blob this request addresses.
+  - key: size_bytes
+    value: "{{bazel_blob_id}}"
+    description: The bazel_blob this request addresses.
+order: 1000

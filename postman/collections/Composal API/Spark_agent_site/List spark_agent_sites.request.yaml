@@ -1,0 +1,35 @@
+$kind: http-request
+id: fb24bf57-cfc8-5daf-90b4-db1488dcf8ea
+description: |-
+  The `list` operation of **spark_agent_site**.
+
+  SDK: `client.SparkAgentSite().list({ agent_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/sites"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: limit
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this spark_agent_site belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this spark_agent_site belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["items"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("spark_agent_site_id")) pm.collectionVariables.set("spark_agent_site_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

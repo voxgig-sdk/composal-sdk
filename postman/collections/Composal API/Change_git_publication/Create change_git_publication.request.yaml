@@ -1,0 +1,50 @@
+$kind: http-request
+id: "07cbfe4b-a2f4-5cc4-b715-8677b3e6c060"
+description: |-
+  The `create` operation of **change_git_publication**.
+
+  SDK: `client.ChangeGitPublication().create({ organization_id: "example", repo_id: "example", operation_key: "example", request: {} })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/git_publications"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this change_git_publication belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this change_git_publication belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "operation_key": "example",
+      "request": {
+        "target_branch": "example",
+        "expected_target_git_id": "example",
+        "revisions": [
+          {
+            "change_id": "example",
+            "git_commit_id": "example",
+            "expected_head_commit_id": "example",
+            "expected_patchset_number": 1,
+            "git_parent_ids": [
+              "example"
+            ]
+          }
+        ]
+      }
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("change_git_publication_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

@@ -1,0 +1,22 @@
+$kind: http-request
+id: "01fda605-f8e2-58e1-8031-e615763cb56e"
+description: |-
+  The `complete` action of **release_rollout**, a route of its `create` operation.
+
+  SDK: `client.ReleaseRollout().create({ "release_id": "release_id", "id": "ID", $action: "complete" })`
+url: "{{base}}/api/v1/execution/releases/:release_id/rollouts/:id/complete"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: release_id
+    value: "{{release_id}}"
+    description: "Input: release_id."
+  - key: id
+    value: "{{release_rollout_id}}"
+    description: The release_rollout this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "control_computer": {
+      "CONTROL_COMPUTER00": {
+        "connection": {},
+        "consent": {},
+        "device": {},
+        "id": "CONTROL_COMPUTER00",
+        "provider_status": [],
+        "organization_id": "ORGANIZATION01"
+      },
+      "CONTROL_COMPUTER01": {
+        "connection": {},
+        "consent": {},
+        "device": {},
+        "id": "CONTROL_COMPUTER01",
+        "provider_status": [],
+        "organization_id": "ORGANIZATION01"
+      },
+      "CONTROL_COMPUTER02": {
+        "connection": {},
+        "consent": {},
+        "device": {},
+        "id": "CONTROL_COMPUTER02",
+        "provider_status": [],
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "control_computer": {
+      "control_computer_ref01": {
+        "connection": {},
+        "consent": {},
+        "device": {},
+        "provider_status": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/control_computers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/control_computers/{computer}/consent": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

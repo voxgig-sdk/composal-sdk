@@ -1,0 +1,29 @@
+$kind: http-request
+id: b2ca25a4-8274-5f8a-a6bc-4c3d51d89d17
+description: |-
+  The `create` operation of **space_dns_record**.
+
+  SDK: `client.SpaceDnsRecord().create({ space_id: "example" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/dns_records"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("space_dns_record_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

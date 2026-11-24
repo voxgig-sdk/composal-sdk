@@ -1,0 +1,133 @@
+{
+  "existing": {
+    "repo_code_rule": {
+      "REPO_CODE_RULE00": {
+        "active_revision_number": "saa",
+        "capabilities": {},
+        "code_rule": "sac",
+        "created_at": "sad",
+        "definition": {},
+        "draft_pending": false,
+        "enabled": true,
+        "expected_version": 177,
+        "id": "REPO_CODE_RULE00",
+        "latest_revision_number": 179,
+        "name": "sb4",
+        "repository": {},
+        "scope": [],
+        "slug": "sb7",
+        "state_version": 184,
+        "updated_at": "sb9",
+        "web_url": "sba",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "REPO_CODE_RULE01": {
+        "active_revision_number": "s154",
+        "capabilities": {},
+        "code_rule": "s156",
+        "created_at": "s157",
+        "definition": {},
+        "draft_pending": false,
+        "enabled": true,
+        "expected_version": 347,
+        "id": "REPO_CODE_RULE01",
+        "latest_revision_number": 349,
+        "name": "s15e",
+        "repository": {},
+        "scope": [],
+        "slug": "s161",
+        "state_version": 354,
+        "updated_at": "s163",
+        "web_url": "s164",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "REPO_CODE_RULE02": {
+        "active_revision_number": "s1fe",
+        "capabilities": {},
+        "code_rule": "s200",
+        "created_at": "s201",
+        "definition": {},
+        "draft_pending": false,
+        "enabled": true,
+        "expected_version": 517,
+        "id": "REPO_CODE_RULE02",
+        "latest_revision_number": 519,
+        "name": "s208",
+        "repository": {},
+        "scope": [],
+        "slug": "s20b",
+        "state_version": 524,
+        "updated_at": "s20d",
+        "web_url": "s20e",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "repo_code_rule": {
+      "repo_code_rule_ref01": {
+        "active_revision_number": "s2a8",
+        "capabilities": {},
+        "code_rule": "s2aa",
+        "created_at": "s2ab",
+        "definition": {},
+        "draft_pending": false,
+        "enabled": true,
+        "expected_version": 687,
+        "latest_revision_number": 689,
+        "name": "s2b2",
+        "repository": {},
+        "scope": [],
+        "slug": "s2b5",
+        "state_version": 694,
+        "updated_at": "s2b7",
+        "web_url": "s2b8"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/{rule}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/{rule}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/{rule}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/{rule}/activation": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/{rule}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/{rule}/activation": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

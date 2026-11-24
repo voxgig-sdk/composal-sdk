@@ -1,0 +1,106 @@
+{
+  "existing": {
+    "repo": {
+      "REPO00": {
+        "can_retry_import": true,
+        "can_retry_sync": false,
+        "disclaimer": "sa2",
+        "federated_in_home": false,
+        "github_repository": "sa4",
+        "icon_name": "sa5",
+        "id": "REPO00",
+        "import_item_id": "IMPORT_ITEM01",
+        "is_home": true,
+        "name": "sa9",
+        "remote_repository": "saa",
+        "root_path": "sab",
+        "slug": "sac",
+        "sync_error_message": "sad",
+        "sync_provider": "sae",
+        "sync_status": "saf",
+        "organization_id": "ORGANIZATION01"
+      },
+      "REPO01": {
+        "can_retry_import": true,
+        "can_retry_sync": false,
+        "disclaimer": "s142",
+        "federated_in_home": false,
+        "github_repository": "s144",
+        "icon_name": "s145",
+        "id": "REPO01",
+        "import_item_id": "IMPORT_ITEM01",
+        "is_home": true,
+        "name": "s149",
+        "remote_repository": "s14a",
+        "root_path": "s14b",
+        "slug": "s14c",
+        "sync_error_message": "s14d",
+        "sync_provider": "s14e",
+        "sync_status": "s14f",
+        "organization_id": "ORGANIZATION01"
+      },
+      "REPO02": {
+        "can_retry_import": true,
+        "can_retry_sync": false,
+        "disclaimer": "s1e2",
+        "federated_in_home": false,
+        "github_repository": "s1e4",
+        "icon_name": "s1e5",
+        "id": "REPO02",
+        "import_item_id": "IMPORT_ITEM01",
+        "is_home": true,
+        "name": "s1e9",
+        "remote_repository": "s1ea",
+        "root_path": "s1eb",
+        "slug": "s1ec",
+        "sync_error_message": "s1ed",
+        "sync_provider": "s1ee",
+        "sync_status": "s1ef",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "repo": {
+      "repo_ref01": {
+        "can_retry_import": true,
+        "can_retry_sync": false,
+        "disclaimer": "s282",
+        "federated_in_home": false,
+        "github_repository": "s284",
+        "icon_name": "s285",
+        "import_item_id": "IMPORT_ITEM01",
+        "is_home": true,
+        "name": "s289",
+        "remote_repository": "s28a",
+        "root_path": "s28b",
+        "slug": "s28c",
+        "sync_error_message": "s28d",
+        "sync_provider": "s28e",
+        "sync_status": "s28f"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/access": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/sync": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{org_slug}/repos/{repo_slug}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

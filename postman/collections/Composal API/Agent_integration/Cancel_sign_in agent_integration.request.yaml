@@ -1,0 +1,25 @@
+$kind: http-request
+id: "6324da1c-76aa-5c82-b107-bdb9c67aa37d"
+description: |-
+  The `cancel_sign_in` action of **agent_integration**, a route of its `create` operation.
+
+  SDK: `client.AgentIntegration().create({ "organization_id": "organization_id", "id": "ID", $action: "cancel_sign_in" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_integrations/:id/cancel_sign_in"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_integration belongs to.
+  - key: id
+    value: "{{agent_integration_id}}"
+    description: The agent_integration this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "expected_generation": 1
+    }
+order: 5000

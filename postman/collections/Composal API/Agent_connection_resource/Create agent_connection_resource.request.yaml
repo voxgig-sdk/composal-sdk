@@ -1,0 +1,36 @@
+$kind: http-request
+id: a84e8015-53e0-55b1-b727-ed6ff0ad983b
+description: |-
+  The `create` operation of **agent_connection_resource**.
+
+  SDK: `client.AgentConnectionResource().create({ agent_connection_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_connections/:id/resources"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_connection_resource belongs to.
+  - key: id
+    value: "{{agent_connection_id}}"
+    description: The agent_connection this agent_connection_resource belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "query": "example",
+      "cursor": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("agent_connection_resource_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

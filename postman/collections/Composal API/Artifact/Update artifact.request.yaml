@@ -1,0 +1,19 @@
+$kind: http-request
+id: db7fce97-cbe6-5b77-ab48-d078f8575924
+description: |-
+  The `update` operation of **artifact**.
+
+  SDK: `client.Artifact().update({ id: "example" })`
+url: "{{base}}/api/v1/artifacts/artifacts/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_id}}"
+    description: The artifact this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

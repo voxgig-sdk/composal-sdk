@@ -1,0 +1,30 @@
+$kind: http-request
+id: "4cdf7869-ca83-5d30-a9ed-a1c1d05f4307"
+description: |-
+  The `create` operation of **roder_code_repair_setting**.
+
+  SDK: `client.RoderCodeRepairSetting().create({ enabled: true, organization_id: "example" })`
+url: "{{base}}/api/v1/agent/roder/code_repair_settings"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "organization_id": "{{organization_id}}",
+      "enabled": true,
+      "repository_slug": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("roder_code_repair_setting_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

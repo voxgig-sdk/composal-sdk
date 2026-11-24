@@ -1,0 +1,110 @@
+# Entity: workspace_activity
+
+main: kit: entity: workspace_activity: {
+
+  alias: field: {}
+
+  fields: {
+    live_activity: {
+      h: "Live Activity"
+      n: "live_activity"
+      r: true
+      t: "`$ARRAY`"
+      union: {
+        branches: 4
+        count: 1
+        depth: 1
+      }
+    }
+    recent_items: {
+      h: "Recent Items"
+      n: "recent_items"
+      r: true
+      t: "`$ARRAY`"
+      union: {
+        branches: 7
+        count: 1
+        depth: 1
+      }
+    }
+    unresolved_notification_count: {
+      h: "Unresolved Notification Count"
+      n: "unresolved_notification_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "workspace_activity"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/pages/workspace_activity"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/pages/workspace_activity"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "pages"
+            }
+            {
+              lit: "workspace_activity"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

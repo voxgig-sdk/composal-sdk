@@ -1,0 +1,131 @@
+{
+  "existing": {
+    "repo_setting": {
+      "REPO_SETTING00": {
+        "active": true,
+        "created_at": "sd3",
+        "created_at_label": "sd4",
+        "description": "sd5",
+        "expires_at": "sd6",
+        "expires_at_label": "sd7",
+        "icon_name": "sd8",
+        "id": "REPO_SETTING00",
+        "last_used_at": "sda",
+        "last_used_at_label": "sdb",
+        "merge_authority": "sdc",
+        "name": "sdd",
+        "organization_id": "ORGANIZATION01",
+        "permission_level": "sdf",
+        "revoked_at": "se0",
+        "revoked_at_label": "se1",
+        "slug": "se2",
+        "status": "se3",
+        "token_preview": "se4",
+        "updated_at": "se5",
+        "updated_at_label": "se6",
+        "repo_id": "REPO01"
+      },
+      "REPO_SETTING01": {
+        "active": true,
+        "created_at": "s1a5",
+        "created_at_label": "s1a6",
+        "description": "s1a7",
+        "expires_at": "s1a8",
+        "expires_at_label": "s1a9",
+        "icon_name": "s1aa",
+        "id": "REPO_SETTING01",
+        "last_used_at": "s1ac",
+        "last_used_at_label": "s1ad",
+        "merge_authority": "s1ae",
+        "name": "s1af",
+        "organization_id": "ORGANIZATION01",
+        "permission_level": "s1b1",
+        "revoked_at": "s1b2",
+        "revoked_at_label": "s1b3",
+        "slug": "s1b4",
+        "status": "s1b5",
+        "token_preview": "s1b6",
+        "updated_at": "s1b7",
+        "updated_at_label": "s1b8",
+        "repo_id": "REPO01"
+      },
+      "REPO_SETTING02": {
+        "active": true,
+        "created_at": "s277",
+        "created_at_label": "s278",
+        "description": "s279",
+        "expires_at": "s27a",
+        "expires_at_label": "s27b",
+        "icon_name": "s27c",
+        "id": "REPO_SETTING02",
+        "last_used_at": "s27e",
+        "last_used_at_label": "s27f",
+        "merge_authority": "s280",
+        "name": "s281",
+        "organization_id": "ORGANIZATION01",
+        "permission_level": "s283",
+        "revoked_at": "s284",
+        "revoked_at_label": "s285",
+        "slug": "s286",
+        "status": "s287",
+        "token_preview": "s288",
+        "updated_at": "s289",
+        "updated_at_label": "s28a",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "repo_setting": {
+      "repo_setting_ref01": {
+        "active": true,
+        "created_at": "s349",
+        "created_at_label": "s34a",
+        "description": "s34b",
+        "expires_at": "s34c",
+        "expires_at_label": "s34d",
+        "icon_name": "s34e",
+        "last_used_at": "s350",
+        "last_used_at_label": "s351",
+        "merge_authority": "s352",
+        "name": "s353",
+        "organization_id": "ORGANIZATION01",
+        "permission_level": "s355",
+        "revoked_at": "s356",
+        "revoked_at_label": "s357",
+        "slug": "s358",
+        "status": "s359",
+        "token_preview": "s35a",
+        "updated_at": "s35b",
+        "updated_at_label": "s35c"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{org_slug}/repos/{repo_slug}/settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/land_method": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/magic_merge": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/trunk": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

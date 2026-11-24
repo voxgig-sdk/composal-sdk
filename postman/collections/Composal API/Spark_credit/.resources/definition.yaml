@@ -1,0 +1,33 @@
+$kind: collection
+id: "40c052c3-11fe-5914-b4f8-13eff075a0bf"
+description: |-
+  The **spark_credit** entity, which belongs to a organization. Its requests address one record by `{{spark_credit_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `amount_cents` | integer |  |  |
+  | `autofill` | any | yes |  |
+  | `autofill_payment_unconfirmed` | boolean | yes |  |
+  | `available_usd` | string | yes |  |
+  | `billing_unit` | string |  |  |
+  | `can_manage` | boolean | yes |  |
+  | `compute_minutes` | object | yes |  |
+  | `compute_usd` | string |  |  |
+  | `credits_per_usd` | integer | yes |  |
+  | `inference_usd` | string |  |  |
+  | `kind` | string | yes |  |
+  | `payment_method` | object | yes |  |
+  | `payments_enabled` | boolean | yes |  |
+  | `plan` | string |  |  |
+  | `plans` | array | yes |  |
+  | `quoted_credits_cents` | integer |  |  |
+  | `quoted_price_cents` | integer |  |  |
+  | `refill_limits_cents` | array | yes |  |
+  | `refill_options` | array | yes |  |
+  | `refill_thresholds_cents` | array | yes |  |
+  | `request_key` | string | yes |  |
+  | `settings` | any | yes |  |
+  | `starter_cents` | integer | yes |  |
+  | `top_up_max_cents` | integer | yes |  |
+  | `top_up_step_cents` | integer | yes |  |
+order: 502000

@@ -1,0 +1,275 @@
+# Entity: log_stream_chunk
+
+main: kit: entity: log_stream_chunk: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "log_stream_chunk"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "log_stream_id"
+                or: "log_stream_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "space_id"
+                or: "space_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks"
+          q: {
+            exist: [
+              "log_stream_id"
+              "space_id"
+            ]
+          }
+          r: {
+            param: {
+              log_stream_id: "log_stream_id"
+              space_id: "space_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "observability"
+            }
+            {
+              lit: "spaces"
+            }
+            {
+              var: "space_id"
+            }
+            {
+              lit: "log_streams"
+            }
+            {
+              var: "log_stream_id"
+            }
+            {
+              lit: "chunks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "log_stream_id"
+                or: "log_stream_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "space_id"
+                or: "space_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks"
+          q: {
+            exist: [
+              "log_stream_id"
+              "space_id"
+            ]
+          }
+          r: {
+            param: {
+              log_stream_id: "log_stream_id"
+              space_id: "space_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "observability"
+            }
+            {
+              lit: "spaces"
+            }
+            {
+              var: "space_id"
+            }
+            {
+              lit: "log_streams"
+            }
+            {
+              var: "log_stream_id"
+            }
+            {
+              lit: "chunks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "log_stream_id"
+                or: "log_stream_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "space_id"
+                or: "space_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks/{id}"
+          q: {
+            exist: [
+              "id"
+              "log_stream_id"
+              "space_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              log_stream_id: "log_stream_id"
+              space_id: "space_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "observability"
+            }
+            {
+              lit: "spaces"
+            }
+            {
+              var: "space_id"
+            }
+            {
+              lit: "log_streams"
+            }
+            {
+              var: "log_stream_id"
+            }
+            {
+              lit: "chunks"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

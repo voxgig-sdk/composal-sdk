@@ -1,0 +1,32 @@
+$kind: http-request
+id: db269cdd-86c9-5b5a-93d0-b5357747c059
+description: |-
+  The `create` operation of **merge_resolution**.
+
+  SDK: `client.MergeResolution().create({ base: "example", ours: "example", theirs: "example" })`
+url: "{{base}}/api/v1/merge_resolutions"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "path": "example",
+      "base": "example",
+      "ours": "example",
+      "theirs": "example",
+      "context": {}
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("merge_resolution_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

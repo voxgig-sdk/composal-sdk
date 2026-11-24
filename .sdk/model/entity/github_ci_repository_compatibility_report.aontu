@@ -1,0 +1,468 @@
+# Entity: github_ci_repository_compatibility_report
+
+main: kit: entity: github_ci_repository_compatibility_report: {
+
+  alias: field: {}
+
+  fields: {
+    analyzed_at: {
+      fo: "date-time"
+      h: "Analyzed At"
+      n: "analyzed_at"
+      r: true
+      t: "`$STRING`"
+    }
+    analyzed_at_label: {
+      h: "Analyzed At Label"
+      n: "analyzed_at_label"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    ci_pipeline_id: {
+      h: "Ci Pipeline Id"
+      n: "ci_pipeline_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    ci_pipeline_run_id: {
+      h: "Ci Pipeline Run Id"
+      n: "ci_pipeline_run_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    created_at_label: {
+      h: "Created At Label"
+      n: "created_at_label"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    diagnostics: {
+      h: "Diagnostics"
+      n: "diagnostics"
+      r: true
+      t: "`$ARRAY`"
+    }
+    errors: {
+      h: "Errors"
+      n: "errors"
+      r: true
+      t: "`$ARRAY`"
+    }
+    event_action: {
+      h: "Event Action"
+      n: "event_action"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    event_name: {
+      h: "Event Name"
+      n: "event_name"
+      r: true
+      t: "`$STRING`"
+    }
+    execution_allowed: {
+      h: "Execution Allowed"
+      n: "execution_allowed"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    github_ci_repository_id: {
+      h: "Github Ci Repository Id"
+      n: "github_ci_repository_id"
+      r: true
+      t: "`$STRING`"
+    }
+    head_sha: {
+      h: "Head Sha"
+      n: "head_sha"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    metadata: {
+      h: "Metadata"
+      n: "metadata"
+      r: true
+      t: "`$OBJECT`"
+    }
+    organization_id: {
+      h: "Organization Id"
+      n: "organization_id"
+      r: true
+      t: "`$STRING`"
+    }
+    parser_version: {
+      h: "Parser Version"
+      n: "parser_version"
+      r: true
+      t: "`$STRING`"
+    }
+    pull_request_number: {
+      h: "Pull Request Number"
+      n: "pull_request_number"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    ref_name: {
+      h: "Ref Name"
+      n: "ref_name"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    referenced_actions: {
+      h: "Referenced Actions"
+      n: "referenced_actions"
+      r: true
+      t: "`$ARRAY`"
+    }
+    required_secrets: {
+      h: "Required Secrets"
+      n: "required_secrets"
+      r: true
+      t: "`$ARRAY`"
+    }
+    runner_labels: {
+      h: "Runner Labels"
+      n: "runner_labels"
+      r: true
+      t: "`$ARRAY`"
+    }
+    source_blob_sha: {
+      h: "Source Blob Sha"
+      n: "source_blob_sha"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    source_sha: {
+      h: "Source Sha"
+      n: "source_sha"
+      r: true
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    supported_features: {
+      h: "Supported Features"
+      n: "supported_features"
+      r: true
+      t: "`$OBJECT`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    updated_at_label: {
+      h: "Updated At Label"
+      n: "updated_at_label"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    warnings: {
+      h: "Warnings"
+      n: "warnings"
+      r: true
+      t: "`$ARRAY`"
+    }
+    workflow_name: {
+      h: "Workflow Name"
+      n: "workflow_name"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    workflow_path: {
+      h: "Workflow Path"
+      n: "workflow_path"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "github_ci_repository_compatibility_report"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/github_ci_repositories/{github_ci_repository_id}/compatibility_reports"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "github_ci_repository_id"
+                or: "github_ci_repository_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "event_name"
+                or: "event_name"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "source_sha"
+                or: "source_sha"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/github_ci_repositories/{github_ci_repository_id}/compatibility_reports"
+          q: {
+            exist: [
+              "github_ci_repository_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              github_ci_repository_id: "github_ci_repository_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "github_ci_repositories"
+            }
+            {
+              var: "github_ci_repository_id"
+            }
+            {
+              lit: "compatibility_reports"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.ci_workflow_compatibility_reports`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/github_ci_repositories/{github_ci_repository_id}/compatibility_reports/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "github_ci_repository_id"
+                or: "github_ci_repository_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/github_ci_repositories/{github_ci_repository_id}/compatibility_reports/{id}"
+          q: {
+            exist: [
+              "github_ci_repository_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              github_ci_repository_id: "github_ci_repository_id"
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "github_ci_repositories"
+            }
+            {
+              var: "github_ci_repository_id"
+            }
+            {
+              lit: "compatibility_reports"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.github_ci_repository")]
+  ]
+
+}

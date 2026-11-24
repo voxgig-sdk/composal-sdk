@@ -1,0 +1,30 @@
+$kind: collection
+id: "5f49d8bb-f5a7-57a1-a3b3-d0502d8ccfe0"
+description: |-
+  The **change_comment** entity, which belongs to a organization and a repo and a change. Its requests address one record by `{{change_comment_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `body` | string | yes |  |
+  | `capabilities` | object | yes |  |
+  | `change_id` | string |  |  |
+  | `created_at` | string |  |  |
+  | `created_at_label` | string |  |  |
+  | `id` | string | yes |  |
+  | `kind` | string |  |  |
+  | `line` | integer |  |  |
+  | `outdated` | boolean | yes |  |
+  | `parent_comment_id` | string |  |  |
+  | `patchset_id` | string |  |  |
+  | `patchset_number` | integer | yes |  |
+  | `path` | string |  |  |
+  | `replies` | array |  |  |
+  | `resolved` | boolean | yes |  |
+  | `resolved_at` | string |  |  |
+  | `resolved_at_label` | string |  |  |
+  | `resolved_by` | object | yes |  |
+  | `side` | string |  |  |
+  | `updated_at` | string |  |  |
+  | `updated_at_label` | string |  |  |
+  | `user` | object | yes |  |
+order: 157000

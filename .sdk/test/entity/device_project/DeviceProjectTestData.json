@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "device_project": {
+      "DEVICE_PROJECT00": {
+        "id": "DEVICE_PROJECT00",
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEVICE_PROJECT01": {
+        "id": "DEVICE_PROJECT01",
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEVICE_PROJECT02": {
+        "id": "DEVICE_PROJECT02",
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "device_project": {
+      "device_project_ref01": {}
+    }
+  },
+  "requests": {
+    "DELETE /api/v1/organizations/{organization_id}/devices/{device_registration_id}/projects/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

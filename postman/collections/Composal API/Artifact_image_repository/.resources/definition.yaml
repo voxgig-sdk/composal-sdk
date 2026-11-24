@@ -1,0 +1,9 @@
+$kind: collection
+id: "1af65465-4bfa-5e9d-a7cd-a2453cc197e5"
+description: |-
+  The **artifact_image_repository** entity. Its requests address one record by `{{artifact_image_repository_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 107000

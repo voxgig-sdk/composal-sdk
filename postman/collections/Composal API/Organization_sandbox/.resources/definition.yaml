@@ -1,0 +1,8 @@
+$kind: collection
+id: "66a06210-8c63-590b-aea8-68001cf762d8"
+description: |-
+  The **organization_sandbox** entity, which belongs to a organization. Its requests address one record by `{{organization_sandbox_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 351000

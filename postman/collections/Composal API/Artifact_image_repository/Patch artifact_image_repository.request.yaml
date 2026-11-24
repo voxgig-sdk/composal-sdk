@@ -1,0 +1,19 @@
+$kind: http-request
+id: a1add040-c533-5dfd-a407-9a03cc3b46c5
+description: |-
+  The `patch` operation of **artifact_image_repository**.
+
+  SDK: `client.ArtifactImageRepository().patch({ id: "example" })`
+url: "{{base}}/api/v1/artifacts/image_repositories/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_image_repository_id}}"
+    description: The artifact_image_repository this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

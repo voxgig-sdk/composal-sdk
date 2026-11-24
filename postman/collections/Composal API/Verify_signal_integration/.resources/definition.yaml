@@ -1,0 +1,27 @@
+$kind: collection
+id: "3046af75-031d-5541-9712-a035144dbaf2"
+description: |-
+  The **verify_signal_integration** entity, which belongs to a organization. Its requests address one record by `{{verify_signal_integration_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `api_token_stored` | boolean | yes |  |
+  | `config` | object | yes |  |
+  | `created_at` | string |  |  |
+  | `failure_message` | string | yes |  |
+  | `id` | string | yes |  |
+  | `inbound_path` | string | yes |  |
+  | `inbound_url` | string | yes |  |
+  | `last_received_at` | string |  |  |
+  | `last_verified_at` | string |  |  |
+  | `mode` | string | yes |  |
+  | `name` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `provider` | string | yes |  |
+  | `rejected_signature_count` | integer | yes |  |
+  | `status` | string | yes |  |
+  | `target_count` | integer | yes |  |
+  | `unmapped_delivery_count` | integer | yes |  |
+  | `updated_at` | string |  |  |
+  | `webhook_secret_stored` | boolean | yes |  |
+order: 539000

@@ -1,0 +1,19 @@
+$kind: http-request
+id: "7adc7840-f4b7-5358-8c95-7af3aa20df05"
+description: |-
+  The `pause` action of **observability_quickwit_cluster**, a route of its `create` operation.
+
+  SDK: `client.ObservabilityQuickwitCluster().create({ "id": "ID", $action: "pause" })`
+url: "{{base}}/api/v1/observability/quickwit_clusters/:id/pause"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{observability_quickwit_cluster_id}}"
+    description: The observability_quickwit_cluster this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 9000

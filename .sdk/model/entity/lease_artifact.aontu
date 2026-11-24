@@ -1,0 +1,98 @@
+# Entity: lease_artifact
+
+main: kit: entity: lease_artifact: {
+
+  alias: field: {}
+
+  name: "lease_artifact"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/ci/nodes/{id}/leases/{lease_id}/artifacts"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "lease_id"
+                or: "lease_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "node_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/ci/nodes/{id}/leases/{lease_id}/artifacts"
+          q: {
+            exist: [
+              "lease_id"
+              "node_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "node_id"
+              lease_id: "lease_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "nodes"
+            }
+            {
+              var: "node_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "lease_id"
+            }
+            {
+              lit: "artifacts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.node")]
+  ]
+
+}

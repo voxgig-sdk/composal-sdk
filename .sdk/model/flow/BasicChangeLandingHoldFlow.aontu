@@ -1,0 +1,24 @@
+# BasicChangeLandingHoldFlow
+
+main: kit: flow: BasicChangeLandingHoldFlow:
+{
+  entity: "change_landing_hold",
+  kind: "basic",
+  name: "BasicChangeLandingHoldFlow",
+  step: [
+    {
+      i: {
+        ref: "change_landing_hold_ref01"
+      }
+
+      m: {
+        change_id: "change01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicChangeLandingHoldFlow"
+}

@@ -1,0 +1,9 @@
+$kind: collection
+id: "9b714547-a0a8-534d-b3cb-b5b83ac9a700"
+description: |-
+  The **networking_space** entity. Its requests address one record by `{{networking_space_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 329000

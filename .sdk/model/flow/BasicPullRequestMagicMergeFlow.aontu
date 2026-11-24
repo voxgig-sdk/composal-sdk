@@ -1,0 +1,24 @@
+# BasicPullRequestMagicMergeFlow
+
+main: kit: flow: BasicPullRequestMagicMergeFlow:
+{
+  entity: "pull_request_magic_merge",
+  kind: "basic",
+  name: "BasicPullRequestMagicMergeFlow",
+  step: [
+    {
+      i: {
+        ref: "pull_request_magic_merge_ref01"
+      }
+
+      m: {
+        number: "number01",
+        organization_id: "organization01",
+        pull_request_id: "pull_request01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicPullRequestMagicMergeFlow"
+}

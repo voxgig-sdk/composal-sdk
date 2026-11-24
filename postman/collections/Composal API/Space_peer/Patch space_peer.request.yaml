@@ -1,0 +1,22 @@
+$kind: http-request
+id: aa454ba9-7a03-522c-b433-c51fd7257683
+description: |-
+  The `patch` operation of **space_peer**.
+
+  SDK: `client.SpacePeer().patch({ id: "example", space_id: "example" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/peers/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: id
+    value: "{{space_peer_id}}"
+    description: The space_peer this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

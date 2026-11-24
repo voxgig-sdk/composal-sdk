@@ -1,0 +1,95 @@
+{
+  "existing": {
+    "space_otel_collector": {
+      "SPACE_OTEL_COLLECTOR00": {
+        "id": "SPACE_OTEL_COLLECTOR00",
+        "space_id": "SPACE01"
+      },
+      "SPACE_OTEL_COLLECTOR01": {
+        "id": "SPACE_OTEL_COLLECTOR01",
+        "space_id": "SPACE01"
+      },
+      "SPACE_OTEL_COLLECTOR02": {
+        "id": "SPACE_OTEL_COLLECTOR02",
+        "space_id": "SPACE01"
+      }
+    }
+  },
+  "new": {
+    "space_otel_collector": {
+      "space_otel_collector_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/observability/spaces/{space_id}/otel_collectors/{id}/activate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/observability/spaces/{space_id}/otel_collectors/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/observability/spaces/{space_id}/otel_collectors/{id}/deploy": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/observability/spaces/{space_id}/otel_collectors/{id}/heartbeat": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/observability/spaces/{space_id}/otel_collectors/{id}/pause": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/observability/spaces/{space_id}/otel_collectors": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/spaces/{space_id}/otel_collectors": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/spaces/{space_id}/otel_collectors/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/spaces/{space_id}/otel_collectors/{id}/bootstrap_config": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/spaces/{space_id}/otel_collectors/{id}/nomad_spec": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/spaces/{space_id}/otel_collectors/{id}/rendered_config": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/observability/spaces/{space_id}/otel_collectors/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/observability/spaces/{space_id}/otel_collectors/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/observability/spaces/{space_id}/otel_collectors/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

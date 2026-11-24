@@ -1,0 +1,25 @@
+$kind: http-request
+id: ab663763-0d3f-58be-b6c7-beb2e555b666
+description: |-
+  The `release` action of **change_landing_hold**, a route of its `create` operation.
+
+  SDK: `client.ChangeLandingHold().create({ "organization_id": "organization_id", "repo_id": "repo_id", "change_id": "change_id", $action: "release" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/:id/landing_hold/release"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this change_landing_hold belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this change_landing_hold belongs to.
+  - key: id
+    value: "{{change_id}}"
+    description: The change this change_landing_hold belongs to.
+body:
+  type: json
+  content: "{}"
+order: 1000

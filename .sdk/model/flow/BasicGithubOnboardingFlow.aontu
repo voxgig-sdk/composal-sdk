@@ -7,16 +7,22 @@ main: kit: flow: BasicGithubOnboardingFlow:
   name: "BasicGithubOnboardingFlow",
   step: [
     {
-      m: {
-        organization_id: "organization01"
+      i: {
+        ref: "github_onboarding_ref01",
+        srcdatavar: "github_onboarding_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "github_onboarding01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "github_onboarding_ref01"
+            mark: "Mark01-github_onboarding_ref01"
           }
         }
       ]

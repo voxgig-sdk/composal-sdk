@@ -1,0 +1,21 @@
+$kind: collection
+id: "9ef73e77-abec-5892-9cee-c98a82b7e4ed"
+description: |-
+  The **code_rule_evaluation** entity, which belongs to a organization and a repo. Its requests address one record by `{{code_rule_evaluation_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `advisory` | boolean | yes |  |
+  | `coverage` | object | yes |  |
+  | `diff` | string | yes |  |
+  | `duration_ms` | integer | yes |  |
+  | `evaluator_version` | string |  |  |
+  | `input_digest` | string |  |  |
+  | `limits` | object |  |  |
+  | `model` | string |  |  |
+  | `requests` | object | yes |  |
+  | `schema_version` | integer | yes |  |
+  | `snapshot_digest` | string |  |  |
+  | `unchecked` | array | yes |  |
+  | `verdicts` | array | yes |  |
+order: 179000

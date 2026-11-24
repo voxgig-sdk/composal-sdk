@@ -1,0 +1,18 @@
+$kind: http-request
+id: a7c7aa1e-41ed-5ee6-87ce-e3fe776763d5
+description: |-
+  The `install` action of **auth_cli**, a route of its `create` operation.
+
+  SDK: `client.AuthCli().create({ $action: "install" })`
+url: "{{base}}/api/v1/auth/cli/install"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "organization_slug": "example"
+    }
+order: 3000

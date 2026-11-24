@@ -1,0 +1,109 @@
+# Entity: organization_tool
+
+main: kit: entity: organization_tool: {
+
+  alias: field: {}
+
+  fields: {
+    arguments: {
+      h: "Arguments"
+      n: "arguments"
+      r: true
+      t: "`$OBJECT`"
+    }
+    native_agent_id: {
+      h: "Native Agent Id"
+      n: "native_agent_id"
+      r: true
+      t: "`$STRING`"
+    }
+    tool: {
+      h: "Tool"
+      n: "tool"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "organization_tool"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "arguments"
+            "native_agent_id"
+            "tool"
+          ]
+          co: {
+            id: "POST /api/v1/spark/organizations/{organization_id}/tools"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/spark/organizations/{organization_id}/tools"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              organization_id: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "tools"
+            }
+          ]
+          t: {
+            req: {
+              arguments: "`reqdata.argument`"
+              native_agent_id: "`reqdata.native_agent_id`"
+              tool: "`reqdata.tool`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

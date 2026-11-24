@@ -1,0 +1,71 @@
+{
+  "existing": {
+    "device_folder_listing": {
+      "DEVICE_FOLDER_LISTING00": {
+        "code": "s5a",
+        "error": "s5b",
+        "folders": [],
+        "id": "DEVICE_FOLDER_LISTING00",
+        "key": "s5e",
+        "parent": "s5f",
+        "path": "s60",
+        "state": "s61",
+        "truncated": true,
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEVICE_FOLDER_LISTING01": {
+        "code": "sb4",
+        "error": "sb5",
+        "folders": [],
+        "id": "DEVICE_FOLDER_LISTING01",
+        "key": "sb8",
+        "parent": "sb9",
+        "path": "sba",
+        "state": "sbb",
+        "truncated": true,
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEVICE_FOLDER_LISTING02": {
+        "code": "s10e",
+        "error": "s10f",
+        "folders": [],
+        "id": "DEVICE_FOLDER_LISTING02",
+        "key": "s112",
+        "parent": "s113",
+        "path": "s114",
+        "state": "s115",
+        "truncated": true,
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "device_folder_listing": {
+      "device_folder_listing_ref01": {
+        "code": "s168",
+        "error": "s169",
+        "folders": [],
+        "key": "s16c",
+        "parent": "s16d",
+        "path": "s16e",
+        "state": "s16f",
+        "truncated": true
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/folder_listings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/folder_listings/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

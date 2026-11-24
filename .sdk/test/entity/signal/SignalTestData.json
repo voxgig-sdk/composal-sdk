@@ -1,0 +1,133 @@
+{
+  "existing": {
+    "signal": {
+      "SIGNAL00": {
+        "acked_at": "sd2",
+        "acked_by": "sd3",
+        "agent_runs": {},
+        "app_service_id": "APP_SERVICE01",
+        "attribution": {},
+        "created_at": "sd7",
+        "dedupe_key": "sd8",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "SIGNAL00",
+        "kind": "sdb",
+        "links": {},
+        "occurred_at": "sdd",
+        "organization_id": "ORGANIZATION01",
+        "payload": {},
+        "recovery": {},
+        "resolution": {},
+        "severity": "se2",
+        "source": {},
+        "subject_id": "SUBJECT01",
+        "subject_type": "se5",
+        "summary": "se6"
+      },
+      "SIGNAL01": {
+        "acked_at": "s1a4",
+        "acked_by": "s1a5",
+        "agent_runs": {},
+        "app_service_id": "APP_SERVICE01",
+        "attribution": {},
+        "created_at": "s1a9",
+        "dedupe_key": "s1aa",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "SIGNAL01",
+        "kind": "s1ad",
+        "links": {},
+        "occurred_at": "s1af",
+        "organization_id": "ORGANIZATION01",
+        "payload": {},
+        "recovery": {},
+        "resolution": {},
+        "severity": "s1b4",
+        "source": {},
+        "subject_id": "SUBJECT01",
+        "subject_type": "s1b7",
+        "summary": "s1b8"
+      },
+      "SIGNAL02": {
+        "acked_at": "s276",
+        "acked_by": "s277",
+        "agent_runs": {},
+        "app_service_id": "APP_SERVICE01",
+        "attribution": {},
+        "created_at": "s27b",
+        "dedupe_key": "s27c",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "SIGNAL02",
+        "kind": "s27f",
+        "links": {},
+        "occurred_at": "s281",
+        "organization_id": "ORGANIZATION01",
+        "payload": {},
+        "recovery": {},
+        "resolution": {},
+        "severity": "s286",
+        "source": {},
+        "subject_id": "SUBJECT01",
+        "subject_type": "s289",
+        "summary": "s28a"
+      }
+    }
+  },
+  "new": {
+    "signal": {
+      "signal_ref01": {
+        "acked_at": "s348",
+        "acked_by": "s349",
+        "agent_runs": {},
+        "app_service_id": "APP_SERVICE01",
+        "attribution": {},
+        "created_at": "s34d",
+        "dedupe_key": "s34e",
+        "hosted_app_id": "HOSTED_APP01",
+        "kind": "s351",
+        "links": {},
+        "occurred_at": "s353",
+        "organization_id": "ORGANIZATION01",
+        "payload": {},
+        "recovery": {},
+        "resolution": {},
+        "severity": "s358",
+        "source": {},
+        "subject_id": "SUBJECT01",
+        "subject_type": "s35b",
+        "summary": "s35c"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/signals/{id}/ack": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/signals/ack": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/signals": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/signals": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/signals/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/signals/{id}/agent_prompt": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

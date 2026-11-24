@@ -1,0 +1,9 @@
+$kind: collection
+id: "679068ff-b280-5d99-a2dc-145c3e55c48f"
+description: |-
+  The **job_step** entity. Its requests address one record by `{{job_step_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 289000

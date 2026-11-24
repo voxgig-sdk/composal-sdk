@@ -1,0 +1,29 @@
+$kind: http-request
+id: "105a7cf9-e5db-5822-acd9-dda0c2354042"
+description: |-
+  The `audience` action of **agent_skill**, a route of its `update` operation.
+
+  SDK: `client.AgentSkill().update({ "organization_id": "organization_id", "id": "ID", $action: "audience" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_skills/:id/audience"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_skill belongs to.
+  - key: id
+    value: "{{agent_skill_id}}"
+    description: The agent_skill this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "mode": "all",
+      "agent_ids": [
+        "example"
+      ],
+      "new_agents": true
+    }
+order: 4000

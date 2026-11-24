@@ -1,0 +1,25 @@
+$kind: http-request
+id: fc1edf69-8c97-5a50-a17f-5e895506c39e
+description: |-
+  The `remove` operation of **cache_namespace_entry**.
+
+  SDK: `client.CacheNamespaceEntry().remove({ cache_namespace_id: "example", id: "example_id" })`
+url: "{{base}}/api/v1/artifacts/cache_namespaces/:cache_namespace_id/entries/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: cache_namespace_id
+    value: "{{cache_namespace_id}}"
+    description: "Input: cache_namespace_id."
+  - key: id
+    value: "{{cache_namespace_entry_id}}"
+    description: The cache_namespace_entry this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("cache_namespace_entry_id")
+      }
+    language: text/javascript
+order: 10000

@@ -1,0 +1,18 @@
+$kind: http-request
+id: a04d8e17-c156-555c-8c27-b7c85874b03d
+description: |-
+  The `load` operation of **github_runner_setup**.
+
+  SDK: `client.GithubRunnerSetup().load({ organization_id: "example", id: "example_id" })`
+url: "{{base}}/api/v1/organizations/:organization_id/github_runner_setup?id={{github_runner_setup_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: id
+    value: "{{github_runner_setup_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this github_runner_setup belongs to.
+order: 1000

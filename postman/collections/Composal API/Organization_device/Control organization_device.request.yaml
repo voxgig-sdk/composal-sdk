@@ -1,0 +1,26 @@
+$kind: http-request
+id: "6c2a82b7-10e7-5143-ae9d-3ea1de81f18e"
+description: |-
+  The `control` action of **organization_device**, a route of its `create` operation.
+
+  SDK: `client.OrganizationDevice().create({ "organization_id": "organization_id", "id": "ID", $action: "control" })`
+url: "{{base}}/api/v1/device_runtime/organizations/:organization_id/devices/:device_id/control"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_device belongs to.
+  - key: device_id
+    value: "{{organization_device_id}}"
+    description: The organization_device this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "payload": "example",
+      "signature": "example"
+    }
+order: 1000

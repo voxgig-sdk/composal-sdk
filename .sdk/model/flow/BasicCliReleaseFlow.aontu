@@ -15,6 +15,18 @@ main: kit: flow: BasicCliReleaseFlow:
     }
 
     {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "cli_release_ref01"
+          }
+        }
+      ]
+    }
+
+    {
       i: {
         ref: "cli_release_ref01",
         srcdatavar: "cli_release_ref01_data",

@@ -1,0 +1,8 @@
+$kind: collection
+id: "4ff5215b-e342-5530-a005-1faaf682ec86"
+description: |-
+  The **repository_event** entity. Its requests address one record by `{{repository_event_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 438000

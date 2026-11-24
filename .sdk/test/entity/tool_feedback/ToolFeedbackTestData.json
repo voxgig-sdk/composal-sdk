@@ -1,0 +1,69 @@
+{
+  "existing": {
+    "tool_feedback": {
+      "TOOL_FEEDBACK00": {
+        "category": "s64",
+        "created_at": "s65",
+        "details": "s66",
+        "feedback": {},
+        "id": "TOOL_FEEDBACK00",
+        "metadata": {},
+        "organization_id": "ORGANIZATION01",
+        "source": "s6b",
+        "summary": "s6c",
+        "user_id": "USER01"
+      },
+      "TOOL_FEEDBACK01": {
+        "category": "sc8",
+        "created_at": "sc9",
+        "details": "sca",
+        "feedback": {},
+        "id": "TOOL_FEEDBACK01",
+        "metadata": {},
+        "organization_id": "ORGANIZATION01",
+        "source": "scf",
+        "summary": "sd0",
+        "user_id": "USER01"
+      },
+      "TOOL_FEEDBACK02": {
+        "category": "s12c",
+        "created_at": "s12d",
+        "details": "s12e",
+        "feedback": {},
+        "id": "TOOL_FEEDBACK02",
+        "metadata": {},
+        "organization_id": "ORGANIZATION01",
+        "source": "s133",
+        "summary": "s134",
+        "user_id": "USER01"
+      }
+    }
+  },
+  "new": {
+    "tool_feedback": {
+      "tool_feedback_ref01": {
+        "category": "s190",
+        "created_at": "s191",
+        "details": "s192",
+        "feedback": {},
+        "metadata": {},
+        "organization_id": "ORGANIZATION01",
+        "source": "s197",
+        "summary": "s198",
+        "user_id": "USER01"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/tool_feedbacks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/tool_feedbacks/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

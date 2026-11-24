@@ -43,18 +43,16 @@ describe('AgentConnectionDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup({ id: 'direct01' })
     if (maybeSkipControl(t, 'direct', 'direct-load-agent_connection', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["agent01","organization01"], LIVE_STRICT)) return
+    if (skipIfMissingIds(t, setup, ["organization01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
-      query.change = "configure"
       const listResult: any = await client.direct({
-        path: 'api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections',
+        path: 'api/v1/organizations/{organization_id}/agent_connections',
         method: 'GET',
         params: {
-        agent_id: setup.idmap['agent01'],
         organization_id: setup.idmap['organization01'],
         },
       })
@@ -73,17 +71,14 @@ describe('AgentConnectionDirect', async () => {
         return void liveMiss(t, LIVE_STRICT, 'Live load blocked: discovery returned no usable identity')
       }
       params.id = candidateId
-      params.agent_id = setup.idmap['agent01']
       params.organization_id = setup.idmap['organization01']
     } else {
-      params.agent_id = 'direct01'
-      params.id = 'direct02'
-      params.id = 'direct03'
-      params.organization_id = 'direct04'
+      params.id = 'direct01'
+      params.organization_id = 'direct02'
     }
 
     const result: any = await client.direct({
-      path: 'api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections/{id}/change',
+      path: 'api/v1/organizations/{organization_id}/agent_connections/{id}',
       method: 'GET',
       params,
       query,
@@ -105,8 +100,6 @@ describe('AgentConnectionDirect', async () => {
       assert(calls[0].init.method === 'GET')
       assert(calls[0].url.includes('direct01'))
       assert(calls[0].url.includes('direct02'))
-      assert(calls[0].url.includes('direct03'))
-      assert(calls[0].url.includes('direct04'))
     }
   })
 
@@ -114,21 +107,19 @@ describe('AgentConnectionDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
     if (maybeSkipControl(t, 'direct', 'direct-list-agent_connection', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["agent01","organization01"], LIVE_STRICT)) return
+    if (skipIfMissingIds(t, setup, ["organization01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
-      params.agent_id = setup.idmap['agent01']
       params.organization_id = setup.idmap['organization01']
     } else {
-      params.agent_id = 'direct01'
-      params.organization_id = 'direct02'
+      params.organization_id = 'direct01'
     }
 
     const result: any = await client.direct({
-      path: 'api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections',
+      path: 'api/v1/organizations/{organization_id}/agent_connections',
       method: 'GET',
       params,
       query,
@@ -151,7 +142,6 @@ describe('AgentConnectionDirect', async () => {
       assert(calls.length === 1)
       assert(calls[0].init.method === 'GET')
       assert(calls[0].url.includes('direct01'))
-      assert(calls[0].url.includes('direct02'))
     }
   })
 

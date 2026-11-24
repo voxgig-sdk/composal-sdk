@@ -1,0 +1,25 @@
+$kind: http-request
+id: "1d460c0e-e6bd-5b81-83b0-a6f55e444d7a"
+description: |-
+  The `retry` action of **ci_pipeline_run**, a route of its `create` operation.
+
+  SDK: `client.CiPipelineRun().create({ "pipeline_id": "pipeline_id", "id": "ID", $action: "retry" })`
+url: "{{base}}/api/v1/ci/pipelines/:pipeline_id/runs/:id/retry"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: pipeline_id
+    value: "{{pipeline_id}}"
+    description: "Input: pipeline_id."
+  - key: id
+    value: "{{ci_pipeline_run_id}}"
+    description: The ci_pipeline_run this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "request_id": "example"
+    }
+order: 4000

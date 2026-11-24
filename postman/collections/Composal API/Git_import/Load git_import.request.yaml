@@ -1,0 +1,15 @@
+$kind: http-request
+id: "76585417-d0a7-5c48-9cb8-1b81be1302a5"
+description: |-
+  The `load` operation of **git_import**.
+
+  SDK: `client.GitImport().load({ id: "example_id" })`
+url: "{{base}}/api/v1/git_imports/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{git_import_id}}"
+    description: The git_import this request addresses.
+order: 1000

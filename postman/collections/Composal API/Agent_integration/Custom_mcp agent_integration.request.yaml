@@ -1,0 +1,26 @@
+$kind: http-request
+id: "1c9ea0f1-904a-52f2-a026-8fd7384b0793"
+description: |-
+  The `custom_mcp` action of **agent_integration**, a route of its `create` operation.
+
+  SDK: `client.AgentIntegration().create({ "organization_id": "organization_id", "idempotency_key": "idempotency_key", $action: "custom_mcp" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_integrations/custom_mcp"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_integration belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "url": "example",
+      "auth_mode": "NO_AUTH",
+      "discovery_url": "example"
+    }
+order: 8000

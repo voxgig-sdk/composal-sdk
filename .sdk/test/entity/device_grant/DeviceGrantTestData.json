@@ -1,0 +1,85 @@
+{
+  "existing": {
+    "device_grant": {
+      "DEVICE_GRANT00": {
+        "active_grants": [],
+        "agent_choices": [],
+        "agent_id": "AGENT01",
+        "all_agents_access": false,
+        "capabilities": [],
+        "execution_available": false,
+        "grants": [],
+        "id": "DEVICE_GRANT00",
+        "next_cursor": "s6c",
+        "principal_id": "PRINCIPAL01",
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEVICE_GRANT01": {
+        "active_grants": [],
+        "agent_choices": [],
+        "agent_id": "AGENT01",
+        "all_agents_access": false,
+        "capabilities": [],
+        "execution_available": false,
+        "grants": [],
+        "id": "DEVICE_GRANT01",
+        "next_cursor": "sd0",
+        "principal_id": "PRINCIPAL01",
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEVICE_GRANT02": {
+        "active_grants": [],
+        "agent_choices": [],
+        "agent_id": "AGENT01",
+        "all_agents_access": false,
+        "capabilities": [],
+        "execution_available": false,
+        "grants": [],
+        "id": "DEVICE_GRANT02",
+        "next_cursor": "s134",
+        "principal_id": "PRINCIPAL01",
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "device_grant": {
+      "device_grant_ref01": {
+        "active_grants": [],
+        "agent_choices": [],
+        "agent_id": "AGENT01",
+        "all_agents_access": false,
+        "capabilities": [],
+        "execution_available": false,
+        "grants": [],
+        "next_cursor": "s198",
+        "principal_id": "PRINCIPAL01"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/{device_grant_id}/revise": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/{device_grant_id}/revoke": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

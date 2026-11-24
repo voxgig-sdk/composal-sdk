@@ -1,0 +1,32 @@
+# BasicPagesBillingFlow
+
+main: kit: flow: BasicPagesBillingFlow:
+{
+  entity: "pages_billing",
+  kind: "basic",
+  name: "BasicPagesBillingFlow",
+  step: [
+    {
+      i: {
+        ref: "pages_billing_ref01",
+        srcdatavar: "pages_billing_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "pages_billing01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pages_billing_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPagesBillingFlow"
+}

@@ -1,0 +1,432 @@
+# Entity: device_grant
+
+main: kit: entity: device_grant: {
+
+  alias: field: {}
+
+  fields: {
+    active_grants: {
+      h: "Active Grants"
+      n: "active_grants"
+      r: true
+      t: "`$ARRAY`"
+    }
+    agent_choices: {
+      h: "Agent Choices"
+      n: "agent_choices"
+      r: true
+      sh: "Eligible picker choices, with current owner grant targets, on the first page only."
+      t: "`$ARRAY`"
+    }
+    agent_id: {
+      h: "Agent Id"
+      n: "agent_id"
+      r: true
+      t: "`$STRING`"
+    }
+    all_agents_access: {
+      h: "All Agents Access"
+      n: "all_agents_access"
+      r: true
+      sh: "Whether every agent the owner can use may use this computer for the owner's messages, including agents added later."
+      t: "`$BOOLEAN`"
+    }
+    capabilities: {
+      h: "Capabilities"
+      n: "capabilities"
+      r: true
+      t: "`$ARRAY`"
+    }
+    execution_available: {
+      h: "Execution Available"
+      n: "execution_available"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    grants: {
+      h: "Grants"
+      n: "grants"
+      r: true
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+    next_cursor: {
+      h: "Next Cursor"
+      n: "next_cursor"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    principal_id: {
+      h: "Principal Id"
+      n: "principal_id"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "device_grant"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "capabilities"
+            "revision"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/{device_grant_id}/revise"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "device_id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "device_grant_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/{device_grant_id}/revise"
+          q: {
+            "$action": "revise"
+            exist: [
+              "device_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_grant_id: "id"
+              device_registration_id: "device_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "device_id"
+            }
+            {
+              lit: "grants"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "revise"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/{device_grant_id}/revoke"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "device_id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "device_grant_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/{device_grant_id}/revoke"
+          q: {
+            "$action": "revoke"
+            exist: [
+              "device_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_grant_id: "id"
+              device_registration_id: "device_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "device_id"
+            }
+            {
+              lit: "grants"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "revoke"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "agent_id"
+            "capabilities"
+            "principal_id"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "device_id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants"
+          q: {
+            exist: [
+              "device_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_registration_id: "device_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "device_id"
+            }
+            {
+              lit: "grants"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "device_id"
+                or: "device_registration_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants"
+          q: {
+            exist: [
+              "device_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              device_registration_id: "device_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "device_id"
+            }
+            {
+              lit: "grants"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.device")]
+  ]
+
+}

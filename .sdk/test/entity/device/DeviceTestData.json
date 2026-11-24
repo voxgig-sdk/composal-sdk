@@ -1,0 +1,185 @@
+{
+  "existing": {
+    "device": {
+      "DEVICE00": {
+        "architecture": "sdc",
+        "channel": "sdd",
+        "coding_connection": "sde",
+        "connection_checked_at": "sdf",
+        "connection_status": "se0",
+        "control_delivery_policy": {},
+        "control_spawn_policy": {},
+        "created_at": "se3",
+        "device": {},
+        "environment": "se5",
+        "execution_available": true,
+        "id": "DEVICE00",
+        "name": "se8",
+        "native_device_id": "NATIVE_DEVICE01",
+        "paired_at": "sea",
+        "pairing_generation": 235,
+        "platform": "sec",
+        "project_visibility": {},
+        "provider_status": [],
+        "revoked_at": "sef",
+        "scheduled_check_ins": true,
+        "user_browser_access": "sf1",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEVICE01": {
+        "architecture": "s1b8",
+        "channel": "s1b9",
+        "coding_connection": "s1ba",
+        "connection_checked_at": "s1bb",
+        "connection_status": "s1bc",
+        "control_delivery_policy": {},
+        "control_spawn_policy": {},
+        "created_at": "s1bf",
+        "device": {},
+        "environment": "s1c1",
+        "execution_available": true,
+        "id": "DEVICE01",
+        "name": "s1c4",
+        "native_device_id": "NATIVE_DEVICE01",
+        "paired_at": "s1c6",
+        "pairing_generation": 455,
+        "platform": "s1c8",
+        "project_visibility": {},
+        "provider_status": [],
+        "revoked_at": "s1cb",
+        "scheduled_check_ins": true,
+        "user_browser_access": "s1cd",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEVICE02": {
+        "architecture": "s294",
+        "channel": "s295",
+        "coding_connection": "s296",
+        "connection_checked_at": "s297",
+        "connection_status": "s298",
+        "control_delivery_policy": {},
+        "control_spawn_policy": {},
+        "created_at": "s29b",
+        "device": {},
+        "environment": "s29d",
+        "execution_available": true,
+        "id": "DEVICE02",
+        "name": "s2a0",
+        "native_device_id": "NATIVE_DEVICE01",
+        "paired_at": "s2a2",
+        "pairing_generation": 675,
+        "platform": "s2a4",
+        "project_visibility": {},
+        "provider_status": [],
+        "revoked_at": "s2a7",
+        "scheduled_check_ins": true,
+        "user_browser_access": "s2a9",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "device": {
+      "device_ref01": {
+        "architecture": "s370",
+        "channel": "s371",
+        "coding_connection": "s372",
+        "connection_checked_at": "s373",
+        "connection_status": "s374",
+        "control_delivery_policy": {},
+        "control_spawn_policy": {},
+        "created_at": "s377",
+        "device": {},
+        "environment": "s379",
+        "execution_available": true,
+        "name": "s37c",
+        "native_device_id": "NATIVE_DEVICE01",
+        "paired_at": "s37e",
+        "pairing_generation": 895,
+        "platform": "s380",
+        "project_visibility": {},
+        "provider_status": [],
+        "revoked_at": "s383",
+        "scheduled_check_ins": true,
+        "user_browser_access": "s385"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/connection": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_delivery_policy": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_spawn_policy": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/desktop_connection": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/process_surface": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/project_visibility": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/reconnect": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/rename": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/retry_control": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/revoke": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/user_browser_access": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/devices": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_delivery_policy": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_spawn_policy": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

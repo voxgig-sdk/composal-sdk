@@ -1,0 +1,99 @@
+# BasicArtifactCacheNamespaceFlow
+
+main: kit: flow: BasicArtifactCacheNamespaceFlow:
+{
+  entity: "artifact_cache_namespace",
+  kind: "basic",
+  name: "BasicArtifactCacheNamespaceFlow",
+  step: [
+    {
+      i: {
+        ref: "artifact_cache_namespace_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "artifact_cache_namespace_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "artifact_cache_namespace_ref01",
+        srcdatavar: "artifact_cache_namespace_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-artifact_cache_namespace_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "artifact_cache_namespace_ref01",
+        srcdatavar: "artifact_cache_namespace_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "artifact_cache_namespace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-artifact_cache_namespace_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "artifact_cache_namespace_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "artifact_cache_namespace01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "artifact_cache_namespace_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicArtifactCacheNamespaceFlow"
+}

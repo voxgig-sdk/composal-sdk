@@ -1,0 +1,22 @@
+# BasicAgentWebPreviewFlow
+
+main: kit: flow: BasicAgentWebPreviewFlow:
+{
+  entity: "agent_web_preview",
+  kind: "basic",
+  name: "BasicAgentWebPreviewFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_web_preview_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentWebPreviewFlow"
+}

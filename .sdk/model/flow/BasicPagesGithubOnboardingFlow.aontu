@@ -1,0 +1,32 @@
+# BasicPagesGithubOnboardingFlow
+
+main: kit: flow: BasicPagesGithubOnboardingFlow:
+{
+  entity: "pages_github_onboarding",
+  kind: "basic",
+  name: "BasicPagesGithubOnboardingFlow",
+  step: [
+    {
+      i: {
+        ref: "pages_github_onboarding_ref01",
+        srcdatavar: "pages_github_onboarding_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "pages_github_onboarding01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pages_github_onboarding_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPagesGithubOnboardingFlow"
+}

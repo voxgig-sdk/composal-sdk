@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "observability_space": {
+      "OBSERVABILITY_SPACE00": {
+        "id": "OBSERVABILITY_SPACE00"
+      },
+      "OBSERVABILITY_SPACE01": {
+        "id": "OBSERVABILITY_SPACE01"
+      },
+      "OBSERVABILITY_SPACE02": {
+        "id": "OBSERVABILITY_SPACE02"
+      }
+    }
+  },
+  "new": {
+    "observability_space": {
+      "observability_space_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/observability/spaces/{id}/activate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/observability/spaces/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/observability/spaces/{id}/pause": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/observability/spaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/spaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/spaces/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/observability/spaces/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/observability/spaces/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/observability/spaces/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

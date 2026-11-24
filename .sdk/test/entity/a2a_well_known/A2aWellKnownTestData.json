@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "a2a_well_known": {
+      "A2A_WELL_KNOWN00": {
+        "a2a_id": "A2A01",
+        "id": "A2A_WELL_KNOWN00"
+      },
+      "A2A_WELL_KNOWN01": {
+        "a2a_id": "A2A01",
+        "id": "A2A_WELL_KNOWN01"
+      },
+      "A2A_WELL_KNOWN02": {
+        "a2a_id": "A2A01",
+        "id": "A2A_WELL_KNOWN02"
+      }
+    }
+  },
+  "new": {
+    "a2a_well_known": {
+      "a2a_well_known_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/control/a2a/{connection_id}/.well-known/agent-card.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

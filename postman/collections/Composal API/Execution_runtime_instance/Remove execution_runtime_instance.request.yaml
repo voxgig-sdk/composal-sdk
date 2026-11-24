@@ -1,0 +1,22 @@
+$kind: http-request
+id: "84f385c6-c281-575e-b04e-718a94c8c766"
+description: |-
+  The `remove` operation of **execution_runtime_instance**.
+
+  SDK: `client.ExecutionRuntimeInstance().remove({ id: "example_id" })`
+url: "{{base}}/api/v1/execution/runtime_instances/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{execution_runtime_instance_id}}"
+    description: The execution_runtime_instance this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("execution_runtime_instance_id")
+      }
+    language: text/javascript
+order: 8000

@@ -1023,6 +1023,41 @@ main: kit: entity: agent: {
             res: "`body.agent`"
           }
         }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/agent/chat"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/agent/chat"
+          q: {
+            "$action": "chat"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "chat"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
       ]
     }
     list: {

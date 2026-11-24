@@ -1,0 +1,40 @@
+# BasicChangeLandingRequestFlow
+
+main: kit: flow: BasicChangeLandingRequestFlow:
+{
+  entity: "change_landing_request",
+  kind: "basic",
+  name: "BasicChangeLandingRequestFlow",
+  step: [
+    {
+      i: {
+        ref: "change_landing_request_ref01"
+      }
+
+      m: {
+        change_id: "change01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "change_landing_request_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        change_id: "change01",
+        id: "change_landing_request01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicChangeLandingRequestFlow"
+}

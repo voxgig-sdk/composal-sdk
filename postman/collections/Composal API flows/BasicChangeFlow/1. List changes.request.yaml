@@ -1,0 +1,112 @@
+$kind: http-request
+id: "9c270e89-8080-599c-9c1f-186afd1cddea"
+description: |-
+  The `list` operation of **change**.
+
+  SDK: `client.Change().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/changes"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: author
+    value: ""
+    disabled: true
+  - key: awaiting_review
+    value: ""
+    disabled: true
+  - key: direction
+    value: desc
+    disabled: true
+  - key: group_pages
+    value: ""
+    disabled: true
+  - key: label
+    value: ""
+    disabled: true
+  - key: mine
+    value: ""
+    disabled: true
+  - key: number
+    value: ""
+    disabled: true
+  - key: page
+    value: "1"
+    disabled: true
+  - key: q
+    value: ""
+    disabled: true
+  - key: repo
+    value: ""
+    disabled: true
+  - key: sort
+    value: submitted
+    disabled: true
+  - key: source
+    value: ""
+    disabled: true
+  - key: stack
+    value: ""
+    disabled: true
+  - key: state
+    value: ""
+    disabled: true
+  - key: target
+    value: ""
+    disabled: true
+  - key: tips_only
+    value: ""
+    disabled: true
+  - key: view
+    value: list
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this change belongs to.
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("1. List changes: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const recs = body || []
+      const keys = Array.isArray(recs) ? recs.map((rec) => String(at(rec, "id"))) : []
+      if (null == pm.variables.get("change_ref01") && (true || "true" === String(pm.variables.get("getonly")).toLowerCase())) {
+        if (Array.isArray(recs) && null != recs[0]) {
+          pm.variables.set("change_ref01", String(at(recs[0], "id")))
+        }
+        else if (pm.response.code < 300) {
+          pm.variables.set("change_ref01__empty", "true")
+        }
+      }
+      if (null != pm.variables.get("change_ref01")) pm.test("1. List changes: the record is listed", () => {
+        pm.expect(keys).to.include(String(pm.variables.get("change_ref01")))
+      })
+    language: text/javascript
+order: 1000

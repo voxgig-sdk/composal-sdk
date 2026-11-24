@@ -1,0 +1,15 @@
+$kind: http-request
+id: a3f2da0a-277f-5945-9725-a50d1c09c542
+description: |-
+  The `daily_usage` action of **spark_credit**, a route of its `load` operation.
+
+  SDK: `client.SparkCredit().load({ "organization_id": "organization_id", $action: "daily_usage" })`
+url: "{{base}}/api/v1/organizations/:org_slug/spark_credits/daily_usage"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this spark_credit belongs to.
+order: 5000

@@ -1,0 +1,52 @@
+# BasicChangeReviewerFlow
+
+main: kit: flow: BasicChangeReviewerFlow:
+{
+  entity: "change_reviewer",
+  kind: "basic",
+  name: "BasicChangeReviewerFlow",
+  step: [
+    {
+      m: {
+        change_id: "change01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "change_reviewer_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      i: {
+        ref: "change_reviewer_ref01",
+        srcdatavar: "change_reviewer_ref01_data",
+        suffix: "_up0",
+        textfield: "email"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-change_reviewer_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicChangeReviewerFlow"
+}

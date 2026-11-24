@@ -17,7 +17,7 @@ body:
   type: json
   content: |-
     {
-      "github_app_installation_id": "example",
+      "github_app_installation_id": "{{github_app_installation_id}}",
       "repositories": [
         {
           "owner": "example",
@@ -33,7 +33,7 @@ scripts:
       const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
       const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
       const getonly = flag("getonly", false)
-      const missing = ["base","organization_id","project_id"].filter((name) => !given(name))
+      const missing = ["base","organization_id","github_app_installation_id","project_id"].filter((name) => !given(name))
       if (!given("apikey")) missing.unshift("apikey")
       const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
       if (getonly && "GET" !== pm.request.method) {

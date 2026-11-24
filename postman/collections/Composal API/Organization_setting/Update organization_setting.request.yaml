@@ -1,0 +1,32 @@
+$kind: http-request
+id: "9e36c6a6-a3b4-565a-b675-49b26fc3ee1b"
+description: |-
+  The `update` operation of **organization_setting**.
+
+  SDK: `client.OrganizationSetting().update({ organization_id: "example", concurrent_run_limit_override: 1 })`
+url: "{{base}}/api/v1/admin/organizations/:org_slug/settings"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this organization_setting belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "customize_onboarding_packages": true,
+      "onboarding_package_keys": [
+        "example"
+      ],
+      "onboarding_custom_pricing": true,
+      "deployment_usage_visibility": "automatic",
+      "name": "example",
+      "monthly_budget_dollars": "example",
+      "monthly_browser_minutes_limit_override": 1,
+      "daily_run_limit_override": 1,
+      "concurrent_run_limit_override": 1
+    }
+order: 1000

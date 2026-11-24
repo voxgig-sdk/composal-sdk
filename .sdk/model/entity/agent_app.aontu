@@ -1,0 +1,383 @@
+# Entity: agent_app
+
+main: kit: entity: agent_app: {
+
+  alias: field: {}
+
+  fields: {
+    author: {
+      h: "Author"
+      n: "author"
+      r: true
+      t: "`$OBJECT`"
+    }
+    can_message: {
+      h: "Can Message"
+      n: "can_message"
+      r: true
+      sh: "The viewer may send input to the author agent"
+      t: "`$BOOLEAN`"
+    }
+    deployments_count: {
+      h: "Deployments Count"
+      n: "deployments_count"
+      r: true
+      sh: "Increases with every deploy of the site"
+      t: "`$INTEGER`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: true
+      t: "`$STRING`"
+    }
+    hidden_install_count: {
+      h: "Hidden Install Count"
+      n: "hidden_install_count"
+      r: true
+      sh: "Installs by agents the viewer cannot open"
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    install_count: {
+      h: "Install Count"
+      n: "install_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    install_targets: {
+      h: "Install Targets"
+      n: "install_targets"
+      r: true
+      sh: "Active agents the viewer owns or manages, which they can install apps on"
+      t: "`$ARRAY`"
+    }
+    installed_by: {
+      h: "Installed By"
+      n: "installed_by"
+      r: true
+      t: "`$ARRAY`"
+    }
+    installed_target_ids: {
+      h: "Installed Target Ids"
+      n: "installed_target_ids"
+      r: true
+      sh: "Install targets of the viewer that have this app installed"
+      t: "`$ARRAY`"
+    }
+    items: {
+      h: "Items"
+      n: "items"
+      r: true
+      t: "`$ARRAY`"
+    }
+    mcp_url: {
+      h: "Mcp Url"
+      n: "mcp_url"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    next_cursor: {
+      h: "Next Cursor"
+      n: "next_cursor"
+      r: true
+      sh: "Pass as cursor to load older apps"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    owner: {
+      h: "Owner"
+      n: "owner"
+      r: true
+      sh: "The person who controls the author agent"
+      t: "`$OBJECT`"
+    }
+    thread: {
+      h: "Thread"
+      n: "thread"
+      r: true
+      sh: "The thread that published the app, when the viewer can open the author agent"
+      t: "`$ANY`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: true
+      t: "`$STRING`"
+    }
+    visibility: {
+      h: "Visibility"
+      n: "visibility"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "agent_app"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "surface"
+            "view"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agent_apps/{id}/opened"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agent_apps/{id}/opened"
+          q: {
+            "$action": "opened"
+            exist: [
+              "id"
+              "idempotency_key"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_apps"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "opened"
+            }
+          ]
+          t: {
+            req: {
+              surface: "`reqdata.surface`"
+              view: "`reqdata.view`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agent_apps"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agent_apps"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_apps"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agent_apps/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agent_apps/{id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_apps"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

@@ -1,0 +1,30 @@
+$kind: http-request
+id: c31904e1-6789-53aa-8986-a073c32e63bf
+description: |-
+  The `session` action of **agent_roder**, a route of its `create` operation.
+
+  SDK: `client.AgentRoder().create({ $action: "session" })`
+url: "{{base}}/api/v1/agent/roder/session"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "organization_id": "{{agent_roder_id}}",
+      "repository_slug": "example",
+      "github_repository": "example",
+      "session_purpose": "coding",
+      "checkpoint_handoff": {
+        "organization_slug": "example",
+        "repository_slug": "example",
+        "change_id": "example",
+        "expected_commit_id": "example",
+        "agent_checkpoint_id": "example",
+        "purpose": "ask_why",
+        "max_bytes": 1
+      }
+    }
+order: 3000

@@ -1,0 +1,18 @@
+# BasicGithubAppUserAuthorizationFlow
+
+main: kit: flow: BasicGithubAppUserAuthorizationFlow:
+{
+  entity: "github_app_user_authorization",
+  kind: "basic",
+  name: "BasicGithubAppUserAuthorizationFlow",
+  step: [
+    {
+      i: {
+        ref: "github_app_user_authorization_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicGithubAppUserAuthorizationFlow"
+}

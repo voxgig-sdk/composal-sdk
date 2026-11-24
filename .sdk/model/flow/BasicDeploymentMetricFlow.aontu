@@ -1,0 +1,26 @@
+# BasicDeploymentMetricFlow
+
+main: kit: flow: BasicDeploymentMetricFlow:
+{
+  entity: "deployment_metric",
+  kind: "basic",
+  name: "BasicDeploymentMetricFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "deployment_metric_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeploymentMetricFlow"
+}

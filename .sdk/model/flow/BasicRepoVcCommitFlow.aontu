@@ -1,0 +1,27 @@
+# BasicRepoVcCommitFlow
+
+main: kit: flow: BasicRepoVcCommitFlow:
+{
+  entity: "repo_vc_commit",
+  kind: "basic",
+  name: "BasicRepoVcCommitFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "repo_vc_commit_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRepoVcCommitFlow"
+}

@@ -1,0 +1,9 @@
+$kind: collection
+id: "6603cf73-c099-5b9b-974e-4b153f5e07f7"
+description: |-
+  The **bazel_execution** entity. Its requests address one record by `{{bazel_execution_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 126000

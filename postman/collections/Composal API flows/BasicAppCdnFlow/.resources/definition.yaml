@@ -1,4 +1,4 @@
 $kind: collection
 id: "9c2eadb9-0ed2-56be-b7d9-1e6f99314fbb"
 description: "The `BasicAppCdnFlow` flow of **app_cdn**."
-order: 41000
+order: 64000

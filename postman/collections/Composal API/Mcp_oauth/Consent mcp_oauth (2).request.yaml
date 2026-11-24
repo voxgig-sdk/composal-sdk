@@ -1,0 +1,21 @@
+$kind: http-request
+id: "07f87a05-e68a-5ee4-ab62-b6f962b3eecf"
+description: |-
+  The `consent` action of **mcp_oauth**, a route of its `create` operation.
+
+  SDK: `client.McpOauth().create({ $action: "consent" })`
+url: "{{base}}/api/v1/mcp/oauth/consent"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "request": "{{mcp_oauth_id}}",
+      "approve": true,
+      "organization_id": "{{organization_id}}",
+      "all_organizations": true
+    }
+order: 3000

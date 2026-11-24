@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "runtime_instance_health_snapshot": {
+      "RUNTIME_INSTANCE_HEALTH_SNAPSHOT00": {
+        "runtime_instance_id": "RUNTIME_INSTANCE01",
+        "id": "RUNTIME_INSTANCE_HEALTH_SNAPSHOT00"
+      },
+      "RUNTIME_INSTANCE_HEALTH_SNAPSHOT01": {
+        "runtime_instance_id": "RUNTIME_INSTANCE01",
+        "id": "RUNTIME_INSTANCE_HEALTH_SNAPSHOT01"
+      },
+      "RUNTIME_INSTANCE_HEALTH_SNAPSHOT02": {
+        "runtime_instance_id": "RUNTIME_INSTANCE01",
+        "id": "RUNTIME_INSTANCE_HEALTH_SNAPSHOT02"
+      }
+    }
+  },
+  "new": {
+    "runtime_instance_health_snapshot": {
+      "runtime_instance_health_snapshot_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

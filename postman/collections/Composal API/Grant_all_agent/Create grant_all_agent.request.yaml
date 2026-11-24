@@ -1,0 +1,35 @@
+$kind: http-request
+id: "2bc8fa37-fc8f-59dd-b390-6dfc54b4fbf2"
+description: |-
+  The `create` operation of **grant_all_agent**.
+
+  SDK: `client.GrantAllAgent().create({ device_id: "example", organization_id: "example", enabled: true })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/grants/all_agents"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this grant_all_agent belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this grant_all_agent belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "enabled": true
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("grant_all_agent_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

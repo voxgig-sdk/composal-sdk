@@ -1,0 +1,31 @@
+$kind: http-request
+id: f8fb531a-8353-59ad-b9ae-c6b28d687708
+description: |-
+  The `merge_policy` action of **repo_vc**, a route of its `update` operation.
+
+  SDK: `client.RepoVc().update({ "organization_id": "organization_id", "repo_id": "repo_id", $action: "merge_policy" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/merge_policy"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_vc belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_vc belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "expected_version": 1,
+      "merge_authority": "vex_primary",
+      "queue_validation_mode": "top_only",
+      "queue_concurrency": 1,
+      "github_merge_gate": "branch_protection",
+      "auto_land_enabled": true,
+      "merge_github_repository_connection_id": "example"
+    }
+order: 7000

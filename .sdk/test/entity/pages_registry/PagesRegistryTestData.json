@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "pages_registry": {
+      "PAGES_REGISTRY00": {
+        "active_repository_count": 50,
+        "error": "s33",
+        "pagination": {},
+        "repositories": [],
+        "repository_count": 54,
+        "organization_id": "ORGANIZATION01",
+        "id": "PAGES_REGISTRY00"
+      },
+      "PAGES_REGISTRY01": {
+        "active_repository_count": 100,
+        "error": "s65",
+        "pagination": {},
+        "repositories": [],
+        "repository_count": 104,
+        "organization_id": "ORGANIZATION01",
+        "id": "PAGES_REGISTRY01"
+      },
+      "PAGES_REGISTRY02": {
+        "active_repository_count": 150,
+        "error": "s97",
+        "pagination": {},
+        "repositories": [],
+        "repository_count": 154,
+        "organization_id": "ORGANIZATION01",
+        "id": "PAGES_REGISTRY02"
+      }
+    }
+  },
+  "new": {
+    "pages_registry": {
+      "pages_registry_ref01": {
+        "active_repository_count": 200,
+        "error": "sc9",
+        "pagination": {},
+        "repositories": [],
+        "repository_count": 204
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/pages/registry": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

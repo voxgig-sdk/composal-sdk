@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "swarm_event": {
+      "SWARM_EVENT00": {
+        "agent_swarm_id": "AGENT_SWARM01",
+        "attempt_id": "ATTEMPT01",
+        "created_at": "s66",
+        "created_at_label": "s67",
+        "id": "SWARM_EVENT00",
+        "kind": "s69",
+        "payload": {},
+        "reason": "s6b",
+        "scheduler_generation": "s6c",
+        "task_id": "TASK01",
+        "swarm_id": "SWARM01"
+      },
+      "SWARM_EVENT01": {
+        "agent_swarm_id": "AGENT_SWARM01",
+        "attempt_id": "ATTEMPT01",
+        "created_at": "sca",
+        "created_at_label": "scb",
+        "id": "SWARM_EVENT01",
+        "kind": "scd",
+        "payload": {},
+        "reason": "scf",
+        "scheduler_generation": "sd0",
+        "task_id": "TASK01",
+        "swarm_id": "SWARM01"
+      },
+      "SWARM_EVENT02": {
+        "agent_swarm_id": "AGENT_SWARM01",
+        "attempt_id": "ATTEMPT01",
+        "created_at": "s12e",
+        "created_at_label": "s12f",
+        "id": "SWARM_EVENT02",
+        "kind": "s131",
+        "payload": {},
+        "reason": "s133",
+        "scheduler_generation": "s134",
+        "task_id": "TASK01",
+        "swarm_id": "SWARM01"
+      }
+    }
+  },
+  "new": {
+    "swarm_event": {
+      "swarm_event_ref01": {
+        "agent_swarm_id": "AGENT_SWARM01",
+        "attempt_id": "ATTEMPT01",
+        "created_at": "s192",
+        "created_at_label": "s193",
+        "kind": "s195",
+        "payload": {},
+        "reason": "s197",
+        "scheduler_generation": "s198",
+        "task_id": "TASK01"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/agent/swarms/{swarm_id}/events": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

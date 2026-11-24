@@ -1,0 +1,21 @@
+$kind: collection
+id: "29f44ba2-ea75-54dd-9056-9e8946336b61"
+description: |-
+  The **repository_access_resolve** entity. Its requests address one record by `{{repository_access_resolve_resolve_id}}` and `{{repository_access_resolve_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `default_branch` | string | yes |  |
+  | `git_auth_username` | string | yes |  |
+  | `git_https_clone_url` | string | yes |  |
+  | `git_https_supported` | boolean | yes |  |
+  | `github_access_warnings` | array |  |  |
+  | `id` | string |  |  |
+  | `membership_role` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `organization_name` | string | yes |  |
+  | `organization_slug` | string | yes |  |
+  | `repository_id` | string | yes |  |
+  | `repository_name` | string | yes |  |
+  | `repository_slug` | string | yes |  |
+order: 437000

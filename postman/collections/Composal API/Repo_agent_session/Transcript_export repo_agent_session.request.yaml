@@ -1,0 +1,28 @@
+$kind: http-request
+id: "4ec3284e-3136-55ba-8eb3-76abf676e5f8"
+description: |-
+  The `transcript_export` action of **repo_agent_session**, a route of its `load` operation.
+
+  SDK: `client.RepoAgentSession().load({ "organization_id": "organization_id", "repo_id": "repo_id", "id": "ID", $action: "transcript_export" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/agent_sessions/:id/transcript_export"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: checkpoint
+    value: ""
+    disabled: true
+  - key: format
+    value: markdown
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_agent_session belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_agent_session belongs to.
+  - key: id
+    value: "{{repo_agent_session_id}}"
+    description: The repo_agent_session this request addresses.
+order: 8000

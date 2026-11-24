@@ -1,0 +1,29 @@
+$kind: http-request
+id: "75b05176-14f8-56a8-b97f-7a859356cf85"
+description: |-
+  The `create` operation of **space_peer**.
+
+  SDK: `client.SpacePeer().create({ space_id: "example" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/peers"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("space_peer_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

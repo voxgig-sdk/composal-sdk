@@ -1,0 +1,27 @@
+# BasicAgentConnectionGrantFlow
+
+main: kit: flow: BasicAgentConnectionGrantFlow:
+{
+  entity: "agent_connection_grant",
+  kind: "basic",
+  name: "BasicAgentConnectionGrantFlow",
+  step: [
+    {
+      m: {
+        agent_connection_id: "agent_connection01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_connection_grant_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentConnectionGrantFlow"
+}

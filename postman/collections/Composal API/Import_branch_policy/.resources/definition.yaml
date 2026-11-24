@@ -1,0 +1,14 @@
+$kind: collection
+id: "56520292-30df-5d3d-a905-5c24a370ca85"
+description: |-
+  The **import_branch_policy** entity, which belongs to a organization. Its requests address one record by `{{import_branch_policy_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `can_manage_pr_scenario_writing` | boolean | yes |  |
+  | `can_manage_sandbox_region` | boolean | yes |  |
+  | `dedicated_outbound_ip_addresses` | array | yes |  |
+  | `default_trunk_bookmark` | string | yes |  |
+  | `organization` | object | yes |  |
+  | `sandbox_regions` | array | yes |  |
+order: 283000

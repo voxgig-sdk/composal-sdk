@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "deployment_setting": {
+      "DEPLOYMENT_SETTING00": {
+        "code": "s3c",
+        "created_at": "s3d",
+        "id": "DEPLOYMENT_SETTING00",
+        "name": "s3f",
+        "nomad_datacenter": "s40",
+        "updated_at": "s41",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEPLOYMENT_SETTING01": {
+        "code": "s78",
+        "created_at": "s79",
+        "id": "DEPLOYMENT_SETTING01",
+        "name": "s7b",
+        "nomad_datacenter": "s7c",
+        "updated_at": "s7d",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEPLOYMENT_SETTING02": {
+        "code": "sb4",
+        "created_at": "sb5",
+        "id": "DEPLOYMENT_SETTING02",
+        "name": "sb7",
+        "nomad_datacenter": "sb8",
+        "updated_at": "sb9",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "deployment_setting": {
+      "deployment_setting_ref01": {
+        "code": "sf0",
+        "created_at": "sf1",
+        "name": "sf3",
+        "nomad_datacenter": "sf4",
+        "updated_at": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/pages/deployments/settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

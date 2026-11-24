@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "device_browser_operation": {
+      "DEVICE_BROWSER_OPERATION00": {
+        "command": "s1e",
+        "created_at": "s1f",
+        "id": "DEVICE_BROWSER_OPERATION00",
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEVICE_BROWSER_OPERATION01": {
+        "command": "s3c",
+        "created_at": "s3d",
+        "id": "DEVICE_BROWSER_OPERATION01",
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEVICE_BROWSER_OPERATION02": {
+        "command": "s5a",
+        "created_at": "s5b",
+        "id": "DEVICE_BROWSER_OPERATION02",
+        "device_id": "DEVICE01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "device_browser_operation": {
+      "device_browser_operation_ref01": {
+        "command": "s78",
+        "created_at": "s79"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/browser_operations/{id}/claim": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/browser_operations/{id}/finish": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/browser_operations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

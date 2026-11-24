@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "email_verification": {
+      "EMAIL_VERIFICATION00": {
+        "id": "EMAIL_VERIFICATION00"
+      },
+      "EMAIL_VERIFICATION01": {
+        "id": "EMAIL_VERIFICATION01"
+      },
+      "EMAIL_VERIFICATION02": {
+        "id": "EMAIL_VERIFICATION02"
+      }
+    }
+  },
+  "new": {
+    "email_verification": {
+      "email_verification_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/email_verifications/resend": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

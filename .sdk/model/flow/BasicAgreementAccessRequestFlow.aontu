@@ -1,0 +1,22 @@
+# BasicAgreementAccessRequestFlow
+
+main: kit: flow: BasicAgreementAccessRequestFlow:
+{
+  entity: "agreement_access_request",
+  kind: "basic",
+  name: "BasicAgreementAccessRequestFlow",
+  step: [
+    {
+      i: {
+        ref: "agreement_access_request_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgreementAccessRequestFlow"
+}

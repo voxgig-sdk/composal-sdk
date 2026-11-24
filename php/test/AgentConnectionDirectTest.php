@@ -34,7 +34,7 @@ class AgentConnectionDirectTest extends TestCase
             return;
         }
         if ($setup["live"]) {
-            foreach (["agent01", "organization01"] as $_liveKey) {
+            foreach (["organization01"] as $_liveKey) {
                 if (null === ($setup["idmap"][$_liveKey] ?? null)) {
                     Runner::live_miss(self::LIVE_STRICT, "Live test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_AGENT_CONNECTION_ENTID");
                 }
@@ -47,11 +47,10 @@ class AgentConnectionDirectTest extends TestCase
 
         $params = [];
         $query = [];
-        $params["agent_id"] = $setup["live"] ? ($setup["idmap"]["agent01"] ?? null) : "direct01";
-        $params["organization_id"] = $setup["live"] ? ($setup["idmap"]["organization01"] ?? null) : "direct02";
+        $params["organization_id"] = $setup["live"] ? ($setup["idmap"]["organization01"] ?? null) : "direct01";
 
         $result = $client->direct([
-            "path" => "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections",
+            "path" => "api/v1/organizations/{organization_id}/agent_connections",
             "method" => "GET",
             "params" => $params,
             "query" => $query,
@@ -83,7 +82,7 @@ class AgentConnectionDirectTest extends TestCase
             return;
         }
         if ($setup["live"]) {
-            foreach (["agent01", "organization01"] as $_liveKey) {
+            foreach (["organization01"] as $_liveKey) {
                 if (null === ($setup["idmap"][$_liveKey] ?? null)) {
                     Runner::live_miss(self::LIVE_STRICT, "Live test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_AGENT_CONNECTION_ENTID");
                 }
@@ -97,11 +96,10 @@ class AgentConnectionDirectTest extends TestCase
         $params = [];
         $query = [];
         if ($setup["live"]) {
-            $query["change"] = 'configure';
             $list_result = $client->direct([
-                "path" => "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections",
+                "path" => "api/v1/organizations/{organization_id}/agent_connections",
                 "method" => "GET",
-                "params" => ["agent_id" => $setup["idmap"]["agent01"] ?? null, "organization_id" => $setup["idmap"]["organization01"] ?? null],
+                "params" => ["organization_id" => $setup["idmap"]["organization01"] ?? null],
             ]);
             if (!self::liveOk($list_result)) {
                 Runner::live_miss(self::LIVE_STRICT, "Live list discovery failed: " . Runner::live_describe($list_result));
@@ -119,17 +117,14 @@ class AgentConnectionDirectTest extends TestCase
                 Runner::live_miss(self::LIVE_STRICT, "Live load blocked: discovery returned no usable identity");
             }
             $params["id"] = $found;
-            $params["agent_id"] = $setup["idmap"]["agent01"] ?? null;
             $params["organization_id"] = $setup["idmap"]["organization01"] ?? null;
         } else {
-            $params["agent_id"] = "direct01";
-            $params["id"] = "direct02";
-            $params["id"] = "direct03";
-            $params["organization_id"] = "direct04";
+            $params["id"] = "direct01";
+            $params["organization_id"] = "direct02";
         }
 
         $result = $client->direct([
-            "path" => "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections/{id}/change",
+            "path" => "api/v1/organizations/{organization_id}/agent_connections/{id}",
             "method" => "GET",
             "params" => $params,
             "query" => $query,

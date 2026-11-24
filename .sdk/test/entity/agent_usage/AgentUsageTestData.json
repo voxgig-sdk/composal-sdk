@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "agent_usage": {
+      "AGENT_USAGE00": {
+        "days": [],
+        "ended_at": "s51",
+        "pricing_version": "s52",
+        "source": "s53",
+        "started_at": "s54",
+        "user_days": [],
+        "users": [],
+        "window": "s57",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_USAGE00"
+      },
+      "AGENT_USAGE01": {
+        "days": [],
+        "ended_at": "sa1",
+        "pricing_version": "sa2",
+        "source": "sa3",
+        "started_at": "sa4",
+        "user_days": [],
+        "users": [],
+        "window": "sa7",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_USAGE01"
+      },
+      "AGENT_USAGE02": {
+        "days": [],
+        "ended_at": "sf1",
+        "pricing_version": "sf2",
+        "source": "sf3",
+        "started_at": "sf4",
+        "user_days": [],
+        "users": [],
+        "window": "sf7",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_USAGE02"
+      }
+    }
+  },
+  "new": {
+    "agent_usage": {
+      "agent_usage_ref01": {
+        "days": [],
+        "ended_at": "s141",
+        "pricing_version": "s142",
+        "source": "s143",
+        "started_at": "s144",
+        "user_days": [],
+        "users": [],
+        "window": "s147"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/pages/agent_usage": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

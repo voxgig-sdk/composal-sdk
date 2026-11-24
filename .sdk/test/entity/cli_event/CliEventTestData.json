@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "cli_event": {
+      "CLI_EVENT00": {
+        "event": "s14",
+        "properties": {},
+        "id": "CLI_EVENT00"
+      },
+      "CLI_EVENT01": {
+        "event": "s28",
+        "properties": {},
+        "id": "CLI_EVENT01"
+      },
+      "CLI_EVENT02": {
+        "event": "s3c",
+        "properties": {},
+        "id": "CLI_EVENT02"
+      }
+    }
+  },
+  "new": {
+    "cli_event": {
+      "cli_event_ref01": {
+        "event": "s50",
+        "properties": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/cli_events": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

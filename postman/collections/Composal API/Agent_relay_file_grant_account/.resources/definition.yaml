@@ -1,0 +1,14 @@
+$kind: collection
+id: d651d910-2274-54ba-95dc-6c6cb1f8dfb8
+description: |-
+  The **agent_relay_file_grant_account** entity, which belongs to a organization. Its requests address one record by `{{agent_relay_file_grant_account_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `access_modes` | array |  |  |
+  | `generation` | integer | yes |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `provider` | string | yes |  |
+  | `resource_kind` | string | yes |  |
+order: 42000

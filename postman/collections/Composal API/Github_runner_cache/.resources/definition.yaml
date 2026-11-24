@@ -1,0 +1,18 @@
+$kind: collection
+id: "4ef0d103-5f65-532a-97a0-3bd76e4cf3e2"
+description: |-
+  The **github_runner_cache** entity. Its requests address one record by `{{github_runner_cache_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `entry_id` | string |  |  |
+  | `key` | string |  |  |
+  | `matched_key` | string |  |  |
+  | `ok` | boolean | yes |  |
+  | `operation` | string | yes |  |
+  | `restore_keys` | array |  |  |
+  | `signed_download_url` | string |  |  |
+  | `size_bytes` | string |  |  |
+  | `upload_path` | string |  |  |
+  | `version` | string |  |  |
+order: 268000

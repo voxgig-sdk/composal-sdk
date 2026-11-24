@@ -1,0 +1,22 @@
+$kind: http-request
+id: e997be6a-6b05-562f-8e19-e7d6f861839f
+description: |-
+  The `revoke` action of **organization_oidc_trust**, a route of its `create` operation.
+
+  SDK: `client.OrganizationOidcTrust().create({ "organization_id": "organization_id", "id": "ID", $action: "revoke" })`
+url: "{{base}}/api/v1/identity/organizations/:organization_id/oidc_trusts/:id/revoke"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_oidc_trust belongs to.
+  - key: id
+    value: "{{organization_oidc_trust_id}}"
+    description: The organization_oidc_trust this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 8000

@@ -1,0 +1,41 @@
+$kind: http-request
+id: "1907c938-2ec2-5774-affc-2393366fc45f"
+description: |-
+  The `create` operation of **local_agent_response**.
+
+  SDK: `client.LocalAgentResponse().create({ organization_id: "example", input: [], model: "example", store: true, stream: true })`
+url: "{{base}}/api/v1/organizations/:organization_id/local_agent/responses"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this local_agent_response belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "model": "gpt-6-luna",
+      "input": [
+        {}
+      ],
+      "stream": true,
+      "store": false,
+      "service_tier": "auto",
+      "tools": [
+        {}
+      ]
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("local_agent_response_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

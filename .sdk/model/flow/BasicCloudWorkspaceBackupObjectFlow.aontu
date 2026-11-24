@@ -1,0 +1,35 @@
+# BasicCloudWorkspaceBackupObjectFlow
+
+main: kit: flow: BasicCloudWorkspaceBackupObjectFlow:
+{
+  entity: "cloud_workspace_backup_object",
+  kind: "basic",
+  name: "BasicCloudWorkspaceBackupObjectFlow",
+  step: [
+    {
+      i: {
+        ref: "cloud_workspace_backup_object_ref01",
+        srcdatavar: "cloud_workspace_backup_object_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        cloud_workspace_backup_id: "cloud_workspace_backup01",
+        id: "cloud_workspace_backup_object01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-cloud_workspace_backup_object_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCloudWorkspaceBackupObjectFlow"
+}

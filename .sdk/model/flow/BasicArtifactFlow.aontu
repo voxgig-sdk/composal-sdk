@@ -11,11 +11,19 @@ main: kit: flow: BasicArtifactFlow:
         ref: "artifact_ref01"
       }
 
-      m: {
-        cache_namespace_id: "cache_namespace01"
-      }
-
       o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "artifact_ref01"
+          }
+        }
+      ]
     }
 
     {
@@ -43,6 +51,10 @@ main: kit: flow: BasicArtifactFlow:
         suffix: "_dt0"
       }
 
+      m: {
+        id: "artifact01"
+      }
+
       o: "load",
       v: [
         {
@@ -65,6 +77,22 @@ main: kit: flow: BasicArtifactFlow:
       }
 
       o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "artifact_ref01"
+          }
+        }
+      ]
     }
   ],
   "key$": "BasicArtifactFlow"

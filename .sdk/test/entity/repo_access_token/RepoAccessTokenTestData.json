@@ -1,0 +1,116 @@
+{
+  "existing": {
+    "repo_access_token": {
+      "REPO_ACCESS_TOKEN00": {
+        "access_token": {},
+        "active": false,
+        "created_at": "sc0",
+        "created_at_label": "sc1",
+        "credential_purpose": "sc2",
+        "expires_at": "sc3",
+        "expires_at_label": "sc4",
+        "expires_in_days": "sc5",
+        "id": "REPO_ACCESS_TOKEN00",
+        "last_used_at": "sc7",
+        "last_used_at_label": "sc8",
+        "name": "sc9",
+        "permission_level": "sca",
+        "plain_text_token": "scb",
+        "revoked_at": "scc",
+        "revoked_at_label": "scd",
+        "token_preview": "sce",
+        "updated_at": "scf",
+        "updated_at_label": "sd0",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "REPO_ACCESS_TOKEN01": {
+        "access_token": {},
+        "active": false,
+        "created_at": "s17e",
+        "created_at_label": "s17f",
+        "credential_purpose": "s180",
+        "expires_at": "s181",
+        "expires_at_label": "s182",
+        "expires_in_days": "s183",
+        "id": "REPO_ACCESS_TOKEN01",
+        "last_used_at": "s185",
+        "last_used_at_label": "s186",
+        "name": "s187",
+        "permission_level": "s188",
+        "plain_text_token": "s189",
+        "revoked_at": "s18a",
+        "revoked_at_label": "s18b",
+        "token_preview": "s18c",
+        "updated_at": "s18d",
+        "updated_at_label": "s18e",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "REPO_ACCESS_TOKEN02": {
+        "access_token": {},
+        "active": false,
+        "created_at": "s23c",
+        "created_at_label": "s23d",
+        "credential_purpose": "s23e",
+        "expires_at": "s23f",
+        "expires_at_label": "s240",
+        "expires_in_days": "s241",
+        "id": "REPO_ACCESS_TOKEN02",
+        "last_used_at": "s243",
+        "last_used_at_label": "s244",
+        "name": "s245",
+        "permission_level": "s246",
+        "plain_text_token": "s247",
+        "revoked_at": "s248",
+        "revoked_at_label": "s249",
+        "token_preview": "s24a",
+        "updated_at": "s24b",
+        "updated_at_label": "s24c",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "repo_access_token": {
+      "repo_access_token_ref01": {
+        "access_token": {},
+        "active": false,
+        "created_at": "s2fa",
+        "created_at_label": "s2fb",
+        "credential_purpose": "s2fc",
+        "expires_at": "s2fd",
+        "expires_at_label": "s2fe",
+        "expires_in_days": "s2ff",
+        "last_used_at": "s301",
+        "last_used_at_label": "s302",
+        "name": "s303",
+        "permission_level": "s304",
+        "plain_text_token": "s305",
+        "revoked_at": "s306",
+        "revoked_at_label": "s307",
+        "token_preview": "s308",
+        "updated_at": "s309",
+        "updated_at_label": "s30a"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/access_tokens": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/access_tokens": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{org_slug}/repos/{repo_slug}/access_tokens/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

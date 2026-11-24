@@ -1,0 +1,18 @@
+$kind: http-request
+id: "20c99d14-00cd-5080-aad6-2635a6ada828"
+description: |-
+  The `load` operation of **repository_access_resolve**.
+
+  SDK: `client.RepositoryAccessResolve().load({ id: "example_id", resolve_id: "example" })`
+url: "{{base}}/api/v1/repository_access/resolve/:org_slug/:repo_slug"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{repository_access_resolve_resolve_id}}"
+    description: The repository_access_resolve this request addresses.
+  - key: repo_slug
+    value: "{{repository_access_resolve_id}}"
+    description: The repository_access_resolve this request addresses.
+order: 1000

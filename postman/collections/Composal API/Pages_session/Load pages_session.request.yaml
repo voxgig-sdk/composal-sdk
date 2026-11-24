@@ -1,0 +1,28 @@
+$kind: http-request
+id: "42628fbe-5650-5778-bdf6-f18c533b55be"
+description: |-
+  The `load` operation of **pages_session**.
+
+  SDK: `client.PagesSession().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/pages/session/:session_id"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: around_event
+    value: ""
+    disabled: true
+  - key: checkpoint
+    value: ""
+    disabled: true
+  - key: event_digest
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this pages_session belongs to.
+  - key: session_id
+    value: "{{pages_session_id}}"
+    description: The pages_session this request addresses.
+order: 2000

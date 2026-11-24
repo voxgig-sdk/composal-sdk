@@ -1,0 +1,44 @@
+$kind: http-request
+id: "03715981-f309-5029-a1bd-053a378a88e5"
+description: |-
+  The `create` operation of **change_comment**.
+
+  SDK: `client.ChangeComment().create({ change_id: "example", organization_id: "example", repo_id: "example", body: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/:id/comments"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this change_comment belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this change_comment belongs to.
+  - key: id
+    value: "{{change_id}}"
+    description: The change this change_comment belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "body": "example",
+      "patchset_id": "example",
+      "path": "example",
+      "side": "additions",
+      "line": 1,
+      "parent_comment_id": "example",
+      "kind": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("change_comment_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

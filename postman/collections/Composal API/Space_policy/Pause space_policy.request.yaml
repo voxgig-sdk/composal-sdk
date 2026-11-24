@@ -1,0 +1,22 @@
+$kind: http-request
+id: "98569a2c-748e-5b36-acc9-367ab306fa0d"
+description: |-
+  The `pause` action of **space_policy**, a route of its `create` operation.
+
+  SDK: `client.SpacePolicy().create({ "space_id": "space_id", "id": "ID", $action: "pause" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/policies/:id/pause"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: id
+    value: "{{space_policy_id}}"
+    description: The space_policy this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 8000

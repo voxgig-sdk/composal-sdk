@@ -1,0 +1,23 @@
+# BasicTaskLeaseFlow
+
+main: kit: flow: BasicTaskLeaseFlow:
+{
+  entity: "task_lease",
+  kind: "basic",
+  name: "BasicTaskLeaseFlow",
+  step: [
+    {
+      i: {
+        ref: "task_lease_ref01"
+      }
+
+      m: {
+        swarm_id: "swarm01",
+        task_id: "task01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicTaskLeaseFlow"
+}

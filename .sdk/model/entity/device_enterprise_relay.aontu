@@ -1,0 +1,55 @@
+# Entity: device_enterprise_relay
+
+main: kit: entity: device_enterprise_relay: {
+
+  alias: field: {}
+
+  name: "device_enterprise_relay"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/spark/devices/enterprise_relays"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/spark/devices/enterprise_relays"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              lit: "enterprise_relays"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

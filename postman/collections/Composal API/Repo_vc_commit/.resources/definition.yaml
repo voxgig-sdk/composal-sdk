@@ -1,0 +1,10 @@
+$kind: collection
+id: a5d6f430-79c2-578c-aa02-0fd7e3477d9c
+description: |-
+  The **repo_vc_commit** entity, which belongs to a organization and a repo. Its requests address one record by `{{repo_vc_commit_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `name` | string | yes |  |
+  | `target_commit_id` | string | yes |  |
+order: 433000

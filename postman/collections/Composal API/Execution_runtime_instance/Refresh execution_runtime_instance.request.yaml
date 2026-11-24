@@ -1,0 +1,19 @@
+$kind: http-request
+id: "08322ad3-b7ed-55b2-81d9-781c77e777b5"
+description: |-
+  The `refresh` action of **execution_runtime_instance**, a route of its `create` operation.
+
+  SDK: `client.ExecutionRuntimeInstance().create({ "id": "ID", $action: "refresh" })`
+url: "{{base}}/api/v1/execution/runtime_instances/:id/refresh"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{execution_runtime_instance_id}}"
+    description: The execution_runtime_instance this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

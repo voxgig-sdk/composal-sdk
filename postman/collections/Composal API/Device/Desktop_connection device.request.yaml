@@ -1,0 +1,25 @@
+$kind: http-request
+id: "30d441c4-47b9-517c-b2b3-35336591a18e"
+description: |-
+  The `desktop_connection` action of **device**, a route of its `create` operation.
+
+  SDK: `client.Device().create({ "organization_id": "organization_id", "id": "ID", $action: "desktop_connection" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/desktop_connection"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "transport": "example"
+    }
+order: 8000

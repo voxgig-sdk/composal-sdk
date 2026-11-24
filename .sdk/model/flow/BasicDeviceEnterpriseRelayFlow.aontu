@@ -1,0 +1,22 @@
+# BasicDeviceEnterpriseRelayFlow
+
+main: kit: flow: BasicDeviceEnterpriseRelayFlow:
+{
+  entity: "device_enterprise_relay",
+  kind: "basic",
+  name: "BasicDeviceEnterpriseRelayFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "device_enterprise_relay_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeviceEnterpriseRelayFlow"
+}

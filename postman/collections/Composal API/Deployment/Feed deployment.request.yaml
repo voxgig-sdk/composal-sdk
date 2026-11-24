@@ -1,0 +1,28 @@
+$kind: http-request
+id: "75685b4f-cb3e-5b07-a539-d219c76f62a8"
+description: |-
+  The `feed` action of **deployment**, a route of its `load` operation.
+
+  SDK: `client.Deployment().load({ "organization_id": "organization_id", $action: "feed" })`
+url: "{{base}}/api/v1/organizations/:org_slug/pages/deployments/feed"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: app
+    value: ""
+    disabled: true
+  - key: environment
+    value: ""
+    disabled: true
+  - key: page
+    value: ""
+    disabled: true
+  - key: service
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this deployment belongs to.
+order: 3000

@@ -1,0 +1,20 @@
+$kind: collection
+id: f3e07fe2-ab78-5b96-ba46-5acb7d2c3743
+description: |-
+  The **roder_code_repair** entity. Its requests address one record by `{{roder_code_repair_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `base_sha` | string | yes |  |
+  | `cancel_requested` | boolean | yes |  |
+  | `failure_code` | string | yes |  |
+  | `id` | string | yes |  |
+  | `launch_state` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `repository_slug` | string | yes |  |
+  | `roder_thread_id` | string | yes |  |
+  | `roder_turn_id` | string | yes |  |
+  | `scenario_run_id` | string | yes |  |
+  | `task` | object | yes |  |
+  | `trigger_kind` | string | yes |  |
+order: 444000

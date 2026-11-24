@@ -1,0 +1,26 @@
+# BasicPullZoneFlow
+
+main: kit: flow: BasicPullZoneFlow:
+{
+  entity: "pull_zone",
+  kind: "basic",
+  name: "BasicPullZoneFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "pull_zone_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPullZoneFlow"
+}

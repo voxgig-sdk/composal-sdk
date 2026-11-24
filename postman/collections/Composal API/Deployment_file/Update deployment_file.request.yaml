@@ -15,7 +15,7 @@ pathVariables:
     description: The static_site this deployment_file belongs to.
   - key: id
     value: "{{deployment_id}}"
-    description: "Input: deployment_id."
+    description: The deployment this deployment_file belongs to.
 body:
   type: json
   content: "{}"

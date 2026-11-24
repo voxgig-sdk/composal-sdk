@@ -1,0 +1,25 @@
+$kind: http-request
+id: b8156c18-a889-573c-b50e-083934fa2218
+description: |-
+  The `remove` operation of **space_segment**.
+
+  SDK: `client.SpaceSegment().remove({ id: "example_id", space_id: "example" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/segments/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: id
+    value: "{{space_segment_id}}"
+    description: The space_segment this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("space_segment_id")
+      }
+    language: text/javascript
+order: 6000

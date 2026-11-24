@@ -1,0 +1,22 @@
+# BasicRepositoryImportSessionSelectionFlow
+
+main: kit: flow: BasicRepositoryImportSessionSelectionFlow:
+{
+  entity: "repository_import_session_selection",
+  kind: "basic",
+  name: "BasicRepositoryImportSessionSelectionFlow",
+  step: [
+    {
+      i: {
+        ref: "repository_import_session_selection_ref01"
+      }
+
+      m: {
+        repository_import_session_id: "repository_import_session01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicRepositoryImportSessionSelectionFlow"
+}

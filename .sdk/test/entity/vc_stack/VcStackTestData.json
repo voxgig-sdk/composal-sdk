@@ -1,0 +1,88 @@
+{
+  "existing": {
+    "vc_stack": {
+      "VC_STACK00": {
+        "alias_ref_name": "s78",
+        "changes": [],
+        "code": "s7a",
+        "id": "VC_STACK00",
+        "landing": {},
+        "member_count": 125,
+        "name": "s7e",
+        "ref_name": "s7f",
+        "status": "s80",
+        "tip_change_number": "s81",
+        "updated_at": "s82",
+        "updated_at_label": "s83",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "VC_STACK01": {
+        "alias_ref_name": "sf0",
+        "changes": [],
+        "code": "sf2",
+        "id": "VC_STACK01",
+        "landing": {},
+        "member_count": 245,
+        "name": "sf6",
+        "ref_name": "sf7",
+        "status": "sf8",
+        "tip_change_number": "sf9",
+        "updated_at": "sfa",
+        "updated_at_label": "sfb",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "VC_STACK02": {
+        "alias_ref_name": "s168",
+        "changes": [],
+        "code": "s16a",
+        "id": "VC_STACK02",
+        "landing": {},
+        "member_count": 365,
+        "name": "s16e",
+        "ref_name": "s16f",
+        "status": "s170",
+        "tip_change_number": "s171",
+        "updated_at": "s172",
+        "updated_at_label": "s173",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "vc_stack": {
+      "vc_stack_ref01": {
+        "alias_ref_name": "s1e0",
+        "changes": [],
+        "code": "s1e2",
+        "landing": {},
+        "member_count": 485,
+        "name": "s1e6",
+        "ref_name": "s1e7",
+        "status": "s1e8",
+        "tip_change_number": "s1e9",
+        "updated_at": "s1ea",
+        "updated_at_label": "s1eb"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/stacks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/stacks/{code}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/stacks/{code}/name": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

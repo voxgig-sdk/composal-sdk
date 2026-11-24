@@ -1,0 +1,36 @@
+$kind: collection
+id: "3d1939c4-ddd1-5830-8b3c-93f54eb89987"
+description: |-
+  The **vc_change** entity, which belongs to a organization and a repo. Its requests address one record by `{{vc_change_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `activity` | array | yes |  |
+  | `canonical_path` | string | yes |  |
+  | `change` | any | yes |  |
+  | `checks` | array |  |  |
+  | `checks_status` | string |  |  |
+  | `description` | string |  |  |
+  | `group` | object |  |  |
+  | `id` | string | yes |  |
+  | `jj_change_id` | string |  |  |
+  | `labels` | array |  |  |
+  | `landing` | object | yes |  |
+  | `number` | integer | yes |  |
+  | `patchset_number` | integer |  |  |
+  | `previews` | array | yes |  |
+  | `primary_status` | string |  |  |
+  | `public_id` | string |  |  |
+  | `related_changes` | array | yes |  |
+  | `relation_chain` | array | yes |  |
+  | `restack_state` | string |  |  |
+  | `review_summary` | object |  |  |
+  | `stack` | any |  |  |
+  | `status` | string | yes |  |
+  | `sync` | object | yes |  |
+  | `target` | object | yes |  |
+  | `target_advanced` | boolean | yes |  |
+  | `target_branch` | string | yes |  |
+  | `title` | string | yes |  |
+  | `url` | string |  |  |
+order: 525000

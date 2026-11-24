@@ -1,0 +1,8 @@
+$kind: collection
+id: "7d1dcc02-d5cb-5bfc-b58a-55e88ae9723a"
+description: |-
+  The **edge** entity. Its requests address one record by `{{edge_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 229000

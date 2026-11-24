@@ -1,0 +1,8 @@
+$kind: collection
+id: d9b1ec87-a6eb-5101-8feb-dc3a835aa7b9
+description: |-
+  The **github_runner_admission** entity. Its requests address one record by `{{github_runner_admission_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 267000

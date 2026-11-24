@@ -1,0 +1,50 @@
+{
+  "existing": {
+    "github_app_installation_authorization": {
+      "GITHUB_APP_INSTALLATION_AUTHORIZATION00": {
+        "installation_url": "s1e",
+        "organization_slug": "s1f",
+        "return_target": "s20",
+        "id": "GITHUB_APP_INSTALLATION_AUTHORIZATION00"
+      },
+      "GITHUB_APP_INSTALLATION_AUTHORIZATION01": {
+        "installation_url": "s3c",
+        "organization_slug": "s3d",
+        "return_target": "s3e",
+        "id": "GITHUB_APP_INSTALLATION_AUTHORIZATION01"
+      },
+      "GITHUB_APP_INSTALLATION_AUTHORIZATION02": {
+        "installation_url": "s5a",
+        "organization_slug": "s5b",
+        "return_target": "s5c",
+        "id": "GITHUB_APP_INSTALLATION_AUTHORIZATION02"
+      }
+    }
+  },
+  "new": {
+    "github_app_installation_authorization": {
+      "github_app_installation_authorization_ref01": {
+        "installation_url": "s78",
+        "organization_slug": "s79",
+        "return_target": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/github_app/installation_authorizations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/github_app/installation_authorizations/complete": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/github_app/installation_authorizations/setup": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

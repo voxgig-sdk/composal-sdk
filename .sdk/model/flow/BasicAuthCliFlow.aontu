@@ -1,0 +1,18 @@
+# BasicAuthCliFlow
+
+main: kit: flow: BasicAuthCliFlow:
+{
+  entity: "auth_cli",
+  kind: "basic",
+  name: "BasicAuthCliFlow",
+  step: [
+    {
+      i: {
+        ref: "auth_cli_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAuthCliFlow"
+}

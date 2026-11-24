@@ -1,0 +1,8 @@
+$kind: collection
+id: "383f8d36-18bf-516a-bd26-7500ae1e31a2"
+description: |-
+  The **gitlab_oauth** entity. Its requests address one record by `{{gitlab_oauth_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 277000

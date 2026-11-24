@@ -1,0 +1,21 @@
+$kind: collection
+id: "117d1009-29a4-596c-b4ec-0da460379d8c"
+description: |-
+  The **change_transcript** entity, which belongs to a organization and a repo and a change. Its requests address one record by `{{change_transcript_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `capture_kind` | string | yes |  |
+  | `captured_at` | string | yes |  |
+  | `harness` | object | yes |  |
+  | `id` | string | yes |  |
+  | `original_resume` | any |  |  |
+  | `patchset_commit_id` | string | yes |  |
+  | `patchset_number` | integer | yes |  |
+  | `redaction_count` | integer | yes |  |
+  | `session_id` | string |  |  |
+  | `session_title` | string |  |  |
+  | `status` | string | yes |  |
+  | `superseded` | boolean | yes |  |
+  | `user` | object | yes |  |
+order: 168000

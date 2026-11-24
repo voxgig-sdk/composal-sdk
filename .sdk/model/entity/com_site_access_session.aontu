@@ -1,0 +1,80 @@
+# Entity: com_site_access_session
+
+main: kit: entity: com_site_access_session: {
+
+  alias: field: {}
+
+  fields: {
+    cookie_name: {
+      h: "Cookie Name"
+      n: "cookie_name"
+      r: true
+      t: "`$STRING`"
+    }
+    host: {
+      h: "Host"
+      n: "host"
+      r: true
+      sh: "Site hostname, for example docs.acme.composal.page"
+      t: "`$STRING`"
+    }
+    max_age: {
+      h: "Max Age"
+      n: "max_age"
+      r: true
+      t: "`$INTEGER`"
+    }
+    session_token: {
+      h: "Session Token"
+      n: "session_token"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "com_site_access_session"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "host"
+          ]
+          co: {
+            id: "POST /api/v1/com_site_access/sessions"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/com_site_access/sessions"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "com_site_access"
+            }
+            {
+              lit: "sessions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

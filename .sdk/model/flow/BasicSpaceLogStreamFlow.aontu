@@ -1,0 +1,38 @@
+# BasicSpaceLogStreamFlow
+
+main: kit: flow: BasicSpaceLogStreamFlow:
+{
+  entity: "space_log_stream",
+  kind: "basic",
+  name: "BasicSpaceLogStreamFlow",
+  step: [
+    {
+      i: {
+        ref: "space_log_stream_ref01"
+      }
+
+      m: {
+        space_id: "space01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        space_id: "space01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "space_log_stream_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSpaceLogStreamFlow"
+}

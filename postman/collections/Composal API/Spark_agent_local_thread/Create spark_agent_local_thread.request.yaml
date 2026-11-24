@@ -21,7 +21,7 @@ body:
   content: |-
     {
       "key": "example",
-      "device_id": "example",
+      "device_id": "{{device_id}}",
       "provider": "codex",
       "thread_id": "example",
       "result_schema": {}

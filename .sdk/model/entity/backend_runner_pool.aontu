@@ -1,0 +1,230 @@
+# Entity: backend_runner_pool
+
+main: kit: entity: backend_runner_pool: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "backend_runner_pool"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/bazel/backends/{backend_id}/runner_pools"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "backend_id"
+                or: "backend_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/bazel/backends/{backend_id}/runner_pools"
+          q: {
+            exist: [
+              "backend_id"
+            ]
+          }
+          r: {
+            param: {
+              backend_id: "backend_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "bazel"
+            }
+            {
+              lit: "backends"
+            }
+            {
+              var: "backend_id"
+            }
+            {
+              lit: "runner_pools"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/bazel/backends/{backend_id}/runner_pools"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "backend_id"
+                or: "backend_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/bazel/backends/{backend_id}/runner_pools"
+          q: {
+            exist: [
+              "backend_id"
+            ]
+          }
+          r: {
+            param: {
+              backend_id: "backend_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "bazel"
+            }
+            {
+              lit: "backends"
+            }
+            {
+              var: "backend_id"
+            }
+            {
+              lit: "runner_pools"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /api/v1/bazel/backends/{backend_id}/runner_pools/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "backend_id"
+                or: "backend_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v1/bazel/backends/{backend_id}/runner_pools/{id}"
+          q: {
+            exist: [
+              "backend_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              backend_id: "backend_id"
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "bazel"
+            }
+            {
+              lit: "backends"
+            }
+            {
+              var: "backend_id"
+            }
+            {
+              lit: "runner_pools"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

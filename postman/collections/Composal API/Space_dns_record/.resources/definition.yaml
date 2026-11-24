@@ -1,0 +1,9 @@
+$kind: collection
+id: "1f7ddb8f-88b7-5e33-999a-6f8460009e66"
+description: |-
+  The **space_dns_record** entity. Its requests address one record by `{{space_dns_record_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 483000

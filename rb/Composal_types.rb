@@ -8,6 +8,228 @@
 # @voxgig/apidef VALID_CANON). Ruby types are unenforced; these YARD
 # annotations document the shapes. Do not edit by hand.
 
+# A2aWellKnown entity data model.
+class A2aWellKnown
+end
+
+# Request payload for A2aWellKnown#load.
+#
+# @!attribute [rw] a2a_id
+#   @return [String]
+A2aWellKnownLoadMatch = Struct.new(
+  :a2a_id,
+  keyword_init: true
+)
+
+# AdminOrg entity data model.
+#
+# @!attribute [rw] billing_email
+#   @return [Object]
+#
+# @!attribute [rw] billing_reason
+#   @return [String, nil]
+#
+# @!attribute [rw] customize_onboarding_packages
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] deployment_usage_visibility
+#   @return [String]
+#
+# @!attribute [rw] deployment_usage_visible
+#   @return [Boolean]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] monthly_price_dollars
+#   @return [Object, nil]
+#
+# @!attribute [rw] monthly_price_override_cents
+#   @return [Object]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] onboarding_custom_pricing
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] onboarding_package_keys
+#   @return [Object, nil]
+#
+# @!attribute [rw] owner_email
+#   @return [String]
+#
+# @!attribute [rw] package_id
+#   @return [Object]
+#
+# @!attribute [rw] skip_payment
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] slug
+#   @return [String]
+AdminOrg = Struct.new(
+  :billing_email,
+  :billing_reason,
+  :customize_onboarding_packages,
+  :deployment_usage_visibility,
+  :deployment_usage_visible,
+  :id,
+  :monthly_price_dollars,
+  :monthly_price_override_cents,
+  :name,
+  :onboarding_custom_pricing,
+  :onboarding_package_keys,
+  :owner_email,
+  :package_id,
+  :skip_payment,
+  :slug,
+  keyword_init: true
+)
+
+# Request payload for AdminOrg#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+AdminOrgLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for AdminOrg#list.
+#
+# @!attribute [rw] billing_email
+#   @return [Object, nil]
+#
+# @!attribute [rw] billing_reason
+#   @return [String, nil]
+#
+# @!attribute [rw] customize_onboarding_packages
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] deployment_usage_visibility
+#   @return [String, nil]
+#
+# @!attribute [rw] deployment_usage_visible
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] monthly_price_dollars
+#   @return [Object, nil]
+#
+# @!attribute [rw] monthly_price_override_cents
+#   @return [Object, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] onboarding_custom_pricing
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] onboarding_package_keys
+#   @return [Object, nil]
+#
+# @!attribute [rw] owner_email
+#   @return [String, nil]
+#
+# @!attribute [rw] package_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] skip_payment
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] slug
+#   @return [String, nil]
+AdminOrgListMatch = Struct.new(
+  :billing_email,
+  :billing_reason,
+  :customize_onboarding_packages,
+  :deployment_usage_visibility,
+  :deployment_usage_visible,
+  :id,
+  :monthly_price_dollars,
+  :monthly_price_override_cents,
+  :name,
+  :onboarding_custom_pricing,
+  :onboarding_package_keys,
+  :owner_email,
+  :package_id,
+  :skip_payment,
+  :slug,
+  keyword_init: true
+)
+
+# Request payload for AdminOrg#create.
+#
+# @!attribute [rw] billing_reason
+#   @return [String, nil]
+#
+# @!attribute [rw] customize_onboarding_packages
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] monthly_price_dollars
+#   @return [Object, nil]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] onboarding_custom_pricing
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] onboarding_package_keys
+#   @return [Object, nil]
+#
+# @!attribute [rw] owner_email
+#   @return [String]
+#
+# @!attribute [rw] package_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] skip_payment
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] slug
+#   @return [String]
+AdminOrgCreateData = Struct.new(
+  :billing_reason,
+  :customize_onboarding_packages,
+  :monthly_price_dollars,
+  :name,
+  :onboarding_custom_pricing,
+  :onboarding_package_keys,
+  :owner_email,
+  :package_id,
+  :skip_payment,
+  :slug,
+  keyword_init: true
+)
+
+# Request payload for AdminOrg#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] billing_email
+#   @return [Object, nil]
+#
+# @!attribute [rw] monthly_price_dollars
+#   @return [Object, nil]
+#
+# @!attribute [rw] package_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] reason
+#   @return [Object, nil]
+AdminOrgUpdateData = Struct.new(
+  :id,
+  :billing_email,
+  :monthly_price_dollars,
+  :package_id,
+  :reason,
+  keyword_init: true
+)
+
 # Agent entity data model.
 #
 # @!attribute [rw] attention
@@ -362,6 +584,177 @@ AgentRemoveMatch = Struct.new(
   keyword_init: true
 )
 
+# AgentApp entity data model.
+#
+# @!attribute [rw] author
+#   @return [Hash]
+#
+# @!attribute [rw] can_message
+#   @return [Boolean]
+#
+# @!attribute [rw] deployments_count
+#   @return [Integer]
+#
+# @!attribute [rw] description
+#   @return [String]
+#
+# @!attribute [rw] hidden_install_count
+#   @return [Integer]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] install_count
+#   @return [Integer]
+#
+# @!attribute [rw] install_targets
+#   @return [Array]
+#
+# @!attribute [rw] installed_by
+#   @return [Array]
+#
+# @!attribute [rw] installed_target_ids
+#   @return [Array]
+#
+# @!attribute [rw] items
+#   @return [Array]
+#
+# @!attribute [rw] mcp_url
+#   @return [Object]
+#
+# @!attribute [rw] next_cursor
+#   @return [Object]
+#
+# @!attribute [rw] owner
+#   @return [Hash]
+#
+# @!attribute [rw] thread
+#   @return [Object]
+#
+# @!attribute [rw] title
+#   @return [String]
+#
+# @!attribute [rw] url
+#   @return [String]
+#
+# @!attribute [rw] visibility
+#   @return [String]
+AgentApp = Struct.new(
+  :author,
+  :can_message,
+  :deployments_count,
+  :description,
+  :hidden_install_count,
+  :id,
+  :install_count,
+  :install_targets,
+  :installed_by,
+  :installed_target_ids,
+  :items,
+  :mcp_url,
+  :next_cursor,
+  :owner,
+  :thread,
+  :title,
+  :url,
+  :visibility,
+  keyword_init: true
+)
+
+# Request payload for AgentApp#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+AgentAppLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for AgentApp#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+AgentAppListMatch = Struct.new(
+  :organization_id,
+  :cursor,
+  keyword_init: true
+)
+
+# Request payload for AgentApp#create.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] surface
+#   @return [Object, nil]
+#
+# @!attribute [rw] view
+#   @return [Object, nil]
+AgentAppCreateData = Struct.new(
+  :id,
+  :organization_id,
+  :surface,
+  :view,
+  keyword_init: true
+)
+
+# AgentAppInstall entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] installed
+#   @return [Boolean]
+AgentAppInstall = Struct.new(
+  :id,
+  :installed,
+  keyword_init: true
+)
+
+# Request payload for AgentAppInstall#update.
+#
+# @!attribute [rw] agent_app_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+AgentAppInstallUpdateData = Struct.new(
+  :agent_app_id,
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for AgentAppInstall#remove.
+#
+# @!attribute [rw] agent_app_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+AgentAppInstallRemoveMatch = Struct.new(
+  :agent_app_id,
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
 # AgentAttachment entity data model.
 #
 # @!attribute [rw] byte_size
@@ -672,32 +1065,472 @@ AgentComputerCreateData = Struct.new(
 
 # AgentConnection entity data model.
 #
-# @!attribute [rw] agent_card_url
+# @!attribute [rw] actions
+#   @return [Array]
+#
+# @!attribute [rw] activity
+#   @return [Array]
+#
+# @!attribute [rw] admin_disabled_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] agent_tools
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] authentication
 #   @return [String]
 #
-# @!attribute [rw] auth_scheme
+# @!attribute [rw] authorized_at
+#   @return [Object]
+#
+# @!attribute [rw] can_create_account
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] capabilities
+#   @return [Hash]
+#
+# @!attribute [rw] catalog_section
+#   @return [String, nil]
+#
+# @!attribute [rw] category
+#   @return [String, nil]
+#
+# @!attribute [rw] certification
 #   @return [String]
 #
-# @!attribute [rw] can_configure
-#   @return [Boolean]
-#
-# @!attribute [rw] can_disconnect
-#   @return [Boolean]
-#
-# @!attribute [rw] can_setup
-#   @return [Boolean]
+# @!attribute [rw] checked_at
+#   @return [Object]
 #
 # @!attribute [rw] connection
 #   @return [Hash]
 #
-# @!attribute [rw] credential
-#   @return [Object, nil]
-#
-# @!attribute [rw] error_code
+# @!attribute [rw] consent
 #   @return [Object]
 #
-# @!attribute [rw] expected_generation
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] creation_key
+#   @return [String, nil]
+#
+# @!attribute [rw] custodian_id
+#   @return [Object]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] disabled_reason
+#   @return [Object, nil]
+#
+# @!attribute [rw] failure_code
+#   @return [Object]
+#
+# @!attribute [rw] generation
 #   @return [Integer]
+#
+# @!attribute [rw] grants
+#   @return [Array]
+#
+# @!attribute [rw] grants_pagination
+#   @return [Hash]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] limits
+#   @return [Hash]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] owner_name
+#   @return [String, nil]
+#
+# @!attribute [rw] ownership_kind
+#   @return [String]
+#
+# @!attribute [rw] pagination
+#   @return [Hash]
+#
+# @!attribute [rw] policy_digest
+#   @return [String]
+#
+# @!attribute [rw] provider
+#   @return [Hash]
+#
+# @!attribute [rw] provider_disabled_reason
+#   @return [Object, nil]
+#
+# @!attribute [rw] provider_identity
+#   @return [Hash]
+#
+# @!attribute [rw] revoked_at
+#   @return [Object]
+#
+# @!attribute [rw] schema_version
+#   @return [Integer]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] toolkit
+#   @return [String]
+#
+# @!attribute [rw] triggers
+#   @return [Array]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] user_id
+#   @return [String]
+#
+# @!attribute [rw] version
+#   @return [String]
+AgentConnection = Struct.new(
+  :actions,
+  :activity,
+  :admin_disabled_at,
+  :agent_tools,
+  :authentication,
+  :authorized_at,
+  :can_create_account,
+  :capabilities,
+  :catalog_section,
+  :category,
+  :certification,
+  :checked_at,
+  :connection,
+  :consent,
+  :created_at,
+  :creation_key,
+  :custodian_id,
+  :description,
+  :disabled_reason,
+  :failure_code,
+  :generation,
+  :grants,
+  :grants_pagination,
+  :id,
+  :limits,
+  :name,
+  :organization_id,
+  :owner_name,
+  :ownership_kind,
+  :pagination,
+  :policy_digest,
+  :provider,
+  :provider_disabled_reason,
+  :provider_identity,
+  :revoked_at,
+  :schema_version,
+  :status,
+  :toolkit,
+  :triggers,
+  :updated_at,
+  :user_id,
+  :version,
+  keyword_init: true
+)
+
+# Request payload for AgentConnection#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] grants_cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] grants_limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+AgentConnectionLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :cursor,
+  :grants_cursor,
+  :grants_limit,
+  :limit,
+  keyword_init: true
+)
+
+# Request payload for AgentConnection#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+AgentConnectionListMatch = Struct.new(
+  :organization_id,
+  :cursor,
+  :limit,
+  keyword_init: true
+)
+
+# Request payload for AgentConnection#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] creation_key
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] toolkit
+#   @return [String]
+AgentConnectionCreateData = Struct.new(
+  :organization_id,
+  :creation_key,
+  :name,
+  :toolkit,
+  keyword_init: true
+)
+
+# Request payload for AgentConnection#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+AgentConnectionUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  :name,
+  keyword_init: true
+)
+
+# Request payload for AgentConnection#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+AgentConnectionPatchData = Struct.new(
+  :id,
+  :organization_id,
+  :name,
+  keyword_init: true
+)
+
+# Request payload for AgentConnection#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+AgentConnectionRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# AgentConnectionDelegation entity data model.
+#
+# @!attribute [rw] authorized_by_id
+#   @return [String]
+#
+# @!attribute [rw] automation_connection_grant_id
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] member_name
+#   @return [String]
+#
+# @!attribute [rw] revoked_at
+#   @return [Object]
+#
+# @!attribute [rw] roles
+#   @return [Array]
+#
+# @!attribute [rw] usable
+#   @return [Boolean]
+#
+# @!attribute [rw] user_id
+#   @return [String]
+AgentConnectionDelegation = Struct.new(
+  :authorized_by_id,
+  :automation_connection_grant_id,
+  :created_at,
+  :id,
+  :member_name,
+  :revoked_at,
+  :roles,
+  :usable,
+  :user_id,
+  keyword_init: true
+)
+
+# Request payload for AgentConnectionDelegation#list.
+#
+# @!attribute [rw] agent_connection_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+AgentConnectionDelegationListMatch = Struct.new(
+  :agent_connection_id,
+  :organization_id,
+  keyword_init: true
+)
+
+# AgentConnectionGrant entity data model.
+#
+# @!attribute [rw] actions
+#   @return [Array]
+#
+# @!attribute [rw] agent_connection_id
+#   @return [String]
+#
+# @!attribute [rw] automation_id
+#   @return [String]
+#
+# @!attribute [rw] connection_generation
+#   @return [Integer]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] revision
+#   @return [Integer]
+#
+# @!attribute [rw] revoked_at
+#   @return [Object]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] usable
+#   @return [Boolean]
+#
+# @!attribute [rw] user_id
+#   @return [String]
+AgentConnectionGrant = Struct.new(
+  :actions,
+  :agent_connection_id,
+  :automation_id,
+  :connection_generation,
+  :created_at,
+  :id,
+  :organization_id,
+  :revision,
+  :revoked_at,
+  :status,
+  :usable,
+  :user_id,
+  keyword_init: true
+)
+
+# Request payload for AgentConnectionGrant#list.
+#
+# @!attribute [rw] agent_connection_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+AgentConnectionGrantListMatch = Struct.new(
+  :agent_connection_id,
+  :organization_id,
+  keyword_init: true
+)
+
+# AgentConnectionResource entity data model.
+#
+# @!attribute [rw] cursor
+#   @return [Object, nil]
+#
+# @!attribute [rw] next_cursor
+#   @return [Object]
+#
+# @!attribute [rw] query
+#   @return [String, nil]
+#
+# @!attribute [rw] resources
+#   @return [Array]
+AgentConnectionResource = Struct.new(
+  :cursor,
+  :next_cursor,
+  :query,
+  :resources,
+  keyword_init: true
+)
+
+# Request payload for AgentConnectionResource#create.
+#
+# @!attribute [rw] agent_connection_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] cursor
+#   @return [Object, nil]
+#
+# @!attribute [rw] query
+#   @return [String, nil]
+AgentConnectionResourceCreateData = Struct.new(
+  :agent_connection_id,
+  :organization_id,
+  :cursor,
+  :query,
+  keyword_init: true
+)
+
+# AgentConnectionSafetyControl entity data model.
+#
+# @!attribute [rw] admin_disabled_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] authorized_at
+#   @return [Object]
+#
+# @!attribute [rw] checked_at
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] custodian_id
+#   @return [Object]
+#
+# @!attribute [rw] failure_code
+#   @return [Object]
 #
 # @!attribute [rw] generation
 #   @return [Integer]
@@ -708,69 +1541,187 @@ AgentComputerCreateData = Struct.new(
 # @!attribute [rw] name
 #   @return [String]
 #
-# @!attribute [rw] remote_agent
-#   @return [Object]
-#
-# @!attribute [rw] requester_id
+# @!attribute [rw] organization_id
 #   @return [String]
 #
-# @!attribute [rw] retired_at
-#   @return [Object]
+# @!attribute [rw] owner_name
+#   @return [String, nil]
+#
+# @!attribute [rw] ownership_kind
+#   @return [String]
+#
+# @!attribute [rw] provider_disabled_reason
+#   @return [Object, nil]
+#
+# @!attribute [rw] provider_identity
+#   @return [Hash]
 #
 # @!attribute [rw] revoked_at
 #   @return [Object]
 #
-# @!attribute [rw] scope_key
+# @!attribute [rw] status
 #   @return [String]
 #
-# @!attribute [rw] source_operation_id
-#   @return [Object]
-#
-# @!attribute [rw] state
+# @!attribute [rw] toolkit
 #   @return [String]
-AgentConnection = Struct.new(
-  :agent_card_url,
-  :auth_scheme,
-  :can_configure,
-  :can_disconnect,
-  :can_setup,
-  :connection,
-  :credential,
-  :error_code,
-  :expected_generation,
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] user_id
+#   @return [String]
+AgentConnectionSafetyControl = Struct.new(
+  :admin_disabled_at,
+  :authorized_at,
+  :checked_at,
+  :created_at,
+  :custodian_id,
+  :failure_code,
   :generation,
   :id,
   :name,
-  :remote_agent,
-  :requester_id,
-  :retired_at,
+  :organization_id,
+  :owner_name,
+  :ownership_kind,
+  :provider_disabled_reason,
+  :provider_identity,
   :revoked_at,
-  :scope_key,
-  :source_operation_id,
-  :state,
+  :status,
+  :toolkit,
+  :updated_at,
+  :user_id,
   keyword_init: true
 )
 
-# Request payload for AgentConnection#load.
+# Request payload for AgentConnectionSafetyControl#list.
 #
-# @!attribute [rw] agent_id
+# @!attribute [rw] organization_id
 #   @return [String]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+AgentConnectionSafetyControlListMatch = Struct.new(
+  :organization_id,
+  :cursor,
+  :limit,
+  keyword_init: true
+)
+
+# AgentConnectionTriggerSubscription entity data model.
+#
+# @!attribute [rw] agent_connection_id
+#   @return [String]
+#
+# @!attribute [rw] configuration
+#   @return [Hash]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] defaults
+#   @return [Hash]
+#
+# @!attribute [rw] delivery
+#   @return [String]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] failure_code
+#   @return [Object]
+#
+# @!attribute [rw] failure_request_id
+#   @return [Object]
 #
 # @!attribute [rw] id
 #   @return [String]
 #
-# @!attribute [rw] organization_id
+# @!attribute [rw] latency
 #   @return [String]
-AgentConnectionLoadMatch = Struct.new(
-  :agent_id,
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] reconcile_at
+#   @return [String]
+#
+# @!attribute [rw] reconciliation_uncertain
+#   @return [Boolean]
+#
+# @!attribute [rw] remote_enabled
+#   @return [Object]
+#
+# @!attribute [rw] replacement_id
+#   @return [Object]
+#
+# @!attribute [rw] retired_at
+#   @return [Object]
+#
+# @!attribute [rw] retirement_completed_at
+#   @return [Object]
+#
+# @!attribute [rw] schema
+#   @return [Hash]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] toolkit
+#   @return [String]
+#
+# @!attribute [rw] toolkit_version
+#   @return [String]
+#
+# @!attribute [rw] trigger_slug
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] version
+#   @return [String]
+#
+# @!attribute [rw] waiting_for_retirement
+#   @return [Boolean]
+AgentConnectionTriggerSubscription = Struct.new(
+  :agent_connection_id,
+  :configuration,
+  :created_at,
+  :defaults,
+  :delivery,
+  :enabled,
+  :failure_code,
+  :failure_request_id,
   :id,
-  :organization_id,
+  :latency,
+  :name,
+  :reconcile_at,
+  :reconciliation_uncertain,
+  :remote_enabled,
+  :replacement_id,
+  :retired_at,
+  :retirement_completed_at,
+  :schema,
+  :slug,
+  :status,
+  :toolkit,
+  :toolkit_version,
+  :trigger_slug,
+  :updated_at,
+  :version,
+  :waiting_for_retirement,
   keyword_init: true
 )
 
-# Request payload for AgentConnection#list.
+# Request payload for AgentConnectionTriggerSubscription#list.
 #
-# @!attribute [rw] agent_id
+# @!attribute [rw] agent_connection_id
 #   @return [String]
 #
 # @!attribute [rw] organization_id
@@ -781,58 +1732,38 @@ AgentConnectionLoadMatch = Struct.new(
 #
 # @!attribute [rw] limit
 #   @return [Integer, nil]
-#
-# @!attribute [rw] selected_connection_id
-#   @return [String, nil]
-AgentConnectionListMatch = Struct.new(
-  :agent_id,
+AgentConnectionTriggerSubscriptionListMatch = Struct.new(
+  :agent_connection_id,
   :organization_id,
   :cursor,
   :limit,
-  :selected_connection_id,
   keyword_init: true
 )
 
-# Request payload for AgentConnection#create.
+# Request payload for AgentConnectionTriggerSubscription#create.
 #
-# @!attribute [rw] agent_id
+# @!attribute [rw] agent_connection_id
 #   @return [String]
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 #
-# @!attribute [rw] agent_card_url
+# @!attribute [rw] configuration
+#   @return [Hash]
+#
+# @!attribute [rw] trigger_slug
 #   @return [String]
-#
-# @!attribute [rw] auth_scheme
-#   @return [String]
-#
-# @!attribute [rw] credential
-#   @return [Object, nil]
-#
-# @!attribute [rw] name
-#   @return [String]
-#
-# @!attribute [rw] remote_agent
-#   @return [Object, nil]
-#
-# @!attribute [rw] source_operation_id
-#   @return [Object, nil]
-AgentConnectionCreateData = Struct.new(
-  :agent_id,
+AgentConnectionTriggerSubscriptionCreateData = Struct.new(
+  :agent_connection_id,
   :organization_id,
-  :agent_card_url,
-  :auth_scheme,
-  :credential,
-  :name,
-  :remote_agent,
-  :source_operation_id,
+  :configuration,
+  :trigger_slug,
   keyword_init: true
 )
 
-# Request payload for AgentConnection#update.
+# Request payload for AgentConnectionTriggerSubscription#update.
 #
-# @!attribute [rw] agent_id
+# @!attribute [rw] agent_connection_id
 #   @return [String]
 #
 # @!attribute [rw] id
@@ -841,46 +1772,89 @@ AgentConnectionCreateData = Struct.new(
 # @!attribute [rw] organization_id
 #   @return [String]
 #
-# @!attribute [rw] auth_scheme
+# @!attribute [rw] enabled
+#   @return [Boolean, nil]
+AgentConnectionTriggerSubscriptionUpdateData = Struct.new(
+  :agent_connection_id,
+  :id,
+  :organization_id,
+  :enabled,
+  keyword_init: true
+)
+
+# Request payload for AgentConnectionTriggerSubscription#patch.
+#
+# @!attribute [rw] agent_connection_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean, nil]
+AgentConnectionTriggerSubscriptionPatchData = Struct.new(
+  :agent_connection_id,
+  :id,
+  :organization_id,
+  :enabled,
+  keyword_init: true
+)
+
+# Request payload for AgentConnectionTriggerSubscription#remove.
+#
+# @!attribute [rw] agent_connection_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+AgentConnectionTriggerSubscriptionRemoveMatch = Struct.new(
+  :agent_connection_id,
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# AgentContextCheckpoint entity data model.
+#
+# @!attribute [rw] id
 #   @return [String, nil]
+AgentContextCheckpoint = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for AgentContextCheckpoint#load.
 #
-# @!attribute [rw] credential
-#   @return [Object, nil]
+# @!attribute [rw] change_id
+#   @return [String]
 #
-# @!attribute [rw] expected_generation
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] expected_commit_id
+#   @return [String]
+#
+# @!attribute [rw] max_byte
 #   @return [Integer, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] remote_agent
-#   @return [Object, nil]
-AgentConnectionUpdateData = Struct.new(
-  :agent_id,
+AgentContextCheckpointLoadMatch = Struct.new(
+  :change_id,
   :id,
   :organization_id,
-  :auth_scheme,
-  :credential,
-  :expected_generation,
-  :name,
-  :remote_agent,
-  keyword_init: true
-)
-
-# Request payload for AgentConnection#remove.
-#
-# @!attribute [rw] agent_id
-#   @return [String]
-#
-# @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-AgentConnectionRemoveMatch = Struct.new(
-  :agent_id,
-  :id,
-  :organization_id,
+  :repo_id,
+  :expected_commit_id,
+  :max_byte,
   keyword_init: true
 )
 
@@ -1072,6 +2046,31 @@ AgentEmailLoadMatch = Struct.new(
   keyword_init: true
 )
 
+# AgentEvent entity data model.
+class AgentEvent
+end
+
+# Request payload for AgentEvent#list.
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] conversation_id
+#   @return [String, nil]
+#
+# @!attribute [rw] device_activity_provider
+#   @return [String, nil]
+AgentEventListMatch = Struct.new(
+  :agent_id,
+  :organization_id,
+  :conversation_id,
+  :device_activity_provider,
+  keyword_init: true
+)
+
 # AgentFile entity data model.
 #
 # @!attribute [rw] content_type
@@ -1209,47 +2208,59 @@ AgentInputCreateData = Struct.new(
 # @!attribute [rw] account_counts
 #   @return [Hash]
 #
-# @!attribute [rw] accounts_path
-#   @return [String]
+# @!attribute [rw] can_cancel_sign_in
+#   @return [Boolean, nil]
 #
-# @!attribute [rw] added_toolkits
-#   @return [Array]
+# @!attribute [rw] can_delete
+#   @return [Boolean]
+#
+# @!attribute [rw] can_disconnect
+#   @return [Boolean]
+#
+# @!attribute [rw] can_enable
+#   @return [Boolean]
 #
 # @!attribute [rw] can_manage
 #   @return [Boolean]
 #
-# @!attribute [rw] can_manage_organization
+# @!attribute [rw] can_manage_sharing
+#   @return [Boolean]
+#
+# @!attribute [rw] can_reconnect
+#   @return [Boolean]
+#
+# @!attribute [rw] can_sync
 #   @return [Boolean]
 #
 # @!attribute [rw] catalog
 #   @return [Array]
 #
-# @!attribute [rw] connect_as
+# @!attribute [rw] connected_by
 #   @return [Object]
 #
-# @!attribute [rw] connect_as_by_toolkit
-#   @return [Hash]
+# @!attribute [rw] connected_by_you
+#   @return [Boolean]
 #
 # @!attribute [rw] connected_counts
 #   @return [Hash]
 #
-# @!attribute [rw] connection_id
-#   @return [String]
-#
 # @!attribute [rw] connections
 #   @return [Array]
 #
-# @!attribute [rw] email
-#   @return [Hash]
+# @!attribute [rw] creation_key
+#   @return [String, nil]
 #
-# @!attribute [rw] enabled
-#   @return [Boolean]
-#
-# @!attribute [rw] enabled_toolkits
-#   @return [Array]
+# @!attribute [rw] creation_key_digest
+#   @return [Object, nil]
 #
 # @!attribute [rw] generation
 #   @return [Integer]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
 #
 # @!attribute [rw] pagination
 #   @return [Hash]
@@ -1257,63 +2268,89 @@ AgentInputCreateData = Struct.new(
 # @!attribute [rw] pending_counts
 #   @return [Hash]
 #
-# @!attribute [rw] personal_creation_key_supported
-#   @return [Boolean, nil]
+# @!attribute [rw] provider_disabled_reason
+#   @return [Object]
 #
-# @!attribute [rw] private_agent
-#   @return [Boolean]
-#
-# @!attribute [rw] shared_agent_personal_accounts_enabled
-#   @return [Boolean]
-#
-# @!attribute [rw] slack
+# @!attribute [rw] provider_identity
 #   @return [Hash]
 #
-# @!attribute [rw] webhook_connections
-#   @return [Array]
+# @!attribute [rw] provider_name
+#   @return [Object]
 #
-# @!attribute [rw] webhooks_available
+# @!attribute [rw] reference
+#   @return [String]
+#
+# @!attribute [rw] sharing_status
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] team_sharing_enabled
 #   @return [Boolean]
+#
+# @!attribute [rw] team_sharing_version
+#   @return [Integer]
+#
+# @!attribute [rw] toolkit
+#   @return [String]
 AgentIntegration = Struct.new(
   :account_counts,
-  :accounts_path,
-  :added_toolkits,
+  :can_cancel_sign_in,
+  :can_delete,
+  :can_disconnect,
+  :can_enable,
   :can_manage,
-  :can_manage_organization,
+  :can_manage_sharing,
+  :can_reconnect,
+  :can_sync,
   :catalog,
-  :connect_as,
-  :connect_as_by_toolkit,
+  :connected_by,
+  :connected_by_you,
   :connected_counts,
-  :connection_id,
   :connections,
-  :email,
-  :enabled,
-  :enabled_toolkits,
+  :creation_key,
+  :creation_key_digest,
   :generation,
+  :id,
+  :name,
   :pagination,
   :pending_counts,
-  :personal_creation_key_supported,
-  :private_agent,
-  :shared_agent_personal_accounts_enabled,
-  :slack,
-  :webhook_connections,
-  :webhooks_available,
+  :provider_disabled_reason,
+  :provider_identity,
+  :provider_name,
+  :reference,
+  :sharing_status,
+  :status,
+  :team_sharing_enabled,
+  :team_sharing_version,
+  :toolkit,
+  keyword_init: true
+)
+
+# Request payload for AgentIntegration#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+AgentIntegrationLoadMatch = Struct.new(
+  :id,
+  :organization_id,
   keyword_init: true
 )
 
 # Request payload for AgentIntegration#list.
 #
-# @!attribute [rw] agent_id
-#   @return [String]
-#
 # @!attribute [rw] organization_id
 #   @return [String]
 #
-# @!attribute [rw] catalog_q
-#   @return [String, nil]
-#
 # @!attribute [rw] cursor
 #   @return [String, nil]
+#
+# @!attribute [rw] enableable
+#   @return [Boolean, nil]
 #
 # @!attribute [rw] limit
 #   @return [Integer, nil]
@@ -1324,10 +2361,9 @@ AgentIntegration = Struct.new(
 # @!attribute [rw] toolkit
 #   @return [String, nil]
 AgentIntegrationListMatch = Struct.new(
-  :agent_id,
   :organization_id,
-  :catalog_q,
   :cursor,
+  :enableable,
   :limit,
   :q,
   :toolkit,
@@ -1336,14 +2372,137 @@ AgentIntegrationListMatch = Struct.new(
 
 # Request payload for AgentIntegration#create.
 #
-# @!attribute [rw] agent_id
+# @!attribute [rw] organization_id
 #   @return [String]
+#
+# @!attribute [rw] creation_key
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] toolkit
+#   @return [String]
+AgentIntegrationCreateData = Struct.new(
+  :organization_id,
+  :creation_key,
+  :name,
+  :toolkit,
+  keyword_init: true
+)
+
+# Request payload for AgentIntegration#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+AgentIntegrationRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# AgentIntegrationAccount entity data model.
+#
+# @!attribute [rw] can_cancel_sign_in
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] can_delete
+#   @return [Boolean]
+#
+# @!attribute [rw] can_disconnect
+#   @return [Boolean]
+#
+# @!attribute [rw] can_enable
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_sharing
+#   @return [Boolean]
+#
+# @!attribute [rw] can_reconnect
+#   @return [Boolean]
+#
+# @!attribute [rw] can_sync
+#   @return [Boolean]
+#
+# @!attribute [rw] connected_by
+#   @return [Object]
+#
+# @!attribute [rw] connected_by_you
+#   @return [Boolean]
+#
+# @!attribute [rw] creation_key_digest
+#   @return [Object, nil]
+#
+# @!attribute [rw] generation
+#   @return [Integer]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] provider_disabled_reason
+#   @return [Object]
+#
+# @!attribute [rw] provider_identity
+#   @return [Hash]
+#
+# @!attribute [rw] reference
+#   @return [String]
+#
+# @!attribute [rw] sharing_status
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] team_sharing_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] team_sharing_version
+#   @return [Integer]
+#
+# @!attribute [rw] toolkit
+#   @return [String]
+AgentIntegrationAccount = Struct.new(
+  :can_cancel_sign_in,
+  :can_delete,
+  :can_disconnect,
+  :can_enable,
+  :can_manage_sharing,
+  :can_reconnect,
+  :can_sync,
+  :connected_by,
+  :connected_by_you,
+  :creation_key_digest,
+  :generation,
+  :id,
+  :name,
+  :provider_disabled_reason,
+  :provider_identity,
+  :reference,
+  :sharing_status,
+  :status,
+  :team_sharing_enabled,
+  :team_sharing_version,
+  :toolkit,
+  keyword_init: true
+)
+
+# Request payload for AgentIntegrationAccount#list.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 #
 # @!attribute [rw] cursor
 #   @return [String, nil]
+#
+# @!attribute [rw] enableable
+#   @return [Boolean, nil]
 #
 # @!attribute [rw] limit
 #   @return [Integer, nil]
@@ -1353,25 +2512,34 @@ AgentIntegrationListMatch = Struct.new(
 #
 # @!attribute [rw] toolkit
 #   @return [String, nil]
+AgentIntegrationAccountListMatch = Struct.new(
+  :organization_id,
+  :cursor,
+  :enableable,
+  :limit,
+  :q,
+  :toolkit,
+  keyword_init: true
+)
+
+# AgentIntegrationCallback entity data model.
+class AgentIntegrationCallback
+end
+
+# Request payload for AgentIntegrationCallback#load.
+#
+# @!attribute [rw] code
+#   @return [String, nil]
 #
 # @!attribute [rw] connection_id
 #   @return [String]
 #
-# @!attribute [rw] enabled
-#   @return [Boolean]
-#
-# @!attribute [rw] generation
-#   @return [Integer]
-AgentIntegrationCreateData = Struct.new(
-  :agent_id,
-  :organization_id,
-  :cursor,
-  :limit,
-  :q,
-  :toolkit,
+# @!attribute [rw] state
+#   @return [String]
+AgentIntegrationCallbackLoadMatch = Struct.new(
+  :code,
   :connection_id,
-  :enabled,
-  :generation,
+  :state,
   keyword_init: true
 )
 
@@ -2344,6 +3512,205 @@ AgentQuestionCreateData = Struct.new(
   keyword_init: true
 )
 
+# AgentRelayFileGrant entity data model.
+#
+# @!attribute [rw] access_mode
+#   @return [String]
+#
+# @!attribute [rw] connection_generation
+#   @return [Integer]
+#
+# @!attribute [rw] connection_id
+#   @return [String]
+#
+# @!attribute [rw] connection_name
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] expected_generation
+#   @return [Integer]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] key
+#   @return [String]
+#
+# @!attribute [rw] provider
+#   @return [String]
+#
+# @!attribute [rw] resource_id
+#   @return [String]
+#
+# @!attribute [rw] resource_kind
+#   @return [String]
+#
+# @!attribute [rw] revoked
+#   @return [Boolean]
+#
+# @!attribute [rw] revoked_at
+#   @return [Object]
+#
+# @!attribute [rw] snapshot_supported
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] source_operation_id
+#   @return [String]
+AgentRelayFileGrant = Struct.new(
+  :access_mode,
+  :connection_generation,
+  :connection_id,
+  :connection_name,
+  :created_at,
+  :expected_generation,
+  :id,
+  :key,
+  :provider,
+  :resource_id,
+  :resource_kind,
+  :revoked,
+  :revoked_at,
+  :snapshot_supported,
+  :source_operation_id,
+  keyword_init: true
+)
+
+# Request payload for AgentRelayFileGrant#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+AgentRelayFileGrantLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for AgentRelayFileGrant#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] request_key
+#   @return [String, nil]
+#
+# @!attribute [rw] source_operation_id
+#   @return [String, nil]
+AgentRelayFileGrantListMatch = Struct.new(
+  :organization_id,
+  :cursor,
+  :limit,
+  :request_key,
+  :source_operation_id,
+  keyword_init: true
+)
+
+# Request payload for AgentRelayFileGrant#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] access_mode
+#   @return [String]
+#
+# @!attribute [rw] connection_id
+#   @return [String]
+#
+# @!attribute [rw] expected_generation
+#   @return [Integer]
+#
+# @!attribute [rw] key
+#   @return [String]
+#
+# @!attribute [rw] resource_id
+#   @return [String]
+#
+# @!attribute [rw] resource_kind
+#   @return [String]
+#
+# @!attribute [rw] source_operation_id
+#   @return [String]
+AgentRelayFileGrantCreateData = Struct.new(
+  :organization_id,
+  :access_mode,
+  :connection_id,
+  :expected_generation,
+  :key,
+  :resource_id,
+  :resource_kind,
+  :source_operation_id,
+  keyword_init: true
+)
+
+# Request payload for AgentRelayFileGrant#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+AgentRelayFileGrantRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# AgentRelayFileGrantAccount entity data model.
+#
+# @!attribute [rw] access_modes
+#   @return [Array, nil]
+#
+# @!attribute [rw] generation
+#   @return [Integer]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] provider
+#   @return [String]
+#
+# @!attribute [rw] resource_kind
+#   @return [String]
+AgentRelayFileGrantAccount = Struct.new(
+  :access_modes,
+  :generation,
+  :id,
+  :name,
+  :provider,
+  :resource_kind,
+  keyword_init: true
+)
+
+# Request payload for AgentRelayFileGrantAccount#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] source_operation_id
+#   @return [String]
+AgentRelayFileGrantAccountListMatch = Struct.new(
+  :organization_id,
+  :cursor,
+  :source_operation_id,
+  keyword_init: true
+)
+
 # AgentRepository entity data model.
 #
 # @!attribute [rw] can_manage
@@ -2446,6 +3813,44 @@ AgentResource = Struct.new(
 AgentResourceListMatch = Struct.new(
   :agent_id,
   :organization_id,
+  keyword_init: true
+)
+
+# AgentRoder entity data model.
+class AgentRoder
+end
+
+# Request payload for AgentRoder#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+AgentRoderLoadMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for AgentRoder#create.
+#
+# @!attribute [rw] checkpoint_handoff
+#   @return [Object, nil]
+#
+# @!attribute [rw] github_repository
+#   @return [Object, nil]
+#
+# @!attribute [rw] organization_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] repository_slug
+#   @return [Object, nil]
+#
+# @!attribute [rw] session_purpose
+#   @return [Object, nil]
+AgentRoderCreateData = Struct.new(
+  :checkpoint_handoff,
+  :github_repository,
+  :organization_id,
+  :repository_slug,
+  :session_purpose,
   keyword_init: true
 )
 
@@ -2676,6 +4081,158 @@ AgentRuntimeCreateData = Struct.new(
   keyword_init: true
 )
 
+# AgentSession entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+AgentSession = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for AgentSession#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] around_event
+#   @return [Integer, nil]
+#
+# @!attribute [rw] checkpoint
+#   @return [String, nil]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] event_digest
+#   @return [String, nil]
+#
+# @!attribute [rw] include_tool
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] max_byte
+#   @return [Integer, nil]
+#
+# @!attribute [rw] source_ref
+#   @return [String, nil]
+AgentSessionLoadMatch = Struct.new(
+  :id,
+  :around_event,
+  :checkpoint,
+  :cursor,
+  :event_digest,
+  :include_tool,
+  :limit,
+  :max_byte,
+  :source_ref,
+  keyword_init: true
+)
+
+# AgentSessionCheckpoint entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+AgentSessionCheckpoint = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for AgentSessionCheckpoint#load.
+#
+# @!attribute [rw] agent_session_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+AgentSessionCheckpointLoadMatch = Struct.new(
+  :agent_session_id,
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for AgentSessionCheckpoint#list.
+#
+# @!attribute [rw] agent_session_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+AgentSessionCheckpointListMatch = Struct.new(
+  :agent_session_id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for AgentSessionCheckpoint#create.
+#
+# @!attribute [rw] agent_session_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+AgentSessionCheckpointCreateData = Struct.new(
+  :agent_session_id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# AgentSessionRoderHandoff entity data model.
+#
+# @!attribute [rw] checkpoint_id
+#   @return [String, nil]
+#
+# @!attribute [rw] purpose
+#   @return [String, nil]
+AgentSessionRoderHandoff = Struct.new(
+  :checkpoint_id,
+  :purpose,
+  keyword_init: true
+)
+
+# Request payload for AgentSessionRoderHandoff#create.
+#
+# @!attribute [rw] agent_session_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] checkpoint_id
+#   @return [String, nil]
+#
+# @!attribute [rw] purpose
+#   @return [String, nil]
+AgentSessionRoderHandoffCreateData = Struct.new(
+  :agent_session_id,
+  :organization_id,
+  :repo_id,
+  :checkpoint_id,
+  :purpose,
+  keyword_init: true
+)
+
 # AgentSetting entity data model.
 #
 # @!attribute [rw] can_manage
@@ -2750,22 +4307,34 @@ AgentSharingLoadMatch = Struct.new(
 
 # AgentSite entity data model.
 #
-# @!attribute [rw] deployed_at
-#   @return [String]
+# @!attribute [rw] author
+#   @return [Hash]
+#
+# @!attribute [rw] can_message
+#   @return [Boolean]
 #
 # @!attribute [rw] deployments_count
 #   @return [Integer]
 #
-# @!attribute [rw] hostname
-#   @return [String]
+# @!attribute [rw] description
+#   @return [Object]
 #
-# @!attribute [rw] https
-#   @return [String]
+# @!attribute [rw] icon_url
+#   @return [Object]
 #
 # @!attribute [rw] id
 #   @return [String]
 #
 # @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] owner
+#   @return [Hash]
+#
+# @!attribute [rw] thread
+#   @return [Object]
+#
+# @!attribute [rw] title
 #   @return [String]
 #
 # @!attribute [rw] url
@@ -2774,114 +4343,215 @@ AgentSharingLoadMatch = Struct.new(
 # @!attribute [rw] visibility
 #   @return [String]
 AgentSite = Struct.new(
-  :deployed_at,
+  :author,
+  :can_message,
   :deployments_count,
-  :hostname,
-  :https,
+  :description,
+  :icon_url,
   :id,
   :name,
+  :owner,
+  :thread,
+  :title,
   :url,
   :visibility,
   keyword_init: true
 )
 
-# Request payload for AgentSite#list.
+# Request payload for AgentSite#load.
 #
-# @!attribute [rw] agent_id
+# @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+AgentSiteLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for AgentSite#list.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 #
 # @!attribute [rw] cursor
 #   @return [String, nil]
-#
-# @!attribute [rw] limit
-#   @return [Integer, nil]
 AgentSiteListMatch = Struct.new(
-  :agent_id,
   :organization_id,
   :cursor,
-  :limit,
+  keyword_init: true
+)
+
+# Request payload for AgentSite#create.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] surface
+#   @return [Object, nil]
+#
+# @!attribute [rw] view
+#   @return [Object, nil]
+AgentSiteCreateData = Struct.new(
+  :id,
+  :organization_id,
+  :surface,
+  :view,
   keyword_init: true
 )
 
 # AgentSkill entity data model.
 #
-# @!attribute [rw] available
+# @!attribute [rw] agents
+#   @return [Array]
+#
+# @!attribute [rw] audience
+#   @return [Hash]
+#
+# @!attribute [rw] can_manage_library
 #   @return [Boolean]
 #
-# @!attribute [rw] can_configure
-#   @return [Boolean]
+# @!attribute [rw] content
+#   @return [String]
 #
-# @!attribute [rw] can_manage
-#   @return [Boolean]
+# @!attribute [rw] files
+#   @return [Array]
 #
-# @!attribute [rw] configuration_state
+# @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] description
-#   @return [String]
+# @!attribute [rw] marketplace
+#   @return [String, nil]
 #
-# @!attribute [rw] enabled
+# @!attribute [rw] pending
 #   @return [Boolean]
 #
-# @!attribute [rw] name
+# @!attribute [rw] plugin
+#   @return [String, nil]
+#
+# @!attribute [rw] revision
 #   @return [String]
+#
+# @!attribute [rw] skill
+#   @return [Hash]
 #
 # @!attribute [rw] skills
 #   @return [Array]
 #
-# @!attribute [rw] version
-#   @return [String]
+# @!attribute [rw] source
+#   @return [String, nil]
 AgentSkill = Struct.new(
-  :available,
-  :can_configure,
-  :can_manage,
-  :configuration_state,
-  :description,
-  :enabled,
-  :name,
+  :agents,
+  :audience,
+  :can_manage_library,
+  :content,
+  :files,
+  :id,
+  :marketplace,
+  :pending,
+  :plugin,
+  :revision,
+  :skill,
   :skills,
-  :version,
+  :source,
+  keyword_init: true
+)
+
+# Request payload for AgentSkill#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+AgentSkillLoadMatch = Struct.new(
+  :id,
+  :organization_id,
   keyword_init: true
 )
 
 # Request payload for AgentSkill#list.
 #
-# @!attribute [rw] agent_id
-#   @return [String]
-#
 # @!attribute [rw] organization_id
 #   @return [String]
 AgentSkillListMatch = Struct.new(
-  :agent_id,
   :organization_id,
   keyword_init: true
 )
 
 # Request payload for AgentSkill#create.
 #
-# @!attribute [rw] agent_id
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] audience
+#   @return [Hash]
+#
+# @!attribute [rw] marketplace
+#   @return [String, nil]
+#
+# @!attribute [rw] plugin
+#   @return [String, nil]
+#
+# @!attribute [rw] revision
+#   @return [String]
+#
+# @!attribute [rw] skills
+#   @return [Array]
+#
+# @!attribute [rw] source
+#   @return [String, nil]
+AgentSkillCreateData = Struct.new(
+  :organization_id,
+  :audience,
+  :marketplace,
+  :plugin,
+  :revision,
+  :skills,
+  :source,
+  keyword_init: true
+)
+
+# Request payload for AgentSkill#update.
+#
+# @!attribute [rw] id
 #   @return [String]
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 #
-# @!attribute [rw] enabled
-#   @return [Boolean]
+# @!attribute [rw] agent_ids
+#   @return [Object, nil]
 #
-# @!attribute [rw] name
-#   @return [String]
+# @!attribute [rw] mode
+#   @return [Object, nil]
 #
-# @!attribute [rw] version
-#   @return [String]
-AgentSkillCreateData = Struct.new(
-  :agent_id,
+# @!attribute [rw] new_agents
+#   @return [Object, nil]
+AgentSkillUpdateData = Struct.new(
+  :id,
   :organization_id,
-  :enabled,
-  :name,
-  :version,
+  :agent_ids,
+  :mode,
+  :new_agents,
+  keyword_init: true
+)
+
+# Request payload for AgentSkill#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+AgentSkillRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
   keyword_init: true
 )
 
@@ -3090,6 +4760,315 @@ AgentSubscriptionCreateData = Struct.new(
   keyword_init: true
 )
 
+# AgentSwarm entity data model.
+#
+# @!attribute [rw] base_bookmark
+#   @return [Object]
+#
+# @!attribute [rw] base_ref
+#   @return [Object]
+#
+# @!attribute [rw] base_revision
+#   @return [Object]
+#
+# @!attribute [rw] budget
+#   @return [Hash]
+#
+# @!attribute [rw] canceled_at
+#   @return [Object]
+#
+# @!attribute [rw] canceled_count
+#   @return [Integer]
+#
+# @!attribute [rw] concurrency_key
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] creator_user_id
+#   @return [Object]
+#
+# @!attribute [rw] deadline_at
+#   @return [Object]
+#
+# @!attribute [rw] display_id
+#   @return [Integer]
+#
+# @!attribute [rw] done_count
+#   @return [Integer]
+#
+# @!attribute [rw] environment
+#   @return [Hash]
+#
+# @!attribute [rw] failed_count
+#   @return [Integer]
+#
+# @!attribute [rw] finished_at
+#   @return [Object]
+#
+# @!attribute [rw] finished_at_label
+#   @return [Object]
+#
+# @!attribute [rw] github
+#   @return [Hash]
+#
+# @!attribute [rw] goal
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] model
+#   @return [Object]
+#
+# @!attribute [rw] model_provider
+#   @return [Object]
+#
+# @!attribute [rw] number
+#   @return [Integer]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] organization_slug
+#   @return [Object]
+#
+# @!attribute [rw] outcome
+#   @return [Object]
+#
+# @!attribute [rw] phase
+#   @return [Object]
+#
+# @!attribute [rw] policy
+#   @return [Hash]
+#
+# @!attribute [rw] queued_at
+#   @return [Object]
+#
+# @!attribute [rw] queued_at_label
+#   @return [Object]
+#
+# @!attribute [rw] repository
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_id
+#   @return [Object]
+#
+# @!attribute [rw] repository_slug
+#   @return [Object]
+#
+# @!attribute [rw] reserved
+#   @return [Hash]
+#
+# @!attribute [rw] scheduler_generation
+#   @return [Integer]
+#
+# @!attribute [rw] skipped_count
+#   @return [Integer]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] started_at
+#   @return [Object]
+#
+# @!attribute [rw] started_at_label
+#   @return [Object]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] summary
+#   @return [Hash]
+#
+# @!attribute [rw] target
+#   @return [Hash]
+#
+# @!attribute [rw] task_count
+#   @return [Integer]
+#
+# @!attribute [rw] task_template_json
+#   @return [Object]
+#
+# @!attribute [rw] tasks
+#   @return [Array]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+#
+# @!attribute [rw] usage
+#   @return [Hash]
+AgentSwarm = Struct.new(
+  :base_bookmark,
+  :base_ref,
+  :base_revision,
+  :budget,
+  :canceled_at,
+  :canceled_count,
+  :concurrency_key,
+  :created_at,
+  :created_at_label,
+  :creator_user_id,
+  :deadline_at,
+  :display_id,
+  :done_count,
+  :environment,
+  :failed_count,
+  :finished_at,
+  :finished_at_label,
+  :github,
+  :goal,
+  :id,
+  :model,
+  :model_provider,
+  :number,
+  :organization_id,
+  :organization_slug,
+  :outcome,
+  :phase,
+  :policy,
+  :queued_at,
+  :queued_at_label,
+  :repository,
+  :repository_id,
+  :repository_slug,
+  :reserved,
+  :scheduler_generation,
+  :skipped_count,
+  :slug,
+  :started_at,
+  :started_at_label,
+  :status,
+  :summary,
+  :target,
+  :task_count,
+  :task_template_json,
+  :tasks,
+  :updated_at,
+  :updated_at_label,
+  :usage,
+  keyword_init: true
+)
+
+# Request payload for AgentSwarm#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+AgentSwarmLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for AgentSwarm#list.
+#
+# @!attribute [rw] org
+#   @return [String]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] per_page
+#   @return [Integer, nil]
+AgentSwarmListMatch = Struct.new(
+  :org,
+  :page,
+  :per_page,
+  keyword_init: true
+)
+
+# Request payload for AgentSwarm#create.
+#
+# @!attribute [rw] base_bookmark
+#   @return [Object, nil]
+#
+# @!attribute [rw] base_ref
+#   @return [Object, nil]
+#
+# @!attribute [rw] base_revision
+#   @return [Object, nil]
+#
+# @!attribute [rw] budget
+#   @return [Hash, nil]
+#
+# @!attribute [rw] concurrency_key
+#   @return [Object, nil]
+#
+# @!attribute [rw] environment
+#   @return [Hash, nil]
+#
+# @!attribute [rw] goal
+#   @return [Object, nil]
+#
+# @!attribute [rw] model
+#   @return [Object, nil]
+#
+# @!attribute [rw] model_provider
+#   @return [Object, nil]
+#
+# @!attribute [rw] organization_slug
+#   @return [Object]
+#
+# @!attribute [rw] policy
+#   @return [Hash, nil]
+#
+# @!attribute [rw] queued_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] repository
+#   @return [String, nil]
+#
+# @!attribute [rw] slug
+#   @return [String, nil]
+#
+# @!attribute [rw] target
+#   @return [Hash]
+#
+# @!attribute [rw] task_template_json
+#   @return [Object, nil]
+#
+# @!attribute [rw] tasks
+#   @return [Array, nil]
+AgentSwarmCreateData = Struct.new(
+  :base_bookmark,
+  :base_ref,
+  :base_revision,
+  :budget,
+  :concurrency_key,
+  :environment,
+  :goal,
+  :model,
+  :model_provider,
+  :organization_slug,
+  :policy,
+  :queued_at,
+  :repository,
+  :slug,
+  :target,
+  :task_template_json,
+  :tasks,
+  keyword_init: true
+)
+
+# Request payload for AgentSwarm#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] policy
+#   @return [Hash, nil]
+AgentSwarmUpdateData = Struct.new(
+  :id,
+  :policy,
+  keyword_init: true
+)
+
 # AgentTeammate entity data model.
 #
 # @!attribute [rw] avatar
@@ -3151,170 +5130,34 @@ AgentTerminalCreateData = Struct.new(
 
 # AgentThread entity data model.
 #
-# @!attribute [rw] archived_count
-#   @return [Object, nil]
-#
-# @!attribute [rw] can_create
-#   @return [Boolean]
-#
-# @!attribute [rw] execution
-#   @return [Object, nil]
-#
-# @!attribute [rw] first_input
-#   @return [Object, nil]
-#
-# @!attribute [rw] first_input_key
-#   @return [String, nil]
-#
-# @!attribute [rw] first_input_requester_membership_id
-#   @return [String, nil]
-#
 # @!attribute [rw] id
 #   @return [String, nil]
-#
-# @!attribute [rw] inherit_context
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] local_activities
-#   @return [Hash]
-#
-# @!attribute [rw] local_archived_count
-#   @return [Integer]
-#
-# @!attribute [rw] local_next_cursor
-#   @return [Object]
-#
-# @!attribute [rw] local_scope_key
-#   @return [Object]
-#
-# @!attribute [rw] local_status_pending
-#   @return [Boolean]
-#
-# @!attribute [rw] local_threads
-#   @return [Array]
-#
-# @!attribute [rw] main_thread_id
-#   @return [String]
-#
-# @!attribute [rw] message
-#   @return [String, nil]
-#
-# @!attribute [rw] next_cursor
-#   @return [Object]
-#
-# @!attribute [rw] parent_conversation_id
-#   @return [String, nil]
-#
-# @!attribute [rw] requester_membership_id
-#   @return [String, nil]
-#
-# @!attribute [rw] selected_thread
-#   @return [Object]
-#
-# @!attribute [rw] thread
-#   @return [Hash]
-#
-# @!attribute [rw] threads
-#   @return [Array]
-#
-# @!attribute [rw] title
-#   @return [String, nil]
-#
-# @!attribute [rw] total_archived_count
-#   @return [Object]
 AgentThread = Struct.new(
-  :archived_count,
-  :can_create,
-  :execution,
-  :first_input,
-  :first_input_key,
-  :first_input_requester_membership_id,
   :id,
-  :inherit_context,
-  :local_activities,
-  :local_archived_count,
-  :local_next_cursor,
-  :local_scope_key,
-  :local_status_pending,
-  :local_threads,
-  :main_thread_id,
-  :message,
-  :next_cursor,
-  :parent_conversation_id,
-  :requester_membership_id,
-  :selected_thread,
-  :thread,
-  :threads,
-  :title,
-  :total_archived_count,
+  keyword_init: true
+)
+
+# Request payload for AgentThread#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+AgentThreadLoadMatch = Struct.new(
+  :id,
   keyword_init: true
 )
 
 # Request payload for AgentThread#list.
 #
-# @!attribute [rw] agent_id
-#   @return [String]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] archived
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] conversation_id
-#   @return [String, nil]
-#
-# @!attribute [rw] cursor
-#   @return [String, nil]
-#
-# @!attribute [rw] local_cursor
+# @!attribute [rw] id
 #   @return [String, nil]
 AgentThreadListMatch = Struct.new(
-  :agent_id,
-  :organization_id,
-  :archived,
-  :conversation_id,
-  :cursor,
-  :local_cursor,
+  :id,
   keyword_init: true
 )
 
 # Request payload for AgentThread#create.
-#
-# @!attribute [rw] agent_id
-#   @return [String]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] execution
-#   @return [Object, nil]
-#
-# @!attribute [rw] inherit_context
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] message
-#   @return [String, nil]
-#
-# @!attribute [rw] parent_conversation_id
-#   @return [String, nil]
-#
-# @!attribute [rw] requester_membership_id
-#   @return [String, nil]
-#
-# @!attribute [rw] title
-#   @return [String, nil]
-AgentThreadCreateData = Struct.new(
-  :agent_id,
-  :organization_id,
-  :execution,
-  :inherit_context,
-  :message,
-  :parent_conversation_id,
-  :requester_membership_id,
-  :title,
-  keyword_init: true
-)
+class AgentThreadCreateData
+end
 
 # AgentTool entity data model.
 #
@@ -3343,6 +5186,56 @@ AgentTool = Struct.new(
 AgentToolListMatch = Struct.new(
   :agent_id,
   :organization_id,
+  keyword_init: true
+)
+
+# AgentUsage entity data model.
+#
+# @!attribute [rw] days
+#   @return [Array]
+#
+# @!attribute [rw] ended_at
+#   @return [String]
+#
+# @!attribute [rw] pricing_version
+#   @return [String]
+#
+# @!attribute [rw] source
+#   @return [String]
+#
+# @!attribute [rw] started_at
+#   @return [String]
+#
+# @!attribute [rw] user_days
+#   @return [Array]
+#
+# @!attribute [rw] users
+#   @return [Array]
+#
+# @!attribute [rw] window
+#   @return [String]
+AgentUsage = Struct.new(
+  :days,
+  :ended_at,
+  :pricing_version,
+  :source,
+  :started_at,
+  :user_days,
+  :users,
+  :window,
+  keyword_init: true
+)
+
+# Request payload for AgentUsage#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] window
+#   @return [String, nil]
+AgentUsageLoadMatch = Struct.new(
+  :organization_id,
+  :window,
   keyword_init: true
 )
 
@@ -3436,6 +5329,40 @@ AgentWaitCreateData = Struct.new(
   :agent_id,
   :id,
   :organization_id,
+  keyword_init: true
+)
+
+# AgentWebPreview entity data model.
+#
+# @!attribute [rw] description
+#   @return [Object]
+#
+# @!attribute [rw] icon_url
+#   @return [Object]
+#
+# @!attribute [rw] image_url
+#   @return [Object]
+#
+# @!attribute [rw] title
+#   @return [Object]
+AgentWebPreview = Struct.new(
+  :description,
+  :icon_url,
+  :image_url,
+  :title,
+  keyword_init: true
+)
+
+# Request payload for AgentWebPreview#list.
+#
+# @!attribute [rw] asset
+#   @return [String, nil]
+#
+# @!attribute [rw] token
+#   @return [String]
+AgentWebPreviewListMatch = Struct.new(
+  :asset,
+  :token,
   keyword_init: true
 )
 
@@ -4383,6 +6310,126 @@ AgentWritePermissionRemoveMatch = Struct.new(
   keyword_init: true
 )
 
+# Agreement entity data model.
+#
+# @!attribute [rw] body
+#   @return [Object]
+#
+# @!attribute [rw] effective_on_label
+#   @return [String]
+#
+# @!attribute [rw] key
+#   @return [String]
+#
+# @!attribute [rw] summary
+#   @return [String]
+#
+# @!attribute [rw] title
+#   @return [String]
+#
+# @!attribute [rw] version
+#   @return [String]
+Agreement = Struct.new(
+  :body,
+  :effective_on_label,
+  :key,
+  :summary,
+  :title,
+  :version,
+  keyword_init: true
+)
+
+# Request payload for Agreement#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+AgreementListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# AgreementAccessRequest entity data model.
+class AgreementAccessRequest
+end
+
+# Request payload for AgreementAccessRequest#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+AgreementAccessRequestCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# AlertRuleEvent entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+AlertRuleEvent = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for AlertRuleEvent#load.
+#
+# @!attribute [rw] alert_rule_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+AlertRuleEventLoadMatch = Struct.new(
+  :alert_rule_id,
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for AlertRuleEvent#list.
+#
+# @!attribute [rw] alert_rule_id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+AlertRuleEventListMatch = Struct.new(
+  :alert_rule_id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for AlertRuleEvent#create.
+#
+# @!attribute [rw] alert_rule_id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+AlertRuleEventCreateData = Struct.new(
+  :alert_rule_id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for AlertRuleEvent#remove.
+#
+# @!attribute [rw] alert_rule_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+AlertRuleEventRemoveMatch = Struct.new(
+  :alert_rule_id,
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
 # AllocationLog entity data model.
 #
 # @!attribute [rw] allocation_id
@@ -4671,6 +6718,22 @@ AppRemoveMatch = Struct.new(
   :id,
   keyword_init: true
 )
+
+# AppAccess entity data model.
+class AppAccess
+end
+
+# Request payload for AppAccess#load.
+class AppAccessLoadMatch
+end
+
+# AppAccessJwk entity data model.
+class AppAccessJwk
+end
+
+# Request payload for AppAccessJwk#list.
+class AppAccessJwkListMatch
+end
 
 # AppCdn entity data model.
 #
@@ -8062,6 +10125,719 @@ AppStorageResourceRemoveMatch = Struct.new(
   keyword_init: true
 )
 
+# Artefact entity data model.
+#
+# @!attribute [rw] automation_invocation_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] byte_size
+#   @return [Integer]
+#
+# @!attribute [rw] checksum_sha256
+#   @return [String]
+#
+# @!attribute [rw] content_type
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] created_by_user_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] description
+#   @return [Object, nil]
+#
+# @!attribute [rw] document_key
+#   @return [String, nil]
+#
+# @!attribute [rw] entrypoint
+#   @return [String, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] filename
+#   @return [String]
+#
+# @!attribute [rw] files
+#   @return [Array, nil]
+#
+# @!attribute [rw] harness
+#   @return [Object, nil]
+#
+# @!attribute [rw] harness_version
+#   @return [Object, nil]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] kind
+#   @return [String]
+#
+# @!attribute [rw] model
+#   @return [Object, nil]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] published_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] repository_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] source
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] title
+#   @return [String]
+#
+# @!attribute [rw] vcs_agent_checkpoint_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] vcs_agent_session_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] version
+#   @return [Integer]
+#
+# @!attribute [rw] view_url
+#   @return [String]
+#
+# @!attribute [rw] web_url
+#   @return [String]
+Artefact = Struct.new(
+  :automation_invocation_id,
+  :byte_size,
+  :checksum_sha256,
+  :content_type,
+  :created_at,
+  :created_by_user_id,
+  :description,
+  :document_key,
+  :entrypoint,
+  :expires_at,
+  :filename,
+  :files,
+  :harness,
+  :harness_version,
+  :id,
+  :kind,
+  :model,
+  :organization_id,
+  :published_at,
+  :repository_id,
+  :slug,
+  :source,
+  :status,
+  :title,
+  :vcs_agent_checkpoint_id,
+  :vcs_agent_session_id,
+  :version,
+  :view_url,
+  :web_url,
+  keyword_init: true
+)
+
+# Request payload for Artefact#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+ArtefactLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for Artefact#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] author
+#   @return [String, nil]
+#
+# @!attribute [rw] created_by_agent
+#   @return [String, nil]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] editable
+#   @return [String, nil]
+#
+# @!attribute [rw] harness
+#   @return [String, nil]
+#
+# @!attribute [rw] kind
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] model
+#   @return [String, nil]
+#
+# @!attribute [rw] q
+#   @return [String, nil]
+#
+# @!attribute [rw] repo
+#   @return [String, nil]
+#
+# @!attribute [rw] slug
+#   @return [String, nil]
+#
+# @!attribute [rw] source
+#   @return [String, nil]
+ArtefactListMatch = Struct.new(
+  :organization_id,
+  :author,
+  :created_by_agent,
+  :cursor,
+  :editable,
+  :harness,
+  :kind,
+  :limit,
+  :model,
+  :q,
+  :repo,
+  :slug,
+  :source,
+  keyword_init: true
+)
+
+# Request payload for Artefact#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+ArtefactCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for Artefact#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+ArtefactUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for Artefact#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] description
+#   @return [Object, nil]
+#
+# @!attribute [rw] kind
+#   @return [String, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+ArtefactPatchData = Struct.new(
+  :id,
+  :organization_id,
+  :description,
+  :kind,
+  :title,
+  keyword_init: true
+)
+
+# Request payload for Artefact#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+ArtefactRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# ArtefactCommentThread entity data model.
+#
+# @!attribute [rw] anchor
+#   @return [String]
+#
+# @!attribute [rw] body
+#   @return [String]
+#
+# @!attribute [rw] comments
+#   @return [Array]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] quote
+#   @return [String, nil]
+#
+# @!attribute [rw] resolved
+#   @return [Boolean]
+ArtefactCommentThread = Struct.new(
+  :anchor,
+  :body,
+  :comments,
+  :id,
+  :quote,
+  :resolved,
+  keyword_init: true
+)
+
+# Request payload for ArtefactCommentThread#list.
+#
+# @!attribute [rw] artefact_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+ArtefactCommentThreadListMatch = Struct.new(
+  :artefact_id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for ArtefactCommentThread#create.
+#
+# @!attribute [rw] artefact_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] anchor
+#   @return [String]
+#
+# @!attribute [rw] body
+#   @return [String]
+#
+# @!attribute [rw] quote
+#   @return [String, nil]
+ArtefactCommentThreadCreateData = Struct.new(
+  :artefact_id,
+  :organization_id,
+  :anchor,
+  :body,
+  :quote,
+  keyword_init: true
+)
+
+# Request payload for ArtefactCommentThread#update.
+#
+# @!attribute [rw] artefact_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] resolved
+#   @return [Boolean, nil]
+ArtefactCommentThreadUpdateData = Struct.new(
+  :artefact_id,
+  :id,
+  :organization_id,
+  :resolved,
+  keyword_init: true
+)
+
+# ArtefactRevision entity data model.
+#
+# @!attribute [rw] base_version
+#   @return [Integer]
+#
+# @!attribute [rw] content
+#   @return [String]
+ArtefactRevision = Struct.new(
+  :base_version,
+  :content,
+  keyword_init: true
+)
+
+# Request payload for ArtefactRevision#create.
+#
+# @!attribute [rw] artefact_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] base_version
+#   @return [Integer]
+#
+# @!attribute [rw] content
+#   @return [String]
+ArtefactRevisionCreateData = Struct.new(
+  :artefact_id,
+  :organization_id,
+  :base_version,
+  :content,
+  keyword_init: true
+)
+
+# ArtefactViewToken entity data model.
+#
+# @!attribute [rw] expires_in
+#   @return [Integer]
+#
+# @!attribute [rw] file
+#   @return [String, nil]
+#
+# @!attribute [rw] organization_slug
+#   @return [String, nil]
+#
+# @!attribute [rw] version
+#   @return [Integer, nil]
+#
+# @!attribute [rw] viewer_url
+#   @return [String]
+ArtefactViewToken = Struct.new(
+  :expires_in,
+  :file,
+  :organization_slug,
+  :version,
+  :viewer_url,
+  keyword_init: true
+)
+
+# Request payload for ArtefactViewToken#create.
+#
+# @!attribute [rw] artefact_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] file
+#   @return [String, nil]
+#
+# @!attribute [rw] organization_slug
+#   @return [String, nil]
+#
+# @!attribute [rw] version
+#   @return [Integer, nil]
+ArtefactViewTokenCreateData = Struct.new(
+  :artefact_id,
+  :organization_id,
+  :file,
+  :organization_slug,
+  :version,
+  keyword_init: true
+)
+
+# Artifact entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Artifact = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for Artifact#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for Artifact#list.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ArtifactListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for Artifact#create.
+class ArtifactCreateData
+end
+
+# Request payload for Artifact#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactUpdateData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for Artifact#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactPatchData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for Artifact#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactRemoveMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# ArtifactCacheNamespace entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ArtifactCacheNamespace = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactCacheNamespace#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactCacheNamespaceLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactCacheNamespace#list.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ArtifactCacheNamespaceListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactCacheNamespace#create.
+class ArtifactCacheNamespaceCreateData
+end
+
+# Request payload for ArtifactCacheNamespace#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactCacheNamespaceUpdateData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactCacheNamespace#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactCacheNamespacePatchData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactCacheNamespace#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactCacheNamespaceRemoveMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# ArtifactImageRepository entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ArtifactImageRepository = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactImageRepository#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactImageRepositoryLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactImageRepository#list.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ArtifactImageRepositoryListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactImageRepository#create.
+class ArtifactImageRepositoryCreateData
+end
+
+# Request payload for ArtifactImageRepository#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactImageRepositoryUpdateData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactImageRepository#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactImageRepositoryPatchData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactImageRepository#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactImageRepositoryRemoveMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# ArtifactPackageMirror entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ArtifactPackageMirror = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactPackageMirror#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactPackageMirrorLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactPackageMirror#list.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ArtifactPackageMirrorListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactPackageMirror#create.
+class ArtifactPackageMirrorCreateData
+end
+
+# Request payload for ArtifactPackageMirror#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactPackageMirrorUpdateData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactPackageMirror#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactPackageMirrorPatchData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactPackageMirror#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactPackageMirrorRemoveMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# ArtifactRetentionPolicy entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ArtifactRetentionPolicy = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactRetentionPolicy#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactRetentionPolicyLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactRetentionPolicy#list.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ArtifactRetentionPolicyListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactRetentionPolicy#create.
+class ArtifactRetentionPolicyCreateData
+end
+
+# Request payload for ArtifactRetentionPolicy#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactRetentionPolicyUpdateData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactRetentionPolicy#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactRetentionPolicyPatchData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ArtifactRetentionPolicy#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+ArtifactRetentionPolicyRemoveMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
 # AttachmentPart entity data model.
 #
 # @!attribute [rw] id
@@ -8089,6 +10865,314 @@ AttachmentPartUpdateData = Struct.new(
   :attachment_id,
   :id,
   :organization_id,
+  keyword_init: true
+)
+
+# AuditEvent entity data model.
+#
+# @!attribute [rw] action
+#   @return [String]
+#
+# @!attribute [rw] actor_kind
+#   @return [String]
+#
+# @!attribute [rw] actor_user_id
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] observability_space_id
+#   @return [Object]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] payload
+#   @return [Object]
+#
+# @!attribute [rw] request_id
+#   @return [Object]
+#
+# @!attribute [rw] severity
+#   @return [String]
+#
+# @!attribute [rw] subject_id
+#   @return [String]
+#
+# @!attribute [rw] subject_kind
+#   @return [String]
+#
+# @!attribute [rw] subject_name
+#   @return [Object]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+AuditEvent = Struct.new(
+  :action,
+  :actor_kind,
+  :actor_user_id,
+  :created_at,
+  :created_at_label,
+  :id,
+  :observability_space_id,
+  :organization_id,
+  :payload,
+  :request_id,
+  :severity,
+  :subject_id,
+  :subject_kind,
+  :subject_name,
+  :updated_at,
+  :updated_at_label,
+  keyword_init: true
+)
+
+# Request payload for AuditEvent#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+AuditEventListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Auth entity data model.
+class Auth
+end
+
+# Request payload for Auth#load.
+class AuthLoadMatch
+end
+
+# Request payload for Auth#create.
+#
+# @!attribute [rw] cli_login_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] code
+#   @return [Object, nil]
+#
+# @!attribute [rw] email
+#   @return [Object, nil]
+#
+# @!attribute [rw] invite_code
+#   @return [Object, nil]
+#
+# @!attribute [rw] login_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] name
+#   @return [Object, nil]
+#
+# @!attribute [rw] organization_invitation_token
+#   @return [Object, nil]
+#
+# @!attribute [rw] password
+#   @return [Object, nil]
+#
+# @!attribute [rw] polling_token
+#   @return [Object, nil]
+#
+# @!attribute [rw] redirect_uri
+#   @return [Object, nil]
+#
+# @!attribute [rw] state
+#   @return [Object, nil]
+#
+# @!attribute [rw] turnstile_token
+#   @return [Object, nil]
+AuthCreateData = Struct.new(
+  :cli_login_id,
+  :code,
+  :email,
+  :invite_code,
+  :login_id,
+  :name,
+  :organization_invitation_token,
+  :password,
+  :polling_token,
+  :redirect_uri,
+  :state,
+  :turnstile_token,
+  keyword_init: true
+)
+
+# Request payload for Auth#remove.
+class AuthRemoveMatch
+end
+
+# AuthCli entity data model.
+class AuthCli
+end
+
+# Request payload for AuthCli#create.
+#
+# @!attribute [rw] client_kind
+#   @return [Object, nil]
+#
+# @!attribute [rw] intent
+#   @return [Object, nil]
+#
+# @!attribute [rw] login_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] name
+#   @return [Object, nil]
+#
+# @!attribute [rw] organization_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] organization_slug
+#   @return [Object, nil]
+AuthCliCreateData = Struct.new(
+  :client_kind,
+  :intent,
+  :login_id,
+  :name,
+  :organization_id,
+  :organization_slug,
+  keyword_init: true
+)
+
+# AuthGithub entity data model.
+class AuthGithub
+end
+
+# Request payload for AuthGithub#load.
+#
+# @!attribute [rw] redirect_uri
+#   @return [String]
+AuthGithubLoadMatch = Struct.new(
+  :redirect_uri,
+  keyword_init: true
+)
+
+# AuthGoogle entity data model.
+class AuthGoogle
+end
+
+# Request payload for AuthGoogle#load.
+#
+# @!attribute [rw] redirect_uri
+#   @return [String]
+AuthGoogleLoadMatch = Struct.new(
+  :redirect_uri,
+  keyword_init: true
+)
+
+# AuthOpenai entity data model.
+class AuthOpenai
+end
+
+# Request payload for AuthOpenai#load.
+#
+# @!attribute [rw] code
+#   @return [String, nil]
+#
+# @!attribute [rw] error
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String]
+AuthOpenaiLoadMatch = Struct.new(
+  :code,
+  :error,
+  :state,
+  keyword_init: true
+)
+
+# AuthPasswordReset entity data model.
+#
+# @!attribute [rw] email
+#   @return [String]
+#
+# @!attribute [rw] message
+#   @return [String]
+#
+# @!attribute [rw] password
+#   @return [String]
+#
+# @!attribute [rw] token
+#   @return [String]
+AuthPasswordReset = Struct.new(
+  :email,
+  :message,
+  :password,
+  :token,
+  keyword_init: true
+)
+
+# Request payload for AuthPasswordReset#create.
+#
+# @!attribute [rw] email
+#   @return [String]
+AuthPasswordResetCreateData = Struct.new(
+  :email,
+  keyword_init: true
+)
+
+# Request payload for AuthPasswordReset#update.
+#
+# @!attribute [rw] password
+#   @return [String, nil]
+#
+# @!attribute [rw] token
+#   @return [String, nil]
+AuthPasswordResetUpdateData = Struct.new(
+  :password,
+  :token,
+  keyword_init: true
+)
+
+# AuthRegistrationOption entity data model.
+#
+# @!attribute [rw] email_password_signup_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] openai_sign_in_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] turnstile_site_key
+#   @return [Object]
+#
+# @!attribute [rw] waitlist_enabled
+#   @return [Boolean]
+AuthRegistrationOption = Struct.new(
+  :email_password_signup_enabled,
+  :openai_sign_in_enabled,
+  :turnstile_site_key,
+  :waitlist_enabled,
+  keyword_init: true
+)
+
+# Request payload for AuthRegistrationOption#list.
+#
+# @!attribute [rw] email_password_signup_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] openai_sign_in_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] turnstile_site_key
+#   @return [Object, nil]
+#
+# @!attribute [rw] waitlist_enabled
+#   @return [Boolean, nil]
+AuthRegistrationOptionListMatch = Struct.new(
+  :email_password_signup_enabled,
+  :openai_sign_in_enabled,
+  :turnstile_site_key,
+  :waitlist_enabled,
   keyword_init: true
 )
 
@@ -8373,6 +11457,986 @@ AutomationRunCreateData = Struct.new(
   :input,
   :request_id,
   :version_id,
+  keyword_init: true
+)
+
+# BackendRunnerPool entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+BackendRunnerPool = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for BackendRunnerPool#list.
+#
+# @!attribute [rw] backend_id
+#   @return [String]
+BackendRunnerPoolListMatch = Struct.new(
+  :backend_id,
+  keyword_init: true
+)
+
+# Request payload for BackendRunnerPool#create.
+#
+# @!attribute [rw] backend_id
+#   @return [String]
+BackendRunnerPoolCreateData = Struct.new(
+  :backend_id,
+  keyword_init: true
+)
+
+# Request payload for BackendRunnerPool#remove.
+#
+# @!attribute [rw] backend_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+BackendRunnerPoolRemoveMatch = Struct.new(
+  :backend_id,
+  :id,
+  keyword_init: true
+)
+
+# Bazel entity data model.
+class Bazel
+end
+
+# Request payload for Bazel#create.
+class BazelCreateData
+end
+
+# BazelActionResult entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+BazelActionResult = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for BazelActionResult#load.
+#
+# @!attribute [rw] action_result_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+BazelActionResultLoadMatch = Struct.new(
+  :action_result_id,
+  :id,
+  keyword_init: true
+)
+
+# Request payload for BazelActionResult#update.
+#
+# @!attribute [rw] action_result_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+BazelActionResultUpdateData = Struct.new(
+  :action_result_id,
+  :id,
+  keyword_init: true
+)
+
+# BazelBackend entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+BazelBackend = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for BazelBackend#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+BazelBackendLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for BazelBackend#list.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+BazelBackendListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for BazelBackend#create.
+class BazelBackendCreateData
+end
+
+# Request payload for BazelBackend#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+BazelBackendUpdateData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for BazelBackend#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+BazelBackendPatchData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for BazelBackend#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+BazelBackendRemoveMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# BazelBlob entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+BazelBlob = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for BazelBlob#load.
+#
+# @!attribute [rw] blob_id
+#   @return [String]
+#
+# @!attribute [rw] hash
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+BazelBlobLoadMatch = Struct.new(
+  :blob_id,
+  :hash,
+  :id,
+  keyword_init: true
+)
+
+# Request payload for BazelBlob#update.
+#
+# @!attribute [rw] blob_id
+#   @return [String]
+#
+# @!attribute [rw] hash
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+BazelBlobUpdateData = Struct.new(
+  :blob_id,
+  :hash,
+  :id,
+  keyword_init: true
+)
+
+# BazelExecution entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+BazelExecution = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for BazelExecution#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+BazelExecutionLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for BazelExecution#create.
+class BazelExecutionCreateData
+end
+
+# BazelFindMissingBlob entity data model.
+class BazelFindMissingBlob
+end
+
+# Request payload for BazelFindMissingBlob#create.
+class BazelFindMissingBlobCreateData
+end
+
+# Billing entity data model.
+#
+# @!attribute [rw] addons
+#   @return [Array]
+#
+# @!attribute [rw] breakdown
+#   @return [Object]
+#
+# @!attribute [rw] budget
+#   @return [Object]
+#
+# @!attribute [rw] can_manage_contact
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_extra_spend
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_local_subscription
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_payment_method
+#   @return [Boolean]
+#
+# @!attribute [rw] can_set_up_billing
+#   @return [Boolean]
+#
+# @!attribute [rw] customer
+#   @return [Object]
+#
+# @!attribute [rw] deployment_usage_visible
+#   @return [Boolean]
+#
+# @!attribute [rw] entitlements
+#   @return [Hash]
+#
+# @!attribute [rw] extra_spend_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] feature_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] package
+#   @return [Object]
+#
+# @!attribute [rw] prepaid
+#   @return [Object]
+#
+# @!attribute [rw] preview
+#   @return [Object]
+#
+# @!attribute [rw] storage_usage
+#   @return [Hash]
+#
+# @!attribute [rw] stripe
+#   @return [Hash]
+#
+# @!attribute [rw] subscription
+#   @return [Object]
+#
+# @!attribute [rw] token_account
+#   @return [Hash]
+Billing = Struct.new(
+  :addons,
+  :breakdown,
+  :budget,
+  :can_manage_contact,
+  :can_manage_extra_spend,
+  :can_manage_local_subscription,
+  :can_manage_payment_method,
+  :can_set_up_billing,
+  :customer,
+  :deployment_usage_visible,
+  :entitlements,
+  :extra_spend_enabled,
+  :feature_enabled,
+  :organization_id,
+  :package,
+  :prepaid,
+  :preview,
+  :storage_usage,
+  :stripe,
+  :subscription,
+  :token_account,
+  keyword_init: true
+)
+
+# Request payload for Billing#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+BillingLoadMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for Billing#update.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] billing_email
+#   @return [Object, nil]
+#
+# @!attribute [rw] cancel_at_period_end
+#   @return [Object, nil]
+#
+# @!attribute [rw] enabled
+#   @return [Object, nil]
+#
+# @!attribute [rw] monthly_cap_cents
+#   @return [Object, nil]
+BillingUpdateData = Struct.new(
+  :organization_id,
+  :billing_email,
+  :cancel_at_period_end,
+  :enabled,
+  :monthly_cap_cents,
+  keyword_init: true
+)
+
+# BillingAddon entity data model.
+#
+# @!attribute [rw] addons
+#   @return [Array]
+#
+# @!attribute [rw] breakdown
+#   @return [Object]
+#
+# @!attribute [rw] budget
+#   @return [Object]
+#
+# @!attribute [rw] can_manage_contact
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_extra_spend
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_local_subscription
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_payment_method
+#   @return [Boolean]
+#
+# @!attribute [rw] can_set_up_billing
+#   @return [Boolean]
+#
+# @!attribute [rw] customer
+#   @return [Object]
+#
+# @!attribute [rw] deployment_usage_visible
+#   @return [Boolean]
+#
+# @!attribute [rw] entitlements
+#   @return [Hash]
+#
+# @!attribute [rw] extra_spend_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] feature_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] package
+#   @return [Object]
+#
+# @!attribute [rw] prepaid
+#   @return [Object]
+#
+# @!attribute [rw] preview
+#   @return [Object]
+#
+# @!attribute [rw] quantity
+#   @return [Integer]
+#
+# @!attribute [rw] storage_usage
+#   @return [Hash]
+#
+# @!attribute [rw] stripe
+#   @return [Hash]
+#
+# @!attribute [rw] subscription
+#   @return [Object]
+#
+# @!attribute [rw] token_account
+#   @return [Hash]
+BillingAddon = Struct.new(
+  :addons,
+  :breakdown,
+  :budget,
+  :can_manage_contact,
+  :can_manage_extra_spend,
+  :can_manage_local_subscription,
+  :can_manage_payment_method,
+  :can_set_up_billing,
+  :customer,
+  :deployment_usage_visible,
+  :entitlements,
+  :extra_spend_enabled,
+  :feature_enabled,
+  :id,
+  :organization_id,
+  :package,
+  :prepaid,
+  :preview,
+  :quantity,
+  :storage_usage,
+  :stripe,
+  :subscription,
+  :token_account,
+  keyword_init: true
+)
+
+# Request payload for BillingAddon#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] quantity
+#   @return [Integer, nil]
+BillingAddonUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  :quantity,
+  keyword_init: true
+)
+
+# BillingCheckoutSession entity data model.
+#
+# @!attribute [rw] cancel_url
+#   @return [String, nil]
+#
+# @!attribute [rw] coupon_code
+#   @return [String, nil]
+#
+# @!attribute [rw] entry_point
+#   @return [String, nil]
+#
+# @!attribute [rw] package_key
+#   @return [String, nil]
+#
+# @!attribute [rw] package_revision
+#   @return [Integer, nil]
+#
+# @!attribute [rw] success_url
+#   @return [String, nil]
+BillingCheckoutSession = Struct.new(
+  :cancel_url,
+  :coupon_code,
+  :entry_point,
+  :package_key,
+  :package_revision,
+  :success_url,
+  keyword_init: true
+)
+
+# Request payload for BillingCheckoutSession#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] cancel_url
+#   @return [String, nil]
+#
+# @!attribute [rw] coupon_code
+#   @return [String, nil]
+#
+# @!attribute [rw] entry_point
+#   @return [String, nil]
+#
+# @!attribute [rw] package_key
+#   @return [String, nil]
+#
+# @!attribute [rw] package_revision
+#   @return [Integer, nil]
+#
+# @!attribute [rw] success_url
+#   @return [String, nil]
+BillingCheckoutSessionCreateData = Struct.new(
+  :organization_id,
+  :cancel_url,
+  :coupon_code,
+  :entry_point,
+  :package_key,
+  :package_revision,
+  :success_url,
+  keyword_init: true
+)
+
+# BillingInvoice entity data model.
+#
+# @!attribute [rw] amount_due_cents
+#   @return [Integer]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] currency
+#   @return [String]
+#
+# @!attribute [rw] hosted_invoice_url
+#   @return [Object, nil]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] invoice_pdf
+#   @return [Object, nil]
+#
+# @!attribute [rw] metronome_invoice_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] number
+#   @return [Object, nil]
+#
+# @!attribute [rw] period_ended_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] period_started_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] total_cents
+#   @return [Integer]
+BillingInvoice = Struct.new(
+  :amount_due_cents,
+  :created_at,
+  :currency,
+  :hosted_invoice_url,
+  :id,
+  :invoice_pdf,
+  :metronome_invoice_id,
+  :number,
+  :period_ended_at,
+  :period_started_at,
+  :status,
+  :total_cents,
+  keyword_init: true
+)
+
+# Request payload for BillingInvoice#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+BillingInvoiceListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# BillingPackage entity data model.
+#
+# @!attribute [rw] addons
+#   @return [Array]
+#
+# @!attribute [rw] base_price_cents
+#   @return [Integer]
+#
+# @!attribute [rw] billing_interval
+#   @return [String]
+#
+# @!attribute [rw] billing_policy
+#   @return [String]
+#
+# @!attribute [rw] ci_included_spend_cents
+#   @return [Integer, nil]
+#
+# @!attribute [rw] currency
+#   @return [String]
+#
+# @!attribute [rw] key
+#   @return [String]
+#
+# @!attribute [rw] max_seats
+#   @return [Object, nil]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] pay_as_you_go_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] rates
+#   @return [Array]
+#
+# @!attribute [rw] revision
+#   @return [Integer]
+#
+# @!attribute [rw] roder_daily_run_limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] roder_run_concurrency_limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] seat_price_cents
+#   @return [Integer]
+#
+# @!attribute [rw] trial_days
+#   @return [Integer]
+#
+# @!attribute [rw] visibility
+#   @return [String]
+BillingPackage = Struct.new(
+  :addons,
+  :base_price_cents,
+  :billing_interval,
+  :billing_policy,
+  :ci_included_spend_cents,
+  :currency,
+  :key,
+  :max_seats,
+  :name,
+  :pay_as_you_go_enabled,
+  :rates,
+  :revision,
+  :roder_daily_run_limit,
+  :roder_run_concurrency_limit,
+  :seat_price_cents,
+  :trial_days,
+  :visibility,
+  keyword_init: true
+)
+
+# Request payload for BillingPackage#list.
+#
+# @!attribute [rw] addons
+#   @return [Array, nil]
+#
+# @!attribute [rw] base_price_cents
+#   @return [Integer, nil]
+#
+# @!attribute [rw] billing_interval
+#   @return [String, nil]
+#
+# @!attribute [rw] billing_policy
+#   @return [String, nil]
+#
+# @!attribute [rw] ci_included_spend_cents
+#   @return [Integer, nil]
+#
+# @!attribute [rw] currency
+#   @return [String, nil]
+#
+# @!attribute [rw] key
+#   @return [String, nil]
+#
+# @!attribute [rw] max_seats
+#   @return [Object, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] pay_as_you_go_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] rates
+#   @return [Array, nil]
+#
+# @!attribute [rw] revision
+#   @return [Integer, nil]
+#
+# @!attribute [rw] roder_daily_run_limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] roder_run_concurrency_limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] seat_price_cents
+#   @return [Integer, nil]
+#
+# @!attribute [rw] trial_days
+#   @return [Integer, nil]
+#
+# @!attribute [rw] visibility
+#   @return [String, nil]
+BillingPackageListMatch = Struct.new(
+  :addons,
+  :base_price_cents,
+  :billing_interval,
+  :billing_policy,
+  :ci_included_spend_cents,
+  :currency,
+  :key,
+  :max_seats,
+  :name,
+  :pay_as_you_go_enabled,
+  :rates,
+  :revision,
+  :roder_daily_run_limit,
+  :roder_run_concurrency_limit,
+  :seat_price_cents,
+  :trial_days,
+  :visibility,
+  keyword_init: true
+)
+
+# BillingPortalSession entity data model.
+#
+# @!attribute [rw] return_url
+#   @return [String, nil]
+BillingPortalSession = Struct.new(
+  :return_url,
+  keyword_init: true
+)
+
+# Request payload for BillingPortalSession#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] return_url
+#   @return [String, nil]
+BillingPortalSessionCreateData = Struct.new(
+  :organization_id,
+  :return_url,
+  keyword_init: true
+)
+
+# BillingPrepaidPeriod entity data model.
+#
+# @!attribute [rw] activated_at
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] currency
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] last_error
+#   @return [Object]
+#
+# @!attribute [rw] minutes
+#   @return [Integer]
+#
+# @!attribute [rw] net_amount_cents
+#   @return [Integer]
+#
+# @!attribute [rw] paid_at
+#   @return [Object]
+#
+# @!attribute [rw] paid_total_cents
+#   @return [Object]
+#
+# @!attribute [rw] payment_action_url
+#   @return [Object]
+#
+# @!attribute [rw] period_ended_at
+#   @return [String]
+#
+# @!attribute [rw] period_started_at
+#   @return [String]
+#
+# @!attribute [rw] receipt_url
+#   @return [Object]
+#
+# @!attribute [rw] refunded_net_cents
+#   @return [Integer]
+#
+# @!attribute [rw] state
+#   @return [String]
+BillingPrepaidPeriod = Struct.new(
+  :activated_at,
+  :created_at,
+  :currency,
+  :id,
+  :last_error,
+  :minutes,
+  :net_amount_cents,
+  :paid_at,
+  :paid_total_cents,
+  :payment_action_url,
+  :period_ended_at,
+  :period_started_at,
+  :receipt_url,
+  :refunded_net_cents,
+  :state,
+  keyword_init: true
+)
+
+# Request payload for BillingPrepaidPeriod#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+BillingPrepaidPeriodLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# BillingPrepaidPurchase entity data model.
+#
+# @!attribute [rw] activated_at
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] currency
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] last_error
+#   @return [Object]
+#
+# @!attribute [rw] minutes
+#   @return [Integer]
+#
+# @!attribute [rw] net_amount_cents
+#   @return [Integer]
+#
+# @!attribute [rw] paid_at
+#   @return [Object]
+#
+# @!attribute [rw] paid_total_cents
+#   @return [Object]
+#
+# @!attribute [rw] payment_action_url
+#   @return [Object]
+#
+# @!attribute [rw] prepaid
+#   @return [Hash]
+#
+# @!attribute [rw] purchase
+#   @return [Hash]
+#
+# @!attribute [rw] receipt_url
+#   @return [Object]
+#
+# @!attribute [rw] refunded_net_cents
+#   @return [Integer]
+#
+# @!attribute [rw] request_key
+#   @return [String]
+#
+# @!attribute [rw] state
+#   @return [String]
+BillingPrepaidPurchase = Struct.new(
+  :activated_at,
+  :created_at,
+  :currency,
+  :id,
+  :last_error,
+  :minutes,
+  :net_amount_cents,
+  :paid_at,
+  :paid_total_cents,
+  :payment_action_url,
+  :prepaid,
+  :purchase,
+  :receipt_url,
+  :refunded_net_cents,
+  :request_key,
+  :state,
+  keyword_init: true
+)
+
+# Request payload for BillingPrepaidPurchase#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+BillingPrepaidPurchaseLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for BillingPrepaidPurchase#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+BillingPrepaidPurchaseListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for BillingPrepaidPurchase#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] minutes
+#   @return [Integer]
+#
+# @!attribute [rw] request_key
+#   @return [String]
+BillingPrepaidPurchaseCreateData = Struct.new(
+  :organization_id,
+  :minutes,
+  :request_key,
+  keyword_init: true
+)
+
+# BillingTokenTopUp entity data model.
+#
+# @!attribute [rw] amount_cents
+#   @return [Integer]
+#
+# @!attribute [rw] request_key
+#   @return [String]
+BillingTokenTopUp = Struct.new(
+  :amount_cents,
+  :request_key,
+  keyword_init: true
+)
+
+# Request payload for BillingTokenTopUp#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] amount_cents
+#   @return [Integer]
+#
+# @!attribute [rw] request_key
+#   @return [String]
+BillingTokenTopUpCreateData = Struct.new(
+  :organization_id,
+  :amount_cents,
+  :request_key,
+  keyword_init: true
+)
+
+# BillingUsage entity data model.
+class BillingUsage
+end
+
+# Request payload for BillingUsage#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] meter
+#   @return [String, nil]
+#
+# @!attribute [rw] window
+#   @return [String, nil]
+BillingUsageLoadMatch = Struct.new(
+  :organization_id,
+  :meter,
+  :window,
   keyword_init: true
 )
 
@@ -8806,6 +12870,68 @@ BinaryVersionRemoveMatch = Struct.new(
   :id,
   :organization_id,
   :project_id,
+  keyword_init: true
+)
+
+# BookmarkProtectionRefreshGithubRequiredCheck entity data model.
+#
+# @!attribute [rw] exclusions
+#   @return [Array]
+#
+# @!attribute [rw] fetched_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] fetched_at_label
+#   @return [Object, nil]
+#
+# @!attribute [rw] github_branch
+#   @return [String]
+#
+# @!attribute [rw] github_owner
+#   @return [Object, nil]
+#
+# @!attribute [rw] github_repository_name
+#   @return [Object, nil]
+#
+# @!attribute [rw] last_error
+#   @return [Object, nil]
+#
+# @!attribute [rw] proven
+#   @return [Boolean]
+#
+# @!attribute [rw] requirements
+#   @return [Array]
+#
+# @!attribute [rw] stale
+#   @return [Boolean]
+BookmarkProtectionRefreshGithubRequiredCheck = Struct.new(
+  :exclusions,
+  :fetched_at,
+  :fetched_at_label,
+  :github_branch,
+  :github_owner,
+  :github_repository_name,
+  :last_error,
+  :proven,
+  :requirements,
+  :stale,
+  keyword_init: true
+)
+
+# Request payload for BookmarkProtectionRefreshGithubRequiredCheck#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] github_branch
+#   @return [String, nil]
+BookmarkProtectionRefreshGithubRequiredCheckCreateData = Struct.new(
+  :organization_id,
+  :repo_id,
+  :github_branch,
   keyword_init: true
 )
 
@@ -9414,6 +13540,85 @@ BrowserSessionTaskCreateData = Struct.new(
   keyword_init: true
 )
 
+# CacheNamespaceEntry entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+CacheNamespaceEntry = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for CacheNamespaceEntry#load.
+#
+# @!attribute [rw] cache_namespace_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+CacheNamespaceEntryLoadMatch = Struct.new(
+  :cache_namespace_id,
+  :id,
+  keyword_init: true
+)
+
+# Request payload for CacheNamespaceEntry#list.
+#
+# @!attribute [rw] cache_namespace_id
+#   @return [String]
+CacheNamespaceEntryListMatch = Struct.new(
+  :cache_namespace_id,
+  keyword_init: true
+)
+
+# Request payload for CacheNamespaceEntry#create.
+#
+# @!attribute [rw] cache_namespace_id
+#   @return [String]
+CacheNamespaceEntryCreateData = Struct.new(
+  :cache_namespace_id,
+  keyword_init: true
+)
+
+# Request payload for CacheNamespaceEntry#update.
+#
+# @!attribute [rw] cache_namespace_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+CacheNamespaceEntryUpdateData = Struct.new(
+  :cache_namespace_id,
+  :id,
+  keyword_init: true
+)
+
+# Request payload for CacheNamespaceEntry#patch.
+#
+# @!attribute [rw] cache_namespace_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+CacheNamespaceEntryPatchData = Struct.new(
+  :cache_namespace_id,
+  :id,
+  keyword_init: true
+)
+
+# Request payload for CacheNamespaceEntry#remove.
+#
+# @!attribute [rw] cache_namespace_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+CacheNamespaceEntryRemoveMatch = Struct.new(
+  :cache_namespace_id,
+  :id,
+  keyword_init: true
+)
+
 # CatalogSelector entity data model.
 #
 # @!attribute [rw] app
@@ -9751,6 +13956,2258 @@ CdnSpaceObjectRemoveMatch = Struct.new(
   keyword_init: true
 )
 
+# Change entity data model.
+#
+# @!attribute [rw] counts
+#   @return [Hash]
+#
+# @!attribute [rw] filters
+#   @return [Hash]
+#
+# @!attribute [rw] github_sync
+#   @return [Hash]
+#
+# @!attribute [rw] result
+#   @return [Object]
+Change = Struct.new(
+  :counts,
+  :filters,
+  :github_sync,
+  :result,
+  keyword_init: true
+)
+
+# Request payload for Change#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] author
+#   @return [String, nil]
+#
+# @!attribute [rw] awaiting_review
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] direction
+#   @return [String, nil]
+#
+# @!attribute [rw] group_page
+#   @return [String, nil]
+#
+# @!attribute [rw] label
+#   @return [String, nil]
+#
+# @!attribute [rw] mine
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] number
+#   @return [Integer, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] q
+#   @return [String, nil]
+#
+# @!attribute [rw] repo
+#   @return [String, nil]
+#
+# @!attribute [rw] sort
+#   @return [String, nil]
+#
+# @!attribute [rw] source
+#   @return [String, nil]
+#
+# @!attribute [rw] stack
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] target
+#   @return [String, nil]
+#
+# @!attribute [rw] tips_only
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] view
+#   @return [String, nil]
+ChangeListMatch = Struct.new(
+  :organization_id,
+  :author,
+  :awaiting_review,
+  :direction,
+  :group_page,
+  :label,
+  :mine,
+  :number,
+  :page,
+  :q,
+  :repo,
+  :sort,
+  :source,
+  :stack,
+  :state,
+  :target,
+  :tips_only,
+  :view,
+  keyword_init: true
+)
+
+# ChangeAsset entity data model.
+#
+# @!attribute [rw] alias
+#   @return [String]
+#
+# @!attribute [rw] byte_size
+#   @return [Integer]
+#
+# @!attribute [rw] checksum_md5
+#   @return [String]
+#
+# @!attribute [rw] checksum_sha256
+#   @return [String]
+#
+# @!attribute [rw] content_type
+#   @return [String]
+#
+# @!attribute [rw] filename
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ChangeAsset = Struct.new(
+  :alias,
+  :byte_size,
+  :checksum_md5,
+  :checksum_sha256,
+  :content_type,
+  :filename,
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ChangeAsset#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] alias
+#   @return [String]
+#
+# @!attribute [rw] byte_size
+#   @return [Integer]
+#
+# @!attribute [rw] checksum_md5
+#   @return [String]
+#
+# @!attribute [rw] checksum_sha256
+#   @return [String]
+#
+# @!attribute [rw] content_type
+#   @return [String]
+#
+# @!attribute [rw] filename
+#   @return [String]
+ChangeAssetCreateData = Struct.new(
+  :organization_id,
+  :repo_id,
+  :alias,
+  :byte_size,
+  :checksum_md5,
+  :checksum_sha256,
+  :content_type,
+  :filename,
+  keyword_init: true
+)
+
+# ChangeComment entity data model.
+#
+# @!attribute [rw] body
+#   @return [String]
+#
+# @!attribute [rw] capabilities
+#   @return [Hash]
+#
+# @!attribute [rw] change_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] created_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object, nil]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] kind
+#   @return [Object, nil]
+#
+# @!attribute [rw] line
+#   @return [Object, nil]
+#
+# @!attribute [rw] outdated
+#   @return [Boolean]
+#
+# @!attribute [rw] parent_comment_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] patchset_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] patchset_number
+#   @return [Object]
+#
+# @!attribute [rw] path
+#   @return [Object, nil]
+#
+# @!attribute [rw] replies
+#   @return [Array, nil]
+#
+# @!attribute [rw] resolved
+#   @return [Boolean]
+#
+# @!attribute [rw] resolved_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] resolved_at_label
+#   @return [Object, nil]
+#
+# @!attribute [rw] resolved_by
+#   @return [Hash]
+#
+# @!attribute [rw] side
+#   @return [Object, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object, nil]
+#
+# @!attribute [rw] user
+#   @return [Hash]
+ChangeComment = Struct.new(
+  :body,
+  :capabilities,
+  :change_id,
+  :created_at,
+  :created_at_label,
+  :id,
+  :kind,
+  :line,
+  :outdated,
+  :parent_comment_id,
+  :patchset_id,
+  :patchset_number,
+  :path,
+  :replies,
+  :resolved,
+  :resolved_at,
+  :resolved_at_label,
+  :resolved_by,
+  :side,
+  :updated_at,
+  :updated_at_label,
+  :user,
+  keyword_init: true
+)
+
+# Request payload for ChangeComment#list.
+#
+# @!attribute [rw] change_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] resolved
+#   @return [Boolean, nil]
+ChangeCommentListMatch = Struct.new(
+  :change_id,
+  :organization_id,
+  :repo_id,
+  :path,
+  :resolved,
+  keyword_init: true
+)
+
+# Request payload for ChangeComment#create.
+#
+# @!attribute [rw] change_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] body
+#   @return [String]
+#
+# @!attribute [rw] kind
+#   @return [Object, nil]
+#
+# @!attribute [rw] line
+#   @return [Object, nil]
+#
+# @!attribute [rw] parent_comment_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] patchset_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] path
+#   @return [Object, nil]
+#
+# @!attribute [rw] side
+#   @return [Object, nil]
+ChangeCommentCreateData = Struct.new(
+  :change_id,
+  :organization_id,
+  :repo_id,
+  :body,
+  :kind,
+  :line,
+  :parent_comment_id,
+  :patchset_id,
+  :path,
+  :side,
+  keyword_init: true
+)
+
+# ChangeFileReviewCheckpoint entity data model.
+#
+# @!attribute [rw] patchset_id
+#   @return [String]
+#
+# @!attribute [rw] path
+#   @return [String]
+#
+# @!attribute [rw] request_id
+#   @return [String]
+#
+# @!attribute [rw] review_action
+#   @return [String]
+ChangeFileReviewCheckpoint = Struct.new(
+  :patchset_id,
+  :path,
+  :request_id,
+  :review_action,
+  keyword_init: true
+)
+
+# Request payload for ChangeFileReviewCheckpoint#create.
+#
+# @!attribute [rw] change_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] patchset_id
+#   @return [String]
+#
+# @!attribute [rw] path
+#   @return [String]
+#
+# @!attribute [rw] request_id
+#   @return [String]
+#
+# @!attribute [rw] review_action
+#   @return [String]
+ChangeFileReviewCheckpointCreateData = Struct.new(
+  :change_id,
+  :organization_id,
+  :repo_id,
+  :patchset_id,
+  :path,
+  :request_id,
+  :review_action,
+  keyword_init: true
+)
+
+# ChangeGitBranchSubmission entity data model.
+class ChangeGitBranchSubmission
+end
+
+# Request payload for ChangeGitBranchSubmission#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+ChangeGitBranchSubmissionCreateData = Struct.new(
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# ChangeGitCommitIdentity entity data model.
+#
+# @!attribute [rw] change_id
+#   @return [String]
+#
+# @!attribute [rw] change_number
+#   @return [Integer]
+#
+# @!attribute [rw] git_commit_id
+#   @return [String]
+#
+# @!attribute [rw] git_commit_ids
+#   @return [Array]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] identities
+#   @return [Array]
+#
+# @!attribute [rw] missing_git_commit_ids
+#   @return [Array]
+#
+# @!attribute [rw] patchset_number
+#   @return [Integer]
+ChangeGitCommitIdentity = Struct.new(
+  :change_id,
+  :change_number,
+  :git_commit_id,
+  :git_commit_ids,
+  :id,
+  :identities,
+  :missing_git_commit_ids,
+  :patchset_number,
+  keyword_init: true
+)
+
+# Request payload for ChangeGitCommitIdentity#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+ChangeGitCommitIdentityLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for ChangeGitCommitIdentity#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] git_commit_ids
+#   @return [Array]
+ChangeGitCommitIdentityCreateData = Struct.new(
+  :organization_id,
+  :repo_id,
+  :git_commit_ids,
+  keyword_init: true
+)
+
+# ChangeGitPublication entity data model.
+#
+# @!attribute [rw] expected_target_commit_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] operation_key
+#   @return [String]
+#
+# @!attribute [rw] publication_id
+#   @return [String]
+#
+# @!attribute [rw] request
+#   @return [Hash]
+#
+# @!attribute [rw] request_digest
+#   @return [String]
+#
+# @!attribute [rw] revisions
+#   @return [Array]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] transfer_refs
+#   @return [Array, nil]
+ChangeGitPublication = Struct.new(
+  :expected_target_commit_id,
+  :id,
+  :operation_key,
+  :publication_id,
+  :request,
+  :request_digest,
+  :revisions,
+  :status,
+  :transfer_refs,
+  keyword_init: true
+)
+
+# Request payload for ChangeGitPublication#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+ChangeGitPublicationLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for ChangeGitPublication#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] operation_key
+#   @return [String]
+#
+# @!attribute [rw] request
+#   @return [Hash]
+ChangeGitPublicationCreateData = Struct.new(
+  :organization_id,
+  :repo_id,
+  :operation_key,
+  :request,
+  keyword_init: true
+)
+
+# ChangeGroupMember entity data model.
+#
+# @!attribute [rw] change_id
+#   @return [String]
+#
+# @!attribute [rw] changes
+#   @return [Array]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] number
+#   @return [Integer, nil]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] title
+#   @return [Object]
+ChangeGroupMember = Struct.new(
+  :change_id,
+  :changes,
+  :id,
+  :name,
+  :number,
+  :status,
+  :title,
+  keyword_init: true
+)
+
+# Request payload for ChangeGroupMember#create.
+#
+# @!attribute [rw] change_group_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] change_id
+#   @return [String]
+ChangeGroupMemberCreateData = Struct.new(
+  :change_group_id,
+  :organization_id,
+  :repo_id,
+  :change_id,
+  keyword_init: true
+)
+
+# Request payload for ChangeGroupMember#remove.
+#
+# @!attribute [rw] change_group_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+ChangeGroupMemberRemoveMatch = Struct.new(
+  :change_group_id,
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# ChangeLabel entity data model.
+#
+# @!attribute [rw] accepted
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] add
+#   @return [Array, nil]
+#
+# @!attribute [rw] approval
+#   @return [Hash]
+#
+# @!attribute [rw] assets
+#   @return [Array, nil]
+#
+# @!attribute [rw] author
+#   @return [Object, nil]
+#
+# @!attribute [rw] capabilities
+#   @return [Hash]
+#
+# @!attribute [rw] change_key
+#   @return [String, nil]
+#
+# @!attribute [rw] checks
+#   @return [Array, nil]
+#
+# @!attribute [rw] checks_status
+#   @return [String, nil]
+#
+# @!attribute [rw] comments
+#   @return [Array, nil]
+#
+# @!attribute [rw] comments_count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] comments_count_label
+#   @return [String, nil]
+#
+# @!attribute [rw] commit_message
+#   @return [Object, nil]
+#
+# @!attribute [rw] current_patchset
+#   @return [Hash]
+#
+# @!attribute [rw] description
+#   @return [Object, nil]
+#
+# @!attribute [rw] draft
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] folded_into_number
+#   @return [Object, nil]
+#
+# @!attribute [rw] github_projection_status
+#   @return [Object, nil]
+#
+# @!attribute [rw] github_pull_request
+#   @return [Hash]
+#
+# @!attribute [rw] github_pull_requests
+#   @return [Array, nil]
+#
+# @!attribute [rw] group
+#   @return [Object, nil]
+#
+# @!attribute [rw] has_description
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] jj_change_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] labels
+#   @return [Array, nil]
+#
+# @!attribute [rw] landable
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] landed_by
+#   @return [Hash]
+#
+# @!attribute [rw] number
+#   @return [Integer]
+#
+# @!attribute [rw] orphaned
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] orphaned_at
+#   @return [String, nil]
+#
+# @!attribute [rw] orphaned_at_label
+#   @return [String, nil]
+#
+# @!attribute [rw] orphaned_reason
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_change_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] parent_change_number
+#   @return [Object, nil]
+#
+# @!attribute [rw] patchset_number
+#   @return [Object, nil]
+#
+# @!attribute [rw] patchsets
+#   @return [Array, nil]
+#
+# @!attribute [rw] primary_status
+#   @return [Object, nil]
+#
+# @!attribute [rw] public_id
+#   @return [String, nil]
+#
+# @!attribute [rw] relation_chain
+#   @return [Array, nil]
+#
+# @!attribute [rw] remove
+#   @return [Array, nil]
+#
+# @!attribute [rw] requested_changes
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] restack_state
+#   @return [String, nil]
+#
+# @!attribute [rw] reviewer_candidates
+#   @return [Array, nil]
+#
+# @!attribute [rw] reviewers
+#   @return [Array, nil]
+#
+# @!attribute [rw] stable_change_id
+#   @return [String, nil]
+#
+# @!attribute [rw] stack
+#   @return [Object, nil]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] target_branch
+#   @return [String]
+#
+# @!attribute [rw] title
+#   @return [String]
+#
+# @!attribute [rw] unresolved_comments_count_label
+#   @return [String, nil]
+#
+# @!attribute [rw] url
+#   @return [String, nil]
+#
+# @!attribute [rw] votes
+#   @return [Array, nil]
+ChangeLabel = Struct.new(
+  :accepted,
+  :add,
+  :approval,
+  :assets,
+  :author,
+  :capabilities,
+  :change_key,
+  :checks,
+  :checks_status,
+  :comments,
+  :comments_count,
+  :comments_count_label,
+  :commit_message,
+  :current_patchset,
+  :description,
+  :draft,
+  :folded_into_number,
+  :github_projection_status,
+  :github_pull_request,
+  :github_pull_requests,
+  :group,
+  :has_description,
+  :id,
+  :jj_change_id,
+  :labels,
+  :landable,
+  :landed_by,
+  :number,
+  :orphaned,
+  :orphaned_at,
+  :orphaned_at_label,
+  :orphaned_reason,
+  :parent_change_id,
+  :parent_change_number,
+  :patchset_number,
+  :patchsets,
+  :primary_status,
+  :public_id,
+  :relation_chain,
+  :remove,
+  :requested_changes,
+  :restack_state,
+  :reviewer_candidates,
+  :reviewers,
+  :stable_change_id,
+  :stack,
+  :status,
+  :target_branch,
+  :title,
+  :unresolved_comments_count_label,
+  :url,
+  :votes,
+  keyword_init: true
+)
+
+# Request payload for ChangeLabel#update.
+#
+# @!attribute [rw] change_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] add
+#   @return [Array, nil]
+#
+# @!attribute [rw] labels
+#   @return [Array, nil]
+#
+# @!attribute [rw] remove
+#   @return [Array, nil]
+ChangeLabelUpdateData = Struct.new(
+  :change_id,
+  :organization_id,
+  :repo_id,
+  :add,
+  :labels,
+  :remove,
+  keyword_init: true
+)
+
+# ChangeLandingHold entity data model.
+class ChangeLandingHold
+end
+
+# Request payload for ChangeLandingHold#create.
+#
+# @!attribute [rw] change_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+ChangeLandingHoldCreateData = Struct.new(
+  :change_id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# ChangeLandingRequest entity data model.
+#
+# @!attribute [rw] change_ids
+#   @return [Array, nil]
+#
+# @!attribute [rw] count
+#   @return [Integer]
+#
+# @!attribute [rw] defer_until_ready
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] expected_requirement_version
+#   @return [String, nil]
+#
+# @!attribute [rw] expected_scope_version
+#   @return [String, nil]
+#
+# @!attribute [rw] head_change_id
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Object, nil]
+#
+# @!attribute [rw] numbers
+#   @return [Array]
+#
+# @!attribute [rw] override_acknowledged
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] override_codes
+#   @return [Array, nil]
+#
+# @!attribute [rw] position
+#   @return [Integer, nil]
+#
+# @!attribute [rw] priority
+#   @return [String, nil]
+#
+# @!attribute [rw] scope_version
+#   @return [String]
+#
+# @!attribute [rw] state
+#   @return [String]
+#
+# @!attribute [rw] version
+#   @return [Integer, nil]
+ChangeLandingRequest = Struct.new(
+  :change_ids,
+  :count,
+  :defer_until_ready,
+  :expected_requirement_version,
+  :expected_scope_version,
+  :head_change_id,
+  :id,
+  :numbers,
+  :override_acknowledged,
+  :override_codes,
+  :position,
+  :priority,
+  :scope_version,
+  :state,
+  :version,
+  keyword_init: true
+)
+
+# Request payload for ChangeLandingRequest#create.
+#
+# @!attribute [rw] change_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] defer_until_ready
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] expected_requirement_version
+#   @return [String, nil]
+#
+# @!attribute [rw] expected_scope_version
+#   @return [String, nil]
+#
+# @!attribute [rw] override_acknowledged
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] override_codes
+#   @return [Array, nil]
+#
+# @!attribute [rw] priority
+#   @return [String, nil]
+ChangeLandingRequestCreateData = Struct.new(
+  :change_id,
+  :organization_id,
+  :repo_id,
+  :defer_until_ready,
+  :expected_requirement_version,
+  :expected_scope_version,
+  :override_acknowledged,
+  :override_codes,
+  :priority,
+  keyword_init: true
+)
+
+# Request payload for ChangeLandingRequest#remove.
+#
+# @!attribute [rw] change_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+ChangeLandingRequestRemoveMatch = Struct.new(
+  :change_id,
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# ChangeRequestChange entity data model.
+#
+# @!attribute [rw] message
+#   @return [Object, nil]
+ChangeRequestChange = Struct.new(
+  :message,
+  keyword_init: true
+)
+
+# Request payload for ChangeRequestChange#create.
+#
+# @!attribute [rw] change_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] message
+#   @return [Object, nil]
+ChangeRequestChangeCreateData = Struct.new(
+  :change_id,
+  :organization_id,
+  :repo_id,
+  :message,
+  keyword_init: true
+)
+
+# ChangeReviewer entity data model.
+#
+# @!attribute [rw] add
+#   @return [Array, nil]
+#
+# @!attribute [rw] email
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [Object]
+#
+# @!attribute [rw] remove
+#   @return [Array, nil]
+#
+# @!attribute [rw] removed_reviewers
+#   @return [Array]
+#
+# @!attribute [rw] requested_reviewers
+#   @return [Array]
+#
+# @!attribute [rw] reviewers
+#   @return [Array]
+ChangeReviewer = Struct.new(
+  :add,
+  :email,
+  :name,
+  :remove,
+  :removed_reviewers,
+  :requested_reviewers,
+  :reviewers,
+  keyword_init: true
+)
+
+# Request payload for ChangeReviewer#list.
+#
+# @!attribute [rw] change_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+ChangeReviewerListMatch = Struct.new(
+  :change_id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for ChangeReviewer#update.
+#
+# @!attribute [rw] change_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] add
+#   @return [Array, nil]
+#
+# @!attribute [rw] remove
+#   @return [Array, nil]
+ChangeReviewerUpdateData = Struct.new(
+  :change_id,
+  :organization_id,
+  :repo_id,
+  :add,
+  :remove,
+  keyword_init: true
+)
+
+# ChangeTranscript entity data model.
+#
+# @!attribute [rw] capture_kind
+#   @return [String]
+#
+# @!attribute [rw] captured_at
+#   @return [String]
+#
+# @!attribute [rw] harness
+#   @return [Hash]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] original_resume
+#   @return [Object, nil]
+#
+# @!attribute [rw] patchset_commit_id
+#   @return [String]
+#
+# @!attribute [rw] patchset_number
+#   @return [Integer]
+#
+# @!attribute [rw] redaction_count
+#   @return [Integer]
+#
+# @!attribute [rw] session_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] session_title
+#   @return [Object, nil]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] superseded
+#   @return [Boolean]
+#
+# @!attribute [rw] user
+#   @return [Hash]
+ChangeTranscript = Struct.new(
+  :capture_kind,
+  :captured_at,
+  :harness,
+  :id,
+  :original_resume,
+  :patchset_commit_id,
+  :patchset_number,
+  :redaction_count,
+  :session_id,
+  :session_title,
+  :status,
+  :superseded,
+  :user,
+  keyword_init: true
+)
+
+# Request payload for ChangeTranscript#list.
+#
+# @!attribute [rw] change_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+ChangeTranscriptListMatch = Struct.new(
+  :change_id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# ChangeTranscriptSummary entity data model.
+#
+# @!attribute [rw] summaries
+#   @return [Hash]
+ChangeTranscriptSummary = Struct.new(
+  :summaries,
+  keyword_init: true
+)
+
+# Request payload for ChangeTranscriptSummary#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] ids
+#   @return [String]
+ChangeTranscriptSummaryListMatch = Struct.new(
+  :organization_id,
+  :ids,
+  keyword_init: true
+)
+
+# CheckpointPrepareChunk entity data model.
+class CheckpointPrepareChunk
+end
+
+# Request payload for CheckpointPrepareChunk#create.
+#
+# @!attribute [rw] agent_session_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+CheckpointPrepareChunkCreateData = Struct.new(
+  :agent_session_id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# CiNode entity data model.
+#
+# @!attribute [rw] architecture
+#   @return [Object]
+#
+# @!attribute [rw] bazel_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] bazel_properties_json
+#   @return [Object]
+#
+# @!attribute [rw] ci_runner_pool_id
+#   @return [String]
+#
+# @!attribute [rw] cordoned_at
+#   @return [Object]
+#
+# @!attribute [rw] cordoned_at_label
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] health_state
+#   @return [String]
+#
+# @!attribute [rw] heartbeat_age_seconds
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] kind
+#   @return [String]
+#
+# @!attribute [rw] labels_csv
+#   @return [Object]
+#
+# @!attribute [rw] last_seen_at
+#   @return [Object]
+#
+# @!attribute [rw] last_seen_at_label
+#   @return [Object]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] network_peer_id
+#   @return [Object]
+#
+# @!attribute [rw] node_capabilities_csv
+#   @return [Object]
+#
+# @!attribute [rw] node_certificate_expires_at
+#   @return [Object]
+#
+# @!attribute [rw] node_certificate_expires_at_label
+#   @return [Object]
+#
+# @!attribute [rw] node_certificate_fingerprint_sha256
+#   @return [Object]
+#
+# @!attribute [rw] node_certificate_serial
+#   @return [Object]
+#
+# @!attribute [rw] offline_at
+#   @return [Object]
+#
+# @!attribute [rw] offline_at_label
+#   @return [Object]
+#
+# @!attribute [rw] online_at
+#   @return [Object]
+#
+# @!attribute [rw] online_at_label
+#   @return [Object]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] os
+#   @return [Object]
+#
+# @!attribute [rw] revoked_at
+#   @return [Object]
+#
+# @!attribute [rw] revoked_at_label
+#   @return [Object]
+#
+# @!attribute [rw] schedulable
+#   @return [Boolean]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+#
+# @!attribute [rw] version
+#   @return [Object]
+CiNode = Struct.new(
+  :architecture,
+  :bazel_enabled,
+  :bazel_properties_json,
+  :ci_runner_pool_id,
+  :cordoned_at,
+  :cordoned_at_label,
+  :created_at,
+  :created_at_label,
+  :health_state,
+  :heartbeat_age_seconds,
+  :id,
+  :kind,
+  :labels_csv,
+  :last_seen_at,
+  :last_seen_at_label,
+  :name,
+  :network_peer_id,
+  :node_capabilities_csv,
+  :node_certificate_expires_at,
+  :node_certificate_expires_at_label,
+  :node_certificate_fingerprint_sha256,
+  :node_certificate_serial,
+  :offline_at,
+  :offline_at_label,
+  :online_at,
+  :online_at_label,
+  :organization_id,
+  :os,
+  :revoked_at,
+  :revoked_at_label,
+  :schedulable,
+  :slug,
+  :status,
+  :updated_at,
+  :updated_at_label,
+  :version,
+  keyword_init: true
+)
+
+# Request payload for CiNode#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+CiNodeLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for CiNode#create.
+class CiNodeCreateData
+end
+
+# CiPipeline entity data model.
+#
+# @!attribute [rw] ci_runner_pool_id
+#   @return [Object]
+#
+# @!attribute [rw] concurrency_key
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] default_branch
+#   @return [Object]
+#
+# @!attribute [rw] description
+#   @return [Object]
+#
+# @!attribute [rw] hosted_app_id
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repository_id
+#   @return [Object]
+#
+# @!attribute [rw] required_capabilities_csv
+#   @return [Object]
+#
+# @!attribute [rw] runner_pool
+#   @return [Object]
+#
+# @!attribute [rw] runs
+#   @return [Array]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] source_kind
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] status_label
+#   @return [String]
+#
+# @!attribute [rw] status_state
+#   @return [String]
+#
+# @!attribute [rw] status_tone
+#   @return [String]
+#
+# @!attribute [rw] trigger_on_pull_request
+#   @return [Boolean]
+#
+# @!attribute [rw] trigger_on_push
+#   @return [Boolean]
+#
+# @!attribute [rw] trigger_on_schedule
+#   @return [Boolean]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] workflow_path
+#   @return [Object]
+CiPipeline = Struct.new(
+  :ci_runner_pool_id,
+  :concurrency_key,
+  :created_at,
+  :default_branch,
+  :description,
+  :hosted_app_id,
+  :id,
+  :name,
+  :organization_id,
+  :repository_id,
+  :required_capabilities_csv,
+  :runner_pool,
+  :runs,
+  :slug,
+  :source_kind,
+  :status,
+  :status_label,
+  :status_state,
+  :status_tone,
+  :trigger_on_pull_request,
+  :trigger_on_push,
+  :trigger_on_schedule,
+  :updated_at,
+  :workflow_path,
+  keyword_init: true
+)
+
+# Request payload for CiPipeline#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+CiPipelineLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for CiPipeline#list.
+#
+# @!attribute [rw] ci_runner_pool_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] concurrency_key
+#   @return [Object, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] default_branch
+#   @return [Object, nil]
+#
+# @!attribute [rw] description
+#   @return [Object, nil]
+#
+# @!attribute [rw] hosted_app_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] organization_id
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] required_capabilities_csv
+#   @return [Object, nil]
+#
+# @!attribute [rw] runner_pool
+#   @return [Object, nil]
+#
+# @!attribute [rw] runs
+#   @return [Array, nil]
+#
+# @!attribute [rw] slug
+#   @return [String, nil]
+#
+# @!attribute [rw] source_kind
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] status_label
+#   @return [String, nil]
+#
+# @!attribute [rw] status_state
+#   @return [String, nil]
+#
+# @!attribute [rw] status_tone
+#   @return [String, nil]
+#
+# @!attribute [rw] trigger_on_pull_request
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] trigger_on_push
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] trigger_on_schedule
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] workflow_path
+#   @return [Object, nil]
+CiPipelineListMatch = Struct.new(
+  :ci_runner_pool_id,
+  :concurrency_key,
+  :created_at,
+  :default_branch,
+  :description,
+  :hosted_app_id,
+  :id,
+  :name,
+  :organization_id,
+  :repository_id,
+  :required_capabilities_csv,
+  :runner_pool,
+  :runs,
+  :slug,
+  :source_kind,
+  :status,
+  :status_label,
+  :status_state,
+  :status_tone,
+  :trigger_on_pull_request,
+  :trigger_on_push,
+  :trigger_on_schedule,
+  :updated_at,
+  :workflow_path,
+  keyword_init: true
+)
+
+# Request payload for CiPipeline#create.
+class CiPipelineCreateData
+end
+
+# CiPipelineRun entity data model.
+#
+# @!attribute [rw] active
+#   @return [Boolean]
+#
+# @!attribute [rw] canceled_at
+#   @return [Object]
+#
+# @!attribute [rw] ci_pipeline_id
+#   @return [String]
+#
+# @!attribute [rw] ci_runner_pool_id
+#   @return [Object]
+#
+# @!attribute [rw] commit_sha
+#   @return [Object]
+#
+# @!attribute [rw] concurrency_key
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] creator_user_id
+#   @return [Object]
+#
+# @!attribute [rw] display_id
+#   @return [Integer]
+#
+# @!attribute [rw] failed
+#   @return [Boolean]
+#
+# @!attribute [rw] finished_at
+#   @return [Object]
+#
+# @!attribute [rw] hosted_app_id
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] jobs
+#   @return [Array]
+#
+# @!attribute [rw] message
+#   @return [Object]
+#
+# @!attribute [rw] number
+#   @return [Integer]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] parameters_json
+#   @return [Object]
+#
+# @!attribute [rw] queued_at
+#   @return [Object]
+#
+# @!attribute [rw] ref_name
+#   @return [Object]
+#
+# @!attribute [rw] repository_id
+#   @return [Object]
+#
+# @!attribute [rw] required_capabilities_csv
+#   @return [Object]
+#
+# @!attribute [rw] retry_number
+#   @return [Integer]
+#
+# @!attribute [rw] retryable
+#   @return [Boolean]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] source_url
+#   @return [Object]
+#
+# @!attribute [rw] started_at
+#   @return [Object]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] status_label
+#   @return [String]
+#
+# @!attribute [rw] status_state
+#   @return [String]
+#
+# @!attribute [rw] status_tone
+#   @return [String]
+#
+# @!attribute [rw] trigger_kind
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+CiPipelineRun = Struct.new(
+  :active,
+  :canceled_at,
+  :ci_pipeline_id,
+  :ci_runner_pool_id,
+  :commit_sha,
+  :concurrency_key,
+  :created_at,
+  :creator_user_id,
+  :display_id,
+  :failed,
+  :finished_at,
+  :hosted_app_id,
+  :id,
+  :jobs,
+  :message,
+  :number,
+  :organization_id,
+  :parameters_json,
+  :queued_at,
+  :ref_name,
+  :repository_id,
+  :required_capabilities_csv,
+  :retry_number,
+  :retryable,
+  :slug,
+  :source_url,
+  :started_at,
+  :status,
+  :status_label,
+  :status_state,
+  :status_tone,
+  :trigger_kind,
+  :updated_at,
+  keyword_init: true
+)
+
+# Request payload for CiPipelineRun#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+CiPipelineRunLoadMatch = Struct.new(
+  :id,
+  :pipeline_id,
+  keyword_init: true
+)
+
+# Request payload for CiPipelineRun#list.
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+CiPipelineRunListMatch = Struct.new(
+  :pipeline_id,
+  keyword_init: true
+)
+
+# Request payload for CiPipelineRun#create.
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+CiPipelineRunCreateData = Struct.new(
+  :pipeline_id,
+  keyword_init: true
+)
+
+# CiRunnerPool entity data model.
+#
+# @!attribute [rw] bazel_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] bazel_properties_json
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] description
+#   @return [Object]
+#
+# @!attribute [rw] elastic_config_json
+#   @return [Object]
+#
+# @!attribute [rw] elastic_provider_kind
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] isolation_mode
+#   @return [String]
+#
+# @!attribute [rw] labels_csv
+#   @return [Object]
+#
+# @!attribute [rw] max_concurrency
+#   @return [Integer]
+#
+# @!attribute [rw] modal_capacity
+#   @return [Hash]
+#
+# @!attribute [rw] modal_runner_invocations
+#   @return [Array]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] network_space_id
+#   @return [Object]
+#
+# @!attribute [rw] node_capabilities_csv
+#   @return [Object]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] runner_count_label
+#   @return [String]
+#
+# @!attribute [rw] runner_kind
+#   @return [String]
+#
+# @!attribute [rw] runners
+#   @return [Array]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+CiRunnerPool = Struct.new(
+  :bazel_enabled,
+  :bazel_properties_json,
+  :created_at,
+  :description,
+  :elastic_config_json,
+  :elastic_provider_kind,
+  :id,
+  :isolation_mode,
+  :labels_csv,
+  :max_concurrency,
+  :modal_capacity,
+  :modal_runner_invocations,
+  :name,
+  :network_space_id,
+  :node_capabilities_csv,
+  :organization_id,
+  :runner_count_label,
+  :runner_kind,
+  :runners,
+  :slug,
+  :status,
+  :updated_at,
+  keyword_init: true
+)
+
+# Request payload for CiRunnerPool#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+CiRunnerPoolLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for CiRunnerPool#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String, nil]
+CiRunnerPoolListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for CiRunnerPool#create.
+class CiRunnerPoolCreateData
+end
+
+# Request payload for CiRunnerPool#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+CiRunnerPoolUpdateData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for CiRunnerPool#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] description
+#   @return [Object, nil]
+#
+# @!attribute [rw] elastic_config_json
+#   @return [Object, nil]
+#
+# @!attribute [rw] elastic_provider_kind
+#   @return [Object, nil]
+#
+# @!attribute [rw] isolation_mode
+#   @return [String, nil]
+#
+# @!attribute [rw] labels_csv
+#   @return [Object, nil]
+#
+# @!attribute [rw] max_concurrency
+#   @return [Integer, nil]
+#
+# @!attribute [rw] node_capabilities_csv
+#   @return [Object, nil]
+#
+# @!attribute [rw] runner_kind
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+CiRunnerPoolPatchData = Struct.new(
+  :id,
+  :description,
+  :elastic_config_json,
+  :elastic_provider_kind,
+  :isolation_mode,
+  :labels_csv,
+  :max_concurrency,
+  :node_capabilities_csv,
+  :runner_kind,
+  :status,
+  keyword_init: true
+)
+
+# CiStatus entity data model.
+class CiStatus
+end
+
+# Request payload for CiStatus#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] ref
+#   @return [String, nil]
+CiStatusLoadMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  :ref,
+  keyword_init: true
+)
+
+# CliEvent entity data model.
+#
+# @!attribute [rw] event
+#   @return [String]
+#
+# @!attribute [rw] properties
+#   @return [Hash]
+CliEvent = Struct.new(
+  :event,
+  :properties,
+  keyword_init: true
+)
+
+# Request payload for CliEvent#create.
+#
+# @!attribute [rw] event
+#   @return [String]
+#
+# @!attribute [rw] properties
+#   @return [Hash]
+CliEventCreateData = Struct.new(
+  :event,
+  :properties,
+  keyword_init: true
+)
+
+# CliRelease entity data model.
+class CliRelease
+end
+
+# Request payload for CliRelease#load.
+class CliReleaseLoadMatch
+end
+
+# Request payload for CliRelease#list.
+class CliReleaseListMatch
+end
+
+# Request payload for CliRelease#create.
+class CliReleaseCreateData
+end
+
+# CloudWorkspaceBackupObject entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+CloudWorkspaceBackupObject = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for CloudWorkspaceBackupObject#load.
+#
+# @!attribute [rw] cloud_workspace_backup_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+CloudWorkspaceBackupObjectLoadMatch = Struct.new(
+  :cloud_workspace_backup_id,
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# CodeRuleEvaluation entity data model.
+#
+# @!attribute [rw] advisory
+#   @return [Boolean]
+#
+# @!attribute [rw] coverage
+#   @return [Hash]
+#
+# @!attribute [rw] diff
+#   @return [String]
+#
+# @!attribute [rw] duration_ms
+#   @return [Integer]
+#
+# @!attribute [rw] evaluator_version
+#   @return [String, nil]
+#
+# @!attribute [rw] input_digest
+#   @return [Object, nil]
+#
+# @!attribute [rw] limits
+#   @return [Hash, nil]
+#
+# @!attribute [rw] model
+#   @return [String, nil]
+#
+# @!attribute [rw] requests
+#   @return [Hash]
+#
+# @!attribute [rw] schema_version
+#   @return [Integer]
+#
+# @!attribute [rw] snapshot_digest
+#   @return [Object, nil]
+#
+# @!attribute [rw] unchecked
+#   @return [Array]
+#
+# @!attribute [rw] verdicts
+#   @return [Array]
+CodeRuleEvaluation = Struct.new(
+  :advisory,
+  :coverage,
+  :diff,
+  :duration_ms,
+  :evaluator_version,
+  :input_digest,
+  :limits,
+  :model,
+  :requests,
+  :schema_version,
+  :snapshot_digest,
+  :unchecked,
+  :verdicts,
+  keyword_init: true
+)
+
+# Request payload for CodeRuleEvaluation#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] diff
+#   @return [String]
+CodeRuleEvaluationCreateData = Struct.new(
+  :organization_id,
+  :repo_id,
+  :diff,
+  keyword_init: true
+)
+
+# ComSiteAccess entity data model.
+class ComSiteAccess
+end
+
+# Request payload for ComSiteAccess#load.
+#
+# @!attribute [rw] host
+#   @return [String]
+#
+# @!attribute [rw] return_to
+#   @return [String, nil]
+ComSiteAccessLoadMatch = Struct.new(
+  :host,
+  :return_to,
+  keyword_init: true
+)
+
+# Request payload for ComSiteAccess#create.
+#
+# @!attribute [rw] host
+#   @return [Object, nil]
+#
+# @!attribute [rw] token
+#   @return [Object, nil]
+ComSiteAccessCreateData = Struct.new(
+  :host,
+  :token,
+  keyword_init: true
+)
+
+# ComSiteAccessSession entity data model.
+#
+# @!attribute [rw] cookie_name
+#   @return [String]
+#
+# @!attribute [rw] host
+#   @return [String]
+#
+# @!attribute [rw] max_age
+#   @return [Integer]
+#
+# @!attribute [rw] session_token
+#   @return [String]
+ComSiteAccessSession = Struct.new(
+  :cookie_name,
+  :host,
+  :max_age,
+  :session_token,
+  keyword_init: true
+)
+
+# Request payload for ComSiteAccessSession#create.
+#
+# @!attribute [rw] host
+#   @return [String]
+ComSiteAccessSessionCreateData = Struct.new(
+  :host,
+  keyword_init: true
+)
+
+# CommentThreadComment entity data model.
+#
+# @!attribute [rw] body
+#   @return [String]
+CommentThreadComment = Struct.new(
+  :body,
+  keyword_init: true
+)
+
+# Request payload for CommentThreadComment#create.
+#
+# @!attribute [rw] artefact_id
+#   @return [String]
+#
+# @!attribute [rw] comment_thread_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] body
+#   @return [String]
+CommentThreadCommentCreateData = Struct.new(
+  :artefact_id,
+  :comment_thread_id,
+  :organization_id,
+  :body,
+  keyword_init: true
+)
+
+# CommitDiff entity data model.
+#
+# @!attribute [rw] files
+#   @return [Array]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_id
+#   @return [Object]
+CommitDiff = Struct.new(
+  :files,
+  :id,
+  :parent_id,
+  keyword_init: true
+)
+
+# Request payload for CommitDiff#load.
+#
+# @!attribute [rw] commit_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] parent
+#   @return [String, nil]
+CommitDiffLoadMatch = Struct.new(
+  :commit_id,
+  :id,
+  :organization_id,
+  :repo_id,
+  :parent,
+  keyword_init: true
+)
+
 # ConnectionRequest entity data model.
 #
 # @!attribute [rw] agent_card_url
@@ -9872,6 +16329,238 @@ ConnectionSourceListMatch = Struct.new(
   :organization_id,
   :cursor,
   :limit,
+  keyword_init: true
+)
+
+# ContactSubmission entity data model.
+#
+# @!attribute [rw] company
+#   @return [Object, nil]
+#
+# @!attribute [rw] email
+#   @return [String]
+#
+# @!attribute [rw] message
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] website
+#   @return [Object, nil]
+ContactSubmission = Struct.new(
+  :company,
+  :email,
+  :message,
+  :name,
+  :website,
+  keyword_init: true
+)
+
+# Request payload for ContactSubmission#create.
+#
+# @!attribute [rw] company
+#   @return [Object, nil]
+#
+# @!attribute [rw] email
+#   @return [String]
+#
+# @!attribute [rw] message
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] website
+#   @return [Object, nil]
+ContactSubmissionCreateData = Struct.new(
+  :company,
+  :email,
+  :message,
+  :name,
+  :website,
+  keyword_init: true
+)
+
+# ControlComputer entity data model.
+#
+# @!attribute [rw] connection
+#   @return [Hash]
+#
+# @!attribute [rw] consent
+#   @return [Hash]
+#
+# @!attribute [rw] device
+#   @return [Hash]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] provider_status
+#   @return [Array, nil]
+ControlComputer = Struct.new(
+  :connection,
+  :consent,
+  :device,
+  :id,
+  :provider_status,
+  keyword_init: true
+)
+
+# Request payload for ControlComputer#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] observe_connection
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] persistent_agent_id
+#   @return [String]
+ControlComputerListMatch = Struct.new(
+  :organization_id,
+  :cursor,
+  :observe_connection,
+  :persistent_agent_id,
+  keyword_init: true
+)
+
+# Request payload for ControlComputer#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] enabled
+#   @return [Object, nil]
+#
+# @!attribute [rw] expected_revision
+#   @return [Object, nil]
+#
+# @!attribute [rw] persistent_agent_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] providers
+#   @return [Object, nil]
+ControlComputerUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  :enabled,
+  :expected_revision,
+  :persistent_agent_id,
+  :providers,
+  keyword_init: true
+)
+
+# ControlComputerControlOperation entity data model.
+#
+# @!attribute [rw] action
+#   @return [String]
+#
+# @!attribute [rw] arguments
+#   @return [Hash]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] delivery
+#   @return [Hash]
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] diagnostic_code
+#   @return [String, nil]
+#
+# @!attribute [rw] end
+#   @return [Hash]
+#
+# @!attribute [rw] expires_at
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] key
+#   @return [String]
+#
+# @!attribute [rw] provider
+#   @return [String]
+#
+# @!attribute [rw] references
+#   @return [Hash]
+#
+# @!attribute [rw] result
+#   @return [Object]
+#
+# @!attribute [rw] result_expired
+#   @return [Boolean]
+#
+# @!attribute [rw] state
+#   @return [String]
+ControlComputerControlOperation = Struct.new(
+  :action,
+  :arguments,
+  :created_at,
+  :delivery,
+  :device_id,
+  :diagnostic_code,
+  :end,
+  :expires_at,
+  :id,
+  :key,
+  :provider,
+  :references,
+  :result,
+  :result_expired,
+  :state,
+  keyword_init: true
+)
+
+# Request payload for ControlComputerControlOperation#load.
+#
+# @!attribute [rw] control_computer_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+ControlComputerControlOperationLoadMatch = Struct.new(
+  :control_computer_id,
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for ControlComputerControlOperation#create.
+#
+# @!attribute [rw] control_computer_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] action
+#   @return [String]
+#
+# @!attribute [rw] arguments
+#   @return [Hash]
+#
+# @!attribute [rw] key
+#   @return [String]
+ControlComputerControlOperationCreateData = Struct.new(
+  :control_computer_id,
+  :organization_id,
+  :action,
+  :arguments,
+  :key,
   keyword_init: true
 )
 
@@ -10873,6 +17562,168 @@ DemoShareSegmentLoadMatch = Struct.new(
   keyword_init: true
 )
 
+# Deployment entity data model.
+#
+# @!attribute [rw] app
+#   @return [Hash]
+#
+# @!attribute [rw] artifact_locator
+#   @return [Object]
+#
+# @!attribute [rw] build_duration_seconds
+#   @return [Object]
+#
+# @!attribute [rw] build_source
+#   @return [Object]
+#
+# @!attribute [rw] build_status
+#   @return [String]
+#
+# @!attribute [rw] children
+#   @return [Array]
+#
+# @!attribute [rw] ci_pipeline_id
+#   @return [Object]
+#
+# @!attribute [rw] ci_pipeline_run_id
+#   @return [Object]
+#
+# @!attribute [rw] commit_sha
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] creator
+#   @return [Object]
+#
+# @!attribute [rw] deployed_url
+#   @return [Object]
+#
+# @!attribute [rw] duration_seconds
+#   @return [Object]
+#
+# @!attribute [rw] environment
+#   @return [Hash]
+#
+# @!attribute [rw] history_kind
+#   @return [String]
+#
+# @!attribute [rw] history_reason
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] is_live
+#   @return [Boolean]
+#
+# @!attribute [rw] is_rollback
+#   @return [Boolean]
+#
+# @!attribute [rw] live_region_count
+#   @return [Integer]
+#
+# @!attribute [rw] number
+#   @return [Integer]
+#
+# @!attribute [rw] placement
+#   @return [Object]
+#
+# @!attribute [rw] region_count
+#   @return [Integer]
+#
+# @!attribute [rw] replicas_per_region
+#   @return [Integer]
+#
+# @!attribute [rw] rollback_reason
+#   @return [Object]
+#
+# @!attribute [rw] rollback_source_release_id
+#   @return [Object]
+#
+# @!attribute [rw] rollback_target_release_id
+#   @return [Object]
+#
+# @!attribute [rw] rollout_predecessor_id
+#   @return [Object]
+#
+# @!attribute [rw] rollout_status
+#   @return [String]
+#
+# @!attribute [rw] rollout_strategy
+#   @return [String]
+#
+# @!attribute [rw] service
+#   @return [Hash]
+#
+# @!attribute [rw] source_ref
+#   @return [Object]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] total_replicas
+#   @return [Integer]
+#
+# @!attribute [rw] trigger_kind
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+Deployment = Struct.new(
+  :app,
+  :artifact_locator,
+  :build_duration_seconds,
+  :build_source,
+  :build_status,
+  :children,
+  :ci_pipeline_id,
+  :ci_pipeline_run_id,
+  :commit_sha,
+  :created_at,
+  :creator,
+  :deployed_url,
+  :duration_seconds,
+  :environment,
+  :history_kind,
+  :history_reason,
+  :id,
+  :is_live,
+  :is_rollback,
+  :live_region_count,
+  :number,
+  :placement,
+  :region_count,
+  :replicas_per_region,
+  :rollback_reason,
+  :rollback_source_release_id,
+  :rollback_target_release_id,
+  :rollout_predecessor_id,
+  :rollout_status,
+  :rollout_strategy,
+  :service,
+  :source_ref,
+  :status,
+  :total_replicas,
+  :trigger_kind,
+  :updated_at,
+  keyword_init: true
+)
+
+# Request payload for Deployment#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+DeploymentLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
 # DeploymentDashboardNomad entity data model.
 class DeploymentDashboardNomad
 end
@@ -10898,6 +17749,116 @@ DeploymentDashboardNomadLoadMatch = Struct.new(
   keyword_init: true
 )
 
+# DeploymentDetail entity data model.
+#
+# @!attribute [rw] activity
+#   @return [Array]
+#
+# @!attribute [rw] app
+#   @return [Object]
+#
+# @!attribute [rw] app_id
+#   @return [Object]
+#
+# @!attribute [rw] audit_events
+#   @return [Array]
+#
+# @!attribute [rw] capacity
+#   @return [Hash]
+#
+# @!attribute [rw] data_resources
+#   @return [Array]
+#
+# @!attribute [rw] deploy_targets
+#   @return [Array]
+#
+# @!attribute [rw] deployments
+#   @return [Array]
+#
+# @!attribute [rw] desired_states
+#   @return [Array]
+#
+# @!attribute [rw] environments
+#   @return [Array]
+#
+# @!attribute [rw] filters
+#   @return [Hash]
+#
+# @!attribute [rw] health
+#   @return [Hash]
+#
+# @!attribute [rw] nomad
+#   @return [Hash]
+#
+# @!attribute [rw] operations
+#   @return [Array]
+#
+# @!attribute [rw] placements
+#   @return [Array]
+#
+# @!attribute [rw] reconciler_ticks
+#   @return [Array]
+#
+# @!attribute [rw] releases
+#   @return [Array]
+#
+# @!attribute [rw] runtime_instances
+#   @return [Array]
+#
+# @!attribute [rw] service_bindings
+#   @return [Array]
+#
+# @!attribute [rw] service_views
+#   @return [Array]
+#
+# @!attribute [rw] storage_resources
+#   @return [Array]
+DeploymentDetail = Struct.new(
+  :activity,
+  :app,
+  :app_id,
+  :audit_events,
+  :capacity,
+  :data_resources,
+  :deploy_targets,
+  :deployments,
+  :desired_states,
+  :environments,
+  :filters,
+  :health,
+  :nomad,
+  :operations,
+  :placements,
+  :reconciler_ticks,
+  :releases,
+  :runtime_instances,
+  :service_bindings,
+  :service_views,
+  :storage_resources,
+  keyword_init: true
+)
+
+# Request payload for DeploymentDetail#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] app
+#   @return [String, nil]
+#
+# @!attribute [rw] environment
+#   @return [String, nil]
+#
+# @!attribute [rw] service
+#   @return [String, nil]
+DeploymentDetailListMatch = Struct.new(
+  :organization_id,
+  :app,
+  :environment,
+  :service,
+  keyword_init: true
+)
+
 # DeploymentFile entity data model.
 class DeploymentFile
 end
@@ -10912,6 +17873,1550 @@ end
 DeploymentFileUpdateData = Struct.new(
   :deployment_id,
   :static_site_id,
+  keyword_init: true
+)
+
+# DeploymentLog entity data model.
+#
+# @!attribute [rw] allocation_id
+#   @return [String]
+#
+# @!attribute [rw] app_environment_id
+#   @return [Object]
+#
+# @!attribute [rw] app_release_id
+#   @return [Object]
+#
+# @!attribute [rw] app_service_id
+#   @return [Object]
+#
+# @!attribute [rw] details
+#   @return [Object]
+#
+# @!attribute [rw] environment_name
+#   @return [String]
+#
+# @!attribute [rw] release_version
+#   @return [Object]
+#
+# @!attribute [rw] service_name
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] task
+#   @return [Object]
+#
+# @!attribute [rw] unreachable_reason
+#   @return [Object]
+DeploymentLog = Struct.new(
+  :allocation_id,
+  :app_environment_id,
+  :app_release_id,
+  :app_service_id,
+  :details,
+  :environment_name,
+  :release_version,
+  :service_name,
+  :status,
+  :task,
+  :unreachable_reason,
+  keyword_init: true
+)
+
+# Request payload for DeploymentLog#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] app
+#   @return [String, nil]
+#
+# @!attribute [rw] environment
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] log_location
+#   @return [String, nil]
+#
+# @!attribute [rw] log_service
+#   @return [String, nil]
+#
+# @!attribute [rw] service
+#   @return [String, nil]
+DeploymentLogListMatch = Struct.new(
+  :organization_id,
+  :app,
+  :environment,
+  :limit,
+  :log_location,
+  :log_service,
+  :service,
+  keyword_init: true
+)
+
+# DeploymentMetric entity data model.
+#
+# @!attribute [rw] auto_deploy
+#   @return [Boolean]
+#
+# @!attribute [rw] environment_id
+#   @return [String]
+#
+# @!attribute [rw] environment_name
+#   @return [String]
+#
+# @!attribute [rw] placement_id
+#   @return [String]
+#
+# @!attribute [rw] redeploy
+#   @return [Boolean]
+#
+# @!attribute [rw] region_count
+#   @return [Integer]
+#
+# @!attribute [rw] replicas_per_region
+#   @return [Integer]
+#
+# @!attribute [rw] rollout_strategy
+#   @return [String]
+#
+# @!attribute [rw] service_id
+#   @return [String]
+#
+# @!attribute [rw] service_name
+#   @return [String]
+#
+# @!attribute [rw] source_ref
+#   @return [Object]
+DeploymentMetric = Struct.new(
+  :auto_deploy,
+  :environment_id,
+  :environment_name,
+  :placement_id,
+  :redeploy,
+  :region_count,
+  :replicas_per_region,
+  :rollout_strategy,
+  :service_id,
+  :service_name,
+  :source_ref,
+  keyword_init: true
+)
+
+# Request payload for DeploymentMetric#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] app
+#   @return [String, nil]
+#
+# @!attribute [rw] environment
+#   @return [String, nil]
+#
+# @!attribute [rw] metrics_range
+#   @return [String, nil]
+#
+# @!attribute [rw] service
+#   @return [String, nil]
+DeploymentMetricListMatch = Struct.new(
+  :organization_id,
+  :app,
+  :environment,
+  :metrics_range,
+  :service,
+  keyword_init: true
+)
+
+# DeploymentPreview entity data model.
+#
+# @!attribute [rw] access
+#   @return [String]
+#
+# @!attribute [rw] app_environment_id
+#   @return [String]
+#
+# @!attribute [rw] app_name
+#   @return [String]
+#
+# @!attribute [rw] app_preview_profile_id
+#   @return [String]
+#
+# @!attribute [rw] app_slug
+#   @return [String]
+#
+# @!attribute [rw] change_number
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] created_by_user_id
+#   @return [String, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [String]
+#
+# @!attribute [rw] generation
+#   @return [Integer]
+#
+# @!attribute [rw] health
+#   @return [String]
+#
+# @!attribute [rw] hosted_app_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] latest_operation_status
+#   @return [Object]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] owner_name
+#   @return [Object]
+#
+# @!attribute [rw] profile_name
+#   @return [String]
+#
+# @!attribute [rw] resource_overrides
+#   @return [Hash, nil]
+#
+# @!attribute [rw] retained
+#   @return [Boolean]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] snapshot_version
+#   @return [Integer]
+#
+# @!attribute [rw] source_revision
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] urls
+#   @return [Array]
+#
+# @!attribute [rw] vcs_change_id
+#   @return [Object, nil]
+DeploymentPreview = Struct.new(
+  :access,
+  :app_environment_id,
+  :app_name,
+  :app_preview_profile_id,
+  :app_slug,
+  :change_number,
+  :created_at,
+  :created_by_user_id,
+  :expires_at,
+  :generation,
+  :health,
+  :hosted_app_id,
+  :id,
+  :latest_operation_status,
+  :name,
+  :owner_name,
+  :profile_name,
+  :resource_overrides,
+  :retained,
+  :slug,
+  :snapshot_version,
+  :source_revision,
+  :status,
+  :updated_at,
+  :urls,
+  :vcs_change_id,
+  keyword_init: true
+)
+
+# Request payload for DeploymentPreview#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] app
+#   @return [String, nil]
+#
+# @!attribute [rw] change
+#   @return [String, nil]
+#
+# @!attribute [rw] expiry
+#   @return [String, nil]
+#
+# @!attribute [rw] health
+#   @return [String, nil]
+#
+# @!attribute [rw] owner
+#   @return [String, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+DeploymentPreviewListMatch = Struct.new(
+  :organization_id,
+  :app,
+  :change,
+  :expiry,
+  :health,
+  :owner,
+  :page,
+  keyword_init: true
+)
+
+# DeploymentSetting entity data model.
+#
+# @!attribute [rw] code
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] nomad_datacenter
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+DeploymentSetting = Struct.new(
+  :code,
+  :created_at,
+  :id,
+  :name,
+  :nomad_datacenter,
+  :updated_at,
+  keyword_init: true
+)
+
+# Request payload for DeploymentSetting#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] app
+#   @return [String, nil]
+#
+# @!attribute [rw] environment
+#   @return [String, nil]
+#
+# @!attribute [rw] service
+#   @return [String, nil]
+DeploymentSettingListMatch = Struct.new(
+  :organization_id,
+  :app,
+  :environment,
+  :service,
+  keyword_init: true
+)
+
+# DesktopLocalAgentModel entity data model.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+DesktopLocalAgentModel = Struct.new(
+  :id,
+  :name,
+  keyword_init: true
+)
+
+# Request payload for DesktopLocalAgentModel#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+DesktopLocalAgentModelListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# DesktopLocalAgentResponse entity data model.
+#
+# @!attribute [rw] input
+#   @return [Array]
+#
+# @!attribute [rw] max_output_tokens
+#   @return [Integer, nil]
+#
+# @!attribute [rw] model
+#   @return [String]
+#
+# @!attribute [rw] store
+#   @return [Boolean]
+#
+# @!attribute [rw] stream
+#   @return [Boolean]
+DesktopLocalAgentResponse = Struct.new(
+  :input,
+  :max_output_tokens,
+  :model,
+  :store,
+  :stream,
+  keyword_init: true
+)
+
+# Request payload for DesktopLocalAgentResponse#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] input
+#   @return [Array]
+#
+# @!attribute [rw] max_output_tokens
+#   @return [Integer, nil]
+#
+# @!attribute [rw] model
+#   @return [String]
+#
+# @!attribute [rw] store
+#   @return [Boolean]
+#
+# @!attribute [rw] stream
+#   @return [Boolean]
+DesktopLocalAgentResponseCreateData = Struct.new(
+  :organization_id,
+  :input,
+  :max_output_tokens,
+  :model,
+  :store,
+  :stream,
+  keyword_init: true
+)
+
+# Device entity data model.
+#
+# @!attribute [rw] architecture
+#   @return [String]
+#
+# @!attribute [rw] channel
+#   @return [String]
+#
+# @!attribute [rw] coding_connection
+#   @return [Object]
+#
+# @!attribute [rw] connection_checked_at
+#   @return [Object]
+#
+# @!attribute [rw] connection_status
+#   @return [String]
+#
+# @!attribute [rw] control_delivery_policy
+#   @return [Hash]
+#
+# @!attribute [rw] control_spawn_policy
+#   @return [Hash]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] device
+#   @return [Hash]
+#
+# @!attribute [rw] environment
+#   @return [String]
+#
+# @!attribute [rw] execution_available
+#   @return [Boolean]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] native_device_id
+#   @return [String]
+#
+# @!attribute [rw] paired_at
+#   @return [String]
+#
+# @!attribute [rw] pairing_generation
+#   @return [Integer]
+#
+# @!attribute [rw] platform
+#   @return [String]
+#
+# @!attribute [rw] project_visibility
+#   @return [Hash]
+#
+# @!attribute [rw] provider_status
+#   @return [Array, nil]
+#
+# @!attribute [rw] revoked_at
+#   @return [Object]
+#
+# @!attribute [rw] scheduled_check_ins
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] user_browser_access
+#   @return [String]
+Device = Struct.new(
+  :architecture,
+  :channel,
+  :coding_connection,
+  :connection_checked_at,
+  :connection_status,
+  :control_delivery_policy,
+  :control_spawn_policy,
+  :created_at,
+  :device,
+  :environment,
+  :execution_available,
+  :id,
+  :name,
+  :native_device_id,
+  :paired_at,
+  :pairing_generation,
+  :platform,
+  :project_visibility,
+  :provider_status,
+  :revoked_at,
+  :scheduled_check_ins,
+  :user_browser_access,
+  keyword_init: true
+)
+
+# Request payload for Device#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+DeviceLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for Device#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] include_revoked
+#   @return [Boolean, nil]
+DeviceListMatch = Struct.new(
+  :organization_id,
+  :cursor,
+  :include_revoked,
+  keyword_init: true
+)
+
+# Request payload for Device#create.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] architecture
+#   @return [String]
+#
+# @!attribute [rw] channel
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] pairing_generation
+#   @return [Integer]
+#
+# @!attribute [rw] platform
+#   @return [String]
+#
+# @!attribute [rw] access
+#   @return [Object, nil]
+#
+# @!attribute [rw] folders
+#   @return [Object, nil]
+#
+# @!attribute [rw] max_agents
+#   @return [Object, nil]
+#
+# @!attribute [rw] mode
+#   @return [Object, nil]
+#
+# @!attribute [rw] public_key
+#   @return [Object, nil]
+#
+# @!attribute [rw] repositories
+#   @return [Object, nil]
+#
+# @!attribute [rw] restricted
+#   @return [Object, nil]
+#
+# @!attribute [rw] transport
+#   @return [Object, nil]
+#
+# @!attribute [rw] version
+#   @return [Object, nil]
+DeviceCreateData = Struct.new(
+  :id,
+  :organization_id,
+  :architecture,
+  :channel,
+  :name,
+  :pairing_generation,
+  :platform,
+  :access,
+  :folders,
+  :max_agents,
+  :mode,
+  :public_key,
+  :repositories,
+  :restricted,
+  :transport,
+  :version,
+  keyword_init: true
+)
+
+# DeviceBrowserOperation entity data model.
+#
+# @!attribute [rw] command
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+DeviceBrowserOperation = Struct.new(
+  :command,
+  :created_at,
+  :id,
+  keyword_init: true
+)
+
+# Request payload for DeviceBrowserOperation#list.
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+DeviceBrowserOperationListMatch = Struct.new(
+  :device_id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for DeviceBrowserOperation#create.
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] claim_token
+#   @return [Object, nil]
+#
+# @!attribute [rw] response
+#   @return [Object, nil]
+DeviceBrowserOperationCreateData = Struct.new(
+  :device_id,
+  :id,
+  :organization_id,
+  :claim_token,
+  :response,
+  keyword_init: true
+)
+
+# DeviceControlMessage entity data model.
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] agent_name
+#   @return [String]
+#
+# @!attribute [rw] expires_at
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] sender
+#   @return [Object]
+#
+# @!attribute [rw] text
+#   @return [Object]
+#
+# @!attribute [rw] text_omitted
+#   @return [Boolean]
+#
+# @!attribute [rw] thread
+#   @return [Hash]
+DeviceControlMessage = Struct.new(
+  :agent_id,
+  :agent_name,
+  :expires_at,
+  :id,
+  :sender,
+  :text,
+  :text_omitted,
+  :thread,
+  keyword_init: true
+)
+
+# Request payload for DeviceControlMessage#list.
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+DeviceControlMessageListMatch = Struct.new(
+  :device_id,
+  :organization_id,
+  :cursor,
+  keyword_init: true
+)
+
+# DeviceControlOperation entity data model.
+#
+# @!attribute [rw] action
+#   @return [String]
+#
+# @!attribute [rw] arguments
+#   @return [Hash]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] delivery
+#   @return [Hash]
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] diagnostic_code
+#   @return [String, nil]
+#
+# @!attribute [rw] end
+#   @return [Hash]
+#
+# @!attribute [rw] expires_at
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] key
+#   @return [String]
+#
+# @!attribute [rw] provider
+#   @return [String]
+#
+# @!attribute [rw] references
+#   @return [Hash]
+#
+# @!attribute [rw] result
+#   @return [Object]
+#
+# @!attribute [rw] result_expired
+#   @return [Boolean]
+#
+# @!attribute [rw] state
+#   @return [String]
+DeviceControlOperation = Struct.new(
+  :action,
+  :arguments,
+  :created_at,
+  :delivery,
+  :device_id,
+  :diagnostic_code,
+  :end,
+  :expires_at,
+  :id,
+  :key,
+  :provider,
+  :references,
+  :result,
+  :result_expired,
+  :state,
+  keyword_init: true
+)
+
+# Request payload for DeviceControlOperation#load.
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+DeviceControlOperationLoadMatch = Struct.new(
+  :device_id,
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for DeviceControlOperation#create.
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] action
+#   @return [String]
+#
+# @!attribute [rw] arguments
+#   @return [Hash]
+#
+# @!attribute [rw] key
+#   @return [String]
+DeviceControlOperationCreateData = Struct.new(
+  :device_id,
+  :organization_id,
+  :action,
+  :arguments,
+  :key,
+  keyword_init: true
+)
+
+# DeviceEnterpriseRelay entity data model.
+class DeviceEnterpriseRelay
+end
+
+# Request payload for DeviceEnterpriseRelay#list.
+class DeviceEnterpriseRelayListMatch
+end
+
+# DeviceFolderListing entity data model.
+#
+# @!attribute [rw] code
+#   @return [String, nil]
+#
+# @!attribute [rw] error
+#   @return [String, nil]
+#
+# @!attribute [rw] folders
+#   @return [Array, nil]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] key
+#   @return [String]
+#
+# @!attribute [rw] parent
+#   @return [Object, nil]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String]
+#
+# @!attribute [rw] truncated
+#   @return [Boolean, nil]
+DeviceFolderListing = Struct.new(
+  :code,
+  :error,
+  :folders,
+  :id,
+  :key,
+  :parent,
+  :path,
+  :state,
+  :truncated,
+  keyword_init: true
+)
+
+# Request payload for DeviceFolderListing#load.
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+DeviceFolderListingLoadMatch = Struct.new(
+  :device_id,
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for DeviceFolderListing#create.
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] key
+#   @return [String]
+#
+# @!attribute [rw] path
+#   @return [String]
+DeviceFolderListingCreateData = Struct.new(
+  :device_id,
+  :organization_id,
+  :key,
+  :path,
+  keyword_init: true
+)
+
+# DeviceGrant entity data model.
+#
+# @!attribute [rw] active_grants
+#   @return [Array]
+#
+# @!attribute [rw] agent_choices
+#   @return [Array]
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] all_agents_access
+#   @return [Boolean]
+#
+# @!attribute [rw] capabilities
+#   @return [Array]
+#
+# @!attribute [rw] execution_available
+#   @return [Boolean]
+#
+# @!attribute [rw] grants
+#   @return [Array]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] next_cursor
+#   @return [Object]
+#
+# @!attribute [rw] principal_id
+#   @return [String]
+DeviceGrant = Struct.new(
+  :active_grants,
+  :agent_choices,
+  :agent_id,
+  :all_agents_access,
+  :capabilities,
+  :execution_available,
+  :grants,
+  :id,
+  :next_cursor,
+  :principal_id,
+  keyword_init: true
+)
+
+# Request payload for DeviceGrant#list.
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+DeviceGrantListMatch = Struct.new(
+  :device_id,
+  :organization_id,
+  :cursor,
+  keyword_init: true
+)
+
+# Request payload for DeviceGrant#create.
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] capabilities
+#   @return [Array]
+#
+# @!attribute [rw] principal_id
+#   @return [String]
+DeviceGrantCreateData = Struct.new(
+  :device_id,
+  :organization_id,
+  :agent_id,
+  :capabilities,
+  :principal_id,
+  keyword_init: true
+)
+
+# DeviceInvocation entity data model.
+class DeviceInvocation
+end
+
+# Request payload for DeviceInvocation#create.
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] challenge
+#   @return [Object, nil]
+#
+# @!attribute [rw] invocation_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] request_hash
+#   @return [Object, nil]
+#
+# @!attribute [rw] signature
+#   @return [Object, nil]
+DeviceInvocationCreateData = Struct.new(
+  :device_id,
+  :organization_id,
+  :challenge,
+  :invocation_id,
+  :request_hash,
+  :signature,
+  keyword_init: true
+)
+
+# DeviceLocalEvent entity data model.
+#
+# @!attribute [rw] event
+#   @return [String]
+#
+# @!attribute [rw] recorded
+#   @return [Boolean]
+DeviceLocalEvent = Struct.new(
+  :event,
+  :recorded,
+  keyword_init: true
+)
+
+# Request payload for DeviceLocalEvent#create.
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] event
+#   @return [String]
+DeviceLocalEventCreateData = Struct.new(
+  :device_id,
+  :organization_id,
+  :event,
+  keyword_init: true
+)
+
+# DevicePairing entity data model.
+#
+# @!attribute [rw] architecture
+#   @return [String]
+#
+# @!attribute [rw] channel
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] platform
+#   @return [String]
+#
+# @!attribute [rw] public_key
+#   @return [String]
+DevicePairing = Struct.new(
+  :architecture,
+  :channel,
+  :id,
+  :name,
+  :platform,
+  :public_key,
+  keyword_init: true
+)
+
+# Request payload for DevicePairing#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] architecture
+#   @return [String]
+#
+# @!attribute [rw] channel
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] platform
+#   @return [String]
+#
+# @!attribute [rw] public_key
+#   @return [String]
+DevicePairingCreateData = Struct.new(
+  :organization_id,
+  :architecture,
+  :channel,
+  :name,
+  :platform,
+  :public_key,
+  keyword_init: true
+)
+
+# DeviceProject entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+DeviceProject = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for DeviceProject#remove.
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+DeviceProjectRemoveMatch = Struct.new(
+  :device_id,
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# DeviceScheduledCheckIn entity data model.
+#
+# @!attribute [rw] enabled
+#   @return [Boolean]
+DeviceScheduledCheckIn = Struct.new(
+  :enabled,
+  keyword_init: true
+)
+
+# Request payload for DeviceScheduledCheckIn#create.
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean]
+DeviceScheduledCheckInCreateData = Struct.new(
+  :device_id,
+  :organization_id,
+  :enabled,
+  keyword_init: true
+)
+
+# DockerBuilder entity data model.
+#
+# @!attribute [rw] backend
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [Object]
+#
+# @!attribute [rw] gateway_url
+#   @return [Object, nil]
+#
+# @!attribute [rw] generation
+#   @return [Integer]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] last_activity_at
+#   @return [Object]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] ready_at
+#   @return [Object]
+#
+# @!attribute [rw] slept_at
+#   @return [Object]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] startup_attempt
+#   @return [Integer]
+#
+# @!attribute [rw] startup_failure
+#   @return [Object]
+#
+# @!attribute [rw] startup_stage
+#   @return [Object]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [Object]
+DockerBuilder = Struct.new(
+  :backend,
+  :created_at,
+  :gateway_url,
+  :generation,
+  :id,
+  :last_activity_at,
+  :organization_id,
+  :ready_at,
+  :slept_at,
+  :slug,
+  :startup_attempt,
+  :startup_failure,
+  :startup_stage,
+  :status,
+  :updated_at,
+  keyword_init: true
+)
+
+# Request payload for DockerBuilder#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+DockerBuilderLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for DockerBuilder#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] slug
+#   @return [String, nil]
+DockerBuilderListMatch = Struct.new(
+  :organization_id,
+  :slug,
+  keyword_init: true
+)
+
+# Request payload for DockerBuilder#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] backend
+#   @return [String, nil]
+#
+# @!attribute [rw] slug
+#   @return [String, nil]
+DockerBuilderCreateData = Struct.new(
+  :organization_id,
+  :backend,
+  :slug,
+  keyword_init: true
+)
+
+# Request payload for DockerBuilder#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+DockerBuilderUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for DockerBuilder#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] slug
+#   @return [String, nil]
+DockerBuilderPatchData = Struct.new(
+  :id,
+  :organization_id,
+  :slug,
+  keyword_init: true
+)
+
+# DockerBuilderSession entity data model.
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] docker_builder_id
+#   @return [String]
+#
+# @!attribute [rw] expires_at
+#   @return [String]
+#
+# @!attribute [rw] gateway_url
+#   @return [Object, nil]
+#
+# @!attribute [rw] generation
+#   @return [Integer]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] revoked_at
+#   @return [Object]
+#
+# @!attribute [rw] user_id
+#   @return [String]
+DockerBuilderSession = Struct.new(
+  :created_at,
+  :docker_builder_id,
+  :expires_at,
+  :gateway_url,
+  :generation,
+  :id,
+  :organization_id,
+  :revoked_at,
+  :user_id,
+  keyword_init: true
+)
+
+# Request payload for DockerBuilderSession#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+DockerBuilderSessionLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for DockerBuilderSession#create.
+#
+# @!attribute [rw] docker_builder_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+DockerBuilderSessionCreateData = Struct.new(
+  :docker_builder_id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for DockerBuilderSession#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+DockerBuilderSessionRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# DockerBuilderSetting entity data model.
+#
+# @!attribute [rw] docker_builder_settings
+#   @return [Hash]
+#
+# @!attribute [rw] idle_timeout_seconds
+#   @return [Integer]
+#
+# @!attribute [rw] max_concurrency
+#   @return [Integer]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] region
+#   @return [String]
+#
+# @!attribute [rw] runtime_timeout_seconds
+#   @return [Integer]
+DockerBuilderSetting = Struct.new(
+  :docker_builder_settings,
+  :idle_timeout_seconds,
+  :max_concurrency,
+  :organization_id,
+  :region,
+  :runtime_timeout_seconds,
+  keyword_init: true
+)
+
+# Request payload for DockerBuilderSetting#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+DockerBuilderSettingListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for DockerBuilderSetting#update.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+DockerBuilderSettingUpdateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for DockerBuilderSetting#patch.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] idle_timeout_seconds
+#   @return [Integer, nil]
+#
+# @!attribute [rw] max_concurrency
+#   @return [Integer, nil]
+#
+# @!attribute [rw] region
+#   @return [String, nil]
+#
+# @!attribute [rw] runtime_timeout_seconds
+#   @return [Integer, nil]
+DockerBuilderSettingPatchData = Struct.new(
+  :organization_id,
+  :idle_timeout_seconds,
+  :max_concurrency,
+  :region,
+  :runtime_timeout_seconds,
+  keyword_init: true
+)
+
+# DomainDnsIntegration entity data model.
+#
+# @!attribute [rw] account_label
+#   @return [Object]
+#
+# @!attribute [rw] api_token
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] failure_message
+#   @return [Object]
+#
+# @!attribute [rw] has_token
+#   @return [Boolean]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] last_verified_at
+#   @return [Object]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] provider
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+DomainDnsIntegration = Struct.new(
+  :account_label,
+  :api_token,
+  :created_at,
+  :failure_message,
+  :has_token,
+  :id,
+  :last_verified_at,
+  :organization_id,
+  :provider,
+  :status,
+  :updated_at,
+  keyword_init: true
+)
+
+# Request payload for DomainDnsIntegration#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+DomainDnsIntegrationListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for DomainDnsIntegration#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] account_label
+#   @return [Object, nil]
+#
+# @!attribute [rw] api_token
+#   @return [String]
+DomainDnsIntegrationCreateData = Struct.new(
+  :organization_id,
+  :account_label,
+  :api_token,
   keyword_init: true
 )
 
@@ -11291,6 +19796,27 @@ DreamCreateData = Struct.new(
   :skipped,
   :tab,
   :timezone,
+  keyword_init: true
+)
+
+# Edge entity data model.
+class Edge
+end
+
+# Request payload for Edge#load.
+class EdgeLoadMatch
+end
+
+# EmailVerification entity data model.
+class EmailVerification
+end
+
+# Request payload for EmailVerification#create.
+#
+# @!attribute [rw] email
+#   @return [Object, nil]
+EmailVerificationCreateData = Struct.new(
+  :email,
   keyword_init: true
 )
 
@@ -12341,6 +20867,340 @@ EvidenceLoadMatch = Struct.new(
   keyword_init: true
 )
 
+# ExecutionDesiredState entity data model.
+#
+# @!attribute [rw] desired_state
+#   @return [Hash]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] stop_observed
+#   @return [Boolean]
+ExecutionDesiredState = Struct.new(
+  :desired_state,
+  :id,
+  :stop_observed,
+  keyword_init: true
+)
+
+# Request payload for ExecutionDesiredState#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+ExecutionDesiredStateLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ExecutionDesiredState#list.
+#
+# @!attribute [rw] desired_state
+#   @return [Hash, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] stop_observed
+#   @return [Boolean, nil]
+ExecutionDesiredStateListMatch = Struct.new(
+  :desired_state,
+  :id,
+  :stop_observed,
+  keyword_init: true
+)
+
+# Request payload for ExecutionDesiredState#create.
+class ExecutionDesiredStateCreateData
+end
+
+# Request payload for ExecutionDesiredState#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+ExecutionDesiredStateUpdateData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ExecutionDesiredState#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+ExecutionDesiredStatePatchData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ExecutionDesiredState#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+ExecutionDesiredStateRemoveMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# ExecutionReconcilerTick entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ExecutionReconcilerTick = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ExecutionReconcilerTick#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+ExecutionReconcilerTickLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ExecutionReconcilerTick#list.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ExecutionReconcilerTickListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ExecutionReconcilerTick#create.
+class ExecutionReconcilerTickCreateData
+end
+
+# ExecutionRelease entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ExecutionRelease = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ExecutionRelease#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+ExecutionReleaseLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ExecutionRelease#list.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ExecutionReleaseListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ExecutionRelease#create.
+class ExecutionReleaseCreateData
+end
+
+# ExecutionRuntimeInstance entity data model.
+#
+# @!attribute [rw] adapter_kind
+#   @return [String]
+#
+# @!attribute [rw] app_environment_id
+#   @return [String]
+#
+# @!attribute [rw] app_release_id
+#   @return [Object]
+#
+# @!attribute [rw] app_service_id
+#   @return [String]
+#
+# @!attribute [rw] booted_at
+#   @return [Object]
+#
+# @!attribute [rw] booted_at_label
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] hosted_app_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] instance_key
+#   @return [String]
+#
+# @!attribute [rw] last_reconciled_at
+#   @return [Object]
+#
+# @!attribute [rw] last_reconciled_at_label
+#   @return [Object]
+#
+# @!attribute [rw] last_seen_at
+#   @return [Object]
+#
+# @!attribute [rw] last_seen_at_label
+#   @return [Object]
+#
+# @!attribute [rw] location
+#   @return [Object]
+#
+# @!attribute [rw] location_id
+#   @return [String]
+#
+# @!attribute [rw] network_peer_id
+#   @return [Object]
+#
+# @!attribute [rw] nomad_allocation_id
+#   @return [Object]
+#
+# @!attribute [rw] nomad_task_name
+#   @return [Object]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] private_ipv4
+#   @return [Object]
+#
+# @!attribute [rw] private_ipv6
+#   @return [Object]
+#
+# @!attribute [rw] provider_instance_id
+#   @return [Object]
+#
+# @!attribute [rw] public_endpoint
+#   @return [Object]
+#
+# @!attribute [rw] service_name
+#   @return [String]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] terminated_at
+#   @return [Object]
+#
+# @!attribute [rw] terminated_at_label
+#   @return [Object]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+ExecutionRuntimeInstance = Struct.new(
+  :adapter_kind,
+  :app_environment_id,
+  :app_release_id,
+  :app_service_id,
+  :booted_at,
+  :booted_at_label,
+  :created_at,
+  :created_at_label,
+  :hosted_app_id,
+  :id,
+  :instance_key,
+  :last_reconciled_at,
+  :last_reconciled_at_label,
+  :last_seen_at,
+  :last_seen_at_label,
+  :location,
+  :location_id,
+  :network_peer_id,
+  :nomad_allocation_id,
+  :nomad_task_name,
+  :organization_id,
+  :private_ipv4,
+  :private_ipv6,
+  :provider_instance_id,
+  :public_endpoint,
+  :service_name,
+  :slug,
+  :status,
+  :terminated_at,
+  :terminated_at_label,
+  :updated_at,
+  :updated_at_label,
+  keyword_init: true
+)
+
+# Request payload for ExecutionRuntimeInstance#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+ExecutionRuntimeInstanceLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ExecutionRuntimeInstance#list.
+#
+# @!attribute [rw] app_environment_id
+#   @return [String, nil]
+#
+# @!attribute [rw] app_service_id
+#   @return [String, nil]
+#
+# @!attribute [rw] hosted_app_id
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+ExecutionRuntimeInstanceListMatch = Struct.new(
+  :app_environment_id,
+  :app_service_id,
+  :hosted_app_id,
+  :limit,
+  :page,
+  keyword_init: true
+)
+
+# Request payload for ExecutionRuntimeInstance#create.
+class ExecutionRuntimeInstanceCreateData
+end
+
+# Request payload for ExecutionRuntimeInstance#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+ExecutionRuntimeInstanceUpdateData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ExecutionRuntimeInstance#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+ExecutionRuntimeInstancePatchData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ExecutionRuntimeInstance#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+ExecutionRuntimeInstanceRemoveMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
 # Exploration entity data model.
 #
 # @!attribute [rw] account_id
@@ -13280,6 +22140,929 @@ FindingPatchData = Struct.new(
   keyword_init: true
 )
 
+# Gh entity data model.
+#
+# @!attribute [rw] capabilities
+#   @return [Hash]
+#
+# @!attribute [rw] content
+#   @return [Hash]
+#
+# @!attribute [rw] fetched_at
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] magic_merge
+#   @return [Object]
+#
+# @!attribute [rw] pull_request
+#   @return [Object]
+#
+# @!attribute [rw] stack
+#   @return [Hash]
+#
+# @!attribute [rw] transcript_paths
+#   @return [Array]
+Gh = Struct.new(
+  :capabilities,
+  :content,
+  :fetched_at,
+  :id,
+  :magic_merge,
+  :pull_request,
+  :stack,
+  :transcript_paths,
+  keyword_init: true
+)
+
+# Request payload for Gh#load.
+#
+# @!attribute [rw] gh_id
+#   @return [String]
+#
+# @!attribute [rw] github_repo
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] check_id
+#   @return [String, nil]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] job_id
+#   @return [String, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] run_id
+#   @return [String, nil]
+#
+# @!attribute [rw] section
+#   @return [String, nil]
+#
+# @!attribute [rw] thread_id
+#   @return [String, nil]
+GhLoadMatch = Struct.new(
+  :gh_id,
+  :github_repo,
+  :id,
+  :organization_id,
+  :check_id,
+  :cursor,
+  :job_id,
+  :page,
+  :run_id,
+  :section,
+  :thread_id,
+  keyword_init: true
+)
+
+# GitImport entity data model.
+#
+# @!attribute [rw] destination_mode
+#   @return [String]
+#
+# @!attribute [rw] error
+#   @return [Object, nil]
+#
+# @!attribute [rw] git_default_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] git_status
+#   @return [String]
+#
+# @!attribute [rw] git_url
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] idempotency_key
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] native_status
+#   @return [String]
+#
+# @!attribute [rw] organization
+#   @return [String]
+#
+# @!attribute [rw] repository_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] root_path
+#   @return [String]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] source_branch
+#   @return [String]
+#
+# @!attribute [rw] target_branch
+#   @return [String]
+GitImport = Struct.new(
+  :destination_mode,
+  :error,
+  :git_default_branch,
+  :git_status,
+  :git_url,
+  :id,
+  :idempotency_key,
+  :name,
+  :native_status,
+  :organization,
+  :repository_id,
+  :root_path,
+  :slug,
+  :source_branch,
+  :target_branch,
+  keyword_init: true
+)
+
+# Request payload for GitImport#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+GitImportLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for GitImport#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] destination_mode
+#   @return [String]
+#
+# @!attribute [rw] git_default_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] idempotency_key
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] root_path
+#   @return [String]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] source_branch
+#   @return [String]
+#
+# @!attribute [rw] target_branch
+#   @return [String, nil]
+GitImportCreateData = Struct.new(
+  :organization_id,
+  :destination_mode,
+  :git_default_branch,
+  :idempotency_key,
+  :name,
+  :root_path,
+  :slug,
+  :source_branch,
+  :target_branch,
+  keyword_init: true
+)
+
+# Github entity data model.
+class Github
+end
+
+# Request payload for Github#load.
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] owner
+#   @return [String]
+GithubLoadMatch = Struct.new(
+  :name,
+  :owner,
+  keyword_init: true
+)
+
+# GithubApp entity data model.
+class GithubApp
+end
+
+# Request payload for GithubApp#create.
+class GithubAppCreateData
+end
+
+# GithubAppImportableRepository entity data model.
+#
+# @!attribute [rw] account_login
+#   @return [String]
+#
+# @!attribute [rw] github_app_installation_id
+#   @return [String]
+#
+# @!attribute [rw] next_page
+#   @return [Object]
+#
+# @!attribute [rw] repositories
+#   @return [Array]
+GithubAppImportableRepository = Struct.new(
+  :account_login,
+  :github_app_installation_id,
+  :next_page,
+  :repositories,
+  keyword_init: true
+)
+
+# Request payload for GithubAppImportableRepository#list.
+#
+# @!attribute [rw] github_app_installation_id
+#   @return [String, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+GithubAppImportableRepositoryListMatch = Struct.new(
+  :github_app_installation_id,
+  :page,
+  keyword_init: true
+)
+
+# GithubAppInstallation entity data model.
+#
+# @!attribute [rw] account_avatar_url
+#   @return [Object]
+#
+# @!attribute [rw] account_id
+#   @return [Object]
+#
+# @!attribute [rw] account_login
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] installation_id
+#   @return [String]
+#
+# @!attribute [rw] installed_at
+#   @return [Object]
+#
+# @!attribute [rw] installed_at_label
+#   @return [Object]
+#
+# @!attribute [rw] manage_access_url
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] permission_entries
+#   @return [Array]
+#
+# @!attribute [rw] permissions
+#   @return [Hash]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] suspended_at
+#   @return [Object]
+#
+# @!attribute [rw] suspended_at_label
+#   @return [Object]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+GithubAppInstallation = Struct.new(
+  :account_avatar_url,
+  :account_id,
+  :account_login,
+  :created_at,
+  :created_at_label,
+  :id,
+  :installation_id,
+  :installed_at,
+  :installed_at_label,
+  :manage_access_url,
+  :organization_id,
+  :permission_entries,
+  :permissions,
+  :status,
+  :suspended_at,
+  :suspended_at_label,
+  :updated_at,
+  :updated_at_label,
+  keyword_init: true
+)
+
+# Request payload for GithubAppInstallation#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+GithubAppInstallationListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for GithubAppInstallation#create.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] account_avatar_url
+#   @return [Object]
+#
+# @!attribute [rw] account_id
+#   @return [Object]
+#
+# @!attribute [rw] account_login
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] installation_id
+#   @return [String]
+#
+# @!attribute [rw] installed_at
+#   @return [Object]
+#
+# @!attribute [rw] installed_at_label
+#   @return [Object]
+#
+# @!attribute [rw] manage_access_url
+#   @return [String]
+#
+# @!attribute [rw] permission_entries
+#   @return [Array]
+#
+# @!attribute [rw] permissions
+#   @return [Hash]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] suspended_at
+#   @return [Object]
+#
+# @!attribute [rw] suspended_at_label
+#   @return [Object]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+GithubAppInstallationCreateData = Struct.new(
+  :id,
+  :organization_id,
+  :account_avatar_url,
+  :account_id,
+  :account_login,
+  :created_at,
+  :created_at_label,
+  :installation_id,
+  :installed_at,
+  :installed_at_label,
+  :manage_access_url,
+  :permission_entries,
+  :permissions,
+  :status,
+  :suspended_at,
+  :suspended_at_label,
+  :updated_at,
+  :updated_at_label,
+  keyword_init: true
+)
+
+# Request payload for GithubAppInstallation#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] force
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] uninstall_on_github
+#   @return [Boolean, nil]
+GithubAppInstallationRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  :force,
+  :uninstall_on_github,
+  keyword_init: true
+)
+
+# GithubAppInstallationAuthorization entity data model.
+#
+# @!attribute [rw] installation_url
+#   @return [String]
+#
+# @!attribute [rw] organization_slug
+#   @return [String]
+#
+# @!attribute [rw] return_target
+#   @return [String]
+GithubAppInstallationAuthorization = Struct.new(
+  :installation_url,
+  :organization_slug,
+  :return_target,
+  keyword_init: true
+)
+
+# Request payload for GithubAppInstallationAuthorization#create.
+#
+# @!attribute [rw] organization_slug
+#   @return [String]
+#
+# @!attribute [rw] return_target
+#   @return [String]
+GithubAppInstallationAuthorizationCreateData = Struct.new(
+  :organization_slug,
+  :return_target,
+  keyword_init: true
+)
+
+# GithubAppUserAuthorization entity data model.
+class GithubAppUserAuthorization
+end
+
+# Request payload for GithubAppUserAuthorization#create.
+class GithubAppUserAuthorizationCreateData
+end
+
+# GithubCiRepository entity data model.
+#
+# @!attribute [rw] adoption_mode
+#   @return [String]
+#
+# @!attribute [rw] check_name_prefix
+#   @return [String]
+#
+# @!attribute [rw] ci_runner_pool_id
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] default_branch
+#   @return [String]
+#
+# @!attribute [rw] github_app_installation_id
+#   @return [String]
+#
+# @!attribute [rw] github_repository_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] last_compatibility_status
+#   @return [Object]
+#
+# @!attribute [rw] last_error_message
+#   @return [Object]
+#
+# @!attribute [rw] last_head_sha
+#   @return [Object]
+#
+# @!attribute [rw] last_pull_request_number
+#   @return [Object]
+#
+# @!attribute [rw] last_ref
+#   @return [Object]
+#
+# @!attribute [rw] last_webhook_action
+#   @return [Object]
+#
+# @!attribute [rw] last_webhook_at
+#   @return [Object]
+#
+# @!attribute [rw] last_webhook_at_label
+#   @return [Object]
+#
+# @!attribute [rw] last_webhook_delivery_id
+#   @return [Object]
+#
+# @!attribute [rw] last_webhook_event
+#   @return [Object]
+#
+# @!attribute [rw] metadata
+#   @return [Hash]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] permission_status
+#   @return [String]
+#
+# @!attribute [rw] repository_full_name
+#   @return [String]
+#
+# @!attribute [rw] repository_name
+#   @return [String]
+#
+# @!attribute [rw] repository_owner
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+#
+# @!attribute [rw] webhook_delivery_count
+#   @return [Integer]
+GithubCiRepository = Struct.new(
+  :adoption_mode,
+  :check_name_prefix,
+  :ci_runner_pool_id,
+  :created_at,
+  :created_at_label,
+  :default_branch,
+  :github_app_installation_id,
+  :github_repository_id,
+  :id,
+  :last_compatibility_status,
+  :last_error_message,
+  :last_head_sha,
+  :last_pull_request_number,
+  :last_ref,
+  :last_webhook_action,
+  :last_webhook_at,
+  :last_webhook_at_label,
+  :last_webhook_delivery_id,
+  :last_webhook_event,
+  :metadata,
+  :organization_id,
+  :permission_status,
+  :repository_full_name,
+  :repository_name,
+  :repository_owner,
+  :status,
+  :updated_at,
+  :updated_at_label,
+  :webhook_delivery_count,
+  keyword_init: true
+)
+
+# Request payload for GithubCiRepository#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+GithubCiRepositoryLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for GithubCiRepository#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] adoption_mode
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+GithubCiRepositoryListMatch = Struct.new(
+  :organization_id,
+  :adoption_mode,
+  :status,
+  keyword_init: true
+)
+
+# Request payload for GithubCiRepository#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] adoption_mode
+#   @return [String, nil]
+#
+# @!attribute [rw] check_name_prefix
+#   @return [String, nil]
+#
+# @!attribute [rw] ci_runner_pool_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] default_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] github_app_installation_id
+#   @return [String]
+#
+# @!attribute [rw] github_repository_id
+#   @return [String]
+#
+# @!attribute [rw] repository_name
+#   @return [String]
+#
+# @!attribute [rw] repository_owner
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+GithubCiRepositoryCreateData = Struct.new(
+  :organization_id,
+  :adoption_mode,
+  :check_name_prefix,
+  :ci_runner_pool_id,
+  :default_branch,
+  :github_app_installation_id,
+  :github_repository_id,
+  :repository_name,
+  :repository_owner,
+  :status,
+  keyword_init: true
+)
+
+# Request payload for GithubCiRepository#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] adoption_mode
+#   @return [String, nil]
+#
+# @!attribute [rw] check_name_prefix
+#   @return [String, nil]
+#
+# @!attribute [rw] ci_runner_pool_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] default_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] permission_status
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+GithubCiRepositoryUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  :adoption_mode,
+  :check_name_prefix,
+  :ci_runner_pool_id,
+  :default_branch,
+  :permission_status,
+  :status,
+  keyword_init: true
+)
+
+# Request payload for GithubCiRepository#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] adoption_mode
+#   @return [String, nil]
+#
+# @!attribute [rw] check_name_prefix
+#   @return [String, nil]
+#
+# @!attribute [rw] ci_runner_pool_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] default_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] permission_status
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+GithubCiRepositoryPatchData = Struct.new(
+  :id,
+  :organization_id,
+  :adoption_mode,
+  :check_name_prefix,
+  :ci_runner_pool_id,
+  :default_branch,
+  :permission_status,
+  :status,
+  keyword_init: true
+)
+
+# GithubCiRepositoryCompatibilityReport entity data model.
+#
+# @!attribute [rw] analyzed_at
+#   @return [String]
+#
+# @!attribute [rw] analyzed_at_label
+#   @return [Object]
+#
+# @!attribute [rw] ci_pipeline_id
+#   @return [Object]
+#
+# @!attribute [rw] ci_pipeline_run_id
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] diagnostics
+#   @return [Array]
+#
+# @!attribute [rw] errors
+#   @return [Array]
+#
+# @!attribute [rw] event_action
+#   @return [Object]
+#
+# @!attribute [rw] event_name
+#   @return [String]
+#
+# @!attribute [rw] execution_allowed
+#   @return [Boolean]
+#
+# @!attribute [rw] github_ci_repository_id
+#   @return [String]
+#
+# @!attribute [rw] head_sha
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] metadata
+#   @return [Hash]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] parser_version
+#   @return [String]
+#
+# @!attribute [rw] pull_request_number
+#   @return [Object]
+#
+# @!attribute [rw] ref_name
+#   @return [Object]
+#
+# @!attribute [rw] referenced_actions
+#   @return [Array]
+#
+# @!attribute [rw] required_secrets
+#   @return [Array]
+#
+# @!attribute [rw] runner_labels
+#   @return [Array]
+#
+# @!attribute [rw] source_blob_sha
+#   @return [Object]
+#
+# @!attribute [rw] source_sha
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] supported_features
+#   @return [Hash]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+#
+# @!attribute [rw] warnings
+#   @return [Array]
+#
+# @!attribute [rw] workflow_name
+#   @return [Object]
+#
+# @!attribute [rw] workflow_path
+#   @return [String]
+GithubCiRepositoryCompatibilityReport = Struct.new(
+  :analyzed_at,
+  :analyzed_at_label,
+  :ci_pipeline_id,
+  :ci_pipeline_run_id,
+  :created_at,
+  :created_at_label,
+  :diagnostics,
+  :errors,
+  :event_action,
+  :event_name,
+  :execution_allowed,
+  :github_ci_repository_id,
+  :head_sha,
+  :id,
+  :metadata,
+  :organization_id,
+  :parser_version,
+  :pull_request_number,
+  :ref_name,
+  :referenced_actions,
+  :required_secrets,
+  :runner_labels,
+  :source_blob_sha,
+  :source_sha,
+  :status,
+  :supported_features,
+  :updated_at,
+  :updated_at_label,
+  :warnings,
+  :workflow_name,
+  :workflow_path,
+  keyword_init: true
+)
+
+# Request payload for GithubCiRepositoryCompatibilityReport#load.
+#
+# @!attribute [rw] github_ci_repository_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+GithubCiRepositoryCompatibilityReportLoadMatch = Struct.new(
+  :github_ci_repository_id,
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for GithubCiRepositoryCompatibilityReport#list.
+#
+# @!attribute [rw] github_ci_repository_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] event_name
+#   @return [String, nil]
+#
+# @!attribute [rw] source_sha
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+GithubCiRepositoryCompatibilityReportListMatch = Struct.new(
+  :github_ci_repository_id,
+  :organization_id,
+  :event_name,
+  :source_sha,
+  :status,
+  keyword_init: true
+)
+
 # GithubConnection entity data model.
 #
 # @!attribute [rw] accounts
@@ -13348,6 +23131,1137 @@ GithubConnectionCreateData = Struct.new(
   :project_id,
   :replace,
   :repositories,
+  keyword_init: true
+)
+
+# GithubIntegration entity data model.
+#
+# @!attribute [rw] account_avatar_url
+#   @return [Object]
+#
+# @!attribute [rw] account_login
+#   @return [String]
+#
+# @!attribute [rw] connection_status
+#   @return [String]
+#
+# @!attribute [rw] connection_status_label
+#   @return [String]
+#
+# @!attribute [rw] github_installation
+#   @return [Object]
+#
+# @!attribute [rw] health
+#   @return [Hash]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] imported_repositories_count
+#   @return [Integer]
+#
+# @!attribute [rw] imported_repositories_count_label
+#   @return [String]
+#
+# @!attribute [rw] organization
+#   @return [Hash]
+#
+# @!attribute [rw] pagination
+#   @return [Hash]
+#
+# @!attribute [rw] repositories
+#   @return [Array]
+GithubIntegration = Struct.new(
+  :account_avatar_url,
+  :account_login,
+  :connection_status,
+  :connection_status_label,
+  :github_installation,
+  :health,
+  :id,
+  :imported_repositories_count,
+  :imported_repositories_count_label,
+  :organization,
+  :pagination,
+  :repositories,
+  keyword_init: true
+)
+
+# Request payload for GithubIntegration#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+GithubIntegrationLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :page,
+  keyword_init: true
+)
+
+# Request payload for GithubIntegration#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+GithubIntegrationListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# GithubOnboarding entity data model.
+#
+# @!attribute [rw] accounts
+#   @return [Array]
+#
+# @!attribute [rw] active_batch_id
+#   @return [Object]
+#
+# @!attribute [rw] batches
+#   @return [Array]
+#
+# @!attribute [rw] capabilities
+#   @return [Hash]
+#
+# @!attribute [rw] installations
+#   @return [Array]
+GithubOnboarding = Struct.new(
+  :accounts,
+  :active_batch_id,
+  :batches,
+  :capabilities,
+  :installations,
+  keyword_init: true
+)
+
+# Request payload for GithubOnboarding#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+GithubOnboardingLoadMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# GithubOnboardingBranch entity data model.
+#
+# @!attribute [rw] branches
+#   @return [Array]
+GithubOnboardingBranch = Struct.new(
+  :branches,
+  keyword_init: true
+)
+
+# Request payload for GithubOnboardingBranch#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] github_app_installation_id
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] owner
+#   @return [String]
+GithubOnboardingBranchListMatch = Struct.new(
+  :organization_id,
+  :github_app_installation_id,
+  :name,
+  :owner,
+  keyword_init: true
+)
+
+# GithubOnboardingImport entity data model.
+#
+# @!attribute [rw] account_login
+#   @return [String]
+#
+# @!attribute [rw] complete
+#   @return [Boolean]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] failed_item_count
+#   @return [Integer]
+#
+# @!attribute [rw] github_app_installation_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] imported_item_count
+#   @return [Integer]
+#
+# @!attribute [rw] item_count
+#   @return [Integer]
+#
+# @!attribute [rw] items
+#   @return [Array]
+#
+# @!attribute [rw] repositories
+#   @return [Object]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] terminal_item_count
+#   @return [Integer]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+GithubOnboardingImport = Struct.new(
+  :account_login,
+  :complete,
+  :created_at,
+  :failed_item_count,
+  :github_app_installation_id,
+  :id,
+  :imported_item_count,
+  :item_count,
+  :items,
+  :repositories,
+  :status,
+  :terminal_item_count,
+  :updated_at,
+  keyword_init: true
+)
+
+# Request payload for GithubOnboardingImport#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] github_app_installation_id
+#   @return [String]
+#
+# @!attribute [rw] repositories
+#   @return [Object]
+GithubOnboardingImportCreateData = Struct.new(
+  :organization_id,
+  :github_app_installation_id,
+  :repositories,
+  keyword_init: true
+)
+
+# GithubOnboardingImportBatch entity data model.
+#
+# @!attribute [rw] account_login
+#   @return [String]
+#
+# @!attribute [rw] complete
+#   @return [Boolean]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] failed_item_count
+#   @return [Integer]
+#
+# @!attribute [rw] github_app_installation_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] imported_item_count
+#   @return [Integer]
+#
+# @!attribute [rw] item_count
+#   @return [Integer]
+#
+# @!attribute [rw] items
+#   @return [Array]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] terminal_item_count
+#   @return [Integer]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+GithubOnboardingImportBatch = Struct.new(
+  :account_login,
+  :complete,
+  :created_at,
+  :failed_item_count,
+  :github_app_installation_id,
+  :id,
+  :imported_item_count,
+  :item_count,
+  :items,
+  :status,
+  :terminal_item_count,
+  :updated_at,
+  keyword_init: true
+)
+
+# Request payload for GithubOnboardingImportBatch#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+GithubOnboardingImportBatchLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# GithubOnboardingImportItem entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+GithubOnboardingImportItem = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for GithubOnboardingImportItem#create.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+GithubOnboardingImportItemCreateData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# GithubPullRequest entity data model.
+#
+# @!attribute [rw] capabilities
+#   @return [Hash]
+#
+# @!attribute [rw] content
+#   @return [Hash]
+#
+# @!attribute [rw] fetched_at
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] magic_merge
+#   @return [Object]
+#
+# @!attribute [rw] pull_request
+#   @return [Object]
+#
+# @!attribute [rw] stack
+#   @return [Hash]
+#
+# @!attribute [rw] transcript_paths
+#   @return [Array]
+GithubPullRequest = Struct.new(
+  :capabilities,
+  :content,
+  :fetched_at,
+  :id,
+  :magic_merge,
+  :pull_request,
+  :stack,
+  :transcript_paths,
+  keyword_init: true
+)
+
+# Request payload for GithubPullRequest#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] pull_request_id
+#   @return [String]
+#
+# @!attribute [rw] check_id
+#   @return [String, nil]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] job_id
+#   @return [String, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] run_id
+#   @return [String, nil]
+#
+# @!attribute [rw] section
+#   @return [String, nil]
+#
+# @!attribute [rw] thread_id
+#   @return [String, nil]
+GithubPullRequestLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :pull_request_id,
+  :check_id,
+  :cursor,
+  :job_id,
+  :page,
+  :run_id,
+  :section,
+  :thread_id,
+  keyword_init: true
+)
+
+# Request payload for GithubPullRequest#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+GithubPullRequestCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# GithubRunnerAdmission entity data model.
+class GithubRunnerAdmission
+end
+
+# Request payload for GithubRunnerAdmission#create.
+class GithubRunnerAdmissionCreateData
+end
+
+# GithubRunnerCache entity data model.
+#
+# @!attribute [rw] entry_id
+#   @return [String, nil]
+#
+# @!attribute [rw] key
+#   @return [String, nil]
+#
+# @!attribute [rw] matched_key
+#   @return [String, nil]
+#
+# @!attribute [rw] ok
+#   @return [Boolean]
+#
+# @!attribute [rw] operation
+#   @return [String]
+#
+# @!attribute [rw] restore_keys
+#   @return [Array, nil]
+#
+# @!attribute [rw] signed_download_url
+#   @return [String, nil]
+#
+# @!attribute [rw] size_bytes
+#   @return [String, nil]
+#
+# @!attribute [rw] upload_path
+#   @return [String, nil]
+#
+# @!attribute [rw] version
+#   @return [String, nil]
+GithubRunnerCache = Struct.new(
+  :entry_id,
+  :key,
+  :matched_key,
+  :ok,
+  :operation,
+  :restore_keys,
+  :signed_download_url,
+  :size_bytes,
+  :upload_path,
+  :version,
+  keyword_init: true
+)
+
+# Request payload for GithubRunnerCache#create.
+#
+# @!attribute [rw] entry_id
+#   @return [String, nil]
+#
+# @!attribute [rw] key
+#   @return [String, nil]
+#
+# @!attribute [rw] operation
+#   @return [String]
+#
+# @!attribute [rw] restore_keys
+#   @return [Array, nil]
+#
+# @!attribute [rw] size_bytes
+#   @return [String, nil]
+#
+# @!attribute [rw] version
+#   @return [String, nil]
+GithubRunnerCacheCreateData = Struct.new(
+  :entry_id,
+  :key,
+  :operation,
+  :restore_keys,
+  :size_bytes,
+  :version,
+  keyword_init: true
+)
+
+# GithubRunnerEgress entity data model.
+#
+# @!attribute [rw] can_request
+#   @return [Boolean]
+#
+# @!attribute [rw] cidr
+#   @return [Object]
+#
+# @!attribute [rw] ipv4
+#   @return [Object]
+#
+# @!attribute [rw] requested_at_label
+#   @return [Object]
+#
+# @!attribute [rw] status
+#   @return [String]
+GithubRunnerEgress = Struct.new(
+  :can_request,
+  :cidr,
+  :ipv4,
+  :requested_at_label,
+  :status,
+  keyword_init: true
+)
+
+# Request payload for GithubRunnerEgress#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+GithubRunnerEgressLoadMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for GithubRunnerEgress#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+GithubRunnerEgressCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# GithubRunnerHistory entity data model.
+#
+# @!attribute [rw] activity
+#   @return [Array]
+#
+# @!attribute [rw] counts
+#   @return [Hash]
+#
+# @!attribute [rw] observed_at
+#   @return [String]
+#
+# @!attribute [rw] pagination
+#   @return [Hash]
+#
+# @!attribute [rw] repositories
+#   @return [Array]
+#
+# @!attribute [rw] runs
+#   @return [Array]
+#
+# @!attribute [rw] setup
+#   @return [Object, nil]
+#
+# @!attribute [rw] success_rate
+#   @return [Object]
+#
+# @!attribute [rw] usage
+#   @return [Hash]
+GithubRunnerHistory = Struct.new(
+  :activity,
+  :counts,
+  :observed_at,
+  :pagination,
+  :repositories,
+  :runs,
+  :setup,
+  :success_rate,
+  :usage,
+  keyword_init: true
+)
+
+# Request payload for GithubRunnerHistory#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] day
+#   @return [Integer, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] q
+#   @return [String, nil]
+#
+# @!attribute [rw] repository
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+GithubRunnerHistoryLoadMatch = Struct.new(
+  :organization_id,
+  :day,
+  :page,
+  :q,
+  :repository,
+  :status,
+  keyword_init: true
+)
+
+# GithubRunnerImage entity data model.
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] image_reference
+#   @return [String]
+#
+# @!attribute [rw] last_error
+#   @return [Object]
+#
+# @!attribute [rw] modal_image_id
+#   @return [Object]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] registry_secret_name
+#   @return [Object]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+GithubRunnerImage = Struct.new(
+  :created_at,
+  :id,
+  :image_reference,
+  :last_error,
+  :modal_image_id,
+  :name,
+  :registry_secret_name,
+  :status,
+  :updated_at,
+  keyword_init: true
+)
+
+# Request payload for GithubRunnerImage#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+GithubRunnerImageLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for GithubRunnerImage#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+GithubRunnerImageListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for GithubRunnerImage#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] image_reference
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] registry_secret_name
+#   @return [Object, nil]
+GithubRunnerImageCreateData = Struct.new(
+  :organization_id,
+  :image_reference,
+  :name,
+  :registry_secret_name,
+  keyword_init: true
+)
+
+# GithubRunnerPool entity data model.
+#
+# @!attribute [rw] cpu_millicores
+#   @return [Integer]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] github_app_installation_id
+#   @return [String]
+#
+# @!attribute [rw] github_repository_id
+#   @return [String]
+#
+# @!attribute [rw] github_runner_image
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] image
+#   @return [Object, nil]
+#
+# @!attribute [rw] invocations
+#   @return [Array]
+#
+# @!attribute [rw] label
+#   @return [String]
+#
+# @!attribute [rw] last_error
+#   @return [Object]
+#
+# @!attribute [rw] last_polled_at
+#   @return [Object]
+#
+# @!attribute [rw] max_concurrency
+#   @return [Integer]
+#
+# @!attribute [rw] memory_mb
+#   @return [Integer]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] provider
+#   @return [String]
+#
+# @!attribute [rw] repository_full_name
+#   @return [String]
+#
+# @!attribute [rw] runtime_kind
+#   @return [String]
+#
+# @!attribute [rw] timeout_seconds
+#   @return [Integer]
+GithubRunnerPool = Struct.new(
+  :cpu_millicores,
+  :enabled,
+  :github_app_installation_id,
+  :github_repository_id,
+  :github_runner_image,
+  :id,
+  :image,
+  :invocations,
+  :label,
+  :last_error,
+  :last_polled_at,
+  :max_concurrency,
+  :memory_mb,
+  :organization_id,
+  :provider,
+  :repository_full_name,
+  :runtime_kind,
+  :timeout_seconds,
+  keyword_init: true
+)
+
+# Request payload for GithubRunnerPool#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+GithubRunnerPoolListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for GithubRunnerPool#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] github_app_installation_id
+#   @return [String]
+#
+# @!attribute [rw] image
+#   @return [Object, nil]
+#
+# @!attribute [rw] label
+#   @return [String, nil]
+#
+# @!attribute [rw] max_concurrency
+#   @return [Integer, nil]
+#
+# @!attribute [rw] provider
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_full_name
+#   @return [String]
+#
+# @!attribute [rw] timeout_seconds
+#   @return [Integer, nil]
+GithubRunnerPoolCreateData = Struct.new(
+  :organization_id,
+  :enabled,
+  :github_app_installation_id,
+  :image,
+  :label,
+  :max_concurrency,
+  :provider,
+  :repository_full_name,
+  :timeout_seconds,
+  keyword_init: true
+)
+
+# Request payload for GithubRunnerPool#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] image
+#   @return [Object, nil]
+#
+# @!attribute [rw] max_concurrency
+#   @return [Integer, nil]
+#
+# @!attribute [rw] provider
+#   @return [String, nil]
+#
+# @!attribute [rw] timeout_seconds
+#   @return [Integer, nil]
+GithubRunnerPoolUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  :enabled,
+  :image,
+  :max_concurrency,
+  :provider,
+  :timeout_seconds,
+  keyword_init: true
+)
+
+# GithubRunnerSetup entity data model.
+#
+# @!attribute [rw] error
+#   @return [Object]
+#
+# @!attribute [rw] github_repository_connection_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] pull_request_url
+#   @return [Object]
+#
+# @!attribute [rw] repository_full_name
+#   @return [String]
+#
+# @!attribute [rw] roder_thread_id
+#   @return [Object]
+#
+# @!attribute [rw] runner_labels
+#   @return [Array]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] status_label
+#   @return [String]
+#
+# @!attribute [rw] summary
+#   @return [Object]
+GithubRunnerSetup = Struct.new(
+  :error,
+  :github_repository_connection_id,
+  :id,
+  :pull_request_url,
+  :repository_full_name,
+  :roder_thread_id,
+  :runner_labels,
+  :status,
+  :status_label,
+  :summary,
+  keyword_init: true
+)
+
+# Request payload for GithubRunnerSetup#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+GithubRunnerSetupLoadMatch = Struct.new(
+  :organization_id,
+  :id,
+  keyword_init: true
+)
+
+# Request payload for GithubRunnerSetup#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] github_repository_connection_id
+#   @return [String]
+GithubRunnerSetupCreateData = Struct.new(
+  :organization_id,
+  :github_repository_connection_id,
+  keyword_init: true
+)
+
+# Gitlab entity data model.
+#
+# @!attribute [rw] configured
+#   @return [Boolean]
+#
+# @!attribute [rw] connections
+#   @return [Array]
+#
+# @!attribute [rw] integrations
+#   @return [Array]
+#
+# @!attribute [rw] inventory_error
+#   @return [Object, nil]
+#
+# @!attribute [rw] next_page
+#   @return [Object]
+#
+# @!attribute [rw] organization
+#   @return [Hash]
+#
+# @!attribute [rw] projects
+#   @return [Array]
+#
+# @!attribute [rw] redirect_uri
+#   @return [Object]
+#
+# @!attribute [rw] selected_integration_id
+#   @return [Object]
+Gitlab = Struct.new(
+  :configured,
+  :connections,
+  :integrations,
+  :inventory_error,
+  :next_page,
+  :organization,
+  :projects,
+  :redirect_uri,
+  :selected_integration_id,
+  keyword_init: true
+)
+
+# Request payload for Gitlab#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] connection_id
+#   @return [String, nil]
+#
+# @!attribute [rw] integration_id
+#   @return [String, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] search
+#   @return [String, nil]
+#
+# @!attribute [rw] sort
+#   @return [String, nil]
+GitlabLoadMatch = Struct.new(
+  :organization_id,
+  :connection_id,
+  :integration_id,
+  :page,
+  :search,
+  :sort,
+  keyword_init: true
+)
+
+# Request payload for Gitlab#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] client_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] client_secret
+#   @return [Object, nil]
+#
+# @!attribute [rw] instance_url
+#   @return [Object, nil]
+#
+# @!attribute [rw] integration_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] return_target
+#   @return [Object, nil]
+#
+# @!attribute [rw] webhook_authentication
+#   @return [Object, nil]
+GitlabCreateData = Struct.new(
+  :organization_id,
+  :client_id,
+  :client_secret,
+  :instance_url,
+  :integration_id,
+  :return_target,
+  :webhook_authentication,
+  keyword_init: true
+)
+
+# GitlabConnection entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+GitlabConnection = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for GitlabConnection#create.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] action_name
+#   @return [Object, nil]
+#
+# @!attribute [rw] integration_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] source_branch
+#   @return [Object, nil]
+GitlabConnectionCreateData = Struct.new(
+  :id,
+  :organization_id,
+  :action_name,
+  :integration_id,
+  :source_branch,
+  keyword_init: true
+)
+
+# GitlabImport entity data model.
+#
+# @!attribute [rw] integration_id
+#   @return [String]
+#
+# @!attribute [rw] project_id
+#   @return [Integer]
+#
+# @!attribute [rw] repo_slug
+#   @return [String, nil]
+#
+# @!attribute [rw] source_branch
+#   @return [String, nil]
+GitlabImport = Struct.new(
+  :integration_id,
+  :project_id,
+  :repo_slug,
+  :source_branch,
+  keyword_init: true
+)
+
+# Request payload for GitlabImport#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] integration_id
+#   @return [String]
+#
+# @!attribute [rw] project_id
+#   @return [Integer]
+#
+# @!attribute [rw] repo_slug
+#   @return [String, nil]
+#
+# @!attribute [rw] source_branch
+#   @return [String, nil]
+GitlabImportCreateData = Struct.new(
+  :organization_id,
+  :integration_id,
+  :project_id,
+  :repo_slug,
+  :source_branch,
+  keyword_init: true
+)
+
+# GitlabOauth entity data model.
+class GitlabOauth
+end
+
+# Request payload for GitlabOauth#load.
+class GitlabOauthLoadMatch
+end
+
+# GrantAllAgent entity data model.
+#
+# @!attribute [rw] all_agents_access
+#   @return [Boolean]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] execution_available
+#   @return [Boolean]
+GrantAllAgent = Struct.new(
+  :all_agents_access,
+  :enabled,
+  :execution_available,
+  keyword_init: true
+)
+
+# Request payload for GrantAllAgent#create.
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean]
+GrantAllAgentCreateData = Struct.new(
+  :device_id,
+  :organization_id,
+  :enabled,
   keyword_init: true
 )
 
@@ -13550,6 +24464,24 @@ HostingAppDomainRemoveMatch = Struct.new(
   keyword_init: true
 )
 
+# IdentityOrganization entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+IdentityOrganization = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for IdentityOrganization#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+IdentityOrganizationLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
 # ImageRepository entity data model.
 #
 # @!attribute [rw] auth_configured
@@ -13662,6 +24594,96 @@ ImageRepositoryCreateData = Struct.new(
   :slug,
   :status,
   :visibility,
+  keyword_init: true
+)
+
+# ImageRepositoryTag entity data model.
+#
+# @!attribute [rw] image_repository
+#   @return [Hash]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] registry_url
+#   @return [String]
+#
+# @!attribute [rw] tags
+#   @return [Array]
+ImageRepositoryTag = Struct.new(
+  :image_repository,
+  :name,
+  :registry_url,
+  :tags,
+  keyword_init: true
+)
+
+# Request payload for ImageRepositoryTag#list.
+#
+# @!attribute [rw] image_repository_id
+#   @return [String]
+ImageRepositoryTagListMatch = Struct.new(
+  :image_repository_id,
+  keyword_init: true
+)
+
+# ImportBranchPolicy entity data model.
+#
+# @!attribute [rw] can_manage_pr_scenario_writing
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_sandbox_region
+#   @return [Boolean]
+#
+# @!attribute [rw] dedicated_outbound_ip_addresses
+#   @return [Array]
+#
+# @!attribute [rw] default_trunk_bookmark
+#   @return [String]
+#
+# @!attribute [rw] organization
+#   @return [Hash]
+#
+# @!attribute [rw] sandbox_regions
+#   @return [Array]
+ImportBranchPolicy = Struct.new(
+  :can_manage_pr_scenario_writing,
+  :can_manage_sandbox_region,
+  :dedicated_outbound_ip_addresses,
+  :default_trunk_bookmark,
+  :organization,
+  :sandbox_regions,
+  keyword_init: true
+)
+
+# Request payload for ImportBranchPolicy#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+ImportBranchPolicyLoadMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for ImportBranchPolicy#update.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+ImportBranchPolicyUpdateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for ImportBranchPolicy#patch.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] default_trunk_bookmark
+#   @return [String, nil]
+ImportBranchPolicyPatchData = Struct.new(
+  :organization_id,
+  :default_trunk_bookmark,
   keyword_init: true
 )
 
@@ -13850,6 +24872,300 @@ InvitationCreateData = Struct.new(
 InvitationRemoveMatch = Struct.new(
   :id,
   :organization_id,
+  keyword_init: true
+)
+
+# InvocationControl entity data model.
+class InvocationControl
+end
+
+# Request payload for InvocationControl#create.
+#
+# @!attribute [rw] device_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] challenge
+#   @return [Object, nil]
+#
+# @!attribute [rw] invocation_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] request_hash
+#   @return [Object, nil]
+#
+# @!attribute [rw] signature
+#   @return [Object, nil]
+InvocationControlCreateData = Struct.new(
+  :device_id,
+  :organization_id,
+  :challenge,
+  :invocation_id,
+  :request_hash,
+  :signature,
+  keyword_init: true
+)
+
+# JobLogChunk entity data model.
+#
+# @!attribute [rw] byte_size
+#   @return [Integer]
+#
+# @!attribute [rw] ci_job_id
+#   @return [Object]
+#
+# @!attribute [rw] ci_pipeline_run_id
+#   @return [Object]
+#
+# @!attribute [rw] ci_step_id
+#   @return [Object]
+#
+# @!attribute [rw] content
+#   @return [String]
+#
+# @!attribute [rw] content_format
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] sequence_number
+#   @return [Integer]
+#
+# @!attribute [rw] stream
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+JobLogChunk = Struct.new(
+  :byte_size,
+  :ci_job_id,
+  :ci_pipeline_run_id,
+  :ci_step_id,
+  :content,
+  :content_format,
+  :created_at,
+  :id,
+  :organization_id,
+  :sequence_number,
+  :stream,
+  :updated_at,
+  keyword_init: true
+)
+
+# Request payload for JobLogChunk#list.
+#
+# @!attribute [rw] job_id
+#   @return [String]
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+#
+# @!attribute [rw] run_id
+#   @return [String]
+#
+# @!attribute [rw] after_sequence
+#   @return [Integer, nil]
+JobLogChunkListMatch = Struct.new(
+  :job_id,
+  :pipeline_id,
+  :run_id,
+  :after_sequence,
+  keyword_init: true
+)
+
+# Request payload for JobLogChunk#create.
+#
+# @!attribute [rw] job_id
+#   @return [String]
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+#
+# @!attribute [rw] run_id
+#   @return [String]
+JobLogChunkCreateData = Struct.new(
+  :job_id,
+  :pipeline_id,
+  :run_id,
+  keyword_init: true
+)
+
+# JobStep entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+JobStep = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for JobStep#list.
+#
+# @!attribute [rw] job_id
+#   @return [String]
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+#
+# @!attribute [rw] run_id
+#   @return [String]
+JobStepListMatch = Struct.new(
+  :job_id,
+  :pipeline_id,
+  :run_id,
+  keyword_init: true
+)
+
+# Request payload for JobStep#create.
+#
+# @!attribute [rw] job_id
+#   @return [String]
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+#
+# @!attribute [rw] run_id
+#   @return [String]
+JobStepCreateData = Struct.new(
+  :job_id,
+  :pipeline_id,
+  :run_id,
+  keyword_init: true
+)
+
+# Request payload for JobStep#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] job_id
+#   @return [String]
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+#
+# @!attribute [rw] run_id
+#   @return [String]
+JobStepUpdateData = Struct.new(
+  :id,
+  :job_id,
+  :pipeline_id,
+  :run_id,
+  keyword_init: true
+)
+
+# Request payload for JobStep#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] job_id
+#   @return [String]
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+#
+# @!attribute [rw] run_id
+#   @return [String]
+JobStepPatchData = Struct.new(
+  :id,
+  :job_id,
+  :pipeline_id,
+  :run_id,
+  keyword_init: true
+)
+
+# JobWorkspace entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+JobWorkspace = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for JobWorkspace#list.
+#
+# @!attribute [rw] job_id
+#   @return [String]
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+#
+# @!attribute [rw] run_id
+#   @return [String]
+JobWorkspaceListMatch = Struct.new(
+  :job_id,
+  :pipeline_id,
+  :run_id,
+  keyword_init: true
+)
+
+# Request payload for JobWorkspace#create.
+#
+# @!attribute [rw] job_id
+#   @return [String]
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+#
+# @!attribute [rw] run_id
+#   @return [String]
+JobWorkspaceCreateData = Struct.new(
+  :job_id,
+  :pipeline_id,
+  :run_id,
+  keyword_init: true
+)
+
+# Request payload for JobWorkspace#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] job_id
+#   @return [String]
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+#
+# @!attribute [rw] run_id
+#   @return [String]
+JobWorkspaceUpdateData = Struct.new(
+  :id,
+  :job_id,
+  :pipeline_id,
+  :run_id,
+  keyword_init: true
+)
+
+# Request payload for JobWorkspace#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] job_id
+#   @return [String]
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+#
+# @!attribute [rw] run_id
+#   @return [String]
+JobWorkspacePatchData = Struct.new(
+  :id,
+  :job_id,
+  :pipeline_id,
+  :run_id,
   keyword_init: true
 )
 
@@ -14153,6 +25469,344 @@ KnowledgeRemoveMatch = Struct.new(
   keyword_init: true
 )
 
+# Known entity data model.
+class Known
+end
+
+# Request payload for Known#load.
+class KnownLoadMatch
+end
+
+# Label entity data model.
+#
+# @!attribute [rw] changes_count
+#   @return [Integer]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] slug
+#   @return [String]
+Label = Struct.new(
+  :changes_count,
+  :id,
+  :name,
+  :slug,
+  keyword_init: true
+)
+
+# Request payload for Label#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] include_unused
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] q
+#   @return [String, nil]
+LabelListMatch = Struct.new(
+  :organization_id,
+  :include_unused,
+  :limit,
+  :q,
+  keyword_init: true
+)
+
+# LeaseArtifact entity data model.
+class LeaseArtifact
+end
+
+# Request payload for LeaseArtifact#create.
+#
+# @!attribute [rw] lease_id
+#   @return [String]
+#
+# @!attribute [rw] node_id
+#   @return [String]
+LeaseArtifactCreateData = Struct.new(
+  :lease_id,
+  :node_id,
+  keyword_init: true
+)
+
+# LeaseCache entity data model.
+class LeaseCache
+end
+
+# Request payload for LeaseCache#create.
+#
+# @!attribute [rw] lease_id
+#   @return [String]
+#
+# @!attribute [rw] node_id
+#   @return [String]
+LeaseCacheCreateData = Struct.new(
+  :lease_id,
+  :node_id,
+  keyword_init: true
+)
+
+# LeaseLogChunk entity data model.
+class LeaseLogChunk
+end
+
+# Request payload for LeaseLogChunk#create.
+#
+# @!attribute [rw] lease_id
+#   @return [String]
+#
+# @!attribute [rw] node_id
+#   @return [String]
+LeaseLogChunkCreateData = Struct.new(
+  :lease_id,
+  :node_id,
+  keyword_init: true
+)
+
+# LeaseReconciliation entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+LeaseReconciliation = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for LeaseReconciliation#create.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] lease_id
+#   @return [String]
+#
+# @!attribute [rw] node_id
+#   @return [String]
+LeaseReconciliationCreateData = Struct.new(
+  :id,
+  :lease_id,
+  :node_id,
+  keyword_init: true
+)
+
+# LeaseStep entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+LeaseStep = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for LeaseStep#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] lease_id
+#   @return [String]
+#
+# @!attribute [rw] node_id
+#   @return [String]
+LeaseStepUpdateData = Struct.new(
+  :id,
+  :lease_id,
+  :node_id,
+  keyword_init: true
+)
+
+# LeaseVerifyDiagnostic entity data model.
+#
+# @!attribute [rw] browser_events
+#   @return [Hash]
+#
+# @!attribute [rw] live_browser
+#   @return [Hash]
+#
+# @!attribute [rw] live_view
+#   @return [Hash]
+#
+# @!attribute [rw] steps
+#   @return [Array, nil]
+LeaseVerifyDiagnostic = Struct.new(
+  :browser_events,
+  :live_browser,
+  :live_view,
+  :steps,
+  keyword_init: true
+)
+
+# Request payload for LeaseVerifyDiagnostic#create.
+#
+# @!attribute [rw] lease_id
+#   @return [String]
+#
+# @!attribute [rw] swarm_id
+#   @return [String]
+#
+# @!attribute [rw] task_id
+#   @return [String]
+#
+# @!attribute [rw] browser_events
+#   @return [Hash]
+#
+# @!attribute [rw] live_browser
+#   @return [Hash]
+#
+# @!attribute [rw] live_view
+#   @return [Hash]
+#
+# @!attribute [rw] steps
+#   @return [Array, nil]
+LeaseVerifyDiagnosticCreateData = Struct.new(
+  :lease_id,
+  :swarm_id,
+  :task_id,
+  :browser_events,
+  :live_browser,
+  :live_view,
+  :steps,
+  keyword_init: true
+)
+
+# LeaseVerifySecret entity data model.
+class LeaseVerifySecret
+end
+
+# Request payload for LeaseVerifySecret#create.
+#
+# @!attribute [rw] lease_id
+#   @return [String]
+#
+# @!attribute [rw] swarm_id
+#   @return [String]
+#
+# @!attribute [rw] task_id
+#   @return [String]
+LeaseVerifySecretCreateData = Struct.new(
+  :lease_id,
+  :swarm_id,
+  :task_id,
+  keyword_init: true
+)
+
+# LeaseWorkspace entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+LeaseWorkspace = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for LeaseWorkspace#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] lease_id
+#   @return [String]
+#
+# @!attribute [rw] node_id
+#   @return [String]
+LeaseWorkspaceUpdateData = Struct.new(
+  :id,
+  :lease_id,
+  :node_id,
+  keyword_init: true
+)
+
+# LocalAgentDecision entity data model.
+#
+# @!attribute [rw] request
+#   @return [Hash]
+LocalAgentDecision = Struct.new(
+  :request,
+  keyword_init: true
+)
+
+# Request payload for LocalAgentDecision#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] request
+#   @return [Hash]
+LocalAgentDecisionCreateData = Struct.new(
+  :organization_id,
+  :request,
+  keyword_init: true
+)
+
+# LocalAgentResponse entity data model.
+#
+# @!attribute [rw] input
+#   @return [Array]
+#
+# @!attribute [rw] model
+#   @return [String]
+#
+# @!attribute [rw] service_tier
+#   @return [Object, nil]
+#
+# @!attribute [rw] store
+#   @return [Boolean]
+#
+# @!attribute [rw] stream
+#   @return [Boolean]
+#
+# @!attribute [rw] tools
+#   @return [Array, nil]
+LocalAgentResponse = Struct.new(
+  :input,
+  :model,
+  :service_tier,
+  :store,
+  :stream,
+  :tools,
+  keyword_init: true
+)
+
+# Request payload for LocalAgentResponse#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] input
+#   @return [Array]
+#
+# @!attribute [rw] model
+#   @return [String]
+#
+# @!attribute [rw] service_tier
+#   @return [Object, nil]
+#
+# @!attribute [rw] store
+#   @return [Boolean]
+#
+# @!attribute [rw] stream
+#   @return [Boolean]
+#
+# @!attribute [rw] tools
+#   @return [Array, nil]
+LocalAgentResponseCreateData = Struct.new(
+  :organization_id,
+  :input,
+  :model,
+  :service_tier,
+  :store,
+  :stream,
+  :tools,
+  keyword_init: true
+)
+
 # LocalThreadDelivery entity data model.
 #
 # @!attribute [rw] decision
@@ -14410,6 +26064,225 @@ LocationListMatch = Struct.new(
   :name,
   :nomad_datacenter,
   :updated_at,
+  keyword_init: true
+)
+
+# LogStreamChunk entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+LogStreamChunk = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for LogStreamChunk#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] log_stream_id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+LogStreamChunkLoadMatch = Struct.new(
+  :id,
+  :log_stream_id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for LogStreamChunk#list.
+#
+# @!attribute [rw] log_stream_id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+LogStreamChunkListMatch = Struct.new(
+  :log_stream_id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for LogStreamChunk#create.
+#
+# @!attribute [rw] log_stream_id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+LogStreamChunkCreateData = Struct.new(
+  :log_stream_id,
+  :space_id,
+  keyword_init: true
+)
+
+# LogoImage entity data model.
+#
+# @!attribute [rw] activated_products
+#   @return [Array]
+#
+# @!attribute [rw] agents_only
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] can_activate_products
+#   @return [Boolean]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] github_prs_authored_by_change_author
+#   @return [Boolean]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] logo_url
+#   @return [Object]
+#
+# @!attribute [rw] member_count
+#   @return [Integer]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] pending_invitation_count
+#   @return [Integer]
+#
+# @!attribute [rw] personal
+#   @return [Boolean]
+#
+# @!attribute [rw] repository_count
+#   @return [Integer]
+#
+# @!attribute [rw] role
+#   @return [Object]
+#
+# @!attribute [rw] sandbox_region
+#   @return [String]
+#
+# @!attribute [rw] shared_agent_personal_accounts_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] source_control_providers
+#   @return [Array, nil]
+#
+# @!attribute [rw] source_ui_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] timezone
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+#
+# @!attribute [rw] verify_pr_scenario_writing_enabled
+#   @return [Boolean]
+LogoImage = Struct.new(
+  :activated_products,
+  :agents_only,
+  :can_activate_products,
+  :created_at,
+  :created_at_label,
+  :github_prs_authored_by_change_author,
+  :id,
+  :logo_url,
+  :member_count,
+  :name,
+  :pending_invitation_count,
+  :personal,
+  :repository_count,
+  :role,
+  :sandbox_region,
+  :shared_agent_personal_accounts_enabled,
+  :slug,
+  :source_control_providers,
+  :source_ui_enabled,
+  :timezone,
+  :updated_at,
+  :updated_at_label,
+  :verify_pr_scenario_writing_enabled,
+  keyword_init: true
+)
+
+# Request payload for LogoImage#update.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+LogoImageUpdateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for LogoImage#remove.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+LogoImageRemoveMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# MarketingSetting entity data model.
+#
+# @!attribute [rw] call_first
+#   @return [Boolean]
+MarketingSetting = Struct.new(
+  :call_first,
+  keyword_init: true
+)
+
+# Request payload for MarketingSetting#list.
+#
+# @!attribute [rw] call_first
+#   @return [Boolean, nil]
+MarketingSettingListMatch = Struct.new(
+  :call_first,
+  keyword_init: true
+)
+
+# McpOauth entity data model.
+class McpOauth
+end
+
+# Request payload for McpOauth#load.
+#
+# @!attribute [rw] request
+#   @return [String]
+McpOauthLoadMatch = Struct.new(
+  :request,
+  keyword_init: true
+)
+
+# Request payload for McpOauth#create.
+#
+# @!attribute [rw] all_organizations
+#   @return [Object, nil]
+#
+# @!attribute [rw] approve
+#   @return [Object, nil]
+#
+# @!attribute [rw] organization_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] request
+#   @return [Object, nil]
+McpOauthCreateData = Struct.new(
+  :all_organizations,
+  :approve,
+  :organization_id,
+  :request,
   keyword_init: true
 )
 
@@ -15248,6 +27121,141 @@ MemoryRemoveMatch = Struct.new(
   keyword_init: true
 )
 
+# MergeQueueEntry entity data model.
+#
+# @!attribute [rw] analytics
+#   @return [Hash]
+#
+# @!attribute [rw] change_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] expected_target_commit_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] expected_target_version
+#   @return [Object, nil]
+#
+# @!attribute [rw] expected_version
+#   @return [Integer]
+#
+# @!attribute [rw] github_pr_number
+#   @return [Object, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] idempotency_key
+#   @return [String]
+#
+# @!attribute [rw] kind
+#   @return [String]
+#
+# @!attribute [rw] policy
+#   @return [Hash]
+#
+# @!attribute [rw] priority
+#   @return [String, nil]
+#
+# @!attribute [rw] queue
+#   @return [Hash]
+#
+# @!attribute [rw] target_branches
+#   @return [Array, nil]
+#
+# @!attribute [rw] when_ready
+#   @return [Object, nil]
+MergeQueueEntry = Struct.new(
+  :analytics,
+  :change_id,
+  :expected_target_commit_id,
+  :expected_target_version,
+  :expected_version,
+  :github_pr_number,
+  :id,
+  :idempotency_key,
+  :kind,
+  :policy,
+  :priority,
+  :queue,
+  :target_branches,
+  :when_ready,
+  keyword_init: true
+)
+
+# Request payload for MergeQueueEntry#create.
+#
+# @!attribute [rw] merge_queue_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] change_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] expected_target_commit_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] expected_target_version
+#   @return [Object, nil]
+#
+# @!attribute [rw] expected_version
+#   @return [Integer]
+#
+# @!attribute [rw] github_pr_number
+#   @return [Object, nil]
+#
+# @!attribute [rw] idempotency_key
+#   @return [String]
+#
+# @!attribute [rw] kind
+#   @return [String]
+#
+# @!attribute [rw] priority
+#   @return [String, nil]
+#
+# @!attribute [rw] when_ready
+#   @return [Object, nil]
+MergeQueueEntryCreateData = Struct.new(
+  :merge_queue_id,
+  :organization_id,
+  :repo_id,
+  :change_id,
+  :expected_target_commit_id,
+  :expected_target_version,
+  :expected_version,
+  :github_pr_number,
+  :idempotency_key,
+  :kind,
+  :priority,
+  :when_ready,
+  keyword_init: true
+)
+
+# Request payload for MergeQueueEntry#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] merge_queue_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+MergeQueueEntryRemoveMatch = Struct.new(
+  :id,
+  :merge_queue_id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
 # MergeRequest entity data model.
 #
 # @!attribute [rw] available_tests
@@ -15435,6 +27443,80 @@ MergeRequestCreateData = Struct.new(
   keyword_init: true
 )
 
+# MergeResolution entity data model.
+#
+# @!attribute [rw] action
+#   @return [String]
+#
+# @!attribute [rw] base
+#   @return [String]
+#
+# @!attribute [rw] content
+#   @return [Object, nil]
+#
+# @!attribute [rw] context
+#   @return [Hash, nil]
+#
+# @!attribute [rw] duration_ms
+#   @return [Integer]
+#
+# @!attribute [rw] fallback
+#   @return [Boolean]
+#
+# @!attribute [rw] model
+#   @return [String, nil]
+#
+# @!attribute [rw] ours
+#   @return [String]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] resolved
+#   @return [Boolean]
+#
+# @!attribute [rw] theirs
+#   @return [String]
+MergeResolution = Struct.new(
+  :action,
+  :base,
+  :content,
+  :context,
+  :duration_ms,
+  :fallback,
+  :model,
+  :ours,
+  :path,
+  :resolved,
+  :theirs,
+  keyword_init: true
+)
+
+# Request payload for MergeResolution#create.
+#
+# @!attribute [rw] base
+#   @return [String]
+#
+# @!attribute [rw] context
+#   @return [Hash, nil]
+#
+# @!attribute [rw] ours
+#   @return [String]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] theirs
+#   @return [String]
+MergeResolutionCreateData = Struct.new(
+  :base,
+  :context,
+  :ours,
+  :path,
+  :theirs,
+  keyword_init: true
+)
+
 # MessagingConversationMessage entity data model.
 #
 # @!attribute [rw] attachment_limit
@@ -15579,6 +27661,215 @@ end
 class MetricQueryListMatch
 end
 
+# MetronomeWebhook entity data model.
+class MetronomeWebhook
+end
+
+# Request payload for MetronomeWebhook#create.
+class MetronomeWebhookCreateData
+end
+
+# ModelSubscriptionAccount entity data model.
+#
+# @!attribute [rw] accounts
+#   @return [Array]
+#
+# @!attribute [rw] agents
+#   @return [Array]
+#
+# @!attribute [rw] can_disconnect
+#   @return [Boolean]
+#
+# @!attribute [rw] connection_agent
+#   @return [Object]
+#
+# @!attribute [rw] email
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] label
+#   @return [String]
+#
+# @!attribute [rw] provider
+#   @return [String]
+#
+# @!attribute [rw] saved
+#   @return [Boolean]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] usable
+#   @return [Boolean]
+ModelSubscriptionAccount = Struct.new(
+  :accounts,
+  :agents,
+  :can_disconnect,
+  :connection_agent,
+  :email,
+  :id,
+  :label,
+  :provider,
+  :saved,
+  :status,
+  :usable,
+  keyword_init: true
+)
+
+# Request payload for ModelSubscriptionAccount#list.
+#
+# @!attribute [rw] accounts
+#   @return [Array, nil]
+#
+# @!attribute [rw] agents
+#   @return [Array, nil]
+#
+# @!attribute [rw] can_disconnect
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] connection_agent
+#   @return [Object, nil]
+#
+# @!attribute [rw] email
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] label
+#   @return [String, nil]
+#
+# @!attribute [rw] provider
+#   @return [String, nil]
+#
+# @!attribute [rw] saved
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] usable
+#   @return [Boolean, nil]
+ModelSubscriptionAccountListMatch = Struct.new(
+  :accounts,
+  :agents,
+  :can_disconnect,
+  :connection_agent,
+  :email,
+  :id,
+  :label,
+  :provider,
+  :saved,
+  :status,
+  :usable,
+  keyword_init: true
+)
+
+# Request payload for ModelSubscriptionAccount#create.
+#
+# @!attribute [rw] label
+#   @return [String]
+#
+# @!attribute [rw] action_name
+#   @return [Object, nil]
+#
+# @!attribute [rw] agent_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] profile_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] token
+#   @return [Object, nil]
+ModelSubscriptionAccountCreateData = Struct.new(
+  :label,
+  :action_name,
+  :agent_id,
+  :profile_id,
+  :token,
+  keyword_init: true
+)
+
+# Request payload for ModelSubscriptionAccount#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+ModelSubscriptionAccountUpdateData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ModelSubscriptionAccount#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] label
+#   @return [String, nil]
+ModelSubscriptionAccountPatchData = Struct.new(
+  :id,
+  :label,
+  keyword_init: true
+)
+
+# Request payload for ModelSubscriptionAccount#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+ModelSubscriptionAccountRemoveMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# ModelSubscriptionAccountConnection entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ModelSubscriptionAccountConnection = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ModelSubscriptionAccountConnection#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+ModelSubscriptionAccountConnectionLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ModelSubscriptionAccountConnection#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] action_name
+#   @return [Object, nil]
+#
+# @!attribute [rw] login_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] method
+#   @return [Object, nil]
+#
+# @!attribute [rw] step_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] value
+#   @return [Object, nil]
+ModelSubscriptionAccountConnectionUpdateData = Struct.new(
+  :id,
+  :action_name,
+  :login_id,
+  :method,
+  :step_id,
+  :value,
+  keyword_init: true
+)
+
 # NetworkConnection entity data model.
 #
 # @!attribute [rw] aws_client_vpn_profile
@@ -15712,6 +28003,207 @@ NetworkConnectionPatchData = Struct.new(
   :oauth_client_secret,
   :provider,
   :status,
+  keyword_init: true
+)
+
+# NetworkingSpace entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+NetworkingSpace = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for NetworkingSpace#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+NetworkingSpaceLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for NetworkingSpace#list.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+NetworkingSpaceListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for NetworkingSpace#create.
+class NetworkingSpaceCreateData
+end
+
+# Request payload for NetworkingSpace#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+NetworkingSpaceUpdateData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for NetworkingSpace#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+NetworkingSpacePatchData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for NetworkingSpace#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+NetworkingSpaceRemoveMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Node entity data model.
+#
+# @!attribute [rw] account_avatar_url
+#   @return [Object]
+#
+# @!attribute [rw] account_id
+#   @return [Object]
+#
+# @!attribute [rw] account_login
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] installation_id
+#   @return [String]
+#
+# @!attribute [rw] installed_at
+#   @return [Object]
+#
+# @!attribute [rw] installed_at_label
+#   @return [Object]
+#
+# @!attribute [rw] manage_access_url
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] permission_entries
+#   @return [Array]
+#
+# @!attribute [rw] permissions
+#   @return [Hash]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] suspended_at
+#   @return [Object]
+#
+# @!attribute [rw] suspended_at_label
+#   @return [Object]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+Node = Struct.new(
+  :account_avatar_url,
+  :account_id,
+  :account_login,
+  :created_at,
+  :created_at_label,
+  :id,
+  :installation_id,
+  :installed_at,
+  :installed_at_label,
+  :manage_access_url,
+  :organization_id,
+  :permission_entries,
+  :permissions,
+  :status,
+  :suspended_at,
+  :suspended_at_label,
+  :updated_at,
+  :updated_at_label,
+  keyword_init: true
+)
+
+# Request payload for Node#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+NodeListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# NodeCertificate entity data model.
+class NodeCertificate
+end
+
+# Request payload for NodeCertificate#create.
+#
+# @!attribute [rw] node_id
+#   @return [String]
+NodeCertificateCreateData = Struct.new(
+  :node_id,
+  keyword_init: true
+)
+
+# NodeLease entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+NodeLease = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for NodeLease#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] node_id
+#   @return [String]
+NodeLeaseLoadMatch = Struct.new(
+  :id,
+  :node_id,
+  keyword_init: true
+)
+
+# Request payload for NodeLease#list.
+#
+# @!attribute [rw] node_id
+#   @return [String]
+NodeLeaseListMatch = Struct.new(
+  :node_id,
+  keyword_init: true
+)
+
+# Request payload for NodeLease#create.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] node_id
+#   @return [String]
+NodeLeaseCreateData = Struct.new(
+  :id,
+  :node_id,
   keyword_init: true
 )
 
@@ -15888,6 +28380,269 @@ NomadLogListMatch = Struct.new(
   :service,
   :task,
   :type,
+  keyword_init: true
+)
+
+# Now entity data model.
+#
+# @!attribute [rw] needs_attention
+#   @return [Array]
+#
+# @!attribute [rw] pagination
+#   @return [Hash]
+#
+# @!attribute [rw] recently_landed
+#   @return [Array]
+#
+# @!attribute [rw] shipping_now
+#   @return [Array]
+#
+# @!attribute [rw] summary
+#   @return [Hash]
+Now = Struct.new(
+  :needs_attention,
+  :pagination,
+  :recently_landed,
+  :shipping_now,
+  :summary,
+  keyword_init: true
+)
+
+# Request payload for Now#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+NowLoadMatch = Struct.new(
+  :organization_id,
+  :page,
+  keyword_init: true
+)
+
+# ObservabilityClickhouseCluster entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ObservabilityClickhouseCluster = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ObservabilityClickhouseCluster#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+ObservabilityClickhouseClusterLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ObservabilityClickhouseCluster#list.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ObservabilityClickhouseClusterListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ObservabilityClickhouseCluster#create.
+class ObservabilityClickhouseClusterCreateData
+end
+
+# Request payload for ObservabilityClickhouseCluster#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+ObservabilityClickhouseClusterUpdateData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ObservabilityClickhouseCluster#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+ObservabilityClickhouseClusterPatchData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ObservabilityClickhouseCluster#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+ObservabilityClickhouseClusterRemoveMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# ObservabilityQuickwitCluster entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ObservabilityQuickwitCluster = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ObservabilityQuickwitCluster#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+ObservabilityQuickwitClusterLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ObservabilityQuickwitCluster#list.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ObservabilityQuickwitClusterListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ObservabilityQuickwitCluster#create.
+class ObservabilityQuickwitClusterCreateData
+end
+
+# Request payload for ObservabilityQuickwitCluster#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+ObservabilityQuickwitClusterUpdateData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ObservabilityQuickwitCluster#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+ObservabilityQuickwitClusterPatchData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ObservabilityQuickwitCluster#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+ObservabilityQuickwitClusterRemoveMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# ObservabilitySpace entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ObservabilitySpace = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ObservabilitySpace#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+ObservabilitySpaceLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ObservabilitySpace#list.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ObservabilitySpaceListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ObservabilitySpace#create.
+class ObservabilitySpaceCreateData
+end
+
+# Request payload for ObservabilitySpace#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+ObservabilitySpaceUpdateData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ObservabilitySpace#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+ObservabilitySpacePatchData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ObservabilitySpace#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+ObservabilitySpaceRemoveMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Openapi entity data model.
+class Openapi
+end
+
+# Request payload for Openapi#load.
+class OpenapiLoadMatch
+end
+
+# OrgInvitation entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] invitation
+#   @return [Hash]
+#
+# @!attribute [rw] registration_options
+#   @return [Object]
+#
+# @!attribute [rw] requires_password_setup
+#   @return [Boolean]
+#
+# @!attribute [rw] start_guided_setup
+#   @return [Boolean]
+OrgInvitation = Struct.new(
+  :id,
+  :invitation,
+  :registration_options,
+  :requires_password_setup,
+  :start_guided_setup,
+  keyword_init: true
+)
+
+# Request payload for OrgInvitation#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+OrgInvitationLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for OrgInvitation#create.
+#
+# @!attribute [rw] id
+#   @return [String]
+OrgInvitationCreateData = Struct.new(
+  :id,
   keyword_init: true
 )
 
@@ -16201,6 +28956,935 @@ OrganizationPatchData = Struct.new(
   keyword_init: true
 )
 
+# OrganizationApp entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+OrganizationApp = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationApp#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] context
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] installed
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] native_agent_id
+#   @return [String]
+OrganizationAppListMatch = Struct.new(
+  :organization_id,
+  :context,
+  :installed,
+  :native_agent_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationApp#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationAppUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationApp#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationAppRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# OrganizationControl entity data model.
+class OrganizationControl
+end
+
+# Request payload for OrganizationControl#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] device_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] native_device_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] pairing_generation
+#   @return [Object, nil]
+OrganizationControlCreateData = Struct.new(
+  :organization_id,
+  :device_id,
+  :native_device_id,
+  :pairing_generation,
+  keyword_init: true
+)
+
+# OrganizationDevice entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+OrganizationDevice = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationDevice#create.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] payload
+#   @return [Object, nil]
+#
+# @!attribute [rw] signature
+#   @return [Object, nil]
+OrganizationDeviceCreateData = Struct.new(
+  :id,
+  :organization_id,
+  :payload,
+  :signature,
+  keyword_init: true
+)
+
+# OrganizationIdentityCertificate entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+OrganizationIdentityCertificate = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationIdentityCertificate#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationIdentityCertificateLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationIdentityCertificate#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationIdentityCertificateListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationIdentityCertificate#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationIdentityCertificateCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationIdentityCertificate#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationIdentityCertificateUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationIdentityCertificate#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationIdentityCertificatePatchData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationIdentityCertificate#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationIdentityCertificateRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# OrganizationInteraction entity data model.
+class OrganizationInteraction
+end
+
+# Request payload for OrganizationInteraction#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationInteractionCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# OrganizationInvitation entity data model.
+#
+# @!attribute [rw] email
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] role
+#   @return [String]
+OrganizationInvitation = Struct.new(
+  :email,
+  :id,
+  :role,
+  keyword_init: true
+)
+
+# Request payload for OrganizationInvitation#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] email
+#   @return [String]
+#
+# @!attribute [rw] role
+#   @return [String]
+OrganizationInvitationCreateData = Struct.new(
+  :organization_id,
+  :email,
+  :role,
+  keyword_init: true
+)
+
+# Request payload for OrganizationInvitation#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationInvitationRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# OrganizationMessageFile entity data model.
+class OrganizationMessageFile
+end
+
+# Request payload for OrganizationMessageFile#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationMessageFileCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# OrganizationOidcTrust entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+OrganizationOidcTrust = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationOidcTrust#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationOidcTrustLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationOidcTrust#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationOidcTrustListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationOidcTrust#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationOidcTrustCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationOidcTrust#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationOidcTrustUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationOidcTrust#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationOidcTrustPatchData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationOidcTrust#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationOidcTrustRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# OrganizationRunEvent entity data model.
+class OrganizationRunEvent
+end
+
+# Request payload for OrganizationRunEvent#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationRunEventCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# OrganizationRunOutcome entity data model.
+class OrganizationRunOutcome
+end
+
+# Request payload for OrganizationRunOutcome#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationRunOutcomeCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# OrganizationRunUsage entity data model.
+class OrganizationRunUsage
+end
+
+# Request payload for OrganizationRunUsage#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationRunUsageCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# OrganizationSandbox entity data model.
+class OrganizationSandbox
+end
+
+# Request payload for OrganizationSandbox#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationSandboxCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# OrganizationSecret entity data model.
+#
+# @!attribute [rw] app_environment_id
+#   @return [Object]
+#
+# @!attribute [rw] app_service_id
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] created_by
+#   @return [Object]
+#
+# @!attribute [rw] current_version
+#   @return [Object]
+#
+# @!attribute [rw] description
+#   @return [Object]
+#
+# @!attribute [rw] env_key
+#   @return [String]
+#
+# @!attribute [rw] expose_to_build
+#   @return [Boolean]
+#
+# @!attribute [rw] expose_to_ci
+#   @return [Boolean]
+#
+# @!attribute [rw] hosted_app_id
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] last_accessed_at
+#   @return [Object]
+#
+# @!attribute [rw] last_accessed_at_label
+#   @return [Object]
+#
+# @!attribute [rw] last_accessed_by
+#   @return [Object]
+#
+# @!attribute [rw] latest_version_number
+#   @return [Object]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [Object]
+#
+# @!attribute [rw] owner_service_account_id
+#   @return [Object]
+#
+# @!attribute [rw] rotation_policy
+#   @return [Object]
+#
+# @!attribute [rw] scope_kind
+#   @return [String]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+OrganizationSecret = Struct.new(
+  :app_environment_id,
+  :app_service_id,
+  :created_at,
+  :created_at_label,
+  :created_by,
+  :current_version,
+  :description,
+  :env_key,
+  :expose_to_build,
+  :expose_to_ci,
+  :hosted_app_id,
+  :id,
+  :last_accessed_at,
+  :last_accessed_at_label,
+  :last_accessed_by,
+  :latest_version_number,
+  :name,
+  :organization_id,
+  :owner_service_account_id,
+  :rotation_policy,
+  :scope_kind,
+  :slug,
+  :status,
+  :updated_at,
+  :updated_at_label,
+  keyword_init: true
+)
+
+# Request payload for OrganizationSecret#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationSecretLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationSecret#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationSecretListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationSecret#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationSecretCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationSecret#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationSecretUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationSecret#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationSecretPatchData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationSecret#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationSecretRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# OrganizationServiceAccount entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+OrganizationServiceAccount = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationServiceAccount#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationServiceAccountLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationServiceAccount#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationServiceAccountListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationServiceAccount#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationServiceAccountCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationServiceAccount#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationServiceAccountUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationServiceAccount#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationServiceAccountPatchData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationServiceAccount#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationServiceAccountRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# OrganizationSetting entity data model.
+#
+# @!attribute [rw] concurrent_run_limit_override
+#   @return [Object, nil]
+#
+# @!attribute [rw] customize_onboarding_packages
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] daily_run_limit_override
+#   @return [Object, nil]
+#
+# @!attribute [rw] deployment_usage_visibility
+#   @return [String, nil]
+#
+# @!attribute [rw] monthly_browser_minutes_limit_override
+#   @return [Object, nil]
+#
+# @!attribute [rw] monthly_budget_dollars
+#   @return [Object, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] onboarding_custom_pricing
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] onboarding_package_keys
+#   @return [Array, nil]
+OrganizationSetting = Struct.new(
+  :concurrent_run_limit_override,
+  :customize_onboarding_packages,
+  :daily_run_limit_override,
+  :deployment_usage_visibility,
+  :monthly_browser_minutes_limit_override,
+  :monthly_budget_dollars,
+  :name,
+  :onboarding_custom_pricing,
+  :onboarding_package_keys,
+  keyword_init: true
+)
+
+# Request payload for OrganizationSetting#update.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] concurrent_run_limit_override
+#   @return [Object, nil]
+#
+# @!attribute [rw] customize_onboarding_packages
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] daily_run_limit_override
+#   @return [Object, nil]
+#
+# @!attribute [rw] deployment_usage_visibility
+#   @return [String, nil]
+#
+# @!attribute [rw] monthly_browser_minutes_limit_override
+#   @return [Object, nil]
+#
+# @!attribute [rw] monthly_budget_dollars
+#   @return [Object, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] onboarding_custom_pricing
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] onboarding_package_keys
+#   @return [Array, nil]
+OrganizationSettingUpdateData = Struct.new(
+  :organization_id,
+  :concurrent_run_limit_override,
+  :customize_onboarding_packages,
+  :daily_run_limit_override,
+  :deployment_usage_visibility,
+  :monthly_browser_minutes_limit_override,
+  :monthly_budget_dollars,
+  :name,
+  :onboarding_custom_pricing,
+  :onboarding_package_keys,
+  keyword_init: true
+)
+
+# OrganizationSite entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+OrganizationSite = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationSite#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] native_agent_id
+#   @return [String]
+OrganizationSiteListMatch = Struct.new(
+  :organization_id,
+  :native_agent_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationSite#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationSiteCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationSite#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationSiteUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationSite#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationSiteRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# OrganizationSubscription entity data model.
+class OrganizationSubscription
+end
+
+# Request payload for OrganizationSubscription#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationSubscriptionCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# OrganizationTool entity data model.
+#
+# @!attribute [rw] arguments
+#   @return [Hash]
+#
+# @!attribute [rw] native_agent_id
+#   @return [String]
+#
+# @!attribute [rw] tool
+#   @return [String]
+OrganizationTool = Struct.new(
+  :arguments,
+  :native_agent_id,
+  :tool,
+  keyword_init: true
+)
+
+# Request payload for OrganizationTool#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] arguments
+#   @return [Hash]
+#
+# @!attribute [rw] native_agent_id
+#   @return [String]
+#
+# @!attribute [rw] tool
+#   @return [String]
+OrganizationToolCreateData = Struct.new(
+  :organization_id,
+  :arguments,
+  :native_agent_id,
+  :tool,
+  keyword_init: true
+)
+
+# OrganizationWorkloadIdentity entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+OrganizationWorkloadIdentity = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationWorkloadIdentity#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationWorkloadIdentityLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationWorkloadIdentity#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationWorkloadIdentityListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationWorkloadIdentity#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationWorkloadIdentityCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationWorkloadIdentity#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationWorkloadIdentityUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationWorkloadIdentity#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationWorkloadIdentityPatchData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for OrganizationWorkloadIdentity#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+OrganizationWorkloadIdentityRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# OtelIngest entity data model.
+class OtelIngest
+end
+
+# Request payload for OtelIngest#create.
+class OtelIngestCreateData
+end
+
 # Page entity data model.
 #
 # @!attribute [rw] active_runs
@@ -16467,6 +30151,283 @@ PageAgentCreateData = Struct.new(
   keyword_init: true
 )
 
+# PageArtefact entity data model.
+#
+# @!attribute [rw] artefact
+#   @return [Object]
+#
+# @!attribute [rw] automation
+#   @return [Object]
+#
+# @!attribute [rw] automation_invocation_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] byte_size
+#   @return [Integer]
+#
+# @!attribute [rw] checksum_sha256
+#   @return [String]
+#
+# @!attribute [rw] comment_threads
+#   @return [Array]
+#
+# @!attribute [rw] content_type
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] created_by_user_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] description
+#   @return [Object, nil]
+#
+# @!attribute [rw] document_key
+#   @return [String, nil]
+#
+# @!attribute [rw] draft
+#   @return [Object]
+#
+# @!attribute [rw] entrypoint
+#   @return [String, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] filename
+#   @return [String]
+#
+# @!attribute [rw] files
+#   @return [Array, nil]
+#
+# @!attribute [rw] harness
+#   @return [Object, nil]
+#
+# @!attribute [rw] harness_version
+#   @return [Object, nil]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] kind
+#   @return [String]
+#
+# @!attribute [rw] kinds
+#   @return [Array]
+#
+# @!attribute [rw] model
+#   @return [Object, nil]
+#
+# @!attribute [rw] organization
+#   @return [Hash]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] pagination
+#   @return [Hash]
+#
+# @!attribute [rw] permissions
+#   @return [Hash]
+#
+# @!attribute [rw] preview
+#   @return [Hash]
+#
+# @!attribute [rw] published_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] published_at_label
+#   @return [Object]
+#
+# @!attribute [rw] publisher
+#   @return [Object]
+#
+# @!attribute [rw] repository
+#   @return [Object]
+#
+# @!attribute [rw] repository_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] selected_path
+#   @return [String, nil]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] source
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] title
+#   @return [String]
+#
+# @!attribute [rw] vcs_agent_checkpoint_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] vcs_agent_session_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] version
+#   @return [Integer]
+#
+# @!attribute [rw] versions
+#   @return [Array]
+#
+# @!attribute [rw] view_url
+#   @return [String]
+#
+# @!attribute [rw] web_url
+#   @return [String]
+PageArtefact = Struct.new(
+  :artefact,
+  :automation,
+  :automation_invocation_id,
+  :byte_size,
+  :checksum_sha256,
+  :comment_threads,
+  :content_type,
+  :created_at,
+  :created_by_user_id,
+  :description,
+  :document_key,
+  :draft,
+  :entrypoint,
+  :expires_at,
+  :filename,
+  :files,
+  :harness,
+  :harness_version,
+  :id,
+  :kind,
+  :kinds,
+  :model,
+  :organization,
+  :organization_id,
+  :pagination,
+  :permissions,
+  :preview,
+  :published_at,
+  :published_at_label,
+  :publisher,
+  :repository,
+  :repository_id,
+  :selected_path,
+  :slug,
+  :source,
+  :status,
+  :title,
+  :vcs_agent_checkpoint_id,
+  :vcs_agent_session_id,
+  :version,
+  :versions,
+  :view_url,
+  :web_url,
+  keyword_init: true
+)
+
+# Request payload for PageArtefact#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] file
+#   @return [String, nil]
+#
+# @!attribute [rw] version
+#   @return [Integer, nil]
+#
+# @!attribute [rw] versions_page
+#   @return [Integer, nil]
+PageArtefactLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :file,
+  :version,
+  :versions_page,
+  keyword_init: true
+)
+
+# Request payload for PageArtefact#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] author
+#   @return [String, nil]
+#
+# @!attribute [rw] harness
+#   @return [String, nil]
+#
+# @!attribute [rw] kind
+#   @return [String, nil]
+#
+# @!attribute [rw] model
+#   @return [String, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] q
+#   @return [String, nil]
+#
+# @!attribute [rw] repo
+#   @return [String, nil]
+#
+# @!attribute [rw] slug
+#   @return [String, nil]
+#
+# @!attribute [rw] source
+#   @return [String, nil]
+PageArtefactListMatch = Struct.new(
+  :organization_id,
+  :author,
+  :harness,
+  :kind,
+  :model,
+  :page,
+  :q,
+  :repo,
+  :slug,
+  :source,
+  keyword_init: true
+)
+
+# PageCiPipelineRun entity data model.
+#
+# @!attribute [rw] error
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] jobs
+#   @return [Array]
+PageCiPipelineRun = Struct.new(
+  :error,
+  :id,
+  :jobs,
+  keyword_init: true
+)
+
+# Request payload for PageCiPipelineRun#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+PageCiPipelineRunLoadMatch = Struct.new(
+  :id,
+  :pipeline_id,
+  keyword_init: true
+)
+
 # PageProjectRun entity data model.
 #
 # @!attribute [rw] available_tests
@@ -16550,6 +30511,254 @@ PageProjectRunLoadMatch = Struct.new(
   :browser,
   :detail,
   :page,
+  keyword_init: true
+)
+
+# PageRepoVcCommit entity data model.
+#
+# @!attribute [rw] commit
+#   @return [Object]
+#
+# @!attribute [rw] diff_path
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+PageRepoVcCommit = Struct.new(
+  :commit,
+  :diff_path,
+  :id,
+  keyword_init: true
+)
+
+# Request payload for PageRepoVcCommit#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] parent
+#   @return [String, nil]
+PageRepoVcCommitLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  :parent,
+  keyword_init: true
+)
+
+# PagesBilling entity data model.
+#
+# @!attribute [rw] addons
+#   @return [Array]
+#
+# @!attribute [rw] breakdown
+#   @return [Object]
+#
+# @!attribute [rw] budget
+#   @return [Object]
+#
+# @!attribute [rw] can_manage_contact
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_extra_spend
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_local_subscription
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_payment_method
+#   @return [Boolean]
+#
+# @!attribute [rw] can_set_up_billing
+#   @return [Boolean]
+#
+# @!attribute [rw] customer
+#   @return [Object]
+#
+# @!attribute [rw] deployment_usage_visible
+#   @return [Boolean]
+#
+# @!attribute [rw] entitlements
+#   @return [Hash]
+#
+# @!attribute [rw] extra_spend_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] feature_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] package
+#   @return [Object]
+#
+# @!attribute [rw] prepaid
+#   @return [Object]
+#
+# @!attribute [rw] preview
+#   @return [Object]
+#
+# @!attribute [rw] storage_usage
+#   @return [Hash]
+#
+# @!attribute [rw] stripe
+#   @return [Hash]
+#
+# @!attribute [rw] subscription
+#   @return [Object]
+#
+# @!attribute [rw] token_account
+#   @return [Hash]
+PagesBilling = Struct.new(
+  :addons,
+  :breakdown,
+  :budget,
+  :can_manage_contact,
+  :can_manage_extra_spend,
+  :can_manage_local_subscription,
+  :can_manage_payment_method,
+  :can_set_up_billing,
+  :customer,
+  :deployment_usage_visible,
+  :entitlements,
+  :extra_spend_enabled,
+  :feature_enabled,
+  :organization_id,
+  :package,
+  :prepaid,
+  :preview,
+  :storage_usage,
+  :stripe,
+  :subscription,
+  :token_account,
+  keyword_init: true
+)
+
+# Request payload for PagesBilling#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+PagesBillingLoadMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# PagesGithubOnboarding entity data model.
+#
+# @!attribute [rw] onboarding
+#   @return [Hash]
+#
+# @!attribute [rw] organization
+#   @return [Hash]
+PagesGithubOnboarding = Struct.new(
+  :onboarding,
+  :organization,
+  keyword_init: true
+)
+
+# Request payload for PagesGithubOnboarding#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] github_app_installation_id
+#   @return [String, nil]
+#
+# @!attribute [rw] github_import_batch_id
+#   @return [String, nil]
+PagesGithubOnboardingLoadMatch = Struct.new(
+  :organization_id,
+  :github_app_installation_id,
+  :github_import_batch_id,
+  keyword_init: true
+)
+
+# PagesMember entity data model.
+#
+# @!attribute [rw] accepted_at
+#   @return [Object]
+#
+# @!attribute [rw] accepted_by_user
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] email
+#   @return [String]
+#
+# @!attribute [rw] email_delivery_status
+#   @return [String, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [Object]
+#
+# @!attribute [rw] expires_at_label
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] invite_url
+#   @return [Object]
+#
+# @!attribute [rw] invited_by_user
+#   @return [Object]
+#
+# @!attribute [rw] organization
+#   @return [Hash]
+#
+# @!attribute [rw] revoked_at
+#   @return [Object]
+#
+# @!attribute [rw] role
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+PagesMember = Struct.new(
+  :accepted_at,
+  :accepted_by_user,
+  :created_at,
+  :created_at_label,
+  :email,
+  :email_delivery_status,
+  :expires_at,
+  :expires_at_label,
+  :id,
+  :invite_url,
+  :invited_by_user,
+  :organization,
+  :revoked_at,
+  :role,
+  :status,
+  :updated_at,
+  :updated_at_label,
+  keyword_init: true
+)
+
+# Request payload for PagesMember#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+PagesMemberListMatch = Struct.new(
+  :organization_id,
   keyword_init: true
 )
 
@@ -16810,6 +31019,419 @@ PagesProjectScenarioListMatch = Struct.new(
   :project_id,
   :limit,
   :sort,
+  keyword_init: true
+)
+
+# PagesRegistry entity data model.
+#
+# @!attribute [rw] active_repository_count
+#   @return [Integer]
+#
+# @!attribute [rw] error
+#   @return [Object]
+#
+# @!attribute [rw] pagination
+#   @return [Hash]
+#
+# @!attribute [rw] repositories
+#   @return [Array]
+#
+# @!attribute [rw] repository_count
+#   @return [Integer]
+PagesRegistry = Struct.new(
+  :active_repository_count,
+  :error,
+  :pagination,
+  :repositories,
+  :repository_count,
+  keyword_init: true
+)
+
+# Request payload for PagesRegistry#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+PagesRegistryLoadMatch = Struct.new(
+  :organization_id,
+  :page,
+  keyword_init: true
+)
+
+# PagesSession entity data model.
+#
+# @!attribute [rw] adapter
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [Object]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] ended_at
+#   @return [Object]
+#
+# @!attribute [rw] external_session_id
+#   @return [String]
+#
+# @!attribute [rw] facets
+#   @return [Hash]
+#
+# @!attribute [rw] from
+#   @return [String, nil]
+#
+# @!attribute [rw] github_access_warnings
+#   @return [Array, nil]
+#
+# @!attribute [rw] harness
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] last_activity_at
+#   @return [Object]
+#
+# @!attribute [rw] last_checkpoint_at
+#   @return [Object]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] markers
+#   @return [Array]
+#
+# @!attribute [rw] max_bytes
+#   @return [Integer, nil]
+#
+# @!attribute [rw] mode
+#   @return [String, nil]
+#
+# @!attribute [rw] offset
+#   @return [Integer, nil]
+#
+# @!attribute [rw] pagination
+#   @return [Hash]
+#
+# @!attribute [rw] query
+#   @return [String, nil]
+#
+# @!attribute [rw] repo
+#   @return [String, nil]
+#
+# @!attribute [rw] repository
+#   @return [Object]
+#
+# @!attribute [rw] search
+#   @return [Object, nil]
+#
+# @!attribute [rw] search_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] session
+#   @return [Object]
+#
+# @!attribute [rw] sessions
+#   @return [Array]
+#
+# @!attribute [rw] started_at
+#   @return [Object]
+#
+# @!attribute [rw] stats
+#   @return [Hash]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] title
+#   @return [Object]
+#
+# @!attribute [rw] to
+#   @return [String, nil]
+#
+# @!attribute [rw] token_stats
+#   @return [Object]
+#
+# @!attribute [rw] transcript_index
+#   @return [Object]
+#
+# @!attribute [rw] transcript_stats
+#   @return [Object]
+#
+# @!attribute [rw] updated_at
+#   @return [Object]
+#
+# @!attribute [rw] user
+#   @return [Object]
+#
+# @!attribute [rw] user_id
+#   @return [String, nil]
+PagesSession = Struct.new(
+  :adapter,
+  :created_at,
+  :cursor,
+  :ended_at,
+  :external_session_id,
+  :facets,
+  :from,
+  :github_access_warnings,
+  :harness,
+  :id,
+  :last_activity_at,
+  :last_checkpoint_at,
+  :limit,
+  :markers,
+  :max_bytes,
+  :mode,
+  :offset,
+  :pagination,
+  :query,
+  :repo,
+  :repository,
+  :search,
+  :search_enabled,
+  :session,
+  :sessions,
+  :started_at,
+  :stats,
+  :status,
+  :title,
+  :to,
+  :token_stats,
+  :transcript_index,
+  :transcript_stats,
+  :updated_at,
+  :user,
+  :user_id,
+  keyword_init: true
+)
+
+# Request payload for PagesSession#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] around_event
+#   @return [Integer, nil]
+#
+# @!attribute [rw] checkpoint
+#   @return [String, nil]
+#
+# @!attribute [rw] event_digest
+#   @return [String, nil]
+PagesSessionLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :around_event,
+  :checkpoint,
+  :event_digest,
+  keyword_init: true
+)
+
+# Request payload for PagesSession#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] adapter
+#   @return [String, nil]
+#
+# @!attribute [rw] from
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] offset
+#   @return [Integer, nil]
+#
+# @!attribute [rw] repo
+#   @return [String, nil]
+#
+# @!attribute [rw] session
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] to
+#   @return [String, nil]
+#
+# @!attribute [rw] user_id
+#   @return [String, nil]
+PagesSessionListMatch = Struct.new(
+  :organization_id,
+  :adapter,
+  :from,
+  :limit,
+  :offset,
+  :repo,
+  :session,
+  :status,
+  :to,
+  :user_id,
+  keyword_init: true
+)
+
+# Request payload for PagesSession#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] adapter
+#   @return [String, nil]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] from
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] max_bytes
+#   @return [Integer, nil]
+#
+# @!attribute [rw] mode
+#   @return [String, nil]
+#
+# @!attribute [rw] offset
+#   @return [Integer, nil]
+#
+# @!attribute [rw] query
+#   @return [String, nil]
+#
+# @!attribute [rw] repo
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] to
+#   @return [String, nil]
+#
+# @!attribute [rw] user_id
+#   @return [String, nil]
+PagesSessionCreateData = Struct.new(
+  :organization_id,
+  :adapter,
+  :cursor,
+  :from,
+  :limit,
+  :max_bytes,
+  :mode,
+  :offset,
+  :query,
+  :repo,
+  :status,
+  :to,
+  :user_id,
+  keyword_init: true
+)
+
+# Pairing entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Pairing = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for Pairing#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+PairingLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for Pairing#list.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+PairingListMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for Pairing#create.
+class PairingCreateData
+end
+
+# PairingEvent entity data model.
+class PairingEvent
+end
+
+# Request payload for PairingEvent#list.
+#
+# @!attribute [rw] pairing_id
+#   @return [String]
+PairingEventListMatch = Struct.new(
+  :pairing_id,
+  keyword_init: true
+)
+
+# ParallelV1 entity data model.
+class ParallelV1
+end
+
+# Request payload for ParallelV1#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+ParallelV1CreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# PatchsetDiff entity data model.
+#
+# @!attribute [rw] files
+#   @return [Array]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] patchset
+#   @return [Hash]
+PatchsetDiff = Struct.new(
+  :files,
+  :id,
+  :patchset,
+  keyword_init: true
+)
+
+# Request payload for PatchsetDiff#load.
+#
+# @!attribute [rw] change_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] patchset_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+PatchsetDiffLoadMatch = Struct.new(
+  :change_id,
+  :id,
+  :organization_id,
+  :patchset_id,
+  :repo_id,
   keyword_init: true
 )
 
@@ -17116,6 +31738,195 @@ PreviewSharingApprovalCreateData = Struct.new(
   :default_secrets,
   :snapshot_version,
   :source_keys,
+  keyword_init: true
+)
+
+# ProactiveAgentWaitlistEntry entity data model.
+#
+# @!attribute [rw] email
+#   @return [String]
+#
+# @!attribute [rw] first_task
+#   @return [Object, nil]
+#
+# @!attribute [rw] invite_code
+#   @return [Object, nil]
+#
+# @!attribute [rw] places_per_referral
+#   @return [Integer]
+#
+# @!attribute [rw] position
+#   @return [Integer]
+#
+# @!attribute [rw] position_after_next_referral
+#   @return [Integer]
+#
+# @!attribute [rw] referral_code
+#   @return [String]
+#
+# @!attribute [rw] referral_count
+#   @return [Integer]
+#
+# @!attribute [rw] total
+#   @return [Integer]
+#
+# @!attribute [rw] website
+#   @return [Object, nil]
+ProactiveAgentWaitlistEntry = Struct.new(
+  :email,
+  :first_task,
+  :invite_code,
+  :places_per_referral,
+  :position,
+  :position_after_next_referral,
+  :referral_code,
+  :referral_count,
+  :total,
+  :website,
+  keyword_init: true
+)
+
+# Request payload for ProactiveAgentWaitlistEntry#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+ProactiveAgentWaitlistEntryLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ProactiveAgentWaitlistEntry#create.
+#
+# @!attribute [rw] email
+#   @return [String]
+#
+# @!attribute [rw] first_task
+#   @return [Object, nil]
+#
+# @!attribute [rw] invite_code
+#   @return [Object, nil]
+#
+# @!attribute [rw] website
+#   @return [Object, nil]
+ProactiveAgentWaitlistEntryCreateData = Struct.new(
+  :email,
+  :first_task,
+  :invite_code,
+  :website,
+  keyword_init: true
+)
+
+# Product entity data model.
+#
+# @!attribute [rw] activated_products
+#   @return [Array]
+#
+# @!attribute [rw] agents_only
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] can_activate_products
+#   @return [Boolean]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] github_prs_authored_by_change_author
+#   @return [Boolean]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] logo_url
+#   @return [Object]
+#
+# @!attribute [rw] member_count
+#   @return [Integer]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] pending_invitation_count
+#   @return [Integer]
+#
+# @!attribute [rw] personal
+#   @return [Boolean]
+#
+# @!attribute [rw] product
+#   @return [String]
+#
+# @!attribute [rw] repository_count
+#   @return [Integer]
+#
+# @!attribute [rw] role
+#   @return [Object]
+#
+# @!attribute [rw] sandbox_region
+#   @return [String]
+#
+# @!attribute [rw] shared_agent_personal_accounts_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] source_control_providers
+#   @return [Array, nil]
+#
+# @!attribute [rw] source_ui_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] timezone
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+#
+# @!attribute [rw] verify_pr_scenario_writing_enabled
+#   @return [Boolean]
+Product = Struct.new(
+  :activated_products,
+  :agents_only,
+  :can_activate_products,
+  :created_at,
+  :created_at_label,
+  :github_prs_authored_by_change_author,
+  :id,
+  :logo_url,
+  :member_count,
+  :name,
+  :pending_invitation_count,
+  :personal,
+  :product,
+  :repository_count,
+  :role,
+  :sandbox_region,
+  :shared_agent_personal_accounts_enabled,
+  :slug,
+  :source_control_providers,
+  :source_ui_enabled,
+  :timezone,
+  :updated_at,
+  :updated_at_label,
+  :verify_pr_scenario_writing_enabled,
+  keyword_init: true
+)
+
+# Request payload for Product#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] product
+#   @return [String]
+ProductCreateData = Struct.new(
+  :organization_id,
+  :product,
   keyword_init: true
 )
 
@@ -20263,6 +35074,197 @@ PullRequestRemoveMatch = Struct.new(
   keyword_init: true
 )
 
+# PullRequestAction entity data model.
+#
+# @!attribute [rw] action_name
+#   @return [String]
+#
+# @!attribute [rw] body
+#   @return [String, nil]
+#
+# @!attribute [rw] comment_id
+#   @return [String, nil]
+#
+# @!attribute [rw] comments
+#   @return [Array, nil]
+#
+# @!attribute [rw] event
+#   @return [String, nil]
+#
+# @!attribute [rw] expected_head_sha
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Object, nil]
+#
+# @!attribute [rw] label
+#   @return [String, nil]
+#
+# @!attribute [rw] line
+#   @return [Integer, nil]
+#
+# @!attribute [rw] node_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] operation_key
+#   @return [String]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] run_id
+#   @return [String, nil]
+#
+# @!attribute [rw] side
+#   @return [String, nil]
+#
+# @!attribute [rw] start_line
+#   @return [Integer, nil]
+#
+# @!attribute [rw] start_side
+#   @return [String, nil]
+#
+# @!attribute [rw] thread_id
+#   @return [String, nil]
+PullRequestAction = Struct.new(
+  :action_name,
+  :body,
+  :comment_id,
+  :comments,
+  :event,
+  :expected_head_sha,
+  :id,
+  :label,
+  :line,
+  :node_id,
+  :operation_key,
+  :path,
+  :run_id,
+  :side,
+  :start_line,
+  :start_side,
+  :thread_id,
+  keyword_init: true
+)
+
+# Request payload for PullRequestAction#create.
+#
+# @!attribute [rw] number
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] pull_request_id
+#   @return [String]
+#
+# @!attribute [rw] action_name
+#   @return [String]
+#
+# @!attribute [rw] body
+#   @return [String, nil]
+#
+# @!attribute [rw] comment_id
+#   @return [String, nil]
+#
+# @!attribute [rw] comments
+#   @return [Array, nil]
+#
+# @!attribute [rw] event
+#   @return [String, nil]
+#
+# @!attribute [rw] expected_head_sha
+#   @return [String, nil]
+#
+# @!attribute [rw] label
+#   @return [String, nil]
+#
+# @!attribute [rw] line
+#   @return [Integer, nil]
+#
+# @!attribute [rw] operation_key
+#   @return [String]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] run_id
+#   @return [String, nil]
+#
+# @!attribute [rw] side
+#   @return [String, nil]
+#
+# @!attribute [rw] start_line
+#   @return [Integer, nil]
+#
+# @!attribute [rw] start_side
+#   @return [String, nil]
+#
+# @!attribute [rw] thread_id
+#   @return [String, nil]
+PullRequestActionCreateData = Struct.new(
+  :number,
+  :organization_id,
+  :pull_request_id,
+  :action_name,
+  :body,
+  :comment_id,
+  :comments,
+  :event,
+  :expected_head_sha,
+  :label,
+  :line,
+  :operation_key,
+  :path,
+  :run_id,
+  :side,
+  :start_line,
+  :start_side,
+  :thread_id,
+  keyword_init: true
+)
+
+# PullRequestMagicMerge entity data model.
+class PullRequestMagicMerge
+end
+
+# Request payload for PullRequestMagicMerge#create.
+#
+# @!attribute [rw] number
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] pull_request_id
+#   @return [String]
+#
+# @!attribute [rw] expected_base_sha
+#   @return [Object, nil]
+#
+# @!attribute [rw] expected_head_sha
+#   @return [Object, nil]
+#
+# @!attribute [rw] idempotency_key
+#   @return [Object, nil]
+#
+# @!attribute [rw] mode
+#   @return [Object, nil]
+#
+# @!attribute [rw] resolutions
+#   @return [Object, nil]
+PullRequestMagicMergeCreateData = Struct.new(
+  :number,
+  :organization_id,
+  :pull_request_id,
+  :expected_base_sha,
+  :expected_head_sha,
+  :idempotency_key,
+  :mode,
+  :resolutions,
+  keyword_init: true
+)
+
 # PullRequestSetting entity data model.
 #
 # @!attribute [rw] app_preview_profile_id
@@ -20806,6 +35808,130 @@ PullRequestSettingDetectCommentCreateData = Struct.new(
   keyword_init: true
 )
 
+# PullRequestTranscript entity data model.
+#
+# @!attribute [rw] adapter
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [Object]
+#
+# @!attribute [rw] ended_at
+#   @return [Object]
+#
+# @!attribute [rw] external_session_id
+#   @return [String]
+#
+# @!attribute [rw] harness
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] last_activity_at
+#   @return [Object]
+#
+# @!attribute [rw] last_checkpoint_at
+#   @return [Object]
+#
+# @!attribute [rw] repository
+#   @return [Object]
+#
+# @!attribute [rw] started_at
+#   @return [Object]
+#
+# @!attribute [rw] stats
+#   @return [Hash]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] title
+#   @return [Object]
+#
+# @!attribute [rw] updated_at
+#   @return [Object]
+#
+# @!attribute [rw] user
+#   @return [Object]
+PullRequestTranscript = Struct.new(
+  :adapter,
+  :created_at,
+  :ended_at,
+  :external_session_id,
+  :harness,
+  :id,
+  :last_activity_at,
+  :last_checkpoint_at,
+  :repository,
+  :started_at,
+  :stats,
+  :status,
+  :title,
+  :updated_at,
+  :user,
+  keyword_init: true
+)
+
+# Request payload for PullRequestTranscript#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] pull_request_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] paginated
+#   @return [Boolean, nil]
+PullRequestTranscriptListMatch = Struct.new(
+  :organization_id,
+  :pull_request_id,
+  :repo_id,
+  :cursor,
+  :limit,
+  :paginated,
+  keyword_init: true
+)
+
+# PullZone entity data model.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] slug
+#   @return [String]
+PullZone = Struct.new(
+  :id,
+  :name,
+  :slug,
+  keyword_init: true
+)
+
+# Request payload for PullZone#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] app
+#   @return [String, nil]
+PullZoneListMatch = Struct.new(
+  :organization_id,
+  :app,
+  keyword_init: true
+)
+
 # Recorder entity data model.
 #
 # @!attribute [rw] id
@@ -20848,6 +35974,220 @@ end
 class RegistryV2CreateData
 end
 
+# RelayAgentConnection entity data model.
+#
+# @!attribute [rw] agent_card_url
+#   @return [String]
+#
+# @!attribute [rw] auth_scheme
+#   @return [String]
+#
+# @!attribute [rw] can_configure
+#   @return [Boolean]
+#
+# @!attribute [rw] can_disconnect
+#   @return [Boolean]
+#
+# @!attribute [rw] can_setup
+#   @return [Boolean]
+#
+# @!attribute [rw] connection
+#   @return [Hash]
+#
+# @!attribute [rw] credential
+#   @return [Object, nil]
+#
+# @!attribute [rw] error_code
+#   @return [Object]
+#
+# @!attribute [rw] expected_generation
+#   @return [Integer]
+#
+# @!attribute [rw] generation
+#   @return [Integer]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] remote_agent
+#   @return [Object]
+#
+# @!attribute [rw] requester_id
+#   @return [String]
+#
+# @!attribute [rw] retired_at
+#   @return [Object]
+#
+# @!attribute [rw] revoked_at
+#   @return [Object]
+#
+# @!attribute [rw] scope_key
+#   @return [String]
+#
+# @!attribute [rw] source_operation_id
+#   @return [Object]
+#
+# @!attribute [rw] state
+#   @return [String]
+RelayAgentConnection = Struct.new(
+  :agent_card_url,
+  :auth_scheme,
+  :can_configure,
+  :can_disconnect,
+  :can_setup,
+  :connection,
+  :credential,
+  :error_code,
+  :expected_generation,
+  :generation,
+  :id,
+  :name,
+  :remote_agent,
+  :requester_id,
+  :retired_at,
+  :revoked_at,
+  :scope_key,
+  :source_operation_id,
+  :state,
+  keyword_init: true
+)
+
+# Request payload for RelayAgentConnection#load.
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+RelayAgentConnectionLoadMatch = Struct.new(
+  :agent_id,
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for RelayAgentConnection#list.
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] selected_connection_id
+#   @return [String, nil]
+RelayAgentConnectionListMatch = Struct.new(
+  :agent_id,
+  :organization_id,
+  :cursor,
+  :limit,
+  :selected_connection_id,
+  keyword_init: true
+)
+
+# Request payload for RelayAgentConnection#create.
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] agent_card_url
+#   @return [String]
+#
+# @!attribute [rw] auth_scheme
+#   @return [String]
+#
+# @!attribute [rw] credential
+#   @return [Object, nil]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] remote_agent
+#   @return [Object, nil]
+#
+# @!attribute [rw] source_operation_id
+#   @return [Object, nil]
+RelayAgentConnectionCreateData = Struct.new(
+  :agent_id,
+  :organization_id,
+  :agent_card_url,
+  :auth_scheme,
+  :credential,
+  :name,
+  :remote_agent,
+  :source_operation_id,
+  keyword_init: true
+)
+
+# Request payload for RelayAgentConnection#update.
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] auth_scheme
+#   @return [String, nil]
+#
+# @!attribute [rw] credential
+#   @return [Object, nil]
+#
+# @!attribute [rw] expected_generation
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] remote_agent
+#   @return [Object, nil]
+RelayAgentConnectionUpdateData = Struct.new(
+  :agent_id,
+  :id,
+  :organization_id,
+  :auth_scheme,
+  :credential,
+  :expected_generation,
+  :name,
+  :remote_agent,
+  keyword_init: true
+)
+
+# Request payload for RelayAgentConnection#remove.
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+RelayAgentConnectionRemoveMatch = Struct.new(
+  :agent_id,
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
 # RelayAgentLocalThread entity data model.
 #
 # @!attribute [rw] id
@@ -20871,6 +36211,1395 @@ RelayAgentLocalThreadRemoveMatch = Struct.new(
   :agent_id,
   :id,
   :organization_id,
+  keyword_init: true
+)
+
+# RelaySignal entity data model.
+class RelaySignal
+end
+
+# Request payload for RelaySignal#create.
+class RelaySignalCreateData
+end
+
+# ReleaseRollout entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ReleaseRollout = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for ReleaseRollout#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] release_id
+#   @return [String]
+ReleaseRolloutLoadMatch = Struct.new(
+  :id,
+  :release_id,
+  keyword_init: true
+)
+
+# Request payload for ReleaseRollout#list.
+#
+# @!attribute [rw] release_id
+#   @return [String]
+ReleaseRolloutListMatch = Struct.new(
+  :release_id,
+  keyword_init: true
+)
+
+# Request payload for ReleaseRollout#create.
+#
+# @!attribute [rw] release_id
+#   @return [String]
+ReleaseRolloutCreateData = Struct.new(
+  :release_id,
+  keyword_init: true
+)
+
+# Repo entity data model.
+#
+# @!attribute [rw] can_retry_import
+#   @return [Boolean]
+#
+# @!attribute [rw] can_retry_sync
+#   @return [Boolean]
+#
+# @!attribute [rw] disclaimer
+#   @return [Object]
+#
+# @!attribute [rw] federated_in_home
+#   @return [Boolean]
+#
+# @!attribute [rw] github_repository
+#   @return [Object]
+#
+# @!attribute [rw] icon_name
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] import_item_id
+#   @return [Object]
+#
+# @!attribute [rw] is_home
+#   @return [Boolean]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] remote_repository
+#   @return [Object, nil]
+#
+# @!attribute [rw] root_path
+#   @return [Object]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] sync_error_message
+#   @return [Object]
+#
+# @!attribute [rw] sync_provider
+#   @return [String, nil]
+#
+# @!attribute [rw] sync_status
+#   @return [String]
+Repo = Struct.new(
+  :can_retry_import,
+  :can_retry_sync,
+  :disclaimer,
+  :federated_in_home,
+  :github_repository,
+  :icon_name,
+  :id,
+  :import_item_id,
+  :is_home,
+  :name,
+  :remote_repository,
+  :root_path,
+  :slug,
+  :sync_error_message,
+  :sync_provider,
+  :sync_status,
+  keyword_init: true
+)
+
+# Request payload for Repo#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+RepoLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for Repo#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] direction
+#   @return [String, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] q
+#   @return [String, nil]
+#
+# @!attribute [rw] sort
+#   @return [String, nil]
+RepoListMatch = Struct.new(
+  :organization_id,
+  :direction,
+  :page,
+  :q,
+  :sort,
+  keyword_init: true
+)
+
+# Request payload for Repo#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+RepoRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# RepoAccessToken entity data model.
+#
+# @!attribute [rw] access_token
+#   @return [Hash]
+#
+# @!attribute [rw] active
+#   @return [Boolean]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] credential_purpose
+#   @return [String, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [Object]
+#
+# @!attribute [rw] expires_at_label
+#   @return [Object]
+#
+# @!attribute [rw] expires_in_days
+#   @return [Object, nil]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] last_used_at
+#   @return [Object]
+#
+# @!attribute [rw] last_used_at_label
+#   @return [Object]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] permission_level
+#   @return [String, nil]
+#
+# @!attribute [rw] plain_text_token
+#   @return [String]
+#
+# @!attribute [rw] revoked_at
+#   @return [Object]
+#
+# @!attribute [rw] revoked_at_label
+#   @return [Object]
+#
+# @!attribute [rw] token_preview
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+RepoAccessToken = Struct.new(
+  :access_token,
+  :active,
+  :created_at,
+  :created_at_label,
+  :credential_purpose,
+  :expires_at,
+  :expires_at_label,
+  :expires_in_days,
+  :id,
+  :last_used_at,
+  :last_used_at_label,
+  :name,
+  :permission_level,
+  :plain_text_token,
+  :revoked_at,
+  :revoked_at_label,
+  :token_preview,
+  :updated_at,
+  :updated_at_label,
+  keyword_init: true
+)
+
+# Request payload for RepoAccessToken#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+RepoAccessTokenListMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for RepoAccessToken#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] credential_purpose
+#   @return [String, nil]
+#
+# @!attribute [rw] expires_in_days
+#   @return [Object, nil]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] permission_level
+#   @return [String, nil]
+RepoAccessTokenCreateData = Struct.new(
+  :organization_id,
+  :repo_id,
+  :credential_purpose,
+  :expires_in_days,
+  :name,
+  :permission_level,
+  keyword_init: true
+)
+
+# Request payload for RepoAccessToken#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+RepoAccessTokenRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# RepoAction entity data model.
+#
+# @!attribute [rw] pipeline
+#   @return [Hash]
+#
+# @!attribute [rw] run
+#   @return [Hash]
+RepoAction = Struct.new(
+  :pipeline,
+  :run,
+  keyword_init: true
+)
+
+# Request payload for RepoAction#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] pipeline_id
+#   @return [String, nil]
+#
+# @!attribute [rw] range
+#   @return [String, nil]
+RepoActionListMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  :pipeline_id,
+  :range,
+  keyword_init: true
+)
+
+# RepoAgentCheckpoint entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+RepoAgentCheckpoint = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for RepoAgentCheckpoint#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+RepoAgentCheckpointLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# RepoAgentSession entity data model.
+#
+# @!attribute [rw] adapter
+#   @return [String, nil]
+#
+# @!attribute [rw] agent_session
+#   @return [Hash]
+#
+# @!attribute [rw] external_session_id
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] title
+#   @return [Object, nil]
+RepoAgentSession = Struct.new(
+  :adapter,
+  :agent_session,
+  :external_session_id,
+  :id,
+  :status,
+  :title,
+  keyword_init: true
+)
+
+# Request payload for RepoAgentSession#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+RepoAgentSessionLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for RepoAgentSession#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+RepoAgentSessionListMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for RepoAgentSession#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+RepoAgentSessionCreateData = Struct.new(
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for RepoAgentSession#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+RepoAgentSessionUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for RepoAgentSession#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] agent_session
+#   @return [Hash, nil]
+RepoAgentSessionPatchData = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  :agent_session,
+  keyword_init: true
+)
+
+# RepoBookmarkProtection entity data model.
+#
+# @!attribute [rw] actor_policy
+#   @return [Hash]
+#
+# @!attribute [rw] bypass_mode
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_by_user_id
+#   @return [Object]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] priority
+#   @return [Integer]
+#
+# @!attribute [rw] repository_id
+#   @return [String]
+#
+# @!attribute [rw] requirements
+#   @return [Hash]
+#
+# @!attribute [rw] target_kind
+#   @return [String]
+#
+# @!attribute [rw] target_pattern
+#   @return [Object]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_by_user_id
+#   @return [Object]
+RepoBookmarkProtection = Struct.new(
+  :actor_policy,
+  :bypass_mode,
+  :created_at,
+  :created_by_user_id,
+  :enabled,
+  :id,
+  :name,
+  :organization_id,
+  :priority,
+  :repository_id,
+  :requirements,
+  :target_kind,
+  :target_pattern,
+  :updated_at,
+  :updated_by_user_id,
+  keyword_init: true
+)
+
+# Request payload for RepoBookmarkProtection#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+RepoBookmarkProtectionLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for RepoBookmarkProtection#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+RepoBookmarkProtectionListMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for RepoBookmarkProtection#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] actor_policy
+#   @return [Hash, nil]
+#
+# @!attribute [rw] bypass_mode
+#   @return [String, nil]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] priority
+#   @return [Integer, nil]
+#
+# @!attribute [rw] requirements
+#   @return [Hash, nil]
+#
+# @!attribute [rw] target_kind
+#   @return [String, nil]
+#
+# @!attribute [rw] target_pattern
+#   @return [Object, nil]
+RepoBookmarkProtectionCreateData = Struct.new(
+  :organization_id,
+  :repo_id,
+  :actor_policy,
+  :bypass_mode,
+  :enabled,
+  :name,
+  :priority,
+  :requirements,
+  :target_kind,
+  :target_pattern,
+  keyword_init: true
+)
+
+# Request payload for RepoBookmarkProtection#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] actor_policy
+#   @return [Hash, nil]
+#
+# @!attribute [rw] bypass_mode
+#   @return [String, nil]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] priority
+#   @return [Integer, nil]
+#
+# @!attribute [rw] requirements
+#   @return [Hash, nil]
+#
+# @!attribute [rw] target_kind
+#   @return [String, nil]
+#
+# @!attribute [rw] target_pattern
+#   @return [Object, nil]
+RepoBookmarkProtectionUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  :actor_policy,
+  :bypass_mode,
+  :enabled,
+  :name,
+  :priority,
+  :requirements,
+  :target_kind,
+  :target_pattern,
+  keyword_init: true
+)
+
+# Request payload for RepoBookmarkProtection#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] actor_policy
+#   @return [Hash, nil]
+#
+# @!attribute [rw] bypass_mode
+#   @return [String, nil]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] priority
+#   @return [Integer, nil]
+#
+# @!attribute [rw] requirements
+#   @return [Hash, nil]
+#
+# @!attribute [rw] target_kind
+#   @return [String, nil]
+#
+# @!attribute [rw] target_pattern
+#   @return [Object, nil]
+RepoBookmarkProtectionPatchData = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  :actor_policy,
+  :bypass_mode,
+  :enabled,
+  :name,
+  :priority,
+  :requirements,
+  :target_kind,
+  :target_pattern,
+  keyword_init: true
+)
+
+# Request payload for RepoBookmarkProtection#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+RepoBookmarkProtectionRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# RepoBookmarkProtectionEvent entity data model.
+#
+# @!attribute [rw] action
+#   @return [String]
+#
+# @!attribute [rw] actor_kind
+#   @return [String]
+#
+# @!attribute [rw] actor_label
+#   @return [Object]
+#
+# @!attribute [rw] actor_user_id
+#   @return [Object]
+#
+# @!attribute [rw] bookmark_name
+#   @return [String]
+#
+# @!attribute [rw] bookmark_protection_rule_id
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] decision
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] intent
+#   @return [Object]
+#
+# @!attribute [rw] metadata
+#   @return [Hash]
+#
+# @!attribute [rw] new_target
+#   @return [Object]
+#
+# @!attribute [rw] old_target
+#   @return [Object]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] reason_codes
+#   @return [Array]
+#
+# @!attribute [rw] repository_id
+#   @return [String]
+#
+# @!attribute [rw] source_request_id
+#   @return [Object]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+RepoBookmarkProtectionEvent = Struct.new(
+  :action,
+  :actor_kind,
+  :actor_label,
+  :actor_user_id,
+  :bookmark_name,
+  :bookmark_protection_rule_id,
+  :created_at,
+  :created_at_label,
+  :decision,
+  :id,
+  :intent,
+  :metadata,
+  :new_target,
+  :old_target,
+  :organization_id,
+  :reason_codes,
+  :repository_id,
+  :source_request_id,
+  :updated_at,
+  :updated_at_label,
+  keyword_init: true
+)
+
+# Request payload for RepoBookmarkProtectionEvent#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] bookmark
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+RepoBookmarkProtectionEventListMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  :bookmark,
+  :limit,
+  keyword_init: true
+)
+
+# RepoCloudWorkspaceBackup entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+RepoCloudWorkspaceBackup = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for RepoCloudWorkspaceBackup#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+RepoCloudWorkspaceBackupLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for RepoCloudWorkspaceBackup#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+RepoCloudWorkspaceBackupListMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for RepoCloudWorkspaceBackup#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+RepoCloudWorkspaceBackupCreateData = Struct.new(
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# RepoCodeRule entity data model.
+#
+# @!attribute [rw] active_revision_number
+#   @return [Object]
+#
+# @!attribute [rw] capabilities
+#   @return [Hash]
+#
+# @!attribute [rw] code_rule
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] definition
+#   @return [Hash]
+#
+# @!attribute [rw] draft_pending
+#   @return [Boolean]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] expected_version
+#   @return [Integer]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] latest_revision_number
+#   @return [Integer]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] repository
+#   @return [Hash]
+#
+# @!attribute [rw] scope
+#   @return [Array]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] state_version
+#   @return [Integer]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] web_url
+#   @return [String]
+RepoCodeRule = Struct.new(
+  :active_revision_number,
+  :capabilities,
+  :code_rule,
+  :created_at,
+  :definition,
+  :draft_pending,
+  :enabled,
+  :expected_version,
+  :id,
+  :latest_revision_number,
+  :name,
+  :repository,
+  :scope,
+  :slug,
+  :state_version,
+  :updated_at,
+  :web_url,
+  keyword_init: true
+)
+
+# Request payload for RepoCodeRule#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+RepoCodeRuleLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for RepoCodeRule#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] rule
+#   @return [String, nil]
+RepoCodeRuleListMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  :rule,
+  keyword_init: true
+)
+
+# Request payload for RepoCodeRule#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] definition
+#   @return [Hash]
+RepoCodeRuleCreateData = Struct.new(
+  :organization_id,
+  :repo_id,
+  :definition,
+  keyword_init: true
+)
+
+# Request payload for RepoCodeRule#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] definition
+#   @return [Hash, nil]
+#
+# @!attribute [rw] expected_version
+#   @return [Integer, nil]
+RepoCodeRuleUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  :definition,
+  :expected_version,
+  keyword_init: true
+)
+
+# Request payload for RepoCodeRule#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] definition
+#   @return [Hash, nil]
+#
+# @!attribute [rw] expected_version
+#   @return [Integer, nil]
+RepoCodeRulePatchData = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  :definition,
+  :expected_version,
+  keyword_init: true
+)
+
+# Request payload for RepoCodeRule#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+RepoCodeRuleRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# RepoSetting entity data model.
+#
+# @!attribute [rw] active
+#   @return [Boolean]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] description
+#   @return [Object]
+#
+# @!attribute [rw] expires_at
+#   @return [Object]
+#
+# @!attribute [rw] expires_at_label
+#   @return [Object]
+#
+# @!attribute [rw] icon_name
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] last_used_at
+#   @return [Object]
+#
+# @!attribute [rw] last_used_at_label
+#   @return [Object]
+#
+# @!attribute [rw] merge_authority
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] permission_level
+#   @return [String]
+#
+# @!attribute [rw] revoked_at
+#   @return [Object]
+#
+# @!attribute [rw] revoked_at_label
+#   @return [Object]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] token_preview
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+RepoSetting = Struct.new(
+  :active,
+  :created_at,
+  :created_at_label,
+  :description,
+  :expires_at,
+  :expires_at_label,
+  :icon_name,
+  :id,
+  :last_used_at,
+  :last_used_at_label,
+  :merge_authority,
+  :name,
+  :organization_id,
+  :permission_level,
+  :revoked_at,
+  :revoked_at_label,
+  :slug,
+  :status,
+  :token_preview,
+  :updated_at,
+  :updated_at_label,
+  keyword_init: true
+)
+
+# Request payload for RepoSetting#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+RepoSettingListMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for RepoSetting#update.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] description
+#   @return [Object, nil]
+#
+# @!attribute [rw] icon_name
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+RepoSettingUpdateData = Struct.new(
+  :organization_id,
+  :repo_id,
+  :description,
+  :icon_name,
+  :name,
+  :status,
+  keyword_init: true
+)
+
+# RepoStat entity data model.
+#
+# @!attribute [rw] repository_stats
+#   @return [Hash]
+RepoStat = Struct.new(
+  :repository_stats,
+  keyword_init: true
+)
+
+# Request payload for RepoStat#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+RepoStatListMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for RepoStat#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] repository_stats
+#   @return [Hash]
+RepoStatCreateData = Struct.new(
+  :organization_id,
+  :repo_id,
+  :repository_stats,
+  keyword_init: true
+)
+
+# RepoVc entity data model.
+class RepoVc
+end
+
+# Request payload for RepoVc#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] ref
+#   @return [String, nil]
+RepoVcLoadMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  :path,
+  :ref,
+  keyword_init: true
+)
+
+# Request payload for RepoVc#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] from
+#   @return [Object, nil]
+#
+# @!attribute [rw] into
+#   @return [Object, nil]
+RepoVcCreateData = Struct.new(
+  :organization_id,
+  :repo_id,
+  :from,
+  :into,
+  keyword_init: true
+)
+
+# Request payload for RepoVc#update.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] auto_land_enabled
+#   @return [Object, nil]
+#
+# @!attribute [rw] expected_version
+#   @return [Object, nil]
+#
+# @!attribute [rw] github_merge_gate
+#   @return [Object, nil]
+#
+# @!attribute [rw] merge_authority
+#   @return [Object, nil]
+#
+# @!attribute [rw] merge_github_repository_connection_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] queue_concurrency
+#   @return [Object, nil]
+#
+# @!attribute [rw] queue_validation_mode
+#   @return [Object, nil]
+RepoVcUpdateData = Struct.new(
+  :organization_id,
+  :repo_id,
+  :auto_land_enabled,
+  :expected_version,
+  :github_merge_gate,
+  :merge_authority,
+  :merge_github_repository_connection_id,
+  :queue_concurrency,
+  :queue_validation_mode,
+  keyword_init: true
+)
+
+# RepoVcCommit entity data model.
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] target_commit_id
+#   @return [String]
+RepoVcCommit = Struct.new(
+  :name,
+  :target_commit_id,
+  keyword_init: true
+)
+
+# Request payload for RepoVcCommit#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] offset
+#   @return [Integer, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] q
+#   @return [String, nil]
+#
+# @!attribute [rw] ref
+#   @return [String]
+RepoVcCommitListMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  :limit,
+  :offset,
+  :page,
+  :path,
+  :q,
+  :ref,
   keyword_init: true
 )
 
@@ -20987,6 +37716,843 @@ ReportScenarioCreateData = Struct.new(
   :exploration_id,
   :organization_id,
   :project_id,
+  keyword_init: true
+)
+
+# RepositoryAccess entity data model.
+class RepositoryAccess
+end
+
+# Request payload for RepositoryAccess#load.
+#
+# @!attribute [rw] organization_slug
+#   @return [String, nil]
+RepositoryAccessLoadMatch = Struct.new(
+  :organization_slug,
+  keyword_init: true
+)
+
+# Request payload for RepositoryAccess#create.
+class RepositoryAccessCreateData
+end
+
+# RepositoryAccessResolve entity data model.
+#
+# @!attribute [rw] default_branch
+#   @return [String]
+#
+# @!attribute [rw] git_auth_username
+#   @return [String]
+#
+# @!attribute [rw] git_https_clone_url
+#   @return [Object]
+#
+# @!attribute [rw] git_https_supported
+#   @return [Boolean]
+#
+# @!attribute [rw] github_access_warnings
+#   @return [Array, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] membership_role
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] organization_name
+#   @return [String]
+#
+# @!attribute [rw] organization_slug
+#   @return [String]
+#
+# @!attribute [rw] repository_id
+#   @return [String]
+#
+# @!attribute [rw] repository_name
+#   @return [String]
+#
+# @!attribute [rw] repository_slug
+#   @return [String]
+RepositoryAccessResolve = Struct.new(
+  :default_branch,
+  :git_auth_username,
+  :git_https_clone_url,
+  :git_https_supported,
+  :github_access_warnings,
+  :id,
+  :membership_role,
+  :organization_id,
+  :organization_name,
+  :organization_slug,
+  :repository_id,
+  :repository_name,
+  :repository_slug,
+  keyword_init: true
+)
+
+# Request payload for RepositoryAccessResolve#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] resolve_id
+#   @return [String]
+RepositoryAccessResolveLoadMatch = Struct.new(
+  :id,
+  :resolve_id,
+  keyword_init: true
+)
+
+# RepositoryEvent entity data model.
+class RepositoryEvent
+end
+
+# Request payload for RepositoryEvent#create.
+class RepositoryEventCreateData
+end
+
+# RepositoryImport entity data model.
+#
+# @!attribute [rw] can_manage_connections
+#   @return [Boolean]
+#
+# @!attribute [rw] github_imports
+#   @return [Array]
+#
+# @!attribute [rw] github_installations
+#   @return [Array]
+#
+# @!attribute [rw] gitlab_configured
+#   @return [Boolean]
+#
+# @!attribute [rw] gitlab_imports
+#   @return [Array]
+#
+# @!attribute [rw] gitlab_integrations
+#   @return [Array]
+#
+# @!attribute [rw] gitlab_redirect_uri
+#   @return [Object]
+#
+# @!attribute [rw] gitlab_self_managed_available
+#   @return [Boolean]
+#
+# @!attribute [rw] inventory_errors
+#   @return [Array]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repositories
+#   @return [Array]
+RepositoryImport = Struct.new(
+  :can_manage_connections,
+  :github_imports,
+  :github_installations,
+  :gitlab_configured,
+  :gitlab_imports,
+  :gitlab_integrations,
+  :gitlab_redirect_uri,
+  :gitlab_self_managed_available,
+  :inventory_errors,
+  :organization_id,
+  :repositories,
+  keyword_init: true
+)
+
+# Request payload for RepositoryImport#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] accounts_only
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] search
+#   @return [String, nil]
+RepositoryImportLoadMatch = Struct.new(
+  :organization_id,
+  :accounts_only,
+  :search,
+  keyword_init: true
+)
+
+# RepositoryImportSession entity data model.
+#
+# @!attribute [rw] action_required
+#   @return [String, nil]
+#
+# @!attribute [rw] authorization_endpoint
+#   @return [String, nil]
+#
+# @!attribute [rw] can_authorize_github
+#   @return [Boolean]
+#
+# @!attribute [rw] client_name
+#   @return [Object]
+#
+# @!attribute [rw] client_version
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] error_message
+#   @return [Object]
+#
+# @!attribute [rw] expires_at
+#   @return [String]
+#
+# @!attribute [rw] git_imports
+#   @return [Array]
+#
+# @!attribute [rw] github_app_installation_id
+#   @return [Object]
+#
+# @!attribute [rw] github_connected
+#   @return [Boolean]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] idempotency_key
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] organization_slug
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+RepositoryImportSession = Struct.new(
+  :action_required,
+  :authorization_endpoint,
+  :can_authorize_github,
+  :client_name,
+  :client_version,
+  :created_at,
+  :error_message,
+  :expires_at,
+  :git_imports,
+  :github_app_installation_id,
+  :github_connected,
+  :id,
+  :idempotency_key,
+  :organization_id,
+  :organization_slug,
+  :status,
+  :updated_at,
+  keyword_init: true
+)
+
+# Request payload for RepositoryImportSession#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+RepositoryImportSessionLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for RepositoryImportSession#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] client_name
+#   @return [Object, nil]
+#
+# @!attribute [rw] client_version
+#   @return [Object, nil]
+#
+# @!attribute [rw] github_app_installation_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] idempotency_key
+#   @return [String]
+RepositoryImportSessionCreateData = Struct.new(
+  :organization_id,
+  :client_name,
+  :client_version,
+  :github_app_installation_id,
+  :idempotency_key,
+  keyword_init: true
+)
+
+# RepositoryImportSessionRepository entity data model.
+#
+# @!attribute [rw] default_branch
+#   @return [Object]
+#
+# @!attribute [rw] full_name
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] owner
+#   @return [String]
+#
+# @!attribute [rw] private
+#   @return [Boolean]
+#
+# @!attribute [rw] reason
+#   @return [Object, nil]
+#
+# @!attribute [rw] selectable
+#   @return [Boolean]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] visibility
+#   @return [String]
+RepositoryImportSessionRepository = Struct.new(
+  :default_branch,
+  :full_name,
+  :name,
+  :owner,
+  :private,
+  :reason,
+  :selectable,
+  :status,
+  :visibility,
+  keyword_init: true
+)
+
+# Request payload for RepositoryImportSessionRepository#list.
+#
+# @!attribute [rw] repository_import_session_id
+#   @return [String]
+#
+# @!attribute [rw] q
+#   @return [String, nil]
+RepositoryImportSessionRepositoryListMatch = Struct.new(
+  :repository_import_session_id,
+  :q,
+  keyword_init: true
+)
+
+# RepositoryImportSessionSelection entity data model.
+#
+# @!attribute [rw] repositories
+#   @return [Object]
+RepositoryImportSessionSelection = Struct.new(
+  :repositories,
+  keyword_init: true
+)
+
+# Request payload for RepositoryImportSessionSelection#create.
+#
+# @!attribute [rw] repository_import_session_id
+#   @return [String]
+#
+# @!attribute [rw] repositories
+#   @return [Object]
+RepositoryImportSessionSelectionCreateData = Struct.new(
+  :repository_import_session_id,
+  :repositories,
+  keyword_init: true
+)
+
+# RepositorySandboxEnvironment entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+RepositorySandboxEnvironment = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for RepositorySandboxEnvironment#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] repository_id
+#   @return [String]
+RepositorySandboxEnvironmentLoadMatch = Struct.new(
+  :id,
+  :repository_id,
+  keyword_init: true
+)
+
+# Request payload for RepositorySandboxEnvironment#create.
+#
+# @!attribute [rw] repository_id
+#   @return [String]
+RepositorySandboxEnvironmentCreateData = Struct.new(
+  :repository_id,
+  keyword_init: true
+)
+
+# RoderCodeRepair entity data model.
+#
+# @!attribute [rw] base_sha
+#   @return [String]
+#
+# @!attribute [rw] cancel_requested
+#   @return [Boolean]
+#
+# @!attribute [rw] failure_code
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] launch_state
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repository_slug
+#   @return [String]
+#
+# @!attribute [rw] roder_thread_id
+#   @return [Object]
+#
+# @!attribute [rw] roder_turn_id
+#   @return [Object]
+#
+# @!attribute [rw] scenario_run_id
+#   @return [String]
+#
+# @!attribute [rw] task
+#   @return [Object]
+#
+# @!attribute [rw] trigger_kind
+#   @return [String]
+RoderCodeRepair = Struct.new(
+  :base_sha,
+  :cancel_requested,
+  :failure_code,
+  :id,
+  :launch_state,
+  :organization_id,
+  :repository_slug,
+  :roder_thread_id,
+  :roder_turn_id,
+  :scenario_run_id,
+  :task,
+  :trigger_kind,
+  keyword_init: true
+)
+
+# Request payload for RoderCodeRepair#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+RoderCodeRepairLoadMatch = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for RoderCodeRepair#list.
+#
+# @!attribute [rw] scenario_run_id
+#   @return [String]
+RoderCodeRepairListMatch = Struct.new(
+  :scenario_run_id,
+  keyword_init: true
+)
+
+# Request payload for RoderCodeRepair#create.
+#
+# @!attribute [rw] base_sha
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repository_slug
+#   @return [String]
+#
+# @!attribute [rw] scenario_run_id
+#   @return [String]
+RoderCodeRepairCreateData = Struct.new(
+  :base_sha,
+  :organization_id,
+  :repository_slug,
+  :scenario_run_id,
+  keyword_init: true
+)
+
+# RoderCodeRepairSetting entity data model.
+#
+# @!attribute [rw] available
+#   @return [Boolean]
+#
+# @!attribute [rw] daily_limit
+#   @return [Integer]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] enabled_at
+#   @return [Object]
+#
+# @!attribute [rw] operator_user_id
+#   @return [Object]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repository_slug
+#   @return [Object]
+RoderCodeRepairSetting = Struct.new(
+  :available,
+  :daily_limit,
+  :enabled,
+  :enabled_at,
+  :operator_user_id,
+  :organization_id,
+  :repository_slug,
+  keyword_init: true
+)
+
+# Request payload for RoderCodeRepairSetting#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+RoderCodeRepairSettingListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for RoderCodeRepairSetting#create.
+#
+# @!attribute [rw] enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repository_slug
+#   @return [Object, nil]
+RoderCodeRepairSettingCreateData = Struct.new(
+  :enabled,
+  :organization_id,
+  :repository_slug,
+  keyword_init: true
+)
+
+# RoderMachine entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+RoderMachine = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for RoderMachine#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+RoderMachineUpdateData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# RoderRun entity data model.
+class RoderRun
+end
+
+# Request payload for RoderRun#create.
+#
+# @!attribute [rw] events
+#   @return [Object, nil]
+RoderRunCreateData = Struct.new(
+  :events,
+  keyword_init: true
+)
+
+# RoderWorkspaceCredential entity data model.
+#
+# @!attribute [rw] api_token
+#   @return [String]
+#
+# @!attribute [rw] author_email
+#   @return [String]
+#
+# @!attribute [rw] author_name
+#   @return [String]
+#
+# @!attribute [rw] clone_url
+#   @return [String]
+#
+# @!attribute [rw] default_branch
+#   @return [String]
+#
+# @!attribute [rw] expires_at
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repository_id
+#   @return [String]
+#
+# @!attribute [rw] repository_slug
+#   @return [String]
+#
+# @!attribute [rw] repository_spec
+#   @return [String]
+#
+# @!attribute [rw] required_lifetime_seconds
+#   @return [Integer]
+#
+# @!attribute [rw] token
+#   @return [String]
+#
+# @!attribute [rw] username
+#   @return [String]
+RoderWorkspaceCredential = Struct.new(
+  :api_token,
+  :author_email,
+  :author_name,
+  :clone_url,
+  :default_branch,
+  :expires_at,
+  :organization_id,
+  :repository_id,
+  :repository_slug,
+  :repository_spec,
+  :required_lifetime_seconds,
+  :token,
+  :username,
+  keyword_init: true
+)
+
+# Request payload for RoderWorkspaceCredential#create.
+#
+# @!attribute [rw] required_lifetime_seconds
+#   @return [Integer]
+RoderWorkspaceCredentialCreateData = Struct.new(
+  :required_lifetime_seconds,
+  keyword_init: true
+)
+
+# RunArtifact entity data model.
+class RunArtifact
+end
+
+# Request payload for RunArtifact#list.
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+#
+# @!attribute [rw] run_id
+#   @return [String]
+RunArtifactListMatch = Struct.new(
+  :pipeline_id,
+  :run_id,
+  keyword_init: true
+)
+
+# Request payload for RunArtifact#create.
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+#
+# @!attribute [rw] run_id
+#   @return [String]
+RunArtifactCreateData = Struct.new(
+  :pipeline_id,
+  :run_id,
+  keyword_init: true
+)
+
+# RunJob entity data model.
+#
+# @!attribute [rw] active
+#   @return [Boolean]
+#
+# @!attribute [rw] allow_failure
+#   @return [Boolean]
+#
+# @!attribute [rw] cache_archive_observations
+#   @return [Object]
+#
+# @!attribute [rw] ci_pipeline_run_id
+#   @return [String]
+#
+# @!attribute [rw] ci_runner_id
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] dependencies_csv
+#   @return [Object]
+#
+# @!attribute [rw] display_id
+#   @return [Integer]
+#
+# @!attribute [rw] environment_csv
+#   @return [Object]
+#
+# @!attribute [rw] execution_order
+#   @return [Integer]
+#
+# @!attribute [rw] execution_profile
+#   @return [Object, nil]
+#
+# @!attribute [rw] exit_code
+#   @return [Object]
+#
+# @!attribute [rw] failed
+#   @return [Boolean]
+#
+# @!attribute [rw] finished_at
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] kind
+#   @return [String]
+#
+# @!attribute [rw] log_chunks
+#   @return [Array]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] number
+#   @return [Integer]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] queued_at
+#   @return [Object]
+#
+# @!attribute [rw] reconciliation_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] retry_number
+#   @return [Integer]
+#
+# @!attribute [rw] reuse
+#   @return [Object]
+#
+# @!attribute [rw] runner_label_selector
+#   @return [Object]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] started_at
+#   @return [Object]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] status_label
+#   @return [String]
+#
+# @!attribute [rw] status_state
+#   @return [String]
+#
+# @!attribute [rw] status_tone
+#   @return [String]
+#
+# @!attribute [rw] steps
+#   @return [Array]
+#
+# @!attribute [rw] timeout_seconds
+#   @return [Object]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+RunJob = Struct.new(
+  :active,
+  :allow_failure,
+  :cache_archive_observations,
+  :ci_pipeline_run_id,
+  :ci_runner_id,
+  :created_at,
+  :dependencies_csv,
+  :display_id,
+  :environment_csv,
+  :execution_order,
+  :execution_profile,
+  :exit_code,
+  :failed,
+  :finished_at,
+  :id,
+  :kind,
+  :log_chunks,
+  :name,
+  :number,
+  :organization_id,
+  :queued_at,
+  :reconciliation_id,
+  :retry_number,
+  :reuse,
+  :runner_label_selector,
+  :slug,
+  :started_at,
+  :status,
+  :status_label,
+  :status_state,
+  :status_tone,
+  :steps,
+  :timeout_seconds,
+  :updated_at,
+  keyword_init: true
+)
+
+# Request payload for RunJob#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+#
+# @!attribute [rw] run_id
+#   @return [String]
+RunJobLoadMatch = Struct.new(
+  :id,
+  :pipeline_id,
+  :run_id,
+  keyword_init: true
+)
+
+# Request payload for RunJob#list.
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+#
+# @!attribute [rw] run_id
+#   @return [String]
+RunJobListMatch = Struct.new(
+  :pipeline_id,
+  :run_id,
+  keyword_init: true
+)
+
+# Request payload for RunJob#create.
+#
+# @!attribute [rw] pipeline_id
+#   @return [String]
+#
+# @!attribute [rw] run_id
+#   @return [String]
+RunJobCreateData = Struct.new(
+  :pipeline_id,
+  :run_id,
   keyword_init: true
 )
 
@@ -21239,6 +38805,413 @@ RunUpdateListMatch = Struct.new(
   keyword_init: true
 )
 
+# RunWorkspaceCredential entity data model.
+class RunWorkspaceCredential
+end
+
+# Request payload for RunWorkspaceCredential#create.
+class RunWorkspaceCredentialCreateData
+end
+
+# RunnerLease entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+RunnerLease = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for RunnerLease#list.
+#
+# @!attribute [rw] runner_id
+#   @return [String]
+#
+# @!attribute [rw] runner_pool_id
+#   @return [String]
+RunnerLeaseListMatch = Struct.new(
+  :runner_id,
+  :runner_pool_id,
+  keyword_init: true
+)
+
+# Request payload for RunnerLease#create.
+#
+# @!attribute [rw] runner_id
+#   @return [String]
+#
+# @!attribute [rw] runner_pool_id
+#   @return [String]
+RunnerLeaseCreateData = Struct.new(
+  :runner_id,
+  :runner_pool_id,
+  keyword_init: true
+)
+
+# RunnerPoolNodeEnrollmentToken entity data model.
+#
+# @!attribute [rw] capabilities_csv
+#   @return [Object]
+#
+# @!attribute [rw] ci_runner_pool_id
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] creator_user_id
+#   @return [Object]
+#
+# @!attribute [rw] description
+#   @return [Object]
+#
+# @!attribute [rw] expires_at
+#   @return [Object]
+#
+# @!attribute [rw] expires_at_label
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] kind
+#   @return [String]
+#
+# @!attribute [rw] last_used_at
+#   @return [Object]
+#
+# @!attribute [rw] last_used_at_label
+#   @return [Object]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] raw_token
+#   @return [Object]
+#
+# @!attribute [rw] revoked_at
+#   @return [Object]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] token_hint
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+#
+# @!attribute [rw] usage_count
+#   @return [Integer]
+#
+# @!attribute [rw] usage_count_label
+#   @return [String]
+RunnerPoolNodeEnrollmentToken = Struct.new(
+  :capabilities_csv,
+  :ci_runner_pool_id,
+  :created_at,
+  :created_at_label,
+  :creator_user_id,
+  :description,
+  :expires_at,
+  :expires_at_label,
+  :id,
+  :kind,
+  :last_used_at,
+  :last_used_at_label,
+  :name,
+  :organization_id,
+  :raw_token,
+  :revoked_at,
+  :status,
+  :token_hint,
+  :updated_at,
+  :updated_at_label,
+  :usage_count,
+  :usage_count_label,
+  keyword_init: true
+)
+
+# Request payload for RunnerPoolNodeEnrollmentToken#list.
+#
+# @!attribute [rw] runner_pool_id
+#   @return [String]
+RunnerPoolNodeEnrollmentTokenListMatch = Struct.new(
+  :runner_pool_id,
+  keyword_init: true
+)
+
+# Request payload for RunnerPoolNodeEnrollmentToken#create.
+#
+# @!attribute [rw] runner_pool_id
+#   @return [String]
+#
+# @!attribute [rw] capabilities_csv
+#   @return [Object, nil]
+#
+# @!attribute [rw] description
+#   @return [Object, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] kind
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String]
+RunnerPoolNodeEnrollmentTokenCreateData = Struct.new(
+  :runner_pool_id,
+  :capabilities_csv,
+  :description,
+  :expires_at,
+  :kind,
+  :name,
+  keyword_init: true
+)
+
+# RunnerPoolRunner entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+RunnerPoolRunner = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for RunnerPoolRunner#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] runner_pool_id
+#   @return [String]
+RunnerPoolRunnerLoadMatch = Struct.new(
+  :id,
+  :runner_pool_id,
+  keyword_init: true
+)
+
+# Request payload for RunnerPoolRunner#list.
+#
+# @!attribute [rw] runner_pool_id
+#   @return [String]
+RunnerPoolRunnerListMatch = Struct.new(
+  :runner_pool_id,
+  keyword_init: true
+)
+
+# Request payload for RunnerPoolRunner#create.
+#
+# @!attribute [rw] runner_pool_id
+#   @return [String]
+RunnerPoolRunnerCreateData = Struct.new(
+  :runner_pool_id,
+  keyword_init: true
+)
+
+# Request payload for RunnerPoolRunner#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] runner_pool_id
+#   @return [String]
+RunnerPoolRunnerUpdateData = Struct.new(
+  :id,
+  :runner_pool_id,
+  keyword_init: true
+)
+
+# Request payload for RunnerPoolRunner#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] runner_pool_id
+#   @return [String]
+RunnerPoolRunnerPatchData = Struct.new(
+  :id,
+  :runner_pool_id,
+  keyword_init: true
+)
+
+# RuntimeInstanceHealthSnapshot entity data model.
+class RuntimeInstanceHealthSnapshot
+end
+
+# Request payload for RuntimeInstanceHealthSnapshot#list.
+#
+# @!attribute [rw] runtime_instance_id
+#   @return [String]
+RuntimeInstanceHealthSnapshotListMatch = Struct.new(
+  :runtime_instance_id,
+  keyword_init: true
+)
+
+# Request payload for RuntimeInstanceHealthSnapshot#create.
+#
+# @!attribute [rw] runtime_instance_id
+#   @return [String]
+RuntimeInstanceHealthSnapshotCreateData = Struct.new(
+  :runtime_instance_id,
+  keyword_init: true
+)
+
+# SandboxIntegration entity data model.
+#
+# @!attribute [rw] can_manage
+#   @return [Boolean]
+#
+# @!attribute [rw] catalog
+#   @return [Array]
+#
+# @!attribute [rw] configuration
+#   @return [Hash]
+#
+# @!attribute [rw] connected_profiles
+#   @return [Hash]
+#
+# @!attribute [rw] credentials
+#   @return [Hash]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] integrations
+#   @return [Array]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] provider
+#   @return [String]
+#
+# @!attribute [rw] version
+#   @return [Integer]
+SandboxIntegration = Struct.new(
+  :can_manage,
+  :catalog,
+  :configuration,
+  :connected_profiles,
+  :credentials,
+  :enabled,
+  :id,
+  :integrations,
+  :name,
+  :provider,
+  :version,
+  keyword_init: true
+)
+
+# Request payload for SandboxIntegration#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] provider
+#   @return [String, nil]
+SandboxIntegrationListMatch = Struct.new(
+  :organization_id,
+  :provider,
+  keyword_init: true
+)
+
+# Request payload for SandboxIntegration#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] configuration
+#   @return [Hash]
+#
+# @!attribute [rw] credentials
+#   @return [Hash]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] provider
+#   @return [String]
+SandboxIntegrationCreateData = Struct.new(
+  :organization_id,
+  :configuration,
+  :credentials,
+  :name,
+  :provider,
+  keyword_init: true
+)
+
+# Request payload for SandboxIntegration#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] credentials
+#   @return [Hash, nil]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] version
+#   @return [Integer, nil]
+SandboxIntegrationUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  :credentials,
+  :enabled,
+  :name,
+  :version,
+  keyword_init: true
+)
+
+# Request payload for SandboxIntegration#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] credentials
+#   @return [Hash, nil]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] version
+#   @return [Integer, nil]
+SandboxIntegrationPatchData = Struct.new(
+  :id,
+  :organization_id,
+  :credentials,
+  :enabled,
+  :name,
+  :version,
+  keyword_init: true
+)
+
 # ScenarioRevision entity data model.
 #
 # @!attribute [rw] action
@@ -21396,6 +39369,212 @@ ScenarioRunScenarioEditCreateData = Struct.new(
   keyword_init: true
 )
 
+# SecretGrant entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SecretGrant = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for SecretGrant#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] secret_id
+#   @return [String]
+SecretGrantLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :secret_id,
+  keyword_init: true
+)
+
+# Request payload for SecretGrant#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] secret_id
+#   @return [String]
+SecretGrantListMatch = Struct.new(
+  :organization_id,
+  :secret_id,
+  keyword_init: true
+)
+
+# Request payload for SecretGrant#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] secret_id
+#   @return [String]
+SecretGrantCreateData = Struct.new(
+  :organization_id,
+  :secret_id,
+  keyword_init: true
+)
+
+# Request payload for SecretGrant#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] secret_id
+#   @return [String]
+SecretGrantUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  :secret_id,
+  keyword_init: true
+)
+
+# Request payload for SecretGrant#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] secret_id
+#   @return [String]
+SecretGrantPatchData = Struct.new(
+  :id,
+  :organization_id,
+  :secret_id,
+  keyword_init: true
+)
+
+# Request payload for SecretGrant#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] secret_id
+#   @return [String]
+SecretGrantRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  :secret_id,
+  keyword_init: true
+)
+
+# SecretVersion entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SecretVersion = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for SecretVersion#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] secret_id
+#   @return [String]
+SecretVersionLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :secret_id,
+  keyword_init: true
+)
+
+# Request payload for SecretVersion#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] secret_id
+#   @return [String]
+SecretVersionListMatch = Struct.new(
+  :organization_id,
+  :secret_id,
+  keyword_init: true
+)
+
+# Request payload for SecretVersion#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] secret_id
+#   @return [String]
+SecretVersionCreateData = Struct.new(
+  :organization_id,
+  :secret_id,
+  keyword_init: true
+)
+
+# Request payload for SecretVersion#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] secret_id
+#   @return [String]
+SecretVersionUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  :secret_id,
+  keyword_init: true
+)
+
+# Request payload for SecretVersion#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] secret_id
+#   @return [String]
+SecretVersionPatchData = Struct.new(
+  :id,
+  :organization_id,
+  :secret_id,
+  keyword_init: true
+)
+
+# Request payload for SecretVersion#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] secret_id
+#   @return [String]
+SecretVersionRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  :secret_id,
+  keyword_init: true
+)
+
 # ServiceEndpoint entity data model.
 #
 # @!attribute [rw] id
@@ -21499,6 +39678,903 @@ ServiceEndpointRemoveMatch = Struct.new(
   keyword_init: true
 )
 
+# Setting entity data model.
+#
+# @!attribute [rw] can_manage_pr_scenario_writing
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_sandbox_region
+#   @return [Boolean]
+#
+# @!attribute [rw] dedicated_outbound_ip_addresses
+#   @return [Array]
+#
+# @!attribute [rw] default_trunk_bookmark
+#   @return [String]
+#
+# @!attribute [rw] organization
+#   @return [Hash]
+#
+# @!attribute [rw] sandbox_regions
+#   @return [Array]
+Setting = Struct.new(
+  :can_manage_pr_scenario_writing,
+  :can_manage_sandbox_region,
+  :dedicated_outbound_ip_addresses,
+  :default_trunk_bookmark,
+  :organization,
+  :sandbox_regions,
+  keyword_init: true
+)
+
+# Request payload for Setting#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+SettingListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# SettingMutationLease entity data model.
+class SettingMutationLease
+end
+
+# Request payload for SettingMutationLease#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] reason
+#   @return [Object, nil]
+SettingMutationLeaseCreateData = Struct.new(
+  :organization_id,
+  :repo_id,
+  :reason,
+  keyword_init: true
+)
+
+# Signal entity data model.
+#
+# @!attribute [rw] acked_at
+#   @return [Object]
+#
+# @!attribute [rw] acked_by
+#   @return [Object]
+#
+# @!attribute [rw] agent_runs
+#   @return [Hash]
+#
+# @!attribute [rw] app_service_id
+#   @return [Object]
+#
+# @!attribute [rw] attribution
+#   @return [Hash]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] dedupe_key
+#   @return [Object]
+#
+# @!attribute [rw] hosted_app_id
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] kind
+#   @return [String]
+#
+# @!attribute [rw] links
+#   @return [Hash]
+#
+# @!attribute [rw] occurred_at
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] payload
+#   @return [Hash]
+#
+# @!attribute [rw] recovery
+#   @return [Hash]
+#
+# @!attribute [rw] resolution
+#   @return [Hash]
+#
+# @!attribute [rw] severity
+#   @return [String]
+#
+# @!attribute [rw] source
+#   @return [Hash]
+#
+# @!attribute [rw] subject_id
+#   @return [Object]
+#
+# @!attribute [rw] subject_type
+#   @return [Object]
+#
+# @!attribute [rw] summary
+#   @return [String]
+SignalType = Struct.new(
+  :acked_at,
+  :acked_by,
+  :agent_runs,
+  :app_service_id,
+  :attribution,
+  :created_at,
+  :dedupe_key,
+  :hosted_app_id,
+  :id,
+  :kind,
+  :links,
+  :occurred_at,
+  :organization_id,
+  :payload,
+  :recovery,
+  :resolution,
+  :severity,
+  :source,
+  :subject_id,
+  :subject_type,
+  :summary,
+  keyword_init: true
+)
+
+# Request payload for Signal#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+SignalLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for Signal#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] after_id
+#   @return [String, nil]
+#
+# @!attribute [rw] before_id
+#   @return [String, nil]
+#
+# @!attribute [rw] hosted_app_id
+#   @return [String, nil]
+#
+# @!attribute [rw] integration_id
+#   @return [String, nil]
+#
+# @!attribute [rw] kind
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] min_severity
+#   @return [String, nil]
+#
+# @!attribute [rw] order
+#   @return [String, nil]
+#
+# @!attribute [rw] severity
+#   @return [String, nil]
+#
+# @!attribute [rw] since
+#   @return [String, nil]
+#
+# @!attribute [rw] source
+#   @return [String, nil]
+#
+# @!attribute [rw] subscription_id
+#   @return [String, nil]
+#
+# @!attribute [rw] unacked
+#   @return [Boolean, nil]
+SignalListMatch = Struct.new(
+  :organization_id,
+  :after_id,
+  :before_id,
+  :hosted_app_id,
+  :integration_id,
+  :kind,
+  :limit,
+  :min_severity,
+  :order,
+  :severity,
+  :since,
+  :source,
+  :subscription_id,
+  :unacked,
+  keyword_init: true
+)
+
+# Request payload for Signal#create.
+class SignalCreateData
+end
+
+# SignalInbound entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SignalInbound = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for SignalInbound#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] inbound_id
+#   @return [String]
+SignalInboundUpdateData = Struct.new(
+  :id,
+  :inbound_id,
+  keyword_init: true
+)
+
+# SignalIntegration entity data model.
+#
+# @!attribute [rw] api_token
+#   @return [String, nil]
+#
+# @!attribute [rw] api_token_stored
+#   @return [Boolean]
+#
+# @!attribute [rw] config
+#   @return [Hash]
+#
+# @!attribute [rw] created_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] failure_message
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] inbound_path
+#   @return [String]
+#
+# @!attribute [rw] inbound_url
+#   @return [String]
+#
+# @!attribute [rw] last_received_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] last_verified_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] mode
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] provider
+#   @return [String]
+#
+# @!attribute [rw] rejected_signature_count
+#   @return [Integer]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] target_count
+#   @return [Integer]
+#
+# @!attribute [rw] unmapped_delivery_count
+#   @return [Integer]
+#
+# @!attribute [rw] updated_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] webhook_secret
+#   @return [String, nil]
+#
+# @!attribute [rw] webhook_secret_stored
+#   @return [Boolean]
+SignalIntegration = Struct.new(
+  :api_token,
+  :api_token_stored,
+  :config,
+  :created_at,
+  :failure_message,
+  :id,
+  :inbound_path,
+  :inbound_url,
+  :last_received_at,
+  :last_verified_at,
+  :mode,
+  :name,
+  :organization_id,
+  :provider,
+  :rejected_signature_count,
+  :status,
+  :target_count,
+  :unmapped_delivery_count,
+  :updated_at,
+  :webhook_secret,
+  :webhook_secret_stored,
+  keyword_init: true
+)
+
+# Request payload for SignalIntegration#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+SignalIntegrationLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for SignalIntegration#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+SignalIntegrationListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for SignalIntegration#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] api_token
+#   @return [String, nil]
+#
+# @!attribute [rw] config
+#   @return [Hash, nil]
+#
+# @!attribute [rw] mode
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] provider
+#   @return [String]
+#
+# @!attribute [rw] webhook_secret
+#   @return [String, nil]
+SignalIntegrationCreateData = Struct.new(
+  :organization_id,
+  :api_token,
+  :config,
+  :mode,
+  :name,
+  :provider,
+  :webhook_secret,
+  keyword_init: true
+)
+
+# Request payload for SignalIntegration#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] api_token
+#   @return [String, nil]
+#
+# @!attribute [rw] config
+#   @return [Hash, nil]
+#
+# @!attribute [rw] mode
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] webhook_secret
+#   @return [String, nil]
+SignalIntegrationUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  :api_token,
+  :config,
+  :mode,
+  :name,
+  :status,
+  :webhook_secret,
+  keyword_init: true
+)
+
+# Request payload for SignalIntegration#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] api_token
+#   @return [String, nil]
+#
+# @!attribute [rw] config
+#   @return [Hash, nil]
+#
+# @!attribute [rw] mode
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] webhook_secret
+#   @return [String, nil]
+SignalIntegrationPatchData = Struct.new(
+  :id,
+  :organization_id,
+  :api_token,
+  :config,
+  :mode,
+  :name,
+  :status,
+  :webhook_secret,
+  keyword_init: true
+)
+
+# Request payload for SignalIntegration#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+SignalIntegrationRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# SignalIntegrationDelivery entity data model.
+#
+# @!attribute [rw] attempt_count
+#   @return [Integer]
+#
+# @!attribute [rw] created_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] delivery_id
+#   @return [String]
+#
+# @!attribute [rw] event_kind
+#   @return [Object, nil]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] last_error
+#   @return [Object, nil]
+#
+# @!attribute [rw] ops_signal_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] processed_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] provider
+#   @return [String]
+#
+# @!attribute [rw] received_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] signal_integration_id
+#   @return [String]
+#
+# @!attribute [rw] state
+#   @return [String]
+SignalIntegrationDelivery = Struct.new(
+  :attempt_count,
+  :created_at,
+  :delivery_id,
+  :event_kind,
+  :id,
+  :last_error,
+  :ops_signal_id,
+  :organization_id,
+  :processed_at,
+  :provider,
+  :received_at,
+  :signal_integration_id,
+  :state,
+  keyword_init: true
+)
+
+# Request payload for SignalIntegrationDelivery#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] signal_integration_id
+#   @return [String]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+SignalIntegrationDeliveryListMatch = Struct.new(
+  :organization_id,
+  :signal_integration_id,
+  :limit,
+  keyword_init: true
+)
+
+# SignalIntegrationTarget entity data model.
+#
+# @!attribute [rw] app_service_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] created_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] display_name
+#   @return [Object, nil]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] external_id
+#   @return [String]
+#
+# @!attribute [rw] external_kind
+#   @return [String]
+#
+# @!attribute [rw] external_slug
+#   @return [Object, nil]
+#
+# @!attribute [rw] hosted_app_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] signal_integration_id
+#   @return [String]
+#
+# @!attribute [rw] signal_integration_targets
+#   @return [Array]
+#
+# @!attribute [rw] targets
+#   @return [Array]
+#
+# @!attribute [rw] updated_at
+#   @return [Object, nil]
+SignalIntegrationTarget = Struct.new(
+  :app_service_id,
+  :created_at,
+  :display_name,
+  :enabled,
+  :external_id,
+  :external_kind,
+  :external_slug,
+  :hosted_app_id,
+  :id,
+  :organization_id,
+  :signal_integration_id,
+  :signal_integration_targets,
+  :targets,
+  :updated_at,
+  keyword_init: true
+)
+
+# Request payload for SignalIntegrationTarget#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] signal_integration_id
+#   @return [String]
+SignalIntegrationTargetListMatch = Struct.new(
+  :organization_id,
+  :signal_integration_id,
+  keyword_init: true
+)
+
+# Request payload for SignalIntegrationTarget#update.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] signal_integration_id
+#   @return [String]
+#
+# @!attribute [rw] targets
+#   @return [Array, nil]
+SignalIntegrationTargetUpdateData = Struct.new(
+  :organization_id,
+  :signal_integration_id,
+  :targets,
+  keyword_init: true
+)
+
+# SignalSubscription entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SignalSubscription = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for SignalSubscription#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+SignalSubscriptionLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for SignalSubscription#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+SignalSubscriptionListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for SignalSubscription#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+SignalSubscriptionCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for SignalSubscription#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+SignalSubscriptionUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for SignalSubscription#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+SignalSubscriptionPatchData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for SignalSubscription#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+SignalSubscriptionRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Site entity data model.
+#
+# @!attribute [rw] activated_at
+#   @return [Object]
+#
+# @!attribute [rw] activated_at_label
+#   @return [Object]
+#
+# @!attribute [rw] commit_sha
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] creator_user_id
+#   @return [Object]
+#
+# @!attribute [rw] deploy_slug
+#   @return [String]
+#
+# @!attribute [rw] failure_message
+#   @return [Object]
+#
+# @!attribute [rw] file_count
+#   @return [Integer]
+#
+# @!attribute [rw] file_count_label
+#   @return [String]
+#
+# @!attribute [rw] finished_at
+#   @return [Object]
+#
+# @!attribute [rw] finished_at_label
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] is_active
+#   @return [Boolean]
+#
+# @!attribute [rw] source_ref
+#   @return [Object]
+#
+# @!attribute [rw] started_at
+#   @return [Object]
+#
+# @!attribute [rw] started_at_label
+#   @return [Object]
+#
+# @!attribute [rw] static_site_id
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] total_bytes
+#   @return [Integer]
+#
+# @!attribute [rw] total_bytes_label
+#   @return [String]
+#
+# @!attribute [rw] trigger_kind
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+#
+# @!attribute [rw] uploaded_at
+#   @return [Object]
+#
+# @!attribute [rw] uploaded_at_label
+#   @return [Object]
+Site = Struct.new(
+  :activated_at,
+  :activated_at_label,
+  :commit_sha,
+  :created_at,
+  :created_at_label,
+  :creator_user_id,
+  :deploy_slug,
+  :failure_message,
+  :file_count,
+  :file_count_label,
+  :finished_at,
+  :finished_at_label,
+  :id,
+  :is_active,
+  :source_ref,
+  :started_at,
+  :started_at_label,
+  :static_site_id,
+  :status,
+  :total_bytes,
+  :total_bytes_label,
+  :trigger_kind,
+  :updated_at,
+  :updated_at_label,
+  :uploaded_at,
+  :uploaded_at_label,
+  keyword_init: true
+)
+
+# Request payload for Site#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] site
+#   @return [String, nil]
+SiteListMatch = Struct.new(
+  :organization_id,
+  :site,
+  keyword_init: true
+)
+
+# SiteAccessKey entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SiteAccessKey = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for SiteAccessKey#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] site_id
+#   @return [String]
+SiteAccessKeyListMatch = Struct.new(
+  :organization_id,
+  :site_id,
+  keyword_init: true
+)
+
+# Request payload for SiteAccessKey#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] site_id
+#   @return [String]
+SiteAccessKeyCreateData = Struct.new(
+  :organization_id,
+  :site_id,
+  keyword_init: true
+)
+
+# Request payload for SiteAccessKey#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] site_id
+#   @return [String]
+SiteAccessKeyRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  :site_id,
+  keyword_init: true
+)
+
 # SitePreview entity data model.
 #
 # @!attribute [rw] icon_data_url
@@ -21526,6 +40602,65 @@ SitePreview = Struct.new(
 SitePreviewLoadMatch = Struct.new(
   :organization_id,
   :url,
+  keyword_init: true
+)
+
+# SiteSecret entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] native_agent_id
+#   @return [String]
+#
+# @!attribute [rw] value
+#   @return [String]
+SiteSecret = Struct.new(
+  :id,
+  :native_agent_id,
+  :value,
+  keyword_init: true
+)
+
+# Request payload for SiteSecret#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] site_id
+#   @return [String]
+#
+# @!attribute [rw] native_agent_id
+#   @return [String, nil]
+#
+# @!attribute [rw] value
+#   @return [String, nil]
+SiteSecretUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  :site_id,
+  :native_agent_id,
+  :value,
+  keyword_init: true
+)
+
+# Request payload for SiteSecret#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] site_id
+#   @return [String]
+SiteSecretRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  :site_id,
   keyword_init: true
 )
 
@@ -21584,6 +40719,1276 @@ SlackChannelListMatch = Struct.new(
   :kind,
   :q,
   :refresh,
+  keyword_init: true
+)
+
+# SourceConnection entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SourceConnection = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for SourceConnection#create.
+#
+# @!attribute [rw] id
+#   @return [String]
+SourceConnectionCreateData = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# SpaceAlertRule entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SpaceAlertRule = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for SpaceAlertRule#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceAlertRuleLoadMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceAlertRule#list.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceAlertRuleListMatch = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceAlertRule#create.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceAlertRuleCreateData = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceAlertRule#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceAlertRuleUpdateData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceAlertRule#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceAlertRulePatchData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceAlertRule#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceAlertRuleRemoveMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# SpaceAuditEvent entity data model.
+class SpaceAuditEvent
+end
+
+# Request payload for SpaceAuditEvent#list.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceAuditEventListMatch = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceAuditEvent#create.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceAuditEventCreateData = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# SpaceDnsRecord entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SpaceDnsRecord = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for SpaceDnsRecord#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceDnsRecordLoadMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceDnsRecord#list.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceDnsRecordListMatch = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceDnsRecord#create.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceDnsRecordCreateData = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceDnsRecord#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceDnsRecordUpdateData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceDnsRecord#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceDnsRecordPatchData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceDnsRecord#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceDnsRecordRemoveMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# SpaceEnrollmentToken entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SpaceEnrollmentToken = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for SpaceEnrollmentToken#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceEnrollmentTokenLoadMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceEnrollmentToken#list.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceEnrollmentTokenListMatch = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceEnrollmentToken#create.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceEnrollmentTokenCreateData = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceEnrollmentToken#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceEnrollmentTokenUpdateData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceEnrollmentToken#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceEnrollmentTokenPatchData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceEnrollmentToken#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceEnrollmentTokenRemoveMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# SpaceGateway entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SpaceGateway = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for SpaceGateway#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceGatewayLoadMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceGateway#list.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceGatewayListMatch = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceGateway#create.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceGatewayCreateData = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceGateway#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceGatewayUpdateData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceGateway#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceGatewayPatchData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceGateway#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceGatewayRemoveMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# SpaceGroup entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SpaceGroup = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for SpaceGroup#list.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceGroupListMatch = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceGroup#create.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceGroupCreateData = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceGroup#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceGroupUpdateData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceGroup#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceGroupPatchData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceGroup#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceGroupRemoveMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# SpaceGroupMembership entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SpaceGroupMembership = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for SpaceGroupMembership#list.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceGroupMembershipListMatch = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceGroupMembership#create.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceGroupMembershipCreateData = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceGroupMembership#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceGroupMembershipUpdateData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceGroupMembership#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceGroupMembershipPatchData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceGroupMembership#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceGroupMembershipRemoveMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# SpaceLogStream entity data model.
+class SpaceLogStream
+end
+
+# Request payload for SpaceLogStream#list.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceLogStreamListMatch = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceLogStream#create.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceLogStreamCreateData = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# SpaceMetricSery entity data model.
+class SpaceMetricSery
+end
+
+# Request payload for SpaceMetricSery#list.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceMetricSeryListMatch = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceMetricSery#create.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceMetricSeryCreateData = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# SpaceOtelCollector entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SpaceOtelCollector = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for SpaceOtelCollector#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceOtelCollectorLoadMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceOtelCollector#list.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceOtelCollectorListMatch = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceOtelCollector#create.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceOtelCollectorCreateData = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceOtelCollector#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceOtelCollectorUpdateData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceOtelCollector#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceOtelCollectorPatchData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceOtelCollector#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceOtelCollectorRemoveMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# SpacePeer entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SpacePeer = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for SpacePeer#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpacePeerLoadMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpacePeer#list.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpacePeerListMatch = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpacePeer#create.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpacePeerCreateData = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpacePeer#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpacePeerUpdateData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpacePeer#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpacePeerPatchData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpacePeer#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpacePeerRemoveMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# SpacePeerAttachment entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SpacePeerAttachment = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for SpacePeerAttachment#list.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpacePeerAttachmentListMatch = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpacePeerAttachment#create.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpacePeerAttachmentCreateData = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpacePeerAttachment#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpacePeerAttachmentUpdateData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpacePeerAttachment#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpacePeerAttachmentPatchData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpacePeerAttachment#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpacePeerAttachmentRemoveMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# SpacePolicy entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SpacePolicy = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for SpacePolicy#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpacePolicyLoadMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpacePolicy#list.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpacePolicyListMatch = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpacePolicy#create.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpacePolicyCreateData = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpacePolicy#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpacePolicyUpdateData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpacePolicy#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpacePolicyPatchData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpacePolicy#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpacePolicyRemoveMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# SpaceSegment entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SpaceSegment = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for SpaceSegment#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceSegmentLoadMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceSegment#list.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceSegmentListMatch = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceSegment#create.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceSegmentCreateData = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceSegment#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceSegmentUpdateData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceSegment#patch.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceSegmentPatchData = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceSegment#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceSegmentRemoveMatch = Struct.new(
+  :id,
+  :space_id,
+  keyword_init: true
+)
+
+# SpaceTraceSpan entity data model.
+class SpaceTraceSpan
+end
+
+# Request payload for SpaceTraceSpan#list.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceTraceSpanListMatch = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Request payload for SpaceTraceSpan#create.
+#
+# @!attribute [rw] space_id
+#   @return [String]
+SpaceTraceSpanCreateData = Struct.new(
+  :space_id,
+  keyword_init: true
+)
+
+# Spark entity data model.
+#
+# @!attribute [rw] activated_products
+#   @return [Array]
+#
+# @!attribute [rw] agents_only
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] can_activate_products
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage
+#   @return [Boolean]
+#
+# @!attribute [rw] compute_credit_cents
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] credit_cents
+#   @return [Object]
+#
+# @!attribute [rw] first_spark
+#   @return [Object]
+#
+# @!attribute [rw] github_connected
+#   @return [Boolean]
+#
+# @!attribute [rw] github_prs_authored_by_change_author
+#   @return [Boolean]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] jsonrpc
+#   @return [String]
+#
+# @!attribute [rw] logo_url
+#   @return [Object]
+#
+# @!attribute [rw] member_count
+#   @return [Integer]
+#
+# @!attribute [rw] method
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] params
+#   @return [Hash, nil]
+#
+# @!attribute [rw] pending_invitation_count
+#   @return [Integer]
+#
+# @!attribute [rw] personal
+#   @return [Boolean]
+#
+# @!attribute [rw] repository_count
+#   @return [Integer]
+#
+# @!attribute [rw] role
+#   @return [Object]
+#
+# @!attribute [rw] sandbox_region
+#   @return [String]
+#
+# @!attribute [rw] shared_agent_personal_accounts_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] source_control_providers
+#   @return [Array, nil]
+#
+# @!attribute [rw] source_ui_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] started
+#   @return [Boolean]
+#
+# @!attribute [rw] timezone
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+#
+# @!attribute [rw] verify_pr_scenario_writing_enabled
+#   @return [Boolean]
+Spark = Struct.new(
+  :activated_products,
+  :agents_only,
+  :can_activate_products,
+  :can_manage,
+  :compute_credit_cents,
+  :created_at,
+  :created_at_label,
+  :credit_cents,
+  :first_spark,
+  :github_connected,
+  :github_prs_authored_by_change_author,
+  :id,
+  :jsonrpc,
+  :logo_url,
+  :member_count,
+  :method,
+  :name,
+  :params,
+  :pending_invitation_count,
+  :personal,
+  :repository_count,
+  :role,
+  :sandbox_region,
+  :shared_agent_personal_accounts_enabled,
+  :slug,
+  :source_control_providers,
+  :source_ui_enabled,
+  :started,
+  :timezone,
+  :updated_at,
+  :updated_at_label,
+  :verify_pr_scenario_writing_enabled,
+  keyword_init: true
+)
+
+# Request payload for Spark#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+SparkListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for Spark#create.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] jsonrpc
+#   @return [String]
+#
+# @!attribute [rw] method
+#   @return [String]
+#
+# @!attribute [rw] params
+#   @return [Hash, nil]
+SparkCreateData = Struct.new(
+  :id,
+  :jsonrpc,
+  :method,
+  :params,
+  keyword_init: true
+)
+
+# SparkAgentIntegration entity data model.
+#
+# @!attribute [rw] account_counts
+#   @return [Hash]
+#
+# @!attribute [rw] accounts_path
+#   @return [String]
+#
+# @!attribute [rw] added_toolkits
+#   @return [Array]
+#
+# @!attribute [rw] can_manage
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_organization
+#   @return [Boolean]
+#
+# @!attribute [rw] catalog
+#   @return [Array]
+#
+# @!attribute [rw] connect_as
+#   @return [Object]
+#
+# @!attribute [rw] connect_as_by_toolkit
+#   @return [Hash]
+#
+# @!attribute [rw] connected_counts
+#   @return [Hash]
+#
+# @!attribute [rw] connection_id
+#   @return [String]
+#
+# @!attribute [rw] connections
+#   @return [Array]
+#
+# @!attribute [rw] email
+#   @return [Hash]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] enabled_toolkits
+#   @return [Array]
+#
+# @!attribute [rw] generation
+#   @return [Integer]
+#
+# @!attribute [rw] pagination
+#   @return [Hash]
+#
+# @!attribute [rw] pending_counts
+#   @return [Hash]
+#
+# @!attribute [rw] personal_creation_key_supported
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] private_agent
+#   @return [Boolean]
+#
+# @!attribute [rw] shared_agent_personal_accounts_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] slack
+#   @return [Hash]
+#
+# @!attribute [rw] webhook_connections
+#   @return [Array]
+#
+# @!attribute [rw] webhooks_available
+#   @return [Boolean]
+SparkAgentIntegration = Struct.new(
+  :account_counts,
+  :accounts_path,
+  :added_toolkits,
+  :can_manage,
+  :can_manage_organization,
+  :catalog,
+  :connect_as,
+  :connect_as_by_toolkit,
+  :connected_counts,
+  :connection_id,
+  :connections,
+  :email,
+  :enabled,
+  :enabled_toolkits,
+  :generation,
+  :pagination,
+  :pending_counts,
+  :personal_creation_key_supported,
+  :private_agent,
+  :shared_agent_personal_accounts_enabled,
+  :slack,
+  :webhook_connections,
+  :webhooks_available,
+  keyword_init: true
+)
+
+# Request payload for SparkAgentIntegration#list.
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] catalog_q
+#   @return [String, nil]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] q
+#   @return [String, nil]
+#
+# @!attribute [rw] toolkit
+#   @return [String, nil]
+SparkAgentIntegrationListMatch = Struct.new(
+  :agent_id,
+  :organization_id,
+  :catalog_q,
+  :cursor,
+  :limit,
+  :q,
+  :toolkit,
+  keyword_init: true
+)
+
+# Request payload for SparkAgentIntegration#create.
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] q
+#   @return [String, nil]
+#
+# @!attribute [rw] toolkit
+#   @return [String, nil]
+#
+# @!attribute [rw] connection_id
+#   @return [String]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] generation
+#   @return [Integer]
+SparkAgentIntegrationCreateData = Struct.new(
+  :agent_id,
+  :organization_id,
+  :cursor,
+  :limit,
+  :q,
+  :toolkit,
+  :connection_id,
+  :enabled,
+  :generation,
   keyword_init: true
 )
 
@@ -21808,6 +42213,564 @@ SparkAgentLocalThreadUpdateData = Struct.new(
   :expected_version,
   :reply_with_final_answer,
   :restricted,
+  keyword_init: true
+)
+
+# SparkAgentSite entity data model.
+#
+# @!attribute [rw] deployed_at
+#   @return [String]
+#
+# @!attribute [rw] deployments_count
+#   @return [Integer]
+#
+# @!attribute [rw] hostname
+#   @return [String]
+#
+# @!attribute [rw] https
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] url
+#   @return [String]
+#
+# @!attribute [rw] visibility
+#   @return [String]
+SparkAgentSite = Struct.new(
+  :deployed_at,
+  :deployments_count,
+  :hostname,
+  :https,
+  :id,
+  :name,
+  :url,
+  :visibility,
+  keyword_init: true
+)
+
+# Request payload for SparkAgentSite#list.
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+SparkAgentSiteListMatch = Struct.new(
+  :agent_id,
+  :organization_id,
+  :cursor,
+  :limit,
+  keyword_init: true
+)
+
+# SparkAgentSkill entity data model.
+#
+# @!attribute [rw] available
+#   @return [Boolean]
+#
+# @!attribute [rw] can_configure
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage
+#   @return [Boolean]
+#
+# @!attribute [rw] configuration_state
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] skills
+#   @return [Array]
+#
+# @!attribute [rw] version
+#   @return [String]
+SparkAgentSkill = Struct.new(
+  :available,
+  :can_configure,
+  :can_manage,
+  :configuration_state,
+  :description,
+  :enabled,
+  :name,
+  :skills,
+  :version,
+  keyword_init: true
+)
+
+# Request payload for SparkAgentSkill#list.
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+SparkAgentSkillListMatch = Struct.new(
+  :agent_id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for SparkAgentSkill#create.
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] version
+#   @return [String]
+SparkAgentSkillCreateData = Struct.new(
+  :agent_id,
+  :organization_id,
+  :enabled,
+  :name,
+  :version,
+  keyword_init: true
+)
+
+# SparkAgentThread entity data model.
+#
+# @!attribute [rw] archived_count
+#   @return [Object, nil]
+#
+# @!attribute [rw] can_create
+#   @return [Boolean]
+#
+# @!attribute [rw] execution
+#   @return [Object, nil]
+#
+# @!attribute [rw] first_input
+#   @return [Object, nil]
+#
+# @!attribute [rw] first_input_key
+#   @return [String, nil]
+#
+# @!attribute [rw] first_input_requester_membership_id
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] inherit_context
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] local_activities
+#   @return [Hash]
+#
+# @!attribute [rw] local_archived_count
+#   @return [Integer]
+#
+# @!attribute [rw] local_next_cursor
+#   @return [Object]
+#
+# @!attribute [rw] local_scope_key
+#   @return [Object]
+#
+# @!attribute [rw] local_status_pending
+#   @return [Boolean]
+#
+# @!attribute [rw] local_threads
+#   @return [Array]
+#
+# @!attribute [rw] main_thread_id
+#   @return [String]
+#
+# @!attribute [rw] message
+#   @return [String, nil]
+#
+# @!attribute [rw] next_cursor
+#   @return [Object]
+#
+# @!attribute [rw] parent_conversation_id
+#   @return [String, nil]
+#
+# @!attribute [rw] requester_membership_id
+#   @return [String, nil]
+#
+# @!attribute [rw] selected_thread
+#   @return [Object]
+#
+# @!attribute [rw] thread
+#   @return [Hash]
+#
+# @!attribute [rw] threads
+#   @return [Array]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] total_archived_count
+#   @return [Object]
+SparkAgentThread = Struct.new(
+  :archived_count,
+  :can_create,
+  :execution,
+  :first_input,
+  :first_input_key,
+  :first_input_requester_membership_id,
+  :id,
+  :inherit_context,
+  :local_activities,
+  :local_archived_count,
+  :local_next_cursor,
+  :local_scope_key,
+  :local_status_pending,
+  :local_threads,
+  :main_thread_id,
+  :message,
+  :next_cursor,
+  :parent_conversation_id,
+  :requester_membership_id,
+  :selected_thread,
+  :thread,
+  :threads,
+  :title,
+  :total_archived_count,
+  keyword_init: true
+)
+
+# Request payload for SparkAgentThread#list.
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] archived
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] conversation_id
+#   @return [String, nil]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] local_cursor
+#   @return [String, nil]
+SparkAgentThreadListMatch = Struct.new(
+  :agent_id,
+  :organization_id,
+  :archived,
+  :conversation_id,
+  :cursor,
+  :local_cursor,
+  keyword_init: true
+)
+
+# Request payload for SparkAgentThread#create.
+#
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] execution
+#   @return [Object, nil]
+#
+# @!attribute [rw] inherit_context
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] message
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_conversation_id
+#   @return [String, nil]
+#
+# @!attribute [rw] requester_membership_id
+#   @return [String, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+SparkAgentThreadCreateData = Struct.new(
+  :agent_id,
+  :organization_id,
+  :execution,
+  :inherit_context,
+  :message,
+  :parent_conversation_id,
+  :requester_membership_id,
+  :title,
+  keyword_init: true
+)
+
+# SparkCredit entity data model.
+#
+# @!attribute [rw] amount_cents
+#   @return [Integer, nil]
+#
+# @!attribute [rw] autofill
+#   @return [Object]
+#
+# @!attribute [rw] autofill_payment_unconfirmed
+#   @return [Boolean]
+#
+# @!attribute [rw] available_usd
+#   @return [String]
+#
+# @!attribute [rw] billing_unit
+#   @return [String, nil]
+#
+# @!attribute [rw] can_manage
+#   @return [Boolean]
+#
+# @!attribute [rw] compute_minutes
+#   @return [Hash]
+#
+# @!attribute [rw] compute_usd
+#   @return [String, nil]
+#
+# @!attribute [rw] credits_per_usd
+#   @return [Integer]
+#
+# @!attribute [rw] inference_usd
+#   @return [String, nil]
+#
+# @!attribute [rw] kind
+#   @return [String]
+#
+# @!attribute [rw] payment_method
+#   @return [Object]
+#
+# @!attribute [rw] payments_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] plan
+#   @return [String, nil]
+#
+# @!attribute [rw] plans
+#   @return [Array]
+#
+# @!attribute [rw] quoted_credits_cents
+#   @return [Integer, nil]
+#
+# @!attribute [rw] quoted_price_cents
+#   @return [Integer, nil]
+#
+# @!attribute [rw] refill_limits_cents
+#   @return [Array]
+#
+# @!attribute [rw] refill_options
+#   @return [Array]
+#
+# @!attribute [rw] refill_thresholds_cents
+#   @return [Array]
+#
+# @!attribute [rw] request_key
+#   @return [String]
+#
+# @!attribute [rw] settings
+#   @return [Object]
+#
+# @!attribute [rw] starter_cents
+#   @return [Integer]
+#
+# @!attribute [rw] top_up_max_cents
+#   @return [Integer]
+#
+# @!attribute [rw] top_up_step_cents
+#   @return [Integer]
+SparkCredit = Struct.new(
+  :amount_cents,
+  :autofill,
+  :autofill_payment_unconfirmed,
+  :available_usd,
+  :billing_unit,
+  :can_manage,
+  :compute_minutes,
+  :compute_usd,
+  :credits_per_usd,
+  :inference_usd,
+  :kind,
+  :payment_method,
+  :payments_enabled,
+  :plan,
+  :plans,
+  :quoted_credits_cents,
+  :quoted_price_cents,
+  :refill_limits_cents,
+  :refill_options,
+  :refill_thresholds_cents,
+  :request_key,
+  :settings,
+  :starter_cents,
+  :top_up_max_cents,
+  :top_up_step_cents,
+  keyword_init: true
+)
+
+# Request payload for SparkCredit#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+SparkCreditLoadMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for SparkCredit#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] view
+#   @return [String, nil]
+SparkCreditListMatch = Struct.new(
+  :organization_id,
+  :view,
+  keyword_init: true
+)
+
+# Request payload for SparkCredit#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] amount_cents
+#   @return [Integer, nil]
+#
+# @!attribute [rw] billing_unit
+#   @return [String, nil]
+#
+# @!attribute [rw] kind
+#   @return [String]
+#
+# @!attribute [rw] plan
+#   @return [String, nil]
+#
+# @!attribute [rw] quoted_credits_cents
+#   @return [Integer, nil]
+#
+# @!attribute [rw] quoted_price_cents
+#   @return [Integer, nil]
+#
+# @!attribute [rw] request_key
+#   @return [String]
+SparkCreditCreateData = Struct.new(
+  :organization_id,
+  :amount_cents,
+  :billing_unit,
+  :kind,
+  :plan,
+  :quoted_credits_cents,
+  :quoted_price_cents,
+  :request_key,
+  keyword_init: true
+)
+
+# Request payload for SparkCredit#update.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+SparkCreditUpdateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for SparkCredit#patch.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] view
+#   @return [String, nil]
+#
+# @!attribute [rw] settings
+#   @return [Object, nil]
+SparkCreditPatchData = Struct.new(
+  :organization_id,
+  :view,
+  :settings,
+  keyword_init: true
+)
+
+# SparkCreditAgentUsage entity data model.
+#
+# @!attribute [rw] agents
+#   @return [Array]
+#
+# @!attribute [rw] all
+#   @return [Hash]
+#
+# @!attribute [rw] days
+#   @return [Array]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] owners
+#   @return [Array]
+SparkCreditAgentUsage = Struct.new(
+  :agents,
+  :all,
+  :days,
+  :id,
+  :owners,
+  keyword_init: true
+)
+
+# Request payload for SparkCreditAgentUsage#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+SparkCreditAgentUsageLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# SparkCreditUsageTotal entity data model.
+#
+# @!attribute [rw] compute_minutes_used
+#   @return [String]
+#
+# @!attribute [rw] compute_usd
+#   @return [String]
+#
+# @!attribute [rw] inference_usd
+#   @return [String]
+SparkCreditUsageTotal = Struct.new(
+  :compute_minutes_used,
+  :compute_usd,
+  :inference_usd,
+  keyword_init: true
+)
+
+# Request payload for SparkCreditUsageTotal#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+SparkCreditUsageTotalListMatch = Struct.new(
+  :organization_id,
   keyword_init: true
 )
 
@@ -22305,6 +43268,196 @@ StaticSiteDomainRemoveMatch = Struct.new(
   keyword_init: true
 )
 
+# StatusChange entity data model.
+#
+# @!attribute [rw] change_id
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] patchsets
+#   @return [Array]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] status_label
+#   @return [String]
+#
+# @!attribute [rw] status_state
+#   @return [String]
+#
+# @!attribute [rw] status_tone
+#   @return [String]
+StatusChange = Struct.new(
+  :change_id,
+  :id,
+  :patchsets,
+  :status,
+  :status_label,
+  :status_state,
+  :status_tone,
+  keyword_init: true
+)
+
+# Request payload for StatusChange#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+StatusChangeLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# StatusCommit entity data model.
+#
+# @!attribute [rw] checks
+#   @return [Array]
+#
+# @!attribute [rw] commit_sha
+#   @return [String]
+#
+# @!attribute [rw] counts
+#   @return [Hash]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] status_label
+#   @return [String]
+#
+# @!attribute [rw] status_state
+#   @return [String]
+#
+# @!attribute [rw] status_tone
+#   @return [String]
+#
+# @!attribute [rw] total
+#   @return [Integer]
+StatusCommit = Struct.new(
+  :checks,
+  :commit_sha,
+  :counts,
+  :id,
+  :status,
+  :status_label,
+  :status_state,
+  :status_tone,
+  :total,
+  keyword_init: true
+)
+
+# Request payload for StatusCommit#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+StatusCommitLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# StatusPatchset entity data model.
+#
+# @!attribute [rw] checks
+#   @return [Array]
+#
+# @!attribute [rw] checks_status
+#   @return [Object]
+#
+# @!attribute [rw] commit_sha
+#   @return [Object]
+#
+# @!attribute [rw] counts
+#   @return [Hash]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] patchset_id
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] status_label
+#   @return [String]
+#
+# @!attribute [rw] status_state
+#   @return [String]
+#
+# @!attribute [rw] status_tone
+#   @return [String]
+#
+# @!attribute [rw] total
+#   @return [Integer]
+StatusPatchset = Struct.new(
+  :checks,
+  :checks_status,
+  :commit_sha,
+  :counts,
+  :id,
+  :patchset_id,
+  :status,
+  :status_label,
+  :status_state,
+  :status_tone,
+  :total,
+  keyword_init: true
+)
+
+# Request payload for StatusPatchset#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+StatusPatchsetLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# StripeWebhook entity data model.
+class StripeWebhook
+end
+
+# Request payload for StripeWebhook#create.
+class StripeWebhookCreateData
+end
+
+# SubmitTelemetry entity data model.
+class SubmitTelemetry
+end
+
+# Request payload for SubmitTelemetry#create.
+class SubmitTelemetryCreateData
+end
+
 # SubscriptionModel entity data model.
 #
 # @!attribute [rw] default_reasoning
@@ -22351,6 +43504,384 @@ SubscriptionModelListMatch = Struct.new(
   keyword_init: true
 )
 
+# SwarmEvent entity data model.
+#
+# @!attribute [rw] agent_swarm_id
+#   @return [String]
+#
+# @!attribute [rw] attempt_id
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [Integer]
+#
+# @!attribute [rw] kind
+#   @return [String]
+#
+# @!attribute [rw] payload
+#   @return [Hash]
+#
+# @!attribute [rw] reason
+#   @return [Object]
+#
+# @!attribute [rw] scheduler_generation
+#   @return [Object]
+#
+# @!attribute [rw] task_id
+#   @return [Object]
+SwarmEvent = Struct.new(
+  :agent_swarm_id,
+  :attempt_id,
+  :created_at,
+  :created_at_label,
+  :id,
+  :kind,
+  :payload,
+  :reason,
+  :scheduler_generation,
+  :task_id,
+  keyword_init: true
+)
+
+# Request payload for SwarmEvent#list.
+#
+# @!attribute [rw] swarm_id
+#   @return [String]
+#
+# @!attribute [rw] after
+#   @return [Integer, nil]
+#
+# @!attribute [rw] kind
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+SwarmEventListMatch = Struct.new(
+  :swarm_id,
+  :after,
+  :kind,
+  :limit,
+  keyword_init: true
+)
+
+# SwarmLive entity data model.
+class SwarmLive
+end
+
+# Request payload for SwarmLive#load.
+#
+# @!attribute [rw] swarm_id
+#   @return [String]
+#
+# @!attribute [rw] after_event_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] after_seq
+#   @return [Integer, nil]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+SwarmLiveLoadMatch = Struct.new(
+  :swarm_id,
+  :after_event_id,
+  :after_seq,
+  :cursor,
+  :limit,
+  keyword_init: true
+)
+
+# SwarmNote entity data model.
+#
+# @!attribute [rw] task_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] text
+#   @return [String]
+SwarmNote = Struct.new(
+  :task_id,
+  :text,
+  keyword_init: true
+)
+
+# Request payload for SwarmNote#create.
+#
+# @!attribute [rw] swarm_id
+#   @return [String]
+#
+# @!attribute [rw] task_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] text
+#   @return [String]
+SwarmNoteCreateData = Struct.new(
+  :swarm_id,
+  :task_id,
+  :text,
+  keyword_init: true
+)
+
+# SwarmTask entity data model.
+#
+# @!attribute [rw] acceptance_commands
+#   @return [Array]
+#
+# @!attribute [rw] agent_swarm_id
+#   @return [String]
+#
+# @!attribute [rw] assigned_runner_id
+#   @return [Object]
+#
+# @!attribute [rw] blocked_reason
+#   @return [Object]
+#
+# @!attribute [rw] changes
+#   @return [Array]
+#
+# @!attribute [rw] commit_count
+#   @return [Integer]
+#
+# @!attribute [rw] commit_sha_result
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] current_attempt_id
+#   @return [Object]
+#
+# @!attribute [rw] deadline_at
+#   @return [Object]
+#
+# @!attribute [rw] depends_on_task_ids
+#   @return [Array]
+#
+# @!attribute [rw] depth
+#   @return [Integer]
+#
+# @!attribute [rw] diff_artifact_url
+#   @return [Object]
+#
+# @!attribute [rw] display_id
+#   @return [Integer]
+#
+# @!attribute [rw] environment_profile
+#   @return [Object]
+#
+# @!attribute [rw] error_message
+#   @return [Object]
+#
+# @!attribute [rw] failure_code
+#   @return [Object]
+#
+# @!attribute [rw] finished_at
+#   @return [Object]
+#
+# @!attribute [rw] finished_at_label
+#   @return [Object]
+#
+# @!attribute [rw] harness
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] input_revision
+#   @return [Object]
+#
+# @!attribute [rw] iteration
+#   @return [Integer]
+#
+# @!attribute [rw] landing_state
+#   @return [String]
+#
+# @!attribute [rw] model
+#   @return [Object]
+#
+# @!attribute [rw] model_provider
+#   @return [Object]
+#
+# @!attribute [rw] number
+#   @return [Integer]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] owned_paths
+#   @return [Array]
+#
+# @!attribute [rw] parent_task_id
+#   @return [Object]
+#
+# @!attribute [rw] position
+#   @return [Integer]
+#
+# @!attribute [rw] prompt
+#   @return [String]
+#
+# @!attribute [rw] queued_at
+#   @return [Object]
+#
+# @!attribute [rw] queued_at_label
+#   @return [Object]
+#
+# @!attribute [rw] reasoning_effort
+#   @return [Object]
+#
+# @!attribute [rw] recent_activity
+#   @return [Array]
+#
+# @!attribute [rw] repo_url
+#   @return [String]
+#
+# @!attribute [rw] result
+#   @return [Hash]
+#
+# @!attribute [rw] retry_number
+#   @return [Integer]
+#
+# @!attribute [rw] role
+#   @return [String]
+#
+# @!attribute [rw] run_id
+#   @return [Object]
+#
+# @!attribute [rw] stack_after_task_id
+#   @return [Object]
+#
+# @!attribute [rw] started_at
+#   @return [Object]
+#
+# @!attribute [rw] started_at_label
+#   @return [Object]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] title
+#   @return [Object]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+SwarmTask = Struct.new(
+  :acceptance_commands,
+  :agent_swarm_id,
+  :assigned_runner_id,
+  :blocked_reason,
+  :changes,
+  :commit_count,
+  :commit_sha_result,
+  :created_at,
+  :created_at_label,
+  :current_attempt_id,
+  :deadline_at,
+  :depends_on_task_ids,
+  :depth,
+  :diff_artifact_url,
+  :display_id,
+  :environment_profile,
+  :error_message,
+  :failure_code,
+  :finished_at,
+  :finished_at_label,
+  :harness,
+  :id,
+  :input_revision,
+  :iteration,
+  :landing_state,
+  :model,
+  :model_provider,
+  :number,
+  :organization_id,
+  :owned_paths,
+  :parent_task_id,
+  :position,
+  :prompt,
+  :queued_at,
+  :queued_at_label,
+  :reasoning_effort,
+  :recent_activity,
+  :repo_url,
+  :result,
+  :retry_number,
+  :role,
+  :run_id,
+  :stack_after_task_id,
+  :started_at,
+  :started_at_label,
+  :status,
+  :title,
+  :updated_at,
+  :updated_at_label,
+  keyword_init: true
+)
+
+# Request payload for SwarmTask#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] swarm_id
+#   @return [String]
+#
+# @!attribute [rw] after_seq
+#   @return [Integer, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+SwarmTaskLoadMatch = Struct.new(
+  :id,
+  :swarm_id,
+  :after_seq,
+  :limit,
+  keyword_init: true
+)
+
+# Request payload for SwarmTask#list.
+#
+# @!attribute [rw] swarm_id
+#   @return [String]
+SwarmTaskListMatch = Struct.new(
+  :swarm_id,
+  keyword_init: true
+)
+
+# TaskLease entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+TaskLease = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for TaskLease#create.
+#
+# @!attribute [rw] swarm_id
+#   @return [String]
+#
+# @!attribute [rw] task_id
+#   @return [String]
+TaskLeaseCreateData = Struct.new(
+  :swarm_id,
+  :task_id,
+  keyword_init: true
+)
+
 # ThreadPreview entity data model.
 #
 # @!attribute [rw] expires_at
@@ -22386,6 +43917,1165 @@ ThreadPreviewCreateData = Struct.new(
   :organization_id,
   :thread_id,
   :port,
+  keyword_init: true
+)
+
+# ThreadPreviewAccess entity data model.
+class ThreadPreviewAccess
+end
+
+# Request payload for ThreadPreviewAccess#load.
+#
+# @!attribute [rw] host
+#   @return [String]
+#
+# @!attribute [rw] return_to
+#   @return [String, nil]
+ThreadPreviewAccessLoadMatch = Struct.new(
+  :host,
+  :return_to,
+  keyword_init: true
+)
+
+# Request payload for ThreadPreviewAccess#create.
+#
+# @!attribute [rw] host
+#   @return [Object, nil]
+#
+# @!attribute [rw] token
+#   @return [Object, nil]
+ThreadPreviewAccessCreateData = Struct.new(
+  :host,
+  :token,
+  keyword_init: true
+)
+
+# ToolFeedback entity data model.
+#
+# @!attribute [rw] category
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] details
+#   @return [String]
+#
+# @!attribute [rw] feedback
+#   @return [Hash]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] metadata
+#   @return [Hash]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] source
+#   @return [String]
+#
+# @!attribute [rw] summary
+#   @return [String]
+#
+# @!attribute [rw] user_id
+#   @return [String]
+ToolFeedback = Struct.new(
+  :category,
+  :created_at,
+  :details,
+  :feedback,
+  :id,
+  :metadata,
+  :organization_id,
+  :source,
+  :summary,
+  :user_id,
+  keyword_init: true
+)
+
+# Request payload for ToolFeedback#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+ToolFeedbackLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for ToolFeedback#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] feedback
+#   @return [Hash]
+ToolFeedbackCreateData = Struct.new(
+  :organization_id,
+  :feedback,
+  keyword_init: true
+)
+
+# Transcript entity data model.
+#
+# @!attribute [rw] agent
+#   @return [String]
+#
+# @!attribute [rw] author
+#   @return [Hash]
+#
+# @!attribute [rw] checkpoint_pagination
+#   @return [Hash]
+#
+# @!attribute [rw] checkpoints
+#   @return [Array]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] last_checkpoint_at
+#   @return [Object]
+#
+# @!attribute [rw] selected_checkpoint
+#   @return [Object]
+#
+# @!attribute [rw] source_url
+#   @return [String]
+#
+# @!attribute [rw] started_at
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] title
+#   @return [Object]
+Transcript = Struct.new(
+  :agent,
+  :author,
+  :checkpoint_pagination,
+  :checkpoints,
+  :id,
+  :last_checkpoint_at,
+  :selected_checkpoint,
+  :source_url,
+  :started_at,
+  :status,
+  :title,
+  keyword_init: true
+)
+
+# Request payload for Transcript#load.
+#
+# @!attribute [rw] around_event
+#   @return [Integer, nil]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] event_digest
+#   @return [String, nil]
+#
+# @!attribute [rw] include_tool
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] max_byte
+#   @return [Integer, nil]
+#
+# @!attribute [rw] source_ref
+#   @return [String, nil]
+TranscriptLoadMatch = Struct.new(
+  :around_event,
+  :cursor,
+  :event_digest,
+  :include_tool,
+  :limit,
+  :max_byte,
+  :source_ref,
+  keyword_init: true
+)
+
+# Request payload for Transcript#list.
+#
+# @!attribute [rw] change
+#   @return [String, nil]
+#
+# @!attribute [rw] checkpoint_cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] commit
+#   @return [String, nil]
+#
+# @!attribute [rw] cursor
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] patchset
+#   @return [Integer, nil]
+#
+# @!attribute [rw] pr
+#   @return [String, nil]
+#
+# @!attribute [rw] repo
+#   @return [String]
+#
+# @!attribute [rw] session
+#   @return [String, nil]
+TranscriptListMatch = Struct.new(
+  :change,
+  :checkpoint_cursor,
+  :commit,
+  :cursor,
+  :limit,
+  :patchset,
+  :pr,
+  :repo,
+  :session,
+  keyword_init: true
+)
+
+# Request payload for Transcript#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] adapter
+#   @return [Object, nil]
+#
+# @!attribute [rw] cursor
+#   @return [Object, nil]
+#
+# @!attribute [rw] from
+#   @return [Object, nil]
+#
+# @!attribute [rw] limit
+#   @return [Object, nil]
+#
+# @!attribute [rw] max_bytes
+#   @return [Object, nil]
+#
+# @!attribute [rw] mode
+#   @return [Object, nil]
+#
+# @!attribute [rw] query
+#   @return [Object, nil]
+#
+# @!attribute [rw] repo
+#   @return [Object, nil]
+#
+# @!attribute [rw] to
+#   @return [Object, nil]
+#
+# @!attribute [rw] user
+#   @return [Object, nil]
+TranscriptCreateData = Struct.new(
+  :organization_id,
+  :status,
+  :adapter,
+  :cursor,
+  :from,
+  :limit,
+  :max_bytes,
+  :mode,
+  :query,
+  :repo,
+  :to,
+  :user,
+  keyword_init: true
+)
+
+# V1Message entity data model.
+class V1Message
+end
+
+# Request payload for V1Message#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+V1MessageCreateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# VcBranch entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] target_commit_id
+#   @return [String]
+VcBranch = Struct.new(
+  :id,
+  :name,
+  :target_commit_id,
+  keyword_init: true
+)
+
+# Request payload for VcBranch#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+VcBranchListMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for VcBranch#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+VcBranchCreateData = Struct.new(
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for VcBranch#remove.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+VcBranchRemoveMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# VcBrowser entity data model.
+class VcBrowser
+end
+
+# Request payload for VcBrowser#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] file
+#   @return [String, nil]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] ref
+#   @return [String]
+#
+# @!attribute [rw] recursive
+#   @return [Boolean, nil]
+VcBrowserLoadMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  :file,
+  :path,
+  :ref,
+  :recursive,
+  keyword_init: true
+)
+
+# VcChange entity data model.
+#
+# @!attribute [rw] activity
+#   @return [Array]
+#
+# @!attribute [rw] canonical_path
+#   @return [String]
+#
+# @!attribute [rw] change
+#   @return [Object]
+#
+# @!attribute [rw] checks
+#   @return [Array, nil]
+#
+# @!attribute [rw] checks_status
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [Object, nil]
+#
+# @!attribute [rw] group
+#   @return [Object, nil]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] jj_change_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] labels
+#   @return [Array, nil]
+#
+# @!attribute [rw] landing
+#   @return [Hash]
+#
+# @!attribute [rw] number
+#   @return [Integer]
+#
+# @!attribute [rw] patchset_number
+#   @return [Object, nil]
+#
+# @!attribute [rw] previews
+#   @return [Array]
+#
+# @!attribute [rw] primary_status
+#   @return [Object, nil]
+#
+# @!attribute [rw] public_id
+#   @return [String, nil]
+#
+# @!attribute [rw] related_changes
+#   @return [Array]
+#
+# @!attribute [rw] relation_chain
+#   @return [Array]
+#
+# @!attribute [rw] restack_state
+#   @return [String, nil]
+#
+# @!attribute [rw] review_summary
+#   @return [Hash, nil]
+#
+# @!attribute [rw] stack
+#   @return [Object, nil]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] sync
+#   @return [Hash]
+#
+# @!attribute [rw] target
+#   @return [Hash]
+#
+# @!attribute [rw] target_advanced
+#   @return [Boolean]
+#
+# @!attribute [rw] target_branch
+#   @return [String]
+#
+# @!attribute [rw] title
+#   @return [String]
+#
+# @!attribute [rw] url
+#   @return [String, nil]
+VcChange = Struct.new(
+  :activity,
+  :canonical_path,
+  :change,
+  :checks,
+  :checks_status,
+  :description,
+  :group,
+  :id,
+  :jj_change_id,
+  :labels,
+  :landing,
+  :number,
+  :patchset_number,
+  :previews,
+  :primary_status,
+  :public_id,
+  :related_changes,
+  :relation_chain,
+  :restack_state,
+  :review_summary,
+  :stack,
+  :status,
+  :sync,
+  :target,
+  :target_advanced,
+  :target_branch,
+  :title,
+  :url,
+  keyword_init: true
+)
+
+# Request payload for VcChange#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+VcChangeLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for VcChange#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] group
+#   @return [String, nil]
+#
+# @!attribute [rw] label
+#   @return [String, nil]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] mine
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] target
+#   @return [String, nil]
+VcChangeListMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  :group,
+  :label,
+  :limit,
+  :mine,
+  :page,
+  :status,
+  :target,
+  keyword_init: true
+)
+
+# Request payload for VcChange#create.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] description
+#   @return [Object, nil]
+#
+# @!attribute [rw] labels
+#   @return [Array, nil]
+#
+# @!attribute [rw] title
+#   @return [String]
+#
+# @!attribute [rw] assets
+#   @return [Object, nil]
+#
+# @!attribute [rw] base
+#   @return [Object, nil]
+#
+# @!attribute [rw] draft
+#   @return [Object, nil]
+#
+# @!attribute [rw] dry_run
+#   @return [Object, nil]
+#
+# @!attribute [rw] expected_base_commit_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] expected_head_commit_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] expected_review_head_commit_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] expected_review_patchset_number
+#   @return [Object, nil]
+#
+# @!attribute [rw] git_publication_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] head
+#   @return [Object, nil]
+#
+# @!attribute [rw] into
+#   @return [Object, nil]
+#
+# @!attribute [rw] message
+#   @return [Object, nil]
+#
+# @!attribute [rw] remove_reviewers
+#   @return [Object, nil]
+#
+# @!attribute [rw] request_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] reviewers
+#   @return [Object, nil]
+#
+# @!attribute [rw] transcript_chat
+#   @return [Object, nil]
+VcChangeCreateData = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  :description,
+  :labels,
+  :title,
+  :assets,
+  :base,
+  :draft,
+  :dry_run,
+  :expected_base_commit_id,
+  :expected_head_commit_id,
+  :expected_review_head_commit_id,
+  :expected_review_patchset_number,
+  :git_publication_id,
+  :head,
+  :into,
+  :message,
+  :remove_reviewers,
+  :request_id,
+  :reviewers,
+  :transcript_chat,
+  keyword_init: true
+)
+
+# Request payload for VcChange#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] description
+#   @return [Object, nil]
+#
+# @!attribute [rw] assets
+#   @return [Object, nil]
+VcChangeUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  :description,
+  :assets,
+  keyword_init: true
+)
+
+# VcChangeGroup entity data model.
+#
+# @!attribute [rw] changes
+#   @return [Array]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] number
+#   @return [Integer, nil]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] title
+#   @return [Object]
+VcChangeGroup = Struct.new(
+  :changes,
+  :id,
+  :name,
+  :number,
+  :status,
+  :title,
+  keyword_init: true
+)
+
+# Request payload for VcChangeGroup#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+VcChangeGroupLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for VcChangeGroup#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+VcChangeGroupListMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for VcChangeGroup#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] title
+#   @return [Object, nil]
+VcChangeGroupCreateData = Struct.new(
+  :organization_id,
+  :repo_id,
+  :name,
+  :title,
+  keyword_init: true
+)
+
+# VcFile entity data model.
+#
+# @!attribute [rw] paths
+#   @return [Array]
+#
+# @!attribute [rw] truncated
+#   @return [Boolean]
+VcFile = Struct.new(
+  :paths,
+  :truncated,
+  keyword_init: true
+)
+
+# Request payload for VcFile#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] prefix
+#   @return [String, nil]
+#
+# @!attribute [rw] ref
+#   @return [String]
+VcFileListMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  :prefix,
+  :ref,
+  keyword_init: true
+)
+
+# VcMergeQueue entity data model.
+#
+# @!attribute [rw] analytics
+#   @return [Hash]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] policy
+#   @return [Hash]
+#
+# @!attribute [rw] queue
+#   @return [Hash]
+#
+# @!attribute [rw] target_branches
+#   @return [Array, nil]
+VcMergeQueue = Struct.new(
+  :analytics,
+  :id,
+  :policy,
+  :queue,
+  :target_branches,
+  keyword_init: true
+)
+
+# Request payload for VcMergeQueue#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] change
+#   @return [String, nil]
+#
+# @!attribute [rw] entry_id
+#   @return [String, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] window_day
+#   @return [Integer, nil]
+VcMergeQueueLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  :change,
+  :entry_id,
+  :page,
+  :window_day,
+  keyword_init: true
+)
+
+# Request payload for VcMergeQueue#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] change
+#   @return [String, nil]
+#
+# @!attribute [rw] entry_id
+#   @return [String, nil]
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] target
+#   @return [String, nil]
+#
+# @!attribute [rw] window_day
+#   @return [Integer, nil]
+VcMergeQueueListMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  :change,
+  :entry_id,
+  :page,
+  :target,
+  :window_day,
+  keyword_init: true
+)
+
+# Request payload for VcMergeQueue#create.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] expected_version
+#   @return [Object, nil]
+VcMergeQueueCreateData = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  :expected_version,
+  keyword_init: true
+)
+
+# Request payload for VcMergeQueue#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] concurrency
+#   @return [Object, nil]
+#
+# @!attribute [rw] enabled
+#   @return [Object, nil]
+#
+# @!attribute [rw] expected_version
+#   @return [Object, nil]
+VcMergeQueueUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  :concurrency,
+  :enabled,
+  :expected_version,
+  keyword_init: true
+)
+
+# VcStack entity data model.
+#
+# @!attribute [rw] alias_ref_name
+#   @return [Object]
+#
+# @!attribute [rw] changes
+#   @return [Array]
+#
+# @!attribute [rw] code
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] landing
+#   @return [Hash]
+#
+# @!attribute [rw] member_count
+#   @return [Integer]
+#
+# @!attribute [rw] name
+#   @return [Object]
+#
+# @!attribute [rw] ref_name
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] tip_change_number
+#   @return [Object]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [String]
+VcStack = Struct.new(
+  :alias_ref_name,
+  :changes,
+  :code,
+  :id,
+  :landing,
+  :member_count,
+  :name,
+  :ref_name,
+  :status,
+  :tip_change_number,
+  :updated_at,
+  :updated_at_label,
+  keyword_init: true
+)
+
+# Request payload for VcStack#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+VcStackLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for VcStack#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+VcStackListMatch = Struct.new(
+  :organization_id,
+  :repo_id,
+  keyword_init: true
+)
+
+# Request payload for VcStack#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] repo_id
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [Object, nil]
+VcStackUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  :repo_id,
+  :name,
+  keyword_init: true
+)
+
+# VcsNode entity data model.
+#
+# @!attribute [rw] account_avatar_url
+#   @return [Object]
+#
+# @!attribute [rw] account_id
+#   @return [Object]
+#
+# @!attribute [rw] account_login
+#   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] created_at_label
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] installation_id
+#   @return [String]
+#
+# @!attribute [rw] installed_at
+#   @return [Object]
+#
+# @!attribute [rw] installed_at_label
+#   @return [Object]
+#
+# @!attribute [rw] manage_access_url
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] permission_entries
+#   @return [Array]
+#
+# @!attribute [rw] permissions
+#   @return [Hash]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] suspended_at
+#   @return [Object]
+#
+# @!attribute [rw] suspended_at_label
+#   @return [Object]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+#
+# @!attribute [rw] updated_at_label
+#   @return [Object]
+VcsNode = Struct.new(
+  :account_avatar_url,
+  :account_id,
+  :account_login,
+  :created_at,
+  :created_at_label,
+  :id,
+  :installation_id,
+  :installed_at,
+  :installed_at_label,
+  :manage_access_url,
+  :organization_id,
+  :permission_entries,
+  :permissions,
+  :status,
+  :suspended_at,
+  :suspended_at_label,
+  :updated_at,
+  :updated_at_label,
+  keyword_init: true
+)
+
+# Request payload for VcsNode#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+VcsNodeListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# VcsSetting entity data model.
+#
+# @!attribute [rw] can_manage_pr_scenario_writing
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_sandbox_region
+#   @return [Boolean]
+#
+# @!attribute [rw] dedicated_outbound_ip_addresses
+#   @return [Array]
+#
+# @!attribute [rw] default_trunk_bookmark
+#   @return [String]
+#
+# @!attribute [rw] organization
+#   @return [Hash]
+#
+# @!attribute [rw] sandbox_regions
+#   @return [Array]
+VcsSetting = Struct.new(
+  :can_manage_pr_scenario_writing,
+  :can_manage_sandbox_region,
+  :dedicated_outbound_ip_addresses,
+  :default_trunk_bookmark,
+  :organization,
+  :sandbox_regions,
+  keyword_init: true
+)
+
+# Request payload for VcsSetting#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+VcsSettingListMatch = Struct.new(
+  :organization_id,
   keyword_init: true
 )
 
@@ -23831,6 +46521,108 @@ VerifyBrowserSessionRemoveMatch = Struct.new(
   keyword_init: true
 )
 
+# VerifyEmailVerification entity data model.
+class VerifyEmailVerification
+end
+
+# Request payload for VerifyEmailVerification#list.
+class VerifyEmailVerificationListMatch
+end
+
+# VerifySignalIntegration entity data model.
+#
+# @!attribute [rw] api_token_stored
+#   @return [Boolean]
+#
+# @!attribute [rw] config
+#   @return [Hash]
+#
+# @!attribute [rw] created_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] failure_message
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] inbound_path
+#   @return [String]
+#
+# @!attribute [rw] inbound_url
+#   @return [String]
+#
+# @!attribute [rw] last_received_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] last_verified_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] mode
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] provider
+#   @return [String]
+#
+# @!attribute [rw] rejected_signature_count
+#   @return [Integer]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] target_count
+#   @return [Integer]
+#
+# @!attribute [rw] unmapped_delivery_count
+#   @return [Integer]
+#
+# @!attribute [rw] updated_at
+#   @return [Object, nil]
+#
+# @!attribute [rw] webhook_secret_stored
+#   @return [Boolean]
+VerifySignalIntegration = Struct.new(
+  :api_token_stored,
+  :config,
+  :created_at,
+  :failure_message,
+  :id,
+  :inbound_path,
+  :inbound_url,
+  :last_received_at,
+  :last_verified_at,
+  :mode,
+  :name,
+  :organization_id,
+  :provider,
+  :rejected_signature_count,
+  :status,
+  :target_count,
+  :unmapped_delivery_count,
+  :updated_at,
+  :webhook_secret_stored,
+  keyword_init: true
+)
+
+# Request payload for VerifySignalIntegration#create.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+VerifySignalIntegrationCreateData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
 # VerifyStaticSiteDomain entity data model.
 #
 # @!attribute [rw] app_environment_id
@@ -23999,6 +46791,39 @@ VersionLogListMatch = Struct.new(
   keyword_init: true
 )
 
+# WaitlistApplication entity data model.
+class WaitlistApplication
+end
+
+# Request payload for WaitlistApplication#create.
+#
+# @!attribute [rw] company_name
+#   @return [Object, nil]
+#
+# @!attribute [rw] company_size
+#   @return [Object, nil]
+#
+# @!attribute [rw] email
+#   @return [Object, nil]
+#
+# @!attribute [rw] invite_code
+#   @return [Object, nil]
+#
+# @!attribute [rw] name
+#   @return [Object, nil]
+#
+# @!attribute [rw] use_case
+#   @return [Object, nil]
+WaitlistApplicationCreateData = Struct.new(
+  :company_name,
+  :company_size,
+  :email,
+  :invite_code,
+  :name,
+  :use_case,
+  keyword_init: true
+)
+
 # WebBotAuth entity data model.
 #
 # @!attribute [rw] expires_at
@@ -24022,6 +46847,24 @@ WebBotAuth = Struct.new(
 #   @return [String]
 WebBotAuthCreateData = Struct.new(
   :origin,
+  keyword_init: true
+)
+
+# WebhookGitlab entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+WebhookGitlab = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for WebhookGitlab#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+WebhookGitlabUpdateData = Struct.new(
+  :id,
   keyword_init: true
 )
 
@@ -24103,6 +46946,196 @@ WorkflowTriggerSkippedCreateData = Struct.new(
   :id,
   :organization_id,
   :workflow_trigger_id,
+  keyword_init: true
+)
+
+# WorkspaceActivity entity data model.
+#
+# @!attribute [rw] live_activity
+#   @return [Array]
+#
+# @!attribute [rw] recent_items
+#   @return [Array]
+#
+# @!attribute [rw] unresolved_notification_count
+#   @return [Integer]
+WorkspaceActivity = Struct.new(
+  :live_activity,
+  :recent_items,
+  :unresolved_notification_count,
+  keyword_init: true
+)
+
+# Request payload for WorkspaceActivity#load.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+WorkspaceActivityLoadMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# WorkspaceActivityNotification entity data model.
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+WorkspaceActivityNotification = Struct.new(
+  :id,
+  keyword_init: true
+)
+
+# Request payload for WorkspaceActivityNotification#update.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+WorkspaceActivityNotificationUpdateData = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# WorkspaceSpace entity data model.
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] default_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [Object]
+#
+# @!attribute [rw] hidden
+#   @return [Boolean]
+#
+# @!attribute [rw] icon_name
+#   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] import_status
+#   @return [Object]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] position
+#   @return [Object]
+#
+# @!attribute [rw] repository_id
+#   @return [String]
+#
+# @!attribute [rw] repository_slug
+#   @return [String]
+#
+# @!attribute [rw] slug
+#   @return [String]
+#
+# @!attribute [rw] status
+#   @return [String]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
+WorkspaceSpace = Struct.new(
+  :created_at,
+  :default_branch,
+  :description,
+  :hidden,
+  :icon_name,
+  :id,
+  :import_status,
+  :name,
+  :organization_id,
+  :position,
+  :repository_id,
+  :repository_slug,
+  :slug,
+  :status,
+  :updated_at,
+  keyword_init: true
+)
+
+# Request payload for WorkspaceSpace#load.
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+WorkspaceSpaceLoadMatch = Struct.new(
+  :id,
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for WorkspaceSpace#list.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+WorkspaceSpaceListMatch = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for WorkspaceSpace#create.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] default_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [Object, nil]
+#
+# @!attribute [rw] icon_name
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
+# @!attribute [rw] slug
+#   @return [String]
+WorkspaceSpaceCreateData = Struct.new(
+  :organization_id,
+  :default_branch,
+  :description,
+  :icon_name,
+  :name,
+  :slug,
+  keyword_init: true
+)
+
+# WorkspaceSpacePreference entity data model.
+#
+# @!attribute [rw] preferences
+#   @return [Array]
+#
+# @!attribute [rw] spaces
+#   @return [Array]
+WorkspaceSpacePreference = Struct.new(
+  :preferences,
+  :spaces,
+  keyword_init: true
+)
+
+# Request payload for WorkspaceSpacePreference#update.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] preferences
+#   @return [Array, nil]
+WorkspaceSpacePreferenceUpdateData = Struct.new(
+  :organization_id,
+  :preferences,
   keyword_init: true
 )
 

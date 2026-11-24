@@ -1,0 +1,14 @@
+$kind: collection
+id: "2cf81212-c547-5b9e-83ca-98d6a0b425e9"
+description: |-
+  The **device_pairing** entity, which belongs to a organization. Its requests address one record by `{{device_pairing_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `architecture` | string | yes |  |
+  | `channel` | string | yes |  |
+  | `id` | string |  |  |
+  | `name` | string | yes |  |
+  | `platform` | string | yes |  |
+  | `public_key` | string | yes |  |
+order: 220000

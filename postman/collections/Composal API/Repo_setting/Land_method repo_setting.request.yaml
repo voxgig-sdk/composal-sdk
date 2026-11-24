@@ -1,0 +1,25 @@
+$kind: http-request
+id: aa15c420-a592-52d0-951f-926192681ba0
+description: |-
+  The `land_method` action of **repo_setting**, a route of its `update` operation.
+
+  SDK: `client.RepoSetting().update({ "organization_id": "organization_id", "repo_id": "repo_id", $action: "land_method" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/settings/land_method"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_setting belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_setting belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "default_change_land_method": "squash"
+    }
+order: 3000

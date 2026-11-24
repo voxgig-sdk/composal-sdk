@@ -1,0 +1,9 @@
+$kind: collection
+id: ca372214-09d6-5168-bcef-a052641eb03f
+description: |-
+  The **agent_session** entity. Its requests address one record by `{{agent_session_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 49000

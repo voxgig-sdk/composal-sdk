@@ -1,0 +1,18 @@
+$kind: http-request
+id: b824a9ea-8755-5c09-9443-758223a1c638
+description: |-
+  The `load` operation of **tool_feedback**.
+
+  SDK: `client.ToolFeedback().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/tool_feedbacks/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this tool_feedback belongs to.
+  - key: id
+    value: "{{tool_feedback_id}}"
+    description: The tool_feedback this request addresses.
+order: 1000

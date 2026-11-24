@@ -1,0 +1,29 @@
+$kind: collection
+id: "88a6097e-2170-5e42-8663-9d20c18d613e"
+description: |-
+  The **signal** entity, which belongs to a organization. Its requests address one record by `{{signal_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `acked_at` | string | yes |  |
+  | `acked_by` | object | yes |  |
+  | `agent_runs` | object | yes |  |
+  | `app_service_id` | string | yes |  |
+  | `attribution` | object | yes |  |
+  | `created_at` | string | yes |  |
+  | `dedupe_key` | string | yes |  |
+  | `hosted_app_id` | string | yes |  |
+  | `id` | string | yes |  |
+  | `kind` | string | yes |  |
+  | `links` | object | yes |  |
+  | `occurred_at` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `payload` | object | yes |  |
+  | `recovery` | object | yes |  |
+  | `resolution` | object | yes |  |
+  | `severity` | string | yes |  |
+  | `source` | object | yes |  |
+  | `subject_id` | string | yes |  |
+  | `subject_type` | string | yes |  |
+  | `summary` | string | yes |  |
+order: 469000

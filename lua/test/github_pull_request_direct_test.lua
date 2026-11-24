@@ -1,0 +1,163 @@
+-- GithubPullRequest direct test
+
+local json = require("dkjson")
+local vs = require("utility.struct.struct")
+local sdk = require("composal_sdk")
+local helpers = require("core.helpers")
+local runner = require("test.runner")
+
+-- main.kit.test.live.strict is true (the default is true): a live
+-- request that fails, or a live test missing an input it needs,
+-- fails the test.
+-- An account with no record for a test to read skips it either way.
+local LIVE_STRICT = true
+
+local function live_ok(result, err)
+  if err ~= nil or type(result) ~= "table" or result["err"] ~= nil or not result["ok"] then
+    return false
+  end
+  local status = helpers.to_int(result["status"])
+  return status >= 200 and status < 300
+end
+
+describe("GithubPullRequestDirect", function()
+  it("should direct-load-github_pull_request", function()
+    local setup = github_pull_request_direct_setup({ id = "direct01" })
+    local _should_skip, _reason = runner.is_control_skipped("direct", "direct-load-github_pull_request", setup.live and "live" or "unit")
+    if _should_skip then
+      pending(_reason or "skipped via sdk-test-control.json")
+      return
+    end
+    if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" and setup.idmap["github_pull_request01"] == nil then
+      print("LIVE STEP {\"id\":\"direct-load-github_pull_request\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs github_pull_request01, which only POST /api/v1/organizations/{org_slug}/github/pull_requests/refresh gives\"}")
+      pending("Live coverage incomplete: direct-load-github_pull_request excluded (GET-only live run: needs github_pull_request01, which only POST /api/v1/organizations/{org_slug}/github/pull_requests/refresh gives)")
+      return
+    end
+    if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" and setup.idmap["pull_request01"] == nil then
+      print("LIVE STEP {\"id\":\"direct-load-github_pull_request\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives\"}")
+      pending("Live coverage incomplete: direct-load-github_pull_request excluded (GET-only live run: needs pull_request01, which only POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share gives)")
+      return
+    end
+    if setup.live then
+      for _, _live_key in ipairs({"github_pull_request01", "organization01", "pull_request01"}) do
+        if setup.idmap[_live_key] == nil then
+          runner.live_miss(pending, LIVE_STRICT, "Live test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_GITHUB_PULL_REQUEST_ENTID")
+        end
+      end
+    end
+    if setup.live then
+      runner.live_pace()
+    end
+    local client = setup.client
+
+    local params = {}
+    local query = {}
+    if setup.live then
+      params["id"] = setup.idmap["github_pull_request01"]
+      params["id"] = setup.idmap["github_pull_request01"]
+      params["organization_id"] = setup.idmap["organization01"]
+      params["organization_id"] = setup.idmap["organization01"]
+      params["pull_request_id"] = setup.idmap["pull_request01"]
+      params["pull_request_id"] = setup.idmap["pull_request01"]
+    else
+      params["id"] = "direct01"
+      params["id"] = "direct02"
+      params["organization_id"] = "direct03"
+      params["organization_id"] = "direct04"
+      params["pull_request_id"] = "direct05"
+      params["pull_request_id"] = "direct06"
+    end
+
+    local result, err = client:direct({
+      path = "api/v1/organizations/{organization_id}/github/pull_requests/{pull_request_id}/{id}",
+      method = "GET",
+      params = params,
+      query = query,
+    })
+    if setup.live then
+      if not live_ok(result, err) then
+        runner.live_miss(pending, LIVE_STRICT, "Live load failed: " .. runner.live_describe(result, err))
+      end
+      if result["data"] == nil then
+        runner.live_miss(pending, LIVE_STRICT, "Live load returned no data: " .. runner.live_describe(result, err))
+      end
+      assert.is_not_nil(result["data"])
+    else
+      assert.is_nil(err)
+      assert.is_true(result["ok"])
+      assert.are.equal(200, helpers.to_int(result["status"]))
+      assert.is_not_nil(result["data"])
+      if type(result["data"]) == "table" then
+        assert.are.equal("direct01", result["data"]["id"])
+      end
+      assert.are.equal(1, #setup.calls)
+    end
+  end)
+
+end)
+
+
+function github_pull_request_direct_setup(mockres)
+  runner.load_env_local()
+
+  local calls = {}
+
+  local env = runner.env_override({
+    ["COMPOSAL_TEST_GITHUB_PULL_REQUEST_ENTID"] = {},
+    ["COMPOSAL_TEST_LIVE"] = "FALSE",
+    ["COMPOSAL_APIKEY"] = "",
+  })
+
+  local live = env["COMPOSAL_TEST_LIVE"] == "TRUE"
+
+  if live then
+    local merged_opts = {
+      apikey = env["COMPOSAL_APIKEY"],
+    }
+    -- sdk-test-control.json's test.client.options goes UNDER the generated
+    -- fields: it adds to the live client, it does not redirect it.
+    for _k, _v in pairs(runner.live_client_options()) do
+      if merged_opts[_k] == nil then
+        merged_opts[_k] = _v
+      end
+    end
+    local client = sdk.new(merged_opts)
+    local idmap = env["COMPOSAL_TEST_GITHUB_PULL_REQUEST_ENTID"]
+    return {
+      client = client,
+      calls = calls,
+      live = true,
+      idmap = type(idmap) == "table" and idmap or {},
+    }
+  end
+
+  local function mock_fetch(url, init)
+    table.insert(calls, { url = url, init = init })
+    return {
+      status = 200,
+      statusText = "OK",
+      headers = {},
+      json = function()
+        if mockres ~= nil then
+          return mockres
+        end
+        return { id = "direct01" }
+      end,
+      body = "mock",
+    }, nil
+  end
+
+  local client = sdk.new({
+    base = "http://localhost:8080",
+    system = {
+      fetch = mock_fetch,
+    },
+  })
+
+  return {
+    client = client,
+    calls = calls,
+    live = false,
+    idmap = {},
+  }
+end

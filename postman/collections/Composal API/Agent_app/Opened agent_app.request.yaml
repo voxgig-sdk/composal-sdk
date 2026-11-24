@@ -1,0 +1,27 @@
+$kind: http-request
+id: c3c96274-bc55-5540-9e96-5d616bc36655
+description: |-
+  The `opened` action of **agent_app**, a route of its `create` operation.
+
+  SDK: `client.AgentApp().create({ "organization_id": "organization_id", "id": "ID", "idempotency_key": "idempotency_key", $action: "opened" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_apps/:id/opened"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_app belongs to.
+  - key: id
+    value: "{{agent_app_id}}"
+    description: The agent_app this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "surface": "web",
+      "view": "frame"
+    }
+order: 3000

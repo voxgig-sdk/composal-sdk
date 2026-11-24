@@ -1,0 +1,73 @@
+{
+  "existing": {
+    "proactive_agent_waitlist_entry": {
+      "PROACTIVE_AGENT_WAITLIST_ENTRY00": {
+        "email": "s64",
+        "first_task": "s65",
+        "invite_code": "s66",
+        "places_per_referral": 103,
+        "position": 104,
+        "position_after_next_referral": 105,
+        "referral_code": "s6a",
+        "referral_count": 107,
+        "total": 108,
+        "website": "s6d",
+        "id": "PROACTIVE_AGENT_WAITLIST_ENTRY00"
+      },
+      "PROACTIVE_AGENT_WAITLIST_ENTRY01": {
+        "email": "sc8",
+        "first_task": "sc9",
+        "invite_code": "sca",
+        "places_per_referral": 203,
+        "position": 204,
+        "position_after_next_referral": 205,
+        "referral_code": "sce",
+        "referral_count": 207,
+        "total": 208,
+        "website": "sd1",
+        "id": "PROACTIVE_AGENT_WAITLIST_ENTRY01"
+      },
+      "PROACTIVE_AGENT_WAITLIST_ENTRY02": {
+        "email": "s12c",
+        "first_task": "s12d",
+        "invite_code": "s12e",
+        "places_per_referral": 303,
+        "position": 304,
+        "position_after_next_referral": 305,
+        "referral_code": "s132",
+        "referral_count": 307,
+        "total": 308,
+        "website": "s135",
+        "id": "PROACTIVE_AGENT_WAITLIST_ENTRY02"
+      }
+    }
+  },
+  "new": {
+    "proactive_agent_waitlist_entry": {
+      "proactive_agent_waitlist_entry_ref01": {
+        "email": "s190",
+        "first_task": "s191",
+        "invite_code": "s192",
+        "places_per_referral": 403,
+        "position": 404,
+        "position_after_next_referral": 405,
+        "referral_code": "s196",
+        "referral_count": 407,
+        "total": 408,
+        "website": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/proactive_agent_waitlist_entries": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/proactive_agent_waitlist_entries/{referral_code}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

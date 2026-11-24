@@ -13,18 +13,6 @@ main: kit: flow: BasicGithubAppFlow:
 
       o: "create"
     }
-
-    {
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "github_app_ref01"
-          }
-        }
-      ]
-    }
   ],
   "key$": "BasicGithubAppFlow"
 }

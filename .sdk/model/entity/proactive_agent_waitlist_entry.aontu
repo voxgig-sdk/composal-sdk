@@ -1,0 +1,209 @@
+# Entity: proactive_agent_waitlist_entry
+
+main: kit: entity: proactive_agent_waitlist_entry: {
+
+  alias: field: {}
+
+  fields: {
+    email: {
+      h: "Email"
+      n: "email"
+      r: true
+      t: "`$STRING`"
+    }
+    first_task: {
+      h: "First Task"
+      n: "first_task"
+      r: false
+      sh: "The first job they would hand an agent."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    invite_code: {
+      h: "Invite Code"
+      n: "invite_code"
+      r: false
+      sh: "The referral code of the invite link they arrived through."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    places_per_referral: {
+      h: "Places Per Referral"
+      n: "places_per_referral"
+      r: true
+      sh: "Most places one referral moves the entry up; fewer when boosted entries are ahead."
+      t: "`$INTEGER`"
+    }
+    position: {
+      h: "Position"
+      n: "position"
+      r: true
+      sh: "1-based place in the queue."
+      t: "`$INTEGER`"
+    }
+    position_after_next_referral: {
+      h: "Position After Next Referral"
+      n: "position_after_next_referral"
+      r: true
+      sh: "The place one more referral would give this entry, as Rails would assign it."
+      t: "`$INTEGER`"
+    }
+    referral_code: {
+      h: "Referral Code"
+      n: "referral_code"
+      r: true
+      sh: "Shared in this entry's invite link."
+      t: "`$STRING`"
+    }
+    referral_count: {
+      h: "Referral Count"
+      n: "referral_count"
+      r: true
+      sh: "People who joined through this entry's link."
+      t: "`$INTEGER`"
+    }
+    total: {
+      h: "Total"
+      n: "total"
+      r: true
+      sh: "Display total including a random increment per signup; not the actual number of entries."
+      t: "`$INTEGER`"
+    }
+    website: {
+      h: "Website"
+      n: "website"
+      r: false
+      sh: "Honeypot."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  id: {
+    field: "referral_code"
+    name: "id"
+  }
+
+  name: "proactive_agent_waitlist_entry"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "email"
+            "first_task"
+            "invite_code"
+            "website"
+          ]
+          co: {
+            id: "POST /api/v1/proactive_agent_waitlist_entries"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/proactive_agent_waitlist_entries"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "proactive_agent_waitlist_entries"
+            }
+          ]
+          t: {
+            req: {
+              email: "`reqdata.email`"
+              first_task: "`reqdata.first_task`"
+              invite_code: "`reqdata.invite_code`"
+              website: "`reqdata.website`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/proactive_agent_waitlist_entries/{referral_code}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "referral_code"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/proactive_agent_waitlist_entries/{referral_code}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              referral_code: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "proactive_agent_waitlist_entries"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

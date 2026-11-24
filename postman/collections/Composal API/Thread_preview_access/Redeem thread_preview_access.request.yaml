@@ -1,0 +1,19 @@
+$kind: http-request
+id: "58a841b4-1fae-5e5d-a7a1-9fbea1fc2b3b"
+description: |-
+  The `redeem` action of **thread_preview_access**, a route of its `create` operation.
+
+  SDK: `client.ThreadPreviewAccess().create({ $action: "redeem" })`
+url: "{{base}}/api/v1/thread_preview_access/redeem"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "host": "{{thread_preview_access_id}}",
+      "token": "example"
+    }
+order: 1000

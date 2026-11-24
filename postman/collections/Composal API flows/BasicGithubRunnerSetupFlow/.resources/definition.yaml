@@ -1,0 +1,4 @@
+$kind: collection
+id: b3cdb106-1c70-599f-8471-c39462f3eef7
+description: "The `BasicGithubRunnerSetupFlow` flow of **github_runner_setup**."
+order: 225000

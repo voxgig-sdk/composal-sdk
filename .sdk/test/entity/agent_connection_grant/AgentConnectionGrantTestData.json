@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "agent_connection_grant": {
+      "AGENT_CONNECTION_GRANT00": {
+        "actions": [],
+        "agent_connection_id": "AGENT_CONNECTION01",
+        "automation_id": "AUTOMATION01",
+        "connection_generation": 123,
+        "created_at": "s7c",
+        "id": "AGENT_CONNECTION_GRANT00",
+        "organization_id": "ORGANIZATION01",
+        "revision": 127,
+        "revoked_at": "s80",
+        "status": "s81",
+        "usable": true,
+        "user_id": "USER01"
+      },
+      "AGENT_CONNECTION_GRANT01": {
+        "actions": [],
+        "agent_connection_id": "AGENT_CONNECTION01",
+        "automation_id": "AUTOMATION01",
+        "connection_generation": 243,
+        "created_at": "sf4",
+        "id": "AGENT_CONNECTION_GRANT01",
+        "organization_id": "ORGANIZATION01",
+        "revision": 247,
+        "revoked_at": "sf8",
+        "status": "sf9",
+        "usable": true,
+        "user_id": "USER01"
+      },
+      "AGENT_CONNECTION_GRANT02": {
+        "actions": [],
+        "agent_connection_id": "AGENT_CONNECTION01",
+        "automation_id": "AUTOMATION01",
+        "connection_generation": 363,
+        "created_at": "s16c",
+        "id": "AGENT_CONNECTION_GRANT02",
+        "organization_id": "ORGANIZATION01",
+        "revision": 367,
+        "revoked_at": "s170",
+        "status": "s171",
+        "usable": true,
+        "user_id": "USER01"
+      }
+    }
+  },
+  "new": {
+    "agent_connection_grant": {
+      "agent_connection_grant_ref01": {
+        "actions": [],
+        "agent_connection_id": "AGENT_CONNECTION01",
+        "automation_id": "AUTOMATION01",
+        "connection_generation": 483,
+        "created_at": "s1e4",
+        "organization_id": "ORGANIZATION01",
+        "revision": 487,
+        "revoked_at": "s1e8",
+        "status": "s1e9",
+        "usable": true,
+        "user_id": "USER01"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agent_connections/{id}/grants": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

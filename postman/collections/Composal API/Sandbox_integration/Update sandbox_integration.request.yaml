@@ -1,0 +1,28 @@
+$kind: http-request
+id: "3ec2517e-676c-5a7f-907a-002cf9426820"
+description: |-
+  The `update` operation of **sandbox_integration**.
+
+  SDK: `client.SandboxIntegration().update({ id: "example", organization_id: "example", credentials: {} })`
+url: "{{base}}/api/v1/organizations/:organization_id/sandbox_integrations/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this sandbox_integration belongs to.
+  - key: id
+    value: "{{sandbox_integration_id}}"
+    description: The sandbox_integration this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "credentials": {},
+      "enabled": true,
+      "version": 1
+    }
+order: 3000

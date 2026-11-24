@@ -1,0 +1,95 @@
+# BasicAgentRelayFileGrantFlow
+
+main: kit: flow: BasicAgentRelayFileGrantFlow:
+{
+  entity: "agent_relay_file_grant",
+  kind: "basic",
+  name: "BasicAgentRelayFileGrantFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_relay_file_grant_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_relay_file_grant_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_relay_file_grant_ref01",
+        srcdatavar: "agent_relay_file_grant_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "agent_relay_file_grant01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_relay_file_grant_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_relay_file_grant_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "agent_relay_file_grant01",
+        organization_id: "organization01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "agent_relay_file_grant_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentRelayFileGrantFlow"
+}

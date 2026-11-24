@@ -1,0 +1,83 @@
+$kind: http-request
+id: "1b3b8685-20ec-5804-8923-f37d3a6c599a"
+description: |-
+  The `list` operation of **transcript**.
+
+  SDK: `client.Transcript().list({ repo: "example" })`
+url: "{{base}}/api/v1/transcripts?repo={{repo}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: change
+    value: ""
+    disabled: true
+  - key: checkpoint_cursor
+    value: ""
+    disabled: true
+  - key: commit
+    value: ""
+    disabled: true
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: limit
+    value: "20"
+    disabled: true
+  - key: patchset
+    value: ""
+    disabled: true
+  - key: pr
+    value: ""
+    disabled: true
+  - key: repo
+    value: "{{repo}}"
+  - key: session
+    value: ""
+    disabled: true
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","repo"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("1. List transcripts: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const recs = body?.["sessions"] || []
+      const keys = Array.isArray(recs) ? recs.map((rec) => String(at(rec, "id"))) : []
+      if (null == pm.variables.get("transcript_ref01") && (true || "true" === String(pm.variables.get("getonly")).toLowerCase())) {
+        if (Array.isArray(recs) && null != recs[0]) {
+          pm.variables.set("transcript_ref01", String(at(recs[0], "id")))
+        }
+        else if (pm.response.code < 300) {
+          pm.variables.set("transcript_ref01__empty", "true")
+        }
+      }
+      if (null != pm.variables.get("transcript_ref01")) pm.test("1. List transcripts: the record is listed", () => {
+        pm.expect(keys).to.include(String(pm.variables.get("transcript_ref01")))
+      })
+    language: text/javascript
+order: 1000

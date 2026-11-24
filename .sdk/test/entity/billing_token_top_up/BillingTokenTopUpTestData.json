@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "billing_token_top_up": {
+      "BILLING_TOKEN_TOP_UP00": {
+        "amount_cents": 20,
+        "request_key": "s15",
+        "organization_id": "ORGANIZATION01",
+        "id": "BILLING_TOKEN_TOP_UP00"
+      },
+      "BILLING_TOKEN_TOP_UP01": {
+        "amount_cents": 40,
+        "request_key": "s29",
+        "organization_id": "ORGANIZATION01",
+        "id": "BILLING_TOKEN_TOP_UP01"
+      },
+      "BILLING_TOKEN_TOP_UP02": {
+        "amount_cents": 60,
+        "request_key": "s3d",
+        "organization_id": "ORGANIZATION01",
+        "id": "BILLING_TOKEN_TOP_UP02"
+      }
+    }
+  },
+  "new": {
+    "billing_token_top_up": {
+      "billing_token_top_up_ref01": {
+        "amount_cents": 80,
+        "request_key": "s51"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/billing/token_top_ups": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

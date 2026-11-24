@@ -1,0 +1,15 @@
+$kind: http-request
+id: d8e16f1d-4dc8-5388-9b1a-b85220864385
+description: |-
+  The `load` operation of **bazel_execution**.
+
+  SDK: `client.BazelExecution().load({ id: "example_id" })`
+url: "{{base}}/api/v1/bazel/executions/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{bazel_execution_id}}"
+    description: The bazel_execution this request addresses.
+order: 1000

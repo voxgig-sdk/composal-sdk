@@ -1,0 +1,31 @@
+$kind: http-request
+id: "62bd6501-e717-5a1f-886c-8b2f41ddb845"
+description: |-
+  The `remove` operation of **change_landing_request**.
+
+  SDK: `client.ChangeLandingRequest().remove({ change_id: "example", id: "example_id", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/:id/landing_requests/:entry_id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this change_landing_request belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this change_landing_request belongs to.
+  - key: id
+    value: "{{change_id}}"
+    description: The change this change_landing_request belongs to.
+  - key: entry_id
+    value: "{{change_landing_request_id}}"
+    description: The change_landing_request this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("change_landing_request_id")
+      }
+    language: text/javascript
+order: 2000

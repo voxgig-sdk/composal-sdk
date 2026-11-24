@@ -18,25 +18,6 @@ main: kit: flow: BasicAuthFlow:
       i: {
         ref: "auth_ref01",
         srcdatavar: "auth_ref01_data",
-        suffix: "_up0",
-        textfield: "app_return_url"
-      }
-
-      o: "update",
-      s: [
-        {
-          apply: "TextFieldMark",
-          def: {
-            mark: "Mark01-auth_ref01"
-          }
-        }
-      ]
-    }
-
-    {
-      i: {
-        ref: "auth_ref01",
-        srcdatavar: "auth_ref01_data",
         suffix: "_dt0"
       }
 

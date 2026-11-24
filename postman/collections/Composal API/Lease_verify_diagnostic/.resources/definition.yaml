@@ -1,0 +1,12 @@
+$kind: collection
+id: "37c15ff0-e0b5-5630-b04e-3c668090e73b"
+description: |-
+  The **lease_verify_diagnostic** entity. Its requests address one record by `{{lease_verify_diagnostic_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `browser_events` | object | yes |  |
+  | `live_browser` | object | yes |  |
+  | `live_view` | object | yes |  |
+  | `steps` | array |  |  |
+order: 301000

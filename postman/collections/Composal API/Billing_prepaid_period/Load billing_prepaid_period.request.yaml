@@ -1,0 +1,18 @@
+$kind: http-request
+id: "9b2a5f4b-fee6-58d4-bc8e-c551a8001a45"
+description: |-
+  The `load` operation of **billing_prepaid_period**.
+
+  SDK: `client.BillingPrepaidPeriod().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/billing/prepaid_periods/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this billing_prepaid_period belongs to.
+  - key: id
+    value: "{{billing_prepaid_period_id}}"
+    description: The billing_prepaid_period this request addresses.
+order: 1000

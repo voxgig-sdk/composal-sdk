@@ -1,0 +1,106 @@
+{
+  "existing": {
+    "github_app_installation": {
+      "GITHUB_APP_INSTALLATION00": {
+        "account_avatar_url": "sb4",
+        "account_id": "ACCOUNT01",
+        "account_login": "sb6",
+        "created_at": "sb7",
+        "created_at_label": "sb8",
+        "id": "GITHUB_APP_INSTALLATION00",
+        "installation_id": "INSTALLATION01",
+        "installed_at": "sbb",
+        "installed_at_label": "sbc",
+        "manage_access_url": "sbd",
+        "organization_id": "ORGANIZATION01",
+        "permission_entries": [],
+        "permissions": {},
+        "status": "sc1",
+        "suspended_at": "sc2",
+        "suspended_at_label": "sc3",
+        "updated_at": "sc4",
+        "updated_at_label": "sc5"
+      },
+      "GITHUB_APP_INSTALLATION01": {
+        "account_avatar_url": "s168",
+        "account_id": "ACCOUNT01",
+        "account_login": "s16a",
+        "created_at": "s16b",
+        "created_at_label": "s16c",
+        "id": "GITHUB_APP_INSTALLATION01",
+        "installation_id": "INSTALLATION01",
+        "installed_at": "s16f",
+        "installed_at_label": "s170",
+        "manage_access_url": "s171",
+        "organization_id": "ORGANIZATION01",
+        "permission_entries": [],
+        "permissions": {},
+        "status": "s175",
+        "suspended_at": "s176",
+        "suspended_at_label": "s177",
+        "updated_at": "s178",
+        "updated_at_label": "s179"
+      },
+      "GITHUB_APP_INSTALLATION02": {
+        "account_avatar_url": "s21c",
+        "account_id": "ACCOUNT01",
+        "account_login": "s21e",
+        "created_at": "s21f",
+        "created_at_label": "s220",
+        "id": "GITHUB_APP_INSTALLATION02",
+        "installation_id": "INSTALLATION01",
+        "installed_at": "s223",
+        "installed_at_label": "s224",
+        "manage_access_url": "s225",
+        "organization_id": "ORGANIZATION01",
+        "permission_entries": [],
+        "permissions": {},
+        "status": "s229",
+        "suspended_at": "s22a",
+        "suspended_at_label": "s22b",
+        "updated_at": "s22c",
+        "updated_at_label": "s22d"
+      }
+    }
+  },
+  "new": {
+    "github_app_installation": {
+      "github_app_installation_ref01": {
+        "account_avatar_url": "s2d0",
+        "account_id": "ACCOUNT01",
+        "account_login": "s2d2",
+        "created_at": "s2d3",
+        "created_at_label": "s2d4",
+        "installation_id": "INSTALLATION01",
+        "installed_at": "s2d7",
+        "installed_at_label": "s2d8",
+        "manage_access_url": "s2d9",
+        "organization_id": "ORGANIZATION01",
+        "permission_entries": [],
+        "permissions": {},
+        "status": "s2dd",
+        "suspended_at": "s2de",
+        "suspended_at_label": "s2df",
+        "updated_at": "s2e0",
+        "updated_at_label": "s2e1"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/github_app/installations/{id}/check_connection": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/github_app/installations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/github_app/installations/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

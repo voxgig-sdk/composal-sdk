@@ -1,0 +1,8 @@
+$kind: collection
+id: c5feb05c-d7c5-57b2-aca0-f3695b12c34a
+description: |-
+  The **auth_github** entity. Its requests address one record by `{{auth_github_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 114000

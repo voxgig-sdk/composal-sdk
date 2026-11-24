@@ -1,0 +1,23 @@
+# BasicDeviceInvocationFlow
+
+main: kit: flow: BasicDeviceInvocationFlow:
+{
+  entity: "device_invocation",
+  kind: "basic",
+  name: "BasicDeviceInvocationFlow",
+  step: [
+    {
+      i: {
+        ref: "device_invocation_ref01"
+      }
+
+      m: {
+        device_id: "device01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicDeviceInvocationFlow"
+}

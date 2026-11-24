@@ -1,0 +1,160 @@
+{
+  "existing": {
+    "github_ci_repository": {
+      "GITHUB_CI_REPOSITORY00": {
+        "adoption_mode": "s122",
+        "check_name_prefix": "s123",
+        "ci_runner_pool_id": "CI_RUNNER_POOL01",
+        "created_at": "s125",
+        "created_at_label": "s126",
+        "default_branch": "s127",
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "github_repository_id": "GITHUB_REPOSITORY01",
+        "id": "GITHUB_CI_REPOSITORY00",
+        "last_compatibility_status": "s12b",
+        "last_error_message": "s12c",
+        "last_head_sha": "s12d",
+        "last_pull_request_number": "s12e",
+        "last_ref": "s12f",
+        "last_webhook_action": "s130",
+        "last_webhook_at": "s131",
+        "last_webhook_at_label": "s132",
+        "last_webhook_delivery_id": "LAST_WEBHOOK_DELIVERY01",
+        "last_webhook_event": "s134",
+        "metadata": {},
+        "organization_id": "ORGANIZATION01",
+        "permission_status": "s137",
+        "repository_full_name": "s138",
+        "repository_name": "s139",
+        "repository_owner": "s13a",
+        "status": "s13b",
+        "updated_at": "s13c",
+        "updated_at_label": "s13d",
+        "webhook_delivery_count": 318
+      },
+      "GITHUB_CI_REPOSITORY01": {
+        "adoption_mode": "s244",
+        "check_name_prefix": "s245",
+        "ci_runner_pool_id": "CI_RUNNER_POOL01",
+        "created_at": "s247",
+        "created_at_label": "s248",
+        "default_branch": "s249",
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "github_repository_id": "GITHUB_REPOSITORY01",
+        "id": "GITHUB_CI_REPOSITORY01",
+        "last_compatibility_status": "s24d",
+        "last_error_message": "s24e",
+        "last_head_sha": "s24f",
+        "last_pull_request_number": "s250",
+        "last_ref": "s251",
+        "last_webhook_action": "s252",
+        "last_webhook_at": "s253",
+        "last_webhook_at_label": "s254",
+        "last_webhook_delivery_id": "LAST_WEBHOOK_DELIVERY01",
+        "last_webhook_event": "s256",
+        "metadata": {},
+        "organization_id": "ORGANIZATION01",
+        "permission_status": "s259",
+        "repository_full_name": "s25a",
+        "repository_name": "s25b",
+        "repository_owner": "s25c",
+        "status": "s25d",
+        "updated_at": "s25e",
+        "updated_at_label": "s25f",
+        "webhook_delivery_count": 608
+      },
+      "GITHUB_CI_REPOSITORY02": {
+        "adoption_mode": "s366",
+        "check_name_prefix": "s367",
+        "ci_runner_pool_id": "CI_RUNNER_POOL01",
+        "created_at": "s369",
+        "created_at_label": "s36a",
+        "default_branch": "s36b",
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "github_repository_id": "GITHUB_REPOSITORY01",
+        "id": "GITHUB_CI_REPOSITORY02",
+        "last_compatibility_status": "s36f",
+        "last_error_message": "s370",
+        "last_head_sha": "s371",
+        "last_pull_request_number": "s372",
+        "last_ref": "s373",
+        "last_webhook_action": "s374",
+        "last_webhook_at": "s375",
+        "last_webhook_at_label": "s376",
+        "last_webhook_delivery_id": "LAST_WEBHOOK_DELIVERY01",
+        "last_webhook_event": "s378",
+        "metadata": {},
+        "organization_id": "ORGANIZATION01",
+        "permission_status": "s37b",
+        "repository_full_name": "s37c",
+        "repository_name": "s37d",
+        "repository_owner": "s37e",
+        "status": "s37f",
+        "updated_at": "s380",
+        "updated_at_label": "s381",
+        "webhook_delivery_count": 898
+      }
+    }
+  },
+  "new": {
+    "github_ci_repository": {
+      "github_ci_repository_ref01": {
+        "adoption_mode": "s488",
+        "check_name_prefix": "s489",
+        "ci_runner_pool_id": "CI_RUNNER_POOL01",
+        "created_at": "s48b",
+        "created_at_label": "s48c",
+        "default_branch": "s48d",
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "github_repository_id": "GITHUB_REPOSITORY01",
+        "last_compatibility_status": "s491",
+        "last_error_message": "s492",
+        "last_head_sha": "s493",
+        "last_pull_request_number": "s494",
+        "last_ref": "s495",
+        "last_webhook_action": "s496",
+        "last_webhook_at": "s497",
+        "last_webhook_at_label": "s498",
+        "last_webhook_delivery_id": "LAST_WEBHOOK_DELIVERY01",
+        "last_webhook_event": "s49a",
+        "metadata": {},
+        "organization_id": "ORGANIZATION01",
+        "permission_status": "s49d",
+        "repository_full_name": "s49e",
+        "repository_name": "s49f",
+        "repository_owner": "s4a0",
+        "status": "s4a1",
+        "updated_at": "s4a2",
+        "updated_at_label": "s4a3",
+        "webhook_delivery_count": 1188
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/github_ci_repositories": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/github_ci_repositories": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/github_ci_repositories/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/github_ci_repositories/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/github_ci_repositories/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

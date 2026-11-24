@@ -1,0 +1,178 @@
+# Entity: bazel_action_result
+
+main: kit: entity: bazel_action_result: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+    parts: [
+      "action_result_id"
+      "id"
+    ]
+    sep: "/"
+  }
+
+  name: "bazel_action_result"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/bazel/action_results/{hash}/{size_bytes}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "action_result_id"
+                or: "hash"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "size_bytes"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/bazel/action_results/{hash}/{size_bytes}"
+          q: {
+            exist: [
+              "action_result_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              hash: "action_result_id"
+              size_bytes: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "bazel"
+            }
+            {
+              lit: "action_results"
+            }
+            {
+              var: "action_result_id"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "PUT /api/v1/bazel/action_results/{hash}/{size_bytes}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "action_result_id"
+                or: "hash"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "size_bytes"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/bazel/action_results/{hash}/{size_bytes}"
+          q: {
+            exist: [
+              "action_result_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              hash: "action_result_id"
+              size_bytes: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "bazel"
+            }
+            {
+              lit: "action_results"
+            }
+            {
+              var: "action_result_id"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,40 @@
+# BasicRunArtifactFlow
+
+main: kit: flow: BasicRunArtifactFlow:
+{
+  entity: "run_artifact",
+  kind: "basic",
+  name: "BasicRunArtifactFlow",
+  step: [
+    {
+      i: {
+        ref: "run_artifact_ref01"
+      }
+
+      m: {
+        pipeline_id: "pipeline01",
+        run_id: "run01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        pipeline_id: "pipeline01",
+        run_id: "run01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "run_artifact_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRunArtifactFlow"
+}

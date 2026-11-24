@@ -1,0 +1,25 @@
+$kind: http-request
+id: "251db965-cc93-53bc-ac59-0205ef75d878"
+description: |-
+  The `update` operation of **lease_workspace**.
+
+  SDK: `client.LeaseWorkspace().update({ id: "example", lease_id: "example", node_id: "example" })`
+url: "{{base}}/api/v1/ci/nodes/:id/leases/:lease_id/workspaces/:ci_workspace_id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{node_id}}"
+    description: The node this lease_workspace belongs to.
+  - key: lease_id
+    value: "{{lease_id}}"
+    description: "Input: lease_id."
+  - key: ci_workspace_id
+    value: "{{lease_workspace_id}}"
+    description: The lease_workspace this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 1000

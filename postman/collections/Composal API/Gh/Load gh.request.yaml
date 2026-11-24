@@ -1,0 +1,46 @@
+$kind: http-request
+id: "8247e8c6-2550-5f1d-a1bc-bb286701cee1"
+description: |-
+  The `load` operation of **gh**.
+
+  SDK: `client.Gh().load({ gh_id: "example", github_repo: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/gh/:github_owner/:github_repo/:number"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: check_id
+    value: ""
+    disabled: true
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: job_id
+    value: ""
+    disabled: true
+  - key: page
+    value: ""
+    disabled: true
+  - key: run_id
+    value: ""
+    disabled: true
+  - key: section
+    value: ""
+    disabled: true
+  - key: thread_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this gh belongs to.
+  - key: github_owner
+    value: "{{gh_gh_id}}"
+    description: The gh this request addresses.
+  - key: github_repo
+    value: "{{gh_github_repo}}"
+    description: The gh this request addresses.
+  - key: number
+    value: "{{gh_id}}"
+    description: The gh this request addresses.
+order: 1000

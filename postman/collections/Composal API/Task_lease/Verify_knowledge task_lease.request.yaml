@@ -1,0 +1,35 @@
+$kind: http-request
+id: "5bdc8fa4-505b-5b68-87d4-720cb5fa1116"
+description: |-
+  The `verify_knowledge` action of **task_lease**, a route of its `create` operation.
+
+  SDK: `client.TaskLease().create({ "swarm_id": "swarm_id", "task_id": "task_id", "id": "ID", "x_vex_lease_token": "x_vex_lease_token", $action: "verify_knowledge" })`
+url: "{{base}}/api/v1/agent/swarms/:swarm_id/tasks/:task_id/leases/:id/verify_knowledge"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  X-Vex-Lease-Token: "{{x_vex_lease_token}}"
+pathVariables:
+  - key: swarm_id
+    value: "{{swarm_id}}"
+    description: "Input: swarm_id."
+  - key: task_id
+    value: "{{task_id}}"
+    description: "Input: task_id."
+  - key: id
+    value: "{{task_lease_id}}"
+    description: The task_lease this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "tool": "example",
+      "arguments": {
+        "path": "example",
+        "offset": 0,
+        "refresh": false,
+        "snapshot": "example"
+      }
+    }
+order: 9000

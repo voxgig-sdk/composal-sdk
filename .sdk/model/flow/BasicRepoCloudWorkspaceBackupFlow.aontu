@@ -1,0 +1,64 @@
+# BasicRepoCloudWorkspaceBackupFlow
+
+main: kit: flow: BasicRepoCloudWorkspaceBackupFlow:
+{
+  entity: "repo_cloud_workspace_backup",
+  kind: "basic",
+  name: "BasicRepoCloudWorkspaceBackupFlow",
+  step: [
+    {
+      i: {
+        ref: "repo_cloud_workspace_backup_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "repo_cloud_workspace_backup_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "repo_cloud_workspace_backup_ref01",
+        srcdatavar: "repo_cloud_workspace_backup_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "repo_cloud_workspace_backup01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-repo_cloud_workspace_backup_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRepoCloudWorkspaceBackupFlow"
+}

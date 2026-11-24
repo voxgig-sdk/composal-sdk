@@ -1,0 +1,62 @@
+{
+  "existing": {
+    "docker_builder_setting": {
+      "DOCKER_BUILDER_SETTING00": {
+        "docker_builder_settings": {},
+        "idle_timeout_seconds": 61,
+        "max_concurrency": 62,
+        "organization_id": "ORGANIZATION01",
+        "region": "s40",
+        "runtime_timeout_seconds": 65,
+        "id": "DOCKER_BUILDER_SETTING00"
+      },
+      "DOCKER_BUILDER_SETTING01": {
+        "docker_builder_settings": {},
+        "idle_timeout_seconds": 121,
+        "max_concurrency": 122,
+        "organization_id": "ORGANIZATION01",
+        "region": "s7c",
+        "runtime_timeout_seconds": 125,
+        "id": "DOCKER_BUILDER_SETTING01"
+      },
+      "DOCKER_BUILDER_SETTING02": {
+        "docker_builder_settings": {},
+        "idle_timeout_seconds": 181,
+        "max_concurrency": 182,
+        "organization_id": "ORGANIZATION01",
+        "region": "sb8",
+        "runtime_timeout_seconds": 185,
+        "id": "DOCKER_BUILDER_SETTING02"
+      }
+    }
+  },
+  "new": {
+    "docker_builder_setting": {
+      "docker_builder_setting_ref01": {
+        "docker_builder_settings": {},
+        "idle_timeout_seconds": 241,
+        "max_concurrency": 242,
+        "organization_id": "ORGANIZATION01",
+        "region": "sf4",
+        "runtime_timeout_seconds": 245
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/docker_builder_settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/docker_builder_settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/docker_builder_settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

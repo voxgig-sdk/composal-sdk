@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "bazel": {
+      "BAZEL00": {
+        "id": "BAZEL00"
+      },
+      "BAZEL01": {
+        "id": "BAZEL01"
+      },
+      "BAZEL02": {
+        "id": "BAZEL02"
+      }
+    }
+  },
+  "new": {
+    "bazel": {
+      "bazel_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/bazel/authorize": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

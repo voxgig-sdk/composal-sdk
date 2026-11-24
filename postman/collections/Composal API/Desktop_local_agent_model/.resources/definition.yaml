@@ -1,0 +1,10 @@
+$kind: collection
+id: "08543aa6-7ca2-528c-80e9-5c2c04532243"
+description: |-
+  The **desktop_local_agent_model** entity, which belongs to a organization. Its requests address one record by `{{desktop_local_agent_model_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+order: 209000

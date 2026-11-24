@@ -1,0 +1,9 @@
+$kind: collection
+id: "01cd27d3-e985-55fd-8e79-678c1a2a5c66"
+description: |-
+  The **webhook_gitlab** entity. Its requests address one record by `{{webhook_gitlab_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 544000

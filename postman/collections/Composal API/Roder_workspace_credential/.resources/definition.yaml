@@ -1,0 +1,21 @@
+$kind: collection
+id: "388d9681-50bc-5f57-a390-e7718c50e84c"
+description: |-
+  The **roder_workspace_credential** entity. Its requests address one record by `{{roder_workspace_credential_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `api_token` | string | yes |  |
+  | `author_email` | string | yes |  |
+  | `author_name` | string | yes |  |
+  | `clone_url` | string | yes |  |
+  | `default_branch` | string | yes |  |
+  | `expires_at` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `repository_id` | string | yes |  |
+  | `repository_slug` | string | yes |  |
+  | `repository_spec` | string | yes |  |
+  | `required_lifetime_seconds` | integer | yes |  |
+  | `token` | string | yes |  |
+  | `username` | string | yes |  |
+order: 448000

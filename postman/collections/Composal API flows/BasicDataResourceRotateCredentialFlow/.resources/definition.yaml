@@ -1,4 +1,4 @@
 $kind: collection
 id: "69a715cd-4066-5403-94ad-848fdea8b010"
 description: "The `BasicDataResourceRotateCredentialFlow` flow of **data_resource_rotate_credential**."
-order: 81000
+order: 159000

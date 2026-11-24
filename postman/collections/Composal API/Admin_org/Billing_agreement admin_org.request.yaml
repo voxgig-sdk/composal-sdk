@@ -1,0 +1,23 @@
+$kind: http-request
+id: "7f0893dd-b86c-5d81-95fb-8ee307ac849f"
+description: |-
+  The `billing_agreement` action of **admin_org**, a route of its `update` operation.
+
+  SDK: `client.AdminOrg().update({ "id": "ID", $action: "billing_agreement" })`
+url: "{{base}}/api/v1/admin/organizations/:org_slug/billing_agreement"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{admin_org_id}}"
+    description: The admin_org this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "monthly_price_dollars": "example",
+      "reason": "example"
+    }
+order: 4000

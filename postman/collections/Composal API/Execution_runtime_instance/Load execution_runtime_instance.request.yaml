@@ -1,0 +1,15 @@
+$kind: http-request
+id: f2b467c2-32b7-5de1-a915-c13bca004ef2
+description: |-
+  The `load` operation of **execution_runtime_instance**.
+
+  SDK: `client.ExecutionRuntimeInstance().load({ id: "example_id" })`
+url: "{{base}}/api/v1/execution/runtime_instances/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{execution_runtime_instance_id}}"
+    description: The execution_runtime_instance this request addresses.
+order: 2000

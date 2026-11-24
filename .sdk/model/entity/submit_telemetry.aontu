@@ -1,0 +1,50 @@
+# Entity: submit_telemetry
+
+main: kit: entity: submit_telemetry: {
+
+  alias: field: {}
+
+  name: "submit_telemetry"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/submit_telemetry"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/submit_telemetry"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "submit_telemetry"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

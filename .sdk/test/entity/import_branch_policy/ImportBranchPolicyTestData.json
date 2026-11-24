@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "import_branch_policy": {
+      "IMPORT_BRANCH_POLICY00": {
+        "can_manage_pr_scenario_writing": true,
+        "can_manage_sandbox_region": false,
+        "dedicated_outbound_ip_addresses": [],
+        "default_trunk_bookmark": "s3f",
+        "organization": {},
+        "sandbox_regions": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "IMPORT_BRANCH_POLICY00"
+      },
+      "IMPORT_BRANCH_POLICY01": {
+        "can_manage_pr_scenario_writing": true,
+        "can_manage_sandbox_region": false,
+        "dedicated_outbound_ip_addresses": [],
+        "default_trunk_bookmark": "s7b",
+        "organization": {},
+        "sandbox_regions": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "IMPORT_BRANCH_POLICY01"
+      },
+      "IMPORT_BRANCH_POLICY02": {
+        "can_manage_pr_scenario_writing": true,
+        "can_manage_sandbox_region": false,
+        "dedicated_outbound_ip_addresses": [],
+        "default_trunk_bookmark": "sb7",
+        "organization": {},
+        "sandbox_regions": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "IMPORT_BRANCH_POLICY02"
+      }
+    }
+  },
+  "new": {
+    "import_branch_policy": {
+      "import_branch_policy_ref01": {
+        "can_manage_pr_scenario_writing": true,
+        "can_manage_sandbox_region": false,
+        "dedicated_outbound_ip_addresses": [],
+        "default_trunk_bookmark": "sf3",
+        "organization": {},
+        "sandbox_regions": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/import_branch_policy": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/import_branch_policy": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/import_branch_policy": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

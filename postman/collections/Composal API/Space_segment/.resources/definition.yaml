@@ -1,0 +1,9 @@
+$kind: collection
+id: c48ac218-c7e8-56d0-a4e6-222a54e87d35
+description: |-
+  The **space_segment** entity. Its requests address one record by `{{space_segment_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 494000

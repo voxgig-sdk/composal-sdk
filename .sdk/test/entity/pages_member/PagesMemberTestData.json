@@ -1,0 +1,95 @@
+{
+  "existing": {
+    "pages_member": {
+      "PAGES_MEMBER00": {
+        "accepted_at": "saa",
+        "accepted_by_user": "sab",
+        "created_at": "sac",
+        "created_at_label": "sad",
+        "email": "sae",
+        "email_delivery_status": "saf",
+        "expires_at": "sb0",
+        "expires_at_label": "sb1",
+        "id": "PAGES_MEMBER00",
+        "invite_url": "sb3",
+        "invited_by_user": "sb4",
+        "organization": {},
+        "revoked_at": "sb6",
+        "role": "sb7",
+        "status": "sb8",
+        "updated_at": "sb9",
+        "updated_at_label": "sba",
+        "organization_id": "ORGANIZATION01"
+      },
+      "PAGES_MEMBER01": {
+        "accepted_at": "s154",
+        "accepted_by_user": "s155",
+        "created_at": "s156",
+        "created_at_label": "s157",
+        "email": "s158",
+        "email_delivery_status": "s159",
+        "expires_at": "s15a",
+        "expires_at_label": "s15b",
+        "id": "PAGES_MEMBER01",
+        "invite_url": "s15d",
+        "invited_by_user": "s15e",
+        "organization": {},
+        "revoked_at": "s160",
+        "role": "s161",
+        "status": "s162",
+        "updated_at": "s163",
+        "updated_at_label": "s164",
+        "organization_id": "ORGANIZATION01"
+      },
+      "PAGES_MEMBER02": {
+        "accepted_at": "s1fe",
+        "accepted_by_user": "s1ff",
+        "created_at": "s200",
+        "created_at_label": "s201",
+        "email": "s202",
+        "email_delivery_status": "s203",
+        "expires_at": "s204",
+        "expires_at_label": "s205",
+        "id": "PAGES_MEMBER02",
+        "invite_url": "s207",
+        "invited_by_user": "s208",
+        "organization": {},
+        "revoked_at": "s20a",
+        "role": "s20b",
+        "status": "s20c",
+        "updated_at": "s20d",
+        "updated_at_label": "s20e",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "pages_member": {
+      "pages_member_ref01": {
+        "accepted_at": "s2a8",
+        "accepted_by_user": "s2a9",
+        "created_at": "s2aa",
+        "created_at_label": "s2ab",
+        "email": "s2ac",
+        "email_delivery_status": "s2ad",
+        "expires_at": "s2ae",
+        "expires_at_label": "s2af",
+        "invite_url": "s2b1",
+        "invited_by_user": "s2b2",
+        "organization": {},
+        "revoked_at": "s2b4",
+        "role": "s2b5",
+        "status": "s2b6",
+        "updated_at": "s2b7",
+        "updated_at_label": "s2b8"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/pages/members": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

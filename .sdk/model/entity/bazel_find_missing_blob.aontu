@@ -1,0 +1,53 @@
+# Entity: bazel_find_missing_blob
+
+main: kit: entity: bazel_find_missing_blob: {
+
+  alias: field: {}
+
+  name: "bazel_find_missing_blob"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/bazel/find_missing_blobs"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/bazel/find_missing_blobs"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "bazel"
+            }
+            {
+              lit: "find_missing_blobs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

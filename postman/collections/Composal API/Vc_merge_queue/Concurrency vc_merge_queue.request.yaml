@@ -1,0 +1,29 @@
+$kind: http-request
+id: "7c69dd10-260c-5b65-b509-33e22c57af57"
+description: |-
+  The `concurrency` action of **vc_merge_queue**, a route of its `update` operation.
+
+  SDK: `client.VcMergeQueue().update({ "organization_id": "organization_id", "repo_id": "repo_id", "id": "ID", $action: "concurrency" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/merge_queues/:target/concurrency"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_merge_queue belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_merge_queue belongs to.
+  - key: target
+    value: "{{vc_merge_queue_id}}"
+    description: The vc_merge_queue this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "expected_version": 1,
+      "concurrency": 1
+    }
+order: 3000

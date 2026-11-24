@@ -1,0 +1,65 @@
+# Entity: cli_event
+
+main: kit: entity: cli_event: {
+
+  alias: field: {}
+
+  fields: {
+    event: {
+      h: "Event"
+      n: "event"
+      r: true
+      t: "`$STRING`"
+    }
+    properties: {
+      h: "Properties"
+      n: "properties"
+      r: true
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "cli_event"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "event"
+            "properties"
+          ]
+          co: {
+            id: "POST /api/v1/cli_events"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/cli_events"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "cli_events"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

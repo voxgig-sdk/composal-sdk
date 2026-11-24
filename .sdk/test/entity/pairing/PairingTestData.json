@@ -1,0 +1,42 @@
+{
+  "existing": {
+    "pairing": {
+      "PAIRING00": {
+        "id": "PAIRING00"
+      },
+      "PAIRING01": {
+        "id": "PAIRING01"
+      },
+      "PAIRING02": {
+        "id": "PAIRING02"
+      }
+    }
+  },
+  "new": {
+    "pairing": {
+      "pairing_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/relay/pairings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/relay/pairings/claim": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/relay/pairings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/relay/pairings/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

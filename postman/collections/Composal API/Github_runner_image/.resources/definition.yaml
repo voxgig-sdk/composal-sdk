@@ -1,0 +1,17 @@
+$kind: collection
+id: "707be683-809e-5a66-b360-d9b6c02b70a5"
+description: |-
+  The **github_runner_image** entity, which belongs to a organization. Its requests address one record by `{{github_runner_image_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `created_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `image_reference` | string | yes |  |
+  | `last_error` | string | yes |  |
+  | `modal_image_id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `registry_secret_name` | string | yes |  |
+  | `status` | string | yes |  |
+  | `updated_at` | string | yes |  |
+order: 271000

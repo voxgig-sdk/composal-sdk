@@ -1,0 +1,11 @@
+$kind: http-request
+id: "07b132d5-9389-5267-8774-14d38745f02b"
+description: |-
+  The `callback` action of **app_access**, a route of its `load` operation.
+
+  SDK: `client.AppAccess().load({ $action: "callback" })`
+url: "{{base}}/api/v1/app_access/callback"
+method: GET
+headers:
+  Accept: application/json
+order: 1000

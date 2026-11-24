@@ -1,0 +1,61 @@
+# BasicReleaseRolloutFlow
+
+main: kit: flow: BasicReleaseRolloutFlow:
+{
+  entity: "release_rollout",
+  kind: "basic",
+  name: "BasicReleaseRolloutFlow",
+  step: [
+    {
+      i: {
+        ref: "release_rollout_ref01"
+      }
+
+      m: {
+        release_id: "release01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        release_id: "release01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "release_rollout_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "release_rollout_ref01",
+        srcdatavar: "release_rollout_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "release_rollout01",
+        release_id: "release01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-release_rollout_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicReleaseRolloutFlow"
+}

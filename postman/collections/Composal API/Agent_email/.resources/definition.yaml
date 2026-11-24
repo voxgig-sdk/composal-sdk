@@ -16,4 +16,4 @@ description: |-
   | `subject` | string | yes |  |
   | `text` | string | yes |  |
   | `to` | array | yes |  |
-order: 11000
+order: 23000

@@ -1,0 +1,9 @@
+$kind: collection
+id: c3a51f0b-099c-57f9-8e0f-19b8adf50906
+description: |-
+  The **space_peer_attachment** entity. Its requests address one record by `{{space_peer_attachment_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 492000

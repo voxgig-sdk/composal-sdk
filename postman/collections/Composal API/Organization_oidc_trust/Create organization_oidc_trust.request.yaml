@@ -1,0 +1,29 @@
+$kind: http-request
+id: "67c18651-c176-5a05-92b3-d8cc2fe89fcf"
+description: |-
+  The `create` operation of **organization_oidc_trust**.
+
+  SDK: `client.OrganizationOidcTrust().create({ organization_id: "example" })`
+url: "{{base}}/api/v1/identity/organizations/:organization_id/oidc_trusts"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_oidc_trust belongs to.
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("organization_oidc_trust_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

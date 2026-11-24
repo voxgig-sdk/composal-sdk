@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "vcs_setting": {
+      "VCS_SETTING00": {
+        "can_manage_pr_scenario_writing": true,
+        "can_manage_sandbox_region": false,
+        "dedicated_outbound_ip_addresses": [],
+        "default_trunk_bookmark": "s3f",
+        "organization": {},
+        "sandbox_regions": [],
+        "organization_id": "ORGANIZATION01"
+      },
+      "VCS_SETTING01": {
+        "can_manage_pr_scenario_writing": true,
+        "can_manage_sandbox_region": false,
+        "dedicated_outbound_ip_addresses": [],
+        "default_trunk_bookmark": "s7b",
+        "organization": {},
+        "sandbox_regions": [],
+        "organization_id": "ORGANIZATION01"
+      },
+      "VCS_SETTING02": {
+        "can_manage_pr_scenario_writing": true,
+        "can_manage_sandbox_region": false,
+        "dedicated_outbound_ip_addresses": [],
+        "default_trunk_bookmark": "sb7",
+        "organization": {},
+        "sandbox_regions": [],
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "vcs_setting": {
+      "vcs_setting_ref01": {
+        "can_manage_pr_scenario_writing": true,
+        "can_manage_sandbox_region": false,
+        "dedicated_outbound_ip_addresses": [],
+        "default_trunk_bookmark": "sf3",
+        "organization": {},
+        "sandbox_regions": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/pages/vcs_settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+$kind: http-request
+id: eddbe474-6882-55d5-bf21-aa8ded65544e
+description: |-
+  The `remove` operation of **signal_integration**.
+
+  SDK: `client.SignalIntegration().remove({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/signal_integrations/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this signal_integration belongs to.
+  - key: id
+    value: "{{signal_integration_id}}"
+    description: The signal_integration this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("signal_integration_id")
+      }
+    language: text/javascript
+order: 7000

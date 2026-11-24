@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "marketing_setting": {
+      "MARKETING_SETTING00": {
+        "call_first": true
+      },
+      "MARKETING_SETTING01": {
+        "call_first": true
+      },
+      "MARKETING_SETTING02": {
+        "call_first": true
+      }
+    }
+  },
+  "new": {
+    "marketing_setting": {
+      "marketing_setting_ref01": {
+        "call_first": true
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/marketing_settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

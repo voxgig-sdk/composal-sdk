@@ -1,0 +1,26 @@
+# BasicVcsSettingFlow
+
+main: kit: flow: BasicVcsSettingFlow:
+{
+  entity: "vcs_setting",
+  kind: "basic",
+  name: "BasicVcsSettingFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "vcs_setting_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVcsSettingFlow"
+}

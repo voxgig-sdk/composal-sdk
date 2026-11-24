@@ -1,0 +1,29 @@
+$kind: collection
+id: "0fcfcddb-85d5-55db-a2b0-6318a13e95b6"
+description: |-
+  The **deployment_detail** entity, which belongs to a organization. Its requests address one record by `{{deployment_detail_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `activity` | array | yes |  |
+  | `app` | any | yes |  |
+  | `app_id` | string | yes |  |
+  | `audit_events` | array | yes |  |
+  | `capacity` | object | yes |  |
+  | `data_resources` | array | yes |  |
+  | `deploy_targets` | array | yes |  |
+  | `deployments` | array | yes |  |
+  | `desired_states` | array | yes |  |
+  | `environments` | array | yes |  |
+  | `filters` | object | yes |  |
+  | `health` | object | yes |  |
+  | `nomad` | object | yes |  |
+  | `operations` | array | yes |  |
+  | `placements` | array | yes |  |
+  | `reconciler_ticks` | array | yes |  |
+  | `releases` | array | yes |  |
+  | `runtime_instances` | array | yes |  |
+  | `service_bindings` | array | yes |  |
+  | `service_views` | array | yes |  |
+  | `storage_resources` | array | yes |  |
+order: 202000

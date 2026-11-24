@@ -1,0 +1,35 @@
+$kind: http-request
+id: "326515b7-557f-5c56-95d6-111fd39d5857"
+description: |-
+  The `create` operation of **gitlab_import**.
+
+  SDK: `client.GitlabImport().create({ organization_id: "example", integration_id: "example", project_id: 1 })`
+url: "{{base}}/api/v1/organizations/:org_slug/gitlab/imports"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this gitlab_import belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "integration_id": "{{integration_id}}",
+      "project_id": {{project_id}},
+      "source_branch": "example",
+      "repo_slug": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("gitlab_import_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

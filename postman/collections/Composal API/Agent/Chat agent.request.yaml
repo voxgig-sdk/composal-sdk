@@ -1,0 +1,15 @@
+$kind: http-request
+id: "082fed1d-e72b-555a-8a42-f3df2eda4a2d"
+description: |-
+  The `chat` action of **agent**, a route of its `create` operation.
+
+  SDK: `client.Agent().create({ $action: "chat" })`
+url: "{{base}}/api/v1/agent/chat"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 8000

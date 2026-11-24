@@ -1,0 +1,8 @@
+$kind: collection
+id: cbcad1b7-8690-533e-ac2d-d5cc18873e29
+description: |-
+  The **device_invocation** entity, which belongs to a organization and a device. Its requests address one record by `{{device_invocation_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 218000

@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "billing_portal_session": {
+      "BILLING_PORTAL_SESSION00": {
+        "return_url": "sa",
+        "organization_id": "ORGANIZATION01",
+        "id": "BILLING_PORTAL_SESSION00"
+      },
+      "BILLING_PORTAL_SESSION01": {
+        "return_url": "s14",
+        "organization_id": "ORGANIZATION01",
+        "id": "BILLING_PORTAL_SESSION01"
+      },
+      "BILLING_PORTAL_SESSION02": {
+        "return_url": "s1e",
+        "organization_id": "ORGANIZATION01",
+        "id": "BILLING_PORTAL_SESSION02"
+      }
+    }
+  },
+  "new": {
+    "billing_portal_session": {
+      "billing_portal_session_ref01": {
+        "return_url": "s28"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/billing/portal_sessions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

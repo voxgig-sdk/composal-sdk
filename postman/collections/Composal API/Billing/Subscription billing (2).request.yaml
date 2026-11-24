@@ -1,0 +1,19 @@
+$kind: http-request
+id: "610ff32c-4185-51c4-9fc7-02c86720601e"
+description: |-
+  The `subscription` action of **billing**, a route of its `update` operation.
+
+  SDK: `client.Billing().update({ "organization_id": "organization_id", $action: "subscription" })`
+url: "{{base}}/api/v1/organizations/:organization_id/billing/subscription"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this billing belongs to.
+body:
+  type: json
+  content: "{}"
+order: 9000

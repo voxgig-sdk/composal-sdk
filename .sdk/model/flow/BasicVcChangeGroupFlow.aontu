@@ -1,0 +1,64 @@
+# BasicVcChangeGroupFlow
+
+main: kit: flow: BasicVcChangeGroupFlow:
+{
+  entity: "vc_change_group",
+  kind: "basic",
+  name: "BasicVcChangeGroupFlow",
+  step: [
+    {
+      i: {
+        ref: "vc_change_group_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "vc_change_group_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "vc_change_group_ref01",
+        srcdatavar: "vc_change_group_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "vc_change_group01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vc_change_group_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVcChangeGroupFlow"
+}

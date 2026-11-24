@@ -1,0 +1,17 @@
+$kind: http-request
+id: "9f247078-1c16-5d1e-9ffe-3e91afc7f934"
+description: |-
+  The `start` action of **com_site_access**, a route of its `load` operation.
+
+  SDK: `client.ComSiteAccess().load({ "host": "ID", $action: "start" })`
+url: "{{base}}/api/v1/com_site_access/start?host={{com_site_access_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: host
+    value: "{{com_site_access_id}}"
+  - key: return_to
+    value: ""
+    disabled: true
+order: 2000

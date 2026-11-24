@@ -1,0 +1,4 @@
+$kind: collection
+id: "49416c33-9a84-5cd4-a3d5-41557afdc0fb"
+description: "The `BasicSparkCreditUsageTotalFlow` flow of **spark_credit_usage_total**."
+order: 414000

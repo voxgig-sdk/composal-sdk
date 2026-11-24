@@ -1,0 +1,30 @@
+$kind: collection
+id: b8783bc2-260a-5bee-ad9f-3a4ba30eeeb4
+description: |-
+  The **runner_pool_node_enrollment_token** entity. Its requests address one record by `{{runner_pool_node_enrollment_token_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `capabilities_csv` | string | yes |  |
+  | `ci_runner_pool_id` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `created_at_label` | string | yes |  |
+  | `creator_user_id` | string | yes |  |
+  | `description` | string | yes |  |
+  | `expires_at` | string | yes |  |
+  | `expires_at_label` | string | yes |  |
+  | `id` | string | yes |  |
+  | `kind` | string | yes |  |
+  | `last_used_at` | string | yes |  |
+  | `last_used_at_label` | string | yes |  |
+  | `name` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `raw_token` | string | yes |  |
+  | `revoked_at` | string | yes |  |
+  | `status` | string | yes |  |
+  | `token_hint` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `updated_at_label` | string | yes |  |
+  | `usage_count` | integer | yes |  |
+  | `usage_count_label` | string | yes |  |
+order: 457000

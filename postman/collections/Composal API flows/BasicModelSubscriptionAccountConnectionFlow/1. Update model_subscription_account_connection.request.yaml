@@ -1,0 +1,59 @@
+$kind: http-request
+id: e168d06e-d7b8-5142-baeb-9a1cfb6908bc
+description: |-
+  The `update` operation of **model_subscription_account_connection**.
+
+  SDK: `client.ModelSubscriptionAccountConnection().update({ id: "example", action_name: "example" })`
+url: "{{base}}/api/v1/model_subscription_accounts/connection/:agent_id"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: agent_id
+    value: "{{model_subscription_account_connection_id}}"
+    description: The model_subscription_account_connection this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "action_name": "start",
+      "method": "openai/openai-device-code"
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","model_subscription_account_connection_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("1. Update model_subscription_account_connection: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      pm.test("1. Update model_subscription_account_connection: the record is the one asked for", () => {
+        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("model_subscription_account_connection_id")))
+      })
+      if (pm.response.code < 300) pm.variables.set("model_subscription_account_connection_ref01_marked", "Mark01-model_subscription_account_connection_ref01")
+    language: text/javascript
+order: 1000

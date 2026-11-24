@@ -1,0 +1,100 @@
+{
+  "existing": {
+    "agent_connection_safety_control": {
+      "AGENT_CONNECTION_SAFETY_CONTROL00": {
+        "admin_disabled_at": "sbe",
+        "authorized_at": "sbf",
+        "checked_at": "sc0",
+        "created_at": "sc1",
+        "custodian_id": "CUSTODIAN01",
+        "failure_code": "sc3",
+        "generation": 196,
+        "id": "AGENT_CONNECTION_SAFETY_CONTROL00",
+        "name": "sc6",
+        "organization_id": "ORGANIZATION01",
+        "owner_name": "sc8",
+        "ownership_kind": "sc9",
+        "provider_disabled_reason": "sca",
+        "provider_identity": {},
+        "revoked_at": "scc",
+        "status": "scd",
+        "toolkit": "sce",
+        "updated_at": "scf",
+        "user_id": "USER01"
+      },
+      "AGENT_CONNECTION_SAFETY_CONTROL01": {
+        "admin_disabled_at": "s17c",
+        "authorized_at": "s17d",
+        "checked_at": "s17e",
+        "created_at": "s17f",
+        "custodian_id": "CUSTODIAN01",
+        "failure_code": "s181",
+        "generation": 386,
+        "id": "AGENT_CONNECTION_SAFETY_CONTROL01",
+        "name": "s184",
+        "organization_id": "ORGANIZATION01",
+        "owner_name": "s186",
+        "ownership_kind": "s187",
+        "provider_disabled_reason": "s188",
+        "provider_identity": {},
+        "revoked_at": "s18a",
+        "status": "s18b",
+        "toolkit": "s18c",
+        "updated_at": "s18d",
+        "user_id": "USER01"
+      },
+      "AGENT_CONNECTION_SAFETY_CONTROL02": {
+        "admin_disabled_at": "s23a",
+        "authorized_at": "s23b",
+        "checked_at": "s23c",
+        "created_at": "s23d",
+        "custodian_id": "CUSTODIAN01",
+        "failure_code": "s23f",
+        "generation": 576,
+        "id": "AGENT_CONNECTION_SAFETY_CONTROL02",
+        "name": "s242",
+        "organization_id": "ORGANIZATION01",
+        "owner_name": "s244",
+        "ownership_kind": "s245",
+        "provider_disabled_reason": "s246",
+        "provider_identity": {},
+        "revoked_at": "s248",
+        "status": "s249",
+        "toolkit": "s24a",
+        "updated_at": "s24b",
+        "user_id": "USER01"
+      }
+    }
+  },
+  "new": {
+    "agent_connection_safety_control": {
+      "agent_connection_safety_control_ref01": {
+        "admin_disabled_at": "s2f8",
+        "authorized_at": "s2f9",
+        "checked_at": "s2fa",
+        "created_at": "s2fb",
+        "custodian_id": "CUSTODIAN01",
+        "failure_code": "s2fd",
+        "generation": 766,
+        "name": "s300",
+        "organization_id": "ORGANIZATION01",
+        "owner_name": "s302",
+        "ownership_kind": "s303",
+        "provider_disabled_reason": "s304",
+        "provider_identity": {},
+        "revoked_at": "s306",
+        "status": "s307",
+        "toolkit": "s308",
+        "updated_at": "s309",
+        "user_id": "USER01"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agent_connections/safety_controls": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

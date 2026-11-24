@@ -1,0 +1,274 @@
+# Entity: gh
+
+main: kit: entity: gh: {
+
+  alias: field: {}
+
+  fields: {
+    capabilities: {
+      h: "Capabilities"
+      n: "capabilities"
+      r: true
+      t: "`$OBJECT`"
+    }
+    content: {
+      h: "Content"
+      n: "content"
+      r: true
+      t: "`$OBJECT`"
+    }
+    fetched_at: {
+      h: "Fetched At"
+      n: "fetched_at"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+    magic_merge: {
+      h: "Magic Merge"
+      n: "magic_merge"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    pull_request: {
+      h: "Pull Request"
+      n: "pull_request"
+      r: true
+      t: "`$ANY`"
+    }
+    stack: {
+      h: "Stack"
+      n: "stack"
+      r: true
+      t: "`$OBJECT`"
+    }
+    transcript_paths: {
+      h: "Transcript Paths"
+      n: "transcript_paths"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+    parts: [
+      "gh_id"
+      "github_repo"
+      "id"
+    ]
+    sep: "/"
+  }
+
+  name: "gh"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/gh/{github_owner}/{github_repo}/{number}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "gh_id"
+                or: "github_owner"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "gh_id"
+                or: "github_owner"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "github_repo"
+                or: "github_repo"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "github_repo"
+                or: "github_repo"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "number"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "number"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "check_id"
+                or: "check_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "job_id"
+                or: "job_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "run_id"
+                or: "run_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "section"
+                or: "section"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "thread_id"
+                or: "thread_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/gh/{github_owner}/{github_repo}/{number}"
+          q: {
+            exist: [
+              "gh_id"
+              "github_repo"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              github_owner: "gh_id"
+              github_repo: "github_repo"
+              number: "id"
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "gh"
+            }
+            {
+              var: "gh_id"
+            }
+            {
+              var: "github_repo"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

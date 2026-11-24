@@ -1,0 +1,27 @@
+$kind: http-request
+id: "67d05727-ec45-5ea7-8068-06977293b972"
+description: |-
+  The `authorize` action of **gitlab**, a route of its `create` operation.
+
+  SDK: `client.Gitlab().create({ "organization_id": "organization_id", $action: "authorize" })`
+url: "{{base}}/api/v1/organizations/:org_slug/gitlab/authorize"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this gitlab belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "integration_id": "{{integration_id}}",
+      "instance_url": "example",
+      "client_id": "example",
+      "client_secret": "example",
+      "webhook_authentication": "example",
+      "return_target": "example"
+    }
+order: 2000

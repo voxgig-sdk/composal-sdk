@@ -1,0 +1,12 @@
+$kind: collection
+id: "05dddb76-019f-540f-aa2e-f682fd67dbe0"
+description: |-
+  The **com_site_access_session** entity. Its requests address one record by `{{com_site_access_session_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `cookie_name` | string | yes |  |
+  | `host` | string | yes |  |
+  | `max_age` | integer | yes |  |
+  | `session_token` | string | yes |  |
+order: 181000

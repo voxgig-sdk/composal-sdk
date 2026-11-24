@@ -1,0 +1,226 @@
+# Entity: signal_integration_delivery
+
+main: kit: entity: signal_integration_delivery: {
+
+  alias: field: {}
+
+  fields: {
+    attempt_count: {
+      h: "Attempt Count"
+      n: "attempt_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    delivery_id: {
+      h: "Delivery Id"
+      n: "delivery_id"
+      r: true
+      sh: "The provider's delivery id, or a `content-…` id derived from the event kind, its timestamp header and the body checksum when it sends none."
+      t: "`$STRING`"
+    }
+    event_kind: {
+      h: "Event Kind"
+      n: "event_kind"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Public id (`sdel_…`)."
+      t: "`$STRING`"
+    }
+    last_error: {
+      h: "Last Error"
+      n: "last_error"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    ops_signal_id: {
+      h: "Ops Signal Id"
+      n: "ops_signal_id"
+      r: false
+      sh: "Public id (`sig_…`) of the signal this delivery emitted."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    organization_id: {
+      h: "Organization Id"
+      n: "organization_id"
+      r: true
+      t: "`$STRING`"
+    }
+    processed_at: {
+      h: "Processed At"
+      n: "processed_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: true
+      t: "`$STRING`"
+    }
+    received_at: {
+      h: "Received At"
+      n: "received_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    signal_integration_id: {
+      h: "Signal Integration Id"
+      n: "signal_integration_id"
+      r: true
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "signal_integration_delivery"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/deliveries"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "signal_integration_id"
+                or: "signal_integration_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/deliveries"
+          q: {
+            exist: [
+              "organization_id"
+              "signal_integration_id"
+            ]
+          }
+          r: {
+            param: {
+              signal_integration_id: "signal_integration_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "signal_integrations"
+            }
+            {
+              var: "signal_integration_id"
+            }
+            {
+              lit: "deliveries"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.signal_integration_deliveries`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.signal_integration")]
+  ]
+
+}

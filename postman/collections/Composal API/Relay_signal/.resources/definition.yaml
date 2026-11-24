@@ -1,0 +1,8 @@
+$kind: collection
+id: "962558b1-ebfc-5cc5-8760-31e8be2fa91d"
+description: |-
+  The **relay_signal** entity. Its requests address one record by `{{relay_signal_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 420000

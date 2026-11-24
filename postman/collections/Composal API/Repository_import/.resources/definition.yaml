@@ -1,0 +1,19 @@
+$kind: collection
+id: "69aa4cb0-9803-56c9-bef7-2f61ccbcb526"
+description: |-
+  The **repository_import** entity, which belongs to a organization. Its requests address one record by `{{repository_import_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `can_manage_connections` | boolean | yes |  |
+  | `github_imports` | array | yes |  |
+  | `github_installations` | array | yes |  |
+  | `gitlab_configured` | boolean | yes |  |
+  | `gitlab_imports` | array | yes |  |
+  | `gitlab_integrations` | array | yes |  |
+  | `gitlab_redirect_uri` | string | yes |  |
+  | `gitlab_self_managed_available` | boolean | yes |  |
+  | `inventory_errors` | array | yes |  |
+  | `organization_id` | string | yes |  |
+  | `repositories` | array | yes |  |
+order: 439000

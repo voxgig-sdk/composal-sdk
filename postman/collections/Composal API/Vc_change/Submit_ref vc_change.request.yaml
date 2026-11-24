@@ -1,0 +1,32 @@
+$kind: http-request
+id: "2d58d9db-aac0-5c60-8fb9-2e3866295aac"
+description: |-
+  The `submit_ref` action of **vc_change**, a route of its `create` operation.
+
+  SDK: `client.VcChange().create({ "organization_id": "organization_id", "repo_id": "repo_id", $action: "submit_ref" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/submit_ref"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_change belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_change belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "head": "example",
+      "base": "example",
+      "expected_head_commit_id": "example",
+      "expected_base_commit_id": "example",
+      "expected_review_head_commit_id": "example",
+      "expected_review_patchset_number": 1,
+      "title": "example",
+      "description": "example"
+    }
+order: 17000

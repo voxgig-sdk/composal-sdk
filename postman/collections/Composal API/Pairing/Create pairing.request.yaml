@@ -1,0 +1,25 @@
+$kind: http-request
+id: "8d44c109-7b36-5bc4-9108-2ea098ef599e"
+description: |-
+  The `create` operation of **pairing**.
+
+  SDK: `client.Pairing().create({  })`
+url: "{{base}}/api/v1/relay/pairings"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("pairing_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

@@ -1,0 +1,28 @@
+$kind: http-request
+id: "779bccf8-f4d2-57f3-b26a-10c67e9eb16a"
+description: |-
+  The `update` operation of **job_step**.
+
+  SDK: `client.JobStep().update({ id: "example", job_id: "example", pipeline_id: "example", run_id: "example" })`
+url: "{{base}}/api/v1/ci/pipelines/:pipeline_id/runs/:run_id/jobs/:job_id/steps/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: pipeline_id
+    value: "{{pipeline_id}}"
+    description: "Input: pipeline_id."
+  - key: run_id
+    value: "{{run_id}}"
+    description: "Input: run_id."
+  - key: job_id
+    value: "{{job_id}}"
+    description: "Input: job_id."
+  - key: id
+    value: "{{job_step_id}}"
+    description: The job_step this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 3000

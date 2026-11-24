@@ -1,0 +1,9 @@
+$kind: collection
+id: "1878b818-2e31-55ff-b7b3-045fa045eb3d"
+description: |-
+  The **change_transcript_summary** entity, which belongs to a organization. Its requests address one record by `{{change_transcript_summary_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `summaries` | object | yes |  |
+order: 169000

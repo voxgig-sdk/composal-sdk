@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "gitlab_import": {
+      "GITLAB_IMPORT00": {
+        "integration_id": "INTEGRATION01",
+        "project_id": "PROJECT01",
+        "repo_slug": "s2a",
+        "source_branch": "s2b",
+        "organization_id": "ORGANIZATION01",
+        "id": "GITLAB_IMPORT00"
+      },
+      "GITLAB_IMPORT01": {
+        "integration_id": "INTEGRATION01",
+        "project_id": "PROJECT01",
+        "repo_slug": "s52",
+        "source_branch": "s53",
+        "organization_id": "ORGANIZATION01",
+        "id": "GITLAB_IMPORT01"
+      },
+      "GITLAB_IMPORT02": {
+        "integration_id": "INTEGRATION01",
+        "project_id": "PROJECT01",
+        "repo_slug": "s7a",
+        "source_branch": "s7b",
+        "organization_id": "ORGANIZATION01",
+        "id": "GITLAB_IMPORT02"
+      }
+    }
+  },
+  "new": {
+    "gitlab_import": {
+      "gitlab_import_ref01": {
+        "integration_id": "INTEGRATION01",
+        "project_id": "PROJECT01",
+        "repo_slug": "sa2",
+        "source_branch": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/gitlab/imports": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

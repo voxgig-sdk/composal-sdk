@@ -1,0 +1,14 @@
+$kind: collection
+id: d6ca33d9-7ab8-5c89-b707-395fdf3d1bbe
+description: |-
+  The **local_agent_response** entity, which belongs to a organization. Its requests address one record by `{{local_agent_response_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `input` | array | yes |  |
+  | `model` | string | yes |  |
+  | `service_tier` | string |  |  |
+  | `store` | boolean | yes |  |
+  | `stream` | boolean | yes |  |
+  | `tools` | array |  |  |
+order: 305000

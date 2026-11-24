@@ -1,0 +1,30 @@
+$kind: http-request
+id: "043f6b3a-45ac-5155-8f3a-297787361e62"
+description: |-
+  The `patch` operation of **repo_agent_session**.
+
+  SDK: `client.RepoAgentSession().patch({ id: "example", organization_id: "example", repo_id: "example", agent_session: {} })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/agent_sessions/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_agent_session belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_agent_session belongs to.
+  - key: id
+    value: "{{repo_agent_session_id}}"
+    description: The repo_agent_session this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "agent_session": {
+        "title": "example"
+      }
+    }
+order: 5000

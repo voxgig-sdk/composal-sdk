@@ -1,0 +1,28 @@
+$kind: http-request
+id: "8eadd399-a377-5b54-8c52-af67e9a1b98f"
+description: |-
+  The `remove` operation of **repo_access_token**.
+
+  SDK: `client.RepoAccessToken().remove({ id: "example_id", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/access_tokens/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_access_token belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_access_token belongs to.
+  - key: id
+    value: "{{repo_access_token_id}}"
+    description: The repo_access_token this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("repo_access_token_id")
+      }
+    language: text/javascript
+order: 3000

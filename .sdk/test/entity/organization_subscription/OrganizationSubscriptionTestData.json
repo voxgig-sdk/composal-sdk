@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "organization_subscription": {
+      "ORGANIZATION_SUBSCRIPTION00": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_SUBSCRIPTION00"
+      },
+      "ORGANIZATION_SUBSCRIPTION01": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_SUBSCRIPTION01"
+      },
+      "ORGANIZATION_SUBSCRIPTION02": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_SUBSCRIPTION02"
+      }
+    }
+  },
+  "new": {
+    "organization_subscription": {
+      "organization_subscription_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/spark/organizations/{organization_id}/subscriptions/selection": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

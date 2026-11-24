@@ -1,0 +1,8 @@
+$kind: collection
+id: "40f0fa45-c62a-51dd-af7f-1bb8bce6bd76"
+description: |-
+  The **agreement_access_request** entity, which belongs to a organization. Its requests address one record by `{{agreement_access_request_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 77000

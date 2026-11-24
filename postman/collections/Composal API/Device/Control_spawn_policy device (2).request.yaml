@@ -1,0 +1,29 @@
+$kind: http-request
+id: "62279712-2e9b-5c95-8b42-1e4287be9a25"
+description: |-
+  The `control_spawn_policy` action of **device**, a route of its `create` operation.
+
+  SDK: `client.Device().create({ "organization_id": "organization_id", "id": "ID", $action: "control_spawn_policy" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/control_spawn_policy"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "max_agents": 1,
+      "repositories": [
+        "example"
+      ],
+      "version": 1
+    }
+order: 7000

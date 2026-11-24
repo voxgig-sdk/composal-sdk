@@ -1,0 +1,99 @@
+# BasicObservabilitySpaceFlow
+
+main: kit: flow: BasicObservabilitySpaceFlow:
+{
+  entity: "observability_space",
+  kind: "basic",
+  name: "BasicObservabilitySpaceFlow",
+  step: [
+    {
+      i: {
+        ref: "observability_space_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "observability_space_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "observability_space_ref01",
+        srcdatavar: "observability_space_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-observability_space_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "observability_space_ref01",
+        srcdatavar: "observability_space_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "observability_space01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-observability_space_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "observability_space_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "observability_space01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "observability_space_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicObservabilitySpaceFlow"
+}

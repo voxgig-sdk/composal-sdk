@@ -1,0 +1,88 @@
+{
+  "existing": {
+    "audit_event": {
+      "AUDIT_EVENT00": {
+        "action": "sa0",
+        "actor_kind": "sa1",
+        "actor_user_id": "ACTOR_USER01",
+        "created_at": "sa3",
+        "created_at_label": "sa4",
+        "id": "AUDIT_EVENT00",
+        "observability_space_id": "OBSERVABILITY_SPACE01",
+        "organization_id": "ORGANIZATION01",
+        "payload": "sa8",
+        "request_id": "REQUEST01",
+        "severity": "saa",
+        "subject_id": "SUBJECT01",
+        "subject_kind": "sac",
+        "subject_name": "sad",
+        "updated_at": "sae",
+        "updated_at_label": "saf"
+      },
+      "AUDIT_EVENT01": {
+        "action": "s140",
+        "actor_kind": "s141",
+        "actor_user_id": "ACTOR_USER01",
+        "created_at": "s143",
+        "created_at_label": "s144",
+        "id": "AUDIT_EVENT01",
+        "observability_space_id": "OBSERVABILITY_SPACE01",
+        "organization_id": "ORGANIZATION01",
+        "payload": "s148",
+        "request_id": "REQUEST01",
+        "severity": "s14a",
+        "subject_id": "SUBJECT01",
+        "subject_kind": "s14c",
+        "subject_name": "s14d",
+        "updated_at": "s14e",
+        "updated_at_label": "s14f"
+      },
+      "AUDIT_EVENT02": {
+        "action": "s1e0",
+        "actor_kind": "s1e1",
+        "actor_user_id": "ACTOR_USER01",
+        "created_at": "s1e3",
+        "created_at_label": "s1e4",
+        "id": "AUDIT_EVENT02",
+        "observability_space_id": "OBSERVABILITY_SPACE01",
+        "organization_id": "ORGANIZATION01",
+        "payload": "s1e8",
+        "request_id": "REQUEST01",
+        "severity": "s1ea",
+        "subject_id": "SUBJECT01",
+        "subject_kind": "s1ec",
+        "subject_name": "s1ed",
+        "updated_at": "s1ee",
+        "updated_at_label": "s1ef"
+      }
+    }
+  },
+  "new": {
+    "audit_event": {
+      "audit_event_ref01": {
+        "action": "s280",
+        "actor_kind": "s281",
+        "actor_user_id": "ACTOR_USER01",
+        "created_at": "s283",
+        "created_at_label": "s284",
+        "observability_space_id": "OBSERVABILITY_SPACE01",
+        "organization_id": "ORGANIZATION01",
+        "payload": "s288",
+        "request_id": "REQUEST01",
+        "severity": "s28a",
+        "subject_id": "SUBJECT01",
+        "subject_kind": "s28c",
+        "subject_name": "s28d",
+        "updated_at": "s28e",
+        "updated_at_label": "s28f"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/audit_events": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

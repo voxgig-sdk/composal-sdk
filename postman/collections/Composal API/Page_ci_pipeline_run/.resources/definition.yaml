@@ -1,0 +1,11 @@
+$kind: collection
+id: d8e6d9fd-2d61-58f3-9fbd-eab98ea9377a
+description: |-
+  The **page_ci_pipeline_run** entity. Its requests address one record by `{{page_ci_pipeline_run_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `error` | string | yes |  |
+  | `id` | string |  |  |
+  | `jobs` | array | yes |  |
+order: 363000

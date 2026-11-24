@@ -1,0 +1,59 @@
+$kind: http-request
+id: "19ae73a4-cc21-5969-9673-dbf8e4c3a200"
+description: |-
+  The `load` operation of **bazel_blob**.
+
+  SDK: `client.BazelBlob().load({ blob_id: "example", hash: "example", id: "example_id" })`
+url: "{{base}}/api/v1/bazel/blobs/:kind/:hash/:size_bytes"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: kind
+    value: "{{bazel_blob_blob_id}}"
+    description: The bazel_blob this request addresses.
+  - key: hash
+    value: "{{bazel_blob_hash}}"
+    description: The bazel_blob this request addresses.
+  - key: size_bytes
+    value: "{{bazel_blob_id}}"
+    description: The bazel_blob this request addresses.
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","bazel_blob_blob_id","bazel_blob_hash","bazel_blob_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("2. Load bazel_blob: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      if ("Mark01-bazel_blob_ref01" === pm.variables.get("bazel_blob_ref01_marked")) pm.test("2. Load bazel_blob: the update reads back", () => {
+        pm.expect(JSON.stringify(body)).to.include("Mark01-bazel_blob_ref01")
+      })
+      pm.test("2. Load bazel_blob: the record is the one asked for", () => {
+        pm.expect(String(at(body, "blob_id")) + "/" + String(at(body, "hash")) + "/" + String(at(body, "id"))).to.eql(String(pm.variables.get("bazel_blob_blob_id")) + "/" + String(pm.variables.get("bazel_blob_hash")) + "/" + String(pm.variables.get("bazel_blob_id")))
+      })
+    language: text/javascript
+order: 2000

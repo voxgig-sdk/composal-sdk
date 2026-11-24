@@ -1,0 +1,4 @@
+$kind: collection
+id: "1bddedff-7de5-5c07-abf7-f9332995c418"
+description: "The `BasicArtifactCacheNamespaceFlow` flow of **artifact_cache_namespace**."
+order: 86000

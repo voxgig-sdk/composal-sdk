@@ -1,0 +1,64 @@
+# BasicRunJobFlow
+
+main: kit: flow: BasicRunJobFlow:
+{
+  entity: "run_job",
+  kind: "basic",
+  name: "BasicRunJobFlow",
+  step: [
+    {
+      i: {
+        ref: "run_job_ref01"
+      }
+
+      m: {
+        pipeline_id: "pipeline01",
+        run_id: "run01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        pipeline_id: "pipeline01",
+        run_id: "run01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "run_job_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "run_job_ref01",
+        srcdatavar: "run_job_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "run_job01",
+        pipeline_id: "pipeline01",
+        run_id: "run01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-run_job_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRunJobFlow"
+}

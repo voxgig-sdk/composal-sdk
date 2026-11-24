@@ -1,0 +1,112 @@
+# Entity: gitlab_import
+
+main: kit: entity: gitlab_import: {
+
+  alias: field: {}
+
+  fields: {
+    integration_id: {
+      h: "Integration Id"
+      n: "integration_id"
+      r: true
+      t: "`$STRING`"
+    }
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
+      r: true
+      t: "`$INTEGER`"
+    }
+    repo_slug: {
+      h: "Repo Slug"
+      n: "repo_slug"
+      r: false
+      t: "`$STRING`"
+    }
+    source_branch: {
+      h: "Source Branch"
+      n: "source_branch"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "gitlab_import"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "integration_id"
+            "project_id"
+            "repo_slug"
+            "source_branch"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{org_slug}/gitlab/imports"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{org_slug}/gitlab/imports"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "gitlab"
+            }
+            {
+              lit: "imports"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

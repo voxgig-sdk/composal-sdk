@@ -858,6 +858,14 @@
 
 {
   point: "warning"
+  note: "Create on entity=agent_app has no route of its own, only the action opened, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_app"
+  op: "create"
+}
+
+
+{
+  point: "warning"
   note: "Create on entity=agent_avatar has no route of its own, only the action generate, retry, so a create must name it with $action. Set the route's op in the guide if it is not a create."
   entity: "agent_avatar"
   op: "create"
@@ -930,8 +938,24 @@
 
 {
   point: "warning"
+  note: "Create on entity=agent_roder has no route of its own, only the action browser_executor_authorization, session, workspace_authorization, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_roder"
+  op: "create"
+}
+
+
+{
+  point: "warning"
   note: "Create on entity=agent_runtime has no route of its own, only the action reset, so a create must name it with $action. Set the route's op in the guide if it is not a create."
   entity: "agent_runtime"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=agent_site has no route of its own, only the action opened, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_site"
   op: "create"
 }
 
@@ -986,8 +1010,88 @@
 
 {
   point: "warning"
+  note: "Create on entity=auth has no route of its own, only the action apple, github, google, login, logout, register, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "auth"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=auth_cli has no route of its own, only the action complete, exchange, install, start, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "auth_cli"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=bazel has no route of its own, only the action authorize, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "bazel"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=change_landing_hold has no route of its own, only the action release, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "change_landing_hold"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=ci_node has no route of its own, only the action cordon, drain, enroll, heartbeat, uncordon, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "ci_node"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=com_site_access has no route of its own, only the action redeem, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "com_site_access"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=device has no route of its own, only the action connection, control_delivery_policy, control_spawn_policy, desktop_connection, process_surface, project_visibility, reconnect, rename, retry_control, revoke, user_browser_access, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "device"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=device_browser_operation has no route of its own, only the action claim, finish, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "device_browser_operation"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=device_invocation has no route of its own, only the action challenge, lease, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "device_invocation"
+  op: "create"
+}
+
+
+{
+  point: "warning"
   note: "Create on entity=dream has no route of its own, only the action resume, so a create must name it with $action. Set the route's op in the guide if it is not a create."
   entity: "dream"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=email_verification has no route of its own, only the action resend, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "email_verification"
   op: "create"
 }
 
@@ -1010,6 +1114,86 @@
 
 {
   point: "warning"
+  note: "Create on entity=github_app has no route of its own, only the action webhook, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "github_app"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=github_app_installation has no route of its own, only the action check_connection, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "github_app_installation"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=github_onboarding_import_item has no route of its own, only the action retry, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "github_onboarding_import_item"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=github_pull_request has no route of its own, only the action refresh, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "github_pull_request"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=gitlab has no route of its own, only the action authorize, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "gitlab"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=gitlab_connection has no route of its own, only the action control, retry, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "gitlab_connection"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=invocation_control has no route of its own, only the action challenge, lease, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "invocation_control"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=lease_cache has no route of its own, only the action restore, save, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "lease_cache"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=lease_reconciliation has no route of its own, only the action output, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "lease_reconciliation"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=mcp_oauth has no route of its own, only the action consent, register, revoke, token, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "mcp_oauth"
+  op: "create"
+}
+
+
+{
+  point: "warning"
   note: "Create on entity=me has no route of its own, only the action account_deletion, app_promotion, so a create must name it with $action. Set the route's op in the guide if it is not a create."
   entity: "me"
   op: "create"
@@ -1026,8 +1210,80 @@
 
 {
   point: "warning"
+  note: "Create on entity=node_certificate has no route of its own, only the action rotate, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "node_certificate"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=node_lease has no route of its own, only the action claim, heartbeat, release, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "node_lease"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=org_invitation has no route of its own, only the action accept, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "org_invitation"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=organization_control has no route of its own, only the action admission, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "organization_control"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=organization_device has no route of its own, only the action control, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "organization_device"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=organization_sandbox has no route of its own, only the action automation_cleanup, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "organization_sandbox"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=organization_subscription has no route of its own, only the action selection, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "organization_subscription"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=otel_ingest has no route of its own, only the action authorize, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "otel_ingest"
+  op: "create"
+}
+
+
+{
+  point: "warning"
   note: "Create on entity=page_agent has no route of its own, only the action activity, so a create must name it with $action. Set the route's op in the guide if it is not a create."
   entity: "page_agent"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=parallel_v1 has no route of its own, only the action extract, search, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "parallel_v1"
   op: "create"
 }
 
@@ -1050,6 +1306,14 @@
 
 {
   point: "warning"
+  note: "Create on entity=pull_request_magic_merge has no route of its own, only the action merge, rebase, resolve, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "pull_request_magic_merge"
+  op: "create"
+}
+
+
+{
+  point: "warning"
   note: "Create on entity=registry_v2 has no route of its own, only the action authorize, so a create must name it with $action. Set the route's op in the guide if it is not a create."
   entity: "registry_v2"
   op: "create"
@@ -1058,8 +1322,104 @@
 
 {
   point: "warning"
+  note: "Create on entity=repo_stat has no route of its own, only the action refresh, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "repo_stat"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=repo_vc has no route of its own, only the action commit_file, merge, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "repo_vc"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=repository_access has no route of its own, only the action authorize, authorize_git, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "repository_access"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=repository_event has no route of its own, only the action walgit, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "repository_event"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=repository_sandbox_environment has no route of its own, only the action validate, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "repository_sandbox_environment"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=roder_run has no route of its own, only the action swarm_activity, swarm_stack, swarm_transcript, workspace_authorization, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "roder_run"
+  op: "create"
+}
+
+
+{
+  point: "warning"
   note: "Create on entity=scenario_run_scenario_edit has no route of its own, only the action run, suggest, validate, so a create must name it with $action. Set the route's op in the guide if it is not a create."
   entity: "scenario_run_scenario_edit"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=setting_mutation_lease has no route of its own, only the action clear, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "setting_mutation_lease"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=source_connection has no route of its own, only the action refresh, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "source_connection"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=thread_preview_access has no route of its own, only the action redeem, upstream, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "thread_preview_access"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=transcript has no route of its own, only the action search, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "transcript"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=vc_change has no route of its own, only the action abandon, accept, fold, github_projection, ready, retry_ci, submit, submit_ref, sync, transcript_chat, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "vc_change"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=vc_merge_queue has no route of its own, only the action pause, resume, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "vc_merge_queue"
   op: "create"
 }
 
@@ -1085,4 +1445,56 @@
   note: "Create on entity=workflow_trigger_skipped has no route of its own, only the action run, so a create must name it with $action. Set the route's op in the guide if it is not a create."
   entity: "workflow_trigger_skipped"
   op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Points PATCH /api/v1/organizations/{organization_id}/billing/budget and PUT /api/v1/organizations/{organization_id}/billing/budget on entity=billing op=update have the same selector (exist: organization_id; $action: budget), so only PATCH /api/v1/organizations/{organization_id}/billing/budget is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "billing"
+  op: "update"
+  points: [
+    "PATCH /api/v1/organizations/{organization_id}/billing/budget"
+    "PUT /api/v1/organizations/{organization_id}/billing/budget"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points PATCH /api/v1/organizations/{organization_id}/billing/contact and PUT /api/v1/organizations/{organization_id}/billing/contact on entity=billing op=update have the same selector (exist: organization_id; $action: contact), so only PATCH /api/v1/organizations/{organization_id}/billing/contact is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "billing"
+  op: "update"
+  points: [
+    "PATCH /api/v1/organizations/{organization_id}/billing/contact"
+    "PUT /api/v1/organizations/{organization_id}/billing/contact"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points PATCH /api/v1/organizations/{organization_id}/billing/extra_spend and PUT /api/v1/organizations/{organization_id}/billing/extra_spend on entity=billing op=update have the same selector (exist: organization_id; $action: extra_spend), so only PATCH /api/v1/organizations/{organization_id}/billing/extra_spend is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "billing"
+  op: "update"
+  points: [
+    "PATCH /api/v1/organizations/{organization_id}/billing/extra_spend"
+    "PUT /api/v1/organizations/{organization_id}/billing/extra_spend"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points PATCH /api/v1/organizations/{organization_id}/billing/subscription and PUT /api/v1/organizations/{organization_id}/billing/subscription on entity=billing op=update have the same selector (exist: organization_id; $action: subscription), so only PATCH /api/v1/organizations/{organization_id}/billing/subscription is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "billing"
+  op: "update"
+  points: [
+    "PATCH /api/v1/organizations/{organization_id}/billing/subscription"
+    "PUT /api/v1/organizations/{organization_id}/billing/subscription"
+  ]
+
 }

@@ -1,0 +1,100 @@
+# Entity: spark_credit_usage_total
+
+main: kit: entity: spark_credit_usage_total: {
+
+  alias: field: {}
+
+  fields: {
+    compute_minutes_used: {
+      h: "Compute Minutes Used"
+      n: "compute_minutes_used"
+      r: true
+      t: "`$STRING`"
+    }
+    compute_usd: {
+      h: "Compute Usd"
+      n: "compute_usd"
+      r: true
+      t: "`$STRING`"
+    }
+    inference_usd: {
+      h: "Inference Usd"
+      n: "inference_usd"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "spark_credit_usage_total"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/spark_credits/usage_totals"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/spark_credits/usage_totals"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "spark_credits"
+            }
+            {
+              lit: "usage_totals"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

@@ -1,0 +1,19 @@
+$kind: http-request
+id: a7ddf06d-9eda-56a2-8415-eeeb6a20b164
+description: |-
+  The `selection` action of **organization_subscription**, a route of its `create` operation.
+
+  SDK: `client.OrganizationSubscription().create({ "organization_id": "organization_id", $action: "selection" })`
+url: "{{base}}/api/v1/spark/organizations/:organization_id/subscriptions/selection"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_subscription belongs to.
+body:
+  type: json
+  content: "{}"
+order: 1000

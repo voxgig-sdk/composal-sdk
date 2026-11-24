@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "organization_app": {
+      "ORGANIZATION_APP00": {
+        "id": "ORGANIZATION_APP00",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ORGANIZATION_APP01": {
+        "id": "ORGANIZATION_APP01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ORGANIZATION_APP02": {
+        "id": "ORGANIZATION_APP02",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "organization_app": {
+      "organization_app_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/spark/organizations/{organization_id}/apps": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/spark/organizations/{organization_id}/apps/{name}/install": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/spark/organizations/{organization_id}/apps/{name}/install": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

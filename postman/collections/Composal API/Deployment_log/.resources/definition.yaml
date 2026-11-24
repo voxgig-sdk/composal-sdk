@@ -1,0 +1,19 @@
+$kind: collection
+id: c6e1d54a-d576-55ee-bd32-ab90af218a15
+description: |-
+  The **deployment_log** entity, which belongs to a organization. Its requests address one record by `{{deployment_log_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `allocation_id` | string | yes |  |
+  | `app_environment_id` | string | yes |  |
+  | `app_release_id` | string | yes |  |
+  | `app_service_id` | string | yes |  |
+  | `details` | any | yes |  |
+  | `environment_name` | string | yes |  |
+  | `release_version` | string | yes |  |
+  | `service_name` | string | yes |  |
+  | `status` | string | yes |  |
+  | `task` | string | yes |  |
+  | `unreachable_reason` | string | yes |  |
+order: 205000

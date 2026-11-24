@@ -1,0 +1,19 @@
+$kind: http-request
+id: ebb1a080-c30e-54ed-926f-e48271e76d0b
+description: |-
+  The `archive` action of **observability_clickhouse_cluster**, a route of its `create` operation.
+
+  SDK: `client.ObservabilityClickhouseCluster().create({ "id": "ID", $action: "archive" })`
+url: "{{base}}/api/v1/observability/clickhouse_clusters/:id/archive"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{observability_clickhouse_cluster_id}}"
+    description: The observability_clickhouse_cluster this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 7000

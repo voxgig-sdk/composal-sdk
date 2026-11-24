@@ -1,0 +1,84 @@
+# BasicGithubCiRepositoryFlow
+
+main: kit: flow: BasicGithubCiRepositoryFlow:
+{
+  entity: "github_ci_repository",
+  kind: "basic",
+  name: "BasicGithubCiRepositoryFlow",
+  step: [
+    {
+      i: {
+        ref: "github_ci_repository_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "github_ci_repository_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "github_ci_repository_ref01",
+        srcdatavar: "github_ci_repository_ref01_data",
+        suffix: "_up0",
+        textfield: "adoption_mode"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-github_ci_repository_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "github_ci_repository_ref01",
+        srcdatavar: "github_ci_repository_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "github_ci_repository01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-github_ci_repository_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGithubCiRepositoryFlow"
+}

@@ -1,0 +1,19 @@
+$kind: http-request
+id: e726ce80-3184-5891-bbae-5febabf5b7af
+description: |-
+  The `checkout_session` action of **admin_org**, a route of its `create` operation.
+
+  SDK: `client.AdminOrg().create({ "id": "ID", $action: "checkout_session" })`
+url: "{{base}}/api/v1/admin/organizations/:org_slug/checkout_session"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{admin_org_id}}"
+    description: The admin_org this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

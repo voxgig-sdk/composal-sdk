@@ -1,0 +1,111 @@
+{
+  "existing": {
+    "agent_integration_account": {
+      "AGENT_INTEGRATION_ACCOUNT00": {
+        "can_cancel_sign_in": true,
+        "can_delete": false,
+        "can_disconnect": true,
+        "can_enable": false,
+        "can_manage_sharing": true,
+        "can_reconnect": false,
+        "can_sync": true,
+        "connected_by": "sd9",
+        "connected_by_you": true,
+        "creation_key_digest": "sdb",
+        "generation": 220,
+        "id": "AGENT_INTEGRATION_ACCOUNT00",
+        "name": "sde",
+        "provider_disabled_reason": "sdf",
+        "provider_identity": {},
+        "reference": "se1",
+        "sharing_status": "se2",
+        "status": "se3",
+        "team_sharing_enabled": true,
+        "team_sharing_version": 229,
+        "toolkit": "se6",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_INTEGRATION_ACCOUNT01": {
+        "can_cancel_sign_in": true,
+        "can_delete": false,
+        "can_disconnect": true,
+        "can_enable": false,
+        "can_manage_sharing": true,
+        "can_reconnect": false,
+        "can_sync": true,
+        "connected_by": "s1ab",
+        "connected_by_you": true,
+        "creation_key_digest": "s1ad",
+        "generation": 430,
+        "id": "AGENT_INTEGRATION_ACCOUNT01",
+        "name": "s1b0",
+        "provider_disabled_reason": "s1b1",
+        "provider_identity": {},
+        "reference": "s1b3",
+        "sharing_status": "s1b4",
+        "status": "s1b5",
+        "team_sharing_enabled": true,
+        "team_sharing_version": 439,
+        "toolkit": "s1b8",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_INTEGRATION_ACCOUNT02": {
+        "can_cancel_sign_in": true,
+        "can_delete": false,
+        "can_disconnect": true,
+        "can_enable": false,
+        "can_manage_sharing": true,
+        "can_reconnect": false,
+        "can_sync": true,
+        "connected_by": "s27d",
+        "connected_by_you": true,
+        "creation_key_digest": "s27f",
+        "generation": 640,
+        "id": "AGENT_INTEGRATION_ACCOUNT02",
+        "name": "s282",
+        "provider_disabled_reason": "s283",
+        "provider_identity": {},
+        "reference": "s285",
+        "sharing_status": "s286",
+        "status": "s287",
+        "team_sharing_enabled": true,
+        "team_sharing_version": 649,
+        "toolkit": "s28a",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_integration_account": {
+      "agent_integration_account_ref01": {
+        "can_cancel_sign_in": true,
+        "can_delete": false,
+        "can_disconnect": true,
+        "can_enable": false,
+        "can_manage_sharing": true,
+        "can_reconnect": false,
+        "can_sync": true,
+        "connected_by": "s34f",
+        "connected_by_you": true,
+        "creation_key_digest": "s351",
+        "generation": 850,
+        "name": "s354",
+        "provider_disabled_reason": "s355",
+        "provider_identity": {},
+        "reference": "s357",
+        "sharing_status": "s358",
+        "status": "s359",
+        "team_sharing_enabled": true,
+        "team_sharing_version": 859,
+        "toolkit": "s35c"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agent_integrations/accounts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

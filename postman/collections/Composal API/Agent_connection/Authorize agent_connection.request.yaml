@@ -1,0 +1,26 @@
+$kind: http-request
+id: b1b96655-69f5-5ca7-87db-11797886f018
+description: |-
+  The `authorize` action of **agent_connection**, a route of its `create` operation.
+
+  SDK: `client.AgentConnection().create({ "organization_id": "organization_id", "id": "ID", $action: "authorize" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_connections/:id/authorize"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_connection belongs to.
+  - key: id
+    value: "{{agent_connection_id}}"
+    description: The agent_connection this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "callback": "app",
+      "enable_for_agent": "example"
+    }
+order: 7000

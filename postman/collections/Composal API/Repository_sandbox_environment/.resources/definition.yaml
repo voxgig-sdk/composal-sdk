@@ -1,0 +1,9 @@
+$kind: collection
+id: ebceccbf-ca71-5e64-b4ea-062a505cfff6
+description: |-
+  The **repository_sandbox_environment** entity. Its requests address one record by `{{repository_sandbox_environment_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 443000

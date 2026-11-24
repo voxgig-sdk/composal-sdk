@@ -1,0 +1,23 @@
+# BasicChangeGitBranchSubmissionFlow
+
+main: kit: flow: BasicChangeGitBranchSubmissionFlow:
+{
+  entity: "change_git_branch_submission",
+  kind: "basic",
+  name: "BasicChangeGitBranchSubmissionFlow",
+  step: [
+    {
+      i: {
+        ref: "change_git_branch_submission_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicChangeGitBranchSubmissionFlow"
+}

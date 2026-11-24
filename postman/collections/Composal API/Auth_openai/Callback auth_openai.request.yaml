@@ -1,0 +1,20 @@
+$kind: http-request
+id: "44bf664d-71a9-5a5f-bfd4-d389d35bfa54"
+description: |-
+  The `callback` action of **auth_openai**, a route of its `load` operation.
+
+  SDK: `client.AuthOpenai().load({ "state": "ID", $action: "callback" })`
+url: "{{base}}/api/v1/auth/openai/callback?state={{auth_openai_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: code
+    value: ""
+    disabled: true
+  - key: error
+    value: ""
+    disabled: true
+  - key: state
+    value: "{{auth_openai_id}}"
+order: 1000

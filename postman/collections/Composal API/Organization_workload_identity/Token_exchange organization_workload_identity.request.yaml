@@ -1,0 +1,19 @@
+$kind: http-request
+id: "09415b9a-85c0-5462-9963-02338a2d0c9a"
+description: |-
+  The `token_exchange` action of **organization_workload_identity**, a route of its `create` operation.
+
+  SDK: `client.OrganizationWorkloadIdentity().create({ "organization_id": "organization_id", $action: "token_exchange" })`
+url: "{{base}}/api/v1/identity/organizations/:organization_id/workload_identities/token_exchange"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_workload_identity belongs to.
+body:
+  type: json
+  content: "{}"
+order: 11000

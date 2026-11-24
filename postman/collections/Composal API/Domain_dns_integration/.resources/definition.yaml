@@ -1,0 +1,19 @@
+$kind: collection
+id: b9644337-14e3-517e-ae44-8aeacd75ea00
+description: |-
+  The **domain_dns_integration** entity, which belongs to a organization. Its requests address one record by `{{domain_dns_integration_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `account_label` | string | yes |  |
+  | `api_token` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `failure_message` | string | yes |  |
+  | `has_token` | boolean | yes |  |
+  | `id` | string | yes |  |
+  | `last_verified_at` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `provider` | string | yes |  |
+  | `status` | string | yes |  |
+  | `updated_at` | string | yes |  |
+order: 226000

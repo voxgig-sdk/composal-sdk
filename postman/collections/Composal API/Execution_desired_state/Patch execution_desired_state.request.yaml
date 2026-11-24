@@ -1,0 +1,19 @@
+$kind: http-request
+id: "24afdbdd-ff16-53b6-b9df-a7af958ad4f1"
+description: |-
+  The `patch` operation of **execution_desired_state**.
+
+  SDK: `client.ExecutionDesiredState().patch({ id: "example" })`
+url: "{{base}}/api/v1/execution/desired_states/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{execution_desired_state_id}}"
+    description: The execution_desired_state this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

@@ -1,0 +1,25 @@
+$kind: http-request
+id: "104deb71-963c-5362-b850-4e9c54bfeffb"
+description: |-
+  The `update` operation of **lease_step**.
+
+  SDK: `client.LeaseStep().update({ id: "example", lease_id: "example", node_id: "example" })`
+url: "{{base}}/api/v1/ci/nodes/:id/leases/:lease_id/steps/:ci_step_id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{node_id}}"
+    description: The node this lease_step belongs to.
+  - key: lease_id
+    value: "{{lease_id}}"
+    description: "Input: lease_id."
+  - key: ci_step_id
+    value: "{{lease_step_id}}"
+    description: The lease_step this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 1000

@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "github_onboarding_import_batch": {
+      "GITHUB_ONBOARDING_IMPORT_BATCH00": {
+        "account_login": "s78",
+        "complete": false,
+        "created_at": "s7a",
+        "failed_item_count": 123,
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "id": "GITHUB_ONBOARDING_IMPORT_BATCH00",
+        "imported_item_count": 126,
+        "item_count": 127,
+        "items": [],
+        "status": "s81",
+        "terminal_item_count": 130,
+        "updated_at": "s83",
+        "organization_id": "ORGANIZATION01"
+      },
+      "GITHUB_ONBOARDING_IMPORT_BATCH01": {
+        "account_login": "sf0",
+        "complete": false,
+        "created_at": "sf2",
+        "failed_item_count": 243,
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "id": "GITHUB_ONBOARDING_IMPORT_BATCH01",
+        "imported_item_count": 246,
+        "item_count": 247,
+        "items": [],
+        "status": "sf9",
+        "terminal_item_count": 250,
+        "updated_at": "sfb",
+        "organization_id": "ORGANIZATION01"
+      },
+      "GITHUB_ONBOARDING_IMPORT_BATCH02": {
+        "account_login": "s168",
+        "complete": false,
+        "created_at": "s16a",
+        "failed_item_count": 363,
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "id": "GITHUB_ONBOARDING_IMPORT_BATCH02",
+        "imported_item_count": 366,
+        "item_count": 367,
+        "items": [],
+        "status": "s171",
+        "terminal_item_count": 370,
+        "updated_at": "s173",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "github_onboarding_import_batch": {
+      "github_onboarding_import_batch_ref01": {
+        "account_login": "s1e0",
+        "complete": false,
+        "created_at": "s1e2",
+        "failed_item_count": 483,
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "imported_item_count": 486,
+        "item_count": 487,
+        "items": [],
+        "status": "s1e9",
+        "terminal_item_count": 490,
+        "updated_at": "s1eb"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/github_onboarding/import_batches/{github_import_batch_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

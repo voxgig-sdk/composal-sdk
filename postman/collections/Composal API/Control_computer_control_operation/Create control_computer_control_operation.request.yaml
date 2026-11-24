@@ -1,0 +1,39 @@
+$kind: http-request
+id: c7cca164-8555-5e08-a305-e5ecb22429b0
+description: |-
+  The `create` operation of **control_computer_control_operation**.
+
+  SDK: `client.ControlComputerControlOperation().create({ control_computer_id: "example", organization_id: "example", action: "example", arguments: {}, key: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/control_computers/:computer/control_operations"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this control_computer_control_operation belongs to.
+  - key: computer
+    value: "{{control_computer_id}}"
+    description: The control_computer this control_computer_control_operation belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "key": "example",
+      "action": "agents.list",
+      "arguments": {
+        "result_delivery": "notify"
+      }
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body?.["operation"]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("control_computer_control_operation_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

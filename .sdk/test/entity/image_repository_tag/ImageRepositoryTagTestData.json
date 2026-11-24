@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "image_repository_tag": {
+      "IMAGE_REPOSITORY_TAG00": {
+        "image_repository": {},
+        "name": "s29",
+        "registry_url": "s2a",
+        "tags": [],
+        "image_repository_id": "IMAGE_REPOSITORY01"
+      },
+      "IMAGE_REPOSITORY_TAG01": {
+        "image_repository": {},
+        "name": "s51",
+        "registry_url": "s52",
+        "tags": [],
+        "image_repository_id": "IMAGE_REPOSITORY01"
+      },
+      "IMAGE_REPOSITORY_TAG02": {
+        "image_repository": {},
+        "name": "s79",
+        "registry_url": "s7a",
+        "tags": [],
+        "image_repository_id": "IMAGE_REPOSITORY01"
+      }
+    }
+  },
+  "new": {
+    "image_repository_tag": {
+      "image_repository_tag_ref01": {
+        "image_repository": {},
+        "name": "sa1",
+        "registry_url": "sa2",
+        "tags": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/artifacts/image_repositories/{id}/tags": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

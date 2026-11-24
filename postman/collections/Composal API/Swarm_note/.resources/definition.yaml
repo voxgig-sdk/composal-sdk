@@ -1,0 +1,10 @@
+$kind: collection
+id: "98511db6-face-5e7d-89b3-f4bf6bc621d3"
+description: |-
+  The **swarm_note** entity. Its requests address one record by `{{swarm_note_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `task_id` | string |  |  |
+  | `text` | string | yes |  |
+order: 515000

@@ -1,0 +1,4 @@
+$kind: collection
+id: aa994aff-d4b0-53a6-9779-a8f8eef0f42b
+description: "The `BasicArtifactRetentionPolicyFlow` flow of **artifact_retention_policy**."
+order: 89000

@@ -2,71 +2,105 @@
   "existing": {
     "agent_skill": {
       "AGENT_SKILL00": {
-        "available": true,
-        "can_configure": false,
-        "can_manage": true,
-        "configuration_state": "s5d",
-        "description": "s5e",
-        "enabled": false,
-        "name": "s60",
+        "agents": [],
+        "audience": {},
+        "can_manage_library": true,
+        "content": "s85",
+        "files": [],
+        "id": "AGENT_SKILL00",
+        "marketplace": "s88",
+        "pending": false,
+        "plugin": "s8a",
+        "revision": "s8b",
+        "skill": {},
         "skills": [],
-        "version": "s62",
-        "agent_id": "AGENT01",
-        "organization_id": "ORGANIZATION01",
-        "id": "AGENT_SKILL00"
+        "source": "s8e",
+        "organization_id": "ORGANIZATION01"
       },
       "AGENT_SKILL01": {
-        "available": true,
-        "can_configure": false,
-        "can_manage": true,
-        "configuration_state": "sb7",
-        "description": "sb8",
-        "enabled": false,
-        "name": "sba",
+        "agents": [],
+        "audience": {},
+        "can_manage_library": true,
+        "content": "s107",
+        "files": [],
+        "id": "AGENT_SKILL01",
+        "marketplace": "s10a",
+        "pending": false,
+        "plugin": "s10c",
+        "revision": "s10d",
+        "skill": {},
         "skills": [],
-        "version": "sbc",
-        "agent_id": "AGENT01",
-        "organization_id": "ORGANIZATION01",
-        "id": "AGENT_SKILL01"
+        "source": "s110",
+        "organization_id": "ORGANIZATION01"
       },
       "AGENT_SKILL02": {
-        "available": true,
-        "can_configure": false,
-        "can_manage": true,
-        "configuration_state": "s111",
-        "description": "s112",
-        "enabled": false,
-        "name": "s114",
+        "agents": [],
+        "audience": {},
+        "can_manage_library": true,
+        "content": "s189",
+        "files": [],
+        "id": "AGENT_SKILL02",
+        "marketplace": "s18c",
+        "pending": false,
+        "plugin": "s18e",
+        "revision": "s18f",
+        "skill": {},
         "skills": [],
-        "version": "s116",
-        "agent_id": "AGENT01",
-        "organization_id": "ORGANIZATION01",
-        "id": "AGENT_SKILL02"
+        "source": "s192",
+        "organization_id": "ORGANIZATION01"
       }
     }
   },
   "new": {
     "agent_skill": {
       "agent_skill_ref01": {
-        "available": true,
-        "can_configure": false,
-        "can_manage": true,
-        "configuration_state": "s16b",
-        "description": "s16c",
-        "enabled": false,
-        "name": "s16e",
+        "agents": [],
+        "audience": {},
+        "can_manage_library": true,
+        "content": "s20b",
+        "files": [],
+        "marketplace": "s20e",
+        "pending": false,
+        "plugin": "s210",
+        "revision": "s211",
+        "skill": {},
         "skills": [],
-        "version": "s170"
+        "source": "s214"
       }
     }
   },
   "requests": {
-    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/skills": {
+    "POST /api/v1/organizations/{organization_id}/agent_skills": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/skills": {
+    "POST /api/v1/organizations/{organization_id}/agent_skills/preview": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agent_skills": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agent_skills/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agent_skills/marketplace": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/agent_skills/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/agent_skills/{id}/audience": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

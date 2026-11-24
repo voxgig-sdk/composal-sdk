@@ -1,0 +1,187 @@
+{
+  "existing": {
+    "execution_runtime_instance": {
+      "EXECUTION_RUNTIME_INSTANCE00": {
+        "adapter_kind": "s140",
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_release_id": "APP_RELEASE01",
+        "app_service_id": "APP_SERVICE01",
+        "booted_at": "s144",
+        "booted_at_label": "s145",
+        "created_at": "s146",
+        "created_at_label": "s147",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "EXECUTION_RUNTIME_INSTANCE00",
+        "instance_key": "s14a",
+        "last_reconciled_at": "s14b",
+        "last_reconciled_at_label": "s14c",
+        "last_seen_at": "s14d",
+        "last_seen_at_label": "s14e",
+        "location": "s14f",
+        "location_id": "LOCATION01",
+        "network_peer_id": "NETWORK_PEER01",
+        "nomad_allocation_id": "NOMAD_ALLOCATION01",
+        "nomad_task_name": "s153",
+        "organization_id": "ORGANIZATION01",
+        "private_ipv4": "s155",
+        "private_ipv6": "s156",
+        "provider_instance_id": "PROVIDER_INSTANCE01",
+        "public_endpoint": "s158",
+        "service_name": "s159",
+        "slug": "s15a",
+        "status": "s15b",
+        "terminated_at": "s15c",
+        "terminated_at_label": "s15d",
+        "updated_at": "s15e",
+        "updated_at_label": "s15f"
+      },
+      "EXECUTION_RUNTIME_INSTANCE01": {
+        "adapter_kind": "s280",
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_release_id": "APP_RELEASE01",
+        "app_service_id": "APP_SERVICE01",
+        "booted_at": "s284",
+        "booted_at_label": "s285",
+        "created_at": "s286",
+        "created_at_label": "s287",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "EXECUTION_RUNTIME_INSTANCE01",
+        "instance_key": "s28a",
+        "last_reconciled_at": "s28b",
+        "last_reconciled_at_label": "s28c",
+        "last_seen_at": "s28d",
+        "last_seen_at_label": "s28e",
+        "location": "s28f",
+        "location_id": "LOCATION01",
+        "network_peer_id": "NETWORK_PEER01",
+        "nomad_allocation_id": "NOMAD_ALLOCATION01",
+        "nomad_task_name": "s293",
+        "organization_id": "ORGANIZATION01",
+        "private_ipv4": "s295",
+        "private_ipv6": "s296",
+        "provider_instance_id": "PROVIDER_INSTANCE01",
+        "public_endpoint": "s298",
+        "service_name": "s299",
+        "slug": "s29a",
+        "status": "s29b",
+        "terminated_at": "s29c",
+        "terminated_at_label": "s29d",
+        "updated_at": "s29e",
+        "updated_at_label": "s29f"
+      },
+      "EXECUTION_RUNTIME_INSTANCE02": {
+        "adapter_kind": "s3c0",
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_release_id": "APP_RELEASE01",
+        "app_service_id": "APP_SERVICE01",
+        "booted_at": "s3c4",
+        "booted_at_label": "s3c5",
+        "created_at": "s3c6",
+        "created_at_label": "s3c7",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "EXECUTION_RUNTIME_INSTANCE02",
+        "instance_key": "s3ca",
+        "last_reconciled_at": "s3cb",
+        "last_reconciled_at_label": "s3cc",
+        "last_seen_at": "s3cd",
+        "last_seen_at_label": "s3ce",
+        "location": "s3cf",
+        "location_id": "LOCATION01",
+        "network_peer_id": "NETWORK_PEER01",
+        "nomad_allocation_id": "NOMAD_ALLOCATION01",
+        "nomad_task_name": "s3d3",
+        "organization_id": "ORGANIZATION01",
+        "private_ipv4": "s3d5",
+        "private_ipv6": "s3d6",
+        "provider_instance_id": "PROVIDER_INSTANCE01",
+        "public_endpoint": "s3d8",
+        "service_name": "s3d9",
+        "slug": "s3da",
+        "status": "s3db",
+        "terminated_at": "s3dc",
+        "terminated_at_label": "s3dd",
+        "updated_at": "s3de",
+        "updated_at_label": "s3df"
+      }
+    }
+  },
+  "new": {
+    "execution_runtime_instance": {
+      "execution_runtime_instance_ref01": {
+        "adapter_kind": "s500",
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_release_id": "APP_RELEASE01",
+        "app_service_id": "APP_SERVICE01",
+        "booted_at": "s504",
+        "booted_at_label": "s505",
+        "created_at": "s506",
+        "created_at_label": "s507",
+        "hosted_app_id": "HOSTED_APP01",
+        "instance_key": "s50a",
+        "last_reconciled_at": "s50b",
+        "last_reconciled_at_label": "s50c",
+        "last_seen_at": "s50d",
+        "last_seen_at_label": "s50e",
+        "location": "s50f",
+        "location_id": "LOCATION01",
+        "network_peer_id": "NETWORK_PEER01",
+        "nomad_allocation_id": "NOMAD_ALLOCATION01",
+        "nomad_task_name": "s513",
+        "organization_id": "ORGANIZATION01",
+        "private_ipv4": "s515",
+        "private_ipv6": "s516",
+        "provider_instance_id": "PROVIDER_INSTANCE01",
+        "public_endpoint": "s518",
+        "service_name": "s519",
+        "slug": "s51a",
+        "status": "s51b",
+        "terminated_at": "s51c",
+        "terminated_at_label": "s51d",
+        "updated_at": "s51e",
+        "updated_at_label": "s51f"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/execution/runtime_instances/{id}/refresh": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/execution/runtime_instances/{id}/terminate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/execution/runtime_instances": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/execution/runtime_instances": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/execution/runtime_instances/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/execution/runtime_instances/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/execution/runtime_instances/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/execution/runtime_instances/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

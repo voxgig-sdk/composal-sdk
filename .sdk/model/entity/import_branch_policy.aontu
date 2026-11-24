@@ -1,0 +1,225 @@
+# Entity: import_branch_policy
+
+main: kit: entity: import_branch_policy: {
+
+  alias: field: {}
+
+  fields: {
+    can_manage_pr_scenario_writing: {
+      h: "Can Manage Pr Scenario Writing"
+      n: "can_manage_pr_scenario_writing"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_manage_sandbox_region: {
+      h: "Can Manage Sandbox Region"
+      n: "can_manage_sandbox_region"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    dedicated_outbound_ip_addresses: {
+      h: "Dedicated Outbound Ip Addresses"
+      n: "dedicated_outbound_ip_addresses"
+      r: true
+      sh: "Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled."
+      t: "`$ARRAY`"
+    }
+    default_trunk_bookmark: {
+      h: "Default Trunk Bookmark"
+      n: "default_trunk_bookmark"
+      r: true
+      t: "`$STRING`"
+    }
+    organization: {
+      h: "Organization"
+      n: "organization"
+      r: true
+      t: "`$OBJECT`"
+    }
+    sandbox_regions: {
+      h: "Sandbox Regions"
+      n: "sandbox_regions"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "import_branch_policy"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/import_branch_policy"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/import_branch_policy"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "import_branch_policy"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          bf: [
+            "default_trunk_bookmark"
+          ]
+          co: {
+            id: "PATCH /api/v1/organizations/{organization_id}/import_branch_policy"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v1/organizations/{organization_id}/import_branch_policy"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "import_branch_policy"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "PUT /api/v1/organizations/{organization_id}/import_branch_policy"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/organizations/{organization_id}/import_branch_policy"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "import_branch_policy"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

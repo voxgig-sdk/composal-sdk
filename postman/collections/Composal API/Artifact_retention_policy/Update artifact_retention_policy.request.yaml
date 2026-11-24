@@ -1,0 +1,19 @@
+$kind: http-request
+id: "6eada29b-c833-5bfe-9f84-d271fcb14f3d"
+description: |-
+  The `update` operation of **artifact_retention_policy**.
+
+  SDK: `client.ArtifactRetentionPolicy().update({ id: "example" })`
+url: "{{base}}/api/v1/artifacts/retention_policies/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_retention_policy_id}}"
+    description: The artifact_retention_policy this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "workspace_space_preference": {
+      "WORKSPACE_SPACE_PREFERENCE00": {
+        "preferences": [],
+        "spaces": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "WORKSPACE_SPACE_PREFERENCE00"
+      },
+      "WORKSPACE_SPACE_PREFERENCE01": {
+        "preferences": [],
+        "spaces": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "WORKSPACE_SPACE_PREFERENCE01"
+      },
+      "WORKSPACE_SPACE_PREFERENCE02": {
+        "preferences": [],
+        "spaces": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "WORKSPACE_SPACE_PREFERENCE02"
+      }
+    }
+  },
+  "new": {
+    "workspace_space_preference": {
+      "workspace_space_preference_ref01": {
+        "preferences": [],
+        "spaces": []
+      }
+    }
+  },
+  "requests": {
+    "PATCH /api/v1/organizations/{organization_id}/workspace_spaces/preferences": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

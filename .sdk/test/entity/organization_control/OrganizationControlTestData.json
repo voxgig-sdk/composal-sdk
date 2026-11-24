@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "organization_control": {
+      "ORGANIZATION_CONTROL00": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_CONTROL00"
+      },
+      "ORGANIZATION_CONTROL01": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_CONTROL01"
+      },
+      "ORGANIZATION_CONTROL02": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_CONTROL02"
+      }
+    }
+  },
+  "new": {
+    "organization_control": {
+      "organization_control_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/spark/organizations/{organization_id}/control/admission": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+# BasicVerifyEmailVerificationFlow
+
+main: kit: flow: BasicVerifyEmailVerificationFlow:
+{
+  entity: "verify_email_verification",
+  kind: "basic",
+  name: "BasicVerifyEmailVerificationFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "verify_email_verification_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyEmailVerificationFlow"
+}

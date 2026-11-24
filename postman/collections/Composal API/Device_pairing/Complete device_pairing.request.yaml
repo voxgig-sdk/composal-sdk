@@ -1,0 +1,26 @@
+$kind: http-request
+id: b459636f-65f3-5a25-9e4a-d9c0cd421801
+description: |-
+  The `complete` action of **device_pairing**, a route of its `create` operation.
+
+  SDK: `client.DevicePairing().create({ "organization_id": "organization_id", "id": "ID", $action: "complete" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/pairings/:device_pairing_intent_id/complete"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device_pairing belongs to.
+  - key: device_pairing_intent_id
+    value: "{{device_pairing_id}}"
+    description: The device_pairing this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "token": "example",
+      "signature": "example"
+    }
+order: 2000

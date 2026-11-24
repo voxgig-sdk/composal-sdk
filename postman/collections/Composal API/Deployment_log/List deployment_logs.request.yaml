@@ -1,0 +1,44 @@
+$kind: http-request
+id: "619576ec-d875-569a-b64f-116053c1f67f"
+description: |-
+  The `list` operation of **deployment_log**.
+
+  SDK: `client.DeploymentLog().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/pages/deployments/logs"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: app
+    value: ""
+    disabled: true
+  - key: environment
+    value: ""
+    disabled: true
+  - key: limit
+    value: "800"
+    disabled: true
+  - key: log_location
+    value: ""
+    disabled: true
+  - key: log_service
+    value: ""
+    disabled: true
+  - key: service
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this deployment_log belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["allocations"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("deployment_log_id")) pm.collectionVariables.set("deployment_log_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

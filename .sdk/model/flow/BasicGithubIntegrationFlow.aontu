@@ -1,0 +1,49 @@
+# BasicGithubIntegrationFlow
+
+main: kit: flow: BasicGithubIntegrationFlow:
+{
+  entity: "github_integration",
+  kind: "basic",
+  name: "BasicGithubIntegrationFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "github_integration_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "github_integration_ref01",
+        srcdatavar: "github_integration_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "github_integration01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-github_integration_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGithubIntegrationFlow"
+}

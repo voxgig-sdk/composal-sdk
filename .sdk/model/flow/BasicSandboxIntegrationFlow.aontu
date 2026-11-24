@@ -1,0 +1,61 @@
+# BasicSandboxIntegrationFlow
+
+main: kit: flow: BasicSandboxIntegrationFlow:
+{
+  entity: "sandbox_integration",
+  kind: "basic",
+  name: "BasicSandboxIntegrationFlow",
+  step: [
+    {
+      i: {
+        ref: "sandbox_integration_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "sandbox_integration_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "sandbox_integration_ref01",
+        srcdatavar: "sandbox_integration_ref01_data",
+        suffix: "_up0",
+        textfield: "name"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-sandbox_integration_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSandboxIntegrationFlow"
+}

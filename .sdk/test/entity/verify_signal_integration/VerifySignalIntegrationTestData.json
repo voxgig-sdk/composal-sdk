@@ -1,0 +1,100 @@
+{
+  "existing": {
+    "verify_signal_integration": {
+      "VERIFY_SIGNAL_INTEGRATION00": {
+        "api_token_stored": true,
+        "config": {},
+        "created_at": "sc0",
+        "failure_message": "sc1",
+        "id": "VERIFY_SIGNAL_INTEGRATION00",
+        "inbound_path": "sc3",
+        "inbound_url": "sc4",
+        "last_received_at": "sc5",
+        "last_verified_at": "sc6",
+        "mode": "sc7",
+        "name": "sc8",
+        "organization_id": "ORGANIZATION01",
+        "provider": "sca",
+        "rejected_signature_count": 203,
+        "status": "scc",
+        "target_count": 205,
+        "unmapped_delivery_count": 206,
+        "updated_at": "scf",
+        "webhook_secret_stored": true
+      },
+      "VERIFY_SIGNAL_INTEGRATION01": {
+        "api_token_stored": true,
+        "config": {},
+        "created_at": "s17e",
+        "failure_message": "s17f",
+        "id": "VERIFY_SIGNAL_INTEGRATION01",
+        "inbound_path": "s181",
+        "inbound_url": "s182",
+        "last_received_at": "s183",
+        "last_verified_at": "s184",
+        "mode": "s185",
+        "name": "s186",
+        "organization_id": "ORGANIZATION01",
+        "provider": "s188",
+        "rejected_signature_count": 393,
+        "status": "s18a",
+        "target_count": 395,
+        "unmapped_delivery_count": 396,
+        "updated_at": "s18d",
+        "webhook_secret_stored": true
+      },
+      "VERIFY_SIGNAL_INTEGRATION02": {
+        "api_token_stored": true,
+        "config": {},
+        "created_at": "s23c",
+        "failure_message": "s23d",
+        "id": "VERIFY_SIGNAL_INTEGRATION02",
+        "inbound_path": "s23f",
+        "inbound_url": "s240",
+        "last_received_at": "s241",
+        "last_verified_at": "s242",
+        "mode": "s243",
+        "name": "s244",
+        "organization_id": "ORGANIZATION01",
+        "provider": "s246",
+        "rejected_signature_count": 583,
+        "status": "s248",
+        "target_count": 585,
+        "unmapped_delivery_count": 586,
+        "updated_at": "s24b",
+        "webhook_secret_stored": true
+      }
+    }
+  },
+  "new": {
+    "verify_signal_integration": {
+      "verify_signal_integration_ref01": {
+        "api_token_stored": true,
+        "config": {},
+        "created_at": "s2fa",
+        "failure_message": "s2fb",
+        "inbound_path": "s2fd",
+        "inbound_url": "s2fe",
+        "last_received_at": "s2ff",
+        "last_verified_at": "s300",
+        "mode": "s301",
+        "name": "s302",
+        "organization_id": "ORGANIZATION01",
+        "provider": "s304",
+        "rejected_signature_count": 773,
+        "status": "s306",
+        "target_count": 775,
+        "unmapped_delivery_count": 776,
+        "updated_at": "s309",
+        "webhook_secret_stored": true
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/signal_integrations/{id}/verify": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

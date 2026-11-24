@@ -1,0 +1,146 @@
+# Entity: agent_usage
+
+main: kit: entity: agent_usage: {
+
+  alias: field: {}
+
+  fields: {
+    days: {
+      h: "Days"
+      n: "days"
+      r: true
+      sh: "One cell per (day, model), ascending by day then model."
+      t: "`$ARRAY`"
+    }
+    ended_at: {
+      h: "Ended At"
+      n: "ended_at"
+      r: true
+      t: "`$STRING`"
+    }
+    pricing_version: {
+      h: "Pricing Version"
+      n: "pricing_version"
+      r: true
+      sh: "The price table in effect now; rows carry the version they were priced at."
+      t: "`$STRING`"
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: true
+      sh: "Which store served the rows."
+      t: "`$STRING`"
+    }
+    started_at: {
+      h: "Started At"
+      n: "started_at"
+      r: true
+      t: "`$STRING`"
+    }
+    user_days: {
+      h: "User Days"
+      n: "user_days"
+      r: true
+      sh: "One cell per (day, person), ascending by day."
+      t: "`$ARRAY`"
+    }
+    users: {
+      h: "Users"
+      n: "users"
+      r: true
+      sh: "One row per (person, model), descending by tokens."
+      t: "`$ARRAY`"
+    }
+    window: {
+      h: "Window"
+      n: "window"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "agent_usage"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/pages/agent_usage"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "window"
+                or: "window"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/pages/agent_usage"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "pages"
+            }
+            {
+              lit: "agent_usage"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

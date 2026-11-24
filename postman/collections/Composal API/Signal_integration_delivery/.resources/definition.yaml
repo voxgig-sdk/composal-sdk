@@ -1,0 +1,21 @@
+$kind: collection
+id: "436fb13b-50be-5b90-a260-957b70ec7260"
+description: |-
+  The **signal_integration_delivery** entity, which belongs to a organization and a signal_integration. Its requests address one record by `{{signal_integration_delivery_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `attempt_count` | integer | yes |  |
+  | `created_at` | string |  |  |
+  | `delivery_id` | string | yes |  |
+  | `event_kind` | string |  |  |
+  | `id` | string | yes |  |
+  | `last_error` | string |  |  |
+  | `ops_signal_id` | string |  |  |
+  | `organization_id` | string | yes |  |
+  | `processed_at` | string |  |  |
+  | `provider` | string | yes |  |
+  | `received_at` | string |  |  |
+  | `signal_integration_id` | string | yes |  |
+  | `state` | string | yes |  |
+order: 472000

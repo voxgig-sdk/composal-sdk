@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "metronome_webhook": {
+      "METRONOME_WEBHOOK00": {
+        "id": "METRONOME_WEBHOOK00"
+      },
+      "METRONOME_WEBHOOK01": {
+        "id": "METRONOME_WEBHOOK01"
+      },
+      "METRONOME_WEBHOOK02": {
+        "id": "METRONOME_WEBHOOK02"
+      }
+    }
+  },
+  "new": {
+    "metronome_webhook": {
+      "metronome_webhook_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/metronome/webhooks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

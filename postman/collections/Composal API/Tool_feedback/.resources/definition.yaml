@@ -1,0 +1,18 @@
+$kind: collection
+id: "1bbbfac4-c983-5c58-a99a-1ac66834b132"
+description: |-
+  The **tool_feedback** entity, which belongs to a organization. Its requests address one record by `{{tool_feedback_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `category` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `details` | string | yes |  |
+  | `feedback` | object | yes |  |
+  | `id` | string | yes |  |
+  | `metadata` | object | yes |  |
+  | `organization_id` | string | yes |  |
+  | `source` | string | yes |  |
+  | `summary` | string | yes |  |
+  | `user_id` | string | yes |  |
+order: 520000

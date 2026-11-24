@@ -1,0 +1,248 @@
+# Entity: verify_signal_integration
+
+main: kit: entity: verify_signal_integration: {
+
+  alias: field: {}
+
+  fields: {
+    api_token_stored: {
+      h: "Api Token Stored"
+      n: "api_token_stored"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    config: {
+      h: "Config"
+      n: "config"
+      r: true
+      t: "`$OBJECT`"
+    }
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    failure_message: {
+      h: "Failure Message"
+      n: "failure_message"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Public id (`sint_…`)."
+      t: "`$STRING`"
+    }
+    inbound_path: {
+      h: "Inbound Path"
+      n: "inbound_path"
+      r: true
+      t: "`$STRING`"
+    }
+    inbound_url: {
+      h: "Inbound Url"
+      n: "inbound_url"
+      r: true
+      sh: "The absolute URL to paste into the provider's webhook configuration."
+      t: "`$STRING`"
+    }
+    last_received_at: {
+      h: "Last Received At"
+      n: "last_received_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    last_verified_at: {
+      h: "Last Verified At"
+      n: "last_verified_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    mode: {
+      h: "Mode"
+      n: "mode"
+      r: true
+      sh: "`connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    organization_id: {
+      h: "Organization Id"
+      n: "organization_id"
+      r: true
+      t: "`$STRING`"
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: true
+      t: "`$STRING`"
+    }
+    rejected_signature_count: {
+      h: "Rejected Signature Count"
+      n: "rejected_signature_count"
+      r: true
+      sh: "Deliveries rejected for a bad or missing signature."
+      t: "`$INTEGER`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    target_count: {
+      h: "Target Count"
+      n: "target_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    unmapped_delivery_count: {
+      h: "Unmapped Delivery Count"
+      n: "unmapped_delivery_count"
+      r: true
+      sh: "Deliveries accepted whose provider resource matched no enabled target."
+      t: "`$INTEGER`"
+    }
+    updated_at: {
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    webhook_secret_stored: {
+      h: "Webhook Secret Stored"
+      n: "webhook_secret_stored"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "verify_signal_integration"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/signal_integrations/{id}/verify"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/signal_integrations/{id}/verify"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "signal_integrations"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "verify"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.signal_integration`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

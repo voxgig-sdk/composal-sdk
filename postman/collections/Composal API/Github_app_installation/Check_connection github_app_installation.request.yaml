@@ -1,0 +1,18 @@
+$kind: http-request
+id: "75ebe98b-35d3-5f93-8ee8-ef643ffc1aa7"
+description: |-
+  The `check_connection` action of **github_app_installation**, a route of its `create` operation.
+
+  SDK: `client.GithubAppInstallation().create({ "organization_id": "organization_id", "id": "ID", $action: "check_connection" })`
+url: "{{base}}/api/v1/organizations/:organization_id/github_app/installations/:id/check_connection"
+method: POST
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this github_app_installation belongs to.
+  - key: id
+    value: "{{github_app_installation_id}}"
+    description: The github_app_installation this request addresses.
+order: 2000

@@ -1,0 +1,60 @@
+$kind: collection
+id: "7eeb892d-3d37-55bf-89fc-215ba9318df3"
+description: |-
+  The **change_label** entity, which belongs to a organization and a repo and a change. Its requests address one record by `{{change_label_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `accepted` | boolean |  |  |
+  | `add` | array |  |  |
+  | `approval` | object | yes |  |
+  | `assets` | array |  |  |
+  | `author` | any |  |  |
+  | `capabilities` | object | yes |  |
+  | `change_key` | string |  |  |
+  | `checks` | array |  |  |
+  | `checks_status` | string |  |  |
+  | `comments` | array |  |  |
+  | `comments_count` | integer |  |  |
+  | `comments_count_label` | string |  |  |
+  | `commit_message` | string |  |  |
+  | `current_patchset` | object | yes |  |
+  | `description` | string |  |  |
+  | `draft` | boolean |  |  |
+  | `folded_into_number` | integer |  |  |
+  | `github_projection_status` | string |  |  |
+  | `github_pull_request` | object | yes |  |
+  | `github_pull_requests` | array |  |  |
+  | `group` | object |  |  |
+  | `has_description` | boolean |  |  |
+  | `id` | string | yes |  |
+  | `jj_change_id` | string |  |  |
+  | `labels` | array |  |  |
+  | `landable` | boolean |  |  |
+  | `landed_by` | object | yes |  |
+  | `number` | integer | yes |  |
+  | `orphaned` | boolean |  |  |
+  | `orphaned_at` | string |  |  |
+  | `orphaned_at_label` | string |  |  |
+  | `orphaned_reason` | string |  |  |
+  | `parent_change_id` | string |  |  |
+  | `parent_change_number` | integer |  |  |
+  | `patchset_number` | integer |  |  |
+  | `patchsets` | array |  |  |
+  | `primary_status` | string |  |  |
+  | `public_id` | string |  |  |
+  | `relation_chain` | array |  |  |
+  | `remove` | array |  |  |
+  | `requested_changes` | boolean |  |  |
+  | `restack_state` | string |  |  |
+  | `reviewer_candidates` | array |  |  |
+  | `reviewers` | array |  |  |
+  | `stable_change_id` | string |  |  |
+  | `stack` | any |  |  |
+  | `status` | string | yes |  |
+  | `target_branch` | string | yes |  |
+  | `title` | string | yes |  |
+  | `unresolved_comments_count_label` | string |  |  |
+  | `url` | string |  |  |
+  | `votes` | array |  |  |
+order: 163000

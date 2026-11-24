@@ -1,0 +1,757 @@
+# Entity: cache_namespace_entry
+
+main: kit: entity: cache_namespace_entry: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "cache_namespace_entry"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/evict"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "cache_namespace_id"
+                or: "cache_namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/evict"
+          q: {
+            "$action": "evict"
+            exist: [
+              "cache_namespace_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              cache_namespace_id: "cache_namespace_id"
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "artifacts"
+            }
+            {
+              lit: "cache_namespaces"
+            }
+            {
+              var: "cache_namespace_id"
+            }
+            {
+              lit: "entries"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "evict"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/issue_contract"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "cache_namespace_id"
+                or: "cache_namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/issue_contract"
+          q: {
+            "$action": "issue_contract"
+            exist: [
+              "cache_namespace_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              cache_namespace_id: "cache_namespace_id"
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "artifacts"
+            }
+            {
+              lit: "cache_namespaces"
+            }
+            {
+              var: "cache_namespace_id"
+            }
+            {
+              lit: "entries"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "issue_contract"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/record_hit"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "cache_namespace_id"
+                or: "cache_namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/record_hit"
+          q: {
+            "$action": "record_hit"
+            exist: [
+              "cache_namespace_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              cache_namespace_id: "cache_namespace_id"
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "artifacts"
+            }
+            {
+              lit: "cache_namespaces"
+            }
+            {
+              var: "cache_namespace_id"
+            }
+            {
+              lit: "entries"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "record_hit"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/record_miss"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "cache_namespace_id"
+                or: "cache_namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/record_miss"
+          q: {
+            "$action": "record_miss"
+            exist: [
+              "cache_namespace_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              cache_namespace_id: "cache_namespace_id"
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "artifacts"
+            }
+            {
+              lit: "cache_namespaces"
+            }
+            {
+              var: "cache_namespace_id"
+            }
+            {
+              lit: "entries"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "record_miss"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "cache_namespace_id"
+                or: "cache_namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries"
+          q: {
+            exist: [
+              "cache_namespace_id"
+            ]
+          }
+          r: {
+            param: {
+              cache_namespace_id: "cache_namespace_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "artifacts"
+            }
+            {
+              lit: "cache_namespaces"
+            }
+            {
+              var: "cache_namespace_id"
+            }
+            {
+              lit: "entries"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "cache_namespace_id"
+                or: "cache_namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries"
+          q: {
+            exist: [
+              "cache_namespace_id"
+            ]
+          }
+          r: {
+            param: {
+              cache_namespace_id: "cache_namespace_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "artifacts"
+            }
+            {
+              lit: "cache_namespaces"
+            }
+            {
+              var: "cache_namespace_id"
+            }
+            {
+              lit: "entries"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "cache_namespace_id"
+                or: "cache_namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}"
+          q: {
+            exist: [
+              "cache_namespace_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              cache_namespace_id: "cache_namespace_id"
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "artifacts"
+            }
+            {
+              lit: "cache_namespaces"
+            }
+            {
+              var: "cache_namespace_id"
+            }
+            {
+              lit: "entries"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "PATCH /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "cache_namespace_id"
+                or: "cache_namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}"
+          q: {
+            exist: [
+              "cache_namespace_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              cache_namespace_id: "cache_namespace_id"
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "artifacts"
+            }
+            {
+              lit: "cache_namespaces"
+            }
+            {
+              var: "cache_namespace_id"
+            }
+            {
+              lit: "entries"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "cache_namespace_id"
+                or: "cache_namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}"
+          q: {
+            exist: [
+              "cache_namespace_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              cache_namespace_id: "cache_namespace_id"
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "artifacts"
+            }
+            {
+              lit: "cache_namespaces"
+            }
+            {
+              var: "cache_namespace_id"
+            }
+            {
+              lit: "entries"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "PUT /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "cache_namespace_id"
+                or: "cache_namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}"
+          q: {
+            exist: [
+              "cache_namespace_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              cache_namespace_id: "cache_namespace_id"
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "artifacts"
+            }
+            {
+              lit: "cache_namespaces"
+            }
+            {
+              var: "cache_namespace_id"
+            }
+            {
+              lit: "entries"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

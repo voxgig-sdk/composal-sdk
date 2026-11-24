@@ -1,0 +1,23 @@
+$kind: collection
+id: "7cb12216-1450-526d-bfbd-ac3f70314739"
+description: |-
+  The **git_import** entity, which belongs to a organization. Its requests address one record by `{{git_import_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `destination_mode` | string | yes |  |
+  | `error` | string |  |  |
+  | `git_default_branch` | string |  |  |
+  | `git_status` | string | yes |  |
+  | `git_url` | string | yes |  |
+  | `id` | string | yes |  |
+  | `idempotency_key` | string | yes |  |
+  | `name` | string |  |  |
+  | `native_status` | string | yes |  |
+  | `organization` | string | yes |  |
+  | `repository_id` | string |  |  |
+  | `root_path` | string | yes |  |
+  | `slug` | string | yes |  |
+  | `source_branch` | string | yes |  |
+  | `target_branch` | string | yes |  |
+order: 249000

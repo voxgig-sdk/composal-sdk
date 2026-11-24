@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "repo_vc_commit": {
+      "REPO_VC_COMMIT00": {
+        "name": "s14",
+        "target_commit_id": "TARGET_COMMIT01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "REPO_VC_COMMIT01": {
+        "name": "s28",
+        "target_commit_id": "TARGET_COMMIT01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "REPO_VC_COMMIT02": {
+        "name": "s3c",
+        "target_commit_id": "TARGET_COMMIT01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "repo_vc_commit": {
+      "repo_vc_commit_ref01": {
+        "name": "s50",
+        "target_commit_id": "TARGET_COMMIT01"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

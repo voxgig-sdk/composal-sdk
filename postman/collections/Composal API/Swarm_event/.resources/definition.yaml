@@ -1,0 +1,18 @@
+$kind: collection
+id: b6fe13cd-0988-5b6c-856b-036a59aa53bc
+description: |-
+  The **swarm_event** entity. Its requests address one record by `{{swarm_event_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `agent_swarm_id` | string | yes |  |
+  | `attempt_id` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `created_at_label` | string | yes |  |
+  | `id` | integer | yes |  |
+  | `kind` | string | yes |  |
+  | `payload` | object | yes |  |
+  | `reason` | string | yes |  |
+  | `scheduler_generation` | integer | yes |  |
+  | `task_id` | string | yes |  |
+order: 513000

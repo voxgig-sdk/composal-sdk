@@ -1,0 +1,30 @@
+$kind: collection
+id: "9095aa48-03f0-50a2-93e5-dcd184b87325"
+description: |-
+  The **device** entity, which belongs to a organization. Its requests address one record by `{{device_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `architecture` | string | yes |  |
+  | `channel` | string | yes |  |
+  | `coding_connection` | object | yes |  |
+  | `connection_checked_at` | string | yes |  |
+  | `connection_status` | string | yes |  |
+  | `control_delivery_policy` | object | yes |  |
+  | `control_spawn_policy` | object | yes |  |
+  | `created_at` | string | yes |  |
+  | `device` | object | yes |  |
+  | `environment` | string | yes |  |
+  | `execution_available` | boolean | yes |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `native_device_id` | string | yes |  |
+  | `paired_at` | string | yes |  |
+  | `pairing_generation` | integer | yes |  |
+  | `platform` | string | yes |  |
+  | `project_visibility` | object | yes |  |
+  | `provider_status` | array |  |  |
+  | `revoked_at` | string | yes |  |
+  | `scheduled_check_ins` | boolean |  |  |
+  | `user_browser_access` | string | yes |  |
+order: 211000

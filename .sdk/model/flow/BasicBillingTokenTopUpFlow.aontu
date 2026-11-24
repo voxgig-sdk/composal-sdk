@@ -1,0 +1,22 @@
+# BasicBillingTokenTopUpFlow
+
+main: kit: flow: BasicBillingTokenTopUpFlow:
+{
+  entity: "billing_token_top_up",
+  kind: "basic",
+  name: "BasicBillingTokenTopUpFlow",
+  step: [
+    {
+      i: {
+        ref: "billing_token_top_up_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicBillingTokenTopUpFlow"
+}

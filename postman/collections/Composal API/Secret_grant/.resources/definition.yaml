@@ -1,0 +1,9 @@
+$kind: collection
+id: b01733b0-8ab3-53d7-8dea-eb26e05b4394
+description: |-
+  The **secret_grant** entity, which belongs to a organization. Its requests address one record by `{{secret_grant_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 464000

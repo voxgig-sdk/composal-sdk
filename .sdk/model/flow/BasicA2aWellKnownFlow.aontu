@@ -1,0 +1,32 @@
+# BasicA2aWellKnownFlow
+
+main: kit: flow: BasicA2aWellKnownFlow:
+{
+  entity: "a2a_well_known",
+  kind: "basic",
+  name: "BasicA2aWellKnownFlow",
+  step: [
+    {
+      i: {
+        ref: "a2a_well_known_ref01",
+        srcdatavar: "a2a_well_known_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "a2a_well_known01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-a2a_well_known_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicA2aWellKnownFlow"
+}

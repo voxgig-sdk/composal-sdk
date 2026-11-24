@@ -38,7 +38,7 @@ func TestAgentSiteEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.AgentSite(nil).List(map[string]any{"agent_id": 1, "organization_id": "x"}, nil)
+		_, err := client.AgentSite(nil).List(map[string]any{"organization_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestAgentSiteEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{"list", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "agent_site." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -62,8 +62,10 @@ func TestAgentSiteEntity(t *testing.T) {
 				return
 			}
 		}
+		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
+			t.Log("LIVE STEP {\"id\":\"agent_site.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agent_sites/{id}/opened\"}")
 		if setup.live {
-			for _, _liveKey := range []string{"agent01", "organization01"} {
+			for _, _liveKey := range []string{"organization01"} {
 				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
 					liveMiss(t, agent_siteEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_AGENT_SITE_ENTID", _liveKey)
 				}
@@ -71,6 +73,17 @@ func TestAgentSiteEntity(t *testing.T) {
 		}
 		client := setup.client
 		_ = client
+		if setup.live {
+			var _liveId any
+			if !setup.syntheticOnly {
+				_liveId = setup.idmap["agent_site01"]
+			}
+			livePace()
+			liveExisting(t, agent_siteEntityLiveStrict, setup.data, "agent_site", "id", _liveId,
+				func() (any, error) {
+					return client.AgentSite(nil).List(map[string]any{"organization_id": setup.idmap["organization01"]}, nil)
+				})
+		}
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		agentSiteRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.agent_site")))
@@ -88,7 +101,6 @@ func TestAgentSiteEntity(t *testing.T) {
 		// LIST
 		agentSiteRef01Ent := client.AgentSite(nil)
 		agentSiteRef01Match := map[string]any{
-			"agent_id": setup.idmap["agent01"],
 			"organization_id": setup.idmap["organization01"],
 		}
 
@@ -99,6 +111,106 @@ func TestAgentSiteEntity(t *testing.T) {
 		_, agentSiteRef01ListOk := agentSiteRef01ListResult.([]any)
 		if !agentSiteRef01ListOk {
 			t.Fatalf("expected list result to be an array, got %T", agentSiteRef01ListResult)
+		}
+
+		if setup.live {
+			livePace()
+		}
+		// LOAD
+		agentSiteRef01MatchDt0 := map[string]any{
+			"id": agentSiteRef01Data["id"],
+		}
+		if v := setup.idmap["organization_id"]; v != nil {
+			agentSiteRef01MatchDt0["organization_id"] = v
+		} else {
+			agentSiteRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
+		}
+		agentSiteRef01DataDt0Loaded, err := agentSiteRef01Ent.Load(agentSiteRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		agentSiteRef01DataDt0LoadResult := core.ToMapAny(entityData(agentSiteRef01DataDt0Loaded))
+		if agentSiteRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if !liveSameId(agentSiteRef01DataDt0LoadResult["id"], agentSiteRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
+		}
+
+		return
+		}
+
+		if setup.live {
+			for _, _liveKey := range []string{"organization01"} {
+				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
+					liveMiss(t, agent_siteEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_AGENT_SITE_ENTID", _liveKey)
+				}
+			}
+		}
+		client := setup.client
+		_ = client
+		if setup.live {
+			var _liveId any
+			if !setup.syntheticOnly {
+				_liveId = setup.idmap["agent_site01"]
+			}
+			livePace()
+			liveExisting(t, agent_siteEntityLiveStrict, setup.data, "agent_site", "id", _liveId,
+				func() (any, error) {
+					return client.AgentSite(nil).List(map[string]any{"organization_id": setup.idmap["organization01"]}, nil)
+				})
+		}
+
+		// Bootstrap entity data from existing test data (no create step in flow).
+		agentSiteRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.agent_site")))
+		var agentSiteRef01Data map[string]any
+		if len(agentSiteRef01DataRaw) > 0 {
+			agentSiteRef01Data = core.ToMapAny(agentSiteRef01DataRaw[0][1])
+		}
+		// Discard guards against Go's unused-var check when the flow's steps
+		// happen not to consume the bootstrap data (e.g. list-only flows).
+		_ = agentSiteRef01Data
+
+		if setup.live {
+			livePace()
+		}
+		// LIST
+		agentSiteRef01Ent := client.AgentSite(nil)
+		agentSiteRef01Match := map[string]any{
+			"organization_id": setup.idmap["organization01"],
+		}
+
+		agentSiteRef01ListResult, err := agentSiteRef01Ent.List(agentSiteRef01Match, nil)
+		if err != nil {
+			t.Fatalf("list failed: %v", err)
+		}
+		_, agentSiteRef01ListOk := agentSiteRef01ListResult.([]any)
+		if !agentSiteRef01ListOk {
+			t.Fatalf("expected list result to be an array, got %T", agentSiteRef01ListResult)
+		}
+
+		if setup.live {
+			livePace()
+		}
+		// LOAD
+		agentSiteRef01MatchDt0 := map[string]any{
+			"id": agentSiteRef01Data["id"],
+		}
+		if v := setup.idmap["organization_id"]; v != nil {
+			agentSiteRef01MatchDt0["organization_id"] = v
+		} else {
+			agentSiteRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
+		}
+		agentSiteRef01DataDt0Loaded, err := agentSiteRef01Ent.Load(agentSiteRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		agentSiteRef01DataDt0LoadResult := core.ToMapAny(entityData(agentSiteRef01DataDt0Loaded))
+		if agentSiteRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if !liveSameId(agentSiteRef01DataDt0LoadResult["id"], agentSiteRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
 		}
 
 	})
@@ -129,7 +241,7 @@ func agent_siteBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"agent_site01", "agent_site02", "agent_site03", "organization01", "organization02", "organization03", "agent01", "agent02", "agent03"},
+		[]any{"agent_site01", "agent_site02", "agent_site03", "organization01", "organization02", "organization03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

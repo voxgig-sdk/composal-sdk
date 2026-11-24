@@ -1,0 +1,10 @@
+$kind: collection
+id: "25c153bb-513b-5947-927b-1f1e7847d9ae"
+description: |-
+  The **pages_github_onboarding** entity, which belongs to a organization. Its requests address one record by `{{pages_github_onboarding_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `onboarding` | object | yes |  |
+  | `organization` | object | yes |  |
+order: 367000

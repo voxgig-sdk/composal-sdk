@@ -7,16 +7,22 @@ main: kit: flow: BasicRepositoryImportFlow:
   name: "BasicRepositoryImportFlow",
   step: [
     {
-      m: {
-        organization_id: "organization01"
+      i: {
+        ref: "repository_import_ref01",
+        srcdatavar: "repository_import_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "repository_import01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "repository_import_ref01"
+            mark: "Mark01-repository_import_ref01"
           }
         }
       ]

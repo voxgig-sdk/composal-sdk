@@ -1,0 +1,12 @@
+$kind: collection
+id: "7d5eb17d-249c-5394-a5cf-304082d8d32b"
+description: |-
+  The **agent_web_preview** entity. Its requests address one record by `{{agent_web_preview_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `description` | string | yes |  |
+  | `icon_url` | string | yes |  |
+  | `image_url` | string | yes |  |
+  | `title` | string | yes |  |
+order: 67000

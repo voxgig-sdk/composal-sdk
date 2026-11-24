@@ -1,0 +1,59 @@
+$kind: http-request
+id: c6e4c7c6-abde-563a-92f1-5e18f4189a25
+description: |-
+  The `load` operation of **log_stream_chunk**.
+
+  SDK: `client.LogStreamChunk().load({ id: "example_id", log_stream_id: "example", space_id: "example" })`
+url: "{{base}}/api/v1/observability/spaces/:space_id/log_streams/:log_stream_id/chunks/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: log_stream_id
+    value: "{{log_stream_id}}"
+    description: "Input: log_stream_id."
+  - key: id
+    value: "{{log_stream_chunk_ref01}}"
+    description: The log_stream_chunk this request addresses.
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","space_id","log_stream_id","log_stream_chunk_ref01"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("3. Load log_stream_chunk: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      if ("Mark01-log_stream_chunk_ref01" === pm.variables.get("log_stream_chunk_ref01_marked")) pm.test("3. Load log_stream_chunk: the update reads back", () => {
+        pm.expect(JSON.stringify(body)).to.include("Mark01-log_stream_chunk_ref01")
+      })
+      pm.test("3. Load log_stream_chunk: the record is the one asked for", () => {
+        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("log_stream_chunk_ref01")))
+      })
+    language: text/javascript
+order: 3000

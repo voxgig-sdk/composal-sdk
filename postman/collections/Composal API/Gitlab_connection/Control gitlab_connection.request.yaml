@@ -1,0 +1,27 @@
+$kind: http-request
+id: "817a61d1-fe7a-56bc-985e-7cbe87ece6db"
+description: |-
+  The `control` action of **gitlab_connection**, a route of its `create` operation.
+
+  SDK: `client.GitlabConnection().create({ "organization_id": "organization_id", "id": "ID", $action: "control" })`
+url: "{{base}}/api/v1/organizations/:org_slug/gitlab/connections/:connection_id/control"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this gitlab_connection belongs to.
+  - key: connection_id
+    value: "{{gitlab_connection_id}}"
+    description: The gitlab_connection this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "action_name": "pause",
+      "integration_id": "{{integration_id}}",
+      "source_branch": "example"
+    }
+order: 1000

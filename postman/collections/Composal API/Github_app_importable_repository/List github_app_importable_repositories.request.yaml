@@ -1,0 +1,28 @@
+$kind: http-request
+id: d0d2d1d4-55b1-5595-82dd-3bf943114924
+description: |-
+  The `list` operation of **github_app_importable_repository**.
+
+  SDK: `client.GithubAppImportableRepository().list()`
+url: "{{base}}/api/v1/github_app/importable_repositories"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: github_app_installation_id
+    value: ""
+    disabled: true
+  - key: page
+    value: "1"
+    disabled: true
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["accounts"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("github_app_importable_repository_id")) pm.collectionVariables.set("github_app_importable_repository_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

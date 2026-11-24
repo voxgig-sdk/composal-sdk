@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "space_log_stream": {
+      "SPACE_LOG_STREAM00": {
+        "space_id": "SPACE01",
+        "id": "SPACE_LOG_STREAM00"
+      },
+      "SPACE_LOG_STREAM01": {
+        "space_id": "SPACE01",
+        "id": "SPACE_LOG_STREAM01"
+      },
+      "SPACE_LOG_STREAM02": {
+        "space_id": "SPACE01",
+        "id": "SPACE_LOG_STREAM02"
+      }
+    }
+  },
+  "new": {
+    "space_log_stream": {
+      "space_log_stream_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/observability/spaces/{space_id}/log_streams": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/spaces/{space_id}/log_streams": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

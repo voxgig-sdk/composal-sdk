@@ -38,4 +38,4 @@ description: |-
   | `totp_secret` | string |  |  |
   | `updated_at` | string | yes |  |
   | `username` | string | yes |  |
-order: 205000
+order: 532000

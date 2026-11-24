@@ -1,0 +1,25 @@
+$kind: http-request
+id: "7fa1ab2f-ca58-5b3a-8dd6-eff26f7c08f5"
+description: |-
+  The `list` operation of **audit_event**.
+
+  SDK: `client.AuditEvent().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/audit_events"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this audit_event belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["audit_events"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("audit_event_id")) pm.collectionVariables.set("audit_event_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

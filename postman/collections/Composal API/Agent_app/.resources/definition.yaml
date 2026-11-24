@@ -1,0 +1,26 @@
+$kind: collection
+id: "23322f53-e072-5d3c-96ea-b98f0219d4a8"
+description: |-
+  The **agent_app** entity, which belongs to a organization. Its requests address one record by `{{agent_app_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `author` | object | yes |  |
+  | `can_message` | boolean | yes |  |
+  | `deployments_count` | integer | yes |  |
+  | `description` | string | yes |  |
+  | `hidden_install_count` | integer | yes |  |
+  | `id` | string | yes |  |
+  | `install_count` | integer | yes |  |
+  | `install_targets` | array | yes |  |
+  | `installed_by` | array | yes |  |
+  | `installed_target_ids` | array | yes |  |
+  | `items` | array | yes |  |
+  | `mcp_url` | string | yes |  |
+  | `next_cursor` | string | yes |  |
+  | `owner` | object | yes |  |
+  | `thread` | any | yes |  |
+  | `title` | string | yes |  |
+  | `url` | string | yes |  |
+  | `visibility` | string | yes |  |
+order: 5000

@@ -1,0 +1,4 @@
+$kind: collection
+id: "949ef8dd-aad9-5d64-9e69-f53a890c78c5"
+description: "The `BasicAdminOrgFlow` flow of **admin_org**."
+order: 1000

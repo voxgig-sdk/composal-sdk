@@ -1,0 +1,19 @@
+$kind: http-request
+id: fd182fb6-445b-5f1d-a511-c4b2f66642c1
+description: |-
+  The `complete` action of **auth_cli**, a route of its `create` operation.
+
+  SDK: `client.AuthCli().create({ $action: "complete" })`
+url: "{{base}}/api/v1/auth/cli/complete"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "login_id": "example",
+      "organization_id": "{{organization_id}}"
+    }
+order: 1000

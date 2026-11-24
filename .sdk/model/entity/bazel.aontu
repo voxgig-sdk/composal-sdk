@@ -1,0 +1,56 @@
+# Entity: bazel
+
+main: kit: entity: bazel: {
+
+  alias: field: {}
+
+  name: "bazel"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/bazel/authorize"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/bazel/authorize"
+          q: {
+            "$action": "authorize"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "bazel"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

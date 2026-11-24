@@ -1,0 +1,28 @@
+$kind: http-request
+id: "3b6c7fb6-0e1b-5762-bb8a-93e0a6a8c05d"
+description: |-
+  The `change` action of **relay_agent_connection**, a route of its `load` operation.
+
+  SDK: `client.RelayAgentConnection().load({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", "change": "change", "expected_generation": "expected_generation", "x_composal_relay_scope": "x_composal_relay_scope", "x_composal_requester_id": "x_composal_requester_id", $action: "change" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/relay/connections/:connection_id/change?change={{change}}&expected_generation={{expected_generation}}"
+method: GET
+headers:
+  Accept: application/json
+  X-Composal-Relay-Scope: "{{x_composal_relay_scope}}"
+  X-Composal-Requester-Id: "{{x_composal_requester_id}}"
+queryParams:
+  - key: change
+    value: "{{change}}"
+  - key: expected_generation
+    value: "{{expected_generation}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this relay_agent_connection belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this relay_agent_connection belongs to.
+  - key: connection_id
+    value: "{{relay_agent_connection_id}}"
+    description: The relay_agent_connection this request addresses.
+order: 5000

@@ -7,8 +7,20 @@ main: kit: flow: BasicAgentSiteFlow:
   name: "BasicAgentSiteFlow",
   step: [
     {
+      i: {
+        ref: "agent_site_ref01"
+      }
+
       m: {
-        agent_id: "agent01",
+        id: "id01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
         organization_id: "organization01"
       }
 
@@ -18,6 +30,29 @@ main: kit: flow: BasicAgentSiteFlow:
           apply: "ItemExists",
           def: {
             ref: "agent_site_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_site_ref01",
+        srcdatavar: "agent_site_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "agent_site01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_site_ref01"
           }
         }
       ]

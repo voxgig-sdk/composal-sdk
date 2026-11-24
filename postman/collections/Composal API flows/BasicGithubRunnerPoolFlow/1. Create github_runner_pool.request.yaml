@@ -1,0 +1,67 @@
+$kind: http-request
+id: "19cbd81c-824f-5c1d-b1b3-bf199aebdf05"
+description: |-
+  The `create` operation of **github_runner_pool**.
+
+  SDK: `client.GithubRunnerPool().create({ organization_id: "example", github_app_installation_id: "example", repository_full_name: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/github_runner_pools"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this github_runner_pool belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "github_app_installation_id": "{{github_app_installation_id}}",
+      "repository_full_name": "example",
+      "label": "composal",
+      "image": "example",
+      "provider": "modal",
+      "enabled": true,
+      "max_concurrency": 1,
+      "timeout_seconds": 1
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","github_app_installation_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("1. Create github_runner_pool: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const made = body?.["github_runner_pool"]
+      pm.test("1. Create github_runner_pool: the record carries its key", () => {
+        pm.expect(made, "record").to.be.an("object")
+        pm.expect(at(made, "id"), "id").to.exist
+      })
+      if (null != made && null != at(made, "id")) pm.variables.set("github_runner_pool_ref01", String(at(made, "id")))
+    language: text/javascript
+order: 1000

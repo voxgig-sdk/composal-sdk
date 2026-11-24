@@ -1,0 +1,26 @@
+# BasicRepositoryImportSessionRepositoryFlow
+
+main: kit: flow: BasicRepositoryImportSessionRepositoryFlow:
+{
+  entity: "repository_import_session_repository",
+  kind: "basic",
+  name: "BasicRepositoryImportSessionRepositoryFlow",
+  step: [
+    {
+      m: {
+        repository_import_session_id: "repository_import_session01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "repository_import_session_repository_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRepositoryImportSessionRepositoryFlow"
+}

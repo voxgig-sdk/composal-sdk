@@ -1,0 +1,19 @@
+$kind: http-request
+id: "222a9493-f6c6-5387-bbc8-ce9463465c94"
+description: |-
+  The `activate` action of **observability_space**, a route of its `create` operation.
+
+  SDK: `client.ObservabilitySpace().create({ "id": "ID", $action: "activate" })`
+url: "{{base}}/api/v1/observability/spaces/:id/activate"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{observability_space_id}}"
+    description: The observability_space this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

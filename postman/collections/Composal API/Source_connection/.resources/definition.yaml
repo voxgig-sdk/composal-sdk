@@ -1,0 +1,9 @@
+$kind: collection
+id: "0ff0fe41-c8a5-50ff-b2e6-e2d1348853bc"
+description: |-
+  The **source_connection** entity. Its requests address one record by `{{source_connection_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 480000

@@ -1,0 +1,40 @@
+# BasicSparkAgentIntegrationFlow
+
+main: kit: flow: BasicSparkAgentIntegrationFlow:
+{
+  entity: "spark_agent_integration",
+  kind: "basic",
+  name: "BasicSparkAgentIntegrationFlow",
+  step: [
+    {
+      i: {
+        ref: "spark_agent_integration_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "spark_agent_integration_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSparkAgentIntegrationFlow"
+}

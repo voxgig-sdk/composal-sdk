@@ -1,0 +1,19 @@
+$kind: http-request
+id: "52697a4e-add7-50c7-8785-859e069f129e"
+description: |-
+  The `load` operation of **agent_usage**.
+
+  SDK: `client.AgentUsage().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/pages/agent_usage"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: window
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this agent_usage belongs to.
+order: 1000

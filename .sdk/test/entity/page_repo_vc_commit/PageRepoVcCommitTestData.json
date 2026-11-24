@@ -1,0 +1,42 @@
+{
+  "existing": {
+    "page_repo_vc_commit": {
+      "PAGE_REPO_VC_COMMIT00": {
+        "commit": "s1e",
+        "diff_path": "s1f",
+        "id": "PAGE_REPO_VC_COMMIT00",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "PAGE_REPO_VC_COMMIT01": {
+        "commit": "s3c",
+        "diff_path": "s3d",
+        "id": "PAGE_REPO_VC_COMMIT01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "PAGE_REPO_VC_COMMIT02": {
+        "commit": "s5a",
+        "diff_path": "s5b",
+        "id": "PAGE_REPO_VC_COMMIT02",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "page_repo_vc_commit": {
+      "page_repo_vc_commit_ref01": {
+        "commit": "s78",
+        "diff_path": "s79"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits/{id}/page": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

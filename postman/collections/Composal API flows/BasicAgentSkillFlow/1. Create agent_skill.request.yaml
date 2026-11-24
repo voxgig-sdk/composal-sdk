@@ -3,8 +3,8 @@ id: "4f57332b-58d3-579f-8558-89533bd837bc"
 description: |-
   The `create` operation of **agent_skill**.
 
-  SDK: `client.AgentSkill().create({ agent_id: "example", organization_id: "example", enabled: true, name: "example", version: "example" })`
-url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/skills"
+  SDK: `client.AgentSkill().create({ organization_id: "example", audience: {}, revision: "example", skills: [] })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_skills"
 method: POST
 headers:
   Accept: application/json
@@ -13,16 +13,24 @@ pathVariables:
   - key: organization_id
     value: "{{organization_id}}"
     description: The organization this agent_skill belongs to.
-  - key: id
-    value: "{{agent_id}}"
-    description: The agent this agent_skill belongs to.
 body:
   type: json
   content: |-
     {
-      "name": "example",
-      "enabled": true,
-      "version": "example"
+      "source": "example",
+      "marketplace": "skills_sh",
+      "plugin": "example",
+      "revision": "example",
+      "skills": [
+        "example"
+      ],
+      "audience": {
+        "mode": "all",
+        "agent_ids": [
+          "example"
+        ],
+        "new_agents": true
+      }
     }
 scripts:
   - type: beforeRequest
@@ -30,7 +38,7 @@ scripts:
       const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
       const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
       const getonly = flag("getonly", false)
-      const missing = ["base","organization_id","agent_id"].filter((name) => !given(name))
+      const missing = ["base","organization_id"].filter((name) => !given(name))
       if (!given("apikey")) missing.unshift("apikey")
       const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
       if (getonly && "GET" !== pm.request.method) {

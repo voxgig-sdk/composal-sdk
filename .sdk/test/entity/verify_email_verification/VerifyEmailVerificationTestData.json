@@ -1,0 +1,21 @@
+{
+  "existing": {
+    "verify_email_verification": {
+      "VERIFY_EMAIL_VERIFICATION00": {},
+      "VERIFY_EMAIL_VERIFICATION01": {},
+      "VERIFY_EMAIL_VERIFICATION02": {}
+    }
+  },
+  "new": {
+    "verify_email_verification": {
+      "verify_email_verification_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/email_verifications/verify": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

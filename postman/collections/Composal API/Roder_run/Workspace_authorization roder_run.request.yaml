@@ -1,0 +1,15 @@
+$kind: http-request
+id: "16152990-5bf9-5ada-b4c8-9eea85de3236"
+description: |-
+  The `workspace_authorization` action of **roder_run**, a route of its `create` operation.
+
+  SDK: `client.RoderRun().create({ $action: "workspace_authorization" })`
+url: "{{base}}/api/v1/agent/roder/run/workspace_authorization"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 4000

@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "space_segment": {
+      "SPACE_SEGMENT00": {
+        "id": "SPACE_SEGMENT00",
+        "space_id": "SPACE01"
+      },
+      "SPACE_SEGMENT01": {
+        "id": "SPACE_SEGMENT01",
+        "space_id": "SPACE01"
+      },
+      "SPACE_SEGMENT02": {
+        "id": "SPACE_SEGMENT02",
+        "space_id": "SPACE01"
+      }
+    }
+  },
+  "new": {
+    "space_segment": {
+      "space_segment_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/networking/spaces/{space_id}/segments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/networking/spaces/{space_id}/segments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/networking/spaces/{space_id}/segments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/networking/spaces/{space_id}/segments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/networking/spaces/{space_id}/segments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/networking/spaces/{space_id}/segments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

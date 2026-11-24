@@ -1,0 +1,9 @@
+$kind: collection
+id: a5bae66a-9960-5790-b5e9-90b24990e618
+description: |-
+  The **gitlab_connection** entity, which belongs to a organization. Its requests address one record by `{{gitlab_connection_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 275000

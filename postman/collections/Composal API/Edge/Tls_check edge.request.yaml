@@ -1,0 +1,11 @@
+$kind: http-request
+id: "752f3832-881a-5f35-8544-143fd324b66b"
+description: |-
+  The `tls_check` action of **edge**, a route of its `load` operation.
+
+  SDK: `client.Edge().load({ $action: "tls_check" })`
+url: "{{base}}/api/v1/edge/tls-check"
+method: GET
+headers:
+  Accept: application/json
+order: 1000

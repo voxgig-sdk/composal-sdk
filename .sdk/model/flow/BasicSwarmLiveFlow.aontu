@@ -1,0 +1,32 @@
+# BasicSwarmLiveFlow
+
+main: kit: flow: BasicSwarmLiveFlow:
+{
+  entity: "swarm_live",
+  kind: "basic",
+  name: "BasicSwarmLiveFlow",
+  step: [
+    {
+      i: {
+        ref: "swarm_live_ref01",
+        srcdatavar: "swarm_live_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "swarm_live01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-swarm_live_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSwarmLiveFlow"
+}

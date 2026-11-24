@@ -1,0 +1,4 @@
+$kind: collection
+id: f824c729-c8bf-5878-95d8-00803f4c29cb
+description: "The `BasicSpaceDnsRecordFlow` flow of **space_dns_record**."
+order: 393000

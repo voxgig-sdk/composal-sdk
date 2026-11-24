@@ -1,0 +1,8 @@
+$kind: collection
+id: "9bc3ce57-e758-558a-88f6-51f1176fcd53"
+description: |-
+  The **run_workspace_credential** entity. Its requests address one record by `{{run_workspace_credential_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 455000

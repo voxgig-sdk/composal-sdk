@@ -1,0 +1,11 @@
+$kind: collection
+id: "9003709f-e97e-53e2-b609-be0372541db9"
+description: |-
+  The **github_app_installation_authorization** entity. Its requests address one record by `{{github_app_installation_authorization_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `installation_url` | string | yes |  |
+  | `organization_slug` | string | yes |  |
+  | `return_target` | string | yes |  |
+order: 254000

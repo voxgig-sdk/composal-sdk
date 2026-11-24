@@ -1,0 +1,41 @@
+$kind: collection
+id: "5cf94565-4eec-5f16-b508-68a9a833fafc"
+description: |-
+  The **ci_pipeline_run** entity. Its requests address one record by `{{ci_pipeline_run_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `active` | boolean | yes |  |
+  | `canceled_at` | string | yes |  |
+  | `ci_pipeline_id` | string | yes |  |
+  | `ci_runner_pool_id` | string | yes |  |
+  | `commit_sha` | string | yes |  |
+  | `concurrency_key` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `creator_user_id` | string | yes |  |
+  | `display_id` | integer | yes |  |
+  | `failed` | boolean | yes |  |
+  | `finished_at` | string | yes |  |
+  | `hosted_app_id` | string | yes |  |
+  | `id` | string | yes |  |
+  | `jobs` | array | yes |  |
+  | `message` | string | yes |  |
+  | `number` | integer | yes |  |
+  | `organization_id` | string | yes |  |
+  | `parameters_json` | string | yes |  |
+  | `queued_at` | string | yes |  |
+  | `ref_name` | string | yes |  |
+  | `repository_id` | string | yes |  |
+  | `required_capabilities_csv` | string | yes |  |
+  | `retry_number` | integer | yes |  |
+  | `retryable` | boolean | yes |  |
+  | `slug` | string | yes |  |
+  | `source_url` | string | yes |  |
+  | `started_at` | string | yes |  |
+  | `status` | string | yes |  |
+  | `status_label` | string | yes |  |
+  | `status_state` | string | yes |  |
+  | `status_tone` | string | yes |  |
+  | `trigger_kind` | string | yes |  |
+  | `updated_at` | string | yes |  |
+order: 173000

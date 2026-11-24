@@ -1,0 +1,11 @@
+$kind: collection
+id: "58579f76-d9d5-54be-bb4f-dedcac74f220"
+description: |-
+  The **site_secret** entity, which belongs to a organization and a site. Its requests address one record by `{{site_secret_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+  | `native_agent_id` | string | yes |  |
+  | `value` | string | yes |  |
+order: 478000

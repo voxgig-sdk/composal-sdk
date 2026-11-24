@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "pull_zone": {
+      "PULL_ZONE00": {
+        "id": "PULL_ZONE00",
+        "name": "s1f",
+        "slug": "s20",
+        "organization_id": "ORGANIZATION01"
+      },
+      "PULL_ZONE01": {
+        "id": "PULL_ZONE01",
+        "name": "s3d",
+        "slug": "s3e",
+        "organization_id": "ORGANIZATION01"
+      },
+      "PULL_ZONE02": {
+        "id": "PULL_ZONE02",
+        "name": "s5b",
+        "slug": "s5c",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "pull_zone": {
+      "pull_zone_ref01": {
+        "name": "s79",
+        "slug": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/pages/pull_zones": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

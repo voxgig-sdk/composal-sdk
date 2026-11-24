@@ -42,9 +42,25 @@ $client = ComposalSDK::test();
 
 ### Instance Methods
 
+#### `A2aWellKnown($data = null)`
+
+Create a new `A2aWellKnownEntity` instance. Pass `null` for no initial data.
+
+#### `AdminOrg($data = null)`
+
+Create a new `AdminOrgEntity` instance. Pass `null` for no initial data.
+
 #### `Agent($data = null)`
 
 Create a new `AgentEntity` instance. Pass `null` for no initial data.
+
+#### `AgentApp($data = null)`
+
+Create a new `AgentAppEntity` instance. Pass `null` for no initial data.
+
+#### `AgentAppInstall($data = null)`
+
+Create a new `AgentAppInstallEntity` instance. Pass `null` for no initial data.
 
 #### `AgentAttachment($data = null)`
 
@@ -70,6 +86,30 @@ Create a new `AgentComputerEntity` instance. Pass `null` for no initial data.
 
 Create a new `AgentConnectionEntity` instance. Pass `null` for no initial data.
 
+#### `AgentConnectionDelegation($data = null)`
+
+Create a new `AgentConnectionDelegationEntity` instance. Pass `null` for no initial data.
+
+#### `AgentConnectionGrant($data = null)`
+
+Create a new `AgentConnectionGrantEntity` instance. Pass `null` for no initial data.
+
+#### `AgentConnectionResource($data = null)`
+
+Create a new `AgentConnectionResourceEntity` instance. Pass `null` for no initial data.
+
+#### `AgentConnectionSafetyControl($data = null)`
+
+Create a new `AgentConnectionSafetyControlEntity` instance. Pass `null` for no initial data.
+
+#### `AgentConnectionTriggerSubscription($data = null)`
+
+Create a new `AgentConnectionTriggerSubscriptionEntity` instance. Pass `null` for no initial data.
+
+#### `AgentContextCheckpoint($data = null)`
+
+Create a new `AgentContextCheckpointEntity` instance. Pass `null` for no initial data.
+
 #### `AgentControlFlow($data = null)`
 
 Create a new `AgentControlFlowEntity` instance. Pass `null` for no initial data.
@@ -82,6 +122,10 @@ Create a new `AgentCoordinationEntity` instance. Pass `null` for no initial data
 
 Create a new `AgentEmailEntity` instance. Pass `null` for no initial data.
 
+#### `AgentEvent($data = null)`
+
+Create a new `AgentEventEntity` instance. Pass `null` for no initial data.
+
 #### `AgentFile($data = null)`
 
 Create a new `AgentFileEntity` instance. Pass `null` for no initial data.
@@ -93,6 +137,14 @@ Create a new `AgentInputEntity` instance. Pass `null` for no initial data.
 #### `AgentIntegration($data = null)`
 
 Create a new `AgentIntegrationEntity` instance. Pass `null` for no initial data.
+
+#### `AgentIntegrationAccount($data = null)`
+
+Create a new `AgentIntegrationAccountEntity` instance. Pass `null` for no initial data.
+
+#### `AgentIntegrationCallback($data = null)`
+
+Create a new `AgentIntegrationCallbackEntity` instance. Pass `null` for no initial data.
 
 #### `AgentInteraction($data = null)`
 
@@ -138,6 +190,14 @@ Create a new `AgentPullRequestEntity` instance. Pass `null` for no initial data.
 
 Create a new `AgentQuestionEntity` instance. Pass `null` for no initial data.
 
+#### `AgentRelayFileGrant($data = null)`
+
+Create a new `AgentRelayFileGrantEntity` instance. Pass `null` for no initial data.
+
+#### `AgentRelayFileGrantAccount($data = null)`
+
+Create a new `AgentRelayFileGrantAccountEntity` instance. Pass `null` for no initial data.
+
 #### `AgentRepository($data = null)`
 
 Create a new `AgentRepositoryEntity` instance. Pass `null` for no initial data.
@@ -145,6 +205,10 @@ Create a new `AgentRepositoryEntity` instance. Pass `null` for no initial data.
 #### `AgentResource($data = null)`
 
 Create a new `AgentResourceEntity` instance. Pass `null` for no initial data.
+
+#### `AgentRoder($data = null)`
+
+Create a new `AgentRoderEntity` instance. Pass `null` for no initial data.
 
 #### `AgentRoutine($data = null)`
 
@@ -157,6 +221,18 @@ Create a new `AgentRunEntity` instance. Pass `null` for no initial data.
 #### `AgentRuntime($data = null)`
 
 Create a new `AgentRuntimeEntity` instance. Pass `null` for no initial data.
+
+#### `AgentSession($data = null)`
+
+Create a new `AgentSessionEntity` instance. Pass `null` for no initial data.
+
+#### `AgentSessionCheckpoint($data = null)`
+
+Create a new `AgentSessionCheckpointEntity` instance. Pass `null` for no initial data.
+
+#### `AgentSessionRoderHandoff($data = null)`
+
+Create a new `AgentSessionRoderHandoffEntity` instance. Pass `null` for no initial data.
 
 #### `AgentSetting($data = null)`
 
@@ -186,6 +262,10 @@ Create a new `AgentSubagentEntity` instance. Pass `null` for no initial data.
 
 Create a new `AgentSubscriptionEntity` instance. Pass `null` for no initial data.
 
+#### `AgentSwarm($data = null)`
+
+Create a new `AgentSwarmEntity` instance. Pass `null` for no initial data.
+
 #### `AgentTeammate($data = null)`
 
 Create a new `AgentTeammateEntity` instance. Pass `null` for no initial data.
@@ -202,6 +282,10 @@ Create a new `AgentThreadEntity` instance. Pass `null` for no initial data.
 
 Create a new `AgentToolEntity` instance. Pass `null` for no initial data.
 
+#### `AgentUsage($data = null)`
+
+Create a new `AgentUsageEntity` instance. Pass `null` for no initial data.
+
 #### `AgentVerifyProject($data = null)`
 
 Create a new `AgentVerifyProjectEntity` instance. Pass `null` for no initial data.
@@ -209,6 +293,10 @@ Create a new `AgentVerifyProjectEntity` instance. Pass `null` for no initial dat
 #### `AgentWait($data = null)`
 
 Create a new `AgentWaitEntity` instance. Pass `null` for no initial data.
+
+#### `AgentWebPreview($data = null)`
+
+Create a new `AgentWebPreviewEntity` instance. Pass `null` for no initial data.
 
 #### `AgentWebhook($data = null)`
 
@@ -242,6 +330,18 @@ Create a new `AgentWorkspaceEntity` instance. Pass `null` for no initial data.
 
 Create a new `AgentWritePermissionEntity` instance. Pass `null` for no initial data.
 
+#### `Agreement($data = null)`
+
+Create a new `AgreementEntity` instance. Pass `null` for no initial data.
+
+#### `AgreementAccessRequest($data = null)`
+
+Create a new `AgreementAccessRequestEntity` instance. Pass `null` for no initial data.
+
+#### `AlertRuleEvent($data = null)`
+
+Create a new `AlertRuleEventEntity` instance. Pass `null` for no initial data.
+
 #### `AllocationLog($data = null)`
 
 Create a new `AllocationLogEntity` instance. Pass `null` for no initial data.
@@ -249,6 +349,14 @@ Create a new `AllocationLogEntity` instance. Pass `null` for no initial data.
 #### `App($data = null)`
 
 Create a new `AppEntity` instance. Pass `null` for no initial data.
+
+#### `AppAccess($data = null)`
+
+Create a new `AppAccessEntity` instance. Pass `null` for no initial data.
+
+#### `AppAccessJwk($data = null)`
+
+Create a new `AppAccessJwkEntity` instance. Pass `null` for no initial data.
 
 #### `AppCdn($data = null)`
 
@@ -322,9 +430,77 @@ Create a new `AppServicePlacementEntity` instance. Pass `null` for no initial da
 
 Create a new `AppStorageResourceEntity` instance. Pass `null` for no initial data.
 
+#### `Artefact($data = null)`
+
+Create a new `ArtefactEntity` instance. Pass `null` for no initial data.
+
+#### `ArtefactCommentThread($data = null)`
+
+Create a new `ArtefactCommentThreadEntity` instance. Pass `null` for no initial data.
+
+#### `ArtefactRevision($data = null)`
+
+Create a new `ArtefactRevisionEntity` instance. Pass `null` for no initial data.
+
+#### `ArtefactViewToken($data = null)`
+
+Create a new `ArtefactViewTokenEntity` instance. Pass `null` for no initial data.
+
+#### `Artifact($data = null)`
+
+Create a new `ArtifactEntity` instance. Pass `null` for no initial data.
+
+#### `ArtifactCacheNamespace($data = null)`
+
+Create a new `ArtifactCacheNamespaceEntity` instance. Pass `null` for no initial data.
+
+#### `ArtifactImageRepository($data = null)`
+
+Create a new `ArtifactImageRepositoryEntity` instance. Pass `null` for no initial data.
+
+#### `ArtifactPackageMirror($data = null)`
+
+Create a new `ArtifactPackageMirrorEntity` instance. Pass `null` for no initial data.
+
+#### `ArtifactRetentionPolicy($data = null)`
+
+Create a new `ArtifactRetentionPolicyEntity` instance. Pass `null` for no initial data.
+
 #### `AttachmentPart($data = null)`
 
 Create a new `AttachmentPartEntity` instance. Pass `null` for no initial data.
+
+#### `AuditEvent($data = null)`
+
+Create a new `AuditEventEntity` instance. Pass `null` for no initial data.
+
+#### `Auth($data = null)`
+
+Create a new `AuthEntity` instance. Pass `null` for no initial data.
+
+#### `AuthCli($data = null)`
+
+Create a new `AuthCliEntity` instance. Pass `null` for no initial data.
+
+#### `AuthGithub($data = null)`
+
+Create a new `AuthGithubEntity` instance. Pass `null` for no initial data.
+
+#### `AuthGoogle($data = null)`
+
+Create a new `AuthGoogleEntity` instance. Pass `null` for no initial data.
+
+#### `AuthOpenai($data = null)`
+
+Create a new `AuthOpenaiEntity` instance. Pass `null` for no initial data.
+
+#### `AuthPasswordReset($data = null)`
+
+Create a new `AuthPasswordResetEntity` instance. Pass `null` for no initial data.
+
+#### `AuthRegistrationOption($data = null)`
+
+Create a new `AuthRegistrationOptionEntity` instance. Pass `null` for no initial data.
 
 #### `AutomationEvent($data = null)`
 
@@ -334,6 +510,74 @@ Create a new `AutomationEventEntity` instance. Pass `null` for no initial data.
 
 Create a new `AutomationRunEntity` instance. Pass `null` for no initial data.
 
+#### `BackendRunnerPool($data = null)`
+
+Create a new `BackendRunnerPoolEntity` instance. Pass `null` for no initial data.
+
+#### `Bazel($data = null)`
+
+Create a new `BazelEntity` instance. Pass `null` for no initial data.
+
+#### `BazelActionResult($data = null)`
+
+Create a new `BazelActionResultEntity` instance. Pass `null` for no initial data.
+
+#### `BazelBackend($data = null)`
+
+Create a new `BazelBackendEntity` instance. Pass `null` for no initial data.
+
+#### `BazelBlob($data = null)`
+
+Create a new `BazelBlobEntity` instance. Pass `null` for no initial data.
+
+#### `BazelExecution($data = null)`
+
+Create a new `BazelExecutionEntity` instance. Pass `null` for no initial data.
+
+#### `BazelFindMissingBlob($data = null)`
+
+Create a new `BazelFindMissingBlobEntity` instance. Pass `null` for no initial data.
+
+#### `Billing($data = null)`
+
+Create a new `BillingEntity` instance. Pass `null` for no initial data.
+
+#### `BillingAddon($data = null)`
+
+Create a new `BillingAddonEntity` instance. Pass `null` for no initial data.
+
+#### `BillingCheckoutSession($data = null)`
+
+Create a new `BillingCheckoutSessionEntity` instance. Pass `null` for no initial data.
+
+#### `BillingInvoice($data = null)`
+
+Create a new `BillingInvoiceEntity` instance. Pass `null` for no initial data.
+
+#### `BillingPackage($data = null)`
+
+Create a new `BillingPackageEntity` instance. Pass `null` for no initial data.
+
+#### `BillingPortalSession($data = null)`
+
+Create a new `BillingPortalSessionEntity` instance. Pass `null` for no initial data.
+
+#### `BillingPrepaidPeriod($data = null)`
+
+Create a new `BillingPrepaidPeriodEntity` instance. Pass `null` for no initial data.
+
+#### `BillingPrepaidPurchase($data = null)`
+
+Create a new `BillingPrepaidPurchaseEntity` instance. Pass `null` for no initial data.
+
+#### `BillingTokenTopUp($data = null)`
+
+Create a new `BillingTokenTopUpEntity` instance. Pass `null` for no initial data.
+
+#### `BillingUsage($data = null)`
+
+Create a new `BillingUsageEntity` instance. Pass `null` for no initial data.
+
 #### `Binary($data = null)`
 
 Create a new `BinaryEntity` instance. Pass `null` for no initial data.
@@ -341,6 +585,10 @@ Create a new `BinaryEntity` instance. Pass `null` for no initial data.
 #### `BinaryVersion($data = null)`
 
 Create a new `BinaryVersionEntity` instance. Pass `null` for no initial data.
+
+#### `BookmarkProtectionRefreshGithubRequiredCheck($data = null)`
+
+Create a new `BookmarkProtectionRefreshGithubRequiredCheckEntity` instance. Pass `null` for no initial data.
 
 #### `BrowserEgressCandidate($data = null)`
 
@@ -378,6 +626,10 @@ Create a new `BrowserSessionScreenshotEntity` instance. Pass `null` for no initi
 
 Create a new `BrowserSessionTaskEntity` instance. Pass `null` for no initial data.
 
+#### `CacheNamespaceEntry($data = null)`
+
+Create a new `CacheNamespaceEntryEntity` instance. Pass `null` for no initial data.
+
 #### `CatalogSelector($data = null)`
 
 Create a new `CatalogSelectorEntity` instance. Pass `null` for no initial data.
@@ -398,6 +650,122 @@ Create a new `CdnSpaceEntity` instance. Pass `null` for no initial data.
 
 Create a new `CdnSpaceObjectEntity` instance. Pass `null` for no initial data.
 
+#### `Change($data = null)`
+
+Create a new `ChangeEntity` instance. Pass `null` for no initial data.
+
+#### `ChangeAsset($data = null)`
+
+Create a new `ChangeAssetEntity` instance. Pass `null` for no initial data.
+
+#### `ChangeComment($data = null)`
+
+Create a new `ChangeCommentEntity` instance. Pass `null` for no initial data.
+
+#### `ChangeFileReviewCheckpoint($data = null)`
+
+Create a new `ChangeFileReviewCheckpointEntity` instance. Pass `null` for no initial data.
+
+#### `ChangeGitBranchSubmission($data = null)`
+
+Create a new `ChangeGitBranchSubmissionEntity` instance. Pass `null` for no initial data.
+
+#### `ChangeGitCommitIdentity($data = null)`
+
+Create a new `ChangeGitCommitIdentityEntity` instance. Pass `null` for no initial data.
+
+#### `ChangeGitPublication($data = null)`
+
+Create a new `ChangeGitPublicationEntity` instance. Pass `null` for no initial data.
+
+#### `ChangeGroupMember($data = null)`
+
+Create a new `ChangeGroupMemberEntity` instance. Pass `null` for no initial data.
+
+#### `ChangeLabel($data = null)`
+
+Create a new `ChangeLabelEntity` instance. Pass `null` for no initial data.
+
+#### `ChangeLandingHold($data = null)`
+
+Create a new `ChangeLandingHoldEntity` instance. Pass `null` for no initial data.
+
+#### `ChangeLandingRequest($data = null)`
+
+Create a new `ChangeLandingRequestEntity` instance. Pass `null` for no initial data.
+
+#### `ChangeRequestChange($data = null)`
+
+Create a new `ChangeRequestChangeEntity` instance. Pass `null` for no initial data.
+
+#### `ChangeReviewer($data = null)`
+
+Create a new `ChangeReviewerEntity` instance. Pass `null` for no initial data.
+
+#### `ChangeTranscript($data = null)`
+
+Create a new `ChangeTranscriptEntity` instance. Pass `null` for no initial data.
+
+#### `ChangeTranscriptSummary($data = null)`
+
+Create a new `ChangeTranscriptSummaryEntity` instance. Pass `null` for no initial data.
+
+#### `CheckpointPrepareChunk($data = null)`
+
+Create a new `CheckpointPrepareChunkEntity` instance. Pass `null` for no initial data.
+
+#### `CiNode($data = null)`
+
+Create a new `CiNodeEntity` instance. Pass `null` for no initial data.
+
+#### `CiPipeline($data = null)`
+
+Create a new `CiPipelineEntity` instance. Pass `null` for no initial data.
+
+#### `CiPipelineRun($data = null)`
+
+Create a new `CiPipelineRunEntity` instance. Pass `null` for no initial data.
+
+#### `CiRunnerPool($data = null)`
+
+Create a new `CiRunnerPoolEntity` instance. Pass `null` for no initial data.
+
+#### `CiStatus($data = null)`
+
+Create a new `CiStatusEntity` instance. Pass `null` for no initial data.
+
+#### `CliEvent($data = null)`
+
+Create a new `CliEventEntity` instance. Pass `null` for no initial data.
+
+#### `CliRelease($data = null)`
+
+Create a new `CliReleaseEntity` instance. Pass `null` for no initial data.
+
+#### `CloudWorkspaceBackupObject($data = null)`
+
+Create a new `CloudWorkspaceBackupObjectEntity` instance. Pass `null` for no initial data.
+
+#### `CodeRuleEvaluation($data = null)`
+
+Create a new `CodeRuleEvaluationEntity` instance. Pass `null` for no initial data.
+
+#### `ComSiteAccess($data = null)`
+
+Create a new `ComSiteAccessEntity` instance. Pass `null` for no initial data.
+
+#### `ComSiteAccessSession($data = null)`
+
+Create a new `ComSiteAccessSessionEntity` instance. Pass `null` for no initial data.
+
+#### `CommentThreadComment($data = null)`
+
+Create a new `CommentThreadCommentEntity` instance. Pass `null` for no initial data.
+
+#### `CommitDiff($data = null)`
+
+Create a new `CommitDiffEntity` instance. Pass `null` for no initial data.
+
 #### `ConnectionRequest($data = null)`
 
 Create a new `ConnectionRequestEntity` instance. Pass `null` for no initial data.
@@ -405,6 +773,18 @@ Create a new `ConnectionRequestEntity` instance. Pass `null` for no initial data
 #### `ConnectionSource($data = null)`
 
 Create a new `ConnectionSourceEntity` instance. Pass `null` for no initial data.
+
+#### `ContactSubmission($data = null)`
+
+Create a new `ContactSubmissionEntity` instance. Pass `null` for no initial data.
+
+#### `ControlComputer($data = null)`
+
+Create a new `ControlComputerEntity` instance. Pass `null` for no initial data.
+
+#### `ControlComputerControlOperation($data = null)`
+
+Create a new `ControlComputerControlOperationEntity` instance. Pass `null` for no initial data.
 
 #### `CoordinationWait($data = null)`
 
@@ -446,13 +826,109 @@ Create a new `DemoShareEntity` instance. Pass `null` for no initial data.
 
 Create a new `DemoShareSegmentEntity` instance. Pass `null` for no initial data.
 
+#### `Deployment($data = null)`
+
+Create a new `DeploymentEntity` instance. Pass `null` for no initial data.
+
 #### `DeploymentDashboardNomad($data = null)`
 
 Create a new `DeploymentDashboardNomadEntity` instance. Pass `null` for no initial data.
 
+#### `DeploymentDetail($data = null)`
+
+Create a new `DeploymentDetailEntity` instance. Pass `null` for no initial data.
+
 #### `DeploymentFile($data = null)`
 
 Create a new `DeploymentFileEntity` instance. Pass `null` for no initial data.
+
+#### `DeploymentLog($data = null)`
+
+Create a new `DeploymentLogEntity` instance. Pass `null` for no initial data.
+
+#### `DeploymentMetric($data = null)`
+
+Create a new `DeploymentMetricEntity` instance. Pass `null` for no initial data.
+
+#### `DeploymentPreview($data = null)`
+
+Create a new `DeploymentPreviewEntity` instance. Pass `null` for no initial data.
+
+#### `DeploymentSetting($data = null)`
+
+Create a new `DeploymentSettingEntity` instance. Pass `null` for no initial data.
+
+#### `DesktopLocalAgentModel($data = null)`
+
+Create a new `DesktopLocalAgentModelEntity` instance. Pass `null` for no initial data.
+
+#### `DesktopLocalAgentResponse($data = null)`
+
+Create a new `DesktopLocalAgentResponseEntity` instance. Pass `null` for no initial data.
+
+#### `Device($data = null)`
+
+Create a new `DeviceEntity` instance. Pass `null` for no initial data.
+
+#### `DeviceBrowserOperation($data = null)`
+
+Create a new `DeviceBrowserOperationEntity` instance. Pass `null` for no initial data.
+
+#### `DeviceControlMessage($data = null)`
+
+Create a new `DeviceControlMessageEntity` instance. Pass `null` for no initial data.
+
+#### `DeviceControlOperation($data = null)`
+
+Create a new `DeviceControlOperationEntity` instance. Pass `null` for no initial data.
+
+#### `DeviceEnterpriseRelay($data = null)`
+
+Create a new `DeviceEnterpriseRelayEntity` instance. Pass `null` for no initial data.
+
+#### `DeviceFolderListing($data = null)`
+
+Create a new `DeviceFolderListingEntity` instance. Pass `null` for no initial data.
+
+#### `DeviceGrant($data = null)`
+
+Create a new `DeviceGrantEntity` instance. Pass `null` for no initial data.
+
+#### `DeviceInvocation($data = null)`
+
+Create a new `DeviceInvocationEntity` instance. Pass `null` for no initial data.
+
+#### `DeviceLocalEvent($data = null)`
+
+Create a new `DeviceLocalEventEntity` instance. Pass `null` for no initial data.
+
+#### `DevicePairing($data = null)`
+
+Create a new `DevicePairingEntity` instance. Pass `null` for no initial data.
+
+#### `DeviceProject($data = null)`
+
+Create a new `DeviceProjectEntity` instance. Pass `null` for no initial data.
+
+#### `DeviceScheduledCheckIn($data = null)`
+
+Create a new `DeviceScheduledCheckInEntity` instance. Pass `null` for no initial data.
+
+#### `DockerBuilder($data = null)`
+
+Create a new `DockerBuilderEntity` instance. Pass `null` for no initial data.
+
+#### `DockerBuilderSession($data = null)`
+
+Create a new `DockerBuilderSessionEntity` instance. Pass `null` for no initial data.
+
+#### `DockerBuilderSetting($data = null)`
+
+Create a new `DockerBuilderSettingEntity` instance. Pass `null` for no initial data.
+
+#### `DomainDnsIntegration($data = null)`
+
+Create a new `DomainDnsIntegrationEntity` instance. Pass `null` for no initial data.
 
 #### `DomainPathRule($data = null)`
 
@@ -461,6 +937,14 @@ Create a new `DomainPathRuleEntity` instance. Pass `null` for no initial data.
 #### `Dream($data = null)`
 
 Create a new `DreamEntity` instance. Pass `null` for no initial data.
+
+#### `Edge($data = null)`
+
+Create a new `EdgeEntity` instance. Pass `null` for no initial data.
+
+#### `EmailVerification($data = null)`
+
+Create a new `EmailVerificationEntity` instance. Pass `null` for no initial data.
 
 #### `Environment($data = null)`
 
@@ -494,6 +978,22 @@ Create a new `EnvironmentTestAccountEntity` instance. Pass `null` for no initial
 
 Create a new `EvidenceEntity` instance. Pass `null` for no initial data.
 
+#### `ExecutionDesiredState($data = null)`
+
+Create a new `ExecutionDesiredStateEntity` instance. Pass `null` for no initial data.
+
+#### `ExecutionReconcilerTick($data = null)`
+
+Create a new `ExecutionReconcilerTickEntity` instance. Pass `null` for no initial data.
+
+#### `ExecutionRelease($data = null)`
+
+Create a new `ExecutionReleaseEntity` instance. Pass `null` for no initial data.
+
+#### `ExecutionRuntimeInstance($data = null)`
+
+Create a new `ExecutionRuntimeInstanceEntity` instance. Pass `null` for no initial data.
+
 #### `Exploration($data = null)`
 
 Create a new `ExplorationEntity` instance. Pass `null` for no initial data.
@@ -514,17 +1014,145 @@ Create a new `ExplorationScenarioEntity` instance. Pass `null` for no initial da
 
 Create a new `FindingEntity` instance. Pass `null` for no initial data.
 
+#### `Gh($data = null)`
+
+Create a new `GhEntity` instance. Pass `null` for no initial data.
+
+#### `GitImport($data = null)`
+
+Create a new `GitImportEntity` instance. Pass `null` for no initial data.
+
+#### `Github($data = null)`
+
+Create a new `GithubEntity` instance. Pass `null` for no initial data.
+
+#### `GithubApp($data = null)`
+
+Create a new `GithubAppEntity` instance. Pass `null` for no initial data.
+
+#### `GithubAppImportableRepository($data = null)`
+
+Create a new `GithubAppImportableRepositoryEntity` instance. Pass `null` for no initial data.
+
+#### `GithubAppInstallation($data = null)`
+
+Create a new `GithubAppInstallationEntity` instance. Pass `null` for no initial data.
+
+#### `GithubAppInstallationAuthorization($data = null)`
+
+Create a new `GithubAppInstallationAuthorizationEntity` instance. Pass `null` for no initial data.
+
+#### `GithubAppUserAuthorization($data = null)`
+
+Create a new `GithubAppUserAuthorizationEntity` instance. Pass `null` for no initial data.
+
+#### `GithubCiRepository($data = null)`
+
+Create a new `GithubCiRepositoryEntity` instance. Pass `null` for no initial data.
+
+#### `GithubCiRepositoryCompatibilityReport($data = null)`
+
+Create a new `GithubCiRepositoryCompatibilityReportEntity` instance. Pass `null` for no initial data.
+
 #### `GithubConnection($data = null)`
 
 Create a new `GithubConnectionEntity` instance. Pass `null` for no initial data.
+
+#### `GithubIntegration($data = null)`
+
+Create a new `GithubIntegrationEntity` instance. Pass `null` for no initial data.
+
+#### `GithubOnboarding($data = null)`
+
+Create a new `GithubOnboardingEntity` instance. Pass `null` for no initial data.
+
+#### `GithubOnboardingBranch($data = null)`
+
+Create a new `GithubOnboardingBranchEntity` instance. Pass `null` for no initial data.
+
+#### `GithubOnboardingImport($data = null)`
+
+Create a new `GithubOnboardingImportEntity` instance. Pass `null` for no initial data.
+
+#### `GithubOnboardingImportBatch($data = null)`
+
+Create a new `GithubOnboardingImportBatchEntity` instance. Pass `null` for no initial data.
+
+#### `GithubOnboardingImportItem($data = null)`
+
+Create a new `GithubOnboardingImportItemEntity` instance. Pass `null` for no initial data.
+
+#### `GithubPullRequest($data = null)`
+
+Create a new `GithubPullRequestEntity` instance. Pass `null` for no initial data.
+
+#### `GithubRunnerAdmission($data = null)`
+
+Create a new `GithubRunnerAdmissionEntity` instance. Pass `null` for no initial data.
+
+#### `GithubRunnerCache($data = null)`
+
+Create a new `GithubRunnerCacheEntity` instance. Pass `null` for no initial data.
+
+#### `GithubRunnerEgress($data = null)`
+
+Create a new `GithubRunnerEgressEntity` instance. Pass `null` for no initial data.
+
+#### `GithubRunnerHistory($data = null)`
+
+Create a new `GithubRunnerHistoryEntity` instance. Pass `null` for no initial data.
+
+#### `GithubRunnerImage($data = null)`
+
+Create a new `GithubRunnerImageEntity` instance. Pass `null` for no initial data.
+
+#### `GithubRunnerPool($data = null)`
+
+Create a new `GithubRunnerPoolEntity` instance. Pass `null` for no initial data.
+
+#### `GithubRunnerSetup($data = null)`
+
+Create a new `GithubRunnerSetupEntity` instance. Pass `null` for no initial data.
+
+#### `Gitlab($data = null)`
+
+Create a new `GitlabEntity` instance. Pass `null` for no initial data.
+
+#### `GitlabConnection($data = null)`
+
+Create a new `GitlabConnectionEntity` instance. Pass `null` for no initial data.
+
+#### `GitlabImport($data = null)`
+
+Create a new `GitlabImportEntity` instance. Pass `null` for no initial data.
+
+#### `GitlabOauth($data = null)`
+
+Create a new `GitlabOauthEntity` instance. Pass `null` for no initial data.
+
+#### `GrantAllAgent($data = null)`
+
+Create a new `GrantAllAgentEntity` instance. Pass `null` for no initial data.
 
 #### `HostingAppDomain($data = null)`
 
 Create a new `HostingAppDomainEntity` instance. Pass `null` for no initial data.
 
+#### `IdentityOrganization($data = null)`
+
+Create a new `IdentityOrganizationEntity` instance. Pass `null` for no initial data.
+
 #### `ImageRepository($data = null)`
 
 Create a new `ImageRepositoryEntity` instance. Pass `null` for no initial data.
+
+#### `ImageRepositoryTag($data = null)`
+
+Create a new `ImageRepositoryTagEntity` instance. Pass `null` for no initial data.
+
+#### `ImportBranchPolicy($data = null)`
+
+Create a new `ImportBranchPolicyEntity` instance. Pass `null` for no initial data.
 
 #### `Integration($data = null)`
 
@@ -538,6 +1166,22 @@ Create a new `InteractionResponseEntity` instance. Pass `null` for no initial da
 
 Create a new `InvitationEntity` instance. Pass `null` for no initial data.
 
+#### `InvocationControl($data = null)`
+
+Create a new `InvocationControlEntity` instance. Pass `null` for no initial data.
+
+#### `JobLogChunk($data = null)`
+
+Create a new `JobLogChunkEntity` instance. Pass `null` for no initial data.
+
+#### `JobStep($data = null)`
+
+Create a new `JobStepEntity` instance. Pass `null` for no initial data.
+
+#### `JobWorkspace($data = null)`
+
+Create a new `JobWorkspaceEntity` instance. Pass `null` for no initial data.
+
 #### `JourneyVariantReplay($data = null)`
 
 Create a new `JourneyVariantReplayEntity` instance. Pass `null` for no initial data.
@@ -545,6 +1189,54 @@ Create a new `JourneyVariantReplayEntity` instance. Pass `null` for no initial d
 #### `Knowledge($data = null)`
 
 Create a new `KnowledgeEntity` instance. Pass `null` for no initial data.
+
+#### `Known($data = null)`
+
+Create a new `KnownEntity` instance. Pass `null` for no initial data.
+
+#### `Label($data = null)`
+
+Create a new `LabelEntity` instance. Pass `null` for no initial data.
+
+#### `LeaseArtifact($data = null)`
+
+Create a new `LeaseArtifactEntity` instance. Pass `null` for no initial data.
+
+#### `LeaseCache($data = null)`
+
+Create a new `LeaseCacheEntity` instance. Pass `null` for no initial data.
+
+#### `LeaseLogChunk($data = null)`
+
+Create a new `LeaseLogChunkEntity` instance. Pass `null` for no initial data.
+
+#### `LeaseReconciliation($data = null)`
+
+Create a new `LeaseReconciliationEntity` instance. Pass `null` for no initial data.
+
+#### `LeaseStep($data = null)`
+
+Create a new `LeaseStepEntity` instance. Pass `null` for no initial data.
+
+#### `LeaseVerifyDiagnostic($data = null)`
+
+Create a new `LeaseVerifyDiagnosticEntity` instance. Pass `null` for no initial data.
+
+#### `LeaseVerifySecret($data = null)`
+
+Create a new `LeaseVerifySecretEntity` instance. Pass `null` for no initial data.
+
+#### `LeaseWorkspace($data = null)`
+
+Create a new `LeaseWorkspaceEntity` instance. Pass `null` for no initial data.
+
+#### `LocalAgentDecision($data = null)`
+
+Create a new `LocalAgentDecisionEntity` instance. Pass `null` for no initial data.
+
+#### `LocalAgentResponse($data = null)`
+
+Create a new `LocalAgentResponseEntity` instance. Pass `null` for no initial data.
 
 #### `LocalThreadDelivery($data = null)`
 
@@ -557,6 +1249,22 @@ Create a new `LocalThreadOperationEntity` instance. Pass `null` for no initial d
 #### `Location($data = null)`
 
 Create a new `LocationEntity` instance. Pass `null` for no initial data.
+
+#### `LogStreamChunk($data = null)`
+
+Create a new `LogStreamChunkEntity` instance. Pass `null` for no initial data.
+
+#### `LogoImage($data = null)`
+
+Create a new `LogoImageEntity` instance. Pass `null` for no initial data.
+
+#### `MarketingSetting($data = null)`
+
+Create a new `MarketingSettingEntity` instance. Pass `null` for no initial data.
+
+#### `McpOauth($data = null)`
+
+Create a new `McpOauthEntity` instance. Pass `null` for no initial data.
 
 #### `Me($data = null)`
 
@@ -582,9 +1290,17 @@ Create a new `MemberEntity` instance. Pass `null` for no initial data.
 
 Create a new `MemoryEntity` instance. Pass `null` for no initial data.
 
+#### `MergeQueueEntry($data = null)`
+
+Create a new `MergeQueueEntryEntity` instance. Pass `null` for no initial data.
+
 #### `MergeRequest($data = null)`
 
 Create a new `MergeRequestEntity` instance. Pass `null` for no initial data.
+
+#### `MergeResolution($data = null)`
+
+Create a new `MergeResolutionEntity` instance. Pass `null` for no initial data.
 
 #### `MessagingConversationMessage($data = null)`
 
@@ -598,9 +1314,37 @@ Create a new `MessagingConversationUploadEntity` instance. Pass `null` for no in
 
 Create a new `MetricQueryEntity` instance. Pass `null` for no initial data.
 
+#### `MetronomeWebhook($data = null)`
+
+Create a new `MetronomeWebhookEntity` instance. Pass `null` for no initial data.
+
+#### `ModelSubscriptionAccount($data = null)`
+
+Create a new `ModelSubscriptionAccountEntity` instance. Pass `null` for no initial data.
+
+#### `ModelSubscriptionAccountConnection($data = null)`
+
+Create a new `ModelSubscriptionAccountConnectionEntity` instance. Pass `null` for no initial data.
+
 #### `NetworkConnection($data = null)`
 
 Create a new `NetworkConnectionEntity` instance. Pass `null` for no initial data.
+
+#### `NetworkingSpace($data = null)`
+
+Create a new `NetworkingSpaceEntity` instance. Pass `null` for no initial data.
+
+#### `Node($data = null)`
+
+Create a new `NodeEntity` instance. Pass `null` for no initial data.
+
+#### `NodeCertificate($data = null)`
+
+Create a new `NodeCertificateEntity` instance. Pass `null` for no initial data.
+
+#### `NodeLease($data = null)`
+
+Create a new `NodeLeaseEntity` instance. Pass `null` for no initial data.
 
 #### `NomadAllocation($data = null)`
 
@@ -610,9 +1354,113 @@ Create a new `NomadAllocationEntity` instance. Pass `null` for no initial data.
 
 Create a new `NomadLogEntity` instance. Pass `null` for no initial data.
 
+#### `Now($data = null)`
+
+Create a new `NowEntity` instance. Pass `null` for no initial data.
+
+#### `ObservabilityClickhouseCluster($data = null)`
+
+Create a new `ObservabilityClickhouseClusterEntity` instance. Pass `null` for no initial data.
+
+#### `ObservabilityQuickwitCluster($data = null)`
+
+Create a new `ObservabilityQuickwitClusterEntity` instance. Pass `null` for no initial data.
+
+#### `ObservabilitySpace($data = null)`
+
+Create a new `ObservabilitySpaceEntity` instance. Pass `null` for no initial data.
+
+#### `Openapi($data = null)`
+
+Create a new `OpenapiEntity` instance. Pass `null` for no initial data.
+
+#### `OrgInvitation($data = null)`
+
+Create a new `OrgInvitationEntity` instance. Pass `null` for no initial data.
+
 #### `Organization($data = null)`
 
 Create a new `OrganizationEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationApp($data = null)`
+
+Create a new `OrganizationAppEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationControl($data = null)`
+
+Create a new `OrganizationControlEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationDevice($data = null)`
+
+Create a new `OrganizationDeviceEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationIdentityCertificate($data = null)`
+
+Create a new `OrganizationIdentityCertificateEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationInteraction($data = null)`
+
+Create a new `OrganizationInteractionEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationInvitation($data = null)`
+
+Create a new `OrganizationInvitationEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationMessageFile($data = null)`
+
+Create a new `OrganizationMessageFileEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationOidcTrust($data = null)`
+
+Create a new `OrganizationOidcTrustEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationRunEvent($data = null)`
+
+Create a new `OrganizationRunEventEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationRunOutcome($data = null)`
+
+Create a new `OrganizationRunOutcomeEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationRunUsage($data = null)`
+
+Create a new `OrganizationRunUsageEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationSandbox($data = null)`
+
+Create a new `OrganizationSandboxEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationSecret($data = null)`
+
+Create a new `OrganizationSecretEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationServiceAccount($data = null)`
+
+Create a new `OrganizationServiceAccountEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationSetting($data = null)`
+
+Create a new `OrganizationSettingEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationSite($data = null)`
+
+Create a new `OrganizationSiteEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationSubscription($data = null)`
+
+Create a new `OrganizationSubscriptionEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationTool($data = null)`
+
+Create a new `OrganizationToolEntity` instance. Pass `null` for no initial data.
+
+#### `OrganizationWorkloadIdentity($data = null)`
+
+Create a new `OrganizationWorkloadIdentityEntity` instance. Pass `null` for no initial data.
+
+#### `OtelIngest($data = null)`
+
+Create a new `OtelIngestEntity` instance. Pass `null` for no initial data.
 
 #### `Page($data = null)`
 
@@ -622,9 +1470,33 @@ Create a new `PageEntity` instance. Pass `null` for no initial data.
 
 Create a new `PageAgentEntity` instance. Pass `null` for no initial data.
 
+#### `PageArtefact($data = null)`
+
+Create a new `PageArtefactEntity` instance. Pass `null` for no initial data.
+
+#### `PageCiPipelineRun($data = null)`
+
+Create a new `PageCiPipelineRunEntity` instance. Pass `null` for no initial data.
+
 #### `PageProjectRun($data = null)`
 
 Create a new `PageProjectRunEntity` instance. Pass `null` for no initial data.
+
+#### `PageRepoVcCommit($data = null)`
+
+Create a new `PageRepoVcCommitEntity` instance. Pass `null` for no initial data.
+
+#### `PagesBilling($data = null)`
+
+Create a new `PagesBillingEntity` instance. Pass `null` for no initial data.
+
+#### `PagesGithubOnboarding($data = null)`
+
+Create a new `PagesGithubOnboardingEntity` instance. Pass `null` for no initial data.
+
+#### `PagesMember($data = null)`
+
+Create a new `PagesMemberEntity` instance. Pass `null` for no initial data.
 
 #### `PagesProjectCredential($data = null)`
 
@@ -641,6 +1513,30 @@ Create a new `PagesProjectRunEntity` instance. Pass `null` for no initial data.
 #### `PagesProjectScenario($data = null)`
 
 Create a new `PagesProjectScenarioEntity` instance. Pass `null` for no initial data.
+
+#### `PagesRegistry($data = null)`
+
+Create a new `PagesRegistryEntity` instance. Pass `null` for no initial data.
+
+#### `PagesSession($data = null)`
+
+Create a new `PagesSessionEntity` instance. Pass `null` for no initial data.
+
+#### `Pairing($data = null)`
+
+Create a new `PairingEntity` instance. Pass `null` for no initial data.
+
+#### `PairingEvent($data = null)`
+
+Create a new `PairingEventEntity` instance. Pass `null` for no initial data.
+
+#### `ParallelV1($data = null)`
+
+Create a new `ParallelV1Entity` instance. Pass `null` for no initial data.
+
+#### `PatchsetDiff($data = null)`
+
+Create a new `PatchsetDiffEntity` instance. Pass `null` for no initial data.
 
 #### `PersonalAccessToken($data = null)`
 
@@ -661,6 +1557,14 @@ Create a new `PreviewSecretEntity` instance. Pass `null` for no initial data.
 #### `PreviewSharingApproval($data = null)`
 
 Create a new `PreviewSharingApprovalEntity` instance. Pass `null` for no initial data.
+
+#### `ProactiveAgentWaitlistEntry($data = null)`
+
+Create a new `ProactiveAgentWaitlistEntryEntity` instance. Pass `null` for no initial data.
+
+#### `Product($data = null)`
+
+Create a new `ProductEntity` instance. Pass `null` for no initial data.
 
 #### `ProductMapIdentityDecision($data = null)`
 
@@ -758,6 +1662,14 @@ Create a new `ProjectSettingEntity` instance. Pass `null` for no initial data.
 
 Create a new `PullRequestEntity` instance. Pass `null` for no initial data.
 
+#### `PullRequestAction($data = null)`
+
+Create a new `PullRequestActionEntity` instance. Pass `null` for no initial data.
+
+#### `PullRequestMagicMerge($data = null)`
+
+Create a new `PullRequestMagicMergeEntity` instance. Pass `null` for no initial data.
+
 #### `PullRequestSetting($data = null)`
 
 Create a new `PullRequestSettingEntity` instance. Pass `null` for no initial data.
@@ -769,6 +1681,14 @@ Create a new `PullRequestSettingAddRepositoryEntity` instance. Pass `null` for n
 #### `PullRequestSettingDetectComment($data = null)`
 
 Create a new `PullRequestSettingDetectCommentEntity` instance. Pass `null` for no initial data.
+
+#### `PullRequestTranscript($data = null)`
+
+Create a new `PullRequestTranscriptEntity` instance. Pass `null` for no initial data.
+
+#### `PullZone($data = null)`
+
+Create a new `PullZoneEntity` instance. Pass `null` for no initial data.
 
 #### `Recorder($data = null)`
 
@@ -782,9 +1702,73 @@ Create a new `RegistryEntity` instance. Pass `null` for no initial data.
 
 Create a new `RegistryV2Entity` instance. Pass `null` for no initial data.
 
+#### `RelayAgentConnection($data = null)`
+
+Create a new `RelayAgentConnectionEntity` instance. Pass `null` for no initial data.
+
 #### `RelayAgentLocalThread($data = null)`
 
 Create a new `RelayAgentLocalThreadEntity` instance. Pass `null` for no initial data.
+
+#### `RelaySignal($data = null)`
+
+Create a new `RelaySignalEntity` instance. Pass `null` for no initial data.
+
+#### `ReleaseRollout($data = null)`
+
+Create a new `ReleaseRolloutEntity` instance. Pass `null` for no initial data.
+
+#### `Repo($data = null)`
+
+Create a new `RepoEntity` instance. Pass `null` for no initial data.
+
+#### `RepoAccessToken($data = null)`
+
+Create a new `RepoAccessTokenEntity` instance. Pass `null` for no initial data.
+
+#### `RepoAction($data = null)`
+
+Create a new `RepoActionEntity` instance. Pass `null` for no initial data.
+
+#### `RepoAgentCheckpoint($data = null)`
+
+Create a new `RepoAgentCheckpointEntity` instance. Pass `null` for no initial data.
+
+#### `RepoAgentSession($data = null)`
+
+Create a new `RepoAgentSessionEntity` instance. Pass `null` for no initial data.
+
+#### `RepoBookmarkProtection($data = null)`
+
+Create a new `RepoBookmarkProtectionEntity` instance. Pass `null` for no initial data.
+
+#### `RepoBookmarkProtectionEvent($data = null)`
+
+Create a new `RepoBookmarkProtectionEventEntity` instance. Pass `null` for no initial data.
+
+#### `RepoCloudWorkspaceBackup($data = null)`
+
+Create a new `RepoCloudWorkspaceBackupEntity` instance. Pass `null` for no initial data.
+
+#### `RepoCodeRule($data = null)`
+
+Create a new `RepoCodeRuleEntity` instance. Pass `null` for no initial data.
+
+#### `RepoSetting($data = null)`
+
+Create a new `RepoSettingEntity` instance. Pass `null` for no initial data.
+
+#### `RepoStat($data = null)`
+
+Create a new `RepoStatEntity` instance. Pass `null` for no initial data.
+
+#### `RepoVc($data = null)`
+
+Create a new `RepoVcEntity` instance. Pass `null` for no initial data.
+
+#### `RepoVcCommit($data = null)`
+
+Create a new `RepoVcCommitEntity` instance. Pass `null` for no initial data.
 
 #### `ReportReplay($data = null)`
 
@@ -793,6 +1777,66 @@ Create a new `ReportReplayEntity` instance. Pass `null` for no initial data.
 #### `ReportScenario($data = null)`
 
 Create a new `ReportScenarioEntity` instance. Pass `null` for no initial data.
+
+#### `RepositoryAccess($data = null)`
+
+Create a new `RepositoryAccessEntity` instance. Pass `null` for no initial data.
+
+#### `RepositoryAccessResolve($data = null)`
+
+Create a new `RepositoryAccessResolveEntity` instance. Pass `null` for no initial data.
+
+#### `RepositoryEvent($data = null)`
+
+Create a new `RepositoryEventEntity` instance. Pass `null` for no initial data.
+
+#### `RepositoryImport($data = null)`
+
+Create a new `RepositoryImportEntity` instance. Pass `null` for no initial data.
+
+#### `RepositoryImportSession($data = null)`
+
+Create a new `RepositoryImportSessionEntity` instance. Pass `null` for no initial data.
+
+#### `RepositoryImportSessionRepository($data = null)`
+
+Create a new `RepositoryImportSessionRepositoryEntity` instance. Pass `null` for no initial data.
+
+#### `RepositoryImportSessionSelection($data = null)`
+
+Create a new `RepositoryImportSessionSelectionEntity` instance. Pass `null` for no initial data.
+
+#### `RepositorySandboxEnvironment($data = null)`
+
+Create a new `RepositorySandboxEnvironmentEntity` instance. Pass `null` for no initial data.
+
+#### `RoderCodeRepair($data = null)`
+
+Create a new `RoderCodeRepairEntity` instance. Pass `null` for no initial data.
+
+#### `RoderCodeRepairSetting($data = null)`
+
+Create a new `RoderCodeRepairSettingEntity` instance. Pass `null` for no initial data.
+
+#### `RoderMachine($data = null)`
+
+Create a new `RoderMachineEntity` instance. Pass `null` for no initial data.
+
+#### `RoderRun($data = null)`
+
+Create a new `RoderRunEntity` instance. Pass `null` for no initial data.
+
+#### `RoderWorkspaceCredential($data = null)`
+
+Create a new `RoderWorkspaceCredentialEntity` instance. Pass `null` for no initial data.
+
+#### `RunArtifact($data = null)`
+
+Create a new `RunArtifactEntity` instance. Pass `null` for no initial data.
+
+#### `RunJob($data = null)`
+
+Create a new `RunJobEntity` instance. Pass `null` for no initial data.
 
 #### `RunScenarioRun($data = null)`
 
@@ -810,6 +1854,30 @@ Create a new `RunSearchEntity` instance. Pass `null` for no initial data.
 
 Create a new `RunUpdateEntity` instance. Pass `null` for no initial data.
 
+#### `RunWorkspaceCredential($data = null)`
+
+Create a new `RunWorkspaceCredentialEntity` instance. Pass `null` for no initial data.
+
+#### `RunnerLease($data = null)`
+
+Create a new `RunnerLeaseEntity` instance. Pass `null` for no initial data.
+
+#### `RunnerPoolNodeEnrollmentToken($data = null)`
+
+Create a new `RunnerPoolNodeEnrollmentTokenEntity` instance. Pass `null` for no initial data.
+
+#### `RunnerPoolRunner($data = null)`
+
+Create a new `RunnerPoolRunnerEntity` instance. Pass `null` for no initial data.
+
+#### `RuntimeInstanceHealthSnapshot($data = null)`
+
+Create a new `RuntimeInstanceHealthSnapshotEntity` instance. Pass `null` for no initial data.
+
+#### `SandboxIntegration($data = null)`
+
+Create a new `SandboxIntegrationEntity` instance. Pass `null` for no initial data.
+
 #### `ScenarioRevision($data = null)`
 
 Create a new `ScenarioRevisionEntity` instance. Pass `null` for no initial data.
@@ -822,21 +1890,169 @@ Create a new `ScenarioRunLessonEntity` instance. Pass `null` for no initial data
 
 Create a new `ScenarioRunScenarioEditEntity` instance. Pass `null` for no initial data.
 
+#### `SecretGrant($data = null)`
+
+Create a new `SecretGrantEntity` instance. Pass `null` for no initial data.
+
+#### `SecretVersion($data = null)`
+
+Create a new `SecretVersionEntity` instance. Pass `null` for no initial data.
+
 #### `ServiceEndpoint($data = null)`
 
 Create a new `ServiceEndpointEntity` instance. Pass `null` for no initial data.
+
+#### `Setting($data = null)`
+
+Create a new `SettingEntity` instance. Pass `null` for no initial data.
+
+#### `SettingMutationLease($data = null)`
+
+Create a new `SettingMutationLeaseEntity` instance. Pass `null` for no initial data.
+
+#### `Signal($data = null)`
+
+Create a new `SignalEntity` instance. Pass `null` for no initial data.
+
+#### `SignalInbound($data = null)`
+
+Create a new `SignalInboundEntity` instance. Pass `null` for no initial data.
+
+#### `SignalIntegration($data = null)`
+
+Create a new `SignalIntegrationEntity` instance. Pass `null` for no initial data.
+
+#### `SignalIntegrationDelivery($data = null)`
+
+Create a new `SignalIntegrationDeliveryEntity` instance. Pass `null` for no initial data.
+
+#### `SignalIntegrationTarget($data = null)`
+
+Create a new `SignalIntegrationTargetEntity` instance. Pass `null` for no initial data.
+
+#### `SignalSubscription($data = null)`
+
+Create a new `SignalSubscriptionEntity` instance. Pass `null` for no initial data.
+
+#### `Site($data = null)`
+
+Create a new `SiteEntity` instance. Pass `null` for no initial data.
+
+#### `SiteAccessKey($data = null)`
+
+Create a new `SiteAccessKeyEntity` instance. Pass `null` for no initial data.
 
 #### `SitePreview($data = null)`
 
 Create a new `SitePreviewEntity` instance. Pass `null` for no initial data.
 
+#### `SiteSecret($data = null)`
+
+Create a new `SiteSecretEntity` instance. Pass `null` for no initial data.
+
 #### `SlackChannel($data = null)`
 
 Create a new `SlackChannelEntity` instance. Pass `null` for no initial data.
 
+#### `SourceConnection($data = null)`
+
+Create a new `SourceConnectionEntity` instance. Pass `null` for no initial data.
+
+#### `SpaceAlertRule($data = null)`
+
+Create a new `SpaceAlertRuleEntity` instance. Pass `null` for no initial data.
+
+#### `SpaceAuditEvent($data = null)`
+
+Create a new `SpaceAuditEventEntity` instance. Pass `null` for no initial data.
+
+#### `SpaceDnsRecord($data = null)`
+
+Create a new `SpaceDnsRecordEntity` instance. Pass `null` for no initial data.
+
+#### `SpaceEnrollmentToken($data = null)`
+
+Create a new `SpaceEnrollmentTokenEntity` instance. Pass `null` for no initial data.
+
+#### `SpaceGateway($data = null)`
+
+Create a new `SpaceGatewayEntity` instance. Pass `null` for no initial data.
+
+#### `SpaceGroup($data = null)`
+
+Create a new `SpaceGroupEntity` instance. Pass `null` for no initial data.
+
+#### `SpaceGroupMembership($data = null)`
+
+Create a new `SpaceGroupMembershipEntity` instance. Pass `null` for no initial data.
+
+#### `SpaceLogStream($data = null)`
+
+Create a new `SpaceLogStreamEntity` instance. Pass `null` for no initial data.
+
+#### `SpaceMetricSery($data = null)`
+
+Create a new `SpaceMetricSeryEntity` instance. Pass `null` for no initial data.
+
+#### `SpaceOtelCollector($data = null)`
+
+Create a new `SpaceOtelCollectorEntity` instance. Pass `null` for no initial data.
+
+#### `SpacePeer($data = null)`
+
+Create a new `SpacePeerEntity` instance. Pass `null` for no initial data.
+
+#### `SpacePeerAttachment($data = null)`
+
+Create a new `SpacePeerAttachmentEntity` instance. Pass `null` for no initial data.
+
+#### `SpacePolicy($data = null)`
+
+Create a new `SpacePolicyEntity` instance. Pass `null` for no initial data.
+
+#### `SpaceSegment($data = null)`
+
+Create a new `SpaceSegmentEntity` instance. Pass `null` for no initial data.
+
+#### `SpaceTraceSpan($data = null)`
+
+Create a new `SpaceTraceSpanEntity` instance. Pass `null` for no initial data.
+
+#### `Spark($data = null)`
+
+Create a new `SparkEntity` instance. Pass `null` for no initial data.
+
+#### `SparkAgentIntegration($data = null)`
+
+Create a new `SparkAgentIntegrationEntity` instance. Pass `null` for no initial data.
+
 #### `SparkAgentLocalThread($data = null)`
 
 Create a new `SparkAgentLocalThreadEntity` instance. Pass `null` for no initial data.
+
+#### `SparkAgentSite($data = null)`
+
+Create a new `SparkAgentSiteEntity` instance. Pass `null` for no initial data.
+
+#### `SparkAgentSkill($data = null)`
+
+Create a new `SparkAgentSkillEntity` instance. Pass `null` for no initial data.
+
+#### `SparkAgentThread($data = null)`
+
+Create a new `SparkAgentThreadEntity` instance. Pass `null` for no initial data.
+
+#### `SparkCredit($data = null)`
+
+Create a new `SparkCreditEntity` instance. Pass `null` for no initial data.
+
+#### `SparkCreditAgentUsage($data = null)`
+
+Create a new `SparkCreditAgentUsageEntity` instance. Pass `null` for no initial data.
+
+#### `SparkCreditUsageTotal($data = null)`
+
+Create a new `SparkCreditUsageTotalEntity` instance. Pass `null` for no initial data.
 
 #### `StaticSite($data = null)`
 
@@ -850,13 +2066,105 @@ Create a new `StaticSiteDeploymentEntity` instance. Pass `null` for no initial d
 
 Create a new `StaticSiteDomainEntity` instance. Pass `null` for no initial data.
 
+#### `StatusChange($data = null)`
+
+Create a new `StatusChangeEntity` instance. Pass `null` for no initial data.
+
+#### `StatusCommit($data = null)`
+
+Create a new `StatusCommitEntity` instance. Pass `null` for no initial data.
+
+#### `StatusPatchset($data = null)`
+
+Create a new `StatusPatchsetEntity` instance. Pass `null` for no initial data.
+
+#### `StripeWebhook($data = null)`
+
+Create a new `StripeWebhookEntity` instance. Pass `null` for no initial data.
+
+#### `SubmitTelemetry($data = null)`
+
+Create a new `SubmitTelemetryEntity` instance. Pass `null` for no initial data.
+
 #### `SubscriptionModel($data = null)`
 
 Create a new `SubscriptionModelEntity` instance. Pass `null` for no initial data.
 
+#### `SwarmEvent($data = null)`
+
+Create a new `SwarmEventEntity` instance. Pass `null` for no initial data.
+
+#### `SwarmLive($data = null)`
+
+Create a new `SwarmLiveEntity` instance. Pass `null` for no initial data.
+
+#### `SwarmNote($data = null)`
+
+Create a new `SwarmNoteEntity` instance. Pass `null` for no initial data.
+
+#### `SwarmTask($data = null)`
+
+Create a new `SwarmTaskEntity` instance. Pass `null` for no initial data.
+
+#### `TaskLease($data = null)`
+
+Create a new `TaskLeaseEntity` instance. Pass `null` for no initial data.
+
 #### `ThreadPreview($data = null)`
 
 Create a new `ThreadPreviewEntity` instance. Pass `null` for no initial data.
+
+#### `ThreadPreviewAccess($data = null)`
+
+Create a new `ThreadPreviewAccessEntity` instance. Pass `null` for no initial data.
+
+#### `ToolFeedback($data = null)`
+
+Create a new `ToolFeedbackEntity` instance. Pass `null` for no initial data.
+
+#### `Transcript($data = null)`
+
+Create a new `TranscriptEntity` instance. Pass `null` for no initial data.
+
+#### `V1Message($data = null)`
+
+Create a new `V1MessageEntity` instance. Pass `null` for no initial data.
+
+#### `VcBranch($data = null)`
+
+Create a new `VcBranchEntity` instance. Pass `null` for no initial data.
+
+#### `VcBrowser($data = null)`
+
+Create a new `VcBrowserEntity` instance. Pass `null` for no initial data.
+
+#### `VcChange($data = null)`
+
+Create a new `VcChangeEntity` instance. Pass `null` for no initial data.
+
+#### `VcChangeGroup($data = null)`
+
+Create a new `VcChangeGroupEntity` instance. Pass `null` for no initial data.
+
+#### `VcFile($data = null)`
+
+Create a new `VcFileEntity` instance. Pass `null` for no initial data.
+
+#### `VcMergeQueue($data = null)`
+
+Create a new `VcMergeQueueEntity` instance. Pass `null` for no initial data.
+
+#### `VcStack($data = null)`
+
+Create a new `VcStackEntity` instance. Pass `null` for no initial data.
+
+#### `VcsNode($data = null)`
+
+Create a new `VcsNodeEntity` instance. Pass `null` for no initial data.
+
+#### `VcsSetting($data = null)`
+
+Create a new `VcsSettingEntity` instance. Pass `null` for no initial data.
 
 #### `VerificationProjectCredential($data = null)`
 
@@ -882,6 +2190,14 @@ Create a new `VerifyAppDomainEntity` instance. Pass `null` for no initial data.
 
 Create a new `VerifyBrowserSessionEntity` instance. Pass `null` for no initial data.
 
+#### `VerifyEmailVerification($data = null)`
+
+Create a new `VerifyEmailVerificationEntity` instance. Pass `null` for no initial data.
+
+#### `VerifySignalIntegration($data = null)`
+
+Create a new `VerifySignalIntegrationEntity` instance. Pass `null` for no initial data.
+
 #### `VerifyStaticSiteDomain($data = null)`
 
 Create a new `VerifyStaticSiteDomainEntity` instance. Pass `null` for no initial data.
@@ -890,9 +2206,17 @@ Create a new `VerifyStaticSiteDomainEntity` instance. Pass `null` for no initial
 
 Create a new `VersionLogEntity` instance. Pass `null` for no initial data.
 
+#### `WaitlistApplication($data = null)`
+
+Create a new `WaitlistApplicationEntity` instance. Pass `null` for no initial data.
+
 #### `WebBotAuth($data = null)`
 
 Create a new `WebBotAuthEntity` instance. Pass `null` for no initial data.
+
+#### `WebhookGitlab($data = null)`
+
+Create a new `WebhookGitlabEntity` instance. Pass `null` for no initial data.
 
 #### `WorkflowRunStep($data = null)`
 
@@ -905,6 +2229,22 @@ Create a new `WorkflowRunStopNoticeEntity` instance. Pass `null` for no initial 
 #### `WorkflowTriggerSkipped($data = null)`
 
 Create a new `WorkflowTriggerSkippedEntity` instance. Pass `null` for no initial data.
+
+#### `WorkspaceActivity($data = null)`
+
+Create a new `WorkspaceActivityEntity` instance. Pass `null` for no initial data.
+
+#### `WorkspaceActivityNotification($data = null)`
+
+Create a new `WorkspaceActivityNotificationEntity` instance. Pass `null` for no initial data.
+
+#### `WorkspaceSpace($data = null)`
+
+Create a new `WorkspaceSpaceEntity` instance. Pass `null` for no initial data.
+
+#### `WorkspaceSpacePreference($data = null)`
+
+Create a new `WorkspaceSpacePreferenceEntity` instance. Pass `null` for no initial data.
 
 #### `options_map(): array`
 
@@ -939,6 +2279,158 @@ hatch: it does **not** throw. It returns a result array
 
 Prepare a fetch definition without sending the request. Returns the
 `$fetchdef` array. Throws on error.
+
+
+---
+
+## A2aWellKnownEntity
+
+```php
+$a2a_well_known = $client->A2aWellKnown();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): A2aWellKnownEntity`
+
+Create a new `A2aWellKnownEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AdminOrgEntity
+
+```php
+$admin_org = $client->AdminOrg();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `billing_email` | `mixed` | Yes |  |
+| `billing_reason` | `string` | No | Required when setting an agreed price |
+| `customize_onboarding_packages` | `bool` | No |  |
+| `deployment_usage_visibility` | `string` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `id` | `string` | Yes |  |
+| `monthly_price_dollars` | `mixed` | No | Ongoing USD workspace price, for example '50.00' |
+| `monthly_price_override_cents` | `mixed` | Yes |  |
+| `name` | `string` | Yes |  |
+| `onboarding_custom_pricing` | `bool` | No |  |
+| `onboarding_package_keys` | `mixed` | No | Package keys offered when customizing onboarding. |
+| `owner_email` | `string` | Yes |  |
+| `package_id` | `mixed` | Yes | Active customer package public ID. |
+| `skip_payment` | `bool` | No | Grant the selected package as an ongoing complimentary subscription with monthly included usage and package limits. |
+| `slug` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update |
+| --- | --- | --- | --- | --- |
+| `billing_email` | - | - | - | - |
+| `billing_reason` | - | - | - | - |
+| `customize_onboarding_packages` | - | - | - | - |
+| `deployment_usage_visibility` | - | - | - | - |
+| `deployment_usage_visible` | - | - | - | - |
+| `id` | - | - | - | - |
+| `monthly_price_dollars` | - | - | - | - |
+| `monthly_price_override_cents` | - | - | - | - |
+| `name` | - | - | - | - |
+| `onboarding_custom_pricing` | - | - | - | - |
+| `onboarding_package_keys` | - | - | - | - |
+| `owner_email` | - | - | - | - |
+| `package_id` | - | - | Yes | - |
+| `skip_payment` | - | - | - | - |
+| `slug` | - | - | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->AdminOrg()->create([
+  "name" => null, // string
+  "owner_email" => null, // string
+  "slug" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->AdminOrg()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->AdminOrg()->load(["id" => "admin_org_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AdminOrgEntity`
+
+Create a new `AdminOrgEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
 
 
 ---
@@ -1105,6 +2597,153 @@ Set the entity match criteria.
 #### `make(): AgentEntity`
 
 Create a new `AgentEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AgentAppEntity
+
+```php
+$agent_app = $client->AgentApp();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `author` | `array` | Yes |  |
+| `can_message` | `bool` | Yes | The viewer may send input to the author agent |
+| `deployments_count` | `int` | Yes | Increases with every deploy of the site |
+| `description` | `string` | Yes |  |
+| `hidden_install_count` | `int` | Yes | Installs by agents the viewer cannot open |
+| `id` | `string` | Yes |  |
+| `install_count` | `int` | Yes |  |
+| `install_targets` | `array` | Yes | Active agents the viewer owns or manages, which they can install apps on |
+| `installed_by` | `array` | Yes |  |
+| `installed_target_ids` | `array` | Yes | Install targets of the viewer that have this app installed |
+| `items` | `array` | Yes |  |
+| `mcp_url` | `mixed` | Yes |  |
+| `next_cursor` | `mixed` | Yes | Pass as cursor to load older apps |
+| `owner` | `array` | Yes | The person who controls the author agent |
+| `thread` | `mixed` | Yes | The thread that published the app, when the viewer can open the author agent |
+| `title` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `visibility` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->AgentApp()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->AgentApp()->load(["id" => "agent_app_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentAppEntity`
+
+Create a new `AgentAppEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AgentAppInstallEntity
+
+```php
+$agent_app_install = $client->AgentAppInstall();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+| `installed` | `bool` | Yes |  |
+
+### Operations
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->AgentAppInstall()->remove(["id" => "agent_app_install_id", "agent_app_id" => "agent_app_id", "organization_id" => "organization_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->AgentAppInstall()->update([
+  "id" => "agent_app_install_id",
+  "agent_app_id" => "agent_app_id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentAppInstallEntity`
+
+Create a new `AgentAppInstallEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -1420,49 +3059,48 @@ $agent_connection = $client->AgentConnection();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `agent_card_url` | `string` | Yes |  |
-| `auth_scheme` | `string` | Yes |  |
-| `can_configure` | `bool` | Yes |  |
-| `can_disconnect` | `bool` | Yes |  |
-| `can_setup` | `bool` | Yes |  |
+| `actions` | `array` | Yes |  |
+| `activity` | `array` | Yes |  |
+| `admin_disabled_at` | `mixed` | No |  |
+| `agent_tools` | `bool` | No |  |
+| `authentication` | `string` | Yes |  |
+| `authorized_at` | `mixed` | Yes |  |
+| `can_create_account` | `bool` | No | Whether another account can be created directly from this provider. |
+| `capabilities` | `array` | Yes |  |
+| `catalog_section` | `string` | No | Server-owned grouping in the agent integration catalog. |
+| `category` | `string` | No | Short product label, such as CRM or Email. |
+| `certification` | `string` | Yes |  |
+| `checked_at` | `mixed` | Yes |  |
 | `connection` | `array` | Yes |  |
-| `credential` | `mixed` | No | Write-only outbound key. |
-| `error_code` | `mixed` | Yes |  |
-| `expected_generation` | `int` | Yes |  |
+| `consent` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `creation_key` | `string` | No | Reuse the same key to recover the account after an interrupted response. |
+| `custodian_id` | `mixed` | Yes |  |
+| `description` | `string` | No | One-line catalog description of the app. |
+| `disabled_reason` | `mixed` | No |  |
+| `failure_code` | `mixed` | Yes |  |
 | `generation` | `int` | Yes |  |
+| `grants` | `array` | Yes |  |
+| `grants_pagination` | `array` | Yes |  |
 | `id` | `string` | Yes |  |
+| `limits` | `array` | Yes |  |
 | `name` | `string` | Yes |  |
-| `remote_agent` | `mixed` | Yes |  |
-| `requester_id` | `string` | Yes |  |
-| `retired_at` | `mixed` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `owner_name` | `string` | No |  |
+| `ownership_kind` | `string` | Yes |  |
+| `pagination` | `array` | Yes |  |
+| `policy_digest` | `string` | Yes |  |
+| `provider` | `array` | Yes |  |
+| `provider_disabled_reason` | `mixed` | No |  |
+| `provider_identity` | `array` | Yes |  |
 | `revoked_at` | `mixed` | Yes |  |
-| `scope_key` | `string` | Yes |  |
-| `source_operation_id` | `mixed` | Yes |  |
-| `state` | `string` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `agent_card_url` | - | - | - | - | - |
-| `auth_scheme` | - | - | - | - | - |
-| `can_configure` | - | - | - | - | - |
-| `can_disconnect` | - | - | - | - | - |
-| `can_setup` | - | - | - | - | - |
-| `connection` | - | - | - | - | - |
-| `credential` | - | - | - | - | - |
-| `error_code` | - | - | - | - | - |
-| `expected_generation` | - | - | - | - | - |
-| `generation` | - | - | - | - | - |
-| `id` | - | - | - | - | - |
-| `name` | - | - | - | - | - |
-| `remote_agent` | - | - | Yes | Yes | - |
-| `requester_id` | - | - | - | - | - |
-| `retired_at` | - | - | - | - | - |
-| `revoked_at` | - | - | - | - | - |
-| `scope_key` | - | - | - | - | - |
-| `source_operation_id` | - | - | Yes | - | - |
-| `state` | - | - | - | - | - |
+| `schema_version` | `int` | Yes |  |
+| `status` | `string` | Yes |  |
+| `toolkit` | `string` | Yes |  |
+| `triggers` | `array` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `user_id` | `string` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -1472,11 +3110,9 @@ Create a new entity with the given data. Returns the created entity and throws o
 
 ```php
 $result = $client->AgentConnection()->create([
-  "agent_id" => null, // string
   "organization_id" => null, // string
-  "agent_card_url" => null, // string
-  "auth_scheme" => null, // string
   "name" => null, // string
+  "toolkit" => null, // string
 ]);
 ```
 
@@ -1485,7 +3121,7 @@ $result = $client->AgentConnection()->create([
 List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
 
 ```php
-$results = $client->AgentConnection()->list(["agent_id" => "example", "organization_id" => "example"]);
+$results = $client->AgentConnection()->list(["organization_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -1493,7 +3129,19 @@ $results = $client->AgentConnection()->list(["agent_id" => "example", "organizat
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$result = $client->AgentConnection()->load(["id" => "agent_connection_id", "agent_id" => "agent_id", "organization_id" => "organization_id"]);
+$result = $client->AgentConnection()->load(["id" => "agent_connection_id", "organization_id" => "organization_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->AgentConnection()->patch([
+  "id" => "agent_connection_id",
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
 ```
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -1501,7 +3149,7 @@ $result = $client->AgentConnection()->load(["id" => "agent_connection_id", "agen
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
 
 ```php
-$result = $client->AgentConnection()->remove(["id" => "agent_connection_id", "agent_id" => "agent_id", "organization_id" => "organization_id"]);
+$result = $client->AgentConnection()->remove(["id" => "agent_connection_id", "organization_id" => "organization_id"]);
 ```
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
@@ -1511,7 +3159,6 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```php
 $result = $client->AgentConnection()->update([
   "id" => "agent_connection_id",
-  "agent_id" => "agent_id",
   "organization_id" => "organization_id",
   // Fields to update
 ]);
@@ -1538,6 +3185,429 @@ Set the entity match criteria.
 #### `make(): AgentConnectionEntity`
 
 Create a new `AgentConnectionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionDelegationEntity
+
+```php
+$agent_connection_delegation = $client->AgentConnectionDelegation();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `authorized_by_id` | `string` | Yes |  |
+| `automation_connection_grant_id` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `member_name` | `string` | Yes |  |
+| `revoked_at` | `mixed` | Yes |  |
+| `roles` | `array` | Yes |  |
+| `usable` | `bool` | Yes |  |
+| `user_id` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->AgentConnectionDelegation()->list(["agent_connection_id" => "example", "organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentConnectionDelegationEntity`
+
+Create a new `AgentConnectionDelegationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionGrantEntity
+
+```php
+$agent_connection_grant = $client->AgentConnectionGrant();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `actions` | `array` | Yes |  |
+| `agent_connection_id` | `string` | Yes |  |
+| `automation_id` | `string` | Yes |  |
+| `connection_generation` | `int` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `revision` | `int` | Yes |  |
+| `revoked_at` | `mixed` | Yes |  |
+| `status` | `string` | Yes |  |
+| `usable` | `bool` | Yes |  |
+| `user_id` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->AgentConnectionGrant()->list(["agent_connection_id" => "example", "organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentConnectionGrantEntity`
+
+Create a new `AgentConnectionGrantEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionResourceEntity
+
+```php
+$agent_connection_resource = $client->AgentConnectionResource();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cursor` | `mixed` | No |  |
+| `next_cursor` | `mixed` | Yes |  |
+| `query` | `string` | No |  |
+| `resources` | `array` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->AgentConnectionResource()->create([
+  "agent_connection_id" => null, // string
+  "organization_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentConnectionResourceEntity`
+
+Create a new `AgentConnectionResourceEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionSafetyControlEntity
+
+```php
+$agent_connection_safety_control = $client->AgentConnectionSafetyControl();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `admin_disabled_at` | `mixed` | No |  |
+| `authorized_at` | `mixed` | Yes |  |
+| `checked_at` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `custodian_id` | `mixed` | Yes |  |
+| `failure_code` | `mixed` | Yes |  |
+| `generation` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `owner_name` | `string` | No |  |
+| `ownership_kind` | `string` | Yes |  |
+| `provider_disabled_reason` | `mixed` | No |  |
+| `provider_identity` | `array` | Yes |  |
+| `revoked_at` | `mixed` | Yes |  |
+| `status` | `string` | Yes |  |
+| `toolkit` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `user_id` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->AgentConnectionSafetyControl()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentConnectionSafetyControlEntity`
+
+Create a new `AgentConnectionSafetyControlEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AgentConnectionTriggerSubscriptionEntity
+
+```php
+$agent_connection_trigger_subscription = $client->AgentConnectionTriggerSubscription();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_connection_id` | `string` | Yes |  |
+| `configuration` | `array` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `defaults` | `array` | Yes |  |
+| `delivery` | `string` | Yes |  |
+| `enabled` | `bool` | Yes |  |
+| `failure_code` | `mixed` | Yes |  |
+| `failure_request_id` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `latency` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `reconcile_at` | `string` | Yes |  |
+| `reconciliation_uncertain` | `bool` | Yes |  |
+| `remote_enabled` | `mixed` | Yes |  |
+| `replacement_id` | `mixed` | Yes |  |
+| `retired_at` | `mixed` | Yes |  |
+| `retirement_completed_at` | `mixed` | Yes |  |
+| `schema` | `array` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `toolkit` | `string` | Yes |  |
+| `toolkit_version` | `string` | Yes |  |
+| `trigger_slug` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `version` | `string` | Yes |  |
+| `waiting_for_retirement` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->AgentConnectionTriggerSubscription()->create([
+  "agent_connection_id" => null, // string
+  "organization_id" => null, // string
+  "configuration" => null, // array
+  "trigger_slug" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->AgentConnectionTriggerSubscription()->list(["agent_connection_id" => "example", "organization_id" => "example"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->AgentConnectionTriggerSubscription()->patch([
+  "id" => "agent_connection_trigger_subscription_id",
+  "agent_connection_id" => "agent_connection_id",
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->AgentConnectionTriggerSubscription()->remove(["id" => "agent_connection_trigger_subscription_id", "agent_connection_id" => "agent_connection_id", "organization_id" => "organization_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->AgentConnectionTriggerSubscription()->update([
+  "id" => "agent_connection_trigger_subscription_id",
+  "agent_connection_id" => "agent_connection_id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentConnectionTriggerSubscriptionEntity`
+
+Create a new `AgentConnectionTriggerSubscriptionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AgentContextCheckpointEntity
+
+```php
+$agent_context_checkpoint = $client->AgentContextCheckpoint();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentContextCheckpointEntity`
+
+Create a new `AgentContextCheckpointEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -1730,6 +3800,52 @@ Return the entity name.
 
 ---
 
+## AgentEventEntity
+
+```php
+$agent_event = $client->AgentEvent();
+```
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->AgentEvent()->list(["agent_id" => "example", "organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentEventEntity`
+
+Create a new `AgentEventEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## AgentFileEntity
 
 ```php
@@ -1864,28 +3980,35 @@ $agent_integration = $client->AgentIntegration();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `account_counts` | `array` | Yes | Accounts the viewer can see per toolkit, across all account pages. |
-| `accounts_path` | `string` | Yes | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
-| `added_toolkits` | `array` | Yes | Apps with a connected or connecting account the viewer can see. |
+| `can_cancel_sign_in` | `bool` | No | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `bool` | Yes |  |
+| `can_disconnect` | `bool` | Yes |  |
+| `can_enable` | `bool` | Yes |  |
 | `can_manage` | `bool` | Yes |  |
-| `can_manage_organization` | `bool` | Yes |  |
+| `can_manage_sharing` | `bool` | Yes |  |
+| `can_reconnect` | `bool` | Yes |  |
+| `can_sync` | `bool` | Yes | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
 | `catalog` | `array` | Yes |  |
-| `connect_as` | `mixed` | Yes | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
-| `connect_as_by_toolkit` | `array` | Yes | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_by` | `mixed` | Yes | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `bool` | Yes | True when the viewer is the person whose sign-in this account is. |
 | `connected_counts` | `array` | Yes | Signed-in accounts per toolkit, across all account pages. |
-| `connection_id` | `string` | Yes |  |
 | `connections` | `array` | Yes |  |
-| `email` | `array` | Yes | A native agent's own email address. |
-| `enabled` | `bool` | Yes |  |
-| `enabled_toolkits` | `array` | Yes | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `creation_key` | `string` | No | Stable identity for retrying this creation; retain it after an uncertain response. |
+| `creation_key_digest` | `mixed` | No | SHA-256 of the unfinished setup key for its original creator. |
 | `generation` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
 | `pagination` | `array` | Yes |  |
 | `pending_counts` | `array` | Yes | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
-| `personal_creation_key_supported` | `bool` | No | The personal account creation endpoint honors a creation key. |
-| `private_agent` | `bool` | Yes | Only the agent's owner can chat with it. |
-| `shared_agent_personal_accounts_enabled` | `bool` | Yes | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
-| `slack` | `array` | Yes |  |
-| `webhook_connections` | `array` | Yes |  |
-| `webhooks_available` | `bool` | Yes |  |
+| `provider_disabled_reason` | `mixed` | Yes |  |
+| `provider_identity` | `array` | Yes |  |
+| `provider_name` | `mixed` | Yes | The app's display name; null for a custom MCP server, which uses the account name. |
+| `reference` | `string` | Yes | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `string` | No | Agent account audience, including legacy personal and paused access. |
+| `status` | `string` | Yes |  |
+| `team_sharing_enabled` | `bool` | Yes |  |
+| `team_sharing_version` | `int` | Yes |  |
+| `toolkit` | `string` | Yes |  |
 
 ### Operations
 
@@ -1895,11 +4018,9 @@ Create a new entity with the given data. Returns the created entity and throws o
 
 ```php
 $result = $client->AgentIntegration()->create([
-  "agent_id" => null, // string
   "organization_id" => null, // string
-  "connection_id" => null, // string
-  "enabled" => null, // bool
-  "generation" => null, // int
+  "name" => null, // string
+  "toolkit" => null, // string
 ]);
 ```
 
@@ -1908,7 +4029,23 @@ $result = $client->AgentIntegration()->create([
 List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
 
 ```php
-$results = $client->AgentIntegration()->list(["agent_id" => "example", "organization_id" => "example"]);
+$results = $client->AgentIntegration()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->AgentIntegration()->load(["id" => "agent_integration_id", "organization_id" => "organization_id"]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->AgentIntegration()->remove(["id" => "agent_integration_id", "organization_id" => "organization_id"]);
 ```
 
 ### Common Methods
@@ -1932,6 +4069,124 @@ Set the entity match criteria.
 #### `make(): AgentIntegrationEntity`
 
 Create a new `AgentIntegrationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AgentIntegrationAccountEntity
+
+```php
+$agent_integration_account = $client->AgentIntegrationAccount();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_cancel_sign_in` | `bool` | No | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `bool` | Yes |  |
+| `can_disconnect` | `bool` | Yes |  |
+| `can_enable` | `bool` | Yes |  |
+| `can_manage_sharing` | `bool` | Yes |  |
+| `can_reconnect` | `bool` | Yes |  |
+| `can_sync` | `bool` | Yes | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
+| `connected_by` | `mixed` | Yes | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `bool` | Yes | True when the viewer is the person whose sign-in this account is. |
+| `creation_key_digest` | `mixed` | No | SHA-256 of the unfinished setup key for its original creator. |
+| `generation` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `provider_disabled_reason` | `mixed` | Yes |  |
+| `provider_identity` | `array` | Yes |  |
+| `reference` | `string` | Yes | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `string` | No | Agent account audience, including legacy personal and paused access. |
+| `status` | `string` | Yes |  |
+| `team_sharing_enabled` | `bool` | Yes |  |
+| `team_sharing_version` | `int` | Yes |  |
+| `toolkit` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->AgentIntegrationAccount()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentIntegrationAccountEntity`
+
+Create a new `AgentIntegrationAccountEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AgentIntegrationCallbackEntity
+
+```php
+$agent_integration_callback = $client->AgentIntegrationCallback();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->AgentIntegrationCallback()->load(["connection_id" => "connection_id", "state" => "state"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentIntegrationCallbackEntity`
+
+Create a new `AgentIntegrationCallbackEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -2732,6 +4987,162 @@ Return the entity name.
 
 ---
 
+## AgentRelayFileGrantEntity
+
+```php
+$agent_relay_file_grant = $client->AgentRelayFileGrant();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access_mode` | `string` | Yes |  |
+| `connection_generation` | `int` | Yes |  |
+| `connection_id` | `string` | Yes |  |
+| `connection_name` | `string` | Yes | Current display name of the selected account. |
+| `created_at` | `string` | Yes |  |
+| `expected_generation` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `resource_id` | `string` | Yes |  |
+| `resource_kind` | `string` | Yes |  |
+| `revoked` | `bool` | Yes |  |
+| `revoked_at` | `mixed` | Yes |  |
+| `snapshot_supported` | `bool` | No | Whether this selected permission supports snapshot controls. |
+| `source_operation_id` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->AgentRelayFileGrant()->create([
+  "organization_id" => null, // string
+  "access_mode" => null, // string
+  "connection_id" => null, // string
+  "expected_generation" => null, // int
+  "key" => null, // string
+  "resource_id" => null, // string
+  "resource_kind" => null, // string
+  "source_operation_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->AgentRelayFileGrant()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->AgentRelayFileGrant()->load(["id" => "agent_relay_file_grant_id", "organization_id" => "organization_id"]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->AgentRelayFileGrant()->remove(["id" => "agent_relay_file_grant_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentRelayFileGrantEntity`
+
+Create a new `AgentRelayFileGrantEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AgentRelayFileGrantAccountEntity
+
+```php
+$agent_relay_file_grant_account = $client->AgentRelayFileGrantAccount();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access_modes` | `array` | No | Supported file access modes. |
+| `generation` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `resource_kind` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->AgentRelayFileGrantAccount()->list(["organization_id" => "example", "source_operation_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentRelayFileGrantAccountEntity`
+
+Create a new `AgentRelayFileGrantAccountEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## AgentRepositoryEntity
 
 ```php
@@ -2848,6 +5259,52 @@ Set the entity match criteria.
 #### `make(): AgentResourceEntity`
 
 Create a new `AgentResourceEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AgentRoderEntity
+
+```php
+$agent_roder = $client->AgentRoder();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentRoderEntity`
+
+Create a new `AgentRoderEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -3051,6 +5508,183 @@ Return the entity name.
 
 ---
 
+## AgentSessionEntity
+
+```php
+$agent_session = $client->AgentSession();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentSessionEntity`
+
+Create a new `AgentSessionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AgentSessionCheckpointEntity
+
+```php
+$agent_session_checkpoint = $client->AgentSessionCheckpoint();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->AgentSessionCheckpoint()->create([
+  "agent_session_id" => null, // string
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->AgentSessionCheckpoint()->list(["agent_session_id" => "example", "organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->AgentSessionCheckpoint()->load(["id" => "agent_session_checkpoint_id", "agent_session_id" => "agent_session_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentSessionCheckpointEntity`
+
+Create a new `AgentSessionCheckpointEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AgentSessionRoderHandoffEntity
+
+```php
+$agent_session_roder_handoff = $client->AgentSessionRoderHandoff();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `checkpoint_id` | `string` | No | Public id of the checkpoint to hand off. |
+| `purpose` | `string` | No | Handoff intent; defaults to `continue`. |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->AgentSessionRoderHandoff()->create([
+  "agent_session_id" => null, // string
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentSessionRoderHandoffEntity`
+
+Create a new `AgentSessionRoderHandoffEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## AgentSettingEntity
 
 ```php
@@ -3170,23 +5804,39 @@ $agent_site = $client->AgentSite();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `deployed_at` | `string` | Yes |  |
-| `deployments_count` | `int` | Yes |  |
-| `hostname` | `string` | Yes |  |
-| `https` | `string` | Yes | Whether the organization's certificate serves this site over HTTPS |
+| `author` | `array` | Yes |  |
+| `can_message` | `bool` | Yes | The viewer may send input to the author agent |
+| `deployments_count` | `int` | Yes | Increases with every deploy of the site |
+| `description` | `mixed` | Yes | The team app description, when the site is a team app |
+| `icon_url` | `mixed` | Yes | Path of the site's generated icon, versioned by the picture; null until one is generated |
 | `id` | `string` | Yes |  |
-| `name` | `string` | Yes |  |
+| `name` | `string` | Yes | The site's DNS label |
+| `owner` | `array` | Yes | The person who controls the author agent |
+| `thread` | `mixed` | Yes | The thread that published the site as a team app, when the viewer can open the author agent |
+| `title` | `string` | Yes | The team app title, or the site name read as words |
 | `url` | `string` | Yes |  |
 | `visibility` | `string` | Yes |  |
 
 ### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
 
 #### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
 List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
 
 ```php
-$results = $client->AgentSite()->list(["agent_id" => "example", "organization_id" => "example"]);
+$results = $client->AgentSite()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->AgentSite()->load(["id" => "agent_site_id", "organization_id" => "organization_id"]);
 ```
 
 ### Common Methods
@@ -3229,15 +5879,19 @@ $agent_skill = $client->AgentSkill();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `available` | `bool` | Yes |  |
-| `can_configure` | `bool` | Yes |  |
-| `can_manage` | `bool` | Yes |  |
-| `configuration_state` | `string` | No | The requested managed skill selection is awaiting runtime qualification. |
-| `description` | `string` | Yes |  |
-| `enabled` | `bool` | Yes |  |
-| `name` | `string` | Yes |  |
+| `agents` | `array` | Yes | Active V2 agents the viewer can see whose owner is still a member |
+| `audience` | `array` | Yes |  |
+| `can_manage_library` | `bool` | Yes |  |
+| `content` | `string` | Yes | The skill's SKILL.md |
+| `files` | `array` | Yes |  |
+| `id` | `string` | No |  |
+| `marketplace` | `string` | No |  |
+| `pending` | `bool` | Yes | Some agent is still applying a change; check again shortly |
+| `plugin` | `string` | No | The marketplace entry id |
+| `revision` | `string` | Yes | The commit SHA returned by preview |
+| `skill` | `array` | Yes |  |
 | `skills` | `array` | Yes |  |
-| `version` | `string` | Yes |  |
+| `source` | `string` | No | owner/repo, a GitHub or skills.sh link, or npx skills add owner/repo [--skill NAME ...] |
 
 ### Operations
 
@@ -3247,11 +5901,10 @@ Create a new entity with the given data. Returns the created entity and throws o
 
 ```php
 $result = $client->AgentSkill()->create([
-  "agent_id" => null, // string
   "organization_id" => null, // string
-  "enabled" => null, // bool
-  "name" => null, // string
-  "version" => null, // string
+  "audience" => null, // array
+  "revision" => null, // string
+  "skills" => null, // array
 ]);
 ```
 
@@ -3260,8 +5913,28 @@ $result = $client->AgentSkill()->create([
 List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
 
 ```php
-$results = $client->AgentSkill()->list(["agent_id" => "example", "organization_id" => "example"]);
+$results = $client->AgentSkill()->list(["organization_id" => "example"]);
 ```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->AgentSkill()->load(["id" => "agent_skill_id", "organization_id" => "organization_id"]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->AgentSkill()->remove(["id" => "agent_skill_id", "organization_id" => "organization_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
 
 ### Common Methods
 
@@ -3455,6 +6128,181 @@ Return the entity name.
 
 ---
 
+## AgentSwarmEntity
+
+```php
+$agent_swarm = $client->AgentSwarm();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `base_bookmark` | `mixed` | Yes | An existing bookmark to start from and land on; the plain form of `target.kind = bookmark`. |
+| `base_ref` | `mixed` | Yes |  |
+| `base_revision` | `mixed` | Yes | 64-hex commit id; skips the head lookup |
+| `budget` | `array` | Yes |  |
+| `canceled_at` | `mixed` | Yes |  |
+| `canceled_count` | `int` | Yes |  |
+| `concurrency_key` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `creator_user_id` | `mixed` | Yes |  |
+| `deadline_at` | `mixed` | Yes |  |
+| `display_id` | `int` | Yes |  |
+| `done_count` | `int` | Yes |  |
+| `environment` | `array` | Yes |  |
+| `failed_count` | `int` | Yes |  |
+| `finished_at` | `mixed` | Yes |  |
+| `finished_at_label` | `mixed` | Yes |  |
+| `github` | `array` | Yes |  |
+| `goal` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `model` | `mixed` | Yes |  |
+| `model_provider` | `mixed` | Yes |  |
+| `number` | `int` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `organization_slug` | `mixed` | Yes |  |
+| `outcome` | `mixed` | Yes |  |
+| `phase` | `mixed` | Yes |  |
+| `policy` | `array` | Yes | Every key is optional and defaults to AgentSwarm::POLICY_DEFAULTS. |
+| `queued_at` | `mixed` | Yes |  |
+| `queued_at_label` | `mixed` | Yes |  |
+| `repository` | `string` | No | Repository slug inside the organization |
+| `repository_id` | `mixed` | Yes |  |
+| `repository_slug` | `mixed` | Yes |  |
+| `reserved` | `array` | Yes |  |
+| `scheduler_generation` | `int` | Yes |  |
+| `skipped_count` | `int` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `started_at` | `mixed` | Yes |  |
+| `started_at_label` | `mixed` | Yes |  |
+| `status` | `string` | Yes |  |
+| `summary` | `array` | Yes |  |
+| `target` | `array` | Yes | Where the swarm lands. |
+| `task_count` | `int` | Yes |  |
+| `task_template_json` | `mixed` | Yes |  |
+| `tasks` | `array` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+| `usage` | `array` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update |
+| --- | --- | --- | --- | --- |
+| `base_bookmark` | - | - | Yes | - |
+| `base_ref` | - | - | Yes | - |
+| `base_revision` | - | - | Yes | - |
+| `budget` | - | - | Yes | - |
+| `canceled_at` | - | - | - | - |
+| `canceled_count` | - | - | - | - |
+| `concurrency_key` | - | - | Yes | - |
+| `created_at` | - | - | - | - |
+| `created_at_label` | - | - | - | - |
+| `creator_user_id` | - | - | - | - |
+| `deadline_at` | - | - | - | - |
+| `display_id` | - | - | - | - |
+| `done_count` | - | - | - | - |
+| `environment` | - | - | Yes | - |
+| `failed_count` | - | - | - | - |
+| `finished_at` | - | - | - | - |
+| `finished_at_label` | - | - | - | - |
+| `github` | - | - | - | - |
+| `goal` | - | - | Yes | - |
+| `id` | - | - | - | - |
+| `model` | - | - | Yes | - |
+| `model_provider` | - | - | Yes | - |
+| `number` | - | - | - | - |
+| `organization_id` | - | - | - | - |
+| `organization_slug` | - | - | - | - |
+| `outcome` | - | - | - | - |
+| `phase` | - | - | - | - |
+| `policy` | - | - | Yes | - |
+| `queued_at` | - | - | Yes | - |
+| `queued_at_label` | - | - | - | - |
+| `repository` | - | - | - | - |
+| `repository_id` | - | - | - | - |
+| `repository_slug` | - | - | - | - |
+| `reserved` | - | - | - | - |
+| `scheduler_generation` | - | - | - | - |
+| `skipped_count` | - | - | - | - |
+| `slug` | - | - | Yes | - |
+| `started_at` | - | - | - | - |
+| `started_at_label` | - | - | - | - |
+| `status` | - | - | - | - |
+| `summary` | - | - | - | - |
+| `target` | - | - | - | - |
+| `task_count` | - | - | - | - |
+| `task_template_json` | - | - | Yes | - |
+| `tasks` | - | - | Yes | - |
+| `updated_at` | - | - | - | - |
+| `updated_at_label` | - | - | - | - |
+| `usage` | - | - | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->AgentSwarm()->create([
+  "organization_slug" => null, // mixed
+  "target" => null, // array
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->AgentSwarm()->list(["org" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->AgentSwarm()->load(["id" => "agent_swarm_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentSwarmEntity`
+
+Create a new `AgentSwarmEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## AgentTeammateEntity
 
 ```php
@@ -3563,30 +6411,7 @@ $agent_thread = $client->AgentThread();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_count` | `mixed` | No | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` | `bool` | Yes |  |
-| `execution` | `mixed` | No |  |
-| `first_input` | `mixed` | No |  |
-| `first_input_key` | `string` | No | Idempotency-Key that finds the first message through input_delivery. |
-| `first_input_requester_membership_id` | `string` | No | Membership the first message was sent as, for input_delivery. |
 | `id` | `string` | No |  |
-| `inherit_context` | `bool` | No | Include the source conversation through its last completed reply. |
-| `local_activities` | `array` | Yes | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | `int` | Yes | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` | `mixed` | Yes |  |
-| `local_scope_key` | `mixed` | Yes |  |
-| `local_status_pending` | `bool` | Yes | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` | `array` | Yes |  |
-| `main_thread_id` | `string` | Yes |  |
-| `message` | `string` | No | The thread's first message. |
-| `next_cursor` | `mixed` | Yes |  |
-| `parent_conversation_id` | `string` | No | Optional source conversation belonging to this agent. |
-| `requester_membership_id` | `string` | No |  |
-| `selected_thread` | `mixed` | Yes |  |
-| `thread` | `array` | Yes |  |
-| `threads` | `array` | Yes |  |
-| `title` | `string` | No |  |
-| `total_archived_count` | `mixed` | Yes | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
 
 ### Operations
 
@@ -3596,8 +6421,6 @@ Create a new entity with the given data. Returns the created entity and throws o
 
 ```php
 $result = $client->AgentThread()->create([
-  "agent_id" => null, // string
-  "organization_id" => null, // string
 ]);
 ```
 
@@ -3606,7 +6429,15 @@ $result = $client->AgentThread()->create([
 List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
 
 ```php
-$results = $client->AgentThread()->list(["agent_id" => "example", "organization_id" => "example"]);
+$results = $client->AgentThread()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->AgentThread()->load(["id" => "agent_thread_id"]);
 ```
 
 ### Common Methods
@@ -3684,6 +6515,65 @@ Set the entity match criteria.
 #### `make(): AgentToolEntity`
 
 Create a new `AgentToolEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AgentUsageEntity
+
+```php
+$agent_usage = $client->AgentUsage();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `days` | `array` | Yes | One cell per (day, model), ascending by day then model. |
+| `ended_at` | `string` | Yes |  |
+| `pricing_version` | `string` | Yes | The price table in effect now; rows carry the version they were priced at. |
+| `source` | `string` | Yes | Which store served the rows. |
+| `started_at` | `string` | Yes |  |
+| `user_days` | `array` | Yes | One cell per (day, person), ascending by day. |
+| `users` | `array` | Yes | One row per (person, model), descending by tokens. |
+| `window` | `string` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->AgentUsage()->load(["organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentUsageEntity`
+
+Create a new `AgentUsageEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -3802,6 +6692,61 @@ Set the entity match criteria.
 #### `make(): AgentWaitEntity`
 
 Create a new `AgentWaitEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AgentWebPreviewEntity
+
+```php
+$agent_web_preview = $client->AgentWebPreview();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `description` | `mixed` | Yes |  |
+| `icon_url` | `mixed` | Yes |  |
+| `image_url` | `mixed` | Yes |  |
+| `title` | `mixed` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->AgentWebPreview()->list(["token" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgentWebPreviewEntity`
+
+Create a new `AgentWebPreviewEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -4450,6 +7395,190 @@ Return the entity name.
 
 ---
 
+## AgreementEntity
+
+```php
+$agreement = $client->Agreement();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `body` | `mixed` | Yes | Markdown text, or null until staff grant the organization access. |
+| `effective_on_label` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `summary` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `version` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->Agreement()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgreementEntity`
+
+Create a new `AgreementEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AgreementAccessRequestEntity
+
+```php
+$agreement_access_request = $client->AgreementAccessRequest();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->AgreementAccessRequest()->create([
+  "organization_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AgreementAccessRequestEntity`
+
+Create a new `AgreementAccessRequestEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AlertRuleEventEntity
+
+```php
+$alert_rule_event = $client->AlertRuleEvent();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->AlertRuleEvent()->create([
+  "alert_rule_id" => null, // string
+  "space_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->AlertRuleEvent()->list(["alert_rule_id" => "example", "space_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->AlertRuleEvent()->load(["id" => "alert_rule_event_id", "alert_rule_id" => "alert_rule_id", "space_id" => "space_id"]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->AlertRuleEvent()->remove(["id" => "alert_rule_event_id", "alert_rule_id" => "alert_rule_id", "space_id" => "space_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AlertRuleEventEntity`
+
+Create a new `AlertRuleEventEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## AllocationLogEntity
 
 ```php
@@ -4641,6 +7770,94 @@ Set the entity match criteria.
 #### `make(): AppEntity`
 
 Create a new `AppEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AppAccessEntity
+
+```php
+$app_access = $client->AppAccess();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AppAccessEntity`
+
+Create a new `AppAccessEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AppAccessJwkEntity
+
+```php
+$app_access_jwk = $client->AppAccessJwk();
+```
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->AppAccessJwk()->list();
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AppAccessJwkEntity`
+
+Create a new `AppAccessJwkEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -6859,6 +10076,876 @@ Return the entity name.
 
 ---
 
+## ArtefactEntity
+
+```php
+$artefact = $client->Artefact();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `automation_invocation_id` | `mixed` | No |  |
+| `byte_size` | `int` | Yes |  |
+| `checksum_sha256` | `string` | Yes |  |
+| `content_type` | `string` | Yes |  |
+| `created_at` | `mixed` | No |  |
+| `created_by_user_id` | `mixed` | No |  |
+| `description` | `mixed` | No |  |
+| `document_key` | `string` | No | Stable document identity shared by all revisions. |
+| `entrypoint` | `string` | No |  |
+| `expires_at` | `mixed` | No |  |
+| `filename` | `string` | Yes |  |
+| `files` | `array` | No |  |
+| `harness` | `mixed` | No |  |
+| `harness_version` | `mixed` | No |  |
+| `id` | `string` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `model` | `mixed` | No |  |
+| `organization_id` | `string` | Yes |  |
+| `published_at` | `mixed` | No |  |
+| `repository_id` | `mixed` | No |  |
+| `slug` | `string` | Yes |  |
+| `source` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `vcs_agent_checkpoint_id` | `mixed` | No |  |
+| `vcs_agent_session_id` | `mixed` | No |  |
+| `version` | `int` | Yes |  |
+| `view_url` | `string` | Yes |  |
+| `web_url` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- | --- |
+| `automation_invocation_id` | - | - | - | - | - | - |
+| `byte_size` | - | - | - | - | - | - |
+| `checksum_sha256` | - | - | - | - | - | - |
+| `content_type` | - | - | - | - | - | - |
+| `created_at` | - | - | - | - | - | - |
+| `created_by_user_id` | - | - | - | - | - | - |
+| `description` | - | - | - | - | - | - |
+| `document_key` | - | - | - | - | - | - |
+| `entrypoint` | - | - | - | - | - | - |
+| `expires_at` | - | - | - | - | - | - |
+| `filename` | - | - | - | - | - | - |
+| `files` | - | - | - | - | - | - |
+| `harness` | - | - | - | - | - | - |
+| `harness_version` | - | - | - | - | - | - |
+| `id` | - | - | - | - | - | - |
+| `kind` | - | - | - | - | Yes | - |
+| `model` | - | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - | - |
+| `published_at` | - | - | - | - | - | - |
+| `repository_id` | - | - | - | - | - | - |
+| `slug` | - | - | - | - | - | - |
+| `source` | - | - | - | - | - | - |
+| `status` | - | - | - | - | - | - |
+| `title` | - | - | - | - | Yes | - |
+| `vcs_agent_checkpoint_id` | - | - | - | - | - | - |
+| `vcs_agent_session_id` | - | - | - | - | - | - |
+| `version` | - | - | - | - | - | - |
+| `view_url` | - | - | - | - | - | - |
+| `web_url` | - | - | - | - | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->Artefact()->create([
+  "organization_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->Artefact()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->Artefact()->load(["id" => "artefact_id", "organization_id" => "organization_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->Artefact()->patch([
+  "id" => "artefact_id",
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->Artefact()->remove(["id" => "artefact_id", "organization_id" => "organization_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->Artefact()->update([
+  "id" => "artefact_id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ArtefactEntity`
+
+Create a new `ArtefactEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ArtefactCommentThreadEntity
+
+```php
+$artefact_comment_thread = $client->ArtefactCommentThread();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `anchor` | `string` | Yes | The `#anchor` written into the Markdown. |
+| `body` | `string` | Yes |  |
+| `comments` | `array` | Yes |  |
+| `id` | `string` | Yes | The anchor key. |
+| `quote` | `string` | No |  |
+| `resolved` | `bool` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | update |
+| --- | --- | --- | --- |
+| `anchor` | - | - | - |
+| `body` | - | - | - |
+| `comments` | - | - | - |
+| `id` | - | - | - |
+| `quote` | Yes | - | Yes |
+| `resolved` | - | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ArtefactCommentThread()->create([
+  "artefact_id" => null, // string
+  "organization_id" => null, // string
+  "anchor" => null, // string
+  "body" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ArtefactCommentThread()->list(["artefact_id" => "example", "organization_id" => "example"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->ArtefactCommentThread()->update([
+  "artefact_id" => "artefact_id",
+  "id" => "id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ArtefactCommentThreadEntity`
+
+Create a new `ArtefactCommentThreadEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ArtefactRevisionEntity
+
+```php
+$artefact_revision = $client->ArtefactRevision();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `base_version` | `int` | Yes | The newest version the editor started from. |
+| `content` | `string` | Yes | Markdown, including CriticMarkup suggestions and comment anchors. |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ArtefactRevision()->create([
+  "artefact_id" => null, // string
+  "organization_id" => null, // string
+  "base_version" => null, // int
+  "content" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ArtefactRevisionEntity`
+
+Create a new `ArtefactRevisionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ArtefactViewTokenEntity
+
+```php
+$artefact_view_token = $client->ArtefactViewToken();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `expires_in` | `int` | Yes |  |
+| `file` | `string` | No | Exact manifest path. |
+| `organization_slug` | `string` | No | If provided, must match the organization addressed by the route. |
+| `version` | `int` | No |  |
+| `viewer_url` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ArtefactViewToken()->create([
+  "artefact_id" => null, // string
+  "organization_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ArtefactViewTokenEntity`
+
+Create a new `ArtefactViewTokenEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ArtifactEntity
+
+```php
+$artifact = $client->Artifact();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->Artifact()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->Artifact()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->Artifact()->load(["id" => "artifact_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->Artifact()->patch([
+  "id" => "artifact_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->Artifact()->remove(["id" => "artifact_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->Artifact()->update([
+  "id" => "artifact_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ArtifactEntity`
+
+Create a new `ArtifactEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ArtifactCacheNamespaceEntity
+
+```php
+$artifact_cache_namespace = $client->ArtifactCacheNamespace();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ArtifactCacheNamespace()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ArtifactCacheNamespace()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ArtifactCacheNamespace()->load(["id" => "artifact_cache_namespace_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->ArtifactCacheNamespace()->patch([
+  "id" => "artifact_cache_namespace_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->ArtifactCacheNamespace()->remove(["id" => "artifact_cache_namespace_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->ArtifactCacheNamespace()->update([
+  "id" => "artifact_cache_namespace_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ArtifactCacheNamespaceEntity`
+
+Create a new `ArtifactCacheNamespaceEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ArtifactImageRepositoryEntity
+
+```php
+$artifact_image_repository = $client->ArtifactImageRepository();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ArtifactImageRepository()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ArtifactImageRepository()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ArtifactImageRepository()->load(["id" => "artifact_image_repository_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->ArtifactImageRepository()->patch([
+  "id" => "artifact_image_repository_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->ArtifactImageRepository()->remove(["id" => "artifact_image_repository_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->ArtifactImageRepository()->update([
+  "id" => "artifact_image_repository_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ArtifactImageRepositoryEntity`
+
+Create a new `ArtifactImageRepositoryEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ArtifactPackageMirrorEntity
+
+```php
+$artifact_package_mirror = $client->ArtifactPackageMirror();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ArtifactPackageMirror()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ArtifactPackageMirror()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ArtifactPackageMirror()->load(["id" => "artifact_package_mirror_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->ArtifactPackageMirror()->patch([
+  "id" => "artifact_package_mirror_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->ArtifactPackageMirror()->remove(["id" => "artifact_package_mirror_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->ArtifactPackageMirror()->update([
+  "id" => "artifact_package_mirror_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ArtifactPackageMirrorEntity`
+
+Create a new `ArtifactPackageMirrorEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ArtifactRetentionPolicyEntity
+
+```php
+$artifact_retention_policy = $client->ArtifactRetentionPolicy();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ArtifactRetentionPolicy()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ArtifactRetentionPolicy()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ArtifactRetentionPolicy()->load(["id" => "artifact_retention_policy_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->ArtifactRetentionPolicy()->patch([
+  "id" => "artifact_retention_policy_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->ArtifactRetentionPolicy()->remove(["id" => "artifact_retention_policy_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->ArtifactRetentionPolicy()->update([
+  "id" => "artifact_retention_policy_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ArtifactRetentionPolicyEntity`
+
+Create a new `ArtifactRetentionPolicyEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## AttachmentPartEntity
 
 ```php
@@ -6908,6 +10995,413 @@ Set the entity match criteria.
 #### `make(): AttachmentPartEntity`
 
 Create a new `AttachmentPartEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AuditEventEntity
+
+```php
+$audit_event = $client->AuditEvent();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `actor_kind` | `string` | Yes |  |
+| `actor_user_id` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `observability_space_id` | `mixed` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `payload` | `mixed` | Yes |  |
+| `request_id` | `mixed` | Yes |  |
+| `severity` | `string` | Yes |  |
+| `subject_id` | `string` | Yes |  |
+| `subject_kind` | `string` | Yes |  |
+| `subject_name` | `mixed` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->AuditEvent()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AuditEventEntity`
+
+Create a new `AuditEventEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AuthEntity
+
+```php
+$auth = $client->Auth();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AuthEntity`
+
+Create a new `AuthEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AuthCliEntity
+
+```php
+$auth_cli = $client->AuthCli();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AuthCliEntity`
+
+Create a new `AuthCliEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AuthGithubEntity
+
+```php
+$auth_github = $client->AuthGithub();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AuthGithubEntity`
+
+Create a new `AuthGithubEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AuthGoogleEntity
+
+```php
+$auth_google = $client->AuthGoogle();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AuthGoogleEntity`
+
+Create a new `AuthGoogleEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AuthOpenaiEntity
+
+```php
+$auth_openai = $client->AuthOpenai();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AuthOpenaiEntity`
+
+Create a new `AuthOpenaiEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AuthPasswordResetEntity
+
+```php
+$auth_password_reset = $client->AuthPasswordReset();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email` | `string` | Yes |  |
+| `message` | `string` | Yes |  |
+| `password` | `string` | Yes |  |
+| `token` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->AuthPasswordReset()->create([
+  "email" => null, // string
+]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->AuthPasswordReset()->update([
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AuthPasswordResetEntity`
+
+Create a new `AuthPasswordResetEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## AuthRegistrationOptionEntity
+
+```php
+$auth_registration_option = $client->AuthRegistrationOption();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email_password_signup_enabled` | `bool` | Yes |  |
+| `openai_sign_in_enabled` | `bool` | No | Whether ChatGPT identity sign-in is configured and enabled for rollout. |
+| `turnstile_site_key` | `mixed` | Yes |  |
+| `waitlist_enabled` | `bool` | Yes | New public signups require waitlist approval when enabled. |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->AuthRegistrationOption()->list();
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AuthRegistrationOptionEntity`
+
+Create a new `AuthRegistrationOptionEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -7075,6 +11569,1104 @@ Set the entity match criteria.
 #### `make(): AutomationRunEntity`
 
 Create a new `AutomationRunEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BackendRunnerPoolEntity
+
+```php
+$backend_runner_pool = $client->BackendRunnerPool();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->BackendRunnerPool()->create([
+  "backend_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->BackendRunnerPool()->list(["backend_id" => "example"]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->BackendRunnerPool()->remove(["id" => "backend_runner_pool_id", "backend_id" => "backend_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BackendRunnerPoolEntity`
+
+Create a new `BackendRunnerPoolEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BazelEntity
+
+```php
+$bazel = $client->Bazel();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BazelEntity`
+
+Create a new `BazelEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BazelActionResultEntity
+
+```php
+$bazel_action_result = $client->BazelActionResult();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->BazelActionResult()->load(["id" => "bazel_action_result_id", "action_result_id" => "action_result_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->BazelActionResult()->update([
+  "id" => "bazel_action_result_id",
+  "action_result_id" => "action_result_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BazelActionResultEntity`
+
+Create a new `BazelActionResultEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BazelBackendEntity
+
+```php
+$bazel_backend = $client->BazelBackend();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->BazelBackend()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->BazelBackend()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->BazelBackend()->load(["id" => "bazel_backend_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->BazelBackend()->patch([
+  "id" => "bazel_backend_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->BazelBackend()->remove(["id" => "bazel_backend_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->BazelBackend()->update([
+  "id" => "bazel_backend_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BazelBackendEntity`
+
+Create a new `BazelBackendEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BazelBlobEntity
+
+```php
+$bazel_blob = $client->BazelBlob();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->BazelBlob()->load(["id" => "bazel_blob_id", "blob_id" => "blob_id", "hash" => "hash"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->BazelBlob()->update([
+  "id" => "bazel_blob_id",
+  "blob_id" => "blob_id",
+  "hash" => "hash",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BazelBlobEntity`
+
+Create a new `BazelBlobEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BazelExecutionEntity
+
+```php
+$bazel_execution = $client->BazelExecution();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->BazelExecution()->create([
+]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->BazelExecution()->load(["id" => "bazel_execution_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BazelExecutionEntity`
+
+Create a new `BazelExecutionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BazelFindMissingBlobEntity
+
+```php
+$bazel_find_missing_blob = $client->BazelFindMissingBlob();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->BazelFindMissingBlob()->create([
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BazelFindMissingBlobEntity`
+
+Create a new `BazelFindMissingBlobEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BillingEntity
+
+```php
+$billing = $client->Billing();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `array` | Yes |  |
+| `breakdown` | `mixed` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `mixed` | Yes |  |
+| `can_manage_contact` | `bool` | Yes |  |
+| `can_manage_extra_spend` | `bool` | Yes |  |
+| `can_manage_local_subscription` | `bool` | Yes |  |
+| `can_manage_payment_method` | `bool` | Yes |  |
+| `can_set_up_billing` | `bool` | Yes |  |
+| `customer` | `mixed` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `entitlements` | `array` | Yes |  |
+| `extra_spend_enabled` | `bool` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `mixed` | Yes |  |
+| `prepaid` | `mixed` | Yes |  |
+| `preview` | `mixed` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `array` | Yes |  |
+| `stripe` | `array` | Yes |  |
+| `subscription` | `mixed` | Yes |  |
+| `token_account` | `array` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->Billing()->load(["organization_id" => "organization_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BillingEntity`
+
+Create a new `BillingEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BillingAddonEntity
+
+```php
+$billing_addon = $client->BillingAddon();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `array` | Yes |  |
+| `breakdown` | `mixed` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `mixed` | Yes |  |
+| `can_manage_contact` | `bool` | Yes |  |
+| `can_manage_extra_spend` | `bool` | Yes |  |
+| `can_manage_local_subscription` | `bool` | Yes |  |
+| `can_manage_payment_method` | `bool` | Yes |  |
+| `can_set_up_billing` | `bool` | Yes |  |
+| `customer` | `mixed` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `entitlements` | `array` | Yes |  |
+| `extra_spend_enabled` | `bool` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Yes | Whether the `billing` feature is on for this organization. |
+| `id` | `string` | No |  |
+| `organization_id` | `string` | Yes |  |
+| `package` | `mixed` | Yes |  |
+| `prepaid` | `mixed` | Yes |  |
+| `preview` | `mixed` | Yes | Metronome draft invoice and credits, or null. |
+| `quantity` | `int` | Yes |  |
+| `storage_usage` | `array` | Yes |  |
+| `stripe` | `array` | Yes |  |
+| `subscription` | `mixed` | Yes |  |
+| `token_account` | `array` | Yes |  |
+
+### Operations
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->BillingAddon()->update([
+  "id" => "id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BillingAddonEntity`
+
+Create a new `BillingAddonEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BillingCheckoutSessionEntity
+
+```php
+$billing_checkout_session = $client->BillingCheckoutSession();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cancel_url` | `string` | No |  |
+| `coupon_code` | `string` | No |  |
+| `entry_point` | `string` | No | Where the owner chose to pay, for product analytics. |
+| `package_key` | `string` | No |  |
+| `package_revision` | `int` | No |  |
+| `success_url` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->BillingCheckoutSession()->create([
+  "organization_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BillingCheckoutSessionEntity`
+
+Create a new `BillingCheckoutSessionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BillingInvoiceEntity
+
+```php
+$billing_invoice = $client->BillingInvoice();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `amount_due_cents` | `int` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `currency` | `string` | Yes |  |
+| `hosted_invoice_url` | `mixed` | No |  |
+| `id` | `string` | Yes |  |
+| `invoice_pdf` | `mixed` | No |  |
+| `metronome_invoice_id` | `mixed` | No | Metronome's id for the invoice it pushed |
+| `number` | `mixed` | No |  |
+| `period_ended_at` | `mixed` | No |  |
+| `period_started_at` | `mixed` | No |  |
+| `status` | `string` | Yes |  |
+| `total_cents` | `int` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->BillingInvoice()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BillingInvoiceEntity`
+
+Create a new `BillingInvoiceEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BillingPackageEntity
+
+```php
+$billing_package = $client->BillingPackage();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `array` | Yes |  |
+| `base_price_cents` | `int` | Yes |  |
+| `billing_interval` | `string` | Yes |  |
+| `billing_policy` | `string` | Yes |  |
+| `ci_included_spend_cents` | `int` | No | Monthly USD credit in cents shared by all CI charges, including runners, cache, storage and add-ons; replaces CI unit allowances when positive. |
+| `currency` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `max_seats` | `mixed` | No |  |
+| `name` | `string` | Yes |  |
+| `pay_as_you_go_enabled` | `bool` | Yes |  |
+| `rates` | `array` | Yes |  |
+| `revision` | `int` | Yes |  |
+| `roder_daily_run_limit` | `int` | No |  |
+| `roder_run_concurrency_limit` | `int` | No |  |
+| `seat_price_cents` | `int` | Yes |  |
+| `trial_days` | `int` | Yes |  |
+| `visibility` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->BillingPackage()->list();
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BillingPackageEntity`
+
+Create a new `BillingPackageEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BillingPortalSessionEntity
+
+```php
+$billing_portal_session = $client->BillingPortalSession();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `return_url` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->BillingPortalSession()->create([
+  "organization_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BillingPortalSessionEntity`
+
+Create a new `BillingPortalSessionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BillingPrepaidPeriodEntity
+
+```php
+$billing_prepaid_period = $client->BillingPrepaidPeriod();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_at` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `currency` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_error` | `mixed` | Yes |  |
+| `minutes` | `int` | Yes |  |
+| `net_amount_cents` | `int` | Yes |  |
+| `paid_at` | `mixed` | Yes |  |
+| `paid_total_cents` | `mixed` | Yes |  |
+| `payment_action_url` | `mixed` | Yes |  |
+| `period_ended_at` | `string` | Yes |  |
+| `period_started_at` | `string` | Yes |  |
+| `receipt_url` | `mixed` | Yes |  |
+| `refunded_net_cents` | `int` | Yes |  |
+| `state` | `string` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->BillingPrepaidPeriod()->load(["id" => "billing_prepaid_period_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BillingPrepaidPeriodEntity`
+
+Create a new `BillingPrepaidPeriodEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BillingPrepaidPurchaseEntity
+
+```php
+$billing_prepaid_purchase = $client->BillingPrepaidPurchase();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_at` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `currency` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_error` | `mixed` | Yes |  |
+| `minutes` | `int` | Yes |  |
+| `net_amount_cents` | `int` | Yes |  |
+| `paid_at` | `mixed` | Yes |  |
+| `paid_total_cents` | `mixed` | Yes |  |
+| `payment_action_url` | `mixed` | Yes |  |
+| `prepaid` | `array` | Yes |  |
+| `purchase` | `array` | Yes |  |
+| `receipt_url` | `mixed` | Yes |  |
+| `refunded_net_cents` | `int` | Yes |  |
+| `request_key` | `string` | Yes |  |
+| `state` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->BillingPrepaidPurchase()->create([
+  "organization_id" => null, // string
+  "minutes" => null, // int
+  "request_key" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->BillingPrepaidPurchase()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->BillingPrepaidPurchase()->load(["id" => "billing_prepaid_purchase_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BillingPrepaidPurchaseEntity`
+
+Create a new `BillingPrepaidPurchaseEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BillingTokenTopUpEntity
+
+```php
+$billing_token_top_up = $client->BillingTokenTopUp();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `amount_cents` | `int` | Yes |  |
+| `request_key` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->BillingTokenTopUp()->create([
+  "organization_id" => null, // string
+  "amount_cents" => null, // int
+  "request_key" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BillingTokenTopUpEntity`
+
+Create a new `BillingTokenTopUpEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BillingUsageEntity
+
+```php
+$billing_usage = $client->BillingUsage();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BillingUsageEntity`
+
+Create a new `BillingUsageEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -7284,6 +12876,85 @@ Set the entity match criteria.
 #### `make(): BinaryVersionEntity`
 
 Create a new `BinaryVersionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BookmarkProtectionRefreshGithubRequiredCheckEntity
+
+```php
+$bookmark_protection_refresh_github_required_check = $client->BookmarkProtectionRefreshGithubRequiredCheck();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `exclusions` | `array` | Yes |  |
+| `fetched_at` | `mixed` | No |  |
+| `fetched_at_label` | `mixed` | No |  |
+| `github_branch` | `string` | Yes |  |
+| `github_owner` | `mixed` | No |  |
+| `github_repository_name` | `mixed` | No |  |
+| `last_error` | `mixed` | No |  |
+| `proven` | `bool` | Yes |  |
+| `requirements` | `array` | Yes |  |
+| `stale` | `bool` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | create |
+| --- | --- |
+| `exclusions` | - |
+| `fetched_at` | - |
+| `fetched_at_label` | - |
+| `github_branch` | Yes |
+| `github_owner` | - |
+| `github_repository_name` | - |
+| `last_error` | - |
+| `proven` | - |
+| `requirements` | - |
+| `stale` | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->BookmarkProtectionRefreshGithubRequiredCheck()->create([
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BookmarkProtectionRefreshGithubRequiredCheckEntity`
+
+Create a new `BookmarkProtectionRefreshGithubRequiredCheckEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -7923,6 +13594,108 @@ Return the entity name.
 
 ---
 
+## CacheNamespaceEntryEntity
+
+```php
+$cache_namespace_entry = $client->CacheNamespaceEntry();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->CacheNamespaceEntry()->create([
+  "cache_namespace_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->CacheNamespaceEntry()->list(["cache_namespace_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->CacheNamespaceEntry()->load(["id" => "cache_namespace_entry_id", "cache_namespace_id" => "cache_namespace_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->CacheNamespaceEntry()->patch([
+  "id" => "cache_namespace_entry_id",
+  "cache_namespace_id" => "cache_namespace_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->CacheNamespaceEntry()->remove(["id" => "cache_namespace_entry_id", "cache_namespace_id" => "cache_namespace_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->CacheNamespaceEntry()->update([
+  "id" => "cache_namespace_entry_id",
+  "cache_namespace_id" => "cache_namespace_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): CacheNamespaceEntryEntity`
+
+Create a new `CacheNamespaceEntryEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## CatalogSelectorEntity
 
 ```php
@@ -8353,6 +14126,2004 @@ Return the entity name.
 
 ---
 
+## ChangeEntity
+
+```php
+$change = $client->Change();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `counts` | `array` | Yes | Counts for each state across the active non-state filters. |
+| `filters` | `array` | Yes |  |
+| `github_sync` | `array` | Yes |  |
+| `result` | `mixed` | Yes | What this page is a page of. |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->Change()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ChangeEntity`
+
+Create a new `ChangeEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ChangeAssetEntity
+
+```php
+$change_asset = $client->ChangeAsset();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `alias` | `string` | Yes |  |
+| `byte_size` | `int` | Yes |  |
+| `checksum_md5` | `string` | Yes |  |
+| `checksum_sha256` | `string` | Yes |  |
+| `content_type` | `string` | Yes |  |
+| `filename` | `string` | Yes |  |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ChangeAsset()->create([
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+  "alias" => null, // string
+  "byte_size" => null, // int
+  "checksum_md5" => null, // string
+  "checksum_sha256" => null, // string
+  "content_type" => null, // string
+  "filename" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ChangeAssetEntity`
+
+Create a new `ChangeAssetEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ChangeCommentEntity
+
+```php
+$change_comment = $client->ChangeComment();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `body` | `string` | Yes |  |
+| `capabilities` | `array` | Yes |  |
+| `change_id` | `mixed` | No |  |
+| `created_at` | `mixed` | No |  |
+| `created_at_label` | `mixed` | No |  |
+| `id` | `string` | Yes |  |
+| `kind` | `mixed` | No |  |
+| `line` | `mixed` | No |  |
+| `outdated` | `bool` | Yes |  |
+| `parent_comment_id` | `mixed` | No |  |
+| `patchset_id` | `mixed` | No |  |
+| `patchset_number` | `mixed` | Yes |  |
+| `path` | `mixed` | No |  |
+| `replies` | `array` | No |  |
+| `resolved` | `bool` | Yes |  |
+| `resolved_at` | `mixed` | No |  |
+| `resolved_at_label` | `mixed` | No |  |
+| `resolved_by` | `array` | Yes |  |
+| `side` | `mixed` | No |  |
+| `updated_at` | `mixed` | No |  |
+| `updated_at_label` | `mixed` | No |  |
+| `user` | `array` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `body` | - | - |
+| `capabilities` | - | - |
+| `change_id` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `id` | - | - |
+| `kind` | - | - |
+| `line` | - | - |
+| `outdated` | - | - |
+| `parent_comment_id` | - | - |
+| `patchset_id` | Yes | - |
+| `patchset_number` | - | - |
+| `path` | - | - |
+| `replies` | - | - |
+| `resolved` | - | - |
+| `resolved_at` | - | - |
+| `resolved_at_label` | - | - |
+| `resolved_by` | - | - |
+| `side` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+| `user` | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ChangeComment()->create([
+  "change_id" => null, // string
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+  "body" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ChangeComment()->list(["change_id" => "example", "organization_id" => "example", "repo_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ChangeCommentEntity`
+
+Create a new `ChangeCommentEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ChangeFileReviewCheckpointEntity
+
+```php
+$change_file_review_checkpoint = $client->ChangeFileReviewCheckpoint();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `patchset_id` | `string` | Yes |  |
+| `path` | `string` | Yes |  |
+| `request_id` | `string` | Yes |  |
+| `review_action` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ChangeFileReviewCheckpoint()->create([
+  "change_id" => null, // string
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+  "patchset_id" => null, // string
+  "path" => null, // string
+  "request_id" => null, // string
+  "review_action" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ChangeFileReviewCheckpointEntity`
+
+Create a new `ChangeFileReviewCheckpointEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ChangeGitBranchSubmissionEntity
+
+```php
+$change_git_branch_submission = $client->ChangeGitBranchSubmission();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ChangeGitBranchSubmission()->create([
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ChangeGitBranchSubmissionEntity`
+
+Create a new `ChangeGitBranchSubmissionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ChangeGitCommitIdentityEntity
+
+```php
+$change_git_commit_identity = $client->ChangeGitCommitIdentity();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_id` | `string` | Yes |  |
+| `change_number` | `int` | Yes |  |
+| `git_commit_id` | `string` | Yes |  |
+| `git_commit_ids` | `array` | Yes |  |
+| `id` | `string` | No |  |
+| `identities` | `array` | Yes |  |
+| `missing_git_commit_ids` | `array` | Yes |  |
+| `patchset_number` | `int` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ChangeGitCommitIdentity()->create([
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+  "git_commit_ids" => null, // array
+]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ChangeGitCommitIdentity()->load(["id" => "change_git_commit_identity_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ChangeGitCommitIdentityEntity`
+
+Create a new `ChangeGitCommitIdentityEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ChangeGitPublicationEntity
+
+```php
+$change_git_publication = $client->ChangeGitPublication();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `expected_target_commit_id` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `operation_key` | `string` | Yes |  |
+| `publication_id` | `string` | Yes |  |
+| `request` | `array` | Yes |  |
+| `request_digest` | `string` | Yes |  |
+| `revisions` | `array` | Yes |  |
+| `status` | `string` | Yes |  |
+| `transfer_refs` | `array` | No | Immutable receipt-owned refs returned by preparation; transfer each exact Git target before polling readiness. |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ChangeGitPublication()->create([
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+  "operation_key" => null, // string
+  "request" => null, // array
+]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ChangeGitPublication()->load(["id" => "change_git_publication_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ChangeGitPublicationEntity`
+
+Create a new `ChangeGitPublicationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ChangeGroupMemberEntity
+
+```php
+$change_group_member = $client->ChangeGroupMember();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_id` | `string` | Yes | Change number |
+| `changes` | `array` | Yes |  |
+| `id` | `string` | No |  |
+| `name` | `string` | No |  |
+| `number` | `int` | No |  |
+| `status` | `string` | Yes |  |
+| `title` | `mixed` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ChangeGroupMember()->create([
+  "change_group_id" => null, // string
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+  "change_id" => null, // string
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->ChangeGroupMember()->remove(["id" => "change_group_member_id", "change_group_id" => "change_group_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ChangeGroupMemberEntity`
+
+Create a new `ChangeGroupMemberEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ChangeLabelEntity
+
+```php
+$change_label = $client->ChangeLabel();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accepted` | `bool` | No |  |
+| `add` | `array` | No |  |
+| `approval` | `array` | Yes |  |
+| `assets` | `array` | No | Proof assets referenced from the description as `vex-asset:<id>`. |
+| `author` | `mixed` | No | Human user summary or organization automation identity. |
+| `capabilities` | `array` | Yes |  |
+| `change_key` | `string` | No |  |
+| `checks` | `array` | No |  |
+| `checks_status` | `string` | No |  |
+| `comments` | `array` | No |  |
+| `comments_count` | `int` | No |  |
+| `comments_count_label` | `string` | No |  |
+| `commit_message` | `mixed` | No |  |
+| `current_patchset` | `array` | Yes |  |
+| `description` | `mixed` | No |  |
+| `draft` | `bool` | No |  |
+| `folded_into_number` | `mixed` | No |  |
+| `github_projection_status` | `mixed` | No |  |
+| `github_pull_request` | `array` | Yes |  |
+| `github_pull_requests` | `array` | No |  |
+| `group` | `mixed` | No |  |
+| `has_description` | `bool` | No | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
+| `id` | `string` | Yes |  |
+| `jj_change_id` | `mixed` | No |  |
+| `labels` | `array` | No |  |
+| `landable` | `bool` | No |  |
+| `landed_by` | `array` | Yes |  |
+| `number` | `int` | Yes |  |
+| `orphaned` | `bool` | No |  |
+| `orphaned_at` | `string` | No |  |
+| `orphaned_at_label` | `string` | No |  |
+| `orphaned_reason` | `string` | No |  |
+| `parent_change_id` | `mixed` | No |  |
+| `parent_change_number` | `mixed` | No |  |
+| `patchset_number` | `mixed` | No |  |
+| `patchsets` | `array` | No |  |
+| `primary_status` | `mixed` | No |  |
+| `public_id` | `string` | No |  |
+| `relation_chain` | `array` | No |  |
+| `remove` | `array` | No |  |
+| `requested_changes` | `bool` | No |  |
+| `restack_state` | `string` | No |  |
+| `reviewer_candidates` | `array` | No | Organization members available to the reviewer picker on this page. |
+| `reviewers` | `array` | No |  |
+| `stable_change_id` | `string` | No |  |
+| `stack` | `mixed` | No |  |
+| `status` | `string` | Yes |  |
+| `target_branch` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `unresolved_comments_count_label` | `string` | No |  |
+| `url` | `string` | No |  |
+| `votes` | `array` | No |  |
+
+### Operations
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->ChangeLabel()->update([
+  "change_id" => "change_id",
+  "organization_id" => "organization_id",
+  "repo_id" => "repo_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ChangeLabelEntity`
+
+Create a new `ChangeLabelEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ChangeLandingHoldEntity
+
+```php
+$change_landing_hold = $client->ChangeLandingHold();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ChangeLandingHoldEntity`
+
+Create a new `ChangeLandingHoldEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ChangeLandingRequestEntity
+
+```php
+$change_landing_request = $client->ChangeLandingRequest();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_ids` | `array` | No |  |
+| `count` | `int` | Yes |  |
+| `defer_until_ready` | `bool` | No | Admit the request while approvals or checks are pending |
+| `expected_requirement_version` | `string` | No |  |
+| `expected_scope_version` | `string` | No |  |
+| `head_change_id` | `string` | No |  |
+| `id` | `mixed` | No |  |
+| `numbers` | `array` | Yes |  |
+| `override_acknowledged` | `bool` | No |  |
+| `override_codes` | `array` | No |  |
+| `position` | `int` | No |  |
+| `priority` | `string` | No |  |
+| `scope_version` | `string` | Yes |  |
+| `state` | `string` | Yes |  |
+| `version` | `int` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ChangeLandingRequest()->create([
+  "change_id" => null, // string
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->ChangeLandingRequest()->remove(["id" => "change_landing_request_id", "change_id" => "change_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ChangeLandingRequestEntity`
+
+Create a new `ChangeLandingRequestEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ChangeRequestChangeEntity
+
+```php
+$change_request_change = $client->ChangeRequestChange();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `message` | `mixed` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ChangeRequestChange()->create([
+  "change_id" => null, // string
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ChangeRequestChangeEntity`
+
+Create a new `ChangeRequestChangeEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ChangeReviewerEntity
+
+```php
+$change_reviewer = $client->ChangeReviewer();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `add` | `array` | No |  |
+| `email` | `string` | Yes |  |
+| `name` | `mixed` | Yes |  |
+| `remove` | `array` | No |  |
+| `removed_reviewers` | `array` | Yes |  |
+| `requested_reviewers` | `array` | Yes |  |
+| `reviewers` | `array` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ChangeReviewer()->list(["change_id" => "example", "organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->ChangeReviewer()->update([
+  "change_id" => "change_id",
+  "organization_id" => "organization_id",
+  "repo_id" => "repo_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ChangeReviewerEntity`
+
+Create a new `ChangeReviewerEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ChangeTranscriptEntity
+
+```php
+$change_transcript = $client->ChangeTranscript();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capture_kind` | `string` | Yes |  |
+| `captured_at` | `string` | Yes |  |
+| `harness` | `array` | Yes |  |
+| `id` | `string` | Yes |  |
+| `original_resume` | `mixed` | No |  |
+| `patchset_commit_id` | `string` | Yes |  |
+| `patchset_number` | `int` | Yes |  |
+| `redaction_count` | `int` | Yes |  |
+| `session_id` | `mixed` | No |  |
+| `session_title` | `mixed` | No |  |
+| `status` | `string` | Yes |  |
+| `superseded` | `bool` | Yes |  |
+| `user` | `array` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ChangeTranscript()->list(["change_id" => "example", "organization_id" => "example", "repo_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ChangeTranscriptEntity`
+
+Create a new `ChangeTranscriptEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ChangeTranscriptSummaryEntity
+
+```php
+$change_transcript_summary = $client->ChangeTranscriptSummary();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `summaries` | `array` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ChangeTranscriptSummary()->list(["organization_id" => "example", "ids" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ChangeTranscriptSummaryEntity`
+
+Create a new `ChangeTranscriptSummaryEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## CheckpointPrepareChunkEntity
+
+```php
+$checkpoint_prepare_chunk = $client->CheckpointPrepareChunk();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->CheckpointPrepareChunk()->create([
+  "agent_session_id" => null, // string
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): CheckpointPrepareChunkEntity`
+
+Create a new `CheckpointPrepareChunkEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## CiNodeEntity
+
+```php
+$ci_node = $client->CiNode();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `architecture` | `mixed` | Yes |  |
+| `bazel_enabled` | `bool` | Yes |  |
+| `bazel_properties_json` | `mixed` | Yes |  |
+| `ci_runner_pool_id` | `string` | Yes |  |
+| `cordoned_at` | `mixed` | Yes |  |
+| `cordoned_at_label` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `health_state` | `string` | Yes |  |
+| `heartbeat_age_seconds` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `labels_csv` | `mixed` | Yes |  |
+| `last_seen_at` | `mixed` | Yes |  |
+| `last_seen_at_label` | `mixed` | Yes |  |
+| `name` | `string` | Yes |  |
+| `network_peer_id` | `mixed` | Yes |  |
+| `node_capabilities_csv` | `mixed` | Yes |  |
+| `node_certificate_expires_at` | `mixed` | Yes |  |
+| `node_certificate_expires_at_label` | `mixed` | Yes |  |
+| `node_certificate_fingerprint_sha256` | `mixed` | Yes |  |
+| `node_certificate_serial` | `mixed` | Yes |  |
+| `offline_at` | `mixed` | Yes |  |
+| `offline_at_label` | `mixed` | Yes |  |
+| `online_at` | `mixed` | Yes |  |
+| `online_at_label` | `mixed` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `os` | `mixed` | Yes |  |
+| `revoked_at` | `mixed` | Yes |  |
+| `revoked_at_label` | `mixed` | Yes |  |
+| `schedulable` | `bool` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+| `version` | `mixed` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->CiNode()->load(["id" => "ci_node_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): CiNodeEntity`
+
+Create a new `CiNodeEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## CiPipelineEntity
+
+```php
+$ci_pipeline = $client->CiPipeline();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `ci_runner_pool_id` | `mixed` | Yes |  |
+| `concurrency_key` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `default_branch` | `mixed` | Yes |  |
+| `description` | `mixed` | Yes |  |
+| `hosted_app_id` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `repository_id` | `mixed` | Yes |  |
+| `required_capabilities_csv` | `mixed` | Yes |  |
+| `runner_pool` | `mixed` | Yes |  |
+| `runs` | `array` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `source_kind` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `status_state` | `string` | Yes |  |
+| `status_tone` | `string` | Yes |  |
+| `trigger_on_pull_request` | `bool` | Yes |  |
+| `trigger_on_push` | `bool` | Yes |  |
+| `trigger_on_schedule` | `bool` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `workflow_path` | `mixed` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->CiPipeline()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->CiPipeline()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->CiPipeline()->load(["id" => "ci_pipeline_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): CiPipelineEntity`
+
+Create a new `CiPipelineEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## CiPipelineRunEntity
+
+```php
+$ci_pipeline_run = $client->CiPipelineRun();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active` | `bool` | Yes |  |
+| `canceled_at` | `mixed` | Yes |  |
+| `ci_pipeline_id` | `string` | Yes |  |
+| `ci_runner_pool_id` | `mixed` | Yes |  |
+| `commit_sha` | `mixed` | Yes |  |
+| `concurrency_key` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `creator_user_id` | `mixed` | Yes |  |
+| `display_id` | `int` | Yes |  |
+| `failed` | `bool` | Yes |  |
+| `finished_at` | `mixed` | Yes |  |
+| `hosted_app_id` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `jobs` | `array` | Yes |  |
+| `message` | `mixed` | Yes |  |
+| `number` | `int` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `parameters_json` | `mixed` | Yes |  |
+| `queued_at` | `mixed` | Yes |  |
+| `ref_name` | `mixed` | Yes |  |
+| `repository_id` | `mixed` | Yes |  |
+| `required_capabilities_csv` | `mixed` | Yes |  |
+| `retry_number` | `int` | Yes |  |
+| `retryable` | `bool` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `source_url` | `mixed` | Yes |  |
+| `started_at` | `mixed` | Yes |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `status_state` | `string` | Yes |  |
+| `status_tone` | `string` | Yes |  |
+| `trigger_kind` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->CiPipelineRun()->create([
+  "pipeline_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->CiPipelineRun()->list(["pipeline_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->CiPipelineRun()->load(["id" => "ci_pipeline_run_id", "pipeline_id" => "pipeline_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): CiPipelineRunEntity`
+
+Create a new `CiPipelineRunEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## CiRunnerPoolEntity
+
+```php
+$ci_runner_pool = $client->CiRunnerPool();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `bazel_enabled` | `bool` | Yes |  |
+| `bazel_properties_json` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `description` | `mixed` | Yes |  |
+| `elastic_config_json` | `mixed` | Yes |  |
+| `elastic_provider_kind` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `isolation_mode` | `string` | Yes |  |
+| `labels_csv` | `mixed` | Yes |  |
+| `max_concurrency` | `int` | Yes |  |
+| `modal_capacity` | `array` | Yes |  |
+| `modal_runner_invocations` | `array` | Yes |  |
+| `name` | `string` | Yes |  |
+| `network_space_id` | `mixed` | Yes |  |
+| `node_capabilities_csv` | `mixed` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `runner_count_label` | `string` | Yes |  |
+| `runner_kind` | `string` | Yes |  |
+| `runners` | `array` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `bazel_enabled` | - | - | - | - | - |
+| `bazel_properties_json` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `description` | - | - | - | - | Yes |
+| `elastic_config_json` | - | - | - | - | Yes |
+| `elastic_provider_kind` | - | - | - | - | Yes |
+| `id` | - | - | - | - | - |
+| `isolation_mode` | - | - | - | - | Yes |
+| `labels_csv` | - | - | - | - | Yes |
+| `max_concurrency` | - | - | - | - | Yes |
+| `modal_capacity` | - | - | - | - | - |
+| `modal_runner_invocations` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `network_space_id` | - | - | - | - | - |
+| `node_capabilities_csv` | - | - | - | - | Yes |
+| `organization_id` | - | - | - | - | - |
+| `runner_count_label` | - | - | - | - | - |
+| `runner_kind` | - | - | - | - | Yes |
+| `runners` | - | - | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | Yes |
+| `updated_at` | - | - | - | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->CiRunnerPool()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->CiRunnerPool()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->CiRunnerPool()->load(["id" => "ci_runner_pool_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->CiRunnerPool()->patch([
+  "id" => "ci_runner_pool_id",
+  // Only the fields to change
+]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->CiRunnerPool()->update([
+  "id" => "ci_runner_pool_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): CiRunnerPoolEntity`
+
+Create a new `CiRunnerPoolEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## CiStatusEntity
+
+```php
+$ci_status = $client->CiStatus();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): CiStatusEntity`
+
+Create a new `CiStatusEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## CliEventEntity
+
+```php
+$cli_event = $client->CliEvent();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `event` | `string` | Yes |  |
+| `properties` | `array` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->CliEvent()->create([
+  "event" => null, // string
+  "properties" => null, // array
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): CliEventEntity`
+
+Create a new `CliEventEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## CliReleaseEntity
+
+```php
+$cli_release = $client->CliRelease();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->CliRelease()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->CliRelease()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): CliReleaseEntity`
+
+Create a new `CliReleaseEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## CloudWorkspaceBackupObjectEntity
+
+```php
+$cloud_workspace_backup_object = $client->CloudWorkspaceBackupObject();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->CloudWorkspaceBackupObject()->load(["id" => "cloud_workspace_backup_object_id", "cloud_workspace_backup_id" => "cloud_workspace_backup_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): CloudWorkspaceBackupObjectEntity`
+
+Create a new `CloudWorkspaceBackupObjectEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## CodeRuleEvaluationEntity
+
+```php
+$code_rule_evaluation = $client->CodeRuleEvaluation();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `advisory` | `bool` | Yes |  |
+| `coverage` | `array` | Yes |  |
+| `diff` | `string` | Yes | UTF-8 complete unified patch using a/ old and b/ new prefixes; at most 1 MiB |
+| `duration_ms` | `int` | Yes |  |
+| `evaluator_version` | `string` | No |  |
+| `input_digest` | `mixed` | No |  |
+| `limits` | `array` | No |  |
+| `model` | `string` | No |  |
+| `requests` | `array` | Yes |  |
+| `schema_version` | `int` | Yes |  |
+| `snapshot_digest` | `mixed` | No |  |
+| `unchecked` | `array` | Yes |  |
+| `verdicts` | `array` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->CodeRuleEvaluation()->create([
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+  "diff" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): CodeRuleEvaluationEntity`
+
+Create a new `CodeRuleEvaluationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ComSiteAccessEntity
+
+```php
+$com_site_access = $client->ComSiteAccess();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ComSiteAccessEntity`
+
+Create a new `ComSiteAccessEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ComSiteAccessSessionEntity
+
+```php
+$com_site_access_session = $client->ComSiteAccessSession();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cookie_name` | `string` | Yes |  |
+| `host` | `string` | Yes | Site hostname, for example docs.acme.composal.page |
+| `max_age` | `int` | Yes |  |
+| `session_token` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ComSiteAccessSession()->create([
+  "host" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ComSiteAccessSessionEntity`
+
+Create a new `ComSiteAccessSessionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## CommentThreadCommentEntity
+
+```php
+$comment_thread_comment = $client->CommentThreadComment();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `body` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->CommentThreadComment()->create([
+  "artefact_id" => null, // string
+  "comment_thread_id" => null, // string
+  "organization_id" => null, // string
+  "body" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): CommentThreadCommentEntity`
+
+Create a new `CommentThreadCommentEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## CommitDiffEntity
+
+```php
+$commit_diff = $client->CommitDiff();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `files` | `array` | Yes |  |
+| `id` | `string` | No |  |
+| `parent_id` | `mixed` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->CommitDiff()->load(["id" => "commit_diff_id", "commit_id" => "commit_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): CommitDiffEntity`
+
+Create a new `CommitDiffEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## ConnectionRequestEntity
 
 ```php
@@ -8465,6 +16236,206 @@ Set the entity match criteria.
 #### `make(): ConnectionSourceEntity`
 
 Create a new `ConnectionSourceEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ContactSubmissionEntity
+
+```php
+$contact_submission = $client->ContactSubmission();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `company` | `mixed` | No |  |
+| `email` | `string` | Yes | Stored downcased and stripped. |
+| `message` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `website` | `mixed` | No | Honeypot. |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ContactSubmission()->create([
+  "email" => null, // string
+  "message" => null, // string
+  "name" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ContactSubmissionEntity`
+
+Create a new `ContactSubmissionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ControlComputerEntity
+
+```php
+$control_computer = $client->ControlComputer();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `connection` | `array` | Yes | A point-in-time control transport observation. |
+| `consent` | `array` | Yes |  |
+| `device` | `array` | Yes |  |
+| `id` | `string` | No |  |
+| `provider_status` | `array` | No |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ControlComputer()->list(["organization_id" => "example", "persistent_agent_id" => "example"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ControlComputerEntity`
+
+Create a new `ControlComputerEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ControlComputerControlOperationEntity
+
+```php
+$control_computer_control_operation = $client->ControlComputerControlOperation();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `arguments` | `array` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `delivery` | `array` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` | Yes |  |
+| `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
+| `end` | `array` | Yes |  |
+| `expires_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `references` | `array` | Yes |  |
+| `result` | `mixed` | Yes |  |
+| `result_expired` | `bool` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ControlComputerControlOperation()->create([
+  "control_computer_id" => null, // string
+  "organization_id" => null, // string
+  "action" => null, // string
+  "arguments" => null, // array
+  "key" => null, // string
+]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ControlComputerControlOperation()->load(["id" => "control_computer_control_operation_id", "control_computer_id" => "control_computer_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ControlComputerControlOperationEntity`
+
+Create a new `ControlComputerControlOperationEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -9238,6 +17209,93 @@ Return the entity name.
 
 ---
 
+## DeploymentEntity
+
+```php
+$deployment = $client->Deployment();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app` | `array` | Yes |  |
+| `artifact_locator` | `mixed` | Yes |  |
+| `build_duration_seconds` | `mixed` | Yes |  |
+| `build_source` | `mixed` | Yes |  |
+| `build_status` | `string` | Yes |  |
+| `children` | `array` | Yes |  |
+| `ci_pipeline_id` | `mixed` | Yes |  |
+| `ci_pipeline_run_id` | `mixed` | Yes |  |
+| `commit_sha` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `creator` | `mixed` | Yes |  |
+| `deployed_url` | `mixed` | Yes |  |
+| `duration_seconds` | `mixed` | Yes |  |
+| `environment` | `array` | Yes |  |
+| `history_kind` | `string` | Yes |  |
+| `history_reason` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `is_live` | `bool` | Yes |  |
+| `is_rollback` | `bool` | Yes |  |
+| `live_region_count` | `int` | Yes |  |
+| `number` | `int` | Yes |  |
+| `placement` | `mixed` | Yes |  |
+| `region_count` | `int` | Yes |  |
+| `replicas_per_region` | `int` | Yes |  |
+| `rollback_reason` | `mixed` | Yes |  |
+| `rollback_source_release_id` | `mixed` | Yes |  |
+| `rollback_target_release_id` | `mixed` | Yes |  |
+| `rollout_predecessor_id` | `mixed` | Yes |  |
+| `rollout_status` | `string` | Yes |  |
+| `rollout_strategy` | `string` | Yes |  |
+| `service` | `array` | Yes |  |
+| `source_ref` | `mixed` | Yes |  |
+| `status` | `string` | Yes |  |
+| `total_replicas` | `int` | Yes |  |
+| `trigger_kind` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->Deployment()->load(["id" => "deployment_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DeploymentEntity`
+
+Create a new `DeploymentEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## DeploymentDashboardNomadEntity
 
 ```php
@@ -9271,6 +17329,78 @@ Set the entity match criteria.
 #### `make(): DeploymentDashboardNomadEntity`
 
 Create a new `DeploymentDashboardNomadEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DeploymentDetailEntity
+
+```php
+$deployment_detail = $client->DeploymentDetail();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `array` | Yes |  |
+| `app` | `mixed` | Yes |  |
+| `app_id` | `mixed` | Yes |  |
+| `audit_events` | `array` | Yes |  |
+| `capacity` | `array` | Yes |  |
+| `data_resources` | `array` | Yes |  |
+| `deploy_targets` | `array` | Yes |  |
+| `deployments` | `array` | Yes |  |
+| `desired_states` | `array` | Yes |  |
+| `environments` | `array` | Yes |  |
+| `filters` | `array` | Yes | The option lists the deployments page's app, service and stage pickers narrow by. |
+| `health` | `array` | Yes | The rolled-up state of the selected scope. |
+| `nomad` | `array` | Yes | The Nomad footprint of the selected scope, deduplicated. |
+| `operations` | `array` | Yes |  |
+| `placements` | `array` | Yes |  |
+| `reconciler_ticks` | `array` | Yes |  |
+| `releases` | `array` | Yes |  |
+| `runtime_instances` | `array` | Yes |  |
+| `service_bindings` | `array` | Yes |  |
+| `service_views` | `array` | Yes |  |
+| `storage_resources` | `array` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->DeploymentDetail()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DeploymentDetailEntity`
+
+Create a new `DeploymentDetailEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -9321,6 +17451,1526 @@ Set the entity match criteria.
 #### `make(): DeploymentFileEntity`
 
 Create a new `DeploymentFileEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DeploymentLogEntity
+
+```php
+$deployment_log = $client->DeploymentLog();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `allocation_id` | `string` | Yes |  |
+| `app_environment_id` | `mixed` | Yes |  |
+| `app_release_id` | `mixed` | Yes |  |
+| `app_service_id` | `mixed` | Yes |  |
+| `details` | `mixed` | Yes |  |
+| `environment_name` | `string` | Yes |  |
+| `release_version` | `mixed` | Yes |  |
+| `service_name` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `task` | `mixed` | Yes |  |
+| `unreachable_reason` | `mixed` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->DeploymentLog()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DeploymentLogEntity`
+
+Create a new `DeploymentLogEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DeploymentMetricEntity
+
+```php
+$deployment_metric = $client->DeploymentMetric();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `auto_deploy` | `bool` | Yes |  |
+| `environment_id` | `string` | Yes |  |
+| `environment_name` | `string` | Yes |  |
+| `placement_id` | `string` | Yes |  |
+| `redeploy` | `bool` | Yes |  |
+| `region_count` | `int` | Yes |  |
+| `replicas_per_region` | `int` | Yes |  |
+| `rollout_strategy` | `string` | Yes |  |
+| `service_id` | `string` | Yes |  |
+| `service_name` | `string` | Yes |  |
+| `source_ref` | `mixed` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->DeploymentMetric()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DeploymentMetricEntity`
+
+Create a new `DeploymentMetricEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DeploymentPreviewEntity
+
+```php
+$deployment_preview = $client->DeploymentPreview();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access` | `string` | Yes |  |
+| `app_environment_id` | `string` | Yes |  |
+| `app_name` | `string` | Yes |  |
+| `app_preview_profile_id` | `string` | Yes |  |
+| `app_slug` | `string` | Yes |  |
+| `change_number` | `mixed` | Yes |  |
+| `created_at` | `string` | No |  |
+| `created_by_user_id` | `string` | No |  |
+| `expires_at` | `string` | Yes |  |
+| `generation` | `int` | Yes |  |
+| `health` | `string` | Yes |  |
+| `hosted_app_id` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `latest_operation_status` | `mixed` | Yes |  |
+| `name` | `string` | Yes |  |
+| `owner_name` | `mixed` | Yes |  |
+| `profile_name` | `string` | Yes |  |
+| `resource_overrides` | `array` | No | Service public IDs mapped to resource overrides. |
+| `retained` | `bool` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `snapshot_version` | `int` | Yes |  |
+| `source_revision` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | No |  |
+| `urls` | `array` | Yes |  |
+| `vcs_change_id` | `mixed` | No |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->DeploymentPreview()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DeploymentPreviewEntity`
+
+Create a new `DeploymentPreviewEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DeploymentSettingEntity
+
+```php
+$deployment_setting = $client->DeploymentSetting();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `code` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `nomad_datacenter` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->DeploymentSetting()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DeploymentSettingEntity`
+
+Create a new `DeploymentSettingEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DesktopLocalAgentModelEntity
+
+```php
+$desktop_local_agent_model = $client->DesktopLocalAgentModel();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->DesktopLocalAgentModel()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DesktopLocalAgentModelEntity`
+
+Create a new `DesktopLocalAgentModelEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DesktopLocalAgentResponseEntity
+
+```php
+$desktop_local_agent_response = $client->DesktopLocalAgentResponse();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `input` | `array` | Yes |  |
+| `max_output_tokens` | `int` | No |  |
+| `model` | `string` | Yes |  |
+| `store` | `bool` | Yes |  |
+| `stream` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->DesktopLocalAgentResponse()->create([
+  "organization_id" => null, // string
+  "input" => null, // array
+  "model" => null, // string
+  "store" => null, // bool
+  "stream" => null, // bool
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DesktopLocalAgentResponseEntity`
+
+Create a new `DesktopLocalAgentResponseEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DeviceEntity
+
+```php
+$device = $client->Device();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `architecture` | `string` | Yes |  |
+| `channel` | `string` | Yes |  |
+| `coding_connection` | `mixed` | Yes | Independent organization coding-control service state for the current device owner. |
+| `connection_checked_at` | `mixed` | Yes | When this native presence observation was obtained; null when unobserved or unavailable. |
+| `connection_status` | `string` | Yes | Display-only native presence. |
+| `control_delivery_policy` | `array` | Yes |  |
+| `control_spawn_policy` | `array` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `device` | `array` | Yes |  |
+| `environment` | `string` | Yes |  |
+| `execution_available` | `bool` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `native_device_id` | `string` | Yes |  |
+| `paired_at` | `string` | Yes |  |
+| `pairing_generation` | `int` | Yes |  |
+| `platform` | `string` | Yes |  |
+| `project_visibility` | `array` | Yes | Folder discovery and new-thread selection. |
+| `provider_status` | `array` | No | Recent native provider observations; absent on older API replicas. |
+| `revoked_at` | `mixed` | Yes |  |
+| `scheduled_check_ins` | `bool` | No | Whether the owner's private agents may check this computer's connection during scheduled runs. |
+| `user_browser_access` | `string` | Yes | Whether agents may use the owner's own Chrome-family browser here: off, only tabs agents open or the owner shares, or every tab. |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->Device()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->Device()->load(["id" => "device_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DeviceEntity`
+
+Create a new `DeviceEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DeviceBrowserOperationEntity
+
+```php
+$device_browser_operation = $client->DeviceBrowserOperation();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `command` | `string` | Yes | The in-app browser takes open through open_external; the person's own browser (arguments.browser user) takes open, tabs, share_tab, navigate, back, reload, screenshot, read, click, type, press, scroll and close. |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->DeviceBrowserOperation()->list(["device_id" => "example", "organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DeviceBrowserOperationEntity`
+
+Create a new `DeviceBrowserOperationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DeviceControlMessageEntity
+
+```php
+$device_control_message = $client->DeviceControlMessage();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_id` | `string` | Yes |  |
+| `agent_name` | `string` | Yes |  |
+| `expires_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `sender` | `mixed` | Yes |  |
+| `text` | `mixed` | Yes |  |
+| `text_omitted` | `bool` | Yes |  |
+| `thread` | `array` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->DeviceControlMessage()->list(["device_id" => "example", "organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DeviceControlMessageEntity`
+
+Create a new `DeviceControlMessageEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DeviceControlOperationEntity
+
+```php
+$device_control_operation = $client->DeviceControlOperation();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `arguments` | `array` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `delivery` | `array` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` | Yes |  |
+| `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
+| `end` | `array` | Yes |  |
+| `expires_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `references` | `array` | Yes |  |
+| `result` | `mixed` | Yes |  |
+| `result_expired` | `bool` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->DeviceControlOperation()->create([
+  "device_id" => null, // string
+  "organization_id" => null, // string
+  "action" => null, // string
+  "arguments" => null, // array
+  "key" => null, // string
+]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->DeviceControlOperation()->load(["id" => "device_control_operation_id", "device_id" => "device_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DeviceControlOperationEntity`
+
+Create a new `DeviceControlOperationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DeviceEnterpriseRelayEntity
+
+```php
+$device_enterprise_relay = $client->DeviceEnterpriseRelay();
+```
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->DeviceEnterpriseRelay()->list();
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DeviceEnterpriseRelayEntity`
+
+Create a new `DeviceEnterpriseRelayEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DeviceFolderListingEntity
+
+```php
+$device_folder_listing = $client->DeviceFolderListing();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `code` | `string` | No |  |
+| `error` | `string` | No |  |
+| `folders` | `array` | No |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes | Stable idempotency key for this listing. |
+| `parent` | `mixed` | No |  |
+| `path` | `string` | No | The resolved folder. |
+| `state` | `string` | Yes |  |
+| `truncated` | `bool` | No |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `code` | - | - |
+| `error` | - | - |
+| `folders` | - | - |
+| `id` | - | - |
+| `key` | - | - |
+| `parent` | - | - |
+| `path` | - | Yes |
+| `state` | - | - |
+| `truncated` | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->DeviceFolderListing()->create([
+  "device_id" => null, // string
+  "organization_id" => null, // string
+  "key" => null, // string
+  "path" => null, // string
+]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->DeviceFolderListing()->load(["id" => "device_folder_listing_id", "device_id" => "device_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DeviceFolderListingEntity`
+
+Create a new `DeviceFolderListingEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DeviceGrantEntity
+
+```php
+$device_grant = $client->DeviceGrant();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_grants` | `array` | Yes |  |
+| `agent_choices` | `array` | Yes | Eligible picker choices, with current owner grant targets, on the first page only. |
+| `agent_id` | `string` | Yes |  |
+| `all_agents_access` | `bool` | Yes | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `capabilities` | `array` | Yes |  |
+| `execution_available` | `bool` | Yes |  |
+| `grants` | `array` | Yes |  |
+| `id` | `string` | No |  |
+| `next_cursor` | `mixed` | Yes |  |
+| `principal_id` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->DeviceGrant()->create([
+  "device_id" => null, // string
+  "organization_id" => null, // string
+  "agent_id" => null, // string
+  "capabilities" => null, // array
+  "principal_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->DeviceGrant()->list(["device_id" => "example", "organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DeviceGrantEntity`
+
+Create a new `DeviceGrantEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DeviceInvocationEntity
+
+```php
+$device_invocation = $client->DeviceInvocation();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DeviceInvocationEntity`
+
+Create a new `DeviceInvocationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DeviceLocalEventEntity
+
+```php
+$device_local_event = $client->DeviceLocalEvent();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `event` | `string` | Yes |  |
+| `recorded` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->DeviceLocalEvent()->create([
+  "device_id" => null, // string
+  "organization_id" => null, // string
+  "event" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DeviceLocalEventEntity`
+
+Create a new `DeviceLocalEventEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DevicePairingEntity
+
+```php
+$device_pairing = $client->DevicePairing();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `architecture` | `string` | Yes |  |
+| `channel` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `name` | `string` | Yes |  |
+| `platform` | `string` | Yes |  |
+| `public_key` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->DevicePairing()->create([
+  "organization_id" => null, // string
+  "architecture" => null, // string
+  "channel" => null, // string
+  "name" => null, // string
+  "platform" => null, // string
+  "public_key" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DevicePairingEntity`
+
+Create a new `DevicePairingEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DeviceProjectEntity
+
+```php
+$device_project = $client->DeviceProject();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->DeviceProject()->remove(["id" => "device_project_id", "device_id" => "device_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DeviceProjectEntity`
+
+Create a new `DeviceProjectEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DeviceScheduledCheckInEntity
+
+```php
+$device_scheduled_check_in = $client->DeviceScheduledCheckIn();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `enabled` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->DeviceScheduledCheckIn()->create([
+  "device_id" => null, // string
+  "organization_id" => null, // string
+  "enabled" => null, // bool
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DeviceScheduledCheckInEntity`
+
+Create a new `DeviceScheduledCheckInEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DockerBuilderEntity
+
+```php
+$docker_builder = $client->DockerBuilder();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `backend` | `string` | Yes |  |
+| `created_at` | `mixed` | Yes |  |
+| `gateway_url` | `mixed` | No | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_activity_at` | `mixed` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `ready_at` | `mixed` | Yes |  |
+| `slept_at` | `mixed` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `startup_attempt` | `int` | Yes |  |
+| `startup_failure` | `mixed` | Yes | Safe failure reason for the most recent startup attempt |
+| `startup_stage` | `mixed` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `mixed` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `backend` | - | - | Yes | - | - |
+| `created_at` | - | - | - | - | - |
+| `gateway_url` | - | - | - | - | - |
+| `generation` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `last_activity_at` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `ready_at` | - | - | - | - | - |
+| `slept_at` | - | - | - | - | - |
+| `slug` | - | - | Yes | - | - |
+| `startup_attempt` | - | - | - | - | - |
+| `startup_failure` | - | - | - | - | - |
+| `startup_stage` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->DockerBuilder()->create([
+  "organization_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->DockerBuilder()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->DockerBuilder()->load(["id" => "docker_builder_id", "organization_id" => "organization_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->DockerBuilder()->patch([
+  "id" => "docker_builder_id",
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->DockerBuilder()->update([
+  "id" => "docker_builder_id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DockerBuilderEntity`
+
+Create a new `DockerBuilderEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DockerBuilderSessionEntity
+
+```php
+$docker_builder_session = $client->DockerBuilderSession();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `string` | Yes |  |
+| `docker_builder_id` | `string` | Yes |  |
+| `expires_at` | `string` | Yes |  |
+| `gateway_url` | `mixed` | No | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `revoked_at` | `mixed` | Yes |  |
+| `user_id` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->DockerBuilderSession()->create([
+  "docker_builder_id" => null, // string
+  "organization_id" => null, // string
+]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->DockerBuilderSession()->load(["id" => "docker_builder_session_id", "organization_id" => "organization_id"]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->DockerBuilderSession()->remove(["id" => "docker_builder_session_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DockerBuilderSessionEntity`
+
+Create a new `DockerBuilderSessionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DockerBuilderSettingEntity
+
+```php
+$docker_builder_setting = $client->DockerBuilderSetting();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `docker_builder_settings` | `array` | Yes |  |
+| `idle_timeout_seconds` | `int` | Yes |  |
+| `max_concurrency` | `int` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `region` | `string` | Yes |  |
+| `runtime_timeout_seconds` | `int` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | update | patch |
+| --- | --- | --- | --- |
+| `docker_builder_settings` | - | - | - |
+| `idle_timeout_seconds` | - | - | Yes |
+| `max_concurrency` | - | - | Yes |
+| `organization_id` | - | - | - |
+| `region` | - | - | Yes |
+| `runtime_timeout_seconds` | - | - | Yes |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->DockerBuilderSetting()->list(["organization_id" => "example"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->DockerBuilderSetting()->patch([
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->DockerBuilderSetting()->update([
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DockerBuilderSettingEntity`
+
+Create a new `DockerBuilderSettingEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## DomainDnsIntegrationEntity
+
+```php
+$domain_dns_integration = $client->DomainDnsIntegration();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_label` | `mixed` | Yes |  |
+| `api_token` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `failure_message` | `mixed` | Yes |  |
+| `has_token` | `bool` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_verified_at` | `mixed` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `account_label` | - | Yes |
+| `api_token` | - | - |
+| `created_at` | - | - |
+| `failure_message` | - | - |
+| `has_token` | - | - |
+| `id` | - | - |
+| `last_verified_at` | - | - |
+| `organization_id` | - | - |
+| `provider` | - | - |
+| `status` | - | - |
+| `updated_at` | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->DomainDnsIntegration()->create([
+  "organization_id" => null, // string
+  "api_token" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->DomainDnsIntegration()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): DomainDnsIntegrationEntity`
+
+Create a new `DomainDnsIntegrationEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -9533,6 +19183,90 @@ Set the entity match criteria.
 #### `make(): DreamEntity`
 
 Create a new `DreamEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## EdgeEntity
+
+```php
+$edge = $client->Edge();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): EdgeEntity`
+
+Create a new `EdgeEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## EmailVerificationEntity
+
+```php
+$email_verification = $client->EmailVerification();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): EmailVerificationEntity`
+
+Create a new `EmailVerificationEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -10333,6 +20067,375 @@ Return the entity name.
 
 ---
 
+## ExecutionDesiredStateEntity
+
+```php
+$execution_desired_state = $client->ExecutionDesiredState();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `desired_state` | `array` | Yes |  |
+| `id` | `string` | No |  |
+| `stop_observed` | `bool` | Yes | True only for archived zero-capacity states with all known jobs stopped and allocations terminated. |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ExecutionDesiredState()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ExecutionDesiredState()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ExecutionDesiredState()->load(["id" => "execution_desired_state_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->ExecutionDesiredState()->patch([
+  "id" => "execution_desired_state_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->ExecutionDesiredState()->remove(["id" => "execution_desired_state_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->ExecutionDesiredState()->update([
+  "id" => "execution_desired_state_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ExecutionDesiredStateEntity`
+
+Create a new `ExecutionDesiredStateEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ExecutionReconcilerTickEntity
+
+```php
+$execution_reconciler_tick = $client->ExecutionReconcilerTick();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ExecutionReconcilerTick()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ExecutionReconcilerTick()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ExecutionReconcilerTick()->load(["id" => "execution_reconciler_tick_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ExecutionReconcilerTickEntity`
+
+Create a new `ExecutionReconcilerTickEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ExecutionReleaseEntity
+
+```php
+$execution_release = $client->ExecutionRelease();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ExecutionRelease()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ExecutionRelease()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ExecutionRelease()->load(["id" => "execution_release_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ExecutionReleaseEntity`
+
+Create a new `ExecutionReleaseEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ExecutionRuntimeInstanceEntity
+
+```php
+$execution_runtime_instance = $client->ExecutionRuntimeInstance();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter_kind` | `string` | Yes |  |
+| `app_environment_id` | `string` | Yes |  |
+| `app_release_id` | `mixed` | Yes |  |
+| `app_service_id` | `string` | Yes |  |
+| `booted_at` | `mixed` | Yes |  |
+| `booted_at_label` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `hosted_app_id` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `instance_key` | `string` | Yes |  |
+| `last_reconciled_at` | `mixed` | Yes |  |
+| `last_reconciled_at_label` | `mixed` | Yes |  |
+| `last_seen_at` | `mixed` | Yes |  |
+| `last_seen_at_label` | `mixed` | Yes |  |
+| `location` | `mixed` | Yes |  |
+| `location_id` | `string` | Yes |  |
+| `network_peer_id` | `mixed` | Yes |  |
+| `nomad_allocation_id` | `mixed` | Yes |  |
+| `nomad_task_name` | `mixed` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `private_ipv4` | `mixed` | Yes |  |
+| `private_ipv6` | `mixed` | Yes |  |
+| `provider_instance_id` | `mixed` | Yes |  |
+| `public_endpoint` | `mixed` | Yes |  |
+| `service_name` | `string` | Yes | Name of the Vex service this instance runs, in the same vocabulary as `vex deploy list`. |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `terminated_at` | `mixed` | Yes |  |
+| `terminated_at_label` | `mixed` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ExecutionRuntimeInstance()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ExecutionRuntimeInstance()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ExecutionRuntimeInstance()->load(["id" => "execution_runtime_instance_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->ExecutionRuntimeInstance()->patch([
+  "id" => "execution_runtime_instance_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->ExecutionRuntimeInstance()->remove(["id" => "execution_runtime_instance_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->ExecutionRuntimeInstance()->update([
+  "id" => "execution_runtime_instance_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ExecutionRuntimeInstanceEntity`
+
+Create a new `ExecutionRuntimeInstanceEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## ExplorationEntity
 
 ```php
@@ -10868,6 +20971,740 @@ Return the entity name.
 
 ---
 
+## GhEntity
+
+```php
+$gh = $client->Gh();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capabilities` | `array` | Yes |  |
+| `content` | `array` | Yes |  |
+| `fetched_at` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `magic_merge` | `mixed` | Yes |  |
+| `pull_request` | `mixed` | Yes |  |
+| `stack` | `array` | Yes |  |
+| `transcript_paths` | `array` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->Gh()->load(["id" => "gh_id", "gh_id" => "gh_id", "github_repo" => "github_repo", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GhEntity`
+
+Create a new `GhEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GitImportEntity
+
+```php
+$git_import = $client->GitImport();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `destination_mode` | `string` | Yes |  |
+| `error` | `mixed` | No |  |
+| `git_default_branch` | `string` | No | Original Git symbolic HEAD branch, independent of the branch selected for JJ conversion |
+| `git_status` | `string` | Yes |  |
+| `git_url` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `idempotency_key` | `string` | Yes |  |
+| `name` | `string` | No |  |
+| `native_status` | `string` | Yes |  |
+| `organization` | `string` | Yes |  |
+| `repository_id` | `mixed` | No |  |
+| `root_path` | `string` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `source_branch` | `string` | Yes |  |
+| `target_branch` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `destination_mode` | - | - |
+| `error` | - | - |
+| `git_default_branch` | - | - |
+| `git_status` | - | - |
+| `git_url` | - | - |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `name` | - | - |
+| `native_status` | - | - |
+| `organization` | - | - |
+| `repository_id` | - | - |
+| `root_path` | - | - |
+| `slug` | - | - |
+| `source_branch` | - | - |
+| `target_branch` | - | Yes |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->GitImport()->create([
+  "organization_id" => null, // string
+  "destination_mode" => null, // string
+  "idempotency_key" => null, // string
+  "root_path" => null, // string
+  "slug" => null, // string
+  "source_branch" => null, // string
+]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->GitImport()->load(["id" => "git_import_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GitImportEntity`
+
+Create a new `GitImportEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubEntity
+
+```php
+$github = $client->Github();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubEntity`
+
+Create a new `GithubEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubAppEntity
+
+```php
+$github_app = $client->GithubApp();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubAppEntity`
+
+Create a new `GithubAppEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubAppImportableRepositoryEntity
+
+```php
+$github_app_importable_repository = $client->GithubAppImportableRepository();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_login` | `string` | Yes |  |
+| `github_app_installation_id` | `string` | Yes |  |
+| `next_page` | `mixed` | Yes | Next GitHub page for this installation |
+| `repositories` | `array` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->GithubAppImportableRepository()->list();
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubAppImportableRepositoryEntity`
+
+Create a new `GithubAppImportableRepositoryEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubAppInstallationEntity
+
+```php
+$github_app_installation = $client->GithubAppInstallation();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `mixed` | Yes |  |
+| `account_id` | `mixed` | Yes |  |
+| `account_login` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `installation_id` | `string` | Yes |  |
+| `installed_at` | `mixed` | Yes |  |
+| `installed_at_label` | `mixed` | Yes |  |
+| `manage_access_url` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `permission_entries` | `array` | Yes | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `array` | Yes |  |
+| `status` | `string` | Yes |  |
+| `suspended_at` | `mixed` | Yes |  |
+| `suspended_at_label` | `mixed` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->GithubAppInstallation()->list(["organization_id" => "example"]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->GithubAppInstallation()->remove(["id" => "github_app_installation_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubAppInstallationEntity`
+
+Create a new `GithubAppInstallationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubAppInstallationAuthorizationEntity
+
+```php
+$github_app_installation_authorization = $client->GithubAppInstallationAuthorization();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `installation_url` | `string` | Yes |  |
+| `organization_slug` | `string` | Yes | Vex organization slug whose installation will be linked. |
+| `return_target` | `string` | Yes | Server-validated Vex application target used after verification. |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->GithubAppInstallationAuthorization()->create([
+  "organization_slug" => null, // string
+  "return_target" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubAppInstallationAuthorizationEntity`
+
+Create a new `GithubAppInstallationAuthorizationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubAppUserAuthorizationEntity
+
+```php
+$github_app_user_authorization = $client->GithubAppUserAuthorization();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->GithubAppUserAuthorization()->create([
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubAppUserAuthorizationEntity`
+
+Create a new `GithubAppUserAuthorizationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubCiRepositoryEntity
+
+```php
+$github_ci_repository = $client->GithubCiRepository();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adoption_mode` | `string` | Yes |  |
+| `check_name_prefix` | `string` | Yes |  |
+| `ci_runner_pool_id` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `default_branch` | `string` | Yes |  |
+| `github_app_installation_id` | `string` | Yes |  |
+| `github_repository_id` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_compatibility_status` | `mixed` | Yes |  |
+| `last_error_message` | `mixed` | Yes |  |
+| `last_head_sha` | `mixed` | Yes |  |
+| `last_pull_request_number` | `mixed` | Yes |  |
+| `last_ref` | `mixed` | Yes |  |
+| `last_webhook_action` | `mixed` | Yes |  |
+| `last_webhook_at` | `mixed` | Yes |  |
+| `last_webhook_at_label` | `mixed` | Yes |  |
+| `last_webhook_delivery_id` | `mixed` | Yes |  |
+| `last_webhook_event` | `mixed` | Yes |  |
+| `metadata` | `array` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `permission_status` | `string` | Yes |  |
+| `repository_full_name` | `string` | Yes |  |
+| `repository_name` | `string` | Yes |  |
+| `repository_owner` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+| `webhook_delivery_count` | `int` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `adoption_mode` | - | - | Yes | Yes | Yes |
+| `check_name_prefix` | - | - | Yes | Yes | Yes |
+| `ci_runner_pool_id` | - | - | Yes | Yes | Yes |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `default_branch` | - | - | Yes | Yes | Yes |
+| `github_app_installation_id` | - | - | - | - | - |
+| `github_repository_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `last_compatibility_status` | - | - | - | - | - |
+| `last_error_message` | - | - | - | - | - |
+| `last_head_sha` | - | - | - | - | - |
+| `last_pull_request_number` | - | - | - | - | - |
+| `last_ref` | - | - | - | - | - |
+| `last_webhook_action` | - | - | - | - | - |
+| `last_webhook_at` | - | - | - | - | - |
+| `last_webhook_at_label` | - | - | - | - | - |
+| `last_webhook_delivery_id` | - | - | - | - | - |
+| `last_webhook_event` | - | - | - | - | - |
+| `metadata` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `permission_status` | - | - | - | Yes | Yes |
+| `repository_full_name` | - | - | - | - | - |
+| `repository_name` | - | - | - | - | - |
+| `repository_owner` | - | - | - | - | - |
+| `status` | - | - | Yes | Yes | Yes |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
+| `webhook_delivery_count` | - | - | - | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->GithubCiRepository()->create([
+  "organization_id" => null, // string
+  "github_app_installation_id" => null, // string
+  "github_repository_id" => null, // string
+  "repository_name" => null, // string
+  "repository_owner" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->GithubCiRepository()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->GithubCiRepository()->load(["id" => "github_ci_repository_id", "organization_id" => "organization_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->GithubCiRepository()->patch([
+  "id" => "github_ci_repository_id",
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->GithubCiRepository()->update([
+  "id" => "github_ci_repository_id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubCiRepositoryEntity`
+
+Create a new `GithubCiRepositoryEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubCiRepositoryCompatibilityReportEntity
+
+```php
+$github_ci_repository_compatibility_report = $client->GithubCiRepositoryCompatibilityReport();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `analyzed_at` | `string` | Yes |  |
+| `analyzed_at_label` | `mixed` | Yes |  |
+| `ci_pipeline_id` | `mixed` | Yes |  |
+| `ci_pipeline_run_id` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `diagnostics` | `array` | Yes |  |
+| `errors` | `array` | Yes |  |
+| `event_action` | `mixed` | Yes |  |
+| `event_name` | `string` | Yes |  |
+| `execution_allowed` | `bool` | Yes |  |
+| `github_ci_repository_id` | `string` | Yes |  |
+| `head_sha` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `metadata` | `array` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `parser_version` | `string` | Yes |  |
+| `pull_request_number` | `mixed` | Yes |  |
+| `ref_name` | `mixed` | Yes |  |
+| `referenced_actions` | `array` | Yes |  |
+| `required_secrets` | `array` | Yes |  |
+| `runner_labels` | `array` | Yes |  |
+| `source_blob_sha` | `mixed` | Yes |  |
+| `source_sha` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `supported_features` | `array` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+| `warnings` | `array` | Yes |  |
+| `workflow_name` | `mixed` | Yes |  |
+| `workflow_path` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->GithubCiRepositoryCompatibilityReport()->list(["github_ci_repository_id" => "example", "organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->GithubCiRepositoryCompatibilityReport()->load(["id" => "github_ci_repository_compatibility_report_id", "github_ci_repository_id" => "github_ci_repository_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubCiRepositoryCompatibilityReportEntity`
+
+Create a new `GithubCiRepositoryCompatibilityReportEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## GithubConnectionEntity
 
 ```php
@@ -10928,6 +21765,1216 @@ Set the entity match criteria.
 #### `make(): GithubConnectionEntity`
 
 Create a new `GithubConnectionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubIntegrationEntity
+
+```php
+$github_integration = $client->GithubIntegration();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `mixed` | Yes |  |
+| `account_login` | `string` | Yes |  |
+| `connection_status` | `string` | Yes |  |
+| `connection_status_label` | `string` | Yes |  |
+| `github_installation` | `mixed` | Yes |  |
+| `health` | `array` | Yes |  |
+| `id` | `string` | Yes |  |
+| `imported_repositories_count` | `int` | Yes |  |
+| `imported_repositories_count_label` | `string` | Yes |  |
+| `organization` | `array` | Yes |  |
+| `pagination` | `array` | Yes |  |
+| `repositories` | `array` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->GithubIntegration()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->GithubIntegration()->load(["id" => "github_integration_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubIntegrationEntity`
+
+Create a new `GithubIntegrationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingEntity
+
+```php
+$github_onboarding = $client->GithubOnboarding();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accounts` | `array` | Yes |  |
+| `active_batch_id` | `mixed` | Yes | The batch the wizard's import step should resume — the most recent batch still working, else the most recent overall. |
+| `batches` | `array` | Yes |  |
+| `capabilities` | `array` | Yes |  |
+| `installations` | `array` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->GithubOnboarding()->load(["organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubOnboardingEntity`
+
+Create a new `GithubOnboardingEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingBranchEntity
+
+```php
+$github_onboarding_branch = $client->GithubOnboardingBranch();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `branches` | `array` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->GithubOnboardingBranch()->list(["organization_id" => "example", "github_app_installation_id" => "example", "name" => "example", "owner" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubOnboardingBranchEntity`
+
+Create a new `GithubOnboardingBranchEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingImportEntity
+
+```php
+$github_onboarding_import = $client->GithubOnboardingImport();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_login` | `string` | Yes |  |
+| `complete` | `bool` | Yes | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `string` | Yes |  |
+| `failed_item_count` | `int` | Yes |  |
+| `github_app_installation_id` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `imported_item_count` | `int` | Yes |  |
+| `item_count` | `int` | Yes |  |
+| `items` | `array` | Yes |  |
+| `repositories` | `mixed` | Yes |  |
+| `status` | `string` | Yes |  |
+| `terminal_item_count` | `int` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->GithubOnboardingImport()->create([
+  "organization_id" => null, // string
+  "github_app_installation_id" => null, // string
+  "repositories" => null, // mixed
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubOnboardingImportEntity`
+
+Create a new `GithubOnboardingImportEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingImportBatchEntity
+
+```php
+$github_onboarding_import_batch = $client->GithubOnboardingImportBatch();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_login` | `string` | Yes |  |
+| `complete` | `bool` | Yes | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `string` | Yes |  |
+| `failed_item_count` | `int` | Yes |  |
+| `github_app_installation_id` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `imported_item_count` | `int` | Yes |  |
+| `item_count` | `int` | Yes |  |
+| `items` | `array` | Yes |  |
+| `status` | `string` | Yes |  |
+| `terminal_item_count` | `int` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->GithubOnboardingImportBatch()->load(["id" => "github_onboarding_import_batch_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubOnboardingImportBatchEntity`
+
+Create a new `GithubOnboardingImportBatchEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubOnboardingImportItemEntity
+
+```php
+$github_onboarding_import_item = $client->GithubOnboardingImportItem();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubOnboardingImportItemEntity`
+
+Create a new `GithubOnboardingImportItemEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubPullRequestEntity
+
+```php
+$github_pull_request = $client->GithubPullRequest();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capabilities` | `array` | Yes |  |
+| `content` | `array` | Yes |  |
+| `fetched_at` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `magic_merge` | `mixed` | Yes |  |
+| `pull_request` | `mixed` | Yes |  |
+| `stack` | `array` | Yes |  |
+| `transcript_paths` | `array` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->GithubPullRequest()->load(["id" => "github_pull_request_id", "organization_id" => "organization_id", "pull_request_id" => "pull_request_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubPullRequestEntity`
+
+Create a new `GithubPullRequestEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerAdmissionEntity
+
+```php
+$github_runner_admission = $client->GithubRunnerAdmission();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->GithubRunnerAdmission()->create([
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubRunnerAdmissionEntity`
+
+Create a new `GithubRunnerAdmissionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerCacheEntity
+
+```php
+$github_runner_cache = $client->GithubRunnerCache();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `entry_id` | `string` | No |  |
+| `key` | `string` | No |  |
+| `matched_key` | `string` | No |  |
+| `ok` | `bool` | Yes |  |
+| `operation` | `string` | Yes |  |
+| `restore_keys` | `array` | No |  |
+| `signed_download_url` | `string` | No |  |
+| `size_bytes` | `string` | No |  |
+| `upload_path` | `string` | No |  |
+| `version` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->GithubRunnerCache()->create([
+  "operation" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubRunnerCacheEntity`
+
+Create a new `GithubRunnerCacheEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerEgressEntity
+
+```php
+$github_runner_egress = $client->GithubRunnerEgress();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_request` | `bool` | Yes |  |
+| `cidr` | `mixed` | Yes |  |
+| `ipv4` | `mixed` | Yes |  |
+| `requested_at_label` | `mixed` | Yes |  |
+| `status` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->GithubRunnerEgress()->create([
+  "organization_id" => null, // string
+]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->GithubRunnerEgress()->load(["organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubRunnerEgressEntity`
+
+Create a new `GithubRunnerEgressEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerHistoryEntity
+
+```php
+$github_runner_history = $client->GithubRunnerHistory();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `array` | Yes |  |
+| `counts` | `array` | Yes |  |
+| `observed_at` | `string` | Yes |  |
+| `pagination` | `array` | Yes |  |
+| `repositories` | `array` | Yes |  |
+| `runs` | `array` | Yes |  |
+| `setup` | `mixed` | No | CI onboarding. |
+| `success_rate` | `mixed` | Yes |  |
+| `usage` | `array` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->GithubRunnerHistory()->load(["organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubRunnerHistoryEntity`
+
+Create a new `GithubRunnerHistoryEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerImageEntity
+
+```php
+$github_runner_image = $client->GithubRunnerImage();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `image_reference` | `string` | Yes | Immutable linux/amd64 Ubuntu 24.04 image, registry/repository@sha256:digest, with Node 22+ |
+| `last_error` | `mixed` | Yes |  |
+| `modal_image_id` | `mixed` | Yes |  |
+| `name` | `string` | Yes |  |
+| `registry_secret_name` | `mixed` | Yes | Name of an organization CI secret containing REGISTRY_USERNAME and REGISTRY_PASSWORD JSON fields |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `created_at` | - | - | - |
+| `id` | - | - | - |
+| `image_reference` | - | - | - |
+| `last_error` | - | - | - |
+| `modal_image_id` | - | - | - |
+| `name` | - | - | - |
+| `registry_secret_name` | - | - | Yes |
+| `status` | - | - | - |
+| `updated_at` | - | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->GithubRunnerImage()->create([
+  "organization_id" => null, // string
+  "image_reference" => null, // string
+  "name" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->GithubRunnerImage()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->GithubRunnerImage()->load(["id" => "github_runner_image_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubRunnerImageEntity`
+
+Create a new `GithubRunnerImageEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerPoolEntity
+
+```php
+$github_runner_pool = $client->GithubRunnerPool();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cpu_millicores` | `int` | Yes |  |
+| `enabled` | `bool` | Yes |  |
+| `github_app_installation_id` | `string` | Yes |  |
+| `github_repository_id` | `string` | Yes |  |
+| `github_runner_image` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `image` | `mixed` | No | Organization image name or ID; null restores the standard image |
+| `invocations` | `array` | Yes |  |
+| `label` | `string` | Yes |  |
+| `last_error` | `mixed` | Yes |  |
+| `last_polled_at` | `mixed` | Yes |  |
+| `max_concurrency` | `int` | Yes |  |
+| `memory_mb` | `int` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `repository_full_name` | `string` | Yes |  |
+| `runtime_kind` | `string` | Yes |  |
+| `timeout_seconds` | `int` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | update |
+| --- | --- | --- | --- |
+| `cpu_millicores` | - | - | - |
+| `enabled` | - | Yes | Yes |
+| `github_app_installation_id` | - | - | - |
+| `github_repository_id` | - | - | - |
+| `github_runner_image` | - | - | - |
+| `id` | - | - | - |
+| `image` | - | - | - |
+| `invocations` | - | - | - |
+| `label` | - | Yes | - |
+| `last_error` | - | - | - |
+| `last_polled_at` | - | - | - |
+| `max_concurrency` | - | Yes | Yes |
+| `memory_mb` | - | - | - |
+| `organization_id` | - | - | - |
+| `provider` | - | Yes | Yes |
+| `repository_full_name` | - | - | - |
+| `runtime_kind` | - | - | - |
+| `timeout_seconds` | - | Yes | Yes |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->GithubRunnerPool()->create([
+  "organization_id" => null, // string
+  "github_app_installation_id" => null, // string
+  "repository_full_name" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->GithubRunnerPool()->list(["organization_id" => "example"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->GithubRunnerPool()->update([
+  "id" => "id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubRunnerPoolEntity`
+
+Create a new `GithubRunnerPoolEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GithubRunnerSetupEntity
+
+```php
+$github_runner_setup = $client->GithubRunnerSetup();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `error` | `mixed` | Yes |  |
+| `github_repository_connection_id` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `pull_request_url` | `mixed` | Yes |  |
+| `repository_full_name` | `string` | Yes |  |
+| `roder_thread_id` | `mixed` | Yes |  |
+| `runner_labels` | `array` | Yes |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `summary` | `mixed` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->GithubRunnerSetup()->create([
+  "organization_id" => null, // string
+  "github_repository_connection_id" => null, // string
+]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->GithubRunnerSetup()->load(["id" => "github_runner_setup_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GithubRunnerSetupEntity`
+
+Create a new `GithubRunnerSetupEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GitlabEntity
+
+```php
+$gitlab = $client->Gitlab();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `configured` | `bool` | Yes |  |
+| `connections` | `array` | Yes |  |
+| `integrations` | `array` | Yes |  |
+| `inventory_error` | `mixed` | No |  |
+| `next_page` | `mixed` | Yes |  |
+| `organization` | `array` | Yes |  |
+| `projects` | `array` | Yes |  |
+| `redirect_uri` | `mixed` | Yes | The OAuth redirect URI a self-managed GitLab application must use; null when GitLab callbacks aren't configured. |
+| `selected_integration_id` | `mixed` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->Gitlab()->load(["organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GitlabEntity`
+
+Create a new `GitlabEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GitlabConnectionEntity
+
+```php
+$gitlab_connection = $client->GitlabConnection();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GitlabConnectionEntity`
+
+Create a new `GitlabConnectionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GitlabImportEntity
+
+```php
+$gitlab_import = $client->GitlabImport();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `integration_id` | `string` | Yes |  |
+| `project_id` | `int` | Yes |  |
+| `repo_slug` | `string` | No |  |
+| `source_branch` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->GitlabImport()->create([
+  "organization_id" => null, // string
+  "integration_id" => null, // string
+  "project_id" => null, // int
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GitlabImportEntity`
+
+Create a new `GitlabImportEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GitlabOauthEntity
+
+```php
+$gitlab_oauth = $client->GitlabOauth();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GitlabOauthEntity`
+
+Create a new `GitlabOauthEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## GrantAllAgentEntity
+
+```php
+$grant_all_agent = $client->GrantAllAgent();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `all_agents_access` | `bool` | Yes |  |
+| `enabled` | `bool` | Yes |  |
+| `execution_available` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->GrantAllAgent()->create([
+  "device_id" => null, // string
+  "organization_id" => null, // string
+  "enabled" => null, // bool
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): GrantAllAgentEntity`
+
+Create a new `GrantAllAgentEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -11092,6 +23139,54 @@ Return the entity name.
 
 ---
 
+## IdentityOrganizationEntity
+
+```php
+$identity_organization = $client->IdentityOrganization();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): IdentityOrganizationEntity`
+
+Create a new `IdentityOrganizationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## ImageRepositoryEntity
 
 ```php
@@ -11181,6 +23276,140 @@ Set the entity match criteria.
 #### `make(): ImageRepositoryEntity`
 
 Create a new `ImageRepositoryEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ImageRepositoryTagEntity
+
+```php
+$image_repository_tag = $client->ImageRepositoryTag();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `image_repository` | `array` | Yes |  |
+| `name` | `string` | Yes |  |
+| `registry_url` | `string` | Yes |  |
+| `tags` | `array` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ImageRepositoryTag()->list(["image_repository_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ImageRepositoryTagEntity`
+
+Create a new `ImageRepositoryTagEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ImportBranchPolicyEntity
+
+```php
+$import_branch_policy = $client->ImportBranchPolicy();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `bool` | Yes |  |
+| `can_manage_sandbox_region` | `bool` | Yes |  |
+| `dedicated_outbound_ip_addresses` | `array` | Yes | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` | Yes |  |
+| `organization` | `array` | Yes |  |
+| `sandbox_regions` | `array` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ImportBranchPolicy()->load(["organization_id" => "organization_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->ImportBranchPolicy()->patch([
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->ImportBranchPolicy()->update([
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ImportBranchPolicyEntity`
+
+Create a new `ImportBranchPolicyEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -11385,6 +23614,307 @@ Set the entity match criteria.
 #### `make(): InvitationEntity`
 
 Create a new `InvitationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## InvocationControlEntity
+
+```php
+$invocation_control = $client->InvocationControl();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): InvocationControlEntity`
+
+Create a new `InvocationControlEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## JobLogChunkEntity
+
+```php
+$job_log_chunk = $client->JobLogChunk();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `byte_size` | `int` | Yes |  |
+| `ci_job_id` | `mixed` | Yes |  |
+| `ci_pipeline_run_id` | `mixed` | Yes |  |
+| `ci_step_id` | `mixed` | Yes |  |
+| `content` | `string` | Yes |  |
+| `content_format` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `sequence_number` | `int` | Yes |  |
+| `stream` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->JobLogChunk()->create([
+  "job_id" => null, // string
+  "pipeline_id" => null, // string
+  "run_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->JobLogChunk()->list(["job_id" => "example", "pipeline_id" => "example", "run_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): JobLogChunkEntity`
+
+Create a new `JobLogChunkEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## JobStepEntity
+
+```php
+$job_step = $client->JobStep();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->JobStep()->create([
+  "job_id" => null, // string
+  "pipeline_id" => null, // string
+  "run_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->JobStep()->list(["job_id" => "example", "pipeline_id" => "example", "run_id" => "example"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->JobStep()->patch([
+  "id" => "id",
+  "job_id" => "job_id",
+  "pipeline_id" => "pipeline_id",
+  "run_id" => "run_id",
+  // Only the fields to change
+]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->JobStep()->update([
+  "id" => "id",
+  "job_id" => "job_id",
+  "pipeline_id" => "pipeline_id",
+  "run_id" => "run_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): JobStepEntity`
+
+Create a new `JobStepEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## JobWorkspaceEntity
+
+```php
+$job_workspace = $client->JobWorkspace();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->JobWorkspace()->create([
+  "job_id" => null, // string
+  "pipeline_id" => null, // string
+  "run_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->JobWorkspace()->list(["job_id" => "example", "pipeline_id" => "example", "run_id" => "example"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->JobWorkspace()->patch([
+  "id" => "id",
+  "job_id" => "job_id",
+  "pipeline_id" => "pipeline_id",
+  "run_id" => "run_id",
+  // Only the fields to change
+]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->JobWorkspace()->update([
+  "id" => "id",
+  "job_id" => "job_id",
+  "pipeline_id" => "pipeline_id",
+  "run_id" => "run_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): JobWorkspaceEntity`
+
+Create a new `JobWorkspaceEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -11613,6 +24143,635 @@ Return the entity name.
 
 ---
 
+## KnownEntity
+
+```php
+$known = $client->Known();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): KnownEntity`
+
+Create a new `KnownEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## LabelEntity
+
+```php
+$label = $client->Label();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `changes_count` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes | Display name |
+| `slug` | `string` | Yes | Normalized identity used for filtering and lookup. |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->Label()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): LabelEntity`
+
+Create a new `LabelEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## LeaseArtifactEntity
+
+```php
+$lease_artifact = $client->LeaseArtifact();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->LeaseArtifact()->create([
+  "lease_id" => null, // string
+  "node_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): LeaseArtifactEntity`
+
+Create a new `LeaseArtifactEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## LeaseCacheEntity
+
+```php
+$lease_cache = $client->LeaseCache();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): LeaseCacheEntity`
+
+Create a new `LeaseCacheEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## LeaseLogChunkEntity
+
+```php
+$lease_log_chunk = $client->LeaseLogChunk();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->LeaseLogChunk()->create([
+  "lease_id" => null, // string
+  "node_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): LeaseLogChunkEntity`
+
+Create a new `LeaseLogChunkEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## LeaseReconciliationEntity
+
+```php
+$lease_reconciliation = $client->LeaseReconciliation();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): LeaseReconciliationEntity`
+
+Create a new `LeaseReconciliationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## LeaseStepEntity
+
+```php
+$lease_step = $client->LeaseStep();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->LeaseStep()->update([
+  "id" => "id",
+  "lease_id" => "lease_id",
+  "node_id" => "node_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): LeaseStepEntity`
+
+Create a new `LeaseStepEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## LeaseVerifyDiagnosticEntity
+
+```php
+$lease_verify_diagnostic = $client->LeaseVerifyDiagnostic();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `browser_events` | `array` | Yes |  |
+| `live_browser` | `array` | Yes |  |
+| `live_view` | `array` | Yes | The tester's read-only live stream for page viewers. |
+| `steps` | `array` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->LeaseVerifyDiagnostic()->create([
+  "lease_id" => null, // string
+  "swarm_id" => null, // string
+  "task_id" => null, // string
+  "browser_events" => null, // array
+  "live_browser" => null, // array
+  "live_view" => null, // array
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): LeaseVerifyDiagnosticEntity`
+
+Create a new `LeaseVerifyDiagnosticEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## LeaseVerifySecretEntity
+
+```php
+$lease_verify_secret = $client->LeaseVerifySecret();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->LeaseVerifySecret()->create([
+  "lease_id" => null, // string
+  "swarm_id" => null, // string
+  "task_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): LeaseVerifySecretEntity`
+
+Create a new `LeaseVerifySecretEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## LeaseWorkspaceEntity
+
+```php
+$lease_workspace = $client->LeaseWorkspace();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->LeaseWorkspace()->update([
+  "id" => "id",
+  "lease_id" => "lease_id",
+  "node_id" => "node_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): LeaseWorkspaceEntity`
+
+Create a new `LeaseWorkspaceEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## LocalAgentDecisionEntity
+
+```php
+$local_agent_decision = $client->LocalAgentDecision();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `request` | `array` | Yes | A native OpenAI Decisions request for gpt-6-luna, at most 1600 KiB, with inline images only |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->LocalAgentDecision()->create([
+  "organization_id" => null, // string
+  "request" => null, // array
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): LocalAgentDecisionEntity`
+
+Create a new `LocalAgentDecisionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## LocalAgentResponseEntity
+
+```php
+$local_agent_response = $client->LocalAgentResponse();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `input` | `array` | Yes |  |
+| `model` | `string` | Yes |  |
+| `service_tier` | `mixed` | No |  |
+| `store` | `bool` | Yes |  |
+| `stream` | `bool` | Yes |  |
+| `tools` | `array` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->LocalAgentResponse()->create([
+  "organization_id" => null, // string
+  "input" => null, // array
+  "model" => null, // string
+  "store" => null, // bool
+  "stream" => null, // bool
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): LocalAgentResponseEntity`
+
+Create a new `LocalAgentResponseEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## LocalThreadDeliveryEntity
 
 ```php
@@ -11814,6 +24973,260 @@ Set the entity match criteria.
 #### `make(): LocationEntity`
 
 Create a new `LocationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## LogStreamChunkEntity
+
+```php
+$log_stream_chunk = $client->LogStreamChunk();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->LogStreamChunk()->create([
+  "log_stream_id" => null, // string
+  "space_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->LogStreamChunk()->list(["log_stream_id" => "example", "space_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->LogStreamChunk()->load(["id" => "log_stream_chunk_id", "log_stream_id" => "log_stream_id", "space_id" => "space_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): LogStreamChunkEntity`
+
+Create a new `LogStreamChunkEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## LogoImageEntity
+
+```php
+$logo_image = $client->LogoImage();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_products` | `array` | Yes | Products this organization has activated (PRD 144). |
+| `agents_only` | `bool` | No | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `bool` | Yes | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `github_prs_authored_by_change_author` | `bool` | Yes |  |
+| `id` | `string` | Yes |  |
+| `logo_url` | `mixed` | Yes |  |
+| `member_count` | `int` | Yes |  |
+| `name` | `string` | Yes |  |
+| `pending_invitation_count` | `int` | Yes |  |
+| `personal` | `bool` | Yes |  |
+| `repository_count` | `int` | Yes |  |
+| `role` | `mixed` | Yes |  |
+| `sandbox_region` | `string` | Yes |  |
+| `shared_agent_personal_accounts_enabled` | `bool` | No | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` | Yes |  |
+| `source_control_providers` | `array` | No | Connected source control providers for this organization. |
+| `source_ui_enabled` | `bool` | No | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `string` | Yes | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+| `verify_pr_scenario_writing_enabled` | `bool` | Yes |  |
+
+### Operations
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->LogoImage()->remove(["organization_id" => "organization_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->LogoImage()->update([
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): LogoImageEntity`
+
+Create a new `LogoImageEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## MarketingSettingEntity
+
+```php
+$marketing_setting = $client->MarketingSetting();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `call_first` | `bool` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->MarketingSetting()->list();
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): MarketingSettingEntity`
+
+Create a new `MarketingSettingEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## McpOauthEntity
+
+```php
+$mcp_oauth = $client->McpOauth();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): McpOauthEntity`
+
+Create a new `McpOauthEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -12330,6 +25743,86 @@ Return the entity name.
 
 ---
 
+## MergeQueueEntryEntity
+
+```php
+$merge_queue_entry = $client->MergeQueueEntry();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `analytics` | `array` | Yes | Queue performance for the reporting window. |
+| `change_id` | `mixed` | No |  |
+| `expected_target_commit_id` | `mixed` | No |  |
+| `expected_target_version` | `mixed` | No |  |
+| `expected_version` | `int` | Yes |  |
+| `github_pr_number` | `mixed` | No |  |
+| `id` | `string` | No |  |
+| `idempotency_key` | `string` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `policy` | `array` | Yes |  |
+| `priority` | `string` | No |  |
+| `queue` | `array` | Yes |  |
+| `target_branches` | `array` | No | Bookmark names for the target picker. |
+| `when_ready` | `mixed` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->MergeQueueEntry()->create([
+  "merge_queue_id" => null, // string
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+  "expected_version" => null, // int
+  "idempotency_key" => null, // string
+  "kind" => null, // string
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->MergeQueueEntry()->remove(["id" => "merge_queue_entry_id", "merge_queue_id" => "merge_queue_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): MergeQueueEntryEntity`
+
+Create a new `MergeQueueEntryEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## MergeRequestEntity
 
 ```php
@@ -12455,6 +25948,72 @@ Set the entity match criteria.
 #### `make(): MergeRequestEntity`
 
 Create a new `MergeRequestEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## MergeResolutionEntity
+
+```php
+$merge_resolution = $client->MergeResolution();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `base` | `string` | Yes | Common ancestor file contents |
+| `content` | `mixed` | No |  |
+| `context` | `array` | No | Optional surrounding files keyed by path |
+| `duration_ms` | `int` | Yes |  |
+| `fallback` | `bool` | Yes |  |
+| `model` | `string` | No |  |
+| `ours` | `string` | Yes | Current / left file contents |
+| `path` | `string` | No | Repository-relative path of the conflicted file |
+| `resolved` | `bool` | Yes |  |
+| `theirs` | `string` | Yes | Incoming / right file contents |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->MergeResolution()->create([
+  "base" => null, // string
+  "ours" => null, // string
+  "theirs" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): MergeResolutionEntity`
+
+Create a new `MergeResolutionEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -12639,6 +26198,218 @@ Return the entity name.
 
 ---
 
+## MetronomeWebhookEntity
+
+```php
+$metronome_webhook = $client->MetronomeWebhook();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->MetronomeWebhook()->create([
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): MetronomeWebhookEntity`
+
+Create a new `MetronomeWebhookEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ModelSubscriptionAccountEntity
+
+```php
+$model_subscription_account = $client->ModelSubscriptionAccount();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accounts` | `array` | Yes |  |
+| `agents` | `array` | Yes |  |
+| `can_disconnect` | `bool` | Yes |  |
+| `connection_agent` | `mixed` | Yes |  |
+| `email` | `string` | No |  |
+| `id` | `string` | Yes |  |
+| `label` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `saved` | `bool` | Yes |  |
+| `status` | `string` | Yes |  |
+| `usable` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ModelSubscriptionAccount()->create([
+  "label" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ModelSubscriptionAccount()->list();
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->ModelSubscriptionAccount()->patch([
+  "id" => "model_subscription_account_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->ModelSubscriptionAccount()->remove(["id" => "model_subscription_account_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->ModelSubscriptionAccount()->update([
+  "id" => "model_subscription_account_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ModelSubscriptionAccountEntity`
+
+Create a new `ModelSubscriptionAccountEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ModelSubscriptionAccountConnectionEntity
+
+```php
+$model_subscription_account_connection = $client->ModelSubscriptionAccountConnection();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ModelSubscriptionAccountConnection()->load(["id" => "model_subscription_account_connection_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->ModelSubscriptionAccountConnection()->update([
+  "id" => "model_subscription_account_connection_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ModelSubscriptionAccountConnectionEntity`
+
+Create a new `ModelSubscriptionAccountConnectionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## NetworkConnectionEntity
 
 ```php
@@ -12733,6 +26504,276 @@ Set the entity match criteria.
 #### `make(): NetworkConnectionEntity`
 
 Create a new `NetworkConnectionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## NetworkingSpaceEntity
+
+```php
+$networking_space = $client->NetworkingSpace();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->NetworkingSpace()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->NetworkingSpace()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->NetworkingSpace()->load(["id" => "networking_space_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->NetworkingSpace()->patch([
+  "id" => "networking_space_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->NetworkingSpace()->remove(["id" => "networking_space_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->NetworkingSpace()->update([
+  "id" => "networking_space_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): NetworkingSpaceEntity`
+
+Create a new `NetworkingSpaceEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## NodeEntity
+
+```php
+$node = $client->Node();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `mixed` | Yes |  |
+| `account_id` | `mixed` | Yes |  |
+| `account_login` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `installation_id` | `string` | Yes |  |
+| `installed_at` | `mixed` | Yes |  |
+| `installed_at_label` | `mixed` | Yes |  |
+| `manage_access_url` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `permission_entries` | `array` | Yes | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `array` | Yes |  |
+| `status` | `string` | Yes |  |
+| `suspended_at` | `mixed` | Yes |  |
+| `suspended_at_label` | `mixed` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->Node()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): NodeEntity`
+
+Create a new `NodeEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## NodeCertificateEntity
+
+```php
+$node_certificate = $client->NodeCertificate();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): NodeCertificateEntity`
+
+Create a new `NodeCertificateEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## NodeLeaseEntity
+
+```php
+$node_lease = $client->NodeLease();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->NodeLease()->list(["node_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): NodeLeaseEntity`
+
+Create a new `NodeLeaseEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -12864,6 +26905,465 @@ Set the entity match criteria.
 #### `make(): NomadLogEntity`
 
 Create a new `NomadLogEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## NowEntity
+
+```php
+$now = $client->Now();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `needs_attention` | `array` | Yes |  |
+| `pagination` | `array` | Yes |  |
+| `recently_landed` | `array` | Yes |  |
+| `shipping_now` | `array` | Yes |  |
+| `summary` | `array` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->Now()->load(["organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): NowEntity`
+
+Create a new `NowEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ObservabilityClickhouseClusterEntity
+
+```php
+$observability_clickhouse_cluster = $client->ObservabilityClickhouseCluster();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ObservabilityClickhouseCluster()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ObservabilityClickhouseCluster()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ObservabilityClickhouseCluster()->load(["id" => "observability_clickhouse_cluster_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->ObservabilityClickhouseCluster()->patch([
+  "id" => "observability_clickhouse_cluster_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->ObservabilityClickhouseCluster()->remove(["id" => "observability_clickhouse_cluster_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->ObservabilityClickhouseCluster()->update([
+  "id" => "observability_clickhouse_cluster_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ObservabilityClickhouseClusterEntity`
+
+Create a new `ObservabilityClickhouseClusterEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ObservabilityQuickwitClusterEntity
+
+```php
+$observability_quickwit_cluster = $client->ObservabilityQuickwitCluster();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ObservabilityQuickwitCluster()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ObservabilityQuickwitCluster()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ObservabilityQuickwitCluster()->load(["id" => "observability_quickwit_cluster_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->ObservabilityQuickwitCluster()->patch([
+  "id" => "observability_quickwit_cluster_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->ObservabilityQuickwitCluster()->remove(["id" => "observability_quickwit_cluster_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->ObservabilityQuickwitCluster()->update([
+  "id" => "observability_quickwit_cluster_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ObservabilityQuickwitClusterEntity`
+
+Create a new `ObservabilityQuickwitClusterEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ObservabilitySpaceEntity
+
+```php
+$observability_space = $client->ObservabilitySpace();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ObservabilitySpace()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ObservabilitySpace()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ObservabilitySpace()->load(["id" => "observability_space_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->ObservabilitySpace()->patch([
+  "id" => "observability_space_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->ObservabilitySpace()->remove(["id" => "observability_space_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->ObservabilitySpace()->update([
+  "id" => "observability_space_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ObservabilitySpaceEntity`
+
+Create a new `ObservabilitySpaceEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OpenapiEntity
+
+```php
+$openapi = $client->Openapi();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->Openapi()->load();
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OpenapiEntity`
+
+Create a new `OpenapiEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrgInvitationEntity
+
+```php
+$org_invitation = $client->OrgInvitation();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+| `invitation` | `array` | Yes |  |
+| `registration_options` | `mixed` | Yes |  |
+| `requires_password_setup` | `bool` | Yes |  |
+| `start_guided_setup` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->OrgInvitation()->load(["id" => "org_invitation_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrgInvitationEntity`
+
+Create a new `OrgInvitationEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -13009,6 +27509,1326 @@ Set the entity match criteria.
 #### `make(): OrganizationEntity`
 
 Create a new `OrganizationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationAppEntity
+
+```php
+$organization_app = $client->OrganizationApp();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->OrganizationApp()->list(["organization_id" => "example", "native_agent_id" => "example"]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationAppEntity`
+
+Create a new `OrganizationAppEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationControlEntity
+
+```php
+$organization_control = $client->OrganizationControl();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationControlEntity`
+
+Create a new `OrganizationControlEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationDeviceEntity
+
+```php
+$organization_device = $client->OrganizationDevice();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationDeviceEntity`
+
+Create a new `OrganizationDeviceEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationIdentityCertificateEntity
+
+```php
+$organization_identity_certificate = $client->OrganizationIdentityCertificate();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->OrganizationIdentityCertificate()->create([
+  "organization_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->OrganizationIdentityCertificate()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->OrganizationIdentityCertificate()->load(["id" => "organization_identity_certificate_id", "organization_id" => "organization_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->OrganizationIdentityCertificate()->patch([
+  "id" => "organization_identity_certificate_id",
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->OrganizationIdentityCertificate()->remove(["id" => "organization_identity_certificate_id", "organization_id" => "organization_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->OrganizationIdentityCertificate()->update([
+  "id" => "organization_identity_certificate_id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationIdentityCertificateEntity`
+
+Create a new `OrganizationIdentityCertificateEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationInteractionEntity
+
+```php
+$organization_interaction = $client->OrganizationInteraction();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->OrganizationInteraction()->create([
+  "organization_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationInteractionEntity`
+
+Create a new `OrganizationInteractionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationInvitationEntity
+
+```php
+$organization_invitation = $client->OrganizationInvitation();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `role` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->OrganizationInvitation()->create([
+  "organization_id" => null, // string
+  "email" => null, // string
+  "role" => null, // string
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->OrganizationInvitation()->remove(["id" => "organization_invitation_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationInvitationEntity`
+
+Create a new `OrganizationInvitationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationMessageFileEntity
+
+```php
+$organization_message_file = $client->OrganizationMessageFile();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->OrganizationMessageFile()->create([
+  "organization_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationMessageFileEntity`
+
+Create a new `OrganizationMessageFileEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationOidcTrustEntity
+
+```php
+$organization_oidc_trust = $client->OrganizationOidcTrust();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->OrganizationOidcTrust()->create([
+  "organization_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->OrganizationOidcTrust()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->OrganizationOidcTrust()->load(["id" => "organization_oidc_trust_id", "organization_id" => "organization_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->OrganizationOidcTrust()->patch([
+  "id" => "organization_oidc_trust_id",
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->OrganizationOidcTrust()->remove(["id" => "organization_oidc_trust_id", "organization_id" => "organization_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->OrganizationOidcTrust()->update([
+  "id" => "organization_oidc_trust_id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationOidcTrustEntity`
+
+Create a new `OrganizationOidcTrustEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationRunEventEntity
+
+```php
+$organization_run_event = $client->OrganizationRunEvent();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->OrganizationRunEvent()->create([
+  "organization_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationRunEventEntity`
+
+Create a new `OrganizationRunEventEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationRunOutcomeEntity
+
+```php
+$organization_run_outcome = $client->OrganizationRunOutcome();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->OrganizationRunOutcome()->create([
+  "organization_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationRunOutcomeEntity`
+
+Create a new `OrganizationRunOutcomeEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationRunUsageEntity
+
+```php
+$organization_run_usage = $client->OrganizationRunUsage();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->OrganizationRunUsage()->create([
+  "organization_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationRunUsageEntity`
+
+Create a new `OrganizationRunUsageEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSandboxEntity
+
+```php
+$organization_sandbox = $client->OrganizationSandbox();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationSandboxEntity`
+
+Create a new `OrganizationSandboxEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSecretEntity
+
+```php
+$organization_secret = $client->OrganizationSecret();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app_environment_id` | `mixed` | Yes |  |
+| `app_service_id` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `created_by` | `mixed` | Yes |  |
+| `current_version` | `mixed` | Yes |  |
+| `description` | `mixed` | Yes |  |
+| `env_key` | `string` | Yes |  |
+| `expose_to_build` | `bool` | Yes |  |
+| `expose_to_ci` | `bool` | Yes |  |
+| `hosted_app_id` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_accessed_at` | `mixed` | Yes |  |
+| `last_accessed_at_label` | `mixed` | Yes |  |
+| `last_accessed_by` | `mixed` | Yes |  |
+| `latest_version_number` | `mixed` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `mixed` | Yes |  |
+| `owner_service_account_id` | `mixed` | Yes |  |
+| `rotation_policy` | `mixed` | Yes |  |
+| `scope_kind` | `string` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->OrganizationSecret()->create([
+  "organization_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->OrganizationSecret()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->OrganizationSecret()->load(["id" => "organization_secret_id", "organization_id" => "organization_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->OrganizationSecret()->patch([
+  "id" => "organization_secret_id",
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->OrganizationSecret()->remove(["id" => "organization_secret_id", "organization_id" => "organization_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->OrganizationSecret()->update([
+  "id" => "organization_secret_id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationSecretEntity`
+
+Create a new `OrganizationSecretEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationServiceAccountEntity
+
+```php
+$organization_service_account = $client->OrganizationServiceAccount();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->OrganizationServiceAccount()->create([
+  "organization_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->OrganizationServiceAccount()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->OrganizationServiceAccount()->load(["id" => "organization_service_account_id", "organization_id" => "organization_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->OrganizationServiceAccount()->patch([
+  "id" => "organization_service_account_id",
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->OrganizationServiceAccount()->remove(["id" => "organization_service_account_id", "organization_id" => "organization_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->OrganizationServiceAccount()->update([
+  "id" => "organization_service_account_id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationServiceAccountEntity`
+
+Create a new `OrganizationServiceAccountEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSettingEntity
+
+```php
+$organization_setting = $client->OrganizationSetting();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `concurrent_run_limit_override` | `mixed` | No |  |
+| `customize_onboarding_packages` | `bool` | No |  |
+| `daily_run_limit_override` | `mixed` | No |  |
+| `deployment_usage_visibility` | `string` | No |  |
+| `monthly_browser_minutes_limit_override` | `mixed` | No |  |
+| `monthly_budget_dollars` | `mixed` | No |  |
+| `name` | `string` | No |  |
+| `onboarding_custom_pricing` | `bool` | No |  |
+| `onboarding_package_keys` | `array` | No |  |
+
+### Operations
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->OrganizationSetting()->update([
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationSettingEntity`
+
+Create a new `OrganizationSettingEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSiteEntity
+
+```php
+$organization_site = $client->OrganizationSite();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->OrganizationSite()->create([
+  "organization_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->OrganizationSite()->list(["organization_id" => "example", "native_agent_id" => "example"]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->OrganizationSite()->remove(["id" => "organization_site_id", "organization_id" => "organization_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->OrganizationSite()->update([
+  "id" => "organization_site_id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationSiteEntity`
+
+Create a new `OrganizationSiteEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationSubscriptionEntity
+
+```php
+$organization_subscription = $client->OrganizationSubscription();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationSubscriptionEntity`
+
+Create a new `OrganizationSubscriptionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationToolEntity
+
+```php
+$organization_tool = $client->OrganizationTool();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `arguments` | `array` | Yes |  |
+| `native_agent_id` | `string` | Yes |  |
+| `tool` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->OrganizationTool()->create([
+  "organization_id" => null, // string
+  "arguments" => null, // array
+  "native_agent_id" => null, // string
+  "tool" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationToolEntity`
+
+Create a new `OrganizationToolEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OrganizationWorkloadIdentityEntity
+
+```php
+$organization_workload_identity = $client->OrganizationWorkloadIdentity();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->OrganizationWorkloadIdentity()->create([
+  "organization_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->OrganizationWorkloadIdentity()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->OrganizationWorkloadIdentity()->load(["id" => "organization_workload_identity_id", "organization_id" => "organization_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->OrganizationWorkloadIdentity()->patch([
+  "id" => "organization_workload_identity_id",
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->OrganizationWorkloadIdentity()->remove(["id" => "organization_workload_identity_id", "organization_id" => "organization_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->OrganizationWorkloadIdentity()->update([
+  "id" => "organization_workload_identity_id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OrganizationWorkloadIdentityEntity`
+
+Create a new `OrganizationWorkloadIdentityEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## OtelIngestEntity
+
+```php
+$otel_ingest = $client->OtelIngest();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): OtelIngestEntity`
+
+Create a new `OtelIngestEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -13165,6 +28985,162 @@ Return the entity name.
 
 ---
 
+## PageArtefactEntity
+
+```php
+$page_artefact = $client->PageArtefact();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `artefact` | `mixed` | Yes |  |
+| `automation` | `mixed` | Yes |  |
+| `automation_invocation_id` | `mixed` | No |  |
+| `byte_size` | `int` | Yes |  |
+| `checksum_sha256` | `string` | Yes |  |
+| `comment_threads` | `array` | Yes |  |
+| `content_type` | `string` | Yes |  |
+| `created_at` | `mixed` | No |  |
+| `created_by_user_id` | `mixed` | No |  |
+| `description` | `mixed` | No |  |
+| `document_key` | `string` | No | Stable document identity shared by all revisions. |
+| `draft` | `mixed` | Yes | The autosaved working copy of the newest Markdown version; null for older versions and other files. |
+| `entrypoint` | `string` | No |  |
+| `expires_at` | `mixed` | No |  |
+| `filename` | `string` | Yes |  |
+| `files` | `array` | No |  |
+| `harness` | `mixed` | No |  |
+| `harness_version` | `mixed` | No |  |
+| `id` | `string` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `kinds` | `array` | Yes |  |
+| `model` | `mixed` | No |  |
+| `organization` | `array` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `pagination` | `array` | Yes |  |
+| `permissions` | `array` | Yes |  |
+| `preview` | `array` | Yes |  |
+| `published_at` | `mixed` | No |  |
+| `published_at_label` | `mixed` | Yes |  |
+| `publisher` | `mixed` | Yes |  |
+| `repository` | `mixed` | Yes |  |
+| `repository_id` | `mixed` | No |  |
+| `selected_path` | `string` | No |  |
+| `slug` | `string` | Yes |  |
+| `source` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `vcs_agent_checkpoint_id` | `mixed` | No |  |
+| `vcs_agent_session_id` | `mixed` | No |  |
+| `version` | `int` | Yes |  |
+| `versions` | `array` | Yes |  |
+| `view_url` | `string` | Yes |  |
+| `web_url` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->PageArtefact()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->PageArtefact()->load(["id" => "page_artefact_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PageArtefactEntity`
+
+Create a new `PageArtefactEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## PageCiPipelineRunEntity
+
+```php
+$page_ci_pipeline_run = $client->PageCiPipelineRun();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `error` | `mixed` | Yes |  |
+| `id` | `string` | No |  |
+| `jobs` | `array` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->PageCiPipelineRun()->load(["id" => "page_ci_pipeline_run_id", "pipeline_id" => "pipeline_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PageCiPipelineRunEntity`
+
+Create a new `PageCiPipelineRunEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## PageProjectRunEntity
 
 ```php
@@ -13220,6 +29196,253 @@ Set the entity match criteria.
 #### `make(): PageProjectRunEntity`
 
 Create a new `PageProjectRunEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## PageRepoVcCommitEntity
+
+```php
+$page_repo_vc_commit = $client->PageRepoVcCommit();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `commit` | `mixed` | Yes |  |
+| `diff_path` | `string` | Yes | Fingerprinted path serving this commit range's file diff. |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->PageRepoVcCommit()->load(["id" => "page_repo_vc_commit_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PageRepoVcCommitEntity`
+
+Create a new `PageRepoVcCommitEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## PagesBillingEntity
+
+```php
+$pages_billing = $client->PagesBilling();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `array` | Yes |  |
+| `breakdown` | `mixed` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `mixed` | Yes |  |
+| `can_manage_contact` | `bool` | Yes |  |
+| `can_manage_extra_spend` | `bool` | Yes |  |
+| `can_manage_local_subscription` | `bool` | Yes |  |
+| `can_manage_payment_method` | `bool` | Yes |  |
+| `can_set_up_billing` | `bool` | Yes |  |
+| `customer` | `mixed` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `entitlements` | `array` | Yes |  |
+| `extra_spend_enabled` | `bool` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `mixed` | Yes |  |
+| `prepaid` | `mixed` | Yes |  |
+| `preview` | `mixed` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `array` | Yes |  |
+| `stripe` | `array` | Yes |  |
+| `subscription` | `mixed` | Yes |  |
+| `token_account` | `array` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->PagesBilling()->load(["organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PagesBillingEntity`
+
+Create a new `PagesBillingEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## PagesGithubOnboardingEntity
+
+```php
+$pages_github_onboarding = $client->PagesGithubOnboarding();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `onboarding` | `array` | Yes |  |
+| `organization` | `array` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->PagesGithubOnboarding()->load(["organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PagesGithubOnboardingEntity`
+
+Create a new `PagesGithubOnboardingEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## PagesMemberEntity
+
+```php
+$pages_member = $client->PagesMember();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accepted_at` | `mixed` | Yes |  |
+| `accepted_by_user` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `email` | `string` | Yes |  |
+| `email_delivery_status` | `string` | No |  |
+| `expires_at` | `mixed` | Yes |  |
+| `expires_at_label` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `invite_url` | `mixed` | Yes |  |
+| `invited_by_user` | `mixed` | Yes |  |
+| `organization` | `array` | Yes |  |
+| `revoked_at` | `mixed` | Yes |  |
+| `role` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->PagesMember()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PagesMemberEntity`
+
+Create a new `PagesMemberEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -13463,6 +29686,419 @@ Set the entity match criteria.
 #### `make(): PagesProjectScenarioEntity`
 
 Create a new `PagesProjectScenarioEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## PagesRegistryEntity
+
+```php
+$pages_registry = $client->PagesRegistry();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_repository_count` | `int` | Yes |  |
+| `error` | `mixed` | Yes |  |
+| `pagination` | `array` | Yes |  |
+| `repositories` | `array` | Yes |  |
+| `repository_count` | `int` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->PagesRegistry()->load(["organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PagesRegistryEntity`
+
+Create a new `PagesRegistryEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## PagesSessionEntity
+
+```php
+$pages_session = $client->PagesSession();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter` | `string` | No |  |
+| `created_at` | `mixed` | Yes |  |
+| `cursor` | `string` | No |  |
+| `ended_at` | `mixed` | Yes |  |
+| `external_session_id` | `string` | Yes |  |
+| `facets` | `array` | Yes |  |
+| `from` | `string` | No |  |
+| `github_access_warnings` | `array` | No |  |
+| `harness` | `string` | Yes | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `string` | Yes |  |
+| `last_activity_at` | `mixed` | Yes | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `mixed` | Yes |  |
+| `limit` | `int` | No |  |
+| `markers` | `array` | Yes |  |
+| `max_bytes` | `int` | No |  |
+| `mode` | `string` | No |  |
+| `offset` | `int` | No |  |
+| `pagination` | `array` | Yes |  |
+| `query` | `string` | No |  |
+| `repo` | `string` | No |  |
+| `repository` | `mixed` | Yes |  |
+| `search` | `mixed` | No |  |
+| `search_enabled` | `bool` | No |  |
+| `session` | `mixed` | Yes | Identical serialization to the org sessions page's expanded session, so the web reuses one session-detail builder. |
+| `sessions` | `array` | Yes |  |
+| `started_at` | `mixed` | Yes |  |
+| `stats` | `array` | Yes |  |
+| `status` | `string` | No |  |
+| `title` | `mixed` | Yes |  |
+| `to` | `string` | No |  |
+| `token_stats` | `mixed` | Yes |  |
+| `transcript_index` | `mixed` | Yes |  |
+| `transcript_stats` | `mixed` | Yes |  |
+| `updated_at` | `mixed` | Yes |  |
+| `user` | `mixed` | Yes |  |
+| `user_id` | `string` | No |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `adapter` | - | Yes | - |
+| `created_at` | - | - | - |
+| `cursor` | - | - | - |
+| `ended_at` | - | - | - |
+| `external_session_id` | - | - | - |
+| `facets` | - | - | - |
+| `from` | - | - | - |
+| `github_access_warnings` | - | - | - |
+| `harness` | - | - | - |
+| `id` | - | - | - |
+| `last_activity_at` | - | - | - |
+| `last_checkpoint_at` | - | - | - |
+| `limit` | - | - | - |
+| `markers` | - | - | - |
+| `max_bytes` | - | - | - |
+| `mode` | - | - | - |
+| `offset` | - | - | - |
+| `pagination` | - | - | - |
+| `query` | - | - | - |
+| `repo` | - | - | - |
+| `repository` | - | - | - |
+| `search` | - | - | - |
+| `search_enabled` | - | - | - |
+| `session` | - | - | - |
+| `sessions` | - | - | - |
+| `started_at` | - | - | - |
+| `stats` | - | - | - |
+| `status` | - | Yes | - |
+| `title` | - | - | - |
+| `to` | - | - | - |
+| `token_stats` | - | - | - |
+| `transcript_index` | - | - | - |
+| `transcript_stats` | - | - | - |
+| `updated_at` | - | - | - |
+| `user` | - | - | - |
+| `user_id` | - | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->PagesSession()->create([
+  "organization_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->PagesSession()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->PagesSession()->load(["id" => "pages_session_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PagesSessionEntity`
+
+Create a new `PagesSessionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## PairingEntity
+
+```php
+$pairing = $client->Pairing();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->Pairing()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->Pairing()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->Pairing()->load(["id" => "pairing_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PairingEntity`
+
+Create a new `PairingEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## PairingEventEntity
+
+```php
+$pairing_event = $client->PairingEvent();
+```
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->PairingEvent()->list(["pairing_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PairingEventEntity`
+
+Create a new `PairingEventEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ParallelV1Entity
+
+```php
+$parallel_v1 = $client->ParallelV1();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ParallelV1Entity`
+
+Create a new `ParallelV1Entity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## PatchsetDiffEntity
+
+```php
+$patchset_diff = $client->PatchsetDiff();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `files` | `array` | Yes |  |
+| `id` | `string` | No |  |
+| `patchset` | `array` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->PatchsetDiff()->load(["id" => "patchset_diff_id", "change_id" => "change_id", "organization_id" => "organization_id", "patchset_id" => "patchset_id", "repo_id" => "repo_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PatchsetDiffEntity`
+
+Create a new `PatchsetDiffEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -13817,6 +30453,155 @@ Set the entity match criteria.
 #### `make(): PreviewSharingApprovalEntity`
 
 Create a new `PreviewSharingApprovalEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ProactiveAgentWaitlistEntryEntity
+
+```php
+$proactive_agent_waitlist_entry = $client->ProactiveAgentWaitlistEntry();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email` | `string` | Yes |  |
+| `first_task` | `mixed` | No | The first job they would hand an agent. |
+| `invite_code` | `mixed` | No | The referral code of the invite link they arrived through. |
+| `places_per_referral` | `int` | Yes | Most places one referral moves the entry up; fewer when boosted entries are ahead. |
+| `position` | `int` | Yes | 1-based place in the queue. |
+| `position_after_next_referral` | `int` | Yes | The place one more referral would give this entry, as Rails would assign it. |
+| `referral_code` | `string` | Yes | Shared in this entry's invite link. |
+| `referral_count` | `int` | Yes | People who joined through this entry's link. |
+| `total` | `int` | Yes | Display total including a random increment per signup; not the actual number of entries. |
+| `website` | `mixed` | No | Honeypot. |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ProactiveAgentWaitlistEntry()->create([
+  "email" => null, // string
+]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ProactiveAgentWaitlistEntry()->load(["id" => "proactive_agent_waitlist_entry_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ProactiveAgentWaitlistEntryEntity`
+
+Create a new `ProactiveAgentWaitlistEntryEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ProductEntity
+
+```php
+$product = $client->Product();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_products` | `array` | Yes | Products this organization has activated (PRD 144). |
+| `agents_only` | `bool` | No | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `bool` | Yes | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `github_prs_authored_by_change_author` | `bool` | Yes |  |
+| `id` | `string` | Yes |  |
+| `logo_url` | `mixed` | Yes |  |
+| `member_count` | `int` | Yes |  |
+| `name` | `string` | Yes |  |
+| `pending_invitation_count` | `int` | Yes |  |
+| `personal` | `bool` | Yes |  |
+| `product` | `string` | Yes |  |
+| `repository_count` | `int` | Yes |  |
+| `role` | `mixed` | Yes |  |
+| `sandbox_region` | `string` | Yes |  |
+| `shared_agent_personal_accounts_enabled` | `bool` | No | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` | Yes |  |
+| `source_control_providers` | `array` | No | Connected source control providers for this organization. |
+| `source_ui_enabled` | `bool` | No | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `string` | Yes | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+| `verify_pr_scenario_writing_enabled` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->Product()->create([
+  "organization_id" => null, // string
+  "product" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ProductEntity`
+
+Create a new `ProductEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -15853,6 +32638,122 @@ Return the entity name.
 
 ---
 
+## PullRequestActionEntity
+
+```php
+$pull_request_action = $client->PullRequestAction();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action_name` | `string` | Yes |  |
+| `body` | `string` | No |  |
+| `comment_id` | `string` | No |  |
+| `comments` | `array` | No |  |
+| `event` | `string` | No |  |
+| `expected_head_sha` | `string` | No |  |
+| `id` | `mixed` | No |  |
+| `label` | `string` | No |  |
+| `line` | `int` | No |  |
+| `node_id` | `mixed` | No |  |
+| `operation_key` | `string` | Yes |  |
+| `path` | `string` | No |  |
+| `run_id` | `string` | No |  |
+| `side` | `string` | No |  |
+| `start_line` | `int` | No |  |
+| `start_side` | `string` | No |  |
+| `thread_id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->PullRequestAction()->create([
+  "number" => null, // string
+  "organization_id" => null, // string
+  "pull_request_id" => null, // string
+  "action_name" => null, // string
+  "operation_key" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PullRequestActionEntity`
+
+Create a new `PullRequestActionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## PullRequestMagicMergeEntity
+
+```php
+$pull_request_magic_merge = $client->PullRequestMagicMerge();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PullRequestMagicMergeEntity`
+
+Create a new `PullRequestMagicMergeEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## PullRequestSettingEntity
 
 ```php
@@ -16123,6 +33024,126 @@ Return the entity name.
 
 ---
 
+## PullRequestTranscriptEntity
+
+```php
+$pull_request_transcript = $client->PullRequestTranscript();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter` | `string` | Yes |  |
+| `created_at` | `mixed` | Yes |  |
+| `ended_at` | `mixed` | Yes |  |
+| `external_session_id` | `string` | Yes |  |
+| `harness` | `string` | Yes | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `string` | Yes |  |
+| `last_activity_at` | `mixed` | Yes | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `mixed` | Yes |  |
+| `repository` | `mixed` | Yes |  |
+| `started_at` | `mixed` | Yes |  |
+| `stats` | `array` | Yes |  |
+| `status` | `string` | Yes |  |
+| `title` | `mixed` | Yes |  |
+| `updated_at` | `mixed` | Yes |  |
+| `user` | `mixed` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->PullRequestTranscript()->list(["organization_id" => "example", "pull_request_id" => "example", "repo_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PullRequestTranscriptEntity`
+
+Create a new `PullRequestTranscriptEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## PullZoneEntity
+
+```php
+$pull_zone = $client->PullZone();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `slug` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->PullZone()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): PullZoneEntity`
+
+Create a new `PullZoneEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## RecorderEntity
 
 ```php
@@ -16261,6 +33282,143 @@ Return the entity name.
 
 ---
 
+## RelayAgentConnectionEntity
+
+```php
+$relay_agent_connection = $client->RelayAgentConnection();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_card_url` | `string` | Yes |  |
+| `auth_scheme` | `string` | Yes |  |
+| `can_configure` | `bool` | Yes |  |
+| `can_disconnect` | `bool` | Yes |  |
+| `can_setup` | `bool` | Yes |  |
+| `connection` | `array` | Yes |  |
+| `credential` | `mixed` | No | Write-only outbound key. |
+| `error_code` | `mixed` | Yes |  |
+| `expected_generation` | `int` | Yes |  |
+| `generation` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `remote_agent` | `mixed` | Yes |  |
+| `requester_id` | `string` | Yes |  |
+| `retired_at` | `mixed` | Yes |  |
+| `revoked_at` | `mixed` | Yes |  |
+| `scope_key` | `string` | Yes |  |
+| `source_operation_id` | `mixed` | Yes |  |
+| `state` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | remove |
+| --- | --- | --- | --- | --- | --- |
+| `agent_card_url` | - | - | - | - | - |
+| `auth_scheme` | - | - | - | - | - |
+| `can_configure` | - | - | - | - | - |
+| `can_disconnect` | - | - | - | - | - |
+| `can_setup` | - | - | - | - | - |
+| `connection` | - | - | - | - | - |
+| `credential` | - | - | - | - | - |
+| `error_code` | - | - | - | - | - |
+| `expected_generation` | - | - | - | - | - |
+| `generation` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `remote_agent` | - | - | Yes | Yes | - |
+| `requester_id` | - | - | - | - | - |
+| `retired_at` | - | - | - | - | - |
+| `revoked_at` | - | - | - | - | - |
+| `scope_key` | - | - | - | - | - |
+| `source_operation_id` | - | - | Yes | - | - |
+| `state` | - | - | - | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RelayAgentConnection()->create([
+  "agent_id" => null, // string
+  "organization_id" => null, // string
+  "agent_card_url" => null, // string
+  "auth_scheme" => null, // string
+  "name" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RelayAgentConnection()->list(["agent_id" => "example", "organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->RelayAgentConnection()->load(["id" => "relay_agent_connection_id", "agent_id" => "agent_id", "organization_id" => "organization_id"]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->RelayAgentConnection()->remove(["id" => "relay_agent_connection_id", "agent_id" => "agent_id", "organization_id" => "organization_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->RelayAgentConnection()->update([
+  "id" => "relay_agent_connection_id",
+  "agent_id" => "agent_id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RelayAgentConnectionEntity`
+
+Create a new `RelayAgentConnectionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## RelayAgentLocalThreadEntity
 
 ```php
@@ -16304,6 +33462,1195 @@ Set the entity match criteria.
 #### `make(): RelayAgentLocalThreadEntity`
 
 Create a new `RelayAgentLocalThreadEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RelaySignalEntity
+
+```php
+$relay_signal = $client->RelaySignal();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RelaySignal()->create([
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RelaySignalEntity`
+
+Create a new `RelaySignalEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ReleaseRolloutEntity
+
+```php
+$release_rollout = $client->ReleaseRollout();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ReleaseRollout()->create([
+  "release_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->ReleaseRollout()->list(["release_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ReleaseRollout()->load(["id" => "release_rollout_id", "release_id" => "release_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ReleaseRolloutEntity`
+
+Create a new `ReleaseRolloutEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepoEntity
+
+```php
+$repo = $client->Repo();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_retry_import` | `bool` | Yes | True when a failed client import can be requeued for CLI resume. |
+| `can_retry_sync` | `bool` | Yes | True when the latest sync run failed and can be retried. |
+| `disclaimer` | `mixed` | Yes |  |
+| `federated_in_home` | `bool` | Yes | True when this Space is a folder virtual repository inside the organization Home monorepo. |
+| `github_repository` | `mixed` | Yes |  |
+| `icon_name` | `string` | Yes |  |
+| `id` | `string` | Yes | Virtual repository public ID for non-Home rows; Home uses the physical repository public ID. |
+| `import_item_id` | `mixed` | Yes |  |
+| `is_home` | `bool` | Yes |  |
+| `name` | `string` | Yes |  |
+| `remote_repository` | `mixed` | No |  |
+| `root_path` | `mixed` | Yes | Home-relative folder path when federated_in_home is true; null otherwise. |
+| `slug` | `string` | Yes |  |
+| `sync_error_message` | `mixed` | Yes |  |
+| `sync_provider` | `string` | No |  |
+| `sync_status` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->Repo()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->Repo()->remove(["id" => "repo_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepoEntity`
+
+Create a new `RepoEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepoAccessTokenEntity
+
+```php
+$repo_access_token = $client->RepoAccessToken();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access_token` | `array` | Yes |  |
+| `active` | `bool` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `credential_purpose` | `string` | No | Issues a revocable read-write system credential valid for one hour. |
+| `expires_at` | `mixed` | Yes |  |
+| `expires_at_label` | `mixed` | Yes |  |
+| `expires_in_days` | `mixed` | No |  |
+| `id` | `string` | Yes |  |
+| `last_used_at` | `mixed` | Yes |  |
+| `last_used_at_label` | `mixed` | Yes |  |
+| `name` | `string` | Yes |  |
+| `permission_level` | `string` | No |  |
+| `plain_text_token` | `string` | Yes |  |
+| `revoked_at` | `mixed` | Yes |  |
+| `revoked_at_label` | `mixed` | Yes |  |
+| `token_preview` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | remove |
+| --- | --- | --- | --- |
+| `access_token` | - | - | - |
+| `active` | - | - | - |
+| `created_at` | - | - | - |
+| `created_at_label` | - | - | - |
+| `credential_purpose` | - | - | - |
+| `expires_at` | - | - | - |
+| `expires_at_label` | - | - | - |
+| `expires_in_days` | - | - | - |
+| `id` | - | - | - |
+| `last_used_at` | - | - | - |
+| `last_used_at_label` | - | - | - |
+| `name` | - | - | - |
+| `permission_level` | Yes | - | - |
+| `plain_text_token` | - | - | - |
+| `revoked_at` | - | - | - |
+| `revoked_at_label` | - | - | - |
+| `token_preview` | - | - | - |
+| `updated_at` | - | - | - |
+| `updated_at_label` | - | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RepoAccessToken()->create([
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+  "name" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RepoAccessToken()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->RepoAccessToken()->remove(["id" => "repo_access_token_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepoAccessTokenEntity`
+
+Create a new `RepoAccessTokenEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepoActionEntity
+
+```php
+$repo_action = $client->RepoAction();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `pipeline` | `array` | Yes |  |
+| `run` | `array` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RepoAction()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepoActionEntity`
+
+Create a new `RepoActionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepoAgentCheckpointEntity
+
+```php
+$repo_agent_checkpoint = $client->RepoAgentCheckpoint();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->RepoAgentCheckpoint()->load(["id" => "repo_agent_checkpoint_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepoAgentCheckpointEntity`
+
+Create a new `RepoAgentCheckpointEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepoAgentSessionEntity
+
+```php
+$repo_agent_session = $client->RepoAgentSession();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter` | `string` | No |  |
+| `agent_session` | `array` | Yes |  |
+| `external_session_id` | `string` | No |  |
+| `id` | `string` | No |  |
+| `status` | `string` | No |  |
+| `title` | `mixed` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RepoAgentSession()->create([
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RepoAgentSession()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->RepoAgentSession()->load(["id" => "repo_agent_session_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->RepoAgentSession()->patch([
+  "id" => "repo_agent_session_id",
+  "organization_id" => "organization_id",
+  "repo_id" => "repo_id",
+  // Only the fields to change
+]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->RepoAgentSession()->update([
+  "id" => "repo_agent_session_id",
+  "organization_id" => "organization_id",
+  "repo_id" => "repo_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepoAgentSessionEntity`
+
+Create a new `RepoAgentSessionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepoBookmarkProtectionEntity
+
+```php
+$repo_bookmark_protection = $client->RepoBookmarkProtection();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `actor_policy` | `array` | Yes |  |
+| `bypass_mode` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_by_user_id` | `mixed` | Yes |  |
+| `enabled` | `bool` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `priority` | `int` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `requirements` | `array` | Yes |  |
+| `target_kind` | `string` | Yes |  |
+| `target_pattern` | `mixed` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_by_user_id` | `mixed` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- | --- |
+| `actor_policy` | - | - | Yes | Yes | Yes | - |
+| `bypass_mode` | - | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - | - |
+| `created_by_user_id` | - | - | - | - | - | - |
+| `enabled` | - | - | Yes | Yes | Yes | - |
+| `id` | - | - | - | - | - | - |
+| `name` | - | - | Yes | Yes | Yes | - |
+| `organization_id` | - | - | - | - | - | - |
+| `priority` | - | - | Yes | Yes | Yes | - |
+| `repository_id` | - | - | - | - | - | - |
+| `requirements` | - | - | Yes | Yes | Yes | - |
+| `target_kind` | - | - | Yes | Yes | Yes | - |
+| `target_pattern` | - | - | Yes | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - | - |
+| `updated_by_user_id` | - | - | - | - | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RepoBookmarkProtection()->create([
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RepoBookmarkProtection()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->RepoBookmarkProtection()->load(["id" => "repo_bookmark_protection_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->RepoBookmarkProtection()->patch([
+  "id" => "repo_bookmark_protection_id",
+  "organization_id" => "organization_id",
+  "repo_id" => "repo_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->RepoBookmarkProtection()->remove(["id" => "repo_bookmark_protection_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->RepoBookmarkProtection()->update([
+  "id" => "repo_bookmark_protection_id",
+  "organization_id" => "organization_id",
+  "repo_id" => "repo_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepoBookmarkProtectionEntity`
+
+Create a new `RepoBookmarkProtectionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepoBookmarkProtectionEventEntity
+
+```php
+$repo_bookmark_protection_event = $client->RepoBookmarkProtectionEvent();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `actor_kind` | `string` | Yes |  |
+| `actor_label` | `mixed` | Yes |  |
+| `actor_user_id` | `mixed` | Yes |  |
+| `bookmark_name` | `string` | Yes |  |
+| `bookmark_protection_rule_id` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `decision` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `intent` | `mixed` | Yes |  |
+| `metadata` | `array` | Yes |  |
+| `new_target` | `mixed` | Yes |  |
+| `old_target` | `mixed` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `reason_codes` | `array` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `source_request_id` | `mixed` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RepoBookmarkProtectionEvent()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepoBookmarkProtectionEventEntity`
+
+Create a new `RepoBookmarkProtectionEventEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepoCloudWorkspaceBackupEntity
+
+```php
+$repo_cloud_workspace_backup = $client->RepoCloudWorkspaceBackup();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RepoCloudWorkspaceBackup()->create([
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RepoCloudWorkspaceBackup()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->RepoCloudWorkspaceBackup()->load(["id" => "repo_cloud_workspace_backup_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepoCloudWorkspaceBackupEntity`
+
+Create a new `RepoCloudWorkspaceBackupEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepoCodeRuleEntity
+
+```php
+$repo_code_rule = $client->RepoCodeRule();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_revision_number` | `mixed` | Yes |  |
+| `capabilities` | `array` | Yes |  |
+| `code_rule` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `definition` | `array` | Yes |  |
+| `draft_pending` | `bool` | Yes | The latest revision is not the active one |
+| `enabled` | `bool` | Yes |  |
+| `expected_version` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `latest_revision_number` | `int` | Yes |  |
+| `name` | `string` | Yes | Name of the latest revision |
+| `repository` | `array` | Yes |  |
+| `scope` | `array` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `state_version` | `int` | Yes | Send back as expected_version on every mutation |
+| `updated_at` | `string` | Yes |  |
+| `web_url` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RepoCodeRule()->create([
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+  "definition" => null, // array
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RepoCodeRule()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->RepoCodeRule()->load(["id" => "repo_code_rule_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->RepoCodeRule()->patch([
+  "id" => "repo_code_rule_id",
+  "organization_id" => "organization_id",
+  "repo_id" => "repo_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->RepoCodeRule()->remove(["id" => "repo_code_rule_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->RepoCodeRule()->update([
+  "id" => "repo_code_rule_id",
+  "organization_id" => "organization_id",
+  "repo_id" => "repo_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepoCodeRuleEntity`
+
+Create a new `RepoCodeRuleEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepoSettingEntity
+
+```php
+$repo_setting = $client->RepoSetting();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active` | `bool` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `description` | `mixed` | Yes |  |
+| `expires_at` | `mixed` | Yes |  |
+| `expires_at_label` | `mixed` | Yes |  |
+| `icon_name` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_used_at` | `mixed` | Yes |  |
+| `last_used_at_label` | `mixed` | Yes |  |
+| `merge_authority` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `permission_level` | `string` | Yes |  |
+| `revoked_at` | `mixed` | Yes |  |
+| `revoked_at_label` | `mixed` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `token_preview` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | update |
+| --- | --- | --- |
+| `active` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `description` | - | Yes |
+| `expires_at` | - | - |
+| `expires_at_label` | - | - |
+| `icon_name` | - | Yes |
+| `id` | - | - |
+| `last_used_at` | - | - |
+| `last_used_at_label` | - | - |
+| `merge_authority` | - | - |
+| `name` | - | Yes |
+| `organization_id` | - | - |
+| `permission_level` | - | - |
+| `revoked_at` | - | - |
+| `revoked_at_label` | - | - |
+| `slug` | - | - |
+| `status` | - | Yes |
+| `token_preview` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RepoSetting()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->RepoSetting()->update([
+  "organization_id" => "organization_id",
+  "repo_id" => "repo_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepoSettingEntity`
+
+Create a new `RepoSettingEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepoStatEntity
+
+```php
+$repo_stat = $client->RepoStat();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `repository_stats` | `array` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RepoStat()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepoStatEntity`
+
+Create a new `RepoStatEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepoVcEntity
+
+```php
+$repo_vc = $client->RepoVc();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepoVcEntity`
+
+Create a new `RepoVcEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepoVcCommitEntity
+
+```php
+$repo_vc_commit = $client->RepoVcCommit();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `name` | `string` | Yes |  |
+| `target_commit_id` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RepoVcCommit()->list(["organization_id" => "example", "repo_id" => "example", "ref" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepoVcCommitEntity`
+
+Create a new `RepoVcCommitEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -16425,6 +34772,981 @@ Set the entity match criteria.
 #### `make(): ReportScenarioEntity`
 
 Create a new `ReportScenarioEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepositoryAccessEntity
+
+```php
+$repository_access = $client->RepositoryAccess();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepositoryAccessEntity`
+
+Create a new `RepositoryAccessEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepositoryAccessResolveEntity
+
+```php
+$repository_access_resolve = $client->RepositoryAccessResolve();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `default_branch` | `string` | Yes |  |
+| `git_auth_username` | `string` | Yes |  |
+| `git_https_clone_url` | `mixed` | Yes |  |
+| `git_https_supported` | `bool` | Yes |  |
+| `github_access_warnings` | `array` | No |  |
+| `id` | `string` | No |  |
+| `membership_role` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `organization_name` | `string` | Yes |  |
+| `organization_slug` | `string` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `repository_name` | `string` | Yes |  |
+| `repository_slug` | `string` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->RepositoryAccessResolve()->load(["id" => "repository_access_resolve_id", "resolve_id" => "resolve_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepositoryAccessResolveEntity`
+
+Create a new `RepositoryAccessResolveEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepositoryEventEntity
+
+```php
+$repository_event = $client->RepositoryEvent();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepositoryEventEntity`
+
+Create a new `RepositoryEventEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepositoryImportEntity
+
+```php
+$repository_import = $client->RepositoryImport();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_connections` | `bool` | Yes |  |
+| `github_imports` | `array` | Yes |  |
+| `github_installations` | `array` | Yes |  |
+| `gitlab_configured` | `bool` | Yes |  |
+| `gitlab_imports` | `array` | Yes |  |
+| `gitlab_integrations` | `array` | Yes |  |
+| `gitlab_redirect_uri` | `mixed` | Yes |  |
+| `gitlab_self_managed_available` | `bool` | Yes |  |
+| `inventory_errors` | `array` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `repositories` | `array` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->RepositoryImport()->load(["organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepositoryImportEntity`
+
+Create a new `RepositoryImportEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepositoryImportSessionEntity
+
+```php
+$repository_import_session = $client->RepositoryImportSession();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action_required` | `string` | No |  |
+| `authorization_endpoint` | `string` | No |  |
+| `can_authorize_github` | `bool` | Yes |  |
+| `client_name` | `mixed` | Yes |  |
+| `client_version` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `error_message` | `mixed` | Yes |  |
+| `expires_at` | `string` | Yes |  |
+| `git_imports` | `array` | Yes |  |
+| `github_app_installation_id` | `mixed` | Yes |  |
+| `github_connected` | `bool` | Yes |  |
+| `id` | `string` | Yes |  |
+| `idempotency_key` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `organization_slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `action_required` | - | - |
+| `authorization_endpoint` | - | - |
+| `can_authorize_github` | - | - |
+| `client_name` | - | Yes |
+| `client_version` | - | Yes |
+| `created_at` | - | - |
+| `error_message` | - | - |
+| `expires_at` | - | - |
+| `git_imports` | - | - |
+| `github_app_installation_id` | - | Yes |
+| `github_connected` | - | - |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `organization_id` | - | - |
+| `organization_slug` | - | - |
+| `status` | - | - |
+| `updated_at` | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RepositoryImportSession()->create([
+  "organization_id" => null, // string
+  "idempotency_key" => null, // string
+]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->RepositoryImportSession()->load(["id" => "repository_import_session_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepositoryImportSessionEntity`
+
+Create a new `RepositoryImportSessionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepositoryImportSessionRepositoryEntity
+
+```php
+$repository_import_session_repository = $client->RepositoryImportSessionRepository();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `default_branch` | `mixed` | Yes |  |
+| `full_name` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `owner` | `string` | Yes |  |
+| `private` | `bool` | Yes |  |
+| `reason` | `mixed` | No |  |
+| `selectable` | `bool` | Yes |  |
+| `status` | `string` | Yes |  |
+| `visibility` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RepositoryImportSessionRepository()->list(["repository_import_session_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepositoryImportSessionRepositoryEntity`
+
+Create a new `RepositoryImportSessionRepositoryEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepositoryImportSessionSelectionEntity
+
+```php
+$repository_import_session_selection = $client->RepositoryImportSessionSelection();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `repositories` | `mixed` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RepositoryImportSessionSelection()->create([
+  "repository_import_session_id" => null, // string
+  "repositories" => null, // mixed
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepositoryImportSessionSelectionEntity`
+
+Create a new `RepositoryImportSessionSelectionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RepositorySandboxEnvironmentEntity
+
+```php
+$repository_sandbox_environment = $client->RepositorySandboxEnvironment();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->RepositorySandboxEnvironment()->load(["id" => "repository_sandbox_environment_id", "repository_id" => "repository_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RepositorySandboxEnvironmentEntity`
+
+Create a new `RepositorySandboxEnvironmentEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RoderCodeRepairEntity
+
+```php
+$roder_code_repair = $client->RoderCodeRepair();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `base_sha` | `string` | Yes |  |
+| `cancel_requested` | `bool` | Yes |  |
+| `failure_code` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `launch_state` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `repository_slug` | `string` | Yes |  |
+| `roder_thread_id` | `mixed` | Yes |  |
+| `roder_turn_id` | `mixed` | Yes |  |
+| `scenario_run_id` | `string` | Yes |  |
+| `task` | `mixed` | Yes |  |
+| `trigger_kind` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RoderCodeRepair()->create([
+  "base_sha" => null, // string
+  "organization_id" => null, // string
+  "repository_slug" => null, // string
+  "scenario_run_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RoderCodeRepair()->list(["scenario_run_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->RoderCodeRepair()->load(["id" => "roder_code_repair_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RoderCodeRepairEntity`
+
+Create a new `RoderCodeRepairEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RoderCodeRepairSettingEntity
+
+```php
+$roder_code_repair_setting = $client->RoderCodeRepairSetting();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available` | `bool` | Yes |  |
+| `daily_limit` | `int` | Yes |  |
+| `enabled` | `bool` | Yes |  |
+| `enabled_at` | `mixed` | Yes |  |
+| `operator_user_id` | `mixed` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `repository_slug` | `mixed` | Yes | Connected Composal repository required when enabling |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `available` | - | - |
+| `daily_limit` | - | - |
+| `enabled` | - | - |
+| `enabled_at` | - | - |
+| `operator_user_id` | - | - |
+| `organization_id` | - | - |
+| `repository_slug` | - | Yes |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RoderCodeRepairSetting()->create([
+  "enabled" => null, // bool
+  "organization_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RoderCodeRepairSetting()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RoderCodeRepairSettingEntity`
+
+Create a new `RoderCodeRepairSettingEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RoderMachineEntity
+
+```php
+$roder_machine = $client->RoderMachine();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->RoderMachine()->update([
+  "id" => "id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RoderMachineEntity`
+
+Create a new `RoderMachineEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RoderRunEntity
+
+```php
+$roder_run = $client->RoderRun();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RoderRunEntity`
+
+Create a new `RoderRunEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RoderWorkspaceCredentialEntity
+
+```php
+$roder_workspace_credential = $client->RoderWorkspaceCredential();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `api_token` | `string` | Yes | Short-lived personal access token for the spawning user. |
+| `author_email` | `string` | Yes |  |
+| `author_name` | `string` | Yes |  |
+| `clone_url` | `string` | Yes |  |
+| `default_branch` | `string` | Yes |  |
+| `expires_at` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `repository_slug` | `string` | Yes |  |
+| `repository_spec` | `string` | Yes | The explicitly selected physical repository address. |
+| `required_lifetime_seconds` | `int` | Yes | Lifetime the pending clone or command must be able to complete within. |
+| `token` | `string` | Yes | Short-lived read/write repository credential. |
+| `username` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RoderWorkspaceCredential()->create([
+  "required_lifetime_seconds" => null, // int
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RoderWorkspaceCredentialEntity`
+
+Create a new `RoderWorkspaceCredentialEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RunArtifactEntity
+
+```php
+$run_artifact = $client->RunArtifact();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RunArtifact()->create([
+  "pipeline_id" => null, // string
+  "run_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RunArtifact()->list(["pipeline_id" => "example", "run_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RunArtifactEntity`
+
+Create a new `RunArtifactEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RunJobEntity
+
+```php
+$run_job = $client->RunJob();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active` | `bool` | Yes |  |
+| `allow_failure` | `bool` | Yes |  |
+| `cache_archive_observations` | `mixed` | Yes | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `ci_pipeline_run_id` | `string` | Yes |  |
+| `ci_runner_id` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `dependencies_csv` | `mixed` | Yes |  |
+| `display_id` | `int` | Yes |  |
+| `environment_csv` | `mixed` | Yes |  |
+| `execution_order` | `int` | Yes |  |
+| `execution_profile` | `mixed` | No |  |
+| `exit_code` | `mixed` | Yes |  |
+| `failed` | `bool` | Yes |  |
+| `finished_at` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `log_chunks` | `array` | Yes |  |
+| `name` | `string` | Yes |  |
+| `number` | `int` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `queued_at` | `mixed` | Yes |  |
+| `reconciliation_id` | `mixed` | No |  |
+| `retry_number` | `int` | Yes |  |
+| `reuse` | `mixed` | Yes |  |
+| `runner_label_selector` | `mixed` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `started_at` | `mixed` | Yes |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `status_state` | `string` | Yes |  |
+| `status_tone` | `string` | Yes |  |
+| `steps` | `array` | Yes |  |
+| `timeout_seconds` | `mixed` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RunJob()->create([
+  "pipeline_id" => null, // string
+  "run_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RunJob()->list(["pipeline_id" => "example", "run_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->RunJob()->load(["id" => "run_job_id", "pipeline_id" => "pipeline_id", "run_id" => "run_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RunJobEntity`
+
+Create a new `RunJobEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -16669,6 +35991,493 @@ Return the entity name.
 
 ---
 
+## RunWorkspaceCredentialEntity
+
+```php
+$run_workspace_credential = $client->RunWorkspaceCredential();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RunWorkspaceCredential()->create([
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RunWorkspaceCredentialEntity`
+
+Create a new `RunWorkspaceCredentialEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RunnerLeaseEntity
+
+```php
+$runner_lease = $client->RunnerLease();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RunnerLease()->create([
+  "runner_id" => null, // string
+  "runner_pool_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RunnerLease()->list(["runner_id" => "example", "runner_pool_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RunnerLeaseEntity`
+
+Create a new `RunnerLeaseEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RunnerPoolNodeEnrollmentTokenEntity
+
+```php
+$runner_pool_node_enrollment_token = $client->RunnerPoolNodeEnrollmentToken();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capabilities_csv` | `mixed` | Yes |  |
+| `ci_runner_pool_id` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `creator_user_id` | `mixed` | Yes |  |
+| `description` | `mixed` | Yes |  |
+| `expires_at` | `mixed` | Yes |  |
+| `expires_at_label` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `last_used_at` | `mixed` | Yes |  |
+| `last_used_at_label` | `mixed` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `raw_token` | `mixed` | Yes |  |
+| `revoked_at` | `mixed` | Yes |  |
+| `status` | `string` | Yes |  |
+| `token_hint` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+| `usage_count` | `int` | Yes |  |
+| `usage_count_label` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `capabilities_csv` | - | Yes |
+| `ci_runner_pool_id` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `creator_user_id` | - | - |
+| `description` | - | Yes |
+| `expires_at` | - | Yes |
+| `expires_at_label` | - | - |
+| `id` | - | - |
+| `kind` | - | Yes |
+| `last_used_at` | - | - |
+| `last_used_at_label` | - | - |
+| `name` | - | - |
+| `organization_id` | - | - |
+| `raw_token` | - | - |
+| `revoked_at` | - | - |
+| `status` | - | - |
+| `token_hint` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+| `usage_count` | - | - |
+| `usage_count_label` | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RunnerPoolNodeEnrollmentToken()->create([
+  "runner_pool_id" => null, // string
+  "name" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RunnerPoolNodeEnrollmentToken()->list(["runner_pool_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RunnerPoolNodeEnrollmentTokenEntity`
+
+Create a new `RunnerPoolNodeEnrollmentTokenEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RunnerPoolRunnerEntity
+
+```php
+$runner_pool_runner = $client->RunnerPoolRunner();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RunnerPoolRunner()->create([
+  "runner_pool_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RunnerPoolRunner()->list(["runner_pool_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->RunnerPoolRunner()->load(["id" => "runner_pool_runner_id", "runner_pool_id" => "runner_pool_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->RunnerPoolRunner()->patch([
+  "id" => "runner_pool_runner_id",
+  "runner_pool_id" => "runner_pool_id",
+  // Only the fields to change
+]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->RunnerPoolRunner()->update([
+  "id" => "runner_pool_runner_id",
+  "runner_pool_id" => "runner_pool_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RunnerPoolRunnerEntity`
+
+Create a new `RunnerPoolRunnerEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## RuntimeInstanceHealthSnapshotEntity
+
+```php
+$runtime_instance_health_snapshot = $client->RuntimeInstanceHealthSnapshot();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->RuntimeInstanceHealthSnapshot()->create([
+  "runtime_instance_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->RuntimeInstanceHealthSnapshot()->list(["runtime_instance_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): RuntimeInstanceHealthSnapshotEntity`
+
+Create a new `RuntimeInstanceHealthSnapshotEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SandboxIntegrationEntity
+
+```php
+$sandbox_integration = $client->SandboxIntegration();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage` | `bool` | Yes |  |
+| `catalog` | `array` | Yes |  |
+| `configuration` | `array` | Yes |  |
+| `connected_profiles` | `array` | Yes | Connected profiles per provider across the organization. |
+| `credentials` | `array` | Yes |  |
+| `enabled` | `bool` | Yes |  |
+| `id` | `string` | Yes |  |
+| `integrations` | `array` | Yes |  |
+| `name` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `version` | `int` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | update | patch |
+| --- | --- | --- | --- | --- |
+| `can_manage` | - | - | - | - |
+| `catalog` | - | - | - | - |
+| `configuration` | - | - | - | - |
+| `connected_profiles` | - | - | - | - |
+| `credentials` | - | - | Yes | Yes |
+| `enabled` | - | - | Yes | Yes |
+| `id` | - | - | - | - |
+| `integrations` | - | - | - | - |
+| `name` | - | - | Yes | Yes |
+| `provider` | - | - | - | - |
+| `version` | - | - | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SandboxIntegration()->create([
+  "organization_id" => null, // string
+  "configuration" => null, // array
+  "credentials" => null, // array
+  "name" => null, // string
+  "provider" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SandboxIntegration()->list(["organization_id" => "example"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->SandboxIntegration()->patch([
+  "id" => "id",
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SandboxIntegration()->update([
+  "id" => "id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SandboxIntegrationEntity`
+
+Create a new `SandboxIntegrationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## ScenarioRevisionEntity
 
 ```php
@@ -16831,6 +36640,216 @@ Return the entity name.
 
 ---
 
+## SecretGrantEntity
+
+```php
+$secret_grant = $client->SecretGrant();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SecretGrant()->create([
+  "organization_id" => null, // string
+  "secret_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SecretGrant()->list(["organization_id" => "example", "secret_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->SecretGrant()->load(["id" => "secret_grant_id", "organization_id" => "organization_id", "secret_id" => "secret_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->SecretGrant()->patch([
+  "id" => "secret_grant_id",
+  "organization_id" => "organization_id",
+  "secret_id" => "secret_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->SecretGrant()->remove(["id" => "secret_grant_id", "organization_id" => "organization_id", "secret_id" => "secret_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SecretGrant()->update([
+  "id" => "secret_grant_id",
+  "organization_id" => "organization_id",
+  "secret_id" => "secret_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SecretGrantEntity`
+
+Create a new `SecretGrantEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SecretVersionEntity
+
+```php
+$secret_version = $client->SecretVersion();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SecretVersion()->create([
+  "organization_id" => null, // string
+  "secret_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SecretVersion()->list(["organization_id" => "example", "secret_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->SecretVersion()->load(["id" => "secret_version_id", "organization_id" => "organization_id", "secret_id" => "secret_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->SecretVersion()->patch([
+  "id" => "secret_version_id",
+  "organization_id" => "organization_id",
+  "secret_id" => "secret_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->SecretVersion()->remove(["id" => "secret_version_id", "organization_id" => "organization_id", "secret_id" => "secret_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SecretVersion()->update([
+  "id" => "secret_version_id",
+  "organization_id" => "organization_id",
+  "secret_id" => "secret_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SecretVersionEntity`
+
+Create a new `SecretVersionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## ServiceEndpointEntity
 
 ```php
@@ -16936,6 +36955,791 @@ Return the entity name.
 
 ---
 
+## SettingEntity
+
+```php
+$setting = $client->Setting();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `bool` | Yes |  |
+| `can_manage_sandbox_region` | `bool` | Yes |  |
+| `dedicated_outbound_ip_addresses` | `array` | Yes | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` | Yes |  |
+| `organization` | `array` | Yes |  |
+| `sandbox_regions` | `array` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->Setting()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SettingEntity`
+
+Create a new `SettingEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SettingMutationLeaseEntity
+
+```php
+$setting_mutation_lease = $client->SettingMutationLease();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SettingMutationLeaseEntity`
+
+Create a new `SettingMutationLeaseEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SignalEntity
+
+```php
+$signal = $client->Signal();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `acked_at` | `mixed` | Yes |  |
+| `acked_by` | `mixed` | Yes | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | `array` | Yes | Dispatched-run summary (docs §6c). |
+| `app_service_id` | `mixed` | Yes |  |
+| `attribution` | `array` | Yes | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
+| `created_at` | `string` | Yes | ISO8601 row insert time — retention math and debugging only. |
+| `dedupe_key` | `mixed` | Yes |  |
+| `hosted_app_id` | `mixed` | Yes |  |
+| `id` | `string` | Yes | The signal's own `sig_…` public id — also the paging cursor value. |
+| `kind` | `string` | Yes | A frozen taxonomy kind (§1) or an `app.custom.*` kind. |
+| `links` | `array` | Yes | Canonical, relative API paths built from real routes (docs §6a). |
+| `occurred_at` | `string` | Yes | ISO8601 domain event time — what the UI displays and `since` filters on. |
+| `organization_id` | `string` | Yes |  |
+| `payload` | `array` | Yes | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
+| `recovery` | `array` | Yes | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | `array` | Yes | Recovery pairing (docs §6b). |
+| `severity` | `string` | Yes | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
+| `source` | `array` | Yes | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
+| `subject_id` | `mixed` | Yes |  |
+| `subject_type` | `mixed` | Yes | Polymorphic pointer: `AppDeployment`, `RuntimeInstance`, `AlertEvent`, `HostedApp`, or `SignalSubscription`. |
+| `summary` | `string` | Yes | One-line, kind-composed human sentence for the feed row (docs §6d, e.g. |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->Signal()->create([
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->Signal()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->Signal()->load(["id" => "signal_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SignalEntity`
+
+Create a new `SignalEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SignalInboundEntity
+
+```php
+$signal_inbound = $client->SignalInbound();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SignalInbound()->update([
+  "id" => "id",
+  "inbound_id" => "inbound_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SignalInboundEntity`
+
+Create a new `SignalInboundEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SignalIntegrationEntity
+
+```php
+$signal_integration = $client->SignalIntegration();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `api_token` | `string` | No | Optional provider API token for target discovery and backfill. |
+| `api_token_stored` | `bool` | Yes |  |
+| `config` | `array` | Yes |  |
+| `created_at` | `mixed` | No |  |
+| `failure_message` | `mixed` | Yes |  |
+| `id` | `string` | Yes | Public id (`sint_…`). |
+| `inbound_path` | `string` | Yes |  |
+| `inbound_url` | `string` | Yes | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `mixed` | No |  |
+| `last_verified_at` | `mixed` | No |  |
+| `mode` | `string` | Yes | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `rejected_signature_count` | `int` | Yes | Deliveries rejected for a bad or missing signature. |
+| `status` | `string` | Yes |  |
+| `target_count` | `int` | Yes |  |
+| `unmapped_delivery_count` | `int` | Yes | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `mixed` | No |  |
+| `webhook_secret` | `string` | No | The provider's signing secret. |
+| `webhook_secret_stored` | `bool` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- | --- |
+| `api_token` | - | - | - | - | - | - |
+| `api_token_stored` | - | - | - | - | - | - |
+| `config` | - | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - | - |
+| `failure_message` | - | - | - | - | - | - |
+| `id` | - | - | - | - | - | - |
+| `inbound_path` | - | - | - | - | - | - |
+| `inbound_url` | - | - | - | - | - | - |
+| `last_received_at` | - | - | - | - | - | - |
+| `last_verified_at` | - | - | - | - | - | - |
+| `mode` | - | - | Yes | Yes | Yes | - |
+| `name` | - | - | - | Yes | Yes | - |
+| `organization_id` | - | - | - | - | - | - |
+| `provider` | - | - | - | - | - | - |
+| `rejected_signature_count` | - | - | - | - | - | - |
+| `status` | - | - | - | Yes | Yes | - |
+| `target_count` | - | - | - | - | - | - |
+| `unmapped_delivery_count` | - | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - | - |
+| `webhook_secret` | - | - | - | - | - | - |
+| `webhook_secret_stored` | - | - | - | - | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SignalIntegration()->create([
+  "organization_id" => null, // string
+  "name" => null, // string
+  "provider" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SignalIntegration()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->SignalIntegration()->load(["id" => "signal_integration_id", "organization_id" => "organization_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->SignalIntegration()->patch([
+  "id" => "signal_integration_id",
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->SignalIntegration()->remove(["id" => "signal_integration_id", "organization_id" => "organization_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SignalIntegration()->update([
+  "id" => "signal_integration_id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SignalIntegrationEntity`
+
+Create a new `SignalIntegrationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SignalIntegrationDeliveryEntity
+
+```php
+$signal_integration_delivery = $client->SignalIntegrationDelivery();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `attempt_count` | `int` | Yes |  |
+| `created_at` | `mixed` | No |  |
+| `delivery_id` | `string` | Yes | The provider's delivery id, or a `content-…` id derived from the event kind, its timestamp header and the body checksum when it sends none. |
+| `event_kind` | `mixed` | No |  |
+| `id` | `string` | Yes | Public id (`sdel_…`). |
+| `last_error` | `mixed` | No |  |
+| `ops_signal_id` | `mixed` | No | Public id (`sig_…`) of the signal this delivery emitted. |
+| `organization_id` | `string` | Yes |  |
+| `processed_at` | `mixed` | No |  |
+| `provider` | `string` | Yes |  |
+| `received_at` | `mixed` | No |  |
+| `signal_integration_id` | `string` | Yes |  |
+| `state` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SignalIntegrationDelivery()->list(["organization_id" => "example", "signal_integration_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SignalIntegrationDeliveryEntity`
+
+Create a new `SignalIntegrationDeliveryEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SignalIntegrationTargetEntity
+
+```php
+$signal_integration_target = $client->SignalIntegrationTarget();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app_service_id` | `mixed` | No |  |
+| `created_at` | `mixed` | No |  |
+| `display_name` | `mixed` | No |  |
+| `enabled` | `bool` | Yes |  |
+| `external_id` | `string` | Yes |  |
+| `external_kind` | `string` | Yes |  |
+| `external_slug` | `mixed` | No |  |
+| `hosted_app_id` | `mixed` | No |  |
+| `id` | `string` | Yes | Public id (`stgt_…`). |
+| `organization_id` | `string` | Yes |  |
+| `signal_integration_id` | `string` | Yes |  |
+| `signal_integration_targets` | `array` | Yes |  |
+| `targets` | `array` | Yes |  |
+| `updated_at` | `mixed` | No |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SignalIntegrationTarget()->list(["organization_id" => "example", "signal_integration_id" => "example"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SignalIntegrationTarget()->update([
+  "organization_id" => "organization_id",
+  "signal_integration_id" => "signal_integration_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SignalIntegrationTargetEntity`
+
+Create a new `SignalIntegrationTargetEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SignalSubscriptionEntity
+
+```php
+$signal_subscription = $client->SignalSubscription();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SignalSubscription()->create([
+  "organization_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SignalSubscription()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->SignalSubscription()->load(["id" => "signal_subscription_id", "organization_id" => "organization_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->SignalSubscription()->patch([
+  "id" => "signal_subscription_id",
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->SignalSubscription()->remove(["id" => "signal_subscription_id", "organization_id" => "organization_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SignalSubscription()->update([
+  "id" => "signal_subscription_id",
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SignalSubscriptionEntity`
+
+Create a new `SignalSubscriptionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SiteEntity
+
+```php
+$site = $client->Site();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_at` | `mixed` | Yes |  |
+| `activated_at_label` | `mixed` | Yes |  |
+| `commit_sha` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `creator_user_id` | `mixed` | Yes |  |
+| `deploy_slug` | `string` | Yes |  |
+| `failure_message` | `mixed` | Yes |  |
+| `file_count` | `int` | Yes |  |
+| `file_count_label` | `string` | Yes |  |
+| `finished_at` | `mixed` | Yes |  |
+| `finished_at_label` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `is_active` | `bool` | Yes |  |
+| `source_ref` | `mixed` | Yes |  |
+| `started_at` | `mixed` | Yes |  |
+| `started_at_label` | `mixed` | Yes |  |
+| `static_site_id` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `total_bytes` | `int` | Yes |  |
+| `total_bytes_label` | `string` | Yes |  |
+| `trigger_kind` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+| `uploaded_at` | `mixed` | Yes |  |
+| `uploaded_at_label` | `mixed` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->Site()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SiteEntity`
+
+Create a new `SiteEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SiteAccessKeyEntity
+
+```php
+$site_access_key = $client->SiteAccessKey();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SiteAccessKey()->create([
+  "organization_id" => null, // string
+  "site_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SiteAccessKey()->list(["organization_id" => "example", "site_id" => "example"]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->SiteAccessKey()->remove(["id" => "site_access_key_id", "organization_id" => "organization_id", "site_id" => "site_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SiteAccessKeyEntity`
+
+Create a new `SiteAccessKeyEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## SitePreviewEntity
 
 ```php
@@ -16981,6 +37785,73 @@ Set the entity match criteria.
 #### `make(): SitePreviewEntity`
 
 Create a new `SitePreviewEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SiteSecretEntity
+
+```php
+$site_secret = $client->SiteSecret();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+| `native_agent_id` | `string` | Yes |  |
+| `value` | `string` | Yes |  |
+
+### Operations
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->SiteSecret()->remove(["id" => "site_secret_id", "organization_id" => "organization_id", "site_id" => "site_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SiteSecret()->update([
+  "id" => "site_secret_id",
+  "organization_id" => "organization_id",
+  "site_id" => "site_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SiteSecretEntity`
+
+Create a new `SiteSecretEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -17038,6 +37909,1595 @@ Set the entity match criteria.
 #### `make(): SlackChannelEntity`
 
 Create a new `SlackChannelEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SourceConnectionEntity
+
+```php
+$source_connection = $client->SourceConnection();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SourceConnectionEntity`
+
+Create a new `SourceConnectionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SpaceAlertRuleEntity
+
+```php
+$space_alert_rule = $client->SpaceAlertRule();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SpaceAlertRule()->create([
+  "space_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SpaceAlertRule()->list(["space_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->SpaceAlertRule()->load(["id" => "space_alert_rule_id", "space_id" => "space_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->SpaceAlertRule()->patch([
+  "id" => "space_alert_rule_id",
+  "space_id" => "space_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->SpaceAlertRule()->remove(["id" => "space_alert_rule_id", "space_id" => "space_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SpaceAlertRule()->update([
+  "id" => "space_alert_rule_id",
+  "space_id" => "space_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SpaceAlertRuleEntity`
+
+Create a new `SpaceAlertRuleEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SpaceAuditEventEntity
+
+```php
+$space_audit_event = $client->SpaceAuditEvent();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SpaceAuditEvent()->create([
+  "space_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SpaceAuditEvent()->list(["space_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SpaceAuditEventEntity`
+
+Create a new `SpaceAuditEventEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SpaceDnsRecordEntity
+
+```php
+$space_dns_record = $client->SpaceDnsRecord();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SpaceDnsRecord()->create([
+  "space_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SpaceDnsRecord()->list(["space_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->SpaceDnsRecord()->load(["id" => "space_dns_record_id", "space_id" => "space_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->SpaceDnsRecord()->patch([
+  "id" => "space_dns_record_id",
+  "space_id" => "space_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->SpaceDnsRecord()->remove(["id" => "space_dns_record_id", "space_id" => "space_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SpaceDnsRecord()->update([
+  "id" => "space_dns_record_id",
+  "space_id" => "space_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SpaceDnsRecordEntity`
+
+Create a new `SpaceDnsRecordEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SpaceEnrollmentTokenEntity
+
+```php
+$space_enrollment_token = $client->SpaceEnrollmentToken();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SpaceEnrollmentToken()->create([
+  "space_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SpaceEnrollmentToken()->list(["space_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->SpaceEnrollmentToken()->load(["id" => "space_enrollment_token_id", "space_id" => "space_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->SpaceEnrollmentToken()->patch([
+  "id" => "space_enrollment_token_id",
+  "space_id" => "space_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->SpaceEnrollmentToken()->remove(["id" => "space_enrollment_token_id", "space_id" => "space_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SpaceEnrollmentToken()->update([
+  "id" => "space_enrollment_token_id",
+  "space_id" => "space_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SpaceEnrollmentTokenEntity`
+
+Create a new `SpaceEnrollmentTokenEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SpaceGatewayEntity
+
+```php
+$space_gateway = $client->SpaceGateway();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SpaceGateway()->create([
+  "space_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SpaceGateway()->list(["space_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->SpaceGateway()->load(["id" => "space_gateway_id", "space_id" => "space_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->SpaceGateway()->patch([
+  "id" => "space_gateway_id",
+  "space_id" => "space_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->SpaceGateway()->remove(["id" => "space_gateway_id", "space_id" => "space_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SpaceGateway()->update([
+  "id" => "space_gateway_id",
+  "space_id" => "space_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SpaceGatewayEntity`
+
+Create a new `SpaceGatewayEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SpaceGroupEntity
+
+```php
+$space_group = $client->SpaceGroup();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SpaceGroup()->create([
+  "space_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SpaceGroup()->list(["space_id" => "example"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->SpaceGroup()->patch([
+  "id" => "space_group_id",
+  "space_id" => "space_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->SpaceGroup()->remove(["id" => "space_group_id", "space_id" => "space_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SpaceGroup()->update([
+  "id" => "space_group_id",
+  "space_id" => "space_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SpaceGroupEntity`
+
+Create a new `SpaceGroupEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SpaceGroupMembershipEntity
+
+```php
+$space_group_membership = $client->SpaceGroupMembership();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SpaceGroupMembership()->create([
+  "space_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SpaceGroupMembership()->list(["space_id" => "example"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->SpaceGroupMembership()->patch([
+  "id" => "space_group_membership_id",
+  "space_id" => "space_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->SpaceGroupMembership()->remove(["id" => "space_group_membership_id", "space_id" => "space_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SpaceGroupMembership()->update([
+  "id" => "space_group_membership_id",
+  "space_id" => "space_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SpaceGroupMembershipEntity`
+
+Create a new `SpaceGroupMembershipEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SpaceLogStreamEntity
+
+```php
+$space_log_stream = $client->SpaceLogStream();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SpaceLogStream()->create([
+  "space_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SpaceLogStream()->list(["space_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SpaceLogStreamEntity`
+
+Create a new `SpaceLogStreamEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SpaceMetricSeryEntity
+
+```php
+$space_metric_sery = $client->SpaceMetricSery();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SpaceMetricSery()->create([
+  "space_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SpaceMetricSery()->list(["space_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SpaceMetricSeryEntity`
+
+Create a new `SpaceMetricSeryEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SpaceOtelCollectorEntity
+
+```php
+$space_otel_collector = $client->SpaceOtelCollector();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SpaceOtelCollector()->create([
+  "space_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SpaceOtelCollector()->list(["space_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->SpaceOtelCollector()->load(["id" => "space_otel_collector_id", "space_id" => "space_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->SpaceOtelCollector()->patch([
+  "id" => "space_otel_collector_id",
+  "space_id" => "space_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->SpaceOtelCollector()->remove(["id" => "space_otel_collector_id", "space_id" => "space_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SpaceOtelCollector()->update([
+  "id" => "space_otel_collector_id",
+  "space_id" => "space_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SpaceOtelCollectorEntity`
+
+Create a new `SpaceOtelCollectorEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SpacePeerEntity
+
+```php
+$space_peer = $client->SpacePeer();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SpacePeer()->create([
+  "space_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SpacePeer()->list(["space_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->SpacePeer()->load(["id" => "space_peer_id", "space_id" => "space_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->SpacePeer()->patch([
+  "id" => "space_peer_id",
+  "space_id" => "space_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->SpacePeer()->remove(["id" => "space_peer_id", "space_id" => "space_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SpacePeer()->update([
+  "id" => "space_peer_id",
+  "space_id" => "space_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SpacePeerEntity`
+
+Create a new `SpacePeerEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SpacePeerAttachmentEntity
+
+```php
+$space_peer_attachment = $client->SpacePeerAttachment();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SpacePeerAttachment()->create([
+  "space_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SpacePeerAttachment()->list(["space_id" => "example"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->SpacePeerAttachment()->patch([
+  "id" => "space_peer_attachment_id",
+  "space_id" => "space_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->SpacePeerAttachment()->remove(["id" => "space_peer_attachment_id", "space_id" => "space_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SpacePeerAttachment()->update([
+  "id" => "space_peer_attachment_id",
+  "space_id" => "space_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SpacePeerAttachmentEntity`
+
+Create a new `SpacePeerAttachmentEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SpacePolicyEntity
+
+```php
+$space_policy = $client->SpacePolicy();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SpacePolicy()->create([
+  "space_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SpacePolicy()->list(["space_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->SpacePolicy()->load(["id" => "space_policy_id", "space_id" => "space_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->SpacePolicy()->patch([
+  "id" => "space_policy_id",
+  "space_id" => "space_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->SpacePolicy()->remove(["id" => "space_policy_id", "space_id" => "space_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SpacePolicy()->update([
+  "id" => "space_policy_id",
+  "space_id" => "space_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SpacePolicyEntity`
+
+Create a new `SpacePolicyEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SpaceSegmentEntity
+
+```php
+$space_segment = $client->SpaceSegment();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SpaceSegment()->create([
+  "space_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SpaceSegment()->list(["space_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->SpaceSegment()->load(["id" => "space_segment_id", "space_id" => "space_id"]);
+```
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->SpaceSegment()->patch([
+  "id" => "space_segment_id",
+  "space_id" => "space_id",
+  // Only the fields to change
+]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->SpaceSegment()->remove(["id" => "space_segment_id", "space_id" => "space_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SpaceSegment()->update([
+  "id" => "space_segment_id",
+  "space_id" => "space_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SpaceSegmentEntity`
+
+Create a new `SpaceSegmentEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SpaceTraceSpanEntity
+
+```php
+$space_trace_span = $client->SpaceTraceSpan();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SpaceTraceSpan()->create([
+  "space_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SpaceTraceSpan()->list(["space_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SpaceTraceSpanEntity`
+
+Create a new `SpaceTraceSpanEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SparkEntity
+
+```php
+$spark = $client->Spark();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_products` | `array` | Yes | Products this organization has activated (PRD 144). |
+| `agents_only` | `bool` | No | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `bool` | Yes | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `can_manage` | `bool` | Yes |  |
+| `compute_credit_cents` | `mixed` | Yes | Included compute the workspace started Sparks with, when it is on compute billing. |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `credit_cents` | `mixed` | Yes | Inference credit the workspace started Sparks with. |
+| `first_spark` | `mixed` | Yes | Null until the first Spark exists or when the viewer cannot read it. |
+| `github_connected` | `bool` | Yes |  |
+| `github_prs_authored_by_change_author` | `bool` | Yes |  |
+| `id` | `string` | Yes |  |
+| `jsonrpc` | `string` | Yes |  |
+| `logo_url` | `mixed` | Yes |  |
+| `member_count` | `int` | Yes |  |
+| `method` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `params` | `array` | No |  |
+| `pending_invitation_count` | `int` | Yes |  |
+| `personal` | `bool` | Yes |  |
+| `repository_count` | `int` | Yes |  |
+| `role` | `mixed` | Yes |  |
+| `sandbox_region` | `string` | Yes |  |
+| `shared_agent_personal_accounts_enabled` | `bool` | No | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` | Yes |  |
+| `source_control_providers` | `array` | No | Connected source control providers for this organization. |
+| `source_ui_enabled` | `bool` | No | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `started` | `bool` | Yes | Whether the workspace has started Sparks. |
+| `timezone` | `string` | Yes | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+| `verify_pr_scenario_writing_enabled` | `bool` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `activated_products` | - | - |
+| `agents_only` | - | - |
+| `can_activate_products` | - | - |
+| `can_manage` | - | - |
+| `compute_credit_cents` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `credit_cents` | - | - |
+| `first_spark` | - | - |
+| `github_connected` | - | - |
+| `github_prs_authored_by_change_author` | - | - |
+| `id` | - | Yes |
+| `jsonrpc` | - | - |
+| `logo_url` | - | - |
+| `member_count` | - | - |
+| `method` | - | - |
+| `name` | - | - |
+| `params` | - | - |
+| `pending_invitation_count` | - | - |
+| `personal` | - | - |
+| `repository_count` | - | - |
+| `role` | - | - |
+| `sandbox_region` | - | - |
+| `shared_agent_personal_accounts_enabled` | - | - |
+| `slug` | - | - |
+| `source_control_providers` | - | - |
+| `source_ui_enabled` | - | - |
+| `started` | - | - |
+| `timezone` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+| `verify_pr_scenario_writing_enabled` | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->Spark()->create([
+  "jsonrpc" => null, // string
+  "method" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->Spark()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SparkEntity`
+
+Create a new `SparkEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SparkAgentIntegrationEntity
+
+```php
+$spark_agent_integration = $client->SparkAgentIntegration();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_counts` | `array` | Yes | Accounts the viewer can see per toolkit, across all account pages. |
+| `accounts_path` | `string` | Yes | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
+| `added_toolkits` | `array` | Yes | Apps with a connected or connecting account the viewer can see. |
+| `can_manage` | `bool` | Yes |  |
+| `can_manage_organization` | `bool` | Yes |  |
+| `catalog` | `array` | Yes |  |
+| `connect_as` | `mixed` | Yes | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
+| `connect_as_by_toolkit` | `array` | Yes | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_counts` | `array` | Yes | Signed-in accounts per toolkit, across all account pages. |
+| `connection_id` | `string` | Yes |  |
+| `connections` | `array` | Yes |  |
+| `email` | `array` | Yes | A native agent's own email address. |
+| `enabled` | `bool` | Yes |  |
+| `enabled_toolkits` | `array` | Yes | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `generation` | `int` | Yes |  |
+| `pagination` | `array` | Yes |  |
+| `pending_counts` | `array` | Yes | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
+| `personal_creation_key_supported` | `bool` | No | The personal account creation endpoint honors a creation key. |
+| `private_agent` | `bool` | Yes | Only the agent's owner can chat with it. |
+| `shared_agent_personal_accounts_enabled` | `bool` | Yes | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
+| `slack` | `array` | Yes |  |
+| `webhook_connections` | `array` | Yes |  |
+| `webhooks_available` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SparkAgentIntegration()->create([
+  "agent_id" => null, // string
+  "organization_id" => null, // string
+  "connection_id" => null, // string
+  "enabled" => null, // bool
+  "generation" => null, // int
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SparkAgentIntegration()->list(["agent_id" => "example", "organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SparkAgentIntegrationEntity`
+
+Create a new `SparkAgentIntegrationEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -17141,6 +39601,479 @@ Set the entity match criteria.
 #### `make(): SparkAgentLocalThreadEntity`
 
 Create a new `SparkAgentLocalThreadEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SparkAgentSiteEntity
+
+```php
+$spark_agent_site = $client->SparkAgentSite();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `deployed_at` | `string` | Yes |  |
+| `deployments_count` | `int` | Yes |  |
+| `hostname` | `string` | Yes |  |
+| `https` | `string` | Yes | Whether the organization's certificate serves this site over HTTPS |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `visibility` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SparkAgentSite()->list(["agent_id" => "example", "organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SparkAgentSiteEntity`
+
+Create a new `SparkAgentSiteEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SparkAgentSkillEntity
+
+```php
+$spark_agent_skill = $client->SparkAgentSkill();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available` | `bool` | Yes |  |
+| `can_configure` | `bool` | Yes |  |
+| `can_manage` | `bool` | Yes |  |
+| `configuration_state` | `string` | No | The requested managed skill selection is awaiting runtime qualification. |
+| `description` | `string` | Yes |  |
+| `enabled` | `bool` | Yes |  |
+| `name` | `string` | Yes |  |
+| `skills` | `array` | Yes |  |
+| `version` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SparkAgentSkill()->create([
+  "agent_id" => null, // string
+  "organization_id" => null, // string
+  "enabled" => null, // bool
+  "name" => null, // string
+  "version" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SparkAgentSkill()->list(["agent_id" => "example", "organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SparkAgentSkillEntity`
+
+Create a new `SparkAgentSkillEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SparkAgentThreadEntity
+
+```php
+$spark_agent_thread = $client->SparkAgentThread();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `archived_count` | `mixed` | No | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
+| `can_create` | `bool` | Yes |  |
+| `execution` | `mixed` | No |  |
+| `first_input` | `mixed` | No |  |
+| `first_input_key` | `string` | No | Idempotency-Key that finds the first message through input_delivery. |
+| `first_input_requester_membership_id` | `string` | No | Membership the first message was sent as, for input_delivery. |
+| `id` | `string` | No |  |
+| `inherit_context` | `bool` | No | Include the source conversation through its last completed reply. |
+| `local_activities` | `array` | Yes | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
+| `local_archived_count` | `int` | Yes | Local Claude Code and Codex threads archived on their computers. |
+| `local_next_cursor` | `mixed` | Yes |  |
+| `local_scope_key` | `mixed` | Yes |  |
+| `local_status_pending` | `bool` | Yes | A computer is reporting newer local thread statuses; read the page again shortly. |
+| `local_threads` | `array` | Yes |  |
+| `main_thread_id` | `string` | Yes |  |
+| `message` | `string` | No | The thread's first message. |
+| `next_cursor` | `mixed` | Yes |  |
+| `parent_conversation_id` | `string` | No | Optional source conversation belonging to this agent. |
+| `requester_membership_id` | `string` | No |  |
+| `selected_thread` | `mixed` | Yes |  |
+| `thread` | `array` | Yes |  |
+| `threads` | `array` | Yes |  |
+| `title` | `string` | No |  |
+| `total_archived_count` | `mixed` | Yes | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SparkAgentThread()->create([
+  "agent_id" => null, // string
+  "organization_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SparkAgentThread()->list(["agent_id" => "example", "organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SparkAgentThreadEntity`
+
+Create a new `SparkAgentThreadEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SparkCreditEntity
+
+```php
+$spark_credit = $client->SparkCredit();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `amount_cents` | `int` | No | Purchase amount in USD cents. |
+| `autofill` | `mixed` | Yes |  |
+| `autofill_payment_unconfirmed` | `bool` | Yes |  |
+| `available_usd` | `string` | Yes |  |
+| `billing_unit` | `string` | No | Compute minute quote version returned by the billing summary. |
+| `can_manage` | `bool` | Yes |  |
+| `compute_minutes` | `array` | Yes |  |
+| `compute_usd` | `string` | No |  |
+| `credits_per_usd` | `int` | Yes |  |
+| `inference_usd` | `string` | No |  |
+| `kind` | `string` | Yes |  |
+| `payment_method` | `mixed` | Yes |  |
+| `payments_enabled` | `bool` | Yes |  |
+| `plan` | `string` | No |  |
+| `plans` | `array` | Yes |  |
+| `quoted_credits_cents` | `int` | No | Grant shown for a top-up or subscription, in usage cents. |
+| `quoted_price_cents` | `int` | No | Monthly cash price shown for a subscription, in USD cents. |
+| `refill_limits_cents` | `array` | Yes |  |
+| `refill_options` | `array` | Yes |  |
+| `refill_thresholds_cents` | `array` | Yes |  |
+| `request_key` | `string` | Yes |  |
+| `settings` | `mixed` | Yes |  |
+| `starter_cents` | `int` | Yes |  |
+| `top_up_max_cents` | `int` | Yes | Maximum manual top-up, in USD cents. |
+| `top_up_step_cents` | `int` | Yes | Minimum manual top-up and increment, in USD cents. |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `amount_cents` | - | - | - | - | - |
+| `autofill` | - | - | - | - | - |
+| `autofill_payment_unconfirmed` | - | - | - | - | - |
+| `available_usd` | - | - | - | - | - |
+| `billing_unit` | - | - | - | - | - |
+| `can_manage` | - | - | - | - | - |
+| `compute_minutes` | - | - | - | - | - |
+| `compute_usd` | - | - | - | - | - |
+| `credits_per_usd` | - | - | - | - | - |
+| `inference_usd` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `payment_method` | - | - | - | - | - |
+| `payments_enabled` | - | - | - | - | - |
+| `plan` | - | Yes | - | - | Yes |
+| `plans` | - | - | - | - | - |
+| `quoted_credits_cents` | - | - | - | - | - |
+| `quoted_price_cents` | - | - | - | - | - |
+| `refill_limits_cents` | - | - | - | - | - |
+| `refill_options` | - | - | - | - | - |
+| `refill_thresholds_cents` | - | - | - | - | - |
+| `request_key` | - | - | - | - | - |
+| `settings` | - | - | - | - | - |
+| `starter_cents` | - | - | - | - | - |
+| `top_up_max_cents` | - | - | - | - | - |
+| `top_up_step_cents` | - | - | - | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SparkCredit()->create([
+  "organization_id" => null, // string
+  "kind" => null, // string
+  "request_key" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SparkCredit()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->SparkCredit()->patch([
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->SparkCredit()->update([
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SparkCreditEntity`
+
+Create a new `SparkCreditEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SparkCreditAgentUsageEntity
+
+```php
+$spark_credit_agent_usage = $client->SparkCreditAgentUsage();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agents` | `array` | Yes |  |
+| `all` | `array` | Yes |  |
+| `days` | `array` | Yes |  |
+| `id` | `string` | No |  |
+| `owners` | `array` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->SparkCreditAgentUsage()->load(["id" => "spark_credit_agent_usage_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SparkCreditAgentUsageEntity`
+
+Create a new `SparkCreditAgentUsageEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SparkCreditUsageTotalEntity
+
+```php
+$spark_credit_usage_total = $client->SparkCreditUsageTotal();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `compute_minutes_used` | `string` | Yes |  |
+| `compute_usd` | `string` | Yes |  |
+| `inference_usd` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SparkCreditUsageTotal()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SparkCreditUsageTotalEntity`
+
+Create a new `SparkCreditUsageTotalEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -17542,6 +40475,280 @@ Return the entity name.
 
 ---
 
+## StatusChangeEntity
+
+```php
+$status_change = $client->StatusChange();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_id` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `patchsets` | `array` | Yes |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `status_state` | `string` | Yes |  |
+| `status_tone` | `string` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->StatusChange()->load(["id" => "status_change_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): StatusChangeEntity`
+
+Create a new `StatusChangeEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## StatusCommitEntity
+
+```php
+$status_commit = $client->StatusCommit();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `checks` | `array` | Yes |  |
+| `commit_sha` | `string` | Yes |  |
+| `counts` | `array` | Yes |  |
+| `id` | `string` | No |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `status_state` | `string` | Yes |  |
+| `status_tone` | `string` | Yes |  |
+| `total` | `int` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->StatusCommit()->load(["id" => "status_commit_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): StatusCommitEntity`
+
+Create a new `StatusCommitEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## StatusPatchsetEntity
+
+```php
+$status_patchset = $client->StatusPatchset();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `checks` | `array` | Yes |  |
+| `checks_status` | `mixed` | Yes |  |
+| `commit_sha` | `mixed` | Yes |  |
+| `counts` | `array` | Yes |  |
+| `id` | `string` | No |  |
+| `patchset_id` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `status_state` | `string` | Yes |  |
+| `status_tone` | `string` | Yes |  |
+| `total` | `int` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->StatusPatchset()->load(["id" => "status_patchset_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): StatusPatchsetEntity`
+
+Create a new `StatusPatchsetEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## StripeWebhookEntity
+
+```php
+$stripe_webhook = $client->StripeWebhook();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->StripeWebhook()->create([
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): StripeWebhookEntity`
+
+Create a new `StripeWebhookEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SubmitTelemetryEntity
+
+```php
+$submit_telemetry = $client->SubmitTelemetry();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SubmitTelemetry()->create([
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SubmitTelemetryEntity`
+
+Create a new `SubmitTelemetryEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## SubscriptionModelEntity
 
 ```php
@@ -17590,6 +40797,324 @@ Set the entity match criteria.
 #### `make(): SubscriptionModelEntity`
 
 Create a new `SubscriptionModelEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SwarmEventEntity
+
+```php
+$swarm_event = $client->SwarmEvent();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_swarm_id` | `string` | Yes |  |
+| `attempt_id` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `id` | `int` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `payload` | `array` | Yes |  |
+| `reason` | `mixed` | Yes |  |
+| `scheduler_generation` | `mixed` | Yes |  |
+| `task_id` | `mixed` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SwarmEvent()->list(["swarm_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SwarmEventEntity`
+
+Create a new `SwarmEventEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SwarmLiveEntity
+
+```php
+$swarm_live = $client->SwarmLive();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SwarmLiveEntity`
+
+Create a new `SwarmLiveEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SwarmNoteEntity
+
+```php
+$swarm_note = $client->SwarmNote();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `task_id` | `mixed` | No | A task public id; omitted |
+| `text` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->SwarmNote()->create([
+  "swarm_id" => null, // string
+  "text" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SwarmNoteEntity`
+
+Create a new `SwarmNoteEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## SwarmTaskEntity
+
+```php
+$swarm_task = $client->SwarmTask();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `acceptance_commands` | `array` | Yes |  |
+| `agent_swarm_id` | `string` | Yes |  |
+| `assigned_runner_id` | `mixed` | Yes |  |
+| `blocked_reason` | `mixed` | Yes |  |
+| `changes` | `array` | Yes |  |
+| `commit_count` | `int` | Yes |  |
+| `commit_sha_result` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `current_attempt_id` | `mixed` | Yes |  |
+| `deadline_at` | `mixed` | Yes |  |
+| `depends_on_task_ids` | `array` | Yes |  |
+| `depth` | `int` | Yes |  |
+| `diff_artifact_url` | `mixed` | Yes |  |
+| `display_id` | `int` | Yes |  |
+| `environment_profile` | `mixed` | Yes |  |
+| `error_message` | `mixed` | Yes |  |
+| `failure_code` | `mixed` | Yes |  |
+| `finished_at` | `mixed` | Yes |  |
+| `finished_at_label` | `mixed` | Yes |  |
+| `harness` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `input_revision` | `mixed` | Yes |  |
+| `iteration` | `int` | Yes |  |
+| `landing_state` | `string` | Yes |  |
+| `model` | `mixed` | Yes |  |
+| `model_provider` | `mixed` | Yes |  |
+| `number` | `int` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `owned_paths` | `array` | Yes |  |
+| `parent_task_id` | `mixed` | Yes |  |
+| `position` | `int` | Yes |  |
+| `prompt` | `string` | Yes |  |
+| `queued_at` | `mixed` | Yes |  |
+| `queued_at_label` | `mixed` | Yes |  |
+| `reasoning_effort` | `mixed` | Yes |  |
+| `recent_activity` | `array` | Yes |  |
+| `repo_url` | `string` | Yes |  |
+| `result` | `array` | Yes |  |
+| `retry_number` | `int` | Yes |  |
+| `role` | `string` | Yes |  |
+| `run_id` | `mixed` | Yes |  |
+| `stack_after_task_id` | `mixed` | Yes |  |
+| `started_at` | `mixed` | Yes |  |
+| `started_at_label` | `mixed` | Yes |  |
+| `status` | `string` | Yes |  |
+| `title` | `mixed` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->SwarmTask()->list(["swarm_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): SwarmTaskEntity`
+
+Create a new `SwarmTaskEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## TaskLeaseEntity
+
+```php
+$task_lease = $client->TaskLease();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->TaskLease()->create([
+  "swarm_id" => null, // string
+  "task_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): TaskLeaseEntity`
+
+Create a new `TaskLeaseEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -17649,6 +41174,866 @@ Set the entity match criteria.
 #### `make(): ThreadPreviewEntity`
 
 Create a new `ThreadPreviewEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ThreadPreviewAccessEntity
+
+```php
+$thread_preview_access = $client->ThreadPreviewAccess();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ThreadPreviewAccessEntity`
+
+Create a new `ThreadPreviewAccessEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ToolFeedbackEntity
+
+```php
+$tool_feedback = $client->ToolFeedback();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `category` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `details` | `string` | Yes |  |
+| `feedback` | `array` | Yes |  |
+| `id` | `string` | Yes |  |
+| `metadata` | `array` | Yes | Caller-supplied session context; no secrets or transcripts |
+| `organization_id` | `string` | Yes |  |
+| `source` | `string` | Yes |  |
+| `summary` | `string` | Yes |  |
+| `user_id` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->ToolFeedback()->create([
+  "organization_id" => null, // string
+  "feedback" => null, // array
+]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->ToolFeedback()->load(["id" => "tool_feedback_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ToolFeedbackEntity`
+
+Create a new `ToolFeedbackEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## TranscriptEntity
+
+```php
+$transcript = $client->Transcript();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent` | `string` | Yes |  |
+| `author` | `array` | Yes |  |
+| `checkpoint_pagination` | `array` | Yes |  |
+| `checkpoints` | `array` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_checkpoint_at` | `mixed` | Yes |  |
+| `selected_checkpoint` | `mixed` | Yes |  |
+| `source_url` | `string` | Yes |  |
+| `started_at` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `title` | `mixed` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->Transcript()->list(["repo" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): TranscriptEntity`
+
+Create a new `TranscriptEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## V1MessageEntity
+
+```php
+$v1_message = $client->V1Message();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->V1Message()->create([
+  "organization_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): V1MessageEntity`
+
+Create a new `V1MessageEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## VcBranchEntity
+
+```php
+$vc_branch = $client->VcBranch();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+| `name` | `string` | Yes |  |
+| `target_commit_id` | `string` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->VcBranch()->create([
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->VcBranch()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### `remove(array $reqmatch, ?array $ctrl = null): mixed`
+
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
+
+```php
+$result = $client->VcBranch()->remove(["id" => "vc_branch_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): VcBranchEntity`
+
+Create a new `VcBranchEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## VcBrowserEntity
+
+```php
+$vc_browser = $client->VcBrowser();
+```
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): VcBrowserEntity`
+
+Create a new `VcBrowserEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## VcChangeEntity
+
+```php
+$vc_change = $client->VcChange();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `array` | Yes |  |
+| `canonical_path` | `string` | Yes |  |
+| `change` | `mixed` | Yes |  |
+| `checks` | `array` | No |  |
+| `checks_status` | `string` | No |  |
+| `description` | `mixed` | No |  |
+| `group` | `mixed` | No |  |
+| `id` | `string` | Yes |  |
+| `jj_change_id` | `mixed` | No |  |
+| `labels` | `array` | No |  |
+| `landing` | `array` | Yes | Server-computed submitted-together closure and landing preflight. |
+| `number` | `int` | Yes |  |
+| `patchset_number` | `mixed` | No |  |
+| `previews` | `array` | Yes |  |
+| `primary_status` | `mixed` | No |  |
+| `public_id` | `string` | No |  |
+| `related_changes` | `array` | Yes |  |
+| `relation_chain` | `array` | Yes |  |
+| `restack_state` | `string` | No |  |
+| `review_summary` | `array` | No |  |
+| `stack` | `mixed` | No |  |
+| `status` | `string` | Yes |  |
+| `sync` | `array` | Yes |  |
+| `target` | `array` | Yes |  |
+| `target_advanced` | `bool` | Yes |  |
+| `target_branch` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `url` | `string` | No |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->VcChange()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->VcChange()->load(["id" => "vc_change_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): VcChangeEntity`
+
+Create a new `VcChangeEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## VcChangeGroupEntity
+
+```php
+$vc_change_group = $client->VcChangeGroup();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `changes` | `array` | Yes |  |
+| `id` | `string` | No |  |
+| `name` | `string` | No |  |
+| `number` | `int` | No |  |
+| `status` | `string` | Yes |  |
+| `title` | `mixed` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `changes` | - | - | - |
+| `id` | - | - | - |
+| `name` | - | - | Yes |
+| `number` | - | - | - |
+| `status` | - | - | - |
+| `title` | - | - | Yes |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->VcChangeGroup()->create([
+  "organization_id" => null, // string
+  "repo_id" => null, // string
+  "name" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->VcChangeGroup()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->VcChangeGroup()->load(["id" => "vc_change_group_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): VcChangeGroupEntity`
+
+Create a new `VcChangeGroupEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## VcFileEntity
+
+```php
+$vc_file = $client->VcFile();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `paths` | `array` | Yes |  |
+| `truncated` | `bool` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->VcFile()->list(["organization_id" => "example", "repo_id" => "example", "ref" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): VcFileEntity`
+
+Create a new `VcFileEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## VcMergeQueueEntity
+
+```php
+$vc_merge_queue = $client->VcMergeQueue();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `analytics` | `array` | Yes | Queue performance for the reporting window. |
+| `id` | `string` | No |  |
+| `policy` | `array` | Yes |  |
+| `queue` | `array` | Yes |  |
+| `target_branches` | `array` | No | Bookmark names for the target picker. |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->VcMergeQueue()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->VcMergeQueue()->load(["id" => "vc_merge_queue_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): VcMergeQueueEntity`
+
+Create a new `VcMergeQueueEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## VcStackEntity
+
+```php
+$vc_stack = $client->VcStack();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `alias_ref_name` | `mixed` | Yes |  |
+| `changes` | `array` | Yes |  |
+| `code` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `landing` | `array` | Yes | Compact landing state for the Stack CLI. |
+| `member_count` | `int` | Yes |  |
+| `name` | `mixed` | Yes |  |
+| `ref_name` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `tip_change_number` | `mixed` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->VcStack()->list(["organization_id" => "example", "repo_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->VcStack()->load(["id" => "vc_stack_id", "organization_id" => "organization_id", "repo_id" => "repo_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): VcStackEntity`
+
+Create a new `VcStackEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## VcsNodeEntity
+
+```php
+$vcs_node = $client->VcsNode();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `mixed` | Yes |  |
+| `account_id` | `mixed` | Yes |  |
+| `account_login` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `installation_id` | `string` | Yes |  |
+| `installed_at` | `mixed` | Yes |  |
+| `installed_at_label` | `mixed` | Yes |  |
+| `manage_access_url` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `permission_entries` | `array` | Yes | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `array` | Yes |  |
+| `status` | `string` | Yes |  |
+| `suspended_at` | `mixed` | Yes |  |
+| `suspended_at_label` | `mixed` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `mixed` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->VcsNode()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): VcsNodeEntity`
+
+Create a new `VcsNodeEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## VcsSettingEntity
+
+```php
+$vcs_setting = $client->VcsSetting();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `bool` | Yes |  |
+| `can_manage_sandbox_region` | `bool` | Yes |  |
+| `dedicated_outbound_ip_addresses` | `array` | Yes | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` | Yes |  |
+| `organization` | `array` | Yes |  |
+| `sandbox_regions` | `array` | Yes |  |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->VcsSetting()->list(["organization_id" => "example"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): VcsSettingEntity`
+
+Create a new `VcsSettingEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -18375,6 +42760,125 @@ Return the entity name.
 
 ---
 
+## VerifyEmailVerificationEntity
+
+```php
+$verify_email_verification = $client->VerifyEmailVerification();
+```
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->VerifyEmailVerification()->list();
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): VerifyEmailVerificationEntity`
+
+Create a new `VerifyEmailVerificationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## VerifySignalIntegrationEntity
+
+```php
+$verify_signal_integration = $client->VerifySignalIntegration();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `api_token_stored` | `bool` | Yes |  |
+| `config` | `array` | Yes |  |
+| `created_at` | `mixed` | No |  |
+| `failure_message` | `mixed` | Yes |  |
+| `id` | `string` | Yes | Public id (`sint_…`). |
+| `inbound_path` | `string` | Yes |  |
+| `inbound_url` | `string` | Yes | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `mixed` | No |  |
+| `last_verified_at` | `mixed` | No |  |
+| `mode` | `string` | Yes | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `rejected_signature_count` | `int` | Yes | Deliveries rejected for a bad or missing signature. |
+| `status` | `string` | Yes |  |
+| `target_count` | `int` | Yes |  |
+| `unmapped_delivery_count` | `int` | Yes | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `mixed` | No |  |
+| `webhook_secret_stored` | `bool` | Yes |  |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->VerifySignalIntegration()->create([
+  "id" => null, // string
+  "organization_id" => null, // string
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): VerifySignalIntegrationEntity`
+
+Create a new `VerifySignalIntegrationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## VerifyStaticSiteDomainEntity
 
 ```php
@@ -18511,6 +43015,53 @@ Return the entity name.
 
 ---
 
+## WaitlistApplicationEntity
+
+```php
+$waitlist_application = $client->WaitlistApplication();
+```
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->WaitlistApplication()->create([
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): WaitlistApplicationEntity`
+
+Create a new `WaitlistApplicationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## WebBotAuthEntity
 
 ```php
@@ -18558,6 +43109,61 @@ Set the entity match criteria.
 #### `make(): WebBotAuthEntity`
 
 Create a new `WebBotAuthEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## WebhookGitlabEntity
+
+```php
+$webhook_gitlab = $client->WebhookGitlab();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->WebhookGitlab()->update([
+  "id" => "id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): WebhookGitlabEntity`
+
+Create a new `WebhookGitlabEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -18696,6 +43302,271 @@ Set the entity match criteria.
 #### `make(): WorkflowTriggerSkippedEntity`
 
 Create a new `WorkflowTriggerSkippedEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## WorkspaceActivityEntity
+
+```php
+$workspace_activity = $client->WorkspaceActivity();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `live_activity` | `array` | Yes |  |
+| `recent_items` | `array` | Yes |  |
+| `unresolved_notification_count` | `int` | Yes |  |
+
+### Operations
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->WorkspaceActivity()->load(["organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): WorkspaceActivityEntity`
+
+Create a new `WorkspaceActivityEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## WorkspaceActivityNotificationEntity
+
+```php
+$workspace_activity_notification = $client->WorkspaceActivityNotification();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): WorkspaceActivityNotificationEntity`
+
+Create a new `WorkspaceActivityNotificationEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## WorkspaceSpaceEntity
+
+```php
+$workspace_space = $client->WorkspaceSpace();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `string` | Yes |  |
+| `default_branch` | `string` | No |  |
+| `description` | `mixed` | Yes |  |
+| `hidden` | `bool` | Yes |  |
+| `icon_name` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `import_status` | `mixed` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `position` | `mixed` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `repository_slug` | `string` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `created_at` | - | - | - |
+| `default_branch` | - | - | - |
+| `description` | - | - | Yes |
+| `hidden` | - | - | - |
+| `icon_name` | - | - | - |
+| `id` | - | - | - |
+| `import_status` | - | - | - |
+| `name` | - | - | - |
+| `organization_id` | - | - | - |
+| `position` | - | - | - |
+| `repository_id` | - | - | - |
+| `repository_slug` | - | - | - |
+| `slug` | - | - | - |
+| `status` | - | - | - |
+| `updated_at` | - | - | - |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Returns the created entity and throws on error.
+
+```php
+$result = $client->WorkspaceSpace()->create([
+  "organization_id" => null, // string
+  "icon_name" => null, // string
+  "name" => null, // string
+  "slug" => null, // string
+]);
+```
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+
+```php
+$results = $client->WorkspaceSpace()->list(["organization_id" => "example"]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->WorkspaceSpace()->load(["id" => "workspace_space_id", "organization_id" => "organization_id"]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): WorkspaceSpaceEntity`
+
+Create a new `WorkspaceSpaceEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## WorkspaceSpacePreferenceEntity
+
+```php
+$workspace_space_preference = $client->WorkspaceSpacePreference();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `preferences` | `array` | Yes |  |
+| `spaces` | `array` | Yes |  |
+
+### Operations
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->WorkspaceSpacePreference()->update([
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): WorkspaceSpacePreferenceEntity`
+
+Create a new `WorkspaceSpacePreferenceEntity` instance with the same client and
 options.
 
 #### `get_name(): string`

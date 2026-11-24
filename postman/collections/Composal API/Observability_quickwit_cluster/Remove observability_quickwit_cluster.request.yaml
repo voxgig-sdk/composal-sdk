@@ -1,0 +1,22 @@
+$kind: http-request
+id: d70aeba6-2cfd-54ca-a9c0-55b624a8a78c
+description: |-
+  The `remove` operation of **observability_quickwit_cluster**.
+
+  SDK: `client.ObservabilityQuickwitCluster().remove({ id: "example_id" })`
+url: "{{base}}/api/v1/observability/quickwit_clusters/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{observability_quickwit_cluster_id}}"
+    description: The observability_quickwit_cluster this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("observability_quickwit_cluster_id")
+      }
+    language: text/javascript
+order: 10000

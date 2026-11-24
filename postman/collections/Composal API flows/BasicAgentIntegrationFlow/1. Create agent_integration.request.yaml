@@ -3,39 +3,23 @@ id: dbdda0bb-bd15-5ed7-ab59-19baba77e62b
 description: |-
   The `create` operation of **agent_integration**.
 
-  SDK: `client.AgentIntegration().create({ agent_id: "example", organization_id: "example", connection_id: "example", enabled: true, generation: 1 })`
-url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/integrations"
+  SDK: `client.AgentIntegration().create({ organization_id: "example", name: "example", toolkit: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_integrations"
 method: POST
 headers:
   Accept: application/json
   Content-Type: application/json
-queryParams:
-  - key: cursor
-    value: ""
-    disabled: true
-  - key: limit
-    value: ""
-    disabled: true
-  - key: q
-    value: ""
-    disabled: true
-  - key: toolkit
-    value: ""
-    disabled: true
 pathVariables:
   - key: organization_id
     value: "{{organization_id}}"
     description: The organization this agent_integration belongs to.
-  - key: id
-    value: "{{agent_id}}"
-    description: The agent this agent_integration belongs to.
 body:
   type: json
   content: |-
     {
-      "connection_id": "example",
-      "generation": 1,
-      "enabled": true
+      "toolkit": "example",
+      "name": "example",
+      "creation_key": "example"
     }
 scripts:
   - type: beforeRequest
@@ -43,7 +27,7 @@ scripts:
       const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
       const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
       const getonly = flag("getonly", false)
-      const missing = ["base","organization_id","agent_id"].filter((name) => !given(name))
+      const missing = ["base","organization_id"].filter((name) => !given(name))
       if (!given("apikey")) missing.unshift("apikey")
       const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
       if (getonly && "GET" !== pm.request.method) {
@@ -68,7 +52,7 @@ scripts:
       })
       const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
       const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
-      const made = body
+      const made = body?.["connection"]
       pm.test("1. Create agent_integration: the record carries its key", () => {
         pm.expect(made, "record").to.be.an("object")
         pm.expect(at(made, "id"), "id").to.exist

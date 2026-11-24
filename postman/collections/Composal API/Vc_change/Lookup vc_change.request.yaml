@@ -1,0 +1,28 @@
+$kind: http-request
+id: "74bc4e20-87eb-5037-b1a6-e7907d51eac1"
+description: |-
+  The `lookup` action of **vc_change**, a route of its `load` operation.
+
+  SDK: `client.VcChange().load({ "organization_id": "organization_id", "repo_id": "repo_id", $action: "lookup" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/lookup"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: "change_keys[]"
+    value: ""
+    disabled: true
+  - key: legacy_stack_ref
+    value: ""
+    disabled: true
+  - key: target_branch
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_change belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_change belongs to.
+order: 11000

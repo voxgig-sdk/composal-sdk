@@ -1,0 +1,57 @@
+# BasicBazelBlobFlow
+
+main: kit: flow: BasicBazelBlobFlow:
+{
+  entity: "bazel_blob",
+  kind: "basic",
+  name: "BasicBazelBlobFlow",
+  step: [
+    {
+      d: {
+        blob_id: "blob01",
+        hash: "hash01"
+      }
+
+      i: {
+        ref: "bazel_blob_ref01",
+        srcdatavar: "bazel_blob_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-bazel_blob_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "bazel_blob_ref01",
+        srcdatavar: "bazel_blob_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        blob_id: "blob01",
+        hash: "hash01",
+        id: "bazel_blob01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-bazel_blob_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBazelBlobFlow"
+}

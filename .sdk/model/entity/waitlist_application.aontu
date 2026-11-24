@@ -1,0 +1,57 @@
+# Entity: waitlist_application
+
+main: kit: entity: waitlist_application: {
+
+  alias: field: {}
+
+  name: "waitlist_application"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "company_name"
+            "company_size"
+            "email"
+            "invite_code"
+            "name"
+            "use_case"
+          ]
+          co: {
+            id: "POST /api/v1/waitlist_applications"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/waitlist_applications"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "waitlist_applications"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

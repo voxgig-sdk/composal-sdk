@@ -1,0 +1,4 @@
+$kind: collection
+id: "0caceb2f-ff2b-5067-8031-65d3b1283239"
+description: "The `BasicDockerBuilderFlow` flow of **docker_builder**."
+order: 185000

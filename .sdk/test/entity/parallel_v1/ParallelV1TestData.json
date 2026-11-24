@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "parallel_v1": {
+      "PARALLEL_V100": {
+        "organization_id": "ORGANIZATION01",
+        "id": "PARALLEL_V100"
+      },
+      "PARALLEL_V101": {
+        "organization_id": "ORGANIZATION01",
+        "id": "PARALLEL_V101"
+      },
+      "PARALLEL_V102": {
+        "organization_id": "ORGANIZATION01",
+        "id": "PARALLEL_V102"
+      }
+    }
+  },
+  "new": {
+    "parallel_v1": {
+      "parallel_v1_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/local_agent/parallel/v1/extract": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/local_agent/parallel/v1/search": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

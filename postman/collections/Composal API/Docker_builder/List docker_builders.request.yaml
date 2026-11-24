@@ -1,0 +1,29 @@
+$kind: http-request
+id: "3c10decc-3ac9-5dea-bb32-eef6b4e636dc"
+description: |-
+  The `list` operation of **docker_builder**.
+
+  SDK: `client.DockerBuilder().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/docker_builders"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: slug
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this docker_builder belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["docker_builders"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("docker_builder_id")) pm.collectionVariables.set("docker_builder_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

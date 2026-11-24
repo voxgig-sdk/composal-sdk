@@ -1,0 +1,62 @@
+$kind: http-request
+id: "26123e27-ef1a-5e89-af8a-c0ce2be44acd"
+description: |-
+  The `load` operation of **cloud_workspace_backup_object**.
+
+  SDK: `client.CloudWorkspaceBackupObject().load({ cloud_workspace_backup_id: "example", id: "example_id", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/cloud_workspace_backups/:backup_key/objects/:object_key"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this cloud_workspace_backup_object belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this cloud_workspace_backup_object belongs to.
+  - key: backup_key
+    value: "{{cloud_workspace_backup_id}}"
+    description: "Input: cloud_workspace_backup_id."
+  - key: object_key
+    value: "{{cloud_workspace_backup_object_id}}"
+    description: The cloud_workspace_backup_object this request addresses.
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","repo_id","cloud_workspace_backup_id","cloud_workspace_backup_object_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("1. Load cloud_workspace_backup_object: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      if ("Mark01-cloud_workspace_backup_object_ref01" === pm.variables.get("cloud_workspace_backup_object_ref01_marked")) pm.test("1. Load cloud_workspace_backup_object: the update reads back", () => {
+        pm.expect(JSON.stringify(body)).to.include("Mark01-cloud_workspace_backup_object_ref01")
+      })
+      pm.test("1. Load cloud_workspace_backup_object: the record is the one asked for", () => {
+        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("cloud_workspace_backup_object_id")))
+      })
+    language: text/javascript
+order: 1000

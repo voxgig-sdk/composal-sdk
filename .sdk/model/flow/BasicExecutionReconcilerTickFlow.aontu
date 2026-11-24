@@ -1,0 +1,52 @@
+# BasicExecutionReconcilerTickFlow
+
+main: kit: flow: BasicExecutionReconcilerTickFlow:
+{
+  entity: "execution_reconciler_tick",
+  kind: "basic",
+  name: "BasicExecutionReconcilerTickFlow",
+  step: [
+    {
+      i: {
+        ref: "execution_reconciler_tick_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "execution_reconciler_tick_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "execution_reconciler_tick_ref01",
+        srcdatavar: "execution_reconciler_tick_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "execution_reconciler_tick01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-execution_reconciler_tick_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicExecutionReconcilerTickFlow"
+}

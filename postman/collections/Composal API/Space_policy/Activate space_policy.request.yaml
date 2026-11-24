@@ -1,0 +1,22 @@
+$kind: http-request
+id: a3146c54-be91-593b-a08d-05169b3588e1
+description: |-
+  The `activate` action of **space_policy**, a route of its `create` operation.
+
+  SDK: `client.SpacePolicy().create({ "space_id": "space_id", "id": "ID", $action: "activate" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/policies/:id/activate"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: id
+    value: "{{space_policy_id}}"
+    description: The space_policy this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

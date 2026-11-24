@@ -1,0 +1,8 @@
+$kind: collection
+id: ea830548-2ed5-5b0e-b3e8-7508d63781b4
+description: |-
+  The **change_landing_hold** entity, which belongs to a organization and a repo and a change. Its requests address one record by `{{change_landing_hold_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 164000

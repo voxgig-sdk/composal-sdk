@@ -1,0 +1,133 @@
+# Entity: merge_resolution
+
+main: kit: entity: merge_resolution: {
+
+  alias: field: {}
+
+  fields: {
+    action: {
+      h: "Action"
+      n: "action"
+      r: true
+      t: "`$STRING`"
+    }
+    base: {
+      h: "Base"
+      n: "base"
+      r: true
+      sh: "Common ancestor file contents"
+      t: "`$STRING`"
+    }
+    content: {
+      h: "Content"
+      n: "content"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    context: {
+      h: "Context"
+      n: "context"
+      r: false
+      sh: "Optional surrounding files keyed by path"
+      t: "`$OBJECT`"
+    }
+    duration_ms: {
+      h: "Duration Ms"
+      n: "duration_ms"
+      r: true
+      t: "`$INTEGER`"
+    }
+    fallback: {
+      h: "Fallback"
+      n: "fallback"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    model: {
+      h: "Model"
+      n: "model"
+      r: false
+      t: "`$STRING`"
+    }
+    ours: {
+      h: "Ours"
+      n: "ours"
+      r: true
+      sh: "Current / left file contents"
+      t: "`$STRING`"
+    }
+    path: {
+      h: "Path"
+      n: "path"
+      r: false
+      sh: "Repository-relative path of the conflicted file"
+      t: "`$STRING`"
+    }
+    resolved: {
+      h: "Resolved"
+      n: "resolved"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    theirs: {
+      h: "Theirs"
+      n: "theirs"
+      r: true
+      sh: "Incoming / right file contents"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "merge_resolution"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "base"
+            "context"
+            "ours"
+            "path"
+            "theirs"
+          ]
+          co: {
+            id: "POST /api/v1/merge_resolutions"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/merge_resolutions"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "merge_resolutions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

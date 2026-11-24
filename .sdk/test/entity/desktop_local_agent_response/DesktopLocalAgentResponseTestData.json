@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "desktop_local_agent_response": {
+      "DESKTOP_LOCAL_AGENT_RESPONSE00": {
+        "input": [],
+        "max_output_tokens": 51,
+        "model": "s34",
+        "store": false,
+        "stream": true,
+        "organization_id": "ORGANIZATION01",
+        "id": "DESKTOP_LOCAL_AGENT_RESPONSE00"
+      },
+      "DESKTOP_LOCAL_AGENT_RESPONSE01": {
+        "input": [],
+        "max_output_tokens": 101,
+        "model": "s66",
+        "store": false,
+        "stream": true,
+        "organization_id": "ORGANIZATION01",
+        "id": "DESKTOP_LOCAL_AGENT_RESPONSE01"
+      },
+      "DESKTOP_LOCAL_AGENT_RESPONSE02": {
+        "input": [],
+        "max_output_tokens": 151,
+        "model": "s98",
+        "store": false,
+        "stream": true,
+        "organization_id": "ORGANIZATION01",
+        "id": "DESKTOP_LOCAL_AGENT_RESPONSE02"
+      }
+    }
+  },
+  "new": {
+    "desktop_local_agent_response": {
+      "desktop_local_agent_response_ref01": {
+        "input": [],
+        "max_output_tokens": 201,
+        "model": "sca",
+        "store": false,
+        "stream": true
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/desktop_local_agent/responses": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+$kind: http-request
+id: "7a26a1e4-59d2-5b99-b5df-7815a867dcda"
+description: |-
+  The `list` operation of **control_computer**.
+
+  SDK: `client.ControlComputer().list({ organization_id: "example", persistent_agent_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/control_computers?persistent_agent_id={{persistent_agent_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: observe_connection
+    value: "false"
+    disabled: true
+  - key: persistent_agent_id
+    value: "{{persistent_agent_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this control_computer belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["computers"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("control_computer_id")) pm.collectionVariables.set("control_computer_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

@@ -1,0 +1,11 @@
+$kind: collection
+id: "48292c03-b752-511b-9612-11ca442c042e"
+description: |-
+  The **organization_invitation** entity, which belongs to a organization. Its requests address one record by `{{organization_invitation_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `email` | string | yes |  |
+  | `id` | string |  |  |
+  | `role` | string | yes |  |
+order: 345000

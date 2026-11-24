@@ -10,4 +10,4 @@ description: |-
   | `mode` | string |  |  |
   | `secret_id` | string |  |  |
   | `secret_version_id` | string |  |  |
-order: 155000
+order: 381000

@@ -1,0 +1,14 @@
+$kind: http-request
+id: bdf69dc0-e6f4-5869-92fa-f26fc77d3e19
+description: |-
+  The `start` action of **auth_github**, a route of its `load` operation.
+
+  SDK: `client.AuthGithub().load({ "redirect_uri": "ID", $action: "start" })`
+url: "{{base}}/api/v1/auth/github/start?redirect_uri={{auth_github_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: redirect_uri
+    value: "{{auth_github_id}}"
+order: 1000

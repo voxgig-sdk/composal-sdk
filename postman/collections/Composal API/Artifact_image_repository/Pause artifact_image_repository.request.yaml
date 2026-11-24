@@ -1,0 +1,19 @@
+$kind: http-request
+id: "56064f7e-f560-5a9f-98b1-0d0bb550cee2"
+description: |-
+  The `pause` action of **artifact_image_repository**, a route of its `create` operation.
+
+  SDK: `client.ArtifactImageRepository().create({ "id": "ID", $action: "pause" })`
+url: "{{base}}/api/v1/artifacts/image_repositories/:id/pause"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_image_repository_id}}"
+    description: The artifact_image_repository this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 8000

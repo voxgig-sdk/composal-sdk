@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "github_app_importable_repository": {
+      "GITHUB_APP_IMPORTABLE_REPOSITORY00": {
+        "account_login": "s28",
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "next_page": "s2a",
+        "repositories": []
+      },
+      "GITHUB_APP_IMPORTABLE_REPOSITORY01": {
+        "account_login": "s50",
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "next_page": "s52",
+        "repositories": []
+      },
+      "GITHUB_APP_IMPORTABLE_REPOSITORY02": {
+        "account_login": "s78",
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "next_page": "s7a",
+        "repositories": []
+      }
+    }
+  },
+  "new": {
+    "github_app_importable_repository": {
+      "github_app_importable_repository_ref01": {
+        "account_login": "sa0",
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "next_page": "sa2",
+        "repositories": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/github_app/importable_repositories": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

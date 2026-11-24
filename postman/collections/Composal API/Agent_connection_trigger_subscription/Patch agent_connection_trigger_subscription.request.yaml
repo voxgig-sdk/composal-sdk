@@ -1,0 +1,28 @@
+$kind: http-request
+id: b91d276a-781d-53d9-9185-fc653793a094
+description: |-
+  The `patch` operation of **agent_connection_trigger_subscription**.
+
+  SDK: `client.AgentConnectionTriggerSubscription().patch({ agent_connection_id: "example", id: "example", organization_id: "example", enabled: true })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_connections/:agent_connection_id/trigger_subscriptions/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_connection_trigger_subscription belongs to.
+  - key: agent_connection_id
+    value: "{{agent_connection_id}}"
+    description: The agent_connection this agent_connection_trigger_subscription belongs to.
+  - key: id
+    value: "{{agent_connection_trigger_subscription_id}}"
+    description: The agent_connection_trigger_subscription this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "enabled": true
+    }
+order: 4000

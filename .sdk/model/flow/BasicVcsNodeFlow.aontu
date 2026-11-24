@@ -1,0 +1,26 @@
+# BasicVcsNodeFlow
+
+main: kit: flow: BasicVcsNodeFlow:
+{
+  entity: "vcs_node",
+  kind: "basic",
+  name: "BasicVcsNodeFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "vcs_node_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVcsNodeFlow"
+}

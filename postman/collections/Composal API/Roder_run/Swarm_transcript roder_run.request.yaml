@@ -1,0 +1,15 @@
+$kind: http-request
+id: "8a8f266d-75c0-5a35-9a63-94e32165321e"
+description: |-
+  The `swarm_transcript` action of **roder_run**, a route of its `create` operation.
+
+  SDK: `client.RoderRun().create({ $action: "swarm_transcript" })`
+url: "{{base}}/api/v1/agent/roder/run/swarm_transcript"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 3000

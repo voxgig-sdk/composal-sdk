@@ -1,0 +1,21 @@
+$kind: http-request
+id: "40cbe766-f43d-5d20-9336-fbb3b22f96a2"
+description: |-
+  The `google` action of **auth**, a route of its `create` operation.
+
+  SDK: `client.Auth().create({ $action: "google" })`
+url: "{{base}}/api/v1/auth/google"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "code": "example",
+      "redirect_uri": "https://example.com",
+      "state": "example",
+      "invite_code": "example"
+    }
+order: 4000

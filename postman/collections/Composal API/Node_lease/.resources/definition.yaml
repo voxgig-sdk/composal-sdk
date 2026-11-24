@@ -1,0 +1,9 @@
+$kind: collection
+id: eb3118d4-67b1-5ba9-9487-4451599b2784
+description: |-
+  The **node_lease** entity, which belongs to a node. Its requests address one record by `{{node_lease_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 331000

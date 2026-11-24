@@ -1,0 +1,47 @@
+# BasicGithubPullRequestFlow
+
+main: kit: flow: BasicGithubPullRequestFlow:
+{
+  entity: "github_pull_request",
+  kind: "basic",
+  name: "BasicGithubPullRequestFlow",
+  step: [
+    {
+      i: {
+        ref: "github_pull_request_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        pull_request_id: "pull_request01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "github_pull_request_ref01",
+        srcdatavar: "github_pull_request_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "github_pull_request01",
+        organization_id: "organization01",
+        pull_request_id: "pull_request01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-github_pull_request_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGithubPullRequestFlow"
+}

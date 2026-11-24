@@ -1,0 +1,23 @@
+# BasicArtefactViewTokenFlow
+
+main: kit: flow: BasicArtefactViewTokenFlow:
+{
+  entity: "artefact_view_token",
+  kind: "basic",
+  name: "BasicArtefactViewTokenFlow",
+  step: [
+    {
+      i: {
+        ref: "artefact_view_token_ref01"
+      }
+
+      m: {
+        artefact_id: "artefact01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicArtefactViewTokenFlow"
+}

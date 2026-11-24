@@ -1,0 +1,174 @@
+# Entity: repository_import
+
+main: kit: entity: repository_import: {
+
+  alias: field: {}
+
+  fields: {
+    can_manage_connections: {
+      h: "Can Manage Connections"
+      n: "can_manage_connections"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    github_imports: {
+      h: "Github Imports"
+      n: "github_imports"
+      r: true
+      t: "`$ARRAY`"
+    }
+    github_installations: {
+      h: "Github Installations"
+      n: "github_installations"
+      r: true
+      t: "`$ARRAY`"
+    }
+    gitlab_configured: {
+      h: "Gitlab Configured"
+      n: "gitlab_configured"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    gitlab_imports: {
+      h: "Gitlab Imports"
+      n: "gitlab_imports"
+      r: true
+      t: "`$ARRAY`"
+    }
+    gitlab_integrations: {
+      h: "Gitlab Integrations"
+      n: "gitlab_integrations"
+      r: true
+      t: "`$ARRAY`"
+    }
+    gitlab_redirect_uri: {
+      h: "Gitlab Redirect Uri"
+      n: "gitlab_redirect_uri"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    gitlab_self_managed_available: {
+      h: "Gitlab Self Managed Available"
+      n: "gitlab_self_managed_available"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    inventory_errors: {
+      h: "Inventory Errors"
+      n: "inventory_errors"
+      r: true
+      t: "`$ARRAY`"
+    }
+    organization_id: {
+      h: "Organization Id"
+      n: "organization_id"
+      r: true
+      t: "`$STRING`"
+    }
+    repositories: {
+      h: "Repositories"
+      n: "repositories"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "repository_import"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/pages/repository_import"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "accounts_only"
+                or: "accounts_only"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/pages/repository_import"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "pages"
+            }
+            {
+              lit: "repository_import"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

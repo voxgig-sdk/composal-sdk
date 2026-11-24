@@ -1,0 +1,32 @@
+$kind: collection
+id: "1e74b146-65ea-51a2-b5b7-7bcf8d0d1c61"
+description: |-
+  The **ci_pipeline** entity. Its requests address one record by `{{ci_pipeline_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `ci_runner_pool_id` | string | yes |  |
+  | `concurrency_key` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `default_branch` | string | yes |  |
+  | `description` | string | yes |  |
+  | `hosted_app_id` | string | yes |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `repository_id` | string | yes |  |
+  | `required_capabilities_csv` | string | yes |  |
+  | `runner_pool` | object | yes |  |
+  | `runs` | array | yes |  |
+  | `slug` | string | yes |  |
+  | `source_kind` | string | yes |  |
+  | `status` | string | yes |  |
+  | `status_label` | string | yes |  |
+  | `status_state` | string | yes |  |
+  | `status_tone` | string | yes |  |
+  | `trigger_on_pull_request` | boolean | yes |  |
+  | `trigger_on_push` | boolean | yes |  |
+  | `trigger_on_schedule` | boolean | yes |  |
+  | `updated_at` | string | yes |  |
+  | `workflow_path` | string | yes |  |
+order: 172000

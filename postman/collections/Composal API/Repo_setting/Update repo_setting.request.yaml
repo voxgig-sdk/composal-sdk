@@ -1,0 +1,28 @@
+$kind: http-request
+id: b78ff66a-bcd8-59e7-b848-a96e07f3e528
+description: |-
+  The `update` operation of **repo_setting**.
+
+  SDK: `client.RepoSetting().update({ organization_id: "example", repo_id: "example", description: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/settings"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_setting belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_setting belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "description": "example",
+      "icon_name": "example",
+      "status": "active"
+    }
+order: 2000

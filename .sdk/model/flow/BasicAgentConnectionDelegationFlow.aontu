@@ -1,0 +1,27 @@
+# BasicAgentConnectionDelegationFlow
+
+main: kit: flow: BasicAgentConnectionDelegationFlow:
+{
+  entity: "agent_connection_delegation",
+  kind: "basic",
+  name: "BasicAgentConnectionDelegationFlow",
+  step: [
+    {
+      m: {
+        agent_connection_id: "agent_connection01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_connection_delegation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentConnectionDelegationFlow"
+}

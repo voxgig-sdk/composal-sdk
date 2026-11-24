@@ -1,0 +1,9 @@
+$kind: collection
+id: c1ae999e-12d1-5383-a7f7-aae9b3ac0fcd
+description: |-
+  The **organization_app** entity, which belongs to a organization. Its requests address one record by `{{organization_app_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 340000

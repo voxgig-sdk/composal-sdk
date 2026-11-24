@@ -1,0 +1,55 @@
+# Entity: edge
+
+main: kit: entity: edge: {
+
+  alias: field: {}
+
+  name: "edge"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/edge/tls-check"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/edge/tls-check"
+          q: {
+            "$action": "tls_check"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "edge"
+            }
+            {
+              lit: "tls-check"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

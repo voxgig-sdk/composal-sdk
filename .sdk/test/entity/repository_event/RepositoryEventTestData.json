@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "repository_event": {
+      "REPOSITORY_EVENT00": {
+        "id": "REPOSITORY_EVENT00"
+      },
+      "REPOSITORY_EVENT01": {
+        "id": "REPOSITORY_EVENT01"
+      },
+      "REPOSITORY_EVENT02": {
+        "id": "REPOSITORY_EVENT02"
+      }
+    }
+  },
+  "new": {
+    "repository_event": {
+      "repository_event_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/repository_events/walgit": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

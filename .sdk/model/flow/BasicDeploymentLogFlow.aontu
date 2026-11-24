@@ -1,0 +1,26 @@
+# BasicDeploymentLogFlow
+
+main: kit: flow: BasicDeploymentLogFlow:
+{
+  entity: "deployment_log",
+  kind: "basic",
+  name: "BasicDeploymentLogFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "deployment_log_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeploymentLogFlow"
+}

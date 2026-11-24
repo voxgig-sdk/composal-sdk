@@ -1,0 +1,23 @@
+$kind: collection
+id: bdc85fe5-b6a1-5f23-bebc-2532b802a0d0
+description: |-
+  The **pull_request_transcript** entity, which belongs to a organization and a repo and a pull_request. Its requests address one record by `{{pull_request_transcript_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `adapter` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `ended_at` | string | yes |  |
+  | `external_session_id` | string | yes |  |
+  | `harness` | string | yes |  |
+  | `id` | string | yes |  |
+  | `last_activity_at` | string | yes |  |
+  | `last_checkpoint_at` | string | yes |  |
+  | `repository` | any | yes |  |
+  | `started_at` | string | yes |  |
+  | `stats` | object | yes |  |
+  | `status` | string | yes |  |
+  | `title` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `user` | any | yes |  |
+order: 413000

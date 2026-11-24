@@ -1,0 +1,23 @@
+$kind: http-request
+id: f5dc4e99-76bd-5892-aa81-e2440f1eda9d
+description: |-
+  The `promote_reconciliation_runtime` action of **ci_runner_pool**, a route of its `create` operation.
+
+  SDK: `client.CiRunnerPool().create({ "id": "ID", $action: "promote_reconciliation_runtime" })`
+url: "{{base}}/api/v1/ci/runner_pools/:id/promote_reconciliation_runtime"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{ci_runner_pool_id}}"
+    description: The ci_runner_pool this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "expected_image_version": "example",
+      "image_version": "example"
+    }
+order: 6000

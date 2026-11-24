@@ -1,0 +1,19 @@
+$kind: http-request
+id: "1dc0d554-1f04-57d8-8789-e349aacc125f"
+description: |-
+  The `deploy` action of **observability_quickwit_cluster**, a route of its `create` operation.
+
+  SDK: `client.ObservabilityQuickwitCluster().create({ "id": "ID", $action: "deploy" })`
+url: "{{base}}/api/v1/observability/quickwit_clusters/:id/deploy"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{observability_quickwit_cluster_id}}"
+    description: The observability_quickwit_cluster this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 8000

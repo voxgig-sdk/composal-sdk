@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "agent_integration_callback": {
+      "AGENT_INTEGRATION_CALLBACK00": {
+        "id": "AGENT_INTEGRATION_CALLBACK00"
+      },
+      "AGENT_INTEGRATION_CALLBACK01": {
+        "id": "AGENT_INTEGRATION_CALLBACK01"
+      },
+      "AGENT_INTEGRATION_CALLBACK02": {
+        "id": "AGENT_INTEGRATION_CALLBACK02"
+      }
+    }
+  },
+  "new": {
+    "agent_integration_callback": {
+      "agent_integration_callback_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/agent_integration_callback": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

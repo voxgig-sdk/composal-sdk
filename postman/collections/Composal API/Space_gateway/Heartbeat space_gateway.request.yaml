@@ -1,0 +1,22 @@
+$kind: http-request
+id: b4bb03c3-c5c9-55a7-baae-7e18b3625aed
+description: |-
+  The `heartbeat` action of **space_gateway**, a route of its `create` operation.
+
+  SDK: `client.SpaceGateway().create({ "space_id": "space_id", "id": "ID", $action: "heartbeat" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/gateways/:id/heartbeat"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: id
+    value: "{{space_gateway_id}}"
+    description: The space_gateway this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 7000

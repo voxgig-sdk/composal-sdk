@@ -1,0 +1,26 @@
+$kind: http-request
+id: b6cd6378-7e94-5b12-b163-6465133edd3c
+description: |-
+  The `merge` action of **repo_vc**, a route of its `create` operation.
+
+  SDK: `client.RepoVc().create({ "organization_id": "organization_id", "repo_id": "repo_id", $action: "merge" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/merge"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_vc belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_vc belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "into": "example",
+      "from": "example"
+    }
+order: 5000

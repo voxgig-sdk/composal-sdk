@@ -1,0 +1,18 @@
+$kind: http-request
+id: "7b58fb91-4036-5499-8b63-6935afb82e2c"
+description: |-
+  The `access` action of **repo**, a route of its `load` operation.
+
+  SDK: `client.Repo().load({ "organization_id": "organization_id", "id": "ID", $action: "access" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/pages/access"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this request addresses.
+order: 2000

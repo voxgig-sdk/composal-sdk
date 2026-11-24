@@ -1,0 +1,19 @@
+$kind: collection
+id: "7d3b4bc2-7e4c-58d8-8c20-ae581d5ae3d3"
+description: |-
+  The **model_subscription_account** entity. Its requests address one record by `{{model_subscription_account_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `accounts` | array | yes |  |
+  | `agents` | array | yes |  |
+  | `can_disconnect` | boolean | yes |  |
+  | `connection_agent` | object | yes |  |
+  | `email` | string |  |  |
+  | `id` | string | yes |  |
+  | `label` | string | yes |  |
+  | `provider` | string | yes |  |
+  | `saved` | boolean | yes |  |
+  | `status` | string | yes |  |
+  | `usable` | boolean | yes |  |
+order: 326000

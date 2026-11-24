@@ -1,0 +1,93 @@
+{
+  "existing": {
+    "pull_request_transcript": {
+      "PULL_REQUEST_TRANSCRIPT00": {
+        "adapter": "s96",
+        "created_at": "s97",
+        "ended_at": "s98",
+        "external_session_id": "EXTERNAL_SESSION01",
+        "harness": "s9a",
+        "id": "PULL_REQUEST_TRANSCRIPT00",
+        "last_activity_at": "s9c",
+        "last_checkpoint_at": "s9d",
+        "repository": "s9e",
+        "started_at": "s9f",
+        "stats": {},
+        "status": "sa1",
+        "title": "sa2",
+        "updated_at": "sa3",
+        "user": "sa4",
+        "organization_id": "ORGANIZATION01",
+        "pull_request_id": "PULL_REQUEST01",
+        "repo_id": "REPO01"
+      },
+      "PULL_REQUEST_TRANSCRIPT01": {
+        "adapter": "s12c",
+        "created_at": "s12d",
+        "ended_at": "s12e",
+        "external_session_id": "EXTERNAL_SESSION01",
+        "harness": "s130",
+        "id": "PULL_REQUEST_TRANSCRIPT01",
+        "last_activity_at": "s132",
+        "last_checkpoint_at": "s133",
+        "repository": "s134",
+        "started_at": "s135",
+        "stats": {},
+        "status": "s137",
+        "title": "s138",
+        "updated_at": "s139",
+        "user": "s13a",
+        "organization_id": "ORGANIZATION01",
+        "pull_request_id": "PULL_REQUEST01",
+        "repo_id": "REPO01"
+      },
+      "PULL_REQUEST_TRANSCRIPT02": {
+        "adapter": "s1c2",
+        "created_at": "s1c3",
+        "ended_at": "s1c4",
+        "external_session_id": "EXTERNAL_SESSION01",
+        "harness": "s1c6",
+        "id": "PULL_REQUEST_TRANSCRIPT02",
+        "last_activity_at": "s1c8",
+        "last_checkpoint_at": "s1c9",
+        "repository": "s1ca",
+        "started_at": "s1cb",
+        "stats": {},
+        "status": "s1cd",
+        "title": "s1ce",
+        "updated_at": "s1cf",
+        "user": "s1d0",
+        "organization_id": "ORGANIZATION01",
+        "pull_request_id": "PULL_REQUEST01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "pull_request_transcript": {
+      "pull_request_transcript_ref01": {
+        "adapter": "s258",
+        "created_at": "s259",
+        "ended_at": "s25a",
+        "external_session_id": "EXTERNAL_SESSION01",
+        "harness": "s25c",
+        "last_activity_at": "s25e",
+        "last_checkpoint_at": "s25f",
+        "repository": "s260",
+        "started_at": "s261",
+        "stats": {},
+        "status": "s263",
+        "title": "s264",
+        "updated_at": "s265",
+        "user": "s266"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/pull_request/{number}/transcripts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

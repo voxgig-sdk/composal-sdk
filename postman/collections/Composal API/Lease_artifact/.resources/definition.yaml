@@ -1,0 +1,8 @@
+$kind: collection
+id: "404ca759-1a32-5c7f-9db3-0253bbd13a3b"
+description: |-
+  The **lease_artifact** entity, which belongs to a node. Its requests address one record by `{{lease_artifact_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 296000

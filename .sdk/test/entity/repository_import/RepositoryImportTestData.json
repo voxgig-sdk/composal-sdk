@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "repository_import": {
+      "REPOSITORY_IMPORT00": {
+        "can_manage_connections": true,
+        "github_imports": [],
+        "github_installations": [],
+        "gitlab_configured": false,
+        "gitlab_imports": [],
+        "gitlab_integrations": [],
+        "gitlab_redirect_uri": "s74",
+        "gitlab_self_managed_available": false,
+        "inventory_errors": [],
+        "organization_id": "ORGANIZATION01",
+        "repositories": [],
+        "id": "REPOSITORY_IMPORT00"
+      },
+      "REPOSITORY_IMPORT01": {
+        "can_manage_connections": true,
+        "github_imports": [],
+        "github_installations": [],
+        "gitlab_configured": false,
+        "gitlab_imports": [],
+        "gitlab_integrations": [],
+        "gitlab_redirect_uri": "se2",
+        "gitlab_self_managed_available": false,
+        "inventory_errors": [],
+        "organization_id": "ORGANIZATION01",
+        "repositories": [],
+        "id": "REPOSITORY_IMPORT01"
+      },
+      "REPOSITORY_IMPORT02": {
+        "can_manage_connections": true,
+        "github_imports": [],
+        "github_installations": [],
+        "gitlab_configured": false,
+        "gitlab_imports": [],
+        "gitlab_integrations": [],
+        "gitlab_redirect_uri": "s150",
+        "gitlab_self_managed_available": false,
+        "inventory_errors": [],
+        "organization_id": "ORGANIZATION01",
+        "repositories": [],
+        "id": "REPOSITORY_IMPORT02"
+      }
+    }
+  },
+  "new": {
+    "repository_import": {
+      "repository_import_ref01": {
+        "can_manage_connections": true,
+        "github_imports": [],
+        "github_installations": [],
+        "gitlab_configured": false,
+        "gitlab_imports": [],
+        "gitlab_integrations": [],
+        "gitlab_redirect_uri": "s1be",
+        "gitlab_self_managed_available": false,
+        "inventory_errors": [],
+        "organization_id": "ORGANIZATION01",
+        "repositories": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/pages/repository_import": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

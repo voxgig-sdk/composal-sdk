@@ -1,0 +1,100 @@
+# BasicAgentConnectionTriggerSubscriptionFlow
+
+main: kit: flow: BasicAgentConnectionTriggerSubscriptionFlow:
+{
+  entity: "agent_connection_trigger_subscription",
+  kind: "basic",
+  name: "BasicAgentConnectionTriggerSubscriptionFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_connection_trigger_subscription_ref01"
+      }
+
+      m: {
+        agent_connection_id: "agent_connection01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        agent_connection_id: "agent_connection01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_connection_trigger_subscription_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        agent_connection_id: "agent_connection01",
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "agent_connection_trigger_subscription_ref01",
+        srcdatavar: "agent_connection_trigger_subscription_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_connection_trigger_subscription_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_connection_trigger_subscription_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        agent_connection_id: "agent_connection01",
+        id: "agent_connection_trigger_subscription01",
+        organization_id: "organization01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        agent_connection_id: "agent_connection01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "agent_connection_trigger_subscription_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentConnectionTriggerSubscriptionFlow"
+}

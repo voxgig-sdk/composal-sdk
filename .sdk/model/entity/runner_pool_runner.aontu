@@ -1,0 +1,457 @@
+# Entity: runner_pool_runner
+
+main: kit: entity: runner_pool_runner: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "runner_pool_runner"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "runner_pool_id"
+                or: "runner_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat"
+          q: {
+            "$action": "heartbeat"
+            exist: [
+              "id"
+              "runner_pool_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              runner_pool_id: "runner_pool_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "runner_pools"
+            }
+            {
+              var: "runner_pool_id"
+            }
+            {
+              lit: "runners"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "heartbeat"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/ci/runner_pools/{runner_pool_id}/runners"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "runner_pool_id"
+                or: "runner_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/ci/runner_pools/{runner_pool_id}/runners"
+          q: {
+            exist: [
+              "runner_pool_id"
+            ]
+          }
+          r: {
+            param: {
+              runner_pool_id: "runner_pool_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "runner_pools"
+            }
+            {
+              var: "runner_pool_id"
+            }
+            {
+              lit: "runners"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/ci/runner_pools/{runner_pool_id}/runners"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "runner_pool_id"
+                or: "runner_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/ci/runner_pools/{runner_pool_id}/runners"
+          q: {
+            exist: [
+              "runner_pool_id"
+            ]
+          }
+          r: {
+            param: {
+              runner_pool_id: "runner_pool_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "runner_pools"
+            }
+            {
+              var: "runner_pool_id"
+            }
+            {
+              lit: "runners"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "runner_pool_id"
+                or: "runner_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}"
+          q: {
+            exist: [
+              "id"
+              "runner_pool_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              runner_pool_id: "runner_pool_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "runner_pools"
+            }
+            {
+              var: "runner_pool_id"
+            }
+            {
+              lit: "runners"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "PATCH /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "runner_pool_id"
+                or: "runner_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}"
+          q: {
+            exist: [
+              "id"
+              "runner_pool_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              runner_pool_id: "runner_pool_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "runner_pools"
+            }
+            {
+              var: "runner_pool_id"
+            }
+            {
+              lit: "runners"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "PUT /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "runner_pool_id"
+                or: "runner_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}"
+          q: {
+            exist: [
+              "id"
+              "runner_pool_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+              runner_pool_id: "runner_pool_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "runner_pools"
+            }
+            {
+              var: "runner_pool_id"
+            }
+            {
+              lit: "runners"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

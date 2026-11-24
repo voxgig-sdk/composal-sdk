@@ -1,0 +1,15 @@
+$kind: http-request
+id: ab7bff47-7d72-5dd5-bcdb-ab5b69219f08
+description: |-
+  The `authorize_git` action of **repository_access**, a route of its `create` operation.
+
+  SDK: `client.RepositoryAccess().create({ $action: "authorize_git" })`
+url: "{{base}}/api/v1/repository_access/authorize_git"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 2000

@@ -16,4 +16,4 @@ description: |-
   | `requester_membership_id` | string |  |  |
   | `speed` | string |  |  |
   | `text` | string | yes |  |
-order: 13000
+order: 26000

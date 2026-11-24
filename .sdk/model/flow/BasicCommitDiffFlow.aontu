@@ -1,0 +1,35 @@
+# BasicCommitDiffFlow
+
+main: kit: flow: BasicCommitDiffFlow:
+{
+  entity: "commit_diff",
+  kind: "basic",
+  name: "BasicCommitDiffFlow",
+  step: [
+    {
+      i: {
+        ref: "commit_diff_ref01",
+        srcdatavar: "commit_diff_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        commit_id: "commit01",
+        id: "commit_diff01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-commit_diff_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCommitDiffFlow"
+}

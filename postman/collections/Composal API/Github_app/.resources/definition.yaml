@@ -1,0 +1,8 @@
+$kind: collection
+id: "23351eb4-26b0-514d-b18b-e19e673ceab9"
+description: |-
+  The **github_app** entity. Its requests address one record by `{{github_app_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 251000

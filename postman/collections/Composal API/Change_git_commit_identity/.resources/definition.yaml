@@ -1,0 +1,16 @@
+$kind: collection
+id: ef5ca01d-77fe-52eb-96ee-d623103ab483
+description: |-
+  The **change_git_commit_identity** entity, which belongs to a organization and a repo. Its requests address one record by `{{change_git_commit_identity_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `change_id` | string | yes |  |
+  | `change_number` | integer | yes |  |
+  | `git_commit_id` | string | yes |  |
+  | `git_commit_ids` | array | yes |  |
+  | `id` | string |  |  |
+  | `identities` | array | yes |  |
+  | `missing_git_commit_ids` | array | yes |  |
+  | `patchset_number` | integer | yes |  |
+order: 160000

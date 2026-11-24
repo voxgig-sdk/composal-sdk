@@ -1,0 +1,22 @@
+$kind: http-request
+id: "795386f2-4cb5-52ce-adaf-ec27450af0ee"
+description: |-
+  The `patch` operation of **organization_workload_identity**.
+
+  SDK: `client.OrganizationWorkloadIdentity().patch({ id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/identity/organizations/:organization_id/workload_identities/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_workload_identity belongs to.
+  - key: id
+    value: "{{organization_workload_identity_id}}"
+    description: The organization_workload_identity this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

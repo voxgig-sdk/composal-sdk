@@ -1,0 +1,8 @@
+$kind: collection
+id: "5fb1a1c2-0225-58be-8ec2-a2c122b4f4a4"
+description: |-
+  The **space_audit_event** entity. Its requests address one record by `{{space_audit_event_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 482000

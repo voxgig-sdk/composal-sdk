@@ -8,6 +8,34 @@ main: kit: flow: BasicBillingPrepaidPurchaseFlow:
   step: [
     {
       i: {
+        ref: "billing_prepaid_purchase_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "billing_prepaid_purchase_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
         ref: "billing_prepaid_purchase_ref01",
         srcdatavar: "billing_prepaid_purchase_ref01_data",
         suffix: "_dt0"

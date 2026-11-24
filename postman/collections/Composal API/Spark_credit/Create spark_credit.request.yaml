@@ -1,0 +1,38 @@
+$kind: http-request
+id: e714efc4-1159-522f-ade3-bff04337265e
+description: |-
+  The `create` operation of **spark_credit**.
+
+  SDK: `client.SparkCredit().create({ organization_id: "example", kind: "example", request_key: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/spark_credits"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this spark_credit belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "kind": "top_up",
+      "request_key": "00000000-0000-4000-8000-000000000000",
+      "plan": "example",
+      "amount_cents": 1,
+      "billing_unit": "example",
+      "quoted_credits_cents": 1,
+      "quoted_price_cents": 1
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("spark_credit_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

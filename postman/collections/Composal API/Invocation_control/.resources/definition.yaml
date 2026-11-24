@@ -1,0 +1,8 @@
+$kind: collection
+id: "7f699ed1-73a9-524f-85b0-dc021682488f"
+description: |-
+  The **invocation_control** entity, which belongs to a organization and a device. Its requests address one record by `{{invocation_control_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 287000

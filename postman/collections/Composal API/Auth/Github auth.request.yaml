@@ -1,0 +1,21 @@
+$kind: http-request
+id: fbbd0c25-c545-5448-a5c1-d07c59695299
+description: |-
+  The `github` action of **auth**, a route of its `create` operation.
+
+  SDK: `client.Auth().create({ $action: "github" })`
+url: "{{base}}/api/v1/auth/github"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "code": "example",
+      "redirect_uri": "https://example.com",
+      "state": "example",
+      "invite_code": "example"
+    }
+order: 3000

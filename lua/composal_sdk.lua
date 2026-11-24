@@ -437,6 +437,34 @@ end
 
 
 
+-- Idiomatic facade: client:A2aWellKnown():list() / client:A2aWellKnown():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:A2aWellKnown(data)
+  local EntityMod = require("entity.a2a_well_known_entity")
+  if data == nil then
+    if self._a2a_well_known == nil then
+      self._a2a_well_known = EntityMod.new(self, nil)
+    end
+    return self._a2a_well_known
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AdminOrg():list() / client:AdminOrg():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AdminOrg(data)
+  local EntityMod = require("entity.admin_org_entity")
+  if data == nil then
+    if self._admin_org == nil then
+      self._admin_org = EntityMod.new(self, nil)
+    end
+    return self._admin_org
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:Agent():list() / client:Agent():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:Agent(data)
@@ -446,6 +474,34 @@ function ComposalSDK:Agent(data)
       self._agent = EntityMod.new(self, nil)
     end
     return self._agent
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AgentApp():list() / client:AgentApp():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentApp(data)
+  local EntityMod = require("entity.agent_app_entity")
+  if data == nil then
+    if self._agent_app == nil then
+      self._agent_app = EntityMod.new(self, nil)
+    end
+    return self._agent_app
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AgentAppInstall():list() / client:AgentAppInstall():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentAppInstall(data)
+  local EntityMod = require("entity.agent_app_install_entity")
+  if data == nil then
+    if self._agent_app_install == nil then
+      self._agent_app_install = EntityMod.new(self, nil)
+    end
+    return self._agent_app_install
   end
   return EntityMod.new(self, data)
 end
@@ -535,6 +591,90 @@ function ComposalSDK:AgentConnection(data)
 end
 
 
+-- Idiomatic facade: client:AgentConnectionDelegation():list() / client:AgentConnectionDelegation():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentConnectionDelegation(data)
+  local EntityMod = require("entity.agent_connection_delegation_entity")
+  if data == nil then
+    if self._agent_connection_delegation == nil then
+      self._agent_connection_delegation = EntityMod.new(self, nil)
+    end
+    return self._agent_connection_delegation
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AgentConnectionGrant():list() / client:AgentConnectionGrant():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentConnectionGrant(data)
+  local EntityMod = require("entity.agent_connection_grant_entity")
+  if data == nil then
+    if self._agent_connection_grant == nil then
+      self._agent_connection_grant = EntityMod.new(self, nil)
+    end
+    return self._agent_connection_grant
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AgentConnectionResource():list() / client:AgentConnectionResource():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentConnectionResource(data)
+  local EntityMod = require("entity.agent_connection_resource_entity")
+  if data == nil then
+    if self._agent_connection_resource == nil then
+      self._agent_connection_resource = EntityMod.new(self, nil)
+    end
+    return self._agent_connection_resource
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AgentConnectionSafetyControl():list() / client:AgentConnectionSafetyControl():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentConnectionSafetyControl(data)
+  local EntityMod = require("entity.agent_connection_safety_control_entity")
+  if data == nil then
+    if self._agent_connection_safety_control == nil then
+      self._agent_connection_safety_control = EntityMod.new(self, nil)
+    end
+    return self._agent_connection_safety_control
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AgentConnectionTriggerSubscription():list() / client:AgentConnectionTriggerSubscription():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentConnectionTriggerSubscription(data)
+  local EntityMod = require("entity.agent_connection_trigger_subscription_entity")
+  if data == nil then
+    if self._agent_connection_trigger_subscription == nil then
+      self._agent_connection_trigger_subscription = EntityMod.new(self, nil)
+    end
+    return self._agent_connection_trigger_subscription
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AgentContextCheckpoint():list() / client:AgentContextCheckpoint():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentContextCheckpoint(data)
+  local EntityMod = require("entity.agent_context_checkpoint_entity")
+  if data == nil then
+    if self._agent_context_checkpoint == nil then
+      self._agent_context_checkpoint = EntityMod.new(self, nil)
+    end
+    return self._agent_context_checkpoint
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:AgentControlFlow():list() / client:AgentControlFlow():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:AgentControlFlow(data)
@@ -577,6 +717,20 @@ function ComposalSDK:AgentEmail(data)
 end
 
 
+-- Idiomatic facade: client:AgentEvent():list() / client:AgentEvent():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentEvent(data)
+  local EntityMod = require("entity.agent_event_entity")
+  if data == nil then
+    if self._agent_event == nil then
+      self._agent_event = EntityMod.new(self, nil)
+    end
+    return self._agent_event
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:AgentFile():list() / client:AgentFile():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:AgentFile(data)
@@ -614,6 +768,34 @@ function ComposalSDK:AgentIntegration(data)
       self._agent_integration = EntityMod.new(self, nil)
     end
     return self._agent_integration
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AgentIntegrationAccount():list() / client:AgentIntegrationAccount():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentIntegrationAccount(data)
+  local EntityMod = require("entity.agent_integration_account_entity")
+  if data == nil then
+    if self._agent_integration_account == nil then
+      self._agent_integration_account = EntityMod.new(self, nil)
+    end
+    return self._agent_integration_account
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AgentIntegrationCallback():list() / client:AgentIntegrationCallback():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentIntegrationCallback(data)
+  local EntityMod = require("entity.agent_integration_callback_entity")
+  if data == nil then
+    if self._agent_integration_callback == nil then
+      self._agent_integration_callback = EntityMod.new(self, nil)
+    end
+    return self._agent_integration_callback
   end
   return EntityMod.new(self, data)
 end
@@ -773,6 +955,34 @@ function ComposalSDK:AgentQuestion(data)
 end
 
 
+-- Idiomatic facade: client:AgentRelayFileGrant():list() / client:AgentRelayFileGrant():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentRelayFileGrant(data)
+  local EntityMod = require("entity.agent_relay_file_grant_entity")
+  if data == nil then
+    if self._agent_relay_file_grant == nil then
+      self._agent_relay_file_grant = EntityMod.new(self, nil)
+    end
+    return self._agent_relay_file_grant
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AgentRelayFileGrantAccount():list() / client:AgentRelayFileGrantAccount():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentRelayFileGrantAccount(data)
+  local EntityMod = require("entity.agent_relay_file_grant_account_entity")
+  if data == nil then
+    if self._agent_relay_file_grant_account == nil then
+      self._agent_relay_file_grant_account = EntityMod.new(self, nil)
+    end
+    return self._agent_relay_file_grant_account
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:AgentRepository():list() / client:AgentRepository():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:AgentRepository(data)
@@ -796,6 +1006,20 @@ function ComposalSDK:AgentResource(data)
       self._agent_resource = EntityMod.new(self, nil)
     end
     return self._agent_resource
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AgentRoder():list() / client:AgentRoder():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentRoder(data)
+  local EntityMod = require("entity.agent_roder_entity")
+  if data == nil then
+    if self._agent_roder == nil then
+      self._agent_roder = EntityMod.new(self, nil)
+    end
+    return self._agent_roder
   end
   return EntityMod.new(self, data)
 end
@@ -838,6 +1062,48 @@ function ComposalSDK:AgentRuntime(data)
       self._agent_runtime = EntityMod.new(self, nil)
     end
     return self._agent_runtime
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AgentSession():list() / client:AgentSession():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentSession(data)
+  local EntityMod = require("entity.agent_session_entity")
+  if data == nil then
+    if self._agent_session == nil then
+      self._agent_session = EntityMod.new(self, nil)
+    end
+    return self._agent_session
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AgentSessionCheckpoint():list() / client:AgentSessionCheckpoint():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentSessionCheckpoint(data)
+  local EntityMod = require("entity.agent_session_checkpoint_entity")
+  if data == nil then
+    if self._agent_session_checkpoint == nil then
+      self._agent_session_checkpoint = EntityMod.new(self, nil)
+    end
+    return self._agent_session_checkpoint
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AgentSessionRoderHandoff():list() / client:AgentSessionRoderHandoff():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentSessionRoderHandoff(data)
+  local EntityMod = require("entity.agent_session_roder_handoff_entity")
+  if data == nil then
+    if self._agent_session_roder_handoff == nil then
+      self._agent_session_roder_handoff = EntityMod.new(self, nil)
+    end
+    return self._agent_session_roder_handoff
   end
   return EntityMod.new(self, data)
 end
@@ -941,6 +1207,20 @@ function ComposalSDK:AgentSubscription(data)
 end
 
 
+-- Idiomatic facade: client:AgentSwarm():list() / client:AgentSwarm():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentSwarm(data)
+  local EntityMod = require("entity.agent_swarm_entity")
+  if data == nil then
+    if self._agent_swarm == nil then
+      self._agent_swarm = EntityMod.new(self, nil)
+    end
+    return self._agent_swarm
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:AgentTeammate():list() / client:AgentTeammate():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:AgentTeammate(data)
@@ -997,6 +1277,20 @@ function ComposalSDK:AgentTool(data)
 end
 
 
+-- Idiomatic facade: client:AgentUsage():list() / client:AgentUsage():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentUsage(data)
+  local EntityMod = require("entity.agent_usage_entity")
+  if data == nil then
+    if self._agent_usage == nil then
+      self._agent_usage = EntityMod.new(self, nil)
+    end
+    return self._agent_usage
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:AgentVerifyProject():list() / client:AgentVerifyProject():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:AgentVerifyProject(data)
@@ -1020,6 +1314,20 @@ function ComposalSDK:AgentWait(data)
       self._agent_wait = EntityMod.new(self, nil)
     end
     return self._agent_wait
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AgentWebPreview():list() / client:AgentWebPreview():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgentWebPreview(data)
+  local EntityMod = require("entity.agent_web_preview_entity")
+  if data == nil then
+    if self._agent_web_preview == nil then
+      self._agent_web_preview = EntityMod.new(self, nil)
+    end
+    return self._agent_web_preview
   end
   return EntityMod.new(self, data)
 end
@@ -1137,6 +1445,48 @@ function ComposalSDK:AgentWritePermission(data)
 end
 
 
+-- Idiomatic facade: client:Agreement():list() / client:Agreement():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Agreement(data)
+  local EntityMod = require("entity.agreement_entity")
+  if data == nil then
+    if self._agreement == nil then
+      self._agreement = EntityMod.new(self, nil)
+    end
+    return self._agreement
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AgreementAccessRequest():list() / client:AgreementAccessRequest():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AgreementAccessRequest(data)
+  local EntityMod = require("entity.agreement_access_request_entity")
+  if data == nil then
+    if self._agreement_access_request == nil then
+      self._agreement_access_request = EntityMod.new(self, nil)
+    end
+    return self._agreement_access_request
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AlertRuleEvent():list() / client:AlertRuleEvent():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AlertRuleEvent(data)
+  local EntityMod = require("entity.alert_rule_event_entity")
+  if data == nil then
+    if self._alert_rule_event == nil then
+      self._alert_rule_event = EntityMod.new(self, nil)
+    end
+    return self._alert_rule_event
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:AllocationLog():list() / client:AllocationLog():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:AllocationLog(data)
@@ -1160,6 +1510,34 @@ function ComposalSDK:App(data)
       self._app = EntityMod.new(self, nil)
     end
     return self._app
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AppAccess():list() / client:AppAccess():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AppAccess(data)
+  local EntityMod = require("entity.app_access_entity")
+  if data == nil then
+    if self._app_access == nil then
+      self._app_access = EntityMod.new(self, nil)
+    end
+    return self._app_access
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AppAccessJwk():list() / client:AppAccessJwk():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AppAccessJwk(data)
+  local EntityMod = require("entity.app_access_jwk_entity")
+  if data == nil then
+    if self._app_access_jwk == nil then
+      self._app_access_jwk = EntityMod.new(self, nil)
+    end
+    return self._app_access_jwk
   end
   return EntityMod.new(self, data)
 end
@@ -1417,6 +1795,132 @@ function ComposalSDK:AppStorageResource(data)
 end
 
 
+-- Idiomatic facade: client:Artefact():list() / client:Artefact():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Artefact(data)
+  local EntityMod = require("entity.artefact_entity")
+  if data == nil then
+    if self._artefact == nil then
+      self._artefact = EntityMod.new(self, nil)
+    end
+    return self._artefact
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ArtefactCommentThread():list() / client:ArtefactCommentThread():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ArtefactCommentThread(data)
+  local EntityMod = require("entity.artefact_comment_thread_entity")
+  if data == nil then
+    if self._artefact_comment_thread == nil then
+      self._artefact_comment_thread = EntityMod.new(self, nil)
+    end
+    return self._artefact_comment_thread
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ArtefactRevision():list() / client:ArtefactRevision():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ArtefactRevision(data)
+  local EntityMod = require("entity.artefact_revision_entity")
+  if data == nil then
+    if self._artefact_revision == nil then
+      self._artefact_revision = EntityMod.new(self, nil)
+    end
+    return self._artefact_revision
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ArtefactViewToken():list() / client:ArtefactViewToken():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ArtefactViewToken(data)
+  local EntityMod = require("entity.artefact_view_token_entity")
+  if data == nil then
+    if self._artefact_view_token == nil then
+      self._artefact_view_token = EntityMod.new(self, nil)
+    end
+    return self._artefact_view_token
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Artifact():list() / client:Artifact():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Artifact(data)
+  local EntityMod = require("entity.artifact_entity")
+  if data == nil then
+    if self._artifact == nil then
+      self._artifact = EntityMod.new(self, nil)
+    end
+    return self._artifact
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ArtifactCacheNamespace():list() / client:ArtifactCacheNamespace():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ArtifactCacheNamespace(data)
+  local EntityMod = require("entity.artifact_cache_namespace_entity")
+  if data == nil then
+    if self._artifact_cache_namespace == nil then
+      self._artifact_cache_namespace = EntityMod.new(self, nil)
+    end
+    return self._artifact_cache_namespace
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ArtifactImageRepository():list() / client:ArtifactImageRepository():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ArtifactImageRepository(data)
+  local EntityMod = require("entity.artifact_image_repository_entity")
+  if data == nil then
+    if self._artifact_image_repository == nil then
+      self._artifact_image_repository = EntityMod.new(self, nil)
+    end
+    return self._artifact_image_repository
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ArtifactPackageMirror():list() / client:ArtifactPackageMirror():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ArtifactPackageMirror(data)
+  local EntityMod = require("entity.artifact_package_mirror_entity")
+  if data == nil then
+    if self._artifact_package_mirror == nil then
+      self._artifact_package_mirror = EntityMod.new(self, nil)
+    end
+    return self._artifact_package_mirror
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ArtifactRetentionPolicy():list() / client:ArtifactRetentionPolicy():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ArtifactRetentionPolicy(data)
+  local EntityMod = require("entity.artifact_retention_policy_entity")
+  if data == nil then
+    if self._artifact_retention_policy == nil then
+      self._artifact_retention_policy = EntityMod.new(self, nil)
+    end
+    return self._artifact_retention_policy
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:AttachmentPart():list() / client:AttachmentPart():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:AttachmentPart(data)
@@ -1426,6 +1930,118 @@ function ComposalSDK:AttachmentPart(data)
       self._attachment_part = EntityMod.new(self, nil)
     end
     return self._attachment_part
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AuditEvent():list() / client:AuditEvent():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AuditEvent(data)
+  local EntityMod = require("entity.audit_event_entity")
+  if data == nil then
+    if self._audit_event == nil then
+      self._audit_event = EntityMod.new(self, nil)
+    end
+    return self._audit_event
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Auth():list() / client:Auth():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Auth(data)
+  local EntityMod = require("entity.auth_entity")
+  if data == nil then
+    if self._auth == nil then
+      self._auth = EntityMod.new(self, nil)
+    end
+    return self._auth
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AuthCli():list() / client:AuthCli():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AuthCli(data)
+  local EntityMod = require("entity.auth_cli_entity")
+  if data == nil then
+    if self._auth_cli == nil then
+      self._auth_cli = EntityMod.new(self, nil)
+    end
+    return self._auth_cli
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AuthGithub():list() / client:AuthGithub():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AuthGithub(data)
+  local EntityMod = require("entity.auth_github_entity")
+  if data == nil then
+    if self._auth_github == nil then
+      self._auth_github = EntityMod.new(self, nil)
+    end
+    return self._auth_github
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AuthGoogle():list() / client:AuthGoogle():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AuthGoogle(data)
+  local EntityMod = require("entity.auth_google_entity")
+  if data == nil then
+    if self._auth_google == nil then
+      self._auth_google = EntityMod.new(self, nil)
+    end
+    return self._auth_google
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AuthOpenai():list() / client:AuthOpenai():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AuthOpenai(data)
+  local EntityMod = require("entity.auth_openai_entity")
+  if data == nil then
+    if self._auth_openai == nil then
+      self._auth_openai = EntityMod.new(self, nil)
+    end
+    return self._auth_openai
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AuthPasswordReset():list() / client:AuthPasswordReset():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AuthPasswordReset(data)
+  local EntityMod = require("entity.auth_password_reset_entity")
+  if data == nil then
+    if self._auth_password_reset == nil then
+      self._auth_password_reset = EntityMod.new(self, nil)
+    end
+    return self._auth_password_reset
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:AuthRegistrationOption():list() / client:AuthRegistrationOption():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:AuthRegistrationOption(data)
+  local EntityMod = require("entity.auth_registration_option_entity")
+  if data == nil then
+    if self._auth_registration_option == nil then
+      self._auth_registration_option = EntityMod.new(self, nil)
+    end
+    return self._auth_registration_option
   end
   return EntityMod.new(self, data)
 end
@@ -1459,6 +2075,244 @@ function ComposalSDK:AutomationRun(data)
 end
 
 
+-- Idiomatic facade: client:BackendRunnerPool():list() / client:BackendRunnerPool():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BackendRunnerPool(data)
+  local EntityMod = require("entity.backend_runner_pool_entity")
+  if data == nil then
+    if self._backend_runner_pool == nil then
+      self._backend_runner_pool = EntityMod.new(self, nil)
+    end
+    return self._backend_runner_pool
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Bazel():list() / client:Bazel():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Bazel(data)
+  local EntityMod = require("entity.bazel_entity")
+  if data == nil then
+    if self._bazel == nil then
+      self._bazel = EntityMod.new(self, nil)
+    end
+    return self._bazel
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:BazelActionResult():list() / client:BazelActionResult():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BazelActionResult(data)
+  local EntityMod = require("entity.bazel_action_result_entity")
+  if data == nil then
+    if self._bazel_action_result == nil then
+      self._bazel_action_result = EntityMod.new(self, nil)
+    end
+    return self._bazel_action_result
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:BazelBackend():list() / client:BazelBackend():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BazelBackend(data)
+  local EntityMod = require("entity.bazel_backend_entity")
+  if data == nil then
+    if self._bazel_backend == nil then
+      self._bazel_backend = EntityMod.new(self, nil)
+    end
+    return self._bazel_backend
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:BazelBlob():list() / client:BazelBlob():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BazelBlob(data)
+  local EntityMod = require("entity.bazel_blob_entity")
+  if data == nil then
+    if self._bazel_blob == nil then
+      self._bazel_blob = EntityMod.new(self, nil)
+    end
+    return self._bazel_blob
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:BazelExecution():list() / client:BazelExecution():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BazelExecution(data)
+  local EntityMod = require("entity.bazel_execution_entity")
+  if data == nil then
+    if self._bazel_execution == nil then
+      self._bazel_execution = EntityMod.new(self, nil)
+    end
+    return self._bazel_execution
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:BazelFindMissingBlob():list() / client:BazelFindMissingBlob():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BazelFindMissingBlob(data)
+  local EntityMod = require("entity.bazel_find_missing_blob_entity")
+  if data == nil then
+    if self._bazel_find_missing_blob == nil then
+      self._bazel_find_missing_blob = EntityMod.new(self, nil)
+    end
+    return self._bazel_find_missing_blob
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Billing():list() / client:Billing():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Billing(data)
+  local EntityMod = require("entity.billing_entity")
+  if data == nil then
+    if self._billing == nil then
+      self._billing = EntityMod.new(self, nil)
+    end
+    return self._billing
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:BillingAddon():list() / client:BillingAddon():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BillingAddon(data)
+  local EntityMod = require("entity.billing_addon_entity")
+  if data == nil then
+    if self._billing_addon == nil then
+      self._billing_addon = EntityMod.new(self, nil)
+    end
+    return self._billing_addon
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:BillingCheckoutSession():list() / client:BillingCheckoutSession():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BillingCheckoutSession(data)
+  local EntityMod = require("entity.billing_checkout_session_entity")
+  if data == nil then
+    if self._billing_checkout_session == nil then
+      self._billing_checkout_session = EntityMod.new(self, nil)
+    end
+    return self._billing_checkout_session
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:BillingInvoice():list() / client:BillingInvoice():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BillingInvoice(data)
+  local EntityMod = require("entity.billing_invoice_entity")
+  if data == nil then
+    if self._billing_invoice == nil then
+      self._billing_invoice = EntityMod.new(self, nil)
+    end
+    return self._billing_invoice
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:BillingPackage():list() / client:BillingPackage():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BillingPackage(data)
+  local EntityMod = require("entity.billing_package_entity")
+  if data == nil then
+    if self._billing_package == nil then
+      self._billing_package = EntityMod.new(self, nil)
+    end
+    return self._billing_package
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:BillingPortalSession():list() / client:BillingPortalSession():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BillingPortalSession(data)
+  local EntityMod = require("entity.billing_portal_session_entity")
+  if data == nil then
+    if self._billing_portal_session == nil then
+      self._billing_portal_session = EntityMod.new(self, nil)
+    end
+    return self._billing_portal_session
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:BillingPrepaidPeriod():list() / client:BillingPrepaidPeriod():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BillingPrepaidPeriod(data)
+  local EntityMod = require("entity.billing_prepaid_period_entity")
+  if data == nil then
+    if self._billing_prepaid_period == nil then
+      self._billing_prepaid_period = EntityMod.new(self, nil)
+    end
+    return self._billing_prepaid_period
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:BillingPrepaidPurchase():list() / client:BillingPrepaidPurchase():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BillingPrepaidPurchase(data)
+  local EntityMod = require("entity.billing_prepaid_purchase_entity")
+  if data == nil then
+    if self._billing_prepaid_purchase == nil then
+      self._billing_prepaid_purchase = EntityMod.new(self, nil)
+    end
+    return self._billing_prepaid_purchase
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:BillingTokenTopUp():list() / client:BillingTokenTopUp():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BillingTokenTopUp(data)
+  local EntityMod = require("entity.billing_token_top_up_entity")
+  if data == nil then
+    if self._billing_token_top_up == nil then
+      self._billing_token_top_up = EntityMod.new(self, nil)
+    end
+    return self._billing_token_top_up
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:BillingUsage():list() / client:BillingUsage():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BillingUsage(data)
+  local EntityMod = require("entity.billing_usage_entity")
+  if data == nil then
+    if self._billing_usage == nil then
+      self._billing_usage = EntityMod.new(self, nil)
+    end
+    return self._billing_usage
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:Binary():list() / client:Binary():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:Binary(data)
@@ -1482,6 +2336,20 @@ function ComposalSDK:BinaryVersion(data)
       self._binary_version = EntityMod.new(self, nil)
     end
     return self._binary_version
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:BookmarkProtectionRefreshGithubRequiredCheck():list() / client:BookmarkProtectionRefreshGithubRequiredCheck():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BookmarkProtectionRefreshGithubRequiredCheck(data)
+  local EntityMod = require("entity.bookmark_protection_refresh_github_required_check_entity")
+  if data == nil then
+    if self._bookmark_protection_refresh_github_required_check == nil then
+      self._bookmark_protection_refresh_github_required_check = EntityMod.new(self, nil)
+    end
+    return self._bookmark_protection_refresh_github_required_check
   end
   return EntityMod.new(self, data)
 end
@@ -1613,6 +2481,20 @@ function ComposalSDK:BrowserSessionTask(data)
 end
 
 
+-- Idiomatic facade: client:CacheNamespaceEntry():list() / client:CacheNamespaceEntry():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:CacheNamespaceEntry(data)
+  local EntityMod = require("entity.cache_namespace_entry_entity")
+  if data == nil then
+    if self._cache_namespace_entry == nil then
+      self._cache_namespace_entry = EntityMod.new(self, nil)
+    end
+    return self._cache_namespace_entry
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:CatalogSelector():list() / client:CatalogSelector():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:CatalogSelector(data)
@@ -1683,6 +2565,412 @@ function ComposalSDK:CdnSpaceObject(data)
 end
 
 
+-- Idiomatic facade: client:Change():list() / client:Change():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Change(data)
+  local EntityMod = require("entity.change_entity")
+  if data == nil then
+    if self._change == nil then
+      self._change = EntityMod.new(self, nil)
+    end
+    return self._change
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ChangeAsset():list() / client:ChangeAsset():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ChangeAsset(data)
+  local EntityMod = require("entity.change_asset_entity")
+  if data == nil then
+    if self._change_asset == nil then
+      self._change_asset = EntityMod.new(self, nil)
+    end
+    return self._change_asset
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ChangeComment():list() / client:ChangeComment():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ChangeComment(data)
+  local EntityMod = require("entity.change_comment_entity")
+  if data == nil then
+    if self._change_comment == nil then
+      self._change_comment = EntityMod.new(self, nil)
+    end
+    return self._change_comment
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ChangeFileReviewCheckpoint():list() / client:ChangeFileReviewCheckpoint():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ChangeFileReviewCheckpoint(data)
+  local EntityMod = require("entity.change_file_review_checkpoint_entity")
+  if data == nil then
+    if self._change_file_review_checkpoint == nil then
+      self._change_file_review_checkpoint = EntityMod.new(self, nil)
+    end
+    return self._change_file_review_checkpoint
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ChangeGitBranchSubmission():list() / client:ChangeGitBranchSubmission():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ChangeGitBranchSubmission(data)
+  local EntityMod = require("entity.change_git_branch_submission_entity")
+  if data == nil then
+    if self._change_git_branch_submission == nil then
+      self._change_git_branch_submission = EntityMod.new(self, nil)
+    end
+    return self._change_git_branch_submission
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ChangeGitCommitIdentity():list() / client:ChangeGitCommitIdentity():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ChangeGitCommitIdentity(data)
+  local EntityMod = require("entity.change_git_commit_identity_entity")
+  if data == nil then
+    if self._change_git_commit_identity == nil then
+      self._change_git_commit_identity = EntityMod.new(self, nil)
+    end
+    return self._change_git_commit_identity
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ChangeGitPublication():list() / client:ChangeGitPublication():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ChangeGitPublication(data)
+  local EntityMod = require("entity.change_git_publication_entity")
+  if data == nil then
+    if self._change_git_publication == nil then
+      self._change_git_publication = EntityMod.new(self, nil)
+    end
+    return self._change_git_publication
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ChangeGroupMember():list() / client:ChangeGroupMember():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ChangeGroupMember(data)
+  local EntityMod = require("entity.change_group_member_entity")
+  if data == nil then
+    if self._change_group_member == nil then
+      self._change_group_member = EntityMod.new(self, nil)
+    end
+    return self._change_group_member
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ChangeLabel():list() / client:ChangeLabel():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ChangeLabel(data)
+  local EntityMod = require("entity.change_label_entity")
+  if data == nil then
+    if self._change_label == nil then
+      self._change_label = EntityMod.new(self, nil)
+    end
+    return self._change_label
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ChangeLandingHold():list() / client:ChangeLandingHold():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ChangeLandingHold(data)
+  local EntityMod = require("entity.change_landing_hold_entity")
+  if data == nil then
+    if self._change_landing_hold == nil then
+      self._change_landing_hold = EntityMod.new(self, nil)
+    end
+    return self._change_landing_hold
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ChangeLandingRequest():list() / client:ChangeLandingRequest():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ChangeLandingRequest(data)
+  local EntityMod = require("entity.change_landing_request_entity")
+  if data == nil then
+    if self._change_landing_request == nil then
+      self._change_landing_request = EntityMod.new(self, nil)
+    end
+    return self._change_landing_request
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ChangeRequestChange():list() / client:ChangeRequestChange():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ChangeRequestChange(data)
+  local EntityMod = require("entity.change_request_change_entity")
+  if data == nil then
+    if self._change_request_change == nil then
+      self._change_request_change = EntityMod.new(self, nil)
+    end
+    return self._change_request_change
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ChangeReviewer():list() / client:ChangeReviewer():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ChangeReviewer(data)
+  local EntityMod = require("entity.change_reviewer_entity")
+  if data == nil then
+    if self._change_reviewer == nil then
+      self._change_reviewer = EntityMod.new(self, nil)
+    end
+    return self._change_reviewer
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ChangeTranscript():list() / client:ChangeTranscript():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ChangeTranscript(data)
+  local EntityMod = require("entity.change_transcript_entity")
+  if data == nil then
+    if self._change_transcript == nil then
+      self._change_transcript = EntityMod.new(self, nil)
+    end
+    return self._change_transcript
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ChangeTranscriptSummary():list() / client:ChangeTranscriptSummary():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ChangeTranscriptSummary(data)
+  local EntityMod = require("entity.change_transcript_summary_entity")
+  if data == nil then
+    if self._change_transcript_summary == nil then
+      self._change_transcript_summary = EntityMod.new(self, nil)
+    end
+    return self._change_transcript_summary
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:CheckpointPrepareChunk():list() / client:CheckpointPrepareChunk():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:CheckpointPrepareChunk(data)
+  local EntityMod = require("entity.checkpoint_prepare_chunk_entity")
+  if data == nil then
+    if self._checkpoint_prepare_chunk == nil then
+      self._checkpoint_prepare_chunk = EntityMod.new(self, nil)
+    end
+    return self._checkpoint_prepare_chunk
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:CiNode():list() / client:CiNode():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:CiNode(data)
+  local EntityMod = require("entity.ci_node_entity")
+  if data == nil then
+    if self._ci_node == nil then
+      self._ci_node = EntityMod.new(self, nil)
+    end
+    return self._ci_node
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:CiPipeline():list() / client:CiPipeline():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:CiPipeline(data)
+  local EntityMod = require("entity.ci_pipeline_entity")
+  if data == nil then
+    if self._ci_pipeline == nil then
+      self._ci_pipeline = EntityMod.new(self, nil)
+    end
+    return self._ci_pipeline
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:CiPipelineRun():list() / client:CiPipelineRun():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:CiPipelineRun(data)
+  local EntityMod = require("entity.ci_pipeline_run_entity")
+  if data == nil then
+    if self._ci_pipeline_run == nil then
+      self._ci_pipeline_run = EntityMod.new(self, nil)
+    end
+    return self._ci_pipeline_run
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:CiRunnerPool():list() / client:CiRunnerPool():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:CiRunnerPool(data)
+  local EntityMod = require("entity.ci_runner_pool_entity")
+  if data == nil then
+    if self._ci_runner_pool == nil then
+      self._ci_runner_pool = EntityMod.new(self, nil)
+    end
+    return self._ci_runner_pool
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:CiStatus():list() / client:CiStatus():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:CiStatus(data)
+  local EntityMod = require("entity.ci_status_entity")
+  if data == nil then
+    if self._ci_status == nil then
+      self._ci_status = EntityMod.new(self, nil)
+    end
+    return self._ci_status
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:CliEvent():list() / client:CliEvent():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:CliEvent(data)
+  local EntityMod = require("entity.cli_event_entity")
+  if data == nil then
+    if self._cli_event == nil then
+      self._cli_event = EntityMod.new(self, nil)
+    end
+    return self._cli_event
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:CliRelease():list() / client:CliRelease():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:CliRelease(data)
+  local EntityMod = require("entity.cli_release_entity")
+  if data == nil then
+    if self._cli_release == nil then
+      self._cli_release = EntityMod.new(self, nil)
+    end
+    return self._cli_release
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:CloudWorkspaceBackupObject():list() / client:CloudWorkspaceBackupObject():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:CloudWorkspaceBackupObject(data)
+  local EntityMod = require("entity.cloud_workspace_backup_object_entity")
+  if data == nil then
+    if self._cloud_workspace_backup_object == nil then
+      self._cloud_workspace_backup_object = EntityMod.new(self, nil)
+    end
+    return self._cloud_workspace_backup_object
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:CodeRuleEvaluation():list() / client:CodeRuleEvaluation():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:CodeRuleEvaluation(data)
+  local EntityMod = require("entity.code_rule_evaluation_entity")
+  if data == nil then
+    if self._code_rule_evaluation == nil then
+      self._code_rule_evaluation = EntityMod.new(self, nil)
+    end
+    return self._code_rule_evaluation
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ComSiteAccess():list() / client:ComSiteAccess():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ComSiteAccess(data)
+  local EntityMod = require("entity.com_site_access_entity")
+  if data == nil then
+    if self._com_site_access == nil then
+      self._com_site_access = EntityMod.new(self, nil)
+    end
+    return self._com_site_access
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ComSiteAccessSession():list() / client:ComSiteAccessSession():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ComSiteAccessSession(data)
+  local EntityMod = require("entity.com_site_access_session_entity")
+  if data == nil then
+    if self._com_site_access_session == nil then
+      self._com_site_access_session = EntityMod.new(self, nil)
+    end
+    return self._com_site_access_session
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:CommentThreadComment():list() / client:CommentThreadComment():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:CommentThreadComment(data)
+  local EntityMod = require("entity.comment_thread_comment_entity")
+  if data == nil then
+    if self._comment_thread_comment == nil then
+      self._comment_thread_comment = EntityMod.new(self, nil)
+    end
+    return self._comment_thread_comment
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:CommitDiff():list() / client:CommitDiff():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:CommitDiff(data)
+  local EntityMod = require("entity.commit_diff_entity")
+  if data == nil then
+    if self._commit_diff == nil then
+      self._commit_diff = EntityMod.new(self, nil)
+    end
+    return self._commit_diff
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:ConnectionRequest():list() / client:ConnectionRequest():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:ConnectionRequest(data)
@@ -1706,6 +2994,48 @@ function ComposalSDK:ConnectionSource(data)
       self._connection_source = EntityMod.new(self, nil)
     end
     return self._connection_source
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ContactSubmission():list() / client:ContactSubmission():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ContactSubmission(data)
+  local EntityMod = require("entity.contact_submission_entity")
+  if data == nil then
+    if self._contact_submission == nil then
+      self._contact_submission = EntityMod.new(self, nil)
+    end
+    return self._contact_submission
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ControlComputer():list() / client:ControlComputer():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ControlComputer(data)
+  local EntityMod = require("entity.control_computer_entity")
+  if data == nil then
+    if self._control_computer == nil then
+      self._control_computer = EntityMod.new(self, nil)
+    end
+    return self._control_computer
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ControlComputerControlOperation():list() / client:ControlComputerControlOperation():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ControlComputerControlOperation(data)
+  local EntityMod = require("entity.control_computer_control_operation_entity")
+  if data == nil then
+    if self._control_computer_control_operation == nil then
+      self._control_computer_control_operation = EntityMod.new(self, nil)
+    end
+    return self._control_computer_control_operation
   end
   return EntityMod.new(self, data)
 end
@@ -1851,6 +3181,20 @@ function ComposalSDK:DemoShareSegment(data)
 end
 
 
+-- Idiomatic facade: client:Deployment():list() / client:Deployment():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Deployment(data)
+  local EntityMod = require("entity.deployment_entity")
+  if data == nil then
+    if self._deployment == nil then
+      self._deployment = EntityMod.new(self, nil)
+    end
+    return self._deployment
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:DeploymentDashboardNomad():list() / client:DeploymentDashboardNomad():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:DeploymentDashboardNomad(data)
@@ -1865,6 +3209,20 @@ function ComposalSDK:DeploymentDashboardNomad(data)
 end
 
 
+-- Idiomatic facade: client:DeploymentDetail():list() / client:DeploymentDetail():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DeploymentDetail(data)
+  local EntityMod = require("entity.deployment_detail_entity")
+  if data == nil then
+    if self._deployment_detail == nil then
+      self._deployment_detail = EntityMod.new(self, nil)
+    end
+    return self._deployment_detail
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:DeploymentFile():list() / client:DeploymentFile():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:DeploymentFile(data)
@@ -1874,6 +3232,314 @@ function ComposalSDK:DeploymentFile(data)
       self._deployment_file = EntityMod.new(self, nil)
     end
     return self._deployment_file
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DeploymentLog():list() / client:DeploymentLog():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DeploymentLog(data)
+  local EntityMod = require("entity.deployment_log_entity")
+  if data == nil then
+    if self._deployment_log == nil then
+      self._deployment_log = EntityMod.new(self, nil)
+    end
+    return self._deployment_log
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DeploymentMetric():list() / client:DeploymentMetric():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DeploymentMetric(data)
+  local EntityMod = require("entity.deployment_metric_entity")
+  if data == nil then
+    if self._deployment_metric == nil then
+      self._deployment_metric = EntityMod.new(self, nil)
+    end
+    return self._deployment_metric
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DeploymentPreview():list() / client:DeploymentPreview():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DeploymentPreview(data)
+  local EntityMod = require("entity.deployment_preview_entity")
+  if data == nil then
+    if self._deployment_preview == nil then
+      self._deployment_preview = EntityMod.new(self, nil)
+    end
+    return self._deployment_preview
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DeploymentSetting():list() / client:DeploymentSetting():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DeploymentSetting(data)
+  local EntityMod = require("entity.deployment_setting_entity")
+  if data == nil then
+    if self._deployment_setting == nil then
+      self._deployment_setting = EntityMod.new(self, nil)
+    end
+    return self._deployment_setting
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DesktopLocalAgentModel():list() / client:DesktopLocalAgentModel():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DesktopLocalAgentModel(data)
+  local EntityMod = require("entity.desktop_local_agent_model_entity")
+  if data == nil then
+    if self._desktop_local_agent_model == nil then
+      self._desktop_local_agent_model = EntityMod.new(self, nil)
+    end
+    return self._desktop_local_agent_model
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DesktopLocalAgentResponse():list() / client:DesktopLocalAgentResponse():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DesktopLocalAgentResponse(data)
+  local EntityMod = require("entity.desktop_local_agent_response_entity")
+  if data == nil then
+    if self._desktop_local_agent_response == nil then
+      self._desktop_local_agent_response = EntityMod.new(self, nil)
+    end
+    return self._desktop_local_agent_response
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Device():list() / client:Device():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Device(data)
+  local EntityMod = require("entity.device_entity")
+  if data == nil then
+    if self._device == nil then
+      self._device = EntityMod.new(self, nil)
+    end
+    return self._device
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DeviceBrowserOperation():list() / client:DeviceBrowserOperation():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DeviceBrowserOperation(data)
+  local EntityMod = require("entity.device_browser_operation_entity")
+  if data == nil then
+    if self._device_browser_operation == nil then
+      self._device_browser_operation = EntityMod.new(self, nil)
+    end
+    return self._device_browser_operation
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DeviceControlMessage():list() / client:DeviceControlMessage():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DeviceControlMessage(data)
+  local EntityMod = require("entity.device_control_message_entity")
+  if data == nil then
+    if self._device_control_message == nil then
+      self._device_control_message = EntityMod.new(self, nil)
+    end
+    return self._device_control_message
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DeviceControlOperation():list() / client:DeviceControlOperation():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DeviceControlOperation(data)
+  local EntityMod = require("entity.device_control_operation_entity")
+  if data == nil then
+    if self._device_control_operation == nil then
+      self._device_control_operation = EntityMod.new(self, nil)
+    end
+    return self._device_control_operation
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DeviceEnterpriseRelay():list() / client:DeviceEnterpriseRelay():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DeviceEnterpriseRelay(data)
+  local EntityMod = require("entity.device_enterprise_relay_entity")
+  if data == nil then
+    if self._device_enterprise_relay == nil then
+      self._device_enterprise_relay = EntityMod.new(self, nil)
+    end
+    return self._device_enterprise_relay
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DeviceFolderListing():list() / client:DeviceFolderListing():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DeviceFolderListing(data)
+  local EntityMod = require("entity.device_folder_listing_entity")
+  if data == nil then
+    if self._device_folder_listing == nil then
+      self._device_folder_listing = EntityMod.new(self, nil)
+    end
+    return self._device_folder_listing
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DeviceGrant():list() / client:DeviceGrant():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DeviceGrant(data)
+  local EntityMod = require("entity.device_grant_entity")
+  if data == nil then
+    if self._device_grant == nil then
+      self._device_grant = EntityMod.new(self, nil)
+    end
+    return self._device_grant
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DeviceInvocation():list() / client:DeviceInvocation():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DeviceInvocation(data)
+  local EntityMod = require("entity.device_invocation_entity")
+  if data == nil then
+    if self._device_invocation == nil then
+      self._device_invocation = EntityMod.new(self, nil)
+    end
+    return self._device_invocation
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DeviceLocalEvent():list() / client:DeviceLocalEvent():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DeviceLocalEvent(data)
+  local EntityMod = require("entity.device_local_event_entity")
+  if data == nil then
+    if self._device_local_event == nil then
+      self._device_local_event = EntityMod.new(self, nil)
+    end
+    return self._device_local_event
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DevicePairing():list() / client:DevicePairing():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DevicePairing(data)
+  local EntityMod = require("entity.device_pairing_entity")
+  if data == nil then
+    if self._device_pairing == nil then
+      self._device_pairing = EntityMod.new(self, nil)
+    end
+    return self._device_pairing
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DeviceProject():list() / client:DeviceProject():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DeviceProject(data)
+  local EntityMod = require("entity.device_project_entity")
+  if data == nil then
+    if self._device_project == nil then
+      self._device_project = EntityMod.new(self, nil)
+    end
+    return self._device_project
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DeviceScheduledCheckIn():list() / client:DeviceScheduledCheckIn():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DeviceScheduledCheckIn(data)
+  local EntityMod = require("entity.device_scheduled_check_in_entity")
+  if data == nil then
+    if self._device_scheduled_check_in == nil then
+      self._device_scheduled_check_in = EntityMod.new(self, nil)
+    end
+    return self._device_scheduled_check_in
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DockerBuilder():list() / client:DockerBuilder():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DockerBuilder(data)
+  local EntityMod = require("entity.docker_builder_entity")
+  if data == nil then
+    if self._docker_builder == nil then
+      self._docker_builder = EntityMod.new(self, nil)
+    end
+    return self._docker_builder
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DockerBuilderSession():list() / client:DockerBuilderSession():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DockerBuilderSession(data)
+  local EntityMod = require("entity.docker_builder_session_entity")
+  if data == nil then
+    if self._docker_builder_session == nil then
+      self._docker_builder_session = EntityMod.new(self, nil)
+    end
+    return self._docker_builder_session
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DockerBuilderSetting():list() / client:DockerBuilderSetting():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DockerBuilderSetting(data)
+  local EntityMod = require("entity.docker_builder_setting_entity")
+  if data == nil then
+    if self._docker_builder_setting == nil then
+      self._docker_builder_setting = EntityMod.new(self, nil)
+    end
+    return self._docker_builder_setting
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:DomainDnsIntegration():list() / client:DomainDnsIntegration():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:DomainDnsIntegration(data)
+  local EntityMod = require("entity.domain_dns_integration_entity")
+  if data == nil then
+    if self._domain_dns_integration == nil then
+      self._domain_dns_integration = EntityMod.new(self, nil)
+    end
+    return self._domain_dns_integration
   end
   return EntityMod.new(self, data)
 end
@@ -1902,6 +3568,34 @@ function ComposalSDK:Dream(data)
       self._dream = EntityMod.new(self, nil)
     end
     return self._dream
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Edge():list() / client:Edge():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Edge(data)
+  local EntityMod = require("entity.edge_entity")
+  if data == nil then
+    if self._edge == nil then
+      self._edge = EntityMod.new(self, nil)
+    end
+    return self._edge
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:EmailVerification():list() / client:EmailVerification():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:EmailVerification(data)
+  local EntityMod = require("entity.email_verification_entity")
+  if data == nil then
+    if self._email_verification == nil then
+      self._email_verification = EntityMod.new(self, nil)
+    end
+    return self._email_verification
   end
   return EntityMod.new(self, data)
 end
@@ -2019,6 +3713,62 @@ function ComposalSDK:Evidence(data)
 end
 
 
+-- Idiomatic facade: client:ExecutionDesiredState():list() / client:ExecutionDesiredState():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ExecutionDesiredState(data)
+  local EntityMod = require("entity.execution_desired_state_entity")
+  if data == nil then
+    if self._execution_desired_state == nil then
+      self._execution_desired_state = EntityMod.new(self, nil)
+    end
+    return self._execution_desired_state
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ExecutionReconcilerTick():list() / client:ExecutionReconcilerTick():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ExecutionReconcilerTick(data)
+  local EntityMod = require("entity.execution_reconciler_tick_entity")
+  if data == nil then
+    if self._execution_reconciler_tick == nil then
+      self._execution_reconciler_tick = EntityMod.new(self, nil)
+    end
+    return self._execution_reconciler_tick
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ExecutionRelease():list() / client:ExecutionRelease():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ExecutionRelease(data)
+  local EntityMod = require("entity.execution_release_entity")
+  if data == nil then
+    if self._execution_release == nil then
+      self._execution_release = EntityMod.new(self, nil)
+    end
+    return self._execution_release
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ExecutionRuntimeInstance():list() / client:ExecutionRuntimeInstance():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ExecutionRuntimeInstance(data)
+  local EntityMod = require("entity.execution_runtime_instance_entity")
+  if data == nil then
+    if self._execution_runtime_instance == nil then
+      self._execution_runtime_instance = EntityMod.new(self, nil)
+    end
+    return self._execution_runtime_instance
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:Exploration():list() / client:Exploration():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:Exploration(data)
@@ -2089,6 +3839,146 @@ function ComposalSDK:Finding(data)
 end
 
 
+-- Idiomatic facade: client:Gh():list() / client:Gh():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Gh(data)
+  local EntityMod = require("entity.gh_entity")
+  if data == nil then
+    if self._gh == nil then
+      self._gh = EntityMod.new(self, nil)
+    end
+    return self._gh
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GitImport():list() / client:GitImport():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GitImport(data)
+  local EntityMod = require("entity.git_import_entity")
+  if data == nil then
+    if self._git_import == nil then
+      self._git_import = EntityMod.new(self, nil)
+    end
+    return self._git_import
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Github():list() / client:Github():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Github(data)
+  local EntityMod = require("entity.github_entity")
+  if data == nil then
+    if self._github == nil then
+      self._github = EntityMod.new(self, nil)
+    end
+    return self._github
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubApp():list() / client:GithubApp():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubApp(data)
+  local EntityMod = require("entity.github_app_entity")
+  if data == nil then
+    if self._github_app == nil then
+      self._github_app = EntityMod.new(self, nil)
+    end
+    return self._github_app
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubAppImportableRepository():list() / client:GithubAppImportableRepository():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubAppImportableRepository(data)
+  local EntityMod = require("entity.github_app_importable_repository_entity")
+  if data == nil then
+    if self._github_app_importable_repository == nil then
+      self._github_app_importable_repository = EntityMod.new(self, nil)
+    end
+    return self._github_app_importable_repository
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubAppInstallation():list() / client:GithubAppInstallation():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubAppInstallation(data)
+  local EntityMod = require("entity.github_app_installation_entity")
+  if data == nil then
+    if self._github_app_installation == nil then
+      self._github_app_installation = EntityMod.new(self, nil)
+    end
+    return self._github_app_installation
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubAppInstallationAuthorization():list() / client:GithubAppInstallationAuthorization():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubAppInstallationAuthorization(data)
+  local EntityMod = require("entity.github_app_installation_authorization_entity")
+  if data == nil then
+    if self._github_app_installation_authorization == nil then
+      self._github_app_installation_authorization = EntityMod.new(self, nil)
+    end
+    return self._github_app_installation_authorization
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubAppUserAuthorization():list() / client:GithubAppUserAuthorization():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubAppUserAuthorization(data)
+  local EntityMod = require("entity.github_app_user_authorization_entity")
+  if data == nil then
+    if self._github_app_user_authorization == nil then
+      self._github_app_user_authorization = EntityMod.new(self, nil)
+    end
+    return self._github_app_user_authorization
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubCiRepository():list() / client:GithubCiRepository():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubCiRepository(data)
+  local EntityMod = require("entity.github_ci_repository_entity")
+  if data == nil then
+    if self._github_ci_repository == nil then
+      self._github_ci_repository = EntityMod.new(self, nil)
+    end
+    return self._github_ci_repository
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubCiRepositoryCompatibilityReport():list() / client:GithubCiRepositoryCompatibilityReport():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubCiRepositoryCompatibilityReport(data)
+  local EntityMod = require("entity.github_ci_repository_compatibility_report_entity")
+  if data == nil then
+    if self._github_ci_repository_compatibility_report == nil then
+      self._github_ci_repository_compatibility_report = EntityMod.new(self, nil)
+    end
+    return self._github_ci_repository_compatibility_report
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:GithubConnection():list() / client:GithubConnection():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:GithubConnection(data)
@@ -2098,6 +3988,272 @@ function ComposalSDK:GithubConnection(data)
       self._github_connection = EntityMod.new(self, nil)
     end
     return self._github_connection
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubIntegration():list() / client:GithubIntegration():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubIntegration(data)
+  local EntityMod = require("entity.github_integration_entity")
+  if data == nil then
+    if self._github_integration == nil then
+      self._github_integration = EntityMod.new(self, nil)
+    end
+    return self._github_integration
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubOnboarding():list() / client:GithubOnboarding():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubOnboarding(data)
+  local EntityMod = require("entity.github_onboarding_entity")
+  if data == nil then
+    if self._github_onboarding == nil then
+      self._github_onboarding = EntityMod.new(self, nil)
+    end
+    return self._github_onboarding
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubOnboardingBranch():list() / client:GithubOnboardingBranch():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubOnboardingBranch(data)
+  local EntityMod = require("entity.github_onboarding_branch_entity")
+  if data == nil then
+    if self._github_onboarding_branch == nil then
+      self._github_onboarding_branch = EntityMod.new(self, nil)
+    end
+    return self._github_onboarding_branch
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubOnboardingImport():list() / client:GithubOnboardingImport():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubOnboardingImport(data)
+  local EntityMod = require("entity.github_onboarding_import_entity")
+  if data == nil then
+    if self._github_onboarding_import == nil then
+      self._github_onboarding_import = EntityMod.new(self, nil)
+    end
+    return self._github_onboarding_import
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubOnboardingImportBatch():list() / client:GithubOnboardingImportBatch():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubOnboardingImportBatch(data)
+  local EntityMod = require("entity.github_onboarding_import_batch_entity")
+  if data == nil then
+    if self._github_onboarding_import_batch == nil then
+      self._github_onboarding_import_batch = EntityMod.new(self, nil)
+    end
+    return self._github_onboarding_import_batch
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubOnboardingImportItem():list() / client:GithubOnboardingImportItem():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubOnboardingImportItem(data)
+  local EntityMod = require("entity.github_onboarding_import_item_entity")
+  if data == nil then
+    if self._github_onboarding_import_item == nil then
+      self._github_onboarding_import_item = EntityMod.new(self, nil)
+    end
+    return self._github_onboarding_import_item
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubPullRequest():list() / client:GithubPullRequest():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubPullRequest(data)
+  local EntityMod = require("entity.github_pull_request_entity")
+  if data == nil then
+    if self._github_pull_request == nil then
+      self._github_pull_request = EntityMod.new(self, nil)
+    end
+    return self._github_pull_request
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubRunnerAdmission():list() / client:GithubRunnerAdmission():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubRunnerAdmission(data)
+  local EntityMod = require("entity.github_runner_admission_entity")
+  if data == nil then
+    if self._github_runner_admission == nil then
+      self._github_runner_admission = EntityMod.new(self, nil)
+    end
+    return self._github_runner_admission
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubRunnerCache():list() / client:GithubRunnerCache():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubRunnerCache(data)
+  local EntityMod = require("entity.github_runner_cache_entity")
+  if data == nil then
+    if self._github_runner_cache == nil then
+      self._github_runner_cache = EntityMod.new(self, nil)
+    end
+    return self._github_runner_cache
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubRunnerEgress():list() / client:GithubRunnerEgress():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubRunnerEgress(data)
+  local EntityMod = require("entity.github_runner_egress_entity")
+  if data == nil then
+    if self._github_runner_egress == nil then
+      self._github_runner_egress = EntityMod.new(self, nil)
+    end
+    return self._github_runner_egress
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubRunnerHistory():list() / client:GithubRunnerHistory():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubRunnerHistory(data)
+  local EntityMod = require("entity.github_runner_history_entity")
+  if data == nil then
+    if self._github_runner_history == nil then
+      self._github_runner_history = EntityMod.new(self, nil)
+    end
+    return self._github_runner_history
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubRunnerImage():list() / client:GithubRunnerImage():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubRunnerImage(data)
+  local EntityMod = require("entity.github_runner_image_entity")
+  if data == nil then
+    if self._github_runner_image == nil then
+      self._github_runner_image = EntityMod.new(self, nil)
+    end
+    return self._github_runner_image
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubRunnerPool():list() / client:GithubRunnerPool():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubRunnerPool(data)
+  local EntityMod = require("entity.github_runner_pool_entity")
+  if data == nil then
+    if self._github_runner_pool == nil then
+      self._github_runner_pool = EntityMod.new(self, nil)
+    end
+    return self._github_runner_pool
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GithubRunnerSetup():list() / client:GithubRunnerSetup():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GithubRunnerSetup(data)
+  local EntityMod = require("entity.github_runner_setup_entity")
+  if data == nil then
+    if self._github_runner_setup == nil then
+      self._github_runner_setup = EntityMod.new(self, nil)
+    end
+    return self._github_runner_setup
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Gitlab():list() / client:Gitlab():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Gitlab(data)
+  local EntityMod = require("entity.gitlab_entity")
+  if data == nil then
+    if self._gitlab == nil then
+      self._gitlab = EntityMod.new(self, nil)
+    end
+    return self._gitlab
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GitlabConnection():list() / client:GitlabConnection():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GitlabConnection(data)
+  local EntityMod = require("entity.gitlab_connection_entity")
+  if data == nil then
+    if self._gitlab_connection == nil then
+      self._gitlab_connection = EntityMod.new(self, nil)
+    end
+    return self._gitlab_connection
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GitlabImport():list() / client:GitlabImport():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GitlabImport(data)
+  local EntityMod = require("entity.gitlab_import_entity")
+  if data == nil then
+    if self._gitlab_import == nil then
+      self._gitlab_import = EntityMod.new(self, nil)
+    end
+    return self._gitlab_import
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GitlabOauth():list() / client:GitlabOauth():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GitlabOauth(data)
+  local EntityMod = require("entity.gitlab_oauth_entity")
+  if data == nil then
+    if self._gitlab_oauth == nil then
+      self._gitlab_oauth = EntityMod.new(self, nil)
+    end
+    return self._gitlab_oauth
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:GrantAllAgent():list() / client:GrantAllAgent():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:GrantAllAgent(data)
+  local EntityMod = require("entity.grant_all_agent_entity")
+  if data == nil then
+    if self._grant_all_agent == nil then
+      self._grant_all_agent = EntityMod.new(self, nil)
+    end
+    return self._grant_all_agent
   end
   return EntityMod.new(self, data)
 end
@@ -2117,6 +4273,20 @@ function ComposalSDK:HostingAppDomain(data)
 end
 
 
+-- Idiomatic facade: client:IdentityOrganization():list() / client:IdentityOrganization():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:IdentityOrganization(data)
+  local EntityMod = require("entity.identity_organization_entity")
+  if data == nil then
+    if self._identity_organization == nil then
+      self._identity_organization = EntityMod.new(self, nil)
+    end
+    return self._identity_organization
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:ImageRepository():list() / client:ImageRepository():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:ImageRepository(data)
@@ -2126,6 +4296,34 @@ function ComposalSDK:ImageRepository(data)
       self._image_repository = EntityMod.new(self, nil)
     end
     return self._image_repository
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ImageRepositoryTag():list() / client:ImageRepositoryTag():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ImageRepositoryTag(data)
+  local EntityMod = require("entity.image_repository_tag_entity")
+  if data == nil then
+    if self._image_repository_tag == nil then
+      self._image_repository_tag = EntityMod.new(self, nil)
+    end
+    return self._image_repository_tag
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ImportBranchPolicy():list() / client:ImportBranchPolicy():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ImportBranchPolicy(data)
+  local EntityMod = require("entity.import_branch_policy_entity")
+  if data == nil then
+    if self._import_branch_policy == nil then
+      self._import_branch_policy = EntityMod.new(self, nil)
+    end
+    return self._import_branch_policy
   end
   return EntityMod.new(self, data)
 end
@@ -2173,6 +4371,62 @@ function ComposalSDK:Invitation(data)
 end
 
 
+-- Idiomatic facade: client:InvocationControl():list() / client:InvocationControl():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:InvocationControl(data)
+  local EntityMod = require("entity.invocation_control_entity")
+  if data == nil then
+    if self._invocation_control == nil then
+      self._invocation_control = EntityMod.new(self, nil)
+    end
+    return self._invocation_control
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:JobLogChunk():list() / client:JobLogChunk():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:JobLogChunk(data)
+  local EntityMod = require("entity.job_log_chunk_entity")
+  if data == nil then
+    if self._job_log_chunk == nil then
+      self._job_log_chunk = EntityMod.new(self, nil)
+    end
+    return self._job_log_chunk
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:JobStep():list() / client:JobStep():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:JobStep(data)
+  local EntityMod = require("entity.job_step_entity")
+  if data == nil then
+    if self._job_step == nil then
+      self._job_step = EntityMod.new(self, nil)
+    end
+    return self._job_step
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:JobWorkspace():list() / client:JobWorkspace():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:JobWorkspace(data)
+  local EntityMod = require("entity.job_workspace_entity")
+  if data == nil then
+    if self._job_workspace == nil then
+      self._job_workspace = EntityMod.new(self, nil)
+    end
+    return self._job_workspace
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:JourneyVariantReplay():list() / client:JourneyVariantReplay():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:JourneyVariantReplay(data)
@@ -2196,6 +4450,174 @@ function ComposalSDK:Knowledge(data)
       self._knowledge = EntityMod.new(self, nil)
     end
     return self._knowledge
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Known():list() / client:Known():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Known(data)
+  local EntityMod = require("entity.known_entity")
+  if data == nil then
+    if self._known == nil then
+      self._known = EntityMod.new(self, nil)
+    end
+    return self._known
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Label():list() / client:Label():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Label(data)
+  local EntityMod = require("entity.label_entity")
+  if data == nil then
+    if self._label == nil then
+      self._label = EntityMod.new(self, nil)
+    end
+    return self._label
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:LeaseArtifact():list() / client:LeaseArtifact():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:LeaseArtifact(data)
+  local EntityMod = require("entity.lease_artifact_entity")
+  if data == nil then
+    if self._lease_artifact == nil then
+      self._lease_artifact = EntityMod.new(self, nil)
+    end
+    return self._lease_artifact
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:LeaseCache():list() / client:LeaseCache():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:LeaseCache(data)
+  local EntityMod = require("entity.lease_cache_entity")
+  if data == nil then
+    if self._lease_cache == nil then
+      self._lease_cache = EntityMod.new(self, nil)
+    end
+    return self._lease_cache
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:LeaseLogChunk():list() / client:LeaseLogChunk():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:LeaseLogChunk(data)
+  local EntityMod = require("entity.lease_log_chunk_entity")
+  if data == nil then
+    if self._lease_log_chunk == nil then
+      self._lease_log_chunk = EntityMod.new(self, nil)
+    end
+    return self._lease_log_chunk
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:LeaseReconciliation():list() / client:LeaseReconciliation():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:LeaseReconciliation(data)
+  local EntityMod = require("entity.lease_reconciliation_entity")
+  if data == nil then
+    if self._lease_reconciliation == nil then
+      self._lease_reconciliation = EntityMod.new(self, nil)
+    end
+    return self._lease_reconciliation
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:LeaseStep():list() / client:LeaseStep():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:LeaseStep(data)
+  local EntityMod = require("entity.lease_step_entity")
+  if data == nil then
+    if self._lease_step == nil then
+      self._lease_step = EntityMod.new(self, nil)
+    end
+    return self._lease_step
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:LeaseVerifyDiagnostic():list() / client:LeaseVerifyDiagnostic():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:LeaseVerifyDiagnostic(data)
+  local EntityMod = require("entity.lease_verify_diagnostic_entity")
+  if data == nil then
+    if self._lease_verify_diagnostic == nil then
+      self._lease_verify_diagnostic = EntityMod.new(self, nil)
+    end
+    return self._lease_verify_diagnostic
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:LeaseVerifySecret():list() / client:LeaseVerifySecret():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:LeaseVerifySecret(data)
+  local EntityMod = require("entity.lease_verify_secret_entity")
+  if data == nil then
+    if self._lease_verify_secret == nil then
+      self._lease_verify_secret = EntityMod.new(self, nil)
+    end
+    return self._lease_verify_secret
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:LeaseWorkspace():list() / client:LeaseWorkspace():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:LeaseWorkspace(data)
+  local EntityMod = require("entity.lease_workspace_entity")
+  if data == nil then
+    if self._lease_workspace == nil then
+      self._lease_workspace = EntityMod.new(self, nil)
+    end
+    return self._lease_workspace
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:LocalAgentDecision():list() / client:LocalAgentDecision():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:LocalAgentDecision(data)
+  local EntityMod = require("entity.local_agent_decision_entity")
+  if data == nil then
+    if self._local_agent_decision == nil then
+      self._local_agent_decision = EntityMod.new(self, nil)
+    end
+    return self._local_agent_decision
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:LocalAgentResponse():list() / client:LocalAgentResponse():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:LocalAgentResponse(data)
+  local EntityMod = require("entity.local_agent_response_entity")
+  if data == nil then
+    if self._local_agent_response == nil then
+      self._local_agent_response = EntityMod.new(self, nil)
+    end
+    return self._local_agent_response
   end
   return EntityMod.new(self, data)
 end
@@ -2238,6 +4660,62 @@ function ComposalSDK:Location(data)
       self._location = EntityMod.new(self, nil)
     end
     return self._location
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:LogStreamChunk():list() / client:LogStreamChunk():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:LogStreamChunk(data)
+  local EntityMod = require("entity.log_stream_chunk_entity")
+  if data == nil then
+    if self._log_stream_chunk == nil then
+      self._log_stream_chunk = EntityMod.new(self, nil)
+    end
+    return self._log_stream_chunk
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:LogoImage():list() / client:LogoImage():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:LogoImage(data)
+  local EntityMod = require("entity.logo_image_entity")
+  if data == nil then
+    if self._logo_image == nil then
+      self._logo_image = EntityMod.new(self, nil)
+    end
+    return self._logo_image
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:MarketingSetting():list() / client:MarketingSetting():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:MarketingSetting(data)
+  local EntityMod = require("entity.marketing_setting_entity")
+  if data == nil then
+    if self._marketing_setting == nil then
+      self._marketing_setting = EntityMod.new(self, nil)
+    end
+    return self._marketing_setting
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:McpOauth():list() / client:McpOauth():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:McpOauth(data)
+  local EntityMod = require("entity.mcp_oauth_entity")
+  if data == nil then
+    if self._mcp_oauth == nil then
+      self._mcp_oauth = EntityMod.new(self, nil)
+    end
+    return self._mcp_oauth
   end
   return EntityMod.new(self, data)
 end
@@ -2327,6 +4805,20 @@ function ComposalSDK:Memory(data)
 end
 
 
+-- Idiomatic facade: client:MergeQueueEntry():list() / client:MergeQueueEntry():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:MergeQueueEntry(data)
+  local EntityMod = require("entity.merge_queue_entry_entity")
+  if data == nil then
+    if self._merge_queue_entry == nil then
+      self._merge_queue_entry = EntityMod.new(self, nil)
+    end
+    return self._merge_queue_entry
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:MergeRequest():list() / client:MergeRequest():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:MergeRequest(data)
@@ -2336,6 +4828,20 @@ function ComposalSDK:MergeRequest(data)
       self._merge_request = EntityMod.new(self, nil)
     end
     return self._merge_request
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:MergeResolution():list() / client:MergeResolution():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:MergeResolution(data)
+  local EntityMod = require("entity.merge_resolution_entity")
+  if data == nil then
+    if self._merge_resolution == nil then
+      self._merge_resolution = EntityMod.new(self, nil)
+    end
+    return self._merge_resolution
   end
   return EntityMod.new(self, data)
 end
@@ -2383,6 +4889,48 @@ function ComposalSDK:MetricQuery(data)
 end
 
 
+-- Idiomatic facade: client:MetronomeWebhook():list() / client:MetronomeWebhook():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:MetronomeWebhook(data)
+  local EntityMod = require("entity.metronome_webhook_entity")
+  if data == nil then
+    if self._metronome_webhook == nil then
+      self._metronome_webhook = EntityMod.new(self, nil)
+    end
+    return self._metronome_webhook
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ModelSubscriptionAccount():list() / client:ModelSubscriptionAccount():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ModelSubscriptionAccount(data)
+  local EntityMod = require("entity.model_subscription_account_entity")
+  if data == nil then
+    if self._model_subscription_account == nil then
+      self._model_subscription_account = EntityMod.new(self, nil)
+    end
+    return self._model_subscription_account
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ModelSubscriptionAccountConnection():list() / client:ModelSubscriptionAccountConnection():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ModelSubscriptionAccountConnection(data)
+  local EntityMod = require("entity.model_subscription_account_connection_entity")
+  if data == nil then
+    if self._model_subscription_account_connection == nil then
+      self._model_subscription_account_connection = EntityMod.new(self, nil)
+    end
+    return self._model_subscription_account_connection
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:NetworkConnection():list() / client:NetworkConnection():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:NetworkConnection(data)
@@ -2392,6 +4940,62 @@ function ComposalSDK:NetworkConnection(data)
       self._network_connection = EntityMod.new(self, nil)
     end
     return self._network_connection
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:NetworkingSpace():list() / client:NetworkingSpace():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:NetworkingSpace(data)
+  local EntityMod = require("entity.networking_space_entity")
+  if data == nil then
+    if self._networking_space == nil then
+      self._networking_space = EntityMod.new(self, nil)
+    end
+    return self._networking_space
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Node():list() / client:Node():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Node(data)
+  local EntityMod = require("entity.node_entity")
+  if data == nil then
+    if self._node == nil then
+      self._node = EntityMod.new(self, nil)
+    end
+    return self._node
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:NodeCertificate():list() / client:NodeCertificate():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:NodeCertificate(data)
+  local EntityMod = require("entity.node_certificate_entity")
+  if data == nil then
+    if self._node_certificate == nil then
+      self._node_certificate = EntityMod.new(self, nil)
+    end
+    return self._node_certificate
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:NodeLease():list() / client:NodeLease():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:NodeLease(data)
+  local EntityMod = require("entity.node_lease_entity")
+  if data == nil then
+    if self._node_lease == nil then
+      self._node_lease = EntityMod.new(self, nil)
+    end
+    return self._node_lease
   end
   return EntityMod.new(self, data)
 end
@@ -2425,6 +5029,90 @@ function ComposalSDK:NomadLog(data)
 end
 
 
+-- Idiomatic facade: client:Now():list() / client:Now():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Now(data)
+  local EntityMod = require("entity.now_entity")
+  if data == nil then
+    if self._now == nil then
+      self._now = EntityMod.new(self, nil)
+    end
+    return self._now
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ObservabilityClickhouseCluster():list() / client:ObservabilityClickhouseCluster():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ObservabilityClickhouseCluster(data)
+  local EntityMod = require("entity.observability_clickhouse_cluster_entity")
+  if data == nil then
+    if self._observability_clickhouse_cluster == nil then
+      self._observability_clickhouse_cluster = EntityMod.new(self, nil)
+    end
+    return self._observability_clickhouse_cluster
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ObservabilityQuickwitCluster():list() / client:ObservabilityQuickwitCluster():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ObservabilityQuickwitCluster(data)
+  local EntityMod = require("entity.observability_quickwit_cluster_entity")
+  if data == nil then
+    if self._observability_quickwit_cluster == nil then
+      self._observability_quickwit_cluster = EntityMod.new(self, nil)
+    end
+    return self._observability_quickwit_cluster
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ObservabilitySpace():list() / client:ObservabilitySpace():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ObservabilitySpace(data)
+  local EntityMod = require("entity.observability_space_entity")
+  if data == nil then
+    if self._observability_space == nil then
+      self._observability_space = EntityMod.new(self, nil)
+    end
+    return self._observability_space
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Openapi():list() / client:Openapi():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Openapi(data)
+  local EntityMod = require("entity.openapi_entity")
+  if data == nil then
+    if self._openapi == nil then
+      self._openapi = EntityMod.new(self, nil)
+    end
+    return self._openapi
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrgInvitation():list() / client:OrgInvitation():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrgInvitation(data)
+  local EntityMod = require("entity.org_invitation_entity")
+  if data == nil then
+    if self._org_invitation == nil then
+      self._org_invitation = EntityMod.new(self, nil)
+    end
+    return self._org_invitation
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:Organization():list() / client:Organization():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:Organization(data)
@@ -2434,6 +5122,286 @@ function ComposalSDK:Organization(data)
       self._organization = EntityMod.new(self, nil)
     end
     return self._organization
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationApp():list() / client:OrganizationApp():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationApp(data)
+  local EntityMod = require("entity.organization_app_entity")
+  if data == nil then
+    if self._organization_app == nil then
+      self._organization_app = EntityMod.new(self, nil)
+    end
+    return self._organization_app
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationControl():list() / client:OrganizationControl():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationControl(data)
+  local EntityMod = require("entity.organization_control_entity")
+  if data == nil then
+    if self._organization_control == nil then
+      self._organization_control = EntityMod.new(self, nil)
+    end
+    return self._organization_control
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationDevice():list() / client:OrganizationDevice():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationDevice(data)
+  local EntityMod = require("entity.organization_device_entity")
+  if data == nil then
+    if self._organization_device == nil then
+      self._organization_device = EntityMod.new(self, nil)
+    end
+    return self._organization_device
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationIdentityCertificate():list() / client:OrganizationIdentityCertificate():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationIdentityCertificate(data)
+  local EntityMod = require("entity.organization_identity_certificate_entity")
+  if data == nil then
+    if self._organization_identity_certificate == nil then
+      self._organization_identity_certificate = EntityMod.new(self, nil)
+    end
+    return self._organization_identity_certificate
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationInteraction():list() / client:OrganizationInteraction():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationInteraction(data)
+  local EntityMod = require("entity.organization_interaction_entity")
+  if data == nil then
+    if self._organization_interaction == nil then
+      self._organization_interaction = EntityMod.new(self, nil)
+    end
+    return self._organization_interaction
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationInvitation():list() / client:OrganizationInvitation():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationInvitation(data)
+  local EntityMod = require("entity.organization_invitation_entity")
+  if data == nil then
+    if self._organization_invitation == nil then
+      self._organization_invitation = EntityMod.new(self, nil)
+    end
+    return self._organization_invitation
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationMessageFile():list() / client:OrganizationMessageFile():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationMessageFile(data)
+  local EntityMod = require("entity.organization_message_file_entity")
+  if data == nil then
+    if self._organization_message_file == nil then
+      self._organization_message_file = EntityMod.new(self, nil)
+    end
+    return self._organization_message_file
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationOidcTrust():list() / client:OrganizationOidcTrust():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationOidcTrust(data)
+  local EntityMod = require("entity.organization_oidc_trust_entity")
+  if data == nil then
+    if self._organization_oidc_trust == nil then
+      self._organization_oidc_trust = EntityMod.new(self, nil)
+    end
+    return self._organization_oidc_trust
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationRunEvent():list() / client:OrganizationRunEvent():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationRunEvent(data)
+  local EntityMod = require("entity.organization_run_event_entity")
+  if data == nil then
+    if self._organization_run_event == nil then
+      self._organization_run_event = EntityMod.new(self, nil)
+    end
+    return self._organization_run_event
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationRunOutcome():list() / client:OrganizationRunOutcome():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationRunOutcome(data)
+  local EntityMod = require("entity.organization_run_outcome_entity")
+  if data == nil then
+    if self._organization_run_outcome == nil then
+      self._organization_run_outcome = EntityMod.new(self, nil)
+    end
+    return self._organization_run_outcome
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationRunUsage():list() / client:OrganizationRunUsage():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationRunUsage(data)
+  local EntityMod = require("entity.organization_run_usage_entity")
+  if data == nil then
+    if self._organization_run_usage == nil then
+      self._organization_run_usage = EntityMod.new(self, nil)
+    end
+    return self._organization_run_usage
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationSandbox():list() / client:OrganizationSandbox():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationSandbox(data)
+  local EntityMod = require("entity.organization_sandbox_entity")
+  if data == nil then
+    if self._organization_sandbox == nil then
+      self._organization_sandbox = EntityMod.new(self, nil)
+    end
+    return self._organization_sandbox
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationSecret():list() / client:OrganizationSecret():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationSecret(data)
+  local EntityMod = require("entity.organization_secret_entity")
+  if data == nil then
+    if self._organization_secret == nil then
+      self._organization_secret = EntityMod.new(self, nil)
+    end
+    return self._organization_secret
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationServiceAccount():list() / client:OrganizationServiceAccount():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationServiceAccount(data)
+  local EntityMod = require("entity.organization_service_account_entity")
+  if data == nil then
+    if self._organization_service_account == nil then
+      self._organization_service_account = EntityMod.new(self, nil)
+    end
+    return self._organization_service_account
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationSetting():list() / client:OrganizationSetting():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationSetting(data)
+  local EntityMod = require("entity.organization_setting_entity")
+  if data == nil then
+    if self._organization_setting == nil then
+      self._organization_setting = EntityMod.new(self, nil)
+    end
+    return self._organization_setting
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationSite():list() / client:OrganizationSite():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationSite(data)
+  local EntityMod = require("entity.organization_site_entity")
+  if data == nil then
+    if self._organization_site == nil then
+      self._organization_site = EntityMod.new(self, nil)
+    end
+    return self._organization_site
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationSubscription():list() / client:OrganizationSubscription():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationSubscription(data)
+  local EntityMod = require("entity.organization_subscription_entity")
+  if data == nil then
+    if self._organization_subscription == nil then
+      self._organization_subscription = EntityMod.new(self, nil)
+    end
+    return self._organization_subscription
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationTool():list() / client:OrganizationTool():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationTool(data)
+  local EntityMod = require("entity.organization_tool_entity")
+  if data == nil then
+    if self._organization_tool == nil then
+      self._organization_tool = EntityMod.new(self, nil)
+    end
+    return self._organization_tool
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OrganizationWorkloadIdentity():list() / client:OrganizationWorkloadIdentity():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OrganizationWorkloadIdentity(data)
+  local EntityMod = require("entity.organization_workload_identity_entity")
+  if data == nil then
+    if self._organization_workload_identity == nil then
+      self._organization_workload_identity = EntityMod.new(self, nil)
+    end
+    return self._organization_workload_identity
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:OtelIngest():list() / client:OtelIngest():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:OtelIngest(data)
+  local EntityMod = require("entity.otel_ingest_entity")
+  if data == nil then
+    if self._otel_ingest == nil then
+      self._otel_ingest = EntityMod.new(self, nil)
+    end
+    return self._otel_ingest
   end
   return EntityMod.new(self, data)
 end
@@ -2467,6 +5435,34 @@ function ComposalSDK:PageAgent(data)
 end
 
 
+-- Idiomatic facade: client:PageArtefact():list() / client:PageArtefact():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:PageArtefact(data)
+  local EntityMod = require("entity.page_artefact_entity")
+  if data == nil then
+    if self._page_artefact == nil then
+      self._page_artefact = EntityMod.new(self, nil)
+    end
+    return self._page_artefact
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:PageCiPipelineRun():list() / client:PageCiPipelineRun():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:PageCiPipelineRun(data)
+  local EntityMod = require("entity.page_ci_pipeline_run_entity")
+  if data == nil then
+    if self._page_ci_pipeline_run == nil then
+      self._page_ci_pipeline_run = EntityMod.new(self, nil)
+    end
+    return self._page_ci_pipeline_run
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:PageProjectRun():list() / client:PageProjectRun():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:PageProjectRun(data)
@@ -2476,6 +5472,62 @@ function ComposalSDK:PageProjectRun(data)
       self._page_project_run = EntityMod.new(self, nil)
     end
     return self._page_project_run
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:PageRepoVcCommit():list() / client:PageRepoVcCommit():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:PageRepoVcCommit(data)
+  local EntityMod = require("entity.page_repo_vc_commit_entity")
+  if data == nil then
+    if self._page_repo_vc_commit == nil then
+      self._page_repo_vc_commit = EntityMod.new(self, nil)
+    end
+    return self._page_repo_vc_commit
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:PagesBilling():list() / client:PagesBilling():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:PagesBilling(data)
+  local EntityMod = require("entity.pages_billing_entity")
+  if data == nil then
+    if self._pages_billing == nil then
+      self._pages_billing = EntityMod.new(self, nil)
+    end
+    return self._pages_billing
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:PagesGithubOnboarding():list() / client:PagesGithubOnboarding():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:PagesGithubOnboarding(data)
+  local EntityMod = require("entity.pages_github_onboarding_entity")
+  if data == nil then
+    if self._pages_github_onboarding == nil then
+      self._pages_github_onboarding = EntityMod.new(self, nil)
+    end
+    return self._pages_github_onboarding
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:PagesMember():list() / client:PagesMember():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:PagesMember(data)
+  local EntityMod = require("entity.pages_member_entity")
+  if data == nil then
+    if self._pages_member == nil then
+      self._pages_member = EntityMod.new(self, nil)
+    end
+    return self._pages_member
   end
   return EntityMod.new(self, data)
 end
@@ -2532,6 +5584,90 @@ function ComposalSDK:PagesProjectScenario(data)
       self._pages_project_scenario = EntityMod.new(self, nil)
     end
     return self._pages_project_scenario
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:PagesRegistry():list() / client:PagesRegistry():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:PagesRegistry(data)
+  local EntityMod = require("entity.pages_registry_entity")
+  if data == nil then
+    if self._pages_registry == nil then
+      self._pages_registry = EntityMod.new(self, nil)
+    end
+    return self._pages_registry
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:PagesSession():list() / client:PagesSession():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:PagesSession(data)
+  local EntityMod = require("entity.pages_session_entity")
+  if data == nil then
+    if self._pages_session == nil then
+      self._pages_session = EntityMod.new(self, nil)
+    end
+    return self._pages_session
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Pairing():list() / client:Pairing():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Pairing(data)
+  local EntityMod = require("entity.pairing_entity")
+  if data == nil then
+    if self._pairing == nil then
+      self._pairing = EntityMod.new(self, nil)
+    end
+    return self._pairing
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:PairingEvent():list() / client:PairingEvent():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:PairingEvent(data)
+  local EntityMod = require("entity.pairing_event_entity")
+  if data == nil then
+    if self._pairing_event == nil then
+      self._pairing_event = EntityMod.new(self, nil)
+    end
+    return self._pairing_event
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ParallelV1():list() / client:ParallelV1():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ParallelV1(data)
+  local EntityMod = require("entity.parallel_v1_entity")
+  if data == nil then
+    if self._parallel_v1 == nil then
+      self._parallel_v1 = EntityMod.new(self, nil)
+    end
+    return self._parallel_v1
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:PatchsetDiff():list() / client:PatchsetDiff():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:PatchsetDiff(data)
+  local EntityMod = require("entity.patchset_diff_entity")
+  if data == nil then
+    if self._patchset_diff == nil then
+      self._patchset_diff = EntityMod.new(self, nil)
+    end
+    return self._patchset_diff
   end
   return EntityMod.new(self, data)
 end
@@ -2602,6 +5738,34 @@ function ComposalSDK:PreviewSharingApproval(data)
       self._preview_sharing_approval = EntityMod.new(self, nil)
     end
     return self._preview_sharing_approval
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ProactiveAgentWaitlistEntry():list() / client:ProactiveAgentWaitlistEntry():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ProactiveAgentWaitlistEntry(data)
+  local EntityMod = require("entity.proactive_agent_waitlist_entry_entity")
+  if data == nil then
+    if self._proactive_agent_waitlist_entry == nil then
+      self._proactive_agent_waitlist_entry = EntityMod.new(self, nil)
+    end
+    return self._proactive_agent_waitlist_entry
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Product():list() / client:Product():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Product(data)
+  local EntityMod = require("entity.product_entity")
+  if data == nil then
+    if self._product == nil then
+      self._product = EntityMod.new(self, nil)
+    end
+    return self._product
   end
   return EntityMod.new(self, data)
 end
@@ -2943,6 +6107,34 @@ function ComposalSDK:PullRequest(data)
 end
 
 
+-- Idiomatic facade: client:PullRequestAction():list() / client:PullRequestAction():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:PullRequestAction(data)
+  local EntityMod = require("entity.pull_request_action_entity")
+  if data == nil then
+    if self._pull_request_action == nil then
+      self._pull_request_action = EntityMod.new(self, nil)
+    end
+    return self._pull_request_action
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:PullRequestMagicMerge():list() / client:PullRequestMagicMerge():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:PullRequestMagicMerge(data)
+  local EntityMod = require("entity.pull_request_magic_merge_entity")
+  if data == nil then
+    if self._pull_request_magic_merge == nil then
+      self._pull_request_magic_merge = EntityMod.new(self, nil)
+    end
+    return self._pull_request_magic_merge
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:PullRequestSetting():list() / client:PullRequestSetting():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:PullRequestSetting(data)
@@ -2980,6 +6172,34 @@ function ComposalSDK:PullRequestSettingDetectComment(data)
       self._pull_request_setting_detect_comment = EntityMod.new(self, nil)
     end
     return self._pull_request_setting_detect_comment
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:PullRequestTranscript():list() / client:PullRequestTranscript():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:PullRequestTranscript(data)
+  local EntityMod = require("entity.pull_request_transcript_entity")
+  if data == nil then
+    if self._pull_request_transcript == nil then
+      self._pull_request_transcript = EntityMod.new(self, nil)
+    end
+    return self._pull_request_transcript
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:PullZone():list() / client:PullZone():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:PullZone(data)
+  local EntityMod = require("entity.pull_zone_entity")
+  if data == nil then
+    if self._pull_zone == nil then
+      self._pull_zone = EntityMod.new(self, nil)
+    end
+    return self._pull_zone
   end
   return EntityMod.new(self, data)
 end
@@ -3027,6 +6247,20 @@ function ComposalSDK:RegistryV2(data)
 end
 
 
+-- Idiomatic facade: client:RelayAgentConnection():list() / client:RelayAgentConnection():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RelayAgentConnection(data)
+  local EntityMod = require("entity.relay_agent_connection_entity")
+  if data == nil then
+    if self._relay_agent_connection == nil then
+      self._relay_agent_connection = EntityMod.new(self, nil)
+    end
+    return self._relay_agent_connection
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:RelayAgentLocalThread():list() / client:RelayAgentLocalThread():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:RelayAgentLocalThread(data)
@@ -3036,6 +6270,216 @@ function ComposalSDK:RelayAgentLocalThread(data)
       self._relay_agent_local_thread = EntityMod.new(self, nil)
     end
     return self._relay_agent_local_thread
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RelaySignal():list() / client:RelaySignal():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RelaySignal(data)
+  local EntityMod = require("entity.relay_signal_entity")
+  if data == nil then
+    if self._relay_signal == nil then
+      self._relay_signal = EntityMod.new(self, nil)
+    end
+    return self._relay_signal
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ReleaseRollout():list() / client:ReleaseRollout():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ReleaseRollout(data)
+  local EntityMod = require("entity.release_rollout_entity")
+  if data == nil then
+    if self._release_rollout == nil then
+      self._release_rollout = EntityMod.new(self, nil)
+    end
+    return self._release_rollout
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Repo():list() / client:Repo():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Repo(data)
+  local EntityMod = require("entity.repo_entity")
+  if data == nil then
+    if self._repo == nil then
+      self._repo = EntityMod.new(self, nil)
+    end
+    return self._repo
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepoAccessToken():list() / client:RepoAccessToken():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepoAccessToken(data)
+  local EntityMod = require("entity.repo_access_token_entity")
+  if data == nil then
+    if self._repo_access_token == nil then
+      self._repo_access_token = EntityMod.new(self, nil)
+    end
+    return self._repo_access_token
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepoAction():list() / client:RepoAction():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepoAction(data)
+  local EntityMod = require("entity.repo_action_entity")
+  if data == nil then
+    if self._repo_action == nil then
+      self._repo_action = EntityMod.new(self, nil)
+    end
+    return self._repo_action
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepoAgentCheckpoint():list() / client:RepoAgentCheckpoint():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepoAgentCheckpoint(data)
+  local EntityMod = require("entity.repo_agent_checkpoint_entity")
+  if data == nil then
+    if self._repo_agent_checkpoint == nil then
+      self._repo_agent_checkpoint = EntityMod.new(self, nil)
+    end
+    return self._repo_agent_checkpoint
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepoAgentSession():list() / client:RepoAgentSession():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepoAgentSession(data)
+  local EntityMod = require("entity.repo_agent_session_entity")
+  if data == nil then
+    if self._repo_agent_session == nil then
+      self._repo_agent_session = EntityMod.new(self, nil)
+    end
+    return self._repo_agent_session
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepoBookmarkProtection():list() / client:RepoBookmarkProtection():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepoBookmarkProtection(data)
+  local EntityMod = require("entity.repo_bookmark_protection_entity")
+  if data == nil then
+    if self._repo_bookmark_protection == nil then
+      self._repo_bookmark_protection = EntityMod.new(self, nil)
+    end
+    return self._repo_bookmark_protection
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepoBookmarkProtectionEvent():list() / client:RepoBookmarkProtectionEvent():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepoBookmarkProtectionEvent(data)
+  local EntityMod = require("entity.repo_bookmark_protection_event_entity")
+  if data == nil then
+    if self._repo_bookmark_protection_event == nil then
+      self._repo_bookmark_protection_event = EntityMod.new(self, nil)
+    end
+    return self._repo_bookmark_protection_event
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepoCloudWorkspaceBackup():list() / client:RepoCloudWorkspaceBackup():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepoCloudWorkspaceBackup(data)
+  local EntityMod = require("entity.repo_cloud_workspace_backup_entity")
+  if data == nil then
+    if self._repo_cloud_workspace_backup == nil then
+      self._repo_cloud_workspace_backup = EntityMod.new(self, nil)
+    end
+    return self._repo_cloud_workspace_backup
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepoCodeRule():list() / client:RepoCodeRule():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepoCodeRule(data)
+  local EntityMod = require("entity.repo_code_rule_entity")
+  if data == nil then
+    if self._repo_code_rule == nil then
+      self._repo_code_rule = EntityMod.new(self, nil)
+    end
+    return self._repo_code_rule
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepoSetting():list() / client:RepoSetting():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepoSetting(data)
+  local EntityMod = require("entity.repo_setting_entity")
+  if data == nil then
+    if self._repo_setting == nil then
+      self._repo_setting = EntityMod.new(self, nil)
+    end
+    return self._repo_setting
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepoStat():list() / client:RepoStat():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepoStat(data)
+  local EntityMod = require("entity.repo_stat_entity")
+  if data == nil then
+    if self._repo_stat == nil then
+      self._repo_stat = EntityMod.new(self, nil)
+    end
+    return self._repo_stat
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepoVc():list() / client:RepoVc():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepoVc(data)
+  local EntityMod = require("entity.repo_vc_entity")
+  if data == nil then
+    if self._repo_vc == nil then
+      self._repo_vc = EntityMod.new(self, nil)
+    end
+    return self._repo_vc
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepoVcCommit():list() / client:RepoVcCommit():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepoVcCommit(data)
+  local EntityMod = require("entity.repo_vc_commit_entity")
+  if data == nil then
+    if self._repo_vc_commit == nil then
+      self._repo_vc_commit = EntityMod.new(self, nil)
+    end
+    return self._repo_vc_commit
   end
   return EntityMod.new(self, data)
 end
@@ -3064,6 +6508,216 @@ function ComposalSDK:ReportScenario(data)
       self._report_scenario = EntityMod.new(self, nil)
     end
     return self._report_scenario
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepositoryAccess():list() / client:RepositoryAccess():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepositoryAccess(data)
+  local EntityMod = require("entity.repository_access_entity")
+  if data == nil then
+    if self._repository_access == nil then
+      self._repository_access = EntityMod.new(self, nil)
+    end
+    return self._repository_access
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepositoryAccessResolve():list() / client:RepositoryAccessResolve():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepositoryAccessResolve(data)
+  local EntityMod = require("entity.repository_access_resolve_entity")
+  if data == nil then
+    if self._repository_access_resolve == nil then
+      self._repository_access_resolve = EntityMod.new(self, nil)
+    end
+    return self._repository_access_resolve
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepositoryEvent():list() / client:RepositoryEvent():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepositoryEvent(data)
+  local EntityMod = require("entity.repository_event_entity")
+  if data == nil then
+    if self._repository_event == nil then
+      self._repository_event = EntityMod.new(self, nil)
+    end
+    return self._repository_event
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepositoryImport():list() / client:RepositoryImport():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepositoryImport(data)
+  local EntityMod = require("entity.repository_import_entity")
+  if data == nil then
+    if self._repository_import == nil then
+      self._repository_import = EntityMod.new(self, nil)
+    end
+    return self._repository_import
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepositoryImportSession():list() / client:RepositoryImportSession():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepositoryImportSession(data)
+  local EntityMod = require("entity.repository_import_session_entity")
+  if data == nil then
+    if self._repository_import_session == nil then
+      self._repository_import_session = EntityMod.new(self, nil)
+    end
+    return self._repository_import_session
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepositoryImportSessionRepository():list() / client:RepositoryImportSessionRepository():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepositoryImportSessionRepository(data)
+  local EntityMod = require("entity.repository_import_session_repository_entity")
+  if data == nil then
+    if self._repository_import_session_repository == nil then
+      self._repository_import_session_repository = EntityMod.new(self, nil)
+    end
+    return self._repository_import_session_repository
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepositoryImportSessionSelection():list() / client:RepositoryImportSessionSelection():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepositoryImportSessionSelection(data)
+  local EntityMod = require("entity.repository_import_session_selection_entity")
+  if data == nil then
+    if self._repository_import_session_selection == nil then
+      self._repository_import_session_selection = EntityMod.new(self, nil)
+    end
+    return self._repository_import_session_selection
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RepositorySandboxEnvironment():list() / client:RepositorySandboxEnvironment():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RepositorySandboxEnvironment(data)
+  local EntityMod = require("entity.repository_sandbox_environment_entity")
+  if data == nil then
+    if self._repository_sandbox_environment == nil then
+      self._repository_sandbox_environment = EntityMod.new(self, nil)
+    end
+    return self._repository_sandbox_environment
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RoderCodeRepair():list() / client:RoderCodeRepair():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RoderCodeRepair(data)
+  local EntityMod = require("entity.roder_code_repair_entity")
+  if data == nil then
+    if self._roder_code_repair == nil then
+      self._roder_code_repair = EntityMod.new(self, nil)
+    end
+    return self._roder_code_repair
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RoderCodeRepairSetting():list() / client:RoderCodeRepairSetting():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RoderCodeRepairSetting(data)
+  local EntityMod = require("entity.roder_code_repair_setting_entity")
+  if data == nil then
+    if self._roder_code_repair_setting == nil then
+      self._roder_code_repair_setting = EntityMod.new(self, nil)
+    end
+    return self._roder_code_repair_setting
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RoderMachine():list() / client:RoderMachine():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RoderMachine(data)
+  local EntityMod = require("entity.roder_machine_entity")
+  if data == nil then
+    if self._roder_machine == nil then
+      self._roder_machine = EntityMod.new(self, nil)
+    end
+    return self._roder_machine
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RoderRun():list() / client:RoderRun():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RoderRun(data)
+  local EntityMod = require("entity.roder_run_entity")
+  if data == nil then
+    if self._roder_run == nil then
+      self._roder_run = EntityMod.new(self, nil)
+    end
+    return self._roder_run
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RoderWorkspaceCredential():list() / client:RoderWorkspaceCredential():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RoderWorkspaceCredential(data)
+  local EntityMod = require("entity.roder_workspace_credential_entity")
+  if data == nil then
+    if self._roder_workspace_credential == nil then
+      self._roder_workspace_credential = EntityMod.new(self, nil)
+    end
+    return self._roder_workspace_credential
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RunArtifact():list() / client:RunArtifact():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RunArtifact(data)
+  local EntityMod = require("entity.run_artifact_entity")
+  if data == nil then
+    if self._run_artifact == nil then
+      self._run_artifact = EntityMod.new(self, nil)
+    end
+    return self._run_artifact
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RunJob():list() / client:RunJob():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RunJob(data)
+  local EntityMod = require("entity.run_job_entity")
+  if data == nil then
+    if self._run_job == nil then
+      self._run_job = EntityMod.new(self, nil)
+    end
+    return self._run_job
   end
   return EntityMod.new(self, data)
 end
@@ -3125,6 +6779,90 @@ function ComposalSDK:RunUpdate(data)
 end
 
 
+-- Idiomatic facade: client:RunWorkspaceCredential():list() / client:RunWorkspaceCredential():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RunWorkspaceCredential(data)
+  local EntityMod = require("entity.run_workspace_credential_entity")
+  if data == nil then
+    if self._run_workspace_credential == nil then
+      self._run_workspace_credential = EntityMod.new(self, nil)
+    end
+    return self._run_workspace_credential
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RunnerLease():list() / client:RunnerLease():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RunnerLease(data)
+  local EntityMod = require("entity.runner_lease_entity")
+  if data == nil then
+    if self._runner_lease == nil then
+      self._runner_lease = EntityMod.new(self, nil)
+    end
+    return self._runner_lease
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RunnerPoolNodeEnrollmentToken():list() / client:RunnerPoolNodeEnrollmentToken():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RunnerPoolNodeEnrollmentToken(data)
+  local EntityMod = require("entity.runner_pool_node_enrollment_token_entity")
+  if data == nil then
+    if self._runner_pool_node_enrollment_token == nil then
+      self._runner_pool_node_enrollment_token = EntityMod.new(self, nil)
+    end
+    return self._runner_pool_node_enrollment_token
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RunnerPoolRunner():list() / client:RunnerPoolRunner():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RunnerPoolRunner(data)
+  local EntityMod = require("entity.runner_pool_runner_entity")
+  if data == nil then
+    if self._runner_pool_runner == nil then
+      self._runner_pool_runner = EntityMod.new(self, nil)
+    end
+    return self._runner_pool_runner
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:RuntimeInstanceHealthSnapshot():list() / client:RuntimeInstanceHealthSnapshot():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:RuntimeInstanceHealthSnapshot(data)
+  local EntityMod = require("entity.runtime_instance_health_snapshot_entity")
+  if data == nil then
+    if self._runtime_instance_health_snapshot == nil then
+      self._runtime_instance_health_snapshot = EntityMod.new(self, nil)
+    end
+    return self._runtime_instance_health_snapshot
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SandboxIntegration():list() / client:SandboxIntegration():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SandboxIntegration(data)
+  local EntityMod = require("entity.sandbox_integration_entity")
+  if data == nil then
+    if self._sandbox_integration == nil then
+      self._sandbox_integration = EntityMod.new(self, nil)
+    end
+    return self._sandbox_integration
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:ScenarioRevision():list() / client:ScenarioRevision():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:ScenarioRevision(data)
@@ -3167,6 +6905,34 @@ function ComposalSDK:ScenarioRunScenarioEdit(data)
 end
 
 
+-- Idiomatic facade: client:SecretGrant():list() / client:SecretGrant():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SecretGrant(data)
+  local EntityMod = require("entity.secret_grant_entity")
+  if data == nil then
+    if self._secret_grant == nil then
+      self._secret_grant = EntityMod.new(self, nil)
+    end
+    return self._secret_grant
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SecretVersion():list() / client:SecretVersion():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SecretVersion(data)
+  local EntityMod = require("entity.secret_version_entity")
+  if data == nil then
+    if self._secret_version == nil then
+      self._secret_version = EntityMod.new(self, nil)
+    end
+    return self._secret_version
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:ServiceEndpoint():list() / client:ServiceEndpoint():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:ServiceEndpoint(data)
@@ -3176,6 +6942,146 @@ function ComposalSDK:ServiceEndpoint(data)
       self._service_endpoint = EntityMod.new(self, nil)
     end
     return self._service_endpoint
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Setting():list() / client:Setting():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Setting(data)
+  local EntityMod = require("entity.setting_entity")
+  if data == nil then
+    if self._setting == nil then
+      self._setting = EntityMod.new(self, nil)
+    end
+    return self._setting
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SettingMutationLease():list() / client:SettingMutationLease():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SettingMutationLease(data)
+  local EntityMod = require("entity.setting_mutation_lease_entity")
+  if data == nil then
+    if self._setting_mutation_lease == nil then
+      self._setting_mutation_lease = EntityMod.new(self, nil)
+    end
+    return self._setting_mutation_lease
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Signal():list() / client:Signal():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Signal(data)
+  local EntityMod = require("entity.signal_entity")
+  if data == nil then
+    if self._signal == nil then
+      self._signal = EntityMod.new(self, nil)
+    end
+    return self._signal
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SignalInbound():list() / client:SignalInbound():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SignalInbound(data)
+  local EntityMod = require("entity.signal_inbound_entity")
+  if data == nil then
+    if self._signal_inbound == nil then
+      self._signal_inbound = EntityMod.new(self, nil)
+    end
+    return self._signal_inbound
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SignalIntegration():list() / client:SignalIntegration():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SignalIntegration(data)
+  local EntityMod = require("entity.signal_integration_entity")
+  if data == nil then
+    if self._signal_integration == nil then
+      self._signal_integration = EntityMod.new(self, nil)
+    end
+    return self._signal_integration
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SignalIntegrationDelivery():list() / client:SignalIntegrationDelivery():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SignalIntegrationDelivery(data)
+  local EntityMod = require("entity.signal_integration_delivery_entity")
+  if data == nil then
+    if self._signal_integration_delivery == nil then
+      self._signal_integration_delivery = EntityMod.new(self, nil)
+    end
+    return self._signal_integration_delivery
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SignalIntegrationTarget():list() / client:SignalIntegrationTarget():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SignalIntegrationTarget(data)
+  local EntityMod = require("entity.signal_integration_target_entity")
+  if data == nil then
+    if self._signal_integration_target == nil then
+      self._signal_integration_target = EntityMod.new(self, nil)
+    end
+    return self._signal_integration_target
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SignalSubscription():list() / client:SignalSubscription():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SignalSubscription(data)
+  local EntityMod = require("entity.signal_subscription_entity")
+  if data == nil then
+    if self._signal_subscription == nil then
+      self._signal_subscription = EntityMod.new(self, nil)
+    end
+    return self._signal_subscription
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Site():list() / client:Site():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Site(data)
+  local EntityMod = require("entity.site_entity")
+  if data == nil then
+    if self._site == nil then
+      self._site = EntityMod.new(self, nil)
+    end
+    return self._site
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SiteAccessKey():list() / client:SiteAccessKey():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SiteAccessKey(data)
+  local EntityMod = require("entity.site_access_key_entity")
+  if data == nil then
+    if self._site_access_key == nil then
+      self._site_access_key = EntityMod.new(self, nil)
+    end
+    return self._site_access_key
   end
   return EntityMod.new(self, data)
 end
@@ -3195,6 +7101,20 @@ function ComposalSDK:SitePreview(data)
 end
 
 
+-- Idiomatic facade: client:SiteSecret():list() / client:SiteSecret():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SiteSecret(data)
+  local EntityMod = require("entity.site_secret_entity")
+  if data == nil then
+    if self._site_secret == nil then
+      self._site_secret = EntityMod.new(self, nil)
+    end
+    return self._site_secret
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:SlackChannel():list() / client:SlackChannel():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:SlackChannel(data)
@@ -3209,6 +7129,258 @@ function ComposalSDK:SlackChannel(data)
 end
 
 
+-- Idiomatic facade: client:SourceConnection():list() / client:SourceConnection():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SourceConnection(data)
+  local EntityMod = require("entity.source_connection_entity")
+  if data == nil then
+    if self._source_connection == nil then
+      self._source_connection = EntityMod.new(self, nil)
+    end
+    return self._source_connection
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SpaceAlertRule():list() / client:SpaceAlertRule():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SpaceAlertRule(data)
+  local EntityMod = require("entity.space_alert_rule_entity")
+  if data == nil then
+    if self._space_alert_rule == nil then
+      self._space_alert_rule = EntityMod.new(self, nil)
+    end
+    return self._space_alert_rule
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SpaceAuditEvent():list() / client:SpaceAuditEvent():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SpaceAuditEvent(data)
+  local EntityMod = require("entity.space_audit_event_entity")
+  if data == nil then
+    if self._space_audit_event == nil then
+      self._space_audit_event = EntityMod.new(self, nil)
+    end
+    return self._space_audit_event
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SpaceDnsRecord():list() / client:SpaceDnsRecord():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SpaceDnsRecord(data)
+  local EntityMod = require("entity.space_dns_record_entity")
+  if data == nil then
+    if self._space_dns_record == nil then
+      self._space_dns_record = EntityMod.new(self, nil)
+    end
+    return self._space_dns_record
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SpaceEnrollmentToken():list() / client:SpaceEnrollmentToken():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SpaceEnrollmentToken(data)
+  local EntityMod = require("entity.space_enrollment_token_entity")
+  if data == nil then
+    if self._space_enrollment_token == nil then
+      self._space_enrollment_token = EntityMod.new(self, nil)
+    end
+    return self._space_enrollment_token
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SpaceGateway():list() / client:SpaceGateway():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SpaceGateway(data)
+  local EntityMod = require("entity.space_gateway_entity")
+  if data == nil then
+    if self._space_gateway == nil then
+      self._space_gateway = EntityMod.new(self, nil)
+    end
+    return self._space_gateway
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SpaceGroup():list() / client:SpaceGroup():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SpaceGroup(data)
+  local EntityMod = require("entity.space_group_entity")
+  if data == nil then
+    if self._space_group == nil then
+      self._space_group = EntityMod.new(self, nil)
+    end
+    return self._space_group
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SpaceGroupMembership():list() / client:SpaceGroupMembership():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SpaceGroupMembership(data)
+  local EntityMod = require("entity.space_group_membership_entity")
+  if data == nil then
+    if self._space_group_membership == nil then
+      self._space_group_membership = EntityMod.new(self, nil)
+    end
+    return self._space_group_membership
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SpaceLogStream():list() / client:SpaceLogStream():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SpaceLogStream(data)
+  local EntityMod = require("entity.space_log_stream_entity")
+  if data == nil then
+    if self._space_log_stream == nil then
+      self._space_log_stream = EntityMod.new(self, nil)
+    end
+    return self._space_log_stream
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SpaceMetricSery():list() / client:SpaceMetricSery():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SpaceMetricSery(data)
+  local EntityMod = require("entity.space_metric_sery_entity")
+  if data == nil then
+    if self._space_metric_sery == nil then
+      self._space_metric_sery = EntityMod.new(self, nil)
+    end
+    return self._space_metric_sery
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SpaceOtelCollector():list() / client:SpaceOtelCollector():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SpaceOtelCollector(data)
+  local EntityMod = require("entity.space_otel_collector_entity")
+  if data == nil then
+    if self._space_otel_collector == nil then
+      self._space_otel_collector = EntityMod.new(self, nil)
+    end
+    return self._space_otel_collector
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SpacePeer():list() / client:SpacePeer():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SpacePeer(data)
+  local EntityMod = require("entity.space_peer_entity")
+  if data == nil then
+    if self._space_peer == nil then
+      self._space_peer = EntityMod.new(self, nil)
+    end
+    return self._space_peer
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SpacePeerAttachment():list() / client:SpacePeerAttachment():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SpacePeerAttachment(data)
+  local EntityMod = require("entity.space_peer_attachment_entity")
+  if data == nil then
+    if self._space_peer_attachment == nil then
+      self._space_peer_attachment = EntityMod.new(self, nil)
+    end
+    return self._space_peer_attachment
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SpacePolicy():list() / client:SpacePolicy():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SpacePolicy(data)
+  local EntityMod = require("entity.space_policy_entity")
+  if data == nil then
+    if self._space_policy == nil then
+      self._space_policy = EntityMod.new(self, nil)
+    end
+    return self._space_policy
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SpaceSegment():list() / client:SpaceSegment():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SpaceSegment(data)
+  local EntityMod = require("entity.space_segment_entity")
+  if data == nil then
+    if self._space_segment == nil then
+      self._space_segment = EntityMod.new(self, nil)
+    end
+    return self._space_segment
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SpaceTraceSpan():list() / client:SpaceTraceSpan():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SpaceTraceSpan(data)
+  local EntityMod = require("entity.space_trace_span_entity")
+  if data == nil then
+    if self._space_trace_span == nil then
+      self._space_trace_span = EntityMod.new(self, nil)
+    end
+    return self._space_trace_span
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Spark():list() / client:Spark():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Spark(data)
+  local EntityMod = require("entity.spark_entity")
+  if data == nil then
+    if self._spark == nil then
+      self._spark = EntityMod.new(self, nil)
+    end
+    return self._spark
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SparkAgentIntegration():list() / client:SparkAgentIntegration():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SparkAgentIntegration(data)
+  local EntityMod = require("entity.spark_agent_integration_entity")
+  if data == nil then
+    if self._spark_agent_integration == nil then
+      self._spark_agent_integration = EntityMod.new(self, nil)
+    end
+    return self._spark_agent_integration
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:SparkAgentLocalThread():list() / client:SparkAgentLocalThread():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:SparkAgentLocalThread(data)
@@ -3218,6 +7390,90 @@ function ComposalSDK:SparkAgentLocalThread(data)
       self._spark_agent_local_thread = EntityMod.new(self, nil)
     end
     return self._spark_agent_local_thread
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SparkAgentSite():list() / client:SparkAgentSite():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SparkAgentSite(data)
+  local EntityMod = require("entity.spark_agent_site_entity")
+  if data == nil then
+    if self._spark_agent_site == nil then
+      self._spark_agent_site = EntityMod.new(self, nil)
+    end
+    return self._spark_agent_site
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SparkAgentSkill():list() / client:SparkAgentSkill():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SparkAgentSkill(data)
+  local EntityMod = require("entity.spark_agent_skill_entity")
+  if data == nil then
+    if self._spark_agent_skill == nil then
+      self._spark_agent_skill = EntityMod.new(self, nil)
+    end
+    return self._spark_agent_skill
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SparkAgentThread():list() / client:SparkAgentThread():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SparkAgentThread(data)
+  local EntityMod = require("entity.spark_agent_thread_entity")
+  if data == nil then
+    if self._spark_agent_thread == nil then
+      self._spark_agent_thread = EntityMod.new(self, nil)
+    end
+    return self._spark_agent_thread
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SparkCredit():list() / client:SparkCredit():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SparkCredit(data)
+  local EntityMod = require("entity.spark_credit_entity")
+  if data == nil then
+    if self._spark_credit == nil then
+      self._spark_credit = EntityMod.new(self, nil)
+    end
+    return self._spark_credit
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SparkCreditAgentUsage():list() / client:SparkCreditAgentUsage():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SparkCreditAgentUsage(data)
+  local EntityMod = require("entity.spark_credit_agent_usage_entity")
+  if data == nil then
+    if self._spark_credit_agent_usage == nil then
+      self._spark_credit_agent_usage = EntityMod.new(self, nil)
+    end
+    return self._spark_credit_agent_usage
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SparkCreditUsageTotal():list() / client:SparkCreditUsageTotal():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SparkCreditUsageTotal(data)
+  local EntityMod = require("entity.spark_credit_usage_total_entity")
+  if data == nil then
+    if self._spark_credit_usage_total == nil then
+      self._spark_credit_usage_total = EntityMod.new(self, nil)
+    end
+    return self._spark_credit_usage_total
   end
   return EntityMod.new(self, data)
 end
@@ -3265,6 +7521,76 @@ function ComposalSDK:StaticSiteDomain(data)
 end
 
 
+-- Idiomatic facade: client:StatusChange():list() / client:StatusChange():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:StatusChange(data)
+  local EntityMod = require("entity.status_change_entity")
+  if data == nil then
+    if self._status_change == nil then
+      self._status_change = EntityMod.new(self, nil)
+    end
+    return self._status_change
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:StatusCommit():list() / client:StatusCommit():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:StatusCommit(data)
+  local EntityMod = require("entity.status_commit_entity")
+  if data == nil then
+    if self._status_commit == nil then
+      self._status_commit = EntityMod.new(self, nil)
+    end
+    return self._status_commit
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:StatusPatchset():list() / client:StatusPatchset():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:StatusPatchset(data)
+  local EntityMod = require("entity.status_patchset_entity")
+  if data == nil then
+    if self._status_patchset == nil then
+      self._status_patchset = EntityMod.new(self, nil)
+    end
+    return self._status_patchset
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:StripeWebhook():list() / client:StripeWebhook():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:StripeWebhook(data)
+  local EntityMod = require("entity.stripe_webhook_entity")
+  if data == nil then
+    if self._stripe_webhook == nil then
+      self._stripe_webhook = EntityMod.new(self, nil)
+    end
+    return self._stripe_webhook
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SubmitTelemetry():list() / client:SubmitTelemetry():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SubmitTelemetry(data)
+  local EntityMod = require("entity.submit_telemetry_entity")
+  if data == nil then
+    if self._submit_telemetry == nil then
+      self._submit_telemetry = EntityMod.new(self, nil)
+    end
+    return self._submit_telemetry
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:SubscriptionModel():list() / client:SubscriptionModel():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:SubscriptionModel(data)
@@ -3279,6 +7605,76 @@ function ComposalSDK:SubscriptionModel(data)
 end
 
 
+-- Idiomatic facade: client:SwarmEvent():list() / client:SwarmEvent():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SwarmEvent(data)
+  local EntityMod = require("entity.swarm_event_entity")
+  if data == nil then
+    if self._swarm_event == nil then
+      self._swarm_event = EntityMod.new(self, nil)
+    end
+    return self._swarm_event
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SwarmLive():list() / client:SwarmLive():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SwarmLive(data)
+  local EntityMod = require("entity.swarm_live_entity")
+  if data == nil then
+    if self._swarm_live == nil then
+      self._swarm_live = EntityMod.new(self, nil)
+    end
+    return self._swarm_live
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SwarmNote():list() / client:SwarmNote():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SwarmNote(data)
+  local EntityMod = require("entity.swarm_note_entity")
+  if data == nil then
+    if self._swarm_note == nil then
+      self._swarm_note = EntityMod.new(self, nil)
+    end
+    return self._swarm_note
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:SwarmTask():list() / client:SwarmTask():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:SwarmTask(data)
+  local EntityMod = require("entity.swarm_task_entity")
+  if data == nil then
+    if self._swarm_task == nil then
+      self._swarm_task = EntityMod.new(self, nil)
+    end
+    return self._swarm_task
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:TaskLease():list() / client:TaskLease():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:TaskLease(data)
+  local EntityMod = require("entity.task_lease_entity")
+  if data == nil then
+    if self._task_lease == nil then
+      self._task_lease = EntityMod.new(self, nil)
+    end
+    return self._task_lease
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:ThreadPreview():list() / client:ThreadPreview():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:ThreadPreview(data)
@@ -3288,6 +7684,188 @@ function ComposalSDK:ThreadPreview(data)
       self._thread_preview = EntityMod.new(self, nil)
     end
     return self._thread_preview
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ThreadPreviewAccess():list() / client:ThreadPreviewAccess():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ThreadPreviewAccess(data)
+  local EntityMod = require("entity.thread_preview_access_entity")
+  if data == nil then
+    if self._thread_preview_access == nil then
+      self._thread_preview_access = EntityMod.new(self, nil)
+    end
+    return self._thread_preview_access
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:ToolFeedback():list() / client:ToolFeedback():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:ToolFeedback(data)
+  local EntityMod = require("entity.tool_feedback_entity")
+  if data == nil then
+    if self._tool_feedback == nil then
+      self._tool_feedback = EntityMod.new(self, nil)
+    end
+    return self._tool_feedback
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Transcript():list() / client:Transcript():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:Transcript(data)
+  local EntityMod = require("entity.transcript_entity")
+  if data == nil then
+    if self._transcript == nil then
+      self._transcript = EntityMod.new(self, nil)
+    end
+    return self._transcript
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:V1Message():list() / client:V1Message():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:V1Message(data)
+  local EntityMod = require("entity.v1_message_entity")
+  if data == nil then
+    if self._v1_message == nil then
+      self._v1_message = EntityMod.new(self, nil)
+    end
+    return self._v1_message
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:VcBranch():list() / client:VcBranch():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:VcBranch(data)
+  local EntityMod = require("entity.vc_branch_entity")
+  if data == nil then
+    if self._vc_branch == nil then
+      self._vc_branch = EntityMod.new(self, nil)
+    end
+    return self._vc_branch
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:VcBrowser():list() / client:VcBrowser():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:VcBrowser(data)
+  local EntityMod = require("entity.vc_browser_entity")
+  if data == nil then
+    if self._vc_browser == nil then
+      self._vc_browser = EntityMod.new(self, nil)
+    end
+    return self._vc_browser
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:VcChange():list() / client:VcChange():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:VcChange(data)
+  local EntityMod = require("entity.vc_change_entity")
+  if data == nil then
+    if self._vc_change == nil then
+      self._vc_change = EntityMod.new(self, nil)
+    end
+    return self._vc_change
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:VcChangeGroup():list() / client:VcChangeGroup():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:VcChangeGroup(data)
+  local EntityMod = require("entity.vc_change_group_entity")
+  if data == nil then
+    if self._vc_change_group == nil then
+      self._vc_change_group = EntityMod.new(self, nil)
+    end
+    return self._vc_change_group
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:VcFile():list() / client:VcFile():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:VcFile(data)
+  local EntityMod = require("entity.vc_file_entity")
+  if data == nil then
+    if self._vc_file == nil then
+      self._vc_file = EntityMod.new(self, nil)
+    end
+    return self._vc_file
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:VcMergeQueue():list() / client:VcMergeQueue():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:VcMergeQueue(data)
+  local EntityMod = require("entity.vc_merge_queue_entity")
+  if data == nil then
+    if self._vc_merge_queue == nil then
+      self._vc_merge_queue = EntityMod.new(self, nil)
+    end
+    return self._vc_merge_queue
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:VcStack():list() / client:VcStack():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:VcStack(data)
+  local EntityMod = require("entity.vc_stack_entity")
+  if data == nil then
+    if self._vc_stack == nil then
+      self._vc_stack = EntityMod.new(self, nil)
+    end
+    return self._vc_stack
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:VcsNode():list() / client:VcsNode():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:VcsNode(data)
+  local EntityMod = require("entity.vcs_node_entity")
+  if data == nil then
+    if self._vcs_node == nil then
+      self._vcs_node = EntityMod.new(self, nil)
+    end
+    return self._vcs_node
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:VcsSetting():list() / client:VcsSetting():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:VcsSetting(data)
+  local EntityMod = require("entity.vcs_setting_entity")
+  if data == nil then
+    if self._vcs_setting == nil then
+      self._vcs_setting = EntityMod.new(self, nil)
+    end
+    return self._vcs_setting
   end
   return EntityMod.new(self, data)
 end
@@ -3377,6 +7955,34 @@ function ComposalSDK:VerifyBrowserSession(data)
 end
 
 
+-- Idiomatic facade: client:VerifyEmailVerification():list() / client:VerifyEmailVerification():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:VerifyEmailVerification(data)
+  local EntityMod = require("entity.verify_email_verification_entity")
+  if data == nil then
+    if self._verify_email_verification == nil then
+      self._verify_email_verification = EntityMod.new(self, nil)
+    end
+    return self._verify_email_verification
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:VerifySignalIntegration():list() / client:VerifySignalIntegration():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:VerifySignalIntegration(data)
+  local EntityMod = require("entity.verify_signal_integration_entity")
+  if data == nil then
+    if self._verify_signal_integration == nil then
+      self._verify_signal_integration = EntityMod.new(self, nil)
+    end
+    return self._verify_signal_integration
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:VerifyStaticSiteDomain():list() / client:VerifyStaticSiteDomain():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:VerifyStaticSiteDomain(data)
@@ -3405,6 +8011,20 @@ function ComposalSDK:VersionLog(data)
 end
 
 
+-- Idiomatic facade: client:WaitlistApplication():list() / client:WaitlistApplication():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:WaitlistApplication(data)
+  local EntityMod = require("entity.waitlist_application_entity")
+  if data == nil then
+    if self._waitlist_application == nil then
+      self._waitlist_application = EntityMod.new(self, nil)
+    end
+    return self._waitlist_application
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:WebBotAuth():list() / client:WebBotAuth():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:WebBotAuth(data)
@@ -3414,6 +8034,20 @@ function ComposalSDK:WebBotAuth(data)
       self._web_bot_auth = EntityMod.new(self, nil)
     end
     return self._web_bot_auth
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:WebhookGitlab():list() / client:WebhookGitlab():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:WebhookGitlab(data)
+  local EntityMod = require("entity.webhook_gitlab_entity")
+  if data == nil then
+    if self._webhook_gitlab == nil then
+      self._webhook_gitlab = EntityMod.new(self, nil)
+    end
+    return self._webhook_gitlab
   end
   return EntityMod.new(self, data)
 end
@@ -3456,6 +8090,62 @@ function ComposalSDK:WorkflowTriggerSkipped(data)
       self._workflow_trigger_skipped = EntityMod.new(self, nil)
     end
     return self._workflow_trigger_skipped
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:WorkspaceActivity():list() / client:WorkspaceActivity():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:WorkspaceActivity(data)
+  local EntityMod = require("entity.workspace_activity_entity")
+  if data == nil then
+    if self._workspace_activity == nil then
+      self._workspace_activity = EntityMod.new(self, nil)
+    end
+    return self._workspace_activity
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:WorkspaceActivityNotification():list() / client:WorkspaceActivityNotification():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:WorkspaceActivityNotification(data)
+  local EntityMod = require("entity.workspace_activity_notification_entity")
+  if data == nil then
+    if self._workspace_activity_notification == nil then
+      self._workspace_activity_notification = EntityMod.new(self, nil)
+    end
+    return self._workspace_activity_notification
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:WorkspaceSpace():list() / client:WorkspaceSpace():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:WorkspaceSpace(data)
+  local EntityMod = require("entity.workspace_space_entity")
+  if data == nil then
+    if self._workspace_space == nil then
+      self._workspace_space = EntityMod.new(self, nil)
+    end
+    return self._workspace_space
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:WorkspaceSpacePreference():list() / client:WorkspaceSpacePreference():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:WorkspaceSpacePreference(data)
+  local EntityMod = require("entity.workspace_space_preference_entity")
+  if data == nil then
+    if self._workspace_space_preference == nil then
+      self._workspace_space_preference = EntityMod.new(self, nil)
+    end
+    return self._workspace_space_preference
   end
   return EntityMod.new(self, data)
 end

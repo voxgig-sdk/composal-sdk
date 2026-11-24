@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "bazel_execution": {
+      "BAZEL_EXECUTION00": {
+        "id": "BAZEL_EXECUTION00"
+      },
+      "BAZEL_EXECUTION01": {
+        "id": "BAZEL_EXECUTION01"
+      },
+      "BAZEL_EXECUTION02": {
+        "id": "BAZEL_EXECUTION02"
+      }
+    }
+  },
+  "new": {
+    "bazel_execution": {
+      "bazel_execution_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/bazel/executions/{id}/complete": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/bazel/executions/{id}/fail": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/bazel/executions/{id}/heartbeat": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/bazel/executions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/bazel/executions/claim_next": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/bazel/executions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/bazel/executions/lookup": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

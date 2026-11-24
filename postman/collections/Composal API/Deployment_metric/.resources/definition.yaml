@@ -1,0 +1,19 @@
+$kind: collection
+id: "31b12904-422e-5bcb-b179-3d6392ac2058"
+description: |-
+  The **deployment_metric** entity, which belongs to a organization. Its requests address one record by `{{deployment_metric_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `auto_deploy` | boolean | yes |  |
+  | `environment_id` | string | yes |  |
+  | `environment_name` | string | yes |  |
+  | `placement_id` | string | yes |  |
+  | `redeploy` | boolean | yes |  |
+  | `region_count` | integer | yes |  |
+  | `replicas_per_region` | integer | yes |  |
+  | `rollout_strategy` | string | yes |  |
+  | `service_id` | string | yes |  |
+  | `service_name` | string | yes |  |
+  | `source_ref` | string | yes |  |
+order: 206000

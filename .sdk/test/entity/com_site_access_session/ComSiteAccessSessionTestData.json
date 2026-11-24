@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "com_site_access_session": {
+      "COM_SITE_ACCESS_SESSION00": {
+        "cookie_name": "s28",
+        "host": "s29",
+        "max_age": 42,
+        "session_token": "s2b",
+        "id": "COM_SITE_ACCESS_SESSION00"
+      },
+      "COM_SITE_ACCESS_SESSION01": {
+        "cookie_name": "s50",
+        "host": "s51",
+        "max_age": 82,
+        "session_token": "s53",
+        "id": "COM_SITE_ACCESS_SESSION01"
+      },
+      "COM_SITE_ACCESS_SESSION02": {
+        "cookie_name": "s78",
+        "host": "s79",
+        "max_age": 122,
+        "session_token": "s7b",
+        "id": "COM_SITE_ACCESS_SESSION02"
+      }
+    }
+  },
+  "new": {
+    "com_site_access_session": {
+      "com_site_access_session_ref01": {
+        "cookie_name": "sa0",
+        "host": "sa1",
+        "max_age": 162,
+        "session_token": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/com_site_access/sessions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

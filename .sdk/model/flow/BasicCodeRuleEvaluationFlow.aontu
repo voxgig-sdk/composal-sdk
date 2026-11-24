@@ -1,0 +1,23 @@
+# BasicCodeRuleEvaluationFlow
+
+main: kit: flow: BasicCodeRuleEvaluationFlow:
+{
+  entity: "code_rule_evaluation",
+  kind: "basic",
+  name: "BasicCodeRuleEvaluationFlow",
+  step: [
+    {
+      i: {
+        ref: "code_rule_evaluation_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicCodeRuleEvaluationFlow"
+}

@@ -1,0 +1,18 @@
+$kind: http-request
+id: "166db28a-9891-53c1-b023-982423abd300"
+description: |-
+  The `load` operation of **repository_sandbox_environment**.
+
+  SDK: `client.RepositorySandboxEnvironment().load({ id: "example_id", repository_id: "example" })`
+url: "{{base}}/api/v1/repositories/:repository/sandbox_environments/:profile"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: repository
+    value: "{{repository_id}}"
+    description: "Input: repository_id."
+  - key: profile
+    value: "{{repository_sandbox_environment_id}}"
+    description: The repository_sandbox_environment this request addresses.
+order: 1000

@@ -1,0 +1,51 @@
+# BasicGithubCiRepositoryCompatibilityReportFlow
+
+main: kit: flow: BasicGithubCiRepositoryCompatibilityReportFlow:
+{
+  entity: "github_ci_repository_compatibility_report",
+  kind: "basic",
+  name: "BasicGithubCiRepositoryCompatibilityReportFlow",
+  step: [
+    {
+      m: {
+        github_ci_repository_id: "github_ci_repository01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "github_ci_repository_compatibility_report_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "github_ci_repository_compatibility_report_ref01",
+        srcdatavar: "github_ci_repository_compatibility_report_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        github_ci_repository_id: "github_ci_repository01",
+        id: "github_ci_repository_compatibility_report01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-github_ci_repository_compatibility_report_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGithubCiRepositoryCompatibilityReportFlow"
+}

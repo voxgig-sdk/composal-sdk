@@ -1,0 +1,29 @@
+$kind: http-request
+id: "28d97a84-1f01-5a73-8df7-afc58e4369fb"
+description: |-
+  The `create` operation of **organization_run_usage**.
+
+  SDK: `client.OrganizationRunUsage().create({ organization_id: "example" })`
+url: "{{base}}/api/v1/spark/organizations/:organization_id/run_usages"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_run_usage belongs to.
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("organization_run_usage_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

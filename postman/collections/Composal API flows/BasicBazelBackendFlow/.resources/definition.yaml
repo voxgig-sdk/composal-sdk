@@ -1,0 +1,4 @@
+$kind: collection
+id: "91e2d523-6d49-587f-b9ff-6a01ded5c03c"
+description: "The `BasicBazelBackendFlow` flow of **bazel_backend**."
+order: 97000

@@ -1,0 +1,18 @@
+$kind: http-request
+id: "1f896266-2250-51cd-96b4-a63dc3ec56ae"
+description: |-
+  The `load` operation of **docker_builder_session**.
+
+  SDK: `client.DockerBuilderSession().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/docker_builder_sessions/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this docker_builder_session belongs to.
+  - key: id
+    value: "{{docker_builder_session_id}}"
+    description: The docker_builder_session this request addresses.
+order: 1000

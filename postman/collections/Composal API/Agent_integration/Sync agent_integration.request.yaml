@@ -1,0 +1,22 @@
+$kind: http-request
+id: "25b208b5-e9bc-540c-87bb-0bbdd7e1b251"
+description: |-
+  The `sync` action of **agent_integration**, a route of its `create` operation.
+
+  SDK: `client.AgentIntegration().create({ "organization_id": "organization_id", "id": "ID", $action: "sync" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_integrations/:id/sync"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_integration belongs to.
+  - key: id
+    value: "{{agent_integration_id}}"
+    description: The agent_integration this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 12000

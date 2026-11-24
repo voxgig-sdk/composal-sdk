@@ -1,0 +1,19 @@
+$kind: http-request
+id: "467d82fc-7248-508f-a3c4-2bf0a7eea211"
+description: |-
+  The `expire` action of **artifact**, a route of its `create` operation.
+
+  SDK: `client.Artifact().create({ "id": "ID", $action: "expire" })`
+url: "{{base}}/api/v1/artifacts/artifacts/:id/expire"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_id}}"
+    description: The artifact this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

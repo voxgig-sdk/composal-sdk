@@ -1,0 +1,66 @@
+{
+  "existing": {
+    "execution_desired_state": {
+      "EXECUTION_DESIRED_STATE00": {
+        "desired_state": {},
+        "id": "EXECUTION_DESIRED_STATE00",
+        "stop_observed": true
+      },
+      "EXECUTION_DESIRED_STATE01": {
+        "desired_state": {},
+        "id": "EXECUTION_DESIRED_STATE01",
+        "stop_observed": true
+      },
+      "EXECUTION_DESIRED_STATE02": {
+        "desired_state": {},
+        "id": "EXECUTION_DESIRED_STATE02",
+        "stop_observed": true
+      }
+    }
+  },
+  "new": {
+    "execution_desired_state": {
+      "execution_desired_state_ref01": {
+        "desired_state": {},
+        "stop_observed": true
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/execution/desired_states/{id}/reconcile": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/execution/desired_states": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/execution/desired_states": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/execution/desired_states/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/execution/desired_states/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/execution/desired_states/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/execution/desired_states/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+$kind: http-request
+id: "7e0828e9-3485-57f0-b9fa-1d78826c78c6"
+description: |-
+  The `name` action of **vc_stack**, a route of its `update` operation.
+
+  SDK: `client.VcStack().update({ "organization_id": "organization_id", "repo_id": "repo_id", "id": "ID", $action: "name" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/stacks/:code/name"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_stack belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_stack belongs to.
+  - key: code
+    value: "{{vc_stack_id}}"
+    description: The vc_stack this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example"
+    }
+order: 3000

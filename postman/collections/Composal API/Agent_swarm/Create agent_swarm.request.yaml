@@ -1,0 +1,94 @@
+$kind: http-request
+id: f44163ec-8359-5d28-a028-8bd4f65700f2
+description: |-
+  The `create` operation of **agent_swarm**.
+
+  SDK: `client.AgentSwarm().create({ organization_slug: "example", target: {} })`
+url: "{{base}}/api/v1/agent/swarms"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "organization_slug": "example",
+      "slug": "example",
+      "goal": "example",
+      "repository": "example",
+      "base_bookmark": "example",
+      "target": {
+        "kind": "trunk",
+        "name": "example"
+      },
+      "base_revision": "example",
+      "policy": {
+        "platform": "composal",
+        "max_parallel_workers": 1,
+        "max_depth": 1,
+        "max_subplanner_iterations": 1,
+        "max_root_iterations": 1,
+        "max_tasks": 1,
+        "max_runs": 1,
+        "max_task_attempts": 1,
+        "task_deadline_seconds": 1,
+        "swarm_deadline_seconds": 1,
+        "landing": "example",
+        "deploy": "example",
+        "restack_attempts": 1,
+        "reserve_org_slot": true,
+        "submit_on_failure": true,
+        "plan_only": true,
+        "environment_profile": "example",
+        "models": {}
+      },
+      "budget": {
+        "max_usd": 1,
+        "max_wall_clock_seconds": 1,
+        "cleanup_reserve_usd": 1,
+        "build_reserve_usd": 1,
+        "max_build_seconds": 1
+      },
+      "environment": {},
+      "model_provider": "example",
+      "model": "example",
+      "base_ref": "example",
+      "concurrency_key": "example",
+      "task_template_json": "example",
+      "queued_at": "2026-01-01T00:00:00Z",
+      "tasks": [
+        {
+          "repo_url": "https://example.com",
+          "prompt": "example",
+          "title": "example",
+          "role": "worker",
+          "owned_paths": [
+            "example"
+          ],
+          "acceptance_commands": [
+            {
+              "command": "example",
+              "timeout_seconds": 1
+            }
+          ],
+          "depends_on": [
+            1
+          ],
+          "stack_after": 1,
+          "environment_profile": "example",
+          "harness": "roder"
+        }
+      ]
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("agent_swarm_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

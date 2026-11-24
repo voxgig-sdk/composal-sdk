@@ -1,0 +1,11 @@
+$kind: http-request
+id: "14b1bbf8-fb9e-501f-b2a0-28f8f30b82ea"
+description: |-
+  The `csrf` action of **auth**, a route of its `load` operation.
+
+  SDK: `client.Auth().load({ $action: "csrf" })`
+url: "{{base}}/api/v1/auth/csrf"
+method: GET
+headers:
+  Accept: application/json
+order: 2000

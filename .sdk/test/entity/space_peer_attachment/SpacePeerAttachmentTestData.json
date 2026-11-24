@@ -1,0 +1,50 @@
+{
+  "existing": {
+    "space_peer_attachment": {
+      "SPACE_PEER_ATTACHMENT00": {
+        "id": "SPACE_PEER_ATTACHMENT00",
+        "space_id": "SPACE01"
+      },
+      "SPACE_PEER_ATTACHMENT01": {
+        "id": "SPACE_PEER_ATTACHMENT01",
+        "space_id": "SPACE01"
+      },
+      "SPACE_PEER_ATTACHMENT02": {
+        "id": "SPACE_PEER_ATTACHMENT02",
+        "space_id": "SPACE01"
+      }
+    }
+  },
+  "new": {
+    "space_peer_attachment": {
+      "space_peer_attachment_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/networking/spaces/{space_id}/peer_attachments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/networking/spaces/{space_id}/peer_attachments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/networking/spaces/{space_id}/peer_attachments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/networking/spaces/{space_id}/peer_attachments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/networking/spaces/{space_id}/peer_attachments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

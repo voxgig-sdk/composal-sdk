@@ -1,0 +1,14 @@
+$kind: collection
+id: de32231f-64ad-5ff1-818f-c97ea756e9b2
+description: |-
+  The **vc_change_group** entity, which belongs to a organization and a repo. Its requests address one record by `{{vc_change_group_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `changes` | array | yes |  |
+  | `id` | string |  |  |
+  | `name` | string |  |  |
+  | `number` | integer |  |  |
+  | `status` | string | yes |  |
+  | `title` | string | yes |  |
+order: 526000

@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "cache_namespace_entry": {
+      "CACHE_NAMESPACE_ENTRY00": {
+        "id": "CACHE_NAMESPACE_ENTRY00",
+        "cache_namespace_id": "CACHE_NAMESPACE01"
+      },
+      "CACHE_NAMESPACE_ENTRY01": {
+        "id": "CACHE_NAMESPACE_ENTRY01",
+        "cache_namespace_id": "CACHE_NAMESPACE01"
+      },
+      "CACHE_NAMESPACE_ENTRY02": {
+        "id": "CACHE_NAMESPACE_ENTRY02",
+        "cache_namespace_id": "CACHE_NAMESPACE01"
+      }
+    }
+  },
+  "new": {
+    "cache_namespace_entry": {
+      "cache_namespace_entry_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/evict": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/issue_contract": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/record_hit": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/record_miss": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

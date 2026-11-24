@@ -1,0 +1,8 @@
+$kind: collection
+id: f36756da-2bac-5c8c-9ee3-e36c20274cc4
+description: |-
+  The **ci_status** entity, which belongs to a organization and a repo. Its requests address one record by `{{ci_status_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 175000

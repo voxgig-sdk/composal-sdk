@@ -15,4 +15,4 @@ description: |-
   | `name` | string | yes |  |
   | `purpose` | string | yes |  |
   | `signing_key` | string | yes |  |
-order: 44000
+order: 68000

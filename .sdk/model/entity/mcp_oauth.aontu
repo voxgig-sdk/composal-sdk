@@ -1,0 +1,273 @@
+# Entity: mcp_oauth
+
+main: kit: entity: mcp_oauth: {
+
+  alias: field: {}
+
+  name: "mcp_oauth"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "all_organizations"
+            "approve"
+            "organization_id"
+            "request"
+          ]
+          co: {
+            id: "POST /api/v1/mcp/oauth/consent"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/mcp/oauth/consent"
+          q: {
+            "$action": "consent"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "mcp"
+            }
+            {
+              lit: "oauth"
+            }
+            {
+              lit: "consent"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/mcp/oauth/register"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/mcp/oauth/register"
+          q: {
+            "$action": "register"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "mcp"
+            }
+            {
+              lit: "oauth"
+            }
+            {
+              lit: "register"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/mcp/oauth/revoke"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/mcp/oauth/revoke"
+          q: {
+            "$action": "revoke"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "mcp"
+            }
+            {
+              lit: "oauth"
+            }
+            {
+              lit: "revoke"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/mcp/oauth/token"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/mcp/oauth/token"
+          q: {
+            "$action": "token"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "mcp"
+            }
+            {
+              lit: "oauth"
+            }
+            {
+              lit: "token"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/mcp/oauth/consent"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "request"
+                or: "request"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/mcp/oauth/consent"
+          q: {
+            "$action": "consent"
+            exist: [
+              "request"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "mcp"
+            }
+            {
+              lit: "oauth"
+            }
+            {
+              lit: "consent"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.organizations`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/mcp/oauth/authorize"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/mcp/oauth/authorize"
+          q: {
+            "$action": "authorize"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "mcp"
+            }
+            {
+              lit: "oauth"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

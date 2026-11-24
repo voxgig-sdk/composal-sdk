@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "deployment_metric": {
+      "DEPLOYMENT_METRIC00": {
+        "auto_deploy": true,
+        "environment_id": "ENVIRONMENT01",
+        "environment_name": "s70",
+        "placement_id": "PLACEMENT01",
+        "redeploy": true,
+        "region_count": 115,
+        "replicas_per_region": 116,
+        "rollout_strategy": "s75",
+        "service_id": "SERVICE01",
+        "service_name": "s77",
+        "source_ref": "s78",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEPLOYMENT_METRIC01": {
+        "auto_deploy": true,
+        "environment_id": "ENVIRONMENT01",
+        "environment_name": "sde",
+        "placement_id": "PLACEMENT01",
+        "redeploy": true,
+        "region_count": 225,
+        "replicas_per_region": 226,
+        "rollout_strategy": "se3",
+        "service_id": "SERVICE01",
+        "service_name": "se5",
+        "source_ref": "se6",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEPLOYMENT_METRIC02": {
+        "auto_deploy": true,
+        "environment_id": "ENVIRONMENT01",
+        "environment_name": "s14c",
+        "placement_id": "PLACEMENT01",
+        "redeploy": true,
+        "region_count": 335,
+        "replicas_per_region": 336,
+        "rollout_strategy": "s151",
+        "service_id": "SERVICE01",
+        "service_name": "s153",
+        "source_ref": "s154",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "deployment_metric": {
+      "deployment_metric_ref01": {
+        "auto_deploy": true,
+        "environment_id": "ENVIRONMENT01",
+        "environment_name": "s1ba",
+        "placement_id": "PLACEMENT01",
+        "redeploy": true,
+        "region_count": 445,
+        "replicas_per_region": 446,
+        "rollout_strategy": "s1bf",
+        "service_id": "SERVICE01",
+        "service_name": "s1c1",
+        "source_ref": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/pages/deployments/metrics": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

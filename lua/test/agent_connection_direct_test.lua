@@ -32,7 +32,7 @@ describe("AgentConnectionDirect", function()
       return
     end
     if setup.live then
-      for _, _live_key in ipairs({"agent01", "organization01"}) do
+      for _, _live_key in ipairs({"organization01"}) do
         if setup.idmap[_live_key] == nil then
           runner.live_miss(pending, LIVE_STRICT, "Live test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_AGENT_CONNECTION_ENTID")
         end
@@ -46,18 +46,13 @@ describe("AgentConnectionDirect", function()
     local params = {}
     local query = {}
     if setup.live then
-      params["agent_id"] = setup.idmap["agent01"]
-    else
-      params["agent_id"] = "direct01"
-    end
-    if setup.live then
       params["organization_id"] = setup.idmap["organization01"]
     else
-      params["organization_id"] = "direct02"
+      params["organization_id"] = "direct01"
     end
 
     local result, err = client:direct({
-      path = "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections",
+      path = "api/v1/organizations/{organization_id}/agent_connections",
       method = "GET",
       params = params,
       query = query,
@@ -88,7 +83,7 @@ describe("AgentConnectionDirect", function()
       return
     end
     if setup.live then
-      for _, _live_key in ipairs({"agent01", "organization01"}) do
+      for _, _live_key in ipairs({"organization01"}) do
         if setup.idmap[_live_key] == nil then
           runner.live_miss(pending, LIVE_STRICT, "Live test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_AGENT_CONNECTION_ENTID")
         end
@@ -102,11 +97,10 @@ describe("AgentConnectionDirect", function()
     local params = {}
     local query = {}
     if setup.live then
-      query["change"] = "configure"
       local list_result, list_err = client:direct({
-        path = "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections",
+        path = "api/v1/organizations/{organization_id}/agent_connections",
         method = "GET",
-        params = {["agent_id"] = setup.idmap["agent01"], ["organization_id"] = setup.idmap["organization01"]},
+        params = {["organization_id"] = setup.idmap["organization01"]},
       })
       if not live_ok(list_result, list_err) then
         runner.live_miss(pending, LIVE_STRICT, "Live list discovery failed: " .. runner.live_describe(list_result, list_err))
@@ -124,17 +118,14 @@ describe("AgentConnectionDirect", function()
         runner.live_miss(pending, LIVE_STRICT, "Live load blocked: discovery returned no usable identity")
       end
       params["id"] = found
-      params["agent_id"] = setup.idmap["agent01"]
       params["organization_id"] = setup.idmap["organization01"]
     else
-      params["agent_id"] = "direct01"
-      params["id"] = "direct02"
-      params["id"] = "direct03"
-      params["organization_id"] = "direct04"
+      params["id"] = "direct01"
+      params["organization_id"] = "direct02"
     end
 
     local result, err = client:direct({
-      path = "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections/{id}/change",
+      path = "api/v1/organizations/{organization_id}/agent_connections/{id}",
       method = "GET",
       params = params,
       query = query,

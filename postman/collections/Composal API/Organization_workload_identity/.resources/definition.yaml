@@ -1,0 +1,9 @@
+$kind: collection
+id: "4d440f3e-9a88-5943-b041-5b6c73c74e65"
+description: |-
+  The **organization_workload_identity** entity, which belongs to a organization. Its requests address one record by `{{organization_workload_identity_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 358000

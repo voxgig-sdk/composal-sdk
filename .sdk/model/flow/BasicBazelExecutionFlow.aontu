@@ -1,0 +1,36 @@
+# BasicBazelExecutionFlow
+
+main: kit: flow: BasicBazelExecutionFlow:
+{
+  entity: "bazel_execution",
+  kind: "basic",
+  name: "BasicBazelExecutionFlow",
+  step: [
+    {
+      i: {
+        ref: "bazel_execution_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "bazel_execution_ref01",
+        srcdatavar: "bazel_execution_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-bazel_execution_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBazelExecutionFlow"
+}

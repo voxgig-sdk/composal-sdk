@@ -294,9 +294,43 @@ func (e *AgentSkillEntity) streamSteps(ctx *core.Context) error {
 	return nil
 }
 
-func (e *AgentSkillEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
-	return core.UnsupportedOp("load", e.name)
+
+func (e *AgentSkillEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
+	utility := e.utility
+	ctx := utility.MakeContext(map[string]any{
+		"opname":   "load",
+		"ctrl":     ctrl,
+		"match":    e.match,
+		"data":     e.data,
+		"reqmatch": reqmatch,
+	}, e.entctx)
+
+	return e.runOp(ctx, func() {
+		if ctx.Result != nil {
+			if ctx.Result.Resmatch != nil {
+				e.match = ctx.Result.Resmatch
+			}
+			if ctx.Result.Resdata != nil {
+				e.data = map[string]any{}
+				if data := core.ToMapAny(vs.Clone(ctx.Result.Resdata)); data != nil {
+					e.data = data
+				}
+			}
+		}
+	})
 }
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// AgentSkillLoadMatch and returns an AgentSkill. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *AgentSkillEntity) LoadTyped(reqmatch AgentSkillLoadMatch, ctrl map[string]any) (AgentSkill, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return AgentSkill{}, err
+	}
+	return typedFrom[AgentSkill](res), nil
+}
+
 
 
 
@@ -368,9 +402,43 @@ func (e *AgentSkillEntity) CreateTyped(reqdata AgentSkillCreateData, ctrl map[st
 
 
 
-func (e *AgentSkillEntity) Update(_ map[string]any, _ map[string]any) (any, error) {
-	return core.UnsupportedOp("update", e.name)
+
+func (e *AgentSkillEntity) Update(reqdata map[string]any, ctrl map[string]any) (any, error) {
+	utility := e.utility
+	ctx := utility.MakeContext(map[string]any{
+		"opname":  "update",
+		"ctrl":    ctrl,
+		"match":   e.match,
+		"data":    e.data,
+		"reqdata": reqdata,
+	}, e.entctx)
+
+	return e.runOp(ctx, func() {
+		if ctx.Result != nil {
+			if ctx.Result.Resmatch != nil {
+				e.match = ctx.Result.Resmatch
+			}
+			if ctx.Result.Resdata != nil {
+				e.data = map[string]any{}
+				if data := core.ToMapAny(vs.Clone(ctx.Result.Resdata)); data != nil {
+					e.data = data
+				}
+			}
+		}
+	})
 }
+
+// UpdateTyped is the statically-typed variant of Update: it takes an
+// AgentSkillUpdateData and returns an AgentSkill. It delegates to the untyped
+// Update (identical runtime) and converts at the typed boundary.
+func (e *AgentSkillEntity) UpdateTyped(reqdata AgentSkillUpdateData, ctrl map[string]any) (AgentSkill, error) {
+	res, err := e.Update(asMap(reqdata), ctrl)
+	if err != nil {
+		return AgentSkill{}, err
+	}
+	return typedFrom[AgentSkill](res), nil
+}
+
 
 
 func (e *AgentSkillEntity) Patch(_ map[string]any, _ map[string]any) (any, error) {
@@ -378,9 +446,43 @@ func (e *AgentSkillEntity) Patch(_ map[string]any, _ map[string]any) (any, error
 }
 
 
-func (e *AgentSkillEntity) Remove(_ map[string]any, _ map[string]any) (any, error) {
-	return core.UnsupportedOp("remove", e.name)
+
+func (e *AgentSkillEntity) Remove(reqmatch map[string]any, ctrl map[string]any) (any, error) {
+	utility := e.utility
+	ctx := utility.MakeContext(map[string]any{
+		"opname":   "remove",
+		"ctrl":     ctrl,
+		"match":    e.match,
+		"data":     e.data,
+		"reqmatch": reqmatch,
+	}, e.entctx)
+
+	return e.runOp(ctx, func() {
+		if ctx.Result != nil {
+			if ctx.Result.Resmatch != nil {
+				e.match = ctx.Result.Resmatch
+			}
+			if ctx.Result.Resdata != nil {
+				e.data = map[string]any{}
+				if data := core.ToMapAny(vs.Clone(ctx.Result.Resdata)); data != nil {
+					e.data = data
+				}
+			}
+		}
+	})
 }
+
+// RemoveTyped is the statically-typed variant of Remove: it takes an
+// AgentSkillRemoveMatch and returns an AgentSkill. It delegates to the untyped
+// Remove (identical runtime) and converts at the typed boundary.
+func (e *AgentSkillEntity) RemoveTyped(reqmatch AgentSkillRemoveMatch, ctrl map[string]any) (AgentSkill, error) {
+	res, err := e.Remove(asMap(reqmatch), ctrl)
+	if err != nil {
+		return AgentSkill{}, err
+	}
+	return typedFrom[AgentSkill](res), nil
+}
+
 
 
 func (e *AgentSkillEntity) runOp(ctx *core.Context, postDone func()) (out any, err error) {

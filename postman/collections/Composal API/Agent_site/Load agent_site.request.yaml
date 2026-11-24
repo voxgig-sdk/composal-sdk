@@ -1,0 +1,18 @@
+$kind: http-request
+id: "9241407a-2384-5d79-8989-1181aca55772"
+description: |-
+  The `load` operation of **agent_site**.
+
+  SDK: `client.AgentSite().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_sites/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_site belongs to.
+  - key: id
+    value: "{{agent_site_id}}"
+    description: The agent_site this request addresses.
+order: 2000

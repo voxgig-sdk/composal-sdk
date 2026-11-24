@@ -1,0 +1,33 @@
+$kind: http-request
+id: a3a7e0c6-f7d3-5f5b-a378-cee3a4aa4a1f
+description: |-
+  The `create` operation of **waitlist_application**.
+
+  SDK: `client.WaitlistApplication().create({ company_name: "example", company_size: "example", email: "example" })`
+url: "{{base}}/api/v1/waitlist_applications"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "email": "user@example.com",
+      "invite_code": "example",
+      "use_case": "personal",
+      "company_name": "example",
+      "company_size": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("waitlist_application_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

@@ -1,0 +1,13 @@
+$kind: collection
+id: "2d7b9eca-222f-53e4-8369-1729023c243a"
+description: |-
+  The **github_runner_egress** entity, which belongs to a organization. Its requests address one record by `{{github_runner_egress_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `can_request` | boolean | yes |  |
+  | `cidr` | string | yes |  |
+  | `ipv4` | string | yes |  |
+  | `requested_at_label` | string | yes |  |
+  | `status` | string | yes |  |
+order: 269000

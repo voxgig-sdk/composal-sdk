@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "gitlab": {
+      "GITLAB00": {
+        "configured": true,
+        "connections": [],
+        "integrations": [],
+        "inventory_error": "s5d",
+        "next_page": "s5e",
+        "organization": {},
+        "projects": [],
+        "redirect_uri": "s61",
+        "selected_integration_id": "SELECTED_INTEGRATION01",
+        "organization_id": "ORGANIZATION01",
+        "id": "GITLAB00"
+      },
+      "GITLAB01": {
+        "configured": true,
+        "connections": [],
+        "integrations": [],
+        "inventory_error": "sb7",
+        "next_page": "sb8",
+        "organization": {},
+        "projects": [],
+        "redirect_uri": "sbb",
+        "selected_integration_id": "SELECTED_INTEGRATION01",
+        "organization_id": "ORGANIZATION01",
+        "id": "GITLAB01"
+      },
+      "GITLAB02": {
+        "configured": true,
+        "connections": [],
+        "integrations": [],
+        "inventory_error": "s111",
+        "next_page": "s112",
+        "organization": {},
+        "projects": [],
+        "redirect_uri": "s115",
+        "selected_integration_id": "SELECTED_INTEGRATION01",
+        "organization_id": "ORGANIZATION01",
+        "id": "GITLAB02"
+      }
+    }
+  },
+  "new": {
+    "gitlab": {
+      "gitlab_ref01": {
+        "configured": true,
+        "connections": [],
+        "integrations": [],
+        "inventory_error": "s16b",
+        "next_page": "s16c",
+        "organization": {},
+        "projects": [],
+        "redirect_uri": "s16f",
+        "selected_integration_id": "SELECTED_INTEGRATION01"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/gitlab/authorize": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/gitlab": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

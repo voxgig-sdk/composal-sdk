@@ -1,0 +1,22 @@
+$kind: http-request
+id: "75c38545-434d-5a50-95c4-53baf3141769"
+description: |-
+  The `update` operation of **signal_inbound**.
+
+  SDK: `client.SignalInbound().update({ id: "example", inbound_id: "example" })`
+url: "{{base}}/api/v1/signals/inbound/:provider/:inbound_token"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: provider
+    value: "{{signal_inbound_inbound_id}}"
+    description: The signal_inbound this request addresses.
+  - key: inbound_token
+    value: "{{signal_inbound_id}}"
+    description: The signal_inbound this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 1000

@@ -1,0 +1,9 @@
+$kind: collection
+id: "0c20a38e-ba42-5604-a535-a292c6abcabd"
+description: |-
+  The **workspace_activity_notification** entity, which belongs to a organization. Its requests address one record by `{{workspace_activity_notification_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 549000

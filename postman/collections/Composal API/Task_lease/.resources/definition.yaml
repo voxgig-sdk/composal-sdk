@@ -1,0 +1,9 @@
+$kind: collection
+id: "18718d8a-5758-56e5-b01a-058b102d05bc"
+description: |-
+  The **task_lease** entity. Its requests address one record by `{{task_lease_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 517000

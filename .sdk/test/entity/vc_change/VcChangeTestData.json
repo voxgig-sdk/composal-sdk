@@ -1,0 +1,232 @@
+{
+  "existing": {
+    "vc_change": {
+      "VC_CHANGE00": {
+        "activity": [],
+        "canonical_path": "s119",
+        "change": "s11a",
+        "checks": [],
+        "checks_status": "s11c",
+        "description": "s11d",
+        "group": "s11e",
+        "id": "VC_CHANGE00",
+        "jj_change_id": "JJ_CHANGE01",
+        "labels": [],
+        "landing": {},
+        "number": 291,
+        "patchset_number": "s124",
+        "previews": [],
+        "primary_status": "s126",
+        "public_id": "PUBLIC01",
+        "related_changes": [],
+        "relation_chain": [],
+        "restack_state": "s12a",
+        "review_summary": {},
+        "stack": "s12c",
+        "status": "s12d",
+        "sync": {},
+        "target": {},
+        "target_advanced": true,
+        "target_branch": "s131",
+        "title": "s132",
+        "url": "s133",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "VC_CHANGE01": {
+        "activity": [],
+        "canonical_path": "s231",
+        "change": "s232",
+        "checks": [],
+        "checks_status": "s234",
+        "description": "s235",
+        "group": "s236",
+        "id": "VC_CHANGE01",
+        "jj_change_id": "JJ_CHANGE01",
+        "labels": [],
+        "landing": {},
+        "number": 571,
+        "patchset_number": "s23c",
+        "previews": [],
+        "primary_status": "s23e",
+        "public_id": "PUBLIC01",
+        "related_changes": [],
+        "relation_chain": [],
+        "restack_state": "s242",
+        "review_summary": {},
+        "stack": "s244",
+        "status": "s245",
+        "sync": {},
+        "target": {},
+        "target_advanced": true,
+        "target_branch": "s249",
+        "title": "s24a",
+        "url": "s24b",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "VC_CHANGE02": {
+        "activity": [],
+        "canonical_path": "s349",
+        "change": "s34a",
+        "checks": [],
+        "checks_status": "s34c",
+        "description": "s34d",
+        "group": "s34e",
+        "id": "VC_CHANGE02",
+        "jj_change_id": "JJ_CHANGE01",
+        "labels": [],
+        "landing": {},
+        "number": 851,
+        "patchset_number": "s354",
+        "previews": [],
+        "primary_status": "s356",
+        "public_id": "PUBLIC01",
+        "related_changes": [],
+        "relation_chain": [],
+        "restack_state": "s35a",
+        "review_summary": {},
+        "stack": "s35c",
+        "status": "s35d",
+        "sync": {},
+        "target": {},
+        "target_advanced": true,
+        "target_branch": "s361",
+        "title": "s362",
+        "url": "s363",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "vc_change": {
+      "vc_change_ref01": {
+        "activity": [],
+        "canonical_path": "s461",
+        "change": "s462",
+        "checks": [],
+        "checks_status": "s464",
+        "description": "s465",
+        "group": "s466",
+        "jj_change_id": "JJ_CHANGE01",
+        "labels": [],
+        "landing": {},
+        "number": 1131,
+        "patchset_number": "s46c",
+        "previews": [],
+        "primary_status": "s46e",
+        "public_id": "PUBLIC01",
+        "related_changes": [],
+        "relation_chain": [],
+        "restack_state": "s472",
+        "review_summary": {},
+        "stack": "s474",
+        "status": "s475",
+        "sync": {},
+        "target": {},
+        "target_advanced": true,
+        "target_branch": "s479",
+        "title": "s47a",
+        "url": "s47b"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/abandon": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/accept": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/fold": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/github_projection": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/ready": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/retry_ci": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/transcript_chat": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit_ref": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/sync": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/diff": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit_preview": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/ci": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/github_projection": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/state": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/lookup": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/description": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

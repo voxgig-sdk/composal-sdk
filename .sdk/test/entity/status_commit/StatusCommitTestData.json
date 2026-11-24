@@ -1,0 +1,66 @@
+{
+  "existing": {
+    "status_commit": {
+      "STATUS_COMMIT00": {
+        "checks": [],
+        "commit_sha": "s5b",
+        "counts": {},
+        "id": "STATUS_COMMIT00",
+        "status": "s5e",
+        "status_label": "s5f",
+        "status_state": "s60",
+        "status_tone": "s61",
+        "total": 98,
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "STATUS_COMMIT01": {
+        "checks": [],
+        "commit_sha": "sb5",
+        "counts": {},
+        "id": "STATUS_COMMIT01",
+        "status": "sb8",
+        "status_label": "sb9",
+        "status_state": "sba",
+        "status_tone": "sbb",
+        "total": 188,
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "STATUS_COMMIT02": {
+        "checks": [],
+        "commit_sha": "s10f",
+        "counts": {},
+        "id": "STATUS_COMMIT02",
+        "status": "s112",
+        "status_label": "s113",
+        "status_state": "s114",
+        "status_tone": "s115",
+        "total": 278,
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "status_commit": {
+      "status_commit_ref01": {
+        "checks": [],
+        "commit_sha": "s169",
+        "counts": {},
+        "status": "s16c",
+        "status_label": "s16d",
+        "status_state": "s16e",
+        "status_tone": "s16f",
+        "total": 368
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/commits/{commit_sha}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

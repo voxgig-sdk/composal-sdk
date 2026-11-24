@@ -1,0 +1,28 @@
+$kind: http-request
+id: b2c942ea-76b3-5baf-83f8-b8286fdcb307
+description: |-
+  The `transcript_index` action of **repo_agent_session**, a route of its `load` operation.
+
+  SDK: `client.RepoAgentSession().load({ "organization_id": "organization_id", "repo_id": "repo_id", "id": "ID", $action: "transcript_index" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/agent_sessions/:id/transcript_index"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: checkpoint
+    value: ""
+    disabled: true
+  - key: chunk
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_agent_session belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_agent_session belongs to.
+  - key: id
+    value: "{{repo_agent_session_id}}"
+    description: The repo_agent_session this request addresses.
+order: 9000

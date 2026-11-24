@@ -1,0 +1,283 @@
+# Entity: agent_integration_account
+
+main: kit: entity: agent_integration_account: {
+
+  alias: field: {}
+
+  fields: {
+    can_cancel_sign_in: {
+      h: "Can Cancel Sign In"
+      n: "can_cancel_sign_in"
+      r: false
+      sh: "The viewer can cancel the unfinished authorization attempt."
+      t: "`$BOOLEAN`"
+    }
+    can_delete: {
+      h: "Can Delete"
+      n: "can_delete"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_disconnect: {
+      h: "Can Disconnect"
+      n: "can_disconnect"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_enable: {
+      h: "Can Enable"
+      n: "can_enable"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_manage_sharing: {
+      h: "Can Manage Sharing"
+      n: "can_manage_sharing"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_reconnect: {
+      h: "Can Reconnect"
+      n: "can_reconnect"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_sync: {
+      h: "Can Sync"
+      n: "can_sync"
+      r: true
+      sh: "The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished."
+      t: "`$BOOLEAN`"
+    }
+    connected_by: {
+      h: "Connected By"
+      n: "connected_by"
+      r: true
+      sh: "Name of the person whose sign-in this account is."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    connected_by_you: {
+      h: "Connected By You"
+      n: "connected_by_you"
+      r: true
+      sh: "True when the viewer is the person whose sign-in this account is."
+      t: "`$BOOLEAN`"
+    }
+    creation_key_digest: {
+      h: "Creation Key Digest"
+      n: "creation_key_digest"
+      r: false
+      sh: "SHA-256 of the unfinished setup key for its original creator."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    generation: {
+      h: "Generation"
+      n: "generation"
+      r: true
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    provider_disabled_reason: {
+      h: "Provider Disabled Reason"
+      n: "provider_disabled_reason"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    provider_identity: {
+      h: "Provider Identity"
+      n: "provider_identity"
+      r: true
+      t: "`$OBJECT`"
+    }
+    reference: {
+      h: "Reference"
+      n: "reference"
+      r: true
+      sh: "Pins this account's current authorization, as agent_connection_ID:GENERATION."
+      t: "`$STRING`"
+    }
+    sharing_status: {
+      h: "Sharing Status"
+      n: "sharing_status"
+      r: false
+      sh: "Agent account audience, including legacy personal and paused access."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    team_sharing_enabled: {
+      h: "Team Sharing Enabled"
+      n: "team_sharing_enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    team_sharing_version: {
+      h: "Team Sharing Version"
+      n: "team_sharing_version"
+      r: true
+      t: "`$INTEGER`"
+    }
+    toolkit: {
+      h: "Toolkit"
+      n: "toolkit"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "agent_integration_account"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agent_integrations/accounts"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "enableable"
+                or: "enableable"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "toolkit"
+                or: "toolkit"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agent_integrations/accounts"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_integrations"
+            }
+            {
+              lit: "accounts"
+            }
+          ]
+          t: {
+            page: {
+              next: "`body.pagination.next`"
+            }
+            req: "`reqdata`"
+            res: "`body.connections`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

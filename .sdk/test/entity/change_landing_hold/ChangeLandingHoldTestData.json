@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "change_landing_hold": {
+      "CHANGE_LANDING_HOLD00": {
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CHANGE_LANDING_HOLD00"
+      },
+      "CHANGE_LANDING_HOLD01": {
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CHANGE_LANDING_HOLD01"
+      },
+      "CHANGE_LANDING_HOLD02": {
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CHANGE_LANDING_HOLD02"
+      }
+    }
+  },
+  "new": {
+    "change_landing_hold": {
+      "change_landing_hold_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_hold/release": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

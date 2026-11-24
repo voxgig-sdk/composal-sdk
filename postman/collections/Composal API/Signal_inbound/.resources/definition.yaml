@@ -1,0 +1,9 @@
+$kind: collection
+id: a33e8d5a-01cf-5301-9264-b556553f8347
+description: |-
+  The **signal_inbound** entity. Its requests address one record by `{{signal_inbound_inbound_id}}` and `{{signal_inbound_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 470000

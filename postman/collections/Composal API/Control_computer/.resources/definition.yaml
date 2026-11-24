@@ -1,0 +1,13 @@
+$kind: collection
+id: "93162ec5-bf86-5bcb-98e6-0bc70dc80457"
+description: |-
+  The **control_computer** entity, which belongs to a organization. Its requests address one record by `{{control_computer_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `connection` | object | yes |  |
+  | `consent` | object | yes |  |
+  | `device` | object | yes |  |
+  | `id` | string |  |  |
+  | `provider_status` | array |  |  |
+order: 187000

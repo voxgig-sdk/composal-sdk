@@ -1,0 +1,26 @@
+# BasicAgreementFlow
+
+main: kit: flow: BasicAgreementFlow:
+{
+  entity: "agreement",
+  kind: "basic",
+  name: "BasicAgreementFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agreement_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgreementFlow"
+}

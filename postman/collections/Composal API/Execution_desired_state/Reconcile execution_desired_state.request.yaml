@@ -1,0 +1,19 @@
+$kind: http-request
+id: db5d78b7-80de-5514-9459-cc54948607fd
+description: |-
+  The `reconcile` action of **execution_desired_state**, a route of its `create` operation.
+
+  SDK: `client.ExecutionDesiredState().create({ "id": "ID", $action: "reconcile" })`
+url: "{{base}}/api/v1/execution/desired_states/:id/reconcile"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{execution_desired_state_id}}"
+    description: The execution_desired_state this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

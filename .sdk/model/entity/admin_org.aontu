@@ -1,0 +1,549 @@
+# Entity: admin_org
+
+main: kit: entity: admin_org: {
+
+  alias: field: {}
+
+  fields: {
+    billing_email: {
+      h: "Billing Email"
+      n: "billing_email"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    billing_reason: {
+      h: "Billing Reason"
+      n: "billing_reason"
+      r: false
+      sh: "Required when setting an agreed price"
+      t: "`$STRING`"
+    }
+    customize_onboarding_packages: {
+      h: "Customize Onboarding Packages"
+      n: "customize_onboarding_packages"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    deployment_usage_visibility: {
+      h: "Deployment Usage Visibility"
+      n: "deployment_usage_visibility"
+      r: true
+      t: "`$STRING`"
+    }
+    deployment_usage_visible: {
+      h: "Deployment Usage Visible"
+      n: "deployment_usage_visible"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    monthly_price_dollars: {
+      h: "Monthly Price Dollars"
+      n: "monthly_price_dollars"
+      r: false
+      sh: "Ongoing USD workspace price, for example '50.00'"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NUMBER`"
+        ]
+      ]
+    }
+    monthly_price_override_cents: {
+      h: "Monthly Price Override Cents"
+      n: "monthly_price_override_cents"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    onboarding_custom_pricing: {
+      h: "Onboarding Custom Pricing"
+      n: "onboarding_custom_pricing"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    onboarding_package_keys: {
+      h: "Onboarding Package Keys"
+      n: "onboarding_package_keys"
+      r: false
+      sh: "Package keys offered when customizing onboarding."
+      t: [
+        "`$ONE`"
+        [
+          "`$ARRAY`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    owner_email: {
+      fo: "email"
+      h: "Owner Email"
+      n: "owner_email"
+      r: true
+      t: "`$STRING`"
+    }
+    package_id: {
+      h: "Package Id"
+      n: "package_id"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "Active customer package public ID."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    skip_payment: {
+      h: "Skip Payment"
+      n: "skip_payment"
+      r: false
+      sh: "Grant the selected package as an ongoing complimentary subscription with monthly included usage and package limits."
+      t: "`$BOOLEAN`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "admin_org"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/admin/organizations/{org_slug}/checkout_session"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/admin/organizations/{org_slug}/checkout_session"
+          q: {
+            "$action": "checkout_session"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "admin"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "checkout_session"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "billing_reason"
+            "customize_onboarding_packages"
+            "monthly_price_dollars"
+            "name"
+            "onboarding_custom_pricing"
+            "onboarding_package_keys"
+            "owner_email"
+            "package_id"
+            "skip_payment"
+            "slug"
+          ]
+          co: {
+            id: "POST /api/v1/admin/organizations"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/admin/organizations"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "admin"
+            }
+            {
+              lit: "organizations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/admin/organizations"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/admin/organizations"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "admin"
+            }
+            {
+              lit: "organizations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/admin/organizations/{org_slug}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/admin/organizations/{org_slug}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "admin"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "monthly_price_dollars"
+            "reason"
+          ]
+          co: {
+            id: "PUT /api/v1/admin/organizations/{org_slug}/billing_agreement"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/admin/organizations/{org_slug}/billing_agreement"
+          q: {
+            "$action": "billing_agreement"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "admin"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "billing_agreement"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "billing_email"
+          ]
+          co: {
+            id: "PATCH /api/v1/admin/organizations/{org_slug}/billing_contact"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v1/admin/organizations/{org_slug}/billing_contact"
+          q: {
+            "$action": "billing_contact"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "admin"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "billing_contact"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "package_id"
+          ]
+          co: {
+            id: "PUT /api/v1/admin/organizations/{org_slug}/package"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/admin/organizations/{org_slug}/package"
+          q: {
+            "$action": "package"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "admin"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "package"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

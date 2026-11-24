@@ -1,0 +1,10 @@
+$kind: collection
+id: "6d71ffaf-6bcf-5dc1-8568-2e33933ef9ce"
+description: |-
+  The **artefact_revision** entity, which belongs to a organization and a artefact. Its requests address one record by `{{artefact_revision_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `base_version` | integer | yes |  |
+  | `content` | string | yes |  |
+order: 103000

@@ -1,0 +1,49 @@
+# Entity: known
+
+main: kit: entity: known: {
+
+  alias: field: {}
+
+  name: "known"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /.well-known/agent-card.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/.well-known/agent-card.json"
+          q: {
+            "$action": "agent_card_json"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: ".well-known"
+            }
+            {
+              lit: "agent-card.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

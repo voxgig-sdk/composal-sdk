@@ -1,0 +1,15 @@
+$kind: http-request
+id: "99bad000-6f59-5704-b97d-af398ee4cc1f"
+description: |-
+  The `policy` action of **agent_swarm**, a route of its `load` operation.
+
+  SDK: `client.AgentSwarm().load({ "id": "ID", $action: "policy" })`
+url: "{{base}}/api/v1/agent/swarms/:id/policy"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{agent_swarm_id}}"
+    description: The agent_swarm this request addresses.
+order: 6000

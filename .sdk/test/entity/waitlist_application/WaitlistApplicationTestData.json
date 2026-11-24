@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "waitlist_application": {
+      "WAITLIST_APPLICATION00": {
+        "id": "WAITLIST_APPLICATION00"
+      },
+      "WAITLIST_APPLICATION01": {
+        "id": "WAITLIST_APPLICATION01"
+      },
+      "WAITLIST_APPLICATION02": {
+        "id": "WAITLIST_APPLICATION02"
+      }
+    }
+  },
+  "new": {
+    "waitlist_application": {
+      "waitlist_application_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/waitlist_applications": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

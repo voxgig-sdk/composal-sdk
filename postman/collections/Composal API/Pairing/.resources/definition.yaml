@@ -1,0 +1,9 @@
+$kind: collection
+id: e9e36e7c-8776-55cd-9129-fdfe4c5d74fb
+description: |-
+  The **pairing** entity. Its requests address one record by `{{pairing_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 375000

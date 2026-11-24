@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "change_transcript_summary": {
+      "CHANGE_TRANSCRIPT_SUMMARY00": {
+        "summaries": {},
+        "organization_id": "ORGANIZATION01"
+      },
+      "CHANGE_TRANSCRIPT_SUMMARY01": {
+        "summaries": {},
+        "organization_id": "ORGANIZATION01"
+      },
+      "CHANGE_TRANSCRIPT_SUMMARY02": {
+        "summaries": {},
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "change_transcript_summary": {
+      "change_transcript_summary_ref01": {
+        "summaries": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/changes/transcript_summaries": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

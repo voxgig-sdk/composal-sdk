@@ -1,0 +1,26 @@
+# BasicDeploymentDetailFlow
+
+main: kit: flow: BasicDeploymentDetailFlow:
+{
+  entity: "deployment_detail",
+  kind: "basic",
+  name: "BasicDeploymentDetailFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "deployment_detail_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeploymentDetailFlow"
+}

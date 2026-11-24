@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "otel_ingest": {
+      "OTEL_INGEST00": {
+        "id": "OTEL_INGEST00"
+      },
+      "OTEL_INGEST01": {
+        "id": "OTEL_INGEST01"
+      },
+      "OTEL_INGEST02": {
+        "id": "OTEL_INGEST02"
+      }
+    }
+  },
+  "new": {
+    "otel_ingest": {
+      "otel_ingest_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/otel_ingest/authorize": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

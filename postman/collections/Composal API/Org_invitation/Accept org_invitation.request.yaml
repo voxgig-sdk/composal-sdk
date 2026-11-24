@@ -1,0 +1,19 @@
+$kind: http-request
+id: "55f9fd54-980b-5ca0-9a45-62b527da05ef"
+description: |-
+  The `accept` action of **org_invitation**, a route of its `create` operation.
+
+  SDK: `client.OrgInvitation().create({ "id": "ID", $action: "accept" })`
+url: "{{base}}/api/v1/org_invitations/:token/accept"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: token
+    value: "{{org_invitation_id}}"
+    description: The org_invitation this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 2000

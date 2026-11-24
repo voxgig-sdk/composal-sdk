@@ -1,0 +1,21 @@
+$kind: http-request
+id: "36a8f5dd-a2e4-5561-a1fc-c4496865cf76"
+description: |-
+  The `activation` action of **repo_code_rule**, a route of its `remove` operation.
+
+  SDK: `client.RepoCodeRule().remove({ "organization_id": "organization_id", "repo_id": "repo_id", "id": "ID", $action: "activation" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/code_rules/:rule/activation"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_code_rule belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_code_rule belongs to.
+  - key: rule
+    value: "{{repo_code_rule_id}}"
+    description: The repo_code_rule this request addresses.
+order: 8000

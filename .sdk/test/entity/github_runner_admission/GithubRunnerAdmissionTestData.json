@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "github_runner_admission": {
+      "GITHUB_RUNNER_ADMISSION00": {
+        "id": "GITHUB_RUNNER_ADMISSION00"
+      },
+      "GITHUB_RUNNER_ADMISSION01": {
+        "id": "GITHUB_RUNNER_ADMISSION01"
+      },
+      "GITHUB_RUNNER_ADMISSION02": {
+        "id": "GITHUB_RUNNER_ADMISSION02"
+      }
+    }
+  },
+  "new": {
+    "github_runner_admission": {
+      "github_runner_admission_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/github_runner_admission": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

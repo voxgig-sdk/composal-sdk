@@ -1,0 +1,31 @@
+$kind: http-request
+id: c0846e38-d4da-51b8-ad65-e05652f39b3e
+description: |-
+  The `load` operation of **github_runner_history**.
+
+  SDK: `client.GithubRunnerHistory().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/github_runner_history"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: days
+    value: ""
+    disabled: true
+  - key: page
+    value: ""
+    disabled: true
+  - key: q
+    value: ""
+    disabled: true
+  - key: repository
+    value: ""
+    disabled: true
+  - key: status
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this github_runner_history belongs to.
+order: 1000

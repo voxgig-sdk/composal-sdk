@@ -1,0 +1,8 @@
+$kind: collection
+id: d267bce0-f2f8-5a11-abff-5d58fb5a6d17
+description: |-
+  The **auth_cli** entity. Its requests address one record by `{{auth_cli_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 113000

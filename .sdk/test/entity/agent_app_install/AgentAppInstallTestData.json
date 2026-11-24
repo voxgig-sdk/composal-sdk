@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "agent_app_install": {
+      "AGENT_APP_INSTALL00": {
+        "id": "AGENT_APP_INSTALL00",
+        "installed": false,
+        "agent_app_id": "AGENT_APP01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_APP_INSTALL01": {
+        "id": "AGENT_APP_INSTALL01",
+        "installed": false,
+        "agent_app_id": "AGENT_APP01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_APP_INSTALL02": {
+        "id": "AGENT_APP_INSTALL02",
+        "installed": false,
+        "agent_app_id": "AGENT_APP01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_app_install": {
+      "agent_app_install_ref01": {
+        "installed": false
+      }
+    }
+  },
+  "requests": {
+    "DELETE /api/v1/organizations/{organization_id}/agent_apps/{id}/installs/{agent_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/agent_apps/{id}/installs/{agent_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

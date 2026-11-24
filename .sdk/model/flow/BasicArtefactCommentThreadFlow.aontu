@@ -12,7 +12,7 @@ main: kit: flow: BasicArtefactCommentThreadFlow:
       }
 
       m: {
-        artefact_ref: "artefact_ref01",
+        artefact_id: "artefact01",
         organization_id: "organization01"
       }
 
@@ -20,8 +20,25 @@ main: kit: flow: BasicArtefactCommentThreadFlow:
     }
 
     {
+      m: {
+        artefact_id: "artefact01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "artefact_comment_thread_ref01"
+          }
+        }
+      ]
+    }
+
+    {
       d: {
-        artefact_ref: "artefact_ref01",
+        artefact_id: "artefact01",
         organization_id: "organization01"
       }
 

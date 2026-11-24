@@ -1,0 +1,92 @@
+{
+  "existing": {
+    "billing_prepaid_period": {
+      "BILLING_PREPAID_PERIOD00": {
+        "activated_at": "s96",
+        "created_at": "s97",
+        "currency": "s98",
+        "id": "BILLING_PREPAID_PERIOD00",
+        "last_error": "s9a",
+        "minutes": 155,
+        "net_amount_cents": 156,
+        "paid_at": "s9d",
+        "paid_total_cents": "s9e",
+        "payment_action_url": "s9f",
+        "period_ended_at": "sa0",
+        "period_started_at": "sa1",
+        "receipt_url": "sa2",
+        "refunded_net_cents": 163,
+        "state": "sa4",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BILLING_PREPAID_PERIOD01": {
+        "activated_at": "s12c",
+        "created_at": "s12d",
+        "currency": "s12e",
+        "id": "BILLING_PREPAID_PERIOD01",
+        "last_error": "s130",
+        "minutes": 305,
+        "net_amount_cents": 306,
+        "paid_at": "s133",
+        "paid_total_cents": "s134",
+        "payment_action_url": "s135",
+        "period_ended_at": "s136",
+        "period_started_at": "s137",
+        "receipt_url": "s138",
+        "refunded_net_cents": 313,
+        "state": "s13a",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BILLING_PREPAID_PERIOD02": {
+        "activated_at": "s1c2",
+        "created_at": "s1c3",
+        "currency": "s1c4",
+        "id": "BILLING_PREPAID_PERIOD02",
+        "last_error": "s1c6",
+        "minutes": 455,
+        "net_amount_cents": 456,
+        "paid_at": "s1c9",
+        "paid_total_cents": "s1ca",
+        "payment_action_url": "s1cb",
+        "period_ended_at": "s1cc",
+        "period_started_at": "s1cd",
+        "receipt_url": "s1ce",
+        "refunded_net_cents": 463,
+        "state": "s1d0",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "billing_prepaid_period": {
+      "billing_prepaid_period_ref01": {
+        "activated_at": "s258",
+        "created_at": "s259",
+        "currency": "s25a",
+        "last_error": "s25c",
+        "minutes": 605,
+        "net_amount_cents": 606,
+        "paid_at": "s25f",
+        "paid_total_cents": "s260",
+        "payment_action_url": "s261",
+        "period_ended_at": "s262",
+        "period_started_at": "s263",
+        "receipt_url": "s264",
+        "refunded_net_cents": 613,
+        "state": "s266"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/billing/prepaid_periods/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/billing/prepaid_periods/{id}/payment_page": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

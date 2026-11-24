@@ -1,0 +1,42 @@
+# BasicChangeCommentFlow
+
+main: kit: flow: BasicChangeCommentFlow:
+{
+  entity: "change_comment",
+  kind: "basic",
+  name: "BasicChangeCommentFlow",
+  step: [
+    {
+      i: {
+        ref: "change_comment_ref01"
+      }
+
+      m: {
+        change_id: "change01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        change_id: "change01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "change_comment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicChangeCommentFlow"
+}

@@ -1,0 +1,22 @@
+$kind: http-request
+id: "51833c90-f122-5308-9c87-3f2ae1c2b885"
+description: |-
+  The `remove` operation of **networking_space**.
+
+  SDK: `client.NetworkingSpace().remove({ id: "example_id" })`
+url: "{{base}}/api/v1/networking/spaces/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{networking_space_id}}"
+    description: The networking_space this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("networking_space_id")
+      }
+    language: text/javascript
+order: 11000

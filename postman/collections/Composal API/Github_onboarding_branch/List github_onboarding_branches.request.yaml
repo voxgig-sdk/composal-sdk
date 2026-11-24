@@ -1,0 +1,32 @@
+$kind: http-request
+id: fba221ab-676f-591c-935a-be3142952ec2
+description: |-
+  The `list` operation of **github_onboarding_branch**.
+
+  SDK: `client.GithubOnboardingBranch().list({ organization_id: "example", github_app_installation_id: "example", name: "example", owner: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/github_onboarding/branches?github_app_installation_id={{github_app_installation_id}}&name={{name}}&owner={{owner}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: github_app_installation_id
+    value: "{{github_app_installation_id}}"
+  - key: name
+    value: "{{name}}"
+  - key: owner
+    value: "{{owner}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this github_onboarding_branch belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["branches"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("github_onboarding_branch_id")) pm.collectionVariables.set("github_onboarding_branch_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

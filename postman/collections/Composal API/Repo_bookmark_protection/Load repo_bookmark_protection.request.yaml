@@ -1,0 +1,21 @@
+$kind: http-request
+id: "75ade215-bd58-5490-ba5b-ebbcb02d642c"
+description: |-
+  The `load` operation of **repo_bookmark_protection**.
+
+  SDK: `client.RepoBookmarkProtection().load({ id: "example_id", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/bookmark_protections/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_bookmark_protection belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_bookmark_protection belongs to.
+  - key: id
+    value: "{{repo_bookmark_protection_id}}"
+    description: The repo_bookmark_protection this request addresses.
+order: 2000

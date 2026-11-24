@@ -1,0 +1,15 @@
+$kind: http-request
+id: "5d06c67f-149f-57fa-8c26-fe0f5b94d96e"
+description: |-
+  The `exchange` action of **auth_cli**, a route of its `create` operation.
+
+  SDK: `client.AuthCli().create({ $action: "exchange" })`
+url: "{{base}}/api/v1/auth/cli/exchange"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 2000

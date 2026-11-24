@@ -1,0 +1,22 @@
+# BasicNodeCertificateFlow
+
+main: kit: flow: BasicNodeCertificateFlow:
+{
+  entity: "node_certificate",
+  kind: "basic",
+  name: "BasicNodeCertificateFlow",
+  step: [
+    {
+      i: {
+        ref: "node_certificate_ref01"
+      }
+
+      m: {
+        node_id: "node01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicNodeCertificateFlow"
+}

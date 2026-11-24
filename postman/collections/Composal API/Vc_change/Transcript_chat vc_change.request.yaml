@@ -1,0 +1,36 @@
+$kind: http-request
+id: "769375cc-8c6d-5de3-aa93-2a745c69cb5e"
+description: |-
+  The `transcript_chat` action of **vc_change**, a route of its `create` operation.
+
+  SDK: `client.VcChange().create({ "organization_id": "organization_id", "repo_id": "repo_id", "id": "ID", $action: "transcript_chat" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/:change_id/transcript_chat"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_change belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_change belongs to.
+  - key: change_id
+    value: "{{vc_change_id}}"
+    description: The vc_change this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "transcript_chat": {
+        "checkpoint_id": "example",
+        "messages": [
+          {
+            "role": "user",
+            "content": "example"
+          }
+        ]
+      }
+    }
+order: 19000

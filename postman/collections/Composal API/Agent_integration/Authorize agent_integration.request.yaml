@@ -1,0 +1,27 @@
+$kind: http-request
+id: "504a9737-9420-54f0-8c45-aab37d861e5a"
+description: |-
+  The `authorize` action of **agent_integration**, a route of its `create` operation.
+
+  SDK: `client.AgentIntegration().create({ "organization_id": "organization_id", "id": "ID", $action: "authorize" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_integrations/:id/authorize"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_integration belongs to.
+  - key: id
+    value: "{{agent_integration_id}}"
+    description: The agent_integration this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "return_agent": "example",
+      "callback": "app",
+      "enable_for_agent": "example"
+    }
+order: 4000

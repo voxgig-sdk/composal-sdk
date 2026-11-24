@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "stripe_webhook": {
+      "STRIPE_WEBHOOK00": {
+        "id": "STRIPE_WEBHOOK00"
+      },
+      "STRIPE_WEBHOOK01": {
+        "id": "STRIPE_WEBHOOK01"
+      },
+      "STRIPE_WEBHOOK02": {
+        "id": "STRIPE_WEBHOOK02"
+      }
+    }
+  },
+  "new": {
+    "stripe_webhook": {
+      "stripe_webhook_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/stripe/webhooks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+$kind: http-request
+id: "53fc7884-2a57-547b-9e6f-b1c0cc304d25"
+description: |-
+  The `load` operation of **roder_code_repair**.
+
+  SDK: `client.RoderCodeRepair().load({ id: "example_id" })`
+url: "{{base}}/api/v1/agent/roder/code_repairs/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{roder_code_repair_id}}"
+    description: The roder_code_repair this request addresses.
+order: 2000

@@ -1,0 +1,25 @@
+$kind: http-request
+id: "2c438b3a-0270-5348-a3d8-0d712c963040"
+description: |-
+  The `architecture` action of **deployment**, a route of its `load` operation.
+
+  SDK: `client.Deployment().load({ "organization_id": "organization_id", $action: "architecture" })`
+url: "{{base}}/api/v1/organizations/:org_slug/pages/deployments/architecture"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: app
+    value: ""
+    disabled: true
+  - key: environment
+    value: ""
+    disabled: true
+  - key: service
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this deployment belongs to.
+order: 2000

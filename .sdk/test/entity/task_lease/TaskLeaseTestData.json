@@ -1,0 +1,93 @@
+{
+  "existing": {
+    "task_lease": {
+      "TASK_LEASE00": {
+        "id": "TASK_LEASE00",
+        "swarm_id": "SWARM01",
+        "task_id": "TASK01"
+      },
+      "TASK_LEASE01": {
+        "id": "TASK_LEASE01",
+        "swarm_id": "SWARM01",
+        "task_id": "TASK01"
+      },
+      "TASK_LEASE02": {
+        "id": "TASK_LEASE02",
+        "swarm_id": "SWARM01",
+        "task_id": "TASK01"
+      }
+    }
+  },
+  "new": {
+    "task_lease": {
+      "task_lease_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_jev": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_knowledge": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_learning": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_sign_in": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/browser_task_activity": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/claim": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/evidence": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/heartbeat": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/release": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/result": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_mail": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_product_map": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

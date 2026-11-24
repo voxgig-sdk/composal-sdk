@@ -12,7 +12,7 @@ main: kit: flow: BasicSparkCreditFlow:
       }
 
       m: {
-        org_slug: "org_slug01"
+        organization_id: "organization01"
       }
 
       o: "create"
@@ -20,7 +20,7 @@ main: kit: flow: BasicSparkCreditFlow:
 
     {
       m: {
-        org_slug: "org_slug01"
+        organization_id: "organization01"
       }
 
       o: "list",
@@ -44,6 +44,28 @@ main: kit: flow: BasicSparkCreditFlow:
 
       o: "update",
       s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-spark_credit_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "spark_credit_ref01",
+        srcdatavar: "spark_credit_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "spark_credit01"
+      }
+
+      o: "load",
+      v: [
         {
           apply: "TextFieldMark",
           def: {

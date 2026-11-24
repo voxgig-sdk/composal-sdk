@@ -89,7 +89,7 @@ function deployment_file_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["deployment_file01", "deployment_file02", "deployment_file03", "static_site01", "static_site02", "static_site03"] as $k) {
+    foreach (["deployment_file01", "deployment_file02", "deployment_file03", "static_site01", "static_site02", "static_site03", "deployment01", "deployment02", "deployment03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

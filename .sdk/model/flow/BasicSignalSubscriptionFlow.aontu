@@ -1,0 +1,117 @@
+# BasicSignalSubscriptionFlow
+
+main: kit: flow: BasicSignalSubscriptionFlow:
+{
+  entity: "signal_subscription",
+  kind: "basic",
+  name: "BasicSignalSubscriptionFlow",
+  step: [
+    {
+      i: {
+        ref: "signal_subscription_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "signal_subscription_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "signal_subscription_ref01",
+        srcdatavar: "signal_subscription_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-signal_subscription_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "signal_subscription_ref01",
+        srcdatavar: "signal_subscription_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "signal_subscription01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-signal_subscription_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "signal_subscription_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "signal_subscription01",
+        organization_id: "organization01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "signal_subscription_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSignalSubscriptionFlow"
+}

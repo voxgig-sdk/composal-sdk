@@ -1,0 +1,20 @@
+$kind: http-request
+id: "52c4907e-3a6d-5392-8900-3b73cc31e0dc"
+description: |-
+  The `start` action of **auth_cli**, a route of its `create` operation.
+
+  SDK: `client.AuthCli().create({ $action: "start" })`
+url: "{{base}}/api/v1/auth/cli/start"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "client_kind": "cli",
+      "intent": "signin"
+    }
+order: 4000

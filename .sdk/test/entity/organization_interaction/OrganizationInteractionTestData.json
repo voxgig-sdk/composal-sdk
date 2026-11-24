@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "organization_interaction": {
+      "ORGANIZATION_INTERACTION00": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_INTERACTION00"
+      },
+      "ORGANIZATION_INTERACTION01": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_INTERACTION01"
+      },
+      "ORGANIZATION_INTERACTION02": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_INTERACTION02"
+      }
+    }
+  },
+  "new": {
+    "organization_interaction": {
+      "organization_interaction_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/spark/organizations/{organization_id}/interactions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

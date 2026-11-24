@@ -1,0 +1,15 @@
+$kind: http-request
+id: "45024343-37e3-5af9-ba2a-8cd082445f14"
+description: |-
+  The `load` operation of **org_invitation**.
+
+  SDK: `client.OrgInvitation().load({ id: "example_id" })`
+url: "{{base}}/api/v1/org_invitations/:token"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: token
+    value: "{{org_invitation_id}}"
+    description: The org_invitation this request addresses.
+order: 1000

@@ -1,0 +1,40 @@
+# BasicRunnerLeaseFlow
+
+main: kit: flow: BasicRunnerLeaseFlow:
+{
+  entity: "runner_lease",
+  kind: "basic",
+  name: "BasicRunnerLeaseFlow",
+  step: [
+    {
+      i: {
+        ref: "runner_lease_ref01"
+      }
+
+      m: {
+        runner_id: "runner01",
+        runner_pool_id: "runner_pool01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        runner_id: "runner01",
+        runner_pool_id: "runner_pool01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "runner_lease_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRunnerLeaseFlow"
+}

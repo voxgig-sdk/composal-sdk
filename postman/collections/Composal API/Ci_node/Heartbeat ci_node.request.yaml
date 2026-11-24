@@ -1,0 +1,19 @@
+$kind: http-request
+id: fd5abf9e-456c-5f3a-b157-c9dec15d7cbe
+description: |-
+  The `heartbeat` action of **ci_node**, a route of its `create` operation.
+
+  SDK: `client.CiNode().create({ "id": "ID", $action: "heartbeat" })`
+url: "{{base}}/api/v1/ci/nodes/:id/heartbeat"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{ci_node_id}}"
+    description: The ci_node this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

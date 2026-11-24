@@ -17,7 +17,7 @@ body:
   type: json
   content: |-
     {
-      "github_app_installation_id": "example",
+      "github_app_installation_id": "{{github_app_installation_id}}",
       "repositories": [
         {
           "owner": "example",

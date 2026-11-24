@@ -1,0 +1,28 @@
+$kind: http-request
+id: f87cc5ff-0243-56f3-89de-9f89bdf8f495
+description: |-
+  The `remove` operation of **vc_branch**.
+
+  SDK: `client.VcBranch().remove({ id: "example_id", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/branches/:branch_name"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_branch belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_branch belongs to.
+  - key: branch_name
+    value: "{{vc_branch_id}}"
+    description: The vc_branch this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("vc_branch_id")
+      }
+    language: text/javascript
+order: 3000

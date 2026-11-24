@@ -1,0 +1,29 @@
+$kind: http-request
+id: c82618e0-02c7-5df1-8930-658bb891ffa0
+description: |-
+  The `activation` action of **repo_code_rule**, a route of its `update` operation.
+
+  SDK: `client.RepoCodeRule().update({ "organization_id": "organization_id", "repo_id": "repo_id", "id": "ID", $action: "activation" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/code_rules/:rule/activation"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_code_rule belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_code_rule belongs to.
+  - key: rule
+    value: "{{repo_code_rule_id}}"
+    description: The repo_code_rule this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "revision": 1,
+      "expected_version": 1
+    }
+order: 6000

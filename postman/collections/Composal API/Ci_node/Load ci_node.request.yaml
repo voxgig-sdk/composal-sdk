@@ -1,0 +1,15 @@
+$kind: http-request
+id: ae0f9eae-e0de-56b9-b5f6-ec61d7a3d531
+description: |-
+  The `load` operation of **ci_node**.
+
+  SDK: `client.CiNode().load({ id: "example_id" })`
+url: "{{base}}/api/v1/ci/nodes/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{ci_node_id}}"
+    description: The ci_node this request addresses.
+order: 1000

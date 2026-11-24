@@ -1,0 +1,27 @@
+# BasicVcFileFlow
+
+main: kit: flow: BasicVcFileFlow:
+{
+  entity: "vc_file",
+  kind: "basic",
+  name: "BasicVcFileFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "vc_file_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVcFileFlow"
+}

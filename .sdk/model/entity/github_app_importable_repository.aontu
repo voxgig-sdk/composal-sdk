@@ -1,0 +1,106 @@
+# Entity: github_app_importable_repository
+
+main: kit: entity: github_app_importable_repository: {
+
+  alias: field: {}
+
+  fields: {
+    account_login: {
+      h: "Account Login"
+      n: "account_login"
+      r: true
+      t: "`$STRING`"
+    }
+    github_app_installation_id: {
+      h: "Github App Installation Id"
+      n: "github_app_installation_id"
+      r: true
+      t: "`$STRING`"
+    }
+    next_page: {
+      h: "Next Page"
+      n: "next_page"
+      r: true
+      sh: "Next GitHub page for this installation"
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    repositories: {
+      h: "Repositories"
+      n: "repositories"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "github_app_importable_repository"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/github_app/importable_repositories"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "github_app_installation_id"
+                or: "github_app_installation_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                explode: true
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/github_app/importable_repositories"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "github_app"
+            }
+            {
+              lit: "importable_repositories"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.accounts`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

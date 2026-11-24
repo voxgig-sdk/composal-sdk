@@ -1,0 +1,48 @@
+# Entity: metronome_webhook
+
+main: kit: entity: metronome_webhook: {
+
+  alias: field: {}
+
+  name: "metronome_webhook"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v1/metronome/webhooks"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/metronome/webhooks"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "metronome"
+            }
+            {
+              lit: "webhooks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

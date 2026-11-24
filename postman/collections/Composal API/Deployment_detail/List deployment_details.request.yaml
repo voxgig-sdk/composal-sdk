@@ -1,0 +1,35 @@
+$kind: http-request
+id: a73b63b9-3e28-531d-9282-0dc374015f00
+description: |-
+  The `list` operation of **deployment_detail**.
+
+  SDK: `client.DeploymentDetail().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/pages/deployments/details"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: app
+    value: ""
+    disabled: true
+  - key: environment
+    value: ""
+    disabled: true
+  - key: service
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this deployment_detail belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("deployment_detail_id")) pm.collectionVariables.set("deployment_detail_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

@@ -1,0 +1,187 @@
+# Entity: roder_run
+
+main: kit: entity: roder_run: {
+
+  alias: field: {}
+
+  name: "roder_run"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "events"
+          ]
+          co: {
+            id: "POST /api/v1/agent/roder/run/swarm_activity"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/agent/roder/run/swarm_activity"
+          q: {
+            "$action": "swarm_activity"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "roder"
+            }
+            {
+              lit: "run"
+            }
+            {
+              lit: "swarm_activity"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/agent/roder/run/swarm_stack"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/agent/roder/run/swarm_stack"
+          q: {
+            "$action": "swarm_stack"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "roder"
+            }
+            {
+              lit: "run"
+            }
+            {
+              lit: "swarm_stack"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/agent/roder/run/swarm_transcript"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/agent/roder/run/swarm_transcript"
+          q: {
+            "$action": "swarm_transcript"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "roder"
+            }
+            {
+              lit: "run"
+            }
+            {
+              lit: "swarm_transcript"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/agent/roder/run/workspace_authorization"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/agent/roder/run/workspace_authorization"
+          q: {
+            "$action": "workspace_authorization"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "roder"
+            }
+            {
+              lit: "run"
+            }
+            {
+              lit: "workspace_authorization"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

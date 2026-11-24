@@ -1,0 +1,34 @@
+# BasicChangeLabelFlow
+
+main: kit: flow: BasicChangeLabelFlow:
+{
+  entity: "change_label",
+  kind: "basic",
+  name: "BasicChangeLabelFlow",
+  step: [
+    {
+      d: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      i: {
+        ref: "change_label_ref01",
+        srcdatavar: "change_label_ref01_data",
+        suffix: "_up0",
+        textfield: "change_key"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-change_label_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicChangeLabelFlow"
+}

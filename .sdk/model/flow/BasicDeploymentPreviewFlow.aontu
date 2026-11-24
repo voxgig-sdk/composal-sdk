@@ -1,0 +1,26 @@
+# BasicDeploymentPreviewFlow
+
+main: kit: flow: BasicDeploymentPreviewFlow:
+{
+  entity: "deployment_preview",
+  kind: "basic",
+  name: "BasicDeploymentPreviewFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "deployment_preview_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeploymentPreviewFlow"
+}

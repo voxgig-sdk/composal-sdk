@@ -1,0 +1,10 @@
+$kind: collection
+id: ed10a49a-e91f-5d32-8ce3-081d0b3bdf37
+description: |-
+  The **cli_event** entity. Its requests address one record by `{{cli_event_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `event` | string | yes |  |
+  | `properties` | object | yes |  |
+order: 176000

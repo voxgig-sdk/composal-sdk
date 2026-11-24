@@ -1,0 +1,9 @@
+$kind: collection
+id: a597741b-e06f-56ab-b303-b967d300ead6
+description: |-
+  The **artifact_package_mirror** entity. Its requests address one record by `{{artifact_package_mirror_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 108000

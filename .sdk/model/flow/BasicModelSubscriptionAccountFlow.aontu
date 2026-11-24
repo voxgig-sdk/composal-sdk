@@ -48,28 +48,6 @@ main: kit: flow: BasicModelSubscriptionAccountFlow:
     {
       i: {
         ref: "model_subscription_account_ref01",
-        srcdatavar: "model_subscription_account_ref01_data",
-        suffix: "_dt0"
-      }
-
-      m: {
-        id: "model_subscription_account01"
-      }
-
-      o: "load",
-      v: [
-        {
-          apply: "TextFieldMark",
-          def: {
-            mark: "Mark01-model_subscription_account_ref01"
-          }
-        }
-      ]
-    }
-
-    {
-      i: {
-        ref: "model_subscription_account_ref01",
         suffix: "_rm0"
       }
 

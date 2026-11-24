@@ -1,0 +1,9 @@
+$kind: collection
+id: "4cb7c865-982f-5e76-9a2f-ca9769a07a91"
+description: |-
+  The **model_subscription_account_connection** entity. Its requests address one record by `{{model_subscription_account_connection_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 327000

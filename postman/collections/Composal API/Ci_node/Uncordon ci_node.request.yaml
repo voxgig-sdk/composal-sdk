@@ -1,0 +1,19 @@
+$kind: http-request
+id: "67d21dc8-fb05-5726-9b96-47a8f6f8ebe8"
+description: |-
+  The `uncordon` action of **ci_node**, a route of its `create` operation.
+
+  SDK: `client.CiNode().create({ "id": "ID", $action: "uncordon" })`
+url: "{{base}}/api/v1/ci/nodes/:id/uncordon"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{ci_node_id}}"
+    description: The ci_node this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

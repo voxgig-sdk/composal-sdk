@@ -1,0 +1,30 @@
+$kind: http-request
+id: "116c052a-2561-51bc-bd1a-26dbf3e8b3fc"
+description: |-
+  The `fold` action of **vc_change**, a route of its `create` operation.
+
+  SDK: `client.VcChange().create({ "organization_id": "organization_id", "repo_id": "repo_id", "id": "ID", $action: "fold" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/:id/fold"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_change belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_change belongs to.
+  - key: id
+    value: "{{vc_change_id}}"
+    description: The vc_change this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "into": "example",
+      "description": "example",
+      "dry_run": true
+    }
+order: 8000

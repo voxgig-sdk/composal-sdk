@@ -1,0 +1,31 @@
+$kind: http-request
+id: "0b8da775-49f9-5a33-aed2-d2d420832502"
+description: |-
+  The `promote` action of **merge_queue_entry**, a route of its `create` operation.
+
+  SDK: `client.MergeQueueEntry().create({ "organization_id": "organization_id", "repo_id": "repo_id", "merge_queue_id": "merge_queue_id", "id": "ID", $action: "promote" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/merge_queues/:target/entries/:id/promote"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this merge_queue_entry belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this merge_queue_entry belongs to.
+  - key: target
+    value: "{{merge_queue_id}}"
+    description: "Input: merge_queue_id."
+  - key: id
+    value: "{{merge_queue_entry_id}}"
+    description: The merge_queue_entry this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "expected_version": 1
+    }
+order: 3000

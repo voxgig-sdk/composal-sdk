@@ -11,7 +11,50 @@ main: kit: flow: BasicSignalFlow:
         ref: "signal_ref01"
       }
 
+      m: {
+        organization_id: "organization01"
+      }
+
       o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "signal_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "signal_ref01",
+        srcdatavar: "signal_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "signal01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-signal_ref01"
+          }
+        }
+      ]
     }
   ],
   "key$": "BasicSignalFlow"

@@ -1,0 +1,19 @@
+$kind: http-request
+id: "7696306d-1866-54b0-8264-f28d6ff6fbe6"
+description: |-
+  The `patch` operation of **observability_clickhouse_cluster**.
+
+  SDK: `client.ObservabilityClickhouseCluster().patch({ id: "example" })`
+url: "{{base}}/api/v1/observability/clickhouse_clusters/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{observability_clickhouse_cluster_id}}"
+    description: The observability_clickhouse_cluster this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

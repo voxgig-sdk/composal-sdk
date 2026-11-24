@@ -1,0 +1,15 @@
+$kind: http-request
+id: ca11acec-0bc2-54bb-ad2e-a42297f44537
+description: |-
+  The `walgit` action of **repository_event**, a route of its `create` operation.
+
+  SDK: `client.RepositoryEvent().create({ $action: "walgit" })`
+url: "{{base}}/api/v1/repository_events/walgit"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 1000

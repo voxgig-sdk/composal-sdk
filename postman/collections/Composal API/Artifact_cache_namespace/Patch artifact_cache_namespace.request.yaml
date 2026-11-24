@@ -1,0 +1,19 @@
+$kind: http-request
+id: "8e8b345d-7237-5990-addb-98b0f0227f2f"
+description: |-
+  The `patch` operation of **artifact_cache_namespace**.
+
+  SDK: `client.ArtifactCacheNamespace().patch({ id: "example" })`
+url: "{{base}}/api/v1/artifacts/cache_namespaces/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_cache_namespace_id}}"
+    description: The artifact_cache_namespace this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

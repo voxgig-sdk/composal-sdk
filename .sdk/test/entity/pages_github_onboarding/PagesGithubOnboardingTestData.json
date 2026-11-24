@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "pages_github_onboarding": {
+      "PAGES_GITHUB_ONBOARDING00": {
+        "onboarding": {},
+        "organization": {},
+        "organization_id": "ORGANIZATION01",
+        "id": "PAGES_GITHUB_ONBOARDING00"
+      },
+      "PAGES_GITHUB_ONBOARDING01": {
+        "onboarding": {},
+        "organization": {},
+        "organization_id": "ORGANIZATION01",
+        "id": "PAGES_GITHUB_ONBOARDING01"
+      },
+      "PAGES_GITHUB_ONBOARDING02": {
+        "onboarding": {},
+        "organization": {},
+        "organization_id": "ORGANIZATION01",
+        "id": "PAGES_GITHUB_ONBOARDING02"
+      }
+    }
+  },
+  "new": {
+    "pages_github_onboarding": {
+      "pages_github_onboarding_ref01": {
+        "onboarding": {},
+        "organization": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/pages/github_onboarding": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

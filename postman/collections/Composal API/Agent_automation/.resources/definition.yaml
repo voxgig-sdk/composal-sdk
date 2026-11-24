@@ -20,4 +20,4 @@ description: |-
   | `schedule` | any | yes |  |
   | `schedules` | array | yes |  |
   | `version` | object | yes |  |
-order: 4000
+order: 8000

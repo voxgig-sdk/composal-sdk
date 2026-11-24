@@ -1,0 +1,543 @@
+# Entity: spark_credit
+
+main: kit: entity: spark_credit: {
+
+  alias: field: {}
+
+  fields: {
+    amount_cents: {
+      h: "Amount Cents"
+      n: "amount_cents"
+      r: false
+      sh: "Purchase amount in USD cents."
+      t: "`$INTEGER`"
+    }
+    autofill: {
+      h: "Autofill"
+      n: "autofill"
+      r: true
+      t: "`$ANY`"
+    }
+    autofill_payment_unconfirmed: {
+      h: "Autofill Payment Unconfirmed"
+      n: "autofill_payment_unconfirmed"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    available_usd: {
+      h: "Available Usd"
+      n: "available_usd"
+      r: true
+      t: "`$STRING`"
+    }
+    billing_unit: {
+      h: "Billing Unit"
+      n: "billing_unit"
+      r: false
+      sh: "Compute minute quote version returned by the billing summary."
+      t: "`$STRING`"
+    }
+    can_manage: {
+      h: "Can Manage"
+      n: "can_manage"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    compute_minutes: {
+      h: "Compute Minutes"
+      n: "compute_minutes"
+      r: true
+      t: "`$OBJECT`"
+    }
+    compute_usd: {
+      h: "Compute Usd"
+      n: "compute_usd"
+      r: false
+      t: "`$STRING`"
+    }
+    credits_per_usd: {
+      h: "Credits Per Usd"
+      n: "credits_per_usd"
+      r: true
+      t: "`$INTEGER`"
+    }
+    inference_usd: {
+      h: "Inference Usd"
+      n: "inference_usd"
+      r: false
+      t: "`$STRING`"
+    }
+    kind: {
+      h: "Kind"
+      n: "kind"
+      r: true
+      t: "`$STRING`"
+    }
+    payment_method: {
+      h: "Payment Method"
+      n: "payment_method"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    payments_enabled: {
+      h: "Payments Enabled"
+      n: "payments_enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    plan: {
+      h: "Plan"
+      n: "plan"
+      op: {
+        list: {
+          req: true
+          type: [
+            "`$ONE`"
+            [
+              "`$STRING`"
+              "`$NULL`"
+            ]
+          ]
+        }
+        patch: {
+          req: true
+          type: [
+            "`$ONE`"
+            [
+              "`$STRING`"
+              "`$NULL`"
+            ]
+          ]
+        }
+      }
+      r: false
+      t: "`$STRING`"
+    }
+    plans: {
+      h: "Plans"
+      n: "plans"
+      r: true
+      t: "`$ARRAY`"
+    }
+    quoted_credits_cents: {
+      h: "Quoted Credits Cents"
+      n: "quoted_credits_cents"
+      r: false
+      sh: "Grant shown for a top-up or subscription, in usage cents."
+      t: "`$INTEGER`"
+    }
+    quoted_price_cents: {
+      h: "Quoted Price Cents"
+      n: "quoted_price_cents"
+      r: false
+      sh: "Monthly cash price shown for a subscription, in USD cents."
+      t: "`$INTEGER`"
+    }
+    refill_limits_cents: {
+      h: "Refill Limits Cents"
+      n: "refill_limits_cents"
+      r: true
+      t: "`$ARRAY`"
+    }
+    refill_options: {
+      h: "Refill Options"
+      n: "refill_options"
+      r: true
+      t: "`$ARRAY`"
+    }
+    refill_thresholds_cents: {
+      h: "Refill Thresholds Cents"
+      n: "refill_thresholds_cents"
+      r: true
+      t: "`$ARRAY`"
+    }
+    request_key: {
+      fo: "uuid"
+      h: "Request Key"
+      n: "request_key"
+      r: true
+      t: "`$STRING`"
+    }
+    settings: {
+      h: "Settings"
+      n: "settings"
+      r: true
+      t: "`$ANY`"
+    }
+    starter_cents: {
+      h: "Starter Cents"
+      n: "starter_cents"
+      r: true
+      t: "`$INTEGER`"
+    }
+    top_up_max_cents: {
+      h: "Top Up Max Cents"
+      n: "top_up_max_cents"
+      r: true
+      sh: "Maximum manual top-up, in USD cents."
+      t: "`$INTEGER`"
+    }
+    top_up_step_cents: {
+      h: "Top Up Step Cents"
+      n: "top_up_step_cents"
+      r: true
+      sh: "Minimum manual top-up and increment, in USD cents."
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "spark_credit"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "amount_cents"
+            "billing_unit"
+            "kind"
+            "plan"
+            "quoted_credits_cents"
+            "quoted_price_cents"
+            "request_key"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{org_slug}/spark_credits"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{org_slug}/spark_credits"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "spark_credits"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/spark_credits"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "view"
+                or: "view"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/spark_credits"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "spark_credits"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/spark_credits/daily_usage"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/spark_credits/daily_usage"
+          q: {
+            "$action": "daily_usage"
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "spark_credits"
+            }
+            {
+              lit: "daily_usage"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          bf: [
+            "settings"
+          ]
+          co: {
+            id: "PATCH /api/v1/organizations/{org_slug}/spark_credits"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "view"
+                or: "view"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v1/organizations/{org_slug}/spark_credits"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "spark_credits"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "PUT /api/v1/organizations/{org_slug}/spark_credits"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/organizations/{org_slug}/spark_credits"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "spark_credits"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

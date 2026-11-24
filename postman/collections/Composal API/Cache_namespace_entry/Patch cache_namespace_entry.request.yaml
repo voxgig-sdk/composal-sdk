@@ -1,0 +1,22 @@
+$kind: http-request
+id: "32c05598-477c-5e12-a881-2717471fcfab"
+description: |-
+  The `patch` operation of **cache_namespace_entry**.
+
+  SDK: `client.CacheNamespaceEntry().patch({ cache_namespace_id: "example", id: "example" })`
+url: "{{base}}/api/v1/artifacts/cache_namespaces/:cache_namespace_id/entries/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: cache_namespace_id
+    value: "{{cache_namespace_id}}"
+    description: "Input: cache_namespace_id."
+  - key: id
+    value: "{{cache_namespace_entry_id}}"
+    description: The cache_namespace_entry this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

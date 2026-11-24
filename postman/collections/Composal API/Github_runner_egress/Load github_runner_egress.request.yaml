@@ -1,0 +1,15 @@
+$kind: http-request
+id: "4b8a5f4d-4a70-5f96-8b08-a71bc8bdd791"
+description: |-
+  The `load` operation of **github_runner_egress**.
+
+  SDK: `client.GithubRunnerEgress().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/github_runner_egress"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this github_runner_egress belongs to.
+order: 1000

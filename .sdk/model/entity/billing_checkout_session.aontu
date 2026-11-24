@@ -1,0 +1,122 @@
+# Entity: billing_checkout_session
+
+main: kit: entity: billing_checkout_session: {
+
+  alias: field: {}
+
+  fields: {
+    cancel_url: {
+      h: "Cancel Url"
+      n: "cancel_url"
+      r: false
+      t: "`$STRING`"
+    }
+    coupon_code: {
+      h: "Coupon Code"
+      n: "coupon_code"
+      r: false
+      t: "`$STRING`"
+    }
+    entry_point: {
+      h: "Entry Point"
+      n: "entry_point"
+      r: false
+      sh: "Where the owner chose to pay, for product analytics."
+      t: "`$STRING`"
+    }
+    package_key: {
+      h: "Package Key"
+      n: "package_key"
+      r: false
+      t: "`$STRING`"
+    }
+    package_revision: {
+      h: "Package Revision"
+      n: "package_revision"
+      r: false
+      t: "`$INTEGER`"
+    }
+    success_url: {
+      h: "Success Url"
+      n: "success_url"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "billing_checkout_session"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "cancel_url"
+            "coupon_code"
+            "entry_point"
+            "package_key"
+            "package_revision"
+            "success_url"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/billing/checkout_sessions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/billing/checkout_sessions"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "billing"
+            }
+            {
+              lit: "checkout_sessions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

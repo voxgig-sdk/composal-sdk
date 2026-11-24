@@ -1,0 +1,26 @@
+$kind: http-request
+id: "358cfe4d-5520-5c13-80de-5d63fce1a91c"
+description: |-
+  The `safety_control` action of **agent_connection**, a route of its `create` operation.
+
+  SDK: `client.AgentConnection().create({ "organization_id": "organization_id", "id": "ID", $action: "safety_control" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_connections/:id/safety_control"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_connection belongs to.
+  - key: id
+    value: "{{agent_connection_id}}"
+    description: The agent_connection this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "disabled": true,
+      "reason": "example"
+    }
+order: 18000

@@ -1,0 +1,18 @@
+$kind: http-request
+id: "64920144-c053-5437-90b3-439fc2694e0c"
+description: |-
+  The `icon` action of **agent_site**, a route of its `load` operation.
+
+  SDK: `client.AgentSite().load({ "organization_id": "organization_id", "id": "ID", $action: "icon" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_sites/:id/icon"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_site belongs to.
+  - key: id
+    value: "{{agent_site_id}}"
+    description: The agent_site this request addresses.
+order: 3000

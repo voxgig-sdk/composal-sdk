@@ -1,0 +1,22 @@
+$kind: http-request
+id: "0c45a3ce-6803-5a8a-a67e-c7109802242e"
+description: |-
+  The `install` action of **organization_app**, a route of its `update` operation.
+
+  SDK: `client.OrganizationApp().update({ "organization_id": "organization_id", "id": "ID", $action: "install" })`
+url: "{{base}}/api/v1/spark/organizations/:organization_id/apps/:name/install"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_app belongs to.
+  - key: name
+    value: "{{organization_app_id}}"
+    description: The organization_app this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 2000

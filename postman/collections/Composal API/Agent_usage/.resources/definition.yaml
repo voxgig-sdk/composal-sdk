@@ -1,0 +1,16 @@
+$kind: collection
+id: "3b5eb642-c562-59bc-8ce1-c08ee45e4dae"
+description: |-
+  The **agent_usage** entity, which belongs to a organization. Its requests address one record by `{{agent_usage_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `days` | array | yes |  |
+  | `ended_at` | string | yes |  |
+  | `pricing_version` | string | yes |  |
+  | `source` | string | yes |  |
+  | `started_at` | string | yes |  |
+  | `user_days` | array | yes |  |
+  | `users` | array | yes |  |
+  | `window` | string | yes |  |
+order: 64000

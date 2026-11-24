@@ -1,0 +1,15 @@
+$kind: http-request
+id: cc0c2c2d-a4a9-56e5-8587-c92e7dbce964
+description: |-
+  The `load` operation of **ci_pipeline**.
+
+  SDK: `client.CiPipeline().load({ id: "example_id" })`
+url: "{{base}}/api/v1/ci/pipelines/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{ci_pipeline_id}}"
+    description: The ci_pipeline this request addresses.
+order: 2000

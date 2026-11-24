@@ -1,0 +1,8 @@
+$kind: collection
+id: "75db5006-3b85-50ae-baac-5cc4fb6d6ca4"
+description: |-
+  The **v1_message** entity, which belongs to a organization. Its requests address one record by `{{v1_message_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 522000

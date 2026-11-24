@@ -441,9 +441,43 @@ func (e *AgentConnectionEntity) UpdateTyped(reqdata AgentConnectionUpdateData, c
 
 
 
-func (e *AgentConnectionEntity) Patch(_ map[string]any, _ map[string]any) (any, error) {
-	return core.UnsupportedOp("patch", e.name)
+
+func (e *AgentConnectionEntity) Patch(reqdata map[string]any, ctrl map[string]any) (any, error) {
+	utility := e.utility
+	ctx := utility.MakeContext(map[string]any{
+		"opname":  "patch",
+		"ctrl":    ctrl,
+		"match":   e.match,
+		"data":    e.data,
+		"reqdata": reqdata,
+	}, e.entctx)
+
+	return e.runOp(ctx, func() {
+		if ctx.Result != nil {
+			if ctx.Result.Resmatch != nil {
+				e.match = ctx.Result.Resmatch
+			}
+			if ctx.Result.Resdata != nil {
+				e.data = map[string]any{}
+				if data := core.ToMapAny(vs.Clone(ctx.Result.Resdata)); data != nil {
+					e.data = data
+				}
+			}
+		}
+	})
 }
+
+// PatchTyped is the statically-typed variant of Patch: it takes an
+// AgentConnectionPatchData and returns an AgentConnection. It delegates to the untyped
+// Patch (identical runtime) and converts at the typed boundary.
+func (e *AgentConnectionEntity) PatchTyped(reqdata AgentConnectionPatchData, ctrl map[string]any) (AgentConnection, error) {
+	res, err := e.Patch(asMap(reqdata), ctrl)
+	if err != nil {
+		return AgentConnection{}, err
+	}
+	return typedFrom[AgentConnection](res), nil
+}
+
 
 
 

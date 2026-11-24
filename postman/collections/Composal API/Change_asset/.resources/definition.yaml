@@ -1,0 +1,15 @@
+$kind: collection
+id: bdeef549-468b-5983-ba0d-d159483a489a
+description: |-
+  The **change_asset** entity, which belongs to a organization and a repo. Its requests address one record by `{{change_asset_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `alias` | string | yes |  |
+  | `byte_size` | integer | yes |  |
+  | `checksum_md5` | string | yes |  |
+  | `checksum_sha256` | string | yes |  |
+  | `content_type` | string | yes |  |
+  | `filename` | string | yes |  |
+  | `id` | string |  |  |
+order: 156000

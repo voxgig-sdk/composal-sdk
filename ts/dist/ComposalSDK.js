@@ -35,19 +35,32 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SDK = exports.ComposalSDK = exports.ComposalEntityBase = exports.BaseFeature = exports.sekreto = exports.config = exports.stdutil = void 0;
+const A2aWellKnownEntity_1 = require("./entity/A2aWellKnownEntity");
+const AdminOrgEntity_1 = require("./entity/AdminOrgEntity");
 const AgentEntity_1 = require("./entity/AgentEntity");
+const AgentAppEntity_1 = require("./entity/AgentAppEntity");
+const AgentAppInstallEntity_1 = require("./entity/AgentAppInstallEntity");
 const AgentAttachmentEntity_1 = require("./entity/AgentAttachmentEntity");
 const AgentAutomationEntity_1 = require("./entity/AgentAutomationEntity");
 const AgentAvatarEntity_1 = require("./entity/AgentAvatarEntity");
 const AgentCommandEntity_1 = require("./entity/AgentCommandEntity");
 const AgentComputerEntity_1 = require("./entity/AgentComputerEntity");
 const AgentConnectionEntity_1 = require("./entity/AgentConnectionEntity");
+const AgentConnectionDelegationEntity_1 = require("./entity/AgentConnectionDelegationEntity");
+const AgentConnectionGrantEntity_1 = require("./entity/AgentConnectionGrantEntity");
+const AgentConnectionResourceEntity_1 = require("./entity/AgentConnectionResourceEntity");
+const AgentConnectionSafetyControlEntity_1 = require("./entity/AgentConnectionSafetyControlEntity");
+const AgentConnectionTriggerSubscriptionEntity_1 = require("./entity/AgentConnectionTriggerSubscriptionEntity");
+const AgentContextCheckpointEntity_1 = require("./entity/AgentContextCheckpointEntity");
 const AgentControlFlowEntity_1 = require("./entity/AgentControlFlowEntity");
 const AgentCoordinationEntity_1 = require("./entity/AgentCoordinationEntity");
 const AgentEmailEntity_1 = require("./entity/AgentEmailEntity");
+const AgentEventEntity_1 = require("./entity/AgentEventEntity");
 const AgentFileEntity_1 = require("./entity/AgentFileEntity");
 const AgentInputEntity_1 = require("./entity/AgentInputEntity");
 const AgentIntegrationEntity_1 = require("./entity/AgentIntegrationEntity");
+const AgentIntegrationAccountEntity_1 = require("./entity/AgentIntegrationAccountEntity");
+const AgentIntegrationCallbackEntity_1 = require("./entity/AgentIntegrationCallbackEntity");
 const AgentInteractionEntity_1 = require("./entity/AgentInteractionEntity");
 const AgentLibraryEntity_1 = require("./entity/AgentLibraryEntity");
 const AgentManagerEntity_1 = require("./entity/AgentManagerEntity");
@@ -59,11 +72,17 @@ const AgentOperationEntity_1 = require("./entity/AgentOperationEntity");
 const AgentProvisioningEntity_1 = require("./entity/AgentProvisioningEntity");
 const AgentPullRequestEntity_1 = require("./entity/AgentPullRequestEntity");
 const AgentQuestionEntity_1 = require("./entity/AgentQuestionEntity");
+const AgentRelayFileGrantEntity_1 = require("./entity/AgentRelayFileGrantEntity");
+const AgentRelayFileGrantAccountEntity_1 = require("./entity/AgentRelayFileGrantAccountEntity");
 const AgentRepositoryEntity_1 = require("./entity/AgentRepositoryEntity");
 const AgentResourceEntity_1 = require("./entity/AgentResourceEntity");
+const AgentRoderEntity_1 = require("./entity/AgentRoderEntity");
 const AgentRoutineEntity_1 = require("./entity/AgentRoutineEntity");
 const AgentRunEntity_1 = require("./entity/AgentRunEntity");
 const AgentRuntimeEntity_1 = require("./entity/AgentRuntimeEntity");
+const AgentSessionEntity_1 = require("./entity/AgentSessionEntity");
+const AgentSessionCheckpointEntity_1 = require("./entity/AgentSessionCheckpointEntity");
+const AgentSessionRoderHandoffEntity_1 = require("./entity/AgentSessionRoderHandoffEntity");
 const AgentSettingEntity_1 = require("./entity/AgentSettingEntity");
 const AgentSharingEntity_1 = require("./entity/AgentSharingEntity");
 const AgentSiteEntity_1 = require("./entity/AgentSiteEntity");
@@ -71,12 +90,15 @@ const AgentSkillEntity_1 = require("./entity/AgentSkillEntity");
 const AgentSlackEntity_1 = require("./entity/AgentSlackEntity");
 const AgentSubagentEntity_1 = require("./entity/AgentSubagentEntity");
 const AgentSubscriptionEntity_1 = require("./entity/AgentSubscriptionEntity");
+const AgentSwarmEntity_1 = require("./entity/AgentSwarmEntity");
 const AgentTeammateEntity_1 = require("./entity/AgentTeammateEntity");
 const AgentTerminalEntity_1 = require("./entity/AgentTerminalEntity");
 const AgentThreadEntity_1 = require("./entity/AgentThreadEntity");
 const AgentToolEntity_1 = require("./entity/AgentToolEntity");
+const AgentUsageEntity_1 = require("./entity/AgentUsageEntity");
 const AgentVerifyProjectEntity_1 = require("./entity/AgentVerifyProjectEntity");
 const AgentWaitEntity_1 = require("./entity/AgentWaitEntity");
+const AgentWebPreviewEntity_1 = require("./entity/AgentWebPreviewEntity");
 const AgentWebhookEntity_1 = require("./entity/AgentWebhookEntity");
 const AgentWorkEntity_1 = require("./entity/AgentWorkEntity");
 const AgentWorkflowEntity_1 = require("./entity/AgentWorkflowEntity");
@@ -85,8 +107,13 @@ const AgentWorkflowRunEntity_1 = require("./entity/AgentWorkflowRunEntity");
 const AgentWorkflowTriggerEntity_1 = require("./entity/AgentWorkflowTriggerEntity");
 const AgentWorkspaceEntity_1 = require("./entity/AgentWorkspaceEntity");
 const AgentWritePermissionEntity_1 = require("./entity/AgentWritePermissionEntity");
+const AgreementEntity_1 = require("./entity/AgreementEntity");
+const AgreementAccessRequestEntity_1 = require("./entity/AgreementAccessRequestEntity");
+const AlertRuleEventEntity_1 = require("./entity/AlertRuleEventEntity");
 const AllocationLogEntity_1 = require("./entity/AllocationLogEntity");
 const AppEntity_1 = require("./entity/AppEntity");
+const AppAccessEntity_1 = require("./entity/AppAccessEntity");
+const AppAccessJwkEntity_1 = require("./entity/AppAccessJwkEntity");
 const AppCdnEntity_1 = require("./entity/AppCdnEntity");
 const AppConfigVariableEntity_1 = require("./entity/AppConfigVariableEntity");
 const AppDataResourceEntity_1 = require("./entity/AppDataResourceEntity");
@@ -105,11 +132,46 @@ const AppServiceEntity_1 = require("./entity/AppServiceEntity");
 const AppServiceBindingEntity_1 = require("./entity/AppServiceBindingEntity");
 const AppServicePlacementEntity_1 = require("./entity/AppServicePlacementEntity");
 const AppStorageResourceEntity_1 = require("./entity/AppStorageResourceEntity");
+const ArtefactEntity_1 = require("./entity/ArtefactEntity");
+const ArtefactCommentThreadEntity_1 = require("./entity/ArtefactCommentThreadEntity");
+const ArtefactRevisionEntity_1 = require("./entity/ArtefactRevisionEntity");
+const ArtefactViewTokenEntity_1 = require("./entity/ArtefactViewTokenEntity");
+const ArtifactEntity_1 = require("./entity/ArtifactEntity");
+const ArtifactCacheNamespaceEntity_1 = require("./entity/ArtifactCacheNamespaceEntity");
+const ArtifactImageRepositoryEntity_1 = require("./entity/ArtifactImageRepositoryEntity");
+const ArtifactPackageMirrorEntity_1 = require("./entity/ArtifactPackageMirrorEntity");
+const ArtifactRetentionPolicyEntity_1 = require("./entity/ArtifactRetentionPolicyEntity");
 const AttachmentPartEntity_1 = require("./entity/AttachmentPartEntity");
+const AuditEventEntity_1 = require("./entity/AuditEventEntity");
+const AuthEntity_1 = require("./entity/AuthEntity");
+const AuthCliEntity_1 = require("./entity/AuthCliEntity");
+const AuthGithubEntity_1 = require("./entity/AuthGithubEntity");
+const AuthGoogleEntity_1 = require("./entity/AuthGoogleEntity");
+const AuthOpenaiEntity_1 = require("./entity/AuthOpenaiEntity");
+const AuthPasswordResetEntity_1 = require("./entity/AuthPasswordResetEntity");
+const AuthRegistrationOptionEntity_1 = require("./entity/AuthRegistrationOptionEntity");
 const AutomationEventEntity_1 = require("./entity/AutomationEventEntity");
 const AutomationRunEntity_1 = require("./entity/AutomationRunEntity");
+const BackendRunnerPoolEntity_1 = require("./entity/BackendRunnerPoolEntity");
+const BazelEntity_1 = require("./entity/BazelEntity");
+const BazelActionResultEntity_1 = require("./entity/BazelActionResultEntity");
+const BazelBackendEntity_1 = require("./entity/BazelBackendEntity");
+const BazelBlobEntity_1 = require("./entity/BazelBlobEntity");
+const BazelExecutionEntity_1 = require("./entity/BazelExecutionEntity");
+const BazelFindMissingBlobEntity_1 = require("./entity/BazelFindMissingBlobEntity");
+const BillingEntity_1 = require("./entity/BillingEntity");
+const BillingAddonEntity_1 = require("./entity/BillingAddonEntity");
+const BillingCheckoutSessionEntity_1 = require("./entity/BillingCheckoutSessionEntity");
+const BillingInvoiceEntity_1 = require("./entity/BillingInvoiceEntity");
+const BillingPackageEntity_1 = require("./entity/BillingPackageEntity");
+const BillingPortalSessionEntity_1 = require("./entity/BillingPortalSessionEntity");
+const BillingPrepaidPeriodEntity_1 = require("./entity/BillingPrepaidPeriodEntity");
+const BillingPrepaidPurchaseEntity_1 = require("./entity/BillingPrepaidPurchaseEntity");
+const BillingTokenTopUpEntity_1 = require("./entity/BillingTokenTopUpEntity");
+const BillingUsageEntity_1 = require("./entity/BillingUsageEntity");
 const BinaryEntity_1 = require("./entity/BinaryEntity");
 const BinaryVersionEntity_1 = require("./entity/BinaryVersionEntity");
+const BookmarkProtectionRefreshGithubRequiredCheckEntity_1 = require("./entity/BookmarkProtectionRefreshGithubRequiredCheckEntity");
 const BrowserEgressCandidateEntity_1 = require("./entity/BrowserEgressCandidateEntity");
 const BrowserSessionEntity_1 = require("./entity/BrowserSessionEntity");
 const BrowserSessionConnectionEntity_1 = require("./entity/BrowserSessionConnectionEntity");
@@ -119,13 +181,46 @@ const BrowserSessionMediaEntity_1 = require("./entity/BrowserSessionMediaEntity"
 const BrowserSessionRecordingEntity_1 = require("./entity/BrowserSessionRecordingEntity");
 const BrowserSessionScreenshotEntity_1 = require("./entity/BrowserSessionScreenshotEntity");
 const BrowserSessionTaskEntity_1 = require("./entity/BrowserSessionTaskEntity");
+const CacheNamespaceEntryEntity_1 = require("./entity/CacheNamespaceEntryEntity");
 const CatalogSelectorEntity_1 = require("./entity/CatalogSelectorEntity");
 const CdnDeploymentEntity_1 = require("./entity/CdnDeploymentEntity");
 const CdnHostnameEntity_1 = require("./entity/CdnHostnameEntity");
 const CdnSpaceEntity_1 = require("./entity/CdnSpaceEntity");
 const CdnSpaceObjectEntity_1 = require("./entity/CdnSpaceObjectEntity");
+const ChangeEntity_1 = require("./entity/ChangeEntity");
+const ChangeAssetEntity_1 = require("./entity/ChangeAssetEntity");
+const ChangeCommentEntity_1 = require("./entity/ChangeCommentEntity");
+const ChangeFileReviewCheckpointEntity_1 = require("./entity/ChangeFileReviewCheckpointEntity");
+const ChangeGitBranchSubmissionEntity_1 = require("./entity/ChangeGitBranchSubmissionEntity");
+const ChangeGitCommitIdentityEntity_1 = require("./entity/ChangeGitCommitIdentityEntity");
+const ChangeGitPublicationEntity_1 = require("./entity/ChangeGitPublicationEntity");
+const ChangeGroupMemberEntity_1 = require("./entity/ChangeGroupMemberEntity");
+const ChangeLabelEntity_1 = require("./entity/ChangeLabelEntity");
+const ChangeLandingHoldEntity_1 = require("./entity/ChangeLandingHoldEntity");
+const ChangeLandingRequestEntity_1 = require("./entity/ChangeLandingRequestEntity");
+const ChangeRequestChangeEntity_1 = require("./entity/ChangeRequestChangeEntity");
+const ChangeReviewerEntity_1 = require("./entity/ChangeReviewerEntity");
+const ChangeTranscriptEntity_1 = require("./entity/ChangeTranscriptEntity");
+const ChangeTranscriptSummaryEntity_1 = require("./entity/ChangeTranscriptSummaryEntity");
+const CheckpointPrepareChunkEntity_1 = require("./entity/CheckpointPrepareChunkEntity");
+const CiNodeEntity_1 = require("./entity/CiNodeEntity");
+const CiPipelineEntity_1 = require("./entity/CiPipelineEntity");
+const CiPipelineRunEntity_1 = require("./entity/CiPipelineRunEntity");
+const CiRunnerPoolEntity_1 = require("./entity/CiRunnerPoolEntity");
+const CiStatusEntity_1 = require("./entity/CiStatusEntity");
+const CliEventEntity_1 = require("./entity/CliEventEntity");
+const CliReleaseEntity_1 = require("./entity/CliReleaseEntity");
+const CloudWorkspaceBackupObjectEntity_1 = require("./entity/CloudWorkspaceBackupObjectEntity");
+const CodeRuleEvaluationEntity_1 = require("./entity/CodeRuleEvaluationEntity");
+const ComSiteAccessEntity_1 = require("./entity/ComSiteAccessEntity");
+const ComSiteAccessSessionEntity_1 = require("./entity/ComSiteAccessSessionEntity");
+const CommentThreadCommentEntity_1 = require("./entity/CommentThreadCommentEntity");
+const CommitDiffEntity_1 = require("./entity/CommitDiffEntity");
 const ConnectionRequestEntity_1 = require("./entity/ConnectionRequestEntity");
 const ConnectionSourceEntity_1 = require("./entity/ConnectionSourceEntity");
+const ContactSubmissionEntity_1 = require("./entity/ContactSubmissionEntity");
+const ControlComputerEntity_1 = require("./entity/ControlComputerEntity");
+const ControlComputerControlOperationEntity_1 = require("./entity/ControlComputerControlOperationEntity");
 const CoordinationWaitEntity_1 = require("./entity/CoordinationWaitEntity");
 const CredentialSignInCheckEntity_1 = require("./entity/CredentialSignInCheckEntity");
 const DataResourceRotateCredentialEntity_1 = require("./entity/DataResourceRotateCredentialEntity");
@@ -136,10 +231,36 @@ const DeepScanMappedFlowEntity_1 = require("./entity/DeepScanMappedFlowEntity");
 const DeepScanOptionEntity_1 = require("./entity/DeepScanOptionEntity");
 const DemoShareEntity_1 = require("./entity/DemoShareEntity");
 const DemoShareSegmentEntity_1 = require("./entity/DemoShareSegmentEntity");
+const DeploymentEntity_1 = require("./entity/DeploymentEntity");
 const DeploymentDashboardNomadEntity_1 = require("./entity/DeploymentDashboardNomadEntity");
+const DeploymentDetailEntity_1 = require("./entity/DeploymentDetailEntity");
 const DeploymentFileEntity_1 = require("./entity/DeploymentFileEntity");
+const DeploymentLogEntity_1 = require("./entity/DeploymentLogEntity");
+const DeploymentMetricEntity_1 = require("./entity/DeploymentMetricEntity");
+const DeploymentPreviewEntity_1 = require("./entity/DeploymentPreviewEntity");
+const DeploymentSettingEntity_1 = require("./entity/DeploymentSettingEntity");
+const DesktopLocalAgentModelEntity_1 = require("./entity/DesktopLocalAgentModelEntity");
+const DesktopLocalAgentResponseEntity_1 = require("./entity/DesktopLocalAgentResponseEntity");
+const DeviceEntity_1 = require("./entity/DeviceEntity");
+const DeviceBrowserOperationEntity_1 = require("./entity/DeviceBrowserOperationEntity");
+const DeviceControlMessageEntity_1 = require("./entity/DeviceControlMessageEntity");
+const DeviceControlOperationEntity_1 = require("./entity/DeviceControlOperationEntity");
+const DeviceEnterpriseRelayEntity_1 = require("./entity/DeviceEnterpriseRelayEntity");
+const DeviceFolderListingEntity_1 = require("./entity/DeviceFolderListingEntity");
+const DeviceGrantEntity_1 = require("./entity/DeviceGrantEntity");
+const DeviceInvocationEntity_1 = require("./entity/DeviceInvocationEntity");
+const DeviceLocalEventEntity_1 = require("./entity/DeviceLocalEventEntity");
+const DevicePairingEntity_1 = require("./entity/DevicePairingEntity");
+const DeviceProjectEntity_1 = require("./entity/DeviceProjectEntity");
+const DeviceScheduledCheckInEntity_1 = require("./entity/DeviceScheduledCheckInEntity");
+const DockerBuilderEntity_1 = require("./entity/DockerBuilderEntity");
+const DockerBuilderSessionEntity_1 = require("./entity/DockerBuilderSessionEntity");
+const DockerBuilderSettingEntity_1 = require("./entity/DockerBuilderSettingEntity");
+const DomainDnsIntegrationEntity_1 = require("./entity/DomainDnsIntegrationEntity");
 const DomainPathRuleEntity_1 = require("./entity/DomainPathRuleEntity");
 const DreamEntity_1 = require("./entity/DreamEntity");
+const EdgeEntity_1 = require("./entity/EdgeEntity");
+const EmailVerificationEntity_1 = require("./entity/EmailVerificationEntity");
 const EnvironmentEntity_1 = require("./entity/EnvironmentEntity");
 const EnvironmentDiscoveryRunEntity_1 = require("./entity/EnvironmentDiscoveryRunEntity");
 const EnvironmentExplorationEntity_1 = require("./entity/EnvironmentExplorationEntity");
@@ -148,48 +269,153 @@ const EnvironmentRevisionEntity_1 = require("./entity/EnvironmentRevisionEntity"
 const EnvironmentSecretBindingEntity_1 = require("./entity/EnvironmentSecretBindingEntity");
 const EnvironmentTestAccountEntity_1 = require("./entity/EnvironmentTestAccountEntity");
 const EvidenceEntity_1 = require("./entity/EvidenceEntity");
+const ExecutionDesiredStateEntity_1 = require("./entity/ExecutionDesiredStateEntity");
+const ExecutionReconcilerTickEntity_1 = require("./entity/ExecutionReconcilerTickEntity");
+const ExecutionReleaseEntity_1 = require("./entity/ExecutionReleaseEntity");
+const ExecutionRuntimeInstanceEntity_1 = require("./entity/ExecutionRuntimeInstanceEntity");
 const ExplorationEntity_1 = require("./entity/ExplorationEntity");
 const ExplorationMessageEntity_1 = require("./entity/ExplorationMessageEntity");
 const ExplorationReportEntity_1 = require("./entity/ExplorationReportEntity");
 const ExplorationScenarioEntity_1 = require("./entity/ExplorationScenarioEntity");
 const FindingEntity_1 = require("./entity/FindingEntity");
+const GhEntity_1 = require("./entity/GhEntity");
+const GitImportEntity_1 = require("./entity/GitImportEntity");
+const GithubEntity_1 = require("./entity/GithubEntity");
+const GithubAppEntity_1 = require("./entity/GithubAppEntity");
+const GithubAppImportableRepositoryEntity_1 = require("./entity/GithubAppImportableRepositoryEntity");
+const GithubAppInstallationEntity_1 = require("./entity/GithubAppInstallationEntity");
+const GithubAppInstallationAuthorizationEntity_1 = require("./entity/GithubAppInstallationAuthorizationEntity");
+const GithubAppUserAuthorizationEntity_1 = require("./entity/GithubAppUserAuthorizationEntity");
+const GithubCiRepositoryEntity_1 = require("./entity/GithubCiRepositoryEntity");
+const GithubCiRepositoryCompatibilityReportEntity_1 = require("./entity/GithubCiRepositoryCompatibilityReportEntity");
 const GithubConnectionEntity_1 = require("./entity/GithubConnectionEntity");
+const GithubIntegrationEntity_1 = require("./entity/GithubIntegrationEntity");
+const GithubOnboardingEntity_1 = require("./entity/GithubOnboardingEntity");
+const GithubOnboardingBranchEntity_1 = require("./entity/GithubOnboardingBranchEntity");
+const GithubOnboardingImportEntity_1 = require("./entity/GithubOnboardingImportEntity");
+const GithubOnboardingImportBatchEntity_1 = require("./entity/GithubOnboardingImportBatchEntity");
+const GithubOnboardingImportItemEntity_1 = require("./entity/GithubOnboardingImportItemEntity");
+const GithubPullRequestEntity_1 = require("./entity/GithubPullRequestEntity");
+const GithubRunnerAdmissionEntity_1 = require("./entity/GithubRunnerAdmissionEntity");
+const GithubRunnerCacheEntity_1 = require("./entity/GithubRunnerCacheEntity");
+const GithubRunnerEgressEntity_1 = require("./entity/GithubRunnerEgressEntity");
+const GithubRunnerHistoryEntity_1 = require("./entity/GithubRunnerHistoryEntity");
+const GithubRunnerImageEntity_1 = require("./entity/GithubRunnerImageEntity");
+const GithubRunnerPoolEntity_1 = require("./entity/GithubRunnerPoolEntity");
+const GithubRunnerSetupEntity_1 = require("./entity/GithubRunnerSetupEntity");
+const GitlabEntity_1 = require("./entity/GitlabEntity");
+const GitlabConnectionEntity_1 = require("./entity/GitlabConnectionEntity");
+const GitlabImportEntity_1 = require("./entity/GitlabImportEntity");
+const GitlabOauthEntity_1 = require("./entity/GitlabOauthEntity");
+const GrantAllAgentEntity_1 = require("./entity/GrantAllAgentEntity");
 const HostingAppDomainEntity_1 = require("./entity/HostingAppDomainEntity");
+const IdentityOrganizationEntity_1 = require("./entity/IdentityOrganizationEntity");
 const ImageRepositoryEntity_1 = require("./entity/ImageRepositoryEntity");
+const ImageRepositoryTagEntity_1 = require("./entity/ImageRepositoryTagEntity");
+const ImportBranchPolicyEntity_1 = require("./entity/ImportBranchPolicyEntity");
 const IntegrationEntity_1 = require("./entity/IntegrationEntity");
 const InteractionResponseEntity_1 = require("./entity/InteractionResponseEntity");
 const InvitationEntity_1 = require("./entity/InvitationEntity");
+const InvocationControlEntity_1 = require("./entity/InvocationControlEntity");
+const JobLogChunkEntity_1 = require("./entity/JobLogChunkEntity");
+const JobStepEntity_1 = require("./entity/JobStepEntity");
+const JobWorkspaceEntity_1 = require("./entity/JobWorkspaceEntity");
 const JourneyVariantReplayEntity_1 = require("./entity/JourneyVariantReplayEntity");
 const KnowledgeEntity_1 = require("./entity/KnowledgeEntity");
+const KnownEntity_1 = require("./entity/KnownEntity");
+const LabelEntity_1 = require("./entity/LabelEntity");
+const LeaseArtifactEntity_1 = require("./entity/LeaseArtifactEntity");
+const LeaseCacheEntity_1 = require("./entity/LeaseCacheEntity");
+const LeaseLogChunkEntity_1 = require("./entity/LeaseLogChunkEntity");
+const LeaseReconciliationEntity_1 = require("./entity/LeaseReconciliationEntity");
+const LeaseStepEntity_1 = require("./entity/LeaseStepEntity");
+const LeaseVerifyDiagnosticEntity_1 = require("./entity/LeaseVerifyDiagnosticEntity");
+const LeaseVerifySecretEntity_1 = require("./entity/LeaseVerifySecretEntity");
+const LeaseWorkspaceEntity_1 = require("./entity/LeaseWorkspaceEntity");
+const LocalAgentDecisionEntity_1 = require("./entity/LocalAgentDecisionEntity");
+const LocalAgentResponseEntity_1 = require("./entity/LocalAgentResponseEntity");
 const LocalThreadDeliveryEntity_1 = require("./entity/LocalThreadDeliveryEntity");
 const LocalThreadOperationEntity_1 = require("./entity/LocalThreadOperationEntity");
 const LocationEntity_1 = require("./entity/LocationEntity");
+const LogStreamChunkEntity_1 = require("./entity/LogStreamChunkEntity");
+const LogoImageEntity_1 = require("./entity/LogoImageEntity");
+const MarketingSettingEntity_1 = require("./entity/MarketingSettingEntity");
+const McpOauthEntity_1 = require("./entity/McpOauthEntity");
 const MeEntity_1 = require("./entity/MeEntity");
 const MeEmailEntity_1 = require("./entity/MeEmailEntity");
 const MeOnboardingEntity_1 = require("./entity/MeOnboardingEntity");
 const MediaFileEntity_1 = require("./entity/MediaFileEntity");
 const MemberEntity_1 = require("./entity/MemberEntity");
 const MemoryEntity_1 = require("./entity/MemoryEntity");
+const MergeQueueEntryEntity_1 = require("./entity/MergeQueueEntryEntity");
 const MergeRequestEntity_1 = require("./entity/MergeRequestEntity");
+const MergeResolutionEntity_1 = require("./entity/MergeResolutionEntity");
 const MessagingConversationMessageEntity_1 = require("./entity/MessagingConversationMessageEntity");
 const MessagingConversationUploadEntity_1 = require("./entity/MessagingConversationUploadEntity");
 const MetricQueryEntity_1 = require("./entity/MetricQueryEntity");
+const MetronomeWebhookEntity_1 = require("./entity/MetronomeWebhookEntity");
+const ModelSubscriptionAccountEntity_1 = require("./entity/ModelSubscriptionAccountEntity");
+const ModelSubscriptionAccountConnectionEntity_1 = require("./entity/ModelSubscriptionAccountConnectionEntity");
 const NetworkConnectionEntity_1 = require("./entity/NetworkConnectionEntity");
+const NetworkingSpaceEntity_1 = require("./entity/NetworkingSpaceEntity");
+const NodeEntity_1 = require("./entity/NodeEntity");
+const NodeCertificateEntity_1 = require("./entity/NodeCertificateEntity");
+const NodeLeaseEntity_1 = require("./entity/NodeLeaseEntity");
 const NomadAllocationEntity_1 = require("./entity/NomadAllocationEntity");
 const NomadLogEntity_1 = require("./entity/NomadLogEntity");
+const NowEntity_1 = require("./entity/NowEntity");
+const ObservabilityClickhouseClusterEntity_1 = require("./entity/ObservabilityClickhouseClusterEntity");
+const ObservabilityQuickwitClusterEntity_1 = require("./entity/ObservabilityQuickwitClusterEntity");
+const ObservabilitySpaceEntity_1 = require("./entity/ObservabilitySpaceEntity");
+const OpenapiEntity_1 = require("./entity/OpenapiEntity");
+const OrgInvitationEntity_1 = require("./entity/OrgInvitationEntity");
 const OrganizationEntity_1 = require("./entity/OrganizationEntity");
+const OrganizationAppEntity_1 = require("./entity/OrganizationAppEntity");
+const OrganizationControlEntity_1 = require("./entity/OrganizationControlEntity");
+const OrganizationDeviceEntity_1 = require("./entity/OrganizationDeviceEntity");
+const OrganizationIdentityCertificateEntity_1 = require("./entity/OrganizationIdentityCertificateEntity");
+const OrganizationInteractionEntity_1 = require("./entity/OrganizationInteractionEntity");
+const OrganizationInvitationEntity_1 = require("./entity/OrganizationInvitationEntity");
+const OrganizationMessageFileEntity_1 = require("./entity/OrganizationMessageFileEntity");
+const OrganizationOidcTrustEntity_1 = require("./entity/OrganizationOidcTrustEntity");
+const OrganizationRunEventEntity_1 = require("./entity/OrganizationRunEventEntity");
+const OrganizationRunOutcomeEntity_1 = require("./entity/OrganizationRunOutcomeEntity");
+const OrganizationRunUsageEntity_1 = require("./entity/OrganizationRunUsageEntity");
+const OrganizationSandboxEntity_1 = require("./entity/OrganizationSandboxEntity");
+const OrganizationSecretEntity_1 = require("./entity/OrganizationSecretEntity");
+const OrganizationServiceAccountEntity_1 = require("./entity/OrganizationServiceAccountEntity");
+const OrganizationSettingEntity_1 = require("./entity/OrganizationSettingEntity");
+const OrganizationSiteEntity_1 = require("./entity/OrganizationSiteEntity");
+const OrganizationSubscriptionEntity_1 = require("./entity/OrganizationSubscriptionEntity");
+const OrganizationToolEntity_1 = require("./entity/OrganizationToolEntity");
+const OrganizationWorkloadIdentityEntity_1 = require("./entity/OrganizationWorkloadIdentityEntity");
+const OtelIngestEntity_1 = require("./entity/OtelIngestEntity");
 const PageEntity_1 = require("./entity/PageEntity");
 const PageAgentEntity_1 = require("./entity/PageAgentEntity");
+const PageArtefactEntity_1 = require("./entity/PageArtefactEntity");
+const PageCiPipelineRunEntity_1 = require("./entity/PageCiPipelineRunEntity");
 const PageProjectRunEntity_1 = require("./entity/PageProjectRunEntity");
+const PageRepoVcCommitEntity_1 = require("./entity/PageRepoVcCommitEntity");
+const PagesBillingEntity_1 = require("./entity/PagesBillingEntity");
+const PagesGithubOnboardingEntity_1 = require("./entity/PagesGithubOnboardingEntity");
+const PagesMemberEntity_1 = require("./entity/PagesMemberEntity");
 const PagesProjectCredentialEntity_1 = require("./entity/PagesProjectCredentialEntity");
 const PagesProjectPersonaEntity_1 = require("./entity/PagesProjectPersonaEntity");
 const PagesProjectRunEntity_1 = require("./entity/PagesProjectRunEntity");
 const PagesProjectScenarioEntity_1 = require("./entity/PagesProjectScenarioEntity");
+const PagesRegistryEntity_1 = require("./entity/PagesRegistryEntity");
+const PagesSessionEntity_1 = require("./entity/PagesSessionEntity");
+const PairingEntity_1 = require("./entity/PairingEntity");
+const PairingEventEntity_1 = require("./entity/PairingEventEntity");
+const ParallelV1Entity_1 = require("./entity/ParallelV1Entity");
+const PatchsetDiffEntity_1 = require("./entity/PatchsetDiffEntity");
 const PersonalAccessTokenEntity_1 = require("./entity/PersonalAccessTokenEntity");
 const PreviewOperationEntity_1 = require("./entity/PreviewOperationEntity");
 const PreviewProfileSecretBindingEntity_1 = require("./entity/PreviewProfileSecretBindingEntity");
 const PreviewSecretEntity_1 = require("./entity/PreviewSecretEntity");
 const PreviewSharingApprovalEntity_1 = require("./entity/PreviewSharingApprovalEntity");
+const ProactiveAgentWaitlistEntryEntity_1 = require("./entity/ProactiveAgentWaitlistEntryEntity");
+const ProductEntity_1 = require("./entity/ProductEntity");
 const ProductMapIdentityDecisionEntity_1 = require("./entity/ProductMapIdentityDecisionEntity");
 const ProductMapJourneyEntity_1 = require("./entity/ProductMapJourneyEntity");
 const ProductMapJourneyReplayEntity_1 = require("./entity/ProductMapJourneyReplayEntity");
@@ -214,43 +440,152 @@ const ProjectScenarioOptionEntity_1 = require("./entity/ProjectScenarioOptionEnt
 const ProjectScenarioRowEntity_1 = require("./entity/ProjectScenarioRowEntity");
 const ProjectSettingEntity_1 = require("./entity/ProjectSettingEntity");
 const PullRequestEntity_1 = require("./entity/PullRequestEntity");
+const PullRequestActionEntity_1 = require("./entity/PullRequestActionEntity");
+const PullRequestMagicMergeEntity_1 = require("./entity/PullRequestMagicMergeEntity");
 const PullRequestSettingEntity_1 = require("./entity/PullRequestSettingEntity");
 const PullRequestSettingAddRepositoryEntity_1 = require("./entity/PullRequestSettingAddRepositoryEntity");
 const PullRequestSettingDetectCommentEntity_1 = require("./entity/PullRequestSettingDetectCommentEntity");
+const PullRequestTranscriptEntity_1 = require("./entity/PullRequestTranscriptEntity");
+const PullZoneEntity_1 = require("./entity/PullZoneEntity");
 const RecorderEntity_1 = require("./entity/RecorderEntity");
 const RegistryEntity_1 = require("./entity/RegistryEntity");
 const RegistryV2Entity_1 = require("./entity/RegistryV2Entity");
+const RelayAgentConnectionEntity_1 = require("./entity/RelayAgentConnectionEntity");
 const RelayAgentLocalThreadEntity_1 = require("./entity/RelayAgentLocalThreadEntity");
+const RelaySignalEntity_1 = require("./entity/RelaySignalEntity");
+const ReleaseRolloutEntity_1 = require("./entity/ReleaseRolloutEntity");
+const RepoEntity_1 = require("./entity/RepoEntity");
+const RepoAccessTokenEntity_1 = require("./entity/RepoAccessTokenEntity");
+const RepoActionEntity_1 = require("./entity/RepoActionEntity");
+const RepoAgentCheckpointEntity_1 = require("./entity/RepoAgentCheckpointEntity");
+const RepoAgentSessionEntity_1 = require("./entity/RepoAgentSessionEntity");
+const RepoBookmarkProtectionEntity_1 = require("./entity/RepoBookmarkProtectionEntity");
+const RepoBookmarkProtectionEventEntity_1 = require("./entity/RepoBookmarkProtectionEventEntity");
+const RepoCloudWorkspaceBackupEntity_1 = require("./entity/RepoCloudWorkspaceBackupEntity");
+const RepoCodeRuleEntity_1 = require("./entity/RepoCodeRuleEntity");
+const RepoSettingEntity_1 = require("./entity/RepoSettingEntity");
+const RepoStatEntity_1 = require("./entity/RepoStatEntity");
+const RepoVcEntity_1 = require("./entity/RepoVcEntity");
+const RepoVcCommitEntity_1 = require("./entity/RepoVcCommitEntity");
 const ReportReplayEntity_1 = require("./entity/ReportReplayEntity");
 const ReportScenarioEntity_1 = require("./entity/ReportScenarioEntity");
+const RepositoryAccessEntity_1 = require("./entity/RepositoryAccessEntity");
+const RepositoryAccessResolveEntity_1 = require("./entity/RepositoryAccessResolveEntity");
+const RepositoryEventEntity_1 = require("./entity/RepositoryEventEntity");
+const RepositoryImportEntity_1 = require("./entity/RepositoryImportEntity");
+const RepositoryImportSessionEntity_1 = require("./entity/RepositoryImportSessionEntity");
+const RepositoryImportSessionRepositoryEntity_1 = require("./entity/RepositoryImportSessionRepositoryEntity");
+const RepositoryImportSessionSelectionEntity_1 = require("./entity/RepositoryImportSessionSelectionEntity");
+const RepositorySandboxEnvironmentEntity_1 = require("./entity/RepositorySandboxEnvironmentEntity");
+const RoderCodeRepairEntity_1 = require("./entity/RoderCodeRepairEntity");
+const RoderCodeRepairSettingEntity_1 = require("./entity/RoderCodeRepairSettingEntity");
+const RoderMachineEntity_1 = require("./entity/RoderMachineEntity");
+const RoderRunEntity_1 = require("./entity/RoderRunEntity");
+const RoderWorkspaceCredentialEntity_1 = require("./entity/RoderWorkspaceCredentialEntity");
+const RunArtifactEntity_1 = require("./entity/RunArtifactEntity");
+const RunJobEntity_1 = require("./entity/RunJobEntity");
 const RunScenarioRunEntity_1 = require("./entity/RunScenarioRunEntity");
 const RunScheduleOptionEntity_1 = require("./entity/RunScheduleOptionEntity");
 const RunSearchEntity_1 = require("./entity/RunSearchEntity");
 const RunUpdateEntity_1 = require("./entity/RunUpdateEntity");
+const RunWorkspaceCredentialEntity_1 = require("./entity/RunWorkspaceCredentialEntity");
+const RunnerLeaseEntity_1 = require("./entity/RunnerLeaseEntity");
+const RunnerPoolNodeEnrollmentTokenEntity_1 = require("./entity/RunnerPoolNodeEnrollmentTokenEntity");
+const RunnerPoolRunnerEntity_1 = require("./entity/RunnerPoolRunnerEntity");
+const RuntimeInstanceHealthSnapshotEntity_1 = require("./entity/RuntimeInstanceHealthSnapshotEntity");
+const SandboxIntegrationEntity_1 = require("./entity/SandboxIntegrationEntity");
 const ScenarioRevisionEntity_1 = require("./entity/ScenarioRevisionEntity");
 const ScenarioRunLessonEntity_1 = require("./entity/ScenarioRunLessonEntity");
 const ScenarioRunScenarioEditEntity_1 = require("./entity/ScenarioRunScenarioEditEntity");
+const SecretGrantEntity_1 = require("./entity/SecretGrantEntity");
+const SecretVersionEntity_1 = require("./entity/SecretVersionEntity");
 const ServiceEndpointEntity_1 = require("./entity/ServiceEndpointEntity");
+const SettingEntity_1 = require("./entity/SettingEntity");
+const SettingMutationLeaseEntity_1 = require("./entity/SettingMutationLeaseEntity");
+const SignalEntity_1 = require("./entity/SignalEntity");
+const SignalInboundEntity_1 = require("./entity/SignalInboundEntity");
+const SignalIntegrationEntity_1 = require("./entity/SignalIntegrationEntity");
+const SignalIntegrationDeliveryEntity_1 = require("./entity/SignalIntegrationDeliveryEntity");
+const SignalIntegrationTargetEntity_1 = require("./entity/SignalIntegrationTargetEntity");
+const SignalSubscriptionEntity_1 = require("./entity/SignalSubscriptionEntity");
+const SiteEntity_1 = require("./entity/SiteEntity");
+const SiteAccessKeyEntity_1 = require("./entity/SiteAccessKeyEntity");
 const SitePreviewEntity_1 = require("./entity/SitePreviewEntity");
+const SiteSecretEntity_1 = require("./entity/SiteSecretEntity");
 const SlackChannelEntity_1 = require("./entity/SlackChannelEntity");
+const SourceConnectionEntity_1 = require("./entity/SourceConnectionEntity");
+const SpaceAlertRuleEntity_1 = require("./entity/SpaceAlertRuleEntity");
+const SpaceAuditEventEntity_1 = require("./entity/SpaceAuditEventEntity");
+const SpaceDnsRecordEntity_1 = require("./entity/SpaceDnsRecordEntity");
+const SpaceEnrollmentTokenEntity_1 = require("./entity/SpaceEnrollmentTokenEntity");
+const SpaceGatewayEntity_1 = require("./entity/SpaceGatewayEntity");
+const SpaceGroupEntity_1 = require("./entity/SpaceGroupEntity");
+const SpaceGroupMembershipEntity_1 = require("./entity/SpaceGroupMembershipEntity");
+const SpaceLogStreamEntity_1 = require("./entity/SpaceLogStreamEntity");
+const SpaceMetricSeryEntity_1 = require("./entity/SpaceMetricSeryEntity");
+const SpaceOtelCollectorEntity_1 = require("./entity/SpaceOtelCollectorEntity");
+const SpacePeerEntity_1 = require("./entity/SpacePeerEntity");
+const SpacePeerAttachmentEntity_1 = require("./entity/SpacePeerAttachmentEntity");
+const SpacePolicyEntity_1 = require("./entity/SpacePolicyEntity");
+const SpaceSegmentEntity_1 = require("./entity/SpaceSegmentEntity");
+const SpaceTraceSpanEntity_1 = require("./entity/SpaceTraceSpanEntity");
+const SparkEntity_1 = require("./entity/SparkEntity");
+const SparkAgentIntegrationEntity_1 = require("./entity/SparkAgentIntegrationEntity");
 const SparkAgentLocalThreadEntity_1 = require("./entity/SparkAgentLocalThreadEntity");
+const SparkAgentSiteEntity_1 = require("./entity/SparkAgentSiteEntity");
+const SparkAgentSkillEntity_1 = require("./entity/SparkAgentSkillEntity");
+const SparkAgentThreadEntity_1 = require("./entity/SparkAgentThreadEntity");
+const SparkCreditEntity_1 = require("./entity/SparkCreditEntity");
+const SparkCreditAgentUsageEntity_1 = require("./entity/SparkCreditAgentUsageEntity");
+const SparkCreditUsageTotalEntity_1 = require("./entity/SparkCreditUsageTotalEntity");
 const StaticSiteEntity_1 = require("./entity/StaticSiteEntity");
 const StaticSiteDeploymentEntity_1 = require("./entity/StaticSiteDeploymentEntity");
 const StaticSiteDomainEntity_1 = require("./entity/StaticSiteDomainEntity");
+const StatusChangeEntity_1 = require("./entity/StatusChangeEntity");
+const StatusCommitEntity_1 = require("./entity/StatusCommitEntity");
+const StatusPatchsetEntity_1 = require("./entity/StatusPatchsetEntity");
+const StripeWebhookEntity_1 = require("./entity/StripeWebhookEntity");
+const SubmitTelemetryEntity_1 = require("./entity/SubmitTelemetryEntity");
 const SubscriptionModelEntity_1 = require("./entity/SubscriptionModelEntity");
+const SwarmEventEntity_1 = require("./entity/SwarmEventEntity");
+const SwarmLiveEntity_1 = require("./entity/SwarmLiveEntity");
+const SwarmNoteEntity_1 = require("./entity/SwarmNoteEntity");
+const SwarmTaskEntity_1 = require("./entity/SwarmTaskEntity");
+const TaskLeaseEntity_1 = require("./entity/TaskLeaseEntity");
 const ThreadPreviewEntity_1 = require("./entity/ThreadPreviewEntity");
+const ThreadPreviewAccessEntity_1 = require("./entity/ThreadPreviewAccessEntity");
+const ToolFeedbackEntity_1 = require("./entity/ToolFeedbackEntity");
+const TranscriptEntity_1 = require("./entity/TranscriptEntity");
+const V1MessageEntity_1 = require("./entity/V1MessageEntity");
+const VcBranchEntity_1 = require("./entity/VcBranchEntity");
+const VcBrowserEntity_1 = require("./entity/VcBrowserEntity");
+const VcChangeEntity_1 = require("./entity/VcChangeEntity");
+const VcChangeGroupEntity_1 = require("./entity/VcChangeGroupEntity");
+const VcFileEntity_1 = require("./entity/VcFileEntity");
+const VcMergeQueueEntity_1 = require("./entity/VcMergeQueueEntity");
+const VcStackEntity_1 = require("./entity/VcStackEntity");
+const VcsNodeEntity_1 = require("./entity/VcsNodeEntity");
+const VcsSettingEntity_1 = require("./entity/VcsSettingEntity");
 const VerificationProjectCredentialEntity_1 = require("./entity/VerificationProjectCredentialEntity");
 const VerificationProjectPersonaEntity_1 = require("./entity/VerificationProjectPersonaEntity");
 const VerificationProjectRunEntity_1 = require("./entity/VerificationProjectRunEntity");
 const VerificationProjectScenarioEntity_1 = require("./entity/VerificationProjectScenarioEntity");
 const VerifyAppDomainEntity_1 = require("./entity/VerifyAppDomainEntity");
 const VerifyBrowserSessionEntity_1 = require("./entity/VerifyBrowserSessionEntity");
+const VerifyEmailVerificationEntity_1 = require("./entity/VerifyEmailVerificationEntity");
+const VerifySignalIntegrationEntity_1 = require("./entity/VerifySignalIntegrationEntity");
 const VerifyStaticSiteDomainEntity_1 = require("./entity/VerifyStaticSiteDomainEntity");
 const VersionLogEntity_1 = require("./entity/VersionLogEntity");
+const WaitlistApplicationEntity_1 = require("./entity/WaitlistApplicationEntity");
 const WebBotAuthEntity_1 = require("./entity/WebBotAuthEntity");
+const WebhookGitlabEntity_1 = require("./entity/WebhookGitlabEntity");
 const WorkflowRunStepEntity_1 = require("./entity/WorkflowRunStepEntity");
 const WorkflowRunStopNoticeEntity_1 = require("./entity/WorkflowRunStopNoticeEntity");
 const WorkflowTriggerSkippedEntity_1 = require("./entity/WorkflowTriggerSkippedEntity");
+const WorkspaceActivityEntity_1 = require("./entity/WorkspaceActivityEntity");
+const WorkspaceActivityNotificationEntity_1 = require("./entity/WorkspaceActivityNotificationEntity");
+const WorkspaceSpaceEntity_1 = require("./entity/WorkspaceSpaceEntity");
+const WorkspaceSpacePreferenceEntity_1 = require("./entity/WorkspaceSpacePreferenceEntity");
 const node_util_1 = require("node:util");
 const Config_1 = require("./Config");
 Object.defineProperty(exports, "config", { enumerable: true, get: function () { return Config_1.config; } });
@@ -506,12 +841,40 @@ class ComposalSDK {
         }
         return res;
     }
+    // Entity access: `client.A2aWellKnown().list()` / `client.A2aWellKnown().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    A2aWellKnown(entopts) {
+        const self = this;
+        return new A2aWellKnownEntity_1.A2aWellKnownEntity(self, entopts);
+    }
+    // Entity access: `client.AdminOrg().list()` / `client.AdminOrg().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AdminOrg(entopts) {
+        const self = this;
+        return new AdminOrgEntity_1.AdminOrgEntity(self, entopts);
+    }
     // Entity access: `client.Agent().list()` / `client.Agent().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     Agent(entopts) {
         const self = this;
         return new AgentEntity_1.AgentEntity(self, entopts);
+    }
+    // Entity access: `client.AgentApp().list()` / `client.AgentApp().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentApp(entopts) {
+        const self = this;
+        return new AgentAppEntity_1.AgentAppEntity(self, entopts);
+    }
+    // Entity access: `client.AgentAppInstall().list()` / `client.AgentAppInstall().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentAppInstall(entopts) {
+        const self = this;
+        return new AgentAppInstallEntity_1.AgentAppInstallEntity(self, entopts);
     }
     // Entity access: `client.AgentAttachment().list()` / `client.AgentAttachment().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -555,6 +918,48 @@ class ComposalSDK {
         const self = this;
         return new AgentConnectionEntity_1.AgentConnectionEntity(self, entopts);
     }
+    // Entity access: `client.AgentConnectionDelegation().list()` / `client.AgentConnectionDelegation().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentConnectionDelegation(entopts) {
+        const self = this;
+        return new AgentConnectionDelegationEntity_1.AgentConnectionDelegationEntity(self, entopts);
+    }
+    // Entity access: `client.AgentConnectionGrant().list()` / `client.AgentConnectionGrant().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentConnectionGrant(entopts) {
+        const self = this;
+        return new AgentConnectionGrantEntity_1.AgentConnectionGrantEntity(self, entopts);
+    }
+    // Entity access: `client.AgentConnectionResource().list()` / `client.AgentConnectionResource().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentConnectionResource(entopts) {
+        const self = this;
+        return new AgentConnectionResourceEntity_1.AgentConnectionResourceEntity(self, entopts);
+    }
+    // Entity access: `client.AgentConnectionSafetyControl().list()` / `client.AgentConnectionSafetyControl().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentConnectionSafetyControl(entopts) {
+        const self = this;
+        return new AgentConnectionSafetyControlEntity_1.AgentConnectionSafetyControlEntity(self, entopts);
+    }
+    // Entity access: `client.AgentConnectionTriggerSubscription().list()` / `client.AgentConnectionTriggerSubscription().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentConnectionTriggerSubscription(entopts) {
+        const self = this;
+        return new AgentConnectionTriggerSubscriptionEntity_1.AgentConnectionTriggerSubscriptionEntity(self, entopts);
+    }
+    // Entity access: `client.AgentContextCheckpoint().list()` / `client.AgentContextCheckpoint().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentContextCheckpoint(entopts) {
+        const self = this;
+        return new AgentContextCheckpointEntity_1.AgentContextCheckpointEntity(self, entopts);
+    }
     // Entity access: `client.AgentControlFlow().list()` / `client.AgentControlFlow().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -576,6 +981,13 @@ class ComposalSDK {
         const self = this;
         return new AgentEmailEntity_1.AgentEmailEntity(self, entopts);
     }
+    // Entity access: `client.AgentEvent().list()` / `client.AgentEvent().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentEvent(entopts) {
+        const self = this;
+        return new AgentEventEntity_1.AgentEventEntity(self, entopts);
+    }
     // Entity access: `client.AgentFile().list()` / `client.AgentFile().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -596,6 +1008,20 @@ class ComposalSDK {
     AgentIntegration(entopts) {
         const self = this;
         return new AgentIntegrationEntity_1.AgentIntegrationEntity(self, entopts);
+    }
+    // Entity access: `client.AgentIntegrationAccount().list()` / `client.AgentIntegrationAccount().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentIntegrationAccount(entopts) {
+        const self = this;
+        return new AgentIntegrationAccountEntity_1.AgentIntegrationAccountEntity(self, entopts);
+    }
+    // Entity access: `client.AgentIntegrationCallback().list()` / `client.AgentIntegrationCallback().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentIntegrationCallback(entopts) {
+        const self = this;
+        return new AgentIntegrationCallbackEntity_1.AgentIntegrationCallbackEntity(self, entopts);
     }
     // Entity access: `client.AgentInteraction().list()` / `client.AgentInteraction().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -674,6 +1100,20 @@ class ComposalSDK {
         const self = this;
         return new AgentQuestionEntity_1.AgentQuestionEntity(self, entopts);
     }
+    // Entity access: `client.AgentRelayFileGrant().list()` / `client.AgentRelayFileGrant().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentRelayFileGrant(entopts) {
+        const self = this;
+        return new AgentRelayFileGrantEntity_1.AgentRelayFileGrantEntity(self, entopts);
+    }
+    // Entity access: `client.AgentRelayFileGrantAccount().list()` / `client.AgentRelayFileGrantAccount().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentRelayFileGrantAccount(entopts) {
+        const self = this;
+        return new AgentRelayFileGrantAccountEntity_1.AgentRelayFileGrantAccountEntity(self, entopts);
+    }
     // Entity access: `client.AgentRepository().list()` / `client.AgentRepository().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -687,6 +1127,13 @@ class ComposalSDK {
     AgentResource(entopts) {
         const self = this;
         return new AgentResourceEntity_1.AgentResourceEntity(self, entopts);
+    }
+    // Entity access: `client.AgentRoder().list()` / `client.AgentRoder().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentRoder(entopts) {
+        const self = this;
+        return new AgentRoderEntity_1.AgentRoderEntity(self, entopts);
     }
     // Entity access: `client.AgentRoutine().list()` / `client.AgentRoutine().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -708,6 +1155,27 @@ class ComposalSDK {
     AgentRuntime(entopts) {
         const self = this;
         return new AgentRuntimeEntity_1.AgentRuntimeEntity(self, entopts);
+    }
+    // Entity access: `client.AgentSession().list()` / `client.AgentSession().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentSession(entopts) {
+        const self = this;
+        return new AgentSessionEntity_1.AgentSessionEntity(self, entopts);
+    }
+    // Entity access: `client.AgentSessionCheckpoint().list()` / `client.AgentSessionCheckpoint().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentSessionCheckpoint(entopts) {
+        const self = this;
+        return new AgentSessionCheckpointEntity_1.AgentSessionCheckpointEntity(self, entopts);
+    }
+    // Entity access: `client.AgentSessionRoderHandoff().list()` / `client.AgentSessionRoderHandoff().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentSessionRoderHandoff(entopts) {
+        const self = this;
+        return new AgentSessionRoderHandoffEntity_1.AgentSessionRoderHandoffEntity(self, entopts);
     }
     // Entity access: `client.AgentSetting().list()` / `client.AgentSetting().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -758,6 +1226,13 @@ class ComposalSDK {
         const self = this;
         return new AgentSubscriptionEntity_1.AgentSubscriptionEntity(self, entopts);
     }
+    // Entity access: `client.AgentSwarm().list()` / `client.AgentSwarm().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentSwarm(entopts) {
+        const self = this;
+        return new AgentSwarmEntity_1.AgentSwarmEntity(self, entopts);
+    }
     // Entity access: `client.AgentTeammate().list()` / `client.AgentTeammate().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -786,6 +1261,13 @@ class ComposalSDK {
         const self = this;
         return new AgentToolEntity_1.AgentToolEntity(self, entopts);
     }
+    // Entity access: `client.AgentUsage().list()` / `client.AgentUsage().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentUsage(entopts) {
+        const self = this;
+        return new AgentUsageEntity_1.AgentUsageEntity(self, entopts);
+    }
     // Entity access: `client.AgentVerifyProject().list()` / `client.AgentVerifyProject().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -799,6 +1281,13 @@ class ComposalSDK {
     AgentWait(entopts) {
         const self = this;
         return new AgentWaitEntity_1.AgentWaitEntity(self, entopts);
+    }
+    // Entity access: `client.AgentWebPreview().list()` / `client.AgentWebPreview().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgentWebPreview(entopts) {
+        const self = this;
+        return new AgentWebPreviewEntity_1.AgentWebPreviewEntity(self, entopts);
     }
     // Entity access: `client.AgentWebhook().list()` / `client.AgentWebhook().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -856,6 +1345,27 @@ class ComposalSDK {
         const self = this;
         return new AgentWritePermissionEntity_1.AgentWritePermissionEntity(self, entopts);
     }
+    // Entity access: `client.Agreement().list()` / `client.Agreement().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Agreement(entopts) {
+        const self = this;
+        return new AgreementEntity_1.AgreementEntity(self, entopts);
+    }
+    // Entity access: `client.AgreementAccessRequest().list()` / `client.AgreementAccessRequest().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AgreementAccessRequest(entopts) {
+        const self = this;
+        return new AgreementAccessRequestEntity_1.AgreementAccessRequestEntity(self, entopts);
+    }
+    // Entity access: `client.AlertRuleEvent().list()` / `client.AlertRuleEvent().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AlertRuleEvent(entopts) {
+        const self = this;
+        return new AlertRuleEventEntity_1.AlertRuleEventEntity(self, entopts);
+    }
     // Entity access: `client.AllocationLog().list()` / `client.AllocationLog().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -869,6 +1379,20 @@ class ComposalSDK {
     App(entopts) {
         const self = this;
         return new AppEntity_1.AppEntity(self, entopts);
+    }
+    // Entity access: `client.AppAccess().list()` / `client.AppAccess().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AppAccess(entopts) {
+        const self = this;
+        return new AppAccessEntity_1.AppAccessEntity(self, entopts);
+    }
+    // Entity access: `client.AppAccessJwk().list()` / `client.AppAccessJwk().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AppAccessJwk(entopts) {
+        const self = this;
+        return new AppAccessJwkEntity_1.AppAccessJwkEntity(self, entopts);
     }
     // Entity access: `client.AppCdn().list()` / `client.AppCdn().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -996,12 +1520,131 @@ class ComposalSDK {
         const self = this;
         return new AppStorageResourceEntity_1.AppStorageResourceEntity(self, entopts);
     }
+    // Entity access: `client.Artefact().list()` / `client.Artefact().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Artefact(entopts) {
+        const self = this;
+        return new ArtefactEntity_1.ArtefactEntity(self, entopts);
+    }
+    // Entity access: `client.ArtefactCommentThread().list()` / `client.ArtefactCommentThread().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ArtefactCommentThread(entopts) {
+        const self = this;
+        return new ArtefactCommentThreadEntity_1.ArtefactCommentThreadEntity(self, entopts);
+    }
+    // Entity access: `client.ArtefactRevision().list()` / `client.ArtefactRevision().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ArtefactRevision(entopts) {
+        const self = this;
+        return new ArtefactRevisionEntity_1.ArtefactRevisionEntity(self, entopts);
+    }
+    // Entity access: `client.ArtefactViewToken().list()` / `client.ArtefactViewToken().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ArtefactViewToken(entopts) {
+        const self = this;
+        return new ArtefactViewTokenEntity_1.ArtefactViewTokenEntity(self, entopts);
+    }
+    // Entity access: `client.Artifact().list()` / `client.Artifact().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Artifact(entopts) {
+        const self = this;
+        return new ArtifactEntity_1.ArtifactEntity(self, entopts);
+    }
+    // Entity access: `client.ArtifactCacheNamespace().list()` / `client.ArtifactCacheNamespace().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ArtifactCacheNamespace(entopts) {
+        const self = this;
+        return new ArtifactCacheNamespaceEntity_1.ArtifactCacheNamespaceEntity(self, entopts);
+    }
+    // Entity access: `client.ArtifactImageRepository().list()` / `client.ArtifactImageRepository().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ArtifactImageRepository(entopts) {
+        const self = this;
+        return new ArtifactImageRepositoryEntity_1.ArtifactImageRepositoryEntity(self, entopts);
+    }
+    // Entity access: `client.ArtifactPackageMirror().list()` / `client.ArtifactPackageMirror().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ArtifactPackageMirror(entopts) {
+        const self = this;
+        return new ArtifactPackageMirrorEntity_1.ArtifactPackageMirrorEntity(self, entopts);
+    }
+    // Entity access: `client.ArtifactRetentionPolicy().list()` / `client.ArtifactRetentionPolicy().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ArtifactRetentionPolicy(entopts) {
+        const self = this;
+        return new ArtifactRetentionPolicyEntity_1.ArtifactRetentionPolicyEntity(self, entopts);
+    }
     // Entity access: `client.AttachmentPart().list()` / `client.AttachmentPart().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     AttachmentPart(entopts) {
         const self = this;
         return new AttachmentPartEntity_1.AttachmentPartEntity(self, entopts);
+    }
+    // Entity access: `client.AuditEvent().list()` / `client.AuditEvent().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AuditEvent(entopts) {
+        const self = this;
+        return new AuditEventEntity_1.AuditEventEntity(self, entopts);
+    }
+    // Entity access: `client.Auth().list()` / `client.Auth().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Auth(entopts) {
+        const self = this;
+        return new AuthEntity_1.AuthEntity(self, entopts);
+    }
+    // Entity access: `client.AuthCli().list()` / `client.AuthCli().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AuthCli(entopts) {
+        const self = this;
+        return new AuthCliEntity_1.AuthCliEntity(self, entopts);
+    }
+    // Entity access: `client.AuthGithub().list()` / `client.AuthGithub().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AuthGithub(entopts) {
+        const self = this;
+        return new AuthGithubEntity_1.AuthGithubEntity(self, entopts);
+    }
+    // Entity access: `client.AuthGoogle().list()` / `client.AuthGoogle().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AuthGoogle(entopts) {
+        const self = this;
+        return new AuthGoogleEntity_1.AuthGoogleEntity(self, entopts);
+    }
+    // Entity access: `client.AuthOpenai().list()` / `client.AuthOpenai().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AuthOpenai(entopts) {
+        const self = this;
+        return new AuthOpenaiEntity_1.AuthOpenaiEntity(self, entopts);
+    }
+    // Entity access: `client.AuthPasswordReset().list()` / `client.AuthPasswordReset().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AuthPasswordReset(entopts) {
+        const self = this;
+        return new AuthPasswordResetEntity_1.AuthPasswordResetEntity(self, entopts);
+    }
+    // Entity access: `client.AuthRegistrationOption().list()` / `client.AuthRegistrationOption().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AuthRegistrationOption(entopts) {
+        const self = this;
+        return new AuthRegistrationOptionEntity_1.AuthRegistrationOptionEntity(self, entopts);
     }
     // Entity access: `client.AutomationEvent().list()` / `client.AutomationEvent().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1017,6 +1660,125 @@ class ComposalSDK {
         const self = this;
         return new AutomationRunEntity_1.AutomationRunEntity(self, entopts);
     }
+    // Entity access: `client.BackendRunnerPool().list()` / `client.BackendRunnerPool().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BackendRunnerPool(entopts) {
+        const self = this;
+        return new BackendRunnerPoolEntity_1.BackendRunnerPoolEntity(self, entopts);
+    }
+    // Entity access: `client.Bazel().list()` / `client.Bazel().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Bazel(entopts) {
+        const self = this;
+        return new BazelEntity_1.BazelEntity(self, entopts);
+    }
+    // Entity access: `client.BazelActionResult().list()` / `client.BazelActionResult().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BazelActionResult(entopts) {
+        const self = this;
+        return new BazelActionResultEntity_1.BazelActionResultEntity(self, entopts);
+    }
+    // Entity access: `client.BazelBackend().list()` / `client.BazelBackend().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BazelBackend(entopts) {
+        const self = this;
+        return new BazelBackendEntity_1.BazelBackendEntity(self, entopts);
+    }
+    // Entity access: `client.BazelBlob().list()` / `client.BazelBlob().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BazelBlob(entopts) {
+        const self = this;
+        return new BazelBlobEntity_1.BazelBlobEntity(self, entopts);
+    }
+    // Entity access: `client.BazelExecution().list()` / `client.BazelExecution().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BazelExecution(entopts) {
+        const self = this;
+        return new BazelExecutionEntity_1.BazelExecutionEntity(self, entopts);
+    }
+    // Entity access: `client.BazelFindMissingBlob().list()` / `client.BazelFindMissingBlob().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BazelFindMissingBlob(entopts) {
+        const self = this;
+        return new BazelFindMissingBlobEntity_1.BazelFindMissingBlobEntity(self, entopts);
+    }
+    // Entity access: `client.Billing().list()` / `client.Billing().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Billing(entopts) {
+        const self = this;
+        return new BillingEntity_1.BillingEntity(self, entopts);
+    }
+    // Entity access: `client.BillingAddon().list()` / `client.BillingAddon().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BillingAddon(entopts) {
+        const self = this;
+        return new BillingAddonEntity_1.BillingAddonEntity(self, entopts);
+    }
+    // Entity access: `client.BillingCheckoutSession().list()` / `client.BillingCheckoutSession().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BillingCheckoutSession(entopts) {
+        const self = this;
+        return new BillingCheckoutSessionEntity_1.BillingCheckoutSessionEntity(self, entopts);
+    }
+    // Entity access: `client.BillingInvoice().list()` / `client.BillingInvoice().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BillingInvoice(entopts) {
+        const self = this;
+        return new BillingInvoiceEntity_1.BillingInvoiceEntity(self, entopts);
+    }
+    // Entity access: `client.BillingPackage().list()` / `client.BillingPackage().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BillingPackage(entopts) {
+        const self = this;
+        return new BillingPackageEntity_1.BillingPackageEntity(self, entopts);
+    }
+    // Entity access: `client.BillingPortalSession().list()` / `client.BillingPortalSession().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BillingPortalSession(entopts) {
+        const self = this;
+        return new BillingPortalSessionEntity_1.BillingPortalSessionEntity(self, entopts);
+    }
+    // Entity access: `client.BillingPrepaidPeriod().list()` / `client.BillingPrepaidPeriod().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BillingPrepaidPeriod(entopts) {
+        const self = this;
+        return new BillingPrepaidPeriodEntity_1.BillingPrepaidPeriodEntity(self, entopts);
+    }
+    // Entity access: `client.BillingPrepaidPurchase().list()` / `client.BillingPrepaidPurchase().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BillingPrepaidPurchase(entopts) {
+        const self = this;
+        return new BillingPrepaidPurchaseEntity_1.BillingPrepaidPurchaseEntity(self, entopts);
+    }
+    // Entity access: `client.BillingTokenTopUp().list()` / `client.BillingTokenTopUp().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BillingTokenTopUp(entopts) {
+        const self = this;
+        return new BillingTokenTopUpEntity_1.BillingTokenTopUpEntity(self, entopts);
+    }
+    // Entity access: `client.BillingUsage().list()` / `client.BillingUsage().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BillingUsage(entopts) {
+        const self = this;
+        return new BillingUsageEntity_1.BillingUsageEntity(self, entopts);
+    }
     // Entity access: `client.Binary().list()` / `client.Binary().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -1030,6 +1792,13 @@ class ComposalSDK {
     BinaryVersion(entopts) {
         const self = this;
         return new BinaryVersionEntity_1.BinaryVersionEntity(self, entopts);
+    }
+    // Entity access: `client.BookmarkProtectionRefreshGithubRequiredCheck().list()` / `client.BookmarkProtectionRefreshGithubRequiredCheck().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BookmarkProtectionRefreshGithubRequiredCheck(entopts) {
+        const self = this;
+        return new BookmarkProtectionRefreshGithubRequiredCheckEntity_1.BookmarkProtectionRefreshGithubRequiredCheckEntity(self, entopts);
     }
     // Entity access: `client.BrowserEgressCandidate().list()` / `client.BrowserEgressCandidate().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1094,6 +1863,13 @@ class ComposalSDK {
         const self = this;
         return new BrowserSessionTaskEntity_1.BrowserSessionTaskEntity(self, entopts);
     }
+    // Entity access: `client.CacheNamespaceEntry().list()` / `client.CacheNamespaceEntry().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    CacheNamespaceEntry(entopts) {
+        const self = this;
+        return new CacheNamespaceEntryEntity_1.CacheNamespaceEntryEntity(self, entopts);
+    }
     // Entity access: `client.CatalogSelector().list()` / `client.CatalogSelector().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -1129,6 +1905,209 @@ class ComposalSDK {
         const self = this;
         return new CdnSpaceObjectEntity_1.CdnSpaceObjectEntity(self, entopts);
     }
+    // Entity access: `client.Change().list()` / `client.Change().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Change(entopts) {
+        const self = this;
+        return new ChangeEntity_1.ChangeEntity(self, entopts);
+    }
+    // Entity access: `client.ChangeAsset().list()` / `client.ChangeAsset().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ChangeAsset(entopts) {
+        const self = this;
+        return new ChangeAssetEntity_1.ChangeAssetEntity(self, entopts);
+    }
+    // Entity access: `client.ChangeComment().list()` / `client.ChangeComment().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ChangeComment(entopts) {
+        const self = this;
+        return new ChangeCommentEntity_1.ChangeCommentEntity(self, entopts);
+    }
+    // Entity access: `client.ChangeFileReviewCheckpoint().list()` / `client.ChangeFileReviewCheckpoint().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ChangeFileReviewCheckpoint(entopts) {
+        const self = this;
+        return new ChangeFileReviewCheckpointEntity_1.ChangeFileReviewCheckpointEntity(self, entopts);
+    }
+    // Entity access: `client.ChangeGitBranchSubmission().list()` / `client.ChangeGitBranchSubmission().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ChangeGitBranchSubmission(entopts) {
+        const self = this;
+        return new ChangeGitBranchSubmissionEntity_1.ChangeGitBranchSubmissionEntity(self, entopts);
+    }
+    // Entity access: `client.ChangeGitCommitIdentity().list()` / `client.ChangeGitCommitIdentity().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ChangeGitCommitIdentity(entopts) {
+        const self = this;
+        return new ChangeGitCommitIdentityEntity_1.ChangeGitCommitIdentityEntity(self, entopts);
+    }
+    // Entity access: `client.ChangeGitPublication().list()` / `client.ChangeGitPublication().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ChangeGitPublication(entopts) {
+        const self = this;
+        return new ChangeGitPublicationEntity_1.ChangeGitPublicationEntity(self, entopts);
+    }
+    // Entity access: `client.ChangeGroupMember().list()` / `client.ChangeGroupMember().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ChangeGroupMember(entopts) {
+        const self = this;
+        return new ChangeGroupMemberEntity_1.ChangeGroupMemberEntity(self, entopts);
+    }
+    // Entity access: `client.ChangeLabel().list()` / `client.ChangeLabel().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ChangeLabel(entopts) {
+        const self = this;
+        return new ChangeLabelEntity_1.ChangeLabelEntity(self, entopts);
+    }
+    // Entity access: `client.ChangeLandingHold().list()` / `client.ChangeLandingHold().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ChangeLandingHold(entopts) {
+        const self = this;
+        return new ChangeLandingHoldEntity_1.ChangeLandingHoldEntity(self, entopts);
+    }
+    // Entity access: `client.ChangeLandingRequest().list()` / `client.ChangeLandingRequest().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ChangeLandingRequest(entopts) {
+        const self = this;
+        return new ChangeLandingRequestEntity_1.ChangeLandingRequestEntity(self, entopts);
+    }
+    // Entity access: `client.ChangeRequestChange().list()` / `client.ChangeRequestChange().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ChangeRequestChange(entopts) {
+        const self = this;
+        return new ChangeRequestChangeEntity_1.ChangeRequestChangeEntity(self, entopts);
+    }
+    // Entity access: `client.ChangeReviewer().list()` / `client.ChangeReviewer().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ChangeReviewer(entopts) {
+        const self = this;
+        return new ChangeReviewerEntity_1.ChangeReviewerEntity(self, entopts);
+    }
+    // Entity access: `client.ChangeTranscript().list()` / `client.ChangeTranscript().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ChangeTranscript(entopts) {
+        const self = this;
+        return new ChangeTranscriptEntity_1.ChangeTranscriptEntity(self, entopts);
+    }
+    // Entity access: `client.ChangeTranscriptSummary().list()` / `client.ChangeTranscriptSummary().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ChangeTranscriptSummary(entopts) {
+        const self = this;
+        return new ChangeTranscriptSummaryEntity_1.ChangeTranscriptSummaryEntity(self, entopts);
+    }
+    // Entity access: `client.CheckpointPrepareChunk().list()` / `client.CheckpointPrepareChunk().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    CheckpointPrepareChunk(entopts) {
+        const self = this;
+        return new CheckpointPrepareChunkEntity_1.CheckpointPrepareChunkEntity(self, entopts);
+    }
+    // Entity access: `client.CiNode().list()` / `client.CiNode().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    CiNode(entopts) {
+        const self = this;
+        return new CiNodeEntity_1.CiNodeEntity(self, entopts);
+    }
+    // Entity access: `client.CiPipeline().list()` / `client.CiPipeline().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    CiPipeline(entopts) {
+        const self = this;
+        return new CiPipelineEntity_1.CiPipelineEntity(self, entopts);
+    }
+    // Entity access: `client.CiPipelineRun().list()` / `client.CiPipelineRun().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    CiPipelineRun(entopts) {
+        const self = this;
+        return new CiPipelineRunEntity_1.CiPipelineRunEntity(self, entopts);
+    }
+    // Entity access: `client.CiRunnerPool().list()` / `client.CiRunnerPool().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    CiRunnerPool(entopts) {
+        const self = this;
+        return new CiRunnerPoolEntity_1.CiRunnerPoolEntity(self, entopts);
+    }
+    // Entity access: `client.CiStatus().list()` / `client.CiStatus().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    CiStatus(entopts) {
+        const self = this;
+        return new CiStatusEntity_1.CiStatusEntity(self, entopts);
+    }
+    // Entity access: `client.CliEvent().list()` / `client.CliEvent().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    CliEvent(entopts) {
+        const self = this;
+        return new CliEventEntity_1.CliEventEntity(self, entopts);
+    }
+    // Entity access: `client.CliRelease().list()` / `client.CliRelease().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    CliRelease(entopts) {
+        const self = this;
+        return new CliReleaseEntity_1.CliReleaseEntity(self, entopts);
+    }
+    // Entity access: `client.CloudWorkspaceBackupObject().list()` / `client.CloudWorkspaceBackupObject().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    CloudWorkspaceBackupObject(entopts) {
+        const self = this;
+        return new CloudWorkspaceBackupObjectEntity_1.CloudWorkspaceBackupObjectEntity(self, entopts);
+    }
+    // Entity access: `client.CodeRuleEvaluation().list()` / `client.CodeRuleEvaluation().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    CodeRuleEvaluation(entopts) {
+        const self = this;
+        return new CodeRuleEvaluationEntity_1.CodeRuleEvaluationEntity(self, entopts);
+    }
+    // Entity access: `client.ComSiteAccess().list()` / `client.ComSiteAccess().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ComSiteAccess(entopts) {
+        const self = this;
+        return new ComSiteAccessEntity_1.ComSiteAccessEntity(self, entopts);
+    }
+    // Entity access: `client.ComSiteAccessSession().list()` / `client.ComSiteAccessSession().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ComSiteAccessSession(entopts) {
+        const self = this;
+        return new ComSiteAccessSessionEntity_1.ComSiteAccessSessionEntity(self, entopts);
+    }
+    // Entity access: `client.CommentThreadComment().list()` / `client.CommentThreadComment().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    CommentThreadComment(entopts) {
+        const self = this;
+        return new CommentThreadCommentEntity_1.CommentThreadCommentEntity(self, entopts);
+    }
+    // Entity access: `client.CommitDiff().list()` / `client.CommitDiff().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    CommitDiff(entopts) {
+        const self = this;
+        return new CommitDiffEntity_1.CommitDiffEntity(self, entopts);
+    }
     // Entity access: `client.ConnectionRequest().list()` / `client.ConnectionRequest().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -1142,6 +2121,27 @@ class ComposalSDK {
     ConnectionSource(entopts) {
         const self = this;
         return new ConnectionSourceEntity_1.ConnectionSourceEntity(self, entopts);
+    }
+    // Entity access: `client.ContactSubmission().list()` / `client.ContactSubmission().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ContactSubmission(entopts) {
+        const self = this;
+        return new ContactSubmissionEntity_1.ContactSubmissionEntity(self, entopts);
+    }
+    // Entity access: `client.ControlComputer().list()` / `client.ControlComputer().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ControlComputer(entopts) {
+        const self = this;
+        return new ControlComputerEntity_1.ControlComputerEntity(self, entopts);
+    }
+    // Entity access: `client.ControlComputerControlOperation().list()` / `client.ControlComputerControlOperation().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ControlComputerControlOperation(entopts) {
+        const self = this;
+        return new ControlComputerControlOperationEntity_1.ControlComputerControlOperationEntity(self, entopts);
     }
     // Entity access: `client.CoordinationWait().list()` / `client.CoordinationWait().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1213,6 +2213,13 @@ class ComposalSDK {
         const self = this;
         return new DemoShareSegmentEntity_1.DemoShareSegmentEntity(self, entopts);
     }
+    // Entity access: `client.Deployment().list()` / `client.Deployment().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Deployment(entopts) {
+        const self = this;
+        return new DeploymentEntity_1.DeploymentEntity(self, entopts);
+    }
     // Entity access: `client.DeploymentDashboardNomad().list()` / `client.DeploymentDashboardNomad().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -1220,12 +2227,173 @@ class ComposalSDK {
         const self = this;
         return new DeploymentDashboardNomadEntity_1.DeploymentDashboardNomadEntity(self, entopts);
     }
+    // Entity access: `client.DeploymentDetail().list()` / `client.DeploymentDetail().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DeploymentDetail(entopts) {
+        const self = this;
+        return new DeploymentDetailEntity_1.DeploymentDetailEntity(self, entopts);
+    }
     // Entity access: `client.DeploymentFile().list()` / `client.DeploymentFile().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     DeploymentFile(entopts) {
         const self = this;
         return new DeploymentFileEntity_1.DeploymentFileEntity(self, entopts);
+    }
+    // Entity access: `client.DeploymentLog().list()` / `client.DeploymentLog().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DeploymentLog(entopts) {
+        const self = this;
+        return new DeploymentLogEntity_1.DeploymentLogEntity(self, entopts);
+    }
+    // Entity access: `client.DeploymentMetric().list()` / `client.DeploymentMetric().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DeploymentMetric(entopts) {
+        const self = this;
+        return new DeploymentMetricEntity_1.DeploymentMetricEntity(self, entopts);
+    }
+    // Entity access: `client.DeploymentPreview().list()` / `client.DeploymentPreview().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DeploymentPreview(entopts) {
+        const self = this;
+        return new DeploymentPreviewEntity_1.DeploymentPreviewEntity(self, entopts);
+    }
+    // Entity access: `client.DeploymentSetting().list()` / `client.DeploymentSetting().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DeploymentSetting(entopts) {
+        const self = this;
+        return new DeploymentSettingEntity_1.DeploymentSettingEntity(self, entopts);
+    }
+    // Entity access: `client.DesktopLocalAgentModel().list()` / `client.DesktopLocalAgentModel().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DesktopLocalAgentModel(entopts) {
+        const self = this;
+        return new DesktopLocalAgentModelEntity_1.DesktopLocalAgentModelEntity(self, entopts);
+    }
+    // Entity access: `client.DesktopLocalAgentResponse().list()` / `client.DesktopLocalAgentResponse().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DesktopLocalAgentResponse(entopts) {
+        const self = this;
+        return new DesktopLocalAgentResponseEntity_1.DesktopLocalAgentResponseEntity(self, entopts);
+    }
+    // Entity access: `client.Device().list()` / `client.Device().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Device(entopts) {
+        const self = this;
+        return new DeviceEntity_1.DeviceEntity(self, entopts);
+    }
+    // Entity access: `client.DeviceBrowserOperation().list()` / `client.DeviceBrowserOperation().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DeviceBrowserOperation(entopts) {
+        const self = this;
+        return new DeviceBrowserOperationEntity_1.DeviceBrowserOperationEntity(self, entopts);
+    }
+    // Entity access: `client.DeviceControlMessage().list()` / `client.DeviceControlMessage().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DeviceControlMessage(entopts) {
+        const self = this;
+        return new DeviceControlMessageEntity_1.DeviceControlMessageEntity(self, entopts);
+    }
+    // Entity access: `client.DeviceControlOperation().list()` / `client.DeviceControlOperation().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DeviceControlOperation(entopts) {
+        const self = this;
+        return new DeviceControlOperationEntity_1.DeviceControlOperationEntity(self, entopts);
+    }
+    // Entity access: `client.DeviceEnterpriseRelay().list()` / `client.DeviceEnterpriseRelay().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DeviceEnterpriseRelay(entopts) {
+        const self = this;
+        return new DeviceEnterpriseRelayEntity_1.DeviceEnterpriseRelayEntity(self, entopts);
+    }
+    // Entity access: `client.DeviceFolderListing().list()` / `client.DeviceFolderListing().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DeviceFolderListing(entopts) {
+        const self = this;
+        return new DeviceFolderListingEntity_1.DeviceFolderListingEntity(self, entopts);
+    }
+    // Entity access: `client.DeviceGrant().list()` / `client.DeviceGrant().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DeviceGrant(entopts) {
+        const self = this;
+        return new DeviceGrantEntity_1.DeviceGrantEntity(self, entopts);
+    }
+    // Entity access: `client.DeviceInvocation().list()` / `client.DeviceInvocation().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DeviceInvocation(entopts) {
+        const self = this;
+        return new DeviceInvocationEntity_1.DeviceInvocationEntity(self, entopts);
+    }
+    // Entity access: `client.DeviceLocalEvent().list()` / `client.DeviceLocalEvent().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DeviceLocalEvent(entopts) {
+        const self = this;
+        return new DeviceLocalEventEntity_1.DeviceLocalEventEntity(self, entopts);
+    }
+    // Entity access: `client.DevicePairing().list()` / `client.DevicePairing().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DevicePairing(entopts) {
+        const self = this;
+        return new DevicePairingEntity_1.DevicePairingEntity(self, entopts);
+    }
+    // Entity access: `client.DeviceProject().list()` / `client.DeviceProject().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DeviceProject(entopts) {
+        const self = this;
+        return new DeviceProjectEntity_1.DeviceProjectEntity(self, entopts);
+    }
+    // Entity access: `client.DeviceScheduledCheckIn().list()` / `client.DeviceScheduledCheckIn().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DeviceScheduledCheckIn(entopts) {
+        const self = this;
+        return new DeviceScheduledCheckInEntity_1.DeviceScheduledCheckInEntity(self, entopts);
+    }
+    // Entity access: `client.DockerBuilder().list()` / `client.DockerBuilder().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DockerBuilder(entopts) {
+        const self = this;
+        return new DockerBuilderEntity_1.DockerBuilderEntity(self, entopts);
+    }
+    // Entity access: `client.DockerBuilderSession().list()` / `client.DockerBuilderSession().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DockerBuilderSession(entopts) {
+        const self = this;
+        return new DockerBuilderSessionEntity_1.DockerBuilderSessionEntity(self, entopts);
+    }
+    // Entity access: `client.DockerBuilderSetting().list()` / `client.DockerBuilderSetting().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DockerBuilderSetting(entopts) {
+        const self = this;
+        return new DockerBuilderSettingEntity_1.DockerBuilderSettingEntity(self, entopts);
+    }
+    // Entity access: `client.DomainDnsIntegration().list()` / `client.DomainDnsIntegration().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    DomainDnsIntegration(entopts) {
+        const self = this;
+        return new DomainDnsIntegrationEntity_1.DomainDnsIntegrationEntity(self, entopts);
     }
     // Entity access: `client.DomainPathRule().list()` / `client.DomainPathRule().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1240,6 +2408,20 @@ class ComposalSDK {
     Dream(entopts) {
         const self = this;
         return new DreamEntity_1.DreamEntity(self, entopts);
+    }
+    // Entity access: `client.Edge().list()` / `client.Edge().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Edge(entopts) {
+        const self = this;
+        return new EdgeEntity_1.EdgeEntity(self, entopts);
+    }
+    // Entity access: `client.EmailVerification().list()` / `client.EmailVerification().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    EmailVerification(entopts) {
+        const self = this;
+        return new EmailVerificationEntity_1.EmailVerificationEntity(self, entopts);
     }
     // Entity access: `client.Environment().list()` / `client.Environment().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1297,6 +2479,34 @@ class ComposalSDK {
         const self = this;
         return new EvidenceEntity_1.EvidenceEntity(self, entopts);
     }
+    // Entity access: `client.ExecutionDesiredState().list()` / `client.ExecutionDesiredState().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ExecutionDesiredState(entopts) {
+        const self = this;
+        return new ExecutionDesiredStateEntity_1.ExecutionDesiredStateEntity(self, entopts);
+    }
+    // Entity access: `client.ExecutionReconcilerTick().list()` / `client.ExecutionReconcilerTick().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ExecutionReconcilerTick(entopts) {
+        const self = this;
+        return new ExecutionReconcilerTickEntity_1.ExecutionReconcilerTickEntity(self, entopts);
+    }
+    // Entity access: `client.ExecutionRelease().list()` / `client.ExecutionRelease().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ExecutionRelease(entopts) {
+        const self = this;
+        return new ExecutionReleaseEntity_1.ExecutionReleaseEntity(self, entopts);
+    }
+    // Entity access: `client.ExecutionRuntimeInstance().list()` / `client.ExecutionRuntimeInstance().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ExecutionRuntimeInstance(entopts) {
+        const self = this;
+        return new ExecutionRuntimeInstanceEntity_1.ExecutionRuntimeInstanceEntity(self, entopts);
+    }
     // Entity access: `client.Exploration().list()` / `client.Exploration().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -1332,12 +2542,215 @@ class ComposalSDK {
         const self = this;
         return new FindingEntity_1.FindingEntity(self, entopts);
     }
+    // Entity access: `client.Gh().list()` / `client.Gh().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Gh(entopts) {
+        const self = this;
+        return new GhEntity_1.GhEntity(self, entopts);
+    }
+    // Entity access: `client.GitImport().list()` / `client.GitImport().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GitImport(entopts) {
+        const self = this;
+        return new GitImportEntity_1.GitImportEntity(self, entopts);
+    }
+    // Entity access: `client.Github().list()` / `client.Github().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Github(entopts) {
+        const self = this;
+        return new GithubEntity_1.GithubEntity(self, entopts);
+    }
+    // Entity access: `client.GithubApp().list()` / `client.GithubApp().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubApp(entopts) {
+        const self = this;
+        return new GithubAppEntity_1.GithubAppEntity(self, entopts);
+    }
+    // Entity access: `client.GithubAppImportableRepository().list()` / `client.GithubAppImportableRepository().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubAppImportableRepository(entopts) {
+        const self = this;
+        return new GithubAppImportableRepositoryEntity_1.GithubAppImportableRepositoryEntity(self, entopts);
+    }
+    // Entity access: `client.GithubAppInstallation().list()` / `client.GithubAppInstallation().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubAppInstallation(entopts) {
+        const self = this;
+        return new GithubAppInstallationEntity_1.GithubAppInstallationEntity(self, entopts);
+    }
+    // Entity access: `client.GithubAppInstallationAuthorization().list()` / `client.GithubAppInstallationAuthorization().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubAppInstallationAuthorization(entopts) {
+        const self = this;
+        return new GithubAppInstallationAuthorizationEntity_1.GithubAppInstallationAuthorizationEntity(self, entopts);
+    }
+    // Entity access: `client.GithubAppUserAuthorization().list()` / `client.GithubAppUserAuthorization().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubAppUserAuthorization(entopts) {
+        const self = this;
+        return new GithubAppUserAuthorizationEntity_1.GithubAppUserAuthorizationEntity(self, entopts);
+    }
+    // Entity access: `client.GithubCiRepository().list()` / `client.GithubCiRepository().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubCiRepository(entopts) {
+        const self = this;
+        return new GithubCiRepositoryEntity_1.GithubCiRepositoryEntity(self, entopts);
+    }
+    // Entity access: `client.GithubCiRepositoryCompatibilityReport().list()` / `client.GithubCiRepositoryCompatibilityReport().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubCiRepositoryCompatibilityReport(entopts) {
+        const self = this;
+        return new GithubCiRepositoryCompatibilityReportEntity_1.GithubCiRepositoryCompatibilityReportEntity(self, entopts);
+    }
     // Entity access: `client.GithubConnection().list()` / `client.GithubConnection().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     GithubConnection(entopts) {
         const self = this;
         return new GithubConnectionEntity_1.GithubConnectionEntity(self, entopts);
+    }
+    // Entity access: `client.GithubIntegration().list()` / `client.GithubIntegration().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubIntegration(entopts) {
+        const self = this;
+        return new GithubIntegrationEntity_1.GithubIntegrationEntity(self, entopts);
+    }
+    // Entity access: `client.GithubOnboarding().list()` / `client.GithubOnboarding().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubOnboarding(entopts) {
+        const self = this;
+        return new GithubOnboardingEntity_1.GithubOnboardingEntity(self, entopts);
+    }
+    // Entity access: `client.GithubOnboardingBranch().list()` / `client.GithubOnboardingBranch().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubOnboardingBranch(entopts) {
+        const self = this;
+        return new GithubOnboardingBranchEntity_1.GithubOnboardingBranchEntity(self, entopts);
+    }
+    // Entity access: `client.GithubOnboardingImport().list()` / `client.GithubOnboardingImport().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubOnboardingImport(entopts) {
+        const self = this;
+        return new GithubOnboardingImportEntity_1.GithubOnboardingImportEntity(self, entopts);
+    }
+    // Entity access: `client.GithubOnboardingImportBatch().list()` / `client.GithubOnboardingImportBatch().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubOnboardingImportBatch(entopts) {
+        const self = this;
+        return new GithubOnboardingImportBatchEntity_1.GithubOnboardingImportBatchEntity(self, entopts);
+    }
+    // Entity access: `client.GithubOnboardingImportItem().list()` / `client.GithubOnboardingImportItem().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubOnboardingImportItem(entopts) {
+        const self = this;
+        return new GithubOnboardingImportItemEntity_1.GithubOnboardingImportItemEntity(self, entopts);
+    }
+    // Entity access: `client.GithubPullRequest().list()` / `client.GithubPullRequest().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubPullRequest(entopts) {
+        const self = this;
+        return new GithubPullRequestEntity_1.GithubPullRequestEntity(self, entopts);
+    }
+    // Entity access: `client.GithubRunnerAdmission().list()` / `client.GithubRunnerAdmission().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubRunnerAdmission(entopts) {
+        const self = this;
+        return new GithubRunnerAdmissionEntity_1.GithubRunnerAdmissionEntity(self, entopts);
+    }
+    // Entity access: `client.GithubRunnerCache().list()` / `client.GithubRunnerCache().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubRunnerCache(entopts) {
+        const self = this;
+        return new GithubRunnerCacheEntity_1.GithubRunnerCacheEntity(self, entopts);
+    }
+    // Entity access: `client.GithubRunnerEgress().list()` / `client.GithubRunnerEgress().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubRunnerEgress(entopts) {
+        const self = this;
+        return new GithubRunnerEgressEntity_1.GithubRunnerEgressEntity(self, entopts);
+    }
+    // Entity access: `client.GithubRunnerHistory().list()` / `client.GithubRunnerHistory().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubRunnerHistory(entopts) {
+        const self = this;
+        return new GithubRunnerHistoryEntity_1.GithubRunnerHistoryEntity(self, entopts);
+    }
+    // Entity access: `client.GithubRunnerImage().list()` / `client.GithubRunnerImage().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubRunnerImage(entopts) {
+        const self = this;
+        return new GithubRunnerImageEntity_1.GithubRunnerImageEntity(self, entopts);
+    }
+    // Entity access: `client.GithubRunnerPool().list()` / `client.GithubRunnerPool().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubRunnerPool(entopts) {
+        const self = this;
+        return new GithubRunnerPoolEntity_1.GithubRunnerPoolEntity(self, entopts);
+    }
+    // Entity access: `client.GithubRunnerSetup().list()` / `client.GithubRunnerSetup().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GithubRunnerSetup(entopts) {
+        const self = this;
+        return new GithubRunnerSetupEntity_1.GithubRunnerSetupEntity(self, entopts);
+    }
+    // Entity access: `client.Gitlab().list()` / `client.Gitlab().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Gitlab(entopts) {
+        const self = this;
+        return new GitlabEntity_1.GitlabEntity(self, entopts);
+    }
+    // Entity access: `client.GitlabConnection().list()` / `client.GitlabConnection().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GitlabConnection(entopts) {
+        const self = this;
+        return new GitlabConnectionEntity_1.GitlabConnectionEntity(self, entopts);
+    }
+    // Entity access: `client.GitlabImport().list()` / `client.GitlabImport().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GitlabImport(entopts) {
+        const self = this;
+        return new GitlabImportEntity_1.GitlabImportEntity(self, entopts);
+    }
+    // Entity access: `client.GitlabOauth().list()` / `client.GitlabOauth().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GitlabOauth(entopts) {
+        const self = this;
+        return new GitlabOauthEntity_1.GitlabOauthEntity(self, entopts);
+    }
+    // Entity access: `client.GrantAllAgent().list()` / `client.GrantAllAgent().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GrantAllAgent(entopts) {
+        const self = this;
+        return new GrantAllAgentEntity_1.GrantAllAgentEntity(self, entopts);
     }
     // Entity access: `client.HostingAppDomain().list()` / `client.HostingAppDomain().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1346,12 +2759,33 @@ class ComposalSDK {
         const self = this;
         return new HostingAppDomainEntity_1.HostingAppDomainEntity(self, entopts);
     }
+    // Entity access: `client.IdentityOrganization().list()` / `client.IdentityOrganization().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    IdentityOrganization(entopts) {
+        const self = this;
+        return new IdentityOrganizationEntity_1.IdentityOrganizationEntity(self, entopts);
+    }
     // Entity access: `client.ImageRepository().list()` / `client.ImageRepository().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     ImageRepository(entopts) {
         const self = this;
         return new ImageRepositoryEntity_1.ImageRepositoryEntity(self, entopts);
+    }
+    // Entity access: `client.ImageRepositoryTag().list()` / `client.ImageRepositoryTag().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ImageRepositoryTag(entopts) {
+        const self = this;
+        return new ImageRepositoryTagEntity_1.ImageRepositoryTagEntity(self, entopts);
+    }
+    // Entity access: `client.ImportBranchPolicy().list()` / `client.ImportBranchPolicy().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ImportBranchPolicy(entopts) {
+        const self = this;
+        return new ImportBranchPolicyEntity_1.ImportBranchPolicyEntity(self, entopts);
     }
     // Entity access: `client.Integration().list()` / `client.Integration().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1374,6 +2808,34 @@ class ComposalSDK {
         const self = this;
         return new InvitationEntity_1.InvitationEntity(self, entopts);
     }
+    // Entity access: `client.InvocationControl().list()` / `client.InvocationControl().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    InvocationControl(entopts) {
+        const self = this;
+        return new InvocationControlEntity_1.InvocationControlEntity(self, entopts);
+    }
+    // Entity access: `client.JobLogChunk().list()` / `client.JobLogChunk().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    JobLogChunk(entopts) {
+        const self = this;
+        return new JobLogChunkEntity_1.JobLogChunkEntity(self, entopts);
+    }
+    // Entity access: `client.JobStep().list()` / `client.JobStep().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    JobStep(entopts) {
+        const self = this;
+        return new JobStepEntity_1.JobStepEntity(self, entopts);
+    }
+    // Entity access: `client.JobWorkspace().list()` / `client.JobWorkspace().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    JobWorkspace(entopts) {
+        const self = this;
+        return new JobWorkspaceEntity_1.JobWorkspaceEntity(self, entopts);
+    }
     // Entity access: `client.JourneyVariantReplay().list()` / `client.JourneyVariantReplay().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -1387,6 +2849,90 @@ class ComposalSDK {
     Knowledge(entopts) {
         const self = this;
         return new KnowledgeEntity_1.KnowledgeEntity(self, entopts);
+    }
+    // Entity access: `client.Known().list()` / `client.Known().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Known(entopts) {
+        const self = this;
+        return new KnownEntity_1.KnownEntity(self, entopts);
+    }
+    // Entity access: `client.Label().list()` / `client.Label().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Label(entopts) {
+        const self = this;
+        return new LabelEntity_1.LabelEntity(self, entopts);
+    }
+    // Entity access: `client.LeaseArtifact().list()` / `client.LeaseArtifact().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    LeaseArtifact(entopts) {
+        const self = this;
+        return new LeaseArtifactEntity_1.LeaseArtifactEntity(self, entopts);
+    }
+    // Entity access: `client.LeaseCache().list()` / `client.LeaseCache().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    LeaseCache(entopts) {
+        const self = this;
+        return new LeaseCacheEntity_1.LeaseCacheEntity(self, entopts);
+    }
+    // Entity access: `client.LeaseLogChunk().list()` / `client.LeaseLogChunk().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    LeaseLogChunk(entopts) {
+        const self = this;
+        return new LeaseLogChunkEntity_1.LeaseLogChunkEntity(self, entopts);
+    }
+    // Entity access: `client.LeaseReconciliation().list()` / `client.LeaseReconciliation().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    LeaseReconciliation(entopts) {
+        const self = this;
+        return new LeaseReconciliationEntity_1.LeaseReconciliationEntity(self, entopts);
+    }
+    // Entity access: `client.LeaseStep().list()` / `client.LeaseStep().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    LeaseStep(entopts) {
+        const self = this;
+        return new LeaseStepEntity_1.LeaseStepEntity(self, entopts);
+    }
+    // Entity access: `client.LeaseVerifyDiagnostic().list()` / `client.LeaseVerifyDiagnostic().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    LeaseVerifyDiagnostic(entopts) {
+        const self = this;
+        return new LeaseVerifyDiagnosticEntity_1.LeaseVerifyDiagnosticEntity(self, entopts);
+    }
+    // Entity access: `client.LeaseVerifySecret().list()` / `client.LeaseVerifySecret().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    LeaseVerifySecret(entopts) {
+        const self = this;
+        return new LeaseVerifySecretEntity_1.LeaseVerifySecretEntity(self, entopts);
+    }
+    // Entity access: `client.LeaseWorkspace().list()` / `client.LeaseWorkspace().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    LeaseWorkspace(entopts) {
+        const self = this;
+        return new LeaseWorkspaceEntity_1.LeaseWorkspaceEntity(self, entopts);
+    }
+    // Entity access: `client.LocalAgentDecision().list()` / `client.LocalAgentDecision().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    LocalAgentDecision(entopts) {
+        const self = this;
+        return new LocalAgentDecisionEntity_1.LocalAgentDecisionEntity(self, entopts);
+    }
+    // Entity access: `client.LocalAgentResponse().list()` / `client.LocalAgentResponse().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    LocalAgentResponse(entopts) {
+        const self = this;
+        return new LocalAgentResponseEntity_1.LocalAgentResponseEntity(self, entopts);
     }
     // Entity access: `client.LocalThreadDelivery().list()` / `client.LocalThreadDelivery().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1408,6 +2954,34 @@ class ComposalSDK {
     Location(entopts) {
         const self = this;
         return new LocationEntity_1.LocationEntity(self, entopts);
+    }
+    // Entity access: `client.LogStreamChunk().list()` / `client.LogStreamChunk().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    LogStreamChunk(entopts) {
+        const self = this;
+        return new LogStreamChunkEntity_1.LogStreamChunkEntity(self, entopts);
+    }
+    // Entity access: `client.LogoImage().list()` / `client.LogoImage().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    LogoImage(entopts) {
+        const self = this;
+        return new LogoImageEntity_1.LogoImageEntity(self, entopts);
+    }
+    // Entity access: `client.MarketingSetting().list()` / `client.MarketingSetting().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    MarketingSetting(entopts) {
+        const self = this;
+        return new MarketingSettingEntity_1.MarketingSettingEntity(self, entopts);
+    }
+    // Entity access: `client.McpOauth().list()` / `client.McpOauth().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    McpOauth(entopts) {
+        const self = this;
+        return new McpOauthEntity_1.McpOauthEntity(self, entopts);
     }
     // Entity access: `client.Me().list()` / `client.Me().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1451,12 +3025,26 @@ class ComposalSDK {
         const self = this;
         return new MemoryEntity_1.MemoryEntity(self, entopts);
     }
+    // Entity access: `client.MergeQueueEntry().list()` / `client.MergeQueueEntry().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    MergeQueueEntry(entopts) {
+        const self = this;
+        return new MergeQueueEntryEntity_1.MergeQueueEntryEntity(self, entopts);
+    }
     // Entity access: `client.MergeRequest().list()` / `client.MergeRequest().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     MergeRequest(entopts) {
         const self = this;
         return new MergeRequestEntity_1.MergeRequestEntity(self, entopts);
+    }
+    // Entity access: `client.MergeResolution().list()` / `client.MergeResolution().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    MergeResolution(entopts) {
+        const self = this;
+        return new MergeResolutionEntity_1.MergeResolutionEntity(self, entopts);
     }
     // Entity access: `client.MessagingConversationMessage().list()` / `client.MessagingConversationMessage().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1479,12 +3067,61 @@ class ComposalSDK {
         const self = this;
         return new MetricQueryEntity_1.MetricQueryEntity(self, entopts);
     }
+    // Entity access: `client.MetronomeWebhook().list()` / `client.MetronomeWebhook().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    MetronomeWebhook(entopts) {
+        const self = this;
+        return new MetronomeWebhookEntity_1.MetronomeWebhookEntity(self, entopts);
+    }
+    // Entity access: `client.ModelSubscriptionAccount().list()` / `client.ModelSubscriptionAccount().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ModelSubscriptionAccount(entopts) {
+        const self = this;
+        return new ModelSubscriptionAccountEntity_1.ModelSubscriptionAccountEntity(self, entopts);
+    }
+    // Entity access: `client.ModelSubscriptionAccountConnection().list()` / `client.ModelSubscriptionAccountConnection().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ModelSubscriptionAccountConnection(entopts) {
+        const self = this;
+        return new ModelSubscriptionAccountConnectionEntity_1.ModelSubscriptionAccountConnectionEntity(self, entopts);
+    }
     // Entity access: `client.NetworkConnection().list()` / `client.NetworkConnection().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     NetworkConnection(entopts) {
         const self = this;
         return new NetworkConnectionEntity_1.NetworkConnectionEntity(self, entopts);
+    }
+    // Entity access: `client.NetworkingSpace().list()` / `client.NetworkingSpace().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    NetworkingSpace(entopts) {
+        const self = this;
+        return new NetworkingSpaceEntity_1.NetworkingSpaceEntity(self, entopts);
+    }
+    // Entity access: `client.Node().list()` / `client.Node().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Node(entopts) {
+        const self = this;
+        return new NodeEntity_1.NodeEntity(self, entopts);
+    }
+    // Entity access: `client.NodeCertificate().list()` / `client.NodeCertificate().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    NodeCertificate(entopts) {
+        const self = this;
+        return new NodeCertificateEntity_1.NodeCertificateEntity(self, entopts);
+    }
+    // Entity access: `client.NodeLease().list()` / `client.NodeLease().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    NodeLease(entopts) {
+        const self = this;
+        return new NodeLeaseEntity_1.NodeLeaseEntity(self, entopts);
     }
     // Entity access: `client.NomadAllocation().list()` / `client.NomadAllocation().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1500,12 +3137,194 @@ class ComposalSDK {
         const self = this;
         return new NomadLogEntity_1.NomadLogEntity(self, entopts);
     }
+    // Entity access: `client.Now().list()` / `client.Now().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Now(entopts) {
+        const self = this;
+        return new NowEntity_1.NowEntity(self, entopts);
+    }
+    // Entity access: `client.ObservabilityClickhouseCluster().list()` / `client.ObservabilityClickhouseCluster().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ObservabilityClickhouseCluster(entopts) {
+        const self = this;
+        return new ObservabilityClickhouseClusterEntity_1.ObservabilityClickhouseClusterEntity(self, entopts);
+    }
+    // Entity access: `client.ObservabilityQuickwitCluster().list()` / `client.ObservabilityQuickwitCluster().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ObservabilityQuickwitCluster(entopts) {
+        const self = this;
+        return new ObservabilityQuickwitClusterEntity_1.ObservabilityQuickwitClusterEntity(self, entopts);
+    }
+    // Entity access: `client.ObservabilitySpace().list()` / `client.ObservabilitySpace().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ObservabilitySpace(entopts) {
+        const self = this;
+        return new ObservabilitySpaceEntity_1.ObservabilitySpaceEntity(self, entopts);
+    }
+    // Entity access: `client.Openapi().list()` / `client.Openapi().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Openapi(entopts) {
+        const self = this;
+        return new OpenapiEntity_1.OpenapiEntity(self, entopts);
+    }
+    // Entity access: `client.OrgInvitation().list()` / `client.OrgInvitation().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrgInvitation(entopts) {
+        const self = this;
+        return new OrgInvitationEntity_1.OrgInvitationEntity(self, entopts);
+    }
     // Entity access: `client.Organization().list()` / `client.Organization().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     Organization(entopts) {
         const self = this;
         return new OrganizationEntity_1.OrganizationEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationApp().list()` / `client.OrganizationApp().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationApp(entopts) {
+        const self = this;
+        return new OrganizationAppEntity_1.OrganizationAppEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationControl().list()` / `client.OrganizationControl().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationControl(entopts) {
+        const self = this;
+        return new OrganizationControlEntity_1.OrganizationControlEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationDevice().list()` / `client.OrganizationDevice().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationDevice(entopts) {
+        const self = this;
+        return new OrganizationDeviceEntity_1.OrganizationDeviceEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationIdentityCertificate().list()` / `client.OrganizationIdentityCertificate().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationIdentityCertificate(entopts) {
+        const self = this;
+        return new OrganizationIdentityCertificateEntity_1.OrganizationIdentityCertificateEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationInteraction().list()` / `client.OrganizationInteraction().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationInteraction(entopts) {
+        const self = this;
+        return new OrganizationInteractionEntity_1.OrganizationInteractionEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationInvitation().list()` / `client.OrganizationInvitation().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationInvitation(entopts) {
+        const self = this;
+        return new OrganizationInvitationEntity_1.OrganizationInvitationEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationMessageFile().list()` / `client.OrganizationMessageFile().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationMessageFile(entopts) {
+        const self = this;
+        return new OrganizationMessageFileEntity_1.OrganizationMessageFileEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationOidcTrust().list()` / `client.OrganizationOidcTrust().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationOidcTrust(entopts) {
+        const self = this;
+        return new OrganizationOidcTrustEntity_1.OrganizationOidcTrustEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationRunEvent().list()` / `client.OrganizationRunEvent().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationRunEvent(entopts) {
+        const self = this;
+        return new OrganizationRunEventEntity_1.OrganizationRunEventEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationRunOutcome().list()` / `client.OrganizationRunOutcome().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationRunOutcome(entopts) {
+        const self = this;
+        return new OrganizationRunOutcomeEntity_1.OrganizationRunOutcomeEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationRunUsage().list()` / `client.OrganizationRunUsage().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationRunUsage(entopts) {
+        const self = this;
+        return new OrganizationRunUsageEntity_1.OrganizationRunUsageEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationSandbox().list()` / `client.OrganizationSandbox().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationSandbox(entopts) {
+        const self = this;
+        return new OrganizationSandboxEntity_1.OrganizationSandboxEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationSecret().list()` / `client.OrganizationSecret().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationSecret(entopts) {
+        const self = this;
+        return new OrganizationSecretEntity_1.OrganizationSecretEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationServiceAccount().list()` / `client.OrganizationServiceAccount().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationServiceAccount(entopts) {
+        const self = this;
+        return new OrganizationServiceAccountEntity_1.OrganizationServiceAccountEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationSetting().list()` / `client.OrganizationSetting().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationSetting(entopts) {
+        const self = this;
+        return new OrganizationSettingEntity_1.OrganizationSettingEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationSite().list()` / `client.OrganizationSite().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationSite(entopts) {
+        const self = this;
+        return new OrganizationSiteEntity_1.OrganizationSiteEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationSubscription().list()` / `client.OrganizationSubscription().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationSubscription(entopts) {
+        const self = this;
+        return new OrganizationSubscriptionEntity_1.OrganizationSubscriptionEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationTool().list()` / `client.OrganizationTool().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationTool(entopts) {
+        const self = this;
+        return new OrganizationToolEntity_1.OrganizationToolEntity(self, entopts);
+    }
+    // Entity access: `client.OrganizationWorkloadIdentity().list()` / `client.OrganizationWorkloadIdentity().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OrganizationWorkloadIdentity(entopts) {
+        const self = this;
+        return new OrganizationWorkloadIdentityEntity_1.OrganizationWorkloadIdentityEntity(self, entopts);
+    }
+    // Entity access: `client.OtelIngest().list()` / `client.OtelIngest().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    OtelIngest(entopts) {
+        const self = this;
+        return new OtelIngestEntity_1.OtelIngestEntity(self, entopts);
     }
     // Entity access: `client.Page().list()` / `client.Page().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1521,12 +3340,54 @@ class ComposalSDK {
         const self = this;
         return new PageAgentEntity_1.PageAgentEntity(self, entopts);
     }
+    // Entity access: `client.PageArtefact().list()` / `client.PageArtefact().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PageArtefact(entopts) {
+        const self = this;
+        return new PageArtefactEntity_1.PageArtefactEntity(self, entopts);
+    }
+    // Entity access: `client.PageCiPipelineRun().list()` / `client.PageCiPipelineRun().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PageCiPipelineRun(entopts) {
+        const self = this;
+        return new PageCiPipelineRunEntity_1.PageCiPipelineRunEntity(self, entopts);
+    }
     // Entity access: `client.PageProjectRun().list()` / `client.PageProjectRun().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     PageProjectRun(entopts) {
         const self = this;
         return new PageProjectRunEntity_1.PageProjectRunEntity(self, entopts);
+    }
+    // Entity access: `client.PageRepoVcCommit().list()` / `client.PageRepoVcCommit().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PageRepoVcCommit(entopts) {
+        const self = this;
+        return new PageRepoVcCommitEntity_1.PageRepoVcCommitEntity(self, entopts);
+    }
+    // Entity access: `client.PagesBilling().list()` / `client.PagesBilling().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PagesBilling(entopts) {
+        const self = this;
+        return new PagesBillingEntity_1.PagesBillingEntity(self, entopts);
+    }
+    // Entity access: `client.PagesGithubOnboarding().list()` / `client.PagesGithubOnboarding().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PagesGithubOnboarding(entopts) {
+        const self = this;
+        return new PagesGithubOnboardingEntity_1.PagesGithubOnboardingEntity(self, entopts);
+    }
+    // Entity access: `client.PagesMember().list()` / `client.PagesMember().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PagesMember(entopts) {
+        const self = this;
+        return new PagesMemberEntity_1.PagesMemberEntity(self, entopts);
     }
     // Entity access: `client.PagesProjectCredential().list()` / `client.PagesProjectCredential().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1555,6 +3416,48 @@ class ComposalSDK {
     PagesProjectScenario(entopts) {
         const self = this;
         return new PagesProjectScenarioEntity_1.PagesProjectScenarioEntity(self, entopts);
+    }
+    // Entity access: `client.PagesRegistry().list()` / `client.PagesRegistry().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PagesRegistry(entopts) {
+        const self = this;
+        return new PagesRegistryEntity_1.PagesRegistryEntity(self, entopts);
+    }
+    // Entity access: `client.PagesSession().list()` / `client.PagesSession().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PagesSession(entopts) {
+        const self = this;
+        return new PagesSessionEntity_1.PagesSessionEntity(self, entopts);
+    }
+    // Entity access: `client.Pairing().list()` / `client.Pairing().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Pairing(entopts) {
+        const self = this;
+        return new PairingEntity_1.PairingEntity(self, entopts);
+    }
+    // Entity access: `client.PairingEvent().list()` / `client.PairingEvent().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PairingEvent(entopts) {
+        const self = this;
+        return new PairingEventEntity_1.PairingEventEntity(self, entopts);
+    }
+    // Entity access: `client.ParallelV1().list()` / `client.ParallelV1().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ParallelV1(entopts) {
+        const self = this;
+        return new ParallelV1Entity_1.ParallelV1Entity(self, entopts);
+    }
+    // Entity access: `client.PatchsetDiff().list()` / `client.PatchsetDiff().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PatchsetDiff(entopts) {
+        const self = this;
+        return new PatchsetDiffEntity_1.PatchsetDiffEntity(self, entopts);
     }
     // Entity access: `client.PersonalAccessToken().list()` / `client.PersonalAccessToken().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1590,6 +3493,20 @@ class ComposalSDK {
     PreviewSharingApproval(entopts) {
         const self = this;
         return new PreviewSharingApprovalEntity_1.PreviewSharingApprovalEntity(self, entopts);
+    }
+    // Entity access: `client.ProactiveAgentWaitlistEntry().list()` / `client.ProactiveAgentWaitlistEntry().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ProactiveAgentWaitlistEntry(entopts) {
+        const self = this;
+        return new ProactiveAgentWaitlistEntryEntity_1.ProactiveAgentWaitlistEntryEntity(self, entopts);
+    }
+    // Entity access: `client.Product().list()` / `client.Product().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Product(entopts) {
+        const self = this;
+        return new ProductEntity_1.ProductEntity(self, entopts);
     }
     // Entity access: `client.ProductMapIdentityDecision().list()` / `client.ProductMapIdentityDecision().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1759,6 +3676,20 @@ class ComposalSDK {
         const self = this;
         return new PullRequestEntity_1.PullRequestEntity(self, entopts);
     }
+    // Entity access: `client.PullRequestAction().list()` / `client.PullRequestAction().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PullRequestAction(entopts) {
+        const self = this;
+        return new PullRequestActionEntity_1.PullRequestActionEntity(self, entopts);
+    }
+    // Entity access: `client.PullRequestMagicMerge().list()` / `client.PullRequestMagicMerge().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PullRequestMagicMerge(entopts) {
+        const self = this;
+        return new PullRequestMagicMergeEntity_1.PullRequestMagicMergeEntity(self, entopts);
+    }
     // Entity access: `client.PullRequestSetting().list()` / `client.PullRequestSetting().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -1779,6 +3710,20 @@ class ComposalSDK {
     PullRequestSettingDetectComment(entopts) {
         const self = this;
         return new PullRequestSettingDetectCommentEntity_1.PullRequestSettingDetectCommentEntity(self, entopts);
+    }
+    // Entity access: `client.PullRequestTranscript().list()` / `client.PullRequestTranscript().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PullRequestTranscript(entopts) {
+        const self = this;
+        return new PullRequestTranscriptEntity_1.PullRequestTranscriptEntity(self, entopts);
+    }
+    // Entity access: `client.PullZone().list()` / `client.PullZone().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PullZone(entopts) {
+        const self = this;
+        return new PullZoneEntity_1.PullZoneEntity(self, entopts);
     }
     // Entity access: `client.Recorder().list()` / `client.Recorder().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1801,12 +3746,124 @@ class ComposalSDK {
         const self = this;
         return new RegistryV2Entity_1.RegistryV2Entity(self, entopts);
     }
+    // Entity access: `client.RelayAgentConnection().list()` / `client.RelayAgentConnection().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RelayAgentConnection(entopts) {
+        const self = this;
+        return new RelayAgentConnectionEntity_1.RelayAgentConnectionEntity(self, entopts);
+    }
     // Entity access: `client.RelayAgentLocalThread().list()` / `client.RelayAgentLocalThread().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     RelayAgentLocalThread(entopts) {
         const self = this;
         return new RelayAgentLocalThreadEntity_1.RelayAgentLocalThreadEntity(self, entopts);
+    }
+    // Entity access: `client.RelaySignal().list()` / `client.RelaySignal().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RelaySignal(entopts) {
+        const self = this;
+        return new RelaySignalEntity_1.RelaySignalEntity(self, entopts);
+    }
+    // Entity access: `client.ReleaseRollout().list()` / `client.ReleaseRollout().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ReleaseRollout(entopts) {
+        const self = this;
+        return new ReleaseRolloutEntity_1.ReleaseRolloutEntity(self, entopts);
+    }
+    // Entity access: `client.Repo().list()` / `client.Repo().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Repo(entopts) {
+        const self = this;
+        return new RepoEntity_1.RepoEntity(self, entopts);
+    }
+    // Entity access: `client.RepoAccessToken().list()` / `client.RepoAccessToken().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepoAccessToken(entopts) {
+        const self = this;
+        return new RepoAccessTokenEntity_1.RepoAccessTokenEntity(self, entopts);
+    }
+    // Entity access: `client.RepoAction().list()` / `client.RepoAction().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepoAction(entopts) {
+        const self = this;
+        return new RepoActionEntity_1.RepoActionEntity(self, entopts);
+    }
+    // Entity access: `client.RepoAgentCheckpoint().list()` / `client.RepoAgentCheckpoint().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepoAgentCheckpoint(entopts) {
+        const self = this;
+        return new RepoAgentCheckpointEntity_1.RepoAgentCheckpointEntity(self, entopts);
+    }
+    // Entity access: `client.RepoAgentSession().list()` / `client.RepoAgentSession().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepoAgentSession(entopts) {
+        const self = this;
+        return new RepoAgentSessionEntity_1.RepoAgentSessionEntity(self, entopts);
+    }
+    // Entity access: `client.RepoBookmarkProtection().list()` / `client.RepoBookmarkProtection().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepoBookmarkProtection(entopts) {
+        const self = this;
+        return new RepoBookmarkProtectionEntity_1.RepoBookmarkProtectionEntity(self, entopts);
+    }
+    // Entity access: `client.RepoBookmarkProtectionEvent().list()` / `client.RepoBookmarkProtectionEvent().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepoBookmarkProtectionEvent(entopts) {
+        const self = this;
+        return new RepoBookmarkProtectionEventEntity_1.RepoBookmarkProtectionEventEntity(self, entopts);
+    }
+    // Entity access: `client.RepoCloudWorkspaceBackup().list()` / `client.RepoCloudWorkspaceBackup().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepoCloudWorkspaceBackup(entopts) {
+        const self = this;
+        return new RepoCloudWorkspaceBackupEntity_1.RepoCloudWorkspaceBackupEntity(self, entopts);
+    }
+    // Entity access: `client.RepoCodeRule().list()` / `client.RepoCodeRule().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepoCodeRule(entopts) {
+        const self = this;
+        return new RepoCodeRuleEntity_1.RepoCodeRuleEntity(self, entopts);
+    }
+    // Entity access: `client.RepoSetting().list()` / `client.RepoSetting().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepoSetting(entopts) {
+        const self = this;
+        return new RepoSettingEntity_1.RepoSettingEntity(self, entopts);
+    }
+    // Entity access: `client.RepoStat().list()` / `client.RepoStat().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepoStat(entopts) {
+        const self = this;
+        return new RepoStatEntity_1.RepoStatEntity(self, entopts);
+    }
+    // Entity access: `client.RepoVc().list()` / `client.RepoVc().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepoVc(entopts) {
+        const self = this;
+        return new RepoVcEntity_1.RepoVcEntity(self, entopts);
+    }
+    // Entity access: `client.RepoVcCommit().list()` / `client.RepoVcCommit().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepoVcCommit(entopts) {
+        const self = this;
+        return new RepoVcCommitEntity_1.RepoVcCommitEntity(self, entopts);
     }
     // Entity access: `client.ReportReplay().list()` / `client.ReportReplay().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1821,6 +3878,111 @@ class ComposalSDK {
     ReportScenario(entopts) {
         const self = this;
         return new ReportScenarioEntity_1.ReportScenarioEntity(self, entopts);
+    }
+    // Entity access: `client.RepositoryAccess().list()` / `client.RepositoryAccess().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepositoryAccess(entopts) {
+        const self = this;
+        return new RepositoryAccessEntity_1.RepositoryAccessEntity(self, entopts);
+    }
+    // Entity access: `client.RepositoryAccessResolve().list()` / `client.RepositoryAccessResolve().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepositoryAccessResolve(entopts) {
+        const self = this;
+        return new RepositoryAccessResolveEntity_1.RepositoryAccessResolveEntity(self, entopts);
+    }
+    // Entity access: `client.RepositoryEvent().list()` / `client.RepositoryEvent().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepositoryEvent(entopts) {
+        const self = this;
+        return new RepositoryEventEntity_1.RepositoryEventEntity(self, entopts);
+    }
+    // Entity access: `client.RepositoryImport().list()` / `client.RepositoryImport().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepositoryImport(entopts) {
+        const self = this;
+        return new RepositoryImportEntity_1.RepositoryImportEntity(self, entopts);
+    }
+    // Entity access: `client.RepositoryImportSession().list()` / `client.RepositoryImportSession().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepositoryImportSession(entopts) {
+        const self = this;
+        return new RepositoryImportSessionEntity_1.RepositoryImportSessionEntity(self, entopts);
+    }
+    // Entity access: `client.RepositoryImportSessionRepository().list()` / `client.RepositoryImportSessionRepository().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepositoryImportSessionRepository(entopts) {
+        const self = this;
+        return new RepositoryImportSessionRepositoryEntity_1.RepositoryImportSessionRepositoryEntity(self, entopts);
+    }
+    // Entity access: `client.RepositoryImportSessionSelection().list()` / `client.RepositoryImportSessionSelection().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepositoryImportSessionSelection(entopts) {
+        const self = this;
+        return new RepositoryImportSessionSelectionEntity_1.RepositoryImportSessionSelectionEntity(self, entopts);
+    }
+    // Entity access: `client.RepositorySandboxEnvironment().list()` / `client.RepositorySandboxEnvironment().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RepositorySandboxEnvironment(entopts) {
+        const self = this;
+        return new RepositorySandboxEnvironmentEntity_1.RepositorySandboxEnvironmentEntity(self, entopts);
+    }
+    // Entity access: `client.RoderCodeRepair().list()` / `client.RoderCodeRepair().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RoderCodeRepair(entopts) {
+        const self = this;
+        return new RoderCodeRepairEntity_1.RoderCodeRepairEntity(self, entopts);
+    }
+    // Entity access: `client.RoderCodeRepairSetting().list()` / `client.RoderCodeRepairSetting().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RoderCodeRepairSetting(entopts) {
+        const self = this;
+        return new RoderCodeRepairSettingEntity_1.RoderCodeRepairSettingEntity(self, entopts);
+    }
+    // Entity access: `client.RoderMachine().list()` / `client.RoderMachine().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RoderMachine(entopts) {
+        const self = this;
+        return new RoderMachineEntity_1.RoderMachineEntity(self, entopts);
+    }
+    // Entity access: `client.RoderRun().list()` / `client.RoderRun().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RoderRun(entopts) {
+        const self = this;
+        return new RoderRunEntity_1.RoderRunEntity(self, entopts);
+    }
+    // Entity access: `client.RoderWorkspaceCredential().list()` / `client.RoderWorkspaceCredential().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RoderWorkspaceCredential(entopts) {
+        const self = this;
+        return new RoderWorkspaceCredentialEntity_1.RoderWorkspaceCredentialEntity(self, entopts);
+    }
+    // Entity access: `client.RunArtifact().list()` / `client.RunArtifact().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RunArtifact(entopts) {
+        const self = this;
+        return new RunArtifactEntity_1.RunArtifactEntity(self, entopts);
+    }
+    // Entity access: `client.RunJob().list()` / `client.RunJob().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RunJob(entopts) {
+        const self = this;
+        return new RunJobEntity_1.RunJobEntity(self, entopts);
     }
     // Entity access: `client.RunScenarioRun().list()` / `client.RunScenarioRun().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1850,6 +4012,48 @@ class ComposalSDK {
         const self = this;
         return new RunUpdateEntity_1.RunUpdateEntity(self, entopts);
     }
+    // Entity access: `client.RunWorkspaceCredential().list()` / `client.RunWorkspaceCredential().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RunWorkspaceCredential(entopts) {
+        const self = this;
+        return new RunWorkspaceCredentialEntity_1.RunWorkspaceCredentialEntity(self, entopts);
+    }
+    // Entity access: `client.RunnerLease().list()` / `client.RunnerLease().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RunnerLease(entopts) {
+        const self = this;
+        return new RunnerLeaseEntity_1.RunnerLeaseEntity(self, entopts);
+    }
+    // Entity access: `client.RunnerPoolNodeEnrollmentToken().list()` / `client.RunnerPoolNodeEnrollmentToken().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RunnerPoolNodeEnrollmentToken(entopts) {
+        const self = this;
+        return new RunnerPoolNodeEnrollmentTokenEntity_1.RunnerPoolNodeEnrollmentTokenEntity(self, entopts);
+    }
+    // Entity access: `client.RunnerPoolRunner().list()` / `client.RunnerPoolRunner().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RunnerPoolRunner(entopts) {
+        const self = this;
+        return new RunnerPoolRunnerEntity_1.RunnerPoolRunnerEntity(self, entopts);
+    }
+    // Entity access: `client.RuntimeInstanceHealthSnapshot().list()` / `client.RuntimeInstanceHealthSnapshot().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    RuntimeInstanceHealthSnapshot(entopts) {
+        const self = this;
+        return new RuntimeInstanceHealthSnapshotEntity_1.RuntimeInstanceHealthSnapshotEntity(self, entopts);
+    }
+    // Entity access: `client.SandboxIntegration().list()` / `client.SandboxIntegration().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SandboxIntegration(entopts) {
+        const self = this;
+        return new SandboxIntegrationEntity_1.SandboxIntegrationEntity(self, entopts);
+    }
     // Entity access: `client.ScenarioRevision().list()` / `client.ScenarioRevision().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -1871,12 +4075,96 @@ class ComposalSDK {
         const self = this;
         return new ScenarioRunScenarioEditEntity_1.ScenarioRunScenarioEditEntity(self, entopts);
     }
+    // Entity access: `client.SecretGrant().list()` / `client.SecretGrant().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SecretGrant(entopts) {
+        const self = this;
+        return new SecretGrantEntity_1.SecretGrantEntity(self, entopts);
+    }
+    // Entity access: `client.SecretVersion().list()` / `client.SecretVersion().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SecretVersion(entopts) {
+        const self = this;
+        return new SecretVersionEntity_1.SecretVersionEntity(self, entopts);
+    }
     // Entity access: `client.ServiceEndpoint().list()` / `client.ServiceEndpoint().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     ServiceEndpoint(entopts) {
         const self = this;
         return new ServiceEndpointEntity_1.ServiceEndpointEntity(self, entopts);
+    }
+    // Entity access: `client.Setting().list()` / `client.Setting().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Setting(entopts) {
+        const self = this;
+        return new SettingEntity_1.SettingEntity(self, entopts);
+    }
+    // Entity access: `client.SettingMutationLease().list()` / `client.SettingMutationLease().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SettingMutationLease(entopts) {
+        const self = this;
+        return new SettingMutationLeaseEntity_1.SettingMutationLeaseEntity(self, entopts);
+    }
+    // Entity access: `client.Signal().list()` / `client.Signal().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Signal(entopts) {
+        const self = this;
+        return new SignalEntity_1.SignalEntity(self, entopts);
+    }
+    // Entity access: `client.SignalInbound().list()` / `client.SignalInbound().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SignalInbound(entopts) {
+        const self = this;
+        return new SignalInboundEntity_1.SignalInboundEntity(self, entopts);
+    }
+    // Entity access: `client.SignalIntegration().list()` / `client.SignalIntegration().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SignalIntegration(entopts) {
+        const self = this;
+        return new SignalIntegrationEntity_1.SignalIntegrationEntity(self, entopts);
+    }
+    // Entity access: `client.SignalIntegrationDelivery().list()` / `client.SignalIntegrationDelivery().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SignalIntegrationDelivery(entopts) {
+        const self = this;
+        return new SignalIntegrationDeliveryEntity_1.SignalIntegrationDeliveryEntity(self, entopts);
+    }
+    // Entity access: `client.SignalIntegrationTarget().list()` / `client.SignalIntegrationTarget().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SignalIntegrationTarget(entopts) {
+        const self = this;
+        return new SignalIntegrationTargetEntity_1.SignalIntegrationTargetEntity(self, entopts);
+    }
+    // Entity access: `client.SignalSubscription().list()` / `client.SignalSubscription().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SignalSubscription(entopts) {
+        const self = this;
+        return new SignalSubscriptionEntity_1.SignalSubscriptionEntity(self, entopts);
+    }
+    // Entity access: `client.Site().list()` / `client.Site().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Site(entopts) {
+        const self = this;
+        return new SiteEntity_1.SiteEntity(self, entopts);
+    }
+    // Entity access: `client.SiteAccessKey().list()` / `client.SiteAccessKey().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SiteAccessKey(entopts) {
+        const self = this;
+        return new SiteAccessKeyEntity_1.SiteAccessKeyEntity(self, entopts);
     }
     // Entity access: `client.SitePreview().list()` / `client.SitePreview().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1885,6 +4173,13 @@ class ComposalSDK {
         const self = this;
         return new SitePreviewEntity_1.SitePreviewEntity(self, entopts);
     }
+    // Entity access: `client.SiteSecret().list()` / `client.SiteSecret().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SiteSecret(entopts) {
+        const self = this;
+        return new SiteSecretEntity_1.SiteSecretEntity(self, entopts);
+    }
     // Entity access: `client.SlackChannel().list()` / `client.SlackChannel().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -1892,12 +4187,180 @@ class ComposalSDK {
         const self = this;
         return new SlackChannelEntity_1.SlackChannelEntity(self, entopts);
     }
+    // Entity access: `client.SourceConnection().list()` / `client.SourceConnection().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SourceConnection(entopts) {
+        const self = this;
+        return new SourceConnectionEntity_1.SourceConnectionEntity(self, entopts);
+    }
+    // Entity access: `client.SpaceAlertRule().list()` / `client.SpaceAlertRule().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SpaceAlertRule(entopts) {
+        const self = this;
+        return new SpaceAlertRuleEntity_1.SpaceAlertRuleEntity(self, entopts);
+    }
+    // Entity access: `client.SpaceAuditEvent().list()` / `client.SpaceAuditEvent().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SpaceAuditEvent(entopts) {
+        const self = this;
+        return new SpaceAuditEventEntity_1.SpaceAuditEventEntity(self, entopts);
+    }
+    // Entity access: `client.SpaceDnsRecord().list()` / `client.SpaceDnsRecord().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SpaceDnsRecord(entopts) {
+        const self = this;
+        return new SpaceDnsRecordEntity_1.SpaceDnsRecordEntity(self, entopts);
+    }
+    // Entity access: `client.SpaceEnrollmentToken().list()` / `client.SpaceEnrollmentToken().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SpaceEnrollmentToken(entopts) {
+        const self = this;
+        return new SpaceEnrollmentTokenEntity_1.SpaceEnrollmentTokenEntity(self, entopts);
+    }
+    // Entity access: `client.SpaceGateway().list()` / `client.SpaceGateway().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SpaceGateway(entopts) {
+        const self = this;
+        return new SpaceGatewayEntity_1.SpaceGatewayEntity(self, entopts);
+    }
+    // Entity access: `client.SpaceGroup().list()` / `client.SpaceGroup().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SpaceGroup(entopts) {
+        const self = this;
+        return new SpaceGroupEntity_1.SpaceGroupEntity(self, entopts);
+    }
+    // Entity access: `client.SpaceGroupMembership().list()` / `client.SpaceGroupMembership().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SpaceGroupMembership(entopts) {
+        const self = this;
+        return new SpaceGroupMembershipEntity_1.SpaceGroupMembershipEntity(self, entopts);
+    }
+    // Entity access: `client.SpaceLogStream().list()` / `client.SpaceLogStream().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SpaceLogStream(entopts) {
+        const self = this;
+        return new SpaceLogStreamEntity_1.SpaceLogStreamEntity(self, entopts);
+    }
+    // Entity access: `client.SpaceMetricSery().list()` / `client.SpaceMetricSery().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SpaceMetricSery(entopts) {
+        const self = this;
+        return new SpaceMetricSeryEntity_1.SpaceMetricSeryEntity(self, entopts);
+    }
+    // Entity access: `client.SpaceOtelCollector().list()` / `client.SpaceOtelCollector().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SpaceOtelCollector(entopts) {
+        const self = this;
+        return new SpaceOtelCollectorEntity_1.SpaceOtelCollectorEntity(self, entopts);
+    }
+    // Entity access: `client.SpacePeer().list()` / `client.SpacePeer().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SpacePeer(entopts) {
+        const self = this;
+        return new SpacePeerEntity_1.SpacePeerEntity(self, entopts);
+    }
+    // Entity access: `client.SpacePeerAttachment().list()` / `client.SpacePeerAttachment().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SpacePeerAttachment(entopts) {
+        const self = this;
+        return new SpacePeerAttachmentEntity_1.SpacePeerAttachmentEntity(self, entopts);
+    }
+    // Entity access: `client.SpacePolicy().list()` / `client.SpacePolicy().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SpacePolicy(entopts) {
+        const self = this;
+        return new SpacePolicyEntity_1.SpacePolicyEntity(self, entopts);
+    }
+    // Entity access: `client.SpaceSegment().list()` / `client.SpaceSegment().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SpaceSegment(entopts) {
+        const self = this;
+        return new SpaceSegmentEntity_1.SpaceSegmentEntity(self, entopts);
+    }
+    // Entity access: `client.SpaceTraceSpan().list()` / `client.SpaceTraceSpan().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SpaceTraceSpan(entopts) {
+        const self = this;
+        return new SpaceTraceSpanEntity_1.SpaceTraceSpanEntity(self, entopts);
+    }
+    // Entity access: `client.Spark().list()` / `client.Spark().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Spark(entopts) {
+        const self = this;
+        return new SparkEntity_1.SparkEntity(self, entopts);
+    }
+    // Entity access: `client.SparkAgentIntegration().list()` / `client.SparkAgentIntegration().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SparkAgentIntegration(entopts) {
+        const self = this;
+        return new SparkAgentIntegrationEntity_1.SparkAgentIntegrationEntity(self, entopts);
+    }
     // Entity access: `client.SparkAgentLocalThread().list()` / `client.SparkAgentLocalThread().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     SparkAgentLocalThread(entopts) {
         const self = this;
         return new SparkAgentLocalThreadEntity_1.SparkAgentLocalThreadEntity(self, entopts);
+    }
+    // Entity access: `client.SparkAgentSite().list()` / `client.SparkAgentSite().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SparkAgentSite(entopts) {
+        const self = this;
+        return new SparkAgentSiteEntity_1.SparkAgentSiteEntity(self, entopts);
+    }
+    // Entity access: `client.SparkAgentSkill().list()` / `client.SparkAgentSkill().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SparkAgentSkill(entopts) {
+        const self = this;
+        return new SparkAgentSkillEntity_1.SparkAgentSkillEntity(self, entopts);
+    }
+    // Entity access: `client.SparkAgentThread().list()` / `client.SparkAgentThread().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SparkAgentThread(entopts) {
+        const self = this;
+        return new SparkAgentThreadEntity_1.SparkAgentThreadEntity(self, entopts);
+    }
+    // Entity access: `client.SparkCredit().list()` / `client.SparkCredit().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SparkCredit(entopts) {
+        const self = this;
+        return new SparkCreditEntity_1.SparkCreditEntity(self, entopts);
+    }
+    // Entity access: `client.SparkCreditAgentUsage().list()` / `client.SparkCreditAgentUsage().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SparkCreditAgentUsage(entopts) {
+        const self = this;
+        return new SparkCreditAgentUsageEntity_1.SparkCreditAgentUsageEntity(self, entopts);
+    }
+    // Entity access: `client.SparkCreditUsageTotal().list()` / `client.SparkCreditUsageTotal().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SparkCreditUsageTotal(entopts) {
+        const self = this;
+        return new SparkCreditUsageTotalEntity_1.SparkCreditUsageTotalEntity(self, entopts);
     }
     // Entity access: `client.StaticSite().list()` / `client.StaticSite().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1920,6 +4383,41 @@ class ComposalSDK {
         const self = this;
         return new StaticSiteDomainEntity_1.StaticSiteDomainEntity(self, entopts);
     }
+    // Entity access: `client.StatusChange().list()` / `client.StatusChange().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    StatusChange(entopts) {
+        const self = this;
+        return new StatusChangeEntity_1.StatusChangeEntity(self, entopts);
+    }
+    // Entity access: `client.StatusCommit().list()` / `client.StatusCommit().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    StatusCommit(entopts) {
+        const self = this;
+        return new StatusCommitEntity_1.StatusCommitEntity(self, entopts);
+    }
+    // Entity access: `client.StatusPatchset().list()` / `client.StatusPatchset().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    StatusPatchset(entopts) {
+        const self = this;
+        return new StatusPatchsetEntity_1.StatusPatchsetEntity(self, entopts);
+    }
+    // Entity access: `client.StripeWebhook().list()` / `client.StripeWebhook().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    StripeWebhook(entopts) {
+        const self = this;
+        return new StripeWebhookEntity_1.StripeWebhookEntity(self, entopts);
+    }
+    // Entity access: `client.SubmitTelemetry().list()` / `client.SubmitTelemetry().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SubmitTelemetry(entopts) {
+        const self = this;
+        return new SubmitTelemetryEntity_1.SubmitTelemetryEntity(self, entopts);
+    }
     // Entity access: `client.SubscriptionModel().list()` / `client.SubscriptionModel().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -1927,12 +4425,138 @@ class ComposalSDK {
         const self = this;
         return new SubscriptionModelEntity_1.SubscriptionModelEntity(self, entopts);
     }
+    // Entity access: `client.SwarmEvent().list()` / `client.SwarmEvent().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SwarmEvent(entopts) {
+        const self = this;
+        return new SwarmEventEntity_1.SwarmEventEntity(self, entopts);
+    }
+    // Entity access: `client.SwarmLive().list()` / `client.SwarmLive().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SwarmLive(entopts) {
+        const self = this;
+        return new SwarmLiveEntity_1.SwarmLiveEntity(self, entopts);
+    }
+    // Entity access: `client.SwarmNote().list()` / `client.SwarmNote().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SwarmNote(entopts) {
+        const self = this;
+        return new SwarmNoteEntity_1.SwarmNoteEntity(self, entopts);
+    }
+    // Entity access: `client.SwarmTask().list()` / `client.SwarmTask().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SwarmTask(entopts) {
+        const self = this;
+        return new SwarmTaskEntity_1.SwarmTaskEntity(self, entopts);
+    }
+    // Entity access: `client.TaskLease().list()` / `client.TaskLease().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    TaskLease(entopts) {
+        const self = this;
+        return new TaskLeaseEntity_1.TaskLeaseEntity(self, entopts);
+    }
     // Entity access: `client.ThreadPreview().list()` / `client.ThreadPreview().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     ThreadPreview(entopts) {
         const self = this;
         return new ThreadPreviewEntity_1.ThreadPreviewEntity(self, entopts);
+    }
+    // Entity access: `client.ThreadPreviewAccess().list()` / `client.ThreadPreviewAccess().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ThreadPreviewAccess(entopts) {
+        const self = this;
+        return new ThreadPreviewAccessEntity_1.ThreadPreviewAccessEntity(self, entopts);
+    }
+    // Entity access: `client.ToolFeedback().list()` / `client.ToolFeedback().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ToolFeedback(entopts) {
+        const self = this;
+        return new ToolFeedbackEntity_1.ToolFeedbackEntity(self, entopts);
+    }
+    // Entity access: `client.Transcript().list()` / `client.Transcript().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Transcript(entopts) {
+        const self = this;
+        return new TranscriptEntity_1.TranscriptEntity(self, entopts);
+    }
+    // Entity access: `client.V1Message().list()` / `client.V1Message().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    V1Message(entopts) {
+        const self = this;
+        return new V1MessageEntity_1.V1MessageEntity(self, entopts);
+    }
+    // Entity access: `client.VcBranch().list()` / `client.VcBranch().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    VcBranch(entopts) {
+        const self = this;
+        return new VcBranchEntity_1.VcBranchEntity(self, entopts);
+    }
+    // Entity access: `client.VcBrowser().list()` / `client.VcBrowser().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    VcBrowser(entopts) {
+        const self = this;
+        return new VcBrowserEntity_1.VcBrowserEntity(self, entopts);
+    }
+    // Entity access: `client.VcChange().list()` / `client.VcChange().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    VcChange(entopts) {
+        const self = this;
+        return new VcChangeEntity_1.VcChangeEntity(self, entopts);
+    }
+    // Entity access: `client.VcChangeGroup().list()` / `client.VcChangeGroup().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    VcChangeGroup(entopts) {
+        const self = this;
+        return new VcChangeGroupEntity_1.VcChangeGroupEntity(self, entopts);
+    }
+    // Entity access: `client.VcFile().list()` / `client.VcFile().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    VcFile(entopts) {
+        const self = this;
+        return new VcFileEntity_1.VcFileEntity(self, entopts);
+    }
+    // Entity access: `client.VcMergeQueue().list()` / `client.VcMergeQueue().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    VcMergeQueue(entopts) {
+        const self = this;
+        return new VcMergeQueueEntity_1.VcMergeQueueEntity(self, entopts);
+    }
+    // Entity access: `client.VcStack().list()` / `client.VcStack().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    VcStack(entopts) {
+        const self = this;
+        return new VcStackEntity_1.VcStackEntity(self, entopts);
+    }
+    // Entity access: `client.VcsNode().list()` / `client.VcsNode().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    VcsNode(entopts) {
+        const self = this;
+        return new VcsNodeEntity_1.VcsNodeEntity(self, entopts);
+    }
+    // Entity access: `client.VcsSetting().list()` / `client.VcsSetting().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    VcsSetting(entopts) {
+        const self = this;
+        return new VcsSettingEntity_1.VcsSettingEntity(self, entopts);
     }
     // Entity access: `client.VerificationProjectCredential().list()` / `client.VerificationProjectCredential().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1976,6 +4600,20 @@ class ComposalSDK {
         const self = this;
         return new VerifyBrowserSessionEntity_1.VerifyBrowserSessionEntity(self, entopts);
     }
+    // Entity access: `client.VerifyEmailVerification().list()` / `client.VerifyEmailVerification().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    VerifyEmailVerification(entopts) {
+        const self = this;
+        return new VerifyEmailVerificationEntity_1.VerifyEmailVerificationEntity(self, entopts);
+    }
+    // Entity access: `client.VerifySignalIntegration().list()` / `client.VerifySignalIntegration().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    VerifySignalIntegration(entopts) {
+        const self = this;
+        return new VerifySignalIntegrationEntity_1.VerifySignalIntegrationEntity(self, entopts);
+    }
     // Entity access: `client.VerifyStaticSiteDomain().list()` / `client.VerifyStaticSiteDomain().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -1990,12 +4628,26 @@ class ComposalSDK {
         const self = this;
         return new VersionLogEntity_1.VersionLogEntity(self, entopts);
     }
+    // Entity access: `client.WaitlistApplication().list()` / `client.WaitlistApplication().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    WaitlistApplication(entopts) {
+        const self = this;
+        return new WaitlistApplicationEntity_1.WaitlistApplicationEntity(self, entopts);
+    }
     // Entity access: `client.WebBotAuth().list()` / `client.WebBotAuth().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     WebBotAuth(entopts) {
         const self = this;
         return new WebBotAuthEntity_1.WebBotAuthEntity(self, entopts);
+    }
+    // Entity access: `client.WebhookGitlab().list()` / `client.WebhookGitlab().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    WebhookGitlab(entopts) {
+        const self = this;
+        return new WebhookGitlabEntity_1.WebhookGitlabEntity(self, entopts);
     }
     // Entity access: `client.WorkflowRunStep().list()` / `client.WorkflowRunStep().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -2017,6 +4669,34 @@ class ComposalSDK {
     WorkflowTriggerSkipped(entopts) {
         const self = this;
         return new WorkflowTriggerSkippedEntity_1.WorkflowTriggerSkippedEntity(self, entopts);
+    }
+    // Entity access: `client.WorkspaceActivity().list()` / `client.WorkspaceActivity().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    WorkspaceActivity(entopts) {
+        const self = this;
+        return new WorkspaceActivityEntity_1.WorkspaceActivityEntity(self, entopts);
+    }
+    // Entity access: `client.WorkspaceActivityNotification().list()` / `client.WorkspaceActivityNotification().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    WorkspaceActivityNotification(entopts) {
+        const self = this;
+        return new WorkspaceActivityNotificationEntity_1.WorkspaceActivityNotificationEntity(self, entopts);
+    }
+    // Entity access: `client.WorkspaceSpace().list()` / `client.WorkspaceSpace().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    WorkspaceSpace(entopts) {
+        const self = this;
+        return new WorkspaceSpaceEntity_1.WorkspaceSpaceEntity(self, entopts);
+    }
+    // Entity access: `client.WorkspaceSpacePreference().list()` / `client.WorkspaceSpacePreference().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    WorkspaceSpacePreference(entopts) {
+        const self = this;
+        return new WorkspaceSpacePreferenceEntity_1.WorkspaceSpacePreferenceEntity(self, entopts);
     }
     static test(testoptsarg, sdkoptsarg) {
         const struct = stdutil.struct;

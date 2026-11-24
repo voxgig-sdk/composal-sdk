@@ -1,0 +1,8 @@
+$kind: collection
+id: "9367ec66-e2e8-57a3-9e0c-792117372af1"
+description: |-
+  The **parallel_v1** entity, which belongs to a organization. Its requests address one record by `{{parallel_v1_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 377000

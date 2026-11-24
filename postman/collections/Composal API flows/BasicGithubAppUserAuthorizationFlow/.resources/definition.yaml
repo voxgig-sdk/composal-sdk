@@ -1,0 +1,4 @@
+$kind: collection
+id: "0d850ea2-511c-5b14-a13c-20e4375b3916"
+description: "The `BasicGithubAppUserAuthorizationFlow` flow of **github_app_user_authorization**."
+order: 210000

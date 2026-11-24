@@ -1,0 +1,77 @@
+{
+  "existing": {
+    "github_runner_setup": {
+      "GITHUB_RUNNER_SETUP00": {
+        "error": "s64",
+        "github_repository_connection_id": "GITHUB_REPOSITORY_CONNECTION01",
+        "id": "GITHUB_RUNNER_SETUP00",
+        "pull_request_url": "s67",
+        "repository_full_name": "s68",
+        "roder_thread_id": "RODER_THREAD01",
+        "runner_labels": [],
+        "status": "s6b",
+        "status_label": "s6c",
+        "summary": "s6d",
+        "organization_id": "ORGANIZATION01"
+      },
+      "GITHUB_RUNNER_SETUP01": {
+        "error": "sc8",
+        "github_repository_connection_id": "GITHUB_REPOSITORY_CONNECTION01",
+        "id": "GITHUB_RUNNER_SETUP01",
+        "pull_request_url": "scb",
+        "repository_full_name": "scc",
+        "roder_thread_id": "RODER_THREAD01",
+        "runner_labels": [],
+        "status": "scf",
+        "status_label": "sd0",
+        "summary": "sd1",
+        "organization_id": "ORGANIZATION01"
+      },
+      "GITHUB_RUNNER_SETUP02": {
+        "error": "s12c",
+        "github_repository_connection_id": "GITHUB_REPOSITORY_CONNECTION01",
+        "id": "GITHUB_RUNNER_SETUP02",
+        "pull_request_url": "s12f",
+        "repository_full_name": "s130",
+        "roder_thread_id": "RODER_THREAD01",
+        "runner_labels": [],
+        "status": "s133",
+        "status_label": "s134",
+        "summary": "s135",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "github_runner_setup": {
+      "github_runner_setup_ref01": {
+        "error": "s190",
+        "github_repository_connection_id": "GITHUB_REPOSITORY_CONNECTION01",
+        "pull_request_url": "s193",
+        "repository_full_name": "s194",
+        "roder_thread_id": "RODER_THREAD01",
+        "runner_labels": [],
+        "status": "s197",
+        "status_label": "s198",
+        "summary": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/github_runner_setup": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/github_runner_setup/agent_session": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/github_runner_setup": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

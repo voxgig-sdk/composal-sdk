@@ -1,0 +1,8 @@
+$kind: collection
+id: b3f86910-89b7-5e18-b2a6-27455305ec6b
+description: |-
+  The **node_certificate** entity, which belongs to a node. Its requests address one record by `{{node_certificate_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 330000

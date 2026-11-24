@@ -1,0 +1,34 @@
+$kind: collection
+id: ce22f0ac-4cc4-5acb-8797-e29c6d25ad6e
+description: |-
+  The **site** entity, which belongs to a organization. Its requests address one record by `{{site_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `activated_at` | string | yes |  |
+  | `activated_at_label` | string | yes |  |
+  | `commit_sha` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `created_at_label` | string | yes |  |
+  | `creator_user_id` | string | yes |  |
+  | `deploy_slug` | string | yes |  |
+  | `failure_message` | string | yes |  |
+  | `file_count` | integer | yes |  |
+  | `file_count_label` | string | yes |  |
+  | `finished_at` | string | yes |  |
+  | `finished_at_label` | string | yes |  |
+  | `id` | string | yes |  |
+  | `is_active` | boolean | yes |  |
+  | `source_ref` | string | yes |  |
+  | `started_at` | string | yes |  |
+  | `started_at_label` | string | yes |  |
+  | `static_site_id` | string | yes |  |
+  | `status` | string | yes |  |
+  | `total_bytes` | integer | yes |  |
+  | `total_bytes_label` | string | yes |  |
+  | `trigger_kind` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `updated_at_label` | string | yes |  |
+  | `uploaded_at` | string | yes |  |
+  | `uploaded_at_label` | string | yes |  |
+order: 475000

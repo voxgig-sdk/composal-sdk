@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "repository_sandbox_environment": {
+      "REPOSITORY_SANDBOX_ENVIRONMENT00": {
+        "id": "REPOSITORY_SANDBOX_ENVIRONMENT00",
+        "repository_id": "REPOSITORY01"
+      },
+      "REPOSITORY_SANDBOX_ENVIRONMENT01": {
+        "id": "REPOSITORY_SANDBOX_ENVIRONMENT01",
+        "repository_id": "REPOSITORY01"
+      },
+      "REPOSITORY_SANDBOX_ENVIRONMENT02": {
+        "id": "REPOSITORY_SANDBOX_ENVIRONMENT02",
+        "repository_id": "REPOSITORY01"
+      }
+    }
+  },
+  "new": {
+    "repository_sandbox_environment": {
+      "repository_sandbox_environment_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/repositories/{repository}/sandbox_environments/validate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/repositories/{repository}/sandbox_environments/{profile}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

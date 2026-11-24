@@ -1,0 +1,32 @@
+$kind: http-request
+id: "618ae2c0-6edb-584d-b450-397706b2187b"
+description: |-
+  The `create` operation of **lease_artifact**.
+
+  SDK: `client.LeaseArtifact().create({ lease_id: "example", node_id: "example" })`
+url: "{{base}}/api/v1/ci/nodes/:id/leases/:lease_id/artifacts"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{node_id}}"
+    description: The node this lease_artifact belongs to.
+  - key: lease_id
+    value: "{{lease_id}}"
+    description: "Input: lease_id."
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("lease_artifact_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

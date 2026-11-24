@@ -1,0 +1,8 @@
+$kind: collection
+id: e99689cf-4b51-5ca0-84ea-679efe54aba7
+description: |-
+  The **billing_usage** entity, which belongs to a organization. Its requests address one record by `{{billing_usage_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 137000

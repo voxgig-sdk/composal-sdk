@@ -1,0 +1,23 @@
+$kind: collection
+id: "4f066fd9-6f7d-521d-b26b-917ae2b671ba"
+description: |-
+  The **repo_bookmark_protection** entity, which belongs to a organization and a repo. Its requests address one record by `{{repo_bookmark_protection_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `actor_policy` | object | yes |  |
+  | `bypass_mode` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `created_by_user_id` | string | yes |  |
+  | `enabled` | boolean | yes |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `priority` | integer | yes |  |
+  | `repository_id` | string | yes |  |
+  | `requirements` | object | yes |  |
+  | `target_kind` | string | yes |  |
+  | `target_pattern` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `updated_by_user_id` | string | yes |  |
+order: 426000

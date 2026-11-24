@@ -1,0 +1,26 @@
+# BasicSiteFlow
+
+main: kit: flow: BasicSiteFlow:
+{
+  entity: "site",
+  kind: "basic",
+  name: "BasicSiteFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "site_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSiteFlow"
+}

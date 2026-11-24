@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "roder_code_repair_setting": {
+      "RODER_CODE_REPAIR_SETTING00": {
+        "available": true,
+        "daily_limit": 71,
+        "enabled": true,
+        "enabled_at": "s49",
+        "operator_user_id": "OPERATOR_USER01",
+        "organization_id": "ORGANIZATION01",
+        "repository_slug": "s4c",
+        "id": "RODER_CODE_REPAIR_SETTING00"
+      },
+      "RODER_CODE_REPAIR_SETTING01": {
+        "available": true,
+        "daily_limit": 141,
+        "enabled": true,
+        "enabled_at": "s8f",
+        "operator_user_id": "OPERATOR_USER01",
+        "organization_id": "ORGANIZATION01",
+        "repository_slug": "s92",
+        "id": "RODER_CODE_REPAIR_SETTING01"
+      },
+      "RODER_CODE_REPAIR_SETTING02": {
+        "available": true,
+        "daily_limit": 211,
+        "enabled": true,
+        "enabled_at": "sd5",
+        "operator_user_id": "OPERATOR_USER01",
+        "organization_id": "ORGANIZATION01",
+        "repository_slug": "sd8",
+        "id": "RODER_CODE_REPAIR_SETTING02"
+      }
+    }
+  },
+  "new": {
+    "roder_code_repair_setting": {
+      "roder_code_repair_setting_ref01": {
+        "available": true,
+        "daily_limit": 281,
+        "enabled": true,
+        "enabled_at": "s11b",
+        "operator_user_id": "OPERATOR_USER01",
+        "organization_id": "ORGANIZATION01",
+        "repository_slug": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/agent/roder/code_repair_settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/agent/roder/code_repair_settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

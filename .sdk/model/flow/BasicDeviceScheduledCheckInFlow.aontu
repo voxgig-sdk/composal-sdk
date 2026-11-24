@@ -1,0 +1,23 @@
+# BasicDeviceScheduledCheckInFlow
+
+main: kit: flow: BasicDeviceScheduledCheckInFlow:
+{
+  entity: "device_scheduled_check_in",
+  kind: "basic",
+  name: "BasicDeviceScheduledCheckInFlow",
+  step: [
+    {
+      i: {
+        ref: "device_scheduled_check_in_ref01"
+      }
+
+      m: {
+        device_id: "device01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicDeviceScheduledCheckInFlow"
+}

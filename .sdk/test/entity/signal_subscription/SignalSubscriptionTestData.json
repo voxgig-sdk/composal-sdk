@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "signal_subscription": {
+      "SIGNAL_SUBSCRIPTION00": {
+        "id": "SIGNAL_SUBSCRIPTION00",
+        "organization_id": "ORGANIZATION01"
+      },
+      "SIGNAL_SUBSCRIPTION01": {
+        "id": "SIGNAL_SUBSCRIPTION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "SIGNAL_SUBSCRIPTION02": {
+        "id": "SIGNAL_SUBSCRIPTION02",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "signal_subscription": {
+      "signal_subscription_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/signal_subscriptions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/signal_subscriptions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/signal_subscriptions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/signal_subscriptions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/signal_subscriptions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/signal_subscriptions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

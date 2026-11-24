@@ -1,0 +1,37 @@
+$kind: http-request
+id: "4bf025f9-b544-56fc-a955-b393fb735dcb"
+description: |-
+  The `list` operation of **execution_runtime_instance**.
+
+  SDK: `client.ExecutionRuntimeInstance().list()`
+url: "{{base}}/api/v1/execution/runtime_instances"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: app_environment_id
+    value: ""
+    disabled: true
+  - key: app_service_id
+    value: ""
+    disabled: true
+  - key: hosted_app_id
+    value: ""
+    disabled: true
+  - key: limit
+    value: ""
+    disabled: true
+  - key: page
+    value: ""
+    disabled: true
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["runtime_instances"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("execution_runtime_instance_id")) pm.collectionVariables.set("execution_runtime_instance_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

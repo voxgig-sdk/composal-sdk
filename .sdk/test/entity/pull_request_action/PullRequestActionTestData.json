@@ -1,0 +1,101 @@
+{
+  "existing": {
+    "pull_request_action": {
+      "PULL_REQUEST_ACTION00": {
+        "action_name": "saa",
+        "body": "sab",
+        "comment_id": "COMMENT01",
+        "comments": [],
+        "event": "sae",
+        "expected_head_sha": "saf",
+        "id": "PULL_REQUEST_ACTION00",
+        "label": "sb1",
+        "line": 178,
+        "node_id": "NODE01",
+        "operation_key": "sb4",
+        "path": "sb5",
+        "run_id": "RUN01",
+        "side": "sb7",
+        "start_line": 184,
+        "start_side": "sb9",
+        "thread_id": "THREAD01",
+        "number": "NUMBER01",
+        "organization_id": "ORGANIZATION01",
+        "pull_request_id": "PULL_REQUEST01"
+      },
+      "PULL_REQUEST_ACTION01": {
+        "action_name": "s154",
+        "body": "s155",
+        "comment_id": "COMMENT01",
+        "comments": [],
+        "event": "s158",
+        "expected_head_sha": "s159",
+        "id": "PULL_REQUEST_ACTION01",
+        "label": "s15b",
+        "line": 348,
+        "node_id": "NODE01",
+        "operation_key": "s15e",
+        "path": "s15f",
+        "run_id": "RUN01",
+        "side": "s161",
+        "start_line": 354,
+        "start_side": "s163",
+        "thread_id": "THREAD01",
+        "number": "NUMBER01",
+        "organization_id": "ORGANIZATION01",
+        "pull_request_id": "PULL_REQUEST01"
+      },
+      "PULL_REQUEST_ACTION02": {
+        "action_name": "s1fe",
+        "body": "s1ff",
+        "comment_id": "COMMENT01",
+        "comments": [],
+        "event": "s202",
+        "expected_head_sha": "s203",
+        "id": "PULL_REQUEST_ACTION02",
+        "label": "s205",
+        "line": 518,
+        "node_id": "NODE01",
+        "operation_key": "s208",
+        "path": "s209",
+        "run_id": "RUN01",
+        "side": "s20b",
+        "start_line": 524,
+        "start_side": "s20d",
+        "thread_id": "THREAD01",
+        "number": "NUMBER01",
+        "organization_id": "ORGANIZATION01",
+        "pull_request_id": "PULL_REQUEST01"
+      }
+    }
+  },
+  "new": {
+    "pull_request_action": {
+      "pull_request_action_ref01": {
+        "action_name": "s2a8",
+        "body": "s2a9",
+        "comment_id": "COMMENT01",
+        "comments": [],
+        "event": "s2ac",
+        "expected_head_sha": "s2ad",
+        "label": "s2af",
+        "line": 688,
+        "node_id": "NODE01",
+        "operation_key": "s2b2",
+        "path": "s2b3",
+        "run_id": "RUN01",
+        "side": "s2b5",
+        "start_line": 694,
+        "start_side": "s2b7",
+        "thread_id": "THREAD01"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/actions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

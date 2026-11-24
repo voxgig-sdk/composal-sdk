@@ -1,0 +1,26 @@
+# BasicAgentConnectionSafetyControlFlow
+
+main: kit: flow: BasicAgentConnectionSafetyControlFlow:
+{
+  entity: "agent_connection_safety_control",
+  kind: "basic",
+  name: "BasicAgentConnectionSafetyControlFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_connection_safety_control_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentConnectionSafetyControlFlow"
+}

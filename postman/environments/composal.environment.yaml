@@ -6,6 +6,9 @@ values:
   - key: apikey
     value: ""
     enabled: true
+  - key: a2a_id
+    value: ""
+    enabled: true
   - key: idempotency_key
     value: ""
     enabled: true
@@ -27,16 +30,31 @@ values:
   - key: uri
     value: ""
     enabled: true
-  - key: x_composal_relay_scope
+  - key: expected_commit_id
     value: ""
     enabled: true
-  - key: x_composal_requester_id
+  - key: connection_id
     value: ""
     enabled: true
-  - key: change
+  - key: state
     value: ""
     enabled: true
-  - key: expected_generation
+  - key: source_operation_id
+    value: ""
+    enabled: true
+  - key: source
+    value: ""
+    enabled: true
+  - key: org
+    value: ""
+    enabled: true
+  - key: token
+    value: ""
+    enabled: true
+  - key: space_id
+    value: ""
+    enabled: true
+  - key: alert_rule_id
     value: ""
     enabled: true
   - key: allocation_id
@@ -48,7 +66,43 @@ values:
   - key: automation_id
     value: ""
     enabled: true
+  - key: backend_id
+    value: ""
+    enabled: true
+  - key: cache_namespace_id
+    value: ""
+    enabled: true
   - key: cdn_id
+    value: ""
+    enabled: true
+  - key: change_group_id
+    value: ""
+    enabled: true
+  - key: ids
+    value: ""
+    enabled: true
+  - key: pipeline_id
+    value: ""
+    enabled: true
+  - key: cloud_workspace_backup_id
+    value: ""
+    enabled: true
+  - key: comment_thread_id
+    value: ""
+    enabled: true
+  - key: commit_id
+    value: ""
+    enabled: true
+  - key: x_composal_relay_scope
+    value: ""
+    enabled: true
+  - key: x_composal_requester_id
+    value: ""
+    enabled: true
+  - key: persistent_agent_id
+    value: ""
+    enabled: true
+  - key: request_key
     value: ""
     enabled: true
   - key: coordination_id
@@ -66,28 +120,70 @@ values:
   - key: data_resource_id
     value: ""
     enabled: true
-  - key: deployment_id
-    value: ""
-    enabled: true
   - key: domain_id
     value: ""
     enabled: true
   - key: scenario_run_id
     value: ""
     enabled: true
+  - key: name
+    value: ""
+    enabled: true
+  - key: owner
+    value: ""
+    enabled: true
+  - key: number
+    value: ""
+    enabled: true
+  - key: source_repository
+    value: ""
+    enabled: true
   - key: interaction_id
+    value: ""
+    enabled: true
+  - key: run_id
+    value: ""
+    enabled: true
+  - key: job_id
     value: ""
     enabled: true
   - key: journey_variant_id
     value: ""
     enabled: true
+  - key: lease_id
+    value: ""
+    enabled: true
+  - key: swarm_id
+    value: ""
+    enabled: true
+  - key: task_id
+    value: ""
+    enabled: true
+  - key: x_vex_lease_token
+    value: ""
+    enabled: true
   - key: local_thread_id
+    value: ""
+    enabled: true
+  - key: log_stream_id
     value: ""
     enabled: true
   - key: media_id
     value: ""
     enabled: true
+  - key: merge_queue_id
+    value: ""
+    enabled: true
   - key: messaging_conversation_id
+    value: ""
+    enabled: true
+  - key: native_agent_id
+    value: ""
+    enabled: true
+  - key: x_vex_organization
+    value: ""
+    enabled: true
+  - key: patchset_id
     value: ""
     enabled: true
   - key: preview_id
@@ -99,22 +195,37 @@ values:
   - key: compare_revision_id
     value: ""
     enabled: true
-  - key: source
-    value: ""
-    enabled: true
   - key: target
     value: ""
     enabled: true
-  - key: name
+  - key: change
     value: ""
     enabled: true
-  - key: number
+  - key: expected_generation
     value: ""
     enabled: true
-  - key: source_repository
+  - key: release_id
     value: ""
     enabled: true
-  - key: run_id
+  - key: path
+    value: ""
+    enabled: true
+  - key: ref
+    value: ""
+    enabled: true
+  - key: repository_id
+    value: ""
+    enabled: true
+  - key: runner_pool_id
+    value: ""
+    enabled: true
+  - key: runner_id
+    value: ""
+    enabled: true
+  - key: runtime_instance_id
+    value: ""
+    enabled: true
+  - key: secret_id
     value: ""
     enabled: true
   - key: service_id
@@ -124,6 +235,12 @@ values:
     value: ""
     enabled: true
   - key: thread_id
+    value: ""
+    enabled: true
+  - key: repo
+    value: ""
+    enabled: true
+  - key: head
     value: ""
     enabled: true
   - key: version_id

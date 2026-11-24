@@ -1,0 +1,8 @@
+$kind: collection
+id: "027d0f45-fbe8-5074-afce-0ae647671b8d"
+description: |-
+  The **submit_telemetry** entity. Its requests address one record by `{{submit_telemetry_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 511000

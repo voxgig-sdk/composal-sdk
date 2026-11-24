@@ -1,0 +1,30 @@
+$kind: http-request
+id: c0fbd992-a52e-5749-b53f-7995945e6f11
+description: |-
+  The `update` operation of **github_ci_repository**.
+
+  SDK: `client.GithubCiRepository().update({ id: "example", organization_id: "example", adoption_mode: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/github_ci_repositories/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this github_ci_repository belongs to.
+  - key: id
+    value: "{{github_ci_repository_id}}"
+    description: The github_ci_repository this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "ci_runner_pool_id": "{{ci_runner_pool_id}}",
+      "default_branch": "example",
+      "status": "active",
+      "adoption_mode": "shadow",
+      "check_name_prefix": "example",
+      "permission_status": "unchecked"
+    }
+order: 4000

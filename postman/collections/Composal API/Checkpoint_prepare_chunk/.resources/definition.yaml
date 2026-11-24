@@ -1,0 +1,8 @@
+$kind: collection
+id: e41eec9a-f13e-554c-905e-265b61b4bf9e
+description: |-
+  The **checkpoint_prepare_chunk** entity, which belongs to a organization and a repo and a agent_session. Its requests address one record by `{{checkpoint_prepare_chunk_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 170000

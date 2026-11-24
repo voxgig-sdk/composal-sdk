@@ -1,0 +1,58 @@
+{
+  "existing": {
+    "status_change": {
+      "STATUS_CHANGE00": {
+        "change_id": "CHANGE01",
+        "id": "STATUS_CHANGE00",
+        "patchsets": [],
+        "status": "s49",
+        "status_label": "s4a",
+        "status_state": "s4b",
+        "status_tone": "s4c",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "STATUS_CHANGE01": {
+        "change_id": "CHANGE01",
+        "id": "STATUS_CHANGE01",
+        "patchsets": [],
+        "status": "s8f",
+        "status_label": "s90",
+        "status_state": "s91",
+        "status_tone": "s92",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "STATUS_CHANGE02": {
+        "change_id": "CHANGE01",
+        "id": "STATUS_CHANGE02",
+        "patchsets": [],
+        "status": "sd5",
+        "status_label": "sd6",
+        "status_state": "sd7",
+        "status_tone": "sd8",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "status_change": {
+      "status_change_ref01": {
+        "change_id": "CHANGE01",
+        "patchsets": [],
+        "status": "s11b",
+        "status_label": "s11c",
+        "status_state": "s11d",
+        "status_tone": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/changes/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

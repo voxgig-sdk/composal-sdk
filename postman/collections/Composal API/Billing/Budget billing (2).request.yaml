@@ -1,0 +1,22 @@
+$kind: http-request
+id: "081581a9-3b31-51dd-a190-c64e11745bfd"
+description: |-
+  The `budget` action of **billing**, a route of its `update` operation.
+
+  SDK: `client.Billing().update({ "organization_id": "organization_id", $action: "budget" })`
+url: "{{base}}/api/v1/organizations/:organization_id/billing/budget"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this billing belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "monthly_cap_cents": 1
+    }
+order: 3000

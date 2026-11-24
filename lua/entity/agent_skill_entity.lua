@@ -308,6 +308,33 @@ end
 
 
 
+---@param reqmatch AgentSkillLoadMatch
+---@param ctrl? table
+---@return AgentSkillEntity
+---@return string? err
+function AgentSkillEntity:load(reqmatch, ctrl)
+  local utility = self._utility
+  local ctx = utility.make_context({
+    opname = "load",
+    ctrl = ctrl,
+    match = self._match,
+    data = self._data,
+    reqmatch = reqmatch,
+  }, self._entctx)
+
+  return self:_run_op(ctx, function()
+    if ctx.result ~= nil then
+      if ctx.result.resmatch ~= nil then
+        self._match = ctx.result.resmatch
+      end
+      if ctx.result.resdata ~= nil then
+        self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
+      end
+    end
+  end)
+end
+
+
 
 
 ---@param reqmatch AgentSkillListMatch
@@ -362,8 +389,62 @@ end
 
 
 
+---@param reqdata AgentSkillUpdateData
+---@param ctrl? table
+---@return AgentSkillEntity
+---@return string? err
+function AgentSkillEntity:update(reqdata, ctrl)
+  local utility = self._utility
+  local ctx = utility.make_context({
+    opname = "update",
+    ctrl = ctrl,
+    match = self._match,
+    data = self._data,
+    reqdata = reqdata,
+  }, self._entctx)
+
+  return self:_run_op(ctx, function()
+    if ctx.result ~= nil then
+      if ctx.result.resmatch ~= nil then
+        self._match = ctx.result.resmatch
+      end
+      if ctx.result.resdata ~= nil then
+        self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
+      end
+    end
+  end)
+end
 
 
+
+
+
+
+---@param reqmatch AgentSkillRemoveMatch
+---@param ctrl? table
+---@return AgentSkillEntity
+---@return string? err
+function AgentSkillEntity:remove(reqmatch, ctrl)
+  local utility = self._utility
+  local ctx = utility.make_context({
+    opname = "remove",
+    ctrl = ctrl,
+    match = self._match,
+    data = self._data,
+    reqmatch = reqmatch,
+  }, self._entctx)
+
+  return self:_run_op(ctx, function()
+    if ctx.result ~= nil then
+      if ctx.result.resmatch ~= nil then
+        self._match = ctx.result.resmatch
+      end
+      if ctx.result.resdata ~= nil then
+        self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
+      end
+    end
+  end)
+end
 
 
 

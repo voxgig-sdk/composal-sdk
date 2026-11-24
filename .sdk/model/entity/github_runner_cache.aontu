@@ -1,0 +1,117 @@
+# Entity: github_runner_cache
+
+main: kit: entity: github_runner_cache: {
+
+  alias: field: {}
+
+  fields: {
+    entry_id: {
+      h: "Entry Id"
+      n: "entry_id"
+      r: false
+      t: "`$STRING`"
+    }
+    key: {
+      h: "Key"
+      n: "key"
+      r: false
+      t: "`$STRING`"
+    }
+    matched_key: {
+      h: "Matched Key"
+      n: "matched_key"
+      r: false
+      t: "`$STRING`"
+    }
+    ok: {
+      h: "Ok"
+      n: "ok"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    operation: {
+      h: "Operation"
+      n: "operation"
+      r: true
+      t: "`$STRING`"
+    }
+    restore_keys: {
+      h: "Restore Keys"
+      n: "restore_keys"
+      r: false
+      t: "`$ARRAY`"
+    }
+    signed_download_url: {
+      h: "Signed Download Url"
+      n: "signed_download_url"
+      r: false
+      t: "`$STRING`"
+    }
+    size_bytes: {
+      h: "Size Bytes"
+      n: "size_bytes"
+      r: false
+      t: "`$STRING`"
+    }
+    upload_path: {
+      h: "Upload Path"
+      n: "upload_path"
+      r: false
+      t: "`$STRING`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "github_runner_cache"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "entry_id"
+            "key"
+            "operation"
+            "restore_keys"
+            "size_bytes"
+            "version"
+          ]
+          co: {
+            id: "POST /api/v1/github_runner_cache"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/github_runner_cache"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "github_runner_cache"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

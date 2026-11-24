@@ -1,0 +1,126 @@
+# Entity: lease_reconciliation
+
+main: kit: entity: lease_reconciliation: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "lease_reconciliation"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/ci/nodes/{id}/leases/{lease_id}/reconciliations/{reconciliation_id}/output"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "reconciliation_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "lease_id"
+                or: "lease_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "node_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/ci/nodes/{id}/leases/{lease_id}/reconciliations/{reconciliation_id}/output"
+          q: {
+            "$action": "output"
+            exist: [
+              "id"
+              "lease_id"
+              "node_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "node_id"
+              lease_id: "lease_id"
+              reconciliation_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "nodes"
+            }
+            {
+              var: "node_id"
+            }
+            {
+              lit: "leases"
+            }
+            {
+              var: "lease_id"
+            }
+            {
+              lit: "reconciliations"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "output"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.node")]
+  ]
+
+}

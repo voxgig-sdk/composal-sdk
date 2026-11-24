@@ -1,0 +1,18 @@
+$kind: http-request
+id: "1514af65-b4e8-579b-810c-6c8659c7b36c"
+description: |-
+  The `blob` action of **repo_vc**, a route of its `load` operation.
+
+  SDK: `client.RepoVc().load({ "organization_id": "organization_id", "repo_id": "repo_id", $action: "blob" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/blob"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_vc belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_vc belongs to.
+order: 3000

@@ -1,0 +1,25 @@
+$kind: http-request
+id: "8bb3f0f6-f886-5542-a241-2a664acdc4bb"
+description: |-
+  The `remove` operation of **agent_relay_file_grant**.
+
+  SDK: `client.AgentRelayFileGrant().remove({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_relay_file_grants/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_relay_file_grant belongs to.
+  - key: id
+    value: "{{agent_relay_file_grant_id}}"
+    description: The agent_relay_file_grant this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("agent_relay_file_grant_id")
+      }
+    language: text/javascript
+order: 4000

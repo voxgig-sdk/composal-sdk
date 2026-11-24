@@ -34,27 +34,14 @@ class TestAgentThreadDirect:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
         if setup["live"]:
-            for _live_key in ["agent01", "organization01"]:
-                if setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live test blocked: needs {_live_key} via COMPOSAL_TEST_AGENT_THREAD_ENTID")
-
-        if setup["live"]:
             runner.live_pace()
         client = setup["client"]
 
         params = {}
         query = {}
-        if setup["live"]:
-            params["agent_id"] = setup["idmap"].get("agent01")
-        else:
-            params["agent_id"] = "direct01"
-        if setup["live"]:
-            params["organization_id"] = setup["idmap"].get("organization01")
-        else:
-            params["organization_id"] = "direct02"
 
         result = client.direct({
-            "path": "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/threads",
+            "path": "api/v1/agent/threads",
             "method": "GET",
             "params": params,
             "query": query,
@@ -69,6 +56,59 @@ class TestAgentThreadDirect:
             assert helpers.to_int(result["status"]) == 200
             assert isinstance(result["data"], list)
             assert len(result["data"]) == 2
+            assert len(setup["calls"]) == 1
+
+    def test_should_direct_load_agent_thread(self):
+        setup = _agent_thread_direct_setup({"id": "direct01"})
+        _skip, _reason = runner.is_control_skipped("direct", "direct-load-agent_thread", "live" if setup["live"] else "unit")
+        if _skip:
+            pytest.skip(_reason or "skipped via sdk-test-control.json")
+            return
+        if setup["live"]:
+            runner.live_pace()
+        client = setup["client"]
+
+        params = {}
+        query = {}
+        if setup["live"]:
+            list_result = client.direct({
+                "path": "api/v1/agent/threads",
+                "method": "GET",
+                "params": {},
+            })
+            if not _live_ok(list_result):
+                runner.live_miss(LIVE_STRICT, "Live list discovery failed: " + runner.live_describe(list_result))
+            records = runner.live_list(list_result.get("data"))
+            if records is None:
+                runner.live_miss(LIVE_STRICT, "Live list discovery returned no list: " + runner.live_describe(list_result))
+            if 0 == len(records):
+                runner.live_empty("The account has no agent_thread record to load")
+            first = records[0] if isinstance(records[0], dict) else {}
+            if first.get("id") is None:
+                runner.live_miss(LIVE_STRICT, "Live load blocked: discovery returned no usable identity")
+            params["id"] = first.get("id")
+            pass
+        else:
+            params["id"] = "direct01"
+            pass
+
+        result = client.direct({
+            "path": "api/v1/agent/threads/{id}",
+            "method": "GET",
+            "params": params,
+            "query": query,
+        })
+        if setup["live"]:
+            if not _live_ok(result):
+                runner.live_miss(LIVE_STRICT, "Live load failed: " + runner.live_describe(result))
+            if result.get("data") is None:
+                runner.live_miss(LIVE_STRICT, "Live load returned no data: " + runner.live_describe(result))
+        else:
+            assert result["ok"] is True
+            assert helpers.to_int(result["status"]) == 200
+            assert result["data"] is not None
+            if isinstance(result["data"], dict):
+                assert result["data"]["id"] == "direct01"
             assert len(setup["calls"]) == 1
 
 

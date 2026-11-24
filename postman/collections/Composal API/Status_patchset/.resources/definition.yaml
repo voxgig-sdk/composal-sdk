@@ -1,0 +1,19 @@
+$kind: collection
+id: e28b9a75-6580-5da3-ba19-ebf68e906a21
+description: |-
+  The **status_patchset** entity, which belongs to a organization and a repo. Its requests address one record by `{{status_patchset_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `checks` | array | yes |  |
+  | `checks_status` | string | yes |  |
+  | `commit_sha` | string | yes |  |
+  | `counts` | object | yes |  |
+  | `id` | string |  |  |
+  | `patchset_id` | string | yes |  |
+  | `status` | string | yes |  |
+  | `status_label` | string | yes |  |
+  | `status_state` | string | yes |  |
+  | `status_tone` | string | yes |  |
+  | `total` | integer | yes |  |
+order: 509000

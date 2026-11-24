@@ -1,0 +1,4 @@
+$kind: collection
+id: "58306b82-380c-5c99-b955-30ebe77bef01"
+description: "The `BasicBillingAddonFlow` flow of **billing_addon**."
+order: 101000

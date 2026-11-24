@@ -1,0 +1,9 @@
+$kind: collection
+id: "50cef492-01c1-53ef-afaf-c9c8b0286cfa"
+description: |-
+  The **space_group** entity. Its requests address one record by `{{space_group_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 486000

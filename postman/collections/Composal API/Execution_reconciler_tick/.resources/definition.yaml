@@ -1,0 +1,9 @@
+$kind: collection
+id: ba967f93-1a54-5a86-97df-32c013001616
+description: |-
+  The **execution_reconciler_tick** entity. Its requests address one record by `{{execution_reconciler_tick_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 240000

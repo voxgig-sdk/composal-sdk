@@ -1,0 +1,9 @@
+$kind: collection
+id: f05a888b-aa45-53f4-bc49-a3d282442583
+description: |-
+  The **bazel_blob** entity. Its requests address one record by `{{bazel_blob_blob_id}}` and `{{bazel_blob_hash}}` and `{{bazel_blob_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 125000

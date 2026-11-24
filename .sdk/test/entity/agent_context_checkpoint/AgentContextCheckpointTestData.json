@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "agent_context_checkpoint": {
+      "AGENT_CONTEXT_CHECKPOINT00": {
+        "id": "AGENT_CONTEXT_CHECKPOINT00",
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "AGENT_CONTEXT_CHECKPOINT01": {
+        "id": "AGENT_CONTEXT_CHECKPOINT01",
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "AGENT_CONTEXT_CHECKPOINT02": {
+        "id": "AGENT_CONTEXT_CHECKPOINT02",
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "agent_context_checkpoint": {
+      "agent_context_checkpoint_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/agent_context/checkpoints/{checkpoint_id}/transcript": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

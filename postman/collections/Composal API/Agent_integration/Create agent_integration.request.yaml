@@ -1,50 +1,34 @@
 $kind: http-request
-id: "1a67ff4f-9af2-51a2-b6a6-de5c3a843c0c"
+id: b27ef8cc-2c76-5271-bdc7-f69cd0841555
 description: |-
   The `create` operation of **agent_integration**.
 
-  SDK: `client.AgentIntegration().create({ agent_id: "example", organization_id: "example", connection_id: "example", enabled: true, generation: 1 })`
-url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/integrations"
+  SDK: `client.AgentIntegration().create({ organization_id: "example", name: "example", toolkit: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_integrations"
 method: POST
 headers:
   Accept: application/json
   Content-Type: application/json
-queryParams:
-  - key: cursor
-    value: ""
-    disabled: true
-  - key: limit
-    value: ""
-    disabled: true
-  - key: q
-    value: ""
-    disabled: true
-  - key: toolkit
-    value: ""
-    disabled: true
 pathVariables:
   - key: organization_id
     value: "{{organization_id}}"
     description: The organization this agent_integration belongs to.
-  - key: id
-    value: "{{agent_id}}"
-    description: The agent this agent_integration belongs to.
 body:
   type: json
   content: |-
     {
-      "connection_id": "example",
-      "generation": 1,
-      "enabled": true
+      "toolkit": "example",
+      "name": "example",
+      "creation_key": "example"
     }
 scripts:
   - type: afterResponse
     code: |-
       const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
       const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
-      const rec = body
+      const rec = body?.["connection"]
       if (pm.response.code < 300 && null != rec) {
         if (null != at(rec, "id")) pm.collectionVariables.set("agent_integration_id", String(at(rec, "id")))
       }
     language: text/javascript
-order: 2000
+order: 3000

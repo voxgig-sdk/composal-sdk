@@ -1,0 +1,9 @@
+$kind: collection
+id: "49f6d047-ee66-5599-a251-89175ce78647"
+description: |-
+  The **lease_step** entity, which belongs to a node. Its requests address one record by `{{lease_step_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 300000

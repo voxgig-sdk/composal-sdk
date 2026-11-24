@@ -1,0 +1,33 @@
+$kind: http-request
+id: fdc0b0fd-ee25-50d3-9e79-999955ac39bf
+description: |-
+  The `claim` action of **task_lease**, a route of its `create` operation.
+
+  SDK: `client.TaskLease().create({ "swarm_id": "swarm_id", "task_id": "task_id", "id": "ID", $action: "claim" })`
+url: "{{base}}/api/v1/agent/swarms/:swarm_id/tasks/:task_id/leases/:id/claim"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: swarm_id
+    value: "{{swarm_id}}"
+    description: "Input: swarm_id."
+  - key: task_id
+    value: "{{task_id}}"
+    description: "Input: task_id."
+  - key: id
+    value: "{{task_lease_id}}"
+    description: The task_lease this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "lease_token": "example",
+      "worker_identity": {
+        "protocol": "roder-worker-v1",
+        "allocation_id": "00000000-0000-4000-8000-000000000000",
+        "process_id": "00000000-0000-4000-8000-000000000000"
+      }
+    }
+order: 3000

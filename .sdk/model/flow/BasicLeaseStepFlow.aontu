@@ -1,0 +1,33 @@
+# BasicLeaseStepFlow
+
+main: kit: flow: BasicLeaseStepFlow:
+{
+  entity: "lease_step",
+  kind: "basic",
+  name: "BasicLeaseStepFlow",
+  step: [
+    {
+      d: {
+        lease_id: "lease01",
+        node_id: "node01"
+      }
+
+      i: {
+        ref: "lease_step_ref01",
+        srcdatavar: "lease_step_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-lease_step_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLeaseStepFlow"
+}

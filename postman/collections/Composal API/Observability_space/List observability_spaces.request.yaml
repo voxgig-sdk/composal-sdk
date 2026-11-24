@@ -1,0 +1,21 @@
+$kind: http-request
+id: "25c2cc54-c783-5ef4-9ea8-6b582454e5d1"
+description: |-
+  The `list` operation of **observability_space**.
+
+  SDK: `client.ObservabilitySpace().list()`
+url: "{{base}}/api/v1/observability/spaces"
+method: GET
+headers:
+  Accept: application/json
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("observability_space_id")) pm.collectionVariables.set("observability_space_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

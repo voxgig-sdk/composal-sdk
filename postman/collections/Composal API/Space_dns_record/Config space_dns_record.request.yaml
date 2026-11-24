@@ -1,0 +1,15 @@
+$kind: http-request
+id: "5ee92d49-649c-5b28-879b-9bb2bcec5b9f"
+description: |-
+  The `config` action of **space_dns_record**, a route of its `load` operation.
+
+  SDK: `client.SpaceDnsRecord().load({ "space_id": "space_id", $action: "config" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/dns_records/config"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+order: 6000

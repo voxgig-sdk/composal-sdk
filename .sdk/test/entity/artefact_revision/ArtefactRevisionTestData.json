@@ -1,0 +1,42 @@
+{
+  "existing": {
+    "artefact_revision": {
+      "ARTEFACT_REVISION00": {
+        "base_version": 20,
+        "content": "s15",
+        "artefact_id": "ARTEFACT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "ARTEFACT_REVISION00"
+      },
+      "ARTEFACT_REVISION01": {
+        "base_version": 40,
+        "content": "s29",
+        "artefact_id": "ARTEFACT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "ARTEFACT_REVISION01"
+      },
+      "ARTEFACT_REVISION02": {
+        "base_version": 60,
+        "content": "s3d",
+        "artefact_id": "ARTEFACT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "ARTEFACT_REVISION02"
+      }
+    }
+  },
+  "new": {
+    "artefact_revision": {
+      "artefact_revision_ref01": {
+        "base_version": 80,
+        "content": "s51"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/revisions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

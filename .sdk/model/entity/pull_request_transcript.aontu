@@ -1,0 +1,293 @@
+# Entity: pull_request_transcript
+
+main: kit: entity: pull_request_transcript: {
+
+  alias: field: {}
+
+  fields: {
+    adapter: {
+      h: "Adapter"
+      n: "adapter"
+      r: true
+      t: "`$STRING`"
+    }
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    ended_at: {
+      h: "Ended At"
+      n: "ended_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    external_session_id: {
+      h: "External Session Id"
+      n: "external_session_id"
+      r: true
+      t: "`$STRING`"
+    }
+    harness: {
+      h: "Harness"
+      n: "harness"
+      r: true
+      sh: "Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    last_activity_at: {
+      h: "Last Activity At"
+      n: "last_activity_at"
+      r: true
+      sh: "When the session last did anything: the newest checkpoint capture, else the session end, else its start."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    last_checkpoint_at: {
+      h: "Last Checkpoint At"
+      n: "last_checkpoint_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    repository: {
+      h: "Repository"
+      n: "repository"
+      r: true
+      t: "`$ANY`"
+    }
+    started_at: {
+      h: "Started At"
+      n: "started_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    stats: {
+      h: "Stats"
+      n: "stats"
+      r: true
+      t: "`$OBJECT`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    updated_at: {
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    user: {
+      h: "User"
+      n: "user"
+      r: true
+      t: "`$ANY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "pull_request_transcript"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/pull_request/{number}/transcripts"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "pull_request_id"
+                or: "number"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "pull_request_id"
+                or: "number"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "param"
+                n: "repo_id"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: 20
+                explode: true
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                ex: false
+                explode: true
+                k: "query"
+                n: "paginated"
+                or: "paginated"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/pull_request/{number}/transcripts"
+          q: {
+            exist: [
+              "organization_id"
+              "pull_request_id"
+              "repo_id"
+            ]
+          }
+          r: {
+            param: {
+              number: "pull_request_id"
+              org_slug: "organization_id"
+              repo_slug: "repo_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "repos"
+            }
+            {
+              var: "repo_id"
+            }
+            {
+              lit: "pages"
+            }
+            {
+              lit: "pull_request"
+            }
+            {
+              var: "pull_request_id"
+            }
+            {
+              lit: "transcripts"
+            }
+          ]
+          t: {
+            page: {
+              cursor: "`body.pagination.next_cursor`"
+              more: "`body.pagination.has_more`"
+            }
+            req: "`reqdata`"
+            res: "`body.sessions`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.repo") path("$.main.kit.entity.pull_request")]
+  ]
+
+}

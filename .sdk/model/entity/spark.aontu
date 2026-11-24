@@ -1,0 +1,428 @@
+# Entity: spark
+
+main: kit: entity: spark: {
+
+  alias: field: {}
+
+  fields: {
+    activated_products: {
+      h: "Activated Products"
+      n: "activated_products"
+      r: true
+      sh: "Products this organization has activated (PRD 144)."
+      t: "`$ARRAY`"
+    }
+    agents_only: {
+      h: "Agents Only"
+      n: "agents_only"
+      r: false
+      sh: "Whether this organization uses the agents-only interface; older responses may omit this value."
+      t: "`$BOOLEAN`"
+    }
+    can_activate_products: {
+      h: "Can Activate Products"
+      n: "can_activate_products"
+      r: true
+      sh: "Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces."
+      t: "`$BOOLEAN`"
+    }
+    can_manage: {
+      h: "Can Manage"
+      n: "can_manage"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    compute_credit_cents: {
+      h: "Compute Credit Cents"
+      n: "compute_credit_cents"
+      r: true
+      sh: "Included compute the workspace started Sparks with, when it is on compute billing."
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    created_at_label: {
+      h: "Created At Label"
+      n: "created_at_label"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    credit_cents: {
+      h: "Credit Cents"
+      n: "credit_cents"
+      r: true
+      sh: "Inference credit the workspace started Sparks with."
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    first_spark: {
+      h: "First Spark"
+      n: "first_spark"
+      r: true
+      sh: "Null until the first Spark exists or when the viewer cannot read it."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    github_connected: {
+      h: "Github Connected"
+      n: "github_connected"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    github_prs_authored_by_change_author: {
+      h: "Github Prs Authored By Change Author"
+      n: "github_prs_authored_by_change_author"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      op: {
+        create: {
+          req: false
+          type: [
+            "`$ONE`"
+            [
+              "`$STRING`"
+              "`$INTEGER`"
+            ]
+          ]
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+    jsonrpc: {
+      h: "Jsonrpc"
+      n: "jsonrpc"
+      r: true
+      t: "`$STRING`"
+    }
+    logo_url: {
+      h: "Logo Url"
+      n: "logo_url"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    member_count: {
+      h: "Member Count"
+      n: "member_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    method: {
+      h: "Method"
+      n: "method"
+      r: true
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    params: {
+      h: "Params"
+      n: "params"
+      r: false
+      t: "`$OBJECT`"
+    }
+    pending_invitation_count: {
+      h: "Pending Invitation Count"
+      n: "pending_invitation_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    personal: {
+      h: "Personal"
+      n: "personal"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    repository_count: {
+      h: "Repository Count"
+      n: "repository_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    role: {
+      h: "Role"
+      n: "role"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    sandbox_region: {
+      h: "Sandbox Region"
+      n: "sandbox_region"
+      r: true
+      t: "`$STRING`"
+    }
+    shared_agent_personal_accounts_enabled: {
+      h: "Shared Agent Personal Accounts Enabled"
+      n: "shared_agent_personal_accounts_enabled"
+      r: false
+      sh: "Whether a shared agent may use one person's account for everyone who chats with it."
+      t: "`$BOOLEAN`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: true
+      t: "`$STRING`"
+    }
+    source_control_providers: {
+      h: "Source Control Providers"
+      n: "source_control_providers"
+      r: false
+      sh: "Connected source control providers for this organization."
+      t: "`$ARRAY`"
+    }
+    source_ui_enabled: {
+      h: "Source Ui Enabled"
+      n: "source_ui_enabled"
+      r: false
+      sh: "Organization-scoped Source workspace rollout; missing values mean disabled."
+      t: "`$BOOLEAN`"
+    }
+    started: {
+      h: "Started"
+      n: "started"
+      r: true
+      sh: "Whether the workspace has started Sparks."
+      t: "`$BOOLEAN`"
+    }
+    timezone: {
+      h: "Timezone"
+      n: "timezone"
+      r: true
+      sh: "Default IANA timezone for organization-local schedules such as nightly dreaming."
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    updated_at_label: {
+      h: "Updated At Label"
+      n: "updated_at_label"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    verify_pr_scenario_writing_enabled: {
+      h: "Verify Pr Scenario Writing Enabled"
+      n: "verify_pr_scenario_writing_enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "spark"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/sparks"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/sparks"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "sparks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.organization`"
+          }
+        }
+        {
+          bf: [
+            "id"
+            "jsonrpc"
+            "method"
+            "params"
+          ]
+          co: {
+            id: "POST /v1/mcp/spark"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/mcp/spark"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "mcp"
+            }
+            {
+              lit: "spark"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/sparks"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/sparks"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "sparks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

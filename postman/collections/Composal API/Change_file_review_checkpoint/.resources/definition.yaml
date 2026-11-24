@@ -1,0 +1,12 @@
+$kind: collection
+id: "36e07e52-aeef-5acc-b415-cb8c5df874fb"
+description: |-
+  The **change_file_review_checkpoint** entity, which belongs to a organization and a repo and a change. Its requests address one record by `{{change_file_review_checkpoint_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `patchset_id` | string | yes |  |
+  | `path` | string | yes |  |
+  | `request_id` | string | yes |  |
+  | `review_action` | string | yes |  |
+order: 158000

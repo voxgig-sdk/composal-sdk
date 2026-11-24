@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "agent_session_roder_handoff": {
+      "AGENT_SESSION_RODER_HANDOFF00": {
+        "checkpoint_id": "CHECKPOINT01",
+        "purpose": "s15",
+        "agent_session_id": "AGENT_SESSION01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "AGENT_SESSION_RODER_HANDOFF00"
+      },
+      "AGENT_SESSION_RODER_HANDOFF01": {
+        "checkpoint_id": "CHECKPOINT01",
+        "purpose": "s29",
+        "agent_session_id": "AGENT_SESSION01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "AGENT_SESSION_RODER_HANDOFF01"
+      },
+      "AGENT_SESSION_RODER_HANDOFF02": {
+        "checkpoint_id": "CHECKPOINT01",
+        "purpose": "s3d",
+        "agent_session_id": "AGENT_SESSION01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "AGENT_SESSION_RODER_HANDOFF02"
+      }
+    }
+  },
+  "new": {
+    "agent_session_roder_handoff": {
+      "agent_session_roder_handoff_ref01": {
+        "checkpoint_id": "CHECKPOINT01",
+        "purpose": "s51"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/roder_handoffs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

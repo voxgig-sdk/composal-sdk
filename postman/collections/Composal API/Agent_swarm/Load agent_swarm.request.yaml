@@ -1,0 +1,15 @@
+$kind: http-request
+id: b76da5fb-828c-5de8-a89d-e73a5a597991
+description: |-
+  The `load` operation of **agent_swarm**.
+
+  SDK: `client.AgentSwarm().load({ id: "example_id" })`
+url: "{{base}}/api/v1/agent/swarms/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{agent_swarm_id}}"
+    description: The agent_swarm this request addresses.
+order: 2000

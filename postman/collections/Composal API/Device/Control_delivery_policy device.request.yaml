@@ -1,0 +1,18 @@
+$kind: http-request
+id: eddd25ce-457c-5462-b989-0c3091cb007b
+description: |-
+  The `control_delivery_policy` action of **device**, a route of its `load` operation.
+
+  SDK: `client.Device().load({ "organization_id": "organization_id", "id": "ID", $action: "control_delivery_policy" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/control_delivery_policy"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this request addresses.
+order: 4000

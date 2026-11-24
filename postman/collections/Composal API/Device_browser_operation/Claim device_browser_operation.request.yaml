@@ -1,0 +1,25 @@
+$kind: http-request
+id: a18f58db-97e2-53d9-9efa-0f3c922af09d
+description: |-
+  The `claim` action of **device_browser_operation**, a route of its `create` operation.
+
+  SDK: `client.DeviceBrowserOperation().create({ "organization_id": "organization_id", "device_id": "device_id", "id": "ID", $action: "claim" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/browser_operations/:id/claim"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device_browser_operation belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this device_browser_operation belongs to.
+  - key: id
+    value: "{{device_browser_operation_id}}"
+    description: The device_browser_operation this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 2000

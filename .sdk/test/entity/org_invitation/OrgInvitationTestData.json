@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "org_invitation": {
+      "ORG_INVITATION00": {
+        "id": "ORG_INVITATION00",
+        "invitation": {},
+        "registration_options": "s34",
+        "requires_password_setup": false,
+        "start_guided_setup": true
+      },
+      "ORG_INVITATION01": {
+        "id": "ORG_INVITATION01",
+        "invitation": {},
+        "registration_options": "s66",
+        "requires_password_setup": false,
+        "start_guided_setup": true
+      },
+      "ORG_INVITATION02": {
+        "id": "ORG_INVITATION02",
+        "invitation": {},
+        "registration_options": "s98",
+        "requires_password_setup": false,
+        "start_guided_setup": true
+      }
+    }
+  },
+  "new": {
+    "org_invitation": {
+      "org_invitation_ref01": {
+        "invitation": {},
+        "registration_options": "sca",
+        "requires_password_setup": false,
+        "start_guided_setup": true
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/org_invitations/{token}/accept": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/org_invitations/{token}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

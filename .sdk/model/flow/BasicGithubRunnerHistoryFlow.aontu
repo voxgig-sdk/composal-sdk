@@ -7,16 +7,22 @@ main: kit: flow: BasicGithubRunnerHistoryFlow:
   name: "BasicGithubRunnerHistoryFlow",
   step: [
     {
-      m: {
-        org_slug: "org_slug01"
+      i: {
+        ref: "github_runner_history_ref01",
+        srcdatavar: "github_runner_history_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "github_runner_history01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "github_runner_history_ref01"
+            mark: "Mark01-github_runner_history_ref01"
           }
         }
       ]

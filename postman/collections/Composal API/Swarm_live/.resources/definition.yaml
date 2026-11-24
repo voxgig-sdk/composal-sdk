@@ -1,0 +1,8 @@
+$kind: collection
+id: "609bba0e-e868-55e7-8c57-ceeb33c4a7cb"
+description: |-
+  The **swarm_live** entity. Its requests address one record by `{{swarm_live_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 514000

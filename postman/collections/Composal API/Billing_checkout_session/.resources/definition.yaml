@@ -1,0 +1,14 @@
+$kind: collection
+id: "59f7f889-44e9-5e95-b5e3-d767b462c502"
+description: |-
+  The **billing_checkout_session** entity, which belongs to a organization. Its requests address one record by `{{billing_checkout_session_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `cancel_url` | string |  |  |
+  | `coupon_code` | string |  |  |
+  | `entry_point` | string |  |  |
+  | `package_key` | string |  |  |
+  | `package_revision` | integer |  |  |
+  | `success_url` | string |  |  |
+order: 130000

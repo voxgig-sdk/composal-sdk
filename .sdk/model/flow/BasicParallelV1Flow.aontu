@@ -1,0 +1,22 @@
+# BasicParallelV1Flow
+
+main: kit: flow: BasicParallelV1Flow:
+{
+  entity: "parallel_v1",
+  kind: "basic",
+  name: "BasicParallelV1Flow",
+  step: [
+    {
+      i: {
+        ref: "parallel_v1_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicParallelV1Flow"
+}

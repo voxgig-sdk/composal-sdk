@@ -1,0 +1,25 @@
+$kind: http-request
+id: "19787749-1c7a-5e8c-ac69-3ed63b66b3dd"
+description: |-
+  The `trunk` action of **repo_setting**, a route of its `update` operation.
+
+  SDK: `client.RepoSetting().update({ "organization_id": "organization_id", "repo_id": "repo_id", $action: "trunk" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/settings/trunk"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_setting belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_setting belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "default_branch": "example"
+    }
+order: 5000

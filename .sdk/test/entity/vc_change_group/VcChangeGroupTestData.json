@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "vc_change_group": {
+      "VC_CHANGE_GROUP00": {
+        "changes": [],
+        "id": "VC_CHANGE_GROUP00",
+        "name": "s3e",
+        "number": 63,
+        "status": "s40",
+        "title": "s41",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "VC_CHANGE_GROUP01": {
+        "changes": [],
+        "id": "VC_CHANGE_GROUP01",
+        "name": "s7a",
+        "number": 123,
+        "status": "s7c",
+        "title": "s7d",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "VC_CHANGE_GROUP02": {
+        "changes": [],
+        "id": "VC_CHANGE_GROUP02",
+        "name": "sb6",
+        "number": 183,
+        "status": "sb8",
+        "title": "sb9",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "vc_change_group": {
+      "vc_change_group_ref01": {
+        "changes": [],
+        "name": "sf2",
+        "number": 243,
+        "status": "sf4",
+        "title": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/change_groups/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

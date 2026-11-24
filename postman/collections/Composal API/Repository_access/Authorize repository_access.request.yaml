@@ -1,0 +1,15 @@
+$kind: http-request
+id: "7ce826d4-0675-5715-afeb-1b9f8b6383ac"
+description: |-
+  The `authorize` action of **repository_access**, a route of its `create` operation.
+
+  SDK: `client.RepositoryAccess().create({ $action: "authorize" })`
+url: "{{base}}/api/v1/repository_access/authorize"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 1000

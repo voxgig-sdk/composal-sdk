@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "organization_sandbox": {
+      "ORGANIZATION_SANDBOX00": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_SANDBOX00"
+      },
+      "ORGANIZATION_SANDBOX01": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_SANDBOX01"
+      },
+      "ORGANIZATION_SANDBOX02": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_SANDBOX02"
+      }
+    }
+  },
+  "new": {
+    "organization_sandbox": {
+      "organization_sandbox_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/spark/organizations/{organization_id}/sandbox/automation-cleanup": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

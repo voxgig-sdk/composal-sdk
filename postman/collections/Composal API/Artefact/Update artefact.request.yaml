@@ -1,0 +1,22 @@
+$kind: http-request
+id: ef5920d6-7e96-5d8c-9e3e-04a0b95c9ec5
+description: |-
+  The `update` operation of **artefact**.
+
+  SDK: `client.Artefact().update({ id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/artefacts/:artefact_ref"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this artefact belongs to.
+  - key: artefact_ref
+    value: "{{artefact_id}}"
+    description: The artefact this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

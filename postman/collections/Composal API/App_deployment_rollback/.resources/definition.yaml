@@ -30,4 +30,4 @@ description: |-
   | `target_release` | any | yes |  |
   | `to` | string |  |  |
   | `warnings` | array | yes |  |
-order: 60000
+order: 89000

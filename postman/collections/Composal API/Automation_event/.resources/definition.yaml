@@ -22,4 +22,4 @@ description: |-
   | `settings` | object |  |  |
   | `subscription_key` | string | yes |  |
   | `version` | object | yes |  |
-order: 73000
+order: 119000

@@ -1,0 +1,85 @@
+{
+  "existing": {
+    "organization_workload_identity": {
+      "ORGANIZATION_WORKLOAD_IDENTITY00": {
+        "id": "ORGANIZATION_WORKLOAD_IDENTITY00",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ORGANIZATION_WORKLOAD_IDENTITY01": {
+        "id": "ORGANIZATION_WORKLOAD_IDENTITY01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ORGANIZATION_WORKLOAD_IDENTITY02": {
+        "id": "ORGANIZATION_WORKLOAD_IDENTITY02",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "organization_workload_identity": {
+      "organization_workload_identity_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/identity/organizations/{organization_id}/workload_identities/{id}/activate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/identity/organizations/{organization_id}/workload_identities/{id}/issue_exchange_token": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/identity/organizations/{organization_id}/workload_identities/{id}/materialize": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/identity/organizations/{organization_id}/workload_identities/{id}/revoke": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/identity/organizations/{organization_id}/workload_identities/{id}/suspend": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/identity/organizations/{organization_id}/workload_identities": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/identity/organizations/{organization_id}/workload_identities/token_exchange": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/identity/organizations/{organization_id}/workload_identities": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/identity/organizations/{organization_id}/workload_identities/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/identity/organizations/{organization_id}/workload_identities/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/identity/organizations/{organization_id}/workload_identities/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/identity/organizations/{organization_id}/workload_identities/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

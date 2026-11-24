@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "setting_mutation_lease": {
+      "SETTING_MUTATION_LEASE00": {
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "SETTING_MUTATION_LEASE00"
+      },
+      "SETTING_MUTATION_LEASE01": {
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "SETTING_MUTATION_LEASE01"
+      },
+      "SETTING_MUTATION_LEASE02": {
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "SETTING_MUTATION_LEASE02"
+      }
+    }
+  },
+  "new": {
+    "setting_mutation_lease": {
+      "setting_mutation_lease_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/mutation_lease/clear": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

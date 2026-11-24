@@ -1,0 +1,13 @@
+$kind: collection
+id: "70a02f1b-b3f9-571c-b585-257c2e523200"
+description: |-
+  The **artefact_view_token** entity, which belongs to a organization and a artefact. Its requests address one record by `{{artefact_view_token_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `expires_in` | integer | yes |  |
+  | `file` | string |  |  |
+  | `organization_slug` | string |  |  |
+  | `version` | integer |  |  |
+  | `viewer_url` | string | yes |  |
+order: 104000

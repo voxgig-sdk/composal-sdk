@@ -1,0 +1,70 @@
+{
+  "existing": {
+    "change_reviewer": {
+      "CHANGE_REVIEWER00": {
+        "add": [],
+        "email": "s47",
+        "name": "s48",
+        "remove": [],
+        "removed_reviewers": [],
+        "requested_reviewers": [],
+        "reviewers": [],
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CHANGE_REVIEWER00"
+      },
+      "CHANGE_REVIEWER01": {
+        "add": [],
+        "email": "s8d",
+        "name": "s8e",
+        "remove": [],
+        "removed_reviewers": [],
+        "requested_reviewers": [],
+        "reviewers": [],
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CHANGE_REVIEWER01"
+      },
+      "CHANGE_REVIEWER02": {
+        "add": [],
+        "email": "sd3",
+        "name": "sd4",
+        "remove": [],
+        "removed_reviewers": [],
+        "requested_reviewers": [],
+        "reviewers": [],
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CHANGE_REVIEWER02"
+      }
+    }
+  },
+  "new": {
+    "change_reviewer": {
+      "change_reviewer_ref01": {
+        "add": [],
+        "email": "s119",
+        "name": "s11a",
+        "remove": [],
+        "removed_reviewers": [],
+        "requested_reviewers": [],
+        "reviewers": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/reviewers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/reviewers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

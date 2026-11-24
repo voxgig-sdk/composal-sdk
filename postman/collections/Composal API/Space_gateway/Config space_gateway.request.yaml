@@ -1,0 +1,18 @@
+$kind: http-request
+id: "6f5b6a27-8fa2-576c-a767-4f25e4cbbae0"
+description: |-
+  The `config` action of **space_gateway**, a route of its `load` operation.
+
+  SDK: `client.SpaceGateway().load({ "space_id": "space_id", "id": "ID", $action: "config" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/gateways/:id/config"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: id
+    value: "{{space_gateway_id}}"
+    description: The space_gateway this request addresses.
+order: 6000

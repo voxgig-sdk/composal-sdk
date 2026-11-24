@@ -1,0 +1,11 @@
+$kind: http-request
+id: bcd3c47e-f919-5779-b512-c98f96c16557
+description: |-
+  The `impersonation` action of **auth**, a route of its `remove` operation.
+
+  SDK: `client.Auth().remove({ $action: "impersonation" })`
+url: "{{base}}/api/v1/auth/impersonation"
+method: DELETE
+headers:
+  Accept: application/json
+order: 9000

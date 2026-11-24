@@ -1,0 +1,74 @@
+{
+  "existing": {
+    "bookmark_protection_refresh_github_required_check": {
+      "BOOKMARK_PROTECTION_REFRESH_GITHUB_REQUIRED_CHECK00": {
+        "exclusions": [],
+        "fetched_at": "s65",
+        "fetched_at_label": "s66",
+        "github_branch": "s67",
+        "github_owner": "s68",
+        "github_repository_name": "s69",
+        "last_error": "s6a",
+        "proven": false,
+        "requirements": [],
+        "stale": false,
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "BOOKMARK_PROTECTION_REFRESH_GITHUB_REQUIRED_CHECK00"
+      },
+      "BOOKMARK_PROTECTION_REFRESH_GITHUB_REQUIRED_CHECK01": {
+        "exclusions": [],
+        "fetched_at": "sc9",
+        "fetched_at_label": "sca",
+        "github_branch": "scb",
+        "github_owner": "scc",
+        "github_repository_name": "scd",
+        "last_error": "sce",
+        "proven": false,
+        "requirements": [],
+        "stale": false,
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "BOOKMARK_PROTECTION_REFRESH_GITHUB_REQUIRED_CHECK01"
+      },
+      "BOOKMARK_PROTECTION_REFRESH_GITHUB_REQUIRED_CHECK02": {
+        "exclusions": [],
+        "fetched_at": "s12d",
+        "fetched_at_label": "s12e",
+        "github_branch": "s12f",
+        "github_owner": "s130",
+        "github_repository_name": "s131",
+        "last_error": "s132",
+        "proven": false,
+        "requirements": [],
+        "stale": false,
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "BOOKMARK_PROTECTION_REFRESH_GITHUB_REQUIRED_CHECK02"
+      }
+    }
+  },
+  "new": {
+    "bookmark_protection_refresh_github_required_check": {
+      "bookmark_protection_refresh_github_required_check_ref01": {
+        "exclusions": [],
+        "fetched_at": "s191",
+        "fetched_at_label": "s192",
+        "github_branch": "s193",
+        "github_owner": "s194",
+        "github_repository_name": "s195",
+        "last_error": "s196",
+        "proven": false,
+        "requirements": [],
+        "stale": false
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections/refresh_github_required_checks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

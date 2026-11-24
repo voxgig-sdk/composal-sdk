@@ -1,0 +1,20 @@
+$kind: http-request
+id: "2bb7ead3-f865-526f-98b4-f3c552d38096"
+description: |-
+  The `apple` action of **auth**, a route of its `create` operation.
+
+  SDK: `client.Auth().create({ $action: "apple" })`
+url: "{{base}}/api/v1/auth/apple"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "login_id": "example",
+      "polling_token": "example",
+      "code": "example"
+    }
+order: 1000

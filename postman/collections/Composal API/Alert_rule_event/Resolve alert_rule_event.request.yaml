@@ -1,0 +1,25 @@
+$kind: http-request
+id: "3a959b4a-4f61-5f9a-a351-daae2c0ab438"
+description: |-
+  The `resolve` action of **alert_rule_event**, a route of its `create` operation.
+
+  SDK: `client.AlertRuleEvent().create({ "space_id": "space_id", "alert_rule_id": "alert_rule_id", "id": "ID", $action: "resolve" })`
+url: "{{base}}/api/v1/observability/spaces/:space_id/alert_rules/:alert_rule_id/events/:id/resolve"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: alert_rule_id
+    value: "{{alert_rule_id}}"
+    description: "Input: alert_rule_id."
+  - key: id
+    value: "{{alert_rule_event_id}}"
+    description: The alert_rule_event this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

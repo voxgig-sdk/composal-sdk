@@ -1,0 +1,21 @@
+$kind: http-request
+id: b43b7001-d085-5269-bac1-917b7d4a6cfe
+description: |-
+  The `load` operation of **github_ci_repository_compatibility_report**.
+
+  SDK: `client.GithubCiRepositoryCompatibilityReport().load({ github_ci_repository_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/github_ci_repositories/:github_ci_repository_id/compatibility_reports/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this github_ci_repository_compatibility_report belongs to.
+  - key: github_ci_repository_id
+    value: "{{github_ci_repository_id}}"
+    description: The github_ci_repository this github_ci_repository_compatibility_report belongs to.
+  - key: id
+    value: "{{github_ci_repository_compatibility_report_id}}"
+    description: The github_ci_repository_compatibility_report this request addresses.
+order: 2000

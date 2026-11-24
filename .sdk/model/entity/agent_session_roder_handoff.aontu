@@ -1,0 +1,130 @@
+# Entity: agent_session_roder_handoff
+
+main: kit: entity: agent_session_roder_handoff: {
+
+  alias: field: {}
+
+  fields: {
+    checkpoint_id: {
+      h: "Checkpoint Id"
+      n: "checkpoint_id"
+      r: false
+      sh: "Public id of the checkpoint to hand off."
+      t: "`$STRING`"
+    }
+    purpose: {
+      h: "Purpose"
+      n: "purpose"
+      r: false
+      sh: "Handoff intent; defaults to `continue`."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "agent_session_roder_handoff"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "checkpoint_id"
+            "purpose"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/roder_handoffs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_session_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_id"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/roder_handoffs"
+          q: {
+            exist: [
+              "agent_session_id"
+              "organization_id"
+              "repo_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_session_id"
+              org_slug: "organization_id"
+              repo_slug: "repo_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "repos"
+            }
+            {
+              var: "repo_id"
+            }
+            {
+              lit: "agent_sessions"
+            }
+            {
+              var: "agent_session_id"
+            }
+            {
+              lit: "roder_handoffs"
+            }
+          ]
+          t: {
+            req: {
+              checkpoint_id: "`reqdata.checkpoint_id`"
+              purpose: "`reqdata.purpose`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.repo") path("$.main.kit.entity.agent_session")]
+  ]
+
+}

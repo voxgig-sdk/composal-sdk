@@ -1,0 +1,9 @@
+$kind: collection
+id: "64e3d021-93dd-5022-96fb-6e39e0834771"
+description: |-
+  The **roder_machine** entity. Its requests address one record by `{{roder_machine_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 446000

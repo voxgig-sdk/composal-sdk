@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "organization_setting": {
+      "ORGANIZATION_SETTING00": {
+        "concurrent_run_limit_override": "s5a",
+        "customize_onboarding_packages": false,
+        "daily_run_limit_override": "s5c",
+        "deployment_usage_visibility": "s5d",
+        "monthly_browser_minutes_limit_override": "s5e",
+        "monthly_budget_dollars": "s5f",
+        "name": "s60",
+        "onboarding_custom_pricing": false,
+        "onboarding_package_keys": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_SETTING00"
+      },
+      "ORGANIZATION_SETTING01": {
+        "concurrent_run_limit_override": "sb4",
+        "customize_onboarding_packages": false,
+        "daily_run_limit_override": "sb6",
+        "deployment_usage_visibility": "sb7",
+        "monthly_browser_minutes_limit_override": "sb8",
+        "monthly_budget_dollars": "sb9",
+        "name": "sba",
+        "onboarding_custom_pricing": false,
+        "onboarding_package_keys": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_SETTING01"
+      },
+      "ORGANIZATION_SETTING02": {
+        "concurrent_run_limit_override": "s10e",
+        "customize_onboarding_packages": false,
+        "daily_run_limit_override": "s110",
+        "deployment_usage_visibility": "s111",
+        "monthly_browser_minutes_limit_override": "s112",
+        "monthly_budget_dollars": "s113",
+        "name": "s114",
+        "onboarding_custom_pricing": false,
+        "onboarding_package_keys": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_SETTING02"
+      }
+    }
+  },
+  "new": {
+    "organization_setting": {
+      "organization_setting_ref01": {
+        "concurrent_run_limit_override": "s168",
+        "customize_onboarding_packages": false,
+        "daily_run_limit_override": "s16a",
+        "deployment_usage_visibility": "s16b",
+        "monthly_browser_minutes_limit_override": "s16c",
+        "monthly_budget_dollars": "s16d",
+        "name": "s16e",
+        "onboarding_custom_pricing": false,
+        "onboarding_package_keys": []
+      }
+    }
+  },
+  "requests": {
+    "PATCH /api/v1/admin/organizations/{org_slug}/settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+$kind: http-request
+id: "2ab7ae60-2179-58c2-81b5-5d687f1f35e1"
+description: |-
+  The `load` operation of **vc_merge_queue**.
+
+  SDK: `client.VcMergeQueue().load({ id: "example_id", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/merge_queues/:target"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: change
+    value: ""
+    disabled: true
+  - key: entry_id
+    value: ""
+    disabled: true
+  - key: page
+    value: ""
+    disabled: true
+  - key: window_days
+    value: "14"
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vc_merge_queue belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this vc_merge_queue belongs to.
+  - key: target
+    value: "{{vc_merge_queue_id}}"
+    description: The vc_merge_queue this request addresses.
+order: 2000

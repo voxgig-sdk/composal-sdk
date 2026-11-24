@@ -1,0 +1,18 @@
+# BasicBazelFindMissingBlobFlow
+
+main: kit: flow: BasicBazelFindMissingBlobFlow:
+{
+  entity: "bazel_find_missing_blob",
+  kind: "basic",
+  name: "BasicBazelFindMissingBlobFlow",
+  step: [
+    {
+      i: {
+        ref: "bazel_find_missing_blob_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicBazelFindMissingBlobFlow"
+}

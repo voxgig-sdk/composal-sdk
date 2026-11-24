@@ -1,0 +1,28 @@
+$kind: http-request
+id: "658d76f9-70da-5b57-ac8b-c1b8c8b64e07"
+description: |-
+  The `load` operation of **page_artefact**.
+
+  SDK: `client.PageArtefact().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/artefacts/:artefact_ref/page"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: file
+    value: ""
+    disabled: true
+  - key: version
+    value: ""
+    disabled: true
+  - key: versions_page
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this page_artefact belongs to.
+  - key: artefact_ref
+    value: "{{page_artefact_id}}"
+    description: The page_artefact this request addresses.
+order: 2000

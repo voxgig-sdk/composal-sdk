@@ -1,0 +1,28 @@
+# BasicAuthGoogleFlow
+
+main: kit: flow: BasicAuthGoogleFlow:
+{
+  entity: "auth_google",
+  kind: "basic",
+  name: "BasicAuthGoogleFlow",
+  step: [
+    {
+      i: {
+        ref: "auth_google_ref01",
+        srcdatavar: "auth_google_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-auth_google_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAuthGoogleFlow"
+}

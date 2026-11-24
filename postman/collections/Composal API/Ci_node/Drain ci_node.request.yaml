@@ -1,0 +1,19 @@
+$kind: http-request
+id: "2d5ab9e5-1ff7-5c54-b880-854f3f6bb81b"
+description: |-
+  The `drain` action of **ci_node**, a route of its `create` operation.
+
+  SDK: `client.CiNode().create({ "id": "ID", $action: "drain" })`
+url: "{{base}}/api/v1/ci/nodes/:id/drain"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{ci_node_id}}"
+    description: The ci_node this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 3000

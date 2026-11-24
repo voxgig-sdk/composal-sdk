@@ -1,0 +1,15 @@
+$kind: http-request
+id: "5c331124-985b-5a1a-9e6a-2d973a94bc1a"
+description: |-
+  The `enroll` action of **ci_node**, a route of its `create` operation.
+
+  SDK: `client.CiNode().create({ $action: "enroll" })`
+url: "{{base}}/api/v1/ci/nodes/enroll"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 4000

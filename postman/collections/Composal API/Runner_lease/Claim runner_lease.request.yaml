@@ -1,0 +1,25 @@
+$kind: http-request
+id: "73c3e8fd-8337-53aa-bffd-b84b6318f5c5"
+description: |-
+  The `claim` action of **runner_lease**, a route of its `create` operation.
+
+  SDK: `client.RunnerLease().create({ "runner_pool_id": "runner_pool_id", "runner_id": "runner_id", "id": "ID", $action: "claim" })`
+url: "{{base}}/api/v1/ci/runner_pools/:runner_pool_id/runners/:runner_id/leases/:id/claim"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: runner_pool_id
+    value: "{{runner_pool_id}}"
+    description: "Input: runner_pool_id."
+  - key: runner_id
+    value: "{{runner_id}}"
+    description: "Input: runner_id."
+  - key: id
+    value: "{{runner_lease_id}}"
+    description: The runner_lease this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 3000

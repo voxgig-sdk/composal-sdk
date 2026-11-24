@@ -1,0 +1,125 @@
+{
+  "existing": {
+    "runner_pool_node_enrollment_token": {
+      "RUNNER_POOL_NODE_ENROLLMENT_TOKEN00": {
+        "capabilities_csv": "sdc",
+        "ci_runner_pool_id": "CI_RUNNER_POOL01",
+        "created_at": "sde",
+        "created_at_label": "sdf",
+        "creator_user_id": "CREATOR_USER01",
+        "description": "se1",
+        "expires_at": "se2",
+        "expires_at_label": "se3",
+        "id": "RUNNER_POOL_NODE_ENROLLMENT_TOKEN00",
+        "kind": "se5",
+        "last_used_at": "se6",
+        "last_used_at_label": "se7",
+        "name": "se8",
+        "organization_id": "ORGANIZATION01",
+        "raw_token": "sea",
+        "revoked_at": "seb",
+        "status": "sec",
+        "token_hint": "sed",
+        "updated_at": "see",
+        "updated_at_label": "sef",
+        "usage_count": 240,
+        "usage_count_label": "sf1",
+        "runner_pool_id": "RUNNER_POOL01"
+      },
+      "RUNNER_POOL_NODE_ENROLLMENT_TOKEN01": {
+        "capabilities_csv": "s1b8",
+        "ci_runner_pool_id": "CI_RUNNER_POOL01",
+        "created_at": "s1ba",
+        "created_at_label": "s1bb",
+        "creator_user_id": "CREATOR_USER01",
+        "description": "s1bd",
+        "expires_at": "s1be",
+        "expires_at_label": "s1bf",
+        "id": "RUNNER_POOL_NODE_ENROLLMENT_TOKEN01",
+        "kind": "s1c1",
+        "last_used_at": "s1c2",
+        "last_used_at_label": "s1c3",
+        "name": "s1c4",
+        "organization_id": "ORGANIZATION01",
+        "raw_token": "s1c6",
+        "revoked_at": "s1c7",
+        "status": "s1c8",
+        "token_hint": "s1c9",
+        "updated_at": "s1ca",
+        "updated_at_label": "s1cb",
+        "usage_count": 460,
+        "usage_count_label": "s1cd",
+        "runner_pool_id": "RUNNER_POOL01"
+      },
+      "RUNNER_POOL_NODE_ENROLLMENT_TOKEN02": {
+        "capabilities_csv": "s294",
+        "ci_runner_pool_id": "CI_RUNNER_POOL01",
+        "created_at": "s296",
+        "created_at_label": "s297",
+        "creator_user_id": "CREATOR_USER01",
+        "description": "s299",
+        "expires_at": "s29a",
+        "expires_at_label": "s29b",
+        "id": "RUNNER_POOL_NODE_ENROLLMENT_TOKEN02",
+        "kind": "s29d",
+        "last_used_at": "s29e",
+        "last_used_at_label": "s29f",
+        "name": "s2a0",
+        "organization_id": "ORGANIZATION01",
+        "raw_token": "s2a2",
+        "revoked_at": "s2a3",
+        "status": "s2a4",
+        "token_hint": "s2a5",
+        "updated_at": "s2a6",
+        "updated_at_label": "s2a7",
+        "usage_count": 680,
+        "usage_count_label": "s2a9",
+        "runner_pool_id": "RUNNER_POOL01"
+      }
+    }
+  },
+  "new": {
+    "runner_pool_node_enrollment_token": {
+      "runner_pool_node_enrollment_token_ref01": {
+        "capabilities_csv": "s370",
+        "ci_runner_pool_id": "CI_RUNNER_POOL01",
+        "created_at": "s372",
+        "created_at_label": "s373",
+        "creator_user_id": "CREATOR_USER01",
+        "description": "s375",
+        "expires_at": "s376",
+        "expires_at_label": "s377",
+        "kind": "s379",
+        "last_used_at": "s37a",
+        "last_used_at_label": "s37b",
+        "name": "s37c",
+        "organization_id": "ORGANIZATION01",
+        "raw_token": "s37e",
+        "revoked_at": "s37f",
+        "status": "s380",
+        "token_hint": "s381",
+        "updated_at": "s382",
+        "updated_at_label": "s383",
+        "usage_count": 900,
+        "usage_count_label": "s385"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/ci/runner_pools/{runner_pool_id}/node_enrollment_tokens/{id}/revoke": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/ci/runner_pools/{runner_pool_id}/node_enrollment_tokens": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/ci/runner_pools/{runner_pool_id}/node_enrollment_tokens": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+$kind: http-request
+id: "68ab897b-350e-537f-a70a-a2b5ac52e486"
+description: |-
+  The `challenge` action of **device_invocation**, a route of its `create` operation.
+
+  SDK: `client.DeviceInvocation().create({ "organization_id": "organization_id", "device_id": "device_id", $action: "challenge" })`
+url: "{{base}}/api/v1/device_runtime/organizations/:organization_id/devices/:device_id/invocations/challenge"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device_invocation belongs to.
+  - key: device_id
+    value: "{{device_id}}"
+    description: The device this device_invocation belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "invocation_id": "example",
+      "request_hash": "example"
+    }
+order: 1000

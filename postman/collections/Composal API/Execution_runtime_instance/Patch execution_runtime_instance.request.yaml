@@ -1,0 +1,19 @@
+$kind: http-request
+id: "04550605-fead-55c6-9d9e-4c43779bb9ed"
+description: |-
+  The `patch` operation of **execution_runtime_instance**.
+
+  SDK: `client.ExecutionRuntimeInstance().patch({ id: "example" })`
+url: "{{base}}/api/v1/execution/runtime_instances/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{execution_runtime_instance_id}}"
+    description: The execution_runtime_instance this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

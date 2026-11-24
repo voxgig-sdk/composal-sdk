@@ -1,0 +1,86 @@
+{
+  "existing": {
+    "code_rule_evaluation": {
+      "CODE_RULE_EVALUATION00": {
+        "advisory": true,
+        "coverage": {},
+        "diff": "s84",
+        "duration_ms": 133,
+        "evaluator_version": "s86",
+        "input_digest": "s87",
+        "limits": {},
+        "model": "s89",
+        "requests": {},
+        "schema_version": 139,
+        "snapshot_digest": "s8c",
+        "unchecked": [],
+        "verdicts": [],
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CODE_RULE_EVALUATION00"
+      },
+      "CODE_RULE_EVALUATION01": {
+        "advisory": true,
+        "coverage": {},
+        "diff": "s106",
+        "duration_ms": 263,
+        "evaluator_version": "s108",
+        "input_digest": "s109",
+        "limits": {},
+        "model": "s10b",
+        "requests": {},
+        "schema_version": 269,
+        "snapshot_digest": "s10e",
+        "unchecked": [],
+        "verdicts": [],
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CODE_RULE_EVALUATION01"
+      },
+      "CODE_RULE_EVALUATION02": {
+        "advisory": true,
+        "coverage": {},
+        "diff": "s188",
+        "duration_ms": 393,
+        "evaluator_version": "s18a",
+        "input_digest": "s18b",
+        "limits": {},
+        "model": "s18d",
+        "requests": {},
+        "schema_version": 399,
+        "snapshot_digest": "s190",
+        "unchecked": [],
+        "verdicts": [],
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CODE_RULE_EVALUATION02"
+      }
+    }
+  },
+  "new": {
+    "code_rule_evaluation": {
+      "code_rule_evaluation_ref01": {
+        "advisory": true,
+        "coverage": {},
+        "diff": "s20a",
+        "duration_ms": 523,
+        "evaluator_version": "s20c",
+        "input_digest": "s20d",
+        "limits": {},
+        "model": "s20f",
+        "requests": {},
+        "schema_version": 529,
+        "snapshot_digest": "s212",
+        "unchecked": [],
+        "verdicts": []
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/evaluations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

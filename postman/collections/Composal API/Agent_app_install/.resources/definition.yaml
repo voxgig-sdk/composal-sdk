@@ -1,0 +1,10 @@
+$kind: collection
+id: "651da4cc-761e-5879-a2b5-9daca1e659d7"
+description: |-
+  The **agent_app_install** entity, which belongs to a organization and a agent_app. Its requests address one record by `{{agent_app_install_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+  | `installed` | boolean | yes |  |
+order: 6000

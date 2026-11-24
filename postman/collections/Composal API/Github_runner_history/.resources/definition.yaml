@@ -1,0 +1,17 @@
+$kind: collection
+id: "6de33f6e-5dd8-59a7-b9cc-1500aa3ac57e"
+description: |-
+  The **github_runner_history** entity, which belongs to a organization. Its requests address one record by `{{github_runner_history_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `activity` | array | yes |  |
+  | `counts` | object | yes |  |
+  | `observed_at` | string | yes |  |
+  | `pagination` | object | yes |  |
+  | `repositories` | array | yes |  |
+  | `runs` | array | yes |  |
+  | `setup` | any |  |  |
+  | `success_rate` | integer | yes |  |
+  | `usage` | object | yes |  |
+order: 270000

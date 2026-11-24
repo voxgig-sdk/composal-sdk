@@ -1,0 +1,8 @@
+$kind: collection
+id: "126ffbf8-92f3-53cf-960a-cff74f39da25"
+description: |-
+  The **lease_verify_secret** entity. Its requests address one record by `{{lease_verify_secret_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 302000

@@ -1,0 +1,93 @@
+{
+  "existing": {
+    "billing_package": {
+      "BILLING_PACKAGE00": {
+        "addons": [],
+        "base_price_cents": 171,
+        "billing_interval": "sac",
+        "billing_policy": "sad",
+        "ci_included_spend_cents": 174,
+        "currency": "saf",
+        "key": "sb0",
+        "max_seats": "sb1",
+        "name": "sb2",
+        "pay_as_you_go_enabled": false,
+        "rates": [],
+        "revision": 181,
+        "roder_daily_run_limit": 182,
+        "roder_run_concurrency_limit": 183,
+        "seat_price_cents": 184,
+        "trial_days": 185,
+        "visibility": "sba"
+      },
+      "BILLING_PACKAGE01": {
+        "addons": [],
+        "base_price_cents": 341,
+        "billing_interval": "s156",
+        "billing_policy": "s157",
+        "ci_included_spend_cents": 344,
+        "currency": "s159",
+        "key": "s15a",
+        "max_seats": "s15b",
+        "name": "s15c",
+        "pay_as_you_go_enabled": false,
+        "rates": [],
+        "revision": 351,
+        "roder_daily_run_limit": 352,
+        "roder_run_concurrency_limit": 353,
+        "seat_price_cents": 354,
+        "trial_days": 355,
+        "visibility": "s164"
+      },
+      "BILLING_PACKAGE02": {
+        "addons": [],
+        "base_price_cents": 511,
+        "billing_interval": "s200",
+        "billing_policy": "s201",
+        "ci_included_spend_cents": 514,
+        "currency": "s203",
+        "key": "s204",
+        "max_seats": "s205",
+        "name": "s206",
+        "pay_as_you_go_enabled": false,
+        "rates": [],
+        "revision": 521,
+        "roder_daily_run_limit": 522,
+        "roder_run_concurrency_limit": 523,
+        "seat_price_cents": 524,
+        "trial_days": 525,
+        "visibility": "s20e"
+      }
+    }
+  },
+  "new": {
+    "billing_package": {
+      "billing_package_ref01": {
+        "addons": [],
+        "base_price_cents": 681,
+        "billing_interval": "s2aa",
+        "billing_policy": "s2ab",
+        "ci_included_spend_cents": 684,
+        "currency": "s2ad",
+        "key": "s2ae",
+        "max_seats": "s2af",
+        "name": "s2b0",
+        "pay_as_you_go_enabled": false,
+        "rates": [],
+        "revision": 691,
+        "roder_daily_run_limit": 692,
+        "roder_run_concurrency_limit": 693,
+        "seat_price_cents": 694,
+        "trial_days": 695,
+        "visibility": "s2b8"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/billing/packages": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

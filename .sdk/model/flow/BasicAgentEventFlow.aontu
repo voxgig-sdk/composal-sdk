@@ -1,0 +1,27 @@
+# BasicAgentEventFlow
+
+main: kit: flow: BasicAgentEventFlow:
+{
+  entity: "agent_event",
+  kind: "basic",
+  name: "BasicAgentEventFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_event_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentEventFlow"
+}

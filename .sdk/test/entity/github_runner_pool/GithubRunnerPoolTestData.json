@@ -1,0 +1,111 @@
+{
+  "existing": {
+    "github_runner_pool": {
+      "GITHUB_RUNNER_POOL00": {
+        "cpu_millicores": 180,
+        "enabled": false,
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "github_repository_id": "GITHUB_REPOSITORY01",
+        "github_runner_image": "sb8",
+        "id": "GITHUB_RUNNER_POOL00",
+        "image": "sba",
+        "invocations": [],
+        "label": "sbc",
+        "last_error": "sbd",
+        "last_polled_at": "sbe",
+        "max_concurrency": 191,
+        "memory_mb": 192,
+        "organization_id": "ORGANIZATION01",
+        "provider": "sc2",
+        "repository_full_name": "sc3",
+        "runtime_kind": "sc4",
+        "timeout_seconds": 197
+      },
+      "GITHUB_RUNNER_POOL01": {
+        "cpu_millicores": 360,
+        "enabled": false,
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "github_repository_id": "GITHUB_REPOSITORY01",
+        "github_runner_image": "s16c",
+        "id": "GITHUB_RUNNER_POOL01",
+        "image": "s16e",
+        "invocations": [],
+        "label": "s170",
+        "last_error": "s171",
+        "last_polled_at": "s172",
+        "max_concurrency": 371,
+        "memory_mb": 372,
+        "organization_id": "ORGANIZATION01",
+        "provider": "s176",
+        "repository_full_name": "s177",
+        "runtime_kind": "s178",
+        "timeout_seconds": 377
+      },
+      "GITHUB_RUNNER_POOL02": {
+        "cpu_millicores": 540,
+        "enabled": false,
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "github_repository_id": "GITHUB_REPOSITORY01",
+        "github_runner_image": "s220",
+        "id": "GITHUB_RUNNER_POOL02",
+        "image": "s222",
+        "invocations": [],
+        "label": "s224",
+        "last_error": "s225",
+        "last_polled_at": "s226",
+        "max_concurrency": 551,
+        "memory_mb": 552,
+        "organization_id": "ORGANIZATION01",
+        "provider": "s22a",
+        "repository_full_name": "s22b",
+        "runtime_kind": "s22c",
+        "timeout_seconds": 557
+      }
+    }
+  },
+  "new": {
+    "github_runner_pool": {
+      "github_runner_pool_ref01": {
+        "cpu_millicores": 720,
+        "enabled": false,
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "github_repository_id": "GITHUB_REPOSITORY01",
+        "github_runner_image": "s2d4",
+        "image": "s2d6",
+        "invocations": [],
+        "label": "s2d8",
+        "last_error": "s2d9",
+        "last_polled_at": "s2da",
+        "max_concurrency": 731,
+        "memory_mb": 732,
+        "organization_id": "ORGANIZATION01",
+        "provider": "s2de",
+        "repository_full_name": "s2df",
+        "runtime_kind": "s2e0",
+        "timeout_seconds": 737
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/github_runner_pools": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/github_runner_pools": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/github_runner_pools/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/github_runner_pools/configure": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

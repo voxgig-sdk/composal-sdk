@@ -1,0 +1,19 @@
+$kind: http-request
+id: fde49113-dba9-5f6d-a2ee-c43bcc6294ce
+description: |-
+  The `validate_route` action of **networking_space**, a route of its `create` operation.
+
+  SDK: `client.NetworkingSpace().create({ "id": "ID", $action: "validate_route" })`
+url: "{{base}}/api/v1/networking/spaces/:id/validate_route"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{networking_space_id}}"
+    description: The networking_space this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 10000

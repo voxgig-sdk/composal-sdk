@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "bazel_find_missing_blob": {
+      "BAZEL_FIND_MISSING_BLOB00": {
+        "id": "BAZEL_FIND_MISSING_BLOB00"
+      },
+      "BAZEL_FIND_MISSING_BLOB01": {
+        "id": "BAZEL_FIND_MISSING_BLOB01"
+      },
+      "BAZEL_FIND_MISSING_BLOB02": {
+        "id": "BAZEL_FIND_MISSING_BLOB02"
+      }
+    }
+  },
+  "new": {
+    "bazel_find_missing_blob": {
+      "bazel_find_missing_blob_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/bazel/find_missing_blobs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

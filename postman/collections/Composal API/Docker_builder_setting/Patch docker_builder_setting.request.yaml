@@ -1,0 +1,25 @@
+$kind: http-request
+id: "62b708bc-de2a-5af1-ac90-53992b2fd44c"
+description: |-
+  The `patch` operation of **docker_builder_setting**.
+
+  SDK: `client.DockerBuilderSetting().patch({ organization_id: "example", idle_timeout_seconds: 1 })`
+url: "{{base}}/api/v1/organizations/:organization_id/docker_builder_settings"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this docker_builder_setting belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "max_concurrency": 1,
+      "idle_timeout_seconds": 600,
+      "runtime_timeout_seconds": 3600,
+      "region": "us-east"
+    }
+order: 3000

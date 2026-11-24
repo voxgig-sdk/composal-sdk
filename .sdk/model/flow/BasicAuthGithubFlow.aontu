@@ -1,0 +1,28 @@
+# BasicAuthGithubFlow
+
+main: kit: flow: BasicAuthGithubFlow:
+{
+  entity: "auth_github",
+  kind: "basic",
+  name: "BasicAuthGithubFlow",
+  step: [
+    {
+      i: {
+        ref: "auth_github_ref01",
+        srcdatavar: "auth_github_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-auth_github_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAuthGithubFlow"
+}

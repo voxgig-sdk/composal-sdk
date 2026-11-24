@@ -1,0 +1,76 @@
+# BasicVcBranchFlow
+
+main: kit: flow: BasicVcBranchFlow:
+{
+  entity: "vc_branch",
+  kind: "basic",
+  name: "BasicVcBranchFlow",
+  step: [
+    {
+      i: {
+        ref: "vc_branch_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "vc_branch_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "vc_branch_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "vc_branch01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "vc_branch_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVcBranchFlow"
+}

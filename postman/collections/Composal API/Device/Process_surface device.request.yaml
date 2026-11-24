@@ -1,0 +1,25 @@
+$kind: http-request
+id: ddbb7793-f217-56ec-8313-3796aea077dc
+description: |-
+  The `process_surface` action of **device**, a route of its `create` operation.
+
+  SDK: `client.Device().create({ "organization_id": "organization_id", "id": "ID", $action: "process_surface" })`
+url: "{{base}}/api/v1/organizations/:organization_id/devices/:device_registration_id/process_surface"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this device belongs to.
+  - key: device_registration_id
+    value: "{{device_id}}"
+    description: The device this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "transport": "example"
+    }
+order: 9000

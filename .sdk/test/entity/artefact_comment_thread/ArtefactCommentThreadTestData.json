@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "artefact_comment_thread": {
+      "ARTEFACT_COMMENT_THREAD00": {
+        "anchor": "s3c",
+        "body": "s3d",
+        "comments": [],
+        "id": "ARTEFACT_COMMENT_THREAD00",
+        "quote": "s40",
+        "resolved": false,
+        "artefact_id": "ARTEFACT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ARTEFACT_COMMENT_THREAD01": {
+        "anchor": "s78",
+        "body": "s79",
+        "comments": [],
+        "id": "ARTEFACT_COMMENT_THREAD01",
+        "quote": "s7c",
+        "resolved": false,
+        "artefact_id": "ARTEFACT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ARTEFACT_COMMENT_THREAD02": {
+        "anchor": "sb4",
+        "body": "sb5",
+        "comments": [],
+        "id": "ARTEFACT_COMMENT_THREAD02",
+        "quote": "sb8",
+        "resolved": false,
+        "artefact_id": "ARTEFACT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "artefact_comment_thread": {
+      "artefact_comment_thread_ref01": {
+        "anchor": "sf0",
+        "body": "sf1",
+        "comments": [],
+        "quote": "sf4",
+        "resolved": false
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads/{anchor}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

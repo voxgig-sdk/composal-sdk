@@ -1,0 +1,15 @@
+$kind: http-request
+id: "614e4df8-63e9-563e-bbbc-eaec638eeab3"
+description: |-
+  The `load` operation of **artifact_retention_policy**.
+
+  SDK: `client.ArtifactRetentionPolicy().load({ id: "example_id" })`
+url: "{{base}}/api/v1/artifacts/retention_policies/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_retention_policy_id}}"
+    description: The artifact_retention_policy this request addresses.
+order: 2000

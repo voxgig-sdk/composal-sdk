@@ -1,0 +1,18 @@
+$kind: http-request
+id: befde8ee-8fdc-552f-9232-27fed225c5a8
+description: |-
+  The `install` action of **organization_app**, a route of its `remove` operation.
+
+  SDK: `client.OrganizationApp().remove({ "organization_id": "organization_id", "id": "ID", $action: "install" })`
+url: "{{base}}/api/v1/spark/organizations/:organization_id/apps/:name/install"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_app belongs to.
+  - key: name
+    value: "{{organization_app_id}}"
+    description: The organization_app this request addresses.
+order: 3000

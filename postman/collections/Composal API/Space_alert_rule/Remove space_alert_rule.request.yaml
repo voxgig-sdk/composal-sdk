@@ -1,0 +1,25 @@
+$kind: http-request
+id: ad050863-2d60-5e1e-8807-0883490e298d
+description: |-
+  The `remove` operation of **space_alert_rule**.
+
+  SDK: `client.SpaceAlertRule().remove({ id: "example_id", space_id: "example" })`
+url: "{{base}}/api/v1/observability/spaces/:space_id/alert_rules/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+  - key: id
+    value: "{{space_alert_rule_id}}"
+    description: The space_alert_rule this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("space_alert_rule_id")
+      }
+    language: text/javascript
+order: 9000

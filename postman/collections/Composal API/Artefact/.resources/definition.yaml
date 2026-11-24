@@ -1,0 +1,37 @@
+$kind: collection
+id: f487b0c8-7f86-5b75-b75c-1508ea3d139e
+description: |-
+  The **artefact** entity, which belongs to a organization. Its requests address one record by `{{artefact_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `automation_invocation_id` | string |  |  |
+  | `byte_size` | integer | yes |  |
+  | `checksum_sha256` | string | yes |  |
+  | `content_type` | string | yes |  |
+  | `created_at` | string |  |  |
+  | `created_by_user_id` | string |  |  |
+  | `description` | string |  |  |
+  | `document_key` | string |  |  |
+  | `entrypoint` | string |  |  |
+  | `expires_at` | string |  |  |
+  | `filename` | string | yes |  |
+  | `files` | array |  |  |
+  | `harness` | string |  |  |
+  | `harness_version` | string |  |  |
+  | `id` | string | yes |  |
+  | `kind` | string | yes |  |
+  | `model` | string |  |  |
+  | `organization_id` | string | yes |  |
+  | `published_at` | string |  |  |
+  | `repository_id` | string |  |  |
+  | `slug` | string | yes |  |
+  | `source` | string | yes |  |
+  | `status` | string | yes |  |
+  | `title` | string | yes |  |
+  | `vcs_agent_checkpoint_id` | string |  |  |
+  | `vcs_agent_session_id` | string |  |  |
+  | `version` | integer | yes |  |
+  | `view_url` | string | yes |  |
+  | `web_url` | string | yes |  |
+order: 101000

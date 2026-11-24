@@ -1,0 +1,33 @@
+# BasicPageCiPipelineRunFlow
+
+main: kit: flow: BasicPageCiPipelineRunFlow:
+{
+  entity: "page_ci_pipeline_run",
+  kind: "basic",
+  name: "BasicPageCiPipelineRunFlow",
+  step: [
+    {
+      i: {
+        ref: "page_ci_pipeline_run_ref01",
+        srcdatavar: "page_ci_pipeline_run_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "page_ci_pipeline_run01",
+        pipeline_id: "pipeline01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-page_ci_pipeline_run_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPageCiPipelineRunFlow"
+}

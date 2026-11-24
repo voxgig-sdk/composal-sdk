@@ -1,0 +1,81 @@
+{
+  "existing": {
+    "transcript": {
+      "TRANSCRIPT00": {
+        "agent": "s6e",
+        "author": {},
+        "checkpoint_pagination": {},
+        "checkpoints": [],
+        "id": "TRANSCRIPT00",
+        "last_checkpoint_at": "s73",
+        "selected_checkpoint": "s74",
+        "source_url": "s75",
+        "started_at": "s76",
+        "status": "s77",
+        "title": "s78",
+        "organization_id": "ORGANIZATION01"
+      },
+      "TRANSCRIPT01": {
+        "agent": "sdc",
+        "author": {},
+        "checkpoint_pagination": {},
+        "checkpoints": [],
+        "id": "TRANSCRIPT01",
+        "last_checkpoint_at": "se1",
+        "selected_checkpoint": "se2",
+        "source_url": "se3",
+        "started_at": "se4",
+        "status": "se5",
+        "title": "se6",
+        "organization_id": "ORGANIZATION01"
+      },
+      "TRANSCRIPT02": {
+        "agent": "s14a",
+        "author": {},
+        "checkpoint_pagination": {},
+        "checkpoints": [],
+        "id": "TRANSCRIPT02",
+        "last_checkpoint_at": "s14f",
+        "selected_checkpoint": "s150",
+        "source_url": "s151",
+        "started_at": "s152",
+        "status": "s153",
+        "title": "s154",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "transcript": {
+      "transcript_ref01": {
+        "agent": "s1b8",
+        "author": {},
+        "checkpoint_pagination": {},
+        "checkpoints": [],
+        "last_checkpoint_at": "s1bd",
+        "selected_checkpoint": "s1be",
+        "source_url": "s1bf",
+        "started_at": "s1c0",
+        "status": "s1c1",
+        "title": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/transcripts/search": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/transcripts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/transcripts/read": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

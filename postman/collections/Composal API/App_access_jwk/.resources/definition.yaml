@@ -1,0 +1,8 @@
+$kind: collection
+id: "93793ea9-b34f-5d6a-8f44-574902cb6be7"
+description: |-
+  The **app_access_jwk** entity. Its requests address one record by `{{app_access_jwk_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 82000

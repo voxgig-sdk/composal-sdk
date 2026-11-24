@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "comment_thread_comment": {
+      "COMMENT_THREAD_COMMENT00": {
+        "body": "sa",
+        "artefact_id": "ARTEFACT01",
+        "comment_thread_id": "COMMENT_THREAD01",
+        "organization_id": "ORGANIZATION01",
+        "id": "COMMENT_THREAD_COMMENT00"
+      },
+      "COMMENT_THREAD_COMMENT01": {
+        "body": "s14",
+        "artefact_id": "ARTEFACT01",
+        "comment_thread_id": "COMMENT_THREAD01",
+        "organization_id": "ORGANIZATION01",
+        "id": "COMMENT_THREAD_COMMENT01"
+      },
+      "COMMENT_THREAD_COMMENT02": {
+        "body": "s1e",
+        "artefact_id": "ARTEFACT01",
+        "comment_thread_id": "COMMENT_THREAD01",
+        "organization_id": "ORGANIZATION01",
+        "id": "COMMENT_THREAD_COMMENT02"
+      }
+    }
+  },
+  "new": {
+    "comment_thread_comment": {
+      "comment_thread_comment_ref01": {
+        "body": "s28"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads/{anchor}/comments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

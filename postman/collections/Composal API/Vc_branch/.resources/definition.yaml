@@ -1,0 +1,11 @@
+$kind: collection
+id: "1c3290cc-40bd-5e83-8ec2-178536b0e5c5"
+description: |-
+  The **vc_branch** entity, which belongs to a organization and a repo. Its requests address one record by `{{vc_branch_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+  | `name` | string | yes |  |
+  | `target_commit_id` | string | yes |  |
+order: 523000

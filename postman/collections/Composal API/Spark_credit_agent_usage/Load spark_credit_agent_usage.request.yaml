@@ -1,0 +1,18 @@
+$kind: http-request
+id: c1d4c345-3ec5-51e6-b133-0cb1809a0604
+description: |-
+  The `load` operation of **spark_credit_agent_usage**.
+
+  SDK: `client.SparkCreditAgentUsage().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/spark_credits/agent_usage/:agent_id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this spark_credit_agent_usage belongs to.
+  - key: agent_id
+    value: "{{spark_credit_agent_usage_id}}"
+    description: The spark_credit_agent_usage this request addresses.
+order: 1000

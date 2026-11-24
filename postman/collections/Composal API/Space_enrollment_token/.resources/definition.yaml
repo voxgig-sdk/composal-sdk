@@ -1,0 +1,9 @@
+$kind: collection
+id: c86c010d-cda5-5364-b6d1-2cc5054cc921
+description: |-
+  The **space_enrollment_token** entity. Its requests address one record by `{{space_enrollment_token_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 484000

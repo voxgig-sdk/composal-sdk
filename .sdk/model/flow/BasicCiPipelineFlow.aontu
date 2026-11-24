@@ -1,0 +1,52 @@
+# BasicCiPipelineFlow
+
+main: kit: flow: BasicCiPipelineFlow:
+{
+  entity: "ci_pipeline",
+  kind: "basic",
+  name: "BasicCiPipelineFlow",
+  step: [
+    {
+      i: {
+        ref: "ci_pipeline_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "ci_pipeline_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "ci_pipeline_ref01",
+        srcdatavar: "ci_pipeline_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "ci_pipeline01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ci_pipeline_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCiPipelineFlow"
+}

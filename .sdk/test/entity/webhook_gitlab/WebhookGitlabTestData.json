@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "webhook_gitlab": {
+      "WEBHOOK_GITLAB00": {
+        "id": "WEBHOOK_GITLAB00"
+      },
+      "WEBHOOK_GITLAB01": {
+        "id": "WEBHOOK_GITLAB01"
+      },
+      "WEBHOOK_GITLAB02": {
+        "id": "WEBHOOK_GITLAB02"
+      }
+    }
+  },
+  "new": {
+    "webhook_gitlab": {
+      "webhook_gitlab_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/webhooks/gitlab/{connection_key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+$kind: collection
+id: "81ffe02d-6b50-584c-80d7-679344f2d214"
+description: |-
+  The **billing_prepaid_purchase** entity, which belongs to a organization. Its requests address one record by `{{billing_prepaid_purchase_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `activated_at` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `currency` | string | yes |  |
+  | `id` | string | yes |  |
+  | `last_error` | string | yes |  |
+  | `minutes` | integer | yes |  |
+  | `net_amount_cents` | integer | yes |  |
+  | `paid_at` | string | yes |  |
+  | `paid_total_cents` | integer | yes |  |
+  | `payment_action_url` | string | yes |  |
+  | `prepaid` | object | yes |  |
+  | `purchase` | object | yes |  |
+  | `receipt_url` | string | yes |  |
+  | `refunded_net_cents` | integer | yes |  |
+  | `request_key` | string | yes |  |
+  | `state` | string | yes |  |
+order: 135000

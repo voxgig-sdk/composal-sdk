@@ -1,0 +1,15 @@
+$kind: http-request
+id: f7a3123c-26b9-508a-885d-bb46a3ea6923
+description: |-
+  The `load` operation of **artifact_image_repository**.
+
+  SDK: `client.ArtifactImageRepository().load({ id: "example_id" })`
+url: "{{base}}/api/v1/artifacts/image_repositories/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_image_repository_id}}"
+    description: The artifact_image_repository this request addresses.
+order: 2000

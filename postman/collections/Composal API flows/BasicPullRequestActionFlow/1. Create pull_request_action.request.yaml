@@ -1,0 +1,87 @@
+$kind: http-request
+id: "78b1d07c-1fbf-508d-a7d2-85fb63b418ce"
+description: |-
+  The `create` operation of **pull_request_action**.
+
+  SDK: `client.PullRequestAction().create({ number: "example", organization_id: "example", pull_request_id: "example", action_name: "example", operation_key: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/github/pull_requests/:github_repository_id/:number/actions"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this pull_request_action belongs to.
+  - key: github_repository_id
+    value: "{{pull_request_id}}"
+    description: The pull_request this pull_request_action belongs to.
+  - key: number
+    value: "{{number}}"
+    description: "Input: number."
+body:
+  type: json
+  content: |-
+    {
+      "operation_key": "example",
+      "action_name": "comment",
+      "body": "example",
+      "expected_head_sha": "example",
+      "event": "COMMENT",
+      "path": "example",
+      "line": 1,
+      "side": "LEFT",
+      "start_line": 1,
+      "start_side": "example",
+      "comment_id": "example",
+      "thread_id": "example",
+      "label": "example",
+      "run_id": "example",
+      "comments": [
+        {
+          "path": "example",
+          "line": 1,
+          "side": "LEFT",
+          "body": "example"
+        }
+      ]
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","pull_request_id","number"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("1. Create pull_request_action: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const made = body?.["result"]
+      pm.test("1. Create pull_request_action: the record carries its key", () => {
+        pm.expect(made, "record").to.be.an("object")
+        pm.expect(at(made, "id"), "id").to.exist
+      })
+      if (null != made && null != at(made, "id")) pm.variables.set("pull_request_action_ref01", String(at(made, "id")))
+    language: text/javascript
+order: 1000

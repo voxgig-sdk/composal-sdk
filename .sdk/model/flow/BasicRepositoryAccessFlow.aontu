@@ -11,23 +11,7 @@ main: kit: flow: BasicRepositoryAccessFlow:
         ref: "repository_access_ref01"
       }
 
-      m: {
-        org_slug: "org_slug01"
-      }
-
       o: "create"
-    }
-
-    {
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "repository_access_ref01"
-          }
-        }
-      ]
     }
 
     {
@@ -35,11 +19,6 @@ main: kit: flow: BasicRepositoryAccessFlow:
         ref: "repository_access_ref01",
         srcdatavar: "repository_access_ref01_data",
         suffix: "_dt0"
-      }
-
-      m: {
-        id: "repository_access01",
-        org_slug: "org_slug01"
       }
 
       o: "load",

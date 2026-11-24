@@ -1,0 +1,38 @@
+# BasicSpaceAuditEventFlow
+
+main: kit: flow: BasicSpaceAuditEventFlow:
+{
+  entity: "space_audit_event",
+  kind: "basic",
+  name: "BasicSpaceAuditEventFlow",
+  step: [
+    {
+      i: {
+        ref: "space_audit_event_ref01"
+      }
+
+      m: {
+        space_id: "space01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        space_id: "space01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "space_audit_event_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSpaceAuditEventFlow"
+}

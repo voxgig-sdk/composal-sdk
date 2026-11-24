@@ -1,0 +1,151 @@
+{
+  "existing": {
+    "spark_credit": {
+      "SPARK_CREDIT00": {
+        "amount_cents": 250,
+        "autofill": "sfb",
+        "autofill_payment_unconfirmed": true,
+        "available_usd": "sfd",
+        "billing_unit": "sfe",
+        "can_manage": false,
+        "compute_minutes": {},
+        "compute_usd": "s101",
+        "credits_per_usd": 258,
+        "inference_usd": "s103",
+        "kind": "s104",
+        "payment_method": "s105",
+        "payments_enabled": true,
+        "plan": "s107",
+        "plans": [],
+        "quoted_credits_cents": 265,
+        "quoted_price_cents": 266,
+        "refill_limits_cents": [],
+        "refill_options": [],
+        "refill_thresholds_cents": [],
+        "request_key": "s10e",
+        "settings": "s10f",
+        "starter_cents": 272,
+        "top_up_max_cents": 273,
+        "top_up_step_cents": 274,
+        "organization_id": "ORGANIZATION01",
+        "id": "SPARK_CREDIT00"
+      },
+      "SPARK_CREDIT01": {
+        "amount_cents": 500,
+        "autofill": "s1f5",
+        "autofill_payment_unconfirmed": true,
+        "available_usd": "s1f7",
+        "billing_unit": "s1f8",
+        "can_manage": false,
+        "compute_minutes": {},
+        "compute_usd": "s1fb",
+        "credits_per_usd": 508,
+        "inference_usd": "s1fd",
+        "kind": "s1fe",
+        "payment_method": "s1ff",
+        "payments_enabled": true,
+        "plan": "s201",
+        "plans": [],
+        "quoted_credits_cents": 515,
+        "quoted_price_cents": 516,
+        "refill_limits_cents": [],
+        "refill_options": [],
+        "refill_thresholds_cents": [],
+        "request_key": "s208",
+        "settings": "s209",
+        "starter_cents": 522,
+        "top_up_max_cents": 523,
+        "top_up_step_cents": 524,
+        "organization_id": "ORGANIZATION01",
+        "id": "SPARK_CREDIT01"
+      },
+      "SPARK_CREDIT02": {
+        "amount_cents": 750,
+        "autofill": "s2ef",
+        "autofill_payment_unconfirmed": true,
+        "available_usd": "s2f1",
+        "billing_unit": "s2f2",
+        "can_manage": false,
+        "compute_minutes": {},
+        "compute_usd": "s2f5",
+        "credits_per_usd": 758,
+        "inference_usd": "s2f7",
+        "kind": "s2f8",
+        "payment_method": "s2f9",
+        "payments_enabled": true,
+        "plan": "s2fb",
+        "plans": [],
+        "quoted_credits_cents": 765,
+        "quoted_price_cents": 766,
+        "refill_limits_cents": [],
+        "refill_options": [],
+        "refill_thresholds_cents": [],
+        "request_key": "s302",
+        "settings": "s303",
+        "starter_cents": 772,
+        "top_up_max_cents": 773,
+        "top_up_step_cents": 774,
+        "organization_id": "ORGANIZATION01",
+        "id": "SPARK_CREDIT02"
+      }
+    }
+  },
+  "new": {
+    "spark_credit": {
+      "spark_credit_ref01": {
+        "amount_cents": 1000,
+        "autofill": "s3e9",
+        "autofill_payment_unconfirmed": true,
+        "available_usd": "s3eb",
+        "billing_unit": "s3ec",
+        "can_manage": false,
+        "compute_minutes": {},
+        "compute_usd": "s3ef",
+        "credits_per_usd": 1008,
+        "inference_usd": "s3f1",
+        "kind": "s3f2",
+        "payment_method": "s3f3",
+        "payments_enabled": true,
+        "plan": "s3f5",
+        "plans": [],
+        "quoted_credits_cents": 1015,
+        "quoted_price_cents": 1016,
+        "refill_limits_cents": [],
+        "refill_options": [],
+        "refill_thresholds_cents": [],
+        "request_key": "s3fc",
+        "settings": "s3fd",
+        "starter_cents": 1022,
+        "top_up_max_cents": 1023,
+        "top_up_step_cents": 1024
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/spark_credits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/spark_credits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/spark_credits/daily_usage": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{org_slug}/spark_credits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{org_slug}/spark_credits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

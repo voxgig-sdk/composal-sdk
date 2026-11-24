@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "merge_resolution": {
+      "MERGE_RESOLUTION00": {
+        "action": "s6e",
+        "base": "s6f",
+        "content": "s70",
+        "context": {},
+        "duration_ms": 114,
+        "fallback": false,
+        "model": "s74",
+        "ours": "s75",
+        "path": "s76",
+        "resolved": false,
+        "theirs": "s78",
+        "id": "MERGE_RESOLUTION00"
+      },
+      "MERGE_RESOLUTION01": {
+        "action": "sdc",
+        "base": "sdd",
+        "content": "sde",
+        "context": {},
+        "duration_ms": 224,
+        "fallback": false,
+        "model": "se2",
+        "ours": "se3",
+        "path": "se4",
+        "resolved": false,
+        "theirs": "se6",
+        "id": "MERGE_RESOLUTION01"
+      },
+      "MERGE_RESOLUTION02": {
+        "action": "s14a",
+        "base": "s14b",
+        "content": "s14c",
+        "context": {},
+        "duration_ms": 334,
+        "fallback": false,
+        "model": "s150",
+        "ours": "s151",
+        "path": "s152",
+        "resolved": false,
+        "theirs": "s154",
+        "id": "MERGE_RESOLUTION02"
+      }
+    }
+  },
+  "new": {
+    "merge_resolution": {
+      "merge_resolution_ref01": {
+        "action": "s1b8",
+        "base": "s1b9",
+        "content": "s1ba",
+        "context": {},
+        "duration_ms": 444,
+        "fallback": false,
+        "model": "s1be",
+        "ours": "s1bf",
+        "path": "s1c0",
+        "resolved": false,
+        "theirs": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/merge_resolutions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

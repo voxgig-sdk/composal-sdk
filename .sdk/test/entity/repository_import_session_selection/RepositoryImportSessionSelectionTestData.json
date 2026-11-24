@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "repository_import_session_selection": {
+      "REPOSITORY_IMPORT_SESSION_SELECTION00": {
+        "repositories": "sa",
+        "repository_import_session_id": "REPOSITORY_IMPORT_SESSION01",
+        "id": "REPOSITORY_IMPORT_SESSION_SELECTION00"
+      },
+      "REPOSITORY_IMPORT_SESSION_SELECTION01": {
+        "repositories": "s14",
+        "repository_import_session_id": "REPOSITORY_IMPORT_SESSION01",
+        "id": "REPOSITORY_IMPORT_SESSION_SELECTION01"
+      },
+      "REPOSITORY_IMPORT_SESSION_SELECTION02": {
+        "repositories": "s1e",
+        "repository_import_session_id": "REPOSITORY_IMPORT_SESSION01",
+        "id": "REPOSITORY_IMPORT_SESSION_SELECTION02"
+      }
+    }
+  },
+  "new": {
+    "repository_import_session_selection": {
+      "repository_import_session_selection_ref01": {
+        "repositories": "s28"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/repository_import_sessions/{id}/selections": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

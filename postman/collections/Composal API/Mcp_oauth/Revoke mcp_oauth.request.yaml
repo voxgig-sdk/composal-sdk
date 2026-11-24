@@ -1,0 +1,15 @@
+$kind: http-request
+id: "47c645fb-9ca1-5cb7-87c3-d332b775030d"
+description: |-
+  The `revoke` action of **mcp_oauth**, a route of its `create` operation.
+
+  SDK: `client.McpOauth().create({ $action: "revoke" })`
+url: "{{base}}/api/v1/mcp/oauth/revoke"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 5000

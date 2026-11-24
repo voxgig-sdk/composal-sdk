@@ -1,0 +1,133 @@
+{
+  "existing": {
+    "change_comment": {
+      "CHANGE_COMMENT00": {
+        "body": "sdc",
+        "capabilities": {},
+        "change_id": "CHANGE01",
+        "created_at": "sdf",
+        "created_at_label": "se0",
+        "id": "CHANGE_COMMENT00",
+        "kind": "se2",
+        "line": "se3",
+        "outdated": true,
+        "parent_comment_id": "PARENT_COMMENT01",
+        "patchset_id": "PATCHSET01",
+        "patchset_number": "se7",
+        "path": "se8",
+        "replies": [],
+        "resolved": true,
+        "resolved_at": "seb",
+        "resolved_at_label": "sec",
+        "resolved_by": {},
+        "side": "see",
+        "updated_at": "sef",
+        "updated_at_label": "sf0",
+        "user": {},
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "CHANGE_COMMENT01": {
+        "body": "s1b8",
+        "capabilities": {},
+        "change_id": "CHANGE01",
+        "created_at": "s1bb",
+        "created_at_label": "s1bc",
+        "id": "CHANGE_COMMENT01",
+        "kind": "s1be",
+        "line": "s1bf",
+        "outdated": true,
+        "parent_comment_id": "PARENT_COMMENT01",
+        "patchset_id": "PATCHSET01",
+        "patchset_number": "s1c3",
+        "path": "s1c4",
+        "replies": [],
+        "resolved": true,
+        "resolved_at": "s1c7",
+        "resolved_at_label": "s1c8",
+        "resolved_by": {},
+        "side": "s1ca",
+        "updated_at": "s1cb",
+        "updated_at_label": "s1cc",
+        "user": {},
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      },
+      "CHANGE_COMMENT02": {
+        "body": "s294",
+        "capabilities": {},
+        "change_id": "CHANGE01",
+        "created_at": "s297",
+        "created_at_label": "s298",
+        "id": "CHANGE_COMMENT02",
+        "kind": "s29a",
+        "line": "s29b",
+        "outdated": true,
+        "parent_comment_id": "PARENT_COMMENT01",
+        "patchset_id": "PATCHSET01",
+        "patchset_number": "s29f",
+        "path": "s2a0",
+        "replies": [],
+        "resolved": true,
+        "resolved_at": "s2a3",
+        "resolved_at_label": "s2a4",
+        "resolved_by": {},
+        "side": "s2a6",
+        "updated_at": "s2a7",
+        "updated_at_label": "s2a8",
+        "user": {},
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01"
+      }
+    }
+  },
+  "new": {
+    "change_comment": {
+      "change_comment_ref01": {
+        "body": "s370",
+        "capabilities": {},
+        "change_id": "CHANGE01",
+        "created_at": "s373",
+        "created_at_label": "s374",
+        "kind": "s376",
+        "line": "s377",
+        "outdated": true,
+        "parent_comment_id": "PARENT_COMMENT01",
+        "patchset_id": "PATCHSET01",
+        "patchset_number": "s37b",
+        "path": "s37c",
+        "replies": [],
+        "resolved": true,
+        "resolved_at": "s37f",
+        "resolved_at_label": "s380",
+        "resolved_by": {},
+        "side": "s382",
+        "updated_at": "s383",
+        "updated_at_label": "s384",
+        "user": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/unresolve": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

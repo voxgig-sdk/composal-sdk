@@ -1,0 +1,15 @@
+$kind: collection
+id: "1f6d986b-5192-5540-a830-8bebc70cab84"
+description: |-
+  The **change_group_member** entity, which belongs to a organization and a repo. Its requests address one record by `{{change_group_member_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `change_id` | string | yes |  |
+  | `changes` | array | yes |  |
+  | `id` | string |  |  |
+  | `name` | string |  |  |
+  | `number` | integer |  |  |
+  | `status` | string | yes |  |
+  | `title` | string | yes |  |
+order: 162000

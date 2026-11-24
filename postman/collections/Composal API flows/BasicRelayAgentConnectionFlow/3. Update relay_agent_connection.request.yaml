@@ -1,0 +1,71 @@
+$kind: http-request
+id: "47cbaf26-cbcc-5d93-856a-b961a5b8721d"
+description: |-
+  The `update` operation of **relay_agent_connection**.
+
+  SDK: `client.RelayAgentConnection().update({ agent_id: "example", id: "example", organization_id: "example", auth_scheme: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/relay/connections/:connection_id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  X-Composal-Relay-Scope: "{{x_composal_relay_scope}}"
+  X-Composal-Requester-Id: "{{x_composal_requester_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this relay_agent_connection belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this relay_agent_connection belongs to.
+  - key: connection_id
+    value: "{{relay_agent_connection_ref01}}"
+    description: The relay_agent_connection this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "auth_scheme": "bearer",
+      "credential": "example",
+      "remote_agent": "example",
+      "expected_generation": 1,
+      "agent_card_url": "Mark01-relay_agent_connection_ref01"
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","agent_id","relay_agent_connection_ref01","x_composal_relay_scope","x_composal_requester_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("3. Update relay_agent_connection: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      pm.test("3. Update relay_agent_connection: the record is the one asked for", () => {
+        pm.expect(String(at(body?.["connection"], "id"))).to.eql(String(pm.variables.get("relay_agent_connection_ref01")))
+      })
+      if (pm.response.code < 300) pm.variables.set("relay_agent_connection_ref01_marked", "Mark01-relay_agent_connection_ref01")
+    language: text/javascript
+order: 3000

@@ -1,0 +1,15 @@
+$kind: http-request
+id: "8d0eea30-a155-530c-9abf-97412b0edab6"
+description: |-
+  The `usage` action of **billing**, a route of its `load` operation.
+
+  SDK: `client.Billing().load({ "organization_id": "organization_id", $action: "usage" })`
+url: "{{base}}/api/v1/organizations/:organization_id/billing/usage"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this billing belongs to.
+order: 10000

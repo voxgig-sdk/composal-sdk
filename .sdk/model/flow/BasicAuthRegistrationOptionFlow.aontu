@@ -1,0 +1,22 @@
+# BasicAuthRegistrationOptionFlow
+
+main: kit: flow: BasicAuthRegistrationOptionFlow:
+{
+  entity: "auth_registration_option",
+  kind: "basic",
+  name: "BasicAuthRegistrationOptionFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "auth_registration_option_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAuthRegistrationOptionFlow"
+}

@@ -1,0 +1,9 @@
+$kind: collection
+id: "294049a6-beaf-5982-b57d-239a59956c39"
+description: |-
+  The **space_peer** entity. Its requests address one record by `{{space_peer_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 491000

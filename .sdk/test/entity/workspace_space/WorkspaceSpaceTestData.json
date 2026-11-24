@@ -1,0 +1,94 @@
+{
+  "existing": {
+    "workspace_space": {
+      "WORKSPACE_SPACE00": {
+        "created_at": "s96",
+        "default_branch": "s97",
+        "description": "s98",
+        "hidden": false,
+        "icon_name": "s9a",
+        "id": "WORKSPACE_SPACE00",
+        "import_status": "s9c",
+        "name": "s9d",
+        "organization_id": "ORGANIZATION01",
+        "position": "s9f",
+        "repository_id": "REPOSITORY01",
+        "repository_slug": "sa1",
+        "slug": "sa2",
+        "status": "sa3",
+        "updated_at": "sa4"
+      },
+      "WORKSPACE_SPACE01": {
+        "created_at": "s12c",
+        "default_branch": "s12d",
+        "description": "s12e",
+        "hidden": false,
+        "icon_name": "s130",
+        "id": "WORKSPACE_SPACE01",
+        "import_status": "s132",
+        "name": "s133",
+        "organization_id": "ORGANIZATION01",
+        "position": "s135",
+        "repository_id": "REPOSITORY01",
+        "repository_slug": "s137",
+        "slug": "s138",
+        "status": "s139",
+        "updated_at": "s13a"
+      },
+      "WORKSPACE_SPACE02": {
+        "created_at": "s1c2",
+        "default_branch": "s1c3",
+        "description": "s1c4",
+        "hidden": false,
+        "icon_name": "s1c6",
+        "id": "WORKSPACE_SPACE02",
+        "import_status": "s1c8",
+        "name": "s1c9",
+        "organization_id": "ORGANIZATION01",
+        "position": "s1cb",
+        "repository_id": "REPOSITORY01",
+        "repository_slug": "s1cd",
+        "slug": "s1ce",
+        "status": "s1cf",
+        "updated_at": "s1d0"
+      }
+    }
+  },
+  "new": {
+    "workspace_space": {
+      "workspace_space_ref01": {
+        "created_at": "s258",
+        "default_branch": "s259",
+        "description": "s25a",
+        "hidden": false,
+        "icon_name": "s25c",
+        "import_status": "s25e",
+        "name": "s25f",
+        "organization_id": "ORGANIZATION01",
+        "position": "s261",
+        "repository_id": "REPOSITORY01",
+        "repository_slug": "s263",
+        "slug": "s264",
+        "status": "s265",
+        "updated_at": "s266"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/workspace_spaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/workspace_spaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/workspace_spaces/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

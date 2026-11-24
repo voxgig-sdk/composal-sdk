@@ -11,26 +11,38 @@ main: kit: flow: BasicAgentThreadFlow:
         ref: "agent_thread_ref01"
       }
 
-      m: {
-        agent_id: "agent01",
-        organization_id: "organization01"
-      }
-
       o: "create"
     }
 
     {
-      m: {
-        agent_id: "agent01",
-        organization_id: "organization01"
-      }
-
       o: "list",
       v: [
         {
           apply: "ItemExists",
           def: {
             ref: "agent_thread_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_thread_ref01",
+        srcdatavar: "agent_thread_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "agent_thread01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_thread_ref01"
           }
         }
       ]

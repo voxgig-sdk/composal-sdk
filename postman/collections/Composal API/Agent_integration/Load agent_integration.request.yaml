@@ -1,0 +1,18 @@
+$kind: http-request
+id: "9756201c-8451-5c18-83aa-5599d70b5adc"
+description: |-
+  The `load` operation of **agent_integration**.
+
+  SDK: `client.AgentIntegration().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_integrations/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_integration belongs to.
+  - key: id
+    value: "{{agent_integration_id}}"
+    description: The agent_integration this request addresses.
+order: 2000

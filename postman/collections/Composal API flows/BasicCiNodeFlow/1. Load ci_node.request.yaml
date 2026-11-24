@@ -1,0 +1,53 @@
+$kind: http-request
+id: f27b2ba5-e177-5d6a-aea9-ac34a7a37eac
+description: |-
+  The `load` operation of **ci_node**.
+
+  SDK: `client.CiNode().load({ id: "example_id" })`
+url: "{{base}}/api/v1/ci/nodes/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{ci_node_id}}"
+    description: The ci_node this request addresses.
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","ci_node_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("1. Load ci_node: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      if ("Mark01-ci_node_ref01" === pm.variables.get("ci_node_ref01_marked")) pm.test("1. Load ci_node: the update reads back", () => {
+        pm.expect(JSON.stringify(body?.["runner"])).to.include("Mark01-ci_node_ref01")
+      })
+      pm.test("1. Load ci_node: the record is the one asked for", () => {
+        pm.expect(String(at(body?.["runner"], "id"))).to.eql(String(pm.variables.get("ci_node_id")))
+      })
+    language: text/javascript
+order: 1000

@@ -1,0 +1,21 @@
+$kind: http-request
+id: "867e3459-ff99-538d-9f19-37a42aafee04"
+description: |-
+  The `create` operation of **metronome_webhook**.
+
+  SDK: `client.MetronomeWebhook().create({  })`
+url: "{{base}}/api/v1/metronome/webhooks"
+method: POST
+headers:
+  Accept: application/json
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("metronome_webhook_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

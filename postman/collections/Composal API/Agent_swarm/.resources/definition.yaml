@@ -1,0 +1,56 @@
+$kind: collection
+id: "3e96550c-503c-5d61-8f72-449ef97b0af4"
+description: |-
+  The **agent_swarm** entity. Its requests address one record by `{{agent_swarm_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `base_bookmark` | string | yes |  |
+  | `base_ref` | string | yes |  |
+  | `base_revision` | string | yes |  |
+  | `budget` | object | yes |  |
+  | `canceled_at` | string | yes |  |
+  | `canceled_count` | integer | yes |  |
+  | `concurrency_key` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `created_at_label` | string | yes |  |
+  | `creator_user_id` | string | yes |  |
+  | `deadline_at` | string | yes |  |
+  | `display_id` | integer | yes |  |
+  | `done_count` | integer | yes |  |
+  | `environment` | object | yes |  |
+  | `failed_count` | integer | yes |  |
+  | `finished_at` | string | yes |  |
+  | `finished_at_label` | string | yes |  |
+  | `github` | object | yes |  |
+  | `goal` | string | yes |  |
+  | `id` | string | yes |  |
+  | `model` | string | yes |  |
+  | `model_provider` | string | yes |  |
+  | `number` | integer | yes |  |
+  | `organization_id` | string | yes |  |
+  | `organization_slug` | string | yes |  |
+  | `outcome` | string | yes |  |
+  | `phase` | string | yes |  |
+  | `policy` | object | yes |  |
+  | `queued_at` | string | yes |  |
+  | `queued_at_label` | string | yes |  |
+  | `repository` | string |  |  |
+  | `repository_id` | string | yes |  |
+  | `repository_slug` | string | yes |  |
+  | `reserved` | object | yes |  |
+  | `scheduler_generation` | integer | yes |  |
+  | `skipped_count` | integer | yes |  |
+  | `slug` | string | yes |  |
+  | `started_at` | string | yes |  |
+  | `started_at_label` | string | yes |  |
+  | `status` | string | yes |  |
+  | `summary` | object | yes |  |
+  | `target` | object | yes |  |
+  | `task_count` | integer | yes |  |
+  | `task_template_json` | string | yes |  |
+  | `tasks` | array | yes |  |
+  | `updated_at` | string | yes |  |
+  | `updated_at_label` | string | yes |  |
+  | `usage` | object | yes |  |
+order: 59000

@@ -1,0 +1,9 @@
+$kind: collection
+id: "08a33541-09bd-5689-a3f7-afaaf21f847a"
+description: |-
+  The **bazel_backend** entity. Its requests address one record by `{{bazel_backend_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 124000

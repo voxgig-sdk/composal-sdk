@@ -1,0 +1,119 @@
+# Entity: vcs_setting
+
+main: kit: entity: vcs_setting: {
+
+  alias: field: {}
+
+  fields: {
+    can_manage_pr_scenario_writing: {
+      h: "Can Manage Pr Scenario Writing"
+      n: "can_manage_pr_scenario_writing"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_manage_sandbox_region: {
+      h: "Can Manage Sandbox Region"
+      n: "can_manage_sandbox_region"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    dedicated_outbound_ip_addresses: {
+      h: "Dedicated Outbound Ip Addresses"
+      n: "dedicated_outbound_ip_addresses"
+      r: true
+      sh: "Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled."
+      t: "`$ARRAY`"
+    }
+    default_trunk_bookmark: {
+      h: "Default Trunk Bookmark"
+      n: "default_trunk_bookmark"
+      r: true
+      t: "`$STRING`"
+    }
+    organization: {
+      h: "Organization"
+      n: "organization"
+      r: true
+      t: "`$OBJECT`"
+    }
+    sandbox_regions: {
+      h: "Sandbox Regions"
+      n: "sandbox_regions"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "vcs_setting"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/pages/vcs_settings"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/pages/vcs_settings"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "pages"
+            }
+            {
+              lit: "vcs_settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

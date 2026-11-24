@@ -1,0 +1,26 @@
+# BasicAgentRelayFileGrantAccountFlow
+
+main: kit: flow: BasicAgentRelayFileGrantAccountFlow:
+{
+  entity: "agent_relay_file_grant_account",
+  kind: "basic",
+  name: "BasicAgentRelayFileGrantAccountFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_relay_file_grant_account_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentRelayFileGrantAccountFlow"
+}

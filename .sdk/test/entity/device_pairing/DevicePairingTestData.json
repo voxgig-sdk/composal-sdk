@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "device_pairing": {
+      "DEVICE_PAIRING00": {
+        "architecture": "s3c",
+        "channel": "s3d",
+        "id": "DEVICE_PAIRING00",
+        "name": "s3f",
+        "platform": "s40",
+        "public_key": "s41",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEVICE_PAIRING01": {
+        "architecture": "s78",
+        "channel": "s79",
+        "id": "DEVICE_PAIRING01",
+        "name": "s7b",
+        "platform": "s7c",
+        "public_key": "s7d",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEVICE_PAIRING02": {
+        "architecture": "sb4",
+        "channel": "sb5",
+        "id": "DEVICE_PAIRING02",
+        "name": "sb7",
+        "platform": "sb8",
+        "public_key": "sb9",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "device_pairing": {
+      "device_pairing_ref01": {
+        "architecture": "sf0",
+        "channel": "sf1",
+        "name": "sf3",
+        "platform": "sf4",
+        "public_key": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/devices/pairings/{device_pairing_intent_id}/complete": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/devices/pairings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

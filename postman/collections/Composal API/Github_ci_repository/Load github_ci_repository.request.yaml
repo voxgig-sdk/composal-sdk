@@ -1,0 +1,18 @@
+$kind: http-request
+id: "1e70d8e5-9ca5-51a9-a669-5f86e1173738"
+description: |-
+  The `load` operation of **github_ci_repository**.
+
+  SDK: `client.GithubCiRepository().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/github_ci_repositories/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this github_ci_repository belongs to.
+  - key: id
+    value: "{{github_ci_repository_id}}"
+    description: The github_ci_repository this request addresses.
+order: 2000

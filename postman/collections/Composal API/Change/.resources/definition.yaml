@@ -1,0 +1,12 @@
+$kind: collection
+id: "655beb9e-11fd-5152-bf17-77164ba0253a"
+description: |-
+  The **change** entity, which belongs to a organization. Its requests address one record by `{{change_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `counts` | object | yes |  |
+  | `filters` | object | yes |  |
+  | `github_sync` | object | yes |  |
+  | `result` | any | yes |  |
+order: 19000

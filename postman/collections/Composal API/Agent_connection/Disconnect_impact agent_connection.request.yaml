@@ -1,0 +1,18 @@
+$kind: http-request
+id: a377fe99-5917-5e2d-a60c-b94b1a1c263e
+description: |-
+  The `disconnect_impact` action of **agent_connection**, a route of its `load` operation.
+
+  SDK: `client.AgentConnection().load({ "organization_id": "organization_id", "id": "ID", $action: "disconnect_impact" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_connections/:id/disconnect_impact"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_connection belongs to.
+  - key: id
+    value: "{{agent_connection_id}}"
+    description: The agent_connection this request addresses.
+order: 14000

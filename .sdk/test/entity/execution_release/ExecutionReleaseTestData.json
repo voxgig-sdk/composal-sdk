@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "execution_release": {
+      "EXECUTION_RELEASE00": {
+        "id": "EXECUTION_RELEASE00"
+      },
+      "EXECUTION_RELEASE01": {
+        "id": "EXECUTION_RELEASE01"
+      },
+      "EXECUTION_RELEASE02": {
+        "id": "EXECUTION_RELEASE02"
+      }
+    }
+  },
+  "new": {
+    "execution_release": {
+      "execution_release_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/execution/releases/{id}/activate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/execution/releases/{id}/fail": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/execution/releases/{id}/mark_ready": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/execution/releases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/execution/releases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/execution/releases/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

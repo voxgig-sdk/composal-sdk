@@ -1,0 +1,10 @@
+$kind: collection
+id: "43850007-1580-5a0f-a83f-eead07f7868e"
+description: |-
+  The **billing_token_top_up** entity, which belongs to a organization. Its requests address one record by `{{billing_token_top_up_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `amount_cents` | integer | yes |  |
+  | `request_key` | string | yes |  |
+order: 136000

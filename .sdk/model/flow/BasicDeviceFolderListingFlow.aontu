@@ -8,6 +8,19 @@ main: kit: flow: BasicDeviceFolderListingFlow:
   step: [
     {
       i: {
+        ref: "device_folder_listing_ref01"
+      }
+
+      m: {
+        device_id: "device01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
         ref: "device_folder_listing_ref01",
         srcdatavar: "device_folder_listing_ref01_data",
         suffix: "_dt0"

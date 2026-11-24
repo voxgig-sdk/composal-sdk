@@ -1,0 +1,18 @@
+$kind: http-request
+id: e68e4e31-1038-5450-a4b8-8ff37b1c3b7d
+description: |-
+  The `merge_policy` action of **repo_vc**, a route of its `load` operation.
+
+  SDK: `client.RepoVc().load({ "organization_id": "organization_id", "repo_id": "repo_id", $action: "merge_policy" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/merge_policy"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_vc belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_vc belongs to.
+order: 6000

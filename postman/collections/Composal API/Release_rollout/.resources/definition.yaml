@@ -1,0 +1,9 @@
+$kind: collection
+id: a255e155-6de7-5111-810c-fd76acc5baa2
+description: |-
+  The **release_rollout** entity. Its requests address one record by `{{release_rollout_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 421000

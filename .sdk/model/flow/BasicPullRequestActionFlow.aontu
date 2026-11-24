@@ -1,0 +1,24 @@
+# BasicPullRequestActionFlow
+
+main: kit: flow: BasicPullRequestActionFlow:
+{
+  entity: "pull_request_action",
+  kind: "basic",
+  name: "BasicPullRequestActionFlow",
+  step: [
+    {
+      i: {
+        ref: "pull_request_action_ref01"
+      }
+
+      m: {
+        number: "number01",
+        organization_id: "organization01",
+        pull_request_id: "pull_request01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicPullRequestActionFlow"
+}

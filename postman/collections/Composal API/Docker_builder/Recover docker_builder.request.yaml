@@ -1,0 +1,22 @@
+$kind: http-request
+id: "0d9d3d1b-22f2-5971-872a-8cd341b8e5a9"
+description: |-
+  The `recover` action of **docker_builder**, a route of its `create` operation.
+
+  SDK: `client.DockerBuilder().create({ "organization_id": "organization_id", "id": "ID", $action: "recover" })`
+url: "{{base}}/api/v1/organizations/:organization_id/docker_builders/:id/recover"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this docker_builder belongs to.
+  - key: id
+    value: "{{docker_builder_id}}"
+    description: The docker_builder this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

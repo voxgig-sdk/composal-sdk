@@ -1,0 +1,29 @@
+# BasicOrganizationSettingFlow
+
+main: kit: flow: BasicOrganizationSettingFlow:
+{
+  entity: "organization_setting",
+  kind: "basic",
+  name: "BasicOrganizationSettingFlow",
+  step: [
+    {
+      i: {
+        ref: "organization_setting_ref01",
+        srcdatavar: "organization_setting_ref01_data",
+        suffix: "_up0",
+        textfield: "deployment_usage_visibility"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-organization_setting_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOrganizationSettingFlow"
+}

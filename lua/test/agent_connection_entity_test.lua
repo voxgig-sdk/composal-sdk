@@ -29,7 +29,7 @@ describe("AgentConnectionEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:AgentConnection(nil):list({ ["agent_id"] = 1, ["organization_id"] = "x" }, nil)
+    local _, err = client:AgentConnection(nil):list({ ["organization_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -45,12 +45,12 @@ describe("AgentConnectionEntity", function()
       end
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
-      print("LIVE STEP {\"id\":\"agent_connection.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup\"}")
-      print("LIVE STEP {\"id\":\"agent_connection.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}\"}")
-      print("LIVE STEP {\"id\":\"agent_connection.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}\"}")
+      print("LIVE STEP {\"id\":\"agent_connection.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agent_connections/{id}/adopt_custody\"}")
+      print("LIVE STEP {\"id\":\"agent_connection.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/agent_connections/{id}\"}")
+      print("LIVE STEP {\"id\":\"agent_connection.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agent_connections/{id}\"}")
       print("LIVE STEP {\"id\":\"agent_connection.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
     if setup.live then
-      for _, _live_key in ipairs({"agent01", "organization01"}) do
+      for _, _live_key in ipairs({"organization01"}) do
         if setup.synthetic_only or setup.idmap[_live_key] == nil then
           runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_AGENT_CONNECTION_ENTID")
         end
@@ -64,7 +64,7 @@ describe("AgentConnectionEntity", function()
       end
       runner.live_pace()
       runner.live_existing(pending, setup, LIVE_STRICT, "agent_connection", function()
-        return client:AgentConnection(nil):list({["agent_id"] = setup.idmap["agent01"], ["organization_id"] = setup.idmap["organization01"]}, nil)
+        return client:AgentConnection(nil):list({["organization_id"] = setup.idmap["organization01"]}, nil)
       end, "id", _live_id)
     end
 
@@ -82,7 +82,6 @@ describe("AgentConnectionEntity", function()
     -- LIST
     local agent_connection_ref01_ent = client:AgentConnection(nil)
     local agent_connection_ref01_match = {
-      ["agent_id"] = setup.idmap["agent01"],
       ["organization_id"] = setup.idmap["organization01"],
     }
 
@@ -97,8 +96,14 @@ describe("AgentConnectionEntity", function()
     local agent_connection_ref01_match_dt0 = {
       id = agent_connection_ref01_data["id"],
     }
-    agent_connection_ref01_match_dt0["agent_id"] = setup.idmap["agent_id"] or setup.idmap["agent01"]
-    agent_connection_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+    do
+      local own = agent_connection_ref01_data["organization_id"]
+      if type(own) == "string" or type(own) == "number" or type(own) == "boolean" then
+        agent_connection_ref01_match_dt0["organization_id"] = own
+      else
+        agent_connection_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+      end
+    end
     local agent_connection_ref01_data_dt0_loaded, err = agent_connection_ref01_ent:load(agent_connection_ref01_match_dt0, nil)
     assert.is_nil(err)
     local agent_connection_ref01_data_dt0_load_result = helpers.to_map(type(agent_connection_ref01_data_dt0_loaded) == 'table' and agent_connection_ref01_data_dt0_loaded.data_get and agent_connection_ref01_data_dt0_loaded:data_get() or agent_connection_ref01_data_dt0_loaded)
@@ -109,7 +114,7 @@ describe("AgentConnectionEntity", function()
     end
 
     if setup.live then
-      for _, _live_key in ipairs({"agent01", "organization01"}) do
+      for _, _live_key in ipairs({"organization01"}) do
         if setup.synthetic_only or setup.idmap[_live_key] == nil then
           runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_AGENT_CONNECTION_ENTID")
         end
@@ -124,7 +129,6 @@ describe("AgentConnectionEntity", function()
     local agent_connection_ref01_ent = client:AgentConnection(nil)
     local agent_connection_ref01_data = helpers.to_map(vs.getprop(
       vs.getpath(setup.data, "new.agent_connection"), "agent_connection_ref01"))
-    agent_connection_ref01_data["agent_id"] = setup.idmap["agent01"]
     agent_connection_ref01_data["organization_id"] = setup.idmap["organization01"]
 
     local agent_connection_ref01_data_result, err = agent_connection_ref01_ent:create(agent_connection_ref01_data, nil)
@@ -138,7 +142,6 @@ describe("AgentConnectionEntity", function()
     end
     -- LIST
     local agent_connection_ref01_match = {
-      ["agent_id"] = setup.idmap["agent01"],
       ["organization_id"] = setup.idmap["organization01"],
     }
 
@@ -157,11 +160,10 @@ describe("AgentConnectionEntity", function()
     -- UPDATE
     local agent_connection_ref01_data_up0_up = {
       id = agent_connection_ref01_data["id"],
-      ["agent_id"] = setup.idmap["agent_id"],
       ["organization_id"] = setup.idmap["organization_id"],
     }
 
-    local agent_connection_ref01_markdef_up0_name = "agent_card_url"
+    local agent_connection_ref01_markdef_up0_name = "admin_disabled_at"
     local agent_connection_ref01_markdef_up0_value = "Mark01-agent_connection_ref01_" .. tostring(setup.now)
     agent_connection_ref01_data_up0_up[agent_connection_ref01_markdef_up0_name] = agent_connection_ref01_markdef_up0_value
 
@@ -179,8 +181,14 @@ describe("AgentConnectionEntity", function()
     local agent_connection_ref01_match_dt0 = {
       id = agent_connection_ref01_data["id"],
     }
-    agent_connection_ref01_match_dt0["agent_id"] = setup.idmap["agent_id"] or setup.idmap["agent01"]
-    agent_connection_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+    do
+      local own = agent_connection_ref01_data["organization_id"]
+      if type(own) == "string" or type(own) == "number" or type(own) == "boolean" then
+        agent_connection_ref01_match_dt0["organization_id"] = own
+      else
+        agent_connection_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+      end
+    end
     local agent_connection_ref01_data_dt0_loaded, err = agent_connection_ref01_ent:load(agent_connection_ref01_match_dt0, nil)
     assert.is_nil(err)
     local agent_connection_ref01_data_dt0_load_result = helpers.to_map(type(agent_connection_ref01_data_dt0_loaded) == 'table' and agent_connection_ref01_data_dt0_loaded.data_get and agent_connection_ref01_data_dt0_loaded:data_get() or agent_connection_ref01_data_dt0_loaded)
@@ -194,7 +202,6 @@ describe("AgentConnectionEntity", function()
     local agent_connection_ref01_match_rm0 = {
       id = agent_connection_ref01_data["id"],
     }
-    agent_connection_ref01_match_rm0["agent_id"] = setup.idmap["agent_id"] or setup.idmap["agent01"]
     agent_connection_ref01_match_rm0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
     local _, err = agent_connection_ref01_ent:remove(agent_connection_ref01_match_rm0, nil)
     assert.is_nil(err)
@@ -204,7 +211,6 @@ describe("AgentConnectionEntity", function()
     end
     -- LIST
     local agent_connection_ref01_match_rt0 = {
-      ["agent_id"] = setup.idmap["agent01"],
       ["organization_id"] = setup.idmap["organization01"],
     }
 
@@ -240,7 +246,7 @@ function agent_connection_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "agent_connection01", "agent_connection02", "agent_connection03", "organization01", "organization02", "organization03", "agent01", "agent02", "agent03" },
+    { "agent_connection01", "agent_connection02", "agent_connection03", "organization01", "organization02", "organization03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",
@@ -265,9 +271,6 @@ function agent_connection_basic_setup(extra)
     env["COMPOSAL_TEST_AGENT_CONNECTION_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
-  end
-  if idmap_resolved["agent_id"] == nil then
-    idmap_resolved["agent_id"] = idmap_resolved["agent01"]
   end
   if idmap_resolved["organization_id"] == nil then
     idmap_resolved["organization_id"] = idmap_resolved["organization01"]

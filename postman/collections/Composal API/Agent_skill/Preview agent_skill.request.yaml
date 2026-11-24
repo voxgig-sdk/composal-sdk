@@ -1,0 +1,24 @@
+$kind: http-request
+id: "654b70d3-b281-5846-b5a3-a124adfe12c7"
+description: |-
+  The `preview` action of **agent_skill**, a route of its `create` operation.
+
+  SDK: `client.AgentSkill().create({ "organization_id": "organization_id", $action: "preview" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_skills/preview"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_skill belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "source": "example",
+      "marketplace": "skills_sh",
+      "plugin": "example"
+    }
+order: 6000

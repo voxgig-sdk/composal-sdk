@@ -34,7 +34,7 @@ class AgentSkillDirectTest extends TestCase
             return;
         }
         if ($setup["live"]) {
-            foreach (["agent01", "organization01"] as $_liveKey) {
+            foreach (["organization01"] as $_liveKey) {
                 if (null === ($setup["idmap"][$_liveKey] ?? null)) {
                     Runner::live_miss(self::LIVE_STRICT, "Live test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_AGENT_SKILL_ENTID");
                 }
@@ -47,11 +47,10 @@ class AgentSkillDirectTest extends TestCase
 
         $params = [];
         $query = [];
-        $params["agent_id"] = $setup["live"] ? ($setup["idmap"]["agent01"] ?? null) : "direct01";
-        $params["organization_id"] = $setup["live"] ? ($setup["idmap"]["organization01"] ?? null) : "direct02";
+        $params["organization_id"] = $setup["live"] ? ($setup["idmap"]["organization01"] ?? null) : "direct01";
 
         $result = $client->direct([
-            "path" => "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/skills",
+            "path" => "api/v1/organizations/{organization_id}/agent_skills",
             "method" => "GET",
             "params" => $params,
             "query" => $query,
@@ -70,6 +69,82 @@ class AgentSkillDirectTest extends TestCase
             $this->assertEquals(200, Helpers::to_int($result["status"]));
             $this->assertIsArray($result["data"]);
             $this->assertCount(2, $result["data"]);
+            $this->assertCount(1, $setup["calls"]);
+        }
+    }
+
+    public function test_direct_load_agent_skill(): void
+    {
+        $setup = agent_skill_direct_setup(["id" => "direct01"]);
+        [$_shouldSkip, $_reason] = Runner::is_control_skipped("direct", "direct-load-agent_skill", $setup["live"] ? "live" : "unit");
+        if ($_shouldSkip) {
+            $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
+            return;
+        }
+        if ($setup["live"]) {
+            foreach (["organization01"] as $_liveKey) {
+                if (null === ($setup["idmap"][$_liveKey] ?? null)) {
+                    Runner::live_miss(self::LIVE_STRICT, "Live test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_AGENT_SKILL_ENTID");
+                }
+            }
+        }
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
+        $client = $setup["client"];
+
+        $params = [];
+        $query = [];
+        if ($setup["live"]) {
+            $list_result = $client->direct([
+                "path" => "api/v1/organizations/{organization_id}/agent_skills",
+                "method" => "GET",
+                "params" => ["organization_id" => $setup["idmap"]["organization01"] ?? null],
+            ]);
+            if (!self::liveOk($list_result)) {
+                Runner::live_miss(self::LIVE_STRICT, "Live list discovery failed: " . Runner::live_describe($list_result));
+            }
+            $records = Runner::live_list($list_result["data"] ?? null);
+            if (null === $records) {
+                Runner::live_miss(self::LIVE_STRICT, "Live list discovery returned no list: " . Runner::live_describe($list_result));
+            }
+            if (0 === count($records)) {
+                Runner::live_empty("The account has no agent_skill record to load");
+            }
+            $first = is_array($records[0]) ? $records[0] : [];
+            $found = $first["id"] ?? null;
+            if (null === $found) {
+                Runner::live_miss(self::LIVE_STRICT, "Live load blocked: discovery returned no usable identity");
+            }
+            $params["id"] = $found;
+            $params["organization_id"] = $setup["idmap"]["organization01"] ?? null;
+        } else {
+            $params["id"] = "direct01";
+            $params["organization_id"] = "direct02";
+        }
+
+        $result = $client->direct([
+            "path" => "api/v1/organizations/{organization_id}/agent_skills/{id}",
+            "method" => "GET",
+            "params" => $params,
+            "query" => $query,
+        ]);
+        if ($setup["live"]) {
+            if (!self::liveOk($result)) {
+                Runner::live_miss(self::LIVE_STRICT, "Live load failed: " . Runner::live_describe($result));
+            }
+            if (null === ($result["data"] ?? null)) {
+                Runner::live_miss(self::LIVE_STRICT, "Live load returned no data: " . Runner::live_describe($result));
+            }
+            $this->assertNotNull($result["data"]);
+        } else {
+            $this->assertArrayNotHasKey("err", $result);
+            $this->assertTrue($result["ok"]);
+            $this->assertEquals(200, Helpers::to_int($result["status"]));
+            $this->assertNotNull($result["data"]);
+            if (is_array($result["data"]) && isset($result["data"]["id"])) {
+                $this->assertEquals("direct01", $result["data"]["id"]);
+            }
             $this->assertCount(1, $setup["calls"]);
         }
     }

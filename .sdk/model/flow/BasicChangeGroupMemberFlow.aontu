@@ -1,0 +1,40 @@
+# BasicChangeGroupMemberFlow
+
+main: kit: flow: BasicChangeGroupMemberFlow:
+{
+  entity: "change_group_member",
+  kind: "basic",
+  name: "BasicChangeGroupMemberFlow",
+  step: [
+    {
+      i: {
+        ref: "change_group_member_ref01"
+      }
+
+      m: {
+        change_group_id: "change_group01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "change_group_member_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        change_group_id: "change_group01",
+        id: "change_group_member01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicChangeGroupMemberFlow"
+}

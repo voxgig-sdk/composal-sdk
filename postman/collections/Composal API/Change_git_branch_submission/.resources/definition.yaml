@@ -1,0 +1,8 @@
+$kind: collection
+id: "4537e3c6-d3c7-552c-aa48-c4edbc9553ef"
+description: |-
+  The **change_git_branch_submission** entity, which belongs to a organization and a repo. Its requests address one record by `{{change_git_branch_submission_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 159000

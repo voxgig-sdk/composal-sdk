@@ -28,7 +28,7 @@ class AgentConnectionDirectTest < Minitest::Test
       return
     end
     if setup[:live]
-      ["agent01", "organization01"].each do |_live_key|
+      ["organization01"].each do |_live_key|
         if setup[:idmap][_live_key].nil?
           Runner.live_miss(LIVE_STRICT, "Live test blocked: needs #{_live_key} via COMPOSAL_TEST_AGENT_CONNECTION_ENTID")
         end
@@ -39,11 +39,10 @@ class AgentConnectionDirectTest < Minitest::Test
 
     params = {}
     query = {}
-    params["agent_id"] = setup[:live] ? setup[:idmap]["agent01"] : "direct01"
-    params["organization_id"] = setup[:live] ? setup[:idmap]["organization01"] : "direct02"
+    params["organization_id"] = setup[:live] ? setup[:idmap]["organization01"] : "direct01"
 
     result = client.direct({
-      "path" => "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections",
+      "path" => "api/v1/organizations/{organization_id}/agent_connections",
       "method" => "GET",
       "params" => params,
       "query" => query,
@@ -74,7 +73,7 @@ class AgentConnectionDirectTest < Minitest::Test
       return
     end
     if setup[:live]
-      ["agent01", "organization01"].each do |_live_key|
+      ["organization01"].each do |_live_key|
         if setup[:idmap][_live_key].nil?
           Runner.live_miss(LIVE_STRICT, "Live test blocked: needs #{_live_key} via COMPOSAL_TEST_AGENT_CONNECTION_ENTID")
         end
@@ -86,11 +85,10 @@ class AgentConnectionDirectTest < Minitest::Test
     params = {}
     query = {}
     if setup[:live]
-      query["change"] = "configure"
       list_result = client.direct({
-        "path" => "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections",
+        "path" => "api/v1/organizations/{organization_id}/agent_connections",
         "method" => "GET",
-        "params" => {"agent_id" => setup[:idmap]["agent01"], "organization_id" => setup[:idmap]["organization01"]},
+        "params" => {"organization_id" => setup[:idmap]["organization01"]},
       })
       unless live_ok(list_result)
         Runner.live_miss(LIVE_STRICT, "Live list discovery failed: " + Runner.live_describe(list_result))
@@ -108,17 +106,14 @@ class AgentConnectionDirectTest < Minitest::Test
         Runner.live_miss(LIVE_STRICT, "Live load blocked: discovery returned no usable identity")
       end
       params["id"] = found
-      params["agent_id"] = setup[:idmap]["agent01"]
       params["organization_id"] = setup[:idmap]["organization01"]
     else
-      params["agent_id"] = "direct01"
-      params["id"] = "direct02"
-      params["id"] = "direct03"
-      params["organization_id"] = "direct04"
+      params["id"] = "direct01"
+      params["organization_id"] = "direct02"
     end
 
     result = client.direct({
-      "path" => "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/relay/connections/{id}/change",
+      "path" => "api/v1/organizations/{organization_id}/agent_connections/{id}",
       "method" => "GET",
       "params" => params,
       "query" => query,

@@ -1,0 +1,21 @@
+$kind: http-request
+id: "1b63f7d1-b814-5ee7-b2e4-e698f7aff0de"
+description: |-
+  The `load` operation of **control_computer_control_operation**.
+
+  SDK: `client.ControlComputerControlOperation().load({ control_computer_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/control_computers/:computer/control_operations/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this control_computer_control_operation belongs to.
+  - key: computer
+    value: "{{control_computer_id}}"
+    description: The control_computer this control_computer_control_operation belongs to.
+  - key: id
+    value: "{{control_computer_control_operation_id}}"
+    description: The control_computer_control_operation this request addresses.
+order: 1000

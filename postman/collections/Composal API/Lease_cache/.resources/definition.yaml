@@ -1,0 +1,8 @@
+$kind: collection
+id: "8f8aa075-a928-5a9f-9aae-c49ff372d5db"
+description: |-
+  The **lease_cache** entity, which belongs to a node. Its requests address one record by `{{lease_cache_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 297000

@@ -1,0 +1,29 @@
+$kind: http-request
+id: db04b40c-9154-5a2d-bce3-49660d08a0ca
+description: |-
+  The `update` operation of **github_runner_pool**.
+
+  SDK: `client.GithubRunnerPool().update({ id: "example", organization_id: "example", enabled: true })`
+url: "{{base}}/api/v1/organizations/:organization_id/github_runner_pools/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this github_runner_pool belongs to.
+  - key: id
+    value: "{{github_runner_pool_id}}"
+    description: The github_runner_pool this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "image": "example",
+      "provider": "modal",
+      "enabled": true,
+      "max_concurrency": 1,
+      "timeout_seconds": 1
+    }
+order: 3000

@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "auth_registration_option": {
+      "AUTH_REGISTRATION_OPTION00": {
+        "email_password_signup_enabled": true,
+        "openai_sign_in_enabled": false,
+        "turnstile_site_key": "s2a",
+        "waitlist_enabled": false
+      },
+      "AUTH_REGISTRATION_OPTION01": {
+        "email_password_signup_enabled": true,
+        "openai_sign_in_enabled": false,
+        "turnstile_site_key": "s52",
+        "waitlist_enabled": false
+      },
+      "AUTH_REGISTRATION_OPTION02": {
+        "email_password_signup_enabled": true,
+        "openai_sign_in_enabled": false,
+        "turnstile_site_key": "s7a",
+        "waitlist_enabled": false
+      }
+    }
+  },
+  "new": {
+    "auth_registration_option": {
+      "auth_registration_option_ref01": {
+        "email_password_signup_enabled": true,
+        "openai_sign_in_enabled": false,
+        "turnstile_site_key": "sa2",
+        "waitlist_enabled": false
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/auth/registration_options": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

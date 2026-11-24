@@ -1,0 +1,8 @@
+$kind: collection
+id: "53168f56-cbe9-58cf-b0f4-ba55f4d5c9e0"
+description: |-
+  The **space_trace_span** entity. Its requests address one record by `{{space_trace_span_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 495000

@@ -38,7 +38,7 @@ func TestAgentSkillEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.AgentSkill(nil).List(map[string]any{"agent_id": 1, "organization_id": "x"}, nil)
+		_, err := client.AgentSkill(nil).List(map[string]any{"organization_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestAgentSkillEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list"} {
+		for _, _op := range []string{"create", "list", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "agent_skill." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -63,9 +63,12 @@ func TestAgentSkillEntity(t *testing.T) {
 			}
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
-			t.Log("LIVE STEP {\"id\":\"agent_skill.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/skills\"}")
+			t.Log("LIVE STEP {\"id\":\"agent_skill.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agent_skills\"}")
+			t.Log("LIVE STEP {\"id\":\"agent_skill.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/agent_skills/{id}/audience\"}")
+			t.Log("LIVE STEP {\"id\":\"agent_skill.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agent_skills/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"agent_skill.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
 		if setup.live {
-			for _, _liveKey := range []string{"agent01", "organization01"} {
+			for _, _liveKey := range []string{"organization01"} {
 				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
 					liveMiss(t, agent_skillEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_AGENT_SKILL_ENTID", _liveKey)
 				}
@@ -73,6 +76,17 @@ func TestAgentSkillEntity(t *testing.T) {
 		}
 		client := setup.client
 		_ = client
+		if setup.live {
+			var _liveId any
+			if !setup.syntheticOnly {
+				_liveId = setup.idmap["agent_skill01"]
+			}
+			livePace()
+			liveExisting(t, agent_skillEntityLiveStrict, setup.data, "agent_skill", "id", _liveId,
+				func() (any, error) {
+					return client.AgentSkill(nil).List(map[string]any{"organization_id": setup.idmap["organization01"]}, nil)
+				})
+		}
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		agentSkillRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.agent_skill")))
@@ -90,7 +104,6 @@ func TestAgentSkillEntity(t *testing.T) {
 		// LIST
 		agentSkillRef01Ent := client.AgentSkill(nil)
 		agentSkillRef01Match := map[string]any{
-			"agent_id": setup.idmap["agent01"],
 			"organization_id": setup.idmap["organization01"],
 		}
 
@@ -103,11 +116,30 @@ func TestAgentSkillEntity(t *testing.T) {
 			t.Fatalf("expected list result to be an array, got %T", agentSkillRef01ListResult)
 		}
 
+		if setup.live {
+			livePace()
+		}
+		// LOAD
+		agentSkillRef01MatchDt0 := map[string]any{
+			"id": agentSkillRef01Data["id"],
+		}
+		agentSkillRef01DataDt0Loaded, err := agentSkillRef01Ent.Load(agentSkillRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		agentSkillRef01DataDt0LoadResult := core.ToMapAny(entityData(agentSkillRef01DataDt0Loaded))
+		if agentSkillRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if !setup.live && !liveSameId(agentSkillRef01DataDt0LoadResult["id"], agentSkillRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
+		}
+
 		return
 		}
 
 		if setup.live {
-			for _, _liveKey := range []string{"agent01", "organization01"} {
+			for _, _liveKey := range []string{"organization01"} {
 				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
 					liveMiss(t, agent_skillEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_AGENT_SKILL_ENTID", _liveKey)
 				}
@@ -123,7 +155,6 @@ func TestAgentSkillEntity(t *testing.T) {
 		agentSkillRef01Ent := client.AgentSkill(nil)
 		agentSkillRef01Data := core.ToMapAny(vs.GetProp(
 			vs.GetPath(setup.data, []any{"new", "agent_skill"}), "agent_skill_ref01"))
-		agentSkillRef01Data["agent_id"] = setup.idmap["agent01"]
 		agentSkillRef01Data["organization_id"] = setup.idmap["organization01"]
 
 		agentSkillRef01DataResult, err := agentSkillRef01Ent.Create(agentSkillRef01Data, nil)
@@ -134,13 +165,15 @@ func TestAgentSkillEntity(t *testing.T) {
 		if agentSkillRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
+		if agentSkillRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
 
 		if setup.live {
 			livePace()
 		}
 		// LIST
 		agentSkillRef01Match := map[string]any{
-			"agent_id": setup.idmap["agent01"],
 			"organization_id": setup.idmap["organization01"],
 		}
 
@@ -148,9 +181,72 @@ func TestAgentSkillEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("list failed: %v", err)
 		}
-		_, agentSkillRef01ListOk := agentSkillRef01ListResult.([]any)
+		agentSkillRef01List, agentSkillRef01ListOk := agentSkillRef01ListResult.([]any)
 		if !agentSkillRef01ListOk {
 			t.Fatalf("expected list result to be an array, got %T", agentSkillRef01ListResult)
+		}
+
+		foundItem := vs.Select(entityListToData(agentSkillRef01List), map[string]any{"id": agentSkillRef01Data["id"]})
+		if vs.IsEmpty(foundItem) {
+			t.Fatal("expected to find created entity in list")
+		}
+
+		if setup.live {
+			livePace()
+		}
+		// LOAD
+		agentSkillRef01MatchDt0 := map[string]any{
+			"id": agentSkillRef01Data["id"],
+		}
+		agentSkillRef01DataDt0Loaded, err := agentSkillRef01Ent.Load(agentSkillRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		agentSkillRef01DataDt0LoadResult := core.ToMapAny(entityData(agentSkillRef01DataDt0Loaded))
+		if agentSkillRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if !setup.live && !liveSameId(agentSkillRef01DataDt0LoadResult["id"], agentSkillRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
+		}
+
+		if setup.live {
+			livePace()
+		}
+		// REMOVE
+		agentSkillRef01MatchRm0 := map[string]any{
+			"id": agentSkillRef01Data["id"],
+		}
+		if v := setup.idmap["organization_id"]; v != nil {
+			agentSkillRef01MatchRm0["organization_id"] = v
+		} else {
+			agentSkillRef01MatchRm0["organization_id"] = setup.idmap["organization01"]
+		}
+		_, err = agentSkillRef01Ent.Remove(agentSkillRef01MatchRm0, nil)
+		if err != nil {
+			t.Fatalf("remove failed: %v", err)
+		}
+
+		if setup.live {
+			livePace()
+		}
+		// LIST
+		agentSkillRef01MatchRt0 := map[string]any{
+			"organization_id": setup.idmap["organization01"],
+		}
+
+		agentSkillRef01ListRt0Result, err := agentSkillRef01Ent.List(agentSkillRef01MatchRt0, nil)
+		if err != nil {
+			t.Fatalf("list failed: %v", err)
+		}
+		agentSkillRef01ListRt0, agentSkillRef01ListRt0Ok := agentSkillRef01ListRt0Result.([]any)
+		if !agentSkillRef01ListRt0Ok {
+			t.Fatalf("expected list result to be an array, got %T", agentSkillRef01ListRt0Result)
+		}
+
+		notFoundItem := vs.Select(entityListToData(agentSkillRef01ListRt0), map[string]any{"id": agentSkillRef01Data["id"]})
+		if !vs.IsEmpty(notFoundItem) {
+			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})
@@ -181,7 +277,7 @@ func agent_skillBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"agent_skill01", "agent_skill02", "agent_skill03", "organization01", "organization02", "organization03", "agent01", "agent02", "agent03"},
+		[]any{"agent_skill01", "agent_skill02", "agent_skill03", "organization01", "organization02", "organization03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

@@ -1,0 +1,4 @@
+$kind: collection
+id: "7c1b1573-d722-50f5-b92d-e7909dd96e8b"
+description: "The `BasicBazelFindMissingBlobFlow` flow of **bazel_find_missing_blob**."
+order: 100000

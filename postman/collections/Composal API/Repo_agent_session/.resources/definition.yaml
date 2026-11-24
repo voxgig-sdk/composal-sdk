@@ -1,0 +1,14 @@
+$kind: collection
+id: "2987a628-6b55-5775-b37e-fc07fa84b21b"
+description: |-
+  The **repo_agent_session** entity, which belongs to a organization and a repo. Its requests address one record by `{{repo_agent_session_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `adapter` | string |  |  |
+  | `agent_session` | object | yes |  |
+  | `external_session_id` | string |  |  |
+  | `id` | string |  |  |
+  | `status` | string |  |  |
+  | `title` | string |  |  |
+order: 425000

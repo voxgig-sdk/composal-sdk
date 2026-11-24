@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "billing_usage": {
+      "BILLING_USAGE00": {
+        "organization_id": "ORGANIZATION01",
+        "id": "BILLING_USAGE00"
+      },
+      "BILLING_USAGE01": {
+        "organization_id": "ORGANIZATION01",
+        "id": "BILLING_USAGE01"
+      },
+      "BILLING_USAGE02": {
+        "organization_id": "ORGANIZATION01",
+        "id": "BILLING_USAGE02"
+      }
+    }
+  },
+  "new": {
+    "billing_usage": {
+      "billing_usage_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/billing/usage/breakdown": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

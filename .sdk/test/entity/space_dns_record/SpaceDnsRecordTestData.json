@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "space_dns_record": {
+      "SPACE_DNS_RECORD00": {
+        "id": "SPACE_DNS_RECORD00",
+        "space_id": "SPACE01"
+      },
+      "SPACE_DNS_RECORD01": {
+        "id": "SPACE_DNS_RECORD01",
+        "space_id": "SPACE01"
+      },
+      "SPACE_DNS_RECORD02": {
+        "id": "SPACE_DNS_RECORD02",
+        "space_id": "SPACE01"
+      }
+    }
+  },
+  "new": {
+    "space_dns_record": {
+      "space_dns_record_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/networking/spaces/{space_id}/dns_records": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/networking/spaces/{space_id}/dns_records/sync_report": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/networking/spaces/{space_id}/dns_records": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/networking/spaces/{space_id}/dns_records/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/networking/spaces/{space_id}/dns_records/config": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/networking/spaces/{space_id}/dns_records/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/networking/spaces/{space_id}/dns_records/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/networking/spaces/{space_id}/dns_records/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

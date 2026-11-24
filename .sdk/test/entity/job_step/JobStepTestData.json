@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "job_step": {
+      "JOB_STEP00": {
+        "id": "JOB_STEP00",
+        "job_id": "JOB01",
+        "pipeline_id": "PIPELINE01",
+        "run_id": "RUN01"
+      },
+      "JOB_STEP01": {
+        "id": "JOB_STEP01",
+        "job_id": "JOB01",
+        "pipeline_id": "PIPELINE01",
+        "run_id": "RUN01"
+      },
+      "JOB_STEP02": {
+        "id": "JOB_STEP02",
+        "job_id": "JOB01",
+        "pipeline_id": "PIPELINE01",
+        "run_id": "RUN01"
+      }
+    }
+  },
+  "new": {
+    "job_step": {
+      "job_step_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

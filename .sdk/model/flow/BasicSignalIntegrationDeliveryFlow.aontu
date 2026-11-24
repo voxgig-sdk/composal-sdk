@@ -1,0 +1,27 @@
+# BasicSignalIntegrationDeliveryFlow
+
+main: kit: flow: BasicSignalIntegrationDeliveryFlow:
+{
+  entity: "signal_integration_delivery",
+  kind: "basic",
+  name: "BasicSignalIntegrationDeliveryFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        signal_integration_id: "signal_integration01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "signal_integration_delivery_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSignalIntegrationDeliveryFlow"
+}

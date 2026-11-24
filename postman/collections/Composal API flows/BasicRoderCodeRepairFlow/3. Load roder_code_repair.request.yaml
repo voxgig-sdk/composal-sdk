@@ -1,0 +1,53 @@
+$kind: http-request
+id: dc976f49-e47c-593d-b5c3-31d43dd2f41d
+description: |-
+  The `load` operation of **roder_code_repair**.
+
+  SDK: `client.RoderCodeRepair().load({ id: "example_id" })`
+url: "{{base}}/api/v1/agent/roder/code_repairs/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{roder_code_repair_ref01}}"
+    description: The roder_code_repair this request addresses.
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","roder_code_repair_ref01"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("3. Load roder_code_repair: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      if ("Mark01-roder_code_repair_ref01" === pm.variables.get("roder_code_repair_ref01_marked")) pm.test("3. Load roder_code_repair: the update reads back", () => {
+        pm.expect(JSON.stringify(body)).to.include("Mark01-roder_code_repair_ref01")
+      })
+      pm.test("3. Load roder_code_repair: the record is the one asked for", () => {
+        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("roder_code_repair_ref01")))
+      })
+    language: text/javascript
+order: 3000

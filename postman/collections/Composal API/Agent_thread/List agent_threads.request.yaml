@@ -1,33 +1,13 @@
 $kind: http-request
-id: "0df0bf9a-c494-5cc5-ac8a-fbb0a6a875d6"
+id: ad23fd31-d522-599e-9429-6391c7dacc1f
 description: |-
   The `list` operation of **agent_thread**.
 
-  SDK: `client.AgentThread().list({ agent_id: "example", organization_id: "example" })`
-url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/threads"
+  SDK: `client.AgentThread().list()`
+url: "{{base}}/api/v1/agent/threads"
 method: GET
 headers:
   Accept: application/json
-queryParams:
-  - key: archived
-    value: exclude
-    disabled: true
-  - key: conversation_id
-    value: ""
-    disabled: true
-  - key: cursor
-    value: ""
-    disabled: true
-  - key: local_cursor
-    value: ""
-    disabled: true
-pathVariables:
-  - key: organization_id
-    value: "{{organization_id}}"
-    description: The organization this agent_thread belongs to.
-  - key: id
-    value: "{{agent_id}}"
-    description: The agent this agent_thread belongs to.
 scripts:
   - type: afterResponse
     code: |-

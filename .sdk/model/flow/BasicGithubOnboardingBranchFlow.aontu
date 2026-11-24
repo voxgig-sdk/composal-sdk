@@ -1,0 +1,26 @@
+# BasicGithubOnboardingBranchFlow
+
+main: kit: flow: BasicGithubOnboardingBranchFlow:
+{
+  entity: "github_onboarding_branch",
+  kind: "basic",
+  name: "BasicGithubOnboardingBranchFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "github_onboarding_branch_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGithubOnboardingBranchFlow"
+}

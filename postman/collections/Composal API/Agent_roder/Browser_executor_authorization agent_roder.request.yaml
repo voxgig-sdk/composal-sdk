@@ -1,0 +1,15 @@
+$kind: http-request
+id: "060a8075-af0a-5b76-bd4c-ac3a2a0f3db7"
+description: |-
+  The `browser_executor_authorization` action of **agent_roder**, a route of its `create` operation.
+
+  SDK: `client.AgentRoder().create({ $action: "browser_executor_authorization" })`
+url: "{{base}}/api/v1/agent/roder/browser_executor_authorization"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 2000

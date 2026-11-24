@@ -1,0 +1,9 @@
+# BasicDeviceProjectFlow
+
+main: kit: flow: BasicDeviceProjectFlow:
+{
+  entity: "device_project",
+  kind: "basic",
+  name: "BasicDeviceProjectFlow",
+  "key$": "BasicDeviceProjectFlow"
+}

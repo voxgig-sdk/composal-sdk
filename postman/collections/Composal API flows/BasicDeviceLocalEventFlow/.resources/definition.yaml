@@ -1,0 +1,4 @@
+$kind: collection
+id: "53c1c29f-372a-5717-824b-5926c6eaebda"
+description: "The `BasicDeviceLocalEventFlow` flow of **device_local_event**."
+order: 182000

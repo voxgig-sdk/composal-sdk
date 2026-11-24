@@ -1,0 +1,28 @@
+$kind: http-request
+id: f0bfc165-0817-574d-8db1-fe135d2a3179
+description: |-
+  The `list` operation of **signal_integration_target**.
+
+  SDK: `client.SignalIntegrationTarget().list({ organization_id: "example", signal_integration_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/signal_integrations/:signal_integration_id/targets"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this signal_integration_target belongs to.
+  - key: signal_integration_id
+    value: "{{signal_integration_id}}"
+    description: The signal_integration this signal_integration_target belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["signal_integration_targets"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("signal_integration_target_id")) pm.collectionVariables.set("signal_integration_target_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

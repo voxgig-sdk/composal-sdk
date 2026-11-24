@@ -1,0 +1,24 @@
+$kind: collection
+id: "4e7c0dab-45a7-53fa-ad8a-f10eedc49c60"
+description: |-
+  The **audit_event** entity, which belongs to a organization. Its requests address one record by `{{audit_event_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `action` | string | yes |  |
+  | `actor_kind` | string | yes |  |
+  | `actor_user_id` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `created_at_label` | string | yes |  |
+  | `id` | string | yes |  |
+  | `observability_space_id` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `payload` | any | yes |  |
+  | `request_id` | string | yes |  |
+  | `severity` | string | yes |  |
+  | `subject_id` | string | yes |  |
+  | `subject_kind` | string | yes |  |
+  | `subject_name` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `updated_at_label` | string | yes |  |
+order: 111000

@@ -1,0 +1,22 @@
+$kind: http-request
+id: fd088bc5-f26c-5c5b-b3a5-d49257871170
+description: |-
+  The `cancel` action of **repository_import_session**, a route of its `create` operation.
+
+  SDK: `client.RepositoryImportSession().create({ "id": "ID", $action: "cancel" })`
+url: "{{base}}/api/v1/repository_import_sessions/:id/cancel"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{repository_import_session_id}}"
+    description: The repository_import_session this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "message": "example"
+    }
+order: 4000

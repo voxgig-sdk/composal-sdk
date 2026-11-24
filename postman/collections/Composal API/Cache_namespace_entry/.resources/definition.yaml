@@ -1,0 +1,9 @@
+$kind: collection
+id: "7e94bc62-6364-5feb-a5b5-18cf15b9aee1"
+description: |-
+  The **cache_namespace_entry** entity. Its requests address one record by `{{cache_namespace_entry_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 150000

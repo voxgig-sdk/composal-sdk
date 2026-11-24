@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "change_request_change": {
+      "CHANGE_REQUEST_CHANGE00": {
+        "message": "sa",
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CHANGE_REQUEST_CHANGE00"
+      },
+      "CHANGE_REQUEST_CHANGE01": {
+        "message": "s14",
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CHANGE_REQUEST_CHANGE01"
+      },
+      "CHANGE_REQUEST_CHANGE02": {
+        "message": "s1e",
+        "change_id": "CHANGE01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CHANGE_REQUEST_CHANGE02"
+      }
+    }
+  },
+  "new": {
+    "change_request_change": {
+      "change_request_change_ref01": {
+        "message": "s28"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/request_changes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

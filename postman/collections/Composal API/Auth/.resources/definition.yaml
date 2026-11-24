@@ -1,0 +1,8 @@
+$kind: collection
+id: f598b394-2abc-59f0-80ab-7a1de86e7547
+description: |-
+  The **auth** entity. Its requests address one record by `{{auth_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 112000

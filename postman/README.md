@@ -17,6 +17,7 @@ from it with the [Postman CLI](https://learning.postman.com/docs/postman-cli/pos
 postman collection run "postman/collections/Composal API flows" \
   --environment postman/environments/composal.environment.yaml \
   --env-var apikey=... \
+  --env-var a2a_id=... \
   --env-var idempotency_key=... \
   --env-var version=... \
   --env-var conversation_id=... \
@@ -24,55 +25,106 @@ postman collection run "postman/collections/Composal API flows" \
   --env-var index=... \
   --env-var message_id=... \
   --env-var uri=... \
-  --env-var x_composal_relay_scope=... \
-  --env-var x_composal_requester_id=... \
-  --env-var change=... \
-  --env-var expected_generation=... \
+  --env-var expected_commit_id=... \
+  --env-var connection_id=... \
+  --env-var state=... \
+  --env-var source_operation_id=... \
+  --env-var source=... \
+  --env-var org=... \
+  --env-var token=... \
+  --env-var space_id=... \
+  --env-var alert_rule_id=... \
   --env-var allocation_id=... \
   --env-var attachment_id=... \
   --env-var automation_id=... \
+  --env-var backend_id=... \
+  --env-var cache_namespace_id=... \
   --env-var cdn_id=... \
+  --env-var change_group_id=... \
+  --env-var ids=... \
+  --env-var pipeline_id=... \
+  --env-var cloud_workspace_backup_id=... \
+  --env-var comment_thread_id=... \
+  --env-var commit_id=... \
+  --env-var x_composal_relay_scope=... \
+  --env-var x_composal_requester_id=... \
+  --env-var persistent_agent_id=... \
+  --env-var request_key=... \
   --env-var coordination_id=... \
   --env-var persona_id=... \
   --env-var scenario_id=... \
   --env-var credential_id=... \
   --env-var data_resource_id=... \
-  --env-var deployment_id=... \
   --env-var domain_id=... \
   --env-var scenario_run_id=... \
+  --env-var name=... \
+  --env-var owner=... \
+  --env-var number=... \
+  --env-var source_repository=... \
   --env-var interaction_id=... \
+  --env-var run_id=... \
+  --env-var job_id=... \
   --env-var journey_variant_id=... \
+  --env-var lease_id=... \
+  --env-var swarm_id=... \
+  --env-var task_id=... \
+  --env-var x_vex_lease_token=... \
   --env-var local_thread_id=... \
+  --env-var log_stream_id=... \
   --env-var media_id=... \
+  --env-var merge_queue_id=... \
   --env-var messaging_conversation_id=... \
+  --env-var native_agent_id=... \
+  --env-var x_vex_organization=... \
+  --env-var patchset_id=... \
   --env-var preview_id=... \
   --env-var preview_profile_id=... \
   --env-var compare_revision_id=... \
-  --env-var source=... \
   --env-var target=... \
-  --env-var name=... \
-  --env-var number=... \
-  --env-var source_repository=... \
-  --env-var run_id=... \
+  --env-var change=... \
+  --env-var expected_generation=... \
+  --env-var release_id=... \
+  --env-var path=... \
+  --env-var ref=... \
+  --env-var repository_id=... \
+  --env-var runner_pool_id=... \
+  --env-var runner_id=... \
+  --env-var runtime_instance_id=... \
+  --env-var secret_id=... \
   --env-var service_id=... \
   --env-var profile_id=... \
   --env-var thread_id=... \
+  --env-var repo=... \
+  --env-var head=... \
   --env-var version_id=... \
   --env-var workflow_run_id=... \
   --env-var workflow_trigger_id=... \
   --env-var organization_id=... \
+  --env-var agent_app_id=... \
+  --env-var agent_app_install_id=... \
   --env-var agent_id=... \
+  --env-var agent_connection_id=... \
   --env-var agent_email_id=... \
   --env-var agent_file_id=... \
   --env-var agent_marketplace_shared_id=... \
   --env-var agent_run_id=... \
+  --env-var repo_id=... \
+  --env-var agent_session_id=... \
   --env-var agent_workflow_proposal_id=... \
   --env-var app_id=... \
   --env-var app_environment_id=... \
   --env-var app_service_id=... \
   --env-var location_id=... \
   --env-var app_preview_profile_id=... \
+  --env-var artefact_id=... \
   --env-var attachment_part_id=... \
+  --env-var bazel_action_result_action_result_id=... \
+  --env-var bazel_action_result_id=... \
+  --env-var bazel_blob_blob_id=... \
+  --env-var bazel_blob_hash=... \
+  --env-var bazel_blob_id=... \
+  --env-var billing_addon_id=... \
+  --env-var billing_prepaid_period_id=... \
   --env-var project_id=... \
   --env-var binary_id=... \
   --env-var environment_id=... \
@@ -80,23 +132,68 @@ postman collection run "postman/collections/Composal API flows" \
   --env-var browser_session_control_id=... \
   --env-var browser_session_media_id=... \
   --env-var cdn_space_id=... \
+  --env-var change_id=... \
+  --env-var ci_node_id=... \
+  --env-var cloud_workspace_backup_object_id=... \
+  --env-var commit_diff_id=... \
   --env-var connection_request_id=... \
+  --env-var control_computer_id=... \
   --env-var deep_scan_id=... \
   --env-var exploration_id=... \
   --env-var demo_share_id=... \
   --env-var demo_share_segment_id=... \
+  --env-var device_id=... \
+  --env-var docker_builder_id=... \
+  --env-var secret_version_id=... \
+  --env-var gh_gh_id=... \
+  --env-var gh_github_repo=... \
+  --env-var gh_id=... \
+  --env-var github_app_installation_id=... \
+  --env-var ci_runner_pool_id=... \
+  --env-var github_ci_repository_id=... \
+  --env-var github_onboarding_import_batch_id=... \
+  --env-var github_pull_request_pull_request_id=... \
+  --env-var github_pull_request_id=... \
+  --env-var integration_id=... \
+  --env-var image_repository_id=... \
+  --env-var node_id=... \
+  --env-var lease_step_id=... \
+  --env-var lease_workspace_id=... \
   --env-var local_thread_delivery_id=... \
   --env-var media_file_id=... \
+  --env-var model_subscription_account_connection_id=... \
   --env-var nomad_allocation_id=... \
+  --env-var org_invitation_id=... \
+  --env-var page_ci_pipeline_run_id=... \
   --env-var page_project_run_id=... \
+  --env-var page_repo_vc_commit_id=... \
+  --env-var pairing_id=... \
+  --env-var patchset_diff_id=... \
   --env-var product_map_journey_replay_id=... \
   --env-var product_map_observation_id=... \
+  --env-var pull_request_id=... \
+  --env-var repo_agent_checkpoint_id=... \
   --env-var report_replay_id=... \
-  --env-var static_site_id=...
+  --env-var repository_access_resolve_resolve_id=... \
+  --env-var repository_access_resolve_id=... \
+  --env-var repository_import_session_id=... \
+  --env-var repository_sandbox_environment_id=... \
+  --env-var roder_machine_id=... \
+  --env-var signal_inbound_inbound_id=... \
+  --env-var signal_inbound_id=... \
+  --env-var signal_integration_id=... \
+  --env-var site_id=... \
+  --env-var site_secret_id=... \
+  --env-var spark_credit_agent_usage_id=... \
+  --env-var static_site_id=... \
+  --env-var status_change_id=... \
+  --env-var status_commit_id=... \
+  --env-var status_patchset_id=... \
+  --env-var webhook_gitlab_id=...
 ```
 
 A request addresses a record through its entity's variable, which a list or a
-create in the reference collection remembers: `{{organization_id}}` for the first entity here.
+create in the reference collection remembers: `{{a2a_well_known_id}}` for the first entity here.
 Set `strict` to `false` to skip a flow step whose inputs nothing gave rather
 than fail it, and `getonly` to `true` to send GET requests alone. Keep
 credentials out of the environment file: give them at run time, or as local
@@ -104,48 +201,128 @@ values in Postman.
 
 ## Not in these collections
 
+- `admin_org` `BasicAdminOrgFlow`: the flow creates a record it has no route to remove
 - `organization` `BasicOrganizationFlow`: the flow creates a record it has no route to remove
 - `agent_attachment` `BasicAgentAttachmentFlow`: the flow creates a record it has no route to remove
+- `agent_connection_resource` `BasicAgentConnectionResourceFlow`: the flow creates a record it has no route to remove
 - `agent_input` `BasicAgentInputFlow`: the flow creates a record it has no route to remove
-- `agent_integration` `BasicAgentIntegrationFlow`: the flow creates a record it has no route to remove
 - `agent_operation` `BasicAgentOperationFlow`: the flow creates a record it has no route to remove
-- `agent_skill` `BasicAgentSkillFlow`: the flow creates a record it has no route to remove
+- `agent_session_checkpoint` `BasicAgentSessionCheckpointFlow`: the flow creates a record it has no route to remove
+- `agent_session_roder_handoff` `BasicAgentSessionRoderHandoffFlow`: the flow creates a record it has no route to remove
 - `agent_subscription` `BasicAgentSubscriptionFlow`: the flow creates a record it has no route to remove
+- `agent_swarm` `BasicAgentSwarmFlow`: the flow creates a record it has no route to remove
 - `agent_thread` `BasicAgentThreadFlow`: the flow creates a record it has no route to remove
 - `agent_webhook` `BasicAgentWebhookFlow`: the flow creates a record it has no route to remove
 - `agent_workflow` `BasicAgentWorkflowFlow`: the flow creates a record it has no route to remove
+- `agreement_access_request` `BasicAgreementAccessRequestFlow`: the flow creates a record it has no route to remove
 - `app_deploy` `BasicAppDeployFlow`: the flow creates a record it has no route to remove
 - `app_deployment_operation` `BasicAppDeploymentOperationFlow`: the flow creates a record it has no route to remove
 - `app_deployment_rollback` `BasicAppDeploymentRollbackFlow`: the flow creates a record it has no route to remove
 - `app_run` `BasicAppRunFlow`: the flow creates a record it has no route to remove
+- `artefact_comment_thread` `BasicArtefactCommentThreadFlow`: the flow creates a record it has no route to remove
+- `artefact_revision` `BasicArtefactRevisionFlow`: the flow creates a record it has no route to remove
+- `artefact_view_token` `BasicArtefactViewTokenFlow`: the flow creates a record it has no route to remove
+- `auth_password_reset` `BasicAuthPasswordResetFlow`: the flow creates a record it has no route to remove
 - `automation_run` `BasicAutomationRunFlow`: the flow creates a record it has no route to remove
+- `bazel_execution` `BasicBazelExecutionFlow`: the flow creates a record it has no route to remove
+- `bazel_find_missing_blob` `BasicBazelFindMissingBlobFlow`: the flow creates a record it has no route to remove
+- `billing_checkout_session` `BasicBillingCheckoutSessionFlow`: the flow creates a record it has no route to remove
+- `billing_portal_session` `BasicBillingPortalSessionFlow`: the flow creates a record it has no route to remove
+- `billing_prepaid_purchase` `BasicBillingPrepaidPurchaseFlow`: the flow creates a record it has no route to remove
+- `billing_token_top_up` `BasicBillingTokenTopUpFlow`: the flow creates a record it has no route to remove
 - `binary` `BasicBinaryFlow`: the flow creates a record it has no route to remove
+- `bookmark_protection_refresh_github_required_check` `BasicBookmarkProtectionRefreshGithubRequiredCheckFlow`: the flow creates a record it has no route to remove
 - `browser_session_connection` `BasicBrowserSessionConnectionFlow`: the flow creates a record it has no route to remove
 - `browser_session_recording` `BasicBrowserSessionRecordingFlow`: the flow creates a record it has no route to remove
 - `browser_session_screenshot` `BasicBrowserSessionScreenshotFlow`: the flow creates a record it has no route to remove
 - `browser_session_task` `BasicBrowserSessionTaskFlow`: the flow creates a record it has no route to remove
 - `cdn_deployment` `BasicCdnDeploymentFlow`: the flow creates a record it has no route to remove
+- `change_asset` `BasicChangeAssetFlow`: the flow creates a record it has no route to remove
+- `change_comment` `BasicChangeCommentFlow`: the flow creates a record it has no route to remove
+- `change_file_review_checkpoint` `BasicChangeFileReviewCheckpointFlow`: the flow creates a record it has no route to remove
+- `change_git_branch_submission` `BasicChangeGitBranchSubmissionFlow`: the flow creates a record it has no route to remove
+- `change_git_commit_identity` `BasicChangeGitCommitIdentityFlow`: the flow creates a record it has no route to remove
+- `change_git_publication` `BasicChangeGitPublicationFlow`: the flow creates a record it has no route to remove
+- `change_request_change` `BasicChangeRequestChangeFlow`: the flow creates a record it has no route to remove
+- `checkpoint_prepare_chunk` `BasicCheckpointPrepareChunkFlow`: the flow creates a record it has no route to remove
+- `ci_pipeline` `BasicCiPipelineFlow`: the flow creates a record it has no route to remove
+- `ci_pipeline_run` `BasicCiPipelineRunFlow`: the flow creates a record it has no route to remove
+- `ci_runner_pool` `BasicCiRunnerPoolFlow`: the flow creates a record it has no route to remove
+- `cli_event` `BasicCliEventFlow`: the flow creates a record it has no route to remove
+- `cli_release` `BasicCliReleaseFlow`: the flow creates a record it has no route to remove
+- `code_rule_evaluation` `BasicCodeRuleEvaluationFlow`: the flow creates a record it has no route to remove
+- `com_site_access_session` `BasicComSiteAccessSessionFlow`: the flow creates a record it has no route to remove
+- `comment_thread_comment` `BasicCommentThreadCommentFlow`: the flow creates a record it has no route to remove
+- `contact_submission` `BasicContactSubmissionFlow`: the flow creates a record it has no route to remove
+- `control_computer_control_operation` `BasicControlComputerControlOperationFlow`: the flow creates a record it has no route to remove
 - `project` `BasicProjectFlow`: the flow creates a record it has no route to remove
 - `credential_sign_in_check` `BasicCredentialSignInCheckFlow`: the flow creates a record it has no route to remove
 - `data_resource_rotate_credential` `BasicDataResourceRotateCredentialFlow`: the flow creates a record it has no route to remove
 - `deep_scan` `BasicDeepScanFlow`: the flow creates a record it has no route to remove
 - `deep_scan_flow` `BasicDeepScanFlowFlow`: the flow creates a record it has no route to remove
+- `desktop_local_agent_response` `BasicDesktopLocalAgentResponseFlow`: the flow creates a record it has no route to remove
+- `device_control_operation` `BasicDeviceControlOperationFlow`: the flow creates a record it has no route to remove
+- `device_folder_listing` `BasicDeviceFolderListingFlow`: the flow creates a record it has no route to remove
+- `device_grant` `BasicDeviceGrantFlow`: the flow creates a record it has no route to remove
+- `device_local_event` `BasicDeviceLocalEventFlow`: the flow creates a record it has no route to remove
+- `device_pairing` `BasicDevicePairingFlow`: the flow creates a record it has no route to remove
+- `device_scheduled_check_in` `BasicDeviceScheduledCheckInFlow`: the flow creates a record it has no route to remove
+- `docker_builder` `BasicDockerBuilderFlow`: the flow creates a record it has no route to remove
+- `domain_dns_integration` `BasicDomainDnsIntegrationFlow`: the flow creates a record it has no route to remove
 - `environment_discovery_run` `BasicEnvironmentDiscoveryRunFlow`: the flow creates a record it has no route to remove
 - `environment_exploration` `BasicEnvironmentExplorationFlow`: the flow creates a record it has no route to remove
 - `environment_revision` `BasicEnvironmentRevisionFlow`: the flow creates a record it has no route to remove
+- `execution_reconciler_tick` `BasicExecutionReconcilerTickFlow`: the flow creates a record it has no route to remove
+- `execution_release` `BasicExecutionReleaseFlow`: the flow creates a record it has no route to remove
 - `exploration` `BasicExplorationFlow`: the flow creates a record it has no route to remove
 - `exploration_message` `BasicExplorationMessageFlow`: the flow creates a record it has no route to remove
 - `exploration_scenario` `BasicExplorationScenarioFlow`: the flow creates a record it has no route to remove
+- `git_import` `BasicGitImportFlow`: the flow creates a record it has no route to remove
+- `github_app_installation_authorization` `BasicGithubAppInstallationAuthorizationFlow`: the flow creates a record it has no route to remove
+- `github_app_user_authorization` `BasicGithubAppUserAuthorizationFlow`: the flow creates a record it has no route to remove
+- `github_ci_repository` `BasicGithubCiRepositoryFlow`: the flow creates a record it has no route to remove
 - `github_connection` `BasicGithubConnectionFlow`: the flow creates a record it has no route to remove
+- `github_onboarding_import` `BasicGithubOnboardingImportFlow`: the flow creates a record it has no route to remove
+- `pull_request` `BasicPullRequestFlow`: the flow creates a record it has no route to remove
+- `github_runner_admission` `BasicGithubRunnerAdmissionFlow`: the flow creates a record it has no route to remove
+- `github_runner_cache` `BasicGithubRunnerCacheFlow`: the flow creates a record it has no route to remove
+- `github_runner_egress` `BasicGithubRunnerEgressFlow`: the flow creates a record it has no route to remove
+- `github_runner_image` `BasicGithubRunnerImageFlow`: the flow creates a record it has no route to remove
+- `github_runner_pool` `BasicGithubRunnerPoolFlow`: the flow creates a record it has no route to remove
+- `github_runner_setup` `BasicGithubRunnerSetupFlow`: the flow creates a record it has no route to remove
+- `gitlab_import` `BasicGitlabImportFlow`: the flow creates a record it has no route to remove
+- `grant_all_agent` `BasicGrantAllAgentFlow`: the flow creates a record it has no route to remove
 - `image_repository` `BasicImageRepositoryFlow`: the flow creates a record it has no route to remove
 - `interaction_response` `BasicInteractionResponseFlow`: the flow creates a record it has no route to remove
+- `job_log_chunk` `BasicJobLogChunkFlow`: the flow creates a record it has no route to remove
+- `job_step` `BasicJobStepFlow`: the flow creates a record it has no route to remove
+- `job_workspace` `BasicJobWorkspaceFlow`: the flow creates a record it has no route to remove
 - `journey_variant_replay` `BasicJourneyVariantReplayFlow`: the flow creates a record it has no route to remove
+- `lease_artifact` `BasicLeaseArtifactFlow`: the flow creates a record it has no route to remove
+- `lease_log_chunk` `BasicLeaseLogChunkFlow`: the flow creates a record it has no route to remove
+- `lease_verify_diagnostic` `BasicLeaseVerifyDiagnosticFlow`: the flow creates a record it has no route to remove
+- `lease_verify_secret` `BasicLeaseVerifySecretFlow`: the flow creates a record it has no route to remove
+- `local_agent_decision` `BasicLocalAgentDecisionFlow`: the flow creates a record it has no route to remove
+- `local_agent_response` `BasicLocalAgentResponseFlow`: the flow creates a record it has no route to remove
 - `local_thread_operation` `BasicLocalThreadOperationFlow`: the flow creates a record it has no route to remove
+- `log_stream_chunk` `BasicLogStreamChunkFlow`: the flow creates a record it has no route to remove
 - `merge_request` `BasicMergeRequestFlow`: the flow creates a record it has no route to remove
+- `merge_resolution` `BasicMergeResolutionFlow`: the flow creates a record it has no route to remove
 - `messaging_conversation_message` `BasicMessagingConversationMessageFlow`: the flow creates a record it has no route to remove
 - `messaging_conversation_upload` `BasicMessagingConversationUploadFlow`: the flow creates a record it has no route to remove
+- `metronome_webhook` `BasicMetronomeWebhookFlow`: the flow creates a record it has no route to remove
 - `network_connection` `BasicNetworkConnectionFlow`: the flow creates a record it has no route to remove
+- `organization_interaction` `BasicOrganizationInteractionFlow`: the flow creates a record it has no route to remove
+- `organization_message_file` `BasicOrganizationMessageFileFlow`: the flow creates a record it has no route to remove
+- `organization_run_event` `BasicOrganizationRunEventFlow`: the flow creates a record it has no route to remove
+- `organization_run_outcome` `BasicOrganizationRunOutcomeFlow`: the flow creates a record it has no route to remove
+- `organization_run_usage` `BasicOrganizationRunUsageFlow`: the flow creates a record it has no route to remove
+- `organization_tool` `BasicOrganizationToolFlow`: the flow creates a record it has no route to remove
+- `pages_session` `BasicPagesSessionFlow`: the flow creates a record it has no route to remove
+- `pairing` `BasicPairingFlow`: the flow creates a record it has no route to remove
 - `preview_sharing_approval` `BasicPreviewSharingApprovalFlow`: the flow creates a record it has no route to remove
+- `proactive_agent_waitlist_entry` `BasicProactiveAgentWaitlistEntryFlow`: the flow creates a record it has no route to remove
+- `product` `BasicProductFlow`: the flow creates a record it has no route to remove
 - `product_map_identity_decision` `BasicProductMapIdentityDecisionFlow`: the flow creates a record it has no route to remove
 - `product_map_question` `BasicProductMapQuestionFlow`: the flow creates a record it has no route to remove
 - `project_android_apk` `BasicProjectAndroidApkFlow`: the flow creates a record it has no route to remove
@@ -155,16 +332,53 @@ values in Postman.
 - `project_messaging_conversation` `BasicProjectMessagingConversationFlow`: the flow creates a record it has no route to remove
 - `project_run_plan` `BasicProjectRunPlanFlow`: the flow creates a record it has no route to remove
 - `project_run_schedule` `BasicProjectRunScheduleFlow`: the flow creates a record it has no route to remove
-- `pull_request` `BasicPullRequestFlow`: the flow creates a record it has no route to remove
+- `pull_request_action` `BasicPullRequestActionFlow`: the flow creates a record it has no route to remove
 - `pull_request_setting` `BasicPullRequestSettingFlow`: the flow creates a record it has no route to remove
 - `pull_request_setting_add_repository` `BasicPullRequestSettingAddRepositoryFlow`: the flow creates a record it has no route to remove
 - `pull_request_setting_detect_comment` `BasicPullRequestSettingDetectCommentFlow`: the flow creates a record it has no route to remove
+- `relay_signal` `BasicRelaySignalFlow`: the flow creates a record it has no route to remove
+- `release_rollout` `BasicReleaseRolloutFlow`: the flow creates a record it has no route to remove
+- `repo_agent_session` `BasicRepoAgentSessionFlow`: the flow creates a record it has no route to remove
+- `repo_cloud_workspace_backup` `BasicRepoCloudWorkspaceBackupFlow`: the flow creates a record it has no route to remove
 - `report_scenario` `BasicReportScenarioFlow`: the flow creates a record it has no route to remove
+- `repository_import_session` `BasicRepositoryImportSessionFlow`: the flow creates a record it has no route to remove
+- `repository_import_session_selection` `BasicRepositoryImportSessionSelectionFlow`: the flow creates a record it has no route to remove
+- `roder_code_repair` `BasicRoderCodeRepairFlow`: the flow creates a record it has no route to remove
+- `roder_code_repair_setting` `BasicRoderCodeRepairSettingFlow`: the flow creates a record it has no route to remove
+- `roder_workspace_credential` `BasicRoderWorkspaceCredentialFlow`: the flow creates a record it has no route to remove
+- `run_artifact` `BasicRunArtifactFlow`: the flow creates a record it has no route to remove
+- `run_job` `BasicRunJobFlow`: the flow creates a record it has no route to remove
+- `run_workspace_credential` `BasicRunWorkspaceCredentialFlow`: the flow creates a record it has no route to remove
+- `runner_lease` `BasicRunnerLeaseFlow`: the flow creates a record it has no route to remove
+- `runner_pool_node_enrollment_token` `BasicRunnerPoolNodeEnrollmentTokenFlow`: the flow creates a record it has no route to remove
+- `runner_pool_runner` `BasicRunnerPoolRunnerFlow`: the flow creates a record it has no route to remove
+- `runtime_instance_health_snapshot` `BasicRuntimeInstanceHealthSnapshotFlow`: the flow creates a record it has no route to remove
+- `sandbox_integration` `BasicSandboxIntegrationFlow`: the flow creates a record it has no route to remove
 - `scenario_run_lesson` `BasicScenarioRunLessonFlow`: the flow creates a record it has no route to remove
+- `signal` `BasicSignalFlow`: the flow creates a record it has no route to remove
+- `space_audit_event` `BasicSpaceAuditEventFlow`: the flow creates a record it has no route to remove
+- `space_log_stream` `BasicSpaceLogStreamFlow`: the flow creates a record it has no route to remove
+- `space_metric_sery` `BasicSpaceMetricSeryFlow`: the flow creates a record it has no route to remove
+- `space_trace_span` `BasicSpaceTraceSpanFlow`: the flow creates a record it has no route to remove
+- `spark` `BasicSparkFlow`: the flow creates a record it has no route to remove
+- `spark_agent_integration` `BasicSparkAgentIntegrationFlow`: the flow creates a record it has no route to remove
 - `spark_agent_local_thread` `BasicSparkAgentLocalThreadFlow`: the flow creates a record it has no route to remove
+- `spark_agent_skill` `BasicSparkAgentSkillFlow`: the flow creates a record it has no route to remove
+- `spark_agent_thread` `BasicSparkAgentThreadFlow`: the flow creates a record it has no route to remove
+- `spark_credit` `BasicSparkCreditFlow`: the flow creates a record it has no route to remove
 - `static_site_deployment` `BasicStaticSiteDeploymentFlow`: the flow creates a record it has no route to remove
+- `stripe_webhook` `BasicStripeWebhookFlow`: the flow creates a record it has no route to remove
+- `submit_telemetry` `BasicSubmitTelemetryFlow`: the flow creates a record it has no route to remove
+- `swarm_note` `BasicSwarmNoteFlow`: the flow creates a record it has no route to remove
+- `task_lease` `BasicTaskLeaseFlow`: the flow creates a record it has no route to remove
 - `thread_preview` `BasicThreadPreviewFlow`: the flow creates a record it has no route to remove
+- `tool_feedback` `BasicToolFeedbackFlow`: the flow creates a record it has no route to remove
+- `v1_message` `BasicV1MessageFlow`: the flow creates a record it has no route to remove
+- `vc_change_group` `BasicVcChangeGroupFlow`: the flow creates a record it has no route to remove
 - `verification_project_scenario` `BasicVerificationProjectScenarioFlow`: the flow creates a record it has no route to remove
 - `verify_app_domain` `BasicVerifyAppDomainFlow`: the flow creates a record it has no route to remove
+- `verify_signal_integration` `BasicVerifySignalIntegrationFlow`: the flow creates a record it has no route to remove
 - `verify_static_site_domain` `BasicVerifyStaticSiteDomainFlow`: the flow creates a record it has no route to remove
+- `waitlist_application` `BasicWaitlistApplicationFlow`: the flow creates a record it has no route to remove
 - `web_bot_auth` `BasicWebBotAuthFlow`: the flow creates a record it has no route to remove
+- `workspace_space` `BasicWorkspaceSpaceFlow`: the flow creates a record it has no route to remove

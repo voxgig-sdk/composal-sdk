@@ -1,0 +1,120 @@
+# Entity: desktop_local_agent_response
+
+main: kit: entity: desktop_local_agent_response: {
+
+  alias: field: {}
+
+  fields: {
+    input: {
+      h: "Input"
+      n: "input"
+      r: true
+      t: "`$ARRAY`"
+    }
+    max_output_tokens: {
+      h: "Max Output Tokens"
+      n: "max_output_tokens"
+      r: false
+      t: "`$INTEGER`"
+    }
+    model: {
+      h: "Model"
+      n: "model"
+      r: true
+      t: "`$STRING`"
+    }
+    store: {
+      h: "Store"
+      n: "store"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    stream: {
+      h: "Stream"
+      n: "stream"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "desktop_local_agent_response"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "input"
+            "max_output_tokens"
+            "model"
+            "store"
+            "stream"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/desktop_local_agent/responses"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/desktop_local_agent/responses"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            alternatives: [
+              {
+                kind: "raw"
+                media: "text/event-stream"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "desktop_local_agent"
+            }
+            {
+              lit: "responses"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

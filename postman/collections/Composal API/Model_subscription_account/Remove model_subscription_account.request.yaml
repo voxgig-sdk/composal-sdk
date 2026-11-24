@@ -1,0 +1,22 @@
+$kind: http-request
+id: fbdd2c3e-b4df-50f2-97b5-53ed5d13a5e8
+description: |-
+  The `remove` operation of **model_subscription_account**.
+
+  SDK: `client.ModelSubscriptionAccount().remove({ id: "example_id" })`
+url: "{{base}}/api/v1/model_subscription_accounts/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{model_subscription_account_id}}"
+    description: The model_subscription_account this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("model_subscription_account_id")
+      }
+    language: text/javascript
+order: 5000

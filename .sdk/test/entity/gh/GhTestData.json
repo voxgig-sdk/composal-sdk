@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "gh": {
+      "GH00": {
+        "capabilities": {},
+        "content": {},
+        "fetched_at": "s52",
+        "id": "GH00",
+        "magic_merge": "s54",
+        "pull_request": "s55",
+        "stack": {},
+        "transcript_paths": [],
+        "gh_id": "GH01",
+        "github_repo": "GITHUB_REPO01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "GH01": {
+        "capabilities": {},
+        "content": {},
+        "fetched_at": "sa2",
+        "id": "GH01",
+        "magic_merge": "sa4",
+        "pull_request": "sa5",
+        "stack": {},
+        "transcript_paths": [],
+        "gh_id": "GH01",
+        "github_repo": "GITHUB_REPO01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "GH02": {
+        "capabilities": {},
+        "content": {},
+        "fetched_at": "sf2",
+        "id": "GH02",
+        "magic_merge": "sf4",
+        "pull_request": "sf5",
+        "stack": {},
+        "transcript_paths": [],
+        "gh_id": "GH01",
+        "github_repo": "GITHUB_REPO01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "gh": {
+      "gh_ref01": {
+        "capabilities": {},
+        "content": {},
+        "fetched_at": "s142",
+        "magic_merge": "s144",
+        "pull_request": "s145",
+        "stack": {},
+        "transcript_paths": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/gh/{github_owner}/{github_repo}/{number}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

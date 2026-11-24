@@ -1,0 +1,15 @@
+$kind: http-request
+id: "21cc1b52-f908-5af4-b258-7710a10e144c"
+description: |-
+  The `logout` action of **auth**, a route of its `create` operation.
+
+  SDK: `client.Auth().create({ $action: "logout" })`
+url: "{{base}}/api/v1/auth/logout"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 7000

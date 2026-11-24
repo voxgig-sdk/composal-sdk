@@ -1,0 +1,28 @@
+$kind: http-request
+id: "4ce23a02-d53e-5d92-a77c-a7315ce06760"
+description: |-
+  The `list` operation of **agent_connection_grant**.
+
+  SDK: `client.AgentConnectionGrant().list({ agent_connection_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_connections/:id/grants"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_connection_grant belongs to.
+  - key: id
+    value: "{{agent_connection_id}}"
+    description: The agent_connection this agent_connection_grant belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["grants"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("agent_connection_grant_id")) pm.collectionVariables.set("agent_connection_grant_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

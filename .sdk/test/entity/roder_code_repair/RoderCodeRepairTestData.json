@@ -1,0 +1,87 @@
+{
+  "existing": {
+    "roder_code_repair": {
+      "RODER_CODE_REPAIR00": {
+        "base_sha": "s78",
+        "cancel_requested": false,
+        "failure_code": "s7a",
+        "id": "RODER_CODE_REPAIR00",
+        "launch_state": "s7c",
+        "organization_id": "ORGANIZATION01",
+        "repository_slug": "s7e",
+        "roder_thread_id": "RODER_THREAD01",
+        "roder_turn_id": "RODER_TURN01",
+        "scenario_run_id": "SCENARIO_RUN01",
+        "task": "s82",
+        "trigger_kind": "s83"
+      },
+      "RODER_CODE_REPAIR01": {
+        "base_sha": "sf0",
+        "cancel_requested": false,
+        "failure_code": "sf2",
+        "id": "RODER_CODE_REPAIR01",
+        "launch_state": "sf4",
+        "organization_id": "ORGANIZATION01",
+        "repository_slug": "sf6",
+        "roder_thread_id": "RODER_THREAD01",
+        "roder_turn_id": "RODER_TURN01",
+        "scenario_run_id": "SCENARIO_RUN01",
+        "task": "sfa",
+        "trigger_kind": "sfb"
+      },
+      "RODER_CODE_REPAIR02": {
+        "base_sha": "s168",
+        "cancel_requested": false,
+        "failure_code": "s16a",
+        "id": "RODER_CODE_REPAIR02",
+        "launch_state": "s16c",
+        "organization_id": "ORGANIZATION01",
+        "repository_slug": "s16e",
+        "roder_thread_id": "RODER_THREAD01",
+        "roder_turn_id": "RODER_TURN01",
+        "scenario_run_id": "SCENARIO_RUN01",
+        "task": "s172",
+        "trigger_kind": "s173"
+      }
+    }
+  },
+  "new": {
+    "roder_code_repair": {
+      "roder_code_repair_ref01": {
+        "base_sha": "s1e0",
+        "cancel_requested": false,
+        "failure_code": "s1e2",
+        "launch_state": "s1e4",
+        "organization_id": "ORGANIZATION01",
+        "repository_slug": "s1e6",
+        "roder_thread_id": "RODER_THREAD01",
+        "roder_turn_id": "RODER_TURN01",
+        "scenario_run_id": "SCENARIO_RUN01",
+        "task": "s1ea",
+        "trigger_kind": "s1eb"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/agent/roder/code_repairs/{id}/cancel": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/agent/roder/code_repairs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/agent/roder/code_repairs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/agent/roder/code_repairs/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

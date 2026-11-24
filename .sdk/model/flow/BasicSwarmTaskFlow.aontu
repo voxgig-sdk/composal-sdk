@@ -1,0 +1,49 @@
+# BasicSwarmTaskFlow
+
+main: kit: flow: BasicSwarmTaskFlow:
+{
+  entity: "swarm_task",
+  kind: "basic",
+  name: "BasicSwarmTaskFlow",
+  step: [
+    {
+      m: {
+        swarm_id: "swarm01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "swarm_task_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "swarm_task_ref01",
+        srcdatavar: "swarm_task_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "swarm_task01",
+        swarm_id: "swarm01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-swarm_task_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSwarmTaskFlow"
+}

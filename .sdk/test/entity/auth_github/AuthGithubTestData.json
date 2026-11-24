@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "auth_github": {
+      "AUTH_GITHUB00": {
+        "id": "AUTH_GITHUB00"
+      },
+      "AUTH_GITHUB01": {
+        "id": "AUTH_GITHUB01"
+      },
+      "AUTH_GITHUB02": {
+        "id": "AUTH_GITHUB02"
+      }
+    }
+  },
+  "new": {
+    "auth_github": {
+      "auth_github_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/auth/github/start": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

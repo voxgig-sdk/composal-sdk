@@ -1,0 +1,84 @@
+# Entity: auth_registration_option
+
+main: kit: entity: auth_registration_option: {
+
+  alias: field: {}
+
+  fields: {
+    email_password_signup_enabled: {
+      h: "Email Password Signup Enabled"
+      n: "email_password_signup_enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    openai_sign_in_enabled: {
+      h: "Openai Sign In Enabled"
+      n: "openai_sign_in_enabled"
+      r: false
+      sh: "Whether ChatGPT identity sign-in is configured and enabled for rollout."
+      t: "`$BOOLEAN`"
+    }
+    turnstile_site_key: {
+      h: "Turnstile Site Key"
+      n: "turnstile_site_key"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    waitlist_enabled: {
+      h: "Waitlist Enabled"
+      n: "waitlist_enabled"
+      r: true
+      sh: "New public signups require waitlist approval when enabled."
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "auth_registration_option"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/auth/registration_options"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/auth/registration_options"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "registration_options"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

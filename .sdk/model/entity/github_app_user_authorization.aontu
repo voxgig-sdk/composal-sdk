@@ -1,0 +1,53 @@
+# Entity: github_app_user_authorization
+
+main: kit: entity: github_app_user_authorization: {
+
+  alias: field: {}
+
+  name: "github_app_user_authorization"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/github_app/user_authorizations"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/github_app/user_authorizations"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "github_app"
+            }
+            {
+              lit: "user_authorizations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

@@ -1,0 +1,25 @@
+$kind: http-request
+id: f2011d2b-2ced-5d1f-9a6b-b900d9ebe482
+description: |-
+  The `revoke_delegation` action of **agent_connection**, a route of its `create` operation.
+
+  SDK: `client.AgentConnection().create({ "organization_id": "organization_id", "id": "ID", $action: "revoke_delegation" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_connections/:id/revoke_delegation"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_connection belongs to.
+  - key: id
+    value: "{{agent_connection_id}}"
+    description: The agent_connection this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "delegation_id": "example"
+    }
+order: 16000

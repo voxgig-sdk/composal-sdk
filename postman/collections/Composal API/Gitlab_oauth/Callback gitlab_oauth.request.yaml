@@ -1,0 +1,11 @@
+$kind: http-request
+id: "8b34b833-2554-5fdf-a42c-64d3f85dbf92"
+description: |-
+  The `callback` action of **gitlab_oauth**, a route of its `load` operation.
+
+  SDK: `client.GitlabOauth().load({ $action: "callback" })`
+url: "{{base}}/api/v1/gitlab/oauth/callback"
+method: GET
+headers:
+  Accept: application/json
+order: 1000

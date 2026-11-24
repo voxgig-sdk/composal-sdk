@@ -1,0 +1,24 @@
+$kind: http-request
+id: "3d27fa51-84e4-5569-aded-e56730a2a6a6"
+description: |-
+  The `contract` action of **artifact_image_repository**, a route of its `create` operation.
+
+  SDK: `client.ArtifactImageRepository().create({ "id": "ID", $action: "contract" })`
+url: "{{base}}/api/v1/artifacts/image_repositories/:id/contract"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_image_repository_id}}"
+    description: The artifact_image_repository this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "operation": "push",
+      "reference": "example",
+      "ttl_seconds": 1
+    }
+order: 7000

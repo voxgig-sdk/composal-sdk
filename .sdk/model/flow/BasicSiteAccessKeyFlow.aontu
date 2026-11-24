@@ -1,0 +1,76 @@
+# BasicSiteAccessKeyFlow
+
+main: kit: flow: BasicSiteAccessKeyFlow:
+{
+  entity: "site_access_key",
+  kind: "basic",
+  name: "BasicSiteAccessKeyFlow",
+  step: [
+    {
+      i: {
+        ref: "site_access_key_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        site_id: "site01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01",
+        site_id: "site01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "site_access_key_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "site_access_key_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "site_access_key01",
+        organization_id: "organization01",
+        site_id: "site01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        organization_id: "organization01",
+        site_id: "site01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "site_access_key_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSiteAccessKeyFlow"
+}

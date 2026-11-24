@@ -1,0 +1,18 @@
+$kind: http-request
+id: "7bf773b2-6ed1-5457-b1ed-8e91c26051da"
+description: |-
+  The `upstream` action of **thread_preview_access**, a route of its `create` operation.
+
+  SDK: `client.ThreadPreviewAccess().create({ $action: "upstream" })`
+url: "{{base}}/api/v1/thread_preview_access/upstream"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "host": "{{thread_preview_access_id}}"
+    }
+order: 3000

@@ -9,4 +9,4 @@ description: |-
   | `content_type` | string | yes |  |
   | `file_name` | string | yes |  |
   | `id` | string |  |  |
-order: 3000
+order: 7000

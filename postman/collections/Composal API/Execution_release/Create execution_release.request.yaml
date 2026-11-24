@@ -1,0 +1,25 @@
+$kind: http-request
+id: "18ae8da4-2da6-54fa-a649-565ed121fa76"
+description: |-
+  The `create` operation of **execution_release**.
+
+  SDK: `client.ExecutionRelease().create({  })`
+url: "{{base}}/api/v1/execution/releases"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("execution_release_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

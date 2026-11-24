@@ -1,0 +1,22 @@
+# BasicGithubAppImportableRepositoryFlow
+
+main: kit: flow: BasicGithubAppImportableRepositoryFlow:
+{
+  entity: "github_app_importable_repository",
+  kind: "basic",
+  name: "BasicGithubAppImportableRepositoryFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "github_app_importable_repository_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGithubAppImportableRepositoryFlow"
+}

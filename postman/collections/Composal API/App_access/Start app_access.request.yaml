@@ -1,0 +1,11 @@
+$kind: http-request
+id: ae42499b-846f-5c71-840e-b23375280855
+description: |-
+  The `start` action of **app_access**, a route of its `load` operation.
+
+  SDK: `client.AppAccess().load({ $action: "start" })`
+url: "{{base}}/api/v1/app_access/start"
+method: GET
+headers:
+  Accept: application/json
+order: 2000

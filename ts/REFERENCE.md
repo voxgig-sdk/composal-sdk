@@ -49,6 +49,30 @@ const client = ComposalSDK.test()
 
 ### Instance Methods
 
+#### `A2aWellKnown(data?: object)`
+
+Create a new `A2aWellKnown` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `A2aWellKnownEntity` instance.
+
+#### `AdminOrg(data?: object)`
+
+Create a new `AdminOrg` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AdminOrgEntity` instance.
+
 #### `Agent(data?: object)`
 
 Create a new `Agent` entity instance.
@@ -60,6 +84,30 @@ Create a new `Agent` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `AgentEntity` instance.
+
+#### `AgentApp(data?: object)`
+
+Create a new `AgentApp` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentAppEntity` instance.
+
+#### `AgentAppInstall(data?: object)`
+
+Create a new `AgentAppInstall` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentAppInstallEntity` instance.
 
 #### `AgentAttachment(data?: object)`
 
@@ -133,6 +181,78 @@ Create a new `AgentConnection` entity instance.
 
 **Returns:** `AgentConnectionEntity` instance.
 
+#### `AgentConnectionDelegation(data?: object)`
+
+Create a new `AgentConnectionDelegation` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentConnectionDelegationEntity` instance.
+
+#### `AgentConnectionGrant(data?: object)`
+
+Create a new `AgentConnectionGrant` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentConnectionGrantEntity` instance.
+
+#### `AgentConnectionResource(data?: object)`
+
+Create a new `AgentConnectionResource` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentConnectionResourceEntity` instance.
+
+#### `AgentConnectionSafetyControl(data?: object)`
+
+Create a new `AgentConnectionSafetyControl` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentConnectionSafetyControlEntity` instance.
+
+#### `AgentConnectionTriggerSubscription(data?: object)`
+
+Create a new `AgentConnectionTriggerSubscription` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentConnectionTriggerSubscriptionEntity` instance.
+
+#### `AgentContextCheckpoint(data?: object)`
+
+Create a new `AgentContextCheckpoint` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentContextCheckpointEntity` instance.
+
 #### `AgentControlFlow(data?: object)`
 
 Create a new `AgentControlFlow` entity instance.
@@ -169,6 +289,18 @@ Create a new `AgentEmail` entity instance.
 
 **Returns:** `AgentEmailEntity` instance.
 
+#### `AgentEvent(data?: object)`
+
+Create a new `AgentEvent` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentEventEntity` instance.
+
 #### `AgentFile(data?: object)`
 
 Create a new `AgentFile` entity instance.
@@ -204,6 +336,30 @@ Create a new `AgentIntegration` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `AgentIntegrationEntity` instance.
+
+#### `AgentIntegrationAccount(data?: object)`
+
+Create a new `AgentIntegrationAccount` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentIntegrationAccountEntity` instance.
+
+#### `AgentIntegrationCallback(data?: object)`
+
+Create a new `AgentIntegrationCallback` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentIntegrationCallbackEntity` instance.
 
 #### `AgentInteraction(data?: object)`
 
@@ -337,6 +493,30 @@ Create a new `AgentQuestion` entity instance.
 
 **Returns:** `AgentQuestionEntity` instance.
 
+#### `AgentRelayFileGrant(data?: object)`
+
+Create a new `AgentRelayFileGrant` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentRelayFileGrantEntity` instance.
+
+#### `AgentRelayFileGrantAccount(data?: object)`
+
+Create a new `AgentRelayFileGrantAccount` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentRelayFileGrantAccountEntity` instance.
+
 #### `AgentRepository(data?: object)`
 
 Create a new `AgentRepository` entity instance.
@@ -360,6 +540,18 @@ Create a new `AgentResource` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `AgentResourceEntity` instance.
+
+#### `AgentRoder(data?: object)`
+
+Create a new `AgentRoder` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentRoderEntity` instance.
 
 #### `AgentRoutine(data?: object)`
 
@@ -396,6 +588,42 @@ Create a new `AgentRuntime` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `AgentRuntimeEntity` instance.
+
+#### `AgentSession(data?: object)`
+
+Create a new `AgentSession` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentSessionEntity` instance.
+
+#### `AgentSessionCheckpoint(data?: object)`
+
+Create a new `AgentSessionCheckpoint` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentSessionCheckpointEntity` instance.
+
+#### `AgentSessionRoderHandoff(data?: object)`
+
+Create a new `AgentSessionRoderHandoff` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentSessionRoderHandoffEntity` instance.
 
 #### `AgentSetting(data?: object)`
 
@@ -481,6 +709,18 @@ Create a new `AgentSubscription` entity instance.
 
 **Returns:** `AgentSubscriptionEntity` instance.
 
+#### `AgentSwarm(data?: object)`
+
+Create a new `AgentSwarm` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentSwarmEntity` instance.
+
 #### `AgentTeammate(data?: object)`
 
 Create a new `AgentTeammate` entity instance.
@@ -529,6 +769,18 @@ Create a new `AgentTool` entity instance.
 
 **Returns:** `AgentToolEntity` instance.
 
+#### `AgentUsage(data?: object)`
+
+Create a new `AgentUsage` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentUsageEntity` instance.
+
 #### `AgentVerifyProject(data?: object)`
 
 Create a new `AgentVerifyProject` entity instance.
@@ -552,6 +804,18 @@ Create a new `AgentWait` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `AgentWaitEntity` instance.
+
+#### `AgentWebPreview(data?: object)`
+
+Create a new `AgentWebPreview` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgentWebPreviewEntity` instance.
 
 #### `AgentWebhook(data?: object)`
 
@@ -649,6 +913,42 @@ Create a new `AgentWritePermission` entity instance.
 
 **Returns:** `AgentWritePermissionEntity` instance.
 
+#### `Agreement(data?: object)`
+
+Create a new `Agreement` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgreementEntity` instance.
+
+#### `AgreementAccessRequest(data?: object)`
+
+Create a new `AgreementAccessRequest` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AgreementAccessRequestEntity` instance.
+
+#### `AlertRuleEvent(data?: object)`
+
+Create a new `AlertRuleEvent` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AlertRuleEventEntity` instance.
+
 #### `AllocationLog(data?: object)`
 
 Create a new `AllocationLog` entity instance.
@@ -672,6 +972,30 @@ Create a new `App` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `AppEntity` instance.
+
+#### `AppAccess(data?: object)`
+
+Create a new `AppAccess` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AppAccessEntity` instance.
+
+#### `AppAccessJwk(data?: object)`
+
+Create a new `AppAccessJwk` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AppAccessJwkEntity` instance.
 
 #### `AppCdn(data?: object)`
 
@@ -889,6 +1213,114 @@ Create a new `AppStorageResource` entity instance.
 
 **Returns:** `AppStorageResourceEntity` instance.
 
+#### `Artefact(data?: object)`
+
+Create a new `Artefact` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ArtefactEntity` instance.
+
+#### `ArtefactCommentThread(data?: object)`
+
+Create a new `ArtefactCommentThread` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ArtefactCommentThreadEntity` instance.
+
+#### `ArtefactRevision(data?: object)`
+
+Create a new `ArtefactRevision` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ArtefactRevisionEntity` instance.
+
+#### `ArtefactViewToken(data?: object)`
+
+Create a new `ArtefactViewToken` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ArtefactViewTokenEntity` instance.
+
+#### `Artifact(data?: object)`
+
+Create a new `Artifact` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ArtifactEntity` instance.
+
+#### `ArtifactCacheNamespace(data?: object)`
+
+Create a new `ArtifactCacheNamespace` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ArtifactCacheNamespaceEntity` instance.
+
+#### `ArtifactImageRepository(data?: object)`
+
+Create a new `ArtifactImageRepository` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ArtifactImageRepositoryEntity` instance.
+
+#### `ArtifactPackageMirror(data?: object)`
+
+Create a new `ArtifactPackageMirror` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ArtifactPackageMirrorEntity` instance.
+
+#### `ArtifactRetentionPolicy(data?: object)`
+
+Create a new `ArtifactRetentionPolicy` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ArtifactRetentionPolicyEntity` instance.
+
 #### `AttachmentPart(data?: object)`
 
 Create a new `AttachmentPart` entity instance.
@@ -900,6 +1332,102 @@ Create a new `AttachmentPart` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `AttachmentPartEntity` instance.
+
+#### `AuditEvent(data?: object)`
+
+Create a new `AuditEvent` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AuditEventEntity` instance.
+
+#### `Auth(data?: object)`
+
+Create a new `Auth` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AuthEntity` instance.
+
+#### `AuthCli(data?: object)`
+
+Create a new `AuthCli` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AuthCliEntity` instance.
+
+#### `AuthGithub(data?: object)`
+
+Create a new `AuthGithub` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AuthGithubEntity` instance.
+
+#### `AuthGoogle(data?: object)`
+
+Create a new `AuthGoogle` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AuthGoogleEntity` instance.
+
+#### `AuthOpenai(data?: object)`
+
+Create a new `AuthOpenai` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AuthOpenaiEntity` instance.
+
+#### `AuthPasswordReset(data?: object)`
+
+Create a new `AuthPasswordReset` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AuthPasswordResetEntity` instance.
+
+#### `AuthRegistrationOption(data?: object)`
+
+Create a new `AuthRegistrationOption` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AuthRegistrationOptionEntity` instance.
 
 #### `AutomationEvent(data?: object)`
 
@@ -925,6 +1453,210 @@ Create a new `AutomationRun` entity instance.
 
 **Returns:** `AutomationRunEntity` instance.
 
+#### `BackendRunnerPool(data?: object)`
+
+Create a new `BackendRunnerPool` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BackendRunnerPoolEntity` instance.
+
+#### `Bazel(data?: object)`
+
+Create a new `Bazel` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BazelEntity` instance.
+
+#### `BazelActionResult(data?: object)`
+
+Create a new `BazelActionResult` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BazelActionResultEntity` instance.
+
+#### `BazelBackend(data?: object)`
+
+Create a new `BazelBackend` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BazelBackendEntity` instance.
+
+#### `BazelBlob(data?: object)`
+
+Create a new `BazelBlob` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BazelBlobEntity` instance.
+
+#### `BazelExecution(data?: object)`
+
+Create a new `BazelExecution` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BazelExecutionEntity` instance.
+
+#### `BazelFindMissingBlob(data?: object)`
+
+Create a new `BazelFindMissingBlob` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BazelFindMissingBlobEntity` instance.
+
+#### `Billing(data?: object)`
+
+Create a new `Billing` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BillingEntity` instance.
+
+#### `BillingAddon(data?: object)`
+
+Create a new `BillingAddon` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BillingAddonEntity` instance.
+
+#### `BillingCheckoutSession(data?: object)`
+
+Create a new `BillingCheckoutSession` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BillingCheckoutSessionEntity` instance.
+
+#### `BillingInvoice(data?: object)`
+
+Create a new `BillingInvoice` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BillingInvoiceEntity` instance.
+
+#### `BillingPackage(data?: object)`
+
+Create a new `BillingPackage` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BillingPackageEntity` instance.
+
+#### `BillingPortalSession(data?: object)`
+
+Create a new `BillingPortalSession` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BillingPortalSessionEntity` instance.
+
+#### `BillingPrepaidPeriod(data?: object)`
+
+Create a new `BillingPrepaidPeriod` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BillingPrepaidPeriodEntity` instance.
+
+#### `BillingPrepaidPurchase(data?: object)`
+
+Create a new `BillingPrepaidPurchase` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BillingPrepaidPurchaseEntity` instance.
+
+#### `BillingTokenTopUp(data?: object)`
+
+Create a new `BillingTokenTopUp` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BillingTokenTopUpEntity` instance.
+
+#### `BillingUsage(data?: object)`
+
+Create a new `BillingUsage` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BillingUsageEntity` instance.
+
 #### `Binary(data?: object)`
 
 Create a new `Binary` entity instance.
@@ -948,6 +1680,18 @@ Create a new `BinaryVersion` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `BinaryVersionEntity` instance.
+
+#### `BookmarkProtectionRefreshGithubRequiredCheck(data?: object)`
+
+Create a new `BookmarkProtectionRefreshGithubRequiredCheck` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BookmarkProtectionRefreshGithubRequiredCheckEntity` instance.
 
 #### `BrowserEgressCandidate(data?: object)`
 
@@ -1057,6 +1801,18 @@ Create a new `BrowserSessionTask` entity instance.
 
 **Returns:** `BrowserSessionTaskEntity` instance.
 
+#### `CacheNamespaceEntry(data?: object)`
+
+Create a new `CacheNamespaceEntry` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `CacheNamespaceEntryEntity` instance.
+
 #### `CatalogSelector(data?: object)`
 
 Create a new `CatalogSelector` entity instance.
@@ -1117,6 +1873,354 @@ Create a new `CdnSpaceObject` entity instance.
 
 **Returns:** `CdnSpaceObjectEntity` instance.
 
+#### `Change(data?: object)`
+
+Create a new `Change` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ChangeEntity` instance.
+
+#### `ChangeAsset(data?: object)`
+
+Create a new `ChangeAsset` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ChangeAssetEntity` instance.
+
+#### `ChangeComment(data?: object)`
+
+Create a new `ChangeComment` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ChangeCommentEntity` instance.
+
+#### `ChangeFileReviewCheckpoint(data?: object)`
+
+Create a new `ChangeFileReviewCheckpoint` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ChangeFileReviewCheckpointEntity` instance.
+
+#### `ChangeGitBranchSubmission(data?: object)`
+
+Create a new `ChangeGitBranchSubmission` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ChangeGitBranchSubmissionEntity` instance.
+
+#### `ChangeGitCommitIdentity(data?: object)`
+
+Create a new `ChangeGitCommitIdentity` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ChangeGitCommitIdentityEntity` instance.
+
+#### `ChangeGitPublication(data?: object)`
+
+Create a new `ChangeGitPublication` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ChangeGitPublicationEntity` instance.
+
+#### `ChangeGroupMember(data?: object)`
+
+Create a new `ChangeGroupMember` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ChangeGroupMemberEntity` instance.
+
+#### `ChangeLabel(data?: object)`
+
+Create a new `ChangeLabel` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ChangeLabelEntity` instance.
+
+#### `ChangeLandingHold(data?: object)`
+
+Create a new `ChangeLandingHold` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ChangeLandingHoldEntity` instance.
+
+#### `ChangeLandingRequest(data?: object)`
+
+Create a new `ChangeLandingRequest` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ChangeLandingRequestEntity` instance.
+
+#### `ChangeRequestChange(data?: object)`
+
+Create a new `ChangeRequestChange` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ChangeRequestChangeEntity` instance.
+
+#### `ChangeReviewer(data?: object)`
+
+Create a new `ChangeReviewer` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ChangeReviewerEntity` instance.
+
+#### `ChangeTranscript(data?: object)`
+
+Create a new `ChangeTranscript` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ChangeTranscriptEntity` instance.
+
+#### `ChangeTranscriptSummary(data?: object)`
+
+Create a new `ChangeTranscriptSummary` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ChangeTranscriptSummaryEntity` instance.
+
+#### `CheckpointPrepareChunk(data?: object)`
+
+Create a new `CheckpointPrepareChunk` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `CheckpointPrepareChunkEntity` instance.
+
+#### `CiNode(data?: object)`
+
+Create a new `CiNode` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `CiNodeEntity` instance.
+
+#### `CiPipeline(data?: object)`
+
+Create a new `CiPipeline` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `CiPipelineEntity` instance.
+
+#### `CiPipelineRun(data?: object)`
+
+Create a new `CiPipelineRun` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `CiPipelineRunEntity` instance.
+
+#### `CiRunnerPool(data?: object)`
+
+Create a new `CiRunnerPool` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `CiRunnerPoolEntity` instance.
+
+#### `CiStatus(data?: object)`
+
+Create a new `CiStatus` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `CiStatusEntity` instance.
+
+#### `CliEvent(data?: object)`
+
+Create a new `CliEvent` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `CliEventEntity` instance.
+
+#### `CliRelease(data?: object)`
+
+Create a new `CliRelease` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `CliReleaseEntity` instance.
+
+#### `CloudWorkspaceBackupObject(data?: object)`
+
+Create a new `CloudWorkspaceBackupObject` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `CloudWorkspaceBackupObjectEntity` instance.
+
+#### `CodeRuleEvaluation(data?: object)`
+
+Create a new `CodeRuleEvaluation` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `CodeRuleEvaluationEntity` instance.
+
+#### `ComSiteAccess(data?: object)`
+
+Create a new `ComSiteAccess` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ComSiteAccessEntity` instance.
+
+#### `ComSiteAccessSession(data?: object)`
+
+Create a new `ComSiteAccessSession` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ComSiteAccessSessionEntity` instance.
+
+#### `CommentThreadComment(data?: object)`
+
+Create a new `CommentThreadComment` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `CommentThreadCommentEntity` instance.
+
+#### `CommitDiff(data?: object)`
+
+Create a new `CommitDiff` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `CommitDiffEntity` instance.
+
 #### `ConnectionRequest(data?: object)`
 
 Create a new `ConnectionRequest` entity instance.
@@ -1140,6 +2244,42 @@ Create a new `ConnectionSource` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `ConnectionSourceEntity` instance.
+
+#### `ContactSubmission(data?: object)`
+
+Create a new `ContactSubmission` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ContactSubmissionEntity` instance.
+
+#### `ControlComputer(data?: object)`
+
+Create a new `ControlComputer` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ControlComputerEntity` instance.
+
+#### `ControlComputerControlOperation(data?: object)`
+
+Create a new `ControlComputerControlOperation` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ControlComputerControlOperationEntity` instance.
 
 #### `CoordinationWait(data?: object)`
 
@@ -1261,6 +2401,18 @@ Create a new `DemoShareSegment` entity instance.
 
 **Returns:** `DemoShareSegmentEntity` instance.
 
+#### `Deployment(data?: object)`
+
+Create a new `Deployment` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DeploymentEntity` instance.
+
 #### `DeploymentDashboardNomad(data?: object)`
 
 Create a new `DeploymentDashboardNomad` entity instance.
@@ -1273,6 +2425,18 @@ Create a new `DeploymentDashboardNomad` entity instance.
 
 **Returns:** `DeploymentDashboardNomadEntity` instance.
 
+#### `DeploymentDetail(data?: object)`
+
+Create a new `DeploymentDetail` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DeploymentDetailEntity` instance.
+
 #### `DeploymentFile(data?: object)`
 
 Create a new `DeploymentFile` entity instance.
@@ -1284,6 +2448,270 @@ Create a new `DeploymentFile` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `DeploymentFileEntity` instance.
+
+#### `DeploymentLog(data?: object)`
+
+Create a new `DeploymentLog` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DeploymentLogEntity` instance.
+
+#### `DeploymentMetric(data?: object)`
+
+Create a new `DeploymentMetric` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DeploymentMetricEntity` instance.
+
+#### `DeploymentPreview(data?: object)`
+
+Create a new `DeploymentPreview` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DeploymentPreviewEntity` instance.
+
+#### `DeploymentSetting(data?: object)`
+
+Create a new `DeploymentSetting` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DeploymentSettingEntity` instance.
+
+#### `DesktopLocalAgentModel(data?: object)`
+
+Create a new `DesktopLocalAgentModel` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DesktopLocalAgentModelEntity` instance.
+
+#### `DesktopLocalAgentResponse(data?: object)`
+
+Create a new `DesktopLocalAgentResponse` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DesktopLocalAgentResponseEntity` instance.
+
+#### `Device(data?: object)`
+
+Create a new `Device` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DeviceEntity` instance.
+
+#### `DeviceBrowserOperation(data?: object)`
+
+Create a new `DeviceBrowserOperation` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DeviceBrowserOperationEntity` instance.
+
+#### `DeviceControlMessage(data?: object)`
+
+Create a new `DeviceControlMessage` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DeviceControlMessageEntity` instance.
+
+#### `DeviceControlOperation(data?: object)`
+
+Create a new `DeviceControlOperation` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DeviceControlOperationEntity` instance.
+
+#### `DeviceEnterpriseRelay(data?: object)`
+
+Create a new `DeviceEnterpriseRelay` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DeviceEnterpriseRelayEntity` instance.
+
+#### `DeviceFolderListing(data?: object)`
+
+Create a new `DeviceFolderListing` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DeviceFolderListingEntity` instance.
+
+#### `DeviceGrant(data?: object)`
+
+Create a new `DeviceGrant` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DeviceGrantEntity` instance.
+
+#### `DeviceInvocation(data?: object)`
+
+Create a new `DeviceInvocation` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DeviceInvocationEntity` instance.
+
+#### `DeviceLocalEvent(data?: object)`
+
+Create a new `DeviceLocalEvent` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DeviceLocalEventEntity` instance.
+
+#### `DevicePairing(data?: object)`
+
+Create a new `DevicePairing` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DevicePairingEntity` instance.
+
+#### `DeviceProject(data?: object)`
+
+Create a new `DeviceProject` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DeviceProjectEntity` instance.
+
+#### `DeviceScheduledCheckIn(data?: object)`
+
+Create a new `DeviceScheduledCheckIn` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DeviceScheduledCheckInEntity` instance.
+
+#### `DockerBuilder(data?: object)`
+
+Create a new `DockerBuilder` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DockerBuilderEntity` instance.
+
+#### `DockerBuilderSession(data?: object)`
+
+Create a new `DockerBuilderSession` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DockerBuilderSessionEntity` instance.
+
+#### `DockerBuilderSetting(data?: object)`
+
+Create a new `DockerBuilderSetting` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DockerBuilderSettingEntity` instance.
+
+#### `DomainDnsIntegration(data?: object)`
+
+Create a new `DomainDnsIntegration` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `DomainDnsIntegrationEntity` instance.
 
 #### `DomainPathRule(data?: object)`
 
@@ -1308,6 +2736,30 @@ Create a new `Dream` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `DreamEntity` instance.
+
+#### `Edge(data?: object)`
+
+Create a new `Edge` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `EdgeEntity` instance.
+
+#### `EmailVerification(data?: object)`
+
+Create a new `EmailVerification` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `EmailVerificationEntity` instance.
 
 #### `Environment(data?: object)`
 
@@ -1405,6 +2857,54 @@ Create a new `Evidence` entity instance.
 
 **Returns:** `EvidenceEntity` instance.
 
+#### `ExecutionDesiredState(data?: object)`
+
+Create a new `ExecutionDesiredState` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ExecutionDesiredStateEntity` instance.
+
+#### `ExecutionReconcilerTick(data?: object)`
+
+Create a new `ExecutionReconcilerTick` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ExecutionReconcilerTickEntity` instance.
+
+#### `ExecutionRelease(data?: object)`
+
+Create a new `ExecutionRelease` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ExecutionReleaseEntity` instance.
+
+#### `ExecutionRuntimeInstance(data?: object)`
+
+Create a new `ExecutionRuntimeInstance` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ExecutionRuntimeInstanceEntity` instance.
+
 #### `Exploration(data?: object)`
 
 Create a new `Exploration` entity instance.
@@ -1465,6 +2965,126 @@ Create a new `Finding` entity instance.
 
 **Returns:** `FindingEntity` instance.
 
+#### `Gh(data?: object)`
+
+Create a new `Gh` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GhEntity` instance.
+
+#### `GitImport(data?: object)`
+
+Create a new `GitImport` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GitImportEntity` instance.
+
+#### `Github(data?: object)`
+
+Create a new `Github` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubEntity` instance.
+
+#### `GithubApp(data?: object)`
+
+Create a new `GithubApp` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubAppEntity` instance.
+
+#### `GithubAppImportableRepository(data?: object)`
+
+Create a new `GithubAppImportableRepository` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubAppImportableRepositoryEntity` instance.
+
+#### `GithubAppInstallation(data?: object)`
+
+Create a new `GithubAppInstallation` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubAppInstallationEntity` instance.
+
+#### `GithubAppInstallationAuthorization(data?: object)`
+
+Create a new `GithubAppInstallationAuthorization` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubAppInstallationAuthorizationEntity` instance.
+
+#### `GithubAppUserAuthorization(data?: object)`
+
+Create a new `GithubAppUserAuthorization` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubAppUserAuthorizationEntity` instance.
+
+#### `GithubCiRepository(data?: object)`
+
+Create a new `GithubCiRepository` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubCiRepositoryEntity` instance.
+
+#### `GithubCiRepositoryCompatibilityReport(data?: object)`
+
+Create a new `GithubCiRepositoryCompatibilityReport` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubCiRepositoryCompatibilityReportEntity` instance.
+
 #### `GithubConnection(data?: object)`
 
 Create a new `GithubConnection` entity instance.
@@ -1476,6 +3096,234 @@ Create a new `GithubConnection` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `GithubConnectionEntity` instance.
+
+#### `GithubIntegration(data?: object)`
+
+Create a new `GithubIntegration` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubIntegrationEntity` instance.
+
+#### `GithubOnboarding(data?: object)`
+
+Create a new `GithubOnboarding` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubOnboardingEntity` instance.
+
+#### `GithubOnboardingBranch(data?: object)`
+
+Create a new `GithubOnboardingBranch` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubOnboardingBranchEntity` instance.
+
+#### `GithubOnboardingImport(data?: object)`
+
+Create a new `GithubOnboardingImport` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubOnboardingImportEntity` instance.
+
+#### `GithubOnboardingImportBatch(data?: object)`
+
+Create a new `GithubOnboardingImportBatch` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubOnboardingImportBatchEntity` instance.
+
+#### `GithubOnboardingImportItem(data?: object)`
+
+Create a new `GithubOnboardingImportItem` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubOnboardingImportItemEntity` instance.
+
+#### `GithubPullRequest(data?: object)`
+
+Create a new `GithubPullRequest` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubPullRequestEntity` instance.
+
+#### `GithubRunnerAdmission(data?: object)`
+
+Create a new `GithubRunnerAdmission` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubRunnerAdmissionEntity` instance.
+
+#### `GithubRunnerCache(data?: object)`
+
+Create a new `GithubRunnerCache` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubRunnerCacheEntity` instance.
+
+#### `GithubRunnerEgress(data?: object)`
+
+Create a new `GithubRunnerEgress` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubRunnerEgressEntity` instance.
+
+#### `GithubRunnerHistory(data?: object)`
+
+Create a new `GithubRunnerHistory` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubRunnerHistoryEntity` instance.
+
+#### `GithubRunnerImage(data?: object)`
+
+Create a new `GithubRunnerImage` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubRunnerImageEntity` instance.
+
+#### `GithubRunnerPool(data?: object)`
+
+Create a new `GithubRunnerPool` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubRunnerPoolEntity` instance.
+
+#### `GithubRunnerSetup(data?: object)`
+
+Create a new `GithubRunnerSetup` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GithubRunnerSetupEntity` instance.
+
+#### `Gitlab(data?: object)`
+
+Create a new `Gitlab` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GitlabEntity` instance.
+
+#### `GitlabConnection(data?: object)`
+
+Create a new `GitlabConnection` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GitlabConnectionEntity` instance.
+
+#### `GitlabImport(data?: object)`
+
+Create a new `GitlabImport` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GitlabImportEntity` instance.
+
+#### `GitlabOauth(data?: object)`
+
+Create a new `GitlabOauth` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GitlabOauthEntity` instance.
+
+#### `GrantAllAgent(data?: object)`
+
+Create a new `GrantAllAgent` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `GrantAllAgentEntity` instance.
 
 #### `HostingAppDomain(data?: object)`
 
@@ -1489,6 +3337,18 @@ Create a new `HostingAppDomain` entity instance.
 
 **Returns:** `HostingAppDomainEntity` instance.
 
+#### `IdentityOrganization(data?: object)`
+
+Create a new `IdentityOrganization` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `IdentityOrganizationEntity` instance.
+
 #### `ImageRepository(data?: object)`
 
 Create a new `ImageRepository` entity instance.
@@ -1500,6 +3360,30 @@ Create a new `ImageRepository` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `ImageRepositoryEntity` instance.
+
+#### `ImageRepositoryTag(data?: object)`
+
+Create a new `ImageRepositoryTag` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ImageRepositoryTagEntity` instance.
+
+#### `ImportBranchPolicy(data?: object)`
+
+Create a new `ImportBranchPolicy` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ImportBranchPolicyEntity` instance.
 
 #### `Integration(data?: object)`
 
@@ -1537,6 +3421,54 @@ Create a new `Invitation` entity instance.
 
 **Returns:** `InvitationEntity` instance.
 
+#### `InvocationControl(data?: object)`
+
+Create a new `InvocationControl` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `InvocationControlEntity` instance.
+
+#### `JobLogChunk(data?: object)`
+
+Create a new `JobLogChunk` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `JobLogChunkEntity` instance.
+
+#### `JobStep(data?: object)`
+
+Create a new `JobStep` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `JobStepEntity` instance.
+
+#### `JobWorkspace(data?: object)`
+
+Create a new `JobWorkspace` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `JobWorkspaceEntity` instance.
+
 #### `JourneyVariantReplay(data?: object)`
 
 Create a new `JourneyVariantReplay` entity instance.
@@ -1560,6 +3492,150 @@ Create a new `Knowledge` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `KnowledgeEntity` instance.
+
+#### `Known(data?: object)`
+
+Create a new `Known` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `KnownEntity` instance.
+
+#### `Label(data?: object)`
+
+Create a new `Label` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `LabelEntity` instance.
+
+#### `LeaseArtifact(data?: object)`
+
+Create a new `LeaseArtifact` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `LeaseArtifactEntity` instance.
+
+#### `LeaseCache(data?: object)`
+
+Create a new `LeaseCache` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `LeaseCacheEntity` instance.
+
+#### `LeaseLogChunk(data?: object)`
+
+Create a new `LeaseLogChunk` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `LeaseLogChunkEntity` instance.
+
+#### `LeaseReconciliation(data?: object)`
+
+Create a new `LeaseReconciliation` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `LeaseReconciliationEntity` instance.
+
+#### `LeaseStep(data?: object)`
+
+Create a new `LeaseStep` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `LeaseStepEntity` instance.
+
+#### `LeaseVerifyDiagnostic(data?: object)`
+
+Create a new `LeaseVerifyDiagnostic` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `LeaseVerifyDiagnosticEntity` instance.
+
+#### `LeaseVerifySecret(data?: object)`
+
+Create a new `LeaseVerifySecret` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `LeaseVerifySecretEntity` instance.
+
+#### `LeaseWorkspace(data?: object)`
+
+Create a new `LeaseWorkspace` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `LeaseWorkspaceEntity` instance.
+
+#### `LocalAgentDecision(data?: object)`
+
+Create a new `LocalAgentDecision` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `LocalAgentDecisionEntity` instance.
+
+#### `LocalAgentResponse(data?: object)`
+
+Create a new `LocalAgentResponse` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `LocalAgentResponseEntity` instance.
 
 #### `LocalThreadDelivery(data?: object)`
 
@@ -1596,6 +3672,54 @@ Create a new `Location` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `LocationEntity` instance.
+
+#### `LogStreamChunk(data?: object)`
+
+Create a new `LogStreamChunk` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `LogStreamChunkEntity` instance.
+
+#### `LogoImage(data?: object)`
+
+Create a new `LogoImage` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `LogoImageEntity` instance.
+
+#### `MarketingSetting(data?: object)`
+
+Create a new `MarketingSetting` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `MarketingSettingEntity` instance.
+
+#### `McpOauth(data?: object)`
+
+Create a new `McpOauth` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `McpOauthEntity` instance.
 
 #### `Me(data?: object)`
 
@@ -1669,6 +3793,18 @@ Create a new `Memory` entity instance.
 
 **Returns:** `MemoryEntity` instance.
 
+#### `MergeQueueEntry(data?: object)`
+
+Create a new `MergeQueueEntry` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `MergeQueueEntryEntity` instance.
+
 #### `MergeRequest(data?: object)`
 
 Create a new `MergeRequest` entity instance.
@@ -1680,6 +3816,18 @@ Create a new `MergeRequest` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `MergeRequestEntity` instance.
+
+#### `MergeResolution(data?: object)`
+
+Create a new `MergeResolution` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `MergeResolutionEntity` instance.
 
 #### `MessagingConversationMessage(data?: object)`
 
@@ -1717,6 +3865,42 @@ Create a new `MetricQuery` entity instance.
 
 **Returns:** `MetricQueryEntity` instance.
 
+#### `MetronomeWebhook(data?: object)`
+
+Create a new `MetronomeWebhook` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `MetronomeWebhookEntity` instance.
+
+#### `ModelSubscriptionAccount(data?: object)`
+
+Create a new `ModelSubscriptionAccount` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ModelSubscriptionAccountEntity` instance.
+
+#### `ModelSubscriptionAccountConnection(data?: object)`
+
+Create a new `ModelSubscriptionAccountConnection` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ModelSubscriptionAccountConnectionEntity` instance.
+
 #### `NetworkConnection(data?: object)`
 
 Create a new `NetworkConnection` entity instance.
@@ -1728,6 +3912,54 @@ Create a new `NetworkConnection` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `NetworkConnectionEntity` instance.
+
+#### `NetworkingSpace(data?: object)`
+
+Create a new `NetworkingSpace` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `NetworkingSpaceEntity` instance.
+
+#### `Node(data?: object)`
+
+Create a new `Node` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `NodeEntity` instance.
+
+#### `NodeCertificate(data?: object)`
+
+Create a new `NodeCertificate` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `NodeCertificateEntity` instance.
+
+#### `NodeLease(data?: object)`
+
+Create a new `NodeLease` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `NodeLeaseEntity` instance.
 
 #### `NomadAllocation(data?: object)`
 
@@ -1753,6 +3985,78 @@ Create a new `NomadLog` entity instance.
 
 **Returns:** `NomadLogEntity` instance.
 
+#### `Now(data?: object)`
+
+Create a new `Now` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `NowEntity` instance.
+
+#### `ObservabilityClickhouseCluster(data?: object)`
+
+Create a new `ObservabilityClickhouseCluster` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ObservabilityClickhouseClusterEntity` instance.
+
+#### `ObservabilityQuickwitCluster(data?: object)`
+
+Create a new `ObservabilityQuickwitCluster` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ObservabilityQuickwitClusterEntity` instance.
+
+#### `ObservabilitySpace(data?: object)`
+
+Create a new `ObservabilitySpace` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ObservabilitySpaceEntity` instance.
+
+#### `Openapi(data?: object)`
+
+Create a new `Openapi` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OpenapiEntity` instance.
+
+#### `OrgInvitation(data?: object)`
+
+Create a new `OrgInvitation` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrgInvitationEntity` instance.
+
 #### `Organization(data?: object)`
 
 Create a new `Organization` entity instance.
@@ -1764,6 +4068,246 @@ Create a new `Organization` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `OrganizationEntity` instance.
+
+#### `OrganizationApp(data?: object)`
+
+Create a new `OrganizationApp` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationAppEntity` instance.
+
+#### `OrganizationControl(data?: object)`
+
+Create a new `OrganizationControl` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationControlEntity` instance.
+
+#### `OrganizationDevice(data?: object)`
+
+Create a new `OrganizationDevice` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationDeviceEntity` instance.
+
+#### `OrganizationIdentityCertificate(data?: object)`
+
+Create a new `OrganizationIdentityCertificate` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationIdentityCertificateEntity` instance.
+
+#### `OrganizationInteraction(data?: object)`
+
+Create a new `OrganizationInteraction` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationInteractionEntity` instance.
+
+#### `OrganizationInvitation(data?: object)`
+
+Create a new `OrganizationInvitation` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationInvitationEntity` instance.
+
+#### `OrganizationMessageFile(data?: object)`
+
+Create a new `OrganizationMessageFile` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationMessageFileEntity` instance.
+
+#### `OrganizationOidcTrust(data?: object)`
+
+Create a new `OrganizationOidcTrust` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationOidcTrustEntity` instance.
+
+#### `OrganizationRunEvent(data?: object)`
+
+Create a new `OrganizationRunEvent` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationRunEventEntity` instance.
+
+#### `OrganizationRunOutcome(data?: object)`
+
+Create a new `OrganizationRunOutcome` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationRunOutcomeEntity` instance.
+
+#### `OrganizationRunUsage(data?: object)`
+
+Create a new `OrganizationRunUsage` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationRunUsageEntity` instance.
+
+#### `OrganizationSandbox(data?: object)`
+
+Create a new `OrganizationSandbox` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationSandboxEntity` instance.
+
+#### `OrganizationSecret(data?: object)`
+
+Create a new `OrganizationSecret` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationSecretEntity` instance.
+
+#### `OrganizationServiceAccount(data?: object)`
+
+Create a new `OrganizationServiceAccount` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationServiceAccountEntity` instance.
+
+#### `OrganizationSetting(data?: object)`
+
+Create a new `OrganizationSetting` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationSettingEntity` instance.
+
+#### `OrganizationSite(data?: object)`
+
+Create a new `OrganizationSite` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationSiteEntity` instance.
+
+#### `OrganizationSubscription(data?: object)`
+
+Create a new `OrganizationSubscription` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationSubscriptionEntity` instance.
+
+#### `OrganizationTool(data?: object)`
+
+Create a new `OrganizationTool` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationToolEntity` instance.
+
+#### `OrganizationWorkloadIdentity(data?: object)`
+
+Create a new `OrganizationWorkloadIdentity` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OrganizationWorkloadIdentityEntity` instance.
+
+#### `OtelIngest(data?: object)`
+
+Create a new `OtelIngest` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `OtelIngestEntity` instance.
 
 #### `Page(data?: object)`
 
@@ -1789,6 +4333,30 @@ Create a new `PageAgent` entity instance.
 
 **Returns:** `PageAgentEntity` instance.
 
+#### `PageArtefact(data?: object)`
+
+Create a new `PageArtefact` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PageArtefactEntity` instance.
+
+#### `PageCiPipelineRun(data?: object)`
+
+Create a new `PageCiPipelineRun` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PageCiPipelineRunEntity` instance.
+
 #### `PageProjectRun(data?: object)`
 
 Create a new `PageProjectRun` entity instance.
@@ -1800,6 +4368,54 @@ Create a new `PageProjectRun` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `PageProjectRunEntity` instance.
+
+#### `PageRepoVcCommit(data?: object)`
+
+Create a new `PageRepoVcCommit` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PageRepoVcCommitEntity` instance.
+
+#### `PagesBilling(data?: object)`
+
+Create a new `PagesBilling` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PagesBillingEntity` instance.
+
+#### `PagesGithubOnboarding(data?: object)`
+
+Create a new `PagesGithubOnboarding` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PagesGithubOnboardingEntity` instance.
+
+#### `PagesMember(data?: object)`
+
+Create a new `PagesMember` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PagesMemberEntity` instance.
 
 #### `PagesProjectCredential(data?: object)`
 
@@ -1848,6 +4464,78 @@ Create a new `PagesProjectScenario` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `PagesProjectScenarioEntity` instance.
+
+#### `PagesRegistry(data?: object)`
+
+Create a new `PagesRegistry` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PagesRegistryEntity` instance.
+
+#### `PagesSession(data?: object)`
+
+Create a new `PagesSession` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PagesSessionEntity` instance.
+
+#### `Pairing(data?: object)`
+
+Create a new `Pairing` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PairingEntity` instance.
+
+#### `PairingEvent(data?: object)`
+
+Create a new `PairingEvent` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PairingEventEntity` instance.
+
+#### `ParallelV1(data?: object)`
+
+Create a new `ParallelV1` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ParallelV1Entity` instance.
+
+#### `PatchsetDiff(data?: object)`
+
+Create a new `PatchsetDiff` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PatchsetDiffEntity` instance.
 
 #### `PersonalAccessToken(data?: object)`
 
@@ -1908,6 +4596,30 @@ Create a new `PreviewSharingApproval` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `PreviewSharingApprovalEntity` instance.
+
+#### `ProactiveAgentWaitlistEntry(data?: object)`
+
+Create a new `ProactiveAgentWaitlistEntry` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ProactiveAgentWaitlistEntryEntity` instance.
+
+#### `Product(data?: object)`
+
+Create a new `Product` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ProductEntity` instance.
 
 #### `ProductMapIdentityDecision(data?: object)`
 
@@ -2197,6 +4909,30 @@ Create a new `PullRequest` entity instance.
 
 **Returns:** `PullRequestEntity` instance.
 
+#### `PullRequestAction(data?: object)`
+
+Create a new `PullRequestAction` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PullRequestActionEntity` instance.
+
+#### `PullRequestMagicMerge(data?: object)`
+
+Create a new `PullRequestMagicMerge` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PullRequestMagicMergeEntity` instance.
+
 #### `PullRequestSetting(data?: object)`
 
 Create a new `PullRequestSetting` entity instance.
@@ -2232,6 +4968,30 @@ Create a new `PullRequestSettingDetectComment` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `PullRequestSettingDetectCommentEntity` instance.
+
+#### `PullRequestTranscript(data?: object)`
+
+Create a new `PullRequestTranscript` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PullRequestTranscriptEntity` instance.
+
+#### `PullZone(data?: object)`
+
+Create a new `PullZone` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `PullZoneEntity` instance.
 
 #### `Recorder(data?: object)`
 
@@ -2269,6 +5029,18 @@ Create a new `RegistryV2` entity instance.
 
 **Returns:** `RegistryV2Entity` instance.
 
+#### `RelayAgentConnection(data?: object)`
+
+Create a new `RelayAgentConnection` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RelayAgentConnectionEntity` instance.
+
 #### `RelayAgentLocalThread(data?: object)`
 
 Create a new `RelayAgentLocalThread` entity instance.
@@ -2280,6 +5052,186 @@ Create a new `RelayAgentLocalThread` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `RelayAgentLocalThreadEntity` instance.
+
+#### `RelaySignal(data?: object)`
+
+Create a new `RelaySignal` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RelaySignalEntity` instance.
+
+#### `ReleaseRollout(data?: object)`
+
+Create a new `ReleaseRollout` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ReleaseRolloutEntity` instance.
+
+#### `Repo(data?: object)`
+
+Create a new `Repo` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepoEntity` instance.
+
+#### `RepoAccessToken(data?: object)`
+
+Create a new `RepoAccessToken` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepoAccessTokenEntity` instance.
+
+#### `RepoAction(data?: object)`
+
+Create a new `RepoAction` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepoActionEntity` instance.
+
+#### `RepoAgentCheckpoint(data?: object)`
+
+Create a new `RepoAgentCheckpoint` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepoAgentCheckpointEntity` instance.
+
+#### `RepoAgentSession(data?: object)`
+
+Create a new `RepoAgentSession` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepoAgentSessionEntity` instance.
+
+#### `RepoBookmarkProtection(data?: object)`
+
+Create a new `RepoBookmarkProtection` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepoBookmarkProtectionEntity` instance.
+
+#### `RepoBookmarkProtectionEvent(data?: object)`
+
+Create a new `RepoBookmarkProtectionEvent` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepoBookmarkProtectionEventEntity` instance.
+
+#### `RepoCloudWorkspaceBackup(data?: object)`
+
+Create a new `RepoCloudWorkspaceBackup` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepoCloudWorkspaceBackupEntity` instance.
+
+#### `RepoCodeRule(data?: object)`
+
+Create a new `RepoCodeRule` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepoCodeRuleEntity` instance.
+
+#### `RepoSetting(data?: object)`
+
+Create a new `RepoSetting` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepoSettingEntity` instance.
+
+#### `RepoStat(data?: object)`
+
+Create a new `RepoStat` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepoStatEntity` instance.
+
+#### `RepoVc(data?: object)`
+
+Create a new `RepoVc` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepoVcEntity` instance.
+
+#### `RepoVcCommit(data?: object)`
+
+Create a new `RepoVcCommit` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepoVcCommitEntity` instance.
 
 #### `ReportReplay(data?: object)`
 
@@ -2304,6 +5256,186 @@ Create a new `ReportScenario` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `ReportScenarioEntity` instance.
+
+#### `RepositoryAccess(data?: object)`
+
+Create a new `RepositoryAccess` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepositoryAccessEntity` instance.
+
+#### `RepositoryAccessResolve(data?: object)`
+
+Create a new `RepositoryAccessResolve` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepositoryAccessResolveEntity` instance.
+
+#### `RepositoryEvent(data?: object)`
+
+Create a new `RepositoryEvent` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepositoryEventEntity` instance.
+
+#### `RepositoryImport(data?: object)`
+
+Create a new `RepositoryImport` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepositoryImportEntity` instance.
+
+#### `RepositoryImportSession(data?: object)`
+
+Create a new `RepositoryImportSession` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepositoryImportSessionEntity` instance.
+
+#### `RepositoryImportSessionRepository(data?: object)`
+
+Create a new `RepositoryImportSessionRepository` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepositoryImportSessionRepositoryEntity` instance.
+
+#### `RepositoryImportSessionSelection(data?: object)`
+
+Create a new `RepositoryImportSessionSelection` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepositoryImportSessionSelectionEntity` instance.
+
+#### `RepositorySandboxEnvironment(data?: object)`
+
+Create a new `RepositorySandboxEnvironment` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RepositorySandboxEnvironmentEntity` instance.
+
+#### `RoderCodeRepair(data?: object)`
+
+Create a new `RoderCodeRepair` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RoderCodeRepairEntity` instance.
+
+#### `RoderCodeRepairSetting(data?: object)`
+
+Create a new `RoderCodeRepairSetting` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RoderCodeRepairSettingEntity` instance.
+
+#### `RoderMachine(data?: object)`
+
+Create a new `RoderMachine` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RoderMachineEntity` instance.
+
+#### `RoderRun(data?: object)`
+
+Create a new `RoderRun` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RoderRunEntity` instance.
+
+#### `RoderWorkspaceCredential(data?: object)`
+
+Create a new `RoderWorkspaceCredential` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RoderWorkspaceCredentialEntity` instance.
+
+#### `RunArtifact(data?: object)`
+
+Create a new `RunArtifact` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RunArtifactEntity` instance.
+
+#### `RunJob(data?: object)`
+
+Create a new `RunJob` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RunJobEntity` instance.
 
 #### `RunScenarioRun(data?: object)`
 
@@ -2353,6 +5485,78 @@ Create a new `RunUpdate` entity instance.
 
 **Returns:** `RunUpdateEntity` instance.
 
+#### `RunWorkspaceCredential(data?: object)`
+
+Create a new `RunWorkspaceCredential` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RunWorkspaceCredentialEntity` instance.
+
+#### `RunnerLease(data?: object)`
+
+Create a new `RunnerLease` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RunnerLeaseEntity` instance.
+
+#### `RunnerPoolNodeEnrollmentToken(data?: object)`
+
+Create a new `RunnerPoolNodeEnrollmentToken` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RunnerPoolNodeEnrollmentTokenEntity` instance.
+
+#### `RunnerPoolRunner(data?: object)`
+
+Create a new `RunnerPoolRunner` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RunnerPoolRunnerEntity` instance.
+
+#### `RuntimeInstanceHealthSnapshot(data?: object)`
+
+Create a new `RuntimeInstanceHealthSnapshot` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `RuntimeInstanceHealthSnapshotEntity` instance.
+
+#### `SandboxIntegration(data?: object)`
+
+Create a new `SandboxIntegration` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SandboxIntegrationEntity` instance.
+
 #### `ScenarioRevision(data?: object)`
 
 Create a new `ScenarioRevision` entity instance.
@@ -2389,6 +5593,30 @@ Create a new `ScenarioRunScenarioEdit` entity instance.
 
 **Returns:** `ScenarioRunScenarioEditEntity` instance.
 
+#### `SecretGrant(data?: object)`
+
+Create a new `SecretGrant` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SecretGrantEntity` instance.
+
+#### `SecretVersion(data?: object)`
+
+Create a new `SecretVersion` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SecretVersionEntity` instance.
+
 #### `ServiceEndpoint(data?: object)`
 
 Create a new `ServiceEndpoint` entity instance.
@@ -2400,6 +5628,126 @@ Create a new `ServiceEndpoint` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `ServiceEndpointEntity` instance.
+
+#### `Setting(data?: object)`
+
+Create a new `Setting` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SettingEntity` instance.
+
+#### `SettingMutationLease(data?: object)`
+
+Create a new `SettingMutationLease` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SettingMutationLeaseEntity` instance.
+
+#### `Signal(data?: object)`
+
+Create a new `Signal` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SignalEntity` instance.
+
+#### `SignalInbound(data?: object)`
+
+Create a new `SignalInbound` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SignalInboundEntity` instance.
+
+#### `SignalIntegration(data?: object)`
+
+Create a new `SignalIntegration` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SignalIntegrationEntity` instance.
+
+#### `SignalIntegrationDelivery(data?: object)`
+
+Create a new `SignalIntegrationDelivery` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SignalIntegrationDeliveryEntity` instance.
+
+#### `SignalIntegrationTarget(data?: object)`
+
+Create a new `SignalIntegrationTarget` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SignalIntegrationTargetEntity` instance.
+
+#### `SignalSubscription(data?: object)`
+
+Create a new `SignalSubscription` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SignalSubscriptionEntity` instance.
+
+#### `Site(data?: object)`
+
+Create a new `Site` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SiteEntity` instance.
+
+#### `SiteAccessKey(data?: object)`
+
+Create a new `SiteAccessKey` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SiteAccessKeyEntity` instance.
 
 #### `SitePreview(data?: object)`
 
@@ -2413,6 +5761,18 @@ Create a new `SitePreview` entity instance.
 
 **Returns:** `SitePreviewEntity` instance.
 
+#### `SiteSecret(data?: object)`
+
+Create a new `SiteSecret` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SiteSecretEntity` instance.
+
 #### `SlackChannel(data?: object)`
 
 Create a new `SlackChannel` entity instance.
@@ -2425,6 +5785,222 @@ Create a new `SlackChannel` entity instance.
 
 **Returns:** `SlackChannelEntity` instance.
 
+#### `SourceConnection(data?: object)`
+
+Create a new `SourceConnection` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SourceConnectionEntity` instance.
+
+#### `SpaceAlertRule(data?: object)`
+
+Create a new `SpaceAlertRule` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SpaceAlertRuleEntity` instance.
+
+#### `SpaceAuditEvent(data?: object)`
+
+Create a new `SpaceAuditEvent` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SpaceAuditEventEntity` instance.
+
+#### `SpaceDnsRecord(data?: object)`
+
+Create a new `SpaceDnsRecord` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SpaceDnsRecordEntity` instance.
+
+#### `SpaceEnrollmentToken(data?: object)`
+
+Create a new `SpaceEnrollmentToken` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SpaceEnrollmentTokenEntity` instance.
+
+#### `SpaceGateway(data?: object)`
+
+Create a new `SpaceGateway` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SpaceGatewayEntity` instance.
+
+#### `SpaceGroup(data?: object)`
+
+Create a new `SpaceGroup` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SpaceGroupEntity` instance.
+
+#### `SpaceGroupMembership(data?: object)`
+
+Create a new `SpaceGroupMembership` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SpaceGroupMembershipEntity` instance.
+
+#### `SpaceLogStream(data?: object)`
+
+Create a new `SpaceLogStream` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SpaceLogStreamEntity` instance.
+
+#### `SpaceMetricSery(data?: object)`
+
+Create a new `SpaceMetricSery` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SpaceMetricSeryEntity` instance.
+
+#### `SpaceOtelCollector(data?: object)`
+
+Create a new `SpaceOtelCollector` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SpaceOtelCollectorEntity` instance.
+
+#### `SpacePeer(data?: object)`
+
+Create a new `SpacePeer` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SpacePeerEntity` instance.
+
+#### `SpacePeerAttachment(data?: object)`
+
+Create a new `SpacePeerAttachment` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SpacePeerAttachmentEntity` instance.
+
+#### `SpacePolicy(data?: object)`
+
+Create a new `SpacePolicy` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SpacePolicyEntity` instance.
+
+#### `SpaceSegment(data?: object)`
+
+Create a new `SpaceSegment` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SpaceSegmentEntity` instance.
+
+#### `SpaceTraceSpan(data?: object)`
+
+Create a new `SpaceTraceSpan` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SpaceTraceSpanEntity` instance.
+
+#### `Spark(data?: object)`
+
+Create a new `Spark` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SparkEntity` instance.
+
+#### `SparkAgentIntegration(data?: object)`
+
+Create a new `SparkAgentIntegration` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SparkAgentIntegrationEntity` instance.
+
 #### `SparkAgentLocalThread(data?: object)`
 
 Create a new `SparkAgentLocalThread` entity instance.
@@ -2436,6 +6012,78 @@ Create a new `SparkAgentLocalThread` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `SparkAgentLocalThreadEntity` instance.
+
+#### `SparkAgentSite(data?: object)`
+
+Create a new `SparkAgentSite` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SparkAgentSiteEntity` instance.
+
+#### `SparkAgentSkill(data?: object)`
+
+Create a new `SparkAgentSkill` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SparkAgentSkillEntity` instance.
+
+#### `SparkAgentThread(data?: object)`
+
+Create a new `SparkAgentThread` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SparkAgentThreadEntity` instance.
+
+#### `SparkCredit(data?: object)`
+
+Create a new `SparkCredit` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SparkCreditEntity` instance.
+
+#### `SparkCreditAgentUsage(data?: object)`
+
+Create a new `SparkCreditAgentUsage` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SparkCreditAgentUsageEntity` instance.
+
+#### `SparkCreditUsageTotal(data?: object)`
+
+Create a new `SparkCreditUsageTotal` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SparkCreditUsageTotalEntity` instance.
 
 #### `StaticSite(data?: object)`
 
@@ -2473,6 +6121,66 @@ Create a new `StaticSiteDomain` entity instance.
 
 **Returns:** `StaticSiteDomainEntity` instance.
 
+#### `StatusChange(data?: object)`
+
+Create a new `StatusChange` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `StatusChangeEntity` instance.
+
+#### `StatusCommit(data?: object)`
+
+Create a new `StatusCommit` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `StatusCommitEntity` instance.
+
+#### `StatusPatchset(data?: object)`
+
+Create a new `StatusPatchset` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `StatusPatchsetEntity` instance.
+
+#### `StripeWebhook(data?: object)`
+
+Create a new `StripeWebhook` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `StripeWebhookEntity` instance.
+
+#### `SubmitTelemetry(data?: object)`
+
+Create a new `SubmitTelemetry` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SubmitTelemetryEntity` instance.
+
 #### `SubscriptionModel(data?: object)`
 
 Create a new `SubscriptionModel` entity instance.
@@ -2485,6 +6193,66 @@ Create a new `SubscriptionModel` entity instance.
 
 **Returns:** `SubscriptionModelEntity` instance.
 
+#### `SwarmEvent(data?: object)`
+
+Create a new `SwarmEvent` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SwarmEventEntity` instance.
+
+#### `SwarmLive(data?: object)`
+
+Create a new `SwarmLive` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SwarmLiveEntity` instance.
+
+#### `SwarmNote(data?: object)`
+
+Create a new `SwarmNote` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SwarmNoteEntity` instance.
+
+#### `SwarmTask(data?: object)`
+
+Create a new `SwarmTask` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SwarmTaskEntity` instance.
+
+#### `TaskLease(data?: object)`
+
+Create a new `TaskLease` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `TaskLeaseEntity` instance.
+
 #### `ThreadPreview(data?: object)`
 
 Create a new `ThreadPreview` entity instance.
@@ -2496,6 +6264,162 @@ Create a new `ThreadPreview` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `ThreadPreviewEntity` instance.
+
+#### `ThreadPreviewAccess(data?: object)`
+
+Create a new `ThreadPreviewAccess` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ThreadPreviewAccessEntity` instance.
+
+#### `ToolFeedback(data?: object)`
+
+Create a new `ToolFeedback` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ToolFeedbackEntity` instance.
+
+#### `Transcript(data?: object)`
+
+Create a new `Transcript` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `TranscriptEntity` instance.
+
+#### `V1Message(data?: object)`
+
+Create a new `V1Message` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `V1MessageEntity` instance.
+
+#### `VcBranch(data?: object)`
+
+Create a new `VcBranch` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `VcBranchEntity` instance.
+
+#### `VcBrowser(data?: object)`
+
+Create a new `VcBrowser` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `VcBrowserEntity` instance.
+
+#### `VcChange(data?: object)`
+
+Create a new `VcChange` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `VcChangeEntity` instance.
+
+#### `VcChangeGroup(data?: object)`
+
+Create a new `VcChangeGroup` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `VcChangeGroupEntity` instance.
+
+#### `VcFile(data?: object)`
+
+Create a new `VcFile` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `VcFileEntity` instance.
+
+#### `VcMergeQueue(data?: object)`
+
+Create a new `VcMergeQueue` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `VcMergeQueueEntity` instance.
+
+#### `VcStack(data?: object)`
+
+Create a new `VcStack` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `VcStackEntity` instance.
+
+#### `VcsNode(data?: object)`
+
+Create a new `VcsNode` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `VcsNodeEntity` instance.
+
+#### `VcsSetting(data?: object)`
+
+Create a new `VcsSetting` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `VcsSettingEntity` instance.
 
 #### `VerificationProjectCredential(data?: object)`
 
@@ -2569,6 +6493,30 @@ Create a new `VerifyBrowserSession` entity instance.
 
 **Returns:** `VerifyBrowserSessionEntity` instance.
 
+#### `VerifyEmailVerification(data?: object)`
+
+Create a new `VerifyEmailVerification` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `VerifyEmailVerificationEntity` instance.
+
+#### `VerifySignalIntegration(data?: object)`
+
+Create a new `VerifySignalIntegration` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `VerifySignalIntegrationEntity` instance.
+
 #### `VerifyStaticSiteDomain(data?: object)`
 
 Create a new `VerifyStaticSiteDomain` entity instance.
@@ -2593,6 +6541,18 @@ Create a new `VersionLog` entity instance.
 
 **Returns:** `VersionLogEntity` instance.
 
+#### `WaitlistApplication(data?: object)`
+
+Create a new `WaitlistApplication` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `WaitlistApplicationEntity` instance.
+
 #### `WebBotAuth(data?: object)`
 
 Create a new `WebBotAuth` entity instance.
@@ -2604,6 +6564,18 @@ Create a new `WebBotAuth` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `WebBotAuthEntity` instance.
+
+#### `WebhookGitlab(data?: object)`
+
+Create a new `WebhookGitlab` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `WebhookGitlabEntity` instance.
 
 #### `WorkflowRunStep(data?: object)`
 
@@ -2640,6 +6612,54 @@ Create a new `WorkflowTriggerSkipped` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `WorkflowTriggerSkippedEntity` instance.
+
+#### `WorkspaceActivity(data?: object)`
+
+Create a new `WorkspaceActivity` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `WorkspaceActivityEntity` instance.
+
+#### `WorkspaceActivityNotification(data?: object)`
+
+Create a new `WorkspaceActivityNotification` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `WorkspaceActivityNotificationEntity` instance.
+
+#### `WorkspaceSpace(data?: object)`
+
+Create a new `WorkspaceSpace` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `WorkspaceSpaceEntity` instance.
+
+#### `WorkspaceSpacePreference(data?: object)`
+
+Create a new `WorkspaceSpacePreference` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `WorkspaceSpacePreferenceEntity` instance.
 
 #### `options()`
 
@@ -2694,6 +6714,197 @@ The operation then rejects with an error whose `code` is
 `request_aborted` and whose `cause` is the signal's reason. A request
 whose signal has already aborted is not sent. `stream()` takes the signal
 as `callopts.signal`, and ends when it aborts.
+
+
+---
+
+## A2aWellKnownEntity
+
+```ts
+const a2a_well_known = client.A2aWellKnown()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `agent_card_json` | `/api/v1/control/a2a/{connection_id}/.well-known/agent-card.json` | `client.A2aWellKnown().load({ $action: 'agent_card_json', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+A2aWellKnown record — check the API definition for its shape.
+
+```ts
+const result = await client.A2aWellKnown().load({
+  $action: 'agent_card_json',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `A2aWellKnownEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AdminOrgEntity
+
+```ts
+const admin_org = client.AdminOrg()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `billing_email` | `string | null` | Yes |  |
+| `billing_reason` | `string` | No | Required when setting an agreed price |
+| `customize_onboarding_packages` | `boolean` | No |  |
+| `deployment_usage_visibility` | `string` | Yes |  |
+| `deployment_usage_visible` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
+| `monthly_price_dollars` | `string | number` | No | Ongoing USD workspace price, for example '50.00' |
+| `monthly_price_override_cents` | `number | null` | Yes |  |
+| `name` | `string` | Yes |  |
+| `onboarding_custom_pricing` | `boolean` | No |  |
+| `onboarding_package_keys` | `any[] | null` | No | Package keys offered when customizing onboarding. |
+| `owner_email` | `string` | Yes |  |
+| `package_id` | `string | null` | Yes | Active customer package public ID. |
+| `skip_payment` | `boolean` | No | Grant the selected package as an ongoing complimentary subscription with monthly included usage and package limits. |
+| `slug` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update |
+| --- | --- | --- | --- | --- |
+| `billing_email` | - | - | - | - |
+| `billing_reason` | - | - | - | - |
+| `customize_onboarding_packages` | - | - | - | - |
+| `deployment_usage_visibility` | - | - | - | - |
+| `deployment_usage_visible` | - | - | - | - |
+| `id` | - | - | - | - |
+| `monthly_price_dollars` | - | - | - | - |
+| `monthly_price_override_cents` | - | - | - | - |
+| `name` | - | - | - | - |
+| `onboarding_custom_pricing` | - | - | - | - |
+| `onboarding_package_keys` | - | - | - | - |
+| `owner_email` | - | - | - | - |
+| `package_id` | - | - | Yes | - |
+| `skip_payment` | - | - | - | - |
+| `slug` | - | - | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `checkout_session` | `/api/v1/admin/organizations/{org_slug}/checkout_session` | `client.AdminOrg().create({ $action: 'checkout_session', ... })` |
+| `billing_agreement` | `/api/v1/admin/organizations/{org_slug}/billing_agreement` | `client.AdminOrg().update({ $action: 'billing_agreement', ... })` |
+| `billing_contact` | `/api/v1/admin/organizations/{org_slug}/billing_contact` | `client.AdminOrg().update({ $action: 'billing_contact', ... })` |
+| `package` | `/api/v1/admin/organizations/{org_slug}/package` | `client.AdminOrg().update({ $action: 'package', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+AdminOrg record — check the API definition for its shape.
+
+```ts
+const result = await client.AdminOrg().create({
+  $action: 'checkout_session',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.AdminOrg().create({
+  name: 'example_name',
+  owner_email: 'example_owner_email',
+  slug: 'example_slug',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.AdminOrg().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.AdminOrg().load({ id: 'admin_org_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AdminOrgEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
 
 
 ---
@@ -2808,6 +7019,7 @@ remaining keys are sent as that action's payload.
 | --- | --- | --- |
 | `browser_opened` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/browser_opened` | `client.Agent().create({ $action: 'browser_opened', ... })` |
 | `call_session` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/call_session` | `client.Agent().create({ $action: 'call_session', ... })` |
+| `chat` | `/api/v1/agent/chat` | `client.Agent().create({ $action: 'chat', ... })` |
 | `lifecycle` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/lifecycle` | `client.Agent().create({ $action: 'lifecycle', ... })` |
 | `marked_read` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/marked_read` | `client.Agent().create({ $action: 'marked_read', ... })` |
 | `slack` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/slack` | `client.Agent().create({ $action: 'slack', ... })` |
@@ -2911,6 +7123,169 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `AgentEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AgentAppEntity
+
+```ts
+const agent_app = client.AgentApp()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `author` | `Record<string, any>` | Yes |  |
+| `can_message` | `boolean` | Yes | The viewer may send input to the author agent |
+| `deployments_count` | `number` | Yes | Increases with every deploy of the site |
+| `description` | `string` | Yes |  |
+| `hidden_install_count` | `number` | Yes | Installs by agents the viewer cannot open |
+| `id` | `string` | Yes |  |
+| `install_count` | `number` | Yes |  |
+| `install_targets` | `any[]` | Yes | Active agents the viewer owns or manages, which they can install apps on |
+| `installed_by` | `any[]` | Yes |  |
+| `installed_target_ids` | `any[]` | Yes | Install targets of the viewer that have this app installed |
+| `items` | `any[]` | Yes |  |
+| `mcp_url` | `string | null` | Yes |  |
+| `next_cursor` | `string | null` | Yes | Pass as cursor to load older apps |
+| `owner` | `Record<string, any>` | Yes | The person who controls the author agent |
+| `thread` | `any` | Yes | The thread that published the app, when the viewer can open the author agent |
+| `title` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `visibility` | `string` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `opened` | `/api/v1/organizations/{organization_id}/agent_apps/{id}/opened` | `client.AgentApp().create({ $action: 'opened', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+AgentApp record — check the API definition for its shape.
+
+```ts
+const result = await client.AgentApp().create({
+  $action: 'opened',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.AgentApp().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.AgentApp().load({ id: 'agent_app_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentAppEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AgentAppInstallEntity
+
+```ts
+const agent_app_install = client.AgentAppInstall()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+| `installed` | `boolean` | Yes |  |
+
+### Operations
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.AgentAppInstall().remove({ id: 'agent_app_install_id', agent_app_id: 'agent_app_id', organization_id: 'organization_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.AgentAppInstall().update({
+  id: 'agent_app_install_id',
+  agent_app_id: 'agent_app_id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentAppInstallEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -3305,49 +7680,48 @@ const agent_connection = client.AgentConnection()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `agent_card_url` | `string` | Yes |  |
-| `auth_scheme` | `string` | Yes |  |
-| `can_configure` | `boolean` | Yes |  |
-| `can_disconnect` | `boolean` | Yes |  |
-| `can_setup` | `boolean` | Yes |  |
+| `actions` | `any[]` | Yes |  |
+| `activity` | `any[]` | Yes |  |
+| `admin_disabled_at` | `string | null` | No |  |
+| `agent_tools` | `boolean` | No |  |
+| `authentication` | `string` | Yes |  |
+| `authorized_at` | `string | null` | Yes |  |
+| `can_create_account` | `boolean` | No | Whether another account can be created directly from this provider. |
+| `capabilities` | `Record<string, any>` | Yes |  |
+| `catalog_section` | `string` | No | Server-owned grouping in the agent integration catalog. |
+| `category` | `string` | No | Short product label, such as CRM or Email. |
+| `certification` | `string` | Yes |  |
+| `checked_at` | `string | null` | Yes |  |
 | `connection` | `Record<string, any>` | Yes |  |
-| `credential` | `string | null` | No | Write-only outbound key. |
-| `error_code` | `string | null` | Yes |  |
-| `expected_generation` | `number` | Yes |  |
+| `consent` | `Record<string, any> | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `creation_key` | `string` | No | Reuse the same key to recover the account after an interrupted response. |
+| `custodian_id` | `string | null` | Yes |  |
+| `description` | `string` | No | One-line catalog description of the app. |
+| `disabled_reason` | `string | null` | No |  |
+| `failure_code` | `string | null` | Yes |  |
 | `generation` | `number` | Yes |  |
+| `grants` | `any[]` | Yes |  |
+| `grants_pagination` | `Record<string, any>` | Yes |  |
 | `id` | `string` | Yes |  |
+| `limits` | `Record<string, any>` | Yes |  |
 | `name` | `string` | Yes |  |
-| `remote_agent` | `string | null` | Yes |  |
-| `requester_id` | `string` | Yes |  |
-| `retired_at` | `string | null` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `owner_name` | `string` | No |  |
+| `ownership_kind` | `string` | Yes |  |
+| `pagination` | `Record<string, any>` | Yes |  |
+| `policy_digest` | `string` | Yes |  |
+| `provider` | `Record<string, any>` | Yes |  |
+| `provider_disabled_reason` | `string | null` | No |  |
+| `provider_identity` | `Record<string, any>` | Yes |  |
 | `revoked_at` | `string | null` | Yes |  |
-| `scope_key` | `string` | Yes |  |
-| `source_operation_id` | `string | null` | Yes |  |
-| `state` | `string` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `agent_card_url` | - | - | - | - | - |
-| `auth_scheme` | - | - | - | - | - |
-| `can_configure` | - | - | - | - | - |
-| `can_disconnect` | - | - | - | - | - |
-| `can_setup` | - | - | - | - | - |
-| `connection` | - | - | - | - | - |
-| `credential` | - | - | - | - | - |
-| `error_code` | - | - | - | - | - |
-| `expected_generation` | - | - | - | - | - |
-| `generation` | - | - | - | - | - |
-| `id` | - | - | - | - | - |
-| `name` | - | - | - | - | - |
-| `remote_agent` | - | - | Yes | Yes | - |
-| `requester_id` | - | - | - | - | - |
-| `retired_at` | - | - | - | - | - |
-| `revoked_at` | - | - | - | - | - |
-| `scope_key` | - | - | - | - | - |
-| `source_operation_id` | - | - | Yes | - | - |
-| `state` | - | - | - | - | - |
+| `schema_version` | `number` | Yes |  |
+| `status` | `string` | Yes |  |
+| `toolkit` | `string` | Yes |  |
+| `triggers` | `any[]` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `user_id` | `string` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Actions
 
@@ -3357,15 +7731,27 @@ remaining keys are sent as that action's payload.
 
 | Action | Route | Call |
 | --- | --- | --- |
-| `setup` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup` | `client.AgentConnection().create({ $action: 'setup', ... })` |
-| `change` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/change` | `client.AgentConnection().load({ $action: 'change', ... })` |
+| `adopt_custody` | `/api/v1/organizations/{organization_id}/agent_connections/{id}/adopt_custody` | `client.AgentConnection().create({ $action: 'adopt_custody', ... })` |
+| `authorize` | `/api/v1/organizations/{organization_id}/agent_connections/{id}/authorize` | `client.AgentConnection().create({ $action: 'authorize', ... })` |
+| `cancel_sign_in` | `/api/v1/organizations/{organization_id}/agent_connections/{id}/cancel_sign_in` | `client.AgentConnection().create({ $action: 'cancel_sign_in', ... })` |
+| `complete` | `/api/v1/organizations/{organization_id}/agent_connections/{id}/complete` | `client.AgentConnection().create({ $action: 'complete', ... })` |
+| `custom_mcp` | `/api/v1/organizations/{organization_id}/agent_connections/custom_mcp` | `client.AgentConnection().create({ $action: 'custom_mcp', ... })` |
+| `delegate` | `/api/v1/organizations/{organization_id}/agent_connections/{id}/delegate` | `client.AgentConnection().create({ $action: 'delegate', ... })` |
+| `disconnect` | `/api/v1/organizations/{organization_id}/agent_connections/{id}/disconnect` | `client.AgentConnection().create({ $action: 'disconnect', ... })` |
+| `reassign_custody` | `/api/v1/organizations/{organization_id}/agent_connections/{id}/reassign_custody` | `client.AgentConnection().create({ $action: 'reassign_custody', ... })` |
+| `revoke_delegation` | `/api/v1/organizations/{organization_id}/agent_connections/{id}/revoke_delegation` | `client.AgentConnection().create({ $action: 'revoke_delegation', ... })` |
+| `revoke_grant` | `/api/v1/organizations/{organization_id}/agent_connections/{id}/revoke_grant` | `client.AgentConnection().create({ $action: 'revoke_grant', ... })` |
+| `safety_control` | `/api/v1/organizations/{organization_id}/agent_connections/{id}/safety_control` | `client.AgentConnection().create({ $action: 'safety_control', ... })` |
+| `sync` | `/api/v1/organizations/{organization_id}/agent_connections/{id}/sync` | `client.AgentConnection().create({ $action: 'sync', ... })` |
+| `custody` | `/api/v1/organizations/{organization_id}/agent_connections/{id}/custody` | `client.AgentConnection().load({ $action: 'custody', ... })` |
+| `disconnect_impact` | `/api/v1/organizations/{organization_id}/agent_connections/{id}/disconnect_impact` | `client.AgentConnection().load({ $action: 'disconnect_impact', ... })` |
 
 An action returns that action's OWN response, which is not necessarily a
 AgentConnection record — check the API definition for its shape.
 
 ```ts
 const result = await client.AgentConnection().create({
-  $action: 'setup',
+  $action: 'adopt_custody',
   /* ...the action's own arguments */
 })
 ```
@@ -3378,11 +7764,9 @@ Create a new entity with the given data. Resolves to the created entity.
 
 ```ts
 const result = await client.AgentConnection().create({
-  agent_id: 'example_agent_id',
   organization_id: 'example_organization_id',
-  agent_card_url: 'example_agent_card_url',
-  auth_scheme: 'example_auth_scheme',
   name: 'example_name',
+  toolkit: 'example_toolkit',
 })
 ```
 
@@ -3391,7 +7775,7 @@ const result = await client.AgentConnection().create({
 List entities matching the given criteria. Resolves to an array of entities, one per record.
 
 ```ts
-const results = await client.AgentConnection().list({ agent_id: "example", organization_id: "example" })
+const results = await client.AgentConnection().list({ organization_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -3399,7 +7783,19 @@ const results = await client.AgentConnection().list({ agent_id: "example", organ
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const result = await client.AgentConnection().load({ id: 'agent_connection_id', agent_id: 'agent_id', organization_id: 'organization_id' })
+const result = await client.AgentConnection().load({ id: 'agent_connection_id', organization_id: 'organization_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.AgentConnection().patch({
+  id: 'agent_connection_id',
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -3407,7 +7803,7 @@ const result = await client.AgentConnection().load({ id: 'agent_connection_id', 
 Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
 
 ```ts
-const result = await client.AgentConnection().remove({ id: 'agent_connection_id', agent_id: 'agent_id', organization_id: 'organization_id' })
+const result = await client.AgentConnection().remove({ id: 'agent_connection_id', organization_id: 'organization_id' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -3417,7 +7813,6 @@ Update an existing entity. The data must include the entity `id`. Resolves to th
 ```ts
 const result = await client.AgentConnection().update({
   id: 'agent_connection_id',
-  agent_id: 'agent_id',
   organization_id: 'organization_id',
   // Fields to update
 })
@@ -3438,6 +7833,458 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `AgentConnectionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AgentConnectionDelegationEntity
+
+```ts
+const agent_connection_delegation = client.AgentConnectionDelegation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `authorized_by_id` | `string` | Yes |  |
+| `automation_connection_grant_id` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `member_name` | `string` | Yes |  |
+| `revoked_at` | `string | null` | Yes |  |
+| `roles` | `any[]` | Yes |  |
+| `usable` | `boolean` | Yes |  |
+| `user_id` | `string` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.AgentConnectionDelegation().list({ agent_connection_id: "example", organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentConnectionDelegationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AgentConnectionGrantEntity
+
+```ts
+const agent_connection_grant = client.AgentConnectionGrant()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `actions` | `any[]` | Yes |  |
+| `agent_connection_id` | `string` | Yes |  |
+| `automation_id` | `string` | Yes |  |
+| `connection_generation` | `number` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `revision` | `number` | Yes |  |
+| `revoked_at` | `string | null` | Yes |  |
+| `status` | `string` | Yes |  |
+| `usable` | `boolean` | Yes |  |
+| `user_id` | `string` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.AgentConnectionGrant().list({ agent_connection_id: "example", organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentConnectionGrantEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AgentConnectionResourceEntity
+
+```ts
+const agent_connection_resource = client.AgentConnectionResource()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cursor` | `string | null` | No |  |
+| `next_cursor` | `string | null` | Yes |  |
+| `query` | `string` | No |  |
+| `resources` | `any[]` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.AgentConnectionResource().create({
+  agent_connection_id: 'example_agent_connection_id',
+  organization_id: 'example_organization_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentConnectionResourceEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AgentConnectionSafetyControlEntity
+
+```ts
+const agent_connection_safety_control = client.AgentConnectionSafetyControl()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `admin_disabled_at` | `string | null` | No |  |
+| `authorized_at` | `string | null` | Yes |  |
+| `checked_at` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `custodian_id` | `string | null` | Yes |  |
+| `failure_code` | `string | null` | Yes |  |
+| `generation` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `owner_name` | `string` | No |  |
+| `ownership_kind` | `string` | Yes |  |
+| `provider_disabled_reason` | `string | null` | No |  |
+| `provider_identity` | `Record<string, any>` | Yes |  |
+| `revoked_at` | `string | null` | Yes |  |
+| `status` | `string` | Yes |  |
+| `toolkit` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `user_id` | `string` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.AgentConnectionSafetyControl().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentConnectionSafetyControlEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AgentConnectionTriggerSubscriptionEntity
+
+```ts
+const agent_connection_trigger_subscription = client.AgentConnectionTriggerSubscription()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_connection_id` | `string` | Yes |  |
+| `configuration` | `Record<string, any>` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `defaults` | `Record<string, any>` | Yes |  |
+| `delivery` | `string` | Yes |  |
+| `enabled` | `boolean` | Yes |  |
+| `failure_code` | `string | null` | Yes |  |
+| `failure_request_id` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `latency` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `reconcile_at` | `string` | Yes |  |
+| `reconciliation_uncertain` | `boolean` | Yes |  |
+| `remote_enabled` | `boolean | null` | Yes |  |
+| `replacement_id` | `string | null` | Yes |  |
+| `retired_at` | `string | null` | Yes |  |
+| `retirement_completed_at` | `string | null` | Yes |  |
+| `schema` | `Record<string, any>` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `toolkit` | `string` | Yes |  |
+| `toolkit_version` | `string` | Yes |  |
+| `trigger_slug` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `version` | `string` | Yes |  |
+| `waiting_for_retirement` | `boolean` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `discover` | `/api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}/discover` | `client.AgentConnectionTriggerSubscription().create({ $action: 'discover', ... })` |
+| `replace` | `/api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}/replace` | `client.AgentConnectionTriggerSubscription().create({ $action: 'replace', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+AgentConnectionTriggerSubscription record — check the API definition for its shape.
+
+```ts
+const result = await client.AgentConnectionTriggerSubscription().create({
+  $action: 'discover',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.AgentConnectionTriggerSubscription().create({
+  agent_connection_id: 'example_agent_connection_id',
+  organization_id: 'example_organization_id',
+  configuration: {},
+  trigger_slug: 'example_trigger_slug',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.AgentConnectionTriggerSubscription().list({ agent_connection_id: "example", organization_id: "example" })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.AgentConnectionTriggerSubscription().patch({
+  id: 'agent_connection_trigger_subscription_id',
+  agent_connection_id: 'agent_connection_id',
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.AgentConnectionTriggerSubscription().remove({ id: 'agent_connection_trigger_subscription_id', agent_connection_id: 'agent_connection_id', organization_id: 'organization_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.AgentConnectionTriggerSubscription().update({
+  id: 'agent_connection_trigger_subscription_id',
+  agent_connection_id: 'agent_connection_id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentConnectionTriggerSubscriptionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AgentContextCheckpointEntity
+
+```ts
+const agent_context_checkpoint = client.AgentContextCheckpoint()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `transcript` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/agent_context/checkpoints/{checkpoint_id}/transcript` | `client.AgentContextCheckpoint().load({ $action: 'transcript', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+AgentContextCheckpoint record — check the API definition for its shape.
+
+```ts
+const result = await client.AgentContextCheckpoint().load({
+  $action: 'transcript',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentContextCheckpointEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -3668,6 +8515,50 @@ Return a copy of the entity options.
 
 ---
 
+## AgentEventEntity
+
+```ts
+const agent_event = client.AgentEvent()
+```
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.AgentEvent().list({ agent_id: "example", organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentEventEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## AgentFileEntity
 
 ```ts
@@ -3798,28 +8689,63 @@ const agent_integration = client.AgentIntegration()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `account_counts` | `Record<string, any>` | Yes | Accounts the viewer can see per toolkit, across all account pages. |
-| `accounts_path` | `string` | Yes | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
-| `added_toolkits` | `any[]` | Yes | Apps with a connected or connecting account the viewer can see. |
+| `can_cancel_sign_in` | `boolean` | No | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `boolean` | Yes |  |
+| `can_disconnect` | `boolean` | Yes |  |
+| `can_enable` | `boolean` | Yes |  |
 | `can_manage` | `boolean` | Yes |  |
-| `can_manage_organization` | `boolean` | Yes |  |
+| `can_manage_sharing` | `boolean` | Yes |  |
+| `can_reconnect` | `boolean` | Yes |  |
+| `can_sync` | `boolean` | Yes | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
 | `catalog` | `any[]` | Yes |  |
-| `connect_as` | `string | null` | Yes | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
-| `connect_as_by_toolkit` | `Record<string, any>` | Yes | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_by` | `string | null` | Yes | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `boolean` | Yes | True when the viewer is the person whose sign-in this account is. |
 | `connected_counts` | `Record<string, any>` | Yes | Signed-in accounts per toolkit, across all account pages. |
-| `connection_id` | `string` | Yes |  |
 | `connections` | `any[]` | Yes |  |
-| `email` | `Record<string, any>` | Yes | A native agent's own email address. |
-| `enabled` | `boolean` | Yes |  |
-| `enabled_toolkits` | `any[]` | Yes | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `creation_key` | `string` | No | Stable identity for retrying this creation; retain it after an uncertain response. |
+| `creation_key_digest` | `string | null` | No | SHA-256 of the unfinished setup key for its original creator. |
 | `generation` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
 | `pagination` | `Record<string, any>` | Yes |  |
 | `pending_counts` | `Record<string, any>` | Yes | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
-| `personal_creation_key_supported` | `boolean` | No | The personal account creation endpoint honors a creation key. |
-| `private_agent` | `boolean` | Yes | Only the agent's owner can chat with it. |
-| `shared_agent_personal_accounts_enabled` | `boolean` | Yes | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
-| `slack` | `Record<string, any>` | Yes |  |
-| `webhook_connections` | `any[]` | Yes |  |
-| `webhooks_available` | `boolean` | Yes |  |
+| `provider_disabled_reason` | `string | null` | Yes |  |
+| `provider_identity` | `Record<string, any>` | Yes |  |
+| `provider_name` | `string | null` | Yes | The app's display name; null for a custom MCP server, which uses the account name. |
+| `reference` | `string` | Yes | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `string` | No | Agent account audience, including legacy personal and paused access. |
+| `status` | `string` | Yes |  |
+| `team_sharing_enabled` | `boolean` | Yes |  |
+| `team_sharing_version` | `number` | Yes |  |
+| `toolkit` | `string` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `authorize` | `/api/v1/organizations/{organization_id}/agent_integrations/{id}/authorize` | `client.AgentIntegration().create({ $action: 'authorize', ... })` |
+| `cancel_sign_in` | `/api/v1/organizations/{organization_id}/agent_integrations/{id}/cancel_sign_in` | `client.AgentIntegration().create({ $action: 'cancel_sign_in', ... })` |
+| `complete` | `/api/v1/organizations/{organization_id}/agent_integrations/{id}/complete` | `client.AgentIntegration().create({ $action: 'complete', ... })` |
+| `custom_mcp` | `/api/v1/organizations/{organization_id}/agent_integrations/custom_mcp` | `client.AgentIntegration().create({ $action: 'custom_mcp', ... })` |
+| `disconnect` | `/api/v1/organizations/{organization_id}/agent_integrations/{id}/disconnect` | `client.AgentIntegration().create({ $action: 'disconnect', ... })` |
+| `sharing` | `/api/v1/organizations/{organization_id}/agent_integrations/{id}/sharing` | `client.AgentIntegration().create({ $action: 'sharing', ... })` |
+| `sync` | `/api/v1/organizations/{organization_id}/agent_integrations/{id}/sync` | `client.AgentIntegration().create({ $action: 'sync', ... })` |
+| `catalog` | `/api/v1/organizations/{organization_id}/agent_integrations/catalog` | `client.AgentIntegration().load({ $action: 'catalog', ... })` |
+| `github` | `/api/v1/organizations/{organization_id}/agent_integrations/github` | `client.AgentIntegration().load({ $action: 'github', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+AgentIntegration record — check the API definition for its shape.
+
+```ts
+const result = await client.AgentIntegration().create({
+  $action: 'authorize',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -3829,11 +8755,9 @@ Create a new entity with the given data. Resolves to the created entity.
 
 ```ts
 const result = await client.AgentIntegration().create({
-  agent_id: 'example_agent_id',
   organization_id: 'example_organization_id',
-  connection_id: 'example_connection_id',
-  enabled: true,
-  generation: 1,
+  name: 'example_name',
+  toolkit: 'example_toolkit',
 })
 ```
 
@@ -3842,7 +8766,23 @@ const result = await client.AgentIntegration().create({
 List entities matching the given criteria. Resolves to an array of entities, one per record.
 
 ```ts
-const results = await client.AgentIntegration().list({ agent_id: "example", organization_id: "example" })
+const results = await client.AgentIntegration().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.AgentIntegration().load({ id: 'agent_integration_id', organization_id: 'organization_id' })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.AgentIntegration().remove({ id: 'agent_integration_id', organization_id: 'organization_id' })
 ```
 
 ### Common Methods
@@ -3860,6 +8800,120 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `AgentIntegrationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AgentIntegrationAccountEntity
+
+```ts
+const agent_integration_account = client.AgentIntegrationAccount()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_cancel_sign_in` | `boolean` | No | The viewer can cancel the unfinished authorization attempt. |
+| `can_delete` | `boolean` | Yes |  |
+| `can_disconnect` | `boolean` | Yes |  |
+| `can_enable` | `boolean` | Yes |  |
+| `can_manage_sharing` | `boolean` | Yes |  |
+| `can_reconnect` | `boolean` | Yes |  |
+| `can_sync` | `boolean` | Yes | The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished. |
+| `connected_by` | `string | null` | Yes | Name of the person whose sign-in this account is. |
+| `connected_by_you` | `boolean` | Yes | True when the viewer is the person whose sign-in this account is. |
+| `creation_key_digest` | `string | null` | No | SHA-256 of the unfinished setup key for its original creator. |
+| `generation` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `provider_disabled_reason` | `string | null` | Yes |  |
+| `provider_identity` | `Record<string, any>` | Yes |  |
+| `reference` | `string` | Yes | Pins this account's current authorization, as agent_connection_ID:GENERATION. |
+| `sharing_status` | `string` | No | Agent account audience, including legacy personal and paused access. |
+| `status` | `string` | Yes |  |
+| `team_sharing_enabled` | `boolean` | Yes |  |
+| `team_sharing_version` | `number` | Yes |  |
+| `toolkit` | `string` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.AgentIntegrationAccount().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentIntegrationAccountEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AgentIntegrationCallbackEntity
+
+```ts
+const agent_integration_callback = client.AgentIntegrationCallback()
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.AgentIntegrationCallback().load({ connection_id: 'connection_id', state: 'state' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentIntegrationCallbackEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -4785,6 +9839,158 @@ Return a copy of the entity options.
 
 ---
 
+## AgentRelayFileGrantEntity
+
+```ts
+const agent_relay_file_grant = client.AgentRelayFileGrant()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access_mode` | `string` | Yes |  |
+| `connection_generation` | `number` | Yes |  |
+| `connection_id` | `string` | Yes |  |
+| `connection_name` | `string` | Yes | Current display name of the selected account. |
+| `created_at` | `string` | Yes |  |
+| `expected_generation` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `resource_id` | `string` | Yes |  |
+| `resource_kind` | `string` | Yes |  |
+| `revoked` | `boolean` | Yes |  |
+| `revoked_at` | `string | null` | Yes |  |
+| `snapshot_supported` | `boolean` | No | Whether this selected permission supports snapshot controls. |
+| `source_operation_id` | `string` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.AgentRelayFileGrant().create({
+  organization_id: 'example_organization_id',
+  access_mode: 'example_access_mode',
+  connection_id: 'example_connection_id',
+  expected_generation: 1,
+  key: 'example_key',
+  resource_id: 'example_resource_id',
+  resource_kind: 'example_resource_kind',
+  source_operation_id: 'example_source_operation_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.AgentRelayFileGrant().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.AgentRelayFileGrant().load({ id: 'agent_relay_file_grant_id', organization_id: 'organization_id' })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.AgentRelayFileGrant().remove({ id: 'agent_relay_file_grant_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentRelayFileGrantEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AgentRelayFileGrantAccountEntity
+
+```ts
+const agent_relay_file_grant_account = client.AgentRelayFileGrantAccount()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access_modes` | `any[]` | No | Supported file access modes. |
+| `generation` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `resource_kind` | `string` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.AgentRelayFileGrantAccount().list({ organization_id: "example", source_operation_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentRelayFileGrantAccountEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## AgentRepositoryEntity
 
 ```ts
@@ -4913,6 +10119,73 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `AgentResourceEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AgentRoderEntity
+
+```ts
+const agent_roder = client.AgentRoder()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `browser_executor_authorization` | `/api/v1/agent/roder/browser_executor_authorization` | `client.AgentRoder().create({ $action: 'browser_executor_authorization', ... })` |
+| `session` | `/api/v1/agent/roder/session` | `client.AgentRoder().create({ $action: 'session', ... })` |
+| `workspace_authorization` | `/api/v1/agent/roder/workspace_authorization` | `client.AgentRoder().create({ $action: 'workspace_authorization', ... })` |
+| `browser_authorization` | `/api/v1/agent/roder/browser_authorization` | `client.AgentRoder().load({ $action: 'browser_authorization', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+AgentRoder record — check the API definition for its shape.
+
+```ts
+const result = await client.AgentRoder().create({
+  $action: 'browser_executor_authorization',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentRoderEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -5134,6 +10407,219 @@ Return a copy of the entity options.
 
 ---
 
+## AgentSessionEntity
+
+```ts
+const agent_session = client.AgentSession()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `transcript` | `/api/v1/agent_sessions/{session_id}/transcript` | `client.AgentSession().load({ $action: 'transcript', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+AgentSession record — check the API definition for its shape.
+
+```ts
+const result = await client.AgentSession().load({
+  $action: 'transcript',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentSessionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AgentSessionCheckpointEntity
+
+```ts
+const agent_session_checkpoint = client.AgentSessionCheckpoint()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `finalize` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize` | `client.AgentSessionCheckpoint().create({ $action: 'finalize', ... })` |
+| `seal` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/seal` | `client.AgentSessionCheckpoint().create({ $action: 'seal', ... })` |
+| `download` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/download` | `client.AgentSessionCheckpoint().load({ $action: 'download', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+AgentSessionCheckpoint record — check the API definition for its shape.
+
+```ts
+const result = await client.AgentSessionCheckpoint().create({
+  $action: 'finalize',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.AgentSessionCheckpoint().create({
+  agent_session_id: 'example_agent_session_id',
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.AgentSessionCheckpoint().list({ agent_session_id: "example", organization_id: "example", repo_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.AgentSessionCheckpoint().load({ id: 'agent_session_checkpoint_id', agent_session_id: 'agent_session_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentSessionCheckpointEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AgentSessionRoderHandoffEntity
+
+```ts
+const agent_session_roder_handoff = client.AgentSessionRoderHandoff()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `checkpoint_id` | `string` | No | Public id of the checkpoint to hand off. |
+| `purpose` | `string` | No | Handoff intent; defaults to `continue`. |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.AgentSessionRoderHandoff().create({
+  agent_session_id: 'example_agent_session_id',
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentSessionRoderHandoffEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## AgentSettingEntity
 
 ```ts
@@ -5269,23 +10755,60 @@ const agent_site = client.AgentSite()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `deployed_at` | `string` | Yes |  |
-| `deployments_count` | `number` | Yes |  |
-| `hostname` | `string` | Yes |  |
-| `https` | `string` | Yes | Whether the organization's certificate serves this site over HTTPS |
+| `author` | `Record<string, any>` | Yes |  |
+| `can_message` | `boolean` | Yes | The viewer may send input to the author agent |
+| `deployments_count` | `number` | Yes | Increases with every deploy of the site |
+| `description` | `string | null` | Yes | The team app description, when the site is a team app |
+| `icon_url` | `string | null` | Yes | Path of the site's generated icon, versioned by the picture; null until one is generated |
 | `id` | `string` | Yes |  |
-| `name` | `string` | Yes |  |
+| `name` | `string` | Yes | The site's DNS label |
+| `owner` | `Record<string, any>` | Yes | The person who controls the author agent |
+| `thread` | `any` | Yes | The thread that published the site as a team app, when the viewer can open the author agent |
+| `title` | `string` | Yes | The team app title, or the site name read as words |
 | `url` | `string` | Yes |  |
 | `visibility` | `string` | Yes |  |
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `opened` | `/api/v1/organizations/{organization_id}/agent_sites/{id}/opened` | `client.AgentSite().create({ $action: 'opened', ... })` |
+| `icon` | `/api/v1/organizations/{organization_id}/agent_sites/{id}/icon` | `client.AgentSite().load({ $action: 'icon', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+AgentSite record — check the API definition for its shape.
+
+```ts
+const result = await client.AgentSite().create({
+  $action: 'opened',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
 
 #### `list(match: object, ctrl?: object)`
 
 List entities matching the given criteria. Resolves to an array of entities, one per record.
 
 ```ts
-const results = await client.AgentSite().list({ agent_id: "example", organization_id: "example" })
+const results = await client.AgentSite().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.AgentSite().load({ id: 'agent_site_id', organization_id: 'organization_id' })
 ```
 
 ### Common Methods
@@ -5326,15 +10849,41 @@ const agent_skill = client.AgentSkill()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `available` | `boolean` | Yes |  |
-| `can_configure` | `boolean` | Yes |  |
-| `can_manage` | `boolean` | Yes |  |
-| `configuration_state` | `string` | No | The requested managed skill selection is awaiting runtime qualification. |
-| `description` | `string` | Yes |  |
-| `enabled` | `boolean` | Yes |  |
-| `name` | `string` | Yes |  |
+| `agents` | `any[]` | Yes | Active V2 agents the viewer can see whose owner is still a member |
+| `audience` | `Record<string, any>` | Yes |  |
+| `can_manage_library` | `boolean` | Yes |  |
+| `content` | `string` | Yes | The skill's SKILL.md |
+| `files` | `any[]` | Yes |  |
+| `id` | `string` | No |  |
+| `marketplace` | `string` | No |  |
+| `pending` | `boolean` | Yes | Some agent is still applying a change; check again shortly |
+| `plugin` | `string` | No | The marketplace entry id |
+| `revision` | `string` | Yes | The commit SHA returned by preview |
+| `skill` | `Record<string, any>` | Yes |  |
 | `skills` | `any[]` | Yes |  |
-| `version` | `string` | Yes |  |
+| `source` | `string` | No | owner/repo, a GitHub or skills.sh link, or npx skills add owner/repo [--skill NAME ...] |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `preview` | `/api/v1/organizations/{organization_id}/agent_skills/preview` | `client.AgentSkill().create({ $action: 'preview', ... })` |
+| `marketplace` | `/api/v1/organizations/{organization_id}/agent_skills/marketplace` | `client.AgentSkill().load({ $action: 'marketplace', ... })` |
+| `audience` | `/api/v1/organizations/{organization_id}/agent_skills/{id}/audience` | `client.AgentSkill().update({ $action: 'audience', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+AgentSkill record — check the API definition for its shape.
+
+```ts
+const result = await client.AgentSkill().create({
+  $action: 'preview',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -5344,11 +10893,10 @@ Create a new entity with the given data. Resolves to the created entity.
 
 ```ts
 const result = await client.AgentSkill().create({
-  agent_id: 'example_agent_id',
   organization_id: 'example_organization_id',
-  enabled: true,
-  name: 'example_name',
-  version: 'example_version',
+  audience: {},
+  revision: 'example_revision',
+  skills: [],
 })
 ```
 
@@ -5357,8 +10905,28 @@ const result = await client.AgentSkill().create({
 List entities matching the given criteria. Resolves to an array of entities, one per record.
 
 ```ts
-const results = await client.AgentSkill().list({ agent_id: "example", organization_id: "example" })
+const results = await client.AgentSkill().list({ organization_id: "example" })
 ```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.AgentSkill().load({ id: 'agent_skill_id', organization_id: 'organization_id' })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.AgentSkill().remove({ id: 'agent_skill_id', organization_id: 'organization_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
 
 ### Common Methods
 
@@ -5565,6 +11133,202 @@ Return a copy of the entity options.
 
 ---
 
+## AgentSwarmEntity
+
+```ts
+const agent_swarm = client.AgentSwarm()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `base_bookmark` | `string | null` | Yes | An existing bookmark to start from and land on; the plain form of `target.kind = bookmark`. |
+| `base_ref` | `string | null` | Yes |  |
+| `base_revision` | `string | null` | Yes | 64-hex commit id; skips the head lookup |
+| `budget` | `Record<string, any>` | Yes |  |
+| `canceled_at` | `string | null` | Yes |  |
+| `canceled_count` | `number` | Yes |  |
+| `concurrency_key` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `creator_user_id` | `string | null` | Yes |  |
+| `deadline_at` | `string | null` | Yes |  |
+| `display_id` | `number` | Yes |  |
+| `done_count` | `number` | Yes |  |
+| `environment` | `Record<string, any>` | Yes |  |
+| `failed_count` | `number` | Yes |  |
+| `finished_at` | `string | null` | Yes |  |
+| `finished_at_label` | `string | null` | Yes |  |
+| `github` | `Record<string, any>` | Yes |  |
+| `goal` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `model` | `string | null` | Yes |  |
+| `model_provider` | `string | null` | Yes |  |
+| `number` | `number` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `organization_slug` | `string | null` | Yes |  |
+| `outcome` | `string | null` | Yes |  |
+| `phase` | `string | null` | Yes |  |
+| `policy` | `Record<string, any>` | Yes | Every key is optional and defaults to AgentSwarm::POLICY_DEFAULTS. |
+| `queued_at` | `string | null` | Yes |  |
+| `queued_at_label` | `string | null` | Yes |  |
+| `repository` | `string` | No | Repository slug inside the organization |
+| `repository_id` | `string | null` | Yes |  |
+| `repository_slug` | `string | null` | Yes |  |
+| `reserved` | `Record<string, any>` | Yes |  |
+| `scheduler_generation` | `number` | Yes |  |
+| `skipped_count` | `number` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `started_at` | `string | null` | Yes |  |
+| `started_at_label` | `string | null` | Yes |  |
+| `status` | `string` | Yes |  |
+| `summary` | `Record<string, any>` | Yes |  |
+| `target` | `Record<string, any>` | Yes | Where the swarm lands. |
+| `task_count` | `number` | Yes |  |
+| `task_template_json` | `string | null` | Yes |  |
+| `tasks` | `any[]` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+| `usage` | `Record<string, any>` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update |
+| --- | --- | --- | --- | --- |
+| `base_bookmark` | - | - | Yes | - |
+| `base_ref` | - | - | Yes | - |
+| `base_revision` | - | - | Yes | - |
+| `budget` | - | - | Yes | - |
+| `canceled_at` | - | - | - | - |
+| `canceled_count` | - | - | - | - |
+| `concurrency_key` | - | - | Yes | - |
+| `created_at` | - | - | - | - |
+| `created_at_label` | - | - | - | - |
+| `creator_user_id` | - | - | - | - |
+| `deadline_at` | - | - | - | - |
+| `display_id` | - | - | - | - |
+| `done_count` | - | - | - | - |
+| `environment` | - | - | Yes | - |
+| `failed_count` | - | - | - | - |
+| `finished_at` | - | - | - | - |
+| `finished_at_label` | - | - | - | - |
+| `github` | - | - | - | - |
+| `goal` | - | - | Yes | - |
+| `id` | - | - | - | - |
+| `model` | - | - | Yes | - |
+| `model_provider` | - | - | Yes | - |
+| `number` | - | - | - | - |
+| `organization_id` | - | - | - | - |
+| `organization_slug` | - | - | - | - |
+| `outcome` | - | - | - | - |
+| `phase` | - | - | - | - |
+| `policy` | - | - | Yes | - |
+| `queued_at` | - | - | Yes | - |
+| `queued_at_label` | - | - | - | - |
+| `repository` | - | - | - | - |
+| `repository_id` | - | - | - | - |
+| `repository_slug` | - | - | - | - |
+| `reserved` | - | - | - | - |
+| `scheduler_generation` | - | - | - | - |
+| `skipped_count` | - | - | - | - |
+| `slug` | - | - | Yes | - |
+| `started_at` | - | - | - | - |
+| `started_at_label` | - | - | - | - |
+| `status` | - | - | - | - |
+| `summary` | - | - | - | - |
+| `target` | - | - | - | - |
+| `task_count` | - | - | - | - |
+| `task_template_json` | - | - | Yes | - |
+| `tasks` | - | - | Yes | - |
+| `updated_at` | - | - | - | - |
+| `updated_at_label` | - | - | - | - |
+| `usage` | - | - | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `cancel` | `/api/v1/agent/swarms/{id}/cancel` | `client.AgentSwarm().create({ $action: 'cancel', ... })` |
+| `live` | `/api/v1/agent/swarms/{id}/live` | `client.AgentSwarm().load({ $action: 'live', ... })` |
+| `policy` | `/api/v1/agent/swarms/{id}/policy` | `client.AgentSwarm().load({ $action: 'policy', ... })` |
+| `policy` | `/api/v1/agent/swarms/{id}/policy` | `client.AgentSwarm().update({ $action: 'policy', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+AgentSwarm record — check the API definition for its shape.
+
+```ts
+const result = await client.AgentSwarm().create({
+  $action: 'cancel',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.AgentSwarm().create({
+  organization_slug: 'example_organization_slug',
+  target: {},
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.AgentSwarm().list({ org: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.AgentSwarm().load({ id: 'agent_swarm_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentSwarmEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## AgentTeammateEntity
 
 ```ts
@@ -5689,30 +11453,7 @@ const agent_thread = client.AgentThread()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_count` | `number | null` | No | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` | `boolean` | Yes |  |
-| `execution` | `any` | No |  |
-| `first_input` | `any` | No |  |
-| `first_input_key` | `string` | No | Idempotency-Key that finds the first message through input_delivery. |
-| `first_input_requester_membership_id` | `string` | No | Membership the first message was sent as, for input_delivery. |
 | `id` | `string` | No |  |
-| `inherit_context` | `boolean` | No | Include the source conversation through its last completed reply. |
-| `local_activities` | `Record<string, any>` | Yes | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | `number` | Yes | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` | `string | null` | Yes |  |
-| `local_scope_key` | `string | null` | Yes |  |
-| `local_status_pending` | `boolean` | Yes | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` | `any[]` | Yes |  |
-| `main_thread_id` | `string` | Yes |  |
-| `message` | `string` | No | The thread's first message. |
-| `next_cursor` | `string | null` | Yes |  |
-| `parent_conversation_id` | `string` | No | Optional source conversation belonging to this agent. |
-| `requester_membership_id` | `string` | No |  |
-| `selected_thread` | `any` | Yes |  |
-| `thread` | `Record<string, any>` | Yes |  |
-| `threads` | `any[]` | Yes |  |
-| `title` | `string` | No |  |
-| `total_archived_count` | `number | null` | Yes | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
 
 ### Actions
 
@@ -5722,9 +11463,7 @@ remaining keys are sent as that action's payload.
 
 | Action | Route | Call |
 | --- | --- | --- |
-| `archive` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive` | `client.AgentThread().create({ $action: 'archive', ... })` |
-| `compact` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/compact` | `client.AgentThread().create({ $action: 'compact', ... })` |
-| `snooze` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/snooze` | `client.AgentThread().create({ $action: 'snooze', ... })` |
+| `archive` | `/api/v1/agent/threads/{id}/archive` | `client.AgentThread().create({ $action: 'archive', ... })` |
 
 An action returns that action's OWN response, which is not necessarily a
 AgentThread record — check the API definition for its shape.
@@ -5744,8 +11483,6 @@ Create a new entity with the given data. Resolves to the created entity.
 
 ```ts
 const result = await client.AgentThread().create({
-  agent_id: 'example_agent_id',
-  organization_id: 'example_organization_id',
 })
 ```
 
@@ -5754,7 +11491,15 @@ const result = await client.AgentThread().create({
 List entities matching the given criteria. Resolves to an array of entities, one per record.
 
 ```ts
-const results = await client.AgentThread().list({ agent_id: "example", organization_id: "example" })
+const results = await client.AgentThread().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.AgentThread().load({ id: 'agent_thread_id' })
 ```
 
 ### Common Methods
@@ -5824,6 +11569,63 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `AgentToolEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AgentUsageEntity
+
+```ts
+const agent_usage = client.AgentUsage()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `days` | `any[]` | Yes | One cell per (day, model), ascending by day then model. |
+| `ended_at` | `string` | Yes |  |
+| `pricing_version` | `string` | Yes | The price table in effect now; rows carry the version they were priced at. |
+| `source` | `string` | Yes | Which store served the rows. |
+| `started_at` | `string` | Yes |  |
+| `user_days` | `any[]` | Yes | One cell per (day, person), ascending by day. |
+| `users` | `any[]` | Yes | One row per (person, model), descending by tokens. |
+| `window` | `string` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.AgentUsage().load({ organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentUsageEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -5958,6 +11760,59 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `AgentWaitEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AgentWebPreviewEntity
+
+```ts
+const agent_web_preview = client.AgentWebPreview()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `description` | `string | null` | Yes |  |
+| `icon_url` | `string | null` | Yes |  |
+| `image_url` | `string | null` | Yes |  |
+| `title` | `string | null` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.AgentWebPreview().list({ token: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgentWebPreviewEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -6683,6 +12538,206 @@ Return a copy of the entity options.
 
 ---
 
+## AgreementEntity
+
+```ts
+const agreement = client.Agreement()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `body` | `string | null` | Yes | Markdown text, or null until staff grant the organization access. |
+| `effective_on_label` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `summary` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `version` | `string` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.Agreement().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgreementEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AgreementAccessRequestEntity
+
+```ts
+const agreement_access_request = client.AgreementAccessRequest()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.AgreementAccessRequest().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AgreementAccessRequestEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AlertRuleEventEntity
+
+```ts
+const alert_rule_event = client.AlertRuleEvent()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `acknowledge` | `/api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/acknowledge` | `client.AlertRuleEvent().create({ $action: 'acknowledge', ... })` |
+| `resolve` | `/api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/resolve` | `client.AlertRuleEvent().create({ $action: 'resolve', ... })` |
+| `silence` | `/api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/silence` | `client.AlertRuleEvent().create({ $action: 'silence', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+AlertRuleEvent record — check the API definition for its shape.
+
+```ts
+const result = await client.AlertRuleEvent().create({
+  $action: 'acknowledge',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.AlertRuleEvent().create({
+  alert_rule_id: 'example_alert_rule_id',
+  space_id: 'example_space_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.AlertRuleEvent().list({ alert_rule_id: "example", space_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.AlertRuleEvent().load({ id: 'alert_rule_event_id', alert_rule_id: 'alert_rule_id', space_id: 'space_id' })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.AlertRuleEvent().remove({ id: 'alert_rule_event_id', alert_rule_id: 'alert_rule_id', space_id: 'space_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AlertRuleEventEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## AllocationLogEntity
 
 ```ts
@@ -6889,6 +12944,111 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `AppEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AppAccessEntity
+
+```ts
+const app_access = client.AppAccess()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `callback` | `/api/v1/app_access/callback` | `client.AppAccess().load({ $action: 'callback', ... })` |
+| `start` | `/api/v1/app_access/start` | `client.AppAccess().load({ $action: 'start', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+AppAccess record — check the API definition for its shape.
+
+```ts
+const result = await client.AppAccess().load({
+  $action: 'callback',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AppAccessEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AppAccessJwkEntity
+
+```ts
+const app_access_jwk = client.AppAccessJwk()
+```
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.AppAccessJwk().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AppAccessJwkEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -9412,6 +15572,968 @@ Return a copy of the entity options.
 
 ---
 
+## ArtefactEntity
+
+```ts
+const artefact = client.Artefact()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `automation_invocation_id` | `string | null` | No |  |
+| `byte_size` | `number` | Yes |  |
+| `checksum_sha256` | `string` | Yes |  |
+| `content_type` | `string` | Yes |  |
+| `created_at` | `string | null` | No |  |
+| `created_by_user_id` | `string | null` | No |  |
+| `description` | `string | null` | No |  |
+| `document_key` | `string` | No | Stable document identity shared by all revisions. |
+| `entrypoint` | `string` | No |  |
+| `expires_at` | `string | null` | No |  |
+| `filename` | `string` | Yes |  |
+| `files` | `any[]` | No |  |
+| `harness` | `string | null` | No |  |
+| `harness_version` | `string | null` | No |  |
+| `id` | `string` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `model` | `string | null` | No |  |
+| `organization_id` | `string` | Yes |  |
+| `published_at` | `string | null` | No |  |
+| `repository_id` | `string | null` | No |  |
+| `slug` | `string` | Yes |  |
+| `source` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `vcs_agent_checkpoint_id` | `string | null` | No |  |
+| `vcs_agent_session_id` | `string | null` | No |  |
+| `version` | `number` | Yes |  |
+| `view_url` | `string` | Yes |  |
+| `web_url` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- | --- |
+| `automation_invocation_id` | - | - | - | - | - | - |
+| `byte_size` | - | - | - | - | - | - |
+| `checksum_sha256` | - | - | - | - | - | - |
+| `content_type` | - | - | - | - | - | - |
+| `created_at` | - | - | - | - | - | - |
+| `created_by_user_id` | - | - | - | - | - | - |
+| `description` | - | - | - | - | - | - |
+| `document_key` | - | - | - | - | - | - |
+| `entrypoint` | - | - | - | - | - | - |
+| `expires_at` | - | - | - | - | - | - |
+| `filename` | - | - | - | - | - | - |
+| `files` | - | - | - | - | - | - |
+| `harness` | - | - | - | - | - | - |
+| `harness_version` | - | - | - | - | - | - |
+| `id` | - | - | - | - | - | - |
+| `kind` | - | - | - | - | Yes | - |
+| `model` | - | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - | - |
+| `published_at` | - | - | - | - | - | - |
+| `repository_id` | - | - | - | - | - | - |
+| `slug` | - | - | - | - | - | - |
+| `source` | - | - | - | - | - | - |
+| `status` | - | - | - | - | - | - |
+| `title` | - | - | - | - | Yes | - |
+| `vcs_agent_checkpoint_id` | - | - | - | - | - | - |
+| `vcs_agent_session_id` | - | - | - | - | - | - |
+| `version` | - | - | - | - | - | - |
+| `view_url` | - | - | - | - | - | - |
+| `web_url` | - | - | - | - | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `download` | `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/download` | `client.Artefact().load({ $action: 'download', ... })` |
+| `draft` | `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/draft` | `client.Artefact().update({ $action: 'draft', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Artefact record — check the API definition for its shape.
+
+```ts
+const result = await client.Artefact().load({
+  $action: 'download',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.Artefact().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.Artefact().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.Artefact().load({ id: 'artefact_id', organization_id: 'organization_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.Artefact().patch({
+  id: 'artefact_id',
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.Artefact().remove({ id: 'artefact_id', organization_id: 'organization_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.Artefact().update({
+  id: 'artefact_id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ArtefactEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ArtefactCommentThreadEntity
+
+```ts
+const artefact_comment_thread = client.ArtefactCommentThread()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `anchor` | `string` | Yes | The `#anchor` written into the Markdown. |
+| `body` | `string` | Yes |  |
+| `comments` | `any[]` | Yes |  |
+| `id` | `string` | Yes | The anchor key. |
+| `quote` | `string` | No |  |
+| `resolved` | `boolean` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | update |
+| --- | --- | --- | --- |
+| `anchor` | - | - | - |
+| `body` | - | - | - |
+| `comments` | - | - | - |
+| `id` | - | - | - |
+| `quote` | Yes | - | Yes |
+| `resolved` | - | - | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ArtefactCommentThread().create({
+  artefact_id: 'example_artefact_id',
+  organization_id: 'example_organization_id',
+  anchor: 'example_anchor',
+  body: 'example_body',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ArtefactCommentThread().list({ artefact_id: "example", organization_id: "example" })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.ArtefactCommentThread().update({
+  artefact_id: 'artefact_id',
+  id: 'id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ArtefactCommentThreadEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ArtefactRevisionEntity
+
+```ts
+const artefact_revision = client.ArtefactRevision()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `base_version` | `number` | Yes | The newest version the editor started from. |
+| `content` | `string` | Yes | Markdown, including CriticMarkup suggestions and comment anchors. |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ArtefactRevision().create({
+  artefact_id: 'example_artefact_id',
+  organization_id: 'example_organization_id',
+  base_version: 1,
+  content: 'example_content',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ArtefactRevisionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ArtefactViewTokenEntity
+
+```ts
+const artefact_view_token = client.ArtefactViewToken()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `expires_in` | `number` | Yes |  |
+| `file` | `string` | No | Exact manifest path. |
+| `organization_slug` | `string` | No | If provided, must match the organization addressed by the route. |
+| `version` | `number` | No |  |
+| `viewer_url` | `string` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ArtefactViewToken().create({
+  artefact_id: 'example_artefact_id',
+  organization_id: 'example_organization_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ArtefactViewTokenEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ArtifactEntity
+
+```ts
+const artifact = client.Artifact()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `expire` | `/api/v1/artifacts/artifacts/{id}/expire` | `client.Artifact().create({ $action: 'expire', ... })` |
+| `issue_contract` | `/api/v1/artifacts/artifacts/{id}/issue_contract` | `client.Artifact().create({ $action: 'issue_contract', ... })` |
+| `restore` | `/api/v1/artifacts/artifacts/{id}/restore` | `client.Artifact().create({ $action: 'restore', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Artifact record — check the API definition for its shape.
+
+```ts
+const result = await client.Artifact().create({
+  $action: 'expire',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.Artifact().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.Artifact().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.Artifact().load({ id: 'artifact_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.Artifact().patch({
+  id: 'artifact_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.Artifact().remove({ id: 'artifact_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.Artifact().update({
+  id: 'artifact_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ArtifactEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ArtifactCacheNamespaceEntity
+
+```ts
+const artifact_cache_namespace = client.ArtifactCacheNamespace()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `archive` | `/api/v1/artifacts/cache_namespaces/{id}/archive` | `client.ArtifactCacheNamespace().create({ $action: 'archive', ... })` |
+| `pause` | `/api/v1/artifacts/cache_namespaces/{id}/pause` | `client.ArtifactCacheNamespace().create({ $action: 'pause', ... })` |
+| `resume` | `/api/v1/artifacts/cache_namespaces/{id}/resume` | `client.ArtifactCacheNamespace().create({ $action: 'resume', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ArtifactCacheNamespace record — check the API definition for its shape.
+
+```ts
+const result = await client.ArtifactCacheNamespace().create({
+  $action: 'archive',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ArtifactCacheNamespace().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ArtifactCacheNamespace().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ArtifactCacheNamespace().load({ id: 'artifact_cache_namespace_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.ArtifactCacheNamespace().patch({
+  id: 'artifact_cache_namespace_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.ArtifactCacheNamespace().remove({ id: 'artifact_cache_namespace_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.ArtifactCacheNamespace().update({
+  id: 'artifact_cache_namespace_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ArtifactCacheNamespaceEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ArtifactImageRepositoryEntity
+
+```ts
+const artifact_image_repository = client.ArtifactImageRepository()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `archive` | `/api/v1/artifacts/image_repositories/{id}/archive` | `client.ArtifactImageRepository().create({ $action: 'archive', ... })` |
+| `contract` | `/api/v1/artifacts/image_repositories/{id}/contract` | `client.ArtifactImageRepository().create({ $action: 'contract', ... })` |
+| `pause` | `/api/v1/artifacts/image_repositories/{id}/pause` | `client.ArtifactImageRepository().create({ $action: 'pause', ... })` |
+| `resume` | `/api/v1/artifacts/image_repositories/{id}/resume` | `client.ArtifactImageRepository().create({ $action: 'resume', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ArtifactImageRepository record — check the API definition for its shape.
+
+```ts
+const result = await client.ArtifactImageRepository().create({
+  $action: 'archive',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ArtifactImageRepository().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ArtifactImageRepository().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ArtifactImageRepository().load({ id: 'artifact_image_repository_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.ArtifactImageRepository().patch({
+  id: 'artifact_image_repository_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.ArtifactImageRepository().remove({ id: 'artifact_image_repository_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.ArtifactImageRepository().update({
+  id: 'artifact_image_repository_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ArtifactImageRepositoryEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ArtifactPackageMirrorEntity
+
+```ts
+const artifact_package_mirror = client.ArtifactPackageMirror()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `pause` | `/api/v1/artifacts/package_mirrors/{id}/pause` | `client.ArtifactPackageMirror().create({ $action: 'pause', ... })` |
+| `resume` | `/api/v1/artifacts/package_mirrors/{id}/resume` | `client.ArtifactPackageMirror().create({ $action: 'resume', ... })` |
+| `sync` | `/api/v1/artifacts/package_mirrors/{id}/sync` | `client.ArtifactPackageMirror().create({ $action: 'sync', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ArtifactPackageMirror record — check the API definition for its shape.
+
+```ts
+const result = await client.ArtifactPackageMirror().create({
+  $action: 'pause',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ArtifactPackageMirror().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ArtifactPackageMirror().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ArtifactPackageMirror().load({ id: 'artifact_package_mirror_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.ArtifactPackageMirror().patch({
+  id: 'artifact_package_mirror_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.ArtifactPackageMirror().remove({ id: 'artifact_package_mirror_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.ArtifactPackageMirror().update({
+  id: 'artifact_package_mirror_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ArtifactPackageMirrorEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ArtifactRetentionPolicyEntity
+
+```ts
+const artifact_retention_policy = client.ArtifactRetentionPolicy()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ArtifactRetentionPolicy().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ArtifactRetentionPolicy().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ArtifactRetentionPolicy().load({ id: 'artifact_retention_policy_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.ArtifactRetentionPolicy().patch({
+  id: 'artifact_retention_policy_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.ArtifactRetentionPolicy().remove({ id: 'artifact_retention_policy_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.ArtifactRetentionPolicy().update({
+  id: 'artifact_retention_policy_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ArtifactRetentionPolicyEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## AttachmentPartEntity
 
 ```ts
@@ -9455,6 +16577,509 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `AttachmentPartEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AuditEventEntity
+
+```ts
+const audit_event = client.AuditEvent()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `actor_kind` | `string` | Yes |  |
+| `actor_user_id` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `observability_space_id` | `string | null` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `payload` | `any` | Yes |  |
+| `request_id` | `string | null` | Yes |  |
+| `severity` | `string` | Yes |  |
+| `subject_id` | `string` | Yes |  |
+| `subject_kind` | `string` | Yes |  |
+| `subject_name` | `string | null` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.AuditEvent().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AuditEventEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AuthEntity
+
+```ts
+const auth = client.Auth()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `apple` | `/api/v1/auth/apple` | `client.Auth().create({ $action: 'apple', ... })` |
+| `github` | `/api/v1/auth/github` | `client.Auth().create({ $action: 'github', ... })` |
+| `google` | `/api/v1/auth/google` | `client.Auth().create({ $action: 'google', ... })` |
+| `login` | `/api/v1/auth/login` | `client.Auth().create({ $action: 'login', ... })` |
+| `logout` | `/api/v1/auth/logout` | `client.Auth().create({ $action: 'logout', ... })` |
+| `register` | `/api/v1/auth/register` | `client.Auth().create({ $action: 'register', ... })` |
+| `csrf` | `/api/v1/auth/csrf` | `client.Auth().load({ $action: 'csrf', ... })` |
+| `impersonation` | `/api/v1/auth/impersonation` | `client.Auth().load({ $action: 'impersonation', ... })` |
+| `impersonation` | `/api/v1/auth/impersonation` | `client.Auth().remove({ $action: 'impersonation', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Auth record — check the API definition for its shape.
+
+```ts
+const result = await client.Auth().create({
+  $action: 'apple',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AuthEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AuthCliEntity
+
+```ts
+const auth_cli = client.AuthCli()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `complete` | `/api/v1/auth/cli/complete` | `client.AuthCli().create({ $action: 'complete', ... })` |
+| `exchange` | `/api/v1/auth/cli/exchange` | `client.AuthCli().create({ $action: 'exchange', ... })` |
+| `install` | `/api/v1/auth/cli/install` | `client.AuthCli().create({ $action: 'install', ... })` |
+| `start` | `/api/v1/auth/cli/start` | `client.AuthCli().create({ $action: 'start', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+AuthCli record — check the API definition for its shape.
+
+```ts
+const result = await client.AuthCli().create({
+  $action: 'complete',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AuthCliEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AuthGithubEntity
+
+```ts
+const auth_github = client.AuthGithub()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `start` | `/api/v1/auth/github/start` | `client.AuthGithub().load({ $action: 'start', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+AuthGithub record — check the API definition for its shape.
+
+```ts
+const result = await client.AuthGithub().load({
+  $action: 'start',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AuthGithubEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AuthGoogleEntity
+
+```ts
+const auth_google = client.AuthGoogle()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `start` | `/api/v1/auth/google/start` | `client.AuthGoogle().load({ $action: 'start', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+AuthGoogle record — check the API definition for its shape.
+
+```ts
+const result = await client.AuthGoogle().load({
+  $action: 'start',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AuthGoogleEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AuthOpenaiEntity
+
+```ts
+const auth_openai = client.AuthOpenai()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `callback` | `/api/v1/auth/openai/callback` | `client.AuthOpenai().load({ $action: 'callback', ... })` |
+| `start` | `/api/v1/auth/openai/start` | `client.AuthOpenai().load({ $action: 'start', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+AuthOpenai record — check the API definition for its shape.
+
+```ts
+const result = await client.AuthOpenai().load({
+  $action: 'callback',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AuthOpenaiEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AuthPasswordResetEntity
+
+```ts
+const auth_password_reset = client.AuthPasswordReset()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email` | `string` | Yes |  |
+| `message` | `string` | Yes |  |
+| `password` | `string` | Yes |  |
+| `token` | `string` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.AuthPasswordReset().create({
+  email: 'example_email',
+})
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.AuthPasswordReset().update({
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AuthPasswordResetEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AuthRegistrationOptionEntity
+
+```ts
+const auth_registration_option = client.AuthRegistrationOption()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email_password_signup_enabled` | `boolean` | Yes |  |
+| `openai_sign_in_enabled` | `boolean` | No | Whether ChatGPT identity sign-in is configured and enabled for rollout. |
+| `turnstile_site_key` | `string | null` | Yes |  |
+| `waitlist_enabled` | `boolean` | Yes | New public signups require waitlist approval when enabled. |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.AuthRegistrationOption().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AuthRegistrationOptionEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -9618,6 +17243,1224 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `AutomationRunEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BackendRunnerPoolEntity
+
+```ts
+const backend_runner_pool = client.BackendRunnerPool()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.BackendRunnerPool().create({
+  backend_id: 'example_backend_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.BackendRunnerPool().list({ backend_id: "example" })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.BackendRunnerPool().remove({ id: 'backend_runner_pool_id', backend_id: 'backend_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BackendRunnerPoolEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BazelEntity
+
+```ts
+const bazel = client.Bazel()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `authorize` | `/api/v1/bazel/authorize` | `client.Bazel().create({ $action: 'authorize', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Bazel record — check the API definition for its shape.
+
+```ts
+const result = await client.Bazel().create({
+  $action: 'authorize',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BazelEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BazelActionResultEntity
+
+```ts
+const bazel_action_result = client.BazelActionResult()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.BazelActionResult().load({ id: 'bazel_action_result_id', action_result_id: 'action_result_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.BazelActionResult().update({
+  id: 'bazel_action_result_id',
+  action_result_id: 'action_result_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BazelActionResultEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BazelBackendEntity
+
+```ts
+const bazel_backend = client.BazelBackend()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `issue_token` | `/api/v1/bazel/backends/{id}/issue_token` | `client.BazelBackend().create({ $action: 'issue_token', ... })` |
+| `pause` | `/api/v1/bazel/backends/{id}/pause` | `client.BazelBackend().create({ $action: 'pause', ... })` |
+| `resume` | `/api/v1/bazel/backends/{id}/resume` | `client.BazelBackend().create({ $action: 'resume', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+BazelBackend record — check the API definition for its shape.
+
+```ts
+const result = await client.BazelBackend().create({
+  $action: 'issue_token',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.BazelBackend().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.BazelBackend().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.BazelBackend().load({ id: 'bazel_backend_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.BazelBackend().patch({
+  id: 'bazel_backend_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.BazelBackend().remove({ id: 'bazel_backend_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.BazelBackend().update({
+  id: 'bazel_backend_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BazelBackendEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BazelBlobEntity
+
+```ts
+const bazel_blob = client.BazelBlob()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.BazelBlob().load({ id: 'bazel_blob_id', blob_id: 'blob_id', hash: 'hash' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.BazelBlob().update({
+  id: 'bazel_blob_id',
+  blob_id: 'blob_id',
+  hash: 'hash',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BazelBlobEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BazelExecutionEntity
+
+```ts
+const bazel_execution = client.BazelExecution()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `claim_next` | `/api/v1/bazel/executions/claim_next` | `client.BazelExecution().create({ $action: 'claim_next', ... })` |
+| `complete` | `/api/v1/bazel/executions/{id}/complete` | `client.BazelExecution().create({ $action: 'complete', ... })` |
+| `fail` | `/api/v1/bazel/executions/{id}/fail` | `client.BazelExecution().create({ $action: 'fail', ... })` |
+| `heartbeat` | `/api/v1/bazel/executions/{id}/heartbeat` | `client.BazelExecution().create({ $action: 'heartbeat', ... })` |
+| `lookup` | `/api/v1/bazel/executions/lookup` | `client.BazelExecution().load({ $action: 'lookup', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+BazelExecution record — check the API definition for its shape.
+
+```ts
+const result = await client.BazelExecution().create({
+  $action: 'claim_next',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.BazelExecution().create({
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.BazelExecution().load({ id: 'bazel_execution_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BazelExecutionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BazelFindMissingBlobEntity
+
+```ts
+const bazel_find_missing_blob = client.BazelFindMissingBlob()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.BazelFindMissingBlob().create({
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BazelFindMissingBlobEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BillingEntity
+
+```ts
+const billing = client.Billing()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `any[]` | Yes |  |
+| `breakdown` | `any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` | Yes |  |
+| `can_manage_contact` | `boolean` | Yes |  |
+| `can_manage_extra_spend` | `boolean` | Yes |  |
+| `can_manage_local_subscription` | `boolean` | Yes |  |
+| `can_manage_payment_method` | `boolean` | Yes |  |
+| `can_set_up_billing` | `boolean` | Yes |  |
+| `customer` | `any` | Yes |  |
+| `deployment_usage_visible` | `boolean` | Yes |  |
+| `entitlements` | `Record<string, any>` | Yes |  |
+| `extra_spend_enabled` | `boolean` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `any` | Yes |  |
+| `prepaid` | `any` | Yes |  |
+| `preview` | `any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `Record<string, any>` | Yes |  |
+| `stripe` | `Record<string, any>` | Yes |  |
+| `subscription` | `any` | Yes |  |
+| `token_account` | `Record<string, any>` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `usage` | `/api/v1/organizations/{organization_id}/billing/usage` | `client.Billing().load({ $action: 'usage', ... })` |
+| `budget` | `/api/v1/organizations/{organization_id}/billing/budget` | `client.Billing().update({ $action: 'budget', ... })` |
+| `budget` | `/api/v1/organizations/{organization_id}/billing/budget` | `client.Billing().update({ $action: 'budget', ... })` |
+| `contact` | `/api/v1/organizations/{organization_id}/billing/contact` | `client.Billing().update({ $action: 'contact', ... })` |
+| `contact` | `/api/v1/organizations/{organization_id}/billing/contact` | `client.Billing().update({ $action: 'contact', ... })` |
+| `extra_spend` | `/api/v1/organizations/{organization_id}/billing/extra_spend` | `client.Billing().update({ $action: 'extra_spend', ... })` |
+| `extra_spend` | `/api/v1/organizations/{organization_id}/billing/extra_spend` | `client.Billing().update({ $action: 'extra_spend', ... })` |
+| `subscription` | `/api/v1/organizations/{organization_id}/billing/subscription` | `client.Billing().update({ $action: 'subscription', ... })` |
+| `subscription` | `/api/v1/organizations/{organization_id}/billing/subscription` | `client.Billing().update({ $action: 'subscription', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Billing record — check the API definition for its shape.
+
+```ts
+const result = await client.Billing().load({
+  $action: 'usage',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.Billing().load({ organization_id: 'organization_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BillingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BillingAddonEntity
+
+```ts
+const billing_addon = client.BillingAddon()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `any[]` | Yes |  |
+| `breakdown` | `any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` | Yes |  |
+| `can_manage_contact` | `boolean` | Yes |  |
+| `can_manage_extra_spend` | `boolean` | Yes |  |
+| `can_manage_local_subscription` | `boolean` | Yes |  |
+| `can_manage_payment_method` | `boolean` | Yes |  |
+| `can_set_up_billing` | `boolean` | Yes |  |
+| `customer` | `any` | Yes |  |
+| `deployment_usage_visible` | `boolean` | Yes |  |
+| `entitlements` | `Record<string, any>` | Yes |  |
+| `extra_spend_enabled` | `boolean` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Yes | Whether the `billing` feature is on for this organization. |
+| `id` | `string` | No |  |
+| `organization_id` | `string` | Yes |  |
+| `package` | `any` | Yes |  |
+| `prepaid` | `any` | Yes |  |
+| `preview` | `any` | Yes | Metronome draft invoice and credits, or null. |
+| `quantity` | `number` | Yes |  |
+| `storage_usage` | `Record<string, any>` | Yes |  |
+| `stripe` | `Record<string, any>` | Yes |  |
+| `subscription` | `any` | Yes |  |
+| `token_account` | `Record<string, any>` | Yes |  |
+
+### Operations
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.BillingAddon().update({
+  id: 'id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BillingAddonEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BillingCheckoutSessionEntity
+
+```ts
+const billing_checkout_session = client.BillingCheckoutSession()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cancel_url` | `string` | No |  |
+| `coupon_code` | `string` | No |  |
+| `entry_point` | `string` | No | Where the owner chose to pay, for product analytics. |
+| `package_key` | `string` | No |  |
+| `package_revision` | `number` | No |  |
+| `success_url` | `string` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.BillingCheckoutSession().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BillingCheckoutSessionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BillingInvoiceEntity
+
+```ts
+const billing_invoice = client.BillingInvoice()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `amount_due_cents` | `number` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `currency` | `string` | Yes |  |
+| `hosted_invoice_url` | `string | null` | No |  |
+| `id` | `string` | Yes |  |
+| `invoice_pdf` | `string | null` | No |  |
+| `metronome_invoice_id` | `string | null` | No | Metronome's id for the invoice it pushed |
+| `number` | `string | null` | No |  |
+| `period_ended_at` | `string | null` | No |  |
+| `period_started_at` | `string | null` | No |  |
+| `status` | `string` | Yes |  |
+| `total_cents` | `number` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.BillingInvoice().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BillingInvoiceEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BillingPackageEntity
+
+```ts
+const billing_package = client.BillingPackage()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `any[]` | Yes |  |
+| `base_price_cents` | `number` | Yes |  |
+| `billing_interval` | `string` | Yes |  |
+| `billing_policy` | `string` | Yes |  |
+| `ci_included_spend_cents` | `number` | No | Monthly USD credit in cents shared by all CI charges, including runners, cache, storage and add-ons; replaces CI unit allowances when positive. |
+| `currency` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `max_seats` | `number | null` | No |  |
+| `name` | `string` | Yes |  |
+| `pay_as_you_go_enabled` | `boolean` | Yes |  |
+| `rates` | `any[]` | Yes |  |
+| `revision` | `number` | Yes |  |
+| `roder_daily_run_limit` | `number` | No |  |
+| `roder_run_concurrency_limit` | `number` | No |  |
+| `seat_price_cents` | `number` | Yes |  |
+| `trial_days` | `number` | Yes |  |
+| `visibility` | `string` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.BillingPackage().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BillingPackageEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BillingPortalSessionEntity
+
+```ts
+const billing_portal_session = client.BillingPortalSession()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `return_url` | `string` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.BillingPortalSession().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BillingPortalSessionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BillingPrepaidPeriodEntity
+
+```ts
+const billing_prepaid_period = client.BillingPrepaidPeriod()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_at` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `currency` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_error` | `string | null` | Yes |  |
+| `minutes` | `number` | Yes |  |
+| `net_amount_cents` | `number` | Yes |  |
+| `paid_at` | `string | null` | Yes |  |
+| `paid_total_cents` | `number | null` | Yes |  |
+| `payment_action_url` | `string | null` | Yes |  |
+| `period_ended_at` | `string` | Yes |  |
+| `period_started_at` | `string` | Yes |  |
+| `receipt_url` | `string | null` | Yes |  |
+| `refunded_net_cents` | `number` | Yes |  |
+| `state` | `string` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `payment_page` | `/api/v1/organizations/{organization_id}/billing/prepaid_periods/{id}/payment_page` | `client.BillingPrepaidPeriod().load({ $action: 'payment_page', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+BillingPrepaidPeriod record — check the API definition for its shape.
+
+```ts
+const result = await client.BillingPrepaidPeriod().load({
+  $action: 'payment_page',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.BillingPrepaidPeriod().load({ id: 'billing_prepaid_period_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BillingPrepaidPeriodEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BillingPrepaidPurchaseEntity
+
+```ts
+const billing_prepaid_purchase = client.BillingPrepaidPurchase()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_at` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `currency` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_error` | `string | null` | Yes |  |
+| `minutes` | `number` | Yes |  |
+| `net_amount_cents` | `number` | Yes |  |
+| `paid_at` | `string | null` | Yes |  |
+| `paid_total_cents` | `number | null` | Yes |  |
+| `payment_action_url` | `string | null` | Yes |  |
+| `prepaid` | `Record<string, any>` | Yes |  |
+| `purchase` | `Record<string, any>` | Yes |  |
+| `receipt_url` | `string | null` | Yes |  |
+| `refunded_net_cents` | `number` | Yes |  |
+| `request_key` | `string` | Yes |  |
+| `state` | `string` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `payment_page` | `/api/v1/organizations/{organization_id}/billing/prepaid_purchases/{id}/payment_page` | `client.BillingPrepaidPurchase().load({ $action: 'payment_page', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+BillingPrepaidPurchase record — check the API definition for its shape.
+
+```ts
+const result = await client.BillingPrepaidPurchase().load({
+  $action: 'payment_page',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.BillingPrepaidPurchase().create({
+  organization_id: 'example_organization_id',
+  minutes: 1,
+  request_key: 'example_request_key',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.BillingPrepaidPurchase().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.BillingPrepaidPurchase().load({ id: 'billing_prepaid_purchase_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BillingPrepaidPurchaseEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BillingTokenTopUpEntity
+
+```ts
+const billing_token_top_up = client.BillingTokenTopUp()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `amount_cents` | `number` | Yes |  |
+| `request_key` | `string` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.BillingTokenTopUp().create({
+  organization_id: 'example_organization_id',
+  amount_cents: 1,
+  request_key: 'example_request_key',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BillingTokenTopUpEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BillingUsageEntity
+
+```ts
+const billing_usage = client.BillingUsage()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `breakdown` | `/api/v1/organizations/{organization_id}/billing/usage/breakdown` | `client.BillingUsage().load({ $action: 'breakdown', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+BillingUsage record — check the API definition for its shape.
+
+```ts
+const result = await client.BillingUsage().load({
+  $action: 'breakdown',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BillingUsageEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -9864,6 +18707,83 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `BinaryVersionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BookmarkProtectionRefreshGithubRequiredCheckEntity
+
+```ts
+const bookmark_protection_refresh_github_required_check = client.BookmarkProtectionRefreshGithubRequiredCheck()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `exclusions` | `any[]` | Yes |  |
+| `fetched_at` | `string | null` | No |  |
+| `fetched_at_label` | `string | null` | No |  |
+| `github_branch` | `string` | Yes |  |
+| `github_owner` | `string | null` | No |  |
+| `github_repository_name` | `string | null` | No |  |
+| `last_error` | `string | null` | No |  |
+| `proven` | `boolean` | Yes |  |
+| `requirements` | `any[]` | Yes |  |
+| `stale` | `boolean` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | create |
+| --- | --- |
+| `exclusions` | - |
+| `fetched_at` | - |
+| `fetched_at_label` | - |
+| `github_branch` | Yes |
+| `github_owner` | - |
+| `github_repository_name` | - |
+| `last_error` | - |
+| `proven` | - |
+| `requirements` | - |
+| `stale` | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.BookmarkProtectionRefreshGithubRequiredCheck().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BookmarkProtectionRefreshGithubRequiredCheckEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -10550,6 +19470,129 @@ Return a copy of the entity options.
 
 ---
 
+## CacheNamespaceEntryEntity
+
+```ts
+const cache_namespace_entry = client.CacheNamespaceEntry()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `evict` | `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/evict` | `client.CacheNamespaceEntry().create({ $action: 'evict', ... })` |
+| `issue_contract` | `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/issue_contract` | `client.CacheNamespaceEntry().create({ $action: 'issue_contract', ... })` |
+| `record_hit` | `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/record_hit` | `client.CacheNamespaceEntry().create({ $action: 'record_hit', ... })` |
+| `record_miss` | `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/record_miss` | `client.CacheNamespaceEntry().create({ $action: 'record_miss', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+CacheNamespaceEntry record — check the API definition for its shape.
+
+```ts
+const result = await client.CacheNamespaceEntry().create({
+  $action: 'evict',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.CacheNamespaceEntry().create({
+  cache_namespace_id: 'example_cache_namespace_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.CacheNamespaceEntry().list({ cache_namespace_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.CacheNamespaceEntry().load({ id: 'cache_namespace_entry_id', cache_namespace_id: 'cache_namespace_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.CacheNamespaceEntry().patch({
+  id: 'cache_namespace_entry_id',
+  cache_namespace_id: 'cache_namespace_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.CacheNamespaceEntry().remove({ id: 'cache_namespace_entry_id', cache_namespace_id: 'cache_namespace_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.CacheNamespaceEntry().update({
+  id: 'cache_namespace_entry_id',
+  cache_namespace_id: 'cache_namespace_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `CacheNamespaceEntryEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## CatalogSelectorEntity
 
 ```ts
@@ -10991,6 +20034,2132 @@ Return a copy of the entity options.
 
 ---
 
+## ChangeEntity
+
+```ts
+const change = client.Change()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `counts` | `Record<string, any>` | Yes | Counts for each state across the active non-state filters. |
+| `filters` | `Record<string, any>` | Yes |  |
+| `github_sync` | `Record<string, any>` | Yes |  |
+| `result` | `any` | Yes | What this page is a page of. |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.Change().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ChangeEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ChangeAssetEntity
+
+```ts
+const change_asset = client.ChangeAsset()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `alias` | `string` | Yes |  |
+| `byte_size` | `number` | Yes |  |
+| `checksum_md5` | `string` | Yes |  |
+| `checksum_sha256` | `string` | Yes |  |
+| `content_type` | `string` | Yes |  |
+| `filename` | `string` | Yes |  |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `finalize` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/assets/{id}/finalize` | `client.ChangeAsset().create({ $action: 'finalize', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ChangeAsset record — check the API definition for its shape.
+
+```ts
+const result = await client.ChangeAsset().create({
+  $action: 'finalize',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ChangeAsset().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  alias: 'example_alias',
+  byte_size: 1,
+  checksum_md5: 'example_checksum_md5',
+  checksum_sha256: 'example_checksum_sha256',
+  content_type: 'example_content_type',
+  filename: 'example_filename',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ChangeAssetEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ChangeCommentEntity
+
+```ts
+const change_comment = client.ChangeComment()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `body` | `string` | Yes |  |
+| `capabilities` | `Record<string, any>` | Yes |  |
+| `change_id` | `string | null` | No |  |
+| `created_at` | `string | null` | No |  |
+| `created_at_label` | `string | null` | No |  |
+| `id` | `string` | Yes |  |
+| `kind` | `string | null` | No |  |
+| `line` | `number | null` | No |  |
+| `outdated` | `boolean` | Yes |  |
+| `parent_comment_id` | `string | null` | No |  |
+| `patchset_id` | `string | null` | No |  |
+| `patchset_number` | `number | null` | Yes |  |
+| `path` | `string | null` | No |  |
+| `replies` | `any[]` | No |  |
+| `resolved` | `boolean` | Yes |  |
+| `resolved_at` | `string | null` | No |  |
+| `resolved_at_label` | `string | null` | No |  |
+| `resolved_by` | `Record<string, any>` | Yes |  |
+| `side` | `string | null` | No |  |
+| `updated_at` | `string | null` | No |  |
+| `updated_at_label` | `string | null` | No |  |
+| `user` | `Record<string, any>` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `body` | - | - |
+| `capabilities` | - | - |
+| `change_id` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `id` | - | - |
+| `kind` | - | - |
+| `line` | - | - |
+| `outdated` | - | - |
+| `parent_comment_id` | - | - |
+| `patchset_id` | Yes | - |
+| `patchset_number` | - | - |
+| `path` | - | - |
+| `replies` | - | - |
+| `resolved` | - | - |
+| `resolved_at` | - | - |
+| `resolved_at_label` | - | - |
+| `resolved_by` | - | - |
+| `side` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+| `user` | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `resolve` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve` | `client.ChangeComment().create({ $action: 'resolve', ... })` |
+| `unresolve` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/unresolve` | `client.ChangeComment().create({ $action: 'unresolve', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ChangeComment record — check the API definition for its shape.
+
+```ts
+const result = await client.ChangeComment().create({
+  $action: 'resolve',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ChangeComment().create({
+  change_id: 'example_change_id',
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  body: 'example_body',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ChangeComment().list({ change_id: "example", organization_id: "example", repo_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ChangeCommentEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ChangeFileReviewCheckpointEntity
+
+```ts
+const change_file_review_checkpoint = client.ChangeFileReviewCheckpoint()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `patchset_id` | `string` | Yes |  |
+| `path` | `string` | Yes |  |
+| `request_id` | `string` | Yes |  |
+| `review_action` | `string` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ChangeFileReviewCheckpoint().create({
+  change_id: 'example_change_id',
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  patchset_id: 'example_patchset_id',
+  path: 'example_path',
+  request_id: 'example_request_id',
+  review_action: 'example_review_action',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ChangeFileReviewCheckpointEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ChangeGitBranchSubmissionEntity
+
+```ts
+const change_git_branch_submission = client.ChangeGitBranchSubmission()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ChangeGitBranchSubmission().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ChangeGitBranchSubmissionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ChangeGitCommitIdentityEntity
+
+```ts
+const change_git_commit_identity = client.ChangeGitCommitIdentity()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_id` | `string` | Yes |  |
+| `change_number` | `number` | Yes |  |
+| `git_commit_id` | `string` | Yes |  |
+| `git_commit_ids` | `any[]` | Yes |  |
+| `id` | `string` | No |  |
+| `identities` | `any[]` | Yes |  |
+| `missing_git_commit_ids` | `any[]` | Yes |  |
+| `patchset_number` | `number` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ChangeGitCommitIdentity().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  git_commit_ids: [],
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ChangeGitCommitIdentity().load({ id: 'change_git_commit_identity_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ChangeGitCommitIdentityEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ChangeGitPublicationEntity
+
+```ts
+const change_git_publication = client.ChangeGitPublication()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `expected_target_commit_id` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `operation_key` | `string` | Yes |  |
+| `publication_id` | `string` | Yes |  |
+| `request` | `Record<string, any>` | Yes |  |
+| `request_digest` | `string` | Yes |  |
+| `revisions` | `any[]` | Yes |  |
+| `status` | `string` | Yes |  |
+| `transfer_refs` | `any[]` | No | Immutable receipt-owned refs returned by preparation; transfer each exact Git target before polling readiness. |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ChangeGitPublication().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  operation_key: 'example_operation_key',
+  request: {},
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ChangeGitPublication().load({ id: 'change_git_publication_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ChangeGitPublicationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ChangeGroupMemberEntity
+
+```ts
+const change_group_member = client.ChangeGroupMember()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_id` | `string` | Yes | Change number |
+| `changes` | `any[]` | Yes |  |
+| `id` | `string` | No |  |
+| `name` | `string` | No |  |
+| `number` | `number` | No |  |
+| `status` | `string` | Yes |  |
+| `title` | `string | null` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ChangeGroupMember().create({
+  change_group_id: 'example_change_group_id',
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  change_id: 'example_change_id',
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.ChangeGroupMember().remove({ id: 'change_group_member_id', change_group_id: 'change_group_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ChangeGroupMemberEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ChangeLabelEntity
+
+```ts
+const change_label = client.ChangeLabel()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accepted` | `boolean` | No |  |
+| `add` | `any[]` | No |  |
+| `approval` | `Record<string, any>` | Yes |  |
+| `assets` | `any[]` | No | Proof assets referenced from the description as `vex-asset:<id>`. |
+| `author` | `any` | No | Human user summary or organization automation identity. |
+| `capabilities` | `Record<string, any>` | Yes |  |
+| `change_key` | `string` | No |  |
+| `checks` | `any[]` | No |  |
+| `checks_status` | `string` | No |  |
+| `comments` | `any[]` | No |  |
+| `comments_count` | `number` | No |  |
+| `comments_count_label` | `string` | No |  |
+| `commit_message` | `string | null` | No |  |
+| `current_patchset` | `Record<string, any>` | Yes |  |
+| `description` | `string | null` | No |  |
+| `draft` | `boolean` | No |  |
+| `folded_into_number` | `number | null` | No |  |
+| `github_projection_status` | `string | null` | No |  |
+| `github_pull_request` | `Record<string, any>` | Yes |  |
+| `github_pull_requests` | `any[]` | No |  |
+| `group` | `Record<string, any> | null` | No |  |
+| `has_description` | `boolean` | No | True when the change has Vex-owned review description content, distinct from the JJ commit message. |
+| `id` | `string` | Yes |  |
+| `jj_change_id` | `string | null` | No |  |
+| `labels` | `any[]` | No |  |
+| `landable` | `boolean` | No |  |
+| `landed_by` | `Record<string, any>` | Yes |  |
+| `number` | `number` | Yes |  |
+| `orphaned` | `boolean` | No |  |
+| `orphaned_at` | `string` | No |  |
+| `orphaned_at_label` | `string` | No |  |
+| `orphaned_reason` | `string` | No |  |
+| `parent_change_id` | `string | null` | No |  |
+| `parent_change_number` | `number | null` | No |  |
+| `patchset_number` | `number | null` | No |  |
+| `patchsets` | `any[]` | No |  |
+| `primary_status` | `string | null` | No |  |
+| `public_id` | `string` | No |  |
+| `relation_chain` | `any[]` | No |  |
+| `remove` | `any[]` | No |  |
+| `requested_changes` | `boolean` | No |  |
+| `restack_state` | `string` | No |  |
+| `reviewer_candidates` | `any[]` | No | Organization members available to the reviewer picker on this page. |
+| `reviewers` | `any[]` | No |  |
+| `stable_change_id` | `string` | No |  |
+| `stack` | `any` | No |  |
+| `status` | `string` | Yes |  |
+| `target_branch` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `unresolved_comments_count_label` | `string` | No |  |
+| `url` | `string` | No |  |
+| `votes` | `any[]` | No |  |
+
+### Operations
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.ChangeLabel().update({
+  change_id: 'change_id',
+  organization_id: 'organization_id',
+  repo_id: 'repo_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ChangeLabelEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ChangeLandingHoldEntity
+
+```ts
+const change_landing_hold = client.ChangeLandingHold()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `release` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/landing_hold/release` | `client.ChangeLandingHold().create({ $action: 'release', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ChangeLandingHold record — check the API definition for its shape.
+
+```ts
+const result = await client.ChangeLandingHold().create({
+  $action: 'release',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ChangeLandingHoldEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ChangeLandingRequestEntity
+
+```ts
+const change_landing_request = client.ChangeLandingRequest()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_ids` | `any[]` | No |  |
+| `count` | `number` | Yes |  |
+| `defer_until_ready` | `boolean` | No | Admit the request while approvals or checks are pending |
+| `expected_requirement_version` | `string` | No |  |
+| `expected_scope_version` | `string` | No |  |
+| `head_change_id` | `string` | No |  |
+| `id` | `string | null` | No |  |
+| `numbers` | `any[]` | Yes |  |
+| `override_acknowledged` | `boolean` | No |  |
+| `override_codes` | `any[]` | No |  |
+| `position` | `number` | No |  |
+| `priority` | `string` | No |  |
+| `scope_version` | `string` | Yes |  |
+| `state` | `string` | Yes |  |
+| `version` | `number` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ChangeLandingRequest().create({
+  change_id: 'example_change_id',
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.ChangeLandingRequest().remove({ id: 'change_landing_request_id', change_id: 'change_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ChangeLandingRequestEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ChangeRequestChangeEntity
+
+```ts
+const change_request_change = client.ChangeRequestChange()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `message` | `string | null` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ChangeRequestChange().create({
+  change_id: 'example_change_id',
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ChangeRequestChangeEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ChangeReviewerEntity
+
+```ts
+const change_reviewer = client.ChangeReviewer()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `add` | `any[]` | No |  |
+| `email` | `string` | Yes |  |
+| `name` | `string | null` | Yes |  |
+| `remove` | `any[]` | No |  |
+| `removed_reviewers` | `any[]` | Yes |  |
+| `requested_reviewers` | `any[]` | Yes |  |
+| `reviewers` | `any[]` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ChangeReviewer().list({ change_id: "example", organization_id: "example", repo_id: "example" })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.ChangeReviewer().update({
+  change_id: 'change_id',
+  organization_id: 'organization_id',
+  repo_id: 'repo_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ChangeReviewerEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ChangeTranscriptEntity
+
+```ts
+const change_transcript = client.ChangeTranscript()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capture_kind` | `string` | Yes |  |
+| `captured_at` | `string` | Yes |  |
+| `harness` | `Record<string, any>` | Yes |  |
+| `id` | `string` | Yes |  |
+| `original_resume` | `any` | No |  |
+| `patchset_commit_id` | `string` | Yes |  |
+| `patchset_number` | `number` | Yes |  |
+| `redaction_count` | `number` | Yes |  |
+| `session_id` | `string | null` | No |  |
+| `session_title` | `string | null` | No |  |
+| `status` | `string` | Yes |  |
+| `superseded` | `boolean` | Yes |  |
+| `user` | `Record<string, any>` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ChangeTranscript().list({ change_id: "example", organization_id: "example", repo_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ChangeTranscriptEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ChangeTranscriptSummaryEntity
+
+```ts
+const change_transcript_summary = client.ChangeTranscriptSummary()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `summaries` | `Record<string, any>` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ChangeTranscriptSummary().list({ organization_id: "example", ids: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ChangeTranscriptSummaryEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## CheckpointPrepareChunkEntity
+
+```ts
+const checkpoint_prepare_chunk = client.CheckpointPrepareChunk()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.CheckpointPrepareChunk().create({
+  agent_session_id: 'example_agent_session_id',
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `CheckpointPrepareChunkEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## CiNodeEntity
+
+```ts
+const ci_node = client.CiNode()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `architecture` | `string | null` | Yes |  |
+| `bazel_enabled` | `boolean` | Yes |  |
+| `bazel_properties_json` | `string | null` | Yes |  |
+| `ci_runner_pool_id` | `string` | Yes |  |
+| `cordoned_at` | `string | null` | Yes |  |
+| `cordoned_at_label` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `health_state` | `string` | Yes |  |
+| `heartbeat_age_seconds` | `number | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `labels_csv` | `string | null` | Yes |  |
+| `last_seen_at` | `string | null` | Yes |  |
+| `last_seen_at_label` | `string | null` | Yes |  |
+| `name` | `string` | Yes |  |
+| `network_peer_id` | `string | null` | Yes |  |
+| `node_capabilities_csv` | `string | null` | Yes |  |
+| `node_certificate_expires_at` | `string | null` | Yes |  |
+| `node_certificate_expires_at_label` | `string | null` | Yes |  |
+| `node_certificate_fingerprint_sha256` | `string | null` | Yes |  |
+| `node_certificate_serial` | `string | null` | Yes |  |
+| `offline_at` | `string | null` | Yes |  |
+| `offline_at_label` | `string | null` | Yes |  |
+| `online_at` | `string | null` | Yes |  |
+| `online_at_label` | `string | null` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `os` | `string | null` | Yes |  |
+| `revoked_at` | `string | null` | Yes |  |
+| `revoked_at_label` | `string | null` | Yes |  |
+| `schedulable` | `boolean` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+| `version` | `string | null` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `cordon` | `/api/v1/ci/nodes/{id}/cordon` | `client.CiNode().create({ $action: 'cordon', ... })` |
+| `drain` | `/api/v1/ci/nodes/{id}/drain` | `client.CiNode().create({ $action: 'drain', ... })` |
+| `enroll` | `/api/v1/ci/nodes/enroll` | `client.CiNode().create({ $action: 'enroll', ... })` |
+| `heartbeat` | `/api/v1/ci/nodes/{id}/heartbeat` | `client.CiNode().create({ $action: 'heartbeat', ... })` |
+| `uncordon` | `/api/v1/ci/nodes/{id}/uncordon` | `client.CiNode().create({ $action: 'uncordon', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+CiNode record — check the API definition for its shape.
+
+```ts
+const result = await client.CiNode().create({
+  $action: 'cordon',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.CiNode().load({ id: 'ci_node_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `CiNodeEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## CiPipelineEntity
+
+```ts
+const ci_pipeline = client.CiPipeline()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `ci_runner_pool_id` | `string | null` | Yes |  |
+| `concurrency_key` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `default_branch` | `string | null` | Yes |  |
+| `description` | `string | null` | Yes |  |
+| `hosted_app_id` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `repository_id` | `string | null` | Yes |  |
+| `required_capabilities_csv` | `string | null` | Yes |  |
+| `runner_pool` | `Record<string, any> | null` | Yes |  |
+| `runs` | `any[]` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `source_kind` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `status_state` | `string` | Yes |  |
+| `status_tone` | `string` | Yes |  |
+| `trigger_on_pull_request` | `boolean` | Yes |  |
+| `trigger_on_push` | `boolean` | Yes |  |
+| `trigger_on_schedule` | `boolean` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `workflow_path` | `string | null` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.CiPipeline().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.CiPipeline().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.CiPipeline().load({ id: 'ci_pipeline_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `CiPipelineEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## CiPipelineRunEntity
+
+```ts
+const ci_pipeline_run = client.CiPipelineRun()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active` | `boolean` | Yes |  |
+| `canceled_at` | `string | null` | Yes |  |
+| `ci_pipeline_id` | `string` | Yes |  |
+| `ci_runner_pool_id` | `string | null` | Yes |  |
+| `commit_sha` | `string | null` | Yes |  |
+| `concurrency_key` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `creator_user_id` | `string | null` | Yes |  |
+| `display_id` | `number` | Yes |  |
+| `failed` | `boolean` | Yes |  |
+| `finished_at` | `string | null` | Yes |  |
+| `hosted_app_id` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `jobs` | `any[]` | Yes |  |
+| `message` | `string | null` | Yes |  |
+| `number` | `number` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `parameters_json` | `string | null` | Yes |  |
+| `queued_at` | `string | null` | Yes |  |
+| `ref_name` | `string | null` | Yes |  |
+| `repository_id` | `string | null` | Yes |  |
+| `required_capabilities_csv` | `string | null` | Yes |  |
+| `retry_number` | `number` | Yes |  |
+| `retryable` | `boolean` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `source_url` | `string | null` | Yes |  |
+| `started_at` | `string | null` | Yes |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `status_state` | `string` | Yes |  |
+| `status_tone` | `string` | Yes |  |
+| `trigger_kind` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `retry` | `/api/v1/ci/pipelines/{pipeline_id}/runs/{id}/retry` | `client.CiPipelineRun().create({ $action: 'retry', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+CiPipelineRun record — check the API definition for its shape.
+
+```ts
+const result = await client.CiPipelineRun().create({
+  $action: 'retry',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.CiPipelineRun().create({
+  pipeline_id: 'example_pipeline_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.CiPipelineRun().list({ pipeline_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.CiPipelineRun().load({ id: 'ci_pipeline_run_id', pipeline_id: 'pipeline_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `CiPipelineRunEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## CiRunnerPoolEntity
+
+```ts
+const ci_runner_pool = client.CiRunnerPool()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `bazel_enabled` | `boolean` | Yes |  |
+| `bazel_properties_json` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `description` | `string | null` | Yes |  |
+| `elastic_config_json` | `string | null` | Yes |  |
+| `elastic_provider_kind` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `isolation_mode` | `string` | Yes |  |
+| `labels_csv` | `string | null` | Yes |  |
+| `max_concurrency` | `number` | Yes |  |
+| `modal_capacity` | `Record<string, any>` | Yes |  |
+| `modal_runner_invocations` | `any[]` | Yes |  |
+| `name` | `string` | Yes |  |
+| `network_space_id` | `string | null` | Yes |  |
+| `node_capabilities_csv` | `string | null` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `runner_count_label` | `string` | Yes |  |
+| `runner_kind` | `string` | Yes |  |
+| `runners` | `any[]` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `bazel_enabled` | - | - | - | - | - |
+| `bazel_properties_json` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `description` | - | - | - | - | Yes |
+| `elastic_config_json` | - | - | - | - | Yes |
+| `elastic_provider_kind` | - | - | - | - | Yes |
+| `id` | - | - | - | - | - |
+| `isolation_mode` | - | - | - | - | Yes |
+| `labels_csv` | - | - | - | - | Yes |
+| `max_concurrency` | - | - | - | - | Yes |
+| `modal_capacity` | - | - | - | - | - |
+| `modal_runner_invocations` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `network_space_id` | - | - | - | - | - |
+| `node_capabilities_csv` | - | - | - | - | Yes |
+| `organization_id` | - | - | - | - | - |
+| `runner_count_label` | - | - | - | - | - |
+| `runner_kind` | - | - | - | - | Yes |
+| `runners` | - | - | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | Yes |
+| `updated_at` | - | - | - | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `promote_reconciliation_runtime` | `/api/v1/ci/runner_pools/{id}/promote_reconciliation_runtime` | `client.CiRunnerPool().create({ $action: 'promote_reconciliation_runtime', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+CiRunnerPool record — check the API definition for its shape.
+
+```ts
+const result = await client.CiRunnerPool().create({
+  $action: 'promote_reconciliation_runtime',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.CiRunnerPool().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.CiRunnerPool().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.CiRunnerPool().load({ id: 'ci_runner_pool_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.CiRunnerPool().patch({
+  id: 'ci_runner_pool_id',
+  // Only the fields to change
+})
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.CiRunnerPool().update({
+  id: 'ci_runner_pool_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `CiRunnerPoolEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## CiStatusEntity
+
+```ts
+const ci_status = client.CiStatus()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `ref` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/ref` | `client.CiStatus().load({ $action: 'ref', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+CiStatus record — check the API definition for its shape.
+
+```ts
+const result = await client.CiStatus().load({
+  $action: 'ref',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `CiStatusEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## CliEventEntity
+
+```ts
+const cli_event = client.CliEvent()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `event` | `string` | Yes |  |
+| `properties` | `Record<string, any>` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.CliEvent().create({
+  event: 'example_event',
+  properties: {},
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `CliEventEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## CliReleaseEntity
+
+```ts
+const cli_release = client.CliRelease()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `latest` | `/api/v1/cli_releases/latest` | `client.CliRelease().load({ $action: 'latest', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+CliRelease record — check the API definition for its shape.
+
+```ts
+const result = await client.CliRelease().load({
+  $action: 'latest',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.CliRelease().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.CliRelease().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `CliReleaseEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## CloudWorkspaceBackupObjectEntity
+
+```ts
+const cloud_workspace_backup_object = client.CloudWorkspaceBackupObject()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.CloudWorkspaceBackupObject().load({ id: 'cloud_workspace_backup_object_id', cloud_workspace_backup_id: 'cloud_workspace_backup_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `CloudWorkspaceBackupObjectEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## CodeRuleEvaluationEntity
+
+```ts
+const code_rule_evaluation = client.CodeRuleEvaluation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `advisory` | `boolean` | Yes |  |
+| `coverage` | `Record<string, any>` | Yes |  |
+| `diff` | `string` | Yes | UTF-8 complete unified patch using a/ old and b/ new prefixes; at most 1 MiB |
+| `duration_ms` | `number` | Yes |  |
+| `evaluator_version` | `string` | No |  |
+| `input_digest` | `string | null` | No |  |
+| `limits` | `Record<string, any>` | No |  |
+| `model` | `string` | No |  |
+| `requests` | `Record<string, any>` | Yes |  |
+| `schema_version` | `number` | Yes |  |
+| `snapshot_digest` | `string | null` | No |  |
+| `unchecked` | `any[]` | Yes |  |
+| `verdicts` | `any[]` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.CodeRuleEvaluation().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  diff: 'example_diff',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `CodeRuleEvaluationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ComSiteAccessEntity
+
+```ts
+const com_site_access = client.ComSiteAccess()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `redeem` | `/api/v1/com_site_access/redeem` | `client.ComSiteAccess().create({ $action: 'redeem', ... })` |
+| `start` | `/api/v1/com_site_access/start` | `client.ComSiteAccess().load({ $action: 'start', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ComSiteAccess record — check the API definition for its shape.
+
+```ts
+const result = await client.ComSiteAccess().create({
+  $action: 'redeem',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ComSiteAccessEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ComSiteAccessSessionEntity
+
+```ts
+const com_site_access_session = client.ComSiteAccessSession()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cookie_name` | `string` | Yes |  |
+| `host` | `string` | Yes | Site hostname, for example docs.acme.composal.page |
+| `max_age` | `number` | Yes |  |
+| `session_token` | `string` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ComSiteAccessSession().create({
+  host: 'example_host',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ComSiteAccessSessionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## CommentThreadCommentEntity
+
+```ts
+const comment_thread_comment = client.CommentThreadComment()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `body` | `string` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.CommentThreadComment().create({
+  artefact_id: 'example_artefact_id',
+  comment_thread_id: 'example_comment_thread_id',
+  organization_id: 'example_organization_id',
+  body: 'example_body',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `CommentThreadCommentEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## CommitDiffEntity
+
+```ts
+const commit_diff = client.CommitDiff()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `files` | `any[]` | Yes |  |
+| `id` | `string` | No |  |
+| `parent_id` | `string | null` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.CommitDiff().load({ id: 'commit_diff_id', commit_id: 'commit_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `CommitDiffEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## ConnectionRequestEntity
 
 ```ts
@@ -11095,6 +22264,240 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `ConnectionSourceEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ContactSubmissionEntity
+
+```ts
+const contact_submission = client.ContactSubmission()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `company` | `string | null` | No |  |
+| `email` | `string` | Yes | Stored downcased and stripped. |
+| `message` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `website` | `string | null` | No | Honeypot. |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ContactSubmission().create({
+  email: 'example_email',
+  message: 'example_message',
+  name: 'example_name',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ContactSubmissionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ControlComputerEntity
+
+```ts
+const control_computer = client.ControlComputer()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `connection` | `Record<string, any>` | Yes | A point-in-time control transport observation. |
+| `consent` | `Record<string, any>` | Yes |  |
+| `device` | `Record<string, any>` | Yes |  |
+| `id` | `string` | No |  |
+| `provider_status` | `any[]` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `consent` | `/api/v1/organizations/{organization_id}/control_computers/{computer}/consent` | `client.ControlComputer().update({ $action: 'consent', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ControlComputer record — check the API definition for its shape.
+
+```ts
+const result = await client.ControlComputer().update({
+  $action: 'consent',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ControlComputer().list({ organization_id: "example", persistent_agent_id: "example" })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ControlComputerEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ControlComputerControlOperationEntity
+
+```ts
+const control_computer_control_operation = client.ControlComputerControlOperation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `arguments` | `Record<string, any>` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `delivery` | `Record<string, any>` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` | Yes |  |
+| `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
+| `end` | `Record<string, any>` | Yes |  |
+| `expires_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `references` | `Record<string, any>` | Yes |  |
+| `result` | `any` | Yes |  |
+| `result_expired` | `boolean` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `request` | `/api/v1/organizations/{organization_id}/control_computers/{computer}/control_operations/request` | `client.ControlComputerControlOperation().load({ $action: 'request', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ControlComputerControlOperation record — check the API definition for its shape.
+
+```ts
+const result = await client.ControlComputerControlOperation().load({
+  $action: 'request',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ControlComputerControlOperation().create({
+  control_computer_id: 'example_control_computer_id',
+  organization_id: 'example_organization_id',
+  action: 'example_action',
+  arguments: {},
+  key: 'example_key',
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ControlComputerControlOperation().load({ id: 'control_computer_control_operation_id', control_computer_id: 'control_computer_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ControlComputerControlOperationEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -11915,6 +23318,112 @@ Return a copy of the entity options.
 
 ---
 
+## DeploymentEntity
+
+```ts
+const deployment = client.Deployment()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app` | `Record<string, any>` | Yes |  |
+| `artifact_locator` | `string | null` | Yes |  |
+| `build_duration_seconds` | `number | null` | Yes |  |
+| `build_source` | `Record<string, any> | null` | Yes |  |
+| `build_status` | `string` | Yes |  |
+| `children` | `any[]` | Yes |  |
+| `ci_pipeline_id` | `string | null` | Yes |  |
+| `ci_pipeline_run_id` | `string | null` | Yes |  |
+| `commit_sha` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `creator` | `Record<string, any> | null` | Yes |  |
+| `deployed_url` | `string | null` | Yes |  |
+| `duration_seconds` | `number | null` | Yes |  |
+| `environment` | `Record<string, any>` | Yes |  |
+| `history_kind` | `string` | Yes |  |
+| `history_reason` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `is_live` | `boolean` | Yes |  |
+| `is_rollback` | `boolean` | Yes |  |
+| `live_region_count` | `number` | Yes |  |
+| `number` | `number` | Yes |  |
+| `placement` | `Record<string, any> | null` | Yes |  |
+| `region_count` | `number` | Yes |  |
+| `replicas_per_region` | `number` | Yes |  |
+| `rollback_reason` | `string | null` | Yes |  |
+| `rollback_source_release_id` | `string | null` | Yes |  |
+| `rollback_target_release_id` | `string | null` | Yes |  |
+| `rollout_predecessor_id` | `string | null` | Yes |  |
+| `rollout_status` | `string` | Yes |  |
+| `rollout_strategy` | `string` | Yes |  |
+| `service` | `Record<string, any>` | Yes |  |
+| `source_ref` | `string | null` | Yes |  |
+| `status` | `string` | Yes |  |
+| `total_replicas` | `number` | Yes |  |
+| `trigger_kind` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `architecture` | `/api/v1/organizations/{org_slug}/pages/deployments/architecture` | `client.Deployment().load({ $action: 'architecture', ... })` |
+| `feed` | `/api/v1/organizations/{org_slug}/pages/deployments/feed` | `client.Deployment().load({ $action: 'feed', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Deployment record — check the API definition for its shape.
+
+```ts
+const result = await client.Deployment().load({
+  $action: 'architecture',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.Deployment().load({ id: 'deployment_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DeploymentEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## DeploymentDashboardNomadEntity
 
 ```ts
@@ -11975,6 +23484,76 @@ Return a copy of the entity options.
 
 ---
 
+## DeploymentDetailEntity
+
+```ts
+const deployment_detail = client.DeploymentDetail()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `any[]` | Yes |  |
+| `app` | `any` | Yes |  |
+| `app_id` | `string | null` | Yes |  |
+| `audit_events` | `any[]` | Yes |  |
+| `capacity` | `Record<string, any>` | Yes |  |
+| `data_resources` | `any[]` | Yes |  |
+| `deploy_targets` | `any[]` | Yes |  |
+| `deployments` | `any[]` | Yes |  |
+| `desired_states` | `any[]` | Yes |  |
+| `environments` | `any[]` | Yes |  |
+| `filters` | `Record<string, any>` | Yes | The option lists the deployments page's app, service and stage pickers narrow by. |
+| `health` | `Record<string, any>` | Yes | The rolled-up state of the selected scope. |
+| `nomad` | `Record<string, any>` | Yes | The Nomad footprint of the selected scope, deduplicated. |
+| `operations` | `any[]` | Yes |  |
+| `placements` | `any[]` | Yes |  |
+| `reconciler_ticks` | `any[]` | Yes |  |
+| `releases` | `any[]` | Yes |  |
+| `runtime_instances` | `any[]` | Yes |  |
+| `service_bindings` | `any[]` | Yes |  |
+| `service_views` | `any[]` | Yes |  |
+| `storage_resources` | `any[]` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.DeploymentDetail().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DeploymentDetailEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## DeploymentFileEntity
 
 ```ts
@@ -12010,6 +23589,1660 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `DeploymentFileEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DeploymentLogEntity
+
+```ts
+const deployment_log = client.DeploymentLog()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `allocation_id` | `string` | Yes |  |
+| `app_environment_id` | `string | null` | Yes |  |
+| `app_release_id` | `string | null` | Yes |  |
+| `app_service_id` | `string | null` | Yes |  |
+| `details` | `any` | Yes |  |
+| `environment_name` | `string` | Yes |  |
+| `release_version` | `string | null` | Yes |  |
+| `service_name` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `task` | `string | null` | Yes |  |
+| `unreachable_reason` | `string | null` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.DeploymentLog().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DeploymentLogEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DeploymentMetricEntity
+
+```ts
+const deployment_metric = client.DeploymentMetric()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `auto_deploy` | `boolean` | Yes |  |
+| `environment_id` | `string` | Yes |  |
+| `environment_name` | `string` | Yes |  |
+| `placement_id` | `string` | Yes |  |
+| `redeploy` | `boolean` | Yes |  |
+| `region_count` | `number` | Yes |  |
+| `replicas_per_region` | `number` | Yes |  |
+| `rollout_strategy` | `string` | Yes |  |
+| `service_id` | `string` | Yes |  |
+| `service_name` | `string` | Yes |  |
+| `source_ref` | `string | null` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.DeploymentMetric().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DeploymentMetricEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DeploymentPreviewEntity
+
+```ts
+const deployment_preview = client.DeploymentPreview()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access` | `string` | Yes |  |
+| `app_environment_id` | `string` | Yes |  |
+| `app_name` | `string` | Yes |  |
+| `app_preview_profile_id` | `string` | Yes |  |
+| `app_slug` | `string` | Yes |  |
+| `change_number` | `number | null` | Yes |  |
+| `created_at` | `string` | No |  |
+| `created_by_user_id` | `string` | No |  |
+| `expires_at` | `string` | Yes |  |
+| `generation` | `number` | Yes |  |
+| `health` | `string` | Yes |  |
+| `hosted_app_id` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `latest_operation_status` | `string | null` | Yes |  |
+| `name` | `string` | Yes |  |
+| `owner_name` | `string | null` | Yes |  |
+| `profile_name` | `string` | Yes |  |
+| `resource_overrides` | `Record<string, any>` | No | Service public IDs mapped to resource overrides. |
+| `retained` | `boolean` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `snapshot_version` | `number` | Yes |  |
+| `source_revision` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | No |  |
+| `urls` | `any[]` | Yes |  |
+| `vcs_change_id` | `string | null` | No |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.DeploymentPreview().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DeploymentPreviewEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DeploymentSettingEntity
+
+```ts
+const deployment_setting = client.DeploymentSetting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `code` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `nomad_datacenter` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.DeploymentSetting().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DeploymentSettingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DesktopLocalAgentModelEntity
+
+```ts
+const desktop_local_agent_model = client.DesktopLocalAgentModel()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.DesktopLocalAgentModel().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DesktopLocalAgentModelEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DesktopLocalAgentResponseEntity
+
+```ts
+const desktop_local_agent_response = client.DesktopLocalAgentResponse()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `input` | `any[]` | Yes |  |
+| `max_output_tokens` | `number` | No |  |
+| `model` | `string` | Yes |  |
+| `store` | `boolean` | Yes |  |
+| `stream` | `boolean` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.DesktopLocalAgentResponse().create({
+  organization_id: 'example_organization_id',
+  input: [],
+  model: 'example_model',
+  store: true,
+  stream: true,
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DesktopLocalAgentResponseEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DeviceEntity
+
+```ts
+const device = client.Device()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `architecture` | `string` | Yes |  |
+| `channel` | `string` | Yes |  |
+| `coding_connection` | `Record<string, any> | null` | Yes | Independent organization coding-control service state for the current device owner. |
+| `connection_checked_at` | `string | null` | Yes | When this native presence observation was obtained; null when unobserved or unavailable. |
+| `connection_status` | `string` | Yes | Display-only native presence. |
+| `control_delivery_policy` | `Record<string, any>` | Yes |  |
+| `control_spawn_policy` | `Record<string, any>` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `device` | `Record<string, any>` | Yes |  |
+| `environment` | `string` | Yes |  |
+| `execution_available` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `native_device_id` | `string` | Yes |  |
+| `paired_at` | `string` | Yes |  |
+| `pairing_generation` | `number` | Yes |  |
+| `platform` | `string` | Yes |  |
+| `project_visibility` | `Record<string, any>` | Yes | Folder discovery and new-thread selection. |
+| `provider_status` | `any[]` | No | Recent native provider observations; absent on older API replicas. |
+| `revoked_at` | `string | null` | Yes |  |
+| `scheduled_check_ins` | `boolean` | No | Whether the owner's private agents may check this computer's connection during scheduled runs. |
+| `user_browser_access` | `string` | Yes | Whether agents may use the owner's own Chrome-family browser here: off, only tabs agents open or the owner shares, or every tab. |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `connection` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/connection` | `client.Device().create({ $action: 'connection', ... })` |
+| `control_delivery_policy` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_delivery_policy` | `client.Device().create({ $action: 'control_delivery_policy', ... })` |
+| `control_spawn_policy` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_spawn_policy` | `client.Device().create({ $action: 'control_spawn_policy', ... })` |
+| `desktop_connection` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/desktop_connection` | `client.Device().create({ $action: 'desktop_connection', ... })` |
+| `process_surface` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/process_surface` | `client.Device().create({ $action: 'process_surface', ... })` |
+| `project_visibility` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/project_visibility` | `client.Device().create({ $action: 'project_visibility', ... })` |
+| `reconnect` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/reconnect` | `client.Device().create({ $action: 'reconnect', ... })` |
+| `rename` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/rename` | `client.Device().create({ $action: 'rename', ... })` |
+| `retry_control` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/retry_control` | `client.Device().create({ $action: 'retry_control', ... })` |
+| `revoke` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/revoke` | `client.Device().create({ $action: 'revoke', ... })` |
+| `user_browser_access` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/user_browser_access` | `client.Device().create({ $action: 'user_browser_access', ... })` |
+| `control_delivery_policy` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_delivery_policy` | `client.Device().load({ $action: 'control_delivery_policy', ... })` |
+| `control_spawn_policy` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_spawn_policy` | `client.Device().load({ $action: 'control_spawn_policy', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Device record — check the API definition for its shape.
+
+```ts
+const result = await client.Device().create({
+  $action: 'connection',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.Device().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.Device().load({ id: 'device_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DeviceEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DeviceBrowserOperationEntity
+
+```ts
+const device_browser_operation = client.DeviceBrowserOperation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `command` | `string` | Yes | The in-app browser takes open through open_external; the person's own browser (arguments.browser user) takes open, tabs, share_tab, navigate, back, reload, screenshot, read, click, type, press, scroll and close. |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `claim` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/browser_operations/{id}/claim` | `client.DeviceBrowserOperation().create({ $action: 'claim', ... })` |
+| `finish` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/browser_operations/{id}/finish` | `client.DeviceBrowserOperation().create({ $action: 'finish', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+DeviceBrowserOperation record — check the API definition for its shape.
+
+```ts
+const result = await client.DeviceBrowserOperation().create({
+  $action: 'claim',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.DeviceBrowserOperation().list({ device_id: "example", organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DeviceBrowserOperationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DeviceControlMessageEntity
+
+```ts
+const device_control_message = client.DeviceControlMessage()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_id` | `string` | Yes |  |
+| `agent_name` | `string` | Yes |  |
+| `expires_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `sender` | `string | null` | Yes |  |
+| `text` | `string | null` | Yes |  |
+| `text_omitted` | `boolean` | Yes |  |
+| `thread` | `Record<string, any>` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.DeviceControlMessage().list({ device_id: "example", organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DeviceControlMessageEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DeviceControlOperationEntity
+
+```ts
+const device_control_operation = client.DeviceControlOperation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `arguments` | `Record<string, any>` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `delivery` | `Record<string, any>` | Yes | Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did. |
+| `device_id` | `string` | Yes |  |
+| `diagnostic_code` | `string` | No | Approved product error code retained after copied diagnostics expire. |
+| `end` | `Record<string, any>` | Yes |  |
+| `expires_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `references` | `Record<string, any>` | Yes |  |
+| `result` | `any` | Yes |  |
+| `result_expired` | `boolean` | Yes | Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences. |
+| `state` | `string` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `request` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations/request` | `client.DeviceControlOperation().load({ $action: 'request', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+DeviceControlOperation record — check the API definition for its shape.
+
+```ts
+const result = await client.DeviceControlOperation().load({
+  $action: 'request',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.DeviceControlOperation().create({
+  device_id: 'example_device_id',
+  organization_id: 'example_organization_id',
+  action: 'example_action',
+  arguments: {},
+  key: 'example_key',
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.DeviceControlOperation().load({ id: 'device_control_operation_id', device_id: 'device_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DeviceControlOperationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DeviceEnterpriseRelayEntity
+
+```ts
+const device_enterprise_relay = client.DeviceEnterpriseRelay()
+```
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.DeviceEnterpriseRelay().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DeviceEnterpriseRelayEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DeviceFolderListingEntity
+
+```ts
+const device_folder_listing = client.DeviceFolderListing()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `code` | `string` | No |  |
+| `error` | `string` | No |  |
+| `folders` | `any[]` | No |  |
+| `id` | `string` | Yes |  |
+| `key` | `string` | Yes | Stable idempotency key for this listing. |
+| `parent` | `string | null` | No |  |
+| `path` | `string` | No | The resolved folder. |
+| `state` | `string` | Yes |  |
+| `truncated` | `boolean` | No |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `code` | - | - |
+| `error` | - | - |
+| `folders` | - | - |
+| `id` | - | - |
+| `key` | - | - |
+| `parent` | - | - |
+| `path` | - | Yes |
+| `state` | - | - |
+| `truncated` | - | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.DeviceFolderListing().create({
+  device_id: 'example_device_id',
+  organization_id: 'example_organization_id',
+  key: 'example_key',
+  path: 'example_path',
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.DeviceFolderListing().load({ id: 'device_folder_listing_id', device_id: 'device_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DeviceFolderListingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DeviceGrantEntity
+
+```ts
+const device_grant = client.DeviceGrant()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_grants` | `any[]` | Yes |  |
+| `agent_choices` | `any[]` | Yes | Eligible picker choices, with current owner grant targets, on the first page only. |
+| `agent_id` | `string` | Yes |  |
+| `all_agents_access` | `boolean` | Yes | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `capabilities` | `any[]` | Yes |  |
+| `execution_available` | `boolean` | Yes |  |
+| `grants` | `any[]` | Yes |  |
+| `id` | `string` | No |  |
+| `next_cursor` | `string | null` | Yes |  |
+| `principal_id` | `string` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `revise` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/{device_grant_id}/revise` | `client.DeviceGrant().create({ $action: 'revise', ... })` |
+| `revoke` | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/{device_grant_id}/revoke` | `client.DeviceGrant().create({ $action: 'revoke', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+DeviceGrant record — check the API definition for its shape.
+
+```ts
+const result = await client.DeviceGrant().create({
+  $action: 'revise',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.DeviceGrant().create({
+  device_id: 'example_device_id',
+  organization_id: 'example_organization_id',
+  agent_id: 'example_agent_id',
+  capabilities: [],
+  principal_id: 'example_principal_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.DeviceGrant().list({ device_id: "example", organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DeviceGrantEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DeviceInvocationEntity
+
+```ts
+const device_invocation = client.DeviceInvocation()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `challenge` | `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/challenge` | `client.DeviceInvocation().create({ $action: 'challenge', ... })` |
+| `lease` | `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/lease` | `client.DeviceInvocation().create({ $action: 'lease', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+DeviceInvocation record — check the API definition for its shape.
+
+```ts
+const result = await client.DeviceInvocation().create({
+  $action: 'challenge',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DeviceInvocationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DeviceLocalEventEntity
+
+```ts
+const device_local_event = client.DeviceLocalEvent()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `event` | `string` | Yes |  |
+| `recorded` | `boolean` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.DeviceLocalEvent().create({
+  device_id: 'example_device_id',
+  organization_id: 'example_organization_id',
+  event: 'example_event',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DeviceLocalEventEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DevicePairingEntity
+
+```ts
+const device_pairing = client.DevicePairing()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `architecture` | `string` | Yes |  |
+| `channel` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `name` | `string` | Yes |  |
+| `platform` | `string` | Yes |  |
+| `public_key` | `string` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `complete` | `/api/v1/organizations/{organization_id}/devices/pairings/{device_pairing_intent_id}/complete` | `client.DevicePairing().create({ $action: 'complete', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+DevicePairing record — check the API definition for its shape.
+
+```ts
+const result = await client.DevicePairing().create({
+  $action: 'complete',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.DevicePairing().create({
+  organization_id: 'example_organization_id',
+  architecture: 'example_architecture',
+  channel: 'example_channel',
+  name: 'example_name',
+  platform: 'example_platform',
+  public_key: 'example_public_key',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DevicePairingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DeviceProjectEntity
+
+```ts
+const device_project = client.DeviceProject()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.DeviceProject().remove({ id: 'device_project_id', device_id: 'device_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DeviceProjectEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DeviceScheduledCheckInEntity
+
+```ts
+const device_scheduled_check_in = client.DeviceScheduledCheckIn()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `enabled` | `boolean` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.DeviceScheduledCheckIn().create({
+  device_id: 'example_device_id',
+  organization_id: 'example_organization_id',
+  enabled: true,
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DeviceScheduledCheckInEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DockerBuilderEntity
+
+```ts
+const docker_builder = client.DockerBuilder()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `backend` | `string` | Yes |  |
+| `created_at` | `string | null` | Yes |  |
+| `gateway_url` | `string | null` | No | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_activity_at` | `string | null` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `ready_at` | `string | null` | Yes |  |
+| `slept_at` | `string | null` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `startup_attempt` | `number` | Yes |  |
+| `startup_failure` | `string | null` | Yes | Safe failure reason for the most recent startup attempt |
+| `startup_stage` | `string | null` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string | null` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `backend` | - | - | Yes | - | - |
+| `created_at` | - | - | - | - | - |
+| `gateway_url` | - | - | - | - | - |
+| `generation` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `last_activity_at` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `ready_at` | - | - | - | - | - |
+| `slept_at` | - | - | - | - | - |
+| `slug` | - | - | Yes | - | - |
+| `startup_attempt` | - | - | - | - | - |
+| `startup_failure` | - | - | - | - | - |
+| `startup_stage` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `recover` | `/api/v1/organizations/{organization_id}/docker_builders/{id}/recover` | `client.DockerBuilder().create({ $action: 'recover', ... })` |
+| `sleep` | `/api/v1/organizations/{organization_id}/docker_builders/{id}/sleep` | `client.DockerBuilder().create({ $action: 'sleep', ... })` |
+| `wake` | `/api/v1/organizations/{organization_id}/docker_builders/{id}/wake` | `client.DockerBuilder().create({ $action: 'wake', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+DockerBuilder record — check the API definition for its shape.
+
+```ts
+const result = await client.DockerBuilder().create({
+  $action: 'recover',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.DockerBuilder().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.DockerBuilder().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.DockerBuilder().load({ id: 'docker_builder_id', organization_id: 'organization_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.DockerBuilder().patch({
+  id: 'docker_builder_id',
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.DockerBuilder().update({
+  id: 'docker_builder_id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DockerBuilderEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DockerBuilderSessionEntity
+
+```ts
+const docker_builder_session = client.DockerBuilderSession()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `string` | Yes |  |
+| `docker_builder_id` | `string` | Yes |  |
+| `expires_at` | `string` | Yes |  |
+| `gateway_url` | `string | null` | No | Organization-addressed public WSS gateway; null until configured |
+| `generation` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `revoked_at` | `string | null` | Yes |  |
+| `user_id` | `string` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `authorize` | `/api/v1/organizations/{organization_id}/docker_builder_sessions/authorize` | `client.DockerBuilderSession().create({ $action: 'authorize', ... })` |
+| `refresh` | `/api/v1/organizations/{organization_id}/docker_builder_sessions/{id}/refresh` | `client.DockerBuilderSession().create({ $action: 'refresh', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+DockerBuilderSession record — check the API definition for its shape.
+
+```ts
+const result = await client.DockerBuilderSession().create({
+  $action: 'authorize',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.DockerBuilderSession().create({
+  docker_builder_id: 'example_docker_builder_id',
+  organization_id: 'example_organization_id',
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.DockerBuilderSession().load({ id: 'docker_builder_session_id', organization_id: 'organization_id' })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.DockerBuilderSession().remove({ id: 'docker_builder_session_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DockerBuilderSessionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DockerBuilderSettingEntity
+
+```ts
+const docker_builder_setting = client.DockerBuilderSetting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `docker_builder_settings` | `Record<string, any>` | Yes |  |
+| `idle_timeout_seconds` | `number` | Yes |  |
+| `max_concurrency` | `number` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `region` | `string` | Yes |  |
+| `runtime_timeout_seconds` | `number` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | update | patch |
+| --- | --- | --- | --- |
+| `docker_builder_settings` | - | - | - |
+| `idle_timeout_seconds` | - | - | Yes |
+| `max_concurrency` | - | - | Yes |
+| `organization_id` | - | - | - |
+| `region` | - | - | Yes |
+| `runtime_timeout_seconds` | - | - | Yes |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.DockerBuilderSetting().list({ organization_id: "example" })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.DockerBuilderSetting().patch({
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.DockerBuilderSetting().update({
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DockerBuilderSettingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## DomainDnsIntegrationEntity
+
+```ts
+const domain_dns_integration = client.DomainDnsIntegration()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_label` | `string | null` | Yes |  |
+| `api_token` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `failure_message` | `string | null` | Yes |  |
+| `has_token` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_verified_at` | `string | null` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `account_label` | - | Yes |
+| `api_token` | - | - |
+| `created_at` | - | - |
+| `failure_message` | - | - |
+| `has_token` | - | - |
+| `id` | - | - |
+| `last_verified_at` | - | - |
+| `organization_id` | - | - |
+| `provider` | - | - |
+| `status` | - | - |
+| `updated_at` | - | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.DomainDnsIntegration().create({
+  organization_id: 'example_organization_id',
+  api_token: 'example_api_token',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.DomainDnsIntegration().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `DomainDnsIntegrationEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -12238,6 +25471,126 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `DreamEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## EdgeEntity
+
+```ts
+const edge = client.Edge()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `tls_check` | `/api/v1/edge/tls-check` | `client.Edge().load({ $action: 'tls_check', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Edge record — check the API definition for its shape.
+
+```ts
+const result = await client.Edge().load({
+  $action: 'tls_check',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `EdgeEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## EmailVerificationEntity
+
+```ts
+const email_verification = client.EmailVerification()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `resend` | `/api/v1/email_verifications/resend` | `client.EmailVerification().create({ $action: 'resend', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+EmailVerification record — check the API definition for its shape.
+
+```ts
+const result = await client.EmailVerification().create({
+  $action: 'resend',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `EmailVerificationEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -13151,6 +26504,430 @@ Return a copy of the entity options.
 
 ---
 
+## ExecutionDesiredStateEntity
+
+```ts
+const execution_desired_state = client.ExecutionDesiredState()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `desired_state` | `Record<string, any>` | Yes |  |
+| `id` | `string` | No |  |
+| `stop_observed` | `boolean` | Yes | True only for archived zero-capacity states with all known jobs stopped and allocations terminated. |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `reconcile` | `/api/v1/execution/desired_states/{id}/reconcile` | `client.ExecutionDesiredState().create({ $action: 'reconcile', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ExecutionDesiredState record — check the API definition for its shape.
+
+```ts
+const result = await client.ExecutionDesiredState().create({
+  $action: 'reconcile',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ExecutionDesiredState().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ExecutionDesiredState().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ExecutionDesiredState().load({ id: 'execution_desired_state_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.ExecutionDesiredState().patch({
+  id: 'execution_desired_state_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.ExecutionDesiredState().remove({ id: 'execution_desired_state_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.ExecutionDesiredState().update({
+  id: 'execution_desired_state_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ExecutionDesiredStateEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ExecutionReconcilerTickEntity
+
+```ts
+const execution_reconciler_tick = client.ExecutionReconcilerTick()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ExecutionReconcilerTick().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ExecutionReconcilerTick().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ExecutionReconcilerTick().load({ id: 'execution_reconciler_tick_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ExecutionReconcilerTickEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ExecutionReleaseEntity
+
+```ts
+const execution_release = client.ExecutionRelease()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `activate` | `/api/v1/execution/releases/{id}/activate` | `client.ExecutionRelease().create({ $action: 'activate', ... })` |
+| `fail` | `/api/v1/execution/releases/{id}/fail` | `client.ExecutionRelease().create({ $action: 'fail', ... })` |
+| `mark_ready` | `/api/v1/execution/releases/{id}/mark_ready` | `client.ExecutionRelease().create({ $action: 'mark_ready', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ExecutionRelease record — check the API definition for its shape.
+
+```ts
+const result = await client.ExecutionRelease().create({
+  $action: 'activate',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ExecutionRelease().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ExecutionRelease().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ExecutionRelease().load({ id: 'execution_release_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ExecutionReleaseEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ExecutionRuntimeInstanceEntity
+
+```ts
+const execution_runtime_instance = client.ExecutionRuntimeInstance()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter_kind` | `string` | Yes |  |
+| `app_environment_id` | `string` | Yes |  |
+| `app_release_id` | `string | null` | Yes |  |
+| `app_service_id` | `string` | Yes |  |
+| `booted_at` | `string | null` | Yes |  |
+| `booted_at_label` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `hosted_app_id` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `instance_key` | `string` | Yes |  |
+| `last_reconciled_at` | `string | null` | Yes |  |
+| `last_reconciled_at_label` | `string | null` | Yes |  |
+| `last_seen_at` | `string | null` | Yes |  |
+| `last_seen_at_label` | `string | null` | Yes |  |
+| `location` | `any` | Yes |  |
+| `location_id` | `string` | Yes |  |
+| `network_peer_id` | `string | null` | Yes |  |
+| `nomad_allocation_id` | `string | null` | Yes |  |
+| `nomad_task_name` | `string | null` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `private_ipv4` | `string | null` | Yes |  |
+| `private_ipv6` | `string | null` | Yes |  |
+| `provider_instance_id` | `string | null` | Yes |  |
+| `public_endpoint` | `string | null` | Yes |  |
+| `service_name` | `string` | Yes | Name of the Vex service this instance runs, in the same vocabulary as `vex deploy list`. |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `terminated_at` | `string | null` | Yes |  |
+| `terminated_at_label` | `string | null` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `refresh` | `/api/v1/execution/runtime_instances/{id}/refresh` | `client.ExecutionRuntimeInstance().create({ $action: 'refresh', ... })` |
+| `terminate` | `/api/v1/execution/runtime_instances/{id}/terminate` | `client.ExecutionRuntimeInstance().create({ $action: 'terminate', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ExecutionRuntimeInstance record — check the API definition for its shape.
+
+```ts
+const result = await client.ExecutionRuntimeInstance().create({
+  $action: 'refresh',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ExecutionRuntimeInstance().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ExecutionRuntimeInstance().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ExecutionRuntimeInstance().load({ id: 'execution_runtime_instance_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.ExecutionRuntimeInstance().patch({
+  id: 'execution_runtime_instance_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.ExecutionRuntimeInstance().remove({ id: 'execution_runtime_instance_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.ExecutionRuntimeInstance().update({
+  id: 'execution_runtime_instance_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ExecutionRuntimeInstanceEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## ExplorationEntity
 
 ```ts
@@ -13723,6 +27500,822 @@ Return a copy of the entity options.
 
 ---
 
+## GhEntity
+
+```ts
+const gh = client.Gh()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capabilities` | `Record<string, any>` | Yes |  |
+| `content` | `Record<string, any>` | Yes |  |
+| `fetched_at` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `magic_merge` | `Record<string, any> | null` | Yes |  |
+| `pull_request` | `any` | Yes |  |
+| `stack` | `Record<string, any>` | Yes |  |
+| `transcript_paths` | `any[]` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.Gh().load({ id: 'gh_id', gh_id: 'gh_id', github_repo: 'github_repo', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GhEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GitImportEntity
+
+```ts
+const git_import = client.GitImport()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `destination_mode` | `string` | Yes |  |
+| `error` | `string | null` | No |  |
+| `git_default_branch` | `string` | No | Original Git symbolic HEAD branch, independent of the branch selected for JJ conversion |
+| `git_status` | `string` | Yes |  |
+| `git_url` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `idempotency_key` | `string` | Yes |  |
+| `name` | `string` | No |  |
+| `native_status` | `string` | Yes |  |
+| `organization` | `string` | Yes |  |
+| `repository_id` | `string | null` | No |  |
+| `root_path` | `string` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `source_branch` | `string` | Yes |  |
+| `target_branch` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `destination_mode` | - | - |
+| `error` | - | - |
+| `git_default_branch` | - | - |
+| `git_status` | - | - |
+| `git_url` | - | - |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `name` | - | - |
+| `native_status` | - | - |
+| `organization` | - | - |
+| `repository_id` | - | - |
+| `root_path` | - | - |
+| `slug` | - | - |
+| `source_branch` | - | - |
+| `target_branch` | - | Yes |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `complete` | `/api/v1/git_imports/{id}/complete` | `client.GitImport().create({ $action: 'complete', ... })` |
+| `retry` | `/api/v1/git_imports/{id}/retry` | `client.GitImport().create({ $action: 'retry', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+GitImport record — check the API definition for its shape.
+
+```ts
+const result = await client.GitImport().create({
+  $action: 'complete',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.GitImport().create({
+  organization_id: 'example_organization_id',
+  destination_mode: 'example_destination_mode',
+  idempotency_key: 'example_idempotency_key',
+  root_path: 'example_root_path',
+  slug: 'example_slug',
+  source_branch: 'example_source_branch',
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.GitImport().load({ id: 'git_import_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GitImportEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubEntity
+
+```ts
+const github = client.Github()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `repository_lookup` | `/api/v1/github/repository_lookup` | `client.Github().load({ $action: 'repository_lookup', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Github record — check the API definition for its shape.
+
+```ts
+const result = await client.Github().load({
+  $action: 'repository_lookup',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubAppEntity
+
+```ts
+const github_app = client.GithubApp()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `webhook` | `/api/v1/github_app/webhook` | `client.GithubApp().create({ $action: 'webhook', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+GithubApp record — check the API definition for its shape.
+
+```ts
+const result = await client.GithubApp().create({
+  $action: 'webhook',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubAppEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubAppImportableRepositoryEntity
+
+```ts
+const github_app_importable_repository = client.GithubAppImportableRepository()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_login` | `string` | Yes |  |
+| `github_app_installation_id` | `string` | Yes |  |
+| `next_page` | `number | null` | Yes | Next GitHub page for this installation |
+| `repositories` | `any[]` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.GithubAppImportableRepository().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubAppImportableRepositoryEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubAppInstallationEntity
+
+```ts
+const github_app_installation = client.GithubAppInstallation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `string | null` | Yes |  |
+| `account_id` | `string | null` | Yes |  |
+| `account_login` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `installation_id` | `string` | Yes |  |
+| `installed_at` | `string | null` | Yes |  |
+| `installed_at_label` | `string | null` | Yes |  |
+| `manage_access_url` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `permission_entries` | `any[]` | Yes | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `Record<string, any>` | Yes |  |
+| `status` | `string` | Yes |  |
+| `suspended_at` | `string | null` | Yes |  |
+| `suspended_at_label` | `string | null` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `check_connection` | `/api/v1/organizations/{organization_id}/github_app/installations/{id}/check_connection` | `client.GithubAppInstallation().create({ $action: 'check_connection', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+GithubAppInstallation record — check the API definition for its shape.
+
+```ts
+const result = await client.GithubAppInstallation().create({
+  $action: 'check_connection',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.GithubAppInstallation().list({ organization_id: "example" })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.GithubAppInstallation().remove({ id: 'github_app_installation_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubAppInstallationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubAppInstallationAuthorizationEntity
+
+```ts
+const github_app_installation_authorization = client.GithubAppInstallationAuthorization()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `installation_url` | `string` | Yes |  |
+| `organization_slug` | `string` | Yes | Vex organization slug whose installation will be linked. |
+| `return_target` | `string` | Yes | Server-validated Vex application target used after verification. |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `complete` | `/api/v1/github_app/installation_authorizations/complete` | `client.GithubAppInstallationAuthorization().create({ $action: 'complete', ... })` |
+| `setup` | `/api/v1/github_app/installation_authorizations/setup` | `client.GithubAppInstallationAuthorization().create({ $action: 'setup', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+GithubAppInstallationAuthorization record — check the API definition for its shape.
+
+```ts
+const result = await client.GithubAppInstallationAuthorization().create({
+  $action: 'complete',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.GithubAppInstallationAuthorization().create({
+  organization_slug: 'example_organization_slug',
+  return_target: 'example_return_target',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubAppInstallationAuthorizationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubAppUserAuthorizationEntity
+
+```ts
+const github_app_user_authorization = client.GithubAppUserAuthorization()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.GithubAppUserAuthorization().create({
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubAppUserAuthorizationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubCiRepositoryEntity
+
+```ts
+const github_ci_repository = client.GithubCiRepository()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adoption_mode` | `string` | Yes |  |
+| `check_name_prefix` | `string` | Yes |  |
+| `ci_runner_pool_id` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `default_branch` | `string` | Yes |  |
+| `github_app_installation_id` | `string` | Yes |  |
+| `github_repository_id` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_compatibility_status` | `string | null` | Yes |  |
+| `last_error_message` | `string | null` | Yes |  |
+| `last_head_sha` | `string | null` | Yes |  |
+| `last_pull_request_number` | `number | null` | Yes |  |
+| `last_ref` | `string | null` | Yes |  |
+| `last_webhook_action` | `string | null` | Yes |  |
+| `last_webhook_at` | `string | null` | Yes |  |
+| `last_webhook_at_label` | `string | null` | Yes |  |
+| `last_webhook_delivery_id` | `string | null` | Yes |  |
+| `last_webhook_event` | `string | null` | Yes |  |
+| `metadata` | `Record<string, any>` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `permission_status` | `string` | Yes |  |
+| `repository_full_name` | `string` | Yes |  |
+| `repository_name` | `string` | Yes |  |
+| `repository_owner` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+| `webhook_delivery_count` | `number` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `adoption_mode` | - | - | Yes | Yes | Yes |
+| `check_name_prefix` | - | - | Yes | Yes | Yes |
+| `ci_runner_pool_id` | - | - | Yes | Yes | Yes |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `default_branch` | - | - | Yes | Yes | Yes |
+| `github_app_installation_id` | - | - | - | - | - |
+| `github_repository_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `last_compatibility_status` | - | - | - | - | - |
+| `last_error_message` | - | - | - | - | - |
+| `last_head_sha` | - | - | - | - | - |
+| `last_pull_request_number` | - | - | - | - | - |
+| `last_ref` | - | - | - | - | - |
+| `last_webhook_action` | - | - | - | - | - |
+| `last_webhook_at` | - | - | - | - | - |
+| `last_webhook_at_label` | - | - | - | - | - |
+| `last_webhook_delivery_id` | - | - | - | - | - |
+| `last_webhook_event` | - | - | - | - | - |
+| `metadata` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `permission_status` | - | - | - | Yes | Yes |
+| `repository_full_name` | - | - | - | - | - |
+| `repository_name` | - | - | - | - | - |
+| `repository_owner` | - | - | - | - | - |
+| `status` | - | - | Yes | Yes | Yes |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
+| `webhook_delivery_count` | - | - | - | - | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.GithubCiRepository().create({
+  organization_id: 'example_organization_id',
+  github_app_installation_id: 'example_github_app_installation_id',
+  github_repository_id: 'example_github_repository_id',
+  repository_name: 'example_repository_name',
+  repository_owner: 'example_repository_owner',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.GithubCiRepository().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.GithubCiRepository().load({ id: 'github_ci_repository_id', organization_id: 'organization_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.GithubCiRepository().patch({
+  id: 'github_ci_repository_id',
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.GithubCiRepository().update({
+  id: 'github_ci_repository_id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubCiRepositoryEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubCiRepositoryCompatibilityReportEntity
+
+```ts
+const github_ci_repository_compatibility_report = client.GithubCiRepositoryCompatibilityReport()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `analyzed_at` | `string` | Yes |  |
+| `analyzed_at_label` | `string | null` | Yes |  |
+| `ci_pipeline_id` | `string | null` | Yes |  |
+| `ci_pipeline_run_id` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `diagnostics` | `any[]` | Yes |  |
+| `errors` | `any[]` | Yes |  |
+| `event_action` | `string | null` | Yes |  |
+| `event_name` | `string` | Yes |  |
+| `execution_allowed` | `boolean` | Yes |  |
+| `github_ci_repository_id` | `string` | Yes |  |
+| `head_sha` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `metadata` | `Record<string, any>` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `parser_version` | `string` | Yes |  |
+| `pull_request_number` | `number | null` | Yes |  |
+| `ref_name` | `string | null` | Yes |  |
+| `referenced_actions` | `any[]` | Yes |  |
+| `required_secrets` | `any[]` | Yes |  |
+| `runner_labels` | `any[]` | Yes |  |
+| `source_blob_sha` | `string | null` | Yes |  |
+| `source_sha` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `supported_features` | `Record<string, any>` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+| `warnings` | `any[]` | Yes |  |
+| `workflow_name` | `string | null` | Yes |  |
+| `workflow_path` | `string` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.GithubCiRepositoryCompatibilityReport().list({ github_ci_repository_id: "example", organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.GithubCiRepositoryCompatibilityReport().load({ id: 'github_ci_repository_compatibility_report_id', github_ci_repository_id: 'github_ci_repository_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubCiRepositoryCompatibilityReportEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## GithubConnectionEntity
 
 ```ts
@@ -13777,6 +28370,1339 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `GithubConnectionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubIntegrationEntity
+
+```ts
+const github_integration = client.GithubIntegration()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `string | null` | Yes |  |
+| `account_login` | `string` | Yes |  |
+| `connection_status` | `string` | Yes |  |
+| `connection_status_label` | `string` | Yes |  |
+| `github_installation` | `any` | Yes |  |
+| `health` | `Record<string, any>` | Yes |  |
+| `id` | `string` | Yes |  |
+| `imported_repositories_count` | `number` | Yes |  |
+| `imported_repositories_count_label` | `string` | Yes |  |
+| `organization` | `Record<string, any>` | Yes |  |
+| `pagination` | `Record<string, any>` | Yes |  |
+| `repositories` | `any[]` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.GithubIntegration().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.GithubIntegration().load({ id: 'github_integration_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubIntegrationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubOnboardingEntity
+
+```ts
+const github_onboarding = client.GithubOnboarding()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accounts` | `any[]` | Yes |  |
+| `active_batch_id` | `string | null` | Yes | The batch the wizard's import step should resume — the most recent batch still working, else the most recent overall. |
+| `batches` | `any[]` | Yes |  |
+| `capabilities` | `Record<string, any>` | Yes |  |
+| `installations` | `any[]` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.GithubOnboarding().load({ organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubOnboardingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubOnboardingBranchEntity
+
+```ts
+const github_onboarding_branch = client.GithubOnboardingBranch()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `branches` | `any[]` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.GithubOnboardingBranch().list({ organization_id: "example", github_app_installation_id: "example", name: "example", owner: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubOnboardingBranchEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubOnboardingImportEntity
+
+```ts
+const github_onboarding_import = client.GithubOnboardingImport()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_login` | `string` | Yes |  |
+| `complete` | `boolean` | Yes | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `string` | Yes |  |
+| `failed_item_count` | `number` | Yes |  |
+| `github_app_installation_id` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `imported_item_count` | `number` | Yes |  |
+| `item_count` | `number` | Yes |  |
+| `items` | `any[]` | Yes |  |
+| `repositories` | `any` | Yes |  |
+| `status` | `string` | Yes |  |
+| `terminal_item_count` | `number` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.GithubOnboardingImport().create({
+  organization_id: 'example_organization_id',
+  github_app_installation_id: 'example_github_app_installation_id',
+  repositories: 'example_repositories',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubOnboardingImportEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubOnboardingImportBatchEntity
+
+```ts
+const github_onboarding_import_batch = client.GithubOnboardingImportBatch()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_login` | `string` | Yes |  |
+| `complete` | `boolean` | Yes | Whether every item has settled and the wizard should treat the import as finished. |
+| `created_at` | `string` | Yes |  |
+| `failed_item_count` | `number` | Yes |  |
+| `github_app_installation_id` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `imported_item_count` | `number` | Yes |  |
+| `item_count` | `number` | Yes |  |
+| `items` | `any[]` | Yes |  |
+| `status` | `string` | Yes |  |
+| `terminal_item_count` | `number` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.GithubOnboardingImportBatch().load({ id: 'github_onboarding_import_batch_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubOnboardingImportBatchEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubOnboardingImportItemEntity
+
+```ts
+const github_onboarding_import_item = client.GithubOnboardingImportItem()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `retry` | `/api/v1/organizations/{organization_id}/github_onboarding/import_items/{github_import_batch_item_id}/retry` | `client.GithubOnboardingImportItem().create({ $action: 'retry', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+GithubOnboardingImportItem record — check the API definition for its shape.
+
+```ts
+const result = await client.GithubOnboardingImportItem().create({
+  $action: 'retry',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubOnboardingImportItemEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubPullRequestEntity
+
+```ts
+const github_pull_request = client.GithubPullRequest()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capabilities` | `Record<string, any>` | Yes |  |
+| `content` | `Record<string, any>` | Yes |  |
+| `fetched_at` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `magic_merge` | `Record<string, any> | null` | Yes |  |
+| `pull_request` | `any` | Yes |  |
+| `stack` | `Record<string, any>` | Yes |  |
+| `transcript_paths` | `any[]` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `refresh` | `/api/v1/organizations/{org_slug}/github/pull_requests/refresh` | `client.GithubPullRequest().create({ $action: 'refresh', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+GithubPullRequest record — check the API definition for its shape.
+
+```ts
+const result = await client.GithubPullRequest().create({
+  $action: 'refresh',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.GithubPullRequest().load({ id: 'github_pull_request_id', organization_id: 'organization_id', pull_request_id: 'pull_request_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubPullRequestEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubRunnerAdmissionEntity
+
+```ts
+const github_runner_admission = client.GithubRunnerAdmission()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.GithubRunnerAdmission().create({
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubRunnerAdmissionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubRunnerCacheEntity
+
+```ts
+const github_runner_cache = client.GithubRunnerCache()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `entry_id` | `string` | No |  |
+| `key` | `string` | No |  |
+| `matched_key` | `string` | No |  |
+| `ok` | `boolean` | Yes |  |
+| `operation` | `string` | Yes |  |
+| `restore_keys` | `any[]` | No |  |
+| `signed_download_url` | `string` | No |  |
+| `size_bytes` | `string` | No |  |
+| `upload_path` | `string` | No |  |
+| `version` | `string` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.GithubRunnerCache().create({
+  operation: 'example_operation',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubRunnerCacheEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubRunnerEgressEntity
+
+```ts
+const github_runner_egress = client.GithubRunnerEgress()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_request` | `boolean` | Yes |  |
+| `cidr` | `string | null` | Yes |  |
+| `ipv4` | `string | null` | Yes |  |
+| `requested_at_label` | `string | null` | Yes |  |
+| `status` | `string` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.GithubRunnerEgress().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.GithubRunnerEgress().load({ organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubRunnerEgressEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubRunnerHistoryEntity
+
+```ts
+const github_runner_history = client.GithubRunnerHistory()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `any[]` | Yes |  |
+| `counts` | `Record<string, any>` | Yes |  |
+| `observed_at` | `string` | Yes |  |
+| `pagination` | `Record<string, any>` | Yes |  |
+| `repositories` | `any[]` | Yes |  |
+| `runs` | `any[]` | Yes |  |
+| `setup` | `any` | No | CI onboarding. |
+| `success_rate` | `number | null` | Yes |  |
+| `usage` | `Record<string, any>` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.GithubRunnerHistory().load({ organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubRunnerHistoryEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubRunnerImageEntity
+
+```ts
+const github_runner_image = client.GithubRunnerImage()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `image_reference` | `string` | Yes | Immutable linux/amd64 Ubuntu 24.04 image, registry/repository@sha256:digest, with Node 22+ |
+| `last_error` | `string | null` | Yes |  |
+| `modal_image_id` | `string | null` | Yes |  |
+| `name` | `string` | Yes |  |
+| `registry_secret_name` | `string | null` | Yes | Name of an organization CI secret containing REGISTRY_USERNAME and REGISTRY_PASSWORD JSON fields |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `created_at` | - | - | - |
+| `id` | - | - | - |
+| `image_reference` | - | - | - |
+| `last_error` | - | - | - |
+| `modal_image_id` | - | - | - |
+| `name` | - | - | - |
+| `registry_secret_name` | - | - | Yes |
+| `status` | - | - | - |
+| `updated_at` | - | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `prepare` | `/api/v1/organizations/{organization_id}/github_runner_images/{id}/prepare` | `client.GithubRunnerImage().create({ $action: 'prepare', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+GithubRunnerImage record — check the API definition for its shape.
+
+```ts
+const result = await client.GithubRunnerImage().create({
+  $action: 'prepare',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.GithubRunnerImage().create({
+  organization_id: 'example_organization_id',
+  image_reference: 'example_image_reference',
+  name: 'example_name',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.GithubRunnerImage().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.GithubRunnerImage().load({ id: 'github_runner_image_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubRunnerImageEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubRunnerPoolEntity
+
+```ts
+const github_runner_pool = client.GithubRunnerPool()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cpu_millicores` | `number` | Yes |  |
+| `enabled` | `boolean` | Yes |  |
+| `github_app_installation_id` | `string` | Yes |  |
+| `github_repository_id` | `string` | Yes |  |
+| `github_runner_image` | `any` | Yes |  |
+| `id` | `string` | Yes |  |
+| `image` | `string | null` | No | Organization image name or ID; null restores the standard image |
+| `invocations` | `any[]` | Yes |  |
+| `label` | `string` | Yes |  |
+| `last_error` | `string | null` | Yes |  |
+| `last_polled_at` | `string | null` | Yes |  |
+| `max_concurrency` | `number` | Yes |  |
+| `memory_mb` | `number` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `repository_full_name` | `string` | Yes |  |
+| `runtime_kind` | `string` | Yes |  |
+| `timeout_seconds` | `number` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | update |
+| --- | --- | --- | --- |
+| `cpu_millicores` | - | - | - |
+| `enabled` | - | Yes | Yes |
+| `github_app_installation_id` | - | - | - |
+| `github_repository_id` | - | - | - |
+| `github_runner_image` | - | - | - |
+| `id` | - | - | - |
+| `image` | - | - | - |
+| `invocations` | - | - | - |
+| `label` | - | Yes | - |
+| `last_error` | - | - | - |
+| `last_polled_at` | - | - | - |
+| `max_concurrency` | - | Yes | Yes |
+| `memory_mb` | - | - | - |
+| `organization_id` | - | - | - |
+| `provider` | - | Yes | Yes |
+| `repository_full_name` | - | - | - |
+| `runtime_kind` | - | - | - |
+| `timeout_seconds` | - | Yes | Yes |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `configure` | `/api/v1/organizations/{organization_id}/github_runner_pools/configure` | `client.GithubRunnerPool().update({ $action: 'configure', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+GithubRunnerPool record — check the API definition for its shape.
+
+```ts
+const result = await client.GithubRunnerPool().update({
+  $action: 'configure',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.GithubRunnerPool().create({
+  organization_id: 'example_organization_id',
+  github_app_installation_id: 'example_github_app_installation_id',
+  repository_full_name: 'example_repository_full_name',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.GithubRunnerPool().list({ organization_id: "example" })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.GithubRunnerPool().update({
+  id: 'id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubRunnerPoolEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GithubRunnerSetupEntity
+
+```ts
+const github_runner_setup = client.GithubRunnerSetup()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `error` | `string | null` | Yes |  |
+| `github_repository_connection_id` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `pull_request_url` | `string | null` | Yes |  |
+| `repository_full_name` | `string` | Yes |  |
+| `roder_thread_id` | `string | null` | Yes |  |
+| `runner_labels` | `any[]` | Yes |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `summary` | `string | null` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `agent_session` | `/api/v1/organizations/{organization_id}/github_runner_setup/agent_session` | `client.GithubRunnerSetup().create({ $action: 'agent_session', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+GithubRunnerSetup record — check the API definition for its shape.
+
+```ts
+const result = await client.GithubRunnerSetup().create({
+  $action: 'agent_session',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.GithubRunnerSetup().create({
+  organization_id: 'example_organization_id',
+  github_repository_connection_id: 'example_github_repository_connection_id',
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.GithubRunnerSetup().load({ id: 'github_runner_setup_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GithubRunnerSetupEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GitlabEntity
+
+```ts
+const gitlab = client.Gitlab()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `configured` | `boolean` | Yes |  |
+| `connections` | `any[]` | Yes |  |
+| `integrations` | `any[]` | Yes |  |
+| `inventory_error` | `string | null` | No |  |
+| `next_page` | `number | null` | Yes |  |
+| `organization` | `Record<string, any>` | Yes |  |
+| `projects` | `any[]` | Yes |  |
+| `redirect_uri` | `string | null` | Yes | The OAuth redirect URI a self-managed GitLab application must use; null when GitLab callbacks aren't configured. |
+| `selected_integration_id` | `string | null` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `authorize` | `/api/v1/organizations/{org_slug}/gitlab/authorize` | `client.Gitlab().create({ $action: 'authorize', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Gitlab record — check the API definition for its shape.
+
+```ts
+const result = await client.Gitlab().create({
+  $action: 'authorize',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.Gitlab().load({ organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GitlabEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GitlabConnectionEntity
+
+```ts
+const gitlab_connection = client.GitlabConnection()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `control` | `/api/v1/organizations/{org_slug}/gitlab/connections/{connection_id}/control` | `client.GitlabConnection().create({ $action: 'control', ... })` |
+| `retry` | `/api/v1/organizations/{org_slug}/gitlab/connections/{connection_id}/retry` | `client.GitlabConnection().create({ $action: 'retry', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+GitlabConnection record — check the API definition for its shape.
+
+```ts
+const result = await client.GitlabConnection().create({
+  $action: 'control',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GitlabConnectionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GitlabImportEntity
+
+```ts
+const gitlab_import = client.GitlabImport()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `integration_id` | `string` | Yes |  |
+| `project_id` | `number` | Yes |  |
+| `repo_slug` | `string` | No |  |
+| `source_branch` | `string` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.GitlabImport().create({
+  organization_id: 'example_organization_id',
+  integration_id: 'example_integration_id',
+  project_id: 1,
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GitlabImportEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GitlabOauthEntity
+
+```ts
+const gitlab_oauth = client.GitlabOauth()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `callback` | `/api/v1/gitlab/oauth/callback` | `client.GitlabOauth().load({ $action: 'callback', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+GitlabOauth record — check the API definition for its shape.
+
+```ts
+const result = await client.GitlabOauth().load({
+  $action: 'callback',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GitlabOauthEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## GrantAllAgentEntity
+
+```ts
+const grant_all_agent = client.GrantAllAgent()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `all_agents_access` | `boolean` | Yes |  |
+| `enabled` | `boolean` | Yes |  |
+| `execution_available` | `boolean` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.GrantAllAgent().create({
+  device_id: 'example_device_id',
+  organization_id: 'example_organization_id',
+  enabled: true,
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `GrantAllAgentEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -13964,6 +29890,72 @@ Return a copy of the entity options.
 
 ---
 
+## IdentityOrganizationEntity
+
+```ts
+const identity_organization = client.IdentityOrganization()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `catalog` | `/api/v1/identity/organizations/{organization_id}/catalog` | `client.IdentityOrganization().load({ $action: 'catalog', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+IdentityOrganization record — check the API definition for its shape.
+
+```ts
+const result = await client.IdentityOrganization().load({
+  $action: 'catalog',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `IdentityOrganizationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## ImageRepositoryEntity
 
 ```ts
@@ -14047,6 +30039,136 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `ImageRepositoryEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ImageRepositoryTagEntity
+
+```ts
+const image_repository_tag = client.ImageRepositoryTag()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `image_repository` | `Record<string, any>` | Yes |  |
+| `name` | `string` | Yes |  |
+| `registry_url` | `string` | Yes |  |
+| `tags` | `any[]` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ImageRepositoryTag().list({ image_repository_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ImageRepositoryTagEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ImportBranchPolicyEntity
+
+```ts
+const import_branch_policy = client.ImportBranchPolicy()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `boolean` | Yes |  |
+| `can_manage_sandbox_region` | `boolean` | Yes |  |
+| `dedicated_outbound_ip_addresses` | `any[]` | Yes | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` | Yes |  |
+| `organization` | `Record<string, any>` | Yes |  |
+| `sandbox_regions` | `any[]` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ImportBranchPolicy().load({ organization_id: 'organization_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.ImportBranchPolicy().patch({
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.ImportBranchPolicy().update({
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ImportBranchPolicyEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -14245,6 +30367,320 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `InvitationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## InvocationControlEntity
+
+```ts
+const invocation_control = client.InvocationControl()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `challenge` | `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/control/challenge` | `client.InvocationControl().create({ $action: 'challenge', ... })` |
+| `lease` | `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/control/lease` | `client.InvocationControl().create({ $action: 'lease', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+InvocationControl record — check the API definition for its shape.
+
+```ts
+const result = await client.InvocationControl().create({
+  $action: 'challenge',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `InvocationControlEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## JobLogChunkEntity
+
+```ts
+const job_log_chunk = client.JobLogChunk()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `byte_size` | `number` | Yes |  |
+| `ci_job_id` | `string | null` | Yes |  |
+| `ci_pipeline_run_id` | `string | null` | Yes |  |
+| `ci_step_id` | `string | null` | Yes |  |
+| `content` | `string` | Yes |  |
+| `content_format` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `sequence_number` | `number` | Yes |  |
+| `stream` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.JobLogChunk().create({
+  job_id: 'example_job_id',
+  pipeline_id: 'example_pipeline_id',
+  run_id: 'example_run_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.JobLogChunk().list({ job_id: "example", pipeline_id: "example", run_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `JobLogChunkEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## JobStepEntity
+
+```ts
+const job_step = client.JobStep()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.JobStep().create({
+  job_id: 'example_job_id',
+  pipeline_id: 'example_pipeline_id',
+  run_id: 'example_run_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.JobStep().list({ job_id: "example", pipeline_id: "example", run_id: "example" })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.JobStep().patch({
+  id: 'id',
+  job_id: 'job_id',
+  pipeline_id: 'pipeline_id',
+  run_id: 'run_id',
+  // Only the fields to change
+})
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.JobStep().update({
+  id: 'id',
+  job_id: 'job_id',
+  pipeline_id: 'pipeline_id',
+  run_id: 'run_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `JobStepEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## JobWorkspaceEntity
+
+```ts
+const job_workspace = client.JobWorkspace()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.JobWorkspace().create({
+  job_id: 'example_job_id',
+  pipeline_id: 'example_pipeline_id',
+  run_id: 'example_run_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.JobWorkspace().list({ job_id: "example", pipeline_id: "example", run_id: "example" })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.JobWorkspace().patch({
+  id: 'id',
+  job_id: 'job_id',
+  pipeline_id: 'pipeline_id',
+  run_id: 'run_id',
+  // Only the fields to change
+})
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.JobWorkspace().update({
+  id: 'id',
+  job_id: 'job_id',
+  pipeline_id: 'pipeline_id',
+  run_id: 'run_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `JobWorkspaceEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -14473,6 +30909,672 @@ Return a copy of the entity options.
 
 ---
 
+## KnownEntity
+
+```ts
+const known = client.Known()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `agent_card_json` | `/.well-known/agent-card.json` | `client.Known().load({ $action: 'agent_card_json', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Known record — check the API definition for its shape.
+
+```ts
+const result = await client.Known().load({
+  $action: 'agent_card_json',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `KnownEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## LabelEntity
+
+```ts
+const label = client.Label()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `changes_count` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes | Display name |
+| `slug` | `string` | Yes | Normalized identity used for filtering and lookup. |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.Label().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `LabelEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## LeaseArtifactEntity
+
+```ts
+const lease_artifact = client.LeaseArtifact()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.LeaseArtifact().create({
+  lease_id: 'example_lease_id',
+  node_id: 'example_node_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `LeaseArtifactEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## LeaseCacheEntity
+
+```ts
+const lease_cache = client.LeaseCache()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `restore` | `/api/v1/ci/nodes/{id}/leases/{lease_id}/cache/restore` | `client.LeaseCache().create({ $action: 'restore', ... })` |
+| `save` | `/api/v1/ci/nodes/{id}/leases/{lease_id}/cache/save` | `client.LeaseCache().create({ $action: 'save', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+LeaseCache record — check the API definition for its shape.
+
+```ts
+const result = await client.LeaseCache().create({
+  $action: 'restore',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `LeaseCacheEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## LeaseLogChunkEntity
+
+```ts
+const lease_log_chunk = client.LeaseLogChunk()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.LeaseLogChunk().create({
+  lease_id: 'example_lease_id',
+  node_id: 'example_node_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `LeaseLogChunkEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## LeaseReconciliationEntity
+
+```ts
+const lease_reconciliation = client.LeaseReconciliation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `output` | `/api/v1/ci/nodes/{id}/leases/{lease_id}/reconciliations/{reconciliation_id}/output` | `client.LeaseReconciliation().create({ $action: 'output', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+LeaseReconciliation record — check the API definition for its shape.
+
+```ts
+const result = await client.LeaseReconciliation().create({
+  $action: 'output',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `LeaseReconciliationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## LeaseStepEntity
+
+```ts
+const lease_step = client.LeaseStep()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.LeaseStep().update({
+  id: 'id',
+  lease_id: 'lease_id',
+  node_id: 'node_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `LeaseStepEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## LeaseVerifyDiagnosticEntity
+
+```ts
+const lease_verify_diagnostic = client.LeaseVerifyDiagnostic()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `browser_events` | `Record<string, any>` | Yes |  |
+| `live_browser` | `Record<string, any>` | Yes |  |
+| `live_view` | `Record<string, any>` | Yes | The tester's read-only live stream for page viewers. |
+| `steps` | `any[]` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.LeaseVerifyDiagnostic().create({
+  lease_id: 'example_lease_id',
+  swarm_id: 'example_swarm_id',
+  task_id: 'example_task_id',
+  browser_events: {},
+  live_browser: {},
+  live_view: {},
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `LeaseVerifyDiagnosticEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## LeaseVerifySecretEntity
+
+```ts
+const lease_verify_secret = client.LeaseVerifySecret()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.LeaseVerifySecret().create({
+  lease_id: 'example_lease_id',
+  swarm_id: 'example_swarm_id',
+  task_id: 'example_task_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `LeaseVerifySecretEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## LeaseWorkspaceEntity
+
+```ts
+const lease_workspace = client.LeaseWorkspace()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.LeaseWorkspace().update({
+  id: 'id',
+  lease_id: 'lease_id',
+  node_id: 'node_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `LeaseWorkspaceEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## LocalAgentDecisionEntity
+
+```ts
+const local_agent_decision = client.LocalAgentDecision()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `request` | `Record<string, any>` | Yes | A native OpenAI Decisions request for gpt-6-luna, at most 1600 KiB, with inline images only |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.LocalAgentDecision().create({
+  organization_id: 'example_organization_id',
+  request: {},
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `LocalAgentDecisionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## LocalAgentResponseEntity
+
+```ts
+const local_agent_response = client.LocalAgentResponse()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `input` | `any[]` | Yes |  |
+| `model` | `string` | Yes |  |
+| `service_tier` | `string | null` | No |  |
+| `store` | `boolean` | Yes |  |
+| `stream` | `boolean` | Yes |  |
+| `tools` | `any[]` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.LocalAgentResponse().create({
+  organization_id: 'example_organization_id',
+  input: [],
+  model: 'example_model',
+  store: true,
+  stream: true,
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `LocalAgentResponseEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## LocalThreadDeliveryEntity
 
 ```ts
@@ -14664,6 +31766,277 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `LocationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## LogStreamChunkEntity
+
+```ts
+const log_stream_chunk = client.LogStreamChunk()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.LogStreamChunk().create({
+  log_stream_id: 'example_log_stream_id',
+  space_id: 'example_space_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.LogStreamChunk().list({ log_stream_id: "example", space_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.LogStreamChunk().load({ id: 'log_stream_chunk_id', log_stream_id: 'log_stream_id', space_id: 'space_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `LogStreamChunkEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## LogoImageEntity
+
+```ts
+const logo_image = client.LogoImage()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_products` | `any[]` | Yes | Products this organization has activated (PRD 144). |
+| `agents_only` | `boolean` | No | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `boolean` | Yes | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `github_prs_authored_by_change_author` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
+| `logo_url` | `string | null` | Yes |  |
+| `member_count` | `number` | Yes |  |
+| `name` | `string` | Yes |  |
+| `pending_invitation_count` | `number` | Yes |  |
+| `personal` | `boolean` | Yes |  |
+| `repository_count` | `number` | Yes |  |
+| `role` | `string | null` | Yes |  |
+| `sandbox_region` | `string` | Yes |  |
+| `shared_agent_personal_accounts_enabled` | `boolean` | No | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` | Yes |  |
+| `source_control_providers` | `any[]` | No | Connected source control providers for this organization. |
+| `source_ui_enabled` | `boolean` | No | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `string` | Yes | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+| `verify_pr_scenario_writing_enabled` | `boolean` | Yes |  |
+
+### Operations
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.LogoImage().remove({ organization_id: 'organization_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.LogoImage().update({
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `LogoImageEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## MarketingSettingEntity
+
+```ts
+const marketing_setting = client.MarketingSetting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `call_first` | `boolean` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.MarketingSetting().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `MarketingSettingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## McpOauthEntity
+
+```ts
+const mcp_oauth = client.McpOauth()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `consent` | `/api/v1/mcp/oauth/consent` | `client.McpOauth().create({ $action: 'consent', ... })` |
+| `register` | `/api/v1/mcp/oauth/register` | `client.McpOauth().create({ $action: 'register', ... })` |
+| `revoke` | `/api/v1/mcp/oauth/revoke` | `client.McpOauth().create({ $action: 'revoke', ... })` |
+| `token` | `/api/v1/mcp/oauth/token` | `client.McpOauth().create({ $action: 'token', ... })` |
+| `authorize` | `/api/v1/mcp/oauth/authorize` | `client.McpOauth().load({ $action: 'authorize', ... })` |
+| `consent` | `/api/v1/mcp/oauth/consent` | `client.McpOauth().load({ $action: 'consent', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+McpOauth record — check the API definition for its shape.
+
+```ts
+const result = await client.McpOauth().create({
+  $action: 'consent',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `McpOauthEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -15241,6 +32614,108 @@ Return a copy of the entity options.
 
 ---
 
+## MergeQueueEntryEntity
+
+```ts
+const merge_queue_entry = client.MergeQueueEntry()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `analytics` | `Record<string, any>` | Yes | Queue performance for the reporting window. |
+| `change_id` | `string | null` | No |  |
+| `expected_target_commit_id` | `string | null` | No |  |
+| `expected_target_version` | `number | null` | No |  |
+| `expected_version` | `number` | Yes |  |
+| `github_pr_number` | `number | null` | No |  |
+| `id` | `string` | No |  |
+| `idempotency_key` | `string` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `policy` | `Record<string, any>` | Yes |  |
+| `priority` | `string` | No |  |
+| `queue` | `Record<string, any>` | Yes |  |
+| `target_branches` | `any[]` | No | Bookmark names for the target picker. |
+| `when_ready` | `boolean | null` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `merge` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/merge` | `client.MergeQueueEntry().create({ $action: 'merge', ... })` |
+| `promote` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/promote` | `client.MergeQueueEntry().create({ $action: 'promote', ... })` |
+| `retry` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/retry` | `client.MergeQueueEntry().create({ $action: 'retry', ... })` |
+| `skip_ci` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/skip_ci` | `client.MergeQueueEntry().create({ $action: 'skip_ci', ... })` |
+| `validate_full` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/entries/{id}/validate_full` | `client.MergeQueueEntry().create({ $action: 'validate_full', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+MergeQueueEntry record — check the API definition for its shape.
+
+```ts
+const result = await client.MergeQueueEntry().create({
+  $action: 'merge',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.MergeQueueEntry().create({
+  merge_queue_id: 'example_merge_queue_id',
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  expected_version: 1,
+  idempotency_key: 'example_idempotency_key',
+  kind: 'example_kind',
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.MergeQueueEntry().remove({ id: 'merge_queue_entry_id', merge_queue_id: 'merge_queue_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `MergeQueueEntryEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## MergeRequestEntity
 
 ```ts
@@ -15381,6 +32856,70 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `MergeRequestEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## MergeResolutionEntity
+
+```ts
+const merge_resolution = client.MergeResolution()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `base` | `string` | Yes | Common ancestor file contents |
+| `content` | `string | null` | No |  |
+| `context` | `Record<string, any>` | No | Optional surrounding files keyed by path |
+| `duration_ms` | `number` | Yes |  |
+| `fallback` | `boolean` | Yes |  |
+| `model` | `string` | No |  |
+| `ours` | `string` | Yes | Current / left file contents |
+| `path` | `string` | No | Repository-relative path of the conflicted file |
+| `resolved` | `boolean` | Yes |  |
+| `theirs` | `string` | Yes | Incoming / right file contents |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.MergeResolution().create({
+  base: 'example_base',
+  ours: 'example_ours',
+  theirs: 'example_theirs',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `MergeResolutionEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -15583,6 +33122,212 @@ Return a copy of the entity options.
 
 ---
 
+## MetronomeWebhookEntity
+
+```ts
+const metronome_webhook = client.MetronomeWebhook()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.MetronomeWebhook().create({
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `MetronomeWebhookEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ModelSubscriptionAccountEntity
+
+```ts
+const model_subscription_account = client.ModelSubscriptionAccount()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accounts` | `any[]` | Yes |  |
+| `agents` | `any[]` | Yes |  |
+| `can_disconnect` | `boolean` | Yes |  |
+| `connection_agent` | `Record<string, any> | null` | Yes |  |
+| `email` | `string` | No |  |
+| `id` | `string` | Yes |  |
+| `label` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `saved` | `boolean` | Yes |  |
+| `status` | `string` | Yes |  |
+| `usable` | `boolean` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ModelSubscriptionAccount().create({
+  label: 'example_label',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ModelSubscriptionAccount().list()
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.ModelSubscriptionAccount().patch({
+  id: 'model_subscription_account_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.ModelSubscriptionAccount().remove({ id: 'model_subscription_account_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.ModelSubscriptionAccount().update({
+  id: 'model_subscription_account_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ModelSubscriptionAccountEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ModelSubscriptionAccountConnectionEntity
+
+```ts
+const model_subscription_account_connection = client.ModelSubscriptionAccountConnection()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ModelSubscriptionAccountConnection().load({ id: 'model_subscription_account_connection_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.ModelSubscriptionAccountConnection().update({
+  id: 'model_subscription_account_connection_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ModelSubscriptionAccountConnectionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## NetworkConnectionEntity
 
 ```ts
@@ -15671,6 +33416,336 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `NetworkConnectionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## NetworkingSpaceEntity
+
+```ts
+const networking_space = client.NetworkingSpace()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `activate` | `/api/v1/networking/spaces/{id}/activate` | `client.NetworkingSpace().create({ $action: 'activate', ... })` |
+| `archive` | `/api/v1/networking/spaces/{id}/archive` | `client.NetworkingSpace().create({ $action: 'archive', ... })` |
+| `pause` | `/api/v1/networking/spaces/{id}/pause` | `client.NetworkingSpace().create({ $action: 'pause', ... })` |
+| `validate_route` | `/api/v1/networking/spaces/{id}/validate_route` | `client.NetworkingSpace().create({ $action: 'validate_route', ... })` |
+| `catalog` | `/api/v1/networking/spaces/{space_id}/catalog` | `client.NetworkingSpace().load({ $action: 'catalog', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+NetworkingSpace record — check the API definition for its shape.
+
+```ts
+const result = await client.NetworkingSpace().create({
+  $action: 'activate',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.NetworkingSpace().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.NetworkingSpace().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.NetworkingSpace().load({ id: 'networking_space_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.NetworkingSpace().patch({
+  id: 'networking_space_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.NetworkingSpace().remove({ id: 'networking_space_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.NetworkingSpace().update({
+  id: 'networking_space_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `NetworkingSpaceEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## NodeEntity
+
+```ts
+const node = client.Node()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `string | null` | Yes |  |
+| `account_id` | `string | null` | Yes |  |
+| `account_login` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `installation_id` | `string` | Yes |  |
+| `installed_at` | `string | null` | Yes |  |
+| `installed_at_label` | `string | null` | Yes |  |
+| `manage_access_url` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `permission_entries` | `any[]` | Yes | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `Record<string, any>` | Yes |  |
+| `status` | `string` | Yes |  |
+| `suspended_at` | `string | null` | Yes |  |
+| `suspended_at_label` | `string | null` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.Node().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `NodeEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## NodeCertificateEntity
+
+```ts
+const node_certificate = client.NodeCertificate()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `rotate` | `/api/v1/ci/nodes/{id}/certificate/rotate` | `client.NodeCertificate().create({ $action: 'rotate', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+NodeCertificate record — check the API definition for its shape.
+
+```ts
+const result = await client.NodeCertificate().create({
+  $action: 'rotate',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `NodeCertificateEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## NodeLeaseEntity
+
+```ts
+const node_lease = client.NodeLease()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `claim` | `/api/v1/ci/nodes/{id}/leases/{lease_id}/claim` | `client.NodeLease().create({ $action: 'claim', ... })` |
+| `heartbeat` | `/api/v1/ci/nodes/{id}/leases/{lease_id}/heartbeat` | `client.NodeLease().create({ $action: 'heartbeat', ... })` |
+| `release` | `/api/v1/ci/nodes/{id}/leases/{lease_id}/release` | `client.NodeLease().create({ $action: 'release', ... })` |
+| `job` | `/api/v1/ci/nodes/{id}/leases/{lease_id}/job` | `client.NodeLease().load({ $action: 'job', ... })` |
+| `workspace_archive` | `/api/v1/ci/nodes/{id}/leases/{lease_id}/workspace_archive` | `client.NodeLease().load({ $action: 'workspace_archive', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+NodeLease record — check the API definition for its shape.
+
+```ts
+const result = await client.NodeLease().create({
+  $action: 'claim',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.NodeLease().list({ node_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `NodeLeaseEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -15798,6 +33873,541 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `NomadLogEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## NowEntity
+
+```ts
+const now = client.Now()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `needs_attention` | `any[]` | Yes |  |
+| `pagination` | `Record<string, any>` | Yes |  |
+| `recently_landed` | `any[]` | Yes |  |
+| `shipping_now` | `any[]` | Yes |  |
+| `summary` | `Record<string, any>` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.Now().load({ organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `NowEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ObservabilityClickhouseClusterEntity
+
+```ts
+const observability_clickhouse_cluster = client.ObservabilityClickhouseCluster()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `activate` | `/api/v1/observability/clickhouse_clusters/{id}/activate` | `client.ObservabilityClickhouseCluster().create({ $action: 'activate', ... })` |
+| `archive` | `/api/v1/observability/clickhouse_clusters/{id}/archive` | `client.ObservabilityClickhouseCluster().create({ $action: 'archive', ... })` |
+| `deploy` | `/api/v1/observability/clickhouse_clusters/{id}/deploy` | `client.ObservabilityClickhouseCluster().create({ $action: 'deploy', ... })` |
+| `pause` | `/api/v1/observability/clickhouse_clusters/{id}/pause` | `client.ObservabilityClickhouseCluster().create({ $action: 'pause', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ObservabilityClickhouseCluster record — check the API definition for its shape.
+
+```ts
+const result = await client.ObservabilityClickhouseCluster().create({
+  $action: 'activate',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ObservabilityClickhouseCluster().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ObservabilityClickhouseCluster().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ObservabilityClickhouseCluster().load({ id: 'observability_clickhouse_cluster_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.ObservabilityClickhouseCluster().patch({
+  id: 'observability_clickhouse_cluster_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.ObservabilityClickhouseCluster().remove({ id: 'observability_clickhouse_cluster_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.ObservabilityClickhouseCluster().update({
+  id: 'observability_clickhouse_cluster_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ObservabilityClickhouseClusterEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ObservabilityQuickwitClusterEntity
+
+```ts
+const observability_quickwit_cluster = client.ObservabilityQuickwitCluster()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `activate` | `/api/v1/observability/quickwit_clusters/{id}/activate` | `client.ObservabilityQuickwitCluster().create({ $action: 'activate', ... })` |
+| `archive` | `/api/v1/observability/quickwit_clusters/{id}/archive` | `client.ObservabilityQuickwitCluster().create({ $action: 'archive', ... })` |
+| `deploy` | `/api/v1/observability/quickwit_clusters/{id}/deploy` | `client.ObservabilityQuickwitCluster().create({ $action: 'deploy', ... })` |
+| `pause` | `/api/v1/observability/quickwit_clusters/{id}/pause` | `client.ObservabilityQuickwitCluster().create({ $action: 'pause', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ObservabilityQuickwitCluster record — check the API definition for its shape.
+
+```ts
+const result = await client.ObservabilityQuickwitCluster().create({
+  $action: 'activate',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ObservabilityQuickwitCluster().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ObservabilityQuickwitCluster().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ObservabilityQuickwitCluster().load({ id: 'observability_quickwit_cluster_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.ObservabilityQuickwitCluster().patch({
+  id: 'observability_quickwit_cluster_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.ObservabilityQuickwitCluster().remove({ id: 'observability_quickwit_cluster_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.ObservabilityQuickwitCluster().update({
+  id: 'observability_quickwit_cluster_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ObservabilityQuickwitClusterEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ObservabilitySpaceEntity
+
+```ts
+const observability_space = client.ObservabilitySpace()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `activate` | `/api/v1/observability/spaces/{id}/activate` | `client.ObservabilitySpace().create({ $action: 'activate', ... })` |
+| `archive` | `/api/v1/observability/spaces/{id}/archive` | `client.ObservabilitySpace().create({ $action: 'archive', ... })` |
+| `pause` | `/api/v1/observability/spaces/{id}/pause` | `client.ObservabilitySpace().create({ $action: 'pause', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ObservabilitySpace record — check the API definition for its shape.
+
+```ts
+const result = await client.ObservabilitySpace().create({
+  $action: 'activate',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ObservabilitySpace().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ObservabilitySpace().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ObservabilitySpace().load({ id: 'observability_space_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.ObservabilitySpace().patch({
+  id: 'observability_space_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.ObservabilitySpace().remove({ id: 'observability_space_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.ObservabilitySpace().update({
+  id: 'observability_space_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ObservabilitySpaceEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OpenapiEntity
+
+```ts
+const openapi = client.Openapi()
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.Openapi().load()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OpenapiEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrgInvitationEntity
+
+```ts
+const org_invitation = client.OrgInvitation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+| `invitation` | `Record<string, any>` | Yes |  |
+| `registration_options` | `any` | Yes |  |
+| `requires_password_setup` | `boolean` | Yes |  |
+| `start_guided_setup` | `boolean` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `accept` | `/api/v1/org_invitations/{token}/accept` | `client.OrgInvitation().create({ $action: 'accept', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+OrgInvitation record — check the API definition for its shape.
+
+```ts
+const result = await client.OrgInvitation().create({
+  $action: 'accept',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.OrgInvitation().load({ id: 'org_invitation_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrgInvitationEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -15941,6 +34551,1545 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `OrganizationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationAppEntity
+
+```ts
+const organization_app = client.OrganizationApp()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `install` | `/api/v1/spark/organizations/{organization_id}/apps/{name}/install` | `client.OrganizationApp().remove({ $action: 'install', ... })` |
+| `install` | `/api/v1/spark/organizations/{organization_id}/apps/{name}/install` | `client.OrganizationApp().update({ $action: 'install', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+OrganizationApp record — check the API definition for its shape.
+
+```ts
+const result = await client.OrganizationApp().remove({
+  $action: 'install',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.OrganizationApp().list({ organization_id: "example", native_agent_id: "example" })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationAppEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationControlEntity
+
+```ts
+const organization_control = client.OrganizationControl()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `admission` | `/api/v1/spark/organizations/{organization_id}/control/admission` | `client.OrganizationControl().create({ $action: 'admission', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+OrganizationControl record — check the API definition for its shape.
+
+```ts
+const result = await client.OrganizationControl().create({
+  $action: 'admission',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationControlEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationDeviceEntity
+
+```ts
+const organization_device = client.OrganizationDevice()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `control` | `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/control` | `client.OrganizationDevice().create({ $action: 'control', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+OrganizationDevice record — check the API definition for its shape.
+
+```ts
+const result = await client.OrganizationDevice().create({
+  $action: 'control',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationDeviceEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationIdentityCertificateEntity
+
+```ts
+const organization_identity_certificate = client.OrganizationIdentityCertificate()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `expire` | `/api/v1/identity/organizations/{organization_id}/identity_certificates/{id}/expire` | `client.OrganizationIdentityCertificate().create({ $action: 'expire', ... })` |
+| `revoke` | `/api/v1/identity/organizations/{organization_id}/identity_certificates/{id}/revoke` | `client.OrganizationIdentityCertificate().create({ $action: 'revoke', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+OrganizationIdentityCertificate record — check the API definition for its shape.
+
+```ts
+const result = await client.OrganizationIdentityCertificate().create({
+  $action: 'expire',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.OrganizationIdentityCertificate().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.OrganizationIdentityCertificate().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.OrganizationIdentityCertificate().load({ id: 'organization_identity_certificate_id', organization_id: 'organization_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.OrganizationIdentityCertificate().patch({
+  id: 'organization_identity_certificate_id',
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.OrganizationIdentityCertificate().remove({ id: 'organization_identity_certificate_id', organization_id: 'organization_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.OrganizationIdentityCertificate().update({
+  id: 'organization_identity_certificate_id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationIdentityCertificateEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationInteractionEntity
+
+```ts
+const organization_interaction = client.OrganizationInteraction()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.OrganizationInteraction().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationInteractionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationInvitationEntity
+
+```ts
+const organization_invitation = client.OrganizationInvitation()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `role` | `string` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.OrganizationInvitation().create({
+  organization_id: 'example_organization_id',
+  email: 'example_email',
+  role: 'example_role',
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.OrganizationInvitation().remove({ id: 'organization_invitation_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationInvitationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationMessageFileEntity
+
+```ts
+const organization_message_file = client.OrganizationMessageFile()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.OrganizationMessageFile().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationMessageFileEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationOidcTrustEntity
+
+```ts
+const organization_oidc_trust = client.OrganizationOidcTrust()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `activate` | `/api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/activate` | `client.OrganizationOidcTrust().create({ $action: 'activate', ... })` |
+| `pause` | `/api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/pause` | `client.OrganizationOidcTrust().create({ $action: 'pause', ... })` |
+| `revoke` | `/api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/revoke` | `client.OrganizationOidcTrust().create({ $action: 'revoke', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+OrganizationOidcTrust record — check the API definition for its shape.
+
+```ts
+const result = await client.OrganizationOidcTrust().create({
+  $action: 'activate',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.OrganizationOidcTrust().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.OrganizationOidcTrust().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.OrganizationOidcTrust().load({ id: 'organization_oidc_trust_id', organization_id: 'organization_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.OrganizationOidcTrust().patch({
+  id: 'organization_oidc_trust_id',
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.OrganizationOidcTrust().remove({ id: 'organization_oidc_trust_id', organization_id: 'organization_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.OrganizationOidcTrust().update({
+  id: 'organization_oidc_trust_id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationOidcTrustEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationRunEventEntity
+
+```ts
+const organization_run_event = client.OrganizationRunEvent()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.OrganizationRunEvent().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationRunEventEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationRunOutcomeEntity
+
+```ts
+const organization_run_outcome = client.OrganizationRunOutcome()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.OrganizationRunOutcome().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationRunOutcomeEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationRunUsageEntity
+
+```ts
+const organization_run_usage = client.OrganizationRunUsage()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.OrganizationRunUsage().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationRunUsageEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationSandboxEntity
+
+```ts
+const organization_sandbox = client.OrganizationSandbox()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `automation_cleanup` | `/api/v1/spark/organizations/{organization_id}/sandbox/automation-cleanup` | `client.OrganizationSandbox().create({ $action: 'automation_cleanup', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+OrganizationSandbox record — check the API definition for its shape.
+
+```ts
+const result = await client.OrganizationSandbox().create({
+  $action: 'automation_cleanup',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationSandboxEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationSecretEntity
+
+```ts
+const organization_secret = client.OrganizationSecret()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app_environment_id` | `string | null` | Yes |  |
+| `app_service_id` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `created_by` | `Record<string, any> | null` | Yes |  |
+| `current_version` | `Record<string, any> | null` | Yes |  |
+| `description` | `string | null` | Yes |  |
+| `env_key` | `string` | Yes |  |
+| `expose_to_build` | `boolean` | Yes |  |
+| `expose_to_ci` | `boolean` | Yes |  |
+| `hosted_app_id` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_accessed_at` | `string | null` | Yes |  |
+| `last_accessed_at_label` | `string | null` | Yes |  |
+| `last_accessed_by` | `Record<string, any> | null` | Yes |  |
+| `latest_version_number` | `number | null` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string | null` | Yes |  |
+| `owner_service_account_id` | `string | null` | Yes |  |
+| `rotation_policy` | `string | null` | Yes |  |
+| `scope_kind` | `string` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `disable` | `/api/v1/identity/organizations/{organization_id}/secrets/{id}/disable` | `client.OrganizationSecret().create({ $action: 'disable', ... })` |
+| `enable` | `/api/v1/identity/organizations/{organization_id}/secrets/{id}/enable` | `client.OrganizationSecret().create({ $action: 'enable', ... })` |
+| `rotate` | `/api/v1/identity/organizations/{organization_id}/secrets/{id}/rotate` | `client.OrganizationSecret().create({ $action: 'rotate', ... })` |
+| `upsert` | `/api/v1/identity/organizations/{organization_id}/secrets/upsert` | `client.OrganizationSecret().create({ $action: 'upsert', ... })` |
+| `dotenv` | `/api/v1/identity/organizations/{organization_id}/secrets/dotenv` | `client.OrganizationSecret().load({ $action: 'dotenv', ... })` |
+| `value` | `/api/v1/identity/organizations/{organization_id}/secrets/{id}/value` | `client.OrganizationSecret().load({ $action: 'value', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+OrganizationSecret record — check the API definition for its shape.
+
+```ts
+const result = await client.OrganizationSecret().create({
+  $action: 'disable',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.OrganizationSecret().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.OrganizationSecret().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.OrganizationSecret().load({ id: 'organization_secret_id', organization_id: 'organization_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.OrganizationSecret().patch({
+  id: 'organization_secret_id',
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.OrganizationSecret().remove({ id: 'organization_secret_id', organization_id: 'organization_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.OrganizationSecret().update({
+  id: 'organization_secret_id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationSecretEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationServiceAccountEntity
+
+```ts
+const organization_service_account = client.OrganizationServiceAccount()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `activate` | `/api/v1/identity/organizations/{organization_id}/service_accounts/{id}/activate` | `client.OrganizationServiceAccount().create({ $action: 'activate', ... })` |
+| `revoke` | `/api/v1/identity/organizations/{organization_id}/service_accounts/{id}/revoke` | `client.OrganizationServiceAccount().create({ $action: 'revoke', ... })` |
+| `suspend` | `/api/v1/identity/organizations/{organization_id}/service_accounts/{id}/suspend` | `client.OrganizationServiceAccount().create({ $action: 'suspend', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+OrganizationServiceAccount record — check the API definition for its shape.
+
+```ts
+const result = await client.OrganizationServiceAccount().create({
+  $action: 'activate',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.OrganizationServiceAccount().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.OrganizationServiceAccount().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.OrganizationServiceAccount().load({ id: 'organization_service_account_id', organization_id: 'organization_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.OrganizationServiceAccount().patch({
+  id: 'organization_service_account_id',
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.OrganizationServiceAccount().remove({ id: 'organization_service_account_id', organization_id: 'organization_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.OrganizationServiceAccount().update({
+  id: 'organization_service_account_id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationServiceAccountEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationSettingEntity
+
+```ts
+const organization_setting = client.OrganizationSetting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `concurrent_run_limit_override` | `number | null` | No |  |
+| `customize_onboarding_packages` | `boolean` | No |  |
+| `daily_run_limit_override` | `number | null` | No |  |
+| `deployment_usage_visibility` | `string` | No |  |
+| `monthly_browser_minutes_limit_override` | `number | null` | No |  |
+| `monthly_budget_dollars` | `string | number | null` | No |  |
+| `name` | `string` | No |  |
+| `onboarding_custom_pricing` | `boolean` | No |  |
+| `onboarding_package_keys` | `any[]` | No |  |
+
+### Operations
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.OrganizationSetting().update({
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationSettingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationSiteEntity
+
+```ts
+const organization_site = client.OrganizationSite()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `token` | `/api/v1/spark/organizations/{organization_id}/sites/{name}/token` | `client.OrganizationSite().create({ $action: 'token', ... })` |
+| `app` | `/api/v1/spark/organizations/{organization_id}/sites/{name}/app` | `client.OrganizationSite().remove({ $action: 'app', ... })` |
+| `app` | `/api/v1/spark/organizations/{organization_id}/sites/{name}/app` | `client.OrganizationSite().update({ $action: 'app', ... })` |
+| `marketplace_template` | `/api/v1/spark/organizations/{organization_id}/sites/{name}/marketplace_template` | `client.OrganizationSite().update({ $action: 'marketplace_template', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+OrganizationSite record — check the API definition for its shape.
+
+```ts
+const result = await client.OrganizationSite().create({
+  $action: 'token',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.OrganizationSite().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.OrganizationSite().list({ organization_id: "example", native_agent_id: "example" })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.OrganizationSite().remove({ id: 'organization_site_id', organization_id: 'organization_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.OrganizationSite().update({
+  id: 'organization_site_id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationSiteEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationSubscriptionEntity
+
+```ts
+const organization_subscription = client.OrganizationSubscription()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `selection` | `/api/v1/spark/organizations/{organization_id}/subscriptions/selection` | `client.OrganizationSubscription().create({ $action: 'selection', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+OrganizationSubscription record — check the API definition for its shape.
+
+```ts
+const result = await client.OrganizationSubscription().create({
+  $action: 'selection',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationSubscriptionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationToolEntity
+
+```ts
+const organization_tool = client.OrganizationTool()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `arguments` | `Record<string, any>` | Yes |  |
+| `native_agent_id` | `string` | Yes |  |
+| `tool` | `string` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.OrganizationTool().create({
+  organization_id: 'example_organization_id',
+  arguments: {},
+  native_agent_id: 'example_native_agent_id',
+  tool: 'example_tool',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationToolEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OrganizationWorkloadIdentityEntity
+
+```ts
+const organization_workload_identity = client.OrganizationWorkloadIdentity()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `activate` | `/api/v1/identity/organizations/{organization_id}/workload_identities/{id}/activate` | `client.OrganizationWorkloadIdentity().create({ $action: 'activate', ... })` |
+| `issue_exchange_token` | `/api/v1/identity/organizations/{organization_id}/workload_identities/{id}/issue_exchange_token` | `client.OrganizationWorkloadIdentity().create({ $action: 'issue_exchange_token', ... })` |
+| `materialize` | `/api/v1/identity/organizations/{organization_id}/workload_identities/{id}/materialize` | `client.OrganizationWorkloadIdentity().create({ $action: 'materialize', ... })` |
+| `revoke` | `/api/v1/identity/organizations/{organization_id}/workload_identities/{id}/revoke` | `client.OrganizationWorkloadIdentity().create({ $action: 'revoke', ... })` |
+| `suspend` | `/api/v1/identity/organizations/{organization_id}/workload_identities/{id}/suspend` | `client.OrganizationWorkloadIdentity().create({ $action: 'suspend', ... })` |
+| `token_exchange` | `/api/v1/identity/organizations/{organization_id}/workload_identities/token_exchange` | `client.OrganizationWorkloadIdentity().create({ $action: 'token_exchange', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+OrganizationWorkloadIdentity record — check the API definition for its shape.
+
+```ts
+const result = await client.OrganizationWorkloadIdentity().create({
+  $action: 'activate',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.OrganizationWorkloadIdentity().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.OrganizationWorkloadIdentity().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.OrganizationWorkloadIdentity().load({ id: 'organization_workload_identity_id', organization_id: 'organization_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.OrganizationWorkloadIdentity().patch({
+  id: 'organization_workload_identity_id',
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.OrganizationWorkloadIdentity().remove({ id: 'organization_workload_identity_id', organization_id: 'organization_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.OrganizationWorkloadIdentity().update({
+  id: 'organization_workload_identity_id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OrganizationWorkloadIdentityEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## OtelIngestEntity
+
+```ts
+const otel_ingest = client.OtelIngest()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `authorize` | `/api/v1/otel_ingest/authorize` | `client.OtelIngest().create({ $action: 'authorize', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+OtelIngest record — check the API definition for its shape.
+
+```ts
+const result = await client.OtelIngest().create({
+  $action: 'authorize',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `OtelIngestEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -16118,6 +36267,158 @@ Return a copy of the entity options.
 
 ---
 
+## PageArtefactEntity
+
+```ts
+const page_artefact = client.PageArtefact()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `artefact` | `any` | Yes |  |
+| `automation` | `Record<string, any> | null` | Yes |  |
+| `automation_invocation_id` | `string | null` | No |  |
+| `byte_size` | `number` | Yes |  |
+| `checksum_sha256` | `string` | Yes |  |
+| `comment_threads` | `any[]` | Yes |  |
+| `content_type` | `string` | Yes |  |
+| `created_at` | `string | null` | No |  |
+| `created_by_user_id` | `string | null` | No |  |
+| `description` | `string | null` | No |  |
+| `document_key` | `string` | No | Stable document identity shared by all revisions. |
+| `draft` | `Record<string, any> | null` | Yes | The autosaved working copy of the newest Markdown version; null for older versions and other files. |
+| `entrypoint` | `string` | No |  |
+| `expires_at` | `string | null` | No |  |
+| `filename` | `string` | Yes |  |
+| `files` | `any[]` | No |  |
+| `harness` | `string | null` | No |  |
+| `harness_version` | `string | null` | No |  |
+| `id` | `string` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `kinds` | `any[]` | Yes |  |
+| `model` | `string | null` | No |  |
+| `organization` | `Record<string, any>` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `pagination` | `Record<string, any>` | Yes |  |
+| `permissions` | `Record<string, any>` | Yes |  |
+| `preview` | `Record<string, any>` | Yes |  |
+| `published_at` | `string | null` | No |  |
+| `published_at_label` | `string | null` | Yes |  |
+| `publisher` | `Record<string, any> | null` | Yes |  |
+| `repository` | `Record<string, any> | null` | Yes |  |
+| `repository_id` | `string | null` | No |  |
+| `selected_path` | `string` | No |  |
+| `slug` | `string` | Yes |  |
+| `source` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `vcs_agent_checkpoint_id` | `string | null` | No |  |
+| `vcs_agent_session_id` | `string | null` | No |  |
+| `version` | `number` | Yes |  |
+| `versions` | `any[]` | Yes |  |
+| `view_url` | `string` | Yes |  |
+| `web_url` | `string` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.PageArtefact().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.PageArtefact().load({ id: 'page_artefact_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PageArtefactEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## PageCiPipelineRunEntity
+
+```ts
+const page_ci_pipeline_run = client.PageCiPipelineRun()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `error` | `string | null` | Yes |  |
+| `id` | `string` | No |  |
+| `jobs` | `any[]` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.PageCiPipelineRun().load({ id: 'page_ci_pipeline_run_id', pipeline_id: 'pipeline_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PageCiPipelineRunEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## PageProjectRunEntity
 
 ```ts
@@ -16167,6 +36468,245 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `PageProjectRunEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## PageRepoVcCommitEntity
+
+```ts
+const page_repo_vc_commit = client.PageRepoVcCommit()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `commit` | `any` | Yes |  |
+| `diff_path` | `string` | Yes | Fingerprinted path serving this commit range's file diff. |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.PageRepoVcCommit().load({ id: 'page_repo_vc_commit_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PageRepoVcCommitEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## PagesBillingEntity
+
+```ts
+const pages_billing = client.PagesBilling()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `any[]` | Yes |  |
+| `breakdown` | `any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` | Yes |  |
+| `can_manage_contact` | `boolean` | Yes |  |
+| `can_manage_extra_spend` | `boolean` | Yes |  |
+| `can_manage_local_subscription` | `boolean` | Yes |  |
+| `can_manage_payment_method` | `boolean` | Yes |  |
+| `can_set_up_billing` | `boolean` | Yes |  |
+| `customer` | `any` | Yes |  |
+| `deployment_usage_visible` | `boolean` | Yes |  |
+| `entitlements` | `Record<string, any>` | Yes |  |
+| `extra_spend_enabled` | `boolean` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `any` | Yes |  |
+| `prepaid` | `any` | Yes |  |
+| `preview` | `any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `Record<string, any>` | Yes |  |
+| `stripe` | `Record<string, any>` | Yes |  |
+| `subscription` | `any` | Yes |  |
+| `token_account` | `Record<string, any>` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.PagesBilling().load({ organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PagesBillingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## PagesGithubOnboardingEntity
+
+```ts
+const pages_github_onboarding = client.PagesGithubOnboarding()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `onboarding` | `Record<string, any>` | Yes |  |
+| `organization` | `Record<string, any>` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.PagesGithubOnboarding().load({ organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PagesGithubOnboardingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## PagesMemberEntity
+
+```ts
+const pages_member = client.PagesMember()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `accepted_at` | `string | null` | Yes |  |
+| `accepted_by_user` | `any` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `email` | `string` | Yes |  |
+| `email_delivery_status` | `string` | No |  |
+| `expires_at` | `string | null` | Yes |  |
+| `expires_at_label` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `invite_url` | `string | null` | Yes |  |
+| `invited_by_user` | `any` | Yes |  |
+| `organization` | `Record<string, any>` | Yes |  |
+| `revoked_at` | `string | null` | Yes |  |
+| `role` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.PagesMember().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PagesMemberEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -16402,6 +36942,448 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `PagesProjectScenarioEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## PagesRegistryEntity
+
+```ts
+const pages_registry = client.PagesRegistry()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_repository_count` | `number` | Yes |  |
+| `error` | `string | null` | Yes |  |
+| `pagination` | `Record<string, any>` | Yes |  |
+| `repositories` | `any[]` | Yes |  |
+| `repository_count` | `number` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.PagesRegistry().load({ organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PagesRegistryEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## PagesSessionEntity
+
+```ts
+const pages_session = client.PagesSession()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter` | `string` | No |  |
+| `created_at` | `string | null` | Yes |  |
+| `cursor` | `string` | No |  |
+| `ended_at` | `string | null` | Yes |  |
+| `external_session_id` | `string` | Yes |  |
+| `facets` | `Record<string, any>` | Yes |  |
+| `from` | `string` | No |  |
+| `github_access_warnings` | `any[]` | No |  |
+| `harness` | `string` | Yes | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `string` | Yes |  |
+| `last_activity_at` | `string | null` | Yes | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `string | null` | Yes |  |
+| `limit` | `number` | No |  |
+| `markers` | `any[]` | Yes |  |
+| `max_bytes` | `number` | No |  |
+| `mode` | `string` | No |  |
+| `offset` | `number` | No |  |
+| `pagination` | `Record<string, any>` | Yes |  |
+| `query` | `string` | No |  |
+| `repo` | `string` | No |  |
+| `repository` | `any` | Yes |  |
+| `search` | `any` | No |  |
+| `search_enabled` | `boolean` | No |  |
+| `session` | `any` | Yes | Identical serialization to the org sessions page's expanded session, so the web reuses one session-detail builder. |
+| `sessions` | `any[]` | Yes |  |
+| `started_at` | `string | null` | Yes |  |
+| `stats` | `Record<string, any>` | Yes |  |
+| `status` | `string` | No |  |
+| `title` | `string | null` | Yes |  |
+| `to` | `string` | No |  |
+| `token_stats` | `any` | Yes |  |
+| `transcript_index` | `any` | Yes |  |
+| `transcript_stats` | `any` | Yes |  |
+| `updated_at` | `string | null` | Yes |  |
+| `user` | `any` | Yes |  |
+| `user_id` | `string` | No |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `adapter` | - | Yes | - |
+| `created_at` | - | - | - |
+| `cursor` | - | - | - |
+| `ended_at` | - | - | - |
+| `external_session_id` | - | - | - |
+| `facets` | - | - | - |
+| `from` | - | - | - |
+| `github_access_warnings` | - | - | - |
+| `harness` | - | - | - |
+| `id` | - | - | - |
+| `last_activity_at` | - | - | - |
+| `last_checkpoint_at` | - | - | - |
+| `limit` | - | - | - |
+| `markers` | - | - | - |
+| `max_bytes` | - | - | - |
+| `mode` | - | - | - |
+| `offset` | - | - | - |
+| `pagination` | - | - | - |
+| `query` | - | - | - |
+| `repo` | - | - | - |
+| `repository` | - | - | - |
+| `search` | - | - | - |
+| `search_enabled` | - | - | - |
+| `session` | - | - | - |
+| `sessions` | - | - | - |
+| `started_at` | - | - | - |
+| `stats` | - | - | - |
+| `status` | - | Yes | - |
+| `title` | - | - | - |
+| `to` | - | - | - |
+| `token_stats` | - | - | - |
+| `transcript_index` | - | - | - |
+| `transcript_stats` | - | - | - |
+| `updated_at` | - | - | - |
+| `user` | - | - | - |
+| `user_id` | - | - | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.PagesSession().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.PagesSession().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.PagesSession().load({ id: 'pages_session_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PagesSessionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## PairingEntity
+
+```ts
+const pairing = client.Pairing()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `claim` | `/api/v1/relay/pairings/claim` | `client.Pairing().create({ $action: 'claim', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Pairing record — check the API definition for its shape.
+
+```ts
+const result = await client.Pairing().create({
+  $action: 'claim',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.Pairing().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.Pairing().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.Pairing().load({ id: 'pairing_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PairingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## PairingEventEntity
+
+```ts
+const pairing_event = client.PairingEvent()
+```
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.PairingEvent().list({ pairing_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PairingEventEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ParallelV1Entity
+
+```ts
+const parallel_v1 = client.ParallelV1()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `extract` | `/api/v1/organizations/{organization_id}/local_agent/parallel/v1/extract` | `client.ParallelV1().create({ $action: 'extract', ... })` |
+| `search` | `/api/v1/organizations/{organization_id}/local_agent/parallel/v1/search` | `client.ParallelV1().create({ $action: 'search', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ParallelV1 record — check the API definition for its shape.
+
+```ts
+const result = await client.ParallelV1().create({
+  $action: 'extract',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ParallelV1Entity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## PatchsetDiffEntity
+
+```ts
+const patchset_diff = client.PatchsetDiff()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `files` | `any[]` | Yes |  |
+| `id` | `string` | No |  |
+| `patchset` | `Record<string, any>` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.PatchsetDiff().load({ id: 'patchset_diff_id', change_id: 'change_id', organization_id: 'organization_id', patchset_id: 'patchset_id', repo_id: 'repo_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PatchsetDiffEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -16766,6 +37748,151 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `PreviewSharingApprovalEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ProactiveAgentWaitlistEntryEntity
+
+```ts
+const proactive_agent_waitlist_entry = client.ProactiveAgentWaitlistEntry()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `email` | `string` | Yes |  |
+| `first_task` | `string | null` | No | The first job they would hand an agent. |
+| `invite_code` | `string | null` | No | The referral code of the invite link they arrived through. |
+| `places_per_referral` | `number` | Yes | Most places one referral moves the entry up; fewer when boosted entries are ahead. |
+| `position` | `number` | Yes | 1-based place in the queue. |
+| `position_after_next_referral` | `number` | Yes | The place one more referral would give this entry, as Rails would assign it. |
+| `referral_code` | `string` | Yes | Shared in this entry's invite link. |
+| `referral_count` | `number` | Yes | People who joined through this entry's link. |
+| `total` | `number` | Yes | Display total including a random increment per signup; not the actual number of entries. |
+| `website` | `string | null` | No | Honeypot. |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ProactiveAgentWaitlistEntry().create({
+  email: 'example_email',
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ProactiveAgentWaitlistEntry().load({ id: 'proactive_agent_waitlist_entry_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ProactiveAgentWaitlistEntryEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ProductEntity
+
+```ts
+const product = client.Product()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_products` | `any[]` | Yes | Products this organization has activated (PRD 144). |
+| `agents_only` | `boolean` | No | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `boolean` | Yes | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `github_prs_authored_by_change_author` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
+| `logo_url` | `string | null` | Yes |  |
+| `member_count` | `number` | Yes |  |
+| `name` | `string` | Yes |  |
+| `pending_invitation_count` | `number` | Yes |  |
+| `personal` | `boolean` | Yes |  |
+| `product` | `string` | Yes |  |
+| `repository_count` | `number` | Yes |  |
+| `role` | `string | null` | Yes |  |
+| `sandbox_region` | `string` | Yes |  |
+| `shared_agent_personal_accounts_enabled` | `boolean` | No | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` | Yes |  |
+| `source_control_providers` | `any[]` | No | Connected source control providers for this organization. |
+| `source_ui_enabled` | `boolean` | No | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `timezone` | `string` | Yes | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+| `verify_pr_scenario_writing_enabled` | `boolean` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.Product().create({
+  organization_id: 'example_organization_id',
+  product: 'example_product',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ProductEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -19008,6 +40135,140 @@ Return a copy of the entity options.
 
 ---
 
+## PullRequestActionEntity
+
+```ts
+const pull_request_action = client.PullRequestAction()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action_name` | `string` | Yes |  |
+| `body` | `string` | No |  |
+| `comment_id` | `string` | No |  |
+| `comments` | `any[]` | No |  |
+| `event` | `string` | No |  |
+| `expected_head_sha` | `string` | No |  |
+| `id` | `string | null` | No |  |
+| `label` | `string` | No |  |
+| `line` | `number` | No |  |
+| `node_id` | `string | null` | No |  |
+| `operation_key` | `string` | Yes |  |
+| `path` | `string` | No |  |
+| `run_id` | `string` | No |  |
+| `side` | `string` | No |  |
+| `start_line` | `number` | No |  |
+| `start_side` | `string` | No |  |
+| `thread_id` | `string` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.PullRequestAction().create({
+  number: 'example_number',
+  organization_id: 'example_organization_id',
+  pull_request_id: 'example_pull_request_id',
+  action_name: 'example_action_name',
+  operation_key: 'example_operation_key',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PullRequestActionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## PullRequestMagicMergeEntity
+
+```ts
+const pull_request_magic_merge = client.PullRequestMagicMerge()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `merge` | `/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/merge` | `client.PullRequestMagicMerge().create({ $action: 'merge', ... })` |
+| `rebase` | `/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/rebase` | `client.PullRequestMagicMerge().create({ $action: 'rebase', ... })` |
+| `resolve` | `/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/resolve` | `client.PullRequestMagicMerge().create({ $action: 'resolve', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+PullRequestMagicMerge record — check the API definition for its shape.
+
+```ts
+const result = await client.PullRequestMagicMerge().create({
+  $action: 'merge',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PullRequestMagicMergeEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## PullRequestSettingEntity
 
 ```ts
@@ -19292,6 +40553,122 @@ Return a copy of the entity options.
 
 ---
 
+## PullRequestTranscriptEntity
+
+```ts
+const pull_request_transcript = client.PullRequestTranscript()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter` | `string` | Yes |  |
+| `created_at` | `string | null` | Yes |  |
+| `ended_at` | `string | null` | Yes |  |
+| `external_session_id` | `string` | Yes |  |
+| `harness` | `string` | Yes | Harness id the session presents as (codex, claude-code, cursor, roder, grok): the captured envelope's harness when recorded, else the adapter's canonical harness. |
+| `id` | `string` | Yes |  |
+| `last_activity_at` | `string | null` | Yes | When the session last did anything: the newest checkpoint capture, else the session end, else its start. |
+| `last_checkpoint_at` | `string | null` | Yes |  |
+| `repository` | `any` | Yes |  |
+| `started_at` | `string | null` | Yes |  |
+| `stats` | `Record<string, any>` | Yes |  |
+| `status` | `string` | Yes |  |
+| `title` | `string | null` | Yes |  |
+| `updated_at` | `string | null` | Yes |  |
+| `user` | `any` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.PullRequestTranscript().list({ organization_id: "example", pull_request_id: "example", repo_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PullRequestTranscriptEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## PullZoneEntity
+
+```ts
+const pull_zone = client.PullZone()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `slug` | `string` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.PullZone().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `PullZoneEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## RecorderEntity
 
 ```ts
@@ -19464,6 +40841,162 @@ Return a copy of the entity options.
 
 ---
 
+## RelayAgentConnectionEntity
+
+```ts
+const relay_agent_connection = client.RelayAgentConnection()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_card_url` | `string` | Yes |  |
+| `auth_scheme` | `string` | Yes |  |
+| `can_configure` | `boolean` | Yes |  |
+| `can_disconnect` | `boolean` | Yes |  |
+| `can_setup` | `boolean` | Yes |  |
+| `connection` | `Record<string, any>` | Yes |  |
+| `credential` | `string | null` | No | Write-only outbound key. |
+| `error_code` | `string | null` | Yes |  |
+| `expected_generation` | `number` | Yes |  |
+| `generation` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `remote_agent` | `string | null` | Yes |  |
+| `requester_id` | `string` | Yes |  |
+| `retired_at` | `string | null` | Yes |  |
+| `revoked_at` | `string | null` | Yes |  |
+| `scope_key` | `string` | Yes |  |
+| `source_operation_id` | `string | null` | Yes |  |
+| `state` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | remove |
+| --- | --- | --- | --- | --- | --- |
+| `agent_card_url` | - | - | - | - | - |
+| `auth_scheme` | - | - | - | - | - |
+| `can_configure` | - | - | - | - | - |
+| `can_disconnect` | - | - | - | - | - |
+| `can_setup` | - | - | - | - | - |
+| `connection` | - | - | - | - | - |
+| `credential` | - | - | - | - | - |
+| `error_code` | - | - | - | - | - |
+| `expected_generation` | - | - | - | - | - |
+| `generation` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `remote_agent` | - | - | Yes | Yes | - |
+| `requester_id` | - | - | - | - | - |
+| `retired_at` | - | - | - | - | - |
+| `revoked_at` | - | - | - | - | - |
+| `scope_key` | - | - | - | - | - |
+| `source_operation_id` | - | - | Yes | - | - |
+| `state` | - | - | - | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `setup` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/setup` | `client.RelayAgentConnection().create({ $action: 'setup', ... })` |
+| `change` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/{connection_id}/change` | `client.RelayAgentConnection().load({ $action: 'change', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RelayAgentConnection record — check the API definition for its shape.
+
+```ts
+const result = await client.RelayAgentConnection().create({
+  $action: 'setup',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RelayAgentConnection().create({
+  agent_id: 'example_agent_id',
+  organization_id: 'example_organization_id',
+  agent_card_url: 'example_agent_card_url',
+  auth_scheme: 'example_auth_scheme',
+  name: 'example_name',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RelayAgentConnection().list({ agent_id: "example", organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.RelayAgentConnection().load({ id: 'relay_agent_connection_id', agent_id: 'agent_id', organization_id: 'organization_id' })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.RelayAgentConnection().remove({ id: 'relay_agent_connection_id', agent_id: 'agent_id', organization_id: 'organization_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.RelayAgentConnection().update({
+  id: 'relay_agent_connection_id',
+  agent_id: 'agent_id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RelayAgentConnectionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## RelayAgentLocalThreadEntity
 
 ```ts
@@ -19501,6 +41034,1382 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `RelayAgentLocalThreadEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RelaySignalEntity
+
+```ts
+const relay_signal = client.RelaySignal()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RelaySignal().create({
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RelaySignalEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ReleaseRolloutEntity
+
+```ts
+const release_rollout = client.ReleaseRollout()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `complete` | `/api/v1/execution/releases/{release_id}/rollouts/{id}/complete` | `client.ReleaseRollout().create({ $action: 'complete', ... })` |
+| `fail` | `/api/v1/execution/releases/{release_id}/rollouts/{id}/fail` | `client.ReleaseRollout().create({ $action: 'fail', ... })` |
+| `start` | `/api/v1/execution/releases/{release_id}/rollouts/{id}/start` | `client.ReleaseRollout().create({ $action: 'start', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ReleaseRollout record — check the API definition for its shape.
+
+```ts
+const result = await client.ReleaseRollout().create({
+  $action: 'complete',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ReleaseRollout().create({
+  release_id: 'example_release_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.ReleaseRollout().list({ release_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ReleaseRollout().load({ id: 'release_rollout_id', release_id: 'release_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ReleaseRolloutEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepoEntity
+
+```ts
+const repo = client.Repo()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_retry_import` | `boolean` | Yes | True when a failed client import can be requeued for CLI resume. |
+| `can_retry_sync` | `boolean` | Yes | True when the latest sync run failed and can be retried. |
+| `disclaimer` | `string | null` | Yes |  |
+| `federated_in_home` | `boolean` | Yes | True when this Space is a folder virtual repository inside the organization Home monorepo. |
+| `github_repository` | `string | null` | Yes |  |
+| `icon_name` | `string` | Yes |  |
+| `id` | `string` | Yes | Virtual repository public ID for non-Home rows; Home uses the physical repository public ID. |
+| `import_item_id` | `string | null` | Yes |  |
+| `is_home` | `boolean` | Yes |  |
+| `name` | `string` | Yes |  |
+| `remote_repository` | `string | null` | No |  |
+| `root_path` | `string | null` | Yes | Home-relative folder path when federated_in_home is true; null otherwise. |
+| `slug` | `string` | Yes |  |
+| `sync_error_message` | `string | null` | Yes |  |
+| `sync_provider` | `string` | No |  |
+| `sync_status` | `string` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `access` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/access` | `client.Repo().load({ $action: 'access', ... })` |
+| `sync` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/sync` | `client.Repo().load({ $action: 'sync', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Repo record — check the API definition for its shape.
+
+```ts
+const result = await client.Repo().load({
+  $action: 'access',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.Repo().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.Repo().remove({ id: 'repo_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepoEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepoAccessTokenEntity
+
+```ts
+const repo_access_token = client.RepoAccessToken()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `access_token` | `Record<string, any>` | Yes |  |
+| `active` | `boolean` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `credential_purpose` | `string` | No | Issues a revocable read-write system credential valid for one hour. |
+| `expires_at` | `string | null` | Yes |  |
+| `expires_at_label` | `string | null` | Yes |  |
+| `expires_in_days` | `number | null` | No |  |
+| `id` | `string` | Yes |  |
+| `last_used_at` | `string | null` | Yes |  |
+| `last_used_at_label` | `string | null` | Yes |  |
+| `name` | `string` | Yes |  |
+| `permission_level` | `string` | No |  |
+| `plain_text_token` | `string` | Yes |  |
+| `revoked_at` | `string | null` | Yes |  |
+| `revoked_at_label` | `string | null` | Yes |  |
+| `token_preview` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | remove |
+| --- | --- | --- | --- |
+| `access_token` | - | - | - |
+| `active` | - | - | - |
+| `created_at` | - | - | - |
+| `created_at_label` | - | - | - |
+| `credential_purpose` | - | - | - |
+| `expires_at` | - | - | - |
+| `expires_at_label` | - | - | - |
+| `expires_in_days` | - | - | - |
+| `id` | - | - | - |
+| `last_used_at` | - | - | - |
+| `last_used_at_label` | - | - | - |
+| `name` | - | - | - |
+| `permission_level` | Yes | - | - |
+| `plain_text_token` | - | - | - |
+| `revoked_at` | - | - | - |
+| `revoked_at_label` | - | - | - |
+| `token_preview` | - | - | - |
+| `updated_at` | - | - | - |
+| `updated_at_label` | - | - | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RepoAccessToken().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  name: 'example_name',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RepoAccessToken().list({ organization_id: "example", repo_id: "example" })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.RepoAccessToken().remove({ id: 'repo_access_token_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepoAccessTokenEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepoActionEntity
+
+```ts
+const repo_action = client.RepoAction()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `pipeline` | `Record<string, any>` | Yes |  |
+| `run` | `Record<string, any>` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RepoAction().list({ organization_id: "example", repo_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepoActionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepoAgentCheckpointEntity
+
+```ts
+const repo_agent_checkpoint = client.RepoAgentCheckpoint()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `download` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_checkpoints/{id}/download` | `client.RepoAgentCheckpoint().load({ $action: 'download', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RepoAgentCheckpoint record — check the API definition for its shape.
+
+```ts
+const result = await client.RepoAgentCheckpoint().load({
+  $action: 'download',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.RepoAgentCheckpoint().load({ id: 'repo_agent_checkpoint_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepoAgentCheckpointEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepoAgentSessionEntity
+
+```ts
+const repo_agent_session = client.RepoAgentSession()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `adapter` | `string` | No |  |
+| `agent_session` | `Record<string, any>` | Yes |  |
+| `external_session_id` | `string` | No |  |
+| `id` | `string` | No |  |
+| `status` | `string` | No |  |
+| `title` | `string | null` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `complete` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete` | `client.RepoAgentSession().create({ $action: 'complete', ... })` |
+| `transcript` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/transcript` | `client.RepoAgentSession().load({ $action: 'transcript', ... })` |
+| `transcript_export` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/transcript_export` | `client.RepoAgentSession().load({ $action: 'transcript_export', ... })` |
+| `transcript_index` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/transcript_index` | `client.RepoAgentSession().load({ $action: 'transcript_index', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RepoAgentSession record — check the API definition for its shape.
+
+```ts
+const result = await client.RepoAgentSession().create({
+  $action: 'complete',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RepoAgentSession().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RepoAgentSession().list({ organization_id: "example", repo_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.RepoAgentSession().load({ id: 'repo_agent_session_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.RepoAgentSession().patch({
+  id: 'repo_agent_session_id',
+  organization_id: 'organization_id',
+  repo_id: 'repo_id',
+  // Only the fields to change
+})
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.RepoAgentSession().update({
+  id: 'repo_agent_session_id',
+  organization_id: 'organization_id',
+  repo_id: 'repo_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepoAgentSessionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepoBookmarkProtectionEntity
+
+```ts
+const repo_bookmark_protection = client.RepoBookmarkProtection()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `actor_policy` | `Record<string, any>` | Yes |  |
+| `bypass_mode` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_by_user_id` | `string | null` | Yes |  |
+| `enabled` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `priority` | `number` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `requirements` | `Record<string, any>` | Yes |  |
+| `target_kind` | `string` | Yes |  |
+| `target_pattern` | `string | null` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_by_user_id` | `string | null` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- | --- |
+| `actor_policy` | - | - | Yes | Yes | Yes | - |
+| `bypass_mode` | - | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - | - |
+| `created_by_user_id` | - | - | - | - | - | - |
+| `enabled` | - | - | Yes | Yes | Yes | - |
+| `id` | - | - | - | - | - | - |
+| `name` | - | - | Yes | Yes | Yes | - |
+| `organization_id` | - | - | - | - | - | - |
+| `priority` | - | - | Yes | Yes | Yes | - |
+| `repository_id` | - | - | - | - | - | - |
+| `requirements` | - | - | Yes | Yes | Yes | - |
+| `target_kind` | - | - | Yes | Yes | Yes | - |
+| `target_pattern` | - | - | Yes | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - | - |
+| `updated_by_user_id` | - | - | - | - | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `simulate` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections/simulate` | `client.RepoBookmarkProtection().create({ $action: 'simulate', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RepoBookmarkProtection record — check the API definition for its shape.
+
+```ts
+const result = await client.RepoBookmarkProtection().create({
+  $action: 'simulate',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RepoBookmarkProtection().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RepoBookmarkProtection().list({ organization_id: "example", repo_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.RepoBookmarkProtection().load({ id: 'repo_bookmark_protection_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.RepoBookmarkProtection().patch({
+  id: 'repo_bookmark_protection_id',
+  organization_id: 'organization_id',
+  repo_id: 'repo_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.RepoBookmarkProtection().remove({ id: 'repo_bookmark_protection_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.RepoBookmarkProtection().update({
+  id: 'repo_bookmark_protection_id',
+  organization_id: 'organization_id',
+  repo_id: 'repo_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepoBookmarkProtectionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepoBookmarkProtectionEventEntity
+
+```ts
+const repo_bookmark_protection_event = client.RepoBookmarkProtectionEvent()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action` | `string` | Yes |  |
+| `actor_kind` | `string` | Yes |  |
+| `actor_label` | `string | null` | Yes |  |
+| `actor_user_id` | `string | null` | Yes |  |
+| `bookmark_name` | `string` | Yes |  |
+| `bookmark_protection_rule_id` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `decision` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `intent` | `string | null` | Yes |  |
+| `metadata` | `Record<string, any>` | Yes |  |
+| `new_target` | `string | null` | Yes |  |
+| `old_target` | `string | null` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `reason_codes` | `any[]` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `source_request_id` | `string | null` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RepoBookmarkProtectionEvent().list({ organization_id: "example", repo_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepoBookmarkProtectionEventEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepoCloudWorkspaceBackupEntity
+
+```ts
+const repo_cloud_workspace_backup = client.RepoCloudWorkspaceBackup()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `restore_request` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/restore_request` | `client.RepoCloudWorkspaceBackup().create({ $action: 'restore_request', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RepoCloudWorkspaceBackup record — check the API definition for its shape.
+
+```ts
+const result = await client.RepoCloudWorkspaceBackup().create({
+  $action: 'restore_request',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RepoCloudWorkspaceBackup().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RepoCloudWorkspaceBackup().list({ organization_id: "example", repo_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.RepoCloudWorkspaceBackup().load({ id: 'repo_cloud_workspace_backup_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepoCloudWorkspaceBackupEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepoCodeRuleEntity
+
+```ts
+const repo_code_rule = client.RepoCodeRule()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active_revision_number` | `number | null` | Yes |  |
+| `capabilities` | `Record<string, any>` | Yes |  |
+| `code_rule` | `any` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `definition` | `Record<string, any>` | Yes |  |
+| `draft_pending` | `boolean` | Yes | The latest revision is not the active one |
+| `enabled` | `boolean` | Yes |  |
+| `expected_version` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `latest_revision_number` | `number` | Yes |  |
+| `name` | `string` | Yes | Name of the latest revision |
+| `repository` | `Record<string, any>` | Yes |  |
+| `scope` | `any[]` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `state_version` | `number` | Yes | Send back as expected_version on every mutation |
+| `updated_at` | `string` | Yes |  |
+| `web_url` | `string` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `activation` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/{rule}/activation` | `client.RepoCodeRule().remove({ $action: 'activation', ... })` |
+| `activation` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/{rule}/activation` | `client.RepoCodeRule().update({ $action: 'activation', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RepoCodeRule record — check the API definition for its shape.
+
+```ts
+const result = await client.RepoCodeRule().remove({
+  $action: 'activation',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RepoCodeRule().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  definition: {},
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RepoCodeRule().list({ organization_id: "example", repo_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.RepoCodeRule().load({ id: 'repo_code_rule_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.RepoCodeRule().patch({
+  id: 'repo_code_rule_id',
+  organization_id: 'organization_id',
+  repo_id: 'repo_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.RepoCodeRule().remove({ id: 'repo_code_rule_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.RepoCodeRule().update({
+  id: 'repo_code_rule_id',
+  organization_id: 'organization_id',
+  repo_id: 'repo_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepoCodeRuleEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepoSettingEntity
+
+```ts
+const repo_setting = client.RepoSetting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active` | `boolean` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `description` | `string | null` | Yes |  |
+| `expires_at` | `string | null` | Yes |  |
+| `expires_at_label` | `string | null` | Yes |  |
+| `icon_name` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_used_at` | `string | null` | Yes |  |
+| `last_used_at_label` | `string | null` | Yes |  |
+| `merge_authority` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `permission_level` | `string` | Yes |  |
+| `revoked_at` | `string | null` | Yes |  |
+| `revoked_at_label` | `string | null` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `token_preview` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | update |
+| --- | --- | --- |
+| `active` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `description` | - | Yes |
+| `expires_at` | - | - |
+| `expires_at_label` | - | - |
+| `icon_name` | - | Yes |
+| `id` | - | - |
+| `last_used_at` | - | - |
+| `last_used_at_label` | - | - |
+| `merge_authority` | - | - |
+| `name` | - | Yes |
+| `organization_id` | - | - |
+| `permission_level` | - | - |
+| `revoked_at` | - | - |
+| `revoked_at_label` | - | - |
+| `slug` | - | - |
+| `status` | - | Yes |
+| `token_preview` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `land_method` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/land_method` | `client.RepoSetting().update({ $action: 'land_method', ... })` |
+| `magic_merge` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/magic_merge` | `client.RepoSetting().update({ $action: 'magic_merge', ... })` |
+| `trunk` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/trunk` | `client.RepoSetting().update({ $action: 'trunk', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RepoSetting record — check the API definition for its shape.
+
+```ts
+const result = await client.RepoSetting().update({
+  $action: 'land_method',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RepoSetting().list({ organization_id: "example", repo_id: "example" })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.RepoSetting().update({
+  organization_id: 'organization_id',
+  repo_id: 'repo_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepoSettingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepoStatEntity
+
+```ts
+const repo_stat = client.RepoStat()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `repository_stats` | `Record<string, any>` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `refresh` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/stats/refresh` | `client.RepoStat().create({ $action: 'refresh', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RepoStat record — check the API definition for its shape.
+
+```ts
+const result = await client.RepoStat().create({
+  $action: 'refresh',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RepoStat().list({ organization_id: "example", repo_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepoStatEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepoVcEntity
+
+```ts
+const repo_vc = client.RepoVc()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `commit_file` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commit_file` | `client.RepoVc().create({ $action: 'commit_file', ... })` |
+| `merge` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge` | `client.RepoVc().create({ $action: 'merge', ... })` |
+| `archive_zip` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/archive.zip` | `client.RepoVc().load({ $action: 'archive_zip', ... })` |
+| `blame` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/blame` | `client.RepoVc().load({ $action: 'blame', ... })` |
+| `blob` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/blob` | `client.RepoVc().load({ $action: 'blob', ... })` |
+| `merge_policy` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_policy` | `client.RepoVc().load({ $action: 'merge_policy', ... })` |
+| `tree` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/tree` | `client.RepoVc().load({ $action: 'tree', ... })` |
+| `trunk_tip` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/trunk_tip` | `client.RepoVc().load({ $action: 'trunk_tip', ... })` |
+| `merge_policy` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_policy` | `client.RepoVc().update({ $action: 'merge_policy', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RepoVc record — check the API definition for its shape.
+
+```ts
+const result = await client.RepoVc().create({
+  $action: 'commit_file',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepoVcEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepoVcCommitEntity
+
+```ts
+const repo_vc_commit = client.RepoVcCommit()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `name` | `string` | Yes |  |
+| `target_commit_id` | `string` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RepoVcCommit().list({ organization_id: "example", repo_id: "example", ref: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepoVcCommitEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -19618,6 +42527,1077 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `ReportScenarioEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepositoryAccessEntity
+
+```ts
+const repository_access = client.RepositoryAccess()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `authorize` | `/api/v1/repository_access/authorize` | `client.RepositoryAccess().create({ $action: 'authorize', ... })` |
+| `authorize_git` | `/api/v1/repository_access/authorize_git` | `client.RepositoryAccess().create({ $action: 'authorize_git', ... })` |
+| `catalog` | `/api/v1/repository_access/catalog` | `client.RepositoryAccess().load({ $action: 'catalog', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RepositoryAccess record — check the API definition for its shape.
+
+```ts
+const result = await client.RepositoryAccess().create({
+  $action: 'authorize',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepositoryAccessEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepositoryAccessResolveEntity
+
+```ts
+const repository_access_resolve = client.RepositoryAccessResolve()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `default_branch` | `string` | Yes |  |
+| `git_auth_username` | `string` | Yes |  |
+| `git_https_clone_url` | `string | null` | Yes |  |
+| `git_https_supported` | `boolean` | Yes |  |
+| `github_access_warnings` | `any[]` | No |  |
+| `id` | `string` | No |  |
+| `membership_role` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `organization_name` | `string` | Yes |  |
+| `organization_slug` | `string` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `repository_name` | `string` | Yes |  |
+| `repository_slug` | `string` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.RepositoryAccessResolve().load({ id: 'repository_access_resolve_id', resolve_id: 'resolve_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepositoryAccessResolveEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepositoryEventEntity
+
+```ts
+const repository_event = client.RepositoryEvent()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `walgit` | `/api/v1/repository_events/walgit` | `client.RepositoryEvent().create({ $action: 'walgit', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RepositoryEvent record — check the API definition for its shape.
+
+```ts
+const result = await client.RepositoryEvent().create({
+  $action: 'walgit',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepositoryEventEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepositoryImportEntity
+
+```ts
+const repository_import = client.RepositoryImport()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_connections` | `boolean` | Yes |  |
+| `github_imports` | `any[]` | Yes |  |
+| `github_installations` | `any[]` | Yes |  |
+| `gitlab_configured` | `boolean` | Yes |  |
+| `gitlab_imports` | `any[]` | Yes |  |
+| `gitlab_integrations` | `any[]` | Yes |  |
+| `gitlab_redirect_uri` | `string | null` | Yes |  |
+| `gitlab_self_managed_available` | `boolean` | Yes |  |
+| `inventory_errors` | `any[]` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `repositories` | `any[]` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.RepositoryImport().load({ organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepositoryImportEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepositoryImportSessionEntity
+
+```ts
+const repository_import_session = client.RepositoryImportSession()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `action_required` | `string` | No |  |
+| `authorization_endpoint` | `string` | No |  |
+| `can_authorize_github` | `boolean` | Yes |  |
+| `client_name` | `string | null` | Yes |  |
+| `client_version` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `error_message` | `string | null` | Yes |  |
+| `expires_at` | `string` | Yes |  |
+| `git_imports` | `any[]` | Yes |  |
+| `github_app_installation_id` | `string | null` | Yes |  |
+| `github_connected` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
+| `idempotency_key` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `organization_slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | create |
+| --- | --- | --- |
+| `action_required` | - | - |
+| `authorization_endpoint` | - | - |
+| `can_authorize_github` | - | - |
+| `client_name` | - | Yes |
+| `client_version` | - | Yes |
+| `created_at` | - | - |
+| `error_message` | - | - |
+| `expires_at` | - | - |
+| `git_imports` | - | - |
+| `github_app_installation_id` | - | Yes |
+| `github_connected` | - | - |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `organization_id` | - | - |
+| `organization_slug` | - | - |
+| `status` | - | - |
+| `updated_at` | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `authorization` | `/api/v1/repository_import_sessions/{id}/authorization` | `client.RepositoryImportSession().create({ $action: 'authorization', ... })` |
+| `cancel` | `/api/v1/repository_import_sessions/{id}/cancel` | `client.RepositoryImportSession().create({ $action: 'cancel', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RepositoryImportSession record — check the API definition for its shape.
+
+```ts
+const result = await client.RepositoryImportSession().create({
+  $action: 'authorization',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RepositoryImportSession().create({
+  organization_id: 'example_organization_id',
+  idempotency_key: 'example_idempotency_key',
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.RepositoryImportSession().load({ id: 'repository_import_session_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepositoryImportSessionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepositoryImportSessionRepositoryEntity
+
+```ts
+const repository_import_session_repository = client.RepositoryImportSessionRepository()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `default_branch` | `string | null` | Yes |  |
+| `full_name` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `owner` | `string` | Yes |  |
+| `private` | `boolean` | Yes |  |
+| `reason` | `string | null` | No |  |
+| `selectable` | `boolean` | Yes |  |
+| `status` | `string` | Yes |  |
+| `visibility` | `string` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RepositoryImportSessionRepository().list({ repository_import_session_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepositoryImportSessionRepositoryEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepositoryImportSessionSelectionEntity
+
+```ts
+const repository_import_session_selection = client.RepositoryImportSessionSelection()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `repositories` | `any` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RepositoryImportSessionSelection().create({
+  repository_import_session_id: 'example_repository_import_session_id',
+  repositories: 'example_repositories',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepositoryImportSessionSelectionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RepositorySandboxEnvironmentEntity
+
+```ts
+const repository_sandbox_environment = client.RepositorySandboxEnvironment()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `validate` | `/api/v1/repositories/{repository}/sandbox_environments/validate` | `client.RepositorySandboxEnvironment().create({ $action: 'validate', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RepositorySandboxEnvironment record — check the API definition for its shape.
+
+```ts
+const result = await client.RepositorySandboxEnvironment().create({
+  $action: 'validate',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.RepositorySandboxEnvironment().load({ id: 'repository_sandbox_environment_id', repository_id: 'repository_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RepositorySandboxEnvironmentEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RoderCodeRepairEntity
+
+```ts
+const roder_code_repair = client.RoderCodeRepair()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `base_sha` | `string` | Yes |  |
+| `cancel_requested` | `boolean` | Yes |  |
+| `failure_code` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `launch_state` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `repository_slug` | `string` | Yes |  |
+| `roder_thread_id` | `string | null` | Yes |  |
+| `roder_turn_id` | `string | null` | Yes |  |
+| `scenario_run_id` | `string` | Yes |  |
+| `task` | `Record<string, any> | null` | Yes |  |
+| `trigger_kind` | `string` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `cancel` | `/api/v1/agent/roder/code_repairs/{id}/cancel` | `client.RoderCodeRepair().create({ $action: 'cancel', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RoderCodeRepair record — check the API definition for its shape.
+
+```ts
+const result = await client.RoderCodeRepair().create({
+  $action: 'cancel',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RoderCodeRepair().create({
+  base_sha: 'example_base_sha',
+  organization_id: 'example_organization_id',
+  repository_slug: 'example_repository_slug',
+  scenario_run_id: 'example_scenario_run_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RoderCodeRepair().list({ scenario_run_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.RoderCodeRepair().load({ id: 'roder_code_repair_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RoderCodeRepairEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RoderCodeRepairSettingEntity
+
+```ts
+const roder_code_repair_setting = client.RoderCodeRepairSetting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available` | `boolean` | Yes |  |
+| `daily_limit` | `number` | Yes |  |
+| `enabled` | `boolean` | Yes |  |
+| `enabled_at` | `string | null` | Yes |  |
+| `operator_user_id` | `string | null` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `repository_slug` | `string | null` | Yes | Connected Composal repository required when enabling |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `available` | - | - |
+| `daily_limit` | - | - |
+| `enabled` | - | - |
+| `enabled_at` | - | - |
+| `operator_user_id` | - | - |
+| `organization_id` | - | - |
+| `repository_slug` | - | Yes |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RoderCodeRepairSetting().create({
+  enabled: true,
+  organization_id: 'example_organization_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RoderCodeRepairSetting().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RoderCodeRepairSettingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RoderMachineEntity
+
+```ts
+const roder_machine = client.RoderMachine()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.RoderMachine().update({
+  id: 'id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RoderMachineEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RoderRunEntity
+
+```ts
+const roder_run = client.RoderRun()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `swarm_activity` | `/api/v1/agent/roder/run/swarm_activity` | `client.RoderRun().create({ $action: 'swarm_activity', ... })` |
+| `swarm_stack` | `/api/v1/agent/roder/run/swarm_stack` | `client.RoderRun().create({ $action: 'swarm_stack', ... })` |
+| `swarm_transcript` | `/api/v1/agent/roder/run/swarm_transcript` | `client.RoderRun().create({ $action: 'swarm_transcript', ... })` |
+| `workspace_authorization` | `/api/v1/agent/roder/run/workspace_authorization` | `client.RoderRun().create({ $action: 'workspace_authorization', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RoderRun record — check the API definition for its shape.
+
+```ts
+const result = await client.RoderRun().create({
+  $action: 'swarm_activity',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RoderRunEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RoderWorkspaceCredentialEntity
+
+```ts
+const roder_workspace_credential = client.RoderWorkspaceCredential()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `api_token` | `string` | Yes | Short-lived personal access token for the spawning user. |
+| `author_email` | `string` | Yes |  |
+| `author_name` | `string` | Yes |  |
+| `clone_url` | `string` | Yes |  |
+| `default_branch` | `string` | Yes |  |
+| `expires_at` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `repository_slug` | `string` | Yes |  |
+| `repository_spec` | `string` | Yes | The explicitly selected physical repository address. |
+| `required_lifetime_seconds` | `number` | Yes | Lifetime the pending clone or command must be able to complete within. |
+| `token` | `string` | Yes | Short-lived read/write repository credential. |
+| `username` | `string` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RoderWorkspaceCredential().create({
+  required_lifetime_seconds: 1,
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RoderWorkspaceCredentialEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RunArtifactEntity
+
+```ts
+const run_artifact = client.RunArtifact()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RunArtifact().create({
+  pipeline_id: 'example_pipeline_id',
+  run_id: 'example_run_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RunArtifact().list({ pipeline_id: "example", run_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RunArtifactEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RunJobEntity
+
+```ts
+const run_job = client.RunJob()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `active` | `boolean` | Yes |  |
+| `allow_failure` | `boolean` | Yes |  |
+| `cache_archive_observations` | `Record<string, any> | null` | Yes | Bounded server response history; it does not confirm runner extraction or test-result reuse. |
+| `ci_pipeline_run_id` | `string` | Yes |  |
+| `ci_runner_id` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `dependencies_csv` | `string | null` | Yes |  |
+| `display_id` | `number` | Yes |  |
+| `environment_csv` | `string | null` | Yes |  |
+| `execution_order` | `number` | Yes |  |
+| `execution_profile` | `string | null` | No |  |
+| `exit_code` | `number | null` | Yes |  |
+| `failed` | `boolean` | Yes |  |
+| `finished_at` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `log_chunks` | `any[]` | Yes |  |
+| `name` | `string` | Yes |  |
+| `number` | `number` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `queued_at` | `string | null` | Yes |  |
+| `reconciliation_id` | `string | null` | No |  |
+| `retry_number` | `number` | Yes |  |
+| `reuse` | `Record<string, any> | null` | Yes |  |
+| `runner_label_selector` | `string | null` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `started_at` | `string | null` | Yes |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `status_state` | `string` | Yes |  |
+| `status_tone` | `string` | Yes |  |
+| `steps` | `any[]` | Yes |  |
+| `timeout_seconds` | `number | null` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RunJob().create({
+  pipeline_id: 'example_pipeline_id',
+  run_id: 'example_run_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RunJob().list({ pipeline_id: "example", run_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.RunJob().load({ id: 'run_job_id', pipeline_id: 'pipeline_id', run_id: 'run_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RunJobEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -19880,6 +43860,543 @@ Return a copy of the entity options.
 
 ---
 
+## RunWorkspaceCredentialEntity
+
+```ts
+const run_workspace_credential = client.RunWorkspaceCredential()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RunWorkspaceCredential().create({
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RunWorkspaceCredentialEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RunnerLeaseEntity
+
+```ts
+const runner_lease = client.RunnerLease()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `claim` | `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim` | `client.RunnerLease().create({ $action: 'claim', ... })` |
+| `heartbeat` | `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/heartbeat` | `client.RunnerLease().create({ $action: 'heartbeat', ... })` |
+| `release` | `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/release` | `client.RunnerLease().create({ $action: 'release', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RunnerLease record — check the API definition for its shape.
+
+```ts
+const result = await client.RunnerLease().create({
+  $action: 'claim',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RunnerLease().create({
+  runner_id: 'example_runner_id',
+  runner_pool_id: 'example_runner_pool_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RunnerLease().list({ runner_id: "example", runner_pool_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RunnerLeaseEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RunnerPoolNodeEnrollmentTokenEntity
+
+```ts
+const runner_pool_node_enrollment_token = client.RunnerPoolNodeEnrollmentToken()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `capabilities_csv` | `string | null` | Yes |  |
+| `ci_runner_pool_id` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `creator_user_id` | `string | null` | Yes |  |
+| `description` | `string | null` | Yes |  |
+| `expires_at` | `string | null` | Yes |  |
+| `expires_at_label` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `last_used_at` | `string | null` | Yes |  |
+| `last_used_at_label` | `string | null` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `raw_token` | `string | null` | Yes |  |
+| `revoked_at` | `string | null` | Yes |  |
+| `status` | `string` | Yes |  |
+| `token_hint` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+| `usage_count` | `number` | Yes |  |
+| `usage_count_label` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `capabilities_csv` | - | Yes |
+| `ci_runner_pool_id` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `creator_user_id` | - | - |
+| `description` | - | Yes |
+| `expires_at` | - | Yes |
+| `expires_at_label` | - | - |
+| `id` | - | - |
+| `kind` | - | Yes |
+| `last_used_at` | - | - |
+| `last_used_at_label` | - | - |
+| `name` | - | - |
+| `organization_id` | - | - |
+| `raw_token` | - | - |
+| `revoked_at` | - | - |
+| `status` | - | - |
+| `token_hint` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+| `usage_count` | - | - |
+| `usage_count_label` | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `revoke` | `/api/v1/ci/runner_pools/{runner_pool_id}/node_enrollment_tokens/{id}/revoke` | `client.RunnerPoolNodeEnrollmentToken().create({ $action: 'revoke', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RunnerPoolNodeEnrollmentToken record — check the API definition for its shape.
+
+```ts
+const result = await client.RunnerPoolNodeEnrollmentToken().create({
+  $action: 'revoke',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RunnerPoolNodeEnrollmentToken().create({
+  runner_pool_id: 'example_runner_pool_id',
+  name: 'example_name',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RunnerPoolNodeEnrollmentToken().list({ runner_pool_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RunnerPoolNodeEnrollmentTokenEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RunnerPoolRunnerEntity
+
+```ts
+const runner_pool_runner = client.RunnerPoolRunner()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `heartbeat` | `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat` | `client.RunnerPoolRunner().create({ $action: 'heartbeat', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RunnerPoolRunner record — check the API definition for its shape.
+
+```ts
+const result = await client.RunnerPoolRunner().create({
+  $action: 'heartbeat',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RunnerPoolRunner().create({
+  runner_pool_id: 'example_runner_pool_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RunnerPoolRunner().list({ runner_pool_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.RunnerPoolRunner().load({ id: 'runner_pool_runner_id', runner_pool_id: 'runner_pool_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.RunnerPoolRunner().patch({
+  id: 'runner_pool_runner_id',
+  runner_pool_id: 'runner_pool_id',
+  // Only the fields to change
+})
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.RunnerPoolRunner().update({
+  id: 'runner_pool_runner_id',
+  runner_pool_id: 'runner_pool_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RunnerPoolRunnerEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## RuntimeInstanceHealthSnapshotEntity
+
+```ts
+const runtime_instance_health_snapshot = client.RuntimeInstanceHealthSnapshot()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.RuntimeInstanceHealthSnapshot().create({
+  runtime_instance_id: 'example_runtime_instance_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.RuntimeInstanceHealthSnapshot().list({ runtime_instance_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `RuntimeInstanceHealthSnapshotEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SandboxIntegrationEntity
+
+```ts
+const sandbox_integration = client.SandboxIntegration()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage` | `boolean` | Yes |  |
+| `catalog` | `any[]` | Yes |  |
+| `configuration` | `Record<string, any>` | Yes |  |
+| `connected_profiles` | `Record<string, any>` | Yes | Connected profiles per provider across the organization. |
+| `credentials` | `Record<string, any>` | Yes |  |
+| `enabled` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
+| `integrations` | `any[]` | Yes |  |
+| `name` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `version` | `number` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create | update | patch |
+| --- | --- | --- | --- | --- |
+| `can_manage` | - | - | - | - |
+| `catalog` | - | - | - | - |
+| `configuration` | - | - | - | - |
+| `connected_profiles` | - | - | - | - |
+| `credentials` | - | - | Yes | Yes |
+| `enabled` | - | - | Yes | Yes |
+| `id` | - | - | - | - |
+| `integrations` | - | - | - | - |
+| `name` | - | - | Yes | Yes |
+| `provider` | - | - | - | - |
+| `version` | - | - | - | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SandboxIntegration().create({
+  organization_id: 'example_organization_id',
+  configuration: {},
+  credentials: {},
+  name: 'example_name',
+  provider: 'example_provider',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SandboxIntegration().list({ organization_id: "example" })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.SandboxIntegration().patch({
+  id: 'id',
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SandboxIntegration().update({
+  id: 'id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SandboxIntegrationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## ScenarioRevisionEntity
 
 ```ts
@@ -20058,6 +44575,255 @@ Return a copy of the entity options.
 
 ---
 
+## SecretGrantEntity
+
+```ts
+const secret_grant = client.SecretGrant()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `restore` | `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}/restore` | `client.SecretGrant().create({ $action: 'restore', ... })` |
+| `revoke` | `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}/revoke` | `client.SecretGrant().create({ $action: 'revoke', ... })` |
+| `suspend` | `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}/suspend` | `client.SecretGrant().create({ $action: 'suspend', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+SecretGrant record — check the API definition for its shape.
+
+```ts
+const result = await client.SecretGrant().create({
+  $action: 'restore',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SecretGrant().create({
+  organization_id: 'example_organization_id',
+  secret_id: 'example_secret_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SecretGrant().list({ organization_id: "example", secret_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.SecretGrant().load({ id: 'secret_grant_id', organization_id: 'organization_id', secret_id: 'secret_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.SecretGrant().patch({
+  id: 'secret_grant_id',
+  organization_id: 'organization_id',
+  secret_id: 'secret_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.SecretGrant().remove({ id: 'secret_grant_id', organization_id: 'organization_id', secret_id: 'secret_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SecretGrant().update({
+  id: 'secret_grant_id',
+  organization_id: 'organization_id',
+  secret_id: 'secret_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SecretGrantEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SecretVersionEntity
+
+```ts
+const secret_version = client.SecretVersion()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `redact` | `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}/redact` | `client.SecretVersion().create({ $action: 'redact', ... })` |
+| `revoke` | `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}/revoke` | `client.SecretVersion().create({ $action: 'revoke', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+SecretVersion record — check the API definition for its shape.
+
+```ts
+const result = await client.SecretVersion().create({
+  $action: 'redact',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SecretVersion().create({
+  organization_id: 'example_organization_id',
+  secret_id: 'example_secret_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SecretVersion().list({ organization_id: "example", secret_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.SecretVersion().load({ id: 'secret_version_id', organization_id: 'organization_id', secret_id: 'secret_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.SecretVersion().patch({
+  id: 'secret_version_id',
+  organization_id: 'organization_id',
+  secret_id: 'secret_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.SecretVersion().remove({ id: 'secret_version_id', organization_id: 'organization_id', secret_id: 'secret_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SecretVersion().update({
+  id: 'secret_version_id',
+  organization_id: 'organization_id',
+  secret_id: 'secret_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SecretVersionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## ServiceEndpointEntity
 
 ```ts
@@ -20161,6 +44927,833 @@ Return a copy of the entity options.
 
 ---
 
+## SettingEntity
+
+```ts
+const setting = client.Setting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `boolean` | Yes |  |
+| `can_manage_sandbox_region` | `boolean` | Yes |  |
+| `dedicated_outbound_ip_addresses` | `any[]` | Yes | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` | Yes |  |
+| `organization` | `Record<string, any>` | Yes |  |
+| `sandbox_regions` | `any[]` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.Setting().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SettingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SettingMutationLeaseEntity
+
+```ts
+const setting_mutation_lease = client.SettingMutationLease()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `clear` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/mutation_lease/clear` | `client.SettingMutationLease().create({ $action: 'clear', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+SettingMutationLease record — check the API definition for its shape.
+
+```ts
+const result = await client.SettingMutationLease().create({
+  $action: 'clear',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SettingMutationLeaseEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SignalEntity
+
+```ts
+const signal = client.Signal()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `acked_at` | `string | null` | Yes |  |
+| `acked_by` | `Record<string, any> | null` | Yes | Who acked the signal, read from `acked_by_user_id`. |
+| `agent_runs` | `Record<string, any>` | Yes | Dispatched-run summary (docs §6c). |
+| `app_service_id` | `string | null` | Yes |  |
+| `attribution` | `Record<string, any>` | Yes | The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g. |
+| `created_at` | `string` | Yes | ISO8601 row insert time — retention math and debugging only. |
+| `dedupe_key` | `string | null` | Yes |  |
+| `hosted_app_id` | `string | null` | Yes |  |
+| `id` | `string` | Yes | The signal's own `sig_…` public id — also the paging cursor value. |
+| `kind` | `string` | Yes | A frozen taxonomy kind (§1) or an `app.custom.*` kind. |
+| `links` | `Record<string, any>` | Yes | Canonical, relative API paths built from real routes (docs §6a). |
+| `occurred_at` | `string` | Yes | ISO8601 domain event time — what the UI displays and `since` filters on. |
+| `organization_id` | `string` | Yes |  |
+| `payload` | `Record<string, any>` | Yes | Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known. |
+| `recovery` | `Record<string, any>` | Yes | Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d). |
+| `resolution` | `Record<string, any>` | Yes | Recovery pairing (docs §6b). |
+| `severity` | `string` | Yes | Severity levels (docs §2, reusing `AlertRule::SEVERITIES`). |
+| `source` | `Record<string, any>` | Yes | Provenance envelope (docs §6e), a sibling of the frozen `payload`. |
+| `subject_id` | `string | null` | Yes |  |
+| `subject_type` | `string | null` | Yes | Polymorphic pointer: `AppDeployment`, `RuntimeInstance`, `AlertEvent`, `HostedApp`, or `SignalSubscription`. |
+| `summary` | `string` | Yes | One-line, kind-composed human sentence for the feed row (docs §6d, e.g. |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `ack` | `/api/v1/organizations/{organization_id}/signals/{id}/ack` | `client.Signal().create({ $action: 'ack', ... })` |
+| `ack` | `/api/v1/organizations/{organization_id}/signals/ack` | `client.Signal().create({ $action: 'ack', ... })` |
+| `agent_prompt` | `/api/v1/organizations/{organization_id}/signals/{id}/agent_prompt` | `client.Signal().load({ $action: 'agent_prompt', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Signal record — check the API definition for its shape.
+
+```ts
+const result = await client.Signal().create({
+  $action: 'ack',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.Signal().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.Signal().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.Signal().load({ id: 'signal_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SignalEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SignalInboundEntity
+
+```ts
+const signal_inbound = client.SignalInbound()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SignalInbound().update({
+  id: 'id',
+  inbound_id: 'inbound_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SignalInboundEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SignalIntegrationEntity
+
+```ts
+const signal_integration = client.SignalIntegration()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `api_token` | `string` | No | Optional provider API token for target discovery and backfill. |
+| `api_token_stored` | `boolean` | Yes |  |
+| `config` | `Record<string, any>` | Yes |  |
+| `created_at` | `string | null` | No |  |
+| `failure_message` | `string | null` | Yes |  |
+| `id` | `string` | Yes | Public id (`sint_…`). |
+| `inbound_path` | `string` | Yes |  |
+| `inbound_url` | `string` | Yes | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `string | null` | No |  |
+| `last_verified_at` | `string | null` | No |  |
+| `mode` | `string` | Yes | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `rejected_signature_count` | `number` | Yes | Deliveries rejected for a bad or missing signature. |
+| `status` | `string` | Yes |  |
+| `target_count` | `number` | Yes |  |
+| `unmapped_delivery_count` | `number` | Yes | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `string | null` | No |  |
+| `webhook_secret` | `string` | No | The provider's signing secret. |
+| `webhook_secret_stored` | `boolean` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- | --- |
+| `api_token` | - | - | - | - | - | - |
+| `api_token_stored` | - | - | - | - | - | - |
+| `config` | - | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - | - |
+| `failure_message` | - | - | - | - | - | - |
+| `id` | - | - | - | - | - | - |
+| `inbound_path` | - | - | - | - | - | - |
+| `inbound_url` | - | - | - | - | - | - |
+| `last_received_at` | - | - | - | - | - | - |
+| `last_verified_at` | - | - | - | - | - | - |
+| `mode` | - | - | Yes | Yes | Yes | - |
+| `name` | - | - | - | Yes | Yes | - |
+| `organization_id` | - | - | - | - | - | - |
+| `provider` | - | - | - | - | - | - |
+| `rejected_signature_count` | - | - | - | - | - | - |
+| `status` | - | - | - | Yes | Yes | - |
+| `target_count` | - | - | - | - | - | - |
+| `unmapped_delivery_count` | - | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - | - |
+| `webhook_secret` | - | - | - | - | - | - |
+| `webhook_secret_stored` | - | - | - | - | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `regenerate_inbound_token` | `/api/v1/organizations/{organization_id}/signal_integrations/{id}/regenerate_inbound_token` | `client.SignalIntegration().create({ $action: 'regenerate_inbound_token', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+SignalIntegration record — check the API definition for its shape.
+
+```ts
+const result = await client.SignalIntegration().create({
+  $action: 'regenerate_inbound_token',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SignalIntegration().create({
+  organization_id: 'example_organization_id',
+  name: 'example_name',
+  provider: 'example_provider',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SignalIntegration().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.SignalIntegration().load({ id: 'signal_integration_id', organization_id: 'organization_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.SignalIntegration().patch({
+  id: 'signal_integration_id',
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.SignalIntegration().remove({ id: 'signal_integration_id', organization_id: 'organization_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SignalIntegration().update({
+  id: 'signal_integration_id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SignalIntegrationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SignalIntegrationDeliveryEntity
+
+```ts
+const signal_integration_delivery = client.SignalIntegrationDelivery()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `attempt_count` | `number` | Yes |  |
+| `created_at` | `string | null` | No |  |
+| `delivery_id` | `string` | Yes | The provider's delivery id, or a `content-…` id derived from the event kind, its timestamp header and the body checksum when it sends none. |
+| `event_kind` | `string | null` | No |  |
+| `id` | `string` | Yes | Public id (`sdel_…`). |
+| `last_error` | `string | null` | No |  |
+| `ops_signal_id` | `string | null` | No | Public id (`sig_…`) of the signal this delivery emitted. |
+| `organization_id` | `string` | Yes |  |
+| `processed_at` | `string | null` | No |  |
+| `provider` | `string` | Yes |  |
+| `received_at` | `string | null` | No |  |
+| `signal_integration_id` | `string` | Yes |  |
+| `state` | `string` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SignalIntegrationDelivery().list({ organization_id: "example", signal_integration_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SignalIntegrationDeliveryEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SignalIntegrationTargetEntity
+
+```ts
+const signal_integration_target = client.SignalIntegrationTarget()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app_service_id` | `string | null` | No |  |
+| `created_at` | `string | null` | No |  |
+| `display_name` | `string | null` | No |  |
+| `enabled` | `boolean` | Yes |  |
+| `external_id` | `string` | Yes |  |
+| `external_kind` | `string` | Yes |  |
+| `external_slug` | `string | null` | No |  |
+| `hosted_app_id` | `string | null` | No |  |
+| `id` | `string` | Yes | Public id (`stgt_…`). |
+| `organization_id` | `string` | Yes |  |
+| `signal_integration_id` | `string` | Yes |  |
+| `signal_integration_targets` | `any[]` | Yes |  |
+| `targets` | `any[]` | Yes |  |
+| `updated_at` | `string | null` | No |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SignalIntegrationTarget().list({ organization_id: "example", signal_integration_id: "example" })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SignalIntegrationTarget().update({
+  organization_id: 'organization_id',
+  signal_integration_id: 'signal_integration_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SignalIntegrationTargetEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SignalSubscriptionEntity
+
+```ts
+const signal_subscription = client.SignalSubscription()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SignalSubscription().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SignalSubscription().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.SignalSubscription().load({ id: 'signal_subscription_id', organization_id: 'organization_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.SignalSubscription().patch({
+  id: 'signal_subscription_id',
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.SignalSubscription().remove({ id: 'signal_subscription_id', organization_id: 'organization_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SignalSubscription().update({
+  id: 'signal_subscription_id',
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SignalSubscriptionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SiteEntity
+
+```ts
+const site = client.Site()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_at` | `string | null` | Yes |  |
+| `activated_at_label` | `string | null` | Yes |  |
+| `commit_sha` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `creator_user_id` | `string | null` | Yes |  |
+| `deploy_slug` | `string` | Yes |  |
+| `failure_message` | `string | null` | Yes |  |
+| `file_count` | `number` | Yes |  |
+| `file_count_label` | `string` | Yes |  |
+| `finished_at` | `string | null` | Yes |  |
+| `finished_at_label` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `is_active` | `boolean` | Yes |  |
+| `source_ref` | `string | null` | Yes |  |
+| `started_at` | `string | null` | Yes |  |
+| `started_at_label` | `string | null` | Yes |  |
+| `static_site_id` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `total_bytes` | `number` | Yes |  |
+| `total_bytes_label` | `string` | Yes |  |
+| `trigger_kind` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+| `uploaded_at` | `string | null` | Yes |  |
+| `uploaded_at_label` | `string | null` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.Site().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SiteEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SiteAccessKeyEntity
+
+```ts
+const site_access_key = client.SiteAccessKey()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SiteAccessKey().create({
+  organization_id: 'example_organization_id',
+  site_id: 'example_site_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SiteAccessKey().list({ organization_id: "example", site_id: "example" })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.SiteAccessKey().remove({ id: 'site_access_key_id', organization_id: 'organization_id', site_id: 'site_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SiteAccessKeyEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## SitePreviewEntity
 
 ```ts
@@ -20200,6 +45793,71 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `SitePreviewEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SiteSecretEntity
+
+```ts
+const site_secret = client.SiteSecret()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+| `native_agent_id` | `string` | Yes |  |
+| `value` | `string` | Yes |  |
+
+### Operations
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.SiteSecret().remove({ id: 'site_secret_id', organization_id: 'organization_id', site_id: 'site_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SiteSecret().update({
+  id: 'site_secret_id',
+  organization_id: 'organization_id',
+  site_id: 'site_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SiteSecretEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -20255,6 +45913,1737 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `SlackChannelEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SourceConnectionEntity
+
+```ts
+const source_connection = client.SourceConnection()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `refresh` | `/api/v1/source_connections/{id}/refresh` | `client.SourceConnection().create({ $action: 'refresh', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+SourceConnection record — check the API definition for its shape.
+
+```ts
+const result = await client.SourceConnection().create({
+  $action: 'refresh',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SourceConnectionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SpaceAlertRuleEntity
+
+```ts
+const space_alert_rule = client.SpaceAlertRule()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `activate` | `/api/v1/observability/spaces/{space_id}/alert_rules/{id}/activate` | `client.SpaceAlertRule().create({ $action: 'activate', ... })` |
+| `archive` | `/api/v1/observability/spaces/{space_id}/alert_rules/{id}/archive` | `client.SpaceAlertRule().create({ $action: 'archive', ... })` |
+| `pause` | `/api/v1/observability/spaces/{space_id}/alert_rules/{id}/pause` | `client.SpaceAlertRule().create({ $action: 'pause', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+SpaceAlertRule record — check the API definition for its shape.
+
+```ts
+const result = await client.SpaceAlertRule().create({
+  $action: 'activate',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SpaceAlertRule().create({
+  space_id: 'example_space_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SpaceAlertRule().list({ space_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.SpaceAlertRule().load({ id: 'space_alert_rule_id', space_id: 'space_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.SpaceAlertRule().patch({
+  id: 'space_alert_rule_id',
+  space_id: 'space_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.SpaceAlertRule().remove({ id: 'space_alert_rule_id', space_id: 'space_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SpaceAlertRule().update({
+  id: 'space_alert_rule_id',
+  space_id: 'space_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SpaceAlertRuleEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SpaceAuditEventEntity
+
+```ts
+const space_audit_event = client.SpaceAuditEvent()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SpaceAuditEvent().create({
+  space_id: 'example_space_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SpaceAuditEvent().list({ space_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SpaceAuditEventEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SpaceDnsRecordEntity
+
+```ts
+const space_dns_record = client.SpaceDnsRecord()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `sync_report` | `/api/v1/networking/spaces/{space_id}/dns_records/sync_report` | `client.SpaceDnsRecord().create({ $action: 'sync_report', ... })` |
+| `config` | `/api/v1/networking/spaces/{space_id}/dns_records/config` | `client.SpaceDnsRecord().load({ $action: 'config', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+SpaceDnsRecord record — check the API definition for its shape.
+
+```ts
+const result = await client.SpaceDnsRecord().create({
+  $action: 'sync_report',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SpaceDnsRecord().create({
+  space_id: 'example_space_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SpaceDnsRecord().list({ space_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.SpaceDnsRecord().load({ id: 'space_dns_record_id', space_id: 'space_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.SpaceDnsRecord().patch({
+  id: 'space_dns_record_id',
+  space_id: 'space_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.SpaceDnsRecord().remove({ id: 'space_dns_record_id', space_id: 'space_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SpaceDnsRecord().update({
+  id: 'space_dns_record_id',
+  space_id: 'space_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SpaceDnsRecordEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SpaceEnrollmentTokenEntity
+
+```ts
+const space_enrollment_token = client.SpaceEnrollmentToken()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `revoke` | `/api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}/revoke` | `client.SpaceEnrollmentToken().create({ $action: 'revoke', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+SpaceEnrollmentToken record — check the API definition for its shape.
+
+```ts
+const result = await client.SpaceEnrollmentToken().create({
+  $action: 'revoke',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SpaceEnrollmentToken().create({
+  space_id: 'example_space_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SpaceEnrollmentToken().list({ space_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.SpaceEnrollmentToken().load({ id: 'space_enrollment_token_id', space_id: 'space_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.SpaceEnrollmentToken().patch({
+  id: 'space_enrollment_token_id',
+  space_id: 'space_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.SpaceEnrollmentToken().remove({ id: 'space_enrollment_token_id', space_id: 'space_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SpaceEnrollmentToken().update({
+  id: 'space_enrollment_token_id',
+  space_id: 'space_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SpaceEnrollmentTokenEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SpaceGatewayEntity
+
+```ts
+const space_gateway = client.SpaceGateway()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `heartbeat` | `/api/v1/networking/spaces/{space_id}/gateways/{id}/heartbeat` | `client.SpaceGateway().create({ $action: 'heartbeat', ... })` |
+| `sync` | `/api/v1/networking/spaces/{space_id}/gateways/{id}/sync` | `client.SpaceGateway().create({ $action: 'sync', ... })` |
+| `config` | `/api/v1/networking/spaces/{space_id}/gateways/{id}/config` | `client.SpaceGateway().load({ $action: 'config', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+SpaceGateway record — check the API definition for its shape.
+
+```ts
+const result = await client.SpaceGateway().create({
+  $action: 'heartbeat',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SpaceGateway().create({
+  space_id: 'example_space_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SpaceGateway().list({ space_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.SpaceGateway().load({ id: 'space_gateway_id', space_id: 'space_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.SpaceGateway().patch({
+  id: 'space_gateway_id',
+  space_id: 'space_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.SpaceGateway().remove({ id: 'space_gateway_id', space_id: 'space_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SpaceGateway().update({
+  id: 'space_gateway_id',
+  space_id: 'space_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SpaceGatewayEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SpaceGroupEntity
+
+```ts
+const space_group = client.SpaceGroup()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SpaceGroup().create({
+  space_id: 'example_space_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SpaceGroup().list({ space_id: "example" })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.SpaceGroup().patch({
+  id: 'space_group_id',
+  space_id: 'space_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.SpaceGroup().remove({ id: 'space_group_id', space_id: 'space_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SpaceGroup().update({
+  id: 'space_group_id',
+  space_id: 'space_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SpaceGroupEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SpaceGroupMembershipEntity
+
+```ts
+const space_group_membership = client.SpaceGroupMembership()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SpaceGroupMembership().create({
+  space_id: 'example_space_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SpaceGroupMembership().list({ space_id: "example" })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.SpaceGroupMembership().patch({
+  id: 'space_group_membership_id',
+  space_id: 'space_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.SpaceGroupMembership().remove({ id: 'space_group_membership_id', space_id: 'space_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SpaceGroupMembership().update({
+  id: 'space_group_membership_id',
+  space_id: 'space_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SpaceGroupMembershipEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SpaceLogStreamEntity
+
+```ts
+const space_log_stream = client.SpaceLogStream()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SpaceLogStream().create({
+  space_id: 'example_space_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SpaceLogStream().list({ space_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SpaceLogStreamEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SpaceMetricSeryEntity
+
+```ts
+const space_metric_sery = client.SpaceMetricSery()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SpaceMetricSery().create({
+  space_id: 'example_space_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SpaceMetricSery().list({ space_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SpaceMetricSeryEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SpaceOtelCollectorEntity
+
+```ts
+const space_otel_collector = client.SpaceOtelCollector()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `activate` | `/api/v1/observability/spaces/{space_id}/otel_collectors/{id}/activate` | `client.SpaceOtelCollector().create({ $action: 'activate', ... })` |
+| `archive` | `/api/v1/observability/spaces/{space_id}/otel_collectors/{id}/archive` | `client.SpaceOtelCollector().create({ $action: 'archive', ... })` |
+| `deploy` | `/api/v1/observability/spaces/{space_id}/otel_collectors/{id}/deploy` | `client.SpaceOtelCollector().create({ $action: 'deploy', ... })` |
+| `heartbeat` | `/api/v1/observability/spaces/{space_id}/otel_collectors/{id}/heartbeat` | `client.SpaceOtelCollector().create({ $action: 'heartbeat', ... })` |
+| `pause` | `/api/v1/observability/spaces/{space_id}/otel_collectors/{id}/pause` | `client.SpaceOtelCollector().create({ $action: 'pause', ... })` |
+| `bootstrap_config` | `/api/v1/observability/spaces/{space_id}/otel_collectors/{id}/bootstrap_config` | `client.SpaceOtelCollector().load({ $action: 'bootstrap_config', ... })` |
+| `nomad_spec` | `/api/v1/observability/spaces/{space_id}/otel_collectors/{id}/nomad_spec` | `client.SpaceOtelCollector().load({ $action: 'nomad_spec', ... })` |
+| `rendered_config` | `/api/v1/observability/spaces/{space_id}/otel_collectors/{id}/rendered_config` | `client.SpaceOtelCollector().load({ $action: 'rendered_config', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+SpaceOtelCollector record — check the API definition for its shape.
+
+```ts
+const result = await client.SpaceOtelCollector().create({
+  $action: 'activate',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SpaceOtelCollector().create({
+  space_id: 'example_space_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SpaceOtelCollector().list({ space_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.SpaceOtelCollector().load({ id: 'space_otel_collector_id', space_id: 'space_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.SpaceOtelCollector().patch({
+  id: 'space_otel_collector_id',
+  space_id: 'space_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.SpaceOtelCollector().remove({ id: 'space_otel_collector_id', space_id: 'space_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SpaceOtelCollector().update({
+  id: 'space_otel_collector_id',
+  space_id: 'space_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SpaceOtelCollectorEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SpacePeerEntity
+
+```ts
+const space_peer = client.SpacePeer()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `approve` | `/api/v1/networking/spaces/{space_id}/peers/{id}/approve` | `client.SpacePeer().create({ $action: 'approve', ... })` |
+| `enroll` | `/api/v1/networking/spaces/{space_id}/peers/enroll` | `client.SpacePeer().create({ $action: 'enroll', ... })` |
+| `revoke` | `/api/v1/networking/spaces/{space_id}/peers/{id}/revoke` | `client.SpacePeer().create({ $action: 'revoke', ... })` |
+| `suspend` | `/api/v1/networking/spaces/{space_id}/peers/{id}/suspend` | `client.SpacePeer().create({ $action: 'suspend', ... })` |
+| `bootstrap` | `/api/v1/networking/spaces/{space_id}/peers/{id}/bootstrap` | `client.SpacePeer().load({ $action: 'bootstrap', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+SpacePeer record — check the API definition for its shape.
+
+```ts
+const result = await client.SpacePeer().create({
+  $action: 'approve',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SpacePeer().create({
+  space_id: 'example_space_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SpacePeer().list({ space_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.SpacePeer().load({ id: 'space_peer_id', space_id: 'space_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.SpacePeer().patch({
+  id: 'space_peer_id',
+  space_id: 'space_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.SpacePeer().remove({ id: 'space_peer_id', space_id: 'space_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SpacePeer().update({
+  id: 'space_peer_id',
+  space_id: 'space_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SpacePeerEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SpacePeerAttachmentEntity
+
+```ts
+const space_peer_attachment = client.SpacePeerAttachment()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SpacePeerAttachment().create({
+  space_id: 'example_space_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SpacePeerAttachment().list({ space_id: "example" })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.SpacePeerAttachment().patch({
+  id: 'space_peer_attachment_id',
+  space_id: 'space_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.SpacePeerAttachment().remove({ id: 'space_peer_attachment_id', space_id: 'space_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SpacePeerAttachment().update({
+  id: 'space_peer_attachment_id',
+  space_id: 'space_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SpacePeerAttachmentEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SpacePolicyEntity
+
+```ts
+const space_policy = client.SpacePolicy()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `activate` | `/api/v1/networking/spaces/{space_id}/policies/{id}/activate` | `client.SpacePolicy().create({ $action: 'activate', ... })` |
+| `archive` | `/api/v1/networking/spaces/{space_id}/policies/{id}/archive` | `client.SpacePolicy().create({ $action: 'archive', ... })` |
+| `pause` | `/api/v1/networking/spaces/{space_id}/policies/{id}/pause` | `client.SpacePolicy().create({ $action: 'pause', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+SpacePolicy record — check the API definition for its shape.
+
+```ts
+const result = await client.SpacePolicy().create({
+  $action: 'activate',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SpacePolicy().create({
+  space_id: 'example_space_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SpacePolicy().list({ space_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.SpacePolicy().load({ id: 'space_policy_id', space_id: 'space_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.SpacePolicy().patch({
+  id: 'space_policy_id',
+  space_id: 'space_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.SpacePolicy().remove({ id: 'space_policy_id', space_id: 'space_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SpacePolicy().update({
+  id: 'space_policy_id',
+  space_id: 'space_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SpacePolicyEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SpaceSegmentEntity
+
+```ts
+const space_segment = client.SpaceSegment()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SpaceSegment().create({
+  space_id: 'example_space_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SpaceSegment().list({ space_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.SpaceSegment().load({ id: 'space_segment_id', space_id: 'space_id' })
+```
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.SpaceSegment().patch({
+  id: 'space_segment_id',
+  space_id: 'space_id',
+  // Only the fields to change
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.SpaceSegment().remove({ id: 'space_segment_id', space_id: 'space_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SpaceSegment().update({
+  id: 'space_segment_id',
+  space_id: 'space_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SpaceSegmentEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SpaceTraceSpanEntity
+
+```ts
+const space_trace_span = client.SpaceTraceSpan()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SpaceTraceSpan().create({
+  space_id: 'example_space_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SpaceTraceSpan().list({ space_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SpaceTraceSpanEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SparkEntity
+
+```ts
+const spark = client.Spark()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activated_products` | `any[]` | Yes | Products this organization has activated (PRD 144). |
+| `agents_only` | `boolean` | No | Whether this organization uses the agents-only interface; older responses may omit this value. |
+| `can_activate_products` | `boolean` | Yes | Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces. |
+| `can_manage` | `boolean` | Yes |  |
+| `compute_credit_cents` | `number | null` | Yes | Included compute the workspace started Sparks with, when it is on compute billing. |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `credit_cents` | `number | null` | Yes | Inference credit the workspace started Sparks with. |
+| `first_spark` | `Record<string, any> | null` | Yes | Null until the first Spark exists or when the viewer cannot read it. |
+| `github_connected` | `boolean` | Yes |  |
+| `github_prs_authored_by_change_author` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
+| `jsonrpc` | `string` | Yes |  |
+| `logo_url` | `string | null` | Yes |  |
+| `member_count` | `number` | Yes |  |
+| `method` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `params` | `Record<string, any>` | No |  |
+| `pending_invitation_count` | `number` | Yes |  |
+| `personal` | `boolean` | Yes |  |
+| `repository_count` | `number` | Yes |  |
+| `role` | `string | null` | Yes |  |
+| `sandbox_region` | `string` | Yes |  |
+| `shared_agent_personal_accounts_enabled` | `boolean` | No | Whether a shared agent may use one person's account for everyone who chats with it. |
+| `slug` | `string` | Yes |  |
+| `source_control_providers` | `any[]` | No | Connected source control providers for this organization. |
+| `source_ui_enabled` | `boolean` | No | Organization-scoped Source workspace rollout; missing values mean disabled. |
+| `started` | `boolean` | Yes | Whether the workspace has started Sparks. |
+| `timezone` | `string` | Yes | Default IANA timezone for organization-local schedules such as nightly dreaming. |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+| `verify_pr_scenario_writing_enabled` | `boolean` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `activated_products` | - | - |
+| `agents_only` | - | - |
+| `can_activate_products` | - | - |
+| `can_manage` | - | - |
+| `compute_credit_cents` | - | - |
+| `created_at` | - | - |
+| `created_at_label` | - | - |
+| `credit_cents` | - | - |
+| `first_spark` | - | - |
+| `github_connected` | - | - |
+| `github_prs_authored_by_change_author` | - | - |
+| `id` | - | Yes |
+| `jsonrpc` | - | - |
+| `logo_url` | - | - |
+| `member_count` | - | - |
+| `method` | - | - |
+| `name` | - | - |
+| `params` | - | - |
+| `pending_invitation_count` | - | - |
+| `personal` | - | - |
+| `repository_count` | - | - |
+| `role` | - | - |
+| `sandbox_region` | - | - |
+| `shared_agent_personal_accounts_enabled` | - | - |
+| `slug` | - | - |
+| `source_control_providers` | - | - |
+| `source_ui_enabled` | - | - |
+| `started` | - | - |
+| `timezone` | - | - |
+| `updated_at` | - | - |
+| `updated_at_label` | - | - |
+| `verify_pr_scenario_writing_enabled` | - | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.Spark().create({
+  jsonrpc: 'example_jsonrpc',
+  method: 'example_method',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.Spark().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SparkEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SparkAgentIntegrationEntity
+
+```ts
+const spark_agent_integration = client.SparkAgentIntegration()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_counts` | `Record<string, any>` | Yes | Accounts the viewer can see per toolkit, across all account pages. |
+| `accounts_path` | `string` | Yes | Web path of the organization's Integrations page, where people reconnect and remove the accounts this agent lists. |
+| `added_toolkits` | `any[]` | Yes | Apps with a connected or connecting account the viewer can see. |
+| `can_manage` | `boolean` | Yes |  |
+| `can_manage_organization` | `boolean` | Yes |  |
+| `catalog` | `any[]` | Yes |  |
+| `connect_as` | `string | null` | Yes | The account Connect creates and switches on for this agent: the owner's own (personal) or, for an admin connecting someone else's agent, the team's (organization). |
+| `connect_as_by_toolkit` | `Record<string, any>` | Yes | Apps whose Connect differs from connect_as because their sign-in only makes team accounts. |
+| `connected_counts` | `Record<string, any>` | Yes | Signed-in accounts per toolkit, across all account pages. |
+| `connection_id` | `string` | Yes |  |
+| `connections` | `any[]` | Yes |  |
+| `email` | `Record<string, any>` | Yes | A native agent's own email address. |
+| `enabled` | `boolean` | Yes |  |
+| `enabled_toolkits` | `any[]` | Yes | Apps with a signed-in account this agent uses now, across all account pages, sorted. |
+| `generation` | `number` | Yes |  |
+| `pagination` | `Record<string, any>` | Yes |  |
+| `pending_counts` | `Record<string, any>` | Yes | Accounts per toolkit whose sign-in was started but not finished, across all account pages. |
+| `personal_creation_key_supported` | `boolean` | No | The personal account creation endpoint honors a creation key. |
+| `private_agent` | `boolean` | Yes | Only the agent's owner can chat with it. |
+| `shared_agent_personal_accounts_enabled` | `boolean` | Yes | Whether the organization lets a shared agent use one person's account for everyone who chats with it. |
+| `slack` | `Record<string, any>` | Yes |  |
+| `webhook_connections` | `any[]` | Yes |  |
+| `webhooks_available` | `boolean` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SparkAgentIntegration().create({
+  agent_id: 'example_agent_id',
+  organization_id: 'example_organization_id',
+  connection_id: 'example_connection_id',
+  enabled: true,
+  generation: 1,
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SparkAgentIntegration().list({ agent_id: "example", organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SparkAgentIntegrationEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -20378,6 +47767,509 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `SparkAgentLocalThreadEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SparkAgentSiteEntity
+
+```ts
+const spark_agent_site = client.SparkAgentSite()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `deployed_at` | `string` | Yes |  |
+| `deployments_count` | `number` | Yes |  |
+| `hostname` | `string` | Yes |  |
+| `https` | `string` | Yes | Whether the organization's certificate serves this site over HTTPS |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `visibility` | `string` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SparkAgentSite().list({ agent_id: "example", organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SparkAgentSiteEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SparkAgentSkillEntity
+
+```ts
+const spark_agent_skill = client.SparkAgentSkill()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `available` | `boolean` | Yes |  |
+| `can_configure` | `boolean` | Yes |  |
+| `can_manage` | `boolean` | Yes |  |
+| `configuration_state` | `string` | No | The requested managed skill selection is awaiting runtime qualification. |
+| `description` | `string` | Yes |  |
+| `enabled` | `boolean` | Yes |  |
+| `name` | `string` | Yes |  |
+| `skills` | `any[]` | Yes |  |
+| `version` | `string` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SparkAgentSkill().create({
+  agent_id: 'example_agent_id',
+  organization_id: 'example_organization_id',
+  enabled: true,
+  name: 'example_name',
+  version: 'example_version',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SparkAgentSkill().list({ agent_id: "example", organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SparkAgentSkillEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SparkAgentThreadEntity
+
+```ts
+const spark_agent_thread = client.SparkAgentThread()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `archived_count` | `number | null` | No | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
+| `can_create` | `boolean` | Yes |  |
+| `execution` | `any` | No |  |
+| `first_input` | `any` | No |  |
+| `first_input_key` | `string` | No | Idempotency-Key that finds the first message through input_delivery. |
+| `first_input_requester_membership_id` | `string` | No | Membership the first message was sent as, for input_delivery. |
+| `id` | `string` | No |  |
+| `inherit_context` | `boolean` | No | Include the source conversation through its last completed reply. |
+| `local_activities` | `Record<string, any>` | Yes | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
+| `local_archived_count` | `number` | Yes | Local Claude Code and Codex threads archived on their computers. |
+| `local_next_cursor` | `string | null` | Yes |  |
+| `local_scope_key` | `string | null` | Yes |  |
+| `local_status_pending` | `boolean` | Yes | A computer is reporting newer local thread statuses; read the page again shortly. |
+| `local_threads` | `any[]` | Yes |  |
+| `main_thread_id` | `string` | Yes |  |
+| `message` | `string` | No | The thread's first message. |
+| `next_cursor` | `string | null` | Yes |  |
+| `parent_conversation_id` | `string` | No | Optional source conversation belonging to this agent. |
+| `requester_membership_id` | `string` | No |  |
+| `selected_thread` | `any` | Yes |  |
+| `thread` | `Record<string, any>` | Yes |  |
+| `threads` | `any[]` | Yes |  |
+| `title` | `string` | No |  |
+| `total_archived_count` | `number | null` | Yes | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `archive` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive` | `client.SparkAgentThread().create({ $action: 'archive', ... })` |
+| `compact` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/compact` | `client.SparkAgentThread().create({ $action: 'compact', ... })` |
+| `snooze` | `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/snooze` | `client.SparkAgentThread().create({ $action: 'snooze', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+SparkAgentThread record — check the API definition for its shape.
+
+```ts
+const result = await client.SparkAgentThread().create({
+  $action: 'archive',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SparkAgentThread().create({
+  agent_id: 'example_agent_id',
+  organization_id: 'example_organization_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SparkAgentThread().list({ agent_id: "example", organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SparkAgentThreadEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SparkCreditEntity
+
+```ts
+const spark_credit = client.SparkCredit()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `amount_cents` | `number` | No | Purchase amount in USD cents. |
+| `autofill` | `any` | Yes |  |
+| `autofill_payment_unconfirmed` | `boolean` | Yes |  |
+| `available_usd` | `string` | Yes |  |
+| `billing_unit` | `string` | No | Compute minute quote version returned by the billing summary. |
+| `can_manage` | `boolean` | Yes |  |
+| `compute_minutes` | `Record<string, any>` | Yes |  |
+| `compute_usd` | `string` | No |  |
+| `credits_per_usd` | `number` | Yes |  |
+| `inference_usd` | `string` | No |  |
+| `kind` | `string` | Yes |  |
+| `payment_method` | `Record<string, any> | null` | Yes |  |
+| `payments_enabled` | `boolean` | Yes |  |
+| `plan` | `string` | No |  |
+| `plans` | `any[]` | Yes |  |
+| `quoted_credits_cents` | `number` | No | Grant shown for a top-up or subscription, in usage cents. |
+| `quoted_price_cents` | `number` | No | Monthly cash price shown for a subscription, in USD cents. |
+| `refill_limits_cents` | `any[]` | Yes |  |
+| `refill_options` | `any[]` | Yes |  |
+| `refill_thresholds_cents` | `any[]` | Yes |  |
+| `request_key` | `string` | Yes |  |
+| `settings` | `any` | Yes |  |
+| `starter_cents` | `number` | Yes |  |
+| `top_up_max_cents` | `number` | Yes | Maximum manual top-up, in USD cents. |
+| `top_up_step_cents` | `number` | Yes | Minimum manual top-up and increment, in USD cents. |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | patch |
+| --- | --- | --- | --- | --- | --- |
+| `amount_cents` | - | - | - | - | - |
+| `autofill` | - | - | - | - | - |
+| `autofill_payment_unconfirmed` | - | - | - | - | - |
+| `available_usd` | - | - | - | - | - |
+| `billing_unit` | - | - | - | - | - |
+| `can_manage` | - | - | - | - | - |
+| `compute_minutes` | - | - | - | - | - |
+| `compute_usd` | - | - | - | - | - |
+| `credits_per_usd` | - | - | - | - | - |
+| `inference_usd` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `payment_method` | - | - | - | - | - |
+| `payments_enabled` | - | - | - | - | - |
+| `plan` | - | Yes | - | - | Yes |
+| `plans` | - | - | - | - | - |
+| `quoted_credits_cents` | - | - | - | - | - |
+| `quoted_price_cents` | - | - | - | - | - |
+| `refill_limits_cents` | - | - | - | - | - |
+| `refill_options` | - | - | - | - | - |
+| `refill_thresholds_cents` | - | - | - | - | - |
+| `request_key` | - | - | - | - | - |
+| `settings` | - | - | - | - | - |
+| `starter_cents` | - | - | - | - | - |
+| `top_up_max_cents` | - | - | - | - | - |
+| `top_up_step_cents` | - | - | - | - | - |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `daily_usage` | `/api/v1/organizations/{org_slug}/spark_credits/daily_usage` | `client.SparkCredit().load({ $action: 'daily_usage', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+SparkCredit record — check the API definition for its shape.
+
+```ts
+const result = await client.SparkCredit().load({
+  $action: 'daily_usage',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SparkCredit().create({
+  organization_id: 'example_organization_id',
+  kind: 'example_kind',
+  request_key: 'example_request_key',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SparkCredit().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.SparkCredit().patch({
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.SparkCredit().update({
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SparkCreditEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SparkCreditAgentUsageEntity
+
+```ts
+const spark_credit_agent_usage = client.SparkCreditAgentUsage()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agents` | `any[]` | Yes |  |
+| `all` | `Record<string, any>` | Yes |  |
+| `days` | `any[]` | Yes |  |
+| `id` | `string` | No |  |
+| `owners` | `any[]` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.SparkCreditAgentUsage().load({ id: 'spark_credit_agent_usage_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SparkCreditAgentUsageEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SparkCreditUsageTotalEntity
+
+```ts
+const spark_credit_usage_total = client.SparkCreditUsageTotal()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `compute_minutes_used` | `string` | Yes |  |
+| `compute_usd` | `string` | Yes |  |
+| `inference_usd` | `string` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SparkCreditUsageTotal().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SparkCreditUsageTotalEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -20839,6 +48731,270 @@ Return a copy of the entity options.
 
 ---
 
+## StatusChangeEntity
+
+```ts
+const status_change = client.StatusChange()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `change_id` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `patchsets` | `any[]` | Yes |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `status_state` | `string` | Yes |  |
+| `status_tone` | `string` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.StatusChange().load({ id: 'status_change_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `StatusChangeEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## StatusCommitEntity
+
+```ts
+const status_commit = client.StatusCommit()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `checks` | `any[]` | Yes |  |
+| `commit_sha` | `string` | Yes |  |
+| `counts` | `Record<string, any>` | Yes |  |
+| `id` | `string` | No |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `status_state` | `string` | Yes |  |
+| `status_tone` | `string` | Yes |  |
+| `total` | `number` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.StatusCommit().load({ id: 'status_commit_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `StatusCommitEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## StatusPatchsetEntity
+
+```ts
+const status_patchset = client.StatusPatchset()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `checks` | `any[]` | Yes |  |
+| `checks_status` | `string | null` | Yes |  |
+| `commit_sha` | `string | null` | Yes |  |
+| `counts` | `Record<string, any>` | Yes |  |
+| `id` | `string` | No |  |
+| `patchset_id` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `status_label` | `string` | Yes |  |
+| `status_state` | `string` | Yes |  |
+| `status_tone` | `string` | Yes |  |
+| `total` | `number` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.StatusPatchset().load({ id: 'status_patchset_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `StatusPatchsetEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## StripeWebhookEntity
+
+```ts
+const stripe_webhook = client.StripeWebhook()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.StripeWebhook().create({
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `StripeWebhookEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SubmitTelemetryEntity
+
+```ts
+const submit_telemetry = client.SubmitTelemetry()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SubmitTelemetry().create({
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SubmitTelemetryEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## SubscriptionModelEntity
 
 ```ts
@@ -20881,6 +49037,385 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `SubscriptionModelEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SwarmEventEntity
+
+```ts
+const swarm_event = client.SwarmEvent()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent_swarm_id` | `string` | Yes |  |
+| `attempt_id` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `id` | `number` | Yes |  |
+| `kind` | `string` | Yes |  |
+| `payload` | `Record<string, any>` | Yes |  |
+| `reason` | `string | null` | Yes |  |
+| `scheduler_generation` | `number | null` | Yes |  |
+| `task_id` | `string | null` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SwarmEvent().list({ swarm_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SwarmEventEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SwarmLiveEntity
+
+```ts
+const swarm_live = client.SwarmLive()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `replay` | `/api/v1/agent/swarms/{id}/live/replay` | `client.SwarmLive().load({ $action: 'replay', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+SwarmLive record — check the API definition for its shape.
+
+```ts
+const result = await client.SwarmLive().load({
+  $action: 'replay',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SwarmLiveEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SwarmNoteEntity
+
+```ts
+const swarm_note = client.SwarmNote()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `task_id` | `string | null` | No | A task public id; omitted |
+| `text` | `string` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.SwarmNote().create({
+  swarm_id: 'example_swarm_id',
+  text: 'example_text',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SwarmNoteEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SwarmTaskEntity
+
+```ts
+const swarm_task = client.SwarmTask()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `acceptance_commands` | `any[]` | Yes |  |
+| `agent_swarm_id` | `string` | Yes |  |
+| `assigned_runner_id` | `string | null` | Yes |  |
+| `blocked_reason` | `string | null` | Yes |  |
+| `changes` | `any[]` | Yes |  |
+| `commit_count` | `number` | Yes |  |
+| `commit_sha_result` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `current_attempt_id` | `string | null` | Yes |  |
+| `deadline_at` | `string | null` | Yes |  |
+| `depends_on_task_ids` | `any[]` | Yes |  |
+| `depth` | `number` | Yes |  |
+| `diff_artifact_url` | `string | null` | Yes |  |
+| `display_id` | `number` | Yes |  |
+| `environment_profile` | `string | null` | Yes |  |
+| `error_message` | `string | null` | Yes |  |
+| `failure_code` | `string | null` | Yes |  |
+| `finished_at` | `string | null` | Yes |  |
+| `finished_at_label` | `string | null` | Yes |  |
+| `harness` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `input_revision` | `string | null` | Yes |  |
+| `iteration` | `number` | Yes |  |
+| `landing_state` | `string` | Yes |  |
+| `model` | `string | null` | Yes |  |
+| `model_provider` | `string | null` | Yes |  |
+| `number` | `number` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `owned_paths` | `any[]` | Yes |  |
+| `parent_task_id` | `string | null` | Yes |  |
+| `position` | `number` | Yes |  |
+| `prompt` | `string` | Yes |  |
+| `queued_at` | `string | null` | Yes |  |
+| `queued_at_label` | `string | null` | Yes |  |
+| `reasoning_effort` | `string | null` | Yes |  |
+| `recent_activity` | `any[]` | Yes |  |
+| `repo_url` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes |  |
+| `retry_number` | `number` | Yes |  |
+| `role` | `string` | Yes |  |
+| `run_id` | `string | null` | Yes |  |
+| `stack_after_task_id` | `string | null` | Yes |  |
+| `started_at` | `string | null` | Yes |  |
+| `started_at_label` | `string | null` | Yes |  |
+| `status` | `string` | Yes |  |
+| `title` | `string | null` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `activity` | `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/activity` | `client.SwarmTask().load({ $action: 'activity', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+SwarmTask record — check the API definition for its shape.
+
+```ts
+const result = await client.SwarmTask().load({
+  $action: 'activity',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.SwarmTask().list({ swarm_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SwarmTaskEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## TaskLeaseEntity
+
+```ts
+const task_lease = client.TaskLease()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `browser_task_activity` | `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/browser_task_activity` | `client.TaskLease().create({ $action: 'browser_task_activity', ... })` |
+| `claim` | `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/claim` | `client.TaskLease().create({ $action: 'claim', ... })` |
+| `evidence` | `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/evidence` | `client.TaskLease().create({ $action: 'evidence', ... })` |
+| `heartbeat` | `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/heartbeat` | `client.TaskLease().create({ $action: 'heartbeat', ... })` |
+| `release` | `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/release` | `client.TaskLease().create({ $action: 'release', ... })` |
+| `result` | `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/result` | `client.TaskLease().create({ $action: 'result', ... })` |
+| `verify_jev` | `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_jev` | `client.TaskLease().create({ $action: 'verify_jev', ... })` |
+| `verify_knowledge` | `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_knowledge` | `client.TaskLease().create({ $action: 'verify_knowledge', ... })` |
+| `verify_learning` | `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_learning` | `client.TaskLease().create({ $action: 'verify_learning', ... })` |
+| `verify_mail` | `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_mail` | `client.TaskLease().create({ $action: 'verify_mail', ... })` |
+| `verify_product_map` | `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_product_map` | `client.TaskLease().create({ $action: 'verify_product_map', ... })` |
+| `verify_sign_in` | `/api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/leases/{id}/verify_sign_in` | `client.TaskLease().create({ $action: 'verify_sign_in', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+TaskLease record — check the API definition for its shape.
+
+```ts
+const result = await client.TaskLease().create({
+  $action: 'browser_task_activity',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.TaskLease().create({
+  swarm_id: 'example_swarm_id',
+  task_id: 'example_task_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `TaskLeaseEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -20938,6 +49473,983 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `ThreadPreviewEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ThreadPreviewAccessEntity
+
+```ts
+const thread_preview_access = client.ThreadPreviewAccess()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `redeem` | `/api/v1/thread_preview_access/redeem` | `client.ThreadPreviewAccess().create({ $action: 'redeem', ... })` |
+| `upstream` | `/api/v1/thread_preview_access/upstream` | `client.ThreadPreviewAccess().create({ $action: 'upstream', ... })` |
+| `start` | `/api/v1/thread_preview_access/start` | `client.ThreadPreviewAccess().load({ $action: 'start', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ThreadPreviewAccess record — check the API definition for its shape.
+
+```ts
+const result = await client.ThreadPreviewAccess().create({
+  $action: 'redeem',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ThreadPreviewAccessEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ToolFeedbackEntity
+
+```ts
+const tool_feedback = client.ToolFeedback()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `category` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `details` | `string` | Yes |  |
+| `feedback` | `Record<string, any>` | Yes |  |
+| `id` | `string` | Yes |  |
+| `metadata` | `Record<string, any>` | Yes | Caller-supplied session context; no secrets or transcripts |
+| `organization_id` | `string` | Yes |  |
+| `source` | `string` | Yes |  |
+| `summary` | `string` | Yes |  |
+| `user_id` | `string` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.ToolFeedback().create({
+  organization_id: 'example_organization_id',
+  feedback: {},
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.ToolFeedback().load({ id: 'tool_feedback_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ToolFeedbackEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## TranscriptEntity
+
+```ts
+const transcript = client.Transcript()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `agent` | `string` | Yes |  |
+| `author` | `Record<string, any>` | Yes |  |
+| `checkpoint_pagination` | `Record<string, any>` | Yes |  |
+| `checkpoints` | `any[]` | Yes |  |
+| `id` | `string` | Yes |  |
+| `last_checkpoint_at` | `string | null` | Yes |  |
+| `selected_checkpoint` | `any` | Yes |  |
+| `source_url` | `string` | Yes |  |
+| `started_at` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `title` | `string | null` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `search` | `/api/v1/organizations/{org_slug}/transcripts/search` | `client.Transcript().create({ $action: 'search', ... })` |
+| `read` | `/api/v1/transcripts/read` | `client.Transcript().load({ $action: 'read', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Transcript record — check the API definition for its shape.
+
+```ts
+const result = await client.Transcript().create({
+  $action: 'search',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.Transcript().list({ repo: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `TranscriptEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## V1MessageEntity
+
+```ts
+const v1_message = client.V1Message()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.V1Message().create({
+  organization_id: 'example_organization_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `V1MessageEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## VcBranchEntity
+
+```ts
+const vc_branch = client.VcBranch()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+| `name` | `string` | Yes |  |
+| `target_commit_id` | `string` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.VcBranch().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.VcBranch().list({ organization_id: "example", repo_id: "example" })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
+
+```ts
+const result = await client.VcBranch().remove({ id: 'vc_branch_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `VcBranchEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## VcBrowserEntity
+
+```ts
+const vc_browser = client.VcBrowser()
+```
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `file` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/browser/file` | `client.VcBrowser().load({ $action: 'file', ... })` |
+| `tree` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/browser/tree` | `client.VcBrowser().load({ $action: 'tree', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+VcBrowser record — check the API definition for its shape.
+
+```ts
+const result = await client.VcBrowser().load({
+  $action: 'file',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `VcBrowserEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## VcChangeEntity
+
+```ts
+const vc_change = client.VcChange()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `activity` | `any[]` | Yes |  |
+| `canonical_path` | `string` | Yes |  |
+| `change` | `any` | Yes |  |
+| `checks` | `any[]` | No |  |
+| `checks_status` | `string` | No |  |
+| `description` | `string | null` | No |  |
+| `group` | `Record<string, any> | null` | No |  |
+| `id` | `string` | Yes |  |
+| `jj_change_id` | `string | null` | No |  |
+| `labels` | `any[]` | No |  |
+| `landing` | `Record<string, any>` | Yes | Server-computed submitted-together closure and landing preflight. |
+| `number` | `number` | Yes |  |
+| `patchset_number` | `number | null` | No |  |
+| `previews` | `any[]` | Yes |  |
+| `primary_status` | `string | null` | No |  |
+| `public_id` | `string` | No |  |
+| `related_changes` | `any[]` | Yes |  |
+| `relation_chain` | `any[]` | Yes |  |
+| `restack_state` | `string` | No |  |
+| `review_summary` | `Record<string, any>` | No |  |
+| `stack` | `any` | No |  |
+| `status` | `string` | Yes |  |
+| `sync` | `Record<string, any>` | Yes |  |
+| `target` | `Record<string, any>` | Yes |  |
+| `target_advanced` | `boolean` | Yes |  |
+| `target_branch` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `url` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `abandon` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/abandon` | `client.VcChange().create({ $action: 'abandon', ... })` |
+| `accept` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/accept` | `client.VcChange().create({ $action: 'accept', ... })` |
+| `fold` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/fold` | `client.VcChange().create({ $action: 'fold', ... })` |
+| `github_projection` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/github_projection` | `client.VcChange().create({ $action: 'github_projection', ... })` |
+| `ready` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/ready` | `client.VcChange().create({ $action: 'ready', ... })` |
+| `retry_ci` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/retry_ci` | `client.VcChange().create({ $action: 'retry_ci', ... })` |
+| `submit` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit` | `client.VcChange().create({ $action: 'submit', ... })` |
+| `submit_ref` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit_ref` | `client.VcChange().create({ $action: 'submit_ref', ... })` |
+| `sync` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/sync` | `client.VcChange().create({ $action: 'sync', ... })` |
+| `transcript_chat` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/transcript_chat` | `client.VcChange().create({ $action: 'transcript_chat', ... })` |
+| `ci` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/ci` | `client.VcChange().load({ $action: 'ci', ... })` |
+| `diff` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/diff` | `client.VcChange().load({ $action: 'diff', ... })` |
+| `github_projection` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/github_projection` | `client.VcChange().load({ $action: 'github_projection', ... })` |
+| `lookup` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/lookup` | `client.VcChange().load({ $action: 'lookup', ... })` |
+| `state` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/state` | `client.VcChange().load({ $action: 'state', ... })` |
+| `submit_preview` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/submit_preview` | `client.VcChange().load({ $action: 'submit_preview', ... })` |
+| `description` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/description` | `client.VcChange().update({ $action: 'description', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+VcChange record — check the API definition for its shape.
+
+```ts
+const result = await client.VcChange().create({
+  $action: 'abandon',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.VcChange().list({ organization_id: "example", repo_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.VcChange().load({ id: 'vc_change_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `VcChangeEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## VcChangeGroupEntity
+
+```ts
+const vc_change_group = client.VcChangeGroup()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `changes` | `any[]` | Yes |  |
+| `id` | `string` | No |  |
+| `name` | `string` | No |  |
+| `number` | `number` | No |  |
+| `status` | `string` | Yes |  |
+| `title` | `string | null` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `changes` | - | - | - |
+| `id` | - | - | - |
+| `name` | - | - | Yes |
+| `number` | - | - | - |
+| `status` | - | - | - |
+| `title` | - | - | Yes |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.VcChangeGroup().create({
+  organization_id: 'example_organization_id',
+  repo_id: 'example_repo_id',
+  name: 'example_name',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.VcChangeGroup().list({ organization_id: "example", repo_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.VcChangeGroup().load({ id: 'vc_change_group_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `VcChangeGroupEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## VcFileEntity
+
+```ts
+const vc_file = client.VcFile()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `paths` | `any[]` | Yes |  |
+| `truncated` | `boolean` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.VcFile().list({ organization_id: "example", repo_id: "example", ref: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `VcFileEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## VcMergeQueueEntity
+
+```ts
+const vc_merge_queue = client.VcMergeQueue()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `analytics` | `Record<string, any>` | Yes | Queue performance for the reporting window. |
+| `id` | `string` | No |  |
+| `policy` | `Record<string, any>` | Yes |  |
+| `queue` | `Record<string, any>` | Yes |  |
+| `target_branches` | `any[]` | No | Bookmark names for the target picker. |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `pause` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/pause` | `client.VcMergeQueue().create({ $action: 'pause', ... })` |
+| `resume` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/resume` | `client.VcMergeQueue().create({ $action: 'resume', ... })` |
+| `concurrency` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/concurrency` | `client.VcMergeQueue().update({ $action: 'concurrency', ... })` |
+| `skip_ci` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}/skip_ci` | `client.VcMergeQueue().update({ $action: 'skip_ci', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+VcMergeQueue record — check the API definition for its shape.
+
+```ts
+const result = await client.VcMergeQueue().create({
+  $action: 'pause',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.VcMergeQueue().list({ organization_id: "example", repo_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.VcMergeQueue().load({ id: 'vc_merge_queue_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `VcMergeQueueEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## VcStackEntity
+
+```ts
+const vc_stack = client.VcStack()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `alias_ref_name` | `string | null` | Yes |  |
+| `changes` | `any[]` | Yes |  |
+| `code` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `landing` | `Record<string, any>` | Yes | Compact landing state for the Stack CLI. |
+| `member_count` | `number` | Yes |  |
+| `name` | `string | null` | Yes |  |
+| `ref_name` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `tip_change_number` | `number | null` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `name` | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/stacks/{code}/name` | `client.VcStack().update({ $action: 'name', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+VcStack record — check the API definition for its shape.
+
+```ts
+const result = await client.VcStack().update({
+  $action: 'name',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.VcStack().list({ organization_id: "example", repo_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.VcStack().load({ id: 'vc_stack_id', organization_id: 'organization_id', repo_id: 'repo_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `VcStackEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## VcsNodeEntity
+
+```ts
+const vcs_node = client.VcsNode()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_avatar_url` | `string | null` | Yes |  |
+| `account_id` | `string | null` | Yes |  |
+| `account_login` | `string` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `created_at_label` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `installation_id` | `string` | Yes |  |
+| `installed_at` | `string | null` | Yes |  |
+| `installed_at_label` | `string | null` | Yes |  |
+| `manage_access_url` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `permission_entries` | `any[]` | Yes | GitHub's permission hash as a display-ready list, sorted by name. |
+| `permissions` | `Record<string, any>` | Yes |  |
+| `status` | `string` | Yes |  |
+| `suspended_at` | `string | null` | Yes |  |
+| `suspended_at_label` | `string | null` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+| `updated_at_label` | `string | null` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.VcsNode().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `VcsNodeEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## VcsSettingEntity
+
+```ts
+const vcs_setting = client.VcsSetting()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `can_manage_pr_scenario_writing` | `boolean` | Yes |  |
+| `can_manage_sandbox_region` | `boolean` | Yes |  |
+| `dedicated_outbound_ip_addresses` | `any[]` | Yes | Public outbound IPs for the enabled operator-managed assignment; empty when no assignment is enabled. |
+| `default_trunk_bookmark` | `string` | Yes |  |
+| `organization` | `Record<string, any>` | Yes |  |
+| `sandbox_regions` | `any[]` | Yes |  |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.VcsSetting().list({ organization_id: "example" })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `VcsSettingEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -21767,6 +51279,121 @@ Return a copy of the entity options.
 
 ---
 
+## VerifyEmailVerificationEntity
+
+```ts
+const verify_email_verification = client.VerifyEmailVerification()
+```
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.VerifyEmailVerification().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `VerifyEmailVerificationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## VerifySignalIntegrationEntity
+
+```ts
+const verify_signal_integration = client.VerifySignalIntegration()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `api_token_stored` | `boolean` | Yes |  |
+| `config` | `Record<string, any>` | Yes |  |
+| `created_at` | `string | null` | No |  |
+| `failure_message` | `string | null` | Yes |  |
+| `id` | `string` | Yes | Public id (`sint_…`). |
+| `inbound_path` | `string` | Yes |  |
+| `inbound_url` | `string` | Yes | The absolute URL to paste into the provider's webhook configuration. |
+| `last_received_at` | `string | null` | No |  |
+| `last_verified_at` | `string | null` | No |  |
+| `mode` | `string` | Yes | `connected` is a customer-owned credential pasted into Vex; `managed` is a Vex-provisioned resource where Vex already holds the credential. |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `provider` | `string` | Yes |  |
+| `rejected_signature_count` | `number` | Yes | Deliveries rejected for a bad or missing signature. |
+| `status` | `string` | Yes |  |
+| `target_count` | `number` | Yes |  |
+| `unmapped_delivery_count` | `number` | Yes | Deliveries accepted whose provider resource matched no enabled target. |
+| `updated_at` | `string | null` | No |  |
+| `webhook_secret_stored` | `boolean` | Yes |  |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.VerifySignalIntegration().create({
+  id: 'example_id',
+  organization_id: 'example_organization_id',
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `VerifySignalIntegrationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## VerifyStaticSiteDomainEntity
 
 ```ts
@@ -21899,6 +51526,51 @@ Return a copy of the entity options.
 
 ---
 
+## WaitlistApplicationEntity
+
+```ts
+const waitlist_application = client.WaitlistApplication()
+```
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.WaitlistApplication().create({
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `WaitlistApplicationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## WebBotAuthEntity
 
 ```ts
@@ -21940,6 +51612,59 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `WebBotAuthEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## WebhookGitlabEntity
+
+```ts
+const webhook_gitlab = client.WebhookGitlab()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Operations
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.WebhookGitlab().update({
+  id: 'id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `WebhookGitlabEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -22132,6 +51857,283 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `WorkflowTriggerSkippedEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## WorkspaceActivityEntity
+
+```ts
+const workspace_activity = client.WorkspaceActivity()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `live_activity` | `any[]` | Yes |  |
+| `recent_items` | `any[]` | Yes |  |
+| `unresolved_notification_count` | `number` | Yes |  |
+
+### Operations
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.WorkspaceActivity().load({ organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `WorkspaceActivityEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## WorkspaceActivityNotificationEntity
+
+```ts
+const workspace_activity_notification = client.WorkspaceActivityNotification()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `dismissal` | `/api/v1/organizations/{org_slug}/workspace_activity/notifications/{id}/dismissal` | `client.WorkspaceActivityNotification().update({ $action: 'dismissal', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+WorkspaceActivityNotification record — check the API definition for its shape.
+
+```ts
+const result = await client.WorkspaceActivityNotification().update({
+  $action: 'dismissal',
+  /* ...the action's own arguments */
+})
+```
+
+### Operations
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `WorkspaceActivityNotificationEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## WorkspaceSpaceEntity
+
+```ts
+const workspace_space = client.WorkspaceSpace()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `string` | Yes |  |
+| `default_branch` | `string` | No |  |
+| `description` | `string | null` | Yes |  |
+| `hidden` | `boolean` | Yes |  |
+| `icon_name` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `import_status` | `string | null` | Yes |  |
+| `name` | `string` | Yes |  |
+| `organization_id` | `string` | Yes |  |
+| `position` | `number | null` | Yes |  |
+| `repository_id` | `string` | Yes |  |
+| `repository_slug` | `string` | Yes |  |
+| `slug` | `string` | Yes |  |
+| `status` | `string` | Yes |  |
+| `updated_at` | `string` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | load | list | create |
+| --- | --- | --- | --- |
+| `created_at` | - | - | - |
+| `default_branch` | - | - | - |
+| `description` | - | - | Yes |
+| `hidden` | - | - | - |
+| `icon_name` | - | - | - |
+| `id` | - | - | - |
+| `import_status` | - | - | - |
+| `name` | - | - | - |
+| `organization_id` | - | - | - |
+| `position` | - | - | - |
+| `repository_id` | - | - | - |
+| `repository_slug` | - | - | - |
+| `slug` | - | - | - |
+| `status` | - | - | - |
+| `updated_at` | - | - | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data. Resolves to the created entity.
+
+```ts
+const result = await client.WorkspaceSpace().create({
+  organization_id: 'example_organization_id',
+  icon_name: 'example_icon_name',
+  name: 'example_name',
+  slug: 'example_slug',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Resolves to an array of entities, one per record.
+
+```ts
+const results = await client.WorkspaceSpace().list({ organization_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.WorkspaceSpace().load({ id: 'workspace_space_id', organization_id: 'organization_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `WorkspaceSpaceEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## WorkspaceSpacePreferenceEntity
+
+```ts
+const workspace_space_preference = client.WorkspaceSpacePreference()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `preferences` | `any[]` | Yes |  |
+| `spaces` | `any[]` | Yes |  |
+
+### Operations
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.WorkspaceSpacePreference().update({
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `WorkspaceSpacePreferenceEntity` instance with the same client and
 options.
 
 #### `client()`

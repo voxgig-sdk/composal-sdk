@@ -1,0 +1,8 @@
+$kind: collection
+id: "73703327-b15c-54ef-a552-ca90391c2526"
+description: |-
+  The **cli_release** entity. Its requests address one record by `{{cli_release_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 177000

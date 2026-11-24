@@ -1,0 +1,19 @@
+$kind: collection
+id: f3c9d02e-9c17-517c-8253-19ba940d177a
+description: |-
+  The **merge_resolution** entity. Its requests address one record by `{{merge_resolution_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `action` | string | yes |  |
+  | `base` | string | yes |  |
+  | `content` | string |  |  |
+  | `context` | object |  |  |
+  | `duration_ms` | integer | yes |  |
+  | `fallback` | boolean | yes |  |
+  | `model` | string |  |  |
+  | `ours` | string | yes |  |
+  | `path` | string |  |  |
+  | `resolved` | boolean | yes |  |
+  | `theirs` | string | yes |  |
+order: 321000

@@ -1,0 +1,18 @@
+$kind: http-request
+id: d5013d10-7497-566b-b08a-f2aeb49c3596
+description: |-
+  The `trunk_tip` action of **repo_vc**, a route of its `load` operation.
+
+  SDK: `client.RepoVc().load({ "organization_id": "organization_id", "repo_id": "repo_id", $action: "trunk_tip" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/trunk_tip"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_vc belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_vc belongs to.
+order: 9000

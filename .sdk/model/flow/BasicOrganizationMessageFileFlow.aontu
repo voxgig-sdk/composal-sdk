@@ -1,0 +1,22 @@
+# BasicOrganizationMessageFileFlow
+
+main: kit: flow: BasicOrganizationMessageFileFlow:
+{
+  entity: "organization_message_file",
+  kind: "basic",
+  name: "BasicOrganizationMessageFileFlow",
+  step: [
+    {
+      i: {
+        ref: "organization_message_file_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicOrganizationMessageFileFlow"
+}

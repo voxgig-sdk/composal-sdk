@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "organization_message_file": {
+      "ORGANIZATION_MESSAGE_FILE00": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_MESSAGE_FILE00"
+      },
+      "ORGANIZATION_MESSAGE_FILE01": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_MESSAGE_FILE01"
+      },
+      "ORGANIZATION_MESSAGE_FILE02": {
+        "organization_id": "ORGANIZATION01",
+        "id": "ORGANIZATION_MESSAGE_FILE02"
+      }
+    }
+  },
+  "new": {
+    "organization_message_file": {
+      "organization_message_file_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/spark/organizations/{organization_id}/message_files": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

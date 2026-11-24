@@ -1,0 +1,40 @@
+# BasicMergeQueueEntryFlow
+
+main: kit: flow: BasicMergeQueueEntryFlow:
+{
+  entity: "merge_queue_entry",
+  kind: "basic",
+  name: "BasicMergeQueueEntryFlow",
+  step: [
+    {
+      i: {
+        ref: "merge_queue_entry_ref01"
+      }
+
+      m: {
+        merge_queue_id: "merge_queue01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "merge_queue_entry_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "merge_queue_entry01",
+        merge_queue_id: "merge_queue01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicMergeQueueEntryFlow"
+}

@@ -1,0 +1,22 @@
+$kind: http-request
+id: "76642cf2-fca5-5b4e-bdc0-396e227554de"
+description: |-
+  The `dismissal` action of **workspace_activity_notification**, a route of its `update` operation.
+
+  SDK: `client.WorkspaceActivityNotification().update({ "organization_id": "organization_id", "id": "ID", $action: "dismissal" })`
+url: "{{base}}/api/v1/organizations/:org_slug/workspace_activity/notifications/:id/dismissal"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this workspace_activity_notification belongs to.
+  - key: id
+    value: "{{workspace_activity_notification_id}}"
+    description: The workspace_activity_notification this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 1000

@@ -1,0 +1,52 @@
+# Entity: verify_email_verification
+
+main: kit: entity: verify_email_verification: {
+
+  alias: field: {}
+
+  name: "verify_email_verification"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/email_verifications/verify"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/email_verifications/verify"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "email_verifications"
+            }
+            {
+              lit: "verify"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

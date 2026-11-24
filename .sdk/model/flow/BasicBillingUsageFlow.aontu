@@ -7,16 +7,22 @@ main: kit: flow: BasicBillingUsageFlow:
   name: "BasicBillingUsageFlow",
   step: [
     {
-      m: {
-        organization_id: "organization01"
+      i: {
+        ref: "billing_usage_ref01",
+        srcdatavar: "billing_usage_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "billing_usage01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "billing_usage_ref01"
+            mark: "Mark01-billing_usage_ref01"
           }
         }
       ]

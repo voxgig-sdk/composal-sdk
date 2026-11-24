@@ -1,0 +1,459 @@
+# Entity: github_runner_pool
+
+main: kit: entity: github_runner_pool: {
+
+  alias: field: {}
+
+  fields: {
+    cpu_millicores: {
+      h: "Cpu Millicores"
+      n: "cpu_millicores"
+      r: true
+      t: "`$INTEGER`"
+    }
+    enabled: {
+      h: "Enabled"
+      n: "enabled"
+      op: {
+        create: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    github_app_installation_id: {
+      h: "Github App Installation Id"
+      n: "github_app_installation_id"
+      r: true
+      t: "`$STRING`"
+    }
+    github_repository_id: {
+      h: "Github Repository Id"
+      n: "github_repository_id"
+      r: true
+      t: "`$STRING`"
+    }
+    github_runner_image: {
+      h: "Github Runner Image"
+      n: "github_runner_image"
+      r: true
+      t: "`$ANY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    image: {
+      h: "Image"
+      n: "image"
+      r: false
+      sh: "Organization image name or ID; null restores the standard image"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    invocations: {
+      h: "Invocations"
+      n: "invocations"
+      r: true
+      t: "`$ARRAY`"
+    }
+    label: {
+      h: "Label"
+      n: "label"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+    last_error: {
+      h: "Last Error"
+      n: "last_error"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    last_polled_at: {
+      h: "Last Polled At"
+      n: "last_polled_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    max_concurrency: {
+      h: "Max Concurrency"
+      n: "max_concurrency"
+      op: {
+        create: {
+          req: false
+          type: "`$INTEGER`"
+        }
+        update: {
+          req: false
+          type: "`$INTEGER`"
+        }
+      }
+      r: true
+      t: "`$INTEGER`"
+    }
+    memory_mb: {
+      h: "Memory Mb"
+      n: "memory_mb"
+      r: true
+      t: "`$INTEGER`"
+    }
+    organization_id: {
+      h: "Organization Id"
+      n: "organization_id"
+      r: true
+      t: "`$STRING`"
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+    repository_full_name: {
+      h: "Repository Full Name"
+      n: "repository_full_name"
+      r: true
+      t: "`$STRING`"
+    }
+    runtime_kind: {
+      h: "Runtime Kind"
+      n: "runtime_kind"
+      r: true
+      t: "`$STRING`"
+    }
+    timeout_seconds: {
+      h: "Timeout Seconds"
+      n: "timeout_seconds"
+      op: {
+        create: {
+          req: false
+          type: "`$INTEGER`"
+        }
+        update: {
+          req: false
+          type: "`$INTEGER`"
+        }
+      }
+      r: true
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "github_runner_pool"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "enabled"
+            "github_app_installation_id"
+            "image"
+            "label"
+            "max_concurrency"
+            "provider"
+            "repository_full_name"
+            "timeout_seconds"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/github_runner_pools"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/github_runner_pools"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "github_runner_pools"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.github_runner_pool`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/github_runner_pools"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/github_runner_pools"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "github_runner_pools"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.github_runner_pools`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "enabled"
+            "image"
+            "max_concurrency"
+            "provider"
+            "timeout_seconds"
+          ]
+          co: {
+            id: "PATCH /api/v1/organizations/{organization_id}/github_runner_pools/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v1/organizations/{organization_id}/github_runner_pools/{id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "github_runner_pools"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.github_runner_pool`"
+          }
+        }
+        {
+          bf: [
+            "enabled"
+            "github_app_installation_id"
+            "image"
+            "label"
+            "max_concurrency"
+            "provider"
+            "repository_full_name"
+            "timeout_seconds"
+          ]
+          co: {
+            id: "PUT /api/v1/organizations/{organization_id}/github_runner_pools/configure"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/organizations/{organization_id}/github_runner_pools/configure"
+          q: {
+            "$action": "configure"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "github_runner_pools"
+            }
+            {
+              lit: "configure"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.github_runner_pool`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

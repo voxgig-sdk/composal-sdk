@@ -1,0 +1,161 @@
+# Entity: agent_connection_delegation
+
+main: kit: entity: agent_connection_delegation: {
+
+  alias: field: {}
+
+  fields: {
+    authorized_by_id: {
+      h: "Authorized By Id"
+      n: "authorized_by_id"
+      r: true
+      t: "`$STRING`"
+    }
+    automation_connection_grant_id: {
+      h: "Automation Connection Grant Id"
+      n: "automation_connection_grant_id"
+      r: true
+      t: "`$STRING`"
+    }
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    member_name: {
+      h: "Member Name"
+      n: "member_name"
+      r: true
+      t: "`$STRING`"
+    }
+    revoked_at: {
+      h: "Revoked At"
+      n: "revoked_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    roles: {
+      h: "Roles"
+      n: "roles"
+      r: true
+      t: "`$ARRAY`"
+    }
+    usable: {
+      h: "Usable"
+      n: "usable"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    user_id: {
+      h: "User Id"
+      n: "user_id"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "agent_connection_delegation"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agent_connections/{id}/delegations"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_connection_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agent_connections/{id}/delegations"
+          q: {
+            exist: [
+              "agent_connection_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_connection_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_connections"
+            }
+            {
+              var: "agent_connection_id"
+            }
+            {
+              lit: "delegations"
+            }
+          ]
+          t: {
+            page: {
+              next: "`body.pagination.next`"
+            }
+            req: "`reqdata`"
+            res: "`body.delegations`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent_connection")]
+  ]
+
+}

@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "change": {
+      "CHANGE00": {
+        "counts": {},
+        "filters": {},
+        "github_sync": {},
+        "result": "s2b",
+        "organization_id": "ORGANIZATION01"
+      },
+      "CHANGE01": {
+        "counts": {},
+        "filters": {},
+        "github_sync": {},
+        "result": "s53",
+        "organization_id": "ORGANIZATION01"
+      },
+      "CHANGE02": {
+        "counts": {},
+        "filters": {},
+        "github_sync": {},
+        "result": "s7b",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "change": {
+      "change_ref01": {
+        "counts": {},
+        "filters": {},
+        "github_sync": {},
+        "result": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{org_slug}/changes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

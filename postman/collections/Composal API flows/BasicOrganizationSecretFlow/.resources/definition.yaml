@@ -1,0 +1,4 @@
+$kind: collection
+id: ee0dff11-e308-56a2-b09e-3708ad47e0b4
+description: "The `BasicOrganizationSecretFlow` flow of **organization_secret**."
+order: 287000

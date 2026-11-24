@@ -1,0 +1,43 @@
+$kind: http-request
+id: fb8e471c-2da3-5087-9ec3-f62d4a7614ef
+description: |-
+  The `verify_sign_in` action of **task_lease**, a route of its `create` operation.
+
+  SDK: `client.TaskLease().create({ "swarm_id": "swarm_id", "task_id": "task_id", "id": "ID", "x_vex_lease_token": "x_vex_lease_token", $action: "verify_sign_in" })`
+url: "{{base}}/api/v1/agent/swarms/:swarm_id/tasks/:task_id/leases/:id/verify_sign_in"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  X-Vex-Lease-Token: "{{x_vex_lease_token}}"
+pathVariables:
+  - key: swarm_id
+    value: "{{swarm_id}}"
+    description: "Input: swarm_id."
+  - key: task_id
+    value: "{{task_id}}"
+    description: "Input: task_id."
+  - key: id
+    value: "{{task_lease_id}}"
+    description: The task_lease this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "replayed": {
+        "id": "example",
+        "version": 1,
+        "sha256": "example",
+        "signed_in": true,
+        "confirmed": true,
+        "code": "example"
+      },
+      "learned": {
+        "script": "example",
+        "model": "example",
+        "reasoning_effort": "example",
+        "sign_in_url": "example",
+        "usage": {}
+      }
+    }
+order: 13000

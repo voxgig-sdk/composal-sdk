@@ -1,0 +1,19 @@
+$kind: http-request
+id: "0a47c46c-9331-52f1-b333-0eb882bfe3b8"
+description: |-
+  The `authorization` action of **repository_import_session**, a route of its `create` operation.
+
+  SDK: `client.RepositoryImportSession().create({ "id": "ID", $action: "authorization" })`
+url: "{{base}}/api/v1/repository_import_sessions/:id/authorization"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{repository_import_session_id}}"
+    description: The repository_import_session this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 3000

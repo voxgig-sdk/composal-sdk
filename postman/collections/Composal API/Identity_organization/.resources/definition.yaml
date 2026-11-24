@@ -1,0 +1,9 @@
+$kind: collection
+id: "262f3a88-14a3-5885-898c-672bda76bb54"
+description: |-
+  The **identity_organization** entity. Its requests address one record by `{{identity_organization_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 280000

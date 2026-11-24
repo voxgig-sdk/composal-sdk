@@ -1,0 +1,24 @@
+# BasicChangeRequestChangeFlow
+
+main: kit: flow: BasicChangeRequestChangeFlow:
+{
+  entity: "change_request_change",
+  kind: "basic",
+  name: "BasicChangeRequestChangeFlow",
+  step: [
+    {
+      i: {
+        ref: "change_request_change_ref01"
+      }
+
+      m: {
+        change_id: "change01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicChangeRequestChangeFlow"
+}

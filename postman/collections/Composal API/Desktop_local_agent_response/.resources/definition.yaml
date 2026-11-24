@@ -1,0 +1,13 @@
+$kind: collection
+id: "968a6af7-2722-58b0-8014-fe5409005fdf"
+description: |-
+  The **desktop_local_agent_response** entity, which belongs to a organization. Its requests address one record by `{{desktop_local_agent_response_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `input` | array | yes |  |
+  | `max_output_tokens` | integer |  |  |
+  | `model` | string | yes |  |
+  | `store` | boolean | yes |  |
+  | `stream` | boolean | yes |  |
+order: 210000

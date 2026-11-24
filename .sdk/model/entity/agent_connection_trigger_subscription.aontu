@@ -1,0 +1,847 @@
+# Entity: agent_connection_trigger_subscription
+
+main: kit: entity: agent_connection_trigger_subscription: {
+
+  alias: field: {}
+
+  fields: {
+    agent_connection_id: {
+      h: "Agent Connection Id"
+      n: "agent_connection_id"
+      r: true
+      t: "`$STRING`"
+    }
+    configuration: {
+      h: "Configuration"
+      n: "configuration"
+      r: true
+      t: "`$OBJECT`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    defaults: {
+      h: "Defaults"
+      n: "defaults"
+      r: true
+      t: "`$OBJECT`"
+    }
+    delivery: {
+      h: "Delivery"
+      n: "delivery"
+      r: true
+      t: "`$STRING`"
+    }
+    enabled: {
+      h: "Enabled"
+      n: "enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    failure_code: {
+      h: "Failure Code"
+      n: "failure_code"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    failure_request_id: {
+      h: "Failure Request Id"
+      n: "failure_request_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    latency: {
+      h: "Latency"
+      n: "latency"
+      r: true
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    reconcile_at: {
+      fo: "date-time"
+      h: "Reconcile At"
+      n: "reconcile_at"
+      r: true
+      t: "`$STRING`"
+    }
+    reconciliation_uncertain: {
+      h: "Reconciliation Uncertain"
+      n: "reconciliation_uncertain"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    remote_enabled: {
+      h: "Remote Enabled"
+      n: "remote_enabled"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$BOOLEAN`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    replacement_id: {
+      h: "Replacement Id"
+      n: "replacement_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    retired_at: {
+      fo: "date-time"
+      h: "Retired At"
+      n: "retired_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    retirement_completed_at: {
+      fo: "date-time"
+      h: "Retirement Completed At"
+      n: "retirement_completed_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    schema: {
+      h: "Schema"
+      n: "schema"
+      r: true
+      t: "`$OBJECT`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: true
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    toolkit: {
+      h: "Toolkit"
+      n: "toolkit"
+      r: true
+      t: "`$STRING`"
+    }
+    toolkit_version: {
+      h: "Toolkit Version"
+      n: "toolkit_version"
+      r: true
+      t: "`$STRING`"
+    }
+    trigger_slug: {
+      h: "Trigger Slug"
+      n: "trigger_slug"
+      r: true
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: true
+      t: "`$STRING`"
+    }
+    waiting_for_retirement: {
+      h: "Waiting For Retirement"
+      n: "waiting_for_retirement"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "agent_connection_trigger_subscription"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}/discover"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_connection_id"
+                or: "agent_connection_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}/discover"
+          q: {
+            "$action": "discover"
+            exist: [
+              "agent_connection_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              agent_connection_id: "agent_connection_id"
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_connections"
+            }
+            {
+              var: "agent_connection_id"
+            }
+            {
+              lit: "trigger_subscriptions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "discover"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.subscription`"
+          }
+        }
+        {
+          bf: [
+            "configuration"
+            "enabled"
+            "trigger_slug"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}/replace"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_connection_id"
+                or: "agent_connection_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}/replace"
+          q: {
+            "$action": "replace"
+            exist: [
+              "agent_connection_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              agent_connection_id: "agent_connection_id"
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_connections"
+            }
+            {
+              var: "agent_connection_id"
+            }
+            {
+              lit: "trigger_subscriptions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "replace"
+            }
+          ]
+          t: {
+            req: {
+              configuration: "`reqdata.configuration`"
+              enabled: "`reqdata.enabled`"
+              trigger_slug: "`reqdata.trigger_slug`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "configuration"
+            "trigger_slug"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_connection_id"
+                or: "agent_connection_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions"
+          q: {
+            exist: [
+              "agent_connection_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              agent_connection_id: "agent_connection_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_connections"
+            }
+            {
+              var: "agent_connection_id"
+            }
+            {
+              lit: "trigger_subscriptions"
+            }
+          ]
+          t: {
+            req: {
+              configuration: "`reqdata.configuration`"
+              trigger_slug: "`reqdata.trigger_slug`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_connection_id"
+                or: "agent_connection_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions"
+          q: {
+            exist: [
+              "agent_connection_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              agent_connection_id: "agent_connection_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_connections"
+            }
+            {
+              var: "agent_connection_id"
+            }
+            {
+              lit: "trigger_subscriptions"
+            }
+          ]
+          t: {
+            page: {
+              next: "`body.pagination.next`"
+            }
+            req: "`reqdata`"
+            res: "`body.catalog`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          bf: [
+            "enabled"
+          ]
+          co: {
+            id: "PATCH /api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_connection_id"
+                or: "agent_connection_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}"
+          q: {
+            exist: [
+              "agent_connection_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              agent_connection_id: "agent_connection_id"
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_connections"
+            }
+            {
+              var: "agent_connection_id"
+            }
+            {
+              lit: "trigger_subscriptions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: {
+              enabled: "`reqdata.enabled`"
+            }
+            res: "`body.subscription`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_connection_id"
+                or: "agent_connection_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}"
+          q: {
+            exist: [
+              "agent_connection_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              agent_connection_id: "agent_connection_id"
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_connections"
+            }
+            {
+              var: "agent_connection_id"
+            }
+            {
+              lit: "trigger_subscriptions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.subscription`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "enabled"
+          ]
+          co: {
+            id: "PUT /api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_connection_id"
+                or: "agent_connection_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions/{id}"
+          q: {
+            exist: [
+              "agent_connection_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              agent_connection_id: "agent_connection_id"
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_connections"
+            }
+            {
+              var: "agent_connection_id"
+            }
+            {
+              lit: "trigger_subscriptions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: {
+              enabled: "`reqdata.enabled`"
+            }
+            res: "`body.subscription`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent_connection")]
+  ]
+
+}

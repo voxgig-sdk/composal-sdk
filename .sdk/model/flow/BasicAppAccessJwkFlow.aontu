@@ -1,0 +1,22 @@
+# BasicAppAccessJwkFlow
+
+main: kit: flow: BasicAppAccessJwkFlow:
+{
+  entity: "app_access_jwk",
+  kind: "basic",
+  name: "BasicAppAccessJwkFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "app_access_jwk_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAppAccessJwkFlow"
+}

@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "roder_machine": {
+      "RODER_MACHINE00": {
+        "id": "RODER_MACHINE00"
+      },
+      "RODER_MACHINE01": {
+        "id": "RODER_MACHINE01"
+      },
+      "RODER_MACHINE02": {
+        "id": "RODER_MACHINE02"
+      }
+    }
+  },
+  "new": {
+    "roder_machine": {
+      "roder_machine_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/agent/roder/machines/{public_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

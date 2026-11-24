@@ -1,0 +1,9 @@
+$kind: collection
+id: "2d10096e-2593-5939-b355-4e4e9352a549"
+description: |-
+  The **github_onboarding_branch** entity, which belongs to a organization. Its requests address one record by `{{github_onboarding_branch_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `branches` | array | yes |  |
+order: 261000

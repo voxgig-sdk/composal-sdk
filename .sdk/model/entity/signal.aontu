@@ -1,0 +1,710 @@
+# Entity: signal
+
+main: kit: entity: signal: {
+
+  alias: field: {}
+
+  fields: {
+    acked_at: {
+      h: "Acked At"
+      n: "acked_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    acked_by: {
+      h: "Acked By"
+      n: "acked_by"
+      r: true
+      sh: "Who acked the signal, read from `acked_by_user_id`."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    agent_runs: {
+      h: "Agent Runs"
+      n: "agent_runs"
+      r: true
+      sh: "Dispatched-run summary (docs §6c)."
+      t: "`$OBJECT`"
+    }
+    app_service_id: {
+      h: "App Service Id"
+      n: "app_service_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    attribution: {
+      h: "Attribution"
+      n: "attribution"
+      r: true
+      sh: "The producer-stamped attribution (docs §3) lifted out of `payload` into a typed sibling (docs §6d), so consumers get the ids and names they need — e.g."
+      t: "`$OBJECT`"
+    }
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "ISO8601 row insert time — retention math and debugging only."
+      t: "`$STRING`"
+    }
+    dedupe_key: {
+      h: "Dedupe Key"
+      n: "dedupe_key"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    hosted_app_id: {
+      h: "Hosted App Id"
+      n: "hosted_app_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The signal's own `sig_…` public id — also the paging cursor value."
+      t: "`$STRING`"
+    }
+    kind: {
+      h: "Kind"
+      n: "kind"
+      r: true
+      sh: "A frozen taxonomy kind (§1) or an `app.custom.*` kind."
+      t: "`$STRING`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: true
+      sh: "Canonical, relative API paths built from real routes (docs §6a)."
+      t: "`$OBJECT`"
+    }
+    occurred_at: {
+      h: "Occurred At"
+      n: "occurred_at"
+      r: true
+      sh: "ISO8601 domain event time — what the UI displays and `since` filters on."
+      t: "`$STRING`"
+    }
+    organization_id: {
+      h: "Organization Id"
+      n: "organization_id"
+      r: true
+      t: "`$STRING`"
+    }
+    payload: {
+      h: "Payload"
+      n: "payload"
+      r: true
+      sh: "Per-kind shape (docs §4), with the producer's `region`/`app`/ `service` attribution keys baked in when known."
+      t: "`$OBJECT`"
+    }
+    recovery: {
+      h: "Recovery"
+      n: "recovery"
+      r: true
+      sh: "Recovered/resolved state folded from the `resolution` pairing (docs §6b/§6d)."
+      t: "`$OBJECT`"
+    }
+    resolution: {
+      h: "Resolution"
+      n: "resolution"
+      r: true
+      sh: "Recovery pairing (docs §6b)."
+      t: "`$OBJECT`"
+    }
+    severity: {
+      h: "Severity"
+      n: "severity"
+      r: true
+      sh: "Severity levels (docs §2, reusing `AlertRule::SEVERITIES`)."
+      t: "`$STRING`"
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: true
+      sh: "Provenance envelope (docs §6e), a sibling of the frozen `payload`."
+      t: "`$OBJECT`"
+    }
+    subject_id: {
+      h: "Subject Id"
+      n: "subject_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    subject_type: {
+      h: "Subject Type"
+      n: "subject_type"
+      r: true
+      sh: "Polymorphic pointer: `AppDeployment`, `RuntimeInstance`, `AlertEvent`, `HostedApp`, or `SignalSubscription`."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    summary: {
+      h: "Summary"
+      n: "summary"
+      r: true
+      sh: "One-line, kind-composed human sentence for the feed row (docs §6d, e.g."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "signal"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/signals/{id}/ack"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/signals/{id}/ack"
+          q: {
+            "$action": "ack"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "signals"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "ack"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.signal`"
+          }
+        }
+        {
+          bf: [
+            "all"
+            "before_id"
+            "hosted_app_id"
+            "ids"
+            "integration_id"
+            "kind"
+            "min_severity"
+            "recovered_only"
+            "severity"
+            "since"
+            "source"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/signals/ack"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/signals/ack"
+          q: {
+            "$action": "ack"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "signals"
+            }
+            {
+              lit: "ack"
+            }
+          ]
+          t: {
+            req: {
+              all: "`reqdata.all`"
+              before_id: "`reqdata.before_id`"
+              hosted_app_id: "`reqdata.hosted_app_id`"
+              ids: "`reqdata.ids`"
+              integration_id: "`reqdata.integration_id`"
+              kind: "`reqdata.kind`"
+              min_severity: "`reqdata.min_severity`"
+              recovered_only: "`reqdata.recovered_only`"
+              severity: "`reqdata.severity`"
+              since: "`reqdata.since`"
+              source: "`reqdata.source`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/signals"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/signals"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "signals"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/signals"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "after_id"
+                or: "after_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "before_id"
+                or: "before_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "hosted_app_id"
+                or: "hosted_app_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "integration_id"
+                or: "integration_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "kind"
+                or: "kind"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "min_severity"
+                or: "min_severity"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "order"
+                or: "order"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "severity"
+                or: "severity"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "since"
+                or: "since"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "source"
+                or: "source"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "subscription_id"
+                or: "subscription_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "unacked"
+                or: "unacked"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/signals"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "signals"
+            }
+          ]
+          t: {
+            page: {
+              cursor: "`body.next_cursor`"
+              more: "`body.has_more`"
+            }
+            req: "`reqdata`"
+            res: "`body.signals`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/signals/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/signals/{id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "signals"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.signal`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/signals/{id}/agent_prompt"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/signals/{id}/agent_prompt"
+          q: {
+            "$action": "agent_prompt"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "signals"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "agent_prompt"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

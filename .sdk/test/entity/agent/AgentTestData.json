@@ -223,6 +223,11 @@
       "version": 2,
       "source": "openapi3"
     },
+    "POST /api/v1/agent/chat": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
     "GET /api/v1/organizations/{organization_id}/agents": {
       "provenance": "operation-contract",
       "version": 2,

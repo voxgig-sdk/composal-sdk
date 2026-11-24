@@ -1,0 +1,4 @@
+$kind: collection
+id: "4aaad809-ac9f-5ed2-a99e-311f29a8bbce"
+description: "The `BasicSecretVersionFlow` flow of **secret_version**."
+order: 378000

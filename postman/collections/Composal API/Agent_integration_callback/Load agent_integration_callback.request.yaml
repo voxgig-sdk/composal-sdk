@@ -1,0 +1,19 @@
+$kind: http-request
+id: e3f432fb-1640-5268-84e4-1d3fa7bf9950
+description: |-
+  The `load` operation of **agent_integration_callback**.
+
+  SDK: `client.AgentIntegrationCallback().load({ connection_id: "example", state: "example" })`
+url: "{{base}}/api/v1/agent_integration_callback?connection_id={{connection_id}}&state={{state}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: code
+    value: ""
+    disabled: true
+  - key: connection_id
+    value: "{{connection_id}}"
+  - key: state
+    value: "{{state}}"
+order: 1000

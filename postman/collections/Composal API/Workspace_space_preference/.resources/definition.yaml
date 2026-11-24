@@ -1,0 +1,10 @@
+$kind: collection
+id: "7d7c2e9c-3bf3-53ed-bc8d-4c29acc28e2a"
+description: |-
+  The **workspace_space_preference** entity, which belongs to a organization. Its requests address one record by `{{workspace_space_preference_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `preferences` | array | yes |  |
+  | `spaces` | array | yes |  |
+order: 551000

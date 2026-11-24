@@ -1,0 +1,9 @@
+$kind: collection
+id: "615e027a-85b3-5f9c-90fc-d6f4a42f0e7d"
+description: |-
+  The **billing_portal_session** entity, which belongs to a organization. Its requests address one record by `{{billing_portal_session_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `return_url` | string |  |  |
+order: 133000

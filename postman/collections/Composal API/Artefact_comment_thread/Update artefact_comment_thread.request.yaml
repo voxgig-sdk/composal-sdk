@@ -1,0 +1,28 @@
+$kind: http-request
+id: cd353256-0178-5c5d-970b-ba2a95ed3a9f
+description: |-
+  The `update` operation of **artefact_comment_thread**.
+
+  SDK: `client.ArtefactCommentThread().update({ artefact_id: "example", id: "example", organization_id: "example", resolved: true })`
+url: "{{base}}/api/v1/organizations/:organization_id/artefacts/:artefact_ref/comment_threads/:anchor"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this artefact_comment_thread belongs to.
+  - key: artefact_ref
+    value: "{{artefact_id}}"
+    description: The artefact this artefact_comment_thread belongs to.
+  - key: anchor
+    value: "{{artefact_comment_thread_id}}"
+    description: The artefact_comment_thread this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "resolved": true
+    }
+order: 3000

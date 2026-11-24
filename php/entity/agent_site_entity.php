@@ -290,6 +290,39 @@ class AgentSiteEntity
     }
 
     
+    /**
+     * Load a single AgentSite.
+     *
+     * @param AgentSiteLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed AgentSiteLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return AgentSiteEntity The loaded AgentSite entity, whose data_get() reads
+     *   its record; throws ComposalError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
+    {
+        $utility = $this->_utility;
+        $ctx = ($utility->make_context)([
+            "opname" => "load",
+            "ctrl" => $ctrl,
+            "match" => $this->_match,
+            "data" => $this->_data,
+            "reqmatch" => $reqmatch,
+        ], $this->_entctx);
+
+        return $this->_run_op($ctx, function () use ($ctx) {
+            if ($ctx->result) {
+                if ($ctx->result->resmatch) {
+                    $this->_match = $ctx->result->resmatch;
+                }
+                if ($ctx->result->resdata) {
+                    $this->_data = ComposalHelpers::to_map(Struct::clone($ctx->result->resdata)) ?? [];
+                }
+            }
+        });
+    }
+
+
 
     
     /**
@@ -324,6 +357,36 @@ class AgentSiteEntity
 
 
     
+    /**
+     * Create a new AgentSite.
+     *
+     * @param AgentSiteCreateData|array|null $reqdata Body data as an assoc-array;
+     *   a typed AgentSiteCreateData names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return AgentSiteEntity The created AgentSite entity, whose data_get() reads
+     *   its record; throws ComposalError on failure (item-5 convention).
+     */
+    public function create(?array $reqdata = null, $ctrl = null): mixed
+    {
+        $utility = $this->_utility;
+        $ctx = ($utility->make_context)([
+            "opname" => "create",
+            "ctrl" => $ctrl,
+            "match" => $this->_match,
+            "data" => $this->_data,
+            "reqdata" => $reqdata,
+        ], $this->_entctx);
+
+        return $this->_run_op($ctx, function () use ($ctx) {
+            if ($ctx->result) {
+                if ($ctx->result->resdata) {
+                    $this->_data = ComposalHelpers::to_map(Struct::clone($ctx->result->resdata)) ?? [];
+                }
+            }
+        });
+    }
+
+
 
     
 

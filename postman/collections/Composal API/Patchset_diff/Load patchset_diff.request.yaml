@@ -1,0 +1,27 @@
+$kind: http-request
+id: e5607987-e306-5b31-be69-4b6d05afd778
+description: |-
+  The `load` operation of **patchset_diff**.
+
+  SDK: `client.PatchsetDiff().load({ change_id: "example", id: "example_id", organization_id: "example", patchset_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/vcs/changes/:id/patchsets/:patchset_number/diff/:fingerprint"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this patchset_diff belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this patchset_diff belongs to.
+  - key: id
+    value: "{{change_id}}"
+    description: The change this patchset_diff belongs to.
+  - key: patchset_number
+    value: "{{patchset_id}}"
+    description: "Input: patchset_id."
+  - key: fingerprint
+    value: "{{patchset_diff_id}}"
+    description: The patchset_diff this request addresses.
+order: 1000

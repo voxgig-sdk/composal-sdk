@@ -1,0 +1,9 @@
+$kind: collection
+id: d8dfa113-4580-5e65-a8b8-ad427b9edab1
+description: |-
+  The **organization_identity_certificate** entity, which belongs to a organization. Its requests address one record by `{{organization_identity_certificate_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 343000

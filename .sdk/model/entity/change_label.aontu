@@ -1,0 +1,499 @@
+# Entity: change_label
+
+main: kit: entity: change_label: {
+
+  alias: field: {}
+
+  fields: {
+    accepted: {
+      h: "Accepted"
+      n: "accepted"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    add: {
+      h: "Add"
+      n: "add"
+      r: false
+      t: "`$ARRAY`"
+    }
+    approval: {
+      h: "Approval"
+      n: "approval"
+      r: true
+      t: "`$OBJECT`"
+    }
+    assets: {
+      h: "Assets"
+      n: "assets"
+      r: false
+      sh: "Proof assets referenced from the description as `vex-asset:<id>`."
+      t: "`$ARRAY`"
+    }
+    author: {
+      h: "Author"
+      n: "author"
+      r: false
+      sh: "Human user summary or organization automation identity."
+      t: "`$ANY`"
+    }
+    capabilities: {
+      h: "Capabilities"
+      n: "capabilities"
+      r: true
+      t: "`$OBJECT`"
+    }
+    change_key: {
+      h: "Change Key"
+      n: "change_key"
+      r: false
+      t: "`$STRING`"
+    }
+    checks: {
+      h: "Checks"
+      n: "checks"
+      r: false
+      t: "`$ARRAY`"
+    }
+    checks_status: {
+      h: "Checks Status"
+      n: "checks_status"
+      r: false
+      t: "`$STRING`"
+    }
+    comments: {
+      h: "Comments"
+      n: "comments"
+      r: false
+      t: "`$ARRAY`"
+    }
+    comments_count: {
+      h: "Comments Count"
+      n: "comments_count"
+      r: false
+      t: "`$INTEGER`"
+    }
+    comments_count_label: {
+      h: "Comments Count Label"
+      n: "comments_count_label"
+      r: false
+      t: "`$STRING`"
+    }
+    commit_message: {
+      h: "Commit Message"
+      n: "commit_message"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    current_patchset: {
+      h: "Current Patchset"
+      n: "current_patchset"
+      r: true
+      t: "`$OBJECT`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    draft: {
+      h: "Draft"
+      n: "draft"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    folded_into_number: {
+      h: "Folded Into Number"
+      n: "folded_into_number"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    github_projection_status: {
+      h: "Github Projection Status"
+      n: "github_projection_status"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    github_pull_request: {
+      h: "Github Pull Request"
+      n: "github_pull_request"
+      r: true
+      t: "`$OBJECT`"
+    }
+    github_pull_requests: {
+      h: "Github Pull Requests"
+      n: "github_pull_requests"
+      r: false
+      t: "`$ARRAY`"
+    }
+    group: {
+      h: "Group"
+      n: "group"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    has_description: {
+      h: "Has Description"
+      n: "has_description"
+      r: false
+      sh: "True when the change has Vex-owned review description content, distinct from the JJ commit message."
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    jj_change_id: {
+      h: "Jj Change Id"
+      n: "jj_change_id"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    labels: {
+      h: "Labels"
+      n: "labels"
+      r: false
+      t: "`$ARRAY`"
+    }
+    landable: {
+      h: "Landable"
+      n: "landable"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    landed_by: {
+      h: "Landed By"
+      n: "landed_by"
+      r: true
+      t: "`$OBJECT`"
+    }
+    number: {
+      h: "Number"
+      n: "number"
+      r: true
+      t: "`$INTEGER`"
+    }
+    orphaned: {
+      h: "Orphaned"
+      n: "orphaned"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    orphaned_at: {
+      fo: "date-time"
+      h: "Orphaned At"
+      n: "orphaned_at"
+      r: false
+      t: "`$STRING`"
+    }
+    orphaned_at_label: {
+      h: "Orphaned At Label"
+      n: "orphaned_at_label"
+      r: false
+      t: "`$STRING`"
+    }
+    orphaned_reason: {
+      h: "Orphaned Reason"
+      n: "orphaned_reason"
+      r: false
+      t: "`$STRING`"
+    }
+    parent_change_id: {
+      h: "Parent Change Id"
+      n: "parent_change_id"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    parent_change_number: {
+      h: "Parent Change Number"
+      n: "parent_change_number"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    patchset_number: {
+      h: "Patchset Number"
+      n: "patchset_number"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    patchsets: {
+      h: "Patchsets"
+      n: "patchsets"
+      r: false
+      t: "`$ARRAY`"
+    }
+    primary_status: {
+      h: "Primary Status"
+      n: "primary_status"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    public_id: {
+      h: "Public Id"
+      n: "public_id"
+      r: false
+      t: "`$STRING`"
+    }
+    relation_chain: {
+      h: "Relation Chain"
+      n: "relation_chain"
+      r: false
+      t: "`$ARRAY`"
+    }
+    remove: {
+      h: "Remove"
+      n: "remove"
+      r: false
+      t: "`$ARRAY`"
+    }
+    requested_changes: {
+      h: "Requested Changes"
+      n: "requested_changes"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    restack_state: {
+      h: "Restack State"
+      n: "restack_state"
+      r: false
+      t: "`$STRING`"
+    }
+    reviewer_candidates: {
+      h: "Reviewer Candidates"
+      n: "reviewer_candidates"
+      r: false
+      sh: "Organization members available to the reviewer picker on this page."
+      t: "`$ARRAY`"
+    }
+    reviewers: {
+      h: "Reviewers"
+      n: "reviewers"
+      r: false
+      t: "`$ARRAY`"
+    }
+    stable_change_id: {
+      h: "Stable Change Id"
+      n: "stable_change_id"
+      r: false
+      t: "`$STRING`"
+    }
+    stack: {
+      h: "Stack"
+      n: "stack"
+      r: false
+      t: "`$ANY`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    target_branch: {
+      h: "Target Branch"
+      n: "target_branch"
+      r: true
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      t: "`$STRING`"
+    }
+    unresolved_comments_count_label: {
+      h: "Unresolved Comments Count Label"
+      n: "unresolved_comments_count_label"
+      r: false
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      t: "`$STRING`"
+    }
+    votes: {
+      h: "Votes"
+      n: "votes"
+      r: false
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "change_label"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "add"
+            "labels"
+            "remove"
+          ]
+          co: {
+            id: "PATCH /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/labels"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "change_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_id"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/labels"
+          q: {
+            exist: [
+              "change_id"
+              "organization_id"
+              "repo_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "change_id"
+              org_slug: "organization_id"
+              repo_slug: "repo_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "repos"
+            }
+            {
+              var: "repo_id"
+            }
+            {
+              lit: "vcs"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              var: "change_id"
+            }
+            {
+              lit: "labels"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.change`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.repo") path("$.main.kit.entity.change")]
+  ]
+
+}

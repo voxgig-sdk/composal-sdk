@@ -3,19 +3,29 @@ id: "503c3069-871e-5b6c-a5ec-e8fd09536888"
 description: |-
   The `load` operation of **agent_connection**.
 
-  SDK: `client.AgentConnection().load({ agent_id: "example", id: "example_id", organization_id: "example" })`
-url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/relay/connections/:connection_id"
+  SDK: `client.AgentConnection().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_connections/:id"
 method: GET
 headers:
   Accept: application/json
+queryParams:
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: grants_cursor
+    value: ""
+    disabled: true
+  - key: grants_limit
+    value: "25"
+    disabled: true
+  - key: limit
+    value: "25"
+    disabled: true
 pathVariables:
   - key: organization_id
     value: "{{organization_id}}"
     description: The organization this agent_connection belongs to.
   - key: id
-    value: "{{agent_id}}"
-    description: The agent this agent_connection belongs to.
-  - key: connection_id
     value: "{{agent_connection_ref01}}"
     description: The agent_connection this request addresses.
 scripts:
@@ -24,7 +34,7 @@ scripts:
       const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
       const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
       const getonly = flag("getonly", false)
-      const missing = ["base","organization_id","agent_id","agent_connection_ref01"].filter((name) => !given(name))
+      const missing = ["base","organization_id","agent_connection_ref01"].filter((name) => !given(name))
       if (!given("apikey")) missing.unshift("apikey")
       const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
       if (getonly && "GET" !== pm.request.method) {

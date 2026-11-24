@@ -1,0 +1,28 @@
+$kind: http-request
+id: "868f9c7c-828d-5757-b629-1b86a1fe6e0c"
+description: |-
+  The `remove` operation of **agent_app_install**.
+
+  SDK: `client.AgentAppInstall().remove({ agent_app_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_apps/:id/installs/:agent_id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_app_install belongs to.
+  - key: id
+    value: "{{agent_app_id}}"
+    description: The agent_app this agent_app_install belongs to.
+  - key: agent_id
+    value: "{{agent_app_install_id}}"
+    description: The agent_app_install this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("agent_app_install_id")
+      }
+    language: text/javascript
+order: 2000

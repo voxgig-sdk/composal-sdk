@@ -1,0 +1,29 @@
+$kind: http-request
+id: "06486f09-46a3-55e8-b704-9d6ace2e29c3"
+description: |-
+  The `list` operation of **agent_app**.
+
+  SDK: `client.AgentApp().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_apps"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: cursor
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_app belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("agent_app_id")) pm.collectionVariables.set("agent_app_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

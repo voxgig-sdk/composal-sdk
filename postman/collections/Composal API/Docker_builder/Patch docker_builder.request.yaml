@@ -1,0 +1,25 @@
+$kind: http-request
+id: "16c964b8-42b4-5637-9321-f0ef1391b973"
+description: |-
+  The `patch` operation of **docker_builder**.
+
+  SDK: `client.DockerBuilder().patch({ id: "example", organization_id: "example", slug: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/docker_builders/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this docker_builder belongs to.
+  - key: id
+    value: "{{docker_builder_id}}"
+    description: The docker_builder this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "slug": "example"
+    }
+order: 5000

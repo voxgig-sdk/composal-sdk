@@ -1,0 +1,25 @@
+$kind: http-request
+id: c21547ee-2628-525b-88d8-65b2480eb371
+description: |-
+  The `remove` operation of **organization_oidc_trust**.
+
+  SDK: `client.OrganizationOidcTrust().remove({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/identity/organizations/:organization_id/oidc_trusts/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_oidc_trust belongs to.
+  - key: id
+    value: "{{organization_oidc_trust_id}}"
+    description: The organization_oidc_trust this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("organization_oidc_trust_id")
+      }
+    language: text/javascript
+order: 9000

@@ -1,0 +1,8 @@
+$kind: collection
+id: "9755a8dd-b47d-5d51-b582-42f8c1d790a9"
+description: |-
+  The **organization_run_outcome** entity, which belongs to a organization. Its requests address one record by `{{organization_run_outcome_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 349000

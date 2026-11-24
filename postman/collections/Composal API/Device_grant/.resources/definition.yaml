@@ -1,0 +1,18 @@
+$kind: collection
+id: "6473f6e9-b4ae-59ab-8e69-6116e5aff563"
+description: |-
+  The **device_grant** entity, which belongs to a organization and a device. Its requests address one record by `{{device_grant_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `active_grants` | array | yes |  |
+  | `agent_choices` | array | yes |  |
+  | `agent_id` | string | yes |  |
+  | `all_agents_access` | boolean | yes |  |
+  | `capabilities` | array | yes |  |
+  | `execution_available` | boolean | yes |  |
+  | `grants` | array | yes |  |
+  | `id` | string |  |  |
+  | `next_cursor` | string | yes |  |
+  | `principal_id` | string | yes |  |
+order: 217000

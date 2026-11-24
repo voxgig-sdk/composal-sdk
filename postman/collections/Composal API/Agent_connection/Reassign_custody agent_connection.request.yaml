@@ -1,0 +1,26 @@
+$kind: http-request
+id: b98594f8-0e8c-5505-888f-b608e46d5b60
+description: |-
+  The `reassign_custody` action of **agent_connection**, a route of its `create` operation.
+
+  SDK: `client.AgentConnection().create({ "organization_id": "organization_id", "id": "ID", $action: "reassign_custody" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_connections/:id/reassign_custody"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_connection belongs to.
+  - key: id
+    value: "{{agent_connection_id}}"
+    description: The agent_connection this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "reason": "example",
+      "member_id": "{{member_id}}"
+    }
+order: 15000

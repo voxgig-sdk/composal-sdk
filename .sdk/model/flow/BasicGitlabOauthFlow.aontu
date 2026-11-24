@@ -1,0 +1,28 @@
+# BasicGitlabOauthFlow
+
+main: kit: flow: BasicGitlabOauthFlow:
+{
+  entity: "gitlab_oauth",
+  kind: "basic",
+  name: "BasicGitlabOauthFlow",
+  step: [
+    {
+      i: {
+        ref: "gitlab_oauth_ref01",
+        srcdatavar: "gitlab_oauth_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-gitlab_oauth_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGitlabOauthFlow"
+}

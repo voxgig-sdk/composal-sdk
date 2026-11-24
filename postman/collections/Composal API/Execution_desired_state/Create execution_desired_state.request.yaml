@@ -1,0 +1,25 @@
+$kind: http-request
+id: a701ac12-36fb-51e5-afcc-9b47ad34034f
+description: |-
+  The `create` operation of **execution_desired_state**.
+
+  SDK: `client.ExecutionDesiredState().create({  })`
+url: "{{base}}/api/v1/execution/desired_states"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("execution_desired_state_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

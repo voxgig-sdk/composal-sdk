@@ -1,0 +1,26 @@
+# BasicDeploymentSettingFlow
+
+main: kit: flow: BasicDeploymentSettingFlow:
+{
+  entity: "deployment_setting",
+  kind: "basic",
+  name: "BasicDeploymentSettingFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "deployment_setting_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeploymentSettingFlow"
+}

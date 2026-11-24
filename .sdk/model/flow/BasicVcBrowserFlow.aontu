@@ -1,0 +1,33 @@
+# BasicVcBrowserFlow
+
+main: kit: flow: BasicVcBrowserFlow:
+{
+  entity: "vc_browser",
+  kind: "basic",
+  name: "BasicVcBrowserFlow",
+  step: [
+    {
+      i: {
+        ref: "vc_browser_ref01",
+        srcdatavar: "vc_browser_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "vc_browser01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vc_browser_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVcBrowserFlow"
+}

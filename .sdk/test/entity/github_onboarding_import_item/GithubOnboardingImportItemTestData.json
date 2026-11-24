@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "github_onboarding_import_item": {
+      "GITHUB_ONBOARDING_IMPORT_ITEM00": {
+        "id": "GITHUB_ONBOARDING_IMPORT_ITEM00",
+        "organization_id": "ORGANIZATION01"
+      },
+      "GITHUB_ONBOARDING_IMPORT_ITEM01": {
+        "id": "GITHUB_ONBOARDING_IMPORT_ITEM01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "GITHUB_ONBOARDING_IMPORT_ITEM02": {
+        "id": "GITHUB_ONBOARDING_IMPORT_ITEM02",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "github_onboarding_import_item": {
+      "github_onboarding_import_item_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/github_onboarding/import_items/{github_import_batch_item_id}/retry": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

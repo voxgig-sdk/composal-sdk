@@ -1,0 +1,46 @@
+# BasicControlComputerControlOperationFlow
+
+main: kit: flow: BasicControlComputerControlOperationFlow:
+{
+  entity: "control_computer_control_operation",
+  kind: "basic",
+  name: "BasicControlComputerControlOperationFlow",
+  step: [
+    {
+      i: {
+        ref: "control_computer_control_operation_ref01"
+      }
+
+      m: {
+        control_computer_id: "control_computer01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "control_computer_control_operation_ref01",
+        srcdatavar: "control_computer_control_operation_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "control_computer_control_operation01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-control_computer_control_operation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicControlComputerControlOperationFlow"
+}

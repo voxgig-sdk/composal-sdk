@@ -1,0 +1,44 @@
+$kind: collection
+id: "403adec1-42ce-5ccc-81da-9089e32d67b5"
+description: |-
+  The **pages_session** entity, which belongs to a organization. Its requests address one record by `{{pages_session_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `adapter` | string |  |  |
+  | `created_at` | string | yes |  |
+  | `cursor` | string |  |  |
+  | `ended_at` | string | yes |  |
+  | `external_session_id` | string | yes |  |
+  | `facets` | object | yes |  |
+  | `from` | string |  |  |
+  | `github_access_warnings` | array |  |  |
+  | `harness` | string | yes |  |
+  | `id` | string | yes |  |
+  | `last_activity_at` | string | yes |  |
+  | `last_checkpoint_at` | string | yes |  |
+  | `limit` | integer |  |  |
+  | `markers` | array | yes |  |
+  | `max_bytes` | integer |  |  |
+  | `mode` | string |  |  |
+  | `offset` | integer |  |  |
+  | `pagination` | object | yes |  |
+  | `query` | string |  |  |
+  | `repo` | string |  |  |
+  | `repository` | any | yes |  |
+  | `search` | any |  |  |
+  | `search_enabled` | boolean |  |  |
+  | `session` | any | yes |  |
+  | `sessions` | array | yes |  |
+  | `started_at` | string | yes |  |
+  | `stats` | object | yes |  |
+  | `status` | string |  |  |
+  | `title` | string | yes |  |
+  | `to` | string |  |  |
+  | `token_stats` | any | yes |  |
+  | `transcript_index` | any | yes |  |
+  | `transcript_stats` | any | yes |  |
+  | `updated_at` | string | yes |  |
+  | `user` | any | yes |  |
+  | `user_id` | string |  |  |
+order: 374000

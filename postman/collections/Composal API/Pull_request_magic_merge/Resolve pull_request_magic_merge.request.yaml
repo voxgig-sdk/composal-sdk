@@ -1,0 +1,36 @@
+$kind: http-request
+id: ed20adfe-c8cc-5882-ad21-cb0468450c8e
+description: |-
+  The `resolve` action of **pull_request_magic_merge**, a route of its `create` operation.
+
+  SDK: `client.PullRequestMagicMerge().create({ "organization_id": "organization_id", "pull_request_id": "pull_request_id", "number": "number", $action: "resolve" })`
+url: "{{base}}/api/v1/organizations/:org_slug/github/pull_requests/:github_repository_id/:number/magic_merge/resolve"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this pull_request_magic_merge belongs to.
+  - key: github_repository_id
+    value: "{{pull_request_id}}"
+    description: The pull_request this pull_request_magic_merge belongs to.
+  - key: number
+    value: "{{number}}"
+    description: "Input: number."
+body:
+  type: json
+  content: |-
+    {
+      "expected_head_sha": "example",
+      "expected_base_sha": "example",
+      "mode": "merge",
+      "resolutions": [
+        {
+          "path": "example",
+          "content": "example"
+        }
+      ]
+    }
+order: 3000

@@ -5,48 +5,77 @@ main: kit: entity: agent_skill: {
   alias: field: {}
 
   fields: {
-    available: {
-      h: "Available"
-      n: "available"
+    agents: {
+      h: "Agents"
+      n: "agents"
+      r: true
+      sh: "Active V2 agents the viewer can see whose owner is still a member"
+      t: "`$ARRAY`"
+    }
+    audience: {
+      h: "Audience"
+      n: "audience"
+      r: true
+      t: "`$OBJECT`"
+    }
+    can_manage_library: {
+      h: "Can Manage Library"
+      n: "can_manage_library"
       r: true
       t: "`$BOOLEAN`"
     }
-    can_configure: {
-      h: "Can Configure"
-      n: "can_configure"
+    content: {
+      h: "Content"
+      n: "content"
       r: true
-      t: "`$BOOLEAN`"
+      sh: "The skill's SKILL.md"
+      t: "`$STRING`"
     }
-    can_manage: {
-      h: "Can Manage"
-      n: "can_manage"
+    files: {
+      h: "Files"
+      n: "files"
       r: true
-      t: "`$BOOLEAN`"
+      t: "`$ARRAY`"
     }
-    configuration_state: {
-      h: "Configuration State"
-      n: "configuration_state"
+    id: {
+      h: "Id"
+      n: "id"
       r: false
-      sh: "The requested managed skill selection is awaiting runtime qualification."
+      syn: true
       t: "`$STRING`"
     }
-    description: {
-      h: "Description"
-      n: "description"
-      r: true
+    marketplace: {
+      h: "Marketplace"
+      n: "marketplace"
+      r: false
       t: "`$STRING`"
     }
-    enabled: {
-      h: "Enabled"
-      n: "enabled"
+    pending: {
+      h: "Pending"
+      n: "pending"
       r: true
+      sh: "Some agent is still applying a change; check again shortly"
       t: "`$BOOLEAN`"
     }
-    name: {
-      h: "Name"
-      n: "name"
-      r: true
+    plugin: {
+      h: "Plugin"
+      n: "plugin"
+      r: false
+      sh: "The marketplace entry id"
       t: "`$STRING`"
+    }
+    revision: {
+      h: "Revision"
+      n: "revision"
+      r: true
+      sh: "The commit SHA returned by preview"
+      t: "`$STRING`"
+    }
+    skill: {
+      h: "Skill"
+      n: "skill"
+      r: true
+      t: "`$OBJECT`"
     }
     skills: {
       h: "Skills"
@@ -54,12 +83,18 @@ main: kit: entity: agent_skill: {
       r: true
       t: "`$ARRAY`"
     }
-    version: {
-      h: "Version"
-      n: "version"
-      r: true
+    source: {
+      h: "Source"
+      n: "source"
+      r: false
+      sh: "owner/repo, a GitHub or skills.sh link, or npx skills add owner/repo [--skill NAME ...]"
       t: "`$STRING`"
     }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
   }
 
   name: "agent_skill"
@@ -69,24 +104,20 @@ main: kit: entity: agent_skill: {
       points: [
         {
           bf: [
-            "enabled"
-            "name"
-            "version"
+            "audience"
+            "marketplace"
+            "plugin"
+            "revision"
+            "skills"
+            "source"
           ]
           co: {
-            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/skills"
+            id: "POST /api/v1/organizations/{organization_id}/agent_skills"
             source: "openapi3"
             version: 2
           }
           g: {
             params: [
-              {
-                k: "param"
-                n: "agent_id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
               {
                 k: "param"
                 n: "organization_id"
@@ -97,17 +128,11 @@ main: kit: entity: agent_skill: {
             ]
           }
           m: "POST"
-          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/skills"
+          o: "/api/v1/organizations/{organization_id}/agent_skills"
           q: {
             exist: [
-              "agent_id"
               "organization_id"
             ]
-          }
-          r: {
-            param: {
-              id: "agent_id"
-            }
           }
           rs: {
             kind: "json"
@@ -127,16 +152,66 @@ main: kit: entity: agent_skill: {
               var: "organization_id"
             }
             {
-              lit: "agents"
+              lit: "agent_skills"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "marketplace"
+            "plugin"
+            "source"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agent_skills/preview"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agent_skills/preview"
+          q: {
+            "$action": "preview"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
             }
             {
-              var: "agent_id"
+              lit: "v1"
             }
             {
-              lit: "spark"
+              lit: "organizations"
             }
             {
-              lit: "skills"
+              var: "organization_id"
+            }
+            {
+              lit: "agent_skills"
+            }
+            {
+              lit: "preview"
             }
           ]
           t: {
@@ -151,7 +226,7 @@ main: kit: entity: agent_skill: {
       points: [
         {
           co: {
-            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/skills"
+            id: "GET /api/v1/organizations/{organization_id}/agent_skills"
             source: "openapi3"
             version: 2
           }
@@ -159,7 +234,62 @@ main: kit: entity: agent_skill: {
             params: [
               {
                 k: "param"
-                n: "agent_id"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agent_skills"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_skills"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agent_skills/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
                 or: "id"
                 r: true
                 t: "`$STRING`"
@@ -174,16 +304,16 @@ main: kit: entity: agent_skill: {
             ]
           }
           m: "GET"
-          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/skills"
+          o: "/api/v1/organizations/{organization_id}/agent_skills/{id}"
           q: {
             exist: [
-              "agent_id"
+              "id"
               "organization_id"
             ]
           }
           r: {
             param: {
-              id: "agent_id"
+              id: "id"
             }
           }
           rs: {
@@ -204,21 +334,241 @@ main: kit: entity: agent_skill: {
               var: "organization_id"
             }
             {
-              lit: "agents"
+              lit: "agent_skills"
             }
             {
-              var: "agent_id"
-            }
-            {
-              lit: "spark"
-            }
-            {
-              lit: "skills"
+              var: "id"
             }
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.skills`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agent_skills/marketplace"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "source"
+                or: "source"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agent_skills/marketplace"
+          q: {
+            "$action": "marketplace"
+            exist: [
+              "organization_id"
+              "source"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_skills"
+            }
+            {
+              lit: "marketplace"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.items`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /api/v1/organizations/{organization_id}/agent_skills/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v1/organizations/{organization_id}/agent_skills/{id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_skills"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "agent_ids"
+            "mode"
+            "new_agents"
+          ]
+          co: {
+            id: "PUT /api/v1/organizations/{organization_id}/agent_skills/{id}/audience"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/organizations/{organization_id}/agent_skills/{id}/audience"
+          q: {
+            "$action": "audience"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_skills"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "audience"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
           }
         }
       ]
@@ -227,7 +577,7 @@ main: kit: entity: agent_skill: {
 
 
   relations: ancestors: [
-    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent")]
+    [path("$.main.kit.entity.organization")]
   ]
 
 }

@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "checkpoint_prepare_chunk": {
+      "CHECKPOINT_PREPARE_CHUNK00": {
+        "agent_session_id": "AGENT_SESSION01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CHECKPOINT_PREPARE_CHUNK00"
+      },
+      "CHECKPOINT_PREPARE_CHUNK01": {
+        "agent_session_id": "AGENT_SESSION01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CHECKPOINT_PREPARE_CHUNK01"
+      },
+      "CHECKPOINT_PREPARE_CHUNK02": {
+        "agent_session_id": "AGENT_SESSION01",
+        "organization_id": "ORGANIZATION01",
+        "repo_id": "REPO01",
+        "id": "CHECKPOINT_PREPARE_CHUNK02"
+      }
+    }
+  },
+  "new": {
+    "checkpoint_prepare_chunk": {
+      "checkpoint_prepare_chunk_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/prepare_chunks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

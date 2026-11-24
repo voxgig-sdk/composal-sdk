@@ -1,0 +1,19 @@
+$kind: http-request
+id: ffe481a3-619c-5c39-8379-7b62c5f10217
+description: |-
+  The `patch` operation of **artifact_retention_policy**.
+
+  SDK: `client.ArtifactRetentionPolicy().patch({ id: "example" })`
+url: "{{base}}/api/v1/artifacts/retention_policies/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{artifact_retention_policy_id}}"
+    description: The artifact_retention_policy this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000
