@@ -16,4 +16,4 @@ description: |-
   | `inventory_errors` | array | yes |  |
   | `organization_id` | string | yes |  |
   | `repositories` | array | yes |  |
-order: 439000
+order: 443000

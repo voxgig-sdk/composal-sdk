@@ -4601,16 +4601,6 @@ class BillingLoadMatch
     public string $organization_id;
 }
 
-/** Request payload for Billing#update. */
-class BillingUpdateData
-{
-    public string $organization_id;
-    public mixed $billing_email = null;
-    public mixed $cancel_at_period_end = null;
-    public mixed $enabled = null;
-    public mixed $monthly_cap_cents = null;
-}
-
 /** BillingAddon entity data model. */
 class BillingAddon
 {
@@ -4647,6 +4637,46 @@ class BillingAddonUpdateData
     public ?int $quantity = null;
 }
 
+/** BillingBudget entity data model. */
+class BillingBudget
+{
+    public array $addons;
+    public mixed $breakdown;
+    public mixed $budget;
+    public bool $can_manage_contact;
+    public bool $can_manage_extra_spend;
+    public bool $can_manage_local_subscription;
+    public bool $can_manage_payment_method;
+    public bool $can_set_up_billing;
+    public mixed $customer;
+    public bool $deployment_usage_visible;
+    public array $entitlements;
+    public bool $extra_spend_enabled;
+    public bool $feature_enabled;
+    public mixed $monthly_cap_cents = null;
+    public string $organization_id;
+    public mixed $package;
+    public mixed $prepaid;
+    public mixed $preview;
+    public array $storage_usage;
+    public array $stripe;
+    public mixed $subscription;
+    public array $token_account;
+}
+
+/** Request payload for BillingBudget#update. */
+class BillingBudgetUpdateData
+{
+    public string $organization_id;
+    public mixed $monthly_cap_cents = null;
+}
+
+/** Request payload for BillingBudget#patch. */
+class BillingBudgetPatchData
+{
+    public string $organization_id;
+}
+
 /** BillingCheckoutSession entity data model. */
 class BillingCheckoutSession
 {
@@ -4668,6 +4698,90 @@ class BillingCheckoutSessionCreateData
     public ?string $package_key = null;
     public ?int $package_revision = null;
     public ?string $success_url = null;
+}
+
+/** BillingContact entity data model. */
+class BillingContact
+{
+    public array $addons;
+    public string $billing_email;
+    public mixed $breakdown;
+    public mixed $budget;
+    public bool $can_manage_contact;
+    public bool $can_manage_extra_spend;
+    public bool $can_manage_local_subscription;
+    public bool $can_manage_payment_method;
+    public bool $can_set_up_billing;
+    public mixed $customer;
+    public bool $deployment_usage_visible;
+    public array $entitlements;
+    public bool $extra_spend_enabled;
+    public bool $feature_enabled;
+    public string $organization_id;
+    public mixed $package;
+    public mixed $prepaid;
+    public mixed $preview;
+    public array $storage_usage;
+    public array $stripe;
+    public mixed $subscription;
+    public array $token_account;
+}
+
+/** Request payload for BillingContact#update. */
+class BillingContactUpdateData
+{
+    public string $organization_id;
+}
+
+/** Request payload for BillingContact#patch. */
+class BillingContactPatchData
+{
+    public string $organization_id;
+    public ?string $billing_email = null;
+}
+
+/** BillingExtraSpend entity data model. */
+class BillingExtraSpend
+{
+    public array $addons;
+    public mixed $breakdown;
+    public mixed $budget;
+    public bool $can_manage_contact;
+    public bool $can_manage_extra_spend;
+    public bool $can_manage_local_subscription;
+    public bool $can_manage_payment_method;
+    public bool $can_set_up_billing;
+    public mixed $customer;
+    public bool $deployment_usage_visible;
+    public bool $enabled;
+    public array $entitlements;
+    public bool $extra_spend_enabled;
+    public bool $feature_enabled;
+    public mixed $monthly_cap_cents = null;
+    public string $organization_id;
+    public mixed $package;
+    public mixed $prepaid;
+    public mixed $preview;
+    public array $storage_usage;
+    public array $stripe;
+    public mixed $subscription;
+    public array $token_account;
+}
+
+/** Request payload for BillingExtraSpend#update. */
+class BillingExtraSpendUpdateData
+{
+    public string $organization_id;
+    public ?bool $enabled = null;
+    public mixed $monthly_cap_cents = null;
+}
+
+/** Request payload for BillingExtraSpend#patch. */
+class BillingExtraSpendPatchData
+{
+    public string $organization_id;
+    public ?bool $enabled = null;
+    public mixed $monthly_cap_cents = null;
 }
 
 /** BillingInvoice entity data model. */
@@ -4817,6 +4931,46 @@ class BillingPrepaidPurchaseCreateData
     public string $organization_id;
     public int $minutes;
     public string $request_key;
+}
+
+/** BillingSubscription entity data model. */
+class BillingSubscription
+{
+    public array $addons;
+    public mixed $breakdown;
+    public mixed $budget;
+    public bool $can_manage_contact;
+    public bool $can_manage_extra_spend;
+    public bool $can_manage_local_subscription;
+    public bool $can_manage_payment_method;
+    public bool $can_set_up_billing;
+    public bool $cancel_at_period_end;
+    public mixed $customer;
+    public bool $deployment_usage_visible;
+    public array $entitlements;
+    public bool $extra_spend_enabled;
+    public bool $feature_enabled;
+    public string $organization_id;
+    public mixed $package;
+    public mixed $prepaid;
+    public mixed $preview;
+    public array $storage_usage;
+    public array $stripe;
+    public mixed $subscription;
+    public array $token_account;
+}
+
+/** Request payload for BillingSubscription#update. */
+class BillingSubscriptionUpdateData
+{
+    public string $organization_id;
+}
+
+/** Request payload for BillingSubscription#patch. */
+class BillingSubscriptionPatchData
+{
+    public string $organization_id;
+    public ?bool $cancel_at_period_end = null;
 }
 
 /** BillingTokenTopUp entity data model. */

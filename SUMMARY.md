@@ -6,7 +6,7 @@ Composal runs AI agents for engineering teams: always-on persistent agents with 
 
 This guide introduces the API, the client libraries, and the companion tools in this repository. Start with the API capabilities, choose a client for your application, and use the linked reference when you need exact request and response details.
 
-The selected API surface contains 551 entities and 1747 HTTP routes. There are 7 SDK targets and 2 companion tools.
+The selected API surface contains 555 entities and 1747 HTTP routes. There are 7 SDK targets and 2 companion tools.
 
 An entity groups related API operations. An operation can have several routes with different inputs or authentication requirements. The SDK exposes the entity and its operations using the conventions of the selected language.
 
@@ -1073,9 +1073,9 @@ SDK operations: `create`.
 
 ### [Billing](docs/api/billing.html)
 
-Results: Billing page; Meters; Updated billing page; Success.
+Results: Billing page; Meters.
 
-SDK operations: `load`, `update`.
+SDK operations: `load`.
 
 Key fields to recognise:
 
@@ -1097,6 +1097,20 @@ Key fields to recognise:
 - `feature_enabled`: Whether the `billing` feature is on for this organization. False renders the page as not enabled, with no Subscribe action.
 - `preview`: Metronome draft invoice and credits, or null.
 
+### [BillingBudget](docs/api/billing_budget.html)
+
+Results: Updated billing page.
+
+SDK operations: `patch`, `update`.
+
+Key fields to recognise:
+
+- `breakdown`: The 24-hour live series with its provenance; null only when the rollup fallback itself failed.
+- `extra_spend_enabled`: Organization consent to paid overages across all metered usage.
+- `feature_enabled`: Whether the `billing` feature is on for this organization. False renders the page as not enabled, with no Subscribe action.
+- `monthly_cap_cents`: Null clears the budget.
+- `preview`: Metronome draft invoice and credits, or null.
+
 ### [BillingCheckoutSession](docs/api/billing_checkout_session.html)
 
 Results: Success; The hosted Checkout URL to redirect the browser to.
@@ -1106,6 +1120,33 @@ SDK operations: `create`.
 Key fields to recognise:
 
 - `entry_point`: Where the owner chose to pay, for product analytics.
+
+### [BillingContact](docs/api/billing_contact.html)
+
+Results: Updated billing page; Success.
+
+SDK operations: `patch`, `update`.
+
+Key fields to recognise:
+
+- `breakdown`: The 24-hour live series with its provenance; null only when the rollup fallback itself failed.
+- `extra_spend_enabled`: Organization consent to paid overages across all metered usage.
+- `feature_enabled`: Whether the `billing` feature is on for this organization. False renders the page as not enabled, with no Subscribe action.
+- `preview`: Metronome draft invoice and credits, or null.
+
+### [BillingExtraSpend](docs/api/billing_extra_spend.html)
+
+Results: Updated billing page.
+
+SDK operations: `patch`, `update`.
+
+Key fields to recognise:
+
+- `breakdown`: The 24-hour live series with its provenance; null only when the rollup fallback itself failed.
+- `extra_spend_enabled`: Organization consent to paid overages across all metered usage.
+- `feature_enabled`: Whether the `billing` feature is on for this organization. False renders the page as not enabled, with no Subscribe action.
+- `monthly_cap_cents`: Monthly limit across all metered overages, excluding plan fees.
+- `preview`: Metronome draft invoice and credits, or null.
 
 ### [BillingInvoice](docs/api/billing_invoice.html)
 
@@ -1145,6 +1186,19 @@ SDK operations: `load`.
 Results: Purchase accepted for payment reconciliation; Purchases, newest first; Purchase status and balance; Current hosted invoice URL.
 
 SDK operations: `create`, `list`, `load`.
+
+### [BillingSubscription](docs/api/billing_subscription.html)
+
+Results: Updated billing page.
+
+SDK operations: `patch`, `update`.
+
+Key fields to recognise:
+
+- `breakdown`: The 24-hour live series with its provenance; null only when the rollup fallback itself failed.
+- `extra_spend_enabled`: Organization consent to paid overages across all metered usage.
+- `feature_enabled`: Whether the `billing` feature is on for this organization. False renders the page as not enabled, with no Subscribe action.
+- `preview`: Metronome draft invoice and credits, or null.
 
 ### [BillingTokenTopUp](docs/api/billing_token_top_up.html)
 
@@ -4936,16 +4990,14 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [BazelFindMissingBlob](docs/api/bazel_find_missing_blob.html) | `create` | `POST /api/v1/bazel/find_missing_blobs` | Required |
 | [Billing](docs/api/billing.html) | `load` | `GET /api/v1/organizations/{organization_id}/billing` | Required |
 | [Billing](docs/api/billing.html) | `load` | `GET /api/v1/organizations/{organization_id}/billing/usage` | Required |
-| [Billing](docs/api/billing.html) | `update` | `PATCH /api/v1/organizations/{organization_id}/billing/budget` | Required |
-| [Billing](docs/api/billing.html) | `update` | `PUT /api/v1/organizations/{organization_id}/billing/budget` | Required |
-| [Billing](docs/api/billing.html) | `update` | `PATCH /api/v1/organizations/{organization_id}/billing/contact` | Required |
-| [Billing](docs/api/billing.html) | `update` | `PUT /api/v1/organizations/{organization_id}/billing/contact` | Required |
-| [Billing](docs/api/billing.html) | `update` | `PATCH /api/v1/organizations/{organization_id}/billing/extra_spend` | Required |
-| [Billing](docs/api/billing.html) | `update` | `PUT /api/v1/organizations/{organization_id}/billing/extra_spend` | Required |
-| [Billing](docs/api/billing.html) | `update` | `PATCH /api/v1/organizations/{organization_id}/billing/subscription` | Required |
-| [Billing](docs/api/billing.html) | `update` | `PUT /api/v1/organizations/{organization_id}/billing/subscription` | Required |
 | [BillingAddon](docs/api/billing_addon.html) | `update` | `PUT /api/v1/organizations/{organization_id}/billing/addons/{addon_key}` | Required |
+| [BillingBudget](docs/api/billing_budget.html) | `patch` | `PATCH /api/v1/organizations/{organization_id}/billing/budget` | Required |
+| [BillingBudget](docs/api/billing_budget.html) | `update` | `PUT /api/v1/organizations/{organization_id}/billing/budget` | Required |
 | [BillingCheckoutSession](docs/api/billing_checkout_session.html) | `create` | `POST /api/v1/organizations/{organization_id}/billing/checkout_sessions` | Required |
+| [BillingContact](docs/api/billing_contact.html) | `patch` | `PATCH /api/v1/organizations/{organization_id}/billing/contact` | Required |
+| [BillingContact](docs/api/billing_contact.html) | `update` | `PUT /api/v1/organizations/{organization_id}/billing/contact` | Required |
+| [BillingExtraSpend](docs/api/billing_extra_spend.html) | `patch` | `PATCH /api/v1/organizations/{organization_id}/billing/extra_spend` | Required |
+| [BillingExtraSpend](docs/api/billing_extra_spend.html) | `update` | `PUT /api/v1/organizations/{organization_id}/billing/extra_spend` | Required |
 | [BillingInvoice](docs/api/billing_invoice.html) | `list` | `GET /api/v1/organizations/{organization_id}/billing/invoices` | Required |
 | [BillingPackage](docs/api/billing_package.html) | `list` | `GET /api/v1/billing/packages` | Not required |
 | [BillingPortalSession](docs/api/billing_portal_session.html) | `create` | `POST /api/v1/organizations/{organization_id}/billing/portal_sessions` | Required |
@@ -4955,6 +5007,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [BillingPrepaidPurchase](docs/api/billing_prepaid_purchase.html) | `list` | `GET /api/v1/organizations/{organization_id}/billing/prepaid_purchases` | Required |
 | [BillingPrepaidPurchase](docs/api/billing_prepaid_purchase.html) | `load` | `GET /api/v1/organizations/{organization_id}/billing/prepaid_purchases/{id}` | Required |
 | [BillingPrepaidPurchase](docs/api/billing_prepaid_purchase.html) | `load` | `GET /api/v1/organizations/{organization_id}/billing/prepaid_purchases/{id}/payment_page` | Required |
+| [BillingSubscription](docs/api/billing_subscription.html) | `patch` | `PATCH /api/v1/organizations/{organization_id}/billing/subscription` | Required |
+| [BillingSubscription](docs/api/billing_subscription.html) | `update` | `PUT /api/v1/organizations/{organization_id}/billing/subscription` | Required |
 | [BillingTokenTopUp](docs/api/billing_token_top_up.html) | `create` | `POST /api/v1/organizations/{organization_id}/billing/token_top_ups` | Required |
 | [BillingUsage](docs/api/billing_usage.html) | `load` | `GET /api/v1/organizations/{organization_id}/billing/usage/breakdown` | Required |
 | [Binary](docs/api/binary.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/binaries/{id}/archive` | Required |

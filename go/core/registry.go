@@ -274,7 +274,13 @@ var NewBillingEntityFunc func(client *ComposalSDK, entopts map[string]any) Compo
 
 var NewBillingAddonEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
+var NewBillingBudgetEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
+
 var NewBillingCheckoutSessionEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
+
+var NewBillingContactEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
+
+var NewBillingExtraSpendEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewBillingInvoiceEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
@@ -285,6 +291,8 @@ var NewBillingPortalSessionEntityFunc func(client *ComposalSDK, entopts map[stri
 var NewBillingPrepaidPeriodEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewBillingPrepaidPurchaseEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
+
+var NewBillingSubscriptionEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 
 var NewBillingTokenTopUpEntityFunc func(client *ComposalSDK, entopts map[string]any) ComposalEntityBase
 

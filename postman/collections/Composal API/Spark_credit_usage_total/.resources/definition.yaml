@@ -8,4 +8,4 @@ description: |-
   | `compute_minutes_used` | string | yes |  |
   | `compute_usd` | string | yes |  |
   | `inference_usd` | string | yes |  |
-order: 504000
+order: 508000

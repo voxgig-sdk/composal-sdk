@@ -52,11 +52,6 @@ class BillingEntityTest extends TestCase
                 return;
             }
         }
-        if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
-            fwrite(STDOUT, 'LIVE STEP {"id":"billing.update.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/billing/budget"}' . "\n");
-            $this->markTestSkipped('Live coverage incomplete: billing.update.0 excluded (GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/billing/budget)');
-        }
-
         if (!empty($setup["live"])) {
             $this->markTestSkipped('Live coverage incomplete: the flow has no step to run');
         }

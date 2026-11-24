@@ -1,0 +1,30 @@
+$kind: collection
+id: "95352f6e-ee93-5e59-8e44-495189b0d82c"
+description: |-
+  The **billing_budget** entity, which belongs to a organization. Its requests address one record by `{{billing_budget_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `addons` | array | yes |  |
+  | `breakdown` | any | yes |  |
+  | `budget` | any | yes |  |
+  | `can_manage_contact` | boolean | yes |  |
+  | `can_manage_extra_spend` | boolean | yes |  |
+  | `can_manage_local_subscription` | boolean | yes |  |
+  | `can_manage_payment_method` | boolean | yes |  |
+  | `can_set_up_billing` | boolean | yes |  |
+  | `customer` | any | yes |  |
+  | `deployment_usage_visible` | boolean | yes |  |
+  | `entitlements` | object | yes |  |
+  | `extra_spend_enabled` | boolean | yes |  |
+  | `feature_enabled` | boolean | yes |  |
+  | `monthly_cap_cents` | integer |  |  |
+  | `organization_id` | string | yes |  |
+  | `package` | any | yes |  |
+  | `prepaid` | any | yes |  |
+  | `preview` | any | yes |  |
+  | `storage_usage` | object | yes |  |
+  | `stripe` | object | yes |  |
+  | `subscription` | any | yes |  |
+  | `token_account` | object | yes |  |
+order: 130000

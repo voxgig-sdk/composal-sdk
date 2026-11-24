@@ -11,4 +11,4 @@ description: |-
   | `is_slack_connect` | boolean | yes |  |
   | `name` | string | yes |  |
   | `published` | boolean | yes |  |
-order: 479000
+order: 483000

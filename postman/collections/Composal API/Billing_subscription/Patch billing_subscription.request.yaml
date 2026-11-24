@@ -1,9 +1,9 @@
 $kind: http-request
-id: "3711cbc6-48df-5d6a-85af-8f27a50cd229"
+id: "8b67cc1a-3c44-5e4f-8a84-acc542a41f26"
 description: |-
-  The `subscription` action of **billing**, a route of its `update` operation.
+  The `patch` operation of **billing_subscription**.
 
-  SDK: `client.Billing().update({ "organization_id": "organization_id", $action: "subscription" })`
+  SDK: `client.BillingSubscription().patch({ organization_id: "example", cancel_at_period_end: true })`
 url: "{{base}}/api/v1/organizations/:organization_id/billing/subscription"
 method: PATCH
 headers:
@@ -12,11 +12,11 @@ headers:
 pathVariables:
   - key: organization_id
     value: "{{organization_id}}"
-    description: The organization this billing belongs to.
+    description: The organization this billing_subscription belongs to.
 body:
   type: json
   content: |-
     {
       "cancel_at_period_end": true
     }
-order: 8000
+order: 2000

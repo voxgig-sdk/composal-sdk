@@ -19,4 +19,4 @@ description: |-
   | `queue` | object | yes |  |
   | `target_branches` | array |  |  |
   | `when_ready` | boolean |  |  |
-order: 319000
+order: 323000

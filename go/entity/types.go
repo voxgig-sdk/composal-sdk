@@ -2933,15 +2933,6 @@ type BillingLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 }
 
-// BillingUpdateData is the typed request payload for Billing.UpdateTyped.
-type BillingUpdateData struct {
-	OrganizationId string `json:"organization_id"`
-	BillingEmail *any `json:"billing_email,omitempty"`
-	CancelAtPeriodEnd *any `json:"cancel_at_period_end,omitempty"`
-	Enabled *any `json:"enabled,omitempty"`
-	MonthlyCapCents *any `json:"monthly_cap_cents,omitempty"`
-}
-
 // BillingAddon is the typed data model for the billing_addon entity.
 type BillingAddon struct {
 }
@@ -2951,6 +2942,21 @@ type BillingAddonUpdateData struct {
 	Id string `json:"id"`
 	OrganizationId string `json:"organization_id"`
 	Quantity *int `json:"quantity,omitempty"`
+}
+
+// BillingBudget is the typed data model for the billing_budget entity.
+type BillingBudget struct {
+}
+
+// BillingBudgetUpdateData is the typed request payload for BillingBudget.UpdateTyped.
+type BillingBudgetUpdateData struct {
+	OrganizationId string `json:"organization_id"`
+	MonthlyCapCents *any `json:"monthly_cap_cents,omitempty"`
+}
+
+// BillingBudgetPatchData is the typed request payload for BillingBudget.PatchTyped.
+type BillingBudgetPatchData struct {
+	OrganizationId string `json:"organization_id"`
 }
 
 // BillingCheckoutSession is the typed data model for the billing_checkout_session entity.
@@ -2966,6 +2972,39 @@ type BillingCheckoutSessionCreateData struct {
 	PackageKey *string `json:"package_key,omitempty"`
 	PackageRevision *int `json:"package_revision,omitempty"`
 	SuccessUrl *string `json:"success_url,omitempty"`
+}
+
+// BillingContact is the typed data model for the billing_contact entity.
+type BillingContact struct {
+}
+
+// BillingContactUpdateData is the typed request payload for BillingContact.UpdateTyped.
+type BillingContactUpdateData struct {
+	OrganizationId string `json:"organization_id"`
+}
+
+// BillingContactPatchData is the typed request payload for BillingContact.PatchTyped.
+type BillingContactPatchData struct {
+	OrganizationId string `json:"organization_id"`
+	BillingEmail *string `json:"billing_email,omitempty"`
+}
+
+// BillingExtraSpend is the typed data model for the billing_extra_spend entity.
+type BillingExtraSpend struct {
+}
+
+// BillingExtraSpendUpdateData is the typed request payload for BillingExtraSpend.UpdateTyped.
+type BillingExtraSpendUpdateData struct {
+	OrganizationId string `json:"organization_id"`
+	Enabled *bool `json:"enabled,omitempty"`
+	MonthlyCapCents *any `json:"monthly_cap_cents,omitempty"`
+}
+
+// BillingExtraSpendPatchData is the typed request payload for BillingExtraSpend.PatchTyped.
+type BillingExtraSpendPatchData struct {
+	OrganizationId string `json:"organization_id"`
+	Enabled *bool `json:"enabled,omitempty"`
+	MonthlyCapCents *any `json:"monthly_cap_cents,omitempty"`
 }
 
 // BillingInvoice is the typed data model for the billing_invoice entity.
@@ -3042,6 +3081,21 @@ type BillingPrepaidPurchaseCreateData struct {
 	OrganizationId string `json:"organization_id"`
 	Minutes int `json:"minutes"`
 	RequestKey string `json:"request_key"`
+}
+
+// BillingSubscription is the typed data model for the billing_subscription entity.
+type BillingSubscription struct {
+}
+
+// BillingSubscriptionUpdateData is the typed request payload for BillingSubscription.UpdateTyped.
+type BillingSubscriptionUpdateData struct {
+	OrganizationId string `json:"organization_id"`
+}
+
+// BillingSubscriptionPatchData is the typed request payload for BillingSubscription.PatchTyped.
+type BillingSubscriptionPatchData struct {
+	OrganizationId string `json:"organization_id"`
+	CancelAtPeriodEnd *bool `json:"cancel_at_period_end,omitempty"`
 }
 
 // BillingTokenTopUp is the typed data model for the billing_token_top_up entity.

@@ -1,0 +1,29 @@
+# BasicBillingContactFlow
+
+main: kit: flow: BasicBillingContactFlow:
+{
+  entity: "billing_contact",
+  kind: "basic",
+  name: "BasicBillingContactFlow",
+  step: [
+    {
+      i: {
+        ref: "billing_contact_ref01",
+        srcdatavar: "billing_contact_ref01_data",
+        suffix: "_up0",
+        textfield: "billing_email"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-billing_contact_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBillingContactFlow"
+}

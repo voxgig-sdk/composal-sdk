@@ -161,12 +161,16 @@ const BazelExecutionEntity_1 = require("./entity/BazelExecutionEntity");
 const BazelFindMissingBlobEntity_1 = require("./entity/BazelFindMissingBlobEntity");
 const BillingEntity_1 = require("./entity/BillingEntity");
 const BillingAddonEntity_1 = require("./entity/BillingAddonEntity");
+const BillingBudgetEntity_1 = require("./entity/BillingBudgetEntity");
 const BillingCheckoutSessionEntity_1 = require("./entity/BillingCheckoutSessionEntity");
+const BillingContactEntity_1 = require("./entity/BillingContactEntity");
+const BillingExtraSpendEntity_1 = require("./entity/BillingExtraSpendEntity");
 const BillingInvoiceEntity_1 = require("./entity/BillingInvoiceEntity");
 const BillingPackageEntity_1 = require("./entity/BillingPackageEntity");
 const BillingPortalSessionEntity_1 = require("./entity/BillingPortalSessionEntity");
 const BillingPrepaidPeriodEntity_1 = require("./entity/BillingPrepaidPeriodEntity");
 const BillingPrepaidPurchaseEntity_1 = require("./entity/BillingPrepaidPurchaseEntity");
+const BillingSubscriptionEntity_1 = require("./entity/BillingSubscriptionEntity");
 const BillingTokenTopUpEntity_1 = require("./entity/BillingTokenTopUpEntity");
 const BillingUsageEntity_1 = require("./entity/BillingUsageEntity");
 const BinaryEntity_1 = require("./entity/BinaryEntity");
@@ -1723,12 +1727,33 @@ class ComposalSDK {
         const self = this;
         return new BillingAddonEntity_1.BillingAddonEntity(self, entopts);
     }
+    // Entity access: `client.BillingBudget().list()` / `client.BillingBudget().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BillingBudget(entopts) {
+        const self = this;
+        return new BillingBudgetEntity_1.BillingBudgetEntity(self, entopts);
+    }
     // Entity access: `client.BillingCheckoutSession().list()` / `client.BillingCheckoutSession().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     BillingCheckoutSession(entopts) {
         const self = this;
         return new BillingCheckoutSessionEntity_1.BillingCheckoutSessionEntity(self, entopts);
+    }
+    // Entity access: `client.BillingContact().list()` / `client.BillingContact().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BillingContact(entopts) {
+        const self = this;
+        return new BillingContactEntity_1.BillingContactEntity(self, entopts);
+    }
+    // Entity access: `client.BillingExtraSpend().list()` / `client.BillingExtraSpend().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BillingExtraSpend(entopts) {
+        const self = this;
+        return new BillingExtraSpendEntity_1.BillingExtraSpendEntity(self, entopts);
     }
     // Entity access: `client.BillingInvoice().list()` / `client.BillingInvoice().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1764,6 +1789,13 @@ class ComposalSDK {
     BillingPrepaidPurchase(entopts) {
         const self = this;
         return new BillingPrepaidPurchaseEntity_1.BillingPrepaidPurchaseEntity(self, entopts);
+    }
+    // Entity access: `client.BillingSubscription().list()` / `client.BillingSubscription().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BillingSubscription(entopts) {
+        const self = this;
+        return new BillingSubscriptionEntity_1.BillingSubscriptionEntity(self, entopts);
     }
     // Entity access: `client.BillingTokenTopUp().list()` / `client.BillingTokenTopUp().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity

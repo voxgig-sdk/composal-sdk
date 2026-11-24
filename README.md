@@ -102,7 +102,7 @@ agent's saved conversation, `Agent` load with `$action: 'conversation'`, holds i
 Eight uploads take multipart form data or JSON; the SDK sends JSON.
 
 **Scope.** Composal's definition is generated from its application's routes and holds 2,008
-operations. This SDK covers every one a customer can call: 1,747 operations, as 551
+operations. This SDK covers every one a customer can call: 1,747 operations, as 555
 resources. It leaves out only the 38 that Composal marks internal, the 194 it marks deprecated
 (among them the `/clawder` paths, which `/spark` replaces), and the 29 that need a service
 credential rather than a personal access token.
@@ -112,7 +112,7 @@ Composal.
 
 ## Entities, not endpoints
 
-This SDK exposes the API as **551 semantic entities** that you
+This SDK exposes the API as **555 semantic entities** that you
 call directly, instead of assembling URL paths and query strings. See the [Entities](#entities) table below for the full list. Entities are
 **Capitalised** to mark them as the primary surface, each with the operations they
 support (`list`, `load`, `create`, `update`, `patch`, `remove`):
@@ -260,7 +260,7 @@ Then add it to your agent's MCP config (Claude Desktop, Cursor, etc.):
 
 ## Entities
 
-The API exposes 551 entities:
+The API exposes 555 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
@@ -388,14 +388,18 @@ The API exposes 551 entities:
 | **BazelBlob** | The BazelBlob entity (load, update). | `/api/v1/bazel/blobs/{kind}/{hash}/{size_bytes}` |
 | **BazelExecution** | The BazelExecution entity (create, load). | `/api/v1/bazel/executions/{id}` |
 | **BazelFindMissingBlob** | The BazelFindMissingBlob entity (create). | `/api/v1/bazel/find_missing_blobs` |
-| **Billing** | The Billing entity (load, update). | `/api/v1/organizations/{organization_id}/billing` |
+| **Billing** | The Billing entity (load). | `/api/v1/organizations/{organization_id}/billing` |
 | **BillingAddon** | The BillingAddon entity (update). | `/api/v1/organizations/{organization_id}/billing/addons/{addon_key}` |
+| **BillingBudget** | The BillingBudget entity (patch, update). | `/api/v1/organizations/{organization_id}/billing/budget` |
 | **BillingCheckoutSession** | The BillingCheckoutSession entity (create). | `/api/v1/organizations/{organization_id}/billing/checkout_sessions` |
+| **BillingContact** | The BillingContact entity (patch, update). | `/api/v1/organizations/{organization_id}/billing/contact` |
+| **BillingExtraSpend** | The BillingExtraSpend entity (patch, update). | `/api/v1/organizations/{organization_id}/billing/extra_spend` |
 | **BillingInvoice** | The BillingInvoice entity (list). | `/api/v1/organizations/{organization_id}/billing/invoices` |
 | **BillingPackage** | The BillingPackage entity (list). | `/api/v1/billing/packages` |
 | **BillingPortalSession** | The BillingPortalSession entity (create). | `/api/v1/organizations/{organization_id}/billing/portal_sessions` |
 | **BillingPrepaidPeriod** | The BillingPrepaidPeriod entity (load). | `/api/v1/organizations/{organization_id}/billing/prepaid_periods/{id}` |
 | **BillingPrepaidPurchase** | The BillingPrepaidPurchase entity (create, list, load). | `/api/v1/organizations/{organization_id}/billing/prepaid_purchases` |
+| **BillingSubscription** | The BillingSubscription entity (patch, update). | `/api/v1/organizations/{organization_id}/billing/subscription` |
 | **BillingTokenTopUp** | The BillingTokenTopUp entity (create). | `/api/v1/organizations/{organization_id}/billing/token_top_ups` |
 | **BillingUsage** | The BillingUsage entity (load). | `/api/v1/organizations/{organization_id}/billing/usage/breakdown` |
 | **Binary** | The Binary entity (create, list, load). | `/api/v1/organizations/{organization_id}/verify/binaries` |

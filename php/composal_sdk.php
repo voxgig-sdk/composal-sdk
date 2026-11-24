@@ -2657,6 +2657,24 @@ class ComposalSDK implements \JsonSerializable
     }
 
 
+    private $_billing_budget = null;
+
+    // Canonical facade: $client->BillingBudget()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->billing_budget()
+    // resolves here too.
+    public function BillingBudget($data = null)
+    {
+        require_once __DIR__ . '/entity/billing_budget_entity.php';
+        if ($data === null) {
+            if ($this->_billing_budget === null) {
+                $this->_billing_budget = new BillingBudgetEntity($this, null);
+            }
+            return $this->_billing_budget;
+        }
+        return new BillingBudgetEntity($this, $data);
+    }
+
+
     private $_billing_checkout_session = null;
 
     // Canonical facade: $client->BillingCheckoutSession()->list() / ->load(["id" => ...]).
@@ -2672,6 +2690,42 @@ class ComposalSDK implements \JsonSerializable
             return $this->_billing_checkout_session;
         }
         return new BillingCheckoutSessionEntity($this, $data);
+    }
+
+
+    private $_billing_contact = null;
+
+    // Canonical facade: $client->BillingContact()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->billing_contact()
+    // resolves here too.
+    public function BillingContact($data = null)
+    {
+        require_once __DIR__ . '/entity/billing_contact_entity.php';
+        if ($data === null) {
+            if ($this->_billing_contact === null) {
+                $this->_billing_contact = new BillingContactEntity($this, null);
+            }
+            return $this->_billing_contact;
+        }
+        return new BillingContactEntity($this, $data);
+    }
+
+
+    private $_billing_extra_spend = null;
+
+    // Canonical facade: $client->BillingExtraSpend()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->billing_extra_spend()
+    // resolves here too.
+    public function BillingExtraSpend($data = null)
+    {
+        require_once __DIR__ . '/entity/billing_extra_spend_entity.php';
+        if ($data === null) {
+            if ($this->_billing_extra_spend === null) {
+                $this->_billing_extra_spend = new BillingExtraSpendEntity($this, null);
+            }
+            return $this->_billing_extra_spend;
+        }
+        return new BillingExtraSpendEntity($this, $data);
     }
 
 
@@ -2762,6 +2816,24 @@ class ComposalSDK implements \JsonSerializable
             return $this->_billing_prepaid_purchase;
         }
         return new BillingPrepaidPurchaseEntity($this, $data);
+    }
+
+
+    private $_billing_subscription = null;
+
+    // Canonical facade: $client->BillingSubscription()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->billing_subscription()
+    // resolves here too.
+    public function BillingSubscription($data = null)
+    {
+        require_once __DIR__ . '/entity/billing_subscription_entity.php';
+        if ($data === null) {
+            if ($this->_billing_subscription === null) {
+                $this->_billing_subscription = new BillingSubscriptionEntity($this, null);
+            }
+            return $this->_billing_subscription;
+        }
+        return new BillingSubscriptionEntity($this, $data);
     }
 
 

@@ -11772,31 +11772,6 @@ BillingLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Request payload for Billing#update.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] billing_email
-#   @return [Object, nil]
-#
-# @!attribute [rw] cancel_at_period_end
-#   @return [Object, nil]
-#
-# @!attribute [rw] enabled
-#   @return [Object, nil]
-#
-# @!attribute [rw] monthly_cap_cents
-#   @return [Object, nil]
-BillingUpdateData = Struct.new(
-  :organization_id,
-  :billing_email,
-  :cancel_at_period_end,
-  :enabled,
-  :monthly_cap_cents,
-  keyword_init: true
-)
-
 # BillingAddon entity data model.
 #
 # @!attribute [rw] addons
@@ -11911,6 +11886,121 @@ BillingAddonUpdateData = Struct.new(
   keyword_init: true
 )
 
+# BillingBudget entity data model.
+#
+# @!attribute [rw] addons
+#   @return [Array]
+#
+# @!attribute [rw] breakdown
+#   @return [Object]
+#
+# @!attribute [rw] budget
+#   @return [Object]
+#
+# @!attribute [rw] can_manage_contact
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_extra_spend
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_local_subscription
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_payment_method
+#   @return [Boolean]
+#
+# @!attribute [rw] can_set_up_billing
+#   @return [Boolean]
+#
+# @!attribute [rw] customer
+#   @return [Object]
+#
+# @!attribute [rw] deployment_usage_visible
+#   @return [Boolean]
+#
+# @!attribute [rw] entitlements
+#   @return [Hash]
+#
+# @!attribute [rw] extra_spend_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] feature_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] monthly_cap_cents
+#   @return [Object, nil]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] package
+#   @return [Object]
+#
+# @!attribute [rw] prepaid
+#   @return [Object]
+#
+# @!attribute [rw] preview
+#   @return [Object]
+#
+# @!attribute [rw] storage_usage
+#   @return [Hash]
+#
+# @!attribute [rw] stripe
+#   @return [Hash]
+#
+# @!attribute [rw] subscription
+#   @return [Object]
+#
+# @!attribute [rw] token_account
+#   @return [Hash]
+BillingBudget = Struct.new(
+  :addons,
+  :breakdown,
+  :budget,
+  :can_manage_contact,
+  :can_manage_extra_spend,
+  :can_manage_local_subscription,
+  :can_manage_payment_method,
+  :can_set_up_billing,
+  :customer,
+  :deployment_usage_visible,
+  :entitlements,
+  :extra_spend_enabled,
+  :feature_enabled,
+  :monthly_cap_cents,
+  :organization_id,
+  :package,
+  :prepaid,
+  :preview,
+  :storage_usage,
+  :stripe,
+  :subscription,
+  :token_account,
+  keyword_init: true
+)
+
+# Request payload for BillingBudget#update.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] monthly_cap_cents
+#   @return [Object, nil]
+BillingBudgetUpdateData = Struct.new(
+  :organization_id,
+  :monthly_cap_cents,
+  keyword_init: true
+)
+
+# Request payload for BillingBudget#patch.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+BillingBudgetPatchData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
 # BillingCheckoutSession entity data model.
 #
 # @!attribute [rw] cancel_url
@@ -11970,6 +12060,252 @@ BillingCheckoutSessionCreateData = Struct.new(
   :package_key,
   :package_revision,
   :success_url,
+  keyword_init: true
+)
+
+# BillingContact entity data model.
+#
+# @!attribute [rw] addons
+#   @return [Array]
+#
+# @!attribute [rw] billing_email
+#   @return [String]
+#
+# @!attribute [rw] breakdown
+#   @return [Object]
+#
+# @!attribute [rw] budget
+#   @return [Object]
+#
+# @!attribute [rw] can_manage_contact
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_extra_spend
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_local_subscription
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_payment_method
+#   @return [Boolean]
+#
+# @!attribute [rw] can_set_up_billing
+#   @return [Boolean]
+#
+# @!attribute [rw] customer
+#   @return [Object]
+#
+# @!attribute [rw] deployment_usage_visible
+#   @return [Boolean]
+#
+# @!attribute [rw] entitlements
+#   @return [Hash]
+#
+# @!attribute [rw] extra_spend_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] feature_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] package
+#   @return [Object]
+#
+# @!attribute [rw] prepaid
+#   @return [Object]
+#
+# @!attribute [rw] preview
+#   @return [Object]
+#
+# @!attribute [rw] storage_usage
+#   @return [Hash]
+#
+# @!attribute [rw] stripe
+#   @return [Hash]
+#
+# @!attribute [rw] subscription
+#   @return [Object]
+#
+# @!attribute [rw] token_account
+#   @return [Hash]
+BillingContact = Struct.new(
+  :addons,
+  :billing_email,
+  :breakdown,
+  :budget,
+  :can_manage_contact,
+  :can_manage_extra_spend,
+  :can_manage_local_subscription,
+  :can_manage_payment_method,
+  :can_set_up_billing,
+  :customer,
+  :deployment_usage_visible,
+  :entitlements,
+  :extra_spend_enabled,
+  :feature_enabled,
+  :organization_id,
+  :package,
+  :prepaid,
+  :preview,
+  :storage_usage,
+  :stripe,
+  :subscription,
+  :token_account,
+  keyword_init: true
+)
+
+# Request payload for BillingContact#update.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+BillingContactUpdateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for BillingContact#patch.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] billing_email
+#   @return [String, nil]
+BillingContactPatchData = Struct.new(
+  :organization_id,
+  :billing_email,
+  keyword_init: true
+)
+
+# BillingExtraSpend entity data model.
+#
+# @!attribute [rw] addons
+#   @return [Array]
+#
+# @!attribute [rw] breakdown
+#   @return [Object]
+#
+# @!attribute [rw] budget
+#   @return [Object]
+#
+# @!attribute [rw] can_manage_contact
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_extra_spend
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_local_subscription
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_payment_method
+#   @return [Boolean]
+#
+# @!attribute [rw] can_set_up_billing
+#   @return [Boolean]
+#
+# @!attribute [rw] customer
+#   @return [Object]
+#
+# @!attribute [rw] deployment_usage_visible
+#   @return [Boolean]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] entitlements
+#   @return [Hash]
+#
+# @!attribute [rw] extra_spend_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] feature_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] monthly_cap_cents
+#   @return [Object, nil]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] package
+#   @return [Object]
+#
+# @!attribute [rw] prepaid
+#   @return [Object]
+#
+# @!attribute [rw] preview
+#   @return [Object]
+#
+# @!attribute [rw] storage_usage
+#   @return [Hash]
+#
+# @!attribute [rw] stripe
+#   @return [Hash]
+#
+# @!attribute [rw] subscription
+#   @return [Object]
+#
+# @!attribute [rw] token_account
+#   @return [Hash]
+BillingExtraSpend = Struct.new(
+  :addons,
+  :breakdown,
+  :budget,
+  :can_manage_contact,
+  :can_manage_extra_spend,
+  :can_manage_local_subscription,
+  :can_manage_payment_method,
+  :can_set_up_billing,
+  :customer,
+  :deployment_usage_visible,
+  :enabled,
+  :entitlements,
+  :extra_spend_enabled,
+  :feature_enabled,
+  :monthly_cap_cents,
+  :organization_id,
+  :package,
+  :prepaid,
+  :preview,
+  :storage_usage,
+  :stripe,
+  :subscription,
+  :token_account,
+  keyword_init: true
+)
+
+# Request payload for BillingExtraSpend#update.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] monthly_cap_cents
+#   @return [Object, nil]
+BillingExtraSpendUpdateData = Struct.new(
+  :organization_id,
+  :enabled,
+  :monthly_cap_cents,
+  keyword_init: true
+)
+
+# Request payload for BillingExtraSpend#patch.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] monthly_cap_cents
+#   @return [Object, nil]
+BillingExtraSpendPatchData = Struct.new(
+  :organization_id,
+  :enabled,
+  :monthly_cap_cents,
   keyword_init: true
 )
 
@@ -12386,6 +12722,121 @@ BillingPrepaidPurchaseCreateData = Struct.new(
   :organization_id,
   :minutes,
   :request_key,
+  keyword_init: true
+)
+
+# BillingSubscription entity data model.
+#
+# @!attribute [rw] addons
+#   @return [Array]
+#
+# @!attribute [rw] breakdown
+#   @return [Object]
+#
+# @!attribute [rw] budget
+#   @return [Object]
+#
+# @!attribute [rw] can_manage_contact
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_extra_spend
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_local_subscription
+#   @return [Boolean]
+#
+# @!attribute [rw] can_manage_payment_method
+#   @return [Boolean]
+#
+# @!attribute [rw] can_set_up_billing
+#   @return [Boolean]
+#
+# @!attribute [rw] cancel_at_period_end
+#   @return [Boolean]
+#
+# @!attribute [rw] customer
+#   @return [Object]
+#
+# @!attribute [rw] deployment_usage_visible
+#   @return [Boolean]
+#
+# @!attribute [rw] entitlements
+#   @return [Hash]
+#
+# @!attribute [rw] extra_spend_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] feature_enabled
+#   @return [Boolean]
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] package
+#   @return [Object]
+#
+# @!attribute [rw] prepaid
+#   @return [Object]
+#
+# @!attribute [rw] preview
+#   @return [Object]
+#
+# @!attribute [rw] storage_usage
+#   @return [Hash]
+#
+# @!attribute [rw] stripe
+#   @return [Hash]
+#
+# @!attribute [rw] subscription
+#   @return [Object]
+#
+# @!attribute [rw] token_account
+#   @return [Hash]
+BillingSubscription = Struct.new(
+  :addons,
+  :breakdown,
+  :budget,
+  :can_manage_contact,
+  :can_manage_extra_spend,
+  :can_manage_local_subscription,
+  :can_manage_payment_method,
+  :can_set_up_billing,
+  :cancel_at_period_end,
+  :customer,
+  :deployment_usage_visible,
+  :entitlements,
+  :extra_spend_enabled,
+  :feature_enabled,
+  :organization_id,
+  :package,
+  :prepaid,
+  :preview,
+  :storage_usage,
+  :stripe,
+  :subscription,
+  :token_account,
+  keyword_init: true
+)
+
+# Request payload for BillingSubscription#update.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+BillingSubscriptionUpdateData = Struct.new(
+  :organization_id,
+  keyword_init: true
+)
+
+# Request payload for BillingSubscription#patch.
+#
+# @!attribute [rw] organization_id
+#   @return [String]
+#
+# @!attribute [rw] cancel_at_period_end
+#   @return [Boolean, nil]
+BillingSubscriptionPatchData = Struct.new(
+  :organization_id,
+  :cancel_at_period_end,
   keyword_init: true
 )
 

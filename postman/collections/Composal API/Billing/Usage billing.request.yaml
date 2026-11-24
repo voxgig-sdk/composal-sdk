@@ -12,4 +12,4 @@ pathVariables:
   - key: organization_id
     value: "{{organization_id}}"
     description: The organization this billing belongs to.
-order: 10000
+order: 2000

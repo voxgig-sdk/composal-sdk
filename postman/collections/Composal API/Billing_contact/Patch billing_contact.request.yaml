@@ -1,9 +1,9 @@
 $kind: http-request
-id: "85dd7a9e-9ad5-59ee-a33f-8f525b9f003f"
+id: "6aa086da-1977-548d-a0b9-af6acb09cb69"
 description: |-
-  The `contact` action of **billing**, a route of its `update` operation.
+  The `patch` operation of **billing_contact**.
 
-  SDK: `client.Billing().update({ "organization_id": "organization_id", $action: "contact" })`
+  SDK: `client.BillingContact().patch({ organization_id: "example", billing_email: "example" })`
 url: "{{base}}/api/v1/organizations/:organization_id/billing/contact"
 method: PATCH
 headers:
@@ -12,11 +12,11 @@ headers:
 pathVariables:
   - key: organization_id
     value: "{{organization_id}}"
-    description: The organization this billing belongs to.
+    description: The organization this billing_contact belongs to.
 body:
   type: json
   content: |-
     {
       "billing_email": "user@example.com"
     }
-order: 4000
+order: 2000

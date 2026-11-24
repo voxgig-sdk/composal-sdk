@@ -552,9 +552,21 @@ Create a new `Billing` entity instance. Pass `nil` for no initial data.
 
 Create a new `BillingAddon` entity instance. Pass `nil` for no initial data.
 
+#### `BillingBudget(data map[string]any) ComposalEntityBase`
+
+Create a new `BillingBudget` entity instance. Pass `nil` for no initial data.
+
 #### `BillingCheckoutSession(data map[string]any) ComposalEntityBase`
 
 Create a new `BillingCheckoutSession` entity instance. Pass `nil` for no initial data.
+
+#### `BillingContact(data map[string]any) ComposalEntityBase`
+
+Create a new `BillingContact` entity instance. Pass `nil` for no initial data.
+
+#### `BillingExtraSpend(data map[string]any) ComposalEntityBase`
+
+Create a new `BillingExtraSpend` entity instance. Pass `nil` for no initial data.
 
 #### `BillingInvoice(data map[string]any) ComposalEntityBase`
 
@@ -575,6 +587,10 @@ Create a new `BillingPrepaidPeriod` entity instance. Pass `nil` for no initial d
 #### `BillingPrepaidPurchase(data map[string]any) ComposalEntityBase`
 
 Create a new `BillingPrepaidPurchase` entity instance. Pass `nil` for no initial data.
+
+#### `BillingSubscription(data map[string]any) ComposalEntityBase`
+
+Create a new `BillingSubscription` entity instance. Pass `nil` for no initial data.
 
 #### `BillingTokenTopUp(data map[string]any) ComposalEntityBase`
 
@@ -13565,6 +13581,104 @@ Return the entity name.
 
 ---
 
+## BillingBudgetEntity
+
+```go
+billingBudget := client.BillingBudget(nil)
+fmt.Println(billingBudget.GetName()) // "billing_budget"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `[]any` | Yes |  |
+| `breakdown` | `any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` | Yes |  |
+| `can_manage_contact` | `bool` | Yes |  |
+| `can_manage_extra_spend` | `bool` | Yes |  |
+| `can_manage_local_subscription` | `bool` | Yes |  |
+| `can_manage_payment_method` | `bool` | Yes |  |
+| `can_set_up_billing` | `bool` | Yes |  |
+| `customer` | `any` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `entitlements` | `map[string]any` | Yes |  |
+| `extra_spend_enabled` | `bool` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Yes | Whether the `billing` feature is on for this organization. |
+| `monthly_cap_cents` | `any` | No | Null clears the budget. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `any` | Yes |  |
+| `prepaid` | `any` | Yes |  |
+| `preview` | `any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `map[string]any` | Yes |  |
+| `stripe` | `map[string]any` | Yes |  |
+| `subscription` | `any` | Yes |  |
+| `token_account` | `map[string]any` | Yes |  |
+
+### Operations
+
+#### `Update(reqdata, ctrl map[string]any) (any, error)`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity; `err` is non-nil on failure.
+
+```go
+result, err := client.BillingBudget(nil).Update(map[string]any{
+    "organization_id": "organization_id",
+    // Fields to update
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+#### `Patch(reqdata, ctrl map[string]any) (any, error)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity; `err` is non-nil on failure.
+
+```go
+result, err := client.BillingBudget(nil).Patch(map[string]any{
+    "organization_id": "organization_id",
+    // Only the fields to change
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `BillingBudgetEntity` instance with the same client and
+options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
 ## BillingCheckoutSessionEntity
 
 ```go
@@ -13614,6 +13728,203 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `BillingCheckoutSessionEntity` instance with the same client and
+options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
+## BillingContactEntity
+
+```go
+billingContact := client.BillingContact(nil)
+fmt.Println(billingContact.GetName()) // "billing_contact"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `[]any` | Yes |  |
+| `billing_email` | `string` | Yes |  |
+| `breakdown` | `any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` | Yes |  |
+| `can_manage_contact` | `bool` | Yes |  |
+| `can_manage_extra_spend` | `bool` | Yes |  |
+| `can_manage_local_subscription` | `bool` | Yes |  |
+| `can_manage_payment_method` | `bool` | Yes |  |
+| `can_set_up_billing` | `bool` | Yes |  |
+| `customer` | `any` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `entitlements` | `map[string]any` | Yes |  |
+| `extra_spend_enabled` | `bool` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `any` | Yes |  |
+| `prepaid` | `any` | Yes |  |
+| `preview` | `any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `map[string]any` | Yes |  |
+| `stripe` | `map[string]any` | Yes |  |
+| `subscription` | `any` | Yes |  |
+| `token_account` | `map[string]any` | Yes |  |
+
+### Operations
+
+#### `Update(reqdata, ctrl map[string]any) (any, error)`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity; `err` is non-nil on failure.
+
+```go
+result, err := client.BillingContact(nil).Update(map[string]any{
+    "organization_id": "organization_id",
+    // Fields to update
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+#### `Patch(reqdata, ctrl map[string]any) (any, error)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity; `err` is non-nil on failure.
+
+```go
+result, err := client.BillingContact(nil).Patch(map[string]any{
+    "organization_id": "organization_id",
+    // Only the fields to change
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `BillingContactEntity` instance with the same client and
+options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
+## BillingExtraSpendEntity
+
+```go
+billingExtraSpend := client.BillingExtraSpend(nil)
+fmt.Println(billingExtraSpend.GetName()) // "billing_extra_spend"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `[]any` | Yes |  |
+| `breakdown` | `any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` | Yes |  |
+| `can_manage_contact` | `bool` | Yes |  |
+| `can_manage_extra_spend` | `bool` | Yes |  |
+| `can_manage_local_subscription` | `bool` | Yes |  |
+| `can_manage_payment_method` | `bool` | Yes |  |
+| `can_set_up_billing` | `bool` | Yes |  |
+| `customer` | `any` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `enabled` | `bool` | Yes |  |
+| `entitlements` | `map[string]any` | Yes |  |
+| `extra_spend_enabled` | `bool` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Yes | Whether the `billing` feature is on for this organization. |
+| `monthly_cap_cents` | `any` | No | Monthly limit across all metered overages, excluding plan fees. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `any` | Yes |  |
+| `prepaid` | `any` | Yes |  |
+| `preview` | `any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `map[string]any` | Yes |  |
+| `stripe` | `map[string]any` | Yes |  |
+| `subscription` | `any` | Yes |  |
+| `token_account` | `map[string]any` | Yes |  |
+
+### Operations
+
+#### `Update(reqdata, ctrl map[string]any) (any, error)`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity; `err` is non-nil on failure.
+
+```go
+result, err := client.BillingExtraSpend(nil).Update(map[string]any{
+    "organization_id": "organization_id",
+    // Fields to update
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+#### `Patch(reqdata, ctrl map[string]any) (any, error)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity; `err` is non-nil on failure.
+
+```go
+result, err := client.BillingExtraSpend(nil).Patch(map[string]any{
+    "organization_id": "organization_id",
+    // Only the fields to change
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `BillingExtraSpendEntity` instance with the same client and
 options.
 
 #### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
@@ -14001,6 +14312,104 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `BillingPrepaidPurchaseEntity` instance with the same client and
+options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
+## BillingSubscriptionEntity
+
+```go
+billingSubscription := client.BillingSubscription(nil)
+fmt.Println(billingSubscription.GetName()) // "billing_subscription"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `[]any` | Yes |  |
+| `breakdown` | `any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` | Yes |  |
+| `can_manage_contact` | `bool` | Yes |  |
+| `can_manage_extra_spend` | `bool` | Yes |  |
+| `can_manage_local_subscription` | `bool` | Yes |  |
+| `can_manage_payment_method` | `bool` | Yes |  |
+| `can_set_up_billing` | `bool` | Yes |  |
+| `cancel_at_period_end` | `bool` | Yes |  |
+| `customer` | `any` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `entitlements` | `map[string]any` | Yes |  |
+| `extra_spend_enabled` | `bool` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `any` | Yes |  |
+| `prepaid` | `any` | Yes |  |
+| `preview` | `any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `map[string]any` | Yes |  |
+| `stripe` | `map[string]any` | Yes |  |
+| `subscription` | `any` | Yes |  |
+| `token_account` | `map[string]any` | Yes |  |
+
+### Operations
+
+#### `Update(reqdata, ctrl map[string]any) (any, error)`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity; `err` is non-nil on failure.
+
+```go
+result, err := client.BillingSubscription(nil).Update(map[string]any{
+    "organization_id": "organization_id",
+    // Fields to update
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+#### `Patch(reqdata, ctrl map[string]any) (any, error)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity; `err` is non-nil on failure.
+
+```go
+result, err := client.BillingSubscription(nil).Patch(map[string]any{
+    "organization_id": "organization_id",
+    // Only the fields to change
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result.(sdk.Entity).Data())
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `BillingSubscriptionEntity` instance with the same client and
 options.
 
 #### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`

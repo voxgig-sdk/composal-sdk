@@ -1394,11 +1394,35 @@ func (sdk *ComposalSDK) BillingAddon(data map[string]any) ComposalEntityBase {
 }
 
 
+// BillingBudget returns a BillingBudget entity bound to this client.
+// Idiomatic usage: client.BillingBudget(nil).List(nil, nil) or
+// client.BillingBudget(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BillingBudget(data map[string]any) ComposalEntityBase {
+	return NewBillingBudgetEntityFunc(sdk, data)
+}
+
+
 // BillingCheckoutSession returns a BillingCheckoutSession entity bound to this client.
 // Idiomatic usage: client.BillingCheckoutSession(nil).List(nil, nil) or
 // client.BillingCheckoutSession(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) BillingCheckoutSession(data map[string]any) ComposalEntityBase {
 	return NewBillingCheckoutSessionEntityFunc(sdk, data)
+}
+
+
+// BillingContact returns a BillingContact entity bound to this client.
+// Idiomatic usage: client.BillingContact(nil).List(nil, nil) or
+// client.BillingContact(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BillingContact(data map[string]any) ComposalEntityBase {
+	return NewBillingContactEntityFunc(sdk, data)
+}
+
+
+// BillingExtraSpend returns a BillingExtraSpend entity bound to this client.
+// Idiomatic usage: client.BillingExtraSpend(nil).List(nil, nil) or
+// client.BillingExtraSpend(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BillingExtraSpend(data map[string]any) ComposalEntityBase {
+	return NewBillingExtraSpendEntityFunc(sdk, data)
 }
 
 
@@ -1439,6 +1463,14 @@ func (sdk *ComposalSDK) BillingPrepaidPeriod(data map[string]any) ComposalEntity
 // client.BillingPrepaidPurchase(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ComposalSDK) BillingPrepaidPurchase(data map[string]any) ComposalEntityBase {
 	return NewBillingPrepaidPurchaseEntityFunc(sdk, data)
+}
+
+
+// BillingSubscription returns a BillingSubscription entity bound to this client.
+// Idiomatic usage: client.BillingSubscription(nil).List(nil, nil) or
+// client.BillingSubscription(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ComposalSDK) BillingSubscription(data map[string]any) ComposalEntityBase {
+	return NewBillingSubscriptionEntityFunc(sdk, data)
 }
 
 

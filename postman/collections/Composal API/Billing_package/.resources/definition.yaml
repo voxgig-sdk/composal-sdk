@@ -22,4 +22,4 @@ description: |-
   | `seat_price_cents` | integer | yes |  |
   | `trial_days` | integer | yes |  |
   | `visibility` | string | yes |  |
-order: 132000
+order: 135000

@@ -16,4 +16,4 @@ description: |-
   | `path` | string |  |  |
   | `resolved` | boolean | yes |  |
   | `theirs` | string | yes |  |
-order: 321000
+order: 325000

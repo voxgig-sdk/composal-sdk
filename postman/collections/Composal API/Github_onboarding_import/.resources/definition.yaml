@@ -18,4 +18,4 @@ description: |-
   | `status` | string | yes |  |
   | `terminal_item_count` | integer | yes |  |
   | `updated_at` | string | yes |  |
-order: 262000
+order: 266000

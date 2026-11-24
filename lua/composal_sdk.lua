@@ -2201,6 +2201,20 @@ function ComposalSDK:BillingAddon(data)
 end
 
 
+-- Idiomatic facade: client:BillingBudget():list() / client:BillingBudget():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BillingBudget(data)
+  local EntityMod = require("entity.billing_budget_entity")
+  if data == nil then
+    if self._billing_budget == nil then
+      self._billing_budget = EntityMod.new(self, nil)
+    end
+    return self._billing_budget
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:BillingCheckoutSession():list() / client:BillingCheckoutSession():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function ComposalSDK:BillingCheckoutSession(data)
@@ -2210,6 +2224,34 @@ function ComposalSDK:BillingCheckoutSession(data)
       self._billing_checkout_session = EntityMod.new(self, nil)
     end
     return self._billing_checkout_session
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:BillingContact():list() / client:BillingContact():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BillingContact(data)
+  local EntityMod = require("entity.billing_contact_entity")
+  if data == nil then
+    if self._billing_contact == nil then
+      self._billing_contact = EntityMod.new(self, nil)
+    end
+    return self._billing_contact
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:BillingExtraSpend():list() / client:BillingExtraSpend():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BillingExtraSpend(data)
+  local EntityMod = require("entity.billing_extra_spend_entity")
+  if data == nil then
+    if self._billing_extra_spend == nil then
+      self._billing_extra_spend = EntityMod.new(self, nil)
+    end
+    return self._billing_extra_spend
   end
   return EntityMod.new(self, data)
 end
@@ -2280,6 +2322,20 @@ function ComposalSDK:BillingPrepaidPurchase(data)
       self._billing_prepaid_purchase = EntityMod.new(self, nil)
     end
     return self._billing_prepaid_purchase
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:BillingSubscription():list() / client:BillingSubscription():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ComposalSDK:BillingSubscription(data)
+  local EntityMod = require("entity.billing_subscription_entity")
+  if data == nil then
+    if self._billing_subscription == nil then
+      self._billing_subscription = EntityMod.new(self, nil)
+    end
+    return self._billing_subscription
   end
   return EntityMod.new(self, data)
 end

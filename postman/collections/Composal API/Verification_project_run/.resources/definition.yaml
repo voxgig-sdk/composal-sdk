@@ -44,4 +44,4 @@ description: |-
   | `updated_at` | string | yes |  |
   | `verifier_preferences_snapshot` | object | yes |  |
   | `web_path` | string | yes |  |
-order: 534000
+order: 538000

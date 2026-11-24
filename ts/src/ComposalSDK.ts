@@ -126,12 +126,16 @@ import { BazelExecutionEntity } from './entity/BazelExecutionEntity'
 import { BazelFindMissingBlobEntity } from './entity/BazelFindMissingBlobEntity'
 import { BillingEntity } from './entity/BillingEntity'
 import { BillingAddonEntity } from './entity/BillingAddonEntity'
+import { BillingBudgetEntity } from './entity/BillingBudgetEntity'
 import { BillingCheckoutSessionEntity } from './entity/BillingCheckoutSessionEntity'
+import { BillingContactEntity } from './entity/BillingContactEntity'
+import { BillingExtraSpendEntity } from './entity/BillingExtraSpendEntity'
 import { BillingInvoiceEntity } from './entity/BillingInvoiceEntity'
 import { BillingPackageEntity } from './entity/BillingPackageEntity'
 import { BillingPortalSessionEntity } from './entity/BillingPortalSessionEntity'
 import { BillingPrepaidPeriodEntity } from './entity/BillingPrepaidPeriodEntity'
 import { BillingPrepaidPurchaseEntity } from './entity/BillingPrepaidPurchaseEntity'
+import { BillingSubscriptionEntity } from './entity/BillingSubscriptionEntity'
 import { BillingTokenTopUpEntity } from './entity/BillingTokenTopUpEntity'
 import { BillingUsageEntity } from './entity/BillingUsageEntity'
 import { BinaryEntity } from './entity/BinaryEntity'
@@ -2025,12 +2029,39 @@ if (null != this._secrets) {
   }
 
 
+  // Entity access: `client.BillingBudget().list()` / `client.BillingBudget().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  BillingBudget(entopts?: Record<string, any>) {
+    const self = this
+    return new BillingBudgetEntity(self, entopts)
+  }
+
+
   // Entity access: `client.BillingCheckoutSession().list()` / `client.BillingCheckoutSession().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
   BillingCheckoutSession(entopts?: Record<string, any>) {
     const self = this
     return new BillingCheckoutSessionEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.BillingContact().list()` / `client.BillingContact().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  BillingContact(entopts?: Record<string, any>) {
+    const self = this
+    return new BillingContactEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.BillingExtraSpend().list()` / `client.BillingExtraSpend().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  BillingExtraSpend(entopts?: Record<string, any>) {
+    const self = this
+    return new BillingExtraSpendEntity(self, entopts)
   }
 
 
@@ -2076,6 +2107,15 @@ if (null != this._secrets) {
   BillingPrepaidPurchase(entopts?: Record<string, any>) {
     const self = this
     return new BillingPrepaidPurchaseEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.BillingSubscription().list()` / `client.BillingSubscription().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  BillingSubscription(entopts?: Record<string, any>) {
+    const self = this
+    return new BillingSubscriptionEntity(self, entopts)
   }
 
 

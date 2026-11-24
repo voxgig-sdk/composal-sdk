@@ -546,9 +546,21 @@ Create a new `BillingEntity` instance. Pass `None` for no initial data.
 
 Create a new `BillingAddonEntity` instance. Pass `None` for no initial data.
 
+#### `BillingBudget(data=None)`
+
+Create a new `BillingBudgetEntity` instance. Pass `None` for no initial data.
+
 #### `BillingCheckoutSession(data=None)`
 
 Create a new `BillingCheckoutSessionEntity` instance. Pass `None` for no initial data.
+
+#### `BillingContact(data=None)`
+
+Create a new `BillingContactEntity` instance. Pass `None` for no initial data.
+
+#### `BillingExtraSpend(data=None)`
+
+Create a new `BillingExtraSpendEntity` instance. Pass `None` for no initial data.
 
 #### `BillingInvoice(data=None)`
 
@@ -569,6 +581,10 @@ Create a new `BillingPrepaidPeriodEntity` instance. Pass `None` for no initial d
 #### `BillingPrepaidPurchase(data=None)`
 
 Create a new `BillingPrepaidPurchaseEntity` instance. Pass `None` for no initial data.
+
+#### `BillingSubscription(data=None)`
+
+Create a new `BillingSubscriptionEntity` instance. Pass `None` for no initial data.
 
 #### `BillingTokenTopUp(data=None)`
 
@@ -12079,10 +12095,6 @@ Load a single entity matching the given criteria. Returns the entity, whose reco
 result = client.Billing().load({"organization_id": "organization_id"})
 ```
 
-#### `update(reqdata, ctrl=None) -> BillingEntity`
-
-Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
-
 ### Common Methods
 
 #### `data_get() -> dict`
@@ -12189,6 +12201,92 @@ Return the entity name.
 
 ---
 
+## BillingBudgetEntity
+
+```python
+billing_budget = client.BillingBudget()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `list` | Yes |  |
+| `breakdown` | `Any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `Any` | Yes |  |
+| `can_manage_contact` | `bool` | Yes |  |
+| `can_manage_extra_spend` | `bool` | Yes |  |
+| `can_manage_local_subscription` | `bool` | Yes |  |
+| `can_manage_payment_method` | `bool` | Yes |  |
+| `can_set_up_billing` | `bool` | Yes |  |
+| `customer` | `Any` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `entitlements` | `dict` | Yes |  |
+| `extra_spend_enabled` | `bool` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Yes | Whether the `billing` feature is on for this organization. |
+| `monthly_cap_cents` | `int | None` | No | Null clears the budget. |
+| `organization_id` | `str` | Yes |  |
+| `package` | `Any` | Yes |  |
+| `prepaid` | `Any` | Yes |  |
+| `preview` | `Any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `dict` | Yes |  |
+| `stripe` | `dict` | Yes |  |
+| `subscription` | `Any` | Yes |  |
+| `token_account` | `dict` | Yes |  |
+
+### Operations
+
+#### `patch(reqdata, ctrl=None) -> BillingBudgetEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.BillingBudget().patch({
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl=None) -> BillingBudgetEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.BillingBudget().update({
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingBudgetEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## BillingCheckoutSessionEntity
 
 ```python
@@ -12239,6 +12337,179 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `BillingCheckoutSessionEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BillingContactEntity
+
+```python
+billing_contact = client.BillingContact()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `list` | Yes |  |
+| `billing_email` | `str` | Yes |  |
+| `breakdown` | `Any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `Any` | Yes |  |
+| `can_manage_contact` | `bool` | Yes |  |
+| `can_manage_extra_spend` | `bool` | Yes |  |
+| `can_manage_local_subscription` | `bool` | Yes |  |
+| `can_manage_payment_method` | `bool` | Yes |  |
+| `can_set_up_billing` | `bool` | Yes |  |
+| `customer` | `Any` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `entitlements` | `dict` | Yes |  |
+| `extra_spend_enabled` | `bool` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `str` | Yes |  |
+| `package` | `Any` | Yes |  |
+| `prepaid` | `Any` | Yes |  |
+| `preview` | `Any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `dict` | Yes |  |
+| `stripe` | `dict` | Yes |  |
+| `subscription` | `Any` | Yes |  |
+| `token_account` | `dict` | Yes |  |
+
+### Operations
+
+#### `patch(reqdata, ctrl=None) -> BillingContactEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.BillingContact().patch({
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl=None) -> BillingContactEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.BillingContact().update({
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingContactEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BillingExtraSpendEntity
+
+```python
+billing_extra_spend = client.BillingExtraSpend()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `list` | Yes |  |
+| `breakdown` | `Any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `Any` | Yes |  |
+| `can_manage_contact` | `bool` | Yes |  |
+| `can_manage_extra_spend` | `bool` | Yes |  |
+| `can_manage_local_subscription` | `bool` | Yes |  |
+| `can_manage_payment_method` | `bool` | Yes |  |
+| `can_set_up_billing` | `bool` | Yes |  |
+| `customer` | `Any` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `enabled` | `bool` | Yes |  |
+| `entitlements` | `dict` | Yes |  |
+| `extra_spend_enabled` | `bool` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Yes | Whether the `billing` feature is on for this organization. |
+| `monthly_cap_cents` | `int | None` | No | Monthly limit across all metered overages, excluding plan fees. |
+| `organization_id` | `str` | Yes |  |
+| `package` | `Any` | Yes |  |
+| `prepaid` | `Any` | Yes |  |
+| `preview` | `Any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `dict` | Yes |  |
+| `stripe` | `dict` | Yes |  |
+| `subscription` | `Any` | Yes |  |
+| `token_account` | `dict` | Yes |  |
+
+### Operations
+
+#### `patch(reqdata, ctrl=None) -> BillingExtraSpendEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.BillingExtraSpend().patch({
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl=None) -> BillingExtraSpendEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.BillingExtraSpend().update({
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingExtraSpendEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -12578,6 +12849,92 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `BillingPrepaidPurchaseEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## BillingSubscriptionEntity
+
+```python
+billing_subscription = client.BillingSubscription()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `list` | Yes |  |
+| `breakdown` | `Any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `Any` | Yes |  |
+| `can_manage_contact` | `bool` | Yes |  |
+| `can_manage_extra_spend` | `bool` | Yes |  |
+| `can_manage_local_subscription` | `bool` | Yes |  |
+| `can_manage_payment_method` | `bool` | Yes |  |
+| `can_set_up_billing` | `bool` | Yes |  |
+| `cancel_at_period_end` | `bool` | Yes |  |
+| `customer` | `Any` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `entitlements` | `dict` | Yes |  |
+| `extra_spend_enabled` | `bool` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `str` | Yes |  |
+| `package` | `Any` | Yes |  |
+| `prepaid` | `Any` | Yes |  |
+| `preview` | `Any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `dict` | Yes |  |
+| `stripe` | `dict` | Yes |  |
+| `subscription` | `Any` | Yes |  |
+| `token_account` | `dict` | Yes |  |
+
+### Operations
+
+#### `patch(reqdata, ctrl=None) -> BillingSubscriptionEntity`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.BillingSubscription().patch({
+    "organization_id": "organization_id",
+    # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl=None) -> BillingSubscriptionEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
+
+```python
+result = client.BillingSubscription().update({
+    "organization_id": "organization_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingSubscriptionEntity` instance with the same options.
 
 #### `get_name() -> str`
 

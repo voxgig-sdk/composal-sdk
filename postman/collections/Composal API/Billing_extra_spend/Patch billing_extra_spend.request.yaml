@@ -1,18 +1,18 @@
 $kind: http-request
-id: "9e462cca-4c2f-50fc-9bb2-a30d5d818289"
+id: "248d252a-d650-557b-aceb-e80984879287"
 description: |-
-  The `extra_spend` action of **billing**, a route of its `update` operation.
+  The `patch` operation of **billing_extra_spend**.
 
-  SDK: `client.Billing().update({ "organization_id": "organization_id", $action: "extra_spend" })`
+  SDK: `client.BillingExtraSpend().patch({ organization_id: "example", enabled: true })`
 url: "{{base}}/api/v1/organizations/:organization_id/billing/extra_spend"
-method: PUT
+method: PATCH
 headers:
   Accept: application/json
   Content-Type: application/json
 pathVariables:
   - key: organization_id
     value: "{{organization_id}}"
-    description: The organization this billing belongs to.
+    description: The organization this billing_extra_spend belongs to.
 body:
   type: json
   content: |-
@@ -20,4 +20,4 @@ body:
       "enabled": true,
       "monthly_cap_cents": 1
     }
-order: 7000
+order: 2000

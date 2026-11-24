@@ -332,12 +332,16 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `BazelFindMissingBlob` | `(data) -> BazelFindMissingBlobEntity` | Create a BazelFindMissingBlob entity instance. |
 | `Billing` | `(data) -> BillingEntity` | Create a Billing entity instance. |
 | `BillingAddon` | `(data) -> BillingAddonEntity` | Create a BillingAddon entity instance. |
+| `BillingBudget` | `(data) -> BillingBudgetEntity` | Create a BillingBudget entity instance. |
 | `BillingCheckoutSession` | `(data) -> BillingCheckoutSessionEntity` | Create a BillingCheckoutSession entity instance. |
+| `BillingContact` | `(data) -> BillingContactEntity` | Create a BillingContact entity instance. |
+| `BillingExtraSpend` | `(data) -> BillingExtraSpendEntity` | Create a BillingExtraSpend entity instance. |
 | `BillingInvoice` | `(data) -> BillingInvoiceEntity` | Create a BillingInvoice entity instance. |
 | `BillingPackage` | `(data) -> BillingPackageEntity` | Create a BillingPackage entity instance. |
 | `BillingPortalSession` | `(data) -> BillingPortalSessionEntity` | Create a BillingPortalSession entity instance. |
 | `BillingPrepaidPeriod` | `(data) -> BillingPrepaidPeriodEntity` | Create a BillingPrepaidPeriod entity instance. |
 | `BillingPrepaidPurchase` | `(data) -> BillingPrepaidPurchaseEntity` | Create a BillingPrepaidPurchase entity instance. |
+| `BillingSubscription` | `(data) -> BillingSubscriptionEntity` | Create a BillingSubscription entity instance. |
 | `BillingTokenTopUp` | `(data) -> BillingTokenTopUpEntity` | Create a BillingTokenTopUp entity instance. |
 | `BillingUsage` | `(data) -> BillingUsageEntity` | Create a BillingUsage entity instance. |
 | `Binary` | `(data) -> BinaryEntity` | Create a Binary entity instance. |
@@ -3149,7 +3153,7 @@ API path: `/api/v1/bazel/find_missing_blobs`
 | `subscription` |  |
 | `token_account` |  |
 
-Operations: Load, Update.
+Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/billing`
 
@@ -3185,6 +3189,37 @@ Operations: Update.
 
 API path: `/api/v1/organizations/{organization_id}/billing/addons/{addon_key}`
 
+#### BillingBudget
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `breakdown` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` |  |
+| `can_manage_contact` |  |
+| `can_manage_extra_spend` |  |
+| `can_manage_local_subscription` |  |
+| `can_manage_payment_method` |  |
+| `can_set_up_billing` |  |
+| `customer` |  |
+| `deployment_usage_visible` |  |
+| `entitlements` |  |
+| `extra_spend_enabled` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | Whether the `billing` feature is on for this organization. |
+| `monthly_cap_cents` | Null clears the budget. |
+| `organization_id` |  |
+| `package` |  |
+| `prepaid` |  |
+| `preview` | Metronome draft invoice and credits, or null. |
+| `storage_usage` |  |
+| `stripe` |  |
+| `subscription` |  |
+| `token_account` |  |
+
+Operations: Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/billing/budget`
+
 #### BillingCheckoutSession
 
 | Field | Description |
@@ -3199,6 +3234,69 @@ API path: `/api/v1/organizations/{organization_id}/billing/addons/{addon_key}`
 Operations: Create.
 
 API path: `/api/v1/organizations/{organization_id}/billing/checkout_sessions`
+
+#### BillingContact
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `billing_email` |  |
+| `breakdown` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` |  |
+| `can_manage_contact` |  |
+| `can_manage_extra_spend` |  |
+| `can_manage_local_subscription` |  |
+| `can_manage_payment_method` |  |
+| `can_set_up_billing` |  |
+| `customer` |  |
+| `deployment_usage_visible` |  |
+| `entitlements` |  |
+| `extra_spend_enabled` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | Whether the `billing` feature is on for this organization. |
+| `organization_id` |  |
+| `package` |  |
+| `prepaid` |  |
+| `preview` | Metronome draft invoice and credits, or null. |
+| `storage_usage` |  |
+| `stripe` |  |
+| `subscription` |  |
+| `token_account` |  |
+
+Operations: Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/billing/contact`
+
+#### BillingExtraSpend
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `breakdown` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` |  |
+| `can_manage_contact` |  |
+| `can_manage_extra_spend` |  |
+| `can_manage_local_subscription` |  |
+| `can_manage_payment_method` |  |
+| `can_set_up_billing` |  |
+| `customer` |  |
+| `deployment_usage_visible` |  |
+| `enabled` |  |
+| `entitlements` |  |
+| `extra_spend_enabled` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | Whether the `billing` feature is on for this organization. |
+| `monthly_cap_cents` | Monthly limit across all metered overages, excluding plan fees. |
+| `organization_id` |  |
+| `package` |  |
+| `prepaid` |  |
+| `preview` | Metronome draft invoice and credits, or null. |
+| `storage_usage` |  |
+| `stripe` |  |
+| `subscription` |  |
+| `token_account` |  |
+
+Operations: Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/billing/extra_spend`
 
 #### BillingInvoice
 
@@ -3305,6 +3403,37 @@ API path: `/api/v1/organizations/{organization_id}/billing/prepaid_periods/{id}`
 Operations: Create, List, Load.
 
 API path: `/api/v1/organizations/{organization_id}/billing/prepaid_purchases`
+
+#### BillingSubscription
+
+| Field | Description |
+| --- | --- |
+| `addons` |  |
+| `breakdown` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` |  |
+| `can_manage_contact` |  |
+| `can_manage_extra_spend` |  |
+| `can_manage_local_subscription` |  |
+| `can_manage_payment_method` |  |
+| `can_set_up_billing` |  |
+| `cancel_at_period_end` |  |
+| `customer` |  |
+| `deployment_usage_visible` |  |
+| `entitlements` |  |
+| `extra_spend_enabled` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | Whether the `billing` feature is on for this organization. |
+| `organization_id` |  |
+| `package` |  |
+| `prepaid` |  |
+| `preview` | Metronome draft invoice and credits, or null. |
+| `storage_usage` |  |
+| `stripe` |  |
+| `subscription` |  |
+| `token_account` |  |
+
+Operations: Patch, Update.
+
+API path: `/api/v1/organizations/{organization_id}/billing/subscription`
 
 #### BillingTokenTopUp
 
@@ -15457,7 +15586,6 @@ Create an instance: `billing = client.Billing()`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-| `update(data)` | Update an existing entity. |
 
 #### Fields
 
@@ -15531,6 +15659,45 @@ Create an instance: `billing_addon = client.BillingAddon()`
 | `token_account` | `dict` |  |
 
 
+### BillingBudget
+
+Create an instance: `billing_budget = client.BillingBudget()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `list` |  |
+| `breakdown` | `Any` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `Any` |  |
+| `can_manage_contact` | `bool` |  |
+| `can_manage_extra_spend` | `bool` |  |
+| `can_manage_local_subscription` | `bool` |  |
+| `can_manage_payment_method` | `bool` |  |
+| `can_set_up_billing` | `bool` |  |
+| `customer` | `Any` |  |
+| `deployment_usage_visible` | `bool` |  |
+| `entitlements` | `dict` |  |
+| `extra_spend_enabled` | `bool` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Whether the `billing` feature is on for this organization. |
+| `monthly_cap_cents` | `int | None` | Null clears the budget. |
+| `organization_id` | `str` |  |
+| `package` | `Any` |  |
+| `prepaid` | `Any` |  |
+| `preview` | `Any` | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `dict` |  |
+| `stripe` | `dict` |  |
+| `subscription` | `Any` |  |
+| `token_account` | `dict` |  |
+
+
 ### BillingCheckoutSession
 
 Create an instance: `billing_checkout_session = client.BillingCheckoutSession()`
@@ -15559,6 +15726,85 @@ billing_checkout_session = client.BillingCheckoutSession().create({
     "organization_id": "example_organization_id",  # str
 })
 ```
+
+
+### BillingContact
+
+Create an instance: `billing_contact = client.BillingContact()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `list` |  |
+| `billing_email` | `str` |  |
+| `breakdown` | `Any` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `Any` |  |
+| `can_manage_contact` | `bool` |  |
+| `can_manage_extra_spend` | `bool` |  |
+| `can_manage_local_subscription` | `bool` |  |
+| `can_manage_payment_method` | `bool` |  |
+| `can_set_up_billing` | `bool` |  |
+| `customer` | `Any` |  |
+| `deployment_usage_visible` | `bool` |  |
+| `entitlements` | `dict` |  |
+| `extra_spend_enabled` | `bool` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `str` |  |
+| `package` | `Any` |  |
+| `prepaid` | `Any` |  |
+| `preview` | `Any` | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `dict` |  |
+| `stripe` | `dict` |  |
+| `subscription` | `Any` |  |
+| `token_account` | `dict` |  |
+
+
+### BillingExtraSpend
+
+Create an instance: `billing_extra_spend = client.BillingExtraSpend()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `list` |  |
+| `breakdown` | `Any` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `Any` |  |
+| `can_manage_contact` | `bool` |  |
+| `can_manage_extra_spend` | `bool` |  |
+| `can_manage_local_subscription` | `bool` |  |
+| `can_manage_payment_method` | `bool` |  |
+| `can_set_up_billing` | `bool` |  |
+| `customer` | `Any` |  |
+| `deployment_usage_visible` | `bool` |  |
+| `enabled` | `bool` |  |
+| `entitlements` | `dict` |  |
+| `extra_spend_enabled` | `bool` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Whether the `billing` feature is on for this organization. |
+| `monthly_cap_cents` | `int | None` | Monthly limit across all metered overages, excluding plan fees. |
+| `organization_id` | `str` |  |
+| `package` | `Any` |  |
+| `prepaid` | `Any` |  |
+| `preview` | `Any` | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `dict` |  |
+| `stripe` | `dict` |  |
+| `subscription` | `Any` |  |
+| `token_account` | `dict` |  |
 
 
 ### BillingInvoice
@@ -15750,6 +15996,45 @@ billing_prepaid_purchase = client.BillingPrepaidPurchase().create({
     "request_key": "example_request_key",  # str
 })
 ```
+
+
+### BillingSubscription
+
+Create an instance: `billing_subscription = client.BillingSubscription()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `patch(data)` | Change part of an existing entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `addons` | `list` |  |
+| `breakdown` | `Any` | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `Any` |  |
+| `can_manage_contact` | `bool` |  |
+| `can_manage_extra_spend` | `bool` |  |
+| `can_manage_local_subscription` | `bool` |  |
+| `can_manage_payment_method` | `bool` |  |
+| `can_set_up_billing` | `bool` |  |
+| `cancel_at_period_end` | `bool` |  |
+| `customer` | `Any` |  |
+| `deployment_usage_visible` | `bool` |  |
+| `entitlements` | `dict` |  |
+| `extra_spend_enabled` | `bool` | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `str` |  |
+| `package` | `Any` |  |
+| `prepaid` | `Any` |  |
+| `preview` | `Any` | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `dict` |  |
+| `stripe` | `dict` |  |
+| `subscription` | `Any` |  |
+| `token_account` | `dict` |  |
 
 
 ### BillingTokenTopUp

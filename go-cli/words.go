@@ -329,8 +329,14 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.Billing(nil), nil
 	case "billing_addon":
 		return client.BillingAddon(nil), nil
+	case "billing_budget":
+		return client.BillingBudget(nil), nil
 	case "billing_checkout_session":
 		return client.BillingCheckoutSession(nil), nil
+	case "billing_contact":
+		return client.BillingContact(nil), nil
+	case "billing_extra_spend":
+		return client.BillingExtraSpend(nil), nil
 	case "billing_invoice":
 		return client.BillingInvoice(nil), nil
 	case "billing_package":
@@ -341,6 +347,8 @@ func entityFor(client *sdk.ComposalSDK, name string) (sdk.ComposalEntityBase, er
 		return client.BillingPrepaidPeriod(nil), nil
 	case "billing_prepaid_purchase":
 		return client.BillingPrepaidPurchase(nil), nil
+	case "billing_subscription":
+		return client.BillingSubscription(nil), nil
 	case "billing_token_top_up":
 		return client.BillingTokenTopUp(nil), nil
 	case "billing_usage":

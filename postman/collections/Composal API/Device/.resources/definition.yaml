@@ -27,4 +27,4 @@ description: |-
   | `revoked_at` | string | yes |  |
   | `scheduled_check_ins` | boolean |  |  |
   | `user_browser_access` | string | yes |  |
-order: 211000
+order: 215000

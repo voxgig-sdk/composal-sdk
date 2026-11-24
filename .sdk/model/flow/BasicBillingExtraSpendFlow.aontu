@@ -1,0 +1,28 @@
+# BasicBillingExtraSpendFlow
+
+main: kit: flow: BasicBillingExtraSpendFlow:
+{
+  entity: "billing_extra_spend",
+  kind: "basic",
+  name: "BasicBillingExtraSpendFlow",
+  step: [
+    {
+      i: {
+        ref: "billing_extra_spend_ref01",
+        srcdatavar: "billing_extra_spend_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-billing_extra_spend_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBillingExtraSpendFlow"
+}

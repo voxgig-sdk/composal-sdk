@@ -1,0 +1,28 @@
+# BasicBillingBudgetFlow
+
+main: kit: flow: BasicBillingBudgetFlow:
+{
+  entity: "billing_budget",
+  kind: "basic",
+  name: "BasicBillingBudgetFlow",
+  step: [
+    {
+      i: {
+        ref: "billing_budget_ref01",
+        srcdatavar: "billing_budget_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-billing_budget_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBillingBudgetFlow"
+}

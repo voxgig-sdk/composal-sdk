@@ -12,4 +12,4 @@ description: |-
   | `removed_reviewers` | array | yes |  |
   | `requested_reviewers` | array | yes |  |
   | `reviewers` | array | yes |  |
-order: 167000
+order: 171000

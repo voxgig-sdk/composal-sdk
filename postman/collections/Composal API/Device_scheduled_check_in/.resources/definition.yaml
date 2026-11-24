@@ -6,4 +6,4 @@ description: |-
   | field | type | required | |
   |---|---|---|---|
   | `enabled` | boolean | yes |  |
-order: 222000
+order: 226000

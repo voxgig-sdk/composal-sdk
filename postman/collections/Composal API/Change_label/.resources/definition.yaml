@@ -57,4 +57,4 @@ description: |-
   | `unresolved_comments_count_label` | string |  |  |
   | `url` | string |  |  |
   | `votes` | array |  |  |
-order: 163000
+order: 167000

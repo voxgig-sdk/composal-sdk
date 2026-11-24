@@ -439,8 +439,17 @@ func init() {
 	core.NewBillingAddonEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewBillingAddonEntity(client, entopts)
 	}
+	core.NewBillingBudgetEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
+		return entity.NewBillingBudgetEntity(client, entopts)
+	}
 	core.NewBillingCheckoutSessionEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewBillingCheckoutSessionEntity(client, entopts)
+	}
+	core.NewBillingContactEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
+		return entity.NewBillingContactEntity(client, entopts)
+	}
+	core.NewBillingExtraSpendEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
+		return entity.NewBillingExtraSpendEntity(client, entopts)
 	}
 	core.NewBillingInvoiceEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewBillingInvoiceEntity(client, entopts)
@@ -456,6 +465,9 @@ func init() {
 	}
 	core.NewBillingPrepaidPurchaseEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewBillingPrepaidPurchaseEntity(client, entopts)
+	}
+	core.NewBillingSubscriptionEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
+		return entity.NewBillingSubscriptionEntity(client, entopts)
 	}
 	core.NewBillingTokenTopUpEntityFunc = func(client *core.ComposalSDK, entopts map[string]any) core.ComposalEntityBase {
 		return entity.NewBillingTokenTopUpEntity(client, entopts)

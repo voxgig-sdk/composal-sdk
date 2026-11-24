@@ -14,4 +14,4 @@ description: |-
   | `name` | string | yes |  |
   | `skills` | array | yes |  |
   | `version` | string | yes |  |
-order: 500000
+order: 504000

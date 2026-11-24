@@ -9,4 +9,4 @@ description: |-
   | `name` | string | yes |  |
   | `registry_url` | string | yes |  |
   | `tags` | array | yes |  |
-order: 282000
+order: 286000

@@ -112,46 +112,6 @@
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
-    },
-    "PATCH /api/v1/organizations/{organization_id}/billing/budget": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "PUT /api/v1/organizations/{organization_id}/billing/budget": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "PATCH /api/v1/organizations/{organization_id}/billing/contact": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "PUT /api/v1/organizations/{organization_id}/billing/contact": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "PATCH /api/v1/organizations/{organization_id}/billing/extra_spend": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "PUT /api/v1/organizations/{organization_id}/billing/extra_spend": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "PATCH /api/v1/organizations/{organization_id}/billing/subscription": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "PUT /api/v1/organizations/{organization_id}/billing/subscription": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
     }
   }
 }

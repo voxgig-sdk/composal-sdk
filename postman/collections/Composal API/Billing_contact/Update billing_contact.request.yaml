@@ -1,9 +1,9 @@
 $kind: http-request
-id: "1261c358-c7ed-55ed-b303-8127d76fee5c"
+id: "3dbc5db3-1458-5415-b08c-5bd507a4655f"
 description: |-
-  The `contact` action of **billing**, a route of its `update` operation.
+  The `update` operation of **billing_contact**.
 
-  SDK: `client.Billing().update({ "organization_id": "organization_id", $action: "contact" })`
+  SDK: `client.BillingContact().update({ organization_id: "example" })`
 url: "{{base}}/api/v1/organizations/:organization_id/billing/contact"
 method: PUT
 headers:
@@ -12,8 +12,8 @@ headers:
 pathVariables:
   - key: organization_id
     value: "{{organization_id}}"
-    description: The organization this billing belongs to.
+    description: The organization this billing_contact belongs to.
 body:
   type: json
   content: "{}"
-order: 5000
+order: 1000

@@ -30,4 +30,4 @@ description: |-
   | `starter_cents` | integer | yes |  |
   | `top_up_max_cents` | integer | yes |  |
   | `top_up_step_cents` | integer | yes |  |
-order: 502000
+order: 506000

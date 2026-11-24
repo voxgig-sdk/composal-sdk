@@ -1,9 +1,9 @@
 $kind: http-request
-id: c0ae89cd-aae7-599a-8c50-34ba0c6ae9df
+id: e24a83a9-c8bf-527a-a7cd-87ef2e1a233b
 description: |-
-  The `budget` action of **billing**, a route of its `update` operation.
+  The `patch` operation of **billing_budget**.
 
-  SDK: `client.Billing().update({ "organization_id": "organization_id", $action: "budget" })`
+  SDK: `client.BillingBudget().patch({ organization_id: "example" })`
 url: "{{base}}/api/v1/organizations/:organization_id/billing/budget"
 method: PATCH
 headers:
@@ -12,7 +12,7 @@ headers:
 pathVariables:
   - key: organization_id
     value: "{{organization_id}}"
-    description: The organization this billing belongs to.
+    description: The organization this billing_budget belongs to.
 body:
   type: json
   content: "{}"

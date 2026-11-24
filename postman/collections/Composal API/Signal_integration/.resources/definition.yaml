@@ -26,4 +26,4 @@ description: |-
   | `updated_at` | string |  |  |
   | `webhook_secret` | string |  |  |
   | `webhook_secret_stored` | boolean | yes |  |
-order: 471000
+order: 475000

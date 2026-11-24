@@ -1203,10 +1203,31 @@ class ComposalSDK
   end
 
 
+  # Canonical facade: client.BillingBudget.list / client.BillingBudget.load({ "id" => ... })
+  def BillingBudget(data = nil)
+    require_relative 'entity/billing_budget_entity'
+    BillingBudgetEntity.new(self, data)
+  end
+
+
   # Canonical facade: client.BillingCheckoutSession.list / client.BillingCheckoutSession.load({ "id" => ... })
   def BillingCheckoutSession(data = nil)
     require_relative 'entity/billing_checkout_session_entity'
     BillingCheckoutSessionEntity.new(self, data)
+  end
+
+
+  # Canonical facade: client.BillingContact.list / client.BillingContact.load({ "id" => ... })
+  def BillingContact(data = nil)
+    require_relative 'entity/billing_contact_entity'
+    BillingContactEntity.new(self, data)
+  end
+
+
+  # Canonical facade: client.BillingExtraSpend.list / client.BillingExtraSpend.load({ "id" => ... })
+  def BillingExtraSpend(data = nil)
+    require_relative 'entity/billing_extra_spend_entity'
+    BillingExtraSpendEntity.new(self, data)
   end
 
 
@@ -1242,6 +1263,13 @@ class ComposalSDK
   def BillingPrepaidPurchase(data = nil)
     require_relative 'entity/billing_prepaid_purchase_entity'
     BillingPrepaidPurchaseEntity.new(self, data)
+  end
+
+
+  # Canonical facade: client.BillingSubscription.list / client.BillingSubscription.load({ "id" => ... })
+  def BillingSubscription(data = nil)
+    require_relative 'entity/billing_subscription_entity'
+    BillingSubscriptionEntity.new(self, data)
   end
 
 

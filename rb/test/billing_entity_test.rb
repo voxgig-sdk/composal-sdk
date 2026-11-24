@@ -41,11 +41,6 @@ class BillingEntityTest < Minitest::Test
         return
       end
     end
-    if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
-      puts "LIVE STEP {\"id\":\"billing.update.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/billing/budget\"}"
-      skip("Live coverage incomplete: billing.update.0 excluded (GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/billing/budget)")
-    end
-
     if setup[:live]
       skip("Live coverage incomplete: the flow has no step to run")
     end

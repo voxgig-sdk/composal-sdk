@@ -18,4 +18,4 @@ description: |-
   | `received_at` | string |  |  |
   | `signal_integration_id` | string | yes |  |
   | `state` | string | yes |  |
-order: 472000
+order: 476000

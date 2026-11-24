@@ -8,4 +8,4 @@ description: |-
   | `live_activity` | array | yes |  |
   | `recent_items` | array | yes |  |
   | `unresolved_notification_count` | integer | yes |  |
-order: 548000
+order: 552000

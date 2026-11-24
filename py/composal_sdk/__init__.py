@@ -1110,10 +1110,28 @@ class ComposalSDK:
         return BillingAddonEntity(self, data)
 
 
+    def BillingBudget(self, data=None) -> "BillingBudgetEntity":
+        """Entity factory: client.BillingBudget().list() / client.BillingBudget().load({"id": ...})."""
+        from composal_sdk.entity.billing_budget_entity import BillingBudgetEntity
+        return BillingBudgetEntity(self, data)
+
+
     def BillingCheckoutSession(self, data=None) -> "BillingCheckoutSessionEntity":
         """Entity factory: client.BillingCheckoutSession().list() / client.BillingCheckoutSession().load({"id": ...})."""
         from composal_sdk.entity.billing_checkout_session_entity import BillingCheckoutSessionEntity
         return BillingCheckoutSessionEntity(self, data)
+
+
+    def BillingContact(self, data=None) -> "BillingContactEntity":
+        """Entity factory: client.BillingContact().list() / client.BillingContact().load({"id": ...})."""
+        from composal_sdk.entity.billing_contact_entity import BillingContactEntity
+        return BillingContactEntity(self, data)
+
+
+    def BillingExtraSpend(self, data=None) -> "BillingExtraSpendEntity":
+        """Entity factory: client.BillingExtraSpend().list() / client.BillingExtraSpend().load({"id": ...})."""
+        from composal_sdk.entity.billing_extra_spend_entity import BillingExtraSpendEntity
+        return BillingExtraSpendEntity(self, data)
 
 
     def BillingInvoice(self, data=None) -> "BillingInvoiceEntity":
@@ -1144,6 +1162,12 @@ class ComposalSDK:
         """Entity factory: client.BillingPrepaidPurchase().list() / client.BillingPrepaidPurchase().load({"id": ...})."""
         from composal_sdk.entity.billing_prepaid_purchase_entity import BillingPrepaidPurchaseEntity
         return BillingPrepaidPurchaseEntity(self, data)
+
+
+    def BillingSubscription(self, data=None) -> "BillingSubscriptionEntity":
+        """Entity factory: client.BillingSubscription().list() / client.BillingSubscription().load({"id": ...})."""
+        from composal_sdk.entity.billing_subscription_entity import BillingSubscriptionEntity
+        return BillingSubscriptionEntity(self, data)
 
 
     def BillingTokenTopUp(self, data=None) -> "BillingTokenTopUpEntity":
@@ -3813,12 +3837,16 @@ if TYPE_CHECKING:
     from composal_sdk.entity.bazel_find_missing_blob_entity import BazelFindMissingBlobEntity
     from composal_sdk.entity.billing_entity import BillingEntity
     from composal_sdk.entity.billing_addon_entity import BillingAddonEntity
+    from composal_sdk.entity.billing_budget_entity import BillingBudgetEntity
     from composal_sdk.entity.billing_checkout_session_entity import BillingCheckoutSessionEntity
+    from composal_sdk.entity.billing_contact_entity import BillingContactEntity
+    from composal_sdk.entity.billing_extra_spend_entity import BillingExtraSpendEntity
     from composal_sdk.entity.billing_invoice_entity import BillingInvoiceEntity
     from composal_sdk.entity.billing_package_entity import BillingPackageEntity
     from composal_sdk.entity.billing_portal_session_entity import BillingPortalSessionEntity
     from composal_sdk.entity.billing_prepaid_period_entity import BillingPrepaidPeriodEntity
     from composal_sdk.entity.billing_prepaid_purchase_entity import BillingPrepaidPurchaseEntity
+    from composal_sdk.entity.billing_subscription_entity import BillingSubscriptionEntity
     from composal_sdk.entity.billing_token_top_up_entity import BillingTokenTopUpEntity
     from composal_sdk.entity.billing_usage_entity import BillingUsageEntity
     from composal_sdk.entity.binary_entity import BinaryEntity

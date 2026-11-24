@@ -62,12 +62,6 @@ func TestBillingEntity(t *testing.T) {
 				return
 			}
 		}
-		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
-			t.Log("LIVE STEP {\"id\":\"billing.update.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/billing/budget\"}")
-			t.Skip("Live coverage incomplete: billing.update.0 excluded (GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/billing/budget)")
-			return
-		}
-
 		if setup.live {
 			t.Skip("Live coverage incomplete: the flow has no step to run")
 			return

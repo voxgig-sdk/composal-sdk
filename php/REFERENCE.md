@@ -546,9 +546,21 @@ Create a new `BillingEntity` instance. Pass `null` for no initial data.
 
 Create a new `BillingAddonEntity` instance. Pass `null` for no initial data.
 
+#### `BillingBudget($data = null)`
+
+Create a new `BillingBudgetEntity` instance. Pass `null` for no initial data.
+
 #### `BillingCheckoutSession($data = null)`
 
 Create a new `BillingCheckoutSessionEntity` instance. Pass `null` for no initial data.
+
+#### `BillingContact($data = null)`
+
+Create a new `BillingContactEntity` instance. Pass `null` for no initial data.
+
+#### `BillingExtraSpend($data = null)`
+
+Create a new `BillingExtraSpendEntity` instance. Pass `null` for no initial data.
 
 #### `BillingInvoice($data = null)`
 
@@ -569,6 +581,10 @@ Create a new `BillingPrepaidPeriodEntity` instance. Pass `null` for no initial d
 #### `BillingPrepaidPurchase($data = null)`
 
 Create a new `BillingPrepaidPurchaseEntity` instance. Pass `null` for no initial data.
+
+#### `BillingSubscription($data = null)`
+
+Create a new `BillingSubscriptionEntity` instance. Pass `null` for no initial data.
 
 #### `BillingTokenTopUp($data = null)`
 
@@ -12068,10 +12084,6 @@ Load a single entity matching the given criteria. Returns the entity, whose reco
 $result = $client->Billing()->load(["organization_id" => "organization_id"]);
 ```
 
-#### `update(array $reqdata, ?array $ctrl = null): mixed`
-
-Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
-
 ### Common Methods
 
 #### `data_get(): array`
@@ -12180,6 +12192,93 @@ Return the entity name.
 
 ---
 
+## BillingBudgetEntity
+
+```php
+$billing_budget = $client->BillingBudget();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `array` | Yes |  |
+| `breakdown` | `mixed` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `mixed` | Yes |  |
+| `can_manage_contact` | `bool` | Yes |  |
+| `can_manage_extra_spend` | `bool` | Yes |  |
+| `can_manage_local_subscription` | `bool` | Yes |  |
+| `can_manage_payment_method` | `bool` | Yes |  |
+| `can_set_up_billing` | `bool` | Yes |  |
+| `customer` | `mixed` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `entitlements` | `array` | Yes |  |
+| `extra_spend_enabled` | `bool` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Yes | Whether the `billing` feature is on for this organization. |
+| `monthly_cap_cents` | `mixed` | No | Null clears the budget. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `mixed` | Yes |  |
+| `prepaid` | `mixed` | Yes |  |
+| `preview` | `mixed` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `array` | Yes |  |
+| `stripe` | `array` | Yes |  |
+| `subscription` | `mixed` | Yes |  |
+| `token_account` | `array` | Yes |  |
+
+### Operations
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->BillingBudget()->patch([
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->BillingBudget()->update([
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BillingBudgetEntity`
+
+Create a new `BillingBudgetEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## BillingCheckoutSessionEntity
 
 ```php
@@ -12230,6 +12329,181 @@ Set the entity match criteria.
 #### `make(): BillingCheckoutSessionEntity`
 
 Create a new `BillingCheckoutSessionEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BillingContactEntity
+
+```php
+$billing_contact = $client->BillingContact();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `array` | Yes |  |
+| `billing_email` | `string` | Yes |  |
+| `breakdown` | `mixed` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `mixed` | Yes |  |
+| `can_manage_contact` | `bool` | Yes |  |
+| `can_manage_extra_spend` | `bool` | Yes |  |
+| `can_manage_local_subscription` | `bool` | Yes |  |
+| `can_manage_payment_method` | `bool` | Yes |  |
+| `can_set_up_billing` | `bool` | Yes |  |
+| `customer` | `mixed` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `entitlements` | `array` | Yes |  |
+| `extra_spend_enabled` | `bool` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `mixed` | Yes |  |
+| `prepaid` | `mixed` | Yes |  |
+| `preview` | `mixed` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `array` | Yes |  |
+| `stripe` | `array` | Yes |  |
+| `subscription` | `mixed` | Yes |  |
+| `token_account` | `array` | Yes |  |
+
+### Operations
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->BillingContact()->patch([
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->BillingContact()->update([
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BillingContactEntity`
+
+Create a new `BillingContactEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BillingExtraSpendEntity
+
+```php
+$billing_extra_spend = $client->BillingExtraSpend();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `array` | Yes |  |
+| `breakdown` | `mixed` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `mixed` | Yes |  |
+| `can_manage_contact` | `bool` | Yes |  |
+| `can_manage_extra_spend` | `bool` | Yes |  |
+| `can_manage_local_subscription` | `bool` | Yes |  |
+| `can_manage_payment_method` | `bool` | Yes |  |
+| `can_set_up_billing` | `bool` | Yes |  |
+| `customer` | `mixed` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `enabled` | `bool` | Yes |  |
+| `entitlements` | `array` | Yes |  |
+| `extra_spend_enabled` | `bool` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Yes | Whether the `billing` feature is on for this organization. |
+| `monthly_cap_cents` | `mixed` | No | Monthly limit across all metered overages, excluding plan fees. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `mixed` | Yes |  |
+| `prepaid` | `mixed` | Yes |  |
+| `preview` | `mixed` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `array` | Yes |  |
+| `stripe` | `array` | Yes |  |
+| `subscription` | `mixed` | Yes |  |
+| `token_account` | `array` | Yes |  |
+
+### Operations
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->BillingExtraSpend()->patch([
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->BillingExtraSpend()->update([
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BillingExtraSpendEntity`
+
+Create a new `BillingExtraSpendEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -12568,6 +12842,93 @@ Set the entity match criteria.
 #### `make(): BillingPrepaidPurchaseEntity`
 
 Create a new `BillingPrepaidPurchaseEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## BillingSubscriptionEntity
+
+```php
+$billing_subscription = $client->BillingSubscription();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `array` | Yes |  |
+| `breakdown` | `mixed` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `mixed` | Yes |  |
+| `can_manage_contact` | `bool` | Yes |  |
+| `can_manage_extra_spend` | `bool` | Yes |  |
+| `can_manage_local_subscription` | `bool` | Yes |  |
+| `can_manage_payment_method` | `bool` | Yes |  |
+| `can_set_up_billing` | `bool` | Yes |  |
+| `cancel_at_period_end` | `bool` | Yes |  |
+| `customer` | `mixed` | Yes |  |
+| `deployment_usage_visible` | `bool` | Yes |  |
+| `entitlements` | `array` | Yes |  |
+| `extra_spend_enabled` | `bool` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `bool` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `mixed` | Yes |  |
+| `prepaid` | `mixed` | Yes |  |
+| `preview` | `mixed` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `array` | Yes |  |
+| `stripe` | `array` | Yes |  |
+| `subscription` | `mixed` | Yes |  |
+| `token_account` | `array` | Yes |  |
+
+### Operations
+
+#### `patch(array $reqdata, ?array $ctrl = null): mixed`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and throws on error.
+
+```php
+$result = $client->BillingSubscription()->patch([
+  "organization_id" => "organization_id",
+  // Only the fields to change
+]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and throws on error.
+
+```php
+$result = $client->BillingSubscription()->update([
+  "organization_id" => "organization_id",
+  // Fields to update
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): BillingSubscriptionEntity`
+
+Create a new `BillingSubscriptionEntity` instance with the same client and
 options.
 
 #### `get_name(): string`

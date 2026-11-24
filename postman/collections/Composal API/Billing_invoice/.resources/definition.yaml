@@ -17,4 +17,4 @@ description: |-
   | `period_started_at` | string |  |  |
   | `status` | string | yes |  |
   | `total_cents` | integer | yes |  |
-order: 131000
+order: 134000

@@ -18,4 +18,4 @@ description: |-
   | `snapshot_digest` | string |  |  |
   | `unchecked` | array | yes |  |
   | `verdicts` | array | yes |  |
-order: 179000
+order: 183000

@@ -1561,6 +1561,18 @@ Create a new `BillingAddon` entity instance.
 
 **Returns:** `BillingAddonEntity` instance.
 
+#### `BillingBudget(data?: object)`
+
+Create a new `BillingBudget` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BillingBudgetEntity` instance.
+
 #### `BillingCheckoutSession(data?: object)`
 
 Create a new `BillingCheckoutSession` entity instance.
@@ -1572,6 +1584,30 @@ Create a new `BillingCheckoutSession` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `BillingCheckoutSessionEntity` instance.
+
+#### `BillingContact(data?: object)`
+
+Create a new `BillingContact` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BillingContactEntity` instance.
+
+#### `BillingExtraSpend(data?: object)`
+
+Create a new `BillingExtraSpend` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BillingExtraSpendEntity` instance.
 
 #### `BillingInvoice(data?: object)`
 
@@ -1632,6 +1668,18 @@ Create a new `BillingPrepaidPurchase` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `BillingPrepaidPurchaseEntity` instance.
+
+#### `BillingSubscription(data?: object)`
+
+Create a new `BillingSubscription` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `BillingSubscriptionEntity` instance.
 
 #### `BillingTokenTopUp(data?: object)`
 
@@ -17797,14 +17845,6 @@ remaining keys are sent as that action's payload.
 | Action | Route | Call |
 | --- | --- | --- |
 | `usage` | `/api/v1/organizations/{organization_id}/billing/usage` | `client.Billing().load({ $action: 'usage', ... })` |
-| `budget` | `/api/v1/organizations/{organization_id}/billing/budget` | `client.Billing().update({ $action: 'budget', ... })` |
-| `budget` | `/api/v1/organizations/{organization_id}/billing/budget` | `client.Billing().update({ $action: 'budget', ... })` |
-| `contact` | `/api/v1/organizations/{organization_id}/billing/contact` | `client.Billing().update({ $action: 'contact', ... })` |
-| `contact` | `/api/v1/organizations/{organization_id}/billing/contact` | `client.Billing().update({ $action: 'contact', ... })` |
-| `extra_spend` | `/api/v1/organizations/{organization_id}/billing/extra_spend` | `client.Billing().update({ $action: 'extra_spend', ... })` |
-| `extra_spend` | `/api/v1/organizations/{organization_id}/billing/extra_spend` | `client.Billing().update({ $action: 'extra_spend', ... })` |
-| `subscription` | `/api/v1/organizations/{organization_id}/billing/subscription` | `client.Billing().update({ $action: 'subscription', ... })` |
-| `subscription` | `/api/v1/organizations/{organization_id}/billing/subscription` | `client.Billing().update({ $action: 'subscription', ... })` |
 
 An action returns that action's OWN response, which is not necessarily a
 Billing record — check the API definition for its shape.
@@ -17825,10 +17865,6 @@ Load a single entity matching the given criteria. Resolves to the entity, whose 
 ```ts
 const result = await client.Billing().load({ organization_id: 'organization_id' })
 ```
-
-#### `update(data: object, ctrl?: object)`
-
-Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
 
 ### Common Methods
 
@@ -17934,6 +17970,91 @@ Return a copy of the entity options.
 
 ---
 
+## BillingBudgetEntity
+
+```ts
+const billing_budget = client.BillingBudget()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `any[]` | Yes |  |
+| `breakdown` | `any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` | Yes |  |
+| `can_manage_contact` | `boolean` | Yes |  |
+| `can_manage_extra_spend` | `boolean` | Yes |  |
+| `can_manage_local_subscription` | `boolean` | Yes |  |
+| `can_manage_payment_method` | `boolean` | Yes |  |
+| `can_set_up_billing` | `boolean` | Yes |  |
+| `customer` | `any` | Yes |  |
+| `deployment_usage_visible` | `boolean` | Yes |  |
+| `entitlements` | `Record<string, any>` | Yes |  |
+| `extra_spend_enabled` | `boolean` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Yes | Whether the `billing` feature is on for this organization. |
+| `monthly_cap_cents` | `number | null` | No | Null clears the budget. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `any` | Yes |  |
+| `prepaid` | `any` | Yes |  |
+| `preview` | `any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `Record<string, any>` | Yes |  |
+| `stripe` | `Record<string, any>` | Yes |  |
+| `subscription` | `any` | Yes |  |
+| `token_account` | `Record<string, any>` | Yes |  |
+
+### Operations
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.BillingBudget().patch({
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.BillingBudget().update({
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BillingBudgetEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## BillingCheckoutSessionEntity
 
 ```ts
@@ -17978,6 +18099,177 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `BillingCheckoutSessionEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BillingContactEntity
+
+```ts
+const billing_contact = client.BillingContact()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `any[]` | Yes |  |
+| `billing_email` | `string` | Yes |  |
+| `breakdown` | `any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` | Yes |  |
+| `can_manage_contact` | `boolean` | Yes |  |
+| `can_manage_extra_spend` | `boolean` | Yes |  |
+| `can_manage_local_subscription` | `boolean` | Yes |  |
+| `can_manage_payment_method` | `boolean` | Yes |  |
+| `can_set_up_billing` | `boolean` | Yes |  |
+| `customer` | `any` | Yes |  |
+| `deployment_usage_visible` | `boolean` | Yes |  |
+| `entitlements` | `Record<string, any>` | Yes |  |
+| `extra_spend_enabled` | `boolean` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `any` | Yes |  |
+| `prepaid` | `any` | Yes |  |
+| `preview` | `any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `Record<string, any>` | Yes |  |
+| `stripe` | `Record<string, any>` | Yes |  |
+| `subscription` | `any` | Yes |  |
+| `token_account` | `Record<string, any>` | Yes |  |
+
+### Operations
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.BillingContact().patch({
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.BillingContact().update({
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BillingContactEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BillingExtraSpendEntity
+
+```ts
+const billing_extra_spend = client.BillingExtraSpend()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `any[]` | Yes |  |
+| `breakdown` | `any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` | Yes |  |
+| `can_manage_contact` | `boolean` | Yes |  |
+| `can_manage_extra_spend` | `boolean` | Yes |  |
+| `can_manage_local_subscription` | `boolean` | Yes |  |
+| `can_manage_payment_method` | `boolean` | Yes |  |
+| `can_set_up_billing` | `boolean` | Yes |  |
+| `customer` | `any` | Yes |  |
+| `deployment_usage_visible` | `boolean` | Yes |  |
+| `enabled` | `boolean` | Yes |  |
+| `entitlements` | `Record<string, any>` | Yes |  |
+| `extra_spend_enabled` | `boolean` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Yes | Whether the `billing` feature is on for this organization. |
+| `monthly_cap_cents` | `number | null` | No | Monthly limit across all metered overages, excluding plan fees. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `any` | Yes |  |
+| `prepaid` | `any` | Yes |  |
+| `preview` | `any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `Record<string, any>` | Yes |  |
+| `stripe` | `Record<string, any>` | Yes |  |
+| `subscription` | `any` | Yes |  |
+| `token_account` | `Record<string, any>` | Yes |  |
+
+### Operations
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.BillingExtraSpend().patch({
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.BillingExtraSpend().update({
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BillingExtraSpendEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -18346,6 +18638,91 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `BillingPrepaidPurchaseEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `ComposalSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## BillingSubscriptionEntity
+
+```ts
+const billing_subscription = client.BillingSubscription()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `any[]` | Yes |  |
+| `breakdown` | `any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` | Yes |  |
+| `can_manage_contact` | `boolean` | Yes |  |
+| `can_manage_extra_spend` | `boolean` | Yes |  |
+| `can_manage_local_subscription` | `boolean` | Yes |  |
+| `can_manage_payment_method` | `boolean` | Yes |  |
+| `can_set_up_billing` | `boolean` | Yes |  |
+| `cancel_at_period_end` | `boolean` | Yes |  |
+| `customer` | `any` | Yes |  |
+| `deployment_usage_visible` | `boolean` | Yes |  |
+| `entitlements` | `Record<string, any>` | Yes |  |
+| `extra_spend_enabled` | `boolean` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `any` | Yes |  |
+| `prepaid` | `any` | Yes |  |
+| `preview` | `any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `Record<string, any>` | Yes |  |
+| `stripe` | `Record<string, any>` | Yes |  |
+| `subscription` | `any` | Yes |  |
+| `token_account` | `Record<string, any>` | Yes |  |
+
+### Operations
+
+#### `patch(data: object, ctrl?: object)`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Resolves to the patched entity.
+
+```ts
+const result = await client.BillingSubscription().patch({
+  organization_id: 'organization_id',
+  // Only the fields to change
+})
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`. Resolves to the updated entity.
+
+```ts
+const result = await client.BillingSubscription().update({
+  organization_id: 'organization_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `BillingSubscriptionEntity` instance with the same client and
 options.
 
 #### `client()`

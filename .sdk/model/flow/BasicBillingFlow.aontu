@@ -10,24 +10,6 @@ main: kit: flow: BasicBillingFlow:
       i: {
         ref: "billing_ref01",
         srcdatavar: "billing_ref01_data",
-        suffix: "_up0"
-      }
-
-      o: "update",
-      s: [
-        {
-          apply: "TextFieldMark",
-          def: {
-            mark: "Mark01-billing_ref01"
-          }
-        }
-      ]
-    }
-
-    {
-      i: {
-        ref: "billing_ref01",
-        srcdatavar: "billing_ref01_data",
         suffix: "_dt0"
       }
 

@@ -55436,496 +55436,6 @@
                   }
                 }
               ]
-            },
-            "update": {
-              "input": "data",
-              "name": "update",
-              "points": [
-                {
-                  "a": true,
-                  "bf": false,
-                  "co": {
-                    "id": "PATCH /api/v1/organizations/{organization_id}/billing/budget",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "organization_id",
-                        "or": "organization_id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "PATCH",
-                  "o": "/api/v1/organizations/{organization_id}/billing/budget",
-                  "q": {
-                    "$action": "budget",
-                    "exist": [
-                      "organization_id"
-                    ]
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "v1"
-                    },
-                    {
-                      "lit": "organizations"
-                    },
-                    {
-                      "var": "organization_id"
-                    },
-                    {
-                      "lit": "billing"
-                    },
-                    {
-                      "lit": "budget"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "bf": [
-                    "monthly_cap_cents"
-                  ],
-                  "co": {
-                    "id": "PUT /api/v1/organizations/{organization_id}/billing/budget",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "organization_id",
-                        "or": "organization_id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "PUT",
-                  "o": "/api/v1/organizations/{organization_id}/billing/budget",
-                  "q": {
-                    "$action": "budget",
-                    "exist": [
-                      "organization_id"
-                    ]
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "v1"
-                    },
-                    {
-                      "lit": "organizations"
-                    },
-                    {
-                      "var": "organization_id"
-                    },
-                    {
-                      "lit": "billing"
-                    },
-                    {
-                      "lit": "budget"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "bf": [
-                    "billing_email"
-                  ],
-                  "co": {
-                    "id": "PATCH /api/v1/organizations/{organization_id}/billing/contact",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "organization_id",
-                        "or": "organization_id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "PATCH",
-                  "o": "/api/v1/organizations/{organization_id}/billing/contact",
-                  "q": {
-                    "$action": "contact",
-                    "exist": [
-                      "organization_id"
-                    ]
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "v1"
-                    },
-                    {
-                      "lit": "organizations"
-                    },
-                    {
-                      "var": "organization_id"
-                    },
-                    {
-                      "lit": "billing"
-                    },
-                    {
-                      "lit": "contact"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "bf": false,
-                  "co": {
-                    "id": "PUT /api/v1/organizations/{organization_id}/billing/contact",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "organization_id",
-                        "or": "organization_id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "PUT",
-                  "o": "/api/v1/organizations/{organization_id}/billing/contact",
-                  "q": {
-                    "$action": "contact",
-                    "exist": [
-                      "organization_id"
-                    ]
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "v1"
-                    },
-                    {
-                      "lit": "organizations"
-                    },
-                    {
-                      "var": "organization_id"
-                    },
-                    {
-                      "lit": "billing"
-                    },
-                    {
-                      "lit": "contact"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "bf": [
-                    "enabled",
-                    "monthly_cap_cents"
-                  ],
-                  "co": {
-                    "id": "PATCH /api/v1/organizations/{organization_id}/billing/extra_spend",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "organization_id",
-                        "or": "organization_id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "PATCH",
-                  "o": "/api/v1/organizations/{organization_id}/billing/extra_spend",
-                  "q": {
-                    "$action": "extra_spend",
-                    "exist": [
-                      "organization_id"
-                    ]
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "v1"
-                    },
-                    {
-                      "lit": "organizations"
-                    },
-                    {
-                      "var": "organization_id"
-                    },
-                    {
-                      "lit": "billing"
-                    },
-                    {
-                      "lit": "extra_spend"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "bf": [
-                    "enabled",
-                    "monthly_cap_cents"
-                  ],
-                  "co": {
-                    "id": "PUT /api/v1/organizations/{organization_id}/billing/extra_spend",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "organization_id",
-                        "or": "organization_id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "PUT",
-                  "o": "/api/v1/organizations/{organization_id}/billing/extra_spend",
-                  "q": {
-                    "$action": "extra_spend",
-                    "exist": [
-                      "organization_id"
-                    ]
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "v1"
-                    },
-                    {
-                      "lit": "organizations"
-                    },
-                    {
-                      "var": "organization_id"
-                    },
-                    {
-                      "lit": "billing"
-                    },
-                    {
-                      "lit": "extra_spend"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "bf": [
-                    "cancel_at_period_end"
-                  ],
-                  "co": {
-                    "id": "PATCH /api/v1/organizations/{organization_id}/billing/subscription",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "organization_id",
-                        "or": "organization_id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "PATCH",
-                  "o": "/api/v1/organizations/{organization_id}/billing/subscription",
-                  "q": {
-                    "$action": "subscription",
-                    "exist": [
-                      "organization_id"
-                    ]
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "v1"
-                    },
-                    {
-                      "lit": "organizations"
-                    },
-                    {
-                      "var": "organization_id"
-                    },
-                    {
-                      "lit": "billing"
-                    },
-                    {
-                      "lit": "subscription"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "bf": false,
-                  "co": {
-                    "id": "PUT /api/v1/organizations/{organization_id}/billing/subscription",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "organization_id",
-                        "or": "organization_id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "PUT",
-                  "o": "/api/v1/organizations/{organization_id}/billing/subscription",
-                  "q": {
-                    "$action": "subscription",
-                    "exist": [
-                      "organization_id"
-                    ]
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "v1"
-                    },
-                    {
-                      "lit": "organizations"
-                    },
-                    {
-                      "var": "organization_id"
-                    },
-                    {
-                      "lit": "billing"
-                    },
-                    {
-                      "lit": "subscription"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                }
-              ]
             }
           },
           "relations": {
@@ -56206,6 +55716,319 @@
             ]
           }
         },
+        "billing_budget": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "addons": {
+              "a": true,
+              "h": "Addons",
+              "n": "addons",
+              "r": true,
+              "t": "`$ARRAY`"
+            },
+            "breakdown": {
+              "a": true,
+              "h": "Breakdown",
+              "n": "breakdown",
+              "r": true,
+              "sh": "The 24-hour live series with its provenance; null only when the rollup fallback itself failed.",
+              "t": "`$ANY`"
+            },
+            "budget": {
+              "a": true,
+              "h": "Budget",
+              "n": "budget",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "can_manage_contact": {
+              "a": true,
+              "h": "Can Manage Contact",
+              "n": "can_manage_contact",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "can_manage_extra_spend": {
+              "a": true,
+              "h": "Can Manage Extra Spend",
+              "n": "can_manage_extra_spend",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "can_manage_local_subscription": {
+              "a": true,
+              "h": "Can Manage Local Subscription",
+              "n": "can_manage_local_subscription",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "can_manage_payment_method": {
+              "a": true,
+              "h": "Can Manage Payment Method",
+              "n": "can_manage_payment_method",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "can_set_up_billing": {
+              "a": true,
+              "h": "Can Set Up Billing",
+              "n": "can_set_up_billing",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "customer": {
+              "a": true,
+              "h": "Customer",
+              "n": "customer",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "deployment_usage_visible": {
+              "a": true,
+              "h": "Deployment Usage Visible",
+              "n": "deployment_usage_visible",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "entitlements": {
+              "a": true,
+              "h": "Entitlements",
+              "n": "entitlements",
+              "r": true,
+              "t": "`$OBJECT`"
+            },
+            "extra_spend_enabled": {
+              "a": true,
+              "h": "Extra Spend Enabled",
+              "n": "extra_spend_enabled",
+              "r": true,
+              "sh": "Organization consent to paid overages across all metered usage.",
+              "t": "`$BOOLEAN`"
+            },
+            "feature_enabled": {
+              "a": true,
+              "h": "Feature Enabled",
+              "n": "feature_enabled",
+              "r": true,
+              "sh": "Whether the `billing` feature is on for this organization.",
+              "t": "`$BOOLEAN`"
+            },
+            "monthly_cap_cents": {
+              "a": true,
+              "h": "Monthly Cap Cents",
+              "n": "monthly_cap_cents",
+              "r": false,
+              "sh": "Null clears the budget.",
+              "t": [
+                "`$ONE`",
+                [
+                  "`$INTEGER`",
+                  "`$NULL`"
+                ]
+              ]
+            },
+            "organization_id": {
+              "a": true,
+              "h": "Organization Id",
+              "n": "organization_id",
+              "r": true,
+              "t": "`$STRING`"
+            },
+            "package": {
+              "a": true,
+              "h": "Package",
+              "n": "package",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "prepaid": {
+              "a": true,
+              "h": "Prepaid",
+              "n": "prepaid",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "preview": {
+              "a": true,
+              "h": "Preview",
+              "n": "preview",
+              "r": true,
+              "sh": "Metronome draft invoice and credits, or null.",
+              "t": "`$ANY`"
+            },
+            "storage_usage": {
+              "a": true,
+              "h": "Storage Usage",
+              "n": "storage_usage",
+              "r": true,
+              "t": "`$OBJECT`"
+            },
+            "stripe": {
+              "a": true,
+              "h": "Stripe",
+              "n": "stripe",
+              "r": true,
+              "t": "`$OBJECT`"
+            },
+            "subscription": {
+              "a": true,
+              "h": "Subscription",
+              "n": "subscription",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "token_account": {
+              "a": true,
+              "h": "Token Account",
+              "n": "token_account",
+              "r": true,
+              "t": "`$OBJECT`"
+            }
+          },
+          "name": "billing_budget",
+          "op": {
+            "patch": {
+              "input": "data",
+              "name": "patch",
+              "points": [
+                {
+                  "a": true,
+                  "bf": false,
+                  "co": {
+                    "id": "PATCH /api/v1/organizations/{organization_id}/billing/budget",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "organization_id",
+                        "or": "organization_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "PATCH",
+                  "o": "/api/v1/organizations/{organization_id}/billing/budget",
+                  "q": {
+                    "exist": [
+                      "organization_id"
+                    ]
+                  },
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "organizations"
+                    },
+                    {
+                      "var": "organization_id"
+                    },
+                    {
+                      "lit": "billing"
+                    },
+                    {
+                      "lit": "budget"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            },
+            "update": {
+              "input": "data",
+              "name": "update",
+              "points": [
+                {
+                  "a": true,
+                  "bf": [
+                    "monthly_cap_cents"
+                  ],
+                  "co": {
+                    "id": "PUT /api/v1/organizations/{organization_id}/billing/budget",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "organization_id",
+                        "or": "organization_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "PUT",
+                  "o": "/api/v1/organizations/{organization_id}/billing/budget",
+                  "q": {
+                    "exist": [
+                      "organization_id"
+                    ]
+                  },
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "organizations"
+                    },
+                    {
+                      "var": "organization_id"
+                    },
+                    {
+                      "lit": "billing"
+                    },
+                    {
+                      "lit": "budget"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "$.main.kit.entity.organization"
+              ]
+            ]
+          }
+        },
         "billing_checkout_session": {
           "active": true,
           "alias": {
@@ -56320,6 +56143,637 @@
                     },
                     {
                       "lit": "checkout_sessions"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "$.main.kit.entity.organization"
+              ]
+            ]
+          }
+        },
+        "billing_contact": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "addons": {
+              "a": true,
+              "h": "Addons",
+              "n": "addons",
+              "r": true,
+              "t": "`$ARRAY`"
+            },
+            "billing_email": {
+              "a": true,
+              "fo": "email",
+              "h": "Billing Email",
+              "n": "billing_email",
+              "r": true,
+              "t": "`$STRING`"
+            },
+            "breakdown": {
+              "a": true,
+              "h": "Breakdown",
+              "n": "breakdown",
+              "r": true,
+              "sh": "The 24-hour live series with its provenance; null only when the rollup fallback itself failed.",
+              "t": "`$ANY`"
+            },
+            "budget": {
+              "a": true,
+              "h": "Budget",
+              "n": "budget",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "can_manage_contact": {
+              "a": true,
+              "h": "Can Manage Contact",
+              "n": "can_manage_contact",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "can_manage_extra_spend": {
+              "a": true,
+              "h": "Can Manage Extra Spend",
+              "n": "can_manage_extra_spend",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "can_manage_local_subscription": {
+              "a": true,
+              "h": "Can Manage Local Subscription",
+              "n": "can_manage_local_subscription",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "can_manage_payment_method": {
+              "a": true,
+              "h": "Can Manage Payment Method",
+              "n": "can_manage_payment_method",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "can_set_up_billing": {
+              "a": true,
+              "h": "Can Set Up Billing",
+              "n": "can_set_up_billing",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "customer": {
+              "a": true,
+              "h": "Customer",
+              "n": "customer",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "deployment_usage_visible": {
+              "a": true,
+              "h": "Deployment Usage Visible",
+              "n": "deployment_usage_visible",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "entitlements": {
+              "a": true,
+              "h": "Entitlements",
+              "n": "entitlements",
+              "r": true,
+              "t": "`$OBJECT`"
+            },
+            "extra_spend_enabled": {
+              "a": true,
+              "h": "Extra Spend Enabled",
+              "n": "extra_spend_enabled",
+              "r": true,
+              "sh": "Organization consent to paid overages across all metered usage.",
+              "t": "`$BOOLEAN`"
+            },
+            "feature_enabled": {
+              "a": true,
+              "h": "Feature Enabled",
+              "n": "feature_enabled",
+              "r": true,
+              "sh": "Whether the `billing` feature is on for this organization.",
+              "t": "`$BOOLEAN`"
+            },
+            "organization_id": {
+              "a": true,
+              "h": "Organization Id",
+              "n": "organization_id",
+              "r": true,
+              "t": "`$STRING`"
+            },
+            "package": {
+              "a": true,
+              "h": "Package",
+              "n": "package",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "prepaid": {
+              "a": true,
+              "h": "Prepaid",
+              "n": "prepaid",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "preview": {
+              "a": true,
+              "h": "Preview",
+              "n": "preview",
+              "r": true,
+              "sh": "Metronome draft invoice and credits, or null.",
+              "t": "`$ANY`"
+            },
+            "storage_usage": {
+              "a": true,
+              "h": "Storage Usage",
+              "n": "storage_usage",
+              "r": true,
+              "t": "`$OBJECT`"
+            },
+            "stripe": {
+              "a": true,
+              "h": "Stripe",
+              "n": "stripe",
+              "r": true,
+              "t": "`$OBJECT`"
+            },
+            "subscription": {
+              "a": true,
+              "h": "Subscription",
+              "n": "subscription",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "token_account": {
+              "a": true,
+              "h": "Token Account",
+              "n": "token_account",
+              "r": true,
+              "t": "`$OBJECT`"
+            }
+          },
+          "name": "billing_contact",
+          "op": {
+            "patch": {
+              "input": "data",
+              "name": "patch",
+              "points": [
+                {
+                  "a": true,
+                  "bf": [
+                    "billing_email"
+                  ],
+                  "co": {
+                    "id": "PATCH /api/v1/organizations/{organization_id}/billing/contact",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "organization_id",
+                        "or": "organization_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "PATCH",
+                  "o": "/api/v1/organizations/{organization_id}/billing/contact",
+                  "q": {
+                    "exist": [
+                      "organization_id"
+                    ]
+                  },
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "organizations"
+                    },
+                    {
+                      "var": "organization_id"
+                    },
+                    {
+                      "lit": "billing"
+                    },
+                    {
+                      "lit": "contact"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            },
+            "update": {
+              "input": "data",
+              "name": "update",
+              "points": [
+                {
+                  "a": true,
+                  "bf": false,
+                  "co": {
+                    "id": "PUT /api/v1/organizations/{organization_id}/billing/contact",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "organization_id",
+                        "or": "organization_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "PUT",
+                  "o": "/api/v1/organizations/{organization_id}/billing/contact",
+                  "q": {
+                    "exist": [
+                      "organization_id"
+                    ]
+                  },
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "organizations"
+                    },
+                    {
+                      "var": "organization_id"
+                    },
+                    {
+                      "lit": "billing"
+                    },
+                    {
+                      "lit": "contact"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "$.main.kit.entity.organization"
+              ]
+            ]
+          }
+        },
+        "billing_extra_spend": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "addons": {
+              "a": true,
+              "h": "Addons",
+              "n": "addons",
+              "r": true,
+              "t": "`$ARRAY`"
+            },
+            "breakdown": {
+              "a": true,
+              "h": "Breakdown",
+              "n": "breakdown",
+              "r": true,
+              "sh": "The 24-hour live series with its provenance; null only when the rollup fallback itself failed.",
+              "t": "`$ANY`"
+            },
+            "budget": {
+              "a": true,
+              "h": "Budget",
+              "n": "budget",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "can_manage_contact": {
+              "a": true,
+              "h": "Can Manage Contact",
+              "n": "can_manage_contact",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "can_manage_extra_spend": {
+              "a": true,
+              "h": "Can Manage Extra Spend",
+              "n": "can_manage_extra_spend",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "can_manage_local_subscription": {
+              "a": true,
+              "h": "Can Manage Local Subscription",
+              "n": "can_manage_local_subscription",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "can_manage_payment_method": {
+              "a": true,
+              "h": "Can Manage Payment Method",
+              "n": "can_manage_payment_method",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "can_set_up_billing": {
+              "a": true,
+              "h": "Can Set Up Billing",
+              "n": "can_set_up_billing",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "customer": {
+              "a": true,
+              "h": "Customer",
+              "n": "customer",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "deployment_usage_visible": {
+              "a": true,
+              "h": "Deployment Usage Visible",
+              "n": "deployment_usage_visible",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "enabled": {
+              "a": true,
+              "h": "Enabled",
+              "n": "enabled",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "entitlements": {
+              "a": true,
+              "h": "Entitlements",
+              "n": "entitlements",
+              "r": true,
+              "t": "`$OBJECT`"
+            },
+            "extra_spend_enabled": {
+              "a": true,
+              "h": "Extra Spend Enabled",
+              "n": "extra_spend_enabled",
+              "r": true,
+              "sh": "Organization consent to paid overages across all metered usage.",
+              "t": "`$BOOLEAN`"
+            },
+            "feature_enabled": {
+              "a": true,
+              "h": "Feature Enabled",
+              "n": "feature_enabled",
+              "r": true,
+              "sh": "Whether the `billing` feature is on for this organization.",
+              "t": "`$BOOLEAN`"
+            },
+            "monthly_cap_cents": {
+              "a": true,
+              "h": "Monthly Cap Cents",
+              "n": "monthly_cap_cents",
+              "r": false,
+              "sh": "Monthly limit across all metered overages, excluding plan fees.",
+              "t": [
+                "`$ONE`",
+                [
+                  "`$INTEGER`",
+                  "`$NULL`"
+                ]
+              ]
+            },
+            "organization_id": {
+              "a": true,
+              "h": "Organization Id",
+              "n": "organization_id",
+              "r": true,
+              "t": "`$STRING`"
+            },
+            "package": {
+              "a": true,
+              "h": "Package",
+              "n": "package",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "prepaid": {
+              "a": true,
+              "h": "Prepaid",
+              "n": "prepaid",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "preview": {
+              "a": true,
+              "h": "Preview",
+              "n": "preview",
+              "r": true,
+              "sh": "Metronome draft invoice and credits, or null.",
+              "t": "`$ANY`"
+            },
+            "storage_usage": {
+              "a": true,
+              "h": "Storage Usage",
+              "n": "storage_usage",
+              "r": true,
+              "t": "`$OBJECT`"
+            },
+            "stripe": {
+              "a": true,
+              "h": "Stripe",
+              "n": "stripe",
+              "r": true,
+              "t": "`$OBJECT`"
+            },
+            "subscription": {
+              "a": true,
+              "h": "Subscription",
+              "n": "subscription",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "token_account": {
+              "a": true,
+              "h": "Token Account",
+              "n": "token_account",
+              "r": true,
+              "t": "`$OBJECT`"
+            }
+          },
+          "name": "billing_extra_spend",
+          "op": {
+            "patch": {
+              "input": "data",
+              "name": "patch",
+              "points": [
+                {
+                  "a": true,
+                  "bf": [
+                    "enabled",
+                    "monthly_cap_cents"
+                  ],
+                  "co": {
+                    "id": "PATCH /api/v1/organizations/{organization_id}/billing/extra_spend",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "organization_id",
+                        "or": "organization_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "PATCH",
+                  "o": "/api/v1/organizations/{organization_id}/billing/extra_spend",
+                  "q": {
+                    "exist": [
+                      "organization_id"
+                    ]
+                  },
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "organizations"
+                    },
+                    {
+                      "var": "organization_id"
+                    },
+                    {
+                      "lit": "billing"
+                    },
+                    {
+                      "lit": "extra_spend"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            },
+            "update": {
+              "input": "data",
+              "name": "update",
+              "points": [
+                {
+                  "a": true,
+                  "bf": [
+                    "enabled",
+                    "monthly_cap_cents"
+                  ],
+                  "co": {
+                    "id": "PUT /api/v1/organizations/{organization_id}/billing/extra_spend",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "organization_id",
+                        "or": "organization_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "PUT",
+                  "o": "/api/v1/organizations/{organization_id}/billing/extra_spend",
+                  "q": {
+                    "exist": [
+                      "organization_id"
+                    ]
+                  },
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "organizations"
+                    },
+                    {
+                      "var": "organization_id"
+                    },
+                    {
+                      "lit": "billing"
+                    },
+                    {
+                      "lit": "extra_spend"
                     }
                   ],
                   "t": {
@@ -57586,6 +58040,312 @@
                     },
                     {
                       "lit": "payment_page"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "$.main.kit.entity.organization"
+              ]
+            ]
+          }
+        },
+        "billing_subscription": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "addons": {
+              "a": true,
+              "h": "Addons",
+              "n": "addons",
+              "r": true,
+              "t": "`$ARRAY`"
+            },
+            "breakdown": {
+              "a": true,
+              "h": "Breakdown",
+              "n": "breakdown",
+              "r": true,
+              "sh": "The 24-hour live series with its provenance; null only when the rollup fallback itself failed.",
+              "t": "`$ANY`"
+            },
+            "budget": {
+              "a": true,
+              "h": "Budget",
+              "n": "budget",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "can_manage_contact": {
+              "a": true,
+              "h": "Can Manage Contact",
+              "n": "can_manage_contact",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "can_manage_extra_spend": {
+              "a": true,
+              "h": "Can Manage Extra Spend",
+              "n": "can_manage_extra_spend",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "can_manage_local_subscription": {
+              "a": true,
+              "h": "Can Manage Local Subscription",
+              "n": "can_manage_local_subscription",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "can_manage_payment_method": {
+              "a": true,
+              "h": "Can Manage Payment Method",
+              "n": "can_manage_payment_method",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "can_set_up_billing": {
+              "a": true,
+              "h": "Can Set Up Billing",
+              "n": "can_set_up_billing",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "cancel_at_period_end": {
+              "a": true,
+              "h": "Cancel At Period End",
+              "n": "cancel_at_period_end",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "customer": {
+              "a": true,
+              "h": "Customer",
+              "n": "customer",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "deployment_usage_visible": {
+              "a": true,
+              "h": "Deployment Usage Visible",
+              "n": "deployment_usage_visible",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "entitlements": {
+              "a": true,
+              "h": "Entitlements",
+              "n": "entitlements",
+              "r": true,
+              "t": "`$OBJECT`"
+            },
+            "extra_spend_enabled": {
+              "a": true,
+              "h": "Extra Spend Enabled",
+              "n": "extra_spend_enabled",
+              "r": true,
+              "sh": "Organization consent to paid overages across all metered usage.",
+              "t": "`$BOOLEAN`"
+            },
+            "feature_enabled": {
+              "a": true,
+              "h": "Feature Enabled",
+              "n": "feature_enabled",
+              "r": true,
+              "sh": "Whether the `billing` feature is on for this organization.",
+              "t": "`$BOOLEAN`"
+            },
+            "organization_id": {
+              "a": true,
+              "h": "Organization Id",
+              "n": "organization_id",
+              "r": true,
+              "t": "`$STRING`"
+            },
+            "package": {
+              "a": true,
+              "h": "Package",
+              "n": "package",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "prepaid": {
+              "a": true,
+              "h": "Prepaid",
+              "n": "prepaid",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "preview": {
+              "a": true,
+              "h": "Preview",
+              "n": "preview",
+              "r": true,
+              "sh": "Metronome draft invoice and credits, or null.",
+              "t": "`$ANY`"
+            },
+            "storage_usage": {
+              "a": true,
+              "h": "Storage Usage",
+              "n": "storage_usage",
+              "r": true,
+              "t": "`$OBJECT`"
+            },
+            "stripe": {
+              "a": true,
+              "h": "Stripe",
+              "n": "stripe",
+              "r": true,
+              "t": "`$OBJECT`"
+            },
+            "subscription": {
+              "a": true,
+              "h": "Subscription",
+              "n": "subscription",
+              "r": true,
+              "t": "`$ANY`"
+            },
+            "token_account": {
+              "a": true,
+              "h": "Token Account",
+              "n": "token_account",
+              "r": true,
+              "t": "`$OBJECT`"
+            }
+          },
+          "name": "billing_subscription",
+          "op": {
+            "patch": {
+              "input": "data",
+              "name": "patch",
+              "points": [
+                {
+                  "a": true,
+                  "bf": [
+                    "cancel_at_period_end"
+                  ],
+                  "co": {
+                    "id": "PATCH /api/v1/organizations/{organization_id}/billing/subscription",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "organization_id",
+                        "or": "organization_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "PATCH",
+                  "o": "/api/v1/organizations/{organization_id}/billing/subscription",
+                  "q": {
+                    "exist": [
+                      "organization_id"
+                    ]
+                  },
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "organizations"
+                    },
+                    {
+                      "var": "organization_id"
+                    },
+                    {
+                      "lit": "billing"
+                    },
+                    {
+                      "lit": "subscription"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            },
+            "update": {
+              "input": "data",
+              "name": "update",
+              "points": [
+                {
+                  "a": true,
+                  "bf": false,
+                  "co": {
+                    "id": "PUT /api/v1/organizations/{organization_id}/billing/subscription",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "organization_id",
+                        "or": "organization_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "PUT",
+                  "o": "/api/v1/organizations/{organization_id}/billing/subscription",
+                  "q": {
+                    "exist": [
+                      "organization_id"
+                    ]
+                  },
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "organizations"
+                    },
+                    {
+                      "var": "organization_id"
+                    },
+                    {
+                      "lit": "billing"
+                    },
+                    {
+                      "lit": "subscription"
                     }
                   ],
                   "t": {
@@ -213115,6 +213875,36 @@
             }
           ]
         },
+        "BasicBillingBudgetFlow": {
+          "active": true,
+          "entity": "billing_budget",
+          "key$": "BasicBillingBudgetFlow",
+          "kind": "basic",
+          "name": "BasicBillingBudgetFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "billing_budget_ref01",
+                "srcdatavar": "billing_budget_ref01_data",
+                "suffix": "_up0"
+              },
+              "m": {},
+              "o": "update",
+              "s": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-billing_budget_ref01"
+                  }
+                }
+              ],
+              "v": []
+            }
+          ]
+        },
         "BasicBillingCheckoutSessionFlow": {
           "active": true,
           "entity": "billing_checkout_session",
@@ -213138,20 +213928,51 @@
             }
           ]
         },
-        "BasicBillingFlow": {
+        "BasicBillingContactFlow": {
           "active": true,
-          "entity": "billing",
-          "key$": "BasicBillingFlow",
+          "entity": "billing_contact",
+          "key$": "BasicBillingContactFlow",
           "kind": "basic",
-          "name": "BasicBillingFlow",
+          "name": "BasicBillingContactFlow",
           "param": {},
           "step": [
             {
               "a": true,
               "d": {},
               "i": {
-                "ref": "billing_ref01",
-                "srcdatavar": "billing_ref01_data",
+                "ref": "billing_contact_ref01",
+                "srcdatavar": "billing_contact_ref01_data",
+                "suffix": "_up0",
+                "textfield": "billing_email"
+              },
+              "m": {},
+              "o": "update",
+              "s": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-billing_contact_ref01"
+                  }
+                }
+              ],
+              "v": []
+            }
+          ]
+        },
+        "BasicBillingExtraSpendFlow": {
+          "active": true,
+          "entity": "billing_extra_spend",
+          "key$": "BasicBillingExtraSpendFlow",
+          "kind": "basic",
+          "name": "BasicBillingExtraSpendFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "billing_extra_spend_ref01",
+                "srcdatavar": "billing_extra_spend_ref01_data",
                 "suffix": "_up0"
               },
               "m": {},
@@ -213160,12 +213981,22 @@
                 {
                   "apply": "TextFieldMark",
                   "def": {
-                    "mark": "Mark01-billing_ref01"
+                    "mark": "Mark01-billing_extra_spend_ref01"
                   }
                 }
               ],
               "v": []
-            },
+            }
+          ]
+        },
+        "BasicBillingFlow": {
+          "active": true,
+          "entity": "billing",
+          "key$": "BasicBillingFlow",
+          "kind": "basic",
+          "name": "BasicBillingFlow",
+          "param": {},
+          "step": [
             {
               "a": true,
               "d": {},
@@ -213361,6 +214192,36 @@
                   }
                 }
               ]
+            }
+          ]
+        },
+        "BasicBillingSubscriptionFlow": {
+          "active": true,
+          "entity": "billing_subscription",
+          "key$": "BasicBillingSubscriptionFlow",
+          "kind": "basic",
+          "name": "BasicBillingSubscriptionFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "billing_subscription_ref01",
+                "srcdatavar": "billing_subscription_ref01_data",
+                "suffix": "_up0"
+              },
+              "m": {},
+              "o": "update",
+              "s": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-billing_subscription_ref01"
+                  }
+                }
+              ],
+              "v": []
             }
           ]
         },
@@ -234169,7 +235030,7 @@
         }
       },
       "text": {
-        "about_md": "**Credentials.** Every call takes a Composal personal access token, passed as the\n`apikey` option; the SDK sends it as `Authorization: Bearer ...`. The token acts as its user,\nwith that user's organization memberships and agent access. The base URL is\n`https://api.composal.com`, and every path keeps its `/api/v1` prefix. The CLI and the MCP\nserver read the token from `COMPOSAL_APIKEY`.\n\n**Organizations.** Most resources live in an organization, passed as `organization_id`. It takes\nthe organization's slug or its public id. Composal's definition names this parameter\n`org_slug` on some routes; here it is `organization_id` everywhere.\n\n```python\nimport os\nfrom composal_sdk import ComposalSDK\n\nclient = ComposalSDK({\"apikey\": os.environ.get(\"COMPOSAL_APIKEY\", \"\")})\norg = os.environ.get(\"COMPOSAL_ORGANIZATION\", \"your-organization\")\n\n# The organization's persistent agents.\nfor agent in client.Agent().list({\"organization_id\": org}):\n    print(agent.data_get().get(\"id\"), agent.data_get().get(\"name\"))\n\n# Its Verify projects: the apps whose user journeys Verify tests.\nfor project in client.Project().list({\"organization_id\": org}):\n    print(project.data_get().get(\"slug\"), project.data_get().get(\"website_url\"))\n```\n\nCreating an agent, in TypeScript:\n\n```ts\nimport { ComposalSDK } from '@voxgig-sdk/composal-sdk'\n\n// The idempotency feature adds the Idempotency-Key that Composal requires on writes.\nconst client = new ComposalSDK({\n  apikey: process.env.COMPOSAL_APIKEY ?? '',\n  feature: { idempotency: { active: true } },\n})\nconst organization_id = process.env.COMPOSAL_ORGANIZATION ?? 'your-organization'\n\nconst agent = await client.Agent().create({\n  organization_id,\n  name: 'Release notes',\n  configuration: {\n    instructions: 'Each morning, summarise the pull requests merged the day before.',\n  },\n})\nconsole.log(agent.data())\n```\n\n**Agents.** `Agent` create makes a persistent agent from a `name` and an optional\n`configuration` (its `instructions`, model policy and work repositories); it starts as a draft\nwhile its runtime is provisioned. `AgentInput` create sends it a message in a conversation\n(`main` is the default one). Acceptance is not an answer: the reply arrives in the\nconversation, which `Agent` load reads with `$action: 'conversation'`. Runs, threads, routines,\nworkflow triggers and the agent's settings each have their own resource (`AgentRun`,\n`AgentThread`, `AgentRoutine`, `AgentWorkflowTrigger`, `AgentSetting`).\n\n**Actions.** A verb on a record is an action, passed as `$action`: `VerificationProjectRun`\ncreate with `$action: 'cancel'` cancels a run, `App` create with `$action: 'archive'` archives a\nhosted app.\n\n**Retries.** Composal requires an `Idempotency-Key` header on 33 calls, among them `Agent`\ncreate and `AgentInput` create, so that a retried request is not applied twice. Switch on the\nSDK's idempotency feature, `feature: { idempotency: { active: true } }`, as above: it adds a\nkey to every write, which its own retries of that call reuse. To retry by hand a request whose\noutcome was uncertain, pass the original key as `idempotency_key` (the SDK sends it as the\nheader and never replaces it). An action that requires the header, such as `Agent` create\nwith `$action: 'browser_opened'`, needs `idempotency_key` in the call to be selected.\n\n**Types.** Some request fields that Composal's definition makes optional are typed as\nrequired, among them `browser_context` and `client_time` on `AgentInput` create. Each is an\nobject with required fields of its own, which this generation misreads as the field itself\nbeing required. TypeScript refuses a call without them and Python's type hints say the same;\nno SDK checks it at run time.\n\n**Files and streams.** Nineteen calls can answer with a file or plain text rather than JSON:\nimages, recordings, archives and downloads, such as `Evidence` load with\n`$action: 'download'`. Four answer with a server-sent event stream, among them an agent's live\nevents. This generation reads neither, so those calls report an unreadable response; an\nagent's saved conversation, `Agent` load with `$action: 'conversation'`, holds its replies.\nEight uploads take multipart form data or JSON; the SDK sends JSON.\n\n**Scope.** Composal's definition is generated from its application's routes and holds 2,008\noperations. This SDK covers every one a customer can call: 1,747 operations, as 551\nresources. It leaves out only the 38 that Composal marks internal, the 194 it marks deprecated\n(among them the `/clawder` paths, which `/spark` replaces), and the 29 that need a service\ncredential rather than a personal access token.\n\n**Not yet run with a token.** Every request was checked against the definition, not against\nComposal.",
+        "about_md": "**Credentials.** Every call takes a Composal personal access token, passed as the\n`apikey` option; the SDK sends it as `Authorization: Bearer ...`. The token acts as its user,\nwith that user's organization memberships and agent access. The base URL is\n`https://api.composal.com`, and every path keeps its `/api/v1` prefix. The CLI and the MCP\nserver read the token from `COMPOSAL_APIKEY`.\n\n**Organizations.** Most resources live in an organization, passed as `organization_id`. It takes\nthe organization's slug or its public id. Composal's definition names this parameter\n`org_slug` on some routes; here it is `organization_id` everywhere.\n\n```python\nimport os\nfrom composal_sdk import ComposalSDK\n\nclient = ComposalSDK({\"apikey\": os.environ.get(\"COMPOSAL_APIKEY\", \"\")})\norg = os.environ.get(\"COMPOSAL_ORGANIZATION\", \"your-organization\")\n\n# The organization's persistent agents.\nfor agent in client.Agent().list({\"organization_id\": org}):\n    print(agent.data_get().get(\"id\"), agent.data_get().get(\"name\"))\n\n# Its Verify projects: the apps whose user journeys Verify tests.\nfor project in client.Project().list({\"organization_id\": org}):\n    print(project.data_get().get(\"slug\"), project.data_get().get(\"website_url\"))\n```\n\nCreating an agent, in TypeScript:\n\n```ts\nimport { ComposalSDK } from '@voxgig-sdk/composal-sdk'\n\n// The idempotency feature adds the Idempotency-Key that Composal requires on writes.\nconst client = new ComposalSDK({\n  apikey: process.env.COMPOSAL_APIKEY ?? '',\n  feature: { idempotency: { active: true } },\n})\nconst organization_id = process.env.COMPOSAL_ORGANIZATION ?? 'your-organization'\n\nconst agent = await client.Agent().create({\n  organization_id,\n  name: 'Release notes',\n  configuration: {\n    instructions: 'Each morning, summarise the pull requests merged the day before.',\n  },\n})\nconsole.log(agent.data())\n```\n\n**Agents.** `Agent` create makes a persistent agent from a `name` and an optional\n`configuration` (its `instructions`, model policy and work repositories); it starts as a draft\nwhile its runtime is provisioned. `AgentInput` create sends it a message in a conversation\n(`main` is the default one). Acceptance is not an answer: the reply arrives in the\nconversation, which `Agent` load reads with `$action: 'conversation'`. Runs, threads, routines,\nworkflow triggers and the agent's settings each have their own resource (`AgentRun`,\n`AgentThread`, `AgentRoutine`, `AgentWorkflowTrigger`, `AgentSetting`).\n\n**Actions.** A verb on a record is an action, passed as `$action`: `VerificationProjectRun`\ncreate with `$action: 'cancel'` cancels a run, `App` create with `$action: 'archive'` archives a\nhosted app.\n\n**Retries.** Composal requires an `Idempotency-Key` header on 33 calls, among them `Agent`\ncreate and `AgentInput` create, so that a retried request is not applied twice. Switch on the\nSDK's idempotency feature, `feature: { idempotency: { active: true } }`, as above: it adds a\nkey to every write, which its own retries of that call reuse. To retry by hand a request whose\noutcome was uncertain, pass the original key as `idempotency_key` (the SDK sends it as the\nheader and never replaces it). An action that requires the header, such as `Agent` create\nwith `$action: 'browser_opened'`, needs `idempotency_key` in the call to be selected.\n\n**Types.** Some request fields that Composal's definition makes optional are typed as\nrequired, among them `browser_context` and `client_time` on `AgentInput` create. Each is an\nobject with required fields of its own, which this generation misreads as the field itself\nbeing required. TypeScript refuses a call without them and Python's type hints say the same;\nno SDK checks it at run time.\n\n**Files and streams.** Nineteen calls can answer with a file or plain text rather than JSON:\nimages, recordings, archives and downloads, such as `Evidence` load with\n`$action: 'download'`. Four answer with a server-sent event stream, among them an agent's live\nevents. This generation reads neither, so those calls report an unreadable response; an\nagent's saved conversation, `Agent` load with `$action: 'conversation'`, holds its replies.\nEight uploads take multipart form data or JSON; the SDK sends JSON.\n\n**Scope.** Composal's definition is generated from its application's routes and holds 2,008\noperations. This SDK covers every one a customer can call: 1,747 operations, as 555\nresources. It leaves out only the 38 that Composal marks internal, the 194 it marks deprecated\n(among them the `/clawder` paths, which `/spark` replaces), and the 29 that need a service\ncredential rather than a personal access token.\n\n**Not yet run with a token.** Every request was checked against the definition, not against\nComposal.",
         "docs_url": "https://composal.com/docs/api",
         "entity_desc": {
           "agent": "A persistent agent: list, create, read or delete one, rename it, change who can see it, and read its conversation, usage and runtime (actions).",

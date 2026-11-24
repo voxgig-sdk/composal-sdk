@@ -3284,13 +3284,6 @@
 ---@class BillingLoadMatch
 ---@field organization_id string
 
----@class BillingUpdateData
----@field organization_id string
----@field billing_email? any
----@field cancel_at_period_end? any
----@field enabled? any
----@field monthly_cap_cents? any
-
 ---@class BillingAddon
 ---@field addons table
 ---@field breakdown any
@@ -3321,6 +3314,37 @@
 ---@field organization_id string
 ---@field quantity? number
 
+---@class BillingBudget
+---@field addons table
+---@field breakdown any
+---@field budget any
+---@field can_manage_contact boolean
+---@field can_manage_extra_spend boolean
+---@field can_manage_local_subscription boolean
+---@field can_manage_payment_method boolean
+---@field can_set_up_billing boolean
+---@field customer any
+---@field deployment_usage_visible boolean
+---@field entitlements table
+---@field extra_spend_enabled boolean
+---@field feature_enabled boolean
+---@field monthly_cap_cents? number|nil
+---@field organization_id string
+---@field package any
+---@field prepaid any
+---@field preview any
+---@field storage_usage table
+---@field stripe table
+---@field subscription any
+---@field token_account table
+
+---@class BillingBudgetUpdateData
+---@field organization_id string
+---@field monthly_cap_cents? number|nil
+
+---@class BillingBudgetPatchData
+---@field organization_id string
+
 ---@class BillingCheckoutSession
 ---@field cancel_url? string
 ---@field coupon_code? string
@@ -3337,6 +3361,72 @@
 ---@field package_key? string
 ---@field package_revision? number
 ---@field success_url? string
+
+---@class BillingContact
+---@field addons table
+---@field billing_email string
+---@field breakdown any
+---@field budget any
+---@field can_manage_contact boolean
+---@field can_manage_extra_spend boolean
+---@field can_manage_local_subscription boolean
+---@field can_manage_payment_method boolean
+---@field can_set_up_billing boolean
+---@field customer any
+---@field deployment_usage_visible boolean
+---@field entitlements table
+---@field extra_spend_enabled boolean
+---@field feature_enabled boolean
+---@field organization_id string
+---@field package any
+---@field prepaid any
+---@field preview any
+---@field storage_usage table
+---@field stripe table
+---@field subscription any
+---@field token_account table
+
+---@class BillingContactUpdateData
+---@field organization_id string
+
+---@class BillingContactPatchData
+---@field organization_id string
+---@field billing_email? string
+
+---@class BillingExtraSpend
+---@field addons table
+---@field breakdown any
+---@field budget any
+---@field can_manage_contact boolean
+---@field can_manage_extra_spend boolean
+---@field can_manage_local_subscription boolean
+---@field can_manage_payment_method boolean
+---@field can_set_up_billing boolean
+---@field customer any
+---@field deployment_usage_visible boolean
+---@field enabled boolean
+---@field entitlements table
+---@field extra_spend_enabled boolean
+---@field feature_enabled boolean
+---@field monthly_cap_cents? number|nil
+---@field organization_id string
+---@field package any
+---@field prepaid any
+---@field preview any
+---@field storage_usage table
+---@field stripe table
+---@field subscription any
+---@field token_account table
+
+---@class BillingExtraSpendUpdateData
+---@field organization_id string
+---@field enabled? boolean
+---@field monthly_cap_cents? number|nil
+
+---@class BillingExtraSpendPatchData
+---@field organization_id string
+---@field enabled? boolean
+---@field monthly_cap_cents? number|nil
 
 ---@class BillingInvoice
 ---@field amount_due_cents number
@@ -3450,6 +3540,37 @@
 ---@field organization_id string
 ---@field minutes number
 ---@field request_key string
+
+---@class BillingSubscription
+---@field addons table
+---@field breakdown any
+---@field budget any
+---@field can_manage_contact boolean
+---@field can_manage_extra_spend boolean
+---@field can_manage_local_subscription boolean
+---@field can_manage_payment_method boolean
+---@field can_set_up_billing boolean
+---@field cancel_at_period_end boolean
+---@field customer any
+---@field deployment_usage_visible boolean
+---@field entitlements table
+---@field extra_spend_enabled boolean
+---@field feature_enabled boolean
+---@field organization_id string
+---@field package any
+---@field prepaid any
+---@field preview any
+---@field storage_usage table
+---@field stripe table
+---@field subscription any
+---@field token_account table
+
+---@class BillingSubscriptionUpdateData
+---@field organization_id string
+
+---@class BillingSubscriptionPatchData
+---@field organization_id string
+---@field cancel_at_period_end? boolean
 
 ---@class BillingTokenTopUp
 ---@field amount_cents number

@@ -4296,20 +4296,6 @@ export interface BillingLoadMatch {
   [action: string]: any
 }
 
-export interface BillingUpdateData {
-  organization_id: string
-  billing_email?: any
-  cancel_at_period_end?: any
-  enabled?: any
-  monthly_cap_cents?: any
-
-  // Selects a custom action instead of the plain update:
-  //   'budget' | 'budget' | 'contact' | 'contact' | 'extra_spend' | 'extra_spend' | 'subscription' | 'subscription'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
-}
-
 export interface BillingAddon {
   addons: any[]
   breakdown: any
@@ -4342,6 +4328,40 @@ export interface BillingAddonUpdateData {
   quantity?: number
 }
 
+export interface BillingBudget {
+  addons: any[]
+  breakdown: any
+  budget: any
+  can_manage_contact: boolean
+  can_manage_extra_spend: boolean
+  can_manage_local_subscription: boolean
+  can_manage_payment_method: boolean
+  can_set_up_billing: boolean
+  customer: any
+  deployment_usage_visible: boolean
+  entitlements: Record<string, any>
+  extra_spend_enabled: boolean
+  feature_enabled: boolean
+  monthly_cap_cents?: number | null
+  organization_id: string
+  package: any
+  prepaid: any
+  preview: any
+  storage_usage: Record<string, any>
+  stripe: Record<string, any>
+  subscription: any
+  token_account: Record<string, any>
+}
+
+export interface BillingBudgetUpdateData {
+  organization_id: string
+  monthly_cap_cents?: number | null
+}
+
+export interface BillingBudgetPatchData {
+  organization_id: string
+}
+
 export interface BillingCheckoutSession {
   cancel_url?: string
   coupon_code?: string
@@ -4359,6 +4379,78 @@ export interface BillingCheckoutSessionCreateData {
   package_key?: string
   package_revision?: number
   success_url?: string
+}
+
+export interface BillingContact {
+  addons: any[]
+  billing_email: string
+  breakdown: any
+  budget: any
+  can_manage_contact: boolean
+  can_manage_extra_spend: boolean
+  can_manage_local_subscription: boolean
+  can_manage_payment_method: boolean
+  can_set_up_billing: boolean
+  customer: any
+  deployment_usage_visible: boolean
+  entitlements: Record<string, any>
+  extra_spend_enabled: boolean
+  feature_enabled: boolean
+  organization_id: string
+  package: any
+  prepaid: any
+  preview: any
+  storage_usage: Record<string, any>
+  stripe: Record<string, any>
+  subscription: any
+  token_account: Record<string, any>
+}
+
+export interface BillingContactUpdateData {
+  organization_id: string
+}
+
+export interface BillingContactPatchData {
+  organization_id: string
+  billing_email?: string
+}
+
+export interface BillingExtraSpend {
+  addons: any[]
+  breakdown: any
+  budget: any
+  can_manage_contact: boolean
+  can_manage_extra_spend: boolean
+  can_manage_local_subscription: boolean
+  can_manage_payment_method: boolean
+  can_set_up_billing: boolean
+  customer: any
+  deployment_usage_visible: boolean
+  enabled: boolean
+  entitlements: Record<string, any>
+  extra_spend_enabled: boolean
+  feature_enabled: boolean
+  monthly_cap_cents?: number | null
+  organization_id: string
+  package: any
+  prepaid: any
+  preview: any
+  storage_usage: Record<string, any>
+  stripe: Record<string, any>
+  subscription: any
+  token_account: Record<string, any>
+}
+
+export interface BillingExtraSpendUpdateData {
+  organization_id: string
+  enabled?: boolean
+  monthly_cap_cents?: number | null
+}
+
+export interface BillingExtraSpendPatchData {
+  organization_id: string
+  enabled?: boolean
+  monthly_cap_cents?: number | null
 }
 
 export interface BillingInvoice {
@@ -4496,6 +4588,40 @@ export interface BillingPrepaidPurchaseCreateData {
   organization_id: string
   minutes: number
   request_key: string
+}
+
+export interface BillingSubscription {
+  addons: any[]
+  breakdown: any
+  budget: any
+  can_manage_contact: boolean
+  can_manage_extra_spend: boolean
+  can_manage_local_subscription: boolean
+  can_manage_payment_method: boolean
+  can_set_up_billing: boolean
+  cancel_at_period_end: boolean
+  customer: any
+  deployment_usage_visible: boolean
+  entitlements: Record<string, any>
+  extra_spend_enabled: boolean
+  feature_enabled: boolean
+  organization_id: string
+  package: any
+  prepaid: any
+  preview: any
+  storage_usage: Record<string, any>
+  stripe: Record<string, any>
+  subscription: any
+  token_account: Record<string, any>
+}
+
+export interface BillingSubscriptionUpdateData {
+  organization_id: string
+}
+
+export interface BillingSubscriptionPatchData {
+  organization_id: string
+  cancel_at_period_end?: boolean
 }
 
 export interface BillingTokenTopUp {

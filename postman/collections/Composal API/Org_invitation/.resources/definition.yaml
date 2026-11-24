@@ -10,4 +10,4 @@ description: |-
   | `registration_options` | any | yes |  |
   | `requires_password_setup` | boolean | yes |  |
   | `start_guided_setup` | boolean | yes |  |
-order: 339000
+order: 343000

@@ -10,4 +10,4 @@ description: |-
   | `recently_landed` | array | yes |  |
   | `shipping_now` | array | yes |  |
   | `summary` | object | yes |  |
-order: 334000
+order: 338000

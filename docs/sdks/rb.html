@@ -132,12 +132,16 @@
 <a href="../api/bazel_find_missing_blob.html">BazelFindMissingBlob</a>
 <a href="../api/billing.html">Billing</a>
 <a href="../api/billing_addon.html">BillingAddon</a>
+<a href="../api/billing_budget.html">BillingBudget</a>
 <a href="../api/billing_checkout_session.html">BillingCheckoutSession</a>
+<a href="../api/billing_contact.html">BillingContact</a>
+<a href="../api/billing_extra_spend.html">BillingExtraSpend</a>
 <a href="../api/billing_invoice.html">BillingInvoice</a>
 <a href="../api/billing_package.html">BillingPackage</a>
 <a href="../api/billing_portal_session.html">BillingPortalSession</a>
 <a href="../api/billing_prepaid_period.html">BillingPrepaidPeriod</a>
 <a href="../api/billing_prepaid_purchase.html">BillingPrepaidPurchase</a>
+<a href="../api/billing_subscription.html">BillingSubscription</a>
 <a href="../api/billing_token_top_up.html">BillingTokenTopUp</a>
 <a href="../api/billing_usage.html">BillingUsage</a>
 <a href="../api/binary.html">Binary</a>
@@ -1091,15 +1095,27 @@
 </tr>
 <tr>
 <td><a href="../api/billing.html">Billing</a></td>
-<td><code>load</code>, <code>update</code></td>
+<td><code>load</code></td>
 </tr>
 <tr>
 <td><a href="../api/billing_addon.html">BillingAddon</a></td>
 <td><code>update</code></td>
 </tr>
 <tr>
+<td><a href="../api/billing_budget.html">BillingBudget</a></td>
+<td><code>patch</code>, <code>update</code></td>
+</tr>
+<tr>
 <td><a href="../api/billing_checkout_session.html">BillingCheckoutSession</a></td>
 <td><code>create</code></td>
+</tr>
+<tr>
+<td><a href="../api/billing_contact.html">BillingContact</a></td>
+<td><code>patch</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/billing_extra_spend.html">BillingExtraSpend</a></td>
+<td><code>patch</code>, <code>update</code></td>
 </tr>
 <tr>
 <td><a href="../api/billing_invoice.html">BillingInvoice</a></td>
@@ -1120,6 +1136,10 @@
 <tr>
 <td><a href="../api/billing_prepaid_purchase.html">BillingPrepaidPurchase</a></td>
 <td><code>create</code>, <code>list</code>, <code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/billing_subscription.html">BillingSubscription</a></td>
+<td><code>patch</code>, <code>update</code></td>
 </tr>
 <tr>
 <td><a href="../api/billing_token_top_up.html">BillingTokenTopUp</a></td>
@@ -2954,12 +2974,16 @@ client = ComposalSDK.new({&quot;apikey&quot; =&gt; ENV[&quot;COMPOSAL_APIKEY&quo
     &quot;bazel_find_missing_blob&quot;: {},
     &quot;billing&quot;: {},
     &quot;billing_addon&quot;: {},
+    &quot;billing_budget&quot;: {},
     &quot;billing_checkout_session&quot;: {},
+    &quot;billing_contact&quot;: {},
+    &quot;billing_extra_spend&quot;: {},
     &quot;billing_invoice&quot;: {},
     &quot;billing_package&quot;: {},
     &quot;billing_portal_session&quot;: {},
     &quot;billing_prepaid_period&quot;: {},
     &quot;billing_prepaid_purchase&quot;: {},
+    &quot;billing_subscription&quot;: {},
     &quot;billing_token_top_up&quot;: {},
     &quot;billing_usage&quot;: {},
     &quot;binary&quot;: {},

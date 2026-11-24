@@ -10,4 +10,4 @@ description: |-
   | `policy` | object | yes |  |
   | `queue` | object | yes |  |
   | `target_branches` | array |  |  |
-order: 528000
+order: 532000

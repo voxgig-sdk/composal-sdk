@@ -44,12 +44,6 @@ describe("BillingEntity", function()
         return
       end
     end
-    if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
-      print("LIVE STEP {\"id\":\"billing.update.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/billing/budget\"}")
-      pending("Live coverage incomplete: billing.update.0 excluded (GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/billing/budget)")
-      return
-    end
-
     if setup.live then
       pending("Live coverage incomplete: the flow has no step to run")
       return

@@ -4244,17 +4244,6 @@ class BillingLoadMatch(TypedDict):
     organization_id: str
 
 
-class BillingUpdateDataRequired(TypedDict):
-    organization_id: str
-
-
-class BillingUpdateData(BillingUpdateDataRequired, total=False):
-    billing_email: Any
-    cancel_at_period_end: Any
-    enabled: Any
-    monthly_cap_cents: Any
-
-
 class BillingAddonRequired(TypedDict):
     addons: list
     breakdown: Any
@@ -4293,6 +4282,46 @@ class BillingAddonUpdateData(BillingAddonUpdateDataRequired, total=False):
     quantity: int
 
 
+class BillingBudgetRequired(TypedDict):
+    addons: list
+    breakdown: Any
+    budget: Any
+    can_manage_contact: bool
+    can_manage_extra_spend: bool
+    can_manage_local_subscription: bool
+    can_manage_payment_method: bool
+    can_set_up_billing: bool
+    customer: Any
+    deployment_usage_visible: bool
+    entitlements: dict
+    extra_spend_enabled: bool
+    feature_enabled: bool
+    organization_id: str
+    package: Any
+    prepaid: Any
+    preview: Any
+    storage_usage: dict
+    stripe: dict
+    subscription: Any
+    token_account: dict
+
+
+class BillingBudget(BillingBudgetRequired, total=False):
+    monthly_cap_cents: int | None
+
+
+class BillingBudgetUpdateDataRequired(TypedDict):
+    organization_id: str
+
+
+class BillingBudgetUpdateData(BillingBudgetUpdateDataRequired, total=False):
+    monthly_cap_cents: int | None
+
+
+class BillingBudgetPatchData(TypedDict):
+    organization_id: str
+
+
 class BillingCheckoutSession(TypedDict, total=False):
     cancel_url: str
     coupon_code: str
@@ -4313,6 +4342,90 @@ class BillingCheckoutSessionCreateData(BillingCheckoutSessionCreateDataRequired,
     package_key: str
     package_revision: int
     success_url: str
+
+
+class BillingContact(TypedDict):
+    addons: list
+    billing_email: str
+    breakdown: Any
+    budget: Any
+    can_manage_contact: bool
+    can_manage_extra_spend: bool
+    can_manage_local_subscription: bool
+    can_manage_payment_method: bool
+    can_set_up_billing: bool
+    customer: Any
+    deployment_usage_visible: bool
+    entitlements: dict
+    extra_spend_enabled: bool
+    feature_enabled: bool
+    organization_id: str
+    package: Any
+    prepaid: Any
+    preview: Any
+    storage_usage: dict
+    stripe: dict
+    subscription: Any
+    token_account: dict
+
+
+class BillingContactUpdateData(TypedDict):
+    organization_id: str
+
+
+class BillingContactPatchDataRequired(TypedDict):
+    organization_id: str
+
+
+class BillingContactPatchData(BillingContactPatchDataRequired, total=False):
+    billing_email: str
+
+
+class BillingExtraSpendRequired(TypedDict):
+    addons: list
+    breakdown: Any
+    budget: Any
+    can_manage_contact: bool
+    can_manage_extra_spend: bool
+    can_manage_local_subscription: bool
+    can_manage_payment_method: bool
+    can_set_up_billing: bool
+    customer: Any
+    deployment_usage_visible: bool
+    enabled: bool
+    entitlements: dict
+    extra_spend_enabled: bool
+    feature_enabled: bool
+    organization_id: str
+    package: Any
+    prepaid: Any
+    preview: Any
+    storage_usage: dict
+    stripe: dict
+    subscription: Any
+    token_account: dict
+
+
+class BillingExtraSpend(BillingExtraSpendRequired, total=False):
+    monthly_cap_cents: int | None
+
+
+class BillingExtraSpendUpdateDataRequired(TypedDict):
+    organization_id: str
+
+
+class BillingExtraSpendUpdateData(BillingExtraSpendUpdateDataRequired, total=False):
+    enabled: bool
+    monthly_cap_cents: int | None
+
+
+class BillingExtraSpendPatchDataRequired(TypedDict):
+    organization_id: str
+
+
+class BillingExtraSpendPatchData(BillingExtraSpendPatchDataRequired, total=False):
+    enabled: bool
+    monthly_cap_cents: int | None
 
 
 class BillingInvoiceRequired(TypedDict):
@@ -4447,6 +4560,43 @@ class BillingPrepaidPurchaseCreateData(TypedDict):
     organization_id: str
     minutes: int
     request_key: str
+
+
+class BillingSubscription(TypedDict):
+    addons: list
+    breakdown: Any
+    budget: Any
+    can_manage_contact: bool
+    can_manage_extra_spend: bool
+    can_manage_local_subscription: bool
+    can_manage_payment_method: bool
+    can_set_up_billing: bool
+    cancel_at_period_end: bool
+    customer: Any
+    deployment_usage_visible: bool
+    entitlements: dict
+    extra_spend_enabled: bool
+    feature_enabled: bool
+    organization_id: str
+    package: Any
+    prepaid: Any
+    preview: Any
+    storage_usage: dict
+    stripe: dict
+    subscription: Any
+    token_account: dict
+
+
+class BillingSubscriptionUpdateData(TypedDict):
+    organization_id: str
+
+
+class BillingSubscriptionPatchDataRequired(TypedDict):
+    organization_id: str
+
+
+class BillingSubscriptionPatchData(BillingSubscriptionPatchDataRequired, total=False):
+    cancel_at_period_end: bool
 
 
 class BillingTokenTopUp(TypedDict):

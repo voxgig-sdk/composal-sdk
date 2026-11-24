@@ -51,10 +51,6 @@ class TestBillingEntity:
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
-        if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
-            print("LIVE STEP {\"id\":\"billing.update.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/billing/budget\"}")
-            pytest.skip("Live coverage incomplete: billing.update.0 excluded (GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/billing/budget)")
-
         if setup["live"]:
             pytest.skip("Live coverage incomplete: the flow has no step to run")
 

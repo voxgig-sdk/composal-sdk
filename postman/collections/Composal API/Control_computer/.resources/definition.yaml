@@ -10,4 +10,4 @@ description: |-
   | `device` | object | yes |  |
   | `id` | string |  |  |
   | `provider_status` | array |  |  |
-order: 187000
+order: 191000

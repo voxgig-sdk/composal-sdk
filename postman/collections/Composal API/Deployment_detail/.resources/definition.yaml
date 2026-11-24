@@ -26,4 +26,4 @@ description: |-
   | `service_bindings` | array | yes |  |
   | `service_views` | array | yes |  |
   | `storage_resources` | array | yes |  |
-order: 202000
+order: 206000

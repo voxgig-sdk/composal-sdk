@@ -545,9 +545,21 @@ Create a new `Billing` entity instance. Pass `nil` for no initial data.
 
 Create a new `BillingAddon` entity instance. Pass `nil` for no initial data.
 
+#### `BillingBudget(data)`
+
+Create a new `BillingBudget` entity instance. Pass `nil` for no initial data.
+
 #### `BillingCheckoutSession(data)`
 
 Create a new `BillingCheckoutSession` entity instance. Pass `nil` for no initial data.
+
+#### `BillingContact(data)`
+
+Create a new `BillingContact` entity instance. Pass `nil` for no initial data.
+
+#### `BillingExtraSpend(data)`
+
+Create a new `BillingExtraSpend` entity instance. Pass `nil` for no initial data.
 
 #### `BillingInvoice(data)`
 
@@ -568,6 +580,10 @@ Create a new `BillingPrepaidPeriod` entity instance. Pass `nil` for no initial d
 #### `BillingPrepaidPurchase(data)`
 
 Create a new `BillingPrepaidPurchase` entity instance. Pass `nil` for no initial data.
+
+#### `BillingSubscription(data)`
+
+Create a new `BillingSubscription` entity instance. Pass `nil` for no initial data.
 
 #### `BillingTokenTopUp(data)`
 
@@ -12066,10 +12082,6 @@ Load a single entity matching the given criteria. Returns the entity, whose reco
 local result, err = client:Billing():load({ organization_id = "organization_id" })
 ```
 
-#### `update(reqdata, ctrl) -> any, err`
-
-Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
-
 ### Common Methods
 
 #### `data_get() -> table`
@@ -12178,6 +12190,93 @@ Return the entity name.
 
 ---
 
+## BillingBudgetEntity
+
+```lua
+local billing_budget = client:BillingBudget(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `table` | Yes |  |
+| `breakdown` | `any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` | Yes |  |
+| `can_manage_contact` | `boolean` | Yes |  |
+| `can_manage_extra_spend` | `boolean` | Yes |  |
+| `can_manage_local_subscription` | `boolean` | Yes |  |
+| `can_manage_payment_method` | `boolean` | Yes |  |
+| `can_set_up_billing` | `boolean` | Yes |  |
+| `customer` | `any` | Yes |  |
+| `deployment_usage_visible` | `boolean` | Yes |  |
+| `entitlements` | `table` | Yes |  |
+| `extra_spend_enabled` | `boolean` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Yes | Whether the `billing` feature is on for this organization. |
+| `monthly_cap_cents` | `number|nil` | No | Null clears the budget. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `any` | Yes |  |
+| `prepaid` | `any` | Yes |  |
+| `preview` | `any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `table` | Yes |  |
+| `stripe` | `table` | Yes |  |
+| `subscription` | `any` | Yes |  |
+| `token_account` | `table` | Yes |  |
+
+### Operations
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BillingBudget():patch({
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BillingBudget():update({
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingBudgetEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## BillingCheckoutSessionEntity
 
 ```lua
@@ -12228,6 +12327,181 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `BillingCheckoutSessionEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BillingContactEntity
+
+```lua
+local billing_contact = client:BillingContact(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `table` | Yes |  |
+| `billing_email` | `string` | Yes |  |
+| `breakdown` | `any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` | Yes |  |
+| `can_manage_contact` | `boolean` | Yes |  |
+| `can_manage_extra_spend` | `boolean` | Yes |  |
+| `can_manage_local_subscription` | `boolean` | Yes |  |
+| `can_manage_payment_method` | `boolean` | Yes |  |
+| `can_set_up_billing` | `boolean` | Yes |  |
+| `customer` | `any` | Yes |  |
+| `deployment_usage_visible` | `boolean` | Yes |  |
+| `entitlements` | `table` | Yes |  |
+| `extra_spend_enabled` | `boolean` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `any` | Yes |  |
+| `prepaid` | `any` | Yes |  |
+| `preview` | `any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `table` | Yes |  |
+| `stripe` | `table` | Yes |  |
+| `subscription` | `any` | Yes |  |
+| `token_account` | `table` | Yes |  |
+
+### Operations
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BillingContact():patch({
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BillingContact():update({
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingContactEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BillingExtraSpendEntity
+
+```lua
+local billing_extra_spend = client:BillingExtraSpend(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `table` | Yes |  |
+| `breakdown` | `any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` | Yes |  |
+| `can_manage_contact` | `boolean` | Yes |  |
+| `can_manage_extra_spend` | `boolean` | Yes |  |
+| `can_manage_local_subscription` | `boolean` | Yes |  |
+| `can_manage_payment_method` | `boolean` | Yes |  |
+| `can_set_up_billing` | `boolean` | Yes |  |
+| `customer` | `any` | Yes |  |
+| `deployment_usage_visible` | `boolean` | Yes |  |
+| `enabled` | `boolean` | Yes |  |
+| `entitlements` | `table` | Yes |  |
+| `extra_spend_enabled` | `boolean` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Yes | Whether the `billing` feature is on for this organization. |
+| `monthly_cap_cents` | `number|nil` | No | Monthly limit across all metered overages, excluding plan fees. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `any` | Yes |  |
+| `prepaid` | `any` | Yes |  |
+| `preview` | `any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `table` | Yes |  |
+| `stripe` | `table` | Yes |  |
+| `subscription` | `any` | Yes |  |
+| `token_account` | `table` | Yes |  |
+
+### Operations
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BillingExtraSpend():patch({
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BillingExtraSpend():update({
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingExtraSpendEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -12566,6 +12840,93 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `BillingPrepaidPurchaseEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## BillingSubscriptionEntity
+
+```lua
+local billing_subscription = client:BillingSubscription(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `addons` | `table` | Yes |  |
+| `breakdown` | `any` | Yes | The 24-hour live series with its provenance; null only when the rollup fallback itself failed. |
+| `budget` | `any` | Yes |  |
+| `can_manage_contact` | `boolean` | Yes |  |
+| `can_manage_extra_spend` | `boolean` | Yes |  |
+| `can_manage_local_subscription` | `boolean` | Yes |  |
+| `can_manage_payment_method` | `boolean` | Yes |  |
+| `can_set_up_billing` | `boolean` | Yes |  |
+| `cancel_at_period_end` | `boolean` | Yes |  |
+| `customer` | `any` | Yes |  |
+| `deployment_usage_visible` | `boolean` | Yes |  |
+| `entitlements` | `table` | Yes |  |
+| `extra_spend_enabled` | `boolean` | Yes | Organization consent to paid overages across all metered usage. |
+| `feature_enabled` | `boolean` | Yes | Whether the `billing` feature is on for this organization. |
+| `organization_id` | `string` | Yes |  |
+| `package` | `any` | Yes |  |
+| `prepaid` | `any` | Yes |  |
+| `preview` | `any` | Yes | Metronome draft invoice and credits, or null. |
+| `storage_usage` | `table` | Yes |  |
+| `stripe` | `table` | Yes |  |
+| `subscription` | `any` | Yes |  |
+| `token_account` | `table` | Yes |  |
+
+### Operations
+
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BillingSubscription():patch({
+  organization_id = "organization_id",
+  -- Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:BillingSubscription():update({
+  organization_id = "organization_id",
+  -- Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `BillingSubscriptionEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`

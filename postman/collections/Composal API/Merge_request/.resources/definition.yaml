@@ -38,4 +38,4 @@ description: |-
   | `title` | string | yes |  |
   | `updated_at` | string | yes |  |
   | `web_path` | string | yes |  |
-order: 320000
+order: 324000

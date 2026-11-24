@@ -28,4 +28,4 @@ description: |-
   | `slack` | object | yes |  |
   | `webhook_connections` | array | yes |  |
   | `webhooks_available` | boolean | yes |  |
-order: 497000
+order: 501000

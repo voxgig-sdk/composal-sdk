@@ -13,4 +13,4 @@ description: |-
   | `pull_request` | any | yes |  |
   | `stack` | object | yes |  |
   | `transcript_paths` | array | yes |  |
-order: 248000
+order: 252000
