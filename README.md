@@ -60,6 +60,7 @@ const input = await client.AgentInput().create({
   agent_id,
   conversation_id: 'main',
   text: 'Summarise the pull requests merged yesterday.',
+  idempotency_key: 'pr-summary-001',
 })
 console.log(input.data())
 ```
@@ -76,9 +77,11 @@ workflow triggers and the agent's settings each have their own resource (`AgentR
 create with `$action: 'cancel'` cancels a run, `App` create with `$action: 'archive'` archives a
 hosted app.
 
-**Retries.** Composal asks for an `Idempotency-Key` header on many writes, so that a retried
-request is not applied twice. Switch on the SDK's idempotency feature,
-`feature: { idempotency: { active: true } }`, and it adds a key to each write, which its own
+**Retries.** Composal requires an `Idempotency-Key` header on 28 calls, among them `Agent`
+create and `AgentInput` create, so that a retried request is not applied twice. Those calls
+take it as `idempotency_key`: choose one per intended change, and reuse it, with the same
+body, to retry a request whose outcome was uncertain. For other writes, the SDK's idempotency
+feature, `feature: { idempotency: { active: true } }`, adds a key of its own, which its
 retries of that call reuse.
 
 **Files.** Twelve calls can answer with a file rather than JSON: images, recordings, archives,
