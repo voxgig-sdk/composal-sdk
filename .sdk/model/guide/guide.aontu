@@ -3081,8 +3081,8 @@ guide: entity: {
   catalog_selector: path: {
     "/api/v1/hosting/apps/{app_id}/catalog/selectors": {
       rename: param: "app_id": "app_id"
-      op: list: method: GET
-      op: list: transform: res: "`body.app`"
+      op: load: method: GET
+      op: load: transform: res: "`body.app`"
     }
   }
 
@@ -3365,8 +3365,8 @@ guide: entity: {
   change_transcript_summary: path: {
     "/api/v1/organizations/{org_slug}/changes/transcript_summaries": {
       rename: param: "org_slug": "organization_id"
-      op: list: method: GET
-      op: list: transform: res: "`body.summaries`"
+      op: load: method: GET
+      op: load: transform: res: "`body.summaries`"
     }
   }
 
@@ -4142,12 +4142,11 @@ guide: entity: {
   # docker_builder_setting
   docker_builder_setting: path: {
     "/api/v1/organizations/{organization_id}/docker_builder_settings": {
-      op: list: method: GET
-      op: list: transform: res: "`body.docker_builder_settings`"
+      op: load: method: GET
+      op: load: transform: res: "`body.docker_builder_settings`"
       op: patch: method: PATCH
       op: patch: transform: res: "`body.docker_builder_settings`"
       op: update: method: PUT
-      op: load: active: false
     }
   }
 
@@ -7149,8 +7148,8 @@ guide: entity: {
   project_overview_metric: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics": {
       rename: param: "project_id": "project_id"
-      op: list: method: GET
-      op: list: transform: res: "`body.counts`"
+      op: load: method: GET
+      op: load: transform: res: "`body.counts`"
     }
   }
 
@@ -7778,8 +7777,8 @@ guide: entity: {
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/stats": {
       rename: param: "org_slug": "organization_id"
       rename: param: "repo_slug": "repo_id"
-      op: list: method: GET
-      op: list: transform: res: "`body.repository_stats`"
+      op: load: method: GET
+      op: load: transform: res: "`body.repository_stats`"
     }
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/stats/refresh": {
       action: "refresh": {}
