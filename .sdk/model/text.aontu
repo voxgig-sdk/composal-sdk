@@ -82,7 +82,7 @@ workflow triggers and the agent's settings each have their own resource (\`Agent
 create with \`$action: 'cancel'\` cancels a run, \`App\` create with \`$action: 'archive'\` archives a
 hosted app.
 
-**Retries.** Composal requires an \`Idempotency-Key\` header on 28 calls, among them \`Agent\`
+**Retries.** Composal requires an \`Idempotency-Key\` header on 33 calls, among them \`Agent\`
 create and \`AgentInput\` create, so that a retried request is not applied twice. Switch on the
 SDK's idempotency feature, \`feature: { idempotency: { active: true } }\`, as above: it adds a
 key to every write, which its own retries of that call reuse. To retry by hand a request whose
@@ -90,26 +90,24 @@ outcome was uncertain, pass the original key as \`idempotency_key\` (the SDK sen
 header and never replaces it). An action that requires the header, such as \`Agent\` create
 with \`$action: 'browser_opened'\`, needs \`idempotency_key\` in the call to be selected.
 
-**Types.** Five request fields that Composal's definition makes optional, on four calls, are
-typed as required, among them \`browser_context\` and \`client_time\` on \`AgentInput\` create. Each is an object
-with required fields of its own, which this generation misreads as the field itself being
-required. TypeScript refuses a call without them and Python's type hints say the same; no SDK
-checks it at run time.
+**Types.** Some request fields that Composal's definition makes optional are typed as
+required, among them \`browser_context\` and \`client_time\` on \`AgentInput\` create. Each is an
+object with required fields of its own, which this generation misreads as the field itself
+being required. TypeScript refuses a call without them and Python's type hints say the same;
+no SDK checks it at run time.
 
-**Files.** Twelve calls can answer with a file rather than JSON: images, recordings, archives,
-plain text and downloads, such as \`Evidence\` load with \`$action: 'download'\`. This generation
-does not read a binary body, so those calls report an unreadable response. Six uploads take
-multipart form data or JSON; the SDK sends JSON.
+**Files and streams.** Nineteen calls can answer with a file or plain text rather than JSON:
+images, recordings, archives and downloads, such as \`Evidence\` load with
+\`$action: 'download'\`. Four answer with a server-sent event stream, among them an agent's live
+events. This generation reads neither, so those calls report an unreadable response; an
+agent's saved conversation, \`Agent\` load with \`$action: 'conversation'\`, holds its replies.
+Eight uploads take multipart form data or JSON; the SDK sends JSON.
 
 **Scope.** Composal's definition is generated from its application's routes and holds 2,008
-operations, including internal services, payment and telemetry callbacks and admin routes.
-This SDK covers the areas Composal's API reference lists: persistent agents and their
-marketplace, Verify (projects, scenarios, runs, findings, browser runners), hosting (apps,
-environments, services, deployments, domains, CDN and static sites), the container registry,
-and the current user, tokens, organizations, members and invitations. Within those areas it
-leaves out routes marked internal or deprecated (the \`/clawder\` paths, which \`/spark\` replaces),
-routes that need a credential other than a personal access token, and the agent event stream,
-whose replies the conversation also holds. That is 726 operations, as 216 resources.
+operations. This SDK covers every one a customer can call: 1,747 operations, as 551
+resources. It leaves out only the 38 that Composal marks internal, the 194 it marks deprecated
+(among them the \`/clawder\` paths, which \`/spark\` replaces), and the 29 that need a service
+credential rather than a personal access token.
 
 **Not yet run with a token.** Every request was checked against the definition, not against
 Composal.`
