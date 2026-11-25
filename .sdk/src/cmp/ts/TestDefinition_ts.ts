@@ -16,9 +16,8 @@ import { isControlSkipped } from './utility'
 // Generated from the API definition, not from the model this SDK was built
 // from: the route, the declared query parameters, the credential the security
 // scheme names, and the definition's own response example.
-// A JSON string, not an array literal: over about a thousand routes TypeScript
-// infers a union of every element's type and fails with TS2590 ("Expression
-// produces a union type that is too complex to represent"). Composal, 1,739.
+// A JSON string, not an array literal: tsc types a literal as the union of its
+// elements, and past about a thousand routes fails with TS2590.
 const PLAN: any[] = JSON.parse(${JSON.stringify(JSON.stringify(plan))})
 
 
